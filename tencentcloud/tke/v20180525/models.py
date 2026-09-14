@@ -6143,13 +6143,13 @@ class CreateCLSLogConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogConfig: 日志采集配置的json表达
+        :param _LogConfig: <p>日志采集配置的json表达</p>
         :type LogConfig: str
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _LogsetId: CLS日志集ID
+        :param _LogsetId: <p>CLS日志集ID</p>
         :type LogsetId: str
-        :param _ClusterType: 当前集群类型支持tke（标准集群）、eks（serverless集群）
+        :param _ClusterType: <p>当前集群类型支持tke（标准集群）、eks（serverless集群）</p>
         :type ClusterType: str
         """
         self._LogConfig = None
@@ -6159,7 +6159,7 @@ class CreateCLSLogConfigRequest(AbstractModel):
 
     @property
     def LogConfig(self):
-        r"""日志采集配置的json表达
+        r"""<p>日志采集配置的json表达</p>
         :rtype: str
         """
         return self._LogConfig
@@ -6170,7 +6170,7 @@ class CreateCLSLogConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -6181,7 +6181,7 @@ class CreateCLSLogConfigRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""CLS日志集ID
+        r"""<p>CLS日志集ID</p>
         :rtype: str
         """
         return self._LogsetId
@@ -6192,7 +6192,7 @@ class CreateCLSLogConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""当前集群类型支持tke（标准集群）、eks（serverless集群）
+        r"""<p>当前集群类型支持tke（标准集群）、eks（serverless集群）</p>
         :rtype: str
         """
         return self._ClusterType
@@ -9362,11 +9362,11 @@ class CreateEksLogConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _LogConfig: 日志采集配置的json表达
+        :param _LogConfig: <p>日志采集配置的json表达</p>
         :type LogConfig: str
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: <p>日志集ID</p>
         :type LogsetId: str
         """
         self._ClusterId = None
@@ -9375,7 +9375,7 @@ class CreateEksLogConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -9386,7 +9386,7 @@ class CreateEksLogConfigRequest(AbstractModel):
 
     @property
     def LogConfig(self):
-        r"""日志采集配置的json表达
+        r"""<p>日志采集配置的json表达</p>
         :rtype: str
         """
         return self._LogConfig
@@ -9397,7 +9397,7 @@ class CreateEksLogConfigRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""日志集ID
+        r"""<p>日志集ID</p>
         :rtype: str
         """
         return self._LogsetId
@@ -9428,7 +9428,7 @@ class CreateEksLogConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志采集topicid
+        :param _TopicId: <p>日志采集topicid</p>
         :type TopicId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9438,7 +9438,7 @@ class CreateEksLogConfigResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志采集topicid
+        r"""<p>日志采集topicid</p>
         :rtype: str
         """
         return self._TopicId

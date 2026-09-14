@@ -16621,6 +16621,323 @@ class CustomTime(AbstractModel):
         
 
 
+class CustomVariable(AbstractModel):
+    r"""自定义变量详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>变量名称。需填写完整前缀：user.zone.* 表示站点级自定义变量，user.rule.* 表示规则级自定义变量。前缀后的自定义部分仅支持大小写字母、数字和下划线。变量名称区分大小写，长度不能超过 50 个字符。变量创建成功后，名称不可修改。</p>
+        :type Name: str
+        :param _InitialValue: <p>变量初始值。支持使用常量字符串、变量以及公式。长度不能超过 255 个字符。</p>
+        :type InitialValue: str
+        :param _Description: <p>变量描述。长度限制不超过 60 个字符。</p>
+        :type Description: str
+        """
+        self._Name = None
+        self._InitialValue = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        r"""<p>变量名称。需填写完整前缀：user.zone.* 表示站点级自定义变量，user.rule.* 表示规则级自定义变量。前缀后的自定义部分仅支持大小写字母、数字和下划线。变量名称区分大小写，长度不能超过 50 个字符。变量创建成功后，名称不可修改。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InitialValue(self):
+        r"""<p>变量初始值。支持使用常量字符串、变量以及公式。长度不能超过 255 个字符。</p>
+        :rtype: str
+        """
+        return self._InitialValue
+
+    @InitialValue.setter
+    def InitialValue(self, InitialValue):
+        self._InitialValue = InitialValue
+
+    @property
+    def Description(self):
+        r"""<p>变量描述。长度限制不超过 60 个字符。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._InitialValue = params.get("InitialValue")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariableOperation(AbstractModel):
+    r"""自定义变量运算详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Branches: <p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branches: list of CustomVariableOperationRuleBranch
+        :param _Description: <p>规则注释。可以填写多个注释。</p>
+        :type Description: list of str
+        """
+        self._Branches = None
+        self._Description = None
+
+    @property
+    def Branches(self):
+        r"""<p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomVariableOperationRuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def Description(self):
+        r"""<p>规则注释。可以填写多个注释。</p>
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = CustomVariableOperationRuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariableOperationRuleAction(AbstractModel):
+    r"""自定义变量规则操作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>操作名称。名称需要与参数结构体对应，例如 Name=Set，则 SetParameters 必填。当前仅支持填写 Set。</p><li>Set：自定义变量设置；</li>
+        :type Name: str
+        :param _SetParameters: <p>自定义变量设置参数。此参数中若存在多条运算，按照数组的顺序依次执行。当 Name 取值为 Set 时，该参数必填。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetParameters: :class:`tencentcloud.teo.v20220901.models.SetParameters`
+        """
+        self._Name = None
+        self._SetParameters = None
+
+    @property
+    def Name(self):
+        r"""<p>操作名称。名称需要与参数结构体对应，例如 Name=Set，则 SetParameters 必填。当前仅支持填写 Set。</p><li>Set：自定义变量设置；</li>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SetParameters(self):
+        r"""<p>自定义变量设置参数。此参数中若存在多条运算，按照数组的顺序依次执行。当 Name 取值为 Set 时，该参数必填。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SetParameters`
+        """
+        return self._SetParameters
+
+    @SetParameters.setter
+    def SetParameters(self, SetParameters):
+        self._SetParameters = SetParameters
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("SetParameters") is not None:
+            self._SetParameters = SetParameters()
+            self._SetParameters._deserialize(params.get("SetParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariableOperationRuleBranch(AbstractModel):
+    r"""自定义变量运算子规则分支。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Condition: <p><a href="https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d">匹配条件</a>。</p>
+        :type Condition: str
+        :param _Actions: <p><a href="https://cloud.tencent.com/document/product/1552/90438#c7bd7e02-9247-4a72-b0e4-11c27cadb198">操作</a>。<br>注意：Actions 和 SubRules 不可同时为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Actions: list of CustomVariableOperationRuleAction
+        :param _SubRules: <p>子规则列表。此列表中若存在多条规则，按照从上往下的顺序依次执行。<br>注意：SubRules 和 Actions 不可同时为空。且当前只支持填写一层 SubRules。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubRules: list of CustomVariableOperationSubRule
+        """
+        self._Condition = None
+        self._Actions = None
+        self._SubRules = None
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d">匹配条件</a>。</p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Actions(self):
+        r"""<p><a href="https://cloud.tencent.com/document/product/1552/90438#c7bd7e02-9247-4a72-b0e4-11c27cadb198">操作</a>。<br>注意：Actions 和 SubRules 不可同时为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomVariableOperationRuleAction
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def SubRules(self):
+        r"""<p>子规则列表。此列表中若存在多条规则，按照从上往下的顺序依次执行。<br>注意：SubRules 和 Actions 不可同时为空。且当前只支持填写一层 SubRules。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomVariableOperationSubRule
+        """
+        return self._SubRules
+
+    @SubRules.setter
+    def SubRules(self, SubRules):
+        self._SubRules = SubRules
+
+
+    def _deserialize(self, params):
+        self._Condition = params.get("Condition")
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = CustomVariableOperationRuleAction()
+                obj._deserialize(item)
+                self._Actions.append(obj)
+        if params.get("SubRules") is not None:
+            self._SubRules = []
+            for item in params.get("SubRules"):
+                obj = CustomVariableOperationSubRule()
+                obj._deserialize(item)
+                self._SubRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomVariableOperationSubRule(AbstractModel):
+    r"""自定义变量运算子规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Branches: <p>子规则分支</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branches: list of CustomVariableOperationRuleBranch
+        :param _Description: <p>规则注释。</p>
+        :type Description: list of str
+        """
+        self._Branches = None
+        self._Description = None
+
+    @property
+    def Branches(self):
+        r"""<p>子规则分支</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomVariableOperationRuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def Description(self):
+        r"""<p>规则注释。</p>
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = CustomVariableOperationRuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomizedHeader(AbstractModel):
     r"""负载均衡实例 HTTP/HTTPS 健康检查策略下可配置的自定义头部。
 
@@ -61164,30 +61481,38 @@ class RuleEngineItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 规则状态。取值有：<li> enable: 启用； </li><li> disable: 未启用。</li>
+        :param _Status: <p>规则状态。取值有：<li> enable: 启用； </li><li> disable: 未启用。</li></p>
         :type Status: str
-        :param _RuleId: 规则 ID。规则的唯一性标识，当调用 ModifyL7AccRules 时，该参数必填。
+        :param _RuleId: <p>规则 ID。规则的唯一性标识，当调用 ModifyL7AccRule 时，该参数必填。</p>
         :type RuleId: str
-        :param _RuleName: 规则名称。名称长度限制不超过 255 个字符。
+        :param _RuleName: <p>规则名称。名称长度限制不超过 255 个字符。</p>
         :type RuleName: str
-        :param _Description: 规则注释。可以填写多个注释。
+        :param _Description: <p>规则注释。可以填写多个注释。</p>
         :type Description: list of str
-        :param _Branches: 子规则分支。此列表当前只支持填写一项规则，多填无效。
+        :param _CustomVariables: <p>规则级自定义变量列表。CustomVariable.Name 需要使用 user.rule. 作为前缀。变量按照数组顺序依次初始化，InitialValue 支持引用站点级自定义变量，以及位于当前变量之前的规则级自定义变量，不支持引用当前变量自身或位于其后的规则级自定义变量。站点级自定义变量可通过 DescribeZoneCustomVariables 接口查询。当 Branches 为空时 CustomVariable 不允许填写，填写无效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomVariables: list of CustomVariable
+        :param _CustomVariableOperations: <p>规则级自定义变量运算详情。运算中支持引用站点级自定义变量和当前规则已定义的规则级自定义变量。站点级自定义变量可通过 DescribeZoneCustomVariables 接口查询。此列表当前只支持填写一项规则，多填无效。当 Branches 为空时 CustomVariableOperations 不允许填写，填写无效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomVariableOperations: list of CustomVariableOperation
+        :param _Branches: <p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Branches: list of RuleBranch
-        :param _RulePriority: 规则优先级。仅作为出参使用。
+        :param _RulePriority: <p>规则优先级。仅作为出参使用。</p>
         :type RulePriority: int
         """
         self._Status = None
         self._RuleId = None
         self._RuleName = None
         self._Description = None
+        self._CustomVariables = None
+        self._CustomVariableOperations = None
         self._Branches = None
         self._RulePriority = None
 
     @property
     def Status(self):
-        r"""规则状态。取值有：<li> enable: 启用； </li><li> disable: 未启用。</li>
+        r"""<p>规则状态。取值有：<li> enable: 启用； </li><li> disable: 未启用。</li></p>
         :rtype: str
         """
         return self._Status
@@ -61198,7 +61523,7 @@ class RuleEngineItem(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则 ID。规则的唯一性标识，当调用 ModifyL7AccRules 时，该参数必填。
+        r"""<p>规则 ID。规则的唯一性标识，当调用 ModifyL7AccRule 时，该参数必填。</p>
         :rtype: str
         """
         return self._RuleId
@@ -61209,7 +61534,7 @@ class RuleEngineItem(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称。名称长度限制不超过 255 个字符。
+        r"""<p>规则名称。名称长度限制不超过 255 个字符。</p>
         :rtype: str
         """
         return self._RuleName
@@ -61220,7 +61545,7 @@ class RuleEngineItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""规则注释。可以填写多个注释。
+        r"""<p>规则注释。可以填写多个注释。</p>
         :rtype: list of str
         """
         return self._Description
@@ -61230,8 +61555,32 @@ class RuleEngineItem(AbstractModel):
         self._Description = Description
 
     @property
+    def CustomVariables(self):
+        r"""<p>规则级自定义变量列表。CustomVariable.Name 需要使用 user.rule. 作为前缀。变量按照数组顺序依次初始化，InitialValue 支持引用站点级自定义变量，以及位于当前变量之前的规则级自定义变量，不支持引用当前变量自身或位于其后的规则级自定义变量。站点级自定义变量可通过 DescribeZoneCustomVariables 接口查询。当 Branches 为空时 CustomVariable 不允许填写，填写无效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def CustomVariableOperations(self):
+        r"""<p>规则级自定义变量运算详情。运算中支持引用站点级自定义变量和当前规则已定义的规则级自定义变量。站点级自定义变量可通过 DescribeZoneCustomVariables 接口查询。此列表当前只支持填写一项规则，多填无效。当 Branches 为空时 CustomVariableOperations 不允许填写，填写无效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomVariableOperation
+        """
+        return self._CustomVariableOperations
+
+    @CustomVariableOperations.setter
+    def CustomVariableOperations(self, CustomVariableOperations):
+        self._CustomVariableOperations = CustomVariableOperations
+
+    @property
     def Branches(self):
-        r"""子规则分支。此列表当前只支持填写一项规则，多填无效。
+        r"""<p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleBranch
         """
@@ -61243,7 +61592,7 @@ class RuleEngineItem(AbstractModel):
 
     @property
     def RulePriority(self):
-        r"""规则优先级。仅作为出参使用。
+        r"""<p>规则优先级。仅作为出参使用。</p>
         :rtype: int
         """
         return self._RulePriority
@@ -61258,6 +61607,18 @@ class RuleEngineItem(AbstractModel):
         self._RuleId = params.get("RuleId")
         self._RuleName = params.get("RuleName")
         self._Description = params.get("Description")
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        if params.get("CustomVariableOperations") is not None:
+            self._CustomVariableOperations = []
+            for item in params.get("CustomVariableOperations"):
+                obj = CustomVariableOperation()
+                obj._deserialize(item)
+                self._CustomVariableOperations.append(obj)
         if params.get("Branches") is not None:
             self._Branches = []
             for item in params.get("Branches"):
@@ -63327,6 +63688,57 @@ class SetContentIdentifierParameters(AbstractModel):
 
     def _deserialize(self, params):
         self._ContentIdentifier = params.get("ContentIdentifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetParameters(AbstractModel):
+    r"""自定义变量设置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>自定义变量名称。自定义变量必须先被定义才可进行运算。</p>
+        :type Name: str
+        :param _Value: <p>自定义变量赋值。支持使用常量字符串、变量以及公式，不支持中文。长度不能超过 1000 个字符。</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>自定义变量名称。自定义变量必须先被定义才可进行运算。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>自定义变量赋值。支持使用常量字符串、变量以及公式，不支持中文。长度不能超过 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

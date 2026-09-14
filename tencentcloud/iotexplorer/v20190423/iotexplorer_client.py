@@ -118,6 +118,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchDescribeTWeSeeOrders(self, request):
+        r"""批量查询 TWeSee 订单状态
+
+        :param request: Request instance for BatchDescribeTWeSeeOrders.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BatchDescribeTWeSeeOrdersRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BatchDescribeTWeSeeOrdersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDescribeTWeSeeOrders", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDescribeTWeSeeOrdersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchInvokeTWeSeeRecognitionTask(self, request):
         r"""批量同步执行 TWeSee 语义理解任务
 
@@ -5163,6 +5186,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ModifyTopicRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTopicRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OperateTWeSeeDirectUploadObject(self, request):
+        r"""查询、删除或列举 TWeSee 直传对象
+
+        :param request: Request instance for OperateTWeSeeDirectUploadObject.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.OperateTWeSeeDirectUploadObjectRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.OperateTWeSeeDirectUploadObjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OperateTWeSeeDirectUploadObject", params, headers=headers)
+            response = json.loads(body)
+            model = models.OperateTWeSeeDirectUploadObjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

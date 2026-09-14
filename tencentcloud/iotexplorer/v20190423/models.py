@@ -1054,6 +1054,287 @@ class BatchCreateTWeSeeSubscriptionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchDescribeTWeSeeOrdersEntry(AbstractModel):
+    r"""待查询的订单标识。OrderId 和 CustomOrderId 必须且只能填写一个。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: <p>订单 ID，与 CustomOrderId 二选一</p>
+        :type OrderId: str
+        :param _CustomOrderId: <p>自定义订单 ID，与 OrderId 二选一</p>
+        :type CustomOrderId: str
+        """
+        self._OrderId = None
+        self._CustomOrderId = None
+
+    @property
+    def OrderId(self):
+        r"""<p>订单 ID，与 CustomOrderId 二选一</p>
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def CustomOrderId(self):
+        r"""<p>自定义订单 ID，与 OrderId 二选一</p>
+        :rtype: str
+        """
+        return self._CustomOrderId
+
+    @CustomOrderId.setter
+    def CustomOrderId(self, CustomOrderId):
+        self._CustomOrderId = CustomOrderId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._CustomOrderId = params.get("CustomOrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDescribeTWeSeeOrdersRequest(AbstractModel):
+    r"""BatchDescribeTWeSeeOrders请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entries: 待查询的订单列表，最多 200 条
+        :type Entries: list of BatchDescribeTWeSeeOrdersEntry
+        """
+        self._Entries = None
+
+    @property
+    def Entries(self):
+        r"""待查询的订单列表，最多 200 条
+        :rtype: list of BatchDescribeTWeSeeOrdersEntry
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+
+    def _deserialize(self, params):
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = BatchDescribeTWeSeeOrdersEntry()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDescribeTWeSeeOrdersResponse(AbstractModel):
+    r"""BatchDescribeTWeSeeOrders返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Results: 与请求 Entries 顺序一致的订单查询结果
+        :type Results: list of BatchDescribeTWeSeeOrdersResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        r"""与请求 Entries 顺序一致的订单查询结果
+        :rtype: list of BatchDescribeTWeSeeOrdersResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = BatchDescribeTWeSeeOrdersResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class BatchDescribeTWeSeeOrdersResult(AbstractModel):
+    r"""单个订单的查询结果。查询失败时 ErrorCode 和 ErrorMessage 非空。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: <p>订单 ID</p>
+        :type OrderId: str
+        :param _Status: <p>订单状态。</p><p>枚举值：</p><ul><li>DELIVERED： 已发货</li><li>DELIVERING： 发货中</li><li>DELIVER_FAILED： 发货失败</li><li>NOT_DELIVERED： 未发货</li></ul>
+        :type Status: str
+        :param _ResourceId: <p>资源 ID</p>
+        :type ResourceId: str
+        :param _Currency: <p>币种</p>
+        :type Currency: str
+        :param _Price: <p>订单价格</p>
+        :type Price: str
+        :param _CustomOrderId: <p>自定义订单 ID</p>
+        :type CustomOrderId: str
+        :param _ErrorCode: <p>单个订单的查询错误码，查询成功时为空</p>
+        :type ErrorCode: str
+        :param _ErrorMessage: <p>单个订单的查询错误信息，查询成功时为空</p>
+        :type ErrorMessage: str
+        """
+        self._OrderId = None
+        self._Status = None
+        self._ResourceId = None
+        self._Currency = None
+        self._Price = None
+        self._CustomOrderId = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+
+    @property
+    def OrderId(self):
+        r"""<p>订单 ID</p>
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Status(self):
+        r"""<p>订单状态。</p><p>枚举值：</p><ul><li>DELIVERED： 已发货</li><li>DELIVERING： 发货中</li><li>DELIVER_FAILED： 发货失败</li><li>NOT_DELIVERED： 未发货</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源 ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Currency(self):
+        r"""<p>币种</p>
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def Price(self):
+        r"""<p>订单价格</p>
+        :rtype: str
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def CustomOrderId(self):
+        r"""<p>自定义订单 ID</p>
+        :rtype: str
+        """
+        return self._CustomOrderId
+
+    @CustomOrderId.setter
+    def CustomOrderId(self, CustomOrderId):
+        self._CustomOrderId = CustomOrderId
+
+    @property
+    def ErrorCode(self):
+        r"""<p>单个订单的查询错误码，查询成功时为空</p>
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>单个订单的查询错误信息，查询成功时为空</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._Status = params.get("Status")
+        self._ResourceId = params.get("ResourceId")
+        self._Currency = params.get("Currency")
+        self._Price = params.get("Price")
+        self._CustomOrderId = params.get("CustomOrderId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchInvokeTWeSeeRecognitionTaskRequest(AbstractModel):
     r"""BatchInvokeTWeSeeRecognitionTask请求参数结构体
 
@@ -38089,6 +38370,159 @@ class ModifyTopicRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OperateTWeSeeDirectUploadObjectRequest(AbstractModel):
+    r"""OperateTWeSeeDirectUploadObject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _COSURI: TWeSee 直传对象或目录的 COS URI
+        :type COSURI: str
+        :param _Operation: 操作类型。可选值：
+
+- `HeadObject`：查询对象元数据
+- `DeleteObject`：删除对象
+- `ListBucket`：列举对象
+        :type Operation: str
+        :param _ListOptions: 列举对象时使用的分页和目录选项
+        :type ListOptions: :class:`tencentcloud.iotexplorer.v20190423.models.SeeObjectListOptions`
+        """
+        self._COSURI = None
+        self._Operation = None
+        self._ListOptions = None
+
+    @property
+    def COSURI(self):
+        r"""TWeSee 直传对象或目录的 COS URI
+        :rtype: str
+        """
+        return self._COSURI
+
+    @COSURI.setter
+    def COSURI(self, COSURI):
+        self._COSURI = COSURI
+
+    @property
+    def Operation(self):
+        r"""操作类型。可选值：
+
+- `HeadObject`：查询对象元数据
+- `DeleteObject`：删除对象
+- `ListBucket`：列举对象
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def ListOptions(self):
+        r"""列举对象时使用的分页和目录选项
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeObjectListOptions`
+        """
+        return self._ListOptions
+
+    @ListOptions.setter
+    def ListOptions(self, ListOptions):
+        self._ListOptions = ListOptions
+
+
+    def _deserialize(self, params):
+        self._COSURI = params.get("COSURI")
+        self._Operation = params.get("Operation")
+        if params.get("ListOptions") is not None:
+            self._ListOptions = SeeObjectListOptions()
+            self._ListOptions._deserialize(params.get("ListOptions"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperateTWeSeeDirectUploadObjectResponse(AbstractModel):
+    r"""OperateTWeSeeDirectUploadObject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListingResponse: 对象列举结果
+        :type ListingResponse: :class:`tencentcloud.iotexplorer.v20190423.models.SeeObjectListing`
+        :param _ObjectResponse: 对象元数据
+        :type ObjectResponse: :class:`tencentcloud.iotexplorer.v20190423.models.SeeObjectMetadata`
+        :param _Status: 操作结果状态码
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ListingResponse = None
+        self._ObjectResponse = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def ListingResponse(self):
+        r"""对象列举结果
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeObjectListing`
+        """
+        return self._ListingResponse
+
+    @ListingResponse.setter
+    def ListingResponse(self, ListingResponse):
+        self._ListingResponse = ListingResponse
+
+    @property
+    def ObjectResponse(self):
+        r"""对象元数据
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeObjectMetadata`
+        """
+        return self._ObjectResponse
+
+    @ObjectResponse.setter
+    def ObjectResponse(self, ObjectResponse):
+        self._ObjectResponse = ObjectResponse
+
+    @property
+    def Status(self):
+        r"""操作结果状态码
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ListingResponse") is not None:
+            self._ListingResponse = SeeObjectListing()
+            self._ListingResponse._deserialize(params.get("ListingResponse"))
+        if params.get("ObjectResponse") is not None:
+            self._ObjectResponse = SeeObjectMetadata()
+            self._ObjectResponse._deserialize(params.get("ObjectResponse"))
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class OtaModuleInfo(AbstractModel):
     r"""升级包类型详细信息
 
@@ -43268,6 +43702,496 @@ class SeeFaceRecognitionResult(AbstractModel):
                 obj = SeeTaskPersonInfo()
                 obj._deserialize(item)
                 self._Persons.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeObjectListOptions(AbstractModel):
+    r"""TWeSee 直传对象列举选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Delimiter: 目录分隔符
+        :type Delimiter: str
+        :param _Marker: 分页标记
+        :type Marker: str
+        :param _MaxKeys: 单页返回的最大对象数量
+        :type MaxKeys: int
+        """
+        self._Delimiter = None
+        self._Marker = None
+        self._MaxKeys = None
+
+    @property
+    def Delimiter(self):
+        r"""目录分隔符
+        :rtype: str
+        """
+        return self._Delimiter
+
+    @Delimiter.setter
+    def Delimiter(self, Delimiter):
+        self._Delimiter = Delimiter
+
+    @property
+    def Marker(self):
+        r"""分页标记
+        :rtype: str
+        """
+        return self._Marker
+
+    @Marker.setter
+    def Marker(self, Marker):
+        self._Marker = Marker
+
+    @property
+    def MaxKeys(self):
+        r"""单页返回的最大对象数量
+        :rtype: int
+        """
+        return self._MaxKeys
+
+    @MaxKeys.setter
+    def MaxKeys(self, MaxKeys):
+        self._MaxKeys = MaxKeys
+
+
+    def _deserialize(self, params):
+        self._Delimiter = params.get("Delimiter")
+        self._Marker = params.get("Marker")
+        self._MaxKeys = params.get("MaxKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeObjectListing(AbstractModel):
+    r"""TWeSee 直传对象列举结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Contents: <p>对象列表</p>
+        :type Contents: list of SeeObjectSummary
+        :param _CommonPrefixes: <p>子目录路径列表</p>
+        :type CommonPrefixes: list of str
+        :param _Delimiter: <p>本次列举使用的目录分隔符</p>
+        :type Delimiter: str
+        :param _IsTruncated: <p>是否还有后续分页数据</p>
+        :type IsTruncated: bool
+        :param _Marker: <p>本次列举使用的分页标记</p>
+        :type Marker: str
+        :param _MaxKeys: <p>本次列举的最大对象数量</p>
+        :type MaxKeys: int
+        :param _NextMarker: <p>下一页的分页标记</p>
+        :type NextMarker: str
+        :param _Prefix: <p>本次列举的对象路径前缀</p>
+        :type Prefix: str
+        """
+        self._Contents = None
+        self._CommonPrefixes = None
+        self._Delimiter = None
+        self._IsTruncated = None
+        self._Marker = None
+        self._MaxKeys = None
+        self._NextMarker = None
+        self._Prefix = None
+
+    @property
+    def Contents(self):
+        r"""<p>对象列表</p>
+        :rtype: list of SeeObjectSummary
+        """
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def CommonPrefixes(self):
+        r"""<p>子目录路径列表</p>
+        :rtype: list of str
+        """
+        return self._CommonPrefixes
+
+    @CommonPrefixes.setter
+    def CommonPrefixes(self, CommonPrefixes):
+        self._CommonPrefixes = CommonPrefixes
+
+    @property
+    def Delimiter(self):
+        r"""<p>本次列举使用的目录分隔符</p>
+        :rtype: str
+        """
+        return self._Delimiter
+
+    @Delimiter.setter
+    def Delimiter(self, Delimiter):
+        self._Delimiter = Delimiter
+
+    @property
+    def IsTruncated(self):
+        r"""<p>是否还有后续分页数据</p>
+        :rtype: bool
+        """
+        return self._IsTruncated
+
+    @IsTruncated.setter
+    def IsTruncated(self, IsTruncated):
+        self._IsTruncated = IsTruncated
+
+    @property
+    def Marker(self):
+        r"""<p>本次列举使用的分页标记</p>
+        :rtype: str
+        """
+        return self._Marker
+
+    @Marker.setter
+    def Marker(self, Marker):
+        self._Marker = Marker
+
+    @property
+    def MaxKeys(self):
+        r"""<p>本次列举的最大对象数量</p>
+        :rtype: int
+        """
+        return self._MaxKeys
+
+    @MaxKeys.setter
+    def MaxKeys(self, MaxKeys):
+        self._MaxKeys = MaxKeys
+
+    @property
+    def NextMarker(self):
+        r"""<p>下一页的分页标记</p>
+        :rtype: str
+        """
+        return self._NextMarker
+
+    @NextMarker.setter
+    def NextMarker(self, NextMarker):
+        self._NextMarker = NextMarker
+
+    @property
+    def Prefix(self):
+        r"""<p>本次列举的对象路径前缀</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+
+    def _deserialize(self, params):
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = SeeObjectSummary()
+                obj._deserialize(item)
+                self._Contents.append(obj)
+        self._CommonPrefixes = params.get("CommonPrefixes")
+        self._Delimiter = params.get("Delimiter")
+        self._IsTruncated = params.get("IsTruncated")
+        self._Marker = params.get("Marker")
+        self._MaxKeys = params.get("MaxKeys")
+        self._NextMarker = params.get("NextMarker")
+        self._Prefix = params.get("Prefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeObjectMetadata(AbstractModel):
+    r"""TWeSee 直传对象元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>对象 Key</p>
+        :type Key: str
+        :param _COSURI: <p>对象的 COS URI</p>
+        :type COSURI: str
+        :param _ContentType: <p>对象的 MIME 类型</p>
+        :type ContentType: str
+        :param _Size: <p>对象大小，单位：字节</p>
+        :type Size: int
+        :param _ETag: <p>对象的 ETag</p>
+        :type ETag: str
+        :param _LastModified: <p>对象最后修改时间，秒级 UNIX 时间戳</p>
+        :type LastModified: int
+        :param _Metadata: <p>对象的自定义元数据列表</p>
+        :type Metadata: list of SeeObjectMetadataEntry
+        """
+        self._Key = None
+        self._COSURI = None
+        self._ContentType = None
+        self._Size = None
+        self._ETag = None
+        self._LastModified = None
+        self._Metadata = None
+
+    @property
+    def Key(self):
+        r"""<p>对象 Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def COSURI(self):
+        r"""<p>对象的 COS URI</p>
+        :rtype: str
+        """
+        return self._COSURI
+
+    @COSURI.setter
+    def COSURI(self, COSURI):
+        self._COSURI = COSURI
+
+    @property
+    def ContentType(self):
+        r"""<p>对象的 MIME 类型</p>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Size(self):
+        r"""<p>对象大小，单位：字节</p>
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def ETag(self):
+        r"""<p>对象的 ETag</p>
+        :rtype: str
+        """
+        return self._ETag
+
+    @ETag.setter
+    def ETag(self, ETag):
+        self._ETag = ETag
+
+    @property
+    def LastModified(self):
+        r"""<p>对象最后修改时间，秒级 UNIX 时间戳</p>
+        :rtype: int
+        """
+        return self._LastModified
+
+    @LastModified.setter
+    def LastModified(self, LastModified):
+        self._LastModified = LastModified
+
+    @property
+    def Metadata(self):
+        r"""<p>对象的自定义元数据列表</p>
+        :rtype: list of SeeObjectMetadataEntry
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._COSURI = params.get("COSURI")
+        self._ContentType = params.get("ContentType")
+        self._Size = params.get("Size")
+        self._ETag = params.get("ETag")
+        self._LastModified = params.get("LastModified")
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = SeeObjectMetadataEntry()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeObjectMetadataEntry(AbstractModel):
+    r"""TWeSee 直传对象自定义元数据项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 元数据名称
+        :type Name: str
+        :param _Value: 元数据值
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""元数据名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""元数据值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeObjectSummary(AbstractModel):
+    r"""TWeSee 直传对象概要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>对象 Key</p>
+        :type Key: str
+        :param _COSURI: <p>TWeSee 直传对象或目录的 COS URI</p>
+        :type COSURI: str
+        :param _Size: <p>对象大小，单位：字节</p>
+        :type Size: int
+        :param _ETag: <p>对象的 ETag</p>
+        :type ETag: str
+        :param _LastModified: <p>对象最后修改时间，秒级 UNIX 时间戳</p>
+        :type LastModified: int
+        """
+        self._Key = None
+        self._COSURI = None
+        self._Size = None
+        self._ETag = None
+        self._LastModified = None
+
+    @property
+    def Key(self):
+        r"""<p>对象 Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def COSURI(self):
+        r"""<p>TWeSee 直传对象或目录的 COS URI</p>
+        :rtype: str
+        """
+        return self._COSURI
+
+    @COSURI.setter
+    def COSURI(self, COSURI):
+        self._COSURI = COSURI
+
+    @property
+    def Size(self):
+        r"""<p>对象大小，单位：字节</p>
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def ETag(self):
+        r"""<p>对象的 ETag</p>
+        :rtype: str
+        """
+        return self._ETag
+
+    @ETag.setter
+    def ETag(self, ETag):
+        self._ETag = ETag
+
+    @property
+    def LastModified(self):
+        r"""<p>对象最后修改时间，秒级 UNIX 时间戳</p>
+        :rtype: int
+        """
+        return self._LastModified
+
+    @LastModified.setter
+    def LastModified(self, LastModified):
+        self._LastModified = LastModified
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._COSURI = params.get("COSURI")
+        self._Size = params.get("Size")
+        self._ETag = params.get("ETag")
+        self._LastModified = params.get("LastModified")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

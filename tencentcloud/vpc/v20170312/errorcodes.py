@@ -296,6 +296,9 @@ INVALIDPARAMETERVALUE_INSTANCENORMALPUBLICIPBLOCKED = 'InvalidParameterValue.Ins
 # 弹性网卡绑定的实例与地址绑定的实例不一致。
 INVALIDPARAMETERVALUE_INSTANCENOTMATCHASSOCIATEENI = 'InvalidParameterValue.InstanceNotMatchAssociateEni'
 
+# 指定实例与EIP当前绑定实例不一致。
+INVALIDPARAMETERVALUE_INSTANCENOTMATCHDISASSOCIATEINSTANCE = 'InvalidParameterValue.InstanceNotMatchDisassociateInstance'
+
 # 实例所属的VPC不支持在网卡上显示EIP
 INVALIDPARAMETERVALUE_INSTANCEVPCDOESNOTSUPPORTEIPVISIBLEONENI = 'InvalidParameterValue.InstanceVpcDoesNotSupportEipVisibleOnEni'
 
@@ -832,6 +835,9 @@ UNAUTHORIZEDOPERATION_ATTACHMENTNOTFOUND = 'UnauthorizedOperation.AttachmentNotF
 
 # 未授权的用户。
 UNAUTHORIZEDOPERATION_INVALIDACCOUNT = 'UnauthorizedOperation.InvalidAccount'
+
+# 该操作已经被配置为拦截事件的拦截对象，请前往事件中心管理页查询处理。
+UNAUTHORIZEDOPERATION_NEEDAPPROVAL = 'UnauthorizedOperation.NeedApproval'
 
 # 账号未实名。
 UNAUTHORIZEDOPERATION_NOREALNAMEAUTHENTICATION = 'UnauthorizedOperation.NoRealNameAuthentication'

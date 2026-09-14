@@ -18997,6 +18997,8 @@ class EsParam(AbstractModel):
         :type RecordMappingMode: str
         :param _Protocol: <p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
         :type Protocol: str
+        :param _SourceDataFormat: <p>用户选择数据订阅任务的数据（如DTS）时，源数据的格式</p><p>枚举值：</p><ul><li>Debezium： Debezium格式json</li><li>Canal： Canal格式json</li></ul>
+        :type SourceDataFormat: str
         """
         self._Resource = None
         self._Port = None
@@ -19019,6 +19021,7 @@ class EsParam(AbstractModel):
         self._DateField = None
         self._RecordMappingMode = None
         self._Protocol = None
+        self._SourceDataFormat = None
 
     @property
     def Resource(self):
@@ -19251,6 +19254,17 @@ class EsParam(AbstractModel):
     def Protocol(self, Protocol):
         self._Protocol = Protocol
 
+    @property
+    def SourceDataFormat(self):
+        r"""<p>用户选择数据订阅任务的数据（如DTS）时，源数据的格式</p><p>枚举值：</p><ul><li>Debezium： Debezium格式json</li><li>Canal： Canal格式json</li></ul>
+        :rtype: str
+        """
+        return self._SourceDataFormat
+
+    @SourceDataFormat.setter
+    def SourceDataFormat(self, SourceDataFormat):
+        self._SourceDataFormat = SourceDataFormat
+
 
     def _deserialize(self, params):
         self._Resource = params.get("Resource")
@@ -19283,6 +19297,7 @@ class EsParam(AbstractModel):
         self._DateField = params.get("DateField")
         self._RecordMappingMode = params.get("RecordMappingMode")
         self._Protocol = params.get("Protocol")
+        self._SourceDataFormat = params.get("SourceDataFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

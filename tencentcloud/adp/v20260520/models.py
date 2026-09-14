@@ -7768,6 +7768,108 @@ class CamAuthConfig(AbstractModel):
         
 
 
+class CategoryModifyFields(AbstractModel):
+    r"""分类可修改字段集合（配合 update_mask 使用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>分类名</p>
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        r"""<p>分类名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CategoryPath(AbstractModel):
+    r"""分类路径信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>分类 ID</p>
+        :type CategoryId: str
+        :param _CategoryIdPath: <p>从根节点开始的路径分类 ID 列表</p>
+        :type CategoryIdPath: list of str
+        :param _CategoryNamePath: <p>从根节点开始的路径分类名称列表</p>
+        :type CategoryNamePath: list of str
+        """
+        self._CategoryId = None
+        self._CategoryIdPath = None
+        self._CategoryNamePath = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CategoryIdPath(self):
+        r"""<p>从根节点开始的路径分类 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._CategoryIdPath
+
+    @CategoryIdPath.setter
+    def CategoryIdPath(self, CategoryIdPath):
+        self._CategoryIdPath = CategoryIdPath
+
+    @property
+    def CategoryNamePath(self):
+        r"""<p>从根节点开始的路径分类名称列表</p>
+        :rtype: list of str
+        """
+        return self._CategoryNamePath
+
+    @CategoryNamePath.setter
+    def CategoryNamePath(self, CategoryNamePath):
+        self._CategoryNamePath = CategoryNamePath
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._CategoryIdPath = params.get("CategoryIdPath")
+        self._CategoryNamePath = params.get("CategoryNamePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CategoryPermission(AbstractModel):
     r"""CategoryPermission
 
@@ -8225,6 +8327,171 @@ class ChannelSpec(AbstractModel):
         if params.get("WecomRobot") is not None:
             self._WecomRobot = WecomRobotChannelConfig()
             self._WecomRobot._deserialize(params.get("WecomRobot"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckLabelRequest(AbstractModel):
+    r"""CheckLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _TermList: <p>待校验的标准词列表（数量：1~100）</p>
+        :type TermList: list of str
+        :param _LabelId: <p>标签 ID（在指定标签下校验标准词唯一性）</p>
+        :type LabelId: str
+        """
+        self._KbId = None
+        self._TermList = None
+        self._LabelId = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def TermList(self):
+        r"""<p>待校验的标准词列表（数量：1~100）</p>
+        :rtype: list of str
+        """
+        return self._TermList
+
+    @TermList.setter
+    def TermList(self, TermList):
+        self._TermList = TermList
+
+    @property
+    def LabelId(self):
+        r"""<p>标签 ID（在指定标签下校验标准词唯一性）</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._TermList = params.get("TermList")
+        self._LabelId = params.get("LabelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckLabelResponse(AbstractModel):
+    r"""CheckLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckList: <p>校验结果列表</p>
+        :type CheckList: list of LabelTermCheckResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CheckList = None
+        self._RequestId = None
+
+    @property
+    def CheckList(self):
+        r"""<p>校验结果列表</p>
+        :rtype: list of LabelTermCheckResult
+        """
+        return self._CheckList
+
+    @CheckList.setter
+    def CheckList(self, CheckList):
+        self._CheckList = CheckList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CheckList") is not None:
+            self._CheckList = []
+            for item in params.get("CheckList"):
+                obj = LabelTermCheckResult()
+                obj._deserialize(item)
+                self._CheckList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CheckResult(AbstractModel):
+    r"""通用校验结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Passed: <p>是否通过校验</p>
+        :type Passed: bool
+        :param _Reason: <p>失败原因（passed=false 时填充）</p>
+        :type Reason: str
+        """
+        self._Passed = None
+        self._Reason = None
+
+    @property
+    def Passed(self):
+        r"""<p>是否通过校验</p>
+        :rtype: bool
+        """
+        return self._Passed
+
+    @Passed.setter
+    def Passed(self, Passed):
+        self._Passed = Passed
+
+    @property
+    def Reason(self):
+        r"""<p>失败原因（passed=false 时填充）</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Passed = params.get("Passed")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8699,6 +8966,183 @@ class ConcurrencyLimitDetail(AbstractModel):
         
 
 
+class ConflictQA(AbstractModel):
+    r"""冲突 QA（冲突组中的单条 QA 快照）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Answer: <p>答案</p>
+        :type Answer: str
+        :param _EffectiveDomain: <p>知识生效作用域：1=停用，2=仅开发域，3=仅发布域，4=全域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _FileName: <p>关联文档名称</p>
+        :type FileName: str
+        :param _FileType: <p>关联文档类型</p>
+        :type FileType: str
+        :param _QaId: <p>QA ID</p>
+        :type QaId: str
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _SourceType: <p>来源类型：1=文档生成，2=批量导入，3=手动录入<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>QA_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>QA_SOURCE_TYPE_DOC</td><td>1</td><td>文档生成</td></tr><tr><td>QA_SOURCE_TYPE_BATCH_IMPORT</td><td>2</td><td>批量导入</td></tr><tr><td>QA_SOURCE_TYPE_MANUAL</td><td>3</td><td>手动录入</td></tr></tbody></table></p>
+        :type SourceType: int
+        :param _UpdateTime: <p>更新时间（Unix 秒，用于排序判断新旧）</p>
+        :type UpdateTime: str
+        """
+        self._Answer = None
+        self._EffectiveDomain = None
+        self._FileName = None
+        self._FileType = None
+        self._QaId = None
+        self._Question = None
+        self._SourceType = None
+        self._UpdateTime = None
+
+    @property
+    def Answer(self):
+        r"""<p>答案</p>
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>知识生效作用域：1=停用，2=仅开发域，3=仅发布域，4=全域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def FileName(self):
+        r"""<p>关联文档名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        r"""<p>关联文档类型</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def QaId(self):
+        r"""<p>QA ID</p>
+        :rtype: str
+        """
+        return self._QaId
+
+    @QaId.setter
+    def QaId(self, QaId):
+        self._QaId = QaId
+
+    @property
+    def Question(self):
+        r"""<p>问题</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def SourceType(self):
+        r"""<p>来源类型：1=文档生成，2=批量导入，3=手动录入<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>QA_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>QA_SOURCE_TYPE_DOC</td><td>1</td><td>文档生成</td></tr><tr><td>QA_SOURCE_TYPE_BATCH_IMPORT</td><td>2</td><td>批量导入</td></tr><tr><td>QA_SOURCE_TYPE_MANUAL</td><td>3</td><td>手动录入</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（Unix 秒，用于排序判断新旧）</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Answer = params.get("Answer")
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._QaId = params.get("QaId")
+        self._Question = params.get("Question")
+        self._SourceType = params.get("SourceType")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConflictQASummary(AbstractModel):
+    r"""冲突问摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConflictGroupId: <p>冲突组 ID</p>
+        :type ConflictGroupId: str
+        """
+        self._ConflictGroupId = None
+
+    @property
+    def ConflictGroupId(self):
+        r"""<p>冲突组 ID</p>
+        :rtype: str
+        """
+        return self._ConflictGroupId
+
+    @ConflictGroupId.setter
+    def ConflictGroupId(self, ConflictGroupId):
+        self._ConflictGroupId = ConflictGroupId
+
+
+    def _deserialize(self, params):
+        self._ConflictGroupId = params.get("ConflictGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsumptionClassification(AbstractModel):
     r"""消耗分类
 
@@ -8966,6 +9410,72 @@ class ConsumptionUsage(AbstractModel):
         self._ConsumptionPU = params.get("ConsumptionPU")
         self._Usage = params.get("Usage")
         self._UsageUnit = params.get("UsageUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContentFilter(AbstractModel):
+    r"""内容过滤配置（图片名称正则/最小宽高），缺省时不启用过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageMinHeight: <p>图片最小高度（像素），小于则过滤；&lt;=0 表示不启用</p>
+        :type ImageMinHeight: int
+        :param _ImageMinWidth: <p>图片最小宽度（像素），小于则过滤；&lt;=0 表示不启用</p>
+        :type ImageMinWidth: int
+        :param _ImageNamePatterns: <p>图片名称过滤规则（用分号 &#39;;&#39; 分隔的多条正则，如 &#39;icon;notice;warning;info.*&#39;）</p>
+        :type ImageNamePatterns: str
+        """
+        self._ImageMinHeight = None
+        self._ImageMinWidth = None
+        self._ImageNamePatterns = None
+
+    @property
+    def ImageMinHeight(self):
+        r"""<p>图片最小高度（像素），小于则过滤；&lt;=0 表示不启用</p>
+        :rtype: int
+        """
+        return self._ImageMinHeight
+
+    @ImageMinHeight.setter
+    def ImageMinHeight(self, ImageMinHeight):
+        self._ImageMinHeight = ImageMinHeight
+
+    @property
+    def ImageMinWidth(self):
+        r"""<p>图片最小宽度（像素），小于则过滤；&lt;=0 表示不启用</p>
+        :rtype: int
+        """
+        return self._ImageMinWidth
+
+    @ImageMinWidth.setter
+    def ImageMinWidth(self, ImageMinWidth):
+        self._ImageMinWidth = ImageMinWidth
+
+    @property
+    def ImageNamePatterns(self):
+        r"""<p>图片名称过滤规则（用分号 &#39;;&#39; 分隔的多条正则，如 &#39;icon;notice;warning;info.*&#39;）</p>
+        :rtype: str
+        """
+        return self._ImageNamePatterns
+
+    @ImageNamePatterns.setter
+    def ImageNamePatterns(self, ImageNamePatterns):
+        self._ImageNamePatterns = ImageNamePatterns
+
+
+    def _deserialize(self, params):
+        self._ImageMinHeight = params.get("ImageMinHeight")
+        self._ImageMinWidth = params.get("ImageMinWidth")
+        self._ImageNamePatterns = params.get("ImageNamePatterns")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11266,6 +11776,130 @@ class CreateAppTriggerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCategoryRequest(AbstractModel):
+    r"""CreateCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryType: <p>分类类型（不可为 0，取值：1=文档分类，2=问答分类）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>文档分类</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>问答分类</td></tr></tbody></table></p>
+        :type CategoryType: int
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _Name: <p>分类名（长度：1~64 个字符）</p>
+        :type Name: str
+        :param _ParentCategoryId: <p>父分类 ID</p>
+        :type ParentCategoryId: str
+        """
+        self._CategoryType = None
+        self._KbId = None
+        self._Name = None
+        self._ParentCategoryId = None
+
+    @property
+    def CategoryType(self):
+        r"""<p>分类类型（不可为 0，取值：1=文档分类，2=问答分类）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>文档分类</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>问答分类</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._CategoryType
+
+    @CategoryType.setter
+    def CategoryType(self, CategoryType):
+        self._CategoryType = CategoryType
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def Name(self):
+        r"""<p>分类名（长度：1~64 个字符）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParentCategoryId(self):
+        r"""<p>父分类 ID</p>
+        :rtype: str
+        """
+        return self._ParentCategoryId
+
+    @ParentCategoryId.setter
+    def ParentCategoryId(self, ParentCategoryId):
+        self._ParentCategoryId = ParentCategoryId
+
+
+    def _deserialize(self, params):
+        self._CategoryType = params.get("CategoryType")
+        self._KbId = params.get("KbId")
+        self._Name = params.get("Name")
+        self._ParentCategoryId = params.get("ParentCategoryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCategoryResponse(AbstractModel):
+    r"""CreateCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>创建成功的分类 ID</p>
+        :type CategoryId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CategoryId = None
+        self._RequestId = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>创建成功的分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateChannelRequest(AbstractModel):
     r"""CreateChannel请求参数结构体
 
@@ -11561,6 +12195,266 @@ class CreateConversationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateKBRequest(AbstractModel):
+    r"""CreateKB请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbType: <p>知识库类型（不可为 0，取值：1=默认知识库，2=共享知识库）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_TYPE_DEFAULT</td><td>1</td><td>默认知识库</td></tr><tr><td>KB_TYPE_SHARED</td><td>2</td><td>共享知识库</td></tr></tbody></table></p>
+        :type KbType: int
+        :param _SpaceId: <p>工作空间 ID</p>
+        :type SpaceId: str
+        :param _Spec: <p>可写属性</p>
+        :type Spec: :class:`tencentcloud.adp.v20260520.models.KBSpec`
+        :param _SharedSubType: <p>共享子类型：1=普通，2=公众号<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARED_KB_SUB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SHARED_KB_SUB_TYPE_NORMAL</td><td>1</td><td>普通</td></tr><tr><td>SHARED_KB_SUB_TYPE_PUBLIC_ACCOUNT</td><td>2</td><td>公众号</td></tr></tbody></table></p>
+        :type SharedSubType: int
+        """
+        self._KbType = None
+        self._SpaceId = None
+        self._Spec = None
+        self._SharedSubType = None
+
+    @property
+    def KbType(self):
+        r"""<p>知识库类型（不可为 0，取值：1=默认知识库，2=共享知识库）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_TYPE_DEFAULT</td><td>1</td><td>默认知识库</td></tr><tr><td>KB_TYPE_SHARED</td><td>2</td><td>共享知识库</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._KbType
+
+    @KbType.setter
+    def KbType(self, KbType):
+        self._KbType = KbType
+
+    @property
+    def SpaceId(self):
+        r"""<p>工作空间 ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Spec(self):
+        r"""<p>可写属性</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def SharedSubType(self):
+        r"""<p>共享子类型：1=普通，2=公众号<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARED_KB_SUB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SHARED_KB_SUB_TYPE_NORMAL</td><td>1</td><td>普通</td></tr><tr><td>SHARED_KB_SUB_TYPE_PUBLIC_ACCOUNT</td><td>2</td><td>公众号</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._SharedSubType
+
+    @SharedSubType.setter
+    def SharedSubType(self, SharedSubType):
+        self._SharedSubType = SharedSubType
+
+
+    def _deserialize(self, params):
+        self._KbType = params.get("KbType")
+        self._SpaceId = params.get("SpaceId")
+        if params.get("Spec") is not None:
+            self._Spec = KBSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        self._SharedSubType = params.get("SharedSubType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKBResponse(AbstractModel):
+    r"""CreateKB返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>创建后的知识库 ID</p>
+        :type KbId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KbId = None
+        self._RequestId = None
+
+    @property
+    def KbId(self):
+        r"""<p>创建后的知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLabelRequest(AbstractModel):
+    r"""CreateLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _Name: <p>标签名称（长度不小于 1 个字符）</p>
+        :type Name: str
+        :param _TermList: <p>标签值（标准词 + 同义词列表），其中 term_id 由后台生成、创建时留空</p>
+        :type TermList: list of LabelTerm
+        """
+        self._KbId = None
+        self._Name = None
+        self._TermList = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def Name(self):
+        r"""<p>标签名称（长度不小于 1 个字符）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TermList(self):
+        r"""<p>标签值（标准词 + 同义词列表），其中 term_id 由后台生成、创建时留空</p>
+        :rtype: list of LabelTerm
+        """
+        return self._TermList
+
+    @TermList.setter
+    def TermList(self, TermList):
+        self._TermList = TermList
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._Name = params.get("Name")
+        if params.get("TermList") is not None:
+            self._TermList = []
+            for item in params.get("TermList"):
+                obj = LabelTerm()
+                obj._deserialize(item)
+                self._TermList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLabelResponse(AbstractModel):
+    r"""CreateLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelId: <p>标签 ID</p>
+        :type LabelId: str
+        :param _TermList: <p>标签值（标准词 + 同义词列表，含后台生成的 term_id）</p>
+        :type TermList: list of LabelTerm
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LabelId = None
+        self._TermList = None
+        self._RequestId = None
+
+    @property
+    def LabelId(self):
+        r"""<p>标签 ID</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def TermList(self):
+        r"""<p>标签值（标准词 + 同义词列表，含后台生成的 term_id）</p>
+        :rtype: list of LabelTerm
+        """
+        return self._TermList
+
+    @TermList.setter
+    def TermList(self, TermList):
+        self._TermList = TermList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LabelId = params.get("LabelId")
+        if params.get("TermList") is not None:
+            self._TermList = []
+            for item in params.get("TermList"):
+                obj = LabelTerm()
+                obj._deserialize(item)
+                self._TermList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateMsgRecordCategoryRequest(AbstractModel):
     r"""CreateMsgRecordCategory请求参数结构体
 
@@ -11833,6 +12727,204 @@ class CreatePluginResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateQAGenerationTaskRequest(AbstractModel):
+    r"""CreateQAGenerationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocIdList: <p>待生成 QA 的文档 ID 列表（数量：1~20）</p>
+        :type DocIdList: list of str
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        """
+        self._DocIdList = None
+        self._KbId = None
+
+    @property
+    def DocIdList(self):
+        r"""<p>待生成 QA 的文档 ID 列表（数量：1~20）</p>
+        :rtype: list of str
+        """
+        return self._DocIdList
+
+    @DocIdList.setter
+    def DocIdList(self, DocIdList):
+        self._DocIdList = DocIdList
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+
+    def _deserialize(self, params):
+        self._DocIdList = params.get("DocIdList")
+        self._KbId = params.get("KbId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQAGenerationTaskResponse(AbstractModel):
+    r"""CreateQAGenerationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIdList: <p>任务 ID 列表</p>
+        :type TaskIdList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskIdList = None
+        self._RequestId = None
+
+    @property
+    def TaskIdList(self):
+        r"""<p>任务 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._TaskIdList
+
+    @TaskIdList.setter
+    def TaskIdList(self, TaskIdList):
+        self._TaskIdList = TaskIdList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskIdList = params.get("TaskIdList")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateQAListRequest(AbstractModel):
+    r"""CreateQAList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _QaList: <p>批量创建（数量：1~20）</p>
+        :type QaList: list of QACreateSpec
+        """
+        self._KbId = None
+        self._QaList = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def QaList(self):
+        r"""<p>批量创建（数量：1~20）</p>
+        :rtype: list of QACreateSpec
+        """
+        return self._QaList
+
+    @QaList.setter
+    def QaList(self, QaList):
+        self._QaList = QaList
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("QaList") is not None:
+            self._QaList = []
+            for item in params.get("QaList"):
+                obj = QACreateSpec()
+                obj._deserialize(item)
+                self._QaList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateQAListResponse(AbstractModel):
+    r"""CreateQAList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: <p>批量创建结果</p>
+        :type ResultList: list of OperationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        r"""<p>批量创建结果</p>
+        :rtype: list of OperationResult
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = OperationResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateReleaseRequest(AbstractModel):
     r"""CreateRelease请求参数结构体
 
@@ -12018,6 +13110,115 @@ class CreateReleaseResponse(AbstractModel):
     def _deserialize(self, params):
         self._NeedApproval = params.get("NeedApproval")
         self._ReleaseId = params.get("ReleaseId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSimilarQuestionRequest(AbstractModel):
+    r"""CreateSimilarQuestion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _Answer: <p>答案</p>
+        :type Answer: str
+        """
+        self._KbId = None
+        self._Question = None
+        self._Answer = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def Question(self):
+        r"""<p>问题</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answer(self):
+        r"""<p>答案</p>
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._Question = params.get("Question")
+        self._Answer = params.get("Answer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSimilarQuestionResponse(AbstractModel):
+    r"""CreateSimilarQuestion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuestionList: <p>生成的相似问列表</p>
+        :type QuestionList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QuestionList = None
+        self._RequestId = None
+
+    @property
+    def QuestionList(self):
+        r"""<p>生成的相似问列表</p>
+        :rtype: list of str
+        """
+        return self._QuestionList
+
+    @QuestionList.setter
+    def QuestionList(self, QuestionList):
+        self._QuestionList = QuestionList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QuestionList = params.get("QuestionList")
         self._RequestId = params.get("RequestId")
 
 
@@ -13002,6 +14203,42 @@ class CronSchedule(AbstractModel):
         
 
 
+class DBRetrievalConfig(AbstractModel):
+    r"""数据库检索配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DailySchedule(AbstractModel):
     r"""DailySchedule
 
@@ -13028,6 +14265,57 @@ class DailySchedule(AbstractModel):
 
     def _deserialize(self, params):
         self._TimeOfDay = params.get("TimeOfDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeDuplicateStrategy(AbstractModel):
+    r"""重复文件处理规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckType: <p>校验方式：1=按文档内容判断是否相同<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_UNKNOWN</td><td>0</td><td>未知</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_COS_HASH</td><td>1</td><td>按文档内容（cos_hash）判断是否相同</td></tr></tbody></table></p>
+        :type CheckType: int
+        :param _HandleType: <p>处理方式：1=返回报错，2=跳过并返回重复的文档 ID<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_UNKNOWN</td><td>0</td><td>未知</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_RETURN_ERR</td><td>1</td><td>返回报错</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_SKIP</td><td>2</td><td>跳过，返回重复的文档 ID</td></tr></tbody></table></p>
+        :type HandleType: int
+        """
+        self._CheckType = None
+        self._HandleType = None
+
+    @property
+    def CheckType(self):
+        r"""<p>校验方式：1=按文档内容判断是否相同<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_UNKNOWN</td><td>0</td><td>未知</td></tr><tr><td>DUPLICATE_FILE_CHECK_TYPE_COS_HASH</td><td>1</td><td>按文档内容（cos_hash）判断是否相同</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def HandleType(self):
+        r"""<p>处理方式：1=返回报错，2=跳过并返回重复的文档 ID<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_UNKNOWN</td><td>0</td><td>未知</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_RETURN_ERR</td><td>1</td><td>返回报错</td></tr><tr><td>DUPLICATE_FILE_HANDLE_TYPE_SKIP</td><td>2</td><td>跳过，返回重复的文档 ID</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._HandleType
+
+    @HandleType.setter
+    def HandleType(self, HandleType):
+        self._HandleType = HandleType
+
+
+    def _deserialize(self, params):
+        self._CheckType = params.get("CheckType")
+        self._HandleType = params.get("HandleType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13320,6 +14608,100 @@ class DeleteAppTriggerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCategoryRequest(AbstractModel):
+    r"""DeleteCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>待删除的分类 ID</p>
+        :type CategoryId: str
+        :param _CategoryType: <p>分类类型（不可为 0，取值：1=文档分类，2=问答分类）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>文档分类</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>问答分类</td></tr></tbody></table></p>
+        :type CategoryType: int
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        """
+        self._CategoryId = None
+        self._CategoryType = None
+        self._KbId = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>待删除的分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CategoryType(self):
+        r"""<p>分类类型（不可为 0，取值：1=文档分类，2=问答分类）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>文档分类</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>问答分类</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._CategoryType
+
+    @CategoryType.setter
+    def CategoryType(self, CategoryType):
+        self._CategoryType = CategoryType
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._CategoryType = params.get("CategoryType")
+        self._KbId = params.get("KbId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCategoryResponse(AbstractModel):
+    r"""DeleteCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteChannelRequest(AbstractModel):
     r"""DeleteChannel请求参数结构体
 
@@ -13553,6 +14935,283 @@ class DeleteConversationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDocListRequest(AbstractModel):
+    r"""DeleteDocList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocIdList: <p>待删除的文档 ID 列表（数量：1~20）</p>
+        :type DocIdList: list of str
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        """
+        self._DocIdList = None
+        self._KbId = None
+
+    @property
+    def DocIdList(self):
+        r"""<p>待删除的文档 ID 列表（数量：1~20）</p>
+        :rtype: list of str
+        """
+        return self._DocIdList
+
+    @DocIdList.setter
+    def DocIdList(self, DocIdList):
+        self._DocIdList = DocIdList
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+
+    def _deserialize(self, params):
+        self._DocIdList = params.get("DocIdList")
+        self._KbId = params.get("KbId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDocListResponse(AbstractModel):
+    r"""DeleteDocList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: <p>批量删除结果</p>
+        :type ResultList: list of OperationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        r"""<p>批量删除结果</p>
+        :rtype: list of OperationResult
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = OperationResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteKBRequest(AbstractModel):
+    r"""DeleteKB请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>知识库 ID</p>
+        :type KbId: str
+        :param _SpaceId: <p>工作空间 ID</p>
+        :type SpaceId: str
+        """
+        self._KbId = None
+        self._SpaceId = None
+
+    @property
+    def KbId(self):
+        r"""<p>知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def SpaceId(self):
+        r"""<p>工作空间 ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteKBResponse(AbstractModel):
+    r"""DeleteKB返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLabelListRequest(AbstractModel):
+    r"""DeleteLabelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _LabelIdList: <p>待删除标签 ID 列表（数量：1~20）</p>
+        :type LabelIdList: list of str
+        """
+        self._KbId = None
+        self._LabelIdList = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def LabelIdList(self):
+        r"""<p>待删除标签 ID 列表（数量：1~20）</p>
+        :rtype: list of str
+        """
+        return self._LabelIdList
+
+    @LabelIdList.setter
+    def LabelIdList(self, LabelIdList):
+        self._LabelIdList = LabelIdList
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._LabelIdList = params.get("LabelIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLabelListResponse(AbstractModel):
+    r"""DeleteLabelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: <p>批量删除结果</p>
+        :type ResultList: list of OperationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        r"""<p>批量删除结果</p>
+        :rtype: list of OperationResult
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = OperationResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteMsgRecordCategoryRequest(AbstractModel):
     r"""DeleteMsgRecordCategory请求参数结构体
 
@@ -13723,6 +15382,105 @@ class DeletePluginResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteQAListRequest(AbstractModel):
+    r"""DeleteQAList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _QaIdList: <p>待删除的 QA ID 列表（数量：1~20）</p>
+        :type QaIdList: list of str
+        """
+        self._KbId = None
+        self._QaIdList = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def QaIdList(self):
+        r"""<p>待删除的 QA ID 列表（数量：1~20）</p>
+        :rtype: list of str
+        """
+        return self._QaIdList
+
+    @QaIdList.setter
+    def QaIdList(self, QaIdList):
+        self._QaIdList = QaIdList
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._QaIdList = params.get("QaIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteQAListResponse(AbstractModel):
+    r"""DeleteQAList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: <p>批量删除结果</p>
+        :type ResultList: list of OperationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        r"""<p>批量删除结果</p>
+        :rtype: list of OperationResult
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = OperationResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -15800,6 +17558,187 @@ class DescribeAuditLogMetaResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCategoryListRequest(AbstractModel):
+    r"""DescribeCategoryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _FilterList: <p>过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 Values 为 OR 关系）：CategoryType-分类类型,枚举值,精确匹配(CATEGORY_TYPE_DOC=1/CATEGORY_TYPE_QA=2); ParentCategoryId-父分类ID,精确匹配</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 10，最大 100</p>
+        :type PageSize: int
+        :param _Query: <p>关键词搜索</p>
+        :type Query: str
+        :param _SummaryListSwitch: <p>开关配置</p>
+        :type SummaryListSwitch: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        self._KbId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._SummaryListSwitch = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 Values 为 OR 关系）：CategoryType-分类类型,枚举值,精确匹配(CATEGORY_TYPE_DOC=1/CATEGORY_TYPE_QA=2); ParentCategoryId-父分类ID,精确匹配</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>分页页码，从 0 开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>关键词搜索</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SummaryListSwitch(self):
+        r"""<p>开关配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        return self._SummaryListSwitch
+
+    @SummaryListSwitch.setter
+    def SummaryListSwitch(self, SummaryListSwitch):
+        self._SummaryListSwitch = SummaryListSwitch
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        if params.get("SummaryListSwitch") is not None:
+            self._SummaryListSwitch = SummaryListSwitch()
+            self._SummaryListSwitch._deserialize(params.get("SummaryListSwitch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCategoryListResponse(AbstractModel):
+    r"""DescribeCategoryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryList: <p>分类列表</p>
+        :type CategoryList: list of KBCategory
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CategoryList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CategoryList(self):
+        r"""<p>分类列表</p>
+        :rtype: list of KBCategory
+        """
+        return self._CategoryList
+
+    @CategoryList.setter
+    def CategoryList(self, CategoryList):
+        self._CategoryList = CategoryList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CategoryList") is not None:
+            self._CategoryList = []
+            for item in params.get("CategoryList"):
+                obj = KBCategory()
+                obj._deserialize(item)
+                self._CategoryList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeChannelListRequest(AbstractModel):
     r"""DescribeChannelList请求参数结构体
 
@@ -16239,6 +18178,254 @@ class DescribeConcurrencyLimitDetailListResponse(AbstractModel):
                 obj = ConcurrencyLimitDetail()
                 obj._deserialize(item)
                 self._ConcurrencyLimitDetailList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConflictQARequest(AbstractModel):
+    r"""DescribeConflictQA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConflictGroupId: <p>冲突组 ID</p>
+        :type ConflictGroupId: str
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        """
+        self._ConflictGroupId = None
+        self._KbId = None
+
+    @property
+    def ConflictGroupId(self):
+        r"""<p>冲突组 ID</p>
+        :rtype: str
+        """
+        return self._ConflictGroupId
+
+    @ConflictGroupId.setter
+    def ConflictGroupId(self, ConflictGroupId):
+        self._ConflictGroupId = ConflictGroupId
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+
+    def _deserialize(self, params):
+        self._ConflictGroupId = params.get("ConflictGroupId")
+        self._KbId = params.get("KbId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConflictQAResponse(AbstractModel):
+    r"""DescribeConflictQA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConflictQaList: <p>一个冲突组的详情列表</p>
+        :type ConflictQaList: list of ConflictQA
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConflictQaList = None
+        self._RequestId = None
+
+    @property
+    def ConflictQaList(self):
+        r"""<p>一个冲突组的详情列表</p>
+        :rtype: list of ConflictQA
+        """
+        return self._ConflictQaList
+
+    @ConflictQaList.setter
+    def ConflictQaList(self, ConflictQaList):
+        self._ConflictQaList = ConflictQaList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConflictQaList") is not None:
+            self._ConflictQaList = []
+            for item in params.get("ConflictQaList"):
+                obj = ConflictQA()
+                obj._deserialize(item)
+                self._ConflictQaList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConflictQASummaryListRequest(AbstractModel):
+    r"""DescribeConflictQASummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _FilterList: <p>通用过滤（支持按 status 筛选 PENDING/RESOLVED）</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 10，最大 100</p>
+        :type PageSize: int
+        """
+        self._KbId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def FilterList(self):
+        r"""<p>通用过滤（支持按 status 筛选 PENDING/RESOLVED）</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>分页页码，从 0 开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConflictQASummaryListResponse(AbstractModel):
+    r"""DescribeConflictQASummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConflictQaList: <p>冲突问列表</p>
+        :type ConflictQaList: list of ConflictQASummary
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConflictQaList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ConflictQaList(self):
+        r"""<p>冲突问列表</p>
+        :rtype: list of ConflictQASummary
+        """
+        return self._ConflictQaList
+
+    @ConflictQaList.setter
+    def ConflictQaList(self, ConflictQaList):
+        self._ConflictQaList = ConflictQaList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConflictQaList") is not None:
+            self._ConflictQaList = []
+            for item in params.get("ConflictQaList"):
+                obj = ConflictQASummary()
+                obj._deserialize(item)
+                self._ConflictQaList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -17299,6 +19486,1096 @@ class DescribeConversationResponse(AbstractModel):
             self._Workspace._deserialize(params.get("Workspace"))
         self._Title = params.get("Title")
         self._AgentId = params.get("AgentId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDocRequest(AbstractModel):
+    r"""DescribeDoc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocId: <p>文档 ID</p>
+        :type DocId: str
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _ReadMask: <p>字段掩码：当前支持的 Path：DocLink.CosUrl，其他未列举的字段默认都返回</p>
+        :type ReadMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._DocId = None
+        self._KbId = None
+        self._ReadMask = None
+
+    @property
+    def DocId(self):
+        r"""<p>文档 ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def ReadMask(self):
+        r"""<p>字段掩码：当前支持的 Path：DocLink.CosUrl，其他未列举的字段默认都返回</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._ReadMask
+
+    @ReadMask.setter
+    def ReadMask(self, ReadMask):
+        self._ReadMask = ReadMask
+
+
+    def _deserialize(self, params):
+        self._DocId = params.get("DocId")
+        self._KbId = params.get("KbId")
+        if params.get("ReadMask") is not None:
+            self._ReadMask = FieldMask()
+            self._ReadMask._deserialize(params.get("ReadMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDocResponse(AbstractModel):
+    r"""DescribeDoc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocLink: <p>文档链接（外部链接 + COS 链接）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocLink: :class:`tencentcloud.adp.v20260520.models.DocLink`
+        :param _ParseConfig: <p>解析配置（分割规则、内容过滤等）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParseConfig: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        :param _Summary: <p>文档基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: :class:`tencentcloud.adp.v20260520.models.DocSummary`
+        :param _Switch: <p>开关配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        :param _UpdatePeriod: <p>更新周期配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatePeriod: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        :param _UserAccessConfig: <p>用户访问配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAccessConfig: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DocLink = None
+        self._ParseConfig = None
+        self._Summary = None
+        self._Switch = None
+        self._UpdatePeriod = None
+        self._UserAccessConfig = None
+        self._RequestId = None
+
+    @property
+    def DocLink(self):
+        r"""<p>文档链接（外部链接 + COS 链接）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocLink`
+        """
+        return self._DocLink
+
+    @DocLink.setter
+    def DocLink(self, DocLink):
+        self._DocLink = DocLink
+
+    @property
+    def ParseConfig(self):
+        r"""<p>解析配置（分割规则、内容过滤等）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        """
+        return self._ParseConfig
+
+    @ParseConfig.setter
+    def ParseConfig(self, ParseConfig):
+        self._ParseConfig = ParseConfig
+
+    @property
+    def Summary(self):
+        r"""<p>文档基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Switch(self):
+        r"""<p>开关配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def UpdatePeriod(self):
+        r"""<p>更新周期配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        """
+        return self._UpdatePeriod
+
+    @UpdatePeriod.setter
+    def UpdatePeriod(self, UpdatePeriod):
+        self._UpdatePeriod = UpdatePeriod
+
+    @property
+    def UserAccessConfig(self):
+        r"""<p>用户访问配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        return self._UserAccessConfig
+
+    @UserAccessConfig.setter
+    def UserAccessConfig(self, UserAccessConfig):
+        self._UserAccessConfig = UserAccessConfig
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DocLink") is not None:
+            self._DocLink = DocLink()
+            self._DocLink._deserialize(params.get("DocLink"))
+        if params.get("ParseConfig") is not None:
+            self._ParseConfig = DocParseConfig()
+            self._ParseConfig._deserialize(params.get("ParseConfig"))
+        if params.get("Summary") is not None:
+            self._Summary = DocSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        if params.get("Switch") is not None:
+            self._Switch = DocSwitch()
+            self._Switch._deserialize(params.get("Switch"))
+        if params.get("UpdatePeriod") is not None:
+            self._UpdatePeriod = DocUpdatePeriod()
+            self._UpdatePeriod._deserialize(params.get("UpdatePeriod"))
+        if params.get("UserAccessConfig") is not None:
+            self._UserAccessConfig = UserAccessConfig()
+            self._UserAccessConfig._deserialize(params.get("UserAccessConfig"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDocSummaryListRequest(AbstractModel):
+    r"""DescribeDocSummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _FilterList: <p>过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 Values 为 OR 关系）：Status-文档状态,枚举值,精确匹配; CategoryId-分类ID,精确匹配; SourceType-文档来源类型,枚举值,精确匹配; EffectiveDomain-生效作用域,精确匹配; CreateTime-创建时间,Unix秒,BETWEEN 传 [起始秒,结束秒]; UpdateTime-更新时间,Unix秒,BETWEEN 传 [起始秒,结束秒]</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 10，最大 100</p>
+        :type PageSize: int
+        :param _Query: <p>查询条件（关键词 + 查询范围）</p>
+        :type Query: :class:`tencentcloud.adp.v20260520.models.DocQuery`
+        :param _SummaryListSwitch: <p>开关配置</p>
+        :type SummaryListSwitch: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        self._KbId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._SummaryListSwitch = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 Values 为 OR 关系）：Status-文档状态,枚举值,精确匹配; CategoryId-分类ID,精确匹配; SourceType-文档来源类型,枚举值,精确匹配; EffectiveDomain-生效作用域,精确匹配; CreateTime-创建时间,Unix秒,BETWEEN 传 [起始秒,结束秒]; UpdateTime-更新时间,Unix秒,BETWEEN 传 [起始秒,结束秒]</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>分页页码，从 0 开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>查询条件（关键词 + 查询范围）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocQuery`
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SummaryListSwitch(self):
+        r"""<p>开关配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        return self._SummaryListSwitch
+
+    @SummaryListSwitch.setter
+    def SummaryListSwitch(self, SummaryListSwitch):
+        self._SummaryListSwitch = SummaryListSwitch
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Query") is not None:
+            self._Query = DocQuery()
+            self._Query._deserialize(params.get("Query"))
+        if params.get("SummaryListSwitch") is not None:
+            self._SummaryListSwitch = SummaryListSwitch()
+            self._SummaryListSwitch._deserialize(params.get("SummaryListSwitch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDocSummaryListResponse(AbstractModel):
+    r"""DescribeDocSummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocList: <p>文档列表</p>
+        :type DocList: list of DocSummary
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DocList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DocList(self):
+        r"""<p>文档列表</p>
+        :rtype: list of DocSummary
+        """
+        return self._DocList
+
+    @DocList.setter
+    def DocList(self, DocList):
+        self._DocList = DocList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DocList") is not None:
+            self._DocList = []
+            for item in params.get("DocList"):
+                obj = DocSummary()
+                obj._deserialize(item)
+                self._DocList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKBRequest(AbstractModel):
+    r"""DescribeKB请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>知识库 ID</p>
+        :type KbId: str
+        :param _SpaceId: <p>工作空间 ID</p>
+        :type SpaceId: str
+        """
+        self._KbId = None
+        self._SpaceId = None
+
+    @property
+    def KbId(self):
+        r"""<p>知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def SpaceId(self):
+        r"""<p>工作空间 ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKBResponse(AbstractModel):
+    r"""DescribeKB返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppIdList: <p>关联的应用 ID 列表</p>
+        :type AppIdList: list of str
+        :param _CapacityInfo: <p>容量信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CapacityInfo: :class:`tencentcloud.adp.v20260520.models.KBCapacity`
+        :param _EsConfig: <p>ES 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsConfig: :class:`tencentcloud.adp.v20260520.models.ESConfig`
+        :param _ModelConfig: <p>模型配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelConfig: :class:`tencentcloud.adp.v20260520.models.KBModelConfig`
+        :param _Owner: <p>所有者信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Summary: <p>知识库摘要信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: :class:`tencentcloud.adp.v20260520.models.KBSummary`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppIdList = None
+        self._CapacityInfo = None
+        self._EsConfig = None
+        self._ModelConfig = None
+        self._Owner = None
+        self._Summary = None
+        self._RequestId = None
+
+    @property
+    def AppIdList(self):
+        r"""<p>关联的应用 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._AppIdList
+
+    @AppIdList.setter
+    def AppIdList(self, AppIdList):
+        self._AppIdList = AppIdList
+
+    @property
+    def CapacityInfo(self):
+        r"""<p>容量信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBCapacity`
+        """
+        return self._CapacityInfo
+
+    @CapacityInfo.setter
+    def CapacityInfo(self, CapacityInfo):
+        self._CapacityInfo = CapacityInfo
+
+    @property
+    def EsConfig(self):
+        r"""<p>ES 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ESConfig`
+        """
+        return self._EsConfig
+
+    @EsConfig.setter
+    def EsConfig(self, EsConfig):
+        self._EsConfig = EsConfig
+
+    @property
+    def ModelConfig(self):
+        r"""<p>模型配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBModelConfig`
+        """
+        return self._ModelConfig
+
+    @ModelConfig.setter
+    def ModelConfig(self, ModelConfig):
+        self._ModelConfig = ModelConfig
+
+    @property
+    def Owner(self):
+        r"""<p>所有者信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def Summary(self):
+        r"""<p>知识库摘要信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppIdList = params.get("AppIdList")
+        if params.get("CapacityInfo") is not None:
+            self._CapacityInfo = KBCapacity()
+            self._CapacityInfo._deserialize(params.get("CapacityInfo"))
+        if params.get("EsConfig") is not None:
+            self._EsConfig = ESConfig()
+            self._EsConfig._deserialize(params.get("EsConfig"))
+        if params.get("ModelConfig") is not None:
+            self._ModelConfig = KBModelConfig()
+            self._ModelConfig._deserialize(params.get("ModelConfig"))
+        if params.get("Owner") is not None:
+            self._Owner = Operator()
+            self._Owner._deserialize(params.get("Owner"))
+        if params.get("Summary") is not None:
+            self._Summary = KBSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKBSummaryListRequest(AbstractModel):
+    r"""DescribeKBSummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>工作空间 ID</p>
+        :type SpaceId: str
+        :param _FilterList: <p>通用过滤</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 10，最大 100</p>
+        :type PageSize: int
+        :param _Query: <p>关键词</p>
+        :type Query: str
+        """
+        self._SpaceId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>工作空间 ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def FilterList(self):
+        r"""<p>通用过滤</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>分页页码，从 0 开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>关键词</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKBSummaryListResponse(AbstractModel):
+    r"""DescribeKBSummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbList: <p>知识库列表</p>
+        :type KbList: list of KBSummary
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KbList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def KbList(self):
+        r"""<p>知识库列表</p>
+        :rtype: list of KBSummary
+        """
+        return self._KbList
+
+    @KbList.setter
+    def KbList(self, KbList):
+        self._KbList = KbList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("KbList") is not None:
+            self._KbList = []
+            for item in params.get("KbList"):
+                obj = KBSummary()
+                obj._deserialize(item)
+                self._KbList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLabelRequest(AbstractModel):
+    r"""DescribeLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _LabelId: <p>标签 ID</p>
+        :type LabelId: str
+        :param _FilterList: <p>通用过滤</p>
+        :type FilterList: list of Filter
+        :param _LastTermId: <p>滚动加载游标的标准词 ID（首次请求传 0，后续传上一页最后一条的 TermId）</p>
+        :type LastTermId: str
+        :param _Limit: <p>每次加载数量，默认 10，最大 100</p>
+        :type Limit: int
+        :param _Query: <p>关键词搜索</p>
+        :type Query: str
+        """
+        self._KbId = None
+        self._LabelId = None
+        self._FilterList = None
+        self._LastTermId = None
+        self._Limit = None
+        self._Query = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def LabelId(self):
+        r"""<p>标签 ID</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def FilterList(self):
+        r"""<p>通用过滤</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def LastTermId(self):
+        r"""<p>滚动加载游标的标准词 ID（首次请求传 0，后续传上一页最后一条的 TermId）</p>
+        :rtype: str
+        """
+        return self._LastTermId
+
+    @LastTermId.setter
+    def LastTermId(self, LastTermId):
+        self._LastTermId = LastTermId
+
+    @property
+    def Limit(self):
+        r"""<p>每次加载数量，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Query(self):
+        r"""<p>关键词搜索</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._LabelId = params.get("LabelId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._LastTermId = params.get("LastTermId")
+        self._Limit = params.get("Limit")
+        self._Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLabelResponse(AbstractModel):
+    r"""DescribeLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: <p>基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: :class:`tencentcloud.adp.v20260520.models.LabelSummary`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Summary = None
+        self._RequestId = None
+
+    @property
+    def Summary(self):
+        r"""<p>基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.LabelSummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Summary") is not None:
+            self._Summary = LabelSummary()
+            self._Summary._deserialize(params.get("Summary"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLabelSummaryListRequest(AbstractModel):
+    r"""DescribeLabelSummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _FilterList: <p>通用过滤</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 10，最大 100</p>
+        :type PageSize: int
+        :param _Query: <p>关键词搜索</p>
+        :type Query: str
+        :param _SummaryListSwitch: <p>开关配置</p>
+        :type SummaryListSwitch: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        self._KbId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._SummaryListSwitch = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def FilterList(self):
+        r"""<p>通用过滤</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>分页页码，从 0 开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>关键词搜索</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SummaryListSwitch(self):
+        r"""<p>开关配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        return self._SummaryListSwitch
+
+    @SummaryListSwitch.setter
+    def SummaryListSwitch(self, SummaryListSwitch):
+        self._SummaryListSwitch = SummaryListSwitch
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        if params.get("SummaryListSwitch") is not None:
+            self._SummaryListSwitch = SummaryListSwitch()
+            self._SummaryListSwitch._deserialize(params.get("SummaryListSwitch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLabelSummaryListResponse(AbstractModel):
+    r"""DescribeLabelSummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelList: <p>标签列表</p>
+        :type LabelList: list of LabelSummary
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LabelList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def LabelList(self):
+        r"""<p>标签列表</p>
+        :rtype: list of LabelSummary
+        """
+        return self._LabelList
+
+    @LabelList.setter
+    def LabelList(self, LabelList):
+        self._LabelList = LabelList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LabelList") is not None:
+            self._LabelList = []
+            for item in params.get("LabelList"):
+                obj = LabelSummary()
+                obj._deserialize(item)
+                self._LabelList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -18373,6 +21650,387 @@ class DescribePluginSummaryListResponse(AbstractModel):
                 obj = PluginSummary()
                 obj._deserialize(item)
                 self._PluginList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeQARequest(AbstractModel):
+    r"""DescribeQA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _QaId: <p>QA ID</p>
+        :type QaId: str
+        """
+        self._KbId = None
+        self._QaId = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def QaId(self):
+        r"""<p>QA ID</p>
+        :rtype: str
+        """
+        return self._QaId
+
+    @QaId.setter
+    def QaId(self, QaId):
+        self._QaId = QaId
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._QaId = params.get("QaId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQAResponse(AbstractModel):
+    r"""DescribeQA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighlightList: <p>分片高亮信息</p>
+        :type HighlightList: list of QASegmentHighlight
+        :param _PageContent: <p>分片内容</p>
+        :type PageContent: str
+        :param _QuestionDescription: <p>问题描述</p>
+        :type QuestionDescription: str
+        :param _SimilarQuestionList: <p>相似问列表</p>
+        :type SimilarQuestionList: list of SimilarQuestion
+        :param _Summary: <p>基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: :class:`tencentcloud.adp.v20260520.models.QASummary`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HighlightList = None
+        self._PageContent = None
+        self._QuestionDescription = None
+        self._SimilarQuestionList = None
+        self._Summary = None
+        self._RequestId = None
+
+    @property
+    def HighlightList(self):
+        r"""<p>分片高亮信息</p>
+        :rtype: list of QASegmentHighlight
+        """
+        return self._HighlightList
+
+    @HighlightList.setter
+    def HighlightList(self, HighlightList):
+        self._HighlightList = HighlightList
+
+    @property
+    def PageContent(self):
+        r"""<p>分片内容</p>
+        :rtype: str
+        """
+        return self._PageContent
+
+    @PageContent.setter
+    def PageContent(self, PageContent):
+        self._PageContent = PageContent
+
+    @property
+    def QuestionDescription(self):
+        r"""<p>问题描述</p>
+        :rtype: str
+        """
+        return self._QuestionDescription
+
+    @QuestionDescription.setter
+    def QuestionDescription(self, QuestionDescription):
+        self._QuestionDescription = QuestionDescription
+
+    @property
+    def SimilarQuestionList(self):
+        r"""<p>相似问列表</p>
+        :rtype: list of SimilarQuestion
+        """
+        return self._SimilarQuestionList
+
+    @SimilarQuestionList.setter
+    def SimilarQuestionList(self, SimilarQuestionList):
+        self._SimilarQuestionList = SimilarQuestionList
+
+    @property
+    def Summary(self):
+        r"""<p>基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QASummary`
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("HighlightList") is not None:
+            self._HighlightList = []
+            for item in params.get("HighlightList"):
+                obj = QASegmentHighlight()
+                obj._deserialize(item)
+                self._HighlightList.append(obj)
+        self._PageContent = params.get("PageContent")
+        self._QuestionDescription = params.get("QuestionDescription")
+        if params.get("SimilarQuestionList") is not None:
+            self._SimilarQuestionList = []
+            for item in params.get("SimilarQuestionList"):
+                obj = SimilarQuestion()
+                obj._deserialize(item)
+                self._SimilarQuestionList.append(obj)
+        if params.get("Summary") is not None:
+            self._Summary = QASummary()
+            self._Summary._deserialize(params.get("Summary"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeQASummaryListRequest(AbstractModel):
+    r"""DescribeQASummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _FilterList: <p>过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 Values 为 OR 关系）：Status-QA状态,枚举值,精确匹配; CategoryId-分类ID,精确匹配; SourceType-QA来源类型,枚举值,精确匹配; EffectiveDomain-生效作用域,精确匹配; DocId-关联文档ID,精确匹配;  CreateTime-创建时间,Unix秒,BETWEEN 传 [起始秒,结束秒]; UpdateTime-更新时间,Unix秒,BETWEEN 传 [起始秒,结束秒]</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 10，最大 100</p>
+        :type PageSize: int
+        :param _Query: <p>查询条件（关键词 + 查询范围）</p>
+        :type Query: :class:`tencentcloud.adp.v20260520.models.QAQuery`
+        :param _SummaryListSwitch: <p>开关配置</p>
+        :type SummaryListSwitch: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        self._KbId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._SummaryListSwitch = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 Values 为 OR 关系）：Status-QA状态,枚举值,精确匹配; CategoryId-分类ID,精确匹配; SourceType-QA来源类型,枚举值,精确匹配; EffectiveDomain-生效作用域,精确匹配; DocId-关联文档ID,精确匹配;  CreateTime-创建时间,Unix秒,BETWEEN 传 [起始秒,结束秒]; UpdateTime-更新时间,Unix秒,BETWEEN 传 [起始秒,结束秒]</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>分页页码，从 0 开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>查询条件（关键词 + 查询范围）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QAQuery`
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SummaryListSwitch(self):
+        r"""<p>开关配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SummaryListSwitch`
+        """
+        return self._SummaryListSwitch
+
+    @SummaryListSwitch.setter
+    def SummaryListSwitch(self, SummaryListSwitch):
+        self._SummaryListSwitch = SummaryListSwitch
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Query") is not None:
+            self._Query = QAQuery()
+            self._Query._deserialize(params.get("Query"))
+        if params.get("SummaryListSwitch") is not None:
+            self._SummaryListSwitch = SummaryListSwitch()
+            self._SummaryListSwitch._deserialize(params.get("SummaryListSwitch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQASummaryListResponse(AbstractModel):
+    r"""DescribeQASummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NotAcceptedCount: <p>未采纳数量</p>
+        :type NotAcceptedCount: int
+        :param _PendingVerifyCount: <p>待校验数量</p>
+        :type PendingVerifyCount: int
+        :param _QaList: <p>QA 列表</p>
+        :type QaList: list of QASummary
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NotAcceptedCount = None
+        self._PendingVerifyCount = None
+        self._QaList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def NotAcceptedCount(self):
+        r"""<p>未采纳数量</p>
+        :rtype: int
+        """
+        return self._NotAcceptedCount
+
+    @NotAcceptedCount.setter
+    def NotAcceptedCount(self, NotAcceptedCount):
+        self._NotAcceptedCount = NotAcceptedCount
+
+    @property
+    def PendingVerifyCount(self):
+        r"""<p>待校验数量</p>
+        :rtype: int
+        """
+        return self._PendingVerifyCount
+
+    @PendingVerifyCount.setter
+    def PendingVerifyCount(self, PendingVerifyCount):
+        self._PendingVerifyCount = PendingVerifyCount
+
+    @property
+    def QaList(self):
+        r"""<p>QA 列表</p>
+        :rtype: list of QASummary
+        """
+        return self._QaList
+
+    @QaList.setter
+    def QaList(self, QaList):
+        self._QaList = QaList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NotAcceptedCount = params.get("NotAcceptedCount")
+        self._PendingVerifyCount = params.get("PendingVerifyCount")
+        if params.get("QaList") is not None:
+            self._QaList = []
+            for item in params.get("QaList"):
+                obj = QASummary()
+                obj._deserialize(item)
+                self._QaList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -20121,6 +23779,1388 @@ class DingTalkChannelConfig(AbstractModel):
         
 
 
+class DocExternalLink(AbstractModel):
+    r"""文档外部链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExternalUrl: <p>外部链接地址</p>
+        :type ExternalUrl: str
+        :param _ReplaceOriginEnabled: <p>是否替换原文展示</p>
+        :type ReplaceOriginEnabled: bool
+        """
+        self._ExternalUrl = None
+        self._ReplaceOriginEnabled = None
+
+    @property
+    def ExternalUrl(self):
+        r"""<p>外部链接地址</p>
+        :rtype: str
+        """
+        return self._ExternalUrl
+
+    @ExternalUrl.setter
+    def ExternalUrl(self, ExternalUrl):
+        self._ExternalUrl = ExternalUrl
+
+    @property
+    def ReplaceOriginEnabled(self):
+        r"""<p>是否替换原文展示</p>
+        :rtype: bool
+        """
+        return self._ReplaceOriginEnabled
+
+    @ReplaceOriginEnabled.setter
+    def ReplaceOriginEnabled(self, ReplaceOriginEnabled):
+        self._ReplaceOriginEnabled = ReplaceOriginEnabled
+
+
+    def _deserialize(self, params):
+        self._ExternalUrl = params.get("ExternalUrl")
+        self._ReplaceOriginEnabled = params.get("ReplaceOriginEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocImportSpec(AbstractModel):
+    r"""文档导入规格（一次性输入的非持久化数据）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: <p>文件 ID（通过文件管理服务获取的文件标识，不可为空）</p>
+        :type FileId: str
+        :param _CategoryId: <p>归属分类 ID</p>
+        :type CategoryId: str
+        :param _DeDuplicateStrategyList: <p>重复文件处理规则列表</p>
+        :type DeDuplicateStrategyList: list of DeDuplicateStrategy
+        :param _EffectiveDomain: <p>知识生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _ExpirationPolicy: <p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _ExternalLink: <p>外部链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalLink: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        :param _LabelRefList: <p>适用范围（标签条件）</p>
+        :type LabelRefList: list of LabelRefIdentity
+        :param _ParseConfig: <p>解析配置（分割规则、内容过滤等）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParseConfig: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        :param _Switch: <p>开关配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        :param _UpdatePeriod: <p>更新周期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatePeriod: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        :param _UserAccessConfig: <p>用户访问配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAccessConfig: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        self._FileId = None
+        self._CategoryId = None
+        self._DeDuplicateStrategyList = None
+        self._EffectiveDomain = None
+        self._ExpirationPolicy = None
+        self._ExternalLink = None
+        self._LabelRefList = None
+        self._ParseConfig = None
+        self._Switch = None
+        self._UpdatePeriod = None
+        self._UserAccessConfig = None
+
+    @property
+    def FileId(self):
+        r"""<p>文件 ID（通过文件管理服务获取的文件标识，不可为空）</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def CategoryId(self):
+        r"""<p>归属分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def DeDuplicateStrategyList(self):
+        r"""<p>重复文件处理规则列表</p>
+        :rtype: list of DeDuplicateStrategy
+        """
+        return self._DeDuplicateStrategyList
+
+    @DeDuplicateStrategyList.setter
+    def DeDuplicateStrategyList(self, DeDuplicateStrategyList):
+        self._DeDuplicateStrategyList = DeDuplicateStrategyList
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>知识生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def ExternalLink(self):
+        r"""<p>外部链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        return self._ExternalLink
+
+    @ExternalLink.setter
+    def ExternalLink(self, ExternalLink):
+        self._ExternalLink = ExternalLink
+
+    @property
+    def LabelRefList(self):
+        r"""<p>适用范围（标签条件）</p>
+        :rtype: list of LabelRefIdentity
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+    @property
+    def ParseConfig(self):
+        r"""<p>解析配置（分割规则、内容过滤等）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        """
+        return self._ParseConfig
+
+    @ParseConfig.setter
+    def ParseConfig(self, ParseConfig):
+        self._ParseConfig = ParseConfig
+
+    @property
+    def Switch(self):
+        r"""<p>开关配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def UpdatePeriod(self):
+        r"""<p>更新周期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        """
+        return self._UpdatePeriod
+
+    @UpdatePeriod.setter
+    def UpdatePeriod(self, UpdatePeriod):
+        self._UpdatePeriod = UpdatePeriod
+
+    @property
+    def UserAccessConfig(self):
+        r"""<p>用户访问配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        return self._UserAccessConfig
+
+    @UserAccessConfig.setter
+    def UserAccessConfig(self, UserAccessConfig):
+        self._UserAccessConfig = UserAccessConfig
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._CategoryId = params.get("CategoryId")
+        if params.get("DeDuplicateStrategyList") is not None:
+            self._DeDuplicateStrategyList = []
+            for item in params.get("DeDuplicateStrategyList"):
+                obj = DeDuplicateStrategy()
+                obj._deserialize(item)
+                self._DeDuplicateStrategyList.append(obj)
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        if params.get("ExternalLink") is not None:
+            self._ExternalLink = DocExternalLink()
+            self._ExternalLink._deserialize(params.get("ExternalLink"))
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = []
+            for item in params.get("LabelRefList"):
+                obj = LabelRefIdentity()
+                obj._deserialize(item)
+                self._LabelRefList.append(obj)
+        if params.get("ParseConfig") is not None:
+            self._ParseConfig = DocParseConfig()
+            self._ParseConfig._deserialize(params.get("ParseConfig"))
+        if params.get("Switch") is not None:
+            self._Switch = DocSwitch()
+            self._Switch._deserialize(params.get("Switch"))
+        if params.get("UpdatePeriod") is not None:
+            self._UpdatePeriod = DocUpdatePeriod()
+            self._UpdatePeriod._deserialize(params.get("UpdatePeriod"))
+        if params.get("UserAccessConfig") is not None:
+            self._UserAccessConfig = UserAccessConfig()
+            self._UserAccessConfig._deserialize(params.get("UserAccessConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocLifecycle(AbstractModel):
+    r"""文档生命周期信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: <p>创建时间（Unix 秒）</p>
+        :type CreateTime: str
+        :param _ExpirationPolicy: <p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _Status: <p>文档状态：1=解析中，2=解析失败，3=导入失败，4=审核中，5=审核失败，6=学习中，7=学习失败，8=导入完成，9=已过期，10=超量失效，11=超量失效恢复中，12=重命名审核失败，13=重命名申诉失败，14=人工申诉中，15=人工申诉失败<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOC_STATUS_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_STATUS_PARSING</td><td>1</td><td>解析中</td></tr><tr><td>DOC_STATUS_PARSE_FAIL</td><td>2</td><td>解析失败</td></tr><tr><td>DOC_STATUS_IMPORT_FAIL</td><td>3</td><td>导入失败</td></tr><tr><td>DOC_STATUS_AUDITING</td><td>4</td><td>审核中</td></tr><tr><td>DOC_STATUS_AUDIT_FAIL</td><td>5</td><td>审核失败</td></tr><tr><td>DOC_STATUS_LEARNING</td><td>6</td><td>学习中</td></tr><tr><td>DOC_STATUS_LEARN_FAIL</td><td>7</td><td>学习失败</td></tr><tr><td>DOC_STATUS_IMPORTED</td><td>8</td><td>导入完成</td></tr><tr><td>DOC_STATUS_EXPIRED</td><td>9</td><td>已过期</td></tr><tr><td>DOC_STATUS_QUOTA_INVALID</td><td>10</td><td>超量失效</td></tr><tr><td>DOC_STATUS_QUOTA_RECOVERING</td><td>11</td><td>超量失效恢复中</td></tr><tr><td>DOC_STATUS_RENAME_AUDIT_FAIL</td><td>12</td><td>重命名审核失败</td></tr><tr><td>DOC_STATUS_RENAME_APPEAL_FAIL</td><td>13</td><td>重命名申诉失败</td></tr><tr><td>DOC_STATUS_MANUAL_APPEALING</td><td>14</td><td>人工申诉中</td></tr><tr><td>DOC_STATUS_MANUAL_APPEAL_FAIL</td><td>15</td><td>人工申诉失败</td></tr></tbody></table></p>
+        :type Status: int
+        :param _StatusDesc: <p>状态描述</p>
+        :type StatusDesc: str
+        :param _StatusMessage: <p>状态附加信息</p>
+        :type StatusMessage: str
+        :param _UpdateTime: <p>更新时间（Unix 秒）</p>
+        :type UpdateTime: str
+        """
+        self._CreateTime = None
+        self._ExpirationPolicy = None
+        self._Status = None
+        self._StatusDesc = None
+        self._StatusMessage = None
+        self._UpdateTime = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（Unix 秒）</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def Status(self):
+        r"""<p>文档状态：1=解析中，2=解析失败，3=导入失败，4=审核中，5=审核失败，6=学习中，7=学习失败，8=导入完成，9=已过期，10=超量失效，11=超量失效恢复中，12=重命名审核失败，13=重命名申诉失败，14=人工申诉中，15=人工申诉失败<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOC_STATUS_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_STATUS_PARSING</td><td>1</td><td>解析中</td></tr><tr><td>DOC_STATUS_PARSE_FAIL</td><td>2</td><td>解析失败</td></tr><tr><td>DOC_STATUS_IMPORT_FAIL</td><td>3</td><td>导入失败</td></tr><tr><td>DOC_STATUS_AUDITING</td><td>4</td><td>审核中</td></tr><tr><td>DOC_STATUS_AUDIT_FAIL</td><td>5</td><td>审核失败</td></tr><tr><td>DOC_STATUS_LEARNING</td><td>6</td><td>学习中</td></tr><tr><td>DOC_STATUS_LEARN_FAIL</td><td>7</td><td>学习失败</td></tr><tr><td>DOC_STATUS_IMPORTED</td><td>8</td><td>导入完成</td></tr><tr><td>DOC_STATUS_EXPIRED</td><td>9</td><td>已过期</td></tr><tr><td>DOC_STATUS_QUOTA_INVALID</td><td>10</td><td>超量失效</td></tr><tr><td>DOC_STATUS_QUOTA_RECOVERING</td><td>11</td><td>超量失效恢复中</td></tr><tr><td>DOC_STATUS_RENAME_AUDIT_FAIL</td><td>12</td><td>重命名审核失败</td></tr><tr><td>DOC_STATUS_RENAME_APPEAL_FAIL</td><td>13</td><td>重命名申诉失败</td></tr><tr><td>DOC_STATUS_MANUAL_APPEALING</td><td>14</td><td>人工申诉中</td></tr><tr><td>DOC_STATUS_MANUAL_APPEAL_FAIL</td><td>15</td><td>人工申诉失败</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""<p>状态描述</p>
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def StatusMessage(self):
+        r"""<p>状态附加信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（Unix 秒）</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._StatusMessage = params.get("StatusMessage")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocLink(AbstractModel):
+    r"""文档链接
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosUrl: <p>COS 链接地址，可用作预览和下载</p>
+        :type CosUrl: str
+        :param _ExternalLink: <p>外部链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalLink: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        self._CosUrl = None
+        self._ExternalLink = None
+
+    @property
+    def CosUrl(self):
+        r"""<p>COS 链接地址，可用作预览和下载</p>
+        :rtype: str
+        """
+        return self._CosUrl
+
+    @CosUrl.setter
+    def CosUrl(self, CosUrl):
+        self._CosUrl = CosUrl
+
+    @property
+    def ExternalLink(self):
+        r"""<p>外部链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        return self._ExternalLink
+
+    @ExternalLink.setter
+    def ExternalLink(self, ExternalLink):
+        self._ExternalLink = ExternalLink
+
+
+    def _deserialize(self, params):
+        self._CosUrl = params.get("CosUrl")
+        if params.get("ExternalLink") is not None:
+            self._ExternalLink = DocExternalLink()
+            self._ExternalLink._deserialize(params.get("ExternalLink"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocMetadata(AbstractModel):
+    r"""文档元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocCharCount: <p>文档字符数</p>
+        :type DocCharCount: str
+        :param _FileName: <p>文件名</p>
+        :type FileName: str
+        :param _FileSize: <p>文件大小（字节）</p>
+        :type FileSize: str
+        :param _FileType: <p>文件类型/扩展名</p>
+        :type FileType: str
+        :param _RefFieldNameList: <p>元数据引用字段名列表（用于显示文档哪些分类和属性被设置为元数据）</p>
+        :type RefFieldNameList: list of str
+        :param _SourceDesc: <p>来源描述</p>
+        :type SourceDesc: str
+        :param _SourceType: <p>文档来源类型：1=本地上传，2=网页链接，3=COS 对接，4=外部导入<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOC_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_SOURCE_TYPE_LOCAL</td><td>1</td><td>本地上传</td></tr><tr><td>DOC_SOURCE_TYPE_URL</td><td>2</td><td>网页链接</td></tr><tr><td>DOC_SOURCE_TYPE_COS</td><td>3</td><td>COS 对接</td></tr><tr><td>DOC_SOURCE_TYPE_IMPORT</td><td>4</td><td>外部导入</td></tr></tbody></table></p>
+        :type SourceType: int
+        """
+        self._DocCharCount = None
+        self._FileName = None
+        self._FileSize = None
+        self._FileType = None
+        self._RefFieldNameList = None
+        self._SourceDesc = None
+        self._SourceType = None
+
+    @property
+    def DocCharCount(self):
+        r"""<p>文档字符数</p>
+        :rtype: str
+        """
+        return self._DocCharCount
+
+    @DocCharCount.setter
+    def DocCharCount(self, DocCharCount):
+        self._DocCharCount = DocCharCount
+
+    @property
+    def FileName(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""<p>文件大小（字节）</p>
+        :rtype: str
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileType(self):
+        r"""<p>文件类型/扩展名</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def RefFieldNameList(self):
+        r"""<p>元数据引用字段名列表（用于显示文档哪些分类和属性被设置为元数据）</p>
+        :rtype: list of str
+        """
+        return self._RefFieldNameList
+
+    @RefFieldNameList.setter
+    def RefFieldNameList(self, RefFieldNameList):
+        self._RefFieldNameList = RefFieldNameList
+
+    @property
+    def SourceDesc(self):
+        r"""<p>来源描述</p>
+        :rtype: str
+        """
+        return self._SourceDesc
+
+    @SourceDesc.setter
+    def SourceDesc(self, SourceDesc):
+        self._SourceDesc = SourceDesc
+
+    @property
+    def SourceType(self):
+        r"""<p>文档来源类型：1=本地上传，2=网页链接，3=COS 对接，4=外部导入<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>DOC_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>DOC_SOURCE_TYPE_LOCAL</td><td>1</td><td>本地上传</td></tr><tr><td>DOC_SOURCE_TYPE_URL</td><td>2</td><td>网页链接</td></tr><tr><td>DOC_SOURCE_TYPE_COS</td><td>3</td><td>COS 对接</td></tr><tr><td>DOC_SOURCE_TYPE_IMPORT</td><td>4</td><td>外部导入</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._DocCharCount = params.get("DocCharCount")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._FileType = params.get("FileType")
+        self._RefFieldNameList = params.get("RefFieldNameList")
+        self._SourceDesc = params.get("SourceDesc")
+        self._SourceType = params.get("SourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocModifyFields(AbstractModel):
+    r"""文档可修改字段集合（配合 update_mask 使用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>归属分类 ID</p>
+        :type CategoryId: str
+        :param _EffectiveDomain: <p>生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _ExpirationPolicy: <p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _ExternalLink: <p>外部链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalLink: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        :param _LabelRefList: <p>标签列表</p>
+        :type LabelRefList: list of LabelRefIdentity
+        :param _Name: <p>文档名</p>
+        :type Name: str
+        :param _ParseConfig: <p>解析配置（分割规则、内容过滤等）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParseConfig: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        :param _Switch: <p>开关配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Switch: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        :param _UpdatePeriod: <p>更新周期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatePeriod: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        :param _UserAccessConfig: <p>用户访问配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAccessConfig: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        self._CategoryId = None
+        self._EffectiveDomain = None
+        self._ExpirationPolicy = None
+        self._ExternalLink = None
+        self._LabelRefList = None
+        self._Name = None
+        self._ParseConfig = None
+        self._Switch = None
+        self._UpdatePeriod = None
+        self._UserAccessConfig = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>归属分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def ExternalLink(self):
+        r"""<p>外部链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        return self._ExternalLink
+
+    @ExternalLink.setter
+    def ExternalLink(self, ExternalLink):
+        self._ExternalLink = ExternalLink
+
+    @property
+    def LabelRefList(self):
+        r"""<p>标签列表</p>
+        :rtype: list of LabelRefIdentity
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+    @property
+    def Name(self):
+        r"""<p>文档名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ParseConfig(self):
+        r"""<p>解析配置（分割规则、内容过滤等）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocParseConfig`
+        """
+        return self._ParseConfig
+
+    @ParseConfig.setter
+    def ParseConfig(self, ParseConfig):
+        self._ParseConfig = ParseConfig
+
+    @property
+    def Switch(self):
+        r"""<p>开关配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def UpdatePeriod(self):
+        r"""<p>更新周期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocUpdatePeriod`
+        """
+        return self._UpdatePeriod
+
+    @UpdatePeriod.setter
+    def UpdatePeriod(self, UpdatePeriod):
+        self._UpdatePeriod = UpdatePeriod
+
+    @property
+    def UserAccessConfig(self):
+        r"""<p>用户访问配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UserAccessConfig`
+        """
+        return self._UserAccessConfig
+
+    @UserAccessConfig.setter
+    def UserAccessConfig(self, UserAccessConfig):
+        self._UserAccessConfig = UserAccessConfig
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        if params.get("ExternalLink") is not None:
+            self._ExternalLink = DocExternalLink()
+            self._ExternalLink._deserialize(params.get("ExternalLink"))
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = []
+            for item in params.get("LabelRefList"):
+                obj = LabelRefIdentity()
+                obj._deserialize(item)
+                self._LabelRefList.append(obj)
+        self._Name = params.get("Name")
+        if params.get("ParseConfig") is not None:
+            self._ParseConfig = DocParseConfig()
+            self._ParseConfig._deserialize(params.get("ParseConfig"))
+        if params.get("Switch") is not None:
+            self._Switch = DocSwitch()
+            self._Switch._deserialize(params.get("Switch"))
+        if params.get("UpdatePeriod") is not None:
+            self._UpdatePeriod = DocUpdatePeriod()
+            self._UpdatePeriod._deserialize(params.get("UpdatePeriod"))
+        if params.get("UserAccessConfig") is not None:
+            self._UserAccessConfig = UserAccessConfig()
+            self._UserAccessConfig._deserialize(params.get("UserAccessConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocOperator(AbstractModel):
+    r"""文档操作者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Modifier: <p>修改人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Modifier: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Permission: <p>操作权限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permission: :class:`tencentcloud.adp.v20260520.models.DocPermission`
+        """
+        self._Modifier = None
+        self._Permission = None
+
+    @property
+    def Modifier(self):
+        r"""<p>修改人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._Modifier
+
+    @Modifier.setter
+    def Modifier(self, Modifier):
+        self._Modifier = Modifier
+
+    @property
+    def Permission(self):
+        r"""<p>操作权限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocPermission`
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+
+    def _deserialize(self, params):
+        if params.get("Modifier") is not None:
+            self._Modifier = Operator()
+            self._Modifier._deserialize(params.get("Modifier"))
+        if params.get("Permission") is not None:
+            self._Permission = DocPermission()
+            self._Permission._deserialize(params.get("Permission"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocParseConfig(AbstractModel):
+    r"""文档解析配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentFilter: <p>内容过滤配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentFilter: :class:`tencentcloud.adp.v20260520.models.ContentFilter`
+        :param _SplitRule: <p>分割规则</p>
+        :type SplitRule: str
+        """
+        self._ContentFilter = None
+        self._SplitRule = None
+
+    @property
+    def ContentFilter(self):
+        r"""<p>内容过滤配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ContentFilter`
+        """
+        return self._ContentFilter
+
+    @ContentFilter.setter
+    def ContentFilter(self, ContentFilter):
+        self._ContentFilter = ContentFilter
+
+    @property
+    def SplitRule(self):
+        r"""<p>分割规则</p>
+        :rtype: str
+        """
+        return self._SplitRule
+
+    @SplitRule.setter
+    def SplitRule(self, SplitRule):
+        self._SplitRule = SplitRule
+
+
+    def _deserialize(self, params):
+        if params.get("ContentFilter") is not None:
+            self._ContentFilter = ContentFilter()
+            self._ContentFilter._deserialize(params.get("ContentFilter"))
+        self._SplitRule = params.get("SplitRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocPermission(AbstractModel):
+    r"""文档操作权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanDelete: <p>是否可删除</p>
+        :type CanDelete: bool
+        :param _CanEdit: <p>是否可编辑</p>
+        :type CanEdit: bool
+        :param _CanRestart: <p>是否可重新生成</p>
+        :type CanRestart: bool
+        :param _CanRetry: <p>是否可重试</p>
+        :type CanRetry: bool
+        """
+        self._CanDelete = None
+        self._CanEdit = None
+        self._CanRestart = None
+        self._CanRetry = None
+
+    @property
+    def CanDelete(self):
+        r"""<p>是否可删除</p>
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CanEdit(self):
+        r"""<p>是否可编辑</p>
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanRestart(self):
+        r"""<p>是否可重新生成</p>
+        :rtype: bool
+        """
+        return self._CanRestart
+
+    @CanRestart.setter
+    def CanRestart(self, CanRestart):
+        self._CanRestart = CanRestart
+
+    @property
+    def CanRetry(self):
+        r"""<p>是否可重试</p>
+        :rtype: bool
+        """
+        return self._CanRetry
+
+    @CanRetry.setter
+    def CanRetry(self, CanRetry):
+        self._CanRetry = CanRetry
+
+
+    def _deserialize(self, params):
+        self._CanDelete = params.get("CanDelete")
+        self._CanEdit = params.get("CanEdit")
+        self._CanRestart = params.get("CanRestart")
+        self._CanRetry = params.get("CanRetry")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocQuery(AbstractModel):
+    r"""文档查询条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Query: <p>查询关键词（名称模糊搜索）</p>
+        :type Query: str
+        :param _QueryScopeList: <p>查询范围（query 作用的字段）：1=文件名，2=标签或标签值；支持多选，缺省时无效</p>
+        :type QueryScopeList: list of int
+        """
+        self._Query = None
+        self._QueryScopeList = None
+
+    @property
+    def Query(self):
+        r"""<p>查询关键词（名称模糊搜索）</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def QueryScopeList(self):
+        r"""<p>查询范围（query 作用的字段）：1=文件名，2=标签或标签值；支持多选，缺省时无效</p>
+        :rtype: list of int
+        """
+        return self._QueryScopeList
+
+    @QueryScopeList.setter
+    def QueryScopeList(self, QueryScopeList):
+        self._QueryScopeList = QueryScopeList
+
+
+    def _deserialize(self, params):
+        self._Query = params.get("Query")
+        self._QueryScopeList = params.get("QueryScopeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocRetrievalConfig(AbstractModel):
+    r"""文档检索配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: <p>置信度阈值</p>
+        :type Confidence: float
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        :param _TopN: <p>返回前 N 条</p>
+        :type TopN: int
+        """
+        self._Confidence = None
+        self._Enabled = None
+        self._TopN = None
+
+    @property
+    def Confidence(self):
+        r"""<p>置信度阈值</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def TopN(self):
+        r"""<p>返回前 N 条</p>
+        :rtype: int
+        """
+        return self._TopN
+
+    @TopN.setter
+    def TopN(self, TopN):
+        self._TopN = TopN
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._Enabled = params.get("Enabled")
+        self._TopN = params.get("TopN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocSummary(AbstractModel):
+    r"""文档摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryPath: <p>所属分类路径（包含分类 ID、从根节点开始的分类 ID 路径和分类名称路径）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryPath: :class:`tencentcloud.adp.v20260520.models.CategoryPath`
+        :param _DocId: <p>文档 ID</p>
+        :type DocId: str
+        :param _KnowledgeScope: <p>知识生效范围（聚合生效作用域 + 标签条件）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KnowledgeScope: :class:`tencentcloud.adp.v20260520.models.KnowledgeScope`
+        :param _Lifecycle: <p>生命周期信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lifecycle: :class:`tencentcloud.adp.v20260520.models.DocLifecycle`
+        :param _Metadata: <p>元信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadata: :class:`tencentcloud.adp.v20260520.models.DocMetadata`
+        :param _OperatorInfo: <p>操作者信息（聚合修改人 + 操作权限）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorInfo: :class:`tencentcloud.adp.v20260520.models.DocOperator`
+        :param _TaskStatus: <p>任务状态信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: :class:`tencentcloud.adp.v20260520.models.DocTaskStatus`
+        """
+        self._CategoryPath = None
+        self._DocId = None
+        self._KnowledgeScope = None
+        self._Lifecycle = None
+        self._Metadata = None
+        self._OperatorInfo = None
+        self._TaskStatus = None
+
+    @property
+    def CategoryPath(self):
+        r"""<p>所属分类路径（包含分类 ID、从根节点开始的分类 ID 路径和分类名称路径）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CategoryPath`
+        """
+        return self._CategoryPath
+
+    @CategoryPath.setter
+    def CategoryPath(self, CategoryPath):
+        self._CategoryPath = CategoryPath
+
+    @property
+    def DocId(self):
+        r"""<p>文档 ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def KnowledgeScope(self):
+        r"""<p>知识生效范围（聚合生效作用域 + 标签条件）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KnowledgeScope`
+        """
+        return self._KnowledgeScope
+
+    @KnowledgeScope.setter
+    def KnowledgeScope(self, KnowledgeScope):
+        self._KnowledgeScope = KnowledgeScope
+
+    @property
+    def Lifecycle(self):
+        r"""<p>生命周期信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocLifecycle`
+        """
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
+
+    @property
+    def Metadata(self):
+        r"""<p>元信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocMetadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def OperatorInfo(self):
+        r"""<p>操作者信息（聚合修改人 + 操作权限）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocOperator`
+        """
+        return self._OperatorInfo
+
+    @OperatorInfo.setter
+    def OperatorInfo(self, OperatorInfo):
+        self._OperatorInfo = OperatorInfo
+
+    @property
+    def TaskStatus(self):
+        r"""<p>任务状态信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocTaskStatus`
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+
+    def _deserialize(self, params):
+        if params.get("CategoryPath") is not None:
+            self._CategoryPath = CategoryPath()
+            self._CategoryPath._deserialize(params.get("CategoryPath"))
+        self._DocId = params.get("DocId")
+        if params.get("KnowledgeScope") is not None:
+            self._KnowledgeScope = KnowledgeScope()
+            self._KnowledgeScope._deserialize(params.get("KnowledgeScope"))
+        if params.get("Lifecycle") is not None:
+            self._Lifecycle = DocLifecycle()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
+        if params.get("Metadata") is not None:
+            self._Metadata = DocMetadata()
+            self._Metadata._deserialize(params.get("Metadata"))
+        if params.get("OperatorInfo") is not None:
+            self._OperatorInfo = DocOperator()
+            self._OperatorInfo._deserialize(params.get("OperatorInfo"))
+        if params.get("TaskStatus") is not None:
+            self._TaskStatus = DocTaskStatus()
+            self._TaskStatus._deserialize(params.get("TaskStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocSwitch(AbstractModel):
+    r"""文档开关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadEnabled: <p>是否可下载</p>
+        :type DownloadEnabled: bool
+        :param _ReferEnabled: <p>是否在参考来源中展示</p>
+        :type ReferEnabled: bool
+        """
+        self._DownloadEnabled = None
+        self._ReferEnabled = None
+
+    @property
+    def DownloadEnabled(self):
+        r"""<p>是否可下载</p>
+        :rtype: bool
+        """
+        return self._DownloadEnabled
+
+    @DownloadEnabled.setter
+    def DownloadEnabled(self, DownloadEnabled):
+        self._DownloadEnabled = DownloadEnabled
+
+    @property
+    def ReferEnabled(self):
+        r"""<p>是否在参考来源中展示</p>
+        :rtype: bool
+        """
+        return self._ReferEnabled
+
+    @ReferEnabled.setter
+    def ReferEnabled(self, ReferEnabled):
+        self._ReferEnabled = ReferEnabled
+
+
+    def _deserialize(self, params):
+        self._DownloadEnabled = params.get("DownloadEnabled")
+        self._ReferEnabled = params.get("ReferEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocTaskStatus(AbstractModel):
+    r"""文档任务状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompletedTaskTypeList: <p>已完成的历史任务类型列表</p>
+        :type CompletedTaskTypeList: list of int
+        :param _OngoingTaskTypeList: <p>正在进行中的任务类型列表</p>
+        :type OngoingTaskTypeList: list of int
+        """
+        self._CompletedTaskTypeList = None
+        self._OngoingTaskTypeList = None
+
+    @property
+    def CompletedTaskTypeList(self):
+        r"""<p>已完成的历史任务类型列表</p>
+        :rtype: list of int
+        """
+        return self._CompletedTaskTypeList
+
+    @CompletedTaskTypeList.setter
+    def CompletedTaskTypeList(self, CompletedTaskTypeList):
+        self._CompletedTaskTypeList = CompletedTaskTypeList
+
+    @property
+    def OngoingTaskTypeList(self):
+        r"""<p>正在进行中的任务类型列表</p>
+        :rtype: list of int
+        """
+        return self._OngoingTaskTypeList
+
+    @OngoingTaskTypeList.setter
+    def OngoingTaskTypeList(self, OngoingTaskTypeList):
+        self._OngoingTaskTypeList = OngoingTaskTypeList
+
+
+    def _deserialize(self, params):
+        self._CompletedTaskTypeList = params.get("CompletedTaskTypeList")
+        self._OngoingTaskTypeList = params.get("OngoingTaskTypeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocUpdatePeriod(AbstractModel):
+    r"""文档更新周期配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启周期性更新</p>
+        :type Enabled: bool
+        :param _PeriodHour: <p>更新周期（小时）</p>
+        :type PeriodHour: int
+        """
+        self._Enabled = None
+        self._PeriodHour = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启周期性更新</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def PeriodHour(self):
+        r"""<p>更新周期（小时）</p>
+        :rtype: int
+        """
+        return self._PeriodHour
+
+    @PeriodHour.setter
+    def PeriodHour(self, PeriodHour):
+        self._PeriodHour = PeriodHour
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._PeriodHour = params.get("PeriodHour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DuplexBilling(AbstractModel):
     r"""DuplexBilling
 
@@ -20217,6 +25257,153 @@ class DuplexBilling(AbstractModel):
         
 
 
+class ESConfig(AbstractModel):
+    r"""ES 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanModify: <p>是否支持修改存储方式</p>
+        :type CanModify: bool
+        :param _EncryptedPassword: <p>ES 密码（加密后）</p>
+        :type EncryptedPassword: str
+        :param _InstanceId: <p>ES 集群 ID</p>
+        :type InstanceId: str
+        :param _StorageType: <p>存储类型：1=默认存储，2=自定义存储<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>ES_STORAGE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>ES_STORAGE_TYPE_DEFAULT</td><td>1</td><td>默认存储</td></tr><tr><td>ES_STORAGE_TYPE_CUSTOM</td><td>2</td><td>自定义存储</td></tr></tbody></table></p>
+        :type StorageType: int
+        :param _UserName: <p>ES 用户名</p>
+        :type UserName: str
+        """
+        self._CanModify = None
+        self._EncryptedPassword = None
+        self._InstanceId = None
+        self._StorageType = None
+        self._UserName = None
+
+    @property
+    def CanModify(self):
+        r"""<p>是否支持修改存储方式</p>
+        :rtype: bool
+        """
+        return self._CanModify
+
+    @CanModify.setter
+    def CanModify(self, CanModify):
+        self._CanModify = CanModify
+
+    @property
+    def EncryptedPassword(self):
+        r"""<p>ES 密码（加密后）</p>
+        :rtype: str
+        """
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
+    @property
+    def InstanceId(self):
+        r"""<p>ES 集群 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StorageType(self):
+        r"""<p>存储类型：1=默认存储，2=自定义存储<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>ES_STORAGE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>ES_STORAGE_TYPE_DEFAULT</td><td>1</td><td>默认存储</td></tr><tr><td>ES_STORAGE_TYPE_CUSTOM</td><td>2</td><td>自定义存储</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def UserName(self):
+        r"""<p>ES 用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._CanModify = params.get("CanModify")
+        self._EncryptedPassword = params.get("EncryptedPassword")
+        self._InstanceId = params.get("InstanceId")
+        self._StorageType = params.get("StorageType")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EffectivePeriod(AbstractModel):
+    r"""有效期
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndTime: <p>有效期结束时间（Unix 秒，0 表示永久有效）</p>
+        :type EndTime: str
+        :param _StartTime: <p>有效期开始时间（Unix 秒）</p>
+        :type StartTime: str
+        """
+        self._EndTime = None
+        self._StartTime = None
+
+    @property
+    def EndTime(self):
+        r"""<p>有效期结束时间（Unix 秒，0 表示永久有效）</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartTime(self):
+        r"""<p>有效期开始时间（Unix 秒）</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExecuteConfig(AbstractModel):
     r"""ExecuteConfig
 
@@ -20270,6 +25457,213 @@ class ExecuteConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExpirationAwareness(AbstractModel):
+    r"""时效性检索增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用时效性检索，开启后检索结果会结合知识的有效时间进行排序</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用时效性检索，开启后检索结果会结合知识的有效时间进行排序</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExpirationPolicy(AbstractModel):
+    r"""过期策略（有效时间与超过有效时间后的行为）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EffectivePeriod: <p>有效时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectivePeriod: :class:`tencentcloud.adp.v20260520.models.EffectivePeriod`
+        :param _ExpireBehavior: <p>超过有效时间后的行为：1=NOT_RETRIEVABLE 不可被检索，2=RETRIEVABLE 仍可被检索；永久有效时无意义<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>EXPIRE_BEHAVIOR_UNKNOWN</td><td>0</td><td>未指定（服务端按默认处理）</td></tr><tr><td>EXPIRE_BEHAVIOR_NOT_RETRIEVABLE</td><td>1</td><td>不可被检索（到期下架）</td></tr><tr><td>EXPIRE_BEHAVIOR_RETRIEVABLE</td><td>2</td><td>仍可被检索（到期不下架，仅标记时效范围）</td></tr></tbody></table></p>
+        :type ExpireBehavior: int
+        """
+        self._EffectivePeriod = None
+        self._ExpireBehavior = None
+
+    @property
+    def EffectivePeriod(self):
+        r"""<p>有效时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.EffectivePeriod`
+        """
+        return self._EffectivePeriod
+
+    @EffectivePeriod.setter
+    def EffectivePeriod(self, EffectivePeriod):
+        self._EffectivePeriod = EffectivePeriod
+
+    @property
+    def ExpireBehavior(self):
+        r"""<p>超过有效时间后的行为：1=NOT_RETRIEVABLE 不可被检索，2=RETRIEVABLE 仍可被检索；永久有效时无意义<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>EXPIRE_BEHAVIOR_UNKNOWN</td><td>0</td><td>未指定（服务端按默认处理）</td></tr><tr><td>EXPIRE_BEHAVIOR_NOT_RETRIEVABLE</td><td>1</td><td>不可被检索（到期下架）</td></tr><tr><td>EXPIRE_BEHAVIOR_RETRIEVABLE</td><td>2</td><td>仍可被检索（到期不下架，仅标记时效范围）</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._ExpireBehavior
+
+    @ExpireBehavior.setter
+    def ExpireBehavior(self, ExpireBehavior):
+        self._ExpireBehavior = ExpireBehavior
+
+
+    def _deserialize(self, params):
+        if params.get("EffectivePeriod") is not None:
+            self._EffectivePeriod = EffectivePeriod()
+            self._EffectivePeriod._deserialize(params.get("EffectivePeriod"))
+        self._ExpireBehavior = params.get("ExpireBehavior")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportQARequest(AbstractModel):
+    r"""ExportQA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _FilterList: <p>过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 Values 为 OR 关系）：Status-QA状态,枚举值,精确匹配; CategoryId-分类ID,精确匹配; SourceType-QA来源类型,枚举值,精确匹配; EffectiveDomain-生效作用域,精确匹配; DocId-关联文档ID,精确匹配; CreateTime-创建时间,Unix秒,BETWEEN 传 [起始秒,结束秒]; UpdateTime-更新时间,Unix秒,BETWEEN 传 [起始秒,结束秒]; QaId-QA ID列表,精确匹配,支持多值</p>
+        :type FilterList: list of Filter
+        :param _Query: <p>查询条件（关键词 + 查询范围），与 DescribeQASummaryList 保持一致</p>
+        :type Query: :class:`tencentcloud.adp.v20260520.models.QAQuery`
+        """
+        self._KbId = None
+        self._FilterList = None
+        self._Query = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 Values 为 OR 关系）：Status-QA状态,枚举值,精确匹配; CategoryId-分类ID,精确匹配; SourceType-QA来源类型,枚举值,精确匹配; EffectiveDomain-生效作用域,精确匹配; DocId-关联文档ID,精确匹配; CreateTime-创建时间,Unix秒,BETWEEN 传 [起始秒,结束秒]; UpdateTime-更新时间,Unix秒,BETWEEN 传 [起始秒,结束秒]; QaId-QA ID列表,精确匹配,支持多值</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def Query(self):
+        r"""<p>查询条件（关键词 + 查询范围），与 DescribeQASummaryList 保持一致</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QAQuery`
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        if params.get("Query") is not None:
+            self._Query = QAQuery()
+            self._Query._deserialize(params.get("Query"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportQAResponse(AbstractModel):
+    r"""ExportQA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExportTaskId: <p>导出任务 ID（通过 DescribeAsyncTaskStatus 查询完成状态）</p>
+        :type ExportTaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExportTaskId = None
+        self._RequestId = None
+
+    @property
+    def ExportTaskId(self):
+        r"""<p>导出任务 ID（通过 DescribeAsyncTaskStatus 查询完成状态）</p>
+        :rtype: str
+        """
+        return self._ExportTaskId
+
+    @ExportTaskId.setter
+    def ExportTaskId(self, ExportTaskId):
+        self._ExportTaskId = ExportTaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExportTaskId = params.get("ExportTaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class FavoritePluginRequest(AbstractModel):
@@ -20699,6 +26093,42 @@ class Filter(AbstractModel):
         
 
 
+class FinalRerankConfig(AbstractModel):
+    r"""最终 rerank 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        """
+        self._ModelName = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GenerateModel(AbstractModel):
     r"""生成模型配置
 
@@ -20729,6 +26159,42 @@ class GenerateModel(AbstractModel):
         if params.get("Model") is not None:
             self._Model = ModelDetailInfo()
             self._Model._deserialize(params.get("Model"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GraphRAG(AbstractModel):
+    r"""GraphRAG 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20818,6 +26284,110 @@ class Identity(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ImportDocListRequest(AbstractModel):
+    r"""ImportDocList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocList: <p>待导入文档列表（数量：1~20）</p>
+        :type DocList: list of DocImportSpec
+        :param _KbId: <p>知识库 ID</p>
+        :type KbId: str
+        """
+        self._DocList = None
+        self._KbId = None
+
+    @property
+    def DocList(self):
+        r"""<p>待导入文档列表（数量：1~20）</p>
+        :rtype: list of DocImportSpec
+        """
+        return self._DocList
+
+    @DocList.setter
+    def DocList(self, DocList):
+        self._DocList = DocList
+
+    @property
+    def KbId(self):
+        r"""<p>知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+
+    def _deserialize(self, params):
+        if params.get("DocList") is not None:
+            self._DocList = []
+            for item in params.get("DocList"):
+                obj = DocImportSpec()
+                obj._deserialize(item)
+                self._DocList.append(obj)
+        self._KbId = params.get("KbId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportDocListResponse(AbstractModel):
+    r"""ImportDocList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: <p>批量导入结果</p>
+        :type ResultList: list of OperationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        r"""<p>批量导入结果</p>
+        :rtype: list of OperationResult
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = OperationResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class InputBoxConfig(AbstractModel):
@@ -20975,6 +26545,1878 @@ class IntervalSchedule(AbstractModel):
         self._StartAt = params.get("StartAt")
         self._Unit = params.get("Unit")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBCapacity(AbstractModel):
+    r"""知识库容量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxCharSize: <p>最大字符数</p>
+        :type MaxCharSize: str
+        :param _OverCharSize: <p>超量字符数</p>
+        :type OverCharSize: str
+        :param _UsedCharSize: <p>已用字符数</p>
+        :type UsedCharSize: str
+        """
+        self._MaxCharSize = None
+        self._OverCharSize = None
+        self._UsedCharSize = None
+
+    @property
+    def MaxCharSize(self):
+        r"""<p>最大字符数</p>
+        :rtype: str
+        """
+        return self._MaxCharSize
+
+    @MaxCharSize.setter
+    def MaxCharSize(self, MaxCharSize):
+        self._MaxCharSize = MaxCharSize
+
+    @property
+    def OverCharSize(self):
+        r"""<p>超量字符数</p>
+        :rtype: str
+        """
+        return self._OverCharSize
+
+    @OverCharSize.setter
+    def OverCharSize(self, OverCharSize):
+        self._OverCharSize = OverCharSize
+
+    @property
+    def UsedCharSize(self):
+        r"""<p>已用字符数</p>
+        :rtype: str
+        """
+        return self._UsedCharSize
+
+    @UsedCharSize.setter
+    def UsedCharSize(self, UsedCharSize):
+        self._UsedCharSize = UsedCharSize
+
+
+    def _deserialize(self, params):
+        self._MaxCharSize = params.get("MaxCharSize")
+        self._OverCharSize = params.get("OverCharSize")
+        self._UsedCharSize = params.get("UsedCharSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBCategory(AbstractModel):
+    r"""知识库分类信息（含元数据配置）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanAdd: <p>是否可新增</p>
+        :type CanAdd: bool
+        :param _CanDelete: <p>是否可删除</p>
+        :type CanDelete: bool
+        :param _CanEdit: <p>是否可编辑</p>
+        :type CanEdit: bool
+        :param _CategoryId: <p>分类 ID</p>
+        :type CategoryId: str
+        :param _ChildList: <p>子分类列表</p>
+        :type ChildList: list of KBCategory
+        :param _IsLeaf: <p>是否为叶子节点（无子分类）</p>
+        :type IsLeaf: bool
+        :param _ItemCount: <p>分类对象的数量</p>
+        :type ItemCount: int
+        :param _MetaValue: <p>元数据配置（该分类被设置为元数据时的配置信息）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaValue: :class:`tencentcloud.adp.v20260520.models.MetaValue`
+        :param _Name: <p>分类名称</p>
+        :type Name: str
+        """
+        self._CanAdd = None
+        self._CanDelete = None
+        self._CanEdit = None
+        self._CategoryId = None
+        self._ChildList = None
+        self._IsLeaf = None
+        self._ItemCount = None
+        self._MetaValue = None
+        self._Name = None
+
+    @property
+    def CanAdd(self):
+        r"""<p>是否可新增</p>
+        :rtype: bool
+        """
+        return self._CanAdd
+
+    @CanAdd.setter
+    def CanAdd(self, CanAdd):
+        self._CanAdd = CanAdd
+
+    @property
+    def CanDelete(self):
+        r"""<p>是否可删除</p>
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CanEdit(self):
+        r"""<p>是否可编辑</p>
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def ChildList(self):
+        r"""<p>子分类列表</p>
+        :rtype: list of KBCategory
+        """
+        return self._ChildList
+
+    @ChildList.setter
+    def ChildList(self, ChildList):
+        self._ChildList = ChildList
+
+    @property
+    def IsLeaf(self):
+        r"""<p>是否为叶子节点（无子分类）</p>
+        :rtype: bool
+        """
+        return self._IsLeaf
+
+    @IsLeaf.setter
+    def IsLeaf(self, IsLeaf):
+        self._IsLeaf = IsLeaf
+
+    @property
+    def ItemCount(self):
+        r"""<p>分类对象的数量</p>
+        :rtype: int
+        """
+        return self._ItemCount
+
+    @ItemCount.setter
+    def ItemCount(self, ItemCount):
+        self._ItemCount = ItemCount
+
+    @property
+    def MetaValue(self):
+        r"""<p>元数据配置（该分类被设置为元数据时的配置信息）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MetaValue`
+        """
+        return self._MetaValue
+
+    @MetaValue.setter
+    def MetaValue(self, MetaValue):
+        self._MetaValue = MetaValue
+
+    @property
+    def Name(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._CanAdd = params.get("CanAdd")
+        self._CanDelete = params.get("CanDelete")
+        self._CanEdit = params.get("CanEdit")
+        self._CategoryId = params.get("CategoryId")
+        if params.get("ChildList") is not None:
+            self._ChildList = []
+            for item in params.get("ChildList"):
+                obj = KBCategory()
+                obj._deserialize(item)
+                self._ChildList.append(obj)
+        self._IsLeaf = params.get("IsLeaf")
+        self._ItemCount = params.get("ItemCount")
+        if params.get("MetaValue") is not None:
+            self._MetaValue = MetaValue()
+            self._MetaValue._deserialize(params.get("MetaValue"))
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBModelConfig(AbstractModel):
+    r"""知识库模型配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EmbeddingModel: <p>Embedding 模型</p>
+        :type EmbeddingModel: str
+        :param _QaExtractModel: <p>QA 抽取模型</p>
+        :type QaExtractModel: str
+        :param _SchemaModel: <p>Schema 生成模型</p>
+        :type SchemaModel: str
+        """
+        self._EmbeddingModel = None
+        self._QaExtractModel = None
+        self._SchemaModel = None
+
+    @property
+    def EmbeddingModel(self):
+        r"""<p>Embedding 模型</p>
+        :rtype: str
+        """
+        return self._EmbeddingModel
+
+    @EmbeddingModel.setter
+    def EmbeddingModel(self, EmbeddingModel):
+        self._EmbeddingModel = EmbeddingModel
+
+    @property
+    def QaExtractModel(self):
+        r"""<p>QA 抽取模型</p>
+        :rtype: str
+        """
+        return self._QaExtractModel
+
+    @QaExtractModel.setter
+    def QaExtractModel(self, QaExtractModel):
+        self._QaExtractModel = QaExtractModel
+
+    @property
+    def SchemaModel(self):
+        r"""<p>Schema 生成模型</p>
+        :rtype: str
+        """
+        return self._SchemaModel
+
+    @SchemaModel.setter
+    def SchemaModel(self, SchemaModel):
+        self._SchemaModel = SchemaModel
+
+
+    def _deserialize(self, params):
+        self._EmbeddingModel = params.get("EmbeddingModel")
+        self._QaExtractModel = params.get("QaExtractModel")
+        self._SchemaModel = params.get("SchemaModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBModifyExtendFields(AbstractModel):
+    r"""知识库修改扩展字段（用于触发特殊操作）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: <p>扩展操作：1=触发恢复超量<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KB_EXTENDED_ACTION_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_EXTENDED_ACTION_RESUME_EXCEEDED</td><td>1</td><td>触发恢复超量（将知识库从超量状态恢复为正常状态）</td></tr></tbody></table></p>
+        :type Action: int
+        """
+        self._Action = None
+
+    @property
+    def Action(self):
+        r"""<p>扩展操作：1=触发恢复超量<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KB_EXTENDED_ACTION_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_EXTENDED_ACTION_RESUME_EXCEEDED</td><td>1</td><td>触发恢复超量（将知识库从超量状态恢复为正常状态）</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBRetrievalConfig(AbstractModel):
+    r"""单个知识库检索配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DbRetrievalConfig: <p>数据库检索配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbRetrievalConfig: :class:`tencentcloud.adp.v20260520.models.DBRetrievalConfig`
+        :param _DocRetrievalConfig: <p>文档检索配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DocRetrievalConfig: :class:`tencentcloud.adp.v20260520.models.DocRetrievalConfig`
+        :param _KbId: <p>知识库 ID</p>
+        :type KbId: str
+        :param _OptionConfig: <p>检索可选配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptionConfig: :class:`tencentcloud.adp.v20260520.models.RetrievalOption`
+        :param _QaRetrievalConfig: <p>QA 检索配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QaRetrievalConfig: :class:`tencentcloud.adp.v20260520.models.QARetrievalConfig`
+        :param _RerankConfig: <p>rerank 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RerankConfig: :class:`tencentcloud.adp.v20260520.models.RerankConfig`
+        :param _SearchFilterConfig: <p>检索过滤配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchFilterConfig: :class:`tencentcloud.adp.v20260520.models.SearchFilterConfig`
+        :param _StrategyType: <p>检索策略：1=混合，2=语义，3=关键词，4=无<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SEARCH_STRATEGY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_STRATEGY_TYPE_MIXING</td><td>1</td><td>混合检索</td></tr><tr><td>SEARCH_STRATEGY_TYPE_SEMANTIC</td><td>2</td><td>语义检索</td></tr><tr><td>SEARCH_STRATEGY_TYPE_KEYWORD</td><td>3</td><td>关键词检索</td></tr><tr><td>SEARCH_STRATEGY_TYPE_NONE</td><td>4</td><td>无语义/向量检索</td></tr></tbody></table></p>
+        :type StrategyType: int
+        :param _TextToSqlModel: <p>text2sql 模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextToSqlModel: :class:`tencentcloud.adp.v20260520.models.ModelDetailInfo`
+        """
+        self._DbRetrievalConfig = None
+        self._DocRetrievalConfig = None
+        self._KbId = None
+        self._OptionConfig = None
+        self._QaRetrievalConfig = None
+        self._RerankConfig = None
+        self._SearchFilterConfig = None
+        self._StrategyType = None
+        self._TextToSqlModel = None
+
+    @property
+    def DbRetrievalConfig(self):
+        r"""<p>数据库检索配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DBRetrievalConfig`
+        """
+        return self._DbRetrievalConfig
+
+    @DbRetrievalConfig.setter
+    def DbRetrievalConfig(self, DbRetrievalConfig):
+        self._DbRetrievalConfig = DbRetrievalConfig
+
+    @property
+    def DocRetrievalConfig(self):
+        r"""<p>文档检索配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocRetrievalConfig`
+        """
+        return self._DocRetrievalConfig
+
+    @DocRetrievalConfig.setter
+    def DocRetrievalConfig(self, DocRetrievalConfig):
+        self._DocRetrievalConfig = DocRetrievalConfig
+
+    @property
+    def KbId(self):
+        r"""<p>知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def OptionConfig(self):
+        r"""<p>检索可选配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.RetrievalOption`
+        """
+        return self._OptionConfig
+
+    @OptionConfig.setter
+    def OptionConfig(self, OptionConfig):
+        self._OptionConfig = OptionConfig
+
+    @property
+    def QaRetrievalConfig(self):
+        r"""<p>QA 检索配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QARetrievalConfig`
+        """
+        return self._QaRetrievalConfig
+
+    @QaRetrievalConfig.setter
+    def QaRetrievalConfig(self, QaRetrievalConfig):
+        self._QaRetrievalConfig = QaRetrievalConfig
+
+    @property
+    def RerankConfig(self):
+        r"""<p>rerank 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.RerankConfig`
+        """
+        return self._RerankConfig
+
+    @RerankConfig.setter
+    def RerankConfig(self, RerankConfig):
+        self._RerankConfig = RerankConfig
+
+    @property
+    def SearchFilterConfig(self):
+        r"""<p>检索过滤配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SearchFilterConfig`
+        """
+        return self._SearchFilterConfig
+
+    @SearchFilterConfig.setter
+    def SearchFilterConfig(self, SearchFilterConfig):
+        self._SearchFilterConfig = SearchFilterConfig
+
+    @property
+    def StrategyType(self):
+        r"""<p>检索策略：1=混合，2=语义，3=关键词，4=无<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SEARCH_STRATEGY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_STRATEGY_TYPE_MIXING</td><td>1</td><td>混合检索</td></tr><tr><td>SEARCH_STRATEGY_TYPE_SEMANTIC</td><td>2</td><td>语义检索</td></tr><tr><td>SEARCH_STRATEGY_TYPE_KEYWORD</td><td>3</td><td>关键词检索</td></tr><tr><td>SEARCH_STRATEGY_TYPE_NONE</td><td>4</td><td>无语义/向量检索</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def TextToSqlModel(self):
+        r"""<p>text2sql 模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModelDetailInfo`
+        """
+        return self._TextToSqlModel
+
+    @TextToSqlModel.setter
+    def TextToSqlModel(self, TextToSqlModel):
+        self._TextToSqlModel = TextToSqlModel
+
+
+    def _deserialize(self, params):
+        if params.get("DbRetrievalConfig") is not None:
+            self._DbRetrievalConfig = DBRetrievalConfig()
+            self._DbRetrievalConfig._deserialize(params.get("DbRetrievalConfig"))
+        if params.get("DocRetrievalConfig") is not None:
+            self._DocRetrievalConfig = DocRetrievalConfig()
+            self._DocRetrievalConfig._deserialize(params.get("DocRetrievalConfig"))
+        self._KbId = params.get("KbId")
+        if params.get("OptionConfig") is not None:
+            self._OptionConfig = RetrievalOption()
+            self._OptionConfig._deserialize(params.get("OptionConfig"))
+        if params.get("QaRetrievalConfig") is not None:
+            self._QaRetrievalConfig = QARetrievalConfig()
+            self._QaRetrievalConfig._deserialize(params.get("QaRetrievalConfig"))
+        if params.get("RerankConfig") is not None:
+            self._RerankConfig = RerankConfig()
+            self._RerankConfig._deserialize(params.get("RerankConfig"))
+        if params.get("SearchFilterConfig") is not None:
+            self._SearchFilterConfig = SearchFilterConfig()
+            self._SearchFilterConfig._deserialize(params.get("SearchFilterConfig"))
+        self._StrategyType = params.get("StrategyType")
+        if params.get("TextToSqlModel") is not None:
+            self._TextToSqlModel = ModelDetailInfo()
+            self._TextToSqlModel._deserialize(params.get("TextToSqlModel"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBSpec(AbstractModel):
+    r"""知识库可写属性集合（配合 update_mask 使用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _EsConfig: <p>ES 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EsConfig: :class:`tencentcloud.adp.v20260520.models.ESConfig`
+        :param _ModelConfig: <p>模型配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelConfig: :class:`tencentcloud.adp.v20260520.models.KBModelConfig`
+        :param _Name: <p>知识库名称</p>
+        :type Name: str
+        :param _OwnerId: <p>所有者 ID</p>
+        :type OwnerId: str
+        """
+        self._Description = None
+        self._EsConfig = None
+        self._ModelConfig = None
+        self._Name = None
+        self._OwnerId = None
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EsConfig(self):
+        r"""<p>ES 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ESConfig`
+        """
+        return self._EsConfig
+
+    @EsConfig.setter
+    def EsConfig(self, EsConfig):
+        self._EsConfig = EsConfig
+
+    @property
+    def ModelConfig(self):
+        r"""<p>模型配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBModelConfig`
+        """
+        return self._ModelConfig
+
+    @ModelConfig.setter
+    def ModelConfig(self, ModelConfig):
+        self._ModelConfig = ModelConfig
+
+    @property
+    def Name(self):
+        r"""<p>知识库名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def OwnerId(self):
+        r"""<p>所有者 ID</p>
+        :rtype: str
+        """
+        return self._OwnerId
+
+    @OwnerId.setter
+    def OwnerId(self, OwnerId):
+        self._OwnerId = OwnerId
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        if params.get("EsConfig") is not None:
+            self._EsConfig = ESConfig()
+            self._EsConfig._deserialize(params.get("EsConfig"))
+        if params.get("ModelConfig") is not None:
+            self._ModelConfig = KBModelConfig()
+            self._ModelConfig._deserialize(params.get("ModelConfig"))
+        self._Name = params.get("Name")
+        self._OwnerId = params.get("OwnerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBSummary(AbstractModel):
+    r"""知识库摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppList: <p>关联的应用列表，仅共享知识库返回</p>
+        :type AppList: list of Identity
+        :param _CreateTime: <p>创建时间（Unix 秒）</p>
+        :type CreateTime: str
+        :param _Creator: <p>创建人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _DocCount: <p>文档数</p>
+        :type DocCount: int
+        :param _IsExceeded: <p>是否超量</p>
+        :type IsExceeded: bool
+        :param _KbId: <p>知识库 ID</p>
+        :type KbId: str
+        :param _KbType: <p>类型：1=默认知识库，2=共享知识库<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_TYPE_DEFAULT</td><td>1</td><td>默认知识库</td></tr><tr><td>KB_TYPE_SHARED</td><td>2</td><td>共享知识库</td></tr></tbody></table></p>
+        :type KbType: int
+        :param _LatestOperator: <p>最后操作人，仅共享知识库返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestOperator: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Name: <p>知识库名称</p>
+        :type Name: str
+        :param _ProcessingFlagList: <p>处理中状态列表</p>
+        :type ProcessingFlagList: list of int
+        :param _SharedSubType: <p>共享子类型：1=普通，2=公众号<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARED_KB_SUB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SHARED_KB_SUB_TYPE_NORMAL</td><td>1</td><td>普通</td></tr><tr><td>SHARED_KB_SUB_TYPE_PUBLIC_ACCOUNT</td><td>2</td><td>公众号</td></tr></tbody></table></p>
+        :type SharedSubType: int
+        :param _UpdateTime: <p>更新时间（Unix 秒）</p>
+        :type UpdateTime: str
+        """
+        self._AppList = None
+        self._CreateTime = None
+        self._Creator = None
+        self._Description = None
+        self._DocCount = None
+        self._IsExceeded = None
+        self._KbId = None
+        self._KbType = None
+        self._LatestOperator = None
+        self._Name = None
+        self._ProcessingFlagList = None
+        self._SharedSubType = None
+        self._UpdateTime = None
+
+    @property
+    def AppList(self):
+        r"""<p>关联的应用列表，仅共享知识库返回</p>
+        :rtype: list of Identity
+        """
+        return self._AppList
+
+    @AppList.setter
+    def AppList(self, AppList):
+        self._AppList = AppList
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（Unix 秒）</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Creator(self):
+        r"""<p>创建人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DocCount(self):
+        r"""<p>文档数</p>
+        :rtype: int
+        """
+        return self._DocCount
+
+    @DocCount.setter
+    def DocCount(self, DocCount):
+        self._DocCount = DocCount
+
+    @property
+    def IsExceeded(self):
+        r"""<p>是否超量</p>
+        :rtype: bool
+        """
+        return self._IsExceeded
+
+    @IsExceeded.setter
+    def IsExceeded(self, IsExceeded):
+        self._IsExceeded = IsExceeded
+
+    @property
+    def KbId(self):
+        r"""<p>知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def KbType(self):
+        r"""<p>类型：1=默认知识库，2=共享知识库<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KB_TYPE_DEFAULT</td><td>1</td><td>默认知识库</td></tr><tr><td>KB_TYPE_SHARED</td><td>2</td><td>共享知识库</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._KbType
+
+    @KbType.setter
+    def KbType(self, KbType):
+        self._KbType = KbType
+
+    @property
+    def LatestOperator(self):
+        r"""<p>最后操作人，仅共享知识库返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._LatestOperator
+
+    @LatestOperator.setter
+    def LatestOperator(self, LatestOperator):
+        self._LatestOperator = LatestOperator
+
+    @property
+    def Name(self):
+        r"""<p>知识库名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ProcessingFlagList(self):
+        r"""<p>处理中状态列表</p>
+        :rtype: list of int
+        """
+        return self._ProcessingFlagList
+
+    @ProcessingFlagList.setter
+    def ProcessingFlagList(self, ProcessingFlagList):
+        self._ProcessingFlagList = ProcessingFlagList
+
+    @property
+    def SharedSubType(self):
+        r"""<p>共享子类型：1=普通，2=公众号<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARED_KB_SUB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SHARED_KB_SUB_TYPE_NORMAL</td><td>1</td><td>普通</td></tr><tr><td>SHARED_KB_SUB_TYPE_PUBLIC_ACCOUNT</td><td>2</td><td>公众号</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._SharedSubType
+
+    @SharedSubType.setter
+    def SharedSubType(self, SharedSubType):
+        self._SharedSubType = SharedSubType
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（Unix 秒）</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        if params.get("AppList") is not None:
+            self._AppList = []
+            for item in params.get("AppList"):
+                obj = Identity()
+                obj._deserialize(item)
+                self._AppList.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Creator") is not None:
+            self._Creator = Operator()
+            self._Creator._deserialize(params.get("Creator"))
+        self._Description = params.get("Description")
+        self._DocCount = params.get("DocCount")
+        self._IsExceeded = params.get("IsExceeded")
+        self._KbId = params.get("KbId")
+        self._KbType = params.get("KbType")
+        if params.get("LatestOperator") is not None:
+            self._LatestOperator = Operator()
+            self._LatestOperator._deserialize(params.get("LatestOperator"))
+        self._Name = params.get("Name")
+        self._ProcessingFlagList = params.get("ProcessingFlagList")
+        self._SharedSubType = params.get("SharedSubType")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KVPair(AbstractModel):
+    r"""通用键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键
+        :type Key: str
+        :param _Value: 值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeResult(AbstractModel):
+    r"""单条检索结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: <p>置信度</p>
+        :type Confidence: float
+        :param _KnowledgeType: <p>命中知识类型：1=问答，2=文档片段，3=数据库，4=图谱<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_QA</td><td>1</td><td>问答</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_DOC</td><td>2</td><td>文档片段</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_DB</td><td>3</td><td>数据库</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_GRAPH</td><td>4</td><td>图谱</td></tr></tbody></table></p>
+        :type KnowledgeType: int
+        :param _RecallTypeList: <p>召回类型列表</p>
+        :type RecallTypeList: list of int
+        :param _ResultPayload: <p>结果负载</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultPayload: :class:`tencentcloud.adp.v20260520.models.SearchResultPayload`
+        :param _ResultType: <p>检索结果类型<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SEARCH_RESULT_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_RESULT_TYPE_RETRIEVAL</td><td>1</td><td>普通检索结果</td></tr><tr><td>SEARCH_RESULT_TYPE_TEXT_TO_SQL</td><td>2</td><td>text2sql 结果</td></tr><tr><td>SEARCH_RESULT_TYPE_IMAGE_SEARCH_IMAGE</td><td>3</td><td></td></tr><tr><td>SEARCH_RESULT_TYPE_TEXT_SEARCH_IMAGE</td><td>4</td><td></td></tr></tbody></table></p>
+        :type ResultType: int
+        :param _SimilarQuestionExtra: <p>相似问额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SimilarQuestionExtra: :class:`tencentcloud.adp.v20260520.models.SimilarQuestionExtra`
+        :param _SnippetProfile: <p>知识片段基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnippetProfile: :class:`tencentcloud.adp.v20260520.models.KnowledgeSnippetProfile`
+        :param _SourceInfo: <p>知识来源信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceInfo: :class:`tencentcloud.adp.v20260520.models.KnowledgeSource`
+        """
+        self._Confidence = None
+        self._KnowledgeType = None
+        self._RecallTypeList = None
+        self._ResultPayload = None
+        self._ResultType = None
+        self._SimilarQuestionExtra = None
+        self._SnippetProfile = None
+        self._SourceInfo = None
+
+    @property
+    def Confidence(self):
+        r"""<p>置信度</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def KnowledgeType(self):
+        r"""<p>命中知识类型：1=问答，2=文档片段，3=数据库，4=图谱<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_QA</td><td>1</td><td>问答</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_DOC</td><td>2</td><td>文档片段</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_DB</td><td>3</td><td>数据库</td></tr><tr><td>KNOWLEDGE_SOURCE_TYPE_GRAPH</td><td>4</td><td>图谱</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._KnowledgeType
+
+    @KnowledgeType.setter
+    def KnowledgeType(self, KnowledgeType):
+        self._KnowledgeType = KnowledgeType
+
+    @property
+    def RecallTypeList(self):
+        r"""<p>召回类型列表</p>
+        :rtype: list of int
+        """
+        return self._RecallTypeList
+
+    @RecallTypeList.setter
+    def RecallTypeList(self, RecallTypeList):
+        self._RecallTypeList = RecallTypeList
+
+    @property
+    def ResultPayload(self):
+        r"""<p>结果负载</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SearchResultPayload`
+        """
+        return self._ResultPayload
+
+    @ResultPayload.setter
+    def ResultPayload(self, ResultPayload):
+        self._ResultPayload = ResultPayload
+
+    @property
+    def ResultType(self):
+        r"""<p>检索结果类型<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SEARCH_RESULT_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_RESULT_TYPE_RETRIEVAL</td><td>1</td><td>普通检索结果</td></tr><tr><td>SEARCH_RESULT_TYPE_TEXT_TO_SQL</td><td>2</td><td>text2sql 结果</td></tr><tr><td>SEARCH_RESULT_TYPE_IMAGE_SEARCH_IMAGE</td><td>3</td><td></td></tr><tr><td>SEARCH_RESULT_TYPE_TEXT_SEARCH_IMAGE</td><td>4</td><td></td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._ResultType
+
+    @ResultType.setter
+    def ResultType(self, ResultType):
+        self._ResultType = ResultType
+
+    @property
+    def SimilarQuestionExtra(self):
+        r"""<p>相似问额外信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SimilarQuestionExtra`
+        """
+        return self._SimilarQuestionExtra
+
+    @SimilarQuestionExtra.setter
+    def SimilarQuestionExtra(self, SimilarQuestionExtra):
+        self._SimilarQuestionExtra = SimilarQuestionExtra
+
+    @property
+    def SnippetProfile(self):
+        r"""<p>知识片段基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KnowledgeSnippetProfile`
+        """
+        return self._SnippetProfile
+
+    @SnippetProfile.setter
+    def SnippetProfile(self, SnippetProfile):
+        self._SnippetProfile = SnippetProfile
+
+    @property
+    def SourceInfo(self):
+        r"""<p>知识来源信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KnowledgeSource`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._KnowledgeType = params.get("KnowledgeType")
+        self._RecallTypeList = params.get("RecallTypeList")
+        if params.get("ResultPayload") is not None:
+            self._ResultPayload = SearchResultPayload()
+            self._ResultPayload._deserialize(params.get("ResultPayload"))
+        self._ResultType = params.get("ResultType")
+        if params.get("SimilarQuestionExtra") is not None:
+            self._SimilarQuestionExtra = SimilarQuestionExtra()
+            self._SimilarQuestionExtra._deserialize(params.get("SimilarQuestionExtra"))
+        if params.get("SnippetProfile") is not None:
+            self._SnippetProfile = KnowledgeSnippetProfile()
+            self._SnippetProfile._deserialize(params.get("SnippetProfile"))
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = KnowledgeSource()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeScope(AbstractModel):
+    r"""知识生效范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EffectiveDomain: <p>生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _LabelRefList: <p>适用范围（标签条件）</p>
+        :type LabelRefList: list of LabelRef
+        """
+        self._EffectiveDomain = None
+        self._LabelRefList = None
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def LabelRefList(self):
+        r"""<p>适用范围（标签条件）</p>
+        :rtype: list of LabelRef
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+
+    def _deserialize(self, params):
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = []
+            for item in params.get("LabelRefList"):
+                obj = LabelRef()
+                obj._deserialize(item)
+                self._LabelRefList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeSnippetProfile(AbstractModel):
+    r"""知识片段基础信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>内容</p>
+        :type Content: str
+        :param _DocId: <p>关联文档 ID</p>
+        :type DocId: str
+        :param _DocName: <p>文档名</p>
+        :type DocName: str
+        :param _KbId: <p>知识库 ID</p>
+        :type KbId: str
+        :param _KnowledgeId: <p>知识 ID</p>
+        :type KnowledgeId: str
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _Title: <p>文档标题</p>
+        :type Title: str
+        """
+        self._Content = None
+        self._DocId = None
+        self._DocName = None
+        self._KbId = None
+        self._KnowledgeId = None
+        self._Question = None
+        self._Title = None
+
+    @property
+    def Content(self):
+        r"""<p>内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def DocId(self):
+        r"""<p>关联文档 ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def DocName(self):
+        r"""<p>文档名</p>
+        :rtype: str
+        """
+        return self._DocName
+
+    @DocName.setter
+    def DocName(self, DocName):
+        self._DocName = DocName
+
+    @property
+    def KbId(self):
+        r"""<p>知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def KnowledgeId(self):
+        r"""<p>知识 ID</p>
+        :rtype: str
+        """
+        return self._KnowledgeId
+
+    @KnowledgeId.setter
+    def KnowledgeId(self, KnowledgeId):
+        self._KnowledgeId = KnowledgeId
+
+    @property
+    def Question(self):
+        r"""<p>问题</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Title(self):
+        r"""<p>文档标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._DocId = params.get("DocId")
+        self._DocName = params.get("DocName")
+        self._KbId = params.get("KbId")
+        self._KnowledgeId = params.get("KnowledgeId")
+        self._Question = params.get("Question")
+        self._Title = params.get("Title")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KnowledgeSource(AbstractModel):
+    r"""知识来源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsBigData: <p>是否为大数据</p>
+        :type IsBigData: bool
+        :param _IsShared: <p>是否为共享知识库</p>
+        :type IsShared: bool
+        :param _KbName: <p>知识库名</p>
+        :type KbName: str
+        """
+        self._IsBigData = None
+        self._IsShared = None
+        self._KbName = None
+
+    @property
+    def IsBigData(self):
+        r"""<p>是否为大数据</p>
+        :rtype: bool
+        """
+        return self._IsBigData
+
+    @IsBigData.setter
+    def IsBigData(self, IsBigData):
+        self._IsBigData = IsBigData
+
+    @property
+    def IsShared(self):
+        r"""<p>是否为共享知识库</p>
+        :rtype: bool
+        """
+        return self._IsShared
+
+    @IsShared.setter
+    def IsShared(self, IsShared):
+        self._IsShared = IsShared
+
+    @property
+    def KbName(self):
+        r"""<p>知识库名</p>
+        :rtype: str
+        """
+        return self._KbName
+
+    @KbName.setter
+    def KbName(self, KbName):
+        self._KbName = KbName
+
+
+    def _deserialize(self, params):
+        self._IsBigData = params.get("IsBigData")
+        self._IsShared = params.get("IsShared")
+        self._KbName = params.get("KbName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelModifyFields(AbstractModel):
+    r"""标签可修改字段集合（配合 update_mask 使用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>标签名称</p>
+        :type Name: str
+        :param _TermModifyList: <p>标准词增量修改列表（增/改/删）</p>
+        :type TermModifyList: list of LabelTermModifyItem
+        """
+        self._Name = None
+        self._TermModifyList = None
+
+    @property
+    def Name(self):
+        r"""<p>标签名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TermModifyList(self):
+        r"""<p>标准词增量修改列表（增/改/删）</p>
+        :rtype: list of LabelTermModifyItem
+        """
+        return self._TermModifyList
+
+    @TermModifyList.setter
+    def TermModifyList(self, TermModifyList):
+        self._TermModifyList = TermModifyList
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("TermModifyList") is not None:
+            self._TermModifyList = []
+            for item in params.get("TermModifyList"):
+                obj = LabelTermModifyItem()
+                obj._deserialize(item)
+                self._TermModifyList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelRef(AbstractModel):
+    r"""标签引用（出参用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelId: <p>标签 ID</p>
+        :type LabelId: str
+        :param _LabelName: <p>标签名称</p>
+        :type LabelName: str
+        :param _LabelTermIdList: <p>标签标准词 ID 列表</p>
+        :type LabelTermIdList: list of str
+        :param _LabelTermList: <p>标签标准词列表</p>
+        :type LabelTermList: list of str
+        """
+        self._LabelId = None
+        self._LabelName = None
+        self._LabelTermIdList = None
+        self._LabelTermList = None
+
+    @property
+    def LabelId(self):
+        r"""<p>标签 ID</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LabelName(self):
+        r"""<p>标签名称</p>
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def LabelTermIdList(self):
+        r"""<p>标签标准词 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._LabelTermIdList
+
+    @LabelTermIdList.setter
+    def LabelTermIdList(self, LabelTermIdList):
+        self._LabelTermIdList = LabelTermIdList
+
+    @property
+    def LabelTermList(self):
+        r"""<p>标签标准词列表</p>
+        :rtype: list of str
+        """
+        return self._LabelTermList
+
+    @LabelTermList.setter
+    def LabelTermList(self, LabelTermList):
+        self._LabelTermList = LabelTermList
+
+
+    def _deserialize(self, params):
+        self._LabelId = params.get("LabelId")
+        self._LabelName = params.get("LabelName")
+        self._LabelTermIdList = params.get("LabelTermIdList")
+        self._LabelTermList = params.get("LabelTermList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelRefIdentity(AbstractModel):
+    r"""标签引用身份标识（入参用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelId: <p>标签 ID</p>
+        :type LabelId: str
+        :param _LabelTermIdList: <p>标签标准词 ID 列表</p>
+        :type LabelTermIdList: list of str
+        """
+        self._LabelId = None
+        self._LabelTermIdList = None
+
+    @property
+    def LabelId(self):
+        r"""<p>标签 ID</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LabelTermIdList(self):
+        r"""<p>标签标准词 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._LabelTermIdList
+
+    @LabelTermIdList.setter
+    def LabelTermIdList(self, LabelTermIdList):
+        self._LabelTermIdList = LabelTermIdList
+
+
+    def _deserialize(self, params):
+        self._LabelId = params.get("LabelId")
+        self._LabelTermIdList = params.get("LabelTermIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelRefIdentityList(AbstractModel):
+    r"""标签引用列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemList: <p>标签引用列表</p>
+        :type ItemList: list of LabelRefIdentity
+        """
+        self._ItemList = None
+
+    @property
+    def ItemList(self):
+        r"""<p>标签引用列表</p>
+        :rtype: list of LabelRefIdentity
+        """
+        return self._ItemList
+
+    @ItemList.setter
+    def ItemList(self, ItemList):
+        self._ItemList = ItemList
+
+
+    def _deserialize(self, params):
+        if params.get("ItemList") is not None:
+            self._ItemList = []
+            for item in params.get("ItemList"):
+                obj = LabelRefIdentity()
+                obj._deserialize(item)
+                self._ItemList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelSummary(AbstractModel):
+    r"""标签摘要
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelId: <p>标签 ID</p>
+        :type LabelId: str
+        :param _MetaValue: <p>元数据配置（该标签被设置为元数据时的配置信息）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaValue: :class:`tencentcloud.adp.v20260520.models.MetaValue`
+        :param _Name: <p>标签名称</p>
+        :type Name: str
+        :param _RefCount: <p>引用该标签的资源数</p>
+        :type RefCount: int
+        :param _TermList: <p>标签值（标准词 + 同义词列表）</p>
+        :type TermList: list of LabelTerm
+        :param _TermTotalCount: <p>标签值总数</p>
+        :type TermTotalCount: int
+        """
+        self._LabelId = None
+        self._MetaValue = None
+        self._Name = None
+        self._RefCount = None
+        self._TermList = None
+        self._TermTotalCount = None
+
+    @property
+    def LabelId(self):
+        r"""<p>标签 ID</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def MetaValue(self):
+        r"""<p>元数据配置（该标签被设置为元数据时的配置信息）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MetaValue`
+        """
+        return self._MetaValue
+
+    @MetaValue.setter
+    def MetaValue(self, MetaValue):
+        self._MetaValue = MetaValue
+
+    @property
+    def Name(self):
+        r"""<p>标签名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RefCount(self):
+        r"""<p>引用该标签的资源数</p>
+        :rtype: int
+        """
+        return self._RefCount
+
+    @RefCount.setter
+    def RefCount(self, RefCount):
+        self._RefCount = RefCount
+
+    @property
+    def TermList(self):
+        r"""<p>标签值（标准词 + 同义词列表）</p>
+        :rtype: list of LabelTerm
+        """
+        return self._TermList
+
+    @TermList.setter
+    def TermList(self, TermList):
+        self._TermList = TermList
+
+    @property
+    def TermTotalCount(self):
+        r"""<p>标签值总数</p>
+        :rtype: int
+        """
+        return self._TermTotalCount
+
+    @TermTotalCount.setter
+    def TermTotalCount(self, TermTotalCount):
+        self._TermTotalCount = TermTotalCount
+
+
+    def _deserialize(self, params):
+        self._LabelId = params.get("LabelId")
+        if params.get("MetaValue") is not None:
+            self._MetaValue = MetaValue()
+            self._MetaValue._deserialize(params.get("MetaValue"))
+        self._Name = params.get("Name")
+        self._RefCount = params.get("RefCount")
+        if params.get("TermList") is not None:
+            self._TermList = []
+            for item in params.get("TermList"):
+                obj = LabelTerm()
+                obj._deserialize(item)
+                self._TermList.append(obj)
+        self._TermTotalCount = params.get("TermTotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelTerm(AbstractModel):
+    r"""标准词（标签值的一项）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SynonymList: <p>同义词列表</p>
+        :type SynonymList: list of str
+        :param _Term: <p>标准词</p>
+        :type Term: str
+        :param _TermId: <p>标准词 ID（由后台生成，创建时不传）</p>
+        :type TermId: str
+        """
+        self._SynonymList = None
+        self._Term = None
+        self._TermId = None
+
+    @property
+    def SynonymList(self):
+        r"""<p>同义词列表</p>
+        :rtype: list of str
+        """
+        return self._SynonymList
+
+    @SynonymList.setter
+    def SynonymList(self, SynonymList):
+        self._SynonymList = SynonymList
+
+    @property
+    def Term(self):
+        r"""<p>标准词</p>
+        :rtype: str
+        """
+        return self._Term
+
+    @Term.setter
+    def Term(self, Term):
+        self._Term = Term
+
+    @property
+    def TermId(self):
+        r"""<p>标准词 ID（由后台生成，创建时不传）</p>
+        :rtype: str
+        """
+        return self._TermId
+
+    @TermId.setter
+    def TermId(self, TermId):
+        self._TermId = TermId
+
+
+    def _deserialize(self, params):
+        self._SynonymList = params.get("SynonymList")
+        self._Term = params.get("Term")
+        self._TermId = params.get("TermId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelTermCheckResult(AbstractModel):
+    r"""标准词校验项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckResult: <p>校验结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckResult: :class:`tencentcloud.adp.v20260520.models.CheckResult`
+        :param _Term: <p>待校验的标准词</p>
+        :type Term: str
+        :param _TermId: <p>已存在时返回对应标准词 ID</p>
+        :type TermId: str
+        """
+        self._CheckResult = None
+        self._Term = None
+        self._TermId = None
+
+    @property
+    def CheckResult(self):
+        r"""<p>校验结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CheckResult`
+        """
+        return self._CheckResult
+
+    @CheckResult.setter
+    def CheckResult(self, CheckResult):
+        self._CheckResult = CheckResult
+
+    @property
+    def Term(self):
+        r"""<p>待校验的标准词</p>
+        :rtype: str
+        """
+        return self._Term
+
+    @Term.setter
+    def Term(self, Term):
+        self._Term = Term
+
+    @property
+    def TermId(self):
+        r"""<p>已存在时返回对应标准词 ID</p>
+        :rtype: str
+        """
+        return self._TermId
+
+    @TermId.setter
+    def TermId(self, TermId):
+        self._TermId = TermId
+
+
+    def _deserialize(self, params):
+        if params.get("CheckResult") is not None:
+            self._CheckResult = CheckResult()
+            self._CheckResult._deserialize(params.get("CheckResult"))
+        self._Term = params.get("Term")
+        self._TermId = params.get("TermId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelTermModifyItem(AbstractModel):
+    r"""标签标准词修改项（增量更新）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyAction: <p>操作类型（不可为 0，取值：1=新增，2=修改，3=删除）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>MODIFY_ACTION_UNKNOWN</td><td>0</td><td></td></tr><tr><td>MODIFY_ACTION_CREATE</td><td>1</td><td>新增</td></tr><tr><td>MODIFY_ACTION_UPDATE</td><td>2</td><td>修改</td></tr><tr><td>MODIFY_ACTION_DELETE</td><td>3</td><td>删除</td></tr></tbody></table></p>
+        :type ModifyAction: int
+        :param _SynonymList: <p>同义词列表（CREATE 与 UPDATE 时传完整同义词集合，覆盖式更新）</p>
+        :type SynonymList: list of str
+        :param _Term: <p>标准词（CREATE 与 UPDATE 必填，DELETE 可留空）</p>
+        :type Term: str
+        :param _TermId: <p>标准词 ID（UPDATE 与 DELETE 必填，CREATE 留空由后台生成）</p>
+        :type TermId: str
+        """
+        self._ModifyAction = None
+        self._SynonymList = None
+        self._Term = None
+        self._TermId = None
+
+    @property
+    def ModifyAction(self):
+        r"""<p>操作类型（不可为 0，取值：1=新增，2=修改，3=删除）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>MODIFY_ACTION_UNKNOWN</td><td>0</td><td></td></tr><tr><td>MODIFY_ACTION_CREATE</td><td>1</td><td>新增</td></tr><tr><td>MODIFY_ACTION_UPDATE</td><td>2</td><td>修改</td></tr><tr><td>MODIFY_ACTION_DELETE</td><td>3</td><td>删除</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._ModifyAction
+
+    @ModifyAction.setter
+    def ModifyAction(self, ModifyAction):
+        self._ModifyAction = ModifyAction
+
+    @property
+    def SynonymList(self):
+        r"""<p>同义词列表（CREATE 与 UPDATE 时传完整同义词集合，覆盖式更新）</p>
+        :rtype: list of str
+        """
+        return self._SynonymList
+
+    @SynonymList.setter
+    def SynonymList(self, SynonymList):
+        self._SynonymList = SynonymList
+
+    @property
+    def Term(self):
+        r"""<p>标准词（CREATE 与 UPDATE 必填，DELETE 可留空）</p>
+        :rtype: str
+        """
+        return self._Term
+
+    @Term.setter
+    def Term(self, Term):
+        self._Term = Term
+
+    @property
+    def TermId(self):
+        r"""<p>标准词 ID（UPDATE 与 DELETE 必填，CREATE 留空由后台生成）</p>
+        :rtype: str
+        """
+        return self._TermId
+
+    @TermId.setter
+    def TermId(self, TermId):
+        self._TermId = TermId
+
+
+    def _deserialize(self, params):
+        self._ModifyAction = params.get("ModifyAction")
+        self._SynonymList = params.get("SynonymList")
+        self._Term = params.get("Term")
+        self._TermId = params.get("TermId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21480,6 +28922,102 @@ class ManualOnlySchedule(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetaValue(AbstractModel):
+    r"""元数据值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>元数据值名称（仅展示使用）</p>
+        :type Name: str
+        :param _RefAll: <p>是否引用该类型下的全部值（true 时 ref_value_id 应为 0）</p>
+        :type RefAll: bool
+        :param _RefValueId: <p>元数据引用的业务 ID（属性 ID、分类 ID 等）；ref_all=true 时该字段应为 0</p>
+        :type RefValueId: str
+        :param _Scene: <p>元数据使用场景：1=仅检索使用，2=检索和生成都使用<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>META_SCENE_UNKNOWN</td><td>0</td><td>未知</td></tr><tr><td>META_SCENE_SEARCH_ONLY</td><td>1</td><td>仅检索使用</td></tr><tr><td>META_SCENE_ALL</td><td>2</td><td>检索和生成都使用</td></tr></tbody></table></p>
+        :type Scene: int
+        :param _ValueType: <p>元数据值类型：1=属性标签，2=文档分类，3=问答分类<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>META_VALUE_TYPE_UNKNOWN</td><td>0</td><td>未知</td></tr><tr><td>META_VALUE_TYPE_TAG</td><td>1</td><td>属性标签</td></tr><tr><td>META_VALUE_TYPE_DOC_CATEGORY</td><td>2</td><td>文档分类</td></tr><tr><td>META_VALUE_TYPE_QA_CATEGORY</td><td>3</td><td>问答分类</td></tr></tbody></table></p>
+        :type ValueType: int
+        """
+        self._Name = None
+        self._RefAll = None
+        self._RefValueId = None
+        self._Scene = None
+        self._ValueType = None
+
+    @property
+    def Name(self):
+        r"""<p>元数据值名称（仅展示使用）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RefAll(self):
+        r"""<p>是否引用该类型下的全部值（true 时 ref_value_id 应为 0）</p>
+        :rtype: bool
+        """
+        return self._RefAll
+
+    @RefAll.setter
+    def RefAll(self, RefAll):
+        self._RefAll = RefAll
+
+    @property
+    def RefValueId(self):
+        r"""<p>元数据引用的业务 ID（属性 ID、分类 ID 等）；ref_all=true 时该字段应为 0</p>
+        :rtype: str
+        """
+        return self._RefValueId
+
+    @RefValueId.setter
+    def RefValueId(self, RefValueId):
+        self._RefValueId = RefValueId
+
+    @property
+    def Scene(self):
+        r"""<p>元数据使用场景：1=仅检索使用，2=检索和生成都使用<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>META_SCENE_UNKNOWN</td><td>0</td><td>未知</td></tr><tr><td>META_SCENE_SEARCH_ONLY</td><td>1</td><td>仅检索使用</td></tr><tr><td>META_SCENE_ALL</td><td>2</td><td>检索和生成都使用</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def ValueType(self):
+        r"""<p>元数据值类型：1=属性标签，2=文档分类，3=问答分类<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>META_VALUE_TYPE_UNKNOWN</td><td>0</td><td>未知</td></tr><tr><td>META_VALUE_TYPE_TAG</td><td>1</td><td>属性标签</td></tr><tr><td>META_VALUE_TYPE_DOC_CATEGORY</td><td>2</td><td>文档分类</td></tr><tr><td>META_VALUE_TYPE_QA_CATEGORY</td><td>3</td><td>问答分类</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._RefAll = params.get("RefAll")
+        self._RefValueId = params.get("RefValueId")
+        self._Scene = params.get("Scene")
+        self._ValueType = params.get("ValueType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23294,6 +30832,134 @@ class ModifyAppTriggerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCategoryRequest(AbstractModel):
+    r"""ModifyCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>待修改的分类 ID（必须大于 0）</p>
+        :type CategoryId: str
+        :param _CategoryType: <p>分类类型（不可为 0，取值：1=文档分类，2=问答分类）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>文档分类</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>问答分类</td></tr></tbody></table></p>
+        :type CategoryType: int
+        :param _Fields: <p>修改字段内容（不可为空，与 update_mask 配合使用）</p>
+        :type Fields: :class:`tencentcloud.adp.v20260520.models.CategoryModifyFields`
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _UpdateMask: <p>字段掩码：指定要修改的字段（支持的 Paths：Name）</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._CategoryId = None
+        self._CategoryType = None
+        self._Fields = None
+        self._KbId = None
+        self._UpdateMask = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>待修改的分类 ID（必须大于 0）</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CategoryType(self):
+        r"""<p>分类类型（不可为 0，取值：1=文档分类，2=问答分类）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CATEGORY_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CATEGORY_TYPE_DOC</td><td>1</td><td>文档分类</td></tr><tr><td>CATEGORY_TYPE_QA</td><td>2</td><td>问答分类</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._CategoryType
+
+    @CategoryType.setter
+    def CategoryType(self, CategoryType):
+        self._CategoryType = CategoryType
+
+    @property
+    def Fields(self):
+        r"""<p>修改字段内容（不可为空，与 update_mask 配合使用）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CategoryModifyFields`
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def UpdateMask(self):
+        r"""<p>字段掩码：指定要修改的字段（支持的 Paths：Name）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._CategoryType = params.get("CategoryType")
+        if params.get("Fields") is not None:
+            self._Fields = CategoryModifyFields()
+            self._Fields._deserialize(params.get("Fields"))
+        self._KbId = params.get("KbId")
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCategoryResponse(AbstractModel):
+    r"""ModifyCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyChannelRequest(AbstractModel):
     r"""ModifyChannel请求参数结构体
 
@@ -23396,6 +31062,130 @@ class ModifyChannelRequest(AbstractModel):
 
 class ModifyChannelResponse(AbstractModel):
     r"""ModifyChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyConflictQARequest(AbstractModel):
+    r"""ModifyConflictQA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _ConflictGroupId: <p>冲突组 ID（全局忽略时可不传）</p>
+        :type ConflictGroupId: str
+        :param _IsIgnoreAll: <p>是否全局忽略（忽略当前KB下所有待处理冲突问）</p>
+        :type IsIgnoreAll: bool
+        :param _QaIdList: <p>决策涉及的 QA ID 列表（KEEP 与 DELETE 必填）</p>
+        :type QaIdList: list of str
+        :param _Resolution: <p>冲突解决策略：1=保留，2=忽略，3=删除（全局忽略时可不传）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CONFLICT_RESOLUTION_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CONFLICT_RESOLUTION_KEEP</td><td>1</td><td>保留</td></tr><tr><td>CONFLICT_RESOLUTION_IGNORE</td><td>2</td><td>忽略</td></tr><tr><td>CONFLICT_RESOLUTION_DELETE</td><td>3</td><td>删除</td></tr><tr><td>CONFLICT_RESOLUTION_MERGE</td><td>4</td><td>合并</td></tr><tr><td>CONFLICT_RESOLUTION_REPLACE</td><td>5</td><td>替换</td></tr><tr><td>CONFLICT_RESOLUTION_RENAME</td><td>6</td><td>重命名</td></tr></tbody></table></p>
+        :type Resolution: int
+        """
+        self._KbId = None
+        self._ConflictGroupId = None
+        self._IsIgnoreAll = None
+        self._QaIdList = None
+        self._Resolution = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def ConflictGroupId(self):
+        r"""<p>冲突组 ID（全局忽略时可不传）</p>
+        :rtype: str
+        """
+        return self._ConflictGroupId
+
+    @ConflictGroupId.setter
+    def ConflictGroupId(self, ConflictGroupId):
+        self._ConflictGroupId = ConflictGroupId
+
+    @property
+    def IsIgnoreAll(self):
+        r"""<p>是否全局忽略（忽略当前KB下所有待处理冲突问）</p>
+        :rtype: bool
+        """
+        return self._IsIgnoreAll
+
+    @IsIgnoreAll.setter
+    def IsIgnoreAll(self, IsIgnoreAll):
+        self._IsIgnoreAll = IsIgnoreAll
+
+    @property
+    def QaIdList(self):
+        r"""<p>决策涉及的 QA ID 列表（KEEP 与 DELETE 必填）</p>
+        :rtype: list of str
+        """
+        return self._QaIdList
+
+    @QaIdList.setter
+    def QaIdList(self, QaIdList):
+        self._QaIdList = QaIdList
+
+    @property
+    def Resolution(self):
+        r"""<p>冲突解决策略：1=保留，2=忽略，3=删除（全局忽略时可不传）<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CONFLICT_RESOLUTION_UNKNOWN</td><td>0</td><td></td></tr><tr><td>CONFLICT_RESOLUTION_KEEP</td><td>1</td><td>保留</td></tr><tr><td>CONFLICT_RESOLUTION_IGNORE</td><td>2</td><td>忽略</td></tr><tr><td>CONFLICT_RESOLUTION_DELETE</td><td>3</td><td>删除</td></tr><tr><td>CONFLICT_RESOLUTION_MERGE</td><td>4</td><td>合并</td></tr><tr><td>CONFLICT_RESOLUTION_REPLACE</td><td>5</td><td>替换</td></tr><tr><td>CONFLICT_RESOLUTION_RENAME</td><td>6</td><td>重命名</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._ConflictGroupId = params.get("ConflictGroupId")
+        self._IsIgnoreAll = params.get("IsIgnoreAll")
+        self._QaIdList = params.get("QaIdList")
+        self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConflictQAResponse(AbstractModel):
+    r"""ModifyConflictQA返回参数结构体
 
     """
 
@@ -23603,6 +31393,564 @@ class ModifyConversationResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDocListRequest(AbstractModel):
+    r"""ModifyDocList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocIdList: <p>待修改的文档 ID 列表（数量：1~20）</p>
+        :type DocIdList: list of str
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _CategoryId: <p>归属分类 ID</p>
+        :type CategoryId: str
+        :param _EffectiveDomain: <p>生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _ExpirationPolicy: <p>过期策略（有效时间与超过有效时间后的行为）</p>
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _ExternalLink: <p>外部链接</p>
+        :type ExternalLink: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        :param _LabelRefList: <p>标签列表</p>
+        :type LabelRefList: :class:`tencentcloud.adp.v20260520.models.LabelRefIdentityList`
+        :param _Switch: <p>开关配置</p>
+        :type Switch: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        """
+        self._DocIdList = None
+        self._KbId = None
+        self._CategoryId = None
+        self._EffectiveDomain = None
+        self._ExpirationPolicy = None
+        self._ExternalLink = None
+        self._LabelRefList = None
+        self._Switch = None
+
+    @property
+    def DocIdList(self):
+        r"""<p>待修改的文档 ID 列表（数量：1~20）</p>
+        :rtype: list of str
+        """
+        return self._DocIdList
+
+    @DocIdList.setter
+    def DocIdList(self, DocIdList):
+        self._DocIdList = DocIdList
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def CategoryId(self):
+        r"""<p>归属分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>过期策略（有效时间与超过有效时间后的行为）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def ExternalLink(self):
+        r"""<p>外部链接</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocExternalLink`
+        """
+        return self._ExternalLink
+
+    @ExternalLink.setter
+    def ExternalLink(self, ExternalLink):
+        self._ExternalLink = ExternalLink
+
+    @property
+    def LabelRefList(self):
+        r"""<p>标签列表</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.LabelRefIdentityList`
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+    @property
+    def Switch(self):
+        r"""<p>开关配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocSwitch`
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._DocIdList = params.get("DocIdList")
+        self._KbId = params.get("KbId")
+        self._CategoryId = params.get("CategoryId")
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        if params.get("ExternalLink") is not None:
+            self._ExternalLink = DocExternalLink()
+            self._ExternalLink._deserialize(params.get("ExternalLink"))
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = LabelRefIdentityList()
+            self._LabelRefList._deserialize(params.get("LabelRefList"))
+        if params.get("Switch") is not None:
+            self._Switch = DocSwitch()
+            self._Switch._deserialize(params.get("Switch"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDocListResponse(AbstractModel):
+    r"""ModifyDocList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: <p>批量修改结果</p>
+        :type ResultList: list of OperationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        r"""<p>批量修改结果</p>
+        :rtype: list of OperationResult
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = OperationResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDocRequest(AbstractModel):
+    r"""ModifyDoc请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocId: <p>文档 ID</p>
+        :type DocId: str
+        :param _Fields: <p>修改字段内容（不可为空，与 update_mask 配合使用）</p>
+        :type Fields: :class:`tencentcloud.adp.v20260520.models.DocModifyFields`
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _UpdateMask: <p>字段掩码：指定要修改的字段（支持的 Paths：Name, CategoryId, EffectiveDomain, LabelRefList, ExternalLink, ExpirationPolicy, UpdatePeriod, Switch, ParseConfig, UserAccessConfig）</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._DocId = None
+        self._Fields = None
+        self._KbId = None
+        self._UpdateMask = None
+
+    @property
+    def DocId(self):
+        r"""<p>文档 ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def Fields(self):
+        r"""<p>修改字段内容（不可为空，与 update_mask 配合使用）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocModifyFields`
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def UpdateMask(self):
+        r"""<p>字段掩码：指定要修改的字段（支持的 Paths：Name, CategoryId, EffectiveDomain, LabelRefList, ExternalLink, ExpirationPolicy, UpdatePeriod, Switch, ParseConfig, UserAccessConfig）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+
+    def _deserialize(self, params):
+        self._DocId = params.get("DocId")
+        if params.get("Fields") is not None:
+            self._Fields = DocModifyFields()
+            self._Fields._deserialize(params.get("Fields"))
+        self._KbId = params.get("KbId")
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDocResponse(AbstractModel):
+    r"""ModifyDoc返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyKBRequest(AbstractModel):
+    r"""ModifyKB请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>知识库 ID</p>
+        :type KbId: str
+        :param _Spec: <p>可写属性（与 update_mask 配合使用）</p>
+        :type Spec: :class:`tencentcloud.adp.v20260520.models.KBSpec`
+        :param _UpdateMask: <p>字段掩码：指定要修改的字段（蛇形字段名），未列出的字段忽略</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        :param _ExtendFields: <p>扩展操作（用于承载无法归类到常规字段修改的特殊操作，例如触发超量恢复等；需在 update_mask 中同时传入 &#39;extend_fields&#39; 才会生效，取值参见 KBExtendedAction：1=触发恢复超量）</p>
+        :type ExtendFields: :class:`tencentcloud.adp.v20260520.models.KBModifyExtendFields`
+        """
+        self._KbId = None
+        self._Spec = None
+        self._UpdateMask = None
+        self._ExtendFields = None
+
+    @property
+    def KbId(self):
+        r"""<p>知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def Spec(self):
+        r"""<p>可写属性（与 update_mask 配合使用）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def UpdateMask(self):
+        r"""<p>字段掩码：指定要修改的字段（蛇形字段名），未列出的字段忽略</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+    @property
+    def ExtendFields(self):
+        r"""<p>扩展操作（用于承载无法归类到常规字段修改的特殊操作，例如触发超量恢复等；需在 update_mask 中同时传入 &#39;extend_fields&#39; 才会生效，取值参见 KBExtendedAction：1=触发恢复超量）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBModifyExtendFields`
+        """
+        return self._ExtendFields
+
+    @ExtendFields.setter
+    def ExtendFields(self, ExtendFields):
+        self._ExtendFields = ExtendFields
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("Spec") is not None:
+            self._Spec = KBSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        if params.get("ExtendFields") is not None:
+            self._ExtendFields = KBModifyExtendFields()
+            self._ExtendFields._deserialize(params.get("ExtendFields"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyKBResponse(AbstractModel):
+    r"""ModifyKB返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLabelRequest(AbstractModel):
+    r"""ModifyLabel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Fields: <p>修改字段内容（不可为空，与 update_mask 配合使用）</p>
+        :type Fields: :class:`tencentcloud.adp.v20260520.models.LabelModifyFields`
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _LabelId: <p>待修改的标签 ID</p>
+        :type LabelId: str
+        :param _UpdateMask: <p>字段掩码：指定要修改的字段（支持的 Paths：Name, TermModifyList）</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._Fields = None
+        self._KbId = None
+        self._LabelId = None
+        self._UpdateMask = None
+
+    @property
+    def Fields(self):
+        r"""<p>修改字段内容（不可为空，与 update_mask 配合使用）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.LabelModifyFields`
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def LabelId(self):
+        r"""<p>待修改的标签 ID</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def UpdateMask(self):
+        r"""<p>字段掩码：指定要修改的字段（支持的 Paths：Name, TermModifyList）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+
+    def _deserialize(self, params):
+        if params.get("Fields") is not None:
+            self._Fields = LabelModifyFields()
+            self._Fields._deserialize(params.get("Fields"))
+        self._KbId = params.get("KbId")
+        self._LabelId = params.get("LabelId")
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLabelResponse(AbstractModel):
+    r"""ModifyLabel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TermList: <p>修改后的标签值（标准词 + 同义词列表）</p>
+        :type TermList: list of LabelTerm
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TermList = None
+        self._RequestId = None
+
+    @property
+    def TermList(self):
+        r"""<p>修改后的标签值（标准词 + 同义词列表）</p>
+        :rtype: list of LabelTerm
+        """
+        return self._TermList
+
+    @TermList.setter
+    def TermList(self, TermList):
+        self._TermList = TermList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TermList") is not None:
+            self._TermList = []
+            for item in params.get("TermList"):
+                obj = LabelTerm()
+                obj._deserialize(item)
+                self._TermList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23854,6 +32202,297 @@ class ModifyPluginRequest(AbstractModel):
 
 class ModifyPluginResponse(AbstractModel):
     r"""ModifyPlugin返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyQAListRequest(AbstractModel):
+    r"""ModifyQAList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _QaIdList: <p>待修改的 QA ID 列表（数量：1~20）</p>
+        :type QaIdList: list of str
+        :param _CategoryId: <p>分类 ID</p>
+        :type CategoryId: str
+        :param _EffectiveDomain: <p>生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _ExpirationPolicy: <p>过期策略（有效时间与超过有效时间后的行为）</p>
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _IsAccepted: <p>是否采纳（校验通过）</p>
+        :type IsAccepted: bool
+        :param _LabelRefList: <p>适用范围（标签条件列表）</p>
+        :type LabelRefList: :class:`tencentcloud.adp.v20260520.models.LabelRefIdentityList`
+        """
+        self._KbId = None
+        self._QaIdList = None
+        self._CategoryId = None
+        self._EffectiveDomain = None
+        self._ExpirationPolicy = None
+        self._IsAccepted = None
+        self._LabelRefList = None
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def QaIdList(self):
+        r"""<p>待修改的 QA ID 列表（数量：1~20）</p>
+        :rtype: list of str
+        """
+        return self._QaIdList
+
+    @QaIdList.setter
+    def QaIdList(self, QaIdList):
+        self._QaIdList = QaIdList
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>过期策略（有效时间与超过有效时间后的行为）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def IsAccepted(self):
+        r"""<p>是否采纳（校验通过）</p>
+        :rtype: bool
+        """
+        return self._IsAccepted
+
+    @IsAccepted.setter
+    def IsAccepted(self, IsAccepted):
+        self._IsAccepted = IsAccepted
+
+    @property
+    def LabelRefList(self):
+        r"""<p>适用范围（标签条件列表）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.LabelRefIdentityList`
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._QaIdList = params.get("QaIdList")
+        self._CategoryId = params.get("CategoryId")
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        self._IsAccepted = params.get("IsAccepted")
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = LabelRefIdentityList()
+            self._LabelRefList._deserialize(params.get("LabelRefList"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQAListResponse(AbstractModel):
+    r"""ModifyQAList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultList: <p>批量修改结果</p>
+        :type ResultList: list of OperationResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResultList = None
+        self._RequestId = None
+
+    @property
+    def ResultList(self):
+        r"""<p>批量修改结果</p>
+        :rtype: list of OperationResult
+        """
+        return self._ResultList
+
+    @ResultList.setter
+    def ResultList(self, ResultList):
+        self._ResultList = ResultList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResultList") is not None:
+            self._ResultList = []
+            for item in params.get("ResultList"):
+                obj = OperationResult()
+                obj._deserialize(item)
+                self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyQARequest(AbstractModel):
+    r"""ModifyQA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Fields: <p>修改字段内容（与 update_mask 配合使用）</p>
+        :type Fields: :class:`tencentcloud.adp.v20260520.models.QAModifyFields`
+        :param _KbId: <p>所属知识库 ID</p>
+        :type KbId: str
+        :param _QaId: <p>QA ID</p>
+        :type QaId: str
+        :param _UpdateMask: <p>字段掩码：指定要修改的字段（支持的 Paths：Question, Answer, CategoryId, DocId, LabelRefList, QuestionDescription, ExpirationPolicy, SimilarQuestionList, EffectiveDomain, IsAccepted）</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._Fields = None
+        self._KbId = None
+        self._QaId = None
+        self._UpdateMask = None
+
+    @property
+    def Fields(self):
+        r"""<p>修改字段内容（与 update_mask 配合使用）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QAModifyFields`
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+    @property
+    def KbId(self):
+        r"""<p>所属知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def QaId(self):
+        r"""<p>QA ID</p>
+        :rtype: str
+        """
+        return self._QaId
+
+    @QaId.setter
+    def QaId(self, QaId):
+        self._QaId = QaId
+
+    @property
+    def UpdateMask(self):
+        r"""<p>字段掩码：指定要修改的字段（支持的 Paths：Question, Answer, CategoryId, DocId, LabelRefList, QuestionDescription, ExpirationPolicy, SimilarQuestionList, EffectiveDomain, IsAccepted）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+
+    def _deserialize(self, params):
+        if params.get("Fields") is not None:
+            self._Fields = QAModifyFields()
+            self._Fields._deserialize(params.get("Fields"))
+        self._KbId = params.get("KbId")
+        self._QaId = params.get("QaId")
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyQAResponse(AbstractModel):
+    r"""ModifyQA返回参数结构体
 
     """
 
@@ -25098,6 +33737,123 @@ class OnceSchedule(AbstractModel):
         
 
 
+class OperationResult(AbstractModel):
+    r"""通用操作结果项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>资源 ID</p>
+        :type Id: str
+        :param _Reason: <p>失败原因（succeeded=false 时填充）</p>
+        :type Reason: str
+        :param _Succeeded: <p>是否成功</p>
+        :type Succeeded: bool
+        """
+        self._Id = None
+        self._Reason = None
+        self._Succeeded = None
+
+    @property
+    def Id(self):
+        r"""<p>资源 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Reason(self):
+        r"""<p>失败原因（succeeded=false 时填充）</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Succeeded(self):
+        r"""<p>是否成功</p>
+        :rtype: bool
+        """
+        return self._Succeeded
+
+    @Succeeded.setter
+    def Succeeded(self, Succeeded):
+        self._Succeeded = Succeeded
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Reason = params.get("Reason")
+        self._Succeeded = params.get("Succeeded")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Operator(AbstractModel):
+    r"""通用操作人信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: <p>用户 ID</p>
+        :type UserId: str
+        :param _UserName: <p>用户姓名</p>
+        :type UserName: str
+        """
+        self._UserId = None
+        self._UserName = None
+
+    @property
+    def UserId(self):
+        r"""<p>用户 ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""<p>用户姓名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PauseAppTriggerRequest(AbstractModel):
     r"""PauseAppTrigger请求参数结构体
 
@@ -26327,6 +35083,1140 @@ class PromptRewriteModel(AbstractModel):
         
 
 
+class QACreateSpec(AbstractModel):
+    r"""QA 创建规格（一次性输入的非持久化数据）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _Answer: <p>答案</p>
+        :type Answer: str
+        :param _CategoryId: <p>分类 ID</p>
+        :type CategoryId: str
+        :param _DocId: <p>关联文档 ID</p>
+        :type DocId: str
+        :param _EffectiveDomain: <p>知识生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _ExpirationPolicy: <p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _LabelRefList: <p>适用范围（标签条件）</p>
+        :type LabelRefList: list of LabelRefIdentity
+        :param _QuestionDescription: <p>问题描述</p>
+        :type QuestionDescription: str
+        :param _SimilarQuestionList: <p>相似问列表</p>
+        :type SimilarQuestionList: list of str
+        """
+        self._Question = None
+        self._Answer = None
+        self._CategoryId = None
+        self._DocId = None
+        self._EffectiveDomain = None
+        self._ExpirationPolicy = None
+        self._LabelRefList = None
+        self._QuestionDescription = None
+        self._SimilarQuestionList = None
+
+    @property
+    def Question(self):
+        r"""<p>问题</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Answer(self):
+        r"""<p>答案</p>
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def DocId(self):
+        r"""<p>关联文档 ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>知识生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def LabelRefList(self):
+        r"""<p>适用范围（标签条件）</p>
+        :rtype: list of LabelRefIdentity
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+    @property
+    def QuestionDescription(self):
+        r"""<p>问题描述</p>
+        :rtype: str
+        """
+        return self._QuestionDescription
+
+    @QuestionDescription.setter
+    def QuestionDescription(self, QuestionDescription):
+        self._QuestionDescription = QuestionDescription
+
+    @property
+    def SimilarQuestionList(self):
+        r"""<p>相似问列表</p>
+        :rtype: list of str
+        """
+        return self._SimilarQuestionList
+
+    @SimilarQuestionList.setter
+    def SimilarQuestionList(self, SimilarQuestionList):
+        self._SimilarQuestionList = SimilarQuestionList
+
+
+    def _deserialize(self, params):
+        self._Question = params.get("Question")
+        self._Answer = params.get("Answer")
+        self._CategoryId = params.get("CategoryId")
+        self._DocId = params.get("DocId")
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = []
+            for item in params.get("LabelRefList"):
+                obj = LabelRefIdentity()
+                obj._deserialize(item)
+                self._LabelRefList.append(obj)
+        self._QuestionDescription = params.get("QuestionDescription")
+        self._SimilarQuestionList = params.get("SimilarQuestionList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QALifecycle(AbstractModel):
+    r"""QA 生命周期信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: <p>创建时间（Unix 秒）</p>
+        :type CreateTime: str
+        :param _ExpirationPolicy: <p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _Status: <p>状态：1=待校验，2=未采纳，3=导入失败，4=审核中，5=审核失败，6=学习中，7=学习失败，8=导入完成，9=已过期，10=超量失效，11=超量失效恢复中，12=人工申诉中，13=人工申诉失败<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>QA_STATUS_UNKNOWN</td><td>0</td><td></td></tr><tr><td>QA_STATUS_PENDING_VERIFY</td><td>1</td><td>待校验</td></tr><tr><td>QA_STATUS_NOT_ACCEPTED</td><td>2</td><td>未采纳</td></tr><tr><td>QA_STATUS_IMPORT_FAIL</td><td>3</td><td>导入失败</td></tr><tr><td>QA_STATUS_AUDITING</td><td>4</td><td>审核中</td></tr><tr><td>QA_STATUS_AUDIT_FAIL</td><td>5</td><td>审核失败</td></tr><tr><td>QA_STATUS_LEARNING</td><td>6</td><td>学习中</td></tr><tr><td>QA_STATUS_LEARN_FAIL</td><td>7</td><td>学习失败</td></tr><tr><td>QA_STATUS_IMPORTED</td><td>8</td><td>导入完成</td></tr><tr><td>QA_STATUS_EXPIRED</td><td>9</td><td>已过期</td></tr><tr><td>QA_STATUS_QUOTA_INVALID</td><td>10</td><td>超量失效</td></tr><tr><td>QA_STATUS_QUOTA_RECOVERING</td><td>11</td><td>超量失效恢复中</td></tr><tr><td>QA_STATUS_MANUAL_APPEALING</td><td>12</td><td>人工申诉中</td></tr><tr><td>QA_STATUS_MANUAL_APPEAL_FAIL</td><td>13</td><td>人工申诉失败</td></tr></tbody></table></p>
+        :type Status: int
+        :param _StatusDesc: <p>状态描述</p>
+        :type StatusDesc: str
+        :param _StatusMessage: <p>状态附加信息</p>
+        :type StatusMessage: str
+        :param _UpdateTime: <p>更新时间（Unix 秒）</p>
+        :type UpdateTime: str
+        """
+        self._CreateTime = None
+        self._ExpirationPolicy = None
+        self._Status = None
+        self._StatusDesc = None
+        self._StatusMessage = None
+        self._UpdateTime = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（Unix 秒）</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def Status(self):
+        r"""<p>状态：1=待校验，2=未采纳，3=导入失败，4=审核中，5=审核失败，6=学习中，7=学习失败，8=导入完成，9=已过期，10=超量失效，11=超量失效恢复中，12=人工申诉中，13=人工申诉失败<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>QA_STATUS_UNKNOWN</td><td>0</td><td></td></tr><tr><td>QA_STATUS_PENDING_VERIFY</td><td>1</td><td>待校验</td></tr><tr><td>QA_STATUS_NOT_ACCEPTED</td><td>2</td><td>未采纳</td></tr><tr><td>QA_STATUS_IMPORT_FAIL</td><td>3</td><td>导入失败</td></tr><tr><td>QA_STATUS_AUDITING</td><td>4</td><td>审核中</td></tr><tr><td>QA_STATUS_AUDIT_FAIL</td><td>5</td><td>审核失败</td></tr><tr><td>QA_STATUS_LEARNING</td><td>6</td><td>学习中</td></tr><tr><td>QA_STATUS_LEARN_FAIL</td><td>7</td><td>学习失败</td></tr><tr><td>QA_STATUS_IMPORTED</td><td>8</td><td>导入完成</td></tr><tr><td>QA_STATUS_EXPIRED</td><td>9</td><td>已过期</td></tr><tr><td>QA_STATUS_QUOTA_INVALID</td><td>10</td><td>超量失效</td></tr><tr><td>QA_STATUS_QUOTA_RECOVERING</td><td>11</td><td>超量失效恢复中</td></tr><tr><td>QA_STATUS_MANUAL_APPEALING</td><td>12</td><td>人工申诉中</td></tr><tr><td>QA_STATUS_MANUAL_APPEAL_FAIL</td><td>13</td><td>人工申诉失败</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""<p>状态描述</p>
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def StatusMessage(self):
+        r"""<p>状态附加信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（Unix 秒）</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._StatusMessage = params.get("StatusMessage")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QAMetadata(AbstractModel):
+    r"""QA 元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Answer: <p>答案</p>
+        :type Answer: str
+        :param _QaCharCount: <p>问答字符数</p>
+        :type QaCharCount: str
+        :param _QaSize: <p>问答大小（字节，含相似问）</p>
+        :type QaSize: str
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _RefFieldNameList: <p>元数据引用字段名列表（用于显示问答哪些分类和属性被设置为元数据）</p>
+        :type RefFieldNameList: list of str
+        """
+        self._Answer = None
+        self._QaCharCount = None
+        self._QaSize = None
+        self._Question = None
+        self._RefFieldNameList = None
+
+    @property
+    def Answer(self):
+        r"""<p>答案</p>
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def QaCharCount(self):
+        r"""<p>问答字符数</p>
+        :rtype: str
+        """
+        return self._QaCharCount
+
+    @QaCharCount.setter
+    def QaCharCount(self, QaCharCount):
+        self._QaCharCount = QaCharCount
+
+    @property
+    def QaSize(self):
+        r"""<p>问答大小（字节，含相似问）</p>
+        :rtype: str
+        """
+        return self._QaSize
+
+    @QaSize.setter
+    def QaSize(self, QaSize):
+        self._QaSize = QaSize
+
+    @property
+    def Question(self):
+        r"""<p>问题</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def RefFieldNameList(self):
+        r"""<p>元数据引用字段名列表（用于显示问答哪些分类和属性被设置为元数据）</p>
+        :rtype: list of str
+        """
+        return self._RefFieldNameList
+
+    @RefFieldNameList.setter
+    def RefFieldNameList(self, RefFieldNameList):
+        self._RefFieldNameList = RefFieldNameList
+
+
+    def _deserialize(self, params):
+        self._Answer = params.get("Answer")
+        self._QaCharCount = params.get("QaCharCount")
+        self._QaSize = params.get("QaSize")
+        self._Question = params.get("Question")
+        self._RefFieldNameList = params.get("RefFieldNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QAModifyFields(AbstractModel):
+    r"""QA 可修改字段集合（配合 update_mask 使用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Answer: <p>答案</p>
+        :type Answer: str
+        :param _CategoryId: <p>分类 ID</p>
+        :type CategoryId: str
+        :param _DocId: <p>关联文档 ID</p>
+        :type DocId: str
+        :param _EffectiveDomain: <p>知识生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type EffectiveDomain: int
+        :param _ExpirationPolicy: <p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpirationPolicy: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        :param _IsAccepted: <p>是否采纳（校验通过）</p>
+        :type IsAccepted: bool
+        :param _LabelRefList: <p>适用范围（标签条件）</p>
+        :type LabelRefList: list of LabelRefIdentity
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _QuestionDescription: <p>问题描述</p>
+        :type QuestionDescription: str
+        :param _SimilarQuestionList: <p>相似问修改列表</p>
+        :type SimilarQuestionList: list of SimilarQuestionModifySpec
+        """
+        self._Answer = None
+        self._CategoryId = None
+        self._DocId = None
+        self._EffectiveDomain = None
+        self._ExpirationPolicy = None
+        self._IsAccepted = None
+        self._LabelRefList = None
+        self._Question = None
+        self._QuestionDescription = None
+        self._SimilarQuestionList = None
+
+    @property
+    def Answer(self):
+        r"""<p>答案</p>
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def DocId(self):
+        r"""<p>关联文档 ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def EffectiveDomain(self):
+        r"""<p>知识生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._EffectiveDomain
+
+    @EffectiveDomain.setter
+    def EffectiveDomain(self, EffectiveDomain):
+        self._EffectiveDomain = EffectiveDomain
+
+    @property
+    def ExpirationPolicy(self):
+        r"""<p>过期策略（有效时间与超过有效时间后的行为）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationPolicy`
+        """
+        return self._ExpirationPolicy
+
+    @ExpirationPolicy.setter
+    def ExpirationPolicy(self, ExpirationPolicy):
+        self._ExpirationPolicy = ExpirationPolicy
+
+    @property
+    def IsAccepted(self):
+        r"""<p>是否采纳（校验通过）</p>
+        :rtype: bool
+        """
+        return self._IsAccepted
+
+    @IsAccepted.setter
+    def IsAccepted(self, IsAccepted):
+        self._IsAccepted = IsAccepted
+
+    @property
+    def LabelRefList(self):
+        r"""<p>适用范围（标签条件）</p>
+        :rtype: list of LabelRefIdentity
+        """
+        return self._LabelRefList
+
+    @LabelRefList.setter
+    def LabelRefList(self, LabelRefList):
+        self._LabelRefList = LabelRefList
+
+    @property
+    def Question(self):
+        r"""<p>问题</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def QuestionDescription(self):
+        r"""<p>问题描述</p>
+        :rtype: str
+        """
+        return self._QuestionDescription
+
+    @QuestionDescription.setter
+    def QuestionDescription(self, QuestionDescription):
+        self._QuestionDescription = QuestionDescription
+
+    @property
+    def SimilarQuestionList(self):
+        r"""<p>相似问修改列表</p>
+        :rtype: list of SimilarQuestionModifySpec
+        """
+        return self._SimilarQuestionList
+
+    @SimilarQuestionList.setter
+    def SimilarQuestionList(self, SimilarQuestionList):
+        self._SimilarQuestionList = SimilarQuestionList
+
+
+    def _deserialize(self, params):
+        self._Answer = params.get("Answer")
+        self._CategoryId = params.get("CategoryId")
+        self._DocId = params.get("DocId")
+        self._EffectiveDomain = params.get("EffectiveDomain")
+        if params.get("ExpirationPolicy") is not None:
+            self._ExpirationPolicy = ExpirationPolicy()
+            self._ExpirationPolicy._deserialize(params.get("ExpirationPolicy"))
+        self._IsAccepted = params.get("IsAccepted")
+        if params.get("LabelRefList") is not None:
+            self._LabelRefList = []
+            for item in params.get("LabelRefList"):
+                obj = LabelRefIdentity()
+                obj._deserialize(item)
+                self._LabelRefList.append(obj)
+        self._Question = params.get("Question")
+        self._QuestionDescription = params.get("QuestionDescription")
+        if params.get("SimilarQuestionList") is not None:
+            self._SimilarQuestionList = []
+            for item in params.get("SimilarQuestionList"):
+                obj = SimilarQuestionModifySpec()
+                obj._deserialize(item)
+                self._SimilarQuestionList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QAOperator(AbstractModel):
+    r"""QA 操作者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Modifier: <p>修改人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Modifier: :class:`tencentcloud.adp.v20260520.models.Operator`
+        :param _Permission: <p>操作权限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permission: :class:`tencentcloud.adp.v20260520.models.QAPermission`
+        """
+        self._Modifier = None
+        self._Permission = None
+
+    @property
+    def Modifier(self):
+        r"""<p>修改人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Operator`
+        """
+        return self._Modifier
+
+    @Modifier.setter
+    def Modifier(self, Modifier):
+        self._Modifier = Modifier
+
+    @property
+    def Permission(self):
+        r"""<p>操作权限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QAPermission`
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+
+    def _deserialize(self, params):
+        if params.get("Modifier") is not None:
+            self._Modifier = Operator()
+            self._Modifier._deserialize(params.get("Modifier"))
+        if params.get("Permission") is not None:
+            self._Permission = QAPermission()
+            self._Permission._deserialize(params.get("Permission"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QAPermission(AbstractModel):
+    r"""QA 操作权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanAccept: <p>是否可校验（采纳/不采纳）</p>
+        :type CanAccept: bool
+        :param _CanDelete: <p>是否可删除</p>
+        :type CanDelete: bool
+        :param _CanEdit: <p>是否可编辑</p>
+        :type CanEdit: bool
+        """
+        self._CanAccept = None
+        self._CanDelete = None
+        self._CanEdit = None
+
+    @property
+    def CanAccept(self):
+        r"""<p>是否可校验（采纳/不采纳）</p>
+        :rtype: bool
+        """
+        return self._CanAccept
+
+    @CanAccept.setter
+    def CanAccept(self, CanAccept):
+        self._CanAccept = CanAccept
+
+    @property
+    def CanDelete(self):
+        r"""<p>是否可删除</p>
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CanEdit(self):
+        r"""<p>是否可编辑</p>
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+
+    def _deserialize(self, params):
+        self._CanAccept = params.get("CanAccept")
+        self._CanDelete = params.get("CanDelete")
+        self._CanEdit = params.get("CanEdit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QAQuery(AbstractModel):
+    r"""QA 查询条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Query: <p>查询关键词（模糊搜索）</p>
+        :type Query: str
+        :param _QueryScopeList: <p>查询范围（query 作用的字段）：1=问题，2=标签或标签值，3=答案；支持多选，缺省时无效</p>
+        :type QueryScopeList: list of int
+        """
+        self._Query = None
+        self._QueryScopeList = None
+
+    @property
+    def Query(self):
+        r"""<p>查询关键词（模糊搜索）</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def QueryScopeList(self):
+        r"""<p>查询范围（query 作用的字段）：1=问题，2=标签或标签值，3=答案；支持多选，缺省时无效</p>
+        :rtype: list of int
+        """
+        return self._QueryScopeList
+
+    @QueryScopeList.setter
+    def QueryScopeList(self, QueryScopeList):
+        self._QueryScopeList = QueryScopeList
+
+
+    def _deserialize(self, params):
+        self._Query = params.get("Query")
+        self._QueryScopeList = params.get("QueryScopeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QARetrievalConfig(AbstractModel):
+    r"""QA 检索配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Confidence: <p>置信度阈值</p>
+        :type Confidence: float
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        :param _TopN: <p>返回前 N 条</p>
+        :type TopN: int
+        """
+        self._Confidence = None
+        self._Enabled = None
+        self._TopN = None
+
+    @property
+    def Confidence(self):
+        r"""<p>置信度阈值</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def TopN(self):
+        r"""<p>返回前 N 条</p>
+        :rtype: int
+        """
+        return self._TopN
+
+    @TopN.setter
+    def TopN(self, TopN):
+        self._TopN = TopN
+
+
+    def _deserialize(self, params):
+        self._Confidence = params.get("Confidence")
+        self._Enabled = params.get("Enabled")
+        self._TopN = params.get("TopN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QASegmentHighlight(AbstractModel):
+    r"""QA 分片高亮信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndPos: <p>高亮结束位置</p>
+        :type EndPos: str
+        :param _StartPos: <p>高亮起始位置</p>
+        :type StartPos: str
+        """
+        self._EndPos = None
+        self._StartPos = None
+
+    @property
+    def EndPos(self):
+        r"""<p>高亮结束位置</p>
+        :rtype: str
+        """
+        return self._EndPos
+
+    @EndPos.setter
+    def EndPos(self, EndPos):
+        self._EndPos = EndPos
+
+    @property
+    def StartPos(self):
+        r"""<p>高亮起始位置</p>
+        :rtype: str
+        """
+        return self._StartPos
+
+    @StartPos.setter
+    def StartPos(self, StartPos):
+        self._StartPos = StartPos
+
+
+    def _deserialize(self, params):
+        self._EndPos = params.get("EndPos")
+        self._StartPos = params.get("StartPos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QASourceInfo(AbstractModel):
+    r"""QA 来源与关联文档信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DocEffectiveDomain: <p>关联文档的生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :type DocEffectiveDomain: int
+        :param _DocId: <p>关联文档 ID</p>
+        :type DocId: str
+        :param _FileName: <p>关联文档名称</p>
+        :type FileName: str
+        :param _FileType: <p>关联文档类型</p>
+        :type FileType: str
+        :param _SourceDesc: <p>来源描述</p>
+        :type SourceDesc: str
+        :param _SourceType: <p>来源类型：1=文档生成，2=批量导入，3=手动录入<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>QA_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>QA_SOURCE_TYPE_DOC</td><td>1</td><td>文档生成</td></tr><tr><td>QA_SOURCE_TYPE_BATCH_IMPORT</td><td>2</td><td>批量导入</td></tr><tr><td>QA_SOURCE_TYPE_MANUAL</td><td>3</td><td>手动录入</td></tr></tbody></table></p>
+        :type SourceType: int
+        """
+        self._DocEffectiveDomain = None
+        self._DocId = None
+        self._FileName = None
+        self._FileType = None
+        self._SourceDesc = None
+        self._SourceType = None
+
+    @property
+    def DocEffectiveDomain(self):
+        r"""<p>关联文档的生效作用域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_UNKNOWN</td><td>0</td><td></td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_NONE</td><td>1</td><td>停用</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_DEV</td><td>2</td><td>仅开发域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_RELEASE</td><td>3</td><td>仅发布域</td></tr><tr><td>KNOWLEDGE_EFFECTIVE_DOMAIN_ALL</td><td>4</td><td>全域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._DocEffectiveDomain
+
+    @DocEffectiveDomain.setter
+    def DocEffectiveDomain(self, DocEffectiveDomain):
+        self._DocEffectiveDomain = DocEffectiveDomain
+
+    @property
+    def DocId(self):
+        r"""<p>关联文档 ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def FileName(self):
+        r"""<p>关联文档名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        r"""<p>关联文档类型</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def SourceDesc(self):
+        r"""<p>来源描述</p>
+        :rtype: str
+        """
+        return self._SourceDesc
+
+    @SourceDesc.setter
+    def SourceDesc(self, SourceDesc):
+        self._SourceDesc = SourceDesc
+
+    @property
+    def SourceType(self):
+        r"""<p>来源类型：1=文档生成，2=批量导入，3=手动录入<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>QA_SOURCE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>QA_SOURCE_TYPE_DOC</td><td>1</td><td>文档生成</td></tr><tr><td>QA_SOURCE_TYPE_BATCH_IMPORT</td><td>2</td><td>批量导入</td></tr><tr><td>QA_SOURCE_TYPE_MANUAL</td><td>3</td><td>手动录入</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._DocEffectiveDomain = params.get("DocEffectiveDomain")
+        self._DocId = params.get("DocId")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._SourceDesc = params.get("SourceDesc")
+        self._SourceType = params.get("SourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QASummary(AbstractModel):
+    r"""QA 摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryPath: <p>所属分类路径（包含分类 ID、从根节点开始的分类 ID 路径和分类名称路径）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryPath: :class:`tencentcloud.adp.v20260520.models.CategoryPath`
+        :param _KnowledgeScope: <p>知识生效范围</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KnowledgeScope: :class:`tencentcloud.adp.v20260520.models.KnowledgeScope`
+        :param _Lifecycle: <p>生命周期信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lifecycle: :class:`tencentcloud.adp.v20260520.models.QALifecycle`
+        :param _Metadata: <p>元信息（问题/答案/大小统计）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadata: :class:`tencentcloud.adp.v20260520.models.QAMetadata`
+        :param _OperatorInfo: <p>操作者信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorInfo: :class:`tencentcloud.adp.v20260520.models.QAOperator`
+        :param _QaId: <p>QA ID</p>
+        :type QaId: str
+        :param _SimilarQuestion: <p>相似问统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SimilarQuestion: :class:`tencentcloud.adp.v20260520.models.SimilarQuestionStat`
+        :param _SourceInfo: <p>来源信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceInfo: :class:`tencentcloud.adp.v20260520.models.QASourceInfo`
+        """
+        self._CategoryPath = None
+        self._KnowledgeScope = None
+        self._Lifecycle = None
+        self._Metadata = None
+        self._OperatorInfo = None
+        self._QaId = None
+        self._SimilarQuestion = None
+        self._SourceInfo = None
+
+    @property
+    def CategoryPath(self):
+        r"""<p>所属分类路径（包含分类 ID、从根节点开始的分类 ID 路径和分类名称路径）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CategoryPath`
+        """
+        return self._CategoryPath
+
+    @CategoryPath.setter
+    def CategoryPath(self, CategoryPath):
+        self._CategoryPath = CategoryPath
+
+    @property
+    def KnowledgeScope(self):
+        r"""<p>知识生效范围</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KnowledgeScope`
+        """
+        return self._KnowledgeScope
+
+    @KnowledgeScope.setter
+    def KnowledgeScope(self, KnowledgeScope):
+        self._KnowledgeScope = KnowledgeScope
+
+    @property
+    def Lifecycle(self):
+        r"""<p>生命周期信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QALifecycle`
+        """
+        return self._Lifecycle
+
+    @Lifecycle.setter
+    def Lifecycle(self, Lifecycle):
+        self._Lifecycle = Lifecycle
+
+    @property
+    def Metadata(self):
+        r"""<p>元信息（问题/答案/大小统计）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QAMetadata`
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def OperatorInfo(self):
+        r"""<p>操作者信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QAOperator`
+        """
+        return self._OperatorInfo
+
+    @OperatorInfo.setter
+    def OperatorInfo(self, OperatorInfo):
+        self._OperatorInfo = OperatorInfo
+
+    @property
+    def QaId(self):
+        r"""<p>QA ID</p>
+        :rtype: str
+        """
+        return self._QaId
+
+    @QaId.setter
+    def QaId(self, QaId):
+        self._QaId = QaId
+
+    @property
+    def SimilarQuestion(self):
+        r"""<p>相似问统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SimilarQuestionStat`
+        """
+        return self._SimilarQuestion
+
+    @SimilarQuestion.setter
+    def SimilarQuestion(self, SimilarQuestion):
+        self._SimilarQuestion = SimilarQuestion
+
+    @property
+    def SourceInfo(self):
+        r"""<p>来源信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.QASourceInfo`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+
+    def _deserialize(self, params):
+        if params.get("CategoryPath") is not None:
+            self._CategoryPath = CategoryPath()
+            self._CategoryPath._deserialize(params.get("CategoryPath"))
+        if params.get("KnowledgeScope") is not None:
+            self._KnowledgeScope = KnowledgeScope()
+            self._KnowledgeScope._deserialize(params.get("KnowledgeScope"))
+        if params.get("Lifecycle") is not None:
+            self._Lifecycle = QALifecycle()
+            self._Lifecycle._deserialize(params.get("Lifecycle"))
+        if params.get("Metadata") is not None:
+            self._Metadata = QAMetadata()
+            self._Metadata._deserialize(params.get("Metadata"))
+        if params.get("OperatorInfo") is not None:
+            self._OperatorInfo = QAOperator()
+            self._OperatorInfo._deserialize(params.get("OperatorInfo"))
+        self._QaId = params.get("QaId")
+        if params.get("SimilarQuestion") is not None:
+            self._SimilarQuestion = SimilarQuestionStat()
+            self._SimilarQuestion._deserialize(params.get("SimilarQuestion"))
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = QASourceInfo()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReleaseRecord(AbstractModel):
     r"""[数据结构定义] 发布记录
 
@@ -26942,6 +36832,57 @@ class RequestParam(AbstractModel):
         
 
 
+class RerankConfig(AbstractModel):
+    r"""重排配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        """
+        self._Enabled = None
+        self._ModelName = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._ModelName = params.get("ModelName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetConversationRequest(AbstractModel):
     r"""ResetConversation请求参数结构体
 
@@ -27372,6 +37313,84 @@ class ResumeAppTriggerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RetrievalOption(AbstractModel):
+    r"""检索可选配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExpirationAwareness: <p>时效性检索增强配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpirationAwareness: :class:`tencentcloud.adp.v20260520.models.ExpirationAwareness`
+        :param _GraphRag: <p>GraphRAG配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GraphRag: :class:`tencentcloud.adp.v20260520.models.GraphRAG`
+        :param _TableEnhancement: <p>表格增强配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableEnhancement: :class:`tencentcloud.adp.v20260520.models.TableEnhancement`
+        """
+        self._ExpirationAwareness = None
+        self._GraphRag = None
+        self._TableEnhancement = None
+
+    @property
+    def ExpirationAwareness(self):
+        r"""<p>时效性检索增强配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExpirationAwareness`
+        """
+        return self._ExpirationAwareness
+
+    @ExpirationAwareness.setter
+    def ExpirationAwareness(self, ExpirationAwareness):
+        self._ExpirationAwareness = ExpirationAwareness
+
+    @property
+    def GraphRag(self):
+        r"""<p>GraphRAG配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.GraphRAG`
+        """
+        return self._GraphRag
+
+    @GraphRag.setter
+    def GraphRag(self, GraphRag):
+        self._GraphRag = GraphRag
+
+    @property
+    def TableEnhancement(self):
+        r"""<p>表格增强配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TableEnhancement`
+        """
+        return self._TableEnhancement
+
+    @TableEnhancement.setter
+    def TableEnhancement(self, TableEnhancement):
+        self._TableEnhancement = TableEnhancement
+
+
+    def _deserialize(self, params):
+        if params.get("ExpirationAwareness") is not None:
+            self._ExpirationAwareness = ExpirationAwareness()
+            self._ExpirationAwareness._deserialize(params.get("ExpirationAwareness"))
+        if params.get("GraphRag") is not None:
+            self._GraphRag = GraphRAG()
+            self._GraphRag._deserialize(params.get("GraphRag"))
+        if params.get("TableEnhancement") is not None:
+            self._TableEnhancement = TableEnhancement()
+            self._TableEnhancement._deserialize(params.get("TableEnhancement"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RetryReleaseRequest(AbstractModel):
     r"""RetryRelease请求参数结构体
 
@@ -27690,6 +37709,597 @@ class RunAppTriggerNowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SearchAdvancedConfig(AbstractModel):
+    r"""检索高级配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FinalRerankConfig: <p>最终 rerank 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinalRerankConfig: :class:`tencentcloud.adp.v20260520.models.FinalRerankConfig`
+        :param _KbRetrievalList: <p>各知识库的检索配置</p>
+        :type KbRetrievalList: list of KBRetrievalConfig
+        :param _KnowledgeType: <p>检索知识类型：1=文档和问答，2=拒答<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_DOC_QA</td><td>1</td><td>文档和问答</td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_REJECTED_QUESTION</td><td>2</td><td>拒答</td></tr></tbody></table></p>
+        :type KnowledgeType: int
+        :param _RecallCount: <p>最终返回结果数</p>
+        :type RecallCount: int
+        """
+        self._FinalRerankConfig = None
+        self._KbRetrievalList = None
+        self._KnowledgeType = None
+        self._RecallCount = None
+
+    @property
+    def FinalRerankConfig(self):
+        r"""<p>最终 rerank 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FinalRerankConfig`
+        """
+        return self._FinalRerankConfig
+
+    @FinalRerankConfig.setter
+    def FinalRerankConfig(self, FinalRerankConfig):
+        self._FinalRerankConfig = FinalRerankConfig
+
+    @property
+    def KbRetrievalList(self):
+        r"""<p>各知识库的检索配置</p>
+        :rtype: list of KBRetrievalConfig
+        """
+        return self._KbRetrievalList
+
+    @KbRetrievalList.setter
+    def KbRetrievalList(self, KbRetrievalList):
+        self._KbRetrievalList = KbRetrievalList
+
+    @property
+    def KnowledgeType(self):
+        r"""<p>检索知识类型：1=文档和问答，2=拒答<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_DOC_QA</td><td>1</td><td>文档和问答</td></tr><tr><td>SEARCH_KNOWLEDGE_TYPE_REJECTED_QUESTION</td><td>2</td><td>拒答</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._KnowledgeType
+
+    @KnowledgeType.setter
+    def KnowledgeType(self, KnowledgeType):
+        self._KnowledgeType = KnowledgeType
+
+    @property
+    def RecallCount(self):
+        r"""<p>最终返回结果数</p>
+        :rtype: int
+        """
+        return self._RecallCount
+
+    @RecallCount.setter
+    def RecallCount(self, RecallCount):
+        self._RecallCount = RecallCount
+
+
+    def _deserialize(self, params):
+        if params.get("FinalRerankConfig") is not None:
+            self._FinalRerankConfig = FinalRerankConfig()
+            self._FinalRerankConfig._deserialize(params.get("FinalRerankConfig"))
+        if params.get("KbRetrievalList") is not None:
+            self._KbRetrievalList = []
+            for item in params.get("KbRetrievalList"):
+                obj = KBRetrievalConfig()
+                obj._deserialize(item)
+                self._KbRetrievalList.append(obj)
+        self._KnowledgeType = params.get("KnowledgeType")
+        self._RecallCount = params.get("RecallCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchBilling(AbstractModel):
+    r"""检索计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingTagList: <p>计费标签列表</p>
+        :type BillingTagList: list of KVPair
+        :param _FinanceSubBusinessType: <p>计费子业务类型</p>
+        :type FinanceSubBusinessType: str
+        """
+        self._BillingTagList = None
+        self._FinanceSubBusinessType = None
+
+    @property
+    def BillingTagList(self):
+        r"""<p>计费标签列表</p>
+        :rtype: list of KVPair
+        """
+        return self._BillingTagList
+
+    @BillingTagList.setter
+    def BillingTagList(self, BillingTagList):
+        self._BillingTagList = BillingTagList
+
+    @property
+    def FinanceSubBusinessType(self):
+        r"""<p>计费子业务类型</p>
+        :rtype: str
+        """
+        return self._FinanceSubBusinessType
+
+    @FinanceSubBusinessType.setter
+    def FinanceSubBusinessType(self, FinanceSubBusinessType):
+        self._FinanceSubBusinessType = FinanceSubBusinessType
+
+
+    def _deserialize(self, params):
+        if params.get("BillingTagList") is not None:
+            self._BillingTagList = []
+            for item in params.get("BillingTagList"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._BillingTagList.append(obj)
+        self._FinanceSubBusinessType = params.get("FinanceSubBusinessType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchContext(AbstractModel):
+    r"""检索请求上下文信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallSource: <p>请求来源<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CALL_SOURCE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>CALL_SOURCE_RAG</td><td>1</td><td>标准模式</td></tr><tr><td>CALL_SOURCE_WORKFLOW</td><td>2</td><td>工作流</td></tr><tr><td>CALL_SOURCE_PLUGIN</td><td>3</td><td>插件</td></tr><tr><td>CALL_SOURCE_OPENCLAW</td><td>4</td><td>openclaw</td></tr><tr><td>CALL_SOURCE_RECALL_TEST</td><td>5</td><td>召回测试</td></tr><tr><td>CALL_SOURCE_RECALL_TEST_DIFF</td><td>6</td><td>召回测试在对比的场景，同样需要触发检索接口。区别这种case前端不需要更新最新配置。因为对比1，2，3 可能最后保存的是2</td></tr></tbody></table></p>
+        :type CallSource: int
+        :param _Domain: <p>adp域：1=开发域，2=生产域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>ADP_DOMAIN_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>ADP_DOMAIN_DEV</td><td>1</td><td>开发域</td></tr><tr><td>ADP_DOMAIN_PROD</td><td>2</td><td>生产域</td></tr></tbody></table></p>
+        :type Domain: int
+        :param _VisitorId: <p>访客 ID</p>
+        :type VisitorId: str
+        """
+        self._CallSource = None
+        self._Domain = None
+        self._VisitorId = None
+
+    @property
+    def CallSource(self):
+        r"""<p>请求来源<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>CALL_SOURCE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>CALL_SOURCE_RAG</td><td>1</td><td>标准模式</td></tr><tr><td>CALL_SOURCE_WORKFLOW</td><td>2</td><td>工作流</td></tr><tr><td>CALL_SOURCE_PLUGIN</td><td>3</td><td>插件</td></tr><tr><td>CALL_SOURCE_OPENCLAW</td><td>4</td><td>openclaw</td></tr><tr><td>CALL_SOURCE_RECALL_TEST</td><td>5</td><td>召回测试</td></tr><tr><td>CALL_SOURCE_RECALL_TEST_DIFF</td><td>6</td><td>召回测试在对比的场景，同样需要触发检索接口。区别这种case前端不需要更新最新配置。因为对比1，2，3 可能最后保存的是2</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._CallSource
+
+    @CallSource.setter
+    def CallSource(self, CallSource):
+        self._CallSource = CallSource
+
+    @property
+    def Domain(self):
+        r"""<p>adp域：1=开发域，2=生产域<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>ADP_DOMAIN_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>ADP_DOMAIN_DEV</td><td>1</td><td>开发域</td></tr><tr><td>ADP_DOMAIN_PROD</td><td>2</td><td>生产域</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def VisitorId(self):
+        r"""<p>访客 ID</p>
+        :rtype: str
+        """
+        return self._VisitorId
+
+    @VisitorId.setter
+    def VisitorId(self, VisitorId):
+        self._VisitorId = VisitorId
+
+
+    def _deserialize(self, params):
+        self._CallSource = params.get("CallSource")
+        self._Domain = params.get("Domain")
+        self._VisitorId = params.get("VisitorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchFilter(AbstractModel):
+    r"""检索过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterType: <p>检索过滤类型<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SEARCH_FILTER_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_FILTER_TYPE_CUSTOMER_LABEL_VALUE</td><td>1</td><td>用户自定义标签值</td></tr><tr><td>SEARCH_FILTER_TYPE_CUSTOMER_LABEL_VALUE_ID</td><td>2</td><td>用户自定义标签值ID</td></tr><tr><td>SEARCH_FILTER_TYPE_DOC_ID</td><td>3</td><td>指定文档 ID 检索</td></tr><tr><td>SEARCH_FILTER_TYPE_DOC_CATEGORY_ID</td><td>4</td><td>指定文档分类 ID 检索</td></tr><tr><td>SEARCH_FILTER_TYPE_DB_TABLE_ID</td><td>5</td><td>指定数据库表 ID 检索</td></tr><tr><td>SEARCH_FILTER_TYPE_KB_SCHEMA_ID</td><td>6</td><td>指定知识库 schema ID</td></tr></tbody></table></p>
+        :type FilterType: int
+        :param _FilterValueList: <p>过滤值列表，根据SearchFilterType取值1：传自定义标签值；2：传自定义标签值ID；3：传文档ID；4：传分类ID</p>
+        :type FilterValueList: list of str
+        :param _LabelId: <p>用户自定义标签 ID</p>
+        :type LabelId: str
+        :param _LogicOp: <p>逻辑运算符：AND 或 OR<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>LOGIC_OPR_NOOP</td><td>0</td><td></td></tr><tr><td>LOGIC_OPR_AND</td><td>1</td><td></td></tr><tr><td>LOGIC_OPR_OR</td><td>2</td><td></td></tr></tbody></table></p>
+        :type LogicOp: int
+        :param _SearchFilterList: <p>嵌套检索过滤</p>
+        :type SearchFilterList: list of SearchFilter
+        """
+        self._FilterType = None
+        self._FilterValueList = None
+        self._LabelId = None
+        self._LogicOp = None
+        self._SearchFilterList = None
+
+    @property
+    def FilterType(self):
+        r"""<p>检索过滤类型<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SEARCH_FILTER_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SEARCH_FILTER_TYPE_CUSTOMER_LABEL_VALUE</td><td>1</td><td>用户自定义标签值</td></tr><tr><td>SEARCH_FILTER_TYPE_CUSTOMER_LABEL_VALUE_ID</td><td>2</td><td>用户自定义标签值ID</td></tr><tr><td>SEARCH_FILTER_TYPE_DOC_ID</td><td>3</td><td>指定文档 ID 检索</td></tr><tr><td>SEARCH_FILTER_TYPE_DOC_CATEGORY_ID</td><td>4</td><td>指定文档分类 ID 检索</td></tr><tr><td>SEARCH_FILTER_TYPE_DB_TABLE_ID</td><td>5</td><td>指定数据库表 ID 检索</td></tr><tr><td>SEARCH_FILTER_TYPE_KB_SCHEMA_ID</td><td>6</td><td>指定知识库 schema ID</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def FilterValueList(self):
+        r"""<p>过滤值列表，根据SearchFilterType取值1：传自定义标签值；2：传自定义标签值ID；3：传文档ID；4：传分类ID</p>
+        :rtype: list of str
+        """
+        return self._FilterValueList
+
+    @FilterValueList.setter
+    def FilterValueList(self, FilterValueList):
+        self._FilterValueList = FilterValueList
+
+    @property
+    def LabelId(self):
+        r"""<p>用户自定义标签 ID</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LogicOp(self):
+        r"""<p>逻辑运算符：AND 或 OR<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>LOGIC_OPR_NOOP</td><td>0</td><td></td></tr><tr><td>LOGIC_OPR_AND</td><td>1</td><td></td></tr><tr><td>LOGIC_OPR_OR</td><td>2</td><td></td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._LogicOp
+
+    @LogicOp.setter
+    def LogicOp(self, LogicOp):
+        self._LogicOp = LogicOp
+
+    @property
+    def SearchFilterList(self):
+        r"""<p>嵌套检索过滤</p>
+        :rtype: list of SearchFilter
+        """
+        return self._SearchFilterList
+
+    @SearchFilterList.setter
+    def SearchFilterList(self, SearchFilterList):
+        self._SearchFilterList = SearchFilterList
+
+
+    def _deserialize(self, params):
+        self._FilterType = params.get("FilterType")
+        self._FilterValueList = params.get("FilterValueList")
+        self._LabelId = params.get("LabelId")
+        self._LogicOp = params.get("LogicOp")
+        if params.get("SearchFilterList") is not None:
+            self._SearchFilterList = []
+            for item in params.get("SearchFilterList"):
+                obj = SearchFilter()
+                obj._deserialize(item)
+                self._SearchFilterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchFilterConfig(AbstractModel):
+    r"""检索过滤配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnlyRetrievalSelectedLabel: <p>是否仅检索选中标签，true:仅检索带有选中标签的知识，false:同时检索带有选中标签和不带任何标签的知识</p>
+        :type OnlyRetrievalSelectedLabel: bool
+        :param _SearchFilter: <p>检索过滤</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchFilter: :class:`tencentcloud.adp.v20260520.models.SearchFilter`
+        """
+        self._OnlyRetrievalSelectedLabel = None
+        self._SearchFilter = None
+
+    @property
+    def OnlyRetrievalSelectedLabel(self):
+        r"""<p>是否仅检索选中标签，true:仅检索带有选中标签的知识，false:同时检索带有选中标签和不带任何标签的知识</p>
+        :rtype: bool
+        """
+        return self._OnlyRetrievalSelectedLabel
+
+    @OnlyRetrievalSelectedLabel.setter
+    def OnlyRetrievalSelectedLabel(self, OnlyRetrievalSelectedLabel):
+        self._OnlyRetrievalSelectedLabel = OnlyRetrievalSelectedLabel
+
+    @property
+    def SearchFilter(self):
+        r"""<p>检索过滤</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SearchFilter`
+        """
+        return self._SearchFilter
+
+    @SearchFilter.setter
+    def SearchFilter(self, SearchFilter):
+        self._SearchFilter = SearchFilter
+
+
+    def _deserialize(self, params):
+        self._OnlyRetrievalSelectedLabel = params.get("OnlyRetrievalSelectedLabel")
+        if params.get("SearchFilter") is not None:
+            self._SearchFilter = SearchFilter()
+            self._SearchFilter._deserialize(params.get("SearchFilter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchInput(AbstractModel):
+    r"""检索输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrlList: <p>图片 URL 列表</p>
+        :type ImageUrlList: list of str
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _SubQuestionList: <p>拆解的子问题列表</p>
+        :type SubQuestionList: list of str
+        """
+        self._ImageUrlList = None
+        self._Question = None
+        self._SubQuestionList = None
+
+    @property
+    def ImageUrlList(self):
+        r"""<p>图片 URL 列表</p>
+        :rtype: list of str
+        """
+        return self._ImageUrlList
+
+    @ImageUrlList.setter
+    def ImageUrlList(self, ImageUrlList):
+        self._ImageUrlList = ImageUrlList
+
+    @property
+    def Question(self):
+        r"""<p>问题</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def SubQuestionList(self):
+        r"""<p>拆解的子问题列表</p>
+        :rtype: list of str
+        """
+        return self._SubQuestionList
+
+    @SubQuestionList.setter
+    def SubQuestionList(self, SubQuestionList):
+        self._SubQuestionList = SubQuestionList
+
+
+    def _deserialize(self, params):
+        self._ImageUrlList = params.get("ImageUrlList")
+        self._Question = params.get("Question")
+        self._SubQuestionList = params.get("SubQuestionList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchKnowledgeRequest(AbstractModel):
+    r"""SearchKnowledge请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AdvancedConfig: <p>检索高级配置</p>
+        :type AdvancedConfig: :class:`tencentcloud.adp.v20260520.models.SearchAdvancedConfig`
+        :param _Input: <p>检索输入</p>
+        :type Input: :class:`tencentcloud.adp.v20260520.models.SearchInput`
+        :param _Context: <p>检索上下文</p>
+        :type Context: :class:`tencentcloud.adp.v20260520.models.SearchContext`
+        :param _SearchBilling: <p>计费信息</p>
+        :type SearchBilling: :class:`tencentcloud.adp.v20260520.models.SearchBilling`
+        """
+        self._AdvancedConfig = None
+        self._Input = None
+        self._Context = None
+        self._SearchBilling = None
+
+    @property
+    def AdvancedConfig(self):
+        r"""<p>检索高级配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SearchAdvancedConfig`
+        """
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
+    @property
+    def Input(self):
+        r"""<p>检索输入</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SearchInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Context(self):
+        r"""<p>检索上下文</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SearchContext`
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def SearchBilling(self):
+        r"""<p>计费信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SearchBilling`
+        """
+        return self._SearchBilling
+
+    @SearchBilling.setter
+    def SearchBilling(self, SearchBilling):
+        self._SearchBilling = SearchBilling
+
+
+    def _deserialize(self, params):
+        if params.get("AdvancedConfig") is not None:
+            self._AdvancedConfig = SearchAdvancedConfig()
+            self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        if params.get("Input") is not None:
+            self._Input = SearchInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Context") is not None:
+            self._Context = SearchContext()
+            self._Context._deserialize(params.get("Context"))
+        if params.get("SearchBilling") is not None:
+            self._SearchBilling = SearchBilling()
+            self._SearchBilling._deserialize(params.get("SearchBilling"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchKnowledgeResponse(AbstractModel):
+    r"""SearchKnowledge返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeList: <p>检索结果列表</p>
+        :type KnowledgeList: list of KnowledgeResult
+        :param _TokenUsageList: <p>消耗的 token 统计</p>
+        :type TokenUsageList: list of TokenUsage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KnowledgeList = None
+        self._TokenUsageList = None
+        self._RequestId = None
+
+    @property
+    def KnowledgeList(self):
+        r"""<p>检索结果列表</p>
+        :rtype: list of KnowledgeResult
+        """
+        return self._KnowledgeList
+
+    @KnowledgeList.setter
+    def KnowledgeList(self, KnowledgeList):
+        self._KnowledgeList = KnowledgeList
+
+    @property
+    def TokenUsageList(self):
+        r"""<p>消耗的 token 统计</p>
+        :rtype: list of TokenUsage
+        """
+        return self._TokenUsageList
+
+    @TokenUsageList.setter
+    def TokenUsageList(self, TokenUsageList):
+        self._TokenUsageList = TokenUsageList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("KnowledgeList") is not None:
+            self._KnowledgeList = []
+            for item in params.get("KnowledgeList"):
+                obj = KnowledgeResult()
+                obj._deserialize(item)
+                self._KnowledgeList.append(obj)
+        if params.get("TokenUsageList") is not None:
+            self._TokenUsageList = []
+            for item in params.get("TokenUsageList"):
+                obj = TokenUsage()
+                obj._deserialize(item)
+                self._TokenUsageList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class SearchResourceStatusInfo(AbstractModel):
     r"""搜索资源状态信息
 
@@ -27716,6 +38326,306 @@ class SearchResourceStatusInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._ResourceStatus = params.get("ResourceStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchResultPayload(AbstractModel):
+    r"""检索结果负载
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GraphData: <p>图谱附加信息（JSON 字符串）</p>
+        :type GraphData: str
+        :param _ImageUrlList: <p>命中的图片 URL 列表</p>
+        :type ImageUrlList: list of str
+        :param _SheetInfo: <p>表格附加信息（JSON 字符串）</p>
+        :type SheetInfo: str
+        """
+        self._GraphData = None
+        self._ImageUrlList = None
+        self._SheetInfo = None
+
+    @property
+    def GraphData(self):
+        r"""<p>图谱附加信息（JSON 字符串）</p>
+        :rtype: str
+        """
+        return self._GraphData
+
+    @GraphData.setter
+    def GraphData(self, GraphData):
+        self._GraphData = GraphData
+
+    @property
+    def ImageUrlList(self):
+        r"""<p>命中的图片 URL 列表</p>
+        :rtype: list of str
+        """
+        return self._ImageUrlList
+
+    @ImageUrlList.setter
+    def ImageUrlList(self, ImageUrlList):
+        self._ImageUrlList = ImageUrlList
+
+    @property
+    def SheetInfo(self):
+        r"""<p>表格附加信息（JSON 字符串）</p>
+        :rtype: str
+        """
+        return self._SheetInfo
+
+    @SheetInfo.setter
+    def SheetInfo(self, SheetInfo):
+        self._SheetInfo = SheetInfo
+
+
+    def _deserialize(self, params):
+        self._GraphData = params.get("GraphData")
+        self._ImageUrlList = params.get("ImageUrlList")
+        self._SheetInfo = params.get("SheetInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimilarQuestion(AbstractModel):
+    r"""QA 相似问
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>相似问内容</p>
+        :type Content: str
+        :param _IsAiGenerated: <p>是否 AI 生成</p>
+        :type IsAiGenerated: bool
+        :param _SimilarQuestionId: <p>相似问 ID</p>
+        :type SimilarQuestionId: str
+        """
+        self._Content = None
+        self._IsAiGenerated = None
+        self._SimilarQuestionId = None
+
+    @property
+    def Content(self):
+        r"""<p>相似问内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def IsAiGenerated(self):
+        r"""<p>是否 AI 生成</p>
+        :rtype: bool
+        """
+        return self._IsAiGenerated
+
+    @IsAiGenerated.setter
+    def IsAiGenerated(self, IsAiGenerated):
+        self._IsAiGenerated = IsAiGenerated
+
+    @property
+    def SimilarQuestionId(self):
+        r"""<p>相似问 ID</p>
+        :rtype: str
+        """
+        return self._SimilarQuestionId
+
+    @SimilarQuestionId.setter
+    def SimilarQuestionId(self, SimilarQuestionId):
+        self._SimilarQuestionId = SimilarQuestionId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._IsAiGenerated = params.get("IsAiGenerated")
+        self._SimilarQuestionId = params.get("SimilarQuestionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimilarQuestionExtra(AbstractModel):
+    r"""相似问额外信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>相似问文本内容</p>
+        :type Content: str
+        :param _SimilarQuestionId: <p>相似问 ID</p>
+        :type SimilarQuestionId: str
+        """
+        self._Content = None
+        self._SimilarQuestionId = None
+
+    @property
+    def Content(self):
+        r"""<p>相似问文本内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def SimilarQuestionId(self):
+        r"""<p>相似问 ID</p>
+        :rtype: str
+        """
+        return self._SimilarQuestionId
+
+    @SimilarQuestionId.setter
+    def SimilarQuestionId(self, SimilarQuestionId):
+        self._SimilarQuestionId = SimilarQuestionId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._SimilarQuestionId = params.get("SimilarQuestionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimilarQuestionModifySpec(AbstractModel):
+    r"""QA 相似问修改项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>相似问内容（CREATE 与 UPDATE 必填）</p>
+        :type Content: str
+        :param _ModifyAction: <p>操作类型：1=新增，2=修改，3=删除<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>MODIFY_ACTION_UNKNOWN</td><td>0</td><td></td></tr><tr><td>MODIFY_ACTION_CREATE</td><td>1</td><td>新增</td></tr><tr><td>MODIFY_ACTION_UPDATE</td><td>2</td><td>修改</td></tr><tr><td>MODIFY_ACTION_DELETE</td><td>3</td><td>删除</td></tr></tbody></table></p>
+        :type ModifyAction: int
+        :param _SimilarQuestionId: <p>相似问 ID（UPDATE 与 DELETE 必填）</p>
+        :type SimilarQuestionId: str
+        """
+        self._Content = None
+        self._ModifyAction = None
+        self._SimilarQuestionId = None
+
+    @property
+    def Content(self):
+        r"""<p>相似问内容（CREATE 与 UPDATE 必填）</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ModifyAction(self):
+        r"""<p>操作类型：1=新增，2=修改，3=删除<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>MODIFY_ACTION_UNKNOWN</td><td>0</td><td></td></tr><tr><td>MODIFY_ACTION_CREATE</td><td>1</td><td>新增</td></tr><tr><td>MODIFY_ACTION_UPDATE</td><td>2</td><td>修改</td></tr><tr><td>MODIFY_ACTION_DELETE</td><td>3</td><td>删除</td></tr></tbody></table></p>
+        :rtype: int
+        """
+        return self._ModifyAction
+
+    @ModifyAction.setter
+    def ModifyAction(self, ModifyAction):
+        self._ModifyAction = ModifyAction
+
+    @property
+    def SimilarQuestionId(self):
+        r"""<p>相似问 ID（UPDATE 与 DELETE 必填）</p>
+        :rtype: str
+        """
+        return self._SimilarQuestionId
+
+    @SimilarQuestionId.setter
+    def SimilarQuestionId(self, SimilarQuestionId):
+        self._SimilarQuestionId = SimilarQuestionId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._ModifyAction = params.get("ModifyAction")
+        self._SimilarQuestionId = params.get("SimilarQuestionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SimilarQuestionStat(AbstractModel):
+    r"""QA 相似问统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SimilarQuestionCount: <p>相似问数量</p>
+        :type SimilarQuestionCount: int
+        :param _SimilarQuestionTips: <p>相似问提示（展示一条相似问样例）</p>
+        :type SimilarQuestionTips: str
+        """
+        self._SimilarQuestionCount = None
+        self._SimilarQuestionTips = None
+
+    @property
+    def SimilarQuestionCount(self):
+        r"""<p>相似问数量</p>
+        :rtype: int
+        """
+        return self._SimilarQuestionCount
+
+    @SimilarQuestionCount.setter
+    def SimilarQuestionCount(self, SimilarQuestionCount):
+        self._SimilarQuestionCount = SimilarQuestionCount
+
+    @property
+    def SimilarQuestionTips(self):
+        r"""<p>相似问提示（展示一条相似问样例）</p>
+        :rtype: str
+        """
+        return self._SimilarQuestionTips
+
+    @SimilarQuestionTips.setter
+    def SimilarQuestionTips(self, SimilarQuestionTips):
+        self._SimilarQuestionTips = SimilarQuestionTips
+
+
+    def _deserialize(self, params):
+        self._SimilarQuestionCount = params.get("SimilarQuestionCount")
+        self._SimilarQuestionTips = params.get("SimilarQuestionTips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29428,6 +40338,42 @@ class SpecialStatusInfo(AbstractModel):
         
 
 
+class SummaryListSwitch(AbstractModel):
+    r"""摘要列表查询通用开关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShowMetadataEnabled: <p>是否显示元数据</p>
+        :type ShowMetadataEnabled: bool
+        """
+        self._ShowMetadataEnabled = None
+
+    @property
+    def ShowMetadataEnabled(self):
+        r"""<p>是否显示元数据</p>
+        :rtype: bool
+        """
+        return self._ShowMetadataEnabled
+
+    @ShowMetadataEnabled.setter
+    def ShowMetadataEnabled(self, ShowMetadataEnabled):
+        self._ShowMetadataEnabled = ShowMetadataEnabled
+
+
+    def _deserialize(self, params):
+        self._ShowMetadataEnabled = params.get("ShowMetadataEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SupportedFileType(AbstractModel):
     r"""支持的文件类型
 
@@ -29535,6 +40481,42 @@ class SystemVariable(AbstractModel):
     def _deserialize(self, params):
         self._Description = params.get("Description")
         self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableEnhancement(AbstractModel):
+    r"""表格增强配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29916,6 +40898,87 @@ class TimerScheduleConfig(AbstractModel):
         if params.get("Weekly") is not None:
             self._Weekly = WeeklySchedule()
             self._Weekly._deserialize(params.get("Weekly"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenUsage(AbstractModel):
+    r"""Token 使用统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CompletionTokens: <p>completion token 数</p>
+        :type CompletionTokens: int
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _PromptTokens: <p>prompt token 数</p>
+        :type PromptTokens: int
+        :param _TotalTokens: <p>总 token 数</p>
+        :type TotalTokens: int
+        """
+        self._CompletionTokens = None
+        self._ModelName = None
+        self._PromptTokens = None
+        self._TotalTokens = None
+
+    @property
+    def CompletionTokens(self):
+        r"""<p>completion token 数</p>
+        :rtype: int
+        """
+        return self._CompletionTokens
+
+    @CompletionTokens.setter
+    def CompletionTokens(self, CompletionTokens):
+        self._CompletionTokens = CompletionTokens
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def PromptTokens(self):
+        r"""<p>prompt token 数</p>
+        :rtype: int
+        """
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def TotalTokens(self):
+        r"""<p>总 token 数</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._CompletionTokens = params.get("CompletionTokens")
+        self._ModelName = params.get("ModelName")
+        self._PromptTokens = params.get("PromptTokens")
+        self._TotalTokens = params.get("TotalTokens")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30875,6 +41938,57 @@ class UsageSummary(AbstractModel):
         self._SourceId = params.get("SourceId")
         self._SourceName = params.get("SourceName")
         self._ViewType = params.get("ViewType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserAccessConfig(AbstractModel):
+    r"""用户访问配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomerKnowledgeId: <p>客户自定义知识 ID</p>
+        :type CustomerKnowledgeId: str
+        :param _IsPublic: <p>文档是否公开</p>
+        :type IsPublic: bool
+        """
+        self._CustomerKnowledgeId = None
+        self._IsPublic = None
+
+    @property
+    def CustomerKnowledgeId(self):
+        r"""<p>客户自定义知识 ID</p>
+        :rtype: str
+        """
+        return self._CustomerKnowledgeId
+
+    @CustomerKnowledgeId.setter
+    def CustomerKnowledgeId(self, CustomerKnowledgeId):
+        self._CustomerKnowledgeId = CustomerKnowledgeId
+
+    @property
+    def IsPublic(self):
+        r"""<p>文档是否公开</p>
+        :rtype: bool
+        """
+        return self._IsPublic
+
+    @IsPublic.setter
+    def IsPublic(self, IsPublic):
+        self._IsPublic = IsPublic
+
+
+    def _deserialize(self, params):
+        self._CustomerKnowledgeId = params.get("CustomerKnowledgeId")
+        self._IsPublic = params.get("IsPublic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

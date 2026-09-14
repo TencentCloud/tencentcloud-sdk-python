@@ -25,6 +25,24 @@ class AdpClient(AbstractClient):
     _endpoint = 'adp.tencentcloudapi.com'
     _service = 'adp'
 
+    async def CheckLabel(
+            self,
+            request: models.CheckLabelRequest,
+            opts: Dict = None,
+    ) -> models.CheckLabelResponse:
+        """
+        校验标签下的标准词是否已存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CopyAgentFromApp(
             self,
             request: models.CopyAgentFromAppRequest,
@@ -115,6 +133,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCategory(
+            self,
+            request: models.CreateCategoryRequest,
+            opts: Dict = None,
+    ) -> models.CreateCategoryResponse:
+        """
+        创建分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateChannel(
             self,
             request: models.CreateChannelRequest,
@@ -146,6 +182,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "CreateConversation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateKB(
+            self,
+            request: models.CreateKBRequest,
+            opts: Dict = None,
+    ) -> models.CreateKBResponse:
+        """
+        创建知识库
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateKB"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateKBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateLabel(
+            self,
+            request: models.CreateLabelRequest,
+            opts: Dict = None,
+    ) -> models.CreateLabelResponse:
+        """
+        创建标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLabelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -187,6 +259,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateQAGenerationTask(
+            self,
+            request: models.CreateQAGenerationTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateQAGenerationTaskResponse:
+        """
+        创建 QA 生成任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateQAGenerationTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateQAGenerationTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateQAList(
+            self,
+            request: models.CreateQAListRequest,
+            opts: Dict = None,
+    ) -> models.CreateQAListResponse:
+        """
+        批量创建 QA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateQAList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateQAListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRelease(
             self,
             request: models.CreateReleaseRequest,
@@ -200,6 +308,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "CreateRelease"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSimilarQuestion(
+            self,
+            request: models.CreateSimilarQuestionRequest,
+            opts: Dict = None,
+    ) -> models.CreateSimilarQuestionResponse:
+        """
+        创建相似问生成任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSimilarQuestion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSimilarQuestionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -367,6 +493,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCategory(
+            self,
+            request: models.DeleteCategoryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCategoryResponse:
+        """
+        删除分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteChannel(
             self,
             request: models.DeleteChannelRequest,
@@ -403,6 +547,60 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDocList(
+            self,
+            request: models.DeleteDocListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDocListResponse:
+        """
+        批量删除文档
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDocList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDocListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteKB(
+            self,
+            request: models.DeleteKBRequest,
+            opts: Dict = None,
+    ) -> models.DeleteKBResponse:
+        """
+        删除知识库
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteKB"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteKBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLabelList(
+            self,
+            request: models.DeleteLabelListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLabelListResponse:
+        """
+        批量删除标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLabelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLabelListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteMsgRecordCategory(
             self,
             request: models.DeleteMsgRecordCategoryRequest,
@@ -434,6 +632,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DeletePlugin"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteQAList(
+            self,
+            request: models.DeleteQAListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteQAListResponse:
+        """
+        批量删除 QA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteQAList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteQAListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -727,6 +943,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCategoryList(
+            self,
+            request: models.DescribeCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCategoryListResponse:
+        """
+        查询分类列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeChannel(
             self,
             request: models.DescribeChannelRequest,
@@ -776,6 +1010,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeConcurrencyLimitDetailList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeConcurrencyLimitDetailListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConflictQA(
+            self,
+            request: models.DescribeConflictQARequest,
+            opts: Dict = None,
+    ) -> models.DescribeConflictQAResponse:
+        """
+        查询冲突问详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConflictQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConflictQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConflictQASummaryList(
+            self,
+            request: models.DescribeConflictQASummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConflictQASummaryListResponse:
+        """
+        查询冲突问列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConflictQASummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConflictQASummaryListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -848,6 +1118,114 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeConversationMessageList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeConversationMessageListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDoc(
+            self,
+            request: models.DescribeDocRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDocResponse:
+        """
+        查询文档详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDoc"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDocResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDocSummaryList(
+            self,
+            request: models.DescribeDocSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDocSummaryListResponse:
+        """
+        查询文档摘要列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDocSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDocSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKB(
+            self,
+            request: models.DescribeKBRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKBResponse:
+        """
+        查询知识库详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKB"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKBSummaryList(
+            self,
+            request: models.DescribeKBSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKBSummaryListResponse:
+        """
+        查询知识库列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKBSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKBSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLabel(
+            self,
+            request: models.DescribeLabelRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLabelResponse:
+        """
+        查询标签详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLabelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLabelSummaryList(
+            self,
+            request: models.DescribeLabelSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLabelSummaryListResponse:
+        """
+        查询标签列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLabelSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLabelSummaryListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -974,6 +1352,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribePluginSummaryList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePluginSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeQA(
+            self,
+            request: models.DescribeQARequest,
+            opts: Dict = None,
+    ) -> models.DescribeQAResponse:
+        """
+        查询 QA 详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeQASummaryList(
+            self,
+            request: models.DescribeQASummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeQASummaryListResponse:
+        """
+        查询 QA 列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQASummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQASummaryListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1195,6 +1609,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExportQA(
+            self,
+            request: models.ExportQARequest,
+            opts: Dict = None,
+    ) -> models.ExportQAResponse:
+        """
+        异步导出 QA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def FavoritePlugin(
             self,
             request: models.FavoritePluginRequest,
@@ -1226,6 +1658,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "FavoriteSkill"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.FavoriteSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ImportDocList(
+            self,
+            request: models.ImportDocListRequest,
+            opts: Dict = None,
+    ) -> models.ImportDocListResponse:
+        """
+        批量导入文档
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ImportDocList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ImportDocListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1285,6 +1735,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyCategory(
+            self,
+            request: models.ModifyCategoryRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCategoryResponse:
+        """
+        修改分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyChannel(
             self,
             request: models.ModifyChannelRequest,
@@ -1303,6 +1771,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyConflictQA(
+            self,
+            request: models.ModifyConflictQARequest,
+            opts: Dict = None,
+    ) -> models.ModifyConflictQAResponse:
+        """
+        修改冲突问
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyConflictQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyConflictQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyConversation(
             self,
             request: models.ModifyConversationRequest,
@@ -1316,6 +1802,78 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "ModifyConversation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDoc(
+            self,
+            request: models.ModifyDocRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDocResponse:
+        """
+        修改单个文档
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDoc"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDocResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDocList(
+            self,
+            request: models.ModifyDocListRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDocListResponse:
+        """
+        批量修改文档
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDocList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDocListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyKB(
+            self,
+            request: models.ModifyKBRequest,
+            opts: Dict = None,
+    ) -> models.ModifyKBResponse:
+        """
+        修改知识库
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyKB"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyKBResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLabel(
+            self,
+            request: models.ModifyLabelRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLabelResponse:
+        """
+        修改标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLabel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLabelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1352,6 +1910,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "ModifyPlugin"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyQA(
+            self,
+            request: models.ModifyQARequest,
+            opts: Dict = None,
+    ) -> models.ModifyQAResponse:
+        """
+        修改单个 QA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyQA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyQAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyQAList(
+            self,
+            request: models.ModifyQAListRequest,
+            opts: Dict = None,
+    ) -> models.ModifyQAListResponse:
+        """
+        批量修改 QA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyQAList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyQAListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1533,6 +2127,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "RunAppTriggerNow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RunAppTriggerNowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SearchKnowledge(
+            self,
+            request: models.SearchKnowledgeRequest,
+            opts: Dict = None,
+    ) -> models.SearchKnowledgeResponse:
+        """
+        知识检索
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchKnowledge"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchKnowledgeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

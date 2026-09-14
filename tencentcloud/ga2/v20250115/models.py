@@ -158,19 +158,19 @@ class AcceleratorRegionSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>地域中文名称。</p>
+        :param _Name: <p>地域名称。</p>
         :type Name: str
         :param _IsAvailable: <p>是否可用；0：不可用，1:可用。</p>
         :type IsAvailable: int
-        :param _Region: <p>地域信息。</p>
+        :param _Region: <p>地域。</p>
         :type Region: str
         :param _AreaName: <p>地区名称。</p>
         :type AreaName: str
-        :param _IsChinaMainland: <p>是否中国地域。</p>
+        :param _IsChinaMainland: <p>是否中国地域。1 代表是中国地域，0代表不是中国地域。</p>
         :type IsChinaMainland: int
         :param _SupportIspType: <p>支持IspType类型。</p>
         :type SupportIspType: list of str
-        :param _IsTencentRegion: <p>是否腾讯地域。</p>
+        :param _IsTencentRegion: <p>是否腾讯云地域。1代表是腾讯云地域，0代表不是。</p>
         :type IsTencentRegion: int
         """
         self._Name = None
@@ -183,7 +183,7 @@ class AcceleratorRegionSet(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>地域中文名称。</p>
+        r"""<p>地域名称。</p>
         :rtype: str
         """
         return self._Name
@@ -205,7 +205,7 @@ class AcceleratorRegionSet(AbstractModel):
 
     @property
     def Region(self):
-        r"""<p>地域信息。</p>
+        r"""<p>地域。</p>
         :rtype: str
         """
         return self._Region
@@ -227,7 +227,7 @@ class AcceleratorRegionSet(AbstractModel):
 
     @property
     def IsChinaMainland(self):
-        r"""<p>是否中国地域。</p>
+        r"""<p>是否中国地域。1 代表是中国地域，0代表不是中国地域。</p>
         :rtype: int
         """
         return self._IsChinaMainland
@@ -249,7 +249,7 @@ class AcceleratorRegionSet(AbstractModel):
 
     @property
     def IsTencentRegion(self):
-        r"""<p>是否腾讯地域。</p>
+        r"""<p>是否腾讯云地域。1代表是腾讯云地域，0代表不是。</p>
         :rtype: int
         """
         return self._IsTencentRegion
@@ -1013,7 +1013,7 @@ class CreateGlobalAcceleratorAccessLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: <p>GA示例唯一Id</p>
+        :param _GlobalAcceleratorId: <p>GA实例唯一Id</p>
         :type GlobalAcceleratorId: str
         :param _ListenerId: <p>监听器Id</p>
         :type ListenerId: str
@@ -1041,7 +1041,7 @@ class CreateGlobalAcceleratorAccessLogRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""<p>GA示例唯一Id</p>
+        r"""<p>GA实例唯一Id</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -3194,7 +3194,7 @@ class DescribeAccelerateRegionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AcceleratorRegionSet: 加速地域信息。
+        :param _AcceleratorRegionSet: <p>加速地域信息。</p>
         :type AcceleratorRegionSet: list of AcceleratorRegionSet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3204,7 +3204,7 @@ class DescribeAccelerateRegionsResponse(AbstractModel):
 
     @property
     def AcceleratorRegionSet(self):
-        r"""加速地域信息。
+        r"""<p>加速地域信息。</p>
         :rtype: list of AcceleratorRegionSet
         """
         return self._AcceleratorRegionSet
@@ -3239,6 +3239,36 @@ class DescribeAccessLogParamRequest(AbstractModel):
     r"""DescribeAccessLogParam请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
+        :type GlobalAcceleratorId: str
+        """
+        self._GlobalAcceleratorId = None
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>全球加速实例ID。</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+
+    def _deserialize(self, params):
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAccessLogParamResponse(AbstractModel):
@@ -3579,23 +3609,26 @@ class DescribeForwardingPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
+        :param _Filters: <p>过滤条件。<li>forwarding-policy-id - String -（过滤条件）策略ID。</li></p>
+        :type Filters: list of Filter
         """
         self._GlobalAcceleratorId = None
         self._ListenerId = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -3606,7 +3639,7 @@ class DescribeForwardingPolicyRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -3617,7 +3650,7 @@ class DescribeForwardingPolicyRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -3628,7 +3661,7 @@ class DescribeForwardingPolicyRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -3637,12 +3670,29 @@ class DescribeForwardingPolicyRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。<li>forwarding-policy-id - String -（过滤条件）策略ID。</li></p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
         self._ListenerId = params.get("ListenerId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3660,9 +3710,9 @@ class DescribeForwardingPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ForwardingPolicySet: 符合条件的策略信息。
+        :param _ForwardingPolicySet: <p>符合条件的策略信息。</p>
         :type ForwardingPolicySet: list of ForwardingPolicySet
-        :param _TotalCount: 符合条件的实例个数。
+        :param _TotalCount: <p>符合条件的实例个数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3673,7 +3723,7 @@ class DescribeForwardingPolicyResponse(AbstractModel):
 
     @property
     def ForwardingPolicySet(self):
-        r"""符合条件的策略信息。
+        r"""<p>符合条件的策略信息。</p>
         :rtype: list of ForwardingPolicySet
         """
         return self._ForwardingPolicySet
@@ -3684,7 +3734,7 @@ class DescribeForwardingPolicyResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例个数。
+        r"""<p>符合条件的实例个数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -3723,26 +3773,29 @@ class DescribeForwardingRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _ForwardingPolicyId: 七层转发规则ID。
+        :param _ForwardingPolicyId: <p>七层转发规则ID。</p>
         :type ForwardingPolicyId: str
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
+        :param _Filters: <p>过滤条件。<li>forwarding-rule-id - String -（过滤条件）规则ID。</li></p>
+        :type Filters: list of Filter
         """
         self._GlobalAcceleratorId = None
         self._ListenerId = None
         self._ForwardingPolicyId = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -3753,7 +3806,7 @@ class DescribeForwardingRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -3764,7 +3817,7 @@ class DescribeForwardingRuleRequest(AbstractModel):
 
     @property
     def ForwardingPolicyId(self):
-        r"""七层转发规则ID。
+        r"""<p>七层转发规则ID。</p>
         :rtype: str
         """
         return self._ForwardingPolicyId
@@ -3775,7 +3828,7 @@ class DescribeForwardingRuleRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -3786,7 +3839,7 @@ class DescribeForwardingRuleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -3795,6 +3848,17 @@ class DescribeForwardingRuleRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。<li>forwarding-rule-id - String -（过滤条件）规则ID。</li></p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
@@ -3802,6 +3866,12 @@ class DescribeForwardingRuleRequest(AbstractModel):
         self._ForwardingPolicyId = params.get("ForwardingPolicyId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3819,9 +3889,9 @@ class DescribeForwardingRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ForwardingRuleSet: 符合条件的规则信息。
+        :param _ForwardingRuleSet: <p>符合条件的规则信息。</p>
         :type ForwardingRuleSet: list of ForwardingRuleSet
-        :param _TotalCount: 符合条件的实例个数。
+        :param _TotalCount: <p>符合条件的实例个数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3832,7 +3902,7 @@ class DescribeForwardingRuleResponse(AbstractModel):
 
     @property
     def ForwardingRuleSet(self):
-        r"""符合条件的规则信息。
+        r"""<p>符合条件的规则信息。</p>
         :rtype: list of ForwardingRuleSet
         """
         return self._ForwardingRuleSet
@@ -3843,7 +3913,7 @@ class DescribeForwardingRuleResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例个数。
+        r"""<p>符合条件的实例个数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4166,10 +4236,13 @@ class DescribeGlobalAcceleratorAclRulesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
         :type Limit: int
+        :param _Filters: <p>过滤条件。<li>global-accelerator-acl-rule-id - String -（过滤条件）ACL规则ID。</li></p>
+        :type Filters: list of Filter
         """
         self._GlobalAcceleratorAclPolicyId = None
         self._Offset = None
         self._Limit = None
+        self._Filters = None
 
     @property
     def GlobalAcceleratorAclPolicyId(self):
@@ -4204,11 +4277,28 @@ class DescribeGlobalAcceleratorAclRulesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。<li>global-accelerator-acl-rule-id - String -（过滤条件）ACL规则ID。</li></p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorAclPolicyId = params.get("GlobalAcceleratorAclPolicyId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4572,14 +4662,14 @@ class DescribeTaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -4608,7 +4698,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态。
+        :param _Status: <p>任务状态。</p><p>枚举值：</p><ul><li>SUCCESS： 任务成功。</li><li>FAILURE： 任务失败。</li><li>RUNNING： 任务运行。</li></ul>
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4618,7 +4708,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态。
+        r"""<p>任务状态。</p><p>枚举值：</p><ul><li>SUCCESS： 任务成功。</li><li>FAILURE： 任务失败。</li><li>RUNNING： 任务运行。</li></ul>
         :rtype: str
         """
         return self._Status
@@ -4738,7 +4828,7 @@ class EndpointGroupConfiguration(AbstractModel):
         :type EndpointGroupRegion: str
         :param _EndpointConfigurations: <p>终端节点配置。</p>
         :type EndpointConfigurations: list of EndpointConfigurations
-        :param _CheckType: <p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li></ul><p>当开启健康检查时此字段必传。</p>
+        :param _CheckType: <p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li><li>HTTPS： 当终端节点组所在监听器协议是HTTPS时，可以选择检查协议为HTTPS。</li></ul><p>当开启健康检查时此字段必传。</p>
         :type CheckType: str
         :param _Description: <p>描述信息。</p><p>默认值：默认值为空，代表不配置描述信息。</p><p>最大长度不能超过100个字节。</p>
         :type Description: str
@@ -4838,7 +4928,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""<p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li></ul><p>当开启健康检查时此字段必传。</p>
+        r"""<p>检查协议。支持配置&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>枚举值：</p><ul><li>TCP： 当终端节点组所在监听器协议是TCP时，可以选择检查协议为TCP。</li><li>HTTP： 当终端节点组所在监听器协议是HTTP或HTTPS时，可以选择检查协议为HTTP。</li><li>PING： 当终端节点组所在监听器协议是UDP时，可以选择检查协议为PING。</li><li>CUSTOM： 当终端节点组所在监听器协议是UDP或TCP时，可以选择检查协议为CUSTOM。</li><li>HTTPS： 当终端节点组所在监听器协议是HTTPS时，可以选择检查协议为HTTPS。</li></ul><p>当开启健康检查时此字段必传。</p>
         :rtype: str
         """
         return self._CheckType
@@ -5166,6 +5256,10 @@ class EndpointGroupConfigurationSet(AbstractModel):
         :type CipherPolicyId: str
         :param _HttpVersion: <p>仅HTTPS回源协议支持选择[&#39;HTTP/1.1&#39;, &#39;HTTP/2&#39;]</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
         :type HttpVersion: str
+        :param _OriginPrivateIps: <p>出终端节点组内网IP</p>
+        :type OriginPrivateIps: list of str
+        :param _OriginPublicCidrs: <p>出终端节点组公网CIDR</p>
+        :type OriginPublicCidrs: list of str
         """
         self._GlobalAcceleratorId = None
         self._ListenerId = None
@@ -5196,6 +5290,8 @@ class EndpointGroupConfigurationSet(AbstractModel):
         self._IspType = None
         self._CipherPolicyId = None
         self._HttpVersion = None
+        self._OriginPrivateIps = None
+        self._OriginPublicCidrs = None
 
     @property
     def GlobalAcceleratorId(self):
@@ -5516,6 +5612,28 @@ class EndpointGroupConfigurationSet(AbstractModel):
     def HttpVersion(self, HttpVersion):
         self._HttpVersion = HttpVersion
 
+    @property
+    def OriginPrivateIps(self):
+        r"""<p>出终端节点组内网IP</p>
+        :rtype: list of str
+        """
+        return self._OriginPrivateIps
+
+    @OriginPrivateIps.setter
+    def OriginPrivateIps(self, OriginPrivateIps):
+        self._OriginPrivateIps = OriginPrivateIps
+
+    @property
+    def OriginPublicCidrs(self):
+        r"""<p>出终端节点组公网CIDR</p>
+        :rtype: list of str
+        """
+        return self._OriginPublicCidrs
+
+    @OriginPublicCidrs.setter
+    def OriginPublicCidrs(self, OriginPublicCidrs):
+        self._OriginPublicCidrs = OriginPublicCidrs
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
@@ -5557,6 +5675,8 @@ class EndpointGroupConfigurationSet(AbstractModel):
         self._IspType = params.get("IspType")
         self._CipherPolicyId = params.get("CipherPolicyId")
         self._HttpVersion = params.get("HttpVersion")
+        self._OriginPrivateIps = params.get("OriginPrivateIps")
+        self._OriginPublicCidrs = params.get("OriginPublicCidrs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5944,6 +6064,171 @@ class GlobalAcceleratorAccessLog(AbstractModel):
     r"""GA访问日志
 
     """
+
+    def __init__(self):
+        r"""
+        :param _LogPushTaskId: <p>日志唯一Id</p>
+        :type LogPushTaskId: str
+        :param _GlobalAcceleratorId: <p>GA实例唯一Id</p>
+        :type GlobalAcceleratorId: str
+        :param _ListenerId: <p>监听器唯一Id</p>
+        :type ListenerId: str
+        :param _EndpointGroupId: <p>终端节点组唯一Id</p>
+        :type EndpointGroupId: str
+        :param _FlowLogDescription: <p>日志任务描述</p>
+        :type FlowLogDescription: str
+        :param _CloudRegion: <p>日志所在地域</p>
+        :type CloudRegion: str
+        :param _CloudLogId: <p>日志主题Id</p>
+        :type CloudLogId: str
+        :param _CloudLogSetId: <p>日志集Id</p>
+        :type CloudLogSetId: str
+        :param _FieldKeys: <p>选择日志采集字段</p>
+        :type FieldKeys: list of str
+        :param _Status: <p>日志任务状态</p><p>枚举值：</p><ul><li>active： 运行中</li><li>stopped： 已暂停</li></ul>
+        :type Status: str
+        """
+        self._LogPushTaskId = None
+        self._GlobalAcceleratorId = None
+        self._ListenerId = None
+        self._EndpointGroupId = None
+        self._FlowLogDescription = None
+        self._CloudRegion = None
+        self._CloudLogId = None
+        self._CloudLogSetId = None
+        self._FieldKeys = None
+        self._Status = None
+
+    @property
+    def LogPushTaskId(self):
+        r"""<p>日志唯一Id</p>
+        :rtype: str
+        """
+        return self._LogPushTaskId
+
+    @LogPushTaskId.setter
+    def LogPushTaskId(self, LogPushTaskId):
+        self._LogPushTaskId = LogPushTaskId
+
+    @property
+    def GlobalAcceleratorId(self):
+        r"""<p>GA实例唯一Id</p>
+        :rtype: str
+        """
+        return self._GlobalAcceleratorId
+
+    @GlobalAcceleratorId.setter
+    def GlobalAcceleratorId(self, GlobalAcceleratorId):
+        self._GlobalAcceleratorId = GlobalAcceleratorId
+
+    @property
+    def ListenerId(self):
+        r"""<p>监听器唯一Id</p>
+        :rtype: str
+        """
+        return self._ListenerId
+
+    @ListenerId.setter
+    def ListenerId(self, ListenerId):
+        self._ListenerId = ListenerId
+
+    @property
+    def EndpointGroupId(self):
+        r"""<p>终端节点组唯一Id</p>
+        :rtype: str
+        """
+        return self._EndpointGroupId
+
+    @EndpointGroupId.setter
+    def EndpointGroupId(self, EndpointGroupId):
+        self._EndpointGroupId = EndpointGroupId
+
+    @property
+    def FlowLogDescription(self):
+        r"""<p>日志任务描述</p>
+        :rtype: str
+        """
+        return self._FlowLogDescription
+
+    @FlowLogDescription.setter
+    def FlowLogDescription(self, FlowLogDescription):
+        self._FlowLogDescription = FlowLogDescription
+
+    @property
+    def CloudRegion(self):
+        r"""<p>日志所在地域</p>
+        :rtype: str
+        """
+        return self._CloudRegion
+
+    @CloudRegion.setter
+    def CloudRegion(self, CloudRegion):
+        self._CloudRegion = CloudRegion
+
+    @property
+    def CloudLogId(self):
+        r"""<p>日志主题Id</p>
+        :rtype: str
+        """
+        return self._CloudLogId
+
+    @CloudLogId.setter
+    def CloudLogId(self, CloudLogId):
+        self._CloudLogId = CloudLogId
+
+    @property
+    def CloudLogSetId(self):
+        r"""<p>日志集Id</p>
+        :rtype: str
+        """
+        return self._CloudLogSetId
+
+    @CloudLogSetId.setter
+    def CloudLogSetId(self, CloudLogSetId):
+        self._CloudLogSetId = CloudLogSetId
+
+    @property
+    def FieldKeys(self):
+        r"""<p>选择日志采集字段</p>
+        :rtype: list of str
+        """
+        return self._FieldKeys
+
+    @FieldKeys.setter
+    def FieldKeys(self, FieldKeys):
+        self._FieldKeys = FieldKeys
+
+    @property
+    def Status(self):
+        r"""<p>日志任务状态</p><p>枚举值：</p><ul><li>active： 运行中</li><li>stopped： 已暂停</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._LogPushTaskId = params.get("LogPushTaskId")
+        self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
+        self._ListenerId = params.get("ListenerId")
+        self._EndpointGroupId = params.get("EndpointGroupId")
+        self._FlowLogDescription = params.get("FlowLogDescription")
+        self._CloudRegion = params.get("CloudRegion")
+        self._CloudLogId = params.get("CloudLogId")
+        self._CloudLogSetId = params.get("CloudLogSetId")
+        self._FieldKeys = params.get("FieldKeys")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GlobalAcceleratorAclPolicies(AbstractModel):
@@ -6485,47 +6770,47 @@ class ListenerSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _Name: 监听器名称。
+        :param _Name: <p>监听器名称。</p>
         :type Name: str
-        :param _Description: 监听器描述。
+        :param _Description: <p>监听器描述。</p>
         :type Description: str
-        :param _Protocol: 协议。
+        :param _Protocol: <p>协议。</p>
         :type Protocol: str
-        :param _PortRanges: 端口范围。
+        :param _PortRanges: <p>端口范围。</p>
         :type PortRanges: :class:`tencentcloud.ga2.v20250115.models.PortRanges`
-        :param _XForwardedForRealIp: 是否打开七层获取源IP方式。
+        :param _XForwardedForRealIp: <p>是否打开七层获取源IP方式。</p>
         :type XForwardedForRealIp: bool
-        :param _ClientAffinity: 开启会话保持。
+        :param _ClientAffinity: <p>开启会话保持。</p>
         :type ClientAffinity: str
-        :param _ClientAffinityTime: 会话保持时间。
+        :param _ClientAffinityTime: <p>会话保持时间。</p>
         :type ClientAffinityTime: int
-        :param _CertificationType: SSL解析方式。
+        :param _CertificationType: <p>SSL解析方式。</p>
         :type CertificationType: str
-        :param _ServerCertificates: 服务器证书。
+        :param _ServerCertificates: <p>服务器证书。</p>
         :type ServerCertificates: list of str
-        :param _ClientCaCertificates: 客户端证书。
+        :param _ClientCaCertificates: <p>客户端证书。</p>
         :type ClientCaCertificates: list of str
-        :param _CipherPolicyId: TLS密码套件包。
+        :param _CipherPolicyId: <p>TLS密码套件包。</p>
         :type CipherPolicyId: str
-        :param _HttpVersion: HTTP版本。
+        :param _HttpVersion: <p>HTTP版本。</p>
         :type HttpVersion: str
-        :param _RequestTimeout: 请求超时时间。
+        :param _RequestTimeout: <p>请求超时时间。</p>
         :type RequestTimeout: int
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: <p>创建时间。</p>
         :type CreateTime: str
-        :param _ListenerType: 监听路由类型。
+        :param _ListenerType: <p>监听路由类型。</p>
         :type ListenerType: str
-        :param _Status: 监听器状态。
+        :param _Status: <p>监听器状态。</p><p>枚举值：</p><ul><li>ACTIVE： 可用。</li><li>CREATING： 创建中。</li><li>DELETING： 删除中。</li><li>CONFIGURING： 修改配置中。</li></ul>
         :type Status: str
-        :param _EndpointGroupCounts: 所属监听器终端节点组个数。
+        :param _EndpointGroupCounts: <p>所属监听器终端节点组个数。</p>
         :type EndpointGroupCounts: int
-        :param _GetRealIpType: 四层获取源IP方式。
+        :param _GetRealIpType: <p>四层获取源IP方式。</p>
         :type GetRealIpType: str
-        :param _IdleTimeout: 连接超时时间。
+        :param _IdleTimeout: <p>连接超时时间。</p>
         :type IdleTimeout: int
         """
         self._GlobalAcceleratorId = None
@@ -6552,7 +6837,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -6563,7 +6848,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -6574,7 +6859,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def Name(self):
-        r"""监听器名称。
+        r"""<p>监听器名称。</p>
         :rtype: str
         """
         return self._Name
@@ -6585,7 +6870,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def Description(self):
-        r"""监听器描述。
+        r"""<p>监听器描述。</p>
         :rtype: str
         """
         return self._Description
@@ -6596,7 +6881,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议。
+        r"""<p>协议。</p>
         :rtype: str
         """
         return self._Protocol
@@ -6607,7 +6892,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def PortRanges(self):
-        r"""端口范围。
+        r"""<p>端口范围。</p>
         :rtype: :class:`tencentcloud.ga2.v20250115.models.PortRanges`
         """
         return self._PortRanges
@@ -6618,7 +6903,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def XForwardedForRealIp(self):
-        r"""是否打开七层获取源IP方式。
+        r"""<p>是否打开七层获取源IP方式。</p>
         :rtype: bool
         """
         return self._XForwardedForRealIp
@@ -6629,7 +6914,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def ClientAffinity(self):
-        r"""开启会话保持。
+        r"""<p>开启会话保持。</p>
         :rtype: str
         """
         return self._ClientAffinity
@@ -6640,7 +6925,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def ClientAffinityTime(self):
-        r"""会话保持时间。
+        r"""<p>会话保持时间。</p>
         :rtype: int
         """
         return self._ClientAffinityTime
@@ -6651,7 +6936,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def CertificationType(self):
-        r"""SSL解析方式。
+        r"""<p>SSL解析方式。</p>
         :rtype: str
         """
         return self._CertificationType
@@ -6662,7 +6947,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def ServerCertificates(self):
-        r"""服务器证书。
+        r"""<p>服务器证书。</p>
         :rtype: list of str
         """
         return self._ServerCertificates
@@ -6673,7 +6958,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def ClientCaCertificates(self):
-        r"""客户端证书。
+        r"""<p>客户端证书。</p>
         :rtype: list of str
         """
         return self._ClientCaCertificates
@@ -6684,7 +6969,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def CipherPolicyId(self):
-        r"""TLS密码套件包。
+        r"""<p>TLS密码套件包。</p>
         :rtype: str
         """
         return self._CipherPolicyId
@@ -6695,7 +6980,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def HttpVersion(self):
-        r"""HTTP版本。
+        r"""<p>HTTP版本。</p>
         :rtype: str
         """
         return self._HttpVersion
@@ -6706,7 +6991,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def RequestTimeout(self):
-        r"""请求超时时间。
+        r"""<p>请求超时时间。</p>
         :rtype: int
         """
         return self._RequestTimeout
@@ -6717,7 +7002,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -6728,7 +7013,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def ListenerType(self):
-        r"""监听路由类型。
+        r"""<p>监听路由类型。</p>
         :rtype: str
         """
         return self._ListenerType
@@ -6739,7 +7024,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def Status(self):
-        r"""监听器状态。
+        r"""<p>监听器状态。</p><p>枚举值：</p><ul><li>ACTIVE： 可用。</li><li>CREATING： 创建中。</li><li>DELETING： 删除中。</li><li>CONFIGURING： 修改配置中。</li></ul>
         :rtype: str
         """
         return self._Status
@@ -6750,7 +7035,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def EndpointGroupCounts(self):
-        r"""所属监听器终端节点组个数。
+        r"""<p>所属监听器终端节点组个数。</p>
         :rtype: int
         """
         return self._EndpointGroupCounts
@@ -6761,7 +7046,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def GetRealIpType(self):
-        r"""四层获取源IP方式。
+        r"""<p>四层获取源IP方式。</p>
         :rtype: str
         """
         return self._GetRealIpType
@@ -6772,7 +7057,7 @@ class ListenerSet(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""连接超时时间。
+        r"""<p>连接超时时间。</p>
         :rtype: int
         """
         return self._IdleTimeout
@@ -7038,7 +7323,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
         :type UnhealthyThreshold: int
         :param _HealthyThreshold: <p>健康阀值。</p><p>取值范围：[1, 10]</p><p>当开启健康检查时，此字段必传。</p>
         :type HealthyThreshold: int
-        :param _CheckType: <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。<br>2、当监听器是UDP时，可以选PING+CUSTOM。<br>3、当监听器是HTTP或HTTPS时，可以选HTTP。</p>
+        :param _CheckType: <p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;,&#39;HTTPS&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。2、当监听器是UDP时，可以选PING+CUSTOM。3、当监听器是HTTP或HTTPS时，可以选HTTP。4、当监听器是HTTS时，可以选HTTPS。</p>
         :type CheckType: str
         :param _CheckPort: <p>检查端口。</p><p>取值范围：[1, 65535]</p><p>当CheckType是CUSTOM时，此字段必传。</p>
         :type CheckPort: int
@@ -7213,7 +7498,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""<p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。<br>2、当监听器是UDP时，可以选PING+CUSTOM。<br>3、当监听器是HTTP或HTTPS时，可以选HTTP。</p>
+        r"""<p>检查协议。</p><p>入参限制：支持填写：&#39;TCP&#39;, &#39;HTTP&#39;, &#39;PING&#39;, &#39;CUSTOM&#39;,&#39;HTTPS&#39;。</p><p>1、当监听器是TCP时，可以选CUSTOM+TCP。2、当监听器是UDP时，可以选PING+CUSTOM。3、当监听器是HTTP或HTTPS时，可以选HTTP。4、当监听器是HTTS时，可以选HTTPS。</p>
         :rtype: str
         """
         return self._CheckType
@@ -8442,6 +8727,8 @@ class ModifyListenerRequest(AbstractModel):
         :type ClientCaCertificates: list of str
         :param _GetRealIpType: <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
         :type GetRealIpType: str
+        :param _HttpVersion: <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :type HttpVersion: str
         """
         self._GlobalAcceleratorId = None
         self._ListenerId = None
@@ -8457,6 +8744,7 @@ class ModifyListenerRequest(AbstractModel):
         self._ServerCertificates = None
         self._ClientCaCertificates = None
         self._GetRealIpType = None
+        self._HttpVersion = None
 
     @property
     def GlobalAcceleratorId(self):
@@ -8612,6 +8900,17 @@ class ModifyListenerRequest(AbstractModel):
     def GetRealIpType(self, GetRealIpType):
         self._GetRealIpType = GetRealIpType
 
+    @property
+    def HttpVersion(self):
+        r"""<p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： 版本HTTP/1.1</li><li>HTTP/2： 版本HTTP/2</li></ul>
+        :rtype: str
+        """
+        return self._HttpVersion
+
+    @HttpVersion.setter
+    def HttpVersion(self, HttpVersion):
+        self._HttpVersion = HttpVersion
+
 
     def _deserialize(self, params):
         self._GlobalAcceleratorId = params.get("GlobalAcceleratorId")
@@ -8628,6 +8927,7 @@ class ModifyListenerRequest(AbstractModel):
         self._ServerCertificates = params.get("ServerCertificates")
         self._ClientCaCertificates = params.get("ClientCaCertificates")
         self._GetRealIpType = params.get("GetRealIpType")
+        self._HttpVersion = params.get("HttpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

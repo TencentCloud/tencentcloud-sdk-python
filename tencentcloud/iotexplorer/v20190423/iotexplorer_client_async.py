@@ -97,6 +97,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BatchDescribeTWeSeeOrders(
+            self,
+            request: models.BatchDescribeTWeSeeOrdersRequest,
+            opts: Dict = None,
+    ) -> models.BatchDescribeTWeSeeOrdersResponse:
+        """
+        批量查询 TWeSee 订单状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchDescribeTWeSeeOrders"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchDescribeTWeSeeOrdersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BatchInvokeTWeSeeRecognitionTask(
             self,
             request: models.BatchInvokeTWeSeeRecognitionTaskRequest,
@@ -4056,6 +4074,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "ModifyTopicRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyTopicRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OperateTWeSeeDirectUploadObject(
+            self,
+            request: models.OperateTWeSeeDirectUploadObjectRequest,
+            opts: Dict = None,
+    ) -> models.OperateTWeSeeDirectUploadObjectResponse:
+        """
+        查询、删除或列举 TWeSee 直传对象
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OperateTWeSeeDirectUploadObject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OperateTWeSeeDirectUploadObjectResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

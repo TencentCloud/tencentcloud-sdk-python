@@ -391,7 +391,7 @@ class ApproverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApproverType: <p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:<strong>0</strong>：企业<strong>1</strong>：个人<strong>3</strong>：企业“授权签”注：<code>类型为3（企业“授权签”）时，此接口会默认完成该签署方的签署。“授权签”仅进行盖章操作，不能“授权签”名。</code><strong>7</strong>: 个人“授权签”，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
+        :param _ApproverType: <p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:</p><p><strong>0</strong>：企业</p><p><strong>1</strong>：个人</p><p><strong>3</strong>：企业“授权签”注：<code>类型为3（企业“授权签”）时，此接口会默认完成该签署方的签署。“授权签”仅进行盖章操作，不能“授权签”名。</code></p><p><strong>7</strong>: 个人“授权签”，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :type ApproverType: int
         :param _ApproverName: <p>签署方经办人的姓名。<br>经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。</p>
         :type ApproverName: str
@@ -476,7 +476,7 @@ class ApproverInfo(AbstractModel):
 
     @property
     def ApproverType(self):
-        r"""<p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:<strong>0</strong>：企业<strong>1</strong>：个人<strong>3</strong>：企业“授权签”注：<code>类型为3（企业“授权签”）时，此接口会默认完成该签署方的签署。“授权签”仅进行盖章操作，不能“授权签”名。</code><strong>7</strong>: 个人“授权签”，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
+        r"""<p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:</p><p><strong>0</strong>：企业</p><p><strong>1</strong>：个人</p><p><strong>3</strong>：企业“授权签”注：<code>类型为3（企业“授权签”）时，此接口会默认完成该签署方的签署。“授权签”仅进行盖章操作，不能“授权签”名。</code></p><p><strong>7</strong>: 个人“授权签”，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :rtype: int
         """
         return self._ApproverType
@@ -13595,24 +13595,19 @@ class CreateIntegrationRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+        :param _Name: <p>角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。</p>
         :type Name: str
-        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-支持填入集团子公司经办人 userId 代发合同。
-
-注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :param _Operator: <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Description: 角色描述，最大长度为50个字符
+        :param _Description: <p>角色描述，最大长度为50个字符</p>
         :type Description: str
-        :param _IsGroupRole: 角色类型，0:saas角色，1:集团角色
-默认0，saas角色
+        :param _IsGroupRole: <p>角色类型，0:saas角色，1:集团角色<br>默认0，saas角色</p>
         :type IsGroupRole: int
-        :param _PermissionGroups: 权限树
+        :param _PermissionGroups: <p>权限树</p>
         :type PermissionGroups: list of PermissionGroup
-        :param _SubOrganizationIds: 集团角色的话，需要传递集团子企业列表，如果是全选，则传1
+        :param _SubOrganizationIds: <p>集团角色的话，需要传递集团子企业列表，如果是全选，则传1</p>
         :type SubOrganizationIds: list of str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Name = None
@@ -13625,7 +13620,7 @@ class CreateIntegrationRoleRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+        r"""<p>角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。</p>
         :rtype: str
         """
         return self._Name
@@ -13636,10 +13631,7 @@ class CreateIntegrationRoleRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
-支持填入集团子公司经办人 userId 代发合同。
-
-注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        r"""<p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -13650,7 +13642,7 @@ class CreateIntegrationRoleRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""角色描述，最大长度为50个字符
+        r"""<p>角色描述，最大长度为50个字符</p>
         :rtype: str
         """
         return self._Description
@@ -13661,8 +13653,7 @@ class CreateIntegrationRoleRequest(AbstractModel):
 
     @property
     def IsGroupRole(self):
-        r"""角色类型，0:saas角色，1:集团角色
-默认0，saas角色
+        r"""<p>角色类型，0:saas角色，1:集团角色<br>默认0，saas角色</p>
         :rtype: int
         """
         return self._IsGroupRole
@@ -13673,7 +13664,7 @@ class CreateIntegrationRoleRequest(AbstractModel):
 
     @property
     def PermissionGroups(self):
-        r"""权限树
+        r"""<p>权限树</p>
         :rtype: list of PermissionGroup
         """
         return self._PermissionGroups
@@ -13684,7 +13675,7 @@ class CreateIntegrationRoleRequest(AbstractModel):
 
     @property
     def SubOrganizationIds(self):
-        r"""集团角色的话，需要传递集团子企业列表，如果是全选，则传1
+        r"""<p>集团角色的话，需要传递集团子企业列表，如果是全选，则传1</p>
         :rtype: list of str
         """
         return self._SubOrganizationIds
@@ -13695,8 +13686,7 @@ class CreateIntegrationRoleRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -13740,7 +13730,7 @@ class CreateIntegrationRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleId: 角色id
+        :param _RoleId: <p>角色id</p>
         :type RoleId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13750,7 +13740,7 @@ class CreateIntegrationRoleResponse(AbstractModel):
 
     @property
     def RoleId(self):
-        r"""角色id
+        r"""<p>角色id</p>
         :rtype: str
         """
         return self._RoleId
@@ -35797,7 +35787,7 @@ class GroupOrganization(AbstractModel):
 
 
 class HasAuthOrganization(AbstractModel):
-    r"""授权企业列表（目前仅用于“企业自动签 -> 合作企业授权”）
+    r"""授权企业列表（目前仅用于“企业“授权签” -> 合作企业授权”）
 
     """
 
@@ -38037,23 +38027,19 @@ class ModifyIntegrationRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleId: 角色Id，可通过接口 DescribeIntegrationRoles 查询获取
+        :param _RoleId: <p>角色Id，可通过接口 DescribeIntegrationRoles 查询获取</p>
         :type RoleId: str
-        :param _Name: 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+        :param _Name: <p>角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。</p>
         :type Name: str
-        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-支持填入集团子公司经办人 userId 代发合同。
-
-注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :param _Operator: <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Description: 角色描述，最大长度为50个字符
+        :param _Description: <p>角色描述，最大长度为50个字符</p>
         :type Description: str
-        :param _PermissionGroups: 权限树
+        :param _PermissionGroups: <p>权限树</p>
         :type PermissionGroups: list of PermissionGroup
-        :param _SubOrganizationIds: 集团角色的话，需要传递集团子企业列表，如果是全选，则传1
+        :param _SubOrganizationIds: <p>集团角色的话，需要传递集团子企业列表，如果是全选，则传1</p>
         :type SubOrganizationIds: list of str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._RoleId = None
@@ -38066,7 +38052,7 @@ class ModifyIntegrationRoleRequest(AbstractModel):
 
     @property
     def RoleId(self):
-        r"""角色Id，可通过接口 DescribeIntegrationRoles 查询获取
+        r"""<p>角色Id，可通过接口 DescribeIntegrationRoles 查询获取</p>
         :rtype: str
         """
         return self._RoleId
@@ -38077,7 +38063,7 @@ class ModifyIntegrationRoleRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+        r"""<p>角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。</p>
         :rtype: str
         """
         return self._Name
@@ -38088,10 +38074,7 @@ class ModifyIntegrationRoleRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
-支持填入集团子公司经办人 userId 代发合同。
-
-注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        r"""<p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -38102,7 +38085,7 @@ class ModifyIntegrationRoleRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""角色描述，最大长度为50个字符
+        r"""<p>角色描述，最大长度为50个字符</p>
         :rtype: str
         """
         return self._Description
@@ -38113,7 +38096,7 @@ class ModifyIntegrationRoleRequest(AbstractModel):
 
     @property
     def PermissionGroups(self):
-        r"""权限树
+        r"""<p>权限树</p>
         :rtype: list of PermissionGroup
         """
         return self._PermissionGroups
@@ -38124,7 +38107,7 @@ class ModifyIntegrationRoleRequest(AbstractModel):
 
     @property
     def SubOrganizationIds(self):
-        r"""集团角色的话，需要传递集团子企业列表，如果是全选，则传1
+        r"""<p>集团角色的话，需要传递集团子企业列表，如果是全选，则传1</p>
         :rtype: list of str
         """
         return self._SubOrganizationIds
@@ -38135,8 +38118,7 @@ class ModifyIntegrationRoleRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -38180,7 +38162,7 @@ class ModifyIntegrationRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleId: 角色id
+        :param _RoleId: <p>角色id</p>
         :type RoleId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -38190,7 +38172,7 @@ class ModifyIntegrationRoleResponse(AbstractModel):
 
     @property
     def RoleId(self):
-        r"""角色id
+        r"""<p>角色id</p>
         :rtype: str
         """
         return self._RoleId

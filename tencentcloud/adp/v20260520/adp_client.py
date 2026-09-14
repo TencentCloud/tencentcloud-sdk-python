@@ -26,6 +26,29 @@ class AdpClient(AbstractClient):
     _service = 'adp'
 
 
+    def CheckLabel(self, request):
+        r"""校验标签下的标准词是否已存在
+
+        :param request: Request instance for CheckLabel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CheckLabelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CheckLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CopyAgentFromApp(self, request):
         r"""复制 Agent（目前仅支持claw模式））
 
@@ -141,6 +164,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCategory(self, request):
+        r"""创建分类
+
+        :param request: Request instance for CreateCategory.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateCategoryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateChannel(self, request):
         r"""创建渠道（通过scene区分B端应用发布渠道与C端IM渠道）
 
@@ -178,6 +224,52 @@ class AdpClient(AbstractClient):
             body = self.call("CreateConversation", params, headers=headers)
             response = json.loads(body)
             model = models.CreateConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateKB(self, request):
+        r"""创建知识库
+
+        :param request: Request instance for CreateKB.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateKBRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateKBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKB", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateKBResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLabel(self, request):
+        r"""创建标签
+
+        :param request: Request instance for CreateLabel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateLabelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLabelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -233,6 +325,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateQAGenerationTask(self, request):
+        r"""创建 QA 生成任务
+
+        :param request: Request instance for CreateQAGenerationTask.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateQAGenerationTaskRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateQAGenerationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateQAGenerationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateQAGenerationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateQAList(self, request):
+        r"""批量创建 QA
+
+        :param request: Request instance for CreateQAList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateQAListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateQAListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateQAList", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateQAListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRelease(self, request):
         r"""新增发布任务
 
@@ -247,6 +385,29 @@ class AdpClient(AbstractClient):
             body = self.call("CreateRelease", params, headers=headers)
             response = json.loads(body)
             model = models.CreateReleaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSimilarQuestion(self, request):
+        r"""创建相似问生成任务
+
+        :param request: Request instance for CreateSimilarQuestion.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateSimilarQuestionRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateSimilarQuestionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSimilarQuestion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSimilarQuestionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -463,6 +624,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCategory(self, request):
+        r"""删除分类
+
+        :param request: Request instance for DeleteCategory.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteCategoryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteChannel(self, request):
         r"""删除渠道（通过scene区分场景）
 
@@ -509,6 +693,75 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDocList(self, request):
+        r"""批量删除文档
+
+        :param request: Request instance for DeleteDocList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteDocListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteDocListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDocList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDocListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteKB(self, request):
+        r"""删除知识库
+
+        :param request: Request instance for DeleteKB.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteKBRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteKBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteKB", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteKBResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLabelList(self, request):
+        r"""批量删除标签
+
+        :param request: Request instance for DeleteLabelList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteLabelListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteLabelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLabelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLabelListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteMsgRecordCategory(self, request):
         r"""删除指定的消息记录分类
 
@@ -546,6 +799,29 @@ class AdpClient(AbstractClient):
             body = self.call("DeletePlugin", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteQAList(self, request):
+        r"""批量删除 QA
+
+        :param request: Request instance for DeleteQAList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteQAListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteQAListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteQAList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteQAListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -923,6 +1199,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCategoryList(self, request):
+        r"""查询分类列表
+
+        :param request: Request instance for DescribeCategoryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeCategoryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeCategoryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCategoryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCategoryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeChannel(self, request):
         r"""获取渠道详情（scene区分场景）
 
@@ -983,6 +1282,52 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeConcurrencyLimitDetailList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConcurrencyLimitDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConflictQA(self, request):
+        r"""查询冲突问详情
+
+        :param request: Request instance for DescribeConflictQA.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeConflictQARequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeConflictQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConflictQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConflictQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConflictQASummaryList(self, request):
+        r"""查询冲突问列表
+
+        :param request: Request instance for DescribeConflictQASummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeConflictQASummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeConflictQASummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConflictQASummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConflictQASummaryListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1075,6 +1420,144 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeConversationMessageList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConversationMessageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDoc(self, request):
+        r"""查询文档详情
+
+        :param request: Request instance for DescribeDoc.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeDocRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDoc", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDocSummaryList(self, request):
+        r"""查询文档摘要列表
+
+        :param request: Request instance for DescribeDocSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeDocSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeDocSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDocSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDocSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKB(self, request):
+        r"""查询知识库详情
+
+        :param request: Request instance for DescribeKB.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeKBRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeKBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKB", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKBResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKBSummaryList(self, request):
+        r"""查询知识库列表
+
+        :param request: Request instance for DescribeKBSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeKBSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeKBSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKBSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKBSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLabel(self, request):
+        r"""查询标签详情
+
+        :param request: Request instance for DescribeLabel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeLabelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLabelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLabelSummaryList(self, request):
+        r"""查询标签列表
+
+        :param request: Request instance for DescribeLabelSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeLabelSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeLabelSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLabelSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLabelSummaryListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1236,6 +1719,52 @@ class AdpClient(AbstractClient):
             body = self.call("DescribePluginSummaryList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePluginSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeQA(self, request):
+        r"""查询 QA 详情
+
+        :param request: Request instance for DescribeQA.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeQARequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeQASummaryList(self, request):
+        r"""查询 QA 列表
+
+        :param request: Request instance for DescribeQASummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeQASummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeQASummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQASummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQASummaryListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1521,6 +2050,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportQA(self, request):
+        r"""异步导出 QA
+
+        :param request: Request instance for ExportQA.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ExportQARequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExportQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def FavoritePlugin(self, request):
         r"""收藏插件
 
@@ -1558,6 +2110,29 @@ class AdpClient(AbstractClient):
             body = self.call("FavoriteSkill", params, headers=headers)
             response = json.loads(body)
             model = models.FavoriteSkillResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImportDocList(self, request):
+        r"""批量导入文档
+
+        :param request: Request instance for ImportDocList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ImportDocListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ImportDocListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportDocList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportDocListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1636,6 +2211,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCategory(self, request):
+        r"""修改分类
+
+        :param request: Request instance for ModifyCategory.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyCategoryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyChannel(self, request):
         r"""修改渠道（支持修改备注与企微机器人渠道回调机器人ID）
 
@@ -1659,6 +2257,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyConflictQA(self, request):
+        r"""修改冲突问
+
+        :param request: Request instance for ModifyConflictQA.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyConflictQARequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyConflictQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConflictQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConflictQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyConversation(self, request):
         r"""修改会话信息
 
@@ -1673,6 +2294,98 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyConversation", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDoc(self, request):
+        r"""修改单个文档
+
+        :param request: Request instance for ModifyDoc.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyDocRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyDocResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDoc", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDocResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDocList(self, request):
+        r"""批量修改文档
+
+        :param request: Request instance for ModifyDocList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyDocListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyDocListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDocList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDocListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyKB(self, request):
+        r"""修改知识库
+
+        :param request: Request instance for ModifyKB.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyKBRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyKBResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKB", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKBResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLabel(self, request):
+        r"""修改标签
+
+        :param request: Request instance for ModifyLabel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyLabelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyLabelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLabel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLabelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1719,6 +2432,52 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyPlugin", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyQA(self, request):
+        r"""修改单个 QA
+
+        :param request: Request instance for ModifyQA.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyQARequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyQAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyQA", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyQAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyQAList(self, request):
+        r"""批量修改 QA
+
+        :param request: Request instance for ModifyQAList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyQAListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyQAListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyQAList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyQAListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1950,6 +2709,29 @@ class AdpClient(AbstractClient):
             body = self.call("RunAppTriggerNow", params, headers=headers)
             response = json.loads(body)
             model = models.RunAppTriggerNowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SearchKnowledge(self, request):
+        r"""知识检索
+
+        :param request: Request instance for SearchKnowledge.
+        :type request: :class:`tencentcloud.adp.v20260520.models.SearchKnowledgeRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SearchKnowledgeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchKnowledge", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchKnowledgeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
