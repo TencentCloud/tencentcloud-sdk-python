@@ -840,33 +840,29 @@ class AdjustCdbProxyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _ProxyGroupId: 代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+        :param _ProxyGroupId: <p>代理组 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/90585">DescribeCdbProxyInfo</a> 接口获取。</p>
         :type ProxyGroupId: str
-        :param _ProxyNodeCustom: 节点规格配置
-备注：数据库代理支持的节点规格为：2C4000MB、4C8000MB、8C16000MB。
-示例中参数说明：
-NodeCount：节点个数
-Region：节点地域
-Zone：节点可用区
-Cpu：单个代理节点核数（单位：核）
-Mem：单个代理节点内存数（单位：MB）
+        :param _ProxyNodeCustom: <p>节点规格配置<br>备注：数据库代理支持的节点规格为：2C4000MB、4C8000MB、8C16000MB。<br>示例中参数说明：<br>NodeCount：节点个数<br>Region：节点地域<br>Zone：节点可用区<br>Cpu：单个代理节点核数（单位：核）<br>Mem：单个代理节点内存数（单位：MB）</p>
         :type ProxyNodeCustom: list of ProxyNodeCustom
-        :param _ReloadBalance: 重新负载均衡：auto(自动),manual(手动)
+        :param _ReloadBalance: <p>重新负载均衡：auto(自动),manual(手动)</p>
         :type ReloadBalance: str
-        :param _UpgradeTime: 升级切换时间：nowTime(升级完成时),timeWindow(维护时间内)
+        :param _UpgradeTime: <p>升级切换时间。</p><p>枚举值：</p><ul><li>nowTime： 升级完成时</li><li>timeWindow： 维护时间内</li><li>rollUpgrade： 滚动升级</li></ul>
         :type UpgradeTime: str
+        :param _RollUpgradeWaitingTime: <p>滚动升级或平滑变配等待时间</p><p>取值范围：[0, 3600]</p><p>单位：秒</p>
+        :type RollUpgradeWaitingTime: int
         """
         self._InstanceId = None
         self._ProxyGroupId = None
         self._ProxyNodeCustom = None
         self._ReloadBalance = None
         self._UpgradeTime = None
+        self._RollUpgradeWaitingTime = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -877,7 +873,7 @@ Mem：单个代理节点内存数（单位：MB）
 
     @property
     def ProxyGroupId(self):
-        r"""代理组 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+        r"""<p>代理组 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/90585">DescribeCdbProxyInfo</a> 接口获取。</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -888,14 +884,7 @@ Mem：单个代理节点内存数（单位：MB）
 
     @property
     def ProxyNodeCustom(self):
-        r"""节点规格配置
-备注：数据库代理支持的节点规格为：2C4000MB、4C8000MB、8C16000MB。
-示例中参数说明：
-NodeCount：节点个数
-Region：节点地域
-Zone：节点可用区
-Cpu：单个代理节点核数（单位：核）
-Mem：单个代理节点内存数（单位：MB）
+        r"""<p>节点规格配置<br>备注：数据库代理支持的节点规格为：2C4000MB、4C8000MB、8C16000MB。<br>示例中参数说明：<br>NodeCount：节点个数<br>Region：节点地域<br>Zone：节点可用区<br>Cpu：单个代理节点核数（单位：核）<br>Mem：单个代理节点内存数（单位：MB）</p>
         :rtype: list of ProxyNodeCustom
         """
         return self._ProxyNodeCustom
@@ -906,7 +895,7 @@ Mem：单个代理节点内存数（单位：MB）
 
     @property
     def ReloadBalance(self):
-        r"""重新负载均衡：auto(自动),manual(手动)
+        r"""<p>重新负载均衡：auto(自动),manual(手动)</p>
         :rtype: str
         """
         return self._ReloadBalance
@@ -917,7 +906,7 @@ Mem：单个代理节点内存数（单位：MB）
 
     @property
     def UpgradeTime(self):
-        r"""升级切换时间：nowTime(升级完成时),timeWindow(维护时间内)
+        r"""<p>升级切换时间。</p><p>枚举值：</p><ul><li>nowTime： 升级完成时</li><li>timeWindow： 维护时间内</li><li>rollUpgrade： 滚动升级</li></ul>
         :rtype: str
         """
         return self._UpgradeTime
@@ -925,6 +914,17 @@ Mem：单个代理节点内存数（单位：MB）
     @UpgradeTime.setter
     def UpgradeTime(self, UpgradeTime):
         self._UpgradeTime = UpgradeTime
+
+    @property
+    def RollUpgradeWaitingTime(self):
+        r"""<p>滚动升级或平滑变配等待时间</p><p>取值范围：[0, 3600]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._RollUpgradeWaitingTime
+
+    @RollUpgradeWaitingTime.setter
+    def RollUpgradeWaitingTime(self, RollUpgradeWaitingTime):
+        self._RollUpgradeWaitingTime = RollUpgradeWaitingTime
 
 
     def _deserialize(self, params):
@@ -938,6 +938,7 @@ Mem：单个代理节点内存数（单位：MB）
                 self._ProxyNodeCustom.append(obj)
         self._ReloadBalance = params.get("ReloadBalance")
         self._UpgradeTime = params.get("UpgradeTime")
+        self._RollUpgradeWaitingTime = params.get("RollUpgradeWaitingTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -955,7 +956,7 @@ class AdjustCdbProxyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务ID
+        :param _AsyncRequestId: <p>异步任务ID</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -965,7 +966,7 @@ class AdjustCdbProxyResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务ID
+        r"""<p>异步任务ID</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -39635,26 +39636,29 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _ProxyGroupId: 数据库代理 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+        :param _ProxyGroupId: <p>数据库代理 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/90585">DescribeCdbProxyInfo</a> 接口获取。</p>
         :type ProxyGroupId: str
-        :param _SrcProxyVersion: 数据库代理当前版本
+        :param _SrcProxyVersion: <p>数据库代理当前版本</p>
         :type SrcProxyVersion: str
-        :param _DstProxyVersion: 数据库代理升级版本
+        :param _DstProxyVersion: <p>数据库代理升级版本</p>
         :type DstProxyVersion: str
-        :param _UpgradeTime: 升级时间 ：nowTime（升级完成时）timeWindow（实例维护时间）
+        :param _UpgradeTime: <p>升级切换时间</p><p>枚举值：</p><ul><li>nowTime： 升级完成时</li><li>timeWindow： 实例维护时间</li><li>rollUpgrade： 滚动升级</li></ul>
         :type UpgradeTime: str
+        :param _RollUpgradeWaitingTime: <p>滚动升级等待时间</p><p>取值范围：[10, 3600]</p><p>单位：秒</p>
+        :type RollUpgradeWaitingTime: int
         """
         self._InstanceId = None
         self._ProxyGroupId = None
         self._SrcProxyVersion = None
         self._DstProxyVersion = None
         self._UpgradeTime = None
+        self._RollUpgradeWaitingTime = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -39665,7 +39669,7 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
 
     @property
     def ProxyGroupId(self):
-        r"""数据库代理 ID。可通过 [DescribeCdbProxyInfo](https://cloud.tencent.com/document/api/236/90585) 接口获取。
+        r"""<p>数据库代理 ID。可通过 <a href="https://cloud.tencent.com/document/api/236/90585">DescribeCdbProxyInfo</a> 接口获取。</p>
         :rtype: str
         """
         return self._ProxyGroupId
@@ -39676,7 +39680,7 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
 
     @property
     def SrcProxyVersion(self):
-        r"""数据库代理当前版本
+        r"""<p>数据库代理当前版本</p>
         :rtype: str
         """
         return self._SrcProxyVersion
@@ -39687,7 +39691,7 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
 
     @property
     def DstProxyVersion(self):
-        r"""数据库代理升级版本
+        r"""<p>数据库代理升级版本</p>
         :rtype: str
         """
         return self._DstProxyVersion
@@ -39698,7 +39702,7 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
 
     @property
     def UpgradeTime(self):
-        r"""升级时间 ：nowTime（升级完成时）timeWindow（实例维护时间）
+        r"""<p>升级切换时间</p><p>枚举值：</p><ul><li>nowTime： 升级完成时</li><li>timeWindow： 实例维护时间</li><li>rollUpgrade： 滚动升级</li></ul>
         :rtype: str
         """
         return self._UpgradeTime
@@ -39707,6 +39711,17 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
     def UpgradeTime(self, UpgradeTime):
         self._UpgradeTime = UpgradeTime
 
+    @property
+    def RollUpgradeWaitingTime(self):
+        r"""<p>滚动升级等待时间</p><p>取值范围：[10, 3600]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._RollUpgradeWaitingTime
+
+    @RollUpgradeWaitingTime.setter
+    def RollUpgradeWaitingTime(self, RollUpgradeWaitingTime):
+        self._RollUpgradeWaitingTime = RollUpgradeWaitingTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -39714,6 +39729,7 @@ class UpgradeCDBProxyVersionRequest(AbstractModel):
         self._SrcProxyVersion = params.get("SrcProxyVersion")
         self._DstProxyVersion = params.get("DstProxyVersion")
         self._UpgradeTime = params.get("UpgradeTime")
+        self._RollUpgradeWaitingTime = params.get("RollUpgradeWaitingTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39731,7 +39747,7 @@ class UpgradeCDBProxyVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步处理ID
+        :param _AsyncRequestId: <p>异步处理ID</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39741,7 +39757,7 @@ class UpgradeCDBProxyVersionResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步处理ID
+        r"""<p>异步处理ID</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -39907,10 +39923,13 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
         r"""
         :param _AsyncRequestId: <p>异步任务 ID，可使用 <a href="https://cloud.tencent.com/document/api/236/20410">查询异步任务的执行结果</a> 获取其执行情况。</p>
         :type AsyncRequestId: str
+        :param _JobId: <p>任务列表ID</p>
+        :type JobId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._AsyncRequestId = None
+        self._JobId = None
         self._RequestId = None
 
     @property
@@ -39923,6 +39942,17 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
     @AsyncRequestId.setter
     def AsyncRequestId(self, AsyncRequestId):
         self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def JobId(self):
+        r"""<p>任务列表ID</p>
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
 
     @property
     def RequestId(self):
@@ -39938,6 +39968,7 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 

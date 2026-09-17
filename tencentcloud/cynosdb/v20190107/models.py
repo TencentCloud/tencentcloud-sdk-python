@@ -774,13 +774,13 @@ class AddClusterSlaveZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _SlaveZone: 从可用区
+        :param _SlaveZone: <p>备可用区</p>
         :type SlaveZone: str
-        :param _BinlogSyncWay: binlog同步方式。默认值：async。可选值：sync、semisync、async
+        :param _BinlogSyncWay: <p>binlog同步方式。默认值：async。可选值：sync、semisync、async</p>
         :type BinlogSyncWay: str
-        :param _SemiSyncTimeout: 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :param _SemiSyncTimeout: <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。</p>
         :type SemiSyncTimeout: int
         """
         self._ClusterId = None
@@ -790,7 +790,7 @@ class AddClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -801,7 +801,7 @@ class AddClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def SlaveZone(self):
-        r"""从可用区
+        r"""<p>备可用区</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -812,7 +812,7 @@ class AddClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def BinlogSyncWay(self):
-        r"""binlog同步方式。默认值：async。可选值：sync、semisync、async
+        r"""<p>binlog同步方式。默认值：async。可选值：sync、semisync、async</p>
         :rtype: str
         """
         return self._BinlogSyncWay
@@ -823,7 +823,7 @@ class AddClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def SemiSyncTimeout(self):
-        r"""半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        r"""<p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。</p>
         :rtype: int
         """
         return self._SemiSyncTimeout
@@ -855,7 +855,7 @@ class AddClusterSlaveZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步FlowId
+        :param _FlowId: <p>异步FlowId</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -865,7 +865,7 @@ class AddClusterSlaveZoneResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""异步FlowId
+        r"""<p>异步FlowId</p>
         :rtype: int
         """
         return self._FlowId
@@ -43724,15 +43724,15 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群Id
+        :param _ClusterId: <p>集群Id</p>
         :type ClusterId: str
-        :param _OldSlaveZone: 旧从可用区
+        :param _OldSlaveZone: <p>旧备可用区</p>
         :type OldSlaveZone: str
-        :param _NewSlaveZone: 新从可用区
+        :param _NewSlaveZone: <p>新备可用区</p>
         :type NewSlaveZone: str
-        :param _BinlogSyncWay: binlog同步方式。默认值：async。可选值：sync、semisync、async
+        :param _BinlogSyncWay: <p>binlog同步方式。默认值：async。可选值：sync、semisync、async</p>
         :type BinlogSyncWay: str
-        :param _SemiSyncTimeout: 半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        :param _SemiSyncTimeout: <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。</p>
         :type SemiSyncTimeout: int
         """
         self._ClusterId = None
@@ -43743,7 +43743,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群Id
+        r"""<p>集群Id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -43754,7 +43754,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def OldSlaveZone(self):
-        r"""旧从可用区
+        r"""<p>旧备可用区</p>
         :rtype: str
         """
         return self._OldSlaveZone
@@ -43765,7 +43765,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def NewSlaveZone(self):
-        r"""新从可用区
+        r"""<p>新备可用区</p>
         :rtype: str
         """
         return self._NewSlaveZone
@@ -43776,7 +43776,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def BinlogSyncWay(self):
-        r"""binlog同步方式。默认值：async。可选值：sync、semisync、async
+        r"""<p>binlog同步方式。默认值：async。可选值：sync、semisync、async</p>
         :rtype: str
         """
         return self._BinlogSyncWay
@@ -43787,7 +43787,7 @@ class ModifyClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def SemiSyncTimeout(self):
-        r"""半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。
+        r"""<p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。最低设置为1000ms，最高支持4294967295ms，默认10000ms。</p>
         :rtype: int
         """
         return self._SemiSyncTimeout
@@ -43820,7 +43820,7 @@ class ModifyClusterSlaveZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步FlowId
+        :param _FlowId: <p>异步FlowId</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43830,7 +43830,7 @@ class ModifyClusterSlaveZoneResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""异步FlowId
+        r"""<p>异步FlowId</p>
         :rtype: int
         """
         return self._FlowId
@@ -53480,9 +53480,9 @@ class RemoveClusterSlaveZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _SlaveZone: 从可用区
+        :param _SlaveZone: <p>备可用区</p>
         :type SlaveZone: str
         """
         self._ClusterId = None
@@ -53490,7 +53490,7 @@ class RemoveClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -53501,7 +53501,7 @@ class RemoveClusterSlaveZoneRequest(AbstractModel):
 
     @property
     def SlaveZone(self):
-        r"""从可用区
+        r"""<p>备可用区</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -53531,7 +53531,7 @@ class RemoveClusterSlaveZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步FlowId
+        :param _FlowId: <p>异步FlowId</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -53541,7 +53541,7 @@ class RemoveClusterSlaveZoneResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""异步FlowId
+        r"""<p>异步FlowId</p>
         :rtype: int
         """
         return self._FlowId

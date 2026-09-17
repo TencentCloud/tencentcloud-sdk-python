@@ -31,7 +31,7 @@ class AdpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CheckLabelResponse:
         """
-        校验标签下的标准词是否已存在
+        校验标签
         """
         
         kwargs = {}
@@ -1424,6 +1424,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeReleaseSummary"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeReleaseSummaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceSummary(
+            self,
+            request: models.DescribeResourceSummaryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceSummaryResponse:
+        """
+        获取用户资源套餐和增值包用量信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceSummary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceSummaryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

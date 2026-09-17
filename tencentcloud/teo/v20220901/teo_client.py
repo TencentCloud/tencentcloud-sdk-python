@@ -1260,7 +1260,7 @@ class TeoClient(AbstractClient):
 
 
     def DeleteCustomErrorPage(self, request):
-        r"""删除自定义错误页面。
+        r"""删除自定义响应页面。
 
         :param request: Request instance for DeleteCustomErrorPage.
         :type request: :class:`tencentcloud.teo.v20220901.models.DeleteCustomErrorPageRequest`

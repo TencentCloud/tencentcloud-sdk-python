@@ -594,6 +594,11 @@ def test_import_ecm_v20190719():
     from tencentcloud.ecm.v20190719 import models
 
 
+def test_import_edgezone_v20260401():
+    from tencentcloud.edgezone.v20260401 import edgezone_client
+    from tencentcloud.edgezone.v20260401 import models
+
+
 def test_import_eiam_v20210420():
     from tencentcloud.eiam.v20210420 import eiam_client
     from tencentcloud.eiam.v20210420 import models

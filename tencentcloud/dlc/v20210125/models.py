@@ -6877,6 +6877,74 @@ class CheckpointMountInfo(AbstractModel):
         
 
 
+class CloudTag(AbstractModel):
+    r"""腾讯云资源标签键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: <p>标签键</p>
+        :type TagKey: str
+        :param _TagValue: <p>标签值</p>
+        :type TagValue: str
+        :param _Category: <p>标签类型：Custom（自定义）/ System（系统）/ All（全部），仅查询接口返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+        self._Category = None
+
+    @property
+    def TagKey(self):
+        r"""<p>标签键</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>标签值</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+    @property
+    def Category(self):
+        r"""<p>标签类型：Custom（自定义）/ System（系统）/ All（全部），仅查询接口返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        self._Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClsTopicItem(AbstractModel):
     r"""CLS 日志主题条目
 
@@ -7902,6 +7970,8 @@ class CopyJobSpecResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>默认队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _JobPackage: <p>作业包URL</p>
         :type JobPackage: str
         :param _JobPackageName: <p>作业包名称</p>
@@ -7958,6 +8028,7 @@ class CopyJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._JobPackage = None
         self._JobPackageName = None
         self._AppId = None
@@ -8152,6 +8223,17 @@ class CopyJobSpecResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def JobPackage(self):
@@ -8372,6 +8454,7 @@ class CopyJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._JobPackage = params.get("JobPackage")
         self._JobPackageName = params.get("JobPackageName")
         self._AppId = params.get("AppId")
@@ -13509,6 +13592,8 @@ class CreateJobSpecResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>默认队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _JobPackage: <p>作业包URL</p>
         :type JobPackage: str
         :param _JobPackageName: <p>作业包名称</p>
@@ -13571,6 +13656,7 @@ class CreateJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._JobPackage = None
         self._JobPackageName = None
         self._JobPackageSource = None
@@ -13768,6 +13854,17 @@ class CreateJobSpecResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def JobPackage(self):
@@ -14021,6 +14118,7 @@ class CreateJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._JobPackage = params.get("JobPackage")
         self._JobPackageName = params.get("JobPackageName")
         self._JobPackageSource = params.get("JobPackageSource")
@@ -16121,19 +16219,22 @@ class CreatePartitionQueueRequest(AbstractModel):
         r"""
         :param _PartitionCode: <p>分区编码</p>
         :type PartitionCode: str
-        :param _QueueName: <p>队列名称</p>
-        :type QueueName: str
         :param _ResourceUsages: <p>资源规格列表，定义队列的资源类型及大小范围</p>
         :type ResourceUsages: list of ResourceUsage
         :param _QueueType: <p>队列类型：1-独占型，2-共享型</p>
         :type QueueType: int
+        :param _QueueName: <p>队列编码（不可变 code）：透传时按 RFC1123 校验并作为队列的固定标识；未透传时系统自动生成（格式 dlc-rg-xxxxxxxx）。落库后不可修改</p>
+        :type QueueName: str
+        :param _Alias: <p>队列别名（显示名）：用户可见、可修改；未提供时等于最终 QueueName。可与其它队列重复</p>
+        :type Alias: str
         :param _Description: <p>队列描述</p>
         :type Description: str
         """
         self._PartitionCode = None
-        self._QueueName = None
         self._ResourceUsages = None
         self._QueueType = None
+        self._QueueName = None
+        self._Alias = None
         self._Description = None
 
     @property
@@ -16146,17 +16247,6 @@ class CreatePartitionQueueRequest(AbstractModel):
     @PartitionCode.setter
     def PartitionCode(self, PartitionCode):
         self._PartitionCode = PartitionCode
-
-    @property
-    def QueueName(self):
-        r"""<p>队列名称</p>
-        :rtype: str
-        """
-        return self._QueueName
-
-    @QueueName.setter
-    def QueueName(self, QueueName):
-        self._QueueName = QueueName
 
     @property
     def ResourceUsages(self):
@@ -16181,6 +16271,28 @@ class CreatePartitionQueueRequest(AbstractModel):
         self._QueueType = QueueType
 
     @property
+    def QueueName(self):
+        r"""<p>队列编码（不可变 code）：透传时按 RFC1123 校验并作为队列的固定标识；未透传时系统自动生成（格式 dlc-rg-xxxxxxxx）。落库后不可修改</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def Alias(self):
+        r"""<p>队列别名（显示名）：用户可见、可修改；未提供时等于最终 QueueName。可与其它队列重复</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
     def Description(self):
         r"""<p>队列描述</p>
         :rtype: str
@@ -16194,7 +16306,6 @@ class CreatePartitionQueueRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._PartitionCode = params.get("PartitionCode")
-        self._QueueName = params.get("QueueName")
         if params.get("ResourceUsages") is not None:
             self._ResourceUsages = []
             for item in params.get("ResourceUsages"):
@@ -16202,6 +16313,8 @@ class CreatePartitionQueueRequest(AbstractModel):
                 obj._deserialize(item)
                 self._ResourceUsages.append(obj)
         self._QueueType = params.get("QueueType")
+        self._QueueName = params.get("QueueName")
+        self._Alias = params.get("Alias")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -16222,10 +16335,16 @@ class CreatePartitionQueueResponse(AbstractModel):
         r"""
         :param _Id: <p>新创建的资源队列ID</p>
         :type Id: int
+        :param _QueueName: <p>最终生效的队列编码（含系统生成场景），与 DescribePartitionQueues 出参的 QueueName 语义一致</p>
+        :type QueueName: str
+        :param _Alias: <p>队列别名（显示名）</p>
+        :type Alias: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Id = None
+        self._QueueName = None
+        self._Alias = None
         self._RequestId = None
 
     @property
@@ -16238,6 +16357,28 @@ class CreatePartitionQueueResponse(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def QueueName(self):
+        r"""<p>最终生效的队列编码（含系统生成场景），与 DescribePartitionQueues 出参的 QueueName 语义一致</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def Alias(self):
+        r"""<p>队列别名（显示名）</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
 
     @property
     def RequestId(self):
@@ -16253,6 +16394,8 @@ class CreatePartitionQueueResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._QueueName = params.get("QueueName")
+        self._Alias = params.get("Alias")
         self._RequestId = params.get("RequestId")
 
 
@@ -16412,12 +16555,17 @@ class CreatePartitionResponse(AbstractModel):
         :param _DealName: <p>子订单号</p>
         :type DealName: str
         :param _BigDealId: <p>大订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealId: str
+        :param _BillId: <p>冻结流水号（后付费返回；预付费为空）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BillId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealName = None
         self._BigDealId = None
+        self._BillId = None
         self._RequestId = None
 
     @property
@@ -16434,6 +16582,7 @@ class CreatePartitionResponse(AbstractModel):
     @property
     def BigDealId(self):
         r"""<p>大订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._BigDealId
@@ -16441,6 +16590,18 @@ class CreatePartitionResponse(AbstractModel):
     @BigDealId.setter
     def BigDealId(self, BigDealId):
         self._BigDealId = BigDealId
+
+    @property
+    def BillId(self):
+        r"""<p>冻结流水号（后付费返回；预付费为空）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
 
     @property
     def RequestId(self):
@@ -16457,6 +16618,7 @@ class CreatePartitionResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealName = params.get("DealName")
         self._BigDealId = params.get("BigDealId")
+        self._BillId = params.get("BillId")
         self._RequestId = params.get("RequestId")
 
 
@@ -37378,14 +37540,14 @@ class DescribePartitionDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PartitionCode: 分区编码
+        :param _PartitionCode: <p>分区编码</p>
         :type PartitionCode: str
         """
         self._PartitionCode = None
 
     @property
     def PartitionCode(self):
-        r"""分区编码
+        r"""<p>分区编码</p>
         :rtype: str
         """
         return self._PartitionCode
@@ -37414,7 +37576,7 @@ class DescribePartitionDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PartitionDetail: 分区详情
+        :param _PartitionDetail: <p>分区详情</p>
         :type PartitionDetail: :class:`tencentcloud.dlc.v20210125.models.PartitionDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -37424,7 +37586,7 @@ class DescribePartitionDetailResponse(AbstractModel):
 
     @property
     def PartitionDetail(self):
-        r"""分区详情
+        r"""<p>分区详情</p>
         :rtype: :class:`tencentcloud.dlc.v20210125.models.PartitionDetail`
         """
         return self._PartitionDetail
@@ -37469,12 +37631,15 @@ class DescribePartitionQueuesRequest(AbstractModel):
         :type Page: int
         :param _PageSize: 每页返回数量
         :type PageSize: int
+        :param _ShowResourceQuotas: 是否返回队列实时余量（ResourceQuotas），默认 false 不返回。余量需实时查询 Prometheus，仅在需要时透传 true。Used 为计费 spec 口径（队列内业务容器 Pod limits，经 kube_pod_labels 队列过滤），依赖 kube_pod_labels 指标采集
+        :type ShowResourceQuotas: bool
         """
         self._PartitionCode = None
         self._SortFields = None
         self._Filters = None
         self._Page = None
         self._PageSize = None
+        self._ShowResourceQuotas = None
 
     @property
     def PartitionCode(self):
@@ -37531,6 +37696,17 @@ class DescribePartitionQueuesRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def ShowResourceQuotas(self):
+        r"""是否返回队列实时余量（ResourceQuotas），默认 false 不返回。余量需实时查询 Prometheus，仅在需要时透传 true。Used 为计费 spec 口径（队列内业务容器 Pod limits，经 kube_pod_labels 队列过滤），依赖 kube_pod_labels 指标采集
+        :rtype: bool
+        """
+        return self._ShowResourceQuotas
+
+    @ShowResourceQuotas.setter
+    def ShowResourceQuotas(self, ShowResourceQuotas):
+        self._ShowResourceQuotas = ShowResourceQuotas
+
 
     def _deserialize(self, params):
         self._PartitionCode = params.get("PartitionCode")
@@ -37548,6 +37724,7 @@ class DescribePartitionQueuesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Page = params.get("Page")
         self._PageSize = params.get("PageSize")
+        self._ShowResourceQuotas = params.get("ShowResourceQuotas")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47487,14 +47664,13 @@ class FlowActivityDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActivityCode: <p>活动编码</p>
+        :param _ActivityCode: <p>活动编码；国际站返回英文编码，国内站返回中文描述</p>
         :type ActivityCode: str
-        :param _Status: <p>活动状态</p>
+        :param _Status: <p>活动状态：1-运行中，2-已完成，-2-失败</p>
         :type Status: int
-        :param _CreateTime: <p>创建时间</p>
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _CreateTime: <p>活动创建时间</p>
         :type CreateTime: str
-        :param _Duration: <p>耗时（秒）</p>
+        :param _Duration: <p>耗时（秒），活动未完成时省略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
         """
@@ -47505,7 +47681,7 @@ class FlowActivityDetail(AbstractModel):
 
     @property
     def ActivityCode(self):
-        r"""<p>活动编码</p>
+        r"""<p>活动编码；国际站返回英文编码，国内站返回中文描述</p>
         :rtype: str
         """
         return self._ActivityCode
@@ -47516,7 +47692,7 @@ class FlowActivityDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>活动状态</p>
+        r"""<p>活动状态：1-运行中，2-已完成，-2-失败</p>
         :rtype: int
         """
         return self._Status
@@ -47527,8 +47703,7 @@ class FlowActivityDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""<p>创建时间</p>
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>活动创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -47539,7 +47714,7 @@ class FlowActivityDetail(AbstractModel):
 
     @property
     def Duration(self):
-        r"""<p>耗时（秒）</p>
+        r"""<p>耗时（秒），活动未完成时省略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -49760,6 +49935,8 @@ class GetJobSpecResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>默认队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _JobPackage: <p>作业包URL</p>
         :type JobPackage: str
         :param _JobPackageName: <p>作业包名称</p>
@@ -49822,6 +49999,7 @@ class GetJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._JobPackage = None
         self._JobPackageName = None
         self._JobPackageSource = None
@@ -50021,6 +50199,17 @@ class GetJobSpecResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def JobPackage(self):
@@ -50274,6 +50463,7 @@ class GetJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._JobPackage = params.get("JobPackage")
         self._JobPackageName = params.get("JobPackageName")
         self._JobPackageSource = params.get("JobPackageSource")
@@ -50365,6 +50555,8 @@ class GetLabDetailResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _AppId: <p>应用ID</p>
         :type AppId: int
         :param _Uin: <p>用户UIN</p>
@@ -50422,6 +50614,7 @@ class GetLabDetailResponse(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
@@ -50555,6 +50748,17 @@ class GetLabDetailResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def AppId(self):
@@ -50826,6 +51030,7 @@ class GetLabDetailResponse(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
@@ -53047,6 +53252,8 @@ class GetRayClusterResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _AppId: <p>应用ID</p>
         :type AppId: int
         :param _Uin: <p>用户UIN</p>
@@ -53099,6 +53306,7 @@ class GetRayClusterResponse(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
@@ -53198,6 +53406,17 @@ class GetRayClusterResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def AppId(self):
@@ -53450,6 +53669,7 @@ class GetRayClusterResponse(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
@@ -54360,6 +54580,8 @@ class GetRayJobResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _Status: <p>任务状态</p>
         :type Status: str
         :param _Entrypoint: <p>入口命令</p>
@@ -54415,6 +54637,7 @@ class GetRayJobResponse(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._Status = None
         self._Entrypoint = None
         self._JobName = None
@@ -54484,6 +54707,17 @@ class GetRayJobResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def Status(self):
@@ -54766,6 +55000,7 @@ class GetRayJobResponse(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._Status = params.get("Status")
         self._Entrypoint = params.get("Entrypoint")
         self._JobName = params.get("JobName")
@@ -58416,6 +58651,8 @@ class JobSpec(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>默认队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _GroupId: <p>集群组Id</p>
         :type GroupId: str
         :param _ClusterId: <p>集群id</p>
@@ -58426,6 +58663,8 @@ class JobSpec(AbstractModel):
         :type JobPackage: str
         :param _JobPackageName: <p>作业包名称</p>
         :type JobPackageName: str
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺时按 Local 处理</p>
+        :type JobPackageSource: str
         :param _Priority: <p>优先级</p>
         :type Priority: int
         :param _AppId: <p>应用ID</p>
@@ -58434,6 +58673,8 @@ class JobSpec(AbstractModel):
         :type Uin: str
         :param _SubAccountUin: <p>子用户UIN</p>
         :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
         :param _UpdateTime: <p>更新时间</p>
@@ -58471,15 +58712,18 @@ class JobSpec(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._GroupId = None
         self._ClusterId = None
         self._ClusterGroup = None
         self._JobPackage = None
         self._JobPackageName = None
+        self._JobPackageSource = None
         self._Priority = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
+        self._SubAccountName = None
         self._CreateTime = None
         self._UpdateTime = None
         self._JobInstanceCount = None
@@ -58668,6 +58912,17 @@ class JobSpec(AbstractModel):
         self._Queue = Queue
 
     @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
+
+    @property
     def GroupId(self):
         r"""<p>集群组Id</p>
         :rtype: str
@@ -58723,6 +58978,17 @@ class JobSpec(AbstractModel):
         self._JobPackageName = JobPackageName
 
     @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
     def Priority(self):
         r"""<p>优先级</p>
         :rtype: int
@@ -58765,6 +59031,17 @@ class JobSpec(AbstractModel):
     @SubAccountUin.setter
     def SubAccountUin(self, SubAccountUin):
         self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
 
     @property
     def CreateTime(self):
@@ -58894,15 +59171,18 @@ class JobSpec(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._GroupId = params.get("GroupId")
         self._ClusterId = params.get("ClusterId")
         self._ClusterGroup = params.get("ClusterGroup")
         self._JobPackage = params.get("JobPackage")
         self._JobPackageName = params.get("JobPackageName")
+        self._JobPackageSource = params.get("JobPackageSource")
         self._Priority = params.get("Priority")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._JobInstanceCount = params.get("JobInstanceCount")
@@ -59272,6 +59552,8 @@ class LabResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _AppId: <p>应用ID</p>
         :type AppId: int
         :param _Uin: <p>用户UIN</p>
@@ -59339,6 +59621,7 @@ class LabResponse(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
@@ -59508,6 +59791,17 @@ class LabResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def AppId(self):
@@ -59816,6 +60110,7 @@ class LabResponse(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
@@ -70658,8 +70953,10 @@ class ModifyPartitionQueueRequest(AbstractModel):
         :type Id: int
         :param _PartitionCode: 分区编码
         :type PartitionCode: str
-        :param _QueueName: 队列名称
+        :param _QueueName: 队列编码（不可变 code）：与 Id 定位记录的一致性校验键，传入值必须与队列当前 QueueName 一致，不参与更新
         :type QueueName: str
+        :param _Alias: 队列别名（显示名）：透传时更新，未透传时保持不变。可与其它队列重复
+        :type Alias: str
         :param _Description: 队列描述
         :type Description: str
         :param _ResourceUsages: 资源规格列表，定义队列的资源类型及大小范围
@@ -70670,6 +70967,7 @@ class ModifyPartitionQueueRequest(AbstractModel):
         self._Id = None
         self._PartitionCode = None
         self._QueueName = None
+        self._Alias = None
         self._Description = None
         self._ResourceUsages = None
         self._QueueType = None
@@ -70698,7 +70996,7 @@ class ModifyPartitionQueueRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        r"""队列名称
+        r"""队列编码（不可变 code）：与 Id 定位记录的一致性校验键，传入值必须与队列当前 QueueName 一致，不参与更新
         :rtype: str
         """
         return self._QueueName
@@ -70706,6 +71004,17 @@ class ModifyPartitionQueueRequest(AbstractModel):
     @QueueName.setter
     def QueueName(self, QueueName):
         self._QueueName = QueueName
+
+    @property
+    def Alias(self):
+        r"""队列别名（显示名）：透传时更新，未透传时保持不变。可与其它队列重复
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
 
     @property
     def Description(self):
@@ -70745,6 +71054,7 @@ class ModifyPartitionQueueRequest(AbstractModel):
         self._Id = params.get("Id")
         self._PartitionCode = params.get("PartitionCode")
         self._QueueName = params.get("QueueName")
+        self._Alias = params.get("Alias")
         self._Description = params.get("Description")
         if params.get("ResourceUsages") is not None:
             self._ResourceUsages = []
@@ -75014,6 +75324,9 @@ class PartitionDetail(AbstractModel):
         :param _ResourceQuota: <p>资源配额列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceQuota: list of ResourceQuota
+        :param _SchedulableLimitList: <p>各计费项的单 worker/executor 最大可调度资源量列表，用于约束提交作业时可申请的规格上限；仅包含分区已有的非 GPU 计费项，无可返回项时为空数组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulableLimitList: list of SchedulableLimit
         :param _PayMode: <p>付费模式</p>
         :type PayMode: int
         :param _RenewFlag: <p>续费标志</p>
@@ -75023,6 +75336,17 @@ class PartitionDetail(AbstractModel):
         :type Scheduler: str
         :param _Status: <p>状态</p>
         :type Status: int
+        :param _ExpireTime: <p>过期时间</p><p>参数格式：yyyy-MM-dd hh:mm:ss</p>
+        :type ExpireTime: str
+        :param _IsolatedTimestamp: <p>过期时间</p><p>参数格式：yyyy-MM-dd hh:mm:ss</p>
+        :type IsolatedTimestamp: str
+        :param _Tags: <p>资源已绑定的标签列表，由标签平台 GetResources 接口实时查询得到</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of CloudTag
+        :param _ResourcePoolKind: <p>资源池形态：SYSTEM（系统）/ USER（用户）/ EXTERNAL_TKE（纳管外部 TKE 集群）</p>
+        :type ResourcePoolKind: str
+        :param _ExternalClusterId: <p>纳管外部集群的原始 ID（例如 EMR 实例 ID emr-xxx），仅 EXTERNAL_TKE 等纳管场景有值</p>
+        :type ExternalClusterId: str
         """
         self._PartitionCode = None
         self._PartitionName = None
@@ -75031,10 +75355,16 @@ class PartitionDetail(AbstractModel):
         self._ProductInfo = None
         self._ResourcePoolCode = None
         self._ResourceQuota = None
+        self._SchedulableLimitList = None
         self._PayMode = None
         self._RenewFlag = None
         self._Scheduler = None
         self._Status = None
+        self._ExpireTime = None
+        self._IsolatedTimestamp = None
+        self._Tags = None
+        self._ResourcePoolKind = None
+        self._ExternalClusterId = None
 
     @property
     def PartitionCode(self):
@@ -75118,6 +75448,18 @@ class PartitionDetail(AbstractModel):
         self._ResourceQuota = ResourceQuota
 
     @property
+    def SchedulableLimitList(self):
+        r"""<p>各计费项的单 worker/executor 最大可调度资源量列表，用于约束提交作业时可申请的规格上限；仅包含分区已有的非 GPU 计费项，无可返回项时为空数组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SchedulableLimit
+        """
+        return self._SchedulableLimitList
+
+    @SchedulableLimitList.setter
+    def SchedulableLimitList(self, SchedulableLimitList):
+        self._SchedulableLimitList = SchedulableLimitList
+
+    @property
     def PayMode(self):
         r"""<p>付费模式</p>
         :rtype: int
@@ -75162,6 +75504,62 @@ class PartitionDetail(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def ExpireTime(self):
+        r"""<p>过期时间</p><p>参数格式：yyyy-MM-dd hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def IsolatedTimestamp(self):
+        r"""<p>过期时间</p><p>参数格式：yyyy-MM-dd hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._IsolatedTimestamp
+
+    @IsolatedTimestamp.setter
+    def IsolatedTimestamp(self, IsolatedTimestamp):
+        self._IsolatedTimestamp = IsolatedTimestamp
+
+    @property
+    def Tags(self):
+        r"""<p>资源已绑定的标签列表，由标签平台 GetResources 接口实时查询得到</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CloudTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ResourcePoolKind(self):
+        r"""<p>资源池形态：SYSTEM（系统）/ USER（用户）/ EXTERNAL_TKE（纳管外部 TKE 集群）</p>
+        :rtype: str
+        """
+        return self._ResourcePoolKind
+
+    @ResourcePoolKind.setter
+    def ResourcePoolKind(self, ResourcePoolKind):
+        self._ResourcePoolKind = ResourcePoolKind
+
+    @property
+    def ExternalClusterId(self):
+        r"""<p>纳管外部集群的原始 ID（例如 EMR 实例 ID emr-xxx），仅 EXTERNAL_TKE 等纳管场景有值</p>
+        :rtype: str
+        """
+        return self._ExternalClusterId
+
+    @ExternalClusterId.setter
+    def ExternalClusterId(self, ExternalClusterId):
+        self._ExternalClusterId = ExternalClusterId
+
 
     def _deserialize(self, params):
         self._PartitionCode = params.get("PartitionCode")
@@ -75176,10 +75574,26 @@ class PartitionDetail(AbstractModel):
                 obj = ResourceQuota()
                 obj._deserialize(item)
                 self._ResourceQuota.append(obj)
+        if params.get("SchedulableLimitList") is not None:
+            self._SchedulableLimitList = []
+            for item in params.get("SchedulableLimitList"):
+                obj = SchedulableLimit()
+                obj._deserialize(item)
+                self._SchedulableLimitList.append(obj)
         self._PayMode = params.get("PayMode")
         self._RenewFlag = params.get("RenewFlag")
         self._Scheduler = params.get("Scheduler")
         self._Status = params.get("Status")
+        self._ExpireTime = params.get("ExpireTime")
+        self._IsolatedTimestamp = params.get("IsolatedTimestamp")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = CloudTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ResourcePoolKind = params.get("ResourcePoolKind")
+        self._ExternalClusterId = params.get("ExternalClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75211,8 +75625,14 @@ class PartitionInfo(AbstractModel):
         :param _ResourceQuota: <p>资源配置（配额）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceQuota: list of ResourceQuota
+        :param _SchedulableLimitList: <p>各计费项的单 worker/executor 最大可调度资源量列表，用于约束提交作业时可申请的规格上限；仅包含分区已有的非 GPU 计费项，无可返回项时为空数组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulableLimitList: list of SchedulableLimit
         :param _PayMode: <p>计费类型：1-包年包月，0-按量计费</p>
         :type PayMode: int
+        :param _RenewFlag: <p>续费标志：0-默认，1-自动续费，2-不自动续费（仅预付费有效）；按量计费分区无该字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: int
         :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
@@ -75222,6 +75642,15 @@ class PartitionInfo(AbstractModel):
         :param _ExpireTime: <p>过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
+        :param _ResourcePoolKind: <p>资源池形态：SYSTEM（系统）/ USER（用户）/ EXTERNAL_TKE（纳管外部 TKE 集群）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourcePoolKind: str
+        :param _ExternalClusterId: <p>纳管外部集群的原始 ID（例如 EMR 实例 ID emr-xxx），仅 EXTERNAL_TKE 等纳管场景有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExternalClusterId: str
+        :param _Tags: <p>资源已绑定的标签列表，由标签平台 GetResources 接口实时查询得到；列表场景下仅对当前页分区加载，单分区标签查询失败时降级留空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of CloudTag
         """
         self._Name = None
         self._PartitionCode = None
@@ -75229,10 +75658,15 @@ class PartitionInfo(AbstractModel):
         self._Status = None
         self._QueueCount = None
         self._ResourceQuota = None
+        self._SchedulableLimitList = None
         self._PayMode = None
+        self._RenewFlag = None
         self._CreateTime = None
         self._UpdateTime = None
         self._ExpireTime = None
+        self._ResourcePoolKind = None
+        self._ExternalClusterId = None
+        self._Tags = None
 
     @property
     def Name(self):
@@ -75303,6 +75737,18 @@ class PartitionInfo(AbstractModel):
         self._ResourceQuota = ResourceQuota
 
     @property
+    def SchedulableLimitList(self):
+        r"""<p>各计费项的单 worker/executor 最大可调度资源量列表，用于约束提交作业时可申请的规格上限；仅包含分区已有的非 GPU 计费项，无可返回项时为空数组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SchedulableLimit
+        """
+        return self._SchedulableLimitList
+
+    @SchedulableLimitList.setter
+    def SchedulableLimitList(self, SchedulableLimitList):
+        self._SchedulableLimitList = SchedulableLimitList
+
+    @property
     def PayMode(self):
         r"""<p>计费类型：1-包年包月，0-按量计费</p>
         :rtype: int
@@ -75312,6 +75758,18 @@ class PartitionInfo(AbstractModel):
     @PayMode.setter
     def PayMode(self, PayMode):
         self._PayMode = PayMode
+
+    @property
+    def RenewFlag(self):
+        r"""<p>续费标志：0-默认，1-自动续费，2-不自动续费（仅预付费有效）；按量计费分区无该字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
 
     @property
     def CreateTime(self):
@@ -75349,6 +75807,42 @@ class PartitionInfo(AbstractModel):
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def ResourcePoolKind(self):
+        r"""<p>资源池形态：SYSTEM（系统）/ USER（用户）/ EXTERNAL_TKE（纳管外部 TKE 集群）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourcePoolKind
+
+    @ResourcePoolKind.setter
+    def ResourcePoolKind(self, ResourcePoolKind):
+        self._ResourcePoolKind = ResourcePoolKind
+
+    @property
+    def ExternalClusterId(self):
+        r"""<p>纳管外部集群的原始 ID（例如 EMR 实例 ID emr-xxx），仅 EXTERNAL_TKE 等纳管场景有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExternalClusterId
+
+    @ExternalClusterId.setter
+    def ExternalClusterId(self, ExternalClusterId):
+        self._ExternalClusterId = ExternalClusterId
+
+    @property
+    def Tags(self):
+        r"""<p>资源已绑定的标签列表，由标签平台 GetResources 接口实时查询得到；列表场景下仅对当前页分区加载，单分区标签查询失败时降级留空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CloudTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -75362,10 +75856,25 @@ class PartitionInfo(AbstractModel):
                 obj = ResourceQuota()
                 obj._deserialize(item)
                 self._ResourceQuota.append(obj)
+        if params.get("SchedulableLimitList") is not None:
+            self._SchedulableLimitList = []
+            for item in params.get("SchedulableLimitList"):
+                obj = SchedulableLimit()
+                obj._deserialize(item)
+                self._SchedulableLimitList.append(obj)
         self._PayMode = params.get("PayMode")
+        self._RenewFlag = params.get("RenewFlag")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._ExpireTime = params.get("ExpireTime")
+        self._ResourcePoolKind = params.get("ResourcePoolKind")
+        self._ExternalClusterId = params.get("ExternalClusterId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = CloudTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -77444,11 +77953,16 @@ class QueueInfo(AbstractModel):
         r"""
         :param _Id: <p>队列ID</p>
         :type Id: int
-        :param _QueueName: <p>队列名称</p>
+        :param _QueueName: <p>不可变的Code</p>
         :type QueueName: str
+        :param _Alias: <p>队列别名（用户可改显示名）；alias 为空时回落为 QueueName</p>
+        :type Alias: str
         :param _ResourceUsage: <p>资源用量列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceUsage: list of ResourceUsage
+        :param _ResourceQuotas: <p>队列各资源类型的实时余量（总量 / 已用量 / 可用量）。由 Kueue Prometheus 指标实时计算；监控关闭或查询失败时为 null，字段省略不返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceQuotas: list of QueueResourceQuota
         :param _Description: <p>队列描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
@@ -77459,7 +77973,9 @@ class QueueInfo(AbstractModel):
         """
         self._Id = None
         self._QueueName = None
+        self._Alias = None
         self._ResourceUsage = None
+        self._ResourceQuotas = None
         self._Description = None
         self._IsDefault = None
         self._QueueType = None
@@ -77477,7 +77993,7 @@ class QueueInfo(AbstractModel):
 
     @property
     def QueueName(self):
-        r"""<p>队列名称</p>
+        r"""<p>不可变的Code</p>
         :rtype: str
         """
         return self._QueueName
@@ -77485,6 +78001,17 @@ class QueueInfo(AbstractModel):
     @QueueName.setter
     def QueueName(self, QueueName):
         self._QueueName = QueueName
+
+    @property
+    def Alias(self):
+        r"""<p>队列别名（用户可改显示名）；alias 为空时回落为 QueueName</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
 
     @property
     def ResourceUsage(self):
@@ -77497,6 +78024,18 @@ class QueueInfo(AbstractModel):
     @ResourceUsage.setter
     def ResourceUsage(self, ResourceUsage):
         self._ResourceUsage = ResourceUsage
+
+    @property
+    def ResourceQuotas(self):
+        r"""<p>队列各资源类型的实时余量（总量 / 已用量 / 可用量）。由 Kueue Prometheus 指标实时计算；监控关闭或查询失败时为 null，字段省略不返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of QueueResourceQuota
+        """
+        return self._ResourceQuotas
+
+    @ResourceQuotas.setter
+    def ResourceQuotas(self, ResourceQuotas):
+        self._ResourceQuotas = ResourceQuotas
 
     @property
     def Description(self):
@@ -77536,15 +78075,118 @@ class QueueInfo(AbstractModel):
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._QueueName = params.get("QueueName")
+        self._Alias = params.get("Alias")
         if params.get("ResourceUsage") is not None:
             self._ResourceUsage = []
             for item in params.get("ResourceUsage"):
                 obj = ResourceUsage()
                 obj._deserialize(item)
                 self._ResourceUsage.append(obj)
+        if params.get("ResourceQuotas") is not None:
+            self._ResourceQuotas = []
+            for item in params.get("ResourceQuotas"):
+                obj = QueueResourceQuota()
+                obj._deserialize(item)
+                self._ResourceQuotas.append(obj)
         self._Description = params.get("Description")
         self._IsDefault = params.get("IsDefault")
         self._QueueType = params.get("QueueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueueResourceQuota(AbstractModel):
+    r"""队列维度单条资源配额数据（含总量、已用量、可用量）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>资源类型标识。CPU / HM_CPU 类计费项统一映射为 "CU"；GPU 类计费项取卡型简称（如 "T4"、"H20"）</p>
+        :type ResourceType: str
+        :param _Unit: <p>资源单位。CU 类为 "core"；GPU 类为 "card"</p>
+        :type Unit: str
+        :param _Total: <p>配额总量，由 resource_usage 最大值（index 1）× spec 折算得出</p>
+        :type Total: float
+        :param _Used: 当前已使用量，计费 spec 口径：队列内业务容器（ray-head/ray-worker）的 Pod limits 之和，经 kube_pod_labels 按 local queue 过滤。依赖 kube_pod_labels 指标采集，未开启时恒为 0
+        :type Used: float
+        :param _Available: <p>可用量（总量 - 已使用量，截断至 0）。当 used 超出 total 时（例如配额尚未生效或数据短暂不一致），返回 0 而非负数</p>
+        :type Available: float
+        """
+        self._ResourceType = None
+        self._Unit = None
+        self._Total = None
+        self._Used = None
+        self._Available = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型标识。CPU / HM_CPU 类计费项统一映射为 "CU"；GPU 类计费项取卡型简称（如 "T4"、"H20"）</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Unit(self):
+        r"""<p>资源单位。CU 类为 "core"；GPU 类为 "card"</p>
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Total(self):
+        r"""<p>配额总量，由 resource_usage 最大值（index 1）× spec 折算得出</p>
+        :rtype: float
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Used(self):
+        r"""当前已使用量，计费 spec 口径：队列内业务容器（ray-head/ray-worker）的 Pod limits 之和，经 kube_pod_labels 按 local queue 过滤。依赖 kube_pod_labels 指标采集，未开启时恒为 0
+        :rtype: float
+        """
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+    @property
+    def Available(self):
+        r"""<p>可用量（总量 - 已使用量，截断至 0）。当 used 超出 total 时（例如配额尚未生效或数据短暂不一致），返回 0 而非负数</p>
+        :rtype: float
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._Unit = params.get("Unit")
+        self._Total = params.get("Total")
+        self._Used = params.get("Used")
+        self._Available = params.get("Available")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -77574,6 +78216,8 @@ class RayClusterEntity(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _AppId: <p>应用ID</p>
         :type AppId: int
         :param _Uin: <p>用户UIN</p>
@@ -77623,6 +78267,7 @@ class RayClusterEntity(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
@@ -77710,6 +78355,17 @@ class RayClusterEntity(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def AppId(self):
@@ -77950,6 +78606,7 @@ class RayClusterEntity(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
@@ -78268,6 +78925,8 @@ class RayJobSubmitEntity(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _Status: <p>任务状态</p>
         :type Status: str
         :param _Entrypoint: <p>入口命令</p>
@@ -78321,6 +78980,7 @@ class RayJobSubmitEntity(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._Status = None
         self._Entrypoint = None
         self._JobName = None
@@ -78389,6 +79049,17 @@ class RayJobSubmitEntity(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def Status(self):
@@ -78660,6 +79331,7 @@ class RayJobSubmitEntity(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._Status = params.get("Status")
         self._Entrypoint = params.get("Entrypoint")
         self._JobName = params.get("JobName")
@@ -82177,6 +82849,57 @@ class SQLTask(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self._Config.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchedulableLimit(AbstractModel):
+    r"""计费项最大可调度限制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingItem: <p>四层计费项，与 ResourceQuota[].ResourceSpec.BillingItem 同值</p>
+        :type BillingItem: str
+        :param _MaxSchedulableUnits: <p>该计费项下单 worker/executor 可申请的最大可调度资源量，单位随计费项资源类型：CPU 计费项为 CU 数，GPU 计费项为 GU（卡）数</p>
+        :type MaxSchedulableUnits: int
+        """
+        self._BillingItem = None
+        self._MaxSchedulableUnits = None
+
+    @property
+    def BillingItem(self):
+        r"""<p>四层计费项，与 ResourceQuota[].ResourceSpec.BillingItem 同值</p>
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+    @property
+    def MaxSchedulableUnits(self):
+        r"""<p>该计费项下单 worker/executor 可申请的最大可调度资源量，单位随计费项资源类型：CPU 计费项为 CU 数，GPU 计费项为 GU（卡）数</p>
+        :rtype: int
+        """
+        return self._MaxSchedulableUnits
+
+    @MaxSchedulableUnits.setter
+    def MaxSchedulableUnits(self, MaxSchedulableUnits):
+        self._MaxSchedulableUnits = MaxSchedulableUnits
+
+
+    def _deserialize(self, params):
+        self._BillingItem = params.get("BillingItem")
+        self._MaxSchedulableUnits = params.get("MaxSchedulableUnits")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -94277,6 +95000,8 @@ class TrainingJobInstance(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _RuntimeEnv: <p>提交时 runtime_env JSON</p>
         :type RuntimeEnv: str
         :param _Entrypoint: <p>提交时 entrypoint</p>
@@ -94328,6 +95053,7 @@ class TrainingJobInstance(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._RuntimeEnv = None
         self._Entrypoint = None
         self._Image = None
@@ -94500,6 +95226,17 @@ class TrainingJobInstance(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def RuntimeEnv(self):
@@ -94715,6 +95452,7 @@ class TrainingJobInstance(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._RuntimeEnv = params.get("RuntimeEnv")
         self._Entrypoint = params.get("Entrypoint")
         self._Image = params.get("Image")
@@ -94807,6 +95545,8 @@ class TrainingJobSpec(AbstractModel):
         :param _Queue: <p>队列名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _CheckpointMountInfo: <p>Checkpoint 挂载摘要</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckpointMountInfo: :class:`tencentcloud.dlc.v20210125.models.CheckpointMountInfo`
@@ -94871,6 +95611,7 @@ class TrainingJobSpec(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._CheckpointMountInfo = None
         self._Catalog = None
         self._Creator = None
@@ -95067,6 +95808,17 @@ class TrainingJobSpec(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def CheckpointMountInfo(self):
@@ -95313,6 +96065,7 @@ class TrainingJobSpec(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         if params.get("CheckpointMountInfo") is not None:
             self._CheckpointMountInfo = CheckpointMountInfo()
             self._CheckpointMountInfo._deserialize(params.get("CheckpointMountInfo"))
@@ -99405,6 +100158,8 @@ class UpdateJobSpecResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _Queue: <p>默认队列名称</p>
         :type Queue: str
+        :param _QueueAlias: <p>所属队列别名</p>
+        :type QueueAlias: str
         :param _JobPackage: <p>作业包URL</p>
         :type JobPackage: str
         :param _JobPackageName: <p>作业包名称</p>
@@ -99467,6 +100222,7 @@ class UpdateJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._QueueAlias = None
         self._JobPackage = None
         self._JobPackageName = None
         self._JobPackageSource = None
@@ -99664,6 +100420,17 @@ class UpdateJobSpecResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def QueueAlias(self):
+        r"""<p>所属队列别名</p>
+        :rtype: str
+        """
+        return self._QueueAlias
+
+    @QueueAlias.setter
+    def QueueAlias(self, QueueAlias):
+        self._QueueAlias = QueueAlias
 
     @property
     def JobPackage(self):
@@ -99917,6 +100684,7 @@ class UpdateJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._QueueAlias = params.get("QueueAlias")
         self._JobPackage = params.get("JobPackage")
         self._JobPackageName = params.get("JobPackageName")
         self._JobPackageSource = params.get("JobPackageSource")

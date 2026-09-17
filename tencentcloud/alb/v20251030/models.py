@@ -875,49 +875,37 @@ class CreateListenerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DefaultActions: 默认转发规则动作列表。目前监听器仅支持添加 1 个默认转发规则动作。
+        :param _DefaultActions: <p>默认转发规则动作列表。目前监听器仅支持添加 1 个默认转发规则动作。</p>
         :type DefaultActions: list of DefaultAction
-        :param _ListenerPort: 负载均衡实例前端使用的端口。  取值：1~65535。
+        :param _ListenerPort: <p>负载均衡实例前端使用的端口。  取值：1~65535。</p>
         :type ListenerPort: int
-        :param _ListenerProtocol: 监听协议。  取值：HTTP、HTTPS 或 QUIC。
+        :param _ListenerProtocol: <p>监听协议。  取值：HTTP、HTTPS 或 QUIC。</p>
         :type ListenerProtocol: str
-        :param _LoadBalancerId: 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
+        :param _LoadBalancerId: <p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :type LoadBalancerId: str
-        :param _CaCertificateIds: 监听器配置的CA证书ID列表。目前监听器仅支持添加 1 个 CA 证书。
-当 CaEnabled 参数取值为 true 时，此参数必填。
+        :param _CaCertificateIds: <p>监听器配置的CA证书ID列表。目前监听器仅支持添加 1 个 CA 证书。<br>当 CaEnabled 参数取值为 true 时，此参数必填。</p>
         :type CaCertificateIds: list of str
-        :param _CaEnabled: 是否开启双向认证。
-取值：
-true：开启。
-false（默认值）：不开启。
+        :param _CaEnabled: <p>是否开启双向认证。<br>取值：<br>true：开启。<br>false（默认值）：不开启。</p>
         :type CaEnabled: bool
-        :param _CertificateIds: 服务器证书 ID 列表。
+        :param _CertificateIds: <p>服务器证书 ID 列表。</p>
         :type CertificateIds: list of str
-        :param _ClientToken: 客户端Token，用于保证请求的幂等性。  
-
-从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。
+        :param _ClientToken: <p>客户端Token，用于保证请求的幂等性。  </p><p>从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。</p>
         :type ClientToken: str
-        :param _GzipEnabled: 是否开启Gzip压缩。取值:true(默认值):是。false:否
+        :param _GzipEnabled: <p>是否开启Gzip压缩。取值:true(默认值):是。false:否</p>
         :type GzipEnabled: bool
-        :param _Http2Enabled: 是否开启HTTP/2特性。HTTP 协议默认 false，HTTPS 协议默认 true。只有 HTTPS 协议支持此参数。
+        :param _Http2Enabled: <p>是否开启HTTP/2特性。HTTP 协议默认 false，HTTPS 协议默认 true。只有 HTTPS 协议支持此参数。</p>
         :type Http2Enabled: bool
-        :param _IdleTimeout: 连接空闲超时时间。单位：秒。
-取值范围：1~600。
-默认值：15。
-如果在超时时间内一直没有访问请求，负载均衡会断开当前连接，在下次请求到来时创建新的连接。
+        :param _IdleTimeout: <p>连接空闲超时时间。单位：秒。<br>取值范围：1~600。<br>默认值：15。<br>如果在超时时间内一直没有访问请求，负载均衡会断开当前连接，在下次请求到来时创建新的连接。</p>
         :type IdleTimeout: int
-        :param _ListenerName: 自定义监听名称。  长度为 1~255 个字符，必须是中文和无害字符串中的字符，  可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。
+        :param _ListenerName: <p>自定义监听名称。  长度为 1~255 个字符，必须是中文和无害字符串中的字符，  可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。</p>
         :type ListenerName: str
-        :param _RequestTimeout: 请求超时时间。单位：秒。
-取值：1~600。
-默认值：60。
-如果在超时时间内后端服务器没有返回响应，负载均衡将放弃等待，并给客户端返回HTTP 504错误码。
+        :param _RequestTimeout: <p>连接请求超时时间。单位：秒。取值：1~600。默认值：60。如果在超时时间内后端服务器没有返回响应，负载均衡将放弃等待，并给客户端返回HTTP 504错误码。</p>
         :type RequestTimeout: int
-        :param _SecurityPolicyId: 安全策略 ID，格式为 tls- 后接 8 位字母数字。
+        :param _SecurityPolicyId: <p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
         :type SecurityPolicyId: str
-        :param _Tags: 标签列表。最大支持20个。
+        :param _Tags: <p>标签列表。最大支持20个。</p>
         :type Tags: list of TagInfo
-        :param _XForwardedForConfig: X-Forwarded-For配置
+        :param _XForwardedForConfig: <p>X-Forwarded-For配置</p>
         :type XForwardedForConfig: :class:`tencentcloud.alb.v20251030.models.XForwardedForConfig`
         """
         self._DefaultActions = None
@@ -939,7 +927,7 @@ false（默认值）：不开启。
 
     @property
     def DefaultActions(self):
-        r"""默认转发规则动作列表。目前监听器仅支持添加 1 个默认转发规则动作。
+        r"""<p>默认转发规则动作列表。目前监听器仅支持添加 1 个默认转发规则动作。</p>
         :rtype: list of DefaultAction
         """
         return self._DefaultActions
@@ -950,7 +938,7 @@ false（默认值）：不开启。
 
     @property
     def ListenerPort(self):
-        r"""负载均衡实例前端使用的端口。  取值：1~65535。
+        r"""<p>负载均衡实例前端使用的端口。  取值：1~65535。</p>
         :rtype: int
         """
         return self._ListenerPort
@@ -961,7 +949,7 @@ false（默认值）：不开启。
 
     @property
     def ListenerProtocol(self):
-        r"""监听协议。  取值：HTTP、HTTPS 或 QUIC。
+        r"""<p>监听协议。  取值：HTTP、HTTPS 或 QUIC。</p>
         :rtype: str
         """
         return self._ListenerProtocol
@@ -972,7 +960,7 @@ false（默认值）：不开启。
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
+        r"""<p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -983,8 +971,7 @@ false（默认值）：不开启。
 
     @property
     def CaCertificateIds(self):
-        r"""监听器配置的CA证书ID列表。目前监听器仅支持添加 1 个 CA 证书。
-当 CaEnabled 参数取值为 true 时，此参数必填。
+        r"""<p>监听器配置的CA证书ID列表。目前监听器仅支持添加 1 个 CA 证书。<br>当 CaEnabled 参数取值为 true 时，此参数必填。</p>
         :rtype: list of str
         """
         return self._CaCertificateIds
@@ -995,10 +982,7 @@ false（默认值）：不开启。
 
     @property
     def CaEnabled(self):
-        r"""是否开启双向认证。
-取值：
-true：开启。
-false（默认值）：不开启。
+        r"""<p>是否开启双向认证。<br>取值：<br>true：开启。<br>false（默认值）：不开启。</p>
         :rtype: bool
         """
         return self._CaEnabled
@@ -1009,7 +993,7 @@ false（默认值）：不开启。
 
     @property
     def CertificateIds(self):
-        r"""服务器证书 ID 列表。
+        r"""<p>服务器证书 ID 列表。</p>
         :rtype: list of str
         """
         return self._CertificateIds
@@ -1020,9 +1004,7 @@ false（默认值）：不开启。
 
     @property
     def ClientToken(self):
-        r"""客户端Token，用于保证请求的幂等性。  
-
-从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。
+        r"""<p>客户端Token，用于保证请求的幂等性。  </p><p>从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -1033,7 +1015,7 @@ false（默认值）：不开启。
 
     @property
     def GzipEnabled(self):
-        r"""是否开启Gzip压缩。取值:true(默认值):是。false:否
+        r"""<p>是否开启Gzip压缩。取值:true(默认值):是。false:否</p>
         :rtype: bool
         """
         return self._GzipEnabled
@@ -1044,7 +1026,7 @@ false（默认值）：不开启。
 
     @property
     def Http2Enabled(self):
-        r"""是否开启HTTP/2特性。HTTP 协议默认 false，HTTPS 协议默认 true。只有 HTTPS 协议支持此参数。
+        r"""<p>是否开启HTTP/2特性。HTTP 协议默认 false，HTTPS 协议默认 true。只有 HTTPS 协议支持此参数。</p>
         :rtype: bool
         """
         return self._Http2Enabled
@@ -1055,10 +1037,7 @@ false（默认值）：不开启。
 
     @property
     def IdleTimeout(self):
-        r"""连接空闲超时时间。单位：秒。
-取值范围：1~600。
-默认值：15。
-如果在超时时间内一直没有访问请求，负载均衡会断开当前连接，在下次请求到来时创建新的连接。
+        r"""<p>连接空闲超时时间。单位：秒。<br>取值范围：1~600。<br>默认值：15。<br>如果在超时时间内一直没有访问请求，负载均衡会断开当前连接，在下次请求到来时创建新的连接。</p>
         :rtype: int
         """
         return self._IdleTimeout
@@ -1069,7 +1048,7 @@ false（默认值）：不开启。
 
     @property
     def ListenerName(self):
-        r"""自定义监听名称。  长度为 1~255 个字符，必须是中文和无害字符串中的字符，  可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。
+        r"""<p>自定义监听名称。  长度为 1~255 个字符，必须是中文和无害字符串中的字符，  可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。</p>
         :rtype: str
         """
         return self._ListenerName
@@ -1080,10 +1059,7 @@ false（默认值）：不开启。
 
     @property
     def RequestTimeout(self):
-        r"""请求超时时间。单位：秒。
-取值：1~600。
-默认值：60。
-如果在超时时间内后端服务器没有返回响应，负载均衡将放弃等待，并给客户端返回HTTP 504错误码。
+        r"""<p>连接请求超时时间。单位：秒。取值：1~600。默认值：60。如果在超时时间内后端服务器没有返回响应，负载均衡将放弃等待，并给客户端返回HTTP 504错误码。</p>
         :rtype: int
         """
         return self._RequestTimeout
@@ -1094,7 +1070,7 @@ false（默认值）：不开启。
 
     @property
     def SecurityPolicyId(self):
-        r"""安全策略 ID，格式为 tls- 后接 8 位字母数字。
+        r"""<p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._SecurityPolicyId
@@ -1105,7 +1081,7 @@ false（默认值）：不开启。
 
     @property
     def Tags(self):
-        r"""标签列表。最大支持20个。
+        r"""<p>标签列表。最大支持20个。</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -1116,7 +1092,7 @@ false（默认值）：不开启。
 
     @property
     def XForwardedForConfig(self):
-        r"""X-Forwarded-For配置
+        r"""<p>X-Forwarded-For配置</p>
         :rtype: :class:`tencentcloud.alb.v20251030.models.XForwardedForConfig`
         """
         return self._XForwardedForConfig
@@ -1172,7 +1148,7 @@ class CreateListenerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 监听器 ID，格式为 lst- 后接 8 位字母数字。
+        :param _ListenerId: <p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :type ListenerId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1182,7 +1158,7 @@ class CreateListenerResponse(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器 ID，格式为 lst- 后接 8 位字母数字。
+        r"""<p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -3214,9 +3190,9 @@ class DescribeListenerDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 监听器 ID，格式为 lst- 后接 8 位字母数字。
+        :param _ListenerId: <p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :type ListenerId: str
-        :param _LoadBalancerId: 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
+        :param _LoadBalancerId: <p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :type LoadBalancerId: str
         """
         self._ListenerId = None
@@ -3224,7 +3200,7 @@ class DescribeListenerDetailRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器 ID，格式为 lst- 后接 8 位字母数字。
+        r"""<p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -3235,7 +3211,7 @@ class DescribeListenerDetailRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
+        r"""<p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3265,48 +3241,43 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaCertificateIds: 监听器绑定的CA证书ID列表。
+        :param _CaCertificateIds: <p>监听器绑定的CA证书ID列表。</p>
         :type CaCertificateIds: list of str
-        :param _CaEnabled: 是否开启双向认证。
+        :param _CaEnabled: <p>是否开启双向认证。</p>
         :type CaEnabled: bool
-        :param _CertificateIds: 服务器证书 ID 列表。
+        :param _CertificateIds: <p>服务器证书 ID 列表。</p>
         :type CertificateIds: list of str
-        :param _CreateTime: 监听器实例的创建时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）
+        :param _CreateTime: <p>监听器实例的创建时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）</p>
         :type CreateTime: str
-        :param _DefaultActions: 规则动作列表。
+        :param _DefaultActions: <p>规则动作列表。</p>
         :type DefaultActions: list of DefaultAction
-        :param _GzipEnabled: 是否启用 Gzip 压缩。
+        :param _GzipEnabled: <p>是否启用 Gzip 压缩。</p>
         :type GzipEnabled: bool
-        :param _Http2Enabled: 是否开启HTTP/2特性。
+        :param _Http2Enabled: <p>是否开启HTTP/2特性。</p>
         :type Http2Enabled: bool
-        :param _IdleTimeout: 指定连接空闲超时时间。单位：秒。
+        :param _IdleTimeout: <p>指定连接空闲超时时间。单位：秒。</p>
         :type IdleTimeout: int
-        :param _ListenerId: 监听器 ID，格式为 lst- 后接 8 位字母数字。
+        :param _ListenerId: <p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :type ListenerId: str
-        :param _ListenerName: 自定义监听名称。
+        :param _ListenerName: <p>自定义监听名称。</p>
         :type ListenerName: str
-        :param _ListenerPort: 负载均衡实例前端使用的端口。
+        :param _ListenerPort: <p>负载均衡实例前端使用的端口。</p>
         :type ListenerPort: int
-        :param _ListenerProtocol: 监听协议。
+        :param _ListenerProtocol: <p>监听协议。</p>
         :type ListenerProtocol: str
-        :param _ListenerStatus: 监听器状态。取值:=
-
-- **Active**: 运行中。
-- **Provisioning**：创建中。
-- **Configuring**：变配中。
-- **ProvisionFailed**：创建失败
+        :param _ListenerStatus: <p>监听器状态。取值:=</p><ul><li><strong>Active</strong>: 运行中。</li><li><strong>Provisioning</strong>：创建中。</li><li><strong>Configuring</strong>：变配中。</li><li><strong>ProvisionFailed</strong>：创建失败</li></ul>
         :type ListenerStatus: str
-        :param _LoadBalancerId: 负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
+        :param _LoadBalancerId: <p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :type LoadBalancerId: str
-        :param _ModifyTime: 监听器实例的最后变更时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）
+        :param _ModifyTime: <p>监听器实例的最后变更时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）</p>
         :type ModifyTime: str
-        :param _RequestTimeout: 请求超时时间。单位：秒。
+        :param _RequestTimeout: <p>连接请求超时时间。单位：秒。</p>
         :type RequestTimeout: int
-        :param _SecurityPolicyId: 安全策略 ID，格式为 tls- 后接 8 位字母数字。
+        :param _SecurityPolicyId: <p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
         :type SecurityPolicyId: str
-        :param _Tags: 标签。
+        :param _Tags: <p>标签。</p>
         :type Tags: list of TagInfo
-        :param _XForwardedForConfig: XForwardedFor配置。
+        :param _XForwardedForConfig: <p>XForwardedFor配置。</p>
         :type XForwardedForConfig: :class:`tencentcloud.alb.v20251030.models.XForwardedForConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3334,7 +3305,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def CaCertificateIds(self):
-        r"""监听器绑定的CA证书ID列表。
+        r"""<p>监听器绑定的CA证书ID列表。</p>
         :rtype: list of str
         """
         return self._CaCertificateIds
@@ -3345,7 +3316,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def CaEnabled(self):
-        r"""是否开启双向认证。
+        r"""<p>是否开启双向认证。</p>
         :rtype: bool
         """
         return self._CaEnabled
@@ -3356,7 +3327,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def CertificateIds(self):
-        r"""服务器证书 ID 列表。
+        r"""<p>服务器证书 ID 列表。</p>
         :rtype: list of str
         """
         return self._CertificateIds
@@ -3367,7 +3338,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""监听器实例的创建时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）
+        r"""<p>监听器实例的创建时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）</p>
         :rtype: str
         """
         return self._CreateTime
@@ -3378,7 +3349,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def DefaultActions(self):
-        r"""规则动作列表。
+        r"""<p>规则动作列表。</p>
         :rtype: list of DefaultAction
         """
         return self._DefaultActions
@@ -3389,7 +3360,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def GzipEnabled(self):
-        r"""是否启用 Gzip 压缩。
+        r"""<p>是否启用 Gzip 压缩。</p>
         :rtype: bool
         """
         return self._GzipEnabled
@@ -3400,7 +3371,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def Http2Enabled(self):
-        r"""是否开启HTTP/2特性。
+        r"""<p>是否开启HTTP/2特性。</p>
         :rtype: bool
         """
         return self._Http2Enabled
@@ -3411,7 +3382,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""指定连接空闲超时时间。单位：秒。
+        r"""<p>指定连接空闲超时时间。单位：秒。</p>
         :rtype: int
         """
         return self._IdleTimeout
@@ -3422,7 +3393,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器 ID，格式为 lst- 后接 8 位字母数字。
+        r"""<p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -3433,7 +3404,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""自定义监听名称。
+        r"""<p>自定义监听名称。</p>
         :rtype: str
         """
         return self._ListenerName
@@ -3444,7 +3415,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def ListenerPort(self):
-        r"""负载均衡实例前端使用的端口。
+        r"""<p>负载均衡实例前端使用的端口。</p>
         :rtype: int
         """
         return self._ListenerPort
@@ -3455,7 +3426,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def ListenerProtocol(self):
-        r"""监听协议。
+        r"""<p>监听协议。</p>
         :rtype: str
         """
         return self._ListenerProtocol
@@ -3466,12 +3437,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def ListenerStatus(self):
-        r"""监听器状态。取值:=
-
-- **Active**: 运行中。
-- **Provisioning**：创建中。
-- **Configuring**：变配中。
-- **ProvisionFailed**：创建失败
+        r"""<p>监听器状态。取值:=</p><ul><li><strong>Active</strong>: 运行中。</li><li><strong>Provisioning</strong>：创建中。</li><li><strong>Configuring</strong>：变配中。</li><li><strong>ProvisionFailed</strong>：创建失败</li></ul>
         :rtype: str
         """
         return self._ListenerStatus
@@ -3482,7 +3448,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。
+        r"""<p>负载均衡实例 ID，格式为 alb- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -3493,7 +3459,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""监听器实例的最后变更时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）
+        r"""<p>监听器实例的最后变更时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -3504,7 +3470,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def RequestTimeout(self):
-        r"""请求超时时间。单位：秒。
+        r"""<p>连接请求超时时间。单位：秒。</p>
         :rtype: int
         """
         return self._RequestTimeout
@@ -3515,7 +3481,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def SecurityPolicyId(self):
-        r"""安全策略 ID，格式为 tls- 后接 8 位字母数字。
+        r"""<p>安全策略 ID，格式为 tls- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._SecurityPolicyId
@@ -3526,7 +3492,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签。
+        r"""<p>标签。</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -3537,7 +3503,7 @@ class DescribeListenerDetailResponse(AbstractModel):
 
     @property
     def XForwardedForConfig(self):
-        r"""XForwardedFor配置。
+        r"""<p>XForwardedFor配置。</p>
         :rtype: :class:`tencentcloud.alb.v20251030.models.XForwardedForConfig`
         """
         return self._XForwardedForConfig
@@ -7207,40 +7173,35 @@ class ListenerOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaEnable: 是否开启双向认证。
+        :param _CaEnable: <p>是否开启双向认证。</p>
         :type CaEnable: bool
-        :param _CreateTime: 监听器实例的创建时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）
+        :param _CreateTime: <p>监听器实例的创建时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）</p>
         :type CreateTime: str
-        :param _GzipEnabled: 是否启用 Gzip 压缩。
+        :param _GzipEnabled: <p>是否启用 Gzip 压缩。</p>
         :type GzipEnabled: bool
-        :param _Http2Enable: 是否启用http2。
+        :param _Http2Enable: <p>是否启用http2。</p>
         :type Http2Enable: bool
-        :param _IdleTimeout: 空闲超时时间。
+        :param _IdleTimeout: <p>空闲超时时间。</p>
         :type IdleTimeout: int
-        :param _ListenerId: 监听器 ID，格式为 lst- 后接 8 位字母数字。
+        :param _ListenerId: <p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :type ListenerId: str
-        :param _ListenerName: 监听器名称。
+        :param _ListenerName: <p>监听器名称。</p>
         :type ListenerName: str
-        :param _ListenerPort: 监听器端口。
+        :param _ListenerPort: <p>监听器端口。</p>
         :type ListenerPort: int
-        :param _ListenerProtocol: 监听器协议。
+        :param _ListenerProtocol: <p>监听器协议。</p>
         :type ListenerProtocol: str
-        :param _ListenerStatus: 监听器状态。取值:=
-
-- **Active**: 运行中。
-- **Provisioning**：创建中。
-- **Configuring**：变配中。
-- **ProvisionFailed**：创建失败
+        :param _ListenerStatus: <p>监听器状态。取值:=</p><ul><li><strong>Active</strong>: 运行中。</li><li><strong>Provisioning</strong>：创建中。</li><li><strong>Configuring</strong>：变配中。</li><li><strong>ProvisionFailed</strong>：创建失败</li></ul>
         :type ListenerStatus: str
-        :param _ModifyTime: 监听器实例的最后变更时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）
+        :param _ModifyTime: <p>监听器实例的最后变更时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）</p>
         :type ModifyTime: str
-        :param _RequestTimeout: 请求超时时间。
+        :param _RequestTimeout: <p>连接请求超时时间。</p>
         :type RequestTimeout: int
-        :param _Tags: 标签。
+        :param _Tags: <p>标签。</p>
         :type Tags: list of TagInfo
-        :param _TlsSecurityPolicyId: 安全策略 ID。
+        :param _TlsSecurityPolicyId: <p>安全策略 ID。</p>
         :type TlsSecurityPolicyId: str
-        :param _XForwardedForConfig: XForwardedFor配置。
+        :param _XForwardedForConfig: <p>XForwardedFor配置。</p>
         :type XForwardedForConfig: :class:`tencentcloud.alb.v20251030.models.XForwardedForConfig`
         """
         self._CaEnable = None
@@ -7261,7 +7222,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def CaEnable(self):
-        r"""是否开启双向认证。
+        r"""<p>是否开启双向认证。</p>
         :rtype: bool
         """
         return self._CaEnable
@@ -7272,7 +7233,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""监听器实例的创建时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）
+        r"""<p>监听器实例的创建时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）</p>
         :rtype: str
         """
         return self._CreateTime
@@ -7283,7 +7244,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def GzipEnabled(self):
-        r"""是否启用 Gzip 压缩。
+        r"""<p>是否启用 Gzip 压缩。</p>
         :rtype: bool
         """
         return self._GzipEnabled
@@ -7294,7 +7255,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def Http2Enable(self):
-        r"""是否启用http2。
+        r"""<p>是否启用http2。</p>
         :rtype: bool
         """
         return self._Http2Enable
@@ -7305,7 +7266,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def IdleTimeout(self):
-        r"""空闲超时时间。
+        r"""<p>空闲超时时间。</p>
         :rtype: int
         """
         return self._IdleTimeout
@@ -7316,7 +7277,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器 ID，格式为 lst- 后接 8 位字母数字。
+        r"""<p>监听器 ID，格式为 lst- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -7327,7 +7288,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""监听器名称。
+        r"""<p>监听器名称。</p>
         :rtype: str
         """
         return self._ListenerName
@@ -7338,7 +7299,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def ListenerPort(self):
-        r"""监听器端口。
+        r"""<p>监听器端口。</p>
         :rtype: int
         """
         return self._ListenerPort
@@ -7349,7 +7310,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def ListenerProtocol(self):
-        r"""监听器协议。
+        r"""<p>监听器协议。</p>
         :rtype: str
         """
         return self._ListenerProtocol
@@ -7360,12 +7321,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def ListenerStatus(self):
-        r"""监听器状态。取值:=
-
-- **Active**: 运行中。
-- **Provisioning**：创建中。
-- **Configuring**：变配中。
-- **ProvisionFailed**：创建失败
+        r"""<p>监听器状态。取值:=</p><ul><li><strong>Active</strong>: 运行中。</li><li><strong>Provisioning</strong>：创建中。</li><li><strong>Configuring</strong>：变配中。</li><li><strong>ProvisionFailed</strong>：创建失败</li></ul>
         :rtype: str
         """
         return self._ListenerStatus
@@ -7376,7 +7332,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""监听器实例的最后变更时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）
+        r"""<p>监听器实例的最后变更时间。格式：ISO 8601（例如 2025-01-01T08:30:00+08:00）</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -7387,7 +7343,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def RequestTimeout(self):
-        r"""请求超时时间。
+        r"""<p>连接请求超时时间。</p>
         :rtype: int
         """
         return self._RequestTimeout
@@ -7398,7 +7354,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签。
+        r"""<p>标签。</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -7409,7 +7365,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def TlsSecurityPolicyId(self):
-        r"""安全策略 ID。
+        r"""<p>安全策略 ID。</p>
         :rtype: str
         """
         return self._TlsSecurityPolicyId
@@ -7420,7 +7376,7 @@ class ListenerOutput(AbstractModel):
 
     @property
     def XForwardedForConfig(self):
-        r"""XForwardedFor配置。
+        r"""<p>XForwardedFor配置。</p>
         :rtype: :class:`tencentcloud.alb.v20251030.models.XForwardedForConfig`
         """
         return self._XForwardedForConfig

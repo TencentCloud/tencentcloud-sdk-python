@@ -5333,18 +5333,22 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统 ID
+        :param _FileSystemId: <p>文件系统 ID</p>
         :type FileSystemId: str
-        :param _VpcId: 私有网络（VPC） ID
+        :param _VpcId: <p>私有网络（VPC） ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网 ID
+        :param _SubnetId: <p>子网 ID</p>
         :type SubnetId: str
-        :param _Offset: Offset 分页码,默认0
+        :param _Offset: <p>Offset 分页码,默认0</p>
         :type Offset: int
-        :param _Limit: Limit 页面大小，默认10
+        :param _Limit: <p>Limit 页面大小，默认10</p>
         :type Limit: int
-        :param _CreationToken: 用户自定义名称
+        :param _CreationToken: <p>用户自定义名称</p>
         :type CreationToken: str
+        :param _Filters: <p>过滤条件。<br><br><li>Protocol - Array of String - 是否必填：否 -（过滤条件）按协议过滤。(NFS | CIFS | TURBO) </li><br><br><li>StorageType - Array of String - 是否必填：否 -（过滤条件）按存储类型过滤。(SD | HP | TB | TP | THP) </li><br><br><li>LifeCycleState - Array of String - 是否必填：否 -（过滤条件）按生命周期过滤。(creating | create_failed | available | deleting | delete_failed | upgrading | unserviced | expanding) </li><br><br><li>Zone - Array of String - 是否必填：否 -（过滤条件）按可用区过滤。(例如：ap-guangzhou-3) </li><br><br><li>IpAddress - Array of String - 是否必填：否 -（过滤条件）按导出点IP地址过滤。(例如：10.0.0.3) </li><br><br><li>PGroupId - Array of String - 是否必填：否 -（过滤条件）按权限组ID过滤。(例如：pgroup-xxxxxrxt) </li><br><br><li>PGroupName - Array of String - 是否必填：否 -（过滤条件）按权限组名称过滤。(例如：默认权限组) </li><br><br><li>Scenario- Array of String - 是否必填：否 -（过滤条件）按权限组名称过滤。(例如：AgentSandbox) </li></p>
+        :type Filters: list of Filter
+        :param _Tags: <p>标签</p>
+        :type Tags: list of TagInfo
         """
         self._FileSystemId = None
         self._VpcId = None
@@ -5352,10 +5356,12 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._CreationToken = None
+        self._Filters = None
+        self._Tags = None
 
     @property
     def FileSystemId(self):
-        r"""文件系统 ID
+        r"""<p>文件系统 ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -5366,7 +5372,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络（VPC） ID
+        r"""<p>私有网络（VPC） ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -5377,7 +5383,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网 ID
+        r"""<p>子网 ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -5388,7 +5394,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""Offset 分页码,默认0
+        r"""<p>Offset 分页码,默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -5399,7 +5405,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""Limit 页面大小，默认10
+        r"""<p>Limit 页面大小，默认10</p>
         :rtype: int
         """
         return self._Limit
@@ -5410,7 +5416,7 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
 
     @property
     def CreationToken(self):
-        r"""用户自定义名称
+        r"""<p>用户自定义名称</p>
         :rtype: str
         """
         return self._CreationToken
@@ -5418,6 +5424,28 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
     @CreationToken.setter
     def CreationToken(self, CreationToken):
         self._CreationToken = CreationToken
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。<br><br><li>Protocol - Array of String - 是否必填：否 -（过滤条件）按协议过滤。(NFS | CIFS | TURBO) </li><br><br><li>StorageType - Array of String - 是否必填：否 -（过滤条件）按存储类型过滤。(SD | HP | TB | TP | THP) </li><br><br><li>LifeCycleState - Array of String - 是否必填：否 -（过滤条件）按生命周期过滤。(creating | create_failed | available | deleting | delete_failed | upgrading | unserviced | expanding) </li><br><br><li>Zone - Array of String - 是否必填：否 -（过滤条件）按可用区过滤。(例如：ap-guangzhou-3) </li><br><br><li>IpAddress - Array of String - 是否必填：否 -（过滤条件）按导出点IP地址过滤。(例如：10.0.0.3) </li><br><br><li>PGroupId - Array of String - 是否必填：否 -（过滤条件）按权限组ID过滤。(例如：pgroup-xxxxxrxt) </li><br><br><li>PGroupName - Array of String - 是否必填：否 -（过滤条件）按权限组名称过滤。(例如：默认权限组) </li><br><br><li>Scenario- Array of String - 是否必填：否 -（过滤条件）按权限组名称过滤。(例如：AgentSandbox) </li></p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -5427,6 +5455,18 @@ class DescribeCfsFileSystemsRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._CreationToken = params.get("CreationToken")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5444,9 +5484,9 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystems: 文件系统信息
+        :param _FileSystems: <p>文件系统信息</p>
         :type FileSystems: list of FileSystemInfo
-        :param _TotalCount: 文件系统总数
+        :param _TotalCount: <p>文件系统总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5457,7 +5497,7 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     @property
     def FileSystems(self):
-        r"""文件系统信息
+        r"""<p>文件系统信息</p>
         :rtype: list of FileSystemInfo
         """
         return self._FileSystems
@@ -5468,7 +5508,7 @@ class DescribeCfsFileSystemsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""文件系统总数
+        r"""<p>文件系统总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7827,6 +7867,12 @@ class FileSystemInfo(AbstractModel):
         :type MetaType: str
         :param _Scenario: <p>业务场景。</p><p>枚举值：</p><ul><li>AgentSandbox： 创建 AgentCFS</li></ul>
         :type Scenario: str
+        :param _FullDeleteCapacityUsage: <p>过满删除容量占比，0.0 表示关闭</p><p>取值范围：[0.0, 1.0]</p>
+        :type FullDeleteCapacityUsage: float
+        :param _FullDeleteMinTtl: <p>过满删除最小存活时间，单位秒</p><p>单位：秒</p>
+        :type FullDeleteMinTtl: int
+        :param _ExpireDeleteTtl: <p>过期删除 TTL，单位秒，0 表示关闭</p><p>单位：秒</p>
+        :type ExpireDeleteTtl: int
         """
         self._CreationTime = None
         self._CreationToken = None
@@ -7857,6 +7903,9 @@ class FileSystemInfo(AbstractModel):
         self._ExstraPerformanceInfo = None
         self._MetaType = None
         self._Scenario = None
+        self._FullDeleteCapacityUsage = None
+        self._FullDeleteMinTtl = None
+        self._ExpireDeleteTtl = None
 
     @property
     def CreationTime(self):
@@ -8178,6 +8227,39 @@ class FileSystemInfo(AbstractModel):
     def Scenario(self, Scenario):
         self._Scenario = Scenario
 
+    @property
+    def FullDeleteCapacityUsage(self):
+        r"""<p>过满删除容量占比，0.0 表示关闭</p><p>取值范围：[0.0, 1.0]</p>
+        :rtype: float
+        """
+        return self._FullDeleteCapacityUsage
+
+    @FullDeleteCapacityUsage.setter
+    def FullDeleteCapacityUsage(self, FullDeleteCapacityUsage):
+        self._FullDeleteCapacityUsage = FullDeleteCapacityUsage
+
+    @property
+    def FullDeleteMinTtl(self):
+        r"""<p>过满删除最小存活时间，单位秒</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._FullDeleteMinTtl
+
+    @FullDeleteMinTtl.setter
+    def FullDeleteMinTtl(self, FullDeleteMinTtl):
+        self._FullDeleteMinTtl = FullDeleteMinTtl
+
+    @property
+    def ExpireDeleteTtl(self):
+        r"""<p>过期删除 TTL，单位秒，0 表示关闭</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ExpireDeleteTtl
+
+    @ExpireDeleteTtl.setter
+    def ExpireDeleteTtl(self, ExpireDeleteTtl):
+        self._ExpireDeleteTtl = ExpireDeleteTtl
+
 
     def _deserialize(self, params):
         self._CreationTime = params.get("CreationTime")
@@ -8225,6 +8307,9 @@ class FileSystemInfo(AbstractModel):
                 self._ExstraPerformanceInfo.append(obj)
         self._MetaType = params.get("MetaType")
         self._Scenario = params.get("Scenario")
+        self._FullDeleteCapacityUsage = params.get("FullDeleteCapacityUsage")
+        self._FullDeleteMinTtl = params.get("FullDeleteMinTtl")
+        self._ExpireDeleteTtl = params.get("ExpireDeleteTtl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

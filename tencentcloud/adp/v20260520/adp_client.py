@@ -27,7 +27,7 @@ class AdpClient(AbstractClient):
 
 
     def CheckLabel(self, request):
-        r"""校验标签下的标准词是否已存在
+        r"""校验标签
 
         :param request: Request instance for CheckLabel.
         :type request: :class:`tencentcloud.adp.v20260520.models.CheckLabelRequest`
@@ -1811,6 +1811,29 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeReleaseSummary", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReleaseSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceSummary(self, request):
+        r"""获取用户资源套餐和增值包用量信息
+
+        :param request: Request instance for DescribeResourceSummary.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeResourceSummaryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeResourceSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceSummaryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

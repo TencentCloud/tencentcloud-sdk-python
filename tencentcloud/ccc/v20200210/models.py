@@ -12484,6 +12484,8 @@ class DescribeSessionDetailResponse(AbstractModel):
         :type SysHangupReason: int
         :param _SysHangupReasonString: <p>接通后系统挂断原因</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
         :type SysHangupReasonString: str
+        :param _EndStatusV2: <p>通话结束状态V2（灰度中）</p>
+        :type EndStatusV2: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12512,6 +12514,7 @@ class DescribeSessionDetailResponse(AbstractModel):
         self._ServeParticipants = None
         self._SysHangupReason = None
         self._SysHangupReasonString = None
+        self._EndStatusV2 = None
         self._RequestId = None
 
     @property
@@ -12790,6 +12793,17 @@ class DescribeSessionDetailResponse(AbstractModel):
         self._SysHangupReasonString = SysHangupReasonString
 
     @property
+    def EndStatusV2(self):
+        r"""<p>通话结束状态V2（灰度中）</p>
+        :rtype: int
+        """
+        return self._EndStatusV2
+
+    @EndStatusV2.setter
+    def EndStatusV2(self, EndStatusV2):
+        self._EndStatusV2 = EndStatusV2
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -12847,6 +12861,7 @@ class DescribeSessionDetailResponse(AbstractModel):
                 self._ServeParticipants.append(obj)
         self._SysHangupReason = params.get("SysHangupReason")
         self._SysHangupReasonString = params.get("SysHangupReasonString")
+        self._EndStatusV2 = params.get("EndStatusV2")
         self._RequestId = params.get("RequestId")
 
 
@@ -20653,6 +20668,8 @@ class TelCdrInfo(AbstractModel):
         :type SysHangupReason: int
         :param _SysHangupReasonString: <p>接通后系统挂断原因，文字描述信息</p>
         :type SysHangupReasonString: str
+        :param _EndStatusV2: <p>通话结束状态V2（灰度中）</p>
+        :type EndStatusV2: int
         """
         self._Caller = None
         self._Callee = None
@@ -20697,6 +20714,7 @@ class TelCdrInfo(AbstractModel):
         self._AIAgentName = None
         self._SysHangupReason = None
         self._SysHangupReasonString = None
+        self._EndStatusV2 = None
 
     @property
     def Caller(self):
@@ -21184,6 +21202,17 @@ class TelCdrInfo(AbstractModel):
     def SysHangupReasonString(self, SysHangupReasonString):
         self._SysHangupReasonString = SysHangupReasonString
 
+    @property
+    def EndStatusV2(self):
+        r"""<p>通话结束状态V2（灰度中）</p>
+        :rtype: int
+        """
+        return self._EndStatusV2
+
+    @EndStatusV2.setter
+    def EndStatusV2(self, EndStatusV2):
+        self._EndStatusV2 = EndStatusV2
+
 
     def _deserialize(self, params):
         self._Caller = params.get("Caller")
@@ -21251,6 +21280,7 @@ class TelCdrInfo(AbstractModel):
         self._AIAgentName = params.get("AIAgentName")
         self._SysHangupReason = params.get("SysHangupReason")
         self._SysHangupReasonString = params.get("SysHangupReasonString")
+        self._EndStatusV2 = params.get("EndStatusV2")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

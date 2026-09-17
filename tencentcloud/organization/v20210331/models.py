@@ -13822,23 +13822,29 @@ class ListTargetsForPolicyNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: scp账号uin或节点Id
+        :param _Uin: <p>scp账号uin或节点Id</p>
         :type Uin: int
-        :param _RelatedType: 关联类型 1-节点关联 2-用户关联
+        :param _RelatedType: <p>关联类型 1-节点关联 2-用户关联</p>
         :type RelatedType: int
-        :param _Name: 账号或者节点名称
+        :param _Name: <p>账号或者节点名称</p>
         :type Name: str
-        :param _AddTime: 绑定时间
+        :param _AddTime: <p>绑定时间</p>
         :type AddTime: str
+        :param _NodePath: <p>目标对象所属的组织层级名称路径</p>
+        :type NodePath: list of str
+        :param _NodePathIds: <p>对应的组织层级 ID 路径</p>
+        :type NodePathIds: list of int
         """
         self._Uin = None
         self._RelatedType = None
         self._Name = None
         self._AddTime = None
+        self._NodePath = None
+        self._NodePathIds = None
 
     @property
     def Uin(self):
-        r"""scp账号uin或节点Id
+        r"""<p>scp账号uin或节点Id</p>
         :rtype: int
         """
         return self._Uin
@@ -13849,7 +13855,7 @@ class ListTargetsForPolicyNode(AbstractModel):
 
     @property
     def RelatedType(self):
-        r"""关联类型 1-节点关联 2-用户关联
+        r"""<p>关联类型 1-节点关联 2-用户关联</p>
         :rtype: int
         """
         return self._RelatedType
@@ -13860,7 +13866,7 @@ class ListTargetsForPolicyNode(AbstractModel):
 
     @property
     def Name(self):
-        r"""账号或者节点名称
+        r"""<p>账号或者节点名称</p>
         :rtype: str
         """
         return self._Name
@@ -13871,7 +13877,7 @@ class ListTargetsForPolicyNode(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""绑定时间
+        r"""<p>绑定时间</p>
         :rtype: str
         """
         return self._AddTime
@@ -13880,12 +13886,36 @@ class ListTargetsForPolicyNode(AbstractModel):
     def AddTime(self, AddTime):
         self._AddTime = AddTime
 
+    @property
+    def NodePath(self):
+        r"""<p>目标对象所属的组织层级名称路径</p>
+        :rtype: list of str
+        """
+        return self._NodePath
+
+    @NodePath.setter
+    def NodePath(self, NodePath):
+        self._NodePath = NodePath
+
+    @property
+    def NodePathIds(self):
+        r"""<p>对应的组织层级 ID 路径</p>
+        :rtype: list of int
+        """
+        return self._NodePathIds
+
+    @NodePathIds.setter
+    def NodePathIds(self, NodePathIds):
+        self._NodePathIds = NodePathIds
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
         self._RelatedType = params.get("RelatedType")
         self._Name = params.get("Name")
         self._AddTime = params.get("AddTime")
+        self._NodePath = params.get("NodePath")
+        self._NodePathIds = params.get("NodePathIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13903,17 +13933,17 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyId: 策略Id。
+        :param _PolicyId: <p>策略Id。</p>
         :type PolicyId: int
-        :param _Rp: 每页数量。默认值是 20，必须大于 0 且小于或等于 200
+        :param _Rp: <p>每页数量。默认值是 20，必须大于 0 且小于或等于 200</p>
         :type Rp: int
-        :param _Page: 页码。默认值是 1，从 1开始，不能大于 200
+        :param _Page: <p>页码。默认值是 1，从 1开始，不能大于 200</p>
         :type Page: int
-        :param _TargetType: 策略类型。取值范围：All-全部、User-用户、Node-节点
+        :param _TargetType: <p>策略类型。取值范围：All-全部、User-用户、Node-节点</p>
         :type TargetType: str
-        :param _PolicyType: 策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        :param _PolicyType: <p>策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略</p>
         :type PolicyType: str
-        :param _Keyword: 按照多个策略id搜索，空格隔开。
+        :param _Keyword: <p>按照多个策略id搜索，空格隔开。</p>
         :type Keyword: str
         """
         self._PolicyId = None
@@ -13925,7 +13955,7 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""策略Id。
+        r"""<p>策略Id。</p>
         :rtype: int
         """
         return self._PolicyId
@@ -13936,7 +13966,7 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def Rp(self):
-        r"""每页数量。默认值是 20，必须大于 0 且小于或等于 200
+        r"""<p>每页数量。默认值是 20，必须大于 0 且小于或等于 200</p>
         :rtype: int
         """
         return self._Rp
@@ -13947,7 +13977,7 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""页码。默认值是 1，从 1开始，不能大于 200
+        r"""<p>页码。默认值是 1，从 1开始，不能大于 200</p>
         :rtype: int
         """
         return self._Page
@@ -13958,7 +13988,7 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""策略类型。取值范围：All-全部、User-用户、Node-节点
+        r"""<p>策略类型。取值范围：All-全部、User-用户、Node-节点</p>
         :rtype: str
         """
         return self._TargetType
@@ -13969,7 +13999,7 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def PolicyType(self):
-        r"""策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略
+        r"""<p>策略类型。默认值SERVICE_CONTROL_POLICY，取值范围：SERVICE_CONTROL_POLICY-服务控制策略、TAG_POLICY-标签策略</p>
         :rtype: str
         """
         return self._PolicyType
@@ -13980,7 +14010,7 @@ class ListTargetsForPolicyRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""按照多个策略id搜索，空格隔开。
+        r"""<p>按照多个策略id搜索，空格隔开。</p>
         :rtype: str
         """
         return self._Keyword
@@ -14014,9 +14044,9 @@ class ListTargetsForPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalNum: 总数。
+        :param _TotalNum: <p>总数。</p>
         :type TotalNum: int
-        :param _List: 指定SCP策略关联目标列表。
+        :param _List: <p>指定SCP策略关联目标列表。</p>
         :type List: list of ListTargetsForPolicyNode
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14027,7 +14057,7 @@ class ListTargetsForPolicyResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        r"""总数。
+        r"""<p>总数。</p>
         :rtype: int
         """
         return self._TotalNum
@@ -14038,7 +14068,7 @@ class ListTargetsForPolicyResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""指定SCP策略关联目标列表。
+        r"""<p>指定SCP策略关联目标列表。</p>
         :rtype: list of ListTargetsForPolicyNode
         """
         return self._List

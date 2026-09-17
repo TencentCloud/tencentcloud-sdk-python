@@ -1004,7 +1004,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteCustomErrorPageResponse:
         """
-        删除自定义错误页面。
+        删除自定义响应页面。
         """
         
         kwargs = {}

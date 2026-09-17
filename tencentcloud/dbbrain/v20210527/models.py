@@ -21988,19 +21988,23 @@ class StatDimension(AbstractModel):
 
 
 class StatisticDataInfo(AbstractModel):
-    r"""统计分析维度下的统计数据详情
+    r"""统计分析维度下的统计数据详情。
 
     """
 
     def __init__(self):
         r"""
         :param _Name: 统计维度的值。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _TimeAvg: 平均时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeAvg: float
         :param _TimeSum: 总时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :type TimeSum: float
         :param _Count: 数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
         """
         self._Name = None
@@ -22011,6 +22015,7 @@ class StatisticDataInfo(AbstractModel):
     @property
     def Name(self):
         r"""统计维度的值。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -22022,6 +22027,7 @@ class StatisticDataInfo(AbstractModel):
     @property
     def TimeAvg(self):
         r"""平均时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TimeAvg
@@ -22033,6 +22039,7 @@ class StatisticDataInfo(AbstractModel):
     @property
     def TimeSum(self):
         r"""总时间。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
         return self._TimeSum
@@ -22044,6 +22051,7 @@ class StatisticDataInfo(AbstractModel):
     @property
     def Count(self):
         r"""数量。
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Count

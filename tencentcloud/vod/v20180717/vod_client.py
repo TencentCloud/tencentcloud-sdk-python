@@ -409,6 +409,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcHunyuan3DTask(self, request):
+        r"""该接口用于创建 AIGC 混元 3D 任务。
+
+        :param request: Request instance for CreateAigcHunyuan3DTask.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcHunyuan3DTaskRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcHunyuan3DTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcHunyuan3DTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcHunyuan3DTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAigcImageTask(self, request):
         r"""该接口用于[生成 AIGC 图片](https://cloud.tencent.com/document/product/266/124473)。默认限制1个并发处理，接口调用会产生实际费用，请参考点播 [AIGC 生图片计费文档](https://cloud.tencent.com/document/product/266/95125#9c4dc6ff-4b3f-4b25-bf2d-393889dfb9ac)。该功能结算模式为[后付费](https://cloud.tencent.com/document/product/266/2838)，日结客户当天使用将在第二天出账，月结客户将在次月1日统一出上月使用费用。
 

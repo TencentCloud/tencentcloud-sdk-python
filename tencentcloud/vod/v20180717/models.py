@@ -6166,13 +6166,13 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :param _StartTimeOffset: <p>识别片段起始的偏移时间，单位：秒。</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :param _EndTimeOffset: <p>识别片段终止的偏移时间，单位：秒。</p>
         :type EndTimeOffset: float
-        :param _Confidence: 识别片段置信度。取值：0~100。
+        :param _Confidence: <p>识别片段置信度。取值：0~100。</p>
         :type Confidence: float
-        :param _AreaCoordSet: 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        :param _AreaCoordSet: <p>识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。</p>
         :type AreaCoordSet: list of int
         """
         self._StartTimeOffset = None
@@ -6182,7 +6182,7 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""识别片段起始的偏移时间，单位：秒。
+        r"""<p>识别片段起始的偏移时间，单位：秒。</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -6193,7 +6193,7 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""识别片段终止的偏移时间，单位：秒。
+        r"""<p>识别片段终止的偏移时间，单位：秒。</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -6204,7 +6204,7 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""识别片段置信度。取值：0~100。
+        r"""<p>识别片段置信度。取值：0~100。</p>
         :rtype: float
         """
         return self._Confidence
@@ -6215,7 +6215,7 @@ class AiRecognitionTaskObjectSeqmentItem(AbstractModel):
 
     @property
     def AreaCoordSet(self):
-        r"""识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+        r"""<p>识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。</p>
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -10334,14 +10334,11 @@ class AiSampleFaceOperation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。
+        :param _Type: <p>操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。</p>
         :type Type: str
-        :param _FaceIds: 人脸 ID 集合，当 Type为delete 时，该字段必填。
+        :param _FaceIds: <p>人脸 ID 集合，当 Type为delete 时，该字段必填。</p>
         :type FaceIds: list of str
-        :param _FaceContents: 人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合，仅支持 jpeg、png 图片格式。
-<li>当 Type为add 或 reset 时，该字段必填；</li>
-<li>数组长度限制：5 张图片。</li>
-注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
+        :param _FaceContents: <p>人脸图片 <a href="https://tools.ietf.org/html/rfc4648">Base64</a> 编码后的字符串集合，仅支持 jpeg、png 图片格式。</p><li>当 Type为add 或 reset 时，该字段必填；</li><li>数组长度限制：5 张图片。</li>注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
         :type FaceContents: list of str
         """
         self._Type = None
@@ -10350,7 +10347,7 @@ class AiSampleFaceOperation(AbstractModel):
 
     @property
     def Type(self):
-        r"""操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。
+        r"""<p>操作类型，可选值：add（添加）、delete（删除）、reset（重置）。重置操作将清空该人物已有人脸数据，并添加 FaceContents 指定人脸数据。</p>
         :rtype: str
         """
         return self._Type
@@ -10361,7 +10358,7 @@ class AiSampleFaceOperation(AbstractModel):
 
     @property
     def FaceIds(self):
-        r"""人脸 ID 集合，当 Type为delete 时，该字段必填。
+        r"""<p>人脸 ID 集合，当 Type为delete 时，该字段必填。</p>
         :rtype: list of str
         """
         return self._FaceIds
@@ -10372,10 +10369,7 @@ class AiSampleFaceOperation(AbstractModel):
 
     @property
     def FaceContents(self):
-        r"""人脸图片 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串集合，仅支持 jpeg、png 图片格式。
-<li>当 Type为add 或 reset 时，该字段必填；</li>
-<li>数组长度限制：5 张图片。</li>
-注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
+        r"""<p>人脸图片 <a href="https://tools.ietf.org/html/rfc4648">Base64</a> 编码后的字符串集合，仅支持 jpeg、png 图片格式。</p><li>当 Type为add 或 reset 时，该字段必填；</li><li>数组长度限制：5 张图片。</li>注意：图片必须是单人像正面人脸较清晰的照片，像素不低于 200*200。
         :rtype: list of str
         """
         return self._FaceContents
@@ -10476,21 +10470,21 @@ class AiSamplePerson(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PersonId: 人物 ID。
+        :param _PersonId: <p>人物 ID。</p>
         :type PersonId: str
-        :param _Name: 人物名称。
+        :param _Name: <p>人物名称。</p>
         :type Name: str
-        :param _Description: 人物描述。
+        :param _Description: <p>人物描述。</p>
         :type Description: str
-        :param _FaceInfoSet: 人脸信息。
+        :param _FaceInfoSet: <p>人脸信息。</p>
         :type FaceInfoSet: list of AiSampleFaceInfo
-        :param _TagSet: 人物标签。
+        :param _TagSet: <p>人物标签。</p>
         :type TagSet: list of str
-        :param _UsageSet: 应用场景。
+        :param _UsageSet: <p>应用场景。</p>
         :type UsageSet: list of str
-        :param _CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _CreateTime: <p>创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type CreateTime: str
-        :param _UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _UpdateTime: <p>最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type UpdateTime: str
         """
         self._PersonId = None
@@ -10504,7 +10498,7 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def PersonId(self):
-        r"""人物 ID。
+        r"""<p>人物 ID。</p>
         :rtype: str
         """
         return self._PersonId
@@ -10515,7 +10509,7 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def Name(self):
-        r"""人物名称。
+        r"""<p>人物名称。</p>
         :rtype: str
         """
         return self._Name
@@ -10526,7 +10520,7 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def Description(self):
-        r"""人物描述。
+        r"""<p>人物描述。</p>
         :rtype: str
         """
         return self._Description
@@ -10537,7 +10531,7 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def FaceInfoSet(self):
-        r"""人脸信息。
+        r"""<p>人脸信息。</p>
         :rtype: list of AiSampleFaceInfo
         """
         return self._FaceInfoSet
@@ -10548,7 +10542,7 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""人物标签。
+        r"""<p>人物标签。</p>
         :rtype: list of str
         """
         return self._TagSet
@@ -10559,7 +10553,7 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def UsageSet(self):
-        r"""应用场景。
+        r"""<p>应用场景。</p>
         :rtype: list of str
         """
         return self._UsageSet
@@ -10570,7 +10564,7 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10581,7 +10575,7 @@ class AiSamplePerson(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -10622,9 +10616,9 @@ class AiSampleTagOperation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 操作类型，可选值：add（添加）、delete（删除）、reset（重置）。
+        :param _Type: <p>操作类型，可选值：add（添加）、delete（删除）、reset（重置）。</p>
         :type Type: str
-        :param _Tags: 标签，长度限制：128 个字符。
+        :param _Tags: <p>标签，长度限制：128 个字符。</p>
         :type Tags: list of str
         """
         self._Type = None
@@ -10632,7 +10626,7 @@ class AiSampleTagOperation(AbstractModel):
 
     @property
     def Type(self):
-        r"""操作类型，可选值：add（添加）、delete（删除）、reset（重置）。
+        r"""<p>操作类型，可选值：add（添加）、delete（删除）、reset（重置）。</p>
         :rtype: str
         """
         return self._Type
@@ -10643,7 +10637,7 @@ class AiSampleTagOperation(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签，长度限制：128 个字符。
+        r"""<p>标签，长度限制：128 个字符。</p>
         :rtype: list of str
         """
         return self._Tags
@@ -10673,15 +10667,15 @@ class AiSampleWord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keyword: 关键词。
+        :param _Keyword: <p>关键词。</p>
         :type Keyword: str
-        :param _TagSet: 关键词标签。
+        :param _TagSet: <p>关键词标签。</p>
         :type TagSet: list of str
-        :param _UsageSet: 关键词应用场景。
+        :param _UsageSet: <p>关键词应用场景。</p>
         :type UsageSet: list of str
-        :param _CreateTime: 创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _CreateTime: <p>创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type CreateTime: str
-        :param _UpdateTime: 最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _UpdateTime: <p>最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type UpdateTime: str
         """
         self._Keyword = None
@@ -10692,7 +10686,7 @@ class AiSampleWord(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""关键词。
+        r"""<p>关键词。</p>
         :rtype: str
         """
         return self._Keyword
@@ -10703,7 +10697,7 @@ class AiSampleWord(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""关键词标签。
+        r"""<p>关键词标签。</p>
         :rtype: list of str
         """
         return self._TagSet
@@ -10714,7 +10708,7 @@ class AiSampleWord(AbstractModel):
 
     @property
     def UsageSet(self):
-        r"""关键词应用场景。
+        r"""<p>关键词应用场景。</p>
         :rtype: list of str
         """
         return self._UsageSet
@@ -10725,7 +10719,7 @@ class AiSampleWord(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10736,7 +10730,7 @@ class AiSampleWord(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -10769,11 +10763,9 @@ class AiSampleWordInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keyword: 关键词，长度限制：20 个字符。
+        :param _Keyword: <p>关键词，长度限制：20 个字符。</p>
         :type Keyword: str
-        :param _Tags: 关键词标签
-<li>数组长度限制：20 个标签；</li>
-<li>单个标签长度限制：128 个字符。</li>
+        :param _Tags: <p>关键词标签</p><li>数组长度限制：20 个标签；</li><li>单个标签长度限制：128 个字符。</li>
         :type Tags: list of str
         """
         self._Keyword = None
@@ -10781,7 +10773,7 @@ class AiSampleWordInfo(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""关键词，长度限制：20 个字符。
+        r"""<p>关键词，长度限制：20 个字符。</p>
         :rtype: str
         """
         return self._Keyword
@@ -10792,9 +10784,7 @@ class AiSampleWordInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""关键词标签
-<li>数组长度限制：20 个标签；</li>
-<li>单个标签长度限制：128 个字符。</li>
+        r"""<p>关键词标签</p><li>数组长度限制：20 个标签；</li><li>单个标签长度限制：128 个字符。</li>
         :rtype: list of str
         """
         return self._Tags
@@ -16143,17 +16133,17 @@ class AigcVideoTaskUsage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputTokens: <p>输入 Token 数目。</p>
+        :param _InputTokens: <p>输入 Token 数目。</p><p>仅使用 GV 的 omni 版本时取值有效。</p>
         :type InputTokens: int
-        :param _ThoughtTokens: <p>思考产生的 Token 数目。</p>
+        :param _ThoughtTokens: <p>思考产生的 Token 数目。</p><p>仅使用 GV 的 omni 版本时取值有效。</p>
         :type ThoughtTokens: int
-        :param _InputImageCount: <p>输入图片数目。</p>
+        :param _InputImageCount: <p>输入图片数目。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
         :type InputImageCount: int
-        :param _InputSeconds: <p>输入视频的时长。</p><p>单位：秒。</p>
+        :param _InputSeconds: <p>输入视频的时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
         :type InputSeconds: int
-        :param _OutputSeconds: <p>输出视频时长。</p><p>单位：秒。</p>
+        :param _OutputSeconds: <p>输出视频时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
         :type OutputSeconds: int
-        :param _TotalSeconds: <p>输入输出总时长。</p><p>默认值：秒。</p>
+        :param _TotalSeconds: <p>输入输出总时长。</p><p>默认值：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
         :type TotalSeconds: int
         """
         self._InputTokens = None
@@ -16165,7 +16155,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def InputTokens(self):
-        r"""<p>输入 Token 数目。</p>
+        r"""<p>输入 Token 数目。</p><p>仅使用 GV 的 omni 版本时取值有效。</p>
         :rtype: int
         """
         return self._InputTokens
@@ -16176,7 +16166,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def ThoughtTokens(self):
-        r"""<p>思考产生的 Token 数目。</p>
+        r"""<p>思考产生的 Token 数目。</p><p>仅使用 GV 的 omni 版本时取值有效。</p>
         :rtype: int
         """
         return self._ThoughtTokens
@@ -16187,7 +16177,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def InputImageCount(self):
-        r"""<p>输入图片数目。</p>
+        r"""<p>输入图片数目。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
         :rtype: int
         """
         return self._InputImageCount
@@ -16198,7 +16188,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def InputSeconds(self):
-        r"""<p>输入视频的时长。</p><p>单位：秒。</p>
+        r"""<p>输入视频的时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
         :rtype: int
         """
         return self._InputSeconds
@@ -16209,7 +16199,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def OutputSeconds(self):
-        r"""<p>输出视频时长。</p><p>单位：秒。</p>
+        r"""<p>输出视频时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
         :rtype: int
         """
         return self._OutputSeconds
@@ -16220,7 +16210,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def TotalSeconds(self):
-        r"""<p>输入输出总时长。</p><p>默认值：秒。</p>
+        r"""<p>输入输出总时长。</p><p>默认值：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
         :rtype: int
         """
         return self._TotalSeconds
@@ -17045,28 +17035,15 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 语音全文识别任务开关，可选值：
-<li>ON：开启智能语音全文识别任务；</li>
-<li>OFF：关闭智能语音全文识别任务。</li>
+        :param _Switch: <p>语音全文识别任务开关，可选值：</p><li>ON：开启智能语音全文识别任务；</li><li>OFF：关闭智能语音全文识别任务。</li>
         :type Switch: str
-        :param _SubtitleFormats: 生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：
-<li>vtt：生成 WebVTT 字幕文件；</li>
-<li>srt：生成 SRT 字幕文件。</li><font color=red>注意：</font>云点播媒资信息仅支持添加 vtt 字幕，因此当且仅当 SubtitleFormats 包含 vtt 时，云点播将生成的字幕添加到媒资。
+        :param _SubtitleFormats: <p>生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：</p><li>vtt：生成 WebVTT 字幕文件；</li><li>srt：生成 SRT 字幕文件。</li><font color="red">注意：</font>云点播媒资信息仅支持添加 vtt 字幕，因此当且仅当 SubtitleFormats 包含 vtt 时，云点播将生成的字幕添加到媒资。
         :type SubtitleFormats: list of str
-        :param _SubtitleFormat: 生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
-<li>vtt：生成 WebVTT 字幕文件；</li>
-<li>srt：生成 SRT 字幕文件。</li>
-<font color='red'>注意：此字段已废弃，建议使用 SubtitleFormats。</font>
+        :param _SubtitleFormat: <p>生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：</p><li>vtt：生成 WebVTT 字幕文件；</li><li>srt：生成 SRT 字幕文件。</li><font color="red">注意：此字段已废弃，建议使用 SubtitleFormats。</font>
         :type SubtitleFormat: str
-        :param _SrcLanguage: 媒体源语言，取值范围：
-<li>zh：中文普通话；</li>
-<li>en：英语；</li>
-<li>ja：日语；</li>
-<li>zh-ca：粤语。</li>
-<font color=red>注意：</font> 填空字符串，或者不填该参数，则自动识别（效果较难保证，推荐填写原始媒体对应的语言，以提高识别的准确率）。
+        :param _SrcLanguage: <p>媒体源语言，取值范围：</p><li>zh：中文普通话；</li><li>en：英语；</li><li>ja：日语；</li><li>zh-ca：粤语。</li><font color="red">注意：</font> 填空字符串，或者不填该参数，则自动识别（效果较难保证，推荐填写原始媒体对应的语言，以提高识别的准确率）。
         :type SrcLanguage: str
-        :param _SubtitleName: 指定字幕名称，长度限制：64 个字符。该值将用于播放器展示，若不填则云点播自动生成。
-<font color=red>注意：</font>仅当 SubtitleFormats 包含 vtt 时，该字段有效。
+        :param _SubtitleName: <p>指定字幕名称，长度限制：64 个字符。该值将用于播放器展示，若不填则云点播自动生成。<br><font color="red">注意：</font>仅当 SubtitleFormats 包含 vtt 时，该字段有效。</p>
         :type SubtitleName: str
         """
         self._Switch = None
@@ -17077,9 +17054,7 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
-        r"""语音全文识别任务开关，可选值：
-<li>ON：开启智能语音全文识别任务；</li>
-<li>OFF：关闭智能语音全文识别任务。</li>
+        r"""<p>语音全文识别任务开关，可选值：</p><li>ON：开启智能语音全文识别任务；</li><li>OFF：关闭智能语音全文识别任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -17090,9 +17065,7 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def SubtitleFormats(self):
-        r"""生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：
-<li>vtt：生成 WebVTT 字幕文件；</li>
-<li>srt：生成 SRT 字幕文件。</li><font color=red>注意：</font>云点播媒资信息仅支持添加 vtt 字幕，因此当且仅当 SubtitleFormats 包含 vtt 时，云点播将生成的字幕添加到媒资。
+        r"""<p>生成的字幕文件格式列表，不填或者填空数组表示不生成字幕文件，可选值：</p><li>vtt：生成 WebVTT 字幕文件；</li><li>srt：生成 SRT 字幕文件。</li><font color="red">注意：</font>云点播媒资信息仅支持添加 vtt 字幕，因此当且仅当 SubtitleFormats 包含 vtt 时，云点播将生成的字幕添加到媒资。
         :rtype: list of str
         """
         return self._SubtitleFormats
@@ -17105,10 +17078,7 @@ class AsrFullTextConfigureInfo(AbstractModel):
     def SubtitleFormat(self):
         warnings.warn("parameter `SubtitleFormat` is deprecated", DeprecationWarning) 
 
-        r"""生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：
-<li>vtt：生成 WebVTT 字幕文件；</li>
-<li>srt：生成 SRT 字幕文件。</li>
-<font color='red'>注意：此字段已废弃，建议使用 SubtitleFormats。</font>
+        r"""<p>生成的字幕文件格式，不填或者填空字符串表示不生成字幕文件，可选值：</p><li>vtt：生成 WebVTT 字幕文件；</li><li>srt：生成 SRT 字幕文件。</li><font color="red">注意：此字段已废弃，建议使用 SubtitleFormats。</font>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -17121,12 +17091,7 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def SrcLanguage(self):
-        r"""媒体源语言，取值范围：
-<li>zh：中文普通话；</li>
-<li>en：英语；</li>
-<li>ja：日语；</li>
-<li>zh-ca：粤语。</li>
-<font color=red>注意：</font> 填空字符串，或者不填该参数，则自动识别（效果较难保证，推荐填写原始媒体对应的语言，以提高识别的准确率）。
+        r"""<p>媒体源语言，取值范围：</p><li>zh：中文普通话；</li><li>en：英语；</li><li>ja：日语；</li><li>zh-ca：粤语。</li><font color="red">注意：</font> 填空字符串，或者不填该参数，则自动识别（效果较难保证，推荐填写原始媒体对应的语言，以提高识别的准确率）。
         :rtype: str
         """
         return self._SrcLanguage
@@ -17137,8 +17102,7 @@ class AsrFullTextConfigureInfo(AbstractModel):
 
     @property
     def SubtitleName(self):
-        r"""指定字幕名称，长度限制：64 个字符。该值将用于播放器展示，若不填则云点播自动生成。
-<font color=red>注意：</font>仅当 SubtitleFormats 包含 vtt 时，该字段有效。
+        r"""<p>指定字幕名称，长度限制：64 个字符。该值将用于播放器展示，若不填则云点播自动生成。<br><font color="red">注意：</font>仅当 SubtitleFormats 包含 vtt 时，该字段有效。</p>
         :rtype: str
         """
         return self._SubtitleName
@@ -22400,16 +22364,13 @@ class ContentReviewOcrResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: Ocr 文字鉴别结果的评分，分值为0到100。
+        :param _Confidence: <p>Ocr 文字鉴别结果的评分，分值为0到100。</p>
         :type Confidence: float
-        :param _Suggestion: Ocr 文字鉴别的结果建议，取值范围：
-<li>pass；</li>
-<li>review；</li>
-<li>block。</li>
+        :param _Suggestion: <p>Ocr 文字鉴别的结果建议，取值范围：</p><li>pass；</li><li>review；</li><li>block。</li>
         :type Suggestion: str
-        :param _KeywordSet: Ocr 文字鉴别的嫌疑关键词列表。
+        :param _KeywordSet: <p>Ocr 文字鉴别的嫌疑关键词列表。</p>
         :type KeywordSet: list of str
-        :param _AreaCoordSet: Ocr 文字鉴别的嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        :param _AreaCoordSet: <p>Ocr 文字鉴别的嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。</p>
         :type AreaCoordSet: list of int
         """
         self._Confidence = None
@@ -22419,7 +22380,7 @@ class ContentReviewOcrResult(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""Ocr 文字鉴别结果的评分，分值为0到100。
+        r"""<p>Ocr 文字鉴别结果的评分，分值为0到100。</p>
         :rtype: float
         """
         return self._Confidence
@@ -22430,10 +22391,7 @@ class ContentReviewOcrResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""Ocr 文字鉴别的结果建议，取值范围：
-<li>pass；</li>
-<li>review；</li>
-<li>block。</li>
+        r"""<p>Ocr 文字鉴别的结果建议，取值范围：</p><li>pass；</li><li>review；</li><li>block。</li>
         :rtype: str
         """
         return self._Suggestion
@@ -22444,7 +22402,7 @@ class ContentReviewOcrResult(AbstractModel):
 
     @property
     def KeywordSet(self):
-        r"""Ocr 文字鉴别的嫌疑关键词列表。
+        r"""<p>Ocr 文字鉴别的嫌疑关键词列表。</p>
         :rtype: list of str
         """
         return self._KeywordSet
@@ -22455,7 +22413,7 @@ class ContentReviewOcrResult(AbstractModel):
 
     @property
     def AreaCoordSet(self):
-        r"""Ocr 文字鉴别的嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。
+        r"""<p>Ocr 文字鉴别的嫌疑文字出现的区域坐标 (像素级)，[x1, y1, x2, y2]，即左上角坐标、右下角坐标。</p>
         :rtype: list of int
         """
         return self._AreaCoordSet
@@ -26024,6 +25982,327 @@ class CreateAigcCustomVoiceTask(AbstractModel):
         
 
 
+class CreateAigcHunyuan3DTaskRequest(AbstractModel):
+    r"""CreateAigcHunyuan3DTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _ImageInfos: <p>生成 3D 模型的参考图片信息。</p><p>入参限制：数组长度最大为1。</p><p>ImageInfos、MultiViewImageInfos、Prompt 三个入参各自互斥，有且只能填写一个。</p>
+        :type ImageInfos: list of AigcHunyuan3DReferenceImageInfo
+        :param _MultiViewImageInfos: <p>用于生成 3D 模型的多视角图片信息。</p><p>入参限制：数组长度必须在2-8之间，且必须包含 front 视角。</p><p>ImageInfos、MultiViewImageInfos、Prompt 三个入参各自互斥，有且只能填写一个。</p>
+        :type MultiViewImageInfos: list of AigcHunyuan3DMultiViewImageInfo
+        :param _Prompt: <p>生成 3D 模型的提示词。</p><p>入参限制：最长 1024 个 utf-8 字符。</p><p>ImageInfos、MultiViewImageInfos、Prompt 三个入参各自互斥，有且只能填写一个。</p>
+        :type Prompt: str
+        :param _GenerateType: <p>生成类型。</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）；</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）；</li><li>Texture： 只生成纹理（需要填写 MeshInfos）</li></ul><p>默认值：Normal</p>
+        :type GenerateType: str
+        :param _MeshInfos: <p>用于生成 3D 模型的参考 3D 模型。</p><p>入参限制：当填写 MeshInfos 时，则 GenerateType 取值必须为 Texture（贴纹理场景）。</p>
+        :type MeshInfos: list of AigcHunyuan3DMeshInfo
+        :param _EnablePBR: <p>是否开启输出 PBR 材质。</p><p>枚举值：</p><ul><li>Enabled： 开启；</li><li>Disabled： 关闭。</li></ul><p>默认值：Disabled</p>
+        :type EnablePBR: str
+        :param _FaceCount: <p>面片数。仅 GenerateType 取值为 Normal  和 Geometry 时生效。</p><p>取值范围：[3000, 1500000]</p><p>默认值：500000</p>
+        :type FaceCount: int
+        :param _KeepUV: <p>是否保留 UV 展开。</p><p>枚举值：</p><ul><li>Enabled： 保留；</li><li>Disabled： 不保留。</li></ul><p>默认值：Disabled</p>
+        :type KeepUV: str
+        :param _ResultFormat: <p>结果格式。除默认返回的 obj 和 glb 外，附加输出的一种格式。</p><p>枚举值：</p><ul><li>FBX： FBX 格式文件。</li></ul>
+        :type ResultFormat: str
+        :param _Seed: <p>随机种子，同一 Seed 输入下结果可复现。</p><p>取值范围：[0, 2147483647]</p>
+        :type Seed: int
+        :param _Style: <p>风格控制词。</p>
+        :type Style: str
+        :param _OutputConfig: <p>任务的输出媒体文件配置。</p>
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DOutputConfig`
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :type TasksPriority: int
+        """
+        self._SubAppId = None
+        self._ImageInfos = None
+        self._MultiViewImageInfos = None
+        self._Prompt = None
+        self._GenerateType = None
+        self._MeshInfos = None
+        self._EnablePBR = None
+        self._FaceCount = None
+        self._KeepUV = None
+        self._ResultFormat = None
+        self._Seed = None
+        self._Style = None
+        self._OutputConfig = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ImageInfos(self):
+        r"""<p>生成 3D 模型的参考图片信息。</p><p>入参限制：数组长度最大为1。</p><p>ImageInfos、MultiViewImageInfos、Prompt 三个入参各自互斥，有且只能填写一个。</p>
+        :rtype: list of AigcHunyuan3DReferenceImageInfo
+        """
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def MultiViewImageInfos(self):
+        r"""<p>用于生成 3D 模型的多视角图片信息。</p><p>入参限制：数组长度必须在2-8之间，且必须包含 front 视角。</p><p>ImageInfos、MultiViewImageInfos、Prompt 三个入参各自互斥，有且只能填写一个。</p>
+        :rtype: list of AigcHunyuan3DMultiViewImageInfo
+        """
+        return self._MultiViewImageInfos
+
+    @MultiViewImageInfos.setter
+    def MultiViewImageInfos(self, MultiViewImageInfos):
+        self._MultiViewImageInfos = MultiViewImageInfos
+
+    @property
+    def Prompt(self):
+        r"""<p>生成 3D 模型的提示词。</p><p>入参限制：最长 1024 个 utf-8 字符。</p><p>ImageInfos、MultiViewImageInfos、Prompt 三个入参各自互斥，有且只能填写一个。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def GenerateType(self):
+        r"""<p>生成类型。</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）；</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）；</li><li>Texture： 只生成纹理（需要填写 MeshInfos）</li></ul><p>默认值：Normal</p>
+        :rtype: str
+        """
+        return self._GenerateType
+
+    @GenerateType.setter
+    def GenerateType(self, GenerateType):
+        self._GenerateType = GenerateType
+
+    @property
+    def MeshInfos(self):
+        r"""<p>用于生成 3D 模型的参考 3D 模型。</p><p>入参限制：当填写 MeshInfos 时，则 GenerateType 取值必须为 Texture（贴纹理场景）。</p>
+        :rtype: list of AigcHunyuan3DMeshInfo
+        """
+        return self._MeshInfos
+
+    @MeshInfos.setter
+    def MeshInfos(self, MeshInfos):
+        self._MeshInfos = MeshInfos
+
+    @property
+    def EnablePBR(self):
+        r"""<p>是否开启输出 PBR 材质。</p><p>枚举值：</p><ul><li>Enabled： 开启；</li><li>Disabled： 关闭。</li></ul><p>默认值：Disabled</p>
+        :rtype: str
+        """
+        return self._EnablePBR
+
+    @EnablePBR.setter
+    def EnablePBR(self, EnablePBR):
+        self._EnablePBR = EnablePBR
+
+    @property
+    def FaceCount(self):
+        r"""<p>面片数。仅 GenerateType 取值为 Normal  和 Geometry 时生效。</p><p>取值范围：[3000, 1500000]</p><p>默认值：500000</p>
+        :rtype: int
+        """
+        return self._FaceCount
+
+    @FaceCount.setter
+    def FaceCount(self, FaceCount):
+        self._FaceCount = FaceCount
+
+    @property
+    def KeepUV(self):
+        r"""<p>是否保留 UV 展开。</p><p>枚举值：</p><ul><li>Enabled： 保留；</li><li>Disabled： 不保留。</li></ul><p>默认值：Disabled</p>
+        :rtype: str
+        """
+        return self._KeepUV
+
+    @KeepUV.setter
+    def KeepUV(self, KeepUV):
+        self._KeepUV = KeepUV
+
+    @property
+    def ResultFormat(self):
+        r"""<p>结果格式。除默认返回的 obj 和 glb 外，附加输出的一种格式。</p><p>枚举值：</p><ul><li>FBX： FBX 格式文件。</li></ul>
+        :rtype: str
+        """
+        return self._ResultFormat
+
+    @ResultFormat.setter
+    def ResultFormat(self, ResultFormat):
+        self._ResultFormat = ResultFormat
+
+    @property
+    def Seed(self):
+        r"""<p>随机种子，同一 Seed 输入下结果可复现。</p><p>取值范围：[0, 2147483647]</p>
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def Style(self):
+        r"""<p>风格控制词。</p>
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def OutputConfig(self):
+        r"""<p>任务的输出媒体文件配置。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        if params.get("ImageInfos") is not None:
+            self._ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = AigcHunyuan3DReferenceImageInfo()
+                obj._deserialize(item)
+                self._ImageInfos.append(obj)
+        if params.get("MultiViewImageInfos") is not None:
+            self._MultiViewImageInfos = []
+            for item in params.get("MultiViewImageInfos"):
+                obj = AigcHunyuan3DMultiViewImageInfo()
+                obj._deserialize(item)
+                self._MultiViewImageInfos.append(obj)
+        self._Prompt = params.get("Prompt")
+        self._GenerateType = params.get("GenerateType")
+        if params.get("MeshInfos") is not None:
+            self._MeshInfos = []
+            for item in params.get("MeshInfos"):
+                obj = AigcHunyuan3DMeshInfo()
+                obj._deserialize(item)
+                self._MeshInfos.append(obj)
+        self._EnablePBR = params.get("EnablePBR")
+        self._FaceCount = params.get("FaceCount")
+        self._KeepUV = params.get("KeepUV")
+        self._ResultFormat = params.get("ResultFormat")
+        self._Seed = params.get("Seed")
+        self._Style = params.get("Style")
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = AigcHunyuan3DOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcHunyuan3DTaskResponse(AbstractModel):
+    r"""CreateAigcHunyuan3DTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcImageTaskRequest(AbstractModel):
     r"""CreateAigcImageTask请求参数结构体
 
@@ -26059,7 +26338,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type SessionContext: str
         :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :type TasksPriority: int
-        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p><ul><li><p>Hunyuan 3.0</p><ul><li>支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>支持自由设置分辨率宽高：<ul><li>计算像素大小，需要被16整除</li><li>总像素数必须至少为655,360，且不得超过 8,294,400</li><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728*1024\&quot;}&quot;}</code></li></ul></li><li>支持设置透明图层：<ul><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>支持设置扩图参数，示例：<code>{AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>通用约束：<ul><li>取值范围：[0, 2]；</li><li>新图片整体面积不得超过原图片的 3 倍；</li><li>可以通过 <code>Prompt</code> 字段传入正向提示词。</li><li>示例说明：<ul><li>up_expansion_ratio：向上扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.1，则原图顶边距离新图顶边为 20 × 0.1 = 2，该区域为扩图范围。</li><li>down_expansion_ratio：向下扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.2，则原图底边距离新图底边为 20 × 0.2 = 4，该区域为扩图范围。</li><li>left_expansion_ratio：向左扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.3，则原图左边距离新图左边为 30 × 0.3 = 9，该区域为扩图范围。</li><li>right_expansion_ratio：向右扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.4，则原图右边距离新图右边为 30 × 0.4 = 12，该区域为扩图范围。</li></ul></li></ul></li></ul></li></ul></li></ul>
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p><ul><li><p>Hunyuan 3.0</p><ul><li>支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>支持自由设置分辨率宽高：<ul><li>计算像素大小，需要被16整除</li><li>总像素数必须至少为655,360，且不得超过 8,294,400</li><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li>支持设置透明图层：<ul><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>支持设置扩图参数，示例：<code>{&quot;AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>通用约束：<ul><li>取值范围：[0, 2]；</li><li>新图片整体面积不得超过原图片的 3 倍；</li><li>可以通过 <code>Prompt</code> 字段传入正向提示词。</li><li>示例说明：<ul><li>up_expansion_ratio：向上扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.1，则原图顶边距离新图顶边为 20 × 0.1 = 2，该区域为扩图范围。</li><li>down_expansion_ratio：向下扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.2，则原图底边距离新图底边为 20 × 0.2 = 4，该区域为扩图范围。</li><li>left_expansion_ratio：向左扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.3，则原图左边距离新图左边为 30 × 0.3 = 9，该区域为扩图范围。</li><li>right_expansion_ratio：向右扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.4，则原图右边距离新图右边为 30 × 0.4 = 12，该区域为扩图范围。</li></ul></li></ul></li></ul></li></ul></li></ul>
         :type ExtInfo: str
         """
         self._SubAppId = None
@@ -26234,7 +26513,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""<p>保留字段，特殊用途时使用。</p><ul><li><p>Hunyuan 3.0</p><ul><li>支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>支持自由设置分辨率宽高：<ul><li>计算像素大小，需要被16整除</li><li>总像素数必须至少为655,360，且不得超过 8,294,400</li><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728*1024\&quot;}&quot;}</code></li></ul></li><li>支持设置透明图层：<ul><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>支持设置扩图参数，示例：<code>{AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>通用约束：<ul><li>取值范围：[0, 2]；</li><li>新图片整体面积不得超过原图片的 3 倍；</li><li>可以通过 <code>Prompt</code> 字段传入正向提示词。</li><li>示例说明：<ul><li>up_expansion_ratio：向上扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.1，则原图顶边距离新图顶边为 20 × 0.1 = 2，该区域为扩图范围。</li><li>down_expansion_ratio：向下扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.2，则原图底边距离新图底边为 20 × 0.2 = 4，该区域为扩图范围。</li><li>left_expansion_ratio：向左扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.3，则原图左边距离新图左边为 30 × 0.3 = 9，该区域为扩图范围。</li><li>right_expansion_ratio：向右扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.4，则原图右边距离新图右边为 30 × 0.4 = 12，该区域为扩图范围。</li></ul></li></ul></li></ul></li></ul></li></ul>
+        r"""<p>保留字段，特殊用途时使用。</p><ul><li><p>Hunyuan 3.0</p><ul><li>支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>支持自由设置分辨率宽高：<ul><li>计算像素大小，需要被16整除</li><li>总像素数必须至少为655,360，且不得超过 8,294,400</li><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li>支持设置透明图层：<ul><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>支持设置扩图参数，示例：<code>{&quot;AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>通用约束：<ul><li>取值范围：[0, 2]；</li><li>新图片整体面积不得超过原图片的 3 倍；</li><li>可以通过 <code>Prompt</code> 字段传入正向提示词。</li><li>示例说明：<ul><li>up_expansion_ratio：向上扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.1，则原图顶边距离新图顶边为 20 × 0.1 = 2，该区域为扩图范围。</li><li>down_expansion_ratio：向下扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.2，则原图底边距离新图底边为 20 × 0.2 = 4，该区域为扩图范围。</li><li>left_expansion_ratio：向左扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.3，则原图左边距离新图左边为 30 × 0.3 = 9，该区域为扩图范围。</li><li>right_expansion_ratio：向右扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.4，则原图右边距离新图右边为 30 × 0.4 = 12，该区域为扩图范围。</li></ul></li></ul></li></ul></li></ul></li></ul>
         :rtype: str
         """
         return self._ExtInfo
@@ -29172,23 +29451,21 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 截图雪碧图任务 ID。
+        :param _TaskId: <p>截图雪碧图任务 ID。</p>
         :type TaskId: str
-        :param _ErrCode: 错误码
-<li>0：成功；</li>
-<li>其他值：失败。</li>
+        :param _ErrCode: <p>错误码</p><li>0：成功；</li><li>其他值：失败。</li>
         :type ErrCode: int
-        :param _Message: 错误信息。
+        :param _Message: <p>错误信息。</p>
         :type Message: str
-        :param _FileId: 截取雪碧图文件 ID。
+        :param _FileId: <p>截取雪碧图文件 ID。</p>
         :type FileId: str
-        :param _Definition: 雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        :param _Definition: <p>雪碧图规格，参见<a href="https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF">雪碧图截图模板</a>。</p>
         :type Definition: int
-        :param _TotalCount: 雪碧图小图总数量。
+        :param _TotalCount: <p>雪碧图小图总数量。</p>
         :type TotalCount: int
-        :param _ImageSpriteUrlSet: 截取雪碧图输出的地址。
+        :param _ImageSpriteUrlSet: <p>截取雪碧图输出的地址。</p>
         :type ImageSpriteUrlSet: list of str
-        :param _WebVttUrl: 雪碧图子图位置与时间关系 WebVtt 文件地址。
+        :param _WebVttUrl: <p>雪碧图子图位置与时间关系 WebVtt 文件地址。</p>
         :type WebVttUrl: str
         """
         self._TaskId = None
@@ -29202,7 +29479,7 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""截图雪碧图任务 ID。
+        r"""<p>截图雪碧图任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -29213,9 +29490,7 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""错误码
-<li>0：成功；</li>
-<li>其他值：失败。</li>
+        r"""<p>错误码</p><li>0：成功；</li><li>其他值：失败。</li>
         :rtype: int
         """
         return self._ErrCode
@@ -29226,7 +29501,7 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     @property
     def Message(self):
-        r"""错误信息。
+        r"""<p>错误信息。</p>
         :rtype: str
         """
         return self._Message
@@ -29237,7 +29512,7 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     @property
     def FileId(self):
-        r"""截取雪碧图文件 ID。
+        r"""<p>截取雪碧图文件 ID。</p>
         :rtype: str
         """
         return self._FileId
@@ -29248,7 +29523,7 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     @property
     def Definition(self):
-        r"""雪碧图规格，参见[雪碧图截图模板](https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF)。
+        r"""<p>雪碧图规格，参见<a href="https://cloud.tencent.com/document/product/266/33480#.E9.9B.AA.E7.A2.A7.E5.9B.BE.E6.A8.A1.E6.9D.BF">雪碧图截图模板</a>。</p>
         :rtype: int
         """
         return self._Definition
@@ -29259,7 +29534,7 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""雪碧图小图总数量。
+        r"""<p>雪碧图小图总数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -29270,7 +29545,7 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     @property
     def ImageSpriteUrlSet(self):
-        r"""截取雪碧图输出的地址。
+        r"""<p>截取雪碧图输出的地址。</p>
         :rtype: list of str
         """
         return self._ImageSpriteUrlSet
@@ -29281,7 +29556,7 @@ class CreateImageSpriteTask2017(AbstractModel):
 
     @property
     def WebVttUrl(self):
-        r"""雪碧图子图位置与时间关系 WebVtt 文件地址。
+        r"""<p>雪碧图子图位置与时间关系 WebVtt 文件地址。</p>
         :rtype: str
         """
         return self._WebVttUrl
@@ -33821,13 +34096,13 @@ class DailyPlayStatInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Date: 播放媒体文件的日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _Date: <p>播放媒体文件的日期，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type Date: str
-        :param _FileId: 媒体文件ID。
+        :param _FileId: <p>媒体文件ID。</p>
         :type FileId: str
-        :param _PlayTimes: 播放次数。
+        :param _PlayTimes: <p>播放次数。</p>
         :type PlayTimes: int
-        :param _Traffic: 播放流量，单位：字节。
+        :param _Traffic: <p>播放流量，单位：字节。</p>
         :type Traffic: int
         """
         self._Date = None
@@ -33837,7 +34112,7 @@ class DailyPlayStatInfo(AbstractModel):
 
     @property
     def Date(self):
-        r"""播放媒体文件的日期，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>播放媒体文件的日期，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._Date
@@ -33848,7 +34123,7 @@ class DailyPlayStatInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""媒体文件ID。
+        r"""<p>媒体文件ID。</p>
         :rtype: str
         """
         return self._FileId
@@ -33859,7 +34134,7 @@ class DailyPlayStatInfo(AbstractModel):
 
     @property
     def PlayTimes(self):
-        r"""播放次数。
+        r"""<p>播放次数。</p>
         :rtype: int
         """
         return self._PlayTimes
@@ -33870,7 +34145,7 @@ class DailyPlayStatInfo(AbstractModel):
 
     @property
     def Traffic(self):
-        r"""播放流量，单位：字节。
+        r"""<p>播放流量，单位：字节。</p>
         :rtype: int
         """
         return self._Traffic
@@ -34391,9 +34666,9 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 转动图模板唯一标识。
+        :param _Definition: <p>转动图模板唯一标识。</p>
         :type Definition: int
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._Definition = None
@@ -34401,7 +34676,7 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""转动图模板唯一标识。
+        r"""<p>转动图模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -34412,7 +34687,7 @@ class DeleteAnimatedGraphicsTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -36638,9 +36913,9 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keywords: 关键词，数组长度限制：100 个词。
+        :param _Keywords: <p>关键词，数组长度限制：100 个词。</p>
         :type Keywords: list of str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._Keywords = None
@@ -36648,7 +36923,7 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""关键词，数组长度限制：100 个词。
+        r"""<p>关键词，数组长度限制：100 个词。</p>
         :rtype: list of str
         """
         return self._Keywords
@@ -36659,7 +36934,7 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -40550,14 +40825,14 @@ class DescribeDefaultDistributionConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._SubAppId = None
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -40586,13 +40861,13 @@ class DescribeDefaultDistributionConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainName: 分发配置的域名(已废弃）。
+        :param _DomainName: <p>分发配置的域名(已废弃）。</p>
         :type DomainName: str
-        :param _Domain: 分发配置的域名。
+        :param _Domain: <p>分发配置的域名。</p>
         :type Domain: str
-        :param _Scheme: 分发配置的协议，为 HTTP 或 HTTPS。
+        :param _Scheme: <p>分发配置的协议，为 HTTP 或 HTTPS。</p>
         :type Scheme: str
-        :param _PlayKey: 播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。
+        :param _PlayKey: <p>播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。</p>
         :type PlayKey: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40607,7 +40882,7 @@ class DescribeDefaultDistributionConfigResponse(AbstractModel):
     def DomainName(self):
         warnings.warn("parameter `DomainName` is deprecated", DeprecationWarning) 
 
-        r"""分发配置的域名(已废弃）。
+        r"""<p>分发配置的域名(已废弃）。</p>
         :rtype: str
         """
         return self._DomainName
@@ -40620,7 +40895,7 @@ class DescribeDefaultDistributionConfigResponse(AbstractModel):
 
     @property
     def Domain(self):
-        r"""分发配置的域名。
+        r"""<p>分发配置的域名。</p>
         :rtype: str
         """
         return self._Domain
@@ -40631,7 +40906,7 @@ class DescribeDefaultDistributionConfigResponse(AbstractModel):
 
     @property
     def Scheme(self):
-        r"""分发配置的协议，为 HTTP 或 HTTPS。
+        r"""<p>分发配置的协议，为 HTTP 或 HTTPS。</p>
         :rtype: str
         """
         return self._Scheme
@@ -40642,7 +40917,7 @@ class DescribeDefaultDistributionConfigResponse(AbstractModel):
 
     @property
     def PlayKey(self):
-        r"""播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。
+        r"""<p>播放密钥，由大小写字母（a - Z）或者数字（0 - 9）组成，长度在8 - 20个字符之间。</p>
         :rtype: str
         """
         return self._PlayKey
@@ -43419,24 +43694,19 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Type: 拉取的素材类型，可选值：
-<li>UserDefine：用户自定义素材库；</li>
-<li>Default：系统默认素材库。</li>
-
-默认值：UserDefine，拉取用户自定义素材库素材。
-说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且五官图片只返回一张。
+        :param _Type: <p>拉取的素材类型，可选值：</p><li>UserDefine：用户自定义素材库；</li><li>Default：系统默认素材库。</li><p>默认值：UserDefine，拉取用户自定义素材库素材。<br>说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且五官图片只返回一张。</p>
         :type Type: str
-        :param _PersonIds: 素材 ID，数组长度限制：100。
+        :param _PersonIds: <p>素材 ID，数组长度限制：100。</p>
         :type PersonIds: list of str
-        :param _Names: 素材名称，数组长度限制：20。
+        :param _Names: <p>素材名称，数组长度限制：20。</p>
         :type Names: list of str
-        :param _Tags: 素材标签，数组长度限制：20。
+        :param _Tags: <p>素材标签，数组长度限制：20。</p>
         :type Tags: list of str
-        :param _Offset: 分页偏移量，默认值：0。
+        :param _Offset: <p>分页偏移量，默认值：0。</p>
         :type Offset: int
-        :param _Limit: 返回记录条数，默认值：100，最大值：100。
+        :param _Limit: <p>返回记录条数，默认值：100，最大值：100。</p>
         :type Limit: int
         """
         self._SubAppId = None
@@ -43449,7 +43719,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -43460,12 +43730,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""拉取的素材类型，可选值：
-<li>UserDefine：用户自定义素材库；</li>
-<li>Default：系统默认素材库。</li>
-
-默认值：UserDefine，拉取用户自定义素材库素材。
-说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且五官图片只返回一张。
+        r"""<p>拉取的素材类型，可选值：</p><li>UserDefine：用户自定义素材库；</li><li>Default：系统默认素材库。</li><p>默认值：UserDefine，拉取用户自定义素材库素材。<br>说明：如果是拉取系统默认素材库，只能使用素材名字或者素材 ID + 素材名字的方式进行拉取，且五官图片只返回一张。</p>
         :rtype: str
         """
         return self._Type
@@ -43476,7 +43741,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def PersonIds(self):
-        r"""素材 ID，数组长度限制：100。
+        r"""<p>素材 ID，数组长度限制：100。</p>
         :rtype: list of str
         """
         return self._PersonIds
@@ -43487,7 +43752,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Names(self):
-        r"""素材名称，数组长度限制：20。
+        r"""<p>素材名称，数组长度限制：20。</p>
         :rtype: list of str
         """
         return self._Names
@@ -43498,7 +43763,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""素材标签，数组长度限制：20。
+        r"""<p>素材标签，数组长度限制：20。</p>
         :rtype: list of str
         """
         return self._Tags
@@ -43509,7 +43774,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认值：0。
+        r"""<p>分页偏移量，默认值：0。</p>
         :rtype: int
         """
         return self._Offset
@@ -43520,7 +43785,7 @@ class DescribePersonSamplesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回记录条数，默认值：100，最大值：100。
+        r"""<p>返回记录条数，默认值：100，最大值：100。</p>
         :rtype: int
         """
         return self._Limit
@@ -43555,9 +43820,9 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的记录总数。
+        :param _TotalCount: <p>符合条件的记录总数。</p>
         :type TotalCount: int
-        :param _PersonSet: 人物信息。
+        :param _PersonSet: <p>人物信息。</p>
         :type PersonSet: list of AiSamplePerson
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43568,7 +43833,7 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的记录总数。
+        r"""<p>符合条件的记录总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -43579,7 +43844,7 @@ class DescribePersonSamplesResponse(AbstractModel):
 
     @property
     def PersonSet(self):
-        r"""人物信息。
+        r"""<p>人物信息。</p>
         :rtype: list of AiSamplePerson
         """
         return self._PersonSet
@@ -44628,21 +44893,21 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _RoundPlayIds: 过滤条件：轮播播单标识，数组长度限制：100。
+        :param _RoundPlayIds: <p>过滤条件：轮播播单标识，数组长度限制：100。</p>
         :type RoundPlayIds: list of str
-        :param _Status: 过滤条件，轮播播单状态，可选值： <li>Enabled：启动状态；</li> <li>Disabled：停止状态。</li>
+        :param _Status: <p>过滤条件，轮播播单状态，可选值： <li>Enabled：启动状态；</li> <li>Disabled：停止状态。</li></p>
         :type Status: str
-        :param _CreateTime: 过滤条件：轮播播单创建时间。
+        :param _CreateTime: <p>过滤条件：轮播播单创建时间。</p>
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param _UpdateTime: 过滤条件：轮播播单更新时间。
+        :param _UpdateTime: <p>过滤条件：轮播播单更新时间。</p>
         :type UpdateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param _ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        :param _ScrollToken: <p>翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。</p>
         :type ScrollToken: str
-        :param _Offset: 分页偏移量，默认值：0。已经废弃，请根据 ScrollToken 参数进行分批次查询。
+        :param _Offset: <p>分页偏移量，默认值：0。已经废弃，请根据 ScrollToken 参数进行分批次查询。</p>
         :type Offset: int
-        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :param _Limit: <p>返回记录条数，默认值：10，最大值：100。</p>
         :type Limit: int
         """
         self._SubAppId = None
@@ -44656,7 +44921,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -44667,7 +44932,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def RoundPlayIds(self):
-        r"""过滤条件：轮播播单标识，数组长度限制：100。
+        r"""<p>过滤条件：轮播播单标识，数组长度限制：100。</p>
         :rtype: list of str
         """
         return self._RoundPlayIds
@@ -44678,7 +44943,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""过滤条件，轮播播单状态，可选值： <li>Enabled：启动状态；</li> <li>Disabled：停止状态。</li>
+        r"""<p>过滤条件，轮播播单状态，可选值： <li>Enabled：启动状态；</li> <li>Disabled：停止状态。</li></p>
         :rtype: str
         """
         return self._Status
@@ -44689,7 +44954,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""过滤条件：轮播播单创建时间。
+        r"""<p>过滤条件：轮播播单创建时间。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         """
         return self._CreateTime
@@ -44700,7 +44965,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""过滤条件：轮播播单更新时间。
+        r"""<p>过滤条件：轮播播单更新时间。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         """
         return self._UpdateTime
@@ -44711,7 +44976,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
-        r"""翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        r"""<p>翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。</p>
         :rtype: str
         """
         return self._ScrollToken
@@ -44724,7 +44989,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
     def Offset(self):
         warnings.warn("parameter `Offset` is deprecated", DeprecationWarning) 
 
-        r"""分页偏移量，默认值：0。已经废弃，请根据 ScrollToken 参数进行分批次查询。
+        r"""<p>分页偏移量，默认值：0。已经废弃，请根据 ScrollToken 参数进行分批次查询。</p>
         :rtype: int
         """
         return self._Offset
@@ -44737,7 +45002,7 @@ class DescribeRoundPlaysRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回记录条数，默认值：10，最大值：100。
+        r"""<p>返回记录条数，默认值：10，最大值：100。</p>
         :rtype: int
         """
         return self._Limit
@@ -44777,11 +45042,11 @@ class DescribeRoundPlaysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合过滤条件的轮播播单总数。已经废弃，分批次查询请请使用 ScrollToken 参数。
+        :param _TotalCount: <p>符合过滤条件的轮播播单总数。已经废弃，分批次查询请请使用 ScrollToken 参数。</p>
         :type TotalCount: int
-        :param _RoundPlaySet: 轮播播单详情列表。
+        :param _RoundPlaySet: <p>轮播播单详情列表。</p>
         :type RoundPlaySet: list of RoundPlayInfo
-        :param _ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
+        :param _ScrollToken: <p>翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。</p>
         :type ScrollToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -44795,7 +45060,7 @@ class DescribeRoundPlaysResponse(AbstractModel):
     def TotalCount(self):
         warnings.warn("parameter `TotalCount` is deprecated", DeprecationWarning) 
 
-        r"""符合过滤条件的轮播播单总数。已经废弃，分批次查询请请使用 ScrollToken 参数。
+        r"""<p>符合过滤条件的轮播播单总数。已经废弃，分批次查询请请使用 ScrollToken 参数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -44808,7 +45073,7 @@ class DescribeRoundPlaysResponse(AbstractModel):
 
     @property
     def RoundPlaySet(self):
-        r"""轮播播单详情列表。
+        r"""<p>轮播播单详情列表。</p>
         :rtype: list of RoundPlayInfo
         """
         return self._RoundPlaySet
@@ -44819,7 +45084,7 @@ class DescribeRoundPlaysResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
-        r"""翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
+        r"""<p>翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。</p>
         :rtype: str
         """
         return self._ScrollToken
@@ -46868,23 +47133,21 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Status: 过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+        :param _Status: <p>过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。</p>
         :type Status: str
-        :param _FileId: 过滤条件：文件 ID。
+        :param _FileId: <p>过滤条件：文件 ID。</p>
         :type FileId: str
-        :param _CreateTime: 过滤条件：任务创建时间。
+        :param _CreateTime: <p>过滤条件：任务创建时间。</p>
         :type CreateTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param _FinishTime: 过滤条件：任务结束时间。
+        :param _FinishTime: <p>过滤条件：任务结束时间。</p>
         :type FinishTime: :class:`tencentcloud.vod.v20180717.models.TimeRange`
-        :param _Sort: 排序方式。Sort.Field 可选：
-<li> CreateTime 任务创建时间。</li>
-<li>FinishTime 任务结束时间。</li>
+        :param _Sort: <p>排序方式。Sort.Field 可选：</p><li> CreateTime 任务创建时间。</li><li>FinishTime 任务结束时间。</li>
         :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
-        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :param _Limit: <p>返回记录条数，默认值：10，最大值：100。</p>
         :type Limit: int
-        :param _ScrollToken: 翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        :param _ScrollToken: <p>翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。</p>
         :type ScrollToken: str
         """
         self._SubAppId = None
@@ -46898,7 +47161,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -46909,7 +47172,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。
+        r"""<p>过滤条件：任务状态，可选值：WAITING（等待中）、PROCESSING（处理中）、FINISH（已完成）。</p>
         :rtype: str
         """
         return self._Status
@@ -46920,7 +47183,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def FileId(self):
-        r"""过滤条件：文件 ID。
+        r"""<p>过滤条件：文件 ID。</p>
         :rtype: str
         """
         return self._FileId
@@ -46931,7 +47194,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""过滤条件：任务创建时间。
+        r"""<p>过滤条件：任务创建时间。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         """
         return self._CreateTime
@@ -46942,7 +47205,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""过滤条件：任务结束时间。
+        r"""<p>过滤条件：任务结束时间。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TimeRange`
         """
         return self._FinishTime
@@ -46953,9 +47216,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""排序方式。Sort.Field 可选：
-<li> CreateTime 任务创建时间。</li>
-<li>FinishTime 任务结束时间。</li>
+        r"""<p>排序方式。Sort.Field 可选：</p><li> CreateTime 任务创建时间。</li><li>FinishTime 任务结束时间。</li>
         :rtype: :class:`tencentcloud.vod.v20180717.models.SortBy`
         """
         return self._Sort
@@ -46966,7 +47227,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回记录条数，默认值：10，最大值：100。
+        r"""<p>返回记录条数，默认值：10，最大值：100。</p>
         :rtype: int
         """
         return self._Limit
@@ -46977,7 +47238,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def ScrollToken(self):
-        r"""翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。
+        r"""<p>翻页标识，分批拉取时使用：当单次请求无法拉取所有数据，接口将会返回 ScrollToken，下一次请求携带该 Token，将会从下一条记录开始获取。</p>
         :rtype: str
         """
         return self._ScrollToken
@@ -47019,9 +47280,9 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskSet: 任务概要列表。
+        :param _TaskSet: <p>任务概要列表。</p>
         :type TaskSet: list of TaskSimpleInfo
-        :param _ScrollToken: 翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
+        :param _ScrollToken: <p>翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。</p>
         :type ScrollToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -47032,7 +47293,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        r"""任务概要列表。
+        r"""<p>任务概要列表。</p>
         :rtype: list of TaskSimpleInfo
         """
         return self._TaskSet
@@ -47043,7 +47304,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def ScrollToken(self):
-        r"""翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。
+        r"""<p>翻页标识，当请求未返回所有数据，该字段表示下一条记录的 ID。当该字段为空，说明已无更多数据。</p>
         :rtype: str
         """
         return self._ScrollToken
@@ -51681,17 +51942,17 @@ class ExecuteFunctionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FunctionName: 调用后端接口名称。
+        :param _FunctionName: <p>调用后端接口名称。</p>
         :type FunctionName: str
-        :param _FunctionArg: 接口参数，具体参数格式调用时与后端协调。
+        :param _FunctionArg: <p>接口参数，具体参数格式调用时与后端协调。</p>
         :type FunctionArg: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p>
         :type ExtInfo: str
         """
         self._FunctionName = None
@@ -51703,7 +51964,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def FunctionName(self):
-        r"""调用后端接口名称。
+        r"""<p>调用后端接口名称。</p>
         :rtype: str
         """
         return self._FunctionName
@@ -51714,7 +51975,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def FunctionArg(self):
-        r"""接口参数，具体参数格式调用时与后端协调。
+        r"""<p>接口参数，具体参数格式调用时与后端协调。</p>
         :rtype: str
         """
         return self._FunctionArg
@@ -51725,7 +51986,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -51736,7 +51997,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -51747,7 +52008,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -51758,7 +52019,7 @@ class ExecuteFunctionRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""保留字段，特殊用途时使用。
+        r"""<p>保留字段，特殊用途时使用。</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -51792,7 +52053,7 @@ class ExecuteFunctionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 处理结果打包后的字符串，具体与后台一同协调。
+        :param _Result: <p>处理结果打包后的字符串，具体与后台一同协调。</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -51802,7 +52063,7 @@ class ExecuteFunctionResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""处理结果打包后的字符串，具体与后台一同协调。
+        r"""<p>处理结果打包后的字符串，具体与后台一同协调。</p>
         :rtype: str
         """
         return self._Result
@@ -53166,25 +53427,15 @@ class FaceConfigureInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 人脸识别任务开关，可选值：
-<li>ON：开启智能人脸识别任务；</li>
-<li>OFF：关闭智能人脸识别任务。</li>
+        :param _Switch: <p>人脸识别任务开关，可选值：</p><li>ON：开启智能人脸识别任务；</li><li>OFF：关闭智能人脸识别任务。</li>
         :type Switch: str
-        :param _Score: 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。
+        :param _Score: <p>人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。</p>
         :type Score: float
-        :param _DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
-<li>entertainment：娱乐明星；</li>
-<li>sport：体育明星；</li>
-<li>politician：相关人物。</li>
+        :param _DefaultLibraryLabelSet: <p>默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：</p><li>entertainment：娱乐明星；</li><li>sport：体育明星；</li><li>politician：相关人物。</li>
         :type DefaultLibraryLabelSet: list of str
-        :param _UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-标签个数最多 100 个，每个标签长度最多 16 个字符。
+        :param _UserDefineLibraryLabelSet: <p>用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。<br>标签个数最多 100 个，每个标签长度最多 16 个字符。</p>
         :type UserDefineLibraryLabelSet: list of str
-        :param _FaceLibrary: 人物库选择，可选值：
-<li>Default：使用默认人物库；</li>
-<li>UserDefine：使用用户自定义人物库。</li>
-<li>All：同时使用默认人物库和用户自定义人物库。</li>
-默认值：All，使用系统默认人物库及用户自定义人物库。
+        :param _FaceLibrary: <p>人物库选择，可选值：</p><li>Default：使用默认人物库；</li><li>UserDefine：使用用户自定义人物库。</li><li>All：同时使用默认人物库和用户自定义人物库。</li>默认值：All，使用系统默认人物库及用户自定义人物库。
         :type FaceLibrary: str
         """
         self._Switch = None
@@ -53195,9 +53446,7 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def Switch(self):
-        r"""人脸识别任务开关，可选值：
-<li>ON：开启智能人脸识别任务；</li>
-<li>OFF：关闭智能人脸识别任务。</li>
+        r"""<p>人脸识别任务开关，可选值：</p><li>ON：开启智能人脸识别任务；</li><li>OFF：关闭智能人脸识别任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -53208,7 +53457,7 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def Score(self):
-        r"""人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。
+        r"""<p>人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。默认 95 分。取值范围：0 - 100。</p>
         :rtype: float
         """
         return self._Score
@@ -53219,10 +53468,7 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def DefaultLibraryLabelSet(self):
-        r"""默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
-<li>entertainment：娱乐明星；</li>
-<li>sport：体育明星；</li>
-<li>politician：相关人物。</li>
+        r"""<p>默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：</p><li>entertainment：娱乐明星；</li><li>sport：体育明星；</li><li>politician：相关人物。</li>
         :rtype: list of str
         """
         return self._DefaultLibraryLabelSet
@@ -53233,8 +53479,7 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def UserDefineLibraryLabelSet(self):
-        r"""用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-标签个数最多 100 个，每个标签长度最多 16 个字符。
+        r"""<p>用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。<br>标签个数最多 100 个，每个标签长度最多 16 个字符。</p>
         :rtype: list of str
         """
         return self._UserDefineLibraryLabelSet
@@ -53245,11 +53490,7 @@ class FaceConfigureInfo(AbstractModel):
 
     @property
     def FaceLibrary(self):
-        r"""人物库选择，可选值：
-<li>Default：使用默认人物库；</li>
-<li>UserDefine：使用用户自定义人物库。</li>
-<li>All：同时使用默认人物库和用户自定义人物库。</li>
-默认值：All，使用系统默认人物库及用户自定义人物库。
+        r"""<p>人物库选择，可选值：</p><li>Default：使用默认人物库；</li><li>UserDefine：使用用户自定义人物库。</li><li>All：同时使用默认人物库和用户自定义人物库。</li>默认值：All，使用系统默认人物库及用户自定义人物库。
         :rtype: str
         """
         return self._FaceLibrary
@@ -53282,24 +53523,15 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 人脸识别任务开关，可选值：
-<li>ON：开启智能人脸识别任务；</li>
-<li>OFF：关闭智能人脸识别任务。</li>
+        :param _Switch: <p>人脸识别任务开关，可选值：</p><li>ON：开启智能人脸识别任务；</li><li>OFF：关闭智能人脸识别任务。</li>
         :type Switch: str
-        :param _Score: 人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。
+        :param _Score: <p>人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。</p>
         :type Score: float
-        :param _DefaultLibraryLabelSet: 默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
-<li>entertainment：娱乐明星；</li>
-<li>sport：体育明星；</li>
-<li>politician：相关人物。</li>
+        :param _DefaultLibraryLabelSet: <p>默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：</p><li>entertainment：娱乐明星；</li><li>sport：体育明星；</li><li>politician：相关人物。</li>
         :type DefaultLibraryLabelSet: list of str
-        :param _UserDefineLibraryLabelSet: 用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-标签个数最多 100 个，每个标签长度最多 16 个字符。
+        :param _UserDefineLibraryLabelSet: <p>用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。<br>标签个数最多 100 个，每个标签长度最多 16 个字符。</p>
         :type UserDefineLibraryLabelSet: list of str
-        :param _FaceLibrary: 人物库选择，可选值：
-<li>Default：使用默认人物库；</li>
-<li>UserDefine：使用用户自定义人物库。</li>
-<li>All：同时使用默认人物库和用户自定义人物库。</li>
+        :param _FaceLibrary: <p>人物库选择，可选值：</p><li>Default：使用默认人物库；</li><li>UserDefine：使用用户自定义人物库。</li><li>All：同时使用默认人物库和用户自定义人物库。</li>
         :type FaceLibrary: str
         """
         self._Switch = None
@@ -53310,9 +53542,7 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
-        r"""人脸识别任务开关，可选值：
-<li>ON：开启智能人脸识别任务；</li>
-<li>OFF：关闭智能人脸识别任务。</li>
+        r"""<p>人脸识别任务开关，可选值：</p><li>ON：开启智能人脸识别任务；</li><li>OFF：关闭智能人脸识别任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -53323,7 +53553,7 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def Score(self):
-        r"""人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。
+        r"""<p>人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果。取值范围：0-100。</p>
         :rtype: float
         """
         return self._Score
@@ -53334,10 +53564,7 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def DefaultLibraryLabelSet(self):
-        r"""默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：
-<li>entertainment：娱乐明星；</li>
-<li>sport：体育明星；</li>
-<li>politician：相关人物。</li>
+        r"""<p>默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。标签可选值：</p><li>entertainment：娱乐明星；</li><li>sport：体育明星；</li><li>politician：相关人物。</li>
         :rtype: list of str
         """
         return self._DefaultLibraryLabelSet
@@ -53348,8 +53575,7 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def UserDefineLibraryLabelSet(self):
-        r"""用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。
-标签个数最多 100 个，每个标签长度最多 16 个字符。
+        r"""<p>用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。<br>标签个数最多 100 个，每个标签长度最多 16 个字符。</p>
         :rtype: list of str
         """
         return self._UserDefineLibraryLabelSet
@@ -53360,10 +53586,7 @@ class FaceConfigureInfoForUpdate(AbstractModel):
 
     @property
     def FaceLibrary(self):
-        r"""人物库选择，可选值：
-<li>Default：使用默认人物库；</li>
-<li>UserDefine：使用用户自定义人物库。</li>
-<li>All：同时使用默认人物库和用户自定义人物库。</li>
+        r"""<p>人物库选择，可选值：</p><li>Default：使用默认人物库；</li><li>UserDefine：使用用户自定义人物库。</li><li>All：同时使用默认人物库和用户自定义人物库。</li>
         :rtype: str
         """
         return self._FaceLibrary
@@ -54077,9 +54300,9 @@ class FileDeleteTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileIdSet: 删除文件 ID 列表。
+        :param _FileIdSet: <p>删除文件 ID 列表。</p>
         :type FileIdSet: list of str
-        :param _FileDeleteResultInfo: 删除文件结果信息列表。
+        :param _FileDeleteResultInfo: <p>删除文件结果信息列表。</p>
         :type FileDeleteResultInfo: list of FileDeleteResultItem
         """
         self._FileIdSet = None
@@ -54087,7 +54310,7 @@ class FileDeleteTask(AbstractModel):
 
     @property
     def FileIdSet(self):
-        r"""删除文件 ID 列表。
+        r"""<p>删除文件 ID 列表。</p>
         :rtype: list of str
         """
         return self._FileIdSet
@@ -54098,7 +54321,7 @@ class FileDeleteTask(AbstractModel):
 
     @property
     def FileDeleteResultInfo(self):
-        r"""删除文件结果信息列表。
+        r"""<p>删除文件结果信息列表。</p>
         :rtype: list of FileDeleteResultItem
         """
         return self._FileDeleteResultInfo
@@ -75852,19 +76075,13 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 需要设置加速配置的域名。
+        :param _Domain: <p>需要设置加速配置的域名。</p>
         :type Domain: str
-        :param _Area: 区域，可选值：
-<li>Chinese Mainland：中国境内（不包含港澳台）。</li>
-<li>Outside Chinese Mainland: 中国境外。</li>
-<li>Global: 全球范围。</li>
+        :param _Area: <p>区域，可选值：</p><li>Chinese Mainland：中国境内（不包含港澳台）。</li><li>Outside Chinese Mainland: 中国境外。</li><li>Global: 全球范围。</li>
         :type Area: str
-        :param _Status: 开启或者关闭所选区域的域名加速，可选值：
-<li>Enabled: 开启。</li>
-<li>Disabled：关闭。</li>
-开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
+        :param _Status: <p>开启或者关闭所选区域的域名加速，可选值：</p><li>Enabled: 开启。</li><li>Disabled：关闭。</li>开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
         :type Status: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._Domain = None
@@ -75874,7 +76091,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""需要设置加速配置的域名。
+        r"""<p>需要设置加速配置的域名。</p>
         :rtype: str
         """
         return self._Domain
@@ -75885,10 +76102,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 
     @property
     def Area(self):
-        r"""区域，可选值：
-<li>Chinese Mainland：中国境内（不包含港澳台）。</li>
-<li>Outside Chinese Mainland: 中国境外。</li>
-<li>Global: 全球范围。</li>
+        r"""<p>区域，可选值：</p><li>Chinese Mainland：中国境内（不包含港澳台）。</li><li>Outside Chinese Mainland: 中国境外。</li><li>Global: 全球范围。</li>
         :rtype: str
         """
         return self._Area
@@ -75899,10 +76113,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""开启或者关闭所选区域的域名加速，可选值：
-<li>Enabled: 开启。</li>
-<li>Disabled：关闭。</li>
-开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
+        r"""<p>开启或者关闭所选区域的域名加速，可选值：</p><li>Enabled: 开启。</li><li>Disabled：关闭。</li>开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
         :rtype: str
         """
         return self._Status
@@ -75913,7 +76124,7 @@ class ModifyVodDomainAccelerateConfigRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -75973,17 +76184,17 @@ class ModifyVodDomainConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名。
+        :param _Domain: <p>域名。</p>
         :type Domain: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _RefererAuthPolicy: [Referer 防盗链](/document/product/266/14046)规则。
+        :param _RefererAuthPolicy: <p><a href="/document/product/266/14046">Referer 防盗链</a>规则。</p>
         :type RefererAuthPolicy: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
-        :param _UrlSignatureAuthPolicy: [Key 防盗链](/document/product/266/14047)规则。
+        :param _UrlSignatureAuthPolicy: <p><a href="/document/product/266/14047">Key 防盗链</a>规则。</p>
         :type UrlSignatureAuthPolicy: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
-        :param _QUICConfig: QUIC 配置。
+        :param _QUICConfig: <p>QUIC 配置。</p>
         :type QUICConfig: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
-        :param _IPFilterPolicy: IP 访问限制规则。
+        :param _IPFilterPolicy: <p>IP 访问限制规则。</p>
         :type IPFilterPolicy: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         """
         self._Domain = None
@@ -75995,7 +76206,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名。
+        r"""<p>域名。</p>
         :rtype: str
         """
         return self._Domain
@@ -76006,7 +76217,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -76017,7 +76228,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
 
     @property
     def RefererAuthPolicy(self):
-        r"""[Referer 防盗链](/document/product/266/14046)规则。
+        r"""<p><a href="/document/product/266/14046">Referer 防盗链</a>规则。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.RefererAuthPolicy`
         """
         return self._RefererAuthPolicy
@@ -76028,7 +76239,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
 
     @property
     def UrlSignatureAuthPolicy(self):
-        r"""[Key 防盗链](/document/product/266/14047)规则。
+        r"""<p><a href="/document/product/266/14047">Key 防盗链</a>规则。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.UrlSignatureAuthPolicy`
         """
         return self._UrlSignatureAuthPolicy
@@ -76039,7 +76250,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
 
     @property
     def QUICConfig(self):
-        r"""QUIC 配置。
+        r"""<p>QUIC 配置。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.DomainQUICConfig`
         """
         return self._QUICConfig
@@ -76050,7 +76261,7 @@ class ModifyVodDomainConfigRequest(AbstractModel):
 
     @property
     def IPFilterPolicy(self):
-        r"""IP 访问限制规则。
+        r"""<p>IP 访问限制规则。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.IPFilterPolicy`
         """
         return self._IPFilterPolicy
@@ -77289,25 +77500,23 @@ class OverrideTranscodeParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
+        :param _Container: <p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
         :type Container: str
-        :param _RemoveVideo: 是否去除视频数据，取值：
-<li>0：保留；<\li>
-<li>1：去除。<\li>
+        :param _RemoveVideo: <p>是否去除视频数据，取值：<br>&lt;li&gt;0：保留；&lt;\li&gt;<br>&lt;li&gt;1：去除。&lt;\li&gt;</p>
         :type RemoveVideo: int
-        :param _RemoveAudio: 是否去除音频数据，取值：
-<li>0：保留；<\li>
-<li>1：去除。<\li>
+        :param _RemoveAudio: <p>是否去除音频数据，取值：<br>&lt;li&gt;0：保留；&lt;\li&gt;<br>&lt;li&gt;1：去除。&lt;\li&gt;</p>
         :type RemoveAudio: int
-        :param _VideoTemplate: 视频流配置参数。
+        :param _VideoTemplate: <p>视频流配置参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoTemplate: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
-        :param _AudioTemplate: 音频流配置参数。
+        :param _AudioTemplate: <p>音频流配置参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioTemplate: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
-        :param _TEHDConfig: 极速高清转码配置参数。
+        :param _TEHDConfig: <p>极速高清转码配置参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TEHDConfig: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
+        :param _StdExtInfo: <p>标准扩展字段，特殊用途使用。</p>
+        :type StdExtInfo: str
         """
         self._Container = None
         self._RemoveVideo = None
@@ -77315,10 +77524,11 @@ class OverrideTranscodeParameter(AbstractModel):
         self._VideoTemplate = None
         self._AudioTemplate = None
         self._TEHDConfig = None
+        self._StdExtInfo = None
 
     @property
     def Container(self):
-        r"""封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。
+        r"""<p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
         :rtype: str
         """
         return self._Container
@@ -77329,9 +77539,7 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def RemoveVideo(self):
-        r"""是否去除视频数据，取值：
-<li>0：保留；<\li>
-<li>1：去除。<\li>
+        r"""<p>是否去除视频数据，取值：<br>&lt;li&gt;0：保留；&lt;\li&gt;<br>&lt;li&gt;1：去除。&lt;\li&gt;</p>
         :rtype: int
         """
         return self._RemoveVideo
@@ -77342,9 +77550,7 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def RemoveAudio(self):
-        r"""是否去除音频数据，取值：
-<li>0：保留；<\li>
-<li>1：去除。<\li>
+        r"""<p>是否去除音频数据，取值：<br>&lt;li&gt;0：保留；&lt;\li&gt;<br>&lt;li&gt;1：去除。&lt;\li&gt;</p>
         :rtype: int
         """
         return self._RemoveAudio
@@ -77355,7 +77561,7 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def VideoTemplate(self):
-        r"""视频流配置参数。
+        r"""<p>视频流配置参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.VideoTemplateInfoForUpdate`
         """
@@ -77367,7 +77573,7 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def AudioTemplate(self):
-        r"""音频流配置参数。
+        r"""<p>音频流配置参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AudioTemplateInfoForUpdate`
         """
@@ -77379,7 +77585,7 @@ class OverrideTranscodeParameter(AbstractModel):
 
     @property
     def TEHDConfig(self):
-        r"""极速高清转码配置参数。
+        r"""<p>极速高清转码配置参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.TEHDConfigForUpdate`
         """
@@ -77388,6 +77594,17 @@ class OverrideTranscodeParameter(AbstractModel):
     @TEHDConfig.setter
     def TEHDConfig(self, TEHDConfig):
         self._TEHDConfig = TEHDConfig
+
+    @property
+    def StdExtInfo(self):
+        r"""<p>标准扩展字段，特殊用途使用。</p>
+        :rtype: str
+        """
+        return self._StdExtInfo
+
+    @StdExtInfo.setter
+    def StdExtInfo(self, StdExtInfo):
+        self._StdExtInfo = StdExtInfo
 
 
     def _deserialize(self, params):
@@ -77403,6 +77620,7 @@ class OverrideTranscodeParameter(AbstractModel):
         if params.get("TEHDConfig") is not None:
             self._TEHDConfig = TEHDConfigForUpdate()
             self._TEHDConfig._deserialize(params.get("TEHDConfig"))
+        self._StdExtInfo = params.get("StdExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -77420,11 +77638,9 @@ class ParseStreamingManifestRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MediaManifestContent: 待解析的索引文件内容。
+        :param _MediaManifestContent: <p>待解析的索引文件内容。</p>
         :type MediaManifestContent: str
-        :param _ManifestType: 视频索引文件格式。默认 m3u8 格式。
-<li>m3u8</li>
-<li>mpd</li>
+        :param _ManifestType: <p>视频索引文件格式。默认 m3u8 格式。</p><li>m3u8</li><li>mpd</li>
         :type ManifestType: str
         """
         self._MediaManifestContent = None
@@ -77432,7 +77648,7 @@ class ParseStreamingManifestRequest(AbstractModel):
 
     @property
     def MediaManifestContent(self):
-        r"""待解析的索引文件内容。
+        r"""<p>待解析的索引文件内容。</p>
         :rtype: str
         """
         return self._MediaManifestContent
@@ -77443,9 +77659,7 @@ class ParseStreamingManifestRequest(AbstractModel):
 
     @property
     def ManifestType(self):
-        r"""视频索引文件格式。默认 m3u8 格式。
-<li>m3u8</li>
-<li>mpd</li>
+        r"""<p>视频索引文件格式。默认 m3u8 格式。</p><li>m3u8</li><li>mpd</li>
         :rtype: str
         """
         return self._ManifestType
@@ -77475,7 +77689,7 @@ class ParseStreamingManifestResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MediaSegmentSet: 分片文件列表。
+        :param _MediaSegmentSet: <p>分片文件列表。</p>
         :type MediaSegmentSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -77485,7 +77699,7 @@ class ParseStreamingManifestResponse(AbstractModel):
 
     @property
     def MediaSegmentSet(self):
-        r"""分片文件列表。
+        r"""<p>分片文件列表。</p>
         :rtype: list of str
         """
         return self._MediaSegmentSet
@@ -78438,23 +78652,13 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 画面鉴别涉及令人不适宜的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
+        :param _Switch: <p>画面鉴别涉及令人不适宜的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
         :type Switch: str
-        :param _LabelSet: 画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>violation_photo：违规图标；</li>
-<li>politician：相关人物；</li>
-<li>entertainment：娱乐人物；</li>
-<li>sport：体育人物；</li>
-<li>entrepreneur：商业人物；</li>
-<li>scholar：教育学者；</li>
-<li>celebrity：知名人物；</li>
-<li>military：相关人物。</li>
+        :param _LabelSet: <p>画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>violation_photo：违规图标；</li><li>politician：相关人物；</li><li>entertainment：娱乐人物；</li><li>sport：体育人物；</li><li>entrepreneur：商业人物；</li><li>scholar：教育学者；</li><li>celebrity：知名人物；</li><li>military：相关人物。</li>
         :type LabelSet: list of str
-        :param _BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+        :param _BlockConfidence: <p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。</p>
         :type BlockConfidence: int
-        :param _ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+        :param _ReviewConfidence: <p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。</p>
         :type ReviewConfidence: int
         """
         self._Switch = None
@@ -78464,9 +78668,7 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
-        r"""画面鉴别涉及令人不适宜的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
+        r"""<p>画面鉴别涉及令人不适宜的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -78477,15 +78679,7 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
-        r"""画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>violation_photo：违规图标；</li>
-<li>politician：相关人物；</li>
-<li>entertainment：娱乐人物；</li>
-<li>sport：体育人物；</li>
-<li>entrepreneur：商业人物；</li>
-<li>scholar：教育学者；</li>
-<li>celebrity：知名人物；</li>
-<li>military：相关人物。</li>
+        r"""<p>画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>violation_photo：违规图标；</li><li>politician：相关人物；</li><li>entertainment：娱乐人物；</li><li>sport：体育人物；</li><li>entrepreneur：商业人物；</li><li>scholar：教育学者；</li><li>celebrity：知名人物；</li><li>military：相关人物。</li>
         :rtype: list of str
         """
         return self._LabelSet
@@ -78496,7 +78690,7 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
-        r"""判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。
+        r"""<p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 97 分。取值范围：0~100。</p>
         :rtype: int
         """
         return self._BlockConfidence
@@ -78507,7 +78701,7 @@ class PoliticalImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
-        r"""判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。
+        r"""<p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 95 分。取值范围：0~100。</p>
         :rtype: int
         """
         return self._ReviewConfidence
@@ -78539,23 +78733,13 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 画面鉴别涉及令人不适宜的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
+        :param _Switch: <p>画面鉴别涉及令人不适宜的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
         :type Switch: str
-        :param _LabelSet: 画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>violation_photo：违规图标；</li>
-<li>politician：相关人物；</li>
-<li>entertainment：娱乐人物；</li>
-<li>sport：体育人物；</li>
-<li>entrepreneur：商业人物；</li>
-<li>scholar：教育学者；</li>
-<li>celebrity：知名人物；</li>
-<li>military：相关人物。</li>
+        :param _LabelSet: <p>画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>violation_photo：违规图标；</li><li>politician：相关人物；</li><li>entertainment：娱乐人物；</li><li>sport：体育人物；</li><li>entrepreneur：商业人物；</li><li>scholar：教育学者；</li><li>celebrity：知名人物；</li><li>military：相关人物。</li>
         :type LabelSet: list of str
-        :param _BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param _BlockConfidence: <p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。</p>
         :type BlockConfidence: int
-        :param _ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param _ReviewConfidence: <p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。</p>
         :type ReviewConfidence: int
         """
         self._Switch = None
@@ -78565,9 +78749,7 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
-        r"""画面鉴别涉及令人不适宜的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
+        r"""<p>画面鉴别涉及令人不适宜的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人不适宜的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人不适宜的信息的任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -78578,15 +78760,7 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
-        r"""画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>violation_photo：违规图标；</li>
-<li>politician：相关人物；</li>
-<li>entertainment：娱乐人物；</li>
-<li>sport：体育人物；</li>
-<li>entrepreneur：商业人物；</li>
-<li>scholar：教育学者；</li>
-<li>celebrity：知名人物；</li>
-<li>military：相关人物。</li>
+        r"""<p>画面鉴别涉及令人不适宜的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>violation_photo：违规图标；</li><li>politician：相关人物；</li><li>entertainment：娱乐人物；</li><li>sport：体育人物；</li><li>entrepreneur：商业人物；</li><li>scholar：教育学者；</li><li>celebrity：知名人物；</li><li>military：相关人物。</li>
         :rtype: list of str
         """
         return self._LabelSet
@@ -78597,7 +78771,7 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
-        r"""判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        r"""<p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。</p>
         :rtype: int
         """
         return self._BlockConfidence
@@ -78608,7 +78782,7 @@ class PoliticalImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
-        r"""判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        r"""<p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。</p>
         :rtype: int
         """
         return self._ReviewConfidence
@@ -79144,19 +79318,13 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 画面鉴别涉及令人反感的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人反感的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
+        :param _Switch: <p>画面鉴别涉及令人反感的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人反感的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
         :type Switch: str
-        :param _LabelSet: 画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>porn：色情；</li>
-<li>vulgar：低俗；</li>
-<li>intimacy：亲密行为；</li>
-<li>sexy：性感。</li>
+        :param _LabelSet: <p>画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>porn：色情；</li><li>vulgar：低俗；</li><li>intimacy：亲密行为；</li><li>sexy：性感。</li>
         :type LabelSet: list of str
-        :param _BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        :param _BlockConfidence: <p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。</p>
         :type BlockConfidence: int
-        :param _ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
+        :param _ReviewConfidence: <p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。</p>
         :type ReviewConfidence: int
         """
         self._Switch = None
@@ -79166,9 +79334,7 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
-        r"""画面鉴别涉及令人反感的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人反感的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
+        r"""<p>画面鉴别涉及令人反感的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人反感的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -79179,11 +79345,7 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
-        r"""画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>porn：色情；</li>
-<li>vulgar：低俗；</li>
-<li>intimacy：亲密行为；</li>
-<li>sexy：性感。</li>
+        r"""<p>画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>porn：色情；</li><li>vulgar：低俗；</li><li>intimacy：亲密行为；</li><li>sexy：性感。</li>
         :rtype: list of str
         """
         return self._LabelSet
@@ -79194,7 +79356,7 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
-        r"""判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        r"""<p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。</p>
         :rtype: int
         """
         return self._BlockConfidence
@@ -79205,7 +79367,7 @@ class PornImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
-        r"""判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。
+        r"""<p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 0 分。取值范围：0~100。</p>
         :rtype: int
         """
         return self._ReviewConfidence
@@ -79237,19 +79399,13 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 画面鉴别涉及令人反感的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人反感的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
+        :param _Switch: <p>画面鉴别涉及令人反感的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人反感的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
         :type Switch: str
-        :param _LabelSet: 画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>porn：色情；</li>
-<li>vulgar：低俗；</li>
-<li>intimacy：亲密行为；</li>
-<li>sexy：性感。</li>
+        :param _LabelSet: <p>画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>porn：色情；</li><li>vulgar：低俗；</li><li>intimacy：亲密行为；</li><li>sexy：性感。</li>
         :type LabelSet: list of str
-        :param _BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param _BlockConfidence: <p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。</p>
         :type BlockConfidence: int
-        :param _ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param _ReviewConfidence: <p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。</p>
         :type ReviewConfidence: int
         """
         self._Switch = None
@@ -79259,9 +79415,7 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
-        r"""画面鉴别涉及令人反感的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人反感的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
+        r"""<p>画面鉴别涉及令人反感的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人反感的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人反感的信息的任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -79272,11 +79426,7 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
-        r"""画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>porn：色情；</li>
-<li>vulgar：低俗；</li>
-<li>intimacy：亲密行为；</li>
-<li>sexy：性感。</li>
+        r"""<p>画面鉴别涉及令人反感的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>porn：色情；</li><li>vulgar：低俗；</li><li>intimacy：亲密行为；</li><li>sexy：性感。</li>
         :rtype: list of str
         """
         return self._LabelSet
@@ -79287,7 +79437,7 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
-        r"""判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        r"""<p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。</p>
         :rtype: int
         """
         return self._BlockConfidence
@@ -79298,7 +79448,7 @@ class PornImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
-        r"""判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        r"""<p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。</p>
         :rtype: int
         """
         return self._ReviewConfidence
@@ -83580,37 +83730,32 @@ class PullUploadTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 拉取上传任务 ID。
+        :param _TaskId: <p>拉取上传任务 ID。</p>
         :type TaskId: str
-        :param _Status: 任务流状态，取值：
-<li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
+        :param _Status: <p>任务流状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
         :type Status: str
-        :param _ErrCode: 错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        :param _ErrCode: <p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
         :type ErrCode: int
-        :param _Message: 错误信息。
+        :param _Message: <p>错误信息。</p>
         :type Message: str
-        :param _FileId: 拉取上传完成后生成的视频 ID。
+        :param _FileId: <p>拉取上传完成后生成的视频 ID。</p>
         :type FileId: str
-        :param _MediaBasicInfo: 拉取上传完成后生成的媒体文件基础信息。
+        :param _MediaBasicInfo: <p>拉取上传完成后生成的媒体文件基础信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaBasicInfo: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
-        :param _MetaData: 输出视频的元信息。
+        :param _MetaData: <p>输出视频的元信息。</p>
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
-        :param _FileUrl: 拉取上传完成后生成的播放地址。
+        :param _FileUrl: <p>拉取上传完成后生成的播放地址。</p>
         :type FileUrl: str
-        :param _ProcedureTaskId: 任务类型为 Procedure 的任务 ID。若[拉取上传](https://cloud.tencent.com/document/api/266/35575)时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
+        :param _ProcedureTaskId: <p>任务类型为 Procedure 的任务 ID。若<a href="https://cloud.tencent.com/document/api/266/35575">拉取上传</a>时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
         :type ProcedureTaskId: str
-        :param _ReviewAudioVideoTaskId: 任务类型为 ReviewAudioVideo 的任务 ID。若[拉取上传](https://cloud.tencent.com/document/api/266/35575)时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        :param _ReviewAudioVideoTaskId: <p>任务类型为 ReviewAudioVideo 的任务 ID。若<a href="https://cloud.tencent.com/document/api/266/35575">拉取上传</a>时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。</p>
         :type ReviewAudioVideoTaskId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，[URL 拉取视频上传完成](https://cloud.tencent.com/document/product/266/7831)将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，<a href="https://cloud.tencent.com/document/product/266/7831">URL 拉取视频上传完成</a>将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _Progress: 拉取上传进度，取值范围 [0-100] 。
+        :param _Progress: <p>拉取上传进度，取值范围 [0-100] 。</p>
         :type Progress: int
         """
         self._TaskId = None
@@ -83629,7 +83774,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""拉取上传任务 ID。
+        r"""<p>拉取上传任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -83640,9 +83785,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务流状态，取值：
-<li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
+        r"""<p>任务流状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
         :rtype: str
         """
         return self._Status
@@ -83653,10 +83796,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""错误码，0 表示成功，其他值表示失败：
-<li>40000：输入参数不合法，请检查输入参数；</li>
-<li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li>
-<li>70000：内部服务错误，建议重试。</li>
+        r"""<p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
         :rtype: int
         """
         return self._ErrCode
@@ -83667,7 +83807,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def Message(self):
-        r"""错误信息。
+        r"""<p>错误信息。</p>
         :rtype: str
         """
         return self._Message
@@ -83678,7 +83818,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def FileId(self):
-        r"""拉取上传完成后生成的视频 ID。
+        r"""<p>拉取上传完成后生成的视频 ID。</p>
         :rtype: str
         """
         return self._FileId
@@ -83689,7 +83829,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def MediaBasicInfo(self):
-        r"""拉取上传完成后生成的媒体文件基础信息。
+        r"""<p>拉取上传完成后生成的媒体文件基础信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaBasicInfo`
         """
@@ -83701,7 +83841,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""输出视频的元信息。
+        r"""<p>输出视频的元信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -83712,7 +83852,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def FileUrl(self):
-        r"""拉取上传完成后生成的播放地址。
+        r"""<p>拉取上传完成后生成的播放地址。</p>
         :rtype: str
         """
         return self._FileUrl
@@ -83723,7 +83863,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def ProcedureTaskId(self):
-        r"""任务类型为 Procedure 的任务 ID。若[拉取上传](https://cloud.tencent.com/document/api/266/35575)时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
+        r"""<p>任务类型为 Procedure 的任务 ID。若<a href="https://cloud.tencent.com/document/api/266/35575">拉取上传</a>时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
         :rtype: str
         """
         return self._ProcedureTaskId
@@ -83734,7 +83874,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def ReviewAudioVideoTaskId(self):
-        r"""任务类型为 ReviewAudioVideo 的任务 ID。若[拉取上传](https://cloud.tencent.com/document/api/266/35575)时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        r"""<p>任务类型为 ReviewAudioVideo 的任务 ID。若<a href="https://cloud.tencent.com/document/api/266/35575">拉取上传</a>时指定了媒体后续任务操作(Procedure)，当该任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。</p>
         :rtype: str
         """
         return self._ReviewAudioVideoTaskId
@@ -83745,7 +83885,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，[URL 拉取视频上传完成](https://cloud.tencent.com/document/product/266/7831)将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，<a href="https://cloud.tencent.com/document/product/266/7831">URL 拉取视频上传完成</a>将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -83756,7 +83896,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -83767,7 +83907,7 @@ class PullUploadTask(AbstractModel):
 
     @property
     def Progress(self):
-        r"""拉取上传进度，取值范围 [0-100] 。
+        r"""<p>拉取上传进度，取值范围 [0-100] 。</p>
         :rtype: int
         """
         return self._Progress
@@ -83812,9 +83952,9 @@ class PushUrlCacheRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Urls: 预热的 URL 列表，单次最多指定20个 URL。
+        :param _Urls: <p>预热的 URL 列表，单次最多指定20个 URL。</p>
         :type Urls: list of str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._Urls = None
@@ -83822,7 +83962,7 @@ class PushUrlCacheRequest(AbstractModel):
 
     @property
     def Urls(self):
-        r"""预热的 URL 列表，单次最多指定20个 URL。
+        r"""<p>预热的 URL 列表，单次最多指定20个 URL。</p>
         :rtype: list of str
         """
         return self._Urls
@@ -83833,7 +83973,7 @@ class PushUrlCacheRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -94860,15 +95000,13 @@ class SetVodDomainCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名。
+        :param _Domain: <p>域名。</p>
         :type Domain: str
-        :param _Operation: 本次接口调用的操作类型，可选值：
-<li>Set：设置域名的 HTTPS 所需证书；</li>
-<li>Clear: 清空域名 HTTPS 配置，清空后该域名无法支持 HTTPS 访问。</li>
+        :param _Operation: <p>本次接口调用的操作类型，可选值：</p><li>Set：设置域名的 HTTPS 所需证书；</li><li>Clear: 清空域名 HTTPS 配置，清空后该域名无法支持 HTTPS 访问。</li>
         :type Operation: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _CertID: [腾讯云SSL](/document/product/400/7572) 上传的证书 ID。清空域名 HTTPS 配置时无需填写该字段。
+        :param _CertID: <p><a href="/document/product/400/7572">腾讯云SSL</a> 上传的证书 ID。清空域名 HTTPS 配置时无需填写该字段。</p>
         :type CertID: str
         """
         self._Domain = None
@@ -94878,7 +95016,7 @@ class SetVodDomainCertificateRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名。
+        r"""<p>域名。</p>
         :rtype: str
         """
         return self._Domain
@@ -94889,9 +95027,7 @@ class SetVodDomainCertificateRequest(AbstractModel):
 
     @property
     def Operation(self):
-        r"""本次接口调用的操作类型，可选值：
-<li>Set：设置域名的 HTTPS 所需证书；</li>
-<li>Clear: 清空域名 HTTPS 配置，清空后该域名无法支持 HTTPS 访问。</li>
+        r"""<p>本次接口调用的操作类型，可选值：</p><li>Set：设置域名的 HTTPS 所需证书；</li><li>Clear: 清空域名 HTTPS 配置，清空后该域名无法支持 HTTPS 访问。</li>
         :rtype: str
         """
         return self._Operation
@@ -94902,7 +95038,7 @@ class SetVodDomainCertificateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -94913,7 +95049,7 @@ class SetVodDomainCertificateRequest(AbstractModel):
 
     @property
     def CertID(self):
-        r"""[腾讯云SSL](/document/product/400/7572) 上传的证书 ID。清空域名 HTTPS 配置时无需填写该字段。
+        r"""<p><a href="/document/product/400/7572">腾讯云SSL</a> 上传的证书 ID。清空域名 HTTPS 配置时无需填写该字段。</p>
         :rtype: str
         """
         return self._CertID
@@ -95547,15 +95683,13 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 指定时间点截图模板 ID。
+        :param _Definition: <p>指定时间点截图模板 ID。</p>
         :type Definition: int
-        :param _ExtTimeOffsetSet: 截图时间点列表，时间点支持 s、% 两种格式：
-<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
-<li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
+        :param _ExtTimeOffsetSet: <p>截图时间点列表，时间点支持 s、% 两种格式：</p><li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li><li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
         :type ExtTimeOffsetSet: list of str
-        :param _TimeOffsetSet: 截图时间点列表，单位为<font color=red>毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
+        :param _TimeOffsetSet: <p>截图时间点列表，单位为<font color="red">毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。</p>
         :type TimeOffsetSet: list of float
-        :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        :param _WatermarkSet: <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
         :type WatermarkSet: list of WatermarkInput
         """
         self._Definition = None
@@ -95565,7 +95699,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def Definition(self):
-        r"""指定时间点截图模板 ID。
+        r"""<p>指定时间点截图模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -95576,9 +95710,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def ExtTimeOffsetSet(self):
-        r"""截图时间点列表，时间点支持 s、% 两种格式：
-<li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
-<li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
+        r"""<p>截图时间点列表，时间点支持 s、% 两种格式：</p><li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li><li>当字符串以 % 结尾，表示时间点为视频时长的百分比大小，如10%表示时间点为视频前第10%的时间。</li>
         :rtype: list of str
         """
         return self._ExtTimeOffsetSet
@@ -95589,7 +95721,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def TimeOffsetSet(self):
-        r"""截图时间点列表，单位为<font color=red>毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。
+        r"""<p>截图时间点列表，单位为<font color="red">毫秒</font>。此参数已不再建议使用，建议您使用 ExtTimeOffsetSet 参数。</p>
         :rtype: list of float
         """
         return self._TimeOffsetSet
@@ -95600,7 +95732,7 @@ class SnapshotByTimeOffsetTaskInput(AbstractModel):
 
     @property
     def WatermarkSet(self):
-        r"""水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        r"""<p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet
@@ -98240,13 +98372,15 @@ class TaskSimpleInfo(AbstractModel):
 <li>EditMedia：视频编辑任务；</li>
 <li>ReduceMediaBitrate：降码率任务；</li>
 <li>WechatDistribute：微信发布任务；</li>
-<li>ReviewAudioVideo：音视频审核任务。</li>
+<li>ReviewAudioVideo：音视频审核任务；</li>
+<li> MPSWorkflowTask：MPS 视频处理任务。</li>
 兼容 2017 版的任务类型：
 <li>Transcode：视频转码任务；</li>
 <li>SnapshotByTimeOffset：视频截图任务；</li>
 <li>Concat：视频拼接任务；</li>
 <li>Clip：视频剪辑任务；</li>
 <li>ImageSprites：截取雪碧图任务。</li>
+
         :type TaskType: str
         :param _CreateTime: 任务创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
         :type CreateTime: str
@@ -98309,13 +98443,15 @@ class TaskSimpleInfo(AbstractModel):
 <li>EditMedia：视频编辑任务；</li>
 <li>ReduceMediaBitrate：降码率任务；</li>
 <li>WechatDistribute：微信发布任务；</li>
-<li>ReviewAudioVideo：音视频审核任务。</li>
+<li>ReviewAudioVideo：音视频审核任务；</li>
+<li> MPSWorkflowTask：MPS 视频处理任务。</li>
 兼容 2017 版的任务类型：
 <li>Transcode：视频转码任务；</li>
 <li>SnapshotByTimeOffset：视频截图任务；</li>
 <li>Concat：视频拼接任务；</li>
 <li>Clip：视频剪辑任务；</li>
 <li>ImageSprites：截取雪碧图任务。</li>
+
         :rtype: str
         """
         return self._TaskType
@@ -98986,24 +99122,13 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 画面鉴别涉及令人不安全的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
+        :param _Switch: <p>画面鉴别涉及令人不安全的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
         :type Switch: str
-        :param _LabelSet: 画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>guns：武器枪支；</li>
-<li>crowd：人群聚集；</li>
-<li>bloody：血腥画面；</li>
-<li>police：警察部队；</li>
-<li>banners：暴恐旗帜；</li>
-<li>militant：武装分子；</li>
-<li>explosion：爆炸火灾；</li>
-<li>terrorists：暴恐人物；</li>
-<li>scenario：暴恐画面。</li>
+        :param _LabelSet: <p>画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>guns：武器枪支；</li><li>crowd：人群聚集；</li><li>bloody：血腥画面；</li><li>police：警察部队；</li><li>banners：暴恐旗帜；</li><li>militant：武装分子；</li><li>explosion：爆炸火灾；</li><li>terrorists：暴恐人物；</li><li>scenario：暴恐画面。</li>
         :type LabelSet: list of str
-        :param _BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        :param _BlockConfidence: <p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。</p>
         :type BlockConfidence: int
-        :param _ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+        :param _ReviewConfidence: <p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。</p>
         :type ReviewConfidence: int
         """
         self._Switch = None
@@ -99013,9 +99138,7 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def Switch(self):
-        r"""画面鉴别涉及令人不安全的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
+        r"""<p>画面鉴别涉及令人不安全的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -99026,16 +99149,7 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def LabelSet(self):
-        r"""画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>guns：武器枪支；</li>
-<li>crowd：人群聚集；</li>
-<li>bloody：血腥画面；</li>
-<li>police：警察部队；</li>
-<li>banners：暴恐旗帜；</li>
-<li>militant：武装分子；</li>
-<li>explosion：爆炸火灾；</li>
-<li>terrorists：暴恐人物；</li>
-<li>scenario：暴恐画面。</li>
+        r"""<p>画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>guns：武器枪支；</li><li>crowd：人群聚集；</li><li>bloody：血腥画面；</li><li>police：警察部队；</li><li>banners：暴恐旗帜；</li><li>militant：武装分子；</li><li>explosion：爆炸火灾；</li><li>terrorists：暴恐人物；</li><li>scenario：暴恐画面。</li>
         :rtype: list of str
         """
         return self._LabelSet
@@ -99046,7 +99160,7 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def BlockConfidence(self):
-        r"""判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。
+        r"""<p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规，不填默认为 90 分。取值范围：0~100。</p>
         :rtype: int
         """
         return self._BlockConfidence
@@ -99057,7 +99171,7 @@ class TerrorismImgReviewTemplateInfo(AbstractModel):
 
     @property
     def ReviewConfidence(self):
-        r"""判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。
+        r"""<p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核，不填默认为 80 分。取值范围：0~100。</p>
         :rtype: int
         """
         return self._ReviewConfidence
@@ -99089,24 +99203,13 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 画面鉴别涉及令人不安全的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
+        :param _Switch: <p>画面鉴别涉及令人不安全的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
         :type Switch: str
-        :param _LabelSet: 画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>guns：武器枪支；</li>
-<li>crowd：人群聚集；</li>
-<li>bloody：血腥画面；</li>
-<li>police：警察部队；</li>
-<li>banners：暴恐旗帜；</li>
-<li>militant：武装分子；</li>
-<li>explosion：爆炸火灾；</li>
-<li>terrorists：暴恐人物；</li>
-<li>scenario：暴恐画面。</li>
+        :param _LabelSet: <p>画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>guns：武器枪支；</li><li>crowd：人群聚集；</li><li>bloody：血腥画面；</li><li>police：警察部队；</li><li>banners：暴恐旗帜；</li><li>militant：武装分子；</li><li>explosion：爆炸火灾；</li><li>terrorists：暴恐人物；</li><li>scenario：暴恐画面。</li>
         :type LabelSet: list of str
-        :param _BlockConfidence: 判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        :param _BlockConfidence: <p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。</p>
         :type BlockConfidence: int
-        :param _ReviewConfidence: 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        :param _ReviewConfidence: <p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。</p>
         :type ReviewConfidence: int
         """
         self._Switch = None
@@ -99116,9 +99219,7 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Switch(self):
-        r"""画面鉴别涉及令人不安全的信息的任务开关，可选值：
-<li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li>
-<li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
+        r"""<p>画面鉴别涉及令人不安全的信息的任务开关，可选值：</p><li>ON：开启画面鉴别涉及令人不安全的信息的任务；</li><li>OFF：关闭画面鉴别涉及令人不安全的信息的任务。</li>
         :rtype: str
         """
         return self._Switch
@@ -99129,16 +99230,7 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def LabelSet(self):
-        r"""画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：
-<li>guns：武器枪支；</li>
-<li>crowd：人群聚集；</li>
-<li>bloody：血腥画面；</li>
-<li>police：警察部队；</li>
-<li>banners：暴恐旗帜；</li>
-<li>militant：武装分子；</li>
-<li>explosion：爆炸火灾；</li>
-<li>terrorists：暴恐人物；</li>
-<li>scenario：暴恐画面。</li>
+        r"""<p>画面鉴别涉及令人不安全的信息的过滤标签，审核结果包含选择的标签则返回结果，如果过滤标签为空，则审核结果全部返回，可选值为：</p><li>guns：武器枪支；</li><li>crowd：人群聚集；</li><li>bloody：血腥画面；</li><li>police：警察部队；</li><li>banners：暴恐旗帜；</li><li>militant：武装分子；</li><li>explosion：爆炸火灾；</li><li>terrorists：暴恐人物；</li><li>scenario：暴恐画面。</li>
         :rtype: list of str
         """
         return self._LabelSet
@@ -99149,7 +99241,7 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def BlockConfidence(self):
-        r"""判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。
+        r"""<p>判定涉嫌违规的分数阈值，当审核达到该分数以上，认为涉嫌违规。取值范围：0~100。</p>
         :rtype: int
         """
         return self._BlockConfidence
@@ -99160,7 +99252,7 @@ class TerrorismImgReviewTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ReviewConfidence(self):
-        r"""判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
+        r"""<p>判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。</p>
         :rtype: int
         """
         return self._ReviewConfidence
@@ -101321,106 +101413,14 @@ class TransitionOpertion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 转场类型，取值有：
-<ul>
-<li>图像的转场操作，用于两个视频片段图像间的转场处理：
-<ul>
-<li>ImageFadeInFadeOut：图像淡入淡出。 </li>
-<li>BowTieHorizontal：水平蝴蝶结。 </li>
-<li>BowTieVertical：垂直蝴蝶结。 </li>
-<li>ButterflyWaveScrawler：晃动。 </li>
-<li>Cannabisleaf：枫叶。 </li>
-<li>Circle：弧形收放。 </li>
-<li>CircleCrop：圆环聚拢。 </li>
-<li>Circleopen：椭圆聚拢。 </li>
-<li>Crosswarp：横向翘曲。 </li>
-<li>Cube：立方体。 </li>
-<li>DoomScreenTransition：幕布。 </li>
-<li>Doorway：门廊。 </li>
-<li>Dreamy：波浪。 </li>
-<li>DreamyZoom：水平聚拢。 </li>
-<li>FilmBurn：火烧云。 </li>
-<li>GlitchMemories：抖动。 </li>
-<li>Heart：心形。 </li>
-<li>InvertedPageCurl：翻页。 </li>
-<li>Luma：腐蚀。 </li>
-<li>Mosaic：九宫格。 </li>
-<li>Pinwheel：风车。 </li>
-<li>PolarFunction：椭圆扩散。 </li>
-<li>PolkaDotsCurtain：弧形扩散。 </li>
-<li>Radial：雷达扫描 </li>
-<li>RotateScaleFade：上下收放。 </li>
-<li>Squeeze：上下聚拢。 </li>
-<li>Swap：放大切换。 </li>
-<li>Swirl：螺旋。 </li>
-<li>UndulatingBurnOutSwirl：水流蔓延。 </li>
-<li>Windowblinds：百叶窗。 </li>
-<li>WipeDown：向下收起。 </li>
-<li>WipeLeft：向左收起。 </li>
-<li>WipeRight：向右收起。 </li>
-<li>WipeUp：向上收起。 </li>
-<li>ZoomInCircles：水波纹。 </li>
-</ul>
-</li>
-<li>音频的转场操作，用于两个音频片段间的转场处理：
-<ul>
-<li>AudioFadeInFadeOut：声音淡入淡出。 </li>
-</ul>
-</li>
-</ul>
+        :param _Type: <p>转场类型，取值有：</p><ul><li>图像的转场操作，用于两个视频片段图像间的转场处理：<ul><li>ImageFadeInFadeOut：图像淡入淡出。 </li><li>BowTieHorizontal：水平蝴蝶结。 </li><li>BowTieVertical：垂直蝴蝶结。 </li><li>ButterflyWaveScrawler：晃动。 </li><li>Cannabisleaf：枫叶。 </li><li>Circle：弧形收放。 </li><li>CircleCrop：圆环聚拢。 </li><li>Circleopen：椭圆聚拢。 </li><li>Crosswarp：横向翘曲。 </li><li>Cube：立方体。 </li><li>DoomScreenTransition：幕布。 </li><li>Doorway：门廊。 </li><li>Dreamy：波浪。 </li><li>DreamyZoom：水平聚拢。 </li><li>FilmBurn：火烧云。 </li><li>GlitchMemories：抖动。 </li><li>Heart：心形。 </li><li>InvertedPageCurl：翻页。 </li><li>Luma：腐蚀。 </li><li>Mosaic：九宫格。 </li><li>Pinwheel：风车。 </li><li>PolarFunction：椭圆扩散。 </li><li>PolkaDotsCurtain：弧形扩散。 </li><li>Radial：雷达扫描 </li><li>RotateScaleFade：上下收放。 </li><li>Squeeze：上下聚拢。 </li><li>Swap：放大切换。 </li><li>Swirl：螺旋。 </li><li>UndulatingBurnOutSwirl：水流蔓延。 </li><li>Windowblinds：百叶窗。 </li><li>WipeDown：向下收起。 </li><li>WipeLeft：向左收起。 </li><li>WipeRight：向右收起。 </li><li>WipeUp：向上收起。 </li><li>ZoomInCircles：水波纹。 </li></ul></li><li>音频的转场操作，用于两个音频片段间的转场处理：<ul><li>AudioFadeInFadeOut：声音淡入淡出。 </li></ul></li></ul>
         :type Type: str
         """
         self._Type = None
 
     @property
     def Type(self):
-        r"""转场类型，取值有：
-<ul>
-<li>图像的转场操作，用于两个视频片段图像间的转场处理：
-<ul>
-<li>ImageFadeInFadeOut：图像淡入淡出。 </li>
-<li>BowTieHorizontal：水平蝴蝶结。 </li>
-<li>BowTieVertical：垂直蝴蝶结。 </li>
-<li>ButterflyWaveScrawler：晃动。 </li>
-<li>Cannabisleaf：枫叶。 </li>
-<li>Circle：弧形收放。 </li>
-<li>CircleCrop：圆环聚拢。 </li>
-<li>Circleopen：椭圆聚拢。 </li>
-<li>Crosswarp：横向翘曲。 </li>
-<li>Cube：立方体。 </li>
-<li>DoomScreenTransition：幕布。 </li>
-<li>Doorway：门廊。 </li>
-<li>Dreamy：波浪。 </li>
-<li>DreamyZoom：水平聚拢。 </li>
-<li>FilmBurn：火烧云。 </li>
-<li>GlitchMemories：抖动。 </li>
-<li>Heart：心形。 </li>
-<li>InvertedPageCurl：翻页。 </li>
-<li>Luma：腐蚀。 </li>
-<li>Mosaic：九宫格。 </li>
-<li>Pinwheel：风车。 </li>
-<li>PolarFunction：椭圆扩散。 </li>
-<li>PolkaDotsCurtain：弧形扩散。 </li>
-<li>Radial：雷达扫描 </li>
-<li>RotateScaleFade：上下收放。 </li>
-<li>Squeeze：上下聚拢。 </li>
-<li>Swap：放大切换。 </li>
-<li>Swirl：螺旋。 </li>
-<li>UndulatingBurnOutSwirl：水流蔓延。 </li>
-<li>Windowblinds：百叶窗。 </li>
-<li>WipeDown：向下收起。 </li>
-<li>WipeLeft：向左收起。 </li>
-<li>WipeRight：向右收起。 </li>
-<li>WipeUp：向上收起。 </li>
-<li>ZoomInCircles：水波纹。 </li>
-</ul>
-</li>
-<li>音频的转场操作，用于两个音频片段间的转场处理：
-<ul>
-<li>AudioFadeInFadeOut：声音淡入淡出。 </li>
-</ul>
-</li>
-</ul>
+        r"""<p>转场类型，取值有：</p><ul><li>图像的转场操作，用于两个视频片段图像间的转场处理：<ul><li>ImageFadeInFadeOut：图像淡入淡出。 </li><li>BowTieHorizontal：水平蝴蝶结。 </li><li>BowTieVertical：垂直蝴蝶结。 </li><li>ButterflyWaveScrawler：晃动。 </li><li>Cannabisleaf：枫叶。 </li><li>Circle：弧形收放。 </li><li>CircleCrop：圆环聚拢。 </li><li>Circleopen：椭圆聚拢。 </li><li>Crosswarp：横向翘曲。 </li><li>Cube：立方体。 </li><li>DoomScreenTransition：幕布。 </li><li>Doorway：门廊。 </li><li>Dreamy：波浪。 </li><li>DreamyZoom：水平聚拢。 </li><li>FilmBurn：火烧云。 </li><li>GlitchMemories：抖动。 </li><li>Heart：心形。 </li><li>InvertedPageCurl：翻页。 </li><li>Luma：腐蚀。 </li><li>Mosaic：九宫格。 </li><li>Pinwheel：风车。 </li><li>PolarFunction：椭圆扩散。 </li><li>PolkaDotsCurtain：弧形扩散。 </li><li>Radial：雷达扫描 </li><li>RotateScaleFade：上下收放。 </li><li>Squeeze：上下聚拢。 </li><li>Swap：放大切换。 </li><li>Swirl：螺旋。 </li><li>UndulatingBurnOutSwirl：水流蔓延。 </li><li>Windowblinds：百叶窗。 </li><li>WipeDown：向下收起。 </li><li>WipeLeft：向左收起。 </li><li>WipeRight：向右收起。 </li><li>WipeUp：向上收起。 </li><li>ZoomInCircles：水波纹。 </li></ul></li><li>音频的转场操作，用于两个音频片段间的转场处理：<ul><li>AudioFadeInFadeOut：声音淡入淡出。 </li></ul></li></ul>
         :rtype: str
         """
         return self._Type

@@ -328,6 +328,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcHunyuan3DTask(
+            self,
+            request: models.CreateAigcHunyuan3DTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcHunyuan3DTaskResponse:
+        """
+        该接口用于创建 AIGC 混元 3D 任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcHunyuan3DTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcHunyuan3DTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcImageTask(
             self,
             request: models.CreateAigcImageTaskRequest,

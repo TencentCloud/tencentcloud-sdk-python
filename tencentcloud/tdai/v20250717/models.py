@@ -403,6 +403,10 @@ class AgentInstance(AbstractModel):
         :type OfflineTime: str
         :param _ProductName: <p>商业化资源归属</p>
         :type ProductName: str
+        :param _Capabilities: <p>具备能力</p>
+        :type Capabilities: list of str
+        :param _DeploymentFree: <p>是否是免部署实例</p>
+        :type DeploymentFree: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -427,6 +431,8 @@ class AgentInstance(AbstractModel):
         self._RoleName = None
         self._OfflineTime = None
         self._ProductName = None
+        self._Capabilities = None
+        self._DeploymentFree = None
 
     @property
     def InstanceId(self):
@@ -681,6 +687,28 @@ class AgentInstance(AbstractModel):
     def ProductName(self, ProductName):
         self._ProductName = ProductName
 
+    @property
+    def Capabilities(self):
+        r"""<p>具备能力</p>
+        :rtype: list of str
+        """
+        return self._Capabilities
+
+    @Capabilities.setter
+    def Capabilities(self, Capabilities):
+        self._Capabilities = Capabilities
+
+    @property
+    def DeploymentFree(self):
+        r"""<p>是否是免部署实例</p>
+        :rtype: bool
+        """
+        return self._DeploymentFree
+
+    @DeploymentFree.setter
+    def DeploymentFree(self, DeploymentFree):
+        self._DeploymentFree = DeploymentFree
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -720,6 +748,59 @@ class AgentInstance(AbstractModel):
         self._RoleName = params.get("RoleName")
         self._OfflineTime = params.get("OfflineTime")
         self._ProductName = params.get("ProductName")
+        self._Capabilities = params.get("Capabilities")
+        self._DeploymentFree = params.get("DeploymentFree")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Attachments(AbstractModel):
+    r"""聊天图片附件列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosKey: <p>cos key</p>
+        :type CosKey: str
+        :param _MimeType: <p>图片类型</p>
+        :type MimeType: str
+        """
+        self._CosKey = None
+        self._MimeType = None
+
+    @property
+    def CosKey(self):
+        r"""<p>cos key</p>
+        :rtype: str
+        """
+        return self._CosKey
+
+    @CosKey.setter
+    def CosKey(self, CosKey):
+        self._CosKey = CosKey
+
+    @property
+    def MimeType(self):
+        r"""<p>图片类型</p>
+        :rtype: str
+        """
+        return self._MimeType
+
+    @MimeType.setter
+    def MimeType(self, MimeType):
+        self._MimeType = MimeType
+
+
+    def _deserialize(self, params):
+        self._CosKey = params.get("CosKey")
+        self._MimeType = params.get("MimeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1554,12 +1635,15 @@ class CreateChatCompletionRequest(AbstractModel):
         :type IsHidden: bool
         :param _IsChatHidden: <p>是否隐藏会话</p>
         :type IsChatHidden: bool
+        :param _Attachments: <p>传递图片附件</p>
+        :type Attachments: list of Attachments
         """
         self._InputContent = None
         self._InstanceId = None
         self._ChatId = None
         self._IsHidden = None
         self._IsChatHidden = None
+        self._Attachments = None
 
     @property
     def InputContent(self):
@@ -1616,6 +1700,17 @@ class CreateChatCompletionRequest(AbstractModel):
     def IsChatHidden(self, IsChatHidden):
         self._IsChatHidden = IsChatHidden
 
+    @property
+    def Attachments(self):
+        r"""<p>传递图片附件</p>
+        :rtype: list of Attachments
+        """
+        return self._Attachments
+
+    @Attachments.setter
+    def Attachments(self, Attachments):
+        self._Attachments = Attachments
+
 
     def _deserialize(self, params):
         self._InputContent = params.get("InputContent")
@@ -1623,6 +1718,12 @@ class CreateChatCompletionRequest(AbstractModel):
         self._ChatId = params.get("ChatId")
         self._IsHidden = params.get("IsHidden")
         self._IsChatHidden = params.get("IsChatHidden")
+        if params.get("Attachments") is not None:
+            self._Attachments = []
+            for item in params.get("Attachments"):
+                obj = Attachments()
+                obj._deserialize(item)
+                self._Attachments.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

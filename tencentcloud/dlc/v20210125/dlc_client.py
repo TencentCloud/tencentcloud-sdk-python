@@ -1338,7 +1338,7 @@ class DlcClient(AbstractClient):
 
 
     def CreatePartition(self, request):
-        r"""新增资源包
+        r"""新增资源包（预付费 / 后付费）
 
         :param request: Request instance for CreatePartition.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreatePartitionRequest`
@@ -1361,7 +1361,7 @@ class DlcClient(AbstractClient):
 
 
     def CreatePartitionQueue(self, request):
-        r"""新增资源队列：在指定分区下创建一个新的资源队列，支持设置队列名称、描述、资源规格列表和队列类型。
+        r"""新增资源队列：在指定分区下创建一个新的资源队列，支持设置队列编码、别名、描述、资源规格列表和队列类型。
 
         :param request: Request instance for CreatePartitionQueue.
         :type request: :class:`tencentcloud.dlc.v20210125.models.CreatePartitionQueueRequest`
@@ -6794,7 +6794,7 @@ class DlcClient(AbstractClient):
 
 
     def ModifyPartitionQueue(self, request):
-        r"""编辑资源队列：根据队列ID修改指定资源队列的名称、描述、资源规格列表和队列类型等信息。
+        r"""编辑资源队列：根据队列ID修改指定资源队列的别名（显示名）、描述、资源规格列表和队列类型等信息。队列编码（QueueName）不可变，仅作为一致性校验键。
 
         :param request: Request instance for ModifyPartitionQueue.
         :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyPartitionQueueRequest`

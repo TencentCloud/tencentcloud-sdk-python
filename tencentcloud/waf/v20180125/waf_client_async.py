@@ -259,6 +259,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAndUpdateBatchCCRule(
+            self,
+            request: models.CreateAndUpdateBatchCCRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateAndUpdateBatchCCRuleResponse:
+        """
+        批量cc规则配置接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAndUpdateBatchCCRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAndUpdateBatchCCRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAreaBanRule(
             self,
             request: models.CreateAreaBanRuleRequest,

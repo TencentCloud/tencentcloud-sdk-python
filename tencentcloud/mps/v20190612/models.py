@@ -23742,7 +23742,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         r"""
         :param _ModelName: <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic、EL、Mureka。</p>
         :type ModelName: str
-        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。模型GL支持的版本号：3.0-clip、3.0-pro。模型MiniMaxMusic支持的版本号：2.0、2.5、2.6， 3.0。模型EL支持的版本号: compose_v2、sound_t2s_v2。模型Mureka支持的版本号: song_8、song_9、song_9.5、instrumental_8、instrumental_9、instrumental_9.5。</p>
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：3.0-clip、3.0-pro。<br>模型MiniMaxMusic支持的版本号：2.0、2.5、2.6， 3.0。<br>模型EL支持的版本号: compose_v2、sound_t2s_v2。<br>模型Mureka支持的版本号: song_8、song_9、song_9.5、instrumental_8、instrumental_9、instrumental_9.5。</p>
         :type ModelVersion: str
         :param _SceneType: <p>指定场景生音频。音乐: music。</p>
         :type SceneType: str
@@ -23756,7 +23756,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         :param _ExtraParameters: <p>用于传入要求的额外参数。</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
-        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>支持的透传参数有: lyrics，is_instrumental，aigc_watermark，sample_rate，bitrate。</li><li>EL生音乐支持透传的参数有:<br>PromptInfluence，WithTimestamps，CompositionPlan，ForceInstrumental等参数。</li></ol>
+        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>支持的透传参数有: lyrics，is_instrumental，aigc_watermark，sample_rate，bitrate。</li><li>EL生音乐支持透传的参数有:<br>PromptInfluence，WithTimestamps，CompositionPlan，ForceInstrumental等参数。</li><li>Mureka模型支持的透传参数有：<br>n: 指定输出音频文件数。<br>非instrumental版本支持：lyrics，gender，reference_id，melody_id。<br>instrumental版本支持：instrumental_id。</li></ol>
         :type AdditionalParameters: str
         :param _Operator: <p>接口操作者名称。</p>
         :type Operator: str
@@ -23785,7 +23785,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。模型GL支持的版本号：3.0-clip、3.0-pro。模型MiniMaxMusic支持的版本号：2.0、2.5、2.6， 3.0。模型EL支持的版本号: compose_v2、sound_t2s_v2。模型Mureka支持的版本号: song_8、song_9、song_9.5、instrumental_8、instrumental_9、instrumental_9.5。</p>
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：3.0-clip、3.0-pro。<br>模型MiniMaxMusic支持的版本号：2.0、2.5、2.6， 3.0。<br>模型EL支持的版本号: compose_v2、sound_t2s_v2。<br>模型Mureka支持的版本号: song_8、song_9、song_9.5、instrumental_8、instrumental_9、instrumental_9.5。</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -23862,7 +23862,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>支持的透传参数有: lyrics，is_instrumental，aigc_watermark，sample_rate，bitrate。</li><li>EL生音乐支持透传的参数有:<br>PromptInfluence，WithTimestamps，CompositionPlan，ForceInstrumental等参数。</li></ol>
+        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>支持的透传参数有: lyrics，is_instrumental，aigc_watermark，sample_rate，bitrate。</li><li>EL生音乐支持透传的参数有:<br>PromptInfluence，WithTimestamps，CompositionPlan，ForceInstrumental等参数。</li><li>Mureka模型支持的透传参数有：<br>n: 指定输出音频文件数。<br>非instrumental版本支持：lyrics，gender，reference_id，melody_id。<br>instrumental版本支持：instrumental_id。</li></ol>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -25360,7 +25360,7 @@ class CreateImageConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: <p>生图模型</p><p>枚举值：</p><ul><li>WAND-create-1.0-lite： 轻量生图模型</li><li>WAND-create-1.0-flash： 质量-速度平衡生图模型</li><li>WAND-create-1.0-pro： 高质量生图模型</li></ul>
+        :param _Model: <p>生图模型</p><p>枚举值：</p><ul><li>scene-image-lite： 场景生图 lite 模型</li></ul>
         :type Model: str
         :param _Prompt: <p>生图指令</p>
         :type Prompt: str
@@ -25379,7 +25379,7 @@ class CreateImageConfig(AbstractModel):
 
     @property
     def Model(self):
-        r"""<p>生图模型</p><p>枚举值：</p><ul><li>WAND-create-1.0-lite： 轻量生图模型</li><li>WAND-create-1.0-flash： 质量-速度平衡生图模型</li><li>WAND-create-1.0-pro： 高质量生图模型</li></ul>
+        r"""<p>生图模型</p><p>枚举值：</p><ul><li>scene-image-lite： 场景生图 lite 模型</li></ul>
         :rtype: str
         """
         return self._Model
@@ -47585,6 +47585,10 @@ class DescribeVoicesRequest(AbstractModel):
         :type Labels: list of str
         :param _Scenes: <p>场景</p>
         :type Scenes: list of str
+        :param _PageNum: <p>分页查询页码。从1开始，默认1</p>
+        :type PageNum: int
+        :param _PageSize: <p>页大小。不填默认返回所有符合条件数据</p>
+        :type PageSize: int
         :param _ExtParam: <p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
         :type ExtParam: str
         """
@@ -47597,6 +47601,8 @@ class DescribeVoicesRequest(AbstractModel):
         self._Languages = None
         self._Labels = None
         self._Scenes = None
+        self._PageNum = None
+        self._PageSize = None
         self._ExtParam = None
 
     @property
@@ -47699,6 +47705,28 @@ class DescribeVoicesRequest(AbstractModel):
         self._Scenes = Scenes
 
     @property
+    def PageNum(self):
+        r"""<p>分页查询页码。从1开始，默认1</p>
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""<p>页大小。不填默认返回所有符合条件数据</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
     def ExtParam(self):
         r"""<p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
         :rtype: str
@@ -47720,6 +47748,8 @@ class DescribeVoicesRequest(AbstractModel):
         self._Languages = params.get("Languages")
         self._Labels = params.get("Labels")
         self._Scenes = params.get("Scenes")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -49387,10 +49417,10 @@ class DocToVideoInput(AbstractModel):
         :type FileUrl: list of str
         :param _Prompt: <p>用于生成视频的prompt信息。</p><p>prompt长度限制：2000字符。</p>
         :type Prompt: str
-        :param _ModelName: <p>文档生成视频模型名称</p><p>默认值：Wand</p>
-        :type ModelName: str
         :param _ModelVersion: <p>文档生成视频模型版本号</p><p>枚举值：</p><ul><li>1.0： 1.0</li><li>1.0-lite： 1.0-lite</li></ul><p>默认值：1.0</p>
         :type ModelVersion: str
+        :param _ModelName: <p>文档生成视频模型名称</p><p>枚举值：</p><ul><li>WAND： WAND</li></ul><p>默认值：WAND</p>
+        :type ModelName: str
         :param _Ratio: <p>生成视频的宽高比。</p><p>枚举值：</p><ul><li>16:9： 16:9</li><li>9:16： 9:16</li><li>1:1： 1:1</li></ul><p>默认值：16:9</p>
         :type Ratio: str
         :param _Language: <p>生成视频的语言。</p><p>枚举值：</p><ul><li>zh： 中文</li><li>en： 英文</li><li>ja： 日语</li><li>ko： 韩语</li><li>ru： 俄语</li><li>fr： 法语</li><li>es： 西班牙语</li><li>de： 德语</li></ul><p>默认值：zh</p>
@@ -49414,8 +49444,8 @@ class DocToVideoInput(AbstractModel):
         """
         self._FileUrl = None
         self._Prompt = None
-        self._ModelName = None
         self._ModelVersion = None
+        self._ModelName = None
         self._Ratio = None
         self._Language = None
         self._ReferenceDuration = None
@@ -49450,17 +49480,6 @@ class DocToVideoInput(AbstractModel):
         self._Prompt = Prompt
 
     @property
-    def ModelName(self):
-        r"""<p>文档生成视频模型名称</p><p>默认值：Wand</p>
-        :rtype: str
-        """
-        return self._ModelName
-
-    @ModelName.setter
-    def ModelName(self, ModelName):
-        self._ModelName = ModelName
-
-    @property
     def ModelVersion(self):
         r"""<p>文档生成视频模型版本号</p><p>枚举值：</p><ul><li>1.0： 1.0</li><li>1.0-lite： 1.0-lite</li></ul><p>默认值：1.0</p>
         :rtype: str
@@ -49470,6 +49489,17 @@ class DocToVideoInput(AbstractModel):
     @ModelVersion.setter
     def ModelVersion(self, ModelVersion):
         self._ModelVersion = ModelVersion
+
+    @property
+    def ModelName(self):
+        r"""<p>文档生成视频模型名称</p><p>枚举值：</p><ul><li>WAND： WAND</li></ul><p>默认值：WAND</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
 
     @property
     def Ratio(self):
@@ -49585,8 +49615,8 @@ class DocToVideoInput(AbstractModel):
     def _deserialize(self, params):
         self._FileUrl = params.get("FileUrl")
         self._Prompt = params.get("Prompt")
-        self._ModelName = params.get("ModelName")
         self._ModelVersion = params.get("ModelVersion")
+        self._ModelName = params.get("ModelName")
         self._Ratio = params.get("Ratio")
         self._Language = params.get("Language")
         self._ReferenceDuration = params.get("ReferenceDuration")
@@ -99366,8 +99396,10 @@ class ViewImage(AbstractModel):
     def __init__(self):
         r"""
         :param _ViewType: <p>视角类型</p><p>枚举值：</p><ul><li>front： 正视图 （必填）</li><li>back： 背视图</li><li>left： 左视图</li><li>right： 右视图</li><li>top： 顶视图</li><li>bottom： 底视图</li><li>left_front： 左前 45°</li><li>right_front： 右前 45°</li></ul><p>MultiViewImages 数组长度 ≥ 2 ; 必须包含 front 视角;  同一 ViewType 不允许重复; 每项必须提供 ViewImageUrl</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ViewType: str
         :param _ViewImageUrl: <p>图片 URL（http / https）</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ViewImageUrl: str
         """
         self._ViewType = None
@@ -99376,6 +99408,7 @@ class ViewImage(AbstractModel):
     @property
     def ViewType(self):
         r"""<p>视角类型</p><p>枚举值：</p><ul><li>front： 正视图 （必填）</li><li>back： 背视图</li><li>left： 左视图</li><li>right： 右视图</li><li>top： 顶视图</li><li>bottom： 底视图</li><li>left_front： 左前 45°</li><li>right_front： 右前 45°</li></ul><p>MultiViewImages 数组长度 ≥ 2 ; 必须包含 front 视角;  同一 ViewType 不允许重复; 每项必须提供 ViewImageUrl</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ViewType
@@ -99387,6 +99420,7 @@ class ViewImage(AbstractModel):
     @property
     def ViewImageUrl(self):
         r"""<p>图片 URL（http / https）</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ViewImageUrl

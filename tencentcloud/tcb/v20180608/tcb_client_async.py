@@ -400,6 +400,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePlatformEnv(
+            self,
+            request: models.CreatePlatformEnvRequest,
+            opts: Dict = None,
+    ) -> models.CreatePlatformEnvResponse:
+        """
+        用户在购买平台版套餐后，可调用此接口创建平台版套餐环境，将产生一个平台版套餐环境。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePlatformEnv"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePlatformEnvResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateStaticStore(
             self,
             request: models.CreateStaticStoreRequest,
@@ -1256,6 +1274,123 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePlatformAccountCircle(
+            self,
+            request: models.DescribePlatformAccountCircleRequest,
+            opts: Dict = None,
+    ) -> models.DescribePlatformAccountCircleResponse:
+        """
+        查询平台版资源计费周期。
+        云开发平台版资源点都是按月结算的，每个月都有一定的抵扣额度。
+
+        例如：
+          某个平台版在 2026-01-05 购买了3个月(到期时间: 2026-04-05)，则他可以在以下3个周期内，分别享有40000资源点的额度：
+          1. 2026-01-05 ~ 2026-02-05 23:59:59
+          2. 2026-02-06 ~ 2026-03-05 23:59:59
+          3. 2026-03-06 ~ 2026-04-05 23:59:59
+
+        本接口，用于获取平台版当前属于哪个计费周期内。
+
+        影响范围：只读查询，不影响平台版资源
+        使用场景：控制台资源用量页面/API 主动查询当前计费周期等
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePlatformAccountCircle"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePlatformAccountCircleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePlatformCreditsUsage(
+            self,
+            request: models.DescribePlatformCreditsUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribePlatformCreditsUsageResponse:
+        """
+        查询平台版本资源点模式下的资源点用量
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePlatformCreditsUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePlatformCreditsUsageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePlatformCreditsUsageDetail(
+            self,
+            request: models.DescribePlatformCreditsUsageDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribePlatformCreditsUsageDetailResponse:
+        """
+        查询平台版资源点模式下的资源点用量及原始用量明细
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePlatformCreditsUsageDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePlatformCreditsUsageDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePlatformEnvUsage(
+            self,
+            request: models.DescribePlatformEnvUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribePlatformEnvUsageResponse:
+        """
+        查询平台版环境资源用量
+
+        指定查询范围，按资源类型返回各资源指标的用量及用量明细(按天)
+        用量信息包含资源点用量，原始用量值（如流量、调用次数、容量等），原始用量单位等
+
+        影响范围：只读查询、不改变资源
+        使用场景：控制台用量页/API 查询平台版环境用量
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePlatformEnvUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePlatformEnvUsageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePlatforms(
+            self,
+            request: models.DescribePlatformsRequest,
+            opts: Dict = None,
+    ) -> models.DescribePlatformsResponse:
+        """
+        查询平台版资源信息列表，返回信息包括
+
+        1.平台版基础信息如资源id，所属地域等;
+        2.计费相关信息如：购买/过期时间，资源规格，计费状态等;
+        3.底层资源信息如：存储，日志，静态托管等资源信息等;
+
+        入参支持platformIds，可查询指定平台版套餐信息
+
+        影响范围：查询接口，返回当前用户账号下平台版资源信息
+        使用场景：控制台展示平台版套餐信息/查平台版资源详情/资源状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePlatforms"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePlatformsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeQuotaData(
             self,
             request: models.DescribeQuotaDataRequest,
@@ -1429,6 +1564,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DestroyMySQL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DestroyMySQLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DestroyPlatformEnv(
+            self,
+            request: models.DestroyPlatformEnvRequest,
+            opts: Dict = None,
+    ) -> models.DestroyPlatformEnvResponse:
+        """
+        用户可以调用本接口，删除平台版套餐下的指定平台版环境。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DestroyPlatformEnv"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DestroyPlatformEnvResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1741,6 +1894,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "ModifyPGInstanceSpec"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPGInstanceSpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPlatformEnv(
+            self,
+            request: models.ModifyPlatformEnvRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPlatformEnvResponse:
+        """
+        修改平台版环境信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPlatformEnv"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPlatformEnvResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

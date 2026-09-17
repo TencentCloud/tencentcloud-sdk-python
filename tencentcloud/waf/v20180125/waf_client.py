@@ -325,6 +325,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndUpdateBatchCCRule(self, request):
+        r"""批量cc规则配置接口
+
+        :param request: Request instance for CreateAndUpdateBatchCCRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateAndUpdateBatchCCRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateAndUpdateBatchCCRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndUpdateBatchCCRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndUpdateBatchCCRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAreaBanRule(self, request):
         r"""添加（编辑）地域封禁中的地域信息
 

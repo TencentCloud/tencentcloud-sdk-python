@@ -13901,20 +13901,23 @@ class ModifyCopyPairAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CopyPairId: 要修改属性的复制对id
+        :param _CopyPairId: <p>要修改属性的复制对id</p>
         :type CopyPairId: str
-        :param _CopyPairType: 要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE
+        :param _CopyPairType: <p>要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE</p>
         :type CopyPairType: str
-        :param _CopyPairName: 修改复制对名称（长度最大支持 64 个字符）
+        :param _CopyPairName: <p>修改复制对名称（长度最大支持 64 个字符）</p>
         :type CopyPairName: str
+        :param _InstanceType: <p>容灾端实例类型（仅容灾端CVM未创建时可修改）</p>
+        :type InstanceType: str
         """
         self._CopyPairId = None
         self._CopyPairType = None
         self._CopyPairName = None
+        self._InstanceType = None
 
     @property
     def CopyPairId(self):
-        r"""要修改属性的复制对id
+        r"""<p>要修改属性的复制对id</p>
         :rtype: str
         """
         return self._CopyPairId
@@ -13925,7 +13928,7 @@ class ModifyCopyPairAttributeRequest(AbstractModel):
 
     @property
     def CopyPairType(self):
-        r"""要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE
+        r"""<p>要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE</p>
         :rtype: str
         """
         return self._CopyPairType
@@ -13936,7 +13939,7 @@ class ModifyCopyPairAttributeRequest(AbstractModel):
 
     @property
     def CopyPairName(self):
-        r"""修改复制对名称（长度最大支持 64 个字符）
+        r"""<p>修改复制对名称（长度最大支持 64 个字符）</p>
         :rtype: str
         """
         return self._CopyPairName
@@ -13945,11 +13948,23 @@ class ModifyCopyPairAttributeRequest(AbstractModel):
     def CopyPairName(self, CopyPairName):
         self._CopyPairName = CopyPairName
 
+    @property
+    def InstanceType(self):
+        r"""<p>容灾端实例类型（仅容灾端CVM未创建时可修改）</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
 
     def _deserialize(self, params):
         self._CopyPairId = params.get("CopyPairId")
         self._CopyPairType = params.get("CopyPairType")
         self._CopyPairName = params.get("CopyPairName")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

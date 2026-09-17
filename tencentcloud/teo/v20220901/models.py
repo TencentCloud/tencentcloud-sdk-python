@@ -18184,7 +18184,7 @@ class DeleteCustomErrorPageRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _PageId: 自定义页面 ID。
+        :param _PageId: 自定义响应页面 ID。
         :type PageId: str
         """
         self._ZoneId = None
@@ -18203,7 +18203,7 @@ class DeleteCustomErrorPageRequest(AbstractModel):
 
     @property
     def PageId(self):
-        r"""自定义页面 ID。
+        r"""自定义响应页面 ID。
         :rtype: str
         """
         return self._PageId
@@ -22097,17 +22097,13 @@ class DescribeCustomErrorPagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _Filters: 过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
-<li>page-id： 按照页面 ID 进行过滤；</li>
-<li>name： 按照页面名称进行过滤；</li>
-<li>description：按照页面描述过滤；</li>
-<li>content-type：按照页面类型过滤。</li>
+        :param _Filters: <p>过滤条件，Filters.Values 的上限为 20，详细的过滤条件Name值如下：<li>page-id： 按照页面 ID 进行过滤；</li><li>name： 按照页面名称进行过滤；</li><li>description：按照页面描述过滤；</li><li>content-type：按照页面类型过滤。</li></p>
         :type Filters: list of AdvancedFilter
-        :param _Offset: 分页查询偏移量。默认值：0。
+        :param _Offset: <p>分页查询偏移量。默认值：0。</p>
         :type Offset: int
-        :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。 
+        :param _Limit: <p>分页查询限制数目。默认值：20，最大值：1000。</p>
         :type Limit: int
         """
         self._ZoneId = None
@@ -22117,7 +22113,7 @@ class DescribeCustomErrorPagesRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -22128,11 +22124,7 @@ class DescribeCustomErrorPagesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，Filters.Values 的上限为20，详细的过滤条件Name值如下：
-<li>page-id： 按照页面 ID 进行过滤；</li>
-<li>name： 按照页面名称进行过滤；</li>
-<li>description：按照页面描述过滤；</li>
-<li>content-type：按照页面类型过滤。</li>
+        r"""<p>过滤条件，Filters.Values 的上限为 20，详细的过滤条件Name值如下：<li>page-id： 按照页面 ID 进行过滤；</li><li>name： 按照页面名称进行过滤；</li><li>description：按照页面描述过滤；</li><li>content-type：按照页面类型过滤。</li></p>
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -22143,7 +22135,7 @@ class DescribeCustomErrorPagesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页查询偏移量。默认值：0。
+        r"""<p>分页查询偏移量。默认值：0。</p>
         :rtype: int
         """
         return self._Offset
@@ -22154,7 +22146,7 @@ class DescribeCustomErrorPagesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页查询限制数目。默认值：20，最大值：1000。 
+        r"""<p>分页查询限制数目。默认值：20，最大值：1000。</p>
         :rtype: int
         """
         return self._Limit
@@ -22191,9 +22183,9 @@ class DescribeCustomErrorPagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 自定义错误页面总数。
+        :param _TotalCount: <p>自定义响应页面总数。</p>
         :type TotalCount: int
-        :param _ErrorPages: 自定义错误页面数据列表。
+        :param _ErrorPages: <p>自定义响应页面数据列表。</p>
         :type ErrorPages: list of CustomErrorPage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22204,7 +22196,7 @@ class DescribeCustomErrorPagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""自定义错误页面总数。
+        r"""<p>自定义响应页面总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -22215,7 +22207,7 @@ class DescribeCustomErrorPagesResponse(AbstractModel):
 
     @property
     def ErrorPages(self):
-        r"""自定义错误页面数据列表。
+        r"""<p>自定义响应页面数据列表。</p>
         :rtype: list of CustomErrorPage
         """
         return self._ErrorPages

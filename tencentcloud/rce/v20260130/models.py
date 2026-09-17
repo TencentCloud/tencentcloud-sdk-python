@@ -18,6 +18,76 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddFriendEvent(AbstractModel):
+    r"""添加好友事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServerId: <p>所属服务器ID，允许空串</p>
+        :type ServerId: str
+        :param _Sender: <p>发送者信息</p>
+        :type Sender: :class:`tencentcloud.rce.v20260130.models.Sender`
+        :param _Receiver: <p>接收者信息</p>
+        :type Receiver: :class:`tencentcloud.rce.v20260130.models.Receiver`
+        """
+        self._ServerId = None
+        self._Sender = None
+        self._Receiver = None
+
+    @property
+    def ServerId(self):
+        r"""<p>所属服务器ID，允许空串</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def Sender(self):
+        r"""<p>发送者信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Sender`
+        """
+        return self._Sender
+
+    @Sender.setter
+    def Sender(self, Sender):
+        self._Sender = Sender
+
+    @property
+    def Receiver(self):
+        r"""<p>接收者信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Receiver`
+        """
+        return self._Receiver
+
+    @Receiver.setter
+    def Receiver(self, Receiver):
+        self._Receiver = Receiver
+
+
+    def _deserialize(self, params):
+        self._ServerId = params.get("ServerId")
+        if params.get("Sender") is not None:
+            self._Sender = Sender()
+            self._Sender._deserialize(params.get("Sender"))
+        if params.get("Receiver") is not None:
+            self._Receiver = Receiver()
+            self._Receiver._deserialize(params.get("Receiver"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddPromotionEvent(AbstractModel):
     r"""参加营销活动事件详情
 
@@ -1003,7 +1073,7 @@ class AssessRiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventCode: <p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
+        :param _EventCode: <p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
         :type EventCode: str
         :param _EventTime: <p>事件的发生时间</p><p>参数格式：符合ISO 8601标准的带UTC时区的毫秒级时间</p>
         :type EventTime: str
@@ -1035,6 +1105,8 @@ class AssessRiskRequest(AbstractModel):
         :type QQOpenId: str
         :param _QQAppId: <p>QQ应用ID，当传入QQ开放账号时，该字段必填，QQ分配给网站或应用的AppId，用来唯一标识网站或应用</p>
         :type QQAppId: str
+        :param _BusinessId: <p>业务序列号，您系统中一次业务动作的流水号</p>
+        :type BusinessId: str
         """
         self._EventCode = None
         self._EventTime = None
@@ -1052,10 +1124,11 @@ class AssessRiskRequest(AbstractModel):
         self._WeChatOpenId = None
         self._QQOpenId = None
         self._QQAppId = None
+        self._BusinessId = None
 
     @property
     def EventCode(self):
-        r"""<p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
+        r"""<p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
         :rtype: str
         """
         return self._EventCode
@@ -1229,6 +1302,17 @@ class AssessRiskRequest(AbstractModel):
     def QQAppId(self, QQAppId):
         self._QQAppId = QQAppId
 
+    @property
+    def BusinessId(self):
+        r"""<p>业务序列号，您系统中一次业务动作的流水号</p>
+        :rtype: str
+        """
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
 
     def _deserialize(self, params):
         self._EventCode = params.get("EventCode")
@@ -1255,6 +1339,7 @@ class AssessRiskRequest(AbstractModel):
         self._WeChatOpenId = params.get("WeChatOpenId")
         self._QQOpenId = params.get("QQOpenId")
         self._QQAppId = params.get("QQAppId")
+        self._BusinessId = params.get("BusinessId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1976,6 +2061,189 @@ class ChargeBackEvent(AbstractModel):
                 obj = Cust()
                 obj._deserialize(item)
                 self._Cust.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Chat(AbstractModel):
+    r"""聊天信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChatText: <p>聊天文本内容，不含HTML、不含昵称，限2000字符</p>
+        :type ChatText: str
+        :param _ChannelType: <p>频道类型，枚举值：world-世界 / guild-公会 / single-单聊 / other-其他</p>
+        :type ChannelType: str
+        :param _GroupId: <p>群/频道唯一ID（单聊时为空）</p>
+        :type GroupId: str
+        :param _GroupName: <p>群/频道名称</p>
+        :type GroupName: str
+        :param _GroupAdministrator: <p>群主/管理员ID</p>
+        :type GroupAdministrator: str
+        """
+        self._ChatText = None
+        self._ChannelType = None
+        self._GroupId = None
+        self._GroupName = None
+        self._GroupAdministrator = None
+
+    @property
+    def ChatText(self):
+        r"""<p>聊天文本内容，不含HTML、不含昵称，限2000字符</p>
+        :rtype: str
+        """
+        return self._ChatText
+
+    @ChatText.setter
+    def ChatText(self, ChatText):
+        self._ChatText = ChatText
+
+    @property
+    def ChannelType(self):
+        r"""<p>频道类型，枚举值：world-世界 / guild-公会 / single-单聊 / other-其他</p>
+        :rtype: str
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+    @property
+    def GroupId(self):
+        r"""<p>群/频道唯一ID（单聊时为空）</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>群/频道名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupAdministrator(self):
+        r"""<p>群主/管理员ID</p>
+        :rtype: str
+        """
+        return self._GroupAdministrator
+
+    @GroupAdministrator.setter
+    def GroupAdministrator(self, GroupAdministrator):
+        self._GroupAdministrator = GroupAdministrator
+
+
+    def _deserialize(self, params):
+        self._ChatText = params.get("ChatText")
+        self._ChannelType = params.get("ChannelType")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._GroupAdministrator = params.get("GroupAdministrator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChatEvent(AbstractModel):
+    r"""聊天消息事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChatInfo: <p>聊天信息</p>
+        :type ChatInfo: :class:`tencentcloud.rce.v20260130.models.Chat`
+        :param _ServerId: <p>所属服务器ID，允许空串</p>
+        :type ServerId: str
+        :param _Sender: <p>发送者信息</p>
+        :type Sender: :class:`tencentcloud.rce.v20260130.models.Sender`
+        :param _Receiver: <p>接收者信息</p>
+        :type Receiver: :class:`tencentcloud.rce.v20260130.models.Receiver`
+        """
+        self._ChatInfo = None
+        self._ServerId = None
+        self._Sender = None
+        self._Receiver = None
+
+    @property
+    def ChatInfo(self):
+        r"""<p>聊天信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Chat`
+        """
+        return self._ChatInfo
+
+    @ChatInfo.setter
+    def ChatInfo(self, ChatInfo):
+        self._ChatInfo = ChatInfo
+
+    @property
+    def ServerId(self):
+        r"""<p>所属服务器ID，允许空串</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def Sender(self):
+        r"""<p>发送者信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Sender`
+        """
+        return self._Sender
+
+    @Sender.setter
+    def Sender(self, Sender):
+        self._Sender = Sender
+
+    @property
+    def Receiver(self):
+        r"""<p>接收者信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Receiver`
+        """
+        return self._Receiver
+
+    @Receiver.setter
+    def Receiver(self, Receiver):
+        self._Receiver = Receiver
+
+
+    def _deserialize(self, params):
+        if params.get("ChatInfo") is not None:
+            self._ChatInfo = Chat()
+            self._ChatInfo._deserialize(params.get("ChatInfo"))
+        self._ServerId = params.get("ServerId")
+        if params.get("Sender") is not None:
+            self._Sender = Sender()
+            self._Sender._deserialize(params.get("Sender"))
+        if params.get("Receiver") is not None:
+            self._Receiver = Receiver()
+            self._Receiver._deserialize(params.get("Receiver"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3382,6 +3650,14 @@ class EventDetail(AbstractModel):
         :type ClaimRedPacket: :class:`tencentcloud.rce.v20260130.models.ClaimRedPacketEvent`
         :param _Browse: <p>浏览</p>
         :type Browse: :class:`tencentcloud.rce.v20260130.models.BrowseEvent`
+        :param _Chat: <p>聊天消息</p>
+        :type Chat: :class:`tencentcloud.rce.v20260130.models.ChatEvent`
+        :param _ModifyRole: <p>编辑角色资料</p>
+        :type ModifyRole: :class:`tencentcloud.rce.v20260130.models.ModifyRoleEvent`
+        :param _AddFriend: <p>添加好友</p>
+        :type AddFriend: :class:`tencentcloud.rce.v20260130.models.AddFriendEvent`
+        :param _ModifyGuild: <p>编辑公会资料</p>
+        :type ModifyGuild: :class:`tencentcloud.rce.v20260130.models.ModifyGuildEvent`
         """
         self._Login = None
         self._Register = None
@@ -3403,6 +3679,10 @@ class EventDetail(AbstractModel):
         self._Invitation = None
         self._ClaimRedPacket = None
         self._Browse = None
+        self._Chat = None
+        self._ModifyRole = None
+        self._AddFriend = None
+        self._ModifyGuild = None
 
     @property
     def Login(self):
@@ -3624,6 +3904,50 @@ class EventDetail(AbstractModel):
     def Browse(self, Browse):
         self._Browse = Browse
 
+    @property
+    def Chat(self):
+        r"""<p>聊天消息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.ChatEvent`
+        """
+        return self._Chat
+
+    @Chat.setter
+    def Chat(self, Chat):
+        self._Chat = Chat
+
+    @property
+    def ModifyRole(self):
+        r"""<p>编辑角色资料</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.ModifyRoleEvent`
+        """
+        return self._ModifyRole
+
+    @ModifyRole.setter
+    def ModifyRole(self, ModifyRole):
+        self._ModifyRole = ModifyRole
+
+    @property
+    def AddFriend(self):
+        r"""<p>添加好友</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AddFriendEvent`
+        """
+        return self._AddFriend
+
+    @AddFriend.setter
+    def AddFriend(self, AddFriend):
+        self._AddFriend = AddFriend
+
+    @property
+    def ModifyGuild(self):
+        r"""<p>编辑公会资料</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.ModifyGuildEvent`
+        """
+        return self._ModifyGuild
+
+    @ModifyGuild.setter
+    def ModifyGuild(self, ModifyGuild):
+        self._ModifyGuild = ModifyGuild
+
 
     def _deserialize(self, params):
         if params.get("Login") is not None:
@@ -3686,6 +4010,114 @@ class EventDetail(AbstractModel):
         if params.get("Browse") is not None:
             self._Browse = BrowseEvent()
             self._Browse._deserialize(params.get("Browse"))
+        if params.get("Chat") is not None:
+            self._Chat = ChatEvent()
+            self._Chat._deserialize(params.get("Chat"))
+        if params.get("ModifyRole") is not None:
+            self._ModifyRole = ModifyRoleEvent()
+            self._ModifyRole._deserialize(params.get("ModifyRole"))
+        if params.get("AddFriend") is not None:
+            self._AddFriend = AddFriendEvent()
+            self._AddFriend._deserialize(params.get("AddFriend"))
+        if params.get("ModifyGuild") is not None:
+            self._ModifyGuild = ModifyGuildEvent()
+            self._ModifyGuild._deserialize(params.get("ModifyGuild"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Guild(AbstractModel):
+    r"""公会信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GuildId: <p>公会唯一ID</p>
+        :type GuildId: str
+        :param _GuildName: <p>公会名称，允许空串</p>
+        :type GuildName: str
+        :param _GuildSignature: <p>公会签名，允许空串</p>
+        :type GuildSignature: str
+        :param _PresidentUserId: <p>公会会长账号ID</p>
+        :type PresidentUserId: str
+        :param _PresidentRoleId: <p>公会会长角色ID</p>
+        :type PresidentRoleId: str
+        """
+        self._GuildId = None
+        self._GuildName = None
+        self._GuildSignature = None
+        self._PresidentUserId = None
+        self._PresidentRoleId = None
+
+    @property
+    def GuildId(self):
+        r"""<p>公会唯一ID</p>
+        :rtype: str
+        """
+        return self._GuildId
+
+    @GuildId.setter
+    def GuildId(self, GuildId):
+        self._GuildId = GuildId
+
+    @property
+    def GuildName(self):
+        r"""<p>公会名称，允许空串</p>
+        :rtype: str
+        """
+        return self._GuildName
+
+    @GuildName.setter
+    def GuildName(self, GuildName):
+        self._GuildName = GuildName
+
+    @property
+    def GuildSignature(self):
+        r"""<p>公会签名，允许空串</p>
+        :rtype: str
+        """
+        return self._GuildSignature
+
+    @GuildSignature.setter
+    def GuildSignature(self, GuildSignature):
+        self._GuildSignature = GuildSignature
+
+    @property
+    def PresidentUserId(self):
+        r"""<p>公会会长账号ID</p>
+        :rtype: str
+        """
+        return self._PresidentUserId
+
+    @PresidentUserId.setter
+    def PresidentUserId(self, PresidentUserId):
+        self._PresidentUserId = PresidentUserId
+
+    @property
+    def PresidentRoleId(self):
+        r"""<p>公会会长角色ID</p>
+        :rtype: str
+        """
+        return self._PresidentRoleId
+
+    @PresidentRoleId.setter
+    def PresidentRoleId(self, PresidentRoleId):
+        self._PresidentRoleId = PresidentRoleId
+
+
+    def _deserialize(self, params):
+        self._GuildId = params.get("GuildId")
+        self._GuildName = params.get("GuildName")
+        self._GuildSignature = params.get("GuildSignature")
+        self._PresidentUserId = params.get("PresidentUserId")
+        self._PresidentRoleId = params.get("PresidentRoleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5211,6 +5643,106 @@ class ModifyAccountEvent(AbstractModel):
         
 
 
+class ModifyGuildEvent(AbstractModel):
+    r"""编辑公会资料事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GuildNameAfter: <p>修改后的公会名，允许空串</p>
+        :type GuildNameAfter: str
+        :param _GuildSignatureAfter: <p>修改后的公会签名，允许空串</p>
+        :type GuildSignatureAfter: str
+        :param _ServerId: <p>所属服务器ID，允许空串</p>
+        :type ServerId: str
+        :param _UserInfo: <p>编辑者账号信息</p>
+        :type UserInfo: :class:`tencentcloud.rce.v20260130.models.User`
+        :param _Guild: <p>公会信息</p>
+        :type Guild: :class:`tencentcloud.rce.v20260130.models.Guild`
+        """
+        self._GuildNameAfter = None
+        self._GuildSignatureAfter = None
+        self._ServerId = None
+        self._UserInfo = None
+        self._Guild = None
+
+    @property
+    def GuildNameAfter(self):
+        r"""<p>修改后的公会名，允许空串</p>
+        :rtype: str
+        """
+        return self._GuildNameAfter
+
+    @GuildNameAfter.setter
+    def GuildNameAfter(self, GuildNameAfter):
+        self._GuildNameAfter = GuildNameAfter
+
+    @property
+    def GuildSignatureAfter(self):
+        r"""<p>修改后的公会签名，允许空串</p>
+        :rtype: str
+        """
+        return self._GuildSignatureAfter
+
+    @GuildSignatureAfter.setter
+    def GuildSignatureAfter(self, GuildSignatureAfter):
+        self._GuildSignatureAfter = GuildSignatureAfter
+
+    @property
+    def ServerId(self):
+        r"""<p>所属服务器ID，允许空串</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def UserInfo(self):
+        r"""<p>编辑者账号信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.User`
+        """
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def Guild(self):
+        r"""<p>公会信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Guild`
+        """
+        return self._Guild
+
+    @Guild.setter
+    def Guild(self, Guild):
+        self._Guild = Guild
+
+
+    def _deserialize(self, params):
+        self._GuildNameAfter = params.get("GuildNameAfter")
+        self._GuildSignatureAfter = params.get("GuildSignatureAfter")
+        self._ServerId = params.get("ServerId")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = User()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("Guild") is not None:
+            self._Guild = Guild()
+            self._Guild._deserialize(params.get("Guild"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyPasswordEvent(AbstractModel):
     r"""修改密码事件详情
 
@@ -5257,6 +5789,106 @@ class ModifyPasswordEvent(AbstractModel):
                 obj = Cust()
                 obj._deserialize(item)
                 self._Cust.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoleEvent(AbstractModel):
+    r"""编辑角色资料事件详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleNameAfter: <p>修改后的角色名，允许空串</p>
+        :type RoleNameAfter: str
+        :param _RoleSignatureAfter: <p>修改后的签名档，允许空串</p>
+        :type RoleSignatureAfter: str
+        :param _ServerId: <p>所属服务器ID，允许空串</p>
+        :type ServerId: str
+        :param _UserInfo: <p>编辑者账号信息</p>
+        :type UserInfo: :class:`tencentcloud.rce.v20260130.models.User`
+        :param _RoleInfo: <p>角色信息</p>
+        :type RoleInfo: :class:`tencentcloud.rce.v20260130.models.Role`
+        """
+        self._RoleNameAfter = None
+        self._RoleSignatureAfter = None
+        self._ServerId = None
+        self._UserInfo = None
+        self._RoleInfo = None
+
+    @property
+    def RoleNameAfter(self):
+        r"""<p>修改后的角色名，允许空串</p>
+        :rtype: str
+        """
+        return self._RoleNameAfter
+
+    @RoleNameAfter.setter
+    def RoleNameAfter(self, RoleNameAfter):
+        self._RoleNameAfter = RoleNameAfter
+
+    @property
+    def RoleSignatureAfter(self):
+        r"""<p>修改后的签名档，允许空串</p>
+        :rtype: str
+        """
+        return self._RoleSignatureAfter
+
+    @RoleSignatureAfter.setter
+    def RoleSignatureAfter(self, RoleSignatureAfter):
+        self._RoleSignatureAfter = RoleSignatureAfter
+
+    @property
+    def ServerId(self):
+        r"""<p>所属服务器ID，允许空串</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def UserInfo(self):
+        r"""<p>编辑者账号信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.User`
+        """
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def RoleInfo(self):
+        r"""<p>角色信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Role`
+        """
+        return self._RoleInfo
+
+    @RoleInfo.setter
+    def RoleInfo(self, RoleInfo):
+        self._RoleInfo = RoleInfo
+
+
+    def _deserialize(self, params):
+        self._RoleNameAfter = params.get("RoleNameAfter")
+        self._RoleSignatureAfter = params.get("RoleSignatureAfter")
+        self._ServerId = params.get("ServerId")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = User()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("RoleInfo") is not None:
+            self._RoleInfo = Role()
+            self._RoleInfo._deserialize(params.get("RoleInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5882,6 +6514,76 @@ class PromotionCode(AbstractModel):
         
 
 
+class Receiver(AbstractModel):
+    r"""接收者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: <p>接收者账号ID</p>
+        :type UserId: str
+        :param _UserInfo: <p>接收者账号信息</p>
+        :type UserInfo: :class:`tencentcloud.rce.v20260130.models.User`
+        :param _RoleInfo: <p>接收者角色信息</p>
+        :type RoleInfo: :class:`tencentcloud.rce.v20260130.models.Role`
+        """
+        self._UserId = None
+        self._UserInfo = None
+        self._RoleInfo = None
+
+    @property
+    def UserId(self):
+        r"""<p>接收者账号ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserInfo(self):
+        r"""<p>接收者账号信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.User`
+        """
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def RoleInfo(self):
+        r"""<p>接收者角色信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Role`
+        """
+        return self._RoleInfo
+
+    @RoleInfo.setter
+    def RoleInfo(self, RoleInfo):
+        self._RoleInfo = RoleInfo
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        if params.get("UserInfo") is not None:
+            self._UserInfo = User()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("RoleInfo") is not None:
+            self._RoleInfo = Role()
+            self._RoleInfo._deserialize(params.get("RoleInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RedeemEvent(AbstractModel):
     r"""兑奖事件详情
 
@@ -6167,7 +6869,7 @@ class ReportEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventCode: <p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
+        :param _EventCode: <p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
         :type EventCode: str
         :param _EventTime: <p>事件的发生时间</p><p>参数格式：符合ISO 8601标准的带UTC时区的毫秒级时间</p>
         :type EventTime: str
@@ -6199,6 +6901,8 @@ class ReportEventRequest(AbstractModel):
         :type QQOpenId: str
         :param _QQAppId: <p>QQ应用ID，当传入QQ开放账号时，该字段必填，QQ分配给网站或应用的AppId，用来唯一标识网站或应用</p>
         :type QQAppId: str
+        :param _BusinessId: <p>业务序列号，您系统中一次业务动作的流水号</p>
+        :type BusinessId: str
         """
         self._EventCode = None
         self._EventTime = None
@@ -6216,10 +6920,11 @@ class ReportEventRequest(AbstractModel):
         self._WeChatOpenId = None
         self._QQOpenId = None
         self._QQAppId = None
+        self._BusinessId = None
 
     @property
     def EventCode(self):
-        r"""<p>事件码。用于指定业务接入的场景节点。</p><p> 账号保护产品下的标准事件包含：</p><ul><li> login： 登录<p></p></li> <li>register： 注册 </li><li>sms： 短信 </li><li>logout： 登出 </li><li>modify_account： 修改账号 </li><li>modify_password： 修改密码 </li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单 </li><li>transaction： 交易支付 </li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参加营销活动 </li><li>redeem： 兑奖 </li><li>withdraw： 提现 </li><li>cust_event： 自定义事件，cust_xxx </li><li>scan_code： 扫码 </li><li>lucky_draw： 抽奖 </li><li>task： 做任务 </li><li>invitation： 邀请 </li><li>claim_red_packet： 领红包 </li><li>browse： 浏览</li></ul><p>自定义事件可与RCE约定后进行风险评估</p>
+        r"""<p>事件码。用于指定业务接入的场景节点。</p><p>账号保护产品下的标准事件包含：</p><ul><li>login： 登录</li><li>register： 注册（创建账户）</li><li>sms： 短信</li><li>logout： 登出</li><li>modify_account： 修改账号</li><li>modify_password： 修改密码</li><li>security_verification： 安全验证</li></ul><p>交易保护产品下的标准事件包含：</p><ul><li>create_order： 创建订单</li><li>transaction： 交易支付</li><li>charge_back： 拒付</li></ul><p>营销保护产品下的标准事件包含：</p><ul><li>add_promotion： 参与营销活动</li><li>redeem： 兑奖</li><li>withdraw： 提现</li><li>scan_code： 扫码</li><li>task： 做任务</li><li>claim_red_packet： 领红包</li><li>lucky_draw： 抽奖</li><li>invitation： 邀请</li><li>browse： 浏览</li></ul><p>社群保护产品下的标准事件包含：</p><ul><li>chat： 聊天消息</li><li>modify_role： 编辑角色资料</li><li>add_friend： 添加好友</li><li>modify_guild： 编辑公会资料</li></ul><p>自定义事件以 cust_ 为前缀，可与 RCE 约定后进行风险评估。</p>
         :rtype: str
         """
         return self._EventCode
@@ -6393,6 +7098,17 @@ class ReportEventRequest(AbstractModel):
     def QQAppId(self, QQAppId):
         self._QQAppId = QQAppId
 
+    @property
+    def BusinessId(self):
+        r"""<p>业务序列号，您系统中一次业务动作的流水号</p>
+        :rtype: str
+        """
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
 
     def _deserialize(self, params):
         self._EventCode = params.get("EventCode")
@@ -6419,6 +7135,7 @@ class ReportEventRequest(AbstractModel):
         self._WeChatOpenId = params.get("WeChatOpenId")
         self._QQOpenId = params.get("QQOpenId")
         self._QQAppId = params.get("QQAppId")
+        self._BusinessId = params.get("BusinessId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6549,6 +7266,117 @@ class RiskLabel(AbstractModel):
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Role(AbstractModel):
+    r"""角色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: <p>角色ID</p>
+        :type RoleId: str
+        :param _RoleName: <p>角色名称</p>
+        :type RoleName: str
+        :param _RoleSignature: <p>个性签名</p>
+        :type RoleSignature: str
+        :param _RoleLevel: <p>角色等级</p>
+        :type RoleLevel: str
+        :param _RoleCe: <p>角色总战力</p>
+        :type RoleCe: float
+        :param _RoleCreateTime: <p>角色创建时间</p>
+        :type RoleCreateTime: str
+        """
+        self._RoleId = None
+        self._RoleName = None
+        self._RoleSignature = None
+        self._RoleLevel = None
+        self._RoleCe = None
+        self._RoleCreateTime = None
+
+    @property
+    def RoleId(self):
+        r"""<p>角色ID</p>
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleSignature(self):
+        r"""<p>个性签名</p>
+        :rtype: str
+        """
+        return self._RoleSignature
+
+    @RoleSignature.setter
+    def RoleSignature(self, RoleSignature):
+        self._RoleSignature = RoleSignature
+
+    @property
+    def RoleLevel(self):
+        r"""<p>角色等级</p>
+        :rtype: str
+        """
+        return self._RoleLevel
+
+    @RoleLevel.setter
+    def RoleLevel(self, RoleLevel):
+        self._RoleLevel = RoleLevel
+
+    @property
+    def RoleCe(self):
+        r"""<p>角色总战力</p>
+        :rtype: float
+        """
+        return self._RoleCe
+
+    @RoleCe.setter
+    def RoleCe(self, RoleCe):
+        self._RoleCe = RoleCe
+
+    @property
+    def RoleCreateTime(self):
+        r"""<p>角色创建时间</p>
+        :rtype: str
+        """
+        return self._RoleCreateTime
+
+    @RoleCreateTime.setter
+    def RoleCreateTime(self, RoleCreateTime):
+        self._RoleCreateTime = RoleCreateTime
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._RoleSignature = params.get("RoleSignature")
+        self._RoleLevel = params.get("RoleLevel")
+        self._RoleCe = params.get("RoleCe")
+        self._RoleCreateTime = params.get("RoleCreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6946,6 +7774,61 @@ class SecurityVerificationEvent(AbstractModel):
                 obj = Cust()
                 obj._deserialize(item)
                 self._Cust.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Sender(AbstractModel):
+    r"""发送者信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserInfo: <p>发送者账号信息</p>
+        :type UserInfo: :class:`tencentcloud.rce.v20260130.models.User`
+        :param _RoleInfo: <p>发送者角色信息</p>
+        :type RoleInfo: :class:`tencentcloud.rce.v20260130.models.Role`
+        """
+        self._UserInfo = None
+        self._RoleInfo = None
+
+    @property
+    def UserInfo(self):
+        r"""<p>发送者账号信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.User`
+        """
+        return self._UserInfo
+
+    @UserInfo.setter
+    def UserInfo(self, UserInfo):
+        self._UserInfo = UserInfo
+
+    @property
+    def RoleInfo(self):
+        r"""<p>发送者角色信息</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Role`
+        """
+        return self._RoleInfo
+
+    @RoleInfo.setter
+    def RoleInfo(self, RoleInfo):
+        self._RoleInfo = RoleInfo
+
+
+    def _deserialize(self, params):
+        if params.get("UserInfo") is not None:
+            self._UserInfo = User()
+            self._UserInfo._deserialize(params.get("UserInfo"))
+        if params.get("RoleInfo") is not None:
+            self._RoleInfo = Role()
+            self._RoleInfo._deserialize(params.get("RoleInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7404,10 +8287,13 @@ class User(AbstractModel):
         :type UserPoint: :class:`tencentcloud.rce.v20260130.models.CreditPoint`
         :param _UserType: <p>用户类型</p>
         :type UserType: str
+        :param _IsPaid: <p>是否付费账号</p>
+        :type IsPaid: bool
         """
         self._UserLevel = None
         self._UserPoint = None
         self._UserType = None
+        self._IsPaid = None
 
     @property
     def UserLevel(self):
@@ -7442,6 +8328,17 @@ class User(AbstractModel):
     def UserType(self, UserType):
         self._UserType = UserType
 
+    @property
+    def IsPaid(self):
+        r"""<p>是否付费账号</p>
+        :rtype: bool
+        """
+        return self._IsPaid
+
+    @IsPaid.setter
+    def IsPaid(self, IsPaid):
+        self._IsPaid = IsPaid
+
 
     def _deserialize(self, params):
         self._UserLevel = params.get("UserLevel")
@@ -7449,6 +8346,7 @@ class User(AbstractModel):
             self._UserPoint = CreditPoint()
             self._UserPoint._deserialize(params.get("UserPoint"))
         self._UserType = params.get("UserType")
+        self._IsPaid = params.get("IsPaid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

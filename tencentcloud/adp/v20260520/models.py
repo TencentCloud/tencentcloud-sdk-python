@@ -420,6 +420,162 @@ class AccountInfo(AbstractModel):
         
 
 
+class AddOnPackageInfo(AbstractModel):
+    r"""计费增值包用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddOnTotal: <p>增值包总量</p>
+        :type AddOnTotal: float
+        :param _AddOnUsage: <p>增值包用量</p>
+        :type AddOnUsage: float
+        :param _ExclusiveConcurrency: <p>专属并发总数</p>
+        :type ExclusiveConcurrency: int
+        :param _ResourceStatus: <p>资源包状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>2： 已用完</li><li>3： 已过期</li></ul>
+        :type ResourceStatus: int
+        :param _ConcurrencyStatus: <p>专属并发状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li></ul>
+        :type ConcurrencyStatus: int
+        :param _ExclusiveTpm: <p>专属tpm</p>
+        :type ExclusiveTpm: int
+        :param _ExclusiveTpmStatus: <p>专属tpm状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li></ul>
+        :type ExclusiveTpmStatus: int
+        :param _ExclusiveComputeUnit: <p>专属计算单元</p>
+        :type ExclusiveComputeUnit: int
+        :param _ExclusiveComputeUnitStatus: <p>专属计算单元状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li><li>4： 已销毁</li><li>5： 已隔离</li><li>6： 未生效</li><li>7： 暂不可用（套餐包过期时）</li></ul>
+        :type ExclusiveComputeUnitStatus: int
+        """
+        self._AddOnTotal = None
+        self._AddOnUsage = None
+        self._ExclusiveConcurrency = None
+        self._ResourceStatus = None
+        self._ConcurrencyStatus = None
+        self._ExclusiveTpm = None
+        self._ExclusiveTpmStatus = None
+        self._ExclusiveComputeUnit = None
+        self._ExclusiveComputeUnitStatus = None
+
+    @property
+    def AddOnTotal(self):
+        r"""<p>增值包总量</p>
+        :rtype: float
+        """
+        return self._AddOnTotal
+
+    @AddOnTotal.setter
+    def AddOnTotal(self, AddOnTotal):
+        self._AddOnTotal = AddOnTotal
+
+    @property
+    def AddOnUsage(self):
+        r"""<p>增值包用量</p>
+        :rtype: float
+        """
+        return self._AddOnUsage
+
+    @AddOnUsage.setter
+    def AddOnUsage(self, AddOnUsage):
+        self._AddOnUsage = AddOnUsage
+
+    @property
+    def ExclusiveConcurrency(self):
+        r"""<p>专属并发总数</p>
+        :rtype: int
+        """
+        return self._ExclusiveConcurrency
+
+    @ExclusiveConcurrency.setter
+    def ExclusiveConcurrency(self, ExclusiveConcurrency):
+        self._ExclusiveConcurrency = ExclusiveConcurrency
+
+    @property
+    def ResourceStatus(self):
+        r"""<p>资源包状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>2： 已用完</li><li>3： 已过期</li></ul>
+        :rtype: int
+        """
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
+    @property
+    def ConcurrencyStatus(self):
+        r"""<p>专属并发状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li></ul>
+        :rtype: int
+        """
+        return self._ConcurrencyStatus
+
+    @ConcurrencyStatus.setter
+    def ConcurrencyStatus(self, ConcurrencyStatus):
+        self._ConcurrencyStatus = ConcurrencyStatus
+
+    @property
+    def ExclusiveTpm(self):
+        r"""<p>专属tpm</p>
+        :rtype: int
+        """
+        return self._ExclusiveTpm
+
+    @ExclusiveTpm.setter
+    def ExclusiveTpm(self, ExclusiveTpm):
+        self._ExclusiveTpm = ExclusiveTpm
+
+    @property
+    def ExclusiveTpmStatus(self):
+        r"""<p>专属tpm状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li></ul>
+        :rtype: int
+        """
+        return self._ExclusiveTpmStatus
+
+    @ExclusiveTpmStatus.setter
+    def ExclusiveTpmStatus(self, ExclusiveTpmStatus):
+        self._ExclusiveTpmStatus = ExclusiveTpmStatus
+
+    @property
+    def ExclusiveComputeUnit(self):
+        r"""<p>专属计算单元</p>
+        :rtype: int
+        """
+        return self._ExclusiveComputeUnit
+
+    @ExclusiveComputeUnit.setter
+    def ExclusiveComputeUnit(self, ExclusiveComputeUnit):
+        self._ExclusiveComputeUnit = ExclusiveComputeUnit
+
+    @property
+    def ExclusiveComputeUnitStatus(self):
+        r"""<p>专属计算单元状态</p><p>枚举值：</p><ul><li>1： 可使</li><li>3： 已过期</li><li>4： 已销毁</li><li>5： 已隔离</li><li>6： 未生效</li><li>7： 暂不可用（套餐包过期时）</li></ul>
+        :rtype: int
+        """
+        return self._ExclusiveComputeUnitStatus
+
+    @ExclusiveComputeUnitStatus.setter
+    def ExclusiveComputeUnitStatus(self, ExclusiveComputeUnitStatus):
+        self._ExclusiveComputeUnitStatus = ExclusiveComputeUnitStatus
+
+
+    def _deserialize(self, params):
+        self._AddOnTotal = params.get("AddOnTotal")
+        self._AddOnUsage = params.get("AddOnUsage")
+        self._ExclusiveConcurrency = params.get("ExclusiveConcurrency")
+        self._ResourceStatus = params.get("ResourceStatus")
+        self._ConcurrencyStatus = params.get("ConcurrencyStatus")
+        self._ExclusiveTpm = params.get("ExclusiveTpm")
+        self._ExclusiveTpmStatus = params.get("ExclusiveTpmStatus")
+        self._ExclusiveComputeUnit = params.get("ExclusiveComputeUnit")
+        self._ExclusiveComputeUnitStatus = params.get("ExclusiveComputeUnitStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentAdvancedConfig(AbstractModel):
     r"""Agent高级设置
 
@@ -8458,9 +8614,9 @@ class CheckResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Passed: <p>是否通过校验</p>
+        :param _Passed: 是否通过校验
         :type Passed: bool
-        :param _Reason: <p>失败原因（passed=false 时填充）</p>
+        :param _Reason: 失败原因（passed=false 时填充）
         :type Reason: str
         """
         self._Passed = None
@@ -8468,7 +8624,7 @@ class CheckResult(AbstractModel):
 
     @property
     def Passed(self):
-        r"""<p>是否通过校验</p>
+        r"""是否通过校验
         :rtype: bool
         """
         return self._Passed
@@ -8479,7 +8635,7 @@ class CheckResult(AbstractModel):
 
     @property
     def Reason(self):
-        r"""<p>失败原因（passed=false 时填充）</p>
+        r"""失败原因（passed=false 时填充）
         :rtype: str
         """
         return self._Reason
@@ -22260,6 +22416,74 @@ class DescribeReleaseSummaryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResourceSummaryRequest(AbstractModel):
+    r"""DescribeResourceSummary请求参数结构体
+
+    """
+
+
+class DescribeResourceSummaryResponse(AbstractModel):
+    r"""DescribeResourceSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourcePackage: <p>计费套餐包用量信息</p>
+        :type ResourcePackage: :class:`tencentcloud.adp.v20260520.models.ResourcePackageInfo`
+        :param _AddOnPackage: <p>计费增值包用量信息</p>
+        :type AddOnPackage: :class:`tencentcloud.adp.v20260520.models.AddOnPackageInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourcePackage = None
+        self._AddOnPackage = None
+        self._RequestId = None
+
+    @property
+    def ResourcePackage(self):
+        r"""<p>计费套餐包用量信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ResourcePackageInfo`
+        """
+        return self._ResourcePackage
+
+    @ResourcePackage.setter
+    def ResourcePackage(self, ResourcePackage):
+        self._ResourcePackage = ResourcePackage
+
+    @property
+    def AddOnPackage(self):
+        r"""<p>计费增值包用量信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AddOnPackageInfo`
+        """
+        return self._AddOnPackage
+
+    @AddOnPackage.setter
+    def AddOnPackage(self, AddOnPackage):
+        self._AddOnPackage = AddOnPackage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourcePackage") is not None:
+            self._ResourcePackage = ResourcePackageInfo()
+            self._ResourcePackage._deserialize(params.get("ResourcePackage"))
+        if params.get("AddOnPackage") is not None:
+            self._AddOnPackage = AddOnPackageInfo()
+            self._AddOnPackage._deserialize(params.get("AddOnPackage"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSkillCategoryListRequest(AbstractModel):
     r"""DescribeSkillCategoryList请求参数结构体
 
@@ -26212,13 +26436,13 @@ class Identity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Description: <p>描述</p>
+        :param _Description: 描述
         :type Description: str
-        :param _Id: <p>数字 ID</p>
+        :param _Id: 数字 ID
         :type Id: str
-        :param _Name: <p>名称</p>
+        :param _Name: 名称
         :type Name: str
-        :param _StrId: <p>字符串 ID</p>
+        :param _StrId: 字符串 ID
         :type StrId: str
         """
         self._Description = None
@@ -26228,7 +26452,7 @@ class Identity(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>描述</p>
+        r"""描述
         :rtype: str
         """
         return self._Description
@@ -26239,7 +26463,7 @@ class Identity(AbstractModel):
 
     @property
     def Id(self):
-        r"""<p>数字 ID</p>
+        r"""数字 ID
         :rtype: str
         """
         return self._Id
@@ -26250,7 +26474,7 @@ class Identity(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称</p>
+        r"""名称
         :rtype: str
         """
         return self._Name
@@ -26261,7 +26485,7 @@ class Identity(AbstractModel):
 
     @property
     def StrId(self):
-        r"""<p>字符串 ID</p>
+        r"""字符串 ID
         :rtype: str
         """
         return self._StrId
@@ -26888,6 +27112,72 @@ class KBModifyExtendFields(AbstractModel):
         
 
 
+class KBPermission(AbstractModel):
+    r"""知识库操作权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanDelete: <p>是否可删除</p>
+        :type CanDelete: bool
+        :param _CanEdit: <p>是否可编辑</p>
+        :type CanEdit: bool
+        :param _CanView: <p>是否可查看</p>
+        :type CanView: bool
+        """
+        self._CanDelete = None
+        self._CanEdit = None
+        self._CanView = None
+
+    @property
+    def CanDelete(self):
+        r"""<p>是否可删除</p>
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CanEdit(self):
+        r"""<p>是否可编辑</p>
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+    @property
+    def CanView(self):
+        r"""<p>是否可查看</p>
+        :rtype: bool
+        """
+        return self._CanView
+
+    @CanView.setter
+    def CanView(self, CanView):
+        self._CanView = CanView
+
+
+    def _deserialize(self, params):
+        self._CanDelete = params.get("CanDelete")
+        self._CanEdit = params.get("CanEdit")
+        self._CanView = params.get("CanView")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KBRetrievalConfig(AbstractModel):
     r"""单个知识库检索配置
 
@@ -27205,6 +27495,9 @@ class KBSummary(AbstractModel):
         :type LatestOperator: :class:`tencentcloud.adp.v20260520.models.Operator`
         :param _Name: <p>知识库名称</p>
         :type Name: str
+        :param _Permission: <p>操作权限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permission: :class:`tencentcloud.adp.v20260520.models.KBPermission`
         :param _ProcessingFlagList: <p>处理中状态列表</p>
         :type ProcessingFlagList: list of int
         :param _SharedSubType: <p>共享子类型：1=普通，2=公众号<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARED_KB_SUB_TYPE_UNKNOWN</td><td>0</td><td></td></tr><tr><td>SHARED_KB_SUB_TYPE_NORMAL</td><td>1</td><td>普通</td></tr><tr><td>SHARED_KB_SUB_TYPE_PUBLIC_ACCOUNT</td><td>2</td><td>公众号</td></tr></tbody></table></p>
@@ -27222,6 +27515,7 @@ class KBSummary(AbstractModel):
         self._KbType = None
         self._LatestOperator = None
         self._Name = None
+        self._Permission = None
         self._ProcessingFlagList = None
         self._SharedSubType = None
         self._UpdateTime = None
@@ -27339,6 +27633,18 @@ class KBSummary(AbstractModel):
         self._Name = Name
 
     @property
+    def Permission(self):
+        r"""<p>操作权限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.KBPermission`
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
     def ProcessingFlagList(self):
         r"""<p>处理中状态列表</p>
         :rtype: list of int
@@ -27392,6 +27698,9 @@ class KBSummary(AbstractModel):
             self._LatestOperator = Operator()
             self._LatestOperator._deserialize(params.get("LatestOperator"))
         self._Name = params.get("Name")
+        if params.get("Permission") is not None:
+            self._Permission = KBPermission()
+            self._Permission._deserialize(params.get("Permission"))
         self._ProcessingFlagList = params.get("ProcessingFlagList")
         self._SharedSubType = params.get("SharedSubType")
         self._UpdateTime = params.get("UpdateTime")
@@ -28283,12 +28592,12 @@ class LabelTermCheckResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CheckResult: <p>校验结果</p>
+        :param _CheckResult: 校验结果
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResult: :class:`tencentcloud.adp.v20260520.models.CheckResult`
-        :param _Term: <p>待校验的标准词</p>
+        :param _Term: 待校验的标准词
         :type Term: str
-        :param _TermId: <p>已存在时返回对应标准词 ID</p>
+        :param _TermId: 已存在时返回对应标准词 ID
         :type TermId: str
         """
         self._CheckResult = None
@@ -28297,7 +28606,7 @@ class LabelTermCheckResult(AbstractModel):
 
     @property
     def CheckResult(self):
-        r"""<p>校验结果</p>
+        r"""校验结果
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.CheckResult`
         """
@@ -28309,7 +28618,7 @@ class LabelTermCheckResult(AbstractModel):
 
     @property
     def Term(self):
-        r"""<p>待校验的标准词</p>
+        r"""待校验的标准词
         :rtype: str
         """
         return self._Term
@@ -28320,7 +28629,7 @@ class LabelTermCheckResult(AbstractModel):
 
     @property
     def TermId(self):
-        r"""<p>已存在时返回对应标准词 ID</p>
+        r"""已存在时返回对应标准词 ID
         :rtype: str
         """
         return self._TermId
@@ -29795,35 +30104,37 @@ class ModelParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeepThinking: 是否开启深度思考
+        :param _DeepThinking: <p>是否开启深度思考</p>
         :type DeepThinking: str
-        :param _FrequencyPenalty: 频率惩罚
+        :param _FrequencyPenalty: <p>频率惩罚</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrequencyPenalty: float
-        :param _MaxTokens: 最大输出长度
+        :param _MaxTokens: <p>最大输出长度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxTokens: int
-        :param _PresencePenalty: 存在惩罚
+        :param _PresencePenalty: <p>存在惩罚</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PresencePenalty: float
-        :param _ReasoningEffort: 深度思考效果
+        :param _ReasoningEffort: <p>深度思考效果</p>
         :type ReasoningEffort: str
-        :param _RepetitionPenalty: 重复惩罚
+        :param _RepetitionPenalty: <p>重复惩罚</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RepetitionPenalty: float
-        :param _ReplyFormat: 输出格式（text、json_object）
+        :param _ReplyFormat: <p>输出格式（text、json_object）</p>
         :type ReplyFormat: str
-        :param _Seed: seed 随机种子
+        :param _Seed: <p>seed 随机种子</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seed: int
-        :param _StopSequenceList: 停止序列
+        :param _StopSequenceList: <p>停止序列</p>
         :type StopSequenceList: list of str
-        :param _Temperature: 温度
+        :param _Temperature: <p>温度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Temperature: float
-        :param _TopP: top_p
+        :param _TopP: <p>top_p</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopP: float
+        :param _TopK: <p>top_k</p>
+        :type TopK: int
         """
         self._DeepThinking = None
         self._FrequencyPenalty = None
@@ -29836,10 +30147,11 @@ class ModelParams(AbstractModel):
         self._StopSequenceList = None
         self._Temperature = None
         self._TopP = None
+        self._TopK = None
 
     @property
     def DeepThinking(self):
-        r"""是否开启深度思考
+        r"""<p>是否开启深度思考</p>
         :rtype: str
         """
         return self._DeepThinking
@@ -29850,7 +30162,7 @@ class ModelParams(AbstractModel):
 
     @property
     def FrequencyPenalty(self):
-        r"""频率惩罚
+        r"""<p>频率惩罚</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -29862,7 +30174,7 @@ class ModelParams(AbstractModel):
 
     @property
     def MaxTokens(self):
-        r"""最大输出长度
+        r"""<p>最大输出长度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -29874,7 +30186,7 @@ class ModelParams(AbstractModel):
 
     @property
     def PresencePenalty(self):
-        r"""存在惩罚
+        r"""<p>存在惩罚</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -29886,7 +30198,7 @@ class ModelParams(AbstractModel):
 
     @property
     def ReasoningEffort(self):
-        r"""深度思考效果
+        r"""<p>深度思考效果</p>
         :rtype: str
         """
         return self._ReasoningEffort
@@ -29897,7 +30209,7 @@ class ModelParams(AbstractModel):
 
     @property
     def RepetitionPenalty(self):
-        r"""重复惩罚
+        r"""<p>重复惩罚</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -29909,7 +30221,7 @@ class ModelParams(AbstractModel):
 
     @property
     def ReplyFormat(self):
-        r"""输出格式（text、json_object）
+        r"""<p>输出格式（text、json_object）</p>
         :rtype: str
         """
         return self._ReplyFormat
@@ -29920,7 +30232,7 @@ class ModelParams(AbstractModel):
 
     @property
     def Seed(self):
-        r"""seed 随机种子
+        r"""<p>seed 随机种子</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -29932,7 +30244,7 @@ class ModelParams(AbstractModel):
 
     @property
     def StopSequenceList(self):
-        r"""停止序列
+        r"""<p>停止序列</p>
         :rtype: list of str
         """
         return self._StopSequenceList
@@ -29943,7 +30255,7 @@ class ModelParams(AbstractModel):
 
     @property
     def Temperature(self):
-        r"""温度
+        r"""<p>温度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -29955,7 +30267,7 @@ class ModelParams(AbstractModel):
 
     @property
     def TopP(self):
-        r"""top_p
+        r"""<p>top_p</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -29964,6 +30276,17 @@ class ModelParams(AbstractModel):
     @TopP.setter
     def TopP(self, TopP):
         self._TopP = TopP
+
+    @property
+    def TopK(self):
+        r"""<p>top_k</p>
+        :rtype: int
+        """
+        return self._TopK
+
+    @TopK.setter
+    def TopK(self, TopK):
+        self._TopK = TopK
 
 
     def _deserialize(self, params):
@@ -29978,6 +30301,7 @@ class ModelParams(AbstractModel):
         self._StopSequenceList = params.get("StopSequenceList")
         self._Temperature = params.get("Temperature")
         self._TopP = params.get("TopP")
+        self._TopK = params.get("TopK")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33810,9 +34134,9 @@ class Operator(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: <p>用户 ID</p>
+        :param _UserId: 用户 ID
         :type UserId: str
-        :param _UserName: <p>用户姓名</p>
+        :param _UserName: 用户姓名
         :type UserName: str
         """
         self._UserId = None
@@ -33820,7 +34144,7 @@ class Operator(AbstractModel):
 
     @property
     def UserId(self):
-        r"""<p>用户 ID</p>
+        r"""用户 ID
         :rtype: str
         """
         return self._UserId
@@ -33831,7 +34155,7 @@ class Operator(AbstractModel):
 
     @property
     def UserName(self):
-        r"""<p>用户姓名</p>
+        r"""用户姓名
         :rtype: str
         """
         return self._UserName
@@ -37093,6 +37417,117 @@ class ResourceConsumption(AbstractModel):
         self._Label = params.get("Label")
         self._Unit = params.get("Unit")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourcePackageInfo(AbstractModel):
+    r"""计费套餐包用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PackageType: <p>套餐类型</p><p>枚举值：</p><ul><li>1： 免费版</li><li>2： 专业版</li><li>3： 企业版</li></ul>
+        :type PackageType: int
+        :param _ResourceTotal: <p>资源包总量</p>
+        :type ResourceTotal: int
+        :param _ResourceUsage: <p>资源包用量</p>
+        :type ResourceUsage: float
+        :param _KnowledgeCapacity: <p>知识库容量</p>
+        :type KnowledgeCapacity: float
+        :param _KnowledgeUsage: <p>知识库用量</p>
+        :type KnowledgeUsage: float
+        :param _ResourceStatus: <p>资源包状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>3： 已到期</li><li>4： 即将到期</li></ul>
+        :type ResourceStatus: int
+        """
+        self._PackageType = None
+        self._ResourceTotal = None
+        self._ResourceUsage = None
+        self._KnowledgeCapacity = None
+        self._KnowledgeUsage = None
+        self._ResourceStatus = None
+
+    @property
+    def PackageType(self):
+        r"""<p>套餐类型</p><p>枚举值：</p><ul><li>1： 免费版</li><li>2： 专业版</li><li>3： 企业版</li></ul>
+        :rtype: int
+        """
+        return self._PackageType
+
+    @PackageType.setter
+    def PackageType(self, PackageType):
+        self._PackageType = PackageType
+
+    @property
+    def ResourceTotal(self):
+        r"""<p>资源包总量</p>
+        :rtype: int
+        """
+        return self._ResourceTotal
+
+    @ResourceTotal.setter
+    def ResourceTotal(self, ResourceTotal):
+        self._ResourceTotal = ResourceTotal
+
+    @property
+    def ResourceUsage(self):
+        r"""<p>资源包用量</p>
+        :rtype: float
+        """
+        return self._ResourceUsage
+
+    @ResourceUsage.setter
+    def ResourceUsage(self, ResourceUsage):
+        self._ResourceUsage = ResourceUsage
+
+    @property
+    def KnowledgeCapacity(self):
+        r"""<p>知识库容量</p>
+        :rtype: float
+        """
+        return self._KnowledgeCapacity
+
+    @KnowledgeCapacity.setter
+    def KnowledgeCapacity(self, KnowledgeCapacity):
+        self._KnowledgeCapacity = KnowledgeCapacity
+
+    @property
+    def KnowledgeUsage(self):
+        r"""<p>知识库用量</p>
+        :rtype: float
+        """
+        return self._KnowledgeUsage
+
+    @KnowledgeUsage.setter
+    def KnowledgeUsage(self, KnowledgeUsage):
+        self._KnowledgeUsage = KnowledgeUsage
+
+    @property
+    def ResourceStatus(self):
+        r"""<p>资源包状态</p><p>枚举值：</p><ul><li>1： 正常</li><li>3： 已到期</li><li>4： 即将到期</li></ul>
+        :rtype: int
+        """
+        return self._ResourceStatus
+
+    @ResourceStatus.setter
+    def ResourceStatus(self, ResourceStatus):
+        self._ResourceStatus = ResourceStatus
+
+
+    def _deserialize(self, params):
+        self._PackageType = params.get("PackageType")
+        self._ResourceTotal = params.get("ResourceTotal")
+        self._ResourceUsage = params.get("ResourceUsage")
+        self._KnowledgeCapacity = params.get("KnowledgeCapacity")
+        self._KnowledgeUsage = params.get("KnowledgeUsage")
+        self._ResourceStatus = params.get("ResourceStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42243,7 +42678,7 @@ class ViewScope(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ViewType: <p>视图类型；枚举值：VIEW_TYPE_CORP(1) 企业视图、VIEW_TYPE_SPACE(2) 空间视图、VIEW_TYPE_APP(3) 应用视图</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>VIEW_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>VIEW_TYPE_CORP</td><td>1</td><td>企业视图</td></tr><tr><td>VIEW_TYPE_SPACE</td><td>2</td><td>空间视图</td></tr><tr><td>VIEW_TYPE_APP</td><td>3</td><td>应用视图</td></tr></tbody></table>
+        :param _ViewType: <p>视图类型；枚举值：VIEW_TYPE_CORP(1) 企业视图、VIEW_TYPE_SPACE(2) 空间视图、VIEW_TYPE_APP(3) 应用视图</p><table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>VIEW_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>VIEW_TYPE_CORP</td><td>1</td><td>企业视图</td></tr><tr><td>VIEW_TYPE_SPACE</td><td>2</td><td>空间视图</td></tr><tr><td>VIEW_TYPE_APP</td><td>3</td><td>应用视图</td></tr></table>
         :type ViewType: int
         :param _ScopeId: <p>视图范围 ID；VIEW_TYPE_CORP 留空；VIEW_TYPE_SPACE 填 space_id；VIEW_TYPE_APP 填 app_id（uint64 雪花 ID 的十进制字符串）</p>
         :type ScopeId: str
@@ -42253,7 +42688,7 @@ class ViewScope(AbstractModel):
 
     @property
     def ViewType(self):
-        r"""<p>视图类型；枚举值：VIEW_TYPE_CORP(1) 企业视图、VIEW_TYPE_SPACE(2) 空间视图、VIEW_TYPE_APP(3) 应用视图</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>VIEW_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>VIEW_TYPE_CORP</td><td>1</td><td>企业视图</td></tr><tr><td>VIEW_TYPE_SPACE</td><td>2</td><td>空间视图</td></tr><tr><td>VIEW_TYPE_APP</td><td>3</td><td>应用视图</td></tr></tbody></table>
+        r"""<p>视图类型；枚举值：VIEW_TYPE_CORP(1) 企业视图、VIEW_TYPE_SPACE(2) 空间视图、VIEW_TYPE_APP(3) 应用视图</p><table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>VIEW_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>VIEW_TYPE_CORP</td><td>1</td><td>企业视图</td></tr><tr><td>VIEW_TYPE_SPACE</td><td>2</td><td>空间视图</td></tr><tr><td>VIEW_TYPE_APP</td><td>3</td><td>应用视图</td></tr></table>
         :rtype: int
         """
         return self._ViewType

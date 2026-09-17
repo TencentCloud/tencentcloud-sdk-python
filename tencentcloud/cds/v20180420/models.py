@@ -1078,29 +1078,29 @@ class CreateTimerReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TplName: 任务名称 不变更为""
+        :param _TplName: <p>任务名称 不变更为&quot;&quot;</p>
         :type TplName: str
-        :param _CntTime: 执行日期 重复周期为天：无意义周：星期几1-7月每月几号 1-31
+        :param _CntTime: <p>执行日期 重复周期为天：无意义周：星期几1-7月每月几号 1-31</p>
         :type CntTime: int
-        :param _CntCycle: 重复周期
+        :param _CntCycle: <p>重复周期</p>
         :type CntCycle: int
-        :param _Receivers: 发送目标
+        :param _Receivers: <p>发送目标</p>
         :type Receivers: str
-        :param _CntDay: 时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
+        :param _CntDay: <p>时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0</p>
         :type CntDay: int
-        :param _CntDate: 执行时间 格式15:04 到分钟
+        :param _CntDate: <p>执行时间 格式15:04 到分钟</p>
         :type CntDate: str
-        :param _Remark: 报告说明
+        :param _Remark: <p>报告说明</p>
         :type Remark: str
-        :param _TemplateId: 模版Id
+        :param _TemplateId: <p>模板Id</p>
         :type TemplateId: int
-        :param _ReportType: 报表类型
+        :param _ReportType: <p>报表类型</p>
         :type ReportType: int
-        :param _AssetsId: 关联的资产数组
+        :param _AssetsId: <p>关联的资产数组</p>
         :type AssetsId: list of int
-        :param _Notification: 报表通知 1关闭 2开启 不变更为0
+        :param _Notification: <p>报表通知 1关闭 2开启 不变更为0</p>
         :type Notification: int
-        :param _MissionStart: 任务起停 1:关闭 2:开启 单次报表默认为2
+        :param _MissionStart: <p>任务起停 1:关闭 2:开启 单次报表默认为2</p>
         :type MissionStart: int
         """
         self._TplName = None
@@ -1118,7 +1118,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def TplName(self):
-        r"""任务名称 不变更为""
+        r"""<p>任务名称 不变更为&quot;&quot;</p>
         :rtype: str
         """
         return self._TplName
@@ -1129,7 +1129,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def CntTime(self):
-        r"""执行日期 重复周期为天：无意义周：星期几1-7月每月几号 1-31
+        r"""<p>执行日期 重复周期为天：无意义周：星期几1-7月每月几号 1-31</p>
         :rtype: int
         """
         return self._CntTime
@@ -1140,7 +1140,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def CntCycle(self):
-        r"""重复周期
+        r"""<p>重复周期</p>
         :rtype: int
         """
         return self._CntCycle
@@ -1151,7 +1151,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def Receivers(self):
-        r"""发送目标
+        r"""<p>发送目标</p>
         :rtype: str
         """
         return self._Receivers
@@ -1162,7 +1162,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def CntDay(self):
-        r"""时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
+        r"""<p>时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0</p>
         :rtype: int
         """
         return self._CntDay
@@ -1173,7 +1173,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def CntDate(self):
-        r"""执行时间 格式15:04 到分钟
+        r"""<p>执行时间 格式15:04 到分钟</p>
         :rtype: str
         """
         return self._CntDate
@@ -1184,7 +1184,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""报告说明
+        r"""<p>报告说明</p>
         :rtype: str
         """
         return self._Remark
@@ -1195,7 +1195,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模版Id
+        r"""<p>模板Id</p>
         :rtype: int
         """
         return self._TemplateId
@@ -1206,7 +1206,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        r"""报表类型
+        r"""<p>报表类型</p>
         :rtype: int
         """
         return self._ReportType
@@ -1217,7 +1217,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def AssetsId(self):
-        r"""关联的资产数组
+        r"""<p>关联的资产数组</p>
         :rtype: list of int
         """
         return self._AssetsId
@@ -1228,7 +1228,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def Notification(self):
-        r"""报表通知 1关闭 2开启 不变更为0
+        r"""<p>报表通知 1关闭 2开启 不变更为0</p>
         :rtype: int
         """
         return self._Notification
@@ -1239,7 +1239,7 @@ class CreateTimerReportRequest(AbstractModel):
 
     @property
     def MissionStart(self):
-        r"""任务起停 1:关闭 2:开启 单次报表默认为2
+        r"""<p>任务起停 1:关闭 2:开启 单次报表默认为2</p>
         :rtype: int
         """
         return self._MissionStart
@@ -1999,27 +1999,27 @@ class DescribeReportListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 限制数目
+        :param _Limit: <p>限制数目</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Name: 报告名称
+        :param _Name: <p>报告名称</p>
         :type Name: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _ReportType: 报告类型
+        :param _ReportType: <p>报告类型</p>
         :type ReportType: int
-        :param _ReportStatus: 报告状态
+        :param _ReportStatus: <p>报告状态</p>
         :type ReportStatus: int
-        :param _TemplateId: 报表模版id
+        :param _TemplateId: <p>报表模板id</p>
         :type TemplateId: int
-        :param _Field: 需要排序的字段
+        :param _Field: <p>需要排序的字段</p>
         :type Field: str
-        :param _Sort: 排序顺序 asc desc
+        :param _Sort: <p>排序顺序 asc desc</p>
         :type Sort: str
-        :param _CntDay: 时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
+        :param _CntDay: <p>时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0</p>
         :type CntDay: int
         """
         self._Limit = None
@@ -2036,7 +2036,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数目
+        r"""<p>限制数目</p>
         :rtype: int
         """
         return self._Limit
@@ -2047,7 +2047,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -2058,7 +2058,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""报告名称
+        r"""<p>报告名称</p>
         :rtype: str
         """
         return self._Name
@@ -2069,7 +2069,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -2080,7 +2080,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -2091,7 +2091,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        r"""报告类型
+        r"""<p>报告类型</p>
         :rtype: int
         """
         return self._ReportType
@@ -2102,7 +2102,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def ReportStatus(self):
-        r"""报告状态
+        r"""<p>报告状态</p>
         :rtype: int
         """
         return self._ReportStatus
@@ -2113,7 +2113,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""报表模版id
+        r"""<p>报表模板id</p>
         :rtype: int
         """
         return self._TemplateId
@@ -2124,7 +2124,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def Field(self):
-        r"""需要排序的字段
+        r"""<p>需要排序的字段</p>
         :rtype: str
         """
         return self._Field
@@ -2135,7 +2135,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""排序顺序 asc desc
+        r"""<p>排序顺序 asc desc</p>
         :rtype: str
         """
         return self._Sort
@@ -2146,7 +2146,7 @@ class DescribeReportListRequest(AbstractModel):
 
     @property
     def CntDay(self):
-        r"""时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
+        r"""<p>时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0</p>
         :rtype: int
         """
         return self._CntDay
@@ -2185,9 +2185,9 @@ class DescribeReportListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数目
+        :param _TotalCount: <p>总数目</p>
         :type TotalCount: int
-        :param _List: 数据列表
+        :param _List: <p>数据列表</p>
         :type List: list of Reports
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2198,7 +2198,7 @@ class DescribeReportListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数目
+        r"""<p>总数目</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2209,7 +2209,7 @@ class DescribeReportListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""数据列表
+        r"""<p>数据列表</p>
         :rtype: list of Reports
         """
         return self._List

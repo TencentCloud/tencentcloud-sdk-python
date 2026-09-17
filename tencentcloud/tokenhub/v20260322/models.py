@@ -5408,6 +5408,8 @@ class Model(AbstractModel):
         :type ModelImage: :class:`tencentcloud.tokenhub.v20260322.models.ModelImage`
         :param _Provider: <p>模型供应商。</p>
         :type Provider: str
+        :param _ProviderIntroduction: <p>markdown 原生内容的模型提供方详情</p>
+        :type ProviderIntroduction: str
         :param _Status: <p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护中</li></ul>
         :type Status: str
         :param _Tags: <p>标签列表。</p>
@@ -5439,6 +5441,7 @@ class Model(AbstractModel):
         self._Brand = None
         self._ModelImage = None
         self._Provider = None
+        self._ProviderIntroduction = None
         self._Status = None
         self._Tags = None
         self._ModelChargingInfo = None
@@ -5559,6 +5562,17 @@ class Model(AbstractModel):
     @Provider.setter
     def Provider(self, Provider):
         self._Provider = Provider
+
+    @property
+    def ProviderIntroduction(self):
+        r"""<p>markdown 原生内容的模型提供方详情</p>
+        :rtype: str
+        """
+        return self._ProviderIntroduction
+
+    @ProviderIntroduction.setter
+    def ProviderIntroduction(self, ProviderIntroduction):
+        self._ProviderIntroduction = ProviderIntroduction
 
     @property
     def Status(self):
@@ -5684,6 +5698,7 @@ class Model(AbstractModel):
             self._ModelImage = ModelImage()
             self._ModelImage._deserialize(params.get("ModelImage"))
         self._Provider = params.get("Provider")
+        self._ProviderIntroduction = params.get("ProviderIntroduction")
         self._Status = params.get("Status")
         self._Tags = params.get("Tags")
         if params.get("ModelChargingInfo") is not None:
@@ -7741,31 +7756,21 @@ class SubPackageBalance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExclusiveQuota: 独占额度。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _ExclusiveQuota: <p>独占额度。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type ExclusiveQuota: str
-        :param _ExclusiveUsed: 独占额度已用量。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _ExclusiveUsed: <p>独占额度已用量。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type ExclusiveUsed: str
-        :param _ExclusiveRemain: 独占额度剩余量。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _ExclusiveRemain: <p>独占额度剩余量。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type ExclusiveRemain: str
-        :param _SharedQuota: 共享额度上限，-1 表示不限。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _SharedQuota: <p>共享额度上限，-1 表示不限。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type SharedQuota: str
-        :param _SharedUsed: 共享额度已用量。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _SharedUsed: <p>共享额度已用量。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type SharedUsed: str
-        :param _SharedRemain: 共享额度剩余量。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        :param _SharedRemain: <p>共享额度剩余量。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :type SharedRemain: str
-        :param _Status: API Key 额度包状态。取值：0（正常）、1（耗尽）。
+        :param _TotalUsed: <p>当前周期已用总量 exclusive_used + shared_used + overflow_used</p>
+        :type TotalUsed: str
+        :param _Status: <p>API Key 额度包状态。取值：0（正常）、1（耗尽）。</p>
         :type Status: int
         """
         self._ExclusiveQuota = None
@@ -7774,13 +7779,12 @@ class SubPackageBalance(AbstractModel):
         self._SharedQuota = None
         self._SharedUsed = None
         self._SharedRemain = None
+        self._TotalUsed = None
         self._Status = None
 
     @property
     def ExclusiveQuota(self):
-        r"""独占额度。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>独占额度。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: str
         """
         return self._ExclusiveQuota
@@ -7791,9 +7795,7 @@ class SubPackageBalance(AbstractModel):
 
     @property
     def ExclusiveUsed(self):
-        r"""独占额度已用量。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>独占额度已用量。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: str
         """
         return self._ExclusiveUsed
@@ -7804,9 +7806,7 @@ class SubPackageBalance(AbstractModel):
 
     @property
     def ExclusiveRemain(self):
-        r"""独占额度剩余量。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>独占额度剩余量。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: str
         """
         return self._ExclusiveRemain
@@ -7817,9 +7817,7 @@ class SubPackageBalance(AbstractModel):
 
     @property
     def SharedQuota(self):
-        r"""共享额度上限，-1 表示不限。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>共享额度上限，-1 表示不限。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: str
         """
         return self._SharedQuota
@@ -7830,9 +7828,7 @@ class SubPackageBalance(AbstractModel):
 
     @property
     def SharedUsed(self):
-        r"""共享额度已用量。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>共享额度已用量。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: str
         """
         return self._SharedUsed
@@ -7843,9 +7839,7 @@ class SubPackageBalance(AbstractModel):
 
     @property
     def SharedRemain(self):
-        r"""共享额度剩余量。单位说明如下：
-- 套餐类型为专业套餐，单位取值为积分；
-- 套餐类型为轻享套餐，单位取值为 token。
+        r"""<p>共享额度剩余量。单位说明如下：</p><ul><li>套餐类型为专业套餐，单位取值为积分；</li><li>套餐类型为轻享套餐，单位取值为 token。</li></ul>
         :rtype: str
         """
         return self._SharedRemain
@@ -7855,8 +7849,19 @@ class SubPackageBalance(AbstractModel):
         self._SharedRemain = SharedRemain
 
     @property
+    def TotalUsed(self):
+        r"""<p>当前周期已用总量 exclusive_used + shared_used + overflow_used</p>
+        :rtype: str
+        """
+        return self._TotalUsed
+
+    @TotalUsed.setter
+    def TotalUsed(self, TotalUsed):
+        self._TotalUsed = TotalUsed
+
+    @property
     def Status(self):
-        r"""API Key 额度包状态。取值：0（正常）、1（耗尽）。
+        r"""<p>API Key 额度包状态。取值：0（正常）、1（耗尽）。</p>
         :rtype: int
         """
         return self._Status
@@ -7873,6 +7878,7 @@ class SubPackageBalance(AbstractModel):
         self._SharedQuota = params.get("SharedQuota")
         self._SharedUsed = params.get("SharedUsed")
         self._SharedRemain = params.get("SharedRemain")
+        self._TotalUsed = params.get("TotalUsed")
         self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

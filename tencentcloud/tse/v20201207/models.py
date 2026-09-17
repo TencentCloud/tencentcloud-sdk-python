@@ -2716,6 +2716,147 @@ class AddCloudNativeAPIGatewayConsumerInGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AgentSkill(AbstractModel):
+    r"""AgentSkill AI Agent 技能定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>agentID</p>
+        :type Id: str
+        :param _Name: <p>skill名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of str
+        :param _Examples: <p>样例</p>
+        :type Examples: list of str
+        :param _InputModes: <p>输入模式</p>
+        :type InputModes: list of str
+        :param _OutputModes: <p>输出模式</p>
+        :type OutputModes: list of str
+        :param _Version: <p>版本</p>
+        :type Version: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Tags = None
+        self._Examples = None
+        self._InputModes = None
+        self._OutputModes = None
+        self._Version = None
+
+    @property
+    def Id(self):
+        r"""<p>agentID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>skill名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Examples(self):
+        r"""<p>样例</p>
+        :rtype: list of str
+        """
+        return self._Examples
+
+    @Examples.setter
+    def Examples(self, Examples):
+        self._Examples = Examples
+
+    @property
+    def InputModes(self):
+        r"""<p>输入模式</p>
+        :rtype: list of str
+        """
+        return self._InputModes
+
+    @InputModes.setter
+    def InputModes(self, InputModes):
+        self._InputModes = InputModes
+
+    @property
+    def OutputModes(self):
+        r"""<p>输出模式</p>
+        :rtype: list of str
+        """
+        return self._OutputModes
+
+    @OutputModes.setter
+    def OutputModes(self, OutputModes):
+        self._OutputModes = OutputModes
+
+    @property
+    def Version(self):
+        r"""<p>版本</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Tags = params.get("Tags")
+        self._Examples = params.get("Examples")
+        self._InputModes = params.get("InputModes")
+        self._OutputModes = params.get("OutputModes")
+        self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApolloEnvParam(AbstractModel):
     r"""Apollo 环境配置参数
 
@@ -29897,6 +30038,59 @@ class EnvInfo(AbstractModel):
         
 
 
+class ExtendedMetadata(AbstractModel):
+    r"""服务扩展元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>枚举类型</p>
+        :type Type: str
+        :param _AgentSkill: <p>agent参数</p>
+        :type AgentSkill: :class:`tencentcloud.tse.v20201207.models.AgentSkill`
+        """
+        self._Type = None
+        self._AgentSkill = None
+
+    @property
+    def Type(self):
+        r"""<p>枚举类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AgentSkill(self):
+        r"""<p>agent参数</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AgentSkill`
+        """
+        return self._AgentSkill
+
+    @AgentSkill.setter
+    def AgentSkill(self, AgentSkill):
+        self._AgentSkill = AgentSkill
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("AgentSkill") is not None:
+            self._AgentSkill = AgentSkill()
+            self._AgentSkill._deserialize(params.get("AgentSkill"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExternalRedis(AbstractModel):
     r"""云原生网关限流插件外部redis配置
 
@@ -32130,6 +32324,8 @@ class GovernanceService(AbstractModel):
         :type ServiceStatus: int
         :param _Type: <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
         :type Type: int
+        :param _ExtendedMetadata: <p>服务元数据</p>
+        :type ExtendedMetadata: list of ExtendedMetadata
         """
         self._Name = None
         self._Namespace = None
@@ -32153,6 +32349,7 @@ class GovernanceService(AbstractModel):
         self._IsolateInstanceCount = None
         self._ServiceStatus = None
         self._Type = None
+        self._ExtendedMetadata = None
 
     @property
     def Name(self):
@@ -32396,6 +32593,17 @@ class GovernanceService(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def ExtendedMetadata(self):
+        r"""<p>服务元数据</p>
+        :rtype: list of ExtendedMetadata
+        """
+        return self._ExtendedMetadata
+
+    @ExtendedMetadata.setter
+    def ExtendedMetadata(self, ExtendedMetadata):
+        self._ExtendedMetadata = ExtendedMetadata
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -32425,6 +32633,12 @@ class GovernanceService(AbstractModel):
         self._IsolateInstanceCount = params.get("IsolateInstanceCount")
         self._ServiceStatus = params.get("ServiceStatus")
         self._Type = params.get("Type")
+        if params.get("ExtendedMetadata") is not None:
+            self._ExtendedMetadata = []
+            for item in params.get("ExtendedMetadata"):
+                obj = ExtendedMetadata()
+                obj._deserialize(item)
+                self._ExtendedMetadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32822,6 +33036,8 @@ class GovernanceServiceInput(AbstractModel):
         :type SyncToGlobalRegistry: bool
         :param _Type: <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul><p>默认值：0</p>
         :type Type: int
+        :param _ExtendedMetadata: <p>拓展服务元数据</p>
+        :type ExtendedMetadata: list of ExtendedMetadata
         """
         self._Name = None
         self._Namespace = None
@@ -32836,6 +33052,7 @@ class GovernanceServiceInput(AbstractModel):
         self._ExportTo = None
         self._SyncToGlobalRegistry = None
         self._Type = None
+        self._ExtendedMetadata = None
 
     @property
     def Name(self):
@@ -32980,6 +33197,17 @@ class GovernanceServiceInput(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def ExtendedMetadata(self):
+        r"""<p>拓展服务元数据</p>
+        :rtype: list of ExtendedMetadata
+        """
+        return self._ExtendedMetadata
+
+    @ExtendedMetadata.setter
+    def ExtendedMetadata(self, ExtendedMetadata):
+        self._ExtendedMetadata = ExtendedMetadata
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -33000,6 +33228,12 @@ class GovernanceServiceInput(AbstractModel):
         self._ExportTo = params.get("ExportTo")
         self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
         self._Type = params.get("Type")
+        if params.get("ExtendedMetadata") is not None:
+            self._ExtendedMetadata = []
+            for item in params.get("ExtendedMetadata"):
+                obj = ExtendedMetadata()
+                obj._deserialize(item)
+                self._ExtendedMetadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42526,86 +42760,90 @@ class SREInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _Edition: 版本号
+        :param _Edition: <p>版本号</p>
         :type Edition: str
-        :param _Status: 状态, 枚举值:creating/create_fail/running/updating/update_fail/restarting/restart_fail/destroying/destroy_fail
+        :param _Status: <p>状态, 枚举值:creating/create_fail/running/updating/update_fail/restarting/restart_fail/destroying/destroy_fail</p>
         :type Status: str
-        :param _SpecId: 规格ID
+        :param _SpecId: <p>规格ID</p>
         :type SpecId: str
-        :param _Replica: 副本数
+        :param _Replica: <p>副本数</p>
         :type Replica: int
-        :param _Type: 类型
+        :param _Type: <p>类型</p>
         :type Type: str
-        :param _VpcId: Vpc iD
+        :param _VpcId: <p>Vpc iD</p>
         :type VpcId: str
-        :param _SubnetIds: 子网ID
+        :param _SubnetIds: <p>子网ID</p>
         :type SubnetIds: list of str
-        :param _EnableStorage: 是否开启持久化存储
+        :param _EnableStorage: <p>是否开启持久化存储</p>
         :type EnableStorage: bool
-        :param _StorageType: 数据存储方式
+        :param _StorageType: <p>数据存储方式</p>
         :type StorageType: str
-        :param _StorageCapacity: 云硬盘容量
+        :param _StorageCapacity: <p>云硬盘容量</p>
         :type StorageCapacity: int
-        :param _Paymode: 计费方式
+        :param _Paymode: <p>计费方式</p>
         :type Paymode: str
-        :param _EKSClusterID: EKS集群的ID
+        :param _EKSClusterID: <p>EKS集群的ID</p>
         :type EKSClusterID: str
-        :param _CreateTime: 集群创建时间
+        :param _CreateTime: <p>集群创建时间</p>
         :type CreateTime: str
-        :param _EnvInfos: 环境配置信息列表
+        :param _EnvInfos: <p>环境配置信息列表</p>
         :type EnvInfos: list of EnvInfo
-        :param _EngineRegion: 引擎所在的区域
+        :param _EngineRegion: <p>引擎所在的区域</p>
         :type EngineRegion: str
-        :param _EnableInternet: 注册引擎是否开启公网
+        :param _EnableInternet: <p>注册引擎是否开启公网</p>
         :type EnableInternet: bool
-        :param _VpcInfos: 私有网络列表信息
+        :param _VpcInfos: <p>私有网络列表信息</p>
         :type VpcInfos: list of VpcInfo
-        :param _ServiceGovernanceInfos: 服务治理相关信息列表
+        :param _ServiceGovernanceInfos: <p>服务治理相关信息列表</p>
         :type ServiceGovernanceInfos: list of ServiceGovernanceInfo
-        :param _Tags: 实例的标签信息
+        :param _Tags: <p>实例的标签信息</p>
         :type Tags: list of KVPair
-        :param _EnableConsoleInternet: 引擎实例是否开启控制台公网访问地址
+        :param _EnableConsoleInternet: <p>引擎实例是否开启控制台公网访问地址</p>
         :type EnableConsoleInternet: bool
-        :param _EnableConsoleIntranet: 引擎实例是否开启控制台内网访问地址
+        :param _EnableConsoleIntranet: <p>引擎实例是否开启控制台内网访问地址</p>
         :type EnableConsoleIntranet: bool
-        :param _ConfigInfoVisible: 引擎实例是否展示参数配置页面
+        :param _ConfigInfoVisible: <p>引擎实例是否展示参数配置页面</p>
         :type ConfigInfoVisible: bool
-        :param _ConsoleDefaultPwd: 引擎实例控制台默认密码
+        :param _ConsoleDefaultPwd: <p>引擎实例控制台默认密码</p>
         :type ConsoleDefaultPwd: str
-        :param _TradeType: 交易付费类型，0后付费/1预付费
+        :param _TradeType: <p>交易付费类型，0后付费/1预付费</p>
         :type TradeType: int
-        :param _AutoRenewFlag: 自动续费标记：0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费
+        :param _AutoRenewFlag: <p>自动续费标记：0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费</p>
         :type AutoRenewFlag: int
-        :param _CurDeadline: 预付费到期时间
+        :param _CurDeadline: <p>预付费到期时间</p>
         :type CurDeadline: str
-        :param _IsolateTime: 隔离开始时间
+        :param _IsolateTime: <p>隔离开始时间</p>
         :type IsolateTime: str
-        :param _RegionInfos: 实例地域相关的描述信息
+        :param _RegionInfos: <p>实例地域相关的描述信息</p>
         :type RegionInfos: list of DescribeInstanceRegionInfo
-        :param _EKSType: 所在EKS环境，分为common和yunti
+        :param _EKSType: <p>所在EKS环境，分为common和yunti</p>
         :type EKSType: str
-        :param _FeatureVersion: 引擎的产品版本
+        :param _FeatureVersion: <p>引擎的产品版本</p>
         :type FeatureVersion: str
-        :param _EnableClientIntranet: 引擎实例是否开启客户端内网访问地址
+        :param _EnableClientIntranet: <p>引擎实例是否开启客户端内网访问地址</p>
         :type EnableClientIntranet: bool
-        :param _StorageOption: 存储额外配置选项
+        :param _StorageOption: <p>存储额外配置选项</p>
         :type StorageOption: list of StorageOption
-        :param _ZookeeperRegionInfo: Zookeeper的额外环境数据信息
+        :param _ZookeeperRegionInfo: <p>Zookeeper的额外环境数据信息</p>
         :type ZookeeperRegionInfo: :class:`tencentcloud.tse.v20201207.models.ZookeeperRegionInfo`
-        :param _DeployMode: 部署架构
+        :param _DeployMode: <p>部署架构</p>
         :type DeployMode: str
-        :param _GlobalType: 全局属性
+        :param _GlobalType: <p>全局属性</p>
         :type GlobalType: str
-        :param _GroupType: 所属组类型
+        :param _GroupType: <p>所属组类型</p>
         :type GroupType: str
-        :param _GroupId: 组id
+        :param _GroupId: <p>组id</p>
         :type GroupId: list of str
-        :param _IsMainRegion: 是否为主地域
+        :param _IsMainRegion: <p>是否为主地域</p>
         :type IsMainRegion: bool
+        :param _MutationEnabled: <p>是否禁止变更</p>
+        :type MutationEnabled: bool
+        :param _MaxCapacityLimitEnabled: <p>禁止限流</p>
+        :type MaxCapacityLimitEnabled: bool
         """
         self._InstanceId = None
         self._Name = None
@@ -42647,10 +42885,12 @@ class SREInstance(AbstractModel):
         self._GroupType = None
         self._GroupId = None
         self._IsMainRegion = None
+        self._MutationEnabled = None
+        self._MaxCapacityLimitEnabled = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -42661,7 +42901,7 @@ class SREInstance(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -42672,7 +42912,7 @@ class SREInstance(AbstractModel):
 
     @property
     def Edition(self):
-        r"""版本号
+        r"""<p>版本号</p>
         :rtype: str
         """
         return self._Edition
@@ -42683,7 +42923,7 @@ class SREInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态, 枚举值:creating/create_fail/running/updating/update_fail/restarting/restart_fail/destroying/destroy_fail
+        r"""<p>状态, 枚举值:creating/create_fail/running/updating/update_fail/restarting/restart_fail/destroying/destroy_fail</p>
         :rtype: str
         """
         return self._Status
@@ -42694,7 +42934,7 @@ class SREInstance(AbstractModel):
 
     @property
     def SpecId(self):
-        r"""规格ID
+        r"""<p>规格ID</p>
         :rtype: str
         """
         return self._SpecId
@@ -42705,7 +42945,7 @@ class SREInstance(AbstractModel):
 
     @property
     def Replica(self):
-        r"""副本数
+        r"""<p>副本数</p>
         :rtype: int
         """
         return self._Replica
@@ -42716,7 +42956,7 @@ class SREInstance(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""<p>类型</p>
         :rtype: str
         """
         return self._Type
@@ -42727,7 +42967,7 @@ class SREInstance(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""Vpc iD
+        r"""<p>Vpc iD</p>
         :rtype: str
         """
         return self._VpcId
@@ -42738,7 +42978,7 @@ class SREInstance(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -42749,7 +42989,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EnableStorage(self):
-        r"""是否开启持久化存储
+        r"""<p>是否开启持久化存储</p>
         :rtype: bool
         """
         return self._EnableStorage
@@ -42760,7 +43000,7 @@ class SREInstance(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""数据存储方式
+        r"""<p>数据存储方式</p>
         :rtype: str
         """
         return self._StorageType
@@ -42771,7 +43011,7 @@ class SREInstance(AbstractModel):
 
     @property
     def StorageCapacity(self):
-        r"""云硬盘容量
+        r"""<p>云硬盘容量</p>
         :rtype: int
         """
         return self._StorageCapacity
@@ -42782,7 +43022,7 @@ class SREInstance(AbstractModel):
 
     @property
     def Paymode(self):
-        r"""计费方式
+        r"""<p>计费方式</p>
         :rtype: str
         """
         return self._Paymode
@@ -42793,7 +43033,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EKSClusterID(self):
-        r"""EKS集群的ID
+        r"""<p>EKS集群的ID</p>
         :rtype: str
         """
         return self._EKSClusterID
@@ -42804,7 +43044,7 @@ class SREInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""集群创建时间
+        r"""<p>集群创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -42815,7 +43055,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EnvInfos(self):
-        r"""环境配置信息列表
+        r"""<p>环境配置信息列表</p>
         :rtype: list of EnvInfo
         """
         return self._EnvInfos
@@ -42826,7 +43066,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EngineRegion(self):
-        r"""引擎所在的区域
+        r"""<p>引擎所在的区域</p>
         :rtype: str
         """
         return self._EngineRegion
@@ -42837,7 +43077,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EnableInternet(self):
-        r"""注册引擎是否开启公网
+        r"""<p>注册引擎是否开启公网</p>
         :rtype: bool
         """
         return self._EnableInternet
@@ -42848,7 +43088,7 @@ class SREInstance(AbstractModel):
 
     @property
     def VpcInfos(self):
-        r"""私有网络列表信息
+        r"""<p>私有网络列表信息</p>
         :rtype: list of VpcInfo
         """
         return self._VpcInfos
@@ -42859,7 +43099,7 @@ class SREInstance(AbstractModel):
 
     @property
     def ServiceGovernanceInfos(self):
-        r"""服务治理相关信息列表
+        r"""<p>服务治理相关信息列表</p>
         :rtype: list of ServiceGovernanceInfo
         """
         return self._ServiceGovernanceInfos
@@ -42870,7 +43110,7 @@ class SREInstance(AbstractModel):
 
     @property
     def Tags(self):
-        r"""实例的标签信息
+        r"""<p>实例的标签信息</p>
         :rtype: list of KVPair
         """
         return self._Tags
@@ -42881,7 +43121,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EnableConsoleInternet(self):
-        r"""引擎实例是否开启控制台公网访问地址
+        r"""<p>引擎实例是否开启控制台公网访问地址</p>
         :rtype: bool
         """
         return self._EnableConsoleInternet
@@ -42892,7 +43132,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EnableConsoleIntranet(self):
-        r"""引擎实例是否开启控制台内网访问地址
+        r"""<p>引擎实例是否开启控制台内网访问地址</p>
         :rtype: bool
         """
         return self._EnableConsoleIntranet
@@ -42903,7 +43143,7 @@ class SREInstance(AbstractModel):
 
     @property
     def ConfigInfoVisible(self):
-        r"""引擎实例是否展示参数配置页面
+        r"""<p>引擎实例是否展示参数配置页面</p>
         :rtype: bool
         """
         return self._ConfigInfoVisible
@@ -42914,7 +43154,7 @@ class SREInstance(AbstractModel):
 
     @property
     def ConsoleDefaultPwd(self):
-        r"""引擎实例控制台默认密码
+        r"""<p>引擎实例控制台默认密码</p>
         :rtype: str
         """
         return self._ConsoleDefaultPwd
@@ -42925,7 +43165,7 @@ class SREInstance(AbstractModel):
 
     @property
     def TradeType(self):
-        r"""交易付费类型，0后付费/1预付费
+        r"""<p>交易付费类型，0后付费/1预付费</p>
         :rtype: int
         """
         return self._TradeType
@@ -42936,7 +43176,7 @@ class SREInstance(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标记：0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费
+        r"""<p>自动续费标记：0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -42947,7 +43187,7 @@ class SREInstance(AbstractModel):
 
     @property
     def CurDeadline(self):
-        r"""预付费到期时间
+        r"""<p>预付费到期时间</p>
         :rtype: str
         """
         return self._CurDeadline
@@ -42958,7 +43198,7 @@ class SREInstance(AbstractModel):
 
     @property
     def IsolateTime(self):
-        r"""隔离开始时间
+        r"""<p>隔离开始时间</p>
         :rtype: str
         """
         return self._IsolateTime
@@ -42969,7 +43209,7 @@ class SREInstance(AbstractModel):
 
     @property
     def RegionInfos(self):
-        r"""实例地域相关的描述信息
+        r"""<p>实例地域相关的描述信息</p>
         :rtype: list of DescribeInstanceRegionInfo
         """
         return self._RegionInfos
@@ -42980,7 +43220,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EKSType(self):
-        r"""所在EKS环境，分为common和yunti
+        r"""<p>所在EKS环境，分为common和yunti</p>
         :rtype: str
         """
         return self._EKSType
@@ -42991,7 +43231,7 @@ class SREInstance(AbstractModel):
 
     @property
     def FeatureVersion(self):
-        r"""引擎的产品版本
+        r"""<p>引擎的产品版本</p>
         :rtype: str
         """
         return self._FeatureVersion
@@ -43002,7 +43242,7 @@ class SREInstance(AbstractModel):
 
     @property
     def EnableClientIntranet(self):
-        r"""引擎实例是否开启客户端内网访问地址
+        r"""<p>引擎实例是否开启客户端内网访问地址</p>
         :rtype: bool
         """
         return self._EnableClientIntranet
@@ -43013,7 +43253,7 @@ class SREInstance(AbstractModel):
 
     @property
     def StorageOption(self):
-        r"""存储额外配置选项
+        r"""<p>存储额外配置选项</p>
         :rtype: list of StorageOption
         """
         return self._StorageOption
@@ -43024,7 +43264,7 @@ class SREInstance(AbstractModel):
 
     @property
     def ZookeeperRegionInfo(self):
-        r"""Zookeeper的额外环境数据信息
+        r"""<p>Zookeeper的额外环境数据信息</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.ZookeeperRegionInfo`
         """
         return self._ZookeeperRegionInfo
@@ -43035,7 +43275,7 @@ class SREInstance(AbstractModel):
 
     @property
     def DeployMode(self):
-        r"""部署架构
+        r"""<p>部署架构</p>
         :rtype: str
         """
         return self._DeployMode
@@ -43046,7 +43286,7 @@ class SREInstance(AbstractModel):
 
     @property
     def GlobalType(self):
-        r"""全局属性
+        r"""<p>全局属性</p>
         :rtype: str
         """
         return self._GlobalType
@@ -43057,7 +43297,7 @@ class SREInstance(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""所属组类型
+        r"""<p>所属组类型</p>
         :rtype: str
         """
         return self._GroupType
@@ -43068,7 +43308,7 @@ class SREInstance(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""组id
+        r"""<p>组id</p>
         :rtype: list of str
         """
         return self._GroupId
@@ -43079,7 +43319,7 @@ class SREInstance(AbstractModel):
 
     @property
     def IsMainRegion(self):
-        r"""是否为主地域
+        r"""<p>是否为主地域</p>
         :rtype: bool
         """
         return self._IsMainRegion
@@ -43087,6 +43327,28 @@ class SREInstance(AbstractModel):
     @IsMainRegion.setter
     def IsMainRegion(self, IsMainRegion):
         self._IsMainRegion = IsMainRegion
+
+    @property
+    def MutationEnabled(self):
+        r"""<p>是否禁止变更</p>
+        :rtype: bool
+        """
+        return self._MutationEnabled
+
+    @MutationEnabled.setter
+    def MutationEnabled(self, MutationEnabled):
+        self._MutationEnabled = MutationEnabled
+
+    @property
+    def MaxCapacityLimitEnabled(self):
+        r"""<p>禁止限流</p>
+        :rtype: bool
+        """
+        return self._MaxCapacityLimitEnabled
+
+    @MaxCapacityLimitEnabled.setter
+    def MaxCapacityLimitEnabled(self, MaxCapacityLimitEnabled):
+        self._MaxCapacityLimitEnabled = MaxCapacityLimitEnabled
 
 
     def _deserialize(self, params):
@@ -43162,6 +43424,8 @@ class SREInstance(AbstractModel):
         self._GroupType = params.get("GroupType")
         self._GroupId = params.get("GroupId")
         self._IsMainRegion = params.get("IsMainRegion")
+        self._MutationEnabled = params.get("MutationEnabled")
+        self._MaxCapacityLimitEnabled = params.get("MaxCapacityLimitEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43256,26 +43520,30 @@ class ServiceGovernanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EngineRegion: 引擎所在的地域
+        :param _EngineRegion: <p>引擎所在的地域</p>
         :type EngineRegion: str
-        :param _BoundK8SInfos: 服务治理引擎绑定的kubernetes集群信息
+        :param _BoundK8SInfos: <p>服务治理引擎绑定的kubernetes集群信息</p>
         :type BoundK8SInfos: list of BoundK8SInfo
-        :param _VpcInfos: 服务治理引擎绑定的网络信息
+        :param _VpcInfos: <p>服务治理引擎绑定的网络信息</p>
         :type VpcInfos: list of VpcInfo
-        :param _AuthOpen: 当前实例鉴权是否开启
+        :param _AuthOpen: <p>当前实例鉴权是否开启</p>
         :type AuthOpen: bool
-        :param _Features: 该实例支持的功能，鉴权就是 Auth
+        :param _Features: <p>该实例支持的功能，鉴权就是 Auth</p>
         :type Features: list of str
-        :param _MainPassword: 主账户名默认为 polaris，该值为主账户的默认密码
+        :param _MainPassword: <p>主账户名默认为 polaris，该值为主账户的默认密码</p>
         :type MainPassword: str
-        :param _PgwVpcInfos: 服务治理pushgateway引擎绑定的网络信息
+        :param _PgwVpcInfos: <p>服务治理pushgateway引擎绑定的网络信息</p>
         :type PgwVpcInfos: list of VpcInfo
-        :param _LimiterVpcInfos: 服务治理限流server引擎绑定的网络信息
+        :param _LimiterVpcInfos: <p>服务治理限流server引擎绑定的网络信息</p>
         :type LimiterVpcInfos: list of VpcInfo
-        :param _CLSTopics: 引擎关联CLS日志主题信息
+        :param _CLSTopics: <p>引擎关联CLS日志主题信息</p>
         :type CLSTopics: list of PolarisCLSTopicInfo
-        :param _SubPassword: 子用户密码
+        :param _SubPassword: <p>子用户密码</p>
         :type SubPassword: str
+        :param _DisableMutation: <p>是否允许变更</p>
+        :type DisableMutation: bool
+        :param _MaxCapacityLimitEnabled: <p>是否开启限流</p>
+        :type MaxCapacityLimitEnabled: bool
         """
         self._EngineRegion = None
         self._BoundK8SInfos = None
@@ -43287,10 +43555,12 @@ class ServiceGovernanceInfo(AbstractModel):
         self._LimiterVpcInfos = None
         self._CLSTopics = None
         self._SubPassword = None
+        self._DisableMutation = None
+        self._MaxCapacityLimitEnabled = None
 
     @property
     def EngineRegion(self):
-        r"""引擎所在的地域
+        r"""<p>引擎所在的地域</p>
         :rtype: str
         """
         return self._EngineRegion
@@ -43301,7 +43571,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def BoundK8SInfos(self):
-        r"""服务治理引擎绑定的kubernetes集群信息
+        r"""<p>服务治理引擎绑定的kubernetes集群信息</p>
         :rtype: list of BoundK8SInfo
         """
         return self._BoundK8SInfos
@@ -43312,7 +43582,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def VpcInfos(self):
-        r"""服务治理引擎绑定的网络信息
+        r"""<p>服务治理引擎绑定的网络信息</p>
         :rtype: list of VpcInfo
         """
         return self._VpcInfos
@@ -43323,7 +43593,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def AuthOpen(self):
-        r"""当前实例鉴权是否开启
+        r"""<p>当前实例鉴权是否开启</p>
         :rtype: bool
         """
         return self._AuthOpen
@@ -43334,7 +43604,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def Features(self):
-        r"""该实例支持的功能，鉴权就是 Auth
+        r"""<p>该实例支持的功能，鉴权就是 Auth</p>
         :rtype: list of str
         """
         return self._Features
@@ -43345,7 +43615,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def MainPassword(self):
-        r"""主账户名默认为 polaris，该值为主账户的默认密码
+        r"""<p>主账户名默认为 polaris，该值为主账户的默认密码</p>
         :rtype: str
         """
         return self._MainPassword
@@ -43356,7 +43626,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def PgwVpcInfos(self):
-        r"""服务治理pushgateway引擎绑定的网络信息
+        r"""<p>服务治理pushgateway引擎绑定的网络信息</p>
         :rtype: list of VpcInfo
         """
         return self._PgwVpcInfos
@@ -43367,7 +43637,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def LimiterVpcInfos(self):
-        r"""服务治理限流server引擎绑定的网络信息
+        r"""<p>服务治理限流server引擎绑定的网络信息</p>
         :rtype: list of VpcInfo
         """
         return self._LimiterVpcInfos
@@ -43378,7 +43648,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def CLSTopics(self):
-        r"""引擎关联CLS日志主题信息
+        r"""<p>引擎关联CLS日志主题信息</p>
         :rtype: list of PolarisCLSTopicInfo
         """
         return self._CLSTopics
@@ -43389,7 +43659,7 @@ class ServiceGovernanceInfo(AbstractModel):
 
     @property
     def SubPassword(self):
-        r"""子用户密码
+        r"""<p>子用户密码</p>
         :rtype: str
         """
         return self._SubPassword
@@ -43397,6 +43667,28 @@ class ServiceGovernanceInfo(AbstractModel):
     @SubPassword.setter
     def SubPassword(self, SubPassword):
         self._SubPassword = SubPassword
+
+    @property
+    def DisableMutation(self):
+        r"""<p>是否允许变更</p>
+        :rtype: bool
+        """
+        return self._DisableMutation
+
+    @DisableMutation.setter
+    def DisableMutation(self, DisableMutation):
+        self._DisableMutation = DisableMutation
+
+    @property
+    def MaxCapacityLimitEnabled(self):
+        r"""<p>是否开启限流</p>
+        :rtype: bool
+        """
+        return self._MaxCapacityLimitEnabled
+
+    @MaxCapacityLimitEnabled.setter
+    def MaxCapacityLimitEnabled(self, MaxCapacityLimitEnabled):
+        self._MaxCapacityLimitEnabled = MaxCapacityLimitEnabled
 
 
     def _deserialize(self, params):
@@ -43435,6 +43727,8 @@ class ServiceGovernanceInfo(AbstractModel):
                 obj._deserialize(item)
                 self._CLSTopics.append(obj)
         self._SubPassword = params.get("SubPassword")
+        self._DisableMutation = params.get("DisableMutation")
+        self._MaxCapacityLimitEnabled = params.get("MaxCapacityLimitEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

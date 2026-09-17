@@ -2092,11 +2092,11 @@ class DescribeAddressPoolListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 告警过滤条件：PoolName：地址池名称；MonitorId：监控器id
+        :param _Filters: <p>告警过滤条件：PoolName：地址池名称；MonitorId：监控器id</p>
         :type Filters: list of ResourceFilter
-        :param _Offset: 页数
+        :param _Offset: <p>页数</p>
         :type Offset: int
-        :param _Limit: 每页数
+        :param _Limit: <p>每页数</p>
         :type Limit: int
         """
         self._Filters = None
@@ -2105,7 +2105,7 @@ class DescribeAddressPoolListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""告警过滤条件：PoolName：地址池名称；MonitorId：监控器id
+        r"""<p>告警过滤条件：PoolName：地址池名称；MonitorId：监控器id</p>
         :rtype: list of ResourceFilter
         """
         return self._Filters
@@ -2116,7 +2116,7 @@ class DescribeAddressPoolListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""页数
+        r"""<p>页数</p>
         :rtype: int
         """
         return self._Offset
@@ -2127,7 +2127,7 @@ class DescribeAddressPoolListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页数
+        r"""<p>每页数</p>
         :rtype: int
         """
         return self._Limit
@@ -2163,9 +2163,9 @@ class DescribeAddressPoolListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressPoolSet: 资源组列表
+        :param _AddressPoolSet: <p>资源组列表</p>
         :type AddressPoolSet: list of AddressPool
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2176,7 +2176,7 @@ class DescribeAddressPoolListResponse(AbstractModel):
 
     @property
     def AddressPoolSet(self):
-        r"""资源组列表
+        r"""<p>资源组列表</p>
         :rtype: list of AddressPool
         """
         return self._AddressPoolSet
@@ -2187,7 +2187,7 @@ class DescribeAddressPoolListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2648,14 +2648,14 @@ class DescribeDnsLineListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2684,7 +2684,7 @@ class DescribeDnsLineListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DnsLineSet: 地址池列表
+        :param _DnsLineSet: <p>地址池列表</p>
         :type DnsLineSet: list of GroupLine
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2694,7 +2694,7 @@ class DescribeDnsLineListResponse(AbstractModel):
 
     @property
     def DnsLineSet(self):
-        r"""地址池列表
+        r"""<p>地址池列表</p>
         :rtype: list of GroupLine
         """
         return self._DnsLineSet
@@ -3111,14 +3111,14 @@ class DescribeMonitorDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MonitorId: 监控器id
+        :param _MonitorId: <p>监控器id</p>
         :type MonitorId: int
         """
         self._MonitorId = None
 
     @property
     def MonitorId(self):
-        r"""监控器id
+        r"""<p>监控器id</p>
         :rtype: int
         """
         return self._MonitorId
@@ -3147,7 +3147,7 @@ class DescribeMonitorDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MonitorDetail: 探测规则
+        :param _MonitorDetail: <p>探测规则</p>
         :type MonitorDetail: :class:`tencentcloud.igtm.v20231024.models.MonitorDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3157,7 +3157,7 @@ class DescribeMonitorDetailResponse(AbstractModel):
 
     @property
     def MonitorDetail(self):
-        r"""探测规则
+        r"""<p>探测规则</p>
         :rtype: :class:`tencentcloud.igtm.v20231024.models.MonitorDetail`
         """
         return self._MonitorDetail
@@ -3518,13 +3518,13 @@ class DescribeStrategyListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 id
+        :param _InstanceId: <p>实例 id</p>
         :type InstanceId: str
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Filters: 策略过滤条件：StrategyName：策略名称
+        :param _Filters: <p>策略过滤条件：StrategyName：策略名称</p>
         :type Filters: list of ResourceFilter
         """
         self._InstanceId = None
@@ -3534,7 +3534,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 id
+        r"""<p>实例 id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3545,7 +3545,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -3556,7 +3556,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -3567,7 +3567,7 @@ class DescribeStrategyListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""策略过滤条件：StrategyName：策略名称
+        r"""<p>策略过滤条件：StrategyName：策略名称</p>
         :rtype: list of ResourceFilter
         """
         return self._Filters
@@ -3604,9 +3604,9 @@ class DescribeStrategyListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StrategySet: 策略列表
+        :param _StrategySet: <p>策略列表</p>
         :type StrategySet: list of Strategy
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3617,7 +3617,7 @@ class DescribeStrategyListResponse(AbstractModel):
 
     @property
     def StrategySet(self):
-        r"""策略列表
+        r"""<p>策略列表</p>
         :rtype: list of Strategy
         """
         return self._StrategySet
@@ -3628,7 +3628,7 @@ class DescribeStrategyListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6809,8 +6809,8 @@ class ResourceFilter(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 过滤字段名，支持的列表如下：
-- type：主资源类型，CDN。
-- instanceId：IGTM实例ID。此为必传参数，未传将导致接口查询失败。
+- MonitorName：监控器名称。
+- MonitorId：监控器名称
         :type Name: str
         :param _Value: 过滤字段值。
 
@@ -6826,8 +6826,8 @@ class ResourceFilter(AbstractModel):
     @property
     def Name(self):
         r"""过滤字段名，支持的列表如下：
-- type：主资源类型，CDN。
-- instanceId：IGTM实例ID。此为必传参数，未传将导致接口查询失败。
+- MonitorName：监控器名称。
+- MonitorId：监控器名称
         :rtype: str
         """
         return self._Name

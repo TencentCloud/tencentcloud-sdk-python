@@ -1416,7 +1416,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeVoucherInfo(self, request):
-        r"""获取代金券相关信息
+        r"""获取近两年的代金券信息。
 
         :param request: Request instance for DescribeVoucherInfo.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherInfoRequest`
@@ -1439,7 +1439,7 @@ class BillingClient(AbstractClient):
 
 
     def DescribeVoucherUsageDetails(self, request):
-        r"""获取代金券使用记录
+        r"""获取代金券近两年的使用记录。
 
         :param request: Request instance for DescribeVoucherUsageDetails.
         :type request: :class:`tencentcloud.billing.v20180709.models.DescribeVoucherUsageDetailsRequest`

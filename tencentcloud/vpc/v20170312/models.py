@@ -18292,6 +18292,16 @@ class CreateVpnGatewayRequest(AbstractModel):
         :type MaxConnection: int
         :param _BgpAsn: <p>BGP ASN。</p>
         :type BgpAsn: int
+        :param _IsPrivate: <p>是否是私网类型</p>
+        :type IsPrivate: bool
+        :param _SubnetId: <p>私网唯一ID</p>
+        :type SubnetId: str
+        :param _BgpEnable: <p>BGP 开关，开启时需指定BgpAsn。</p>
+        :type BgpEnable: bool
+        :param _IpStack: <p>内外层IP协议</p><p>枚举值：</p><ul><li>4in4： IPv4 over IPv4</li><li>6in4： IPv6 over IPv4</li><li>6in6： IPv6 over IPv6</li><li>4in6： IPv4 over IPv6</li></ul><p>默认值：4in4</p>
+        :type IpStack: str
+        :param _AccessSubnet: <p>CCN类型私网VPN接入网段</p>
+        :type AccessSubnet: str
         """
         self._VpcId = None
         self._VpnGatewayName = None
@@ -18304,6 +18314,11 @@ class CreateVpnGatewayRequest(AbstractModel):
         self._CdcId = None
         self._MaxConnection = None
         self._BgpAsn = None
+        self._IsPrivate = None
+        self._SubnetId = None
+        self._BgpEnable = None
+        self._IpStack = None
+        self._AccessSubnet = None
 
     @property
     def VpcId(self):
@@ -18362,6 +18377,8 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def Zone(self):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         r"""<p>可用区，如：ap-guangzhou-2。</p>
         :rtype: str
         """
@@ -18369,6 +18386,8 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @Zone.setter
     def Zone(self, Zone):
+        warnings.warn("parameter `Zone` is deprecated", DeprecationWarning) 
+
         self._Zone = Zone
 
     @property
@@ -18426,6 +18445,61 @@ class CreateVpnGatewayRequest(AbstractModel):
     def BgpAsn(self, BgpAsn):
         self._BgpAsn = BgpAsn
 
+    @property
+    def IsPrivate(self):
+        r"""<p>是否是私网类型</p>
+        :rtype: bool
+        """
+        return self._IsPrivate
+
+    @IsPrivate.setter
+    def IsPrivate(self, IsPrivate):
+        self._IsPrivate = IsPrivate
+
+    @property
+    def SubnetId(self):
+        r"""<p>私网唯一ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def BgpEnable(self):
+        r"""<p>BGP 开关，开启时需指定BgpAsn。</p>
+        :rtype: bool
+        """
+        return self._BgpEnable
+
+    @BgpEnable.setter
+    def BgpEnable(self, BgpEnable):
+        self._BgpEnable = BgpEnable
+
+    @property
+    def IpStack(self):
+        r"""<p>内外层IP协议</p><p>枚举值：</p><ul><li>4in4： IPv4 over IPv4</li><li>6in4： IPv6 over IPv4</li><li>6in6： IPv6 over IPv6</li><li>4in6： IPv4 over IPv6</li></ul><p>默认值：4in4</p>
+        :rtype: str
+        """
+        return self._IpStack
+
+    @IpStack.setter
+    def IpStack(self, IpStack):
+        self._IpStack = IpStack
+
+    @property
+    def AccessSubnet(self):
+        r"""<p>CCN类型私网VPN接入网段</p>
+        :rtype: str
+        """
+        return self._AccessSubnet
+
+    @AccessSubnet.setter
+    def AccessSubnet(self, AccessSubnet):
+        self._AccessSubnet = AccessSubnet
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -18446,6 +18520,11 @@ class CreateVpnGatewayRequest(AbstractModel):
         self._CdcId = params.get("CdcId")
         self._MaxConnection = params.get("MaxConnection")
         self._BgpAsn = params.get("BgpAsn")
+        self._IsPrivate = params.get("IsPrivate")
+        self._SubnetId = params.get("SubnetId")
+        self._BgpEnable = params.get("BgpEnable")
+        self._IpStack = params.get("IpStack")
+        self._AccessSubnet = params.get("AccessSubnet")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18612,13 +18691,13 @@ class CreateVpnGatewaySslClientRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SslVpnServerId: SSL-VPN-SERVER 实例ID。
+        :param _SslVpnServerId: <p>SSL-VPN-SERVER 实例ID。</p>
         :type SslVpnServerId: str
-        :param _SslVpnClientName: SSL-VPN-CLIENT实例Name。不可和SslVpnClientNames同时使用。
+        :param _SslVpnClientName: <p>SSL-VPN-CLIENT实例Name。不可和SslVpnClientNames同时使用。</p>
         :type SslVpnClientName: str
-        :param _SslVpnClientNames: SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。
+        :param _SslVpnClientNames: <p>SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。</p>
         :type SslVpnClientNames: list of str
-        :param _Tags: 指定绑定的标签列表
+        :param _Tags: <p>指定绑定的标签列表</p>
         :type Tags: list of Tag
         """
         self._SslVpnServerId = None
@@ -18628,7 +18707,7 @@ class CreateVpnGatewaySslClientRequest(AbstractModel):
 
     @property
     def SslVpnServerId(self):
-        r"""SSL-VPN-SERVER 实例ID。
+        r"""<p>SSL-VPN-SERVER 实例ID。</p>
         :rtype: str
         """
         return self._SslVpnServerId
@@ -18639,7 +18718,7 @@ class CreateVpnGatewaySslClientRequest(AbstractModel):
 
     @property
     def SslVpnClientName(self):
-        r"""SSL-VPN-CLIENT实例Name。不可和SslVpnClientNames同时使用。
+        r"""<p>SSL-VPN-CLIENT实例Name。不可和SslVpnClientNames同时使用。</p>
         :rtype: str
         """
         return self._SslVpnClientName
@@ -18650,7 +18729,7 @@ class CreateVpnGatewaySslClientRequest(AbstractModel):
 
     @property
     def SslVpnClientNames(self):
-        r"""SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。
+        r"""<p>SSL-VPN-CLIENT实例Name数字。批量创建时使用。不可和SslVpnClientName同时使用。</p>
         :rtype: list of str
         """
         return self._SslVpnClientNames
@@ -18661,7 +18740,7 @@ class CreateVpnGatewaySslClientRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""指定绑定的标签列表
+        r"""<p>指定绑定的标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -18698,20 +18777,23 @@ class CreateVpnGatewaySslClientResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: int
-        :param _SslVpnClientId: SSL-VPN client 唯一ID
+        :param _SslVpnClientId: <p>SSL VPN客户端唯一ID</p>
         :type SslVpnClientId: str
+        :param _SslVpnClientIds: <p>SSL VPN客户端唯一ID</p><p>仅批量场景返回</p>
+        :type SslVpnClientIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
         self._SslVpnClientId = None
+        self._SslVpnClientIds = None
         self._RequestId = None
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: int
         """
         return self._TaskId
@@ -18722,7 +18804,7 @@ class CreateVpnGatewaySslClientResponse(AbstractModel):
 
     @property
     def SslVpnClientId(self):
-        r"""SSL-VPN client 唯一ID
+        r"""<p>SSL VPN客户端唯一ID</p>
         :rtype: str
         """
         return self._SslVpnClientId
@@ -18730,6 +18812,17 @@ class CreateVpnGatewaySslClientResponse(AbstractModel):
     @SslVpnClientId.setter
     def SslVpnClientId(self, SslVpnClientId):
         self._SslVpnClientId = SslVpnClientId
+
+    @property
+    def SslVpnClientIds(self):
+        r"""<p>SSL VPN客户端唯一ID</p><p>仅批量场景返回</p>
+        :rtype: list of str
+        """
+        return self._SslVpnClientIds
+
+    @SslVpnClientIds.setter
+    def SslVpnClientIds(self, SslVpnClientIds):
+        self._SslVpnClientIds = SslVpnClientIds
 
     @property
     def RequestId(self):
@@ -18746,6 +18839,7 @@ class CreateVpnGatewaySslClientResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._SslVpnClientId = params.get("SslVpnClientId")
+        self._SslVpnClientIds = params.get("SslVpnClientIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -18756,33 +18850,33 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGatewayId: VPN网关实例ID。
+        :param _VpnGatewayId: <p>VPN网关实例ID。</p>
         :type VpnGatewayId: str
-        :param _SslVpnServerName: SSL-VPN-SERVER 实例名称，长度不超过60个字节。
+        :param _SslVpnServerName: <p>SSL-VPN-SERVER 实例名称，长度不超过60个字节。</p>
         :type SslVpnServerName: str
-        :param _RemoteAddress: 客户端地址网段。
+        :param _RemoteAddress: <p>客户端地址网段。</p>
         :type RemoteAddress: str
-        :param _LocalAddress: 云端地址（CIDR）列表。
+        :param _LocalAddress: <p>云端地址（CIDR）列表。</p>
         :type LocalAddress: list of str
-        :param _SslVpnProtocol: SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。
+        :param _SslVpnProtocol: <p>SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。</p>
         :type SslVpnProtocol: str
-        :param _SslVpnPort: SSL VPN服务端监听协议端口，默认1194。
+        :param _SslVpnPort: <p>SSL VPN服务端监听协议端口，默认9798。</p>
         :type SslVpnPort: int
-        :param _IntegrityAlgorithm: 认证算法。可选 'SHA1'，默认SHA1。
+        :param _IntegrityAlgorithm: <p>认证算法。可选 &#39;SHA1&#39;, &#39;SHA224&#39;, &#39;SHA256&#39;, &#39;SHA384&#39;, &#39;SHA512&#39; 默认SHA1。</p>
         :type IntegrityAlgorithm: str
-        :param _EncryptAlgorithm: 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
+        :param _EncryptAlgorithm: <p>加密算法。可选 &#39;AES-128-CBC&#39;,&#39;AES-192-CBC&#39;, &#39;AES-256-CBC&#39;, &#39;AES-128-GCM&#39;, &#39;AES-192-GCM&#39;, &#39;AES-256-GCM&#39;。</p><p>默认值：AES-128-CBC</p>
         :type EncryptAlgorithm: str
-        :param _Compress: 是否支持压缩。当前不支持压缩，默认False。
+        :param _Compress: <p>是否支持压缩。当前不支持压缩，默认False。</p>
         :type Compress: bool
-        :param _SsoEnabled: 是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
+        :param _SsoEnabled: <p>是否开启SSO认证。默认为False。该功能当前需要申请开白使用。</p>
         :type SsoEnabled: bool
-        :param _AccessPolicyEnabled: 是否开启策略访问控制。默认为False
+        :param _AccessPolicyEnabled: <p>是否开启策略访问控制。默认为False</p>
         :type AccessPolicyEnabled: bool
-        :param _SamlData: SAML-DATA，开启SSO时传。
+        :param _SamlData: <p>SAML-DATA，开启SSO时传。</p>
         :type SamlData: str
-        :param _Tags: 指定绑定的标签列表
+        :param _Tags: <p>指定绑定的标签列表</p>
         :type Tags: list of Tag
-        :param _DnsServers: DNS Server 地址
+        :param _DnsServers: <p>DNS Server 地址</p>
         :type DnsServers: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
         """
         self._VpnGatewayId = None
@@ -18802,7 +18896,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def VpnGatewayId(self):
-        r"""VPN网关实例ID。
+        r"""<p>VPN网关实例ID。</p>
         :rtype: str
         """
         return self._VpnGatewayId
@@ -18813,7 +18907,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SslVpnServerName(self):
-        r"""SSL-VPN-SERVER 实例名称，长度不超过60个字节。
+        r"""<p>SSL-VPN-SERVER 实例名称，长度不超过60个字节。</p>
         :rtype: str
         """
         return self._SslVpnServerName
@@ -18824,7 +18918,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def RemoteAddress(self):
-        r"""客户端地址网段。
+        r"""<p>客户端地址网段。</p>
         :rtype: str
         """
         return self._RemoteAddress
@@ -18835,7 +18929,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def LocalAddress(self):
-        r"""云端地址（CIDR）列表。
+        r"""<p>云端地址（CIDR）列表。</p>
         :rtype: list of str
         """
         return self._LocalAddress
@@ -18846,7 +18940,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SslVpnProtocol(self):
-        r"""SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。
+        r"""<p>SSL VPN服务端监听协议。当前仅支持 UDP，默认UDP。</p>
         :rtype: str
         """
         return self._SslVpnProtocol
@@ -18857,7 +18951,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SslVpnPort(self):
-        r"""SSL VPN服务端监听协议端口，默认1194。
+        r"""<p>SSL VPN服务端监听协议端口，默认9798。</p>
         :rtype: int
         """
         return self._SslVpnPort
@@ -18868,7 +18962,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def IntegrityAlgorithm(self):
-        r"""认证算法。可选 'SHA1'，默认SHA1。
+        r"""<p>认证算法。可选 &#39;SHA1&#39;, &#39;SHA224&#39;, &#39;SHA256&#39;, &#39;SHA384&#39;, &#39;SHA512&#39; 默认SHA1。</p>
         :rtype: str
         """
         return self._IntegrityAlgorithm
@@ -18879,7 +18973,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
-        r"""加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
+        r"""<p>加密算法。可选 &#39;AES-128-CBC&#39;,&#39;AES-192-CBC&#39;, &#39;AES-256-CBC&#39;, &#39;AES-128-GCM&#39;, &#39;AES-192-GCM&#39;, &#39;AES-256-GCM&#39;。</p><p>默认值：AES-128-CBC</p>
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -18890,7 +18984,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def Compress(self):
-        r"""是否支持压缩。当前不支持压缩，默认False。
+        r"""<p>是否支持压缩。当前不支持压缩，默认False。</p>
         :rtype: bool
         """
         return self._Compress
@@ -18901,7 +18995,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SsoEnabled(self):
-        r"""是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
+        r"""<p>是否开启SSO认证。默认为False。该功能当前需要申请开白使用。</p>
         :rtype: bool
         """
         return self._SsoEnabled
@@ -18912,7 +19006,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def AccessPolicyEnabled(self):
-        r"""是否开启策略访问控制。默认为False
+        r"""<p>是否开启策略访问控制。默认为False</p>
         :rtype: bool
         """
         return self._AccessPolicyEnabled
@@ -18923,7 +19017,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SamlData(self):
-        r"""SAML-DATA，开启SSO时传。
+        r"""<p>SAML-DATA，开启SSO时传。</p>
         :rtype: str
         """
         return self._SamlData
@@ -18934,7 +19028,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""指定绑定的标签列表
+        r"""<p>指定绑定的标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -18945,7 +19039,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def DnsServers(self):
-        r"""DNS Server 地址
+        r"""<p>DNS Server 地址</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
         """
         return self._DnsServers
@@ -18994,9 +19088,9 @@ class CreateVpnGatewaySslServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 创建SSL-VPN server 异步任务ID。
+        :param _TaskId: <p>创建SSL-VPN server 异步任务ID。</p>
         :type TaskId: int
-        :param _SslVpnServerId: SSL-VPN-SERVER 唯一ID。
+        :param _SslVpnServerId: <p>SSL-VPN-SERVER 唯一ID。</p>
         :type SslVpnServerId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19007,7 +19101,7 @@ class CreateVpnGatewaySslServerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""创建SSL-VPN server 异步任务ID。
+        r"""<p>创建SSL-VPN server 异步任务ID。</p>
         :rtype: int
         """
         return self._TaskId
@@ -19018,7 +19112,7 @@ class CreateVpnGatewaySslServerResponse(AbstractModel):
 
     @property
     def SslVpnServerId(self):
-        r"""SSL-VPN-SERVER 唯一ID。
+        r"""<p>SSL-VPN-SERVER 唯一ID。</p>
         :rtype: str
         """
         return self._SslVpnServerId
@@ -19514,26 +19608,32 @@ class CustomerGateway(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerGatewayId: 用户网关唯一ID
+        :param _CustomerGatewayId: <p>用户网关唯一ID</p>
         :type CustomerGatewayId: str
-        :param _CustomerGatewayName: 网关名称
+        :param _CustomerGatewayName: <p>网关名称</p>
         :type CustomerGatewayName: str
-        :param _IpAddress: 公网地址
+        :param _IpAddress: <p>公网地址</p>
         :type IpAddress: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _BgpAsn: BGP ASN。
+        :param _BgpAsn: <p>BGP ASN。</p>
         :type BgpAsn: int
+        :param _VpnConnNum: <p>关联通道数</p>
+        :type VpnConnNum: int
+        :param _TagSet: <p>标签信息</p>
+        :type TagSet: list of Tag
         """
         self._CustomerGatewayId = None
         self._CustomerGatewayName = None
         self._IpAddress = None
         self._CreatedTime = None
         self._BgpAsn = None
+        self._VpnConnNum = None
+        self._TagSet = None
 
     @property
     def CustomerGatewayId(self):
-        r"""用户网关唯一ID
+        r"""<p>用户网关唯一ID</p>
         :rtype: str
         """
         return self._CustomerGatewayId
@@ -19544,7 +19644,7 @@ class CustomerGateway(AbstractModel):
 
     @property
     def CustomerGatewayName(self):
-        r"""网关名称
+        r"""<p>网关名称</p>
         :rtype: str
         """
         return self._CustomerGatewayName
@@ -19555,7 +19655,7 @@ class CustomerGateway(AbstractModel):
 
     @property
     def IpAddress(self):
-        r"""公网地址
+        r"""<p>公网地址</p>
         :rtype: str
         """
         return self._IpAddress
@@ -19566,7 +19666,7 @@ class CustomerGateway(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -19577,7 +19677,7 @@ class CustomerGateway(AbstractModel):
 
     @property
     def BgpAsn(self):
-        r"""BGP ASN。
+        r"""<p>BGP ASN。</p>
         :rtype: int
         """
         return self._BgpAsn
@@ -19586,6 +19686,28 @@ class CustomerGateway(AbstractModel):
     def BgpAsn(self, BgpAsn):
         self._BgpAsn = BgpAsn
 
+    @property
+    def VpnConnNum(self):
+        r"""<p>关联通道数</p>
+        :rtype: int
+        """
+        return self._VpnConnNum
+
+    @VpnConnNum.setter
+    def VpnConnNum(self, VpnConnNum):
+        self._VpnConnNum = VpnConnNum
+
+    @property
+    def TagSet(self):
+        r"""<p>标签信息</p>
+        :rtype: list of Tag
+        """
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
+
 
     def _deserialize(self, params):
         self._CustomerGatewayId = params.get("CustomerGatewayId")
@@ -19593,6 +19715,13 @@ class CustomerGateway(AbstractModel):
         self._IpAddress = params.get("IpAddress")
         self._CreatedTime = params.get("CreatedTime")
         self._BgpAsn = params.get("BgpAsn")
+        self._VpnConnNum = params.get("VpnConnNum")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28301,16 +28430,13 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerGatewayIds: 对端网关ID，例如：cgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。
+        :param _CustomerGatewayIds: <p>对端网关ID，例如：cgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。</p>
         :type CustomerGatewayIds: list of str
-        :param _Filters: 过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。
-<li>customer-gateway-id - String - （过滤条件）用户网关唯一ID形如：`cgw-mgp33pll`。</li>
-<li>customer-gateway-name - String - （过滤条件）用户网关名称形如：`test-cgw`。</li>
-<li>ip-address - String - （过滤条件）公网地址形如：`58.211.1.12`。</li>
+        :param _Filters: <p>过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。<li>customer-gateway-id - String - （过滤条件）用户网关唯一ID形如：<code>cgw-mgp33pll</code>。</li><li>customer-gateway-name - String - （过滤条件）用户网关名称形如：<code>test-cgw</code>。</li><li>ip-address - String - （过滤条件）公网地址形如：<code>58.211.1.12</code>。</li><li>ip-version - String - （过滤条件）公网地址类型,可选值[&#39;IPv4&#39;,&#39;IPv6&#39;]。</li></p>
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        :param _Offset: <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/11646">简介</a>中的相关小节。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
         """
         self._CustomerGatewayIds = None
@@ -28320,7 +28446,7 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     @property
     def CustomerGatewayIds(self):
-        r"""对端网关ID，例如：cgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。
+        r"""<p>对端网关ID，例如：cgw-2wqq41m9。每次请求的实例的上限为100。参数不支持同时指定CustomerGatewayIds和Filters。</p>
         :rtype: list of str
         """
         return self._CustomerGatewayIds
@@ -28331,10 +28457,7 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。
-<li>customer-gateway-id - String - （过滤条件）用户网关唯一ID形如：`cgw-mgp33pll`。</li>
-<li>customer-gateway-name - String - （过滤条件）用户网关名称形如：`test-cgw`。</li>
-<li>ip-address - String - （过滤条件）公网地址形如：`58.211.1.12`。</li>
+        r"""<p>过滤条件，详见下表：实例过滤条件表。每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定CustomerGatewayIds和Filters。<li>customer-gateway-id - String - （过滤条件）用户网关唯一ID形如：<code>cgw-mgp33pll</code>。</li><li>customer-gateway-name - String - （过滤条件）用户网关名称形如：<code>test-cgw</code>。</li><li>ip-address - String - （过滤条件）公网地址形如：<code>58.211.1.12</code>。</li><li>ip-version - String - （过滤条件）公网地址类型,可选值[&#39;IPv4&#39;,&#39;IPv6&#39;]。</li></p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -28345,7 +28468,7 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。关于Offset的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/11646)中的相关小节。
+        r"""<p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/api/213/11646">简介</a>中的相关小节。</p>
         :rtype: int
         """
         return self._Offset
@@ -28356,7 +28479,7 @@ class DescribeCustomerGatewaysRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -28393,9 +28516,9 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerGatewaySet: 对端网关对象列表。
+        :param _CustomerGatewaySet: <p>对端网关对象列表。</p>
         :type CustomerGatewaySet: list of CustomerGateway
-        :param _TotalCount: 符合条件的实例数量。
+        :param _TotalCount: <p>符合条件的实例数量。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28406,7 +28529,7 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
 
     @property
     def CustomerGatewaySet(self):
-        r"""对端网关对象列表。
+        r"""<p>对端网关对象列表。</p>
         :rtype: list of CustomerGateway
         """
         return self._CustomerGatewaySet
@@ -28417,7 +28540,7 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例数量。
+        r"""<p>符合条件的实例数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -58960,29 +59083,29 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SslVpnServerId: SSL-VPN SERVER 实例ID
+        :param _SslVpnServerId: <p>SSL-VPN SERVER 实例ID</p>
         :type SslVpnServerId: str
-        :param _SslVpnServerName: SSL-VPN SERVER NAME
+        :param _SslVpnServerName: <p>SSL-VPN SERVER NAME</p>
         :type SslVpnServerName: str
-        :param _LocalAddress: 本端地址
+        :param _LocalAddress: <p>本端地址</p>
         :type LocalAddress: list of str
-        :param _RemoteAddress: 客户端地址
+        :param _RemoteAddress: <p>客户端地址</p>
         :type RemoteAddress: str
-        :param _SslVpnProtocol: SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+        :param _SslVpnProtocol: <p>SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP</p>
         :type SslVpnProtocol: str
-        :param _SslVpnPort: SSL VPN服务端监听协议端口。
+        :param _SslVpnPort: <p>SSL VPN服务端监听协议端口。</p>
         :type SslVpnPort: int
-        :param _EncryptAlgorithm: 加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
+        :param _EncryptAlgorithm: <p>加密算法。可选值 &#39;AES-128-CBC&#39;, &#39;AES-192-CBC&#39;, &#39;AES-256-CBC&#39;, &#39;AES-128-GCM&#39;, &#39;AES-192-GCM&#39;, &#39;AES-256-GCM&#39;, 默认AES-128-CBC。</p>
         :type EncryptAlgorithm: str
-        :param _IntegrityAlgorithm: 认证算法。可选 'SHA1'，默认SHA1。
+        :param _IntegrityAlgorithm: <p>认证算法。可选 &#39;SHA1&#39;, &#39;MD5&#39;, &#39;SHA224&#39;, &#39;SHA256&#39;, &#39;SHA384&#39;, &#39;SHA512&#39;，默认SHA1。</p>
         :type IntegrityAlgorithm: str
-        :param _Compress: 是否支持压缩。当前不支持压缩。默认False。
+        :param _Compress: <p>是否支持压缩。当前不支持压缩。默认False。</p>
         :type Compress: bool
-        :param _SsoEnabled: 是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
+        :param _SsoEnabled: <p>是否开启SSO认证。默认为False。该功能当前需要申请开白使用。</p>
         :type SsoEnabled: bool
-        :param _SamlData: SAML-DATA
+        :param _SamlData: <p>SAML-DATA</p>
         :type SamlData: str
-        :param _DnsServers: DNS Server地址
+        :param _DnsServers: <p>DNS Server地址</p>
         :type DnsServers: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
         """
         self._SslVpnServerId = None
@@ -59000,7 +59123,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SslVpnServerId(self):
-        r"""SSL-VPN SERVER 实例ID
+        r"""<p>SSL-VPN SERVER 实例ID</p>
         :rtype: str
         """
         return self._SslVpnServerId
@@ -59011,7 +59134,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SslVpnServerName(self):
-        r"""SSL-VPN SERVER NAME
+        r"""<p>SSL-VPN SERVER NAME</p>
         :rtype: str
         """
         return self._SslVpnServerName
@@ -59022,7 +59145,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def LocalAddress(self):
-        r"""本端地址
+        r"""<p>本端地址</p>
         :rtype: list of str
         """
         return self._LocalAddress
@@ -59033,7 +59156,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def RemoteAddress(self):
-        r"""客户端地址
+        r"""<p>客户端地址</p>
         :rtype: str
         """
         return self._RemoteAddress
@@ -59044,18 +59167,22 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SslVpnProtocol(self):
-        r"""SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP
+        warnings.warn("parameter `SslVpnProtocol` is deprecated", DeprecationWarning) 
+
+        r"""<p>SSL VPN服务端监听协议。当前仅支持 UDP。默认UDP</p>
         :rtype: str
         """
         return self._SslVpnProtocol
 
     @SslVpnProtocol.setter
     def SslVpnProtocol(self, SslVpnProtocol):
+        warnings.warn("parameter `SslVpnProtocol` is deprecated", DeprecationWarning) 
+
         self._SslVpnProtocol = SslVpnProtocol
 
     @property
     def SslVpnPort(self):
-        r"""SSL VPN服务端监听协议端口。
+        r"""<p>SSL VPN服务端监听协议端口。</p>
         :rtype: int
         """
         return self._SslVpnPort
@@ -59066,7 +59193,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
-        r"""加密算法。可选 'AES-128-CBC','AES-192-CBC', 'AES-256-CBC', 默认AES-128-CBC。
+        r"""<p>加密算法。可选值 &#39;AES-128-CBC&#39;, &#39;AES-192-CBC&#39;, &#39;AES-256-CBC&#39;, &#39;AES-128-GCM&#39;, &#39;AES-192-GCM&#39;, &#39;AES-256-GCM&#39;, 默认AES-128-CBC。</p>
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -59077,7 +59204,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def IntegrityAlgorithm(self):
-        r"""认证算法。可选 'SHA1'，默认SHA1。
+        r"""<p>认证算法。可选 &#39;SHA1&#39;, &#39;MD5&#39;, &#39;SHA224&#39;, &#39;SHA256&#39;, &#39;SHA384&#39;, &#39;SHA512&#39;，默认SHA1。</p>
         :rtype: str
         """
         return self._IntegrityAlgorithm
@@ -59088,7 +59215,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def Compress(self):
-        r"""是否支持压缩。当前不支持压缩。默认False。
+        r"""<p>是否支持压缩。当前不支持压缩。默认False。</p>
         :rtype: bool
         """
         return self._Compress
@@ -59099,7 +59226,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SsoEnabled(self):
-        r"""是否开启SSO认证。默认为False。该功能当前需要申请开白使用。
+        r"""<p>是否开启SSO认证。默认为False。该功能当前需要申请开白使用。</p>
         :rtype: bool
         """
         return self._SsoEnabled
@@ -59110,7 +59237,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def SamlData(self):
-        r"""SAML-DATA
+        r"""<p>SAML-DATA</p>
         :rtype: str
         """
         return self._SamlData
@@ -59121,7 +59248,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
 
     @property
     def DnsServers(self):
-        r"""DNS Server地址
+        r"""<p>DNS Server地址</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
         """
         return self._DnsServers
@@ -59163,7 +59290,7 @@ class ModifyVpnGatewaySslServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务TASKID
+        :param _TaskId: <p>异步任务TASKID</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -59173,7 +59300,7 @@ class ModifyVpnGatewaySslServerResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务TASKID
+        r"""<p>异步任务TASKID</p>
         :rtype: int
         """
         return self._TaskId
@@ -75733,6 +75860,8 @@ class VpnGateway(AbstractModel):
         :type BgpAsn: int
         :param _TagSet: <p>标签列表</p>
         :type TagSet: list of Tag
+        :param _IsPrivate: <p>私网VPN标识</p>
+        :type IsPrivate: bool
         """
         self._VpnGatewayId = None
         self._VpcId = None
@@ -75756,6 +75885,7 @@ class VpnGateway(AbstractModel):
         self._MaxConnection = None
         self._BgpAsn = None
         self._TagSet = None
+        self._IsPrivate = None
 
     @property
     def VpnGatewayId(self):
@@ -75999,6 +76129,17 @@ class VpnGateway(AbstractModel):
     def TagSet(self, TagSet):
         self._TagSet = TagSet
 
+    @property
+    def IsPrivate(self):
+        r"""<p>私网VPN标识</p>
+        :rtype: bool
+        """
+        return self._IsPrivate
+
+    @IsPrivate.setter
+    def IsPrivate(self, IsPrivate):
+        self._IsPrivate = IsPrivate
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
@@ -76033,6 +76174,7 @@ class VpnGateway(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagSet.append(obj)
+        self._IsPrivate = params.get("IsPrivate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -76050,20 +76192,23 @@ class VpnGatewayQuota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bandwidth: 带宽配额，单位：Mbps。
+        :param _Bandwidth: <p>带宽配额，单位：Mbps。</p>
         :type Bandwidth: int
-        :param _Cname: 配额中文名称
+        :param _Cname: <p>配额中文名称</p>
         :type Cname: str
-        :param _Name: 配额英文名称
+        :param _Name: <p>配额英文名称</p>
         :type Name: str
+        :param _MaxConnection: <p>SSL 连接数可选配额</p>
+        :type MaxConnection: list of int non-negative
         """
         self._Bandwidth = None
         self._Cname = None
         self._Name = None
+        self._MaxConnection = None
 
     @property
     def Bandwidth(self):
-        r"""带宽配额，单位：Mbps。
+        r"""<p>带宽配额，单位：Mbps。</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -76074,7 +76219,7 @@ class VpnGatewayQuota(AbstractModel):
 
     @property
     def Cname(self):
-        r"""配额中文名称
+        r"""<p>配额中文名称</p>
         :rtype: str
         """
         return self._Cname
@@ -76085,7 +76230,7 @@ class VpnGatewayQuota(AbstractModel):
 
     @property
     def Name(self):
-        r"""配额英文名称
+        r"""<p>配额英文名称</p>
         :rtype: str
         """
         return self._Name
@@ -76094,11 +76239,23 @@ class VpnGatewayQuota(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def MaxConnection(self):
+        r"""<p>SSL 连接数可选配额</p>
+        :rtype: list of int non-negative
+        """
+        return self._MaxConnection
+
+    @MaxConnection.setter
+    def MaxConnection(self, MaxConnection):
+        self._MaxConnection = MaxConnection
+
 
     def _deserialize(self, params):
         self._Bandwidth = params.get("Bandwidth")
         self._Cname = params.get("Cname")
         self._Name = params.get("Name")
+        self._MaxConnection = params.get("MaxConnection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

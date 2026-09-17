@@ -18,6 +18,199 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIAnalysis(AbstractModel):
+    r"""开启告警AI诊断。UserPrompt是给AI诊断告警时使用的提示词，比如请详细分析根因。AnalysisDataScope示例：{"DataScopeType":"CLSLogTopic","DataScopeEntry":[{"Key":"TopicId",Value:"work-topic"},{"Key":"Region",Value:"ap-guangzhou"}]}
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否开启告警AI诊断</p><p>默认值：false</p>
+        :type Enable: bool
+        :param _HideProcess: <p>是否显示诊断过程</p><p>默认值：false</p>
+        :type HideProcess: bool
+        :param _UserPrompt: <p>AI诊断告警时给AI的提示词</p><p>参数格式：请详细诊断根因</p>
+        :type UserPrompt: str
+        :param _AnalysisDataScope: <p>AI 分析的数据范围</p>
+        :type AnalysisDataScope: list of AIAnalysisDataScope
+        """
+        self._Enable = None
+        self._HideProcess = None
+        self._UserPrompt = None
+        self._AnalysisDataScope = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否开启告警AI诊断</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def HideProcess(self):
+        r"""<p>是否显示诊断过程</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._HideProcess
+
+    @HideProcess.setter
+    def HideProcess(self, HideProcess):
+        self._HideProcess = HideProcess
+
+    @property
+    def UserPrompt(self):
+        r"""<p>AI诊断告警时给AI的提示词</p><p>参数格式：请详细诊断根因</p>
+        :rtype: str
+        """
+        return self._UserPrompt
+
+    @UserPrompt.setter
+    def UserPrompt(self, UserPrompt):
+        self._UserPrompt = UserPrompt
+
+    @property
+    def AnalysisDataScope(self):
+        r"""<p>AI 分析的数据范围</p>
+        :rtype: list of AIAnalysisDataScope
+        """
+        return self._AnalysisDataScope
+
+    @AnalysisDataScope.setter
+    def AnalysisDataScope(self, AnalysisDataScope):
+        self._AnalysisDataScope = AnalysisDataScope
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._HideProcess = params.get("HideProcess")
+        self._UserPrompt = params.get("UserPrompt")
+        if params.get("AnalysisDataScope") is not None:
+            self._AnalysisDataScope = []
+            for item in params.get("AnalysisDataScope"):
+                obj = AIAnalysisDataScope()
+                obj._deserialize(item)
+                self._AnalysisDataScope.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIAnalysisDataScope(AbstractModel):
+    r"""AI 分析的数据范围。DataScopeType值是CLSLogTopic。DataScopeEntry是数组结构，TopicId类型和Region类型是必填。实例： [{"Key":"TopicId",Value:"work-topic"},{"Key":"Region",Value:"ap-guangzhou"}]
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataScopeEntry: <p>告警AI诊断时查询的数据范围（查询哪些日志主题）</p>
+        :type DataScopeEntry: list of AIAnalysisDataScopeEntry
+        :param _DataScopeType: <p>告警AI诊断的数据范围类型</p><p>枚举值：</p><ul><li>CLSLogTopic： 日志主题</li></ul><p>默认值：CLSLogTopic</p>
+        :type DataScopeType: str
+        """
+        self._DataScopeEntry = None
+        self._DataScopeType = None
+
+    @property
+    def DataScopeEntry(self):
+        r"""<p>告警AI诊断时查询的数据范围（查询哪些日志主题）</p>
+        :rtype: list of AIAnalysisDataScopeEntry
+        """
+        return self._DataScopeEntry
+
+    @DataScopeEntry.setter
+    def DataScopeEntry(self, DataScopeEntry):
+        self._DataScopeEntry = DataScopeEntry
+
+    @property
+    def DataScopeType(self):
+        r"""<p>告警AI诊断的数据范围类型</p><p>枚举值：</p><ul><li>CLSLogTopic： 日志主题</li></ul><p>默认值：CLSLogTopic</p>
+        :rtype: str
+        """
+        return self._DataScopeType
+
+    @DataScopeType.setter
+    def DataScopeType(self, DataScopeType):
+        self._DataScopeType = DataScopeType
+
+
+    def _deserialize(self, params):
+        if params.get("DataScopeEntry") is not None:
+            self._DataScopeEntry = []
+            for item in params.get("DataScopeEntry"):
+                obj = AIAnalysisDataScopeEntry()
+                obj._deserialize(item)
+                self._DataScopeEntry.append(obj)
+        self._DataScopeType = params.get("DataScopeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIAnalysisDataScopeEntry(AbstractModel):
+    r"""AI 分析的数据范围配置，如CLS日志主题配置。Key如果设置为TopicId，Value是对应日志主题topic_id，Key如果设置为Region，Value是地域的英文名，在https://cloud.tencent.com/document/product/614/18940查询。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>值类型</p><p>枚举值：</p><ul><li>TopicId： 日志主题ID</li><li>Region： 地域</li></ul>
+        :type Key: str
+        :param _Value: <p>Key如果设置为TopicId，Value是对应日志主题topic_id 在https://cloud.tencent.com/document/product/614/56454 查询，Key如果设置为Region，Value是地域的英文名，在https://cloud.tencent.com/document/product/614/18940查询。</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>值类型</p><p>枚举值：</p><ul><li>TopicId： 日志主题ID</li><li>Region： 地域</li></ul>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>Key如果设置为TopicId，Value是对应日志主题topic_id 在https://cloud.tencent.com/document/product/614/56454 查询，Key如果设置为Region，Value是地域的英文名，在https://cloud.tencent.com/document/product/614/18940查询。</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccessControlRule(AbstractModel):
     r"""DataSight访问控制规则
 
@@ -635,52 +828,55 @@ class AlarmInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 告警策略名称。
+        :param _Name: <p>告警策略名称。</p>
         :type Name: str
-        :param _AlarmTargets: 监控对象列表。
+        :param _AlarmTargets: <p>监控对象列表。</p>
         :type AlarmTargets: list of AlarmTargetInfo
-        :param _MonitorTime: 监控任务运行时间点。
+        :param _MonitorTime: <p>监控任务运行时间点。</p>
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _Condition: 是否触发告警的单触发条件。与MultiConditions参数互斥。
+        :param _Condition: <p>是否触发告警的单触发条件。与MultiConditions参数互斥。</p>
         :type Condition: str
-        :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+        :param _TriggerCount: <p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。</p>
         :type TriggerCount: int
-        :param _AlarmPeriod: 告警重复的周期。单位是min。取值范围是0~1440。
+        :param _AlarmPeriod: <p>告警重复的周期。单位是min。取值范围是0~1440。</p>
         :type AlarmPeriod: int
-        :param _AlarmNoticeIds: 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
+        :param _AlarmNoticeIds: <p>关联的告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
         :type AlarmNoticeIds: list of str
-        :param _Status: 开启状态。
+        :param _Status: <p>开启状态。</p>
         :type Status: bool
-        :param _AlarmId: 告警策略ID。
+        :param _AlarmId: <p>告警策略ID。</p>
         :type AlarmId: str
-        :param _CreateTime: 创建时间。格式： YYYY-MM-DD HH:MM:SS
+        :param _CreateTime: <p>创建时间。格式： YYYY-MM-DD HH:MM:SS</p>
         :type CreateTime: str
-        :param _UpdateTime: 最近更新时间。格式： YYYY-MM-DD HH:MM:SS
+        :param _UpdateTime: <p>最近更新时间。格式： YYYY-MM-DD HH:MM:SS</p>
         :type UpdateTime: str
-        :param _MessageTemplate: 自定义通知模板
+        :param _MessageTemplate: <p>自定义通知模板</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageTemplate: str
-        :param _CallBack: 自定义回调模板
+        :param _CallBack: <p>自定义回调模板</p>
         :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
-        :param _Analysis: 多维分析设置
+        :param _Analysis: <p>多维分析设置</p>
         :type Analysis: list of AnalysisDimensional
-        :param _GroupTriggerStatus: 分组触发状态。true：开启，false：关闭（默认）
+        :param _GroupTriggerStatus: <p>分组触发状态。true：开启，false：关闭（默认）</p>
         :type GroupTriggerStatus: bool
-        :param _GroupTriggerCondition: 分组触发条件。
+        :param _GroupTriggerCondition: <p>分组触发条件。</p>
         :type GroupTriggerCondition: list of str
-        :param _Tags: 告警策略绑定的标签信息。
+        :param _Tags: <p>告警策略绑定的标签信息。</p>
         :type Tags: list of Tag
-        :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
+        :param _MonitorObjectType: <p>监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。</p>
         :type MonitorObjectType: int
-        :param _AlarmLevel: 告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
+        :param _AlarmLevel: <p>告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。</p>
         :type AlarmLevel: int
-        :param _Classifications: 告警附加分类字段。
+        :param _Classifications: <p>告警附加分类字段。</p>
         :type Classifications: list of AlarmClassification
-        :param _MultiConditions: 多触发条件。与
-Condition互斥。
+        :param _MultiConditions: <p>多触发条件。与<br>Condition互斥。</p>
         :type MultiConditions: list of MultiCondition
-        :param _MonitorNotice: 腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥
+        :param _MonitorNotice: <p>腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥</p>
         :type MonitorNotice: :class:`tencentcloud.cls.v20201016.models.MonitorNotice`
+        :param _AIAnalysis: <p>AI分析内容</p>
+        :type AIAnalysis: :class:`tencentcloud.cls.v20201016.models.AIAnalysis`
+        :param _SubUin: <p>最后修改人的uin信息</p>
+        :type SubUin: int
         """
         self._Name = None
         self._AlarmTargets = None
@@ -704,10 +900,12 @@ Condition互斥。
         self._Classifications = None
         self._MultiConditions = None
         self._MonitorNotice = None
+        self._AIAnalysis = None
+        self._SubUin = None
 
     @property
     def Name(self):
-        r"""告警策略名称。
+        r"""<p>告警策略名称。</p>
         :rtype: str
         """
         return self._Name
@@ -718,7 +916,7 @@ Condition互斥。
 
     @property
     def AlarmTargets(self):
-        r"""监控对象列表。
+        r"""<p>监控对象列表。</p>
         :rtype: list of AlarmTargetInfo
         """
         return self._AlarmTargets
@@ -729,7 +927,7 @@ Condition互斥。
 
     @property
     def MonitorTime(self):
-        r"""监控任务运行时间点。
+        r"""<p>监控任务运行时间点。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
         """
         return self._MonitorTime
@@ -740,7 +938,7 @@ Condition互斥。
 
     @property
     def Condition(self):
-        r"""是否触发告警的单触发条件。与MultiConditions参数互斥。
+        r"""<p>是否触发告警的单触发条件。与MultiConditions参数互斥。</p>
         :rtype: str
         """
         return self._Condition
@@ -751,7 +949,7 @@ Condition互斥。
 
     @property
     def TriggerCount(self):
-        r"""持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
+        r"""<p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。</p>
         :rtype: int
         """
         return self._TriggerCount
@@ -762,7 +960,7 @@ Condition互斥。
 
     @property
     def AlarmPeriod(self):
-        r"""告警重复的周期。单位是min。取值范围是0~1440。
+        r"""<p>告警重复的周期。单位是min。取值范围是0~1440。</p>
         :rtype: int
         """
         return self._AlarmPeriod
@@ -773,7 +971,7 @@ Condition互斥。
 
     @property
     def AlarmNoticeIds(self):
-        r"""关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
+        r"""<p>关联的告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
         :rtype: list of str
         """
         return self._AlarmNoticeIds
@@ -784,7 +982,7 @@ Condition互斥。
 
     @property
     def Status(self):
-        r"""开启状态。
+        r"""<p>开启状态。</p>
         :rtype: bool
         """
         return self._Status
@@ -795,7 +993,7 @@ Condition互斥。
 
     @property
     def AlarmId(self):
-        r"""告警策略ID。
+        r"""<p>告警策略ID。</p>
         :rtype: str
         """
         return self._AlarmId
@@ -806,7 +1004,7 @@ Condition互斥。
 
     @property
     def CreateTime(self):
-        r"""创建时间。格式： YYYY-MM-DD HH:MM:SS
+        r"""<p>创建时间。格式： YYYY-MM-DD HH:MM:SS</p>
         :rtype: str
         """
         return self._CreateTime
@@ -817,7 +1015,7 @@ Condition互斥。
 
     @property
     def UpdateTime(self):
-        r"""最近更新时间。格式： YYYY-MM-DD HH:MM:SS
+        r"""<p>最近更新时间。格式： YYYY-MM-DD HH:MM:SS</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -828,7 +1026,7 @@ Condition互斥。
 
     @property
     def MessageTemplate(self):
-        r"""自定义通知模板
+        r"""<p>自定义通知模板</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -840,7 +1038,7 @@ Condition互斥。
 
     @property
     def CallBack(self):
-        r"""自定义回调模板
+        r"""<p>自定义回调模板</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
         """
         return self._CallBack
@@ -851,7 +1049,7 @@ Condition互斥。
 
     @property
     def Analysis(self):
-        r"""多维分析设置
+        r"""<p>多维分析设置</p>
         :rtype: list of AnalysisDimensional
         """
         return self._Analysis
@@ -862,7 +1060,7 @@ Condition互斥。
 
     @property
     def GroupTriggerStatus(self):
-        r"""分组触发状态。true：开启，false：关闭（默认）
+        r"""<p>分组触发状态。true：开启，false：关闭（默认）</p>
         :rtype: bool
         """
         return self._GroupTriggerStatus
@@ -873,7 +1071,7 @@ Condition互斥。
 
     @property
     def GroupTriggerCondition(self):
-        r"""分组触发条件。
+        r"""<p>分组触发条件。</p>
         :rtype: list of str
         """
         return self._GroupTriggerCondition
@@ -884,7 +1082,7 @@ Condition互斥。
 
     @property
     def Tags(self):
-        r"""告警策略绑定的标签信息。
+        r"""<p>告警策略绑定的标签信息。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -895,7 +1093,7 @@ Condition互斥。
 
     @property
     def MonitorObjectType(self):
-        r"""监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。 
+        r"""<p>监控对象类型。0:执行语句共用监控对象;1:每个执行语句单独选择监控对象。</p>
         :rtype: int
         """
         return self._MonitorObjectType
@@ -906,7 +1104,7 @@ Condition互斥。
 
     @property
     def AlarmLevel(self):
-        r"""告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。
+        r"""<p>告警级别。0:警告(Warn);1:提醒(Info);2:紧急 (Critical)。</p>
         :rtype: int
         """
         return self._AlarmLevel
@@ -917,7 +1115,7 @@ Condition互斥。
 
     @property
     def Classifications(self):
-        r"""告警附加分类字段。
+        r"""<p>告警附加分类字段。</p>
         :rtype: list of AlarmClassification
         """
         return self._Classifications
@@ -928,8 +1126,7 @@ Condition互斥。
 
     @property
     def MultiConditions(self):
-        r"""多触发条件。与
-Condition互斥。
+        r"""<p>多触发条件。与<br>Condition互斥。</p>
         :rtype: list of MultiCondition
         """
         return self._MultiConditions
@@ -940,7 +1137,7 @@ Condition互斥。
 
     @property
     def MonitorNotice(self):
-        r"""腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥
+        r"""<p>腾讯云可观测平台通知渠道相关信息，和AlarmNoticeIds互斥</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorNotice`
         """
         return self._MonitorNotice
@@ -948,6 +1145,28 @@ Condition互斥。
     @MonitorNotice.setter
     def MonitorNotice(self, MonitorNotice):
         self._MonitorNotice = MonitorNotice
+
+    @property
+    def AIAnalysis(self):
+        r"""<p>AI分析内容</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AIAnalysis`
+        """
+        return self._AIAnalysis
+
+    @AIAnalysis.setter
+    def AIAnalysis(self, AIAnalysis):
+        self._AIAnalysis = AIAnalysis
+
+    @property
+    def SubUin(self):
+        r"""<p>最后修改人的uin信息</p>
+        :rtype: int
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
 
 
     def _deserialize(self, params):
@@ -1004,6 +1223,10 @@ Condition互斥。
         if params.get("MonitorNotice") is not None:
             self._MonitorNotice = MonitorNotice()
             self._MonitorNotice._deserialize(params.get("MonitorNotice"))
+        if params.get("AIAnalysis") is not None:
+            self._AIAnalysis = AIAnalysis()
+            self._AIAnalysis._deserialize(params.get("AIAnalysis"))
+        self._SubUin = params.get("SubUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2852,6 +3075,228 @@ class BaseMetricCollectConfig(AbstractModel):
                 obj = MetricCollectConfig()
                 obj._deserialize(item)
                 self._Configs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CLSDeliverTaskInfo(AbstractModel):
+    r"""跨账号投递任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名称</p>
+        :type TaskName: str
+        :param _Uin: <p>主账号id</p>
+        :type Uin: int
+        :param _SourceTopicConfig: <p>源主题信息</p>
+        :type SourceTopicConfig: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        :param _TargetTopicConfig: <p>目标主题信息</p>
+        :type TargetTopicConfig: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        :param _DeliverRule: <p>投递规则</p>
+        :type DeliverRule: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        :param _Compliance: <p>合规承诺</p>
+        :type Compliance: int
+        :param _Status: <p>任务状态。</p><p>枚举值：</p><ul><li>0： 运行中</li><li>1： 已暂停</li><li>2： 已完成</li><li>3： 异常</li></ul>
+        :type Status: int
+        :param _Enable: <p>状态 </p><p>枚举值：</p><ul><li>0： 运行</li><li>1： 暂停</li></ul>
+        :type Enable: int
+        :param _Progress: <p>任务进度百分比</p>
+        :type Progress: int
+        :param _HasServicesLog: <p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul>
+        :type HasServicesLog: int
+        :param _CreateTime: <p>创建时间。</p><p>单位：秒级时间戳</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p><p>单位：秒级时间戳</p>
+        :type UpdateTime: int
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._Uin = None
+        self._SourceTopicConfig = None
+        self._TargetTopicConfig = None
+        self._DeliverRule = None
+        self._Compliance = None
+        self._Status = None
+        self._Enable = None
+        self._Progress = None
+        self._HasServicesLog = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Uin(self):
+        r"""<p>主账号id</p>
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SourceTopicConfig(self):
+        r"""<p>源主题信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        """
+        return self._SourceTopicConfig
+
+    @SourceTopicConfig.setter
+    def SourceTopicConfig(self, SourceTopicConfig):
+        self._SourceTopicConfig = SourceTopicConfig
+
+    @property
+    def TargetTopicConfig(self):
+        r"""<p>目标主题信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        """
+        return self._TargetTopicConfig
+
+    @TargetTopicConfig.setter
+    def TargetTopicConfig(self, TargetTopicConfig):
+        self._TargetTopicConfig = TargetTopicConfig
+
+    @property
+    def DeliverRule(self):
+        r"""<p>投递规则</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        """
+        return self._DeliverRule
+
+    @DeliverRule.setter
+    def DeliverRule(self, DeliverRule):
+        self._DeliverRule = DeliverRule
+
+    @property
+    def Compliance(self):
+        r"""<p>合规承诺</p>
+        :rtype: int
+        """
+        return self._Compliance
+
+    @Compliance.setter
+    def Compliance(self, Compliance):
+        self._Compliance = Compliance
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。</p><p>枚举值：</p><ul><li>0： 运行中</li><li>1： 已暂停</li><li>2： 已完成</li><li>3： 异常</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Enable(self):
+        r"""<p>状态 </p><p>枚举值：</p><ul><li>0： 运行</li><li>1： 暂停</li></ul>
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Progress(self):
+        r"""<p>任务进度百分比</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。</p><p>单位：秒级时间戳</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>单位：秒级时间戳</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._Uin = params.get("Uin")
+        if params.get("SourceTopicConfig") is not None:
+            self._SourceTopicConfig = SourceTopicConfig()
+            self._SourceTopicConfig._deserialize(params.get("SourceTopicConfig"))
+        if params.get("TargetTopicConfig") is not None:
+            self._TargetTopicConfig = TargetTopicConfig()
+            self._TargetTopicConfig._deserialize(params.get("TargetTopicConfig"))
+        if params.get("DeliverRule") is not None:
+            self._DeliverRule = DeliverRule()
+            self._DeliverRule._deserialize(params.get("DeliverRule"))
+        self._Compliance = params.get("Compliance")
+        self._Status = params.get("Status")
+        self._Enable = params.get("Enable")
+        self._Progress = params.get("Progress")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8256,6 +8701,166 @@ class CreateAlarmShieldResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""屏蔽规则ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCLSDeliverTaskRequest(AbstractModel):
+    r"""CreateCLSDeliverTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: <p>任务名称</p><p>参数格式：<code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+        :type TaskName: str
+        :param _SourceTopicConfig: <p>源主题信息</p>
+        :type SourceTopicConfig: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        :param _TargetTopicConfig: <p>目标主题信息</p>
+        :type TargetTopicConfig: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        :param _DeliverRule: <p>投递规则</p>
+        :type DeliverRule: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        :param _Compliance: <p>合规承诺。</p><p>枚举值：</p><ul><li>1： 同意数据跨域传输条款</li></ul>
+        :type Compliance: int
+        :param _HasServicesLog: <p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul><p>默认值：2</p>
+        :type HasServicesLog: int
+        """
+        self._TaskName = None
+        self._SourceTopicConfig = None
+        self._TargetTopicConfig = None
+        self._DeliverRule = None
+        self._Compliance = None
+        self._HasServicesLog = None
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p><p>参数格式：<code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceTopicConfig(self):
+        r"""<p>源主题信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        """
+        return self._SourceTopicConfig
+
+    @SourceTopicConfig.setter
+    def SourceTopicConfig(self, SourceTopicConfig):
+        self._SourceTopicConfig = SourceTopicConfig
+
+    @property
+    def TargetTopicConfig(self):
+        r"""<p>目标主题信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        """
+        return self._TargetTopicConfig
+
+    @TargetTopicConfig.setter
+    def TargetTopicConfig(self, TargetTopicConfig):
+        self._TargetTopicConfig = TargetTopicConfig
+
+    @property
+    def DeliverRule(self):
+        r"""<p>投递规则</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        """
+        return self._DeliverRule
+
+    @DeliverRule.setter
+    def DeliverRule(self, DeliverRule):
+        self._DeliverRule = DeliverRule
+
+    @property
+    def Compliance(self):
+        r"""<p>合规承诺。</p><p>枚举值：</p><ul><li>1： 同意数据跨域传输条款</li></ul>
+        :rtype: int
+        """
+        return self._Compliance
+
+    @Compliance.setter
+    def Compliance(self, Compliance):
+        self._Compliance = Compliance
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul><p>默认值：2</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        if params.get("SourceTopicConfig") is not None:
+            self._SourceTopicConfig = SourceTopicConfig()
+            self._SourceTopicConfig._deserialize(params.get("SourceTopicConfig"))
+        if params.get("TargetTopicConfig") is not None:
+            self._TargetTopicConfig = TargetTopicConfig()
+            self._TargetTopicConfig._deserialize(params.get("TargetTopicConfig"))
+        if params.get("DeliverRule") is not None:
+            self._DeliverRule = DeliverRule()
+            self._DeliverRule._deserialize(params.get("DeliverRule"))
+        self._Compliance = params.get("Compliance")
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCLSDeliverTaskResponse(AbstractModel):
+    r"""CreateCLSDeliverTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -18160,6 +18765,70 @@ class DeleteAlarmShieldResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCLSDeliverTaskRequest(AbstractModel):
+    r"""DeleteCLSDeliverTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCLSDeliverTaskResponse(AbstractModel):
+    r"""DeleteCLSDeliverTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudProductLogCollectionRequest(AbstractModel):
     r"""DeleteCloudProductLogCollection请求参数结构体
 
@@ -21147,6 +21816,42 @@ ap-nanjing 南京地域。
         
 
 
+class DeliverRule(AbstractModel):
+    r"""投递规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataScope: <p>数据投递范围。</p><p>枚举值：</p><ul><li>1： 历史+新增数据</li><li>2： 自定义时间范围</li><li>3： 仅新增</li></ul><p>本次仅支持3新增数据。后续支持： 2自定义时间范围和1历史+新增数据</p>
+        :type DataScope: int
+        """
+        self._DataScope = None
+
+    @property
+    def DataScope(self):
+        r"""<p>数据投递范围。</p><p>枚举值：</p><ul><li>1： 历史+新增数据</li><li>2： 自定义时间范围</li><li>3： 仅新增</li></ul><p>本次仅支持3新增数据。后续支持： 2自定义时间范围和1历史+新增数据</p>
+        :rtype: int
+        """
+        return self._DataScope
+
+    @DataScope.setter
+    def DataScope(self, DataScope):
+        self._DataScope = DataScope
+
+
+    def _deserialize(self, params):
+        self._DataScope = params.get("DataScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Delta(AbstractModel):
     r"""返回的内容
 
@@ -22303,6 +23008,140 @@ class DescribeAlertRecordHistoryResponse(AbstractModel):
                 obj = AlertHistoryRecord()
                 obj._deserialize(item)
                 self._Records.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCLSDeliverTasksRequest(AbstractModel):
+    r"""DescribeCLSDeliverTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>taskName 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>sourceLogsetId 按照【源日志集】进行过滤。 类型：String 必选：否  </li><li>targetLogsetId 按照【目标日志集】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<ul><li>taskId 按照【任务id】进行过滤。 类型：String 必选：否  </li><li>taskName 按照【任务名称】进行过滤。 类型：String 必选：否  </li><li>sourceLogsetId 按照【源日志集】进行过滤。 类型：String 必选：否  </li><li>targetLogsetId 按照【目标日志集】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCLSDeliverTasksResponse(AbstractModel):
+    r"""DescribeCLSDeliverTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>投递任务信息列表</p>
+        :type Infos: list of CLSDeliverTaskInfo
+        :param _Total: <p>符合条件的任务总数。</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>投递任务信息列表</p>
+        :rtype: list of CLSDeliverTaskInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def Total(self):
+        r"""<p>符合条件的任务总数。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = CLSDeliverTaskInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -41287,6 +42126,166 @@ class ModifyAlarmShieldResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCLSDeliverTaskRequest(AbstractModel):
+    r"""ModifyCLSDeliverTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名称</p><p>参数格式：<code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+        :type TaskName: str
+        :param _SourceTopicConfig: <p>源主题信息</p>
+        :type SourceTopicConfig: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        :param _TargetTopicConfig: <p>目标主题信息</p>
+        :type TargetTopicConfig: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        :param _DeliverRule: <p>投递规则</p>
+        :type DeliverRule: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        :param _Enable: <p>状态</p><p>枚举值：</p><ul><li>0： 运行</li><li>1： 暂停</li></ul>
+        :type Enable: int
+        :param _HasServicesLog: <p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul>
+        :type HasServicesLog: int
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._SourceTopicConfig = None
+        self._TargetTopicConfig = None
+        self._DeliverRule = None
+        self._Enable = None
+        self._HasServicesLog = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p><p>参数格式：<code>^[a-zA-Z0-9_-]{1,64}$</code></p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def SourceTopicConfig(self):
+        r"""<p>源主题信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.SourceTopicConfig`
+        """
+        return self._SourceTopicConfig
+
+    @SourceTopicConfig.setter
+    def SourceTopicConfig(self, SourceTopicConfig):
+        self._SourceTopicConfig = SourceTopicConfig
+
+    @property
+    def TargetTopicConfig(self):
+        r"""<p>目标主题信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TargetTopicConfig`
+        """
+        return self._TargetTopicConfig
+
+    @TargetTopicConfig.setter
+    def TargetTopicConfig(self, TargetTopicConfig):
+        self._TargetTopicConfig = TargetTopicConfig
+
+    @property
+    def DeliverRule(self):
+        r"""<p>投递规则</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeliverRule`
+        """
+        return self._DeliverRule
+
+    @DeliverRule.setter
+    def DeliverRule(self, DeliverRule):
+        self._DeliverRule = DeliverRule
+
+    @property
+    def Enable(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 运行</li><li>1： 暂停</li></ul>
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。</p><p>枚举值：</p><ul><li>1： 关闭</li><li>2： 开启</li></ul>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        if params.get("SourceTopicConfig") is not None:
+            self._SourceTopicConfig = SourceTopicConfig()
+            self._SourceTopicConfig._deserialize(params.get("SourceTopicConfig"))
+        if params.get("TargetTopicConfig") is not None:
+            self._TargetTopicConfig = TargetTopicConfig()
+            self._TargetTopicConfig._deserialize(params.get("TargetTopicConfig"))
+        if params.get("DeliverRule") is not None:
+            self._DeliverRule = DeliverRule()
+            self._DeliverRule._deserialize(params.get("DeliverRule"))
+        self._Enable = params.get("Enable")
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCLSDeliverTaskResponse(AbstractModel):
+    r"""ModifyCLSDeliverTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCloudProductLogCollectionRequest(AbstractModel):
     r"""ModifyCloudProductLogCollection请求参数结构体
 
@@ -56864,6 +57863,113 @@ class ShipperTaskInfo(AbstractModel):
         
 
 
+class SourceTopicConfig(AbstractModel):
+    r"""源日志主题配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicFilterType: <p>日志主题筛选方式。</p><p>枚举值：</p><ul><li>1： 静态选择</li></ul>
+        :type TopicFilterType: int
+        :param _LogsetId: <p>源日志集id</p>
+        :type LogsetId: str
+        :param _Topics: <p>源日志主题列表</p><p>TopicFilterType=1时必填</p>
+        :type Topics: list of SourceTopicInfo
+        """
+        self._TopicFilterType = None
+        self._LogsetId = None
+        self._Topics = None
+
+    @property
+    def TopicFilterType(self):
+        r"""<p>日志主题筛选方式。</p><p>枚举值：</p><ul><li>1： 静态选择</li></ul>
+        :rtype: int
+        """
+        return self._TopicFilterType
+
+    @TopicFilterType.setter
+    def TopicFilterType(self, TopicFilterType):
+        self._TopicFilterType = TopicFilterType
+
+    @property
+    def LogsetId(self):
+        r"""<p>源日志集id</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Topics(self):
+        r"""<p>源日志主题列表</p><p>TopicFilterType=1时必填</p>
+        :rtype: list of SourceTopicInfo
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+
+    def _deserialize(self, params):
+        self._TopicFilterType = params.get("TopicFilterType")
+        self._LogsetId = params.get("LogsetId")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = SourceTopicInfo()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceTopicInfo(AbstractModel):
+    r"""源日志主题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题id</p>
+        :type TopicId: str
+        """
+        self._TopicId = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SplitPartitionRequest(AbstractModel):
     r"""SplitPartition请求参数结构体
 
@@ -57335,6 +58441,117 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TargetTopicConfig(AbstractModel):
+    r"""目标主题配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountType: <p>目标账号类型。</p><p>枚举值：</p><ul><li>1： 当前主账号</li><li>2： 其他主账号</li></ul>
+        :type AccountType: int
+        :param _Region: <p>目标地域</p><p>参数格式：ap-guangzhou</p>
+        :type Region: str
+        :param _LogsetId: <p>目标日志集id</p>
+        :type LogsetId: str
+        :param _TopicId: <p>目标日志主题id</p>
+        :type TopicId: str
+        :param _RoleArn: <p>角色ARN</p><p>AccountType=2时必填</p>
+        :type RoleArn: str
+        :param _ExternalId: <p>外部ID</p><p>AccountType=2时必填</p>
+        :type ExternalId: str
+        """
+        self._AccountType = None
+        self._Region = None
+        self._LogsetId = None
+        self._TopicId = None
+        self._RoleArn = None
+        self._ExternalId = None
+
+    @property
+    def AccountType(self):
+        r"""<p>目标账号类型。</p><p>枚举值：</p><ul><li>1： 当前主账号</li><li>2： 其他主账号</li></ul>
+        :rtype: int
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Region(self):
+        r"""<p>目标地域</p><p>参数格式：ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def LogsetId(self):
+        r"""<p>目标日志集id</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        r"""<p>目标日志主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def RoleArn(self):
+        r"""<p>角色ARN</p><p>AccountType=2时必填</p>
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""<p>外部ID</p><p>AccountType=2时必填</p>
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
+
+    def _deserialize(self, params):
+        self._AccountType = params.get("AccountType")
+        self._Region = params.get("Region")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -140,6 +140,9 @@ MISSINGPARAMETER_MISSINGVOICEPRINTUPDATEPARAMS = 'MissingParameter.MissingVoiceP
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
+# OperationDenied.AccountInArrears
+OPERATIONDENIED_ACCOUNTINARREARS = 'OperationDenied.AccountInArrears'
+
 # task已存在
 RESOURCEINUSE_TASKINUSE = 'ResourceInUse.TaskInUse'
 

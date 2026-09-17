@@ -3522,36 +3522,24 @@ class CardWarnInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BorderCheck: 证件边缘是否完整
-0：正常
-1：边缘不完整
+        :param _BorderCheck: <p>证件边缘是否完整<br>0：正常<br>1：边缘不完整</p>
         :type BorderCheck: int
-        :param _OcclusionCheck: 证件是否被遮挡
-0：正常
-1：有遮挡
+        :param _OcclusionCheck: <p>证件是否被遮挡<br>0：正常<br>1：有遮挡</p>
         :type OcclusionCheck: int
-        :param _CopyCheck: 是否复印
-0:正常
-1:复印件
+        :param _CopyCheck: <p>是否复印<br>0:正常<br>1:复印件</p>
         :type CopyCheck: int
-        :param _ReshootCheck: 是否屏幕翻拍
-0:正常
-1:翻拍
+        :param _ReshootCheck: <p>是否屏幕翻拍<br>0:正常<br>1:翻拍</p>
         :type ReshootCheck: int
-        :param _PSCheck: 证件是否有PS
-0：正常
-1：有PS
+        :param _PSCheck: <p>证件是否有PS<br>0：正常<br>1：有PS</p>
         :type PSCheck: int
-        :param _BlurCheck: 是否模糊：
-0:正常
-1:模糊
+        :param _BlurCheck: <p>是否模糊：<br>0:正常<br>1:模糊</p>
         :type BlurCheck: int
-        :param _BlurScore: 模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
+        :param _BlurScore: <p>模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5</p>
         :type BlurScore: float
-        :param _ElectronCheck: 是否电子身份证
-0：否
-1：是电子身份证
+        :param _ElectronCheck: <p>是否电子身份证<br>0：否<br>1：是电子身份证</p>
         :type ElectronCheck: int
+        :param _ReflectCheck: <p>是否存在反光</p><p>枚举值：</p><ul><li>0： 正常</li><li>1： 反光</li></ul><p>默认值：0</p>
+        :type ReflectCheck: int
         """
         self._BorderCheck = None
         self._OcclusionCheck = None
@@ -3561,12 +3549,11 @@ class CardWarnInfo(AbstractModel):
         self._BlurCheck = None
         self._BlurScore = None
         self._ElectronCheck = None
+        self._ReflectCheck = None
 
     @property
     def BorderCheck(self):
-        r"""证件边缘是否完整
-0：正常
-1：边缘不完整
+        r"""<p>证件边缘是否完整<br>0：正常<br>1：边缘不完整</p>
         :rtype: int
         """
         return self._BorderCheck
@@ -3577,9 +3564,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def OcclusionCheck(self):
-        r"""证件是否被遮挡
-0：正常
-1：有遮挡
+        r"""<p>证件是否被遮挡<br>0：正常<br>1：有遮挡</p>
         :rtype: int
         """
         return self._OcclusionCheck
@@ -3590,9 +3575,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def CopyCheck(self):
-        r"""是否复印
-0:正常
-1:复印件
+        r"""<p>是否复印<br>0:正常<br>1:复印件</p>
         :rtype: int
         """
         return self._CopyCheck
@@ -3603,9 +3586,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def ReshootCheck(self):
-        r"""是否屏幕翻拍
-0:正常
-1:翻拍
+        r"""<p>是否屏幕翻拍<br>0:正常<br>1:翻拍</p>
         :rtype: int
         """
         return self._ReshootCheck
@@ -3616,9 +3597,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def PSCheck(self):
-        r"""证件是否有PS
-0：正常
-1：有PS
+        r"""<p>证件是否有PS<br>0：正常<br>1：有PS</p>
         :rtype: int
         """
         return self._PSCheck
@@ -3629,9 +3608,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def BlurCheck(self):
-        r"""是否模糊：
-0:正常
-1:模糊
+        r"""<p>是否模糊：<br>0:正常<br>1:模糊</p>
         :rtype: int
         """
         return self._BlurCheck
@@ -3642,7 +3619,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def BlurScore(self):
-        r"""模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5
+        r"""<p>模糊分数， 范围：0.0-1.0，分数越高越模糊，建议阈值为0.5</p>
         :rtype: float
         """
         return self._BlurScore
@@ -3653,9 +3630,7 @@ class CardWarnInfo(AbstractModel):
 
     @property
     def ElectronCheck(self):
-        r"""是否电子身份证
-0：否
-1：是电子身份证
+        r"""<p>是否电子身份证<br>0：否<br>1：是电子身份证</p>
         :rtype: int
         """
         return self._ElectronCheck
@@ -3663,6 +3638,17 @@ class CardWarnInfo(AbstractModel):
     @ElectronCheck.setter
     def ElectronCheck(self, ElectronCheck):
         self._ElectronCheck = ElectronCheck
+
+    @property
+    def ReflectCheck(self):
+        r"""<p>是否存在反光</p><p>枚举值：</p><ul><li>0： 正常</li><li>1： 反光</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ReflectCheck
+
+    @ReflectCheck.setter
+    def ReflectCheck(self, ReflectCheck):
+        self._ReflectCheck = ReflectCheck
 
 
     def _deserialize(self, params):
@@ -3674,6 +3660,7 @@ class CardWarnInfo(AbstractModel):
         self._BlurCheck = params.get("BlurCheck")
         self._BlurScore = params.get("BlurScore")
         self._ElectronCheck = params.get("ElectronCheck")
+        self._ReflectCheck = params.get("ReflectCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13685,7 +13672,7 @@ class IDCardOCRRequest(AbstractModel):
         :type ImageUrl: str
         :param _CardSide: <p>FRONT：身份证有照片的一面（人像面），<br>BACK：身份证有国徽的一面（国徽面），<br>该参数如果不填，将为您自动判断身份证正反面。</p>
         :type CardSide: str
-        :param _Config: <p>以下可选字段均为bool 类型，默认false：<br>CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）<br>CropPortrait，人像照片裁剪（自动抠取身份证头像区域）<br>CopyWarn，复印件告警<br>BorderCheckWarn，边框不完整和框内遮挡告警<br>ReshootWarn，屏幕翻拍告警<br>DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证、水印告警）<br>TempIdWarn，临时身份证告警<br>InvalidDateWarn，身份证有效日期不合法告警<br>Quality，图片质量分数（评价图片的模糊程度）<br>MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）<br>ReflectWarn，是否开启反光检测<br>SDK 设置方式参考：Config = Json.stringify({&quot;CropIdCard&quot;:true,&quot;CropPortrait&quot;:true})<br>API 3.0 Explorer 设置方式参考：Config = {&quot;CropIdCard&quot;:true,&quot;CropPortrait&quot;:true}</p>
+        :param _Config: <p>以下可选字段均为bool 类型，默认false：<br>CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）<br>CropPortrait，人像照片裁剪（自动抠取身份证头像区域）<br>CopyWarn，复印件告警<br>BorderCheckWarn，边框不完整和框内遮挡告警<br>ReshootWarn，屏幕翻拍告警<br>DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证、水印告警）<br>TempIdWarn，临时身份证告警<br>InvalidDateWarn，身份证有效日期不合法告警<br>Quality，图片质量分数（评价图片的模糊程度）<br>MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）<br>ReflectWarn，是否开启反光检测<br>KeyCheck，是否开启字段名称（Key）的完整性及反光检测<br>ValueCheck，是否开启字段值（Value）的完整性及反光检测<br>SDK 设置方式参考：Config = Json.stringify({&quot;CropIdCard&quot;:true,&quot;CropPortrait&quot;:true})<br>API 3.0 Explorer 设置方式参考：Config = {&quot;CropIdCard&quot;:true,&quot;CropPortrait&quot;:true}</p>
         :type Config: str
         :param _EnableRecognitionRectify: <p>默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。</p>
         :type EnableRecognitionRectify: bool
@@ -13740,7 +13727,7 @@ class IDCardOCRRequest(AbstractModel):
 
     @property
     def Config(self):
-        r"""<p>以下可选字段均为bool 类型，默认false：<br>CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）<br>CropPortrait，人像照片裁剪（自动抠取身份证头像区域）<br>CopyWarn，复印件告警<br>BorderCheckWarn，边框不完整和框内遮挡告警<br>ReshootWarn，屏幕翻拍告警<br>DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证、水印告警）<br>TempIdWarn，临时身份证告警<br>InvalidDateWarn，身份证有效日期不合法告警<br>Quality，图片质量分数（评价图片的模糊程度）<br>MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）<br>ReflectWarn，是否开启反光检测<br>SDK 设置方式参考：Config = Json.stringify({&quot;CropIdCard&quot;:true,&quot;CropPortrait&quot;:true})<br>API 3.0 Explorer 设置方式参考：Config = {&quot;CropIdCard&quot;:true,&quot;CropPortrait&quot;:true}</p>
+        r"""<p>以下可选字段均为bool 类型，默认false：<br>CropIdCard，身份证照片裁剪（去掉证件外多余的边缘、自动矫正拍摄角度）<br>CropPortrait，人像照片裁剪（自动抠取身份证头像区域）<br>CopyWarn，复印件告警<br>BorderCheckWarn，边框不完整和框内遮挡告警<br>ReshootWarn，屏幕翻拍告警<br>DetectPsWarn，疑似存在PS痕迹告警（CardWarnType参数为 Advanced时同时开启电子身份证、水印告警）<br>TempIdWarn，临时身份证告警<br>InvalidDateWarn，身份证有效日期不合法告警<br>Quality，图片质量分数（评价图片的模糊程度）<br>MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）<br>ReflectWarn，是否开启反光检测<br>KeyCheck，是否开启字段名称（Key）的完整性及反光检测<br>ValueCheck，是否开启字段值（Value）的完整性及反光检测<br>SDK 设置方式参考：Config = Json.stringify({&quot;CropIdCard&quot;:true,&quot;CropPortrait&quot;:true})<br>API 3.0 Explorer 设置方式参考：Config = {&quot;CropIdCard&quot;:true,&quot;CropPortrait&quot;:true}</p>
         :rtype: str
         """
         return self._Config
@@ -13840,7 +13827,7 @@ class IDCardOCRResponse(AbstractModel):
         :type Authority: str
         :param _ValidDate: <p>证件有效期（国徽面）</p>
         :type ValidDate: str
-        :param _AdvancedInfo: <p>扩展信息，不请求则不返回，具体输入参考示例3和示例4。<br>IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；<br>Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；<br>Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;<br>BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;<br>WarnInfos，告警信息，Code 告警码列表和释义：<br>-9109 身份证有效日期不合法告警，<br>-9101 身份证边框不完整告警，<br>-9102 身份证复印件告警（黑白及彩色复印件）,<br>-9108 身份证复印件告警（仅黑白复印件），<br>-9103 身份证翻拍告警，<br>-9105 身份证框内遮挡告警，<br>-9104 临时身份证告警，<br>-9106 身份证疑似存在PS痕迹告警，<br>-9107 身份证反光告警，<br>-9110 电子身份证告警（仅CardWarnType参数为Advanced时），<br>-9111 水印告警</p>
+        :param _AdvancedInfo: <p>扩展信息，不请求则不返回，具体输入参考示例3和示例4。<br>IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；<br>Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；<br>Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;<br>BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;<br>IsKeyValid， 字段名称（Key）的聚合检测结果，请求 Config.KeyCheck 时返回，所有字段名称均完整且无反光时返回true，否则返回false；<br>IsValueValid，字段值（Value）的聚合检测结果，请求 Config.ValueCheck 时返回，所有字段值均完整且无反光时返回true，否则返回false；<br>WarnInfos，告警信息，Code 告警码列表和释义：<br>-9109 身份证有效日期不合法告警，<br>-9101 身份证边框不完整告警，<br>-9102 身份证复印件告警（黑白及彩色复印件）,<br>-9108 身份证复印件告警（仅黑白复印件），<br>-9103 身份证翻拍告警，<br>-9105 身份证框内遮挡告警，<br>-9104 临时身份证告警，<br>-9106 身份证疑似存在PS痕迹告警，<br>-9107 身份证反光告警，<br>-9110 电子身份证告警（仅CardWarnType参数为Advanced时），<br>-9111 水印告警</p>
         :type AdvancedInfo: str
         :param _ReflectDetailInfos: <p>反光点覆盖区域详情结果，具体内容请点击左侧链接</p>
         :type ReflectDetailInfos: list of ReflectDetailInfo
@@ -13949,7 +13936,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        r"""<p>扩展信息，不请求则不返回，具体输入参考示例3和示例4。<br>IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；<br>Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；<br>Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;<br>BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;<br>WarnInfos，告警信息，Code 告警码列表和释义：<br>-9109 身份证有效日期不合法告警，<br>-9101 身份证边框不完整告警，<br>-9102 身份证复印件告警（黑白及彩色复印件）,<br>-9108 身份证复印件告警（仅黑白复印件），<br>-9103 身份证翻拍告警，<br>-9105 身份证框内遮挡告警，<br>-9104 临时身份证告警，<br>-9106 身份证疑似存在PS痕迹告警，<br>-9107 身份证反光告警，<br>-9110 电子身份证告警（仅CardWarnType参数为Advanced时），<br>-9111 水印告警</p>
+        r"""<p>扩展信息，不请求则不返回，具体输入参考示例3和示例4。<br>IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；<br>Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；<br>Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;<br>BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;<br>IsKeyValid， 字段名称（Key）的聚合检测结果，请求 Config.KeyCheck 时返回，所有字段名称均完整且无反光时返回true，否则返回false；<br>IsValueValid，字段值（Value）的聚合检测结果，请求 Config.ValueCheck 时返回，所有字段值均完整且无反光时返回true，否则返回false；<br>WarnInfos，告警信息，Code 告警码列表和释义：<br>-9109 身份证有效日期不合法告警，<br>-9101 身份证边框不完整告警，<br>-9102 身份证复印件告警（黑白及彩色复印件）,<br>-9108 身份证复印件告警（仅黑白复印件），<br>-9103 身份证翻拍告警，<br>-9105 身份证框内遮挡告警，<br>-9104 临时身份证告警，<br>-9106 身份证疑似存在PS痕迹告警，<br>-9107 身份证反光告警，<br>-9110 电子身份证告警（仅CardWarnType参数为Advanced时），<br>-9111 水印告警</p>
         :rtype: str
         """
         return self._AdvancedInfo
@@ -25779,44 +25766,33 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
         :type ImageUrl: str
-        :param _CardType: 0 自动，自动判断输入证件的类型
-1 身份证人像面，指定输入证件类型为二代身份证人像面
-2 身份证国徽面，指定输入证件类型为二代身份证国徽面
-3 身份证人像国徽面，指定输入证件类型为二代身份证人像面或者国徽面
-4 临时身份证人像面，指定输入证件类型为临时身份证人像面
-5 临时身份证国徽面，指定输入证件类型为临时身份证国徽面
-6 临时身份证人像国徽面，指定输入证件类型为临时身份证人像面或者国徽面
-7 港澳台居住证人像面，指定输入证件类型为港澳台居住证人像面
-8 港澳台居住证国徽面，指定输入证件类型为港澳台居住证国徽面
-9 港澳台居住证人像国徽面，指定输入证件类型为港澳台居住证人像面或者国徽面
-10 外国人永久居留身份证人像面，指定输入证件类型为外国人永久居留证人像面
-11 外国人永久居留身份证国徽面，指定输入证件类型为外国人永久居留证国徽面
-12 外国人永久居留身份证人像国徽面，指定输入证件类型为外国人永久居留证人像或者国徽面
-该参数如果不填，将为您自动判断卡证类型。
+        :param _CardType: <p>0 自动，自动判断输入证件的类型<br>1 身份证人像面，指定输入证件类型为二代身份证人像面<br>2 身份证国徽面，指定输入证件类型为二代身份证国徽面<br>3 身份证人像国徽面，指定输入证件类型为二代身份证人像面或者国徽面<br>4 临时身份证人像面，指定输入证件类型为临时身份证人像面<br>5 临时身份证国徽面，指定输入证件类型为临时身份证国徽面<br>6 临时身份证人像国徽面，指定输入证件类型为临时身份证人像面或者国徽面<br>7 港澳台居住证人像面，指定输入证件类型为港澳台居住证人像面<br>8 港澳台居住证国徽面，指定输入证件类型为港澳台居住证国徽面<br>9 港澳台居住证人像国徽面，指定输入证件类型为港澳台居住证人像面或者国徽面<br>10 外国人永久居留身份证人像面，指定输入证件类型为外国人永久居留证人像面<br>11 外国人永久居留身份证国徽面，指定输入证件类型为外国人永久居留证国徽面<br>12 外国人永久居留身份证人像国徽面，指定输入证件类型为外国人永久居留证人像或者国徽面<br>该参数如果不填，将为您自动判断卡证类型。</p>
         :type CardType: int
-        :param _EnablePortrait: 默认值为false，打开返回证件头像切图。
+        :param _EnablePortrait: <p>默认值为false，打开返回证件头像切图。</p>
         :type EnablePortrait: bool
-        :param _EnableCropImage: 默认值为false，打开返回证件主体切图。
+        :param _EnableCropImage: <p>默认值为false，打开返回证件主体切图。</p>
         :type EnableCropImage: bool
-        :param _EnableBorderCheck: 默认值为false，打开返回边缘完整性判断。
+        :param _EnableBorderCheck: <p>默认值为false，打开返回边缘完整性判断。</p>
         :type EnableBorderCheck: bool
-        :param _EnableOcclusionCheck: 默认值为false，打开返回证件是否被遮挡。
+        :param _EnableOcclusionCheck: <p>默认值为false，打开返回证件是否被遮挡。</p>
         :type EnableOcclusionCheck: bool
-        :param _EnableCopyCheck: 默认值为false，打开返回证件是否存在复印。
+        :param _EnableCopyCheck: <p>默认值为false，打开返回证件是否存在复印。</p>
         :type EnableCopyCheck: bool
-        :param _EnableReshootCheck: 默认值为false，打开返回证件是否存在屏幕翻拍。
+        :param _EnableReshootCheck: <p>默认值为false，打开返回证件是否存在屏幕翻拍。</p>
         :type EnableReshootCheck: bool
-        :param _EnablePSCheck: 默认值为false，打开返回证件是否存在PS。类型为：临时、港澳台居住证、外国人居住证失效
+        :param _EnableReflectCheck: <p>默认值为false，打开返回是否存在反光。</p>
+        :type EnableReflectCheck: bool
+        :param _EnablePSCheck: <p>默认值为false，打开返回证件是否存在PS。类型为：临时、港澳台居住证、外国人居住证失效</p>
         :type EnablePSCheck: bool
-        :param _EnableWordCheck: 默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
+        :param _EnableWordCheck: <p>默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效</p>
         :type EnableWordCheck: bool
-        :param _EnableQualityCheck: 默认值为false，打开返回证件是否模糊。
+        :param _EnableQualityCheck: <p>默认值为false，打开返回证件是否模糊。</p>
         :type EnableQualityCheck: bool
-        :param _EnableElectronCheck: 默认值为false，打开返回是否存在电子身份证判断。
+        :param _EnableElectronCheck: <p>默认值为false，打开返回是否存在电子身份证判断。</p>
         :type EnableElectronCheck: bool
         """
         self._ImageBase64 = None
@@ -25828,6 +25804,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         self._EnableOcclusionCheck = None
         self._EnableCopyCheck = None
         self._EnableReshootCheck = None
+        self._EnableReflectCheck = None
         self._EnablePSCheck = None
         self._EnableWordCheck = None
         self._EnableQualityCheck = None
@@ -25835,7 +25812,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -25846,7 +25823,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""<p>图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -25857,20 +25834,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def CardType(self):
-        r"""0 自动，自动判断输入证件的类型
-1 身份证人像面，指定输入证件类型为二代身份证人像面
-2 身份证国徽面，指定输入证件类型为二代身份证国徽面
-3 身份证人像国徽面，指定输入证件类型为二代身份证人像面或者国徽面
-4 临时身份证人像面，指定输入证件类型为临时身份证人像面
-5 临时身份证国徽面，指定输入证件类型为临时身份证国徽面
-6 临时身份证人像国徽面，指定输入证件类型为临时身份证人像面或者国徽面
-7 港澳台居住证人像面，指定输入证件类型为港澳台居住证人像面
-8 港澳台居住证国徽面，指定输入证件类型为港澳台居住证国徽面
-9 港澳台居住证人像国徽面，指定输入证件类型为港澳台居住证人像面或者国徽面
-10 外国人永久居留身份证人像面，指定输入证件类型为外国人永久居留证人像面
-11 外国人永久居留身份证国徽面，指定输入证件类型为外国人永久居留证国徽面
-12 外国人永久居留身份证人像国徽面，指定输入证件类型为外国人永久居留证人像或者国徽面
-该参数如果不填，将为您自动判断卡证类型。
+        r"""<p>0 自动，自动判断输入证件的类型<br>1 身份证人像面，指定输入证件类型为二代身份证人像面<br>2 身份证国徽面，指定输入证件类型为二代身份证国徽面<br>3 身份证人像国徽面，指定输入证件类型为二代身份证人像面或者国徽面<br>4 临时身份证人像面，指定输入证件类型为临时身份证人像面<br>5 临时身份证国徽面，指定输入证件类型为临时身份证国徽面<br>6 临时身份证人像国徽面，指定输入证件类型为临时身份证人像面或者国徽面<br>7 港澳台居住证人像面，指定输入证件类型为港澳台居住证人像面<br>8 港澳台居住证国徽面，指定输入证件类型为港澳台居住证国徽面<br>9 港澳台居住证人像国徽面，指定输入证件类型为港澳台居住证人像面或者国徽面<br>10 外国人永久居留身份证人像面，指定输入证件类型为外国人永久居留证人像面<br>11 外国人永久居留身份证国徽面，指定输入证件类型为外国人永久居留证国徽面<br>12 外国人永久居留身份证人像国徽面，指定输入证件类型为外国人永久居留证人像或者国徽面<br>该参数如果不填，将为您自动判断卡证类型。</p>
         :rtype: int
         """
         return self._CardType
@@ -25881,7 +25845,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnablePortrait(self):
-        r"""默认值为false，打开返回证件头像切图。
+        r"""<p>默认值为false，打开返回证件头像切图。</p>
         :rtype: bool
         """
         return self._EnablePortrait
@@ -25892,7 +25856,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableCropImage(self):
-        r"""默认值为false，打开返回证件主体切图。
+        r"""<p>默认值为false，打开返回证件主体切图。</p>
         :rtype: bool
         """
         return self._EnableCropImage
@@ -25903,7 +25867,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableBorderCheck(self):
-        r"""默认值为false，打开返回边缘完整性判断。
+        r"""<p>默认值为false，打开返回边缘完整性判断。</p>
         :rtype: bool
         """
         return self._EnableBorderCheck
@@ -25914,7 +25878,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableOcclusionCheck(self):
-        r"""默认值为false，打开返回证件是否被遮挡。
+        r"""<p>默认值为false，打开返回证件是否被遮挡。</p>
         :rtype: bool
         """
         return self._EnableOcclusionCheck
@@ -25925,7 +25889,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableCopyCheck(self):
-        r"""默认值为false，打开返回证件是否存在复印。
+        r"""<p>默认值为false，打开返回证件是否存在复印。</p>
         :rtype: bool
         """
         return self._EnableCopyCheck
@@ -25936,7 +25900,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableReshootCheck(self):
-        r"""默认值为false，打开返回证件是否存在屏幕翻拍。
+        r"""<p>默认值为false，打开返回证件是否存在屏幕翻拍。</p>
         :rtype: bool
         """
         return self._EnableReshootCheck
@@ -25946,8 +25910,19 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         self._EnableReshootCheck = EnableReshootCheck
 
     @property
+    def EnableReflectCheck(self):
+        r"""<p>默认值为false，打开返回是否存在反光。</p>
+        :rtype: bool
+        """
+        return self._EnableReflectCheck
+
+    @EnableReflectCheck.setter
+    def EnableReflectCheck(self, EnableReflectCheck):
+        self._EnableReflectCheck = EnableReflectCheck
+
+    @property
     def EnablePSCheck(self):
-        r"""默认值为false，打开返回证件是否存在PS。类型为：临时、港澳台居住证、外国人居住证失效
+        r"""<p>默认值为false，打开返回证件是否存在PS。类型为：临时、港澳台居住证、外国人居住证失效</p>
         :rtype: bool
         """
         return self._EnablePSCheck
@@ -25958,7 +25933,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableWordCheck(self):
-        r"""默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效
+        r"""<p>默认值为false，打开返回字段级反光和字段级完整性告警。类型为：临时、港澳台居住证、外国人居住证失效</p>
         :rtype: bool
         """
         return self._EnableWordCheck
@@ -25969,7 +25944,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableQualityCheck(self):
-        r"""默认值为false，打开返回证件是否模糊。
+        r"""<p>默认值为false，打开返回证件是否模糊。</p>
         :rtype: bool
         """
         return self._EnableQualityCheck
@@ -25980,7 +25955,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
 
     @property
     def EnableElectronCheck(self):
-        r"""默认值为false，打开返回是否存在电子身份证判断。
+        r"""<p>默认值为false，打开返回是否存在电子身份证判断。</p>
         :rtype: bool
         """
         return self._EnableElectronCheck
@@ -26000,6 +25975,7 @@ class RecognizeValidIDCardOCRRequest(AbstractModel):
         self._EnableOcclusionCheck = params.get("EnableOcclusionCheck")
         self._EnableCopyCheck = params.get("EnableCopyCheck")
         self._EnableReshootCheck = params.get("EnableReshootCheck")
+        self._EnableReflectCheck = params.get("EnableReflectCheck")
         self._EnablePSCheck = params.get("EnablePSCheck")
         self._EnableWordCheck = params.get("EnableWordCheck")
         self._EnableQualityCheck = params.get("EnableQualityCheck")
@@ -26021,29 +25997,18 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 卡证类型
-身份证人像面
-身份证国徽面
-
-临时身份证人像面
-临时身份证人像面
-
-港澳台居住证人像面
-港澳台居住证国徽面
-
-外国人永久居留证人像面
-外国人永久居留证国徽面
+        :param _Type: <p>卡证类型<br>身份证人像面<br>身份证国徽面</p><p>临时身份证人像面<br>临时身份证人像面</p><p>港澳台居住证人像面<br>港澳台居住证国徽面</p><p>外国人永久居留证人像面<br>外国人永久居留证国徽面</p>
         :type Type: str
-        :param _IDCardInfo: 身份证信息
+        :param _IDCardInfo: <p>身份证信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IDCardInfo: :class:`tencentcloud.ocr.v20181119.models.IDCardInfo`
-        :param _TemporaryIDCardInfo: 临时身份证信息
+        :param _TemporaryIDCardInfo: <p>临时身份证信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemporaryIDCardInfo: :class:`tencentcloud.ocr.v20181119.models.TemporaryIDCardInfo`
-        :param _ResidencePermitInfo: 港澳台居住证信息
+        :param _ResidencePermitInfo: <p>港澳台居住证信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResidencePermitInfo: :class:`tencentcloud.ocr.v20181119.models.ResidencePermitInfo`
-        :param _PermanentResidencePermitInfo: 外国人永久居留证信息
+        :param _PermanentResidencePermitInfo: <p>外国人永久居留证信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PermanentResidencePermitInfo: :class:`tencentcloud.ocr.v20181119.models.PermanentResidencePermitInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -26058,18 +26023,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""卡证类型
-身份证人像面
-身份证国徽面
-
-临时身份证人像面
-临时身份证人像面
-
-港澳台居住证人像面
-港澳台居住证国徽面
-
-外国人永久居留证人像面
-外国人永久居留证国徽面
+        r"""<p>卡证类型<br>身份证人像面<br>身份证国徽面</p><p>临时身份证人像面<br>临时身份证人像面</p><p>港澳台居住证人像面<br>港澳台居住证国徽面</p><p>外国人永久居留证人像面<br>外国人永久居留证国徽面</p>
         :rtype: str
         """
         return self._Type
@@ -26080,7 +26034,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def IDCardInfo(self):
-        r"""身份证信息
+        r"""<p>身份证信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.IDCardInfo`
         """
@@ -26092,7 +26046,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def TemporaryIDCardInfo(self):
-        r"""临时身份证信息
+        r"""<p>临时身份证信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.TemporaryIDCardInfo`
         """
@@ -26104,7 +26058,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def ResidencePermitInfo(self):
-        r"""港澳台居住证信息
+        r"""<p>港澳台居住证信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ResidencePermitInfo`
         """
@@ -26116,7 +26070,7 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
 
     @property
     def PermanentResidencePermitInfo(self):
-        r"""外国人永久居留证信息
+        r"""<p>外国人永久居留证信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.PermanentResidencePermitInfo`
         """

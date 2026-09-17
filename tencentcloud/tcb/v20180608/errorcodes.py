@@ -77,6 +77,9 @@ FAILEDOPERATION_NETWORKERROR = 'FailedOperation.NetworkError'
 # 操作冲突。
 FAILEDOPERATION_OPERATIONCONFLICT = 'FailedOperation.OperationConflict'
 
+# 操作超时
+FAILEDOPERATION_OPERATIONTIMEOUT = 'FailedOperation.OperationTimeout'
+
 # Failed to connect to PostgreSQL instance.
 FAILEDOPERATION_PGCONNECTERROR = 'FailedOperation.PGConnectError'
 

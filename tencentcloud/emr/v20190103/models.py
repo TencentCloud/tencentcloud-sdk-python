@@ -5442,6 +5442,10 @@ class CreateCloudInstanceRequest(AbstractModel):
         :type ComputeResourceGroupIds: list of str
         :param _TerminateProtection: <p>是否开启实例保护</p>
         :type TerminateProtection: bool
+        :param _EnableEmrProxy: <p>是否启用emr-proxy</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 关闭</li></ul>
+        :type EnableEmrProxy: bool
+        :param _LogStoreID: <p>日志存储服务实例id</p>
+        :type LogStoreID: str
         """
         self._InstanceName = None
         self._ClusterClass = None
@@ -5466,6 +5470,8 @@ class CreateCloudInstanceRequest(AbstractModel):
         self._EnableSparkAppMonitorInfo = None
         self._ComputeResourceGroupIds = None
         self._TerminateProtection = None
+        self._EnableEmrProxy = None
+        self._LogStoreID = None
 
     @property
     def InstanceName(self):
@@ -5720,6 +5726,28 @@ class CreateCloudInstanceRequest(AbstractModel):
     def TerminateProtection(self, TerminateProtection):
         self._TerminateProtection = TerminateProtection
 
+    @property
+    def EnableEmrProxy(self):
+        r"""<p>是否启用emr-proxy</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 关闭</li></ul>
+        :rtype: bool
+        """
+        return self._EnableEmrProxy
+
+    @EnableEmrProxy.setter
+    def EnableEmrProxy(self, EnableEmrProxy):
+        self._EnableEmrProxy = EnableEmrProxy
+
+    @property
+    def LogStoreID(self):
+        r"""<p>日志存储服务实例id</p>
+        :rtype: str
+        """
+        return self._LogStoreID
+
+    @LogStoreID.setter
+    def LogStoreID(self, LogStoreID):
+        self._LogStoreID = LogStoreID
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5770,6 +5798,8 @@ class CreateCloudInstanceRequest(AbstractModel):
             self._EnableSparkAppMonitorInfo._deserialize(params.get("EnableSparkAppMonitorInfo"))
         self._ComputeResourceGroupIds = params.get("ComputeResourceGroupIds")
         self._TerminateProtection = params.get("TerminateProtection")
+        self._EnableEmrProxy = params.get("EnableEmrProxy")
+        self._LogStoreID = params.get("LogStoreID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

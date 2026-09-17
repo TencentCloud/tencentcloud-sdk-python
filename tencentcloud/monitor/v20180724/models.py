@@ -36501,33 +36501,35 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+        :param _GroupId: <p>告警分组ID，满足正则表达式<code>alert-[a-z0-9]{8}</code></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
-        :param _GroupName: 告警分组名称
+        :param _GroupName: <p>告警分组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
-        :param _AMPReceivers: 腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。
+        :param _AMPReceivers: <p>腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AMPReceivers: list of str
-        :param _CustomReceiver: 自定义告警模板
+        :param _CustomReceiver: <p>自定义告警模板</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomReceiver: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
-        :param _RepeatInterval: 告警通知间隔
+        :param _RepeatInterval: <p>告警通知间隔</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RepeatInterval: str
-        :param _TemplateId: 若告警分组通过模板创建，则返回模板ID
+        :param _TemplateId: <p>若告警分组通过模板创建，则返回模板ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: str
-        :param _Rules: 分组内告警规则详情
+        :param _Rules: <p>分组内告警规则详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of PrometheusAlertGroupRuleSet
-        :param _CreatedAt: 分组创建时间
+        :param _CreatedAt: <p>分组创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param _UpdatedAt: 分组更新时间
+        :param _UpdatedAt: <p>分组更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
+        :param _LastModifySubAccountUin: <p>最后修改人子账号uin</p>
+        :type LastModifySubAccountUin: str
         """
         self._GroupId = None
         self._GroupName = None
@@ -36538,10 +36540,11 @@ class PrometheusAlertGroupSet(AbstractModel):
         self._Rules = None
         self._CreatedAt = None
         self._UpdatedAt = None
+        self._LastModifySubAccountUin = None
 
     @property
     def GroupId(self):
-        r"""告警分组ID，满足正则表达式`alert-[a-z0-9]{8}`
+        r"""<p>告警分组ID，满足正则表达式<code>alert-[a-z0-9]{8}</code></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36553,7 +36556,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""告警分组名称
+        r"""<p>告警分组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36565,7 +36568,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def AMPReceivers(self):
-        r"""腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。
+        r"""<p>腾讯云可观测平台告警模板ID ，返回告警模板转换后的notice ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -36577,7 +36580,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def CustomReceiver(self):
-        r"""自定义告警模板
+        r"""<p>自定义告警模板</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusAlertCustomReceiver`
         """
@@ -36589,7 +36592,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def RepeatInterval(self):
-        r"""告警通知间隔
+        r"""<p>告警通知间隔</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36601,7 +36604,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""若告警分组通过模板创建，则返回模板ID
+        r"""<p>若告警分组通过模板创建，则返回模板ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36613,7 +36616,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def Rules(self):
-        r"""分组内告警规则详情
+        r"""<p>分组内告警规则详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PrometheusAlertGroupRuleSet
         """
@@ -36625,7 +36628,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""分组创建时间
+        r"""<p>分组创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36637,7 +36640,7 @@ class PrometheusAlertGroupSet(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""分组更新时间
+        r"""<p>分组更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36646,6 +36649,17 @@ class PrometheusAlertGroupSet(AbstractModel):
     @UpdatedAt.setter
     def UpdatedAt(self, UpdatedAt):
         self._UpdatedAt = UpdatedAt
+
+    @property
+    def LastModifySubAccountUin(self):
+        r"""<p>最后修改人子账号uin</p>
+        :rtype: str
+        """
+        return self._LastModifySubAccountUin
+
+    @LastModifySubAccountUin.setter
+    def LastModifySubAccountUin(self, LastModifySubAccountUin):
+        self._LastModifySubAccountUin = LastModifySubAccountUin
 
 
     def _deserialize(self, params):
@@ -36665,6 +36679,7 @@ class PrometheusAlertGroupSet(AbstractModel):
                 self._Rules.append(obj)
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
+        self._LastModifySubAccountUin = params.get("LastModifySubAccountUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

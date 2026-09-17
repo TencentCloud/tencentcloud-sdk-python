@@ -491,6 +491,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePlatformEnv(self, request):
+        r"""用户在购买平台版套餐后，可调用此接口创建平台版套餐环境，将产生一个平台版套餐环境。
+
+        :param request: Request instance for CreatePlatformEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreatePlatformEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreatePlatformEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePlatformEnv", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePlatformEnvResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateStaticStore(self, request):
         r"""创建静态托管资源，包括COS和CDN，异步任务创建，查看创建结果需要根据DescribeStaticStore接口来查看
 
@@ -1572,6 +1595,148 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePlatformAccountCircle(self, request):
+        r"""查询平台版资源计费周期。
+        云开发平台版资源点都是按月结算的，每个月都有一定的抵扣额度。
+
+        例如：
+          某个平台版在 2026-01-05 购买了3个月(到期时间: 2026-04-05)，则他可以在以下3个周期内，分别享有40000资源点的额度：
+          1. 2026-01-05 ~ 2026-02-05 23:59:59
+          2. 2026-02-06 ~ 2026-03-05 23:59:59
+          3. 2026-03-06 ~ 2026-04-05 23:59:59
+
+        本接口，用于获取平台版当前属于哪个计费周期内。
+
+        影响范围：只读查询，不影响平台版资源
+        使用场景：控制台资源用量页面/API 主动查询当前计费周期等
+
+        :param request: Request instance for DescribePlatformAccountCircle.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformAccountCircleRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformAccountCircleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlatformAccountCircle", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlatformAccountCircleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePlatformCreditsUsage(self, request):
+        r"""查询平台版本资源点模式下的资源点用量
+
+        :param request: Request instance for DescribePlatformCreditsUsage.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformCreditsUsageRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformCreditsUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlatformCreditsUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlatformCreditsUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePlatformCreditsUsageDetail(self, request):
+        r"""查询平台版资源点模式下的资源点用量及原始用量明细
+
+        :param request: Request instance for DescribePlatformCreditsUsageDetail.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformCreditsUsageDetailRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformCreditsUsageDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlatformCreditsUsageDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlatformCreditsUsageDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePlatformEnvUsage(self, request):
+        r"""查询平台版环境资源用量
+
+        指定查询范围，按资源类型返回各资源指标的用量及用量明细(按天)
+        用量信息包含资源点用量，原始用量值（如流量、调用次数、容量等），原始用量单位等
+
+        影响范围：只读查询、不改变资源
+        使用场景：控制台用量页/API 查询平台版环境用量
+
+        :param request: Request instance for DescribePlatformEnvUsage.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformEnvUsageRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformEnvUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlatformEnvUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlatformEnvUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePlatforms(self, request):
+        r"""查询平台版资源信息列表，返回信息包括
+
+        1.平台版基础信息如资源id，所属地域等;
+        2.计费相关信息如：购买/过期时间，资源规格，计费状态等;
+        3.底层资源信息如：存储，日志，静态托管等资源信息等;
+
+        入参支持platformIds，可查询指定平台版套餐信息
+
+        影响范围：查询接口，返回当前用户账号下平台版资源信息
+        使用场景：控制台展示平台版套餐信息/查平台版资源详情/资源状态
+
+        :param request: Request instance for DescribePlatforms.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlatforms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlatformsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeQuotaData(self, request):
         r"""查询指定指标的配额使用量
 
@@ -1786,6 +1951,29 @@ class TcbClient(AbstractClient):
             body = self.call("DestroyMySQL", params, headers=headers)
             response = json.loads(body)
             model = models.DestroyMySQLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DestroyPlatformEnv(self, request):
+        r"""用户可以调用本接口，删除平台版套餐下的指定平台版环境。
+
+        :param request: Request instance for DestroyPlatformEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DestroyPlatformEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DestroyPlatformEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyPlatformEnv", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyPlatformEnvResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2183,6 +2371,29 @@ class TcbClient(AbstractClient):
             body = self.call("ModifyPGInstanceSpec", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPGInstanceSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPlatformEnv(self, request):
+        r"""修改平台版环境信息
+
+        :param request: Request instance for ModifyPlatformEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyPlatformEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyPlatformEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPlatformEnv", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPlatformEnvResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -168,17 +168,11 @@ class CreateStorageCredentialsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播专业版[应用](/document/product/266/14574) ID。</b>
+        :param _SubAppId: <p><b>点播专业版<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :type SubAppId: int
-        :param _Policy: 按照下方语法组装好策略后，先序列化为字符串，再做 URL Encode，结果作为 Policy 字段入参。服务端会对该字段做 URL Decode，并按解析后的策略授予临时访问凭证权限，请按规范传入参数。
-注意： 
-1.策略语法参照[访问管理策略](/document/product/598/10603)。
-2.策略中不能包含 principal 元素。
-3.策略的 action 元素仅支持：<li>name/vod:PutObject;</li><li>name/vod:ListParts;</li><li>name/vod:PostObject;</li><li>name/vod:InitiateMultipartUpload;</li><li>name/vod:UploadPart;</li><li>name/vod:CompleteMultipartUpload;</li><li>name/vod:AbortMultipartUpload;</li><li>name/vod:ListMultipartUploads;</li>4.策略的 resource 元素填写格式为：`qcs::vod:[存储地域]:uid/[账号AppID]:prefix//[点播应用ID]/[存储桶ID]/[存储路径]`，其中存储地域、账号 AppID、点播应用 ID、存储桶 ID 和存储路径要按需填写，其他内容不允许改动，例：`qcs:ap-chongqing:vod::uid/1231456789:prefix//1234567890/2ceds3ew323w3mu/file_path`。
-
+        :param _Policy: <p>按照下方语法组装好策略后，先序列化为字符串，再做 URL Encode，结果作为 Policy 字段入参。服务端会对该字段做 URL Decode，并按解析后的策略授予临时访问凭证权限，请按规范传入参数。<br>注意：<br>1.策略语法参照<a href="/document/product/598/10603">访问管理策略</a>。<br>2.策略中不能包含 principal 元素。<br>3.策略的 action 元素仅支持：<li>name/vod:PutObject;</li><li>name/vod:ListParts;</li><li>name/vod:PostObject;</li><li>name/vod:InitiateMultipartUpload;</li><li>name/vod:UploadPart;</li><li>name/vod:CompleteMultipartUpload;</li><li>name/vod:AbortMultipartUpload;</li><li>name/vod:ListMultipartUploads;</li>4.策略的 resource 元素填写格式为：<code>qcs::vod:[存储地域]:uid/[账号AppID]:prefix//[点播应用ID]/[存储桶ID]/[存储路径]</code>，其中存储地域、账号 AppID、点播应用 ID、存储桶 ID 和存储路径要按需填写，其他内容不允许改动，例：<code>qcs:ap-chongqing:vod::uid/1231456789:prefix//1234567890/2ceds3ew323w3mu/file_path</code>。</p>
         :type Policy: str
-        :param _DurationSeconds: 指定临时证书的有效期，单位：秒。
-默认 1800 秒，最大 129600 秒。
+        :param _DurationSeconds: <p>指定临时证书的有效期，单位：秒。<br>默认 1800 秒，最大 129600 秒。</p>
         :type DurationSeconds: int
         """
         self._SubAppId = None
@@ -187,7 +181,7 @@ class CreateStorageCredentialsRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播专业版[应用](/document/product/266/14574) ID。</b>
+        r"""<p><b>点播专业版<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -198,12 +192,7 @@ class CreateStorageCredentialsRequest(AbstractModel):
 
     @property
     def Policy(self):
-        r"""按照下方语法组装好策略后，先序列化为字符串，再做 URL Encode，结果作为 Policy 字段入参。服务端会对该字段做 URL Decode，并按解析后的策略授予临时访问凭证权限，请按规范传入参数。
-注意： 
-1.策略语法参照[访问管理策略](/document/product/598/10603)。
-2.策略中不能包含 principal 元素。
-3.策略的 action 元素仅支持：<li>name/vod:PutObject;</li><li>name/vod:ListParts;</li><li>name/vod:PostObject;</li><li>name/vod:InitiateMultipartUpload;</li><li>name/vod:UploadPart;</li><li>name/vod:CompleteMultipartUpload;</li><li>name/vod:AbortMultipartUpload;</li><li>name/vod:ListMultipartUploads;</li>4.策略的 resource 元素填写格式为：`qcs::vod:[存储地域]:uid/[账号AppID]:prefix//[点播应用ID]/[存储桶ID]/[存储路径]`，其中存储地域、账号 AppID、点播应用 ID、存储桶 ID 和存储路径要按需填写，其他内容不允许改动，例：`qcs:ap-chongqing:vod::uid/1231456789:prefix//1234567890/2ceds3ew323w3mu/file_path`。
-
+        r"""<p>按照下方语法组装好策略后，先序列化为字符串，再做 URL Encode，结果作为 Policy 字段入参。服务端会对该字段做 URL Decode，并按解析后的策略授予临时访问凭证权限，请按规范传入参数。<br>注意：<br>1.策略语法参照<a href="/document/product/598/10603">访问管理策略</a>。<br>2.策略中不能包含 principal 元素。<br>3.策略的 action 元素仅支持：<li>name/vod:PutObject;</li><li>name/vod:ListParts;</li><li>name/vod:PostObject;</li><li>name/vod:InitiateMultipartUpload;</li><li>name/vod:UploadPart;</li><li>name/vod:CompleteMultipartUpload;</li><li>name/vod:AbortMultipartUpload;</li><li>name/vod:ListMultipartUploads;</li>4.策略的 resource 元素填写格式为：<code>qcs::vod:[存储地域]:uid/[账号AppID]:prefix//[点播应用ID]/[存储桶ID]/[存储路径]</code>，其中存储地域、账号 AppID、点播应用 ID、存储桶 ID 和存储路径要按需填写，其他内容不允许改动，例：<code>qcs:ap-chongqing:vod::uid/1231456789:prefix//1234567890/2ceds3ew323w3mu/file_path</code>。</p>
         :rtype: str
         """
         return self._Policy
@@ -214,8 +203,7 @@ class CreateStorageCredentialsRequest(AbstractModel):
 
     @property
     def DurationSeconds(self):
-        r"""指定临时证书的有效期，单位：秒。
-默认 1800 秒，最大 129600 秒。
+        r"""<p>指定临时证书的有效期，单位：秒。<br>默认 1800 秒，最大 129600 秒。</p>
         :rtype: int
         """
         return self._DurationSeconds
@@ -246,7 +234,7 @@ class CreateStorageCredentialsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Credentials: 临时访问凭证。
+        :param _Credentials: <p>临时访问凭证。</p>
         :type Credentials: :class:`tencentcloud.vod.v20240718.models.Credentials`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -256,7 +244,7 @@ class CreateStorageCredentialsResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        r"""临时访问凭证。
+        r"""<p>临时访问凭证。</p>
         :rtype: :class:`tencentcloud.vod.v20240718.models.Credentials`
         """
         return self._Credentials
@@ -408,13 +396,13 @@ class Credentials(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccessKeyId: 访问凭证 ID。
+        :param _AccessKeyId: <p>访问凭证 ID。</p>
         :type AccessKeyId: str
-        :param _SecretAccessKey: 访问凭证 Key。
+        :param _SecretAccessKey: <p>访问凭证 Key。</p>
         :type SecretAccessKey: str
-        :param _SessionToken: 访问凭证 Token，长度和绑定的策略有关，最长不超过 4096 字节。
+        :param _SessionToken: <p>访问凭证 Token，长度和绑定的策略有关，最长不超过 4096 字节。</p>
         :type SessionToken: str
-        :param _Expiration: 访问凭证的过期时间。
+        :param _Expiration: <p>访问凭证的过期时间。</p>
         :type Expiration: str
         """
         self._AccessKeyId = None
@@ -424,7 +412,7 @@ class Credentials(AbstractModel):
 
     @property
     def AccessKeyId(self):
-        r"""访问凭证 ID。
+        r"""<p>访问凭证 ID。</p>
         :rtype: str
         """
         return self._AccessKeyId
@@ -435,7 +423,7 @@ class Credentials(AbstractModel):
 
     @property
     def SecretAccessKey(self):
-        r"""访问凭证 Key。
+        r"""<p>访问凭证 Key。</p>
         :rtype: str
         """
         return self._SecretAccessKey
@@ -446,7 +434,7 @@ class Credentials(AbstractModel):
 
     @property
     def SessionToken(self):
-        r"""访问凭证 Token，长度和绑定的策略有关，最长不超过 4096 字节。
+        r"""<p>访问凭证 Token，长度和绑定的策略有关，最长不超过 4096 字节。</p>
         :rtype: str
         """
         return self._SessionToken
@@ -457,7 +445,7 @@ class Credentials(AbstractModel):
 
     @property
     def Expiration(self):
-        r"""访问凭证的过期时间。
+        r"""<p>访问凭证的过期时间。</p>
         :rtype: str
         """
         return self._Expiration

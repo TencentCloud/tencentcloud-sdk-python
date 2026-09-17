@@ -3055,27 +3055,27 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaType: 固定填值：9。
+        :param _CaptchaType: <p>固定填值：9。</p>
         :type CaptchaType: int
-        :param _Ticket: 前端回调函数返回的用户验证票据
+        :param _Ticket: <p>前端回调函数返回的用户验证票据</p>
         :type Ticket: str
-        :param _UserIp: 业务侧获取到的验证码使用者的外网IP
+        :param _UserIp: <p>业务侧获取到的验证码使用者的外网IP</p>
         :type UserIp: str
-        :param _Randstr: 前端回调函数返回的随机字符串
+        :param _Randstr: <p>前端回调函数返回的随机字符串</p>
         :type Randstr: str
-        :param _CaptchaAppId: 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+        :param _CaptchaAppId: <p>验证码应用ID。登录 <a href="https://console.cloud.tencent.com/captcha/graphical">验证码控制台</a>，在验证列表的【密钥】列，即可查看到CaptchaAppId。</p>
         :type CaptchaAppId: int
-        :param _AppSecretKey: 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+        :param _AppSecretKey: <p>验证码应用密钥。登录 <a href="https://console.cloud.tencent.com/captcha/graphical">验证码控制台</a>，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。</p>
         :type AppSecretKey: str
-        :param _BusinessId: 预留字段
+        :param _BusinessId: <p>预留字段</p>
         :type BusinessId: int
-        :param _SceneId: 预留字段
+        :param _SceneId: <p>预留字段</p>
         :type SceneId: int
-        :param _MacAddress: mac 地址或设备唯一标识
+        :param _MacAddress: <p>mac 地址或设备唯一标识</p>
         :type MacAddress: str
-        :param _Imei: 手机设备号
+        :param _Imei: <p>手机设备号</p>
         :type Imei: str
-        :param _NeedGetCaptchaTime: 是否返回前端获取验证码时间，取值1：需要返回
+        :param _NeedGetCaptchaTime: <p>是否返回前端获取验证码时间，取值1：需要返回</p>
         :type NeedGetCaptchaTime: int
         """
         self._CaptchaType = None
@@ -3092,7 +3092,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaType(self):
-        r"""固定填值：9。
+        r"""<p>固定填值：9。</p>
         :rtype: int
         """
         return self._CaptchaType
@@ -3103,7 +3103,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Ticket(self):
-        r"""前端回调函数返回的用户验证票据
+        r"""<p>前端回调函数返回的用户验证票据</p>
         :rtype: str
         """
         return self._Ticket
@@ -3114,7 +3114,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""业务侧获取到的验证码使用者的外网IP
+        r"""<p>业务侧获取到的验证码使用者的外网IP</p>
         :rtype: str
         """
         return self._UserIp
@@ -3125,7 +3125,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Randstr(self):
-        r"""前端回调函数返回的随机字符串
+        r"""<p>前端回调函数返回的随机字符串</p>
         :rtype: str
         """
         return self._Randstr
@@ -3136,7 +3136,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        r"""验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
+        r"""<p>验证码应用ID。登录 <a href="https://console.cloud.tencent.com/captcha/graphical">验证码控制台</a>，在验证列表的【密钥】列，即可查看到CaptchaAppId。</p>
         :rtype: int
         """
         return self._CaptchaAppId
@@ -3147,7 +3147,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def AppSecretKey(self):
-        r"""验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
+        r"""<p>验证码应用密钥。登录 <a href="https://console.cloud.tencent.com/captcha/graphical">验证码控制台</a>，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。</p>
         :rtype: str
         """
         return self._AppSecretKey
@@ -3158,7 +3158,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        r"""预留字段
+        r"""<p>预留字段</p>
         :rtype: int
         """
         return self._BusinessId
@@ -3169,7 +3169,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def SceneId(self):
-        r"""预留字段
+        r"""<p>预留字段</p>
         :rtype: int
         """
         return self._SceneId
@@ -3180,7 +3180,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def MacAddress(self):
-        r"""mac 地址或设备唯一标识
+        r"""<p>mac 地址或设备唯一标识</p>
         :rtype: str
         """
         return self._MacAddress
@@ -3191,7 +3191,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def Imei(self):
-        r"""手机设备号
+        r"""<p>手机设备号</p>
         :rtype: str
         """
         return self._Imei
@@ -3202,7 +3202,7 @@ class DescribeCaptchaResultRequest(AbstractModel):
 
     @property
     def NeedGetCaptchaTime(self):
-        r"""是否返回前端获取验证码时间，取值1：需要返回
+        r"""<p>是否返回前端获取验证码时间，取值1：需要返回</p>
         :rtype: int
         """
         return self._NeedGetCaptchaTime
@@ -3241,32 +3241,23 @@ class DescribeCaptchaResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaCode: 1 OK 验证通过
-7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致
-8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验
-9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验
-15 decrypt fail 传入的Ticket不合法，请检查Ticket是否与前端返回的Ticket一致
-16 appid-ticket mismatch 传入的CaptchaAppId错误，请检查CaptchaAppId是否与前端传入的CaptchaAppId一致，并且保障CaptchaAppId是从验证码控制台【验证管理】->【基础配置】中获取
-21 diff 票据校验异常，可能的原因是（1）若Ticket包含trerror前缀，一般是由于用户网络较差，导致前端自动容灾，而生成了容灾票据，业务侧可根据需要进行跳过或二次处理。（2）若Ticket不包含trerror前缀，则是由于验证码风控系统发现请求有安全风险，业务侧可根据需要进行拦截。
-100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】>【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成
+        :param _CaptchaCode: <p>1 OK 验证通过<br>7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致<br>8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验<br>9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验<br>15 decrypt fail 传入的Ticket不合法，请检查Ticket是否与前端返回的Ticket一致<br>16 appid-ticket mismatch 传入的CaptchaAppId错误，请检查CaptchaAppId是否与前端传入的CaptchaAppId一致，并且保障CaptchaAppId是从验证码控制台【验证管理】-&gt;【基础配置】中获取<br>21 diff 票据校验异常，可能的原因是（1）若Ticket包含trerror前缀，一般是由于用户网络较差，导致前端自动容灾，而生成了容灾票据，业务侧可根据需要进行跳过或二次处理。（2）若Ticket不包含trerror前缀，则是由于验证码风控系统发现请求有安全风险，业务侧可根据需要进行拦截。<br>100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】&gt;【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成</p>
         :type CaptchaCode: int
-        :param _CaptchaMsg: 状态描述及验证错误信息
+        :param _CaptchaMsg: <p>状态描述及验证错误信息</p>
         :type CaptchaMsg: str
-        :param _EvilLevel: 无感验证模式下，该参数返回验证结果：
-EvilLevel=0 请求无恶意
-EvilLevel=100 请求有恶意
+        :param _EvilLevel: <p>无感验证模式下，该参数返回验证结果：<br>EvilLevel=0 请求无恶意<br>EvilLevel=100 请求有恶意</p>
         :type EvilLevel: int
-        :param _GetCaptchaTime: 前端获取验证码时间，时间戳格式
+        :param _GetCaptchaTime: <p>前端获取验证码时间，时间戳格式</p>
         :type GetCaptchaTime: int
-        :param _EvilBitmap: 拦截类型
+        :param _EvilBitmap: <p>拦截类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EvilBitmap: int
-        :param _SubmitCaptchaTime: 提交验证码时间
+        :param _SubmitCaptchaTime: <p>提交验证码时间</p>
         :type SubmitCaptchaTime: int
-        :param _DeviceRiskCategory: 设备风险大类
+        :param _DeviceRiskCategory: <p>设备风险大类</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceRiskCategory: str
-        :param _Score: 验证码评分
+        :param _Score: <p>验证码评分</p><p>取值0-100，分值越高，风险越大</p>
         :type Score: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3283,14 +3274,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def CaptchaCode(self):
-        r"""1 OK 验证通过
-7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致
-8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验
-9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验
-15 decrypt fail 传入的Ticket不合法，请检查Ticket是否与前端返回的Ticket一致
-16 appid-ticket mismatch 传入的CaptchaAppId错误，请检查CaptchaAppId是否与前端传入的CaptchaAppId一致，并且保障CaptchaAppId是从验证码控制台【验证管理】->【基础配置】中获取
-21 diff 票据校验异常，可能的原因是（1）若Ticket包含trerror前缀，一般是由于用户网络较差，导致前端自动容灾，而生成了容灾票据，业务侧可根据需要进行跳过或二次处理。（2）若Ticket不包含trerror前缀，则是由于验证码风控系统发现请求有安全风险，业务侧可根据需要进行拦截。
-100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】>【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成
+        r"""<p>1 OK 验证通过<br>7 captcha no match 传入的Randstr不合法，请检查Randstr是否与前端返回的Randstr一致<br>8 ticket expired 传入的Ticket已过期（Ticket有效期5分钟），请重新生成Ticket、Randstr进行校验<br>9 ticket reused 传入的Ticket被重复使用，请重新生成Ticket、Randstr进行校验<br>15 decrypt fail 传入的Ticket不合法，请检查Ticket是否与前端返回的Ticket一致<br>16 appid-ticket mismatch 传入的CaptchaAppId错误，请检查CaptchaAppId是否与前端传入的CaptchaAppId一致，并且保障CaptchaAppId是从验证码控制台【验证管理】-&gt;【基础配置】中获取<br>21 diff 票据校验异常，可能的原因是（1）若Ticket包含trerror前缀，一般是由于用户网络较差，导致前端自动容灾，而生成了容灾票据，业务侧可根据需要进行跳过或二次处理。（2）若Ticket不包含trerror前缀，则是由于验证码风控系统发现请求有安全风险，业务侧可根据需要进行拦截。<br>100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】&gt;【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成</p>
         :rtype: int
         """
         return self._CaptchaCode
@@ -3301,7 +3285,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def CaptchaMsg(self):
-        r"""状态描述及验证错误信息
+        r"""<p>状态描述及验证错误信息</p>
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3312,9 +3296,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def EvilLevel(self):
-        r"""无感验证模式下，该参数返回验证结果：
-EvilLevel=0 请求无恶意
-EvilLevel=100 请求有恶意
+        r"""<p>无感验证模式下，该参数返回验证结果：<br>EvilLevel=0 请求无恶意<br>EvilLevel=100 请求有恶意</p>
         :rtype: int
         """
         return self._EvilLevel
@@ -3325,7 +3307,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def GetCaptchaTime(self):
-        r"""前端获取验证码时间，时间戳格式
+        r"""<p>前端获取验证码时间，时间戳格式</p>
         :rtype: int
         """
         return self._GetCaptchaTime
@@ -3336,7 +3318,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def EvilBitmap(self):
-        r"""拦截类型
+        r"""<p>拦截类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3348,7 +3330,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def SubmitCaptchaTime(self):
-        r"""提交验证码时间
+        r"""<p>提交验证码时间</p>
         :rtype: int
         """
         return self._SubmitCaptchaTime
@@ -3359,7 +3341,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def DeviceRiskCategory(self):
-        r"""设备风险大类
+        r"""<p>设备风险大类</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3371,7 +3353,7 @@ EvilLevel=100 请求有恶意
 
     @property
     def Score(self):
-        r"""验证码评分
+        r"""<p>验证码评分</p><p>取值0-100，分值越高，风险越大</p>
         :rtype: int
         """
         return self._Score

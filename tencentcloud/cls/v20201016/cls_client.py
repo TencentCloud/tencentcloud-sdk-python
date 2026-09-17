@@ -306,6 +306,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCLSDeliverTask(self, request):
+        r"""新建CLS投递任务
+
+        :param request: Request instance for CreateCLSDeliverTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateCLSDeliverTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateCLSDeliverTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCLSDeliverTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCLSDeliverTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudProductLogCollection(self, request):
         r"""内部云产品接入使用相关接口
 
@@ -1246,6 +1269,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteAlarmShield", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCLSDeliverTask(self, request):
+        r"""删除CLS投递任务
+
+        :param request: Request instance for DeleteCLSDeliverTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteCLSDeliverTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteCLSDeliverTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCLSDeliverTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCLSDeliverTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2258,6 +2304,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeAlertRecordHistory", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAlertRecordHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCLSDeliverTasks(self, request):
+        r"""获取CLS投递任务列表
+
+        :param request: Request instance for DescribeCLSDeliverTasks.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeCLSDeliverTasksRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeCLSDeliverTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCLSDeliverTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCLSDeliverTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4008,6 +4077,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyAlarmShield", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAlarmShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCLSDeliverTask(self, request):
+        r"""修改CLS投递任务
+
+        :param request: Request instance for ModifyCLSDeliverTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyCLSDeliverTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyCLSDeliverTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCLSDeliverTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCLSDeliverTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

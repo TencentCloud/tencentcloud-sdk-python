@@ -5312,6 +5312,115 @@ class CreateMySQLResult(AbstractModel):
         
 
 
+class CreatePlatformEnvRequest(AbstractModel):
+    r"""CreatePlatformEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Alias: <p>环境别名</p>
+        :type Alias: str
+        :param _PlatformId: <p>套餐池标识</p>
+        :type PlatformId: str
+        :param _ReqKey: <p>幂等键</p>
+        :type ReqKey: str
+        """
+        self._Alias = None
+        self._PlatformId = None
+        self._ReqKey = None
+
+    @property
+    def Alias(self):
+        r"""<p>环境别名</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def PlatformId(self):
+        r"""<p>套餐池标识</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def ReqKey(self):
+        r"""<p>幂等键</p>
+        :rtype: str
+        """
+        return self._ReqKey
+
+    @ReqKey.setter
+    def ReqKey(self, ReqKey):
+        self._ReqKey = ReqKey
+
+
+    def _deserialize(self, params):
+        self._Alias = params.get("Alias")
+        self._PlatformId = params.get("PlatformId")
+        self._ReqKey = params.get("ReqKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePlatformEnvResponse(AbstractModel):
+    r"""CreatePlatformEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境id</p>
+        :type EnvId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnvId = None
+        self._RequestId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateStaticStoreRequest(AbstractModel):
     r"""CreateStaticStore请求参数结构体
 
@@ -5919,6 +6028,72 @@ class CustomLogConfig(AbstractModel):
         self._NeedRspHeaderLog = params.get("NeedRspHeaderLog")
         self._LogSetId = params.get("LogSetId")
         self._LogTopicId = params.get("LogTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DailyUsageList(AbstractModel):
+    r"""每日用量详情结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Credits: <p>资源点用量</p>
+        :type Credits: int
+        :param _Date: <p>资源点用量日期</p><p>参数格式：YYYY-MM-DD</p>
+        :type Date: str
+        :param _UsageValue: <p>原始资源用量</p>
+        :type UsageValue: int
+        """
+        self._Credits = None
+        self._Date = None
+        self._UsageValue = None
+
+    @property
+    def Credits(self):
+        r"""<p>资源点用量</p>
+        :rtype: int
+        """
+        return self._Credits
+
+    @Credits.setter
+    def Credits(self, Credits):
+        self._Credits = Credits
+
+    @property
+    def Date(self):
+        r"""<p>资源点用量日期</p><p>参数格式：YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def UsageValue(self):
+        r"""<p>原始资源用量</p>
+        :rtype: int
+        """
+        return self._UsageValue
+
+    @UsageValue.setter
+    def UsageValue(self, UsageValue):
+        self._UsageValue = UsageValue
+
+
+    def _deserialize(self, params):
+        self._Credits = params.get("Credits")
+        self._Date = params.get("Date")
+        self._UsageValue = params.get("UsageValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12726,6 +12901,676 @@ class DescribePGUserMigrationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePlatformAccountCircleRequest(AbstractModel):
+    r"""DescribePlatformAccountCircle请求参数结构体
+
+    """
+
+
+class DescribePlatformAccountCircleResponse(AbstractModel):
+    r"""DescribePlatformAccountCircle返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>套餐计费周期开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>套餐计费周期结束时间</p>
+        :type EndTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        r"""<p>套餐计费周期开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>套餐计费周期结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePlatformCreditsUsageDetailRequest(AbstractModel):
+    r"""DescribePlatformCreditsUsageDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Modules: <p>模块列表</p><p>枚举值：</p><ul><li>FLEXDB： 文档数据库</li><li>TDSQL： MYSQL数据库</li><li>SCF： 云函数</li><li>AI： 大模型</li><li>EKS： 云托管</li><li>COS： 云存储</li><li>HOSTING： 静态托管</li><li>Auth： 用户权限</li><li>APIInvocation： API调用</li><li>HTTPInvocation： HTTP调用</li><li>VM： 主机</li><li>Workflow： 工作流</li><li>Other： 其他</li><li>PostgreSQL： PostgreSQL</li><li>Token： Token</li></ul>
+        :type Modules: list of str
+        :param _StartDate: <p>开始日期</p><p>参数格式：YYYY-MM-DD</p>
+        :type StartDate: str
+        :param _EndDate: <p>结束日期</p><p>参数格式：YYYY-MM-DD</p>
+        :type EndDate: str
+        :param _NeedUsageDetails: <p>是否需要每日用量明细</p>
+        :type NeedUsageDetails: bool
+        :param _PlatformId: <p>平台版套餐id</p>
+        :type PlatformId: str
+        """
+        self._Modules = None
+        self._StartDate = None
+        self._EndDate = None
+        self._NeedUsageDetails = None
+        self._PlatformId = None
+
+    @property
+    def Modules(self):
+        r"""<p>模块列表</p><p>枚举值：</p><ul><li>FLEXDB： 文档数据库</li><li>TDSQL： MYSQL数据库</li><li>SCF： 云函数</li><li>AI： 大模型</li><li>EKS： 云托管</li><li>COS： 云存储</li><li>HOSTING： 静态托管</li><li>Auth： 用户权限</li><li>APIInvocation： API调用</li><li>HTTPInvocation： HTTP调用</li><li>VM： 主机</li><li>Workflow： 工作流</li><li>Other： 其他</li><li>PostgreSQL： PostgreSQL</li><li>Token： Token</li></ul>
+        :rtype: list of str
+        """
+        return self._Modules
+
+    @Modules.setter
+    def Modules(self, Modules):
+        self._Modules = Modules
+
+    @property
+    def StartDate(self):
+        r"""<p>开始日期</p><p>参数格式：YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        r"""<p>结束日期</p><p>参数格式：YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def NeedUsageDetails(self):
+        r"""<p>是否需要每日用量明细</p>
+        :rtype: bool
+        """
+        return self._NeedUsageDetails
+
+    @NeedUsageDetails.setter
+    def NeedUsageDetails(self, NeedUsageDetails):
+        self._NeedUsageDetails = NeedUsageDetails
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台版套餐id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+
+    def _deserialize(self, params):
+        self._Modules = params.get("Modules")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._NeedUsageDetails = params.get("NeedUsageDetails")
+        self._PlatformId = params.get("PlatformId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlatformCreditsUsageDetailResponse(AbstractModel):
+    r"""DescribePlatformCreditsUsageDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Usages: <p>用量数据</p>
+        :type Usages: list of PlatformPkgCreditsUsage
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Usages = None
+        self._RequestId = None
+
+    @property
+    def Usages(self):
+        r"""<p>用量数据</p>
+        :rtype: list of PlatformPkgCreditsUsage
+        """
+        return self._Usages
+
+    @Usages.setter
+    def Usages(self, Usages):
+        self._Usages = Usages
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Usages") is not None:
+            self._Usages = []
+            for item in params.get("Usages"):
+                obj = PlatformPkgCreditsUsage()
+                obj._deserialize(item)
+                self._Usages.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePlatformCreditsUsageRequest(AbstractModel):
+    r"""DescribePlatformCreditsUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartDate: <p>开始日期</p><p>参数格式：2025-09-22</p>
+        :type StartDate: str
+        :param _EndDate: <p>结束日期</p><p>参数格式：2025-09-22</p>
+        :type EndDate: str
+        :param _PlatformId: <p>平台版套餐id</p>
+        :type PlatformId: str
+        """
+        self._StartDate = None
+        self._EndDate = None
+        self._PlatformId = None
+
+    @property
+    def StartDate(self):
+        r"""<p>开始日期</p><p>参数格式：2025-09-22</p>
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        r"""<p>结束日期</p><p>参数格式：2025-09-22</p>
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台版套餐id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+
+    def _deserialize(self, params):
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._PlatformId = params.get("PlatformId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlatformCreditsUsageResponse(AbstractModel):
+    r"""DescribePlatformCreditsUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeductValueCount: <p>资源点套餐内用量总和</p>
+        :type DeductValueCount: float
+        :param _PackageDeductValueCount: <p>资源点资源包用量总和</p>
+        :type PackageDeductValueCount: float
+        :param _ReportValueCount: <p>资源点按量用量总和</p>
+        :type ReportValueCount: float
+        :param _DailyList: <p>每日消耗具体数据</p>
+        :type DailyList: list of PlatformCreditsUsageDaily
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeductValueCount = None
+        self._PackageDeductValueCount = None
+        self._ReportValueCount = None
+        self._DailyList = None
+        self._RequestId = None
+
+    @property
+    def DeductValueCount(self):
+        r"""<p>资源点套餐内用量总和</p>
+        :rtype: float
+        """
+        return self._DeductValueCount
+
+    @DeductValueCount.setter
+    def DeductValueCount(self, DeductValueCount):
+        self._DeductValueCount = DeductValueCount
+
+    @property
+    def PackageDeductValueCount(self):
+        r"""<p>资源点资源包用量总和</p>
+        :rtype: float
+        """
+        return self._PackageDeductValueCount
+
+    @PackageDeductValueCount.setter
+    def PackageDeductValueCount(self, PackageDeductValueCount):
+        self._PackageDeductValueCount = PackageDeductValueCount
+
+    @property
+    def ReportValueCount(self):
+        r"""<p>资源点按量用量总和</p>
+        :rtype: float
+        """
+        return self._ReportValueCount
+
+    @ReportValueCount.setter
+    def ReportValueCount(self, ReportValueCount):
+        self._ReportValueCount = ReportValueCount
+
+    @property
+    def DailyList(self):
+        r"""<p>每日消耗具体数据</p>
+        :rtype: list of PlatformCreditsUsageDaily
+        """
+        return self._DailyList
+
+    @DailyList.setter
+    def DailyList(self, DailyList):
+        self._DailyList = DailyList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeductValueCount = params.get("DeductValueCount")
+        self._PackageDeductValueCount = params.get("PackageDeductValueCount")
+        self._ReportValueCount = params.get("ReportValueCount")
+        if params.get("DailyList") is not None:
+            self._DailyList = []
+            for item in params.get("DailyList"):
+                obj = PlatformCreditsUsageDaily()
+                obj._deserialize(item)
+                self._DailyList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePlatformEnvUsageRequest(AbstractModel):
+    r"""DescribePlatformEnvUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境Id</p>
+        :type EnvId: str
+        :param _StartDate: <p>查询用量起始时间</p><p>参数格式：YYYY-MM-DD</p>
+        :type StartDate: str
+        :param _EndDate: <p>查询用量结束时间</p><p>参数格式：YYYY-MM-DD</p>
+        :type EndDate: str
+        :param _ResourceTypes: <p>资源类型</p><p>枚举值：</p><ul><li>Storage： 云存储</li><li>Function： 云函数</li><li>Database： 数据库</li></ul>
+        :type ResourceTypes: list of str
+        :param _NeedUsageDetails: <p>是否展示用量明细</p>
+        :type NeedUsageDetails: bool
+        """
+        self._EnvId = None
+        self._StartDate = None
+        self._EndDate = None
+        self._ResourceTypes = None
+        self._NeedUsageDetails = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境Id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def StartDate(self):
+        r"""<p>查询用量起始时间</p><p>参数格式：YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        r"""<p>查询用量结束时间</p><p>参数格式：YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+    @property
+    def ResourceTypes(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>Storage： 云存储</li><li>Function： 云函数</li><li>Database： 数据库</li></ul>
+        :rtype: list of str
+        """
+        return self._ResourceTypes
+
+    @ResourceTypes.setter
+    def ResourceTypes(self, ResourceTypes):
+        self._ResourceTypes = ResourceTypes
+
+    @property
+    def NeedUsageDetails(self):
+        r"""<p>是否展示用量明细</p>
+        :rtype: bool
+        """
+        return self._NeedUsageDetails
+
+    @NeedUsageDetails.setter
+    def NeedUsageDetails(self, NeedUsageDetails):
+        self._NeedUsageDetails = NeedUsageDetails
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        self._ResourceTypes = params.get("ResourceTypes")
+        self._NeedUsageDetails = params.get("NeedUsageDetails")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlatformEnvUsageResponse(AbstractModel):
+    r"""DescribePlatformEnvUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resources: <p>资源用量信息</p>
+        :type Resources: list of PlatformResUsageItem
+        :param _TotalCredits: <p>资源点</p>
+        :type TotalCredits: int
+        :param _CreditsScale: <p>资源点取整倍数</p>
+        :type CreditsScale: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Resources = None
+        self._TotalCredits = None
+        self._CreditsScale = None
+        self._RequestId = None
+
+    @property
+    def Resources(self):
+        r"""<p>资源用量信息</p>
+        :rtype: list of PlatformResUsageItem
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def TotalCredits(self):
+        r"""<p>资源点</p>
+        :rtype: int
+        """
+        return self._TotalCredits
+
+    @TotalCredits.setter
+    def TotalCredits(self, TotalCredits):
+        self._TotalCredits = TotalCredits
+
+    @property
+    def CreditsScale(self):
+        r"""<p>资源点取整倍数</p>
+        :rtype: int
+        """
+        return self._CreditsScale
+
+    @CreditsScale.setter
+    def CreditsScale(self, CreditsScale):
+        self._CreditsScale = CreditsScale
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = PlatformResUsageItem()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        self._TotalCredits = params.get("TotalCredits")
+        self._CreditsScale = params.get("CreditsScale")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePlatformsRequest(AbstractModel):
+    r"""DescribePlatforms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformIds: <p>平台版套餐id列表</p><p>默认值：若不指定，则分页返回当前账号下所有平台版资源</p>
+        :type PlatformIds: list of str
+        :param _Limit: <p>分页限制</p><p>取值范围：[10, 100]</p><p>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量</p><p>默认值：0</p>
+        :type Offset: int
+        """
+        self._PlatformIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def PlatformIds(self):
+        r"""<p>平台版套餐id列表</p><p>默认值：若不指定，则分页返回当前账号下所有平台版资源</p>
+        :rtype: list of str
+        """
+        return self._PlatformIds
+
+    @PlatformIds.setter
+    def PlatformIds(self, PlatformIds):
+        self._PlatformIds = PlatformIds
+
+    @property
+    def Limit(self):
+        r"""<p>分页限制</p><p>取值范围：[10, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._PlatformIds = params.get("PlatformIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlatformsResponse(AbstractModel):
+    r"""DescribePlatforms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformList: <p>平台版资源列表</p>
+        :type PlatformList: list of PlatformInfo
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PlatformList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def PlatformList(self):
+        r"""<p>平台版资源列表</p>
+        :rtype: list of PlatformInfo
+        """
+        return self._PlatformList
+
+    @PlatformList.setter
+    def PlatformList(self, PlatformList):
+        self._PlatformList = PlatformList
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PlatformList") is not None:
+            self._PlatformList = []
+            for item in params.get("PlatformList"):
+                obj = PlatformInfo()
+                obj._deserialize(item)
+                self._PlatformList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQuotaDataRequest(AbstractModel):
     r"""DescribeQuotaData请求参数结构体
 
@@ -14125,6 +14970,70 @@ class DestroyMySQLResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DestroyPlatformEnvRequest(AbstractModel):
+    r"""DestroyPlatformEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境id</p>
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyPlatformEnvResponse(AbstractModel):
+    r"""DestroyPlatformEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class DestroyStaticStoreRequest(AbstractModel):
@@ -17511,6 +18420,7 @@ class HTTPServiceCacheKeyParams(AbstractModel):
     r"""自定义缓存键参数。约束：FullURLCache=on 与 QueryStringSwitch=on 互斥
     使用示例：
     - 整 URL 参与缓存键：{FullURLCache: "on", QueryStringSwitch: "off"}
+    - 整 URL 不参与缓存键：{FullURLCache: "off", QueryStringSwitch: "off"}
     - URL 路径 + 仅保留 x/y：{FullURLCache: "off", QueryStringSwitch: "on", QueryStringAction: "includeCustom", QueryStringValues: ["x", "y"]}
     - URL 路径 + 忽略 debug：{FullURLCache: "off", QueryStringSwitch: "on", QueryStringAction: "excludeCustom", QueryStringValues: ["debug"]}
 
@@ -17524,7 +18434,7 @@ class HTTPServiceCacheKeyParams(AbstractModel):
         :type QueryStringSwitch: str
         :param _QueryStringAction: <p>QueryStringSwitch=on 时必填</p><p>枚举值：</p><ul><li>includeCustom： 白名单</li><li>excludeCustom： 黑名单</li></ul>
         :type QueryStringAction: str
-        :param _QueryStringValues: <p>参数名列表</p><p>入参限制：最多 100 项，单项 1~128 字节</p>
+        :param _QueryStringValues: <p>参数名列表</p><p>入参限制：最多 30 项，单项 1~128 字节</p>
         :type QueryStringValues: list of str
         """
         self._FullURLCache = None
@@ -17567,7 +18477,7 @@ class HTTPServiceCacheKeyParams(AbstractModel):
 
     @property
     def QueryStringValues(self):
-        r"""<p>参数名列表</p><p>入参限制：最多 100 项，单项 1~128 字节</p>
+        r"""<p>参数名列表</p><p>入参限制：最多 30 项，单项 1~128 字节</p>
         :rtype: list of str
         """
         return self._QueryStringValues
@@ -17973,7 +18883,7 @@ class HTTPServiceDomain(AbstractModel):
         :type Domain: str
         :param _DomainType: <p>域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调</p>
         :type DomainType: str
-        :param _AccessType: <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
+        :param _AccessType: <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>EO： 接入云开发EdgeOne</li><li>CUSTOM： 自定义接入类型（其他CDN或者WAF）</li><li>NONE： 不接入，当使用泛域名接入时，可通过NONE来接入子域名，子域名证书及协议继承泛域名</li></ul><p>默认值：DIRECT</p>
         :type AccessType: str
         :param _CertId: <p>证书ID。当前账户下SSL平台的证书ID</p>
         :type CertId: str
@@ -18040,7 +18950,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""<p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
+        r"""<p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>EO： 接入云开发EdgeOne</li><li>CUSTOM： 自定义接入类型（其他CDN或者WAF）</li><li>NONE： 不接入，当使用泛域名接入时，可通过NONE来接入子域名，子域名证书及协议继承泛域名</li></ul><p>默认值：DIRECT</p>
         :rtype: str
         """
         return self._AccessType
@@ -18224,7 +19134,7 @@ class HTTPServiceDomainParam(AbstractModel):
         r"""
         :param _Domain: <p>域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败</p>
         :type Domain: str
-        :param _AccessType: <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li><li>EO： 接入云开发EdgeOne</li></ul><p>默认值：DIRECT</p>
+        :param _AccessType: <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>EO： 接入云开发EdgeOne</li><li>NONE： 不接入，当使用泛域名接入时，可通过NONE来接入子域名，子域名证书及协议继承泛域名</li></ul><p>默认值：DIRECT</p>
         :type AccessType: str
         :param _CertId: <p>证书ID。当前账户下SSL平台的证书ID，无证书无法使用https访问</p>
         :type CertId: str
@@ -18261,7 +19171,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""<p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li><li>EO： 接入云开发EdgeOne</li></ul><p>默认值：DIRECT</p>
+        r"""<p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>EO： 接入云开发EdgeOne</li><li>NONE： 不接入，当使用泛域名接入时，可通过NONE来接入子域名，子域名证书及协议继承泛域名</li></ul><p>默认值：DIRECT</p>
         :rtype: str
         """
         return self._AccessType
@@ -18372,7 +19282,7 @@ class HTTPServiceExtension(AbstractModel):
         r"""
         :param _HeadersHandler: <p>添加请求头列表</p>
         :type HeadersHandler: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceHeadersHandler`
-        :param _Cache: <p>HTTPService 缓存配置，包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
+        :param _Cache: <p>HTTPService 缓存配置，仅限自定义域名配置。包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
         :type Cache: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceCacheSet`
         """
         self._HeadersHandler = None
@@ -18391,7 +19301,7 @@ class HTTPServiceExtension(AbstractModel):
 
     @property
     def Cache(self):
-        r"""<p>HTTPService 缓存配置，包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
+        r"""<p>HTTPService 缓存配置，仅限自定义域名配置。包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceCacheSet`
         """
         return self._Cache
@@ -19110,7 +20020,7 @@ class HTTPServiceRuleCondition(AbstractModel):
         :type Target: str
         :param _MatchType: <p>MatchType 字符串匹配类型</p><p>枚举值：</p><ul><li>prefix：  前缀匹配</li><li>suffix： 后缀匹配</li><li>contains： 包含匹配</li><li>exact： 精确匹配</li></ul>
         :type MatchType: str
-        :param _Values: <p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 100 条</p>
+        :param _Values: <p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 30 条</p>
         :type Values: list of str
         """
         self._Target = None
@@ -19141,7 +20051,7 @@ class HTTPServiceRuleCondition(AbstractModel):
 
     @property
     def Values(self):
-        r"""<p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 100 条</p>
+        r"""<p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 30 条</p>
         :rtype: list of str
         """
         return self._Values
@@ -22811,6 +23721,85 @@ class ModifyPGInstanceSpecResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPlatformEnvRequest(AbstractModel):
+    r"""ModifyPlatformEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _Status: <p>环境状态</p><p>枚举值：</p><ul><li>ENABLE： 启用环境</li><li>DISABLE： 禁用环境</li></ul>
+        :type Status: str
+        """
+        self._EnvId = None
+        self._Status = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Status(self):
+        r"""<p>环境状态</p><p>枚举值：</p><ul><li>ENABLE： 启用环境</li><li>DISABLE： 禁用环境</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPlatformEnvResponse(AbstractModel):
+    r"""ModifyPlatformEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyProviderRequest(AbstractModel):
     r"""ModifyProvider请求参数结构体
 
@@ -24828,6 +25817,737 @@ class PlanInfo(AbstractModel):
         self._UnitPrice = params.get("UnitPrice")
         self._PackageType = params.get("PackageType")
         self._ResourceLimit = params.get("ResourceLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatFormResourceInfo(AbstractModel):
+    r"""平台版资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResType: <p>资源类系</p><p>枚举值：</p><ul><li>log： 日志</li><li>storage： 云存储</li><li>hosting： 静态托管</li></ul>
+        :type ResType: str
+        :param _ResName: <p>资源唯一标识</p>
+        :type ResName: str
+        :param _Detail: <p>资源详细信息</p>
+        :type Detail: str
+        :param _Status: <p>资源状态</p><p>枚举值：</p><ul><li>0： 正常</li><li>5： 初始化中</li></ul>
+        :type Status: int
+        :param _PlatformId: <p>资源id</p>
+        :type PlatformId: int
+        :param _Id: <p>对用平台资源id</p>
+        :type Id: int
+        """
+        self._ResType = None
+        self._ResName = None
+        self._Detail = None
+        self._Status = None
+        self._PlatformId = None
+        self._Id = None
+
+    @property
+    def ResType(self):
+        r"""<p>资源类系</p><p>枚举值：</p><ul><li>log： 日志</li><li>storage： 云存储</li><li>hosting： 静态托管</li></ul>
+        :rtype: str
+        """
+        return self._ResType
+
+    @ResType.setter
+    def ResType(self, ResType):
+        self._ResType = ResType
+
+    @property
+    def ResName(self):
+        r"""<p>资源唯一标识</p>
+        :rtype: str
+        """
+        return self._ResName
+
+    @ResName.setter
+    def ResName(self, ResName):
+        self._ResName = ResName
+
+    @property
+    def Detail(self):
+        r"""<p>资源详细信息</p>
+        :rtype: str
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def Status(self):
+        r"""<p>资源状态</p><p>枚举值：</p><ul><li>0： 正常</li><li>5： 初始化中</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PlatformId(self):
+        r"""<p>资源id</p>
+        :rtype: int
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def Id(self):
+        r"""<p>对用平台资源id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._ResType = params.get("ResType")
+        self._ResName = params.get("ResName")
+        self._Detail = params.get("Detail")
+        self._Status = params.get("Status")
+        self._PlatformId = params.get("PlatformId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformCreditsUsageDaily(AbstractModel):
+    r"""平台版本消耗数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Date: <p>数据日期</p><p>参数格式：YYYY-MM-DD</p>
+        :type Date: str
+        :param _DeductValue: <p>资源点套餐内用量</p>
+        :type DeductValue: float
+        :param _PackageDeductValue: <p>资源点资源包用量</p>
+        :type PackageDeductValue: float
+        :param _ReportValue: <p>资源点按量用量</p>
+        :type ReportValue: float
+        :param _OriginCredits: <p>资源点原价消耗</p>
+        :type OriginCredits: float
+        """
+        self._Date = None
+        self._DeductValue = None
+        self._PackageDeductValue = None
+        self._ReportValue = None
+        self._OriginCredits = None
+
+    @property
+    def Date(self):
+        r"""<p>数据日期</p><p>参数格式：YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def DeductValue(self):
+        r"""<p>资源点套餐内用量</p>
+        :rtype: float
+        """
+        return self._DeductValue
+
+    @DeductValue.setter
+    def DeductValue(self, DeductValue):
+        self._DeductValue = DeductValue
+
+    @property
+    def PackageDeductValue(self):
+        r"""<p>资源点资源包用量</p>
+        :rtype: float
+        """
+        return self._PackageDeductValue
+
+    @PackageDeductValue.setter
+    def PackageDeductValue(self, PackageDeductValue):
+        self._PackageDeductValue = PackageDeductValue
+
+    @property
+    def ReportValue(self):
+        r"""<p>资源点按量用量</p>
+        :rtype: float
+        """
+        return self._ReportValue
+
+    @ReportValue.setter
+    def ReportValue(self, ReportValue):
+        self._ReportValue = ReportValue
+
+    @property
+    def OriginCredits(self):
+        r"""<p>资源点原价消耗</p>
+        :rtype: float
+        """
+        return self._OriginCredits
+
+    @OriginCredits.setter
+    def OriginCredits(self, OriginCredits):
+        self._OriginCredits = OriginCredits
+
+
+    def _deserialize(self, params):
+        self._Date = params.get("Date")
+        self._DeductValue = params.get("DeductValue")
+        self._PackageDeductValue = params.get("PackageDeductValue")
+        self._ReportValue = params.get("ReportValue")
+        self._OriginCredits = params.get("OriginCredits")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformInfo(AbstractModel):
+    r"""平台版资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>平台版套餐id</p>
+        :type PlatformId: str
+        :param _Alias: <p>套餐别名</p>
+        :type Alias: str
+        :param _PackageId: <p>套餐id</p>
+        :type PackageId: str
+        :param _BillStatus: <p>计费状态</p><p>枚举值：</p><ul><li>normal： 正常</li><li>isolated： 已隔离</li><li>destroyed： 已销毁</li></ul>
+        :type BillStatus: str
+        :param _Status: <p>套餐资源状态</p><p>枚举值：</p><ul><li>0： 可用</li><li>5： 发货中</li></ul>
+        :type Status: int
+        :param _Spec: <p>资源配置</p>
+        :type Spec: str
+        :param _BillTime: <p>购买时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type BillTime: str
+        :param _ExpireTime: <p>套餐过期时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type ExpireTime: str
+        :param _IsAutoRenew: <p>是否自动续费</p><p>枚举值：</p><ul><li>0： 未设置</li><li>1： 自动续费</li><li>2： 设置为到期不续费</li></ul>
+        :type IsAutoRenew: int
+        :param _Resources: <p>资源信息列表</p>
+        :type Resources: list of PlatFormResourceInfo
+        :param _Region: <p>所属地域</p><p>枚举值：</p><ul><li>ap-shanghai： 上海</li><li>ap-singapore： 新加坡</li></ul>
+        :type Region: str
+        """
+        self._PlatformId = None
+        self._Alias = None
+        self._PackageId = None
+        self._BillStatus = None
+        self._Status = None
+        self._Spec = None
+        self._BillTime = None
+        self._ExpireTime = None
+        self._IsAutoRenew = None
+        self._Resources = None
+        self._Region = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台版套餐id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def Alias(self):
+        r"""<p>套餐别名</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def PackageId(self):
+        r"""<p>套餐id</p>
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def BillStatus(self):
+        r"""<p>计费状态</p><p>枚举值：</p><ul><li>normal： 正常</li><li>isolated： 已隔离</li><li>destroyed： 已销毁</li></ul>
+        :rtype: str
+        """
+        return self._BillStatus
+
+    @BillStatus.setter
+    def BillStatus(self, BillStatus):
+        self._BillStatus = BillStatus
+
+    @property
+    def Status(self):
+        r"""<p>套餐资源状态</p><p>枚举值：</p><ul><li>0： 可用</li><li>5： 发货中</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Spec(self):
+        r"""<p>资源配置</p>
+        :rtype: str
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def BillTime(self):
+        r"""<p>购买时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._BillTime
+
+    @BillTime.setter
+    def BillTime(self, BillTime):
+        self._BillTime = BillTime
+
+    @property
+    def ExpireTime(self):
+        r"""<p>套餐过期时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def IsAutoRenew(self):
+        r"""<p>是否自动续费</p><p>枚举值：</p><ul><li>0： 未设置</li><li>1： 自动续费</li><li>2： 设置为到期不续费</li></ul>
+        :rtype: int
+        """
+        return self._IsAutoRenew
+
+    @IsAutoRenew.setter
+    def IsAutoRenew(self, IsAutoRenew):
+        self._IsAutoRenew = IsAutoRenew
+
+    @property
+    def Resources(self):
+        r"""<p>资源信息列表</p>
+        :rtype: list of PlatFormResourceInfo
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Region(self):
+        r"""<p>所属地域</p><p>枚举值：</p><ul><li>ap-shanghai： 上海</li><li>ap-singapore： 新加坡</li></ul>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._Alias = params.get("Alias")
+        self._PackageId = params.get("PackageId")
+        self._BillStatus = params.get("BillStatus")
+        self._Status = params.get("Status")
+        self._Spec = params.get("Spec")
+        self._BillTime = params.get("BillTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._IsAutoRenew = params.get("IsAutoRenew")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = PlatFormResourceInfo()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformMetricUsageItem(AbstractModel):
+    r"""平台版指标用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: <p>指标名称</p>
+        :type MetricName: str
+        :param _OriginalResourceType: <p>原始资源类型</p><p>枚举值：</p><ul><li>COS： 对象存储</li></ul>
+        :type OriginalResourceType: str
+        :param _OriginalMetricName: <p>原始指标</p>
+        :type OriginalMetricName: str
+        :param _UsageValue: <p>资源用量</p>
+        :type UsageValue: int
+        :param _UsageUnit: <p>资源用量单位</p>
+        :type UsageUnit: str
+        :param _Credits: <p>资源点</p>
+        :type Credits: int
+        :param _DailyUsageList: <p>用量按日明细列表</p>
+        :type DailyUsageList: list of DailyUsageList
+        """
+        self._MetricName = None
+        self._OriginalResourceType = None
+        self._OriginalMetricName = None
+        self._UsageValue = None
+        self._UsageUnit = None
+        self._Credits = None
+        self._DailyUsageList = None
+
+    @property
+    def MetricName(self):
+        r"""<p>指标名称</p>
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def OriginalResourceType(self):
+        r"""<p>原始资源类型</p><p>枚举值：</p><ul><li>COS： 对象存储</li></ul>
+        :rtype: str
+        """
+        return self._OriginalResourceType
+
+    @OriginalResourceType.setter
+    def OriginalResourceType(self, OriginalResourceType):
+        self._OriginalResourceType = OriginalResourceType
+
+    @property
+    def OriginalMetricName(self):
+        r"""<p>原始指标</p>
+        :rtype: str
+        """
+        return self._OriginalMetricName
+
+    @OriginalMetricName.setter
+    def OriginalMetricName(self, OriginalMetricName):
+        self._OriginalMetricName = OriginalMetricName
+
+    @property
+    def UsageValue(self):
+        r"""<p>资源用量</p>
+        :rtype: int
+        """
+        return self._UsageValue
+
+    @UsageValue.setter
+    def UsageValue(self, UsageValue):
+        self._UsageValue = UsageValue
+
+    @property
+    def UsageUnit(self):
+        r"""<p>资源用量单位</p>
+        :rtype: str
+        """
+        return self._UsageUnit
+
+    @UsageUnit.setter
+    def UsageUnit(self, UsageUnit):
+        self._UsageUnit = UsageUnit
+
+    @property
+    def Credits(self):
+        r"""<p>资源点</p>
+        :rtype: int
+        """
+        return self._Credits
+
+    @Credits.setter
+    def Credits(self, Credits):
+        self._Credits = Credits
+
+    @property
+    def DailyUsageList(self):
+        r"""<p>用量按日明细列表</p>
+        :rtype: list of DailyUsageList
+        """
+        return self._DailyUsageList
+
+    @DailyUsageList.setter
+    def DailyUsageList(self, DailyUsageList):
+        self._DailyUsageList = DailyUsageList
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._OriginalResourceType = params.get("OriginalResourceType")
+        self._OriginalMetricName = params.get("OriginalMetricName")
+        self._UsageValue = params.get("UsageValue")
+        self._UsageUnit = params.get("UsageUnit")
+        self._Credits = params.get("Credits")
+        if params.get("DailyUsageList") is not None:
+            self._DailyUsageList = []
+            for item in params.get("DailyUsageList"):
+                obj = DailyUsageList()
+                obj._deserialize(item)
+                self._DailyUsageList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformPkgCreditsUsage(AbstractModel):
+    r"""模块内平台版资源点用量及原始用量数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>平台版套餐id</p>
+        :type PlatformId: str
+        :param _Module: <p>模块</p>
+        :type Module: str
+        :param _CreditsValue: <p>module总资源点用量</p>
+        :type CreditsValue: float
+        :param _MetricUsageDetail: <p>指标用量明细</p>
+        :type MetricUsageDetail: list of MetricUsage
+        :param _DeductValue: <p>资源点套餐内用量</p>
+        :type DeductValue: float
+        :param _PackageDeductValue: <p>资源点资源包用量</p>
+        :type PackageDeductValue: float
+        :param _ReportValue: <p>资源点按量用量</p>
+        :type ReportValue: float
+        """
+        self._PlatformId = None
+        self._Module = None
+        self._CreditsValue = None
+        self._MetricUsageDetail = None
+        self._DeductValue = None
+        self._PackageDeductValue = None
+        self._ReportValue = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台版套餐id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def Module(self):
+        r"""<p>模块</p>
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def CreditsValue(self):
+        r"""<p>module总资源点用量</p>
+        :rtype: float
+        """
+        return self._CreditsValue
+
+    @CreditsValue.setter
+    def CreditsValue(self, CreditsValue):
+        self._CreditsValue = CreditsValue
+
+    @property
+    def MetricUsageDetail(self):
+        r"""<p>指标用量明细</p>
+        :rtype: list of MetricUsage
+        """
+        return self._MetricUsageDetail
+
+    @MetricUsageDetail.setter
+    def MetricUsageDetail(self, MetricUsageDetail):
+        self._MetricUsageDetail = MetricUsageDetail
+
+    @property
+    def DeductValue(self):
+        r"""<p>资源点套餐内用量</p>
+        :rtype: float
+        """
+        return self._DeductValue
+
+    @DeductValue.setter
+    def DeductValue(self, DeductValue):
+        self._DeductValue = DeductValue
+
+    @property
+    def PackageDeductValue(self):
+        r"""<p>资源点资源包用量</p>
+        :rtype: float
+        """
+        return self._PackageDeductValue
+
+    @PackageDeductValue.setter
+    def PackageDeductValue(self, PackageDeductValue):
+        self._PackageDeductValue = PackageDeductValue
+
+    @property
+    def ReportValue(self):
+        r"""<p>资源点按量用量</p>
+        :rtype: float
+        """
+        return self._ReportValue
+
+    @ReportValue.setter
+    def ReportValue(self, ReportValue):
+        self._ReportValue = ReportValue
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._Module = params.get("Module")
+        self._CreditsValue = params.get("CreditsValue")
+        if params.get("MetricUsageDetail") is not None:
+            self._MetricUsageDetail = []
+            for item in params.get("MetricUsageDetail"):
+                obj = MetricUsage()
+                obj._deserialize(item)
+                self._MetricUsageDetail.append(obj)
+        self._DeductValue = params.get("DeductValue")
+        self._PackageDeductValue = params.get("PackageDeductValue")
+        self._ReportValue = params.get("ReportValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlatformResUsageItem(AbstractModel):
+    r"""平台版资源用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>Storage： 云存储</li><li>Function： 云函数</li></ul>
+        :type ResourceType: str
+        :param _TotalCredits: <p>资源点</p>
+        :type TotalCredits: int
+        :param _Metrics: <p>指标用量信息</p>
+        :type Metrics: list of PlatformMetricUsageItem
+        """
+        self._ResourceType = None
+        self._TotalCredits = None
+        self._Metrics = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>Storage： 云存储</li><li>Function： 云函数</li></ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def TotalCredits(self):
+        r"""<p>资源点</p>
+        :rtype: int
+        """
+        return self._TotalCredits
+
+    @TotalCredits.setter
+    def TotalCredits(self, TotalCredits):
+        self._TotalCredits = TotalCredits
+
+    @property
+    def Metrics(self):
+        r"""<p>指标用量信息</p>
+        :rtype: list of PlatformMetricUsageItem
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._TotalCredits = params.get("TotalCredits")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = PlatformMetricUsageItem()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

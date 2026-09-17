@@ -1120,7 +1120,7 @@ class BillingClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeVoucherInfoResponse:
         """
-        获取代金券相关信息
+        获取近两年的代金券信息。
         """
         
         kwargs = {}
@@ -1138,7 +1138,7 @@ class BillingClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeVoucherUsageDetailsResponse:
         """
-        获取代金券使用记录
+        获取代金券近两年的使用记录。
         """
         
         kwargs = {}

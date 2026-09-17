@@ -20276,6 +20276,9 @@ class JobExecutionDto(AbstractModel):
         :param _ResultPreviewFilePath: 预览结果路径
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultPreviewFilePath: str
+        :param _SchemaInfoFilePath: 结果集schema信息文件cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaInfoFilePath: str
         :param _ResultTotalCount: 任务执行的结果总行数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultTotalCount: int
@@ -20303,6 +20306,9 @@ class JobExecutionDto(AbstractModel):
         :param _ScriptContentTruncate: 是否需要截断脚本内容
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptContentTruncate: bool
+        :param _CollectedPreviewResult: 预览结果集是否收集完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectedPreviewResult: bool
         """
         self._JobId = None
         self._JobExecutionId = None
@@ -20314,6 +20320,7 @@ class JobExecutionDto(AbstractModel):
         self._LogFilePath = None
         self._ResultFilePath = None
         self._ResultPreviewFilePath = None
+        self._SchemaInfoFilePath = None
         self._ResultTotalCount = None
         self._UpdateTime = None
         self._EndTime = None
@@ -20323,6 +20330,7 @@ class JobExecutionDto(AbstractModel):
         self._ResultEffectCount = None
         self._CollectingTotalResult = None
         self._ScriptContentTruncate = None
+        self._CollectedPreviewResult = None
 
     @property
     def JobId(self):
@@ -20445,6 +20453,18 @@ class JobExecutionDto(AbstractModel):
         self._ResultPreviewFilePath = ResultPreviewFilePath
 
     @property
+    def SchemaInfoFilePath(self):
+        r"""结果集schema信息文件cos路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchemaInfoFilePath
+
+    @SchemaInfoFilePath.setter
+    def SchemaInfoFilePath(self, SchemaInfoFilePath):
+        self._SchemaInfoFilePath = SchemaInfoFilePath
+
+    @property
     def ResultTotalCount(self):
         r"""任务执行的结果总行数
 注意：此字段可能返回 null，表示取不到有效值。
@@ -20552,6 +20572,18 @@ class JobExecutionDto(AbstractModel):
     def ScriptContentTruncate(self, ScriptContentTruncate):
         self._ScriptContentTruncate = ScriptContentTruncate
 
+    @property
+    def CollectedPreviewResult(self):
+        r"""预览结果集是否收集完成
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CollectedPreviewResult
+
+    @CollectedPreviewResult.setter
+    def CollectedPreviewResult(self, CollectedPreviewResult):
+        self._CollectedPreviewResult = CollectedPreviewResult
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -20564,6 +20596,7 @@ class JobExecutionDto(AbstractModel):
         self._LogFilePath = params.get("LogFilePath")
         self._ResultFilePath = params.get("ResultFilePath")
         self._ResultPreviewFilePath = params.get("ResultPreviewFilePath")
+        self._SchemaInfoFilePath = params.get("SchemaInfoFilePath")
         self._ResultTotalCount = params.get("ResultTotalCount")
         self._UpdateTime = params.get("UpdateTime")
         self._EndTime = params.get("EndTime")
@@ -20573,6 +20606,7 @@ class JobExecutionDto(AbstractModel):
         self._ResultEffectCount = params.get("ResultEffectCount")
         self._CollectingTotalResult = params.get("CollectingTotalResult")
         self._ScriptContentTruncate = params.get("ScriptContentTruncate")
+        self._CollectedPreviewResult = params.get("CollectedPreviewResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46948,30 +46982,22 @@ class RunSQLScriptRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScriptId: 脚本id
-        :type ScriptId: str
         :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _ScriptContent: 脚本内容，不传则默认执行已保存的全量脚本内容；若传递则要用Base64编码
+        :param _ScriptId: 脚本id。如果不填则需要传入 ScriptConfig、ScriptContent，此时为免脚本临时运行模式，服务端不保存脚本
+        :type ScriptId: str
+        :param _ScriptConfig: 脚本配置。免脚本临时运行模式（未传 ScriptId）下必填，其中 DatasourceId 必填、ExecutorGroupId 选填（缺省时使用项目管理-数据分析配置中的执行资源组）；传入 ScriptId 时本字段被忽略，配置取自已保存的脚本
+        :type ScriptConfig: :class:`tencentcloud.wedata.v20250806.models.SQLScriptConfig`
+        :param _ScriptContent: 脚本内容，支持传递代码原文或者 Base64 编码，服务端自动识别。传 ScriptId 时不传则执行已保存的全量脚本内容；免脚本临时运行模式下必填。注意：若原文恰好由 Base64 字符集组成且长度为 4 的倍数（如 descTBLS），会被识别为已编码，此类内容请显式 Base64 编码后传入
         :type ScriptContent: str
-        :param _Params: 高级运行参数，JSON格式base64编码
+        :param _Params: 高级运行参数，支持传递 JSON 格式原文或者 Base64 编码，服务端自动识别。示例：{"executorNum":1} 或 eyJleGVjdXRvck51bSI6MX0=
         :type Params: str
         """
-        self._ScriptId = None
         self._ProjectId = None
+        self._ScriptId = None
+        self._ScriptConfig = None
         self._ScriptContent = None
         self._Params = None
-
-    @property
-    def ScriptId(self):
-        r"""脚本id
-        :rtype: str
-        """
-        return self._ScriptId
-
-    @ScriptId.setter
-    def ScriptId(self, ScriptId):
-        self._ScriptId = ScriptId
 
     @property
     def ProjectId(self):
@@ -46985,8 +47011,30 @@ class RunSQLScriptRequest(AbstractModel):
         self._ProjectId = ProjectId
 
     @property
+    def ScriptId(self):
+        r"""脚本id。如果不填则需要传入 ScriptConfig、ScriptContent，此时为免脚本临时运行模式，服务端不保存脚本
+        :rtype: str
+        """
+        return self._ScriptId
+
+    @ScriptId.setter
+    def ScriptId(self, ScriptId):
+        self._ScriptId = ScriptId
+
+    @property
+    def ScriptConfig(self):
+        r"""脚本配置。免脚本临时运行模式（未传 ScriptId）下必填，其中 DatasourceId 必填、ExecutorGroupId 选填（缺省时使用项目管理-数据分析配置中的执行资源组）；传入 ScriptId 时本字段被忽略，配置取自已保存的脚本
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.SQLScriptConfig`
+        """
+        return self._ScriptConfig
+
+    @ScriptConfig.setter
+    def ScriptConfig(self, ScriptConfig):
+        self._ScriptConfig = ScriptConfig
+
+    @property
     def ScriptContent(self):
-        r"""脚本内容，不传则默认执行已保存的全量脚本内容；若传递则要用Base64编码
+        r"""脚本内容，支持传递代码原文或者 Base64 编码，服务端自动识别。传 ScriptId 时不传则执行已保存的全量脚本内容；免脚本临时运行模式下必填。注意：若原文恰好由 Base64 字符集组成且长度为 4 的倍数（如 descTBLS），会被识别为已编码，此类内容请显式 Base64 编码后传入
         :rtype: str
         """
         return self._ScriptContent
@@ -46997,7 +47045,7 @@ class RunSQLScriptRequest(AbstractModel):
 
     @property
     def Params(self):
-        r"""高级运行参数，JSON格式base64编码
+        r"""高级运行参数，支持传递 JSON 格式原文或者 Base64 编码，服务端自动识别。示例：{"executorNum":1} 或 eyJleGVjdXRvck51bSI6MX0=
         :rtype: str
         """
         return self._Params
@@ -47008,8 +47056,11 @@ class RunSQLScriptRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._ScriptId = params.get("ScriptId")
         self._ProjectId = params.get("ProjectId")
+        self._ScriptId = params.get("ScriptId")
+        if params.get("ScriptConfig") is not None:
+            self._ScriptConfig = SQLScriptConfig()
+            self._ScriptConfig._deserialize(params.get("ScriptConfig"))
         self._ScriptContent = params.get("ScriptContent")
         self._Params = params.get("Params")
         memeber_set = set(params.keys())

@@ -5291,43 +5291,29 @@ class DescribeBundlesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BundleIds: 套餐 ID 列表。每次请求批量套餐的上限为 100。可通过[DescribeBundles](https://cloud.tencent.com/document/product/1207/47575)接口返回值中的BundleId获取。
+        :param _BundleIds: <p>套餐 ID 列表。每次请求批量套餐的上限为 100。可通过<a href="https://cloud.tencent.com/document/product/1207/47575">DescribeBundles</a>接口返回值中的BundleId获取。</p>
         :type BundleIds: list of str
-        :param _Offset: 偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :param _Offset: <p>偏移量，默认为 0。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/product/1207/47578">简介</a>中的相关小节。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        :param _Limit: <p>返回数量，默认为 20，最大值为 100。关于<code>Limit</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/product/1207/47578">简介</a>中的相关小节。</p>
         :type Limit: int
-        :param _Filters: 过滤器列表。
-<li>bundle-id</li>按照【套餐 ID】进行过滤。
-类型：String
-必选：否
-<li>support-platform-type</li>按照【系统类型】进行过滤。
-取值： LINUX_UNIX(Linux/Unix系统) ;WINDOWS(Windows 系统)
-类型：String
-必选：否
-<li>bundle-type</li>按照 【套餐类型进行过滤】。
-取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)
-类型：String
-必选：否
-<li>bundle-state</li>按照【套餐状态】进行过滤。
-取值: ONLINE(在线); OFFLINE(下线);
-类型：String
-必选：否
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
+        :param _Filters: <p>过滤器列表。</p><li>bundle-id</li>按照【套餐 ID】进行过滤。类型：String必选：否<li>support-platform-type</li>按照【系统类型】进行过滤。取值： LINUX_UNIX(Linux/Unix系统) ;WINDOWS(Windows 系统)类型：String必选：否<li>bundle-type</li>按照 【套餐类型进行过滤】。取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)类型：String必选：否<li>bundle-state</li>按照【套餐状态】进行过滤。取值: ONLINE(在线); OFFLINE(下线);类型：String必选：否每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
         :type Filters: list of Filter
-        :param _Zones: 可用区列表。默认为全部可用区。
-<li>可用区可通过接口 [DescribeZones](https://cloud.tencent.com/document/product/1207/57513) 查询</li>
+        :param _Zones: <p>可用区列表。默认为全部可用区。</p><li>可用区可通过接口 [DescribeZones](https://cloud.tencent.com/document/product/1207/57513) 查询</li>
         :type Zones: list of str
+        :param _BlueprintId: <p>镜像ID。可以通过<a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a>接口返回的BlueprintId获取。</p>
+        :type BlueprintId: str
         """
         self._BundleIds = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
         self._Zones = None
+        self._BlueprintId = None
 
     @property
     def BundleIds(self):
-        r"""套餐 ID 列表。每次请求批量套餐的上限为 100。可通过[DescribeBundles](https://cloud.tencent.com/document/product/1207/47575)接口返回值中的BundleId获取。
+        r"""<p>套餐 ID 列表。每次请求批量套餐的上限为 100。可通过<a href="https://cloud.tencent.com/document/product/1207/47575">DescribeBundles</a>接口返回值中的BundleId获取。</p>
         :rtype: list of str
         """
         return self._BundleIds
@@ -5338,7 +5324,7 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为 0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        r"""<p>偏移量，默认为 0。关于<code>Offset</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/product/1207/47578">简介</a>中的相关小节。</p>
         :rtype: int
         """
         return self._Offset
@@ -5349,7 +5335,7 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为 20，最大值为 100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/product/1207/47578)中的相关小节。
+        r"""<p>返回数量，默认为 20，最大值为 100。关于<code>Limit</code>的更进一步介绍请参考 API <a href="https://cloud.tencent.com/document/product/1207/47578">简介</a>中的相关小节。</p>
         :rtype: int
         """
         return self._Limit
@@ -5360,23 +5346,7 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤器列表。
-<li>bundle-id</li>按照【套餐 ID】进行过滤。
-类型：String
-必选：否
-<li>support-platform-type</li>按照【系统类型】进行过滤。
-取值： LINUX_UNIX(Linux/Unix系统) ;WINDOWS(Windows 系统)
-类型：String
-必选：否
-<li>bundle-type</li>按照 【套餐类型进行过滤】。
-取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)
-类型：String
-必选：否
-<li>bundle-state</li>按照【套餐状态】进行过滤。
-取值: ONLINE(在线); OFFLINE(下线);
-类型：String
-必选：否
-每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
+        r"""<p>过滤器列表。</p><li>bundle-id</li>按照【套餐 ID】进行过滤。类型：String必选：否<li>support-platform-type</li>按照【系统类型】进行过滤。取值： LINUX_UNIX(Linux/Unix系统) ;WINDOWS(Windows 系统)类型：String必选：否<li>bundle-type</li>按照 【套餐类型进行过滤】。取值：GENERAL_BUNDLE (通用型套餐); STORAGE_BUNDLE(存储型套餐);ENTERPRISE_BUNDLE( 企业型套餐);EXCLUSIVE_BUNDLE(专属型套餐);BEFAST_BUNDLE(蜂驰型套餐);STARTER_BUNDLE(入门型套餐);CAREFREE_BUNDLE(无忧型套餐);RAZOR_SPEED_BUNDLE(锐驰型套餐)类型：String必选：否<li>bundle-state</li>按照【套餐状态】进行过滤。取值: ONLINE(在线); OFFLINE(下线);类型：String必选：否每次请求的 Filters 的上限为 10，Filter.Values 的上限为 5。参数不支持同时指定 BundleIds 和 Filters。
         :rtype: list of Filter
         """
         return self._Filters
@@ -5387,8 +5357,7 @@ class DescribeBundlesRequest(AbstractModel):
 
     @property
     def Zones(self):
-        r"""可用区列表。默认为全部可用区。
-<li>可用区可通过接口 [DescribeZones](https://cloud.tencent.com/document/product/1207/57513) 查询</li>
+        r"""<p>可用区列表。默认为全部可用区。</p><li>可用区可通过接口 [DescribeZones](https://cloud.tencent.com/document/product/1207/57513) 查询</li>
         :rtype: list of str
         """
         return self._Zones
@@ -5396,6 +5365,17 @@ class DescribeBundlesRequest(AbstractModel):
     @Zones.setter
     def Zones(self, Zones):
         self._Zones = Zones
+
+    @property
+    def BlueprintId(self):
+        r"""<p>镜像ID。可以通过<a href="https://cloud.tencent.com/document/product/1207/47689">DescribeBlueprints</a>接口返回的BlueprintId获取。</p>
+        :rtype: str
+        """
+        return self._BlueprintId
+
+    @BlueprintId.setter
+    def BlueprintId(self, BlueprintId):
+        self._BlueprintId = BlueprintId
 
 
     def _deserialize(self, params):
@@ -5409,6 +5389,7 @@ class DescribeBundlesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._Zones = params.get("Zones")
+        self._BlueprintId = params.get("BlueprintId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5426,9 +5407,9 @@ class DescribeBundlesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BundleSet: 套餐详细信息列表。
+        :param _BundleSet: <p>套餐详细信息列表。</p>
         :type BundleSet: list of Bundle
-        :param _TotalCount: 符合要求的套餐总数，用于分页展示。
+        :param _TotalCount: <p>符合要求的套餐总数，用于分页展示。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5439,7 +5420,7 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def BundleSet(self):
-        r"""套餐详细信息列表。
+        r"""<p>套餐详细信息列表。</p>
         :rtype: list of Bundle
         """
         return self._BundleSet
@@ -5450,7 +5431,7 @@ class DescribeBundlesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合要求的套餐总数，用于分页展示。
+        r"""<p>符合要求的套餐总数，用于分页展示。</p>
         :rtype: int
         """
         return self._TotalCount

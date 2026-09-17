@@ -12877,6 +12877,507 @@ class CreateAccessExportResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAndUpdateBatchCCRuleRequest(AbstractModel):
+    r"""CreateAndUpdateBatchCCRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+        :type Name: str
+        :param _RuleId: 规则ID，新增时填0	
+        :type RuleId: int
+        :param _Status: 状态
+        :type Status: int
+        :param _Advance: 高级模式（是否使用Session检测），0表示不启用，1表示启用
+        :type Advance: str
+        :param _Limit: CC检测阈值	
+        :type Limit: str
+        :param _Interval: CC检测周期	
+        :type Interval: str
+        :param _ActionType: 动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
+        :type ActionType: str
+        :param _Priority: 优先级	
+        :type Priority: int
+        :param _ValidTime: 动作有效时间	
+        :type ValidTime: int
+        :param _Url: 检测Url	
+        :type Url: str
+        :param _Length: url长度	
+        :type Length: int
+        :param _MatchFunc: 匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
+        :type MatchFunc: int
+        :param _OptionsArr: CC的匹配条件JSON序列化的字符串，示例：[{"key":"Method","args":["=R0VU"],"match":"0","encodeflag":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader、CaptchaRisk、CaptchaDeviceRisk、CaptchaScore match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。 Key为CaptchaRisk时，可选值为0（等于）、3（不等于）、13（属于）、14（不属于）、12（存在）、5（不存在）。 Key为CaptchaDeviceRisk时，可选值为0（等于）、3（不等于）、13（属于）、14（不属于）、12（存在）、5（不存在）。 Key为CaptchaScore时，可选值为15（数值等于）、16（数值不等于）、17（数值大于）、18（数值小于）、19（数值大于等于）、20（数值小于等于）、12（存在）、5（不存在）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
+        :type OptionsArr: str
+        :param _Edition: waf版本，sparta-waf或者clb-waf	
+        :type Edition: str
+        :param _Type: 操作类型	
+        :type Type: int
+        :param _EventId: 添加规则的来源事件id
+        :type EventId: str
+        :param _SessionApplied: 规则需要启用的SessionID
+        :type SessionApplied: list of int
+        :param _LimitMethod: 限频方式	
+        :type LimitMethod: str
+        :param _LogicalOp: 配置方式的逻辑操作符，and或者or
+        :type LogicalOp: str
+        :param _CelRule: cel表达式
+        :type CelRule: str
+        :param _ActionRatio: 动作灰度比例，默认值100
+        :type ActionRatio: int
+        :param _PageId: 页面ID
+        :type PageId: str
+        :param _Domains: 批量规则配置的域名
+        :type Domains: list of str
+        :param _GroupIds: 批量规则配置的防护组
+        :type GroupIds: list of int non-negative
+        :param _JobType: 定时生效类型
+        :type JobType: str
+        :param _JobDateTime: 定时生效配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: 定时生效类型：month or week
+        :type CronType: str
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: int
+        """
+        self._Name = None
+        self._RuleId = None
+        self._Status = None
+        self._Advance = None
+        self._Limit = None
+        self._Interval = None
+        self._ActionType = None
+        self._Priority = None
+        self._ValidTime = None
+        self._Url = None
+        self._Length = None
+        self._MatchFunc = None
+        self._OptionsArr = None
+        self._Edition = None
+        self._Type = None
+        self._EventId = None
+        self._SessionApplied = None
+        self._LimitMethod = None
+        self._LogicalOp = None
+        self._CelRule = None
+        self._ActionRatio = None
+        self._PageId = None
+        self._Domains = None
+        self._GroupIds = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+        self._ExpireTime = None
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RuleId(self):
+        r"""规则ID，新增时填0	
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Advance(self):
+        r"""高级模式（是否使用Session检测），0表示不启用，1表示启用
+        :rtype: str
+        """
+        return self._Advance
+
+    @Advance.setter
+    def Advance(self, Advance):
+        self._Advance = Advance
+
+    @property
+    def Limit(self):
+        r"""CC检测阈值	
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Interval(self):
+        r"""CC检测周期	
+        :rtype: str
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def ActionType(self):
+        r"""动作，20表示观察，21表示人机识别，22表示拦截，23表示精准拦截，26表示精准人机识别，27表示JS校验
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Priority(self):
+        r"""优先级	
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def ValidTime(self):
+        r"""动作有效时间	
+        :rtype: int
+        """
+        return self._ValidTime
+
+    @ValidTime.setter
+    def ValidTime(self, ValidTime):
+        self._ValidTime = ValidTime
+
+    @property
+    def Url(self):
+        r"""检测Url	
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Length(self):
+        r"""url长度	
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+    @property
+    def MatchFunc(self):
+        r"""匹配方法，0表示等于，1表示前缀匹配，2表示包含，3表示不等于，6表示后缀匹配，7表示不包含
+        :rtype: int
+        """
+        return self._MatchFunc
+
+    @MatchFunc.setter
+    def MatchFunc(self, MatchFunc):
+        self._MatchFunc = MatchFunc
+
+    @property
+    def OptionsArr(self):
+        r"""CC的匹配条件JSON序列化的字符串，示例：[{"key":"Method","args":["=R0VU"],"match":"0","encodeflag":true}] Key可选值为 Method、Post、Referer、Cookie、User-Agent、CustomHeader、CaptchaRisk、CaptchaDeviceRisk、CaptchaScore match可选值为，当Key为Method的时候可选值为0（等于）、3（不等于）。 Key为Post的时候可选值为0（等于）、3（不等于），Key为Cookie的时候可选值为0（等于）、2（包含），3（不等于）、7（不包含）、 当Key为Referer的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为Cookie的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为User-Agent的时候可选值为0（等于）、3（不等于）、1（前缀匹配）、6（后缀匹配）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）， 当Key为CustomHeader的时候可选值为0（等于）、3（不等于）、2（包含）、7（不包含）、12（存在）、5（不存在）、4（内容为空）。 Key为IPLocation时，可选值为13（属于）、14（不属于）。 Key为CaptchaRisk时，可选值为0（等于）、3（不等于）、13（属于）、14（不属于）、12（存在）、5（不存在）。 Key为CaptchaDeviceRisk时，可选值为0（等于）、3（不等于）、13（属于）、14（不属于）、12（存在）、5（不存在）。 Key为CaptchaScore时，可选值为15（数值等于）、16（数值不等于）、17（数值大于）、18（数值小于）、19（数值大于等于）、20（数值小于等于）、12（存在）、5（不存在）。args用来表示匹配内容，需要设置encodeflag为true，当Key为Post、Cookie、CustomHeader时，用等号=来分别串接Key和Value，并分别用Base64编码，类似YWJj=YWJj。当Key为Referer、User-Agent时，用等号=来串接Value，类似=YWJj。
+        :rtype: str
+        """
+        return self._OptionsArr
+
+    @OptionsArr.setter
+    def OptionsArr(self, OptionsArr):
+        self._OptionsArr = OptionsArr
+
+    @property
+    def Edition(self):
+        r"""waf版本，sparta-waf或者clb-waf	
+        :rtype: str
+        """
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def Type(self):
+        r"""操作类型	
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EventId(self):
+        r"""添加规则的来源事件id
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def SessionApplied(self):
+        r"""规则需要启用的SessionID
+        :rtype: list of int
+        """
+        return self._SessionApplied
+
+    @SessionApplied.setter
+    def SessionApplied(self, SessionApplied):
+        self._SessionApplied = SessionApplied
+
+    @property
+    def LimitMethod(self):
+        r"""限频方式	
+        :rtype: str
+        """
+        return self._LimitMethod
+
+    @LimitMethod.setter
+    def LimitMethod(self, LimitMethod):
+        self._LimitMethod = LimitMethod
+
+    @property
+    def LogicalOp(self):
+        r"""配置方式的逻辑操作符，and或者or
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
+    @property
+    def CelRule(self):
+        r"""cel表达式
+        :rtype: str
+        """
+        return self._CelRule
+
+    @CelRule.setter
+    def CelRule(self, CelRule):
+        self._CelRule = CelRule
+
+    @property
+    def ActionRatio(self):
+        r"""动作灰度比例，默认值100
+        :rtype: int
+        """
+        return self._ActionRatio
+
+    @ActionRatio.setter
+    def ActionRatio(self, ActionRatio):
+        self._ActionRatio = ActionRatio
+
+    @property
+    def PageId(self):
+        r"""页面ID
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def Domains(self):
+        r"""批量规则配置的域名
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def GroupIds(self):
+        r"""批量规则配置的防护组
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def JobType(self):
+        r"""定时生效类型
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时生效配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        r"""定时生效类型：month or week
+        :rtype: str
+        """
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._RuleId = params.get("RuleId")
+        self._Status = params.get("Status")
+        self._Advance = params.get("Advance")
+        self._Limit = params.get("Limit")
+        self._Interval = params.get("Interval")
+        self._ActionType = params.get("ActionType")
+        self._Priority = params.get("Priority")
+        self._ValidTime = params.get("ValidTime")
+        self._Url = params.get("Url")
+        self._Length = params.get("Length")
+        self._MatchFunc = params.get("MatchFunc")
+        self._OptionsArr = params.get("OptionsArr")
+        self._Edition = params.get("Edition")
+        self._Type = params.get("Type")
+        self._EventId = params.get("EventId")
+        self._SessionApplied = params.get("SessionApplied")
+        self._LimitMethod = params.get("LimitMethod")
+        self._LogicalOp = params.get("LogicalOp")
+        self._CelRule = params.get("CelRule")
+        self._ActionRatio = params.get("ActionRatio")
+        self._PageId = params.get("PageId")
+        self._Domains = params.get("Domains")
+        self._GroupIds = params.get("GroupIds")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAndUpdateBatchCCRuleResponse(AbstractModel):
+    r"""CreateAndUpdateBatchCCRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: cc规则id
+        :type RuleId: int
+        :param _Data: 响应数据
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        r"""cc规则id
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Data(self):
+        r"""响应数据
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAreaBanRuleRequest(AbstractModel):
     r"""CreateAreaBanRule请求参数结构体
 
@@ -58714,20 +59215,20 @@ class Strategy(AbstractModel):
 		<tr>
 			<td>CAPTCHA_RISK（验证码风险）</td>
 			<td>不支持参数</td>
-			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
-			<td>请输入风险等级值,支持数值范围0-255</td>
+			<td>numeq（数值等于）<br />numneq（数值不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
+			<td>numeq/numneq：Content 为 0-255 的整数字符串，例如 "10"；belong_to/not_belong_to：Content 为 JSON 字符串数组的序列化字符串，例如 ["1","2"]，最多50个元素，每个值为0-255整数；null/nnull：Content 必须为空字符串。集合格式不能使用普通逗号分隔字符串。</td>
 		</tr>
 		<tr>
 			<td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td>
 			<td>不支持参数</td>
-			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
-			<td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td>
+			<td>numeq（数值等于）<br />numneq（数值不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
+			<td>numeq/numneq：Content 为单个设备风险代码字符串；belong_to/not_belong_to：Content 为 JSON 字符串数组的序列化字符串，例如 ["101","201"]，最多7个元素；支持取值：101、201、301、401、501、601、701；null/nnull：Content 必须为空字符串。</td>
 		</tr>
 		<tr>
 			<td>CAPTCHAR_SCORE（验证码风险评估分）</td>
 			<td>不支持参数</td>
 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />nnull（存在）</td>
-			<td>请输入评估分数,支持数值范围0-100</td>
+			<td>数值比较时 Content 为 0-100 的整数字符串；null/nnull 时 Content 必须为空字符串。</td>
 		</tr>
 	</tbody>
 </table>
@@ -58764,10 +59265,7 @@ strsuffix （ 后缀匹配）
         cel （ CEL表达式）
     各匹配字段对应的逻辑符号不同，详见上述匹配字段表格
         :type CompareFunc: str
-        :param _Content: 匹配内容
-
-    目前 当匹配字段为COOKIE（Cookie）时，不需要输入 匹配内容其他都需要
-
+        :param _Content: 匹配内容。请根据 Field 和 CompareFunc 按匹配字段表填写。CAPTCHA_RISK、CAPTCHA_DEVICE_RISK 和 CAPTCHAR_SCORE 使用 null/nnull 时必须传空字符串；数值比较传单个整数字符串；CAPTCHA_RISK、CAPTCHA_DEVICE_RISK 使用 belong_to/not_belong_to 时传 JSON 字符串数组的序列化字符串，数组元素范围和数量限制详见 Field。
         :type Content: str
         :param _Arg: 匹配参数
 
@@ -58924,20 +59422,20 @@ strsuffix （ 后缀匹配）
 		<tr>
 			<td>CAPTCHA_RISK（验证码风险）</td>
 			<td>不支持参数</td>
-			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
-			<td>请输入风险等级值,支持数值范围0-255</td>
+			<td>numeq（数值等于）<br />numneq（数值不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
+			<td>numeq/numneq：Content 为 0-255 的整数字符串，例如 "10"；belong_to/not_belong_to：Content 为 JSON 字符串数组的序列化字符串，例如 ["1","2"]，最多50个元素，每个值为0-255整数；null/nnull：Content 必须为空字符串。集合格式不能使用普通逗号分隔字符串。</td>
 		</tr>
 		<tr>
 			<td>CAPTCHA_DEVICE_RISK（验证码设备风险）</td>
 			<td>不支持参数</td>
-			<td>eq（等于）<br />neq（不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
-			<td>请输入设备风险代码,支持取值：101、201、301、401、501、601、701</td>
+			<td>numeq（数值等于）<br />numneq（数值不等于）<br />belong_to（属于）<br />not_belong_to（不属于）<br />null（不存在）<br />nnull（存在）</td>
+			<td>numeq/numneq：Content 为单个设备风险代码字符串；belong_to/not_belong_to：Content 为 JSON 字符串数组的序列化字符串，例如 ["101","201"]，最多7个元素；支持取值：101、201、301、401、501、601、701；null/nnull：Content 必须为空字符串。</td>
 		</tr>
 		<tr>
 			<td>CAPTCHAR_SCORE（验证码风险评估分）</td>
 			<td>不支持参数</td>
 			<td>numeq（数值等于）<br />numneq（数值不等于）<br />numgt（数值大于）<br />numlt（数值小于）<br />numle（数值小于等于）<br />numge（数值大于等于）<br />null（不存在）<br />nnull（存在）</td>
-			<td>请输入评估分数,支持数值范围0-100</td>
+			<td>数值比较时 Content 为 0-100 的整数字符串；null/nnull 时 Content 必须为空字符串。</td>
 		</tr>
 	</tbody>
 </table>
@@ -58992,10 +59490,7 @@ strsuffix （ 后缀匹配）
 
     @property
     def Content(self):
-        r"""匹配内容
-
-    目前 当匹配字段为COOKIE（Cookie）时，不需要输入 匹配内容其他都需要
-
+        r"""匹配内容。请根据 Field 和 CompareFunc 按匹配字段表填写。CAPTCHA_RISK、CAPTCHA_DEVICE_RISK 和 CAPTCHAR_SCORE 使用 null/nnull 时必须传空字符串；数值比较传单个整数字符串；CAPTCHA_RISK、CAPTCHA_DEVICE_RISK 使用 belong_to/not_belong_to 时传 JSON 字符串数组的序列化字符串，数组元素范围和数量限制详见 Field。
         :rtype: str
         """
         return self._Content

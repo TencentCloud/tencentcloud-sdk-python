@@ -1143,6 +1143,57 @@ class AsrConf(AbstractModel):
         
 
 
+class AudioSegments(AbstractModel):
+    r"""音频片段时间信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。 示例值：0</p>
+        :type StartTime: float
+        :param _FinishTime: <p>该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。 示例值：15</p>
+        :type FinishTime: float
+        """
+        self._StartTime = None
+        self._FinishTime = None
+
+    @property
+    def StartTime(self):
+        r"""<p>该参数用于返回对应语种标签的片段在音频文件内的开始时间，单位为秒。 示例值：0</p>
+        :rtype: float
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>该参数用于返回对应语种标签的片段在音频文件内的结束时间，单位为秒。 示例值：15</p>
+        :rtype: float
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioTextStatisticsItem(AbstractModel):
     r"""录音转文本用量统计数据
 
@@ -1945,6 +1996,345 @@ class CreateAppResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = CreateAppResp()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAudioModerationSyncRequest(AbstractModel):
+    r"""CreateAudioModerationSync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sdkappid: <p>sdkappid app账号</p>
+        :type Sdkappid: int
+        :param _BizType: <p>BizType为策略的具体的编号, GME业务 2_2_3_sdkappid</p>
+        :type BizType: str
+        :param _DataId: <p>数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符</p>
+        :type DataId: str
+        :param _FileFormat: <p>音频格式，当FileUrl为空时，必填。音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。 示例值：mp3</p>
+        :type FileFormat: str
+        :param _FileName: <p>文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符 示例值：file_name</p>
+        :type FileName: str
+        :param _FileContent: <p>数据Base64编码，短音频同步接口仅传入可音频内容； 支持范围：文件大小不能超过5M，时长不可超过60s； 支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。 示例值：1</p>
+        :type FileContent: str
+        :param _FileUrl: <p>音频资源访问链接，与FileContent参数必须二选一输入； 支持范围及格式：同FileContent；</p>
+        :type FileUrl: str
+        """
+        self._Sdkappid = None
+        self._BizType = None
+        self._DataId = None
+        self._FileFormat = None
+        self._FileName = None
+        self._FileContent = None
+        self._FileUrl = None
+
+    @property
+    def Sdkappid(self):
+        r"""<p>sdkappid app账号</p>
+        :rtype: int
+        """
+        return self._Sdkappid
+
+    @Sdkappid.setter
+    def Sdkappid(self, Sdkappid):
+        self._Sdkappid = Sdkappid
+
+    @property
+    def BizType(self):
+        r"""<p>BizType为策略的具体的编号, GME业务 2_2_3_sdkappid</p>
+        :rtype: str
+        """
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def DataId(self):
+        r"""<p>数据标识，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符</p>
+        :rtype: str
+        """
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def FileFormat(self):
+        r"""<p>音频格式，当FileUrl为空时，必填。音频文件资源格式，当前支持格式：wav、mp3、m4a，请按照实际文件格式填入。 示例值：mp3</p>
+        :rtype: str
+        """
+        return self._FileFormat
+
+    @FileFormat.setter
+    def FileFormat(self, FileFormat):
+        self._FileFormat = FileFormat
+
+    @property
+    def FileName(self):
+        r"""<p>文件名称，可以由英文字母、数字、下划线、-、@#组成，不超过64个字符 示例值：file_name</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileContent(self):
+        r"""<p>数据Base64编码，短音频同步接口仅传入可音频内容； 支持范围：文件大小不能超过5M，时长不可超过60s； 支持格式：wav (PCM编码)、mp3、m4a (采样率：16kHz~48kHz，位深：16bit 小端，声道数：单声道/双声道，建议格式：16kHz/16bit/单声道)。 示例值：1</p>
+        :rtype: str
+        """
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
+    def FileUrl(self):
+        r"""<p>音频资源访问链接，与FileContent参数必须二选一输入； 支持范围及格式：同FileContent；</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+
+    def _deserialize(self, params):
+        self._Sdkappid = params.get("Sdkappid")
+        self._BizType = params.get("BizType")
+        self._DataId = params.get("DataId")
+        self._FileFormat = params.get("FileFormat")
+        self._FileName = params.get("FileName")
+        self._FileContent = params.get("FileContent")
+        self._FileUrl = params.get("FileUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAudioModerationSyncResponse(AbstractModel):
+    r"""CreateAudioModerationSync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataId: <p>返回传入的DataId</p>
+        :type DataId: str
+        :param _TaskId: <p>审核返回的任务id</p>
+        :type TaskId: str
+        :param _FileName: <p>文件名</p>
+        :type FileName: str
+        :param _MediaType: <p>1：语音。 2：图片。</p><p>枚举值：</p><ul><li>1： 语音</li><li>2： 图片</li></ul>
+        :type MediaType: int
+        :param _Suggest: <p>0：建议通过。 1 ：建议人工重新内容识别。 2：建议屏蔽。</p><p>枚举值：</p><ul><li>0： 建议通过</li><li>1： 建议人工重新内容识别</li><li>2： 建议屏蔽</li></ul>
+        :type Suggest: int
+        :param _Rate: <p>置信度分数，取值范围：0（置信度最低）-100（置信度最高 ），越高代表越有可能属于当前返回的标签。 实例值：100</p>
+        :type Rate: int
+        :param _Label: <p>Normal：正常文本  Ad:广告 Porn：色情 Abuse：谩骂 Illegal: 违禁 Polity: 涉政 Terror: 暴恐 Sexy: 性感 Moan: 呻吟/娇喘 QRCode: 二维码 Custom: 自定义</p>
+        :type Label: str
+        :param _SubLabel: <p>子标签</p>
+        :type SubLabel: str
+        :param _Audio: <p>音频链接地址</p>
+        :type Audio: str
+        :param _AudioText: <p>审核识别音频文本</p>
+        :type AudioText: str
+        :param _CheckDetail: <p>审核明细</p>
+        :type CheckDetail: list of ModerationCheckDetail
+        :param _Duration: <p>音频时长，单位 ms</p>
+        :type Duration: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataId = None
+        self._TaskId = None
+        self._FileName = None
+        self._MediaType = None
+        self._Suggest = None
+        self._Rate = None
+        self._Label = None
+        self._SubLabel = None
+        self._Audio = None
+        self._AudioText = None
+        self._CheckDetail = None
+        self._Duration = None
+        self._RequestId = None
+
+    @property
+    def DataId(self):
+        r"""<p>返回传入的DataId</p>
+        :rtype: str
+        """
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def TaskId(self):
+        r"""<p>审核返回的任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FileName(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def MediaType(self):
+        r"""<p>1：语音。 2：图片。</p><p>枚举值：</p><ul><li>1： 语音</li><li>2： 图片</li></ul>
+        :rtype: int
+        """
+        return self._MediaType
+
+    @MediaType.setter
+    def MediaType(self, MediaType):
+        self._MediaType = MediaType
+
+    @property
+    def Suggest(self):
+        r"""<p>0：建议通过。 1 ：建议人工重新内容识别。 2：建议屏蔽。</p><p>枚举值：</p><ul><li>0： 建议通过</li><li>1： 建议人工重新内容识别</li><li>2： 建议屏蔽</li></ul>
+        :rtype: int
+        """
+        return self._Suggest
+
+    @Suggest.setter
+    def Suggest(self, Suggest):
+        self._Suggest = Suggest
+
+    @property
+    def Rate(self):
+        r"""<p>置信度分数，取值范围：0（置信度最低）-100（置信度最高 ），越高代表越有可能属于当前返回的标签。 实例值：100</p>
+        :rtype: int
+        """
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def Label(self):
+        r"""<p>Normal：正常文本  Ad:广告 Porn：色情 Abuse：谩骂 Illegal: 违禁 Polity: 涉政 Terror: 暴恐 Sexy: 性感 Moan: 呻吟/娇喘 QRCode: 二维码 Custom: 自定义</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def SubLabel(self):
+        r"""<p>子标签</p>
+        :rtype: str
+        """
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def Audio(self):
+        r"""<p>音频链接地址</p>
+        :rtype: str
+        """
+        return self._Audio
+
+    @Audio.setter
+    def Audio(self, Audio):
+        self._Audio = Audio
+
+    @property
+    def AudioText(self):
+        r"""<p>审核识别音频文本</p>
+        :rtype: str
+        """
+        return self._AudioText
+
+    @AudioText.setter
+    def AudioText(self, AudioText):
+        self._AudioText = AudioText
+
+    @property
+    def CheckDetail(self):
+        r"""<p>审核明细</p>
+        :rtype: list of ModerationCheckDetail
+        """
+        return self._CheckDetail
+
+    @CheckDetail.setter
+    def CheckDetail(self, CheckDetail):
+        self._CheckDetail = CheckDetail
+
+    @property
+    def Duration(self):
+        r"""<p>音频时长，单位 ms</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DataId = params.get("DataId")
+        self._TaskId = params.get("TaskId")
+        self._FileName = params.get("FileName")
+        self._MediaType = params.get("MediaType")
+        self._Suggest = params.get("Suggest")
+        self._Rate = params.get("Rate")
+        self._Label = params.get("Label")
+        self._SubLabel = params.get("SubLabel")
+        self._Audio = params.get("Audio")
+        self._AudioText = params.get("AudioText")
+        if params.get("CheckDetail") is not None:
+            self._CheckDetail = []
+            for item in params.get("CheckDetail"):
+                obj = ModerationCheckDetail()
+                obj._deserialize(item)
+                self._CheckDetail.append(obj)
+        self._Duration = params.get("Duration")
         self._RequestId = params.get("RequestId")
 
 
@@ -5067,6 +5457,57 @@ class GetCustomizationListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ImageLocation(AbstractModel):
+    r"""图片违规位置坐标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: <p>该参数用于返回检测框左上角位置的横坐标（x）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。 示例值：51</p>
+        :type X: float
+        :param _Y: <p>该参数用于返回检测框左上角位置的纵坐标（y）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。 示例值：448</p>
+        :type Y: float
+        """
+        self._X = None
+        self._Y = None
+
+    @property
+    def X(self):
+        r"""<p>该参数用于返回检测框左上角位置的横坐标（x）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。 示例值：51</p>
+        :rtype: float
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        r"""<p>该参数用于返回检测框左上角位置的纵坐标（y）所在的像素位置，结合剩余参数可唯一确定检测框的大小和位置。 示例值：448</p>
+        :rtype: float
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InOutTimeInfo(AbstractModel):
     r"""房间内的事件
 
@@ -5159,6 +5600,211 @@ class InvokeLLM(AbstractModel):
     def _deserialize(self, params):
         self._Content = params.get("Content")
         self._Interrupt = params.get("Interrupt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModerationCheckDetail(AbstractModel):
+    r"""内容理解结果明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scene: <p>该字段在内容理解回调事件中可直接忽略，仅在第三方审核时存在，检出违规的模型场景，枚举值：Ad/Porn/Abuse/Illegal/Polity/Terror/Sexy/Moan/Custom</p>
+        :type Scene: str
+        :param _Label: <p>Normal：正常文本  Ad:广告 Porn：色情 Abuse：谩骂 Illegal: 违禁 Polity: 涉政 Terror: 暴恐 Sexy: 性感 Moan: 呻吟/娇喘 QRCode: 二维码 Custom: 自定义</p>
+        :type Label: str
+        :param _SubLabel: <p>二级标签</p>
+        :type SubLabel: str
+        :param _Suggest: <p>处理建议</p>
+        :type Suggest: int
+        :param _LibName: <p>自定义词库名</p>
+        :type LibName: str
+        :param _Keywords: <p>命中的关键词</p>
+        :type Keywords: list of str
+        :param _Desc: <p>中文二级标签。</p>
+        :type Desc: str
+        :param _Score: <p>置信度分值</p>
+        :type Score: int
+        :param _Severity: <p>违规严重程度: 0-不区分 1-轻度 2-严重</p>
+        :type Severity: int
+        :param _SeverityDesc: <p>违规严重程度描述 仅名单内sdkappid返回 负面表达,正面或中性表达,语义模糊</p>
+        :type SeverityDesc: str
+        :param _AudioSegments: <p>音频切片位置信息</p>
+        :type AudioSegments: :class:`tencentcloud.gme.v20180711.models.AudioSegments`
+        :param _ImageLocation: <p>图片命中坐标信息。</p>
+        :type ImageLocation: :class:`tencentcloud.gme.v20180711.models.ImageLocation`
+        """
+        self._Scene = None
+        self._Label = None
+        self._SubLabel = None
+        self._Suggest = None
+        self._LibName = None
+        self._Keywords = None
+        self._Desc = None
+        self._Score = None
+        self._Severity = None
+        self._SeverityDesc = None
+        self._AudioSegments = None
+        self._ImageLocation = None
+
+    @property
+    def Scene(self):
+        r"""<p>该字段在内容理解回调事件中可直接忽略，仅在第三方审核时存在，检出违规的模型场景，枚举值：Ad/Porn/Abuse/Illegal/Polity/Terror/Sexy/Moan/Custom</p>
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Label(self):
+        r"""<p>Normal：正常文本  Ad:广告 Porn：色情 Abuse：谩骂 Illegal: 违禁 Polity: 涉政 Terror: 暴恐 Sexy: 性感 Moan: 呻吟/娇喘 QRCode: 二维码 Custom: 自定义</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def SubLabel(self):
+        r"""<p>二级标签</p>
+        :rtype: str
+        """
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def Suggest(self):
+        r"""<p>处理建议</p>
+        :rtype: int
+        """
+        return self._Suggest
+
+    @Suggest.setter
+    def Suggest(self, Suggest):
+        self._Suggest = Suggest
+
+    @property
+    def LibName(self):
+        r"""<p>自定义词库名</p>
+        :rtype: str
+        """
+        return self._LibName
+
+    @LibName.setter
+    def LibName(self, LibName):
+        self._LibName = LibName
+
+    @property
+    def Keywords(self):
+        r"""<p>命中的关键词</p>
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def Desc(self):
+        r"""<p>中文二级标签。</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def Score(self):
+        r"""<p>置信度分值</p>
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Severity(self):
+        r"""<p>违规严重程度: 0-不区分 1-轻度 2-严重</p>
+        :rtype: int
+        """
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+    @property
+    def SeverityDesc(self):
+        r"""<p>违规严重程度描述 仅名单内sdkappid返回 负面表达,正面或中性表达,语义模糊</p>
+        :rtype: str
+        """
+        return self._SeverityDesc
+
+    @SeverityDesc.setter
+    def SeverityDesc(self, SeverityDesc):
+        self._SeverityDesc = SeverityDesc
+
+    @property
+    def AudioSegments(self):
+        r"""<p>音频切片位置信息</p>
+        :rtype: :class:`tencentcloud.gme.v20180711.models.AudioSegments`
+        """
+        return self._AudioSegments
+
+    @AudioSegments.setter
+    def AudioSegments(self, AudioSegments):
+        self._AudioSegments = AudioSegments
+
+    @property
+    def ImageLocation(self):
+        r"""<p>图片命中坐标信息。</p>
+        :rtype: :class:`tencentcloud.gme.v20180711.models.ImageLocation`
+        """
+        return self._ImageLocation
+
+    @ImageLocation.setter
+    def ImageLocation(self, ImageLocation):
+        self._ImageLocation = ImageLocation
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        self._Label = params.get("Label")
+        self._SubLabel = params.get("SubLabel")
+        self._Suggest = params.get("Suggest")
+        self._LibName = params.get("LibName")
+        self._Keywords = params.get("Keywords")
+        self._Desc = params.get("Desc")
+        self._Score = params.get("Score")
+        self._Severity = params.get("Severity")
+        self._SeverityDesc = params.get("SeverityDesc")
+        if params.get("AudioSegments") is not None:
+            self._AudioSegments = AudioSegments()
+            self._AudioSegments._deserialize(params.get("AudioSegments"))
+        if params.get("ImageLocation") is not None:
+            self._ImageLocation = ImageLocation()
+            self._ImageLocation._deserialize(params.get("ImageLocation"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -107,6 +107,29 @@ class GmeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAudioModerationSync(self, request):
+        r"""短音频内容理解同步接口
+
+        :param request: Request instance for CreateAudioModerationSync.
+        :type request: :class:`tencentcloud.gme.v20180711.models.CreateAudioModerationSyncRequest`
+        :rtype: :class:`tencentcloud.gme.v20180711.models.CreateAudioModerationSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAudioModerationSync", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAudioModerationSyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomization(self, request):
         r"""用户使用该接口可以创建语音消息转文本热句模型，以供识别调用
 
