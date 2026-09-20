@@ -25664,6 +25664,8 @@ class InstanceInfo(AbstractModel):
         :type DeviceBandwidth: int
         :param _DestroyProtect: <p>实例销毁保护状态，on表示开启保护，否则为关闭保护</p>
         :type DestroyProtect: str
+        :param _DiskEncryption: <p>云盘版实例才使用该值。 on表示磁盘加密，否则为不加密。</p>
+        :type DiskEncryption: str
         :param _CpuModel: <p>TDSQL引擎参数</p>
         :type CpuModel: str
         :param _AnalysisUpgradeVersionInfo: <p>分析引擎实例版本升级信息</p>
@@ -25721,6 +25723,7 @@ class InstanceInfo(AbstractModel):
         self._AnalysisNodeInfos = None
         self._DeviceBandwidth = None
         self._DestroyProtect = None
+        self._DiskEncryption = None
         self._CpuModel = None
         self._AnalysisUpgradeVersionInfo = None
 
@@ -26286,6 +26289,17 @@ class InstanceInfo(AbstractModel):
         self._DestroyProtect = DestroyProtect
 
     @property
+    def DiskEncryption(self):
+        r"""<p>云盘版实例才使用该值。 on表示磁盘加密，否则为不加密。</p>
+        :rtype: str
+        """
+        return self._DiskEncryption
+
+    @DiskEncryption.setter
+    def DiskEncryption(self, DiskEncryption):
+        self._DiskEncryption = DiskEncryption
+
+    @property
     def CpuModel(self):
         r"""<p>TDSQL引擎参数</p>
         :rtype: str
@@ -26392,6 +26406,7 @@ class InstanceInfo(AbstractModel):
                 self._AnalysisNodeInfos.append(obj)
         self._DeviceBandwidth = params.get("DeviceBandwidth")
         self._DestroyProtect = params.get("DestroyProtect")
+        self._DiskEncryption = params.get("DiskEncryption")
         self._CpuModel = params.get("CpuModel")
         if params.get("AnalysisUpgradeVersionInfo") is not None:
             self._AnalysisUpgradeVersionInfo = UpgradeAnalysisInstanceVersionInfo()
@@ -32260,11 +32275,11 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 云数据库实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        :param _InstanceId: <p>云数据库实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _KeyId: 用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。
+        :param _KeyId: <p>用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。</p>
         :type KeyId: str
-        :param _KeyRegion: 用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。
+        :param _KeyRegion: <p>用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。</p>
         :type KeyRegion: str
         """
         self._InstanceId = None
@@ -32273,7 +32288,7 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""云数据库实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
+        r"""<p>云数据库实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -32284,7 +32299,7 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。
+        r"""<p>用户自定义密钥 ID，CMK 唯一标识符。该值为空时，将使用腾讯云自动生成的密钥 KMS-CDB。</p>
         :rtype: str
         """
         return self._KeyId
@@ -32295,7 +32310,7 @@ class OpenDBInstanceEncryptionRequest(AbstractModel):
 
     @property
     def KeyRegion(self):
-        r"""用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。
+        r"""<p>用户自定义密钥的存储地域。如：ap-guangzhou 。KeyId 不为空时，该参数必填。</p>
         :rtype: str
         """
         return self._KeyRegion
@@ -37045,9 +37060,12 @@ class SlaveInfo(AbstractModel):
         :type First: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         :param _Second: <p>第二备机信息</p>
         :type Second: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
+        :param _Third: <p>第三备机信息</p>
+        :type Third: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         self._First = None
         self._Second = None
+        self._Third = None
 
     @property
     def First(self):
@@ -37071,6 +37089,17 @@ class SlaveInfo(AbstractModel):
     def Second(self, Second):
         self._Second = Second
 
+    @property
+    def Third(self):
+        r"""<p>第三备机信息</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
+        """
+        return self._Third
+
+    @Third.setter
+    def Third(self, Third):
+        self._Third = Third
+
 
     def _deserialize(self, params):
         if params.get("First") is not None:
@@ -37079,6 +37108,9 @@ class SlaveInfo(AbstractModel):
         if params.get("Second") is not None:
             self._Second = SlaveInstanceInfo()
             self._Second._deserialize(params.get("Second"))
+        if params.get("Third") is not None:
+            self._Third = SlaveInstanceInfo()
+            self._Third._deserialize(params.get("Third"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

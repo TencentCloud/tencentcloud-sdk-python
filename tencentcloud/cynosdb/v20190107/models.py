@@ -44156,11 +44156,11 @@ class ModifyDbVersionData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OldVersion: 修改前版本
+        :param _OldVersion: <p>修改前版本</p>
         :type OldVersion: str
-        :param _NewVersion: 修改后版本
+        :param _NewVersion: <p>修改后版本</p>
         :type NewVersion: str
-        :param _UpgradeType: 升级方式
+        :param _UpgradeType: <p>升级方式</p>
         :type UpgradeType: str
         """
         self._OldVersion = None
@@ -44169,7 +44169,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def OldVersion(self):
-        r"""修改前版本
+        r"""<p>修改前版本</p>
         :rtype: str
         """
         return self._OldVersion
@@ -44180,7 +44180,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def NewVersion(self):
-        r"""修改后版本
+        r"""<p>修改后版本</p>
         :rtype: str
         """
         return self._NewVersion
@@ -44191,7 +44191,7 @@ class ModifyDbVersionData(AbstractModel):
 
     @property
     def UpgradeType(self):
-        r"""升级方式
+        r"""<p>升级方式</p>
         :rtype: str
         """
         return self._UpgradeType
@@ -61136,11 +61136,11 @@ class UpgradeClusterVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _CynosVersion: 内核版本
+        :param _CynosVersion: <p>内核版本</p>
         :type CynosVersion: str
-        :param _UpgradeType: 升级时间类型，可选：upgradeImmediate,upgradeInMaintain
+        :param _UpgradeType: <p>升级时间类型，可选：upgradeImmediate,upgradeInMaintain</p>
         :type UpgradeType: str
         """
         self._ClusterId = None
@@ -61149,7 +61149,7 @@ class UpgradeClusterVersionRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -61160,7 +61160,7 @@ class UpgradeClusterVersionRequest(AbstractModel):
 
     @property
     def CynosVersion(self):
-        r"""内核版本
+        r"""<p>内核版本</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -61171,7 +61171,7 @@ class UpgradeClusterVersionRequest(AbstractModel):
 
     @property
     def UpgradeType(self):
-        r"""升级时间类型，可选：upgradeImmediate,upgradeInMaintain
+        r"""<p>升级时间类型，可选：upgradeImmediate,upgradeInMaintain</p>
         :rtype: str
         """
         return self._UpgradeType
@@ -61202,17 +61202,20 @@ class UpgradeClusterVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步任务id
+        :param _FlowId: <p>异步任务id</p>
         :type FlowId: int
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._TaskId = None
         self._RequestId = None
 
     @property
     def FlowId(self):
-        r"""异步任务id
+        r"""<p>异步任务id</p>
         :rtype: int
         """
         return self._FlowId
@@ -61220,6 +61223,17 @@ class UpgradeClusterVersionResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -61235,6 +61249,7 @@ class UpgradeClusterVersionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

@@ -5420,6 +5420,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UnbindingResource(
+            self,
+            request: models.UnbindingResourceRequest,
+            opts: Dict = None,
+    ) -> models.UnbindingResourceResponse:
+        """
+        解绑bundle绑定的资源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnbindingResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnbindingResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UnboundProjectExecutorResource(
             self,
             request: models.UnboundProjectExecutorResourceRequest,

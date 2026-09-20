@@ -25,6 +25,24 @@ class DatabuddyClient(AbstractClient):
     _endpoint = 'databuddy.tencentcloudapi.com'
     _service = 'databuddy'
 
+    async def AddConsoleUsers(
+            self,
+            request: models.AddConsoleUsersRequest,
+            opts: Dict = None,
+    ) -> models.AddConsoleUsersResponse:
+        """
+        添加控制台用户
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddConsoleUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddConsoleUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateFile(
             self,
             request: models.CreateFileRequest,
@@ -228,6 +246,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListConsoleUsers(
+            self,
+            request: models.ListConsoleUsersRequest,
+            opts: Dict = None,
+    ) -> models.ListConsoleUsersResponse:
+        """
+        查询控制台用户列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListConsoleUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListConsoleUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListWorkflowRuns(
             self,
             request: models.ListWorkflowRunsRequest,
@@ -277,6 +313,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "ListWorkflows"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListWorkflowsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveConsoleUsers(
+            self,
+            request: models.RemoveConsoleUsersRequest,
+            opts: Dict = None,
+    ) -> models.RemoveConsoleUsersResponse:
+        """
+        <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveConsoleUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveConsoleUsersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -332,6 +386,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "UnbindWorkflowBundle"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnbindWorkflowBundleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateConsoleUsers(
+            self,
+            request: models.UpdateConsoleUsersRequest,
+            opts: Dict = None,
+    ) -> models.UpdateConsoleUsersResponse:
+        """
+        修改控制台用户角色
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateConsoleUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateConsoleUsersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

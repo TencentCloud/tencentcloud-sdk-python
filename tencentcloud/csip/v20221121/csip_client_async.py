@@ -223,24 +223,6 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def BindClusterOwner(
-            self,
-            request: models.BindClusterOwnerRequest,
-            opts: Dict = None,
-    ) -> models.BindClusterOwnerResponse:
-        """
-        绑定集群负责人
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "BindClusterOwner"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.BindClusterOwnerResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CancelEdrAlertIgnore(
             self,
             request: models.CancelEdrAlertIgnoreRequest,
@@ -5004,24 +4986,6 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeClusterInstallCommand"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClusterInstallCommandResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeClusterListV2(
-            self,
-            request: models.DescribeClusterListV2Request,
-            opts: Dict = None,
-    ) -> models.DescribeClusterListV2Response:
-        """
-        查询集群列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeClusterListV2"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeClusterListV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -9803,7 +9767,7 @@ class CsipClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSkillScanPayInfoResponse:
         """
-        查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。
+        查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。后付费资源信息通过 PostPayStatus、PostPayResourceId、PostPayBeginTime 返回，与预付费订单字段相互独立，二者可同时有效（预付额度耗尽后溢出用量进入后付费）。
         """
         
         kwargs = {}
@@ -9828,6 +9792,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeSkillScanResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSkillScanResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillScanTaskList(
+            self,
+            request: models.DescribeSkillScanTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillScanTaskListResponse:
+        """
+        分页查询 Skill 扫描任务列表，返回每个任务的 Skill 名称、消耗次数与上传时间，按上传时间倒序排列。默认查询本月数据，可通过 StartTime / EndTime 指定时间范围。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillScanTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillScanTaskListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

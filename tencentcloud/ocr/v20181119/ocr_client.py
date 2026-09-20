@@ -1177,7 +1177,7 @@ class OcrClient(AbstractClient):
 
         支持的文件大小：PDF/Word/PPT支持150M且300页以内、Excel支持10M以内、TXT支持10M以内、图片文件支持70M以内。
 
-        默认接口请求频率限制：5 并发。
+        默认接口请求频率限制：5 页并发（注：可同时解析5页，且同步和异步接口共享并发资源，支持增购并发）。
 
         :param request: Request instance for MultimodalDocParse.
         :type request: :class:`tencentcloud.ocr.v20181119.models.MultimodalDocParseRequest`

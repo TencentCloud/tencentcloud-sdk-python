@@ -1951,6 +1951,45 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAvailableOriginACLFamily(self, request):
+        r"""查询源站防护 IP 段控制域详细信息，包含版本号和具体IP网段信息等。
+        标准控制域和精简控制域主要区别在于提供的 IP 段数量差异，后者数量更少,但是使用上有些限制，具体限制请咨询产品。具体格式说明如下：
+        标准控制域：
+        <li>gaz：标准全球控制域；</li>
+        <li>mlc：标准中国控制域；</li>
+        <li>emc：标准海外(全球不含中国)控制域；</li>
+        精简控制域控制域：
+        <li>plat-gaz：精简全球控制域；</li>
+        <li>plat-mlc：精简中国控制域；</li>
+        <li>plat-emc：精简海外(全球不含中国)控制域；</li>
+        <li>plat-specific-gaz：定制版控全球可用区制域；</li>
+        <li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li>
+        <li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域；</li>
+        缩写说明：
+        <li>gaz：Global AZ Availability Zone;</li>
+        <li>mlc：mainlandChina;</li>
+        <li>emc：Exclude mainlandChina.</li>
+
+        :param request: Request instance for DescribeAvailableOriginACLFamily.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAvailableOriginACLFamilyRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeAvailableOriginACLFamilyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAvailableOriginACLFamily", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAvailableOriginACLFamilyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAvailablePlans(self, request):
         r"""查询当前账户可用套餐信息列表
 

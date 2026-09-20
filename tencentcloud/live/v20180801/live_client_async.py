@@ -261,6 +261,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAuditImages(
+            self,
+            request: models.CreateAuditImagesRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuditImagesResponse:
+        """
+        直播审核图库添加图片，添加到预设库，图库不需要创建。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuditImages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuditImagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAuditKeywordLib(
             self,
             request: models.CreateAuditKeywordLibRequest,
@@ -913,6 +931,42 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAuditImages(
+            self,
+            request: models.DeleteAuditImagesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditImagesResponse:
+        """
+        直播审核图库删除图片。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditImages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditImagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAuditKeywordLib(
+            self,
+            request: models.DeleteAuditKeywordLibRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditKeywordLibResponse:
+        """
+        删除关键词库，直播审核功能使用。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditKeywordLib"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditKeywordLibResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAuditKeywords(
             self,
             request: models.DeleteAuditKeywordsRequest,
@@ -1527,6 +1581,60 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DescribeAreaBillBandwidthAndFluxList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAreaBillBandwidthAndFluxListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditGroupTag(
+            self,
+            request: models.DescribeAuditGroupTagRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditGroupTagResponse:
+        """
+        获取标签组分类数据，直播审核中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditGroupTag"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditGroupTagResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditImages(
+            self,
+            request: models.DescribeAuditImagesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditImagesResponse:
+        """
+        直播审核图库获取图片。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditImages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditImagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditKeywordLibs(
+            self,
+            request: models.DescribeAuditKeywordLibsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditKeywordLibsResponse:
+        """
+        获取关键词库列表，直播审核功能使用。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditKeywordLibs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditKeywordLibsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3549,6 +3657,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "InsertTaskTemporaryFiles"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InsertTaskTemporaryFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAuditKeywordLib(
+            self,
+            request: models.ModifyAuditKeywordLibRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAuditKeywordLibResponse:
+        """
+        更新关键词库信息，直播审核功能使用。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAuditKeywordLib"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAuditKeywordLibResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

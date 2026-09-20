@@ -7910,7 +7910,7 @@ class AiCutoutConfig(AbstractModel):
         :type Type: str
         :param _PatternConfig: <p>图案抠图配置。仅在Type为pattern时生效。</p>
         :type PatternConfig: :class:`tencentcloud.mps.v20190612.models.PatternConfig`
-        :param _Model: <p>抠图模型选择，可不填。</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>WAND-cutout-1.0-lite： 标准版，速度最快</li><li>WAND-cutout-2.0-lite： 增强版，速度最快</li><li>WAND-cutout-2.0-flash： 增强版，质量-速度平衡</li></ul>
+        :param _Model: <p>抠图模型选择。</p><p>枚举值：</p><ul><li>cutout-1.0-lite： 基础版，速度最快</li><li>cutout-1.0-flash： 标准版，质量-速度平衡</li></ul>
         :type Model: str
         """
         self._Switch = None
@@ -7953,7 +7953,7 @@ class AiCutoutConfig(AbstractModel):
 
     @property
     def Model(self):
-        r"""<p>抠图模型选择，可不填。</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>WAND-cutout-1.0-lite： 标准版，速度最快</li><li>WAND-cutout-2.0-lite： 增强版，速度最快</li><li>WAND-cutout-2.0-flash： 增强版，质量-速度平衡</li></ul>
+        r"""<p>抠图模型选择。</p><p>枚举值：</p><ul><li>cutout-1.0-lite： 基础版，速度最快</li><li>cutout-1.0-flash： 标准版，质量-速度平衡</li></ul>
         :rtype: str
         """
         return self._Model

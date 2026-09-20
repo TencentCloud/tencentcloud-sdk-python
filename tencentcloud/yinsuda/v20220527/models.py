@@ -2397,9 +2397,9 @@ class DescribeUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppName: 应用名称。
+        :param _AppName: <p>应用名称。</p>
         :type AppName: str
-        :param _UserId: 用户标识。
+        :param _UserId: <p>用户标识。</p>
         :type UserId: str
         """
         self._AppName = None
@@ -2407,7 +2407,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def AppName(self):
-        r"""应用名称。
+        r"""<p>应用名称。</p>
         :rtype: str
         """
         return self._AppName
@@ -2418,7 +2418,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户标识。
+        r"""<p>用户标识。</p>
         :rtype: str
         """
         return self._UserId
@@ -2448,7 +2448,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserInfo: 用户信息。
+        :param _UserInfo: <p>用户信息。</p>
         :type UserInfo: :class:`tencentcloud.yinsuda.v20220527.models.UserInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2458,7 +2458,7 @@ class DescribeUserInfoResponse(AbstractModel):
 
     @property
     def UserInfo(self):
-        r"""用户信息。
+        r"""<p>用户信息。</p>
         :rtype: :class:`tencentcloud.yinsuda.v20220527.models.UserInfo`
         """
         return self._UserInfo
@@ -3033,26 +3033,22 @@ class KTVMusicBaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MusicId: 歌曲Id。
+        :param _MusicId: <p>歌曲Id。</p>
         :type MusicId: str
-        :param _Name: 歌曲名称。
+        :param _Name: <p>歌曲名称。</p>
         :type Name: str
-        :param _SingerSet: 歌手名称。
+        :param _SingerSet: <p>歌手名称。</p>
         :type SingerSet: list of str
-        :param _Duration: 播放时长。
+        :param _Duration: <p>播放时长。</p><p>单位：秒</p>
         :type Duration: int
-        :param _SingerImageUrl: 歌手图片链接。
+        :param _SingerImageUrl: <p>歌手图片链接。</p>
         :type SingerImageUrl: str
-        :param _AlbumInfo: 专辑信息。
+        :param _AlbumInfo: <p>专辑信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlbumInfo: :class:`tencentcloud.yinsuda.v20220527.models.MusicAlbumInfo`
-        :param _RightSet: 权益列表，取值有：
-<li>Play：可播；</li>
-<li>Sing：可唱。</li>
+        :param _RightSet: <p>权益列表，取值有：</p><li>Play：可播；</li><li>Sing：可唱。</li>
         :type RightSet: list of str
-        :param _RecommendType: 推荐类型，取值有：
-<li>Featured：精选；</li>
-<li>Other：其他。</li>
+        :param _RecommendType: <p>推荐类型，取值有：</p><li>Featured：精选；</li><li>Other：其他。</li>
         :type RecommendType: str
         """
         self._MusicId = None
@@ -3066,7 +3062,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def MusicId(self):
-        r"""歌曲Id。
+        r"""<p>歌曲Id。</p>
         :rtype: str
         """
         return self._MusicId
@@ -3077,7 +3073,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""歌曲名称。
+        r"""<p>歌曲名称。</p>
         :rtype: str
         """
         return self._Name
@@ -3088,7 +3084,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def SingerSet(self):
-        r"""歌手名称。
+        r"""<p>歌手名称。</p>
         :rtype: list of str
         """
         return self._SingerSet
@@ -3099,7 +3095,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def Duration(self):
-        r"""播放时长。
+        r"""<p>播放时长。</p><p>单位：秒</p>
         :rtype: int
         """
         return self._Duration
@@ -3110,7 +3106,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def SingerImageUrl(self):
-        r"""歌手图片链接。
+        r"""<p>歌手图片链接。</p>
         :rtype: str
         """
         return self._SingerImageUrl
@@ -3121,7 +3117,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def AlbumInfo(self):
-        r"""专辑信息。
+        r"""<p>专辑信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.yinsuda.v20220527.models.MusicAlbumInfo`
         """
@@ -3133,9 +3129,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def RightSet(self):
-        r"""权益列表，取值有：
-<li>Play：可播；</li>
-<li>Sing：可唱。</li>
+        r"""<p>权益列表，取值有：</p><li>Play：可播；</li><li>Sing：可唱。</li>
         :rtype: list of str
         """
         return self._RightSet
@@ -3146,9 +3140,7 @@ class KTVMusicBaseInfo(AbstractModel):
 
     @property
     def RecommendType(self):
-        r"""推荐类型，取值有：
-<li>Featured：精选；</li>
-<li>Other：其他。</li>
+        r"""<p>推荐类型，取值有：</p><li>Featured：精选；</li><li>Other：其他。</li>
         :rtype: str
         """
         return self._RecommendType

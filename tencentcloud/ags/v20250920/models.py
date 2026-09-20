@@ -114,6 +114,61 @@ class APIKeyInfo(AbstractModel):
         
 
 
+class AccountQuotaOverview(AbstractModel):
+    r"""主账号配额总览
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Quota: <p>主账号各资源维度的配额上限</p>
+        :type Quota: :class:`tencentcloud.ags.v20250920.models.QuotaResourceInfo`
+        :param _Usage: <p>主账号各资源维度的当前用量</p>
+        :type Usage: :class:`tencentcloud.ags.v20250920.models.QuotaResourceInfo`
+        """
+        self._Quota = None
+        self._Usage = None
+
+    @property
+    def Quota(self):
+        r"""<p>主账号各资源维度的配额上限</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.QuotaResourceInfo`
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+    @property
+    def Usage(self):
+        r"""<p>主账号各资源维度的当前用量</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.QuotaResourceInfo`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+
+    def _deserialize(self, params):
+        if params.get("Quota") is not None:
+            self._Quota = QuotaResourceInfo()
+            self._Quota._deserialize(params.get("Quota"))
+        if params.get("Usage") is not None:
+            self._Usage = QuotaResourceInfo()
+            self._Usage._deserialize(params.get("Usage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AcquireDeploymentTokenRequest(AbstractModel):
     r"""AcquireDeploymentToken请求参数结构体
 
@@ -434,6 +489,187 @@ class AgentBucketStorageSource(AbstractModel):
         
 
 
+class AppendEventRequest(AbstractModel):
+    r"""AppendEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>会话所属空间 ID。</p>
+        :type SpaceId: str
+        :param _UserId: <p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :type UserId: str
+        :param _SessionId: <p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :type SessionId: str
+        :param _Event: <p>事件内容。</p>
+        :type Event: :class:`tencentcloud.ags.v20250920.models.EventInfo`
+        :param _AgentId: <p>Agent ID。可选。</p>
+        :type AgentId: str
+        """
+        self._SpaceId = None
+        self._UserId = None
+        self._SessionId = None
+        self._Event = None
+        self._AgentId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>会话所属空间 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def UserId(self):
+        r"""<p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Event(self):
+        r"""<p>事件内容。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.EventInfo`
+        """
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def AgentId(self):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        r"""<p>Agent ID。可选。</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        self._AgentId = AgentId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        if params.get("Event") is not None:
+            self._Event = EventInfo()
+            self._Event._deserialize(params.get("Event"))
+        self._AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppendEventResponse(AbstractModel):
+    r"""AppendEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Event: <p>事件信息。</p>
+        :type Event: :class:`tencentcloud.ags.v20250920.models.EventInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Event = None
+        self._RequestId = None
+
+    @property
+    def Event(self):
+        r"""<p>事件信息。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.EventInfo`
+        """
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Event") is not None:
+            self._Event = EventInfo()
+            self._Event._deserialize(params.get("Event"))
+        self._RequestId = params.get("RequestId")
+
+
+class ApproveRegistryRecordRequest(AbstractModel):
+    r"""ApproveRegistryRecord请求参数结构体
+
+    """
+
+
+class ApproveRegistryRecordResponse(AbstractModel):
+    r"""ApproveRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CLSConfig(AbstractModel):
     r"""沙箱工具日志推送CLS相关配置
 
@@ -468,6 +704,40 @@ class CLSConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CancelRegistryRecordRequest(AbstractModel):
+    r"""CancelRegistryRecord请求参数结构体
+
+    """
+
+
+class CancelRegistryRecordResponse(AbstractModel):
+    r"""CancelRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class CfsStorageSource(AbstractModel):
@@ -1042,6 +1312,74 @@ class CreatePreCacheImageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRegistryRecordRequest(AbstractModel):
+    r"""CreateRegistryRecord请求参数结构体
+
+    """
+
+
+class CreateRegistryRecordResponse(AbstractModel):
+    r"""CreateRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRegistryRequest(AbstractModel):
+    r"""CreateRegistry请求参数结构体
+
+    """
+
+
+class CreateRegistryResponse(AbstractModel):
+    r"""CreateRegistry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSandboxToolRequest(AbstractModel):
     r"""CreateSandboxTool请求参数结构体
 
@@ -1316,6 +1654,304 @@ class CreateSandboxToolResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSessionRequest(AbstractModel):
+    r"""CreateSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>会话所属空间 ID。</p>
+        :type SpaceId: str
+        :param _UserId: <p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :type UserId: str
+        :param _AgentId: <p>Agent ID。可选。</p>
+        :type AgentId: str
+        :param _SessionId: <p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :type SessionId: str
+        :param _Title: <p>会话标题，最大长度 256 字符。</p>
+        :type Title: str
+        :param _State: <p>初始会话状态。</p>
+        :type State: :class:`tencentcloud.ags.v20250920.models.SessionState`
+        :param _Metadata: <p>创建会话时设置的初始元数据，以键值对数组形式表示。每个元素包含 Metadata 名称和对应值。</p><p>入参限制：本参数可选，最多支持 64 项。Name 不能为空或重复，最大长度为 253 字节；Value 最大长度为 1024 字节，允许为空字符串。Metadata 序列化后的总大小不能超过 64 KiB。</p>
+        :type Metadata: list of MetadataVar
+        """
+        self._SpaceId = None
+        self._UserId = None
+        self._AgentId = None
+        self._SessionId = None
+        self._Title = None
+        self._State = None
+        self._Metadata = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>会话所属空间 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def UserId(self):
+        r"""<p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def AgentId(self):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        r"""<p>Agent ID。可选。</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        self._AgentId = AgentId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Title(self):
+        r"""<p>会话标题，最大长度 256 字符。</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def State(self):
+        r"""<p>初始会话状态。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SessionState`
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Metadata(self):
+        r"""<p>创建会话时设置的初始元数据，以键值对数组形式表示。每个元素包含 Metadata 名称和对应值。</p><p>入参限制：本参数可选，最多支持 64 项。Name 不能为空或重复，最大长度为 253 字节；Value 最大长度为 1024 字节，允许为空字符串。Metadata 序列化后的总大小不能超过 64 KiB。</p>
+        :rtype: list of MetadataVar
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._UserId = params.get("UserId")
+        self._AgentId = params.get("AgentId")
+        self._SessionId = params.get("SessionId")
+        self._Title = params.get("Title")
+        if params.get("State") is not None:
+            self._State = SessionState()
+            self._State._deserialize(params.get("State"))
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataVar()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSessionResponse(AbstractModel):
+    r"""CreateSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Session: <p>会话信息。</p>
+        :type Session: :class:`tencentcloud.ags.v20250920.models.SessionInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Session = None
+        self._RequestId = None
+
+    @property
+    def Session(self):
+        r"""<p>会话信息。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SessionInfo`
+        """
+        return self._Session
+
+    @Session.setter
+    def Session(self, Session):
+        self._Session = Session
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Session") is not None:
+            self._Session = SessionInfo()
+            self._Session._deserialize(params.get("Session"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSessionSpaceRequest(AbstractModel):
+    r"""CreateSessionSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>会话空间名称，用于标识会话空间的业务用途。</p><p>入参限制：必填；去除首尾空白后不能为空；最大长度为 128 个字符。</p><p>建议名称包含业务和环境信息，便于识别和管理。</p>
+        :type Name: str
+        :param _Description: <p>会话空间描述，用于补充说明会话空间的业务用途。</p><p>入参限制：选填；最大长度为 512 个字符。</p><p>未传入时创建为空描述。</p>
+        :type Description: str
+        :param _Tags: <p>创建 SessionSpace 时为资源绑定标签。</p>
+        :type Tags: list of Tag
+        """
+        self._Name = None
+        self._Description = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""<p>会话空间名称，用于标识会话空间的业务用途。</p><p>入参限制：必填；去除首尾空白后不能为空；最大长度为 128 个字符。</p><p>建议名称包含业务和环境信息，便于识别和管理。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>会话空间描述，用于补充说明会话空间的业务用途。</p><p>入参限制：选填；最大长度为 512 个字符。</p><p>未传入时创建为空描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        r"""<p>创建 SessionSpace 时为资源绑定标签。</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSessionSpaceResponse(AbstractModel):
+    r"""CreateSessionSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionSpace: <p>创建成功后的会话空间完整信息。</p><p>接口成功时一定返回；接口失败时返回 Error，不会返回该字段。</p>
+        :type SessionSpace: :class:`tencentcloud.ags.v20250920.models.SessionSpaceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SessionSpace = None
+        self._RequestId = None
+
+    @property
+    def SessionSpace(self):
+        r"""<p>创建成功后的会话空间完整信息。</p><p>接口成功时一定返回；接口失败时返回 Error，不会返回该字段。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SessionSpaceInfo`
+        """
+        return self._SessionSpace
+
+    @SessionSpace.setter
+    def SessionSpace(self, SessionSpace):
+        self._SessionSpace = SessionSpace
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SessionSpace") is not None:
+            self._SessionSpace = SessionSpaceInfo()
+            self._SessionSpace._deserialize(params.get("SessionSpace"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1872,6 +2508,74 @@ class DeleteDeploymentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRegistryRecordRequest(AbstractModel):
+    r"""DeleteRegistryRecord请求参数结构体
+
+    """
+
+
+class DeleteRegistryRecordResponse(AbstractModel):
+    r"""DeleteRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRegistryRequest(AbstractModel):
+    r"""DeleteRegistry请求参数结构体
+
+    """
+
+
+class DeleteRegistryResponse(AbstractModel):
+    r"""DeleteRegistry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteSandboxToolRequest(AbstractModel):
     r"""DeleteSandboxTool请求参数结构体
 
@@ -1910,6 +2614,183 @@ class DeleteSandboxToolRequest(AbstractModel):
 
 class DeleteSandboxToolResponse(AbstractModel):
     r"""DeleteSandboxTool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSessionRequest(AbstractModel):
+    r"""DeleteSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>会话所属空间 ID。</p>
+        :type SpaceId: str
+        :param _UserId: <p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :type UserId: str
+        :param _SessionId: <p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :type SessionId: str
+        :param _AgentId: <p>Agent ID。可选。</p>
+        :type AgentId: str
+        """
+        self._SpaceId = None
+        self._UserId = None
+        self._SessionId = None
+        self._AgentId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>会话所属空间 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def UserId(self):
+        r"""<p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def AgentId(self):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        r"""<p>Agent ID。可选。</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        self._AgentId = AgentId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        self._AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSessionResponse(AbstractModel):
+    r"""DeleteSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSessionSpaceRequest(AbstractModel):
+    r"""DeleteSessionSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>需要删除的会话空间唯一标识。</p>
+        :type SpaceId: str
+        """
+        self._SpaceId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>需要删除的会话空间唯一标识。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSessionSpaceResponse(AbstractModel):
+    r"""DeleteSessionSpace返回参数结构体
 
     """
 
@@ -2417,6 +3298,214 @@ class DescribeDeploymentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEventsRequest(AbstractModel):
+    r"""DescribeEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>会话所属空间 ID。</p>
+        :type SpaceId: str
+        :param _UserId: <p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :type UserId: str
+        :param _SessionId: <p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :type SessionId: str
+        :param _AgentId: <p>Agent ID。可选。</p>
+        :type AgentId: str
+        :param _Author: <p>事件作者。取值示例：user、assistant、tool。</p>
+        :type Author: str
+        :param _AfterTimestamp: <p>起始时间，仅返回该时间之后的事件，使用 RFC3339 格式，最大长度 64 字符。</p>
+        :type AfterTimestamp: str
+        :param _Offset: <p>分页偏移量，默认为 0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，默认为 50，最大值为 200。</p>
+        :type Limit: int
+        """
+        self._SpaceId = None
+        self._UserId = None
+        self._SessionId = None
+        self._AgentId = None
+        self._Author = None
+        self._AfterTimestamp = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>会话所属空间 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def UserId(self):
+        r"""<p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def AgentId(self):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        r"""<p>Agent ID。可选。</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        self._AgentId = AgentId
+
+    @property
+    def Author(self):
+        r"""<p>事件作者。取值示例：user、assistant、tool。</p>
+        :rtype: str
+        """
+        return self._Author
+
+    @Author.setter
+    def Author(self, Author):
+        self._Author = Author
+
+    @property
+    def AfterTimestamp(self):
+        r"""<p>起始时间，仅返回该时间之后的事件，使用 RFC3339 格式，最大长度 64 字符。</p>
+        :rtype: str
+        """
+        return self._AfterTimestamp
+
+    @AfterTimestamp.setter
+    def AfterTimestamp(self, AfterTimestamp):
+        self._AfterTimestamp = AfterTimestamp
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认为 50，最大值为 200。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        self._AgentId = params.get("AgentId")
+        self._Author = params.get("Author")
+        self._AfterTimestamp = params.get("AfterTimestamp")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEventsResponse(AbstractModel):
+    r"""DescribeEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: <p>事件列表。</p>
+        :type Events: list of EventInfo
+        :param _TotalCount: <p>符合条件的事件总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        r"""<p>事件列表。</p>
+        :rtype: list of EventInfo
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的事件总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = EventInfo()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePreCacheImageTaskRequest(AbstractModel):
     r"""DescribePreCacheImageTask请求参数结构体
 
@@ -2583,6 +3672,376 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._ImageRegistryType = params.get("ImageRegistryType")
         self._Status = params.get("Status")
         self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeQuotaOverviewRequest(AbstractModel):
+    r"""DescribeQuotaOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移量，从 0 开始，默认值为 0，必须大于等于 0。</p><p>单位：偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>每页返回的配额组数量</p><p>单位：个</p>
+        :type Limit: int
+        :param _Filters: <p>配额组过滤条件</p>
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，从 0 开始，默认值为 0，必须大于等于 0。</p><p>单位：偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回的配额组数量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>配额组过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQuotaOverviewResponse(AbstractModel):
+    r"""DescribeQuotaOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountQuotaOverview: <p>主账号配额上限及全账号当前用量</p>
+        :type AccountQuotaOverview: :class:`tencentcloud.ags.v20250920.models.AccountQuotaOverview`
+        :param _QuotaGroupSet: <p>当前分页下的配额组配额与用量列表。没有数据时返回空数组。</p>
+        :type QuotaGroupSet: list of QuotaGroupOverview
+        :param _TotalCount: <p>满足过滤条件的配额组总数，不受当前分页大小影响。</p><p>单位：个</p>
+        :type TotalCount: int
+        :param _DataTime: <p>本次查询完成时间，格式为 RFC3339</p>
+        :type DataTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AccountQuotaOverview = None
+        self._QuotaGroupSet = None
+        self._TotalCount = None
+        self._DataTime = None
+        self._RequestId = None
+
+    @property
+    def AccountQuotaOverview(self):
+        r"""<p>主账号配额上限及全账号当前用量</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.AccountQuotaOverview`
+        """
+        return self._AccountQuotaOverview
+
+    @AccountQuotaOverview.setter
+    def AccountQuotaOverview(self, AccountQuotaOverview):
+        self._AccountQuotaOverview = AccountQuotaOverview
+
+    @property
+    def QuotaGroupSet(self):
+        r"""<p>当前分页下的配额组配额与用量列表。没有数据时返回空数组。</p>
+        :rtype: list of QuotaGroupOverview
+        """
+        return self._QuotaGroupSet
+
+    @QuotaGroupSet.setter
+    def QuotaGroupSet(self, QuotaGroupSet):
+        self._QuotaGroupSet = QuotaGroupSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>满足过滤条件的配额组总数，不受当前分页大小影响。</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataTime(self):
+        r"""<p>本次查询完成时间，格式为 RFC3339</p>
+        :rtype: str
+        """
+        return self._DataTime
+
+    @DataTime.setter
+    def DataTime(self, DataTime):
+        self._DataTime = DataTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AccountQuotaOverview") is not None:
+            self._AccountQuotaOverview = AccountQuotaOverview()
+            self._AccountQuotaOverview._deserialize(params.get("AccountQuotaOverview"))
+        if params.get("QuotaGroupSet") is not None:
+            self._QuotaGroupSet = []
+            for item in params.get("QuotaGroupSet"):
+                obj = QuotaGroupOverview()
+                obj._deserialize(item)
+                self._QuotaGroupSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._DataTime = params.get("DataTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegistryAuditLogListRequest(AbstractModel):
+    r"""DescribeRegistryAuditLogList请求参数结构体
+
+    """
+
+
+class DescribeRegistryAuditLogListResponse(AbstractModel):
+    r"""DescribeRegistryAuditLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegistryListRequest(AbstractModel):
+    r"""DescribeRegistryList请求参数结构体
+
+    """
+
+
+class DescribeRegistryListResponse(AbstractModel):
+    r"""DescribeRegistryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegistryRecordListRequest(AbstractModel):
+    r"""DescribeRegistryRecordList请求参数结构体
+
+    """
+
+
+class DescribeRegistryRecordListResponse(AbstractModel):
+    r"""DescribeRegistryRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegistryRecordRequest(AbstractModel):
+    r"""DescribeRegistryRecord请求参数结构体
+
+    """
+
+
+class DescribeRegistryRecordResponse(AbstractModel):
+    r"""DescribeRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegistryRecordVersionListRequest(AbstractModel):
+    r"""DescribeRegistryRecordVersionList请求参数结构体
+
+    """
+
+
+class DescribeRegistryRecordVersionListResponse(AbstractModel):
+    r"""DescribeRegistryRecordVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRegistryRequest(AbstractModel):
+    r"""DescribeRegistry请求参数结构体
+
+    """
+
+
+class DescribeRegistryResponse(AbstractModel):
+    r"""DescribeRegistry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -2959,6 +4418,579 @@ class DescribeSandboxToolListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSessionRequest(AbstractModel):
+    r"""DescribeSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>会话所属空间 ID。</p>
+        :type SpaceId: str
+        :param _UserId: <p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :type UserId: str
+        :param _SessionId: <p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :type SessionId: str
+        :param _AgentId: <p>Agent ID。可选。</p>
+        :type AgentId: str
+        :param _NumRecentEvents: <p>返回最近事件数量，默认为 0，最大值为 200。</p>
+        :type NumRecentEvents: int
+        :param _AfterTimestamp: <p>事件起始时间，RFC3339 格式，最大长度 64 字符。</p>
+        :type AfterTimestamp: str
+        """
+        self._SpaceId = None
+        self._UserId = None
+        self._SessionId = None
+        self._AgentId = None
+        self._NumRecentEvents = None
+        self._AfterTimestamp = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>会话所属空间 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def UserId(self):
+        r"""<p>用户 ID。可通过调用方业务系统接口获取。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID。可通过 CreateSession 或 DescribeSessions 接口获取。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def AgentId(self):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        r"""<p>Agent ID。可选。</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        self._AgentId = AgentId
+
+    @property
+    def NumRecentEvents(self):
+        r"""<p>返回最近事件数量，默认为 0，最大值为 200。</p>
+        :rtype: int
+        """
+        return self._NumRecentEvents
+
+    @NumRecentEvents.setter
+    def NumRecentEvents(self, NumRecentEvents):
+        self._NumRecentEvents = NumRecentEvents
+
+    @property
+    def AfterTimestamp(self):
+        r"""<p>事件起始时间，RFC3339 格式，最大长度 64 字符。</p>
+        :rtype: str
+        """
+        return self._AfterTimestamp
+
+    @AfterTimestamp.setter
+    def AfterTimestamp(self, AfterTimestamp):
+        self._AfterTimestamp = AfterTimestamp
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        self._AgentId = params.get("AgentId")
+        self._NumRecentEvents = params.get("NumRecentEvents")
+        self._AfterTimestamp = params.get("AfterTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSessionResponse(AbstractModel):
+    r"""DescribeSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Session: <p>会话信息。</p>
+        :type Session: :class:`tencentcloud.ags.v20250920.models.SessionInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Session = None
+        self._RequestId = None
+
+    @property
+    def Session(self):
+        r"""<p>会话信息。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SessionInfo`
+        """
+        return self._Session
+
+    @Session.setter
+    def Session(self, Session):
+        self._Session = Session
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Session") is not None:
+            self._Session = SessionInfo()
+            self._Session._deserialize(params.get("Session"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSessionSpaceRequest(AbstractModel):
+    r"""DescribeSessionSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>需要查询的会话空间唯一标识。</p><p>入参限制：必填，不能为空。</p><p>可通过 CreateSessionSpace 或 DescribeSessionSpaces 获取，不应自行构造。</p>
+        :type SpaceId: str
+        """
+        self._SpaceId = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>需要查询的会话空间唯一标识。</p><p>入参限制：必填，不能为空。</p><p>可通过 CreateSessionSpace 或 DescribeSessionSpaces 获取，不应自行构造。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSessionSpaceResponse(AbstractModel):
+    r"""DescribeSessionSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionSpace: <p>查询到的会话空间信息。</p>
+        :type SessionSpace: :class:`tencentcloud.ags.v20250920.models.SessionSpaceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SessionSpace = None
+        self._RequestId = None
+
+    @property
+    def SessionSpace(self):
+        r"""<p>查询到的会话空间信息。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SessionSpaceInfo`
+        """
+        return self._SessionSpace
+
+    @SessionSpace.setter
+    def SessionSpace(self, SessionSpace):
+        self._SessionSpace = SessionSpace
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SessionSpace") is not None:
+            self._SessionSpace = SessionSpaceInfo()
+            self._SessionSpace._deserialize(params.get("SessionSpace"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSessionSpacesRequest(AbstractModel):
+    r"""DescribeSessionSpaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页查询的起始偏移量。</p>
+        :type Offset: int
+        :param _Limit: <p>单次分页查询返回的会话空间数量。</p>
+        :type Limit: int
+        :param _Filters: <p>会话空间筛选条件列表，支持按空间 ID 精确匹配、名称精确或模糊匹配、描述模糊匹配。同一 Filter 内多个 Values 之间为 OR，不同 Filter 之间为 AND。不传或传空数组时不增加筛选限制。</p><p>入参限制：Filter.Name 支持 space-id、name、name-like、description-like，不可重复。name 与 name-like 不可同时提供。Values 不可为空数组，筛选值不可为空或纯空白。匹配区分大小写，包含匹配中的 %、_ 按普通字符处理，不具有通配含义。</p><p>例如 Name 为 name-like，Values 为 [&quot;客服&quot;,&quot;测试&quot;]，表示查询名称包含“客服”或“测试”的会话空间。</p>
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询的起始偏移量。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单次分页查询返回的会话空间数量。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>会话空间筛选条件列表，支持按空间 ID 精确匹配、名称精确或模糊匹配、描述模糊匹配。同一 Filter 内多个 Values 之间为 OR，不同 Filter 之间为 AND。不传或传空数组时不增加筛选限制。</p><p>入参限制：Filter.Name 支持 space-id、name、name-like、description-like，不可重复。name 与 name-like 不可同时提供。Values 不可为空数组，筛选值不可为空或纯空白。匹配区分大小写，包含匹配中的 %、_ 按普通字符处理，不具有通配含义。</p><p>例如 Name 为 name-like，Values 为 [&quot;客服&quot;,&quot;测试&quot;]，表示查询名称包含“客服”或“测试”的会话空间。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSessionSpacesResponse(AbstractModel):
+    r"""DescribeSessionSpaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionSpaces: <p>会话空间列表。</p>
+        :type SessionSpaces: list of SessionSpaceInfo
+        :param _TotalCount: <p>满足查询条件的会话空间总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SessionSpaces = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def SessionSpaces(self):
+        r"""<p>会话空间列表。</p>
+        :rtype: list of SessionSpaceInfo
+        """
+        return self._SessionSpaces
+
+    @SessionSpaces.setter
+    def SessionSpaces(self, SessionSpaces):
+        self._SessionSpaces = SessionSpaces
+
+    @property
+    def TotalCount(self):
+        r"""<p>满足查询条件的会话空间总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SessionSpaces") is not None:
+            self._SessionSpaces = []
+            for item in params.get("SessionSpaces"):
+                obj = SessionSpaceInfo()
+                obj._deserialize(item)
+                self._SessionSpaces.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSessionsRequest(AbstractModel):
+    r"""DescribeSessions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>查询的会话空间 ID。</p>
+        :type SpaceId: str
+        :param _AgentIds: <p>Agent ID 列表，最多支持 100 个。</p>
+        :type AgentIds: list of str
+        :param _UserIds: <p>用户 ID 列表，最多支持 100 个。</p>
+        :type UserIds: list of str
+        :param _Offset: <p>分页偏移量，默认为 0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，默认为 20，最大值为 100。</p>
+        :type Limit: int
+        :param _SessionIds: <p>会话 ID 列表，最多支持 100 个。</p>
+        :type SessionIds: list of str
+        :param _Filters: <p>会话筛选条件列表，支持 Metadata 精确匹配、标题精确匹配和标题模糊匹配。同一 Filter 内多个 Values 之间为 OR，不同 Filter 之间为 AND。不传或传空数组时不增加筛选限制。</p><p>入参限制：最多传入 10 个 Filter，每个 Filter 最多支持 100 个 Values。Filter.Name 不可重复，支持 metadata:MetadataKey、title、title-like；title 与 title-like 不可同时提供。标题筛选值不可为空或纯空白。匹配区分大小写，标题包含匹配中的 %、_ 按普通字符处理，不具有通配含义。</p><p>例如 Name 为 title-like，Values 为 [&quot;客服&quot;,&quot;测试&quot;]，表示查询标题包含“客服”或“测试”的会话。Name 为 metadata:env，Values 为 [&quot;dev&quot;,&quot;test&quot;]，表示按 Metadata env 的值精确筛选。标题条件与 Metadata、SessionIds、UserIds 筛选条件可组合使用，条件之间为 AND。筛选在分页前执行，TotalCount 为符合条件的会话总数。</p>
+        :type Filters: list of Filter
+        """
+        self._SpaceId = None
+        self._AgentIds = None
+        self._UserIds = None
+        self._Offset = None
+        self._Limit = None
+        self._SessionIds = None
+        self._Filters = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>查询的会话空间 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def AgentIds(self):
+        warnings.warn("parameter `AgentIds` is deprecated", DeprecationWarning) 
+
+        r"""<p>Agent ID 列表，最多支持 100 个。</p>
+        :rtype: list of str
+        """
+        return self._AgentIds
+
+    @AgentIds.setter
+    def AgentIds(self, AgentIds):
+        warnings.warn("parameter `AgentIds` is deprecated", DeprecationWarning) 
+
+        self._AgentIds = AgentIds
+
+    @property
+    def UserIds(self):
+        r"""<p>用户 ID 列表，最多支持 100 个。</p>
+        :rtype: list of str
+        """
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认为 20，最大值为 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SessionIds(self):
+        r"""<p>会话 ID 列表，最多支持 100 个。</p>
+        :rtype: list of str
+        """
+        return self._SessionIds
+
+    @SessionIds.setter
+    def SessionIds(self, SessionIds):
+        self._SessionIds = SessionIds
+
+    @property
+    def Filters(self):
+        r"""<p>会话筛选条件列表，支持 Metadata 精确匹配、标题精确匹配和标题模糊匹配。同一 Filter 内多个 Values 之间为 OR，不同 Filter 之间为 AND。不传或传空数组时不增加筛选限制。</p><p>入参限制：最多传入 10 个 Filter，每个 Filter 最多支持 100 个 Values。Filter.Name 不可重复，支持 metadata:MetadataKey、title、title-like；title 与 title-like 不可同时提供。标题筛选值不可为空或纯空白。匹配区分大小写，标题包含匹配中的 %、_ 按普通字符处理，不具有通配含义。</p><p>例如 Name 为 title-like，Values 为 [&quot;客服&quot;,&quot;测试&quot;]，表示查询标题包含“客服”或“测试”的会话。Name 为 metadata:env，Values 为 [&quot;dev&quot;,&quot;test&quot;]，表示按 Metadata env 的值精确筛选。标题条件与 Metadata、SessionIds、UserIds 筛选条件可组合使用，条件之间为 AND。筛选在分页前执行，TotalCount 为符合条件的会话总数。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._AgentIds = params.get("AgentIds")
+        self._UserIds = params.get("UserIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SessionIds = params.get("SessionIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSessionsResponse(AbstractModel):
+    r"""DescribeSessions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的会话总数。</p>
+        :type TotalCount: int
+        :param _Sessions: <p>会话列表。</p>
+        :type Sessions: list of SessionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Sessions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的会话总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Sessions(self):
+        r"""<p>会话列表。</p>
+        :rtype: list of SessionInfo
+        """
+        return self._Sessions
+
+    @Sessions.setter
+    def Sessions(self, Sessions):
+        self._Sessions = Sessions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Sessions") is not None:
+            self._Sessions = []
+            for item in params.get("Sessions"):
+                obj = SessionInfo()
+                obj._deserialize(item)
+                self._Sessions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class EnvVar(AbstractModel):
     r"""环境变量
 
@@ -3000,6 +5032,405 @@ class EnvVar(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventActionsInfo(AbstractModel):
+    r"""Agent 状态切换事件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StateDelta: 状态增量，JSON 字符串，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StateDelta: str
+        """
+        self._StateDelta = None
+
+    @property
+    def StateDelta(self):
+        r"""状态增量，JSON 字符串，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StateDelta
+
+    @StateDelta.setter
+    def StateDelta(self, StateDelta):
+        self._StateDelta = StateDelta
+
+
+    def _deserialize(self, params):
+        self._StateDelta = params.get("StateDelta")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventContentInfo(AbstractModel):
+    r"""事件内容信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: 角色，最大长度 64 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
+        :param _Parts: 内容片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Parts: list of EventPartInfo
+        """
+        self._Role = None
+        self._Parts = None
+
+    @property
+    def Role(self):
+        r"""角色，最大长度 64 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Parts(self):
+        r"""内容片段列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventPartInfo
+        """
+        return self._Parts
+
+    @Parts.setter
+    def Parts(self, Parts):
+        self._Parts = Parts
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        if params.get("Parts") is not None:
+            self._Parts = []
+            for item in params.get("Parts"):
+                obj = EventPartInfo()
+                obj._deserialize(item)
+                self._Parts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventInfo(AbstractModel):
+    r"""事件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: <p>事件 ID。为空时由服务生成。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventId: str
+        :param _InvocationId: <p>调用 ID，最大长度 128 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvocationId: str
+        :param _Author: <p>事件作者，最大长度 128 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Author: str
+        :param _Content: <p>事件内容。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: :class:`tencentcloud.ags.v20250920.models.EventContentInfo`
+        :param _Actions: <p>事件动作信息。StateDelta 为 JSON 对象字符串</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Actions: :class:`tencentcloud.ags.v20250920.models.EventActionsInfo`
+        :param _Metadata: <p>事件元数据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metadata: str
+        :param _Extensions: <p>事件扩展信息 JSON 对象字符串，最大长度 8192 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extensions: str
+        :param _ErrorCode: <p>错误码，最大长度 128 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: str
+        :param _ErrorMessage: <p>错误信息，最大长度 2048 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param _Timestamp: <p>事件时间。</p>
+        :type Timestamp: str
+        """
+        self._EventId = None
+        self._InvocationId = None
+        self._Author = None
+        self._Content = None
+        self._Actions = None
+        self._Metadata = None
+        self._Extensions = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._Timestamp = None
+
+    @property
+    def EventId(self):
+        r"""<p>事件 ID。为空时由服务生成。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def InvocationId(self):
+        r"""<p>调用 ID，最大长度 128 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InvocationId
+
+    @InvocationId.setter
+    def InvocationId(self, InvocationId):
+        self._InvocationId = InvocationId
+
+    @property
+    def Author(self):
+        r"""<p>事件作者，最大长度 128 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Author
+
+    @Author.setter
+    def Author(self, Author):
+        self._Author = Author
+
+    @property
+    def Content(self):
+        r"""<p>事件内容。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.EventContentInfo`
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Actions(self):
+        r"""<p>事件动作信息。StateDelta 为 JSON 对象字符串</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.EventActionsInfo`
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+    @property
+    def Metadata(self):
+        r"""<p>事件元数据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def Extensions(self):
+        r"""<p>事件扩展信息 JSON 对象字符串，最大长度 8192 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extensions
+
+    @Extensions.setter
+    def Extensions(self, Extensions):
+        self._Extensions = Extensions
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，最大长度 128 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>错误信息，最大长度 2048 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def Timestamp(self):
+        r"""<p>事件时间。</p>
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._InvocationId = params.get("InvocationId")
+        self._Author = params.get("Author")
+        if params.get("Content") is not None:
+            self._Content = EventContentInfo()
+            self._Content._deserialize(params.get("Content"))
+        if params.get("Actions") is not None:
+            self._Actions = EventActionsInfo()
+            self._Actions._deserialize(params.get("Actions"))
+        self._Metadata = params.get("Metadata")
+        self._Extensions = params.get("Extensions")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventPartInfo(AbstractModel):
+    r"""多模态内容片段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 文本内容，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _Thought: 是否为思考内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Thought: bool
+        :param _FunctionCall: 工具调用信息，JSON 字符串，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FunctionCall: str
+        :param _FunctionResponse: 工具返回信息，JSON 字符串，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FunctionResponse: str
+        :param _InlineData: 内联数据。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InlineData: :class:`tencentcloud.ags.v20250920.models.InlineDataInfo`
+        """
+        self._Text = None
+        self._Thought = None
+        self._FunctionCall = None
+        self._FunctionResponse = None
+        self._InlineData = None
+
+    @property
+    def Text(self):
+        r"""文本内容，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Thought(self):
+        r"""是否为思考内容。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Thought
+
+    @Thought.setter
+    def Thought(self, Thought):
+        self._Thought = Thought
+
+    @property
+    def FunctionCall(self):
+        r"""工具调用信息，JSON 字符串，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FunctionCall
+
+    @FunctionCall.setter
+    def FunctionCall(self, FunctionCall):
+        self._FunctionCall = FunctionCall
+
+    @property
+    def FunctionResponse(self):
+        r"""工具返回信息，JSON 字符串，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FunctionResponse
+
+    @FunctionResponse.setter
+    def FunctionResponse(self, FunctionResponse):
+        self._FunctionResponse = FunctionResponse
+
+    @property
+    def InlineData(self):
+        r"""内联数据。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.InlineDataInfo`
+        """
+        return self._InlineData
+
+    @InlineData.setter
+    def InlineData(self, InlineData):
+        self._InlineData = InlineData
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Thought = params.get("Thought")
+        self._FunctionCall = params.get("FunctionCall")
+        self._FunctionResponse = params.get("FunctionResponse")
+        if params.get("InlineData") is not None:
+            self._InlineData = InlineDataInfo()
+            self._InlineData._deserialize(params.get("InlineData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3059,6 +5490,74 @@ class Filter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetSkillPackageDownloadURLRequest(AbstractModel):
+    r"""GetSkillPackageDownloadURL请求参数结构体
+
+    """
+
+
+class GetSkillPackageDownloadURLResponse(AbstractModel):
+    r"""GetSkillPackageDownloadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class GetSkillPackageUploadURLRequest(AbstractModel):
+    r"""GetSkillPackageUploadURL请求参数结构体
+
+    """
+
+
+class GetSkillPackageUploadURLResponse(AbstractModel):
+    r"""GetSkillPackageUploadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class HttpGetAction(AbstractModel):
@@ -3198,6 +5697,61 @@ class ImageStorageSource(AbstractModel):
         self._ImageRegistryType = params.get("ImageRegistryType")
         self._SubPath = params.get("SubPath")
         self._Digest = params.get("Digest")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InlineDataInfo(AbstractModel):
+    r"""文件内容数据信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MimeType: 媒体类型，最大长度 128 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MimeType: str
+        :param _Data: Base64 编码数据，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        """
+        self._MimeType = None
+        self._Data = None
+
+    @property
+    def MimeType(self):
+        r"""媒体类型，最大长度 128 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MimeType
+
+    @MimeType.setter
+    def MimeType(self, MimeType):
+        self._MimeType = MimeType
+
+    @property
+    def Data(self):
+        r"""Base64 编码数据，最大长度 8192 字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._MimeType = params.get("MimeType")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3538,6 +6092,263 @@ class ModifyDeploymentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySessionRequest(AbstractModel):
+    r"""ModifySession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>会话所属的 SessionSpace ID。</p>
+        :type SpaceId: str
+        :param _UserId: <p>会话所属的用户 ID。</p>
+        :type UserId: str
+        :param _SessionId: <p>待修改的会话 ID。</p>
+        :type SessionId: str
+        :param _Title: <p>修改后的会话标题。</p><p>入参限制：本参数可选，最大长度为 255 个字符。</p><p>不传表示保持原会话标题不变，传空字符串表示清空会话标题。Title 与 Metadata 至少传入一项。</p>
+        :type Title: str
+        :param _Metadata: <p>修改后的完整会话元数据，以键值对数组形式表示。</p><p>入参限制：本参数可选，最多支持 64 项。Name 不能为空或重复，最大长度为 253 字节；Value 最大长度为 1024 字节，允许为空字符串。Metadata 序列化后的总大小不能超过 64 KiB。</p><p>不传表示保持原 Metadata 不变；传空数组表示清空全部 Metadata；传非空数组表示使用传入内容全量覆盖原 Metadata。Metadata 与 Title 至少传入一项。</p>
+        :type Metadata: list of MetadataVar
+        """
+        self._SpaceId = None
+        self._UserId = None
+        self._SessionId = None
+        self._Title = None
+        self._Metadata = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>会话所属的 SessionSpace ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def UserId(self):
+        r"""<p>会话所属的用户 ID。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        r"""<p>待修改的会话 ID。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Title(self):
+        r"""<p>修改后的会话标题。</p><p>入参限制：本参数可选，最大长度为 255 个字符。</p><p>不传表示保持原会话标题不变，传空字符串表示清空会话标题。Title 与 Metadata 至少传入一项。</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Metadata(self):
+        r"""<p>修改后的完整会话元数据，以键值对数组形式表示。</p><p>入参限制：本参数可选，最多支持 64 项。Name 不能为空或重复，最大长度为 253 字节；Value 最大长度为 1024 字节，允许为空字符串。Metadata 序列化后的总大小不能超过 64 KiB。</p><p>不传表示保持原 Metadata 不变；传空数组表示清空全部 Metadata；传非空数组表示使用传入内容全量覆盖原 Metadata。Metadata 与 Title 至少传入一项。</p>
+        :rtype: list of MetadataVar
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        self._Title = params.get("Title")
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataVar()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySessionResponse(AbstractModel):
+    r"""ModifySession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Session: <p>修改后的完整会话信息。</p>
+        :type Session: :class:`tencentcloud.ags.v20250920.models.SessionInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Session = None
+        self._RequestId = None
+
+    @property
+    def Session(self):
+        r"""<p>修改后的完整会话信息。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SessionInfo`
+        """
+        return self._Session
+
+    @Session.setter
+    def Session(self, Session):
+        self._Session = Session
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Session") is not None:
+            self._Session = SessionInfo()
+            self._Session._deserialize(params.get("Session"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySessionSpaceRequest(AbstractModel):
+    r"""ModifySessionSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>需要修改的会话空间唯一标识。</p>
+        :type SpaceId: str
+        :param _Name: <p>修改后的会话空间名称。</p>
+        :type Name: str
+        :param _Description: <p>修改后的会话空间描述。</p>
+        :type Description: str
+        """
+        self._SpaceId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>需要修改的会话空间唯一标识。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Name(self):
+        r"""<p>修改后的会话空间名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>修改后的会话空间描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySessionSpaceResponse(AbstractModel):
+    r"""ModifySessionSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionSpace: <p>修改后的会话空间信息。</p>
+        :type SessionSpace: :class:`tencentcloud.ags.v20250920.models.SessionSpaceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SessionSpace = None
+        self._RequestId = None
+
+    @property
+    def SessionSpace(self):
+        r"""<p>修改后的会话空间信息。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SessionSpaceInfo`
+        """
+        return self._SessionSpace
+
+    @SessionSpace.setter
+    def SessionSpace(self, SessionSpace):
+        self._SessionSpace = SessionSpace
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SessionSpace") is not None:
+            self._SessionSpace = SessionSpaceInfo()
+            self._SessionSpace._deserialize(params.get("SessionSpace"))
+        self._RequestId = params.get("RequestId")
+
+
 class MountOption(AbstractModel):
     r"""沙箱实例存储挂载配置可选项，用于覆盖沙箱工具的存储配置的部分选项，并提供子路径挂载配置。
 
@@ -3868,6 +6679,40 @@ class PortConfiguration(AbstractModel):
         
 
 
+class PreviewRegistryRecordRequest(AbstractModel):
+    r"""PreviewRegistryRecord请求参数结构体
+
+    """
+
+
+class PreviewRegistryRecordResponse(AbstractModel):
+    r"""PreviewRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ProbeConfiguration(AbstractModel):
     r"""健康检查探针配置
 
@@ -3979,6 +6824,253 @@ class ProbeConfiguration(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QuotaGroupOverview(AbstractModel):
+    r"""配额组资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tag: <p>配额组关联的标签键值</p>
+        :type Tag: :class:`tencentcloud.ags.v20250920.models.Tag`
+        :param _Name: <p>配额组名称</p>
+        :type Name: str
+        :param _Quota: <p>配额组各资源维度的配额上限</p>
+        :type Quota: :class:`tencentcloud.ags.v20250920.models.QuotaResourceInfo`
+        :param _Usage: <p>配额组各资源维度的当前用量</p>
+        :type Usage: :class:`tencentcloud.ags.v20250920.models.QuotaResourceInfo`
+        :param _CreateTime: <p>创建时间</p><p>参数格式：RFC3339 格式</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>最后更新时间</p><p>参数格式：RFC3339 格式</p>
+        :type UpdateTime: str
+        """
+        self._Tag = None
+        self._Name = None
+        self._Quota = None
+        self._Usage = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Tag(self):
+        r"""<p>配额组关联的标签键值</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.Tag`
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Name(self):
+        r"""<p>配额组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Quota(self):
+        r"""<p>配额组各资源维度的配额上限</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.QuotaResourceInfo`
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+    @property
+    def Usage(self):
+        r"""<p>配额组各资源维度的当前用量</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.QuotaResourceInfo`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：RFC3339 格式</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>最后更新时间</p><p>参数格式：RFC3339 格式</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        if params.get("Tag") is not None:
+            self._Tag = Tag()
+            self._Tag._deserialize(params.get("Tag"))
+        self._Name = params.get("Name")
+        if params.get("Quota") is not None:
+            self._Quota = QuotaResourceInfo()
+            self._Quota._deserialize(params.get("Quota"))
+        if params.get("Usage") is not None:
+            self._Usage = QuotaResourceInfo()
+            self._Usage._deserialize(params.get("Usage"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuotaResourceInfo(AbstractModel):
+    r"""主账号资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SandboxTools: <p>沙箱工具配额或当前用量</p><p>单位：个</p>
+        :type SandboxTools: int
+        :param _SandboxInstances: <p>沙箱实例配额或当前用量</p><p>单位：个</p>
+        :type SandboxInstances: int
+        :param _PausedInstances: <p>暂停实例配额或当前用量</p><p>单位：个</p>
+        :type PausedInstances: int
+        :param _CPUCores: <p>暂停实例配额或当前用量。目前只在主账号中返回</p><p>单位：核</p>
+        :type CPUCores: float
+        :param _MemoryGiB: <p>内存配额或当前用量</p><p>单位：GiB</p>
+        :type MemoryGiB: float
+        """
+        self._SandboxTools = None
+        self._SandboxInstances = None
+        self._PausedInstances = None
+        self._CPUCores = None
+        self._MemoryGiB = None
+
+    @property
+    def SandboxTools(self):
+        r"""<p>沙箱工具配额或当前用量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._SandboxTools
+
+    @SandboxTools.setter
+    def SandboxTools(self, SandboxTools):
+        self._SandboxTools = SandboxTools
+
+    @property
+    def SandboxInstances(self):
+        r"""<p>沙箱实例配额或当前用量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._SandboxInstances
+
+    @SandboxInstances.setter
+    def SandboxInstances(self, SandboxInstances):
+        self._SandboxInstances = SandboxInstances
+
+    @property
+    def PausedInstances(self):
+        r"""<p>暂停实例配额或当前用量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._PausedInstances
+
+    @PausedInstances.setter
+    def PausedInstances(self, PausedInstances):
+        self._PausedInstances = PausedInstances
+
+    @property
+    def CPUCores(self):
+        r"""<p>暂停实例配额或当前用量。目前只在主账号中返回</p><p>单位：核</p>
+        :rtype: float
+        """
+        return self._CPUCores
+
+    @CPUCores.setter
+    def CPUCores(self, CPUCores):
+        self._CPUCores = CPUCores
+
+    @property
+    def MemoryGiB(self):
+        r"""<p>内存配额或当前用量</p><p>单位：GiB</p>
+        :rtype: float
+        """
+        return self._MemoryGiB
+
+    @MemoryGiB.setter
+    def MemoryGiB(self, MemoryGiB):
+        self._MemoryGiB = MemoryGiB
+
+
+    def _deserialize(self, params):
+        self._SandboxTools = params.get("SandboxTools")
+        self._SandboxInstances = params.get("SandboxInstances")
+        self._PausedInstances = params.get("PausedInstances")
+        self._CPUCores = params.get("CPUCores")
+        self._MemoryGiB = params.get("MemoryGiB")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RejectRegistryRecordRequest(AbstractModel):
+    r"""RejectRegistryRecord请求参数结构体
+
+    """
+
+
+class RejectRegistryRecordResponse(AbstractModel):
+    r"""RejectRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResourceConfiguration(AbstractModel):
@@ -4763,6 +7855,350 @@ class ScalingConfiguration(AbstractModel):
         
 
 
+class SessionInfo(AbstractModel):
+    r"""会话信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: <p>会话 ID。</p>
+        :type SessionId: str
+        :param _SpaceId: <p>会话所属空间 ID。</p>
+        :type SpaceId: str
+        :param _State: <p>Session 快照状态</p>
+        :type State: :class:`tencentcloud.ags.v20250920.models.SessionState`
+        :param _Metadata: <p>会话元数据，以键值对数组形式表示。每个元素包含 Metadata 名称和对应值，最多支持 64 项。</p>
+        :type Metadata: list of MetadataVar
+        :param _AgentId: <p>Agent ID。</p>
+        :type AgentId: str
+        :param _UserId: <p>用户 ID。</p>
+        :type UserId: str
+        :param _Title: <p>会话标题。</p>
+        :type Title: str
+        :param _EventCount: <p>事件数量。</p>
+        :type EventCount: int
+        :param _CreateTime: <p>创建时间。</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间。</p>
+        :type UpdateTime: str
+        """
+        self._SessionId = None
+        self._SpaceId = None
+        self._State = None
+        self._Metadata = None
+        self._AgentId = None
+        self._UserId = None
+        self._Title = None
+        self._EventCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SpaceId(self):
+        r"""<p>会话所属空间 ID。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def State(self):
+        r"""<p>Session 快照状态</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SessionState`
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Metadata(self):
+        r"""<p>会话元数据，以键值对数组形式表示。每个元素包含 Metadata 名称和对应值，最多支持 64 项。</p>
+        :rtype: list of MetadataVar
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+    @property
+    def AgentId(self):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        r"""<p>Agent ID。</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        warnings.warn("parameter `AgentId` is deprecated", DeprecationWarning) 
+
+        self._AgentId = AgentId
+
+    @property
+    def UserId(self):
+        r"""<p>用户 ID。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def Title(self):
+        r"""<p>会话标题。</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def EventCount(self):
+        r"""<p>事件数量。</p>
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间。</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._SpaceId = params.get("SpaceId")
+        if params.get("State") is not None:
+            self._State = SessionState()
+            self._State._deserialize(params.get("State"))
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataVar()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
+        self._AgentId = params.get("AgentId")
+        self._UserId = params.get("UserId")
+        self._Title = params.get("Title")
+        self._EventCount = params.get("EventCount")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionSpaceInfo(AbstractModel):
+    r"""描述会话空间的完整信息。会话空间是用户状态、会话和事件的上级资源及隔离边界，同一个会话只能属于一个会话空间。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: <p>会话空间唯一标识，由服务端生成，最大长度为 128 个字符。调用方不应自行构造或解析。</p>
+        :type SpaceId: str
+        :param _Name: <p>会话空间名称，用于标识会话空间的业务用途，最大长度为 128 个字符。</p>
+        :type Name: str
+        :param _Description: <p>会话空间描述，用于说明业务用途和使用范围，最大长度为 512 个字符。为空时该字段可能不返回</p>
+        :type Description: str
+        :param _Status: <p>会话空间当前状态。</p><p>枚举值：</p><ul><li>Active： 正常可用</li><li>Deleting： 正在删除</li></ul>
+        :type Status: str
+        :param _Default: <p>是否为系统默认会话空间。true 表示默认会话空间，false 表示普通会话空间。默认会话空间不允许删除。</p>
+        :type Default: bool
+        :param _CreateTime: <p>会话空间创建时间，采用 ISO 8601/RFC 3339 格式。</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>会话空间最后更新时间，采用 ISO 8601/RFC 3339 格式。</p>
+        :type UpdateTime: str
+        """
+        self._SpaceId = None
+        self._Name = None
+        self._Description = None
+        self._Status = None
+        self._Default = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def SpaceId(self):
+        r"""<p>会话空间唯一标识，由服务端生成，最大长度为 128 个字符。调用方不应自行构造或解析。</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Name(self):
+        r"""<p>会话空间名称，用于标识会话空间的业务用途，最大长度为 128 个字符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>会话空间描述，用于说明业务用途和使用范围，最大长度为 512 个字符。为空时该字段可能不返回</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>会话空间当前状态。</p><p>枚举值：</p><ul><li>Active： 正常可用</li><li>Deleting： 正在删除</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Default(self):
+        r"""<p>是否为系统默认会话空间。true 表示默认会话空间，false 表示普通会话空间。默认会话空间不允许删除。</p>
+        :rtype: bool
+        """
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+    @property
+    def CreateTime(self):
+        r"""<p>会话空间创建时间，采用 ISO 8601/RFC 3339 格式。</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>会话空间最后更新时间，采用 ISO 8601/RFC 3339 格式。</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Default = params.get("Default")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionState(AbstractModel):
+    r"""Session 快照状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomState: <p>自定义状态 JSON 对象字符串</p>
+        :type CustomState: str
+        """
+        self._CustomState = None
+
+    @property
+    def CustomState(self):
+        r"""<p>自定义状态 JSON 对象字符串</p>
+        :rtype: str
+        """
+        return self._CustomState
+
+    @CustomState.setter
+    def CustomState(self, CustomState):
+        self._CustomState = CustomState
+
+
+    def _deserialize(self, params):
+        self._CustomState = params.get("CustomState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartSandboxInstanceRequest(AbstractModel):
     r"""StartSandboxInstance请求参数结构体
 
@@ -5199,6 +8635,40 @@ class StorageSource(AbstractModel):
         
 
 
+class SyncRegistryRecordRequest(AbstractModel):
+    r"""SyncRegistryRecord请求参数结构体
+
+    """
+
+
+class SyncRegistryRecordResponse(AbstractModel):
+    r"""SyncRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Tag(AbstractModel):
     r"""标签
 
@@ -5248,6 +8718,74 @@ class Tag(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateRegistryRecordRequest(AbstractModel):
+    r"""UpdateRegistryRecord请求参数结构体
+
+    """
+
+
+class UpdateRegistryRecordResponse(AbstractModel):
+    r"""UpdateRegistryRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateRegistryRequest(AbstractModel):
+    r"""UpdateRegistry请求参数结构体
+
+    """
+
+
+class UpdateRegistryResponse(AbstractModel):
+    r"""UpdateRegistry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateSandboxInstanceRequest(AbstractModel):

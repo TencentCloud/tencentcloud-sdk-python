@@ -107,7 +107,7 @@ FAILEDOPERATION_TIMEOUT = 'FailedOperation.Timeout'
 # 日志主题已关闭。
 FAILEDOPERATION_TOPICCLOSED = 'FailedOperation.TopicClosed'
 
-# Topic 创建中
+# Topic 创建中。
 FAILEDOPERATION_TOPICCREATING = 'FailedOperation.TopicCreating'
 
 # 日志主题已隔离。
@@ -209,7 +209,7 @@ LIMITEXCEEDED = 'LimitExceeded'
 # 一个billing topic只能创建一个cos采集配置
 LIMITEXCEEDED_BILLINGCOSRECHARGEOUTOFLIMIT = 'LimitExceeded.BillingCosRechargeOutOfLimit'
 
-# 一个uin只能创建一个billing topic
+# 一个 uin 只能创建一个 billing topic。
 LIMITEXCEEDED_BILLINGTOPICOUTOFLIMIT = 'LimitExceeded.BillingTopicOutOfLimit'
 
 # 采集规则配置超过最大值限制。
@@ -377,5 +377,5 @@ UNSUPPORTEDOPERATION = 'UnsupportedOperation'
 # billing topic不允许修改cos导入配置
 UNSUPPORTEDOPERATION_MODIFYBILLINGCOSRECHARGENOSUPPORT = 'UnsupportedOperation.ModifyBillingCosRechargeNoSupport'
 
-# 当前地域不支持
+# 当前地域不支持。
 UNSUPPORTEDOPERATION_UNSUPPORTEDREGION = 'UnsupportedOperation.UnsupportedRegion'

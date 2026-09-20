@@ -9065,6 +9065,175 @@ class BizParams(AbstractModel):
         
 
 
+class BooleanResponse(AbstractModel):
+    r"""BooleanResponse
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 是否成功
+        :type Success: bool
+        :param _Message: 失败返回提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _BaselineId: 基线Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BaselineId: int
+        :param _Code: 错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        """
+        self._Success = None
+        self._Message = None
+        self._BaselineId = None
+        self._Code = None
+
+    @property
+    def Success(self):
+        r"""是否成功
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Message(self):
+        r"""失败返回提示信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def BaselineId(self):
+        r"""基线Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BaselineId
+
+    @BaselineId.setter
+    def BaselineId(self, BaselineId):
+        self._BaselineId = BaselineId
+
+    @property
+    def Code(self):
+        r"""错误码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._Message = params.get("Message")
+        self._BaselineId = params.get("BaselineId")
+        self._Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BundleResource(AbstractModel):
+    r"""boundle 绑定/解绑操作资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>资源类型，取值范围：</p>
+<ul>
+<li>WORKFLOW 工作流</li>
+<li>TASK 任务</li>
+<li>CODE_TEMPLATE 代码模版</li>
+<li>RESOURCE 资源信息</li>
+<li>EVENT 事件</li>
+<li>PROJECT_PARAM 项目参数</li>
+</ul>
+        :type ResourceType: str
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _ResourceName: 资源名称
+        :type ResourceName: str
+        """
+        self._ResourceType = None
+        self._ResourceId = None
+        self._ResourceName = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型，取值范围：</p>
+<ul>
+<li>WORKFLOW 工作流</li>
+<li>TASK 任务</li>
+<li>CODE_TEMPLATE 代码模版</li>
+<li>RESOURCE 资源信息</li>
+<li>EVENT 事件</li>
+<li>PROJECT_PARAM 项目参数</li>
+</ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""资源名称
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BytesSpeed(AbstractModel):
     r"""实时任务同步速度 字节/s
 
@@ -120120,6 +120289,112 @@ class TriggerManualTasksResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = ManualTriggerRecordOpsDto()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UnbindingResourceRequest(AbstractModel):
+    r"""UnbindingResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _ResourceList: 资源列表
+        :type ResourceList: list of BundleResource
+        """
+        self._ProjectId = None
+        self._ResourceList = None
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ResourceList(self):
+        r"""资源列表
+        :rtype: list of BundleResource
+        """
+        return self._ResourceList
+
+    @ResourceList.setter
+    def ResourceList(self, ResourceList):
+        self._ResourceList = ResourceList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("ResourceList") is not None:
+            self._ResourceList = []
+            for item in params.get("ResourceList"):
+                obj = BundleResource()
+                obj._deserialize(item)
+                self._ResourceList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindingResourceResponse(AbstractModel):
+    r"""UnbindingResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of BooleanResponse
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BooleanResponse
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BooleanResponse()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -38543,6 +38543,10 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         :type Capability: str
         :param _EndpointPath: <p>端点路径</p>
         :type EndpointPath: str
+        :param _HealthCheckMethod: <p>健康检查方式</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
+        :type HealthCheckMethod: str
+        :param _HealthCheckPath: <p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+        :type HealthCheckPath: str
         """
         self._Models = None
         self._ProviderKey = None
@@ -38558,6 +38562,8 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         self._CMRPrivateNetworkTunnelId = None
         self._Capability = None
         self._EndpointPath = None
+        self._HealthCheckMethod = None
+        self._HealthCheckPath = None
 
     @property
     def Models(self):
@@ -38713,6 +38719,28 @@ class TestServiceProviderConnectionRequest(AbstractModel):
     def EndpointPath(self, EndpointPath):
         self._EndpointPath = EndpointPath
 
+    @property
+    def HealthCheckMethod(self):
+        r"""<p>健康检查方式</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
+        :rtype: str
+        """
+        return self._HealthCheckMethod
+
+    @HealthCheckMethod.setter
+    def HealthCheckMethod(self, HealthCheckMethod):
+        self._HealthCheckMethod = HealthCheckMethod
+
+    @property
+    def HealthCheckPath(self):
+        r"""<p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+        :rtype: str
+        """
+        return self._HealthCheckPath
+
+    @HealthCheckPath.setter
+    def HealthCheckPath(self, HealthCheckPath):
+        self._HealthCheckPath = HealthCheckPath
+
 
     def _deserialize(self, params):
         self._Models = params.get("Models")
@@ -38729,6 +38757,8 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
         self._Capability = params.get("Capability")
         self._EndpointPath = params.get("EndpointPath")
+        self._HealthCheckMethod = params.get("HealthCheckMethod")
+        self._HealthCheckPath = params.get("HealthCheckPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

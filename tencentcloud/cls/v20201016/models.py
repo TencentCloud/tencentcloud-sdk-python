@@ -502,7 +502,7 @@ class AgentApplicationInfo(AbstractModel):
         :type ApplicationId: str
         :param _ApplicationName: <p>应用名称</p>
         :type ApplicationName: str
-        :param _AccessType: <p>接入类型</p><p>枚举值：</p><ul><li>Langfuse：  Langfuse​ 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
+        :param _AccessType: <p>接入类型</p><p>枚举值：</p><ul><li>Langfuse：  Langfuse 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
         :type AccessType: str
         :param _Region: <p>应用下资源所属地域</p><p>例如：ap-guangzhou</p>
         :type Region: str
@@ -514,6 +514,16 @@ class AgentApplicationInfo(AbstractModel):
         :type CreateTime: int
         :param _UpdateTime: <p>更新时间</p><p>单位：秒</p><p>秒级时间戳</p>
         :type UpdateTime: int
+        :param _LogsetId: <p>日志集id</p>
+        :type LogsetId: str
+        :param _AssumerName: <p>服务方名称</p>
+        :type AssumerName: str
+        :param _SubAssumerName: <p>服务方子名称</p>
+        :type SubAssumerName: str
+        :param _AssumerUin: <p>服务方Uin</p>
+        :type AssumerUin: int
+        :param _RoleName: <p>服务方使用的角色</p>
+        :type RoleName: str
         """
         self._ApplicationId = None
         self._ApplicationName = None
@@ -523,6 +533,11 @@ class AgentApplicationInfo(AbstractModel):
         self._MetricsTopics = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._LogsetId = None
+        self._AssumerName = None
+        self._SubAssumerName = None
+        self._AssumerUin = None
+        self._RoleName = None
 
     @property
     def ApplicationId(self):
@@ -548,7 +563,7 @@ class AgentApplicationInfo(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""<p>接入类型</p><p>枚举值：</p><ul><li>Langfuse：  Langfuse​ 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
+        r"""<p>接入类型</p><p>枚举值：</p><ul><li>Langfuse：  Langfuse 是一款开源的 LLM（大语言模型）工程与可观测性平台（LLMOps Tool）</li></ul>
         :rtype: str
         """
         return self._AccessType
@@ -612,6 +627,61 @@ class AgentApplicationInfo(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def LogsetId(self):
+        r"""<p>日志集id</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def AssumerName(self):
+        r"""<p>服务方名称</p>
+        :rtype: str
+        """
+        return self._AssumerName
+
+    @AssumerName.setter
+    def AssumerName(self, AssumerName):
+        self._AssumerName = AssumerName
+
+    @property
+    def SubAssumerName(self):
+        r"""<p>服务方子名称</p>
+        :rtype: str
+        """
+        return self._SubAssumerName
+
+    @SubAssumerName.setter
+    def SubAssumerName(self, SubAssumerName):
+        self._SubAssumerName = SubAssumerName
+
+    @property
+    def AssumerUin(self):
+        r"""<p>服务方Uin</p>
+        :rtype: int
+        """
+        return self._AssumerUin
+
+    @AssumerUin.setter
+    def AssumerUin(self, AssumerUin):
+        self._AssumerUin = AssumerUin
+
+    @property
+    def RoleName(self):
+        r"""<p>服务方使用的角色</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -632,6 +702,11 @@ class AgentApplicationInfo(AbstractModel):
                 self._MetricsTopics.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._LogsetId = params.get("LogsetId")
+        self._AssumerName = params.get("AssumerName")
+        self._SubAssumerName = params.get("SubAssumerName")
+        self._AssumerUin = params.get("AssumerUin")
+        self._RoleName = params.get("RoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3884,21 +3959,19 @@ class CheckRechargeKafkaServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。
+        :param _KafkaType: <p>导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。</p>
         :type KafkaType: int
-        :param _KafkaInstance: 腾讯云CKafka实例ID。
-KafkaType为0时，KafkaInstance必填
-
-- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+        :param _KafkaInstance: <p>腾讯云CKafka实例ID。<br>KafkaType为0时，KafkaInstance必填</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址。
-KafkaType为1时，ServerAddr必填
+        :param _ServerAddr: <p>服务地址。<br>KafkaType为1时，ServerAddr必填</p>
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。
+        :param _IsEncryptionAddr: <p>ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。</p>
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+        :param _Protocol: <p>加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。</p>
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
-        :param _UserKafkaMeta: 用户kafka拓展信息
+        :param _NetworkInfo: <p>网络信息参数</p>
+        :type NetworkInfo: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        :param _UserKafkaMeta: <p>用户kafka拓展信息</p>
         :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._KafkaType = None
@@ -3906,11 +3979,12 @@ KafkaType为1时，ServerAddr必填
         self._ServerAddr = None
         self._IsEncryptionAddr = None
         self._Protocol = None
+        self._NetworkInfo = None
         self._UserKafkaMeta = None
 
     @property
     def KafkaType(self):
-        r"""导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。
+        r"""<p>导入Kafka类型，0: 腾讯云CKafka；1: 用户自建Kafka。</p>
         :rtype: int
         """
         return self._KafkaType
@@ -3921,10 +3995,7 @@ KafkaType为1时，ServerAddr必填
 
     @property
     def KafkaInstance(self):
-        r"""腾讯云CKafka实例ID。
-KafkaType为0时，KafkaInstance必填
-
-- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+        r"""<p>腾讯云CKafka实例ID。<br>KafkaType为0时，KafkaInstance必填</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
         :rtype: str
         """
         return self._KafkaInstance
@@ -3935,8 +4006,7 @@ KafkaType为0时，KafkaInstance必填
 
     @property
     def ServerAddr(self):
-        r"""服务地址。
-KafkaType为1时，ServerAddr必填
+        r"""<p>服务地址。<br>KafkaType为1时，ServerAddr必填</p>
         :rtype: str
         """
         return self._ServerAddr
@@ -3947,7 +4017,7 @@ KafkaType为1时，ServerAddr必填
 
     @property
     def IsEncryptionAddr(self):
-        r"""ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。
+        r"""<p>ServerAddr是否为加密连接，默认值false。当KafkaType为1用户自建kafka时生效。</p>
         :rtype: bool
         """
         return self._IsEncryptionAddr
@@ -3958,7 +4028,7 @@ KafkaType为1时，ServerAddr必填
 
     @property
     def Protocol(self):
-        r"""加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+        r"""<p>加密访问协议。KafkaType参数为1并且IsEncryptionAddr参数为true时必填。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         """
         return self._Protocol
@@ -3968,8 +4038,19 @@ KafkaType为1时，ServerAddr必填
         self._Protocol = Protocol
 
     @property
+    def NetworkInfo(self):
+        r"""<p>网络信息参数</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        """
+        return self._NetworkInfo
+
+    @NetworkInfo.setter
+    def NetworkInfo(self, NetworkInfo):
+        self._NetworkInfo = NetworkInfo
+
+    @property
     def UserKafkaMeta(self):
-        r"""用户kafka拓展信息
+        r"""<p>用户kafka拓展信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         return self._UserKafkaMeta
@@ -3987,6 +4068,9 @@ KafkaType为1时，ServerAddr必填
         if params.get("Protocol") is not None:
             self._Protocol = KafkaProtocolInfo()
             self._Protocol._deserialize(params.get("Protocol"))
+        if params.get("NetworkInfo") is not None:
+            self._NetworkInfo = NetworkInfo()
+            self._NetworkInfo._deserialize(params.get("NetworkInfo"))
         if params.get("UserKafkaMeta") is not None:
             self._UserKafkaMeta = UserKafkaMeta()
             self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
@@ -4007,20 +4091,7 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Kafka集群可访问状态。
-
-- 0：可正常访问 
-- -1：broker 连接失败
-- -2：sasl 鉴权失败
-- -3：ckafka 角色未授权
-- -4：topic 列表不存在
-- -5：topic 内暂无数据
-- -6：用户没有 ckafka 权限
-- -7：消费组已经存在
-- -8：kafka 实例不存在或已销毁
-- -9：Broker 列表为空
-- -10：Broker 地址格式不正确
-- -11：Broker 端口非整型
+        :param _Status: <p>Kafka集群可访问状态。</p><ul><li>0：可正常访问 </li><li>-1：broker 连接失败</li><li>-2：sasl 鉴权失败</li><li>-3：ckafka 角色未授权</li><li>-4：topic 列表不存在</li><li>-5：topic 内暂无数据</li><li>-6：用户没有 ckafka 权限</li><li>-7：消费组已经存在</li><li>-8：kafka 实例不存在或已销毁</li><li>-9：Broker 列表为空</li><li>-10：Broker 地址格式不正确</li><li>-11：Broker 端口非整型</li></ul>
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4030,20 +4101,7 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""Kafka集群可访问状态。
-
-- 0：可正常访问 
-- -1：broker 连接失败
-- -2：sasl 鉴权失败
-- -3：ckafka 角色未授权
-- -4：topic 列表不存在
-- -5：topic 内暂无数据
-- -6：用户没有 ckafka 权限
-- -7：消费组已经存在
-- -8：kafka 实例不存在或已销毁
-- -9：Broker 列表为空
-- -10：Broker 地址格式不正确
-- -11：Broker 端口非整型
+        r"""<p>Kafka集群可访问状态。</p><ul><li>0：可正常访问 </li><li>-1：broker 连接失败</li><li>-2：sasl 鉴权失败</li><li>-3：ckafka 角色未授权</li><li>-4：topic 列表不存在</li><li>-5：topic 内暂无数据</li><li>-6：用户没有 ckafka 权限</li><li>-7：消费组已经存在</li><li>-8：kafka 实例不存在或已销毁</li><li>-9：Broker 列表为空</li><li>-10：Broker 地址格式不正确</li><li>-11：Broker 端口非整型</li></ul>
         :rtype: int
         """
         return self._Status
@@ -4386,6 +4444,8 @@ class CloudProductLogTaskInfo(AbstractModel):
         :type TopicTags: list of Tag
         :param _LogsetTags: <p>投递任务关联logset的标签信息</p>
         :type LogsetTags: list of Tag
+        :param _ApplicationId: <p>应用id</p>
+        :type ApplicationId: str
         """
         self._ClsRegion = None
         self._InstanceId = None
@@ -4396,6 +4456,7 @@ class CloudProductLogTaskInfo(AbstractModel):
         self._Status = None
         self._TopicTags = None
         self._LogsetTags = None
+        self._ApplicationId = None
 
     @property
     def ClsRegion(self):
@@ -4496,6 +4557,17 @@ class CloudProductLogTaskInfo(AbstractModel):
     def LogsetTags(self, LogsetTags):
         self._LogsetTags = LogsetTags
 
+    @property
+    def ApplicationId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
 
     def _deserialize(self, params):
         self._ClsRegion = params.get("ClsRegion")
@@ -4517,6 +4589,7 @@ class CloudProductLogTaskInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._LogsetTags.append(obj)
+        self._ApplicationId = params.get("ApplicationId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12544,34 +12617,31 @@ class CreateKafkaRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 导入CLS目标TopicId。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :param _TopicId: <p>导入CLS目标TopicId。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _Name: Kafka导入配置名称
+        :param _Name: <p>Kafka导入配置名称</p>
         :type Name: str
-        :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :param _KafkaType: <p>导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka</p>
         :type KafkaType: int
-        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :param _UserKafkaTopics: <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开</p>
         :type UserKafkaTopics: str
-        :param _Offset: 导入数据位置，-2:最早（默认），-1：最晚
+        :param _Offset: <p>导入数据位置，-2:最早（默认），-1：最晚</p>
         :type Offset: int
-        :param _LogRechargeRule: 日志导入规则。
+        :param _LogRechargeRule: <p>日志导入规则。</p>
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
-        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填。
-- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+        :param _KafkaInstance: <p>腾讯云CKafka实例ID，KafkaType为0时必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址，KafkaType为1时必填。
+        :param _ServerAddr: <p>服务地址，KafkaType为1时必填。</p>
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接，KafkaType为1时必填。
+        :param _IsEncryptionAddr: <p>ServerAddr是否为加密连接，KafkaType为1时必填。</p>
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议。
-KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+        :param _Protocol: <p>加密访问协议。<br>KafkaType为1并且IsEncryptionAddr为true时Protocol必填。</p>
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
-        :param _ConsumerGroupName: 用户Kafka消费组名称。
-- 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
+        :param _ConsumerGroupName: <p>用户Kafka消费组名称。</p><ul><li>消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。</li></ul>
         :type ConsumerGroupName: str
-        :param _UserKafkaMeta: 用户kafka拓展信息
+        :param _NetworkInfo: <p>网络信息参数</p>
+        :type NetworkInfo: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        :param _UserKafkaMeta: <p>用户kafka拓展信息</p>
         :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._TopicId = None
@@ -12585,13 +12655,12 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         self._IsEncryptionAddr = None
         self._Protocol = None
         self._ConsumerGroupName = None
+        self._NetworkInfo = None
         self._UserKafkaMeta = None
 
     @property
     def TopicId(self):
-        r"""导入CLS目标TopicId。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        r"""<p>导入CLS目标TopicId。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -12602,7 +12671,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Name(self):
-        r"""Kafka导入配置名称
+        r"""<p>Kafka导入配置名称</p>
         :rtype: str
         """
         return self._Name
@@ -12613,7 +12682,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def KafkaType(self):
-        r"""导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        r"""<p>导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka</p>
         :rtype: int
         """
         return self._KafkaType
@@ -12624,7 +12693,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def UserKafkaTopics(self):
-        r"""用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        r"""<p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开</p>
         :rtype: str
         """
         return self._UserKafkaTopics
@@ -12635,7 +12704,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Offset(self):
-        r"""导入数据位置，-2:最早（默认），-1：最晚
+        r"""<p>导入数据位置，-2:最早（默认），-1：最晚</p>
         :rtype: int
         """
         return self._Offset
@@ -12646,7 +12715,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def LogRechargeRule(self):
-        r"""日志导入规则。
+        r"""<p>日志导入规则。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         """
         return self._LogRechargeRule
@@ -12657,8 +12726,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def KafkaInstance(self):
-        r"""腾讯云CKafka实例ID，KafkaType为0时必填。
-- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+        r"""<p>腾讯云CKafka实例ID，KafkaType为0时必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
         :rtype: str
         """
         return self._KafkaInstance
@@ -12669,7 +12737,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ServerAddr(self):
-        r"""服务地址，KafkaType为1时必填。
+        r"""<p>服务地址，KafkaType为1时必填。</p>
         :rtype: str
         """
         return self._ServerAddr
@@ -12680,7 +12748,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def IsEncryptionAddr(self):
-        r"""ServerAddr是否为加密连接，KafkaType为1时必填。
+        r"""<p>ServerAddr是否为加密连接，KafkaType为1时必填。</p>
         :rtype: bool
         """
         return self._IsEncryptionAddr
@@ -12691,8 +12759,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Protocol(self):
-        r"""加密访问协议。
-KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+        r"""<p>加密访问协议。<br>KafkaType为1并且IsEncryptionAddr为true时Protocol必填。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         """
         return self._Protocol
@@ -12703,8 +12770,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ConsumerGroupName(self):
-        r"""用户Kafka消费组名称。
-- 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
+        r"""<p>用户Kafka消费组名称。</p><ul><li>消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。</li></ul>
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -12714,8 +12780,19 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         self._ConsumerGroupName = ConsumerGroupName
 
     @property
+    def NetworkInfo(self):
+        r"""<p>网络信息参数</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        """
+        return self._NetworkInfo
+
+    @NetworkInfo.setter
+    def NetworkInfo(self, NetworkInfo):
+        self._NetworkInfo = NetworkInfo
+
+    @property
     def UserKafkaMeta(self):
-        r"""用户kafka拓展信息
+        r"""<p>用户kafka拓展信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         return self._UserKafkaMeta
@@ -12741,6 +12818,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
             self._Protocol = KafkaProtocolInfo()
             self._Protocol._deserialize(params.get("Protocol"))
         self._ConsumerGroupName = params.get("ConsumerGroupName")
+        if params.get("NetworkInfo") is not None:
+            self._NetworkInfo = NetworkInfo()
+            self._NetworkInfo._deserialize(params.get("NetworkInfo"))
         if params.get("UserKafkaMeta") is not None:
             self._UserKafkaMeta = UserKafkaMeta()
             self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
@@ -12761,7 +12841,7 @@ class CreateKafkaRechargeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Kafka导入配置ID
+        :param _Id: <p>Kafka导入配置ID</p>
         :type Id: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12771,7 +12851,7 @@ class CreateKafkaRechargeResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""Kafka导入配置ID
+        r"""<p>Kafka导入配置ID</p>
         :rtype: str
         """
         return self._Id
@@ -37781,47 +37861,35 @@ class KafkaProtocolInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Protocol: 协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
-
-- 当IsEncryptionAddr为true时，Protocol必填。
-- 支持的协议类型如下：
-    - plaintext：纯文本无加密协议
-    - sasl_ssl：SASL 认证 + SSL 加密
-    - ssl：纯 SSL/TLS 加密协议
-    - sasl_plaintext：SASL 认证 + 非加密通道
-
+        :param _Protocol: <p>协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。</p><ul><li>当IsEncryptionAddr为true时，Protocol必填。</li><li>支持的协议类型如下：<ul><li>plaintext：纯文本无加密协议</li><li>sasl_ssl：SASL 认证 + SSL 加密</li><li>ssl：纯 SSL/TLS 加密协议</li><li>sasl_plaintext：SASL 认证 + 非加密通道</li></ul></li></ul>
         :type Protocol: str
-        :param _Mechanism: 加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
-
-- 当Protocol为  `sasl_plaintext` 或 `sasl_ssl` 时 Mechanism 必填。
-- 支持加密类型如下
-    -  PLAIN：明文认证
-    -  SCRAM-SHA-256：基于挑战-响应机制，使用PBKDF2-HMAC-SHA256算法
-    -  SCRAM-SHA-512：增强版SCRAM，使用PBKDF2-HMAC-SHA512算法
+        :param _Mechanism: <p>加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。</p><ul><li>当Protocol为  <code>sasl_plaintext</code> 或 <code>sasl_ssl</code> 时 Mechanism 必填。</li><li>支持加密类型如下<ul><li>PLAIN：明文认证</li><li>SCRAM-SHA-256：基于挑战-响应机制，使用PBKDF2-HMAC-SHA256算法</li><li>SCRAM-SHA-512：增强版SCRAM，使用PBKDF2-HMAC-SHA512算法</li></ul></li></ul>
         :type Mechanism: str
-        :param _UserName: 用户名。
-当Protocol为sasl_plaintext或sasl_ssl时必填
+        :param _UserName: <p>用户名。<br>当Protocol为sasl_plaintext或sasl_ssl时必填</p>
         :type UserName: str
-        :param _Password: 用户密码。
-当Protocol为sasl_plaintext或sasl_ssl时必填
+        :param _Password: <p>用户密码。<br>当Protocol为sasl_plaintext或sasl_ssl时必填</p>
         :type Password: str
+        :param _EnableClientCertificate: <p>是否开启客户端证书验证</p>
+        :type EnableClientCertificate: int
+        :param _EnableServerCertificate: <p>是否开启服务端证书验证</p>
+        :type EnableServerCertificate: int
+        :param _CACertificateId: <p>云托管CA证书id</p>
+        :type CACertificateId: str
+        :param _SVRCertificateId: <p>云托管服务端证书id</p>
+        :type SVRCertificateId: str
         """
         self._Protocol = None
         self._Mechanism = None
         self._UserName = None
         self._Password = None
+        self._EnableClientCertificate = None
+        self._EnableServerCertificate = None
+        self._CACertificateId = None
+        self._SVRCertificateId = None
 
     @property
     def Protocol(self):
-        r"""协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。
-
-- 当IsEncryptionAddr为true时，Protocol必填。
-- 支持的协议类型如下：
-    - plaintext：纯文本无加密协议
-    - sasl_ssl：SASL 认证 + SSL 加密
-    - ssl：纯 SSL/TLS 加密协议
-    - sasl_plaintext：SASL 认证 + 非加密通道
-
+        r"""<p>协议类型，支持的协议类型包括 plaintext、sasl_plaintext 或 sasl_ssl。建议使用 sasl_ssl，此协议会进行连接加密同时需要用户认证。</p><ul><li>当IsEncryptionAddr为true时，Protocol必填。</li><li>支持的协议类型如下：<ul><li>plaintext：纯文本无加密协议</li><li>sasl_ssl：SASL 认证 + SSL 加密</li><li>ssl：纯 SSL/TLS 加密协议</li><li>sasl_plaintext：SASL 认证 + 非加密通道</li></ul></li></ul>
         :rtype: str
         """
         return self._Protocol
@@ -37832,13 +37900,7 @@ class KafkaProtocolInfo(AbstractModel):
 
     @property
     def Mechanism(self):
-        r"""加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。
-
-- 当Protocol为  `sasl_plaintext` 或 `sasl_ssl` 时 Mechanism 必填。
-- 支持加密类型如下
-    -  PLAIN：明文认证
-    -  SCRAM-SHA-256：基于挑战-响应机制，使用PBKDF2-HMAC-SHA256算法
-    -  SCRAM-SHA-512：增强版SCRAM，使用PBKDF2-HMAC-SHA512算法
+        r"""<p>加密类型，支持 PLAIN、SCRAM-SHA-256 或 SCRAM-SHA-512。</p><ul><li>当Protocol为  <code>sasl_plaintext</code> 或 <code>sasl_ssl</code> 时 Mechanism 必填。</li><li>支持加密类型如下<ul><li>PLAIN：明文认证</li><li>SCRAM-SHA-256：基于挑战-响应机制，使用PBKDF2-HMAC-SHA256算法</li><li>SCRAM-SHA-512：增强版SCRAM，使用PBKDF2-HMAC-SHA512算法</li></ul></li></ul>
         :rtype: str
         """
         return self._Mechanism
@@ -37849,8 +37911,7 @@ class KafkaProtocolInfo(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名。
-当Protocol为sasl_plaintext或sasl_ssl时必填
+        r"""<p>用户名。<br>当Protocol为sasl_plaintext或sasl_ssl时必填</p>
         :rtype: str
         """
         return self._UserName
@@ -37861,8 +37922,7 @@ class KafkaProtocolInfo(AbstractModel):
 
     @property
     def Password(self):
-        r"""用户密码。
-当Protocol为sasl_plaintext或sasl_ssl时必填
+        r"""<p>用户密码。<br>当Protocol为sasl_plaintext或sasl_ssl时必填</p>
         :rtype: str
         """
         return self._Password
@@ -37871,12 +37931,60 @@ class KafkaProtocolInfo(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def EnableClientCertificate(self):
+        r"""<p>是否开启客户端证书验证</p>
+        :rtype: int
+        """
+        return self._EnableClientCertificate
+
+    @EnableClientCertificate.setter
+    def EnableClientCertificate(self, EnableClientCertificate):
+        self._EnableClientCertificate = EnableClientCertificate
+
+    @property
+    def EnableServerCertificate(self):
+        r"""<p>是否开启服务端证书验证</p>
+        :rtype: int
+        """
+        return self._EnableServerCertificate
+
+    @EnableServerCertificate.setter
+    def EnableServerCertificate(self, EnableServerCertificate):
+        self._EnableServerCertificate = EnableServerCertificate
+
+    @property
+    def CACertificateId(self):
+        r"""<p>云托管CA证书id</p>
+        :rtype: str
+        """
+        return self._CACertificateId
+
+    @CACertificateId.setter
+    def CACertificateId(self, CACertificateId):
+        self._CACertificateId = CACertificateId
+
+    @property
+    def SVRCertificateId(self):
+        r"""<p>云托管服务端证书id</p>
+        :rtype: str
+        """
+        return self._SVRCertificateId
+
+    @SVRCertificateId.setter
+    def SVRCertificateId(self, SVRCertificateId):
+        self._SVRCertificateId = SVRCertificateId
+
 
     def _deserialize(self, params):
         self._Protocol = params.get("Protocol")
         self._Mechanism = params.get("Mechanism")
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
+        self._EnableClientCertificate = params.get("EnableClientCertificate")
+        self._EnableServerCertificate = params.get("EnableServerCertificate")
+        self._CACertificateId = params.get("CACertificateId")
+        self._SVRCertificateId = params.get("SVRCertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37894,37 +38002,39 @@ class KafkaRechargeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Kafka数据订阅配置的ID。
+        :param _Id: <p>Kafka数据订阅配置的ID。</p>
         :type Id: str
-        :param _TopicId: 日志主题ID
+        :param _TopicId: <p>日志主题ID</p>
         :type TopicId: str
-        :param _Name: Kafka导入任务名称
+        :param _Name: <p>Kafka导入任务名称</p>
         :type Name: str
-        :param _KafkaType: 导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        :param _KafkaType: <p>导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka</p>
         :type KafkaType: int
-        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填
+        :param _KafkaInstance: <p>腾讯云CKafka实例ID，KafkaType为0时必填</p>
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址
+        :param _ServerAddr: <p>服务地址</p>
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接	
+        :param _IsEncryptionAddr: <p>ServerAddr是否为加密连接</p>
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议，IsEncryptionAddr参数为true时必填
+        :param _Protocol: <p>加密访问协议，IsEncryptionAddr参数为true时必填</p>
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
-        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        :param _UserKafkaTopics: <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开</p>
         :type UserKafkaTopics: str
-        :param _ConsumerGroupName: 用户Kafka消费组名称	
+        :param _ConsumerGroupName: <p>用户Kafka消费组名称</p>
         :type ConsumerGroupName: str
-        :param _Status: 状态 ，1：运行中；2：暂停。
+        :param _Status: <p>状态 ，1：运行中；2：暂停。</p>
         :type Status: int
-        :param _Offset: 导入数据位置，-2:最早（默认），-1：最晚
+        :param _Offset: <p>导入数据位置，-2:最早（默认），-1：最晚</p>
         :type Offset: int
-        :param _CreateTime: 创建时间。格式`YYYY-MM-DD HH:MM:SS`
+        :param _CreateTime: <p>创建时间。格式<code>YYYY-MM-DD HH:MM:SS</code></p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间。格式`YYYY-MM-DD HH:MM:SS`
+        :param _UpdateTime: <p>更新时间。格式<code>YYYY-MM-DD HH:MM:SS</code></p>
         :type UpdateTime: str
-        :param _LogRechargeRule: 日志导入规则
+        :param _LogRechargeRule: <p>日志导入规则</p>
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
-        :param _UserKafkaMeta: 用户kafka拓展信息
+        :param _NetworkInfo: <p>私有网络信息</p>
+        :type NetworkInfo: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        :param _UserKafkaMeta: <p>用户kafka拓展信息</p>
         :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._Id = None
@@ -37942,11 +38052,12 @@ class KafkaRechargeInfo(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._LogRechargeRule = None
+        self._NetworkInfo = None
         self._UserKafkaMeta = None
 
     @property
     def Id(self):
-        r"""Kafka数据订阅配置的ID。
+        r"""<p>Kafka数据订阅配置的ID。</p>
         :rtype: str
         """
         return self._Id
@@ -37957,7 +38068,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._TopicId
@@ -37968,7 +38079,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""Kafka导入任务名称
+        r"""<p>Kafka导入任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -37979,7 +38090,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def KafkaType(self):
-        r"""导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka
+        r"""<p>导入Kafka类型，0: 腾讯云CKafka，1: 用户自建Kafka</p>
         :rtype: int
         """
         return self._KafkaType
@@ -37990,7 +38101,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def KafkaInstance(self):
-        r"""腾讯云CKafka实例ID，KafkaType为0时必填
+        r"""<p>腾讯云CKafka实例ID，KafkaType为0时必填</p>
         :rtype: str
         """
         return self._KafkaInstance
@@ -38001,7 +38112,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def ServerAddr(self):
-        r"""服务地址
+        r"""<p>服务地址</p>
         :rtype: str
         """
         return self._ServerAddr
@@ -38012,7 +38123,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def IsEncryptionAddr(self):
-        r"""ServerAddr是否为加密连接	
+        r"""<p>ServerAddr是否为加密连接</p>
         :rtype: bool
         """
         return self._IsEncryptionAddr
@@ -38023,7 +38134,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""加密访问协议，IsEncryptionAddr参数为true时必填
+        r"""<p>加密访问协议，IsEncryptionAddr参数为true时必填</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         """
         return self._Protocol
@@ -38034,7 +38145,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def UserKafkaTopics(self):
-        r"""用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开
+        r"""<p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开</p>
         :rtype: str
         """
         return self._UserKafkaTopics
@@ -38045,7 +38156,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        r"""用户Kafka消费组名称	
+        r"""<p>用户Kafka消费组名称</p>
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -38056,7 +38167,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态 ，1：运行中；2：暂停。
+        r"""<p>状态 ，1：运行中；2：暂停。</p>
         :rtype: int
         """
         return self._Status
@@ -38067,7 +38178,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def Offset(self):
-        r"""导入数据位置，-2:最早（默认），-1：最晚
+        r"""<p>导入数据位置，-2:最早（默认），-1：最晚</p>
         :rtype: int
         """
         return self._Offset
@@ -38078,7 +38189,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间。格式`YYYY-MM-DD HH:MM:SS`
+        r"""<p>创建时间。格式<code>YYYY-MM-DD HH:MM:SS</code></p>
         :rtype: str
         """
         return self._CreateTime
@@ -38089,7 +38200,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间。格式`YYYY-MM-DD HH:MM:SS`
+        r"""<p>更新时间。格式<code>YYYY-MM-DD HH:MM:SS</code></p>
         :rtype: str
         """
         return self._UpdateTime
@@ -38100,7 +38211,7 @@ class KafkaRechargeInfo(AbstractModel):
 
     @property
     def LogRechargeRule(self):
-        r"""日志导入规则
+        r"""<p>日志导入规则</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         """
         return self._LogRechargeRule
@@ -38110,8 +38221,19 @@ class KafkaRechargeInfo(AbstractModel):
         self._LogRechargeRule = LogRechargeRule
 
     @property
+    def NetworkInfo(self):
+        r"""<p>私有网络信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        """
+        return self._NetworkInfo
+
+    @NetworkInfo.setter
+    def NetworkInfo(self, NetworkInfo):
+        self._NetworkInfo = NetworkInfo
+
+    @property
     def UserKafkaMeta(self):
-        r"""用户kafka拓展信息
+        r"""<p>用户kafka拓展信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         return self._UserKafkaMeta
@@ -38141,6 +38263,9 @@ class KafkaRechargeInfo(AbstractModel):
         if params.get("LogRechargeRule") is not None:
             self._LogRechargeRule = LogRechargeRuleInfo()
             self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        if params.get("NetworkInfo") is not None:
+            self._NetworkInfo = NetworkInfo()
+            self._NetworkInfo._deserialize(params.get("NetworkInfo"))
         if params.get("UserKafkaMeta") is not None:
             self._UserKafkaMeta = UserKafkaMeta()
             self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
@@ -38727,30 +38852,32 @@ class LogInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Time: 日志时间，单位ms
+        :param _Time: <p>日志时间，单位ms</p>
         :type Time: int
-        :param _TopicId: 日志主题ID
+        :param _TopicId: <p>日志主题ID</p>
         :type TopicId: str
-        :param _TopicName: 日志主题名称
+        :param _TopicName: <p>日志主题名称</p>
         :type TopicName: str
-        :param _Source: 日志来源IP
+        :param _Source: <p>日志来源IP</p>
         :type Source: str
-        :param _FileName: 日志文件名称
+        :param _FileName: <p>日志文件名称</p>
         :type FileName: str
-        :param _PkgId: 日志上报请求包的ID
+        :param _PkgId: <p>日志上报请求包的ID</p>
         :type PkgId: str
-        :param _PkgLogId: 请求包内日志的ID
+        :param _PkgLogId: <p>请求包内日志的ID</p>
         :type PkgLogId: str
-        :param _HighLights: 符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索	
+        :param _HighLights: <p>符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索</p>
         :type HighLights: list of HighLightItem
-        :param _LogJson: 日志内容的Json序列化字符串
+        :param _LogJson: <p>日志内容的Json序列化字符串</p>
         :type LogJson: str
-        :param _HostName: 日志来源主机名称
+        :param _HostName: <p>日志来源主机名称</p>
         :type HostName: str
-        :param _RawLog: 原始日志(仅在日志创建索引异常时有值)
+        :param _RawLog: <p>原始日志(仅在日志创建索引异常时有值)</p>
         :type RawLog: str
-        :param _IndexStatus: 日志创建索引异常原因(仅在日志创建索引异常时有值)
+        :param _IndexStatus: <p>日志创建索引异常原因(仅在日志创建索引异常时有值)</p>
         :type IndexStatus: str
+        :param _TimeNanos: <p>日志时间，单位ns</p><p>单位：纳秒</p>
+        :type TimeNanos: int
         """
         self._Time = None
         self._TopicId = None
@@ -38764,10 +38891,11 @@ class LogInfo(AbstractModel):
         self._HostName = None
         self._RawLog = None
         self._IndexStatus = None
+        self._TimeNanos = None
 
     @property
     def Time(self):
-        r"""日志时间，单位ms
+        r"""<p>日志时间，单位ms</p>
         :rtype: int
         """
         return self._Time
@@ -38778,7 +38906,7 @@ class LogInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._TopicId
@@ -38789,7 +38917,7 @@ class LogInfo(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""日志主题名称
+        r"""<p>日志主题名称</p>
         :rtype: str
         """
         return self._TopicName
@@ -38800,7 +38928,7 @@ class LogInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""日志来源IP
+        r"""<p>日志来源IP</p>
         :rtype: str
         """
         return self._Source
@@ -38811,7 +38939,7 @@ class LogInfo(AbstractModel):
 
     @property
     def FileName(self):
-        r"""日志文件名称
+        r"""<p>日志文件名称</p>
         :rtype: str
         """
         return self._FileName
@@ -38822,7 +38950,7 @@ class LogInfo(AbstractModel):
 
     @property
     def PkgId(self):
-        r"""日志上报请求包的ID
+        r"""<p>日志上报请求包的ID</p>
         :rtype: str
         """
         return self._PkgId
@@ -38833,7 +38961,7 @@ class LogInfo(AbstractModel):
 
     @property
     def PkgLogId(self):
-        r"""请求包内日志的ID
+        r"""<p>请求包内日志的ID</p>
         :rtype: str
         """
         return self._PkgLogId
@@ -38844,7 +38972,7 @@ class LogInfo(AbstractModel):
 
     @property
     def HighLights(self):
-        r"""符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索	
+        r"""<p>符合检索条件的关键词，一般用于高亮显示。仅支持键值检索，不支持全文检索</p>
         :rtype: list of HighLightItem
         """
         return self._HighLights
@@ -38855,7 +38983,7 @@ class LogInfo(AbstractModel):
 
     @property
     def LogJson(self):
-        r"""日志内容的Json序列化字符串
+        r"""<p>日志内容的Json序列化字符串</p>
         :rtype: str
         """
         return self._LogJson
@@ -38866,7 +38994,7 @@ class LogInfo(AbstractModel):
 
     @property
     def HostName(self):
-        r"""日志来源主机名称
+        r"""<p>日志来源主机名称</p>
         :rtype: str
         """
         return self._HostName
@@ -38877,7 +39005,7 @@ class LogInfo(AbstractModel):
 
     @property
     def RawLog(self):
-        r"""原始日志(仅在日志创建索引异常时有值)
+        r"""<p>原始日志(仅在日志创建索引异常时有值)</p>
         :rtype: str
         """
         return self._RawLog
@@ -38888,7 +39016,7 @@ class LogInfo(AbstractModel):
 
     @property
     def IndexStatus(self):
-        r"""日志创建索引异常原因(仅在日志创建索引异常时有值)
+        r"""<p>日志创建索引异常原因(仅在日志创建索引异常时有值)</p>
         :rtype: str
         """
         return self._IndexStatus
@@ -38896,6 +39024,17 @@ class LogInfo(AbstractModel):
     @IndexStatus.setter
     def IndexStatus(self, IndexStatus):
         self._IndexStatus = IndexStatus
+
+    @property
+    def TimeNanos(self):
+        r"""<p>日志时间，单位ns</p><p>单位：纳秒</p>
+        :rtype: int
+        """
+        return self._TimeNanos
+
+    @TimeNanos.setter
+    def TimeNanos(self, TimeNanos):
+        self._TimeNanos = TimeNanos
 
 
     def _deserialize(self, params):
@@ -38916,6 +39055,7 @@ class LogInfo(AbstractModel):
         self._HostName = params.get("HostName")
         self._RawLog = params.get("RawLog")
         self._IndexStatus = params.get("IndexStatus")
+        self._TimeNanos = params.get("TimeNanos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45461,38 +45601,33 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 导入配置Id。
-- 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
-- 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
+        :param _Id: <p>导入配置Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/94448">创建Kafka数据订阅任务</a>获取Kafka导入配置Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/94446">获取Kafka数据订阅任务列表</a>获取Kafka导入配置Id。</li></ul>
         :type Id: str
-        :param _TopicId: 导入CLS目标TopicId。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456)获取日志主题Id。
+        :param _TopicId: <p>导入CLS目标TopicId。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a>获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _Name: Kafka导入配置名称
+        :param _Name: <p>Kafka导入配置名称</p>
         :type Name: str
-        :param _KafkaType: 导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
+        :param _KafkaType: <p>导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。</p>
         :type KafkaType: int
-        :param _KafkaInstance: 腾讯云CKafka实例ID，KafkaType为0时必填。
-- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+        :param _KafkaInstance: <p>腾讯云CKafka实例ID，KafkaType为0时必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址，KafkaType为1时必填。
+        :param _ServerAddr: <p>服务地址，KafkaType为1时必填。</p>
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接，KafkaType为1时必填。
+        :param _IsEncryptionAddr: <p>ServerAddr是否为加密连接，KafkaType为1时必填。</p>
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+        :param _Protocol: <p>加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。</p>
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
-        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
-
-- Kafka类型为腾讯云CKafka时：通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获取TopicName。
+        :param _UserKafkaTopics: <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。</p><ul><li>Kafka类型为腾讯云CKafka时：通过 <a href="https://cloud.tencent.com/document/product/597/40847">获取主题列表</a> 获取TopicName。</li></ul>
         :type UserKafkaTopics: str
-        :param _ConsumerGroupName: 用户Kafka消费组名称
+        :param _ConsumerGroupName: <p>用户Kafka消费组名称</p>
         :type ConsumerGroupName: str
-        :param _LogRechargeRule: 日志导入规则
+        :param _LogRechargeRule: <p>日志导入规则</p>
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
-        :param _StatusControl: 导入控制，1：暂停；2：启动。
+        :param _StatusControl: <p>导入控制，1：暂停；2：启动。</p>
         :type StatusControl: int
-        :param _UserKafkaMeta: 用户kafka拓展信息
+        :param _NetworkInfo: <p>私有网络信息参数</p>
+        :type NetworkInfo: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        :param _UserKafkaMeta: <p>用户kafka拓展信息</p>
         :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._Id = None
@@ -45507,13 +45642,12 @@ class ModifyKafkaRechargeRequest(AbstractModel):
         self._ConsumerGroupName = None
         self._LogRechargeRule = None
         self._StatusControl = None
+        self._NetworkInfo = None
         self._UserKafkaMeta = None
 
     @property
     def Id(self):
-        r"""导入配置Id。
-- 通过 [创建Kafka数据订阅任务](https://cloud.tencent.com/document/product/614/94448)获取Kafka导入配置Id。
-- 通过 [获取Kafka数据订阅任务列表](https://cloud.tencent.com/document/product/614/94446)获取Kafka导入配置Id。
+        r"""<p>导入配置Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/94448">创建Kafka数据订阅任务</a>获取Kafka导入配置Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/94446">获取Kafka数据订阅任务列表</a>获取Kafka导入配置Id。</li></ul>
         :rtype: str
         """
         return self._Id
@@ -45524,9 +45658,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""导入CLS目标TopicId。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456)获取日志主题Id。
+        r"""<p>导入CLS目标TopicId。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a>获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -45537,7 +45669,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""Kafka导入配置名称
+        r"""<p>Kafka导入配置名称</p>
         :rtype: str
         """
         return self._Name
@@ -45548,7 +45680,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def KafkaType(self):
-        r"""导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。
+        r"""<p>导入Kafka类型，0：腾讯云CKafka：1：用户自建Kafka。</p>
         :rtype: int
         """
         return self._KafkaType
@@ -45559,8 +45691,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def KafkaInstance(self):
-        r"""腾讯云CKafka实例ID，KafkaType为0时必填。
-- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+        r"""<p>腾讯云CKafka实例ID，KafkaType为0时必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
         :rtype: str
         """
         return self._KafkaInstance
@@ -45571,7 +45702,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def ServerAddr(self):
-        r"""服务地址，KafkaType为1时必填。
+        r"""<p>服务地址，KafkaType为1时必填。</p>
         :rtype: str
         """
         return self._ServerAddr
@@ -45582,7 +45713,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def IsEncryptionAddr(self):
-        r"""ServerAddr是否为加密连接，KafkaType为1时必填。
+        r"""<p>ServerAddr是否为加密连接，KafkaType为1时必填。</p>
         :rtype: bool
         """
         return self._IsEncryptionAddr
@@ -45593,7 +45724,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。
+        r"""<p>加密访问协议，KafkaType参数为1并且IsEncryptionAddr参数为true时必填。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         """
         return self._Protocol
@@ -45604,9 +45735,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def UserKafkaTopics(self):
-        r"""用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
-
-- Kafka类型为腾讯云CKafka时：通过 [获取主题列表](https://cloud.tencent.com/document/product/597/40847) 获取TopicName。
+        r"""<p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。</p><ul><li>Kafka类型为腾讯云CKafka时：通过 <a href="https://cloud.tencent.com/document/product/597/40847">获取主题列表</a> 获取TopicName。</li></ul>
         :rtype: str
         """
         return self._UserKafkaTopics
@@ -45617,7 +45746,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        r"""用户Kafka消费组名称
+        r"""<p>用户Kafka消费组名称</p>
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -45628,7 +45757,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def LogRechargeRule(self):
-        r"""日志导入规则
+        r"""<p>日志导入规则</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         """
         return self._LogRechargeRule
@@ -45639,7 +45768,7 @@ class ModifyKafkaRechargeRequest(AbstractModel):
 
     @property
     def StatusControl(self):
-        r"""导入控制，1：暂停；2：启动。
+        r"""<p>导入控制，1：暂停；2：启动。</p>
         :rtype: int
         """
         return self._StatusControl
@@ -45649,8 +45778,19 @@ class ModifyKafkaRechargeRequest(AbstractModel):
         self._StatusControl = StatusControl
 
     @property
+    def NetworkInfo(self):
+        r"""<p>私有网络信息参数</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        """
+        return self._NetworkInfo
+
+    @NetworkInfo.setter
+    def NetworkInfo(self, NetworkInfo):
+        self._NetworkInfo = NetworkInfo
+
+    @property
     def UserKafkaMeta(self):
-        r"""用户kafka拓展信息
+        r"""<p>用户kafka拓展信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         return self._UserKafkaMeta
@@ -45677,6 +45817,9 @@ class ModifyKafkaRechargeRequest(AbstractModel):
             self._LogRechargeRule = LogRechargeRuleInfo()
             self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
         self._StatusControl = params.get("StatusControl")
+        if params.get("NetworkInfo") is not None:
+            self._NetworkInfo = NetworkInfo()
+            self._NetworkInfo._deserialize(params.get("NetworkInfo"))
         if params.get("UserKafkaMeta") is not None:
             self._UserKafkaMeta = UserKafkaMeta()
             self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
@@ -50340,6 +50483,122 @@ class NetworkApplicationInfo(AbstractModel):
         
 
 
+class NetworkInfo(AbstractModel):
+    r"""网络打通信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkType: <p>网络类型。 0：公网，1：内网</p>
+        :type NetworkType: int
+        :param _VpcID: <p>私有网络id</p>
+        :type VpcID: str
+        :param _AppID: <p>私有网络所属用户app id</p>
+        :type AppID: int
+        :param _VirtualGatewayType: <p>网络服务类型。0：CVM，3：专线网关，11：云联网，1025：CLB</p>
+        :type VirtualGatewayType: int
+        :param _VpcGatewayIndex: <p>专线网关id或者云联网id</p>
+        :type VpcGatewayIndex: str
+        :param _PrivateDomainNames: <p>私有域名映射地址</p>
+        :type PrivateDomainNames: list of PrivateDomainNames
+        """
+        self._NetworkType = None
+        self._VpcID = None
+        self._AppID = None
+        self._VirtualGatewayType = None
+        self._VpcGatewayIndex = None
+        self._PrivateDomainNames = None
+
+    @property
+    def NetworkType(self):
+        r"""<p>网络类型。 0：公网，1：内网</p>
+        :rtype: int
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def VpcID(self):
+        r"""<p>私有网络id</p>
+        :rtype: str
+        """
+        return self._VpcID
+
+    @VpcID.setter
+    def VpcID(self, VpcID):
+        self._VpcID = VpcID
+
+    @property
+    def AppID(self):
+        r"""<p>私有网络所属用户app id</p>
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def VirtualGatewayType(self):
+        r"""<p>网络服务类型。0：CVM，3：专线网关，11：云联网，1025：CLB</p>
+        :rtype: int
+        """
+        return self._VirtualGatewayType
+
+    @VirtualGatewayType.setter
+    def VirtualGatewayType(self, VirtualGatewayType):
+        self._VirtualGatewayType = VirtualGatewayType
+
+    @property
+    def VpcGatewayIndex(self):
+        r"""<p>专线网关id或者云联网id</p>
+        :rtype: str
+        """
+        return self._VpcGatewayIndex
+
+    @VpcGatewayIndex.setter
+    def VpcGatewayIndex(self, VpcGatewayIndex):
+        self._VpcGatewayIndex = VpcGatewayIndex
+
+    @property
+    def PrivateDomainNames(self):
+        r"""<p>私有域名映射地址</p>
+        :rtype: list of PrivateDomainNames
+        """
+        return self._PrivateDomainNames
+
+    @PrivateDomainNames.setter
+    def PrivateDomainNames(self, PrivateDomainNames):
+        self._PrivateDomainNames = PrivateDomainNames
+
+
+    def _deserialize(self, params):
+        self._NetworkType = params.get("NetworkType")
+        self._VpcID = params.get("VpcID")
+        self._AppID = params.get("AppID")
+        self._VirtualGatewayType = params.get("VirtualGatewayType")
+        self._VpcGatewayIndex = params.get("VpcGatewayIndex")
+        if params.get("PrivateDomainNames") is not None:
+            self._PrivateDomainNames = []
+            for item in params.get("PrivateDomainNames"):
+                obj = PrivateDomainNames()
+                obj._deserialize(item)
+                self._PrivateDomainNames.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NoticeContent(AbstractModel):
     r"""通知内容模板详细配置
 
@@ -51815,34 +52074,29 @@ class PreviewKafkaRechargeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PreviewType: 预览类型，1：源数据预览；2：导出结果预览。
+        :param _PreviewType: <p>预览类型，1：源数据预览；2：导出结果预览。</p>
         :type PreviewType: int
-        :param _KafkaType: 导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。
+        :param _KafkaType: <p>导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。</p>
         :type KafkaType: int
-        :param _UserKafkaTopics: 用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
-最多支持100个。
+        :param _UserKafkaTopics: <p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。<br>最多支持100个。</p>
         :type UserKafkaTopics: str
-        :param _Offset: 导入数据位置，-2：最早；-1：最晚。
+        :param _Offset: <p>导入数据位置，-2：最早；-1：最晚。</p>
         :type Offset: int
-        :param _KafkaInstance: 腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
-- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+        :param _KafkaInstance: <p>腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
         :type KafkaInstance: str
-        :param _ServerAddr: 服务地址。
-KafkaType为1时ServerAddr必填。
+        :param _ServerAddr: <p>服务地址。<br>KafkaType为1时ServerAddr必填。</p>
         :type ServerAddr: str
-        :param _IsEncryptionAddr: ServerAddr是否为加密连接。
-KafkaType为1时有效。
+        :param _IsEncryptionAddr: <p>ServerAddr是否为加密连接。<br>KafkaType为1时有效。</p>
         :type IsEncryptionAddr: bool
-        :param _Protocol: 加密访问协议。
-KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+        :param _Protocol: <p>加密访问协议。<br>KafkaType为1并且IsEncryptionAddr为true时Protocol必填。</p>
         :type Protocol: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
-        :param _ConsumerGroupName: 用户Kafka消费组。
-
-- 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
+        :param _ConsumerGroupName: <p>用户Kafka消费组。</p><ul><li>消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。</li></ul>
         :type ConsumerGroupName: str
-        :param _LogRechargeRule: 日志导入规则
+        :param _LogRechargeRule: <p>日志导入规则</p>
         :type LogRechargeRule: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
-        :param _UserKafkaMeta: 用户kafka拓展信息
+        :param _NetworkInfo: <p>网络连接参数</p>
+        :type NetworkInfo: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        :param _UserKafkaMeta: <p>用户kafka拓展信息</p>
         :type UserKafkaMeta: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         self._PreviewType = None
@@ -51855,11 +52109,12 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         self._Protocol = None
         self._ConsumerGroupName = None
         self._LogRechargeRule = None
+        self._NetworkInfo = None
         self._UserKafkaMeta = None
 
     @property
     def PreviewType(self):
-        r"""预览类型，1：源数据预览；2：导出结果预览。
+        r"""<p>预览类型，1：源数据预览；2：导出结果预览。</p>
         :rtype: int
         """
         return self._PreviewType
@@ -51870,7 +52125,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def KafkaType(self):
-        r"""导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。
+        r"""<p>导入Kafka类型，0：腾讯云CKafka；1：用户自建Kafka。</p>
         :rtype: int
         """
         return self._KafkaType
@@ -51881,8 +52136,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def UserKafkaTopics(self):
-        r"""用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。
-最多支持100个。
+        r"""<p>用户需要导入的Kafka相关topic列表，多个topic之间使用半角逗号隔开。<br>最多支持100个。</p>
         :rtype: str
         """
         return self._UserKafkaTopics
@@ -51893,7 +52147,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def Offset(self):
-        r"""导入数据位置，-2：最早；-1：最晚。
+        r"""<p>导入数据位置，-2：最早；-1：最晚。</p>
         :rtype: int
         """
         return self._Offset
@@ -51904,8 +52158,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def KafkaInstance(self):
-        r"""腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。
-- 通过 [获取实例列表信息](https://cloud.tencent.com/document/product/597/40835) 获取实例id。
+        r"""<p>腾讯云CKafka实例ID，当KafkaType为0时参数KafkaInstance有效且必填。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/597/40835">获取实例列表信息</a> 获取实例id。</li></ul>
         :rtype: str
         """
         return self._KafkaInstance
@@ -51916,8 +52169,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ServerAddr(self):
-        r"""服务地址。
-KafkaType为1时ServerAddr必填。
+        r"""<p>服务地址。<br>KafkaType为1时ServerAddr必填。</p>
         :rtype: str
         """
         return self._ServerAddr
@@ -51928,8 +52180,7 @@ KafkaType为1时ServerAddr必填。
 
     @property
     def IsEncryptionAddr(self):
-        r"""ServerAddr是否为加密连接。
-KafkaType为1时有效。
+        r"""<p>ServerAddr是否为加密连接。<br>KafkaType为1时有效。</p>
         :rtype: bool
         """
         return self._IsEncryptionAddr
@@ -51940,8 +52191,7 @@ KafkaType为1时有效。
 
     @property
     def Protocol(self):
-        r"""加密访问协议。
-KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
+        r"""<p>加密访问协议。<br>KafkaType为1并且IsEncryptionAddr为true时Protocol必填。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaProtocolInfo`
         """
         return self._Protocol
@@ -51952,9 +52202,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def ConsumerGroupName(self):
-        r"""用户Kafka消费组。
-
-- 消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。
+        r"""<p>用户Kafka消费组。</p><ul><li>消费组是 Kafka 提供的可扩展且具有容错性的消费者机制，一个消费组中存在多个消费者，组内的所有消费者共同消费订阅 Topic 中的消息。一个消费者可同时消费多个 Partition，但一个 Partition 只能被消费组内的一个消费者消费。</li></ul>
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -51965,7 +52213,7 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
 
     @property
     def LogRechargeRule(self):
-        r"""日志导入规则
+        r"""<p>日志导入规则</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.LogRechargeRuleInfo`
         """
         return self._LogRechargeRule
@@ -51975,8 +52223,19 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         self._LogRechargeRule = LogRechargeRule
 
     @property
+    def NetworkInfo(self):
+        r"""<p>网络连接参数</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetworkInfo`
+        """
+        return self._NetworkInfo
+
+    @NetworkInfo.setter
+    def NetworkInfo(self, NetworkInfo):
+        self._NetworkInfo = NetworkInfo
+
+    @property
     def UserKafkaMeta(self):
-        r"""用户kafka拓展信息
+        r"""<p>用户kafka拓展信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.UserKafkaMeta`
         """
         return self._UserKafkaMeta
@@ -52001,6 +52260,9 @@ KafkaType为1并且IsEncryptionAddr为true时Protocol必填。
         if params.get("LogRechargeRule") is not None:
             self._LogRechargeRule = LogRechargeRuleInfo()
             self._LogRechargeRule._deserialize(params.get("LogRechargeRule"))
+        if params.get("NetworkInfo") is not None:
+            self._NetworkInfo = NetworkInfo()
+            self._NetworkInfo._deserialize(params.get("NetworkInfo"))
         if params.get("UserKafkaMeta") is not None:
             self._UserKafkaMeta = UserKafkaMeta()
             self._UserKafkaMeta._deserialize(params.get("UserKafkaMeta"))
@@ -52021,9 +52283,9 @@ class PreviewKafkaRechargeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogSample: 日志样例，PreviewType为2时返回
+        :param _LogSample: <p>日志样例，PreviewType为2时返回</p>
         :type LogSample: str
-        :param _LogData: 日志预览结果
+        :param _LogData: <p>日志预览结果</p>
         :type LogData: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -52034,7 +52296,7 @@ class PreviewKafkaRechargeResponse(AbstractModel):
 
     @property
     def LogSample(self):
-        r"""日志样例，PreviewType为2时返回
+        r"""<p>日志样例，PreviewType为2时返回</p>
         :rtype: str
         """
         return self._LogSample
@@ -52045,7 +52307,7 @@ class PreviewKafkaRechargeResponse(AbstractModel):
 
     @property
     def LogData(self):
-        r"""日志预览结果
+        r"""<p>日志预览结果</p>
         :rtype: str
         """
         return self._LogData
@@ -52187,6 +52449,57 @@ class PreviewLogStatistic(AbstractModel):
         self._FailReason = params.get("FailReason")
         self._Time = params.get("Time")
         self._DstTopicName = params.get("DstTopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrivateDomainNames(AbstractModel):
+    r"""私有域名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainName: 域名地址
+        :type DomainName: str
+        :param _IpAddr: ip地址
+        :type IpAddr: str
+        """
+        self._DomainName = None
+        self._IpAddr = None
+
+    @property
+    def DomainName(self):
+        r"""域名地址
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def IpAddr(self):
+        r"""ip地址
+        :rtype: str
+        """
+        return self._IpAddr
+
+    @IpAddr.setter
+    def IpAddr(self, IpAddr):
+        self._IpAddr = IpAddr
+
+
+    def _deserialize(self, params):
+        self._DomainName = params.get("DomainName")
+        self._IpAddr = params.get("IpAddr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

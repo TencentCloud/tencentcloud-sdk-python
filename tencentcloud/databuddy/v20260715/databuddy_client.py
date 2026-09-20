@@ -26,6 +26,29 @@ class DatabuddyClient(AbstractClient):
     _service = 'databuddy'
 
 
+    def AddConsoleUsers(self, request):
+        r"""添加控制台用户
+
+        :param request: Request instance for AddConsoleUsers.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.AddConsoleUsersRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.AddConsoleUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddConsoleUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddConsoleUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFile(self, request):
         r"""在Studio（统一开发 IDE）的工作空间文件树中新建一个文件（Notebook/SQL/Python等），创建成功后返回文件的完整元信息。
 
@@ -274,6 +297,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListConsoleUsers(self, request):
+        r"""查询控制台用户列表
+
+        :param request: Request instance for ListConsoleUsers.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleUsersRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListConsoleUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListConsoleUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListWorkflowRuns(self, request):
         r"""工作流运行列表
 
@@ -334,6 +380,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("ListWorkflows", params, headers=headers)
             response = json.loads(body)
             model = models.ListWorkflowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RemoveConsoleUsers(self, request):
+        r"""<p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
+
+        :param request: Request instance for RemoveConsoleUsers.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.RemoveConsoleUsersRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.RemoveConsoleUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveConsoleUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveConsoleUsersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -404,6 +473,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("UnbindWorkflowBundle", params, headers=headers)
             response = json.loads(body)
             model = models.UnbindWorkflowBundleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateConsoleUsers(self, request):
+        r"""修改控制台用户角色
+
+        :param request: Request instance for UpdateConsoleUsers.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateConsoleUsersRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateConsoleUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateConsoleUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateConsoleUsersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -2065,6 +2065,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudStorageEventsByTWeSeePerson(self, request):
+        r"""查询 TWeSee 人员关联的云存事件及 AI 任务
+
+        :param request: Request instance for DescribeCloudStorageEventsByTWeSeePerson.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageEventsByTWeSeePersonRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeCloudStorageEventsByTWeSeePersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudStorageEventsByTWeSeePerson", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudStorageEventsByTWeSeePersonResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudStorageEventsWithAITasks(self, request):
         r"""拉取云存事件列表
 
@@ -3123,6 +3146,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTWeSeeDirectUploadInfo(self, request):
+        r"""查询 TWeSee 直传信息
+
+        :param request: Request instance for DescribeTWeSeeDirectUploadInfo.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeeDirectUploadInfoRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeeDirectUploadInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTWeSeeDirectUploadInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTWeSeeDirectUploadInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTWeSeeFace(self, request):
         r"""查询指定 TWeSee 人脸详情。
 
@@ -3507,6 +3553,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DescribeVideoLicense", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVideoLicenseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVodCloudStorageDate(self, request):
+        r"""拉取云存日期
+
+        :param request: Request instance for DescribeVodCloudStorageDate.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeVodCloudStorageDateRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeVodCloudStorageDateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVodCloudStorageDate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVodCloudStorageDateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4128,6 +4197,52 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GetTopicRuleList", params, headers=headers)
             response = json.loads(body)
             model = models.GetTopicRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetVodCloudStorageEventList(self, request):
+        r"""获取云存事件列表
+
+        :param request: Request instance for GetVodCloudStorageEventList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetVodCloudStorageEventListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetVodCloudStorageEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetVodCloudStorageEventList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetVodCloudStorageEventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetVodCloudStorageVideoList(self, request):
+        r"""获取云存时间轴视频列表
+
+        :param request: Request instance for GetVodCloudStorageVideoList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetVodCloudStorageVideoListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetVodCloudStorageVideoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetVodCloudStorageVideoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetVodCloudStorageVideoListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

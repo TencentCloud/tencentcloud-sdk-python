@@ -1038,6 +1038,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAppStatisticsOverview(self, request):
+        r"""查询应用视图下的调用统计总览，包含总调用次数、调用成功率、总tokens平均耗时及首tokens平均耗时；RAG 应用额外返回各回复方式的调用次数及占比，用于绘制饼图
+
+        :param request: Request instance for DescribeAppStatisticsOverview.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAppStatisticsOverviewRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAppStatisticsOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppStatisticsOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppStatisticsOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAppSummaryList(self, request):
         r"""获取应用摘要列表
 

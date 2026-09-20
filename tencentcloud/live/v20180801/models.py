@@ -940,6 +940,447 @@ class AddLiveWatermarkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuditGroupClassInfo(AbstractModel):
+    r"""直播审核标签分组数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupClassName: <p>标签组分类中文名。</p>
+        :type GroupClassName: str
+        :param _GroupClassEname: <p>标签组分类英文名。</p>
+        :type GroupClassEname: str
+        :param _LabelGroupList: <p>标签组列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelGroupList: list of AuditLabelGroupInfo
+        """
+        self._GroupClassName = None
+        self._GroupClassEname = None
+        self._LabelGroupList = None
+
+    @property
+    def GroupClassName(self):
+        r"""<p>标签组分类中文名。</p>
+        :rtype: str
+        """
+        return self._GroupClassName
+
+    @GroupClassName.setter
+    def GroupClassName(self, GroupClassName):
+        self._GroupClassName = GroupClassName
+
+    @property
+    def GroupClassEname(self):
+        r"""<p>标签组分类英文名。</p>
+        :rtype: str
+        """
+        return self._GroupClassEname
+
+    @GroupClassEname.setter
+    def GroupClassEname(self, GroupClassEname):
+        self._GroupClassEname = GroupClassEname
+
+    @property
+    def LabelGroupList(self):
+        r"""<p>标签组列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuditLabelGroupInfo
+        """
+        return self._LabelGroupList
+
+    @LabelGroupList.setter
+    def LabelGroupList(self, LabelGroupList):
+        self._LabelGroupList = LabelGroupList
+
+
+    def _deserialize(self, params):
+        self._GroupClassName = params.get("GroupClassName")
+        self._GroupClassEname = params.get("GroupClassEname")
+        if params.get("LabelGroupList") is not None:
+            self._LabelGroupList = []
+            for item in params.get("LabelGroupList"):
+                obj = AuditLabelGroupInfo()
+                obj._deserialize(item)
+                self._LabelGroupList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditGroupInfo(AbstractModel):
+    r"""直播审核标签分组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagType: <p>标签类型。<br>可取值：TagImage，TagText，TagAudio。</p>
+        :type TagType: str
+        :param _GroupClassList: <p>标签组分类列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupClassList: list of AuditGroupClassInfo
+        """
+        self._TagType = None
+        self._GroupClassList = None
+
+    @property
+    def TagType(self):
+        r"""<p>标签类型。<br>可取值：TagImage，TagText，TagAudio。</p>
+        :rtype: str
+        """
+        return self._TagType
+
+    @TagType.setter
+    def TagType(self, TagType):
+        self._TagType = TagType
+
+    @property
+    def GroupClassList(self):
+        r"""<p>标签组分类列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuditGroupClassInfo
+        """
+        return self._GroupClassList
+
+    @GroupClassList.setter
+    def GroupClassList(self, GroupClassList):
+        self._GroupClassList = GroupClassList
+
+
+    def _deserialize(self, params):
+        self._TagType = params.get("TagType")
+        if params.get("GroupClassList") is not None:
+            self._GroupClassList = []
+            for item in params.get("GroupClassList"):
+                obj = AuditGroupClassInfo()
+                obj._deserialize(item)
+                self._GroupClassList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditImage(AbstractModel):
+    r"""向图库提交的图片数据类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: <p>提交的图片顺序索引。</p>
+        :type Index: str
+        :param _Url: <p>图片地址。</p>
+        :type Url: str
+        :param _Md5: <p>图片 md5 值。</p>
+        :type Md5: str
+        :param _Name: <p>图片名称。</p>
+        :type Name: str
+        :param _Label: <p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+        :type Label: str
+        """
+        self._Index = None
+        self._Url = None
+        self._Md5 = None
+        self._Name = None
+        self._Label = None
+
+    @property
+    def Index(self):
+        r"""<p>提交的图片顺序索引。</p>
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Url(self):
+        r"""<p>图片地址。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Md5(self):
+        r"""<p>图片 md5 值。</p>
+        :rtype: str
+        """
+        return self._Md5
+
+    @Md5.setter
+    def Md5(self, Md5):
+        self._Md5 = Md5
+
+    @property
+    def Name(self):
+        r"""<p>图片名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Label(self):
+        r"""<p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Url = params.get("Url")
+        self._Md5 = params.get("Md5")
+        self._Name = params.get("Name")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditImageCreateDetail(AbstractModel):
+    r"""直播审核图库添加图片详细结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 图片上传状态，0 表示成功，其他表示失败。
+10101: url 解码失败。
+10102: url 解析失败。
+10103: url 不是 cos 地址。
+10301: label 不合法。
+20101: 数据入库错误。
+30101: cos 下载图片连接错误。
+30102: cos 下载图片响应错误。
+40101: 优图接口调用错误。
+        :type Status: int
+        :param _ImageId: 上传的图片 Id。
+        :type ImageId: str
+        :param _Index: 图片上传顺序索引。
+        :type Index: str
+        """
+        self._Status = None
+        self._ImageId = None
+        self._Index = None
+
+    @property
+    def Status(self):
+        r"""图片上传状态，0 表示成功，其他表示失败。
+10101: url 解码失败。
+10102: url 解析失败。
+10103: url 不是 cos 地址。
+10301: label 不合法。
+20101: 数据入库错误。
+30101: cos 下载图片连接错误。
+30102: cos 下载图片响应错误。
+40101: 优图接口调用错误。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ImageId(self):
+        r"""上传的图片 Id。
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def Index(self):
+        r"""图片上传顺序索引。
+        :rtype: str
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ImageId = params.get("ImageId")
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditImageDeleteDetail(AbstractModel):
+    r"""直播审核图库删除图片详细结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: <p>图片 Id。</p>
+        :type ImageId: str
+        :param _Name: <p>图片名称</p>
+        :type Name: str
+        :param _Status: <p>删除状态。<br>0：成功。<br>10104：原图不存在。<br>40201:  图库删图失败。<br>20201:  图库记录删除失败。</p>
+        :type Status: int
+        :param _Label: <p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+        :type Label: str
+        :param _ErrMsg: <p>错误信息。</p>
+        :type ErrMsg: str
+        """
+        self._ImageId = None
+        self._Name = None
+        self._Status = None
+        self._Label = None
+        self._ErrMsg = None
+
+    @property
+    def ImageId(self):
+        r"""<p>图片 Id。</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def Name(self):
+        r"""<p>图片名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>删除状态。<br>0：成功。<br>10104：原图不存在。<br>40201:  图库删图失败。<br>20201:  图库记录删除失败。</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Label(self):
+        r"""<p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def ErrMsg(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Label = params.get("Label")
+        self._ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditImageInfo(AbstractModel):
+    r"""直播审核图库图片信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 图片名称。
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        r"""图片名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditKeyword(AbstractModel):
     r"""直播审核关键词信息
 
@@ -1151,6 +1592,183 @@ class AuditKeywordInfo(AbstractModel):
         self._Content = params.get("Content")
         self._Label = params.get("Label")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditKeywordLibInfo(AbstractModel):
+    r"""直播审核，关键词库信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibId: <p>词库 Id。</p>
+        :type LibId: str
+        :param _Name: <p>自定义词库名称。</p>
+        :type Name: str
+        :param _Description: <p>自定义词库描述。</p>
+        :type Description: str
+        :param _CreateTime: <p>创建时间。UTC 格式，例如：2018-11-29T19:00:00Z。<br>注意：</p><ol><li>北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示。</li></ol>
+        :type CreateTime: str
+        :param _Suggestion: <p>处理建议。<br>可取值：Review 疑似，Block 违规。</p>
+        :type Suggestion: str
+        :param _MatchType: <p>匹配模式。<br>可取值：ExactMatch 精确匹配， FuzzyMatch 模糊匹配。</p>
+        :type MatchType: str
+        """
+        self._LibId = None
+        self._Name = None
+        self._Description = None
+        self._CreateTime = None
+        self._Suggestion = None
+        self._MatchType = None
+
+    @property
+    def LibId(self):
+        r"""<p>词库 Id。</p>
+        :rtype: str
+        """
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+    @property
+    def Name(self):
+        r"""<p>自定义词库名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>自定义词库描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。UTC 格式，例如：2018-11-29T19:00:00Z。<br>注意：</p><ol><li>北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示。</li></ol>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Suggestion(self):
+        r"""<p>处理建议。<br>可取值：Review 疑似，Block 违规。</p>
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def MatchType(self):
+        r"""<p>匹配模式。<br>可取值：ExactMatch 精确匹配， FuzzyMatch 模糊匹配。</p>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+
+    def _deserialize(self, params):
+        self._LibId = params.get("LibId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._Suggestion = params.get("Suggestion")
+        self._MatchType = params.get("MatchType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLabelGroupInfo(AbstractModel):
+    r"""直播审核标签组信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: <p>标签组中文名。</p>
+        :type GroupName: str
+        :param _GroupEname: <p>标签组英文名。</p>
+        :type GroupEname: str
+        :param _GroupMsg: <p>标签组描述。</p>
+        :type GroupMsg: str
+        """
+        self._GroupName = None
+        self._GroupEname = None
+        self._GroupMsg = None
+
+    @property
+    def GroupName(self):
+        r"""<p>标签组中文名。</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupEname(self):
+        r"""<p>标签组英文名。</p>
+        :rtype: str
+        """
+        return self._GroupEname
+
+    @GroupEname.setter
+    def GroupEname(self, GroupEname):
+        self._GroupEname = GroupEname
+
+    @property
+    def GroupMsg(self):
+        r"""<p>标签组描述。</p>
+        :rtype: str
+        """
+        return self._GroupMsg
+
+    @GroupMsg.setter
+    def GroupMsg(self, GroupMsg):
+        self._GroupMsg = GroupMsg
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._GroupEname = params.get("GroupEname")
+        self._GroupMsg = params.get("GroupMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6806,6 +7424,95 @@ class CopyLiveAvatarRoomResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAuditImagesRequest(AbstractModel):
+    r"""CreateAuditImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Images: <p>样本图片列表。</p>
+        :type Images: list of AuditImage
+        """
+        self._Images = None
+
+    @property
+    def Images(self):
+        r"""<p>样本图片列表。</p>
+        :rtype: list of AuditImage
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+
+    def _deserialize(self, params):
+        if params.get("Images") is not None:
+            self._Images = []
+            for item in params.get("Images"):
+                obj = AuditImage()
+                obj._deserialize(item)
+                self._Images.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditImagesResponse(AbstractModel):
+    r"""CreateAuditImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>创建图片结果详情。</p>
+        :type Infos: list of AuditImageCreateDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>创建图片结果详情。</p>
+        :rtype: list of AuditImageCreateDetail
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = AuditImageCreateDetail()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAuditKeywordLibRequest(AbstractModel):
     r"""CreateAuditKeywordLib请求参数结构体
 
@@ -6998,7 +7705,7 @@ class CreateAuditKeywordsResponse(AbstractModel):
         :param _DupInfos: <p>重复关键词列表。</p>
         :type DupInfos: list of AuditKeywordInfo
         :param _Keywords: <p>新增成功关键词列表</p>
-        :type Keywords: list of AuditKeywordInfo
+        :type Keywords: :class:`tencentcloud.live.v20180801.models.AuditKeywordInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7032,7 +7739,7 @@ class CreateAuditKeywordsResponse(AbstractModel):
     @property
     def Keywords(self):
         r"""<p>新增成功关键词列表</p>
-        :rtype: list of AuditKeywordInfo
+        :rtype: :class:`tencentcloud.live.v20180801.models.AuditKeywordInfo`
         """
         return self._Keywords
 
@@ -7061,11 +7768,8 @@ class CreateAuditKeywordsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DupInfos.append(obj)
         if params.get("Keywords") is not None:
-            self._Keywords = []
-            for item in params.get("Keywords"):
-                obj = AuditKeywordInfo()
-                obj._deserialize(item)
-                self._Keywords.append(obj)
+            self._Keywords = AuditKeywordInfo()
+            self._Keywords._deserialize(params.get("Keywords"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13358,6 +14062,154 @@ class DelayInfo(AbstractModel):
         
 
 
+class DeleteAuditImagesRequest(AbstractModel):
+    r"""DeleteAuditImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageIds: <p>图片 Id 列表。</p>
+        :type ImageIds: list of str
+        """
+        self._ImageIds = None
+
+    @property
+    def ImageIds(self):
+        r"""<p>图片 Id 列表。</p>
+        :rtype: list of str
+        """
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
+
+
+    def _deserialize(self, params):
+        self._ImageIds = params.get("ImageIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditImagesResponse(AbstractModel):
+    r"""DeleteAuditImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>创建图片结果详情。</p>
+        :type Infos: list of AuditImageDeleteDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>创建图片结果详情。</p>
+        :rtype: list of AuditImageDeleteDetail
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = AuditImageDeleteDetail()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAuditKeywordLibRequest(AbstractModel):
+    r"""DeleteAuditKeywordLib请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibId: <p>词库 Id。</p>
+        :type LibId: str
+        """
+        self._LibId = None
+
+    @property
+    def LibId(self):
+        r"""<p>词库 Id。</p>
+        :rtype: str
+        """
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+
+    def _deserialize(self, params):
+        self._LibId = params.get("LibId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditKeywordLibResponse(AbstractModel):
+    r"""DeleteAuditKeywordLib返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAuditKeywordsRequest(AbstractModel):
     r"""DeleteAuditKeywords请求参数结构体
 
@@ -16243,6 +17095,348 @@ class DescribeAreaBillBandwidthAndFluxListResponse(AbstractModel):
                 obj = BillAreaInfo()
                 obj._deserialize(item)
                 self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditGroupTagRequest(AbstractModel):
+    r"""DescribeAuditGroupTag请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagType: <p>标签类别。<br>Other：全量，TagText：文字，TagImage：图片，TagAudio：音频。</p>
+        :type TagType: str
+        """
+        self._TagType = None
+
+    @property
+    def TagType(self):
+        r"""<p>标签类别。<br>Other：全量，TagText：文字，TagImage：图片，TagAudio：音频。</p>
+        :rtype: str
+        """
+        return self._TagType
+
+    @TagType.setter
+    def TagType(self, TagType):
+        self._TagType = TagType
+
+
+    def _deserialize(self, params):
+        self._TagType = params.get("TagType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditGroupTagResponse(AbstractModel):
+    r"""DescribeAuditGroupTag返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupTypeList: <p>标签组分类数据按类型返回。</p>
+        :type GroupTypeList: list of AuditGroupInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupTypeList = None
+        self._RequestId = None
+
+    @property
+    def GroupTypeList(self):
+        r"""<p>标签组分类数据按类型返回。</p>
+        :rtype: list of AuditGroupInfo
+        """
+        return self._GroupTypeList
+
+    @GroupTypeList.setter
+    def GroupTypeList(self, GroupTypeList):
+        self._GroupTypeList = GroupTypeList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GroupTypeList") is not None:
+            self._GroupTypeList = []
+            for item in params.get("GroupTypeList"):
+                obj = AuditGroupInfo()
+                obj._deserialize(item)
+                self._GroupTypeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditImagesRequest(AbstractModel):
+    r"""DescribeAuditImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: <p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+        :type Label: str
+        :param _PageIndex: <p>查询页码。</p>
+        :type PageIndex: int
+        :param _PageSize: <p>查询条目数。</p>
+        :type PageSize: int
+        """
+        self._Label = None
+        self._PageIndex = None
+        self._PageSize = None
+
+    @property
+    def Label(self):
+        r"""<p>违规类型。<br>可取值：Normal: 正常 ，Polity: 政治，Porn: 色情，Sexy：性感，Ad: 广告，Illegal: 违法，Abuse: 谩骂，Terror: 暴恐，Spam: 灌水，Moan:呻吟。</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def PageIndex(self):
+        r"""<p>查询页码。</p>
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def PageSize(self):
+        r"""<p>查询条目数。</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditImagesResponse(AbstractModel):
+    r"""DescribeAuditImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>创建图片结果详情。</p>
+        :type Infos: list of AuditImageInfo
+        :param _Total: <p>图片总数。</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>创建图片结果详情。</p>
+        :rtype: list of AuditImageInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def Total(self):
+        r"""<p>图片总数。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = AuditImageInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditKeywordLibsRequest(AbstractModel):
+    r"""DescribeAuditKeywordLibs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>获取偏移量。</p>
+        :type Offset: int
+        :param _Limit: <p>获取条数。</p>
+        :type Limit: int
+        :param _Name: <p>根据关键词库名进行模糊查询。<br>传递空字符串时，忽略。</p>
+        :type Name: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
+
+    @property
+    def Offset(self):
+        r"""<p>获取偏移量。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>获取条数。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        r"""<p>根据关键词库名进行模糊查询。<br>传递空字符串时，忽略。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditKeywordLibsResponse(AbstractModel):
+    r"""DescribeAuditKeywordLibs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>满足条件的关键词库数量。</p>
+        :type Total: int
+        :param _Infos: <p>关键词库信息列表。</p>
+        :type Infos: list of AuditKeywordLibInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>满足条件的关键词库数量。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Infos(self):
+        r"""<p>关键词库信息列表。</p>
+        :rtype: list of AuditKeywordLibInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = AuditKeywordLibInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -33918,6 +35112,115 @@ class MixPortraitSegmentParams(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAuditKeywordLibRequest(AbstractModel):
+    r"""ModifyAuditKeywordLib请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>自定义词库名称。</p>
+        :type Name: str
+        :param _Description: <p>自定义词库描述。</p>
+        :type Description: str
+        :param _Suggestion: <p>处理建议。<br>可取值：Review 疑似，Block 违规。</p>
+        :type Suggestion: str
+        :param _LibId: <p>要更新的词库 Id。</p>
+        :type LibId: str
+        """
+        self._Name = None
+        self._Description = None
+        self._Suggestion = None
+        self._LibId = None
+
+    @property
+    def Name(self):
+        r"""<p>自定义词库名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>自定义词库描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Suggestion(self):
+        r"""<p>处理建议。<br>可取值：Review 疑似，Block 违规。</p>
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def LibId(self):
+        r"""<p>要更新的词库 Id。</p>
+        :rtype: str
+        """
+        return self._LibId
+
+    @LibId.setter
+    def LibId(self, LibId):
+        self._LibId = LibId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Suggestion = params.get("Suggestion")
+        self._LibId = params.get("LibId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditKeywordLibResponse(AbstractModel):
+    r"""ModifyAuditKeywordLib返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCasterInputInfoRequest(AbstractModel):

@@ -49,6 +49,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckDBInstanceElasticCpuScalable(self, request):
+        r"""查询cpu弹性扩容信息
+
+        :param request: Request instance for CheckDBInstanceElasticCpuScalable.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.CheckDBInstanceElasticCpuScalableRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.CheckDBInstanceElasticCpuScalableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckDBInstanceElasticCpuScalable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckDBInstanceElasticCpuScalableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseAuditService(self, request):
         r"""本接口（CloseAuditService）用于关闭审计服务
 

@@ -1629,6 +1629,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudStorageEventsByTWeSeePerson(
+            self,
+            request: models.DescribeCloudStorageEventsByTWeSeePersonRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudStorageEventsByTWeSeePersonResponse:
+        """
+        查询 TWeSee 人员关联的云存事件及 AI 任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudStorageEventsByTWeSeePerson"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudStorageEventsByTWeSeePersonResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudStorageEventsWithAITasks(
             self,
             request: models.DescribeCloudStorageEventsWithAITasksRequest,
@@ -2457,6 +2475,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTWeSeeDirectUploadInfo(
+            self,
+            request: models.DescribeTWeSeeDirectUploadInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeSeeDirectUploadInfoResponse:
+        """
+        查询 TWeSee 直传信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeSeeDirectUploadInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeSeeDirectUploadInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTWeSeeFace(
             self,
             request: models.DescribeTWeSeeFaceRequest,
@@ -2760,6 +2796,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DescribeVideoLicense"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVideoLicenseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVodCloudStorageDate(
+            self,
+            request: models.DescribeVodCloudStorageDateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVodCloudStorageDateResponse:
+        """
+        拉取云存日期
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVodCloudStorageDate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVodCloudStorageDateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3246,6 +3300,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "GetTopicRuleList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetTopicRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetVodCloudStorageEventList(
+            self,
+            request: models.GetVodCloudStorageEventListRequest,
+            opts: Dict = None,
+    ) -> models.GetVodCloudStorageEventListResponse:
+        """
+        获取云存事件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetVodCloudStorageEventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetVodCloudStorageEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetVodCloudStorageVideoList(
+            self,
+            request: models.GetVodCloudStorageVideoListRequest,
+            opts: Dict = None,
+    ) -> models.GetVodCloudStorageVideoListResponse:
+        """
+        获取云存时间轴视频列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetVodCloudStorageVideoList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetVodCloudStorageVideoListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

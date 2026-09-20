@@ -3020,7 +3020,7 @@ class AIGWMCPServer(AbstractModel):
         :type ServerType: str
         :param _Transport: <p>协议类型，取值: StreamableHttp</p>
         :type Transport: str
-        :param _UpstreamType: <p>服务类型：</p><ul><li>Registry  </li><li>HostIP</li></ul>
+        :param _UpstreamType: <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
         :type UpstreamType: str
         :param _DisplayName: <p>展示名字</p>
         :type DisplayName: str
@@ -3057,6 +3057,8 @@ class AIGWMCPServer(AbstractModel):
         :type MarketStatus: str
         :param _PreserveHost: <p>是否开启保留原Host功能</p>
         :type PreserveHost: bool
+        :param _LogConfig: <p>日志采集配置</p>
+        :type LogConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
         """
         self._ServerId = None
         self._Name = None
@@ -3079,6 +3081,7 @@ class AIGWMCPServer(AbstractModel):
         self._ConflictStrategy = None
         self._MarketStatus = None
         self._PreserveHost = None
+        self._LogConfig = None
 
     @property
     def ServerId(self):
@@ -3126,7 +3129,7 @@ class AIGWMCPServer(AbstractModel):
 
     @property
     def UpstreamType(self):
-        r"""<p>服务类型：</p><ul><li>Registry  </li><li>HostIP</li></ul>
+        r"""<p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
         :rtype: str
         """
         return self._UpstreamType
@@ -3314,6 +3317,17 @@ class AIGWMCPServer(AbstractModel):
     def PreserveHost(self, PreserveHost):
         self._PreserveHost = PreserveHost
 
+    @property
+    def LogConfig(self):
+        r"""<p>日志采集配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
 
     def _deserialize(self, params):
         self._ServerId = params.get("ServerId")
@@ -3343,6 +3357,9 @@ class AIGWMCPServer(AbstractModel):
         self._ConflictStrategy = params.get("ConflictStrategy")
         self._MarketStatus = params.get("MarketStatus")
         self._PreserveHost = params.get("PreserveHost")
+        if params.get("LogConfig") is not None:
+            self._LogConfig = AIGWLogConfig()
+            self._LogConfig._deserialize(params.get("LogConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5830,6 +5847,102 @@ class AIGWSensitiveWordRoute(AbstractModel):
         
 
 
+class AIGWSimpleSecretKey(AbstractModel):
+    r"""简单密钥信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretKeyId: <p>密钥ID</p>
+        :type SecretKeyId: str
+        :param _Name: <p>密钥名称</p>
+        :type Name: str
+        :param _Status: <p>启用状态</p><p>枚举值：</p><ul><li>Enable： 启动</li><li>Disable： 禁用</li></ul>
+        :type Status: str
+        :param _SecretType: <p>密钥类型</p><p>枚举值：</p><ul><li>ApiKey： ApiKey类型</li></ul>
+        :type SecretType: str
+        :param _CreateTime: <p>创建时间</p><p>参数格式：2026-09-03 14:11:05</p>
+        :type CreateTime: str
+        """
+        self._SecretKeyId = None
+        self._Name = None
+        self._Status = None
+        self._SecretType = None
+        self._CreateTime = None
+
+    @property
+    def SecretKeyId(self):
+        r"""<p>密钥ID</p>
+        :rtype: str
+        """
+        return self._SecretKeyId
+
+    @SecretKeyId.setter
+    def SecretKeyId(self, SecretKeyId):
+        self._SecretKeyId = SecretKeyId
+
+    @property
+    def Name(self):
+        r"""<p>密钥名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>启用状态</p><p>枚举值：</p><ul><li>Enable： 启动</li><li>Disable： 禁用</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SecretType(self):
+        r"""<p>密钥类型</p><p>枚举值：</p><ul><li>ApiKey： ApiKey类型</li></ul>
+        :rtype: str
+        """
+        return self._SecretType
+
+    @SecretType.setter
+    def SecretType(self, SecretType):
+        self._SecretType = SecretType
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：2026-09-03 14:11:05</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._SecretKeyId = params.get("SecretKeyId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._SecretType = params.get("SecretType")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWTagFilter(AbstractModel):
     r"""AI网关标签过滤
 
@@ -8243,6 +8356,10 @@ class CNAPIGwSecretKey(AbstractModel):
         :type CustomHeaderCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWCustomHeaderCredentialConfig`
         :param _QueryParamCredentialConfig: <p>自定义Query参数凭证配置</p>
         :type QueryParamCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWQueryParamCredentialConfig`
+        :param _BoundModelSecretKeys: <p>该消费者密钥绑定的模型密钥列表</p>
+        :type BoundModelSecretKeys: list of AIGWSimpleSecretKey
+        :param _BoundConsumerSecretKeys: <p>绑定了该模型密钥的消费者密钥列表</p>
+        :type BoundConsumerSecretKeys: list of AIGWSimpleSecretKey
         """
         self._BindCount = None
         self._CanBind = None
@@ -8271,6 +8388,8 @@ class CNAPIGwSecretKey(AbstractModel):
         self._BasicCredentialConfig = None
         self._CustomHeaderCredentialConfig = None
         self._QueryParamCredentialConfig = None
+        self._BoundModelSecretKeys = None
+        self._BoundConsumerSecretKeys = None
 
     @property
     def BindCount(self):
@@ -8573,6 +8692,28 @@ class CNAPIGwSecretKey(AbstractModel):
     def QueryParamCredentialConfig(self, QueryParamCredentialConfig):
         self._QueryParamCredentialConfig = QueryParamCredentialConfig
 
+    @property
+    def BoundModelSecretKeys(self):
+        r"""<p>该消费者密钥绑定的模型密钥列表</p>
+        :rtype: list of AIGWSimpleSecretKey
+        """
+        return self._BoundModelSecretKeys
+
+    @BoundModelSecretKeys.setter
+    def BoundModelSecretKeys(self, BoundModelSecretKeys):
+        self._BoundModelSecretKeys = BoundModelSecretKeys
+
+    @property
+    def BoundConsumerSecretKeys(self):
+        r"""<p>绑定了该模型密钥的消费者密钥列表</p>
+        :rtype: list of AIGWSimpleSecretKey
+        """
+        return self._BoundConsumerSecretKeys
+
+    @BoundConsumerSecretKeys.setter
+    def BoundConsumerSecretKeys(self, BoundConsumerSecretKeys):
+        self._BoundConsumerSecretKeys = BoundConsumerSecretKeys
+
 
     def _deserialize(self, params):
         self._BindCount = params.get("BindCount")
@@ -8620,6 +8761,18 @@ class CNAPIGwSecretKey(AbstractModel):
         if params.get("QueryParamCredentialConfig") is not None:
             self._QueryParamCredentialConfig = AIGWQueryParamCredentialConfig()
             self._QueryParamCredentialConfig._deserialize(params.get("QueryParamCredentialConfig"))
+        if params.get("BoundModelSecretKeys") is not None:
+            self._BoundModelSecretKeys = []
+            for item in params.get("BoundModelSecretKeys"):
+                obj = AIGWSimpleSecretKey()
+                obj._deserialize(item)
+                self._BoundModelSecretKeys.append(obj)
+        if params.get("BoundConsumerSecretKeys") is not None:
+            self._BoundConsumerSecretKeys = []
+            for item in params.get("BoundConsumerSecretKeys"):
+                obj = AIGWSimpleSecretKey()
+                obj._deserialize(item)
+                self._BoundConsumerSecretKeys.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12160,7 +12313,7 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         :type ServerType: str
         :param _Transport: <p>传输协议：StreamableHttp或SSE</p><p>枚举值：</p><ul><li>StreamableHttp： Streamable HTTP</li><li>SSE： Server-Sent Events</li></ul>
         :type Transport: str
-        :param _UpstreamType: <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心- Registry</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li></ul>
+        :param _UpstreamType: <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
         :type UpstreamType: str
         :param _UpstreamInfo: <p>注册中心来源信息</p>
         :type UpstreamInfo: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPUpstreamInfo`
@@ -12178,6 +12331,8 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         :type HealthCheck: :class:`tencentcloud.cngw.v20230418.models.AIGWHealthCheckSetting`
         :param _PreserveHost: <p>是否开启保留原Host功能</p>
         :type PreserveHost: bool
+        :param _LogConfig: <p>日志采集配置</p>
+        :type LogConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
         """
         self._GatewayId = None
         self._Name = None
@@ -12193,6 +12348,7 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         self._EnableHealthCheck = None
         self._HealthCheck = None
         self._PreserveHost = None
+        self._LogConfig = None
 
     @property
     def GatewayId(self):
@@ -12251,7 +12407,7 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
 
     @property
     def UpstreamType(self):
-        r"""<p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心- Registry</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li></ul>
+        r"""<p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
         :rtype: str
         """
         return self._UpstreamType
@@ -12348,6 +12504,17 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
     def PreserveHost(self, PreserveHost):
         self._PreserveHost = PreserveHost
 
+    @property
+    def LogConfig(self):
+        r"""<p>日志采集配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -12370,6 +12537,9 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
             self._HealthCheck = AIGWHealthCheckSetting()
             self._HealthCheck._deserialize(params.get("HealthCheck"))
         self._PreserveHost = params.get("PreserveHost")
+        if params.get("LogConfig") is not None:
+            self._LogConfig = AIGWLogConfig()
+            self._LogConfig._deserialize(params.get("LogConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14040,6 +14210,8 @@ class DescribeCloudNativeAPIGatewayAIQuotaListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: <p>每页数量</p>
         :type Limit: int
+        :param _Keyword: <p>关键字</p>
+        :type Keyword: str
         :param _Filters: <p>过滤条件</p>
         :type Filters: list of Filter
         :param _AlarmLevels: <p>配额预警级别</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Warning： 预警</li><li>NearLimit： 临近超限</li><li>Exceeded： 超限</li></ul>
@@ -14048,6 +14220,7 @@ class DescribeCloudNativeAPIGatewayAIQuotaListRequest(AbstractModel):
         self._GatewayId = None
         self._Offset = None
         self._Limit = None
+        self._Keyword = None
         self._Filters = None
         self._AlarmLevels = None
 
@@ -14085,6 +14258,17 @@ class DescribeCloudNativeAPIGatewayAIQuotaListRequest(AbstractModel):
         self._Limit = Limit
 
     @property
+    def Keyword(self):
+        r"""<p>关键字</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
     def Filters(self):
         r"""<p>过滤条件</p>
         :rtype: list of Filter
@@ -14111,6 +14295,7 @@ class DescribeCloudNativeAPIGatewayAIQuotaListRequest(AbstractModel):
         self._GatewayId = params.get("GatewayId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Keyword = params.get("Keyword")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -14276,20 +14461,26 @@ class DescribeCloudNativeAPIGatewayAIServiceSourceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 实例 ID
+        :param _GatewayId: <p>实例 ID</p>
         :type GatewayId: str
-        :param _Limit: 分页大小
+        :param _Limit: <p>分页大小</p>
         :type Limit: int
-        :param _Offset: 分页偏移
+        :param _Offset: <p>分页偏移</p>
         :type Offset: int
+        :param _Keyword: <p>搜索关键词</p>
+        :type Keyword: str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
         """
         self._GatewayId = None
         self._Limit = None
         self._Offset = None
+        self._Keyword = None
+        self._Filters = None
 
     @property
     def GatewayId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._GatewayId
@@ -14300,7 +14491,7 @@ class DescribeCloudNativeAPIGatewayAIServiceSourceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -14311,7 +14502,7 @@ class DescribeCloudNativeAPIGatewayAIServiceSourceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移
+        r"""<p>分页偏移</p>
         :rtype: int
         """
         return self._Offset
@@ -14320,11 +14511,40 @@ class DescribeCloudNativeAPIGatewayAIServiceSourceListRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def Keyword(self):
+        r"""<p>搜索关键词</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._Keyword = params.get("Keyword")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14342,7 +14562,7 @@ class DescribeCloudNativeAPIGatewayAIServiceSourceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: MCP Server 列表结果
+        :param _Result: <p>MCP Server 列表结果</p>
         :type Result: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceList`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14352,7 +14572,7 @@ class DescribeCloudNativeAPIGatewayAIServiceSourceListResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""MCP Server 列表结果
+        r"""<p>MCP Server 列表结果</p>
         :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceList`
         """
         return self._Result
@@ -16826,13 +17046,25 @@ class DescribeCloudNativeAPIGatewaySecretKeyListRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>起始位置，从 0 开始。</p>
         :type Offset: int
+        :param _Filters: <p>过滤条件。支持的 Name：Status / GenerateType / SecretType。</p>
+        :type Filters: list of Filter
+        :param _Keyword: <p>模糊匹配密钥名称。</p>
+        :type Keyword: str
+        :param _ResourceId: <p>对应资源的 ID（消费者 ID 或模型服务 ID）。</p>
+        :type ResourceId: str
         :param _ResourceType: <p>密钥归属资源类型。UseToBind=true 时必填。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
         :type ResourceType: str
+        :param _UseToBind: <p>是否用于绑定场景。true 时返回可被绑定到指定资源的密钥。</p>
+        :type UseToBind: bool
         """
         self._GatewayId = None
         self._Limit = None
         self._Offset = None
+        self._Filters = None
+        self._Keyword = None
+        self._ResourceId = None
         self._ResourceType = None
+        self._UseToBind = None
 
     @property
     def GatewayId(self):
@@ -16868,6 +17100,39 @@ class DescribeCloudNativeAPIGatewaySecretKeyListRequest(AbstractModel):
         self._Offset = Offset
 
     @property
+    def Filters(self):
+        r"""<p>过滤条件。支持的 Name：Status / GenerateType / SecretType。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Keyword(self):
+        r"""<p>模糊匹配密钥名称。</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def ResourceId(self):
+        r"""<p>对应资源的 ID（消费者 ID 或模型服务 ID）。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
     def ResourceType(self):
         r"""<p>密钥归属资源类型。UseToBind=true 时必填。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
         :rtype: str
@@ -16878,12 +17143,32 @@ class DescribeCloudNativeAPIGatewaySecretKeyListRequest(AbstractModel):
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
+    @property
+    def UseToBind(self):
+        r"""<p>是否用于绑定场景。true 时返回可被绑定到指定资源的密钥。</p>
+        :rtype: bool
+        """
+        return self._UseToBind
+
+    @UseToBind.setter
+    def UseToBind(self, UseToBind):
+        self._UseToBind = UseToBind
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Keyword = params.get("Keyword")
+        self._ResourceId = params.get("ResourceId")
         self._ResourceType = params.get("ResourceType")
+        self._UseToBind = params.get("UseToBind")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17046,9 +17331,12 @@ class DescribeCloudNativeAPIGatewaySecretKeyValueRequest(AbstractModel):
         :type GatewayId: str
         :param _SecretKeyId: 密钥id
         :type SecretKeyId: str
+        :param _SecretValueType: 指定从 AKSK 或 CAM 成对凭证中返回哪一半。取值：AccessKey（AKSK 返回 AccessKeyId，CAM 返回 SecretId）、SecretKey（AKSK 返回 SecretAccessKey，CAM 返回 SecretKey）。不传则保持原行为，仅返回 AccessKeyId 或 SecretId。
+        :type SecretValueType: str
         """
         self._GatewayId = None
         self._SecretKeyId = None
+        self._SecretValueType = None
 
     @property
     def GatewayId(self):
@@ -17072,10 +17360,22 @@ class DescribeCloudNativeAPIGatewaySecretKeyValueRequest(AbstractModel):
     def SecretKeyId(self, SecretKeyId):
         self._SecretKeyId = SecretKeyId
 
+    @property
+    def SecretValueType(self):
+        r"""指定从 AKSK 或 CAM 成对凭证中返回哪一半。取值：AccessKey（AKSK 返回 AccessKeyId，CAM 返回 SecretId）、SecretKey（AKSK 返回 SecretAccessKey，CAM 返回 SecretKey）。不传则保持原行为，仅返回 AccessKeyId 或 SecretId。
+        :rtype: str
+        """
+        return self._SecretValueType
+
+    @SecretValueType.setter
+    def SecretValueType(self, SecretValueType):
+        self._SecretValueType = SecretValueType
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._SecretKeyId = params.get("SecretKeyId")
+        self._SecretValueType = params.get("SecretValueType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20415,7 +20715,7 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         :type DisplayName: str
         :param _ServerId: <p>服务 id</p>
         :type ServerId: str
-        :param _UpstreamType: <p>后端类型</p><p>枚举值：</p><ul><li>HostIP： 域名 ip</li><li>MCPRegistry： MCP 注册中心</li><li>VirtualMCPServer： 虚拟MCP 服务</li></ul>
+        :param _UpstreamType: <p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
         :type UpstreamType: str
         :param _Timeout: <p>超时时间，单位ms，最大60000</p>
         :type Timeout: int
@@ -20433,6 +20733,8 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         :type HealthCheck: :class:`tencentcloud.cngw.v20230418.models.AIGWHealthCheckSetting`
         :param _PreserveHost: <p>是否开启保留原Host功能</p>
         :type PreserveHost: bool
+        :param _LogConfig: <p>日志配置</p>
+        :type LogConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
         """
         self._GatewayId = None
         self._DisplayName = None
@@ -20446,6 +20748,7 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         self._EnableHealthCheck = None
         self._HealthCheck = None
         self._PreserveHost = None
+        self._LogConfig = None
 
     @property
     def GatewayId(self):
@@ -20482,7 +20785,7 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
 
     @property
     def UpstreamType(self):
-        r"""<p>后端类型</p><p>枚举值：</p><ul><li>HostIP： 域名 ip</li><li>MCPRegistry： MCP 注册中心</li><li>VirtualMCPServer： 虚拟MCP 服务</li></ul>
+        r"""<p>后端类型</p><p>枚举值：</p><ul><li>MCPRegistry： mcp 注册中心</li><li>Registry： 普通注册中心</li><li>HostIP： 域名或ip</li><li>VirtualMCPServer： 虚拟MCPServer</li><li>DNS： 私有域名</li><li>Kubernetes： Kubernetes服务</li></ul>
         :rtype: str
         """
         return self._UpstreamType
@@ -20579,6 +20882,17 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
     def PreserveHost(self, PreserveHost):
         self._PreserveHost = PreserveHost
 
+    @property
+    def LogConfig(self):
+        r"""<p>日志配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -20599,6 +20913,9 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
             self._HealthCheck = AIGWHealthCheckSetting()
             self._HealthCheck._deserialize(params.get("HealthCheck"))
         self._PreserveHost = params.get("PreserveHost")
+        if params.get("LogConfig") is not None:
+            self._LogConfig = AIGWLogConfig()
+            self._LogConfig._deserialize(params.get("LogConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

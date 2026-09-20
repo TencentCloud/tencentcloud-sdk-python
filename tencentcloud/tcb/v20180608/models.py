@@ -4229,9 +4229,9 @@ class CreateEnvResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境ID
+        :param _EnvId: <p>环境ID</p>
         :type EnvId: str
-        :param _Resources: 资源类型。代表本次开通哪些资源。 可取值以及含义： - log : 表示日志资源，当前仅支持 log（日志资源类型），后续版本可能扩展，该数组不能为空，且每个元素必须为合法的资源类型值
+        :param _Resources: <p>资源类型。代表本次开通哪些资源。<br>可取值以及含义：</p><ul><li>log : 表示日志资源。</li><li>function： 表示云函数资源。</li></ul><p>该数组不能为空，且每个元素必须为合法的资源类型值</p>
         :type Resources: list of str
         """
         self._EnvId = None
@@ -4239,7 +4239,7 @@ class CreateEnvResourceRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境ID
+        r"""<p>环境ID</p>
         :rtype: str
         """
         return self._EnvId
@@ -4250,7 +4250,7 @@ class CreateEnvResourceRequest(AbstractModel):
 
     @property
     def Resources(self):
-        r"""资源类型。代表本次开通哪些资源。 可取值以及含义： - log : 表示日志资源，当前仅支持 log（日志资源类型），后续版本可能扩展，该数组不能为空，且每个元素必须为合法的资源类型值
+        r"""<p>资源类型。代表本次开通哪些资源。<br>可取值以及含义：</p><ul><li>log : 表示日志资源。</li><li>function： 表示云函数资源。</li></ul><p>该数组不能为空，且每个元素必须为合法的资源类型值</p>
         :rtype: list of str
         """
         return self._Resources

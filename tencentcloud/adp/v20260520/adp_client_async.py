@@ -817,6 +817,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAppStatisticsOverview(
+            self,
+            request: models.DescribeAppStatisticsOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppStatisticsOverviewResponse:
+        """
+        查询应用视图下的调用统计总览，包含总调用次数、调用成功率、总tokens平均耗时及首tokens平均耗时；RAG 应用额外返回各回复方式的调用次数及占比，用于绘制饼图
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppStatisticsOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppStatisticsOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAppSummaryList(
             self,
             request: models.DescribeAppSummaryListRequest,

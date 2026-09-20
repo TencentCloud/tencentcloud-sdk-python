@@ -2376,6 +2376,10 @@ class CreateModelRequest(AbstractModel):
         :type TargetPath: str
         :param _TargetHosts: <p>目标服务器</p>
         :type TargetHosts: list of TargetHostDTO
+        :param _Provider: <p>模型提供商</p><p>枚举值：</p><ul><li>tencentTokenHub： 腾讯云TokenHub</li><li>tiONE： TI-ONE应用</li><li>default： 其他</li></ul>
+        :type Provider: str
+        :param _ApiKeys: <p>Provider=tencentTokenHub时对应的密钥</p>
+        :type ApiKeys: list of str
         :param _CredentialID: <p>凭据ID</p>
         :type CredentialID: str
         :param _CheckTargetCertsError: <p>https时，是否检查证书合法</p>
@@ -2392,6 +2396,8 @@ class CreateModelRequest(AbstractModel):
         self._HttpProtocolType = None
         self._TargetPath = None
         self._TargetHosts = None
+        self._Provider = None
+        self._ApiKeys = None
         self._CredentialID = None
         self._CheckTargetCertsError = None
         self._HttpProtocolVersion = None
@@ -2452,6 +2458,28 @@ class CreateModelRequest(AbstractModel):
     @TargetHosts.setter
     def TargetHosts(self, TargetHosts):
         self._TargetHosts = TargetHosts
+
+    @property
+    def Provider(self):
+        r"""<p>模型提供商</p><p>枚举值：</p><ul><li>tencentTokenHub： 腾讯云TokenHub</li><li>tiONE： TI-ONE应用</li><li>default： 其他</li></ul>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def ApiKeys(self):
+        r"""<p>Provider=tencentTokenHub时对应的密钥</p>
+        :rtype: list of str
+        """
+        return self._ApiKeys
+
+    @ApiKeys.setter
+    def ApiKeys(self, ApiKeys):
+        self._ApiKeys = ApiKeys
 
     @property
     def CredentialID(self):
@@ -2520,6 +2548,8 @@ class CreateModelRequest(AbstractModel):
                 obj = TargetHostDTO()
                 obj._deserialize(item)
                 self._TargetHosts.append(obj)
+        self._Provider = params.get("Provider")
+        self._ApiKeys = params.get("ApiKeys")
         self._CredentialID = params.get("CredentialID")
         self._CheckTargetCertsError = params.get("CheckTargetCertsError")
         self._HttpProtocolVersion = params.get("HttpProtocolVersion")
@@ -6966,6 +6996,8 @@ class DescribeModelResponseVO(AbstractModel):
         :type InstanceID: str
         :param _ID: <p>模型ID</p>
         :type ID: str
+        :param _Provider: <p>模型提供商</p>
+        :type Provider: str
         :param _Name: <p>模型名称</p>
         :type Name: str
         :param _CredentialID: <p>凭据ID</p>
@@ -6997,6 +7029,7 @@ class DescribeModelResponseVO(AbstractModel):
         self._Uin = None
         self._InstanceID = None
         self._ID = None
+        self._Provider = None
         self._Name = None
         self._CredentialID = None
         self._CredentialName = None
@@ -7054,6 +7087,17 @@ class DescribeModelResponseVO(AbstractModel):
     @ID.setter
     def ID(self, ID):
         self._ID = ID
+
+    @property
+    def Provider(self):
+        r"""<p>模型提供商</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
 
     @property
     def Name(self):
@@ -7204,6 +7248,7 @@ class DescribeModelResponseVO(AbstractModel):
         self._Uin = params.get("Uin")
         self._InstanceID = params.get("InstanceID")
         self._ID = params.get("ID")
+        self._Provider = params.get("Provider")
         self._Name = params.get("Name")
         self._CredentialID = params.get("CredentialID")
         self._CredentialName = params.get("CredentialName")

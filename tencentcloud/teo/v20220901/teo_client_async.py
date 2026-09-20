@@ -1540,6 +1540,40 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAvailableOriginACLFamily(
+            self,
+            request: models.DescribeAvailableOriginACLFamilyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAvailableOriginACLFamilyResponse:
+        """
+        查询源站防护 IP 段控制域详细信息，包含版本号和具体IP网段信息等。
+        标准控制域和精简控制域主要区别在于提供的 IP 段数量差异，后者数量更少,但是使用上有些限制，具体限制请咨询产品。具体格式说明如下：
+        标准控制域：
+        <li>gaz：标准全球控制域；</li>
+        <li>mlc：标准中国控制域；</li>
+        <li>emc：标准海外(全球不含中国)控制域；</li>
+        精简控制域控制域：
+        <li>plat-gaz：精简全球控制域；</li>
+        <li>plat-mlc：精简中国控制域；</li>
+        <li>plat-emc：精简海外(全球不含中国)控制域；</li>
+        <li>plat-specific-gaz：定制版控全球可用区制域；</li>
+        <li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li>
+        <li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域；</li>
+        缩写说明：
+        <li>gaz：Global AZ Availability Zone;</li>
+        <li>mlc：mainlandChina;</li>
+        <li>emc：Exclude mainlandChina.</li>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAvailableOriginACLFamily"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAvailableOriginACLFamilyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAvailablePlans(
             self,
             request: models.DescribeAvailablePlansRequest,

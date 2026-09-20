@@ -6916,6 +6916,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UnbindingResource(self, request):
+        r"""解绑bundle绑定的资源
+
+        :param request: Request instance for UnbindingResource.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.UnbindingResourceRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.UnbindingResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindingResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindingResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UnboundProjectExecutorResource(self, request):
         r"""商业化版本：执行资源组/资源包解除绑定项目
 

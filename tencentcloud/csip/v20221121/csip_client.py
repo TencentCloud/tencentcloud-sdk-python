@@ -279,29 +279,6 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def BindClusterOwner(self, request):
-        r"""绑定集群负责人
-
-        :param request: Request instance for BindClusterOwner.
-        :type request: :class:`tencentcloud.csip.v20221121.models.BindClusterOwnerRequest`
-        :rtype: :class:`tencentcloud.csip.v20221121.models.BindClusterOwnerResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("BindClusterOwner", params, headers=headers)
-            response = json.loads(body)
-            model = models.BindClusterOwnerResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CancelEdrAlertIgnore(self, request):
         r"""取消已永久忽略的EDR多行为告警，从AI-Link永久忽略白名单移除对应主机+规则记录，并将告警状态恢复为待处理（PENDING）
 
@@ -6381,29 +6358,6 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeClusterInstallCommand", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeClusterInstallCommandResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeClusterListV2(self, request):
-        r"""查询集群列表
-
-        :param request: Request instance for DescribeClusterListV2.
-        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeClusterListV2Request`
-        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeClusterListV2Response`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeClusterListV2", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeClusterListV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -12509,7 +12463,7 @@ class CsipClient(AbstractClient):
 
 
     def DescribeSkillScanPayInfo(self, request):
-        r"""查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。
+        r"""查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。后付费资源信息通过 PostPayStatus、PostPayResourceId、PostPayBeginTime 返回，与预付费订单字段相互独立，二者可同时有效（预付额度耗尽后溢出用量进入后付费）。
 
         :param request: Request instance for DescribeSkillScanPayInfo.
         :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSkillScanPayInfoRequest`
@@ -12545,6 +12499,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeSkillScanResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSkillScanResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSkillScanTaskList(self, request):
+        r"""分页查询 Skill 扫描任务列表，返回每个任务的 Skill 名称、消耗次数与上传时间，按上传时间倒序排列。默认查询本月数据，可通过 StartTime / EndTime 指定时间范围。
+
+        :param request: Request instance for DescribeSkillScanTaskList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSkillScanTaskListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSkillScanTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillScanTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillScanTaskListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

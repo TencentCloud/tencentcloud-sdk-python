@@ -59350,15 +59350,15 @@ class JobStatusHistory(AbstractModel):
 
 
 class KVPair(AbstractModel):
-    r"""配置格式
+    r"""通用键值对 POJO（替代各 DTO 中重复定义的 PropEntry / KVPair / PropertyEntry）。
 
     """
 
     def __init__(self):
         r"""
-        :param _Key: <p>配置的key值</p>
+        :param _Key: 配置的key值
         :type Key: str
-        :param _Value: <p>配置的value值</p>
+        :param _Value: 配置的value值
         :type Value: str
         """
         self._Key = None
@@ -59366,7 +59366,7 @@ class KVPair(AbstractModel):
 
     @property
     def Key(self):
-        r"""<p>配置的key值</p>
+        r"""配置的key值
         :rtype: str
         """
         return self._Key
@@ -59377,7 +59377,7 @@ class KVPair(AbstractModel):
 
     @property
     def Value(self):
-        r"""<p>配置的value值</p>
+        r"""配置的value值
         :rtype: str
         """
         return self._Value

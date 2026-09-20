@@ -14292,6 +14292,180 @@ class DescribeCloudStorageDateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudStorageEventsByTWeSeePersonRequest(AbstractModel):
+    r"""DescribeCloudStorageEventsByTWeSeePerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名称</p>
+        :type DeviceName: str
+        :param _PersonId: <p>人员 ID</p>
+        :type PersonId: str
+        :param _Limit: <p>分页拉取数量，取值范围为 1-100</p>
+        :type Limit: int
+        :param _Offset: <p>分页拉取偏移</p>
+        :type Offset: int
+        :param _ChannelId: <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._PersonId = None
+        self._Limit = None
+        self._Offset = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def PersonId(self):
+        r"""<p>人员 ID</p>
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Limit(self):
+        r"""<p>分页拉取数量，取值范围为 1-100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页拉取偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._PersonId = params.get("PersonId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudStorageEventsByTWeSeePersonResponse(AbstractModel):
+    r"""DescribeCloudStorageEventsByTWeSeePerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: <p>人员关联的云存事件列表</p>
+        :type Events: list of CloudStorageEventWithAITasks
+        :param _Total: <p>人员关联的云存事件总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        r"""<p>人员关联的云存事件列表</p>
+        :rtype: list of CloudStorageEventWithAITasks
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def Total(self):
+        r"""<p>人员关联的云存事件总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = CloudStorageEventWithAITasks()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudStorageEventsRequest(AbstractModel):
     r"""DescribeCloudStorageEvents请求参数结构体
 
@@ -21064,6 +21238,205 @@ class DescribeTWeSeeConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTWeSeeDirectUploadInfoRequest(AbstractModel):
+    r"""DescribeTWeSeeDirectUploadInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名称</p>
+        :type DeviceName: str
+        :param _ServiceType: <p>服务类型。</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li><li>IMG_COMP： 图片理解</li></ul>
+        :type ServiceType: str
+        :param _UploadMethod: <p>上传方式。</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
+        :type UploadMethod: str
+        :param _UploadTarget: <p>上传目标，固定取值为 <code>stream</code>，不填时默认为 <code>stream</code></p><p>枚举值：</p><ul><li>stream： 上传到指定设备（加载对应设备的 ComprehensionConfig 等配置）</li></ul><p>默认值：stream</p>
+        :type UploadTarget: str
+        :param _ChannelId: <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+        self._UploadMethod = None
+        self._UploadTarget = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型。</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li><li>IMG_COMP： 图片理解</li></ul>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def UploadMethod(self):
+        r"""<p>上传方式。</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
+        :rtype: str
+        """
+        return self._UploadMethod
+
+    @UploadMethod.setter
+    def UploadMethod(self, UploadMethod):
+        self._UploadMethod = UploadMethod
+
+    @property
+    def UploadTarget(self):
+        r"""<p>上传目标，固定取值为 <code>stream</code>，不填时默认为 <code>stream</code></p><p>枚举值：</p><ul><li>stream： 上传到指定设备（加载对应设备的 ComprehensionConfig 等配置）</li></ul><p>默认值：stream</p>
+        :rtype: str
+        """
+        return self._UploadTarget
+
+    @UploadTarget.setter
+    def UploadTarget(self, UploadTarget):
+        self._UploadTarget = UploadTarget
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        self._UploadMethod = params.get("UploadMethod")
+        self._UploadTarget = params.get("UploadTarget")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeSeeDirectUploadInfoResponse(AbstractModel):
+    r"""DescribeTWeSeeDirectUploadInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _COSURI: <p>TWeSee 直传目录的 COS URI</p>
+        :type COSURI: str
+        :param _StorageBucket: <p>TWeSee 直传存储桶</p>
+        :type StorageBucket: str
+        :param _StoragePath: <p>TWeSee 直传目录路径</p>
+        :type StoragePath: str
+        :param _StorageRegion: <p>TWeSee 直传存储地域</p>
+        :type StorageRegion: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._COSURI = None
+        self._StorageBucket = None
+        self._StoragePath = None
+        self._StorageRegion = None
+        self._RequestId = None
+
+    @property
+    def COSURI(self):
+        r"""<p>TWeSee 直传目录的 COS URI</p>
+        :rtype: str
+        """
+        return self._COSURI
+
+    @COSURI.setter
+    def COSURI(self, COSURI):
+        self._COSURI = COSURI
+
+    @property
+    def StorageBucket(self):
+        r"""<p>TWeSee 直传存储桶</p>
+        :rtype: str
+        """
+        return self._StorageBucket
+
+    @StorageBucket.setter
+    def StorageBucket(self, StorageBucket):
+        self._StorageBucket = StorageBucket
+
+    @property
+    def StoragePath(self):
+        r"""<p>TWeSee 直传目录路径</p>
+        :rtype: str
+        """
+        return self._StoragePath
+
+    @StoragePath.setter
+    def StoragePath(self, StoragePath):
+        self._StoragePath = StoragePath
+
+    @property
+    def StorageRegion(self):
+        r"""<p>TWeSee 直传存储地域</p>
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._COSURI = params.get("COSURI")
+        self._StorageBucket = params.get("StorageBucket")
+        self._StoragePath = params.get("StoragePath")
+        self._StorageRegion = params.get("StorageRegion")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTWeSeeFaceRequest(AbstractModel):
     r"""DescribeTWeSeeFace请求参数结构体
 
@@ -23311,6 +23684,145 @@ class DescribeVideoLicenseResponse(AbstractModel):
                 obj = VideoLicenseEntity()
                 obj._deserialize(item)
                 self._License.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVodCloudStorageDateRequest(AbstractModel):
+    r"""DescribeVodCloudStorageDate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品id</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _ChannelId: <p>通道id</p>
+        :type ChannelId: str
+        :param _UserId: <p>用户id</p>
+        :type UserId: str
+        :param _TimeZone: <p>时区</p>
+        :type TimeZone: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ChannelId = None
+        self._UserId = None
+        self._TimeZone = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品id</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道id</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def UserId(self):
+        r"""<p>用户id</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TimeZone(self):
+        r"""<p>时区</p>
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ChannelId = params.get("ChannelId")
+        self._UserId = params.get("UserId")
+        self._TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVodCloudStorageDateResponse(AbstractModel):
+    r"""DescribeVodCloudStorageDate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>日期数据</p>
+        :type Data: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>日期数据</p>
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         self._RequestId = params.get("RequestId")
 
 
@@ -29186,6 +29698,579 @@ class GetTopicRuleListResponse(AbstractModel):
                 obj = TopicRuleInfo()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetVodCloudStorageEventListRequest(AbstractModel):
+    r"""GetVodCloudStorageEventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品id</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _Date: <p>日期</p><p>参数格式：格式 yyyy-MM-dd</p>
+        :type Date: str
+        :param _Context: <p>分页游标，首页为空。</p>
+        :type Context: str
+        :param _Size: <p>分页大小</p><p>取值范围：[10, 100]</p><p>默认值：10</p>
+        :type Size: int
+        :param _ChannelId: <p>通道id</p>
+        :type ChannelId: int
+        :param _UserId: <p>用户id</p>
+        :type UserId: str
+        :param _TimeZone: <p>时区</p>
+        :type TimeZone: str
+        :param _ExpireSec: <p>非加密 URL 签名有效期</p><p>单位：秒</p>
+        :type ExpireSec: int
+        :param _Platform: <p>请求平台：0 Android，1 小程序，2 iOS，3 鸿蒙</p>
+        :type Platform: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._Date = None
+        self._Context = None
+        self._Size = None
+        self._ChannelId = None
+        self._UserId = None
+        self._TimeZone = None
+        self._ExpireSec = None
+        self._Platform = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品id</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Date(self):
+        r"""<p>日期</p><p>参数格式：格式 yyyy-MM-dd</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Context(self):
+        r"""<p>分页游标，首页为空。</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Size(self):
+        r"""<p>分页大小</p><p>取值范围：[10, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道id</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def UserId(self):
+        r"""<p>用户id</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TimeZone(self):
+        r"""<p>时区</p>
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def ExpireSec(self):
+        r"""<p>非加密 URL 签名有效期</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ExpireSec
+
+    @ExpireSec.setter
+    def ExpireSec(self, ExpireSec):
+        self._ExpireSec = ExpireSec
+
+    @property
+    def Platform(self):
+        r"""<p>请求平台：0 Android，1 小程序，2 iOS，3 鸿蒙</p>
+        :rtype: int
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._Date = params.get("Date")
+        self._Context = params.get("Context")
+        self._Size = params.get("Size")
+        self._ChannelId = params.get("ChannelId")
+        self._UserId = params.get("UserId")
+        self._TimeZone = params.get("TimeZone")
+        self._ExpireSec = params.get("ExpireSec")
+        self._Platform = params.get("Platform")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVodCloudStorageEventListResponse(AbstractModel):
+    r"""GetVodCloudStorageEventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: <p>事件列表</p>
+        :type Events: list of VodCloudStorageEvent
+        :param _Listover: <p>数据是否已完整</p>
+        :type Listover: bool
+        :param _Context: <p>下一页游标</p>
+        :type Context: str
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _VodAppId: <p>加密播放器使用的 VOD 子应用 ID</p>
+        :type VodAppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._Listover = None
+        self._Context = None
+        self._Total = None
+        self._VodAppId = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        r"""<p>事件列表</p>
+        :rtype: list of VodCloudStorageEvent
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def Listover(self):
+        r"""<p>数据是否已完整</p>
+        :rtype: bool
+        """
+        return self._Listover
+
+    @Listover.setter
+    def Listover(self, Listover):
+        self._Listover = Listover
+
+    @property
+    def Context(self):
+        r"""<p>下一页游标</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def VodAppId(self):
+        r"""<p>加密播放器使用的 VOD 子应用 ID</p>
+        :rtype: str
+        """
+        return self._VodAppId
+
+    @VodAppId.setter
+    def VodAppId(self, VodAppId):
+        self._VodAppId = VodAppId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = VodCloudStorageEvent()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._Listover = params.get("Listover")
+        self._Context = params.get("Context")
+        self._Total = params.get("Total")
+        self._VodAppId = params.get("VodAppId")
+        self._RequestId = params.get("RequestId")
+
+
+class GetVodCloudStorageVideoListRequest(AbstractModel):
+    r"""GetVodCloudStorageVideoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品id</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名称</p>
+        :type DeviceName: str
+        :param _Date: <p>日期</p><p>参数格式：格式 yyyy-MM-dd</p>
+        :type Date: str
+        :param _ChannelId: <p>通道id</p>
+        :type ChannelId: int
+        :param _StartTime: <p>开始时间；与 EndTime 必须同时填或同时省略</p><p>单位：秒</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p><p>单位：秒</p>
+        :type EndTime: int
+        :param _UserId: <p>用户id</p>
+        :type UserId: str
+        :param _TimeZone: <p>时区</p>
+        :type TimeZone: str
+        :param _ExpireSec: <p>非加密文件的防盗链 URL 有效期</p><p>单位：秒</p>
+        :type ExpireSec: int
+        :param _Platform: <p>0 Android，1 小程序，2 iOS，3 鸿蒙</p>
+        :type Platform: int
+        :param _Context: <p>分页游标；首页传空，之后原样回填上一页响应的 Context</p>
+        :type Context: str
+        :param _Size: <p>每页视频条数；&lt;=0 或不填默认 10，&gt;100 按 100 计</p>
+        :type Size: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._Date = None
+        self._ChannelId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._UserId = None
+        self._TimeZone = None
+        self._ExpireSec = None
+        self._Platform = None
+        self._Context = None
+        self._Size = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品id</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Date(self):
+        r"""<p>日期</p><p>参数格式：格式 yyyy-MM-dd</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道id</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间；与 EndTime 必须同时填或同时省略</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def UserId(self):
+        r"""<p>用户id</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TimeZone(self):
+        r"""<p>时区</p>
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def ExpireSec(self):
+        r"""<p>非加密文件的防盗链 URL 有效期</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ExpireSec
+
+    @ExpireSec.setter
+    def ExpireSec(self, ExpireSec):
+        self._ExpireSec = ExpireSec
+
+    @property
+    def Platform(self):
+        r"""<p>0 Android，1 小程序，2 iOS，3 鸿蒙</p>
+        :rtype: int
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Context(self):
+        r"""<p>分页游标；首页传空，之后原样回填上一页响应的 Context</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def Size(self):
+        r"""<p>每页视频条数；&lt;=0 或不填默认 10，&gt;100 按 100 计</p>
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._Date = params.get("Date")
+        self._ChannelId = params.get("ChannelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._UserId = params.get("UserId")
+        self._TimeZone = params.get("TimeZone")
+        self._ExpireSec = params.get("ExpireSec")
+        self._Platform = params.get("Platform")
+        self._Context = params.get("Context")
+        self._Size = params.get("Size")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVodCloudStorageVideoListResponse(AbstractModel):
+    r"""GetVodCloudStorageVideoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VodAppId: <p>播放器使用的 VOD 子应用 ID</p>
+        :type VodAppId: str
+        :param _VideoList: <p>视频列表</p>
+        :type VideoList: list of VideoList
+        :param _Listover: <p>是否已拉完</p>
+        :type Listover: bool
+        :param _Context: <p>下一页游标</p>
+        :type Context: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VodAppId = None
+        self._VideoList = None
+        self._Listover = None
+        self._Context = None
+        self._RequestId = None
+
+    @property
+    def VodAppId(self):
+        r"""<p>播放器使用的 VOD 子应用 ID</p>
+        :rtype: str
+        """
+        return self._VodAppId
+
+    @VodAppId.setter
+    def VodAppId(self, VodAppId):
+        self._VodAppId = VodAppId
+
+    @property
+    def VideoList(self):
+        r"""<p>视频列表</p>
+        :rtype: list of VideoList
+        """
+        return self._VideoList
+
+    @VideoList.setter
+    def VideoList(self, VideoList):
+        self._VideoList = VideoList
+
+    @property
+    def Listover(self):
+        r"""<p>是否已拉完</p>
+        :rtype: bool
+        """
+        return self._Listover
+
+    @Listover.setter
+    def Listover(self, Listover):
+        self._Listover = Listover
+
+    @property
+    def Context(self):
+        r"""<p>下一页游标</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VodAppId = params.get("VodAppId")
+        if params.get("VideoList") is not None:
+            self._VideoList = []
+            for item in params.get("VideoList"):
+                obj = VideoList()
+                obj._deserialize(item)
+                self._VideoList.append(obj)
+        self._Listover = params.get("Listover")
+        self._Context = params.get("Context")
         self._RequestId = params.get("RequestId")
 
 
@@ -51485,6 +52570,117 @@ class VideoLicenseEntity(AbstractModel):
         
 
 
+class VideoList(AbstractModel):
+    r"""加密云存视频列表数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Psign: <p>用于播放加密视频</p>
+        :type Psign: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Url: <p>播放url</p>
+        :type Url: str
+        :param _StreamType: <p>视频类型</p>
+        :type StreamType: str
+        :param _FileId: <p>点播文件id</p>
+        :type FileId: str
+        """
+        self._Psign = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Url = None
+        self._StreamType = None
+        self._FileId = None
+
+    @property
+    def Psign(self):
+        r"""<p>用于播放加密视频</p>
+        :rtype: str
+        """
+        return self._Psign
+
+    @Psign.setter
+    def Psign(self, Psign):
+        self._Psign = Psign
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Url(self):
+        r"""<p>播放url</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def StreamType(self):
+        r"""<p>视频类型</p>
+        :rtype: str
+        """
+        return self._StreamType
+
+    @StreamType.setter
+    def StreamType(self, StreamType):
+        self._StreamType = StreamType
+
+    @property
+    def FileId(self):
+        r"""<p>点播文件id</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+
+    def _deserialize(self, params):
+        self._Psign = params.get("Psign")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Url = params.get("Url")
+        self._StreamType = params.get("StreamType")
+        self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VisionCustomDetectQuery(AbstractModel):
     r"""TWeSee 语义理解自定义标签请求
 
@@ -52227,6 +53423,122 @@ class VisionSummaryConfig(AbstractModel):
                 obj._deserialize(item)
                 self._DetectContinuous.append(obj)
         self._SummaryPrompt = params.get("SummaryPrompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VodCloudStorageEvent(AbstractModel):
+    r"""加密云存事件数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: <p>事件id</p>
+        :type EventId: str
+        :param _ThumbnailUrl: <p>缩略图url</p>
+        :type ThumbnailUrl: str
+        :param _EventStartTime: <p>事件开始时间</p>
+        :type EventStartTime: int
+        :param _EventEndTime: <p>事件结束时间</p>
+        :type EventEndTime: int
+        :param _VideoList: <p>视频相关信息</p>
+        :type VideoList: list of VideoList
+        :param _IsStaticEvent: <p>是否为图片事件</p><p>枚举值：</p><ul><li>true： 图片事件</li><li>false： 视频事件</li></ul>
+        :type IsStaticEvent: bool
+        """
+        self._EventId = None
+        self._ThumbnailUrl = None
+        self._EventStartTime = None
+        self._EventEndTime = None
+        self._VideoList = None
+        self._IsStaticEvent = None
+
+    @property
+    def EventId(self):
+        r"""<p>事件id</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def ThumbnailUrl(self):
+        r"""<p>缩略图url</p>
+        :rtype: str
+        """
+        return self._ThumbnailUrl
+
+    @ThumbnailUrl.setter
+    def ThumbnailUrl(self, ThumbnailUrl):
+        self._ThumbnailUrl = ThumbnailUrl
+
+    @property
+    def EventStartTime(self):
+        r"""<p>事件开始时间</p>
+        :rtype: int
+        """
+        return self._EventStartTime
+
+    @EventStartTime.setter
+    def EventStartTime(self, EventStartTime):
+        self._EventStartTime = EventStartTime
+
+    @property
+    def EventEndTime(self):
+        r"""<p>事件结束时间</p>
+        :rtype: int
+        """
+        return self._EventEndTime
+
+    @EventEndTime.setter
+    def EventEndTime(self, EventEndTime):
+        self._EventEndTime = EventEndTime
+
+    @property
+    def VideoList(self):
+        r"""<p>视频相关信息</p>
+        :rtype: list of VideoList
+        """
+        return self._VideoList
+
+    @VideoList.setter
+    def VideoList(self, VideoList):
+        self._VideoList = VideoList
+
+    @property
+    def IsStaticEvent(self):
+        r"""<p>是否为图片事件</p><p>枚举值：</p><ul><li>true： 图片事件</li><li>false： 视频事件</li></ul>
+        :rtype: bool
+        """
+        return self._IsStaticEvent
+
+    @IsStaticEvent.setter
+    def IsStaticEvent(self, IsStaticEvent):
+        self._IsStaticEvent = IsStaticEvent
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._ThumbnailUrl = params.get("ThumbnailUrl")
+        self._EventStartTime = params.get("EventStartTime")
+        self._EventEndTime = params.get("EventEndTime")
+        if params.get("VideoList") is not None:
+            self._VideoList = []
+            for item in params.get("VideoList"):
+                obj = VideoList()
+                obj._deserialize(item)
+                self._VideoList.append(obj)
+        self._IsStaticEvent = params.get("IsStaticEvent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

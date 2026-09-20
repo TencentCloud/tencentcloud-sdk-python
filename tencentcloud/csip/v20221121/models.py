@@ -9436,12 +9436,15 @@ class AssetProviderDistributeInfo(AbstractModel):
         :type OtherAssetCount: int
         :param _AzureAssetCount: <p>微软云资产数量</p>
         :type AzureAssetCount: int
+        :param _TceAssetCount: <p>腾讯TCE专有云资产数量</p>
+        :type TceAssetCount: int
         """
         self._TencentAssetCount = None
         self._AliAssetCount = None
         self._AwsAssetCount = None
         self._OtherAssetCount = None
         self._AzureAssetCount = None
+        self._TceAssetCount = None
 
     @property
     def TencentAssetCount(self):
@@ -9498,6 +9501,17 @@ class AssetProviderDistributeInfo(AbstractModel):
     def AzureAssetCount(self, AzureAssetCount):
         self._AzureAssetCount = AzureAssetCount
 
+    @property
+    def TceAssetCount(self):
+        r"""<p>腾讯TCE专有云资产数量</p>
+        :rtype: int
+        """
+        return self._TceAssetCount
+
+    @TceAssetCount.setter
+    def TceAssetCount(self, TceAssetCount):
+        self._TceAssetCount = TceAssetCount
+
 
     def _deserialize(self, params):
         self._TencentAssetCount = params.get("TencentAssetCount")
@@ -9505,6 +9519,7 @@ class AssetProviderDistributeInfo(AbstractModel):
         self._AwsAssetCount = params.get("AwsAssetCount")
         self._OtherAssetCount = params.get("OtherAssetCount")
         self._AzureAssetCount = params.get("AzureAssetCount")
+        self._TceAssetCount = params.get("TceAssetCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17969,115 +17984,6 @@ class BehaviorSummary(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class BindClusterOwnerRequest(AbstractModel):
-    r"""BindClusterOwner请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ClusterAssetIds: <p>集群资产id</p>
-        :type ClusterAssetIds: list of str
-        :param _MemberId: <p>集团账号的成员id</p>
-        :type MemberId: list of str
-        :param _OwnerName: <p>负责人名称</p>
-        :type OwnerName: str
-        :param _ClusterCaMD5List: <p>集群CAMD5值</p>
-        :type ClusterCaMD5List: list of str
-        """
-        self._ClusterAssetIds = None
-        self._MemberId = None
-        self._OwnerName = None
-        self._ClusterCaMD5List = None
-
-    @property
-    def ClusterAssetIds(self):
-        r"""<p>集群资产id</p>
-        :rtype: list of str
-        """
-        return self._ClusterAssetIds
-
-    @ClusterAssetIds.setter
-    def ClusterAssetIds(self, ClusterAssetIds):
-        self._ClusterAssetIds = ClusterAssetIds
-
-    @property
-    def MemberId(self):
-        r"""<p>集团账号的成员id</p>
-        :rtype: list of str
-        """
-        return self._MemberId
-
-    @MemberId.setter
-    def MemberId(self, MemberId):
-        self._MemberId = MemberId
-
-    @property
-    def OwnerName(self):
-        r"""<p>负责人名称</p>
-        :rtype: str
-        """
-        return self._OwnerName
-
-    @OwnerName.setter
-    def OwnerName(self, OwnerName):
-        self._OwnerName = OwnerName
-
-    @property
-    def ClusterCaMD5List(self):
-        r"""<p>集群CAMD5值</p>
-        :rtype: list of str
-        """
-        return self._ClusterCaMD5List
-
-    @ClusterCaMD5List.setter
-    def ClusterCaMD5List(self, ClusterCaMD5List):
-        self._ClusterCaMD5List = ClusterCaMD5List
-
-
-    def _deserialize(self, params):
-        self._ClusterAssetIds = params.get("ClusterAssetIds")
-        self._MemberId = params.get("MemberId")
-        self._OwnerName = params.get("OwnerName")
-        self._ClusterCaMD5List = params.get("ClusterCaMD5List")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BindClusterOwnerResponse(AbstractModel):
-    r"""BindClusterOwner返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
 
 
 class BruteAttackRule(AbstractModel):
@@ -34626,6 +34532,8 @@ class CreateCFGRiskPDFReportExportJobRequest(AbstractModel):
         :type Order: str
         :param _By: <p>排序字段</p>
         :type By: str
+        :param _AssetTagIDs: <p>资产标签ID</p>
+        :type AssetTagIDs: list of int non-negative
         """
         self._StandardID = None
         self._MemberId = None
@@ -34634,6 +34542,7 @@ class CreateCFGRiskPDFReportExportJobRequest(AbstractModel):
         self._Offset = None
         self._Order = None
         self._By = None
+        self._AssetTagIDs = None
 
     @property
     def StandardID(self):
@@ -34712,6 +34621,17 @@ class CreateCFGRiskPDFReportExportJobRequest(AbstractModel):
     def By(self, By):
         self._By = By
 
+    @property
+    def AssetTagIDs(self):
+        r"""<p>资产标签ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._AssetTagIDs
+
+    @AssetTagIDs.setter
+    def AssetTagIDs(self, AssetTagIDs):
+        self._AssetTagIDs = AssetTagIDs
+
 
     def _deserialize(self, params):
         self._StandardID = params.get("StandardID")
@@ -34726,6 +34646,7 @@ class CreateCFGRiskPDFReportExportJobRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Order = params.get("Order")
         self._By = params.get("By")
+        self._AssetTagIDs = params.get("AssetTagIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34800,6 +34721,8 @@ class CreateCFGRisksExportJobRequest(AbstractModel):
         :type By: str
         :param _StandardIDs: <p>规范ID</p>
         :type StandardIDs: list of int non-negative
+        :param _AssetTagIDs: <p>资产标签ID</p>
+        :type AssetTagIDs: list of int non-negative
         """
         self._MemberId = None
         self._Filters = None
@@ -34808,6 +34731,7 @@ class CreateCFGRisksExportJobRequest(AbstractModel):
         self._Order = None
         self._By = None
         self._StandardIDs = None
+        self._AssetTagIDs = None
 
     @property
     def MemberId(self):
@@ -34886,6 +34810,17 @@ class CreateCFGRisksExportJobRequest(AbstractModel):
     def StandardIDs(self, StandardIDs):
         self._StandardIDs = StandardIDs
 
+    @property
+    def AssetTagIDs(self):
+        r"""<p>资产标签ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._AssetTagIDs
+
+    @AssetTagIDs.setter
+    def AssetTagIDs(self, AssetTagIDs):
+        self._AssetTagIDs = AssetTagIDs
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
@@ -34900,6 +34835,7 @@ class CreateCFGRisksExportJobRequest(AbstractModel):
         self._Order = params.get("Order")
         self._By = params.get("By")
         self._StandardIDs = params.get("StandardIDs")
+        self._AssetTagIDs = params.get("AssetTagIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45768,7 +45704,7 @@ class CreateScanStatisticExportJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -45793,7 +45729,7 @@ class CreateScanStatisticExportJobRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -47692,6 +47628,8 @@ class CustomRiskRuleItem(AbstractModel):
         :type StandardTerms: list of StandardTerm
         :param _AssetTypeIconURL: <p>资产类型图标</p>
         :type AssetTypeIconURL: str
+        :param _EnableDefault: <p>规则默认开启状态</p>
+        :type EnableDefault: int
         """
         self._RuleID = None
         self._Provider = None
@@ -47706,6 +47644,7 @@ class CustomRiskRuleItem(AbstractModel):
         self._CheckType = None
         self._StandardTerms = None
         self._AssetTypeIconURL = None
+        self._EnableDefault = None
 
     @property
     def RuleID(self):
@@ -47850,6 +47789,17 @@ class CustomRiskRuleItem(AbstractModel):
     def AssetTypeIconURL(self, AssetTypeIconURL):
         self._AssetTypeIconURL = AssetTypeIconURL
 
+    @property
+    def EnableDefault(self):
+        r"""<p>规则默认开启状态</p>
+        :rtype: int
+        """
+        return self._EnableDefault
+
+    @EnableDefault.setter
+    def EnableDefault(self, EnableDefault):
+        self._EnableDefault = EnableDefault
+
 
     def _deserialize(self, params):
         self._RuleID = params.get("RuleID")
@@ -47870,6 +47820,7 @@ class CustomRiskRuleItem(AbstractModel):
                 obj._deserialize(item)
                 self._StandardTerms.append(obj)
         self._AssetTypeIconURL = params.get("AssetTypeIconURL")
+        self._EnableDefault = params.get("EnableDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62558,9 +62509,12 @@ class DescribeCFGRiskReportStatisticsRequest(AbstractModel):
         :type MemberId: list of str
         :param _StandardIDs: <p>规范ID</p>
         :type StandardIDs: list of int non-negative
+        :param _AssetTagIDs: <p>资产标签ID</p>
+        :type AssetTagIDs: list of int non-negative
         """
         self._MemberId = None
         self._StandardIDs = None
+        self._AssetTagIDs = None
 
     @property
     def MemberId(self):
@@ -62584,10 +62538,22 @@ class DescribeCFGRiskReportStatisticsRequest(AbstractModel):
     def StandardIDs(self, StandardIDs):
         self._StandardIDs = StandardIDs
 
+    @property
+    def AssetTagIDs(self):
+        r"""<p>资产标签ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._AssetTagIDs
+
+    @AssetTagIDs.setter
+    def AssetTagIDs(self, AssetTagIDs):
+        self._AssetTagIDs = AssetTagIDs
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
         self._StandardIDs = params.get("StandardIDs")
+        self._AssetTagIDs = params.get("AssetTagIDs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65526,10 +65492,13 @@ class DescribeCWPExposePathResponse(AbstractModel):
         r"""
         :param _Content: <p>云边界分析路径节点内容</p>
         :type Content: str
+        :param _PathCount: <p>互联网节点数量</p>
+        :type PathCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Content = None
+        self._PathCount = None
         self._RequestId = None
 
     @property
@@ -65542,6 +65511,17 @@ class DescribeCWPExposePathResponse(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def PathCount(self):
+        r"""<p>互联网节点数量</p>
+        :rtype: int
+        """
+        return self._PathCount
+
+    @PathCount.setter
+    def PathCount(self, PathCount):
+        self._PathCount = PathCount
 
     @property
     def RequestId(self):
@@ -65557,6 +65537,7 @@ class DescribeCWPExposePathResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
+        self._PathCount = params.get("PathCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -70456,122 +70437,6 @@ class DescribeClusterInstallCommandResponse(AbstractModel):
         self._Command = params.get("Command")
         self._URL = params.get("URL")
         self._FileContent = params.get("FileContent")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeClusterListV2Request(AbstractModel):
-    r"""DescribeClusterListV2请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _MemberId: <p>集团账号的成员id</p>
-        :type MemberId: list of str
-        :param _Filter: <p>通用过滤条件列表。支持的过滤字段：<br>ClusterId：集群ID，精确匹配。<br>ClusterName：集群名称，模糊匹配。<br>ClusterType：集群类型，精确匹配。取值：TKE_MANAGED_CLUSTER（腾讯云标准集群）、TKE_INDEPENDENT_CLUSTER（标准集群Master自维护）、TKE_SERVERLESS_CLUSTER（Serverless集群）、TKE_EDGE_CLUSTER（边缘集群）、SELF_BUILT（腾讯云内自建）、SELF_BUILT_OTHER（非腾讯云自建/混合云）。<br>RunStatus：集群运行状态，精确匹配。取值：Running（运行中）、Exception（异常）、Unknown（未知）。<br>AccessedStatus：接入状态，精确匹配。取值：AccessedNone（未接入）、AccessedInstalling（接入中）、AccessedException（接入异常）、AccessedInstalled（已接入）。<br>DefendStatus：防护状态，精确匹配。取值：Enabled（已防护）、Partial（部分防护）、Disabled（未防护）。<br>RiskStatus：风险检查状态，精确匹配。<br>RiskLevel：风险等级，精确匹配。取值：CRITICAL、HIGH、MEDIUM、LOW、NONE（无风险）。<br>HasHighRisk：仅筛选含高危及以上风险的集群，无需填入 value，传入 HasHighRisk 即生效。<br>Region：地域，精确匹配。<br>OwnerName：负责人，模糊匹配。<br>ClusterAssetIds：集群资产ID，精确匹配。<br>ExcludeClusterAssetIds：排除的集群资产ID，精确排除。</p>
-        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
-        """
-        self._MemberId = None
-        self._Filter = None
-
-    @property
-    def MemberId(self):
-        r"""<p>集团账号的成员id</p>
-        :rtype: list of str
-        """
-        return self._MemberId
-
-    @MemberId.setter
-    def MemberId(self, MemberId):
-        self._MemberId = MemberId
-
-    @property
-    def Filter(self):
-        r"""<p>通用过滤条件列表。支持的过滤字段：<br>ClusterId：集群ID，精确匹配。<br>ClusterName：集群名称，模糊匹配。<br>ClusterType：集群类型，精确匹配。取值：TKE_MANAGED_CLUSTER（腾讯云标准集群）、TKE_INDEPENDENT_CLUSTER（标准集群Master自维护）、TKE_SERVERLESS_CLUSTER（Serverless集群）、TKE_EDGE_CLUSTER（边缘集群）、SELF_BUILT（腾讯云内自建）、SELF_BUILT_OTHER（非腾讯云自建/混合云）。<br>RunStatus：集群运行状态，精确匹配。取值：Running（运行中）、Exception（异常）、Unknown（未知）。<br>AccessedStatus：接入状态，精确匹配。取值：AccessedNone（未接入）、AccessedInstalling（接入中）、AccessedException（接入异常）、AccessedInstalled（已接入）。<br>DefendStatus：防护状态，精确匹配。取值：Enabled（已防护）、Partial（部分防护）、Disabled（未防护）。<br>RiskStatus：风险检查状态，精确匹配。<br>RiskLevel：风险等级，精确匹配。取值：CRITICAL、HIGH、MEDIUM、LOW、NONE（无风险）。<br>HasHighRisk：仅筛选含高危及以上风险的集群，无需填入 value，传入 HasHighRisk 即生效。<br>Region：地域，精确匹配。<br>OwnerName：负责人，模糊匹配。<br>ClusterAssetIds：集群资产ID，精确匹配。<br>ExcludeClusterAssetIds：排除的集群资产ID，精确排除。</p>
-        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
-        """
-        return self._Filter
-
-    @Filter.setter
-    def Filter(self, Filter):
-        self._Filter = Filter
-
-
-    def _deserialize(self, params):
-        self._MemberId = params.get("MemberId")
-        if params.get("Filter") is not None:
-            self._Filter = Filter()
-            self._Filter._deserialize(params.get("Filter"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeClusterListV2Response(AbstractModel):
-    r"""DescribeClusterListV2返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _TotalCount: <p>总数</p>
-        :type TotalCount: int
-        :param _List: <p>列表</p>
-        :type List: list of ClusterListItem
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._TotalCount = None
-        self._List = None
-        self._RequestId = None
-
-    @property
-    def TotalCount(self):
-        r"""<p>总数</p>
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def List(self):
-        r"""<p>列表</p>
-        :rtype: list of ClusterListItem
-        """
-        return self._List
-
-    @List.setter
-    def List(self, List):
-        self._List = List
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._TotalCount = params.get("TotalCount")
-        if params.get("List") is not None:
-            self._List = []
-            for item in params.get("List"):
-                obj = ClusterListItem()
-                obj._deserialize(item)
-                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -79883,26 +79748,29 @@ class DescribeDspmAssetFieldListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetId: 资产实例id
+        :param _AssetId: <p>资产实例id</p>
         :type AssetId: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _TableName: 表名
+        :param _TableName: <p>表名</p>
         :type TableName: str
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Filter: 筛选项
+        :param _Filter: <p>筛选项</p>
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _SchemaName: <p>SchemaName</p>
+        :type SchemaName: str
         """
         self._AssetId = None
         self._DbName = None
         self._TableName = None
         self._MemberId = None
         self._Filter = None
+        self._SchemaName = None
 
     @property
     def AssetId(self):
-        r"""资产实例id
+        r"""<p>资产实例id</p>
         :rtype: str
         """
         return self._AssetId
@@ -79913,7 +79781,7 @@ class DescribeDspmAssetFieldListRequest(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -79924,7 +79792,7 @@ class DescribeDspmAssetFieldListRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._TableName
@@ -79946,7 +79814,7 @@ class DescribeDspmAssetFieldListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""筛选项
+        r"""<p>筛选项</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -79954,6 +79822,17 @@ class DescribeDspmAssetFieldListRequest(AbstractModel):
     @Filter.setter
     def Filter(self, Filter):
         self._Filter = Filter
+
+    @property
+    def SchemaName(self):
+        r"""<p>SchemaName</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
 
 
     def _deserialize(self, params):
@@ -79964,6 +79843,7 @@ class DescribeDspmAssetFieldListRequest(AbstractModel):
         if params.get("Filter") is not None:
             self._Filter = Filter()
             self._Filter._deserialize(params.get("Filter"))
+        self._SchemaName = params.get("SchemaName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79981,9 +79861,9 @@ class DescribeDspmAssetFieldListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
-        :param _DataSet: 结果集
+        :param _DataSet: <p>结果集</p>
         :type DataSet: list of DspmAssetFieldInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -79994,7 +79874,7 @@ class DescribeDspmAssetFieldListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -80005,7 +79885,7 @@ class DescribeDspmAssetFieldListResponse(AbstractModel):
 
     @property
     def DataSet(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: list of DspmAssetFieldInfo
         """
         return self._DataSet
@@ -80839,23 +80719,26 @@ class DescribeDspmAssetTableListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetId: 资产实例id
+        :param _AssetId: <p>资产实例id</p>
         :type AssetId: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
+        :param _SchemaName: <p>Schema名称</p>
+        :type SchemaName: str
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Filter: 筛选项
+        :param _Filter: <p>筛选项</p>
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         self._AssetId = None
         self._DbName = None
+        self._SchemaName = None
         self._MemberId = None
         self._Filter = None
 
     @property
     def AssetId(self):
-        r"""资产实例id
+        r"""<p>资产实例id</p>
         :rtype: str
         """
         return self._AssetId
@@ -80866,7 +80749,7 @@ class DescribeDspmAssetTableListRequest(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -80874,6 +80757,17 @@ class DescribeDspmAssetTableListRequest(AbstractModel):
     @DbName.setter
     def DbName(self, DbName):
         self._DbName = DbName
+
+    @property
+    def SchemaName(self):
+        r"""<p>Schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
 
     @property
     def MemberId(self):
@@ -80888,7 +80782,7 @@ class DescribeDspmAssetTableListRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""筛选项
+        r"""<p>筛选项</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
         """
         return self._Filter
@@ -80901,6 +80795,7 @@ class DescribeDspmAssetTableListRequest(AbstractModel):
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
         self._DbName = params.get("DbName")
+        self._SchemaName = params.get("SchemaName")
         self._MemberId = params.get("MemberId")
         if params.get("Filter") is not None:
             self._Filter = Filter()
@@ -80922,9 +80817,9 @@ class DescribeDspmAssetTableListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
-        :param _DataSet: 结果集
+        :param _DataSet: <p>结果集</p>
         :type DataSet: list of DspmAssetTableInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -80935,7 +80830,7 @@ class DescribeDspmAssetTableListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -80946,7 +80841,7 @@ class DescribeDspmAssetTableListResponse(AbstractModel):
 
     @property
     def DataSet(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: list of DspmAssetTableInfo
         """
         return self._DataSet
@@ -86693,7 +86588,7 @@ class DescribeDspmSessionListRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _LoginType: <p>登陆状态(0 全部 1 成功 2 失败)</p>
+        :param _LoginType: <p>登录状态</p><p>枚举值：</p><ul><li>0： 全部</li><li>1： 成功</li><li>2： 失败</li></ul>
         :type LoginType: int
         :param _DbName: <p>数据库端口</p>
         :type DbName: str
@@ -86769,7 +86664,7 @@ class DescribeDspmSessionListRequest(AbstractModel):
 
     @property
     def LoginType(self):
-        r"""<p>登陆状态(0 全部 1 成功 2 失败)</p>
+        r"""<p>登录状态</p><p>枚举值：</p><ul><li>0： 全部</li><li>1： 成功</li><li>2： 失败</li></ul>
         :rtype: int
         """
         return self._LoginType
@@ -88939,7 +88834,7 @@ class DescribeEdrAlertListRequest(AbstractModel):
         r"""
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Filters: <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :param _Filters: <p>过滤条件，支持的 Name 如下：<br/>【资源属性过滤】（前缀模糊，后端自动反查资产后按实例过滤）<br/>InstanceName - string - 是否必填：否 - 资产名称（前缀匹配）<br/>InstanceID - string - 是否必填：否 - 实例ID（前缀匹配）<br/>IP - string - 是否必填：否 - IP地址，支持内网/外网IP（前缀匹配）<br/>Tags - string - 是否必填：否 - 腾讯云标签，格式 tagKey$tagValue（仅单账号场景生效）<br/>CSIPTag - string - 是否必填：否 - 安全中心标签名称（前缀匹配，按语言环境匹配中/英文字段）<br/>AssetTagIds - string - 是否必填：否 - 安全中心资产标签ID（精确匹配，多个标签ID之间为或关系；标签ID可通过资产中心标签树接口 DescribeAssetTagTree 获取）<br/>【容器维度过滤】（前缀模糊，命中后仅返回容器告警）<br/>ClusterName - string - 是否必填：否 - 集群名称（前缀匹配）<br/>ContainerName - string - 是否必填：否 - 容器名称（前缀匹配）<br/>【告警字段过滤】（精确匹配，支持多值）<br/>Status - int - 是否必填：否 - 处理状态<br/>Level - int - 是否必填：否 - 威胁等级<br/>AlertCategory - string - 是否必填：否 - 告警大类<br/>AlertSubType - string - 是否必填：否 - 告警子类型<br/>AttackStage - string - 是否必填：否 - 攻击阶段<br/>DetectMode - string - 是否必填：否 - 检测模式<br/>AlertSource - string - 是否必填：否 - 告警来源（HOST/CONTAINER）<br/>AlertId - string - 是否必填：否 - 告警ID<br/>InstanceId - string - 是否必填：否 - 实例ID（精确匹配）<br/>ContainerId - string - 是否必填：否 - 容器ID（精确匹配）<br/>ClusterId - string - 是否必填：否 - 集群ID（精确匹配）<br/>【时间范围】<br/>StartTime - string - 是否必填：否 - 开始时间，格式 2006-01-02 15:04:05（默认近180天）<br/>EndTime - string - 是否必填：否 - 结束时间，格式 2006-01-02 15:04:05（默认当前时间）</p>
         :type Filters: list of EDRFilter
         :param _Limit: <p>限制条数,默认10,最大100</p>
         :type Limit: int
@@ -88970,7 +88865,7 @@ class DescribeEdrAlertListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        r"""<p>过滤条件，支持的 Name 如下：<br/>【资源属性过滤】（前缀模糊，后端自动反查资产后按实例过滤）<br/>InstanceName - string - 是否必填：否 - 资产名称（前缀匹配）<br/>InstanceID - string - 是否必填：否 - 实例ID（前缀匹配）<br/>IP - string - 是否必填：否 - IP地址，支持内网/外网IP（前缀匹配）<br/>Tags - string - 是否必填：否 - 腾讯云标签，格式 tagKey$tagValue（仅单账号场景生效）<br/>CSIPTag - string - 是否必填：否 - 安全中心标签名称（前缀匹配，按语言环境匹配中/英文字段）<br/>AssetTagIds - string - 是否必填：否 - 安全中心资产标签ID（精确匹配，多个标签ID之间为或关系；标签ID可通过资产中心标签树接口 DescribeAssetTagTree 获取）<br/>【容器维度过滤】（前缀模糊，命中后仅返回容器告警）<br/>ClusterName - string - 是否必填：否 - 集群名称（前缀匹配）<br/>ContainerName - string - 是否必填：否 - 容器名称（前缀匹配）<br/>【告警字段过滤】（精确匹配，支持多值）<br/>Status - int - 是否必填：否 - 处理状态<br/>Level - int - 是否必填：否 - 威胁等级<br/>AlertCategory - string - 是否必填：否 - 告警大类<br/>AlertSubType - string - 是否必填：否 - 告警子类型<br/>AttackStage - string - 是否必填：否 - 攻击阶段<br/>DetectMode - string - 是否必填：否 - 检测模式<br/>AlertSource - string - 是否必填：否 - 告警来源（HOST/CONTAINER）<br/>AlertId - string - 是否必填：否 - 告警ID<br/>InstanceId - string - 是否必填：否 - 实例ID（精确匹配）<br/>ContainerId - string - 是否必填：否 - 容器ID（精确匹配）<br/>ClusterId - string - 是否必填：否 - 集群ID（精确匹配）<br/>【时间范围】<br/>StartTime - string - 是否必填：否 - 开始时间，格式 2006-01-02 15:04:05（默认近180天）<br/>EndTime - string - 是否必填：否 - 结束时间，格式 2006-01-02 15:04:05（默认当前时间）</p>
         :rtype: list of EDRFilter
         """
         return self._Filters
@@ -90380,13 +90275,13 @@ class DescribeExposePathRequest(AbstractModel):
         r"""
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _AssetId: 资产ID
+        :param _AssetId: <p>资产ID</p>
         :type AssetId: str
-        :param _Ip: 资产IP
+        :param _Ip: <p>资产IP</p>
         :type Ip: str
-        :param _Domain: 资产域名
+        :param _Domain: <p>资产域名</p>
         :type Domain: str
-        :param _Port: 端口或端口范围
+        :param _Port: <p>端口或端口范围</p>
         :type Port: str
         """
         self._MemberId = None
@@ -90408,7 +90303,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def AssetId(self):
-        r"""资产ID
+        r"""<p>资产ID</p>
         :rtype: str
         """
         return self._AssetId
@@ -90419,7 +90314,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def Ip(self):
-        r"""资产IP
+        r"""<p>资产IP</p>
         :rtype: str
         """
         return self._Ip
@@ -90430,7 +90325,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""资产域名
+        r"""<p>资产域名</p>
         :rtype: str
         """
         return self._Domain
@@ -90441,7 +90336,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口或端口范围
+        r"""<p>端口或端口范围</p>
         :rtype: str
         """
         return self._Port
@@ -90474,17 +90369,20 @@ class DescribeExposePathResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Content: 云边界分析路径节点内容
+        :param _Content: <p>云边界分析路径节点内容</p>
         :type Content: str
+        :param _PathCount: <p>互联网节点数量</p>
+        :type PathCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Content = None
+        self._PathCount = None
         self._RequestId = None
 
     @property
     def Content(self):
-        r"""云边界分析路径节点内容
+        r"""<p>云边界分析路径节点内容</p>
         :rtype: str
         """
         return self._Content
@@ -90492,6 +90390,17 @@ class DescribeExposePathResponse(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def PathCount(self):
+        r"""<p>互联网节点数量</p>
+        :rtype: int
+        """
+        return self._PathCount
+
+    @PathCount.setter
+    def PathCount(self, PathCount):
+        self._PathCount = PathCount
 
     @property
     def RequestId(self):
@@ -90507,6 +90416,7 @@ class DescribeExposePathResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
+        self._PathCount = params.get("PathCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -108862,7 +108772,7 @@ class DescribeScanStatisticRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _TaskLogId: 体检任务id
         :type TaskLogId: str
@@ -108872,7 +108782,7 @@ class DescribeScanStatisticRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -110967,6 +110877,12 @@ class DescribeSkillScanPayInfoResponse(AbstractModel):
         :type Uin: str
         :param _NickName: <p>租户昵称</p>
         :type NickName: str
+        :param _PostPayStatus: <p>后付费资源状态<br>枚举值：<br>0：未开通<br>1：正常<br>2：隔离</p>
+        :type PostPayStatus: int
+        :param _PostPayResourceId: <p>后付费资源ID，未开通后付费时为空</p>
+        :type PostPayResourceId: str
+        :param _PostPayBeginTime: <p>后付费资源开通时间，未开通后付费时为空。格式 YYYY-MM-DD HH:mm:ss</p>
+        :type PostPayBeginTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -110985,6 +110901,9 @@ class DescribeSkillScanPayInfoResponse(AbstractModel):
         self._TimeNow = None
         self._Uin = None
         self._NickName = None
+        self._PostPayStatus = None
+        self._PostPayResourceId = None
+        self._PostPayBeginTime = None
         self._RequestId = None
 
     @property
@@ -111153,6 +111072,39 @@ class DescribeSkillScanPayInfoResponse(AbstractModel):
         self._NickName = NickName
 
     @property
+    def PostPayStatus(self):
+        r"""<p>后付费资源状态<br>枚举值：<br>0：未开通<br>1：正常<br>2：隔离</p>
+        :rtype: int
+        """
+        return self._PostPayStatus
+
+    @PostPayStatus.setter
+    def PostPayStatus(self, PostPayStatus):
+        self._PostPayStatus = PostPayStatus
+
+    @property
+    def PostPayResourceId(self):
+        r"""<p>后付费资源ID，未开通后付费时为空</p>
+        :rtype: str
+        """
+        return self._PostPayResourceId
+
+    @PostPayResourceId.setter
+    def PostPayResourceId(self, PostPayResourceId):
+        self._PostPayResourceId = PostPayResourceId
+
+    @property
+    def PostPayBeginTime(self):
+        r"""<p>后付费资源开通时间，未开通后付费时为空。格式 YYYY-MM-DD HH:mm:ss</p>
+        :rtype: str
+        """
+        return self._PostPayBeginTime
+
+    @PostPayBeginTime.setter
+    def PostPayBeginTime(self, PostPayBeginTime):
+        self._PostPayBeginTime = PostPayBeginTime
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -111180,6 +111132,9 @@ class DescribeSkillScanPayInfoResponse(AbstractModel):
         self._TimeNow = params.get("TimeNow")
         self._Uin = params.get("Uin")
         self._NickName = params.get("NickName")
+        self._PostPayStatus = params.get("PostPayStatus")
+        self._PostPayResourceId = params.get("PostPayResourceId")
+        self._PostPayBeginTime = params.get("PostPayBeginTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -111326,6 +111281,206 @@ FAILED：检测失败
         if params.get("Data") is not None:
             self._Data = SkillScanItem()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSkillScanTaskListRequest(AbstractModel):
+    r"""DescribeSkillScanTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认 0
+        :type Offset: int
+        :param _Limit: 每页数量，默认 10，上限 200
+        :type Limit: int
+        :param _StartTime: 开始时间，筛选上传时间不早于该时刻的任务
+参数格式：YYYY-MM-DD HH:mm:ss
+最大长度：128 字符
+使用约束：StartTime 与 EndTime 要么同时传入，要么都不传；都不传时默认查询本月数据
+        :type StartTime: str
+        :param _EndTime: 结束时间，筛选上传时间不晚于该时刻的任务
+参数格式：YYYY-MM-DD HH:mm:ss
+最大长度：128 字符
+建议与 StartTime 同时传入；未传入时默认使用当前时间作为结束时间
+        :type EndTime: str
+        :param _Order: 排序方式
+最大长度：128 字符
+枚举值：
+ASC：升序
+DESC：降序（默认）
+        :type Order: str
+        :param _By: 排序字段
+最大长度：128 字符
+枚举值：
+InsertTime：上传时间（默认）
+        :type By: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页数量，默认 10，上限 200
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def StartTime(self):
+        r"""开始时间，筛选上传时间不早于该时刻的任务
+参数格式：YYYY-MM-DD HH:mm:ss
+最大长度：128 字符
+使用约束：StartTime 与 EndTime 要么同时传入，要么都不传；都不传时默认查询本月数据
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间，筛选上传时间不晚于该时刻的任务
+参数格式：YYYY-MM-DD HH:mm:ss
+最大长度：128 字符
+建议与 StartTime 同时传入；未传入时默认使用当前时间作为结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Order(self):
+        r"""排序方式
+最大长度：128 字符
+枚举值：
+ASC：升序
+DESC：降序（默认）
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段
+最大长度：128 字符
+枚举值：
+InsertTime：上传时间（默认）
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSkillScanTaskListResponse(AbstractModel):
+    r"""DescribeSkillScanTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _TaskList: 扫描任务列表，按上传时间倒序排列
+        :type TaskList: list of SkillScanTaskItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TaskList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskList(self):
+        r"""扫描任务列表，按上传时间倒序排列
+        :rtype: list of SkillScanTaskItem
+        """
+        return self._TaskList
+
+    @TaskList.setter
+    def TaskList(self, TaskList):
+        self._TaskList = TaskList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TaskList") is not None:
+            self._TaskList = []
+            for item in params.get("TaskList"):
+                obj = SkillScanTaskItem()
+                obj._deserialize(item)
+                self._TaskList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -140311,6 +140466,8 @@ class ImageRegistryInfo(AbstractModel):
         :type RegionInfo: :class:`tencentcloud.csip.v20221121.models.RegionInfo`
         :param _UserName: <p>镜像仓库用户名</p>
         :type UserName: str
+        :param _ConnStatus: <p>连接状态</p><p>枚举值：</p><ul><li>status_connected： 连接成功</li><li>status_connecting： 连接中</li><li>status_connect_failed： 连接失败</li><li>status_partial_failed： 部分连接失败</li></ul>
+        :type ConnStatus: str
         """
         self._RegistryId = None
         self._Name = None
@@ -140332,6 +140489,7 @@ class ImageRegistryInfo(AbstractModel):
         self._SyncFailReason = None
         self._RegionInfo = None
         self._UserName = None
+        self._ConnStatus = None
 
     @property
     def RegistryId(self):
@@ -140553,6 +140711,17 @@ class ImageRegistryInfo(AbstractModel):
     def UserName(self, UserName):
         self._UserName = UserName
 
+    @property
+    def ConnStatus(self):
+        r"""<p>连接状态</p><p>枚举值：</p><ul><li>status_connected： 连接成功</li><li>status_connecting： 连接中</li><li>status_connect_failed： 连接失败</li><li>status_partial_failed： 部分连接失败</li></ul>
+        :rtype: str
+        """
+        return self._ConnStatus
+
+    @ConnStatus.setter
+    def ConnStatus(self, ConnStatus):
+        self._ConnStatus = ConnStatus
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
@@ -140582,6 +140751,7 @@ class ImageRegistryInfo(AbstractModel):
             self._RegionInfo = RegionInfo()
             self._RegionInfo._deserialize(params.get("RegionInfo"))
         self._UserName = params.get("UserName")
+        self._ConnStatus = params.get("ConnStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -155078,23 +155248,23 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VipType: 接入类型，当前支持 1和7, 类型vip网络类型（1:外网TGW 2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
+        :param _VipType: <p>接入类型，当前支持 1和7</p><p>枚举值：</p><ul><li>1： 外网TGW</li><li>2： 基础网络</li><li>3： VPC网络</li><li>4： idc环境-支撑网络</li><li>5： SSL外网访问方式访问</li><li>6： 黑石环境vpc</li><li>7： cvm环境-支撑网络</li></ul>
         :type VipType: int
-        :param _RegionId: 实例的地域
+        :param _RegionId: <p>实例的地域</p>
         :type RegionId: str
-        :param _InstanceId: 实例的id
+        :param _InstanceId: <p>实例的id</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _RouteInfo: 实例的接入信息
+        :param _RouteInfo: <p>实例的接入信息</p>
         :type RouteInfo: :class:`tencentcloud.csip.v20221121.models.RouteInfo`
-        :param _Username: 接入为域名的时候，有效
+        :param _Username: <p>接入为域名的时候，有效</p>
         :type Username: str
-        :param _Password: 接入为域名的时候，有效
+        :param _Password: <p>接入为域名的时候，有效</p>
         :type Password: str
-        :param _LogDeliveryInfo: 日志投递的主题配置
+        :param _LogDeliveryInfo: <p>日志投递的主题配置</p>
         :type LogDeliveryInfo: list of LogDeliveryInfo
-        :param _IsOverwrite: 已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）
+        :param _IsOverwrite: <p>已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）</p>
         :type IsOverwrite: bool
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
@@ -155112,7 +155282,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def VipType(self):
-        r"""接入类型，当前支持 1和7, 类型vip网络类型（1:外网TGW 2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
+        r"""<p>接入类型，当前支持 1和7</p><p>枚举值：</p><ul><li>1： 外网TGW</li><li>2： 基础网络</li><li>3： VPC网络</li><li>4： idc环境-支撑网络</li><li>5： SSL外网访问方式访问</li><li>6： 黑石环境vpc</li><li>7： cvm环境-支撑网络</li></ul>
         :rtype: int
         """
         return self._VipType
@@ -155123,7 +155293,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""实例的地域
+        r"""<p>实例的地域</p>
         :rtype: str
         """
         return self._RegionId
@@ -155134,7 +155304,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例的id
+        r"""<p>实例的id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -155145,7 +155315,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -155156,7 +155326,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def RouteInfo(self):
-        r"""实例的接入信息
+        r"""<p>实例的接入信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.RouteInfo`
         """
         return self._RouteInfo
@@ -155167,7 +155337,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""接入为域名的时候，有效
+        r"""<p>接入为域名的时候，有效</p>
         :rtype: str
         """
         return self._Username
@@ -155178,7 +155348,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""接入为域名的时候，有效
+        r"""<p>接入为域名的时候，有效</p>
         :rtype: str
         """
         return self._Password
@@ -155189,7 +155359,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def LogDeliveryInfo(self):
-        r"""日志投递的主题配置
+        r"""<p>日志投递的主题配置</p>
         :rtype: list of LogDeliveryInfo
         """
         return self._LogDeliveryInfo
@@ -155200,7 +155370,7 @@ class ModifyDspmCkafkaSaveRequest(AbstractModel):
 
     @property
     def IsOverwrite(self):
-        r"""已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）
+        r"""<p>已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）</p>
         :rtype: bool
         """
         return self._IsOverwrite
@@ -179018,6 +179188,74 @@ class SkillScanRuleHit(AbstractModel):
     def _deserialize(self, params):
         self._RuleID = params.get("RuleID")
         self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillScanTaskItem(AbstractModel):
+    r"""Skill 扫描任务列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InsertTime: 上传时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type InsertTime: str
+        :param _SkillName: Skill 名称
+        :type SkillName: str
+        :param _DeductCount: 消耗次数（总消耗次数）
+        :type DeductCount: int
+        """
+        self._InsertTime = None
+        self._SkillName = None
+        self._DeductCount = None
+
+    @property
+    def InsertTime(self):
+        r"""上传时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def SkillName(self):
+        r"""Skill 名称
+        :rtype: str
+        """
+        return self._SkillName
+
+    @SkillName.setter
+    def SkillName(self, SkillName):
+        self._SkillName = SkillName
+
+    @property
+    def DeductCount(self):
+        r"""消耗次数（总消耗次数）
+        :rtype: int
+        """
+        return self._DeductCount
+
+    @DeductCount.setter
+    def DeductCount(self, DeductCount):
+        self._DeductCount = DeductCount
+
+
+    def _deserialize(self, params):
+        self._InsertTime = params.get("InsertTime")
+        self._SkillName = params.get("SkillName")
+        self._DeductCount = params.get("DeductCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

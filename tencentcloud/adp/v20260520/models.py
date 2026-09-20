@@ -16687,6 +16687,234 @@ class DescribeAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAppStatisticsOverviewRequest(AbstractModel):
+    r"""DescribeAppStatisticsOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppType: <p>应用类型。可选值：APP_TYPE_RAG（RAG）、APP_TYPE_WORKFLOW（Workflow）、APP_TYPE_CLAW（Claw）、APP_TYPE_MULTIAGENT（MultiAgent）；本期仅 APP_TYPE_RAG 生效，其余为预留值，传入将返回 InvalidParameter</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>APP_TYPE_RAG</td><td>1</td><td>RAG（本期唯一支持）</td></tr><tr><td>APP_TYPE_WORKFLOW</td><td>2</td><td>Workflow（预留，暂不支持）</td></tr><tr><td>APP_TYPE_CLAW</td><td>3</td><td>Claw（预留，暂不支持）</td></tr><tr><td>APP_TYPE_MULTIAGENT</td><td>4</td><td>MultiAgent（预留，暂不支持）</td></tr></tbody></table>
+        :type AppType: int
+        :param _TimeRange: <p>查询时间范围（Unix 秒）</p>
+        :type TimeRange: :class:`tencentcloud.adp.v20260520.models.TimeRange`
+        :param _ViewScope: <p>视图范围：应用视图（VIEW_TYPE_APP），scope_id 填应用 ID（uint64 雪花 ID 的十进制字符串）</p>
+        :type ViewScope: :class:`tencentcloud.adp.v20260520.models.ViewScope`
+        :param _SpaceId: <p>空间 ID</p><p>参数格式：<p>空间 ID</p></p><p>默认值：default_space</p>
+        :type SpaceId: str
+        :param _AppId: <p>应用 ID</p><p>参数格式：</p><p>应用 ID</p><p></p><p>参考值：2099767969573745984</p>
+        :type AppId: str
+        :param _FilterList: <p>扩展过滤。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：space_id（空间 ID）、channel_type（调用方式/渠道类型，取值参考 trpc.adp.common.v2.ChannelType 枚举名）；channel_type 不传时按全部渠道聚合</p>
+        :type FilterList: list of Filter
+        """
+        self._AppType = None
+        self._TimeRange = None
+        self._ViewScope = None
+        self._SpaceId = None
+        self._AppId = None
+        self._FilterList = None
+
+    @property
+    def AppType(self):
+        r"""<p>应用类型。可选值：APP_TYPE_RAG（RAG）、APP_TYPE_WORKFLOW（Workflow）、APP_TYPE_CLAW（Claw）、APP_TYPE_MULTIAGENT（MultiAgent）；本期仅 APP_TYPE_RAG 生效，其余为预留值，传入将返回 InvalidParameter</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TYPE_UNSPECIFIED</td><td>0</td><td>未指定（无效值，请求勿传）</td></tr><tr><td>APP_TYPE_RAG</td><td>1</td><td>RAG（本期唯一支持）</td></tr><tr><td>APP_TYPE_WORKFLOW</td><td>2</td><td>Workflow（预留，暂不支持）</td></tr><tr><td>APP_TYPE_CLAW</td><td>3</td><td>Claw（预留，暂不支持）</td></tr><tr><td>APP_TYPE_MULTIAGENT</td><td>4</td><td>MultiAgent（预留，暂不支持）</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def TimeRange(self):
+        r"""<p>查询时间范围（Unix 秒）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimeRange`
+        """
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
+    @property
+    def ViewScope(self):
+        r"""<p>视图范围：应用视图（VIEW_TYPE_APP），scope_id 填应用 ID（uint64 雪花 ID 的十进制字符串）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ViewScope`
+        """
+        return self._ViewScope
+
+    @ViewScope.setter
+    def ViewScope(self, ViewScope):
+        self._ViewScope = ViewScope
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间 ID</p><p>参数格式：<p>空间 ID</p></p><p>默认值：default_space</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p><p>参数格式：</p><p>应用 ID</p><p></p><p>参考值：2099767969573745984</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FilterList(self):
+        r"""<p>扩展过滤。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：space_id（空间 ID）、channel_type（调用方式/渠道类型，取值参考 trpc.adp.common.v2.ChannelType 枚举名）；channel_type 不传时按全部渠道聚合</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+
+    def _deserialize(self, params):
+        self._AppType = params.get("AppType")
+        if params.get("TimeRange") is not None:
+            self._TimeRange = TimeRange()
+            self._TimeRange._deserialize(params.get("TimeRange"))
+        if params.get("ViewScope") is not None:
+            self._ViewScope = ViewScope()
+            self._ViewScope._deserialize(params.get("ViewScope"))
+        self._SpaceId = params.get("SpaceId")
+        self._AppId = params.get("AppId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppStatisticsOverviewResponse(AbstractModel):
+    r"""DescribeAppStatisticsOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AvgFirstTokenTime: <p>首 tokens 平均耗时（毫秒）</p>
+        :type AvgFirstTokenTime: str
+        :param _AvgTotalTokenTime: <p>总 tokens 平均耗时（毫秒）</p>
+        :type AvgTotalTokenTime: str
+        :param _CallSuccessRate: <p>应用调用成功率（百分比，0~100）</p>
+        :type CallSuccessRate: float
+        :param _ReplyTypeDistributionList: <p>回复类型分布列表；按 app_type 统计，已补全所有回复方式并按固定顺序返回，无数据的回复方式 call_count 为 0</p>
+        :type ReplyTypeDistributionList: list of Distribution
+        :param _TotalCallCount: <p>总调用次数</p>
+        :type TotalCallCount: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AvgFirstTokenTime = None
+        self._AvgTotalTokenTime = None
+        self._CallSuccessRate = None
+        self._ReplyTypeDistributionList = None
+        self._TotalCallCount = None
+        self._RequestId = None
+
+    @property
+    def AvgFirstTokenTime(self):
+        r"""<p>首 tokens 平均耗时（毫秒）</p>
+        :rtype: str
+        """
+        return self._AvgFirstTokenTime
+
+    @AvgFirstTokenTime.setter
+    def AvgFirstTokenTime(self, AvgFirstTokenTime):
+        self._AvgFirstTokenTime = AvgFirstTokenTime
+
+    @property
+    def AvgTotalTokenTime(self):
+        r"""<p>总 tokens 平均耗时（毫秒）</p>
+        :rtype: str
+        """
+        return self._AvgTotalTokenTime
+
+    @AvgTotalTokenTime.setter
+    def AvgTotalTokenTime(self, AvgTotalTokenTime):
+        self._AvgTotalTokenTime = AvgTotalTokenTime
+
+    @property
+    def CallSuccessRate(self):
+        r"""<p>应用调用成功率（百分比，0~100）</p>
+        :rtype: float
+        """
+        return self._CallSuccessRate
+
+    @CallSuccessRate.setter
+    def CallSuccessRate(self, CallSuccessRate):
+        self._CallSuccessRate = CallSuccessRate
+
+    @property
+    def ReplyTypeDistributionList(self):
+        r"""<p>回复类型分布列表；按 app_type 统计，已补全所有回复方式并按固定顺序返回，无数据的回复方式 call_count 为 0</p>
+        :rtype: list of Distribution
+        """
+        return self._ReplyTypeDistributionList
+
+    @ReplyTypeDistributionList.setter
+    def ReplyTypeDistributionList(self, ReplyTypeDistributionList):
+        self._ReplyTypeDistributionList = ReplyTypeDistributionList
+
+    @property
+    def TotalCallCount(self):
+        r"""<p>总调用次数</p>
+        :rtype: str
+        """
+        return self._TotalCallCount
+
+    @TotalCallCount.setter
+    def TotalCallCount(self, TotalCallCount):
+        self._TotalCallCount = TotalCallCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AvgFirstTokenTime = params.get("AvgFirstTokenTime")
+        self._AvgTotalTokenTime = params.get("AvgTotalTokenTime")
+        self._CallSuccessRate = params.get("CallSuccessRate")
+        if params.get("ReplyTypeDistributionList") is not None:
+            self._ReplyTypeDistributionList = []
+            for item in params.get("ReplyTypeDistributionList"):
+                obj = Distribution()
+                obj._deserialize(item)
+                self._ReplyTypeDistributionList.append(obj)
+        self._TotalCallCount = params.get("TotalCallCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAppSummaryListRequest(AbstractModel):
     r"""DescribeAppSummaryList请求参数结构体
 
@@ -23993,6 +24221,72 @@ class DingTalkChannelConfig(AbstractModel):
     def _deserialize(self, params):
         self._AppKey = params.get("AppKey")
         self._AppSecret = params.get("AppSecret")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Distribution(AbstractModel):
+    r"""回复类型分布项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallCount: <p>该回复方式的调用次数</p>
+        :type CallCount: str
+        :param _Percentage: <p>该回复方式在总调用次数中的占比（百分比，0~100，保留两位小数；无数据时全为 0，有数据时各项之和为 100）</p>
+        :type Percentage: float
+        :param _ReplyName: <p>回复方式名称（已按请求语言国际化；i18n 缺失时兜底为 reply_method 的枚举名）</p>
+        :type ReplyName: str
+        """
+        self._CallCount = None
+        self._Percentage = None
+        self._ReplyName = None
+
+    @property
+    def CallCount(self):
+        r"""<p>该回复方式的调用次数</p>
+        :rtype: str
+        """
+        return self._CallCount
+
+    @CallCount.setter
+    def CallCount(self, CallCount):
+        self._CallCount = CallCount
+
+    @property
+    def Percentage(self):
+        r"""<p>该回复方式在总调用次数中的占比（百分比，0~100，保留两位小数；无数据时全为 0，有数据时各项之和为 100）</p>
+        :rtype: float
+        """
+        return self._Percentage
+
+    @Percentage.setter
+    def Percentage(self, Percentage):
+        self._Percentage = Percentage
+
+    @property
+    def ReplyName(self):
+        r"""<p>回复方式名称（已按请求语言国际化；i18n 缺失时兜底为 reply_method 的枚举名）</p>
+        :rtype: str
+        """
+        return self._ReplyName
+
+    @ReplyName.setter
+    def ReplyName(self, ReplyName):
+        self._ReplyName = ReplyName
+
+
+    def _deserialize(self, params):
+        self._CallCount = params.get("CallCount")
+        self._Percentage = params.get("Percentage")
+        self._ReplyName = params.get("ReplyName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

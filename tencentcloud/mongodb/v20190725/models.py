@@ -1546,6 +1546,190 @@ class BackupTotalSize(AbstractModel):
         
 
 
+class CheckDBInstanceElasticCpuScalableRequest(AbstractModel):
+    r"""CheckDBInstanceElasticCpuScalable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckDBInstanceElasticCpuScalableResponse(AbstractModel):
+    r"""CheckDBInstanceElasticCpuScalable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scalable: <p>是否可以进行弹性CPU扩容</p>
+        :type Scalable: bool
+        :param _IsScaled: <p>当前是否处于扩容状态</p>
+        :type IsScaled: bool
+        :param _IsLocked: <p>实例是否被锁定（有流程在执行）</p>
+        :type IsLocked: bool
+        :param _Reason: <p>不可扩容的原因</p>
+        :type Reason: str
+        :param _MaxExtraCpu: <p>最大可扩容的CPU核数，MIN(最小分片CPU核数, 24)</p>
+        :type MaxExtraCpu: int
+        :param _ExtraCpu: <p>当前扩容的CPU核数（如果处于扩容状态）</p>
+        :type ExtraCpu: int
+        :param _TriggerType: <p>扩容触发类型: 1-手动, 2-周期, 3-一次性时间段, 4-监控</p>
+        :type TriggerType: int
+        :param _ScaleUpTime: <p>扩容时间</p>
+        :type ScaleUpTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Scalable = None
+        self._IsScaled = None
+        self._IsLocked = None
+        self._Reason = None
+        self._MaxExtraCpu = None
+        self._ExtraCpu = None
+        self._TriggerType = None
+        self._ScaleUpTime = None
+        self._RequestId = None
+
+    @property
+    def Scalable(self):
+        r"""<p>是否可以进行弹性CPU扩容</p>
+        :rtype: bool
+        """
+        return self._Scalable
+
+    @Scalable.setter
+    def Scalable(self, Scalable):
+        self._Scalable = Scalable
+
+    @property
+    def IsScaled(self):
+        r"""<p>当前是否处于扩容状态</p>
+        :rtype: bool
+        """
+        return self._IsScaled
+
+    @IsScaled.setter
+    def IsScaled(self, IsScaled):
+        self._IsScaled = IsScaled
+
+    @property
+    def IsLocked(self):
+        r"""<p>实例是否被锁定（有流程在执行）</p>
+        :rtype: bool
+        """
+        return self._IsLocked
+
+    @IsLocked.setter
+    def IsLocked(self, IsLocked):
+        self._IsLocked = IsLocked
+
+    @property
+    def Reason(self):
+        r"""<p>不可扩容的原因</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def MaxExtraCpu(self):
+        r"""<p>最大可扩容的CPU核数，MIN(最小分片CPU核数, 24)</p>
+        :rtype: int
+        """
+        return self._MaxExtraCpu
+
+    @MaxExtraCpu.setter
+    def MaxExtraCpu(self, MaxExtraCpu):
+        self._MaxExtraCpu = MaxExtraCpu
+
+    @property
+    def ExtraCpu(self):
+        r"""<p>当前扩容的CPU核数（如果处于扩容状态）</p>
+        :rtype: int
+        """
+        return self._ExtraCpu
+
+    @ExtraCpu.setter
+    def ExtraCpu(self, ExtraCpu):
+        self._ExtraCpu = ExtraCpu
+
+    @property
+    def TriggerType(self):
+        r"""<p>扩容触发类型: 1-手动, 2-周期, 3-一次性时间段, 4-监控</p>
+        :rtype: int
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def ScaleUpTime(self):
+        r"""<p>扩容时间</p>
+        :rtype: str
+        """
+        return self._ScaleUpTime
+
+    @ScaleUpTime.setter
+    def ScaleUpTime(self, ScaleUpTime):
+        self._ScaleUpTime = ScaleUpTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Scalable = params.get("Scalable")
+        self._IsScaled = params.get("IsScaled")
+        self._IsLocked = params.get("IsLocked")
+        self._Reason = params.get("Reason")
+        self._MaxExtraCpu = params.get("MaxExtraCpu")
+        self._ExtraCpu = params.get("ExtraCpu")
+        self._TriggerType = params.get("TriggerType")
+        self._ScaleUpTime = params.get("ScaleUpTime")
+        self._RequestId = params.get("RequestId")
+
+
 class ClientConnection(AbstractModel):
     r"""客户端连接信息，包括客户端IP和连接数
 

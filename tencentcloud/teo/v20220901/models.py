@@ -12607,24 +12607,19 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _Name: 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+        :param _Name: <p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
         :type Name: str
-        :param _Type: 实例类型，取值有：
-<li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-<li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+        :param _Type: <p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
         :type Type: str
-        :param _OriginGroups: 源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+        :param _OriginGroups: <p>源站组列表及其对应的容灾调度优先级。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104223">快速创建负载均衡实例</a> 中的示例场景。</p>
         :type OriginGroups: list of OriginGroupInLoadBalancer
-        :param _HealthChecker: 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+        :param _HealthChecker: <p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。不填写时，默认为不启用健康检查。</p>
         :type HealthChecker: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
-        :param _SteeringPolicy: 源站组间的流量调度策略，取值有：
-<li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+        :param _SteeringPolicy: <p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
         :type SteeringPolicy: str
-        :param _FailoverPolicy: 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-<li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-<li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+        :param _FailoverPolicy: <p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
         :type FailoverPolicy: str
         """
         self._ZoneId = None
@@ -12637,7 +12632,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -12648,7 +12643,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。
+        r"""<p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
         :rtype: str
         """
         return self._Name
@@ -12659,9 +12654,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""实例类型，取值有：
-<li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-<li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+        r"""<p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
         :rtype: str
         """
         return self._Type
@@ -12672,7 +12665,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def OriginGroups(self):
-        r"""源站组列表及其对应的容灾调度优先级。详情请参考 [快速创建负载均衡实例](https://cloud.tencent.com/document/product/1552/104223) 中的示例场景。
+        r"""<p>源站组列表及其对应的容灾调度优先级。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104223">快速创建负载均衡实例</a> 中的示例场景。</p>
         :rtype: list of OriginGroupInLoadBalancer
         """
         return self._OriginGroups
@@ -12683,7 +12676,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def HealthChecker(self):
-        r"""健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。不填写时，默认为不启用健康检查。
+        r"""<p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。不填写时，默认为不启用健康检查。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
         """
         return self._HealthChecker
@@ -12694,8 +12687,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def SteeringPolicy(self):
-        r"""源站组间的流量调度策略，取值有：
-<li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
+        r"""<p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移。</li>默认值为 Pritory。
         :rtype: str
         """
         return self._SteeringPolicy
@@ -12706,9 +12698,7 @@ class CreateLoadBalancerRequest(AbstractModel):
 
     @property
     def FailoverPolicy(self):
-        r"""实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-<li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-<li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
+        r"""<p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>默认值为 OtherRecordInOriginGroup。
         :rtype: str
         """
         return self._FailoverPolicy
@@ -12750,7 +12740,7 @@ class CreateLoadBalancerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 负载均衡实例 ID。
+        :param _InstanceId: <p>负载均衡实例 ID。</p>
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12760,7 +12750,7 @@ class CreateLoadBalancerResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""负载均衡实例 ID。
+        r"""<p>负载均衡实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -21313,6 +21303,155 @@ class DescribeAvailableCustomActionsForRuleEngineResponse(AbstractModel):
                 obj = RuleEngineCustomAction()
                 obj._deserialize(item)
                 self._CustomActionSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAvailableOriginACLFamilyRequest(AbstractModel):
+    r"""DescribeAvailableOriginACLFamily请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点ID。</p>
+        :type ZoneId: str
+        :param _Filters: <p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用版本。源站防护的 IP 段控制域包含标准控制域和精简控制域。标准控制域和精简控制域主要区别在于提供的回源 IP 网段数量差异，后者数量更少,但是使用上有限制，如需使用请联系技术支持。具体取值说明如下：<br>详细的过滤条件如下：<br>OriginACLFamily：按照控制域进行过滤；</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li><li>plat-specific-gaz：定制版控全球可用区制域；</li><li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li><li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域。</li>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页查询偏移量，默认为 0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页查询限制数目，默认值：20，最大值：100。</p>
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用版本。源站防护的 IP 段控制域包含标准控制域和精简控制域。标准控制域和精简控制域主要区别在于提供的回源 IP 网段数量差异，后者数量更少,但是使用上有限制，如需使用请联系技术支持。具体取值说明如下：<br>详细的过滤条件如下：<br>OriginACLFamily：按照控制域进行过滤；</p><li>gaz：标准全球可用区控制域；</li><li>mlc：标准中国大陆可用区控制域；</li><li>emc：标准全球(不含中国大陆)可用区控制域；</li><li>plat-gaz：精简全球可用区控制域；</li><li>plat-mlc：精简中国大陆可用区控制域；</li><li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li><li>plat-specific-gaz：定制版控全球可用区制域；</li><li>plat-specific-mlc：定制版控中国大陆可用区控制域；</li><li>plat-specific-emc：定制版控全球（不含中国大陆）可用区控制域。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询偏移量，默认为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询限制数目，默认值：20，最大值：100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAvailableOriginACLFamilyResponse(AbstractModel):
+    r"""DescribeAvailableOriginACLFamily返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>源站防护 IP 段详细信息总数。</p>
+        :type TotalCount: int
+        :param _OriginACLFamilyInfos: <p>回源 IP 网段详细信息列表。</p>
+        :type OriginACLFamilyInfos: list of OriginACLFamilyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._OriginACLFamilyInfos = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>源站防护 IP 段详细信息总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def OriginACLFamilyInfos(self):
+        r"""<p>回源 IP 网段详细信息列表。</p>
+        :rtype: list of OriginACLFamilyInfo
+        """
+        return self._OriginACLFamilyInfos
+
+    @OriginACLFamilyInfos.setter
+    def OriginACLFamilyInfos(self, OriginACLFamilyInfos):
+        self._OriginACLFamilyInfos = OriginACLFamilyInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("OriginACLFamilyInfos") is not None:
+            self._OriginACLFamilyInfos = []
+            for item in params.get("OriginACLFamilyInfos"):
+                obj = OriginACLFamilyInfo()
+                obj._deserialize(item)
+                self._OriginACLFamilyInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -38875,42 +39014,34 @@ class HealthChecker(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 健康检查策略，取值有：
-<li>HTTP；</li>
-<li>HTTPS；</li>
-<li>TCP；</li>
-<li>UDP；</li>
-<li>ICMP Ping；</li>
-<li>NoCheck。</li>
-注意：NoCheck 表示不启用健康检查策略。
+        :param _Type: <p>健康检查策略，取值有：</p><li>HTTP；</li><li>HTTPS；</li><li>TCP；</li><li>UDP；</li><li>ICMP Ping；</li><li>NoCheck。</li>注意：NoCheck 表示不启用健康检查策略。
         :type Type: str
-        :param _Port: 检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。
+        :param _Port: <p>检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。</p>
         :type Port: int
-        :param _Interval: 检查频率，表示多久发起一次健康检查任务，单位为秒。可配置 10-600 秒。
+        :param _Interval: <p>检查频率，表示多久发起一次健康检查任务，单位为秒。可配置 10-600 秒。</p>
         :type Interval: int
-        :param _Timeout: 每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为“不健康”， 单位为秒，默认值为 5s，取值必须小于 Interval。
+        :param _Timeout: <p>每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为“不健康”， 单位为秒，默认值为 5s，取值必须小于 Interval。</p>
         :type Timeout: int
-        :param _HealthThreshold: 健康阈值，表示连续几次健康检查结果为"健康"，则判断源站为"健康"，单位为次，默认 3 次，最小取值 1 次。
+        :param _HealthThreshold: <p>健康阈值，表示连续几次健康检查结果为&quot;健康&quot;，则判断源站为&quot;健康&quot;，单位为次，默认 3 次，最小取值 1 次。</p>
         :type HealthThreshold: int
-        :param _CriticalThreshold: 不健康阈值，表示连续几次健康检查结果为"不健康"，则判断源站为"不健康"，单位为次，默认 2 次。
+        :param _CriticalThreshold: <p>不健康阈值，表示连续几次健康检查结果为&quot;不健康&quot;，则判断源站为&quot;不健康&quot;，单位为次，默认 2 次。</p>
         :type CriticalThreshold: int
-        :param _Path: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。
-
+        :param _Path: <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。</p>
         :type Path: str
-        :param _Method: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：
-<li>GET；</li>
-<li>HEAD。</li>
+        :param _Method: <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：</p><li>GET；</li><li>HEAD。</li>
         :type Method: str
-        :param _ExpectedCodes: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。
+        :param _ExpectedCodes: <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。</p>
         :type ExpectedCodes: list of str
-        :param _Headers: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。
+        :param _Headers: <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。</p>
         :type Headers: list of CustomizedHeader
-        :param _FollowRedirect: 该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为"健康"的状态码，默认跳转 3 次。
+        :param _FollowRedirect: <p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为&quot;健康&quot;的状态码，默认跳转 3 次。</p>
         :type FollowRedirect: str
-        :param _SendContext: 该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+        :param _SendContext: <p>该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。</p>
         :type SendContext: str
-        :param _RecvContext: 该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+        :param _RecvContext: <p>该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。</p>
         :type RecvContext: str
+        :param _ProbeCluster: <p>健康检查探测集群。指定本负载均衡实例发起健康探测的集群区域范围，探测集群地区分布详见<a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>，仅 HTTP 专用型（V2）版本负载均衡实例支持设置。取值有：<br>global：由全球所有区域的探测集群发起探测，包括中国大陆区域以及非中国大陆区域，各个区域的集群独立维护各自的探测结果；<br>mainland_china：仅由中国大陆区域的探测集群发起探测，当前中国大陆区域共用一个探测集群，探测结果由中国大陆区域的探测集群维护，其他区域跟随中国大陆区域的集群的探测结果；<br>overseas：仅由非中国大陆区域的探测集群发起探测，当前非中国大陆区域包含多个地区的探测集群，探测结果由各个地区的探测集群独立维护，中国大陆区域的探测结果由所有其他地区的探测集群的探测结果汇总生成。<br>默认为 global。</p>
+        :type ProbeCluster: str
         """
         self._Type = None
         self._Port = None
@@ -38925,17 +39056,11 @@ class HealthChecker(AbstractModel):
         self._FollowRedirect = None
         self._SendContext = None
         self._RecvContext = None
+        self._ProbeCluster = None
 
     @property
     def Type(self):
-        r"""健康检查策略，取值有：
-<li>HTTP；</li>
-<li>HTTPS；</li>
-<li>TCP；</li>
-<li>UDP；</li>
-<li>ICMP Ping；</li>
-<li>NoCheck。</li>
-注意：NoCheck 表示不启用健康检查策略。
+        r"""<p>健康检查策略，取值有：</p><li>HTTP；</li><li>HTTPS；</li><li>TCP；</li><li>UDP；</li><li>ICMP Ping；</li><li>NoCheck。</li>注意：NoCheck 表示不启用健康检查策略。
         :rtype: str
         """
         return self._Type
@@ -38946,7 +39071,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def Port(self):
-        r"""检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。
+        r"""<p>检查端口。当 Type=HTTP 或 Type=HTTPS 或 Type=TCP 或 Type=UDP 时为必填。</p>
         :rtype: int
         """
         return self._Port
@@ -38957,7 +39082,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def Interval(self):
-        r"""检查频率，表示多久发起一次健康检查任务，单位为秒。可配置 10-600 秒。
+        r"""<p>检查频率，表示多久发起一次健康检查任务，单位为秒。可配置 10-600 秒。</p>
         :rtype: int
         """
         return self._Interval
@@ -38968,7 +39093,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为“不健康”， 单位为秒，默认值为 5s，取值必须小于 Interval。
+        r"""<p>每一次健康检查的超时时间，若健康检查消耗时间大于此值，则检查结果判定为“不健康”， 单位为秒，默认值为 5s，取值必须小于 Interval。</p>
         :rtype: int
         """
         return self._Timeout
@@ -38979,7 +39104,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def HealthThreshold(self):
-        r"""健康阈值，表示连续几次健康检查结果为"健康"，则判断源站为"健康"，单位为次，默认 3 次，最小取值 1 次。
+        r"""<p>健康阈值，表示连续几次健康检查结果为&quot;健康&quot;，则判断源站为&quot;健康&quot;，单位为次，默认 3 次，最小取值 1 次。</p>
         :rtype: int
         """
         return self._HealthThreshold
@@ -38990,7 +39115,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def CriticalThreshold(self):
-        r"""不健康阈值，表示连续几次健康检查结果为"不健康"，则判断源站为"不健康"，单位为次，默认 2 次。
+        r"""<p>不健康阈值，表示连续几次健康检查结果为&quot;不健康&quot;，则判断源站为&quot;不健康&quot;，单位为次，默认 2 次。</p>
         :rtype: int
         """
         return self._CriticalThreshold
@@ -39001,8 +39126,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def Path(self):
-        r"""该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。
-
+        r"""<p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测路径，需要填写完整的 host/path，不包含协议部分，例如：www.example.com/test。</p>
         :rtype: str
         """
         return self._Path
@@ -39013,9 +39137,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def Method(self):
-        r"""该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：
-<li>GET；</li>
-<li>HEAD。</li>
+        r"""<p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示请求方法，取值有：</p><li>GET；</li><li>HEAD。</li>
         :rtype: str
         """
         return self._Method
@@ -39026,7 +39148,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def ExpectedCodes(self):
-        r"""该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。
+        r"""<p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测节点向源站发起健康检查时，响应哪些状态码可用于认定探测结果为健康。</p>
         :rtype: list of str
         """
         return self._ExpectedCodes
@@ -39037,7 +39159,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def Headers(self):
-        r"""该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。
+        r"""<p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示探测请求携带的自定义  HTTP 请求头，至多可配置 10 个。</p>
         :rtype: list of CustomizedHeader
         """
         return self._Headers
@@ -39048,7 +39170,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def FollowRedirect(self):
-        r"""该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为"健康"的状态码，默认跳转 3 次。
+        r"""<p>该参数仅当 Type=HTTP 或 Type=HTTPS 时有效，表示是否启用遵循 301/302 重定向。启用后，301/302 默认为&quot;健康&quot;的状态码，默认跳转 3 次。</p>
         :rtype: str
         """
         return self._FollowRedirect
@@ -39059,7 +39181,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def SendContext(self):
-        r"""该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+        r"""<p>该参数仅当 Type=UDP 时有效，表示健康检查发送的内容。只允许 ASCII 可见字符，最大长度限制 500 个字符。</p>
         :rtype: str
         """
         return self._SendContext
@@ -39070,7 +39192,7 @@ class HealthChecker(AbstractModel):
 
     @property
     def RecvContext(self):
-        r"""该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。
+        r"""<p>该参数仅当 Type=UDP 时有效，表示健康检查期望源站返回结果。只允许 ASCII 可见字符，最大长度限制 500 个字符。</p>
         :rtype: str
         """
         return self._RecvContext
@@ -39078,6 +39200,17 @@ class HealthChecker(AbstractModel):
     @RecvContext.setter
     def RecvContext(self, RecvContext):
         self._RecvContext = RecvContext
+
+    @property
+    def ProbeCluster(self):
+        r"""<p>健康检查探测集群。指定本负载均衡实例发起健康探测的集群区域范围，探测集群地区分布详见<a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>，仅 HTTP 专用型（V2）版本负载均衡实例支持设置。取值有：<br>global：由全球所有区域的探测集群发起探测，包括中国大陆区域以及非中国大陆区域，各个区域的集群独立维护各自的探测结果；<br>mainland_china：仅由中国大陆区域的探测集群发起探测，当前中国大陆区域共用一个探测集群，探测结果由中国大陆区域的探测集群维护，其他区域跟随中国大陆区域的集群的探测结果；<br>overseas：仅由非中国大陆区域的探测集群发起探测，当前非中国大陆区域包含多个地区的探测集群，探测结果由各个地区的探测集群独立维护，中国大陆区域的探测结果由所有其他地区的探测集群的探测结果汇总生成。<br>默认为 global。</p>
+        :rtype: str
+        """
+        return self._ProbeCluster
+
+    @ProbeCluster.setter
+    def ProbeCluster(self, ProbeCluster):
+        self._ProbeCluster = ProbeCluster
 
 
     def _deserialize(self, params):
@@ -39099,6 +39232,7 @@ class HealthChecker(AbstractModel):
         self._FollowRedirect = params.get("FollowRedirect")
         self._SendContext = params.get("SendContext")
         self._RecvContext = params.get("RecvContext")
+        self._ProbeCluster = params.get("ProbeCluster")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44776,35 +44910,27 @@ class LoadBalancer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: <p>实例 ID。</p>
         :type InstanceId: str
-        :param _Name: 实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。	
+        :param _Name: <p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
         :type Name: str
-        :param _Type: 实例类型，取值有：
-<li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-<li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+        :param _Type: <p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
         :type Type: str
-        :param _HealthChecker: 健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。
+        :param _HealthChecker: <p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。</p>
         :type HealthChecker: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
-        :param _SteeringPolicy: 源站组间的流量调度策略，取值有：
-<li>Pritory：按优先级顺序进行故障转移 。</li>
+        :param _SteeringPolicy: <p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移 。</li>
         :type SteeringPolicy: str
-        :param _FailoverPolicy: 实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-<li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-<li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
+        :param _FailoverPolicy: <p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
         :type FailoverPolicy: str
-        :param _OriginGroupHealthStatus: 源站组健康状态。
+        :param _OriginGroupHealthStatus: <p>源站组健康状态。</p>
         :type OriginGroupHealthStatus: list of OriginGroupHealthStatus
-        :param _Status: 负载均衡状态，取值有：
-<li>Pending：部署中；</li>
-<li>Deleting：删除中；</li>
-<li>Running：已生效。</li>
+        :param _Status: <p>负载均衡状态，取值有：</p><li>Pending：部署中；</li><li>Deleting：删除中；</li><li>Running：已生效。</li>
         :type Status: str
-        :param _L4UsedList: 该负载均衡实例绑的四层代理实例的列表。
+        :param _L4UsedList: <p>该负载均衡实例绑的四层代理实例的列表。</p>
         :type L4UsedList: list of str
-        :param _L7UsedList: 该负载均衡实例绑定的七层域名列表。
+        :param _L7UsedList: <p>该负载均衡实例绑定的七层域名列表。</p>
         :type L7UsedList: list of str
-        :param _References: 负载均衡被引用实例的列表。
+        :param _References: <p>负载均衡被引用实例的列表。</p>
         :type References: list of OriginGroupReference
         """
         self._InstanceId = None
@@ -44821,7 +44947,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -44832,7 +44958,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Name(self):
-        r"""实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。	
+        r"""<p>实例名称，可输入 1-200 个字符，允许字符为 a-z，A-Z，0-9，_，-。</p>
         :rtype: str
         """
         return self._Name
@@ -44843,9 +44969,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Type(self):
-        r"""实例类型，取值有：
-<li>HTTP：HTTP 专用型，支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）；</li>
-<li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。</li>
+        r"""<p>实例类型，取值有：</p><li>HTTP_V2：HTTP 专用型（V2），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型支持选择发起探测的区域，可显著降低探测请求量但对源站的健康感知灵敏度更低；</li><li>HTTP：HTTP 专用型（V1），支持添加 HTTP 专用型和通用型源站组，仅支持被站点加速相关服务引用（如域名服务和规则引擎）。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高；</li><li>GENERAL：通用型，仅支持添加通用型源站组，能被站点加速服务（如域名服务和规则引擎）和四层代理引用。该实例类型不支持选择发起探测的区域，探测请求量较大但对源站的健康感知灵敏度更高。</li>
         :rtype: str
         """
         return self._Type
@@ -44856,7 +44980,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def HealthChecker(self):
-        r"""健康检查策略。详情请参考 [健康检查策略介绍](https://cloud.tencent.com/document/product/1552/104228)。
+        r"""<p>健康检查策略。详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104228">健康检查策略介绍</a>。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HealthChecker`
         """
         return self._HealthChecker
@@ -44867,8 +44991,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def SteeringPolicy(self):
-        r"""源站组间的流量调度策略，取值有：
-<li>Pritory：按优先级顺序进行故障转移 。</li>
+        r"""<p>源站组间的流量调度策略，取值有：</p><li>Pritory：按优先级顺序进行故障转移 。</li>
         :rtype: str
         """
         return self._SteeringPolicy
@@ -44879,9 +45002,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def FailoverPolicy(self):
-        r"""实际访问某源站失败时的请求重试策略，详情请参考 [请求重试策略介绍](https://cloud.tencent.com/document/product/1552/104227)，取值有：
-<li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li>
-<li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
+        r"""<p>实际访问某源站失败时的请求重试策略，详情请参考 <a href="https://cloud.tencent.com/document/product/1552/104227">请求重试策略介绍</a>，取值有：</p><li>OtherOriginGroup：单次请求失败后，请求优先重试下一优先级源站组；</li><li>OtherRecordInOriginGroup：单次请求失败后，请求优先重试同源站组内的其他源站。</li>
         :rtype: str
         """
         return self._FailoverPolicy
@@ -44892,7 +45013,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def OriginGroupHealthStatus(self):
-        r"""源站组健康状态。
+        r"""<p>源站组健康状态。</p>
         :rtype: list of OriginGroupHealthStatus
         """
         return self._OriginGroupHealthStatus
@@ -44903,10 +45024,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Status(self):
-        r"""负载均衡状态，取值有：
-<li>Pending：部署中；</li>
-<li>Deleting：删除中；</li>
-<li>Running：已生效。</li>
+        r"""<p>负载均衡状态，取值有：</p><li>Pending：部署中；</li><li>Deleting：删除中；</li><li>Running：已生效。</li>
         :rtype: str
         """
         return self._Status
@@ -44917,7 +45035,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def L4UsedList(self):
-        r"""该负载均衡实例绑的四层代理实例的列表。
+        r"""<p>该负载均衡实例绑的四层代理实例的列表。</p>
         :rtype: list of str
         """
         return self._L4UsedList
@@ -44928,7 +45046,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def L7UsedList(self):
-        r"""该负载均衡实例绑定的七层域名列表。
+        r"""<p>该负载均衡实例绑定的七层域名列表。</p>
         :rtype: list of str
         """
         return self._L7UsedList
@@ -44939,7 +45057,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def References(self):
-        r"""负载均衡被引用实例的列表。
+        r"""<p>负载均衡被引用实例的列表。</p>
         :rtype: list of OriginGroupReference
         """
         return self._References
@@ -54313,6 +54431,127 @@ class OriginACLEntity(AbstractModel):
         self._Type = params.get("Type")
         self._Instances = params.get("Instances")
         self._OperationMode = params.get("OperationMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginACLFamilyInfo(AbstractModel):
+    r"""回源 IP 网段版本信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 源站防护版本号。
+格式说明：
+标准版本：
+<li>gaz-xxxxx：全球；</li>
+<li>mlc-xxxxx：中国；</li>
+<li>emc-xxxxx：海外(全球不含中国)；</li>
+精简版(平台级版本)：
+<li>plat-gaz-xxxxxx：精简全球版；</li>
+<li>plat-mlc-xxxxxx：精简中国版；</li>
+<li>plat-emc-xxxxxx：精简海外(全球不含中国)版；</li>
+缩写说明：
+<li>gaz：Global AZ Availability Zone;</li>
+<li>mlc：mainlandChina;</li>
+<li>emc：Exclude mainlandChina.</li>
+        :type Version: str
+        :param _ActiveTime: 版本生效时间，时间是北京时间 UTC+8， 遵循 ISO 8601 标准的日期和时间格式。
+        :type ActiveTime: str
+        :param _EntireAddresses: 回源 IP 网段详情。	
+        :type EntireAddresses: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        :param _OriginACLFamily: 源站防护回源ACL控制域。取值说明如下：
+<li>gaz：标准全球可用区控制域；</li>
+<li>mlc：标准中国大陆可用区控制域；</li>
+<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
+<li>plat-gaz：精简全球可用区控制域；</li>
+<li>plat-mlc：精简中国大陆可用区控制域；</li>
+<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        :type OriginACLFamily: str
+        """
+        self._Version = None
+        self._ActiveTime = None
+        self._EntireAddresses = None
+        self._OriginACLFamily = None
+
+    @property
+    def Version(self):
+        r"""源站防护版本号。
+格式说明：
+标准版本：
+<li>gaz-xxxxx：全球；</li>
+<li>mlc-xxxxx：中国；</li>
+<li>emc-xxxxx：海外(全球不含中国)；</li>
+精简版(平台级版本)：
+<li>plat-gaz-xxxxxx：精简全球版；</li>
+<li>plat-mlc-xxxxxx：精简中国版；</li>
+<li>plat-emc-xxxxxx：精简海外(全球不含中国)版；</li>
+缩写说明：
+<li>gaz：Global AZ Availability Zone;</li>
+<li>mlc：mainlandChina;</li>
+<li>emc：Exclude mainlandChina.</li>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ActiveTime(self):
+        r"""版本生效时间，时间是北京时间 UTC+8， 遵循 ISO 8601 标准的日期和时间格式。
+        :rtype: str
+        """
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def EntireAddresses(self):
+        r"""回源 IP 网段详情。	
+        :rtype: :class:`tencentcloud.teo.v20220901.models.Addresses`
+        """
+        return self._EntireAddresses
+
+    @EntireAddresses.setter
+    def EntireAddresses(self, EntireAddresses):
+        self._EntireAddresses = EntireAddresses
+
+    @property
+    def OriginACLFamily(self):
+        r"""源站防护回源ACL控制域。取值说明如下：
+<li>gaz：标准全球可用区控制域；</li>
+<li>mlc：标准中国大陆可用区控制域；</li>
+<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
+<li>plat-gaz：精简全球可用区控制域；</li>
+<li>plat-mlc：精简中国大陆可用区控制域；</li>
+<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        :rtype: str
+        """
+        return self._OriginACLFamily
+
+    @OriginACLFamily.setter
+    def OriginACLFamily(self, OriginACLFamily):
+        self._OriginACLFamily = OriginACLFamily
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._ActiveTime = params.get("ActiveTime")
+        if params.get("EntireAddresses") is not None:
+            self._EntireAddresses = Addresses()
+            self._EntireAddresses._deserialize(params.get("EntireAddresses"))
+        self._OriginACLFamily = params.get("OriginACLFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
