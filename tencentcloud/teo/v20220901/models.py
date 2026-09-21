@@ -32945,6 +32945,110 @@ class DescribeZoneConfigImportResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeZoneCustomVariablesRequest(AbstractModel):
+    r"""DescribeZoneCustomVariables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        """
+        self._ZoneId = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeZoneCustomVariablesResponse(AbstractModel):
+    r"""DescribeZoneCustomVariables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomVariables: <p>站点级自定义变量列表。</p>
+        :type CustomVariables: list of CustomVariable
+        :param _CustomVariableOperations: <p>站点级自定义变量运算规则。</p>
+        :type CustomVariableOperations: list of CustomVariableOperation
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CustomVariables = None
+        self._CustomVariableOperations = None
+        self._RequestId = None
+
+    @property
+    def CustomVariables(self):
+        r"""<p>站点级自定义变量列表。</p>
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def CustomVariableOperations(self):
+        r"""<p>站点级自定义变量运算规则。</p>
+        :rtype: list of CustomVariableOperation
+        """
+        return self._CustomVariableOperations
+
+    @CustomVariableOperations.setter
+    def CustomVariableOperations(self, CustomVariableOperations):
+        self._CustomVariableOperations = CustomVariableOperations
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        if params.get("CustomVariableOperations") is not None:
+            self._CustomVariableOperations = []
+            for item in params.get("CustomVariableOperations"):
+                obj = CustomVariableOperation()
+                obj._deserialize(item)
+                self._CustomVariableOperations.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeZoneSettingRequest(AbstractModel):
     r"""DescribeZoneSetting请求参数结构体
 
@@ -52212,6 +52316,110 @@ class ModifyWebSecurityTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyZoneCustomVariablesRequest(AbstractModel):
+    r"""ModifyZoneCustomVariables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _CustomVariables: <p>站点级自定义变量列表。CustomVariable.Name 需要使用 user.zone. 作为前缀。变量按照数组顺序依次初始化，InitialValue 仅支持引用位于当前变量之前的变量，不支持引用当前变量自身或位于当前变量之后的变量。</p>
+        :type CustomVariables: list of CustomVariable
+        :param _CustomVariableOperations: <p>站点级自定义变量运算规则。运算中支持引用已定义的站点级自定义变量。此列表当前只支持填写一项规则，多填无效。</p>
+        :type CustomVariableOperations: list of CustomVariableOperation
+        """
+        self._ZoneId = None
+        self._CustomVariables = None
+        self._CustomVariableOperations = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def CustomVariables(self):
+        r"""<p>站点级自定义变量列表。CustomVariable.Name 需要使用 user.zone. 作为前缀。变量按照数组顺序依次初始化，InitialValue 仅支持引用位于当前变量之前的变量，不支持引用当前变量自身或位于当前变量之后的变量。</p>
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def CustomVariableOperations(self):
+        r"""<p>站点级自定义变量运算规则。运算中支持引用已定义的站点级自定义变量。此列表当前只支持填写一项规则，多填无效。</p>
+        :rtype: list of CustomVariableOperation
+        """
+        return self._CustomVariableOperations
+
+    @CustomVariableOperations.setter
+    def CustomVariableOperations(self, CustomVariableOperations):
+        self._CustomVariableOperations = CustomVariableOperations
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        if params.get("CustomVariableOperations") is not None:
+            self._CustomVariableOperations = []
+            for item in params.get("CustomVariableOperations"):
+                obj = CustomVariableOperation()
+                obj._deserialize(item)
+                self._CustomVariableOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyZoneCustomVariablesResponse(AbstractModel):
+    r"""ModifyZoneCustomVariables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyZoneRequest(AbstractModel):
     r"""ModifyZone请求参数结构体
 
@@ -63987,19 +64195,17 @@ class SharedCNAMEInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 共享CNAME类型：取值范围如下：
-<li>custom：由用户创建的自定义共享CNAME</li>
-<li>ip-ssl：IP SSL类型的共享CNAME</li>
+        :param _Type: <p>共享CNAME类型：取值范围如下：</p><li>custom：由用户创建的自定义共享CNAME</li><li>ip-ssl：IP SSL类型的共享CNAME</li><li>zero-rating：免流类型的共享CNAME</li><li>preset：预置资源类型的共享CNAME</li>
         :type Type: str
-        :param _SharedCNAME: 共享CNAME名称。
+        :param _SharedCNAME: <p>共享CNAME名称。</p>
         :type SharedCNAME: str
-        :param _Description: 描述。
+        :param _Description: <p>描述。</p>
         :type Description: str
-        :param _IPSSLConfig: 当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。
+        :param _IPSSLConfig: <p>当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。</p>
         :type IPSSLConfig: :class:`tencentcloud.teo.v20220901.models.IPSSLConfig`
-        :param _BindDomainCount: 共享CNAME绑定的加速域名数量。
+        :param _BindDomainCount: <p>共享CNAME绑定的加速域名数量。</p>
         :type BindDomainCount: int
-        :param _AccelerationDomains: 加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。
+        :param _AccelerationDomains: <p>加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。</p>
         :type AccelerationDomains: list of ReferenceHolder
         """
         self._Type = None
@@ -64011,9 +64217,7 @@ class SharedCNAMEInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""共享CNAME类型：取值范围如下：
-<li>custom：由用户创建的自定义共享CNAME</li>
-<li>ip-ssl：IP SSL类型的共享CNAME</li>
+        r"""<p>共享CNAME类型：取值范围如下：</p><li>custom：由用户创建的自定义共享CNAME</li><li>ip-ssl：IP SSL类型的共享CNAME</li><li>zero-rating：免流类型的共享CNAME</li><li>preset：预置资源类型的共享CNAME</li>
         :rtype: str
         """
         return self._Type
@@ -64024,7 +64228,7 @@ class SharedCNAMEInfo(AbstractModel):
 
     @property
     def SharedCNAME(self):
-        r"""共享CNAME名称。
+        r"""<p>共享CNAME名称。</p>
         :rtype: str
         """
         return self._SharedCNAME
@@ -64035,7 +64239,7 @@ class SharedCNAMEInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述。
+        r"""<p>描述。</p>
         :rtype: str
         """
         return self._Description
@@ -64046,7 +64250,7 @@ class SharedCNAMEInfo(AbstractModel):
 
     @property
     def IPSSLConfig(self):
-        r"""当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。
+        r"""<p>当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.IPSSLConfig`
         """
         return self._IPSSLConfig
@@ -64057,7 +64261,7 @@ class SharedCNAMEInfo(AbstractModel):
 
     @property
     def BindDomainCount(self):
-        r"""共享CNAME绑定的加速域名数量。
+        r"""<p>共享CNAME绑定的加速域名数量。</p>
         :rtype: int
         """
         return self._BindDomainCount
@@ -64068,7 +64272,7 @@ class SharedCNAMEInfo(AbstractModel):
 
     @property
     def AccelerationDomains(self):
-        r"""加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。
+        r"""<p>加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。</p>
         :rtype: list of ReferenceHolder
         """
         return self._AccelerationDomains

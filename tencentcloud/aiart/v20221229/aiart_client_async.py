@@ -102,25 +102,6 @@ class AiartClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ImageToImage(
-            self,
-            request: models.ImageToImageRequest,
-            opts: Dict = None,
-    ) -> models.ImageToImageResponse:
-        """
-        图像风格化（图生图）接口提供生成式的图生图风格转化能力，将根据输入的图像及文本描述，智能生成风格转化后的图像。建议避免输入人像过小、姿势复杂、人数较多的人像图片。
-        图像风格化（图生图）默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ImageToImage"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ImageToImageResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def QueryDrawPortraitJob(
             self,
             request: models.QueryDrawPortraitJobRequest,
@@ -184,25 +165,6 @@ class AiartClient(AbstractClient):
         kwargs["action"] = "QueryMemeJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryMemeJobResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def QueryTextToImageJob(
-            self,
-            request: models.QueryTextToImageJobRequest,
-            opts: Dict = None,
-    ) -> models.QueryTextToImageJobResponse:
-        """
-        混元生图接口，基于混元大模型，根据输入的文本描述快速生成图片。
-        默认提供0个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "QueryTextToImageJob"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.QueryTextToImageJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -383,25 +345,6 @@ class AiartClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def SubmitTextToImageJob(
-            self,
-            request: models.SubmitTextToImageJobRequest,
-            opts: Dict = None,
-    ) -> models.SubmitTextToImageJobResponse:
-        """
-        混元生图接口，基于混元大模型，根据输入的文本描述快速生成图片。
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "SubmitTextToImageJob"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.SubmitTextToImageJobResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def SubmitTextToImageProJob(
             self,
             request: models.SubmitTextToImageProJobRequest,
@@ -444,44 +387,6 @@ class AiartClient(AbstractClient):
         kwargs["action"] = "SubmitTrainPortraitModelJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitTrainPortraitModelJobResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def TextToImageLite(
-            self,
-            request: models.TextToImageLiteRequest,
-            opts: Dict = None,
-    ) -> models.TextToImageLiteResponse:
-        """
-        混元文生图接口，基于混元大模型，根据输入的文本描述智能生成图片
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "TextToImageLite"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TextToImageLiteResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def TextToImageRapid(
-            self,
-            request: models.TextToImageRapidRequest,
-            opts: Dict = None,
-    ) -> models.TextToImageRapidResponse:
-        """
-        混元文生图接口，基于混元大模型，根据输入的文本描述智能生成图片
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "TextToImageRapid"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TextToImageRapidResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

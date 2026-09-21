@@ -671,6 +671,530 @@ class ConsumerLabel(AbstractModel):
         
 
 
+class ConsumerLabelFailure(AbstractModel):
+    r"""批量标签接口的单条失败项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>失败项标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: :class:`tencentcloud.trocket.v20230308.models.ConsumerLabelKey`
+        :param _Error: <p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.trocket.v20230308.models.ErrorInfo`
+        """
+        self._Key = None
+        self._Error = None
+
+    @property
+    def Key(self):
+        r"""<p>失败项标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerLabelKey`
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Error(self):
+        r"""<p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ErrorInfo`
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        if params.get("Key") is not None:
+            self._Key = ConsumerLabelKey()
+            self._Key._deserialize(params.get("Key"))
+        if params.get("Error") is not None:
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerLabelItem(AbstractModel):
+    r"""消费组灰度标签项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: <p>标签名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        :param _State: <p>标签状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        :param _UpdatedAt: <p>最近更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: int
+        """
+        self._Label = None
+        self._State = None
+        self._UpdatedAt = None
+
+    @property
+    def Label(self):
+        r"""<p>标签名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def State(self):
+        r"""<p>标签状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>最近更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._State = params.get("State")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerLabelKey(AbstractModel):
+    r"""消费组灰度标签键
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Group: <p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _Label: <p>灰度标签名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        """
+        self._Group = None
+        self._Label = None
+
+    @property
+    def Group(self):
+        r"""<p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Label(self):
+        r"""<p>灰度标签名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._Group = params.get("Group")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerLabelList(AbstractModel):
+    r"""单个消费组下的标签列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Group: <p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _TotalCount: <p>标签数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Labels: <p>标签列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of ConsumerLabelItem
+        """
+        self._Group = None
+        self._TotalCount = None
+        self._Labels = None
+
+    @property
+    def Group(self):
+        r"""<p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def TotalCount(self):
+        r"""<p>标签数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Labels(self):
+        r"""<p>标签列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsumerLabelItem
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._Group = params.get("Group")
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = ConsumerLabelItem()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerLabelRoute(AbstractModel):
+    r"""单个标签键命中的 Topic 路由结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>标签键</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: :class:`tencentcloud.trocket.v20230308.models.ConsumerLabelKey`
+        :param _Routes: <p>命中的路由规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Routes: list of ConsumerLabelRouteItem
+        """
+        self._Key = None
+        self._Routes = None
+
+    @property
+    def Key(self):
+        r"""<p>标签键</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerLabelKey`
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Routes(self):
+        r"""<p>命中的路由规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsumerLabelRouteItem
+        """
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
+
+
+    def _deserialize(self, params):
+        if params.get("Key") is not None:
+            self._Key = ConsumerLabelKey()
+            self._Key._deserialize(params.get("Key"))
+        if params.get("Routes") is not None:
+            self._Routes = []
+            for item in params.get("Routes"):
+                obj = ConsumerLabelRouteItem()
+                obj._deserialize(item)
+                self._Routes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerLabelRouteItem(AbstractModel):
+    r"""标签命中的单条 Topic 路由规则项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: <p>Topic 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _MatchCondition: <p>匹配条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MatchCondition: str
+        :param _TargetConsumerLabel: <p>目标消费组灰度标签名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetConsumerLabel: str
+        """
+        self._Topic = None
+        self._MatchCondition = None
+        self._TargetConsumerLabel = None
+
+    @property
+    def Topic(self):
+        r"""<p>Topic 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def MatchCondition(self):
+        r"""<p>匹配条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MatchCondition
+
+    @MatchCondition.setter
+    def MatchCondition(self, MatchCondition):
+        self._MatchCondition = MatchCondition
+
+    @property
+    def TargetConsumerLabel(self):
+        r"""<p>目标消费组灰度标签名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetConsumerLabel
+
+    @TargetConsumerLabel.setter
+    def TargetConsumerLabel(self, TargetConsumerLabel):
+        self._TargetConsumerLabel = TargetConsumerLabel
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._MatchCondition = params.get("MatchCondition")
+        self._TargetConsumerLabel = params.get("TargetConsumerLabel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerRouteKey(AbstractModel):
+    r"""消费组灰度路由配置键
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: <p>Topic 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _Group: <p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        """
+        self._Topic = None
+        self._Group = None
+
+    @property
+    def Topic(self):
+        r"""<p>Topic 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Group(self):
+        r"""<p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._Group = params.get("Group")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsumerRouteLabelKey(AbstractModel):
+    r"""消费组灰度路由配置及标签键
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: <p>Topic 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _Group: <p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _Label: <p>灰度标签名称，为空表示完整路由配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Label: str
+        """
+        self._Topic = None
+        self._Group = None
+        self._Label = None
+
+    @property
+    def Topic(self):
+        r"""<p>Topic 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Group(self):
+        r"""<p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Label(self):
+        r"""<p>灰度标签名称，为空表示完整路由配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._Group = params.get("Group")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateConsumerGroupRequest(AbstractModel):
     r"""CreateConsumerGroup请求参数结构体
 
@@ -1028,6 +1552,142 @@ class CreateConsumerLabelResponse(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._Group = params.get("Group")
         self._Label = params.get("Label")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConsumerLabelsRequest(AbstractModel):
+    r"""CreateConsumerLabels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Labels: <p>消费组标签列表</p><p>入参限制：批量上限为 32 条</p>
+        :type Labels: list of ConsumerLabelKey
+        """
+        self._InstanceId = None
+        self._Labels = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Labels(self):
+        r"""<p>消费组标签列表</p><p>入参限制：批量上限为 32 条</p>
+        :rtype: list of ConsumerLabelKey
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = ConsumerLabelKey()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsumerLabelsResponse(AbstractModel):
+    r"""CreateConsumerLabels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _FailedCount: <p>失败数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedCount: int
+        :param _Failures: <p>创建失败的消费组标签列表</p>
+        :type Failures: list of ConsumerLabelFailure
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FailedCount = None
+        self._Failures = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FailedCount(self):
+        r"""<p>失败数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def Failures(self):
+        r"""<p>创建失败的消费组标签列表</p>
+        :rtype: list of ConsumerLabelFailure
+        """
+        return self._Failures
+
+    @Failures.setter
+    def Failures(self, Failures):
+        self._Failures = Failures
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._FailedCount = params.get("FailedCount")
+        if params.get("Failures") is not None:
+            self._Failures = []
+            for item in params.get("Failures"):
+                obj = ConsumerLabelFailure()
+                obj._deserialize(item)
+                self._Failures.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2144,6 +2804,199 @@ class DeleteConsumerLabelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteConsumerLabelsRequest(AbstractModel):
+    r"""DeleteConsumerLabels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Labels: <p>批量删除的消费标签列表</p><p>入参限制：批量上限为 32 条</p>
+        :type Labels: list of ConsumerLabelKey
+        """
+        self._InstanceId = None
+        self._Labels = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Labels(self):
+        r"""<p>批量删除的消费标签列表</p><p>入参限制：批量上限为 32 条</p>
+        :rtype: list of ConsumerLabelKey
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = ConsumerLabelKey()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerLabelsResponse(AbstractModel):
+    r"""DeleteConsumerLabels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _FailedCount: <p>失败数量</p>
+        :type FailedCount: int
+        :param _Failures: <p>删除失败的消费组标签列表</p>
+        :type Failures: list of ConsumerLabelFailure
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FailedCount = None
+        self._Failures = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FailedCount(self):
+        r"""<p>失败数量</p>
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def Failures(self):
+        r"""<p>删除失败的消费组标签列表</p>
+        :rtype: list of ConsumerLabelFailure
+        """
+        return self._Failures
+
+    @Failures.setter
+    def Failures(self, Failures):
+        self._Failures = Failures
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._FailedCount = params.get("FailedCount")
+        if params.get("Failures") is not None:
+            self._Failures = []
+            for item in params.get("Failures"):
+                obj = ConsumerLabelFailure()
+                obj._deserialize(item)
+                self._Failures.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConsumerRouteConfigFailure(AbstractModel):
+    r"""批量删除路由配置的单条失败项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>失败项标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: :class:`tencentcloud.trocket.v20230308.models.ConsumerRouteLabelKey`
+        :param _Error: <p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.trocket.v20230308.models.ErrorInfo`
+        """
+        self._Key = None
+        self._Error = None
+
+    @property
+    def Key(self):
+        r"""<p>失败项标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerRouteLabelKey`
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Error(self):
+        r"""<p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ErrorInfo`
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        if params.get("Key") is not None:
+            self._Key = ConsumerRouteLabelKey()
+            self._Key._deserialize(params.get("Key"))
+        if params.get("Error") is not None:
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteConsumerRouteConfigRequest(AbstractModel):
     r"""DeleteConsumerRouteConfig请求参数结构体
 
@@ -2250,6 +3103,140 @@ class DeleteConsumerRouteConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConsumerRouteConfigsRequest(AbstractModel):
+    r"""DeleteConsumerRouteConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Configs: <p>批量删除的消费组路由列表</p><p>入参限制：批量上限为 32 条</p><p>传入 Label 表示只删除该标签路由，不传表示删除完整路由</p>
+        :type Configs: list of ConsumerRouteLabelKey
+        """
+        self._InstanceId = None
+        self._Configs = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Configs(self):
+        r"""<p>批量删除的消费组路由列表</p><p>入参限制：批量上限为 32 条</p><p>传入 Label 表示只删除该标签路由，不传表示删除完整路由</p>
+        :rtype: list of ConsumerRouteLabelKey
+        """
+        return self._Configs
+
+    @Configs.setter
+    def Configs(self, Configs):
+        self._Configs = Configs
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Configs") is not None:
+            self._Configs = []
+            for item in params.get("Configs"):
+                obj = ConsumerRouteLabelKey()
+                obj._deserialize(item)
+                self._Configs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsumerRouteConfigsResponse(AbstractModel):
+    r"""DeleteConsumerRouteConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _FailedCount: <p>失败数量</p>
+        :type FailedCount: int
+        :param _Failures: <p>删除失败的消费者路由列表</p>
+        :type Failures: list of DeleteConsumerRouteConfigFailure
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FailedCount = None
+        self._Failures = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FailedCount(self):
+        r"""<p>失败数量</p>
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def Failures(self):
+        r"""<p>删除失败的消费者路由列表</p>
+        :rtype: list of DeleteConsumerRouteConfigFailure
+        """
+        return self._Failures
+
+    @Failures.setter
+    def Failures(self, Failures):
+        self._Failures = Failures
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._FailedCount = params.get("FailedCount")
+        if params.get("Failures") is not None:
+            self._Failures = []
+            for item in params.get("Failures"):
+                obj = DeleteConsumerRouteConfigFailure()
+                obj._deserialize(item)
+                self._Failures.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3517,6 +4504,120 @@ class DescribeConsumerLabelListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeConsumerLabelListsRequest(AbstractModel):
+    r"""DescribeConsumerLabelLists请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Groups: <p>消费组名称列表</p><p>入参限制：批量上限为 32 条</p>
+        :type Groups: list of str
+        """
+        self._InstanceId = None
+        self._Groups = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Groups(self):
+        r"""<p>消费组名称列表</p><p>入参限制：批量上限为 32 条</p>
+        :rtype: list of str
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Groups = params.get("Groups")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerLabelListsResponse(AbstractModel):
+    r"""DescribeConsumerLabelLists返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _Results: <p>消费者标签列表</p>
+        :type Results: list of ConsumerLabelList
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Results(self):
+        r"""<p>消费者标签列表</p>
+        :rtype: list of ConsumerLabelList
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = ConsumerLabelList()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeConsumerLabelRequest(AbstractModel):
     r"""DescribeConsumerLabel请求参数结构体
 
@@ -3625,6 +4726,125 @@ class DescribeConsumerLabelResponse(AbstractModel):
         if params.get("Label") is not None:
             self._Label = ConsumerLabel()
             self._Label._deserialize(params.get("Label"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerLabelRoutesRequest(AbstractModel):
+    r"""DescribeConsumerLabelRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Labels: <p>批量查询的消费者标签列表</p><p>入参限制：批量上限为 32 条</p>
+        :type Labels: list of ConsumerLabelKey
+        """
+        self._InstanceId = None
+        self._Labels = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Labels(self):
+        r"""<p>批量查询的消费者标签列表</p><p>入参限制：批量上限为 32 条</p>
+        :rtype: list of ConsumerLabelKey
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = ConsumerLabelKey()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerLabelRoutesResponse(AbstractModel):
+    r"""DescribeConsumerLabelRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _Results: <p>消费者标签绑定的路由</p>
+        :type Results: list of ConsumerLabelRoute
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Results(self):
+        r"""<p>消费者标签绑定的路由</p>
+        :rtype: list of ConsumerLabelRoute
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = ConsumerLabelRoute()
+                obj._deserialize(item)
+                self._Results.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3750,6 +4970,102 @@ class DescribeConsumerLagResponse(AbstractModel):
     def _deserialize(self, params):
         self._ConsumerLag = params.get("ConsumerLag")
         self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerRouteConfigItem(AbstractModel):
+    r"""批量查询路由配置的单条结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>配置项标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: :class:`tencentcloud.trocket.v20230308.models.ConsumerRouteKey`
+        :param _Version: <p>版本号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: int
+        :param _Rules: <p>路由规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of RouteRule
+        :param _CutTimestamp: <p>切流时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CutTimestamp: int
+        """
+        self._Key = None
+        self._Version = None
+        self._Rules = None
+        self._CutTimestamp = None
+
+    @property
+    def Key(self):
+        r"""<p>配置项标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerRouteKey`
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Version(self):
+        r"""<p>版本号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Rules(self):
+        r"""<p>路由规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RouteRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def CutTimestamp(self):
+        r"""<p>切流时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CutTimestamp
+
+    @CutTimestamp.setter
+    def CutTimestamp(self, CutTimestamp):
+        self._CutTimestamp = CutTimestamp
+
+
+    def _deserialize(self, params):
+        if params.get("Key") is not None:
+            self._Key = ConsumerRouteKey()
+            self._Key._deserialize(params.get("Key"))
+        self._Version = params.get("Version")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RouteRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._CutTimestamp = params.get("CutTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeConsumerRouteConfigRequest(AbstractModel):
@@ -3893,6 +5209,125 @@ class DescribeConsumerRouteConfigResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._CutTimestamp = params.get("CutTimestamp")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsumerRouteConfigsRequest(AbstractModel):
+    r"""DescribeConsumerRouteConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Configs: <p>批量查询的路由配置列表</p><p>入参限制：批量上限为 32 条</p>
+        :type Configs: list of ConsumerRouteKey
+        """
+        self._InstanceId = None
+        self._Configs = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Configs(self):
+        r"""<p>批量查询的路由配置列表</p><p>入参限制：批量上限为 32 条</p>
+        :rtype: list of ConsumerRouteKey
+        """
+        return self._Configs
+
+    @Configs.setter
+    def Configs(self, Configs):
+        self._Configs = Configs
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Configs") is not None:
+            self._Configs = []
+            for item in params.get("Configs"):
+                obj = ConsumerRouteKey()
+                obj._deserialize(item)
+                self._Configs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsumerRouteConfigsResponse(AbstractModel):
+    r"""DescribeConsumerRouteConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _Results: <p>路由配置列表</p>
+        :type Results: list of DescribeConsumerRouteConfigItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Results(self):
+        r"""<p>路由配置列表</p>
+        :rtype: list of DescribeConsumerRouteConfigItem
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = DescribeConsumerRouteConfigItem()
+                obj._deserialize(item)
+                self._Results.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8323,6 +9758,61 @@ POSTPAID 按量付费
         
 
 
+class ErrorInfo(AbstractModel):
+    r"""错误信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: <p>错误码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        :param _Message: <p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self._Code = None
+        self._Message = None
+
+    @property
+    def Code(self):
+        r"""<p>错误码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""<p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""查询过滤器
 
@@ -11510,6 +13000,142 @@ PLATINUM，铂金版
         
 
 
+class PutConsumerRouteConfigFailure(AbstractModel):
+    r"""批量写入路由配置的单条失败项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>失败项标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: :class:`tencentcloud.trocket.v20230308.models.ConsumerRouteKey`
+        :param _Error: <p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Error: :class:`tencentcloud.trocket.v20230308.models.ErrorInfo`
+        """
+        self._Key = None
+        self._Error = None
+
+    @property
+    def Key(self):
+        r"""<p>失败项标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerRouteKey`
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Error(self):
+        r"""<p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.ErrorInfo`
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        if params.get("Key") is not None:
+            self._Key = ConsumerRouteKey()
+            self._Key._deserialize(params.get("Key"))
+        if params.get("Error") is not None:
+            self._Error = ErrorInfo()
+            self._Error._deserialize(params.get("Error"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PutConsumerRouteConfigItem(AbstractModel):
+    r"""批量写入路由配置的单个配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: <p>Topic 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _Group: <p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _Rules: <p>路由规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of RouteRule
+        """
+        self._Topic = None
+        self._Group = None
+        self._Rules = None
+
+    @property
+    def Topic(self):
+        r"""<p>Topic 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Group(self):
+        r"""<p>消费组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Rules(self):
+        r"""<p>路由规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RouteRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._Group = params.get("Group")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RouteRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PutConsumerRouteConfigRequest(AbstractModel):
     r"""PutConsumerRouteConfig请求参数结构体
 
@@ -11681,6 +13307,140 @@ class PutConsumerRouteConfigResponse(AbstractModel):
         self._Topic = params.get("Topic")
         self._Group = params.get("Group")
         self._Version = params.get("Version")
+        self._RequestId = params.get("RequestId")
+
+
+class PutConsumerRouteConfigsRequest(AbstractModel):
+    r"""PutConsumerRouteConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Configs: <p>批量写入的消费者路由配置列表</p><p>入参限制：批量上限为 32 条</p><p>覆盖式写入</p>
+        :type Configs: list of PutConsumerRouteConfigItem
+        """
+        self._InstanceId = None
+        self._Configs = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Configs(self):
+        r"""<p>批量写入的消费者路由配置列表</p><p>入参限制：批量上限为 32 条</p><p>覆盖式写入</p>
+        :rtype: list of PutConsumerRouteConfigItem
+        """
+        return self._Configs
+
+    @Configs.setter
+    def Configs(self, Configs):
+        self._Configs = Configs
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Configs") is not None:
+            self._Configs = []
+            for item in params.get("Configs"):
+                obj = PutConsumerRouteConfigItem()
+                obj._deserialize(item)
+                self._Configs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PutConsumerRouteConfigsResponse(AbstractModel):
+    r"""PutConsumerRouteConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _FailedCount: <p>失败数量</p>
+        :type FailedCount: int
+        :param _Failures: <p>写入失败的消费者路由配置列表</p>
+        :type Failures: list of PutConsumerRouteConfigFailure
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FailedCount = None
+        self._Failures = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FailedCount(self):
+        r"""<p>失败数量</p>
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def Failures(self):
+        r"""<p>写入失败的消费者路由配置列表</p>
+        :rtype: list of PutConsumerRouteConfigFailure
+        """
+        return self._Failures
+
+    @Failures.setter
+    def Failures(self, Failures):
+        self._Failures = Failures
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._FailedCount = params.get("FailedCount")
+        if params.get("Failures") is not None:
+            self._Failures = []
+            for item in params.get("Failures"):
+                obj = PutConsumerRouteConfigFailure()
+                obj._deserialize(item)
+                self._Failures.append(obj)
         self._RequestId = params.get("RequestId")
 
 

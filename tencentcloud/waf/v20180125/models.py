@@ -17425,14 +17425,14 @@ class DeleteExportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExportId: 日志导出ID
+        :param _ExportId: <p>日志导出ID，可以通过DescribeExports接口获取</p>
         :type ExportId: str
         """
         self._ExportId = None
 
     @property
     def ExportId(self):
-        r"""日志导出ID
+        r"""<p>日志导出ID，可以通过DescribeExports接口获取</p>
         :rtype: str
         """
         return self._ExportId
@@ -17962,7 +17962,7 @@ class DeleteOwaspWhiteRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ids: 规则白名单ID列表
+        :param _Ids: 规则白名单ID列表，可通过 [DescribeOwaspWhiteRule](https://cloud.tencent.com/document/product/627/122155) 接口获取
         :type Ids: list of int non-negative
         :param _Domain: 域名
         :type Domain: str
@@ -17972,7 +17972,7 @@ class DeleteOwaspWhiteRuleRequest(AbstractModel):
 
     @property
     def Ids(self):
-        r"""规则白名单ID列表
+        r"""规则白名单ID列表，可通过 [DescribeOwaspWhiteRule](https://cloud.tencent.com/document/product/627/122155) 接口获取
         :rtype: list of int non-negative
         """
         return self._Ids
@@ -29741,14 +29741,14 @@ class DescribePostCLSFlowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志。
+        :param _LogType: <p>1-访问日志，2-攻击日志，默认为访问日志。</p>
         :type LogType: int
         """
         self._LogType = None
 
     @property
     def LogType(self):
-        r"""1-访问日志，2-攻击日志，默认为访问日志。
+        r"""<p>1-访问日志，2-攻击日志，默认为访问日志。</p>
         :rtype: int
         """
         return self._LogType
@@ -29777,7 +29777,7 @@ class DescribePostCLSFlowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PostCLSFlows: 客户的投递流列表
+        :param _PostCLSFlows: <p>客户的投递流列表</p>
         :type PostCLSFlows: list of PostCLSFlowInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29787,7 +29787,7 @@ class DescribePostCLSFlowsResponse(AbstractModel):
 
     @property
     def PostCLSFlows(self):
-        r"""客户的投递流列表
+        r"""<p>客户的投递流列表</p>
         :rtype: list of PostCLSFlowInfo
         """
         return self._PostCLSFlows
@@ -33121,9 +33121,9 @@ class DestroyPostCKafkaFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 投递流的流ID
+        :param _FlowId: <p>投递流的流ID，可以通过DescribePostCKafkaFlows接口获取</p>
         :type FlowId: int
-        :param _LogType: 1-访问日志，2-攻击日志，默认为访问日志。
+        :param _LogType: <p>1-访问日志，2-攻击日志，默认为访问日志。</p>
         :type LogType: int
         """
         self._FlowId = None
@@ -33131,7 +33131,7 @@ class DestroyPostCKafkaFlowRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""投递流的流ID
+        r"""<p>投递流的流ID，可以通过DescribePostCKafkaFlows接口获取</p>
         :rtype: int
         """
         return self._FlowId
@@ -33142,7 +33142,7 @@ class DestroyPostCKafkaFlowRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""1-访问日志，2-攻击日志，默认为访问日志。
+        r"""<p>1-访问日志，2-攻击日志，默认为访问日志。</p>
         :rtype: int
         """
         return self._LogType
@@ -38203,11 +38203,11 @@ class HostDel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainId: 域名ID
+        :param _DomainId: <p>域名ID，使用DescribeDomains接口可以查询获取</p>
         :type DomainId: str
-        :param _InstanceID: 实例类型
+        :param _InstanceID: <p>实例类型</p>
         :type InstanceID: str
         """
         self._Domain = None
@@ -38216,7 +38216,7 @@ class HostDel(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -38227,7 +38227,7 @@ class HostDel(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名ID
+        r"""<p>域名ID，使用DescribeDomains接口可以查询获取</p>
         :rtype: str
         """
         return self._DomainId
@@ -38238,7 +38238,7 @@ class HostDel(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: str
         """
         return self._InstanceID

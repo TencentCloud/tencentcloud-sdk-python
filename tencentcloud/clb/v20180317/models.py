@@ -5153,11 +5153,20 @@ class Coefficient(AbstractModel):
         :type InputCoefficient: float
         :param _OutputCoefficient: <p>输出积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：100</p>
         :type OutputCoefficient: float
+        :param _InputImageCoefficient: <p>输入图片系数</p>
+        :type InputImageCoefficient: float
+        :param _InputVideoSecondCoefficient: <p>输入视频每秒系数</p>
+        :type InputVideoSecondCoefficient: float
+        :param _OutputVideoSecondCoefficient: <p>输出视频每秒系数</p>
+        :type OutputVideoSecondCoefficient: float
         """
         self._InputCachedCoefficient = None
         self._InputCacheCreationCoefficient = None
         self._InputCoefficient = None
         self._OutputCoefficient = None
+        self._InputImageCoefficient = None
+        self._InputVideoSecondCoefficient = None
+        self._OutputVideoSecondCoefficient = None
 
     @property
     def InputCachedCoefficient(self):
@@ -5203,12 +5212,235 @@ class Coefficient(AbstractModel):
     def OutputCoefficient(self, OutputCoefficient):
         self._OutputCoefficient = OutputCoefficient
 
+    @property
+    def InputImageCoefficient(self):
+        r"""<p>输入图片系数</p>
+        :rtype: float
+        """
+        return self._InputImageCoefficient
+
+    @InputImageCoefficient.setter
+    def InputImageCoefficient(self, InputImageCoefficient):
+        self._InputImageCoefficient = InputImageCoefficient
+
+    @property
+    def InputVideoSecondCoefficient(self):
+        r"""<p>输入视频每秒系数</p>
+        :rtype: float
+        """
+        return self._InputVideoSecondCoefficient
+
+    @InputVideoSecondCoefficient.setter
+    def InputVideoSecondCoefficient(self, InputVideoSecondCoefficient):
+        self._InputVideoSecondCoefficient = InputVideoSecondCoefficient
+
+    @property
+    def OutputVideoSecondCoefficient(self):
+        r"""<p>输出视频每秒系数</p>
+        :rtype: float
+        """
+        return self._OutputVideoSecondCoefficient
+
+    @OutputVideoSecondCoefficient.setter
+    def OutputVideoSecondCoefficient(self, OutputVideoSecondCoefficient):
+        self._OutputVideoSecondCoefficient = OutputVideoSecondCoefficient
+
 
     def _deserialize(self, params):
         self._InputCachedCoefficient = params.get("InputCachedCoefficient")
         self._InputCacheCreationCoefficient = params.get("InputCacheCreationCoefficient")
         self._InputCoefficient = params.get("InputCoefficient")
         self._OutputCoefficient = params.get("OutputCoefficient")
+        self._InputImageCoefficient = params.get("InputImageCoefficient")
+        self._InputVideoSecondCoefficient = params.get("InputVideoSecondCoefficient")
+        self._OutputVideoSecondCoefficient = params.get("OutputVideoSecondCoefficient")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CoefficientScheduleRule(AbstractModel):
+    r"""峰谷计费配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Weekdays: <p>1～7，表示周一至周日</p>
+        :type Weekdays: list of int non-negative
+        :param _StartTime: <p>00:00～23:59，固定 UTC+8，窗口左闭</p><p>参数格式：HH:mm</p>
+        :type StartTime: str
+        :param _EndTime: <p>大于 StartTime，最大 24:00，窗口右开；跨午夜拆分并调整星期</p><p>参数格式：HH:mm</p>
+        :type EndTime: str
+        :param _Multiplier: <p>有限非负数，建议最多 6 位小数；0 免费、0.5 半价、1 原价，可大于 1；倍率计算后的价格须在服务支持的数值范围内</p>
+        :type Multiplier: float
+        """
+        self._Weekdays = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Multiplier = None
+
+    @property
+    def Weekdays(self):
+        r"""<p>1～7，表示周一至周日</p>
+        :rtype: list of int non-negative
+        """
+        return self._Weekdays
+
+    @Weekdays.setter
+    def Weekdays(self, Weekdays):
+        self._Weekdays = Weekdays
+
+    @property
+    def StartTime(self):
+        r"""<p>00:00～23:59，固定 UTC+8，窗口左闭</p><p>参数格式：HH:mm</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>大于 StartTime，最大 24:00，窗口右开；跨午夜拆分并调整星期</p><p>参数格式：HH:mm</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Multiplier(self):
+        r"""<p>有限非负数，建议最多 6 位小数；0 免费、0.5 半价、1 原价，可大于 1；倍率计算后的价格须在服务支持的数值范围内</p>
+        :rtype: float
+        """
+        return self._Multiplier
+
+    @Multiplier.setter
+    def Multiplier(self, Multiplier):
+        self._Multiplier = Multiplier
+
+
+    def _deserialize(self, params):
+        self._Weekdays = params.get("Weekdays")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Multiplier = params.get("Multiplier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CoefficientTier(AbstractModel):
+    r"""积分分档配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Condition: <p>积分分级条件</p>
+        :type Condition: :class:`tencentcloud.clb.v20180317.models.CoefficientTierCondition`
+        :param _Coefficient: <p>积分系数</p>
+        :type Coefficient: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        """
+        self._Condition = None
+        self._Coefficient = None
+
+    @property
+    def Condition(self):
+        r"""<p>积分分级条件</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.CoefficientTierCondition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Coefficient(self):
+        r"""<p>积分系数</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        """
+        return self._Coefficient
+
+    @Coefficient.setter
+    def Coefficient(self, Coefficient):
+        self._Coefficient = Coefficient
+
+
+    def _deserialize(self, params):
+        if params.get("Condition") is not None:
+            self._Condition = CoefficientTierCondition()
+            self._Condition._deserialize(params.get("Condition"))
+        if params.get("Coefficient") is not None:
+            self._Coefficient = Coefficient()
+            self._Coefficient._deserialize(params.get("Coefficient"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CoefficientTierCondition(AbstractModel):
+    r"""积分分档匹配条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputTokensAbove: <p>仅 chat；单位 K Token（1K=1000 Token）；非负整数，最大 2147483647；非空数组首条必须为 0，数组内严格递增、无重复；输入总 Token 严格超过阈值×1000，取满足条件的最大阈值，整单选价</p>
+        :type InputTokensAbove: int
+        :param _Resolution: <p>video 仅 480p／720p／768p／1024p／1080p／2k／4k，统一小写；只校验全局枚举，不校验模型支持子集；列表内不重复</p>
+        :type Resolution: str
+        """
+        self._InputTokensAbove = None
+        self._Resolution = None
+
+    @property
+    def InputTokensAbove(self):
+        r"""<p>仅 chat；单位 K Token（1K=1000 Token）；非负整数，最大 2147483647；非空数组首条必须为 0，数组内严格递增、无重复；输入总 Token 严格超过阈值×1000，取满足条件的最大阈值，整单选价</p>
+        :rtype: int
+        """
+        return self._InputTokensAbove
+
+    @InputTokensAbove.setter
+    def InputTokensAbove(self, InputTokensAbove):
+        self._InputTokensAbove = InputTokensAbove
+
+    @property
+    def Resolution(self):
+        r"""<p>video 仅 480p／720p／768p／1024p／1080p／2k／4k，统一小写；只校验全局枚举，不校验模型支持子集；列表内不重复</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._InputTokensAbove = params.get("InputTokensAbove")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14736,13 +14968,13 @@ class DescribeModelAliasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <p>过滤条件</p><p>支持的过滤键：</p><ul><li>ModelAliasName：按模型别名过滤。</li></ul>
+        :param _Filters: <p>过滤条件</p><p></p>- ModelAliasName：模型别名<p></p><p></p>- Capability：输出模态<p></p>
         :type Filters: list of Filter
         :param _Limit: <p>每页数量，取值范围：[1, 100]，默认值：20。</p>
         :type Limit: int
         :param _Offset: <p>分页偏移量，默认值：0。</p>
         :type Offset: int
-        :param _Sort: <p>排序条件。支持按 InputCoefficient、InputCachedCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 3 个排序条件，排序字段不可重复。</p>
+        :param _Sort: <p>排序条件。支持按 InputCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 2 个排序条件，排序字段不可重复。</p>
         :type Sort: list of Sort
         """
         self._Filters = None
@@ -14752,7 +14984,7 @@ class DescribeModelAliasesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>过滤条件</p><p>支持的过滤键：</p><ul><li>ModelAliasName：按模型别名过滤。</li></ul>
+        r"""<p>过滤条件</p><p></p>- ModelAliasName：模型别名<p></p><p></p>- Capability：输出模态<p></p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -14785,7 +15017,7 @@ class DescribeModelAliasesRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""<p>排序条件。支持按 InputCoefficient、InputCachedCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 3 个排序条件，排序字段不可重复。</p>
+        r"""<p>排序条件。支持按 InputCoefficient 或 OutputCoefficient 排序，Order 支持 ASC、DESC。不传或传空数组时，默认按 OutputCoefficient 降序排列。最多支持 2 个排序条件，排序字段不可重复。</p>
         :rtype: list of Sort
         """
         return self._Sort
@@ -24820,8 +25052,12 @@ class ModelAlias(AbstractModel):
         :type Source: str
         :param _Status: <p>状态</p><p>枚举值：</p><ul><li>Active： 正常可用</li><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li></ul>
         :type Status: str
-        :param _Capability: <p>模型能力</p>
+        :param _Capability: <p>模型输出模态</p><p>枚举值：</p><ul><li>chat ： 文本</li><li>embedding： 向量</li><li>rerank： 重排序</li><li>video： 视频</li></ul>
         :type Capability: str
+        :param _CoefficientTiers: <p>分级积分系数配置</p>
+        :type CoefficientTiers: list of CoefficientTier
+        :param _CoefficientSchedule: <p>峰谷积分系数配置</p>
+        :type CoefficientSchedule: list of CoefficientScheduleRule
         """
         self._Coefficient = None
         self._ModelAliasName = None
@@ -24829,6 +25065,8 @@ class ModelAlias(AbstractModel):
         self._Source = None
         self._Status = None
         self._Capability = None
+        self._CoefficientTiers = None
+        self._CoefficientSchedule = None
 
     @property
     def Coefficient(self):
@@ -24887,7 +25125,7 @@ class ModelAlias(AbstractModel):
 
     @property
     def Capability(self):
-        r"""<p>模型能力</p>
+        r"""<p>模型输出模态</p><p>枚举值：</p><ul><li>chat ： 文本</li><li>embedding： 向量</li><li>rerank： 重排序</li><li>video： 视频</li></ul>
         :rtype: str
         """
         return self._Capability
@@ -24895,6 +25133,28 @@ class ModelAlias(AbstractModel):
     @Capability.setter
     def Capability(self, Capability):
         self._Capability = Capability
+
+    @property
+    def CoefficientTiers(self):
+        r"""<p>分级积分系数配置</p>
+        :rtype: list of CoefficientTier
+        """
+        return self._CoefficientTiers
+
+    @CoefficientTiers.setter
+    def CoefficientTiers(self, CoefficientTiers):
+        self._CoefficientTiers = CoefficientTiers
+
+    @property
+    def CoefficientSchedule(self):
+        r"""<p>峰谷积分系数配置</p>
+        :rtype: list of CoefficientScheduleRule
+        """
+        return self._CoefficientSchedule
+
+    @CoefficientSchedule.setter
+    def CoefficientSchedule(self, CoefficientSchedule):
+        self._CoefficientSchedule = CoefficientSchedule
 
 
     def _deserialize(self, params):
@@ -24911,6 +25171,18 @@ class ModelAlias(AbstractModel):
         self._Source = params.get("Source")
         self._Status = params.get("Status")
         self._Capability = params.get("Capability")
+        if params.get("CoefficientTiers") is not None:
+            self._CoefficientTiers = []
+            for item in params.get("CoefficientTiers"):
+                obj = CoefficientTier()
+                obj._deserialize(item)
+                self._CoefficientTiers.append(obj)
+        if params.get("CoefficientSchedule") is not None:
+            self._CoefficientSchedule = []
+            for item in params.get("CoefficientSchedule"):
+                obj = CoefficientScheduleRule()
+                obj._deserialize(item)
+                self._CoefficientSchedule.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29711,30 +29983,25 @@ class ModifyModelAliasAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Coefficient: <p>模型积分系数配置。</p><p>必填，包含 <code>InputCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p><code>InputCoefficient</code> 为输入积分系数。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>取值范围：[1, 200]，最多支持 1 位小数。</p>
-        :type Coefficient: :class:`tencentcloud.clb.v20180317.models.Coefficient`
         :param _ModelAliasNames: <p>模型别名</p>
         :type ModelAliasNames: list of str
+        :param _Coefficient: <p>基础积分系数配置，选填。不传时保留原配置。各系数字段均为选填，取值范围为 [0, 5000]，最多支持 6 位小数，0 表示零价。传入本参数时，至少填写一项有效系数，不能传空对象。</p>
+        :type Coefficient: :class:`tencentcloud.clb.v20180317.models.Coefficient`
         :param _ServiceProviderIds: <p>BYOK 实例（ServiceProvider）ID 列表。</p><p>可选，数组。传入时按 ServiceProvider 维度修改：把同一份 Coefficient 批量应用到数组内每一个实例（覆盖配置，仅作用于这些实例），此时 <code>ModelAliasNames</code> 只能传 1 个别名（即 1 别名 × N ServiceProvider）；数组需去重、非空、上限 100，任一实例不归属/不存在/该实例下无该别名将整批返回错误。不传时按 ModelAlias（账号）维度修改，作用于该别名下未单独配置覆盖的全部实例。</p>
         :type ServiceProviderIds: list of str
-        :param _Capability: <p>模型能力</p>
+        :param _Capability: <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :type Capability: str
+        :param _CoefficientTiers: <p>积分梯度设置</p>
+        :type CoefficientTiers: list of CoefficientTier
+        :param _CoefficientSchedule: <p>积分峰谷设置</p>
+        :type CoefficientSchedule: list of CoefficientScheduleRule
         """
-        self._Coefficient = None
         self._ModelAliasNames = None
+        self._Coefficient = None
         self._ServiceProviderIds = None
         self._Capability = None
-
-    @property
-    def Coefficient(self):
-        r"""<p>模型积分系数配置。</p><p>必填，包含 <code>InputCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p><code>InputCoefficient</code> 为输入积分系数。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>取值范围：[1, 200]，最多支持 1 位小数。</p>
-        :rtype: :class:`tencentcloud.clb.v20180317.models.Coefficient`
-        """
-        return self._Coefficient
-
-    @Coefficient.setter
-    def Coefficient(self, Coefficient):
-        self._Coefficient = Coefficient
+        self._CoefficientTiers = None
+        self._CoefficientSchedule = None
 
     @property
     def ModelAliasNames(self):
@@ -29746,6 +30013,17 @@ class ModifyModelAliasAttributesRequest(AbstractModel):
     @ModelAliasNames.setter
     def ModelAliasNames(self, ModelAliasNames):
         self._ModelAliasNames = ModelAliasNames
+
+    @property
+    def Coefficient(self):
+        r"""<p>基础积分系数配置，选填。不传时保留原配置。各系数字段均为选填，取值范围为 [0, 5000]，最多支持 6 位小数，0 表示零价。传入本参数时，至少填写一项有效系数，不能传空对象。</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.Coefficient`
+        """
+        return self._Coefficient
+
+    @Coefficient.setter
+    def Coefficient(self, Coefficient):
+        self._Coefficient = Coefficient
 
     @property
     def ServiceProviderIds(self):
@@ -29760,7 +30038,7 @@ class ModifyModelAliasAttributesRequest(AbstractModel):
 
     @property
     def Capability(self):
-        r"""<p>模型能力</p>
+        r"""<p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :rtype: str
         """
         return self._Capability
@@ -29769,14 +30047,48 @@ class ModifyModelAliasAttributesRequest(AbstractModel):
     def Capability(self, Capability):
         self._Capability = Capability
 
+    @property
+    def CoefficientTiers(self):
+        r"""<p>积分梯度设置</p>
+        :rtype: list of CoefficientTier
+        """
+        return self._CoefficientTiers
+
+    @CoefficientTiers.setter
+    def CoefficientTiers(self, CoefficientTiers):
+        self._CoefficientTiers = CoefficientTiers
+
+    @property
+    def CoefficientSchedule(self):
+        r"""<p>积分峰谷设置</p>
+        :rtype: list of CoefficientScheduleRule
+        """
+        return self._CoefficientSchedule
+
+    @CoefficientSchedule.setter
+    def CoefficientSchedule(self, CoefficientSchedule):
+        self._CoefficientSchedule = CoefficientSchedule
+
 
     def _deserialize(self, params):
+        self._ModelAliasNames = params.get("ModelAliasNames")
         if params.get("Coefficient") is not None:
             self._Coefficient = Coefficient()
             self._Coefficient._deserialize(params.get("Coefficient"))
-        self._ModelAliasNames = params.get("ModelAliasNames")
         self._ServiceProviderIds = params.get("ServiceProviderIds")
         self._Capability = params.get("Capability")
+        if params.get("CoefficientTiers") is not None:
+            self._CoefficientTiers = []
+            for item in params.get("CoefficientTiers"):
+                obj = CoefficientTier()
+                obj._deserialize(item)
+                self._CoefficientTiers.append(obj)
+        if params.get("CoefficientSchedule") is not None:
+            self._CoefficientSchedule = []
+            for item in params.get("CoefficientSchedule"):
+                obj = CoefficientScheduleRule()
+                obj._deserialize(item)
+                self._CoefficientSchedule.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35329,10 +35641,16 @@ class ServiceProviderCoefficient(AbstractModel):
         :type ServiceProviderId: str
         :param _ServiceProviderName: <p>BYOK 实例（ServiceProvider）名称。</p>
         :type ServiceProviderName: str
+        :param _CoefficientTiers: <p>分级积分系数设置</p>
+        :type CoefficientTiers: list of CoefficientTier
+        :param _CoefficientSchedule: <p>峰谷积分系数设置</p>
+        :type CoefficientSchedule: list of CoefficientScheduleRule
         """
         self._Coefficient = None
         self._ServiceProviderId = None
         self._ServiceProviderName = None
+        self._CoefficientTiers = None
+        self._CoefficientSchedule = None
 
     @property
     def Coefficient(self):
@@ -35368,6 +35686,28 @@ class ServiceProviderCoefficient(AbstractModel):
     def ServiceProviderName(self, ServiceProviderName):
         self._ServiceProviderName = ServiceProviderName
 
+    @property
+    def CoefficientTiers(self):
+        r"""<p>分级积分系数设置</p>
+        :rtype: list of CoefficientTier
+        """
+        return self._CoefficientTiers
+
+    @CoefficientTiers.setter
+    def CoefficientTiers(self, CoefficientTiers):
+        self._CoefficientTiers = CoefficientTiers
+
+    @property
+    def CoefficientSchedule(self):
+        r"""<p>峰谷积分系数设置</p>
+        :rtype: list of CoefficientScheduleRule
+        """
+        return self._CoefficientSchedule
+
+    @CoefficientSchedule.setter
+    def CoefficientSchedule(self, CoefficientSchedule):
+        self._CoefficientSchedule = CoefficientSchedule
+
 
     def _deserialize(self, params):
         if params.get("Coefficient") is not None:
@@ -35375,6 +35715,18 @@ class ServiceProviderCoefficient(AbstractModel):
             self._Coefficient._deserialize(params.get("Coefficient"))
         self._ServiceProviderId = params.get("ServiceProviderId")
         self._ServiceProviderName = params.get("ServiceProviderName")
+        if params.get("CoefficientTiers") is not None:
+            self._CoefficientTiers = []
+            for item in params.get("CoefficientTiers"):
+                obj = CoefficientTier()
+                obj._deserialize(item)
+                self._CoefficientTiers.append(obj)
+        if params.get("CoefficientSchedule") is not None:
+            self._CoefficientSchedule = []
+            for item in params.get("CoefficientSchedule"):
+                obj = CoefficientScheduleRule()
+                obj._deserialize(item)
+                self._CoefficientSchedule.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

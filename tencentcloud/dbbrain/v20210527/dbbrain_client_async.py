@@ -1447,6 +1447,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTopSpaceTablesV2(
+            self,
+            request: models.DescribeTopSpaceTablesV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeTopSpaceTablesV2Response:
+        """
+        表级空间 Top 对象查询（融合接口，多产品统一入口），按 SortBy 指定的排序字段返回实例内空间占用 Top N 的表/集合。支持产品：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。返回值根据产品类型返回对应字段：MySQL 系列返回 MysqlObjects，PostgreSQL 返回 PostgresObjects（PG 的 relation/bloat 字段与 MySQL 语义不同），MongoDB 返回 MongodbObjects。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopSpaceTablesV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopSpaceTablesV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUserAutonomyProfile(
             self,
             request: models.DescribeUserAutonomyProfileRequest,

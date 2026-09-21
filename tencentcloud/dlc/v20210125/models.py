@@ -84274,108 +84274,112 @@ class SparkJobInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: spark作业ID
+        :param _JobId: <p>spark作业ID</p>
         :type JobId: str
-        :param _JobName: spark作业名
+        :param _JobName: <p>spark作业名</p>
         :type JobName: str
-        :param _JobType: spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业
+        :param _JobType: <p>spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业</p>
         :type JobType: int
-        :param _DataEngine: 引擎名
+        :param _DataEngine: <p>引擎名</p>
         :type DataEngine: str
-        :param _Eni: 该字段已下线，请使用字段Datasource
+        :param _Eni: <p>该字段已下线，请使用字段Datasource</p>
         :type Eni: str
-        :param _IsLocal: 程序包是否本地上传，cos或者lakefs
+        :param _IsLocal: <p>程序包是否本地上传，cos或者lakefs</p>
         :type IsLocal: str
-        :param _JobFile: 程序包路径
+        :param _JobFile: <p>程序包路径</p>
         :type JobFile: str
-        :param _RoleArn: 角色ID
+        :param _RoleArn: <p>角色ID</p>
         :type RoleArn: int
-        :param _MainClass: spark作业运行主类
+        :param _MainClass: <p>spark作业运行主类</p>
         :type MainClass: str
-        :param _CmdArgs: 命令行参数，spark作业命令行参数，空格分隔
+        :param _CmdArgs: <p>命令行参数，spark作业命令行参数，空格分隔</p>
         :type CmdArgs: str
-        :param _JobConf: spark原生配置，换行符分隔
+        :param _JobConf: <p>spark原生配置，换行符分隔</p>
         :type JobConf: str
-        :param _IsLocalJars: 依赖jars是否本地上传，cos或者lakefs
+        :param _IsLocalJars: <p>依赖jars是否本地上传，cos或者lakefs</p>
         :type IsLocalJars: str
-        :param _JobJars: spark作业依赖jars，逗号分隔
+        :param _JobJars: <p>spark作业依赖jars，逗号分隔</p>
         :type JobJars: str
-        :param _IsLocalFiles: 依赖文件是否本地上传，cos或者lakefs
+        :param _IsLocalFiles: <p>依赖文件是否本地上传，cos或者lakefs</p>
         :type IsLocalFiles: str
-        :param _JobFiles: spark作业依赖文件，逗号分隔
+        :param _JobFiles: <p>spark作业依赖文件，逗号分隔</p>
         :type JobFiles: str
-        :param _JobDriverSize: spark作业driver资源大小
+        :param _JobDriverSize: <p>spark作业driver资源大小</p>
         :type JobDriverSize: str
-        :param _JobExecutorSize: spark作业executor资源大小
+        :param _JobExecutorSize: <p>spark作业executor资源大小</p>
         :type JobExecutorSize: str
-        :param _JobExecutorNums: spark作业executor个数
+        :param _JobExecutorNums: <p>spark作业executor个数</p>
         :type JobExecutorNums: int
-        :param _JobMaxAttempts: spark流任务最大重试次数
+        :param _JobMaxAttempts: <p>spark流任务最大重试次数</p>
         :type JobMaxAttempts: int
-        :param _JobCreator: spark作业创建者
+        :param _JobCreator: <p>spark作业创建者</p>
         :type JobCreator: str
-        :param _JobCreateTime: spark作业创建时间
+        :param _JobCreateTime: <p>spark作业创建时间</p>
         :type JobCreateTime: int
-        :param _JobUpdateTime: spark作业更新时间
+        :param _JobUpdateTime: <p>spark作业更新时间</p>
         :type JobUpdateTime: int
-        :param _CurrentTaskId: spark作业最近任务ID
+        :param _CurrentTaskId: <p>spark作业最近任务ID</p>
         :type CurrentTaskId: str
-        :param _JobStatus: spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5
+        :param _JobStatus: <p>spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5</p>
         :type JobStatus: int
-        :param _StreamingStat: spark流作业统计
+        :param _StreamingStat: <p>spark流作业统计</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamingStat: :class:`tencentcloud.dlc.v20210125.models.StreamingStatistics`
-        :param _DataSource: 数据源名
+        :param _DataSource: <p>数据源名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSource: str
-        :param _IsLocalPythonFiles: pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :param _IsLocalPythonFiles: <p>pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsLocalPythonFiles: str
-        :param _AppPythonFiles: 注：该返回值已废弃
+        :param _AppPythonFiles: <p>注：该返回值已废弃</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppPythonFiles: str
-        :param _IsLocalArchives: archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        :param _IsLocalArchives: <p>archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsLocalArchives: str
-        :param _JobArchives: archives：依赖资源
+        :param _JobArchives: <p>archives：依赖资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobArchives: str
-        :param _SparkImage: Spark Image 版本
+        :param _SparkImage: <p>Spark Image 版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkImage: str
-        :param _JobPythonFiles: pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+        :param _JobPythonFiles: <p>pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobPythonFiles: str
-        :param _TaskNum: 当前job正在运行或准备运行的任务个数
+        :param _TaskNum: <p>当前job正在运行或准备运行的任务个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNum: int
-        :param _DataEngineStatus: 引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；
+        :param _DataEngineStatus: <p>引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineStatus: int
-        :param _JobExecutorMaxNumbers: 指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums
+        :param _JobExecutorMaxNumbers: <p>指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobExecutorMaxNumbers: int
-        :param _SparkImageVersion: 镜像版本
+        :param _SparkImageVersion: <p>镜像版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkImageVersion: str
-        :param _SessionId: 查询脚本关联id
+        :param _SessionId: <p>查询脚本关联id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionId: str
-        :param _DataEngineClusterType: spark_emr_livy
+        :param _DataEngineClusterType: <p>spark_emr_livy</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineClusterType: str
-        :param _DataEngineImageVersion: Spark 3.2-EMR
+        :param _DataEngineImageVersion: <p>Spark 3.2-EMR</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineImageVersion: str
-        :param _IsInherit: 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+        :param _IsInherit: <p>任务资源配置是否继承集群模板，0（默认）不继承，1：继承</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsInherit: int
-        :param _IsSessionStarted: 是否使用session脚本的sql运行任务：false：否，true：是
+        :param _IsSessionStarted: <p>是否使用session脚本的sql运行任务：false：否，true：是</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSessionStarted: bool
-        :param _EngineTypeDetail: 引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
+        :param _EngineTypeDetail: <p>引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineTypeDetail: str
+        :param _DependencyPackages: <p>标准引擎依赖包</p>
+        :type DependencyPackages: list of DependencyPackage
+        :param _RunAsIdentity: <p>作业运行鉴权身份</p>
+        :type RunAsIdentity: str
         """
         self._JobId = None
         self._JobName = None
@@ -84419,10 +84423,12 @@ class SparkJobInfo(AbstractModel):
         self._IsInherit = None
         self._IsSessionStarted = None
         self._EngineTypeDetail = None
+        self._DependencyPackages = None
+        self._RunAsIdentity = None
 
     @property
     def JobId(self):
-        r"""spark作业ID
+        r"""<p>spark作业ID</p>
         :rtype: str
         """
         return self._JobId
@@ -84433,7 +84439,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobName(self):
-        r"""spark作业名
+        r"""<p>spark作业名</p>
         :rtype: str
         """
         return self._JobName
@@ -84444,7 +84450,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobType(self):
-        r"""spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业
+        r"""<p>spark作业类型，可去1或者2，1表示batch作业， 2表示streaming作业</p>
         :rtype: int
         """
         return self._JobType
@@ -84455,7 +84461,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataEngine(self):
-        r"""引擎名
+        r"""<p>引擎名</p>
         :rtype: str
         """
         return self._DataEngine
@@ -84466,7 +84472,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def Eni(self):
-        r"""该字段已下线，请使用字段Datasource
+        r"""<p>该字段已下线，请使用字段Datasource</p>
         :rtype: str
         """
         return self._Eni
@@ -84477,7 +84483,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocal(self):
-        r"""程序包是否本地上传，cos或者lakefs
+        r"""<p>程序包是否本地上传，cos或者lakefs</p>
         :rtype: str
         """
         return self._IsLocal
@@ -84488,7 +84494,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobFile(self):
-        r"""程序包路径
+        r"""<p>程序包路径</p>
         :rtype: str
         """
         return self._JobFile
@@ -84499,7 +84505,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def RoleArn(self):
-        r"""角色ID
+        r"""<p>角色ID</p>
         :rtype: int
         """
         return self._RoleArn
@@ -84510,7 +84516,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def MainClass(self):
-        r"""spark作业运行主类
+        r"""<p>spark作业运行主类</p>
         :rtype: str
         """
         return self._MainClass
@@ -84521,7 +84527,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def CmdArgs(self):
-        r"""命令行参数，spark作业命令行参数，空格分隔
+        r"""<p>命令行参数，spark作业命令行参数，空格分隔</p>
         :rtype: str
         """
         return self._CmdArgs
@@ -84532,7 +84538,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobConf(self):
-        r"""spark原生配置，换行符分隔
+        r"""<p>spark原生配置，换行符分隔</p>
         :rtype: str
         """
         return self._JobConf
@@ -84543,7 +84549,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocalJars(self):
-        r"""依赖jars是否本地上传，cos或者lakefs
+        r"""<p>依赖jars是否本地上传，cos或者lakefs</p>
         :rtype: str
         """
         return self._IsLocalJars
@@ -84554,7 +84560,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobJars(self):
-        r"""spark作业依赖jars，逗号分隔
+        r"""<p>spark作业依赖jars，逗号分隔</p>
         :rtype: str
         """
         return self._JobJars
@@ -84565,7 +84571,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocalFiles(self):
-        r"""依赖文件是否本地上传，cos或者lakefs
+        r"""<p>依赖文件是否本地上传，cos或者lakefs</p>
         :rtype: str
         """
         return self._IsLocalFiles
@@ -84576,7 +84582,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobFiles(self):
-        r"""spark作业依赖文件，逗号分隔
+        r"""<p>spark作业依赖文件，逗号分隔</p>
         :rtype: str
         """
         return self._JobFiles
@@ -84587,7 +84593,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobDriverSize(self):
-        r"""spark作业driver资源大小
+        r"""<p>spark作业driver资源大小</p>
         :rtype: str
         """
         return self._JobDriverSize
@@ -84598,7 +84604,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobExecutorSize(self):
-        r"""spark作业executor资源大小
+        r"""<p>spark作业executor资源大小</p>
         :rtype: str
         """
         return self._JobExecutorSize
@@ -84609,7 +84615,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobExecutorNums(self):
-        r"""spark作业executor个数
+        r"""<p>spark作业executor个数</p>
         :rtype: int
         """
         return self._JobExecutorNums
@@ -84620,7 +84626,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobMaxAttempts(self):
-        r"""spark流任务最大重试次数
+        r"""<p>spark流任务最大重试次数</p>
         :rtype: int
         """
         return self._JobMaxAttempts
@@ -84631,7 +84637,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobCreator(self):
-        r"""spark作业创建者
+        r"""<p>spark作业创建者</p>
         :rtype: str
         """
         return self._JobCreator
@@ -84642,7 +84648,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobCreateTime(self):
-        r"""spark作业创建时间
+        r"""<p>spark作业创建时间</p>
         :rtype: int
         """
         return self._JobCreateTime
@@ -84653,7 +84659,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobUpdateTime(self):
-        r"""spark作业更新时间
+        r"""<p>spark作业更新时间</p>
         :rtype: int
         """
         return self._JobUpdateTime
@@ -84664,7 +84670,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def CurrentTaskId(self):
-        r"""spark作业最近任务ID
+        r"""<p>spark作业最近任务ID</p>
         :rtype: str
         """
         return self._CurrentTaskId
@@ -84675,7 +84681,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobStatus(self):
-        r"""spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5
+        r"""<p>spark作业最近运行状态，初始化：0，运行中：1，成功：2，数据写入中： 3， 排队中： 4， 失败： -1， 已删除： -3，已过期： -5</p>
         :rtype: int
         """
         return self._JobStatus
@@ -84686,7 +84692,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def StreamingStat(self):
-        r"""spark流作业统计
+        r"""<p>spark流作业统计</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.StreamingStatistics`
         """
@@ -84698,7 +84704,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataSource(self):
-        r"""数据源名
+        r"""<p>数据源名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84710,7 +84716,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocalPythonFiles(self):
-        r"""pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        r"""<p>pyspark：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84722,7 +84728,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def AppPythonFiles(self):
-        r"""注：该返回值已废弃
+        r"""<p>注：该返回值已废弃</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84734,7 +84740,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsLocalArchives(self):
-        r"""archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）
+        r"""<p>archives：依赖上传方式，1、cos；2、lakefs（控制台使用，该方式不支持直接接口调用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84746,7 +84752,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobArchives(self):
-        r"""archives：依赖资源
+        r"""<p>archives：依赖资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84758,7 +84764,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def SparkImage(self):
-        r"""Spark Image 版本
+        r"""<p>Spark Image 版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84770,7 +84776,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobPythonFiles(self):
-        r"""pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔
+        r"""<p>pyspark：python依赖, 除py文件外，还支持zip/egg等归档格式，多文件以逗号分隔</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84782,7 +84788,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def TaskNum(self):
-        r"""当前job正在运行或准备运行的任务个数
+        r"""<p>当前job正在运行或准备运行的任务个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -84794,7 +84800,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataEngineStatus(self):
-        r"""引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；
+        r"""<p>引擎状态：-100（默认：未知状态），-2~11：引擎正常状态；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -84806,7 +84812,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def JobExecutorMaxNumbers(self):
-        r"""指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums
+        r"""<p>指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于JobExecutorNums</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -84818,7 +84824,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def SparkImageVersion(self):
-        r"""镜像版本
+        r"""<p>镜像版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84830,7 +84836,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""查询脚本关联id
+        r"""<p>查询脚本关联id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84842,7 +84848,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataEngineClusterType(self):
-        r"""spark_emr_livy
+        r"""<p>spark_emr_livy</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84854,7 +84860,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def DataEngineImageVersion(self):
-        r"""Spark 3.2-EMR
+        r"""<p>Spark 3.2-EMR</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84866,7 +84872,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsInherit(self):
-        r"""任务资源配置是否继承集群模板，0（默认）不继承，1：继承
+        r"""<p>任务资源配置是否继承集群模板，0（默认）不继承，1：继承</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -84878,7 +84884,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def IsSessionStarted(self):
-        r"""是否使用session脚本的sql运行任务：false：否，true：是
+        r"""<p>是否使用session脚本的sql运行任务：false：否，true：是</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -84890,7 +84896,7 @@ class SparkJobInfo(AbstractModel):
 
     @property
     def EngineTypeDetail(self):
-        r"""引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto
+        r"""<p>引擎详细类型：SparkSQL、PrestoSQL、SparkBatch、StandardSpark、StandardPresto</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -84899,6 +84905,28 @@ class SparkJobInfo(AbstractModel):
     @EngineTypeDetail.setter
     def EngineTypeDetail(self, EngineTypeDetail):
         self._EngineTypeDetail = EngineTypeDetail
+
+    @property
+    def DependencyPackages(self):
+        r"""<p>标准引擎依赖包</p>
+        :rtype: list of DependencyPackage
+        """
+        return self._DependencyPackages
+
+    @DependencyPackages.setter
+    def DependencyPackages(self, DependencyPackages):
+        self._DependencyPackages = DependencyPackages
+
+    @property
+    def RunAsIdentity(self):
+        r"""<p>作业运行鉴权身份</p>
+        :rtype: str
+        """
+        return self._RunAsIdentity
+
+    @RunAsIdentity.setter
+    def RunAsIdentity(self, RunAsIdentity):
+        self._RunAsIdentity = RunAsIdentity
 
 
     def _deserialize(self, params):
@@ -84946,6 +84974,13 @@ class SparkJobInfo(AbstractModel):
         self._IsInherit = params.get("IsInherit")
         self._IsSessionStarted = params.get("IsSessionStarted")
         self._EngineTypeDetail = params.get("EngineTypeDetail")
+        if params.get("DependencyPackages") is not None:
+            self._DependencyPackages = []
+            for item in params.get("DependencyPackages"):
+                obj = DependencyPackage()
+                obj._deserialize(item)
+                self._DependencyPackages.append(obj)
+        self._RunAsIdentity = params.get("RunAsIdentity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

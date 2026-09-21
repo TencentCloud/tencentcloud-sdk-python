@@ -14212,6 +14212,211 @@ class DescribeTopSpaceTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTopSpaceTablesV2Request(AbstractModel):
+    r"""DescribeTopSpaceTablesV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _Product: <p>服务产品类型，支持值包括：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。</p>
+        :type Product: str
+        :param _Date: <p>查询日期，格式：yyyy-MM-dd。默认当天。</p>
+        :type Date: str
+        :param _SortBy: <p>排序字段。MySQL/PG/TDSQL 系列支持：PhysicalFileSize/DataLength/IndexLength/TotalLength/DataFree/FragRatio/TableRows，默认 PhysicalFileSize。MongoDB 支持：Collection.CollectionSize/Collection.StorageSize/Collection.Size/Collection.AvgObjSize/Collection.Count/Collection.TotalIndexSize，默认 Collection.CollectionSize。</p>
+        :type SortBy: str
+        :param _Limit: <p>返回数量，默认20，最大100。</p>
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._Date = None
+        self._SortBy = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型，支持值包括：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Date(self):
+        r"""<p>查询日期，格式：yyyy-MM-dd。默认当天。</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段。MySQL/PG/TDSQL 系列支持：PhysicalFileSize/DataLength/IndexLength/TotalLength/DataFree/FragRatio/TableRows，默认 PhysicalFileSize。MongoDB 支持：Collection.CollectionSize/Collection.StorageSize/Collection.Size/Collection.AvgObjSize/Collection.Count/Collection.TotalIndexSize，默认 Collection.CollectionSize。</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认20，最大100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._Date = params.get("Date")
+        self._SortBy = params.get("SortBy")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopSpaceTablesV2Response(AbstractModel):
+    r"""DescribeTopSpaceTablesV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MysqlObjects: <p>MySQL/PG/TDSQL 系列产品表级空间对象列表。当产品为 mysql/cynosdb/tdsql/dcdb/mariadb/postgres 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MysqlObjects: list of MysqlSpaceObjectItem
+        :param _PostgresObjects: <p>PostgreSQL 产品表级空间对象列表。当产品为 postgres 时返回。字段语义与 MySQL 不同：使用 RelationSize / TableSize / IndexSize / TotalRelationSize / TableBloat 等 PG 特有指标。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostgresObjects: list of PostgresSpaceObjectItem
+        :param _MongodbObjects: <p>MongoDB 产品表级（集合级）空间对象列表。当产品为 mongodb 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongodbObjects: list of MongoDBTableSpaceItem
+        :param _Timestamp: <p>数据采集时间戳（秒）。</p>
+        :type Timestamp: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MysqlObjects = None
+        self._PostgresObjects = None
+        self._MongodbObjects = None
+        self._Timestamp = None
+        self._RequestId = None
+
+    @property
+    def MysqlObjects(self):
+        r"""<p>MySQL/PG/TDSQL 系列产品表级空间对象列表。当产品为 mysql/cynosdb/tdsql/dcdb/mariadb/postgres 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MysqlSpaceObjectItem
+        """
+        return self._MysqlObjects
+
+    @MysqlObjects.setter
+    def MysqlObjects(self, MysqlObjects):
+        self._MysqlObjects = MysqlObjects
+
+    @property
+    def PostgresObjects(self):
+        r"""<p>PostgreSQL 产品表级空间对象列表。当产品为 postgres 时返回。字段语义与 MySQL 不同：使用 RelationSize / TableSize / IndexSize / TotalRelationSize / TableBloat 等 PG 特有指标。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PostgresSpaceObjectItem
+        """
+        return self._PostgresObjects
+
+    @PostgresObjects.setter
+    def PostgresObjects(self, PostgresObjects):
+        self._PostgresObjects = PostgresObjects
+
+    @property
+    def MongodbObjects(self):
+        r"""<p>MongoDB 产品表级（集合级）空间对象列表。当产品为 mongodb 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MongoDBTableSpaceItem
+        """
+        return self._MongodbObjects
+
+    @MongodbObjects.setter
+    def MongodbObjects(self, MongodbObjects):
+        self._MongodbObjects = MongodbObjects
+
+    @property
+    def Timestamp(self):
+        r"""<p>数据采集时间戳（秒）。</p>
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MysqlObjects") is not None:
+            self._MysqlObjects = []
+            for item in params.get("MysqlObjects"):
+                obj = MysqlSpaceObjectItem()
+                obj._deserialize(item)
+                self._MysqlObjects.append(obj)
+        if params.get("PostgresObjects") is not None:
+            self._PostgresObjects = []
+            for item in params.get("PostgresObjects"):
+                obj = PostgresSpaceObjectItem()
+                obj._deserialize(item)
+                self._PostgresObjects.append(obj)
+        if params.get("MongodbObjects") is not None:
+            self._MongodbObjects = []
+            for item in params.get("MongodbObjects"):
+                obj = MongoDBTableSpaceItem()
+                obj._deserialize(item)
+                self._MongodbObjects.append(obj)
+        self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserAutonomyProfileRequest(AbstractModel):
     r"""DescribeUserAutonomyProfile请求参数结构体
 
@@ -18017,6 +18222,231 @@ class ModifyUserAutonomyProfileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class MongoCollectionDetail(AbstractModel):
+    r"""MongoDB 集合级空间使用明细，包含集合的存储、索引、碎片等各维度指标。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CollStats: <p>集合命名空间，格式为 db.collection。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollStats: str
+        :param _CollectionSize: <p>集合逻辑大小（字节，未压缩）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectionSize: int
+        :param _DataFree: <p>集合已分配但未使用的空间（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataFree: int
+        :param _SpaceRatio: <p>空间利用率（百分比字符串）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpaceRatio: str
+        :param _FragRatio: <p>碎片率（百分比字符串）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragRatio: str
+        :param _Size: <p>集合数据大小（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: int
+        :param _TotalIndexSize: <p>所有索引占用大小（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalIndexSize: int
+        :param _AvgObjSize: <p>平均文档大小（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvgObjSize: int
+        :param _StorageSize: <p>集合实际占用存储大小（字节，压缩后）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSize: int
+        :param _Count: <p>文档数量。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Count: int
+        :param _CompressionRatio: <p>压缩率（百分比字符串）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompressionRatio: str
+        :param _FileReuseBytes: <p>可复用文件空间（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileReuseBytes: int
+        """
+        self._CollStats = None
+        self._CollectionSize = None
+        self._DataFree = None
+        self._SpaceRatio = None
+        self._FragRatio = None
+        self._Size = None
+        self._TotalIndexSize = None
+        self._AvgObjSize = None
+        self._StorageSize = None
+        self._Count = None
+        self._CompressionRatio = None
+        self._FileReuseBytes = None
+
+    @property
+    def CollStats(self):
+        r"""<p>集合命名空间，格式为 db.collection。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CollStats
+
+    @CollStats.setter
+    def CollStats(self, CollStats):
+        self._CollStats = CollStats
+
+    @property
+    def CollectionSize(self):
+        r"""<p>集合逻辑大小（字节，未压缩）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CollectionSize
+
+    @CollectionSize.setter
+    def CollectionSize(self, CollectionSize):
+        self._CollectionSize = CollectionSize
+
+    @property
+    def DataFree(self):
+        r"""<p>集合已分配但未使用的空间（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataFree
+
+    @DataFree.setter
+    def DataFree(self, DataFree):
+        self._DataFree = DataFree
+
+    @property
+    def SpaceRatio(self):
+        r"""<p>空间利用率（百分比字符串）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SpaceRatio
+
+    @SpaceRatio.setter
+    def SpaceRatio(self, SpaceRatio):
+        self._SpaceRatio = SpaceRatio
+
+    @property
+    def FragRatio(self):
+        r"""<p>碎片率（百分比字符串）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FragRatio
+
+    @FragRatio.setter
+    def FragRatio(self, FragRatio):
+        self._FragRatio = FragRatio
+
+    @property
+    def Size(self):
+        r"""<p>集合数据大小（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def TotalIndexSize(self):
+        r"""<p>所有索引占用大小（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalIndexSize
+
+    @TotalIndexSize.setter
+    def TotalIndexSize(self, TotalIndexSize):
+        self._TotalIndexSize = TotalIndexSize
+
+    @property
+    def AvgObjSize(self):
+        r"""<p>平均文档大小（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AvgObjSize
+
+    @AvgObjSize.setter
+    def AvgObjSize(self, AvgObjSize):
+        self._AvgObjSize = AvgObjSize
+
+    @property
+    def StorageSize(self):
+        r"""<p>集合实际占用存储大小（字节，压缩后）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def Count(self):
+        r"""<p>文档数量。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def CompressionRatio(self):
+        r"""<p>压缩率（百分比字符串）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CompressionRatio
+
+    @CompressionRatio.setter
+    def CompressionRatio(self, CompressionRatio):
+        self._CompressionRatio = CompressionRatio
+
+    @property
+    def FileReuseBytes(self):
+        r"""<p>可复用文件空间（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FileReuseBytes
+
+    @FileReuseBytes.setter
+    def FileReuseBytes(self, FileReuseBytes):
+        self._FileReuseBytes = FileReuseBytes
+
+
+    def _deserialize(self, params):
+        self._CollStats = params.get("CollStats")
+        self._CollectionSize = params.get("CollectionSize")
+        self._DataFree = params.get("DataFree")
+        self._SpaceRatio = params.get("SpaceRatio")
+        self._FragRatio = params.get("FragRatio")
+        self._Size = params.get("Size")
+        self._TotalIndexSize = params.get("TotalIndexSize")
+        self._AvgObjSize = params.get("AvgObjSize")
+        self._StorageSize = params.get("StorageSize")
+        self._Count = params.get("Count")
+        self._CompressionRatio = params.get("CompressionRatio")
+        self._FileReuseBytes = params.get("FileReuseBytes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MongoDBIndex(AbstractModel):
     r"""Mongodb索引项
 
@@ -18396,6 +18826,131 @@ class MongoDBProcessList(AbstractModel):
                 obj = MongoDBProcessItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MongoDBTableSpaceItem(AbstractModel):
+    r"""MongoDB 产品表级（集合级）空间对象项，描述单个集合的空间使用统计信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 Id（AppId）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _InstanceId: <p>实例 Id。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _Db: <p>数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Db: str
+        :param _Timestamp: <p>数据采集时间戳（毫秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _SizeOnDisk: <p>磁盘占用大小（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SizeOnDisk: int
+        :param _Collection: <p>集合级空间使用明细。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Collection: :class:`tencentcloud.dbbrain.v20210527.models.MongoCollectionDetail`
+        """
+        self._AppId = None
+        self._InstanceId = None
+        self._Db = None
+        self._Timestamp = None
+        self._SizeOnDisk = None
+        self._Collection = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 Id（AppId）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 Id。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Db(self):
+        r"""<p>数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Timestamp(self):
+        r"""<p>数据采集时间戳（毫秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def SizeOnDisk(self):
+        r"""<p>磁盘占用大小（字节）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SizeOnDisk
+
+    @SizeOnDisk.setter
+    def SizeOnDisk(self, SizeOnDisk):
+        self._SizeOnDisk = SizeOnDisk
+
+    @property
+    def Collection(self):
+        r"""<p>集合级空间使用明细。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MongoCollectionDetail`
+        """
+        return self._Collection
+
+    @Collection.setter
+    def Collection(self, Collection):
+        self._Collection = Collection
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._InstanceId = params.get("InstanceId")
+        self._Db = params.get("Db")
+        self._Timestamp = params.get("Timestamp")
+        self._SizeOnDisk = params.get("SizeOnDisk")
+        if params.get("Collection") is not None:
+            self._Collection = MongoCollectionDetail()
+            self._Collection._deserialize(params.get("Collection"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18808,6 +19363,197 @@ class MySqlProcess(AbstractModel):
         
 
 
+class MysqlSpaceObjectItem(AbstractModel):
+    r"""MySQL 系列产品空间对象项。库级查询时不包含 TableName/Engine 字段；表级查询时包含全部字段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableSchema: <p>数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableSchema: str
+        :param _TableName: <p>表名（Level=TABLE时返回）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _Engine: <p>存储引擎（Level=TABLE时返回）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Engine: str
+        :param _TableRows: <p>行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableRows: int
+        :param _TotalLength: <p>总使用空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalLength: float
+        :param _DataLength: <p>数据空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataLength: float
+        :param _IndexLength: <p>索引空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexLength: float
+        :param _DataFree: <p>碎片空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataFree: float
+        :param _FragRatio: <p>碎片率（%）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragRatio: float
+        :param _PhysicalFileSize: <p>物理文件大小（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhysicalFileSize: float
+        """
+        self._TableSchema = None
+        self._TableName = None
+        self._Engine = None
+        self._TableRows = None
+        self._TotalLength = None
+        self._DataLength = None
+        self._IndexLength = None
+        self._DataFree = None
+        self._FragRatio = None
+        self._PhysicalFileSize = None
+
+    @property
+    def TableSchema(self):
+        r"""<p>数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def TableName(self):
+        r"""<p>表名（Level=TABLE时返回）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Engine(self):
+        r"""<p>存储引擎（Level=TABLE时返回）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def TableRows(self):
+        r"""<p>行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableRows
+
+    @TableRows.setter
+    def TableRows(self, TableRows):
+        self._TableRows = TableRows
+
+    @property
+    def TotalLength(self):
+        r"""<p>总使用空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TotalLength
+
+    @TotalLength.setter
+    def TotalLength(self, TotalLength):
+        self._TotalLength = TotalLength
+
+    @property
+    def DataLength(self):
+        r"""<p>数据空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._DataLength
+
+    @DataLength.setter
+    def DataLength(self, DataLength):
+        self._DataLength = DataLength
+
+    @property
+    def IndexLength(self):
+        r"""<p>索引空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
+    @property
+    def DataFree(self):
+        r"""<p>碎片空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._DataFree
+
+    @DataFree.setter
+    def DataFree(self, DataFree):
+        self._DataFree = DataFree
+
+    @property
+    def FragRatio(self):
+        r"""<p>碎片率（%）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._FragRatio
+
+    @FragRatio.setter
+    def FragRatio(self, FragRatio):
+        self._FragRatio = FragRatio
+
+    @property
+    def PhysicalFileSize(self):
+        r"""<p>物理文件大小（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._PhysicalFileSize
+
+    @PhysicalFileSize.setter
+    def PhysicalFileSize(self, PhysicalFileSize):
+        self._PhysicalFileSize = PhysicalFileSize
+
+
+    def _deserialize(self, params):
+        self._TableSchema = params.get("TableSchema")
+        self._TableName = params.get("TableName")
+        self._Engine = params.get("Engine")
+        self._TableRows = params.get("TableRows")
+        self._TotalLength = params.get("TotalLength")
+        self._DataLength = params.get("DataLength")
+        self._IndexLength = params.get("IndexLength")
+        self._DataFree = params.get("DataFree")
+        self._FragRatio = params.get("FragRatio")
+        self._PhysicalFileSize = params.get("PhysicalFileSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OpenAuditServiceRequest(AbstractModel):
     r"""OpenAuditService请求参数结构体
 
@@ -18945,6 +19691,180 @@ class OpenAuditServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class PostgresSpaceObjectItem(AbstractModel):
+    r"""PostgreSQL 产品空间对象项。字段语义与 MySQL 不同：使用 pg_relation_size / pg_total_relation_size 等 PG 特有指标。库级查询时不包含 TableSchema/TableName 字段；表级查询时包含全部字段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableCatalog: <p>数据库名（PostgreSQL 顶层 catalog）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableCatalog: str
+        :param _TableSchema: <p>Schema 名（Level=TABLE 时返回）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableSchema: str
+        :param _TableName: <p>表名（Level=TABLE 时返回）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _RelationSize: <p>表本身大小（MB），对应 pg_relation_size。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelationSize: float
+        :param _TableSize: <p>表数据大小（MB），含 TOAST 但不含索引，对应 pg_table_size。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableSize: float
+        :param _IndexSize: <p>索引大小（MB），对应 pg_indexes_size。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexSize: float
+        :param _TotalRelationSize: <p>总大小（MB），含数据、索引、TOAST，对应 pg_total_relation_size。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalRelationSize: float
+        :param _TableBloat: <p>表膨胀率（PostgreSQL 特有指标）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableBloat: float
+        :param _TableRows: <p>表行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableRows: int
+        """
+        self._TableCatalog = None
+        self._TableSchema = None
+        self._TableName = None
+        self._RelationSize = None
+        self._TableSize = None
+        self._IndexSize = None
+        self._TotalRelationSize = None
+        self._TableBloat = None
+        self._TableRows = None
+
+    @property
+    def TableCatalog(self):
+        r"""<p>数据库名（PostgreSQL 顶层 catalog）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableCatalog
+
+    @TableCatalog.setter
+    def TableCatalog(self, TableCatalog):
+        self._TableCatalog = TableCatalog
+
+    @property
+    def TableSchema(self):
+        r"""<p>Schema 名（Level=TABLE 时返回）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def TableName(self):
+        r"""<p>表名（Level=TABLE 时返回）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def RelationSize(self):
+        r"""<p>表本身大小（MB），对应 pg_relation_size。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._RelationSize
+
+    @RelationSize.setter
+    def RelationSize(self, RelationSize):
+        self._RelationSize = RelationSize
+
+    @property
+    def TableSize(self):
+        r"""<p>表数据大小（MB），含 TOAST 但不含索引，对应 pg_table_size。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TableSize
+
+    @TableSize.setter
+    def TableSize(self, TableSize):
+        self._TableSize = TableSize
+
+    @property
+    def IndexSize(self):
+        r"""<p>索引大小（MB），对应 pg_indexes_size。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._IndexSize
+
+    @IndexSize.setter
+    def IndexSize(self, IndexSize):
+        self._IndexSize = IndexSize
+
+    @property
+    def TotalRelationSize(self):
+        r"""<p>总大小（MB），含数据、索引、TOAST，对应 pg_total_relation_size。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TotalRelationSize
+
+    @TotalRelationSize.setter
+    def TotalRelationSize(self, TotalRelationSize):
+        self._TotalRelationSize = TotalRelationSize
+
+    @property
+    def TableBloat(self):
+        r"""<p>表膨胀率（PostgreSQL 特有指标）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TableBloat
+
+    @TableBloat.setter
+    def TableBloat(self, TableBloat):
+        self._TableBloat = TableBloat
+
+    @property
+    def TableRows(self):
+        r"""<p>表行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableRows
+
+    @TableRows.setter
+    def TableRows(self, TableRows):
+        self._TableRows = TableRows
+
+
+    def _deserialize(self, params):
+        self._TableCatalog = params.get("TableCatalog")
+        self._TableSchema = params.get("TableSchema")
+        self._TableName = params.get("TableName")
+        self._RelationSize = params.get("RelationSize")
+        self._TableSize = params.get("TableSize")
+        self._IndexSize = params.get("IndexSize")
+        self._TotalRelationSize = params.get("TotalRelationSize")
+        self._TableBloat = params.get("TableBloat")
+        self._TableRows = params.get("TableRows")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Process(AbstractModel):
@@ -21252,6 +22172,8 @@ class SlowLogInfoItem(AbstractModel):
         :type RowsExamined: int
         :param _RowsSent: 返回行数
         :type RowsSent: int
+        :param _InstanceId: 
+        :type InstanceId: str
         """
         self._Timestamp = None
         self._SqlText = None
@@ -21262,6 +22184,7 @@ class SlowLogInfoItem(AbstractModel):
         self._LockTime = None
         self._RowsExamined = None
         self._RowsSent = None
+        self._InstanceId = None
 
     @property
     def Timestamp(self):
@@ -21362,6 +22285,17 @@ class SlowLogInfoItem(AbstractModel):
     def RowsSent(self, RowsSent):
         self._RowsSent = RowsSent
 
+    @property
+    def InstanceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._Timestamp = params.get("Timestamp")
@@ -21373,6 +22307,7 @@ class SlowLogInfoItem(AbstractModel):
         self._LockTime = params.get("LockTime")
         self._RowsExamined = params.get("RowsExamined")
         self._RowsSent = params.get("RowsSent")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21440,6 +22375,10 @@ class SlowLogTopSqlItem(AbstractModel):
         :type RowsExaminedAvg: float
         :param _Md5: SQL模板的MD5值
         :type Md5: str
+        :param _SqlType: 
+        :type SqlType: str
+        :param _InstanceId: 
+        :type InstanceId: str
         """
         self._LockTime = None
         self._LockTimeMax = None
@@ -21466,6 +22405,8 @@ class SlowLogTopSqlItem(AbstractModel):
         self._LockTimeAvg = None
         self._RowsExaminedAvg = None
         self._Md5 = None
+        self._SqlType = None
+        self._InstanceId = None
 
     @property
     def LockTime(self):
@@ -21742,6 +22683,28 @@ class SlowLogTopSqlItem(AbstractModel):
     def Md5(self, Md5):
         self._Md5 = Md5
 
+    @property
+    def SqlType(self):
+        r"""
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def InstanceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._LockTime = params.get("LockTime")
@@ -21769,6 +22732,8 @@ class SlowLogTopSqlItem(AbstractModel):
         self._LockTimeAvg = params.get("LockTimeAvg")
         self._RowsExaminedAvg = params.get("RowsExaminedAvg")
         self._Md5 = params.get("Md5")
+        self._SqlType = params.get("SqlType")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

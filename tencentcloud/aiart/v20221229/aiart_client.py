@@ -123,30 +123,6 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ImageToImage(self, request):
-        r"""图像风格化（图生图）接口提供生成式的图生图风格转化能力，将根据输入的图像及文本描述，智能生成风格转化后的图像。建议避免输入人像过小、姿势复杂、人数较多的人像图片。
-        图像风格化（图生图）默认提供3个并发任务数，代表最多能同时处理3个已提交的任务，上一个任务处理完毕后才能开始处理下一个任务。
-
-        :param request: Request instance for ImageToImage.
-        :type request: :class:`tencentcloud.aiart.v20221229.models.ImageToImageRequest`
-        :rtype: :class:`tencentcloud.aiart.v20221229.models.ImageToImageResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ImageToImage", params, headers=headers)
-            response = json.loads(body)
-            model = models.ImageToImageResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def QueryDrawPortraitJob(self, request):
         r"""AI 写真分为上传训练图片、训练写真模型（可选跳过）、生成写真图片3个环节，需要依次调用对应接口。
         生成图片分为提交任务和查询任务2个接口：
@@ -221,30 +197,6 @@ class AiartClient(AbstractClient):
             body = self.call("QueryMemeJob", params, headers=headers)
             response = json.loads(body)
             model = models.QueryMemeJobResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def QueryTextToImageJob(self, request):
-        r"""混元生图接口，基于混元大模型，根据输入的文本描述快速生成图片。
-        默认提供0个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-
-        :param request: Request instance for QueryTextToImageJob.
-        :type request: :class:`tencentcloud.aiart.v20221229.models.QueryTextToImageJobRequest`
-        :rtype: :class:`tencentcloud.aiart.v20221229.models.QueryTextToImageJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("QueryTextToImageJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.QueryTextToImageJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -469,30 +421,6 @@ class AiartClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def SubmitTextToImageJob(self, request):
-        r"""混元生图接口，基于混元大模型，根据输入的文本描述快速生成图片。
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-
-        :param request: Request instance for SubmitTextToImageJob.
-        :type request: :class:`tencentcloud.aiart.v20221229.models.SubmitTextToImageJobRequest`
-        :rtype: :class:`tencentcloud.aiart.v20221229.models.SubmitTextToImageJobResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("SubmitTextToImageJob", params, headers=headers)
-            response = json.loads(body)
-            model = models.SubmitTextToImageJobResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def SubmitTextToImageProJob(self, request):
         r"""本接口已迁移至腾讯混元大模型-混元生图，即将停止此处维护，可切换至 [混元生图 API](https://cloud.tencent.com/document/product/1729/105969) 继续使用。
         文生图（高级版）接口基于高级版文生图大模型，将根据输入的文本描述，智能生成与之相关的结果图。分为提交任务和查询任务2个接口。
@@ -541,54 +469,6 @@ class AiartClient(AbstractClient):
             body = self.call("SubmitTrainPortraitModelJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitTrainPortraitModelJobResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def TextToImageLite(self, request):
-        r"""混元文生图接口，基于混元大模型，根据输入的文本描述智能生成图片
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-
-        :param request: Request instance for TextToImageLite.
-        :type request: :class:`tencentcloud.aiart.v20221229.models.TextToImageLiteRequest`
-        :rtype: :class:`tencentcloud.aiart.v20221229.models.TextToImageLiteResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TextToImageLite", params, headers=headers)
-            response = json.loads(body)
-            model = models.TextToImageLiteResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def TextToImageRapid(self, request):
-        r"""混元文生图接口，基于混元大模型，根据输入的文本描述智能生成图片
-        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
-
-        :param request: Request instance for TextToImageRapid.
-        :type request: :class:`tencentcloud.aiart.v20221229.models.TextToImageRapidRequest`
-        :rtype: :class:`tencentcloud.aiart.v20221229.models.TextToImageRapidResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("TextToImageRapid", params, headers=headers)
-            response = json.loads(body)
-            model = models.TextToImageRapidResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

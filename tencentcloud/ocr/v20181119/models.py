@@ -20166,18 +20166,12 @@ class PassInvoiceInfo(AbstractModel):
         :type PassDateEnd: str
         :param _TaxClassifyCode: <p>税收分类编码</p>
         :type TaxClassifyCode: str
-        :param _CarType: <p>通行费车牌号</p>
-        :type CarType: str
-        :param _PlateNumber: <p>通行费车辆类型</p>
-        :type PlateNumber: str
         """
         self._NumberPlate = None
         self._Type = None
         self._PassDateBegin = None
         self._PassDateEnd = None
         self._TaxClassifyCode = None
-        self._CarType = None
-        self._PlateNumber = None
 
     @property
     def NumberPlate(self):
@@ -20234,28 +20228,6 @@ class PassInvoiceInfo(AbstractModel):
     def TaxClassifyCode(self, TaxClassifyCode):
         self._TaxClassifyCode = TaxClassifyCode
 
-    @property
-    def CarType(self):
-        r"""<p>通行费车牌号</p>
-        :rtype: str
-        """
-        return self._CarType
-
-    @CarType.setter
-    def CarType(self, CarType):
-        self._CarType = CarType
-
-    @property
-    def PlateNumber(self):
-        r"""<p>通行费车辆类型</p>
-        :rtype: str
-        """
-        return self._PlateNumber
-
-    @PlateNumber.setter
-    def PlateNumber(self, PlateNumber):
-        self._PlateNumber = PlateNumber
-
 
     def _deserialize(self, params):
         self._NumberPlate = params.get("NumberPlate")
@@ -20263,8 +20235,6 @@ class PassInvoiceInfo(AbstractModel):
         self._PassDateBegin = params.get("PassDateBegin")
         self._PassDateEnd = params.get("PassDateEnd")
         self._TaxClassifyCode = params.get("TaxClassifyCode")
-        self._CarType = params.get("CarType")
-        self._PlateNumber = params.get("PlateNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

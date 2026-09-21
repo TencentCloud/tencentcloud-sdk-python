@@ -2568,6 +2568,8 @@ class CreateModelServiceRequest(AbstractModel):
         :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
         :param _InferTemplateId: <p>推理模板 ID</p>
         :type InferTemplateId: str
+        :param _Priority: <p>服务的优先级</p><p>取值范围：[0, 9]</p>
+        :type Priority: int
         """
         self._TiProjectId = None
         self._ServiceGroupId = None
@@ -2617,6 +2619,7 @@ class CreateModelServiceRequest(AbstractModel):
         self._GatewayConfig = None
         self._ResourceSupplyAttribute = None
         self._InferTemplateId = None
+        self._Priority = None
 
     @property
     def TiProjectId(self):
@@ -3146,6 +3149,17 @@ class CreateModelServiceRequest(AbstractModel):
     def InferTemplateId(self, InferTemplateId):
         self._InferTemplateId = InferTemplateId
 
+    @property
+    def Priority(self):
+        r"""<p>服务的优先级</p><p>取值范围：[0, 9]</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
 
     def _deserialize(self, params):
         self._TiProjectId = params.get("TiProjectId")
@@ -3246,6 +3260,7 @@ class CreateModelServiceRequest(AbstractModel):
             self._ResourceSupplyAttribute = ResourceSupplyAttribute()
             self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
         self._InferTemplateId = params.get("InferTemplateId")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8296,27 +8311,19 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceGroupId: 资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
+        :param _ResourceGroupId: <p>资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId</p>
         :type ResourceGroupId: str
         :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
         :type TiProjectId: str
-        :param _Filters: 过滤条件
-注意: 
-1. Filter.Name 只支持以下枚举值:
-    InstanceId (资源组节点id)
-    InstanceStatus (资源组节点状态)
-2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-3. Filter.Negative: 是否取反，默认为false
-4. Filter.Fuzzy: 是否模糊查询，默认为false
-5. 每次请求的Filters的上限为10，Filter.Values的上限为100
+        :param _Filters: <p>过滤条件<br>注意: </p><ol><li>Filter.Name 只支持以下枚举值:<br> InstanceId (资源组节点id)<br> InstanceStatus (资源组节点状态)</li><li>Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询</li><li>Filter.Negative: 是否取反，默认为false</li><li>Filter.Fuzzy: 是否模糊查询，默认为false</li><li>每次请求的Filters的上限为10，Filter.Values的上限为100</li></ol>
         :type Filters: list of Filter
-        :param _Offset: 分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
+        :param _Offset: <p>分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0</p>
         :type Offset: int
-        :param _Limit: 分页查询每页大小，默认20
+        :param _Limit: <p>分页查询每页大小，默认20</p>
         :type Limit: int
-        :param _Order: 排序方向; 枚举值: ASC | DESC；默认DESC
+        :param _Order: <p>排序方向; 枚举值: ASC | DESC；默认DESC</p>
         :type Order: str
-        :param _OrderField: 排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime
+        :param _OrderField: <p>排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime</p>
         :type OrderField: str
         """
         self._ResourceGroupId = None
@@ -8329,7 +8336,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        r"""资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId
+        r"""<p>资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId</p>
         :rtype: str
         """
         return self._ResourceGroupId
@@ -8351,15 +8358,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件
-注意: 
-1. Filter.Name 只支持以下枚举值:
-    InstanceId (资源组节点id)
-    InstanceStatus (资源组节点状态)
-2. Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询
-3. Filter.Negative: 是否取反，默认为false
-4. Filter.Fuzzy: 是否模糊查询，默认为false
-5. 每次请求的Filters的上限为10，Filter.Values的上限为100
+        r"""<p>过滤条件<br>注意: </p><ol><li>Filter.Name 只支持以下枚举值:<br> InstanceId (资源组节点id)<br> InstanceStatus (资源组节点状态)</li><li>Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询</li><li>Filter.Negative: 是否取反，默认为false</li><li>Filter.Fuzzy: 是否模糊查询，默认为false</li><li>每次请求的Filters的上限为10，Filter.Values的上限为100</li></ol>
         :rtype: list of Filter
         """
         return self._Filters
@@ -8370,7 +8369,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0
+        r"""<p>分页查询起始位置，如：Limit为10，第一页Offset为0，第二页Offset为10...即每页左边为闭区间; 默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -8381,7 +8380,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页查询每页大小，默认20
+        r"""<p>分页查询每页大小，默认20</p>
         :rtype: int
         """
         return self._Limit
@@ -8392,7 +8391,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方向; 枚举值: ASC | DESC；默认DESC
+        r"""<p>排序方向; 枚举值: ASC | DESC；默认DESC</p>
         :rtype: str
         """
         return self._Order
@@ -8403,7 +8402,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime
+        r"""<p>排序字段; 枚举值: CreateTime (创建时间) ｜ ExpireTime (到期时间)；默认CreateTime</p>
         :rtype: str
         """
         return self._OrderField
@@ -8443,13 +8442,13 @@ class DescribeBillingResourceGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小
+        :param _TotalCount: <p>资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _InstanceSet: 资源组节点信息
+        :param _InstanceSet: <p>资源组节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceSet: list of Instance
-        :param _ResourceGroupSWType: 资源组纳管类型
+        :param _ResourceGroupSWType: <p>资源组纳管类型</p>
         :type ResourceGroupSWType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8461,7 +8460,7 @@ class DescribeBillingResourceGroupResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小
+        r"""<p>资源组节点总数； 注意接口是分页拉取的，total是指资源组节点总数，不是本次返回中InstanceSet数组的大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8473,7 +8472,7 @@ class DescribeBillingResourceGroupResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""资源组节点信息
+        r"""<p>资源组节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Instance
         """
@@ -8485,7 +8484,7 @@ class DescribeBillingResourceGroupResponse(AbstractModel):
 
     @property
     def ResourceGroupSWType(self):
-        r"""资源组纳管类型
+        r"""<p>资源组纳管类型</p>
         :rtype: str
         """
         return self._ResourceGroupSWType
@@ -14061,10 +14060,10 @@ class EnvVar(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 环境变量key
+        :param _Name: <p>环境变量key</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Value: 环境变量value
+        :param _Value: <p>环境变量value</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
         """
@@ -14073,7 +14072,7 @@ class EnvVar(AbstractModel):
 
     @property
     def Name(self):
-        r"""环境变量key
+        r"""<p>环境变量key</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14085,7 +14084,7 @@ class EnvVar(AbstractModel):
 
     @property
     def Value(self):
-        r"""环境变量value
+        r"""<p>环境变量value</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -18885,6 +18884,8 @@ class ModifyModelServiceRequest(AbstractModel):
         :type TargetProjectId: int
         :param _InferTemplateId: <p>推理模板 ID，在内置大模型场景下使用</p>
         :type InferTemplateId: str
+        :param _Priority: <p>服务的优先级</p><p>取值范围：[0, 9]</p>
+        :type Priority: int
         """
         self._ServiceId = None
         self._TiProjectId = None
@@ -18924,6 +18925,7 @@ class ModifyModelServiceRequest(AbstractModel):
         self._SchedulingStrategy = None
         self._TargetProjectId = None
         self._InferTemplateId = None
+        self._Priority = None
 
     @property
     def ServiceId(self):
@@ -19343,6 +19345,17 @@ class ModifyModelServiceRequest(AbstractModel):
     def InferTemplateId(self, InferTemplateId):
         self._InferTemplateId = InferTemplateId
 
+    @property
+    def Priority(self):
+        r"""<p>服务的优先级</p><p>取值范围：[0, 9]</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -19422,6 +19435,7 @@ class ModifyModelServiceRequest(AbstractModel):
         self._SchedulingStrategy = params.get("SchedulingStrategy")
         self._TargetProjectId = params.get("TargetProjectId")
         self._InferTemplateId = params.get("InferTemplateId")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25033,34 +25047,33 @@ class ResourceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cpu: 处理器资源, 单位为1/1000核
+        :param _Cpu: <p>处理器资源, 单位为1/1000核</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: int
-        :param _Memory: 内存资源, 单位为1M
+        :param _Memory: <p>内存资源, 单位为1M</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: int
-        :param _Gpu: Gpu卡个数资源, 单位为0.01单位的GpuType.
-Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能是虚拟化后的1/4卡, 也有可能是整张卡. 取决于实例的机型
-例1 实例的机型带有1张虚拟gpu卡, 每张虚拟gpu卡对应1/4张实际T4卡, 则此时 GpuType=T4, Gpu=100, RealGpu=25.
-例2 实例的机型带有4张gpu整卡, 每张卡对应1张实际T4卡, 则 此时 GpuType=T4, Gpu=400, RealGpu=400.
+        :param _Gpu: <p>Gpu卡个数资源, 单位为0.01单位的GpuType.<br>Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能是虚拟化后的1/4卡, 也有可能是整张卡. 取决于实例的机型<br>例1 实例的机型带有1张虚拟gpu卡, 每张虚拟gpu卡对应1/4张实际T4卡, 则此时 GpuType=T4, Gpu=100, RealGpu=25.<br>例2 实例的机型带有4张gpu整卡, 每张卡对应1张实际T4卡, 则 此时 GpuType=T4, Gpu=400, RealGpu=400.</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gpu: int
-        :param _GpuType: Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。
+        :param _GpuType: <p>Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuType: str
-        :param _RealGpu: 创建或更新时无需填写，仅展示需要关注
-后付费非整卡实例对应的实际的Gpu卡资源, 表示gpu资源对应实际的gpu卡个数.
-RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.
+        :param _RealGpu: <p>创建或更新时无需填写，仅展示需要关注<br>后付费非整卡实例对应的实际的Gpu卡资源, 表示gpu资源对应实际的gpu卡个数.<br>RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.</p>
         :type RealGpu: int
-        :param _RealGpuDetailSet: 创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
+        :param _RealGpuDetailSet: <p>创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。</p>
         :type RealGpuDetailSet: list of GpuDetail
-        :param _EnableRDMA: 是否开启rdma
+        :param _EnableRDMA: <p>是否开启rdma</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableRDMA: bool
-        :param _RootDisk: root disk size(GB)
+        :param _RdmaNumber: <p>rdma number</p>
+        :type RdmaNumber: int
+        :param _RootDisk: <p>root disk size(GB)</p>
         :type RootDisk: int
-        :param _DataDisk: data disk size(GB)
+        :param _DataDisk: <p>data disk size(GB)</p>
         :type DataDisk: int
+        :param _Rdma: <p>rdma</p><p>取值范围：[0, 99]</p>
+        :type Rdma: int
         """
         self._Cpu = None
         self._Memory = None
@@ -25069,12 +25082,14 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
         self._RealGpu = None
         self._RealGpuDetailSet = None
         self._EnableRDMA = None
+        self._RdmaNumber = None
         self._RootDisk = None
         self._DataDisk = None
+        self._Rdma = None
 
     @property
     def Cpu(self):
-        r"""处理器资源, 单位为1/1000核
+        r"""<p>处理器资源, 单位为1/1000核</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25086,7 +25101,7 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def Memory(self):
-        r"""内存资源, 单位为1M
+        r"""<p>内存资源, 单位为1M</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25098,10 +25113,7 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def Gpu(self):
-        r"""Gpu卡个数资源, 单位为0.01单位的GpuType.
-Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能是虚拟化后的1/4卡, 也有可能是整张卡. 取决于实例的机型
-例1 实例的机型带有1张虚拟gpu卡, 每张虚拟gpu卡对应1/4张实际T4卡, 则此时 GpuType=T4, Gpu=100, RealGpu=25.
-例2 实例的机型带有4张gpu整卡, 每张卡对应1张实际T4卡, 则 此时 GpuType=T4, Gpu=400, RealGpu=400.
+        r"""<p>Gpu卡个数资源, 单位为0.01单位的GpuType.<br>Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能是虚拟化后的1/4卡, 也有可能是整张卡. 取决于实例的机型<br>例1 实例的机型带有1张虚拟gpu卡, 每张虚拟gpu卡对应1/4张实际T4卡, 则此时 GpuType=T4, Gpu=100, RealGpu=25.<br>例2 实例的机型带有4张gpu整卡, 每张卡对应1张实际T4卡, 则 此时 GpuType=T4, Gpu=400, RealGpu=400.</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25113,7 +25125,7 @@ Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能�
 
     @property
     def GpuType(self):
-        r"""Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。
+        r"""<p>Gpu卡型号 T4或者V100。仅展示当前 GPU 卡型号，若存在多类型同时使用，则参考 RealGpuDetailSet 的值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25125,9 +25137,7 @@ Gpu=100表示使用了“一张”gpu卡, 但此处的“一张”卡有可能�
 
     @property
     def RealGpu(self):
-        r"""创建或更新时无需填写，仅展示需要关注
-后付费非整卡实例对应的实际的Gpu卡资源, 表示gpu资源对应实际的gpu卡个数.
-RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.
+        r"""<p>创建或更新时无需填写，仅展示需要关注<br>后付费非整卡实例对应的实际的Gpu卡资源, 表示gpu资源对应实际的gpu卡个数.<br>RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有可能代表带有1/4卡的实例4个, 或者带有1/2卡的实例2个, 或者带有1卡的实力1个.</p>
         :rtype: int
         """
         return self._RealGpu
@@ -25138,7 +25148,7 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def RealGpuDetailSet(self):
-        r"""创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。
+        r"""<p>创建或更新时无需填写，仅展示需要关注。详细的GPU使用信息。</p>
         :rtype: list of GpuDetail
         """
         return self._RealGpuDetailSet
@@ -25149,7 +25159,7 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def EnableRDMA(self):
-        r"""是否开启rdma
+        r"""<p>是否开启rdma</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -25160,8 +25170,19 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
         self._EnableRDMA = EnableRDMA
 
     @property
+    def RdmaNumber(self):
+        r"""<p>rdma number</p>
+        :rtype: int
+        """
+        return self._RdmaNumber
+
+    @RdmaNumber.setter
+    def RdmaNumber(self, RdmaNumber):
+        self._RdmaNumber = RdmaNumber
+
+    @property
     def RootDisk(self):
-        r"""root disk size(GB)
+        r"""<p>root disk size(GB)</p>
         :rtype: int
         """
         return self._RootDisk
@@ -25172,7 +25193,7 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
 
     @property
     def DataDisk(self):
-        r"""data disk size(GB)
+        r"""<p>data disk size(GB)</p>
         :rtype: int
         """
         return self._DataDisk
@@ -25180,6 +25201,17 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
     @DataDisk.setter
     def DataDisk(self, DataDisk):
         self._DataDisk = DataDisk
+
+    @property
+    def Rdma(self):
+        r"""<p>rdma</p><p>取值范围：[0, 99]</p>
+        :rtype: int
+        """
+        return self._Rdma
+
+    @Rdma.setter
+    def Rdma(self, Rdma):
+        self._Rdma = Rdma
 
 
     def _deserialize(self, params):
@@ -25195,8 +25227,10 @@ RealGpu=100表示实际使用了一张gpu卡, 对应实际的实例机型, 有�
                 obj._deserialize(item)
                 self._RealGpuDetailSet.append(obj)
         self._EnableRDMA = params.get("EnableRDMA")
+        self._RdmaNumber = params.get("RdmaNumber")
         self._RootDisk = params.get("RootDisk")
         self._DataDisk = params.get("DataDisk")
+        self._Rdma = params.get("Rdma")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25532,22 +25566,22 @@ class SSHConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Enable: 是否开启ssh
+        :param _Enable: <p>是否开启ssh</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: bool
-        :param _PublicKey: 公钥信息
+        :param _PublicKey: <p>公钥信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicKey: str
-        :param _Port: 端口号
+        :param _Port: <p>端口号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param _LoginCommand: 登录命令
+        :param _LoginCommand: <p>登录命令</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LoginCommand: str
-        :param _IsAddressChanged: 登录地址是否改变
+        :param _IsAddressChanged: <p>登录地址是否改变</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAddressChanged: bool
-        :param _PodSSHInfo: POD访问信息
+        :param _PodSSHInfo: <p>POD访问信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodSSHInfo: :class:`tencentcloud.tione.v20211111.models.PodSSHInfo`
         """
@@ -25560,7 +25594,7 @@ class SSHConfig(AbstractModel):
 
     @property
     def Enable(self):
-        r"""是否开启ssh
+        r"""<p>是否开启ssh</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -25572,7 +25606,7 @@ class SSHConfig(AbstractModel):
 
     @property
     def PublicKey(self):
-        r"""公钥信息
+        r"""<p>公钥信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25584,7 +25618,7 @@ class SSHConfig(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口号
+        r"""<p>端口号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25596,7 +25630,7 @@ class SSHConfig(AbstractModel):
 
     @property
     def LoginCommand(self):
-        r"""登录命令
+        r"""<p>登录命令</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25608,7 +25642,7 @@ class SSHConfig(AbstractModel):
 
     @property
     def IsAddressChanged(self):
-        r"""登录地址是否改变
+        r"""<p>登录地址是否改变</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -25620,7 +25654,7 @@ class SSHConfig(AbstractModel):
 
     @property
     def PodSSHInfo(self):
-        r"""POD访问信息
+        r"""<p>POD访问信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.PodSSHInfo`
         """

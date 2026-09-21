@@ -2956,6 +2956,26 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeZoneCustomVariables(
+            self,
+            request: models.DescribeZoneCustomVariablesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeZoneCustomVariablesResponse:
+        """
+        本接口用于查询站点级自定义变量配置，包括变量定义和变量运算。未配置时，变量定义和变量运算均返回空列表。
+
+        如需查询规则级自定义变量，请调用 DescribeL7AccRules 接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeZoneCustomVariables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeZoneCustomVariablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeZoneSetting(
             self,
             request: models.DescribeZoneSettingRequest,
@@ -4145,6 +4165,26 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyZone"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyZoneResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyZoneCustomVariables(
+            self,
+            request: models.ModifyZoneCustomVariablesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyZoneCustomVariablesResponse:
+        """
+        本接口用于管理站点级自定义变量，支持创建、修改和删除变量定义及变量运算。提交的列表将覆盖对应的现有配置；如需清空配置，请传入空列表。未传入的配置项保持不变。变量定义和变量运算的默认值均为空。
+
+        规则级自定义变量相关操作，请调用 CreateL7AccRules 或 ModifyL7AccRule 接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyZoneCustomVariables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyZoneCustomVariablesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

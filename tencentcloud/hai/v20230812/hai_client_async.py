@@ -313,6 +313,24 @@ class HaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetServicePodLogs(
+            self,
+            request: models.GetServicePodLogsRequest,
+            opts: Dict = None,
+    ) -> models.GetServicePodLogsResponse:
+        """
+        本接口(GetServicePodLogs)用于查询推理服务Pod日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetServicePodLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetServicePodLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def InquirePriceRunInstances(
             self,
             request: models.InquirePriceRunInstancesRequest,

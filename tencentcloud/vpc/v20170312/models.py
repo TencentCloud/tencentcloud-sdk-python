@@ -2767,14 +2767,13 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterfaceId: 弹性网卡实例`ID`，形如：`eni-m6dyj72l`。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-
+        :param _NetworkInterfaceId: <p>弹性网卡实例<code>ID</code>，形如：<code>eni-m6dyj72l</code>。可通过<a href="https://cloud.tencent.com/document/product/215/15817">DescribeNetworkInterfaces</a>接口获取。</p>
         :type NetworkInterfaceId: str
-        :param _Ipv6Addresses: 指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。与Ipv6AddressCount必填一个。
+        :param _Ipv6Addresses: <p>指定的<code>IPv6</code>地址列表，单次最多指定10个。与入参<code>Ipv6AddressCount</code>合并计算配额。与Ipv6AddressCount必填一个。</p>
         :type Ipv6Addresses: list of Ipv6Address
-        :param _Ipv6AddressCount: 自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配额数。与入参`Ipv6Addresses`合并计算配额。与Ipv6Addresses必填一个。
+        :param _Ipv6AddressCount: <p>自动分配<code>IPv6</code>地址个数，内网IP地址个数总和不能超过配额数。与入参<code>Ipv6Addresses</code>合并计算配额。与Ipv6Addresses必填一个。</p>
         :type Ipv6AddressCount: int
-        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :type ClientToken: str
         """
         self._NetworkInterfaceId = None
@@ -2784,8 +2783,7 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
-        r"""弹性网卡实例`ID`，形如：`eni-m6dyj72l`。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-
+        r"""<p>弹性网卡实例<code>ID</code>，形如：<code>eni-m6dyj72l</code>。可通过<a href="https://cloud.tencent.com/document/product/215/15817">DescribeNetworkInterfaces</a>接口获取。</p>
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -2796,7 +2794,7 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     @property
     def Ipv6Addresses(self):
-        r"""指定的`IPv6`地址列表，单次最多指定10个。与入参`Ipv6AddressCount`合并计算配额。与Ipv6AddressCount必填一个。
+        r"""<p>指定的<code>IPv6</code>地址列表，单次最多指定10个。与入参<code>Ipv6AddressCount</code>合并计算配额。与Ipv6AddressCount必填一个。</p>
         :rtype: list of Ipv6Address
         """
         return self._Ipv6Addresses
@@ -2807,7 +2805,7 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     @property
     def Ipv6AddressCount(self):
-        r"""自动分配`IPv6`地址个数，内网IP地址个数总和不能超过配额数。与入参`Ipv6Addresses`合并计算配额。与Ipv6Addresses必填一个。
+        r"""<p>自动分配<code>IPv6</code>地址个数，内网IP地址个数总和不能超过配额数。与入参<code>Ipv6Addresses</code>合并计算配额。与Ipv6Addresses必填一个。</p>
         :rtype: int
         """
         return self._Ipv6AddressCount
@@ -2818,7 +2816,7 @@ class AssignIpv6AddressesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -2855,7 +2853,7 @@ class AssignIpv6AddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ipv6AddressSet: 分配给弹性网卡的`IPv6`地址列表。
+        :param _Ipv6AddressSet: <p>分配给弹性网卡的<code>IPv6</code>地址列表。</p>
         :type Ipv6AddressSet: list of Ipv6Address
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2865,7 +2863,7 @@ class AssignIpv6AddressesResponse(AbstractModel):
 
     @property
     def Ipv6AddressSet(self):
-        r"""分配给弹性网卡的`IPv6`地址列表。
+        r"""<p>分配给弹性网卡的<code>IPv6</code>地址列表。</p>
         :rtype: list of Ipv6Address
         """
         return self._Ipv6AddressSet
@@ -2903,9 +2901,9 @@ class AssignIpv6CidrBlockRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: `VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+        :param _VpcId: <p><code>VPC</code>实例<code>ID</code>，形如：<code>vpc-f49l6u0z</code>。</p>
         :type VpcId: str
-        :param _AddressType: 申请IPv6 Cidr 的类型，`GUA`(全球单播地址), `ULA`(唯一本地地址)。
+        :param _AddressType: <p>申请IPv6 Cidr 的类型，<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</p>
         :type AddressType: str
         """
         self._VpcId = None
@@ -2913,7 +2911,7 @@ class AssignIpv6CidrBlockRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""`VPC`实例`ID`，形如：`vpc-f49l6u0z`。
+        r"""<p><code>VPC</code>实例<code>ID</code>，形如：<code>vpc-f49l6u0z</code>。</p>
         :rtype: str
         """
         return self._VpcId
@@ -2924,7 +2922,7 @@ class AssignIpv6CidrBlockRequest(AbstractModel):
 
     @property
     def AddressType(self):
-        r"""申请IPv6 Cidr 的类型，`GUA`(全球单播地址), `ULA`(唯一本地地址)。
+        r"""<p>申请IPv6 Cidr 的类型，<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</p>
         :rtype: str
         """
         return self._AddressType
@@ -2954,9 +2952,9 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ipv6CidrBlock: 分配的 `IPv6` 网段。形如：`3402:4e00:20:1000::/56`。
+        :param _Ipv6CidrBlock: <p>分配的 <code>IPv6</code> 网段。形如：<code>3402:4e00:20:1000::/56</code>。</p>
         :type Ipv6CidrBlock: str
-        :param _AddressType: 申请IPv6 Cidr 的类型，`GUA`,  `ULA`
+        :param _AddressType: <p>申请IPv6 Cidr 的类型，<code>GUA</code>,  <code>ULA</code></p>
         :type AddressType: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2967,7 +2965,7 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
-        r"""分配的 `IPv6` 网段。形如：`3402:4e00:20:1000::/56`。
+        r"""<p>分配的 <code>IPv6</code> 网段。形如：<code>3402:4e00:20:1000::/56</code>。</p>
         :rtype: str
         """
         return self._Ipv6CidrBlock
@@ -2978,7 +2976,7 @@ class AssignIpv6CidrBlockResponse(AbstractModel):
 
     @property
     def AddressType(self):
-        r"""申请IPv6 Cidr 的类型，`GUA`,  `ULA`
+        r"""<p>申请IPv6 Cidr 的类型，<code>GUA</code>,  <code>ULA</code></p>
         :rtype: str
         """
         return self._AddressType
@@ -3131,16 +3129,15 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-
+        :param _NetworkInterfaceId: <p>弹性网卡实例ID，例如：eni-m6dyj72l。可通过<a href="https://cloud.tencent.com/document/product/215/15817">DescribeNetworkInterfaces</a>接口获取。</p>
         :type NetworkInterfaceId: str
-        :param _PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
+        :param _PrivateIpAddresses: <p>指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。</p>
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param _SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
+        :param _SecondaryPrivateIpAddressCount: <p>新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。</p>
         :type SecondaryPrivateIpAddressCount: int
-        :param _QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
+        :param _QosLevel: <p>IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p>
         :type QosLevel: str
-        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :type ClientToken: str
         """
         self._NetworkInterfaceId = None
@@ -3151,8 +3148,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
-        r"""弹性网卡实例ID，例如：eni-m6dyj72l。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-
+        r"""<p>弹性网卡实例ID，例如：eni-m6dyj72l。可通过<a href="https://cloud.tencent.com/document/product/215/15817">DescribeNetworkInterfaces</a>接口获取。</p>
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -3163,7 +3159,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
-        r"""指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。
+        r"""<p>指定的内网IP信息，单次最多指定10个。与SecondaryPrivateIpAddressCount至少提供一个。</p>
         :rtype: list of PrivateIpAddressSpecification
         """
         return self._PrivateIpAddresses
@@ -3174,7 +3170,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def SecondaryPrivateIpAddressCount(self):
-        r"""新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。
+        r"""<p>新申请的内网IP地址个数，与PrivateIpAddresses至少提供一个。内网IP地址个数总和不能超过配额数，详见<a href="/document/product/576/18527">弹性网卡使用限制</a>。</p>
         :rtype: int
         """
         return self._SecondaryPrivateIpAddressCount
@@ -3185,7 +3181,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def QosLevel(self):
-        r"""IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
+        r"""<p>IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p>
         :rtype: str
         """
         return self._QosLevel
@@ -3196,7 +3192,7 @@ class AssignPrivateIpAddressesRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -3234,7 +3230,7 @@ class AssignPrivateIpAddressesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PrivateIpAddressSet: 内网IP详细信息。
+        :param _PrivateIpAddressSet: <p>内网IP详细信息。</p>
         :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3244,7 +3240,7 @@ class AssignPrivateIpAddressesResponse(AbstractModel):
 
     @property
     def PrivateIpAddressSet(self):
-        r"""内网IP详细信息。
+        r"""<p>内网IP详细信息。</p>
         :rtype: list of PrivateIpAddressSpecification
         """
         return self._PrivateIpAddressSet
@@ -9736,34 +9732,40 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
-
+        :param _VpcId: <p>VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口获取。</p>
         :type VpcId: str
-        :param _NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字符。
+        :param _NetworkInterfaceName: <p>弹性网卡名称，最大长度不能超过60个字符。</p>
         :type NetworkInterfaceName: str
-        :param _SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+        :param _SubnetId: <p>弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取。</p>
         :type SubnetId: str
-        :param _InstanceId: 云服务器实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
+        :param _InstanceId: <p>云服务器实例ID。可通过<a href="https://cloud.tencent.com/document/product/213/15728">DescribeInstances</a>接口获取。</p>
         :type InstanceId: str
-        :param _PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
+        :param _PrivateIpAddresses: <p>指定的内网IP信息，单次最多指定10个。</p>
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param _SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
+        :param _SecondaryPrivateIpAddressCount: <p>新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。</p>
         :type SecondaryPrivateIpAddressCount: int
-        :param _QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
+        :param _Ipv6Addresses: <p>指定的<code>IPv6</code>地址列表，单次最多指定10个。与入参<code>Ipv6AddressCount</code>合并计算配额。</p>
+        :type Ipv6Addresses: list of Ipv6Address
+        :param _Ipv6AddressCount: <p>自动分配<code>IPv6</code>地址个数，内网IP地址个数总和不能超过配额数。与入参<code>Ipv6Addresses</code>合并计算配额。</p><p>取值范围：[1, 10]</p><p>单位：个</p>
+        :type Ipv6AddressCount: int
+        :param _QosLevel: <p>IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p>
         :type QosLevel: str
-        :param _SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
-
+        :param _SecurityGroupIds: <p>指定绑定的安全组，例如：[&#39;sg-1dd51d&#39;]。可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>接口获取。</p>
         :type SecurityGroupIds: list of str
-        :param _NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
+        :param _NetworkInterfaceDescription: <p>弹性网卡描述，可任意命名，但不得超过60个字符。</p>
         :type NetworkInterfaceDescription: str
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :param _Tags: <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :type Tags: list of Tag
-        :param _AttachType: 绑定类型：0 标准型 1 扩展型。
+        :param _AttachType: <p>绑定类型：0 标准型 1 扩展型。</p>
         :type AttachType: int
-        :param _IsRdma: 是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false。
+        :param _IsRdma: <p>是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false。</p>
         :type IsRdma: bool
-        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :type ClientToken: str
+        :param _TerminationProtection: <p>删除保护。</p>
+        :type TerminationProtection: bool
+        :param _TrafficProtection: <p>流量保护。</p>
+        :type TrafficProtection: bool
         """
         self._VpcId = None
         self._NetworkInterfaceName = None
@@ -9771,6 +9773,8 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self._InstanceId = None
         self._PrivateIpAddresses = None
         self._SecondaryPrivateIpAddressCount = None
+        self._Ipv6Addresses = None
+        self._Ipv6AddressCount = None
         self._QosLevel = None
         self._SecurityGroupIds = None
         self._NetworkInterfaceDescription = None
@@ -9778,11 +9782,12 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self._AttachType = None
         self._IsRdma = None
         self._ClientToken = None
+        self._TerminationProtection = None
+        self._TrafficProtection = None
 
     @property
     def VpcId(self):
-        r"""VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
-
+        r"""<p>VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口获取。</p>
         :rtype: str
         """
         return self._VpcId
@@ -9793,7 +9798,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceName(self):
-        r"""弹性网卡名称，最大长度不能超过60个字符。
+        r"""<p>弹性网卡名称，最大长度不能超过60个字符。</p>
         :rtype: str
         """
         return self._NetworkInterfaceName
@@ -9804,7 +9809,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+        r"""<p>弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -9815,7 +9820,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""云服务器实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
+        r"""<p>云服务器实例ID。可通过<a href="https://cloud.tencent.com/document/product/213/15728">DescribeInstances</a>接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9826,7 +9831,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
-        r"""指定的内网IP信息，单次最多指定10个。
+        r"""<p>指定的内网IP信息，单次最多指定10个。</p>
         :rtype: list of PrivateIpAddressSpecification
         """
         return self._PrivateIpAddresses
@@ -9837,7 +9842,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SecondaryPrivateIpAddressCount(self):
-        r"""新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
+        r"""<p>新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。</p>
         :rtype: int
         """
         return self._SecondaryPrivateIpAddressCount
@@ -9847,8 +9852,30 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self._SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount
 
     @property
+    def Ipv6Addresses(self):
+        r"""<p>指定的<code>IPv6</code>地址列表，单次最多指定10个。与入参<code>Ipv6AddressCount</code>合并计算配额。</p>
+        :rtype: list of Ipv6Address
+        """
+        return self._Ipv6Addresses
+
+    @Ipv6Addresses.setter
+    def Ipv6Addresses(self, Ipv6Addresses):
+        self._Ipv6Addresses = Ipv6Addresses
+
+    @property
+    def Ipv6AddressCount(self):
+        r"""<p>自动分配<code>IPv6</code>地址个数，内网IP地址个数总和不能超过配额数。与入参<code>Ipv6Addresses</code>合并计算配额。</p><p>取值范围：[1, 10]</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._Ipv6AddressCount
+
+    @Ipv6AddressCount.setter
+    def Ipv6AddressCount(self, Ipv6AddressCount):
+        self._Ipv6AddressCount = Ipv6AddressCount
+
+    @property
     def QosLevel(self):
-        r"""IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
+        r"""<p>IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p>
         :rtype: str
         """
         return self._QosLevel
@@ -9859,8 +9886,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""指定绑定的安全组，例如：['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
-
+        r"""<p>指定绑定的安全组，例如：[&#39;sg-1dd51d&#39;]。可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>接口获取。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -9871,7 +9897,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceDescription(self):
-        r"""弹性网卡描述，可任意命名，但不得超过60个字符。
+        r"""<p>弹性网卡描述，可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._NetworkInterfaceDescription
@@ -9882,7 +9908,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        r"""<p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -9893,7 +9919,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def AttachType(self):
-        r"""绑定类型：0 标准型 1 扩展型。
+        r"""<p>绑定类型：0 标准型 1 扩展型。</p>
         :rtype: int
         """
         return self._AttachType
@@ -9904,7 +9930,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def IsRdma(self):
-        r"""是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false。
+        r"""<p>是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false。</p>
         :rtype: bool
         """
         return self._IsRdma
@@ -9915,7 +9941,7 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -9923,6 +9949,28 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
     @ClientToken.setter
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
+
+    @property
+    def TerminationProtection(self):
+        r"""<p>删除保护。</p>
+        :rtype: bool
+        """
+        return self._TerminationProtection
+
+    @TerminationProtection.setter
+    def TerminationProtection(self, TerminationProtection):
+        self._TerminationProtection = TerminationProtection
+
+    @property
+    def TrafficProtection(self):
+        r"""<p>流量保护。</p>
+        :rtype: bool
+        """
+        return self._TrafficProtection
+
+    @TrafficProtection.setter
+    def TrafficProtection(self, TrafficProtection):
+        self._TrafficProtection = TrafficProtection
 
 
     def _deserialize(self, params):
@@ -9937,6 +9985,13 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PrivateIpAddresses.append(obj)
         self._SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        if params.get("Ipv6Addresses") is not None:
+            self._Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self._Ipv6Addresses.append(obj)
+        self._Ipv6AddressCount = params.get("Ipv6AddressCount")
         self._QosLevel = params.get("QosLevel")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
@@ -9949,6 +10004,8 @@ class CreateAndAttachNetworkInterfaceRequest(AbstractModel):
         self._AttachType = params.get("AttachType")
         self._IsRdma = params.get("IsRdma")
         self._ClientToken = params.get("ClientToken")
+        self._TerminationProtection = params.get("TerminationProtection")
+        self._TrafficProtection = params.get("TrafficProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9966,7 +10023,7 @@ class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterface: 弹性网卡实例。
+        :param _NetworkInterface: <p>弹性网卡实例。</p>
         :type NetworkInterface: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9976,7 +10033,7 @@ class CreateAndAttachNetworkInterfaceResponse(AbstractModel):
 
     @property
     def NetworkInterface(self):
-        r"""弹性网卡实例。
+        r"""<p>弹性网卡实例。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
         """
         return self._NetworkInterface
@@ -13791,49 +13848,59 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
+        :param _VpcId: <p>VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口获取。</p>
         :type VpcId: str
-        :param _NetworkInterfaceName: 弹性网卡名称，最大长度不能超过60个字节。
+        :param _NetworkInterfaceName: <p>弹性网卡名称，最大长度不能超过60个字节。</p>
         :type NetworkInterfaceName: str
-        :param _SubnetId: 弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+        :param _SubnetId: <p>弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取。</p>
         :type SubnetId: str
-        :param _NetworkInterfaceDescription: 弹性网卡描述，可任意命名，但不得超过60个字符。
+        :param _NetworkInterfaceDescription: <p>弹性网卡描述，可任意命名，但不得超过60个字符。</p>
         :type NetworkInterfaceDescription: str
-        :param _SecondaryPrivateIpAddressCount: 新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
-配额数查询：[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)。
-        :type SecondaryPrivateIpAddressCount: int
-        :param _QosLevel: IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
+        :param _QosLevel: <p>IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p>
         :type QosLevel: str
-        :param _SecurityGroupIds: 指定绑定的安全组，例如：['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
-
+        :param _SecurityGroupIds: <p>指定绑定的安全组，例如：[&#39;sg-1dd51d&#39;]。可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>接口获取。</p>
         :type SecurityGroupIds: list of str
-        :param _PrivateIpAddresses: 指定的内网IP信息，单次最多指定10个。
+        :param _PrivateIpAddresses: <p>指定的内网IP信息，单次最多指定10个。</p>
         :type PrivateIpAddresses: list of PrivateIpAddressSpecification
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param _SecondaryPrivateIpAddressCount: <p>新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。<br>配额数查询：<a href="https://cloud.tencent.com/document/api/215/42942">DescribeVpcLimits</a>。</p>
+        :type SecondaryPrivateIpAddressCount: int
+        :param _Ipv6Addresses: <p>指定的<code>IPv6</code>地址列表，单次最多指定10个。与入参<code>Ipv6AddressCount</code>合并计算配额。</p>
+        :type Ipv6Addresses: list of Ipv6Address
+        :param _Ipv6AddressCount: <p>自动分配<code>IPv6</code>地址个数，内网IP地址个数总和不能超过配额数。与入参<code>Ipv6Addresses</code>合并计算配额。</p><p>取值范围：[1, 10]</p><p>单位：个</p>
+        :type Ipv6AddressCount: int
+        :param _Tags: <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]</p>
         :type Tags: list of Tag
-        :param _TrunkingFlag: 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
+        :param _TrunkingFlag: <p>网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。</p>
         :type TrunkingFlag: str
-        :param _IsRdma: 是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false
+        :param _IsRdma: <p>是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false</p>
         :type IsRdma: bool
-        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :type ClientToken: str
+        :param _TerminationProtection: <p>删除保护。</p>
+        :type TerminationProtection: bool
+        :param _TrafficProtection: <p>流量保护。</p>
+        :type TrafficProtection: bool
         """
         self._VpcId = None
         self._NetworkInterfaceName = None
         self._SubnetId = None
         self._NetworkInterfaceDescription = None
-        self._SecondaryPrivateIpAddressCount = None
         self._QosLevel = None
         self._SecurityGroupIds = None
         self._PrivateIpAddresses = None
+        self._SecondaryPrivateIpAddressCount = None
+        self._Ipv6Addresses = None
+        self._Ipv6AddressCount = None
         self._Tags = None
         self._TrunkingFlag = None
         self._IsRdma = None
         self._ClientToken = None
+        self._TerminationProtection = None
+        self._TrafficProtection = None
 
     @property
     def VpcId(self):
-        r"""VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
+        r"""<p>VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口获取。</p>
         :rtype: str
         """
         return self._VpcId
@@ -13844,7 +13911,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceName(self):
-        r"""弹性网卡名称，最大长度不能超过60个字节。
+        r"""<p>弹性网卡名称，最大长度不能超过60个字节。</p>
         :rtype: str
         """
         return self._NetworkInterfaceName
@@ -13855,7 +13922,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
+        r"""<p>弹性网卡所在的子网实例ID，例如：subnet-0ap8nwca。可通过<a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a>接口获取。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -13866,7 +13933,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def NetworkInterfaceDescription(self):
-        r"""弹性网卡描述，可任意命名，但不得超过60个字符。
+        r"""<p>弹性网卡描述，可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._NetworkInterfaceDescription
@@ -13876,20 +13943,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self._NetworkInterfaceDescription = NetworkInterfaceDescription
 
     @property
-    def SecondaryPrivateIpAddressCount(self):
-        r"""新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。
-配额数查询：[DescribeVpcLimits](https://cloud.tencent.com/document/api/215/42942)。
-        :rtype: int
-        """
-        return self._SecondaryPrivateIpAddressCount
-
-    @SecondaryPrivateIpAddressCount.setter
-    def SecondaryPrivateIpAddressCount(self, SecondaryPrivateIpAddressCount):
-        self._SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount
-
-    @property
     def QosLevel(self):
-        r"""IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
+        r"""<p>IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p>
         :rtype: str
         """
         return self._QosLevel
@@ -13900,8 +13955,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""指定绑定的安全组，例如：['sg-1dd51d']。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
-
+        r"""<p>指定绑定的安全组，例如：[&#39;sg-1dd51d&#39;]。可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>接口获取。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -13912,7 +13966,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def PrivateIpAddresses(self):
-        r"""指定的内网IP信息，单次最多指定10个。
+        r"""<p>指定的内网IP信息，单次最多指定10个。</p>
         :rtype: list of PrivateIpAddressSpecification
         """
         return self._PrivateIpAddresses
@@ -13922,8 +13976,41 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self._PrivateIpAddresses = PrivateIpAddresses
 
     @property
+    def SecondaryPrivateIpAddressCount(self):
+        r"""<p>新申请的内网IP地址个数，内网IP地址个数总和不能超过配额数。<br>配额数查询：<a href="https://cloud.tencent.com/document/api/215/42942">DescribeVpcLimits</a>。</p>
+        :rtype: int
+        """
+        return self._SecondaryPrivateIpAddressCount
+
+    @SecondaryPrivateIpAddressCount.setter
+    def SecondaryPrivateIpAddressCount(self, SecondaryPrivateIpAddressCount):
+        self._SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount
+
+    @property
+    def Ipv6Addresses(self):
+        r"""<p>指定的<code>IPv6</code>地址列表，单次最多指定10个。与入参<code>Ipv6AddressCount</code>合并计算配额。</p>
+        :rtype: list of Ipv6Address
+        """
+        return self._Ipv6Addresses
+
+    @Ipv6Addresses.setter
+    def Ipv6Addresses(self, Ipv6Addresses):
+        self._Ipv6Addresses = Ipv6Addresses
+
+    @property
+    def Ipv6AddressCount(self):
+        r"""<p>自动分配<code>IPv6</code>地址个数，内网IP地址个数总和不能超过配额数。与入参<code>Ipv6Addresses</code>合并计算配额。</p><p>取值范围：[1, 10]</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._Ipv6AddressCount
+
+    @Ipv6AddressCount.setter
+    def Ipv6AddressCount(self, Ipv6AddressCount):
+        self._Ipv6AddressCount = Ipv6AddressCount
+
+    @property
     def Tags(self):
-        r"""指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        r"""<p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -13934,7 +14021,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def TrunkingFlag(self):
-        r"""网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
+        r"""<p>网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。</p>
         :rtype: str
         """
         return self._TrunkingFlag
@@ -13945,7 +14032,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def IsRdma(self):
-        r"""是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false
+        r"""<p>是否创建RDMA弹性网卡，true:创建rdma弹性网卡，false:普通弹性网卡。不填默认为false</p>
         :rtype: bool
         """
         return self._IsRdma
@@ -13956,7 +14043,7 @@ class CreateNetworkInterfaceRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -13965,13 +14052,34 @@ class CreateNetworkInterfaceRequest(AbstractModel):
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def TerminationProtection(self):
+        r"""<p>删除保护。</p>
+        :rtype: bool
+        """
+        return self._TerminationProtection
+
+    @TerminationProtection.setter
+    def TerminationProtection(self, TerminationProtection):
+        self._TerminationProtection = TerminationProtection
+
+    @property
+    def TrafficProtection(self):
+        r"""<p>流量保护。</p>
+        :rtype: bool
+        """
+        return self._TrafficProtection
+
+    @TrafficProtection.setter
+    def TrafficProtection(self, TrafficProtection):
+        self._TrafficProtection = TrafficProtection
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._NetworkInterfaceName = params.get("NetworkInterfaceName")
         self._SubnetId = params.get("SubnetId")
         self._NetworkInterfaceDescription = params.get("NetworkInterfaceDescription")
-        self._SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
         self._QosLevel = params.get("QosLevel")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         if params.get("PrivateIpAddresses") is not None:
@@ -13980,6 +14088,14 @@ class CreateNetworkInterfaceRequest(AbstractModel):
                 obj = PrivateIpAddressSpecification()
                 obj._deserialize(item)
                 self._PrivateIpAddresses.append(obj)
+        self._SecondaryPrivateIpAddressCount = params.get("SecondaryPrivateIpAddressCount")
+        if params.get("Ipv6Addresses") is not None:
+            self._Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self._Ipv6Addresses.append(obj)
+        self._Ipv6AddressCount = params.get("Ipv6AddressCount")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -13989,6 +14105,8 @@ class CreateNetworkInterfaceRequest(AbstractModel):
         self._TrunkingFlag = params.get("TrunkingFlag")
         self._IsRdma = params.get("IsRdma")
         self._ClientToken = params.get("ClientToken")
+        self._TerminationProtection = params.get("TerminationProtection")
+        self._TrafficProtection = params.get("TrafficProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14006,7 +14124,7 @@ class CreateNetworkInterfaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterface: 弹性网卡实例。
+        :param _NetworkInterface: <p>弹性网卡实例。</p>
         :type NetworkInterface: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14016,7 +14134,7 @@ class CreateNetworkInterfaceResponse(AbstractModel):
 
     @property
     def NetworkInterface(self):
-        r"""弹性网卡实例。
+        r"""<p>弹性网卡实例。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkInterface`
         """
         return self._NetworkInterface
@@ -16026,29 +16144,35 @@ class CreateSubnetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        :param _VpcId: <p>待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。</p>
         :type VpcId: str
-        :param _SubnetName: 子网名称，最大长度不能超过60个字节。
+        :param _SubnetName: <p>子网名称，最大长度不能超过60个字节。</p>
         :type SubnetName: str
-        :param _CidrBlock: 子网网段，子网网段必须在VPC网段内，相同VPC内子网网段不能重叠。
-        :type CidrBlock: str
-        :param _Zone: 子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
+        :param _Zone: <p>子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。</p>
         :type Zone: str
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param _StackType: <p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :type StackType: str
+        :param _CidrBlock: <p>子网网段，子网网段必须在VPC网段内，相同VPC内子网网段不能重叠。</p>
+        :type CidrBlock: str
+        :param _Ipv6CidrBlock: <p>IPv6网段</p>
+        :type Ipv6CidrBlock: str
+        :param _Tags: <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]</p>
         :type Tags: list of Tag
-        :param _CdcId: CDC实例ID。
+        :param _CdcId: <p>CDC实例ID。</p>
         :type CdcId: str
         """
         self._VpcId = None
         self._SubnetName = None
-        self._CidrBlock = None
         self._Zone = None
+        self._StackType = None
+        self._CidrBlock = None
+        self._Ipv6CidrBlock = None
         self._Tags = None
         self._CdcId = None
 
     @property
     def VpcId(self):
-        r"""待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。
+        r"""<p>待操作的VPC实例ID。可通过DescribeVpcs接口返回值中的VpcId获取。</p>
         :rtype: str
         """
         return self._VpcId
@@ -16059,7 +16183,7 @@ class CreateSubnetRequest(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""子网名称，最大长度不能超过60个字节。
+        r"""<p>子网名称，最大长度不能超过60个字节。</p>
         :rtype: str
         """
         return self._SubnetName
@@ -16069,19 +16193,8 @@ class CreateSubnetRequest(AbstractModel):
         self._SubnetName = SubnetName
 
     @property
-    def CidrBlock(self):
-        r"""子网网段，子网网段必须在VPC网段内，相同VPC内子网网段不能重叠。
-        :rtype: str
-        """
-        return self._CidrBlock
-
-    @CidrBlock.setter
-    def CidrBlock(self, CidrBlock):
-        self._CidrBlock = CidrBlock
-
-    @property
     def Zone(self):
-        r"""子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。
+        r"""<p>子网所在的可用区ID，不同子网选择不同可用区可以做跨可用区灾备。</p>
         :rtype: str
         """
         return self._Zone
@@ -16091,8 +16204,41 @@ class CreateSubnetRequest(AbstractModel):
         self._Zone = Zone
 
     @property
+    def StackType(self):
+        r"""<p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :rtype: str
+        """
+        return self._StackType
+
+    @StackType.setter
+    def StackType(self, StackType):
+        self._StackType = StackType
+
+    @property
+    def CidrBlock(self):
+        r"""<p>子网网段，子网网段必须在VPC网段内，相同VPC内子网网段不能重叠。</p>
+        :rtype: str
+        """
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def Ipv6CidrBlock(self):
+        r"""<p>IPv6网段</p>
+        :rtype: str
+        """
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
     def Tags(self):
-        r"""指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        r"""<p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -16103,7 +16249,7 @@ class CreateSubnetRequest(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""CDC实例ID。
+        r"""<p>CDC实例ID。</p>
         :rtype: str
         """
         return self._CdcId
@@ -16116,8 +16262,10 @@ class CreateSubnetRequest(AbstractModel):
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetName = params.get("SubnetName")
-        self._CidrBlock = params.get("CidrBlock")
         self._Zone = params.get("Zone")
+        self._StackType = params.get("StackType")
+        self._CidrBlock = params.get("CidrBlock")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -16142,7 +16290,7 @@ class CreateSubnetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Subnet: 子网对象。
+        :param _Subnet: <p>子网对象。</p>
         :type Subnet: :class:`tencentcloud.vpc.v20170312.models.Subnet`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16152,7 +16300,7 @@ class CreateSubnetResponse(AbstractModel):
 
     @property
     def Subnet(self):
-        r"""子网对象。
+        r"""<p>子网对象。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.Subnet`
         """
         return self._Subnet
@@ -17623,25 +17771,34 @@ class CreateVpcRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcName: vpc名称，最大长度不能超过60个字节。
+        :param _VpcName: <p>vpc名称，最大长度不能超过60个字节。</p>
         :type VpcName: str
-        :param _CidrBlock: vpc的cidr，仅能在10.0.0.0/12，172.16.0.0/12，192.168.0.0/16这三个内网网段内。
+        :param _StackType: <p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :type StackType: str
+        :param _CidrBlock: <p>vpc的cidr，仅能在10.0.0.0/12，172.16.0.0/12，192.168.0.0/16这三个内网网段内。</p>
         :type CidrBlock: str
-        :param _EnableMulticast: 是否开启组播。true: 开启, false: 不开启。
+        :param _Ipv6CidrBlock: <p><code>VPC</code>的<code>IPv6</code> <code>CIDR</code>。</p>
+        :type Ipv6CidrBlock: str
+        :param _AddressType: <p>IPv6网段类型</p><p>枚举值：</p><ul><li>GUA： 全球单播地址</li><li>ULA： 唯一本地地址</li></ul>
+        :type AddressType: str
+        :param _EnableMulticast: <p>是否开启组播。true: 开启, false: 不开启。</p>
         :type EnableMulticast: str
-        :param _DnsServers: DNS地址，最多支持4个。
+        :param _DnsServers: <p>DNS地址，最多支持4个。</p>
         :type DnsServers: list of str
-        :param _DomainName: DHCP使用的域名。
+        :param _DomainName: <p>DHCP使用的域名。</p>
         :type DomainName: str
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :param _Tags: <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :type Tags: list of Tag
-        :param _EnableRouteVpcPublish: vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        :param _EnableRouteVpcPublish: <p>vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单</p>
         :type EnableRouteVpcPublish: bool
-        :param _EnableRouteVpcPublishIpv6: vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        :param _EnableRouteVpcPublishIpv6: <p>vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。</p>
         :type EnableRouteVpcPublishIpv6: bool
         """
         self._VpcName = None
+        self._StackType = None
         self._CidrBlock = None
+        self._Ipv6CidrBlock = None
+        self._AddressType = None
         self._EnableMulticast = None
         self._DnsServers = None
         self._DomainName = None
@@ -17651,7 +17808,7 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""vpc名称，最大长度不能超过60个字节。
+        r"""<p>vpc名称，最大长度不能超过60个字节。</p>
         :rtype: str
         """
         return self._VpcName
@@ -17661,8 +17818,19 @@ class CreateVpcRequest(AbstractModel):
         self._VpcName = VpcName
 
     @property
+    def StackType(self):
+        r"""<p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :rtype: str
+        """
+        return self._StackType
+
+    @StackType.setter
+    def StackType(self, StackType):
+        self._StackType = StackType
+
+    @property
     def CidrBlock(self):
-        r"""vpc的cidr，仅能在10.0.0.0/12，172.16.0.0/12，192.168.0.0/16这三个内网网段内。
+        r"""<p>vpc的cidr，仅能在10.0.0.0/12，172.16.0.0/12，192.168.0.0/16这三个内网网段内。</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -17672,8 +17840,30 @@ class CreateVpcRequest(AbstractModel):
         self._CidrBlock = CidrBlock
 
     @property
+    def Ipv6CidrBlock(self):
+        r"""<p><code>VPC</code>的<code>IPv6</code> <code>CIDR</code>。</p>
+        :rtype: str
+        """
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
+    def AddressType(self):
+        r"""<p>IPv6网段类型</p><p>枚举值：</p><ul><li>GUA： 全球单播地址</li><li>ULA： 唯一本地地址</li></ul>
+        :rtype: str
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+    @property
     def EnableMulticast(self):
-        r"""是否开启组播。true: 开启, false: 不开启。
+        r"""<p>是否开启组播。true: 开启, false: 不开启。</p>
         :rtype: str
         """
         return self._EnableMulticast
@@ -17684,7 +17874,7 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def DnsServers(self):
-        r"""DNS地址，最多支持4个。
+        r"""<p>DNS地址，最多支持4个。</p>
         :rtype: list of str
         """
         return self._DnsServers
@@ -17695,7 +17885,7 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""DHCP使用的域名。
+        r"""<p>DHCP使用的域名。</p>
         :rtype: str
         """
         return self._DomainName
@@ -17706,7 +17896,7 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        r"""<p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -17717,7 +17907,7 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def EnableRouteVpcPublish(self):
-        r"""vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        r"""<p>vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单</p>
         :rtype: bool
         """
         return self._EnableRouteVpcPublish
@@ -17728,7 +17918,7 @@ class CreateVpcRequest(AbstractModel):
 
     @property
     def EnableRouteVpcPublishIpv6(self):
-        r"""vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        r"""<p>vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。</p>
         :rtype: bool
         """
         return self._EnableRouteVpcPublishIpv6
@@ -17740,7 +17930,10 @@ class CreateVpcRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
+        self._StackType = params.get("StackType")
         self._CidrBlock = params.get("CidrBlock")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
+        self._AddressType = params.get("AddressType")
         self._EnableMulticast = params.get("EnableMulticast")
         self._DnsServers = params.get("DnsServers")
         self._DomainName = params.get("DomainName")
@@ -17769,7 +17962,7 @@ class CreateVpcResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Vpc: Vpc对象。
+        :param _Vpc: <p>Vpc对象。</p>
         :type Vpc: :class:`tencentcloud.vpc.v20170312.models.Vpc`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17779,7 +17972,7 @@ class CreateVpcResponse(AbstractModel):
 
     @property
     def Vpc(self):
-        r"""Vpc对象。
+        r"""<p>Vpc对象。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.Vpc`
         """
         return self._Vpc
@@ -19194,6 +19387,8 @@ class CrossBorderCompliance(AbstractModel):
         :type LegalPersonId: str
         :param _LegalPersonIdCard: 法定代表人身份证。
         :type LegalPersonIdCard: str
+        :param _WhiteListFlag: 白名单开关是否开启
+        :type WhiteListFlag: bool
         """
         self._ServiceProvider = None
         self._ComplianceId = None
@@ -19219,6 +19414,7 @@ class CrossBorderCompliance(AbstractModel):
         self._CreatedTime = None
         self._LegalPersonId = None
         self._LegalPersonIdCard = None
+        self._WhiteListFlag = None
 
     @property
     def ServiceProvider(self):
@@ -19484,6 +19680,17 @@ class CrossBorderCompliance(AbstractModel):
     def LegalPersonIdCard(self, LegalPersonIdCard):
         self._LegalPersonIdCard = LegalPersonIdCard
 
+    @property
+    def WhiteListFlag(self):
+        r"""白名单开关是否开启
+        :rtype: bool
+        """
+        return self._WhiteListFlag
+
+    @WhiteListFlag.setter
+    def WhiteListFlag(self, WhiteListFlag):
+        self._WhiteListFlag = WhiteListFlag
+
 
     def _deserialize(self, params):
         self._ServiceProvider = params.get("ServiceProvider")
@@ -19510,6 +19717,7 @@ class CrossBorderCompliance(AbstractModel):
         self._CreatedTime = params.get("CreatedTime")
         self._LegalPersonId = params.get("LegalPersonId")
         self._LegalPersonIdCard = params.get("LegalPersonIdCard")
+        self._WhiteListFlag = params.get("WhiteListFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48351,11 +48559,11 @@ class ISPIPv6CidrBlock(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPv6CidrBlock: IPv6 CIdr Block
+        :param _IPv6CidrBlock: <p>IPv6网段</p>
         :type IPv6CidrBlock: str
-        :param _ISPType: 网络运营商类型 取值范围:'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调
+        :param _ISPType: <p>网络运营商类型</p><p>枚举值：</p><ul><li>BGP： 默认</li><li>CMCC： 中国移动</li><li>CTCC： 中国电信</li><li>CUCC： 中国联通</li></ul>
         :type ISPType: str
-        :param _AddressType: IPv6 Cidr 的类型：`GUA`(全球单播地址), `ULA`(唯一本地地址)
+        :param _AddressType: <p>IPv6网段类型</p><p>枚举值：</p><ul><li>GUA： 全球单播地址</li><li>ULA： 唯一本地地址</li></ul>
         :type AddressType: str
         """
         self._IPv6CidrBlock = None
@@ -48364,7 +48572,7 @@ class ISPIPv6CidrBlock(AbstractModel):
 
     @property
     def IPv6CidrBlock(self):
-        r"""IPv6 CIdr Block
+        r"""<p>IPv6网段</p>
         :rtype: str
         """
         return self._IPv6CidrBlock
@@ -48375,7 +48583,7 @@ class ISPIPv6CidrBlock(AbstractModel):
 
     @property
     def ISPType(self):
-        r"""网络运营商类型 取值范围:'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调
+        r"""<p>网络运营商类型</p><p>枚举值：</p><ul><li>BGP： 默认</li><li>CMCC： 中国移动</li><li>CTCC： 中国电信</li><li>CUCC： 中国联通</li></ul>
         :rtype: str
         """
         return self._ISPType
@@ -48386,7 +48594,7 @@ class ISPIPv6CidrBlock(AbstractModel):
 
     @property
     def AddressType(self):
-        r"""IPv6 Cidr 的类型：`GUA`(全球单播地址), `ULA`(唯一本地地址)
+        r"""<p>IPv6网段类型</p><p>枚举值：</p><ul><li>GUA： 全球单播地址</li><li>ULA： 唯一本地地址</li></ul>
         :rtype: str
         """
         return self._AddressType
@@ -61459,66 +61667,55 @@ class NetworkInterface(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterfaceId: 弹性网卡实例ID，例如：eni-f1xjkw1b。
+        :param _NetworkInterfaceId: <p>弹性网卡实例ID，例如：eni-f1xjkw1b。</p>
         :type NetworkInterfaceId: str
-        :param _NetworkInterfaceName: 弹性网卡名称。
+        :param _NetworkInterfaceName: <p>弹性网卡名称。</p>
         :type NetworkInterfaceName: str
-        :param _NetworkInterfaceDescription: 弹性网卡描述。
+        :param _NetworkInterfaceDescription: <p>弹性网卡描述。</p>
         :type NetworkInterfaceDescription: str
-        :param _SubnetId: 子网实例ID。
+        :param _SubnetId: <p>子网实例ID。</p>
         :type SubnetId: str
-        :param _VpcId: VPC实例ID。
+        :param _VpcId: <p>VPC实例ID。</p>
         :type VpcId: str
-        :param _GroupSet: 绑定的安全组。
+        :param _GroupSet: <p>绑定的安全组。</p>
         :type GroupSet: list of str
-        :param _Primary: 是否是主网卡。
+        :param _Primary: <p>是否是主网卡。</p>
         :type Primary: bool
-        :param _MacAddress: MAC地址。
+        :param _MacAddress: <p>MAC地址。</p>
         :type MacAddress: str
-        :param _State: 弹性网卡状态：
-<li>`PENDING`：创建中</li>
-<li>`AVAILABLE`：可用的</li>
-<li>`ATTACHING`：绑定中</li>
-<li>`DETACHING`：解绑中</li>
-<li>`DELETING`：删除中</li>
+        :param _State: <p>弹性网卡状态：</p><li><code>PENDING</code>：创建中</li><li><code>AVAILABLE</code>：可用的</li><li><code>ATTACHING</code>：绑定中</li><li><code>DETACHING</code>：解绑中</li><li><code>DELETING</code>：删除中</li>
         :type State: str
-        :param _NetworkInterfaceState: 弹性网卡状态：
-<li>`PENDING`：创建中</li>
-<li>`AVAILABLE`：可用的</li>
-<li>`ATTACHING`：绑定中</li>
-<li>`DETACHING`：解绑中</li>
-<li>`DELETING`：删除中</li>
-<li>`INUSE`：已绑定</li>
+        :param _NetworkInterfaceState: <p>弹性网卡状态：</p><li><code>PENDING</code>：创建中</li><li><code>AVAILABLE</code>：可用的</li><li><code>ATTACHING</code>：绑定中</li><li><code>DETACHING</code>：解绑中</li><li><code>DELETING</code>：删除中</li><li><code>INUSE</code>：已绑定</li>
         :type NetworkInterfaceState: str
-        :param _PrivateIpAddressSet: 内网IP信息。
+        :param _PrivateIpAddressSet: <p>内网IP信息。</p>
         :type PrivateIpAddressSet: list of PrivateIpAddressSpecification
-        :param _Attachment: 绑定的云服务器对象。
+        :param _Attachment: <p>绑定的云服务器对象。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Attachment: :class:`tencentcloud.vpc.v20170312.models.NetworkInterfaceAttachment`
-        :param _Zone: 可用区。
+        :param _Zone: <p>可用区。</p>
         :type Zone: str
-        :param _CreatedTime: 创建时间。格式：YYYY-MM-DD hh:mm:ss。示例值：2020-10-28 08:23:59
+        :param _CreatedTime: <p>创建时间。格式：YYYY-MM-DD hh:mm:ss。示例值：2020-10-28 08:23:59</p>
         :type CreatedTime: str
-        :param _Ipv6AddressSet: `IPv6`地址列表。
+        :param _Ipv6AddressSet: <p><code>IPv6</code>地址列表。</p>
         :type Ipv6AddressSet: list of Ipv6Address
-        :param _TagSet: 标签键值对。
+        :param _TagSet: <p>标签键值对。</p>
         :type TagSet: list of Tag
-        :param _EniType: 网卡类型。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡
+        :param _EniType: <p>网卡类型。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡</p>
         :type EniType: int
-        :param _Business: 网卡绑定的子机类型：cvm（普通CVM子机），eks（弹性容器服务Elastic Kubernetes Service）， hai（高性能应用服务Hyper Application Inventor）。
+        :param _Business: <p>网卡绑定的子机类型：cvm（普通CVM子机），eks（弹性容器服务Elastic Kubernetes Service）， hai（高性能应用服务Hyper Application Inventor）。</p>
         :type Business: str
-        :param _CdcId: 网卡所关联的CDC实例ID。
+        :param _CdcId: <p>网卡所关联的CDC实例ID。</p>
         :type CdcId: str
-        :param _AttachType: 弹性网卡类型：0:标准型/1:扩展型。默认值为0。
+        :param _AttachType: <p>弹性网卡类型：0:标准型/1:扩展型。默认值为0。</p>
         :type AttachType: int
-        :param _ResourceId: 用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。
+        :param _ResourceId: <p>用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。</p>
         :type ResourceId: str
-        :param _QosLevel: 服务质量级别：
-PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
-
-可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
-
+        :param _QosLevel: <p>服务质量级别：<br>PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p><p>可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p>
         :type QosLevel: str
+        :param _Ipv6Addresses: <p>指定的<code>IPv6</code>地址列表，单次最多指定10个。与入参<code>Ipv6AddressCount</code>合并计算配额。</p>
+        :type Ipv6Addresses: list of Ipv6Address
+        :param _Ipv6AddressCount: <p>自动分配<code>IPv6</code>地址个数，内网IP地址个数总和不能超过配额数。与入参<code>Ipv6Addresses</code>合并计算配额。</p><p>取值范围：[1, 10]</p><p>单位：个</p>
+        :type Ipv6AddressCount: int
         """
         self._NetworkInterfaceId = None
         self._NetworkInterfaceName = None
@@ -61542,10 +61739,12 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
         self._AttachType = None
         self._ResourceId = None
         self._QosLevel = None
+        self._Ipv6Addresses = None
+        self._Ipv6AddressCount = None
 
     @property
     def NetworkInterfaceId(self):
-        r"""弹性网卡实例ID，例如：eni-f1xjkw1b。
+        r"""<p>弹性网卡实例ID，例如：eni-f1xjkw1b。</p>
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -61556,7 +61755,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def NetworkInterfaceName(self):
-        r"""弹性网卡名称。
+        r"""<p>弹性网卡名称。</p>
         :rtype: str
         """
         return self._NetworkInterfaceName
@@ -61567,7 +61766,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def NetworkInterfaceDescription(self):
-        r"""弹性网卡描述。
+        r"""<p>弹性网卡描述。</p>
         :rtype: str
         """
         return self._NetworkInterfaceDescription
@@ -61578,7 +61777,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def SubnetId(self):
-        r"""子网实例ID。
+        r"""<p>子网实例ID。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -61589,7 +61788,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def VpcId(self):
-        r"""VPC实例ID。
+        r"""<p>VPC实例ID。</p>
         :rtype: str
         """
         return self._VpcId
@@ -61600,7 +61799,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def GroupSet(self):
-        r"""绑定的安全组。
+        r"""<p>绑定的安全组。</p>
         :rtype: list of str
         """
         return self._GroupSet
@@ -61611,7 +61810,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def Primary(self):
-        r"""是否是主网卡。
+        r"""<p>是否是主网卡。</p>
         :rtype: bool
         """
         return self._Primary
@@ -61622,7 +61821,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def MacAddress(self):
-        r"""MAC地址。
+        r"""<p>MAC地址。</p>
         :rtype: str
         """
         return self._MacAddress
@@ -61633,12 +61832,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def State(self):
-        r"""弹性网卡状态：
-<li>`PENDING`：创建中</li>
-<li>`AVAILABLE`：可用的</li>
-<li>`ATTACHING`：绑定中</li>
-<li>`DETACHING`：解绑中</li>
-<li>`DELETING`：删除中</li>
+        r"""<p>弹性网卡状态：</p><li><code>PENDING</code>：创建中</li><li><code>AVAILABLE</code>：可用的</li><li><code>ATTACHING</code>：绑定中</li><li><code>DETACHING</code>：解绑中</li><li><code>DELETING</code>：删除中</li>
         :rtype: str
         """
         return self._State
@@ -61649,13 +61843,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def NetworkInterfaceState(self):
-        r"""弹性网卡状态：
-<li>`PENDING`：创建中</li>
-<li>`AVAILABLE`：可用的</li>
-<li>`ATTACHING`：绑定中</li>
-<li>`DETACHING`：解绑中</li>
-<li>`DELETING`：删除中</li>
-<li>`INUSE`：已绑定</li>
+        r"""<p>弹性网卡状态：</p><li><code>PENDING</code>：创建中</li><li><code>AVAILABLE</code>：可用的</li><li><code>ATTACHING</code>：绑定中</li><li><code>DETACHING</code>：解绑中</li><li><code>DELETING</code>：删除中</li><li><code>INUSE</code>：已绑定</li>
         :rtype: str
         """
         return self._NetworkInterfaceState
@@ -61666,7 +61854,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def PrivateIpAddressSet(self):
-        r"""内网IP信息。
+        r"""<p>内网IP信息。</p>
         :rtype: list of PrivateIpAddressSpecification
         """
         return self._PrivateIpAddressSet
@@ -61677,7 +61865,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def Attachment(self):
-        r"""绑定的云服务器对象。
+        r"""<p>绑定的云服务器对象。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vpc.v20170312.models.NetworkInterfaceAttachment`
         """
@@ -61689,7 +61877,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def Zone(self):
-        r"""可用区。
+        r"""<p>可用区。</p>
         :rtype: str
         """
         return self._Zone
@@ -61700,7 +61888,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def CreatedTime(self):
-        r"""创建时间。格式：YYYY-MM-DD hh:mm:ss。示例值：2020-10-28 08:23:59
+        r"""<p>创建时间。格式：YYYY-MM-DD hh:mm:ss。示例值：2020-10-28 08:23:59</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -61711,7 +61899,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def Ipv6AddressSet(self):
-        r"""`IPv6`地址列表。
+        r"""<p><code>IPv6</code>地址列表。</p>
         :rtype: list of Ipv6Address
         """
         return self._Ipv6AddressSet
@@ -61722,7 +61910,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def TagSet(self):
-        r"""标签键值对。
+        r"""<p>标签键值对。</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -61733,7 +61921,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def EniType(self):
-        r"""网卡类型。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡
+        r"""<p>网卡类型。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡</p>
         :rtype: int
         """
         return self._EniType
@@ -61744,7 +61932,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def Business(self):
-        r"""网卡绑定的子机类型：cvm（普通CVM子机），eks（弹性容器服务Elastic Kubernetes Service）， hai（高性能应用服务Hyper Application Inventor）。
+        r"""<p>网卡绑定的子机类型：cvm（普通CVM子机），eks（弹性容器服务Elastic Kubernetes Service）， hai（高性能应用服务Hyper Application Inventor）。</p>
         :rtype: str
         """
         return self._Business
@@ -61755,7 +61943,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def CdcId(self):
-        r"""网卡所关联的CDC实例ID。
+        r"""<p>网卡所关联的CDC实例ID。</p>
         :rtype: str
         """
         return self._CdcId
@@ -61766,7 +61954,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def AttachType(self):
-        r"""弹性网卡类型：0:标准型/1:扩展型。默认值为0。
+        r"""<p>弹性网卡类型：0:标准型/1:扩展型。默认值为0。</p>
         :rtype: int
         """
         return self._AttachType
@@ -61777,7 +61965,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def ResourceId(self):
-        r"""用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。
+        r"""<p>用于保留网卡主IP的资源ID用于保留网卡主IP的资源ID。用于删除网卡时作为入参数。</p>
         :rtype: str
         """
         return self._ResourceId
@@ -61788,11 +61976,7 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
 
     @property
     def QosLevel(self):
-        r"""服务质量级别：
-PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
-
-可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
-
+        r"""<p>服务质量级别：<br>PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p><p>可选值：PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</p>
         :rtype: str
         """
         return self._QosLevel
@@ -61800,6 +61984,28 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
     @QosLevel.setter
     def QosLevel(self, QosLevel):
         self._QosLevel = QosLevel
+
+    @property
+    def Ipv6Addresses(self):
+        r"""<p>指定的<code>IPv6</code>地址列表，单次最多指定10个。与入参<code>Ipv6AddressCount</code>合并计算配额。</p>
+        :rtype: list of Ipv6Address
+        """
+        return self._Ipv6Addresses
+
+    @Ipv6Addresses.setter
+    def Ipv6Addresses(self, Ipv6Addresses):
+        self._Ipv6Addresses = Ipv6Addresses
+
+    @property
+    def Ipv6AddressCount(self):
+        r"""<p>自动分配<code>IPv6</code>地址个数，内网IP地址个数总和不能超过配额数。与入参<code>Ipv6Addresses</code>合并计算配额。</p><p>取值范围：[1, 10]</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._Ipv6AddressCount
+
+    @Ipv6AddressCount.setter
+    def Ipv6AddressCount(self, Ipv6AddressCount):
+        self._Ipv6AddressCount = Ipv6AddressCount
 
 
     def _deserialize(self, params):
@@ -61842,6 +62048,13 @@ PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。
         self._AttachType = params.get("AttachType")
         self._ResourceId = params.get("ResourceId")
         self._QosLevel = params.get("QosLevel")
+        if params.get("Ipv6Addresses") is not None:
+            self._Ipv6Addresses = []
+            for item in params.get("Ipv6Addresses"):
+                obj = Ipv6Address()
+                obj._deserialize(item)
+                self._Ipv6Addresses.append(obj)
+        self._Ipv6AddressCount = params.get("Ipv6AddressCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70100,10 +70313,13 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
         :type CcnRegionBandwidthLimits: list of CcnRegionBandwidthLimit
         :param _SetDefaultLimitFlag: 是否恢复云联网地域出口/地域间带宽限速为默认值（1Gbps）。false表示不恢复；true表示恢复。恢复默认值后，限速实例将不在控制台展示。该参数默认为 false，不恢复。
         :type SetDefaultLimitFlag: bool
+        :param _SetQosDefaultLimitFlag: 是否设置默认QOS带宽；
+        :type SetQosDefaultLimitFlag: bool
         """
         self._CcnId = None
         self._CcnRegionBandwidthLimits = None
         self._SetDefaultLimitFlag = None
+        self._SetQosDefaultLimitFlag = None
 
     @property
     def CcnId(self):
@@ -70138,6 +70354,17 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
     def SetDefaultLimitFlag(self, SetDefaultLimitFlag):
         self._SetDefaultLimitFlag = SetDefaultLimitFlag
 
+    @property
+    def SetQosDefaultLimitFlag(self):
+        r"""是否设置默认QOS带宽；
+        :rtype: bool
+        """
+        return self._SetQosDefaultLimitFlag
+
+    @SetQosDefaultLimitFlag.setter
+    def SetQosDefaultLimitFlag(self, SetQosDefaultLimitFlag):
+        self._SetQosDefaultLimitFlag = SetQosDefaultLimitFlag
+
 
     def _deserialize(self, params):
         self._CcnId = params.get("CcnId")
@@ -70148,6 +70375,7 @@ class SetCcnRegionBandwidthLimitsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._CcnRegionBandwidthLimits.append(obj)
         self._SetDefaultLimitFlag = params.get("SetDefaultLimitFlag")
+        self._SetQosDefaultLimitFlag = params.get("SetQosDefaultLimitFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -71617,6 +71845,8 @@ class Subnet(AbstractModel):
         :type CdcId: str
         :param _IsCdcSubnet: <p>是否是CDC所属子网。0:否 1:是</p>
         :type IsCdcSubnet: int
+        :param _StackType: <p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :type StackType: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -71635,6 +71865,7 @@ class Subnet(AbstractModel):
         self._TagSet = None
         self._CdcId = None
         self._IsCdcSubnet = None
+        self._StackType = None
 
     @property
     def VpcId(self):
@@ -71823,6 +72054,17 @@ class Subnet(AbstractModel):
     def IsCdcSubnet(self, IsCdcSubnet):
         self._IsCdcSubnet = IsCdcSubnet
 
+    @property
+    def StackType(self):
+        r"""<p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :rtype: str
+        """
+        return self._StackType
+
+    @StackType.setter
+    def StackType(self, StackType):
+        self._StackType = StackType
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -71847,6 +72089,7 @@ class Subnet(AbstractModel):
                 self._TagSet.append(obj)
         self._CdcId = params.get("CdcId")
         self._IsCdcSubnet = params.get("IsCdcSubnet")
+        self._StackType = params.get("StackType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -71864,34 +72107,29 @@ class SubnetInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CidrBlock: 子网的`CIDR`。
-        :type CidrBlock: str
-        :param _SubnetName: 子网名称。
+        :param _SubnetName: <p>子网名称。</p>
         :type SubnetName: str
-        :param _Zone: 可用区。形如：`ap-guangzhou-2`。
+        :param _Zone: <p>可用区。形如：<code>ap-guangzhou-2</code>。</p>
         :type Zone: str
-        :param _RouteTableId: 指定关联路由表，形如：`rtb-3ryrwzuu`。
+        :param _StackType: <p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :type StackType: str
+        :param _CidrBlock: <p>子网的<code>CIDR</code>。</p>
+        :type CidrBlock: str
+        :param _Ipv6CidrBlock: <p>子网的 <code>IPv6</code> <code>CIDR</code>。</p>
+        :type Ipv6CidrBlock: str
+        :param _RouteTableId: <p>指定关联路由表，形如：<code>rtb-3ryrwzuu</code>。</p>
         :type RouteTableId: str
         """
-        self._CidrBlock = None
         self._SubnetName = None
         self._Zone = None
+        self._StackType = None
+        self._CidrBlock = None
+        self._Ipv6CidrBlock = None
         self._RouteTableId = None
 
     @property
-    def CidrBlock(self):
-        r"""子网的`CIDR`。
-        :rtype: str
-        """
-        return self._CidrBlock
-
-    @CidrBlock.setter
-    def CidrBlock(self, CidrBlock):
-        self._CidrBlock = CidrBlock
-
-    @property
     def SubnetName(self):
-        r"""子网名称。
+        r"""<p>子网名称。</p>
         :rtype: str
         """
         return self._SubnetName
@@ -71902,7 +72140,7 @@ class SubnetInput(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区。形如：`ap-guangzhou-2`。
+        r"""<p>可用区。形如：<code>ap-guangzhou-2</code>。</p>
         :rtype: str
         """
         return self._Zone
@@ -71912,8 +72150,41 @@ class SubnetInput(AbstractModel):
         self._Zone = Zone
 
     @property
+    def StackType(self):
+        r"""<p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :rtype: str
+        """
+        return self._StackType
+
+    @StackType.setter
+    def StackType(self, StackType):
+        self._StackType = StackType
+
+    @property
+    def CidrBlock(self):
+        r"""<p>子网的<code>CIDR</code>。</p>
+        :rtype: str
+        """
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def Ipv6CidrBlock(self):
+        r"""<p>子网的 <code>IPv6</code> <code>CIDR</code>。</p>
+        :rtype: str
+        """
+        return self._Ipv6CidrBlock
+
+    @Ipv6CidrBlock.setter
+    def Ipv6CidrBlock(self, Ipv6CidrBlock):
+        self._Ipv6CidrBlock = Ipv6CidrBlock
+
+    @property
     def RouteTableId(self):
-        r"""指定关联路由表，形如：`rtb-3ryrwzuu`。
+        r"""<p>指定关联路由表，形如：<code>rtb-3ryrwzuu</code>。</p>
         :rtype: str
         """
         return self._RouteTableId
@@ -71924,9 +72195,11 @@ class SubnetInput(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._CidrBlock = params.get("CidrBlock")
         self._SubnetName = params.get("SubnetName")
         self._Zone = params.get("Zone")
+        self._StackType = params.get("StackType")
+        self._CidrBlock = params.get("CidrBlock")
+        self._Ipv6CidrBlock = params.get("Ipv6CidrBlock")
         self._RouteTableId = params.get("RouteTableId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -74781,6 +75054,8 @@ class Vpc(AbstractModel):
         :type Ipv6CidrBlockSet: list of ISPIPv6CidrBlock
         :param _EnableRouteVpcPublishIpv6: <p>vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。</p>
         :type EnableRouteVpcPublishIpv6: bool
+        :param _StackType: <p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :type StackType: str
         """
         self._VpcName = None
         self._VpcId = None
@@ -74798,6 +75073,7 @@ class Vpc(AbstractModel):
         self._EnableRouteVpcPublish = None
         self._Ipv6CidrBlockSet = None
         self._EnableRouteVpcPublishIpv6 = None
+        self._StackType = None
 
     @property
     def VpcName(self):
@@ -74975,6 +75251,17 @@ class Vpc(AbstractModel):
     def EnableRouteVpcPublishIpv6(self, EnableRouteVpcPublishIpv6):
         self._EnableRouteVpcPublishIpv6 = EnableRouteVpcPublishIpv6
 
+    @property
+    def StackType(self):
+        r"""<p>协议栈类型</p><p>枚举值：</p><ul><li>DualStack： IPv4和IPv6双栈</li><li>IPv6Only： IPv6单栈</li></ul>
+        :rtype: str
+        """
+        return self._StackType
+
+    @StackType.setter
+    def StackType(self, StackType):
+        self._StackType = StackType
+
 
     def _deserialize(self, params):
         self._VpcName = params.get("VpcName")
@@ -75008,6 +75295,7 @@ class Vpc(AbstractModel):
                 obj._deserialize(item)
                 self._Ipv6CidrBlockSet.append(obj)
         self._EnableRouteVpcPublishIpv6 = params.get("EnableRouteVpcPublishIpv6")
+        self._StackType = params.get("StackType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75387,57 +75675,57 @@ class VpnConnection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnConnectionId: 通道实例ID。
+        :param _VpnConnectionId: <p>通道实例ID。</p>
         :type VpnConnectionId: str
-        :param _VpnConnectionName: 通道名称。
+        :param _VpnConnectionName: <p>通道名称。</p>
         :type VpnConnectionName: str
-        :param _VpcId: VPC实例ID。
+        :param _VpcId: <p>VPC实例ID。</p>
         :type VpcId: str
-        :param _VpnGatewayId: VPN网关实例ID。
+        :param _VpnGatewayId: <p>VPN网关实例ID。</p>
         :type VpnGatewayId: str
-        :param _CustomerGatewayId: 对端网关实例ID。
+        :param _CustomerGatewayId: <p>对端网关实例ID。</p>
         :type CustomerGatewayId: str
-        :param _PreShareKey: 预共享密钥。
+        :param _PreShareKey: <p>预共享密钥。</p>
         :type PreShareKey: str
-        :param _VpnProto: 通道传输协议。
+        :param _VpnProto: <p>通道传输协议。</p>
         :type VpnProto: str
-        :param _EncryptProto: 通道加密协议。
+        :param _EncryptProto: <p>通道加密协议。</p>
         :type EncryptProto: str
-        :param _RouteType: 路由类型。
+        :param _RouteType: <p>路由类型。</p>
         :type RouteType: str
-        :param _CreatedTime: 创建时间。
+        :param _CreatedTime: <p>创建时间。</p>
         :type CreatedTime: str
-        :param _State: 通道的生产状态，PENDING：生产中，AVAILABLE：运行中，DELETING：删除中。
+        :param _State: <p>通道的生产状态，PENDING：生产中，AVAILABLE：运行中，DELETING：删除中。</p>
         :type State: str
-        :param _NetStatus: 通道连接状态，AVAILABLE：已连接。
+        :param _NetStatus: <p>通道连接状态，AVAILABLE：已连接。</p>
         :type NetStatus: str
-        :param _SecurityPolicyDatabaseSet: SPD。
+        :param _SecurityPolicyDatabaseSet: <p>SPD。</p>
         :type SecurityPolicyDatabaseSet: list of SecurityPolicyDatabase
-        :param _IKEOptionsSpecification: IKE选项。
+        :param _IKEOptionsSpecification: <p>IKE选项。</p>
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
-        :param _IPSECOptionsSpecification: IPSEC选择。
+        :param _IPSECOptionsSpecification: <p>IPSEC选择。</p>
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
-        :param _EnableHealthCheck: 是否支持健康状态探测
+        :param _EnableHealthCheck: <p>是否支持健康状态探测</p>
         :type EnableHealthCheck: bool
-        :param _HealthCheckLocalIp: 本端探测ip
+        :param _HealthCheckLocalIp: <p>本端探测ip</p>
         :type HealthCheckLocalIp: str
-        :param _HealthCheckRemoteIp: 对端探测ip
+        :param _HealthCheckRemoteIp: <p>对端探测ip</p>
         :type HealthCheckRemoteIp: str
-        :param _HealthCheckStatus: 通道健康检查状态，AVAILABLE：正常，UNAVAILABLE：不正常。 未配置健康检查不返回该对象
+        :param _HealthCheckStatus: <p>通道健康检查状态，AVAILABLE：正常，UNAVAILABLE：不正常。 未配置健康检查不返回该对象</p>
         :type HealthCheckStatus: str
-        :param _DpdEnable: DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+        :param _DpdEnable: <p>DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）</p>
         :type DpdEnable: int
-        :param _DpdTimeout: DPD超时时间。即探测确认对端不存在需要的时间。
+        :param _DpdTimeout: <p>DPD超时时间。即探测确认对端不存在需要的时间。</p>
         :type DpdTimeout: str
-        :param _DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+        :param _DpdAction: <p>DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）</p>
         :type DpdAction: str
-        :param _TagSet: 标签键值对数组
+        :param _TagSet: <p>标签键值对数组</p>
         :type TagSet: list of Tag
-        :param _NegotiationType: 协商类型
+        :param _NegotiationType: <p>协商类型</p><p>枚举值：</p><ul><li>active： 主动协商</li><li>passive： 被动协商</li><li>flowTrigger： 流量协商</li></ul>
         :type NegotiationType: str
-        :param _BgpConfig: Bgp配置信息
+        :param _BgpConfig: <p>Bgp配置信息</p>
         :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfigAndAsn`
-        :param _HealthCheckConfig: Nqa配置信息
+        :param _HealthCheckConfig: <p>Nqa配置信息</p>
         :type HealthCheckConfig: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         self._VpnConnectionId = None
@@ -75469,7 +75757,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def VpnConnectionId(self):
-        r"""通道实例ID。
+        r"""<p>通道实例ID。</p>
         :rtype: str
         """
         return self._VpnConnectionId
@@ -75480,7 +75768,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def VpnConnectionName(self):
-        r"""通道名称。
+        r"""<p>通道名称。</p>
         :rtype: str
         """
         return self._VpnConnectionName
@@ -75491,7 +75779,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC实例ID。
+        r"""<p>VPC实例ID。</p>
         :rtype: str
         """
         return self._VpcId
@@ -75502,7 +75790,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def VpnGatewayId(self):
-        r"""VPN网关实例ID。
+        r"""<p>VPN网关实例ID。</p>
         :rtype: str
         """
         return self._VpnGatewayId
@@ -75513,7 +75801,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def CustomerGatewayId(self):
-        r"""对端网关实例ID。
+        r"""<p>对端网关实例ID。</p>
         :rtype: str
         """
         return self._CustomerGatewayId
@@ -75524,7 +75812,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def PreShareKey(self):
-        r"""预共享密钥。
+        r"""<p>预共享密钥。</p>
         :rtype: str
         """
         return self._PreShareKey
@@ -75535,7 +75823,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def VpnProto(self):
-        r"""通道传输协议。
+        r"""<p>通道传输协议。</p>
         :rtype: str
         """
         return self._VpnProto
@@ -75546,7 +75834,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def EncryptProto(self):
-        r"""通道加密协议。
+        r"""<p>通道加密协议。</p>
         :rtype: str
         """
         return self._EncryptProto
@@ -75557,7 +75845,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def RouteType(self):
-        r"""路由类型。
+        r"""<p>路由类型。</p>
         :rtype: str
         """
         return self._RouteType
@@ -75568,7 +75856,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -75579,7 +75867,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def State(self):
-        r"""通道的生产状态，PENDING：生产中，AVAILABLE：运行中，DELETING：删除中。
+        r"""<p>通道的生产状态，PENDING：生产中，AVAILABLE：运行中，DELETING：删除中。</p>
         :rtype: str
         """
         return self._State
@@ -75590,7 +75878,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def NetStatus(self):
-        r"""通道连接状态，AVAILABLE：已连接。
+        r"""<p>通道连接状态，AVAILABLE：已连接。</p>
         :rtype: str
         """
         return self._NetStatus
@@ -75601,7 +75889,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def SecurityPolicyDatabaseSet(self):
-        r"""SPD。
+        r"""<p>SPD。</p>
         :rtype: list of SecurityPolicyDatabase
         """
         return self._SecurityPolicyDatabaseSet
@@ -75612,7 +75900,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def IKEOptionsSpecification(self):
-        r"""IKE选项。
+        r"""<p>IKE选项。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         """
         return self._IKEOptionsSpecification
@@ -75623,7 +75911,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def IPSECOptionsSpecification(self):
-        r"""IPSEC选择。
+        r"""<p>IPSEC选择。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
         """
         return self._IPSECOptionsSpecification
@@ -75634,7 +75922,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def EnableHealthCheck(self):
-        r"""是否支持健康状态探测
+        r"""<p>是否支持健康状态探测</p>
         :rtype: bool
         """
         return self._EnableHealthCheck
@@ -75645,7 +75933,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def HealthCheckLocalIp(self):
-        r"""本端探测ip
+        r"""<p>本端探测ip</p>
         :rtype: str
         """
         return self._HealthCheckLocalIp
@@ -75656,7 +75944,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def HealthCheckRemoteIp(self):
-        r"""对端探测ip
+        r"""<p>对端探测ip</p>
         :rtype: str
         """
         return self._HealthCheckRemoteIp
@@ -75667,7 +75955,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def HealthCheckStatus(self):
-        r"""通道健康检查状态，AVAILABLE：正常，UNAVAILABLE：不正常。 未配置健康检查不返回该对象
+        r"""<p>通道健康检查状态，AVAILABLE：正常，UNAVAILABLE：不正常。 未配置健康检查不返回该对象</p>
         :rtype: str
         """
         return self._HealthCheckStatus
@@ -75678,7 +75966,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def DpdEnable(self):
-        r"""DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+        r"""<p>DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）</p>
         :rtype: int
         """
         return self._DpdEnable
@@ -75689,7 +75977,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def DpdTimeout(self):
-        r"""DPD超时时间。即探测确认对端不存在需要的时间。
+        r"""<p>DPD超时时间。即探测确认对端不存在需要的时间。</p>
         :rtype: str
         """
         return self._DpdTimeout
@@ -75700,7 +75988,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def DpdAction(self):
-        r"""DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+        r"""<p>DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）</p>
         :rtype: str
         """
         return self._DpdAction
@@ -75711,7 +75999,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签键值对数组
+        r"""<p>标签键值对数组</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -75722,7 +76010,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def NegotiationType(self):
-        r"""协商类型
+        r"""<p>协商类型</p><p>枚举值：</p><ul><li>active： 主动协商</li><li>passive： 被动协商</li><li>flowTrigger： 流量协商</li></ul>
         :rtype: str
         """
         return self._NegotiationType
@@ -75733,7 +76021,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def BgpConfig(self):
-        r"""Bgp配置信息
+        r"""<p>Bgp配置信息</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.BgpConfigAndAsn`
         """
         return self._BgpConfig
@@ -75744,7 +76032,7 @@ class VpnConnection(AbstractModel):
 
     @property
     def HealthCheckConfig(self):
-        r"""Nqa配置信息
+        r"""<p>Nqa配置信息</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         return self._HealthCheckConfig

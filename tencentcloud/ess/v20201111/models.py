@@ -3722,36 +3722,20 @@ class ComparisonDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ComparisonPointId: 合同对比差异点唯一ID。
+        :param _ComparisonPointId: <p>合同对比差异点唯一ID。</p>
         :type ComparisonPointId: str
-        :param _ComparisonType: 对比前后差异类型，具体如下：
-<ul><li> **add**：新增</li>
-<li> **change**：变更</li>
-<li> **delete**：删除</li>
-</ul>
+        :param _ComparisonType: <p>对比前后差异类型，具体如下：</p><ul><li> **add**：新增</li><li> **change**：变更</li><li> **delete**：删除</li></ul>
         :type ComparisonType: str
-        :param _ContentType: 对比内容类型，具体如下：
-<ul><li> **text**：文本</li>
-<li> **table**：表格</li>
-<li> **picture**：图片</li>
-</ul>
+        :param _ContentType: <p>对比内容类型，具体如下：</p><ul><li> **text**：文本</li><li> **table**：表格</li><li> **picture**：图片</li></ul>
         :type ContentType: str
-        :param _OriginText: 原文文本。
+        :param _OriginText: <p>原文文本。</p>
         :type OriginText: str
-        :param _DiffText: 对比文本。
+        :param _DiffText: <p>对比文本。</p>
         :type DiffText: str
-        :param _FormatType: 合同文本的格式类型。
-类型如下：
-<ul><li> **0**：段落（正文）</li>
-<li> **1**：标点符号</li>
-<li> **2**：页眉页脚</li>
-<li> **3**：目录</li>
-<li> **4**：印章</li>
-<li> **5**：序号</li>
-<li> **6**：水印</li>
-<li> **7**：下划线内容（填写区）</li>
-</ul>
+        :param _FormatType: <p>合同文本的格式类型。<br>类型如下：</p><ul><li> **0**：段落（正文）</li><li> **1**：标点符号</li><li> **2**：页眉页脚</li><li> **3**：目录</li><li> **4**：印章</li><li> **5**：序号</li><li> **6**：水印</li><li> **7**：下划线内容（填写区）</li></ul>
         :type FormatType: int
+        :param _PageNumber: <p>页码：对比点所在页码。</p>
+        :type PageNumber: int
         """
         self._ComparisonPointId = None
         self._ComparisonType = None
@@ -3759,10 +3743,11 @@ class ComparisonDetail(AbstractModel):
         self._OriginText = None
         self._DiffText = None
         self._FormatType = None
+        self._PageNumber = None
 
     @property
     def ComparisonPointId(self):
-        r"""合同对比差异点唯一ID。
+        r"""<p>合同对比差异点唯一ID。</p>
         :rtype: str
         """
         return self._ComparisonPointId
@@ -3773,11 +3758,7 @@ class ComparisonDetail(AbstractModel):
 
     @property
     def ComparisonType(self):
-        r"""对比前后差异类型，具体如下：
-<ul><li> **add**：新增</li>
-<li> **change**：变更</li>
-<li> **delete**：删除</li>
-</ul>
+        r"""<p>对比前后差异类型，具体如下：</p><ul><li> **add**：新增</li><li> **change**：变更</li><li> **delete**：删除</li></ul>
         :rtype: str
         """
         return self._ComparisonType
@@ -3788,11 +3769,7 @@ class ComparisonDetail(AbstractModel):
 
     @property
     def ContentType(self):
-        r"""对比内容类型，具体如下：
-<ul><li> **text**：文本</li>
-<li> **table**：表格</li>
-<li> **picture**：图片</li>
-</ul>
+        r"""<p>对比内容类型，具体如下：</p><ul><li> **text**：文本</li><li> **table**：表格</li><li> **picture**：图片</li></ul>
         :rtype: str
         """
         return self._ContentType
@@ -3803,7 +3780,7 @@ class ComparisonDetail(AbstractModel):
 
     @property
     def OriginText(self):
-        r"""原文文本。
+        r"""<p>原文文本。</p>
         :rtype: str
         """
         return self._OriginText
@@ -3814,7 +3791,7 @@ class ComparisonDetail(AbstractModel):
 
     @property
     def DiffText(self):
-        r"""对比文本。
+        r"""<p>对比文本。</p>
         :rtype: str
         """
         return self._DiffText
@@ -3825,17 +3802,7 @@ class ComparisonDetail(AbstractModel):
 
     @property
     def FormatType(self):
-        r"""合同文本的格式类型。
-类型如下：
-<ul><li> **0**：段落（正文）</li>
-<li> **1**：标点符号</li>
-<li> **2**：页眉页脚</li>
-<li> **3**：目录</li>
-<li> **4**：印章</li>
-<li> **5**：序号</li>
-<li> **6**：水印</li>
-<li> **7**：下划线内容（填写区）</li>
-</ul>
+        r"""<p>合同文本的格式类型。<br>类型如下：</p><ul><li> **0**：段落（正文）</li><li> **1**：标点符号</li><li> **2**：页眉页脚</li><li> **3**：目录</li><li> **4**：印章</li><li> **5**：序号</li><li> **6**：水印</li><li> **7**：下划线内容（填写区）</li></ul>
         :rtype: int
         """
         return self._FormatType
@@ -3843,6 +3810,17 @@ class ComparisonDetail(AbstractModel):
     @FormatType.setter
     def FormatType(self, FormatType):
         self._FormatType = FormatType
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码：对比点所在页码。</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
 
 
     def _deserialize(self, params):
@@ -3852,6 +3830,7 @@ class ComparisonDetail(AbstractModel):
         self._OriginText = params.get("OriginText")
         self._DiffText = params.get("DiffText")
         self._FormatType = params.get("FormatType")
+        self._PageNumber = params.get("PageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40582,40 +40561,36 @@ class PdfVerifyResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VerifyResult: 验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
+        :param _VerifyResult: <p>验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。</p>
         :type VerifyResult: int
-        :param _SignPlatform: 签署平台
-如果文件是在腾讯电子签平台签署，则为**腾讯电子签**，
-如果文件不在腾讯电子签平台签署，则为**其他平台**。
+        :param _SignPlatform: <p>签署平台<br>如果文件是在腾讯电子签平台签署，则为<strong>腾讯电子签</strong>，<br>如果文件不在腾讯电子签平台签署，则为<strong>其他平台</strong>。</p>
         :type SignPlatform: str
-        :param _SignerName: 申请证书的主体的名字
-
-如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
-**企业**:  ESS@企业名称@编码
-**个人**: ESS@个人姓名@证件号@808854
-
-如果在其他平台签署的, 主体的名字参考其他平台的说明
+        :param _SignerName: <p>申请证书的主体的名字</p><p>如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下<br><strong>企业</strong>:  ESS@企业名称@编码<br><strong>个人</strong>: ESS@个人姓名@证件号@808854</p><p>如果在其他平台签署的, 主体的名字参考其他平台的说明</p>
         :type SignerName: str
-        :param _SignTime: 签署时间的Unix时间戳，单位毫秒
+        :param _SignTime: <p>签署时间的Unix时间戳，单位毫秒</p>
         :type SignTime: int
-        :param _SignAlgorithm: 证书签名算法,  如SHA1withRSA等算法
+        :param _SignAlgorithm: <p>证书签名算法,  如SHA1withRSA等算法</p>
         :type SignAlgorithm: str
-        :param _CertSn: 在数字证书申请过程中，系统会自动生成一个独一无二的序列号。
+        :param _CertSn: <p>在数字证书申请过程中，系统会自动生成一个独一无二的序列号。</p>
         :type CertSn: str
-        :param _CertNotBefore: 证书起始时间的Unix时间戳，单位毫秒
+        :param _CertNotBefore: <p>证书起始时间的Unix时间戳，单位毫秒</p>
         :type CertNotBefore: int
-        :param _CertNotAfter: 证书过期时间的时间戳，单位毫秒
+        :param _CertNotAfter: <p>证书过期时间的时间戳，单位毫秒</p>
         :type CertNotAfter: int
-        :param _ComponentPosX: 签名域横坐标，单位px
+        :param _ComponentPosX: <p>签名域横坐标，单位px</p>
         :type ComponentPosX: float
-        :param _ComponentPosY: 签名域纵坐标，单位px
+        :param _ComponentPosY: <p>签名域纵坐标，单位px</p>
         :type ComponentPosY: float
-        :param _ComponentWidth: 签名域宽度，单位px
+        :param _ComponentWidth: <p>签名域宽度，单位px</p>
         :type ComponentWidth: float
-        :param _ComponentHeight: 签名域高度，单位px
+        :param _ComponentHeight: <p>签名域高度，单位px</p>
         :type ComponentHeight: float
-        :param _ComponentPage: 签名域所在页码，1～N
+        :param _ComponentPage: <p>签名域所在页码，1～N</p>
         :type ComponentPage: int
+        :param _CertProvider: <p>证书颁发机构</p>
+        :type CertProvider: str
+        :param _IsTimestampTrust: <p>是否有可信时间戳</p>
+        :type IsTimestampTrust: bool
         """
         self._VerifyResult = None
         self._SignPlatform = None
@@ -40630,10 +40605,12 @@ class PdfVerifyResult(AbstractModel):
         self._ComponentWidth = None
         self._ComponentHeight = None
         self._ComponentPage = None
+        self._CertProvider = None
+        self._IsTimestampTrust = None
 
     @property
     def VerifyResult(self):
-        r"""验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。
+        r"""<p>验签结果。0-签名域未签名；1-验签成功； 3-验签失败；4-未找到签名域：文件内没有签名域；5-签名值格式不正确。</p>
         :rtype: int
         """
         return self._VerifyResult
@@ -40644,9 +40621,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignPlatform(self):
-        r"""签署平台
-如果文件是在腾讯电子签平台签署，则为**腾讯电子签**，
-如果文件不在腾讯电子签平台签署，则为**其他平台**。
+        r"""<p>签署平台<br>如果文件是在腾讯电子签平台签署，则为<strong>腾讯电子签</strong>，<br>如果文件不在腾讯电子签平台签署，则为<strong>其他平台</strong>。</p>
         :rtype: str
         """
         return self._SignPlatform
@@ -40657,13 +40632,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignerName(self):
-        r"""申请证书的主体的名字
-
-如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下
-**企业**:  ESS@企业名称@编码
-**个人**: ESS@个人姓名@证件号@808854
-
-如果在其他平台签署的, 主体的名字参考其他平台的说明
+        r"""<p>申请证书的主体的名字</p><p>如果是在腾讯电子签平台签署, 则对应的主体的名字个数如下<br><strong>企业</strong>:  ESS@企业名称@编码<br><strong>个人</strong>: ESS@个人姓名@证件号@808854</p><p>如果在其他平台签署的, 主体的名字参考其他平台的说明</p>
         :rtype: str
         """
         return self._SignerName
@@ -40674,7 +40643,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignTime(self):
-        r"""签署时间的Unix时间戳，单位毫秒
+        r"""<p>签署时间的Unix时间戳，单位毫秒</p>
         :rtype: int
         """
         return self._SignTime
@@ -40685,7 +40654,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def SignAlgorithm(self):
-        r"""证书签名算法,  如SHA1withRSA等算法
+        r"""<p>证书签名算法,  如SHA1withRSA等算法</p>
         :rtype: str
         """
         return self._SignAlgorithm
@@ -40696,7 +40665,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def CertSn(self):
-        r"""在数字证书申请过程中，系统会自动生成一个独一无二的序列号。
+        r"""<p>在数字证书申请过程中，系统会自动生成一个独一无二的序列号。</p>
         :rtype: str
         """
         return self._CertSn
@@ -40707,7 +40676,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def CertNotBefore(self):
-        r"""证书起始时间的Unix时间戳，单位毫秒
+        r"""<p>证书起始时间的Unix时间戳，单位毫秒</p>
         :rtype: int
         """
         return self._CertNotBefore
@@ -40718,7 +40687,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def CertNotAfter(self):
-        r"""证书过期时间的时间戳，单位毫秒
+        r"""<p>证书过期时间的时间戳，单位毫秒</p>
         :rtype: int
         """
         return self._CertNotAfter
@@ -40729,7 +40698,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentPosX(self):
-        r"""签名域横坐标，单位px
+        r"""<p>签名域横坐标，单位px</p>
         :rtype: float
         """
         return self._ComponentPosX
@@ -40740,7 +40709,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentPosY(self):
-        r"""签名域纵坐标，单位px
+        r"""<p>签名域纵坐标，单位px</p>
         :rtype: float
         """
         return self._ComponentPosY
@@ -40751,7 +40720,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentWidth(self):
-        r"""签名域宽度，单位px
+        r"""<p>签名域宽度，单位px</p>
         :rtype: float
         """
         return self._ComponentWidth
@@ -40762,7 +40731,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentHeight(self):
-        r"""签名域高度，单位px
+        r"""<p>签名域高度，单位px</p>
         :rtype: float
         """
         return self._ComponentHeight
@@ -40773,7 +40742,7 @@ class PdfVerifyResult(AbstractModel):
 
     @property
     def ComponentPage(self):
-        r"""签名域所在页码，1～N
+        r"""<p>签名域所在页码，1～N</p>
         :rtype: int
         """
         return self._ComponentPage
@@ -40781,6 +40750,28 @@ class PdfVerifyResult(AbstractModel):
     @ComponentPage.setter
     def ComponentPage(self, ComponentPage):
         self._ComponentPage = ComponentPage
+
+    @property
+    def CertProvider(self):
+        r"""<p>证书颁发机构</p>
+        :rtype: str
+        """
+        return self._CertProvider
+
+    @CertProvider.setter
+    def CertProvider(self, CertProvider):
+        self._CertProvider = CertProvider
+
+    @property
+    def IsTimestampTrust(self):
+        r"""<p>是否有可信时间戳</p>
+        :rtype: bool
+        """
+        return self._IsTimestampTrust
+
+    @IsTimestampTrust.setter
+    def IsTimestampTrust(self, IsTimestampTrust):
+        self._IsTimestampTrust = IsTimestampTrust
 
 
     def _deserialize(self, params):
@@ -40797,6 +40788,8 @@ class PdfVerifyResult(AbstractModel):
         self._ComponentWidth = params.get("ComponentWidth")
         self._ComponentHeight = params.get("ComponentHeight")
         self._ComponentPage = params.get("ComponentPage")
+        self._CertProvider = params.get("CertProvider")
+        self._IsTimestampTrust = params.get("IsTimestampTrust")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

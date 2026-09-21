@@ -647,6 +647,9 @@ OPERATIONDENIED_DEFAULTQUEUEDELETEFORBIDDEN = 'OperationDenied.DefaultQueueDelet
 # 资源分区当前状态不允许该操作
 OPERATIONDENIED_PARTITIONNOTREADY = 'OperationDenied.PartitionNotReady'
 
+# 服务未开通
+OPERATIONDENIED_SERVICENOTACTIVATED = 'OperationDenied.ServiceNotActivated'
+
 # 地域错误
 REGIONERROR = 'RegionError'
 

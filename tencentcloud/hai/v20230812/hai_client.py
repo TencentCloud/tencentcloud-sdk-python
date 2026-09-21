@@ -394,6 +394,29 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetServicePodLogs(self, request):
+        r"""本接口(GetServicePodLogs)用于查询推理服务Pod日志
+
+        :param request: Request instance for GetServicePodLogs.
+        :type request: :class:`tencentcloud.hai.v20230812.models.GetServicePodLogsRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.GetServicePodLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetServicePodLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetServicePodLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InquirePriceRunInstances(self, request):
         r"""本接口 (InquirePriceRunInstances) 用于实例询价。
 

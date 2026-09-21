@@ -14098,32 +14098,38 @@ class BackupLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 索引
+        :param _Id: <p>索引</p>
         :type Id: int
-        :param _IndexStartTime: 索引开始时间
+        :param _IndexStartTime: <p>索引开始时间</p>
         :type IndexStartTime: int
-        :param _IndexEndTime: 索引结束时间
+        :param _IndexEndTime: <p>索引结束时间</p>
         :type IndexEndTime: int
-        :param _BackupSize: 备份后压缩的大小，单位M
+        :param _BackupSize: <p>备份后压缩的大小，单位M</p>
         :type BackupSize: int
-        :param _Status: 日志状态 0备份未完成， 1备份文件，2恢复中，3已恢复，4.已删除
+        :param _Status: <p>日志状态 0备份未完成， 1备份文件，2恢复中，3已恢复，4.已删除</p>
         :type Status: int
-        :param _RestoreProcessRemindTime: 恢复剩余的分钟数，分钟，需要前端转换
+        :param _RestoreProcessRemindTime: <p>恢复剩余的分钟数，分钟，需要前端转换</p>
         :type RestoreProcessRemindTime: int
-        :param _RestoreRemindTime: 恢复日志保留的时间
+        :param _RestoreRemindTime: <p>恢复日志保留的时间</p>
         :type RestoreRemindTime: int
-        :param _RestoreIndexSize: 恢复索引大小
+        :param _RestoreIndexSize: <p>恢复索引大小</p>
         :type RestoreIndexSize: int
-        :param _RestoreEndTime: 恢复日志执行结束时间
+        :param _RestoreEndTime: <p>恢复日志执行结束时间</p>
         :type RestoreEndTime: int
-        :param _AppId: 备份所属的appId
+        :param _AppId: <p>备份所属的appId</p>
         :type AppId: int
-        :param _AssetId: 备份所属的资产ID
+        :param _AssetId: <p>备份所属的资产ID</p>
         :type AssetId: int
-        :param _NickName: 账号昵称
+        :param _NickName: <p>账号昵称</p>
         :type NickName: str
-        :param _Uin: 资产所属账号uin
+        :param _Uin: <p>资产所属账号uin</p>
         :type Uin: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        :param _AssetType: <p>实例类型</p><p>枚举值：</p><ul><li>cdb：  cdb</li><li>mariadb： mariadb</li></ul>
+        :type AssetType: str
         """
         self._Id = None
         self._IndexStartTime = None
@@ -14138,10 +14144,13 @@ class BackupLog(AbstractModel):
         self._AssetId = None
         self._NickName = None
         self._Uin = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._AssetType = None
 
     @property
     def Id(self):
-        r"""索引
+        r"""<p>索引</p>
         :rtype: int
         """
         return self._Id
@@ -14152,7 +14161,7 @@ class BackupLog(AbstractModel):
 
     @property
     def IndexStartTime(self):
-        r"""索引开始时间
+        r"""<p>索引开始时间</p>
         :rtype: int
         """
         return self._IndexStartTime
@@ -14163,7 +14172,7 @@ class BackupLog(AbstractModel):
 
     @property
     def IndexEndTime(self):
-        r"""索引结束时间
+        r"""<p>索引结束时间</p>
         :rtype: int
         """
         return self._IndexEndTime
@@ -14174,7 +14183,7 @@ class BackupLog(AbstractModel):
 
     @property
     def BackupSize(self):
-        r"""备份后压缩的大小，单位M
+        r"""<p>备份后压缩的大小，单位M</p>
         :rtype: int
         """
         return self._BackupSize
@@ -14185,7 +14194,7 @@ class BackupLog(AbstractModel):
 
     @property
     def Status(self):
-        r"""日志状态 0备份未完成， 1备份文件，2恢复中，3已恢复，4.已删除
+        r"""<p>日志状态 0备份未完成， 1备份文件，2恢复中，3已恢复，4.已删除</p>
         :rtype: int
         """
         return self._Status
@@ -14196,7 +14205,7 @@ class BackupLog(AbstractModel):
 
     @property
     def RestoreProcessRemindTime(self):
-        r"""恢复剩余的分钟数，分钟，需要前端转换
+        r"""<p>恢复剩余的分钟数，分钟，需要前端转换</p>
         :rtype: int
         """
         return self._RestoreProcessRemindTime
@@ -14207,7 +14216,7 @@ class BackupLog(AbstractModel):
 
     @property
     def RestoreRemindTime(self):
-        r"""恢复日志保留的时间
+        r"""<p>恢复日志保留的时间</p>
         :rtype: int
         """
         return self._RestoreRemindTime
@@ -14218,7 +14227,7 @@ class BackupLog(AbstractModel):
 
     @property
     def RestoreIndexSize(self):
-        r"""恢复索引大小
+        r"""<p>恢复索引大小</p>
         :rtype: int
         """
         return self._RestoreIndexSize
@@ -14229,7 +14238,7 @@ class BackupLog(AbstractModel):
 
     @property
     def RestoreEndTime(self):
-        r"""恢复日志执行结束时间
+        r"""<p>恢复日志执行结束时间</p>
         :rtype: int
         """
         return self._RestoreEndTime
@@ -14240,7 +14249,7 @@ class BackupLog(AbstractModel):
 
     @property
     def AppId(self):
-        r"""备份所属的appId
+        r"""<p>备份所属的appId</p>
         :rtype: int
         """
         return self._AppId
@@ -14251,7 +14260,7 @@ class BackupLog(AbstractModel):
 
     @property
     def AssetId(self):
-        r"""备份所属的资产ID
+        r"""<p>备份所属的资产ID</p>
         :rtype: int
         """
         return self._AssetId
@@ -14262,7 +14271,7 @@ class BackupLog(AbstractModel):
 
     @property
     def NickName(self):
-        r"""账号昵称
+        r"""<p>账号昵称</p>
         :rtype: str
         """
         return self._NickName
@@ -14273,7 +14282,7 @@ class BackupLog(AbstractModel):
 
     @property
     def Uin(self):
-        r"""资产所属账号uin
+        r"""<p>资产所属账号uin</p>
         :rtype: str
         """
         return self._Uin
@@ -14281,6 +14290,39 @@ class BackupLog(AbstractModel):
     @Uin.setter
     def Uin(self, Uin):
         self._Uin = Uin
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AssetType(self):
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>cdb：  cdb</li><li>mariadb： mariadb</li></ul>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
 
 
     def _deserialize(self, params):
@@ -14297,6 +14339,9 @@ class BackupLog(AbstractModel):
         self._AssetId = params.get("AssetId")
         self._NickName = params.get("NickName")
         self._Uin = params.get("Uin")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

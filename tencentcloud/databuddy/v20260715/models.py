@@ -682,6 +682,316 @@ class CommonFailItem(AbstractModel):
         
 
 
+class ConsoleGroupInfo(AbstractModel):
+    r"""控制台用户组信息（对外标准版，与内部 UserGroupRoleInfo 解耦）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 用户组 ID
+        :type GroupId: str
+        :param _GroupName: 用户组名称
+        :type GroupName: str
+        :param _Roles: 角色列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Roles: list of RoleBasicInfo
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _UserCount: 用户组下用户数量
+        :type UserCount: int
+        :param _GroupType: 用户组类型。取值为枚举数值的字符串形式："0"=控制台系统类型（包含全部user）、"1"=控制台自定义类型、"2"=工作空间系统类型、"3"=工作空间自定义类型
+        :type GroupType: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._Roles = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._UserCount = None
+        self._GroupType = None
+
+    @property
+    def GroupId(self):
+        r"""用户组 ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""用户组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Roles(self):
+        r"""角色列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RoleBasicInfo
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def UserCount(self):
+        r"""用户组下用户数量
+        :rtype: int
+        """
+        return self._UserCount
+
+    @UserCount.setter
+    def UserCount(self, UserCount):
+        self._UserCount = UserCount
+
+    @property
+    def GroupType(self):
+        r"""用户组类型。取值为枚举数值的字符串形式："0"=控制台系统类型（包含全部user）、"1"=控制台自定义类型、"2"=工作空间系统类型、"3"=工作空间自定义类型
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = RoleBasicInfo()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._UserCount = params.get("UserCount")
+        self._GroupType = params.get("GroupType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsoleGroupUserInfo(AbstractModel):
+    r"""控制台用户组成员信息（对外标准版，与内部 GroupUserInfo 解耦）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserUin: 用户 UIN
+        :type UserUin: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _Nickname: 昵称
+        :type Nickname: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._UserUin = None
+        self._UserName = None
+        self._Nickname = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def UserUin(self):
+        r"""用户 UIN
+        :rtype: str
+        """
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
+    @property
+    def UserName(self):
+        r"""用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Nickname(self):
+        r"""昵称
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._UserUin = params.get("UserUin")
+        self._UserName = params.get("UserName")
+        self._Nickname = params.get("Nickname")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsoleRoleInfo(AbstractModel):
+    r"""控制台角色信息（对外标准版，与内部 Role 解耦）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BasicInfo: 角色基本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BasicInfo: :class:`tencentcloud.databuddy.v20260715.models.RoleBasicInfo`
+        :param _MetaData: 角色元信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaData: :class:`tencentcloud.databuddy.v20260715.models.RoleMetaData`
+        :param _Permissions: 角色权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Permissions: list of RolePermission
+        """
+        self._BasicInfo = None
+        self._MetaData = None
+        self._Permissions = None
+
+    @property
+    def BasicInfo(self):
+        r"""角色基本信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.RoleBasicInfo`
+        """
+        return self._BasicInfo
+
+    @BasicInfo.setter
+    def BasicInfo(self, BasicInfo):
+        self._BasicInfo = BasicInfo
+
+    @property
+    def MetaData(self):
+        r"""角色元信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.RoleMetaData`
+        """
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+    @property
+    def Permissions(self):
+        r"""角色权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RolePermission
+        """
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        if params.get("BasicInfo") is not None:
+            self._BasicInfo = RoleBasicInfo()
+            self._BasicInfo._deserialize(params.get("BasicInfo"))
+        if params.get("MetaData") is not None:
+            self._MetaData = RoleMetaData()
+            self._MetaData._deserialize(params.get("MetaData"))
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = RolePermission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConsoleUserInfo(AbstractModel):
     r"""控制台用户信息（规范化，与内部 UserDetailInfo 解耦）
 
@@ -850,6 +1160,153 @@ class ConsoleUserInfo(AbstractModel):
         self._IsOwner = params.get("IsOwner")
         self._UserTag = params.get("UserTag")
         self._IsAdmin = params.get("IsAdmin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsoleGroupRequest(AbstractModel):
+    r"""CreateConsoleGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: <p>用户组名称</p>
+        :type GroupName: str
+        :param _GroupNickname: <p>用户组别名</p>
+        :type GroupNickname: str
+        :param _Description: <p>用户组描述</p>
+        :type Description: str
+        """
+        self._GroupName = None
+        self._GroupNickname = None
+        self._Description = None
+
+    @property
+    def GroupName(self):
+        r"""<p>用户组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupNickname(self):
+        r"""<p>用户组别名</p>
+        :rtype: str
+        """
+        return self._GroupNickname
+
+    @GroupNickname.setter
+    def GroupNickname(self, GroupNickname):
+        self._GroupNickname = GroupNickname
+
+    @property
+    def Description(self):
+        r"""<p>用户组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._GroupNickname = params.get("GroupNickname")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsoleGroupResponse(AbstractModel):
+    r"""CreateConsoleGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.CreateConsoleGroupRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateConsoleGroupRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateConsoleGroupRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConsoleGroupRsp(AbstractModel):
+    r"""创建控制台用户组响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 创建成功的用户组 ID
+        :type GroupId: str
+        """
+        self._GroupId = None
+
+    @property
+    def GroupId(self):
+        r"""创建成功的用户组 ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1386,6 +1843,123 @@ class CreateWorkflowRsp(AbstractModel):
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsoleGroupsRequest(AbstractModel):
+    r"""DeleteConsoleGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupIds: <p>要删除的用户组 ID 列表</p>
+        :type GroupIds: list of str
+        """
+        self._GroupIds = None
+
+    @property
+    def GroupIds(self):
+        r"""<p>要删除的用户组 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+
+    def _deserialize(self, params):
+        self._GroupIds = params.get("GroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsoleGroupsResponse(AbstractModel):
+    r"""DeleteConsoleGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteConsoleGroupsRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteConsoleGroupsRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteConsoleGroupsRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteConsoleGroupsRsp(AbstractModel):
+    r"""删除控制台用户组响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 操作是否成功
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""操作是否成功
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3257,7 +3831,7 @@ class GetWorkflowTaskRunRsp(AbstractModel):
         :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskTypeName: <p>任务类型名称</p>
+        :param _TaskTypeName: 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeName: str
         :param _TaskVersionId: <p>任务版本ID</p>
@@ -3311,7 +3885,7 @@ class GetWorkflowTaskRunRsp(AbstractModel):
         :param _TimeZone: <p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeZone: str
-        :param _DependOnList: <p>依赖上游任务ID列表</p>
+        :param _DependOnList: <p>依赖上游任务ID列表。保留字段，暂时返回为[]</p><p>保留字段，暂时返回为[]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependOnList: list of str
         :param _RunParams: <p>运行参数</p>
@@ -3480,7 +4054,7 @@ class GetWorkflowTaskRunRsp(AbstractModel):
 
     @property
     def TaskTypeName(self):
-        r"""<p>任务类型名称</p>
+        r"""任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3696,7 +4270,7 @@ class GetWorkflowTaskRunRsp(AbstractModel):
 
     @property
     def DependOnList(self):
-        r"""<p>依赖上游任务ID列表</p>
+        r"""<p>依赖上游任务ID列表。保留字段，暂时返回为[]</p><p>保留字段，暂时返回为[]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3933,7 +4507,7 @@ class InnerWorkflowTaskBrief(AbstractModel):
         :param _TaskName: 任务名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _TaskTypeName: 任务类型名称
+        :param _TaskTypeName: 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeName: str
         """
@@ -3967,7 +4541,7 @@ class InnerWorkflowTaskBrief(AbstractModel):
 
     @property
     def TaskTypeName(self):
-        r"""任务类型名称
+        r"""任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4837,6 +5411,733 @@ class LabelBrief(AbstractModel):
         self._LabelValue = params.get("LabelValue")
         self._LabelKeyId = params.get("LabelKeyId")
         self._LabelValueId = params.get("LabelValueId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListConsoleGroupUsersRequest(AbstractModel):
+    r"""ListConsoleGroupUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: <p>用户组 ID</p>
+        :type GroupId: str
+        :param _UserKeyword: <p>用户名称或 UIN 模糊匹配</p>
+        :type UserKeyword: str
+        :param _UserUins: <p>通过 UIN 批量查询用户信息</p>
+        :type UserUins: list of str
+        :param _OrderBys: <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;ASC&#39;}]，默认按创建时间降序</p>
+        :type OrderBys: list of OrderBy
+        :param _PageNumber: <p>页码，从1开始，默认1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页大小，默认10，最小10，最大200</p>
+        :type PageSize: int
+        """
+        self._GroupId = None
+        self._UserKeyword = None
+        self._UserUins = None
+        self._OrderBys = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def GroupId(self):
+        r"""<p>用户组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def UserKeyword(self):
+        r"""<p>用户名称或 UIN 模糊匹配</p>
+        :rtype: str
+        """
+        return self._UserKeyword
+
+    @UserKeyword.setter
+    def UserKeyword(self, UserKeyword):
+        self._UserKeyword = UserKeyword
+
+    @property
+    def UserUins(self):
+        r"""<p>通过 UIN 批量查询用户信息</p>
+        :rtype: list of str
+        """
+        return self._UserUins
+
+    @UserUins.setter
+    def UserUins(self, UserUins):
+        self._UserUins = UserUins
+
+    @property
+    def OrderBys(self):
+        r"""<p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;ASC&#39;}]，默认按创建时间降序</p>
+        :rtype: list of OrderBy
+        """
+        return self._OrderBys
+
+    @OrderBys.setter
+    def OrderBys(self, OrderBys):
+        self._OrderBys = OrderBys
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从1开始，默认1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小，默认10，最小10，最大200</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._UserKeyword = params.get("UserKeyword")
+        self._UserUins = params.get("UserUins")
+        if params.get("OrderBys") is not None:
+            self._OrderBys = []
+            for item in params.get("OrderBys"):
+                obj = OrderBy()
+                obj._deserialize(item)
+                self._OrderBys.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListConsoleGroupUsersResponse(AbstractModel):
+    r"""ListConsoleGroupUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleGroupUsersRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleGroupUsersRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListConsoleGroupUsersRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListConsoleGroupUsersRsp(AbstractModel):
+    r"""查询控制台用户组成员列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 用户组成员列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ConsoleGroupUserInfo
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页大小
+        :type PageSize: int
+        :param _TotalCount: 总记录数
+        :type TotalCount: int
+        :param _TotalPageNumber: 总页数
+        :type TotalPageNumber: int
+        """
+        self._Items = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def Items(self):
+        r"""用户组成员列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsoleGroupUserInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ConsoleGroupUserInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListConsoleGroupsRequest(AbstractModel):
+    r"""ListConsoleGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>页码，从1开始，默认1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页大小，默认10，最小10，最大200</p>
+        :type PageSize: int
+        :param _GroupIds: <p>通过用户组 ID 批量查询</p>
+        :type GroupIds: list of str
+        :param _GroupKeyword: <p>用户组名称模糊匹配</p>
+        :type GroupKeyword: str
+        :param _OrderBys: <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
+        :type OrderBys: list of OrderBy
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._GroupIds = None
+        self._GroupKeyword = None
+        self._OrderBys = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从1开始，默认1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小，默认10，最小10，最大200</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def GroupIds(self):
+        r"""<p>通过用户组 ID 批量查询</p>
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def GroupKeyword(self):
+        r"""<p>用户组名称模糊匹配</p>
+        :rtype: str
+        """
+        return self._GroupKeyword
+
+    @GroupKeyword.setter
+    def GroupKeyword(self, GroupKeyword):
+        self._GroupKeyword = GroupKeyword
+
+    @property
+    def OrderBys(self):
+        r"""<p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
+        :rtype: list of OrderBy
+        """
+        return self._OrderBys
+
+    @OrderBys.setter
+    def OrderBys(self, OrderBys):
+        self._OrderBys = OrderBys
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._GroupIds = params.get("GroupIds")
+        self._GroupKeyword = params.get("GroupKeyword")
+        if params.get("OrderBys") is not None:
+            self._OrderBys = []
+            for item in params.get("OrderBys"):
+                obj = OrderBy()
+                obj._deserialize(item)
+                self._OrderBys.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListConsoleGroupsResponse(AbstractModel):
+    r"""ListConsoleGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleGroupsRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleGroupsRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListConsoleGroupsRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListConsoleGroupsRsp(AbstractModel):
+    r"""查询控制台用户组列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 用户组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ConsoleGroupInfo
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页大小
+        :type PageSize: int
+        :param _TotalCount: 总记录数
+        :type TotalCount: int
+        :param _TotalPageNumber: 总页数
+        :type TotalPageNumber: int
+        """
+        self._Items = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def Items(self):
+        r"""用户组列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsoleGroupInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ConsoleGroupInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListConsoleRolesRequest(AbstractModel):
+    r"""ListConsoleRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>页码，从1开始，默认1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页大小，默认10，最小10，最大200</p>
+        :type PageSize: int
+        :param _RoleKeyword: <p>角色名称或描述模糊匹配</p>
+        :type RoleKeyword: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._RoleKeyword = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从1开始，默认1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小，默认10，最小10，最大200</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def RoleKeyword(self):
+        r"""<p>角色名称或描述模糊匹配</p>
+        :rtype: str
+        """
+        return self._RoleKeyword
+
+    @RoleKeyword.setter
+    def RoleKeyword(self, RoleKeyword):
+        self._RoleKeyword = RoleKeyword
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._RoleKeyword = params.get("RoleKeyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListConsoleRolesResponse(AbstractModel):
+    r"""ListConsoleRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleRolesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleRolesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListConsoleRolesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListConsoleRolesRsp(AbstractModel):
+    r"""查询控制台角色列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 角色列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ConsoleRoleInfo
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页大小
+        :type PageSize: int
+        :param _TotalCount: 总记录数
+        :type TotalCount: int
+        :param _TotalPageNumber: 总页数
+        :type TotalPageNumber: int
+        """
+        self._Items = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def Items(self):
+        r"""角色列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsoleRoleInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ConsoleRoleInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6737,24 +8038,13 @@ class ResourceGroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceGroupId: 资源组ID
+        :param _ResourceGroupId: <p>资源组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupId: str
-        :param _ResourceGroupName: 资源组名称
+        :param _ResourceGroupName: <p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupName: str
-        :param _ResourceGroupStatus: 资源组状态
-COMPUTE_RESOURCE_STATUS_UNSPECIFIED 未指定
-COMPUTE_RESOURCE_STATUS_PENDING_CREATE 待创建
-COMPUTE_RESOURCE_STATUS_CREATING 创建中
-COMPUTE_RESOURCE_STATUS_RUNNING 运行中
-COMPUTE_RESOURCE_STATUS_STOPPED 已停止
-COMPUTE_RESOURCE_STATUS_STOPPING 停止中
-COMPUTE_RESOURCE_STATUS_STARTING 启动中
-COMPUTE_RESOURCE_STATUS_UPDATING 更新中
-COMPUTE_RESOURCE_STATUS_DELETING 删除中
-COMPUTE_RESOURCE_STATUS_DELETED 已删除
-COMPUTE_RESOURCE_STATUS_FAILED  失败
+        :param _ResourceGroupStatus: <p>资源组状态</p><p>参数格式：0 // 未指定 1 // 待创建 2 // 创建中 3 // 运行中 4 // 已停止 5 // 停止中 6 // 启动中 7 // 更新中 8 // 删除中 9 // 已删除 10 // 用户主动启动 / 自动启动（有任务提交且自动启停开启） 11 // 可用: 仅存在于数据计算型 12 // 不可用: 仅存在于数据计算型 13 // 失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupStatus: str
         """
@@ -6764,7 +8054,7 @@ COMPUTE_RESOURCE_STATUS_FAILED  失败
 
     @property
     def ResourceGroupId(self):
-        r"""资源组ID
+        r"""<p>资源组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6776,7 +8066,7 @@ COMPUTE_RESOURCE_STATUS_FAILED  失败
 
     @property
     def ResourceGroupName(self):
-        r"""资源组名称
+        r"""<p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6788,18 +8078,7 @@ COMPUTE_RESOURCE_STATUS_FAILED  失败
 
     @property
     def ResourceGroupStatus(self):
-        r"""资源组状态
-COMPUTE_RESOURCE_STATUS_UNSPECIFIED 未指定
-COMPUTE_RESOURCE_STATUS_PENDING_CREATE 待创建
-COMPUTE_RESOURCE_STATUS_CREATING 创建中
-COMPUTE_RESOURCE_STATUS_RUNNING 运行中
-COMPUTE_RESOURCE_STATUS_STOPPED 已停止
-COMPUTE_RESOURCE_STATUS_STOPPING 停止中
-COMPUTE_RESOURCE_STATUS_STARTING 启动中
-COMPUTE_RESOURCE_STATUS_UPDATING 更新中
-COMPUTE_RESOURCE_STATUS_DELETING 删除中
-COMPUTE_RESOURCE_STATUS_DELETED 已删除
-COMPUTE_RESOURCE_STATUS_FAILED  失败
+        r"""<p>资源组状态</p><p>参数格式：0 // 未指定 1 // 待创建 2 // 创建中 3 // 运行中 4 // 已停止 5 // 停止中 6 // 启动中 7 // 更新中 8 // 删除中 9 // 已删除 10 // 用户主动启动 / 自动启动（有任务提交且自动启停开启） 11 // 可用: 仅存在于数据计算型 12 // 不可用: 仅存在于数据计算型 13 // 失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6940,6 +8219,138 @@ class RoleBasicInfo(AbstractModel):
         self._RoleType = params.get("RoleType")
         self._Source = params.get("Source")
         self._GroupNames = params.get("GroupNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleMetaData(AbstractModel):
+    r"""角色元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Creator: 创建者
+        :type Creator: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _Updater: 更新者
+        :type Updater: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._Creator = None
+        self._CreateTime = None
+        self._Updater = None
+        self._UpdateTime = None
+
+    @property
+    def Creator(self):
+        r"""创建者
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Updater(self):
+        r"""更新者
+        :rtype: str
+        """
+        return self._Updater
+
+    @Updater.setter
+    def Updater(self, Updater):
+        self._Updater = Updater
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Creator = params.get("Creator")
+        self._CreateTime = params.get("CreateTime")
+        self._Updater = params.get("Updater")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RolePermission(AbstractModel):
+    r"""角色权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModuleId: 模块ID
+        :type ModuleId: str
+        :param _Permissions: 权限点
+        :type Permissions: str
+        """
+        self._ModuleId = None
+        self._Permissions = None
+
+    @property
+    def ModuleId(self):
+        r"""模块ID
+        :rtype: str
+        """
+        return self._ModuleId
+
+    @ModuleId.setter
+    def ModuleId(self, ModuleId):
+        self._ModuleId = ModuleId
+
+    @property
+    def Permissions(self):
+        r"""权限点
+        :rtype: str
+        """
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        self._ModuleId = params.get("ModuleId")
+        self._Permissions = params.get("Permissions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7546,14 +8957,13 @@ class TaskRunConditionRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UpstreamTaskId: 上游任务ID
+        :param _UpstreamTaskId: <p>上游任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamTaskId: str
-        :param _UpstreamTaskName: 上游任务名称
+        :param _UpstreamTaskName: <p>上游任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamTaskName: str
-        :param _AllowedStates: 任务可运行条件
-支持的状态值： - SUCCESS: 成功 - FAILED: 失败 - UPSTREAM_FAILED: 上游失败 - EXCLUDED: 排除运行
+        :param _AllowedStates: <p>任务可运行条件<br>支持的状态值： - SUCCESS: 成功 - FAILED: 失败 - UPSTREAM_FAILED: 上游失败 - EXCLUDED: 排除运行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowedStates: list of str
         """
@@ -7563,7 +8973,7 @@ class TaskRunConditionRule(AbstractModel):
 
     @property
     def UpstreamTaskId(self):
-        r"""上游任务ID
+        r"""<p>上游任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7575,7 +8985,7 @@ class TaskRunConditionRule(AbstractModel):
 
     @property
     def UpstreamTaskName(self):
-        r"""上游任务名称
+        r"""<p>上游任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7587,8 +8997,7 @@ class TaskRunConditionRule(AbstractModel):
 
     @property
     def AllowedStates(self):
-        r"""任务可运行条件
-支持的状态值： - SUCCESS: 成功 - FAILED: 失败 - UPSTREAM_FAILED: 上游失败 - EXCLUDED: 排除运行
+        r"""<p>任务可运行条件<br>支持的状态值： - SUCCESS: 成功 - FAILED: 失败 - UPSTREAM_FAILED: 上游失败 - EXCLUDED: 排除运行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -8150,6 +9559,198 @@ class UnbindWorkflowBundleRsp(AbstractModel):
     def Status(self):
         r"""操作状态，true 表示成功
 注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateConsoleGroupRequest(AbstractModel):
+    r"""UpdateConsoleGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: <p>用户组 ID</p>
+        :type GroupId: str
+        :param _OperType: <p>修改标识：USER_GROUP_OPER_TYPE_ADD_USER(1)=添加成员、USER_GROUP_OPER_TYPE_DELETE_USER(2)=删除成员、USER_GROUP_OPER_TYPE_BASIC_INFO(3)=基础信息（别名和描述）</p>
+        :type OperType: int
+        :param _GroupName: <p>用户组名称</p>
+        :type GroupName: str
+        :param _GroupNickname: <p>用户组别名</p>
+        :type GroupNickname: str
+        :param _Description: <p>用户组描述</p>
+        :type Description: str
+        :param _UserUins: <p>成员 UIN 列表（OperType 为添加/删除成员时使用）</p>
+        :type UserUins: list of str
+        """
+        self._GroupId = None
+        self._OperType = None
+        self._GroupName = None
+        self._GroupNickname = None
+        self._Description = None
+        self._UserUins = None
+
+    @property
+    def GroupId(self):
+        r"""<p>用户组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def OperType(self):
+        r"""<p>修改标识：USER_GROUP_OPER_TYPE_ADD_USER(1)=添加成员、USER_GROUP_OPER_TYPE_DELETE_USER(2)=删除成员、USER_GROUP_OPER_TYPE_BASIC_INFO(3)=基础信息（别名和描述）</p>
+        :rtype: int
+        """
+        return self._OperType
+
+    @OperType.setter
+    def OperType(self, OperType):
+        self._OperType = OperType
+
+    @property
+    def GroupName(self):
+        r"""<p>用户组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupNickname(self):
+        r"""<p>用户组别名</p>
+        :rtype: str
+        """
+        return self._GroupNickname
+
+    @GroupNickname.setter
+    def GroupNickname(self, GroupNickname):
+        self._GroupNickname = GroupNickname
+
+    @property
+    def Description(self):
+        r"""<p>用户组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def UserUins(self):
+        r"""<p>成员 UIN 列表（OperType 为添加/删除成员时使用）</p>
+        :rtype: list of str
+        """
+        return self._UserUins
+
+    @UserUins.setter
+    def UserUins(self, UserUins):
+        self._UserUins = UserUins
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._OperType = params.get("OperType")
+        self._GroupName = params.get("GroupName")
+        self._GroupNickname = params.get("GroupNickname")
+        self._Description = params.get("Description")
+        self._UserUins = params.get("UserUins")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateConsoleGroupResponse(AbstractModel):
+    r"""UpdateConsoleGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateConsoleGroupRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateConsoleGroupRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateConsoleGroupRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateConsoleGroupRsp(AbstractModel):
+    r"""修改控制台用户组响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 操作是否成功
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""操作是否成功
         :rtype: bool
         """
         return self._Status
@@ -9410,7 +11011,7 @@ class WorkflowBrief(AbstractModel):
         :param _ResourceGroupInfoList: <p>资源组信息列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupInfoList: list of ResourceGroupInfo
-        :param _Permission: <p>工作流权限信息</p>
+        :param _Permission: <p>授权权限类型<br>PERMISSION_TYPE_UNSPECIFIED：未指定权限<br>MANAGE : 管理权限：包含所有操作权限<br>RUN : 运行权限：可执行实体<br>VIEW : 查看权限：可查看实体内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Permission: str
         :param _BundleId: <p>工作流绑定的 Bundle 唯一标识，未绑定时为空</p>
@@ -9642,7 +11243,7 @@ class WorkflowBrief(AbstractModel):
 
     @property
     def Permission(self):
-        r"""<p>工作流权限信息</p>
+        r"""<p>授权权限类型<br>PERMISSION_TYPE_UNSPECIFIED：未指定权限<br>MANAGE : 管理权限：包含所有操作权限<br>RUN : 运行权限：可执行实体<br>VIEW : 查看权限：可查看实体内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9807,7 +11408,7 @@ class WorkflowRun(AbstractModel):
         :param _PendingCostTime: <p>等待资源花费时间，单位：秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PendingCostTime: str
-        :param _RunState: <p>运行状态。取值参考工作流运行状态枚举，如 Pending / Running / Succeeded / Failed / Killed</p>
+        :param _RunState: <p>运行状态。CREATE(&quot;初始化&quot;),     QUEUED(&quot;等待中&quot;),     PENDING(&quot;准备中&quot;),     RUNNING(&quot;运行中&quot;),     SKIPPED(&quot;跳过运行&quot;),     SUCCESS(&quot;成功&quot;),     FAILED(&quot;失败&quot;),     TERMINATING(&quot;终止中&quot;),     TERMINATED(&quot;终止&quot;),     CANCELLED(&quot;被手动终止&quot;)等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunState: str
         :param _ResourceGroupIds: <p>计算资源（任务的资源组ID集合）</p>
@@ -10069,7 +11670,7 @@ class WorkflowRun(AbstractModel):
 
     @property
     def RunState(self):
-        r"""<p>运行状态。取值参考工作流运行状态枚举，如 Pending / Running / Succeeded / Failed / Killed</p>
+        r"""<p>运行状态。CREATE(&quot;初始化&quot;),     QUEUED(&quot;等待中&quot;),     PENDING(&quot;准备中&quot;),     RUNNING(&quot;运行中&quot;),     SKIPPED(&quot;跳过运行&quot;),     SUCCESS(&quot;成功&quot;),     FAILED(&quot;失败&quot;),     TERMINATING(&quot;终止中&quot;),     TERMINATED(&quot;终止&quot;),     CANCELLED(&quot;被手动终止&quot;)等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10806,43 +12407,43 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _TaskTypeName: 任务类型名称
+        :param _TaskTypeName: <p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeName: str
-        :param _DependOnList: 任务依赖列表
+        :param _DependOnList: <p>任务依赖列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependOnList: list of DependOnBrief
-        :param _ResourceGroupId: 任务资源组ID
+        :param _ResourceGroupId: <p>任务资源组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupId: str
-        :param _ResourceGroupName: 任务资源组名称
+        :param _ResourceGroupName: <p>任务资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupName: str
-        :param _LeftCoordinate: 任务X坐标
+        :param _LeftCoordinate: <p>任务X坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LeftCoordinate: float
-        :param _TopCoordinate: 任务Y坐标
+        :param _TopCoordinate: <p>任务Y坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopCoordinate: float
-        :param _TaskRetryStrategy: 任务重试策略
+        :param _TaskRetryStrategy: <p>任务重试策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskRetryStrategy: :class:`tencentcloud.databuddy.v20260715.models.TaskRetryStrategy`
-        :param _DependOnRunCondition: 依赖运行条件
+        :param _DependOnRunCondition: <p>任依赖运行条件</p><ul><li>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功</li><li>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功</li><li>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中</li><li>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败</li><li>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败</li><li>ALL_FAILED: 全部失败：所有上游依赖任务都失败</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li><li>ADVANCED:运行条件为高级模式时配置</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependOnRunCondition: str
-        :param _AdvancedDependencyConfig: 高级依赖配置
+        :param _AdvancedDependencyConfig: <p>高级依赖配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedDependencyConfig: :class:`tencentcloud.databuddy.v20260715.models.AdvancedDependencyConfig`
-        :param _InnerTask: 内嵌工作流任务节点
+        :param _InnerTask: <p>内嵌工作流任务节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InnerTask: :class:`tencentcloud.databuddy.v20260715.models.WorkflowTaskNodeBrief`
         """
@@ -10862,7 +12463,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10874,7 +12475,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10886,7 +12487,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10898,7 +12499,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def TaskTypeName(self):
-        r"""任务类型名称
+        r"""<p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10910,7 +12511,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def DependOnList(self):
-        r"""任务依赖列表
+        r"""<p>任务依赖列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependOnBrief
         """
@@ -10922,7 +12523,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        r"""任务资源组ID
+        r"""<p>任务资源组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10934,7 +12535,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        r"""任务资源组名称
+        r"""<p>任务资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10946,7 +12547,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def LeftCoordinate(self):
-        r"""任务X坐标
+        r"""<p>任务X坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -10958,7 +12559,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def TopCoordinate(self):
-        r"""任务Y坐标
+        r"""<p>任务Y坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -10970,7 +12571,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def TaskRetryStrategy(self):
-        r"""任务重试策略
+        r"""<p>任务重试策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.TaskRetryStrategy`
         """
@@ -10982,7 +12583,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def DependOnRunCondition(self):
-        r"""依赖运行条件
+        r"""<p>任依赖运行条件</p><ul><li>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功</li><li>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功</li><li>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中</li><li>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败</li><li>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败</li><li>ALL_FAILED: 全部失败：所有上游依赖任务都失败</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li><li>ADVANCED:运行条件为高级模式时配置</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10994,7 +12595,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def AdvancedDependencyConfig(self):
-        r"""高级依赖配置
+        r"""<p>高级依赖配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.AdvancedDependencyConfig`
         """
@@ -11006,7 +12607,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def InnerTask(self):
-        r"""内嵌工作流任务节点
+        r"""<p>内嵌工作流任务节点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.WorkflowTaskNodeBrief`
         """
@@ -11080,7 +12681,7 @@ class WorkflowTaskRun(AbstractModel):
         :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskTypeName: <p>任务类型名称</p>
+        :param _TaskTypeName: 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeName: str
         :param _TaskVersionId: <p>任务版本ID</p>
@@ -11134,7 +12735,7 @@ class WorkflowTaskRun(AbstractModel):
         :param _TimeZone: <p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeZone: str
-        :param _DependOnList: <p>依赖上游任务ID列表</p>
+        :param _DependOnList: <p>依赖上游任务ID列表。保留字段，暂时返回为[]</p><p>保留字段，暂时返回为[]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependOnList: list of str
         :param _RunParams: <p>运行参数</p>
@@ -11167,7 +12768,7 @@ class WorkflowTaskRun(AbstractModel):
         :param _RunResult: <p>运行结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunResult: str
-        :param _DependOnRunCondition: <p>依赖运行条件</p>
+        :param _DependOnRunCondition: <p>任务依赖运行条件</p><p>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功<br>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功<br>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中<br>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败<br>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败<br>ALL_FAILED: 全部失败：所有上游依赖任务都失败<br>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行<br>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游<br>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行<br>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行<br>ADVANCED:运行条件为高级模式时配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependOnRunCondition: str
         :param _AdvancedDependencyConfig: <p>高级依赖配置</p>
@@ -11307,7 +12908,7 @@ class WorkflowTaskRun(AbstractModel):
 
     @property
     def TaskTypeName(self):
-        r"""<p>任务类型名称</p>
+        r"""任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11523,7 +13124,7 @@ class WorkflowTaskRun(AbstractModel):
 
     @property
     def DependOnList(self):
-        r"""<p>依赖上游任务ID列表</p>
+        r"""<p>依赖上游任务ID列表。保留字段，暂时返回为[]</p><p>保留字段，暂时返回为[]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -11655,7 +13256,7 @@ class WorkflowTaskRun(AbstractModel):
 
     @property
     def DependOnRunCondition(self):
-        r"""<p>依赖运行条件</p>
+        r"""<p>任务依赖运行条件</p><p>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功<br>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功<br>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中<br>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败<br>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败<br>ALL_FAILED: 全部失败：所有上游依赖任务都失败<br>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行<br>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游<br>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行<br>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行<br>ADVANCED:运行条件为高级模式时配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11807,44 +13408,37 @@ class WorkflowTriggerConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TriggerId: 调度配置ID，创建时无需传入，由服务端生成
+        :param _TriggerId: <p>调度配置ID，创建时无需传入，由服务端生成</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerId: str
-        :param _SchedulerStatus: 调度状态 启动：START，暂停：PAUSE
+        :param _SchedulerStatus: <p>调度状态 启动：START，暂停：PAUSE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerStatus: str
-        :param _TriggerMode: 触发方式，
-- 定时触发：TIME_TRIGGER
-- 持续运行：CONTINUE_RUN
-
-注意：
-- TIME_TRIGGER 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；
-- CONTINUE_RUN 模式下，AdvancedConfig必填；
+        :param _TriggerMode: <p>触发方式，</p><ul><li>定时触发：TIME_TRIGGER</li><li>持续运行：CONTINUE_RUN</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>CONTINUE_RUN 模式下，AdvancedConfig必填；</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
-        :param _SchedulerTimeZone: 调度时区
+        :param _SchedulerTimeZone: <p>调度时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerTimeZone: str
-        :param _StartTime: 调度生效时间，单位：毫秒时间戳。必须小于 EndTime
+        :param _StartTime: <p>调度生效时间，单位：毫秒时间戳。必须小于 EndTime</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 调度结束时间，单位：毫秒时间戳。必须大于 StartTime
+        :param _EndTime: <p>调度结束时间，单位：毫秒时间戳。必须大于 StartTime</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ConfigMode: 配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION
+        :param _ConfigMode: <p>配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigMode: str
-        :param _CycleType: 周期类型：支持的类型为 ONEOFF_CYCLE: 一次性 YEAR_CYCLE: 年 MONTH_CYCLE: 月 WEEK_CYCLE: 周 DAY_CYCLE: 天
-HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
+        :param _CycleType: <p>周期类型：支持的类型为 ONEOFF_CYCLE: 一次性 YEAR_CYCLE: 年 MONTH_CYCLE: 月 WEEK_CYCLE: 周 DAY_CYCLE: 天<br>HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _CrontabExpression: cron表达式
+        :param _CrontabExpression: <p>cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrontabExpression: str
-        :param _ExtraInfo: Json格式，对账使用
+        :param _ExtraInfo: <p>Json格式，对账使用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: str
-        :param _AdvancedConfig: 高级配置
+        :param _AdvancedConfig: <p>高级配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedConfig: :class:`tencentcloud.databuddy.v20260715.models.WorkflowTriggerAdvancedConfiguration`
         """
@@ -11862,7 +13456,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def TriggerId(self):
-        r"""调度配置ID，创建时无需传入，由服务端生成
+        r"""<p>调度配置ID，创建时无需传入，由服务端生成</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11874,7 +13468,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def SchedulerStatus(self):
-        r"""调度状态 启动：START，暂停：PAUSE
+        r"""<p>调度状态 启动：START，暂停：PAUSE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11886,13 +13480,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def TriggerMode(self):
-        r"""触发方式，
-- 定时触发：TIME_TRIGGER
-- 持续运行：CONTINUE_RUN
-
-注意：
-- TIME_TRIGGER 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；
-- CONTINUE_RUN 模式下，AdvancedConfig必填；
+        r"""<p>触发方式，</p><ul><li>定时触发：TIME_TRIGGER</li><li>持续运行：CONTINUE_RUN</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>CONTINUE_RUN 模式下，AdvancedConfig必填；</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11904,7 +13492,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def SchedulerTimeZone(self):
-        r"""调度时区
+        r"""<p>调度时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11916,7 +13504,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def StartTime(self):
-        r"""调度生效时间，单位：毫秒时间戳。必须小于 EndTime
+        r"""<p>调度生效时间，单位：毫秒时间戳。必须小于 EndTime</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11928,7 +13516,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def EndTime(self):
-        r"""调度结束时间，单位：毫秒时间戳。必须大于 StartTime
+        r"""<p>调度结束时间，单位：毫秒时间戳。必须大于 StartTime</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11940,7 +13528,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ConfigMode(self):
-        r"""配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION
+        r"""<p>配置方式，常规：COMMON，CRON表达式：CRON_EXPRESSION</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11952,8 +13540,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CycleType(self):
-        r"""周期类型：支持的类型为 ONEOFF_CYCLE: 一次性 YEAR_CYCLE: 年 MONTH_CYCLE: 月 WEEK_CYCLE: 周 DAY_CYCLE: 天
-HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
+        r"""<p>周期类型：支持的类型为 ONEOFF_CYCLE: 一次性 YEAR_CYCLE: 年 MONTH_CYCLE: 月 WEEK_CYCLE: 周 DAY_CYCLE: 天<br>HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11965,7 +13552,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CrontabExpression(self):
-        r"""cron表达式
+        r"""<p>cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11977,7 +13564,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ExtraInfo(self):
-        r"""Json格式，对账使用
+        r"""<p>Json格式，对账使用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11989,7 +13576,7 @@ HOUR_CYCLE: 小时 MINUTE_CYCLE: 分钟 CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def AdvancedConfig(self):
-        r"""高级配置
+        r"""<p>高级配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.WorkflowTriggerAdvancedConfiguration`
         """

@@ -25,42 +25,41 @@ class AddDeviceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备iD
+        :param _DeviceId: <p>设备iD</p>
         :type DeviceId: str
-        :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+        :param _Code: <p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
         :type Code: str
-        :param _Name: 设备名称
+        :param _Name: <p>设备名称</p>
         :type Name: str
-        :param _AccessProtocol: 设备接入协议，1:RTMP,2:GB,3:GW 
+        :param _AccessProtocol: <p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li><li>6： ISUP</li></ul>
         :type AccessProtocol: int
-        :param _Type: 设备类型，1:IPC,2:NVR
+        :param _Type: <p>设备类型，1:IPC,2:NVR</p>
         :type Type: int
-        :param _ClusterId: 设备接入服务节点ID
+        :param _ClusterId: <p>设备接入服务节点ID</p>
         :type ClusterId: str
-        :param _ClusterName: 设备接入服务节点名称
-
+        :param _ClusterName: <p>设备接入服务节点名称</p>
         :type ClusterName: str
-        :param _TransportProtocol: 设备流传输协议，1:UDP,2:TCP 
+        :param _TransportProtocol: <p>设备流传输协议，1:UDP,2:TCP</p>
         :type TransportProtocol: int
-        :param _Password: 设备密码
+        :param _Password: <p>设备密码</p>
         :type Password: str
-        :param _Description: 设备描述
+        :param _Description: <p>设备描述</p>
         :type Description: str
-        :param _Status: 设备状态，0:未注册,1:在线,2:离线,3:禁用
+        :param _Status: <p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
         :type Status: int
-        :param _OrganizationId: 设备所属组织ID
+        :param _OrganizationId: <p>设备所属组织ID</p>
         :type OrganizationId: int
-        :param _GatewayId: 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+        :param _GatewayId: <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
         :type GatewayId: str
-        :param _ProtocolType: 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        :param _ProtocolType: <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
         :type ProtocolType: int
-        :param _Ip: 设备接入IP（仅网关接入需要）
+        :param _Ip: <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
         :type Ip: str
-        :param _Port: 设备Port（仅网关接入需要）
+        :param _Port: <p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
         :type Port: int
-        :param _Username: 设备用户名（仅网关接入需要）
+        :param _Username: <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
         :type Username: str
-        :param _AppId: 用户ID
+        :param _AppId: <p>用户ID</p>
         :type AppId: int
         """
         self._DeviceId = None
@@ -84,7 +83,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备iD
+        r"""<p>设备iD</p>
         :rtype: str
         """
         return self._DeviceId
@@ -95,7 +94,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Code(self):
-        r"""设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+        r"""<p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
         :rtype: str
         """
         return self._Code
@@ -106,7 +105,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Name(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._Name
@@ -117,7 +116,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def AccessProtocol(self):
-        r"""设备接入协议，1:RTMP,2:GB,3:GW 
+        r"""<p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li><li>6： ISUP</li></ul>
         :rtype: int
         """
         return self._AccessProtocol
@@ -128,7 +127,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Type(self):
-        r"""设备类型，1:IPC,2:NVR
+        r"""<p>设备类型，1:IPC,2:NVR</p>
         :rtype: int
         """
         return self._Type
@@ -139,7 +138,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""设备接入服务节点ID
+        r"""<p>设备接入服务节点ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -150,8 +149,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""设备接入服务节点名称
-
+        r"""<p>设备接入服务节点名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -162,7 +160,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def TransportProtocol(self):
-        r"""设备流传输协议，1:UDP,2:TCP 
+        r"""<p>设备流传输协议，1:UDP,2:TCP</p>
         :rtype: int
         """
         return self._TransportProtocol
@@ -173,7 +171,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Password(self):
-        r"""设备密码
+        r"""<p>设备密码</p>
         :rtype: str
         """
         return self._Password
@@ -184,7 +182,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Description(self):
-        r"""设备描述
+        r"""<p>设备描述</p>
         :rtype: str
         """
         return self._Description
@@ -195,7 +193,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Status(self):
-        r"""设备状态，0:未注册,1:在线,2:离线,3:禁用
+        r"""<p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
         :rtype: int
         """
         return self._Status
@@ -206,7 +204,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def OrganizationId(self):
-        r"""设备所属组织ID
+        r"""<p>设备所属组织ID</p>
         :rtype: int
         """
         return self._OrganizationId
@@ -217,7 +215,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def GatewayId(self):
-        r"""设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+        r"""<p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._GatewayId
@@ -228,7 +226,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def ProtocolType(self):
-        r"""网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        r"""<p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: int
         """
         return self._ProtocolType
@@ -239,7 +237,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Ip(self):
-        r"""设备接入IP（仅网关接入需要）
+        r"""<p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._Ip
@@ -250,7 +248,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Port(self):
-        r"""设备Port（仅网关接入需要）
+        r"""<p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: int
         """
         return self._Port
@@ -261,7 +259,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def Username(self):
-        r"""设备用户名（仅网关接入需要）
+        r"""<p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._Username
@@ -272,7 +270,7 @@ class AddDeviceData(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: int
         """
         return self._AppId
@@ -2116,37 +2114,37 @@ class AddUserDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
+        :param _Name: <p>设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）</p>
         :type Name: str
-        :param _AccessProtocol: 设备接入协议（1:RTMP,2:GB,3:GW,6:ISUP）
+        :param _AccessProtocol: <p>设备接入协议（1:RTMP,2:GB,6:ISUP）</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li><li>6： ISUP</li></ul><p>默认值：2</p>
         :type AccessProtocol: int
-        :param _Type: 设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
+        :param _Type: <p>设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP，则设备类型只能选择IPC）</p><p>枚举值：</p><ul><li>1： IPC</li><li>2： NVR</li></ul>
         :type Type: int
-        :param _OrganizationId: 设备所属组织ID，从查询组织接口DescribeOrganization中获取
+        :param _OrganizationId: <p>设备所属组织ID，从查询组织接口DescribeOrganization中获取</p>
         :type OrganizationId: str
-        :param _ClusterId: 设备接入服务节点ID（从查询设备可用服务节点接口DescribeDeviceRegion中获取的Value字段）
+        :param _ClusterId: <p>设备接入服务节点ID（从查询设备可用服务节点接口DescribeRegionDomain中获取的Value字段）</p>
         :type ClusterId: str
-        :param _TransportProtocol: 设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)
+        :param _TransportProtocol: <p>设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)</p>
         :type TransportProtocol: int
-        :param _Password: 设备密码（国标，网关设备必填，长度为1-64个字符）
+        :param _Password: <p>设备密码（国标设备必填，长度为1-64个字符）</p>
         :type Password: str
-        :param _Description: 设备描述，长度不超过128个字符
+        :param _Description: <p>设备描述，长度不超过128个字符</p>
         :type Description: str
-        :param _GatewayId: 设备接入网关ID，从查询网关列表接口中ListGateways获取（仅网关接入需要）
+        :param _GatewayId: <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
         :type GatewayId: str
-        :param _ProtocolType: 网关接入协议类型（从查询网关接入协议接口DescribeGatewayProtocol中获取）1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        :param _ProtocolType: <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
         :type ProtocolType: int
-        :param _Ip: 设备接入IP（仅网关接入需要）
+        :param _Ip: <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
         :type Ip: str
-        :param _Port: 设备端口（仅网关接入需要）
+        :param _Port: <p>设备端口（已不再使用，保留用于兼容，可忽略）</p><p>取值范围：[1, 65535]</p><p>单位： 端口</p>
         :type Port: int
-        :param _Username: 设备用户名（仅网关接入需要）
+        :param _Username: <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
         :type Username: str
-        :param _SNCode: 设备 SN，仅IVCP 协议设备需要
+        :param _SNCode: <p>设备 SN（已不再使用，保留用于兼容，可忽略）</p>
         :type SNCode: str
-        :param _AppName: RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+        :param _AppName: <p>RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）</p>
         :type AppName: str
-        :param _StreamName: RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+        :param _StreamName: <p>RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）</p>
         :type StreamName: str
         """
         self._Name = None
@@ -2168,7 +2166,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）
+        r"""<p>设备名称，仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位；（设备名称无需全局唯一，可以重复）</p>
         :rtype: str
         """
         return self._Name
@@ -2179,7 +2177,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def AccessProtocol(self):
-        r"""设备接入协议（1:RTMP,2:GB,3:GW,6:ISUP）
+        r"""<p>设备接入协议（1:RTMP,2:GB,6:ISUP）</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li><li>6： ISUP</li></ul><p>默认值：2</p>
         :rtype: int
         """
         return self._AccessProtocol
@@ -2190,7 +2188,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP,IVCP，则设备类型只能选择IPC）
+        r"""<p>设备类型，1:IPC,2:NVR；（若设备接入协议选择RTMP，则设备类型只能选择IPC）</p><p>枚举值：</p><ul><li>1： IPC</li><li>2： NVR</li></ul>
         :rtype: int
         """
         return self._Type
@@ -2201,7 +2199,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def OrganizationId(self):
-        r"""设备所属组织ID，从查询组织接口DescribeOrganization中获取
+        r"""<p>设备所属组织ID，从查询组织接口DescribeOrganization中获取</p>
         :rtype: str
         """
         return self._OrganizationId
@@ -2212,7 +2210,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""设备接入服务节点ID（从查询设备可用服务节点接口DescribeDeviceRegion中获取的Value字段）
+        r"""<p>设备接入服务节点ID（从查询设备可用服务节点接口DescribeRegionDomain中获取的Value字段）</p>
         :rtype: str
         """
         return self._ClusterId
@@ -2223,7 +2221,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def TransportProtocol(self):
-        r"""设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)
+        r"""<p>设备流传输协议，1:UDP,2:TCP；(国标设备有效，不填写则默认UDP协议)</p>
         :rtype: int
         """
         return self._TransportProtocol
@@ -2234,7 +2232,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""设备密码（国标，网关设备必填，长度为1-64个字符）
+        r"""<p>设备密码（国标设备必填，长度为1-64个字符）</p>
         :rtype: str
         """
         return self._Password
@@ -2245,7 +2243,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""设备描述，长度不超过128个字符
+        r"""<p>设备描述，长度不超过128个字符</p>
         :rtype: str
         """
         return self._Description
@@ -2256,7 +2254,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def GatewayId(self):
-        r"""设备接入网关ID，从查询网关列表接口中ListGateways获取（仅网关接入需要）
+        r"""<p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._GatewayId
@@ -2267,7 +2265,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        r"""网关接入协议类型（从查询网关接入协议接口DescribeGatewayProtocol中获取）1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        r"""<p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: int
         """
         return self._ProtocolType
@@ -2278,7 +2276,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Ip(self):
-        r"""设备接入IP（仅网关接入需要）
+        r"""<p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._Ip
@@ -2289,7 +2287,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""设备端口（仅网关接入需要）
+        r"""<p>设备端口（已不再使用，保留用于兼容，可忽略）</p><p>取值范围：[1, 65535]</p><p>单位： 端口</p>
         :rtype: int
         """
         return self._Port
@@ -2300,7 +2298,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""设备用户名（仅网关接入需要）
+        r"""<p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._Username
@@ -2311,7 +2309,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def SNCode(self):
-        r"""设备 SN，仅IVCP 协议设备需要
+        r"""<p>设备 SN（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._SNCode
@@ -2322,7 +2320,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def AppName(self):
-        r"""RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+        r"""<p>RTMP推流地址自定义AppName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）</p>
         :rtype: str
         """
         return self._AppName
@@ -2333,7 +2331,7 @@ class AddUserDeviceRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        r"""RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）
+        r"""<p>RTMP推流地址自定义StreamName（仅RTMP需要，支持英文、数字、_、-、.、长度不超过64位）</p>
         :rtype: str
         """
         return self._StreamName
@@ -2377,7 +2375,7 @@ class AddUserDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 增加设备返回数据
+        :param _Data: <p>增加设备返回数据</p>
         :type Data: :class:`tencentcloud.iss.v20230517.models.AddDeviceData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2387,7 +2385,7 @@ class AddUserDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""增加设备返回数据
+        r"""<p>增加设备返回数据</p>
         :rtype: :class:`tencentcloud.iss.v20230517.models.AddDeviceData`
         """
         return self._Data
@@ -2522,9 +2520,9 @@ class BatchOperateDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceIds: 设备 ID 数组（从获取设备列表接口ListDevices中获取）
+        :param _DeviceIds: <p>设备 ID 数组（从获取设备列表接口ListDevices中获取）</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1344/95871">ListDevices</a></p>
         :type DeviceIds: list of str
-        :param _Cmd: 操作命令（enable：启用；disable：禁用；delete：删除；sync：同步设备通道；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
+        :param _Cmd: <p>操作命令</p><p>枚举值：</p><ul><li>enable： 启用</li><li>disable： 禁用</li><li>delete： 删除</li><li>sync： 同步设备通道</li></ul>
         :type Cmd: str
         """
         self._DeviceIds = None
@@ -2532,7 +2530,7 @@ class BatchOperateDeviceRequest(AbstractModel):
 
     @property
     def DeviceIds(self):
-        r"""设备 ID 数组（从获取设备列表接口ListDevices中获取）
+        r"""<p>设备 ID 数组（从获取设备列表接口ListDevices中获取）</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1344/95871">ListDevices</a></p>
         :rtype: list of str
         """
         return self._DeviceIds
@@ -2543,7 +2541,7 @@ class BatchOperateDeviceRequest(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""操作命令（enable：启用；disable：禁用；delete：删除；sync：同步设备通道；upgrade：固件升级；reset：恢复出厂设置；reboot：重启）
+        r"""<p>操作命令</p><p>枚举值：</p><ul><li>enable： 启用</li><li>disable： 禁用</li><li>delete： 删除</li><li>sync： 同步设备通道</li></ul>
         :rtype: str
         """
         return self._Cmd
@@ -2573,7 +2571,7 @@ class BatchOperateDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回结果
+        :param _Data: <p>返回结果</p>
         :type Data: :class:`tencentcloud.iss.v20230517.models.BatchOperateDeviceData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2583,7 +2581,7 @@ class BatchOperateDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回结果
+        r"""<p>返回结果</p>
         :rtype: :class:`tencentcloud.iss.v20230517.models.BatchOperateDeviceData`
         """
         return self._Data
@@ -4810,7 +4808,7 @@ class DescribeDeviceData(AbstractModel):
         :type Code: str
         :param _Name: <p>设备名称</p>
         :type Name: str
-        :param _AccessProtocol: <p>设备接入协议，1:RTMP,2:GB,3:GW</p>
+        :param _AccessProtocol: <p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li></ul>
         :type AccessProtocol: int
         :param _Type: <p>设备类型，1:IPC,2:NVR</p>
         :type Type: int
@@ -4838,19 +4836,19 @@ class DescribeDeviceData(AbstractModel):
         :type Status: int
         :param _OrganizationId: <p>设备所属组织ID</p>
         :type OrganizationId: str
-        :param _GatewayId: <p>设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）</p>
+        :param _GatewayId: <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
         :type GatewayId: str
-        :param _GatewayName: <p>设备所属网关名称</p>
+        :param _GatewayName: <p>设备所属网关名称（已不再使用，保留用于兼容，可忽略）</p>
         :type GatewayName: str
-        :param _ProtocolTypeName: <p>设备网关协议名称</p>
+        :param _ProtocolTypeName: <p>设备网关协议名称（已不再使用，保留用于兼容，可忽略）</p>
         :type ProtocolTypeName: str
-        :param _ProtocolType: <p>网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）</p>
+        :param _ProtocolType: <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
         :type ProtocolType: int
-        :param _Ip: <p>设备接入IP</p>
+        :param _Ip: <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
         :type Ip: str
-        :param _Port: <p>设备Port</p>
+        :param _Port: <p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
         :type Port: int
-        :param _Username: <p>设备用户名</p>
+        :param _Username: <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
         :type Username: str
         :param _Region: <p>设备地域</p>
         :type Region: str
@@ -4868,6 +4866,12 @@ class DescribeDeviceData(AbstractModel):
         :type SilentFrameSwitch: int
         :param _PushStreamSecureUrl: <p>Rtmp设备安全认证推流地址(仅rtmp设备有效)</p>
         :type PushStreamSecureUrl: str
+        :param _SipFQDN: <p>国标SIP域名</p>
+        :type SipFQDN: str
+        :param _SipCarrierEndpoints: <p>国标SIP三网IP地址</p>
+        :type SipCarrierEndpoints: :class:`tencentcloud.iss.v20230517.models.SipCarrierEndpoints`
+        :param _TimeSyncSwitch: <p>国标校时开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值： 1</p>
+        :type TimeSyncSwitch: int
         """
         self._DeviceId = None
         self._Code = None
@@ -4901,6 +4905,9 @@ class DescribeDeviceData(AbstractModel):
         self._StreamName = None
         self._SilentFrameSwitch = None
         self._PushStreamSecureUrl = None
+        self._SipFQDN = None
+        self._SipCarrierEndpoints = None
+        self._TimeSyncSwitch = None
 
     @property
     def DeviceId(self):
@@ -4937,7 +4944,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def AccessProtocol(self):
-        r"""<p>设备接入协议，1:RTMP,2:GB,3:GW</p>
+        r"""<p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li></ul>
         :rtype: int
         """
         return self._AccessProtocol
@@ -5091,7 +5098,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def GatewayId(self):
-        r"""<p>设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）</p>
+        r"""<p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._GatewayId
@@ -5102,7 +5109,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def GatewayName(self):
-        r"""<p>设备所属网关名称</p>
+        r"""<p>设备所属网关名称（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._GatewayName
@@ -5113,7 +5120,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ProtocolTypeName(self):
-        r"""<p>设备网关协议名称</p>
+        r"""<p>设备网关协议名称（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._ProtocolTypeName
@@ -5124,7 +5131,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ProtocolType(self):
-        r"""<p>网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）</p>
+        r"""<p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: int
         """
         return self._ProtocolType
@@ -5135,7 +5142,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Ip(self):
-        r"""<p>设备接入IP</p>
+        r"""<p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._Ip
@@ -5146,7 +5153,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Port(self):
-        r"""<p>设备Port</p>
+        r"""<p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: int
         """
         return self._Port
@@ -5157,7 +5164,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Username(self):
-        r"""<p>设备用户名</p>
+        r"""<p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._Username
@@ -5254,6 +5261,39 @@ class DescribeDeviceData(AbstractModel):
     def PushStreamSecureUrl(self, PushStreamSecureUrl):
         self._PushStreamSecureUrl = PushStreamSecureUrl
 
+    @property
+    def SipFQDN(self):
+        r"""<p>国标SIP域名</p>
+        :rtype: str
+        """
+        return self._SipFQDN
+
+    @SipFQDN.setter
+    def SipFQDN(self, SipFQDN):
+        self._SipFQDN = SipFQDN
+
+    @property
+    def SipCarrierEndpoints(self):
+        r"""<p>国标SIP三网IP地址</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.SipCarrierEndpoints`
+        """
+        return self._SipCarrierEndpoints
+
+    @SipCarrierEndpoints.setter
+    def SipCarrierEndpoints(self, SipCarrierEndpoints):
+        self._SipCarrierEndpoints = SipCarrierEndpoints
+
+    @property
+    def TimeSyncSwitch(self):
+        r"""<p>国标校时开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值： 1</p>
+        :rtype: int
+        """
+        return self._TimeSyncSwitch
+
+    @TimeSyncSwitch.setter
+    def TimeSyncSwitch(self, TimeSyncSwitch):
+        self._TimeSyncSwitch = TimeSyncSwitch
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -5288,6 +5328,11 @@ class DescribeDeviceData(AbstractModel):
         self._StreamName = params.get("StreamName")
         self._SilentFrameSwitch = params.get("SilentFrameSwitch")
         self._PushStreamSecureUrl = params.get("PushStreamSecureUrl")
+        self._SipFQDN = params.get("SipFQDN")
+        if params.get("SipCarrierEndpoints") is not None:
+            self._SipCarrierEndpoints = SipCarrierEndpoints()
+            self._SipCarrierEndpoints._deserialize(params.get("SipCarrierEndpoints"))
+        self._TimeSyncSwitch = params.get("TimeSyncSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13151,6 +13196,102 @@ class SetForbidplayChannelParam(AbstractModel):
         
 
 
+class SipCarrierEndpoints(AbstractModel):
+    r"""多运营商的国标服务器IP地址
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CT: <p>电信IP</p>
+        :type CT: str
+        :param _CU: <p>联通IP</p>
+        :type CU: str
+        :param _CMCC: <p>移动IP</p>
+        :type CMCC: str
+        :param _BGP: <p>腾讯网络IP</p>
+        :type BGP: str
+        :param _CAP: <p>中小运营商IP</p>
+        :type CAP: str
+        """
+        self._CT = None
+        self._CU = None
+        self._CMCC = None
+        self._BGP = None
+        self._CAP = None
+
+    @property
+    def CT(self):
+        r"""<p>电信IP</p>
+        :rtype: str
+        """
+        return self._CT
+
+    @CT.setter
+    def CT(self, CT):
+        self._CT = CT
+
+    @property
+    def CU(self):
+        r"""<p>联通IP</p>
+        :rtype: str
+        """
+        return self._CU
+
+    @CU.setter
+    def CU(self, CU):
+        self._CU = CU
+
+    @property
+    def CMCC(self):
+        r"""<p>移动IP</p>
+        :rtype: str
+        """
+        return self._CMCC
+
+    @CMCC.setter
+    def CMCC(self, CMCC):
+        self._CMCC = CMCC
+
+    @property
+    def BGP(self):
+        r"""<p>腾讯网络IP</p>
+        :rtype: str
+        """
+        return self._BGP
+
+    @BGP.setter
+    def BGP(self, BGP):
+        self._BGP = BGP
+
+    @property
+    def CAP(self):
+        r"""<p>中小运营商IP</p>
+        :rtype: str
+        """
+        return self._CAP
+
+    @CAP.setter
+    def CAP(self, CAP):
+        self._CAP = CAP
+
+
+    def _deserialize(self, params):
+        self._CT = params.get("CT")
+        self._CU = params.get("CU")
+        self._CMCC = params.get("CMCC")
+        self._BGP = params.get("BGP")
+        self._CAP = params.get("CAP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubTaskData(AbstractModel):
     r"""子任务详情
 
@@ -13776,42 +13917,41 @@ class UpdateDeviceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备ID
+        :param _DeviceId: <p>设备ID</p>
         :type DeviceId: str
-        :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+        :param _Code: <p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
         :type Code: str
-        :param _Name: 设备名称
+        :param _Name: <p>设备名称</p>
         :type Name: str
-        :param _AccessProtocol: 设备接入协议，1:RTMP,2:GB,3:GW 
+        :param _AccessProtocol: <p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li></ul>
         :type AccessProtocol: int
-        :param _Type: 设备类型，1:IPC,2:NVR
+        :param _Type: <p>设备类型，1:IPC,2:NVR</p>
         :type Type: int
-        :param _ClusterId: 设备接入服务节点ID
+        :param _ClusterId: <p>设备接入服务节点ID</p>
         :type ClusterId: str
-        :param _ClusterName: 设备接入服务节点名称
-
+        :param _ClusterName: <p>设备接入服务节点名称</p>
         :type ClusterName: str
-        :param _TransportProtocol: 设备流传输协议，1:UDP,2:TCP 
+        :param _TransportProtocol: <p>设备流传输协议，1:UDP,2:TCP</p>
         :type TransportProtocol: int
-        :param _Password: 设备密码
+        :param _Password: <p>设备密码</p>
         :type Password: str
-        :param _Description: 设备描述
+        :param _Description: <p>设备描述</p>
         :type Description: str
-        :param _Status: 设备状态，0:未注册,1:在线,2:离线,3:禁用
+        :param _Status: <p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
         :type Status: int
-        :param _OrganizationId: 设备所属组织ID
+        :param _OrganizationId: <p>设备所属组织ID</p>
         :type OrganizationId: int
-        :param _GatewayId: 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+        :param _GatewayId: <p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
         :type GatewayId: str
-        :param _ProtocolType: 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        :param _ProtocolType: <p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
         :type ProtocolType: int
-        :param _Ip: 设备接入IP
+        :param _Ip: <p>设备接入IP</p>
         :type Ip: str
-        :param _Port: 设备Port
+        :param _Port: <p>设备Port</p>
         :type Port: int
-        :param _Username: 设备用户名
+        :param _Username: <p>设备用户名</p>
         :type Username: str
-        :param _AppId: 用户Id
+        :param _AppId: <p>用户Id</p>
         :type AppId: int
         """
         self._DeviceId = None
@@ -13835,7 +13975,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -13846,7 +13986,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Code(self):
-        r"""设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+        r"""<p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
         :rtype: str
         """
         return self._Code
@@ -13857,7 +13997,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Name(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._Name
@@ -13868,7 +14008,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def AccessProtocol(self):
-        r"""设备接入协议，1:RTMP,2:GB,3:GW 
+        r"""<p>设备接入协议，1:RTMP,2:GB</p><p>枚举值：</p><ul><li>1： RTMP</li><li>2： GB</li></ul>
         :rtype: int
         """
         return self._AccessProtocol
@@ -13879,7 +14019,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Type(self):
-        r"""设备类型，1:IPC,2:NVR
+        r"""<p>设备类型，1:IPC,2:NVR</p>
         :rtype: int
         """
         return self._Type
@@ -13890,7 +14030,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""设备接入服务节点ID
+        r"""<p>设备接入服务节点ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -13901,8 +14041,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""设备接入服务节点名称
-
+        r"""<p>设备接入服务节点名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -13913,7 +14052,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def TransportProtocol(self):
-        r"""设备流传输协议，1:UDP,2:TCP 
+        r"""<p>设备流传输协议，1:UDP,2:TCP</p>
         :rtype: int
         """
         return self._TransportProtocol
@@ -13924,7 +14063,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Password(self):
-        r"""设备密码
+        r"""<p>设备密码</p>
         :rtype: str
         """
         return self._Password
@@ -13935,7 +14074,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Description(self):
-        r"""设备描述
+        r"""<p>设备描述</p>
         :rtype: str
         """
         return self._Description
@@ -13946,7 +14085,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Status(self):
-        r"""设备状态，0:未注册,1:在线,2:离线,3:禁用
+        r"""<p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
         :rtype: int
         """
         return self._Status
@@ -13957,7 +14096,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def OrganizationId(self):
-        r"""设备所属组织ID
+        r"""<p>设备所属组织ID</p>
         :rtype: int
         """
         return self._OrganizationId
@@ -13968,7 +14107,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def GatewayId(self):
-        r"""设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+        r"""<p>设备接入网关ID（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._GatewayId
@@ -13979,7 +14118,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def ProtocolType(self):
-        r"""网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        r"""<p>网关接入协议类型（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: int
         """
         return self._ProtocolType
@@ -13990,7 +14129,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Ip(self):
-        r"""设备接入IP
+        r"""<p>设备接入IP</p>
         :rtype: str
         """
         return self._Ip
@@ -14001,7 +14140,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Port(self):
-        r"""设备Port
+        r"""<p>设备Port</p>
         :rtype: int
         """
         return self._Port
@@ -14012,7 +14151,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def Username(self):
-        r"""设备用户名
+        r"""<p>设备用户名</p>
         :rtype: str
         """
         return self._Username
@@ -14023,7 +14162,7 @@ class UpdateDeviceData(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户Id
+        r"""<p>用户Id</p>
         :rtype: int
         """
         return self._AppId
@@ -15608,30 +15747,32 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备ID（从获取设备列表接口ListDevices中获取）
+        :param _DeviceId: <p>设备ID（从获取设备列表接口ListDevices中获取）</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1344/95871">ListDevices</a></p>
         :type DeviceId: str
-        :param _Name: 设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）
+        :param _Name: <p>设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）</p>
         :type Name: str
-        :param _TransportProtocol: 设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）
+        :param _TransportProtocol: <p>设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）</p>
         :type TransportProtocol: int
-        :param _Password: 设备密码（仅国标，网关设备支持，长度不超过 64 位）
+        :param _Password: <p>设备密码（仅国标设备支持，长度不超过 64 位）</p>
         :type Password: str
-        :param _Description: 设备描述（长度不超过128位）
+        :param _Description: <p>设备描述（长度不超过128位）</p>
         :type Description: str
-        :param _Ip: 设备接入Ip（仅网关接入支持）
+        :param _Ip: <p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
         :type Ip: str
-        :param _Port: 设备Port（仅网关接入支持）
+        :param _Port: <p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
         :type Port: int
-        :param _Username: 设备用户名（仅网关接入支持）
+        :param _Username: <p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
         :type Username: str
-        :param _ProtocolType: 网关设备接入协议（仅网关接入支持）
+        :param _ProtocolType: <p>网关设备接入协议（已不再使用，保留用于兼容，可忽略）</p>
         :type ProtocolType: int
-        :param _AudioSwitch: 音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频
+        :param _AudioSwitch: <p>音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频</p>
         :type AudioSwitch: int
-        :param _SubscribeSwitch: 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
+        :param _SubscribeSwitch: <p>订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效</p>
         :type SubscribeSwitch: int
-        :param _SilentFrameSwitch: 是否开启静音帧（0：关闭；1 开启）
+        :param _SilentFrameSwitch: <p>是否开启静音帧（0：关闭；1 开启）</p>
         :type SilentFrameSwitch: int
+        :param _TimeSyncSwitch: <p>时钟同步开关（仅国标设备生效）</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值： 1</p>
+        :type TimeSyncSwitch: int
         """
         self._DeviceId = None
         self._Name = None
@@ -15645,10 +15786,11 @@ class UpdateUserDeviceRequest(AbstractModel):
         self._AudioSwitch = None
         self._SubscribeSwitch = None
         self._SilentFrameSwitch = None
+        self._TimeSyncSwitch = None
 
     @property
     def DeviceId(self):
-        r"""设备ID（从获取设备列表接口ListDevices中获取）
+        r"""<p>设备ID（从获取设备列表接口ListDevices中获取）</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1344/95871">ListDevices</a></p>
         :rtype: str
         """
         return self._DeviceId
@@ -15659,7 +15801,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）
+        r"""<p>设备名称（仅支持中文、英文、数字、空格、中英文括号、_、-, 长度不超过128位）</p>
         :rtype: str
         """
         return self._Name
@@ -15670,7 +15812,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def TransportProtocol(self):
-        r"""设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）
+        r"""<p>设备流传输协议，仅国标设备有效，填0则不做更改（1:UDP,2:TCP）</p>
         :rtype: int
         """
         return self._TransportProtocol
@@ -15681,7 +15823,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""设备密码（仅国标，网关设备支持，长度不超过 64 位）
+        r"""<p>设备密码（仅国标设备支持，长度不超过 64 位）</p>
         :rtype: str
         """
         return self._Password
@@ -15692,7 +15834,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""设备描述（长度不超过128位）
+        r"""<p>设备描述（长度不超过128位）</p>
         :rtype: str
         """
         return self._Description
@@ -15703,7 +15845,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Ip(self):
-        r"""设备接入Ip（仅网关接入支持）
+        r"""<p>设备接入IP（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._Ip
@@ -15714,7 +15856,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""设备Port（仅网关接入支持）
+        r"""<p>设备Port（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: int
         """
         return self._Port
@@ -15725,7 +15867,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""设备用户名（仅网关接入支持）
+        r"""<p>设备用户名（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: str
         """
         return self._Username
@@ -15736,7 +15878,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def ProtocolType(self):
-        r"""网关设备接入协议（仅网关接入支持）
+        r"""<p>网关设备接入协议（已不再使用，保留用于兼容，可忽略）</p>
         :rtype: int
         """
         return self._ProtocolType
@@ -15747,7 +15889,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def AudioSwitch(self):
-        r"""音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频
+        r"""<p>音频关开（0：关闭；1：开启）默认开启，关闭时丢弃音频</p>
         :rtype: int
         """
         return self._AudioSwitch
@@ -15758,7 +15900,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def SubscribeSwitch(self):
-        r"""订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效
+        r"""<p>订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效</p>
         :rtype: int
         """
         return self._SubscribeSwitch
@@ -15769,7 +15911,7 @@ class UpdateUserDeviceRequest(AbstractModel):
 
     @property
     def SilentFrameSwitch(self):
-        r"""是否开启静音帧（0：关闭；1 开启）
+        r"""<p>是否开启静音帧（0：关闭；1 开启）</p>
         :rtype: int
         """
         return self._SilentFrameSwitch
@@ -15777,6 +15919,17 @@ class UpdateUserDeviceRequest(AbstractModel):
     @SilentFrameSwitch.setter
     def SilentFrameSwitch(self, SilentFrameSwitch):
         self._SilentFrameSwitch = SilentFrameSwitch
+
+    @property
+    def TimeSyncSwitch(self):
+        r"""<p>时钟同步开关（仅国标设备生效）</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul><p>默认值： 1</p>
+        :rtype: int
+        """
+        return self._TimeSyncSwitch
+
+    @TimeSyncSwitch.setter
+    def TimeSyncSwitch(self, TimeSyncSwitch):
+        self._TimeSyncSwitch = TimeSyncSwitch
 
 
     def _deserialize(self, params):
@@ -15792,6 +15945,7 @@ class UpdateUserDeviceRequest(AbstractModel):
         self._AudioSwitch = params.get("AudioSwitch")
         self._SubscribeSwitch = params.get("SubscribeSwitch")
         self._SilentFrameSwitch = params.get("SilentFrameSwitch")
+        self._TimeSyncSwitch = params.get("TimeSyncSwitch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15809,7 +15963,7 @@ class UpdateUserDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回数据
+        :param _Data: <p>返回数据</p>
         :type Data: :class:`tencentcloud.iss.v20230517.models.UpdateDeviceData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15819,7 +15973,7 @@ class UpdateUserDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回数据
+        r"""<p>返回数据</p>
         :rtype: :class:`tencentcloud.iss.v20230517.models.UpdateDeviceData`
         """
         return self._Data

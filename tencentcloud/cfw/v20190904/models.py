@@ -10478,9 +10478,9 @@ class DescribeAclRuleRequest(AbstractModel):
         :type Index: str
         :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _StartTime: <p>检索的起始时间，可不传</p>
+        :param _StartTime: <p>检索的起始时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :type StartTime: str
-        :param _EndTime: <p>检索的截止时间，可不传</p>
+        :param _EndTime: <p>检索的截止时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :type EndTime: str
         :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
         :type Order: str
@@ -10542,7 +10542,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>检索的起始时间，可不传</p>
+        r"""<p>检索的起始时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :rtype: str
         """
         return self._StartTime
@@ -10553,7 +10553,7 @@ class DescribeAclRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>检索的截止时间，可不传</p>
+        r"""<p>检索的截止时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :rtype: str
         """
         return self._EndTime
@@ -18979,9 +18979,9 @@ class DescribeNatAcRuleRequest(AbstractModel):
         :type Index: str
         :param _Filters: <p>过滤条件组合，Direction 为0时表述查询出向规则，为1时表示查询入向规则</p>
         :type Filters: list of CommonFilter
-        :param _StartTime: <p>检索的起始时间，可不传</p>
+        :param _StartTime: <p>检索的起始时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :type StartTime: str
-        :param _EndTime: <p>检索的截止时间，可不传</p>
+        :param _EndTime: <p>检索的截止时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :type EndTime: str
         :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值，默认为asc</p>
         :type Order: str
@@ -19043,7 +19043,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>检索的起始时间，可不传</p>
+        r"""<p>检索的起始时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :rtype: str
         """
         return self._StartTime
@@ -19054,7 +19054,7 @@ class DescribeNatAcRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>检索的截止时间，可不传</p>
+        r"""<p>检索的截止时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :rtype: str
         """
         return self._EndTime
@@ -22829,9 +22829,9 @@ class DescribeVpcAcRuleRequest(AbstractModel):
         :type Index: str
         :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _StartTime: <p>检索的起始时间，可不传</p>
+        :param _StartTime: <p>检索的起始时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :type StartTime: str
-        :param _EndTime: <p>检索的截止时间，可不传</p>
+        :param _EndTime: <p>检索的截止时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :type EndTime: str
         :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :type Order: str
@@ -22893,7 +22893,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>检索的起始时间，可不传</p>
+        r"""<p>检索的起始时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :rtype: str
         """
         return self._StartTime
@@ -22904,7 +22904,7 @@ class DescribeVpcAcRuleRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>检索的截止时间，可不传</p>
+        r"""<p>检索的截止时间，规则创建时间，可不传</p><p>参数格式：2022-07-27 16:00:00</p>
         :rtype: str
         """
         return self._EndTime

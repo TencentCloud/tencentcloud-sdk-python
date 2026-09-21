@@ -43,6 +43,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateConsoleGroup(
+            self,
+            request: models.CreateConsoleGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateConsoleGroupResponse:
+        """
+        创建控制台用户组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateConsoleGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateConsoleGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateFile(
             self,
             request: models.CreateFileRequest,
@@ -81,6 +99,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "CreateWorkflow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteConsoleGroups(
+            self,
+            request: models.DeleteConsoleGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteConsoleGroupsResponse:
+        """
+        删除控制台用户组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteConsoleGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteConsoleGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -246,6 +282,60 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListConsoleGroupUsers(
+            self,
+            request: models.ListConsoleGroupUsersRequest,
+            opts: Dict = None,
+    ) -> models.ListConsoleGroupUsersResponse:
+        """
+        查询控制台用户组成员列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListConsoleGroupUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListConsoleGroupUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListConsoleGroups(
+            self,
+            request: models.ListConsoleGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ListConsoleGroupsResponse:
+        """
+        查询控制台用户组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListConsoleGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListConsoleGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListConsoleRoles(
+            self,
+            request: models.ListConsoleRolesRequest,
+            opts: Dict = None,
+    ) -> models.ListConsoleRolesResponse:
+        """
+        查询控制台角色列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListConsoleRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListConsoleRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListConsoleUsers(
             self,
             request: models.ListConsoleUsersRequest,
@@ -386,6 +476,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "UnbindWorkflowBundle"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnbindWorkflowBundleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateConsoleGroup(
+            self,
+            request: models.UpdateConsoleGroupRequest,
+            opts: Dict = None,
+    ) -> models.UpdateConsoleGroupResponse:
+        """
+        修改控制台用户组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateConsoleGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateConsoleGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
