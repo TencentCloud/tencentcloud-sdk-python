@@ -2842,6 +2842,66 @@ class GetServicePodLogsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>服务Id</p>
+        :type ServiceId: str
+        :param _PodName: <p>Pod名称</p>
+        :type PodName: str
+        :param _TailLines: <p>日志行数</p>
+        :type TailLines: str
+        """
+        self._ServiceId = None
+        self._PodName = None
+        self._TailLines = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>服务Id</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def PodName(self):
+        r"""<p>Pod名称</p>
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def TailLines(self):
+        r"""<p>日志行数</p>
+        :rtype: str
+        """
+        return self._TailLines
+
+    @TailLines.setter
+    def TailLines(self, TailLines):
+        self._TailLines = TailLines
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._PodName = params.get("PodName")
+        self._TailLines = params.get("TailLines")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GetServicePodLogsResponse(AbstractModel):
     r"""GetServicePodLogs返回参数结构体
@@ -2850,10 +2910,24 @@ class GetServicePodLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _LogLines: <p>日志内容</p>
+        :type LogLines: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._LogLines = None
         self._RequestId = None
+
+    @property
+    def LogLines(self):
+        r"""<p>日志内容</p>
+        :rtype: list of str
+        """
+        return self._LogLines
+
+    @LogLines.setter
+    def LogLines(self, LogLines):
+        self._LogLines = LogLines
 
     @property
     def RequestId(self):
@@ -2868,6 +2942,7 @@ class GetServicePodLogsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._LogLines = params.get("LogLines")
         self._RequestId = params.get("RequestId")
 
 

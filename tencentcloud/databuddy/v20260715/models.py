@@ -400,19 +400,19 @@ class AlarmGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelId: 通知渠道ID，可通过基础平台通知渠道相关接口获取
+        :param _ChannelId: <p>通知渠道ID，可通过基础平台通知渠道相关接口获取</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelId: str
-        :param _ChannelName: 通知渠道名称，可以是用户组名称或邮箱地址
+        :param _ChannelName: <p>通知渠道名称，可以是用户组名称或邮箱地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelName: str
-        :param _IsEmailChannel: 是否启用邮件渠道，默认值：false
+        :param _IsEmailChannel: <p>是否启用邮件渠道，默认值：false</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsEmailChannel: bool
-        :param _AlarmConditions: 一组告警条件，有 启动，成功，失败和任务超时告警
+        :param _AlarmConditions: <p>告警条件列表。取值：<br>START：启动<br>SUCCESS：成功<br>FAILURE：失败<br>MONITOR_INDICATOR_ALARM：监控指标告警</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmConditions: list of str
-        :param _ChannelType: 通知渠道类型。取值：0 未指定，1 Email，2 Webhook，3 Teams，4 Slack
+        :param _ChannelType: <p>通知渠道类型。取值：0 未指定，1 Email，2 Webhook，3 Teams，4 Slack</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelType: int
         """
@@ -424,7 +424,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通知渠道ID，可通过基础平台通知渠道相关接口获取
+        r"""<p>通知渠道ID，可通过基础平台通知渠道相关接口获取</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -436,7 +436,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def ChannelName(self):
-        r"""通知渠道名称，可以是用户组名称或邮箱地址
+        r"""<p>通知渠道名称，可以是用户组名称或邮箱地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -448,7 +448,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def IsEmailChannel(self):
-        r"""是否启用邮件渠道，默认值：false
+        r"""<p>是否启用邮件渠道，默认值：false</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -460,7 +460,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def AlarmConditions(self):
-        r"""一组告警条件，有 启动，成功，失败和任务超时告警
+        r"""<p>告警条件列表。取值：<br>START：启动<br>SUCCESS：成功<br>FAILURE：失败<br>MONITOR_INDICATOR_ALARM：监控指标告警</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -472,7 +472,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def ChannelType(self):
-        r"""通知渠道类型。取值：0 未指定，1 Email，2 Webhook，3 Teams，4 Slack
+        r"""<p>通知渠道类型。取值：0 未指定，1 Email，2 Webhook，3 Teams，4 Slack</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3296,10 +3296,10 @@ class GetWorkflowRsp(AbstractModel):
         :param _Trigger: <p>工作流调度配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Trigger: list of WorkflowTriggerConfiguration
-        :param _ParamList: <p>工作流参数列表</p>
+        :param _ParamList: <p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamList: list of ParamInfo
-        :param _LabelList: <p>标签列表</p>
+        :param _LabelList: <p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelList: list of LabelBrief
         :param _Alarm: <p>工作流告警配置</p>
@@ -3379,7 +3379,7 @@ class GetWorkflowRsp(AbstractModel):
 
     @property
     def ParamList(self):
-        r"""<p>工作流参数列表</p>
+        r"""<p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamInfo
         """
@@ -3391,7 +3391,7 @@ class GetWorkflowRsp(AbstractModel):
 
     @property
     def LabelList(self):
-        r"""<p>标签列表</p>
+        r"""<p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LabelBrief
         """
@@ -3831,13 +3831,13 @@ class GetWorkflowTaskRunRsp(AbstractModel):
         :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskTypeName: 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
+        :param _TaskTypeName: <p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeName: str
         :param _TaskVersionId: <p>任务版本ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskVersionId: str
-        :param _TriggerType: <p>触发类型 (参考SchedulerTriggerType枚举)</p>
+        :param _TriggerType: <p>触发类型</p><p>枚举值：</p><ul><li>Scheduler： 调度触发</li><li>Manual： 手动触发</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: str
         :param _ResourceGroupId: <p>所属资源组ID</p>
@@ -4054,7 +4054,7 @@ class GetWorkflowTaskRunRsp(AbstractModel):
 
     @property
     def TaskTypeName(self):
-        r"""任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
+        r"""<p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4078,7 +4078,7 @@ class GetWorkflowTaskRunRsp(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""<p>触发类型 (参考SchedulerTriggerType枚举)</p>
+        r"""<p>触发类型</p><p>枚举值：</p><ul><li>Scheduler： 调度触发</li><li>Manual： 手动触发</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6418,7 +6418,7 @@ class ListWorkflowRunsRequest(AbstractModel):
         :type CreateStartTime: str
         :param _CreateEndTime: <p>运行创建时间上界，范围匹配（CreateTime &lt;= 本值），单位：毫秒时间戳。<br>非必填，单值，对应出参 WorkflowRun.CreateTime</p>
         :type CreateEndTime: str
-        :param _RunStates: <p>运行状态，精确匹配。非必填，多选（多个值之间为 OR 关系）。</p><p>可填 SUCCESS / FAILED 等，具体参考本接口出参 WorkflowRun.RunState 字段返回值。</p>
+        :param _RunStates: <p>运行状态，精确匹配。非必填，多选（多个值之间为 OR 关系）。运行状态。CREATE(&quot;初始化&quot;), QUEUED(&quot;等待中&quot;), PENDING(&quot;准备中&quot;), RUNNING(&quot;运行中&quot;), SKIPPED(&quot;跳过运行&quot;), SUCCESS(&quot;成功&quot;), FAILED(&quot;失败&quot;), TERMINATING(&quot;终止中&quot;), TERMINATED(&quot;终止&quot;), CANCELLED(&quot;被手动终止&quot;)等</p>
         :type RunStates: list of str
         :param _ErrorCodeStrings: <p>错误码，精确匹配。非必填，多选（多个值之间为 OR 关系）</p>
         :type ErrorCodeStrings: list of str
@@ -6524,7 +6524,7 @@ class ListWorkflowRunsRequest(AbstractModel):
 
     @property
     def RunStates(self):
-        r"""<p>运行状态，精确匹配。非必填，多选（多个值之间为 OR 关系）。</p><p>可填 SUCCESS / FAILED 等，具体参考本接口出参 WorkflowRun.RunState 字段返回值。</p>
+        r"""<p>运行状态，精确匹配。非必填，多选（多个值之间为 OR 关系）。运行状态。CREATE(&quot;初始化&quot;), QUEUED(&quot;等待中&quot;), PENDING(&quot;准备中&quot;), RUNNING(&quot;运行中&quot;), SKIPPED(&quot;跳过运行&quot;), SUCCESS(&quot;成功&quot;), FAILED(&quot;失败&quot;), TERMINATING(&quot;终止中&quot;), TERMINATED(&quot;终止&quot;), CANCELLED(&quot;被手动终止&quot;)等</p>
         :rtype: list of str
         """
         return self._RunStates
@@ -9086,7 +9086,7 @@ class TaskType(AbstractModel):
 
     | 属性键       | 属性名称          | 描述                               | 是否必需                |
     | ------------ | ----------------- | ---------------------------------- | ----------------------- |
-    | Source       | 来源              | 可填2或5,来源 2:GIT, 5:工作空间    | 是                      |
+    | Source       | 来源              | 只支持填2或5,来源 2:GIT, 5:工作空间    | 是                      |
     | NotebookPath | Notebook 相对路径 | Source为5时，需从（ListFiles）获取 | Source 为 2、5 时，必填 |
 
     ### 2. DATA_INTEGRATION 任务类型
@@ -9113,7 +9113,7 @@ class TaskType(AbstractModel):
 
     | 属性键          | 属性名称    | 描述                                          | 是否必需             |
     | --------------- | ----------- | --------------------------------------------- | -------------------- |
-    | Source          | 来源        | 可填2或5,来源 2:GIT, 5:工作空间               | 是                   |
+    | Source          | 来源        | 只支持填2或5,来源 2:GIT, 5:工作空间               | 是                   |
     | SqlPath         | SQL脚本路径 | SQL脚本路径                                   | Source 为 2 时，必填 |
     | CodeFileName    | 文件名称    | Source为5时，需从（ListReleasedQueries）接口获取 | 否                |
     | CodeFileId      | 文件ID      | Source为5时，需从（ListReleasedQueries）接口获取 | Source 为 5 时，必填 |
@@ -9125,7 +9125,7 @@ class TaskType(AbstractModel):
 
     | 属性键     | 属性名称       | 描述                                   | 是否必需 |
     | ---------- | -------------- | -------------------------------------- | -------- |
-    | Source     | 来源           | 可填2或5,来源 2:GIT, 5:工作空间        | 是       |
+    | Source     | 来源           | 只支持填2或5,来源 2:GIT, 5:工作空间        | 是       |
     | SourcePath | Python脚本路径 | Source为5时，需从（ListFiles）接口获取 | 是       |
 
     ### 6. DATA_QUALITY（质量监控）任务类型
@@ -9208,7 +9208,7 @@ class TaskType(AbstractModel):
         :param _Notebook: <p>Notebook 类型扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Notebook: :class:`tencentcloud.databuddy.v20260715.models.TaskTypeNotebookExt`
-        :param _TaskTypePropertyList: <p>任务扩展属性列表，具体填写参考 ListWorkflowTaskTypeProperties 接口</p>
+        :param _TaskTypePropertyList: <p>任务类型属性列表，不同任务类型所需的 PropertyKey 不同，具体取值请参考 ListWorkflowTaskTypeProperties 接口返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypePropertyList: list of TaskTypeProperty
         :param _RuntimePropertyList: <p>运行时属性列表</p>
@@ -9246,7 +9246,7 @@ class TaskType(AbstractModel):
 
     @property
     def TaskTypePropertyList(self):
-        r"""<p>任务扩展属性列表，具体填写参考 ListWorkflowTaskTypeProperties 接口</p>
+        r"""<p>任务类型属性列表，不同任务类型所需的 PropertyKey 不同，具体取值请参考 ListWorkflowTaskTypeProperties 接口返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskTypeProperty
         """
@@ -9303,18 +9303,16 @@ class TaskTypeNotebookExt(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Source: 脚本来源。取值：SCRIPT_SOURCE_LOCAL（本地）/ SCRIPT_SOURCE_GIT（Git 仓库）/
-SCRIPT_SOURCE_CFS（CFS 文件系统）/ SCRIPT_SOURCE_COS（COS 对象存储）/
-SCRIPT_SOURCE_WORKSPACE（工作空间）
+        :param _Source: <p>脚本来源。取值：SCRIPT_SOURCE_LOCAL（本地）/ SCRIPT_SOURCE_GIT（Git 仓库）/<br>SCRIPT_SOURCE_CFS（CFS 文件系统）/ SCRIPT_SOURCE_COS（COS 对象存储）/<br>SCRIPT_SOURCE_WORKSPACE（工作空间）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Source: str
-        :param _DisplayPath: 前端显示使用，对执行平台无意义
+        :param _DisplayPath: <p>前端显示使用，对执行平台无意义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisplayPath: str
-        :param _NotebookPath: Notebook 相对路径
+        :param _NotebookPath: <p>Notebook 相对路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotebookPath: str
-        :param _NotebookAbsolutePath: Notebook 绝对路径
+        :param _NotebookAbsolutePath: <p>Notebook 绝对路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotebookAbsolutePath: str
         """
@@ -9325,9 +9323,7 @@ SCRIPT_SOURCE_WORKSPACE（工作空间）
 
     @property
     def Source(self):
-        r"""脚本来源。取值：SCRIPT_SOURCE_LOCAL（本地）/ SCRIPT_SOURCE_GIT（Git 仓库）/
-SCRIPT_SOURCE_CFS（CFS 文件系统）/ SCRIPT_SOURCE_COS（COS 对象存储）/
-SCRIPT_SOURCE_WORKSPACE（工作空间）
+        r"""<p>脚本来源。取值：SCRIPT_SOURCE_LOCAL（本地）/ SCRIPT_SOURCE_GIT（Git 仓库）/<br>SCRIPT_SOURCE_CFS（CFS 文件系统）/ SCRIPT_SOURCE_COS（COS 对象存储）/<br>SCRIPT_SOURCE_WORKSPACE（工作空间）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9339,7 +9335,7 @@ SCRIPT_SOURCE_WORKSPACE（工作空间）
 
     @property
     def DisplayPath(self):
-        r"""前端显示使用，对执行平台无意义
+        r"""<p>前端显示使用，对执行平台无意义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9351,7 +9347,7 @@ SCRIPT_SOURCE_WORKSPACE（工作空间）
 
     @property
     def NotebookPath(self):
-        r"""Notebook 相对路径
+        r"""<p>Notebook 相对路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9363,7 +9359,7 @@ SCRIPT_SOURCE_WORKSPACE（工作空间）
 
     @property
     def NotebookAbsolutePath(self):
-        r"""Notebook 绝对路径
+        r"""<p>Notebook 绝对路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10325,10 +10321,10 @@ class Workflow(AbstractModel):
         :param _Trigger: <p>工作流调度配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Trigger: list of WorkflowTriggerConfiguration
-        :param _ParamList: <p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;<!--'，最长128个字符--></p>
+        :param _ParamList: <p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt; 最长128个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamList: list of ParamInfo
-        :param _LabelList: <p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;<!--'，最长128个字符--></p>
+        :param _LabelList: <p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;'，最长128个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelList: list of LabelBrief
         :param _Alarm: <p>工作流告警配置</p>
@@ -10349,7 +10345,7 @@ class Workflow(AbstractModel):
         :param _BundleInfo: <p>Bundle信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleInfo: str
-        :param _GitConfigId: <p>GIT配置ID，对应GetWorkspaceConfig接口中的ConfigKey</p>
+        :param _GitConfigId: <p>GIT配置ID，对应GetWorkspaceConfig接口中的ConfigKey</p>    -
 注意：此字段可能返回 null，表示取不到有效值。
         :type GitConfigId: str
         :param _GitBranch: <p>Git分支信息</p>
@@ -10408,7 +10404,7 @@ class Workflow(AbstractModel):
 
     @property
     def ParamList(self):
-        r"""<p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;<!--'，最长128个字符--></p>
+        r"""<p>工作流参数列表 参数名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt; 最长128个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamInfo
         """
@@ -10420,7 +10416,7 @@ class Workflow(AbstractModel):
 
     @property
     def LabelList(self):
-        r"""<p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;<!--'，最长128个字符--></p>
+        r"""<p>标签 标签名必填且只能包含数字、大小写字母、空格、.$@#!%^&amp;*()-_+=&gt;'，最长128个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LabelBrief
         """
@@ -10504,7 +10500,7 @@ class Workflow(AbstractModel):
 
     @property
     def GitConfigId(self):
-        r"""<p>GIT配置ID，对应GetWorkspaceConfig接口中的ConfigKey</p>
+        r"""<p>GIT配置ID，对应GetWorkspaceConfig接口中的ConfigKey</p>    -
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11969,7 +11965,7 @@ class WorkflowRunBrief(AbstractModel):
         :param _RunStartTime: 运行开始时间，单位：毫秒时间戳
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunStartTime: str
-        :param _RunState: 运行状态
+        :param _RunState: <p>运行状态。CREATE(&quot;初始化&quot;),     QUEUED(&quot;等待中&quot;),     PENDING(&quot;准备中&quot;),     RUNNING(&quot;运行中&quot;),     SKIPPED(&quot;跳过运行&quot;),     SUCCESS(&quot;成功&quot;),     FAILED(&quot;失败&quot;),     TERMINATING(&quot;终止中&quot;),     TERMINATED(&quot;终止&quot;),     CANCELLED(&quot;被手动终止&quot;)等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunState: str
         :param _ErrorCodeString: 运行错误码
@@ -12007,7 +12003,7 @@ class WorkflowRunBrief(AbstractModel):
 
     @property
     def RunState(self):
-        r"""运行状态
+        r"""<p>运行状态。CREATE(&quot;初始化&quot;),     QUEUED(&quot;等待中&quot;),     PENDING(&quot;准备中&quot;),     RUNNING(&quot;运行中&quot;),     SKIPPED(&quot;跳过运行&quot;),     SUCCESS(&quot;成功&quot;),     FAILED(&quot;失败&quot;),     TERMINATING(&quot;终止中&quot;),     TERMINATED(&quot;终止&quot;),     CANCELLED(&quot;被手动终止&quot;)等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12437,7 +12433,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
         :param _TaskRetryStrategy: <p>任务重试策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskRetryStrategy: :class:`tencentcloud.databuddy.v20260715.models.TaskRetryStrategy`
-        :param _DependOnRunCondition: <p>任依赖运行条件</p><ul><li>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功</li><li>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功</li><li>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中</li><li>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败</li><li>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败</li><li>ALL_FAILED: 全部失败：所有上游依赖任务都失败</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li><li>ADVANCED:运行条件为高级模式时配置</li></ul>
+        :param _DependOnRunCondition: <p>任务依赖运行条件</p><p>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功<br>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功<br>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中<br>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败<br>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败<br>ALL_FAILED: 全部失败：所有上游依赖任务都失败<br>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行<br>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游<br>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行<br>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行<br>ADVANCED:运行条件为高级模式时配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependOnRunCondition: str
         :param _AdvancedDependencyConfig: <p>高级依赖配置</p>
@@ -12583,7 +12579,7 @@ class WorkflowTaskNodeBrief(AbstractModel):
 
     @property
     def DependOnRunCondition(self):
-        r"""<p>任依赖运行条件</p><ul><li>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功</li><li>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功</li><li>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中</li><li>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败</li><li>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败</li><li>ALL_FAILED: 全部失败：所有上游依赖任务都失败</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li><li>ADVANCED:运行条件为高级模式时配置</li></ul>
+        r"""<p>任务依赖运行条件</p><p>ALL_SUCCESS: 全部成功：所有上游依赖任务均已执行并成功<br>ONE_SUCCESS: 至少一个成功：至少有一个上游依赖任务成功<br>NONE_FAILED: 目前没有失败：没有依赖任务失败，并且至少有一个依赖任务在运行中<br>ALL_DONE: 全部完成：所有上游依赖任务均已执行并完成（无论成功或失败<br>ONE_FAILED: 至少一个失败：至少有一个上游依赖任务失败<br>ALL_FAILED: 全部失败：所有上游依赖任务都失败<br>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行<br>ALL_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游<br>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行<br>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行<br>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行<br>ADVANCED:运行条件为高级模式时配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12666,7 +12662,7 @@ class WorkflowTaskRun(AbstractModel):
         :param _WorkflowTaskRunId: <p>任务运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowTaskRunId: str
-        :param _RunState: <p>运行状态。取值参考工作流任务运行状态枚举，如 Pending / Running / Succeeded / Failed / Killed</p>
+        :param _RunState: <p>运行状态。如CREATE("初始化"), QUEUED("等待中"), PENDING("准备中"), RUNNING("运行中"), SKIPPED("跳过运行"), SUCCESS("成功"), FAILED("失败"), TERMINATING("终止中"), TERMINATED("终止"), CANCELLED("被手动终止")等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunState: str
         :param _WorkspaceId: <p>工作空间ID</p>
@@ -12681,13 +12677,13 @@ class WorkflowTaskRun(AbstractModel):
         :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskTypeName: 任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
+        :param _TaskTypeName: <p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeName: str
         :param _TaskVersionId: <p>任务版本ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskVersionId: str
-        :param _TriggerType: <p>触发类型 (参考SchedulerTriggerType枚举)</p>
+        :param _TriggerType: <p>触发类型</p><p>枚举值：</p><ul><li>Manual： 手动触发</li><li>Scheduler： 调度触发</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: str
         :param _ResourceGroupId: <p>所属资源组ID</p>
@@ -12848,7 +12844,7 @@ class WorkflowTaskRun(AbstractModel):
 
     @property
     def RunState(self):
-        r"""<p>运行状态。取值参考工作流任务运行状态枚举，如 Pending / Running / Succeeded / Failed / Killed</p>
+        r"""<p>运行状态。如CREATE("初始化"), QUEUED("等待中"), PENDING("准备中"), RUNNING("运行中"), SKIPPED("跳过运行"), SUCCESS("成功"), FAILED("失败"), TERMINATING("终止中"), TERMINATED("终止"), CANCELLED("被手动终止")等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12908,7 +12904,7 @@ class WorkflowTaskRun(AbstractModel):
 
     @property
     def TaskTypeName(self):
-        r"""任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述
+        r"""<p>任务类型名称，请参考数据结构TaskType中TaskTypeName字段描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -12932,7 +12928,7 @@ class WorkflowTaskRun(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""<p>触发类型 (参考SchedulerTriggerType枚举)</p>
+        r"""<p>触发类型</p><p>枚举值：</p><ul><li>Manual： 手动触发</li><li>Scheduler： 调度触发</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13370,7 +13366,7 @@ class WorkflowTriggerAdvancedConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskRetryMode: 任务重试模式
+        :param _TaskRetryMode: <p>&lt;p&gt;该工作流下的所有任务重试模式，仅当TriggerMode为CONTINUE_RUN时有效。</p><p>枚举值：</p><ul><li>onFailure： 失败时自动重试</li><li>never： 从不重试</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskRetryMode: str
         """
@@ -13378,7 +13374,7 @@ class WorkflowTriggerAdvancedConfiguration(AbstractModel):
 
     @property
     def TaskRetryMode(self):
-        r"""任务重试模式
+        r"""<p>&lt;p&gt;该工作流下的所有任务重试模式，仅当TriggerMode为CONTINUE_RUN时有效。</p><p>枚举值：</p><ul><li>onFailure： 失败时自动重试</li><li>never： 从不重试</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

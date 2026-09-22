@@ -315,6 +315,42 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAuditRule(
+            self,
+            request: models.CreateAuditRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuditRuleResponse:
+        """
+        创建审核规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuditRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuditRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAuditTemplate(
+            self,
+            request: models.CreateAuditTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuditTemplateResponse:
+        """
+        创建单个审核模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuditTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuditTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCaster(
             self,
             request: models.CreateCasterRequest,
@@ -670,6 +706,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLiveSmartEraseTemplate(
+            self,
+            request: models.CreateLiveSmartEraseTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateLiveSmartEraseTemplateResponse:
+        """
+        创建直播智能擦除模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLiveSmartEraseTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLiveSmartEraseTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLiveSnapshotRule(
             self,
             request: models.CreateLiveSnapshotRuleRequest,
@@ -980,6 +1034,42 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DeleteAuditKeywords"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAuditKeywordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAuditRule(
+            self,
+            request: models.DeleteAuditRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditRuleResponse:
+        """
+        删除审核规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAuditTemplate(
+            self,
+            request: models.DeleteAuditTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditTemplateResponse:
+        """
+        删除审核模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1653,6 +1743,60 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DescribeAuditKeywords"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAuditKeywordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditRules(
+            self,
+            request: models.DescribeAuditRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditRulesResponse:
+        """
+        获取审核规则列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditTemplate(
+            self,
+            request: models.DescribeAuditTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditTemplateResponse:
+        """
+        获取单个审核模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditTemplates(
+            self,
+            request: models.DescribeAuditTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditTemplatesResponse:
+        """
+        返回当前用户的审核模板列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3675,6 +3819,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "ModifyAuditKeywordLib"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAuditKeywordLibResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAuditTemplate(
+            self,
+            request: models.ModifyAuditTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAuditTemplateResponse:
+        """
+        修改审核模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAuditTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAuditTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

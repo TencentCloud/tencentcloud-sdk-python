@@ -1393,6 +1393,10 @@ class CreateAgentInstanceRequest(AbstractModel):
         :type Description: str
         :param _UsePlatformAccount: <p>企业版是否使用平台大账号模式发货</p>
         :type UsePlatformAccount: bool
+        :param _DeploymentFree: <p>是否是免部署实例</p>
+        :type DeploymentFree: bool
+        :param _EnableMemory: <p>是否支持记忆</p>
+        :type EnableMemory: bool
         """
         self._AgentId = None
         self._AgentVersion = None
@@ -1405,6 +1409,8 @@ class CreateAgentInstanceRequest(AbstractModel):
         self._SoulId = None
         self._Description = None
         self._UsePlatformAccount = None
+        self._DeploymentFree = None
+        self._EnableMemory = None
 
     @property
     def AgentId(self):
@@ -1527,6 +1533,28 @@ class CreateAgentInstanceRequest(AbstractModel):
     def UsePlatformAccount(self, UsePlatformAccount):
         self._UsePlatformAccount = UsePlatformAccount
 
+    @property
+    def DeploymentFree(self):
+        r"""<p>是否是免部署实例</p>
+        :rtype: bool
+        """
+        return self._DeploymentFree
+
+    @DeploymentFree.setter
+    def DeploymentFree(self, DeploymentFree):
+        self._DeploymentFree = DeploymentFree
+
+    @property
+    def EnableMemory(self):
+        r"""<p>是否支持记忆</p>
+        :rtype: bool
+        """
+        return self._EnableMemory
+
+    @EnableMemory.setter
+    def EnableMemory(self, EnableMemory):
+        self._EnableMemory = EnableMemory
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -1550,6 +1578,8 @@ class CreateAgentInstanceRequest(AbstractModel):
         self._SoulId = params.get("SoulId")
         self._Description = params.get("Description")
         self._UsePlatformAccount = params.get("UsePlatformAccount")
+        self._DeploymentFree = params.get("DeploymentFree")
+        self._EnableMemory = params.get("EnableMemory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

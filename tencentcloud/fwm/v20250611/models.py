@@ -1349,7 +1349,7 @@ class CommonFilter(AbstractModel):
         :param _Values: 筛选值列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
-        :param _OperatorType: 操作类型：1-精确匹配 9-模糊匹配
+        :param _OperatorType: 操作类型：1=精确匹配，7=in，9=模糊匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorType: int
         """
@@ -1383,7 +1383,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def OperatorType(self):
-        r"""操作类型：1-精确匹配 9-模糊匹配
+        r"""操作类型：1=精确匹配，7=in，9=模糊匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6105,15 +6105,15 @@ class MemberInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: <p>成员AppId</p>
+        :param _AppId: 成员 AppId
         :type AppId: str
-        :param _Uin: <p>成员Uin</p>
+        :param _Uin: 成员 Uin
         :type Uin: str
-        :param _Nickname: <p>成员昵称</p>
+        :param _Nickname: 成员昵称
         :type Nickname: str
-        :param _MemberId: <p>成员Id</p>
+        :param _MemberId: 成员 ID（个人场景为空）
         :type MemberId: str
-        :param _NodeName: <p>所属部门</p>
+        :param _NodeName: 所属部门
         :type NodeName: str
         """
         self._AppId = None
@@ -6124,7 +6124,7 @@ class MemberInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""<p>成员AppId</p>
+        r"""成员 AppId
         :rtype: str
         """
         return self._AppId
@@ -6135,7 +6135,7 @@ class MemberInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""<p>成员Uin</p>
+        r"""成员 Uin
         :rtype: str
         """
         return self._Uin
@@ -6146,7 +6146,7 @@ class MemberInfo(AbstractModel):
 
     @property
     def Nickname(self):
-        r"""<p>成员昵称</p>
+        r"""成员昵称
         :rtype: str
         """
         return self._Nickname
@@ -6157,7 +6157,7 @@ class MemberInfo(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""<p>成员Id</p>
+        r"""成员 ID（个人场景为空）
         :rtype: str
         """
         return self._MemberId
@@ -6168,7 +6168,7 @@ class MemberInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""<p>所属部门</p>
+        r"""所属部门
         :rtype: str
         """
         return self._NodeName

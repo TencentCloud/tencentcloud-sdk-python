@@ -1779,6 +1779,259 @@ class AuditLabelGroupInfo(AbstractModel):
         
 
 
+class AuditTemplate(AbstractModel):
+    r"""审核模板。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板 ID 。<br>CreateAuditTemplate 时，此参数不传或传 0 。</p><p>ModifyAuditTemplate 时，此参数必传。</p>
+        :type TemplateId: int
+        :param _TemplateName: <p>模板名称。<br>CreateAuditTemplate 必填。</p>
+        :type TemplateName: str
+        :param _Description: <p>描述信息。<br>CreateAuditTemplate 必填。</p>
+        :type Description: str
+        :param _CosBucket: <p>Cos Bucket名称。<br>CreateAuditTemplate 必填。</p>
+        :type CosBucket: str
+        :param _CosRegion: <p>Cos 地域。<br>CreateAuditTemplate 必填。</p>
+        :type CosRegion: str
+        :param _CosFilePath: <p>Cos 完整文件名（包括前缀）。CreateAuditTemplate 必填。</p>
+        :type CosFilePath: str
+        :param _AuditImage: <p>是否启用图片审核。<br>CreateAuditTemplate 必填。</p>
+        :type AuditImage: bool
+        :param _AuditAudio: <p>是否启用音频审核。<br>CreateAuditTemplate 必填。</p>
+        :type AuditAudio: bool
+        :param _SnapshotInterval: <p>截图间隔，1-60秒。<br>CreateAuditTemplate 必填。</p>
+        :type SnapshotInterval: int
+        :param _AudioInterval: <p>音频间隔，1-60秒。<br>CreateAuditTemplate 必填。</p>
+        :type AudioInterval: int
+        :param _EnableFailoverCos: <p>是否开启 Cos 容灾。<br>CreateAuditTemplate 必填。</p>
+        :type EnableFailoverCos: bool
+        :param _FailoverCosBucket: <p>容灾 Cos Bucket 。<br>CreateAuditTemplate 必填。</p>
+        :type FailoverCosBucket: str
+        :param _FailoverCosRegion: <p>容灾 Cos 地域。<br>CreateAuditTemplate 必填。</p>
+        :type FailoverCosRegion: str
+        :param _SceneInfos: <p>场景策略配置信息。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SceneInfos: list of CMSSceneDetail
+        :param _AuditText: <p>1：表示启用音频文本识别。0 ：不启用。默认 0 。</p>
+        :type AuditText: int
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._CosBucket = None
+        self._CosRegion = None
+        self._CosFilePath = None
+        self._AuditImage = None
+        self._AuditAudio = None
+        self._SnapshotInterval = None
+        self._AudioInterval = None
+        self._EnableFailoverCos = None
+        self._FailoverCosBucket = None
+        self._FailoverCosRegion = None
+        self._SceneInfos = None
+        self._AuditText = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板 ID 。<br>CreateAuditTemplate 时，此参数不传或传 0 。</p><p>ModifyAuditTemplate 时，此参数必传。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        r"""<p>模板名称。<br>CreateAuditTemplate 必填。</p>
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        r"""<p>描述信息。<br>CreateAuditTemplate 必填。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CosBucket(self):
+        r"""<p>Cos Bucket名称。<br>CreateAuditTemplate 必填。</p>
+        :rtype: str
+        """
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def CosRegion(self):
+        r"""<p>Cos 地域。<br>CreateAuditTemplate 必填。</p>
+        :rtype: str
+        """
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def CosFilePath(self):
+        r"""<p>Cos 完整文件名（包括前缀）。CreateAuditTemplate 必填。</p>
+        :rtype: str
+        """
+        return self._CosFilePath
+
+    @CosFilePath.setter
+    def CosFilePath(self, CosFilePath):
+        self._CosFilePath = CosFilePath
+
+    @property
+    def AuditImage(self):
+        r"""<p>是否启用图片审核。<br>CreateAuditTemplate 必填。</p>
+        :rtype: bool
+        """
+        return self._AuditImage
+
+    @AuditImage.setter
+    def AuditImage(self, AuditImage):
+        self._AuditImage = AuditImage
+
+    @property
+    def AuditAudio(self):
+        r"""<p>是否启用音频审核。<br>CreateAuditTemplate 必填。</p>
+        :rtype: bool
+        """
+        return self._AuditAudio
+
+    @AuditAudio.setter
+    def AuditAudio(self, AuditAudio):
+        self._AuditAudio = AuditAudio
+
+    @property
+    def SnapshotInterval(self):
+        r"""<p>截图间隔，1-60秒。<br>CreateAuditTemplate 必填。</p>
+        :rtype: int
+        """
+        return self._SnapshotInterval
+
+    @SnapshotInterval.setter
+    def SnapshotInterval(self, SnapshotInterval):
+        self._SnapshotInterval = SnapshotInterval
+
+    @property
+    def AudioInterval(self):
+        r"""<p>音频间隔，1-60秒。<br>CreateAuditTemplate 必填。</p>
+        :rtype: int
+        """
+        return self._AudioInterval
+
+    @AudioInterval.setter
+    def AudioInterval(self, AudioInterval):
+        self._AudioInterval = AudioInterval
+
+    @property
+    def EnableFailoverCos(self):
+        r"""<p>是否开启 Cos 容灾。<br>CreateAuditTemplate 必填。</p>
+        :rtype: bool
+        """
+        return self._EnableFailoverCos
+
+    @EnableFailoverCos.setter
+    def EnableFailoverCos(self, EnableFailoverCos):
+        self._EnableFailoverCos = EnableFailoverCos
+
+    @property
+    def FailoverCosBucket(self):
+        r"""<p>容灾 Cos Bucket 。<br>CreateAuditTemplate 必填。</p>
+        :rtype: str
+        """
+        return self._FailoverCosBucket
+
+    @FailoverCosBucket.setter
+    def FailoverCosBucket(self, FailoverCosBucket):
+        self._FailoverCosBucket = FailoverCosBucket
+
+    @property
+    def FailoverCosRegion(self):
+        r"""<p>容灾 Cos 地域。<br>CreateAuditTemplate 必填。</p>
+        :rtype: str
+        """
+        return self._FailoverCosRegion
+
+    @FailoverCosRegion.setter
+    def FailoverCosRegion(self, FailoverCosRegion):
+        self._FailoverCosRegion = FailoverCosRegion
+
+    @property
+    def SceneInfos(self):
+        r"""<p>场景策略配置信息。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CMSSceneDetail
+        """
+        return self._SceneInfos
+
+    @SceneInfos.setter
+    def SceneInfos(self, SceneInfos):
+        self._SceneInfos = SceneInfos
+
+    @property
+    def AuditText(self):
+        r"""<p>1：表示启用音频文本识别。0 ：不启用。默认 0 。</p>
+        :rtype: int
+        """
+        return self._AuditText
+
+    @AuditText.setter
+    def AuditText(self, AuditText):
+        self._AuditText = AuditText
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._CosBucket = params.get("CosBucket")
+        self._CosRegion = params.get("CosRegion")
+        self._CosFilePath = params.get("CosFilePath")
+        self._AuditImage = params.get("AuditImage")
+        self._AuditAudio = params.get("AuditAudio")
+        self._SnapshotInterval = params.get("SnapshotInterval")
+        self._AudioInterval = params.get("AudioInterval")
+        self._EnableFailoverCos = params.get("EnableFailoverCos")
+        self._FailoverCosBucket = params.get("FailoverCosBucket")
+        self._FailoverCosRegion = params.get("FailoverCosRegion")
+        if params.get("SceneInfos") is not None:
+            self._SceneInfos = []
+            for item in params.get("SceneInfos"):
+                obj = CMSSceneDetail()
+                obj._deserialize(item)
+                self._SceneInfos.append(obj)
+        self._AuditText = params.get("AuditText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthenticateDomainOwnerRequest(AbstractModel):
     r"""AuthenticateDomainOwner请求参数结构体
 
@@ -3410,6 +3663,151 @@ class BillDataInfo(AbstractModel):
         self._Bandwidth = params.get("Bandwidth")
         self._Flux = params.get("Flux")
         self._PeakTime = params.get("PeakTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CMSBizInfo(AbstractModel):
+    r"""天御内容安全 策略基本信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyType: <p>策略类型，可选值：<br>Text：文本ShortAudio：音频<br>Image:<br>图片。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyType: str
+        :param _BizType: <p>策略标识（自动生成）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizType: str
+        :param _Status: <p>策略开通状态。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: bool
+        :param _StrategyConfig: <p>策略配置。<br>json字符串。</p><p>具体取值方式如下：举例：色情：&quot;{"ability":{"asr_text":true,"audio":true},"asr_text_labels":{"porn":["OVR","Pornography","PornographyObscene"]},"audio_labels":{},"user_text_libs":["320fb40e-9305-4b00-a191-945c219b5cc0"]}&quot;    可选项： {     value: &#39;OVR&#39;,     text: t(&#39;低俗语音识别&#39;),     msg: t(&#39;示例：呻吟、娇喘、娇喘等性暗示相关的语音&#39;),   },   {     value: &#39;Pornography&#39;,     text: t(&#39;严重色情&#39;),     msg: t(&#39;性行为、性器官等相关描述&#39;),   },   {     value: &#39;PornographyObscene&#39;,     text: t(&#39;色情低俗&#39;),     msg: t(&#39;低俗行为、性暗示等相关描述&#39;),   }</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StrategyConfig: str
+        """
+        self._StrategyType = None
+        self._BizType = None
+        self._Status = None
+        self._StrategyConfig = None
+
+    @property
+    def StrategyType(self):
+        r"""<p>策略类型，可选值：<br>Text：文本ShortAudio：音频<br>Image:<br>图片。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def BizType(self):
+        r"""<p>策略标识（自动生成）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+    @property
+    def Status(self):
+        r"""<p>策略开通状态。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StrategyConfig(self):
+        r"""<p>策略配置。<br>json字符串。</p><p>具体取值方式如下：举例：色情：&quot;{"ability":{"asr_text":true,"audio":true},"asr_text_labels":{"porn":["OVR","Pornography","PornographyObscene"]},"audio_labels":{},"user_text_libs":["320fb40e-9305-4b00-a191-945c219b5cc0"]}&quot;    可选项： {     value: &#39;OVR&#39;,     text: t(&#39;低俗语音识别&#39;),     msg: t(&#39;示例：呻吟、娇喘、娇喘等性暗示相关的语音&#39;),   },   {     value: &#39;Pornography&#39;,     text: t(&#39;严重色情&#39;),     msg: t(&#39;性行为、性器官等相关描述&#39;),   },   {     value: &#39;PornographyObscene&#39;,     text: t(&#39;色情低俗&#39;),     msg: t(&#39;低俗行为、性暗示等相关描述&#39;),   }</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StrategyConfig
+
+    @StrategyConfig.setter
+    def StrategyConfig(self, StrategyConfig):
+        self._StrategyConfig = StrategyConfig
+
+
+    def _deserialize(self, params):
+        self._StrategyType = params.get("StrategyType")
+        self._BizType = params.get("BizType")
+        self._Status = params.get("Status")
+        self._StrategyConfig = params.get("StrategyConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CMSSceneDetail(AbstractModel):
+    r"""直播审核（内容安全）场景明细。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BizInfos: <p>策略信息</p>
+        :type BizInfos: list of CMSBizInfo
+        :param _SceneID: <p>SceneID 。</p>
+        :type SceneID: str
+        """
+        self._BizInfos = None
+        self._SceneID = None
+
+    @property
+    def BizInfos(self):
+        r"""<p>策略信息</p>
+        :rtype: list of CMSBizInfo
+        """
+        return self._BizInfos
+
+    @BizInfos.setter
+    def BizInfos(self, BizInfos):
+        self._BizInfos = BizInfos
+
+    @property
+    def SceneID(self):
+        r"""<p>SceneID 。</p>
+        :rtype: str
+        """
+        return self._SceneID
+
+    @SceneID.setter
+    def SceneID(self, SceneID):
+        self._SceneID = SceneID
+
+
+    def _deserialize(self, params):
+        if params.get("BizInfos") is not None:
+            self._BizInfos = []
+            for item in params.get("BizInfos"):
+                obj = CMSBizInfo()
+                obj._deserialize(item)
+                self._BizInfos.append(obj)
+        self._SceneID = params.get("SceneID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7773,6 +8171,196 @@ class CreateAuditKeywordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAuditRuleRequest(AbstractModel):
+    r"""CreateAuditRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainName: <p>推流域名。</p>
+        :type DomainName: str
+        :param _AppName: <p>推流路径，与推流和播放地址中的AppName 保持一致。</p>
+        :type AppName: str
+        :param _TemplateId: <p>审核模板 ID。</p>
+        :type TemplateId: int
+        :param _StreamName: <p>流名称。 不传默认为空。</p>
+        :type StreamName: str
+        """
+        self._DomainName = None
+        self._AppName = None
+        self._TemplateId = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        r"""<p>推流域名。</p>
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        r"""<p>推流路径，与推流和播放地址中的AppName 保持一致。</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def TemplateId(self):
+        r"""<p>审核模板 ID。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def StreamName(self):
+        r"""<p>流名称。 不传默认为空。</p>
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+
+    def _deserialize(self, params):
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._TemplateId = params.get("TemplateId")
+        self._StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditRuleResponse(AbstractModel):
+    r"""CreateAuditRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAuditTemplateRequest(AbstractModel):
+    r"""CreateAuditTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditTemplate: <p>审核模板。</p>
+        :type AuditTemplate: :class:`tencentcloud.live.v20180801.models.AuditTemplate`
+        """
+        self._AuditTemplate = None
+
+    @property
+    def AuditTemplate(self):
+        r"""<p>审核模板。</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.AuditTemplate`
+        """
+        return self._AuditTemplate
+
+    @AuditTemplate.setter
+    def AuditTemplate(self, AuditTemplate):
+        self._AuditTemplate = AuditTemplate
+
+
+    def _deserialize(self, params):
+        if params.get("AuditTemplate") is not None:
+            self._AuditTemplate = AuditTemplate()
+            self._AuditTemplate._deserialize(params.get("AuditTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditTemplateResponse(AbstractModel):
+    r"""CreateAuditTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板 ID 。</p>
+        :type TemplateId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板 ID 。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCasterInputPushUrlRequest(AbstractModel):
     r"""CreateCasterInputPushUrl请求参数结构体
 
@@ -11203,6 +11791,235 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLiveSmartEraseTemplateRequest(AbstractModel):
+    r"""CreateLiveSmartEraseTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateName: <p>模板名称。长度上限：100字节。</p>
+        :type TemplateName: str
+        :param _Type: <p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+        :type Type: str
+        :param _Description: <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
+        :type Description: str
+        :param _AuditConfId: <p>关联的审核模板id, 表audio_conf 。</p>
+        :type AuditConfId: int
+        :param _ImageBizType: <p>天御图片审核策略BizType  Image 。</p>
+        :type ImageBizType: str
+        :param _AudioBizType: <p>天御音频审核策略BizType  ShortAudio 。</p>
+        :type AudioBizType: str
+        :param _AudioTextBizType: <p>天御音频文本审核策略BizType  ShortAudio 。</p>
+        :type AudioTextBizType: str
+        :param _DisplayMode: <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+        :type DisplayMode: int
+        :param _DisplayDelayTime: <p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+        :type DisplayDelayTime: int
+        :param _PrivacyProtection: <p>隐私保护可选的类型名，包括人脸模糊、车牌模糊</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>blur license plate： 车牌模糊</li><li>blur face|blur license plate： 复选</li></ul>
+        :type PrivacyProtection: str
+        :param _AudioErasureMode: <p>音频处理可选项：静音擦除、哔音擦除，默认选择静音擦除</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul><p>默认值：0</p>
+        :type AudioErasureMode: int
+        """
+        self._TemplateName = None
+        self._Type = None
+        self._Description = None
+        self._AuditConfId = None
+        self._ImageBizType = None
+        self._AudioBizType = None
+        self._AudioTextBizType = None
+        self._DisplayMode = None
+        self._DisplayDelayTime = None
+        self._PrivacyProtection = None
+        self._AudioErasureMode = None
+
+    @property
+    def TemplateName(self):
+        r"""<p>模板名称。长度上限：100字节。</p>
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Type(self):
+        r"""<p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        r"""<p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AuditConfId(self):
+        r"""<p>关联的审核模板id, 表audio_conf 。</p>
+        :rtype: int
+        """
+        return self._AuditConfId
+
+    @AuditConfId.setter
+    def AuditConfId(self, AuditConfId):
+        self._AuditConfId = AuditConfId
+
+    @property
+    def ImageBizType(self):
+        r"""<p>天御图片审核策略BizType  Image 。</p>
+        :rtype: str
+        """
+        return self._ImageBizType
+
+    @ImageBizType.setter
+    def ImageBizType(self, ImageBizType):
+        self._ImageBizType = ImageBizType
+
+    @property
+    def AudioBizType(self):
+        r"""<p>天御音频审核策略BizType  ShortAudio 。</p>
+        :rtype: str
+        """
+        return self._AudioBizType
+
+    @AudioBizType.setter
+    def AudioBizType(self, AudioBizType):
+        self._AudioBizType = AudioBizType
+
+    @property
+    def AudioTextBizType(self):
+        r"""<p>天御音频文本审核策略BizType  ShortAudio 。</p>
+        :rtype: str
+        """
+        return self._AudioTextBizType
+
+    @AudioTextBizType.setter
+    def AudioTextBizType(self, AudioTextBizType):
+        self._AudioTextBizType = AudioTextBizType
+
+    @property
+    def DisplayMode(self):
+        r"""<p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+        :rtype: int
+        """
+        return self._DisplayMode
+
+    @DisplayMode.setter
+    def DisplayMode(self, DisplayMode):
+        self._DisplayMode = DisplayMode
+
+    @property
+    def DisplayDelayTime(self):
+        r"""<p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+        :rtype: int
+        """
+        return self._DisplayDelayTime
+
+    @DisplayDelayTime.setter
+    def DisplayDelayTime(self, DisplayDelayTime):
+        self._DisplayDelayTime = DisplayDelayTime
+
+    @property
+    def PrivacyProtection(self):
+        r"""<p>隐私保护可选的类型名，包括人脸模糊、车牌模糊</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>blur license plate： 车牌模糊</li><li>blur face|blur license plate： 复选</li></ul>
+        :rtype: str
+        """
+        return self._PrivacyProtection
+
+    @PrivacyProtection.setter
+    def PrivacyProtection(self, PrivacyProtection):
+        self._PrivacyProtection = PrivacyProtection
+
+    @property
+    def AudioErasureMode(self):
+        r"""<p>音频处理可选项：静音擦除、哔音擦除，默认选择静音擦除</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AudioErasureMode
+
+    @AudioErasureMode.setter
+    def AudioErasureMode(self, AudioErasureMode):
+        self._AudioErasureMode = AudioErasureMode
+
+
+    def _deserialize(self, params):
+        self._TemplateName = params.get("TemplateName")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._AuditConfId = params.get("AuditConfId")
+        self._ImageBizType = params.get("ImageBizType")
+        self._AudioBizType = params.get("AudioBizType")
+        self._AudioTextBizType = params.get("AudioTextBizType")
+        self._DisplayMode = params.get("DisplayMode")
+        self._DisplayDelayTime = params.get("DisplayDelayTime")
+        self._PrivacyProtection = params.get("PrivacyProtection")
+        self._AudioErasureMode = params.get("AudioErasureMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveSmartEraseTemplateResponse(AbstractModel):
+    r"""CreateLiveSmartEraseTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板Id。</p>
+        :type TemplateId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板Id。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLiveSnapshotRuleRequest(AbstractModel):
     r"""CreateLiveSnapshotRule请求参数结构体
 
@@ -14321,6 +15138,164 @@ class DeleteAuditKeywordsResponse(AbstractModel):
                 obj = AuditKeywordDeleteDetail()
                 obj._deserialize(item)
                 self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAuditRuleRequest(AbstractModel):
+    r"""DeleteAuditRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainName: <p>推流域名。</p>
+        :type DomainName: str
+        :param _AppName: <p>推流路径，与推流和播放地址中的AppName保持一致。</p>
+        :type AppName: str
+        :param _StreamName: <p>流名称 。 不传默认为空。</p>
+        :type StreamName: str
+        """
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        r"""<p>推流域名。</p>
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        r"""<p>推流路径，与推流和播放地址中的AppName保持一致。</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        r"""<p>流名称 。 不传默认为空。</p>
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+
+    def _deserialize(self, params):
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditRuleResponse(AbstractModel):
+    r"""DeleteAuditRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAuditTemplateRequest(AbstractModel):
+    r"""DeleteAuditTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>审核模板 ID 。</p>
+        :type TemplateId: int
+        """
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>审核模板 ID 。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditTemplateResponse(AbstractModel):
+    r"""DeleteAuditTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -17598,6 +18573,330 @@ class DescribeAuditKeywordsResponse(AbstractModel):
                 obj = AuditKeywordInfo()
                 obj._deserialize(item)
                 self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditRulesRequest(AbstractModel):
+    r"""DescribeAuditRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainName: <p>域名。</p>
+        :type DomainName: str
+        :param _TemplateId: <p>审核模板 ID 。</p>
+        :type TemplateId: int
+        :param _AppName: <p>AppName 。</p>
+        :type AppName: str
+        :param _StreamName: <p>流 ID 。</p>
+        :type StreamName: str
+        """
+        self._DomainName = None
+        self._TemplateId = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def DomainName(self):
+        r"""<p>域名。</p>
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def TemplateId(self):
+        r"""<p>审核模板 ID 。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def AppName(self):
+        r"""<p>AppName 。</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        r"""<p>流 ID 。</p>
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+
+    def _deserialize(self, params):
+        self._DomainName = params.get("DomainName")
+        self._TemplateId = params.get("TemplateId")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditRulesResponse(AbstractModel):
+    r"""DescribeAuditRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: <p>规则信息列表。</p>
+        :type Rules: list of RuleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        r"""<p>规则信息列表。</p>
+        :rtype: list of RuleInfo
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditTemplateRequest(AbstractModel):
+    r"""DescribeAuditTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板 ID 。</p>
+        :type TemplateId: int
+        """
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板 ID 。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditTemplateResponse(AbstractModel):
+    r"""DescribeAuditTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditTemplate: <p>审核模板。</p>
+        :type AuditTemplate: :class:`tencentcloud.live.v20180801.models.AuditTemplate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AuditTemplate = None
+        self._RequestId = None
+
+    @property
+    def AuditTemplate(self):
+        r"""<p>审核模板。</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.AuditTemplate`
+        """
+        return self._AuditTemplate
+
+    @AuditTemplate.setter
+    def AuditTemplate(self, AuditTemplate):
+        self._AuditTemplate = AuditTemplate
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AuditTemplate") is not None:
+            self._AuditTemplate = AuditTemplate()
+            self._AuditTemplate._deserialize(params.get("AuditTemplate"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditTemplatesRequest(AbstractModel):
+    r"""DescribeAuditTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WithTextAudit: <p>是否过滤出文本审核，false不过滤，true过滤。</p>
+        :type WithTextAudit: bool
+        :param _PageNum: <p>页码。</p>
+        :type PageNum: int
+        :param _PageSize: <p>每页数量。</p><p>取值范围：[5, 100]</p>
+        :type PageSize: int
+        """
+        self._WithTextAudit = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def WithTextAudit(self):
+        r"""<p>是否过滤出文本审核，false不过滤，true过滤。</p>
+        :rtype: bool
+        """
+        return self._WithTextAudit
+
+    @WithTextAudit.setter
+    def WithTextAudit(self, WithTextAudit):
+        self._WithTextAudit = WithTextAudit
+
+    @property
+    def PageNum(self):
+        r"""<p>页码。</p>
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量。</p><p>取值范围：[5, 100]</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._WithTextAudit = params.get("WithTextAudit")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditTemplatesResponse(AbstractModel):
+    r"""DescribeAuditTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditTemplates: <p>审核模板列表。</p>
+        :type AuditTemplates: list of AuditTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AuditTemplates = None
+        self._RequestId = None
+
+    @property
+    def AuditTemplates(self):
+        r"""<p>审核模板列表。</p>
+        :rtype: list of AuditTemplate
+        """
+        return self._AuditTemplates
+
+    @AuditTemplates.setter
+    def AuditTemplates(self, AuditTemplates):
+        self._AuditTemplates = AuditTemplates
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AuditTemplates") is not None:
+            self._AuditTemplates = []
+            for item in params.get("AuditTemplates"):
+                obj = AuditTemplate()
+                obj._deserialize(item)
+                self._AuditTemplates.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -35220,6 +36519,87 @@ class ModifyAuditKeywordLibResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAuditTemplateRequest(AbstractModel):
+    r"""ModifyAuditTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditTemplate: <p>审核模板。</p>
+        :type AuditTemplate: :class:`tencentcloud.live.v20180801.models.AuditTemplate`
+        """
+        self._AuditTemplate = None
+
+    @property
+    def AuditTemplate(self):
+        r"""<p>审核模板。</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.AuditTemplate`
+        """
+        return self._AuditTemplate
+
+    @AuditTemplate.setter
+    def AuditTemplate(self, AuditTemplate):
+        self._AuditTemplate = AuditTemplate
+
+
+    def _deserialize(self, params):
+        if params.get("AuditTemplate") is not None:
+            self._AuditTemplate = AuditTemplate()
+            self._AuditTemplate._deserialize(params.get("AuditTemplate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditTemplateResponse(AbstractModel):
+    r"""ModifyAuditTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板 ID 。</p>
+        :type TemplateId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateId = None
+        self._RequestId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板 ID 。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
         self._RequestId = params.get("RequestId")
 
 

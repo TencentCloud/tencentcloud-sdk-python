@@ -10771,14 +10771,14 @@ class QueueOverview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QueueName: 队列名称。
+        :param _QueueName: <p>队列名称。</p>
         :type QueueName: str
         """
         self._QueueName = None
 
     @property
     def QueueName(self):
-        r"""队列名称。
+        r"""<p>队列名称。</p>
         :rtype: str
         """
         return self._QueueName

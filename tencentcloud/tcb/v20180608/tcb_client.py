@@ -1880,6 +1880,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTaskResult(self, request):
+        r"""本接口（DescribeTaskResult）用于查询任务结果。
+
+        :param request: Request instance for DescribeTaskResult.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeTaskResultRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeTaskResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTaskResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserList(self, request):
         r"""查询tcb用户列表
 
@@ -2667,6 +2690,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResetPGAccountPassword(self, request):
+        r"""修改 PG 实例用户角色密码。
+
+        :param request: Request instance for ResetPGAccountPassword.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ResetPGAccountPasswordRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ResetPGAccountPasswordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetPGAccountPassword", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetPGAccountPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RunCommands(self, request):
         r"""本接口（RunCommands）用于执行文档型数据库命令。
 
@@ -2865,6 +2911,29 @@ class TcbClient(AbstractClient):
             body = self.call("UpdateTable", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpgradePGInstanceToDedicated(self, request):
+        r"""本接口（UpgradePGInstanceToDedicated）用于共享PG升级独享PG。
+
+        :param request: Request instance for UpgradePGInstanceToDedicated.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.UpgradePGInstanceToDedicatedRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.UpgradePGInstanceToDedicatedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradePGInstanceToDedicated", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradePGInstanceToDedicatedResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

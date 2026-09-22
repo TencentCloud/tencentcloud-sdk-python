@@ -806,6 +806,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenApmPaidVersion(self, request):
+        r"""开通付费版本
+
+        :param request: Request instance for OpenApmPaidVersion.
+        :type request: :class:`tencentcloud.apm.v20210622.models.OpenApmPaidVersionRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.OpenApmPaidVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenApmPaidVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenApmPaidVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TerminateApmInstance(self, request):
         r"""销毁 APM 业务系统
 

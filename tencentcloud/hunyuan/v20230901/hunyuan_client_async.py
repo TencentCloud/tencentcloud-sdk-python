@@ -49,6 +49,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ChatCompletionsResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
@@ -74,6 +76,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ChatTranslationsResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
@@ -97,6 +101,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateGlossaryResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
         """
         
@@ -115,6 +121,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateGlossaryEntryResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         添加术语条目。
         """
         
@@ -133,6 +141,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateThreadResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
@@ -156,6 +166,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteGlossaryResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         删除术语库。
         """
         
@@ -174,6 +186,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteGlossaryEntryResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         删除术语条目。
         """
         
@@ -192,6 +206,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.FilesDeletionsResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         删除文件。
         """
         
@@ -210,6 +226,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.FilesListResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         文件列表。
         """
         
@@ -228,6 +246,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.FilesUploadsResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         上传用于不同用途的文件。
         当前用途仅支持 hunyuan 等模型的文档理解。
         """
@@ -247,6 +267,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GetEmbeddingResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
         """
         
@@ -265,6 +287,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GetThreadResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
@@ -288,6 +312,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GetThreadMessageResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
@@ -311,6 +337,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GetThreadMessageListResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
@@ -334,6 +362,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GetTokenCountResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         该接口用于计算文本对应Token数、字符数。
         """
         
@@ -352,6 +382,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.GroupChatCompletionsResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
@@ -377,6 +409,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ImageQuestionResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
@@ -402,6 +436,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListGlossaryResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         查询术语库。
         """
         
@@ -420,6 +456,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListGlossaryEntryResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         查询术语条目。
         """
         
@@ -480,6 +518,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RunThreadResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
@@ -582,6 +622,8 @@ class HunyuanClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateGlossaryEntryResponse:
         """
+        混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
         更新术语条目。
         """
         

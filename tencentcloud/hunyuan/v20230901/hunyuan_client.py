@@ -50,7 +50,9 @@ class HunyuanClient(AbstractClient):
 
 
     def ChatCompletions(self, request):
-        r"""如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -75,7 +77,9 @@ class HunyuanClient(AbstractClient):
 
 
     def ChatTranslations(self, request):
-        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -98,7 +102,9 @@ class HunyuanClient(AbstractClient):
 
 
     def CreateGlossary(self, request):
-        r"""创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        创建自定义术语库，在翻译时自动将源语言术语替换为指定的目标语言译文，确保专业术语翻译的一致性和准确性。
 
         :param request: Request instance for CreateGlossary.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.CreateGlossaryRequest`
@@ -121,7 +127,9 @@ class HunyuanClient(AbstractClient):
 
 
     def CreateGlossaryEntry(self, request):
-        r"""添加术语条目。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        添加术语条目。
 
         :param request: Request instance for CreateGlossaryEntry.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.CreateGlossaryEntryRequest`
@@ -144,7 +152,9 @@ class HunyuanClient(AbstractClient):
 
 
     def CreateThread(self, request):
-        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -167,7 +177,9 @@ class HunyuanClient(AbstractClient):
 
 
     def DeleteGlossary(self, request):
-        r"""删除术语库。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        删除术语库。
 
         :param request: Request instance for DeleteGlossary.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.DeleteGlossaryRequest`
@@ -190,7 +202,9 @@ class HunyuanClient(AbstractClient):
 
 
     def DeleteGlossaryEntry(self, request):
-        r"""删除术语条目。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        删除术语条目。
 
         :param request: Request instance for DeleteGlossaryEntry.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.DeleteGlossaryEntryRequest`
@@ -213,7 +227,9 @@ class HunyuanClient(AbstractClient):
 
 
     def FilesDeletions(self, request):
-        r"""删除文件。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        删除文件。
 
         :param request: Request instance for FilesDeletions.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.FilesDeletionsRequest`
@@ -231,7 +247,9 @@ class HunyuanClient(AbstractClient):
 
 
     def FilesList(self, request):
-        r"""文件列表。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        文件列表。
 
         :param request: Request instance for FilesList.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.FilesListRequest`
@@ -249,7 +267,9 @@ class HunyuanClient(AbstractClient):
 
 
     def FilesUploads(self, request):
-        r"""上传用于不同用途的文件。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        上传用于不同用途的文件。
         当前用途仅支持 hunyuan 等模型的文档理解。
 
         :param request: Request instance for FilesUploads.
@@ -268,7 +288,9 @@ class HunyuanClient(AbstractClient):
 
 
     def GetEmbedding(self, request):
-        r"""腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        腾讯混元 Embedding 接口，可以将文本转化为高质量的向量数据。向量维度为1024维。
 
         :param request: Request instance for GetEmbedding.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetEmbeddingRequest`
@@ -291,7 +313,9 @@ class HunyuanClient(AbstractClient):
 
 
     def GetThread(self, request):
-        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -314,7 +338,9 @@ class HunyuanClient(AbstractClient):
 
 
     def GetThreadMessage(self, request):
-        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -337,7 +363,9 @@ class HunyuanClient(AbstractClient):
 
 
     def GetThreadMessageList(self, request):
-        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -360,7 +388,9 @@ class HunyuanClient(AbstractClient):
 
 
     def GetTokenCount(self, request):
-        r"""该接口用于计算文本对应Token数、字符数。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        该接口用于计算文本对应Token数、字符数。
 
         :param request: Request instance for GetTokenCount.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.GetTokenCountRequest`
@@ -383,7 +413,9 @@ class HunyuanClient(AbstractClient):
 
 
     def GroupChatCompletions(self, request):
-        r"""如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -408,7 +440,9 @@ class HunyuanClient(AbstractClient):
 
 
     def ImageQuestion(self, request):
-        r"""如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        如需使用OpenAI兼容接口， 请参考文档：[OpenAI 兼容接口](https://cloud.tencent.com/document/product/1729/111007)
 
         腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
@@ -433,7 +467,9 @@ class HunyuanClient(AbstractClient):
 
 
     def ListGlossary(self, request):
-        r"""查询术语库。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        查询术语库。
 
         :param request: Request instance for ListGlossary.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.ListGlossaryRequest`
@@ -456,7 +492,9 @@ class HunyuanClient(AbstractClient):
 
 
     def ListGlossaryEntry(self, request):
-        r"""查询术语条目。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        查询术语条目。
 
         :param request: Request instance for ListGlossaryEntry.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.ListGlossaryEntryRequest`
@@ -531,7 +569,9 @@ class HunyuanClient(AbstractClient):
 
 
     def RunThread(self, request):
-        r"""腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        腾讯混元大模型是由腾讯研发的大语言模型，具备强大的中文创作能力，复杂语境下的逻辑推理能力，以及可靠的任务执行能力。本接口支持流式或非流式调用，当使用流式调用时为 SSE 协议。
 
          1. 本接口暂不支持返回图片内容。
          2. 默认该接口下单账号限制并发数为  5 路，如您有提高并发限制的需求请 [购买](https://buy.cloud.tencent.com/hunyuan) 。
@@ -653,7 +693,9 @@ class HunyuanClient(AbstractClient):
 
 
     def UpdateGlossaryEntry(self, request):
-        r"""更新术语条目。
+        r"""混元大模型老控制台将于9月30日下线，5月已发对外公告并通知客户，现将API接口文档变更为预下线状态
+
+        更新术语条目。
 
         :param request: Request instance for UpdateGlossaryEntry.
         :type request: :class:`tencentcloud.hunyuan.v20230901.models.UpdateGlossaryEntryRequest`

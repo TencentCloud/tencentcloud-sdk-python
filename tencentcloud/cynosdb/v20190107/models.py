@@ -15743,6 +15743,12 @@ class CynosdbInstanceDetail(AbstractModel):
         :type DbMode: str
         :param _MasterZone: <p>集群的读写实例所在可用区</p>
         :type MasterZone: str
+        :param _RealZone: <p>实例的真实可用区</p>
+        :type RealZone: str
+        :param _SlaveZones: <p>备可用区列表</p>
+        :type SlaveZones: list of str
+        :param _StorageVersion: <p>存储版本</p><p>枚举值：</p><ul><li>1.0： 1.0版本存储</li><li>2.0： 2.0版本存储</li></ul>
+        :type StorageVersion: str
         """
         self._Uin = None
         self._AppId = None
@@ -15780,6 +15786,9 @@ class CynosdbInstanceDetail(AbstractModel):
         self._MaxCpu = None
         self._DbMode = None
         self._MasterZone = None
+        self._RealZone = None
+        self._SlaveZones = None
+        self._StorageVersion = None
 
     @property
     def Uin(self):
@@ -16177,6 +16186,39 @@ class CynosdbInstanceDetail(AbstractModel):
     def MasterZone(self, MasterZone):
         self._MasterZone = MasterZone
 
+    @property
+    def RealZone(self):
+        r"""<p>实例的真实可用区</p>
+        :rtype: str
+        """
+        return self._RealZone
+
+    @RealZone.setter
+    def RealZone(self, RealZone):
+        self._RealZone = RealZone
+
+    @property
+    def SlaveZones(self):
+        r"""<p>备可用区列表</p>
+        :rtype: list of str
+        """
+        return self._SlaveZones
+
+    @SlaveZones.setter
+    def SlaveZones(self, SlaveZones):
+        self._SlaveZones = SlaveZones
+
+    @property
+    def StorageVersion(self):
+        r"""<p>存储版本</p><p>枚举值：</p><ul><li>1.0： 1.0版本存储</li><li>2.0： 2.0版本存储</li></ul>
+        :rtype: str
+        """
+        return self._StorageVersion
+
+    @StorageVersion.setter
+    def StorageVersion(self, StorageVersion):
+        self._StorageVersion = StorageVersion
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -16215,6 +16257,9 @@ class CynosdbInstanceDetail(AbstractModel):
         self._MaxCpu = params.get("MaxCpu")
         self._DbMode = params.get("DbMode")
         self._MasterZone = params.get("MasterZone")
+        self._RealZone = params.get("RealZone")
+        self._SlaveZones = params.get("SlaveZones")
+        self._StorageVersion = params.get("StorageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

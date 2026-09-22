@@ -14489,6 +14489,210 @@ class DescribeTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTaskResultRequest(AbstractModel):
+    r"""DescribeTaskResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        """
+        self._EnvId = None
+        self._TaskId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTaskResultResponse(AbstractModel):
+    r"""DescribeTaskResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>PGUserMigration： PG Migrate 任务</li></ul>
+        :type TaskType: str
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>Failed： 失败</li><li>Succeed： 成功</li><li>Accepted： 已接收</li><li>Running： 运行中</li></ul>
+        :type Status: str
+        :param _Phase: <p>当前步骤</p>
+        :type Phase: str
+        :param _Reason: <p>失败原因</p>
+        :type Reason: str
+        :param _CreatedAt: <p>创建时间</p><p>参数格式：2026-05-26T11:26:14+08:00</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>最后更新时间</p><p>参数格式：2026-05-26T11:26:14+08:00</p>
+        :type UpdatedAt: str
+        :param _Params: <p>任务参数</p>
+        :type Params: list of ObjectKV
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._Status = None
+        self._Phase = None
+        self._Reason = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._Params = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p><p>枚举值：</p><ul><li>PGUserMigration： PG Migrate 任务</li></ul>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>Failed： 失败</li><li>Succeed： 成功</li><li>Accepted： 已接收</li><li>Running： 运行中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Phase(self):
+        r"""<p>当前步骤</p>
+        :rtype: str
+        """
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def Reason(self):
+        r"""<p>失败原因</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p><p>参数格式：2026-05-26T11:26:14+08:00</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>最后更新时间</p><p>参数格式：2026-05-26T11:26:14+08:00</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def Params(self):
+        r"""<p>任务参数</p>
+        :rtype: list of ObjectKV
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._Status = params.get("Status")
+        self._Phase = params.get("Phase")
+        self._Reason = params.get("Reason")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = ObjectKV()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUserListRequest(AbstractModel):
     r"""DescribeUserList请求参数结构体
 
@@ -25064,6 +25268,57 @@ class MySQLTaskStatus(AbstractModel):
         
 
 
+class ObjectKV(AbstractModel):
+    r"""Key-Value类型，模拟的 object 类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: object 的 key
+        :type Key: str
+        :param _Value: object key 对应的 value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""object 的 key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""object key 对应的 value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrderInfo(AbstractModel):
     r"""订单信息
 
@@ -28372,6 +28627,85 @@ class RepairPGUserMigrationHistoryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResetPGAccountPasswordRequest(AbstractModel):
+    r"""ResetPGAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _Password: <p>要设置的密码</p><p>入参限制：长度8 ~ 32位，不能以&quot; / &quot;开头; 必须包含以下四项，字符种类:  小写字母： [a ~ z] 大写字母：[A ～ Z] 数字：0 - 9 特殊字符：()~!@#$%^&amp;*-+=_|{}[]:&lt;&gt;,.?/` 示例值：A8b!C2d#E4f&amp;</p>
+        :type Password: str
+        """
+        self._EnvId = None
+        self._Password = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Password(self):
+        r"""<p>要设置的密码</p><p>入参限制：长度8 ~ 32位，不能以&quot; / &quot;开头; 必须包含以下四项，字符种类:  小写字母： [a ~ z] 大写字母：[A ～ Z] 数字：0 - 9 特殊字符：()~!@#$%^&amp;*-+=_|{}[]:&lt;&gt;,.?/` 示例值：A8b!C2d#E4f&amp;</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetPGAccountPasswordResponse(AbstractModel):
+    r"""ResetPGAccountPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ResourcePermission(AbstractModel):
     r"""资源权限
 
@@ -31136,6 +31470,160 @@ class UpdateTableResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpgradePGInstanceToDedicatedRequest(AbstractModel):
+    r"""UpgradePGInstanceToDedicated请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _SwitchTag: <p>切换时机</p><p>枚举值：</p><ul><li>0： 立即切换</li><li>1： 指定时间切换</li></ul>
+        :type SwitchTag: int
+        :param _SwitchStartTime: <p>切换开始时间</p><p>参数格式：15:04:05</p>
+        :type SwitchStartTime: str
+        :param _SwitchEndTime: <p>切换结束时间</p><p>参数格式：15:04:05</p>
+        :type SwitchEndTime: str
+        :param _SpecCode: <p>PG 规格</p>
+        :type SpecCode: str
+        :param _Storage: <p>存储空间大小</p>
+        :type Storage: int
+        """
+        self._EnvId = None
+        self._SwitchTag = None
+        self._SwitchStartTime = None
+        self._SwitchEndTime = None
+        self._SpecCode = None
+        self._Storage = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def SwitchTag(self):
+        r"""<p>切换时机</p><p>枚举值：</p><ul><li>0： 立即切换</li><li>1： 指定时间切换</li></ul>
+        :rtype: int
+        """
+        return self._SwitchTag
+
+    @SwitchTag.setter
+    def SwitchTag(self, SwitchTag):
+        self._SwitchTag = SwitchTag
+
+    @property
+    def SwitchStartTime(self):
+        r"""<p>切换开始时间</p><p>参数格式：15:04:05</p>
+        :rtype: str
+        """
+        return self._SwitchStartTime
+
+    @SwitchStartTime.setter
+    def SwitchStartTime(self, SwitchStartTime):
+        self._SwitchStartTime = SwitchStartTime
+
+    @property
+    def SwitchEndTime(self):
+        r"""<p>切换结束时间</p><p>参数格式：15:04:05</p>
+        :rtype: str
+        """
+        return self._SwitchEndTime
+
+    @SwitchEndTime.setter
+    def SwitchEndTime(self, SwitchEndTime):
+        self._SwitchEndTime = SwitchEndTime
+
+    @property
+    def SpecCode(self):
+        r"""<p>PG 规格</p>
+        :rtype: str
+        """
+        return self._SpecCode
+
+    @SpecCode.setter
+    def SpecCode(self, SpecCode):
+        self._SpecCode = SpecCode
+
+    @property
+    def Storage(self):
+        r"""<p>存储空间大小</p>
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._SwitchTag = params.get("SwitchTag")
+        self._SwitchStartTime = params.get("SwitchStartTime")
+        self._SwitchEndTime = params.get("SwitchEndTime")
+        self._SpecCode = params.get("SpecCode")
+        self._Storage = params.get("Storage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradePGInstanceToDedicatedResponse(AbstractModel):
+    r"""UpgradePGInstanceToDedicated返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p><p>可通过DescribeTaskResult 接口查询进度</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p><p>可通过DescribeTaskResult 接口查询进度</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

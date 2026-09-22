@@ -987,15 +987,15 @@ class AutoRewriteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例ID。
+        :param _LoadBalancerId: <p>负载均衡实例ID。</p>
         :type LoadBalancerId: str
-        :param _ListenerId: HTTPS:443监听器的ID。
+        :param _ListenerId: <p>HTTPS:443监听器的ID。</p>
         :type ListenerId: str
-        :param _Domains: HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。
+        :param _Domains: <p>HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。</p>
         :type Domains: list of str
-        :param _RewriteCodes: 重定向状态码，可取值301,302,307。
+        :param _RewriteCodes: <p>重定向状态码，可取值301,302,307。</p><p>默认值：302</p>
         :type RewriteCodes: list of int
-        :param _TakeUrls: 重定向是否携带匹配的URL。
+        :param _TakeUrls: <p>重定向是否携带匹配的URL。</p>
         :type TakeUrls: list of bool
         """
         self._LoadBalancerId = None
@@ -1006,7 +1006,7 @@ class AutoRewriteRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡实例ID。
+        r"""<p>负载均衡实例ID。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -1017,7 +1017,7 @@ class AutoRewriteRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""HTTPS:443监听器的ID。
+        r"""<p>HTTPS:443监听器的ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -1028,7 +1028,7 @@ class AutoRewriteRequest(AbstractModel):
 
     @property
     def Domains(self):
-        r"""HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。
+        r"""<p>HTTPS:443监听器下需要重定向的域名，若不填，则对HTTPS:443监听器下的所有域名都设置重定向。</p>
         :rtype: list of str
         """
         return self._Domains
@@ -1039,7 +1039,7 @@ class AutoRewriteRequest(AbstractModel):
 
     @property
     def RewriteCodes(self):
-        r"""重定向状态码，可取值301,302,307。
+        r"""<p>重定向状态码，可取值301,302,307。</p><p>默认值：302</p>
         :rtype: list of int
         """
         return self._RewriteCodes
@@ -1050,7 +1050,7 @@ class AutoRewriteRequest(AbstractModel):
 
     @property
     def TakeUrls(self):
-        r"""重定向是否携带匹配的URL。
+        r"""<p>重定向是否携带匹配的URL。</p>
         :rtype: list of bool
         """
         return self._TakeUrls
@@ -35790,12 +35790,18 @@ class ServiceProviderHealthCheckConfigItemInput(AbstractModel):
         :type HealthCheckMaxTokens: int
         :param _HealthCheckProtocol: <p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/v1/messages协议</li></ul>
         :type HealthCheckProtocol: str
+        :param _HealthCheckPath: <p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+        :type HealthCheckPath: str
+        :param _HealthCheckMethod: <p>健康检查方式。</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
+        :type HealthCheckMethod: str
         """
         self._HealthCheckEnabled = None
         self._HealthCheckInterval = None
         self._HealthCheckUnhealthyThreshold = None
         self._HealthCheckMaxTokens = None
         self._HealthCheckProtocol = None
+        self._HealthCheckPath = None
+        self._HealthCheckMethod = None
 
     @property
     def HealthCheckEnabled(self):
@@ -35852,6 +35858,28 @@ class ServiceProviderHealthCheckConfigItemInput(AbstractModel):
     def HealthCheckProtocol(self, HealthCheckProtocol):
         self._HealthCheckProtocol = HealthCheckProtocol
 
+    @property
+    def HealthCheckPath(self):
+        r"""<p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+        :rtype: str
+        """
+        return self._HealthCheckPath
+
+    @HealthCheckPath.setter
+    def HealthCheckPath(self, HealthCheckPath):
+        self._HealthCheckPath = HealthCheckPath
+
+    @property
+    def HealthCheckMethod(self):
+        r"""<p>健康检查方式。</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
+        :rtype: str
+        """
+        return self._HealthCheckMethod
+
+    @HealthCheckMethod.setter
+    def HealthCheckMethod(self, HealthCheckMethod):
+        self._HealthCheckMethod = HealthCheckMethod
+
 
     def _deserialize(self, params):
         self._HealthCheckEnabled = params.get("HealthCheckEnabled")
@@ -35859,6 +35887,8 @@ class ServiceProviderHealthCheckConfigItemInput(AbstractModel):
         self._HealthCheckUnhealthyThreshold = params.get("HealthCheckUnhealthyThreshold")
         self._HealthCheckMaxTokens = params.get("HealthCheckMaxTokens")
         self._HealthCheckProtocol = params.get("HealthCheckProtocol")
+        self._HealthCheckPath = params.get("HealthCheckPath")
+        self._HealthCheckMethod = params.get("HealthCheckMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35883,16 +35913,23 @@ class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
         :param _HealthCheckUnhealthyThreshold: <p>不健康阈值。表示当模型连续多少次不健康时认为该模型不健康。</p><p>取值范围：[1, 10]</p><p>默认值：1</p>
         :type HealthCheckUnhealthyThreshold: int
         :param _HealthCheckMaxTokens: <p>健康检查使用的最大Token数量。部分模型如gpt系列可能仅支持大于等于16。</p><p>默认值：1</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckMaxTokens: int
         :param _HealthCheckProtocol: <p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/v1/messages协议</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheckProtocol: str
+        :param _HealthCheckPath: <p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+        :type HealthCheckPath: str
+        :param _HealthCheckMethod: <p>健康检查方式。</p>
+        :type HealthCheckMethod: str
         """
         self._HealthCheckEnabled = None
         self._HealthCheckInterval = None
         self._HealthCheckUnhealthyThreshold = None
         self._HealthCheckMaxTokens = None
         self._HealthCheckProtocol = None
+        self._HealthCheckPath = None
+        self._HealthCheckMethod = None
 
     @property
     def HealthCheckEnabled(self):
@@ -35930,6 +35967,7 @@ class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
     @property
     def HealthCheckMaxTokens(self):
         r"""<p>健康检查使用的最大Token数量。部分模型如gpt系列可能仅支持大于等于16。</p><p>默认值：1</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._HealthCheckMaxTokens
@@ -35950,6 +35988,28 @@ class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
     def HealthCheckProtocol(self, HealthCheckProtocol):
         self._HealthCheckProtocol = HealthCheckProtocol
 
+    @property
+    def HealthCheckPath(self):
+        r"""<p>健康检查路径。仅HealthCheckMethod为Service时生效。</p>
+        :rtype: str
+        """
+        return self._HealthCheckPath
+
+    @HealthCheckPath.setter
+    def HealthCheckPath(self, HealthCheckPath):
+        self._HealthCheckPath = HealthCheckPath
+
+    @property
+    def HealthCheckMethod(self):
+        r"""<p>健康检查方式。</p>
+        :rtype: str
+        """
+        return self._HealthCheckMethod
+
+    @HealthCheckMethod.setter
+    def HealthCheckMethod(self, HealthCheckMethod):
+        self._HealthCheckMethod = HealthCheckMethod
+
 
     def _deserialize(self, params):
         self._HealthCheckEnabled = params.get("HealthCheckEnabled")
@@ -35957,6 +36017,8 @@ class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
         self._HealthCheckUnhealthyThreshold = params.get("HealthCheckUnhealthyThreshold")
         self._HealthCheckMaxTokens = params.get("HealthCheckMaxTokens")
         self._HealthCheckProtocol = params.get("HealthCheckProtocol")
+        self._HealthCheckPath = params.get("HealthCheckPath")
+        self._HealthCheckMethod = params.get("HealthCheckMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

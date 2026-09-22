@@ -14971,10 +14971,24 @@ class CreateResourceGraphResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ResourceGraphId = None
         self._RequestId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
 
     @property
     def RequestId(self):
@@ -14989,6 +15003,7 @@ class CreateResourceGraphResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
         self._RequestId = params.get("RequestId")
 
 
@@ -22008,6 +22023,67 @@ class Delta(AbstractModel):
                 obj = ToolCall()
                 obj._deserialize(item)
                 self._ToolCalls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DependencyTopology(AbstractModel):
+    r"""拓扑图（节点 + 边）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nodes: 节点列表
+        :type Nodes: list of TopologyNode
+        :param _Edges: 边列表
+        :type Edges: list of TopologyEdge
+        """
+        self._Nodes = None
+        self._Edges = None
+
+    @property
+    def Nodes(self):
+        r"""节点列表
+        :rtype: list of TopologyNode
+        """
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def Edges(self):
+        r"""边列表
+        :rtype: list of TopologyEdge
+        """
+        return self._Edges
+
+    @Edges.setter
+    def Edges(self, Edges):
+        self._Edges = Edges
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self._Nodes = []
+            for item in params.get("Nodes"):
+                obj = TopologyNode()
+                obj._deserialize(item)
+                self._Nodes.append(obj)
+        if params.get("Edges") is not None:
+            self._Edges = []
+            for item in params.get("Edges"):
+                obj = TopologyEdge()
+                obj._deserialize(item)
+                self._Edges.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30345,13 +30421,41 @@ class DescribeResourceGraphEntitiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EntityInfos: <p>实体列表</p>
+        :type EntityInfos: list of EntityInfo
+        :param _HasMore: <p>是否还有下一页</p><p>枚举值：</p><ul><li>0： 没有下一页</li><li>1： 还有下一页</li></ul>
+        :type HasMore: int
         :param _NextCursor: <p>分页的游标，有值则下次分页请求原样带上，无值则表示无下一页</p>
         :type NextCursor: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._EntityInfos = None
+        self._HasMore = None
         self._NextCursor = None
         self._RequestId = None
+
+    @property
+    def EntityInfos(self):
+        r"""<p>实体列表</p>
+        :rtype: list of EntityInfo
+        """
+        return self._EntityInfos
+
+    @EntityInfos.setter
+    def EntityInfos(self, EntityInfos):
+        self._EntityInfos = EntityInfos
+
+    @property
+    def HasMore(self):
+        r"""<p>是否还有下一页</p><p>枚举值：</p><ul><li>0： 没有下一页</li><li>1： 还有下一页</li></ul>
+        :rtype: int
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
 
     @property
     def NextCursor(self):
@@ -30377,6 +30481,13 @@ class DescribeResourceGraphEntitiesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("EntityInfos") is not None:
+            self._EntityInfos = []
+            for item in params.get("EntityInfos"):
+                obj = EntityInfo()
+                obj._deserialize(item)
+                self._EntityInfos.append(obj)
+        self._HasMore = params.get("HasMore")
         self._NextCursor = params.get("NextCursor")
         self._RequestId = params.get("RequestId")
 
@@ -30499,10 +30610,24 @@ class DescribeResourceGraphEntityDependencyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Topology: <p>拓扑图（节点 + 边）</p>
+        :type Topology: :class:`tencentcloud.cls.v20201016.models.DependencyTopology`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Topology = None
         self._RequestId = None
+
+    @property
+    def Topology(self):
+        r"""<p>拓扑图（节点 + 边）</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DependencyTopology`
+        """
+        return self._Topology
+
+    @Topology.setter
+    def Topology(self, Topology):
+        self._Topology = Topology
 
     @property
     def RequestId(self):
@@ -30517,6 +30642,9 @@ class DescribeResourceGraphEntityDependencyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Topology") is not None:
+            self._Topology = DependencyTopology()
+            self._Topology._deserialize(params.get("Topology"))
         self._RequestId = params.get("RequestId")
 
 
@@ -30608,10 +30736,24 @@ class DescribeResourceGraphEntityDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _EntityInfo: <p>实体信息</p>
+        :type EntityInfo: :class:`tencentcloud.cls.v20201016.models.EntityInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._EntityInfo = None
         self._RequestId = None
+
+    @property
+    def EntityInfo(self):
+        r"""<p>实体信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EntityInfo`
+        """
+        return self._EntityInfo
+
+    @EntityInfo.setter
+    def EntityInfo(self, EntityInfo):
+        self._EntityInfo = EntityInfo
 
     @property
     def RequestId(self):
@@ -30626,6 +30768,9 @@ class DescribeResourceGraphEntityDetailResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("EntityInfo") is not None:
+            self._EntityInfo = EntityInfo()
+            self._EntityInfo._deserialize(params.get("EntityInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -31271,6 +31416,71 @@ class DescribeResourceGraphsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Filters: <ul><li>ResourceGraphId 按【资源图谱 ID】精确匹配。类型：String。必选：否</li><li>Name 按【资源图谱名称】模糊匹配。类型：String。必选：否</li><li>Status 按【状态】模糊匹配。类型：int。必选：否；0：初始化中；1：就绪；2：创建失败；3：删除中；5：删除失败</li><li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li><li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li></ul>注意：每次请求的 Filters 上限 10，Filter.Values 上限 100。
+        :type Filters: list of Filter
+        :param _Offset: <p>分页偏移量</p><p>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页数量</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<ul><li>ResourceGraphId 按【资源图谱 ID】精确匹配。类型：String。必选：否</li><li>Name 按【资源图谱名称】模糊匹配。类型：String。必选：否</li><li>Status 按【状态】模糊匹配。类型：int。必选：否；0：初始化中；1：就绪；2：创建失败；3：删除中；5：删除失败</li><li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li><li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li></ul>注意：每次请求的 Filters 上限 10，Filter.Values 上限 100。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页数量</p><p>取值范围：[0, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeResourceGraphsResponse(AbstractModel):
     r"""DescribeResourceGraphs返回参数结构体
@@ -31279,10 +31489,38 @@ class DescribeResourceGraphsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ResourceGraphInfos: <p>资源图谱信息</p>
+        :type ResourceGraphInfos: list of ResourceGraphInfo
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ResourceGraphInfos = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def ResourceGraphInfos(self):
+        r"""<p>资源图谱信息</p>
+        :rtype: list of ResourceGraphInfo
+        """
+        return self._ResourceGraphInfos
+
+    @ResourceGraphInfos.setter
+    def ResourceGraphInfos(self, ResourceGraphInfos):
+        self._ResourceGraphInfos = ResourceGraphInfos
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -31297,6 +31535,13 @@ class DescribeResourceGraphsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("ResourceGraphInfos") is not None:
+            self._ResourceGraphInfos = []
+            for item in params.get("ResourceGraphInfos"):
+                obj = ResourceGraphInfo()
+                obj._deserialize(item)
+                self._ResourceGraphInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -34201,6 +34446,228 @@ class EBPFProcessNameFilter(AbstractModel):
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
         self._ProcessNames = params.get("ProcessNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EntityAttribute(AbstractModel):
+    r"""实体动态属性 KV
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 属性 key
+        :type Key: str
+        :param _Value: 属性 value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""属性 key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""属性 value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EntityInfo(AbstractModel):
+    r"""实体详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntityId: <p>实体 ID</p>
+        :type EntityId: str
+        :param _Domain: <p>实体所属域</p><p>默认值：实体所在域，如TC，App</p>
+        :type Domain: str
+        :param _Product: <p>实体所属产品</p><p>参数格式：实体归属的产品，如CDB, Application</p>
+        :type Product: str
+        :param _EntityName: <p>实体名称</p>
+        :type EntityName: str
+        :param _EntityClassName: <p>实体类名称</p><p>参数格式：TC.CDB.Instance</p>
+        :type EntityClassName: str
+        :param _Attributes: <p>动态属性（base 在前 + 字典序）</p>
+        :type Attributes: list of EntityAttribute
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tag
+        :param _RelatedLogTopics: <p>关联日志主题</p>
+        :type RelatedLogTopics: list of RelatedTopicItem
+        :param _ResourceId: <p> 实体资源ID </p>
+        :type ResourceId: str
+        """
+        self._EntityId = None
+        self._Domain = None
+        self._Product = None
+        self._EntityName = None
+        self._EntityClassName = None
+        self._Attributes = None
+        self._Tags = None
+        self._RelatedLogTopics = None
+        self._ResourceId = None
+
+    @property
+    def EntityId(self):
+        r"""<p>实体 ID</p>
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def Domain(self):
+        r"""<p>实体所属域</p><p>默认值：实体所在域，如TC，App</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Product(self):
+        r"""<p>实体所属产品</p><p>参数格式：实体归属的产品，如CDB, Application</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def EntityName(self):
+        r"""<p>实体名称</p>
+        :rtype: str
+        """
+        return self._EntityName
+
+    @EntityName.setter
+    def EntityName(self, EntityName):
+        self._EntityName = EntityName
+
+    @property
+    def EntityClassName(self):
+        r"""<p>实体类名称</p><p>参数格式：TC.CDB.Instance</p>
+        :rtype: str
+        """
+        return self._EntityClassName
+
+    @EntityClassName.setter
+    def EntityClassName(self, EntityClassName):
+        self._EntityClassName = EntityClassName
+
+    @property
+    def Attributes(self):
+        r"""<p>动态属性（base 在前 + 字典序）</p>
+        :rtype: list of EntityAttribute
+        """
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RelatedLogTopics(self):
+        r"""<p>关联日志主题</p>
+        :rtype: list of RelatedTopicItem
+        """
+        return self._RelatedLogTopics
+
+    @RelatedLogTopics.setter
+    def RelatedLogTopics(self, RelatedLogTopics):
+        self._RelatedLogTopics = RelatedLogTopics
+
+    @property
+    def ResourceId(self):
+        r"""<p> 实体资源ID </p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._EntityId = params.get("EntityId")
+        self._Domain = params.get("Domain")
+        self._Product = params.get("Product")
+        self._EntityName = params.get("EntityName")
+        self._EntityClassName = params.get("EntityClassName")
+        if params.get("Attributes") is not None:
+            self._Attributes = []
+            for item in params.get("Attributes"):
+                obj = EntityAttribute()
+                obj._deserialize(item)
+                self._Attributes.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("RelatedLogTopics") is not None:
+            self._RelatedLogTopics = []
+            for item in params.get("RelatedLogTopics"):
+                obj = RelatedTopicItem()
+                obj._deserialize(item)
+                self._RelatedLogTopics.append(obj)
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53890,6 +54357,87 @@ class Relabeling(AbstractModel):
         
 
 
+class RelatedTopicItem(AbstractModel):
+    r"""已关联主题
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>主题 ID</p>
+        :type TopicId: str
+        :param _Region: <p>主题地域</p>
+        :type Region: str
+        :param _LogType: <p>日志类型</p><p>枚举值：</p><ul><li>Auditlog： 审计日志</li><li>Eventlog： 事件日志</li><li>ComponentLog： 组件日志</li></ul>
+        :type LogType: str
+        :param _BizType: <p>日志类型， 0: 日志主题 ; 1: 指标主题</p><p>枚举值：</p><ul><li>0： 日志主题</li><li>1： 指标主题</li></ul>
+        :type BizType: int
+        """
+        self._TopicId = None
+        self._Region = None
+        self._LogType = None
+        self._BizType = None
+
+    @property
+    def TopicId(self):
+        r"""<p>主题 ID</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Region(self):
+        r"""<p>主题地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型</p><p>枚举值：</p><ul><li>Auditlog： 审计日志</li><li>Eventlog： 事件日志</li><li>ComponentLog： 组件日志</li></ul>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def BizType(self):
+        r"""<p>日志类型， 0: 日志主题 ; 1: 指标主题</p><p>枚举值：</p><ul><li>0： 日志主题</li><li>1： 指标主题</li></ul>
+        :rtype: int
+        """
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Region = params.get("Region")
+        self._LogType = params.get("LogType")
+        self._BizType = params.get("BizType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RelationLogset(AbstractModel):
     r"""工作区关联的日志集
 
@@ -54660,6 +55208,174 @@ class ResourceGraphEntityRelatedTopic(AbstractModel):
         self._Region = params.get("Region")
         self._LogType = params.get("LogType")
         self._BizType = params.get("BizType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceGraphInfo(AbstractModel):
+    r"""资源图谱基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _Name: <p>工作区名称</p>
+        :type Name: str
+        :param _Description: <p>工作区描述</p>
+        :type Description: str
+        :param _Status: <p>工作区状态</p><p>枚举值：</p><ul><li>0： 初始化中</li><li>1： 成功</li><li>2： 失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li></ul>
+        :type Status: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _RelationLogset: <p>关联的日志集</p>
+        :type RelationLogset: :class:`tencentcloud.cls.v20201016.models.RelationLogset`
+        :param _RelationTopics: <p>关联的topic</p>
+        :type RelationTopics: list of RelationTopic
+        :param _Tags: <p>工作区绑定的标签信息</p>
+        :type Tags: list of Tag
+        """
+        self._ResourceGraphId = None
+        self._Name = None
+        self._Description = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._RelationLogset = None
+        self._RelationTopics = None
+        self._Tags = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def Name(self):
+        r"""<p>工作区名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>工作区描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>工作区状态</p><p>枚举值：</p><ul><li>0： 初始化中</li><li>1： 成功</li><li>2： 失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RelationLogset(self):
+        r"""<p>关联的日志集</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RelationLogset`
+        """
+        return self._RelationLogset
+
+    @RelationLogset.setter
+    def RelationLogset(self, RelationLogset):
+        self._RelationLogset = RelationLogset
+
+    @property
+    def RelationTopics(self):
+        r"""<p>关联的topic</p>
+        :rtype: list of RelationTopic
+        """
+        return self._RelationTopics
+
+    @RelationTopics.setter
+    def RelationTopics(self, RelationTopics):
+        self._RelationTopics = RelationTopics
+
+    @property
+    def Tags(self):
+        r"""<p>工作区绑定的标签信息</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("RelationLogset") is not None:
+            self._RelationLogset = RelationLogset()
+            self._RelationLogset._deserialize(params.get("RelationLogset"))
+        if params.get("RelationTopics") is not None:
+            self._RelationTopics = []
+            for item in params.get("RelationTopics"):
+                obj = RelationTopic()
+                obj._deserialize(item)
+                self._RelationTopics.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59727,6 +60443,183 @@ class TopicPartitionOffsetInfo(AbstractModel):
                 obj = PartitionOffsetInfo()
                 obj._deserialize(item)
                 self._PartitionOffsets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopologyEdge(AbstractModel):
+    r"""拓扑边
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SrcEntityId: <p>源实体 ID</p>
+        :type SrcEntityId: str
+        :param _DstEntityId: <p>目的实体 ID</p>
+        :type DstEntityId: str
+        :param _RelationType: <p>关系类型：contains / same_as / calls</p><p>枚举值：</p><ul><li>contains： 包含关系，A 包含 B</li><li>same_as： 等价关系，A 等价 B</li><li>calls： 调用关系， A 调用 B</li></ul><p>默认值：-</p>
+        :type RelationType: str
+        """
+        self._SrcEntityId = None
+        self._DstEntityId = None
+        self._RelationType = None
+
+    @property
+    def SrcEntityId(self):
+        r"""<p>源实体 ID</p>
+        :rtype: str
+        """
+        return self._SrcEntityId
+
+    @SrcEntityId.setter
+    def SrcEntityId(self, SrcEntityId):
+        self._SrcEntityId = SrcEntityId
+
+    @property
+    def DstEntityId(self):
+        r"""<p>目的实体 ID</p>
+        :rtype: str
+        """
+        return self._DstEntityId
+
+    @DstEntityId.setter
+    def DstEntityId(self, DstEntityId):
+        self._DstEntityId = DstEntityId
+
+    @property
+    def RelationType(self):
+        r"""<p>关系类型：contains / same_as / calls</p><p>枚举值：</p><ul><li>contains： 包含关系，A 包含 B</li><li>same_as： 等价关系，A 等价 B</li><li>calls： 调用关系， A 调用 B</li></ul><p>默认值：-</p>
+        :rtype: str
+        """
+        return self._RelationType
+
+    @RelationType.setter
+    def RelationType(self, RelationType):
+        self._RelationType = RelationType
+
+
+    def _deserialize(self, params):
+        self._SrcEntityId = params.get("SrcEntityId")
+        self._DstEntityId = params.get("DstEntityId")
+        self._RelationType = params.get("RelationType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopologyNode(AbstractModel):
+    r"""拓扑节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntityId: <p>实体 ID</p>
+        :type EntityId: str
+        :param _Name: <p>实体名称</p>
+        :type Name: str
+        :param _Domain: <p>实体所属域</p>
+        :type Domain: str
+        :param _Product: <p>实体所在产品</p>
+        :type Product: str
+        :param _EntityClassName: <p>实体类型</p>
+        :type EntityClassName: str
+        :param _Depth: <p>距离中心节点深度</p>
+        :type Depth: int
+        """
+        self._EntityId = None
+        self._Name = None
+        self._Domain = None
+        self._Product = None
+        self._EntityClassName = None
+        self._Depth = None
+
+    @property
+    def EntityId(self):
+        r"""<p>实体 ID</p>
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def Name(self):
+        r"""<p>实体名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Domain(self):
+        r"""<p>实体所属域</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Product(self):
+        r"""<p>实体所在产品</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def EntityClassName(self):
+        r"""<p>实体类型</p>
+        :rtype: str
+        """
+        return self._EntityClassName
+
+    @EntityClassName.setter
+    def EntityClassName(self, EntityClassName):
+        self._EntityClassName = EntityClassName
+
+    @property
+    def Depth(self):
+        r"""<p>距离中心节点深度</p>
+        :rtype: int
+        """
+        return self._Depth
+
+    @Depth.setter
+    def Depth(self, Depth):
+        self._Depth = Depth
+
+
+    def _deserialize(self, params):
+        self._EntityId = params.get("EntityId")
+        self._Name = params.get("Name")
+        self._Domain = params.get("Domain")
+        self._Product = params.get("Product")
+        self._EntityClassName = params.get("EntityClassName")
+        self._Depth = params.get("Depth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

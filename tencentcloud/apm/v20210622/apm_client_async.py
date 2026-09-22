@@ -640,6 +640,24 @@ class ApmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def OpenApmPaidVersion(
+            self,
+            request: models.OpenApmPaidVersionRequest,
+            opts: Dict = None,
+    ) -> models.OpenApmPaidVersionResponse:
+        """
+        开通付费版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenApmPaidVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenApmPaidVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def TerminateApmInstance(
             self,
             request: models.TerminateApmInstanceRequest,

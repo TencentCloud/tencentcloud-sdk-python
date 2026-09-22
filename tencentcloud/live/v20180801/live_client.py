@@ -396,6 +396,52 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAuditRule(self, request):
+        r"""创建审核规则。
+
+        :param request: Request instance for CreateAuditRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateAuditRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateAuditRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAuditTemplate(self, request):
+        r"""创建单个审核模板。
+
+        :param request: Request instance for CreateAuditTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateAuditTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateAuditTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCaster(self, request):
         r"""该接口用来创建新的导播台
 
@@ -841,6 +887,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLiveSmartEraseTemplate(self, request):
+        r"""创建直播智能擦除模板。
+
+        :param request: Request instance for CreateLiveSmartEraseTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveSmartEraseTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveSmartEraseTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLiveSmartEraseTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLiveSmartEraseTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLiveSnapshotRule(self, request):
         r"""创建截图规则，需要先调用[CreateLiveSnapshotTemplate](/document/product/267/32624)接口创建截图模板，然后将返回的模板 ID 绑定到流进行使用。
         <br>截图相关文档：[直播截图](/document/product/267/32737)。
@@ -1227,6 +1296,52 @@ class LiveClient(AbstractClient):
             body = self.call("DeleteAuditKeywords", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAuditKeywordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAuditRule(self, request):
+        r"""删除审核规则。
+
+        :param request: Request instance for DeleteAuditRule.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteAuditRuleRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteAuditRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAuditTemplate(self, request):
+        r"""删除审核模板。
+
+        :param request: Request instance for DeleteAuditTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteAuditTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteAuditTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2085,6 +2200,75 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeAuditKeywords", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditKeywordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditRules(self, request):
+        r"""获取审核规则列表。
+
+        :param request: Request instance for DescribeAuditRules.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAuditRulesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAuditRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditTemplate(self, request):
+        r"""获取单个审核模板。
+
+        :param request: Request instance for DescribeAuditTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAuditTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAuditTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditTemplates(self, request):
+        r"""返回当前用户的审核模板列表。
+
+        :param request: Request instance for DescribeAuditTemplates.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAuditTemplatesRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAuditTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4652,6 +4836,29 @@ class LiveClient(AbstractClient):
             body = self.call("ModifyAuditKeywordLib", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAuditKeywordLibResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAuditTemplate(self, request):
+        r"""修改审核模板。
+
+        :param request: Request instance for ModifyAuditTemplate.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyAuditTemplateRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyAuditTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

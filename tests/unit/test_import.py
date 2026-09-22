@@ -1479,6 +1479,11 @@ def test_import_wimgs_v20251106():
     from tencentcloud.wimgs.v20251106 import models
 
 
+def test_import_workbuddyenterprise_v20260709():
+    from tencentcloud.workbuddyenterprise.v20260709 import workbuddyenterprise_client
+    from tencentcloud.workbuddyenterprise.v20260709 import models
+
+
 def test_import_wsa_v20250508():
     from tencentcloud.wsa.v20250508 import wsa_client
     from tencentcloud.wsa.v20250508 import models

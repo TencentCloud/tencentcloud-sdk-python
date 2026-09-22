@@ -901,6 +901,89 @@ class AccessURLRedirectQueryString(AbstractModel):
         
 
 
+class AccountProtectionSettings(AbstractModel):
+    r"""账号保护配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>账号保护功能开关。</p><p>枚举值：</p><ul><li>on： 开启；</li><li>off： 关闭。</li></ul><p>默认值：off。</p>
+        :type Enabled: str
+        :param _RequestPurpose: <p>请求目的。用于标识请求所属的业务操作场景。</p> <p>枚举值：</p> <ul> <li>ACCOUNT.CHANGE_PASSWORD：在已知原密码的情况下修改密码的请求；</li> <li>ACCOUNT.CHANGE_SECURITY_QUESTION：修改账号安全问题的请求；</li> <li>ACCOUNT.CHECK_EXISTENCE：校验账号是否已存在的请求，常见于登录或注册页面输入邮箱、手机号后的预校验；</li> <li>ACCOUNT.LOGIN：登录账号的请求；</li> <li>ACCOUNT.REGISTER：注册新账号的请求；</li> <li>ACCOUNT.RESET_PASSWORD：重置密码的请求，通常通过邮箱或短信验证身份后设置新密码；</li> <li>ACCOUNT.UPDATE：修改账号关联信息的请求，例如手机号、邮箱、支付卡号、收货地址等；</li> <li>ASSET.CHECK_GIFTCARD_BALANCE：通过卡号等信息查询礼品卡余额的请求；</li> <li>ASSET.CHECK_LOYALTY_POINTS：查询账号积分余额的请求；</li> <li>ASSET.REDEEM_CODE：使用兑换码兑换权益的请求；</li> <li>BROWSE.QUERY：站内搜索商品或服务的请求；</li> <li>PAYMENT.ADD_TO_CART：将商品加入购物车的请求；</li> <li>PAYMENT.GET_METHODS：获取账号已绑定支付方式列表的请求；</li> <li>PAYMENT.MAKE_PAYMENT：提交支付、结算或转账的请求。</li> </ul>
+        :type RequestPurpose: str
+        :param _UserIDSource: <p>用户标识在请求来源中的位置，其中 key 替换为实际的参数名称。</p><p>取值有：</p><ul><li>http.request.cookies["key"]：从 Cookie 中获取名称为 key 的 Cookie 值；</li><li>http.request.headers["key"]：从请求头中获取名称为 key 的头部值；</li><li>http.request.uri.args["key"]：从 URL 查询参数中获取名称为 key 的参数值。</li></ul>
+        :type UserIDSource: str
+        :param _UserRiskProfile: <p>用户风险等级配置。</p>
+        :type UserRiskProfile: :class:`tencentcloud.teo.v20220901.models.UserRiskProfile`
+        """
+        self._Enabled = None
+        self._RequestPurpose = None
+        self._UserIDSource = None
+        self._UserRiskProfile = None
+
+    @property
+    def Enabled(self):
+        r"""<p>账号保护功能开关。</p><p>枚举值：</p><ul><li>on： 开启；</li><li>off： 关闭。</li></ul><p>默认值：off。</p>
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def RequestPurpose(self):
+        r"""<p>请求目的。用于标识请求所属的业务操作场景。</p> <p>枚举值：</p> <ul> <li>ACCOUNT.CHANGE_PASSWORD：在已知原密码的情况下修改密码的请求；</li> <li>ACCOUNT.CHANGE_SECURITY_QUESTION：修改账号安全问题的请求；</li> <li>ACCOUNT.CHECK_EXISTENCE：校验账号是否已存在的请求，常见于登录或注册页面输入邮箱、手机号后的预校验；</li> <li>ACCOUNT.LOGIN：登录账号的请求；</li> <li>ACCOUNT.REGISTER：注册新账号的请求；</li> <li>ACCOUNT.RESET_PASSWORD：重置密码的请求，通常通过邮箱或短信验证身份后设置新密码；</li> <li>ACCOUNT.UPDATE：修改账号关联信息的请求，例如手机号、邮箱、支付卡号、收货地址等；</li> <li>ASSET.CHECK_GIFTCARD_BALANCE：通过卡号等信息查询礼品卡余额的请求；</li> <li>ASSET.CHECK_LOYALTY_POINTS：查询账号积分余额的请求；</li> <li>ASSET.REDEEM_CODE：使用兑换码兑换权益的请求；</li> <li>BROWSE.QUERY：站内搜索商品或服务的请求；</li> <li>PAYMENT.ADD_TO_CART：将商品加入购物车的请求；</li> <li>PAYMENT.GET_METHODS：获取账号已绑定支付方式列表的请求；</li> <li>PAYMENT.MAKE_PAYMENT：提交支付、结算或转账的请求。</li> </ul>
+        :rtype: str
+        """
+        return self._RequestPurpose
+
+    @RequestPurpose.setter
+    def RequestPurpose(self, RequestPurpose):
+        self._RequestPurpose = RequestPurpose
+
+    @property
+    def UserIDSource(self):
+        r"""<p>用户标识在请求来源中的位置，其中 key 替换为实际的参数名称。</p><p>取值有：</p><ul><li>http.request.cookies["key"]：从 Cookie 中获取名称为 key 的 Cookie 值；</li><li>http.request.headers["key"]：从请求头中获取名称为 key 的头部值；</li><li>http.request.uri.args["key"]：从 URL 查询参数中获取名称为 key 的参数值。</li></ul>
+        :rtype: str
+        """
+        return self._UserIDSource
+
+    @UserIDSource.setter
+    def UserIDSource(self, UserIDSource):
+        self._UserIDSource = UserIDSource
+
+    @property
+    def UserRiskProfile(self):
+        r"""<p>用户风险等级配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.UserRiskProfile`
+        """
+        return self._UserRiskProfile
+
+    @UserRiskProfile.setter
+    def UserRiskProfile(self, UserRiskProfile):
+        self._UserRiskProfile = UserRiskProfile
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._RequestPurpose = params.get("RequestPurpose")
+        self._UserIDSource = params.get("UserIDSource")
+        if params.get("UserRiskProfile") is not None:
+            self._UserRiskProfile = UserRiskProfile()
+            self._UserRiskProfile._deserialize(params.get("UserRiskProfile"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AclCondition(AbstractModel):
     r"""精准防护条件
 
@@ -7600,22 +7683,24 @@ class ClientAttestationRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 客户端认证规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：BotManagement 参数中，ClientAttestationRule 列表中未包含的已有规则将被删除。</li>
+        :param _Id: <p>客户端认证规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：BotManagement 参数中，ClientAttestationRule 列表中未包含的已有规则将被删除。</li></p>
         :type Id: str
-        :param _Name: 客户端认证规则的名称。
+        :param _Name: <p>客户端认证规则的名称。</p>
         :type Name: str
-        :param _Enabled: 规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :param _Enabled: <p>规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li></p>
         :type Enabled: str
-        :param _Priority: 规则的优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+        :param _Priority: <p>规则的优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。</p>
         :type Priority: int
-        :param _Condition: 规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :param _Condition: <p>规则的具体内容，需符合表达式语法，详细规范参见产品文档。</p>
         :type Condition: str
-        :param _AttesterId: 客户端认证选项 ID。
+        :param _AttesterId: <p>客户端认证选项 ID。</p>
         :type AttesterId: str
-        :param _DeviceProfiles: 客户端设备配置。若 ClientAttestationRules 参数中，未指定 DeviceProfiles 参数值：保持已有客户端设备配置，不做修改。
-        :type DeviceProfiles: list of DeviceProfile
-        :param _InvalidAttestationAction: 客户端认证未通过的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :param _InvalidAttestationAction: <p>客户端认证未通过的处置方式。SecurityAction.Name 取值范围如下：</p><ul><li>Allow：放行，其中 AllowActionParameters 支持 MinDelayTime 和 MaxDelayTime 配置；</li><li>Deny：拦截，其中 DenyActionParameters 中支持 BlockIp、ReturnCustomPage 和 Stall 配置；</li><li>Monitor：观察；</li><li>Challenge：挑战，其中 ChallengeActionParameters.ChallengeOption 支持 JSChallenge、ManagedChallenge、InterstitialChallenge 和 InlineChallenge；</li><li>Redirect：重定向至URL。</li></ul>
         :type InvalidAttestationAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _DeviceProfiles: <p>客户端设备配置。若 ClientAttestationRules 参数中，未指定 DeviceProfiles 参数值：保持已有客户端设备配置，不做修改。</p>
+        :type DeviceProfiles: list of DeviceProfile
+        :param _AccountProtectionSettings: <p>账号保护配置。</p>
+        :type AccountProtectionSettings: :class:`tencentcloud.teo.v20220901.models.AccountProtectionSettings`
         """
         self._Id = None
         self._Name = None
@@ -7623,12 +7708,13 @@ class ClientAttestationRule(AbstractModel):
         self._Priority = None
         self._Condition = None
         self._AttesterId = None
-        self._DeviceProfiles = None
         self._InvalidAttestationAction = None
+        self._DeviceProfiles = None
+        self._AccountProtectionSettings = None
 
     @property
     def Id(self):
-        r"""客户端认证规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：BotManagement 参数中，ClientAttestationRule 列表中未包含的已有规则将被删除。</li>
+        r"""<p>客户端认证规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li> <b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li> <b>删除</b>已有规则：BotManagement 参数中，ClientAttestationRule 列表中未包含的已有规则将被删除。</li></p>
         :rtype: str
         """
         return self._Id
@@ -7639,7 +7725,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""客户端认证规则的名称。
+        r"""<p>客户端认证规则的名称。</p>
         :rtype: str
         """
         return self._Name
@@ -7650,7 +7736,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        r"""<p>规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li></p>
         :rtype: str
         """
         return self._Enabled
@@ -7661,7 +7747,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""规则的优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。
+        r"""<p>规则的优先级，数值越小越优先执行，范围是 0 ~ 100，默认为 0。</p>
         :rtype: int
         """
         return self._Priority
@@ -7672,7 +7758,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        r"""<p>规则的具体内容，需符合表达式语法，详细规范参见产品文档。</p>
         :rtype: str
         """
         return self._Condition
@@ -7683,7 +7769,7 @@ class ClientAttestationRule(AbstractModel):
 
     @property
     def AttesterId(self):
-        r"""客户端认证选项 ID。
+        r"""<p>客户端认证选项 ID。</p>
         :rtype: str
         """
         return self._AttesterId
@@ -7693,8 +7779,19 @@ class ClientAttestationRule(AbstractModel):
         self._AttesterId = AttesterId
 
     @property
+    def InvalidAttestationAction(self):
+        r"""<p>客户端认证未通过的处置方式。SecurityAction.Name 取值范围如下：</p><ul><li>Allow：放行，其中 AllowActionParameters 支持 MinDelayTime 和 MaxDelayTime 配置；</li><li>Deny：拦截，其中 DenyActionParameters 中支持 BlockIp、ReturnCustomPage 和 Stall 配置；</li><li>Monitor：观察；</li><li>Challenge：挑战，其中 ChallengeActionParameters.ChallengeOption 支持 JSChallenge、ManagedChallenge、InterstitialChallenge 和 InlineChallenge；</li><li>Redirect：重定向至URL。</li></ul>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._InvalidAttestationAction
+
+    @InvalidAttestationAction.setter
+    def InvalidAttestationAction(self, InvalidAttestationAction):
+        self._InvalidAttestationAction = InvalidAttestationAction
+
+    @property
     def DeviceProfiles(self):
-        r"""客户端设备配置。若 ClientAttestationRules 参数中，未指定 DeviceProfiles 参数值：保持已有客户端设备配置，不做修改。
+        r"""<p>客户端设备配置。若 ClientAttestationRules 参数中，未指定 DeviceProfiles 参数值：保持已有客户端设备配置，不做修改。</p>
         :rtype: list of DeviceProfile
         """
         return self._DeviceProfiles
@@ -7704,15 +7801,15 @@ class ClientAttestationRule(AbstractModel):
         self._DeviceProfiles = DeviceProfiles
 
     @property
-    def InvalidAttestationAction(self):
-        r"""客户端认证未通过的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
-        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+    def AccountProtectionSettings(self):
+        r"""<p>账号保护配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccountProtectionSettings`
         """
-        return self._InvalidAttestationAction
+        return self._AccountProtectionSettings
 
-    @InvalidAttestationAction.setter
-    def InvalidAttestationAction(self, InvalidAttestationAction):
-        self._InvalidAttestationAction = InvalidAttestationAction
+    @AccountProtectionSettings.setter
+    def AccountProtectionSettings(self, AccountProtectionSettings):
+        self._AccountProtectionSettings = AccountProtectionSettings
 
 
     def _deserialize(self, params):
@@ -7722,15 +7819,18 @@ class ClientAttestationRule(AbstractModel):
         self._Priority = params.get("Priority")
         self._Condition = params.get("Condition")
         self._AttesterId = params.get("AttesterId")
+        if params.get("InvalidAttestationAction") is not None:
+            self._InvalidAttestationAction = SecurityAction()
+            self._InvalidAttestationAction._deserialize(params.get("InvalidAttestationAction"))
         if params.get("DeviceProfiles") is not None:
             self._DeviceProfiles = []
             for item in params.get("DeviceProfiles"):
                 obj = DeviceProfile()
                 obj._deserialize(item)
                 self._DeviceProfiles.append(obj)
-        if params.get("InvalidAttestationAction") is not None:
-            self._InvalidAttestationAction = SecurityAction()
-            self._InvalidAttestationAction._deserialize(params.get("InvalidAttestationAction"))
+        if params.get("AccountProtectionSettings") is not None:
+            self._AccountProtectionSettings = AccountProtectionSettings()
+            self._AccountProtectionSettings._deserialize(params.get("AccountProtectionSettings"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34020,15 +34120,15 @@ class DeviceProfile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientType: 客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView；</li><li>WeChatMiniProgram。</li>
+        :param _ClientType: <p>客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView；</li><li>WeChatMiniProgram。</li></p>
         :type ClientType: str
-        :param _HighRiskMinScore: 判定请求为高风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 50，对应含义 51～100 为高风险。
+        :param _HighRiskMinScore: <p>高风险请求的最低风险分数。分数大于等于该值时，判定为高风险。</p><p>取值范围：[2, 99]</p><p>默认值：50</p>
         :type HighRiskMinScore: int
-        :param _HighRiskRequestAction: 高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :param _HighRiskRequestAction: <p>高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。</p>
         :type HighRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _MediumRiskMinScore: 判定请求为中风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 15，对应含义 16～50 为中风险。
+        :param _MediumRiskMinScore: <p>中风险请求的最低风险分数。分数大于等于该值且小于 HighRiskMinScore 时，判定为中风险；低于该值时，判定为低风险。</p><p>取值范围：[1, 98]</p><p>默认值：15</p>
         :type MediumRiskMinScore: int
-        :param _MediumRiskRequestAction: 中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        :param _MediumRiskRequestAction: <p>中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。</p>
         :type MediumRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._ClientType = None
@@ -34039,7 +34139,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def ClientType(self):
-        r"""客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView；</li><li>WeChatMiniProgram。</li>
+        r"""<p>客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView；</li><li>WeChatMiniProgram。</li></p>
         :rtype: str
         """
         return self._ClientType
@@ -34050,7 +34150,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def HighRiskMinScore(self):
-        r"""判定请求为高风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 50，对应含义 51～100 为高风险。
+        r"""<p>高风险请求的最低风险分数。分数大于等于该值时，判定为高风险。</p><p>取值范围：[2, 99]</p><p>默认值：50</p>
         :rtype: int
         """
         return self._HighRiskMinScore
@@ -34061,7 +34161,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def HighRiskRequestAction(self):
-        r"""高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        r"""<p>高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._HighRiskRequestAction
@@ -34072,7 +34172,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def MediumRiskMinScore(self):
-        r"""判定请求为中风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 15，对应含义 16～50 为中风险。
+        r"""<p>中风险请求的最低风险分数。分数大于等于该值且小于 HighRiskMinScore 时，判定为中风险；低于该值时，判定为低风险。</p><p>取值范围：[1, 98]</p><p>默认值：15</p>
         :rtype: int
         """
         return self._MediumRiskMinScore
@@ -34083,7 +34183,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def MediumRiskRequestAction(self):
-        r"""中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。
+        r"""<p>中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值为 Monitor。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._MediumRiskRequestAction
@@ -63437,6 +63537,72 @@ class SecurityConfig(AbstractModel):
         
 
 
+class SecurityHeadersToOrigin(AbstractModel):
+    r"""回源请求携带安全头部配置，配置生效后将携带对应 keyname 的请求头部回源。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotIdentificationHeaders: <p>Bot 标识信息回源头部配置。</p><p>枚举值：</p><ul><li>EO-Bot-Botnet-ID： 基于 Bot 请求特征生成的识别标识。</li></ul>
+        :type BotIdentificationHeaders: list of str
+        :param _BotManagementHeaders: <p>高级 Bot 管理模块识别结果回源头部配置。</p><p>枚举值：</p><ul><li>EO-Bot-Client-Attestation： 高级 Bot 管理 - 客户端认证模块认证票据校验结果；</li><li>EO-Bot-Client-Risk： 高级 Bot 管理 - 客户端认证模块设备风险评估结果；</li><li>EO-Bot-Intelligence： 高级 Bot 管理 - Bot 智能分析模块识别结果；</li><li>EO-Bot-IP-Reputation： 高级 Bot 管理 - 客户端画像分析识别结果；</li><li>EO-Bot-Known-Tool： 高级 Bot 管理 - 基础特征管理 - UA 特征规则模块识别结果；</li><li>EO-Bot-Search-Engine： 高级 Bot 管理 - 基础特征管理 - 搜索引擎规则模块识别结果；</li><li>EO-Bot-Source-IDC： 高级 Bot 管理 - 基础特征管理 - IDC 规则模块识别结果；</li><li>EO-Bot-User-Risk： 高级 Bot 管理 - 客户端认证模块账号风险评估结果。</li></ul>
+        :type BotManagementHeaders: list of str
+        :param _ClientFingerprintHeaders: <p>客户端指纹信息回源头部配置。</p><p>枚举值：</p><ul><li>EO-Bot-Fingerprint： 客户端指纹信息。</li></ul>
+        :type ClientFingerprintHeaders: list of str
+        """
+        self._BotIdentificationHeaders = None
+        self._BotManagementHeaders = None
+        self._ClientFingerprintHeaders = None
+
+    @property
+    def BotIdentificationHeaders(self):
+        r"""<p>Bot 标识信息回源头部配置。</p><p>枚举值：</p><ul><li>EO-Bot-Botnet-ID： 基于 Bot 请求特征生成的识别标识。</li></ul>
+        :rtype: list of str
+        """
+        return self._BotIdentificationHeaders
+
+    @BotIdentificationHeaders.setter
+    def BotIdentificationHeaders(self, BotIdentificationHeaders):
+        self._BotIdentificationHeaders = BotIdentificationHeaders
+
+    @property
+    def BotManagementHeaders(self):
+        r"""<p>高级 Bot 管理模块识别结果回源头部配置。</p><p>枚举值：</p><ul><li>EO-Bot-Client-Attestation： 高级 Bot 管理 - 客户端认证模块认证票据校验结果；</li><li>EO-Bot-Client-Risk： 高级 Bot 管理 - 客户端认证模块设备风险评估结果；</li><li>EO-Bot-Intelligence： 高级 Bot 管理 - Bot 智能分析模块识别结果；</li><li>EO-Bot-IP-Reputation： 高级 Bot 管理 - 客户端画像分析识别结果；</li><li>EO-Bot-Known-Tool： 高级 Bot 管理 - 基础特征管理 - UA 特征规则模块识别结果；</li><li>EO-Bot-Search-Engine： 高级 Bot 管理 - 基础特征管理 - 搜索引擎规则模块识别结果；</li><li>EO-Bot-Source-IDC： 高级 Bot 管理 - 基础特征管理 - IDC 规则模块识别结果；</li><li>EO-Bot-User-Risk： 高级 Bot 管理 - 客户端认证模块账号风险评估结果。</li></ul>
+        :rtype: list of str
+        """
+        return self._BotManagementHeaders
+
+    @BotManagementHeaders.setter
+    def BotManagementHeaders(self, BotManagementHeaders):
+        self._BotManagementHeaders = BotManagementHeaders
+
+    @property
+    def ClientFingerprintHeaders(self):
+        r"""<p>客户端指纹信息回源头部配置。</p><p>枚举值：</p><ul><li>EO-Bot-Fingerprint： 客户端指纹信息。</li></ul>
+        :rtype: list of str
+        """
+        return self._ClientFingerprintHeaders
+
+    @ClientFingerprintHeaders.setter
+    def ClientFingerprintHeaders(self, ClientFingerprintHeaders):
+        self._ClientFingerprintHeaders = ClientFingerprintHeaders
+
+
+    def _deserialize(self, params):
+        self._BotIdentificationHeaders = params.get("BotIdentificationHeaders")
+        self._BotManagementHeaders = params.get("BotManagementHeaders")
+        self._ClientFingerprintHeaders = params.get("ClientFingerprintHeaders")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecurityPolicy(AbstractModel):
     r"""安全策略配置
 
@@ -63444,22 +63610,24 @@ class SecurityPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomRules: 自定义规则配置。
+        :param _CustomRules: <p>自定义规则配置。</p>
         :type CustomRules: :class:`tencentcloud.teo.v20220901.models.CustomRules`
-        :param _ManagedRules: 托管规则配置。
+        :param _ManagedRules: <p>托管规则配置。</p>
         :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
-        :param _HttpDDoSProtection: HTTP DDOS 防护配置。
+        :param _HttpDDoSProtection: <p>HTTP DDOS 防护配置。</p>
         :type HttpDDoSProtection: :class:`tencentcloud.teo.v20220901.models.HttpDDoSProtection`
-        :param _RateLimitingRules: 速率限制规则配置。
+        :param _RateLimitingRules: <p>速率限制规则配置。</p>
         :type RateLimitingRules: :class:`tencentcloud.teo.v20220901.models.RateLimitingRules`
-        :param _ExceptionRules: 例外规则配置。
+        :param _ExceptionRules: <p>例外规则配置。</p>
         :type ExceptionRules: :class:`tencentcloud.teo.v20220901.models.ExceptionRules`
-        :param _BotManagement: Bot 管理配置。
+        :param _BotManagement: <p>Bot 管理配置。</p>
         :type BotManagement: :class:`tencentcloud.teo.v20220901.models.BotManagement`
-        :param _BotManagementLite: 基础 Bot 管理配置。
+        :param _BotManagementLite: <p>基础 Bot 管理配置。</p>
         :type BotManagementLite: :class:`tencentcloud.teo.v20220901.models.BotManagementLite`
-        :param _DefaultDenySecurityActionParameters: 默认拦截动作配置。
+        :param _DefaultDenySecurityActionParameters: <p>默认拦截动作配置。</p>
         :type DefaultDenySecurityActionParameters: :class:`tencentcloud.teo.v20220901.models.DefaultDenySecurityActionParameters`
+        :param _SecurityHeadersToOrigin: <p>回源请求携带安全头部配置，配置生效后将携带对应 keyname 的请求头部回源。</p>
+        :type SecurityHeadersToOrigin: :class:`tencentcloud.teo.v20220901.models.SecurityHeadersToOrigin`
         """
         self._CustomRules = None
         self._ManagedRules = None
@@ -63469,10 +63637,11 @@ class SecurityPolicy(AbstractModel):
         self._BotManagement = None
         self._BotManagementLite = None
         self._DefaultDenySecurityActionParameters = None
+        self._SecurityHeadersToOrigin = None
 
     @property
     def CustomRules(self):
-        r"""自定义规则配置。
+        r"""<p>自定义规则配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.CustomRules`
         """
         return self._CustomRules
@@ -63483,7 +63652,7 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def ManagedRules(self):
-        r"""托管规则配置。
+        r"""<p>托管规则配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ManagedRules`
         """
         return self._ManagedRules
@@ -63494,7 +63663,7 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def HttpDDoSProtection(self):
-        r"""HTTP DDOS 防护配置。
+        r"""<p>HTTP DDOS 防护配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.HttpDDoSProtection`
         """
         return self._HttpDDoSProtection
@@ -63505,7 +63674,7 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def RateLimitingRules(self):
-        r"""速率限制规则配置。
+        r"""<p>速率限制规则配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.RateLimitingRules`
         """
         return self._RateLimitingRules
@@ -63516,7 +63685,7 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def ExceptionRules(self):
-        r"""例外规则配置。
+        r"""<p>例外规则配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ExceptionRules`
         """
         return self._ExceptionRules
@@ -63527,7 +63696,7 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def BotManagement(self):
-        r"""Bot 管理配置。
+        r"""<p>Bot 管理配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotManagement`
         """
         return self._BotManagement
@@ -63538,7 +63707,7 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def BotManagementLite(self):
-        r"""基础 Bot 管理配置。
+        r"""<p>基础 Bot 管理配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.BotManagementLite`
         """
         return self._BotManagementLite
@@ -63549,7 +63718,7 @@ class SecurityPolicy(AbstractModel):
 
     @property
     def DefaultDenySecurityActionParameters(self):
-        r"""默认拦截动作配置。
+        r"""<p>默认拦截动作配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.DefaultDenySecurityActionParameters`
         """
         return self._DefaultDenySecurityActionParameters
@@ -63557,6 +63726,17 @@ class SecurityPolicy(AbstractModel):
     @DefaultDenySecurityActionParameters.setter
     def DefaultDenySecurityActionParameters(self, DefaultDenySecurityActionParameters):
         self._DefaultDenySecurityActionParameters = DefaultDenySecurityActionParameters
+
+    @property
+    def SecurityHeadersToOrigin(self):
+        r"""<p>回源请求携带安全头部配置，配置生效后将携带对应 keyname 的请求头部回源。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityHeadersToOrigin`
+        """
+        return self._SecurityHeadersToOrigin
+
+    @SecurityHeadersToOrigin.setter
+    def SecurityHeadersToOrigin(self, SecurityHeadersToOrigin):
+        self._SecurityHeadersToOrigin = SecurityHeadersToOrigin
 
 
     def _deserialize(self, params):
@@ -63584,6 +63764,9 @@ class SecurityPolicy(AbstractModel):
         if params.get("DefaultDenySecurityActionParameters") is not None:
             self._DefaultDenySecurityActionParameters = DefaultDenySecurityActionParameters()
             self._DefaultDenySecurityActionParameters._deserialize(params.get("DefaultDenySecurityActionParameters"))
+        if params.get("SecurityHeadersToOrigin") is not None:
+            self._SecurityHeadersToOrigin = SecurityHeadersToOrigin()
+            self._SecurityHeadersToOrigin._deserialize(params.get("SecurityHeadersToOrigin"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67391,6 +67574,91 @@ class UpstreamURLRewriteParameters(AbstractModel):
         self._Action = params.get("Action")
         self._Value = params.get("Value")
         self._Regex = params.get("Regex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserRiskProfile(AbstractModel):
+    r"""用户风险等级配置。风险分数范围为 0～100，分数越高表示风险越高。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HighRiskMinScore: <p>高风险请求的最低风险分数。分数大于等于该值时，判定为高风险。</p><p>取值范围：[2, 99]</p><p>默认值：50</p>
+        :type HighRiskMinScore: int
+        :param _HighRiskRequestAction: <p>高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值：Monitor</p>
+        :type HighRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        :param _MediumRiskMinScore: <p>中风险请求的最低风险分数。分数大于等于该值且小于 HighRiskMinScore 时，判定为中风险；低于该值时，判定为低风险。</p><p>取值范围：[1, 98]</p><p>默认值：15</p>
+        :type MediumRiskMinScore: int
+        :param _MediumRiskRequestAction: <p>中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值：Monitor</p>
+        :type MediumRiskRequestAction: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        self._HighRiskMinScore = None
+        self._HighRiskRequestAction = None
+        self._MediumRiskMinScore = None
+        self._MediumRiskRequestAction = None
+
+    @property
+    def HighRiskMinScore(self):
+        r"""<p>高风险请求的最低风险分数。分数大于等于该值时，判定为高风险。</p><p>取值范围：[2, 99]</p><p>默认值：50</p>
+        :rtype: int
+        """
+        return self._HighRiskMinScore
+
+    @HighRiskMinScore.setter
+    def HighRiskMinScore(self, HighRiskMinScore):
+        self._HighRiskMinScore = HighRiskMinScore
+
+    @property
+    def HighRiskRequestAction(self):
+        r"""<p>高风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值：Monitor</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._HighRiskRequestAction
+
+    @HighRiskRequestAction.setter
+    def HighRiskRequestAction(self, HighRiskRequestAction):
+        self._HighRiskRequestAction = HighRiskRequestAction
+
+    @property
+    def MediumRiskMinScore(self):
+        r"""<p>中风险请求的最低风险分数。分数大于等于该值且小于 HighRiskMinScore 时，判定为中风险；低于该值时，判定为低风险。</p><p>取值范围：[1, 98]</p><p>默认值：15</p>
+        :rtype: int
+        """
+        return self._MediumRiskMinScore
+
+    @MediumRiskMinScore.setter
+    def MediumRiskMinScore(self, MediumRiskMinScore):
+        self._MediumRiskMinScore = MediumRiskMinScore
+
+    @property
+    def MediumRiskRequestAction(self):
+        r"""<p>中风险请求的处置方式。SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>Redirect：重定向；</li><li>Challenge：挑战。</li>默认值：Monitor</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
+        """
+        return self._MediumRiskRequestAction
+
+    @MediumRiskRequestAction.setter
+    def MediumRiskRequestAction(self, MediumRiskRequestAction):
+        self._MediumRiskRequestAction = MediumRiskRequestAction
+
+
+    def _deserialize(self, params):
+        self._HighRiskMinScore = params.get("HighRiskMinScore")
+        if params.get("HighRiskRequestAction") is not None:
+            self._HighRiskRequestAction = SecurityAction()
+            self._HighRiskRequestAction._deserialize(params.get("HighRiskRequestAction"))
+        self._MediumRiskMinScore = params.get("MediumRiskMinScore")
+        if params.get("MediumRiskRequestAction") is not None:
+            self._MediumRiskRequestAction = SecurityAction()
+            self._MediumRiskRequestAction._deserialize(params.get("MediumRiskRequestAction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

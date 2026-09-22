@@ -1504,6 +1504,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTaskResult(
+            self,
+            request: models.DescribeTaskResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTaskResultResponse:
+        """
+        本接口（DescribeTaskResult）用于查询任务结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTaskResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTaskResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUserList(
             self,
             request: models.DescribeUserListRequest,
@@ -2126,6 +2144,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ResetPGAccountPassword(
+            self,
+            request: models.ResetPGAccountPasswordRequest,
+            opts: Dict = None,
+    ) -> models.ResetPGAccountPasswordResponse:
+        """
+        修改 PG 实例用户角色密码。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetPGAccountPassword"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetPGAccountPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RunCommands(
             self,
             request: models.RunCommandsRequest,
@@ -2288,6 +2324,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "UpdateTable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpgradePGInstanceToDedicated(
+            self,
+            request: models.UpgradePGInstanceToDedicatedRequest,
+            opts: Dict = None,
+    ) -> models.UpgradePGInstanceToDedicatedResponse:
+        """
+        本接口（UpgradePGInstanceToDedicated）用于共享PG升级独享PG。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradePGInstanceToDedicated"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradePGInstanceToDedicatedResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
