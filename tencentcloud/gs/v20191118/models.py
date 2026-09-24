@@ -6115,26 +6115,21 @@ class DescribeAndroidInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，默认为 0
+        :param _Offset: <p>偏移量，默认为 0</p>
         :type Offset: int
-        :param _Limit: 限制量，默认为20，最大值为100
+        :param _Limit: <p>限制量，默认为20，最大值为100</p>
         :type Limit: int
-        :param _AndroidInstanceIds: 实例ID。每次请求的实例的上限为100。
+        :param _AndroidInstanceIds: <p>实例ID。每次请求的实例的上限为100。</p>
         :type AndroidInstanceIds: list of str
-        :param _AndroidInstanceRegion: 实例地域。目前还不支持按地域进行聚合查询
+        :param _AndroidInstanceRegion: <p>实例地域。目前还不支持按地域进行聚合查询</p>
         :type AndroidInstanceRegion: str
-        :param _AndroidInstanceZone: 实例可用区
+        :param _AndroidInstanceZone: <p>实例可用区</p>
         :type AndroidInstanceZone: str
-        :param _AndroidInstanceGroupIds: 实例分组 ID 列表
+        :param _AndroidInstanceGroupIds: <p>实例分组 ID 列表</p>
         :type AndroidInstanceGroupIds: list of str
-        :param _LabelSelector: 实例标签选择器
+        :param _LabelSelector: <p>实例标签选择器</p>
         :type LabelSelector: list of LabelRequirement
-        :param _Filters: 字段过滤器。Filter 的 Name 有以下值：
-Name：实例名称
-UserId：实例用户ID
-HostSerialNumber：宿主机序列号
-HostServerSerialNumber：机箱序列号
-AndroidInstanceModel：实例型号
+        :param _Filters: <p>字段过滤器。Filter 的 Name 有以下值：<br>Name：实例名称<br>UserId：实例用户ID<br>HostSerialNumber：宿主机序列号<br>HostServerSerialNumber：机箱序列号<br>AndroidInstanceModel：实例型号</p>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -6148,7 +6143,7 @@ AndroidInstanceModel：实例型号
 
     @property
     def Offset(self):
-        r"""偏移量，默认为 0
+        r"""<p>偏移量，默认为 0</p>
         :rtype: int
         """
         return self._Offset
@@ -6159,7 +6154,7 @@ AndroidInstanceModel：实例型号
 
     @property
     def Limit(self):
-        r"""限制量，默认为20，最大值为100
+        r"""<p>限制量，默认为20，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -6170,7 +6165,7 @@ AndroidInstanceModel：实例型号
 
     @property
     def AndroidInstanceIds(self):
-        r"""实例ID。每次请求的实例的上限为100。
+        r"""<p>实例ID。每次请求的实例的上限为100。</p>
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -6181,7 +6176,7 @@ AndroidInstanceModel：实例型号
 
     @property
     def AndroidInstanceRegion(self):
-        r"""实例地域。目前还不支持按地域进行聚合查询
+        r"""<p>实例地域。目前还不支持按地域进行聚合查询</p>
         :rtype: str
         """
         return self._AndroidInstanceRegion
@@ -6192,7 +6187,7 @@ AndroidInstanceModel：实例型号
 
     @property
     def AndroidInstanceZone(self):
-        r"""实例可用区
+        r"""<p>实例可用区</p>
         :rtype: str
         """
         return self._AndroidInstanceZone
@@ -6203,7 +6198,7 @@ AndroidInstanceModel：实例型号
 
     @property
     def AndroidInstanceGroupIds(self):
-        r"""实例分组 ID 列表
+        r"""<p>实例分组 ID 列表</p>
         :rtype: list of str
         """
         return self._AndroidInstanceGroupIds
@@ -6214,7 +6209,7 @@ AndroidInstanceModel：实例型号
 
     @property
     def LabelSelector(self):
-        r"""实例标签选择器
+        r"""<p>实例标签选择器</p>
         :rtype: list of LabelRequirement
         """
         return self._LabelSelector
@@ -6225,12 +6220,7 @@ AndroidInstanceModel：实例型号
 
     @property
     def Filters(self):
-        r"""字段过滤器。Filter 的 Name 有以下值：
-Name：实例名称
-UserId：实例用户ID
-HostSerialNumber：宿主机序列号
-HostServerSerialNumber：机箱序列号
-AndroidInstanceModel：实例型号
+        r"""<p>字段过滤器。Filter 的 Name 有以下值：<br>Name：实例名称<br>UserId：实例用户ID<br>HostSerialNumber：宿主机序列号<br>HostServerSerialNumber：机箱序列号<br>AndroidInstanceModel：实例型号</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -6276,9 +6266,9 @@ class DescribeAndroidInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 实例总数量
+        :param _TotalCount: <p>实例总数量</p>
         :type TotalCount: int
-        :param _AndroidInstances: 实例列表
+        :param _AndroidInstances: <p>实例列表</p>
         :type AndroidInstances: list of AndroidInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6289,7 +6279,7 @@ class DescribeAndroidInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""实例总数量
+        r"""<p>实例总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6300,7 +6290,7 @@ class DescribeAndroidInstancesResponse(AbstractModel):
 
     @property
     def AndroidInstances(self):
-        r"""实例列表
+        r"""<p>实例列表</p>
         :rtype: list of AndroidInstance
         """
         return self._AndroidInstances

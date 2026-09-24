@@ -641,6 +641,81 @@ class ApproveRegistryRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>Version ID。</p>
+        :type VersionId: str
+        :param _Comment: <p>动作留言；非空。</p>
+        :type Comment: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._Comment = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>Version ID。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Comment(self):
+        r"""<p>动作留言；非空。</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ApproveRegistryRecordResponse(AbstractModel):
     r"""ApproveRegistryRecord返回参数结构体
@@ -649,10 +724,24 @@ class ApproveRegistryRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Version: <p>更新后的 Version。</p>
+        :type Version: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Version = None
         self._RequestId = None
+
+    @property
+    def Version(self):
+        r"""<p>更新后的 Version。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
     @property
     def RequestId(self):
@@ -667,6 +756,9 @@ class ApproveRegistryRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Version") is not None:
+            self._Version = CloudRecordVersion()
+            self._Version._deserialize(params.get("Version"))
         self._RequestId = params.get("RequestId")
 
 
@@ -711,6 +803,81 @@ class CancelRegistryRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>Version ID。</p>
+        :type VersionId: str
+        :param _Comment: <p>动作留言；非空。</p>
+        :type Comment: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._Comment = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>Version ID。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Comment(self):
+        r"""<p>动作留言；非空。</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CancelRegistryRecordResponse(AbstractModel):
     r"""CancelRegistryRecord返回参数结构体
@@ -719,10 +886,24 @@ class CancelRegistryRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Version: <p>更新后的 Version。</p>
+        :type Version: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Version = None
         self._RequestId = None
+
+    @property
+    def Version(self):
+        r"""<p>更新后的 Version。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
     @property
     def RequestId(self):
@@ -737,6 +918,9 @@ class CancelRegistryRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Version") is not None:
+            self._Version = CloudRecordVersion()
+            self._Version._deserialize(params.get("Version"))
         self._RequestId = params.get("RequestId")
 
 
@@ -781,6 +965,1622 @@ class CfsStorageSource(AbstractModel):
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAgentSourceInput(AbstractModel):
+    r"""Agent Record 内容来源。Type 判别 MANUAL 与 URL_IMPORT。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>来源类型。MANUAL：直接提交 Agent Descriptors JSON 文本；URL_IMPORT：从远端 Agent Card / AGUI 端点导入。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Descriptors: <p>Type=MANUAL 时必填；值为通用 JSON object 文本；A2A 标准校验或 AGUI/CUSTOM 规则由后端执行。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Descriptors: str
+        :param _EndpointURL: <p>A2A：Agent Card URL；AGUI：Runtime Endpoint URL。Type=URL_IMPORT 时必填，HTTPS。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndpointURL: str
+        """
+        self._Type = None
+        self._Descriptors = None
+        self._EndpointURL = None
+
+    @property
+    def Type(self):
+        r"""<p>来源类型。MANUAL：直接提交 Agent Descriptors JSON 文本；URL_IMPORT：从远端 Agent Card / AGUI 端点导入。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Descriptors(self):
+        r"""<p>Type=MANUAL 时必填；值为通用 JSON object 文本；A2A 标准校验或 AGUI/CUSTOM 规则由后端执行。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Descriptors
+
+    @Descriptors.setter
+    def Descriptors(self, Descriptors):
+        self._Descriptors = Descriptors
+
+    @property
+    def EndpointURL(self):
+        r"""<p>A2A：Agent Card URL；AGUI：Runtime Endpoint URL。Type=URL_IMPORT 时必填，HTTPS。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndpointURL
+
+    @EndpointURL.setter
+    def EndpointURL(self, EndpointURL):
+        self._EndpointURL = EndpointURL
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Descriptors = params.get("Descriptors")
+        self._EndpointURL = params.get("EndpointURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAuditLog(AbstractModel):
+    r"""审计日志条目。记录 Registry / Record / Version 维度的动作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditLogId: <p>审计日志 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuditLogId: str
+        :param _RegistryId: <p>所属 Registry ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryId: str
+        :param _Actor: <p>动作发起者（主账号 UIN 或子账号 UIN）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Actor: str
+        :param _Action: <p>Action 名称，等同 X-TC-Action。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param _Details: <p>动作脱敏摘要对象；使用云 API 字段命名，字段随 Action 而变；不包含凭据、预签名 URL 或完整 Descriptor。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: str
+        :param _CreateTime: <p>动作发生时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _RecordId: <p>关联 Record ID；仅 Record / Version 相关动作。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param _VersionId: <p>关联 Version ID；仅 Version 相关动作。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: str
+        """
+        self._AuditLogId = None
+        self._RegistryId = None
+        self._Actor = None
+        self._Action = None
+        self._Details = None
+        self._CreateTime = None
+        self._RecordId = None
+        self._VersionId = None
+
+    @property
+    def AuditLogId(self):
+        r"""<p>审计日志 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AuditLogId
+
+    @AuditLogId.setter
+    def AuditLogId(self, AuditLogId):
+        self._AuditLogId = AuditLogId
+
+    @property
+    def RegistryId(self):
+        r"""<p>所属 Registry ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Actor(self):
+        r"""<p>动作发起者（主账号 UIN 或子账号 UIN）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Actor
+
+    @Actor.setter
+    def Actor(self, Actor):
+        self._Actor = Actor
+
+    @property
+    def Action(self):
+        r"""<p>Action 名称，等同 X-TC-Action。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Details(self):
+        r"""<p>动作脱敏摘要对象；使用云 API 字段命名，字段随 Action 而变；不包含凭据、预签名 URL 或完整 Descriptor。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+    @property
+    def CreateTime(self):
+        r"""<p>动作发生时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RecordId(self):
+        r"""<p>关联 Record ID；仅 Record / Version 相关动作。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>关联 Version ID；仅 Version 相关动作。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+
+    def _deserialize(self, params):
+        self._AuditLogId = params.get("AuditLogId")
+        self._RegistryId = params.get("RegistryId")
+        self._Actor = params.get("Actor")
+        self._Action = params.get("Action")
+        self._Details = params.get("Details")
+        self._CreateTime = params.get("CreateTime")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudFilter(AbstractModel):
+    r"""通用过滤条件。Name 为字段名，Values 为字段候选值；字段间 AND、Values 内 OR。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>过滤字段名。DescribeRegistryList 支持 <code>name</code> / <code>search</code>（模糊搜索）与 <code>archived</code> / <code>status</code>（true / false / all）；DescribeRegistryRecordList 支持 <code>name</code> / <code>search</code>（模糊）、<code>descriptor-type</code>、<code>lifecycle-status</code>（精确）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Values: <p>过滤字段候选值列表；至少 1 项。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""<p>过滤字段名。DescribeRegistryList 支持 <code>name</code> / <code>search</code>（模糊搜索）与 <code>archived</code> / <code>status</code>（true / false / all）；DescribeRegistryRecordList 支持 <code>name</code> / <code>search</code>（模糊）、<code>descriptor-type</code>、<code>lifecycle-status</code>（精确）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""<p>过滤字段候选值列表；至少 1 项。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudMCPSourceInput(AbstractModel):
+    r"""MCP Record 内容来源。Type 判别 MANUAL 与 URL_IMPORT。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>来源类型。MANUAL：直接提交 MCP Descriptors JSON 文本；URL_IMPORT：从远端 MCP server.json URL 导入。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Descriptors: <p>Type=MANUAL 时必填；值为完整 MCP server.json 对象的 JSON 文本；完整 MCP 2025-12-11 标准校验由后端执行。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Descriptors: str
+        :param _EndpointURL: <p>远端 MCP server.json URL；HTTPS。Type=URL_IMPORT 时必填。Version 从远端 initialize.serverInfo.version 观测获得，无需请求参数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndpointURL: str
+        """
+        self._Type = None
+        self._Descriptors = None
+        self._EndpointURL = None
+
+    @property
+    def Type(self):
+        r"""<p>来源类型。MANUAL：直接提交 MCP Descriptors JSON 文本；URL_IMPORT：从远端 MCP server.json URL 导入。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Descriptors(self):
+        r"""<p>Type=MANUAL 时必填；值为完整 MCP server.json 对象的 JSON 文本；完整 MCP 2025-12-11 标准校验由后端执行。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Descriptors
+
+    @Descriptors.setter
+    def Descriptors(self, Descriptors):
+        self._Descriptors = Descriptors
+
+    @property
+    def EndpointURL(self):
+        r"""<p>远端 MCP server.json URL；HTTPS。Type=URL_IMPORT 时必填。Version 从远端 initialize.serverInfo.version 观测获得，无需请求参数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndpointURL
+
+    @EndpointURL.setter
+    def EndpointURL(self, EndpointURL):
+        self._EndpointURL = EndpointURL
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Descriptors = params.get("Descriptors")
+        self._EndpointURL = params.get("EndpointURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudRecord(AbstractModel):
+    r"""Registry Record 对象。Record 只保存元数据；协议描述符与内容状态请通过 Version 相关接口获取。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: <p>Record ID；格式 <code>rec-</code> + 8 位小写字母/数字。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param _RegistryId: <p>所属 Registry ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryId: str
+        :param _Name: <p>Record 名称；同一 Registry 内可重复。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>描述。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _DescriptorType: <p>协议描述符类型；创建后不可变。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DescriptorType: str
+        :param _LifecycleStatus: <p>生命周期状态。ACTIVE：可用；DELETED：软删除墓碑，不再参与常规查询、下发或版本配额。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifecycleStatus: str
+        :param _AppId: <p>所属租户 AppId。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _CreatorUin: <p>创建者主账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        :param _CreatorSubAccountUin: <p>创建者子账号 UIN；主账号直接创建时为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorSubAccountUin: str
+        :param _CreateTime: <p>创建时间，ISO 8601 UTC。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: <p>最近一次更新时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _VersionCount: <p>Record 下未删除 Version 数量。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionCount: int
+        :param _LabelSet: <p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelSet: list of str
+        """
+        self._RecordId = None
+        self._RegistryId = None
+        self._Name = None
+        self._Description = None
+        self._DescriptorType = None
+        self._LifecycleStatus = None
+        self._AppId = None
+        self._CreatorUin = None
+        self._CreatorSubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._VersionCount = None
+        self._LabelSet = None
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID；格式 <code>rec-</code> + 8 位小写字母/数字。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def RegistryId(self):
+        r"""<p>所属 Registry ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        r"""<p>Record 名称；同一 Registry 内可重复。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DescriptorType(self):
+        r"""<p>协议描述符类型；创建后不可变。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DescriptorType
+
+    @DescriptorType.setter
+    def DescriptorType(self, DescriptorType):
+        self._DescriptorType = DescriptorType
+
+    @property
+    def LifecycleStatus(self):
+        r"""<p>生命周期状态。ACTIVE：可用；DELETED：软删除墓碑，不再参与常规查询、下发或版本配额。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LifecycleStatus
+
+    @LifecycleStatus.setter
+    def LifecycleStatus(self, LifecycleStatus):
+        self._LifecycleStatus = LifecycleStatus
+
+    @property
+    def AppId(self):
+        r"""<p>所属租户 AppId。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreatorUin(self):
+        r"""<p>创建者主账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CreatorSubAccountUin(self):
+        r"""<p>创建者子账号 UIN；主账号直接创建时为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorSubAccountUin
+
+    @CreatorSubAccountUin.setter
+    def CreatorSubAccountUin(self, CreatorSubAccountUin):
+        self._CreatorSubAccountUin = CreatorSubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，ISO 8601 UTC。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>最近一次更新时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def VersionCount(self):
+        r"""<p>Record 下未删除 Version 数量。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._VersionCount
+
+    @VersionCount.setter
+    def VersionCount(self, VersionCount):
+        self._VersionCount = VersionCount
+
+    @property
+    def LabelSet(self):
+        r"""<p>Record 下所有 Label Name（含未绑定 Label），包括系统 Label（stable / latest）和自定义 Label。仅名称，不含 VersionId、更新时间或操作者。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._LabelSet
+
+    @LabelSet.setter
+    def LabelSet(self, LabelSet):
+        self._LabelSet = LabelSet
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._DescriptorType = params.get("DescriptorType")
+        self._LifecycleStatus = params.get("LifecycleStatus")
+        self._AppId = params.get("AppId")
+        self._CreatorUin = params.get("CreatorUin")
+        self._CreatorSubAccountUin = params.get("CreatorSubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._VersionCount = params.get("VersionCount")
+        self._LabelSet = params.get("LabelSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudRecordLabelMutation(AbstractModel):
+    r"""Record Label 变更操作项。Operation=SET 时可携带 VersionId；DELETE 时禁止 VersionId。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operation: <p>操作类型。SET：创建或移动 Label；DELETE：删除自定义 Label（stable/latest 保留 Label 禁止删除）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operation: str
+        :param _Name: <p>Label 名称，长度 1..63，格式 ^[a-z][a-z0-9._-]{0,62}$，按小写规范化。stable、latest 为系统保留 Label。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _VersionId: <p>目标 Version ID。SET 时可选：省略表示未绑定（自定义 Label 允许，stable 禁止）；DELETE 时禁止携带。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: str
+        :param _Reason: <p>变更原因，最大 1024 字符，可选。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        """
+        self._Operation = None
+        self._Name = None
+        self._VersionId = None
+        self._Reason = None
+
+    @property
+    def Operation(self):
+        r"""<p>操作类型。SET：创建或移动 Label；DELETE：删除自定义 Label（stable/latest 保留 Label 禁止删除）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def Name(self):
+        r"""<p>Label 名称，长度 1..63，格式 ^[a-z][a-z0-9._-]{0,62}$，按小写规范化。stable、latest 为系统保留 Label。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VersionId(self):
+        r"""<p>目标 Version ID。SET 时可选：省略表示未绑定（自定义 Label 允许，stable 禁止）；DELETE 时禁止携带。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Reason(self):
+        r"""<p>变更原因，最大 1024 字符，可选。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._Operation = params.get("Operation")
+        self._Name = params.get("Name")
+        self._VersionId = params.get("VersionId")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudRecordVersion(AbstractModel):
+    r"""Record 的一个不可变 Version 快照；记录了描述符、来源配置与审批状态。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionId: <p>Version ID；格式 <code>rv-</code> + 8 位小写字母/数字。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionId: str
+        :param _RecordId: <p>所属 Record ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param _Revision: <p>Version 递增序号（1 起）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: int
+        :param _Status: <p>Version 状态。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _ApprovalMode: <p>审批模式；创建时锁定，后续变更 Registry 审批模式不影响本 Version。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApprovalMode: str
+        :param _AppId: <p>所属租户 AppId。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _CreatorUin: <p>创建者主账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        :param _CreateTime: <p>创建时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: <p>最近一次更新时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _VersionName: <p>Version 别名（可选）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionName: str
+        :param _Descriptors: <p>协议描述符对象。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Descriptors: str
+        :param _SourceType: <p>内容来源。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: str
+        :param _SourceConfig: <p>规范化来源配置对象。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceConfig: str
+        :param _ContentStatus: <p>内容状态。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentStatus: str
+        :param _ContentSHA256: <p>READY 内容 SHA-256。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentSHA256: str
+        :param _ContentSizeBytes: <p>READY 内容字节数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentSizeBytes: int
+        :param _ConfigSHA256: <p>配置内容规范化后的 SHA-256（用于幂等去重）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigSHA256: str
+        :param _CreatorSubAccountUin: <p>创建者子账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorSubAccountUin: str
+        :param _ApprovalActions: <p>Version 历次审批动作。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApprovalActions: list of CloudVersionApprovalAction
+        :param _ContentReadyTime: <p>TAR 内容成功校验、完成物化并进入 READY 的时间；MANUAL / URL_IMPORT 或尚未 READY 的 TAR_PACKAGE 均为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentReadyTime: str
+        :param _ChangeLog: <p>本次 Version 的变更原因，最大 4096 字符；不可修改。Revision 1 或未填写时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeLog: str
+        :param _LabelSet: <p>当前绑定该 Version 的 Label Name 列表（例如 stable / latest 或自定义 Label 名称）。未绑定 Label 不在此返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelSet: list of str
+        """
+        self._VersionId = None
+        self._RecordId = None
+        self._Revision = None
+        self._Status = None
+        self._ApprovalMode = None
+        self._AppId = None
+        self._CreatorUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._VersionName = None
+        self._Descriptors = None
+        self._SourceType = None
+        self._SourceConfig = None
+        self._ContentStatus = None
+        self._ContentSHA256 = None
+        self._ContentSizeBytes = None
+        self._ConfigSHA256 = None
+        self._CreatorSubAccountUin = None
+        self._ApprovalActions = None
+        self._ContentReadyTime = None
+        self._ChangeLog = None
+        self._LabelSet = None
+
+    @property
+    def VersionId(self):
+        r"""<p>Version ID；格式 <code>rv-</code> + 8 位小写字母/数字。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def RecordId(self):
+        r"""<p>所属 Record ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Revision(self):
+        r"""<p>Version 递增序号（1 起）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Revision
+
+    @Revision.setter
+    def Revision(self, Revision):
+        self._Revision = Revision
+
+    @property
+    def Status(self):
+        r"""<p>Version 状态。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ApprovalMode(self):
+        r"""<p>审批模式；创建时锁定，后续变更 Registry 审批模式不影响本 Version。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApprovalMode
+
+    @ApprovalMode.setter
+    def ApprovalMode(self, ApprovalMode):
+        self._ApprovalMode = ApprovalMode
+
+    @property
+    def AppId(self):
+        r"""<p>所属租户 AppId。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreatorUin(self):
+        r"""<p>创建者主账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>最近一次更新时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def VersionName(self):
+        r"""<p>Version 别名（可选）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def Descriptors(self):
+        r"""<p>协议描述符对象。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Descriptors
+
+    @Descriptors.setter
+    def Descriptors(self, Descriptors):
+        self._Descriptors = Descriptors
+
+    @property
+    def SourceType(self):
+        r"""<p>内容来源。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceConfig(self):
+        r"""<p>规范化来源配置对象。（JSON 字符串形式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceConfig
+
+    @SourceConfig.setter
+    def SourceConfig(self, SourceConfig):
+        self._SourceConfig = SourceConfig
+
+    @property
+    def ContentStatus(self):
+        r"""<p>内容状态。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContentStatus
+
+    @ContentStatus.setter
+    def ContentStatus(self, ContentStatus):
+        self._ContentStatus = ContentStatus
+
+    @property
+    def ContentSHA256(self):
+        r"""<p>READY 内容 SHA-256。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContentSHA256
+
+    @ContentSHA256.setter
+    def ContentSHA256(self, ContentSHA256):
+        self._ContentSHA256 = ContentSHA256
+
+    @property
+    def ContentSizeBytes(self):
+        r"""<p>READY 内容字节数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ContentSizeBytes
+
+    @ContentSizeBytes.setter
+    def ContentSizeBytes(self, ContentSizeBytes):
+        self._ContentSizeBytes = ContentSizeBytes
+
+    @property
+    def ConfigSHA256(self):
+        r"""<p>配置内容规范化后的 SHA-256（用于幂等去重）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigSHA256
+
+    @ConfigSHA256.setter
+    def ConfigSHA256(self, ConfigSHA256):
+        self._ConfigSHA256 = ConfigSHA256
+
+    @property
+    def CreatorSubAccountUin(self):
+        r"""<p>创建者子账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorSubAccountUin
+
+    @CreatorSubAccountUin.setter
+    def CreatorSubAccountUin(self, CreatorSubAccountUin):
+        self._CreatorSubAccountUin = CreatorSubAccountUin
+
+    @property
+    def ApprovalActions(self):
+        r"""<p>Version 历次审批动作。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CloudVersionApprovalAction
+        """
+        return self._ApprovalActions
+
+    @ApprovalActions.setter
+    def ApprovalActions(self, ApprovalActions):
+        self._ApprovalActions = ApprovalActions
+
+    @property
+    def ContentReadyTime(self):
+        r"""<p>TAR 内容成功校验、完成物化并进入 READY 的时间；MANUAL / URL_IMPORT 或尚未 READY 的 TAR_PACKAGE 均为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContentReadyTime
+
+    @ContentReadyTime.setter
+    def ContentReadyTime(self, ContentReadyTime):
+        self._ContentReadyTime = ContentReadyTime
+
+    @property
+    def ChangeLog(self):
+        r"""<p>本次 Version 的变更原因，最大 4096 字符；不可修改。Revision 1 或未填写时返回空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChangeLog
+
+    @ChangeLog.setter
+    def ChangeLog(self, ChangeLog):
+        self._ChangeLog = ChangeLog
+
+    @property
+    def LabelSet(self):
+        r"""<p>当前绑定该 Version 的 Label Name 列表（例如 stable / latest 或自定义 Label 名称）。未绑定 Label 不在此返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._LabelSet
+
+    @LabelSet.setter
+    def LabelSet(self, LabelSet):
+        self._LabelSet = LabelSet
+
+
+    def _deserialize(self, params):
+        self._VersionId = params.get("VersionId")
+        self._RecordId = params.get("RecordId")
+        self._Revision = params.get("Revision")
+        self._Status = params.get("Status")
+        self._ApprovalMode = params.get("ApprovalMode")
+        self._AppId = params.get("AppId")
+        self._CreatorUin = params.get("CreatorUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._VersionName = params.get("VersionName")
+        self._Descriptors = params.get("Descriptors")
+        self._SourceType = params.get("SourceType")
+        self._SourceConfig = params.get("SourceConfig")
+        self._ContentStatus = params.get("ContentStatus")
+        self._ContentSHA256 = params.get("ContentSHA256")
+        self._ContentSizeBytes = params.get("ContentSizeBytes")
+        self._ConfigSHA256 = params.get("ConfigSHA256")
+        self._CreatorSubAccountUin = params.get("CreatorSubAccountUin")
+        if params.get("ApprovalActions") is not None:
+            self._ApprovalActions = []
+            for item in params.get("ApprovalActions"):
+                obj = CloudVersionApprovalAction()
+                obj._deserialize(item)
+                self._ApprovalActions.append(obj)
+        self._ContentReadyTime = params.get("ContentReadyTime")
+        self._ChangeLog = params.get("ChangeLog")
+        self._LabelSet = params.get("LabelSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudRegistry(AbstractModel):
+    r"""Registry 对象。包含注册中心的基本信息与 Record 计数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>Registry ID；格式 <code>reg-</code> + 8 位小写字母/数字。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegistryId: str
+        :param _Name: <p>Registry 同一 AppId + Region 唯一名称。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>描述。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ApprovalMode: <p>审批模式；AUTO 自动通过，MANUAL 需人工审批；创建时确定，不可修改。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApprovalMode: str
+        :param _Region: <p>Registry 所在腾讯云地域，如 <code>ap-guangzhou</code>。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Status: <p>Registry 状态。ACTIVE / ARCHIVED。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _CreateTime: <p>创建时间，ISO 8601 UTC，如 <code>2026-08-11T10:00:00Z</code>。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: <p>最近一次更新时间，ISO 8601 UTC。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _RecordCount: <p>Registry 下 Record 总数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordCount: int
+        :param _Tags: <p>权威读取的腾讯云自定义标签，按 Key、Value 稳定排序；无标签时固定返回空数组，不返回 null。</p>
+        :type Tags: list of CloudTag
+        :param _PublishedRecordCount: <p>Stable Label 已绑定的 Record 数量。Approved Version 数量和可对外消费的 Record 数量已不再等价。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishedRecordCount: int
+        :param _AppId: <p>所属租户 AppId。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _CreatorUin: <p>创建者主账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        :param _CreatorSubAccountUin: <p>创建者子账号 UIN；主账号直接创建时为空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorSubAccountUin: str
+        """
+        self._RegistryId = None
+        self._Name = None
+        self._Description = None
+        self._ApprovalMode = None
+        self._Region = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._RecordCount = None
+        self._Tags = None
+        self._PublishedRecordCount = None
+        self._AppId = None
+        self._CreatorUin = None
+        self._CreatorSubAccountUin = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>Registry ID；格式 <code>reg-</code> + 8 位小写字母/数字。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        r"""<p>Registry 同一 AppId + Region 唯一名称。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ApprovalMode(self):
+        r"""<p>审批模式；AUTO 自动通过，MANUAL 需人工审批；创建时确定，不可修改。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApprovalMode
+
+    @ApprovalMode.setter
+    def ApprovalMode(self, ApprovalMode):
+        self._ApprovalMode = ApprovalMode
+
+    @property
+    def Region(self):
+        r"""<p>Registry 所在腾讯云地域，如 <code>ap-guangzhou</code>。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Status(self):
+        r"""<p>Registry 状态。ACTIVE / ARCHIVED。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，ISO 8601 UTC，如 <code>2026-08-11T10:00:00Z</code>。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>最近一次更新时间，ISO 8601 UTC。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RecordCount(self):
+        r"""<p>Registry 下 Record 总数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RecordCount
+
+    @RecordCount.setter
+    def RecordCount(self, RecordCount):
+        self._RecordCount = RecordCount
+
+    @property
+    def Tags(self):
+        r"""<p>权威读取的腾讯云自定义标签，按 Key、Value 稳定排序；无标签时固定返回空数组，不返回 null。</p>
+        :rtype: list of CloudTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PublishedRecordCount(self):
+        r"""<p>Stable Label 已绑定的 Record 数量。Approved Version 数量和可对外消费的 Record 数量已不再等价。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PublishedRecordCount
+
+    @PublishedRecordCount.setter
+    def PublishedRecordCount(self, PublishedRecordCount):
+        self._PublishedRecordCount = PublishedRecordCount
+
+    @property
+    def AppId(self):
+        r"""<p>所属租户 AppId。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreatorUin(self):
+        r"""<p>创建者主账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CreatorSubAccountUin(self):
+        r"""<p>创建者子账号 UIN；主账号直接创建时为空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorSubAccountUin
+
+    @CreatorSubAccountUin.setter
+    def CreatorSubAccountUin(self, CreatorSubAccountUin):
+        self._CreatorSubAccountUin = CreatorSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ApprovalMode = params.get("ApprovalMode")
+        self._Region = params.get("Region")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._RecordCount = params.get("RecordCount")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = CloudTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._PublishedRecordCount = params.get("PublishedRecordCount")
+        self._AppId = params.get("AppId")
+        self._CreatorUin = params.get("CreatorUin")
+        self._CreatorSubAccountUin = params.get("CreatorSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudSkillSourceInput(AbstractModel):
+    r"""AGENT_SKILLS 内容来源。Type 判别 MANUAL 与 TAR_PACKAGE 两种模式。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>来源类型。MANUAL：直接提交 SKILL.md 文本；TAR_PACKAGE：由服务端签发 COS PUT 预签名 URL，客户端上传后由服务端异步校验。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _SkillMd: <p>SKILL.md 原文；Type=MANUAL 时必填非空；Type=TAR_PACKAGE 时不得提供。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillMd: str
+        """
+        self._Type = None
+        self._SkillMd = None
+
+    @property
+    def Type(self):
+        r"""<p>来源类型。MANUAL：直接提交 SKILL.md 文本；TAR_PACKAGE：由服务端签发 COS PUT 预签名 URL，客户端上传后由服务端异步校验。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SkillMd(self):
+        r"""<p>SKILL.md 原文；Type=MANUAL 时必填非空；Type=TAR_PACKAGE 时不得提供。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SkillMd
+
+    @SkillMd.setter
+    def SkillMd(self, SkillMd):
+        self._SkillMd = SkillMd
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._SkillMd = params.get("SkillMd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudTag(AbstractModel):
+    r"""腾讯云自定义标签。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>自定义标签键；不可使用 qcs:、project 或项目预留前缀，且不可包含首尾空格。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: <p>自定义标签值，不可包含首尾空格。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>自定义标签键；不可使用 qcs:、project 或项目预留前缀，且不可包含首尾空格。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>自定义标签值，不可包含首尾空格。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudVersionApprovalAction(AbstractModel):
+    r"""Version 一次审批动作条目。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: <p>动作 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionId: str
+        :param _ActionType: <p>动作类型。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActionType: str
+        :param _ActorType: <p>动作发起者类型。USER 用户；SYSTEM 系统自动通过。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActorType: str
+        :param _ActorUin: <p>发起者主账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActorUin: str
+        :param _ActorSubAccountUin: <p>发起者子账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ActorSubAccountUin: str
+        :param _Comment: <p>动作留言。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _CreateTime: <p>发生时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _RequestId: <p>对应云 API 请求的 RequestId。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestId: str
+        """
+        self._ActionId = None
+        self._ActionType = None
+        self._ActorType = None
+        self._ActorUin = None
+        self._ActorSubAccountUin = None
+        self._Comment = None
+        self._CreateTime = None
+        self._RequestId = None
+
+    @property
+    def ActionId(self):
+        r"""<p>动作 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def ActionType(self):
+        r"""<p>动作类型。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActorType(self):
+        r"""<p>动作发起者类型。USER 用户；SYSTEM 系统自动通过。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ActorType
+
+    @ActorType.setter
+    def ActorType(self, ActorType):
+        self._ActorType = ActorType
+
+    @property
+    def ActorUin(self):
+        r"""<p>发起者主账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ActorUin
+
+    @ActorUin.setter
+    def ActorUin(self, ActorUin):
+        self._ActorUin = ActorUin
+
+    @property
+    def ActorSubAccountUin(self):
+        r"""<p>发起者子账号 UIN。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ActorSubAccountUin
+
+    @ActorSubAccountUin.setter
+    def ActorSubAccountUin(self, ActorSubAccountUin):
+        self._ActorSubAccountUin = ActorSubAccountUin
+
+    @property
+    def Comment(self):
+        r"""<p>动作留言。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CreateTime(self):
+        r"""<p>发生时间。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RequestId(self):
+        r"""<p>对应云 API 请求的 RequestId。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        self._ActionType = params.get("ActionType")
+        self._ActorType = params.get("ActorType")
+        self._ActorUin = params.get("ActorUin")
+        self._ActorSubAccountUin = params.get("ActorSubAccountUin")
+        self._Comment = params.get("Comment")
+        self._CreateTime = params.get("CreateTime")
+        self._RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1317,6 +3117,162 @@ class CreateRegistryRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>所属 Registry ID。</p>
+        :type RegistryId: str
+        :param _Name: <p>Record 名称，长度 1..255，同一租户、Registry 内按规范化 Name 唯一（大小写不敏感）；软删除后允许复用。</p>
+        :type Name: str
+        :param _DescriptorType: <p>协议描述符类型。MCP / A2A / AGUI / CUSTOM / AGENT_SKILLS。Record 创建后不可修改。</p>
+        :type DescriptorType: str
+        :param _Description: <p>Record 描述，最大 4096 字符，可选，默认空。</p>
+        :type Description: str
+        :param _VersionName: <p>Revision 1 的展示名称，可选。</p>
+        :type VersionName: str
+        :param _MCPSource: <p>DescriptorType=MCP 时必填，其他类型禁止。</p>
+        :type MCPSource: :class:`tencentcloud.ags.v20250920.models.CloudMCPSourceInput`
+        :param _AgentSource: <p>DescriptorType=A2A 或 AGUI 时必填，其他类型禁止。</p>
+        :type AgentSource: :class:`tencentcloud.ags.v20250920.models.CloudAgentSourceInput`
+        :param _SkillSource: <p>DescriptorType=AGENT_SKILLS 时必填，其他类型禁止。</p>
+        :type SkillSource: :class:`tencentcloud.ags.v20250920.models.CloudSkillSourceInput`
+        :param _CustomDescriptors: <p>DescriptorType=CUSTOM 时必填，其他类型禁止。内容必须是 JSON object 字符串；服务端解析后写入 CloudRecordVersion.Descriptors，Version 的 SourceType 固定为 MANUAL、SourceConfig 固定为空对象。</p>
+        :type CustomDescriptors: str
+        """
+        self._RegistryId = None
+        self._Name = None
+        self._DescriptorType = None
+        self._Description = None
+        self._VersionName = None
+        self._MCPSource = None
+        self._AgentSource = None
+        self._SkillSource = None
+        self._CustomDescriptors = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>所属 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Name(self):
+        r"""<p>Record 名称，长度 1..255，同一租户、Registry 内按规范化 Name 唯一（大小写不敏感）；软删除后允许复用。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DescriptorType(self):
+        r"""<p>协议描述符类型。MCP / A2A / AGUI / CUSTOM / AGENT_SKILLS。Record 创建后不可修改。</p>
+        :rtype: str
+        """
+        return self._DescriptorType
+
+    @DescriptorType.setter
+    def DescriptorType(self, DescriptorType):
+        self._DescriptorType = DescriptorType
+
+    @property
+    def Description(self):
+        r"""<p>Record 描述，最大 4096 字符，可选，默认空。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def VersionName(self):
+        r"""<p>Revision 1 的展示名称，可选。</p>
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def MCPSource(self):
+        r"""<p>DescriptorType=MCP 时必填，其他类型禁止。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudMCPSourceInput`
+        """
+        return self._MCPSource
+
+    @MCPSource.setter
+    def MCPSource(self, MCPSource):
+        self._MCPSource = MCPSource
+
+    @property
+    def AgentSource(self):
+        r"""<p>DescriptorType=A2A 或 AGUI 时必填，其他类型禁止。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudAgentSourceInput`
+        """
+        return self._AgentSource
+
+    @AgentSource.setter
+    def AgentSource(self, AgentSource):
+        self._AgentSource = AgentSource
+
+    @property
+    def SkillSource(self):
+        r"""<p>DescriptorType=AGENT_SKILLS 时必填，其他类型禁止。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudSkillSourceInput`
+        """
+        return self._SkillSource
+
+    @SkillSource.setter
+    def SkillSource(self, SkillSource):
+        self._SkillSource = SkillSource
+
+    @property
+    def CustomDescriptors(self):
+        r"""<p>DescriptorType=CUSTOM 时必填，其他类型禁止。内容必须是 JSON object 字符串；服务端解析后写入 CloudRecordVersion.Descriptors，Version 的 SourceType 固定为 MANUAL、SourceConfig 固定为空对象。</p>
+        :rtype: str
+        """
+        return self._CustomDescriptors
+
+    @CustomDescriptors.setter
+    def CustomDescriptors(self, CustomDescriptors):
+        self._CustomDescriptors = CustomDescriptors
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Name = params.get("Name")
+        self._DescriptorType = params.get("DescriptorType")
+        self._Description = params.get("Description")
+        self._VersionName = params.get("VersionName")
+        if params.get("MCPSource") is not None:
+            self._MCPSource = CloudMCPSourceInput()
+            self._MCPSource._deserialize(params.get("MCPSource"))
+        if params.get("AgentSource") is not None:
+            self._AgentSource = CloudAgentSourceInput()
+            self._AgentSource._deserialize(params.get("AgentSource"))
+        if params.get("SkillSource") is not None:
+            self._SkillSource = CloudSkillSourceInput()
+            self._SkillSource._deserialize(params.get("SkillSource"))
+        self._CustomDescriptors = params.get("CustomDescriptors")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateRegistryRecordResponse(AbstractModel):
     r"""CreateRegistryRecord返回参数结构体
@@ -1325,10 +3281,102 @@ class CreateRegistryRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RecordId: <p>新 Record ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecordId: str
+        :param _Record: <p>新建的 Record 详情。</p>
+        :type Record: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
+        :param _Version: <p>本次创建的 Revision 1 Version 详情。</p>
+        :type Version: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        :param _UploadURL: <p>SkillSource.Type=TAR_PACKAGE 时返回：TAR 包上传预签名 URL。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UploadURL: str
+        :param _ExpireTime: <p>SkillSource.Type=TAR_PACKAGE 时返回：UploadURL 过期时间，ISO 8601 UTC。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _ContentStatus: <p>SkillSource.Type=TAR_PACKAGE 时返回：Version 内容当前状态（UPLOADING 等）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RecordId = None
+        self._Record = None
+        self._Version = None
+        self._UploadURL = None
+        self._ExpireTime = None
+        self._ContentStatus = None
         self._RequestId = None
+
+    @property
+    def RecordId(self):
+        r"""<p>新 Record ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Record(self):
+        r"""<p>新建的 Record 详情。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
+        """
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def Version(self):
+        r"""<p>本次创建的 Revision 1 Version 详情。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def UploadURL(self):
+        r"""<p>SkillSource.Type=TAR_PACKAGE 时返回：TAR 包上传预签名 URL。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UploadURL
+
+    @UploadURL.setter
+    def UploadURL(self, UploadURL):
+        self._UploadURL = UploadURL
+
+    @property
+    def ExpireTime(self):
+        r"""<p>SkillSource.Type=TAR_PACKAGE 时返回：UploadURL 过期时间，ISO 8601 UTC。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ContentStatus(self):
+        r"""<p>SkillSource.Type=TAR_PACKAGE 时返回：Version 内容当前状态（UPLOADING 等）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContentStatus
+
+    @ContentStatus.setter
+    def ContentStatus(self, ContentStatus):
+        self._ContentStatus = ContentStatus
 
     @property
     def RequestId(self):
@@ -1343,6 +3391,16 @@ class CreateRegistryRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        if params.get("Record") is not None:
+            self._Record = CloudRecord()
+            self._Record._deserialize(params.get("Record"))
+        if params.get("Version") is not None:
+            self._Version = CloudRecordVersion()
+            self._Version._deserialize(params.get("Version"))
+        self._UploadURL = params.get("UploadURL")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ContentStatus = params.get("ContentStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -1350,6 +3408,86 @@ class CreateRegistryRequest(AbstractModel):
     r"""CreateRegistry请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>同一 AppId + Region 唯一、长度 1–255</p>
+        :type Name: str
+        :param _Description: <p>描述文本；最长 4096。</p>
+        :type Description: str
+        :param _ApprovalMode: <p>审批模式；创建时确定，创建后不可修改；省略时默认为 AUTO，枚举值区分大小写。</p>
+        :type ApprovalMode: str
+        :param _Tags: <p>创建时绑定的腾讯云自定义标签；Key 不可重复；最多 10 个。</p>
+        :type Tags: list of CloudTag
+        """
+        self._Name = None
+        self._Description = None
+        self._ApprovalMode = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""<p>同一 AppId + Region 唯一、长度 1–255</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述文本；最长 4096。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ApprovalMode(self):
+        r"""<p>审批模式；创建时确定，创建后不可修改；省略时默认为 AUTO，枚举值区分大小写。</p>
+        :rtype: str
+        """
+        return self._ApprovalMode
+
+    @ApprovalMode.setter
+    def ApprovalMode(self, ApprovalMode):
+        self._ApprovalMode = ApprovalMode
+
+    @property
+    def Tags(self):
+        r"""<p>创建时绑定的腾讯云自定义标签；Key 不可重复；最多 10 个。</p>
+        :rtype: list of CloudTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ApprovalMode = params.get("ApprovalMode")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = CloudTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateRegistryResponse(AbstractModel):
@@ -1359,10 +3497,38 @@ class CreateRegistryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RegistryId: <p>创建成功的 Registry ID。</p>
+        :type RegistryId: str
+        :param _Registry: <p>Registry 详细信息。</p>
+        :type Registry: :class:`tencentcloud.ags.v20250920.models.CloudRegistry`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RegistryId = None
+        self._Registry = None
         self._RequestId = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>创建成功的 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Registry(self):
+        r"""<p>Registry 详细信息。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRegistry`
+        """
+        return self._Registry
+
+    @Registry.setter
+    def Registry(self, Registry):
+        self._Registry = Registry
 
     @property
     def RequestId(self):
@@ -1377,6 +3543,10 @@ class CreateRegistryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        if params.get("Registry") is not None:
+            self._Registry = CloudRegistry()
+            self._Registry._deserialize(params.get("Registry"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2513,6 +4683,81 @@ class DeleteRegistryRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>可选。传入时只删除 Record 下指定 Version（软删除）；省略时删除整个 Record。显式传入空字符串或 null 返回 InvalidParameter.VersionId，不得回退为删除整个 Record。</p>
+        :type VersionId: str
+        :param _Reason: <p>删除原因，最大 1024 字符。删除单个 Version 时必填；删除整个 Record 时可选。</p>
+        :type Reason: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._Reason = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>可选。传入时只删除 Record 下指定 Version（软删除）；省略时删除整个 Record。显式传入空字符串或 null 返回 InvalidParameter.VersionId，不得回退为删除整个 Record。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Reason(self):
+        r"""<p>删除原因，最大 1024 字符。删除单个 Version 时必填；删除整个 Record 时可选。</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteRegistryRecordResponse(AbstractModel):
     r"""DeleteRegistryRecord返回参数结构体
@@ -2546,6 +4791,36 @@ class DeleteRegistryRequest(AbstractModel):
     r"""DeleteRegistry请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>Registry ID。</p>
+        :type RegistryId: str
+        """
+        self._RegistryId = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteRegistryResponse(AbstractModel):
@@ -3846,6 +6121,156 @@ class DescribeRegistryAuditLogListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>Version ID；仅过滤 Version 维度动作，可选。</p>
+        :type VersionId: str
+        :param _ActionFilter: <p>Action 精确过滤（如 <code>record.version.create</code>），可选。</p>
+        :type ActionFilter: str
+        :param _Actor: <p>发起者过滤（主账号 UIN 或子账号 UIN），可选。</p>
+        :type Actor: str
+        :param _StartTime: <p>起始时间；ISO 8601，可选。</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间；ISO 8601，可选。</p>
+        :type EndTime: str
+        :param _Offset: <p>分页起始偏移，默认 0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页条数，默认 20，最大 100。</p>
+        :type Limit: int
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._ActionFilter = None
+        self._Actor = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>Version ID；仅过滤 Version 维度动作，可选。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def ActionFilter(self):
+        r"""<p>Action 精确过滤（如 <code>record.version.create</code>），可选。</p>
+        :rtype: str
+        """
+        return self._ActionFilter
+
+    @ActionFilter.setter
+    def ActionFilter(self, ActionFilter):
+        self._ActionFilter = ActionFilter
+
+    @property
+    def Actor(self):
+        r"""<p>发起者过滤（主账号 UIN 或子账号 UIN），可选。</p>
+        :rtype: str
+        """
+        return self._Actor
+
+    @Actor.setter
+    def Actor(self, Actor):
+        self._Actor = Actor
+
+    @property
+    def StartTime(self):
+        r"""<p>起始时间；ISO 8601，可选。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间；ISO 8601，可选。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""<p>分页起始偏移，默认 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页条数，默认 20，最大 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._ActionFilter = params.get("ActionFilter")
+        self._Actor = params.get("Actor")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeRegistryAuditLogListResponse(AbstractModel):
     r"""DescribeRegistryAuditLogList返回参数结构体
@@ -3854,10 +6279,38 @@ class DescribeRegistryAuditLogListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AuditLogSet: <p>Record 维度的审计日志。</p>
+        :type AuditLogSet: list of CloudAuditLog
+        :param _TotalCount: <p>符合条件的总数。</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AuditLogSet = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def AuditLogSet(self):
+        r"""<p>Record 维度的审计日志。</p>
+        :rtype: list of CloudAuditLog
+        """
+        return self._AuditLogSet
+
+    @AuditLogSet.setter
+    def AuditLogSet(self, AuditLogSet):
+        self._AuditLogSet = AuditLogSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -3872,6 +6325,13 @@ class DescribeRegistryAuditLogListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AuditLogSet") is not None:
+            self._AuditLogSet = []
+            for item in params.get("AuditLogSet"):
+                obj = CloudAuditLog()
+                obj._deserialize(item)
+                self._AuditLogSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -3879,6 +6339,71 @@ class DescribeRegistryListRequest(AbstractModel):
     r"""DescribeRegistryList请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页起始偏移，默认 0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页条数，默认 20，最大 100。</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件。Name 支持：<code>name</code>/<code>search</code>（模糊）、<code>archived</code>/<code>status</code>（true/false/all）、<code>tag-key</code> 和 <code>tag:&lt;key&gt;</code>；最多 6 个标签过滤组，每个标签过滤组最多 10 个 Values，同 Key 多值为 OR，不同 Key 为 AND。</p>
+        :type Filters: list of CloudFilter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页起始偏移，默认 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页条数，默认 20，最大 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。Name 支持：<code>name</code>/<code>search</code>（模糊）、<code>archived</code>/<code>status</code>（true/false/all）、<code>tag-key</code> 和 <code>tag:&lt;key&gt;</code>；最多 6 个标签过滤组，每个标签过滤组最多 10 个 Values，同 Key 多值为 OR，不同 Key 为 AND。</p>
+        :rtype: list of CloudFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CloudFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeRegistryListResponse(AbstractModel):
@@ -3888,10 +6413,38 @@ class DescribeRegistryListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RegistrySet: <p>Registry 对象数组。</p>
+        :type RegistrySet: list of CloudRegistry
+        :param _TotalCount: <p>符合条件的总数。</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RegistrySet = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def RegistrySet(self):
+        r"""<p>Registry 对象数组。</p>
+        :rtype: list of CloudRegistry
+        """
+        return self._RegistrySet
+
+    @RegistrySet.setter
+    def RegistrySet(self, RegistrySet):
+        self._RegistrySet = RegistrySet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -3906,6 +6459,13 @@ class DescribeRegistryListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("RegistrySet") is not None:
+            self._RegistrySet = []
+            for item in params.get("RegistrySet"):
+                obj = CloudRegistry()
+                obj._deserialize(item)
+                self._RegistrySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -3913,6 +6473,86 @@ class DescribeRegistryRecordListRequest(AbstractModel):
     r"""DescribeRegistryRecordList请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _Offset: <p>分页起始偏移，默认 0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页条数，默认 20，最大 100。</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件。支持 Filter.Name：<code>name</code>/<code>search</code>（按 Record Name 模糊搜索）；其他名称返回 <code>InvalidParameter.Filters.Name</code>。</p>
+        :type Filters: list of CloudFilter
+        """
+        self._RegistryId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Offset(self):
+        r"""<p>分页起始偏移，默认 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页条数，默认 20，最大 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。支持 Filter.Name：<code>name</code>/<code>search</code>（按 Record Name 模糊搜索）；其他名称返回 <code>InvalidParameter.Filters.Name</code>。</p>
+        :rtype: list of CloudFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CloudFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeRegistryRecordListResponse(AbstractModel):
@@ -3922,10 +6562,38 @@ class DescribeRegistryRecordListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RecordSet: <p>Record 对象数组。</p>
+        :type RecordSet: list of CloudRecord
+        :param _TotalCount: <p>符合条件的总数。</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RecordSet = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def RecordSet(self):
+        r"""<p>Record 对象数组。</p>
+        :rtype: list of CloudRecord
+        """
+        return self._RecordSet
+
+    @RecordSet.setter
+    def RecordSet(self, RecordSet):
+        self._RecordSet = RecordSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -3940,6 +6608,13 @@ class DescribeRegistryRecordListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("RecordSet") is not None:
+            self._RecordSet = []
+            for item in params.get("RecordSet"):
+                obj = CloudRecord()
+                obj._deserialize(item)
+                self._RecordSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -3947,6 +6622,81 @@ class DescribeRegistryRecordRequest(AbstractModel):
     r"""DescribeRegistryRecord请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>Version ID，与 Label 互斥。指定时返回该 Version；均省略时等价于 Label=stable。</p>
+        :type VersionId: str
+        :param _Label: <p>Label 名称，与 VersionId 互斥。指定时返回 Label 当前指向的 Version；均省略时等价于 stable。</p>
+        :type Label: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._Label = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>Version ID，与 Label 互斥。指定时返回该 Version；均省略时等价于 Label=stable。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Label(self):
+        r"""<p>Label 名称，与 VersionId 互斥。指定时返回 Label 当前指向的 Version；均省略时等价于 stable。</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeRegistryRecordResponse(AbstractModel):
@@ -3956,10 +6706,72 @@ class DescribeRegistryRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Record: <p>Record 元数据和全部 Label。</p>
+        :type Record: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
+        :param _Version: <p>根据 VersionId / Label 解析得到的完整 Version。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        :param _ResolvedBy: <p>解析方式：DEFAULT_STABLE / LABEL / VERSION_ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResolvedBy: str
+        :param _ResolvedLabel: <p>通过 Label 解析（ResolvedBy=LABEL 或 DEFAULT_STABLE）时返回该 Label 名称，例如 stable。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResolvedLabel: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Record = None
+        self._Version = None
+        self._ResolvedBy = None
+        self._ResolvedLabel = None
         self._RequestId = None
+
+    @property
+    def Record(self):
+        r"""<p>Record 元数据和全部 Label。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
+        """
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def Version(self):
+        r"""<p>根据 VersionId / Label 解析得到的完整 Version。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ResolvedBy(self):
+        r"""<p>解析方式：DEFAULT_STABLE / LABEL / VERSION_ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResolvedBy
+
+    @ResolvedBy.setter
+    def ResolvedBy(self, ResolvedBy):
+        self._ResolvedBy = ResolvedBy
+
+    @property
+    def ResolvedLabel(self):
+        r"""<p>通过 Label 解析（ResolvedBy=LABEL 或 DEFAULT_STABLE）时返回该 Label 名称，例如 stable。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResolvedLabel
+
+    @ResolvedLabel.setter
+    def ResolvedLabel(self, ResolvedLabel):
+        self._ResolvedLabel = ResolvedLabel
 
     @property
     def RequestId(self):
@@ -3974,6 +6786,14 @@ class DescribeRegistryRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Record") is not None:
+            self._Record = CloudRecord()
+            self._Record._deserialize(params.get("Record"))
+        if params.get("Version") is not None:
+            self._Version = CloudRecordVersion()
+            self._Version._deserialize(params.get("Version"))
+        self._ResolvedBy = params.get("ResolvedBy")
+        self._ResolvedLabel = params.get("ResolvedLabel")
         self._RequestId = params.get("RequestId")
 
 
@@ -3981,6 +6801,101 @@ class DescribeRegistryRecordVersionListRequest(AbstractModel):
     r"""DescribeRegistryRecordVersionList请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _Offset: <p>分页起始偏移，默认 0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页条数，默认 20，最大 100。</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件。支持：status（按 Version 状态：PREPARING/PENDING_APPROVAL/APPROVED/REJECTED/CANCELED，多值 OR）、source_type（按内容来源：MANUAL/URL_IMPORT/TAR_PACKAGE，多值 OR）。</p>
+        :type Filters: list of CloudFilter
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Offset(self):
+        r"""<p>分页起始偏移，默认 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页条数，默认 20，最大 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。支持：status（按 Version 状态：PREPARING/PENDING_APPROVAL/APPROVED/REJECTED/CANCELED，多值 OR）、source_type（按内容来源：MANUAL/URL_IMPORT/TAR_PACKAGE，多值 OR）。</p>
+        :rtype: list of CloudFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CloudFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeRegistryRecordVersionListResponse(AbstractModel):
@@ -3990,10 +6905,38 @@ class DescribeRegistryRecordVersionListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VersionSet: <p>Version 对象数组。</p>
+        :type VersionSet: list of CloudRecordVersion
+        :param _TotalCount: <p>符合条件的总数。</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._VersionSet = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def VersionSet(self):
+        r"""<p>Version 对象数组。</p>
+        :rtype: list of CloudRecordVersion
+        """
+        return self._VersionSet
+
+    @VersionSet.setter
+    def VersionSet(self, VersionSet):
+        self._VersionSet = VersionSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -4008,6 +6951,13 @@ class DescribeRegistryRecordVersionListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("VersionSet") is not None:
+            self._VersionSet = []
+            for item in params.get("VersionSet"):
+                obj = CloudRecordVersion()
+                obj._deserialize(item)
+                self._VersionSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -4015,6 +6965,36 @@ class DescribeRegistryRequest(AbstractModel):
     r"""DescribeRegistry请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>Registry ID。</p>
+        :type RegistryId: str
+        """
+        self._RegistryId = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeRegistryResponse(AbstractModel):
@@ -4024,10 +7004,24 @@ class DescribeRegistryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Registry: <p>Registry 详情。</p>
+        :type Registry: :class:`tencentcloud.ags.v20250920.models.CloudRegistry`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Registry = None
         self._RequestId = None
+
+    @property
+    def Registry(self):
+        r"""<p>Registry 详情。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRegistry`
+        """
+        return self._Registry
+
+    @Registry.setter
+    def Registry(self, Registry):
+        self._Registry = Registry
 
     @property
     def RequestId(self):
@@ -4042,6 +7036,9 @@ class DescribeRegistryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Registry") is not None:
+            self._Registry = CloudRegistry()
+            self._Registry._deserialize(params.get("Registry"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5497,6 +8494,81 @@ class GetSkillPackageDownloadURLRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID；必须 AGENT_SKILLS 且 ContentStatus=READY。</p>
+        :type RecordId: str
+        :param _VersionId: <p>可选。指定要下载的 Version；与 Label 互斥；均省略时使用 Stable。</p>
+        :type VersionId: str
+        :param _Label: <p>可选。指定要下载的 Label 目标；与 VersionId 互斥；均省略时使用 Stable。</p>
+        :type Label: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._Label = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID；必须 AGENT_SKILLS 且 ContentStatus=READY。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>可选。指定要下载的 Version；与 Label 互斥；均省略时使用 Stable。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Label(self):
+        r"""<p>可选。指定要下载的 Label 目标；与 VersionId 互斥；均省略时使用 Stable。</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GetSkillPackageDownloadURLResponse(AbstractModel):
     r"""GetSkillPackageDownloadURL返回参数结构体
@@ -5505,10 +8577,66 @@ class GetSkillPackageDownloadURLResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DownloadURL: <p>COS GET 预签名 URL；带 response-content-disposition；默认 TTL 5 分钟；bearer 凭证禁止持久化。</p>
+        :type DownloadURL: str
+        :param _ExpireTime: <p>URL 过期时间。</p>
+        :type ExpireTime: str
+        :param _SHA256: <p>服务端记录的 SHA-256；下载后应本地自检。</p>
+        :type SHA256: str
+        :param _ResolvedVersionId: <p>解析出的 Version ID（Stable Version）。</p>
+        :type ResolvedVersionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DownloadURL = None
+        self._ExpireTime = None
+        self._SHA256 = None
+        self._ResolvedVersionId = None
         self._RequestId = None
+
+    @property
+    def DownloadURL(self):
+        r"""<p>COS GET 预签名 URL；带 response-content-disposition；默认 TTL 5 分钟；bearer 凭证禁止持久化。</p>
+        :rtype: str
+        """
+        return self._DownloadURL
+
+    @DownloadURL.setter
+    def DownloadURL(self, DownloadURL):
+        self._DownloadURL = DownloadURL
+
+    @property
+    def ExpireTime(self):
+        r"""<p>URL 过期时间。</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def SHA256(self):
+        r"""<p>服务端记录的 SHA-256；下载后应本地自检。</p>
+        :rtype: str
+        """
+        return self._SHA256
+
+    @SHA256.setter
+    def SHA256(self, SHA256):
+        self._SHA256 = SHA256
+
+    @property
+    def ResolvedVersionId(self):
+        r"""<p>解析出的 Version ID（Stable Version）。</p>
+        :rtype: str
+        """
+        return self._ResolvedVersionId
+
+    @ResolvedVersionId.setter
+    def ResolvedVersionId(self, ResolvedVersionId):
+        self._ResolvedVersionId = ResolvedVersionId
 
     @property
     def RequestId(self):
@@ -5523,6 +8651,10 @@ class GetSkillPackageDownloadURLResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DownloadURL = params.get("DownloadURL")
+        self._ExpireTime = params.get("ExpireTime")
+        self._SHA256 = params.get("SHA256")
+        self._ResolvedVersionId = params.get("ResolvedVersionId")
         self._RequestId = params.get("RequestId")
 
 
@@ -5530,6 +8662,66 @@ class GetSkillPackageUploadURLRequest(AbstractModel):
     r"""GetSkillPackageUploadURL请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>Version ID；格式 <code>rv-</code> + 8 位小写字母/数字。</p>
+        :type VersionId: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>Version ID；格式 <code>rv-</code> + 8 位小写字母/数字。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GetSkillPackageUploadURLResponse(AbstractModel):
@@ -5539,10 +8731,66 @@ class GetSkillPackageUploadURLResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Version: <p>Version 详情（Revision 不变）。</p>
+        :type Version: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        :param _UploadURL: <p>新的 COS PUT 预签名 URL。</p>
+        :type UploadURL: str
+        :param _ContentStatus: <p>重试后的内容状态。</p>
+        :type ContentStatus: str
+        :param _ExpireTime: <p>UploadURL 过期时间。</p>
+        :type ExpireTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Version = None
+        self._UploadURL = None
+        self._ContentStatus = None
+        self._ExpireTime = None
         self._RequestId = None
+
+    @property
+    def Version(self):
+        r"""<p>Version 详情（Revision 不变）。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def UploadURL(self):
+        r"""<p>新的 COS PUT 预签名 URL。</p>
+        :rtype: str
+        """
+        return self._UploadURL
+
+    @UploadURL.setter
+    def UploadURL(self, UploadURL):
+        self._UploadURL = UploadURL
+
+    @property
+    def ContentStatus(self):
+        r"""<p>重试后的内容状态。</p>
+        :rtype: str
+        """
+        return self._ContentStatus
+
+    @ContentStatus.setter
+    def ContentStatus(self, ContentStatus):
+        self._ContentStatus = ContentStatus
+
+    @property
+    def ExpireTime(self):
+        r"""<p>UploadURL 过期时间。</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
 
     @property
     def RequestId(self):
@@ -5557,6 +8805,12 @@ class GetSkillPackageUploadURLResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Version") is not None:
+            self._Version = CloudRecordVersion()
+            self._Version._deserialize(params.get("Version"))
+        self._UploadURL = params.get("UploadURL")
+        self._ContentStatus = params.get("ContentStatus")
+        self._ExpireTime = params.get("ExpireTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -6684,6 +9938,81 @@ class PreviewRegistryRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>可选。指定要预览的目标 Version；与 Label 互斥；均省略时使用 Stable。</p>
+        :type VersionId: str
+        :param _Label: <p>可选。指定要预览的目标 Label；与 VersionId 互斥；均省略时使用 Stable。</p>
+        :type Label: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._Label = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>可选。指定要预览的目标 Version；与 Label 互斥；均省略时使用 Stable。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Label(self):
+        r"""<p>可选。指定要预览的目标 Label；与 VersionId 互斥；均省略时使用 Stable。</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._Label = params.get("Label")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class PreviewRegistryRecordResponse(AbstractModel):
     r"""PreviewRegistryRecord返回参数结构体
@@ -6692,10 +10021,38 @@ class PreviewRegistryRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PreviewResult: <p>只读元数据预览结果对象（JSON 字符串形式）。字段：StatusCode（远端 HTTP 状态码，必返）、Body（远端响应体截断字符串，必返）、HasUpdate（Boolean，必返；远端内容按 Sync 相同的规范化规则处理后是否与请求 Version 配置不同；Error 非空时固定返回 false，此时不表示远端没有变化）、Error（调用错误信息，可选）。</p>
+        :type PreviewResult: str
+        :param _ResolvedVersionId: <p>实际预览的 Version ID（由 VersionId / Label 解析得到）。</p>
+        :type ResolvedVersionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._PreviewResult = None
+        self._ResolvedVersionId = None
         self._RequestId = None
+
+    @property
+    def PreviewResult(self):
+        r"""<p>只读元数据预览结果对象（JSON 字符串形式）。字段：StatusCode（远端 HTTP 状态码，必返）、Body（远端响应体截断字符串，必返）、HasUpdate（Boolean，必返；远端内容按 Sync 相同的规范化规则处理后是否与请求 Version 配置不同；Error 非空时固定返回 false，此时不表示远端没有变化）、Error（调用错误信息，可选）。</p>
+        :rtype: str
+        """
+        return self._PreviewResult
+
+    @PreviewResult.setter
+    def PreviewResult(self, PreviewResult):
+        self._PreviewResult = PreviewResult
+
+    @property
+    def ResolvedVersionId(self):
+        r"""<p>实际预览的 Version ID（由 VersionId / Label 解析得到）。</p>
+        :rtype: str
+        """
+        return self._ResolvedVersionId
+
+    @ResolvedVersionId.setter
+    def ResolvedVersionId(self, ResolvedVersionId):
+        self._ResolvedVersionId = ResolvedVersionId
 
     @property
     def RequestId(self):
@@ -6710,6 +10067,8 @@ class PreviewRegistryRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._PreviewResult = params.get("PreviewResult")
+        self._ResolvedVersionId = params.get("ResolvedVersionId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7044,6 +10403,81 @@ class RejectRegistryRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>Version ID。</p>
+        :type VersionId: str
+        :param _Comment: <p>动作留言；非空。</p>
+        :type Comment: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._Comment = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>Version ID。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Comment(self):
+        r"""<p>动作留言；非空。</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class RejectRegistryRecordResponse(AbstractModel):
     r"""RejectRegistryRecord返回参数结构体
@@ -7052,10 +10486,24 @@ class RejectRegistryRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Version: <p>更新后的 Version。</p>
+        :type Version: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Version = None
         self._RequestId = None
+
+    @property
+    def Version(self):
+        r"""<p>更新后的 Version。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
     @property
     def RequestId(self):
@@ -7070,6 +10518,9 @@ class RejectRegistryRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Version") is not None:
+            self._Version = CloudRecordVersion()
+            self._Version._deserialize(params.get("Version"))
         self._RequestId = params.get("RequestId")
 
 
@@ -8640,6 +12091,96 @@ class SyncRegistryRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>父 Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _VersionId: <p>可选。指定要同步的目标 Version；与 Label 互斥；均省略时使用 Stable。</p>
+        :type VersionId: str
+        :param _Label: <p>可选。指定要同步的目标 Label；与 VersionId 互斥；均省略时使用 Stable。Label 在请求开始时只解析一次。</p>
+        :type Label: str
+        :param _ChangeLog: <p>可选，最大 4096 字符。若同步创建新 Version，将写入新 Version 的 ChangeLog；省略时保存为空。</p>
+        :type ChangeLog: str
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._VersionId = None
+        self._Label = None
+        self._ChangeLog = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>父 Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def VersionId(self):
+        r"""<p>可选。指定要同步的目标 Version；与 Label 互斥；均省略时使用 Stable。</p>
+        :rtype: str
+        """
+        return self._VersionId
+
+    @VersionId.setter
+    def VersionId(self, VersionId):
+        self._VersionId = VersionId
+
+    @property
+    def Label(self):
+        r"""<p>可选。指定要同步的目标 Label；与 VersionId 互斥；均省略时使用 Stable。Label 在请求开始时只解析一次。</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def ChangeLog(self):
+        r"""<p>可选，最大 4096 字符。若同步创建新 Version，将写入新 Version 的 ChangeLog；省略时保存为空。</p>
+        :rtype: str
+        """
+        return self._ChangeLog
+
+    @ChangeLog.setter
+    def ChangeLog(self, ChangeLog):
+        self._ChangeLog = ChangeLog
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._VersionId = params.get("VersionId")
+        self._Label = params.get("Label")
+        self._ChangeLog = params.get("ChangeLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class SyncRegistryRecordResponse(AbstractModel):
     r"""SyncRegistryRecord返回参数结构体
@@ -8648,10 +12189,118 @@ class SyncRegistryRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _SyncStatus: <p>同步结果：UNCHANGED（远端无变化）/ VERSION_CREATED（远端有变化，已生成新 Version）/ FAILED（同步失败）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncStatus: str
+        :param _ResolvedVersionId: <p>作为同步来源解析出的 Version ID（可能由 Label 解析而来）；不为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResolvedVersionId: str
+        :param _CreatedVersion: <p>SyncStatus=VERSION_CREATED 时返回：本次新建的 Version。</p>
+        :type CreatedVersion: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        :param _Record: <p>SyncStatus=VERSION_CREATED 时返回：同步后的最新 Record。</p>
+        :type Record: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
+        :param _LastSyncTime: <p>最后一次同步时间，ISO 8601 UTC。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastSyncTime: str
+        :param _ErrorCode: <p>失败错误码；SyncStatus=FAILED 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCode: str
+        :param _ErrorMessage: <p>失败错误信息；SyncStatus=FAILED 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._SyncStatus = None
+        self._ResolvedVersionId = None
+        self._CreatedVersion = None
+        self._Record = None
+        self._LastSyncTime = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
         self._RequestId = None
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步结果：UNCHANGED（远端无变化）/ VERSION_CREATED（远端有变化，已生成新 Version）/ FAILED（同步失败）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def ResolvedVersionId(self):
+        r"""<p>作为同步来源解析出的 Version ID（可能由 Label 解析而来）；不为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResolvedVersionId
+
+    @ResolvedVersionId.setter
+    def ResolvedVersionId(self, ResolvedVersionId):
+        self._ResolvedVersionId = ResolvedVersionId
+
+    @property
+    def CreatedVersion(self):
+        r"""<p>SyncStatus=VERSION_CREATED 时返回：本次新建的 Version。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        """
+        return self._CreatedVersion
+
+    @CreatedVersion.setter
+    def CreatedVersion(self, CreatedVersion):
+        self._CreatedVersion = CreatedVersion
+
+    @property
+    def Record(self):
+        r"""<p>SyncStatus=VERSION_CREATED 时返回：同步后的最新 Record。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
+        """
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def LastSyncTime(self):
+        r"""<p>最后一次同步时间，ISO 8601 UTC。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastSyncTime
+
+    @LastSyncTime.setter
+    def LastSyncTime(self, LastSyncTime):
+        self._LastSyncTime = LastSyncTime
+
+    @property
+    def ErrorCode(self):
+        r"""<p>失败错误码；SyncStatus=FAILED 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败错误信息；SyncStatus=FAILED 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
 
     @property
     def RequestId(self):
@@ -8666,6 +12315,17 @@ class SyncRegistryRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._SyncStatus = params.get("SyncStatus")
+        self._ResolvedVersionId = params.get("ResolvedVersionId")
+        if params.get("CreatedVersion") is not None:
+            self._CreatedVersion = CloudRecordVersion()
+            self._CreatedVersion._deserialize(params.get("CreatedVersion"))
+        if params.get("Record") is not None:
+            self._Record = CloudRecord()
+            self._Record._deserialize(params.get("Record"))
+        self._LastSyncTime = params.get("LastSyncTime")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
         self._RequestId = params.get("RequestId")
 
 
@@ -8725,6 +12385,182 @@ class UpdateRegistryRecordRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>Registry ID。</p>
+        :type RegistryId: str
+        :param _RecordId: <p>Record ID。</p>
+        :type RecordId: str
+        :param _Description: <p>Record 描述，可选。Record 更新模式下允许，允许空字符串清空；Version 创建模式禁止。</p>
+        :type Description: str
+        :param _VersionName: <p>新 Version 的展示名，可选。仅 Version 创建模式允许。</p>
+        :type VersionName: str
+        :param _ChangeLog: <p>新 Version 的变更原因，最大 4096 字符，可选。仅 Version 创建模式允许。</p>
+        :type ChangeLog: str
+        :param _MCPSource: <p>Version 创建模式：现有 Record 的 DescriptorType=MCP 时可提交。</p>
+        :type MCPSource: :class:`tencentcloud.ags.v20250920.models.CloudMCPSourceInput`
+        :param _AgentSource: <p>Version 创建模式：现有 Record 的 DescriptorType=A2A 或 AGUI 时可提交。</p>
+        :type AgentSource: :class:`tencentcloud.ags.v20250920.models.CloudAgentSourceInput`
+        :param _SkillSource: <p>Version 创建模式：现有 Record 的 DescriptorType=AGENT_SKILLS 时可提交。</p>
+        :type SkillSource: :class:`tencentcloud.ags.v20250920.models.CloudSkillSourceInput`
+        :param _CustomDescriptors: <p>Version 创建模式：现有 Record 的 DescriptorType=CUSTOM 时可提交，必须是 JSON object 字符串。</p>
+        :type CustomDescriptors: str
+        :param _LabelMutations: <p>Record 更新模式：Label 变更列表，最多 32 条，同一次请求中 Label Name 不可重复。</p>
+        :type LabelMutations: list of CloudRecordLabelMutation
+        """
+        self._RegistryId = None
+        self._RecordId = None
+        self._Description = None
+        self._VersionName = None
+        self._ChangeLog = None
+        self._MCPSource = None
+        self._AgentSource = None
+        self._SkillSource = None
+        self._CustomDescriptors = None
+        self._LabelMutations = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def RecordId(self):
+        r"""<p>Record ID。</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def Description(self):
+        r"""<p>Record 描述，可选。Record 更新模式下允许，允许空字符串清空；Version 创建模式禁止。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def VersionName(self):
+        r"""<p>新 Version 的展示名，可选。仅 Version 创建模式允许。</p>
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def ChangeLog(self):
+        r"""<p>新 Version 的变更原因，最大 4096 字符，可选。仅 Version 创建模式允许。</p>
+        :rtype: str
+        """
+        return self._ChangeLog
+
+    @ChangeLog.setter
+    def ChangeLog(self, ChangeLog):
+        self._ChangeLog = ChangeLog
+
+    @property
+    def MCPSource(self):
+        r"""<p>Version 创建模式：现有 Record 的 DescriptorType=MCP 时可提交。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudMCPSourceInput`
+        """
+        return self._MCPSource
+
+    @MCPSource.setter
+    def MCPSource(self, MCPSource):
+        self._MCPSource = MCPSource
+
+    @property
+    def AgentSource(self):
+        r"""<p>Version 创建模式：现有 Record 的 DescriptorType=A2A 或 AGUI 时可提交。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudAgentSourceInput`
+        """
+        return self._AgentSource
+
+    @AgentSource.setter
+    def AgentSource(self, AgentSource):
+        self._AgentSource = AgentSource
+
+    @property
+    def SkillSource(self):
+        r"""<p>Version 创建模式：现有 Record 的 DescriptorType=AGENT_SKILLS 时可提交。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudSkillSourceInput`
+        """
+        return self._SkillSource
+
+    @SkillSource.setter
+    def SkillSource(self, SkillSource):
+        self._SkillSource = SkillSource
+
+    @property
+    def CustomDescriptors(self):
+        r"""<p>Version 创建模式：现有 Record 的 DescriptorType=CUSTOM 时可提交，必须是 JSON object 字符串。</p>
+        :rtype: str
+        """
+        return self._CustomDescriptors
+
+    @CustomDescriptors.setter
+    def CustomDescriptors(self, CustomDescriptors):
+        self._CustomDescriptors = CustomDescriptors
+
+    @property
+    def LabelMutations(self):
+        r"""<p>Record 更新模式：Label 变更列表，最多 32 条，同一次请求中 Label Name 不可重复。</p>
+        :rtype: list of CloudRecordLabelMutation
+        """
+        return self._LabelMutations
+
+    @LabelMutations.setter
+    def LabelMutations(self, LabelMutations):
+        self._LabelMutations = LabelMutations
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._RecordId = params.get("RecordId")
+        self._Description = params.get("Description")
+        self._VersionName = params.get("VersionName")
+        self._ChangeLog = params.get("ChangeLog")
+        if params.get("MCPSource") is not None:
+            self._MCPSource = CloudMCPSourceInput()
+            self._MCPSource._deserialize(params.get("MCPSource"))
+        if params.get("AgentSource") is not None:
+            self._AgentSource = CloudAgentSourceInput()
+            self._AgentSource._deserialize(params.get("AgentSource"))
+        if params.get("SkillSource") is not None:
+            self._SkillSource = CloudSkillSourceInput()
+            self._SkillSource._deserialize(params.get("SkillSource"))
+        self._CustomDescriptors = params.get("CustomDescriptors")
+        if params.get("LabelMutations") is not None:
+            self._LabelMutations = []
+            for item in params.get("LabelMutations"):
+                obj = CloudRecordLabelMutation()
+                obj._deserialize(item)
+                self._LabelMutations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class UpdateRegistryRecordResponse(AbstractModel):
     r"""UpdateRegistryRecord返回参数结构体
@@ -8733,10 +12569,86 @@ class UpdateRegistryRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Record: <p>更新后的 Record。</p>
+        :type Record: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
+        :param _Version: <p>Version 创建模式返回：本次创建的新 Version。</p>
+        :type Version: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        :param _UploadURL: <p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UploadURL: str
+        :param _ExpireTime: <p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _ContentStatus: <p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Record = None
+        self._Version = None
+        self._UploadURL = None
+        self._ExpireTime = None
+        self._ContentStatus = None
         self._RequestId = None
+
+    @property
+    def Record(self):
+        r"""<p>更新后的 Record。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecord`
+        """
+        return self._Record
+
+    @Record.setter
+    def Record(self, Record):
+        self._Record = Record
+
+    @property
+    def Version(self):
+        r"""<p>Version 创建模式返回：本次创建的新 Version。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRecordVersion`
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def UploadURL(self):
+        r"""<p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UploadURL
+
+    @UploadURL.setter
+    def UploadURL(self, UploadURL):
+        self._UploadURL = UploadURL
+
+    @property
+    def ExpireTime(self):
+        r"""<p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ContentStatus(self):
+        r"""<p>Version 创建模式且 SkillSource.Type=TAR_PACKAGE 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContentStatus
+
+    @ContentStatus.setter
+    def ContentStatus(self, ContentStatus):
+        self._ContentStatus = ContentStatus
 
     @property
     def RequestId(self):
@@ -8751,6 +12663,15 @@ class UpdateRegistryRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Record") is not None:
+            self._Record = CloudRecord()
+            self._Record._deserialize(params.get("Record"))
+        if params.get("Version") is not None:
+            self._Version = CloudRecordVersion()
+            self._Version._deserialize(params.get("Version"))
+        self._UploadURL = params.get("UploadURL")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ContentStatus = params.get("ContentStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -8758,6 +12679,51 @@ class UpdateRegistryRequest(AbstractModel):
     r"""UpdateRegistry请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: <p>Registry ID。</p>
+        :type RegistryId: str
+        :param _Description: <p>新的描述；必填；最长 4096。</p>
+        :type Description: str
+        """
+        self._RegistryId = None
+        self._Description = None
+
+    @property
+    def RegistryId(self):
+        r"""<p>Registry ID。</p>
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Description(self):
+        r"""<p>新的描述；必填；最长 4096。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpdateRegistryResponse(AbstractModel):
@@ -8767,10 +12733,24 @@ class UpdateRegistryResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Registry: <p>更新后的 Registry 详情。</p>
+        :type Registry: :class:`tencentcloud.ags.v20250920.models.CloudRegistry`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Registry = None
         self._RequestId = None
+
+    @property
+    def Registry(self):
+        r"""<p>更新后的 Registry 详情。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CloudRegistry`
+        """
+        return self._Registry
+
+    @Registry.setter
+    def Registry(self, Registry):
+        self._Registry = Registry
 
     @property
     def RequestId(self):
@@ -8785,6 +12765,9 @@ class UpdateRegistryResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Registry") is not None:
+            self._Registry = CloudRegistry()
+            self._Registry._deserialize(params.get("Registry"))
         self._RequestId = params.get("RequestId")
 
 

@@ -1582,8 +1582,11 @@ class DescribeDeployTemplatesRequest(AbstractModel):
         r"""
         :param _ModelId: 模型ID
         :type ModelId: str
+        :param _ServiceId: 可选。传入当前推理服务 ID 时，仅返回与该服务占用兼容的模板：同一 Scene、卡型家族兼容、机数相等、非机密计算。
+        :type ServiceId: str
         """
         self._ModelId = None
+        self._ServiceId = None
 
     @property
     def ModelId(self):
@@ -1596,9 +1599,21 @@ class DescribeDeployTemplatesRequest(AbstractModel):
     def ModelId(self, ModelId):
         self._ModelId = ModelId
 
+    @property
+    def ServiceId(self):
+        r"""可选。传入当前推理服务 ID 时，仅返回与该服务占用兼容的模板：同一 Scene、卡型家族兼容、机数相等、非机密计算。
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
 
     def _deserialize(self, params):
         self._ModelId = params.get("ModelId")
+        self._ServiceId = params.get("ServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1939,11 +1954,14 @@ class DescribeModelsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回量，不得大于100，默认为20
         :type Limit: int
+        :param _ServiceId: 可选。传入当前推理服务 ID 时，仅返回与该服务同一 Scene、且至少有一条兼容重装模板的模型。自定义部署、机密计算、具身智能服务返回空列表。
+        :type ServiceId: str
         """
         self._ModelIds = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+        self._ServiceId = None
 
     @property
     def ModelIds(self):
@@ -1989,6 +2007,17 @@ class DescribeModelsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def ServiceId(self):
+        r"""可选。传入当前推理服务 ID 时，仅返回与该服务同一 Scene、且至少有一条兼容重装模板的模型。自定义部署、机密计算、具身智能服务返回空列表。
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
 
     def _deserialize(self, params):
         self._ModelIds = params.get("ModelIds")
@@ -2000,6 +2029,7 @@ class DescribeModelsRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._ServiceId = params.get("ServiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -18,6 +18,57 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountUserIdItem(AbstractModel):
+    r"""账户标识项(目录MenuId+登录账号UserId)，用于以(菜单目录、登录账号)代替账号Id标识账户
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MenuId: <p>Comment: 账号所在目录ID(MenuId)，与accounts表menu_id一致，用于同一登录账号在不同目录下去重;Required:true</p>
+        :type MenuId: int
+        :param _UserId: <p>Comment: 登录账号(UserId)，对应DescribeLocalAccount -&gt; UserId;Required:true</p>
+        :type UserId: str
+        """
+        self._MenuId = None
+        self._UserId = None
+
+    @property
+    def MenuId(self):
+        r"""<p>Comment: 账号所在目录ID(MenuId)，与accounts表menu_id一致，用于同一登录账号在不同目录下去重;Required:true</p>
+        :rtype: int
+        """
+        return self._MenuId
+
+    @MenuId.setter
+    def MenuId(self, MenuId):
+        self._MenuId = MenuId
+
+    @property
+    def UserId(self):
+        r"""<p>Comment: 登录账号(UserId)，对应DescribeLocalAccount -&gt; UserId;Required:true</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._MenuId = params.get("MenuId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AggrCategorySoftDetailRow(AbstractModel):
     r"""按版本聚合后的软件列表
 
@@ -698,6 +749,279 @@ class BindBusinessResourceConnectorGroupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class BindVirtualAccountData(AbstractModel):
+    r"""绑定账户虚拟组响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailItems: <p>绑定失败明细（含失败原因）</p>
+        :type FailItems: list of BindVirtualAccountResultData
+        :param _SuccessItems: <p>绑定成功明细（含幂等场景：已存在绑定的账号也归入成功）</p>
+        :type SuccessItems: list of BindVirtualAccountResultData
+        """
+        self._FailItems = None
+        self._SuccessItems = None
+
+    @property
+    def FailItems(self):
+        r"""<p>绑定失败明细（含失败原因）</p>
+        :rtype: list of BindVirtualAccountResultData
+        """
+        return self._FailItems
+
+    @FailItems.setter
+    def FailItems(self, FailItems):
+        self._FailItems = FailItems
+
+    @property
+    def SuccessItems(self):
+        r"""<p>绑定成功明细（含幂等场景：已存在绑定的账号也归入成功）</p>
+        :rtype: list of BindVirtualAccountResultData
+        """
+        return self._SuccessItems
+
+    @SuccessItems.setter
+    def SuccessItems(self, SuccessItems):
+        self._SuccessItems = SuccessItems
+
+
+    def _deserialize(self, params):
+        if params.get("FailItems") is not None:
+            self._FailItems = []
+            for item in params.get("FailItems"):
+                obj = BindVirtualAccountResultData()
+                obj._deserialize(item)
+                self._FailItems.append(obj)
+        if params.get("SuccessItems") is not None:
+            self._SuccessItems = []
+            for item in params.get("SuccessItems"):
+                obj = BindVirtualAccountResultData()
+                obj._deserialize(item)
+                self._SuccessItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindVirtualAccountResultData(AbstractModel):
+    r"""绑定虚拟组结果明细项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountId: <p>账号Id（通过AccountIdList传入时回显）</p>
+        :type AccountId: int
+        :param _MenuId: <p>目录ID（通过AccountUserList传入时回显，否则为0）</p>
+        :type MenuId: int
+        :param _Reason: <p>失败原因，仅失败项有值：ACCOUNT_NOT_FOUND / ACCOUNT_NOT_IN_GROUP / DB_ERROR</p>
+        :type Reason: str
+        :param _UserId: <p>登录账号（通过AccountUserList传入时回显，否则为空）</p>
+        :type UserId: str
+        """
+        self._AccountId = None
+        self._MenuId = None
+        self._Reason = None
+        self._UserId = None
+
+    @property
+    def AccountId(self):
+        r"""<p>账号Id（通过AccountIdList传入时回显）</p>
+        :rtype: int
+        """
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def MenuId(self):
+        r"""<p>目录ID（通过AccountUserList传入时回显，否则为0）</p>
+        :rtype: int
+        """
+        return self._MenuId
+
+    @MenuId.setter
+    def MenuId(self, MenuId):
+        self._MenuId = MenuId
+
+    @property
+    def Reason(self):
+        r"""<p>失败原因，仅失败项有值：ACCOUNT_NOT_FOUND / ACCOUNT_NOT_IN_GROUP / DB_ERROR</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def UserId(self):
+        r"""<p>登录账号（通过AccountUserList传入时回显，否则为空）</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._AccountId = params.get("AccountId")
+        self._MenuId = params.get("MenuId")
+        self._Reason = params.get("Reason")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindVirtualAccountsRequest(AbstractModel):
+    r"""BindVirtualAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VirtualGroupId: <p>Comment: 虚拟组id;Required:true</p>
+        :type VirtualGroupId: int
+        :param _AccountIdList: <p>Comment: 要绑定的账户Id集合，这里的Id指的是DescribeLocalAccountsData结构体里返回的Id;Required:true</p>
+        :type AccountIdList: list of int
+        :param _AccountUserList: <p>Comment: 要绑定的账户(目录MenuId+登录账号UserId)集合，与AccountIdList二选一或并用，查不到的账号会被跳过;Required:false</p>
+        :type AccountUserList: list of AccountUserIdItem
+        :param _DomainInstanceId: Comment: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        """
+        self._VirtualGroupId = None
+        self._AccountIdList = None
+        self._AccountUserList = None
+        self._DomainInstanceId = None
+
+    @property
+    def VirtualGroupId(self):
+        r"""<p>Comment: 虚拟组id;Required:true</p>
+        :rtype: int
+        """
+        return self._VirtualGroupId
+
+    @VirtualGroupId.setter
+    def VirtualGroupId(self, VirtualGroupId):
+        self._VirtualGroupId = VirtualGroupId
+
+    @property
+    def AccountIdList(self):
+        r"""<p>Comment: 要绑定的账户Id集合，这里的Id指的是DescribeLocalAccountsData结构体里返回的Id;Required:true</p>
+        :rtype: list of int
+        """
+        return self._AccountIdList
+
+    @AccountIdList.setter
+    def AccountIdList(self, AccountIdList):
+        self._AccountIdList = AccountIdList
+
+    @property
+    def AccountUserList(self):
+        r"""<p>Comment: 要绑定的账户(目录MenuId+登录账号UserId)集合，与AccountIdList二选一或并用，查不到的账号会被跳过;Required:false</p>
+        :rtype: list of AccountUserIdItem
+        """
+        return self._AccountUserList
+
+    @AccountUserList.setter
+    def AccountUserList(self, AccountUserList):
+        self._AccountUserList = AccountUserList
+
+    @property
+    def DomainInstanceId(self):
+        r"""Comment: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+
+    def _deserialize(self, params):
+        self._VirtualGroupId = params.get("VirtualGroupId")
+        self._AccountIdList = params.get("AccountIdList")
+        if params.get("AccountUserList") is not None:
+            self._AccountUserList = []
+            for item in params.get("AccountUserList"):
+                obj = AccountUserIdItem()
+                obj._deserialize(item)
+                self._AccountUserList.append(obj)
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindVirtualAccountsResponse(AbstractModel):
+    r"""BindVirtualAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>业务响应数据</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.BindVirtualAccountData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>业务响应数据</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.BindVirtualAccountData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BindVirtualAccountData()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2490,6 +2814,112 @@ class DeleteResourceData(AbstractModel):
     def _deserialize(self, params):
         self._ResourceType = params.get("ResourceType")
         self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountAccountGroupsData(AbstractModel):
+    r"""多OU组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountGroupId: <p>组Id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupId: int
+        :param _AccountGroupName: <p>组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupName: str
+        :param _MasterFlag: <p>主组标识(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MasterFlag: int
+        :param _AccountGroupNamePaths: <p>组路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupNamePaths: list of str
+        :param _AccountGroupPathIds: <p>组路径Id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupPathIds: list of int
+        """
+        self._AccountGroupId = None
+        self._AccountGroupName = None
+        self._MasterFlag = None
+        self._AccountGroupNamePaths = None
+        self._AccountGroupPathIds = None
+
+    @property
+    def AccountGroupId(self):
+        r"""<p>组Id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def AccountGroupName(self):
+        r"""<p>组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccountGroupName
+
+    @AccountGroupName.setter
+    def AccountGroupName(self, AccountGroupName):
+        self._AccountGroupName = AccountGroupName
+
+    @property
+    def MasterFlag(self):
+        r"""<p>主组标识(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MasterFlag
+
+    @MasterFlag.setter
+    def MasterFlag(self, MasterFlag):
+        self._MasterFlag = MasterFlag
+
+    @property
+    def AccountGroupNamePaths(self):
+        r"""<p>组路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AccountGroupNamePaths
+
+    @AccountGroupNamePaths.setter
+    def AccountGroupNamePaths(self, AccountGroupNamePaths):
+        self._AccountGroupNamePaths = AccountGroupNamePaths
+
+    @property
+    def AccountGroupPathIds(self):
+        r"""<p>组路径Id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._AccountGroupPathIds
+
+    @AccountGroupPathIds.setter
+    def AccountGroupPathIds(self, AccountGroupPathIds):
+        self._AccountGroupPathIds = AccountGroupPathIds
+
+
+    def _deserialize(self, params):
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._AccountGroupName = params.get("AccountGroupName")
+        self._MasterFlag = params.get("MasterFlag")
+        self._AccountGroupNamePaths = params.get("AccountGroupNamePaths")
+        self._AccountGroupPathIds = params.get("AccountGroupPathIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7913,6 +8343,183 @@ class DescribeDeviceInfoRspData(AbstractModel):
         
 
 
+class DescribeDeviceSecurityInfoData(AbstractModel):
+    r"""终端安全信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FirewallStatus: <p>防火墙状态</p><p>枚举值：</p><ul><li>0：未开启</li><li>1：已开启</li></ul>
+        :type FirewallStatus: int
+        :param _RealTimeProtectionStatus: <p>实时防护状态</p><p>枚举值：</p><ul><li>0：未开启</li><li>1：部分开启</li><li>2：已开启</li><li>-1：未知</li></ul>
+        :type RealTimeProtectionStatus: int
+        :param _SysRepVersion: <p>系统修复引擎版本</p>
+        :type SysRepVersion: str
+        :param _VirusVer: <p>病毒库版本</p>
+        :type VirusVer: str
+        :param _VulVersion: <p>漏洞库版本</p>
+        :type VulVersion: str
+        """
+        self._FirewallStatus = None
+        self._RealTimeProtectionStatus = None
+        self._SysRepVersion = None
+        self._VirusVer = None
+        self._VulVersion = None
+
+    @property
+    def FirewallStatus(self):
+        r"""<p>防火墙状态</p><p>枚举值：</p><ul><li>0：未开启</li><li>1：已开启</li></ul>
+        :rtype: int
+        """
+        return self._FirewallStatus
+
+    @FirewallStatus.setter
+    def FirewallStatus(self, FirewallStatus):
+        self._FirewallStatus = FirewallStatus
+
+    @property
+    def RealTimeProtectionStatus(self):
+        r"""<p>实时防护状态</p><p>枚举值：</p><ul><li>0：未开启</li><li>1：部分开启</li><li>2：已开启</li><li>-1：未知</li></ul>
+        :rtype: int
+        """
+        return self._RealTimeProtectionStatus
+
+    @RealTimeProtectionStatus.setter
+    def RealTimeProtectionStatus(self, RealTimeProtectionStatus):
+        self._RealTimeProtectionStatus = RealTimeProtectionStatus
+
+    @property
+    def SysRepVersion(self):
+        r"""<p>系统修复引擎版本</p>
+        :rtype: str
+        """
+        return self._SysRepVersion
+
+    @SysRepVersion.setter
+    def SysRepVersion(self, SysRepVersion):
+        self._SysRepVersion = SysRepVersion
+
+    @property
+    def VirusVer(self):
+        r"""<p>病毒库版本</p>
+        :rtype: str
+        """
+        return self._VirusVer
+
+    @VirusVer.setter
+    def VirusVer(self, VirusVer):
+        self._VirusVer = VirusVer
+
+    @property
+    def VulVersion(self):
+        r"""<p>漏洞库版本</p>
+        :rtype: str
+        """
+        return self._VulVersion
+
+    @VulVersion.setter
+    def VulVersion(self, VulVersion):
+        self._VulVersion = VulVersion
+
+
+    def _deserialize(self, params):
+        self._FirewallStatus = params.get("FirewallStatus")
+        self._RealTimeProtectionStatus = params.get("RealTimeProtectionStatus")
+        self._SysRepVersion = params.get("SysRepVersion")
+        self._VirusVer = params.get("VirusVer")
+        self._VulVersion = params.get("VulVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceSecurityInfoRequest(AbstractModel):
+    r"""DescribeDeviceSecurityInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mid: <p>设备唯一标识符</p>
+        :type Mid: str
+        """
+        self._Mid = None
+
+    @property
+    def Mid(self):
+        r"""<p>设备唯一标识符</p>
+        :rtype: str
+        """
+        return self._Mid
+
+    @Mid.setter
+    def Mid(self, Mid):
+        self._Mid = Mid
+
+
+    def _deserialize(self, params):
+        self._Mid = params.get("Mid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceSecurityInfoResponse(AbstractModel):
+    r"""DescribeDeviceSecurityInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>终端安全信息</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceSecurityInfoData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>终端安全信息</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceSecurityInfoData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeDeviceSecurityInfoData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDeviceVirtualGroupsPageRsp(AbstractModel):
     r"""查询返回终端自定义分组的Data数据
 
@@ -9060,6 +9667,160 @@ class DescribeLocalAccountsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProfileFieldsMenuRequest(AbstractModel):
+    r"""DescribeProfileFieldsMenu请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OnlyRule: <p>查找自动填写字段</p>
+        :type OnlyRule: bool
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        """
+        self._OnlyRule = None
+        self._DomainInstanceId = None
+
+    @property
+    def OnlyRule(self):
+        r"""<p>查找自动填写字段</p>
+        :rtype: bool
+        """
+        return self._OnlyRule
+
+    @OnlyRule.setter
+    def OnlyRule(self, OnlyRule):
+        self._OnlyRule = OnlyRule
+
+    @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+
+    def _deserialize(self, params):
+        self._OnlyRule = params.get("OnlyRule")
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProfileFieldsMenuResponse(AbstractModel):
+    r"""DescribeProfileFieldsMenu返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>描述字段数据</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeProfileFieldsRspData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>描述字段数据</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeProfileFieldsRspData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeProfileFieldsRspData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProfileFieldsRspData(AbstractModel):
+    r"""描述字段数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Item: <p>详情item</p>
+        :type Item: list of ProfileFieldItem
+        :param _ProfileTips: <p>profile开关配置</p>
+        :type ProfileTips: :class:`tencentcloud.ioa.v20220601.models.ProfileTips`
+        """
+        self._Item = None
+        self._ProfileTips = None
+
+    @property
+    def Item(self):
+        r"""<p>详情item</p>
+        :rtype: list of ProfileFieldItem
+        """
+        return self._Item
+
+    @Item.setter
+    def Item(self, Item):
+        self._Item = Item
+
+    @property
+    def ProfileTips(self):
+        r"""<p>profile开关配置</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ProfileTips`
+        """
+        return self._ProfileTips
+
+    @ProfileTips.setter
+    def ProfileTips(self, ProfileTips):
+        self._ProfileTips = ProfileTips
+
+
+    def _deserialize(self, params):
+        if params.get("Item") is not None:
+            self._Item = []
+            for item in params.get("Item"):
+                obj = ProfileFieldItem()
+                obj._deserialize(item)
+                self._Item.append(obj)
+        if params.get("ProfileTips") is not None:
+            self._ProfileTips = ProfileTips()
+            self._ProfileTips._deserialize(params.get("ProfileTips"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeResourceGrantedAccountGroupsData(AbstractModel):
     r"""账号分组授权信息
 
@@ -10125,6 +10886,464 @@ class DescribeSoftwareInformationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVirtualAccountsData(AbstractModel):
+    r"""列表虚拟组的账户分页数据集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>Id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _UserId: <p>用户账号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _UserName: <p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _AccountGroupId: <p>账户分组Id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupId: int
+        :param _GroupName: <p>账户组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _AccountId: <p>关联服务器名称(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountId: int
+        :param _Source: <p>账户源(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Source: int
+        :param _Status: <p>状态(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _NamePath: <p>账户namepath</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamePath: str
+        :param _ExtraInfo: <p>账户扩展信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: str
+        :param _Itime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Itime: str
+        :param _Utime: <p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Utime: str
+        :param _AccountGroups: <p>多OU组信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroups: list of DescribeAccountAccountGroupsData
+        :param _PcBindNum: <p>绑定PC端数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PcBindNum: int
+        :param _MobileBindNum: <p>绑定移动端数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MobileBindNum: int
+        """
+        self._Id = None
+        self._UserId = None
+        self._UserName = None
+        self._AccountGroupId = None
+        self._GroupName = None
+        self._AccountId = None
+        self._Source = None
+        self._Status = None
+        self._NamePath = None
+        self._ExtraInfo = None
+        self._Itime = None
+        self._Utime = None
+        self._AccountGroups = None
+        self._PcBindNum = None
+        self._MobileBindNum = None
+
+    @property
+    def Id(self):
+        r"""<p>Id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def UserId(self):
+        r"""<p>用户账号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def AccountGroupId(self):
+        r"""<p>账户分组Id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>账户组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def AccountId(self):
+        r"""<p>关联服务器名称(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def Source(self):
+        r"""<p>账户源(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Status(self):
+        r"""<p>状态(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def NamePath(self):
+        r"""<p>账户namepath</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NamePath
+
+    @NamePath.setter
+    def NamePath(self, NamePath):
+        self._NamePath = NamePath
+
+    @property
+    def ExtraInfo(self):
+        r"""<p>账户扩展信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
+    def Itime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Itime
+
+    @Itime.setter
+    def Itime(self, Itime):
+        self._Itime = Itime
+
+    @property
+    def Utime(self):
+        r"""<p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Utime
+
+    @Utime.setter
+    def Utime(self, Utime):
+        self._Utime = Utime
+
+    @property
+    def AccountGroups(self):
+        r"""<p>多OU组信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeAccountAccountGroupsData
+        """
+        return self._AccountGroups
+
+    @AccountGroups.setter
+    def AccountGroups(self, AccountGroups):
+        self._AccountGroups = AccountGroups
+
+    @property
+    def PcBindNum(self):
+        r"""<p>绑定PC端数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PcBindNum
+
+    @PcBindNum.setter
+    def PcBindNum(self, PcBindNum):
+        self._PcBindNum = PcBindNum
+
+    @property
+    def MobileBindNum(self):
+        r"""<p>绑定移动端数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MobileBindNum
+
+    @MobileBindNum.setter
+    def MobileBindNum(self, MobileBindNum):
+        self._MobileBindNum = MobileBindNum
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._GroupName = params.get("GroupName")
+        self._AccountId = params.get("AccountId")
+        self._Source = params.get("Source")
+        self._Status = params.get("Status")
+        self._NamePath = params.get("NamePath")
+        self._ExtraInfo = params.get("ExtraInfo")
+        self._Itime = params.get("Itime")
+        self._Utime = params.get("Utime")
+        if params.get("AccountGroups") is not None:
+            self._AccountGroups = []
+            for item in params.get("AccountGroups"):
+                obj = DescribeAccountAccountGroupsData()
+                obj._deserialize(item)
+                self._AccountGroups.append(obj)
+        self._PcBindNum = params.get("PcBindNum")
+        self._MobileBindNum = params.get("MobileBindNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirtualAccountsPageData(AbstractModel):
+    r"""业务响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>分页公共对象</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        :param _Items: <p>列表虚拟组的账户分页数据集合</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DescribeVirtualAccountsData
+        """
+        self._Page = None
+        self._Items = None
+
+    @property
+    def Page(self):
+        r"""<p>分页公共对象</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Items(self):
+        r"""<p>列表虚拟组的账户分页数据集合</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeVirtualAccountsData
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Page") is not None:
+            self._Page = Paging()
+            self._Page._deserialize(params.get("Page"))
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DescribeVirtualAccountsData()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirtualAccountsRequest(AbstractModel):
+    r"""DescribeVirtualAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VirtualGroupId: <p>账户虚拟组Id(只支持32位)</p>
+        :type VirtualGroupId: int
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _Condition: <p>滤条件、分页参数</p><li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按用户名称过滤。</li><li>UserId - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按用户账号过滤。</li><li>Phone - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按电话过滤。</li>
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        self._VirtualGroupId = None
+        self._DomainInstanceId = None
+        self._Condition = None
+
+    @property
+    def VirtualGroupId(self):
+        r"""<p>账户虚拟组Id(只支持32位)</p>
+        :rtype: int
+        """
+        return self._VirtualGroupId
+
+    @VirtualGroupId.setter
+    def VirtualGroupId(self, VirtualGroupId):
+        self._VirtualGroupId = VirtualGroupId
+
+    @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def Condition(self):
+        r"""<p>滤条件、分页参数</p><li>UserName - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按用户名称过滤。</li><li>UserId - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按用户账号过滤。</li><li>Phone - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按电话过滤。</li>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+
+    def _deserialize(self, params):
+        self._VirtualGroupId = params.get("VirtualGroupId")
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirtualAccountsResponse(AbstractModel):
+    r"""DescribeVirtualAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>业务响应数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeVirtualAccountsPageData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>业务响应数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeVirtualAccountsPageData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeVirtualAccountsPageData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVirtualDevicesPageRsp(AbstractModel):
     r"""返回的具体Data数据
 
@@ -10415,6 +11634,8 @@ class DeviceDetail(AbstractModel):
         :type NGNNewStrategyVer: str
         :param _HostName: <p>宿主机名称（需要宿主机也安装iOA才能显示）</p>
         :type HostName: str
+        :param _Profiles: <p>信息登记数据</p>
+        :type Profiles: list of DeviceProfile
         :param _BaseBoardSn: <p>主板序列号</p>
         :type BaseBoardSn: str
         :param _AccountUsers: <p>绑定账户名称</p>
@@ -10433,6 +11654,8 @@ class DeviceDetail(AbstractModel):
         :type ScreenRecordingPermission: int
         :param _DiskAccessPermission: <p>是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启</p>
         :type DiskAccessPermission: int
+        :param _InstallationStatus: <p>安装状态（私有化：0: 已安装 1: 已卸载 ）（SaaS及一体化：0: 未知 1: 已安装 2: 已卸载）</p>
+        :type InstallationStatus: int
         :param _RemarkName: <p>终端备注名</p>
         :type RemarkName: str
         :param _BiosUuid: <p>BiosUUID（启动盘标识符）</p>
@@ -10479,6 +11702,7 @@ class DeviceDetail(AbstractModel):
         self._DeviceNewStrategyVer = None
         self._NGNNewStrategyVer = None
         self._HostName = None
+        self._Profiles = None
         self._BaseBoardSn = None
         self._AccountUsers = None
         self._IdentityStrategyVer = None
@@ -10488,6 +11712,7 @@ class DeviceDetail(AbstractModel):
         self._AccountGroupId = None
         self._ScreenRecordingPermission = None
         self._DiskAccessPermission = None
+        self._InstallationStatus = None
         self._RemarkName = None
         self._BiosUuid = None
 
@@ -10943,6 +12168,17 @@ class DeviceDetail(AbstractModel):
         self._HostName = HostName
 
     @property
+    def Profiles(self):
+        r"""<p>信息登记数据</p>
+        :rtype: list of DeviceProfile
+        """
+        return self._Profiles
+
+    @Profiles.setter
+    def Profiles(self, Profiles):
+        self._Profiles = Profiles
+
+    @property
     def BaseBoardSn(self):
         r"""<p>主板序列号</p>
         :rtype: str
@@ -11042,6 +12278,17 @@ class DeviceDetail(AbstractModel):
         self._DiskAccessPermission = DiskAccessPermission
 
     @property
+    def InstallationStatus(self):
+        r"""<p>安装状态（私有化：0: 已安装 1: 已卸载 ）（SaaS及一体化：0: 未知 1: 已安装 2: 已卸载）</p>
+        :rtype: int
+        """
+        return self._InstallationStatus
+
+    @InstallationStatus.setter
+    def InstallationStatus(self, InstallationStatus):
+        self._InstallationStatus = InstallationStatus
+
+    @property
     def RemarkName(self):
         r"""<p>终端备注名</p>
         :rtype: str
@@ -11106,6 +12353,12 @@ class DeviceDetail(AbstractModel):
         self._DeviceNewStrategyVer = params.get("DeviceNewStrategyVer")
         self._NGNNewStrategyVer = params.get("NGNNewStrategyVer")
         self._HostName = params.get("HostName")
+        if params.get("Profiles") is not None:
+            self._Profiles = []
+            for item in params.get("Profiles"):
+                obj = DeviceProfile()
+                obj._deserialize(item)
+                self._Profiles.append(obj)
         self._BaseBoardSn = params.get("BaseBoardSn")
         self._AccountUsers = params.get("AccountUsers")
         self._IdentityStrategyVer = params.get("IdentityStrategyVer")
@@ -11115,6 +12368,7 @@ class DeviceDetail(AbstractModel):
         self._AccountGroupId = params.get("AccountGroupId")
         self._ScreenRecordingPermission = params.get("ScreenRecordingPermission")
         self._DiskAccessPermission = params.get("DiskAccessPermission")
+        self._InstallationStatus = params.get("InstallationStatus")
         self._RemarkName = params.get("RemarkName")
         self._BiosUuid = params.get("BiosUuid")
         memeber_set = set(params.keys())
@@ -11850,6 +13104,147 @@ class DeviceProcessInfo(AbstractModel):
         self._Path = params.get("Path")
         self._ProcessId = params.get("ProcessId")
         self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceProfile(AbstractModel):
+    r"""信息登记数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: <p>值</p>
+        :type Value: str
+        :param _FieldId: <p>属性ID(只支持32位)</p>
+        :type FieldId: int
+        :param _Mid: <p>设备唯一标识码</p>
+        :type Mid: str
+        :param _Title: <p>名称</p>
+        :type Title: str
+        :param _Type: <p>类型(只支持32位)</p>
+        :type Type: int
+        :param _Options: <p>可选数据</p>
+        :type Options: str
+        :param _IsMust: <p>必填数据</p>
+        :type IsMust: str
+        :param _IsCustom: <p>必填数据</p>
+        :type IsCustom: str
+        """
+        self._Value = None
+        self._FieldId = None
+        self._Mid = None
+        self._Title = None
+        self._Type = None
+        self._Options = None
+        self._IsMust = None
+        self._IsCustom = None
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def FieldId(self):
+        r"""<p>属性ID(只支持32位)</p>
+        :rtype: int
+        """
+        return self._FieldId
+
+    @FieldId.setter
+    def FieldId(self, FieldId):
+        self._FieldId = FieldId
+
+    @property
+    def Mid(self):
+        r"""<p>设备唯一标识码</p>
+        :rtype: str
+        """
+        return self._Mid
+
+    @Mid.setter
+    def Mid(self, Mid):
+        self._Mid = Mid
+
+    @property
+    def Title(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Type(self):
+        r"""<p>类型(只支持32位)</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Options(self):
+        r"""<p>可选数据</p>
+        :rtype: str
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+    @property
+    def IsMust(self):
+        r"""<p>必填数据</p>
+        :rtype: str
+        """
+        return self._IsMust
+
+    @IsMust.setter
+    def IsMust(self, IsMust):
+        self._IsMust = IsMust
+
+    @property
+    def IsCustom(self):
+        r"""<p>必填数据</p>
+        :rtype: str
+        """
+        return self._IsCustom
+
+    @IsCustom.setter
+    def IsCustom(self, IsCustom):
+        self._IsCustom = IsCustom
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._FieldId = params.get("FieldId")
+        self._Mid = params.get("Mid")
+        self._Title = params.get("Title")
+        self._Type = params.get("Type")
+        self._Options = params.get("Options")
+        self._IsMust = params.get("IsMust")
+        self._IsCustom = params.get("IsCustom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14931,6 +16326,72 @@ class ModifyVirtualDeviceGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OptionsItem(AbstractModel):
+    r"""多项选择数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ValueCh: <p>中文值</p>
+        :type ValueCh: str
+        :param _ValueEn: <p>英文值</p>
+        :type ValueEn: str
+        :param _OptionKey: <p>每一项的Key值</p>
+        :type OptionKey: int
+        """
+        self._ValueCh = None
+        self._ValueEn = None
+        self._OptionKey = None
+
+    @property
+    def ValueCh(self):
+        r"""<p>中文值</p>
+        :rtype: str
+        """
+        return self._ValueCh
+
+    @ValueCh.setter
+    def ValueCh(self, ValueCh):
+        self._ValueCh = ValueCh
+
+    @property
+    def ValueEn(self):
+        r"""<p>英文值</p>
+        :rtype: str
+        """
+        return self._ValueEn
+
+    @ValueEn.setter
+    def ValueEn(self, ValueEn):
+        self._ValueEn = ValueEn
+
+    @property
+    def OptionKey(self):
+        r"""<p>每一项的Key值</p>
+        :rtype: int
+        """
+        return self._OptionKey
+
+    @OptionKey.setter
+    def OptionKey(self, OptionKey):
+        self._OptionKey = OptionKey
+
+
+    def _deserialize(self, params):
+        self._ValueCh = params.get("ValueCh")
+        self._ValueEn = params.get("ValueEn")
+        self._OptionKey = params.get("OptionKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Paging(AbstractModel):
     r"""页码
 
@@ -15002,6 +16463,323 @@ class Paging(AbstractModel):
         self._PageNum = params.get("PageNum")
         self._PageCount = params.get("PageCount")
         self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProfileFieldItem(AbstractModel):
+    r"""登记信息数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>键值id</p>
+        :type Id: int
+        :param _Key: <p>排序key(只支持32位)</p>
+        :type Key: int
+        :param _Title: <p>名称</p>
+        :type Title: str
+        :param _Type: <p>输入类型(只支持32位)</p>
+        :type Type: int
+        :param _IsMust: <p>是否必选(只支持32位)</p>
+        :type IsMust: int
+        :param _IsShow: <p>是否显示(只支持32位)</p>
+        :type IsShow: int
+        :param _IsCustom: <p>是否自定义(只支持32位)</p>
+        :type IsCustom: int
+        :param _NextOptionKey: <p>下一个选项key(只支持32位)</p>
+        :type NextOptionKey: int
+        :param _Options: <p>选项数据</p>
+        :type Options: str
+        :param _IsReplace: <p>是否覆盖(只支持32位)</p>
+        :type IsReplace: int
+        :param _GroupEditable: <p>是否可以修改分组</p>
+        :type GroupEditable: bool
+        :param _HasRules: <p>是否有规则</p>
+        :type HasRules: bool
+        :param _RuleId: <p>规则id</p>
+        :type RuleId: int
+        :param _TitleEn: <p>名称-英文</p>
+        :type TitleEn: str
+        :param _OptionsEn: <p>选项数据-英文</p>
+        :type OptionsEn: str
+        :param _OptionsItem: <p>选项数据(包含中英文)</p>
+        :type OptionsItem: list of OptionsItem
+        """
+        self._Id = None
+        self._Key = None
+        self._Title = None
+        self._Type = None
+        self._IsMust = None
+        self._IsShow = None
+        self._IsCustom = None
+        self._NextOptionKey = None
+        self._Options = None
+        self._IsReplace = None
+        self._GroupEditable = None
+        self._HasRules = None
+        self._RuleId = None
+        self._TitleEn = None
+        self._OptionsEn = None
+        self._OptionsItem = None
+
+    @property
+    def Id(self):
+        r"""<p>键值id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Key(self):
+        r"""<p>排序key(只支持32位)</p>
+        :rtype: int
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Title(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Type(self):
+        r"""<p>输入类型(只支持32位)</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def IsMust(self):
+        r"""<p>是否必选(只支持32位)</p>
+        :rtype: int
+        """
+        return self._IsMust
+
+    @IsMust.setter
+    def IsMust(self, IsMust):
+        self._IsMust = IsMust
+
+    @property
+    def IsShow(self):
+        r"""<p>是否显示(只支持32位)</p>
+        :rtype: int
+        """
+        return self._IsShow
+
+    @IsShow.setter
+    def IsShow(self, IsShow):
+        self._IsShow = IsShow
+
+    @property
+    def IsCustom(self):
+        r"""<p>是否自定义(只支持32位)</p>
+        :rtype: int
+        """
+        return self._IsCustom
+
+    @IsCustom.setter
+    def IsCustom(self, IsCustom):
+        self._IsCustom = IsCustom
+
+    @property
+    def NextOptionKey(self):
+        r"""<p>下一个选项key(只支持32位)</p>
+        :rtype: int
+        """
+        return self._NextOptionKey
+
+    @NextOptionKey.setter
+    def NextOptionKey(self, NextOptionKey):
+        self._NextOptionKey = NextOptionKey
+
+    @property
+    def Options(self):
+        r"""<p>选项数据</p>
+        :rtype: str
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+    @property
+    def IsReplace(self):
+        r"""<p>是否覆盖(只支持32位)</p>
+        :rtype: int
+        """
+        return self._IsReplace
+
+    @IsReplace.setter
+    def IsReplace(self, IsReplace):
+        self._IsReplace = IsReplace
+
+    @property
+    def GroupEditable(self):
+        r"""<p>是否可以修改分组</p>
+        :rtype: bool
+        """
+        return self._GroupEditable
+
+    @GroupEditable.setter
+    def GroupEditable(self, GroupEditable):
+        self._GroupEditable = GroupEditable
+
+    @property
+    def HasRules(self):
+        r"""<p>是否有规则</p>
+        :rtype: bool
+        """
+        return self._HasRules
+
+    @HasRules.setter
+    def HasRules(self, HasRules):
+        self._HasRules = HasRules
+
+    @property
+    def RuleId(self):
+        r"""<p>规则id</p>
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def TitleEn(self):
+        r"""<p>名称-英文</p>
+        :rtype: str
+        """
+        return self._TitleEn
+
+    @TitleEn.setter
+    def TitleEn(self, TitleEn):
+        self._TitleEn = TitleEn
+
+    @property
+    def OptionsEn(self):
+        r"""<p>选项数据-英文</p>
+        :rtype: str
+        """
+        return self._OptionsEn
+
+    @OptionsEn.setter
+    def OptionsEn(self, OptionsEn):
+        self._OptionsEn = OptionsEn
+
+    @property
+    def OptionsItem(self):
+        r"""<p>选项数据(包含中英文)</p>
+        :rtype: list of OptionsItem
+        """
+        return self._OptionsItem
+
+    @OptionsItem.setter
+    def OptionsItem(self, OptionsItem):
+        self._OptionsItem = OptionsItem
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Key = params.get("Key")
+        self._Title = params.get("Title")
+        self._Type = params.get("Type")
+        self._IsMust = params.get("IsMust")
+        self._IsShow = params.get("IsShow")
+        self._IsCustom = params.get("IsCustom")
+        self._NextOptionKey = params.get("NextOptionKey")
+        self._Options = params.get("Options")
+        self._IsReplace = params.get("IsReplace")
+        self._GroupEditable = params.get("GroupEditable")
+        self._HasRules = params.get("HasRules")
+        self._RuleId = params.get("RuleId")
+        self._TitleEn = params.get("TitleEn")
+        self._OptionsEn = params.get("OptionsEn")
+        if params.get("OptionsItem") is not None:
+            self._OptionsItem = []
+            for item in params.get("OptionsItem"):
+                obj = OptionsItem()
+                obj._deserialize(item)
+                self._OptionsItem.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProfileTips(AbstractModel):
+    r"""profile开关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 配置id
+        :type Id: int
+        :param _Value: 各开关值(json)
+        :type Value: str
+        """
+        self._Id = None
+        self._Value = None
+
+    @property
+    def Id(self):
+        r"""配置id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Value(self):
+        r"""各开关值(json)
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15668,3 +17446,195 @@ class Sort(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UnbindVirtualAccountData(AbstractModel):
+    r"""取消绑定账户虚拟组响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailItems: <p>解绑失败明细（含失败原因）</p>
+        :type FailItems: list of BindVirtualAccountResultData
+        :param _SuccessItems: <p>解绑成功明细（含幂等场景：本就未绑定的账号也归入成功）</p>
+        :type SuccessItems: list of BindVirtualAccountResultData
+        """
+        self._FailItems = None
+        self._SuccessItems = None
+
+    @property
+    def FailItems(self):
+        r"""<p>解绑失败明细（含失败原因）</p>
+        :rtype: list of BindVirtualAccountResultData
+        """
+        return self._FailItems
+
+    @FailItems.setter
+    def FailItems(self, FailItems):
+        self._FailItems = FailItems
+
+    @property
+    def SuccessItems(self):
+        r"""<p>解绑成功明细（含幂等场景：本就未绑定的账号也归入成功）</p>
+        :rtype: list of BindVirtualAccountResultData
+        """
+        return self._SuccessItems
+
+    @SuccessItems.setter
+    def SuccessItems(self, SuccessItems):
+        self._SuccessItems = SuccessItems
+
+
+    def _deserialize(self, params):
+        if params.get("FailItems") is not None:
+            self._FailItems = []
+            for item in params.get("FailItems"):
+                obj = BindVirtualAccountResultData()
+                obj._deserialize(item)
+                self._FailItems.append(obj)
+        if params.get("SuccessItems") is not None:
+            self._SuccessItems = []
+            for item in params.get("SuccessItems"):
+                obj = BindVirtualAccountResultData()
+                obj._deserialize(item)
+                self._SuccessItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindVirtualAccountsRequest(AbstractModel):
+    r"""UnbindVirtualAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VirtualGroupId: <p>Comment: 虚拟组id;Required:true</p>
+        :type VirtualGroupId: int
+        :param _AccountIdList: <p>Comment: 要取消绑定的账户Id集合，这里的Id指的是DescribeLocalAccountsData结构体里返回的Id;Required:true</p>
+        :type AccountIdList: list of int
+        :param _AccountUserList: <p>Comment: 要取消绑定的账户(目录MenuId+登录账号UserId)集合，与AccountIdList二选一或并用，查不到的账号会被跳过;Required:false</p>
+        :type AccountUserList: list of AccountUserIdItem
+        :param _DomainInstanceId: Comment: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        """
+        self._VirtualGroupId = None
+        self._AccountIdList = None
+        self._AccountUserList = None
+        self._DomainInstanceId = None
+
+    @property
+    def VirtualGroupId(self):
+        r"""<p>Comment: 虚拟组id;Required:true</p>
+        :rtype: int
+        """
+        return self._VirtualGroupId
+
+    @VirtualGroupId.setter
+    def VirtualGroupId(self, VirtualGroupId):
+        self._VirtualGroupId = VirtualGroupId
+
+    @property
+    def AccountIdList(self):
+        r"""<p>Comment: 要取消绑定的账户Id集合，这里的Id指的是DescribeLocalAccountsData结构体里返回的Id;Required:true</p>
+        :rtype: list of int
+        """
+        return self._AccountIdList
+
+    @AccountIdList.setter
+    def AccountIdList(self, AccountIdList):
+        self._AccountIdList = AccountIdList
+
+    @property
+    def AccountUserList(self):
+        r"""<p>Comment: 要取消绑定的账户(目录MenuId+登录账号UserId)集合，与AccountIdList二选一或并用，查不到的账号会被跳过;Required:false</p>
+        :rtype: list of AccountUserIdItem
+        """
+        return self._AccountUserList
+
+    @AccountUserList.setter
+    def AccountUserList(self, AccountUserList):
+        self._AccountUserList = AccountUserList
+
+    @property
+    def DomainInstanceId(self):
+        r"""Comment: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+
+    def _deserialize(self, params):
+        self._VirtualGroupId = params.get("VirtualGroupId")
+        self._AccountIdList = params.get("AccountIdList")
+        if params.get("AccountUserList") is not None:
+            self._AccountUserList = []
+            for item in params.get("AccountUserList"):
+                obj = AccountUserIdItem()
+                obj._deserialize(item)
+                self._AccountUserList.append(obj)
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UnbindVirtualAccountsResponse(AbstractModel):
+    r"""UnbindVirtualAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>业务响应数据</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.UnbindVirtualAccountData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>业务响应数据</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.UnbindVirtualAccountData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UnbindVirtualAccountData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")

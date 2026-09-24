@@ -206,23 +206,23 @@ class AddUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 子用户用户名
+        :param _Name: <p>子用户用户名</p>
         :type Name: str
-        :param _Remark: 子用户备注
+        :param _Remark: <p>子用户备注</p>
         :type Remark: str
-        :param _ConsoleLogin: 子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
+        :param _ConsoleLogin: <p>子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。</p>
         :type ConsoleLogin: int
-        :param _UseApi: 是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
+        :param _UseApi: <p>是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。</p>
         :type UseApi: int
-        :param _Password: 子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
+        :param _Password: <p>子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。</p>
         :type Password: str
-        :param _NeedResetPassword: 子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
+        :param _NeedResetPassword: <p>子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。</p>
         :type NeedResetPassword: int
-        :param _PhoneNum: 手机号
+        :param _PhoneNum: <p>手机号</p>
         :type PhoneNum: str
-        :param _CountryCode: 区号
+        :param _CountryCode: <p>区号</p>
         :type CountryCode: str
-        :param _Email: 邮箱
+        :param _Email: <p>邮箱</p>
         :type Email: str
         """
         self._Name = None
@@ -237,7 +237,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""子用户用户名
+        r"""<p>子用户用户名</p>
         :rtype: str
         """
         return self._Name
@@ -248,7 +248,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""子用户备注
+        r"""<p>子用户备注</p>
         :rtype: str
         """
         return self._Remark
@@ -259,7 +259,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def ConsoleLogin(self):
-        r"""子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。
+        r"""<p>子用户是否可以登录控制台。传0子用户无法登录控制台，传1子用户可以登录控制台。</p>
         :rtype: int
         """
         return self._ConsoleLogin
@@ -270,7 +270,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def UseApi(self):
-        r"""是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。
+        r"""<p>是否生成子用户密钥。传0不生成子用户密钥，传1生成子用户密钥。</p>
         :rtype: int
         """
         return self._UseApi
@@ -281,7 +281,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。
+        r"""<p>子用户控制台登录密码，若未进行密码规则设置则默认密码规则为8位以上同时包含大小写字母、数字和特殊字符。只有可以登录控制台时才有效，如果传空并且上面指定允许登录控制台，则自动生成随机密码，随机密码规则为32位包含大小写字母、数字和特殊字符。</p>
         :rtype: str
         """
         return self._Password
@@ -292,7 +292,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def NeedResetPassword(self):
-        r"""子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。
+        r"""<p>子用户是否要在下次登录时重置密码。传0子用户下次登录控制台不需重置密码，传1子用户下次登录控制台需要重置密码。</p>
         :rtype: int
         """
         return self._NeedResetPassword
@@ -303,7 +303,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def PhoneNum(self):
-        r"""手机号
+        r"""<p>手机号</p>
         :rtype: str
         """
         return self._PhoneNum
@@ -314,7 +314,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def CountryCode(self):
-        r"""区号
+        r"""<p>区号</p>
         :rtype: str
         """
         return self._CountryCode
@@ -325,7 +325,7 @@ class AddUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        r"""邮箱
+        r"""<p>邮箱</p>
         :rtype: str
         """
         return self._Email
@@ -362,18 +362,20 @@ class AddUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 子用户 UIN
+        :param _Uin: <p>子用户 UIN</p>
         :type Uin: int
-        :param _Name: 子用户用户名
+        :param _Name: <p>子用户用户名</p>
         :type Name: str
-        :param _Password: 如果输入参数组合为自动生成随机密码，则返回生成的密码
+        :param _Password: <p>如果输入参数组合为自动生成随机密码，则返回生成的密码</p>
         :type Password: str
-        :param _SecretId: 子用户密钥 ID
+        :param _SecretId: <p>子用户密钥 ID</p>
         :type SecretId: str
-        :param _SecretKey: 子用户密钥 Key
+        :param _SecretKey: <p>子用户密钥 Key</p>
         :type SecretKey: str
-        :param _Uid: 子用户 UID
+        :param _Uid: <p>子用户 UID</p>
         :type Uid: int
+        :param _PhoneNumVerifyLink: <p>手机号验证地址。</p>
+        :type PhoneNumVerifyLink: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -383,11 +385,12 @@ class AddUserResponse(AbstractModel):
         self._SecretId = None
         self._SecretKey = None
         self._Uid = None
+        self._PhoneNumVerifyLink = None
         self._RequestId = None
 
     @property
     def Uin(self):
-        r"""子用户 UIN
+        r"""<p>子用户 UIN</p>
         :rtype: int
         """
         return self._Uin
@@ -398,7 +401,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""子用户用户名
+        r"""<p>子用户用户名</p>
         :rtype: str
         """
         return self._Name
@@ -409,7 +412,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def Password(self):
-        r"""如果输入参数组合为自动生成随机密码，则返回生成的密码
+        r"""<p>如果输入参数组合为自动生成随机密码，则返回生成的密码</p>
         :rtype: str
         """
         return self._Password
@@ -420,7 +423,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def SecretId(self):
-        r"""子用户密钥 ID
+        r"""<p>子用户密钥 ID</p>
         :rtype: str
         """
         return self._SecretId
@@ -431,7 +434,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def SecretKey(self):
-        r"""子用户密钥 Key
+        r"""<p>子用户密钥 Key</p>
         :rtype: str
         """
         return self._SecretKey
@@ -442,7 +445,7 @@ class AddUserResponse(AbstractModel):
 
     @property
     def Uid(self):
-        r"""子用户 UID
+        r"""<p>子用户 UID</p>
         :rtype: int
         """
         return self._Uid
@@ -450,6 +453,17 @@ class AddUserResponse(AbstractModel):
     @Uid.setter
     def Uid(self, Uid):
         self._Uid = Uid
+
+    @property
+    def PhoneNumVerifyLink(self):
+        r"""<p>手机号验证地址。</p>
+        :rtype: str
+        """
+        return self._PhoneNumVerifyLink
+
+    @PhoneNumVerifyLink.setter
+    def PhoneNumVerifyLink(self, PhoneNumVerifyLink):
+        self._PhoneNumVerifyLink = PhoneNumVerifyLink
 
     @property
     def RequestId(self):
@@ -470,6 +484,7 @@ class AddUserResponse(AbstractModel):
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
         self._Uid = params.get("Uid")
+        self._PhoneNumVerifyLink = params.get("PhoneNumVerifyLink")
         self._RequestId = params.get("RequestId")
 
 
@@ -1951,26 +1966,26 @@ class CreateMessageReceiverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 消息接收人的用户名
+        :param _Name: <p>消息接收人的用户名</p>
         :type Name: str
-        :param _CountryCode: 手机号国际区号，国内为86
+        :param _CountryCode: <p>手机号国际区号，国内为86</p>
         :type CountryCode: str
-        :param _PhoneNumber: 手机号码, 例如：132****2492
-        :type PhoneNumber: str
-        :param _Email: 邮箱，例如：57*****@qq.com
+        :param _Email: <p>邮箱，例如：57<strong>*</strong>@qq.com</p>
         :type Email: str
-        :param _Remark: 消息接收人的备注，选填
+        :param _PhoneNumber: <p>手机号码, 例如：132****2492</p>
+        :type PhoneNumber: str
+        :param _Remark: <p>消息接收人的备注，选填</p>
         :type Remark: str
         """
         self._Name = None
         self._CountryCode = None
-        self._PhoneNumber = None
         self._Email = None
+        self._PhoneNumber = None
         self._Remark = None
 
     @property
     def Name(self):
-        r"""消息接收人的用户名
+        r"""<p>消息接收人的用户名</p>
         :rtype: str
         """
         return self._Name
@@ -1981,7 +1996,7 @@ class CreateMessageReceiverRequest(AbstractModel):
 
     @property
     def CountryCode(self):
-        r"""手机号国际区号，国内为86
+        r"""<p>手机号国际区号，国内为86</p>
         :rtype: str
         """
         return self._CountryCode
@@ -1991,19 +2006,8 @@ class CreateMessageReceiverRequest(AbstractModel):
         self._CountryCode = CountryCode
 
     @property
-    def PhoneNumber(self):
-        r"""手机号码, 例如：132****2492
-        :rtype: str
-        """
-        return self._PhoneNumber
-
-    @PhoneNumber.setter
-    def PhoneNumber(self, PhoneNumber):
-        self._PhoneNumber = PhoneNumber
-
-    @property
     def Email(self):
-        r"""邮箱，例如：57*****@qq.com
+        r"""<p>邮箱，例如：57<strong>*</strong>@qq.com</p>
         :rtype: str
         """
         return self._Email
@@ -2013,8 +2017,19 @@ class CreateMessageReceiverRequest(AbstractModel):
         self._Email = Email
 
     @property
+    def PhoneNumber(self):
+        r"""<p>手机号码, 例如：132****2492</p>
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
     def Remark(self):
-        r"""消息接收人的备注，选填
+        r"""<p>消息接收人的备注，选填</p>
         :rtype: str
         """
         return self._Remark
@@ -2027,8 +2042,8 @@ class CreateMessageReceiverRequest(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._CountryCode = params.get("CountryCode")
-        self._PhoneNumber = params.get("PhoneNumber")
         self._Email = params.get("Email")
+        self._PhoneNumber = params.get("PhoneNumber")
         self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2047,10 +2062,24 @@ class CreateMessageReceiverResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _PhoneNumVerifyLink: <p>手机号验证地址。</p>
+        :type PhoneNumVerifyLink: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._PhoneNumVerifyLink = None
         self._RequestId = None
+
+    @property
+    def PhoneNumVerifyLink(self):
+        r"""<p>手机号验证地址。</p>
+        :rtype: str
+        """
+        return self._PhoneNumVerifyLink
+
+    @PhoneNumVerifyLink.setter
+    def PhoneNumVerifyLink(self, PhoneNumVerifyLink):
+        self._PhoneNumVerifyLink = PhoneNumVerifyLink
 
     @property
     def RequestId(self):
@@ -2065,6 +2094,7 @@ class CreateMessageReceiverResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._PhoneNumVerifyLink = params.get("PhoneNumVerifyLink")
         self._RequestId = params.get("RequestId")
 
 

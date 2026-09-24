@@ -832,7 +832,7 @@ class CngwClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMTokenUsageList(self, request):
-        r"""查询 AI 网关Token 消耗统计
+        r"""查询 AI 网关Token 消耗统计（消费者消费金额数据）
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMTokenUsageList.
         :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayLLMTokenUsageListRequest`
@@ -855,7 +855,7 @@ class CngwClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMTokenUsageStatistics(self, request):
-        r"""查询 AI 网关Token 消耗统计汇总
+        r"""查询 AI 网关Token 消耗统计汇总含（消费者消费金额数据）
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMTokenUsageStatistics.
         :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayLLMTokenUsageStatisticsRequest`

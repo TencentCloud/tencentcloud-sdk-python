@@ -437,6 +437,28 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInferenceDomain(
+            self,
+            request: models.CreateInferenceDomainRequest,
+            opts: Dict = None,
+    ) -> models.CreateInferenceDomainResponse:
+        """
+        创建推理服务域名，用于通过自定义域名访问推理服务，一个推理服务下最多支持创建 5 个自定义域名。
+        创建成功后，还需完成以下步骤，域名才能正常对外提供访问：
+        1. 校验域名 CNAME 配置状态，请参考 [CheckCnameStatus](https://cloud.tencent.com/document/api/1552/94491) 接口；
+        2. 验证归属权，请参考 [VerifyOwnership](https://cloud.tencent.com/document/api/1552/98879) 接口；
+        3. 配置域名证书，请参考 [ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764) 接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInferenceDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInferenceDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateInferenceService(
             self,
             request: models.CreateInferenceServiceRequest,
@@ -2038,6 +2060,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeInferenceAPITokens"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInferenceAPITokensResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInferenceDomains(
+            self,
+            request: models.DescribeInferenceDomainsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInferenceDomainsResponse:
+        """
+        查询推理服务域名列表，返回域名的Cname地址、归属权验证和证书等相关信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInferenceDomains"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInferenceDomainsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4239,6 +4279,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyZoneWorkMode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyZoneWorkModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OperateInferenceDomain(
+            self,
+            request: models.OperateInferenceDomainRequest,
+            opts: Dict = None,
+    ) -> models.OperateInferenceDomainResponse:
+        """
+        操作推理服务域名，支持停止、启用和删除推理服务域名，删除后的资源不可恢复。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OperateInferenceDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OperateInferenceDomainResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

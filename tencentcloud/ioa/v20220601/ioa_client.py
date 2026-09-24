@@ -49,6 +49,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindVirtualAccounts(self, request):
+        r"""关联账户到虚拟组上，支持批量，私有化调用path为：capi/Assets/BindVirtualAccount，从7.x版本开始支持
+
+        :param request: Request instance for BindVirtualAccounts.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.BindVirtualAccountsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.BindVirtualAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindVirtualAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindVirtualAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBusinessResource(self, request):
         r"""创建业务资源，会对一些必填参数进行校验和参数合法性校验，创建业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。创建时也会做校验，但没有返回对应的异常信息，私有化调用path为：capi/GatewayResource/CreateBusinessResource
 
@@ -603,6 +626,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceSecurityInfo(self, request):
+        r"""查询指定终端的病毒库版本、漏洞库版本、系统修复引擎版本、防火墙状态和实时防护状态
+
+        :param request: Request instance for DescribeDeviceSecurityInfo.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceSecurityInfoRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeviceSecurityInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceSecurityInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceSecurityInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceVirtualGroups(self, request):
         r"""查询终端自定义分组列表，私有化调用path为：/capi/Assets/Device/DescribeDeviceVirtualGroups
 
@@ -686,6 +732,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeLocalAccounts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLocalAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProfileFieldsMenu(self, request):
+        r"""查询终端描述字段数据,私有化调用path为：capi/Assets/Device/DescribeProfileFieldsMenu
+
+        :param request: Request instance for DescribeProfileFieldsMenu.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeProfileFieldsMenuRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeProfileFieldsMenuResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProfileFieldsMenu", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProfileFieldsMenuResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -824,6 +893,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeSoftwareInformation", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSoftwareInformationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVirtualAccounts(self, request):
+        r"""列表虚拟组的账户，私有化调用path为：/capi/Assets/AccountVirtualGroup/DescribeVirtualAccounts，从7.x版本开始支持
+
+        :param request: Request instance for DescribeVirtualAccounts.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeVirtualAccountsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeVirtualAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirtualAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVirtualAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1054,6 +1146,29 @@ class IoaClient(AbstractClient):
             body = self.call("ModifyVirtualDeviceGroups", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyVirtualDeviceGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UnbindVirtualAccounts(self, request):
+        r"""取消关联账户到虚拟组上，支持批量，私有化调用path为：capi/Assets/UnbindVirtualAccount，从7.x版本开始支持
+
+        :param request: Request instance for UnbindVirtualAccounts.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.UnbindVirtualAccountsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.UnbindVirtualAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UnbindVirtualAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.UnbindVirtualAccountsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

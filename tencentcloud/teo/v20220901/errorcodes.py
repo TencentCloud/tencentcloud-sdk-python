@@ -1037,6 +1037,9 @@ INVALIDPARAMETERVALUE_OWNERSHIPVERIFICATIONNOTPASSED = 'InvalidParameterValue.Ow
 # 页面名称已存在。
 INVALIDPARAMETERVALUE_PAGENAMEALREADYEXIST = 'InvalidParameterValue.PageNameAlreadyExist'
 
+# 相同主机记录下至少需要包含一条默认解析线路，请确保当前主机记录下存在有已启用的默认解析线路后重试。
+INVALIDPARAMETERVALUE_RECORDNEEDDEFAULTLOCATION = 'InvalidParameterValue.RecordNeedDefaultLocation'
+
 # 不符合指定的正则表达式。
 INVALIDPARAMETERVALUE_REGEXMISMATCH = 'InvalidParameterValue.RegExMismatch'
 
@@ -1069,6 +1072,9 @@ INVALIDPARAMETERVALUE_TOPLEVELDOMAINNOTSUPPORT = 'InvalidParameterValue.TopLevel
 
 # 试用套餐的自定义页面不允许引用。
 INVALIDPARAMETERVALUE_TRIALPLANRESPONSEPAGE = 'InvalidParameterValue.TrialPlanResponsePage'
+
+# 存在多条相同主机记录类型的解析记录时，不允许将唯一一条权重值为0的解析记录删除。
+INVALIDPARAMETERVALUE_UNSUPPORTDELETEWEIGHTRECORD = 'InvalidParameterValue.UnSupportDeleteWeightRecord'
 
 # 配置项错误。
 INVALIDPARAMETERVALUE_UNRECOGNIZABLEVALUE = 'InvalidParameterValue.UnrecognizableValue'
@@ -1412,6 +1418,12 @@ OPERATIONDENIED_SWITCHAREACDNPLATFORMREUSE = 'OperationDenied.SwitchAreaCdnPlatf
 # 源站防护配置正在部署中，请待部署完成后再切换加速区域。
 OPERATIONDENIED_SWITCHAREAORIGINPROTECTIONDEPLOYING = 'OperationDenied.SwitchAreaOriginProtectionDeploying'
 
+# 删除当前加速域名时将同时删除该域名对应的 CNMAE 记录，会导致当前主机记录缺少默认线路，请前往修改解析线路，保障当前主机记录至少有一条默认线路后重试。
+OPERATIONDENIED_UNSUPPORTDELETELOCATIONRECORD = 'OperationDenied.UnSupportDeleteLocationRecord'
+
+# 删除当前加速域名时将同时删除该域名对应的 CNMAE 记录，会导致当前主机记录剩余的记录权重和为 0，请前往修改权重配置后重试。
+OPERATIONDENIED_UNSUPPORTDELETEWEIGHTRECORD = 'OperationDenied.UnSupportDeleteWeightRecord'
+
 # 当前并不支持关闭回源双向认证，如需关闭，请通过将边缘 HTTPS 证书更改为不配置来关闭。
 OPERATIONDENIED_UNSUPPORTTOCLOSEUPSTREAMMTLS = 'OperationDenied.UnSupportToCloseUpstreamMTLS'
 
@@ -1516,6 +1528,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 
 # DNSPod 未正常接入该域名，请在 DNSPod 接入后重试。
 RESOURCENOTFOUND_DNSPODDOMAINNOTINACCOUNT = 'ResourceNotFound.DNSPodDomainNotInAccount'
+
+# 推理域名不存在。
+RESOURCENOTFOUND_INFERENCEDOMAIN = 'ResourceNotFound.InferenceDomain'
 
 # 推理服务不存在。
 RESOURCENOTFOUND_INFERENCESERVICE = 'ResourceNotFound.InferenceService'

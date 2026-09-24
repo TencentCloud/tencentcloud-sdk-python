@@ -2592,9 +2592,27 @@ class ModelList(AbstractModel):
         :type Model: str
         :param _Vendor: <p>模型厂商</p>
         :type Vendor: str
+        :param _DisplayName: <p>展示名称</p>
+        :type DisplayName: str
+        :param _Description: <p>模型描述</p>
+        :type Description: str
+        :param _ContextWindow: <p>上下文窗口大小，单位 token</p>
+        :type ContextWindow: int
+        :param _IconUrl: <p>模型图标 URL</p>
+        :type IconUrl: str
+        :param _CreditMultiplier: <p>计费倍率</p>
+        :type CreditMultiplier: float
+        :param _Thinking: <p>思考配置</p>
+        :type Thinking: :class:`tencentcloud.dataagent.v20250513.models.Thinking`
         """
         self._Model = None
         self._Vendor = None
+        self._DisplayName = None
+        self._Description = None
+        self._ContextWindow = None
+        self._IconUrl = None
+        self._CreditMultiplier = None
+        self._Thinking = None
 
     @property
     def Model(self):
@@ -2618,10 +2636,84 @@ class ModelList(AbstractModel):
     def Vendor(self, Vendor):
         self._Vendor = Vendor
 
+    @property
+    def DisplayName(self):
+        r"""<p>展示名称</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def Description(self):
+        r"""<p>模型描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ContextWindow(self):
+        r"""<p>上下文窗口大小，单位 token</p>
+        :rtype: int
+        """
+        return self._ContextWindow
+
+    @ContextWindow.setter
+    def ContextWindow(self, ContextWindow):
+        self._ContextWindow = ContextWindow
+
+    @property
+    def IconUrl(self):
+        r"""<p>模型图标 URL</p>
+        :rtype: str
+        """
+        return self._IconUrl
+
+    @IconUrl.setter
+    def IconUrl(self, IconUrl):
+        self._IconUrl = IconUrl
+
+    @property
+    def CreditMultiplier(self):
+        r"""<p>计费倍率</p>
+        :rtype: float
+        """
+        return self._CreditMultiplier
+
+    @CreditMultiplier.setter
+    def CreditMultiplier(self, CreditMultiplier):
+        self._CreditMultiplier = CreditMultiplier
+
+    @property
+    def Thinking(self):
+        r"""<p>思考配置</p>
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.Thinking`
+        """
+        return self._Thinking
+
+    @Thinking.setter
+    def Thinking(self, Thinking):
+        self._Thinking = Thinking
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
         self._Vendor = params.get("Vendor")
+        self._DisplayName = params.get("DisplayName")
+        self._Description = params.get("Description")
+        self._ContextWindow = params.get("ContextWindow")
+        self._IconUrl = params.get("IconUrl")
+        self._CreditMultiplier = params.get("CreditMultiplier")
+        if params.get("Thinking") is not None:
+            self._Thinking = Thinking()
+            self._Thinking._deserialize(params.get("Thinking"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4172,6 +4264,87 @@ class StopChatAIResponse(AbstractModel):
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
         self._RequestId = params.get("RequestId")
+
+
+class Thinking(AbstractModel):
+    r"""模型思考强度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>模式</p><p>枚举值：</p><ul><li>toggle： 可开关</li><li>always_on： 固定开启</li><li>always_off： 固定关闭</li><li>unconfigured： 未配置</li></ul>
+        :type Mode: str
+        :param _DefaultEnabled: <p>默认是否开启思考</p>
+        :type DefaultEnabled: bool
+        :param _EffortOptions: <p>思考强度可选项，如 [&quot;high&quot;,&quot;max&quot;]</p>
+        :type EffortOptions: list of str
+        :param _DefaultEffort: <p>默认思考强度</p>
+        :type DefaultEffort: str
+        """
+        self._Mode = None
+        self._DefaultEnabled = None
+        self._EffortOptions = None
+        self._DefaultEffort = None
+
+    @property
+    def Mode(self):
+        r"""<p>模式</p><p>枚举值：</p><ul><li>toggle： 可开关</li><li>always_on： 固定开启</li><li>always_off： 固定关闭</li><li>unconfigured： 未配置</li></ul>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def DefaultEnabled(self):
+        r"""<p>默认是否开启思考</p>
+        :rtype: bool
+        """
+        return self._DefaultEnabled
+
+    @DefaultEnabled.setter
+    def DefaultEnabled(self, DefaultEnabled):
+        self._DefaultEnabled = DefaultEnabled
+
+    @property
+    def EffortOptions(self):
+        r"""<p>思考强度可选项，如 [&quot;high&quot;,&quot;max&quot;]</p>
+        :rtype: list of str
+        """
+        return self._EffortOptions
+
+    @EffortOptions.setter
+    def EffortOptions(self, EffortOptions):
+        self._EffortOptions = EffortOptions
+
+    @property
+    def DefaultEffort(self):
+        r"""<p>默认思考强度</p>
+        :rtype: str
+        """
+        return self._DefaultEffort
+
+    @DefaultEffort.setter
+    def DefaultEffort(self, DefaultEffort):
+        self._DefaultEffort = DefaultEffort
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._DefaultEnabled = params.get("DefaultEnabled")
+        self._EffortOptions = params.get("EffortOptions")
+        self._DefaultEffort = params.get("DefaultEffort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UploadAndCommitFileRequest(AbstractModel):

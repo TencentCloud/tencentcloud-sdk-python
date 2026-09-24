@@ -27332,6 +27332,10 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
         :type HasServicesLog: int
+        :param _EnableInternetConsume: <p>外网消费开关。</p>
+        :type EnableInternetConsume: bool
+        :param _EnableIntranetConsume: <p>内网消费开关。</p>
+        :type EnableIntranetConsume: bool
         :param _ScopeType: <p>消费范围类型，0:最新，1:历史+最新</p>
         :type ScopeType: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -27342,6 +27346,8 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         self._Compression = None
         self._ConsumerContent = None
         self._HasServicesLog = None
+        self._EnableInternetConsume = None
+        self._EnableIntranetConsume = None
         self._ScopeType = None
         self._RequestId = None
 
@@ -27401,6 +27407,28 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         self._HasServicesLog = HasServicesLog
 
     @property
+    def EnableInternetConsume(self):
+        r"""<p>外网消费开关。</p>
+        :rtype: bool
+        """
+        return self._EnableInternetConsume
+
+    @EnableInternetConsume.setter
+    def EnableInternetConsume(self, EnableInternetConsume):
+        self._EnableInternetConsume = EnableInternetConsume
+
+    @property
+    def EnableIntranetConsume(self):
+        r"""<p>内网消费开关。</p>
+        :rtype: bool
+        """
+        return self._EnableIntranetConsume
+
+    @EnableIntranetConsume.setter
+    def EnableIntranetConsume(self, EnableIntranetConsume):
+        self._EnableIntranetConsume = EnableIntranetConsume
+
+    @property
     def ScopeType(self):
         r"""<p>消费范围类型，0:最新，1:历史+最新</p>
         :rtype: int
@@ -27431,6 +27459,8 @@ class DescribeKafkaConsumerResponse(AbstractModel):
             self._ConsumerContent = KafkaConsumerContent()
             self._ConsumerContent._deserialize(params.get("ConsumerContent"))
         self._HasServicesLog = params.get("HasServicesLog")
+        self._EnableInternetConsume = params.get("EnableInternetConsume")
+        self._EnableIntranetConsume = params.get("EnableIntranetConsume")
         self._ScopeType = params.get("ScopeType")
         self._RequestId = params.get("RequestId")
 
@@ -45950,6 +45980,10 @@ class ModifyKafkaConsumerRequest(AbstractModel):
         :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
         :type HasServicesLog: int
+        :param _EnableInternetConsume: <p>外网消费开关。</p>
+        :type EnableInternetConsume: bool
+        :param _EnableIntranetConsume: <p>内网消费开关。</p>
+        :type EnableIntranetConsume: bool
         :param _ScopeType: <p>消费范围类型，0:最新，1:历史+最新</p>
         :type ScopeType: int
         """
@@ -45957,6 +45991,8 @@ class ModifyKafkaConsumerRequest(AbstractModel):
         self._Compression = None
         self._ConsumerContent = None
         self._HasServicesLog = None
+        self._EnableInternetConsume = None
+        self._EnableIntranetConsume = None
         self._ScopeType = None
 
     @property
@@ -46004,6 +46040,28 @@ class ModifyKafkaConsumerRequest(AbstractModel):
         self._HasServicesLog = HasServicesLog
 
     @property
+    def EnableInternetConsume(self):
+        r"""<p>外网消费开关。</p>
+        :rtype: bool
+        """
+        return self._EnableInternetConsume
+
+    @EnableInternetConsume.setter
+    def EnableInternetConsume(self, EnableInternetConsume):
+        self._EnableInternetConsume = EnableInternetConsume
+
+    @property
+    def EnableIntranetConsume(self):
+        r"""<p>内网消费开关。</p>
+        :rtype: bool
+        """
+        return self._EnableIntranetConsume
+
+    @EnableIntranetConsume.setter
+    def EnableIntranetConsume(self, EnableIntranetConsume):
+        self._EnableIntranetConsume = EnableIntranetConsume
+
+    @property
     def ScopeType(self):
         r"""<p>消费范围类型，0:最新，1:历史+最新</p>
         :rtype: int
@@ -46022,6 +46080,8 @@ class ModifyKafkaConsumerRequest(AbstractModel):
             self._ConsumerContent = KafkaConsumerContent()
             self._ConsumerContent._deserialize(params.get("ConsumerContent"))
         self._HasServicesLog = params.get("HasServicesLog")
+        self._EnableInternetConsume = params.get("EnableInternetConsume")
+        self._EnableIntranetConsume = params.get("EnableIntranetConsume")
         self._ScopeType = params.get("ScopeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -52129,6 +52189,10 @@ class OpenKafkaConsumerRequest(AbstractModel):
         :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
         :type HasServicesLog: int
+        :param _EnableInternetConsume: <p>外网消费开关，默认开启</p>
+        :type EnableInternetConsume: bool
+        :param _EnableIntranetConsume: <p>内网消费开关，默认开启</p>
+        :type EnableIntranetConsume: bool
         :param _ScopeType: <p>消费范围类型，0:最新；1:历史+最新；默认值:0</p>
         :type ScopeType: int
         """
@@ -52136,6 +52200,8 @@ class OpenKafkaConsumerRequest(AbstractModel):
         self._Compression = None
         self._ConsumerContent = None
         self._HasServicesLog = None
+        self._EnableInternetConsume = None
+        self._EnableIntranetConsume = None
         self._ScopeType = None
 
     @property
@@ -52183,6 +52249,28 @@ class OpenKafkaConsumerRequest(AbstractModel):
         self._HasServicesLog = HasServicesLog
 
     @property
+    def EnableInternetConsume(self):
+        r"""<p>外网消费开关，默认开启</p>
+        :rtype: bool
+        """
+        return self._EnableInternetConsume
+
+    @EnableInternetConsume.setter
+    def EnableInternetConsume(self, EnableInternetConsume):
+        self._EnableInternetConsume = EnableInternetConsume
+
+    @property
+    def EnableIntranetConsume(self):
+        r"""<p>内网消费开关，默认开启</p>
+        :rtype: bool
+        """
+        return self._EnableIntranetConsume
+
+    @EnableIntranetConsume.setter
+    def EnableIntranetConsume(self, EnableIntranetConsume):
+        self._EnableIntranetConsume = EnableIntranetConsume
+
+    @property
     def ScopeType(self):
         r"""<p>消费范围类型，0:最新；1:历史+最新；默认值:0</p>
         :rtype: int
@@ -52201,6 +52289,8 @@ class OpenKafkaConsumerRequest(AbstractModel):
             self._ConsumerContent = KafkaConsumerContent()
             self._ConsumerContent._deserialize(params.get("ConsumerContent"))
         self._HasServicesLog = params.get("HasServicesLog")
+        self._EnableInternetConsume = params.get("EnableInternetConsume")
+        self._EnableIntranetConsume = params.get("EnableIntranetConsume")
         self._ScopeType = params.get("ScopeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -139,7 +139,7 @@ class HaiClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDeployTemplatesResponse:
         """
-        本接口(DescribeDeployTemplates)用于查询模型支持的部署模板
+        本接口(DescribeDeployTemplates)用于查询模型支持的部署模板。传入 ServiceId 时按当前服务占用过滤重装候选模板。
         """
         
         kwargs = {}
@@ -193,7 +193,7 @@ class HaiClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeModelsResponse:
         """
-        本接口(DescribeModels)用于查询模型
+        本接口(DescribeModels)用于查询模型。传入 ServiceId 时按当前服务占用过滤重装候选模型。
         """
         
         kwargs = {}

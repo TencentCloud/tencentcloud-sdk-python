@@ -164,6 +164,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchPublishMessage(self, request):
+        r"""批量设备透传指令控制
+
+        :param request: Request instance for BatchPublishMessage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BatchPublishMessageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BatchPublishMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchPublishMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchPublishMessageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchRenewTWeSeeSubscription(self, request):
         r"""批量续费 TWeSee 预付费订阅
 

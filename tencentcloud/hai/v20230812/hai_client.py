@@ -165,7 +165,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeDeployTemplates(self, request):
-        r"""本接口(DescribeDeployTemplates)用于查询模型支持的部署模板
+        r"""本接口(DescribeDeployTemplates)用于查询模型支持的部署模板。传入 ServiceId 时按当前服务占用过滤重装候选模板。
 
         :param request: Request instance for DescribeDeployTemplates.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeDeployTemplatesRequest`
@@ -234,7 +234,7 @@ class HaiClient(AbstractClient):
 
 
     def DescribeModels(self, request):
-        r"""本接口(DescribeModels)用于查询模型
+        r"""本接口(DescribeModels)用于查询模型。传入 ServiceId 时按当前服务占用过滤重装候选模型。
 
         :param request: Request instance for DescribeModels.
         :type request: :class:`tencentcloud.hai.v20230812.models.DescribeModelsRequest`

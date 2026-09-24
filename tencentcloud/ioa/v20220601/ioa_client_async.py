@@ -43,6 +43,24 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BindVirtualAccounts(
+            self,
+            request: models.BindVirtualAccountsRequest,
+            opts: Dict = None,
+    ) -> models.BindVirtualAccountsResponse:
+        """
+        关联账户到虚拟组上，支持批量，私有化调用path为：capi/Assets/BindVirtualAccount，从7.x版本开始支持
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindVirtualAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindVirtualAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateBusinessResource(
             self,
             request: models.CreateBusinessResourceRequest,
@@ -477,6 +495,24 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDeviceSecurityInfo(
+            self,
+            request: models.DescribeDeviceSecurityInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceSecurityInfoResponse:
+        """
+        查询指定终端的病毒库版本、漏洞库版本、系统修复引擎版本、防火墙状态和实时防护状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceSecurityInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceSecurityInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDeviceVirtualGroups(
             self,
             request: models.DescribeDeviceVirtualGroupsRequest,
@@ -544,6 +580,24 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "DescribeLocalAccounts"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLocalAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProfileFieldsMenu(
+            self,
+            request: models.DescribeProfileFieldsMenuRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProfileFieldsMenuResponse:
+        """
+        查询终端描述字段数据,私有化调用path为：capi/Assets/Device/DescribeProfileFieldsMenu
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProfileFieldsMenu"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProfileFieldsMenuResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -652,6 +706,24 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "DescribeSoftwareInformation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSoftwareInformationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVirtualAccounts(
+            self,
+            request: models.DescribeVirtualAccountsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVirtualAccountsResponse:
+        """
+        列表虚拟组的账户，私有化调用path为：/capi/Assets/AccountVirtualGroup/DescribeVirtualAccounts，从7.x版本开始支持
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVirtualAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVirtualAccountsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -832,6 +904,24 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "ModifyVirtualDeviceGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyVirtualDeviceGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UnbindVirtualAccounts(
+            self,
+            request: models.UnbindVirtualAccountsRequest,
+            opts: Dict = None,
+    ) -> models.UnbindVirtualAccountsResponse:
+        """
+        取消关联账户到虚拟组上，支持批量，私有化调用path为：capi/Assets/UnbindVirtualAccount，从7.x版本开始支持
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UnbindVirtualAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UnbindVirtualAccountsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

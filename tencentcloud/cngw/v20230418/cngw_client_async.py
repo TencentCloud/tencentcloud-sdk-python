@@ -661,7 +661,7 @@ class CngwClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayLLMTokenUsageListResponse:
         """
-        查询 AI 网关Token 消耗统计
+        查询 AI 网关Token 消耗统计（消费者消费金额数据）
         """
         
         kwargs = {}
@@ -679,7 +679,7 @@ class CngwClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayLLMTokenUsageStatisticsResponse:
         """
-        查询 AI 网关Token 消耗统计汇总
+        查询 AI 网关Token 消耗统计汇总含（消费者消费金额数据）
         """
         
         kwargs = {}

@@ -11914,6 +11914,115 @@ class CreateInferenceAPITokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInferenceDomainRequest(AbstractModel):
+    r"""CreateInferenceDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _ServiceId: <p>推理服务ID。</p>
+        :type ServiceId: str
+        :param _Domain: <p>推理服务域名。</p>
+        :type Domain: str
+        :param _AuthSwitch: <p>推理任务请求鉴权开关。</p><p>枚举值：</p><ul><li>Off： 关闭鉴权；</li><li>On： 开启鉴权。</li></ul><p>默认值：On。</p>
+        :type AuthSwitch: str
+        """
+        self._ZoneId = None
+        self._ServiceId = None
+        self._Domain = None
+        self._AuthSwitch = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ServiceId(self):
+        r"""<p>推理服务ID。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Domain(self):
+        r"""<p>推理服务域名。</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AuthSwitch(self):
+        r"""<p>推理任务请求鉴权开关。</p><p>枚举值：</p><ul><li>Off： 关闭鉴权；</li><li>On： 开启鉴权。</li></ul><p>默认值：On。</p>
+        :rtype: str
+        """
+        return self._AuthSwitch
+
+    @AuthSwitch.setter
+    def AuthSwitch(self, AuthSwitch):
+        self._AuthSwitch = AuthSwitch
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ServiceId = params.get("ServiceId")
+        self._Domain = params.get("Domain")
+        self._AuthSwitch = params.get("AuthSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInferenceDomainResponse(AbstractModel):
+    r"""CreateInferenceDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateInferenceServiceRequest(AbstractModel):
     r"""CreateInferenceService请求参数结构体
 
@@ -20714,31 +20823,19 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 加速域名所属站点 ID。
+        :param _ZoneId: <p>加速域名所属站点 ID。</p>
         :type ZoneId: str
-        :param _Offset: 分页查询偏移量，默认为 0。
+        :param _Offset: <p>分页查询偏移量，默认为 0。</p>
         :type Offset: int
-        :param _Limit: 分页查询限制数目，默认值：20，上限：200。
+        :param _Limit: <p>分页查询限制数目，默认值：20，上限：200。</p>
         :type Limit: int
-        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：
-<li>domain-name：按照加速域名进行过滤；</li>
-<li>origin-type：按照源站类型进行过滤；</li>
-<li>origin：按照主源站地址进行过滤；</li>
-<li>backup-origin： 按照备用源站地址进行过滤；</li>
-<li>domain-cname：按照 CNAME 进行过滤；</li>
-<li>share-cname：按照共享 CNAME 进行过滤；</li>
+        :param _Filters: <p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：</p><li>domain-name：按照加速域名进行过滤；</li><li>origin-type：按照源站类型进行过滤；</li><li>origin：按照主源站地址进行过滤；</li><li>backup-origin： 按照备用源站地址进行过滤；</li><li>domain-cname：按照 CNAME 进行过滤；</li><li>share-cname：按照共享 CNAME 进行过滤；</li>
         :type Filters: list of AdvancedFilter
-        :param _Order: 可根据该字段对返回结果进行排序，取值有：
-<li>created_on：加速域名创建时间；</li>
-<li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
+        :param _Order: <p>可根据该字段对返回结果进行排序，取值有：</p><li>created_on：加速域名创建时间；</li><li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
         :type Order: str
-        :param _Direction: 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
-<li>asc：升序排列；</li>
-<li>desc：降序排列。</li>不填写使用默认值 asc。
+        :param _Direction: <p>排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ASCII 码的大小排序。取值有：</p><li>asc：升序排列；</li><li>desc：降序排列。</li>不填写使用默认值 asc。
         :type Direction: str
-        :param _Match: 匹配方式，取值有：
-<li>all：返回匹配所有查询条件的加速域名；</li>
-<li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
+        :param _Match: <p>匹配方式，取值有：</p><li>all：返回匹配所有查询条件的加速域名；</li><li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
         :type Match: str
         """
         self._ZoneId = None
@@ -20751,7 +20848,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""加速域名所属站点 ID。
+        r"""<p>加速域名所属站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -20762,7 +20859,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页查询偏移量，默认为 0。
+        r"""<p>分页查询偏移量，默认为 0。</p>
         :rtype: int
         """
         return self._Offset
@@ -20773,7 +20870,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页查询限制数目，默认值：20，上限：200。
+        r"""<p>分页查询限制数目，默认值：20，上限：200。</p>
         :rtype: int
         """
         return self._Limit
@@ -20784,13 +20881,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：
-<li>domain-name：按照加速域名进行过滤；</li>
-<li>origin-type：按照源站类型进行过滤；</li>
-<li>origin：按照主源站地址进行过滤；</li>
-<li>backup-origin： 按照备用源站地址进行过滤；</li>
-<li>domain-cname：按照 CNAME 进行过滤；</li>
-<li>share-cname：按照共享 CNAME 进行过滤；</li>
+        r"""<p>过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：</p><li>domain-name：按照加速域名进行过滤；</li><li>origin-type：按照源站类型进行过滤；</li><li>origin：按照主源站地址进行过滤；</li><li>backup-origin： 按照备用源站地址进行过滤；</li><li>domain-cname：按照 CNAME 进行过滤；</li><li>share-cname：按照共享 CNAME 进行过滤；</li>
         :rtype: list of AdvancedFilter
         """
         return self._Filters
@@ -20801,9 +20892,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""可根据该字段对返回结果进行排序，取值有：
-<li>created_on：加速域名创建时间；</li>
-<li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
+        r"""<p>可根据该字段对返回结果进行排序，取值有：</p><li>created_on：加速域名创建时间；</li><li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
         :rtype: str
         """
         return self._Order
@@ -20814,9 +20903,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     @property
     def Direction(self):
-        r"""排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
-<li>asc：升序排列；</li>
-<li>desc：降序排列。</li>不填写使用默认值 asc。
+        r"""<p>排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ASCII 码的大小排序。取值有：</p><li>asc：升序排列；</li><li>desc：降序排列。</li>不填写使用默认值 asc。
         :rtype: str
         """
         return self._Direction
@@ -20827,9 +20914,7 @@ class DescribeAccelerationDomainsRequest(AbstractModel):
 
     @property
     def Match(self):
-        r"""匹配方式，取值有：
-<li>all：返回匹配所有查询条件的加速域名；</li>
-<li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
+        r"""<p>匹配方式，取值有：</p><li>all：返回匹配所有查询条件的加速域名；</li><li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
         :rtype: str
         """
         return self._Match
@@ -20869,9 +20954,9 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合查询条件的加速域名个数。
+        :param _TotalCount: <p>符合查询条件的加速域名个数。</p>
         :type TotalCount: int
-        :param _AccelerationDomains: 符合查询条件的所有加速域名的信息。
+        :param _AccelerationDomains: <p>符合查询条件的所有加速域名的信息。</p>
         :type AccelerationDomains: list of AccelerationDomain
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20882,7 +20967,7 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件的加速域名个数。
+        r"""<p>符合查询条件的加速域名个数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -20893,7 +20978,7 @@ class DescribeAccelerationDomainsResponse(AbstractModel):
 
     @property
     def AccelerationDomains(self):
-        r"""符合查询条件的所有加速域名的信息。
+        r"""<p>符合查询条件的所有加速域名的信息。</p>
         :rtype: list of AccelerationDomain
         """
         return self._AccelerationDomains
@@ -25445,6 +25530,180 @@ class DescribeInferenceAPITokensResponse(AbstractModel):
                 obj = InferenceAPIToken()
                 obj._deserialize(item)
                 self._Tokens.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInferenceDomainsRequest(AbstractModel):
+    r"""DescribeInferenceDomains请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _ServiceId: <p>推理服务 ID。</p>
+        :type ServiceId: str
+        :param _SortBy: <p>排序字段。</p><p>枚举值：</p><ul><li>CreateTime： 域名创建时间；</li><li>UpdateTime： 域名修改时间。</li></ul><p>默认值：CreateTime。</p>
+        :type SortBy: str
+        :param _SortOrder: <p>排序方式。</p><p>枚举值：</p><ul><li>Asc： 升序方式；</li><li>Desc： 降序方式。</li></ul><p>默认值：Desc。</p>
+        :type SortOrder: str
+        :param _Offset: <p>分页查询偏移量。</p><p>默认值：0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页查询限制数目。</p><p>默认值：20。</p><p>最大值：200。</p>
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._ServiceId = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ServiceId(self):
+        r"""<p>推理服务 ID。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段。</p><p>枚举值：</p><ul><li>CreateTime： 域名创建时间；</li><li>UpdateTime： 域名修改时间。</li></ul><p>默认值：CreateTime。</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序方式。</p><p>枚举值：</p><ul><li>Asc： 升序方式；</li><li>Desc： 降序方式。</li></ul><p>默认值：Desc。</p>
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询偏移量。</p><p>默认值：0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询限制数目。</p><p>默认值：20。</p><p>最大值：200。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ServiceId = params.get("ServiceId")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInferenceDomainsResponse(AbstractModel):
+    r"""DescribeInferenceDomains返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>推理服务域名总数。</p>
+        :type TotalCount: int
+        :param _Domains: <p>推理服务域名列表。</p>
+        :type Domains: list of InferenceDomain
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Domains = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>推理服务域名总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Domains(self):
+        r"""<p>推理服务域名列表。</p>
+        :rtype: list of InferenceDomain
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Domains") is not None:
+            self._Domains = []
+            for item in params.get("Domains"):
+                obj = InferenceDomain()
+                obj._deserialize(item)
+                self._Domains.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -38937,14 +39196,14 @@ class HTTPUpstreamTimeoutParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResponseTimeout: HTTP 应答超时时间，单位为秒，取值：5～600。
+        :param _ResponseTimeout: <p>HTTP 应答超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>默认值：15</p>
         :type ResponseTimeout: int
         """
         self._ResponseTimeout = None
 
     @property
     def ResponseTimeout(self):
-        r"""HTTP 应答超时时间，单位为秒，取值：5～600。
+        r"""<p>HTTP 应答超时时间。</p><p>取值范围：[5, 600]</p><p>单位：秒</p><p>默认值：15</p>
         :rtype: int
         """
         return self._ResponseTimeout
@@ -39447,6 +39706,162 @@ class HealthChecker(AbstractModel):
         
 
 
+class HostCertInfo(AbstractModel):
+    r"""https 服务端证书配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: 服务器证书 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertId: str
+        :param _Alias: 证书备注名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Alias: str
+        :param _Type: 证书类型，取值有：
+<li>default：默认证书；</lil>
+<li>upload：用户上传；</li>
+<li>managed：腾讯云托管。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _ExpireTime: 证书过期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _DeployTime: 证书部署时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeployTime: str
+        :param _SignAlgo: 签名算法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignAlgo: str
+        :param _Status: 证书状态，取值有：
+<li>deployed：已部署；</li>
+<li>processing：部署中；</li>
+<li>applying：申请中；</li>
+<li>failed：申请失败；</li>
+<li>issued：绑定失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._CertId = None
+        self._Alias = None
+        self._Type = None
+        self._ExpireTime = None
+        self._DeployTime = None
+        self._SignAlgo = None
+        self._Status = None
+
+    @property
+    def CertId(self):
+        r"""服务器证书 ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Alias(self):
+        r"""证书备注名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def Type(self):
+        r"""证书类型，取值有：
+<li>default：默认证书；</lil>
+<li>upload：用户上传；</li>
+<li>managed：腾讯云托管。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExpireTime(self):
+        r"""证书过期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def DeployTime(self):
+        r"""证书部署时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeployTime
+
+    @DeployTime.setter
+    def DeployTime(self, DeployTime):
+        self._DeployTime = DeployTime
+
+    @property
+    def SignAlgo(self):
+        r"""签名算法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SignAlgo
+
+    @SignAlgo.setter
+    def SignAlgo(self, SignAlgo):
+        self._SignAlgo = SignAlgo
+
+    @property
+    def Status(self):
+        r"""证书状态，取值有：
+<li>deployed：已部署；</li>
+<li>processing：部署中；</li>
+<li>applying：申请中；</li>
+<li>failed：申请失败；</li>
+<li>issued：绑定失败。</li>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._Alias = params.get("Alias")
+        self._Type = params.get("Type")
+        self._ExpireTime = params.get("ExpireTime")
+        self._DeployTime = params.get("DeployTime")
+        self._SignAlgo = params.get("SignAlgo")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HostHeaderParameters(AbstractModel):
     r"""Host Header 重写配置参数。
 
@@ -39630,6 +40045,112 @@ class HostPolicy(AbstractModel):
             self._Policy = SecurityPolicy()
             self._Policy._deserialize(params.get("Policy"))
         self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostsCertificate(AbstractModel):
+    r"""域名证书配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: 域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _Mode: 配置证书的模式，取值有：
+<li>disable：不配置证书；</li>
+<li>eofreecert：配置 EdgeOne 免费证书；</li> 
+<li>sslcert：配置 SSL 证书；</li> 
+        :type Mode: str
+        :param _HostCertInfo: 服务端证书配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostCertInfo: list of HostCertInfo
+        :param _ApplyType: 申请类型，取值有：
+<li>apply：托管EdgeOne；</li>
+<li>none：不托管EdgeOne。</li>不填，默认取值为none。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplyType: str
+        """
+        self._Host = None
+        self._Mode = None
+        self._HostCertInfo = None
+        self._ApplyType = None
+
+    @property
+    def Host(self):
+        r"""域名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Mode(self):
+        r"""配置证书的模式，取值有：
+<li>disable：不配置证书；</li>
+<li>eofreecert：配置 EdgeOne 免费证书；</li> 
+<li>sslcert：配置 SSL 证书；</li> 
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def HostCertInfo(self):
+        r"""服务端证书配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HostCertInfo
+        """
+        return self._HostCertInfo
+
+    @HostCertInfo.setter
+    def HostCertInfo(self, HostCertInfo):
+        self._HostCertInfo = HostCertInfo
+
+    @property
+    def ApplyType(self):
+        warnings.warn("parameter `ApplyType` is deprecated", DeprecationWarning) 
+
+        r"""申请类型，取值有：
+<li>apply：托管EdgeOne；</li>
+<li>none：不托管EdgeOne。</li>不填，默认取值为none。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApplyType
+
+    @ApplyType.setter
+    def ApplyType(self, ApplyType):
+        warnings.warn("parameter `ApplyType` is deprecated", DeprecationWarning) 
+
+        self._ApplyType = ApplyType
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Mode = params.get("Mode")
+        if params.get("HostCertInfo") is not None:
+            self._HostCertInfo = []
+            for item in params.get("HostCertInfo"):
+                obj = HostCertInfo()
+                obj._deserialize(item)
+                self._HostCertInfo.append(obj)
+        self._ApplyType = params.get("ApplyType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41506,6 +42027,151 @@ class InferenceContainerConfigForModify(AbstractModel):
                 obj = InferenceEnvironmentVariable()
                 obj._deserialize(item)
                 self._EnvironmentVariables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceDomain(AbstractModel):
+    r"""推理服务的域名信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: <p>域名名称。</p>
+        :type Domain: str
+        :param _Status: <p>域名状态。</p><p>枚举值：</p><ul><li>Online： 已生效；</li><li>Process： 部署中；</li><li>Offline： 已停用；</li><li>Init： 未生效，待激活站点。</li></ul>
+        :type Status: str
+        :param _AuthSwitch: <p>推理任务请求鉴权开关。</p><p>枚举值：</p><ul><li>Off： 关闭鉴权；</li><li>On： 开启鉴权。</li></ul><p>默认值：On。</p>
+        :type AuthSwitch: str
+        :param _Cname: <p>CNAME 地址。</p><p>校验域名 CNAME 配置状态，请参考<a href="https://cloud.tencent.com/document/api/1552/94491"> CheckCnameStatus </a>接口。</p>
+        :type Cname: str
+        :param _OwnershipVerification: <p>域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。</p><p>验证归属权，请参考<a href="https://cloud.tencent.com/document/api/1552/98879"> VerifyOwnership </a>接口。</p>
+        :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        :param _Certificate: <p>域名证书信息。</p><p>申请免费证书，请参考 <a href="https://cloud.tencent.com/document/api/1552/124807">ApplyFreeCertificate</a> 接口；<br>检查免费证书申请结果，请参考 <a href="https://cloud.tencent.com/document/api/1552/124806">CheckFreeCertificateVerification</a> 接口；<br>配置域名证书，请参考 <a href="https://cloud.tencent.com/document/api/1552/80764">ModifyHostsCertificate</a> 接口。</p>
+        :type Certificate: :class:`tencentcloud.teo.v20220901.models.HostsCertificate`
+        :param _CreateTime: <p>创建时间。</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>修改时间。</p>
+        :type UpdateTime: str
+        """
+        self._Domain = None
+        self._Status = None
+        self._AuthSwitch = None
+        self._Cname = None
+        self._OwnershipVerification = None
+        self._Certificate = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Domain(self):
+        r"""<p>域名名称。</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Status(self):
+        r"""<p>域名状态。</p><p>枚举值：</p><ul><li>Online： 已生效；</li><li>Process： 部署中；</li><li>Offline： 已停用；</li><li>Init： 未生效，待激活站点。</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AuthSwitch(self):
+        r"""<p>推理任务请求鉴权开关。</p><p>枚举值：</p><ul><li>Off： 关闭鉴权；</li><li>On： 开启鉴权。</li></ul><p>默认值：On。</p>
+        :rtype: str
+        """
+        return self._AuthSwitch
+
+    @AuthSwitch.setter
+    def AuthSwitch(self, AuthSwitch):
+        self._AuthSwitch = AuthSwitch
+
+    @property
+    def Cname(self):
+        r"""<p>CNAME 地址。</p><p>校验域名 CNAME 配置状态，请参考<a href="https://cloud.tencent.com/document/api/1552/94491"> CheckCnameStatus </a>接口。</p>
+        :rtype: str
+        """
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def OwnershipVerification(self):
+        r"""<p>域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。</p><p>验证归属权，请参考<a href="https://cloud.tencent.com/document/api/1552/98879"> VerifyOwnership </a>接口。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
+        """
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
+
+    @property
+    def Certificate(self):
+        r"""<p>域名证书信息。</p><p>申请免费证书，请参考 <a href="https://cloud.tencent.com/document/api/1552/124807">ApplyFreeCertificate</a> 接口；<br>检查免费证书申请结果，请参考 <a href="https://cloud.tencent.com/document/api/1552/124806">CheckFreeCertificateVerification</a> 接口；<br>配置域名证书，请参考 <a href="https://cloud.tencent.com/document/api/1552/80764">ModifyHostsCertificate</a> 接口。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HostsCertificate`
+        """
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>修改时间。</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Status = params.get("Status")
+        self._AuthSwitch = params.get("AuthSwitch")
+        self._Cname = params.get("Cname")
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerification()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
+        if params.get("Certificate") is not None:
+            self._Certificate = HostsCertificate()
+            self._Certificate._deserialize(params.get("Certificate"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54484,6 +55150,115 @@ class OfflineCacheParameters(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OperateInferenceDomainRequest(AbstractModel):
+    r"""OperateInferenceDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _ServiceId: <p>推理服务 ID。</p>
+        :type ServiceId: str
+        :param _Domain: <p>推理服务域名。</p>
+        :type Domain: str
+        :param _Operation: <p>操作类型。</p><p>枚举值：</p><ul><li>Resume： 启用域名；</li><li>Stop： 停用域名；</li><li>Delete： 删除域名。</li></ul>
+        :type Operation: str
+        """
+        self._ZoneId = None
+        self._ServiceId = None
+        self._Domain = None
+        self._Operation = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ServiceId(self):
+        r"""<p>推理服务 ID。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Domain(self):
+        r"""<p>推理服务域名。</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Operation(self):
+        r"""<p>操作类型。</p><p>枚举值：</p><ul><li>Resume： 启用域名；</li><li>Stop： 停用域名；</li><li>Delete： 删除域名。</li></ul>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ServiceId = params.get("ServiceId")
+        self._Domain = params.get("Domain")
+        self._Operation = params.get("Operation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperateInferenceDomainResponse(AbstractModel):
+    r"""OperateInferenceDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class OperateInferenceServiceRequest(AbstractModel):
@@ -69533,6 +70308,67 @@ class ZoneConfigParameters(AbstractModel):
         
 
 
+class ZoneCustomVariables(AbstractModel):
+    r"""站点级自定义变量配置，包括变量定义和变量运算。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomVariables: <p>站点级自定义变量列表。CustomVariable.Name 需要使用 user.zone. 作为前缀。变量按照数组顺序依次初始化，InitialValue 仅支持引用位于当前变量之前的变量，不支持引用当前变量自身或位于当前变量之后的变量。</p>
+        :type CustomVariables: list of CustomVariable
+        :param _CustomVariableOperations: <p>站点级自定义变量运算规则。运算中支持引用已定义的站点级自定义变量。此列表当前只支持填写一项规则，多填无效。</p>
+        :type CustomVariableOperations: list of CustomVariableOperation
+        """
+        self._CustomVariables = None
+        self._CustomVariableOperations = None
+
+    @property
+    def CustomVariables(self):
+        r"""<p>站点级自定义变量列表。CustomVariable.Name 需要使用 user.zone. 作为前缀。变量按照数组顺序依次初始化，InitialValue 仅支持引用位于当前变量之前的变量，不支持引用当前变量自身或位于当前变量之后的变量。</p>
+        :rtype: list of CustomVariable
+        """
+        return self._CustomVariables
+
+    @CustomVariables.setter
+    def CustomVariables(self, CustomVariables):
+        self._CustomVariables = CustomVariables
+
+    @property
+    def CustomVariableOperations(self):
+        r"""<p>站点级自定义变量运算规则。运算中支持引用已定义的站点级自定义变量。此列表当前只支持填写一项规则，多填无效。</p>
+        :rtype: list of CustomVariableOperation
+        """
+        return self._CustomVariableOperations
+
+    @CustomVariableOperations.setter
+    def CustomVariableOperations(self, CustomVariableOperations):
+        self._CustomVariableOperations = CustomVariableOperations
+
+
+    def _deserialize(self, params):
+        if params.get("CustomVariables") is not None:
+            self._CustomVariables = []
+            for item in params.get("CustomVariables"):
+                obj = CustomVariable()
+                obj._deserialize(item)
+                self._CustomVariables.append(obj)
+        if params.get("CustomVariableOperations") is not None:
+            self._CustomVariableOperations = []
+            for item in params.get("CustomVariableOperations"):
+                obj = CustomVariableOperation()
+                obj._deserialize(item)
+                self._CustomVariableOperations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ZoneFullConfig(AbstractModel):
     r"""站点完整配置结构。
 
@@ -69544,6 +70380,8 @@ class ZoneFullConfig(AbstractModel):
         :type FormatVersion: str
         :param _ZoneConfig: <p>站点级配置，包含「站点加速」中所有配置项，且所有项均为必选，否则配置无效。</p>
         :type ZoneConfig: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        :param _ZoneCustomVariables: <p>站点级自定义变量配置，包括变量定义和变量运算。</p>
+        :type ZoneCustomVariables: :class:`tencentcloud.teo.v20220901.models.ZoneCustomVariables`
         :param _Rules: <p>规则级配置，包含「规则引擎」中所有规则，且数组可为空，表示不启用任何规则。</p>
         :type Rules: list of ConfigGroupRuleEngineItem
         :param _WebSecurity: <p>Web 安全防护配置，对应控制台中「安全防护 - Web 防护」里支持的功能。</p>
@@ -69553,6 +70391,7 @@ class ZoneFullConfig(AbstractModel):
         """
         self._FormatVersion = None
         self._ZoneConfig = None
+        self._ZoneCustomVariables = None
         self._Rules = None
         self._WebSecurity = None
         self._FunctionTriggers = None
@@ -69578,6 +70417,17 @@ class ZoneFullConfig(AbstractModel):
     @ZoneConfig.setter
     def ZoneConfig(self, ZoneConfig):
         self._ZoneConfig = ZoneConfig
+
+    @property
+    def ZoneCustomVariables(self):
+        r"""<p>站点级自定义变量配置，包括变量定义和变量运算。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneCustomVariables`
+        """
+        return self._ZoneCustomVariables
+
+    @ZoneCustomVariables.setter
+    def ZoneCustomVariables(self, ZoneCustomVariables):
+        self._ZoneCustomVariables = ZoneCustomVariables
 
     @property
     def Rules(self):
@@ -69618,6 +70468,9 @@ class ZoneFullConfig(AbstractModel):
         if params.get("ZoneConfig") is not None:
             self._ZoneConfig = ZoneConfig()
             self._ZoneConfig._deserialize(params.get("ZoneConfig"))
+        if params.get("ZoneCustomVariables") is not None:
+            self._ZoneCustomVariables = ZoneCustomVariables()
+            self._ZoneCustomVariables._deserialize(params.get("ZoneCustomVariables"))
         if params.get("Rules") is not None:
             self._Rules = []
             for item in params.get("Rules"):

@@ -1860,14 +1860,14 @@ class DeleteConsoleGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: <p>要删除的用户组 ID 列表</p>
+        :param _GroupIds: <p>要删除的用户组 ID 列表，单次最多100个</p>
         :type GroupIds: list of str
         """
         self._GroupIds = None
 
     @property
     def GroupIds(self):
-        r"""<p>要删除的用户组 ID 列表</p>
+        r"""<p>要删除的用户组 ID 列表，单次最多100个</p>
         :rtype: list of str
         """
         return self._GroupIds
@@ -5434,11 +5434,11 @@ class ListConsoleGroupUsersRequest(AbstractModel):
         :type UserKeyword: str
         :param _UserUins: <p>通过 UIN 批量查询用户信息</p>
         :type UserUins: list of str
-        :param _OrderBys: <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;ASC&#39;}]，默认按创建时间降序</p>
+        :param _OrderBys: <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
         :type OrderBys: list of OrderBy
         :param _PageNumber: <p>页码，从1开始，默认1</p>
         :type PageNumber: int
-        :param _PageSize: <p>每页大小，默认10，最小10，最大200</p>
+        :param _PageSize: <p>每页大小，默认10，最小10，最大100</p>
         :type PageSize: int
         """
         self._GroupId = None
@@ -5483,7 +5483,7 @@ class ListConsoleGroupUsersRequest(AbstractModel):
 
     @property
     def OrderBys(self):
-        r"""<p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;ASC&#39;}]，默认按创建时间降序</p>
+        r"""<p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
         :rtype: list of OrderBy
         """
         return self._OrderBys
@@ -5505,7 +5505,7 @@ class ListConsoleGroupUsersRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""<p>每页大小，默认10，最小10，最大200</p>
+        r"""<p>每页大小，默认10，最小10，最大100</p>
         :rtype: int
         """
         return self._PageSize
@@ -5694,7 +5694,7 @@ class ListConsoleGroupsRequest(AbstractModel):
         r"""
         :param _PageNumber: <p>页码，从1开始，默认1</p>
         :type PageNumber: int
-        :param _PageSize: <p>每页大小，默认10，最小10，最大200</p>
+        :param _PageSize: <p>每页大小，默认10，最小10，最大100</p>
         :type PageSize: int
         :param _GroupIds: <p>通过用户组 ID 批量查询</p>
         :type GroupIds: list of str
@@ -5722,7 +5722,7 @@ class ListConsoleGroupsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""<p>每页大小，默认10，最小10，最大200</p>
+        r"""<p>每页大小，默认10，最小10，最大100</p>
         :rtype: int
         """
         return self._PageSize
@@ -5943,7 +5943,7 @@ class ListConsoleRolesRequest(AbstractModel):
         r"""
         :param _PageNumber: <p>页码，从1开始，默认1</p>
         :type PageNumber: int
-        :param _PageSize: <p>每页大小，默认10，最小10，最大200</p>
+        :param _PageSize: <p>每页大小，默认10，最小10，最大100</p>
         :type PageSize: int
         :param _RoleKeyword: <p>角色名称或描述模糊匹配</p>
         :type RoleKeyword: str
@@ -5965,7 +5965,7 @@ class ListConsoleRolesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""<p>每页大小，默认10，最小10，最大200</p>
+        r"""<p>每页大小，默认10，最小10，最大100</p>
         :rtype: int
         """
         return self._PageSize
@@ -6157,7 +6157,7 @@ class ListConsoleUsersRequest(AbstractModel):
         r"""
         :param _PageNumber: <p>页码，从1开始，默认1</p>
         :type PageNumber: int
-        :param _PageSize: <p>每页大小，默认10，最小10，最大200</p>
+        :param _PageSize: <p>每页大小，默认10，最小10，最大100</p>
         :type PageSize: int
         :param _UserKeyword: <p>用户名称与 UIN 模糊匹配</p>
         :type UserKeyword: str
@@ -6185,7 +6185,7 @@ class ListConsoleUsersRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""<p>每页大小，默认10，最小10，最大200</p>
+        r"""<p>每页大小，默认10，最小10，最大100</p>
         :rtype: int
         """
         return self._PageSize
@@ -9593,7 +9593,7 @@ class UpdateConsoleGroupRequest(AbstractModel):
         :type GroupNickname: str
         :param _Description: <p>用户组描述</p>
         :type Description: str
-        :param _UserUins: <p>成员 UIN 列表（OperType 为添加/删除成员时使用）</p>
+        :param _UserUins: <p>成员 UIN 列表（OperType 为添加/删除成员时使用），单次最多100个</p>
         :type UserUins: list of str
         """
         self._GroupId = None
@@ -9660,7 +9660,7 @@ class UpdateConsoleGroupRequest(AbstractModel):
 
     @property
     def UserUins(self):
-        r"""<p>成员 UIN 列表（OperType 为添加/删除成员时使用）</p>
+        r"""<p>成员 UIN 列表（OperType 为添加/删除成员时使用），单次最多100个</p>
         :rtype: list of str
         """
         return self._UserUins

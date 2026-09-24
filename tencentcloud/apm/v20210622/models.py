@@ -2569,6 +2569,8 @@ class ApmInstanceDetail(AbstractModel):
         :type CrossAccountStatus: int
         :param _CrossAccountPeerId: <p>跨账号关联ID</p>
         :type CrossAccountPeerId: str
+        :param _TokenDisplayProtection: <p>开启Token展示安全保护</p><p>单位：是、否</p>
+        :type TokenDisplayProtection: int
         """
         self._InstanceId = None
         self._Name = None
@@ -2630,6 +2632,7 @@ class ApmInstanceDetail(AbstractModel):
         self._DisableAiAbility = None
         self._CrossAccountStatus = None
         self._CrossAccountPeerId = None
+        self._TokenDisplayProtection = None
 
     @property
     def InstanceId(self):
@@ -3291,6 +3294,17 @@ class ApmInstanceDetail(AbstractModel):
     def CrossAccountPeerId(self, CrossAccountPeerId):
         self._CrossAccountPeerId = CrossAccountPeerId
 
+    @property
+    def TokenDisplayProtection(self):
+        r"""<p>开启Token展示安全保护</p><p>单位：是、否</p>
+        :rtype: int
+        """
+        return self._TokenDisplayProtection
+
+    @TokenDisplayProtection.setter
+    def TokenDisplayProtection(self, TokenDisplayProtection):
+        self._TokenDisplayProtection = TokenDisplayProtection
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3358,6 +3372,7 @@ class ApmInstanceDetail(AbstractModel):
         self._DisableAiAbility = params.get("DisableAiAbility")
         self._CrossAccountStatus = params.get("CrossAccountStatus")
         self._CrossAccountPeerId = params.get("CrossAccountPeerId")
+        self._TokenDisplayProtection = params.get("TokenDisplayProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10660,6 +10675,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type CrossAccountStatus: int
         :param _CrossAccountPeerId: <p>跨账号关联ID</p>
         :type CrossAccountPeerId: str
+        :param _TokenDisplayProtection: <p>是否开启Token 展示安全保护</p><p>单位：0：不开启，1：开启</p><p>默认值：0</p>
+        :type TokenDisplayProtection: int
         """
         self._InstanceId = None
         self._Name = None
@@ -10710,6 +10727,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._DisableAiAbility = None
         self._CrossAccountStatus = None
         self._CrossAccountPeerId = None
+        self._TokenDisplayProtection = None
 
     @property
     def InstanceId(self):
@@ -11250,6 +11268,17 @@ class ModifyApmInstanceRequest(AbstractModel):
     def CrossAccountPeerId(self, CrossAccountPeerId):
         self._CrossAccountPeerId = CrossAccountPeerId
 
+    @property
+    def TokenDisplayProtection(self):
+        r"""<p>是否开启Token 展示安全保护</p><p>单位：0：不开启，1：开启</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._TokenDisplayProtection
+
+    @TokenDisplayProtection.setter
+    def TokenDisplayProtection(self, TokenDisplayProtection):
+        self._TokenDisplayProtection = TokenDisplayProtection
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11306,6 +11335,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._DisableAiAbility = params.get("DisableAiAbility")
         self._CrossAccountStatus = params.get("CrossAccountStatus")
         self._CrossAccountPeerId = params.get("CrossAccountPeerId")
+        self._TokenDisplayProtection = params.get("TokenDisplayProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

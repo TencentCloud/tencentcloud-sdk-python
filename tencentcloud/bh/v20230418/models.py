@@ -22885,26 +22885,23 @@ class SearchTaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 搜索区间的开始时间
+        :param _StartTime: <p>搜索区间的开始时间，缺省时取结束时间前7天（含结束时间当日）</p>
         :type StartTime: str
-        :param _EndTime: 搜索区间的结束时间
+        :param _EndTime: <p>搜索区间的结束时间。未指定时，默认取当前时间</p>
         :type EndTime: str
-        :param _OperationId: 运维任务ID
+        :param _OperationId: <p>运维任务ID</p>
         :type OperationId: str
-        :param _Name: 运维任务名称
+        :param _Name: <p>运维任务名称</p>
         :type Name: str
-        :param _UserName: 用户名，长度不超过20
+        :param _UserName: <p>用户名，长度不超过20</p>
         :type UserName: str
-        :param _RealName: 姓名，长度不超过20
+        :param _RealName: <p>姓名，长度不超过20</p>
         :type RealName: str
-        :param _TaskType: 任务类型
-1 手工运维任务
-2 定时任务
-3 账号推送任务
+        :param _TaskType: <p>任务类型<br>1 手工运维任务<br>2 定时任务<br>3 账号推送任务</p>
         :type TaskType: list of int non-negative
-        :param _Offset: 查询偏移
+        :param _Offset: <p>查询偏移</p>
         :type Offset: int
-        :param _Limit: 分页的页内记录数，默认为20，最大200
+        :param _Limit: <p>分页的页内记录数，默认为20，最大200</p>
         :type Limit: int
         """
         self._StartTime = None
@@ -22919,7 +22916,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""搜索区间的开始时间
+        r"""<p>搜索区间的开始时间，缺省时取结束时间前7天（含结束时间当日）</p>
         :rtype: str
         """
         return self._StartTime
@@ -22930,7 +22927,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""搜索区间的结束时间
+        r"""<p>搜索区间的结束时间。未指定时，默认取当前时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -22941,7 +22938,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def OperationId(self):
-        r"""运维任务ID
+        r"""<p>运维任务ID</p>
         :rtype: str
         """
         return self._OperationId
@@ -22952,7 +22949,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""运维任务名称
+        r"""<p>运维任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -22963,7 +22960,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名，长度不超过20
+        r"""<p>用户名，长度不超过20</p>
         :rtype: str
         """
         return self._UserName
@@ -22974,7 +22971,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def RealName(self):
-        r"""姓名，长度不超过20
+        r"""<p>姓名，长度不超过20</p>
         :rtype: str
         """
         return self._RealName
@@ -22985,10 +22982,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型
-1 手工运维任务
-2 定时任务
-3 账号推送任务
+        r"""<p>任务类型<br>1 手工运维任务<br>2 定时任务<br>3 账号推送任务</p>
         :rtype: list of int non-negative
         """
         return self._TaskType
@@ -22999,7 +22993,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询偏移
+        r"""<p>查询偏移</p>
         :rtype: int
         """
         return self._Offset
@@ -23010,7 +23004,7 @@ class SearchTaskResultRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页的页内记录数，默认为20，最大200
+        r"""<p>分页的页内记录数，默认为20，最大200</p>
         :rtype: int
         """
         return self._Limit
@@ -23047,9 +23041,9 @@ class SearchTaskResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 记录数
+        :param _TotalCount: <p>记录数</p>
         :type TotalCount: int
-        :param _TaskResult: 运维任务执行结果
+        :param _TaskResult: <p>运维任务执行结果</p>
         :type TaskResult: list of TaskResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23060,7 +23054,7 @@ class SearchTaskResultResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""记录数
+        r"""<p>记录数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -23071,7 +23065,7 @@ class SearchTaskResultResponse(AbstractModel):
 
     @property
     def TaskResult(self):
-        r"""运维任务执行结果
+        r"""<p>运维任务执行结果</p>
         :rtype: list of TaskResult
         """
         return self._TaskResult

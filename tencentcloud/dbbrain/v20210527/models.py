@@ -12110,22 +12110,19 @@ class DescribeSlowLogQueryTimeStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _StartTime: 开始时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔小于7天。
+        :param _StartTime: <p>开始时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔小于7天。</p>
         :type StartTime: str
-        :param _EndTime: 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        :param _EndTime: <p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
         :type EndTime: str
-        :param _Product: "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        :param _Product: <p>&quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;sqlserver&quot; - 云数据库 SQL Server，默认为&quot;mysql&quot;。</p>
         :type Product: str
-        :param _InstanceProxyId: Proxy节点ID。
+        :param _InstanceProxyId: <p>Proxy节点ID。</p>
         :type InstanceProxyId: str
-        :param _InstanceNodeId: 实例节点ID。
+        :param _InstanceNodeId: <p>实例节点ID。</p>
         :type InstanceNodeId: str
-        :param _Type: 查询类型，目前支持值：mongod，mongos。
-其中：
-mongod - MongoDB的数据存储节点
-mongos - MongoDB的路由节点
+        :param _Type: <p>查询类型，目前支持值：mongod，mongos。<br>其中：<br>mongod - MongoDB的数据存储节点<br>mongos - MongoDB的路由节点</p>
         :type Type: str
         """
         self._InstanceId = None
@@ -12138,7 +12135,7 @@ mongos - MongoDB的路由节点
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12149,7 +12146,7 @@ mongos - MongoDB的路由节点
 
     @property
     def StartTime(self):
-        r"""开始时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔小于7天。
+        r"""<p>开始时间，如“2019-09-10 12:13:14”，截止时间与开始时间的间隔小于7天。</p>
         :rtype: str
         """
         return self._StartTime
@@ -12160,7 +12157,7 @@ mongos - MongoDB的路由节点
 
     @property
     def EndTime(self):
-        r"""截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
+        r"""<p>截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。</p>
         :rtype: str
         """
         return self._EndTime
@@ -12171,7 +12168,7 @@ mongos - MongoDB的路由节点
 
     @property
     def Product(self):
-        r""""mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，"mongodb" - 云数据库 MongoDB，默认为"mysql"。
+        r"""<p>&quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;sqlserver&quot; - 云数据库 SQL Server，默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -12182,7 +12179,7 @@ mongos - MongoDB的路由节点
 
     @property
     def InstanceProxyId(self):
-        r"""Proxy节点ID。
+        r"""<p>Proxy节点ID。</p>
         :rtype: str
         """
         return self._InstanceProxyId
@@ -12193,7 +12190,7 @@ mongos - MongoDB的路由节点
 
     @property
     def InstanceNodeId(self):
-        r"""实例节点ID。
+        r"""<p>实例节点ID。</p>
         :rtype: str
         """
         return self._InstanceNodeId
@@ -12204,10 +12201,7 @@ mongos - MongoDB的路由节点
 
     @property
     def Type(self):
-        r"""查询类型，目前支持值：mongod，mongos。
-其中：
-mongod - MongoDB的数据存储节点
-mongos - MongoDB的路由节点
+        r"""<p>查询类型，目前支持值：mongod，mongos。<br>其中：<br>mongod - MongoDB的数据存储节点<br>mongos - MongoDB的路由节点</p>
         :rtype: str
         """
         return self._Type
@@ -12242,9 +12236,9 @@ class DescribeSlowLogQueryTimeStatsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的记录总数。
+        :param _TotalCount: <p>符合条件的记录总数。</p>
         :type TotalCount: int
-        :param _Items: 慢日志 top sql 列表。
+        :param _Items: <p>慢日志 top sql 列表。</p>
         :type Items: list of SqlCostDistribution
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12255,7 +12249,7 @@ class DescribeSlowLogQueryTimeStatsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的记录总数。
+        r"""<p>符合条件的记录总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -12266,7 +12260,7 @@ class DescribeSlowLogQueryTimeStatsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""慢日志 top sql 列表。
+        r"""<p>慢日志 top sql 列表。</p>
         :rtype: list of SqlCostDistribution
         """
         return self._Items
@@ -12527,7 +12521,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
         :type Offset: int
         :param _SchemaList: <p>数据库名称数组。</p>
         :type SchemaList: list of SchemaItem
-        :param _Product: <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL， &quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
+        :param _Product: <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL， &quot;tdstore&quot; - 云数据库TDSQL Boundless，&quot;sqlserver&quot; - 云数据库 SQL Server，默认为&quot;mysql&quot;。</p>
         :type Product: str
         """
         self._InstanceId = None
@@ -12630,7 +12624,7 @@ class DescribeSlowLogTopSqlsRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""<p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL， &quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
+        r"""<p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB  for MySQL， &quot;tdstore&quot; - 云数据库TDSQL Boundless，&quot;sqlserver&quot; - 云数据库 SQL Server，默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -12735,19 +12729,19 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _StartTime: 查询范围的开始时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
+        :param _StartTime: <p>查询范围的开始时间，格式: &quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssXXX&quot;。</p>
         :type StartTime: str
-        :param _EndTime: 查询范围的结束时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
+        :param _EndTime: <p>查询范围的结束时间，格式: &quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssXXX&quot;。</p>
         :type EndTime: str
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        :param _Product: <p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;sqlserver&quot; - 云数据库 SQL Server，默认为&quot;mysql&quot;。</p>
         :type Product: str
-        :param _Md5: SQL模板的MD5值
+        :param _Md5: <p>SQL模板的MD5值</p>
         :type Md5: str
-        :param _InstanceProxyId: 仅Redis产品使用；实例Proxy ID。
+        :param _InstanceProxyId: <p>仅Redis产品使用；实例Proxy ID。</p>
         :type InstanceProxyId: str
-        :param _Cmd: 仅Redis产品使用；命令。
+        :param _Cmd: <p>仅Redis产品使用；命令。</p>
         :type Cmd: str
         """
         self._InstanceId = None
@@ -12760,7 +12754,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12771,7 +12765,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""查询范围的开始时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
+        r"""<p>查询范围的开始时间，格式: &quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssXXX&quot;。</p>
         :rtype: str
         """
         return self._StartTime
@@ -12782,7 +12776,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询范围的结束时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
+        r"""<p>查询范围的结束时间，格式: &quot;yyyy-MM-dd&#39;T&#39;HH:mm:ssXXX&quot;。</p>
         :rtype: str
         """
         return self._EndTime
@@ -12793,7 +12787,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+        r"""<p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;sqlserver&quot; - 云数据库 SQL Server，默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -12804,7 +12798,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def Md5(self):
-        r"""SQL模板的MD5值
+        r"""<p>SQL模板的MD5值</p>
         :rtype: str
         """
         return self._Md5
@@ -12815,7 +12809,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def InstanceProxyId(self):
-        r"""仅Redis产品使用；实例Proxy ID。
+        r"""<p>仅Redis产品使用；实例Proxy ID。</p>
         :rtype: str
         """
         return self._InstanceProxyId
@@ -12826,7 +12820,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def Cmd(self):
-        r"""仅Redis产品使用；命令。
+        r"""<p>仅Redis产品使用；命令。</p>
         :rtype: str
         """
         return self._Cmd
@@ -12861,13 +12855,13 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 来源地址数目。
+        :param _TotalCount: <p>来源地址数目。</p>
         :type TotalCount: int
-        :param _Items: 各来源地址的慢日志占比详情列表。
+        :param _Items: <p>各来源地址的慢日志占比详情列表。</p>
         :type Items: list of SlowLogHost
-        :param _UserNameItems: 各来源用户名的慢日志占比详情列表。
+        :param _UserNameItems: <p>各来源用户名的慢日志占比详情列表。</p>
         :type UserNameItems: list of SlowLogUser
-        :param _UserTotalCount: 来源用户数目。
+        :param _UserTotalCount: <p>来源用户数目。</p>
         :type UserTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12880,7 +12874,7 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""来源地址数目。
+        r"""<p>来源地址数目。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -12891,7 +12885,7 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""各来源地址的慢日志占比详情列表。
+        r"""<p>各来源地址的慢日志占比详情列表。</p>
         :rtype: list of SlowLogHost
         """
         return self._Items
@@ -12902,7 +12896,7 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def UserNameItems(self):
-        r"""各来源用户名的慢日志占比详情列表。
+        r"""<p>各来源用户名的慢日志占比详情列表。</p>
         :rtype: list of SlowLogUser
         """
         return self._UserNameItems
@@ -12913,7 +12907,7 @@ class DescribeSlowLogUserHostStatsResponse(AbstractModel):
 
     @property
     def UserTotalCount(self):
-        r"""来源用户数目。
+        r"""<p>来源用户数目。</p>
         :rtype: int
         """
         return self._UserTotalCount
@@ -12959,7 +12953,7 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB for MySQL，&quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
+        :param _Product: <p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB for MySQL，&quot;tdstore&quot; - 云数据库TDSQL Boundless，&quot;sqlserver&quot; - 云数据库 SQL Server， 默认为&quot;mysql&quot;。</p>
         :type Product: str
         :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :type InstanceId: str
@@ -12999,7 +12993,7 @@ class DescribeSlowLogsRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""<p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB for MySQL，&quot;tdstore&quot; - 云数据库TDSQL Boundless，默认为&quot;mysql&quot;。</p>
+        r"""<p>服务产品类型，支持值包括： &quot;mysql&quot; - 云数据库 MySQL， &quot;cynosdb&quot; - 云数据库 CynosDB for MySQL，&quot;tdstore&quot; - 云数据库TDSQL Boundless，&quot;sqlserver&quot; - 云数据库 SQL Server， 默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -22174,6 +22168,10 @@ class SlowLogInfoItem(AbstractModel):
         :type RowsSent: int
         :param _InstanceId: 
         :type InstanceId: str
+        :param _ClientAppName: 
+        :type ClientAppName: str
+        :param _ClientHostName: 
+        :type ClientHostName: str
         """
         self._Timestamp = None
         self._SqlText = None
@@ -22185,6 +22183,8 @@ class SlowLogInfoItem(AbstractModel):
         self._RowsExamined = None
         self._RowsSent = None
         self._InstanceId = None
+        self._ClientAppName = None
+        self._ClientHostName = None
 
     @property
     def Timestamp(self):
@@ -22296,6 +22296,28 @@ class SlowLogInfoItem(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ClientAppName(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClientAppName
+
+    @ClientAppName.setter
+    def ClientAppName(self, ClientAppName):
+        self._ClientAppName = ClientAppName
+
+    @property
+    def ClientHostName(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClientHostName
+
+    @ClientHostName.setter
+    def ClientHostName(self, ClientHostName):
+        self._ClientHostName = ClientHostName
+
 
     def _deserialize(self, params):
         self._Timestamp = params.get("Timestamp")
@@ -22308,6 +22330,8 @@ class SlowLogInfoItem(AbstractModel):
         self._RowsExamined = params.get("RowsExamined")
         self._RowsSent = params.get("RowsSent")
         self._InstanceId = params.get("InstanceId")
+        self._ClientAppName = params.get("ClientAppName")
+        self._ClientHostName = params.get("ClientHostName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

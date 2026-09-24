@@ -548,6 +548,33 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInferenceDomain(self, request):
+        r"""创建推理服务域名，用于通过自定义域名访问推理服务，一个推理服务下最多支持创建 5 个自定义域名。
+        创建成功后，还需完成以下步骤，域名才能正常对外提供访问：
+        1. 校验域名 CNAME 配置状态，请参考 [CheckCnameStatus](https://cloud.tencent.com/document/api/1552/94491) 接口；
+        2. 验证归属权，请参考 [VerifyOwnership](https://cloud.tencent.com/document/api/1552/98879) 接口；
+        3. 配置域名证书，请参考 [ModifyHostsCertificate](https://cloud.tencent.com/document/api/1552/80764) 接口。
+
+        :param request: Request instance for CreateInferenceDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateInferenceDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateInferenceDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferenceDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferenceDomainResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInferenceService(self, request):
         r"""创建推理服务，支持设置服务名称、监听端口、容器镜像配置和资源配置，创建成功后提供推理访问地址。
 
@@ -2580,6 +2607,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeInferenceAPITokens", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInferenceAPITokensResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInferenceDomains(self, request):
+        r"""查询推理服务域名列表，返回域名的Cname地址、归属权验证和证书等相关信息。
+
+        :param request: Request instance for DescribeInferenceDomains.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceDomainsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeInferenceDomainsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInferenceDomains", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInferenceDomainsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5381,6 +5431,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyZoneWorkMode", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyZoneWorkModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OperateInferenceDomain(self, request):
+        r"""操作推理服务域名，支持停止、启用和删除推理服务域名，删除后的资源不可恢复。
+
+        :param request: Request instance for OperateInferenceDomain.
+        :type request: :class:`tencentcloud.teo.v20220901.models.OperateInferenceDomainRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.OperateInferenceDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OperateInferenceDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.OperateInferenceDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

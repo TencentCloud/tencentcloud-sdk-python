@@ -1153,6 +1153,75 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateJob(self, request):
+        r"""创建并提交作业 Action。
+
+        :param request: Request instance for CreateJob.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateJobRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateJobDefinition(self, request):
+        r"""创建作业定义。
+
+        :param request: Request instance for CreateJobDefinition.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateJobDefinitionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateJobDefinitionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateJobDefinition", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateJobDefinitionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateJobFromDefinition(self, request):
+        r"""按作业定义创建作业。
+
+        :param request: Request instance for CreateJobFromDefinition.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateJobFromDefinitionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateJobFromDefinitionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateJobFromDefinition", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateJobFromDefinitionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateJobSpec(self, request):
         r"""创建作业配置
 
@@ -2627,6 +2696,98 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCatalogTableInfo(self, request):
+        r"""获取 Table 详情
+
+        :param request: Request instance for DescribeCatalogTableInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeCatalogTableInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeCatalogTableInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCatalogTableInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCatalogTableInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCatalogTableNames(self, request):
+        r"""获取 Schema 下所有 Table
+
+        :param request: Request instance for DescribeCatalogTableNames.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeCatalogTableNamesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeCatalogTableNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCatalogTableNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCatalogTableNamesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCatalogTableNamesPage(self, request):
+        r"""分页查询表名
+
+        :param request: Request instance for DescribeCatalogTableNamesPage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeCatalogTableNamesPageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeCatalogTableNamesPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCatalogTableNamesPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCatalogTableNamesPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCatalogs(self, request):
+        r"""查询数据目录列表
+
+        :param request: Request instance for DescribeCatalogs.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeCatalogsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeCatalogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCatalogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCatalogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClsTopics(self, request):
         r"""查询 CLS 日志主题列表：TopicName 走模糊匹配，TopicId 走精确匹配，两者均可为空；分页返回。
 
@@ -3262,6 +3423,144 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeForbiddenTablePro", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeForbiddenTableProResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobDefinitionDetail(self, request):
+        r"""查询作业定义详情。
+
+        :param request: Request instance for DescribeJobDefinitionDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobDefinitionDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeJobDefinitionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobDefinitionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobDefinitionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobDefinitions(self, request):
+        r"""查询作业定义列表。
+
+        :param request: Request instance for DescribeJobDefinitions.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobDefinitionsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeJobDefinitionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobDefinitions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobDefinitionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobDetail(self, request):
+        r"""查询作业完整详情 Action。
+
+        :param request: Request instance for DescribeJobDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeJobDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobList(self, request):
+        r"""分页查询作业列表 Action. PageSize 上限 200；QueueName 必须配合 PartitionCode。
+
+        :param request: Request instance for DescribeJobList.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobListRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeJobListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobLog(self, request):
+        r"""统一作业日志查询 Action。
+
+        :param request: Request instance for DescribeJobLog.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobLogRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeJobLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeJobResult(self, request):
+        r"""获取 SQL 作业结果集 Action. 仅 MinorType=SPARK_SQL 有效（Batch 固定返回 State=NOT_SUPPORTED）。
+
+        :param request: Request instance for DescribeJobResult.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeJobResultRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeJobResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3955,6 +4254,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeSaleResourceInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSaleResourceInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSchemaNamesPage(self, request):
+        r"""分页查询 Catalog 下 Schema 列表
+
+        :param request: Request instance for DescribeSchemaNamesPage.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSchemaNamesPageRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSchemaNamesPageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSchemaNamesPage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSchemaNamesPageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4921,6 +5243,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeViews", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeViewsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWarehouses(self, request):
+        r"""查询计算仓库列表 Action。
+
+        :param request: Request instance for DescribeWarehouses.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeWarehousesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeWarehousesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWarehouses", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWarehousesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6738,6 +7083,29 @@ class DlcClient(AbstractClient):
             body = self.call("ModifyGovernEventRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGovernEventRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyJobDefinition(self, request):
+        r"""修改作业定义。
+
+        :param request: Request instance for ModifyJobDefinition.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyJobDefinitionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyJobDefinitionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyJobDefinition", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyJobDefinitionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

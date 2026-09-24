@@ -14066,9 +14066,12 @@ class EnvVar(AbstractModel):
         :param _Value: <p>环境变量value</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: str
+        :param _IsPrivate: <p>是否对外不可见,true 表示该环境变量的 Value 为敏感值.</p>
+        :type IsPrivate: bool
         """
         self._Name = None
         self._Value = None
+        self._IsPrivate = None
 
     @property
     def Name(self):
@@ -14094,10 +14097,22 @@ class EnvVar(AbstractModel):
     def Value(self, Value):
         self._Value = Value
 
+    @property
+    def IsPrivate(self):
+        r"""<p>是否对外不可见,true 表示该环境变量的 Value 为敏感值.</p>
+        :rtype: bool
+        """
+        return self._IsPrivate
+
+    @IsPrivate.setter
+    def IsPrivate(self, IsPrivate):
+        self._IsPrivate = IsPrivate
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        self._IsPrivate = params.get("IsPrivate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22015,9 +22030,9 @@ class Option(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 指标名
+        :param _Name: <p>指标名</p>
         :type Name: str
-        :param _Value: 指标值
+        :param _Value: <p>指标值</p>
         :type Value: int
         """
         self._Name = None
@@ -22025,7 +22040,7 @@ class Option(AbstractModel):
 
     @property
     def Name(self):
-        r"""指标名
+        r"""<p>指标名</p>
         :rtype: str
         """
         return self._Name
@@ -22036,7 +22051,7 @@ class Option(AbstractModel):
 
     @property
     def Value(self):
-        r"""指标值
+        r"""<p>指标值</p>
         :rtype: int
         """
         return self._Value

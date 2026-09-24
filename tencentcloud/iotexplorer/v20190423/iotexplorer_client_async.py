@@ -133,6 +133,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BatchPublishMessage(
+            self,
+            request: models.BatchPublishMessageRequest,
+            opts: Dict = None,
+    ) -> models.BatchPublishMessageResponse:
+        """
+        批量设备透传指令控制
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchPublishMessage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchPublishMessageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BatchRenewTWeSeeSubscription(
             self,
             request: models.BatchRenewTWeSeeSubscriptionRequest,

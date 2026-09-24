@@ -407,6 +407,8 @@ class AgentInstance(AbstractModel):
         :type Capabilities: list of str
         :param _DeploymentFree: <p>是否是免部署实例</p>
         :type DeploymentFree: bool
+        :param _AgentMem: <p>agent memory 服务详情</p>
+        :type AgentMem: :class:`tencentcloud.tdai.v20250717.models.AgentMemInfo`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -433,6 +435,7 @@ class AgentInstance(AbstractModel):
         self._ProductName = None
         self._Capabilities = None
         self._DeploymentFree = None
+        self._AgentMem = None
 
     @property
     def InstanceId(self):
@@ -709,6 +712,17 @@ class AgentInstance(AbstractModel):
     def DeploymentFree(self, DeploymentFree):
         self._DeploymentFree = DeploymentFree
 
+    @property
+    def AgentMem(self):
+        r"""<p>agent memory 服务详情</p>
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.AgentMemInfo`
+        """
+        return self._AgentMem
+
+    @AgentMem.setter
+    def AgentMem(self, AgentMem):
+        self._AgentMem = AgentMem
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -750,6 +764,90 @@ class AgentInstance(AbstractModel):
         self._ProductName = params.get("ProductName")
         self._Capabilities = params.get("Capabilities")
         self._DeploymentFree = params.get("DeploymentFree")
+        if params.get("AgentMem") is not None:
+            self._AgentMem = AgentMemInfo()
+            self._AgentMem._deserialize(params.get("AgentMem"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentMemInfo(AbstractModel):
+    r"""AGM 记忆服务开通信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemInstanceId: <p>Memory实例ID</p>
+        :type MemInstanceId: str
+        :param _Status: <p>1=active, 0=disabled（软删/关闭/下线历史行）</p>
+        :type Status: int
+        :param _InstallStatus: <p>0=待安装,1=成功,2=失败待重试,3=开启中,4=关闭中/已关闭</p>
+        :type InstallStatus: int
+        :param _MemStatus: <p>creating/online/isolated/error/</p>
+        :type MemStatus: str
+        """
+        self._MemInstanceId = None
+        self._Status = None
+        self._InstallStatus = None
+        self._MemStatus = None
+
+    @property
+    def MemInstanceId(self):
+        r"""<p>Memory实例ID</p>
+        :rtype: str
+        """
+        return self._MemInstanceId
+
+    @MemInstanceId.setter
+    def MemInstanceId(self, MemInstanceId):
+        self._MemInstanceId = MemInstanceId
+
+    @property
+    def Status(self):
+        r"""<p>1=active, 0=disabled（软删/关闭/下线历史行）</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstallStatus(self):
+        r"""<p>0=待安装,1=成功,2=失败待重试,3=开启中,4=关闭中/已关闭</p>
+        :rtype: int
+        """
+        return self._InstallStatus
+
+    @InstallStatus.setter
+    def InstallStatus(self, InstallStatus):
+        self._InstallStatus = InstallStatus
+
+    @property
+    def MemStatus(self):
+        r"""<p>creating/online/isolated/error/</p>
+        :rtype: str
+        """
+        return self._MemStatus
+
+    @MemStatus.setter
+    def MemStatus(self, MemStatus):
+        self._MemStatus = MemStatus
+
+
+    def _deserialize(self, params):
+        self._MemInstanceId = params.get("MemInstanceId")
+        self._Status = params.get("Status")
+        self._InstallStatus = params.get("InstallStatus")
+        self._MemStatus = params.get("MemStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

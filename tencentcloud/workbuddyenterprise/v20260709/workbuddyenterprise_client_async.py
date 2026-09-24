@@ -367,6 +367,24 @@ class WorkbuddyenterpriseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUserAccessToken(
+            self,
+            request: models.DescribeUserAccessTokenRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserAccessTokenResponse:
+        """
+        根据调用者的 Uin / SubAccountUin 调用 OneID 换取用户级 access_token。换取到的 token 是 OneID 用户身份的短期凭证，供调用方以用户身份访问 OneID 开平接口。默认开启 JIT，SubAccountUin 不存在时自动在目标企业下创建影子用户。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserAccessToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserAccessTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def MigrateAgentSession(
             self,
             request: models.MigrateAgentSessionRequest,

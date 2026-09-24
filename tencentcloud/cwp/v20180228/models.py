@@ -76992,56 +76992,68 @@ class HostLoginList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 记录Id
+        :param _Id: <p>记录Id</p>
         :type Id: int
-        :param _Uuid: 主机Uuid
+        :param _Uuid: <p>主机Uuid</p>
         :type Uuid: str
-        :param _MachineIp: 主机ip
+        :param _MachineIp: <p>主机ip</p>
         :type MachineIp: str
-        :param _MachineName: 主机名
+        :param _MachineName: <p>主机名</p>
         :type MachineName: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _SrcIp: 来源ip
+        :param _SrcIp: <p>来源ip</p>
         :type SrcIp: str
-        :param _Status: 1:正常登录；2异地登录； 5已加白； 14：已处理；15：已忽略。
+        :param _Status: <p>1:正常登录；2异地登录； 5已加白； 14：已处理；15：已忽略。</p>
         :type Status: int
-        :param _Country: 国家id
+        :param _Country: <p>国家id</p>
         :type Country: int
-        :param _City: 城市id
+        :param _City: <p>城市id</p>
         :type City: int
-        :param _Province: 省份id
+        :param _Province: <p>省份id</p>
         :type Province: int
-        :param _LoginTime: 登录时间
+        :param _LoginTime: <p>登录时间</p>
         :type LoginTime: str
-        :param _ModifyTime: 修改时间
+        :param _ModifyTime: <p>修改时间</p>
         :type ModifyTime: str
-        :param _IsRiskArea: 是否命中异地登录异常  1表示命中此类异常, 0表示未命中
+        :param _IsRiskArea: <p>是否命中异地登录异常  1表示命中此类异常, 0表示未命中</p>
         :type IsRiskArea: int
-        :param _IsRiskUser: 是否命中异常用户异常 1表示命中此类异常, 0表示未命中
+        :param _IsRiskUser: <p>是否命中异常用户异常 1表示命中此类异常, 0表示未命中</p>
         :type IsRiskUser: int
-        :param _IsRiskTime: 是否命中异常时间异常 1表示命中此类异常, 0表示未命中
+        :param _IsRiskTime: <p>是否命中异常时间异常 1表示命中此类异常, 0表示未命中</p>
         :type IsRiskTime: int
-        :param _IsRiskSrcIp: 是否命中异常IP异常 1表示命中此类异常, 0表示未命中
+        :param _IsRiskSrcIp: <p>是否命中异常IP异常 1表示命中此类异常, 0表示未命中</p>
         :type IsRiskSrcIp: int
-        :param _RiskLevel: 危险等级：
-0 高危
-1 可疑
+        :param _RiskLevel: <p>危险等级：<br>0 高危<br>1 可疑</p>
         :type RiskLevel: int
-        :param _Location: 位置名称
+        :param _Location: <p>位置名称</p>
         :type Location: str
-        :param _Quuid: 主机quuid
+        :param _Quuid: <p>主机quuid</p>
         :type Quuid: str
-        :param _Desc: 高危信息说明：
-ABROAD - 境外IP；
-XTI - 威胁情报
+        :param _Desc: <p>高危信息说明：<br>ABROAD - 境外IP；<br>XTI - 威胁情报</p>
         :type Desc: str
-        :param _MachineExtraInfo: 附加信息
+        :param _MachineExtraInfo: <p>附加信息</p>
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
-        :param _Port: 请求目的端口
+        :param _Port: <p>请求目的端口</p>
         :type Port: int
-        :param _IPAnalyse: ip分析
+        :param _IPAnalyse: <p>ip分析</p>
         :type IPAnalyse: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
+        :param _HitRule: <p>命中策略ID</p><p>枚举值：</p><ul><li>risk_login_1： 威胁情报</li><li>risk_login_2： 密码破解成功后登录</li><li>risk_login_3： 弱口令账户登录</li><li>risk_login_4： 非法账户登录</li><li>risk_login_5： 登录后存在入侵行为</li><li>risk_login_101： 海外IP登录</li><li>risk_login_102： 非常用登录地登录</li><li>risk_login_103： 非工作时间登录</li></ul>
+        :type HitRule: str
+        :param _HitRuleName: <p>命中策略名</p>
+        :type HitRuleName: str
+        :param _AlertCount: <p>告警数量</p>
+        :type AlertCount: int
+        :param _FirstDiscoverTime: <p>首次发现时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+        :type FirstDiscoverTime: str
+        :param _LastDiscoverTime: <p>最近发现时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+        :type LastDiscoverTime: str
+        :param _HarmDescribe: <p>危害描述</p>
+        :type HarmDescribe: str
+        :param _SuggestScheme: <p>修复建议</p>
+        :type SuggestScheme: str
+        :param _RecentLoginList: <p>最近登录历史</p>
+        :type RecentLoginList: list of RecentLoginItem
         """
         self._Id = None
         self._Uuid = None
@@ -77066,10 +77078,18 @@ XTI - 威胁情报
         self._MachineExtraInfo = None
         self._Port = None
         self._IPAnalyse = None
+        self._HitRule = None
+        self._HitRuleName = None
+        self._AlertCount = None
+        self._FirstDiscoverTime = None
+        self._LastDiscoverTime = None
+        self._HarmDescribe = None
+        self._SuggestScheme = None
+        self._RecentLoginList = None
 
     @property
     def Id(self):
-        r"""记录Id
+        r"""<p>记录Id</p>
         :rtype: int
         """
         return self._Id
@@ -77080,7 +77100,7 @@ XTI - 威胁情报
 
     @property
     def Uuid(self):
-        r"""主机Uuid
+        r"""<p>主机Uuid</p>
         :rtype: str
         """
         return self._Uuid
@@ -77091,7 +77111,7 @@ XTI - 威胁情报
 
     @property
     def MachineIp(self):
-        r"""主机ip
+        r"""<p>主机ip</p>
         :rtype: str
         """
         return self._MachineIp
@@ -77102,7 +77122,7 @@ XTI - 威胁情报
 
     @property
     def MachineName(self):
-        r"""主机名
+        r"""<p>主机名</p>
         :rtype: str
         """
         return self._MachineName
@@ -77113,7 +77133,7 @@ XTI - 威胁情报
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -77124,7 +77144,7 @@ XTI - 威胁情报
 
     @property
     def SrcIp(self):
-        r"""来源ip
+        r"""<p>来源ip</p>
         :rtype: str
         """
         return self._SrcIp
@@ -77135,7 +77155,7 @@ XTI - 威胁情报
 
     @property
     def Status(self):
-        r"""1:正常登录；2异地登录； 5已加白； 14：已处理；15：已忽略。
+        r"""<p>1:正常登录；2异地登录； 5已加白； 14：已处理；15：已忽略。</p>
         :rtype: int
         """
         return self._Status
@@ -77146,7 +77166,7 @@ XTI - 威胁情报
 
     @property
     def Country(self):
-        r"""国家id
+        r"""<p>国家id</p>
         :rtype: int
         """
         return self._Country
@@ -77157,7 +77177,7 @@ XTI - 威胁情报
 
     @property
     def City(self):
-        r"""城市id
+        r"""<p>城市id</p>
         :rtype: int
         """
         return self._City
@@ -77168,7 +77188,7 @@ XTI - 威胁情报
 
     @property
     def Province(self):
-        r"""省份id
+        r"""<p>省份id</p>
         :rtype: int
         """
         return self._Province
@@ -77179,7 +77199,7 @@ XTI - 威胁情报
 
     @property
     def LoginTime(self):
-        r"""登录时间
+        r"""<p>登录时间</p>
         :rtype: str
         """
         return self._LoginTime
@@ -77190,7 +77210,7 @@ XTI - 威胁情报
 
     @property
     def ModifyTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -77201,7 +77221,7 @@ XTI - 威胁情报
 
     @property
     def IsRiskArea(self):
-        r"""是否命中异地登录异常  1表示命中此类异常, 0表示未命中
+        r"""<p>是否命中异地登录异常  1表示命中此类异常, 0表示未命中</p>
         :rtype: int
         """
         return self._IsRiskArea
@@ -77212,7 +77232,7 @@ XTI - 威胁情报
 
     @property
     def IsRiskUser(self):
-        r"""是否命中异常用户异常 1表示命中此类异常, 0表示未命中
+        r"""<p>是否命中异常用户异常 1表示命中此类异常, 0表示未命中</p>
         :rtype: int
         """
         return self._IsRiskUser
@@ -77223,7 +77243,7 @@ XTI - 威胁情报
 
     @property
     def IsRiskTime(self):
-        r"""是否命中异常时间异常 1表示命中此类异常, 0表示未命中
+        r"""<p>是否命中异常时间异常 1表示命中此类异常, 0表示未命中</p>
         :rtype: int
         """
         return self._IsRiskTime
@@ -77234,7 +77254,7 @@ XTI - 威胁情报
 
     @property
     def IsRiskSrcIp(self):
-        r"""是否命中异常IP异常 1表示命中此类异常, 0表示未命中
+        r"""<p>是否命中异常IP异常 1表示命中此类异常, 0表示未命中</p>
         :rtype: int
         """
         return self._IsRiskSrcIp
@@ -77245,9 +77265,7 @@ XTI - 威胁情报
 
     @property
     def RiskLevel(self):
-        r"""危险等级：
-0 高危
-1 可疑
+        r"""<p>危险等级：<br>0 高危<br>1 可疑</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -77258,7 +77276,7 @@ XTI - 威胁情报
 
     @property
     def Location(self):
-        r"""位置名称
+        r"""<p>位置名称</p>
         :rtype: str
         """
         return self._Location
@@ -77269,7 +77287,7 @@ XTI - 威胁情报
 
     @property
     def Quuid(self):
-        r"""主机quuid
+        r"""<p>主机quuid</p>
         :rtype: str
         """
         return self._Quuid
@@ -77280,9 +77298,7 @@ XTI - 威胁情报
 
     @property
     def Desc(self):
-        r"""高危信息说明：
-ABROAD - 境外IP；
-XTI - 威胁情报
+        r"""<p>高危信息说明：<br>ABROAD - 境外IP；<br>XTI - 威胁情报</p>
         :rtype: str
         """
         return self._Desc
@@ -77293,7 +77309,7 @@ XTI - 威胁情报
 
     @property
     def MachineExtraInfo(self):
-        r"""附加信息
+        r"""<p>附加信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         """
         return self._MachineExtraInfo
@@ -77304,7 +77320,7 @@ XTI - 威胁情报
 
     @property
     def Port(self):
-        r"""请求目的端口
+        r"""<p>请求目的端口</p>
         :rtype: int
         """
         return self._Port
@@ -77315,7 +77331,7 @@ XTI - 威胁情报
 
     @property
     def IPAnalyse(self):
-        r"""ip分析
+        r"""<p>ip分析</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.IPAnalyse`
         """
         return self._IPAnalyse
@@ -77323,6 +77339,94 @@ XTI - 威胁情报
     @IPAnalyse.setter
     def IPAnalyse(self, IPAnalyse):
         self._IPAnalyse = IPAnalyse
+
+    @property
+    def HitRule(self):
+        r"""<p>命中策略ID</p><p>枚举值：</p><ul><li>risk_login_1： 威胁情报</li><li>risk_login_2： 密码破解成功后登录</li><li>risk_login_3： 弱口令账户登录</li><li>risk_login_4： 非法账户登录</li><li>risk_login_5： 登录后存在入侵行为</li><li>risk_login_101： 海外IP登录</li><li>risk_login_102： 非常用登录地登录</li><li>risk_login_103： 非工作时间登录</li></ul>
+        :rtype: str
+        """
+        return self._HitRule
+
+    @HitRule.setter
+    def HitRule(self, HitRule):
+        self._HitRule = HitRule
+
+    @property
+    def HitRuleName(self):
+        r"""<p>命中策略名</p>
+        :rtype: str
+        """
+        return self._HitRuleName
+
+    @HitRuleName.setter
+    def HitRuleName(self, HitRuleName):
+        self._HitRuleName = HitRuleName
+
+    @property
+    def AlertCount(self):
+        r"""<p>告警数量</p>
+        :rtype: int
+        """
+        return self._AlertCount
+
+    @AlertCount.setter
+    def AlertCount(self, AlertCount):
+        self._AlertCount = AlertCount
+
+    @property
+    def FirstDiscoverTime(self):
+        r"""<p>首次发现时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+        :rtype: str
+        """
+        return self._FirstDiscoverTime
+
+    @FirstDiscoverTime.setter
+    def FirstDiscoverTime(self, FirstDiscoverTime):
+        self._FirstDiscoverTime = FirstDiscoverTime
+
+    @property
+    def LastDiscoverTime(self):
+        r"""<p>最近发现时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+        :rtype: str
+        """
+        return self._LastDiscoverTime
+
+    @LastDiscoverTime.setter
+    def LastDiscoverTime(self, LastDiscoverTime):
+        self._LastDiscoverTime = LastDiscoverTime
+
+    @property
+    def HarmDescribe(self):
+        r"""<p>危害描述</p>
+        :rtype: str
+        """
+        return self._HarmDescribe
+
+    @HarmDescribe.setter
+    def HarmDescribe(self, HarmDescribe):
+        self._HarmDescribe = HarmDescribe
+
+    @property
+    def SuggestScheme(self):
+        r"""<p>修复建议</p>
+        :rtype: str
+        """
+        return self._SuggestScheme
+
+    @SuggestScheme.setter
+    def SuggestScheme(self, SuggestScheme):
+        self._SuggestScheme = SuggestScheme
+
+    @property
+    def RecentLoginList(self):
+        r"""<p>最近登录历史</p>
+        :rtype: list of RecentLoginItem
+        """
+        return self._RecentLoginList
+
+    @RecentLoginList.setter
+    def RecentLoginList(self, RecentLoginList):
+        self._RecentLoginList = RecentLoginList
 
 
     def _deserialize(self, params):
@@ -77353,6 +77457,19 @@ XTI - 威胁情报
         if params.get("IPAnalyse") is not None:
             self._IPAnalyse = IPAnalyse()
             self._IPAnalyse._deserialize(params.get("IPAnalyse"))
+        self._HitRule = params.get("HitRule")
+        self._HitRuleName = params.get("HitRuleName")
+        self._AlertCount = params.get("AlertCount")
+        self._FirstDiscoverTime = params.get("FirstDiscoverTime")
+        self._LastDiscoverTime = params.get("LastDiscoverTime")
+        self._HarmDescribe = params.get("HarmDescribe")
+        self._SuggestScheme = params.get("SuggestScheme")
+        if params.get("RecentLoginList") is not None:
+            self._RecentLoginList = []
+            for item in params.get("RecentLoginList"):
+                obj = RecentLoginItem()
+                obj._deserialize(item)
+                self._RecentLoginList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -100632,6 +100749,72 @@ class RaspRuleVul(AbstractModel):
         self._VulVulsName = params.get("VulVulsName")
         self._CveID = params.get("CveID")
         self._SupportDefense = params.get("SupportDefense")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecentLoginItem(AbstractModel):
+    r"""异常登陆历史记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoginTime: <p>登录时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+        :type LoginTime: str
+        :param _LoginType: <p>登录方式</p><p>枚举值：</p><ul><li>0： 无效用户</li><li>1： 密码错误</li><li>2： 密码登录</li><li>3： 密钥登录</li><li>4： PAM 认证失败（sshd）</li><li>5： PAM 认证失败（tty）</li><li>6： 键盘交互登录</li><li>7： 键盘交互认证失败</li><li>8： PAM 认证失败</li></ul>
+        :type LoginType: int
+        :param _LoginTypeDesc: <p>登录方式描述</p>
+        :type LoginTypeDesc: str
+        """
+        self._LoginTime = None
+        self._LoginType = None
+        self._LoginTypeDesc = None
+
+    @property
+    def LoginTime(self):
+        r"""<p>登录时间</p><p>参数格式：YYYY-MM-DD HH:MM:SS</p>
+        :rtype: str
+        """
+        return self._LoginTime
+
+    @LoginTime.setter
+    def LoginTime(self, LoginTime):
+        self._LoginTime = LoginTime
+
+    @property
+    def LoginType(self):
+        r"""<p>登录方式</p><p>枚举值：</p><ul><li>0： 无效用户</li><li>1： 密码错误</li><li>2： 密码登录</li><li>3： 密钥登录</li><li>4： PAM 认证失败（sshd）</li><li>5： PAM 认证失败（tty）</li><li>6： 键盘交互登录</li><li>7： 键盘交互认证失败</li><li>8： PAM 认证失败</li></ul>
+        :rtype: int
+        """
+        return self._LoginType
+
+    @LoginType.setter
+    def LoginType(self, LoginType):
+        self._LoginType = LoginType
+
+    @property
+    def LoginTypeDesc(self):
+        r"""<p>登录方式描述</p>
+        :rtype: str
+        """
+        return self._LoginTypeDesc
+
+    @LoginTypeDesc.setter
+    def LoginTypeDesc(self, LoginTypeDesc):
+        self._LoginTypeDesc = LoginTypeDesc
+
+
+    def _deserialize(self, params):
+        self._LoginTime = params.get("LoginTime")
+        self._LoginType = params.get("LoginType")
+        self._LoginTypeDesc = params.get("LoginTypeDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1520,6 +1520,195 @@ class BatchProductionInfo(AbstractModel):
         
 
 
+class BatchPublishMessageRequest(AbstractModel):
+    r"""BatchPublishMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品名称</p>
+        :type ProductId: str
+        :param _DeviceNames: <p>设备名称</p>
+        :type DeviceNames: list of str
+        :param _Topic: <p>主题</p>
+        :type Topic: str
+        :param _Payload: <p>消息体</p>
+        :type Payload: str
+        :param _Qos: <p>服务质量</p>
+        :type Qos: int
+        :param _PayloadEncoding: <p>消息体编码</p>
+        :type PayloadEncoding: str
+        """
+        self._ProductId = None
+        self._DeviceNames = None
+        self._Topic = None
+        self._Payload = None
+        self._Qos = None
+        self._PayloadEncoding = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品名称</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceNames(self):
+        r"""<p>设备名称</p>
+        :rtype: list of str
+        """
+        return self._DeviceNames
+
+    @DeviceNames.setter
+    def DeviceNames(self, DeviceNames):
+        self._DeviceNames = DeviceNames
+
+    @property
+    def Topic(self):
+        r"""<p>主题</p>
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Payload(self):
+        r"""<p>消息体</p>
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def Qos(self):
+        r"""<p>服务质量</p>
+        :rtype: int
+        """
+        return self._Qos
+
+    @Qos.setter
+    def Qos(self, Qos):
+        self._Qos = Qos
+
+    @property
+    def PayloadEncoding(self):
+        r"""<p>消息体编码</p>
+        :rtype: str
+        """
+        return self._PayloadEncoding
+
+    @PayloadEncoding.setter
+    def PayloadEncoding(self, PayloadEncoding):
+        self._PayloadEncoding = PayloadEncoding
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceNames = params.get("DeviceNames")
+        self._Topic = params.get("Topic")
+        self._Payload = params.get("Payload")
+        self._Qos = params.get("Qos")
+        self._PayloadEncoding = params.get("PayloadEncoding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchPublishMessageResponse(AbstractModel):
+    r"""BatchPublishMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>批量推送总数</p>
+        :type Total: int
+        :param _SuccessCount: <p>成功数量</p>
+        :type SuccessCount: int
+        :param _Failures: <p>失败明细</p>
+        :type Failures: list of DeviceResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._SuccessCount = None
+        self._Failures = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>批量推送总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def SuccessCount(self):
+        r"""<p>成功数量</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def Failures(self):
+        r"""<p>失败明细</p>
+        :rtype: list of DeviceResult
+        """
+        return self._Failures
+
+    @Failures.setter
+    def Failures(self, Failures):
+        self._Failures = Failures
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._SuccessCount = params.get("SuccessCount")
+        if params.get("Failures") is not None:
+            self._Failures = []
+            for item in params.get("Failures"):
+                obj = DeviceResult()
+                obj._deserialize(item)
+                self._Failures.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class BatchRenewTWeSeeSubscriptionRequest(AbstractModel):
     r"""BatchRenewTWeSeeSubscription请求参数结构体
 
@@ -1616,40 +1805,44 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductID: 产品ID
+        :param _ProductID: <p>产品ID</p>
         :type ProductID: str
-        :param _FirmwareVersion: 固件新版本号
+        :param _FirmwareVersion: <p>固件新版本号</p>
         :type FirmwareVersion: str
-        :param _FirmwareOriVersion: 固件原版本号
+        :param _FirmwareOriVersion: <p>固件原版本号</p>
         :type FirmwareOriVersion: str
-        :param _UpgradeMethod: 升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+        :param _UpgradeMethod: <p>升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式</p>
         :type UpgradeMethod: int
-        :param _FileName: 设备列表文件名称，根据文件列表升级固件需要填写此参数
+        :param _FileName: <p>设备列表文件名称，根据文件列表升级固件需要填写此参数</p>
         :type FileName: str
-        :param _FileMd5: 设备列表的文件md5值
+        :param _FileMd5: <p>设备列表的文件md5值</p>
         :type FileMd5: str
-        :param _FileSize: 设备列表的文件大小值
+        :param _FileSize: <p>设备列表的文件大小值</p>
         :type FileSize: int
-        :param _DeviceNames: 需要升级的设备名称列表
+        :param _DeviceNames: <p>需要升级的设备名称列表</p>
         :type DeviceNames: list of str
-        :param _TimeoutInterval: 固件升级任务，默认超时时间。 最小取值120秒，最大为900秒
+        :param _TimeoutInterval: <p>固件升级任务，默认超时时间。 最小取值120秒，最大为900秒</p>
         :type TimeoutInterval: int
-        :param _Type: 固件升级任务类型，默认静态升级值为空或1，动态升级值为7
+        :param _Type: <p>固件升级任务类型，默认静态升级值为空或1，动态升级值为7</p>
         :type Type: int
-        :param _DelayTime: 任务延迟时间
+        :param _DelayTime: <p>任务延迟时间</p>
         :type DelayTime: int
-        :param _OverrideMode: 是否覆盖，0不覆盖，1覆盖
+        :param _OverrideMode: <p>是否覆盖，0不覆盖，1覆盖</p>
         :type OverrideMode: int
-        :param _MaxRetryNum: 失败重试次数
+        :param _MaxRetryNum: <p>失败重试次数</p>
         :type MaxRetryNum: int
-        :param _RetryInterval: 重试间隔min
+        :param _RetryInterval: <p>重试间隔min</p>
         :type RetryInterval: int
-        :param _FwType: 固件模块
+        :param _FwType: <p>固件模块</p>
         :type FwType: str
-        :param _TaskUserDefine: 用户自定义信息
+        :param _TaskUserDefine: <p>用户自定义信息</p>
         :type TaskUserDefine: str
-        :param _RateLimit: 每分钟下发设备量
+        :param _RateLimit: <p>每分钟下发设备量</p>
         :type RateLimit: int
+        :param _EndTime: <p>任务截止时间，Unix 时间戳（单位：秒）。传入 0 或不传表示不设截止，任务按原重试/超时策略执行完毕。</p><p>单位：秒</p>
+        :type EndTime: int
+        :param _StartTime: <p>任务开始调度时间，Unix 时间戳（单位：秒）。传入 0 或不传时任务立即创建执行，与 DelayTime 同时传入时，本参数优先生效。</p><p>单位：秒</p>
+        :type StartTime: int
         """
         self._ProductID = None
         self._FirmwareVersion = None
@@ -1668,10 +1861,12 @@ class BatchUpdateFirmwareRequest(AbstractModel):
         self._FwType = None
         self._TaskUserDefine = None
         self._RateLimit = None
+        self._EndTime = None
+        self._StartTime = None
 
     @property
     def ProductID(self):
-        r"""产品ID
+        r"""<p>产品ID</p>
         :rtype: str
         """
         return self._ProductID
@@ -1682,7 +1877,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def FirmwareVersion(self):
-        r"""固件新版本号
+        r"""<p>固件新版本号</p>
         :rtype: str
         """
         return self._FirmwareVersion
@@ -1693,7 +1888,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def FirmwareOriVersion(self):
-        r"""固件原版本号
+        r"""<p>固件原版本号</p>
         :rtype: str
         """
         return self._FirmwareOriVersion
@@ -1704,7 +1899,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def UpgradeMethod(self):
-        r"""升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式
+        r"""<p>升级方式，0 静默升级  1 用户确认升级。 不填默认为静默升级方式</p>
         :rtype: int
         """
         return self._UpgradeMethod
@@ -1715,7 +1910,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def FileName(self):
-        r"""设备列表文件名称，根据文件列表升级固件需要填写此参数
+        r"""<p>设备列表文件名称，根据文件列表升级固件需要填写此参数</p>
         :rtype: str
         """
         return self._FileName
@@ -1726,7 +1921,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def FileMd5(self):
-        r"""设备列表的文件md5值
+        r"""<p>设备列表的文件md5值</p>
         :rtype: str
         """
         return self._FileMd5
@@ -1737,7 +1932,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""设备列表的文件大小值
+        r"""<p>设备列表的文件大小值</p>
         :rtype: int
         """
         return self._FileSize
@@ -1748,7 +1943,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def DeviceNames(self):
-        r"""需要升级的设备名称列表
+        r"""<p>需要升级的设备名称列表</p>
         :rtype: list of str
         """
         return self._DeviceNames
@@ -1759,7 +1954,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def TimeoutInterval(self):
-        r"""固件升级任务，默认超时时间。 最小取值120秒，最大为900秒
+        r"""<p>固件升级任务，默认超时时间。 最小取值120秒，最大为900秒</p>
         :rtype: int
         """
         return self._TimeoutInterval
@@ -1770,7 +1965,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""固件升级任务类型，默认静态升级值为空或1，动态升级值为7
+        r"""<p>固件升级任务类型，默认静态升级值为空或1，动态升级值为7</p>
         :rtype: int
         """
         return self._Type
@@ -1781,7 +1976,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""任务延迟时间
+        r"""<p>任务延迟时间</p>
         :rtype: int
         """
         return self._DelayTime
@@ -1792,7 +1987,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def OverrideMode(self):
-        r"""是否覆盖，0不覆盖，1覆盖
+        r"""<p>是否覆盖，0不覆盖，1覆盖</p>
         :rtype: int
         """
         return self._OverrideMode
@@ -1803,7 +1998,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def MaxRetryNum(self):
-        r"""失败重试次数
+        r"""<p>失败重试次数</p>
         :rtype: int
         """
         return self._MaxRetryNum
@@ -1814,7 +2009,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def RetryInterval(self):
-        r"""重试间隔min
+        r"""<p>重试间隔min</p>
         :rtype: int
         """
         return self._RetryInterval
@@ -1825,7 +2020,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def FwType(self):
-        r"""固件模块
+        r"""<p>固件模块</p>
         :rtype: str
         """
         return self._FwType
@@ -1836,7 +2031,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def TaskUserDefine(self):
-        r"""用户自定义信息
+        r"""<p>用户自定义信息</p>
         :rtype: str
         """
         return self._TaskUserDefine
@@ -1847,7 +2042,7 @@ class BatchUpdateFirmwareRequest(AbstractModel):
 
     @property
     def RateLimit(self):
-        r"""每分钟下发设备量
+        r"""<p>每分钟下发设备量</p>
         :rtype: int
         """
         return self._RateLimit
@@ -1855,6 +2050,28 @@ class BatchUpdateFirmwareRequest(AbstractModel):
     @RateLimit.setter
     def RateLimit(self, RateLimit):
         self._RateLimit = RateLimit
+
+    @property
+    def EndTime(self):
+        r"""<p>任务截止时间，Unix 时间戳（单位：秒）。传入 0 或不传表示不设截止，任务按原重试/超时策略执行完毕。</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartTime(self):
+        r"""<p>任务开始调度时间，Unix 时间戳（单位：秒）。传入 0 或不传时任务立即创建执行，与 DelayTime 同时传入时，本参数优先生效。</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
 
 
     def _deserialize(self, params):
@@ -1875,6 +2092,8 @@ class BatchUpdateFirmwareRequest(AbstractModel):
         self._FwType = params.get("FwType")
         self._TaskUserDefine = params.get("TaskUserDefine")
         self._RateLimit = params.get("RateLimit")
+        self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1892,7 +2111,7 @@ class BatchUpdateFirmwareResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务Id
+        :param _TaskId: <p>任务Id</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1902,7 +2121,7 @@ class BatchUpdateFirmwareResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: int
         """
         return self._TaskId
@@ -14309,6 +14528,10 @@ class DescribeCloudStorageEventsByTWeSeePersonRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>分页拉取偏移</p>
         :type Offset: int
+        :param _StartTime: <p>起始时间（Unix 时间戳）</p><p>单位：秒</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间（Unix 时间戳）</p><p>单位：秒</p>
+        :type EndTime: int
         :param _ChannelId: <p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
         :type ChannelId: int
         """
@@ -14317,6 +14540,8 @@ class DescribeCloudStorageEventsByTWeSeePersonRequest(AbstractModel):
         self._PersonId = None
         self._Limit = None
         self._Offset = None
+        self._StartTime = None
+        self._EndTime = None
         self._ChannelId = None
 
     @property
@@ -14375,6 +14600,28 @@ class DescribeCloudStorageEventsByTWeSeePersonRequest(AbstractModel):
         self._Offset = Offset
 
     @property
+    def StartTime(self):
+        r"""<p>起始时间（Unix 时间戳）</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间（Unix 时间戳）</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
     def ChannelId(self):
         r"""<p>通道 ID，非 NVR 设备不填，NVR 设备必填</p>
         :rtype: int
@@ -14392,6 +14639,8 @@ class DescribeCloudStorageEventsByTWeSeePersonRequest(AbstractModel):
         self._PersonId = params.get("PersonId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         self._ChannelId = params.get("ChannelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -14414,11 +14663,14 @@ class DescribeCloudStorageEventsByTWeSeePersonResponse(AbstractModel):
         :type Events: list of CloudStorageEventWithAITasks
         :param _Total: <p>人员关联的云存事件总数</p>
         :type Total: int
+        :param _VideoURL: <p>视频播放URL</p>
+        :type VideoURL: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Events = None
         self._Total = None
+        self._VideoURL = None
         self._RequestId = None
 
     @property
@@ -14444,6 +14696,17 @@ class DescribeCloudStorageEventsByTWeSeePersonResponse(AbstractModel):
         self._Total = Total
 
     @property
+    def VideoURL(self):
+        r"""<p>视频播放URL</p>
+        :rtype: str
+        """
+        return self._VideoURL
+
+    @VideoURL.setter
+    def VideoURL(self, VideoURL):
+        self._VideoURL = VideoURL
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -14463,6 +14726,7 @@ class DescribeCloudStorageEventsByTWeSeePersonResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Events.append(obj)
         self._Total = params.get("Total")
+        self._VideoURL = params.get("VideoURL")
         self._RequestId = params.get("RequestId")
 
 
@@ -18329,11 +18593,11 @@ class DescribeFirmwareTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductID: 产品ID
+        :param _ProductID: <p>产品ID</p>
         :type ProductID: str
-        :param _FirmwareVersion: 固件版本号
+        :param _FirmwareVersion: <p>固件版本号</p>
         :type FirmwareVersion: str
-        :param _TaskId: 固件任务ID
+        :param _TaskId: <p>固件任务ID</p>
         :type TaskId: int
         """
         self._ProductID = None
@@ -18342,7 +18606,7 @@ class DescribeFirmwareTaskRequest(AbstractModel):
 
     @property
     def ProductID(self):
-        r"""产品ID
+        r"""<p>产品ID</p>
         :rtype: str
         """
         return self._ProductID
@@ -18353,7 +18617,7 @@ class DescribeFirmwareTaskRequest(AbstractModel):
 
     @property
     def FirmwareVersion(self):
-        r"""固件版本号
+        r"""<p>固件版本号</p>
         :rtype: str
         """
         return self._FirmwareVersion
@@ -18364,7 +18628,7 @@ class DescribeFirmwareTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""固件任务ID
+        r"""<p>固件任务ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -18395,44 +18659,48 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 固件任务ID
+        :param _TaskId: <p>固件任务ID</p>
         :type TaskId: int
-        :param _Status: 固件任务状态
+        :param _Status: <p>固件任务状态</p>
         :type Status: int
-        :param _CreateTime: 固件任务创建时间，单位：秒
+        :param _CreateTime: <p>固件任务创建时间，单位：秒</p>
         :type CreateTime: int
-        :param _Type: 固件任务升级类型
+        :param _Type: <p>固件任务升级类型</p>
         :type Type: int
-        :param _ProductName: 产品名称
+        :param _ProductName: <p>产品名称</p>
         :type ProductName: str
-        :param _UpgradeMode: 固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
+        :param _UpgradeMode: <p>固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）</p>
         :type UpgradeMode: str
-        :param _ProductId: 产品ID
+        :param _ProductId: <p>产品ID</p>
         :type ProductId: str
-        :param _OriginalVersion: 原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
+        :param _OriginalVersion: <p>原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回</p>
         :type OriginalVersion: str
-        :param _CreateUserId: 创建账号ID
+        :param _CreateUserId: <p>创建账号ID</p>
         :type CreateUserId: int
-        :param _CreatorNickName: 创建账号ID昵称
+        :param _CreatorNickName: <p>创建账号ID昵称</p>
         :type CreatorNickName: str
-        :param _DelayTime: 延迟时间
+        :param _DelayTime: <p>延迟时间</p>
         :type DelayTime: int
-        :param _TimeoutInterval: 超时时间
+        :param _TimeoutInterval: <p>超时时间</p>
         :type TimeoutInterval: int
-        :param _UpgradeMethod: 静默升级or用户确认升级
+        :param _UpgradeMethod: <p>静默升级or用户确认升级</p>
         :type UpgradeMethod: int
-        :param _MaxRetryNum: 最大重试次数
+        :param _MaxRetryNum: <p>最大重试次数</p>
         :type MaxRetryNum: int
-        :param _FwType: 固件类型
+        :param _FwType: <p>固件类型</p>
         :type FwType: str
-        :param _RetryInterval: 重试间隔时间单位min
+        :param _RetryInterval: <p>重试间隔时间单位min</p>
         :type RetryInterval: int
-        :param _OverrideMode: 是否覆盖任务
+        :param _OverrideMode: <p>是否覆盖任务</p>
         :type OverrideMode: int
-        :param _TaskUserDefine: 用户自定义消息
+        :param _TaskUserDefine: <p>用户自定义消息</p>
         :type TaskUserDefine: str
-        :param _RateLimit: 每分钟发送设备量
+        :param _RateLimit: <p>每分钟发送设备量</p>
         :type RateLimit: int
+        :param _EndTime: <p>任务截止时间，Unix 时间戳（单位：秒）。传入 0 或不传表示不设截止，任务按原重试/超时策略执行完毕。 </p><p>单位：秒</p>
+        :type EndTime: int
+        :param _StartTime: <p>任务开始调度时间，Unix 时间戳（单位：秒）。传入 0 或不传时任务立即创建执行，与 DelayTime 同时传入时，本参数优先生效。 </p><p>单位：秒</p>
+        :type StartTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -18455,11 +18723,13 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._OverrideMode = None
         self._TaskUserDefine = None
         self._RateLimit = None
+        self._EndTime = None
+        self._StartTime = None
         self._RequestId = None
 
     @property
     def TaskId(self):
-        r"""固件任务ID
+        r"""<p>固件任务ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -18470,7 +18740,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""固件任务状态
+        r"""<p>固件任务状态</p>
         :rtype: int
         """
         return self._Status
@@ -18481,7 +18751,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""固件任务创建时间，单位：秒
+        r"""<p>固件任务创建时间，单位：秒</p>
         :rtype: int
         """
         return self._CreateTime
@@ -18492,7 +18762,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""固件任务升级类型
+        r"""<p>固件任务升级类型</p>
         :rtype: int
         """
         return self._Type
@@ -18503,7 +18773,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""产品名称
+        r"""<p>产品名称</p>
         :rtype: str
         """
         return self._ProductName
@@ -18514,7 +18784,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def UpgradeMode(self):
-        r"""固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）
+        r"""<p>固件任务升级模式。originalVersion（按版本号升级）、filename（提交文件升级）、devicenames（按设备名称升级）</p>
         :rtype: str
         """
         return self._UpgradeMode
@@ -18525,7 +18795,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def ProductId(self):
-        r"""产品ID
+        r"""<p>产品ID</p>
         :rtype: str
         """
         return self._ProductId
@@ -18536,7 +18806,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def OriginalVersion(self):
-        r"""原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回
+        r"""<p>原始固件版本号，在UpgradeMode是originalVersion升级模式下会返回</p>
         :rtype: str
         """
         return self._OriginalVersion
@@ -18547,7 +18817,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def CreateUserId(self):
-        r"""创建账号ID
+        r"""<p>创建账号ID</p>
         :rtype: int
         """
         return self._CreateUserId
@@ -18558,7 +18828,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def CreatorNickName(self):
-        r"""创建账号ID昵称
+        r"""<p>创建账号ID昵称</p>
         :rtype: str
         """
         return self._CreatorNickName
@@ -18569,7 +18839,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""延迟时间
+        r"""<p>延迟时间</p>
         :rtype: int
         """
         return self._DelayTime
@@ -18580,7 +18850,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def TimeoutInterval(self):
-        r"""超时时间
+        r"""<p>超时时间</p>
         :rtype: int
         """
         return self._TimeoutInterval
@@ -18591,7 +18861,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def UpgradeMethod(self):
-        r"""静默升级or用户确认升级
+        r"""<p>静默升级or用户确认升级</p>
         :rtype: int
         """
         return self._UpgradeMethod
@@ -18602,7 +18872,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def MaxRetryNum(self):
-        r"""最大重试次数
+        r"""<p>最大重试次数</p>
         :rtype: int
         """
         return self._MaxRetryNum
@@ -18613,7 +18883,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def FwType(self):
-        r"""固件类型
+        r"""<p>固件类型</p>
         :rtype: str
         """
         return self._FwType
@@ -18624,7 +18894,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def RetryInterval(self):
-        r"""重试间隔时间单位min
+        r"""<p>重试间隔时间单位min</p>
         :rtype: int
         """
         return self._RetryInterval
@@ -18635,7 +18905,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def OverrideMode(self):
-        r"""是否覆盖任务
+        r"""<p>是否覆盖任务</p>
         :rtype: int
         """
         return self._OverrideMode
@@ -18646,7 +18916,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def TaskUserDefine(self):
-        r"""用户自定义消息
+        r"""<p>用户自定义消息</p>
         :rtype: str
         """
         return self._TaskUserDefine
@@ -18657,7 +18927,7 @@ class DescribeFirmwareTaskResponse(AbstractModel):
 
     @property
     def RateLimit(self):
-        r"""每分钟发送设备量
+        r"""<p>每分钟发送设备量</p>
         :rtype: int
         """
         return self._RateLimit
@@ -18665,6 +18935,28 @@ class DescribeFirmwareTaskResponse(AbstractModel):
     @RateLimit.setter
     def RateLimit(self, RateLimit):
         self._RateLimit = RateLimit
+
+    @property
+    def EndTime(self):
+        r"""<p>任务截止时间，Unix 时间戳（单位：秒）。传入 0 或不传表示不设截止，任务按原重试/超时策略执行完毕。 </p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartTime(self):
+        r"""<p>任务开始调度时间，Unix 时间戳（单位：秒）。传入 0 或不传时任务立即创建执行，与 DelayTime 同时传入时，本参数优先生效。 </p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
 
     @property
     def RequestId(self):
@@ -18698,6 +18990,8 @@ class DescribeFirmwareTaskResponse(AbstractModel):
         self._OverrideMode = params.get("OverrideMode")
         self._TaskUserDefine = params.get("TaskUserDefine")
         self._RateLimit = params.get("RateLimit")
+        self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -24789,6 +25083,87 @@ class DevicePositionItem(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._Longitude = params.get("Longitude")
         self._Latitude = params.get("Latitude")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceResult(AbstractModel):
+    r"""批处理发布消息请求单台设备下发结果(仅失败情况下显示具体情况)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: <p>设备名称</p>
+        :type DeviceName: str
+        :param _Status: <p>设备状态</p><p>枚举值：</p><ul><li>SUCCESS： 下发成功    </li><li>PENDING： 存入离线存储</li><li>OFFLINE： 设备离线</li><li>FAILED： 下发失败</li><li>TIMEOUT： 下发超时</li></ul>
+        :type Status: str
+        :param _ErrCode: <p>错误码</p>
+        :type ErrCode: int
+        :param _ErrMsg: <p>错误信息</p>
+        :type ErrMsg: str
+        """
+        self._DeviceName = None
+        self._Status = None
+        self._ErrCode = None
+        self._ErrMsg = None
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Status(self):
+        r"""<p>设备状态</p><p>枚举值：</p><ul><li>SUCCESS： 下发成功    </li><li>PENDING： 存入离线存储</li><li>OFFLINE： 设备离线</li><li>FAILED： 下发失败</li><li>TIMEOUT： 下发超时</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrMsg = params.get("ErrMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43909,6 +44284,10 @@ class SeeComprehensionConfig(AbstractModel):
         :type EnableFaceDetection: bool
         :param _InputRotateDegree: <p>画面旋转角度</p><p>枚举值：</p><ul><li>0： 不旋转</li><li>90： 顺时针旋转90度</li><li>-90： 逆时针旋转90度</li><li>180： 旋转180度</li></ul><p>默认值：0</p>
         :type InputRotateDegree: int
+        :param _EnableExtendedOutput: <p>开启扩展字段输出</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul><p>默认值：false</p>
+        :type EnableExtendedOutput: bool
+        :param _ExtendedOutputPrompts: <p>自定义扩展输出的提示词（目前仅支持覆盖 custom）</p>
+        :type ExtendedOutputPrompts: list of SeeExtendedOutputPrompt
         """
         self._DetectTypes = None
         self._EnableSearch = None
@@ -43921,6 +44300,8 @@ class SeeComprehensionConfig(AbstractModel):
         self._SummaryPrompt = None
         self._EnableFaceDetection = None
         self._InputRotateDegree = None
+        self._EnableExtendedOutput = None
+        self._ExtendedOutputPrompts = None
 
     @property
     def DetectTypes(self):
@@ -44043,6 +44424,28 @@ class SeeComprehensionConfig(AbstractModel):
     def InputRotateDegree(self, InputRotateDegree):
         self._InputRotateDegree = InputRotateDegree
 
+    @property
+    def EnableExtendedOutput(self):
+        r"""<p>开启扩展字段输出</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableExtendedOutput
+
+    @EnableExtendedOutput.setter
+    def EnableExtendedOutput(self, EnableExtendedOutput):
+        self._EnableExtendedOutput = EnableExtendedOutput
+
+    @property
+    def ExtendedOutputPrompts(self):
+        r"""<p>自定义扩展输出的提示词（目前仅支持覆盖 custom）</p>
+        :rtype: list of SeeExtendedOutputPrompt
+        """
+        return self._ExtendedOutputPrompts
+
+    @ExtendedOutputPrompts.setter
+    def ExtendedOutputPrompts(self, ExtendedOutputPrompts):
+        self._ExtendedOutputPrompts = ExtendedOutputPrompts
+
 
     def _deserialize(self, params):
         self._DetectTypes = params.get("DetectTypes")
@@ -44061,6 +44464,13 @@ class SeeComprehensionConfig(AbstractModel):
         self._SummaryPrompt = params.get("SummaryPrompt")
         self._EnableFaceDetection = params.get("EnableFaceDetection")
         self._InputRotateDegree = params.get("InputRotateDegree")
+        self._EnableExtendedOutput = params.get("EnableExtendedOutput")
+        if params.get("ExtendedOutputPrompts") is not None:
+            self._ExtendedOutputPrompts = []
+            for item in params.get("ExtendedOutputPrompts"):
+                obj = SeeExtendedOutputPrompt()
+                obj._deserialize(item)
+                self._ExtendedOutputPrompts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44090,6 +44500,8 @@ class SeeComprehensionResult(AbstractModel):
         :type ErrorMsg: str
         :param _Keywords: <p>生成的关键词列表</p><p>当配置 <code>EnableKeywords</code> 为 true 时返回</p>
         :type Keywords: list of str
+        :param _ExtendedOutput: <p>模型输出的扩展字段文本</p>
+        :type ExtendedOutput: list of SeeExtendedOutput
         """
         self._DetectedClassifications = None
         self._Summary = None
@@ -44097,6 +44509,7 @@ class SeeComprehensionResult(AbstractModel):
         self._ErrorCode = None
         self._ErrorMsg = None
         self._Keywords = None
+        self._ExtendedOutput = None
 
     @property
     def DetectedClassifications(self):
@@ -44164,6 +44577,17 @@ class SeeComprehensionResult(AbstractModel):
     def Keywords(self, Keywords):
         self._Keywords = Keywords
 
+    @property
+    def ExtendedOutput(self):
+        r"""<p>模型输出的扩展字段文本</p>
+        :rtype: list of SeeExtendedOutput
+        """
+        return self._ExtendedOutput
+
+    @ExtendedOutput.setter
+    def ExtendedOutput(self, ExtendedOutput):
+        self._ExtendedOutput = ExtendedOutput
+
 
     def _deserialize(self, params):
         self._DetectedClassifications = params.get("DetectedClassifications")
@@ -44172,6 +44596,12 @@ class SeeComprehensionResult(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._ErrorMsg = params.get("ErrorMsg")
         self._Keywords = params.get("Keywords")
+        if params.get("ExtendedOutput") is not None:
+            self._ExtendedOutput = []
+            for item in params.get("ExtendedOutput"):
+                obj = SeeExtendedOutput()
+                obj._deserialize(item)
+                self._ExtendedOutput.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44580,23 +45010,26 @@ class SeeDetectContinuousResult(AbstractModel):
 
 
 class SeeEventIdFilterConfig(AbstractModel):
-    r"""TWeSee 处理云存事件 EventId 的过滤规则配置
+    r"""TWeSee 处理云存事件的触发条件配置
 
     """
 
     def __init__(self):
         r"""
-        :param _IncludeOnly: 包含的云存事件 ID 集合
+        :param _IncludeOnly: <p>包含的云存事件 ID 集合</p>
         :type IncludeOnly: list of str
-        :param _Exclude: 排除的云存事件 ID 集合
+        :param _Exclude: <p>排除的云存事件 ID 集合</p>
         :type Exclude: list of str
+        :param _TriggerAt: <p>触发分析的时机</p><p>枚举值：</p><ul><li>end： 在云存事件结束时触发视频理解</li><li>start： 在云存事件开始时触发视频理解</li><li>image_and_video： 上传云存事件缩略图后触发图片理解，并且在云存事件结束时触发视频理解</li></ul><p>默认值：end</p>
+        :type TriggerAt: str
         """
         self._IncludeOnly = None
         self._Exclude = None
+        self._TriggerAt = None
 
     @property
     def IncludeOnly(self):
-        r"""包含的云存事件 ID 集合
+        r"""<p>包含的云存事件 ID 集合</p>
         :rtype: list of str
         """
         return self._IncludeOnly
@@ -44607,7 +45040,7 @@ class SeeEventIdFilterConfig(AbstractModel):
 
     @property
     def Exclude(self):
-        r"""排除的云存事件 ID 集合
+        r"""<p>排除的云存事件 ID 集合</p>
         :rtype: list of str
         """
         return self._Exclude
@@ -44616,10 +45049,124 @@ class SeeEventIdFilterConfig(AbstractModel):
     def Exclude(self, Exclude):
         self._Exclude = Exclude
 
+    @property
+    def TriggerAt(self):
+        r"""<p>触发分析的时机</p><p>枚举值：</p><ul><li>end： 在云存事件结束时触发视频理解</li><li>start： 在云存事件开始时触发视频理解</li><li>image_and_video： 上传云存事件缩略图后触发图片理解，并且在云存事件结束时触发视频理解</li></ul><p>默认值：end</p>
+        :rtype: str
+        """
+        return self._TriggerAt
+
+    @TriggerAt.setter
+    def TriggerAt(self, TriggerAt):
+        self._TriggerAt = TriggerAt
+
 
     def _deserialize(self, params):
         self._IncludeOnly = params.get("IncludeOnly")
         self._Exclude = params.get("Exclude")
+        self._TriggerAt = params.get("TriggerAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeExtendedOutput(AbstractModel):
+    r"""TWeSee 扩展输出字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>提示词标识符</p><p>枚举值：</p><ul><li>overview： 内容概述</li><li>scene： 场景关键词</li><li>events： 事件关键词</li><li>objects： 物品关键词</li></ul>
+        :type Key: str
+        :param _Output: <p>模型输出的扩展内容文本</p>
+        :type Output: str
+        """
+        self._Key = None
+        self._Output = None
+
+    @property
+    def Key(self):
+        r"""<p>提示词标识符</p><p>枚举值：</p><ul><li>overview： 内容概述</li><li>scene： 场景关键词</li><li>events： 事件关键词</li><li>objects： 物品关键词</li></ul>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Output(self):
+        r"""<p>模型输出的扩展内容文本</p>
+        :rtype: str
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Output = params.get("Output")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeExtendedOutputPrompt(AbstractModel):
+    r"""TWeSee 扩展输出提示词
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>提示词标识符</p><p>枚举值：</p><ul><li>custom： 自定义</li></ul>
+        :type Key: str
+        :param _Prompt: <p>提示词内容</p>
+        :type Prompt: str
+        """
+        self._Key = None
+        self._Prompt = None
+
+    @property
+    def Key(self):
+        r"""<p>提示词标识符</p><p>枚举值：</p><ul><li>custom： 自定义</li></ul>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Prompt(self):
+        r"""<p>提示词内容</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Prompt = params.get("Prompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

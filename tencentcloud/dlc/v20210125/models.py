@@ -3166,6 +3166,117 @@ class AttachWorkGroupPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Audit(AbstractModel):
+    r"""tcc 审计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Creator: <p>创建者</p>
+        :type Creator: str
+        :param _LastModifier: <p>最后修改者</p>
+        :type LastModifier: str
+        :param _CreatedAt: <p>创建时间戳</p>
+        :type CreatedAt: int
+        :param _LastModifiedAt: <p>最后修改时间戳</p>
+        :type LastModifiedAt: int
+        :param _LastModifiedTime: <p>最后修改时间（已废弃）</p><p>参数格式：2024-11-01 11:01:01</p>
+        :type LastModifiedTime: str
+        :param _CreatedTime: <p>创建时间（已废弃）</p><p>参数格式：2024-11-01 11:01:01</p>
+        :type CreatedTime: str
+        """
+        self._Creator = None
+        self._LastModifier = None
+        self._CreatedAt = None
+        self._LastModifiedAt = None
+        self._LastModifiedTime = None
+        self._CreatedTime = None
+
+    @property
+    def Creator(self):
+        r"""<p>创建者</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def LastModifier(self):
+        r"""<p>最后修改者</p>
+        :rtype: str
+        """
+        return self._LastModifier
+
+    @LastModifier.setter
+    def LastModifier(self, LastModifier):
+        self._LastModifier = LastModifier
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间戳</p>
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def LastModifiedAt(self):
+        r"""<p>最后修改时间戳</p>
+        :rtype: int
+        """
+        return self._LastModifiedAt
+
+    @LastModifiedAt.setter
+    def LastModifiedAt(self, LastModifiedAt):
+        self._LastModifiedAt = LastModifiedAt
+
+    @property
+    def LastModifiedTime(self):
+        r"""<p>最后修改时间（已废弃）</p><p>参数格式：2024-11-01 11:01:01</p>
+        :rtype: str
+        """
+        return self._LastModifiedTime
+
+    @LastModifiedTime.setter
+    def LastModifiedTime(self, LastModifiedTime):
+        self._LastModifiedTime = LastModifiedTime
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间（已废弃）</p><p>参数格式：2024-11-01 11:01:01</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+
+    def _deserialize(self, params):
+        self._Creator = params.get("Creator")
+        self._LastModifier = params.get("LastModifier")
+        self._CreatedAt = params.get("CreatedAt")
+        self._LastModifiedAt = params.get("LastModifiedAt")
+        self._LastModifiedTime = params.get("LastModifiedTime")
+        self._CreatedTime = params.get("CreatedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchSQLCostInfo(AbstractModel):
     r"""spark session batch SQL的消耗信息
 
@@ -4629,6 +4740,57 @@ class BindWorkGroupsToUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BucketPartitioning(AbstractModel):
+    r"""tcc BucketPartitioning定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldNames: <p>分桶字段</p>
+        :type FieldNames: list of str
+        :param _NumBuckets: <p>分桶数</p>
+        :type NumBuckets: int
+        """
+        self._FieldNames = None
+        self._NumBuckets = None
+
+    @property
+    def FieldNames(self):
+        r"""<p>分桶字段</p>
+        :rtype: list of str
+        """
+        return self._FieldNames
+
+    @FieldNames.setter
+    def FieldNames(self, FieldNames):
+        self._FieldNames = FieldNames
+
+    @property
+    def NumBuckets(self):
+        r"""<p>分桶数</p>
+        :rtype: int
+        """
+        return self._NumBuckets
+
+    @NumBuckets.setter
+    def NumBuckets(self, NumBuckets):
+        self._NumBuckets = NumBuckets
+
+
+    def _deserialize(self, params):
+        self._FieldNames = params.get("FieldNames")
+        self._NumBuckets = params.get("NumBuckets")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CHDFSProductVpcInfo(AbstractModel):
     r"""chdfs产品vpc信息
 
@@ -5409,6 +5571,454 @@ class CancelTrainingJobInstanceResponse(AbstractModel):
             self._Instance = TrainingJobInstance()
             self._Instance._deserialize(params.get("Instance"))
         self._RequestId = params.get("RequestId")
+
+
+class CatalogConfig(AbstractModel):
+    r"""数据目录配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据目录唯一 ID</p>
+        :type Id: str
+        :param _Name: <p>数据目录名字</p>
+        :type Name: str
+        :param _Type: <p>数据目录类型</p><p>枚举值：</p><ul><li>LAKEHOUSE： LAKEHOUSE类型</li></ul>
+        :type Type: str
+        :param _Comment: <p>数据目录描述信息</p>
+        :type Comment: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>2： 连接成功</li></ul>
+        :type Status: int
+        :param _Properties: <p>数据目录属性</p>
+        :type Properties: list of KVPair
+        :param _Connection: <p>连接信息</p>
+        :type Connection: :class:`tencentcloud.dlc.v20210125.models.ConnectionConfig`
+        :param _Operator: <p>操作人 uin</p>
+        :type Operator: str
+        :param _Message: <p>连接日志</p>
+        :type Message: str
+        :param _Audit: <p>审计信息</p>
+        :type Audit: :class:`tencentcloud.dlc.v20210125.models.Audit`
+        :param _CreateTime: <p>创建时间（已废弃）</p><p>参数格式：2024-01-01 12:00:00</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间（已废弃）</p><p>参数格式：2024-01-01 12:00:00</p>
+        :type UpdateTime: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._Comment = None
+        self._Status = None
+        self._Properties = None
+        self._Connection = None
+        self._Operator = None
+        self._Message = None
+        self._Audit = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        r"""<p>数据目录唯一 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>数据目录名字</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>数据目录类型</p><p>枚举值：</p><ul><li>LAKEHOUSE： LAKEHOUSE类型</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Comment(self):
+        r"""<p>数据目录描述信息</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>2： 连接成功</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Properties(self):
+        r"""<p>数据目录属性</p>
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Connection(self):
+        r"""<p>连接信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ConnectionConfig`
+        """
+        return self._Connection
+
+    @Connection.setter
+    def Connection(self, Connection):
+        self._Connection = Connection
+
+    @property
+    def Operator(self):
+        r"""<p>操作人 uin</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Message(self):
+        r"""<p>连接日志</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Audit(self):
+        r"""<p>审计信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（已废弃）</p><p>参数格式：2024-01-01 12:00:00</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（已废弃）</p><p>参数格式：2024-01-01 12:00:00</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Comment = params.get("Comment")
+        self._Status = params.get("Status")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("Connection") is not None:
+            self._Connection = ConnectionConfig()
+            self._Connection._deserialize(params.get("Connection"))
+        self._Operator = params.get("Operator")
+        self._Message = params.get("Message")
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CatalogTaleInfo(AbstractModel):
+    r"""tcc TableInfo定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>表名称</p>
+        :type Name: str
+        :param _Comment: <p>描述</p>
+        :type Comment: str
+        :param _Columns: <p>字段信息</p>
+        :type Columns: list of ColumnInfo
+        :param _Properties: <p>属性值</p>
+        :type Properties: list of KVPair
+        :param _Partitioning: <p>分区</p>
+        :type Partitioning: list of Partitioning
+        :param _Indexes: <p>索引</p>
+        :type Indexes: list of IndexInfo
+        :param _Audit: <p>编辑者/审计信息</p>
+        :type Audit: :class:`tencentcloud.dlc.v20210125.models.Audit`
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>数据库名称</p>
+        :type SchemaName: str
+        :param _TableFormat: <p>表格式</p>
+        :type TableFormat: str
+        :param _FormatType: <p>表格式类型</p><p>枚举值：</p><ul><li>v2： TcIceberg v2版本</li></ul>
+        :type FormatType: str
+        :param _TableType: <p>表类型</p><p>枚举值：</p><ul><li>Managed： 内部表</li></ul>
+        :type TableType: str
+        :param _TableMode: <p>场景类型</p><p>枚举值：</p><ul><li>REALTIME： 实时类型</li></ul>
+        :type TableMode: str
+        """
+        self._Name = None
+        self._Comment = None
+        self._Columns = None
+        self._Properties = None
+        self._Partitioning = None
+        self._Indexes = None
+        self._Audit = None
+        self._CatalogName = None
+        self._SchemaName = None
+        self._TableFormat = None
+        self._FormatType = None
+        self._TableType = None
+        self._TableMode = None
+
+    @property
+    def Name(self):
+        r"""<p>表名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Columns(self):
+        r"""<p>字段信息</p>
+        :rtype: list of ColumnInfo
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Properties(self):
+        r"""<p>属性值</p>
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Partitioning(self):
+        r"""<p>分区</p>
+        :rtype: list of Partitioning
+        """
+        return self._Partitioning
+
+    @Partitioning.setter
+    def Partitioning(self, Partitioning):
+        self._Partitioning = Partitioning
+
+    @property
+    def Indexes(self):
+        r"""<p>索引</p>
+        :rtype: list of IndexInfo
+        """
+        return self._Indexes
+
+    @Indexes.setter
+    def Indexes(self, Indexes):
+        self._Indexes = Indexes
+
+    @property
+    def Audit(self):
+        r"""<p>编辑者/审计信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>数据库名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableFormat(self):
+        r"""<p>表格式</p>
+        :rtype: str
+        """
+        return self._TableFormat
+
+    @TableFormat.setter
+    def TableFormat(self, TableFormat):
+        self._TableFormat = TableFormat
+
+    @property
+    def FormatType(self):
+        r"""<p>表格式类型</p><p>枚举值：</p><ul><li>v2： TcIceberg v2版本</li></ul>
+        :rtype: str
+        """
+        return self._FormatType
+
+    @FormatType.setter
+    def FormatType(self, FormatType):
+        self._FormatType = FormatType
+
+    @property
+    def TableType(self):
+        r"""<p>表类型</p><p>枚举值：</p><ul><li>Managed： 内部表</li></ul>
+        :rtype: str
+        """
+        return self._TableType
+
+    @TableType.setter
+    def TableType(self, TableType):
+        self._TableType = TableType
+
+    @property
+    def TableMode(self):
+        r"""<p>场景类型</p><p>枚举值：</p><ul><li>REALTIME： 实时类型</li></ul>
+        :rtype: str
+        """
+        return self._TableMode
+
+    @TableMode.setter
+    def TableMode(self, TableMode):
+        self._TableMode = TableMode
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = ColumnInfo()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("Partitioning") is not None:
+            self._Partitioning = []
+            for item in params.get("Partitioning"):
+                obj = Partitioning()
+                obj._deserialize(item)
+                self._Partitioning.append(obj)
+        if params.get("Indexes") is not None:
+            self._Indexes = []
+            for item in params.get("Indexes"):
+                obj = IndexInfo()
+                obj._deserialize(item)
+                self._Indexes.append(obj)
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableFormat = params.get("TableFormat")
+        self._FormatType = params.get("FormatType")
+        self._TableType = params.get("TableType")
+        self._TableMode = params.get("TableMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CheckApiKeyNameRequest(AbstractModel):
@@ -6945,6 +7555,57 @@ class CloudTag(AbstractModel):
         
 
 
+class ClsLogEntry(AbstractModel):
+    r"""日志条目。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: <p>Unix 毫秒时间戳。</p>
+        :type Time: int
+        :param _LogJson: <p>日志 JSON 字符串。</p>
+        :type LogJson: str
+        """
+        self._Time = None
+        self._LogJson = None
+
+    @property
+    def Time(self):
+        r"""<p>Unix 毫秒时间戳。</p>
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def LogJson(self):
+        r"""<p>日志 JSON 字符串。</p>
+        :rtype: str
+        """
+        return self._LogJson
+
+    @LogJson.setter
+    def LogJson(self, LogJson):
+        self._LogJson = LogJson
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._LogJson = params.get("LogJson")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClsTopicItem(AbstractModel):
     r"""CLS 日志主题条目
 
@@ -7672,6 +8333,117 @@ class Column(AbstractModel):
         
 
 
+class ColumnInfo(AbstractModel):
+    r"""tcc table列定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>字段名</p>
+        :type Name: str
+        :param _Type: <p>字段类型</p><p>枚举值：</p><ul><li>integer： 数值类型</li></ul>
+        :type Type: str
+        :param _Comment: <p>字段描述</p>
+        :type Comment: str
+        :param _FieldSetting: <p>字段设置（已废弃）</p>
+        :type FieldSetting: str
+        :param _IsPrimaryKey: <p>是否为主键（已废弃）</p><p>枚举值：</p><ul><li>true： 是主键</li></ul>
+        :type IsPrimaryKey: bool
+        :param _TypeText: <p>字段类型 sqlType 格式</p>
+        :type TypeText: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Comment = None
+        self._FieldSetting = None
+        self._IsPrimaryKey = None
+        self._TypeText = None
+
+    @property
+    def Name(self):
+        r"""<p>字段名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>字段类型</p><p>枚举值：</p><ul><li>integer： 数值类型</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Comment(self):
+        r"""<p>字段描述</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def FieldSetting(self):
+        r"""<p>字段设置（已废弃）</p>
+        :rtype: str
+        """
+        return self._FieldSetting
+
+    @FieldSetting.setter
+    def FieldSetting(self, FieldSetting):
+        self._FieldSetting = FieldSetting
+
+    @property
+    def IsPrimaryKey(self):
+        r"""<p>是否为主键（已废弃）</p><p>枚举值：</p><ul><li>true： 是主键</li></ul>
+        :rtype: bool
+        """
+        return self._IsPrimaryKey
+
+    @IsPrimaryKey.setter
+    def IsPrimaryKey(self, IsPrimaryKey):
+        self._IsPrimaryKey = IsPrimaryKey
+
+    @property
+    def TypeText(self):
+        r"""<p>字段类型 sqlType 格式</p>
+        :rtype: str
+        """
+        return self._TypeText
+
+    @TypeText.setter
+    def TypeText(self, TypeText):
+        self._TypeText = TypeText
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Comment = params.get("Comment")
+        self._FieldSetting = params.get("FieldSetting")
+        self._IsPrimaryKey = params.get("IsPrimaryKey")
+        self._TypeText = params.get("TypeText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommonMetrics(AbstractModel):
     r"""任务公共指标
 
@@ -7870,6 +8642,146 @@ class CommonMetrics(AbstractModel):
         self._AffectedRows = params.get("AffectedRows")
         self._ProcessedBytes = params.get("ProcessedBytes")
         self._ProcessedRows = params.get("ProcessedRows")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConnectionConfig(AbstractModel):
+    r"""tcc链接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MysqlConnection: <p>mysql数据源连接信息</p>
+        :type MysqlConnection: :class:`tencentcloud.dlc.v20210125.models.MysqlConnection`
+        :param _EmrHiveConnection: <p>hive数据源连接信息</p>
+        :type EmrHiveConnection: :class:`tencentcloud.dlc.v20210125.models.HiveConnection`
+        :param _TCHouseDConnection: <p>doris数据源连接信息</p>
+        :type TCHouseDConnection: :class:`tencentcloud.dlc.v20210125.models.DorisConnection`
+        :param _VolumeConnection: <p>数据卷连接信息</p>
+        :type VolumeConnection: :class:`tencentcloud.dlc.v20210125.models.VolumeConnection`
+        :param _LakeHouseConnection: <p>lakehouse连接信息</p>
+        :type LakeHouseConnection: :class:`tencentcloud.dlc.v20210125.models.LakeHouseConnection`
+        :param _PostgreSQLConnection: <p>PostgreSQL数据源连接信息</p>
+        :type PostgreSQLConnection: :class:`tencentcloud.dlc.v20210125.models.PostgreSQLConnection`
+        :param _DlcConnection: <p>dlc数据源连接信息</p>
+        :type DlcConnection: :class:`tencentcloud.dlc.v20210125.models.DlcConnection`
+        """
+        self._MysqlConnection = None
+        self._EmrHiveConnection = None
+        self._TCHouseDConnection = None
+        self._VolumeConnection = None
+        self._LakeHouseConnection = None
+        self._PostgreSQLConnection = None
+        self._DlcConnection = None
+
+    @property
+    def MysqlConnection(self):
+        r"""<p>mysql数据源连接信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.MysqlConnection`
+        """
+        return self._MysqlConnection
+
+    @MysqlConnection.setter
+    def MysqlConnection(self, MysqlConnection):
+        self._MysqlConnection = MysqlConnection
+
+    @property
+    def EmrHiveConnection(self):
+        r"""<p>hive数据源连接信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.HiveConnection`
+        """
+        return self._EmrHiveConnection
+
+    @EmrHiveConnection.setter
+    def EmrHiveConnection(self, EmrHiveConnection):
+        self._EmrHiveConnection = EmrHiveConnection
+
+    @property
+    def TCHouseDConnection(self):
+        r"""<p>doris数据源连接信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DorisConnection`
+        """
+        return self._TCHouseDConnection
+
+    @TCHouseDConnection.setter
+    def TCHouseDConnection(self, TCHouseDConnection):
+        self._TCHouseDConnection = TCHouseDConnection
+
+    @property
+    def VolumeConnection(self):
+        r"""<p>数据卷连接信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.VolumeConnection`
+        """
+        return self._VolumeConnection
+
+    @VolumeConnection.setter
+    def VolumeConnection(self, VolumeConnection):
+        self._VolumeConnection = VolumeConnection
+
+    @property
+    def LakeHouseConnection(self):
+        r"""<p>lakehouse连接信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.LakeHouseConnection`
+        """
+        return self._LakeHouseConnection
+
+    @LakeHouseConnection.setter
+    def LakeHouseConnection(self, LakeHouseConnection):
+        self._LakeHouseConnection = LakeHouseConnection
+
+    @property
+    def PostgreSQLConnection(self):
+        r"""<p>PostgreSQL数据源连接信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PostgreSQLConnection`
+        """
+        return self._PostgreSQLConnection
+
+    @PostgreSQLConnection.setter
+    def PostgreSQLConnection(self, PostgreSQLConnection):
+        self._PostgreSQLConnection = PostgreSQLConnection
+
+    @property
+    def DlcConnection(self):
+        r"""<p>dlc数据源连接信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DlcConnection`
+        """
+        return self._DlcConnection
+
+    @DlcConnection.setter
+    def DlcConnection(self, DlcConnection):
+        self._DlcConnection = DlcConnection
+
+
+    def _deserialize(self, params):
+        if params.get("MysqlConnection") is not None:
+            self._MysqlConnection = MysqlConnection()
+            self._MysqlConnection._deserialize(params.get("MysqlConnection"))
+        if params.get("EmrHiveConnection") is not None:
+            self._EmrHiveConnection = HiveConnection()
+            self._EmrHiveConnection._deserialize(params.get("EmrHiveConnection"))
+        if params.get("TCHouseDConnection") is not None:
+            self._TCHouseDConnection = DorisConnection()
+            self._TCHouseDConnection._deserialize(params.get("TCHouseDConnection"))
+        if params.get("VolumeConnection") is not None:
+            self._VolumeConnection = VolumeConnection()
+            self._VolumeConnection._deserialize(params.get("VolumeConnection"))
+        if params.get("LakeHouseConnection") is not None:
+            self._LakeHouseConnection = LakeHouseConnection()
+            self._LakeHouseConnection._deserialize(params.get("LakeHouseConnection"))
+        if params.get("PostgreSQLConnection") is not None:
+            self._PostgreSQLConnection = PostgreSQLConnection()
+            self._PostgreSQLConnection._deserialize(params.get("PostgreSQLConnection"))
+        if params.get("DlcConnection") is not None:
+            self._DlcConnection = DlcConnection()
+            self._DlcConnection._deserialize(params.get("DlcConnection"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13194,6 +14106,628 @@ class CreateInternalTableResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Execution = params.get("Execution")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateJobDefinitionRequest(AbstractModel):
+    r"""CreateJobDefinition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>作业定义名称。必填，trim 后非空。</p>
+        :type Name: str
+        :param _Description: <p>作业定义描述。</p>
+        :type Description: str
+        :param _MajorType: <p>引擎大类，非必传，缺省 SPARK；当前仅支持 SPARK。</p>
+        :type MajorType: str
+        :param _MinorType: <p>作业子类型，SPARK_SQL / SPARK_BATCH / SPARK_STREAM，必填；决定 Entrypoint 字段的校验规则。</p>
+        :type MinorType: str
+        :param _CheckpointLocation: <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint）。MinorType=SPARK_STREAM 时必填；同一作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :type CheckpointLocation: str
+        :param _PartitionCode: <p>资源分区代码，仅 RunMode=JOB 可传（QueueName 非空时必填）；RunMode=WAREHOUSE 时禁止传（被仓库反查值覆盖）。</p>
+        :type PartitionCode: str
+        :param _QueueName: <p>队列名称，仅 RunMode=JOB 可传且须与 PartitionCode 成对；RunMode=WAREHOUSE 时禁止传。</p>
+        :type QueueName: str
+        :param _RuntimeCode: <p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。RunMode=JOB 新建时必填（无基座继承语义）；克隆场景可省略（继承源定义快照）；RunMode=WAREHOUSE 时忽略。</p>
+        :type RuntimeCode: str
+        :param _SysCatalogVersion: <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型）。RunMode=JOB 新建时条件必填：未传时若可用（enabled）SysCatalog 唯一则自动选中，多个/零个报错；克隆场景可省略（继承源定义快照）；RunMode=WAREHOUSE 时禁止传。</p>
+        :type SysCatalogVersion: str
+        :param _CustomProperties: <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
+        :type CustomProperties: str
+        :param _EnvVars: <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+        :type EnvVars: list of KVPair
+        :param _RunMode: <p>运行模式，必填。可选值：WAREHOUSE（提交到计算仓库执行）/ JOB（按 Spec 独享资源）。两种模式的参数集严格隔离，详见各字段说明。</p>
+        :type RunMode: str
+        :param _WarehouseId: <p>计算仓库 ID。RunMode=WAREHOUSE 时必填（仓库需可启动）；RunMode=JOB 时禁止传。</p>
+        :type WarehouseId: str
+        """
+        self._Name = None
+        self._Description = None
+        self._MajorType = None
+        self._MinorType = None
+        self._CheckpointLocation = None
+        self._PartitionCode = None
+        self._QueueName = None
+        self._RuntimeCode = None
+        self._SysCatalogVersion = None
+        self._CustomProperties = None
+        self._EnvVars = None
+        self._RunMode = None
+        self._WarehouseId = None
+
+    @property
+    def Name(self):
+        r"""<p>作业定义名称。必填，trim 后非空。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>作业定义描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def MajorType(self):
+        r"""<p>引擎大类，非必传，缺省 SPARK；当前仅支持 SPARK。</p>
+        :rtype: str
+        """
+        return self._MajorType
+
+    @MajorType.setter
+    def MajorType(self, MajorType):
+        self._MajorType = MajorType
+
+    @property
+    def MinorType(self):
+        r"""<p>作业子类型，SPARK_SQL / SPARK_BATCH / SPARK_STREAM，必填；决定 Entrypoint 字段的校验规则。</p>
+        :rtype: str
+        """
+        return self._MinorType
+
+    @MinorType.setter
+    def MinorType(self, MinorType):
+        self._MinorType = MinorType
+
+    @property
+    def CheckpointLocation(self):
+        r"""<p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint）。MinorType=SPARK_STREAM 时必填；同一作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :rtype: str
+        """
+        return self._CheckpointLocation
+
+    @CheckpointLocation.setter
+    def CheckpointLocation(self, CheckpointLocation):
+        self._CheckpointLocation = CheckpointLocation
+
+    @property
+    def PartitionCode(self):
+        r"""<p>资源分区代码，仅 RunMode=JOB 可传（QueueName 非空时必填）；RunMode=WAREHOUSE 时禁止传（被仓库反查值覆盖）。</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称，仅 RunMode=JOB 可传且须与 PartitionCode 成对；RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def RuntimeCode(self):
+        r"""<p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。RunMode=JOB 新建时必填（无基座继承语义）；克隆场景可省略（继承源定义快照）；RunMode=WAREHOUSE 时忽略。</p>
+        :rtype: str
+        """
+        return self._RuntimeCode
+
+    @RuntimeCode.setter
+    def RuntimeCode(self, RuntimeCode):
+        self._RuntimeCode = RuntimeCode
+
+    @property
+    def SysCatalogVersion(self):
+        r"""<p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型）。RunMode=JOB 新建时条件必填：未传时若可用（enabled）SysCatalog 唯一则自动选中，多个/零个报错；克隆场景可省略（继承源定义快照）；RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: str
+        """
+        return self._SysCatalogVersion
+
+    @SysCatalogVersion.setter
+    def SysCatalogVersion(self, SysCatalogVersion):
+        self._SysCatalogVersion = SysCatalogVersion
+
+    @property
+    def CustomProperties(self):
+        r"""<p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
+        :rtype: str
+        """
+        return self._CustomProperties
+
+    @CustomProperties.setter
+    def CustomProperties(self, CustomProperties):
+        self._CustomProperties = CustomProperties
+
+    @property
+    def EnvVars(self):
+        r"""<p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: list of KVPair
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+    @property
+    def RunMode(self):
+        r"""<p>运行模式，必填。可选值：WAREHOUSE（提交到计算仓库执行）/ JOB（按 Spec 独享资源）。两种模式的参数集严格隔离，详见各字段说明。</p>
+        :rtype: str
+        """
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def WarehouseId(self):
+        r"""<p>计算仓库 ID。RunMode=WAREHOUSE 时必填（仓库需可启动）；RunMode=JOB 时禁止传。</p>
+        :rtype: str
+        """
+        return self._WarehouseId
+
+    @WarehouseId.setter
+    def WarehouseId(self, WarehouseId):
+        self._WarehouseId = WarehouseId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._MajorType = params.get("MajorType")
+        self._MinorType = params.get("MinorType")
+        self._CheckpointLocation = params.get("CheckpointLocation")
+        self._PartitionCode = params.get("PartitionCode")
+        self._QueueName = params.get("QueueName")
+        self._RuntimeCode = params.get("RuntimeCode")
+        self._SysCatalogVersion = params.get("SysCatalogVersion")
+        self._CustomProperties = params.get("CustomProperties")
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        self._RunMode = params.get("RunMode")
+        self._WarehouseId = params.get("WarehouseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateJobDefinitionResponse(AbstractModel):
+    r"""CreateJobDefinition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobDefinitionId: <p>作业定义唯一标识符（ID）。</p>
+        :type JobDefinitionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobDefinitionId = None
+        self._RequestId = None
+
+    @property
+    def JobDefinitionId(self):
+        r"""<p>作业定义唯一标识符（ID）。</p>
+        :rtype: str
+        """
+        return self._JobDefinitionId
+
+    @JobDefinitionId.setter
+    def JobDefinitionId(self, JobDefinitionId):
+        self._JobDefinitionId = JobDefinitionId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobDefinitionId = params.get("JobDefinitionId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateJobFromDefinitionRequest(AbstractModel):
+    r"""CreateJobFromDefinition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobDefinitionId: <p>作业定义 ID（由 CreateJobDefinition 返回）。必填。</p>
+        :type JobDefinitionId: str
+        """
+        self._JobDefinitionId = None
+
+    @property
+    def JobDefinitionId(self):
+        r"""<p>作业定义 ID（由 CreateJobDefinition 返回）。必填。</p>
+        :rtype: str
+        """
+        return self._JobDefinitionId
+
+    @JobDefinitionId.setter
+    def JobDefinitionId(self, JobDefinitionId):
+        self._JobDefinitionId = JobDefinitionId
+
+
+    def _deserialize(self, params):
+        self._JobDefinitionId = params.get("JobDefinitionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateJobFromDefinitionResponse(AbstractModel):
+    r"""CreateJobFromDefinition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>作业唯一标识符（ID）。</p>
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>作业唯一标识符（ID）。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateJobRequest(AbstractModel):
+    r"""CreateJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobName: <p>作业名称，长度 ≤256；可省略，省略时服务端回退为 JobId。</p>
+        :type JobName: str
+        :param _CheckpointLocation: <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint）。MinorType=SPARK_STREAM 时必填；同一作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :type CheckpointLocation: str
+        :param _MajorType: <p>引擎大类，非必传，缺省 SPARK；当前仅支持 SPARK。</p>
+        :type MajorType: str
+        :param _MinorType: <p>作业子类型，决定入口形态：SPARK_SQL（SQL 作业，Entrypoint.Statement 必填）/ SPARK_BATCH（批处理作业，Entrypoint.EntryFile 必填）/ SPARK_STREAM（流作业，EntryFile 与 CheckpointLocation 必填）。</p>
+        :type MinorType: str
+        :param _FlowId: <p>工作流实例关联 ID（长度 ≤64）：同一工作流/会话的多条 SQL 作业传相同 FlowId，可共享同一 Spark 会话、复用已就绪引擎。MinorType=SPARK_SQL 时必填；FlowId 非空时必须同时传 ExecutionId。WAREHOUSE 模式下 FlowId 即会话句柄（一个 FlowId 只对应一个会话）：会话过期或已销毁后须换新 FlowId，否则返回 FailedOperation.FlowIdNotExists。</p>
+        :type FlowId: str
+        :param _ExecutionId: <p>工作流内部执行标识（长度 ≤64），同一 FlowId 下每次提交须唯一（如自增序号/UUID）。用于重复提交防重：同一账号下命中未删除的同 (FlowId, ExecutionId) 作业时返回 FailedOperation.FlowExecutionConflict。FlowId 非空时必填（SPARK_SQL 因 FlowId 必填而必填）。</p>
+        :type ExecutionId: str
+        :param _RunMode: <p>运行模式，必填。WAREHOUSE / JOB.</p>
+        :type RunMode: str
+        :param _WarehouseId: <p>计算仓库 ID。RunMode=WAREHOUSE 时必填（仓库需处于 RUNNING，或 STOPPED 且 AutoStart 开启（提交后冷启动拉起））；RunMode=JOB 时必须为空。</p>
+        :type WarehouseId: str
+        :param _RuntimeCode: <p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。RunMode=JOB 时必填；RunMode=WAREHOUSE 时忽略。</p>
+        :type RuntimeCode: str
+        :param _SysCatalogVersion: <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型）。RunMode=JOB 时条件必填：未传时若可用（enabled）SysCatalog 唯一则自动选中，多个/零个报错；RunMode=WAREHOUSE 时禁止传。</p>
+        :type SysCatalogVersion: str
+        :param _PartitionCode: <p>资源分区代码，仅 RunMode=JOB 可传（QueueName 非空时必填）；RunMode=WAREHOUSE 时禁止传。</p>
+        :type PartitionCode: str
+        :param _QueueName: <p>队列名称，必须与 PartitionCode 成对使用（RunMode=JOB 下可选）；RunMode=WAREHOUSE 下被仓库反查值覆盖，无需传。</p>
+        :type QueueName: str
+        :param _CustomProperties: <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
+        :type CustomProperties: str
+        :param _EnvVars: <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+        :type EnvVars: list of KVPair
+        """
+        self._JobName = None
+        self._CheckpointLocation = None
+        self._MajorType = None
+        self._MinorType = None
+        self._FlowId = None
+        self._ExecutionId = None
+        self._RunMode = None
+        self._WarehouseId = None
+        self._RuntimeCode = None
+        self._SysCatalogVersion = None
+        self._PartitionCode = None
+        self._QueueName = None
+        self._CustomProperties = None
+        self._EnvVars = None
+
+    @property
+    def JobName(self):
+        r"""<p>作业名称，长度 ≤256；可省略，省略时服务端回退为 JobId。</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def CheckpointLocation(self):
+        r"""<p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint）。MinorType=SPARK_STREAM 时必填；同一作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :rtype: str
+        """
+        return self._CheckpointLocation
+
+    @CheckpointLocation.setter
+    def CheckpointLocation(self, CheckpointLocation):
+        self._CheckpointLocation = CheckpointLocation
+
+    @property
+    def MajorType(self):
+        r"""<p>引擎大类，非必传，缺省 SPARK；当前仅支持 SPARK。</p>
+        :rtype: str
+        """
+        return self._MajorType
+
+    @MajorType.setter
+    def MajorType(self, MajorType):
+        self._MajorType = MajorType
+
+    @property
+    def MinorType(self):
+        r"""<p>作业子类型，决定入口形态：SPARK_SQL（SQL 作业，Entrypoint.Statement 必填）/ SPARK_BATCH（批处理作业，Entrypoint.EntryFile 必填）/ SPARK_STREAM（流作业，EntryFile 与 CheckpointLocation 必填）。</p>
+        :rtype: str
+        """
+        return self._MinorType
+
+    @MinorType.setter
+    def MinorType(self, MinorType):
+        self._MinorType = MinorType
+
+    @property
+    def FlowId(self):
+        r"""<p>工作流实例关联 ID（长度 ≤64）：同一工作流/会话的多条 SQL 作业传相同 FlowId，可共享同一 Spark 会话、复用已就绪引擎。MinorType=SPARK_SQL 时必填；FlowId 非空时必须同时传 ExecutionId。WAREHOUSE 模式下 FlowId 即会话句柄（一个 FlowId 只对应一个会话）：会话过期或已销毁后须换新 FlowId，否则返回 FailedOperation.FlowIdNotExists。</p>
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ExecutionId(self):
+        r"""<p>工作流内部执行标识（长度 ≤64），同一 FlowId 下每次提交须唯一（如自增序号/UUID）。用于重复提交防重：同一账号下命中未删除的同 (FlowId, ExecutionId) 作业时返回 FailedOperation.FlowExecutionConflict。FlowId 非空时必填（SPARK_SQL 因 FlowId 必填而必填）。</p>
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def RunMode(self):
+        r"""<p>运行模式，必填。WAREHOUSE / JOB.</p>
+        :rtype: str
+        """
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def WarehouseId(self):
+        r"""<p>计算仓库 ID。RunMode=WAREHOUSE 时必填（仓库需处于 RUNNING，或 STOPPED 且 AutoStart 开启（提交后冷启动拉起））；RunMode=JOB 时必须为空。</p>
+        :rtype: str
+        """
+        return self._WarehouseId
+
+    @WarehouseId.setter
+    def WarehouseId(self, WarehouseId):
+        self._WarehouseId = WarehouseId
+
+    @property
+    def RuntimeCode(self):
+        r"""<p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。RunMode=JOB 时必填；RunMode=WAREHOUSE 时忽略。</p>
+        :rtype: str
+        """
+        return self._RuntimeCode
+
+    @RuntimeCode.setter
+    def RuntimeCode(self, RuntimeCode):
+        self._RuntimeCode = RuntimeCode
+
+    @property
+    def SysCatalogVersion(self):
+        r"""<p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型）。RunMode=JOB 时条件必填：未传时若可用（enabled）SysCatalog 唯一则自动选中，多个/零个报错；RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: str
+        """
+        return self._SysCatalogVersion
+
+    @SysCatalogVersion.setter
+    def SysCatalogVersion(self, SysCatalogVersion):
+        self._SysCatalogVersion = SysCatalogVersion
+
+    @property
+    def PartitionCode(self):
+        r"""<p>资源分区代码，仅 RunMode=JOB 可传（QueueName 非空时必填）；RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称，必须与 PartitionCode 成对使用（RunMode=JOB 下可选）；RunMode=WAREHOUSE 下被仓库反查值覆盖，无需传。</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def CustomProperties(self):
+        r"""<p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
+        :rtype: str
+        """
+        return self._CustomProperties
+
+    @CustomProperties.setter
+    def CustomProperties(self, CustomProperties):
+        self._CustomProperties = CustomProperties
+
+    @property
+    def EnvVars(self):
+        r"""<p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: list of KVPair
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+
+    def _deserialize(self, params):
+        self._JobName = params.get("JobName")
+        self._CheckpointLocation = params.get("CheckpointLocation")
+        self._MajorType = params.get("MajorType")
+        self._MinorType = params.get("MinorType")
+        self._FlowId = params.get("FlowId")
+        self._ExecutionId = params.get("ExecutionId")
+        self._RunMode = params.get("RunMode")
+        self._WarehouseId = params.get("WarehouseId")
+        self._RuntimeCode = params.get("RuntimeCode")
+        self._SysCatalogVersion = params.get("SysCatalogVersion")
+        self._PartitionCode = params.get("PartitionCode")
+        self._QueueName = params.get("QueueName")
+        self._CustomProperties = params.get("CustomProperties")
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateJobResponse(AbstractModel):
+    r"""CreateJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>作业唯一标识符（ID）。</p>
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>作业唯一标识符（ID）。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 
@@ -30416,6 +31950,669 @@ class DescribeBindablePrometheusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCatalogTableInfoRequest(AbstractModel):
+    r"""DescribeCatalogTableInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>Catalog名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>Schema名称</p>
+        :type SchemaName: str
+        :param _TableName: <p>Table名称</p>
+        :type TableName: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._TableName = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>Catalog名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>Schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""<p>Table名称</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCatalogTableInfoResponse(AbstractModel):
+    r"""DescribeCatalogTableInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Table: <p>Table详细信息</p>
+        :type Table: :class:`tencentcloud.dlc.v20210125.models.CatalogTaleInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Table = None
+        self._RequestId = None
+
+    @property
+    def Table(self):
+        r"""<p>Table详细信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CatalogTaleInfo`
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Table") is not None:
+            self._Table = CatalogTaleInfo()
+            self._Table._deserialize(params.get("Table"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCatalogTableNamesPageRequest(AbstractModel):
+    r"""DescribeCatalogTableNamesPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>catalog名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>Schema名称</p>
+        :type SchemaName: str
+        :param _Limit: <p>每页大小</p>
+        :type Limit: int
+        :param _Offset: <p>页数</p>
+        :type Offset: int
+        :param _SnapshotBased: <p>是否基于快照</p>
+        :type SnapshotBased: bool
+        :param _SnapshotId: <p>快照id</p>
+        :type SnapshotId: str
+        :param _TableNamePattern: <p>table匹配规则</p>
+        :type TableNamePattern: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._Limit = None
+        self._Offset = None
+        self._SnapshotBased = None
+        self._SnapshotId = None
+        self._TableNamePattern = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>catalog名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>Schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Limit(self):
+        r"""<p>每页大小</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SnapshotBased(self):
+        r"""<p>是否基于快照</p>
+        :rtype: bool
+        """
+        return self._SnapshotBased
+
+    @SnapshotBased.setter
+    def SnapshotBased(self, SnapshotBased):
+        self._SnapshotBased = SnapshotBased
+
+    @property
+    def SnapshotId(self):
+        r"""<p>快照id</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def TableNamePattern(self):
+        r"""<p>table匹配规则</p>
+        :rtype: str
+        """
+        return self._TableNamePattern
+
+    @TableNamePattern.setter
+    def TableNamePattern(self, TableNamePattern):
+        self._TableNamePattern = TableNamePattern
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SnapshotBased = params.get("SnapshotBased")
+        self._SnapshotId = params.get("SnapshotId")
+        self._TableNamePattern = params.get("TableNamePattern")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCatalogTableNamesPageResponse(AbstractModel):
+    r"""DescribeCatalogTableNamesPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableNames: <p>table名字列表</p>
+        :type TableNames: list of NameIdentifier
+        :param _TotalCount: <p>table总数</p>
+        :type TotalCount: int
+        :param _SnapshotId: <p>快照id</p>
+        :type SnapshotId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableNames = None
+        self._TotalCount = None
+        self._SnapshotId = None
+        self._RequestId = None
+
+    @property
+    def TableNames(self):
+        r"""<p>table名字列表</p>
+        :rtype: list of NameIdentifier
+        """
+        return self._TableNames
+
+    @TableNames.setter
+    def TableNames(self, TableNames):
+        self._TableNames = TableNames
+
+    @property
+    def TotalCount(self):
+        r"""<p>table总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SnapshotId(self):
+        r"""<p>快照id</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TableNames") is not None:
+            self._TableNames = []
+            for item in params.get("TableNames"):
+                obj = NameIdentifier()
+                obj._deserialize(item)
+                self._TableNames.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._SnapshotId = params.get("SnapshotId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCatalogTableNamesRequest(AbstractModel):
+    r"""DescribeCatalogTableNames请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>Catalog名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>Schema名称</p>
+        :type SchemaName: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>Catalog名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>Schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCatalogTableNamesResponse(AbstractModel):
+    r"""DescribeCatalogTableNames返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableNames: <p>Table名称列表</p>
+        :type TableNames: list of NameIdentifier
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableNames = None
+        self._RequestId = None
+
+    @property
+    def TableNames(self):
+        r"""<p>Table名称列表</p>
+        :rtype: list of NameIdentifier
+        """
+        return self._TableNames
+
+    @TableNames.setter
+    def TableNames(self, TableNames):
+        self._TableNames = TableNames
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TableNames") is not None:
+            self._TableNames = []
+            for item in params.get("TableNames"):
+                obj = NameIdentifier()
+                obj._deserialize(item)
+                self._TableNames.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCatalogsRequest(AbstractModel):
+    r"""DescribeCatalogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogId: <p>数据目录 ID</p>
+        :type CatalogId: str
+        :param _Name: <p>数据目录名称</p>
+        :type Name: str
+        :param _Operator: <p>操作人 uin</p>
+        :type Operator: str
+        :param _Sort: <p>排序字段，支持 CreateTime / UpdateTime（默认 UpdateTime）</p>
+        :type Sort: str
+        :param _Asc: <p>true:升序（默认）/ false:降序</p>
+        :type Asc: str
+        :param _Limit: <p>分页大小</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移</p>
+        :type Offset: int
+        :param _Status: <p>状态：0 注册中 / 1 待测试 / 2 连接成功 / 3 连接失败 / 4 删除中 / 5 已删除</p><p>枚举值：</p><ul><li>0： 注册中</li></ul>
+        :type Status: int
+        :param _Type: <p>数据目录类型</p><p>枚举值：</p><ul><li>LAKEHOUSE： lakehouse类型</li></ul>
+        :type Type: str
+        :param _CreatedAfter: <p>在这个时间之后创建（时间戳）</p>
+        :type CreatedAfter: int
+        :param _CreatedBefore: <p>在这个时间之前创建（时间戳）</p>
+        :type CreatedBefore: int
+        """
+        self._CatalogId = None
+        self._Name = None
+        self._Operator = None
+        self._Sort = None
+        self._Asc = None
+        self._Limit = None
+        self._Offset = None
+        self._Status = None
+        self._Type = None
+        self._CreatedAfter = None
+        self._CreatedBefore = None
+
+    @property
+    def CatalogId(self):
+        r"""<p>数据目录 ID</p>
+        :rtype: str
+        """
+        return self._CatalogId
+
+    @CatalogId.setter
+    def CatalogId(self, CatalogId):
+        self._CatalogId = CatalogId
+
+    @property
+    def Name(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Operator(self):
+        r"""<p>操作人 uin</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Sort(self):
+        r"""<p>排序字段，支持 CreateTime / UpdateTime（默认 UpdateTime）</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Asc(self):
+        r"""<p>true:升序（默认）/ false:降序</p>
+        :rtype: str
+        """
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Status(self):
+        r"""<p>状态：0 注册中 / 1 待测试 / 2 连接成功 / 3 连接失败 / 4 删除中 / 5 已删除</p><p>枚举值：</p><ul><li>0： 注册中</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""<p>数据目录类型</p><p>枚举值：</p><ul><li>LAKEHOUSE： lakehouse类型</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CreatedAfter(self):
+        r"""<p>在这个时间之后创建（时间戳）</p>
+        :rtype: int
+        """
+        return self._CreatedAfter
+
+    @CreatedAfter.setter
+    def CreatedAfter(self, CreatedAfter):
+        self._CreatedAfter = CreatedAfter
+
+    @property
+    def CreatedBefore(self):
+        r"""<p>在这个时间之前创建（时间戳）</p>
+        :rtype: int
+        """
+        return self._CreatedBefore
+
+    @CreatedBefore.setter
+    def CreatedBefore(self, CreatedBefore):
+        self._CreatedBefore = CreatedBefore
+
+
+    def _deserialize(self, params):
+        self._CatalogId = params.get("CatalogId")
+        self._Name = params.get("Name")
+        self._Operator = params.get("Operator")
+        self._Sort = params.get("Sort")
+        self._Asc = params.get("Asc")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._CreatedAfter = params.get("CreatedAfter")
+        self._CreatedBefore = params.get("CreatedBefore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCatalogsResponse(AbstractModel):
+    r"""DescribeCatalogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Catalogs: <p>Catalog详细信息列表</p>
+        :type Catalogs: list of CatalogConfig
+        :param _Total: <p>Catalog总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Catalogs = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Catalogs(self):
+        r"""<p>Catalog详细信息列表</p>
+        :rtype: list of CatalogConfig
+        """
+        return self._Catalogs
+
+    @Catalogs.setter
+    def Catalogs(self, Catalogs):
+        self._Catalogs = Catalogs
+
+    @property
+    def Total(self):
+        r"""<p>Catalog总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Catalogs") is not None:
+            self._Catalogs = []
+            for item in params.get("Catalogs"):
+                obj = CatalogConfig()
+                obj._deserialize(item)
+                self._Catalogs.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClsTopicsRequest(AbstractModel):
     r"""DescribeClsTopics请求参数结构体
 
@@ -35078,6 +37275,1020 @@ class DescribeForbiddenTableProResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJobDefinitionDetailRequest(AbstractModel):
+    r"""DescribeJobDefinitionDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobDefinitionId: <p>作业定义 ID。必填。</p>
+        :type JobDefinitionId: str
+        """
+        self._JobDefinitionId = None
+
+    @property
+    def JobDefinitionId(self):
+        r"""<p>作业定义 ID。必填。</p>
+        :rtype: str
+        """
+        return self._JobDefinitionId
+
+    @JobDefinitionId.setter
+    def JobDefinitionId(self, JobDefinitionId):
+        self._JobDefinitionId = JobDefinitionId
+
+
+    def _deserialize(self, params):
+        self._JobDefinitionId = params.get("JobDefinitionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobDefinitionDetailResponse(AbstractModel):
+    r"""DescribeJobDefinitionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobDefinitionsRequest(AbstractModel):
+    r"""DescribeJobDefinitions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>页码，从1开始，默认为1.</p>
+        :type Page: int
+        :param _PageSize: <p>每页返回数量，默认为10.</p>
+        :type PageSize: int
+        :param _Filters: <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+        :type SortFields: list of SortField
+        :param _CreateTimeStart: <p>创建时间下限（Unix 毫秒时间戳）。</p>
+        :type CreateTimeStart: int
+        :param _CreateTimeEnd: <p>创建时间上限（Unix 毫秒时间戳）。</p>
+        :type CreateTimeEnd: int
+        :param _InstanceTimeRange: <p>作业实例计数时间窗口（毫秒时长）。不传时默认 7 天。</p>
+        :type InstanceTimeRange: int
+        """
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._SortFields = None
+        self._CreateTimeStart = None
+        self._CreateTimeEnd = None
+        self._InstanceTimeRange = None
+
+    @property
+    def Page(self):
+        r"""<p>页码，从1开始，默认为1.</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页返回数量，默认为10.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""<p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+    @property
+    def CreateTimeStart(self):
+        r"""<p>创建时间下限（Unix 毫秒时间戳）。</p>
+        :rtype: int
+        """
+        return self._CreateTimeStart
+
+    @CreateTimeStart.setter
+    def CreateTimeStart(self, CreateTimeStart):
+        self._CreateTimeStart = CreateTimeStart
+
+    @property
+    def CreateTimeEnd(self):
+        r"""<p>创建时间上限（Unix 毫秒时间戳）。</p>
+        :rtype: int
+        """
+        return self._CreateTimeEnd
+
+    @CreateTimeEnd.setter
+    def CreateTimeEnd(self, CreateTimeEnd):
+        self._CreateTimeEnd = CreateTimeEnd
+
+    @property
+    def InstanceTimeRange(self):
+        r"""<p>作业实例计数时间窗口（毫秒时长）。不传时默认 7 天。</p>
+        :rtype: int
+        """
+        return self._InstanceTimeRange
+
+    @InstanceTimeRange.setter
+    def InstanceTimeRange(self, InstanceTimeRange):
+        self._InstanceTimeRange = InstanceTimeRange
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        self._CreateTimeStart = params.get("CreateTimeStart")
+        self._CreateTimeEnd = params.get("CreateTimeEnd")
+        self._InstanceTimeRange = params.get("InstanceTimeRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobDefinitionsResponse(AbstractModel):
+    r"""DescribeJobDefinitions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数.</p>
+        :type Total: int
+        :param _Items: <p>作业定义列表项。</p>
+        :type Items: list of JobDefinitionItemInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数.</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        r"""<p>作业定义列表项。</p>
+        :rtype: list of JobDefinitionItemInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = JobDefinitionItemInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobDetailRequest(AbstractModel):
+    r"""DescribeJobDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>作业唯一标识符（ID）。必填。</p>
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""<p>作业唯一标识符（ID）。必填。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobDetailResponse(AbstractModel):
+    r"""DescribeJobDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobListRequest(AbstractModel):
+    r"""DescribeJobList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>页码，从1开始，默认为1.</p>
+        :type Page: int
+        :param _PageSize: <p>每页返回数量，默认为10.</p>
+        :type PageSize: int
+        :param _Filters: <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+        :type SortFields: list of SortField
+        :param _CreateTimeStart: <p>创建时间下限（Unix 毫秒时间戳）。</p>
+        :type CreateTimeStart: int
+        :param _CreateTimeEnd: <p>创建时间上限（Unix 毫秒时间戳）。</p>
+        :type CreateTimeEnd: int
+        """
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._SortFields = None
+        self._CreateTimeStart = None
+        self._CreateTimeEnd = None
+
+    @property
+    def Page(self):
+        r"""<p>页码，从1开始，默认为1.</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页返回数量，默认为10.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""<p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+    @property
+    def CreateTimeStart(self):
+        r"""<p>创建时间下限（Unix 毫秒时间戳）。</p>
+        :rtype: int
+        """
+        return self._CreateTimeStart
+
+    @CreateTimeStart.setter
+    def CreateTimeStart(self, CreateTimeStart):
+        self._CreateTimeStart = CreateTimeStart
+
+    @property
+    def CreateTimeEnd(self):
+        r"""<p>创建时间上限（Unix 毫秒时间戳）。</p>
+        :rtype: int
+        """
+        return self._CreateTimeEnd
+
+    @CreateTimeEnd.setter
+    def CreateTimeEnd(self, CreateTimeEnd):
+        self._CreateTimeEnd = CreateTimeEnd
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        self._CreateTimeStart = params.get("CreateTimeStart")
+        self._CreateTimeEnd = params.get("CreateTimeEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobListResponse(AbstractModel):
+    r"""DescribeJobList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数.</p>
+        :type Total: int
+        :param _Items: <p>作业摘要列表。</p>
+        :type Items: list of JobBriefInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数.</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        r"""<p>作业摘要列表。</p>
+        :rtype: list of JobBriefInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = JobBriefInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobLogRequest(AbstractModel):
+    r"""DescribeJobLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>作业 ID（必填）。</p>
+        :type JobId: str
+        :param _LogType: <p>日志类型（必填）。可选值：SPARK_SQL_OPERATION / SPARK_BATCH_OPERATION / SPARK_LAUNCH / SPARK_DRIVER_STDOUT / SPARK_DRIVER_LOG4J / SPARK_EXECUTOR_STDOUT / SPARK_EXECUTOR_LOG4J。</p>
+        :type LogType: str
+        :param _StatementIndex: <p>Statement 序号（1-based，仅 LogType=SPARK_SQL_OPERATION 时可传），定位多语句作业中的具体语句。</p>
+        :type StatementIndex: int
+        :param _Cursor: <p>分页游标（首页不传，后续页原样透传上一响应的 Cursor；不透明，无需解析）。无法续读时以 HasMore=false 终止分页。</p>
+        :type Cursor: str
+        :param _Limit: <p>返回上限（行数），范围 [1, 1000]。</p>
+        :type Limit: int
+        :param _Keyword: <p>关键词过滤。</p>
+        :type Keyword: str
+        :param _PodName: <p>Pod 名称过滤。</p>
+        :type PodName: str
+        :param _LogLevel: <p>日志级别过滤。取值：ERROR / WARN / INFO / DEBUG / TRACE，非法值拒绝。</p>
+        :type LogLevel: str
+        :param _From: <p>起始时间，Unix 毫秒。</p>
+        :type From: int
+        :param _To: <p>结束时间，Unix 毫秒。</p>
+        :type To: int
+        """
+        self._JobId = None
+        self._LogType = None
+        self._StatementIndex = None
+        self._Cursor = None
+        self._Limit = None
+        self._Keyword = None
+        self._PodName = None
+        self._LogLevel = None
+        self._From = None
+        self._To = None
+
+    @property
+    def JobId(self):
+        r"""<p>作业 ID（必填）。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型（必填）。可选值：SPARK_SQL_OPERATION / SPARK_BATCH_OPERATION / SPARK_LAUNCH / SPARK_DRIVER_STDOUT / SPARK_DRIVER_LOG4J / SPARK_EXECUTOR_STDOUT / SPARK_EXECUTOR_LOG4J。</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def StatementIndex(self):
+        r"""<p>Statement 序号（1-based，仅 LogType=SPARK_SQL_OPERATION 时可传），定位多语句作业中的具体语句。</p>
+        :rtype: int
+        """
+        return self._StatementIndex
+
+    @StatementIndex.setter
+    def StatementIndex(self, StatementIndex):
+        self._StatementIndex = StatementIndex
+
+    @property
+    def Cursor(self):
+        r"""<p>分页游标（首页不传，后续页原样透传上一响应的 Cursor；不透明，无需解析）。无法续读时以 HasMore=false 终止分页。</p>
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def Limit(self):
+        r"""<p>返回上限（行数），范围 [1, 1000]。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Keyword(self):
+        r"""<p>关键词过滤。</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PodName(self):
+        r"""<p>Pod 名称过滤。</p>
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def LogLevel(self):
+        r"""<p>日志级别过滤。取值：ERROR / WARN / INFO / DEBUG / TRACE，非法值拒绝。</p>
+        :rtype: str
+        """
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def From(self):
+        r"""<p>起始时间，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        r"""<p>结束时间，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._LogType = params.get("LogType")
+        self._StatementIndex = params.get("StatementIndex")
+        self._Cursor = params.get("Cursor")
+        self._Limit = params.get("Limit")
+        self._Keyword = params.get("Keyword")
+        self._PodName = params.get("PodName")
+        self._LogLevel = params.get("LogLevel")
+        self._From = params.get("From")
+        self._To = params.get("To")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobLogResponse(AbstractModel):
+    r"""DescribeJobLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Lines: <p>日志行数据。</p>
+        :type Lines: list of str
+        :param _Cursor: <p>下一页游标（不透明令牌，原样透传回请求即可；无更多日志时不返回）。</p>
+        :type Cursor: str
+        :param _HasMore: <p>是否还有更多日志。</p>
+        :type HasMore: bool
+        :param _Results: <p>日志条目列表。</p>
+        :type Results: list of ClsLogEntry
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Lines = None
+        self._Cursor = None
+        self._HasMore = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Lines(self):
+        r"""<p>日志行数据。</p>
+        :rtype: list of str
+        """
+        return self._Lines
+
+    @Lines.setter
+    def Lines(self, Lines):
+        self._Lines = Lines
+
+    @property
+    def Cursor(self):
+        r"""<p>下一页游标（不透明令牌，原样透传回请求即可；无更多日志时不返回）。</p>
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def HasMore(self):
+        r"""<p>是否还有更多日志。</p>
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def Results(self):
+        r"""<p>日志条目列表。</p>
+        :rtype: list of ClsLogEntry
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Lines = params.get("Lines")
+        self._Cursor = params.get("Cursor")
+        self._HasMore = params.get("HasMore")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = ClsLogEntry()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeJobResultRequest(AbstractModel):
+    r"""DescribeJobResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>作业唯一标识符（ID）。必填。</p>
+        :type JobId: str
+        :param _Page: <p>页码，从1开始，默认为1.</p>
+        :type Page: int
+        :param _PageSize: <p>每页返回数量，默认为10.</p>
+        :type PageSize: int
+        :param _StatementIndex: <p>Statement 序号（1-based），多语句作业时指定；缺省为 0，取整作业第一个结果集.</p>
+        :type StatementIndex: int
+        """
+        self._JobId = None
+        self._Page = None
+        self._PageSize = None
+        self._StatementIndex = None
+
+    @property
+    def JobId(self):
+        r"""<p>作业唯一标识符（ID）。必填。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Page(self):
+        r"""<p>页码，从1开始，默认为1.</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页返回数量，默认为10.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StatementIndex(self):
+        r"""<p>Statement 序号（1-based），多语句作业时指定；缺省为 0，取整作业第一个结果集.</p>
+        :rtype: int
+        """
+        return self._StatementIndex
+
+    @StatementIndex.setter
+    def StatementIndex(self, StatementIndex):
+        self._StatementIndex = StatementIndex
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._StatementIndex = params.get("StatementIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobResultResponse(AbstractModel):
+    r"""DescribeJobResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数.</p>
+        :type Total: int
+        :param _JobId: <p>作业 ID。</p>
+        :type JobId: str
+        :param _State: <p>结果状态（对客）：SUCCEEDED（结果集可用，含 0 行——DDL/DML 等无结果集语句亦归入此类，message 说明）/ UNAVAILABLE（终态无结果：statement 已失败或取消）/ ERROR（结果集拉取出错）/ NOT_READY（结果未就绪）/ NOT_SUPPORTED（作业形态不产出结果集）。</p>
+        :type State: str
+        :param _Message: <p>状态描述（SUCCEEDED 0 行时为无结果集说明；ERROR 为错误信息；UNAVAILABLE 为 statement 失败/取消原因）。</p>
+        :type Message: str
+        :param _Columns: <p>列定义列表（按结果集列顺序；State=SUCCEEDED 才有）。</p>
+        :type Columns: list of ResultColumn
+        :param _TotalRows: <p>结果集全量行数（未按在线展示上限封顶）。Total 为在线可见行数，二者不等说明仅部分行可内联查看，完整结果通过 Download 获取。</p>
+        :type TotalRows: int
+        :param _Rows: <p>行数据（State=SUCCEEDED 才有），每行为 {"Values": [单元格值...]} 数组。</p>
+        :type Rows: list of ResultRow
+        :param _Truncated: <p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows > Total 判断，完整结果通过 Download 获取.</p>
+        :type Truncated: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._JobId = None
+        self._State = None
+        self._Message = None
+        self._Columns = None
+        self._TotalRows = None
+        self._Rows = None
+        self._Truncated = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数.</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def JobId(self):
+        r"""<p>作业 ID。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def State(self):
+        r"""<p>结果状态（对客）：SUCCEEDED（结果集可用，含 0 行——DDL/DML 等无结果集语句亦归入此类，message 说明）/ UNAVAILABLE（终态无结果：statement 已失败或取消）/ ERROR（结果集拉取出错）/ NOT_READY（结果未就绪）/ NOT_SUPPORTED（作业形态不产出结果集）。</p>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Message(self):
+        r"""<p>状态描述（SUCCEEDED 0 行时为无结果集说明；ERROR 为错误信息；UNAVAILABLE 为 statement 失败/取消原因）。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Columns(self):
+        r"""<p>列定义列表（按结果集列顺序；State=SUCCEEDED 才有）。</p>
+        :rtype: list of ResultColumn
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def TotalRows(self):
+        r"""<p>结果集全量行数（未按在线展示上限封顶）。Total 为在线可见行数，二者不等说明仅部分行可内联查看，完整结果通过 Download 获取。</p>
+        :rtype: int
+        """
+        return self._TotalRows
+
+    @TotalRows.setter
+    def TotalRows(self, TotalRows):
+        self._TotalRows = TotalRows
+
+    @property
+    def Rows(self):
+        r"""<p>行数据（State=SUCCEEDED 才有），每行为 {"Values": [单元格值...]} 数组。</p>
+        :rtype: list of ResultRow
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Truncated(self):
+        r"""<p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows > Total 判断，完整结果通过 Download 获取.</p>
+        :rtype: bool
+        """
+        return self._Truncated
+
+    @Truncated.setter
+    def Truncated(self, Truncated):
+        self._Truncated = Truncated
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._JobId = params.get("JobId")
+        self._State = params.get("State")
+        self._Message = params.get("Message")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = ResultColumn()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        self._TotalRows = params.get("TotalRows")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = ResultRow()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._Truncated = params.get("Truncated")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLakeFsDirSummaryRequest(AbstractModel):
     r"""DescribeLakeFsDirSummary请求参数结构体
 
@@ -38595,6 +41806,195 @@ class DescribeSaleResourceInfoResponse(AbstractModel):
                 obj = ResourceSaleInfo()
                 obj._deserialize(item)
                 self._SaleResourceInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSchemaNamesPageRequest(AbstractModel):
+    r"""DescribeSchemaNamesPage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _Limit: <p>分页大小</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移</p>
+        :type Offset: int
+        :param _SnapshotBased: <p>是否快照分页</p>
+        :type SnapshotBased: bool
+        :param _SnapshotId: <p>快照 ID</p>
+        :type SnapshotId: str
+        :param _SchemaNamePattern: <p>SQL查询格式匹配</p>
+        :type SchemaNamePattern: str
+        """
+        self._CatalogName = None
+        self._Limit = None
+        self._Offset = None
+        self._SnapshotBased = None
+        self._SnapshotId = None
+        self._SchemaNamePattern = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SnapshotBased(self):
+        r"""<p>是否快照分页</p>
+        :rtype: bool
+        """
+        return self._SnapshotBased
+
+    @SnapshotBased.setter
+    def SnapshotBased(self, SnapshotBased):
+        self._SnapshotBased = SnapshotBased
+
+    @property
+    def SnapshotId(self):
+        r"""<p>快照 ID</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def SchemaNamePattern(self):
+        r"""<p>SQL查询格式匹配</p>
+        :rtype: str
+        """
+        return self._SchemaNamePattern
+
+    @SchemaNamePattern.setter
+    def SchemaNamePattern(self, SchemaNamePattern):
+        self._SchemaNamePattern = SchemaNamePattern
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SnapshotBased = params.get("SnapshotBased")
+        self._SnapshotId = params.get("SnapshotId")
+        self._SchemaNamePattern = params.get("SchemaNamePattern")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSchemaNamesPageResponse(AbstractModel):
+    r"""DescribeSchemaNamesPage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SchemaNames: <p>数据库名称列表</p>
+        :type SchemaNames: list of NameIdentifier
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _SnapshotId: <p>快照 ID</p>
+        :type SnapshotId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SchemaNames = None
+        self._TotalCount = None
+        self._SnapshotId = None
+        self._RequestId = None
+
+    @property
+    def SchemaNames(self):
+        r"""<p>数据库名称列表</p>
+        :rtype: list of NameIdentifier
+        """
+        return self._SchemaNames
+
+    @SchemaNames.setter
+    def SchemaNames(self, SchemaNames):
+        self._SchemaNames = SchemaNames
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SnapshotId(self):
+        r"""<p>快照 ID</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SchemaNames") is not None:
+            self._SchemaNames = []
+            for item in params.get("SchemaNames"):
+                obj = NameIdentifier()
+                obj._deserialize(item)
+                self._SchemaNames.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._SnapshotId = params.get("SnapshotId")
         self._RequestId = params.get("RequestId")
 
 
@@ -44873,6 +48273,160 @@ class DescribeViewsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWarehousesRequest(AbstractModel):
+    r"""DescribeWarehouses请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>页码，从1开始，默认为1.</p>
+        :type Page: int
+        :param _PageSize: <p>每页返回数量，默认为10.</p>
+        :type PageSize: int
+        :param _Filters: <p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+        :type SortFields: list of SortField
+        """
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._SortFields = None
+
+    @property
+    def Page(self):
+        r"""<p>页码，从1开始，默认为1.</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页返回数量，默认为10.</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""<p>高级过滤条件列表，元素 Name 为过滤字段名（PascalCase，可用字段与操作符约束见各接口 Filters 说明），Values 为过滤值列表；未列入白名单或非 PascalCase 的 Name 报 InvalidParameter。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表，元素 Field 为排序字段名（PascalCase，与响应字段命名对齐，可用字段见各接口 SortFields 说明），Order 为排序方向（ASC/DESC，不传默认 DESC）；未列入白名单或非 PascalCase 的 Field 报 InvalidParameter。</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWarehousesResponse(AbstractModel):
+    r"""DescribeWarehouses返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数.</p>
+        :type Total: int
+        :param _WarehouseList: <p>计算仓库列表。</p>
+        :type WarehouseList: list of WarehouseInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._WarehouseList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数.</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def WarehouseList(self):
+        r"""<p>计算仓库列表。</p>
+        :rtype: list of WarehouseInfo
+        """
+        return self._WarehouseList
+
+    @WarehouseList.setter
+    def WarehouseList(self, WarehouseList):
+        self._WarehouseList = WarehouseList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("WarehouseList") is not None:
+            self._WarehouseList = []
+            for item in params.get("WarehouseList"):
+                obj = WarehouseInfo()
+                obj._deserialize(item)
+                self._WarehouseList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeWorkGroupInfoRequest(AbstractModel):
     r"""DescribeWorkGroupInfo请求参数结构体
 
@@ -45456,6 +49010,170 @@ class DetachWorkGroupPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DlcConnection(AbstractModel):
+    r"""tcc DlcConnection定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DorisConnection(AbstractModel):
+    r"""tcc doris连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        :param _JDBCUrl: <p>JDBC连接地址</p>
+        :type JDBCUrl: str
+        :param _User: <p>账号</p>
+        :type User: str
+        :param _Password: <p>密码</p>
+        :type Password: str
+        :param _NetWork: <p>网络信息</p>
+        :type NetWork: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._JDBCUrl = None
+        self._User = None
+        self._Password = None
+        self._NetWork = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def JDBCUrl(self):
+        r"""<p>JDBC连接地址</p>
+        :rtype: str
+        """
+        return self._JDBCUrl
+
+    @JDBCUrl.setter
+    def JDBCUrl(self, JDBCUrl):
+        self._JDBCUrl = JDBCUrl
+
+    @property
+    def User(self):
+        r"""<p>账号</p>
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def NetWork(self):
+        r"""<p>网络信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        return self._NetWork
+
+    @NetWork.setter
+    def NetWork(self, NetWork):
+        self._NetWork = NetWork
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._JDBCUrl = params.get("JDBCUrl")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        if params.get("NetWork") is not None:
+            self._NetWork = NetWork()
+            self._NetWork._deserialize(params.get("NetWork"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DropDMSDatabaseRequest(AbstractModel):
@@ -55907,6 +59625,104 @@ class HeadSpecDTO(AbstractModel):
         
 
 
+class HiveConnection(AbstractModel):
+    r"""tcc hive连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        :param _MetaStoreUrl: <p>元数据url</p>
+        :type MetaStoreUrl: str
+        :param _NetWork: <p>网络信息</p>
+        :type NetWork: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        :param _HiveVersion: <p>hive版本</p>
+        :type HiveVersion: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._MetaStoreUrl = None
+        self._NetWork = None
+        self._HiveVersion = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def MetaStoreUrl(self):
+        r"""<p>元数据url</p>
+        :rtype: str
+        """
+        return self._MetaStoreUrl
+
+    @MetaStoreUrl.setter
+    def MetaStoreUrl(self, MetaStoreUrl):
+        self._MetaStoreUrl = MetaStoreUrl
+
+    @property
+    def NetWork(self):
+        r"""<p>网络信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        return self._NetWork
+
+    @NetWork.setter
+    def NetWork(self, NetWork):
+        self._NetWork = NetWork
+
+    @property
+    def HiveVersion(self):
+        r"""<p>hive版本</p>
+        :rtype: str
+        """
+        return self._HiveVersion
+
+    @HiveVersion.setter
+    def HiveVersion(self, HiveVersion):
+        self._HiveVersion = HiveVersion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._MetaStoreUrl = params.get("MetaStoreUrl")
+        if params.get("NetWork") is not None:
+            self._NetWork = NetWork()
+            self._NetWork._deserialize(params.get("NetWork"))
+        self._HiveVersion = params.get("HiveVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HiveInfo(AbstractModel):
     r"""hive类型数据源的信息
 
@@ -57074,6 +60890,72 @@ class ImportTkeClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IndexInfo(AbstractModel):
+    r"""tcc IndexInfo定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>索引名称</p>
+        :type Name: str
+        :param _Type: <p>索引类型</p><p>枚举值：</p><ul><li>primary_key： 主键</li></ul>
+        :type Type: str
+        :param _FieldNames: <p>索引字段</p>
+        :type FieldNames: list of str
+        """
+        self._Name = None
+        self._Type = None
+        self._FieldNames = None
+
+    @property
+    def Name(self):
+        r"""<p>索引名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>索引类型</p><p>枚举值：</p><ul><li>primary_key： 主键</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FieldNames(self):
+        r"""<p>索引字段</p>
+        :rtype: list of str
+        """
+        return self._FieldNames
+
+    @FieldNames.setter
+    def FieldNames(self, FieldNames):
+        self._FieldNames = FieldNames
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._FieldNames = params.get("FieldNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InferenceEngineInfo(AbstractModel):
     r"""推理引擎具体信息
 
@@ -58235,6 +62117,573 @@ class IpPortPair(AbstractModel):
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobBriefInfo(AbstractModel):
+    r"""入站作业摘要（DescribeJobList.Items[] 元素）.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>作业唯一标识.</p>
+        :type JobId: str
+        :param _JobName: <p>作业名称.</p>
+        :type JobName: str
+        :param _CreatorSubUin: <p>创建/提交者子账号 UIN。</p>
+        :type CreatorSubUin: str
+        :param _State: <p>作业状态.</p>
+        :type State: str
+        :param _MajorType: <p>引擎大类.</p>
+        :type MajorType: str
+        :param _MinorType: <p>引擎子类型.</p>
+        :type MinorType: str
+        :param _RunMode: <p>运行模式（WAREHOUSE / JOB）.</p>
+        :type RunMode: str
+        :param _WarehouseId: <p>计算仓库 ID，RunMode=WAREHOUSE 时非空.</p>
+        :type WarehouseId: str
+        :param _PartitionCode: <p>资源分区编码.</p>
+        :type PartitionCode: str
+        :param _PartitionName: <p>资源分区展示名（解析不到时为空）.</p>
+        :type PartitionName: str
+        :param _QueueName: <p>队列名称.</p>
+        :type QueueName: str
+        :param _CheckpointLocation: <p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :type CheckpointLocation: str
+        :param _CreateTime: <p>创建时间（Unix 毫秒时间戳）.</p>
+        :type CreateTime: int
+        :param _SubmitTime: <p>提交时间（Unix 毫秒时间戳）.</p>
+        :type SubmitTime: int
+        :param _FinishTime: <p>完成时间（Unix 毫秒时间戳）.</p>
+        :type FinishTime: int
+        :param _RunningTimeMs: <p>运行时长（毫秒）.</p>
+        :type RunningTimeMs: int
+        :param _WarehouseName: <p>计算仓库名称（列表整页批量反查填充；warehouse 模式下非空）.</p>
+        :type WarehouseName: str
+        """
+        self._JobId = None
+        self._JobName = None
+        self._CreatorSubUin = None
+        self._State = None
+        self._MajorType = None
+        self._MinorType = None
+        self._RunMode = None
+        self._WarehouseId = None
+        self._PartitionCode = None
+        self._PartitionName = None
+        self._QueueName = None
+        self._CheckpointLocation = None
+        self._CreateTime = None
+        self._SubmitTime = None
+        self._FinishTime = None
+        self._RunningTimeMs = None
+        self._WarehouseName = None
+
+    @property
+    def JobId(self):
+        r"""<p>作业唯一标识.</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        r"""<p>作业名称.</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def CreatorSubUin(self):
+        r"""<p>创建/提交者子账号 UIN。</p>
+        :rtype: str
+        """
+        return self._CreatorSubUin
+
+    @CreatorSubUin.setter
+    def CreatorSubUin(self, CreatorSubUin):
+        self._CreatorSubUin = CreatorSubUin
+
+    @property
+    def State(self):
+        r"""<p>作业状态.</p>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def MajorType(self):
+        r"""<p>引擎大类.</p>
+        :rtype: str
+        """
+        return self._MajorType
+
+    @MajorType.setter
+    def MajorType(self, MajorType):
+        self._MajorType = MajorType
+
+    @property
+    def MinorType(self):
+        r"""<p>引擎子类型.</p>
+        :rtype: str
+        """
+        return self._MinorType
+
+    @MinorType.setter
+    def MinorType(self, MinorType):
+        self._MinorType = MinorType
+
+    @property
+    def RunMode(self):
+        r"""<p>运行模式（WAREHOUSE / JOB）.</p>
+        :rtype: str
+        """
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def WarehouseId(self):
+        r"""<p>计算仓库 ID，RunMode=WAREHOUSE 时非空.</p>
+        :rtype: str
+        """
+        return self._WarehouseId
+
+    @WarehouseId.setter
+    def WarehouseId(self, WarehouseId):
+        self._WarehouseId = WarehouseId
+
+    @property
+    def PartitionCode(self):
+        r"""<p>资源分区编码.</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def PartitionName(self):
+        r"""<p>资源分区展示名（解析不到时为空）.</p>
+        :rtype: str
+        """
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称.</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def CheckpointLocation(self):
+        r"""<p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :rtype: str
+        """
+        return self._CheckpointLocation
+
+    @CheckpointLocation.setter
+    def CheckpointLocation(self, CheckpointLocation):
+        self._CheckpointLocation = CheckpointLocation
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（Unix 毫秒时间戳）.</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SubmitTime(self):
+        r"""<p>提交时间（Unix 毫秒时间戳）.</p>
+        :rtype: int
+        """
+        return self._SubmitTime
+
+    @SubmitTime.setter
+    def SubmitTime(self, SubmitTime):
+        self._SubmitTime = SubmitTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间（Unix 毫秒时间戳）.</p>
+        :rtype: int
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def RunningTimeMs(self):
+        r"""<p>运行时长（毫秒）.</p>
+        :rtype: int
+        """
+        return self._RunningTimeMs
+
+    @RunningTimeMs.setter
+    def RunningTimeMs(self, RunningTimeMs):
+        self._RunningTimeMs = RunningTimeMs
+
+    @property
+    def WarehouseName(self):
+        r"""<p>计算仓库名称（列表整页批量反查填充；warehouse 模式下非空）.</p>
+        :rtype: str
+        """
+        return self._WarehouseName
+
+    @WarehouseName.setter
+    def WarehouseName(self, WarehouseName):
+        self._WarehouseName = WarehouseName
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._CreatorSubUin = params.get("CreatorSubUin")
+        self._State = params.get("State")
+        self._MajorType = params.get("MajorType")
+        self._MinorType = params.get("MinorType")
+        self._RunMode = params.get("RunMode")
+        self._WarehouseId = params.get("WarehouseId")
+        self._PartitionCode = params.get("PartitionCode")
+        self._PartitionName = params.get("PartitionName")
+        self._QueueName = params.get("QueueName")
+        self._CheckpointLocation = params.get("CheckpointLocation")
+        self._CreateTime = params.get("CreateTime")
+        self._SubmitTime = params.get("SubmitTime")
+        self._FinishTime = params.get("FinishTime")
+        self._RunningTimeMs = params.get("RunningTimeMs")
+        self._WarehouseName = params.get("WarehouseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobDefinitionItemInfo(AbstractModel):
+    r"""作业定义列表项 POJO（精简版）.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobDefinitionId: <p>作业定义唯一标识符（ID）。</p>
+        :type JobDefinitionId: str
+        :param _Name: <p>作业定义名称。</p>
+        :type Name: str
+        :param _Description: <p>作业定义描述。</p>
+        :type Description: str
+        :param _MajorType: <p>作业主类型。</p>
+        :type MajorType: str
+        :param _MinorType: <p>作业子类型。</p>
+        :type MinorType: str
+        :param _CheckpointLocation: <p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :type CheckpointLocation: str
+        :param _CreatorSubUin: <p>创建者（子账号 UIN）。</p>
+        :type CreatorSubUin: str
+        :param _CreateTime: <p>创建时间（Unix 毫秒时间戳）。</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间（Unix 毫秒时间戳）。</p>
+        :type UpdateTime: int
+        :param _PartitionCode: <p>分区编码。</p>
+        :type PartitionCode: str
+        :param _PartitionName: <p>分区展示名（解析不到时为空）。</p>
+        :type PartitionName: str
+        :param _QueueName: <p>队列名称。</p>
+        :type QueueName: str
+        :param _RunMode: <p>运行模式: JOB | WAREHOUSE.</p>
+        :type RunMode: str
+        :param _WarehouseId: <p>计算仓库 ID, RunMode=WAREHOUSE 时非空.</p>
+        :type WarehouseId: str
+        :param _InstanceCount: <p>请求时间窗口（InstanceTimeRange，默认 7 天）内的作业实例数。</p>
+        :type InstanceCount: int
+        :param _RuntimeCode: <p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。JOB 模式取定义自身配置，WAREHOUSE 模式取所属计算仓库运行时；解析不到时为空。</p>
+        :type RuntimeCode: str
+        :param _RuntimeName: <p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空。</p>
+        :type RuntimeName: str
+        :param _WarehouseName: <p>计算仓库名称（列表整页按去重后的仓库反查填充；warehouse 模式下非空，仓库已销毁时仍回填历史名称）。</p>
+        :type WarehouseName: str
+        """
+        self._JobDefinitionId = None
+        self._Name = None
+        self._Description = None
+        self._MajorType = None
+        self._MinorType = None
+        self._CheckpointLocation = None
+        self._CreatorSubUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._PartitionCode = None
+        self._PartitionName = None
+        self._QueueName = None
+        self._RunMode = None
+        self._WarehouseId = None
+        self._InstanceCount = None
+        self._RuntimeCode = None
+        self._RuntimeName = None
+        self._WarehouseName = None
+
+    @property
+    def JobDefinitionId(self):
+        r"""<p>作业定义唯一标识符（ID）。</p>
+        :rtype: str
+        """
+        return self._JobDefinitionId
+
+    @JobDefinitionId.setter
+    def JobDefinitionId(self, JobDefinitionId):
+        self._JobDefinitionId = JobDefinitionId
+
+    @property
+    def Name(self):
+        r"""<p>作业定义名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>作业定义描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def MajorType(self):
+        r"""<p>作业主类型。</p>
+        :rtype: str
+        """
+        return self._MajorType
+
+    @MajorType.setter
+    def MajorType(self, MajorType):
+        self._MajorType = MajorType
+
+    @property
+    def MinorType(self):
+        r"""<p>作业子类型。</p>
+        :rtype: str
+        """
+        return self._MinorType
+
+    @MinorType.setter
+    def MinorType(self, MinorType):
+        self._MinorType = MinorType
+
+    @property
+    def CheckpointLocation(self):
+        r"""<p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :rtype: str
+        """
+        return self._CheckpointLocation
+
+    @CheckpointLocation.setter
+    def CheckpointLocation(self, CheckpointLocation):
+        self._CheckpointLocation = CheckpointLocation
+
+    @property
+    def CreatorSubUin(self):
+        r"""<p>创建者（子账号 UIN）。</p>
+        :rtype: str
+        """
+        return self._CreatorSubUin
+
+    @CreatorSubUin.setter
+    def CreatorSubUin(self, CreatorSubUin):
+        self._CreatorSubUin = CreatorSubUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（Unix 毫秒时间戳）。</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（Unix 毫秒时间戳）。</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def PartitionCode(self):
+        r"""<p>分区编码。</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def PartitionName(self):
+        r"""<p>分区展示名（解析不到时为空）。</p>
+        :rtype: str
+        """
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称。</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def RunMode(self):
+        r"""<p>运行模式: JOB | WAREHOUSE.</p>
+        :rtype: str
+        """
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def WarehouseId(self):
+        r"""<p>计算仓库 ID, RunMode=WAREHOUSE 时非空.</p>
+        :rtype: str
+        """
+        return self._WarehouseId
+
+    @WarehouseId.setter
+    def WarehouseId(self, WarehouseId):
+        self._WarehouseId = WarehouseId
+
+    @property
+    def InstanceCount(self):
+        r"""<p>请求时间窗口（InstanceTimeRange，默认 7 天）内的作业实例数。</p>
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def RuntimeCode(self):
+        r"""<p>运行时/镜像编码（可选值见 DescribeSparkRuntimes）。JOB 模式取定义自身配置，WAREHOUSE 模式取所属计算仓库运行时；解析不到时为空。</p>
+        :rtype: str
+        """
+        return self._RuntimeCode
+
+    @RuntimeCode.setter
+    def RuntimeCode(self, RuntimeCode):
+        self._RuntimeCode = RuntimeCode
+
+    @property
+    def RuntimeName(self):
+        r"""<p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空。</p>
+        :rtype: str
+        """
+        return self._RuntimeName
+
+    @RuntimeName.setter
+    def RuntimeName(self, RuntimeName):
+        self._RuntimeName = RuntimeName
+
+    @property
+    def WarehouseName(self):
+        r"""<p>计算仓库名称（列表整页按去重后的仓库反查填充；warehouse 模式下非空，仓库已销毁时仍回填历史名称）。</p>
+        :rtype: str
+        """
+        return self._WarehouseName
+
+    @WarehouseName.setter
+    def WarehouseName(self, WarehouseName):
+        self._WarehouseName = WarehouseName
+
+
+    def _deserialize(self, params):
+        self._JobDefinitionId = params.get("JobDefinitionId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._MajorType = params.get("MajorType")
+        self._MinorType = params.get("MinorType")
+        self._CheckpointLocation = params.get("CheckpointLocation")
+        self._CreatorSubUin = params.get("CreatorSubUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._PartitionCode = params.get("PartitionCode")
+        self._PartitionName = params.get("PartitionName")
+        self._QueueName = params.get("QueueName")
+        self._RunMode = params.get("RunMode")
+        self._WarehouseId = params.get("WarehouseId")
+        self._InstanceCount = params.get("InstanceCount")
+        self._RuntimeCode = params.get("RuntimeCode")
+        self._RuntimeName = params.get("RuntimeName")
+        self._WarehouseName = params.get("WarehouseName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60487,6 +64936,136 @@ class LakeFsInfo(AbstractModel):
                 obj = KVPair()
                 obj._deserialize(item)
                 self._Configuration.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LakeHouseConnection(AbstractModel):
+    r"""tcc lakehouse 连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetastoreEndpointServiceId: <p>元数据服务id</p>
+        :type MetastoreEndpointServiceId: str
+        :param _EndpointServiceId: <p>endpoint服务id</p>
+        :type EndpointServiceId: str
+        :param _MetaStoreUrl: <p>元数据url</p>
+        :type MetaStoreUrl: str
+        :param _RangerConnection: <p>ranger信息</p>
+        :type RangerConnection: :class:`tencentcloud.dlc.v20210125.models.RangerConnection`
+        :param _HiveVersion: <p>hive版本</p>
+        :type HiveVersion: str
+        :param _Location: <p>存储位置</p>
+        :type Location: str
+        :param _NetWork: <p>网络信息</p>
+        :type NetWork: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        self._MetastoreEndpointServiceId = None
+        self._EndpointServiceId = None
+        self._MetaStoreUrl = None
+        self._RangerConnection = None
+        self._HiveVersion = None
+        self._Location = None
+        self._NetWork = None
+
+    @property
+    def MetastoreEndpointServiceId(self):
+        r"""<p>元数据服务id</p>
+        :rtype: str
+        """
+        return self._MetastoreEndpointServiceId
+
+    @MetastoreEndpointServiceId.setter
+    def MetastoreEndpointServiceId(self, MetastoreEndpointServiceId):
+        self._MetastoreEndpointServiceId = MetastoreEndpointServiceId
+
+    @property
+    def EndpointServiceId(self):
+        r"""<p>endpoint服务id</p>
+        :rtype: str
+        """
+        return self._EndpointServiceId
+
+    @EndpointServiceId.setter
+    def EndpointServiceId(self, EndpointServiceId):
+        self._EndpointServiceId = EndpointServiceId
+
+    @property
+    def MetaStoreUrl(self):
+        r"""<p>元数据url</p>
+        :rtype: str
+        """
+        return self._MetaStoreUrl
+
+    @MetaStoreUrl.setter
+    def MetaStoreUrl(self, MetaStoreUrl):
+        self._MetaStoreUrl = MetaStoreUrl
+
+    @property
+    def RangerConnection(self):
+        r"""<p>ranger信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RangerConnection`
+        """
+        return self._RangerConnection
+
+    @RangerConnection.setter
+    def RangerConnection(self, RangerConnection):
+        self._RangerConnection = RangerConnection
+
+    @property
+    def HiveVersion(self):
+        r"""<p>hive版本</p>
+        :rtype: str
+        """
+        return self._HiveVersion
+
+    @HiveVersion.setter
+    def HiveVersion(self, HiveVersion):
+        self._HiveVersion = HiveVersion
+
+    @property
+    def Location(self):
+        r"""<p>存储位置</p>
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def NetWork(self):
+        r"""<p>网络信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        return self._NetWork
+
+    @NetWork.setter
+    def NetWork(self, NetWork):
+        self._NetWork = NetWork
+
+
+    def _deserialize(self, params):
+        self._MetastoreEndpointServiceId = params.get("MetastoreEndpointServiceId")
+        self._EndpointServiceId = params.get("EndpointServiceId")
+        self._MetaStoreUrl = params.get("MetaStoreUrl")
+        if params.get("RangerConnection") is not None:
+            self._RangerConnection = RangerConnection()
+            self._RangerConnection._deserialize(params.get("RangerConnection"))
+        self._HiveVersion = params.get("HiveVersion")
+        self._Location = params.get("Location")
+        if params.get("NetWork") is not None:
+            self._NetWork = NetWork()
+            self._NetWork._deserialize(params.get("NetWork"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65338,6 +69917,138 @@ class ListModelVersionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListPartition(AbstractModel):
+    r"""tcc ListPartition定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>分区名</p>
+        :type Name: str
+        :param _Lists: <p>分区列表</p>
+        :type Lists: list of Literal
+        :param _Properties: <p>属性</p>
+        :type Properties: list of KVPair
+        """
+        self._Name = None
+        self._Lists = None
+        self._Properties = None
+
+    @property
+    def Name(self):
+        r"""<p>分区名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Lists(self):
+        r"""<p>分区列表</p>
+        :rtype: list of Literal
+        """
+        return self._Lists
+
+    @Lists.setter
+    def Lists(self, Lists):
+        self._Lists = Lists
+
+    @property
+    def Properties(self):
+        r"""<p>属性</p>
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Lists") is not None:
+            self._Lists = []
+            for item in params.get("Lists"):
+                obj = Literal()
+                obj._deserialize(item)
+                self._Lists.append(obj)
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPartitioning(AbstractModel):
+    r"""tcc ListPartitioning分区定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldNames: <p>分区字段</p>
+        :type FieldNames: list of str
+        :param _Assignments: <p>分区列表信息</p>
+        :type Assignments: list of ListPartition
+        """
+        self._FieldNames = None
+        self._Assignments = None
+
+    @property
+    def FieldNames(self):
+        r"""<p>分区字段</p>
+        :rtype: list of str
+        """
+        return self._FieldNames
+
+    @FieldNames.setter
+    def FieldNames(self, FieldNames):
+        self._FieldNames = FieldNames
+
+    @property
+    def Assignments(self):
+        r"""<p>分区列表信息</p>
+        :rtype: list of ListPartition
+        """
+        return self._Assignments
+
+    @Assignments.setter
+    def Assignments(self, Assignments):
+        self._Assignments = Assignments
+
+
+    def _deserialize(self, params):
+        self._FieldNames = params.get("FieldNames")
+        if params.get("Assignments") is not None:
+            self._Assignments = []
+            for item in params.get("Assignments"):
+                obj = ListPartition()
+                obj._deserialize(item)
+                self._Assignments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListRayClusterJobsRequest(AbstractModel):
     r"""ListRayClusterJobs请求参数结构体
 
@@ -67557,6 +72268,57 @@ class ListTrainingJobSpecResponse(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._TotalPages = params.get("TotalPages")
         self._RequestId = params.get("RequestId")
+
+
+class Literal(AbstractModel):
+    r"""tcc Literal定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: <p>数值</p>
+        :type Value: str
+        :param _DataType: <p>类型</p><p>枚举值：</p><ul><li>integer： 整数类型</li></ul>
+        :type DataType: str
+        """
+        self._Value = None
+        self._DataType = None
+
+    @property
+    def Value(self):
+        r"""<p>数值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def DataType(self):
+        r"""<p>类型</p><p>枚举值：</p><ul><li>integer： 整数类型</li></ul>
+        :rtype: str
+        """
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._DataType = params.get("DataType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LocationInfo(AbstractModel):
@@ -70221,6 +74983,270 @@ class ModifyGovernEventRuleRequest(AbstractModel):
 
 class ModifyGovernEventRuleResponse(AbstractModel):
     r"""ModifyGovernEventRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyJobDefinitionRequest(AbstractModel):
+    r"""ModifyJobDefinition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobDefinitionId: <p>作业定义 ID。必填。</p>
+        :type JobDefinitionId: str
+        :param _Name: <p>作业定义名称。创建后不可修改：仅接受与当前名称相同的值（回显），传不同值报错；不传表示不修改。</p>
+        :type Name: str
+        :param _Description: <p>修改后的作业定义描述。</p>
+        :type Description: str
+        :param _MajorType: <p>引擎大类（当前仅支持 SPARK）。</p>
+        :type MajorType: str
+        :param _MinorType: <p>作业子类型，SPARK_SQL / SPARK_BATCH / SPARK_STREAM；非必填。</p>
+        :type MinorType: str
+        :param _CheckpointLocation: <p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint），非必填，传了即覆盖。SPARK_STREAM 定义必须非空；变更等于重置消费进度。</p>
+        :type CheckpointLocation: str
+        :param _PartitionCode: <p>资源分区代码，仅目标 RunMode=JOB 可传（QueueName 非空时必填）；目标 RunMode=WAREHOUSE 时禁止传。</p>
+        :type PartitionCode: str
+        :param _QueueName: <p>队列名称，仅目标 RunMode=JOB 可传且须与 PartitionCode 成对；目标 RunMode=WAREHOUSE 时禁止传。</p>
+        :type QueueName: str
+        :param _RuntimeCode: <p>运行时/镜像编码，可选（null=沿用当前值）。仅对 JOB 模式定义生效；目标 RunMode=WAREHOUSE 时禁止传。</p>
+        :type RuntimeCode: str
+        :param _SysCatalogVersion: <p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型），可选（null=沿用当前值）。</p>
+        :type SysCatalogVersion: str
+        :param _CustomProperties: <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），非必填，传了即整串覆盖。</p>
+        :type CustomProperties: str
+        :param _EnvVars: <p>环境变量（KEY=VALUE）列表，非必填，传了即整体覆盖。仅对 JOB 模式定义生效；目标 RunMode=WAREHOUSE 时禁止传。</p>
+        :type EnvVars: list of KVPair
+        :param _RunMode: <p>目标运行模式：WAREHOUSE / JOB；未传=保持不变。切换模式时两种模式的参数集严格隔离（切换 WAREHOUSE 须提供 WarehouseId 且禁传 JOB 模式专属字段，反之亦然）。</p>
+        :type RunMode: str
+        :param _WarehouseId: <p>计算仓库 ID。仅目标 RunMode=WAREHOUSE 时可传（必填）；未传 RunMode 或目标为 JOB 时禁止传。</p>
+        :type WarehouseId: str
+        """
+        self._JobDefinitionId = None
+        self._Name = None
+        self._Description = None
+        self._MajorType = None
+        self._MinorType = None
+        self._CheckpointLocation = None
+        self._PartitionCode = None
+        self._QueueName = None
+        self._RuntimeCode = None
+        self._SysCatalogVersion = None
+        self._CustomProperties = None
+        self._EnvVars = None
+        self._RunMode = None
+        self._WarehouseId = None
+
+    @property
+    def JobDefinitionId(self):
+        r"""<p>作业定义 ID。必填。</p>
+        :rtype: str
+        """
+        return self._JobDefinitionId
+
+    @JobDefinitionId.setter
+    def JobDefinitionId(self, JobDefinitionId):
+        self._JobDefinitionId = JobDefinitionId
+
+    @property
+    def Name(self):
+        r"""<p>作业定义名称。创建后不可修改：仅接受与当前名称相同的值（回显），传不同值报错；不传表示不修改。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>修改后的作业定义描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def MajorType(self):
+        r"""<p>引擎大类（当前仅支持 SPARK）。</p>
+        :rtype: str
+        """
+        return self._MajorType
+
+    @MajorType.setter
+    def MajorType(self, MajorType):
+        self._MajorType = MajorType
+
+    @property
+    def MinorType(self):
+        r"""<p>作业子类型，SPARK_SQL / SPARK_BATCH / SPARK_STREAM；非必填。</p>
+        :rtype: str
+        """
+        return self._MinorType
+
+    @MinorType.setter
+    def MinorType(self, MinorType):
+        self._MinorType = MinorType
+
+    @property
+    def CheckpointLocation(self):
+        r"""<p>流作业 checkpoint 路径（如 cosn://bucket/path/checkpoint），非必填，传了即覆盖。SPARK_STREAM 定义必须非空；变更等于重置消费进度。</p>
+        :rtype: str
+        """
+        return self._CheckpointLocation
+
+    @CheckpointLocation.setter
+    def CheckpointLocation(self, CheckpointLocation):
+        self._CheckpointLocation = CheckpointLocation
+
+    @property
+    def PartitionCode(self):
+        r"""<p>资源分区代码，仅目标 RunMode=JOB 可传（QueueName 非空时必填）；目标 RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称，仅目标 RunMode=JOB 可传且须与 PartitionCode 成对；目标 RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def RuntimeCode(self):
+        r"""<p>运行时/镜像编码，可选（null=沿用当前值）。仅对 JOB 模式定义生效；目标 RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: str
+        """
+        return self._RuntimeCode
+
+    @RuntimeCode.setter
+    def RuntimeCode(self, RuntimeCode):
+        self._RuntimeCode = RuntimeCode
+
+    @property
+    def SysCatalogVersion(self):
+        r"""<p>内置 Catalog 版本码（取值为 DescribeSysCatalogList 返回的目录子类型），可选（null=沿用当前值）。</p>
+        :rtype: str
+        """
+        return self._SysCatalogVersion
+
+    @SysCatalogVersion.setter
+    def SysCatalogVersion(self, SysCatalogVersion):
+        self._SysCatalogVersion = SysCatalogVersion
+
+    @property
+    def CustomProperties(self):
+        r"""<p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），非必填，传了即整串覆盖。</p>
+        :rtype: str
+        """
+        return self._CustomProperties
+
+    @CustomProperties.setter
+    def CustomProperties(self, CustomProperties):
+        self._CustomProperties = CustomProperties
+
+    @property
+    def EnvVars(self):
+        r"""<p>环境变量（KEY=VALUE）列表，非必填，传了即整体覆盖。仅对 JOB 模式定义生效；目标 RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: list of KVPair
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+    @property
+    def RunMode(self):
+        r"""<p>目标运行模式：WAREHOUSE / JOB；未传=保持不变。切换模式时两种模式的参数集严格隔离（切换 WAREHOUSE 须提供 WarehouseId 且禁传 JOB 模式专属字段，反之亦然）。</p>
+        :rtype: str
+        """
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def WarehouseId(self):
+        r"""<p>计算仓库 ID。仅目标 RunMode=WAREHOUSE 时可传（必填）；未传 RunMode 或目标为 JOB 时禁止传。</p>
+        :rtype: str
+        """
+        return self._WarehouseId
+
+    @WarehouseId.setter
+    def WarehouseId(self, WarehouseId):
+        self._WarehouseId = WarehouseId
+
+
+    def _deserialize(self, params):
+        self._JobDefinitionId = params.get("JobDefinitionId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._MajorType = params.get("MajorType")
+        self._MinorType = params.get("MinorType")
+        self._CheckpointLocation = params.get("CheckpointLocation")
+        self._PartitionCode = params.get("PartitionCode")
+        self._QueueName = params.get("QueueName")
+        self._RuntimeCode = params.get("RuntimeCode")
+        self._SysCatalogVersion = params.get("SysCatalogVersion")
+        self._CustomProperties = params.get("CustomProperties")
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        self._RunMode = params.get("RunMode")
+        self._WarehouseId = params.get("WarehouseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyJobDefinitionResponse(AbstractModel):
+    r"""ModifyJobDefinition返回参数结构体
 
     """
 
@@ -73113,6 +78139,119 @@ class MountPointAssociates(AbstractModel):
         
 
 
+class MysqlConnection(AbstractModel):
+    r"""tcc mysql连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        :param _JDBCUrl: <p>JDBC连接地址</p>
+        :type JDBCUrl: str
+        :param _User: <p>账号</p>
+        :type User: str
+        :param _Password: <p>密码</p>
+        :type Password: str
+        :param _NetWork: <p>网络信息</p>
+        :type NetWork: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._JDBCUrl = None
+        self._User = None
+        self._Password = None
+        self._NetWork = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def JDBCUrl(self):
+        r"""<p>JDBC连接地址</p>
+        :rtype: str
+        """
+        return self._JDBCUrl
+
+    @JDBCUrl.setter
+    def JDBCUrl(self, JDBCUrl):
+        self._JDBCUrl = JDBCUrl
+
+    @property
+    def User(self):
+        r"""<p>账号</p>
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def NetWork(self):
+        r"""<p>网络信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        return self._NetWork
+
+    @NetWork.setter
+    def NetWork(self, NetWork):
+        self._NetWork = NetWork
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._JDBCUrl = params.get("JDBCUrl")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        if params.get("NetWork") is not None:
+            self._NetWork = NetWork()
+            self._NetWork._deserialize(params.get("NetWork"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MysqlInfo(AbstractModel):
     r"""Mysql类型数据源信息
 
@@ -73235,6 +78374,57 @@ class MysqlInfo(AbstractModel):
         self._DbName = params.get("DbName")
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NameIdentifier(AbstractModel):
+    r"""tcc 通用命名标识
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: list of str
+        """
+        self._Name = None
+        self._Namespace = None
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: list of str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75885,6 +81075,195 @@ class PartitionInfo(AbstractModel):
         
 
 
+class Partitioning(AbstractModel):
+    r"""tcc Partition分区定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Strategy: <p>转换策略</p>
+        :type Strategy: str
+        :param _YearPartitioning: <p>按年分区策略</p>
+        :type YearPartitioning: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        :param _MonthPartitioning: <p>按月分区策略</p>
+        :type MonthPartitioning: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        :param _DayPartitioning: <p>按天分区策略</p>
+        :type DayPartitioning: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        :param _HourPartitioning: <p>按小时分区策略</p>
+        :type HourPartitioning: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        :param _IdentityPartitioning: <p>按字段分区策略</p>
+        :type IdentityPartitioning: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        :param _ListPartitioning: <p>列表分区策略</p>
+        :type ListPartitioning: :class:`tencentcloud.dlc.v20210125.models.ListPartitioning`
+        :param _RangePartitioning: <p>范围分区策略</p>
+        :type RangePartitioning: :class:`tencentcloud.dlc.v20210125.models.RangePartitioning`
+        :param _BucketPartitioning: <p>分桶分区策略</p>
+        :type BucketPartitioning: :class:`tencentcloud.dlc.v20210125.models.BucketPartitioning`
+        :param _TruncatePartitioning: <p>截断分区策略</p>
+        :type TruncatePartitioning: :class:`tencentcloud.dlc.v20210125.models.TruncatePartitioning`
+        """
+        self._Strategy = None
+        self._YearPartitioning = None
+        self._MonthPartitioning = None
+        self._DayPartitioning = None
+        self._HourPartitioning = None
+        self._IdentityPartitioning = None
+        self._ListPartitioning = None
+        self._RangePartitioning = None
+        self._BucketPartitioning = None
+        self._TruncatePartitioning = None
+
+    @property
+    def Strategy(self):
+        r"""<p>转换策略</p>
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def YearPartitioning(self):
+        r"""<p>按年分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        """
+        return self._YearPartitioning
+
+    @YearPartitioning.setter
+    def YearPartitioning(self, YearPartitioning):
+        self._YearPartitioning = YearPartitioning
+
+    @property
+    def MonthPartitioning(self):
+        r"""<p>按月分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        """
+        return self._MonthPartitioning
+
+    @MonthPartitioning.setter
+    def MonthPartitioning(self, MonthPartitioning):
+        self._MonthPartitioning = MonthPartitioning
+
+    @property
+    def DayPartitioning(self):
+        r"""<p>按天分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        """
+        return self._DayPartitioning
+
+    @DayPartitioning.setter
+    def DayPartitioning(self, DayPartitioning):
+        self._DayPartitioning = DayPartitioning
+
+    @property
+    def HourPartitioning(self):
+        r"""<p>按小时分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        """
+        return self._HourPartitioning
+
+    @HourPartitioning.setter
+    def HourPartitioning(self, HourPartitioning):
+        self._HourPartitioning = HourPartitioning
+
+    @property
+    def IdentityPartitioning(self):
+        r"""<p>按字段分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SingleFieldPartitioning`
+        """
+        return self._IdentityPartitioning
+
+    @IdentityPartitioning.setter
+    def IdentityPartitioning(self, IdentityPartitioning):
+        self._IdentityPartitioning = IdentityPartitioning
+
+    @property
+    def ListPartitioning(self):
+        r"""<p>列表分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListPartitioning`
+        """
+        return self._ListPartitioning
+
+    @ListPartitioning.setter
+    def ListPartitioning(self, ListPartitioning):
+        self._ListPartitioning = ListPartitioning
+
+    @property
+    def RangePartitioning(self):
+        r"""<p>范围分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RangePartitioning`
+        """
+        return self._RangePartitioning
+
+    @RangePartitioning.setter
+    def RangePartitioning(self, RangePartitioning):
+        self._RangePartitioning = RangePartitioning
+
+    @property
+    def BucketPartitioning(self):
+        r"""<p>分桶分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.BucketPartitioning`
+        """
+        return self._BucketPartitioning
+
+    @BucketPartitioning.setter
+    def BucketPartitioning(self, BucketPartitioning):
+        self._BucketPartitioning = BucketPartitioning
+
+    @property
+    def TruncatePartitioning(self):
+        r"""<p>截断分区策略</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.TruncatePartitioning`
+        """
+        return self._TruncatePartitioning
+
+    @TruncatePartitioning.setter
+    def TruncatePartitioning(self, TruncatePartitioning):
+        self._TruncatePartitioning = TruncatePartitioning
+
+
+    def _deserialize(self, params):
+        self._Strategy = params.get("Strategy")
+        if params.get("YearPartitioning") is not None:
+            self._YearPartitioning = SingleFieldPartitioning()
+            self._YearPartitioning._deserialize(params.get("YearPartitioning"))
+        if params.get("MonthPartitioning") is not None:
+            self._MonthPartitioning = SingleFieldPartitioning()
+            self._MonthPartitioning._deserialize(params.get("MonthPartitioning"))
+        if params.get("DayPartitioning") is not None:
+            self._DayPartitioning = SingleFieldPartitioning()
+            self._DayPartitioning._deserialize(params.get("DayPartitioning"))
+        if params.get("HourPartitioning") is not None:
+            self._HourPartitioning = SingleFieldPartitioning()
+            self._HourPartitioning._deserialize(params.get("HourPartitioning"))
+        if params.get("IdentityPartitioning") is not None:
+            self._IdentityPartitioning = SingleFieldPartitioning()
+            self._IdentityPartitioning._deserialize(params.get("IdentityPartitioning"))
+        if params.get("ListPartitioning") is not None:
+            self._ListPartitioning = ListPartitioning()
+            self._ListPartitioning._deserialize(params.get("ListPartitioning"))
+        if params.get("RangePartitioning") is not None:
+            self._RangePartitioning = RangePartitioning()
+            self._RangePartitioning._deserialize(params.get("RangePartitioning"))
+        if params.get("BucketPartitioning") is not None:
+            self._BucketPartitioning = BucketPartitioning()
+            self._BucketPartitioning._deserialize(params.get("BucketPartitioning"))
+        if params.get("TruncatePartitioning") is not None:
+            self._TruncatePartitioning = TruncatePartitioning()
+            self._TruncatePartitioning._deserialize(params.get("TruncatePartitioning"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PauseStandardEngineResourceGroupsRequest(AbstractModel):
     r"""PauseStandardEngineResourceGroups请求参数结构体
 
@@ -76749,6 +82128,149 @@ class PostTrainingResources(AbstractModel):
                 obj = WorkerSpecDTO()
                 obj._deserialize(item)
                 self._Worker.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PostgreSQLConnection(AbstractModel):
+    r"""tcc PostgreSQL连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: <p>IP地址</p>
+        :type Ip: str
+        :param _Port: <p>端口</p>
+        :type Port: str
+        :param _User: <p>用户名</p>
+        :type User: str
+        :param _Password: <p>密码</p>
+        :type Password: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名字</p>
+        :type InstanceName: str
+        :param _NetWork: <p>网络信息</p>
+        :type NetWork: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        :param _Database: <p>数据库</p>
+        :type Database: str
+        """
+        self._Ip = None
+        self._Port = None
+        self._User = None
+        self._Password = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._NetWork = None
+        self._Database = None
+
+    @property
+    def Ip(self):
+        r"""<p>IP地址</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        r"""<p>端口</p>
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def User(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名字</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def NetWork(self):
+        r"""<p>网络信息</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.NetWork`
+        """
+        return self._NetWork
+
+    @NetWork.setter
+    def NetWork(self, NetWork):
+        self._NetWork = NetWork
+
+    @property
+    def Database(self):
+        r"""<p>数据库</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        if params.get("NetWork") is not None:
+            self._NetWork = NetWork()
+            self._NetWork._deserialize(params.get("NetWork"))
+        self._Database = params.get("Database")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -78187,6 +83709,233 @@ class QueueResourceQuota(AbstractModel):
         self._Total = params.get("Total")
         self._Used = params.get("Used")
         self._Available = params.get("Available")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RangePartition(AbstractModel):
+    r"""tcc RangePartition定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>分区名</p>
+        :type Name: str
+        :param _Lower: <p>下界</p>
+        :type Lower: :class:`tencentcloud.dlc.v20210125.models.Literal`
+        :param _Upper: <p>上界</p>
+        :type Upper: :class:`tencentcloud.dlc.v20210125.models.Literal`
+        :param _Properties: <p>属性</p>
+        :type Properties: list of KVPair
+        """
+        self._Name = None
+        self._Lower = None
+        self._Upper = None
+        self._Properties = None
+
+    @property
+    def Name(self):
+        r"""<p>分区名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Lower(self):
+        r"""<p>下界</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Literal`
+        """
+        return self._Lower
+
+    @Lower.setter
+    def Lower(self, Lower):
+        self._Lower = Lower
+
+    @property
+    def Upper(self):
+        r"""<p>上界</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Literal`
+        """
+        return self._Upper
+
+    @Upper.setter
+    def Upper(self, Upper):
+        self._Upper = Upper
+
+    @property
+    def Properties(self):
+        r"""<p>属性</p>
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Lower") is not None:
+            self._Lower = Literal()
+            self._Lower._deserialize(params.get("Lower"))
+        if params.get("Upper") is not None:
+            self._Upper = Literal()
+            self._Upper._deserialize(params.get("Upper"))
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RangePartitioning(AbstractModel):
+    r"""tcc RangePartitioning定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: <p>字段名</p>
+        :type FieldName: str
+        :param _Assignments: <p>分区信息</p>
+        :type Assignments: list of RangePartition
+        """
+        self._FieldName = None
+        self._Assignments = None
+
+    @property
+    def FieldName(self):
+        r"""<p>字段名</p>
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def Assignments(self):
+        r"""<p>分区信息</p>
+        :rtype: list of RangePartition
+        """
+        return self._Assignments
+
+    @Assignments.setter
+    def Assignments(self, Assignments):
+        self._Assignments = Assignments
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        if params.get("Assignments") is not None:
+            self._Assignments = []
+            for item in params.get("Assignments"):
+                obj = RangePartition()
+                obj._deserialize(item)
+                self._Assignments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RangerConnection(AbstractModel):
+    r"""tcc ranger连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        :param _ServiceUrl: <p>服务url</p>
+        :type ServiceUrl: str
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        :param _Password: <p>密码</p>
+        :type Password: str
+        """
+        self._ServiceName = None
+        self._ServiceUrl = None
+        self._UserName = None
+        self._Password = None
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceUrl(self):
+        r"""<p>服务url</p>
+        :rtype: str
+        """
+        return self._ServiceUrl
+
+    @ServiceUrl.setter
+    def ServiceUrl(self, ServiceUrl):
+        self._ServiceUrl = ServiceUrl
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceUrl = params.get("ServiceUrl")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -82105,6 +87854,123 @@ class RestartInferenceServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResultColumn(AbstractModel):
+    r"""结果集列定义（DescribeJobResult.Columns 的元素）.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>列名。</p>
+        :type Name: str
+        :param _DataType: <p>列数据类型（如 int / string）。</p>
+        :type DataType: str
+        :param _Comment: <p>列注释。</p>
+        :type Comment: str
+        :param _Nullable: <p>是否可为 NULL。</p>
+        :type Nullable: bool
+        """
+        self._Name = None
+        self._DataType = None
+        self._Comment = None
+        self._Nullable = None
+
+    @property
+    def Name(self):
+        r"""<p>列名。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DataType(self):
+        r"""<p>列数据类型（如 int / string）。</p>
+        :rtype: str
+        """
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def Comment(self):
+        r"""<p>列注释。</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Nullable(self):
+        r"""<p>是否可为 NULL。</p>
+        :rtype: bool
+        """
+        return self._Nullable
+
+    @Nullable.setter
+    def Nullable(self, Nullable):
+        self._Nullable = Nullable
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._DataType = params.get("DataType")
+        self._Comment = params.get("Comment")
+        self._Nullable = params.get("Nullable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResultRow(AbstractModel):
+    r"""结果集单行数据（DescribeJobResult.Rows 的元素）.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: <p>本行的单元格值列表，与 SchemaJson 列定义顺序一一对应；NULL 值以 null 表示.</p>
+        :type Values: list of str
+        """
+        self._Values = None
+
+    @property
+    def Values(self):
+        r"""<p>本行的单元格值列表，与 SchemaJson 列定义顺序一一对应；NULL 值以 null 表示.</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResumeTrainingJobInstanceRequest(AbstractModel):
     r"""ResumeTrainingJobInstance请求参数结构体
 
@@ -83541,6 +89407,42 @@ class SharedMountFileItem(AbstractModel):
         if params.get("Metrics") is not None:
             self._Metrics = CheckpointMetrics()
             self._Metrics._deserialize(params.get("Metrics"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SingleFieldPartitioning(AbstractModel):
+    r"""tcc SingleFieldPartitioning定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: <p>分区字段</p>
+        :type FieldName: str
+        """
+        self._FieldName = None
+
+    @property
+    def FieldName(self):
+        r"""<p>分区字段</p>
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -96834,6 +102736,57 @@ class TrainingTuningParams(AbstractModel):
         
 
 
+class TruncatePartitioning(AbstractModel):
+    r"""tcc TruncatePartitioning定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: <p>截取长度</p>
+        :type Width: int
+        :param _FieldName: <p>字段名</p>
+        :type FieldName: str
+        """
+        self._Width = None
+        self._FieldName = None
+
+    @property
+    def Width(self):
+        r"""<p>截取长度</p>
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def FieldName(self):
+        r"""<p>字段名</p>
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._FieldName = params.get("FieldName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TypeKVPair(AbstractModel):
     r"""通用的键值对数据结构
 
@@ -105500,6 +111453,42 @@ class ViewResponseInfo(AbstractModel):
         
 
 
+class VolumeConnection(AbstractModel):
+    r"""tcc volume 连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Location: <p>存储路径</p>
+        :type Location: str
+        """
+        self._Location = None
+
+    @property
+    def Location(self):
+        r"""<p>存储路径</p>
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._Location = params.get("Location")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VpcCidrBlock(AbstractModel):
     r"""VPC子网信息
 
@@ -105622,6 +111611,317 @@ class VpcInfo(AbstractModel):
         self._VpcCidrBlock = params.get("VpcCidrBlock")
         self._RuleId = params.get("RuleId")
         self._AccessGroupId = params.get("AccessGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WarehouseInfo(AbstractModel):
+    r"""计算仓库基础信息（对外 API 响应，DescribeWarehouses 列表结构）.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WarehouseId: <p>仓库 id（格式 "dlc-wh-xxxxxxxx"）.</p>
+        :type WarehouseId: str
+        :param _Name: <p>仓库名称，租户内唯一。</p>
+        :type Name: str
+        :param _CreatorSubUin: <p>创建者子账号 UIN。</p>
+        :type CreatorSubUin: str
+        :param _Description: <p>仓库描述信息。</p>
+        :type Description: str
+        :param _State: <p>fermion 合并后的单一状态。取值：STARTING / RUNNING / STOPPING / STOPPED / UPDATING / UNAVAILABLE / DESTROYING（销毁中，只读：不接受任何生命周期操作）。</p>
+        :type State: str
+        :param _PartitionCode: <p>资源池编码.</p>
+        :type PartitionCode: str
+        :param _PartitionName: <p>资源池展示名（解析不到时为空）.</p>
+        :type PartitionName: str
+        :param _QueueName: <p>资源组/队列名。</p>
+        :type QueueName: str
+        :param _CreateTime: <p>创建时间（毫秒时间戳）。</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>最后更新时间（毫秒时间戳）。</p>
+        :type UpdateTime: int
+        :param _ActiveClusters: <p>活跃集群数（describe 与 list 均返回）。集群明细等完整快照仅 DescribeWarehouseDetail 的 Observability 返回。</p>
+        :type ActiveClusters: int
+        :param _MinClusters: <p>最小集群数（即最小实例数下限；describe 与 list 均返回）.</p>
+        :type MinClusters: int
+        :param _MaxClusters: <p>最大集群数（即最大实例数上限；describe 与 list 均返回）.</p>
+        :type MaxClusters: int
+        :param _RuntimeCode: <p>运行时/镜像.</p>
+        :type RuntimeCode: str
+        :param _RuntimeName: <p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空.</p>
+        :type RuntimeName: str
+        :param _SysCatalogVersion: <p>Catalog 版本码.</p>
+        :type SysCatalogVersion: str
+        :param _EnvVars: <p>环境变量.</p>
+        :type EnvVars: list of KVPair
+        :param _RuntimeConf: <p>静态运行参数（RuntimeConf）：spark.* KV 的 JSON 字符串（如 "{\"spark.sql.shuffle.partitions\":\"400\"}"），spark-submit 时生效。</p>
+        :type RuntimeConf: str
+        :param _DynamicProperties: <p>动态参数（DynamicProperties）：spark.* KV 的 JSON 字符串，运行期生效（会话级，openSession 弱注入，即改即生效）。</p>
+        :type DynamicProperties: str
+        """
+        self._WarehouseId = None
+        self._Name = None
+        self._CreatorSubUin = None
+        self._Description = None
+        self._State = None
+        self._PartitionCode = None
+        self._PartitionName = None
+        self._QueueName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ActiveClusters = None
+        self._MinClusters = None
+        self._MaxClusters = None
+        self._RuntimeCode = None
+        self._RuntimeName = None
+        self._SysCatalogVersion = None
+        self._EnvVars = None
+        self._RuntimeConf = None
+        self._DynamicProperties = None
+
+    @property
+    def WarehouseId(self):
+        r"""<p>仓库 id（格式 "dlc-wh-xxxxxxxx"）.</p>
+        :rtype: str
+        """
+        return self._WarehouseId
+
+    @WarehouseId.setter
+    def WarehouseId(self, WarehouseId):
+        self._WarehouseId = WarehouseId
+
+    @property
+    def Name(self):
+        r"""<p>仓库名称，租户内唯一。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CreatorSubUin(self):
+        r"""<p>创建者子账号 UIN。</p>
+        :rtype: str
+        """
+        return self._CreatorSubUin
+
+    @CreatorSubUin.setter
+    def CreatorSubUin(self, CreatorSubUin):
+        self._CreatorSubUin = CreatorSubUin
+
+    @property
+    def Description(self):
+        r"""<p>仓库描述信息。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def State(self):
+        r"""<p>fermion 合并后的单一状态。取值：STARTING / RUNNING / STOPPING / STOPPED / UPDATING / UNAVAILABLE / DESTROYING（销毁中，只读：不接受任何生命周期操作）。</p>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def PartitionCode(self):
+        r"""<p>资源池编码.</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def PartitionName(self):
+        r"""<p>资源池展示名（解析不到时为空）.</p>
+        :rtype: str
+        """
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+    @property
+    def QueueName(self):
+        r"""<p>资源组/队列名。</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（毫秒时间戳）。</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>最后更新时间（毫秒时间戳）。</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ActiveClusters(self):
+        r"""<p>活跃集群数（describe 与 list 均返回）。集群明细等完整快照仅 DescribeWarehouseDetail 的 Observability 返回。</p>
+        :rtype: int
+        """
+        return self._ActiveClusters
+
+    @ActiveClusters.setter
+    def ActiveClusters(self, ActiveClusters):
+        self._ActiveClusters = ActiveClusters
+
+    @property
+    def MinClusters(self):
+        r"""<p>最小集群数（即最小实例数下限；describe 与 list 均返回）.</p>
+        :rtype: int
+        """
+        return self._MinClusters
+
+    @MinClusters.setter
+    def MinClusters(self, MinClusters):
+        self._MinClusters = MinClusters
+
+    @property
+    def MaxClusters(self):
+        r"""<p>最大集群数（即最大实例数上限；describe 与 list 均返回）.</p>
+        :rtype: int
+        """
+        return self._MaxClusters
+
+    @MaxClusters.setter
+    def MaxClusters(self, MaxClusters):
+        self._MaxClusters = MaxClusters
+
+    @property
+    def RuntimeCode(self):
+        r"""<p>运行时/镜像.</p>
+        :rtype: str
+        """
+        return self._RuntimeCode
+
+    @RuntimeCode.setter
+    def RuntimeCode(self, RuntimeCode):
+        self._RuntimeCode = RuntimeCode
+
+    @property
+    def RuntimeName(self):
+        r"""<p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空.</p>
+        :rtype: str
+        """
+        return self._RuntimeName
+
+    @RuntimeName.setter
+    def RuntimeName(self, RuntimeName):
+        self._RuntimeName = RuntimeName
+
+    @property
+    def SysCatalogVersion(self):
+        r"""<p>Catalog 版本码.</p>
+        :rtype: str
+        """
+        return self._SysCatalogVersion
+
+    @SysCatalogVersion.setter
+    def SysCatalogVersion(self, SysCatalogVersion):
+        self._SysCatalogVersion = SysCatalogVersion
+
+    @property
+    def EnvVars(self):
+        r"""<p>环境变量.</p>
+        :rtype: list of KVPair
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+    @property
+    def RuntimeConf(self):
+        r"""<p>静态运行参数（RuntimeConf）：spark.* KV 的 JSON 字符串（如 "{\"spark.sql.shuffle.partitions\":\"400\"}"），spark-submit 时生效。</p>
+        :rtype: str
+        """
+        return self._RuntimeConf
+
+    @RuntimeConf.setter
+    def RuntimeConf(self, RuntimeConf):
+        self._RuntimeConf = RuntimeConf
+
+    @property
+    def DynamicProperties(self):
+        r"""<p>动态参数（DynamicProperties）：spark.* KV 的 JSON 字符串，运行期生效（会话级，openSession 弱注入，即改即生效）。</p>
+        :rtype: str
+        """
+        return self._DynamicProperties
+
+    @DynamicProperties.setter
+    def DynamicProperties(self, DynamicProperties):
+        self._DynamicProperties = DynamicProperties
+
+
+    def _deserialize(self, params):
+        self._WarehouseId = params.get("WarehouseId")
+        self._Name = params.get("Name")
+        self._CreatorSubUin = params.get("CreatorSubUin")
+        self._Description = params.get("Description")
+        self._State = params.get("State")
+        self._PartitionCode = params.get("PartitionCode")
+        self._PartitionName = params.get("PartitionName")
+        self._QueueName = params.get("QueueName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ActiveClusters = params.get("ActiveClusters")
+        self._MinClusters = params.get("MinClusters")
+        self._MaxClusters = params.get("MaxClusters")
+        self._RuntimeCode = params.get("RuntimeCode")
+        self._RuntimeName = params.get("RuntimeName")
+        self._SysCatalogVersion = params.get("SysCatalogVersion")
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        self._RuntimeConf = params.get("RuntimeConf")
+        self._DynamicProperties = params.get("DynamicProperties")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

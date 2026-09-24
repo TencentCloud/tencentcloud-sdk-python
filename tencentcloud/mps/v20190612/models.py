@@ -78178,29 +78178,27 @@ class QualityControlTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 媒体质检模板唯一标识。
+        :param _Definition: <p>媒体质检模板唯一标识。</p>
         :type Definition: int
-        :param _Name: 媒体质检模板名称。
+        :param _Name: <p>媒体质检模板名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Comment: 模板描述信息。
+        :param _Comment: <p>模板描述信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
-        :param _Type: 模板类型，取值：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
+        :param _Type: <p>模板类型，取值：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _QualityControlItemSet: 媒体质检配置参数。
+        :param _QualityControlItemSet: <p>媒体质检配置参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlItemSet: list of QualityControlItemConfig
-        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :param _CreateTime: <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :param _UpdateTime: <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _Strategy: 媒体质检的抽检策略。
+        :param _Strategy: <p>媒体质检的抽检策略。</p>
         :type Strategy: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
         """
         self._Definition = None
@@ -78214,7 +78212,7 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Definition(self):
-        r"""媒体质检模板唯一标识。
+        r"""<p>媒体质检模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -78225,7 +78223,7 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Name(self):
-        r"""媒体质检模板名称。
+        r"""<p>媒体质检模板名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -78237,7 +78235,7 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息。
+        r"""<p>模板描述信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -78249,9 +78247,7 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Type(self):
-        r"""模板类型，取值：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
+        r"""<p>模板类型，取值：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -78263,7 +78259,7 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def QualityControlItemSet(self):
-        r"""媒体质检配置参数。
+        r"""<p>媒体质检配置参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QualityControlItemConfig
         """
@@ -78275,7 +78271,7 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        r"""<p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -78287,7 +78283,7 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        r"""<p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -78299,7 +78295,7 @@ class QualityControlTemplate(AbstractModel):
 
     @property
     def Strategy(self):
-        r"""媒体质检的抽检策略。
+        r"""<p>媒体质检的抽检策略。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.QualityControlStrategy`
         """
         return self._Strategy

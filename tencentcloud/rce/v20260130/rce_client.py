@@ -27,7 +27,7 @@ class RceClient(AbstractClient):
 
 
     def AssessDeviceRiskPremiumPro(self, request):
-        r"""设备风险评估-高级版
+        r"""基于设备端SDK 采集设备指纹 token和IP进行风险识别，提供设备、环境、行为等维度给出的综合风险评估（包含决策结果、风险评分、风险标签）和设备以及 IP 的基础信息。
 
         :param request: Request instance for AssessDeviceRiskPremiumPro.
         :type request: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskPremiumProRequest`
@@ -50,7 +50,7 @@ class RceClient(AbstractClient):
 
 
     def AssessDeviceRiskPro(self, request):
-        r"""设备风险评估-基础版
+        r"""基于设备端SDK 采集设备指纹 token和IP进行风险识别，提供设备维度的风险标签和设备基础信息，以及 IP 的地理位置和网络信息。
 
         :param request: Request instance for AssessDeviceRiskPro.
         :type request: :class:`tencentcloud.rce.v20260130.models.AssessDeviceRiskProRequest`
@@ -73,7 +73,7 @@ class RceClient(AbstractClient):
 
 
     def AssessEnvironmentRisk(self, request):
-        r"""环境风险评估
+        r"""基于传入的客户端IP进行风险识别，提供环境的风险评估（包含风险等级、风险标签）以及IP的地理位置和网络信息。
 
         :param request: Request instance for AssessEnvironmentRisk.
         :type request: :class:`tencentcloud.rce.v20260130.models.AssessEnvironmentRiskRequest`

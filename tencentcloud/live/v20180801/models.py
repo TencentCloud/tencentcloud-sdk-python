@@ -11804,13 +11804,13 @@ class CreateLiveSmartEraseTemplateRequest(AbstractModel):
         :type Type: str
         :param _Description: <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
         :type Description: str
-        :param _AuditConfId: <p>关联的审核模板id, 表audio_conf 。</p>
+        :param _AuditConfId: <p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates接口返回的AuditTemplates里面的TemplateId字段</p>
         :type AuditConfId: int
-        :param _ImageBizType: <p>天御图片审核策略BizType  Image 。</p>
+        :param _ImageBizType: <p>天御图片审核策略BizType  Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
         :type ImageBizType: str
-        :param _AudioBizType: <p>天御音频审核策略BizType  ShortAudio 。</p>
+        :param _AudioBizType: <p>天御音频审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
         :type AudioBizType: str
-        :param _AudioTextBizType: <p>天御音频文本审核策略BizType  ShortAudio 。</p>
+        :param _AudioTextBizType: <p>天御音频文本审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
         :type AudioTextBizType: str
         :param _DisplayMode: <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
         :type DisplayMode: int
@@ -11868,7 +11868,7 @@ class CreateLiveSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def AuditConfId(self):
-        r"""<p>关联的审核模板id, 表audio_conf 。</p>
+        r"""<p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates接口返回的AuditTemplates里面的TemplateId字段</p>
         :rtype: int
         """
         return self._AuditConfId
@@ -11879,7 +11879,7 @@ class CreateLiveSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def ImageBizType(self):
-        r"""<p>天御图片审核策略BizType  Image 。</p>
+        r"""<p>天御图片审核策略BizType  Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
         :rtype: str
         """
         return self._ImageBizType
@@ -11890,7 +11890,7 @@ class CreateLiveSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def AudioBizType(self):
-        r"""<p>天御音频审核策略BizType  ShortAudio 。</p>
+        r"""<p>天御音频审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
         :rtype: str
         """
         return self._AudioBizType
@@ -11901,7 +11901,7 @@ class CreateLiveSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def AudioTextBizType(self):
-        r"""<p>天御音频文本审核策略BizType  ShortAudio 。</p>
+        r"""<p>天御音频文本审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
         :rtype: str
         """
         return self._AudioTextBizType

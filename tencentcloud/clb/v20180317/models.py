@@ -7646,7 +7646,7 @@ class CreateModelRequest(AbstractModel):
         :type CMRPrivateNetworkTunnelId: str
         :param _HealthCheckConfigs: <p>健康检查配置</p>
         :type HealthCheckConfigs: list of ServiceProviderHealthCheckConfigItemInput
-        :param _Capability: <p>模型输出模态</p>
+        :param _Capability: <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :type Capability: str
         :param _EndpointPath: <p>请求后缀</p>
         :type EndpointPath: str
@@ -7860,7 +7860,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Capability(self):
-        r"""<p>模型输出模态</p>
+        r"""<p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :rtype: str
         """
         return self._Capability
@@ -8037,8 +8037,14 @@ class CreateModelRouterRequest(AbstractModel):
         :type EipAddressId: str
         :param _Bandwidth: <p>单位</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
         :type Bandwidth: int
-        :param _EmbeddingConfig: <p>Embedding 配置</p>
+        :param _EmbeddingConfig: <p>Embedding 调度配置</p>
         :type EmbeddingConfig: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
+        :param _VideoConfig: <p>Video 配置</p>
+        :type VideoConfig: :class:`tencentcloud.clb.v20180317.models.VideoConfig`
+        :param _RerankConfig: <p>Rerank 调度配置</p>
+        :type RerankConfig: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
+        :param _DecisionsConfig: <p>Decisions 调度配置</p>
+        :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
         """
         self._ModelRouterType = None
         self._BudgetId = None
@@ -8058,6 +8064,9 @@ class CreateModelRouterRequest(AbstractModel):
         self._EipAddressId = None
         self._Bandwidth = None
         self._EmbeddingConfig = None
+        self._VideoConfig = None
+        self._RerankConfig = None
+        self._DecisionsConfig = None
 
     @property
     def ModelRouterType(self):
@@ -8248,7 +8257,7 @@ class CreateModelRouterRequest(AbstractModel):
 
     @property
     def EmbeddingConfig(self):
-        r"""<p>Embedding 配置</p>
+        r"""<p>Embedding 调度配置</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
         """
         return self._EmbeddingConfig
@@ -8256,6 +8265,39 @@ class CreateModelRouterRequest(AbstractModel):
     @EmbeddingConfig.setter
     def EmbeddingConfig(self, EmbeddingConfig):
         self._EmbeddingConfig = EmbeddingConfig
+
+    @property
+    def VideoConfig(self):
+        r"""<p>Video 配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.VideoConfig`
+        """
+        return self._VideoConfig
+
+    @VideoConfig.setter
+    def VideoConfig(self, VideoConfig):
+        self._VideoConfig = VideoConfig
+
+    @property
+    def RerankConfig(self):
+        r"""<p>Rerank 调度配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
+        """
+        return self._RerankConfig
+
+    @RerankConfig.setter
+    def RerankConfig(self, RerankConfig):
+        self._RerankConfig = RerankConfig
+
+    @property
+    def DecisionsConfig(self):
+        r"""<p>Decisions 调度配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
+        """
+        return self._DecisionsConfig
+
+    @DecisionsConfig.setter
+    def DecisionsConfig(self, DecisionsConfig):
+        self._DecisionsConfig = DecisionsConfig
 
 
     def _deserialize(self, params):
@@ -8292,6 +8334,15 @@ class CreateModelRouterRequest(AbstractModel):
         if params.get("EmbeddingConfig") is not None:
             self._EmbeddingConfig = EmbeddingConfig()
             self._EmbeddingConfig._deserialize(params.get("EmbeddingConfig"))
+        if params.get("VideoConfig") is not None:
+            self._VideoConfig = VideoConfig()
+            self._VideoConfig._deserialize(params.get("VideoConfig"))
+        if params.get("RerankConfig") is not None:
+            self._RerankConfig = RerankConfig()
+            self._RerankConfig._deserialize(params.get("RerankConfig"))
+        if params.get("DecisionsConfig") is not None:
+            self._DecisionsConfig = DecisionsConfig()
+            self._DecisionsConfig._deserialize(params.get("DecisionsConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9501,6 +9552,80 @@ class CrossTargets(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DecisionsConfig(AbstractModel):
+    r"""DecisionsConfig配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutingStrategy: <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategy: str
+        :param _RoutingStrategyArgs: <p>路由参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        :param _NumRetries: <p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumRetries: int
+        """
+        self._RoutingStrategy = None
+        self._RoutingStrategyArgs = None
+        self._NumRetries = None
+
+    @property
+    def RoutingStrategy(self):
+        r"""<p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
+
+    @property
+    def RoutingStrategyArgs(self):
+        r"""<p>路由参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        """
+        return self._RoutingStrategyArgs
+
+    @RoutingStrategyArgs.setter
+    def RoutingStrategyArgs(self, RoutingStrategyArgs):
+        self._RoutingStrategyArgs = RoutingStrategyArgs
+
+    @property
+    def NumRetries(self):
+        r"""<p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumRetries
+
+    @NumRetries.setter
+    def NumRetries(self, NumRetries):
+        self._NumRetries = NumRetries
+
+
+    def _deserialize(self, params):
+        self._RoutingStrategy = params.get("RoutingStrategy")
+        if params.get("RoutingStrategyArgs") is not None:
+            self._RoutingStrategyArgs = RoutingStrategyArgs()
+            self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
+        self._NumRetries = params.get("NumRetries")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15128,13 +15253,16 @@ class DescribeModelAssociationsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>翻页偏移量</p><p>默认值：0</p>
         :type Offset: int
-        :param _Capability: <p>模型输出模态</p>
+        :param _Capability: <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :type Capability: str
+        :param _Capabilities: <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>rerank： 重排序</li><li>video： 视频</li></ul>
+        :type Capabilities: list of str
         """
         self._ModelRouterId = None
         self._Limit = None
         self._Offset = None
         self._Capability = None
+        self._Capabilities = None
 
     @property
     def ModelRouterId(self):
@@ -15171,7 +15299,7 @@ class DescribeModelAssociationsRequest(AbstractModel):
 
     @property
     def Capability(self):
-        r"""<p>模型输出模态</p>
+        r"""<p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :rtype: str
         """
         return self._Capability
@@ -15180,12 +15308,24 @@ class DescribeModelAssociationsRequest(AbstractModel):
     def Capability(self, Capability):
         self._Capability = Capability
 
+    @property
+    def Capabilities(self):
+        r"""<p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>rerank： 重排序</li><li>video： 视频</li></ul>
+        :rtype: list of str
+        """
+        return self._Capabilities
+
+    @Capabilities.setter
+    def Capabilities(self, Capabilities):
+        self._Capabilities = Capabilities
+
 
     def _deserialize(self, params):
         self._ModelRouterId = params.get("ModelRouterId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._Capability = params.get("Capability")
+        self._Capabilities = params.get("Capabilities")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19000,13 +19140,13 @@ class EmbeddingConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoutingStrategy: <p>模型内路由策略</p>
+        :param _RoutingStrategy: <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoutingStrategy: str
         :param _RoutingStrategyArgs: <p>路由参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
-        :param _NumRetries: <p>同一模型请求重试次数</p>
+        :param _NumRetries: <p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumRetries: int
         """
@@ -19016,7 +19156,7 @@ class EmbeddingConfig(AbstractModel):
 
     @property
     def RoutingStrategy(self):
-        r"""<p>模型内路由策略</p>
+        r"""<p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19040,7 +19180,7 @@ class EmbeddingConfig(AbstractModel):
 
     @property
     def NumRetries(self):
-        r"""<p>同一模型请求重试次数</p>
+        r"""<p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25208,7 +25348,7 @@ class ModelAssociation(AbstractModel):
         :type ServiceProviders: list of ServiceProvider
         :param _Type: <p>模型类型</p>
         :type Type: str
-        :param _Capability: <p>输出模态</p>
+        :param _Capability: <p>输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :type Capability: str
         """
         self._InputModalitiesUnion = None
@@ -25263,7 +25403,7 @@ class ModelAssociation(AbstractModel):
 
     @property
     def Capability(self):
-        r"""<p>输出模态</p>
+        r"""<p>输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :rtype: str
         """
         return self._Capability
@@ -25552,7 +25692,7 @@ class ModelKeyInfoItem(AbstractModel):
         :type CMRPrivateNetworkTunnelName: str
         :param _HealthCheckConfigs: <p>健康检查配置</p>
         :type HealthCheckConfigs: list of ServiceProviderHealthCheckConfigItemOutput
-        :param _Capability: <p>模型输出模态</p>
+        :param _Capability: <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Capability: str
         :param _EndpointPath: <p>请求后缀</p>
@@ -25837,7 +25977,7 @@ class ModelKeyInfoItem(AbstractModel):
 
     @property
     def Capability(self):
-        r"""<p>模型输出模态</p>
+        r"""<p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26192,8 +26332,18 @@ class ModelRouterDetail(AbstractModel):
         :type EipAddressId: str
         :param _BillingConfig: <p>计费信息</p>
         :type BillingConfig: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigOutput`
-        :param _EmbeddingConfig: <p>Embedding配置</p>
+        :param _EmbeddingConfig: <p>Embedding调度配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type EmbeddingConfig: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
+        :param _LoadBalancerId: <p>CMR关联的负载均衡实例id</p>
+        :type LoadBalancerId: str
+        :param _VideoConfig: <p>视频模型设置</p>
+        :type VideoConfig: :class:`tencentcloud.clb.v20180317.models.VideoConfig`
+        :param _RerankConfig: <p>Rerank调度配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RerankConfig: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
+        :param _DecisionsConfig: <p>决策模型设置</p>
+        :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -26221,6 +26371,10 @@ class ModelRouterDetail(AbstractModel):
         self._EipAddressId = None
         self._BillingConfig = None
         self._EmbeddingConfig = None
+        self._LoadBalancerId = None
+        self._VideoConfig = None
+        self._RerankConfig = None
+        self._DecisionsConfig = None
 
     @property
     def BudgetId(self):
@@ -26503,7 +26657,8 @@ class ModelRouterDetail(AbstractModel):
 
     @property
     def EmbeddingConfig(self):
-        r"""<p>Embedding配置</p>
+        r"""<p>Embedding调度配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
         """
         return self._EmbeddingConfig
@@ -26511,6 +26666,51 @@ class ModelRouterDetail(AbstractModel):
     @EmbeddingConfig.setter
     def EmbeddingConfig(self, EmbeddingConfig):
         self._EmbeddingConfig = EmbeddingConfig
+
+    @property
+    def LoadBalancerId(self):
+        r"""<p>CMR关联的负载均衡实例id</p>
+        :rtype: str
+        """
+        return self._LoadBalancerId
+
+    @LoadBalancerId.setter
+    def LoadBalancerId(self, LoadBalancerId):
+        self._LoadBalancerId = LoadBalancerId
+
+    @property
+    def VideoConfig(self):
+        r"""<p>视频模型设置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.VideoConfig`
+        """
+        return self._VideoConfig
+
+    @VideoConfig.setter
+    def VideoConfig(self, VideoConfig):
+        self._VideoConfig = VideoConfig
+
+    @property
+    def RerankConfig(self):
+        r"""<p>Rerank调度配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
+        """
+        return self._RerankConfig
+
+    @RerankConfig.setter
+    def RerankConfig(self, RerankConfig):
+        self._RerankConfig = RerankConfig
+
+    @property
+    def DecisionsConfig(self):
+        r"""<p>决策模型设置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
+        """
+        return self._DecisionsConfig
+
+    @DecisionsConfig.setter
+    def DecisionsConfig(self, DecisionsConfig):
+        self._DecisionsConfig = DecisionsConfig
 
 
     def _deserialize(self, params):
@@ -26565,6 +26765,16 @@ class ModelRouterDetail(AbstractModel):
         if params.get("EmbeddingConfig") is not None:
             self._EmbeddingConfig = EmbeddingConfig()
             self._EmbeddingConfig._deserialize(params.get("EmbeddingConfig"))
+        self._LoadBalancerId = params.get("LoadBalancerId")
+        if params.get("VideoConfig") is not None:
+            self._VideoConfig = VideoConfig()
+            self._VideoConfig._deserialize(params.get("VideoConfig"))
+        if params.get("RerankConfig") is not None:
+            self._RerankConfig = RerankConfig()
+            self._RerankConfig._deserialize(params.get("RerankConfig"))
+        if params.get("DecisionsConfig") is not None:
+            self._DecisionsConfig = DecisionsConfig()
+            self._DecisionsConfig._deserialize(params.get("DecisionsConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30275,10 +30485,16 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         :type RouterSetting: :class:`tencentcloud.clb.v20180317.models.RouterSettingWithFallBack`
         :param _Bandwidth: <p>带宽</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
         :type Bandwidth: int
-        :param _Capability: <p>模型输出模态</p>
+        :param _Capability: <p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :type Capability: str
-        :param _EmbeddingConfig: <p>embedding 模态配置</p>
+        :param _EmbeddingConfig: <p>Embedding 调度配置</p><p>传入该参数时，必须传Capability为embedding</p>
         :type EmbeddingConfig: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
+        :param _VideoConfig: <p>Video 调度配置</p>
+        :type VideoConfig: :class:`tencentcloud.clb.v20180317.models.VideoConfig`
+        :param _RerankConfig: <p>Rerank 调度配置</p><p>传入该参数时，必须传Capability为rerank</p>
+        :type RerankConfig: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
+        :param _DecisionsConfig: <p>Decisions 调度配置</p>
+        :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
         """
         self._ModelRouterId = None
         self._CertId = None
@@ -30288,6 +30504,9 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         self._Bandwidth = None
         self._Capability = None
         self._EmbeddingConfig = None
+        self._VideoConfig = None
+        self._RerankConfig = None
+        self._DecisionsConfig = None
 
     @property
     def ModelRouterId(self):
@@ -30357,7 +30576,7 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
 
     @property
     def Capability(self):
-        r"""<p>模型输出模态</p>
+        r"""<p>模型输出模态</p><p>枚举值：</p><ul><li>chat： 文本</li><li>embedding： 向量</li><li>video： 视频</li><li>rerank： 重排序</li></ul>
         :rtype: str
         """
         return self._Capability
@@ -30368,7 +30587,7 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
 
     @property
     def EmbeddingConfig(self):
-        r"""<p>embedding 模态配置</p>
+        r"""<p>Embedding 调度配置</p><p>传入该参数时，必须传Capability为embedding</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
         """
         return self._EmbeddingConfig
@@ -30376,6 +30595,39 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
     @EmbeddingConfig.setter
     def EmbeddingConfig(self, EmbeddingConfig):
         self._EmbeddingConfig = EmbeddingConfig
+
+    @property
+    def VideoConfig(self):
+        r"""<p>Video 调度配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.VideoConfig`
+        """
+        return self._VideoConfig
+
+    @VideoConfig.setter
+    def VideoConfig(self, VideoConfig):
+        self._VideoConfig = VideoConfig
+
+    @property
+    def RerankConfig(self):
+        r"""<p>Rerank 调度配置</p><p>传入该参数时，必须传Capability为rerank</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
+        """
+        return self._RerankConfig
+
+    @RerankConfig.setter
+    def RerankConfig(self, RerankConfig):
+        self._RerankConfig = RerankConfig
+
+    @property
+    def DecisionsConfig(self):
+        r"""<p>Decisions 调度配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
+        """
+        return self._DecisionsConfig
+
+    @DecisionsConfig.setter
+    def DecisionsConfig(self, DecisionsConfig):
+        self._DecisionsConfig = DecisionsConfig
 
 
     def _deserialize(self, params):
@@ -30393,6 +30645,15 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         if params.get("EmbeddingConfig") is not None:
             self._EmbeddingConfig = EmbeddingConfig()
             self._EmbeddingConfig._deserialize(params.get("EmbeddingConfig"))
+        if params.get("VideoConfig") is not None:
+            self._VideoConfig = VideoConfig()
+            self._VideoConfig._deserialize(params.get("VideoConfig"))
+        if params.get("RerankConfig") is not None:
+            self._RerankConfig = RerankConfig()
+            self._RerankConfig._deserialize(params.get("RerankConfig"))
+        if params.get("DecisionsConfig") is not None:
+            self._DecisionsConfig = DecisionsConfig()
+            self._DecisionsConfig._deserialize(params.get("DecisionsConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33513,6 +33774,80 @@ class ReplaceCertForLoadBalancersResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RerankConfig(AbstractModel):
+    r"""Rerank调度配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutingStrategy: <p>L2路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategy: str
+        :param _RoutingStrategyArgs: <p>L2路由算法参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        :param _NumRetries: <p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumRetries: int
+        """
+        self._RoutingStrategy = None
+        self._RoutingStrategyArgs = None
+        self._NumRetries = None
+
+    @property
+    def RoutingStrategy(self):
+        r"""<p>L2路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
+
+    @property
+    def RoutingStrategyArgs(self):
+        r"""<p>L2路由算法参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        """
+        return self._RoutingStrategyArgs
+
+    @RoutingStrategyArgs.setter
+    def RoutingStrategyArgs(self, RoutingStrategyArgs):
+        self._RoutingStrategyArgs = RoutingStrategyArgs
+
+    @property
+    def NumRetries(self):
+        r"""<p>CMR实例级别模型组内请求重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumRetries
+
+    @NumRetries.setter
+    def NumRetries(self, NumRetries):
+        self._NumRetries = NumRetries
+
+
+    def _deserialize(self, params):
+        self._RoutingStrategy = params.get("RoutingStrategy")
+        if params.get("RoutingStrategyArgs") is not None:
+            self._RoutingStrategyArgs = RoutingStrategyArgs()
+            self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
+        self._NumRetries = params.get("NumRetries")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Resource(AbstractModel):
@@ -38953,7 +39288,7 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         :type HealthCheckProtocol: str
         :param _CMRPrivateNetworkTunnelId: <p>    CMR 私网管道ID </p>
         :type CMRPrivateNetworkTunnelId: str
-        :param _Capability: <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
+        :param _Capability: <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li><li>rerank： 重排序能力</li><li>video： 生视频能力</li></ul>
         :type Capability: str
         :param _EndpointPath: <p>端点路径</p>
         :type EndpointPath: str
@@ -39113,7 +39448,7 @@ class TestServiceProviderConnectionRequest(AbstractModel):
 
     @property
     def Capability(self):
-        r"""<p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
+        r"""<p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li><li>rerank： 重排序能力</li><li>video： 生视频能力</li></ul>
         :rtype: str
         """
         return self._Capability
@@ -39603,6 +39938,80 @@ class UserGroupInfo(AbstractModel):
                 self._Tags.append(obj)
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoConfig(AbstractModel):
+    r"""video配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutingStrategy: <p>模型内路由策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategy: str
+        :param _RoutingStrategyArgs: <p>路由参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        :param _NumRetries: <p>同一模型请求重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumRetries: int
+        """
+        self._RoutingStrategy = None
+        self._RoutingStrategyArgs = None
+        self._NumRetries = None
+
+    @property
+    def RoutingStrategy(self):
+        r"""<p>模型内路由策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
+
+    @property
+    def RoutingStrategyArgs(self):
+        r"""<p>路由参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        """
+        return self._RoutingStrategyArgs
+
+    @RoutingStrategyArgs.setter
+    def RoutingStrategyArgs(self, RoutingStrategyArgs):
+        self._RoutingStrategyArgs = RoutingStrategyArgs
+
+    @property
+    def NumRetries(self):
+        r"""<p>同一模型请求重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumRetries
+
+    @NumRetries.setter
+    def NumRetries(self, NumRetries):
+        self._NumRetries = NumRetries
+
+
+    def _deserialize(self, params):
+        self._RoutingStrategy = params.get("RoutingStrategy")
+        if params.get("RoutingStrategyArgs") is not None:
+            self._RoutingStrategyArgs = RoutingStrategyArgs()
+            self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
+        self._NumRetries = params.get("NumRetries")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

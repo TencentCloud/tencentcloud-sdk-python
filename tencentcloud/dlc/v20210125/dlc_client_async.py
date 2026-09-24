@@ -907,6 +907,60 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateJob(
+            self,
+            request: models.CreateJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateJobResponse:
+        """
+        创建并提交作业 Action。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateJobDefinition(
+            self,
+            request: models.CreateJobDefinitionRequest,
+            opts: Dict = None,
+    ) -> models.CreateJobDefinitionResponse:
+        """
+        创建作业定义。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateJobDefinition"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateJobDefinitionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateJobFromDefinition(
+            self,
+            request: models.CreateJobFromDefinitionRequest,
+            opts: Dict = None,
+    ) -> models.CreateJobFromDefinitionResponse:
+        """
+        按作业定义创建作业。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateJobFromDefinition"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateJobFromDefinitionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateJobSpec(
             self,
             request: models.CreateJobSpecRequest,
@@ -2061,6 +2115,78 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCatalogTableInfo(
+            self,
+            request: models.DescribeCatalogTableInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCatalogTableInfoResponse:
+        """
+        获取 Table 详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCatalogTableInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCatalogTableInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCatalogTableNames(
+            self,
+            request: models.DescribeCatalogTableNamesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCatalogTableNamesResponse:
+        """
+        获取 Schema 下所有 Table
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCatalogTableNames"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCatalogTableNamesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCatalogTableNamesPage(
+            self,
+            request: models.DescribeCatalogTableNamesPageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCatalogTableNamesPageResponse:
+        """
+        分页查询表名
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCatalogTableNamesPage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCatalogTableNamesPageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCatalogs(
+            self,
+            request: models.DescribeCatalogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCatalogsResponse:
+        """
+        查询数据目录列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCatalogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCatalogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClsTopics(
             self,
             request: models.DescribeClsTopicsRequest,
@@ -2560,6 +2686,114 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DescribeForbiddenTablePro"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeForbiddenTableProResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeJobDefinitionDetail(
+            self,
+            request: models.DescribeJobDefinitionDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeJobDefinitionDetailResponse:
+        """
+        查询作业定义详情。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeJobDefinitionDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeJobDefinitionDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeJobDefinitions(
+            self,
+            request: models.DescribeJobDefinitionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeJobDefinitionsResponse:
+        """
+        查询作业定义列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeJobDefinitions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeJobDefinitionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeJobDetail(
+            self,
+            request: models.DescribeJobDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeJobDetailResponse:
+        """
+        查询作业完整详情 Action。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeJobDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeJobDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeJobList(
+            self,
+            request: models.DescribeJobListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeJobListResponse:
+        """
+        分页查询作业列表 Action. PageSize 上限 200；QueueName 必须配合 PartitionCode。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeJobList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeJobListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeJobLog(
+            self,
+            request: models.DescribeJobLogRequest,
+            opts: Dict = None,
+    ) -> models.DescribeJobLogResponse:
+        """
+        统一作业日志查询 Action。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeJobLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeJobLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeJobResult(
+            self,
+            request: models.DescribeJobResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeJobResultResponse:
+        """
+        获取 SQL 作业结果集 Action. 仅 MinorType=SPARK_SQL 有效（Batch 固定返回 State=NOT_SUPPORTED）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeJobResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeJobResultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3103,6 +3337,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DescribeSaleResourceInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSaleResourceInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSchemaNamesPage(
+            self,
+            request: models.DescribeSchemaNamesPageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSchemaNamesPageResponse:
+        """
+        分页查询 Catalog 下 Schema 列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSchemaNamesPage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSchemaNamesPageResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3859,6 +4111,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DescribeViews"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeViewsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWarehouses(
+            self,
+            request: models.DescribeWarehousesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWarehousesResponse:
+        """
+        查询计算仓库列表 Action。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWarehouses"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWarehousesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5281,6 +5551,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "ModifyGovernEventRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyGovernEventRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyJobDefinition(
+            self,
+            request: models.ModifyJobDefinitionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyJobDefinitionResponse:
+        """
+        修改作业定义。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyJobDefinition"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyJobDefinitionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
