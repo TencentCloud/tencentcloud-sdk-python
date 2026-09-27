@@ -5944,11 +5944,14 @@ class CreateIntentRouterRequest(AbstractModel):
         :type Tiers: list of TierItem
         :param _RouterDescribe: <p>意图路由描述。</p>
         :type RouterDescribe: str
+        :param _DecisionModelConfig: <p>意图路由使用决策模型配置</p>
+        :type DecisionModelConfig: :class:`tencentcloud.clb.v20180317.models.IntentRouterDecisionModelConfig`
         """
         self._ModelRouterId = None
         self._RouteName = None
         self._Tiers = None
         self._RouterDescribe = None
+        self._DecisionModelConfig = None
 
     @property
     def ModelRouterId(self):
@@ -5994,6 +5997,17 @@ class CreateIntentRouterRequest(AbstractModel):
     def RouterDescribe(self, RouterDescribe):
         self._RouterDescribe = RouterDescribe
 
+    @property
+    def DecisionModelConfig(self):
+        r"""<p>意图路由使用决策模型配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.IntentRouterDecisionModelConfig`
+        """
+        return self._DecisionModelConfig
+
+    @DecisionModelConfig.setter
+    def DecisionModelConfig(self, DecisionModelConfig):
+        self._DecisionModelConfig = DecisionModelConfig
+
 
     def _deserialize(self, params):
         self._ModelRouterId = params.get("ModelRouterId")
@@ -6005,6 +6019,9 @@ class CreateIntentRouterRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tiers.append(obj)
         self._RouterDescribe = params.get("RouterDescribe")
+        if params.get("DecisionModelConfig") is not None:
+            self._DecisionModelConfig = IntentRouterDecisionModelConfig()
+            self._DecisionModelConfig._deserialize(params.get("DecisionModelConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20824,6 +20841,42 @@ class InquiryPriceRenewLoadBalancerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class IntentRouterDecisionModelConfig(AbstractModel):
+    r"""意图路由使用决策模型配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启使用决策模型</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启使用决策模型</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IntentRouterItem(AbstractModel):
     r"""意图路由摘要信息对象（不含分层详情）。
 
@@ -20843,6 +20896,8 @@ class IntentRouterItem(AbstractModel):
         :type Status: str
         :param _Tiers: <p>分层配置列表。</p>
         :type Tiers: list of IntentRouterTierItem
+        :param _DecisionModelConfig: <p>意图路由使用决策模型配置</p>
+        :type DecisionModelConfig: :class:`tencentcloud.clb.v20180317.models.IntentRouterDecisionModelConfig`
         :param _UpdatedTime: <p>更新时间（ISO 8601格式）。</p>
         :type UpdatedTime: str
         """
@@ -20852,6 +20907,7 @@ class IntentRouterItem(AbstractModel):
         self._RouterDescribe = None
         self._Status = None
         self._Tiers = None
+        self._DecisionModelConfig = None
         self._UpdatedTime = None
 
     @property
@@ -20921,6 +20977,17 @@ class IntentRouterItem(AbstractModel):
         self._Tiers = Tiers
 
     @property
+    def DecisionModelConfig(self):
+        r"""<p>意图路由使用决策模型配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.IntentRouterDecisionModelConfig`
+        """
+        return self._DecisionModelConfig
+
+    @DecisionModelConfig.setter
+    def DecisionModelConfig(self, DecisionModelConfig):
+        self._DecisionModelConfig = DecisionModelConfig
+
+    @property
     def UpdatedTime(self):
         r"""<p>更新时间（ISO 8601格式）。</p>
         :rtype: str
@@ -20944,6 +21011,9 @@ class IntentRouterItem(AbstractModel):
                 obj = IntentRouterTierItem()
                 obj._deserialize(item)
                 self._Tiers.append(obj)
+        if params.get("DecisionModelConfig") is not None:
+            self._DecisionModelConfig = IntentRouterDecisionModelConfig()
+            self._DecisionModelConfig._deserialize(params.get("DecisionModelConfig"))
         self._UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -28877,14 +28947,17 @@ class ModifyIntentRouterAttributeRequest(AbstractModel):
         :type RouteName: str
         :param _RouterDescribe: <p>意图路由描述。</p>
         :type RouterDescribe: str
-        :param _Tiers: <p>新的分层配置列表（全量替换）。</p><p>选填；不传则不修改。传入时必须为完整分层集合：复杂度分层须包含全部 4 个分层 SIMPLE/MEDIUM/COMPLEX/REASONING；语义分层须包含 default 及各语义 Tier（取决于实例所用协议，且不可跨协议变更）。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+        :param _Tiers: <p>新的分层配置列表（全量替换）。</p><p>选填；传入时必须包含全部4个分层：SIMPLE、MEDIUM、COMPLEX、REASONING。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。不传则不修改。</p>
         :type Tiers: list of TierItem
+        :param _DecisionModelConfig: <p>意图路由使用决策模型配置</p>
+        :type DecisionModelConfig: :class:`tencentcloud.clb.v20180317.models.IntentRouterDecisionModelConfig`
         """
         self._IntentRouterId = None
         self._ModelRouterId = None
         self._RouteName = None
         self._RouterDescribe = None
         self._Tiers = None
+        self._DecisionModelConfig = None
 
     @property
     def IntentRouterId(self):
@@ -28932,7 +29005,7 @@ class ModifyIntentRouterAttributeRequest(AbstractModel):
 
     @property
     def Tiers(self):
-        r"""<p>新的分层配置列表（全量替换）。</p><p>选填；不传则不修改。传入时必须为完整分层集合：复杂度分层须包含全部 4 个分层 SIMPLE/MEDIUM/COMPLEX/REASONING；语义分层须包含 default 及各语义 Tier（取决于实例所用协议，且不可跨协议变更）。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。</p>
+        r"""<p>新的分层配置列表（全量替换）。</p><p>选填；传入时必须包含全部4个分层：SIMPLE、MEDIUM、COMPLEX、REASONING。每个分层至少包含一个模型，模型名称必须是已关联到该实例的模型。不传则不修改。</p>
         :rtype: list of TierItem
         """
         return self._Tiers
@@ -28940,6 +29013,17 @@ class ModifyIntentRouterAttributeRequest(AbstractModel):
     @Tiers.setter
     def Tiers(self, Tiers):
         self._Tiers = Tiers
+
+    @property
+    def DecisionModelConfig(self):
+        r"""<p>意图路由使用决策模型配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.IntentRouterDecisionModelConfig`
+        """
+        return self._DecisionModelConfig
+
+    @DecisionModelConfig.setter
+    def DecisionModelConfig(self, DecisionModelConfig):
+        self._DecisionModelConfig = DecisionModelConfig
 
 
     def _deserialize(self, params):
@@ -28953,6 +29037,9 @@ class ModifyIntentRouterAttributeRequest(AbstractModel):
                 obj = TierItem()
                 obj._deserialize(item)
                 self._Tiers.append(obj)
+        if params.get("DecisionModelConfig") is not None:
+            self._DecisionModelConfig = IntentRouterDecisionModelConfig()
+            self._DecisionModelConfig._deserialize(params.get("DecisionModelConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
