@@ -3253,49 +3253,48 @@ class CreateInstanceNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _FeSpec: FE规格
+        :param _FeSpec: <p>FE规格</p>
         :type FeSpec: :class:`tencentcloud.cdwdoris.v20211228.models.CreateInstanceSpec`
-        :param _BeSpec: BE规格
+        :param _BeSpec: <p>BE规格</p>
         :type BeSpec: :class:`tencentcloud.cdwdoris.v20211228.models.CreateInstanceSpec`
-        :param _HaFlag: 是否高可用
+        :param _HaFlag: <p>是否高可用</p>
         :type HaFlag: bool
-        :param _UserVPCId: 用户VPCID
+        :param _UserVPCId: <p>用户VPCID</p>
         :type UserVPCId: str
-        :param _UserSubnetId: 用户子网ID
+        :param _UserSubnetId: <p>用户子网ID</p>
         :type UserSubnetId: str
-        :param _ProductVersion: 产品版本号
+        :param _ProductVersion: <p>产品版本号</p>
         :type ProductVersion: str
-        :param _ChargeProperties: 付费类型
+        :param _ChargeProperties: <p>付费类型</p>
         :type ChargeProperties: :class:`tencentcloud.cdwdoris.v20211228.models.ChargeProperties`
-        :param _InstanceName: 实例名字
+        :param _InstanceName: <p>实例名字</p>
         :type InstanceName: str
-        :param _DorisUserPwd: 数据库密码
+        :param _DorisUserPwd: <p>数据库密码</p>
         :type DorisUserPwd: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
-        :param _HaType: 高可用类型：
-0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），
-1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count>=3，且为奇数），
-2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count>=5，且为奇数）。
+        :param _HaType: <p>高可用类型：<br>0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），<br>1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count&gt;=3，且为奇数），<br>2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count&gt;=5，且为奇数）。</p>
         :type HaType: int
-        :param _CaseSensitive: 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+        :param _CaseSensitive: <p>表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储</p>
         :type CaseSensitive: int
-        :param _EnableMultiZones: 是否开启多可用区
+        :param _EnableMultiZones: <p>是否开启多可用区</p>
         :type EnableMultiZones: bool
-        :param _UserMultiZoneInfos: 开启多可用区后，用户的所有可用区和子网信息
+        :param _UserMultiZoneInfos: <p>开启多可用区后，用户的所有可用区和子网信息</p>
         :type UserMultiZoneInfos: :class:`tencentcloud.cdwdoris.v20211228.models.NetworkInfo`
-        :param _UserMultiZoneInfoArr: 开启多可用区后，用户的所有可用区和子网信息
+        :param _UserMultiZoneInfoArr: <p>开启多可用区后，用户的所有可用区和子网信息</p>
         :type UserMultiZoneInfoArr: list of NetworkInfo
-        :param _IsSSC: 是否存算分离
+        :param _IsSSC: <p>是否存算分离</p>
         :type IsSSC: bool
-        :param _SSCCU: CU数
+        :param _SSCCU: <p>CU数</p>
         :type SSCCU: int
-        :param _CacheDiskSize: 缓存盘大小
+        :param _CacheDiskSize: <p>缓存盘大小</p>
         :type CacheDiskSize: str
-        :param _CacheDataDiskSize: 缓存盘大小
+        :param _CacheDataDiskSize: <p>缓存盘大小</p>
         :type CacheDataDiskSize: int
+        :param _DiskEncrypt: <p>磁盘加密</p>
+        :type DiskEncrypt: int
         """
         self._Zone = None
         self._FeSpec = None
@@ -3317,10 +3316,11 @@ class CreateInstanceNewRequest(AbstractModel):
         self._SSCCU = None
         self._CacheDiskSize = None
         self._CacheDataDiskSize = None
+        self._DiskEncrypt = None
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -3331,7 +3331,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def FeSpec(self):
-        r"""FE规格
+        r"""<p>FE规格</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.CreateInstanceSpec`
         """
         return self._FeSpec
@@ -3342,7 +3342,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def BeSpec(self):
-        r"""BE规格
+        r"""<p>BE规格</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.CreateInstanceSpec`
         """
         return self._BeSpec
@@ -3353,7 +3353,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def HaFlag(self):
-        r"""是否高可用
+        r"""<p>是否高可用</p>
         :rtype: bool
         """
         return self._HaFlag
@@ -3364,7 +3364,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def UserVPCId(self):
-        r"""用户VPCID
+        r"""<p>用户VPCID</p>
         :rtype: str
         """
         return self._UserVPCId
@@ -3375,7 +3375,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def UserSubnetId(self):
-        r"""用户子网ID
+        r"""<p>用户子网ID</p>
         :rtype: str
         """
         return self._UserSubnetId
@@ -3386,7 +3386,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def ProductVersion(self):
-        r"""产品版本号
+        r"""<p>产品版本号</p>
         :rtype: str
         """
         return self._ProductVersion
@@ -3397,7 +3397,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def ChargeProperties(self):
-        r"""付费类型
+        r"""<p>付费类型</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.ChargeProperties`
         """
         return self._ChargeProperties
@@ -3408,7 +3408,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名字
+        r"""<p>实例名字</p>
         :rtype: str
         """
         return self._InstanceName
@@ -3419,7 +3419,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def DorisUserPwd(self):
-        r"""数据库密码
+        r"""<p>数据库密码</p>
         :rtype: str
         """
         return self._DorisUserPwd
@@ -3430,7 +3430,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -3441,10 +3441,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def HaType(self):
-        r"""高可用类型：
-0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），
-1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count>=3，且为奇数），
-2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count>=5，且为奇数）。
+        r"""<p>高可用类型：<br>0：非高可用（只有1个FE，FeSpec.CreateInstanceSpec.Count=1），<br>1：读高可用（至少需部署3个FE，FeSpec.CreateInstanceSpec.Count&gt;=3，且为奇数），<br>2：读写高可用（至少需部署5个FE，FeSpec.CreateInstanceSpec.Count&gt;=5，且为奇数）。</p>
         :rtype: int
         """
         return self._HaType
@@ -3455,7 +3452,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def CaseSensitive(self):
-        r"""表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+        r"""<p>表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储</p>
         :rtype: int
         """
         return self._CaseSensitive
@@ -3466,7 +3463,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def EnableMultiZones(self):
-        r"""是否开启多可用区
+        r"""<p>是否开启多可用区</p>
         :rtype: bool
         """
         return self._EnableMultiZones
@@ -3479,7 +3476,7 @@ class CreateInstanceNewRequest(AbstractModel):
     def UserMultiZoneInfos(self):
         warnings.warn("parameter `UserMultiZoneInfos` is deprecated", DeprecationWarning) 
 
-        r"""开启多可用区后，用户的所有可用区和子网信息
+        r"""<p>开启多可用区后，用户的所有可用区和子网信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.NetworkInfo`
         """
         return self._UserMultiZoneInfos
@@ -3492,7 +3489,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def UserMultiZoneInfoArr(self):
-        r"""开启多可用区后，用户的所有可用区和子网信息
+        r"""<p>开启多可用区后，用户的所有可用区和子网信息</p>
         :rtype: list of NetworkInfo
         """
         return self._UserMultiZoneInfoArr
@@ -3503,7 +3500,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def IsSSC(self):
-        r"""是否存算分离
+        r"""<p>是否存算分离</p>
         :rtype: bool
         """
         return self._IsSSC
@@ -3514,7 +3511,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def SSCCU(self):
-        r"""CU数
+        r"""<p>CU数</p>
         :rtype: int
         """
         return self._SSCCU
@@ -3527,7 +3524,7 @@ class CreateInstanceNewRequest(AbstractModel):
     def CacheDiskSize(self):
         warnings.warn("parameter `CacheDiskSize` is deprecated", DeprecationWarning) 
 
-        r"""缓存盘大小
+        r"""<p>缓存盘大小</p>
         :rtype: str
         """
         return self._CacheDiskSize
@@ -3540,7 +3537,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def CacheDataDiskSize(self):
-        r"""缓存盘大小
+        r"""<p>缓存盘大小</p>
         :rtype: int
         """
         return self._CacheDataDiskSize
@@ -3548,6 +3545,17 @@ class CreateInstanceNewRequest(AbstractModel):
     @CacheDataDiskSize.setter
     def CacheDataDiskSize(self, CacheDataDiskSize):
         self._CacheDataDiskSize = CacheDataDiskSize
+
+    @property
+    def DiskEncrypt(self):
+        r"""<p>磁盘加密</p>
+        :rtype: int
+        """
+        return self._DiskEncrypt
+
+    @DiskEncrypt.setter
+    def DiskEncrypt(self, DiskEncrypt):
+        self._DiskEncrypt = DiskEncrypt
 
 
     def _deserialize(self, params):
@@ -3589,6 +3597,7 @@ class CreateInstanceNewRequest(AbstractModel):
         self._SSCCU = params.get("SSCCU")
         self._CacheDiskSize = params.get("CacheDiskSize")
         self._CacheDataDiskSize = params.get("CacheDataDiskSize")
+        self._DiskEncrypt = params.get("DiskEncrypt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3606,11 +3615,11 @@ class CreateInstanceNewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 流程ID
+        :param _FlowId: <p>流程ID</p>
         :type FlowId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _ErrorMsg: 错误信息
+        :param _ErrorMsg: <p>错误信息</p>
         :type ErrorMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3622,7 +3631,7 @@ class CreateInstanceNewResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""流程ID
+        r"""<p>流程ID</p>
         :rtype: str
         """
         return self._FlowId
@@ -3633,7 +3642,7 @@ class CreateInstanceNewResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3644,7 +3653,7 @@ class CreateInstanceNewResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
         :rtype: str
         """
         return self._ErrorMsg

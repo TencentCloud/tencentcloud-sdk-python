@@ -1015,6 +1015,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeadLockLogs(self, request):
+        r"""查询实例的死锁事件列表
+
+        :param request: Request instance for DescribeDeadLockLogs.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDeadLockLogsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDeadLockLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeadLockLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeadLockLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDiagDBInstances(self, request):
         r"""获取实例信息列表。Region统一选择广州。
 

@@ -142,27 +142,27 @@ class CBSSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 盘类型
-        :type DiskType: str
-        :param _DiskSize: 大小
-        :type DiskSize: int
         :param _DiskCount: 个数
         :type DiskCount: int
+        :param _DiskSize: 大小
+        :type DiskSize: int
+        :param _DiskType: 盘类型
+        :type DiskType: str
         """
-        self._DiskType = None
-        self._DiskSize = None
         self._DiskCount = None
+        self._DiskSize = None
+        self._DiskType = None
 
     @property
-    def DiskType(self):
-        r"""盘类型
-        :rtype: str
+    def DiskCount(self):
+        r"""个数
+        :rtype: int
         """
-        return self._DiskType
+        return self._DiskCount
 
-    @DiskType.setter
-    def DiskType(self, DiskType):
-        self._DiskType = DiskType
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
 
     @property
     def DiskSize(self):
@@ -176,21 +176,21 @@ class CBSSpec(AbstractModel):
         self._DiskSize = DiskSize
 
     @property
-    def DiskCount(self):
-        r"""个数
-        :rtype: int
+    def DiskType(self):
+        r"""盘类型
+        :rtype: str
         """
-        return self._DiskCount
+        return self._DiskType
 
-    @DiskCount.setter
-    def DiskCount(self, DiskCount):
-        self._DiskCount = DiskCount
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
 
 
     def _deserialize(self, params):
-        self._DiskType = params.get("DiskType")
-        self._DiskSize = params.get("DiskSize")
         self._DiskCount = params.get("DiskCount")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskType = params.get("DiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -274,41 +274,19 @@ class CNResourceSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 节点类型
-        :type Type: str
-        :param _SpecName: 机型
-        :type SpecName: str
         :param _Count: 节点个数
         :type Count: int
         :param _DiskSpec: 磁盘信息
         :type DiskSpec: :class:`tencentcloud.cdwpg.v20201230.models.CBSSpec`
+        :param _SpecName: 机型
+        :type SpecName: str
+        :param _Type: 节点类型
+        :type Type: str
         """
-        self._Type = None
-        self._SpecName = None
         self._Count = None
         self._DiskSpec = None
-
-    @property
-    def Type(self):
-        r"""节点类型
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def SpecName(self):
-        r"""机型
-        :rtype: str
-        """
-        return self._SpecName
-
-    @SpecName.setter
-    def SpecName(self, SpecName):
-        self._SpecName = SpecName
+        self._SpecName = None
+        self._Type = None
 
     @property
     def Count(self):
@@ -332,14 +310,36 @@ class CNResourceSpec(AbstractModel):
     def DiskSpec(self, DiskSpec):
         self._DiskSpec = DiskSpec
 
+    @property
+    def SpecName(self):
+        r"""机型
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def Type(self):
+        r"""节点类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
-        self._Type = params.get("Type")
-        self._SpecName = params.get("SpecName")
         self._Count = params.get("Count")
         if params.get("DiskSpec") is not None:
             self._DiskSpec = CBSSpec()
             self._DiskSpec._deserialize(params.get("DiskSpec"))
+        self._SpecName = params.get("SpecName")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -363,16 +363,16 @@ class ChargeProperties(AbstractModel):
         :type TimeSpan: int
         :param _TimeUnit: 时间单位，一般为h和m
         :type TimeUnit: str
-        :param _PayMode: 计费类型0-按量计费，1-包年包月
-        :type PayMode: int
         :param _ChargeType: PREPAID、POSTPAID_BY_HOUR
         :type ChargeType: str
+        :param _PayMode: 计费类型0-按量计费，1-包年包月
+        :type PayMode: int
         """
         self._RenewFlag = None
         self._TimeSpan = None
         self._TimeUnit = None
-        self._PayMode = None
         self._ChargeType = None
+        self._PayMode = None
 
     @property
     def RenewFlag(self):
@@ -408,17 +408,6 @@ class ChargeProperties(AbstractModel):
         self._TimeUnit = TimeUnit
 
     @property
-    def PayMode(self):
-        r"""计费类型0-按量计费，1-包年包月
-        :rtype: int
-        """
-        return self._PayMode
-
-    @PayMode.setter
-    def PayMode(self, PayMode):
-        self._PayMode = PayMode
-
-    @property
     def ChargeType(self):
         r"""PREPAID、POSTPAID_BY_HOUR
         :rtype: str
@@ -429,13 +418,24 @@ class ChargeProperties(AbstractModel):
     def ChargeType(self, ChargeType):
         self._ChargeType = ChargeType
 
+    @property
+    def PayMode(self):
+        r"""计费类型0-按量计费，1-包年包月
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
 
     def _deserialize(self, params):
         self._RenewFlag = params.get("RenewFlag")
         self._TimeSpan = params.get("TimeSpan")
         self._TimeUnit = params.get("TimeUnit")
-        self._PayMode = params.get("PayMode")
         self._ChargeType = params.get("ChargeType")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1982,14 +1982,17 @@ class DescribeInstanceStateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例名称
+        :param _InstanceId: <p>集群实例名称</p>
         :type InstanceId: str
+        :param _InstanceIds: <p>集群实例名称列表（批量查询，优先于 InstanceId；上限100，超出截断）</p>
+        :type InstanceIds: list of str
         """
         self._InstanceId = None
+        self._InstanceIds = None
 
     @property
     def InstanceId(self):
-        r"""集群实例名称
+        r"""<p>集群实例名称</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1998,9 +2001,21 @@ class DescribeInstanceStateRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def InstanceIds(self):
+        r"""<p>集群实例名称列表（批量查询，优先于 InstanceId；上限100，超出截断）</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._InstanceIds = params.get("InstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2018,52 +2033,66 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceState: 集群状态，例如：Serving
-        :type InstanceState: str
-        :param _FlowCreateTime: 集群操作创建时间
-        :type FlowCreateTime: str
-        :param _FlowName: 集群操作名称
-        :type FlowName: str
-        :param _FlowProgress: 集群操作进度
-        :type FlowProgress: float
-        :param _InstanceStateDesc: 集群状态描述，例如：运行中
-        :type InstanceStateDesc: str
-        :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
-        :type FlowMsg: str
-        :param _ProcessName: 当前步骤的名称，例如：”购买资源中“
-        :type ProcessName: str
-        :param _BackupStatus: 集群备份任务开启状态
-        :type BackupStatus: int
-        :param _BackupOpenStatus: 集群备份任务开启状态2
+        :param _BackupOpenStatus: <p>集群备份任务开启状态2</p>
         :type BackupOpenStatus: int
+        :param _BackupStatus: <p>集群备份任务开启状态</p>
+        :type BackupStatus: int
+        :param _FlowCreateTime: <p>集群操作创建时间</p>
+        :type FlowCreateTime: str
+        :param _FlowMsg: <p>集群流程错误信息，例如：“创建失败，资源不足”</p>
+        :type FlowMsg: str
+        :param _FlowName: <p>集群操作名称</p>
+        :type FlowName: str
+        :param _FlowProgress: <p>集群操作进度</p>
+        :type FlowProgress: float
+        :param _InstanceState: <p>集群状态，例如：Serving</p>
+        :type InstanceState: str
+        :param _InstanceStateDesc: <p>集群状态描述，例如：运行中</p>
+        :type InstanceStateDesc: str
+        :param _ProcessName: <p>当前步骤的名称，例如：”购买资源中“</p>
+        :type ProcessName: str
+        :param _InstanceStates: <p>批量实例状态列表（InstanceIds 入参时返回，每项含 InstanceId 与状态字段）</p>
+        :type InstanceStates: list of InstanceStateItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._InstanceState = None
+        self._BackupOpenStatus = None
+        self._BackupStatus = None
         self._FlowCreateTime = None
+        self._FlowMsg = None
         self._FlowName = None
         self._FlowProgress = None
+        self._InstanceState = None
         self._InstanceStateDesc = None
-        self._FlowMsg = None
         self._ProcessName = None
-        self._BackupStatus = None
-        self._BackupOpenStatus = None
+        self._InstanceStates = None
         self._RequestId = None
 
     @property
-    def InstanceState(self):
-        r"""集群状态，例如：Serving
-        :rtype: str
+    def BackupOpenStatus(self):
+        r"""<p>集群备份任务开启状态2</p>
+        :rtype: int
         """
-        return self._InstanceState
+        return self._BackupOpenStatus
 
-    @InstanceState.setter
-    def InstanceState(self, InstanceState):
-        self._InstanceState = InstanceState
+    @BackupOpenStatus.setter
+    def BackupOpenStatus(self, BackupOpenStatus):
+        self._BackupOpenStatus = BackupOpenStatus
+
+    @property
+    def BackupStatus(self):
+        r"""<p>集群备份任务开启状态</p>
+        :rtype: int
+        """
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
 
     @property
     def FlowCreateTime(self):
-        r"""集群操作创建时间
+        r"""<p>集群操作创建时间</p>
         :rtype: str
         """
         return self._FlowCreateTime
@@ -2073,8 +2102,19 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowCreateTime = FlowCreateTime
 
     @property
+    def FlowMsg(self):
+        r"""<p>集群流程错误信息，例如：“创建失败，资源不足”</p>
+        :rtype: str
+        """
+        return self._FlowMsg
+
+    @FlowMsg.setter
+    def FlowMsg(self, FlowMsg):
+        self._FlowMsg = FlowMsg
+
+    @property
     def FlowName(self):
-        r"""集群操作名称
+        r"""<p>集群操作名称</p>
         :rtype: str
         """
         return self._FlowName
@@ -2085,7 +2125,7 @@ class DescribeInstanceStateResponse(AbstractModel):
 
     @property
     def FlowProgress(self):
-        r"""集群操作进度
+        r"""<p>集群操作进度</p>
         :rtype: float
         """
         return self._FlowProgress
@@ -2095,8 +2135,19 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._FlowProgress = FlowProgress
 
     @property
+    def InstanceState(self):
+        r"""<p>集群状态，例如：Serving</p>
+        :rtype: str
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
     def InstanceStateDesc(self):
-        r"""集群状态描述，例如：运行中
+        r"""<p>集群状态描述，例如：运行中</p>
         :rtype: str
         """
         return self._InstanceStateDesc
@@ -2106,19 +2157,8 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._InstanceStateDesc = InstanceStateDesc
 
     @property
-    def FlowMsg(self):
-        r"""集群流程错误信息，例如：“创建失败，资源不足”
-        :rtype: str
-        """
-        return self._FlowMsg
-
-    @FlowMsg.setter
-    def FlowMsg(self, FlowMsg):
-        self._FlowMsg = FlowMsg
-
-    @property
     def ProcessName(self):
-        r"""当前步骤的名称，例如：”购买资源中“
+        r"""<p>当前步骤的名称，例如：”购买资源中“</p>
         :rtype: str
         """
         return self._ProcessName
@@ -2128,26 +2168,15 @@ class DescribeInstanceStateResponse(AbstractModel):
         self._ProcessName = ProcessName
 
     @property
-    def BackupStatus(self):
-        r"""集群备份任务开启状态
-        :rtype: int
+    def InstanceStates(self):
+        r"""<p>批量实例状态列表（InstanceIds 入参时返回，每项含 InstanceId 与状态字段）</p>
+        :rtype: list of InstanceStateItem
         """
-        return self._BackupStatus
+        return self._InstanceStates
 
-    @BackupStatus.setter
-    def BackupStatus(self, BackupStatus):
-        self._BackupStatus = BackupStatus
-
-    @property
-    def BackupOpenStatus(self):
-        r"""集群备份任务开启状态2
-        :rtype: int
-        """
-        return self._BackupOpenStatus
-
-    @BackupOpenStatus.setter
-    def BackupOpenStatus(self, BackupOpenStatus):
-        self._BackupOpenStatus = BackupOpenStatus
+    @InstanceStates.setter
+    def InstanceStates(self, InstanceStates):
+        self._InstanceStates = InstanceStates
 
     @property
     def RequestId(self):
@@ -2162,15 +2191,21 @@ class DescribeInstanceStateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._InstanceState = params.get("InstanceState")
+        self._BackupOpenStatus = params.get("BackupOpenStatus")
+        self._BackupStatus = params.get("BackupStatus")
         self._FlowCreateTime = params.get("FlowCreateTime")
+        self._FlowMsg = params.get("FlowMsg")
         self._FlowName = params.get("FlowName")
         self._FlowProgress = params.get("FlowProgress")
+        self._InstanceState = params.get("InstanceState")
         self._InstanceStateDesc = params.get("InstanceStateDesc")
-        self._FlowMsg = params.get("FlowMsg")
         self._ProcessName = params.get("ProcessName")
-        self._BackupStatus = params.get("BackupStatus")
-        self._BackupOpenStatus = params.get("BackupOpenStatus")
+        if params.get("InstanceStates") is not None:
+            self._InstanceStates = []
+            for item in params.get("InstanceStates"):
+                obj = InstanceStateItem()
+                obj._deserialize(item)
+                self._InstanceStates.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4824,6 +4859,177 @@ class InstanceStateInfo(AbstractModel):
         self._BackupStatus = params.get("BackupStatus")
         self._RequestId = params.get("RequestId")
         self._BackupOpenStatus = params.get("BackupOpenStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceStateItem(AbstractModel):
+    r"""批量实例状态项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>集群实例名称</p>
+        :type InstanceId: str
+        :param _InstanceState: <p>集群状态，例如：Serving</p>
+        :type InstanceState: str
+        :param _InstanceStateDesc: <p>集群状态描述，例如：运行中</p>
+        :type InstanceStateDesc: str
+        :param _BackupStatus: <p>集群备份任务开启状态</p>
+        :type BackupStatus: int
+        :param _BackupOpenStatus: <p>集群备份任务开启状态2</p>
+        :type BackupOpenStatus: int
+        :param _FlowCreateTime: <p>集群操作创建时间</p>
+        :type FlowCreateTime: str
+        :param _FlowName: <p>集群操作名称</p>
+        :type FlowName: str
+        :param _FlowProgress: <p>集群操作进度</p>
+        :type FlowProgress: float
+        :param _FlowMsg: <p>集群流程错误信息</p>
+        :type FlowMsg: str
+        :param _ProcessName: <p>当前步骤的名称</p>
+        :type ProcessName: str
+        """
+        self._InstanceId = None
+        self._InstanceState = None
+        self._InstanceStateDesc = None
+        self._BackupStatus = None
+        self._BackupOpenStatus = None
+        self._FlowCreateTime = None
+        self._FlowName = None
+        self._FlowProgress = None
+        self._FlowMsg = None
+        self._ProcessName = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>集群实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceState(self):
+        r"""<p>集群状态，例如：Serving</p>
+        :rtype: str
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def InstanceStateDesc(self):
+        r"""<p>集群状态描述，例如：运行中</p>
+        :rtype: str
+        """
+        return self._InstanceStateDesc
+
+    @InstanceStateDesc.setter
+    def InstanceStateDesc(self, InstanceStateDesc):
+        self._InstanceStateDesc = InstanceStateDesc
+
+    @property
+    def BackupStatus(self):
+        r"""<p>集群备份任务开启状态</p>
+        :rtype: int
+        """
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+    @property
+    def BackupOpenStatus(self):
+        r"""<p>集群备份任务开启状态2</p>
+        :rtype: int
+        """
+        return self._BackupOpenStatus
+
+    @BackupOpenStatus.setter
+    def BackupOpenStatus(self, BackupOpenStatus):
+        self._BackupOpenStatus = BackupOpenStatus
+
+    @property
+    def FlowCreateTime(self):
+        r"""<p>集群操作创建时间</p>
+        :rtype: str
+        """
+        return self._FlowCreateTime
+
+    @FlowCreateTime.setter
+    def FlowCreateTime(self, FlowCreateTime):
+        self._FlowCreateTime = FlowCreateTime
+
+    @property
+    def FlowName(self):
+        r"""<p>集群操作名称</p>
+        :rtype: str
+        """
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowProgress(self):
+        r"""<p>集群操作进度</p>
+        :rtype: float
+        """
+        return self._FlowProgress
+
+    @FlowProgress.setter
+    def FlowProgress(self, FlowProgress):
+        self._FlowProgress = FlowProgress
+
+    @property
+    def FlowMsg(self):
+        r"""<p>集群流程错误信息</p>
+        :rtype: str
+        """
+        return self._FlowMsg
+
+    @FlowMsg.setter
+    def FlowMsg(self, FlowMsg):
+        self._FlowMsg = FlowMsg
+
+    @property
+    def ProcessName(self):
+        r"""<p>当前步骤的名称</p>
+        :rtype: str
+        """
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceState = params.get("InstanceState")
+        self._InstanceStateDesc = params.get("InstanceStateDesc")
+        self._BackupStatus = params.get("BackupStatus")
+        self._BackupOpenStatus = params.get("BackupOpenStatus")
+        self._FlowCreateTime = params.get("FlowCreateTime")
+        self._FlowName = params.get("FlowName")
+        self._FlowProgress = params.get("FlowProgress")
+        self._FlowMsg = params.get("FlowMsg")
+        self._ProcessName = params.get("ProcessName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

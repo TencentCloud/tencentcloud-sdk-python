@@ -25456,6 +25456,10 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         :type AdvancedInfo: str
         :param _CardCount: <p>卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）</p>
         :type CardCount: int
+        :param _ThaiFirstName: <p>泰文姓名</p>
+        :type ThaiFirstName: str
+        :param _ThaiLastName: <p>泰文姓名</p>
+        :type ThaiLastName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -25477,6 +25481,8 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._WarnCardInfos = None
         self._AdvancedInfo = None
         self._CardCount = None
+        self._ThaiFirstName = None
+        self._ThaiLastName = None
         self._RequestId = None
 
     @property
@@ -25682,6 +25688,28 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._CardCount = CardCount
 
     @property
+    def ThaiFirstName(self):
+        r"""<p>泰文姓名</p>
+        :rtype: str
+        """
+        return self._ThaiFirstName
+
+    @ThaiFirstName.setter
+    def ThaiFirstName(self, ThaiFirstName):
+        self._ThaiFirstName = ThaiFirstName
+
+    @property
+    def ThaiLastName(self):
+        r"""<p>泰文姓名</p>
+        :rtype: str
+        """
+        return self._ThaiLastName
+
+    @ThaiLastName.setter
+    def ThaiLastName(self, ThaiLastName):
+        self._ThaiLastName = ThaiLastName
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -25712,6 +25740,8 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
         self._WarnCardInfos = params.get("WarnCardInfos")
         self._AdvancedInfo = params.get("AdvancedInfo")
         self._CardCount = params.get("CardCount")
+        self._ThaiFirstName = params.get("ThaiFirstName")
+        self._ThaiLastName = params.get("ThaiLastName")
         self._RequestId = params.get("RequestId")
 
 

@@ -470,6 +470,259 @@ class AddUsersForUserManagerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AirflowCfsSource(AbstractModel):
+    r"""airflow cfs dag目录源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>cfs实例id</p>
+        :type FileSystemId: str
+        :param _Directory: <p>cfs实例挂载目录</p>
+        :type Directory: str
+        """
+        self._FileSystemId = None
+        self._Directory = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>cfs实例id</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Directory(self):
+        r"""<p>cfs实例挂载目录</p>
+        :rtype: str
+        """
+        return self._Directory
+
+    @Directory.setter
+    def Directory(self, Directory):
+        self._Directory = Directory
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Directory = params.get("Directory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AirflowDagSourceInput(AbstractModel):
+    r"""airflow dag源目录来源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否支持dag共享源</p>
+        :type Enabled: bool
+        :param _Type: <p>dag源类型</p><p>枚举值：</p><ul><li>CFS： CFS</li><li>GIT： Git</li></ul>
+        :type Type: str
+        :param _Cfs: <p>cfs实例DAG源配置</p>
+        :type Cfs: :class:`tencentcloud.emr.v20190103.models.AirflowCfsSource`
+        :param _Git: <p>Git型DAG源配置</p>
+        :type Git: :class:`tencentcloud.emr.v20190103.models.AirflowGitSource`
+        """
+        self._Enabled = None
+        self._Type = None
+        self._Cfs = None
+        self._Git = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否支持dag共享源</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Type(self):
+        r"""<p>dag源类型</p><p>枚举值：</p><ul><li>CFS： CFS</li><li>GIT： Git</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Cfs(self):
+        r"""<p>cfs实例DAG源配置</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AirflowCfsSource`
+        """
+        return self._Cfs
+
+    @Cfs.setter
+    def Cfs(self, Cfs):
+        self._Cfs = Cfs
+
+    @property
+    def Git(self):
+        r"""<p>Git型DAG源配置</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AirflowGitSource`
+        """
+        return self._Git
+
+    @Git.setter
+    def Git(self, Git):
+        self._Git = Git
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Type = params.get("Type")
+        if params.get("Cfs") is not None:
+            self._Cfs = AirflowCfsSource()
+            self._Cfs._deserialize(params.get("Cfs"))
+        if params.get("Git") is not None:
+            self._Git = AirflowGitSource()
+            self._Git._deserialize(params.get("Git"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AirflowGitCredentialInput(AbstractModel):
+    r"""airflow git鉴权配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Username: <p>用户名</p>
+        :type Username: str
+        :param _Token: <p>用户凭证</p>
+        :type Token: str
+        """
+        self._Username = None
+        self._Token = None
+
+    @property
+    def Username(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Token(self):
+        r"""<p>用户凭证</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+
+    def _deserialize(self, params):
+        self._Username = params.get("Username")
+        self._Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AirflowGitSource(AbstractModel):
+    r"""airflow dag目录git源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RepositoryUrl: <p>git仓库URL</p>
+        :type RepositoryUrl: str
+        :param _Ref: <p>DAG跟踪分支/TAG</p>
+        :type Ref: str
+        :param _Directory: <p>DAG挂载目录</p>
+        :type Directory: str
+        """
+        self._RepositoryUrl = None
+        self._Ref = None
+        self._Directory = None
+
+    @property
+    def RepositoryUrl(self):
+        r"""<p>git仓库URL</p>
+        :rtype: str
+        """
+        return self._RepositoryUrl
+
+    @RepositoryUrl.setter
+    def RepositoryUrl(self, RepositoryUrl):
+        self._RepositoryUrl = RepositoryUrl
+
+    @property
+    def Ref(self):
+        r"""<p>DAG跟踪分支/TAG</p>
+        :rtype: str
+        """
+        return self._Ref
+
+    @Ref.setter
+    def Ref(self, Ref):
+        self._Ref = Ref
+
+    @property
+    def Directory(self):
+        r"""<p>DAG挂载目录</p>
+        :rtype: str
+        """
+        return self._Directory
+
+    @Directory.setter
+    def Directory(self, Directory):
+        self._Directory = Directory
+
+
+    def _deserialize(self, params):
+        self._RepositoryUrl = params.get("RepositoryUrl")
+        self._Ref = params.get("Ref")
+        self._Directory = params.get("Directory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllNodeResourceSpec(AbstractModel):
     r"""资源描述
 
@@ -5446,6 +5699,10 @@ class CreateCloudInstanceRequest(AbstractModel):
         :type EnableEmrProxy: bool
         :param _LogStoreID: <p>日志存储服务实例id</p>
         :type LogStoreID: str
+        :param _AirflowDagSource: <p>airflow目录源</p>
+        :type AirflowDagSource: :class:`tencentcloud.emr.v20190103.models.AirflowDagSourceInput`
+        :param _AirflowGitCredential: <p>airflow源凭证</p>
+        :type AirflowGitCredential: :class:`tencentcloud.emr.v20190103.models.AirflowGitCredentialInput`
         """
         self._InstanceName = None
         self._ClusterClass = None
@@ -5472,6 +5729,8 @@ class CreateCloudInstanceRequest(AbstractModel):
         self._TerminateProtection = None
         self._EnableEmrProxy = None
         self._LogStoreID = None
+        self._AirflowDagSource = None
+        self._AirflowGitCredential = None
 
     @property
     def InstanceName(self):
@@ -5748,6 +6007,28 @@ class CreateCloudInstanceRequest(AbstractModel):
     def LogStoreID(self, LogStoreID):
         self._LogStoreID = LogStoreID
 
+    @property
+    def AirflowDagSource(self):
+        r"""<p>airflow目录源</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AirflowDagSourceInput`
+        """
+        return self._AirflowDagSource
+
+    @AirflowDagSource.setter
+    def AirflowDagSource(self, AirflowDagSource):
+        self._AirflowDagSource = AirflowDagSource
+
+    @property
+    def AirflowGitCredential(self):
+        r"""<p>airflow源凭证</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.AirflowGitCredentialInput`
+        """
+        return self._AirflowGitCredential
+
+    @AirflowGitCredential.setter
+    def AirflowGitCredential(self, AirflowGitCredential):
+        self._AirflowGitCredential = AirflowGitCredential
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5800,6 +6081,12 @@ class CreateCloudInstanceRequest(AbstractModel):
         self._TerminateProtection = params.get("TerminateProtection")
         self._EnableEmrProxy = params.get("EnableEmrProxy")
         self._LogStoreID = params.get("LogStoreID")
+        if params.get("AirflowDagSource") is not None:
+            self._AirflowDagSource = AirflowDagSourceInput()
+            self._AirflowDagSource._deserialize(params.get("AirflowDagSource"))
+        if params.get("AirflowGitCredential") is not None:
+            self._AirflowGitCredential = AirflowGitCredentialInput()
+            self._AirflowGitCredential._deserialize(params.get("AirflowGitCredential"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

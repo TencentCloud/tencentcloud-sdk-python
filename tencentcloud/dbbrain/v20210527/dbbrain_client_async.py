@@ -799,6 +799,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDeadLockLogs(
+            self,
+            request: models.DescribeDeadLockLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeadLockLogsResponse:
+        """
+        查询实例的死锁事件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeadLockLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeadLockLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDiagDBInstances(
             self,
             request: models.DescribeDiagDBInstancesRequest,

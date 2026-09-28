@@ -86,6 +86,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateFolder(
+            self,
+            request: models.CreateFolderRequest,
+            opts: Dict = None,
+    ) -> models.CreateFolderResponse:
+        """
+        创建文件夹
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateWorkflow(
             self,
             request: models.CreateWorkflowRequest,
@@ -99,6 +117,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "CreateWorkflow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateWorkspace(
+            self,
+            request: models.CreateWorkspaceRequest,
+            opts: Dict = None,
+    ) -> models.CreateWorkspaceResponse:
+        """
+        创建工作空间
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWorkspace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWorkspaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -157,6 +193,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteFolder(
+            self,
+            request: models.DeleteFolderRequest,
+            opts: Dict = None,
+    ) -> models.DeleteFolderResponse:
+        """
+        删除文件夹
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteWorkflow(
             self,
             request: models.DeleteWorkflowRequest,
@@ -170,6 +224,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "DeleteWorkflow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteWorkspace(
+            self,
+            request: models.DeleteWorkspaceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWorkspaceResponse:
+        """
+        删除工作空间
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWorkspace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWorkspaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -205,6 +277,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "GetFile"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetFolder(
+            self,
+            request: models.GetFolderRequest,
+            opts: Dict = None,
+    ) -> models.GetFolderResponse:
+        """
+        获取文件夹详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFolderResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -259,6 +349,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "GetWorkflowTaskRun"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetWorkflowTaskRunResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetWorkspace(
+            self,
+            request: models.GetWorkspaceRequest,
+            opts: Dict = None,
+    ) -> models.GetWorkspaceResponse:
+        """
+        查询工作空间详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetWorkspace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetWorkspaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -349,6 +457,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "ListConsoleUsers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListConsoleUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListFiles(
+            self,
+            request: models.ListFilesRequest,
+            opts: Dict = None,
+    ) -> models.ListFilesResponse:
+        """
+        获取文件夹和文件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListFilesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -554,6 +680,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateFolder(
+            self,
+            request: models.UpdateFolderRequest,
+            opts: Dict = None,
+    ) -> models.UpdateFolderResponse:
+        """
+        更新文件夹（支持重命名+移动）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateFolder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateWorkflow(
             self,
             request: models.UpdateWorkflowRequest,
@@ -567,6 +711,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "UpdateWorkflow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateWorkflowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateWorkspace(
+            self,
+            request: models.UpdateWorkspaceRequest,
+            opts: Dict = None,
+    ) -> models.UpdateWorkspaceResponse:
+        """
+        修改工作空间
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateWorkspace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateWorkspaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

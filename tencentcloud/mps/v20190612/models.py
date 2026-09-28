@@ -7585,6 +7585,94 @@ class AiAnalysisTaskVideoRemakeResult(AbstractModel):
         
 
 
+class AiComposeConfig(AbstractModel):
+    r"""图片处理图层融合配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关。</p><li>ON：开启（默认值）；</li><li>OFF：关闭。</li>
+        :type Switch: str
+        :param _Model: <p>合成模型。可选值：compose-1.0-lite（默认值，可不传）。</p>
+        :type Model: str
+        :param _Canvas: <p>画布定义。可省略：省略时取 ZIndex 最小的图层（底层图层）的自然尺寸。</p>
+        :type Canvas: :class:`tencentcloud.mps.v20190612.models.ImageComposeCanvas`
+        :param _Layers: <p>图层列表，图层的唯一来源。至少 1 层、最多 20 层。</p>
+        :type Layers: list of ImageComposeLayer
+        """
+        self._Switch = None
+        self._Model = None
+        self._Canvas = None
+        self._Layers = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关。</p><li>ON：开启（默认值）；</li><li>OFF：关闭。</li>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Model(self):
+        r"""<p>合成模型。可选值：compose-1.0-lite（默认值，可不传）。</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Canvas(self):
+        r"""<p>画布定义。可省略：省略时取 ZIndex 最小的图层（底层图层）的自然尺寸。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageComposeCanvas`
+        """
+        return self._Canvas
+
+    @Canvas.setter
+    def Canvas(self, Canvas):
+        self._Canvas = Canvas
+
+    @property
+    def Layers(self):
+        r"""<p>图层列表，图层的唯一来源。至少 1 层、最多 20 层。</p>
+        :rtype: list of ImageComposeLayer
+        """
+        return self._Layers
+
+    @Layers.setter
+    def Layers(self, Layers):
+        self._Layers = Layers
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Model = params.get("Model")
+        if params.get("Canvas") is not None:
+            self._Canvas = ImageComposeCanvas()
+            self._Canvas._deserialize(params.get("Canvas"))
+        if params.get("Layers") is not None:
+            self._Layers = []
+            for item in params.get("Layers"):
+                obj = ImageComposeLayer()
+                obj._deserialize(item)
+                self._Layers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiContentReviewResult(AbstractModel):
     r"""内容审核结果
 
@@ -8316,7 +8404,7 @@ class AiPosterSuiteConfig(AbstractModel):
         :type PanelResolution: str
         :param _CustomVariables: <p>用户自定义变量。</p>
         :type CustomVariables: list of CustomVariable
-        :param _Model: <p>模型名称。</p><p>枚举值：</p><ul><li>WAND-suite-1.0-flash： WAND-suite-1.0-flash</li></ul>
+        :param _Model: <p>模型名称。</p><p>枚举值：</p><ul><li>suite-1.0-flash： suite-1.0-flash</li></ul>
         :type Model: str
         """
         self._Mode = None
@@ -8407,7 +8495,7 @@ class AiPosterSuiteConfig(AbstractModel):
 
     @property
     def Model(self):
-        r"""<p>模型名称。</p><p>枚举值：</p><ul><li>WAND-suite-1.0-flash： WAND-suite-1.0-flash</li></ul>
+        r"""<p>模型名称。</p><p>枚举值：</p><ul><li>suite-1.0-flash： suite-1.0-flash</li></ul>
         :rtype: str
         """
         return self._Model
@@ -55343,6 +55431,155 @@ class ImageAreaBoxInfo(AbstractModel):
         
 
 
+class ImageComposeCanvas(AbstractModel):
+    r"""图片处理图层融合功能画布参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Width: <p>画布宽度，取值范围 [1, 10240]，需与 Height 同时设置。</p>
+        :type Width: int
+        :param _Height: <p>画布高度，取值范围 [1, 10240]，需与 Width 同时设置。</p>
+        :type Height: int
+        :param _Background: <p>画布底色，统一为 8 位十六进制 #RRGGBBAA（含 alpha），原样作为画布底色。缺省 #00000000（全透明）。示例：#FFFFFFFF 不透明白、#FFFFFF80 半透明白。</p><p>输出格式不支持透明通道时（如 JPEG），透明区域按该底色的 RGB 塌陷；缺省值会得到黑底，需要白底请显式传    #FFFFFFFF。</p>
+        :type Background: str
+        """
+        self._Width = None
+        self._Height = None
+        self._Background = None
+
+    @property
+    def Width(self):
+        r"""<p>画布宽度，取值范围 [1, 10240]，需与 Height 同时设置。</p>
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""<p>画布高度，取值范围 [1, 10240]，需与 Width 同时设置。</p>
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Background(self):
+        r"""<p>画布底色，统一为 8 位十六进制 #RRGGBBAA（含 alpha），原样作为画布底色。缺省 #00000000（全透明）。示例：#FFFFFFFF 不透明白、#FFFFFF80 半透明白。</p><p>输出格式不支持透明通道时（如 JPEG），透明区域按该底色的 RGB 塌陷；缺省值会得到黑底，需要白底请显式传    #FFFFFFFF。</p>
+        :rtype: str
+        """
+        return self._Background
+
+    @Background.setter
+    def Background(self, Background):
+        self._Background = Background
+
+
+    def _deserialize(self, params):
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Background = params.get("Background")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageComposeLayer(AbstractModel):
+    r"""图片处理图层融合功能图层数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZIndex: <p>图层堆叠顺序，必填。同一请求内不可重复，数值越大越靠上（建议从 0 开始连续编号）。</p>
+        :type ZIndex: int
+        :param _InputInfo: <p>图层图片来源，必填。支持 URL / COS / AWS-S3 / VOD。</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _BoundingBox: <p>图层在画布中的位置与尺寸，必填。长度为 4 的数组 [X1, Y1, X2, Y2]：左上角 + 右下角坐标，要求 X2 &gt; X1、Y2 &gt;    Y1。</p><p>两种语义（与图片擦除能力的 BoundingBox 对齐）：</p><ul><li>像素：坐标值，取值范围 [-10240,    10240]，允许为负或超出画布（超出部分被裁掉）；</li><li>比例：各值 ∈ [-1, 1]，按画布宽高换算（x 乘画布宽、y    乘画布高）。</li></ul><p>图层会缩放填满该矩形；超出画布的部分一律裁掉，输出尺寸恒等于画布尺寸。</p>
+        :type BoundingBox: list of float
+        :param _BoundingBoxUnitType: <p>坐标单位，与图片擦除能力对齐。取值：</p><ul><li>0：自动判定（不传时的默认值）；</li><li>1：比例；</li><li>2：像素。</li></ul><p>自动判定规则：四个值全部大于 1 按像素解释、全部不大于 1 按比例解释；混合取值会返回InvalidParameter，建议始终显式指定。</p>
+        :type BoundingBoxUnitType: int
+        """
+        self._ZIndex = None
+        self._InputInfo = None
+        self._BoundingBox = None
+        self._BoundingBoxUnitType = None
+
+    @property
+    def ZIndex(self):
+        r"""<p>图层堆叠顺序，必填。同一请求内不可重复，数值越大越靠上（建议从 0 开始连续编号）。</p>
+        :rtype: int
+        """
+        return self._ZIndex
+
+    @ZIndex.setter
+    def ZIndex(self, ZIndex):
+        self._ZIndex = ZIndex
+
+    @property
+    def InputInfo(self):
+        r"""<p>图层图片来源，必填。支持 URL / COS / AWS-S3 / VOD。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def BoundingBox(self):
+        r"""<p>图层在画布中的位置与尺寸，必填。长度为 4 的数组 [X1, Y1, X2, Y2]：左上角 + 右下角坐标，要求 X2 &gt; X1、Y2 &gt;    Y1。</p><p>两种语义（与图片擦除能力的 BoundingBox 对齐）：</p><ul><li>像素：坐标值，取值范围 [-10240,    10240]，允许为负或超出画布（超出部分被裁掉）；</li><li>比例：各值 ∈ [-1, 1]，按画布宽高换算（x 乘画布宽、y    乘画布高）。</li></ul><p>图层会缩放填满该矩形；超出画布的部分一律裁掉，输出尺寸恒等于画布尺寸。</p>
+        :rtype: list of float
+        """
+        return self._BoundingBox
+
+    @BoundingBox.setter
+    def BoundingBox(self, BoundingBox):
+        self._BoundingBox = BoundingBox
+
+    @property
+    def BoundingBoxUnitType(self):
+        r"""<p>坐标单位，与图片擦除能力对齐。取值：</p><ul><li>0：自动判定（不传时的默认值）；</li><li>1：比例；</li><li>2：像素。</li></ul><p>自动判定规则：四个值全部大于 1 按像素解释、全部不大于 1 按比例解释；混合取值会返回InvalidParameter，建议始终显式指定。</p>
+        :rtype: int
+        """
+        return self._BoundingBoxUnitType
+
+    @BoundingBoxUnitType.setter
+    def BoundingBoxUnitType(self, BoundingBoxUnitType):
+        self._BoundingBoxUnitType = BoundingBoxUnitType
+
+
+    def _deserialize(self, params):
+        self._ZIndex = params.get("ZIndex")
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._BoundingBox = params.get("BoundingBox")
+        self._BoundingBoxUnitType = params.get("BoundingBoxUnitType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageDenoiseConfig(AbstractModel):
     r"""图片降噪配置
 
@@ -57024,6 +57261,8 @@ class ImageTaskInput(AbstractModel):
         :type UnderstandImageConfig: :class:`tencentcloud.mps.v20190612.models.UnderstandImageConfig`
         :param _ImageQualityConfig: <p>图片质量评估配置</p>
         :type ImageQualityConfig: :class:`tencentcloud.mps.v20190612.models.ImageQualityConfig`
+        :param _AiComposeConfig: <p>图层融合配置。</p>
+        :type AiComposeConfig: :class:`tencentcloud.mps.v20190612.models.AiComposeConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -57039,6 +57278,7 @@ class ImageTaskInput(AbstractModel):
         self._AiStoryboardConfig = None
         self._UnderstandImageConfig = None
         self._ImageQualityConfig = None
+        self._AiComposeConfig = None
 
     @property
     def EncodeConfig(self):
@@ -57198,6 +57438,17 @@ class ImageTaskInput(AbstractModel):
     def ImageQualityConfig(self, ImageQualityConfig):
         self._ImageQualityConfig = ImageQualityConfig
 
+    @property
+    def AiComposeConfig(self):
+        r"""<p>图层融合配置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiComposeConfig`
+        """
+        return self._AiComposeConfig
+
+    @AiComposeConfig.setter
+    def AiComposeConfig(self, AiComposeConfig):
+        self._AiComposeConfig = AiComposeConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -57242,6 +57493,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("ImageQualityConfig") is not None:
             self._ImageQualityConfig = ImageQualityConfig()
             self._ImageQualityConfig._deserialize(params.get("ImageQualityConfig"))
+        if params.get("AiComposeConfig") is not None:
+            self._AiComposeConfig = AiComposeConfig()
+            self._AiComposeConfig._deserialize(params.get("AiComposeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

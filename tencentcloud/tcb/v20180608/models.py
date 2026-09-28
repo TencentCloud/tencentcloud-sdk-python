@@ -1672,6 +1672,87 @@ class BindStorageSourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BuildArtifactInfo(AbstractModel):
+    r"""构建产物信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>产物类型</p>
+        :type Type: str
+        :param _Name: <p>产物名称</p>
+        :type Name: str
+        :param _Status: <p>产物状态</p>
+        :type Status: str
+        :param _ContentJson: <p>扩展详情 Json</p>
+        :type ContentJson: str
+        """
+        self._Type = None
+        self._Name = None
+        self._Status = None
+        self._ContentJson = None
+
+    @property
+    def Type(self):
+        r"""<p>产物类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>产物名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>产物状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ContentJson(self):
+        r"""<p>扩展详情 Json</p>
+        :rtype: str
+        """
+        return self._ContentJson
+
+    @ContentJson.setter
+    def ContentJson(self, ContentJson):
+        self._ContentJson = ContentJson
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._ContentJson = params.get("ContentJson")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BuildCommands(AbstractModel):
     r"""构建命令
 
@@ -1728,6 +1809,57 @@ class BuildCommands(AbstractModel):
         self._InstallCmd = params.get("InstallCmd")
         self._BuildCmd = params.get("BuildCmd")
         self._DeployCmd = params.get("DeployCmd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildContext(AbstractModel):
+    r"""构建上下文
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: <p>构建路径</p>
+        :type Path: str
+        :param _OutPut: <p>构建产物输出路径</p>
+        :type OutPut: str
+        """
+        self._Path = None
+        self._OutPut = None
+
+    @property
+    def Path(self):
+        r"""<p>构建路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def OutPut(self):
+        r"""<p>构建产物输出路径</p>
+        :rtype: str
+        """
+        return self._OutPut
+
+    @OutPut.setter
+    def OutPut(self, OutPut):
+        self._OutPut = OutPut
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._OutPut = params.get("OutPut")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1812,6 +1944,8 @@ class BuildSource(AbstractModel):
         :type CosTimestamp: str
         :param _CosSuffix: <p>仅 Type=zip/cos 时使用。zip 文件后缀，默认 .zip；与 CosTimestamp 配合定位 COS 对象</p>
         :type CosSuffix: str
+        :param _PackageFileName: <p>zip 包名称</p>
+        :type PackageFileName: str
         """
         self._Type = None
         self._Repo = None
@@ -1821,6 +1955,7 @@ class BuildSource(AbstractModel):
         self._CodeUrlWithAuth = None
         self._CosTimestamp = None
         self._CosSuffix = None
+        self._PackageFileName = None
 
     @property
     def Type(self):
@@ -1910,6 +2045,17 @@ class BuildSource(AbstractModel):
     def CosSuffix(self, CosSuffix):
         self._CosSuffix = CosSuffix
 
+    @property
+    def PackageFileName(self):
+        r"""<p>zip 包名称</p>
+        :rtype: str
+        """
+        return self._PackageFileName
+
+    @PackageFileName.setter
+    def PackageFileName(self, PackageFileName):
+        self._PackageFileName = PackageFileName
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1920,6 +2066,7 @@ class BuildSource(AbstractModel):
         self._CodeUrlWithAuth = params.get("CodeUrlWithAuth")
         self._CosTimestamp = params.get("CosTimestamp")
         self._CosSuffix = params.get("CosSuffix")
+        self._PackageFileName = params.get("PackageFileName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2096,6 +2243,334 @@ class CheckTcbServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloudAppFilter(AbstractModel):
+    r"""云应用过滤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceNameList: <p>云应用过滤列表</p>
+        :type ServiceNameList: list of str
+        """
+        self._ServiceNameList = None
+
+    @property
+    def ServiceNameList(self):
+        r"""<p>云应用过滤列表</p>
+        :rtype: list of str
+        """
+        return self._ServiceNameList
+
+    @ServiceNameList.setter
+    def ServiceNameList(self, ServiceNameList):
+        self._ServiceNameList = ServiceNameList
+
+
+    def _deserialize(self, params):
+        self._ServiceNameList = params.get("ServiceNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAppLinkService(AbstractModel):
+    r"""云应用关联服务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceType: <p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+        :type ServiceType: str
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        :param _Identifier: <p>服务身份</p>
+        :type Identifier: str
+        :param _Action: <p>服务动作</p>
+        :type Action: str
+        :param _Command: <p>服务构建命令</p>
+        :type Command: :class:`tencentcloud.tcb.v20180608.models.BuildCommands`
+        :param _BuildContext: <p>服务构建部署上下文</p>
+        :type BuildContext: :class:`tencentcloud.tcb.v20180608.models.BuildContext`
+        """
+        self._ServiceType = None
+        self._ServiceName = None
+        self._Identifier = None
+        self._Action = None
+        self._Command = None
+        self._BuildContext = None
+
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Identifier(self):
+        r"""<p>服务身份</p>
+        :rtype: str
+        """
+        return self._Identifier
+
+    @Identifier.setter
+    def Identifier(self, Identifier):
+        self._Identifier = Identifier
+
+    @property
+    def Action(self):
+        r"""<p>服务动作</p>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Command(self):
+        r"""<p>服务构建命令</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BuildCommands`
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def BuildContext(self):
+        r"""<p>服务构建部署上下文</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BuildContext`
+        """
+        return self._BuildContext
+
+    @BuildContext.setter
+    def BuildContext(self, BuildContext):
+        self._BuildContext = BuildContext
+
+
+    def _deserialize(self, params):
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceName = params.get("ServiceName")
+        self._Identifier = params.get("Identifier")
+        self._Action = params.get("Action")
+        if params.get("Command") is not None:
+            self._Command = BuildCommands()
+            self._Command._deserialize(params.get("Command"))
+        if params.get("BuildContext") is not None:
+            self._BuildContext = BuildContext()
+            self._BuildContext._deserialize(params.get("BuildContext"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAppResourceItem(AbstractModel):
+    r"""云应用资源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        :param _ServiceType: <p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+        :type ServiceType: str
+        :param _DeployedRef: <p>服务部署版本</p>
+        :type DeployedRef: str
+        :param _DiffCategory: <p>服务动作</p>
+        :type DiffCategory: str
+        :param _Status: <p>服务状态</p>
+        :type Status: str
+        """
+        self._ServiceName = None
+        self._ServiceType = None
+        self._DeployedRef = None
+        self._DiffCategory = None
+        self._Status = None
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def DeployedRef(self):
+        r"""<p>服务部署版本</p>
+        :rtype: str
+        """
+        return self._DeployedRef
+
+    @DeployedRef.setter
+    def DeployedRef(self, DeployedRef):
+        self._DeployedRef = DeployedRef
+
+    @property
+    def DiffCategory(self):
+        r"""<p>服务动作</p>
+        :rtype: str
+        """
+        return self._DiffCategory
+
+    @DiffCategory.setter
+    def DiffCategory(self, DiffCategory):
+        self._DiffCategory = DiffCategory
+
+    @property
+    def Status(self):
+        r"""<p>服务状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceType = params.get("ServiceType")
+        self._DeployedRef = params.get("DeployedRef")
+        self._DiffCategory = params.get("DiffCategory")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAppRoute(AbstractModel):
+    r"""云应用路由
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: <p>服务跟路由</p>
+        :type Source: str
+        :param _ServiceType: <p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+        :type ServiceType: str
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        :param _TargetPath: <p>目标路径，暂不支持</p>
+        :type TargetPath: str
+        """
+        self._Source = None
+        self._ServiceType = None
+        self._ServiceName = None
+        self._TargetPath = None
+
+    @property
+    def Source(self):
+        r"""<p>服务跟路由</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型</p><p>枚举值：</p><ul><li>http-function： HTTP 云函数</li><li>function： 普通云函数</li><li>static-hosting： 静态托管</li></ul>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def TargetPath(self):
+        r"""<p>目标路径，暂不支持</p>
+        :rtype: str
+        """
+        return self._TargetPath
+
+    @TargetPath.setter
+    def TargetPath(self, TargetPath):
+        self._TargetPath = TargetPath
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceName = params.get("ServiceName")
+        self._TargetPath = params.get("TargetPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloudAppServiceItem(AbstractModel):
     r"""部署服务信息
 
@@ -2103,24 +2578,28 @@ class CloudAppServiceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceName: 服务名
+        :param _ServiceName: <p>服务名</p>
         :type ServiceName: str
-        :param _Framework: 框架名
+        :param _Framework: <p>框架名</p>
         :type Framework: str
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _AppPath: 应用路径
+        :param _AppPath: <p>应用路径</p>
         :type AppPath: str
-        :param _CreateTime: 服务创建时间
+        :param _CreateTime: <p>服务创建时间</p>
         :type CreateTime: str
-        :param _LatestVersionName: 最新版本名
+        :param _LatestVersionName: <p>最新版本名</p>
         :type LatestVersionName: str
-        :param _LatestStatus: 最新版本状态
+        :param _LatestStatus: <p>最新版本状态</p>
         :type LatestStatus: str
-        :param _LatestBuildTime: 最新版本构建时间
+        :param _LatestBuildTime: <p>最新版本构建时间</p>
         :type LatestBuildTime: str
-        :param _DeployType: 部署类型
+        :param _DeployType: <p>部署类型</p>
         :type DeployType: str
+        :param _BuildConfig: <p>构建配置</p>
+        :type BuildConfig: str
+        :param _CurrentVersion: <p>当前流量版本</p>
+        :type CurrentVersion: str
         """
         self._ServiceName = None
         self._Framework = None
@@ -2131,10 +2610,12 @@ class CloudAppServiceItem(AbstractModel):
         self._LatestStatus = None
         self._LatestBuildTime = None
         self._DeployType = None
+        self._BuildConfig = None
+        self._CurrentVersion = None
 
     @property
     def ServiceName(self):
-        r"""服务名
+        r"""<p>服务名</p>
         :rtype: str
         """
         return self._ServiceName
@@ -2145,7 +2626,7 @@ class CloudAppServiceItem(AbstractModel):
 
     @property
     def Framework(self):
-        r"""框架名
+        r"""<p>框架名</p>
         :rtype: str
         """
         return self._Framework
@@ -2156,7 +2637,7 @@ class CloudAppServiceItem(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -2167,7 +2648,7 @@ class CloudAppServiceItem(AbstractModel):
 
     @property
     def AppPath(self):
-        r"""应用路径
+        r"""<p>应用路径</p>
         :rtype: str
         """
         return self._AppPath
@@ -2178,7 +2659,7 @@ class CloudAppServiceItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""服务创建时间
+        r"""<p>服务创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2189,7 +2670,7 @@ class CloudAppServiceItem(AbstractModel):
 
     @property
     def LatestVersionName(self):
-        r"""最新版本名
+        r"""<p>最新版本名</p>
         :rtype: str
         """
         return self._LatestVersionName
@@ -2200,7 +2681,7 @@ class CloudAppServiceItem(AbstractModel):
 
     @property
     def LatestStatus(self):
-        r"""最新版本状态
+        r"""<p>最新版本状态</p>
         :rtype: str
         """
         return self._LatestStatus
@@ -2211,7 +2692,7 @@ class CloudAppServiceItem(AbstractModel):
 
     @property
     def LatestBuildTime(self):
-        r"""最新版本构建时间
+        r"""<p>最新版本构建时间</p>
         :rtype: str
         """
         return self._LatestBuildTime
@@ -2222,7 +2703,7 @@ class CloudAppServiceItem(AbstractModel):
 
     @property
     def DeployType(self):
-        r"""部署类型
+        r"""<p>部署类型</p>
         :rtype: str
         """
         return self._DeployType
@@ -2230,6 +2711,28 @@ class CloudAppServiceItem(AbstractModel):
     @DeployType.setter
     def DeployType(self, DeployType):
         self._DeployType = DeployType
+
+    @property
+    def BuildConfig(self):
+        r"""<p>构建配置</p>
+        :rtype: str
+        """
+        return self._BuildConfig
+
+    @BuildConfig.setter
+    def BuildConfig(self, BuildConfig):
+        self._BuildConfig = BuildConfig
+
+    @property
+    def CurrentVersion(self):
+        r"""<p>当前流量版本</p>
+        :rtype: str
+        """
+        return self._CurrentVersion
+
+    @CurrentVersion.setter
+    def CurrentVersion(self, CurrentVersion):
+        self._CurrentVersion = CurrentVersion
 
 
     def _deserialize(self, params):
@@ -2242,6 +2745,46 @@ class CloudAppServiceItem(AbstractModel):
         self._LatestStatus = params.get("LatestStatus")
         self._LatestBuildTime = params.get("LatestBuildTime")
         self._DeployType = params.get("DeployType")
+        self._BuildConfig = params.get("BuildConfig")
+        self._CurrentVersion = params.get("CurrentVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAppTrigger(AbstractModel):
+    r"""云应用触发器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Webhook: <p>webhook 配置</p>
+        :type Webhook: :class:`tencentcloud.tcb.v20180608.models.CloudAppWebHook`
+        """
+        self._Webhook = None
+
+    @property
+    def Webhook(self):
+        r"""<p>webhook 配置</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CloudAppWebHook`
+        """
+        return self._Webhook
+
+    @Webhook.setter
+    def Webhook(self, Webhook):
+        self._Webhook = Webhook
+
+
+    def _deserialize(self, params):
+        if params.get("Webhook") is not None:
+            self._Webhook = CloudAppWebHook()
+            self._Webhook._deserialize(params.get("Webhook"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2276,6 +2819,16 @@ class CloudAppVersionItem(AbstractModel):
         :param _Steps: <p>构建步骤</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Steps: list of BuildStepStatus
+        :param _Snapshot: <p>服务版本部署快照</p>
+        :type Snapshot: str
+        :param _VersionDomain: <p>服务版本域名</p>
+        :type VersionDomain: str
+        :param _TrafficPercent: <p>服务版本流量</p>
+        :type TrafficPercent: int
+        :param _Resources: <p>服务资源</p>
+        :type Resources: list of CloudAppResourceItem
+        :param _Artifacts: <p>服务产物列表</p>
+        :type Artifacts: list of BuildArtifactInfo
         """
         self._VersionName = None
         self._BuildType = None
@@ -2285,6 +2838,11 @@ class CloudAppVersionItem(AbstractModel):
         self._StaticConfig = None
         self._BuildTime = None
         self._Steps = None
+        self._Snapshot = None
+        self._VersionDomain = None
+        self._TrafficPercent = None
+        self._Resources = None
+        self._Artifacts = None
 
     @property
     def VersionName(self):
@@ -2375,6 +2933,61 @@ class CloudAppVersionItem(AbstractModel):
     def Steps(self, Steps):
         self._Steps = Steps
 
+    @property
+    def Snapshot(self):
+        r"""<p>服务版本部署快照</p>
+        :rtype: str
+        """
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def VersionDomain(self):
+        r"""<p>服务版本域名</p>
+        :rtype: str
+        """
+        return self._VersionDomain
+
+    @VersionDomain.setter
+    def VersionDomain(self, VersionDomain):
+        self._VersionDomain = VersionDomain
+
+    @property
+    def TrafficPercent(self):
+        r"""<p>服务版本流量</p>
+        :rtype: int
+        """
+        return self._TrafficPercent
+
+    @TrafficPercent.setter
+    def TrafficPercent(self, TrafficPercent):
+        self._TrafficPercent = TrafficPercent
+
+    @property
+    def Resources(self):
+        r"""<p>服务资源</p>
+        :rtype: list of CloudAppResourceItem
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Artifacts(self):
+        r"""<p>服务产物列表</p>
+        :rtype: list of BuildArtifactInfo
+        """
+        return self._Artifacts
+
+    @Artifacts.setter
+    def Artifacts(self, Artifacts):
+        self._Artifacts = Artifacts
+
 
     def _deserialize(self, params):
         self._VersionName = params.get("VersionName")
@@ -2392,6 +3005,87 @@ class CloudAppVersionItem(AbstractModel):
                 obj = BuildStepStatus()
                 obj._deserialize(item)
                 self._Steps.append(obj)
+        self._Snapshot = params.get("Snapshot")
+        self._VersionDomain = params.get("VersionDomain")
+        self._TrafficPercent = params.get("TrafficPercent")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = CloudAppResourceItem()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        if params.get("Artifacts") is not None:
+            self._Artifacts = []
+            for item in params.get("Artifacts"):
+                obj = BuildArtifactInfo()
+                obj._deserialize(item)
+                self._Artifacts.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAppWebHook(AbstractModel):
+    r"""云应用 WebHook 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>开启 webhook 触发</p>
+        :type Enabled: bool
+        :param _Branches: <p>触发分支</p>
+        :type Branches: list of str
+        :param _Events: <p>触发事件</p>
+        :type Events: list of str
+        """
+        self._Enabled = None
+        self._Branches = None
+        self._Events = None
+
+    @property
+    def Enabled(self):
+        r"""<p>开启 webhook 触发</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Branches(self):
+        r"""<p>触发分支</p>
+        :rtype: list of str
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+    @property
+    def Events(self):
+        r"""<p>触发事件</p>
+        :rtype: list of str
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Branches = params.get("Branches")
+        self._Events = params.get("Events")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3714,6 +4408,22 @@ class CreateCloudAppRequest(AbstractModel):
         :type Secrets: list of BuildSecret
         :param _NodeJsVersion: <p>选择 NodeRuntime 版本: 16,18,20,22,24 等</p>
         :type NodeJsVersion: str
+        :param _Trigger: <p>暂不支持：Webhook 触发器功能尚未对外开放，客户端传入的 Trigger 字段会被平台静默忽略（仅日志告警，不拒绝请求）</p>
+        :type Trigger: :class:`tencentcloud.tcb.v20180608.models.CloudAppTrigger`
+        :param _ServiceList: <p>服务列表</p>
+        :type ServiceList: list of CloudAppLinkService
+        :param _WorkingDir: <p>全局工作目录</p>
+        :type WorkingDir: str
+        :param _Routes: <p>路由列表</p>
+        :type Routes: list of CloudAppRoute
+        :param _PromoteType: <p>部署类型</p>
+        :type PromoteType: str
+        :param _ClientToken: <p>发布 Token 校验</p>
+        :type ClientToken: str
+        :param _PreDeployCommand: <p>前置执行命令</p>
+        :type PreDeployCommand: str
+        :param _PostDeployCommand: <p>后置执行命令</p>
+        :type PostDeployCommand: str
         """
         self._EnvId = None
         self._ServiceName = None
@@ -3726,6 +4436,14 @@ class CreateCloudAppRequest(AbstractModel):
         self._CustomSteps = None
         self._Secrets = None
         self._NodeJsVersion = None
+        self._Trigger = None
+        self._ServiceList = None
+        self._WorkingDir = None
+        self._Routes = None
+        self._PromoteType = None
+        self._ClientToken = None
+        self._PreDeployCommand = None
+        self._PostDeployCommand = None
 
     @property
     def EnvId(self):
@@ -3848,6 +4566,94 @@ class CreateCloudAppRequest(AbstractModel):
     def NodeJsVersion(self, NodeJsVersion):
         self._NodeJsVersion = NodeJsVersion
 
+    @property
+    def Trigger(self):
+        r"""<p>暂不支持：Webhook 触发器功能尚未对外开放，客户端传入的 Trigger 字段会被平台静默忽略（仅日志告警，不拒绝请求）</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CloudAppTrigger`
+        """
+        return self._Trigger
+
+    @Trigger.setter
+    def Trigger(self, Trigger):
+        self._Trigger = Trigger
+
+    @property
+    def ServiceList(self):
+        r"""<p>服务列表</p>
+        :rtype: list of CloudAppLinkService
+        """
+        return self._ServiceList
+
+    @ServiceList.setter
+    def ServiceList(self, ServiceList):
+        self._ServiceList = ServiceList
+
+    @property
+    def WorkingDir(self):
+        r"""<p>全局工作目录</p>
+        :rtype: str
+        """
+        return self._WorkingDir
+
+    @WorkingDir.setter
+    def WorkingDir(self, WorkingDir):
+        self._WorkingDir = WorkingDir
+
+    @property
+    def Routes(self):
+        r"""<p>路由列表</p>
+        :rtype: list of CloudAppRoute
+        """
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
+
+    @property
+    def PromoteType(self):
+        r"""<p>部署类型</p>
+        :rtype: str
+        """
+        return self._PromoteType
+
+    @PromoteType.setter
+    def PromoteType(self, PromoteType):
+        self._PromoteType = PromoteType
+
+    @property
+    def ClientToken(self):
+        r"""<p>发布 Token 校验</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def PreDeployCommand(self):
+        r"""<p>前置执行命令</p>
+        :rtype: str
+        """
+        return self._PreDeployCommand
+
+    @PreDeployCommand.setter
+    def PreDeployCommand(self, PreDeployCommand):
+        self._PreDeployCommand = PreDeployCommand
+
+    @property
+    def PostDeployCommand(self):
+        r"""<p>后置执行命令</p>
+        :rtype: str
+        """
+        return self._PostDeployCommand
+
+    @PostDeployCommand.setter
+    def PostDeployCommand(self, PostDeployCommand):
+        self._PostDeployCommand = PostDeployCommand
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3882,6 +4688,26 @@ class CreateCloudAppRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Secrets.append(obj)
         self._NodeJsVersion = params.get("NodeJsVersion")
+        if params.get("Trigger") is not None:
+            self._Trigger = CloudAppTrigger()
+            self._Trigger._deserialize(params.get("Trigger"))
+        if params.get("ServiceList") is not None:
+            self._ServiceList = []
+            for item in params.get("ServiceList"):
+                obj = CloudAppLinkService()
+                obj._deserialize(item)
+                self._ServiceList.append(obj)
+        self._WorkingDir = params.get("WorkingDir")
+        if params.get("Routes") is not None:
+            self._Routes = []
+            for item in params.get("Routes"):
+                obj = CloudAppRoute()
+                obj._deserialize(item)
+                self._Routes.append(obj)
+        self._PromoteType = params.get("PromoteType")
+        self._ClientToken = params.get("ClientToken")
+        self._PreDeployCommand = params.get("PreDeployCommand")
+        self._PostDeployCommand = params.get("PostDeployCommand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5418,6 +6244,104 @@ class CreatePlatformEnvResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePlatformHTTPServiceRouteRequest(AbstractModel):
+    r"""CreatePlatformHTTPServiceRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>平台id</p>
+        :type PlatformId: str
+        :param _Domain: <p>域名路由信息</p>
+        :type Domain: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        self._PlatformId = None
+        self._Domain = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def Domain(self):
+        r"""<p>域名路由信息</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        if params.get("Domain") is not None:
+            self._Domain = HTTPServiceDomainParam()
+            self._Domain._deserialize(params.get("Domain"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePlatformHTTPServiceRouteResponse(AbstractModel):
+    r"""CreatePlatformHTTPServiceRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OwnershipVerification: <p>归属权校验不通过返回信息，根据校验信息配置dns或者文件验证，可通过VerifyHTTPServiceRoute接口验证归属权是否通过</p>
+        :type OwnershipVerification: :class:`tencentcloud.tcb.v20180608.models.OwnershipVerificationInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OwnershipVerification = None
+        self._RequestId = None
+
+    @property
+    def OwnershipVerification(self):
+        r"""<p>归属权校验不通过返回信息，根据校验信息配置dns或者文件验证，可通过VerifyHTTPServiceRoute接口验证归属权是否通过</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.OwnershipVerificationInfo`
+        """
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerificationInfo()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         self._RequestId = params.get("RequestId")
 
 
@@ -6964,6 +7888,100 @@ class DeleteHTTPServiceRouteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeletePlatformHTTPServiceRouteRequest(AbstractModel):
+    r"""DeletePlatformHTTPServiceRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>平台id</p>
+        :type PlatformId: str
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _Paths: <p>路径列表。为空则表示删除此域名和所有路由</p>
+        :type Paths: list of str
+        """
+        self._PlatformId = None
+        self._Domain = None
+        self._Paths = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Paths(self):
+        r"""<p>路径列表。为空则表示删除此域名和所有路由</p>
+        :rtype: list of str
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        self._Domain = params.get("Domain")
+        self._Paths = params.get("Paths")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePlatformHTTPServiceRouteResponse(AbstractModel):
+    r"""DeletePlatformHTTPServiceRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteProviderRequest(AbstractModel):
     r"""DeleteProvider请求参数结构体
 
@@ -8394,6 +9412,12 @@ class DescribeCloudAppInfoResponse(AbstractModel):
         :type LatestBuildTime: str
         :param _DeployType: <p>部署类型</p>
         :type DeployType: str
+        :param _BuildConfig: <p>构建配置</p>
+        :type BuildConfig: str
+        :param _CurrentVersion: <p>当前服务流量版本</p>
+        :type CurrentVersion: str
+        :param _PreviewDomain: <p>版本关联默认域名</p>
+        :type PreviewDomain: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8406,6 +9430,9 @@ class DescribeCloudAppInfoResponse(AbstractModel):
         self._LatestStatus = None
         self._LatestBuildTime = None
         self._DeployType = None
+        self._BuildConfig = None
+        self._CurrentVersion = None
+        self._PreviewDomain = None
         self._RequestId = None
 
     @property
@@ -8508,6 +9535,39 @@ class DescribeCloudAppInfoResponse(AbstractModel):
         self._DeployType = DeployType
 
     @property
+    def BuildConfig(self):
+        r"""<p>构建配置</p>
+        :rtype: str
+        """
+        return self._BuildConfig
+
+    @BuildConfig.setter
+    def BuildConfig(self, BuildConfig):
+        self._BuildConfig = BuildConfig
+
+    @property
+    def CurrentVersion(self):
+        r"""<p>当前服务流量版本</p>
+        :rtype: str
+        """
+        return self._CurrentVersion
+
+    @CurrentVersion.setter
+    def CurrentVersion(self, CurrentVersion):
+        self._CurrentVersion = CurrentVersion
+
+    @property
+    def PreviewDomain(self):
+        r"""<p>版本关联默认域名</p>
+        :rtype: str
+        """
+        return self._PreviewDomain
+
+    @PreviewDomain.setter
+    def PreviewDomain(self, PreviewDomain):
+        self._PreviewDomain = PreviewDomain
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8529,6 +9589,9 @@ class DescribeCloudAppInfoResponse(AbstractModel):
         self._LatestStatus = params.get("LatestStatus")
         self._LatestBuildTime = params.get("LatestBuildTime")
         self._DeployType = params.get("DeployType")
+        self._BuildConfig = params.get("BuildConfig")
+        self._CurrentVersion = params.get("CurrentVersion")
+        self._PreviewDomain = params.get("PreviewDomain")
         self._RequestId = params.get("RequestId")
 
 
@@ -8549,12 +9612,15 @@ class DescribeCloudAppListRequest(AbstractModel):
         :type PageSize: int
         :param _PageNo: <p>页号</p>
         :type PageNo: int
+        :param _Filter: <p>服务过滤</p>
+        :type Filter: :class:`tencentcloud.tcb.v20180608.models.CloudAppFilter`
         """
         self._EnvId = None
         self._DeployType = None
         self._SearchKey = None
         self._PageSize = None
         self._PageNo = None
+        self._Filter = None
 
     @property
     def EnvId(self):
@@ -8611,6 +9677,17 @@ class DescribeCloudAppListRequest(AbstractModel):
     def PageNo(self, PageNo):
         self._PageNo = PageNo
 
+    @property
+    def Filter(self):
+        r"""<p>服务过滤</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CloudAppFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -8618,6 +9695,9 @@ class DescribeCloudAppListRequest(AbstractModel):
         self._SearchKey = params.get("SearchKey")
         self._PageSize = params.get("PageSize")
         self._PageNo = params.get("PageNo")
+        if params.get("Filter") is not None:
+            self._Filter = CloudAppFilter()
+            self._Filter._deserialize(params.get("Filter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8967,6 +10047,16 @@ class DescribeCloudAppVersionResponse(AbstractModel):
         :type BuildTime: str
         :param _Steps: <p>[]BuildStepStatus 的 JSON 序列化</p>
         :type Steps: list of BuildStepStatus
+        :param _Snapshot: <p>服务版本快照</p>
+        :type Snapshot: str
+        :param _TrafficPercent: <p>服务版本流量比例</p>
+        :type TrafficPercent: int
+        :param _VersionDomain: <p>服务版本域名</p>
+        :type VersionDomain: str
+        :param _Resources: <p>服务管理资源列表</p>
+        :type Resources: list of CloudAppResourceItem
+        :param _Artifacts: <p>[]ArtifactInfo 的 JSON 序列化</p>
+        :type Artifacts: list of BuildArtifactInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8977,6 +10067,11 @@ class DescribeCloudAppVersionResponse(AbstractModel):
         self._StaticConfig = None
         self._BuildTime = None
         self._Steps = None
+        self._Snapshot = None
+        self._TrafficPercent = None
+        self._VersionDomain = None
+        self._Resources = None
+        self._Artifacts = None
         self._RequestId = None
 
     @property
@@ -9057,6 +10152,61 @@ class DescribeCloudAppVersionResponse(AbstractModel):
         self._Steps = Steps
 
     @property
+    def Snapshot(self):
+        r"""<p>服务版本快照</p>
+        :rtype: str
+        """
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def TrafficPercent(self):
+        r"""<p>服务版本流量比例</p>
+        :rtype: int
+        """
+        return self._TrafficPercent
+
+    @TrafficPercent.setter
+    def TrafficPercent(self, TrafficPercent):
+        self._TrafficPercent = TrafficPercent
+
+    @property
+    def VersionDomain(self):
+        r"""<p>服务版本域名</p>
+        :rtype: str
+        """
+        return self._VersionDomain
+
+    @VersionDomain.setter
+    def VersionDomain(self, VersionDomain):
+        self._VersionDomain = VersionDomain
+
+    @property
+    def Resources(self):
+        r"""<p>服务管理资源列表</p>
+        :rtype: list of CloudAppResourceItem
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Artifacts(self):
+        r"""<p>[]ArtifactInfo 的 JSON 序列化</p>
+        :rtype: list of BuildArtifactInfo
+        """
+        return self._Artifacts
+
+    @Artifacts.setter
+    def Artifacts(self, Artifacts):
+        self._Artifacts = Artifacts
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -9083,6 +10233,21 @@ class DescribeCloudAppVersionResponse(AbstractModel):
                 obj = BuildStepStatus()
                 obj._deserialize(item)
                 self._Steps.append(obj)
+        self._Snapshot = params.get("Snapshot")
+        self._TrafficPercent = params.get("TrafficPercent")
+        self._VersionDomain = params.get("VersionDomain")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = CloudAppResourceItem()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        if params.get("Artifacts") is not None:
+            self._Artifacts = []
+            for item in params.get("Artifacts"):
+                obj = BuildArtifactInfo()
+                obj._deserialize(item)
+                self._Artifacts.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13439,6 +14604,170 @@ class DescribePlatformEnvUsageResponse(AbstractModel):
                 self._Resources.append(obj)
         self._TotalCredits = params.get("TotalCredits")
         self._CreditsScale = params.get("CreditsScale")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePlatformHTTPServiceRouteRequest(AbstractModel):
+    r"""DescribePlatformHTTPServiceRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>平台id</p>
+        :type PlatformId: str
+        :param _Filters: <p>过滤条件。Key的含义参考对应字段，Value精确匹配。可过滤: Domain、Path、DomainType、UpstreamResourceType。可过滤的Values单条不超过100</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页偏移量。默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>分页限制。默认20，最大值1000</p>
+        :type Limit: int
+        """
+        self._PlatformId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件。Key的含义参考对应字段，Value精确匹配。可过滤: Domain、Path、DomainType、UpstreamResourceType。可过滤的Values单条不超过100</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量。默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页限制。默认20，最大值1000</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePlatformHTTPServiceRouteResponse(AbstractModel):
+    r"""DescribePlatformHTTPServiceRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: <p>域名路由信息列表</p>
+        :type Domains: list of HTTPServiceDomain
+        :param _OriginDomain: <p>自定义接入的源站域名（HTTPService接入层域名）</p>
+        :type OriginDomain: str
+        :param _TotalCount: <p>域名总数，分页查询使用总数判断是否已经拉取到所有数据</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Domains = None
+        self._OriginDomain = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Domains(self):
+        r"""<p>域名路由信息列表</p>
+        :rtype: list of HTTPServiceDomain
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def OriginDomain(self):
+        r"""<p>自定义接入的源站域名（HTTPService接入层域名）</p>
+        :rtype: str
+        """
+        return self._OriginDomain
+
+    @OriginDomain.setter
+    def OriginDomain(self, OriginDomain):
+        self._OriginDomain = OriginDomain
+
+    @property
+    def TotalCount(self):
+        r"""<p>域名总数，分页查询使用总数判断是否已经拉取到所有数据</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Domains") is not None:
+            self._Domains = []
+            for item in params.get("Domains"):
+                obj = HTTPServiceDomain()
+                obj._deserialize(item)
+                self._Domains.append(obj)
+        self._OriginDomain = params.get("OriginDomain")
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -24004,6 +25333,87 @@ class ModifyPlatformEnvResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPlatformHTTPServiceRouteRequest(AbstractModel):
+    r"""ModifyPlatformHTTPServiceRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>平台id</p>
+        :type PlatformId: str
+        :param _Domain: <p>域名路由信息</p>
+        :type Domain: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        self._PlatformId = None
+        self._Domain = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def Domain(self):
+        r"""<p>域名路由信息</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        if params.get("Domain") is not None:
+            self._Domain = HTTPServiceDomainParam()
+            self._Domain._deserialize(params.get("Domain"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPlatformHTTPServiceRouteResponse(AbstractModel):
+    r"""ModifyPlatformHTTPServiceRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyProviderRequest(AbstractModel):
     r"""ModifyProvider请求参数结构体
 
@@ -30986,9 +32396,9 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
         :type Role: str
         :param _InstallDependency: <p>在线依赖安装，TRUE 表示安装，仅支持 Node.js 函数。 </p><p>默认值：FALSE</p>
         :type InstallDependency: str
-        :param _ClsTopicId: <p>日志投递到的cls日志集ID</p>
+        :param _ClsTopicId: <p>日志投递到的cls Topic ID</p>
         :type ClsTopicId: str
-        :param _ClsLogsetId: <p>日志投递到的cls Topic ID</p>
+        :param _ClsLogsetId: <p>日志投递到的cls日志集ID</p>
         :type ClsLogsetId: str
         :param _Publish: <p>在更新时是否同步发布新版本</p><p>默认值：FALSE</p>
         :type Publish: str
@@ -31149,7 +32559,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def ClsTopicId(self):
-        r"""<p>日志投递到的cls日志集ID</p>
+        r"""<p>日志投递到的cls Topic ID</p>
         :rtype: str
         """
         return self._ClsTopicId
@@ -31160,7 +32570,7 @@ class UpdateFunctionConfigurationRequest(AbstractModel):
 
     @property
     def ClsLogsetId(self):
-        r"""<p>日志投递到的cls Topic ID</p>
+        r"""<p>日志投递到的cls日志集ID</p>
         :rtype: str
         """
         return self._ClsLogsetId
@@ -32220,6 +33630,255 @@ class VerifyHTTPServiceRouteRequest(AbstractModel):
 
 class VerifyHTTPServiceRouteResponse(AbstractModel):
     r"""VerifyHTTPServiceRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Passed: <p>前置校验总开关。所有启用的检查项均为 PASS 或 SKIPPED 时为 true，任一检查项为 FAIL 时为 false。当为 false 时，前端应根据各 CheckItem 的 Code 精确渲染错误提示和操作指引；当为 true 时可继续调用 CreateHTTPServiceRoute 完成创建。 示例值：false</p>
+        :type Passed: bool
+        :param _Ownership: <p>域名归属权校验结果</p>
+        :type Ownership: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _Cert: <p>证书校验结果；CertId 为空时 Status=SKIPPED</p>
+        :type Cert: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _Quota: <p>域名/路径数量配额校验结果</p>
+        :type Quota: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _RouteConflict: <p>同域名下路由路径冲突校验结果</p>
+        :type RouteConflict: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _DomainConflict: <p>域名被其他环境占用校验结果</p>
+        :type DomainConflict: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _InternalAccount: <p>内部域名且非内部账号校验结果</p>
+        :type InternalAccount: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _Blacklist: <p>域名黑名单校验结果</p>
+        :type Blacklist: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _CDNResource: <p>AccessType=CDN 时 CDN 资源存在性 / 状态校验结果（含 ICP 未备案的提示）</p>
+        :type CDNResource: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _EO: <p>AccessType=EO 时的 EdgeOne 预检结果（域名冲突/备案/归属权）</p>
+        :type EO: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Passed = None
+        self._Ownership = None
+        self._Cert = None
+        self._Quota = None
+        self._RouteConflict = None
+        self._DomainConflict = None
+        self._InternalAccount = None
+        self._Blacklist = None
+        self._CDNResource = None
+        self._EO = None
+        self._RequestId = None
+
+    @property
+    def Passed(self):
+        r"""<p>前置校验总开关。所有启用的检查项均为 PASS 或 SKIPPED 时为 true，任一检查项为 FAIL 时为 false。当为 false 时，前端应根据各 CheckItem 的 Code 精确渲染错误提示和操作指引；当为 true 时可继续调用 CreateHTTPServiceRoute 完成创建。 示例值：false</p>
+        :rtype: bool
+        """
+        return self._Passed
+
+    @Passed.setter
+    def Passed(self, Passed):
+        self._Passed = Passed
+
+    @property
+    def Ownership(self):
+        r"""<p>域名归属权校验结果</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._Ownership
+
+    @Ownership.setter
+    def Ownership(self, Ownership):
+        self._Ownership = Ownership
+
+    @property
+    def Cert(self):
+        r"""<p>证书校验结果；CertId 为空时 Status=SKIPPED</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._Cert
+
+    @Cert.setter
+    def Cert(self, Cert):
+        self._Cert = Cert
+
+    @property
+    def Quota(self):
+        r"""<p>域名/路径数量配额校验结果</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+    @property
+    def RouteConflict(self):
+        r"""<p>同域名下路由路径冲突校验结果</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._RouteConflict
+
+    @RouteConflict.setter
+    def RouteConflict(self, RouteConflict):
+        self._RouteConflict = RouteConflict
+
+    @property
+    def DomainConflict(self):
+        r"""<p>域名被其他环境占用校验结果</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._DomainConflict
+
+    @DomainConflict.setter
+    def DomainConflict(self, DomainConflict):
+        self._DomainConflict = DomainConflict
+
+    @property
+    def InternalAccount(self):
+        r"""<p>内部域名且非内部账号校验结果</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._InternalAccount
+
+    @InternalAccount.setter
+    def InternalAccount(self, InternalAccount):
+        self._InternalAccount = InternalAccount
+
+    @property
+    def Blacklist(self):
+        r"""<p>域名黑名单校验结果</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._Blacklist
+
+    @Blacklist.setter
+    def Blacklist(self, Blacklist):
+        self._Blacklist = Blacklist
+
+    @property
+    def CDNResource(self):
+        r"""<p>AccessType=CDN 时 CDN 资源存在性 / 状态校验结果（含 ICP 未备案的提示）</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._CDNResource
+
+    @CDNResource.setter
+    def CDNResource(self, CDNResource):
+        self._CDNResource = CDNResource
+
+    @property
+    def EO(self):
+        r"""<p>AccessType=EO 时的 EdgeOne 预检结果（域名冲突/备案/归属权）</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyHTTPServiceRouteCheckItem`
+        """
+        return self._EO
+
+    @EO.setter
+    def EO(self, EO):
+        self._EO = EO
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Passed = params.get("Passed")
+        if params.get("Ownership") is not None:
+            self._Ownership = VerifyHTTPServiceRouteCheckItem()
+            self._Ownership._deserialize(params.get("Ownership"))
+        if params.get("Cert") is not None:
+            self._Cert = VerifyHTTPServiceRouteCheckItem()
+            self._Cert._deserialize(params.get("Cert"))
+        if params.get("Quota") is not None:
+            self._Quota = VerifyHTTPServiceRouteCheckItem()
+            self._Quota._deserialize(params.get("Quota"))
+        if params.get("RouteConflict") is not None:
+            self._RouteConflict = VerifyHTTPServiceRouteCheckItem()
+            self._RouteConflict._deserialize(params.get("RouteConflict"))
+        if params.get("DomainConflict") is not None:
+            self._DomainConflict = VerifyHTTPServiceRouteCheckItem()
+            self._DomainConflict._deserialize(params.get("DomainConflict"))
+        if params.get("InternalAccount") is not None:
+            self._InternalAccount = VerifyHTTPServiceRouteCheckItem()
+            self._InternalAccount._deserialize(params.get("InternalAccount"))
+        if params.get("Blacklist") is not None:
+            self._Blacklist = VerifyHTTPServiceRouteCheckItem()
+            self._Blacklist._deserialize(params.get("Blacklist"))
+        if params.get("CDNResource") is not None:
+            self._CDNResource = VerifyHTTPServiceRouteCheckItem()
+            self._CDNResource._deserialize(params.get("CDNResource"))
+        if params.get("EO") is not None:
+            self._EO = VerifyHTTPServiceRouteCheckItem()
+            self._EO._deserialize(params.get("EO"))
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyPlatformHTTPServiceRouteRequest(AbstractModel):
+    r"""VerifyPlatformHTTPServiceRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PlatformId: <p>平台id</p>
+        :type PlatformId: str
+        :param _Domain: <p>域名路由信息</p>
+        :type Domain: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        self._PlatformId = None
+        self._Domain = None
+
+    @property
+    def PlatformId(self):
+        r"""<p>平台id</p>
+        :rtype: str
+        """
+        return self._PlatformId
+
+    @PlatformId.setter
+    def PlatformId(self, PlatformId):
+        self._PlatformId = PlatformId
+
+    @property
+    def Domain(self):
+        r"""<p>域名路由信息</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._PlatformId = params.get("PlatformId")
+        if params.get("Domain") is not None:
+            self._Domain = HTTPServiceDomainParam()
+            self._Domain._deserialize(params.get("Domain"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyPlatformHTTPServiceRouteResponse(AbstractModel):
+    r"""VerifyPlatformHTTPServiceRoute返回参数结构体
 
     """
 

@@ -995,6 +995,10 @@ class DescribeVsmAttributesResponse(AbstractModel):
         :type PqcFlag: int
         :param _DeployEnv: <p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
         :type DeployEnv: str
+        :param _ClusterId: <p>集群id</p>
+        :type ClusterId: str
+        :param _ClusterRole: <p>集群角色</p>
+        :type ClusterRole: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1023,6 +1027,8 @@ class DescribeVsmAttributesResponse(AbstractModel):
         self._Manufacturer = None
         self._PqcFlag = None
         self._DeployEnv = None
+        self._ClusterId = None
+        self._ClusterRole = None
         self._RequestId = None
 
     @property
@@ -1301,6 +1307,28 @@ class DescribeVsmAttributesResponse(AbstractModel):
         self._DeployEnv = DeployEnv
 
     @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterRole(self):
+        r"""<p>集群角色</p>
+        :rtype: int
+        """
+        return self._ClusterRole
+
+    @ClusterRole.setter
+    def ClusterRole(self, ClusterRole):
+        self._ClusterRole = ClusterRole
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1348,6 +1376,8 @@ class DescribeVsmAttributesResponse(AbstractModel):
         self._Manufacturer = params.get("Manufacturer")
         self._PqcFlag = params.get("PqcFlag")
         self._DeployEnv = params.get("DeployEnv")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterRole = params.get("ClusterRole")
         self._RequestId = params.get("RequestId")
 
 
@@ -1358,18 +1388,20 @@ class DescribeVsmsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移
+        :param _Offset: <p>偏移</p>
         :type Offset: int
-        :param _Limit: 最大数量
+        :param _Limit: <p>最大数量</p>
         :type Limit: int
-        :param _SearchWord: 资源ID或者资源名字模糊查询的关键字
+        :param _SearchWord: <p>资源ID或者资源名字模糊查询的关键字</p>
         :type SearchWord: str
-        :param _TagFilters: 标签过滤条件
+        :param _TagFilters: <p>标签过滤条件</p>
         :type TagFilters: list of TagFilter
-        :param _Manufacturer: 设备所属的厂商名称，根据厂商来进行筛选
+        :param _Manufacturer: <p>设备所属的厂商名称，根据厂商来进行筛选</p>
         :type Manufacturer: str
-        :param _HsmType: Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+        :param _HsmType: <p>Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all</p>
         :type HsmType: str
+        :param _ClusterId: <p>集群id</p>
+        :type ClusterId: str
         """
         self._Offset = None
         self._Limit = None
@@ -1377,10 +1409,11 @@ class DescribeVsmsRequest(AbstractModel):
         self._TagFilters = None
         self._Manufacturer = None
         self._HsmType = None
+        self._ClusterId = None
 
     @property
     def Offset(self):
-        r"""偏移
+        r"""<p>偏移</p>
         :rtype: int
         """
         return self._Offset
@@ -1391,7 +1424,7 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""最大数量
+        r"""<p>最大数量</p>
         :rtype: int
         """
         return self._Limit
@@ -1402,7 +1435,7 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""资源ID或者资源名字模糊查询的关键字
+        r"""<p>资源ID或者资源名字模糊查询的关键字</p>
         :rtype: str
         """
         return self._SearchWord
@@ -1413,7 +1446,7 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""标签过滤条件
+        r"""<p>标签过滤条件</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -1424,7 +1457,7 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def Manufacturer(self):
-        r"""设备所属的厂商名称，根据厂商来进行筛选
+        r"""<p>设备所属的厂商名称，根据厂商来进行筛选</p>
         :rtype: str
         """
         return self._Manufacturer
@@ -1435,7 +1468,7 @@ class DescribeVsmsRequest(AbstractModel):
 
     @property
     def HsmType(self):
-        r"""Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all
+        r"""<p>Hsm服务类型，可选virtualization、physical、GHSM、EHSM、SHSM、all</p>
         :rtype: str
         """
         return self._HsmType
@@ -1443,6 +1476,17 @@ class DescribeVsmsRequest(AbstractModel):
     @HsmType.setter
     def HsmType(self, HsmType):
         self._HsmType = HsmType
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
 
     def _deserialize(self, params):
@@ -1457,6 +1501,7 @@ class DescribeVsmsRequest(AbstractModel):
                 self._TagFilters.append(obj)
         self._Manufacturer = params.get("Manufacturer")
         self._HsmType = params.get("HsmType")
+        self._ClusterId = params.get("ClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1474,9 +1519,9 @@ class DescribeVsmsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 获取实例的总个数
+        :param _TotalCount: <p>获取实例的总个数</p>
         :type TotalCount: int
-        :param _VsmList: 资源信息
+        :param _VsmList: <p>资源信息</p>
         :type VsmList: list of ResourceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1487,7 +1532,7 @@ class DescribeVsmsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""获取实例的总个数
+        r"""<p>获取实例的总个数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -1498,7 +1543,7 @@ class DescribeVsmsResponse(AbstractModel):
 
     @property
     def VsmList(self):
-        r"""资源信息
+        r"""<p>资源信息</p>
         :rtype: list of ResourceInfo
         """
         return self._VsmList
@@ -1647,9 +1692,9 @@ class GetVsmMonitorInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源Id
+        :param _ResourceId: <p>资源Id</p>
         :type ResourceId: str
-        :param _ResourceName: 资源名称
+        :param _ResourceName: <p>资源名称</p>
         :type ResourceName: str
         """
         self._ResourceId = None
@@ -1657,7 +1702,7 @@ class GetVsmMonitorInfoRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源Id
+        r"""<p>资源Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -1668,7 +1713,7 @@ class GetVsmMonitorInfoRequest(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""资源名称
+        r"""<p>资源名称</p>
         :rtype: str
         """
         return self._ResourceName
@@ -1698,17 +1743,23 @@ class GetVsmMonitorInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MonitorInfo: VSM监控信息
+        :param _MonitorInfo: <p>VSM监控信息</p>
         :type MonitorInfo: list of str
+        :param _DigestList: <p>vsm摘要列表</p>
+        :type DigestList: list of VsmDigestItem
+        :param _InitStatus: <p>初始化状态</p>
+        :type InitStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._MonitorInfo = None
+        self._DigestList = None
+        self._InitStatus = None
         self._RequestId = None
 
     @property
     def MonitorInfo(self):
-        r"""VSM监控信息
+        r"""<p>VSM监控信息</p>
         :rtype: list of str
         """
         return self._MonitorInfo
@@ -1716,6 +1767,28 @@ class GetVsmMonitorInfoResponse(AbstractModel):
     @MonitorInfo.setter
     def MonitorInfo(self, MonitorInfo):
         self._MonitorInfo = MonitorInfo
+
+    @property
+    def DigestList(self):
+        r"""<p>vsm摘要列表</p>
+        :rtype: list of VsmDigestItem
+        """
+        return self._DigestList
+
+    @DigestList.setter
+    def DigestList(self, DigestList):
+        self._DigestList = DigestList
+
+    @property
+    def InitStatus(self):
+        r"""<p>初始化状态</p>
+        :rtype: int
+        """
+        return self._InitStatus
+
+    @InitStatus.setter
+    def InitStatus(self, InitStatus):
+        self._InitStatus = InitStatus
 
     @property
     def RequestId(self):
@@ -1731,6 +1804,13 @@ class GetVsmMonitorInfoResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._MonitorInfo = params.get("MonitorInfo")
+        if params.get("DigestList") is not None:
+            self._DigestList = []
+            for item in params.get("DigestList"):
+                obj = VsmDigestItem()
+                obj._deserialize(item)
+                self._DigestList.append(obj)
+        self._InitStatus = params.get("InitStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -2377,6 +2457,12 @@ class ResourceInfo(AbstractModel):
         :type PqcFlag: int
         :param _DeployEnv: <p>环境</p><p>默认值：cloud</p><p>cloud或者cdc</p>
         :type DeployEnv: str
+        :param _Version: <p>vsm版本号</p>
+        :type Version: str
+        :param _ClusterId: <p>集群id</p>
+        :type ClusterId: str
+        :param _ClusterRole: <p>集群角色，0-未加入集群 1-主 2-从</p>
+        :type ClusterRole: int
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -2404,6 +2490,9 @@ class ResourceInfo(AbstractModel):
         self._PqcStatus = None
         self._PqcFlag = None
         self._DeployEnv = None
+        self._Version = None
+        self._ClusterId = None
+        self._ClusterRole = None
 
     @property
     def ResourceId(self):
@@ -2691,6 +2780,39 @@ class ResourceInfo(AbstractModel):
     def DeployEnv(self, DeployEnv):
         self._DeployEnv = DeployEnv
 
+    @property
+    def Version(self):
+        r"""<p>vsm版本号</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterRole(self):
+        r"""<p>集群角色，0-未加入集群 1-主 2-从</p>
+        :rtype: int
+        """
+        return self._ClusterRole
+
+    @ClusterRole.setter
+    def ClusterRole(self, ClusterRole):
+        self._ClusterRole = ClusterRole
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -2729,6 +2851,9 @@ class ResourceInfo(AbstractModel):
         self._PqcStatus = params.get("PqcStatus")
         self._PqcFlag = params.get("PqcFlag")
         self._DeployEnv = params.get("DeployEnv")
+        self._Version = params.get("Version")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterRole = params.get("ClusterRole")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3426,6 +3551,57 @@ class Vpc(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._CreatedTime = params.get("CreatedTime")
         self._IsDefault = params.get("IsDefault")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VsmDigestItem(AbstractModel):
+    r"""VSM摘要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DigestVer: <p>计数</p>
+        :type DigestVer: int
+        :param _Value: <p>摘要值</p>
+        :type Value: str
+        """
+        self._DigestVer = None
+        self._Value = None
+
+    @property
+    def DigestVer(self):
+        r"""<p>计数</p>
+        :rtype: int
+        """
+        return self._DigestVer
+
+    @DigestVer.setter
+    def DigestVer(self, DigestVer):
+        self._DigestVer = DigestVer
+
+    @property
+    def Value(self):
+        r"""<p>摘要值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._DigestVer = params.get("DigestVer")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -4383,6 +4383,1058 @@ class CreateUserAutonomyProfileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeadLockLogItem(AbstractModel):
+    r"""死锁事件列表。按事件时间倒序排列（最近的死锁在前）。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID，例如 mssql-ks3s56dj。</p>
+        :type InstanceId: str
+        :param _TimestampSource: <p>时间字段来源。XML_EVENT 表示时间来自 xml_deadlock_report 的引擎打点；OBSERVED_LOG 表示时间来自 chain/lock 观测记录（partial 事件）。</p>
+        :type TimestampSource: str
+        :param _PartialReasonCode: <p>降级原因码。IsPartial=true 时值为 XML_NOT_AVAILABLE；否则为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PartialReasonCode: str
+        :param _VictimProcessIds: <p>被回滚的进程内部指针列表，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 对齐，可用于死锁环节点定位。</p>
+        :type VictimProcessIds: list of str
+        :param _PayloadTruncated: <p>原始负载是否被上游截断。true 表示 XmlReport 或 chain/lock payload 有过截断，会影响诊断可信度。</p>
+        :type PayloadTruncated: bool
+        :param _SourceUuids: <p>组成本事件的所有 XEvent 原始消息 UUID 列表（去重后按字典序排序），用于多源溯源、审计、补数。</p>
+        :type SourceUuids: list of str
+        :param _ObservedTransactionCount: <p>实际可归因（有 TransactionId）的事务数量。</p>
+        :type ObservedTransactionCount: int
+        :param _EventTimestamp: <p>死锁发生时间。ISO-8601 带偏移格式，例如 2026-09-16T06:58:52.611+00:00。来源于 XEvent 原始 timestamp。</p>
+        :type EventTimestamp: str
+        :param _GraphStatus: <p>死锁图完整性。COMPLETE 表示成功装配 xml_deadlock_report；MISSING 表示无 xml 只有 chain/lock 消息（对应 IsPartial=true）。</p>
+        :type GraphStatus: str
+        :param _XmlIncluded: <p>本次响应中是否内联了原始死锁 XML。仅当请求参数 IncludeXml=true 且事件为 COMPLETE 时为 true。</p>
+        :type XmlIncluded: bool
+        :param _ProcessCount: <p>参与死锁的进程总数。2 方死锁最常见，N 方死锁更严重。</p>
+        :type ProcessCount: int
+        :param _Transactions: <p>参与死锁的事务列表（按 IsVictim=true 排前、TransactionId 升序）。每个事务下可能有多个 Session（例如并行执行 worker）。</p>
+        :type Transactions: list of DeadlockTransaction
+        :param _DeadlockId: <p>引擎内的死锁编号，例如 84。与 SQL Server 端 xml_deadlock_report 对齐。同实例短期内可辨识，重启后会复用。若上游数据缺失则为 null。</p>
+        :type DeadlockId: str
+        :param _XmlReport: <p>原始 SQL Server 死锁图 XML 字符串（xml_deadlock_report 输出）。IncludeXml=false 或事件为 partial 时为 null。可用于前端直接绘制死锁环、AI 深度诊断，或落到对象存储做冷归档。</p>
+        :type XmlReport: str
+        :param _OriginalXmlBytes: <p>原始 XML 字节数，用于采集侧健康度评估。partial 事件为 null。</p>
+        :type OriginalXmlBytes: int
+        :param _VictimSessionIds: <p>被 SQL Server 选中回滚的会话 SPID 列表（去重）。DBA 复盘定位牺牲者的核心字段。</p>
+        :type VictimSessionIds: list of int
+        :param _IsPartial: <p>是否为降级 partial 事件。true 表示无 xml_deadlock_report，Transactions/Resources 只能从 chain/lock 消息尽力还原。AI 诊断前建议过滤 IsPartial=true 的记录。</p>
+        :type IsPartial: bool
+        :param _DatabaseNames: <p>涉及的数据库名去重列表，用于分库聚合与影响范围判断。</p>
+        :type DatabaseNames: list of str
+        :param _EventId: <p>事件唯一 ID，格式为 xml:&lt;uuid&gt; 或 partial:&lt;uuid&gt;。前缀 xml 表示由 xml_deadlock_report 装配的完整事件；partial 表示只有 chain/lock 消息的降级事件。可作为幂等主键。</p>
+        :type EventId: str
+        :param _DeadlockSignature: <p>死锁事件级签名（SHA-1 前 16 位）。基于参与死锁的所有锁资源三元组 (Kind, ObjectName, IndexName, Mode) 排序后计算，用于聚合相同锁冲突模式的死锁模板。partial 事件无 Resources 时为 null。</p>
+        :type DeadlockSignature: str
+        :param _Resources: <p>死锁涉及的锁资源节点列表。每个资源节点有若干 Owners（持有边）与 Waiters（等待边），二者组合构成死锁环。partial 事件为空数组。</p>
+        :type Resources: list of DeadlockResource
+        :param _AssociationStatus: <p>XE 辅助事件（chain/lock）与 XML 图的关联状态。MATCHED 表示至少一个 chain/lock 消息已关联到该 xml；UNMATCHED 表示只有孤立 xml 或降级 partial 事件。</p>
+        :type AssociationStatus: str
+        :param _TransactionCount: <p>参与死锁的事务总数（有 TransactionId 的会话按事务分组后的数量）。当存在无 TransactionId 的会话时为 null，通过 ObservedTransactionCount 与该字段的差值可以判断归因缺失情况。</p>
+        :type TransactionCount: int
+        """
+        self._InstanceId = None
+        self._TimestampSource = None
+        self._PartialReasonCode = None
+        self._VictimProcessIds = None
+        self._PayloadTruncated = None
+        self._SourceUuids = None
+        self._ObservedTransactionCount = None
+        self._EventTimestamp = None
+        self._GraphStatus = None
+        self._XmlIncluded = None
+        self._ProcessCount = None
+        self._Transactions = None
+        self._DeadlockId = None
+        self._XmlReport = None
+        self._OriginalXmlBytes = None
+        self._VictimSessionIds = None
+        self._IsPartial = None
+        self._DatabaseNames = None
+        self._EventId = None
+        self._DeadlockSignature = None
+        self._Resources = None
+        self._AssociationStatus = None
+        self._TransactionCount = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID，例如 mssql-ks3s56dj。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TimestampSource(self):
+        r"""<p>时间字段来源。XML_EVENT 表示时间来自 xml_deadlock_report 的引擎打点；OBSERVED_LOG 表示时间来自 chain/lock 观测记录（partial 事件）。</p>
+        :rtype: str
+        """
+        return self._TimestampSource
+
+    @TimestampSource.setter
+    def TimestampSource(self, TimestampSource):
+        self._TimestampSource = TimestampSource
+
+    @property
+    def PartialReasonCode(self):
+        r"""<p>降级原因码。IsPartial=true 时值为 XML_NOT_AVAILABLE；否则为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PartialReasonCode
+
+    @PartialReasonCode.setter
+    def PartialReasonCode(self, PartialReasonCode):
+        self._PartialReasonCode = PartialReasonCode
+
+    @property
+    def VictimProcessIds(self):
+        r"""<p>被回滚的进程内部指针列表，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 对齐，可用于死锁环节点定位。</p>
+        :rtype: list of str
+        """
+        return self._VictimProcessIds
+
+    @VictimProcessIds.setter
+    def VictimProcessIds(self, VictimProcessIds):
+        self._VictimProcessIds = VictimProcessIds
+
+    @property
+    def PayloadTruncated(self):
+        r"""<p>原始负载是否被上游截断。true 表示 XmlReport 或 chain/lock payload 有过截断，会影响诊断可信度。</p>
+        :rtype: bool
+        """
+        return self._PayloadTruncated
+
+    @PayloadTruncated.setter
+    def PayloadTruncated(self, PayloadTruncated):
+        self._PayloadTruncated = PayloadTruncated
+
+    @property
+    def SourceUuids(self):
+        r"""<p>组成本事件的所有 XEvent 原始消息 UUID 列表（去重后按字典序排序），用于多源溯源、审计、补数。</p>
+        :rtype: list of str
+        """
+        return self._SourceUuids
+
+    @SourceUuids.setter
+    def SourceUuids(self, SourceUuids):
+        self._SourceUuids = SourceUuids
+
+    @property
+    def ObservedTransactionCount(self):
+        r"""<p>实际可归因（有 TransactionId）的事务数量。</p>
+        :rtype: int
+        """
+        return self._ObservedTransactionCount
+
+    @ObservedTransactionCount.setter
+    def ObservedTransactionCount(self, ObservedTransactionCount):
+        self._ObservedTransactionCount = ObservedTransactionCount
+
+    @property
+    def EventTimestamp(self):
+        r"""<p>死锁发生时间。ISO-8601 带偏移格式，例如 2026-09-16T06:58:52.611+00:00。来源于 XEvent 原始 timestamp。</p>
+        :rtype: str
+        """
+        return self._EventTimestamp
+
+    @EventTimestamp.setter
+    def EventTimestamp(self, EventTimestamp):
+        self._EventTimestamp = EventTimestamp
+
+    @property
+    def GraphStatus(self):
+        r"""<p>死锁图完整性。COMPLETE 表示成功装配 xml_deadlock_report；MISSING 表示无 xml 只有 chain/lock 消息（对应 IsPartial=true）。</p>
+        :rtype: str
+        """
+        return self._GraphStatus
+
+    @GraphStatus.setter
+    def GraphStatus(self, GraphStatus):
+        self._GraphStatus = GraphStatus
+
+    @property
+    def XmlIncluded(self):
+        r"""<p>本次响应中是否内联了原始死锁 XML。仅当请求参数 IncludeXml=true 且事件为 COMPLETE 时为 true。</p>
+        :rtype: bool
+        """
+        return self._XmlIncluded
+
+    @XmlIncluded.setter
+    def XmlIncluded(self, XmlIncluded):
+        self._XmlIncluded = XmlIncluded
+
+    @property
+    def ProcessCount(self):
+        r"""<p>参与死锁的进程总数。2 方死锁最常见，N 方死锁更严重。</p>
+        :rtype: int
+        """
+        return self._ProcessCount
+
+    @ProcessCount.setter
+    def ProcessCount(self, ProcessCount):
+        self._ProcessCount = ProcessCount
+
+    @property
+    def Transactions(self):
+        r"""<p>参与死锁的事务列表（按 IsVictim=true 排前、TransactionId 升序）。每个事务下可能有多个 Session（例如并行执行 worker）。</p>
+        :rtype: list of DeadlockTransaction
+        """
+        return self._Transactions
+
+    @Transactions.setter
+    def Transactions(self, Transactions):
+        self._Transactions = Transactions
+
+    @property
+    def DeadlockId(self):
+        r"""<p>引擎内的死锁编号，例如 84。与 SQL Server 端 xml_deadlock_report 对齐。同实例短期内可辨识，重启后会复用。若上游数据缺失则为 null。</p>
+        :rtype: str
+        """
+        return self._DeadlockId
+
+    @DeadlockId.setter
+    def DeadlockId(self, DeadlockId):
+        self._DeadlockId = DeadlockId
+
+    @property
+    def XmlReport(self):
+        r"""<p>原始 SQL Server 死锁图 XML 字符串（xml_deadlock_report 输出）。IncludeXml=false 或事件为 partial 时为 null。可用于前端直接绘制死锁环、AI 深度诊断，或落到对象存储做冷归档。</p>
+        :rtype: str
+        """
+        return self._XmlReport
+
+    @XmlReport.setter
+    def XmlReport(self, XmlReport):
+        self._XmlReport = XmlReport
+
+    @property
+    def OriginalXmlBytes(self):
+        r"""<p>原始 XML 字节数，用于采集侧健康度评估。partial 事件为 null。</p>
+        :rtype: int
+        """
+        return self._OriginalXmlBytes
+
+    @OriginalXmlBytes.setter
+    def OriginalXmlBytes(self, OriginalXmlBytes):
+        self._OriginalXmlBytes = OriginalXmlBytes
+
+    @property
+    def VictimSessionIds(self):
+        r"""<p>被 SQL Server 选中回滚的会话 SPID 列表（去重）。DBA 复盘定位牺牲者的核心字段。</p>
+        :rtype: list of int
+        """
+        return self._VictimSessionIds
+
+    @VictimSessionIds.setter
+    def VictimSessionIds(self, VictimSessionIds):
+        self._VictimSessionIds = VictimSessionIds
+
+    @property
+    def IsPartial(self):
+        r"""<p>是否为降级 partial 事件。true 表示无 xml_deadlock_report，Transactions/Resources 只能从 chain/lock 消息尽力还原。AI 诊断前建议过滤 IsPartial=true 的记录。</p>
+        :rtype: bool
+        """
+        return self._IsPartial
+
+    @IsPartial.setter
+    def IsPartial(self, IsPartial):
+        self._IsPartial = IsPartial
+
+    @property
+    def DatabaseNames(self):
+        r"""<p>涉及的数据库名去重列表，用于分库聚合与影响范围判断。</p>
+        :rtype: list of str
+        """
+        return self._DatabaseNames
+
+    @DatabaseNames.setter
+    def DatabaseNames(self, DatabaseNames):
+        self._DatabaseNames = DatabaseNames
+
+    @property
+    def EventId(self):
+        r"""<p>事件唯一 ID，格式为 xml:&lt;uuid&gt; 或 partial:&lt;uuid&gt;。前缀 xml 表示由 xml_deadlock_report 装配的完整事件；partial 表示只有 chain/lock 消息的降级事件。可作为幂等主键。</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def DeadlockSignature(self):
+        r"""<p>死锁事件级签名（SHA-1 前 16 位）。基于参与死锁的所有锁资源三元组 (Kind, ObjectName, IndexName, Mode) 排序后计算，用于聚合相同锁冲突模式的死锁模板。partial 事件无 Resources 时为 null。</p>
+        :rtype: str
+        """
+        return self._DeadlockSignature
+
+    @DeadlockSignature.setter
+    def DeadlockSignature(self, DeadlockSignature):
+        self._DeadlockSignature = DeadlockSignature
+
+    @property
+    def Resources(self):
+        r"""<p>死锁涉及的锁资源节点列表。每个资源节点有若干 Owners（持有边）与 Waiters（等待边），二者组合构成死锁环。partial 事件为空数组。</p>
+        :rtype: list of DeadlockResource
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def AssociationStatus(self):
+        r"""<p>XE 辅助事件（chain/lock）与 XML 图的关联状态。MATCHED 表示至少一个 chain/lock 消息已关联到该 xml；UNMATCHED 表示只有孤立 xml 或降级 partial 事件。</p>
+        :rtype: str
+        """
+        return self._AssociationStatus
+
+    @AssociationStatus.setter
+    def AssociationStatus(self, AssociationStatus):
+        self._AssociationStatus = AssociationStatus
+
+    @property
+    def TransactionCount(self):
+        r"""<p>参与死锁的事务总数（有 TransactionId 的会话按事务分组后的数量）。当存在无 TransactionId 的会话时为 null，通过 ObservedTransactionCount 与该字段的差值可以判断归因缺失情况。</p>
+        :rtype: int
+        """
+        return self._TransactionCount
+
+    @TransactionCount.setter
+    def TransactionCount(self, TransactionCount):
+        self._TransactionCount = TransactionCount
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TimestampSource = params.get("TimestampSource")
+        self._PartialReasonCode = params.get("PartialReasonCode")
+        self._VictimProcessIds = params.get("VictimProcessIds")
+        self._PayloadTruncated = params.get("PayloadTruncated")
+        self._SourceUuids = params.get("SourceUuids")
+        self._ObservedTransactionCount = params.get("ObservedTransactionCount")
+        self._EventTimestamp = params.get("EventTimestamp")
+        self._GraphStatus = params.get("GraphStatus")
+        self._XmlIncluded = params.get("XmlIncluded")
+        self._ProcessCount = params.get("ProcessCount")
+        if params.get("Transactions") is not None:
+            self._Transactions = []
+            for item in params.get("Transactions"):
+                obj = DeadlockTransaction()
+                obj._deserialize(item)
+                self._Transactions.append(obj)
+        self._DeadlockId = params.get("DeadlockId")
+        self._XmlReport = params.get("XmlReport")
+        self._OriginalXmlBytes = params.get("OriginalXmlBytes")
+        self._VictimSessionIds = params.get("VictimSessionIds")
+        self._IsPartial = params.get("IsPartial")
+        self._DatabaseNames = params.get("DatabaseNames")
+        self._EventId = params.get("EventId")
+        self._DeadlockSignature = params.get("DeadlockSignature")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = DeadlockResource()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        self._AssociationStatus = params.get("AssociationStatus")
+        self._TransactionCount = params.get("TransactionCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeadlockFrame(AbstractModel):
+    r"""SQL Server 执行栈中的单个帧。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Line: <p>帧对应的行号（存储过程内的行号）。</p>
+        :type Line: int
+        :param _StatementStart: <p>语句在存储过程文本内的起始字节偏移。</p>
+        :type StatementStart: int
+        :param _ProcName: <p>存储过程名。adhoc 表示动态 SQL、非存过。</p>
+        :type ProcName: str
+        :param _SqlHandle: <p>SQL 句柄（0x 十六进制字节），用于拉取具体语句文本和关联执行计划。</p>
+        :type SqlHandle: str
+        :param _StatementEnd: <p>语句在存储过程文本内的结束字节偏移。StatementStart/StatementEnd 组合用于精确切片。</p>
+        :type StatementEnd: int
+        """
+        self._Line = None
+        self._StatementStart = None
+        self._ProcName = None
+        self._SqlHandle = None
+        self._StatementEnd = None
+
+    @property
+    def Line(self):
+        r"""<p>帧对应的行号（存储过程内的行号）。</p>
+        :rtype: int
+        """
+        return self._Line
+
+    @Line.setter
+    def Line(self, Line):
+        self._Line = Line
+
+    @property
+    def StatementStart(self):
+        r"""<p>语句在存储过程文本内的起始字节偏移。</p>
+        :rtype: int
+        """
+        return self._StatementStart
+
+    @StatementStart.setter
+    def StatementStart(self, StatementStart):
+        self._StatementStart = StatementStart
+
+    @property
+    def ProcName(self):
+        r"""<p>存储过程名。adhoc 表示动态 SQL、非存过。</p>
+        :rtype: str
+        """
+        return self._ProcName
+
+    @ProcName.setter
+    def ProcName(self, ProcName):
+        self._ProcName = ProcName
+
+    @property
+    def SqlHandle(self):
+        r"""<p>SQL 句柄（0x 十六进制字节），用于拉取具体语句文本和关联执行计划。</p>
+        :rtype: str
+        """
+        return self._SqlHandle
+
+    @SqlHandle.setter
+    def SqlHandle(self, SqlHandle):
+        self._SqlHandle = SqlHandle
+
+    @property
+    def StatementEnd(self):
+        r"""<p>语句在存储过程文本内的结束字节偏移。StatementStart/StatementEnd 组合用于精确切片。</p>
+        :rtype: int
+        """
+        return self._StatementEnd
+
+    @StatementEnd.setter
+    def StatementEnd(self, StatementEnd):
+        self._StatementEnd = StatementEnd
+
+
+    def _deserialize(self, params):
+        self._Line = params.get("Line")
+        self._StatementStart = params.get("StatementStart")
+        self._ProcName = params.get("ProcName")
+        self._SqlHandle = params.get("SqlHandle")
+        self._StatementEnd = params.get("StatementEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeadlockResource(AbstractModel):
+    r"""死锁涉及的锁资源节点。Owners（持有边）+ Waiters（等待边）与 Transactions[].Processes[] 关联，构成完整死锁环。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexName: <p>锁资源对应的索引名。keylock/ridlock 尤为重要，可判断索引设计是否合理。</p>
+        :type IndexName: str
+        :param _PartitionId: <p>分区 HoBT ID（从 Attributes.hobtid 抽出）。分区表死锁排查必需字段，可定位到具体物理分区。</p>
+        :type PartitionId: str
+        :param _Waiters: <p>等待该锁资源的进程列表（死锁环的等待边）。</p>
+        :type Waiters: list of WaiterItem
+        :param _Kind: <p>锁资源类型。常见值：keylock / pagelock / objectlock / ridlock / applicationlock / exchangeEvent 等。</p>
+        :type Kind: str
+        :param _Mode: <p>锁模式。常见值：X（排他）/ U（更新）/ S（共享）/ IX / IU / RangeS-U / RangeX-X 等。</p>
+        :type Mode: str
+        :param _AssociatedObjectId: <p>关联对象 ID（从 Attributes.associatedObjectId 抽出）。ObjectName 为空时可用于兜底定位对象。</p>
+        :type AssociatedObjectId: str
+        :param _Id: <p>SQL Server 引擎内的锁资源指针，例如 lock26054644a80。环内节点唯一标识，串联 Owners/Waiters。</p>
+        :type Id: str
+        :param _ObjectName: <p>锁资源对应的数据库对象名，格式 &#39;数据库.架构.表&#39;，例如 tempdb.dbo.dl_a。applicationlock 无此字段。</p>
+        :type ObjectName: str
+        :param _Owners: <p>持有该锁资源的进程列表（死锁环的持有边）。</p>
+        :type Owners: list of OwnerItem
+        """
+        self._IndexName = None
+        self._PartitionId = None
+        self._Waiters = None
+        self._Kind = None
+        self._Mode = None
+        self._AssociatedObjectId = None
+        self._Id = None
+        self._ObjectName = None
+        self._Owners = None
+
+    @property
+    def IndexName(self):
+        r"""<p>锁资源对应的索引名。keylock/ridlock 尤为重要，可判断索引设计是否合理。</p>
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def PartitionId(self):
+        r"""<p>分区 HoBT ID（从 Attributes.hobtid 抽出）。分区表死锁排查必需字段，可定位到具体物理分区。</p>
+        :rtype: str
+        """
+        return self._PartitionId
+
+    @PartitionId.setter
+    def PartitionId(self, PartitionId):
+        self._PartitionId = PartitionId
+
+    @property
+    def Waiters(self):
+        r"""<p>等待该锁资源的进程列表（死锁环的等待边）。</p>
+        :rtype: list of WaiterItem
+        """
+        return self._Waiters
+
+    @Waiters.setter
+    def Waiters(self, Waiters):
+        self._Waiters = Waiters
+
+    @property
+    def Kind(self):
+        r"""<p>锁资源类型。常见值：keylock / pagelock / objectlock / ridlock / applicationlock / exchangeEvent 等。</p>
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def Mode(self):
+        r"""<p>锁模式。常见值：X（排他）/ U（更新）/ S（共享）/ IX / IU / RangeS-U / RangeX-X 等。</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def AssociatedObjectId(self):
+        r"""<p>关联对象 ID（从 Attributes.associatedObjectId 抽出）。ObjectName 为空时可用于兜底定位对象。</p>
+        :rtype: str
+        """
+        return self._AssociatedObjectId
+
+    @AssociatedObjectId.setter
+    def AssociatedObjectId(self, AssociatedObjectId):
+        self._AssociatedObjectId = AssociatedObjectId
+
+    @property
+    def Id(self):
+        r"""<p>SQL Server 引擎内的锁资源指针，例如 lock26054644a80。环内节点唯一标识，串联 Owners/Waiters。</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ObjectName(self):
+        r"""<p>锁资源对应的数据库对象名，格式 &#39;数据库.架构.表&#39;，例如 tempdb.dbo.dl_a。applicationlock 无此字段。</p>
+        :rtype: str
+        """
+        return self._ObjectName
+
+    @ObjectName.setter
+    def ObjectName(self, ObjectName):
+        self._ObjectName = ObjectName
+
+    @property
+    def Owners(self):
+        r"""<p>持有该锁资源的进程列表（死锁环的持有边）。</p>
+        :rtype: list of OwnerItem
+        """
+        return self._Owners
+
+    @Owners.setter
+    def Owners(self, Owners):
+        self._Owners = Owners
+
+
+    def _deserialize(self, params):
+        self._IndexName = params.get("IndexName")
+        self._PartitionId = params.get("PartitionId")
+        if params.get("Waiters") is not None:
+            self._Waiters = []
+            for item in params.get("Waiters"):
+                obj = WaiterItem()
+                obj._deserialize(item)
+                self._Waiters.append(obj)
+        self._Kind = params.get("Kind")
+        self._Mode = params.get("Mode")
+        self._AssociatedObjectId = params.get("AssociatedObjectId")
+        self._Id = params.get("Id")
+        self._ObjectName = params.get("ObjectName")
+        if params.get("Owners") is not None:
+            self._Owners = []
+            for item in params.get("Owners"):
+                obj = OwnerItem()
+                obj._deserialize(item)
+                self._Owners.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeadlockSession(AbstractModel):
+    r"""参与死锁的单个进程/会话。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SqlFingerprint: <p>SQL 归一化后的指纹（SHA-1 前 16 位）。去掉字面量、注释、参数名、空白差异后计算，抗字面量差异，用于聚合相同 SQL 模板。SqlText 为空时为 null。</p>
+        :type SqlFingerprint: str
+        :param _LoginName: <p>SQL Server 登录账号，用于权限归因。可判断是 SQLAgent、业务账号还是 DBA 账号。</p>
+        :type LoginName: str
+        :param _Frames: <p>会话执行栈帧列表（xml 的 executionStack.frame），用于定位到存储过程内的具体语句区间。partial 事件为空数组。</p>
+        :type Frames: list of DeadlockFrame
+        :param _IsolationLevel: <p>事务隔离级别，例如 &#39;read committed (2)&#39;、&#39;repeatable read (3)&#39;、&#39;serializable (4)&#39; 等。显著影响锁形态和死锁模式。</p>
+        :type IsolationLevel: str
+        :param _ProcessStatus: <p>进程状态。常见值：suspended（挂起等锁）/ running / background。判断是否运行中被检测终止。</p>
+        :type ProcessStatus: str
+        :param _ClientApp: <p>客户端应用名（xml 的 clientapp）。判断连接来源，例如 SQLAgent Job、ORM、SSMS、业务服务名等。</p>
+        :type ClientApp: str
+        :param _Priority: <p>会话的 DEADLOCK_PRIORITY 设置。-10 表示主动降级为牺牲者候选；10 表示优先级更高。可解释为何这一方成为牺牲品。</p>
+        :type Priority: int
+        :param _DatabaseName: <p>会话当前活跃的数据库名（xml 的 currentdbname）。</p>
+        :type DatabaseName: str
+        :param _LockHold: <p>本进程当前持有的锁资源描述列表（死锁环的持有边）。格式同 LockRequest 但结尾为 &#39;holding&#39;。partial 事件为空数组。</p>
+        :type LockHold: list of str
+        :param _SqlText: <p>会话最近执行的 SQL 文本（xml 的 InputBuf）。是 AI 诊断的主输入与 SqlFingerprint 的来源。</p>
+        :type SqlText: str
+        :param _Host: <p>客户端主机的 IP 地址（点分十进制，来自 message.ip）。判断是否来自同一台机器、批处理源。</p>
+        :type Host: str
+        :param _DatabaseId: <p>会话当前活跃的数据库 ID（xml 的 currentdb）。</p>
+        :type DatabaseId: int
+        :param _IsVictim: <p>本事务是否为牺牲事务。true 表示 SQL Server 已回滚该事务；false 表示正常提交；null 表示 XML 缺 VictimProcessIds 无法判定。</p>
+        :type IsVictim: bool
+        :param _WaitTimeMs: <p>等锁时长，单位毫秒。判断死锁检测延迟、事务超时的辅助指标。</p>
+        :type WaitTimeMs: int
+        :param _LastTransStarted: <p>事务开始时间（xml 里的 lasttranstarted，本地时间字符串，如 2026-09-16T14:58:23.840）。用于分析长事务、锁持有时长。</p>
+        :type LastTransStarted: str
+        :param _ExecutionContextId: <p>该边对应进程的并行执行子线程 ID。</p>
+        :type ExecutionContextId: int
+        :param _ProcessId: <p>SQL Server 引擎内的进程指针，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 拼接死锁环。partial 事件为 null。</p>
+        :type ProcessId: str
+        :param _ClientAppNormalized: <p>归一化后的客户端应用名。去掉 SQLAgent 的 JobId（16-64 位十六进制串）、Step 号、GUID、末尾进程号等易变部分，用于按应用类别聚合。</p>
+        :type ClientAppNormalized: str
+        :param _LockRequest: <p>本进程正在等待的锁资源描述列表（死锁环的等待边）。每条形如 &#39;keylock on tempdb.dbo.dl_a mode X waiting&#39;。applicationlock 会展示原始资源名（如 &#39;lock_a&#39;）。partial 事件为空数组。</p>
+        :type LockRequest: list of str
+        :param _SessionId: <p>SQL Server 会话 ID。日志排查主键。</p>
+        :type SessionId: int
+        """
+        self._SqlFingerprint = None
+        self._LoginName = None
+        self._Frames = None
+        self._IsolationLevel = None
+        self._ProcessStatus = None
+        self._ClientApp = None
+        self._Priority = None
+        self._DatabaseName = None
+        self._LockHold = None
+        self._SqlText = None
+        self._Host = None
+        self._DatabaseId = None
+        self._IsVictim = None
+        self._WaitTimeMs = None
+        self._LastTransStarted = None
+        self._ExecutionContextId = None
+        self._ProcessId = None
+        self._ClientAppNormalized = None
+        self._LockRequest = None
+        self._SessionId = None
+
+    @property
+    def SqlFingerprint(self):
+        r"""<p>SQL 归一化后的指纹（SHA-1 前 16 位）。去掉字面量、注释、参数名、空白差异后计算，抗字面量差异，用于聚合相同 SQL 模板。SqlText 为空时为 null。</p>
+        :rtype: str
+        """
+        return self._SqlFingerprint
+
+    @SqlFingerprint.setter
+    def SqlFingerprint(self, SqlFingerprint):
+        self._SqlFingerprint = SqlFingerprint
+
+    @property
+    def LoginName(self):
+        r"""<p>SQL Server 登录账号，用于权限归因。可判断是 SQLAgent、业务账号还是 DBA 账号。</p>
+        :rtype: str
+        """
+        return self._LoginName
+
+    @LoginName.setter
+    def LoginName(self, LoginName):
+        self._LoginName = LoginName
+
+    @property
+    def Frames(self):
+        r"""<p>会话执行栈帧列表（xml 的 executionStack.frame），用于定位到存储过程内的具体语句区间。partial 事件为空数组。</p>
+        :rtype: list of DeadlockFrame
+        """
+        return self._Frames
+
+    @Frames.setter
+    def Frames(self, Frames):
+        self._Frames = Frames
+
+    @property
+    def IsolationLevel(self):
+        r"""<p>事务隔离级别，例如 &#39;read committed (2)&#39;、&#39;repeatable read (3)&#39;、&#39;serializable (4)&#39; 等。显著影响锁形态和死锁模式。</p>
+        :rtype: str
+        """
+        return self._IsolationLevel
+
+    @IsolationLevel.setter
+    def IsolationLevel(self, IsolationLevel):
+        self._IsolationLevel = IsolationLevel
+
+    @property
+    def ProcessStatus(self):
+        r"""<p>进程状态。常见值：suspended（挂起等锁）/ running / background。判断是否运行中被检测终止。</p>
+        :rtype: str
+        """
+        return self._ProcessStatus
+
+    @ProcessStatus.setter
+    def ProcessStatus(self, ProcessStatus):
+        self._ProcessStatus = ProcessStatus
+
+    @property
+    def ClientApp(self):
+        r"""<p>客户端应用名（xml 的 clientapp）。判断连接来源，例如 SQLAgent Job、ORM、SSMS、业务服务名等。</p>
+        :rtype: str
+        """
+        return self._ClientApp
+
+    @ClientApp.setter
+    def ClientApp(self, ClientApp):
+        self._ClientApp = ClientApp
+
+    @property
+    def Priority(self):
+        r"""<p>会话的 DEADLOCK_PRIORITY 设置。-10 表示主动降级为牺牲者候选；10 表示优先级更高。可解释为何这一方成为牺牲品。</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def DatabaseName(self):
+        r"""<p>会话当前活跃的数据库名（xml 的 currentdbname）。</p>
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def LockHold(self):
+        r"""<p>本进程当前持有的锁资源描述列表（死锁环的持有边）。格式同 LockRequest 但结尾为 &#39;holding&#39;。partial 事件为空数组。</p>
+        :rtype: list of str
+        """
+        return self._LockHold
+
+    @LockHold.setter
+    def LockHold(self, LockHold):
+        self._LockHold = LockHold
+
+    @property
+    def SqlText(self):
+        r"""<p>会话最近执行的 SQL 文本（xml 的 InputBuf）。是 AI 诊断的主输入与 SqlFingerprint 的来源。</p>
+        :rtype: str
+        """
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def Host(self):
+        r"""<p>客户端主机的 IP 地址（点分十进制，来自 message.ip）。判断是否来自同一台机器、批处理源。</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DatabaseId(self):
+        r"""<p>会话当前活跃的数据库 ID（xml 的 currentdb）。</p>
+        :rtype: int
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def IsVictim(self):
+        r"""<p>本事务是否为牺牲事务。true 表示 SQL Server 已回滚该事务；false 表示正常提交；null 表示 XML 缺 VictimProcessIds 无法判定。</p>
+        :rtype: bool
+        """
+        return self._IsVictim
+
+    @IsVictim.setter
+    def IsVictim(self, IsVictim):
+        self._IsVictim = IsVictim
+
+    @property
+    def WaitTimeMs(self):
+        r"""<p>等锁时长，单位毫秒。判断死锁检测延迟、事务超时的辅助指标。</p>
+        :rtype: int
+        """
+        return self._WaitTimeMs
+
+    @WaitTimeMs.setter
+    def WaitTimeMs(self, WaitTimeMs):
+        self._WaitTimeMs = WaitTimeMs
+
+    @property
+    def LastTransStarted(self):
+        r"""<p>事务开始时间（xml 里的 lasttranstarted，本地时间字符串，如 2026-09-16T14:58:23.840）。用于分析长事务、锁持有时长。</p>
+        :rtype: str
+        """
+        return self._LastTransStarted
+
+    @LastTransStarted.setter
+    def LastTransStarted(self, LastTransStarted):
+        self._LastTransStarted = LastTransStarted
+
+    @property
+    def ExecutionContextId(self):
+        r"""<p>该边对应进程的并行执行子线程 ID。</p>
+        :rtype: int
+        """
+        return self._ExecutionContextId
+
+    @ExecutionContextId.setter
+    def ExecutionContextId(self, ExecutionContextId):
+        self._ExecutionContextId = ExecutionContextId
+
+    @property
+    def ProcessId(self):
+        r"""<p>SQL Server 引擎内的进程指针，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 拼接死锁环。partial 事件为 null。</p>
+        :rtype: str
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def ClientAppNormalized(self):
+        r"""<p>归一化后的客户端应用名。去掉 SQLAgent 的 JobId（16-64 位十六进制串）、Step 号、GUID、末尾进程号等易变部分，用于按应用类别聚合。</p>
+        :rtype: str
+        """
+        return self._ClientAppNormalized
+
+    @ClientAppNormalized.setter
+    def ClientAppNormalized(self, ClientAppNormalized):
+        self._ClientAppNormalized = ClientAppNormalized
+
+    @property
+    def LockRequest(self):
+        r"""<p>本进程正在等待的锁资源描述列表（死锁环的等待边）。每条形如 &#39;keylock on tempdb.dbo.dl_a mode X waiting&#39;。applicationlock 会展示原始资源名（如 &#39;lock_a&#39;）。partial 事件为空数组。</p>
+        :rtype: list of str
+        """
+        return self._LockRequest
+
+    @LockRequest.setter
+    def LockRequest(self, LockRequest):
+        self._LockRequest = LockRequest
+
+    @property
+    def SessionId(self):
+        r"""<p>SQL Server 会话 ID。日志排查主键。</p>
+        :rtype: int
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SqlFingerprint = params.get("SqlFingerprint")
+        self._LoginName = params.get("LoginName")
+        if params.get("Frames") is not None:
+            self._Frames = []
+            for item in params.get("Frames"):
+                obj = DeadlockFrame()
+                obj._deserialize(item)
+                self._Frames.append(obj)
+        self._IsolationLevel = params.get("IsolationLevel")
+        self._ProcessStatus = params.get("ProcessStatus")
+        self._ClientApp = params.get("ClientApp")
+        self._Priority = params.get("Priority")
+        self._DatabaseName = params.get("DatabaseName")
+        self._LockHold = params.get("LockHold")
+        self._SqlText = params.get("SqlText")
+        self._Host = params.get("Host")
+        self._DatabaseId = params.get("DatabaseId")
+        self._IsVictim = params.get("IsVictim")
+        self._WaitTimeMs = params.get("WaitTimeMs")
+        self._LastTransStarted = params.get("LastTransStarted")
+        self._ExecutionContextId = params.get("ExecutionContextId")
+        self._ProcessId = params.get("ProcessId")
+        self._ClientAppNormalized = params.get("ClientAppNormalized")
+        self._LockRequest = params.get("LockRequest")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeadlockTransaction(AbstractModel):
+    r"""参与死锁的单个事务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>事务最终状态。Rollback（被回滚，对应 IsVictim=true）/ Normal（正常，对应 IsVictim=false）/ Unknown（无 victim 信息）。</p>
+        :type Status: str
+        :param _TransactionId: <p>SQL Server 引擎内的事务 ID。同实例短期内唯一。与 Auxiliary 记录里的 transaction_id 对齐。</p>
+        :type TransactionId: str
+        :param _IsVictim: <p>本事务是否为牺牲事务。true 表示 SQL Server 已回滚该事务；false 表示正常提交；null 表示 XML 缺 VictimProcessIds 无法判定。</p>
+        :type IsVictim: bool
+        :param _Sessions: <p>该事务下的进程/会话列表。并行计划下同一事务可能包含多个 worker（SessionId 相同 ExecutionContextId 不同）。</p>
+        :type Sessions: list of DeadlockSession
+        """
+        self._Status = None
+        self._TransactionId = None
+        self._IsVictim = None
+        self._Sessions = None
+
+    @property
+    def Status(self):
+        r"""<p>事务最终状态。Rollback（被回滚，对应 IsVictim=true）/ Normal（正常，对应 IsVictim=false）/ Unknown（无 victim 信息）。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TransactionId(self):
+        r"""<p>SQL Server 引擎内的事务 ID。同实例短期内唯一。与 Auxiliary 记录里的 transaction_id 对齐。</p>
+        :rtype: str
+        """
+        return self._TransactionId
+
+    @TransactionId.setter
+    def TransactionId(self, TransactionId):
+        self._TransactionId = TransactionId
+
+    @property
+    def IsVictim(self):
+        r"""<p>本事务是否为牺牲事务。true 表示 SQL Server 已回滚该事务；false 表示正常提交；null 表示 XML 缺 VictimProcessIds 无法判定。</p>
+        :rtype: bool
+        """
+        return self._IsVictim
+
+    @IsVictim.setter
+    def IsVictim(self, IsVictim):
+        self._IsVictim = IsVictim
+
+    @property
+    def Sessions(self):
+        r"""<p>该事务下的进程/会话列表。并行计划下同一事务可能包含多个 worker（SessionId 相同 ExecutionContextId 不同）。</p>
+        :rtype: list of DeadlockSession
+        """
+        return self._Sessions
+
+    @Sessions.setter
+    def Sessions(self, Sessions):
+        self._Sessions = Sessions
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._TransactionId = params.get("TransactionId")
+        self._IsVictim = params.get("IsVictim")
+        if params.get("Sessions") is not None:
+            self._Sessions = []
+            for item in params.get("Sessions"):
+                obj = DeadlockSession()
+                obj._deserialize(item)
+                self._Sessions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAuditLogFileRequest(AbstractModel):
     r"""DeleteAuditLogFile请求参数结构体
 
@@ -7999,6 +9051,240 @@ class DescribeDatabaseAutonomyStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeadLockLogsRequest(AbstractModel):
+    r"""DescribeDeadLockLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: <p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
+        :type Product: str
+        :param _InstanceId: <p>实例 ID。SQLServer: mssql-xxxx。</p>
+        :type InstanceId: str
+        :param _StartTime: <p>查询开始时间，格式 yyyy-MM-dd HH:mm:ss，按 UTC+8 解析；也兼容带偏移的 ISO-8601（如 2026-09-16T00:00:00+08:00）。半开区间左闭。</p><p>参数格式：2026-09-16 00:00:00</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间，格式同 StartTime。EndTime 必须大于 StartTime，且总查询窗口不超过 24 小时。半开区间右开。</p><p>参数格式：2026-09-16 23:59:59</p>
+        :type EndTime: str
+        :param _Offset: <p>分页偏移量，非负整数，默认 0。当 Offset&gt;0 时必须同时传入 ResultVersion，否则报 INVALID_PARAMETER。</p>
+        :type Offset: int
+        :param _Limit: <p>单页返回死锁事件数量，范围 [1, 100]。默认 20。</p>
+        :type Limit: int
+        :param _IncludeXml: <p>是否在响应中包含原始死锁图 XML（XmlReport）。默认 false，避免响应体过大。仅在需要绘制完整死锁环时置 true。</p>
+        :type IncludeXml: bool
+        :param _ResultVersion: <p>结果集版本号，最大 128 字符。首次查询无需传入；翻页时必须透传首次响应中的 ResultVersion，服务端会校验结果集是否发生变化，变化时返回 RESULT_CHANGED 提示重新拉取首页。</p>
+        :type ResultVersion: str
+        """
+        self._Product = None
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._IncludeXml = None
+        self._ResultVersion = None
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。SQLServer: mssql-xxxx。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""<p>查询开始时间，格式 yyyy-MM-dd HH:mm:ss，按 UTC+8 解析；也兼容带偏移的 ISO-8601（如 2026-09-16T00:00:00+08:00）。半开区间左闭。</p><p>参数格式：2026-09-16 00:00:00</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，格式同 StartTime。EndTime 必须大于 StartTime，且总查询窗口不超过 24 小时。半开区间右开。</p><p>参数格式：2026-09-16 23:59:59</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，非负整数，默认 0。当 Offset&gt;0 时必须同时传入 ResultVersion，否则报 INVALID_PARAMETER。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单页返回死锁事件数量，范围 [1, 100]。默认 20。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def IncludeXml(self):
+        r"""<p>是否在响应中包含原始死锁图 XML（XmlReport）。默认 false，避免响应体过大。仅在需要绘制完整死锁环时置 true。</p>
+        :rtype: bool
+        """
+        return self._IncludeXml
+
+    @IncludeXml.setter
+    def IncludeXml(self, IncludeXml):
+        self._IncludeXml = IncludeXml
+
+    @property
+    def ResultVersion(self):
+        r"""<p>结果集版本号，最大 128 字符。首次查询无需传入；翻页时必须透传首次响应中的 ResultVersion，服务端会校验结果集是否发生变化，变化时返回 RESULT_CHANGED 提示重新拉取首页。</p>
+        :rtype: str
+        """
+        return self._ResultVersion
+
+    @ResultVersion.setter
+    def ResultVersion(self, ResultVersion):
+        self._ResultVersion = ResultVersion
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._IncludeXml = params.get("IncludeXml")
+        self._ResultVersion = params.get("ResultVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeadLockLogsResponse(AbstractModel):
+    r"""DescribeDeadLockLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HasMore: <p>是否还有更多分页。true 表示 Offset+Limit &lt; TotalCount，客户端可用 Offset+Limit 与本次 ResultVersion 继续翻页。</p>
+        :type HasMore: bool
+        :param _TotalCount: <p>当前查询窗口内可用的死锁事件总数（去重、关联、时间窗口过滤后）。</p>
+        :type TotalCount: int
+        :param _ResultVersion: <p>结果集版本号（SHA-256 十六进制）。同一批数据在同一查询条件下保持不变；数据发生变化时版本变化。翻页必须透传。</p>
+        :type ResultVersion: str
+        :param _Items: <p>死锁事件列表。按事件时间倒序排列（最近的死锁在前）。</p>
+        :type Items: list of DeadLockLogItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HasMore = None
+        self._TotalCount = None
+        self._ResultVersion = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def HasMore(self):
+        r"""<p>是否还有更多分页。true 表示 Offset+Limit &lt; TotalCount，客户端可用 Offset+Limit 与本次 ResultVersion 继续翻页。</p>
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def TotalCount(self):
+        r"""<p>当前查询窗口内可用的死锁事件总数（去重、关联、时间窗口过滤后）。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ResultVersion(self):
+        r"""<p>结果集版本号（SHA-256 十六进制）。同一批数据在同一查询条件下保持不变；数据发生变化时版本变化。翻页必须透传。</p>
+        :rtype: str
+        """
+        return self._ResultVersion
+
+    @ResultVersion.setter
+    def ResultVersion(self, ResultVersion):
+        self._ResultVersion = ResultVersion
+
+    @property
+    def Items(self):
+        r"""<p>死锁事件列表。按事件时间倒序排列（最近的死锁在前）。</p>
+        :rtype: list of DeadLockLogItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HasMore = params.get("HasMore")
+        self._TotalCount = params.get("TotalCount")
+        self._ResultVersion = params.get("ResultVersion")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DeadLockLogItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -19687,6 +20973,87 @@ class OpenAuditServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class OwnerItem(AbstractModel):
+    r"""持有该锁资源的进程列表（死锁环的持有边）。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>锁模式。常见值：X（排他）/ U（更新）/ S（共享）/ IX / IU / RangeS-U / RangeX-X 等。</p>
+        :type Mode: str
+        :param _ExecutionContextId: <p>该边对应进程的并行执行子线程 ID。</p>
+        :type ExecutionContextId: int
+        :param _ProcessId: <p>SQL Server 引擎内的进程指针，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 拼接死锁环。partial 事件为 null。</p>
+        :type ProcessId: str
+        :param _SessionId: <p>SQL Server 会话 ID。日志排查主键。</p>
+        :type SessionId: int
+        """
+        self._Mode = None
+        self._ExecutionContextId = None
+        self._ProcessId = None
+        self._SessionId = None
+
+    @property
+    def Mode(self):
+        r"""<p>锁模式。常见值：X（排他）/ U（更新）/ S（共享）/ IX / IU / RangeS-U / RangeX-X 等。</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def ExecutionContextId(self):
+        r"""<p>该边对应进程的并行执行子线程 ID。</p>
+        :rtype: int
+        """
+        return self._ExecutionContextId
+
+    @ExecutionContextId.setter
+    def ExecutionContextId(self, ExecutionContextId):
+        self._ExecutionContextId = ExecutionContextId
+
+    @property
+    def ProcessId(self):
+        r"""<p>SQL Server 引擎内的进程指针，例如 process260256c7468。与 Resources.Owners/Waiters.ProcessId 拼接死锁环。partial 事件为 null。</p>
+        :rtype: str
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def SessionId(self):
+        r"""<p>SQL Server 会话 ID。日志排查主键。</p>
+        :rtype: int
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._ExecutionContextId = params.get("ExecutionContextId")
+        self._ProcessId = params.get("ProcessId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PostgresSpaceObjectItem(AbstractModel):
     r"""PostgreSQL 产品空间对象项。字段语义与 MySQL 不同：使用 pg_relation_size / pg_total_relation_size 等 PG 特有指标。库级查询时不包含 TableSchema/TableName 字段；表级查询时包含全部字段。
 
@@ -25113,3 +26480,99 @@ class VerifyUserAccountResponse(AbstractModel):
     def _deserialize(self, params):
         self._SessionToken = params.get("SessionToken")
         self._RequestId = params.get("RequestId")
+
+
+class WaiterItem(AbstractModel):
+    r"""等待该锁资源的进程列表（死锁环的等待边）。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>该边持有或申请的锁模式。</p>
+        :type Mode: str
+        :param _ExecutionContextId: <p>并行执行子线程 ID。0 表示主线程；大于 0 表示并行计划的 worker。SessionId + ExecutionContextId 组合可唯一区分并行执行下的 worker。</p>
+        :type ExecutionContextId: int
+        :param _ProcessId: <p>进程内部指针，对应 Transactions[].Processes[].ProcessId。</p>
+        :type ProcessId: str
+        :param _SessionId: <p>该边对应进程的 SPID，便于前端直接展示无需回查。</p>
+        :type SessionId: int
+        :param _RequestType: <p>仅 Waiters 边有值。常见值：wait（普通等待）/ convert（锁转换，如从 S 升级到 X）。owner 边无此字段。</p>
+        :type RequestType: str
+        """
+        self._Mode = None
+        self._ExecutionContextId = None
+        self._ProcessId = None
+        self._SessionId = None
+        self._RequestType = None
+
+    @property
+    def Mode(self):
+        r"""<p>该边持有或申请的锁模式。</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def ExecutionContextId(self):
+        r"""<p>并行执行子线程 ID。0 表示主线程；大于 0 表示并行计划的 worker。SessionId + ExecutionContextId 组合可唯一区分并行执行下的 worker。</p>
+        :rtype: int
+        """
+        return self._ExecutionContextId
+
+    @ExecutionContextId.setter
+    def ExecutionContextId(self, ExecutionContextId):
+        self._ExecutionContextId = ExecutionContextId
+
+    @property
+    def ProcessId(self):
+        r"""<p>进程内部指针，对应 Transactions[].Processes[].ProcessId。</p>
+        :rtype: str
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def SessionId(self):
+        r"""<p>该边对应进程的 SPID，便于前端直接展示无需回查。</p>
+        :rtype: int
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestType(self):
+        r"""<p>仅 Waiters 边有值。常见值：wait（普通等待）/ convert（锁转换，如从 S 升级到 X）。owner 边无此字段。</p>
+        :rtype: str
+        """
+        return self._RequestType
+
+    @RequestType.setter
+    def RequestType(self, RequestType):
+        self._RequestType = RequestType
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._ExecutionContextId = params.get("ExecutionContextId")
+        self._ProcessId = params.get("ProcessId")
+        self._SessionId = params.get("SessionId")
+        self._RequestType = params.get("RequestType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

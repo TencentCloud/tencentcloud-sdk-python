@@ -4976,10 +4976,26 @@ class CreateExportTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FileName: <p>下载文件名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FileName = None
         self._RequestId = None
+
+    @property
+    def FileName(self):
+        r"""<p>下载文件名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
 
     @property
     def RequestId(self):
@@ -4994,6 +5010,7 @@ class CreateExportTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FileName = params.get("FileName")
         self._RequestId = params.get("RequestId")
 
 
@@ -21256,6 +21273,15 @@ class ExportFile(AbstractModel):
         :param _AsyncRequestId: <p>req</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncRequestId: int
+        :param _LogStartTime: <p>日志开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogStartTime: str
+        :param _LogEndTime: <p>日志结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogEndTime: str
+        :param _LogFilter: <p>日志过滤条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogFilter: str
         """
         self._FileName = None
         self._Status = None
@@ -21266,6 +21292,9 @@ class ExportFile(AbstractModel):
         self._Progress = None
         self._FinishTime = None
         self._AsyncRequestId = None
+        self._LogStartTime = None
+        self._LogEndTime = None
+        self._LogFilter = None
 
     @property
     def FileName(self):
@@ -21375,6 +21404,42 @@ class ExportFile(AbstractModel):
     def AsyncRequestId(self, AsyncRequestId):
         self._AsyncRequestId = AsyncRequestId
 
+    @property
+    def LogStartTime(self):
+        r"""<p>日志开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogStartTime
+
+    @LogStartTime.setter
+    def LogStartTime(self, LogStartTime):
+        self._LogStartTime = LogStartTime
+
+    @property
+    def LogEndTime(self):
+        r"""<p>日志结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogEndTime
+
+    @LogEndTime.setter
+    def LogEndTime(self, LogEndTime):
+        self._LogEndTime = LogEndTime
+
+    @property
+    def LogFilter(self):
+        r"""<p>日志过滤条件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogFilter
+
+    @LogFilter.setter
+    def LogFilter(self, LogFilter):
+        self._LogFilter = LogFilter
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -21386,6 +21451,9 @@ class ExportFile(AbstractModel):
         self._Progress = params.get("Progress")
         self._FinishTime = params.get("FinishTime")
         self._AsyncRequestId = params.get("AsyncRequestId")
+        self._LogStartTime = params.get("LogStartTime")
+        self._LogEndTime = params.get("LogEndTime")
+        self._LogFilter = params.get("LogFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23300,108 +23368,111 @@ class LogResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Timestamp: 时间戳
+        :param _Timestamp: <p>时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
-        :param _Category: 错误类别
+        :param _Category: <p>错误类别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Category: str
-        :param _ClientAppName: 客户端应用程序名称
+        :param _ClientAppName: <p>客户端应用程序名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientAppName: str
-        :param _ClientHostName: 客户端主机名
+        :param _ClientHostName: <p>客户端主机名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClientHostName: str
-        :param _CpuTime: CPU 时间
+        :param _CpuTime: <p>CPU 时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CpuTime: int
-        :param _DatabaseId: 数据库 ID
+        :param _DatabaseId: <p>数据库 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseId: int
-        :param _DatabaseName: 数据库名称
+        :param _DatabaseName: <p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatabaseName: str
-        :param _Duration: 执行时间
+        :param _Duration: <p>执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: int
-        :param _ErrorNumber: 错误编号
+        :param _ErrorNumber: <p>错误编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorNumber: int
-        :param _IsIntercepted: 是否被拦截
+        :param _IsIntercepted: <p>是否被拦截</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsIntercepted: str
-        :param _LastRowCount: 最后行计数
+        :param _LastRowCount: <p>最后行计数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastRowCount: int
-        :param _LogicalReads: 逻辑读取
+        :param _LogicalReads: <p>逻辑读取</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogicalReads: int
-        :param _Message: 消息
+        :param _Message: <p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param _ObjectId: 对象 ID
+        :param _ObjectId: <p>对象 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectId: int
-        :param _ObjectName: 对象名称
+        :param _ObjectName: <p>对象名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectName: str
-        :param _ObjectType: 对象类型
+        :param _ObjectType: <p>对象类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ObjectType: str
-        :param _OutputParameters: 输出参数
+        :param _OutputParameters: <p>输出参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputParameters: str
-        :param _ParameterizedPlanHandle: 参数化计划句柄
+        :param _ParameterizedPlanHandle: <p>参数化计划句柄</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParameterizedPlanHandle: str
-        :param _PhysicalReads: 物理读取
+        :param _PhysicalReads: <p>物理读取</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhysicalReads: int
-        :param _Result: 结果
+        :param _Result: <p>结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: str
-        :param _RowCount: 行计数
+        :param _RowCount: <p>行计数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RowCount: int
-        :param _ServerPrincipalName: 服务器主体名称
+        :param _ServerPrincipalName: <p>服务器主体名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServerPrincipalName: str
-        :param _SessionServerPrincipalName: 会话服务器主体名称
+        :param _SessionServerPrincipalName: <p>会话服务器主体名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionServerPrincipalName: str
-        :param _Severity: 严重性
+        :param _Severity: <p>严重性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Severity: int
-        :param _SourceDatabaseId: 源数据库 ID
+        :param _SourceDatabaseId: <p>源数据库 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SourceDatabaseId: int
-        :param _SqlText: SQL 文本
+        :param _SqlText: <p>SQL 文本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SqlText: str
-        :param _State: 状态
+        :param _State: <p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: int
-        :param _Statement: 语句
+        :param _Statement: <p>语句</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Statement: str
-        :param _SystemThreadId: 系统线程 ID
+        :param _SystemThreadId: <p>系统线程 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SystemThreadId: int
-        :param _TransactionId: 事务 ID
+        :param _TransactionId: <p>事务 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransactionId: int
-        :param _UserDefined: 用户定义
+        :param _UserDefined: <p>用户定义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserDefined: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
-        :param _Writes: 写入
+        :param _Writes: <p>写入</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Writes: int
-        :param _Destination: 目标
+        :param _Destination: <p>目标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Destination: str
+        :param _EventName: <p>事件名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventName: str
         """
         self._Timestamp = None
         self._Category = None
@@ -23437,10 +23508,11 @@ class LogResult(AbstractModel):
         self._UserName = None
         self._Writes = None
         self._Destination = None
+        self._EventName = None
 
     @property
     def Timestamp(self):
-        r"""时间戳
+        r"""<p>时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23452,7 +23524,7 @@ class LogResult(AbstractModel):
 
     @property
     def Category(self):
-        r"""错误类别
+        r"""<p>错误类别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23464,7 +23536,7 @@ class LogResult(AbstractModel):
 
     @property
     def ClientAppName(self):
-        r"""客户端应用程序名称
+        r"""<p>客户端应用程序名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23476,7 +23548,7 @@ class LogResult(AbstractModel):
 
     @property
     def ClientHostName(self):
-        r"""客户端主机名
+        r"""<p>客户端主机名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23488,7 +23560,7 @@ class LogResult(AbstractModel):
 
     @property
     def CpuTime(self):
-        r"""CPU 时间
+        r"""<p>CPU 时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23500,7 +23572,7 @@ class LogResult(AbstractModel):
 
     @property
     def DatabaseId(self):
-        r"""数据库 ID
+        r"""<p>数据库 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23512,7 +23584,7 @@ class LogResult(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23524,7 +23596,7 @@ class LogResult(AbstractModel):
 
     @property
     def Duration(self):
-        r"""执行时间
+        r"""<p>执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23536,7 +23608,7 @@ class LogResult(AbstractModel):
 
     @property
     def ErrorNumber(self):
-        r"""错误编号
+        r"""<p>错误编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23548,7 +23620,7 @@ class LogResult(AbstractModel):
 
     @property
     def IsIntercepted(self):
-        r"""是否被拦截
+        r"""<p>是否被拦截</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23560,7 +23632,7 @@ class LogResult(AbstractModel):
 
     @property
     def LastRowCount(self):
-        r"""最后行计数
+        r"""<p>最后行计数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23572,7 +23644,7 @@ class LogResult(AbstractModel):
 
     @property
     def LogicalReads(self):
-        r"""逻辑读取
+        r"""<p>逻辑读取</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23584,7 +23656,7 @@ class LogResult(AbstractModel):
 
     @property
     def Message(self):
-        r"""消息
+        r"""<p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23596,7 +23668,7 @@ class LogResult(AbstractModel):
 
     @property
     def ObjectId(self):
-        r"""对象 ID
+        r"""<p>对象 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23608,7 +23680,7 @@ class LogResult(AbstractModel):
 
     @property
     def ObjectName(self):
-        r"""对象名称
+        r"""<p>对象名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23620,7 +23692,7 @@ class LogResult(AbstractModel):
 
     @property
     def ObjectType(self):
-        r"""对象类型
+        r"""<p>对象类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23632,7 +23704,7 @@ class LogResult(AbstractModel):
 
     @property
     def OutputParameters(self):
-        r"""输出参数
+        r"""<p>输出参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23644,7 +23716,7 @@ class LogResult(AbstractModel):
 
     @property
     def ParameterizedPlanHandle(self):
-        r"""参数化计划句柄
+        r"""<p>参数化计划句柄</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23656,7 +23728,7 @@ class LogResult(AbstractModel):
 
     @property
     def PhysicalReads(self):
-        r"""物理读取
+        r"""<p>物理读取</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23668,7 +23740,7 @@ class LogResult(AbstractModel):
 
     @property
     def Result(self):
-        r"""结果
+        r"""<p>结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23680,7 +23752,7 @@ class LogResult(AbstractModel):
 
     @property
     def RowCount(self):
-        r"""行计数
+        r"""<p>行计数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23692,7 +23764,7 @@ class LogResult(AbstractModel):
 
     @property
     def ServerPrincipalName(self):
-        r"""服务器主体名称
+        r"""<p>服务器主体名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23704,7 +23776,7 @@ class LogResult(AbstractModel):
 
     @property
     def SessionServerPrincipalName(self):
-        r"""会话服务器主体名称
+        r"""<p>会话服务器主体名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23716,7 +23788,7 @@ class LogResult(AbstractModel):
 
     @property
     def Severity(self):
-        r"""严重性
+        r"""<p>严重性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23728,7 +23800,7 @@ class LogResult(AbstractModel):
 
     @property
     def SourceDatabaseId(self):
-        r"""源数据库 ID
+        r"""<p>源数据库 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23740,7 +23812,7 @@ class LogResult(AbstractModel):
 
     @property
     def SqlText(self):
-        r"""SQL 文本
+        r"""<p>SQL 文本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23752,7 +23824,7 @@ class LogResult(AbstractModel):
 
     @property
     def State(self):
-        r"""状态
+        r"""<p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23764,7 +23836,7 @@ class LogResult(AbstractModel):
 
     @property
     def Statement(self):
-        r"""语句
+        r"""<p>语句</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23776,7 +23848,7 @@ class LogResult(AbstractModel):
 
     @property
     def SystemThreadId(self):
-        r"""系统线程 ID
+        r"""<p>系统线程 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23788,7 +23860,7 @@ class LogResult(AbstractModel):
 
     @property
     def TransactionId(self):
-        r"""事务 ID
+        r"""<p>事务 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23800,7 +23872,7 @@ class LogResult(AbstractModel):
 
     @property
     def UserDefined(self):
-        r"""用户定义
+        r"""<p>用户定义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23812,7 +23884,7 @@ class LogResult(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23824,7 +23896,7 @@ class LogResult(AbstractModel):
 
     @property
     def Writes(self):
-        r"""写入
+        r"""<p>写入</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23836,7 +23908,7 @@ class LogResult(AbstractModel):
 
     @property
     def Destination(self):
-        r"""目标
+        r"""<p>目标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23845,6 +23917,18 @@ class LogResult(AbstractModel):
     @Destination.setter
     def Destination(self, Destination):
         self._Destination = Destination
+
+    @property
+    def EventName(self):
+        r"""<p>事件名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
 
 
     def _deserialize(self, params):
@@ -23882,6 +23966,7 @@ class LogResult(AbstractModel):
         self._UserName = params.get("UserName")
         self._Writes = params.get("Writes")
         self._Destination = params.get("Destination")
+        self._EventName = params.get("EventName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -102,6 +102,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateFolder(self, request):
+        r"""创建文件夹
+
+        :param request: Request instance for CreateFolder.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateFolderRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWorkflow(self, request):
         r"""创建工作流
 
@@ -116,6 +139,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("CreateWorkflow", params, headers=headers)
             response = json.loads(body)
             model = models.CreateWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateWorkspace(self, request):
+        r"""创建工作空间
+
+        :param request: Request instance for CreateWorkspace.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateWorkspaceRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateWorkspaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkspace", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkspaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -188,6 +234,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteFolder(self, request):
+        r"""删除文件夹
+
+        :param request: Request instance for DeleteFolder.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteFolderRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteWorkflow(self, request):
         r"""删除工作流
 
@@ -202,6 +271,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("DeleteWorkflow", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWorkspace(self, request):
+        r"""删除工作空间
+
+        :param request: Request instance for DeleteWorkspace.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteWorkspaceRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteWorkspaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWorkspace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWorkspaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -242,6 +334,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("GetFile", params, headers=headers)
             response = json.loads(body)
             model = models.GetFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetFolder(self, request):
+        r"""获取文件夹详情
+
+        :param request: Request instance for GetFolder.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetFolderRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFolderResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -311,6 +426,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("GetWorkflowTaskRun", params, headers=headers)
             response = json.loads(body)
             model = models.GetWorkflowTaskRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetWorkspace(self, request):
+        r"""查询工作空间详情
+
+        :param request: Request instance for GetWorkspace.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetWorkspaceRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetWorkspaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetWorkspace", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetWorkspaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -426,6 +564,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("ListConsoleUsers", params, headers=headers)
             response = json.loads(body)
             model = models.ListConsoleUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListFiles(self, request):
+        r"""获取文件夹和文件列表
+
+        :param request: Request instance for ListFiles.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListFilesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListFilesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -685,6 +846,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateFolder(self, request):
+        r"""更新文件夹（支持重命名+移动）
+
+        :param request: Request instance for UpdateFolder.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateFolderRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateFolderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFolder", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateWorkflow(self, request):
         r"""更新工作流
 
@@ -699,6 +883,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("UpdateWorkflow", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateWorkspace(self, request):
+        r"""修改工作空间
+
+        :param request: Request instance for UpdateWorkspace.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateWorkspace", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateWorkspaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

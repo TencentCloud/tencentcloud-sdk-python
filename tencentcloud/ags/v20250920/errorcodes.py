@@ -17,6 +17,9 @@
 # CAM签名/鉴权错误。
 AUTHFAILURE = 'AuthFailure'
 
+# 镜像仓库认证失败
+AUTHFAILURE_REGISTRY = 'AuthFailure.Registry'
+
 # 请求未CAM授权
 AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 
@@ -28,6 +31,9 @@ FAILEDOPERATION_DEPENDENCYUNAVAILABLE = 'FailedOperation.DependencyUnavailable'
 
 # 重复请求（幂等性检查）
 FAILEDOPERATION_DUPLICATEREQUEST = 'FailedOperation.DuplicateRequest'
+
+# 预热任务执行失败
+FAILEDOPERATION_PRECACHEFAILED = 'FailedOperation.PrecacheFailed'
 
 # 请求正在处理中（幂等性检查）
 FAILEDOPERATION_REQUESTINPROGRESS = 'FailedOperation.RequestInProgress'
@@ -146,6 +152,12 @@ INVALIDPARAMETERVALUE_APPROVALMODE = 'InvalidParameterValue.ApprovalMode'
 # InvalidParameterValue.DescriptorType
 INVALIDPARAMETERVALUE_DESCRIPTORTYPE = 'InvalidParameterValue.DescriptorType'
 
+# 镜像地址无效
+INVALIDPARAMETERVALUE_IMAGE = 'InvalidParameterValue.Image'
+
+# 镜像仓库类型无效
+INVALIDPARAMETERVALUE_IMAGEREGISTRY = 'InvalidParameterValue.ImageRegistry'
+
 # InstanceIds 参数格式错误或 ID 列表超过最大数量限制
 INVALIDPARAMETERVALUE_INSTANCEIDS = 'InvalidParameterValue.InstanceIds'
 
@@ -163,6 +175,9 @@ INVALIDPARAMETERVALUE_ROLEARN = 'InvalidParameterValue.RoleArn'
 
 # 沙箱工具名称不可用，可能是已经存在
 INVALIDPARAMETERVALUE_SANDBOXTOOL = 'InvalidParameterValue.SandboxTool'
+
+# 参数 Scopes 取值无效，或当前地域不支持指定的镜像预热范围。
+INVALIDPARAMETERVALUE_SCOPE = 'InvalidParameterValue.Scope'
 
 # 安全组ID格式错误
 INVALIDPARAMETERVALUE_SECURITYGROUPID = 'InvalidParameterValue.SecurityGroupId'
@@ -227,6 +242,9 @@ MISSINGPARAMETER_SKILLSOURCESKILLMD = 'MissingParameter.SkillSourceSkillMd'
 # VPC网络模式缺少必需参数
 MISSINGPARAMETER_VPCPARAMETERS = 'MissingParameter.VPCParameters'
 
+# 请求的次数超过了频率限制。
+REQUESTLIMITEXCEEDED = 'RequestLimitExceeded'
+
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
@@ -247,6 +265,9 @@ RESOURCENOTFOUND = 'ResourceNotFound'
 
 # ResourceNotFound.Deployment
 RESOURCENOTFOUND_DEPLOYMENT = 'ResourceNotFound.Deployment'
+
+# 镜像不存在
+RESOURCENOTFOUND_IMAGE = 'ResourceNotFound.Image'
 
 # ResourceNotFound.RegistryRecord
 RESOURCENOTFOUND_REGISTRYRECORD = 'ResourceNotFound.RegistryRecord'
@@ -280,6 +301,9 @@ RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
 # ResourceUnavailable.Deployment
 RESOURCEUNAVAILABLE_DEPLOYMENT = 'ResourceUnavailable.Deployment'
+
+# 镜像预热仍在处理中
+RESOURCEUNAVAILABLE_IMAGEPREHEATING = 'ResourceUnavailable.ImagePreheating'
 
 # 沙箱工具不可用
 RESOURCEUNAVAILABLE_SANDBOXTOOL = 'ResourceUnavailable.SandboxTool'

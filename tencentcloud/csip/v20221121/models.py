@@ -168465,6 +168465,8 @@ class NotifyAssetConfigItem(AbstractModel):
         :type CloudTags: list of str
         :param _TotalCount: <p>总数</p>
         :type TotalCount: int
+        :param _ProjectIds: <p>项目ID</p>
+        :type ProjectIds: list of int non-negative
         """
         self._Module = None
         self._SubModule = None
@@ -168474,6 +168476,7 @@ class NotifyAssetConfigItem(AbstractModel):
         self._TagIds = None
         self._CloudTags = None
         self._TotalCount = None
+        self._ProjectIds = None
 
     @property
     def Module(self):
@@ -168563,6 +168566,17 @@ class NotifyAssetConfigItem(AbstractModel):
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
 
+    @property
+    def ProjectIds(self):
+        r"""<p>项目ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
@@ -168573,6 +168587,7 @@ class NotifyAssetConfigItem(AbstractModel):
         self._TagIds = params.get("TagIds")
         self._CloudTags = params.get("CloudTags")
         self._TotalCount = params.get("TotalCount")
+        self._ProjectIds = params.get("ProjectIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -195475,35 +195490,29 @@ class WebhookAssetScope(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetRange: 资产范围类型（对齐 NotifyAssetRange）
-枚举值：
-1：全部主机（可剔除）
-2：自选主机
-3：按标签选择
+        :param _AssetRange: <p>资产范围类型（对齐 NotifyAssetRange）<br>枚举值：<br>1：全部主机（可剔除）<br>2：自选主机<br>3：按标签选择</p>
         :type AssetRange: int
-        :param _InstanceIds: 选中的主机 quuid 列表，仅 AssetRange=2 生效
+        :param _InstanceIds: <p>选中的主机 quuid 列表，仅 AssetRange=2 生效</p>
         :type InstanceIds: list of str
-        :param _ExcludedInstanceIds: 排除的主机 quuid 列表，仅 AssetRange=1 生效
+        :param _ExcludedInstanceIds: <p>排除的主机 quuid 列表，仅 AssetRange=1 生效</p>
         :type ExcludedInstanceIds: list of str
-        :param _TagIds: 安全中心标签 ID 列表，仅 AssetRange=3 生效
+        :param _TagIds: <p>安全中心标签 ID 列表，仅 AssetRange=3 生效</p>
         :type TagIds: list of int
-        :param _CloudTags: 腾讯云标签列表，仅 AssetRange=3 生效
-入参限制：AssetRange=3 时 TagIds + CloudTags 不能同时为空
+        :param _CloudTags: <p>腾讯云标签列表，仅 AssetRange=3 生效<br>入参限制：AssetRange=3 时 TagIds + CloudTags 不能同时为空</p>
         :type CloudTags: list of str
+        :param _ProjectIds: <p>项目ID</p>
+        :type ProjectIds: list of int non-negative
         """
         self._AssetRange = None
         self._InstanceIds = None
         self._ExcludedInstanceIds = None
         self._TagIds = None
         self._CloudTags = None
+        self._ProjectIds = None
 
     @property
     def AssetRange(self):
-        r"""资产范围类型（对齐 NotifyAssetRange）
-枚举值：
-1：全部主机（可剔除）
-2：自选主机
-3：按标签选择
+        r"""<p>资产范围类型（对齐 NotifyAssetRange）<br>枚举值：<br>1：全部主机（可剔除）<br>2：自选主机<br>3：按标签选择</p>
         :rtype: int
         """
         return self._AssetRange
@@ -195514,7 +195523,7 @@ class WebhookAssetScope(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""选中的主机 quuid 列表，仅 AssetRange=2 生效
+        r"""<p>选中的主机 quuid 列表，仅 AssetRange=2 生效</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -195525,7 +195534,7 @@ class WebhookAssetScope(AbstractModel):
 
     @property
     def ExcludedInstanceIds(self):
-        r"""排除的主机 quuid 列表，仅 AssetRange=1 生效
+        r"""<p>排除的主机 quuid 列表，仅 AssetRange=1 生效</p>
         :rtype: list of str
         """
         return self._ExcludedInstanceIds
@@ -195536,7 +195545,7 @@ class WebhookAssetScope(AbstractModel):
 
     @property
     def TagIds(self):
-        r"""安全中心标签 ID 列表，仅 AssetRange=3 生效
+        r"""<p>安全中心标签 ID 列表，仅 AssetRange=3 生效</p>
         :rtype: list of int
         """
         return self._TagIds
@@ -195547,8 +195556,7 @@ class WebhookAssetScope(AbstractModel):
 
     @property
     def CloudTags(self):
-        r"""腾讯云标签列表，仅 AssetRange=3 生效
-入参限制：AssetRange=3 时 TagIds + CloudTags 不能同时为空
+        r"""<p>腾讯云标签列表，仅 AssetRange=3 生效<br>入参限制：AssetRange=3 时 TagIds + CloudTags 不能同时为空</p>
         :rtype: list of str
         """
         return self._CloudTags
@@ -195557,6 +195565,17 @@ class WebhookAssetScope(AbstractModel):
     def CloudTags(self, CloudTags):
         self._CloudTags = CloudTags
 
+    @property
+    def ProjectIds(self):
+        r"""<p>项目ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._ProjectIds
+
+    @ProjectIds.setter
+    def ProjectIds(self, ProjectIds):
+        self._ProjectIds = ProjectIds
+
 
     def _deserialize(self, params):
         self._AssetRange = params.get("AssetRange")
@@ -195564,6 +195583,7 @@ class WebhookAssetScope(AbstractModel):
         self._ExcludedInstanceIds = params.get("ExcludedInstanceIds")
         self._TagIds = params.get("TagIds")
         self._CloudTags = params.get("CloudTags")
+        self._ProjectIds = params.get("ProjectIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

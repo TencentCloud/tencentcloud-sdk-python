@@ -514,6 +514,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePlatformHTTPServiceRoute(self, request):
+        r"""本接口CreateHTTPServiceRoute用于创建平台版HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。此外HTTP访问服务提供了默认域名，通过DescribeHTTPServiceRoute接口可直接获取默认域名。
+
+        :param request: Request instance for CreatePlatformHTTPServiceRoute.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreatePlatformHTTPServiceRouteRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreatePlatformHTTPServiceRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePlatformHTTPServiceRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePlatformHTTPServiceRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateStaticStore(self, request):
         r"""创建静态托管资源，包括COS和CDN，异步任务创建，查看创建结果需要根据DescribeStaticStore接口来查看
 
@@ -747,6 +770,29 @@ class TcbClient(AbstractClient):
             body = self.call("DeleteHTTPServiceRoute", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteHTTPServiceRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePlatformHTTPServiceRoute(self, request):
+        r"""本接口DeleteHTTPServiceRoute用于删除平台版HTTP访问服务域名或者路由。可批量删除多条path路由、删除域名及所有path路由，如果Paths字段为空则删除域名及所有path路由，如果Paths不为空则仅删除path路由。
+
+        :param request: Request instance for DeletePlatformHTTPServiceRoute.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeletePlatformHTTPServiceRouteRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeletePlatformHTTPServiceRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePlatformHTTPServiceRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePlatformHTTPServiceRouteResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1705,6 +1751,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePlatformHTTPServiceRoute(self, request):
+        r"""本接口DescribeHTTPServiceRoute用于查询平台版下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。前置需已开通 HTTP 访问服务；调用CreateHTTPServiceRoute或者ModifyHTTPServiceRoute后可使用本接口查询创建或者修改结果
+
+        :param request: Request instance for DescribePlatformHTTPServiceRoute.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformHTTPServiceRouteRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribePlatformHTTPServiceRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePlatformHTTPServiceRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePlatformHTTPServiceRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePlatforms(self, request):
         r"""查询平台版资源信息列表，返回信息包括
 
@@ -2426,6 +2495,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPlatformHTTPServiceRoute(self, request):
+        r"""本接口ModifyHTTPServiceRoute用于修改平台版HTTP访问服务路由。支持增量修改，对应字段不传参数则不修改
+
+        :param request: Request instance for ModifyPlatformHTTPServiceRoute.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyPlatformHTTPServiceRouteRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyPlatformHTTPServiceRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPlatformHTTPServiceRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPlatformHTTPServiceRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyProvider(self, request):
         r"""修改身份认证源。更新指定云开发环境下已有身份认证源的配置信息，支持修改基本信息（名称、图标、描述）、协议连接配置（ClientId、ClientSecret、端点地址等）、登录行为控制（透传模式、自动注册、邮箱/手机号自动关联）以及启用状态。
         对于 OIDC 类型身份源，修改 Issuer 后将自动通过 OpenID Connect Discovery 重新获取端点配置。
@@ -2972,6 +3064,44 @@ class TcbClient(AbstractClient):
             body = self.call("VerifyHTTPServiceRoute", params, headers=headers)
             response = json.loads(body)
             model = models.VerifyHTTPServiceRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyPlatformHTTPServiceRoute(self, request):
+        r"""本接口VerifyPlatformHTTPServiceRoute用于前置校验平台版HTTP访问服务域名或者路由。覆盖的校验项包括：
+        1. Ownership：域名所有权（TXT/CNAME 记录）；
+        2. Cert：证书与域名匹配（CertId 为空时跳过）；
+        3. Quota：环境下域名/路径数量配额；
+        4. RouteConflict：同域名下路由路径冲突；
+        5. DomainConflict：域名被其他环境占用；
+        6. InternalAccount：内部域名且非内部账号；
+        7. Blacklist：域名黑名单；
+        8. CDNResource：AccessType=CDN 时 CDN 资源存在性 / 状态（含 ICP 未备案提示）；
+        9. EO：AccessType=EO 时 EdgeOne 侧域名冲突 / 备案 / 归属权预检。
+
+        使用方式：
+        - 调用本接口前置校验，若 Passed=true 表示所有启用检查项均通过，可继续调用 CreateHTTPServiceRoute 正式创建；
+        - 若 Passed=false，前端应根据各 CheckItem 的 Code 精确渲染对应的错误提示与用户操作指引（如 DNS 归属权配置、ICP 备案指引等），用户修正参数后可重复调用本接口，直到通过后再进行创建。
+
+        注意：本接口为只读 dry-run 操作，不落库、不创建任何资源，仅返回各项检查的详细结果。本接口通过不代表 CreateHTTPServiceRoute 必然成功（例如证书运行时状态、并发抢占等仍需创建时最终判定），但本接口不通过则 CreateHTTPServiceRoute 必然不通过。
+
+        :param request: Request instance for VerifyPlatformHTTPServiceRoute.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.VerifyPlatformHTTPServiceRouteRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerifyPlatformHTTPServiceRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyPlatformHTTPServiceRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyPlatformHTTPServiceRouteResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

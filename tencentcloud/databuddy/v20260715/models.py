@@ -1524,6 +1524,187 @@ class CreateFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateFolderRequest(AbstractModel):
+    r"""CreateFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间名称</p>
+        :type WorkspaceId: str
+        :param _FolderName: <p>文件夹名称</p>
+        :type FolderName: str
+        :param _FolderType: <p>文件夹类型</p><p>枚举值：</p><ul><li>FOLDER： 文件夹</li><li>GIT_FOLDER： git文件夹</li></ul>
+        :type FolderType: str
+        :param _ParentFolder: <p>父节点</p>
+        :type ParentFolder: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        :param _GitConfig: <p>git配置，FolderType=GIT_FOLDER 时必填</p>
+        :type GitConfig: :class:`tencentcloud.databuddy.v20260715.models.GitRepoConfig`
+        """
+        self._WorkspaceId = None
+        self._FolderName = None
+        self._FolderType = None
+        self._ParentFolder = None
+        self._GitConfig = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间名称</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def FolderName(self):
+        r"""<p>文件夹名称</p>
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def FolderType(self):
+        r"""<p>文件夹类型</p><p>枚举值：</p><ul><li>FOLDER： 文件夹</li><li>GIT_FOLDER： git文件夹</li></ul>
+        :rtype: str
+        """
+        return self._FolderType
+
+    @FolderType.setter
+    def FolderType(self, FolderType):
+        self._FolderType = FolderType
+
+    @property
+    def ParentFolder(self):
+        r"""<p>父节点</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        """
+        return self._ParentFolder
+
+    @ParentFolder.setter
+    def ParentFolder(self, ParentFolder):
+        self._ParentFolder = ParentFolder
+
+    @property
+    def GitConfig(self):
+        r"""<p>git配置，FolderType=GIT_FOLDER 时必填</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GitRepoConfig`
+        """
+        return self._GitConfig
+
+    @GitConfig.setter
+    def GitConfig(self, GitConfig):
+        self._GitConfig = GitConfig
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._FolderName = params.get("FolderName")
+        self._FolderType = params.get("FolderType")
+        if params.get("ParentFolder") is not None:
+            self._ParentFolder = FolderLocator()
+            self._ParentFolder._deserialize(params.get("ParentFolder"))
+        if params.get("GitConfig") is not None:
+            self._GitConfig = GitRepoConfig()
+            self._GitConfig._deserialize(params.get("GitConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFolderResponse(AbstractModel):
+    r"""CreateFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>创建文件夹结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.CreateFolderRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>创建文件夹结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateFolderRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateFolderRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateFolderRsp(AbstractModel):
+    r"""创建文件夹回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FolderId: <p>文件夹 ID</p>
+        :type FolderId: str
+        """
+        self._FolderId = None
+
+    @property
+    def FolderId(self):
+        r"""<p>文件夹 ID</p>
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+
+    def _deserialize(self, params):
+        self._FolderId = params.get("FolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateWorkflowRequest(AbstractModel):
     r"""CreateWorkflow请求参数结构体
 
@@ -1853,6 +2034,153 @@ class CreateWorkflowRsp(AbstractModel):
         
 
 
+class CreateWorkspaceRequest(AbstractModel):
+    r"""CreateWorkspace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceName: <p>工作空间名称，max_len=128</p>
+        :type WorkspaceName: str
+        :param _WorkspaceRegion: <p>工作空间地域（如 ap-guangzhou），max_len=64</p>
+        :type WorkspaceRegion: str
+        :param _Description: <p>工作空间描述，max_len=300</p>
+        :type Description: str
+        """
+        self._WorkspaceName = None
+        self._WorkspaceRegion = None
+        self._Description = None
+
+    @property
+    def WorkspaceName(self):
+        r"""<p>工作空间名称，max_len=128</p>
+        :rtype: str
+        """
+        return self._WorkspaceName
+
+    @WorkspaceName.setter
+    def WorkspaceName(self, WorkspaceName):
+        self._WorkspaceName = WorkspaceName
+
+    @property
+    def WorkspaceRegion(self):
+        r"""<p>工作空间地域（如 ap-guangzhou），max_len=64</p>
+        :rtype: str
+        """
+        return self._WorkspaceRegion
+
+    @WorkspaceRegion.setter
+    def WorkspaceRegion(self, WorkspaceRegion):
+        self._WorkspaceRegion = WorkspaceRegion
+
+    @property
+    def Description(self):
+        r"""<p>工作空间描述，max_len=300</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._WorkspaceName = params.get("WorkspaceName")
+        self._WorkspaceRegion = params.get("WorkspaceRegion")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWorkspaceResponse(AbstractModel):
+    r"""CreateWorkspace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>创建成功的工作空间ID</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.CreateWorkspaceRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>创建成功的工作空间ID</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateWorkspaceRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateWorkspaceRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateWorkspaceRsp(AbstractModel):
+    r"""创建工作空间响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 创建成功的工作空间ID
+        :type WorkspaceId: str
+        """
+        self._WorkspaceId = None
+
+    @property
+    def WorkspaceId(self):
+        r"""创建成功的工作空间ID
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteConsoleGroupsRequest(AbstractModel):
     r"""DeleteConsoleGroups请求参数结构体
 
@@ -2138,6 +2466,155 @@ class DeleteFileResult(AbstractModel):
         
 
 
+class DeleteFolderRequest(AbstractModel):
+    r"""DeleteFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间id</p>
+        :type WorkspaceId: str
+        :param _Folder: <p>待删除的文件夹</p>
+        :type Folder: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        :param _ForceDelete: <p>软删除还是从回收站硬删除</p><p>枚举值：</p><ul><li>false： 软删除到回收站</li><li>true： 从回收站硬删除</li></ul>
+        :type ForceDelete: bool
+        """
+        self._WorkspaceId = None
+        self._Folder = None
+        self._ForceDelete = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Folder(self):
+        r"""<p>待删除的文件夹</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        """
+        return self._Folder
+
+    @Folder.setter
+    def Folder(self, Folder):
+        self._Folder = Folder
+
+    @property
+    def ForceDelete(self):
+        r"""<p>软删除还是从回收站硬删除</p><p>枚举值：</p><ul><li>false： 软删除到回收站</li><li>true： 从回收站硬删除</li></ul>
+        :rtype: bool
+        """
+        return self._ForceDelete
+
+    @ForceDelete.setter
+    def ForceDelete(self, ForceDelete):
+        self._ForceDelete = ForceDelete
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Folder") is not None:
+            self._Folder = FolderLocator()
+            self._Folder._deserialize(params.get("Folder"))
+        self._ForceDelete = params.get("ForceDelete")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFolderResponse(AbstractModel):
+    r"""DeleteFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>删除文件夹结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteFolderRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>删除文件夹结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteFolderRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteFolderRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFolderRsp(AbstractModel):
+    r"""删除文件夹回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>删除文件夹状态</p>
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""<p>删除文件夹状态</p>
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteWorkflowRequest(AbstractModel):
     r"""DeleteWorkflow请求参数结构体
 
@@ -2253,6 +2730,123 @@ class DeleteWorkflowRsp(AbstractModel):
     def Status(self):
         r"""删除状态，true 表示成功
 注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWorkspaceRequest(AbstractModel):
+    r"""DeleteWorkspace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        """
+        self._WorkspaceId = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWorkspaceResponse(AbstractModel):
+    r"""DeleteWorkspace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>操作结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteWorkspaceRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>操作结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteWorkspaceRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteWorkspaceRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteWorkspaceRsp(AbstractModel):
+    r"""删除工作空间响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 操作是否成功
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""操作是否成功
         :rtype: bool
         """
         return self._Status
@@ -2886,6 +3480,315 @@ class FileInfo(AbstractModel):
         
 
 
+class FileMeta(AbstractModel):
+    r"""文件元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileId: <p>文件id</p>
+        :type FileId: str
+        :param _FileName: <p>文件/文件夹名称</p>
+        :type FileName: str
+        :param _FileType: <p>文件类型</p>
+        :type FileType: str
+        :param _CreateTime: <p>创建时间，毫秒秒级时间戳</p><p>参数格式：时间戳</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p><p>参数格式：时间戳字符串</p>
+        :type UpdateTime: str
+        :param _AllowActions: <p>acl权限类型</p>
+        :type AllowActions: list of str
+        :param _IsFavorite: <p>是否收藏</p>
+        :type IsFavorite: bool
+        :param _PathName: <p>文件path</p>
+        :type PathName: str
+        :param _IsSystemGenerated: <p>是否系统创建</p>
+        :type IsSystemGenerated: bool
+        """
+        self._FileId = None
+        self._FileName = None
+        self._FileType = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AllowActions = None
+        self._IsFavorite = None
+        self._PathName = None
+        self._IsSystemGenerated = None
+
+    @property
+    def FileId(self):
+        r"""<p>文件id</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def FileName(self):
+        r"""<p>文件/文件夹名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileType(self):
+        r"""<p>文件类型</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，毫秒秒级时间戳</p><p>参数格式：时间戳</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>参数格式：时间戳字符串</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AllowActions(self):
+        r"""<p>acl权限类型</p>
+        :rtype: list of str
+        """
+        return self._AllowActions
+
+    @AllowActions.setter
+    def AllowActions(self, AllowActions):
+        self._AllowActions = AllowActions
+
+    @property
+    def IsFavorite(self):
+        r"""<p>是否收藏</p>
+        :rtype: bool
+        """
+        return self._IsFavorite
+
+    @IsFavorite.setter
+    def IsFavorite(self, IsFavorite):
+        self._IsFavorite = IsFavorite
+
+    @property
+    def PathName(self):
+        r"""<p>文件path</p>
+        :rtype: str
+        """
+        return self._PathName
+
+    @PathName.setter
+    def PathName(self, PathName):
+        self._PathName = PathName
+
+    @property
+    def IsSystemGenerated(self):
+        r"""<p>是否系统创建</p>
+        :rtype: bool
+        """
+        return self._IsSystemGenerated
+
+    @IsSystemGenerated.setter
+    def IsSystemGenerated(self, IsSystemGenerated):
+        self._IsSystemGenerated = IsSystemGenerated
+
+
+    def _deserialize(self, params):
+        self._FileId = params.get("FileId")
+        self._FileName = params.get("FileName")
+        self._FileType = params.get("FileType")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AllowActions = params.get("AllowActions")
+        self._IsFavorite = params.get("IsFavorite")
+        self._PathName = params.get("PathName")
+        self._IsSystemGenerated = params.get("IsSystemGenerated")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FileNode(AbstractModel):
+    r"""文件节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Node: <p>当前节点</p>
+        :type Node: :class:`tencentcloud.databuddy.v20260715.models.FileMeta`
+        :param _Parent: <p>父节点</p>
+        :type Parent: :class:`tencentcloud.databuddy.v20260715.models.FileMeta`
+        :param _Creator: <p>创建人</p>
+        :type Creator: :class:`tencentcloud.databuddy.v20260715.models.UserInfo`
+        :param _Owner: <p>拥有者</p>
+        :type Owner: :class:`tencentcloud.databuddy.v20260715.models.UserInfo`
+        :param _NodeType: <p>节点类型</p>
+        :type NodeType: str
+        :param _OriginPath: <p>原始路径</p>
+        :type OriginPath: str
+        :param _DeleteTime: <p>回收时间</p>
+        :type DeleteTime: str
+        :param _GitConfig: <p>文件git配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GitConfig: :class:`tencentcloud.databuddy.v20260715.models.GitRepoConfig`
+        """
+        self._Node = None
+        self._Parent = None
+        self._Creator = None
+        self._Owner = None
+        self._NodeType = None
+        self._OriginPath = None
+        self._DeleteTime = None
+        self._GitConfig = None
+
+    @property
+    def Node(self):
+        r"""<p>当前节点</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FileMeta`
+        """
+        return self._Node
+
+    @Node.setter
+    def Node(self, Node):
+        self._Node = Node
+
+    @property
+    def Parent(self):
+        r"""<p>父节点</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FileMeta`
+        """
+        return self._Parent
+
+    @Parent.setter
+    def Parent(self, Parent):
+        self._Parent = Parent
+
+    @property
+    def Creator(self):
+        r"""<p>创建人</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UserInfo`
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def Owner(self):
+        r"""<p>拥有者</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UserInfo`
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def NodeType(self):
+        r"""<p>节点类型</p>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def OriginPath(self):
+        r"""<p>原始路径</p>
+        :rtype: str
+        """
+        return self._OriginPath
+
+    @OriginPath.setter
+    def OriginPath(self, OriginPath):
+        self._OriginPath = OriginPath
+
+    @property
+    def DeleteTime(self):
+        r"""<p>回收时间</p>
+        :rtype: str
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def GitConfig(self):
+        r"""<p>文件git配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GitRepoConfig`
+        """
+        return self._GitConfig
+
+    @GitConfig.setter
+    def GitConfig(self, GitConfig):
+        self._GitConfig = GitConfig
+
+
+    def _deserialize(self, params):
+        if params.get("Node") is not None:
+            self._Node = FileMeta()
+            self._Node._deserialize(params.get("Node"))
+        if params.get("Parent") is not None:
+            self._Parent = FileMeta()
+            self._Parent._deserialize(params.get("Parent"))
+        if params.get("Creator") is not None:
+            self._Creator = UserInfo()
+            self._Creator._deserialize(params.get("Creator"))
+        if params.get("Owner") is not None:
+            self._Owner = UserInfo()
+            self._Owner._deserialize(params.get("Owner"))
+        self._NodeType = params.get("NodeType")
+        self._OriginPath = params.get("OriginPath")
+        self._DeleteTime = params.get("DeleteTime")
+        if params.get("GitConfig") is not None:
+            self._GitConfig = GitRepoConfig()
+            self._GitConfig._deserialize(params.get("GitConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileOutputConf(AbstractModel):
     r"""Notebook/Python单元格输出配置
 
@@ -3014,6 +3917,57 @@ class FileStorage(AbstractModel):
         self._StorageType = params.get("StorageType")
         self._StoragePath = params.get("StoragePath")
         self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FolderLocator(AbstractModel):
+    r"""文件夹定位器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FolderId: <p>节点id</p>
+        :type FolderId: str
+        :param _PathName: <p>节点path</p>
+        :type PathName: str
+        """
+        self._FolderId = None
+        self._PathName = None
+
+    @property
+    def FolderId(self):
+        r"""<p>节点id</p>
+        :rtype: str
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def PathName(self):
+        r"""<p>节点path</p>
+        :rtype: str
+        """
+        return self._PathName
+
+    @PathName.setter
+    def PathName(self, PathName):
+        self._PathName = PathName
+
+
+    def _deserialize(self, params):
+        self._FolderId = params.get("FolderId")
+        self._PathName = params.get("PathName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3180,6 +4134,142 @@ class GetFileResponse(AbstractModel):
             self._Data = FileInfo()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class GetFolderRequest(AbstractModel):
+    r"""GetFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间id</p>
+        :type WorkspaceId: str
+        :param _Folder: <p>文件夹定位</p>
+        :type Folder: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        """
+        self._WorkspaceId = None
+        self._Folder = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Folder(self):
+        r"""<p>文件夹定位</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        """
+        return self._Folder
+
+    @Folder.setter
+    def Folder(self, Folder):
+        self._Folder = Folder
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Folder") is not None:
+            self._Folder = FolderLocator()
+            self._Folder._deserialize(params.get("Folder"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFolderResponse(AbstractModel):
+    r"""GetFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>文件夹详情结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.GetFolderRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>文件夹详情结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetFolderRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetFolderRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetFolderRsp(AbstractModel):
+    r"""获取文件夹回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Folder: <p>文件夹信息</p>
+        :type Folder: :class:`tencentcloud.databuddy.v20260715.models.FileNode`
+        """
+        self._Folder = None
+
+    @property
+    def Folder(self):
+        r"""<p>文件夹信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FileNode`
+        """
+        return self._Folder
+
+    @Folder.setter
+    def Folder(self, Folder):
+        self._Folder = Folder
+
+
+    def _deserialize(self, params):
+        if params.get("Folder") is not None:
+            self._Folder = FileNode()
+            self._Folder._deserialize(params.get("Folder"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GetWorkflowRequest(AbstractModel):
@@ -4484,6 +5574,210 @@ class GetWorkflowTaskRunRsp(AbstractModel):
             self._InnerWorkflowTaskRun = InnerWorkflowTaskRun()
             self._InnerWorkflowTaskRun._deserialize(params.get("InnerWorkflowTaskRun"))
         self._ScheduledTime = params.get("ScheduledTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWorkspaceRequest(AbstractModel):
+    r"""GetWorkspace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        """
+        self._WorkspaceId = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetWorkspaceResponse(AbstractModel):
+    r"""GetWorkspace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>工作空间详情</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.GetWorkspaceRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>工作空间详情</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetWorkspaceRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetWorkspaceRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetWorkspaceRsp(AbstractModel):
+    r"""查询工作空间详情响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceInfo: 工作空间详情
+        :type WorkspaceInfo: :class:`tencentcloud.databuddy.v20260715.models.WorkspaceInfo`
+        """
+        self._WorkspaceInfo = None
+
+    @property
+    def WorkspaceInfo(self):
+        r"""工作空间详情
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.WorkspaceInfo`
+        """
+        return self._WorkspaceInfo
+
+    @WorkspaceInfo.setter
+    def WorkspaceInfo(self, WorkspaceInfo):
+        self._WorkspaceInfo = WorkspaceInfo
+
+
+    def _deserialize(self, params):
+        if params.get("WorkspaceInfo") is not None:
+            self._WorkspaceInfo = WorkspaceInfo()
+            self._WorkspaceInfo._deserialize(params.get("WorkspaceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GitRepoConfig(AbstractModel):
+    r"""git配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparseCheckout: <p>检出规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparseCheckout: :class:`tencentcloud.databuddy.v20260715.models.SparseCheckoutConfig`
+        :param _RepoUrl: <p>Git 仓库地址</p>
+        :type RepoUrl: str
+        :param _Branch: <p>分支名</p>
+        :type Branch: str
+        :param _AuthConfigName: <p>关联的 gitAuth 配置名称</p>
+        :type AuthConfigName: str
+        """
+        self._SparseCheckout = None
+        self._RepoUrl = None
+        self._Branch = None
+        self._AuthConfigName = None
+
+    @property
+    def SparseCheckout(self):
+        r"""<p>检出规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.SparseCheckoutConfig`
+        """
+        return self._SparseCheckout
+
+    @SparseCheckout.setter
+    def SparseCheckout(self, SparseCheckout):
+        self._SparseCheckout = SparseCheckout
+
+    @property
+    def RepoUrl(self):
+        r"""<p>Git 仓库地址</p>
+        :rtype: str
+        """
+        return self._RepoUrl
+
+    @RepoUrl.setter
+    def RepoUrl(self, RepoUrl):
+        self._RepoUrl = RepoUrl
+
+    @property
+    def Branch(self):
+        r"""<p>分支名</p>
+        :rtype: str
+        """
+        return self._Branch
+
+    @Branch.setter
+    def Branch(self, Branch):
+        self._Branch = Branch
+
+    @property
+    def AuthConfigName(self):
+        r"""<p>关联的 gitAuth 配置名称</p>
+        :rtype: str
+        """
+        return self._AuthConfigName
+
+    @AuthConfigName.setter
+    def AuthConfigName(self, AuthConfigName):
+        self._AuthConfigName = AuthConfigName
+
+
+    def _deserialize(self, params):
+        if params.get("SparseCheckout") is not None:
+            self._SparseCheckout = SparseCheckoutConfig()
+            self._SparseCheckout._deserialize(params.get("SparseCheckout"))
+        self._RepoUrl = params.get("RepoUrl")
+        self._Branch = params.get("Branch")
+        self._AuthConfigName = params.get("AuthConfigName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6381,6 +7675,315 @@ class ListConsoleUsersRsp(AbstractModel):
             self._Items = []
             for item in params.get("Items"):
                 obj = ConsoleUserInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFilesRequest(AbstractModel):
+    r"""ListFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间id</p>
+        :type WorkspaceId: str
+        :param _Parent: <p>父目录，不填默认查询根节点</p>
+        :type Parent: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        :param _FileTypes: <p>按文件类型过滤</p>
+        :type FileTypes: list of str
+        :param _NameKeyword: <p>文件名模糊匹配</p>
+        :type NameKeyword: str
+        :param _OwnerUserUins: <p>按所有者UIN过滤，多值为或关系</p>
+        :type OwnerUserUins: list of str
+        :param _OnlyFolder: <p>是否只列出文件夹，默认 false</p>
+        :type OnlyFolder: bool
+        :param _OrderBys: <p>排序字段列表，如创建时间 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}]，文件名称 [{Name: &#39;Name&#39;, Direction: &#39;ASC&#39;}]</p>
+        :type OrderBys: list of OrderBy
+        :param _PageNumber: <p>页码，默认1，最小值1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页条数，默认10，最小值10，最大值100</p><p>取值范围：[10, 100]</p>
+        :type PageSize: int
+        """
+        self._WorkspaceId = None
+        self._Parent = None
+        self._FileTypes = None
+        self._NameKeyword = None
+        self._OwnerUserUins = None
+        self._OnlyFolder = None
+        self._OrderBys = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Parent(self):
+        r"""<p>父目录，不填默认查询根节点</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        """
+        return self._Parent
+
+    @Parent.setter
+    def Parent(self, Parent):
+        self._Parent = Parent
+
+    @property
+    def FileTypes(self):
+        r"""<p>按文件类型过滤</p>
+        :rtype: list of str
+        """
+        return self._FileTypes
+
+    @FileTypes.setter
+    def FileTypes(self, FileTypes):
+        self._FileTypes = FileTypes
+
+    @property
+    def NameKeyword(self):
+        r"""<p>文件名模糊匹配</p>
+        :rtype: str
+        """
+        return self._NameKeyword
+
+    @NameKeyword.setter
+    def NameKeyword(self, NameKeyword):
+        self._NameKeyword = NameKeyword
+
+    @property
+    def OwnerUserUins(self):
+        r"""<p>按所有者UIN过滤，多值为或关系</p>
+        :rtype: list of str
+        """
+        return self._OwnerUserUins
+
+    @OwnerUserUins.setter
+    def OwnerUserUins(self, OwnerUserUins):
+        self._OwnerUserUins = OwnerUserUins
+
+    @property
+    def OnlyFolder(self):
+        r"""<p>是否只列出文件夹，默认 false</p>
+        :rtype: bool
+        """
+        return self._OnlyFolder
+
+    @OnlyFolder.setter
+    def OnlyFolder(self, OnlyFolder):
+        self._OnlyFolder = OnlyFolder
+
+    @property
+    def OrderBys(self):
+        r"""<p>排序字段列表，如创建时间 [{Name: &#39;CreateTime&#39;, Direction: &#39;DESC&#39;}]，文件名称 [{Name: &#39;Name&#39;, Direction: &#39;ASC&#39;}]</p>
+        :rtype: list of OrderBy
+        """
+        return self._OrderBys
+
+    @OrderBys.setter
+    def OrderBys(self, OrderBys):
+        self._OrderBys = OrderBys
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，默认1，最小值1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页条数，默认10，最小值10，最大值100</p><p>取值范围：[10, 100]</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Parent") is not None:
+            self._Parent = FolderLocator()
+            self._Parent._deserialize(params.get("Parent"))
+        self._FileTypes = params.get("FileTypes")
+        self._NameKeyword = params.get("NameKeyword")
+        self._OwnerUserUins = params.get("OwnerUserUins")
+        self._OnlyFolder = params.get("OnlyFolder")
+        if params.get("OrderBys") is not None:
+            self._OrderBys = []
+            for item in params.get("OrderBys"):
+                obj = OrderBy()
+                obj._deserialize(item)
+                self._OrderBys.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFilesResponse(AbstractModel):
+    r"""ListFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>文件列表结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListFilesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>文件列表结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListFilesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListFilesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListFilesRsp(AbstractModel):
+    r"""查询文件信息结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>文件/文件夹节点列表</p>
+        :type Items: list of FileNode
+        :param _PageNumber: <p>当前页码</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页条数</p>
+        :type PageSize: int
+        :param _TotalCount: <p>总条数</p>
+        :type TotalCount: int
+        :param _TotalPageNumber: <p>总页数</p>
+        :type TotalPageNumber: int
+        """
+        self._Items = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def Items(self):
+        r"""<p>文件/文件夹节点列表</p>
+        :rtype: list of FileNode
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def PageNumber(self):
+        r"""<p>当前页码</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页条数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""<p>总条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = FileNode()
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._PageNumber = params.get("PageNumber")
@@ -8842,6 +10445,159 @@ class ScheduledTimeConfig(AbstractModel):
         
 
 
+class SparseCheckoutConfig(AbstractModel):
+    r"""git检出规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用稀疏检出</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _ConeMode: <p>是否使用 cone 模式（推荐 true，按目录匹配更高效）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConeMode: bool
+        :param _Patterns: <p>稀疏检出路径列表（如 [&quot;src/module-a/&quot;, &quot;docs/&quot;]）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Patterns: list of str
+        """
+        self._Enabled = None
+        self._ConeMode = None
+        self._Patterns = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用稀疏检出</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ConeMode(self):
+        r"""<p>是否使用 cone 模式（推荐 true，按目录匹配更高效）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ConeMode
+
+    @ConeMode.setter
+    def ConeMode(self, ConeMode):
+        self._ConeMode = ConeMode
+
+    @property
+    def Patterns(self):
+        r"""<p>稀疏检出路径列表（如 [&quot;src/module-a/&quot;, &quot;docs/&quot;]）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Patterns
+
+    @Patterns.setter
+    def Patterns(self, Patterns):
+        self._Patterns = Patterns
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._ConeMode = params.get("ConeMode")
+        self._Patterns = params.get("Patterns")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandardUserInfo(AbstractModel):
+    r"""用户基础展示信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserUin: 用户UIN
+        :type UserUin: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _Nickname: 昵称
+        :type Nickname: str
+        :param _UserTag: 0: 普通用户 1: entraId用户
+        :type UserTag: str
+        """
+        self._UserUin = None
+        self._UserName = None
+        self._Nickname = None
+        self._UserTag = None
+
+    @property
+    def UserUin(self):
+        r"""用户UIN
+        :rtype: str
+        """
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
+    @property
+    def UserName(self):
+        r"""用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Nickname(self):
+        r"""昵称
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def UserTag(self):
+        r"""0: 普通用户 1: entraId用户
+        :rtype: str
+        """
+        return self._UserTag
+
+    @UserTag.setter
+    def UserTag(self, UserTag):
+        self._UserTag = UserTag
+
+
+    def _deserialize(self, params):
+        self._UserUin = params.get("UserUin")
+        self._UserName = params.get("UserName")
+        self._Nickname = params.get("Nickname")
+        self._UserTag = params.get("UserTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TaskRetryStrategy(AbstractModel):
     r"""任务重试策略
 
@@ -10137,6 +11893,187 @@ class UpdateFileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateFolderRequest(AbstractModel):
+    r"""UpdateFolder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        :param _Folder: <p>待更新文件夹</p>
+        :type Folder: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        :param _OperationType: <p>操作类型</p><p>枚举值：</p><ul><li>1： 重命名</li><li>2： 移动</li></ul>
+        :type OperationType: str
+        :param _FolderName: <p>重命名后的文件名，OperationType = 1时生效</p>
+        :type FolderName: str
+        :param _TargetParent: <p>移动的目的文件夹，OperationType = 2时生效</p>
+        :type TargetParent: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        """
+        self._WorkspaceId = None
+        self._Folder = None
+        self._OperationType = None
+        self._FolderName = None
+        self._TargetParent = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Folder(self):
+        r"""<p>待更新文件夹</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        """
+        return self._Folder
+
+    @Folder.setter
+    def Folder(self, Folder):
+        self._Folder = Folder
+
+    @property
+    def OperationType(self):
+        r"""<p>操作类型</p><p>枚举值：</p><ul><li>1： 重命名</li><li>2： 移动</li></ul>
+        :rtype: str
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def FolderName(self):
+        r"""<p>重命名后的文件名，OperationType = 1时生效</p>
+        :rtype: str
+        """
+        return self._FolderName
+
+    @FolderName.setter
+    def FolderName(self, FolderName):
+        self._FolderName = FolderName
+
+    @property
+    def TargetParent(self):
+        r"""<p>移动的目的文件夹，OperationType = 2时生效</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FolderLocator`
+        """
+        return self._TargetParent
+
+    @TargetParent.setter
+    def TargetParent(self, TargetParent):
+        self._TargetParent = TargetParent
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Folder") is not None:
+            self._Folder = FolderLocator()
+            self._Folder._deserialize(params.get("Folder"))
+        self._OperationType = params.get("OperationType")
+        self._FolderName = params.get("FolderName")
+        if params.get("TargetParent") is not None:
+            self._TargetParent = FolderLocator()
+            self._TargetParent._deserialize(params.get("TargetParent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateFolderResponse(AbstractModel):
+    r"""UpdateFolder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>更新文件夹结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateFolderRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>更新文件夹结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateFolderRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateFolderRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateFolderRsp(AbstractModel):
+    r"""更新文件夹回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>更新文件夹结果，true为成功</p>
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""<p>更新文件夹结果，true为成功</p>
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateWorkflowRequest(AbstractModel):
     r"""UpdateWorkflow请求参数结构体
 
@@ -10295,6 +12232,234 @@ class UpdateWorkflowRsp(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateWorkspaceRequest(AbstractModel):
+    r"""UpdateWorkspace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        :param _WorkspaceName: <p>工作空间名称，max_len=128</p>
+        :type WorkspaceName: str
+        :param _Description: <p>工作空间描述，max_len=300</p>
+        :type Description: str
+        """
+        self._WorkspaceId = None
+        self._WorkspaceName = None
+        self._Description = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def WorkspaceName(self):
+        r"""<p>工作空间名称，max_len=128</p>
+        :rtype: str
+        """
+        return self._WorkspaceName
+
+    @WorkspaceName.setter
+    def WorkspaceName(self, WorkspaceName):
+        self._WorkspaceName = WorkspaceName
+
+    @property
+    def Description(self):
+        r"""<p>工作空间描述，max_len=300</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._WorkspaceName = params.get("WorkspaceName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateWorkspaceResponse(AbstractModel):
+    r"""UpdateWorkspace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>操作结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>操作结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateWorkspaceRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateWorkspaceRsp(AbstractModel):
+    r"""修改工作空间响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 操作是否成功
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""操作是否成功
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserInfo(AbstractModel):
+    r"""用户基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserUin: <p>uin</p>
+        :type UserUin: str
+        :param _UserName: <p>子用户名称</p>
+        :type UserName: str
+        :param _Nickname: <p>子用户昵称</p>
+        :type Nickname: str
+        :param _UserTag: <p>0: 普通用户 1: entraId用户</p>
+        :type UserTag: str
+        """
+        self._UserUin = None
+        self._UserName = None
+        self._Nickname = None
+        self._UserTag = None
+
+    @property
+    def UserUin(self):
+        r"""<p>uin</p>
+        :rtype: str
+        """
+        return self._UserUin
+
+    @UserUin.setter
+    def UserUin(self, UserUin):
+        self._UserUin = UserUin
+
+    @property
+    def UserName(self):
+        r"""<p>子用户名称</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Nickname(self):
+        r"""<p>子用户昵称</p>
+        :rtype: str
+        """
+        return self._Nickname
+
+    @Nickname.setter
+    def Nickname(self, Nickname):
+        self._Nickname = Nickname
+
+    @property
+    def UserTag(self):
+        r"""<p>0: 普通用户 1: entraId用户</p>
+        :rtype: str
+        """
+        return self._UserTag
+
+    @UserTag.setter
+    def UserTag(self, UserTag):
+        self._UserTag = UserTag
+
+
+    def _deserialize(self, params):
+        self._UserUin = params.get("UserUin")
+        self._UserName = params.get("UserName")
+        self._Nickname = params.get("Nickname")
+        self._UserTag = params.get("UserTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13597,6 +15762,179 @@ class WorkflowTriggerConfiguration(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = WorkflowTriggerAdvancedConfiguration()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkspaceInfo(AbstractModel):
+    r"""工作空间信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: 工作空间ID
+        :type WorkspaceId: str
+        :param _WorkspaceName: 工作空间名称
+        :type WorkspaceName: str
+        :param _Description: 工作空间描述
+        :type Description: str
+        :param _WorkspaceRegion: 工作空间地域（如 ap-guangzhou）
+        :type WorkspaceRegion: str
+        :param _Status: 工作空间状态：0=未指定 1=创建中 2=创建失败 3=正常运行中 4=已删除
+        :type Status: int
+        :param _ErrorReason: 失败原因（Status=2 创建失败时有值）
+        :type ErrorReason: str
+        :param _Creator: 创建者信息
+        :type Creator: :class:`tencentcloud.databuddy.v20260715.models.StandardUserInfo`
+        :param _CreateTime: 创建时间，毫秒时间戳
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间，毫秒时间戳
+        :type UpdateTime: str
+        :param _HasAccess: 当前用户是否拥有该工作空间的访问权限
+        :type HasAccess: bool
+        """
+        self._WorkspaceId = None
+        self._WorkspaceName = None
+        self._Description = None
+        self._WorkspaceRegion = None
+        self._Status = None
+        self._ErrorReason = None
+        self._Creator = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._HasAccess = None
+
+    @property
+    def WorkspaceId(self):
+        r"""工作空间ID
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def WorkspaceName(self):
+        r"""工作空间名称
+        :rtype: str
+        """
+        return self._WorkspaceName
+
+    @WorkspaceName.setter
+    def WorkspaceName(self, WorkspaceName):
+        self._WorkspaceName = WorkspaceName
+
+    @property
+    def Description(self):
+        r"""工作空间描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def WorkspaceRegion(self):
+        r"""工作空间地域（如 ap-guangzhou）
+        :rtype: str
+        """
+        return self._WorkspaceRegion
+
+    @WorkspaceRegion.setter
+    def WorkspaceRegion(self, WorkspaceRegion):
+        self._WorkspaceRegion = WorkspaceRegion
+
+    @property
+    def Status(self):
+        r"""工作空间状态：0=未指定 1=创建中 2=创建失败 3=正常运行中 4=已删除
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorReason(self):
+        r"""失败原因（Status=2 创建失败时有值）
+        :rtype: str
+        """
+        return self._ErrorReason
+
+    @ErrorReason.setter
+    def ErrorReason(self, ErrorReason):
+        self._ErrorReason = ErrorReason
+
+    @property
+    def Creator(self):
+        r"""创建者信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.StandardUserInfo`
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，毫秒时间戳
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间，毫秒时间戳
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def HasAccess(self):
+        r"""当前用户是否拥有该工作空间的访问权限
+        :rtype: bool
+        """
+        return self._HasAccess
+
+    @HasAccess.setter
+    def HasAccess(self, HasAccess):
+        self._HasAccess = HasAccess
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._WorkspaceName = params.get("WorkspaceName")
+        self._Description = params.get("Description")
+        self._WorkspaceRegion = params.get("WorkspaceRegion")
+        self._Status = params.get("Status")
+        self._ErrorReason = params.get("ErrorReason")
+        if params.get("Creator") is not None:
+            self._Creator = StandardUserInfo()
+            self._Creator._deserialize(params.get("Creator"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._HasAccess = params.get("HasAccess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2995,7 +2995,7 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: <p>镜像地址</p>
+        :param _Image: <p>镜像地址。仅支持 repository:tag、repository@sha256:&lt;64 位摘要&gt; 或 repository:tag@sha256:&lt;64 位摘要&gt;。</p>
         :type Image: str
         :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :type ImageRegistryType: str
@@ -3005,7 +3005,7 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
 
     @property
     def Image(self):
-        r"""<p>镜像地址</p>
+        r"""<p>镜像地址。仅支持 repository:tag、repository@sha256:&lt;64 位摘要&gt; 或 repository:tag@sha256:&lt;64 位摘要&gt;。</p>
         :rtype: str
         """
         return self._Image
@@ -3052,12 +3052,15 @@ class CreatePreCacheImageTaskResponse(AbstractModel):
         :type ImageDigest: str
         :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :type ImageRegistryType: str
+        :param _PreCacheImageId: <p>镜像预热ID</p>
+        :type PreCacheImageId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Image = None
         self._ImageDigest = None
         self._ImageRegistryType = None
+        self._PreCacheImageId = None
         self._RequestId = None
 
     @property
@@ -3094,6 +3097,17 @@ class CreatePreCacheImageTaskResponse(AbstractModel):
         self._ImageRegistryType = ImageRegistryType
 
     @property
+    def PreCacheImageId(self):
+        r"""<p>镜像预热ID</p>
+        :rtype: str
+        """
+        return self._PreCacheImageId
+
+    @PreCacheImageId.setter
+    def PreCacheImageId(self, PreCacheImageId):
+        self._PreCacheImageId = PreCacheImageId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3109,6 +3123,7 @@ class CreatePreCacheImageTaskResponse(AbstractModel):
         self._Image = params.get("Image")
         self._ImageDigest = params.get("ImageDigest")
         self._ImageRegistryType = params.get("ImageRegistryType")
+        self._PreCacheImageId = params.get("PreCacheImageId")
         self._RequestId = params.get("RequestId")
 
 
@@ -5790,14 +5805,17 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
         r"""
         :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageDigest: <p>镜像 Digest</p>
-        :type ImageDigest: str
         :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :type ImageRegistryType: str
+        :param _ImageDigest: <p>镜像 Digest</p>
+        :type ImageDigest: str
+        :param _PreCacheImageId: <p>镜像预热ID，只能ID或三元组（Image、ImageDigest、ImageRegistrytype）二选一查询</p>
+        :type PreCacheImageId: str
         """
         self._Image = None
-        self._ImageDigest = None
         self._ImageRegistryType = None
+        self._ImageDigest = None
+        self._PreCacheImageId = None
 
     @property
     def Image(self):
@@ -5811,6 +5829,17 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
         self._Image = Image
 
     @property
+    def ImageRegistryType(self):
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+    @property
     def ImageDigest(self):
         r"""<p>镜像 Digest</p>
         :rtype: str
@@ -5822,21 +5851,22 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
         self._ImageDigest = ImageDigest
 
     @property
-    def ImageRegistryType(self):
-        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+    def PreCacheImageId(self):
+        r"""<p>镜像预热ID，只能ID或三元组（Image、ImageDigest、ImageRegistrytype）二选一查询</p>
         :rtype: str
         """
-        return self._ImageRegistryType
+        return self._PreCacheImageId
 
-    @ImageRegistryType.setter
-    def ImageRegistryType(self, ImageRegistryType):
-        self._ImageRegistryType = ImageRegistryType
+    @PreCacheImageId.setter
+    def PreCacheImageId(self, PreCacheImageId):
+        self._PreCacheImageId = PreCacheImageId
 
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
-        self._ImageDigest = params.get("ImageDigest")
         self._ImageRegistryType = params.get("ImageRegistryType")
+        self._ImageDigest = params.get("ImageDigest")
+        self._PreCacheImageId = params.get("PreCacheImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5864,6 +5894,16 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         :type Status: str
         :param _Message: <p>镜像预热状态描述</p>
         :type Message: str
+        :param _CreateTime: <p>镜像预热创建时间</p>
+        :type CreateTime: str
+        :param _PreCacheImageId: <p>镜像预热ID</p>
+        :type PreCacheImageId: str
+        :param _SourceType: <p>镜像预热资源的来源类型，取值为 EXPLICIT、AUTO</p><p>枚举值：</p><ul><li>EXPLICIT： 手动创建</li><li>AUTO： 自动创建</li><li>TCR_AUTO： TCR自动预热</li></ul>
+        :type SourceType: str
+        :param _CachedImageSizeBytes: <p>镜像预热存储大小</p><p>单位：Byte</p>
+        :type CachedImageSizeBytes: int
+        :param _LastUsedTime: <p>该预热镜像最近一次被沙箱实例使用时间</p>
+        :type LastUsedTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5872,6 +5912,11 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._ImageRegistryType = None
         self._Status = None
         self._Message = None
+        self._CreateTime = None
+        self._PreCacheImageId = None
+        self._SourceType = None
+        self._CachedImageSizeBytes = None
+        self._LastUsedTime = None
         self._RequestId = None
 
     @property
@@ -5930,6 +5975,61 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._Message = Message
 
     @property
+    def CreateTime(self):
+        r"""<p>镜像预热创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PreCacheImageId(self):
+        r"""<p>镜像预热ID</p>
+        :rtype: str
+        """
+        return self._PreCacheImageId
+
+    @PreCacheImageId.setter
+    def PreCacheImageId(self, PreCacheImageId):
+        self._PreCacheImageId = PreCacheImageId
+
+    @property
+    def SourceType(self):
+        r"""<p>镜像预热资源的来源类型，取值为 EXPLICIT、AUTO</p><p>枚举值：</p><ul><li>EXPLICIT： 手动创建</li><li>AUTO： 自动创建</li><li>TCR_AUTO： TCR自动预热</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def CachedImageSizeBytes(self):
+        r"""<p>镜像预热存储大小</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._CachedImageSizeBytes
+
+    @CachedImageSizeBytes.setter
+    def CachedImageSizeBytes(self, CachedImageSizeBytes):
+        self._CachedImageSizeBytes = CachedImageSizeBytes
+
+    @property
+    def LastUsedTime(self):
+        r"""<p>该预热镜像最近一次被沙箱实例使用时间</p>
+        :rtype: str
+        """
+        return self._LastUsedTime
+
+    @LastUsedTime.setter
+    def LastUsedTime(self, LastUsedTime):
+        self._LastUsedTime = LastUsedTime
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5947,6 +6047,11 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._ImageRegistryType = params.get("ImageRegistryType")
         self._Status = params.get("Status")
         self._Message = params.get("Message")
+        self._CreateTime = params.get("CreateTime")
+        self._PreCacheImageId = params.get("PreCacheImageId")
+        self._SourceType = params.get("SourceType")
+        self._CachedImageSizeBytes = params.get("CachedImageSizeBytes")
+        self._LastUsedTime = params.get("LastUsedTime")
         self._RequestId = params.get("RequestId")
 
 

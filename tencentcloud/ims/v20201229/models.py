@@ -618,6 +618,10 @@ class ImageModerationResponse(AbstractModel):
         :type FileMD5: str
         :param _RecognitionResults: <p>该字段用于返回仅识别图片元素的模型结果；包括：场景模型命中的标签、置信度和位置信息</p>
         :type RecognitionResults: list of RecognitionResult
+        :param _StoreUrl: <p>转存地址，开启转存能力返回转存地址</p>
+        :type StoreUrl: str
+        :param _Reason: <p>命中原因，大模型提召回输出原因内容</p>
+        :type Reason: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -634,6 +638,8 @@ class ImageModerationResponse(AbstractModel):
         self._Extra = None
         self._FileMD5 = None
         self._RecognitionResults = None
+        self._StoreUrl = None
+        self._Reason = None
         self._RequestId = None
 
     @property
@@ -781,6 +787,28 @@ class ImageModerationResponse(AbstractModel):
         self._RecognitionResults = RecognitionResults
 
     @property
+    def StoreUrl(self):
+        r"""<p>转存地址，开启转存能力返回转存地址</p>
+        :rtype: str
+        """
+        return self._StoreUrl
+
+    @StoreUrl.setter
+    def StoreUrl(self, StoreUrl):
+        self._StoreUrl = StoreUrl
+
+    @property
+    def Reason(self):
+        r"""<p>命中原因，大模型提召回输出原因内容</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -831,6 +859,8 @@ class ImageModerationResponse(AbstractModel):
                 obj = RecognitionResult()
                 obj._deserialize(item)
                 self._RecognitionResults.append(obj)
+        self._StoreUrl = params.get("StoreUrl")
+        self._Reason = params.get("Reason")
         self._RequestId = params.get("RequestId")
 
 
