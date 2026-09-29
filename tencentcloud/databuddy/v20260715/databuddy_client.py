@@ -482,7 +482,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def ListConsoleGroupUsers(self, request):
-        r"""查询控制台用户组成员列表
+        r"""查询控制台用户组成员列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for ListConsoleGroupUsers.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleGroupUsersRequest`
@@ -505,7 +505,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def ListConsoleGroups(self, request):
-        r"""查询控制台用户组列表
+        r"""查询控制台用户组列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for ListConsoleGroups.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleGroupsRequest`
@@ -528,7 +528,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def ListConsoleRoles(self, request):
-        r"""查询控制台角色列表
+        r"""查询控制台角色列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for ListConsoleRoles.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleRolesRequest`
@@ -551,7 +551,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def ListConsoleUsers(self, request):
-        r"""查询控制台用户列表
+        r"""查询控制台用户列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for ListConsoleUsers.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.ListConsoleUsersRequest`

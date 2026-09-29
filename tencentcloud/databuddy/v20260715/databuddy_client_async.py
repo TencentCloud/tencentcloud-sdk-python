@@ -396,7 +396,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListConsoleGroupUsersResponse:
         """
-        查询控制台用户组成员列表
+        查询控制台用户组成员列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -414,7 +414,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListConsoleGroupsResponse:
         """
-        查询控制台用户组列表
+        查询控制台用户组列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -432,7 +432,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListConsoleRolesResponse:
         """
-        查询控制台角色列表
+        查询控制台角色列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -450,7 +450,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListConsoleUsersResponse:
         """
-        查询控制台用户列表
+        查询控制台用户列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}

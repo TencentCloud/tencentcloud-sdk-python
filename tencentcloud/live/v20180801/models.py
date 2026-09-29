@@ -11791,6 +11791,115 @@ class CreateLiveRecordTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLiveSmartEraseRuleRequest(AbstractModel):
+    r"""CreateLiveSmartEraseRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板 ID。</p>
+        :type TemplateId: int
+        :param _DomainName: <p>推流域名。</p>
+        :type DomainName: str
+        :param _AppName: <p>推流路径，与推流和播放地址中的AppName保持一致，默认为 live。</p>
+        :type AppName: str
+        :param _StreamName: <p>流名称。<br>注：如果本参数设置为非空字符串，规则将只对此推流起作用。</p>
+        :type StreamName: str
+        """
+        self._TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板 ID。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def DomainName(self):
+        r"""<p>推流域名。</p>
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        r"""<p>推流路径，与推流和播放地址中的AppName保持一致，默认为 live。</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        r"""<p>流名称。<br>注：如果本参数设置为非空字符串，规则将只对此推流起作用。</p>
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveSmartEraseRuleResponse(AbstractModel):
+    r"""CreateLiveSmartEraseRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLiveSmartEraseTemplateRequest(AbstractModel):
     r"""CreateLiveSmartEraseTemplate请求参数结构体
 
@@ -16672,6 +16781,179 @@ class DeleteLiveRecordTemplateRequest(AbstractModel):
 
 class DeleteLiveRecordTemplateResponse(AbstractModel):
     r"""DeleteLiveRecordTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLiveSmartEraseRuleRequest(AbstractModel):
+    r"""DeleteLiveSmartEraseRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>直播智能擦除模板id。</p>
+        :type TemplateId: int
+        :param _DomainName: <p>推流域名。<br>域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。</p>
+        :type DomainName: str
+        :param _AppName: <p>，与推流和播放地址中的AppName保持一致，默认为 live。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。推流路径</p>
+        :type AppName: str
+        :param _StreamName: <p>流名称。<br>域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。</p>
+        :type StreamName: str
+        """
+        self._TemplateId = None
+        self._DomainName = None
+        self._AppName = None
+        self._StreamName = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>直播智能擦除模板id。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def DomainName(self):
+        r"""<p>推流域名。<br>域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。</p>
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def AppName(self):
+        r"""<p>，与推流和播放地址中的AppName保持一致，默认为 live。域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。推流路径</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def StreamName(self):
+        r"""<p>流名称。<br>域名+AppName+StreamName唯一标识单个转码规则，如需删除需要强匹配，例如AppName为空也需要传空字符串进行强匹配。</p>
+        :rtype: str
+        """
+        return self._StreamName
+
+    @StreamName.setter
+    def StreamName(self, StreamName):
+        self._StreamName = StreamName
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._DomainName = params.get("DomainName")
+        self._AppName = params.get("AppName")
+        self._StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveSmartEraseRuleResponse(AbstractModel):
+    r"""DeleteLiveSmartEraseRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLiveSmartEraseTemplateRequest(AbstractModel):
+    r"""DeleteLiveSmartEraseTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板 ID。</p>
+        :type TemplateId: int
+        """
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板 ID。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveSmartEraseTemplateResponse(AbstractModel):
+    r"""DeleteLiveSmartEraseTemplate返回参数结构体
 
     """
 
@@ -24974,6 +25256,195 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
             self._Templates = []
             for item in params.get("Templates"):
                 obj = RecordTemplateInfo()
+                obj._deserialize(item)
+                self._Templates.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveSmartEraseRulesRequest(AbstractModel):
+    r"""DescribeLiveSmartEraseRules请求参数结构体
+
+    """
+
+
+class DescribeLiveSmartEraseRulesResponse(AbstractModel):
+    r"""DescribeLiveSmartEraseRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: <p>规则信息列表。</p>
+        :type Rules: list of RuleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        r"""<p>规则信息列表。</p>
+        :rtype: list of RuleInfo
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RuleInfo()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveSmartEraseTemplateRequest(AbstractModel):
+    r"""DescribeLiveSmartEraseTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板id。</p>
+        :type TemplateId: int
+        """
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板id。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveSmartEraseTemplateResponse(AbstractModel):
+    r"""DescribeLiveSmartEraseTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Template: <p>直播智能擦除模板信息。</p>
+        :type Template: :class:`tencentcloud.live.v20180801.models.SmartEraseTemplate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Template = None
+        self._RequestId = None
+
+    @property
+    def Template(self):
+        r"""<p>直播智能擦除模板信息。</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.SmartEraseTemplate`
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Template") is not None:
+            self._Template = SmartEraseTemplate()
+            self._Template._deserialize(params.get("Template"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveSmartEraseTemplatesRequest(AbstractModel):
+    r"""DescribeLiveSmartEraseTemplates请求参数结构体
+
+    """
+
+
+class DescribeLiveSmartEraseTemplatesResponse(AbstractModel):
+    r"""DescribeLiveSmartEraseTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Templates: <p>直播智能擦除模板信息。</p>
+        :type Templates: list of SmartEraseTemplate
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Templates = None
+        self._RequestId = None
+
+    @property
+    def Templates(self):
+        r"""<p>直播智能擦除模板信息。</p>
+        :rtype: list of SmartEraseTemplate
+        """
+        return self._Templates
+
+    @Templates.setter
+    def Templates(self, Templates):
+        self._Templates = Templates
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Templates") is not None:
+            self._Templates = []
+            for item in params.get("Templates"):
+                obj = SmartEraseTemplate()
                 obj._deserialize(item)
                 self._Templates.append(obj)
         self._RequestId = params.get("RequestId")
@@ -39456,6 +39927,235 @@ class ModifyLiveRecordTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLiveSmartEraseTemplateRequest(AbstractModel):
+    r"""ModifyLiveSmartEraseTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板id。</p>
+        :type TemplateId: int
+        :param _TemplateName: <p>模板名称。长度上限：100字节。</p>
+        :type TemplateName: str
+        :param _Type: <p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+        :type Type: str
+        :param _AuditConfId: <p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates返回的TemplateId</p>
+        :type AuditConfId: int
+        :param _Description: <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
+        :type Description: str
+        :param _ImageBizType: <p>天御图片审核策略BizType Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
+        :type ImageBizType: str
+        :param _AudioBizType: <p>天御音频审核策略BizType ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
+        :type AudioBizType: str
+        :param _AudioTextBizType: <p>天御音频文本审核策略BizType ShortAudio</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
+        :type AudioTextBizType: str
+        :param _DisplayMode: <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+        :type DisplayMode: int
+        :param _DisplayDelayTime: <p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+        :type DisplayDelayTime: int
+        :param _PrivacyProtection: <p>擦除类型选择“隐私保护”后，该项可见</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>license plate： 车牌模糊</li></ul>
+        :type PrivacyProtection: str
+        :param _AudioErasureMode: <p>仅当擦除类型选择了违规音频，该项可见</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul><p>默认值：0</p>
+        :type AudioErasureMode: int
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Type = None
+        self._AuditConfId = None
+        self._Description = None
+        self._ImageBizType = None
+        self._AudioBizType = None
+        self._AudioTextBizType = None
+        self._DisplayMode = None
+        self._DisplayDelayTime = None
+        self._PrivacyProtection = None
+        self._AudioErasureMode = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板id。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        r"""<p>模板名称。长度上限：100字节。</p>
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Type(self):
+        r"""<p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AuditConfId(self):
+        r"""<p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates返回的TemplateId</p>
+        :rtype: int
+        """
+        return self._AuditConfId
+
+    @AuditConfId.setter
+    def AuditConfId(self, AuditConfId):
+        self._AuditConfId = AuditConfId
+
+    @property
+    def Description(self):
+        r"""<p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ImageBizType(self):
+        r"""<p>天御图片审核策略BizType Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
+        :rtype: str
+        """
+        return self._ImageBizType
+
+    @ImageBizType.setter
+    def ImageBizType(self, ImageBizType):
+        self._ImageBizType = ImageBizType
+
+    @property
+    def AudioBizType(self):
+        r"""<p>天御音频审核策略BizType ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
+        :rtype: str
+        """
+        return self._AudioBizType
+
+    @AudioBizType.setter
+    def AudioBizType(self, AudioBizType):
+        self._AudioBizType = AudioBizType
+
+    @property
+    def AudioTextBizType(self):
+        r"""<p>天御音频文本审核策略BizType ShortAudio</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
+        :rtype: str
+        """
+        return self._AudioTextBizType
+
+    @AudioTextBizType.setter
+    def AudioTextBizType(self, AudioTextBizType):
+        self._AudioTextBizType = AudioTextBizType
+
+    @property
+    def DisplayMode(self):
+        r"""<p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+        :rtype: int
+        """
+        return self._DisplayMode
+
+    @DisplayMode.setter
+    def DisplayMode(self, DisplayMode):
+        self._DisplayMode = DisplayMode
+
+    @property
+    def DisplayDelayTime(self):
+        r"""<p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+        :rtype: int
+        """
+        return self._DisplayDelayTime
+
+    @DisplayDelayTime.setter
+    def DisplayDelayTime(self, DisplayDelayTime):
+        self._DisplayDelayTime = DisplayDelayTime
+
+    @property
+    def PrivacyProtection(self):
+        r"""<p>擦除类型选择“隐私保护”后，该项可见</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>license plate： 车牌模糊</li></ul>
+        :rtype: str
+        """
+        return self._PrivacyProtection
+
+    @PrivacyProtection.setter
+    def PrivacyProtection(self, PrivacyProtection):
+        self._PrivacyProtection = PrivacyProtection
+
+    @property
+    def AudioErasureMode(self):
+        r"""<p>仅当擦除类型选择了违规音频，该项可见</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AudioErasureMode
+
+    @AudioErasureMode.setter
+    def AudioErasureMode(self, AudioErasureMode):
+        self._AudioErasureMode = AudioErasureMode
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Type = params.get("Type")
+        self._AuditConfId = params.get("AuditConfId")
+        self._Description = params.get("Description")
+        self._ImageBizType = params.get("ImageBizType")
+        self._AudioBizType = params.get("AudioBizType")
+        self._AudioTextBizType = params.get("AudioTextBizType")
+        self._DisplayMode = params.get("DisplayMode")
+        self._DisplayDelayTime = params.get("DisplayDelayTime")
+        self._PrivacyProtection = params.get("PrivacyProtection")
+        self._AudioErasureMode = params.get("AudioErasureMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveSmartEraseTemplateResponse(AbstractModel):
+    r"""ModifyLiveSmartEraseTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyLiveSnapshotTemplateRequest(AbstractModel):
     r"""ModifyLiveSnapshotTemplate请求参数结构体
 
@@ -46322,6 +47022,237 @@ class SendTemporaryScriptToAvatarRoomResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SmartEraseTemplate(AbstractModel):
+    r"""直播智能擦除模板。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>模板id。</p>
+        :type TemplateId: int
+        :param _TemplateName: <p>模板名称。</p>
+        :type TemplateName: str
+        :param _Description: <p>模板描述。</p>
+        :type Description: str
+        :param _Type: <p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+        :type Type: str
+        :param _AuditConfId: <p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates接口返回的AuditTemplates里面的TemplateId字段</p>
+        :type AuditConfId: int
+        :param _ImageBizType: <p>天御图片审核策略BizType  Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
+        :type ImageBizType: str
+        :param _AudioBizType: <p>天御音频审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
+        :type AudioBizType: str
+        :param _AudioTextBizType: <p>天御音频文本审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
+        :type AudioTextBizType: str
+        :param _CreateTime: <p>模板创建时间。</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>模板修改时间。</p>
+        :type UpdateTime: str
+        :param _DisplayMode: <p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+        :type DisplayMode: int
+        :param _DisplayDelayTime: <p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+        :type DisplayDelayTime: int
+        :param _PrivacyProtection: <p>仅当擦除类型选择了违规音频，该项可见</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>blur license plate： 车牌模糊</li></ul>
+        :type PrivacyProtection: str
+        :param _AudioErasureMode: <p>仅当擦除类型选择了“隐私保护”后，该项可见</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul>
+        :type AudioErasureMode: int
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Description = None
+        self._Type = None
+        self._AuditConfId = None
+        self._ImageBizType = None
+        self._AudioBizType = None
+        self._AudioTextBizType = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._DisplayMode = None
+        self._DisplayDelayTime = None
+        self._PrivacyProtection = None
+        self._AudioErasureMode = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板id。</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        r"""<p>模板名称。</p>
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Description(self):
+        r"""<p>模板描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""<p>擦除类型，如&quot;illegal audio|illegal image|logo|privacy protection 。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AuditConfId(self):
+        r"""<p>关联的审核模板id, 表audio_conf 。</p><p>取值为DescribeAuditTemplates接口返回的AuditTemplates里面的TemplateId字段</p>
+        :rtype: int
+        """
+        return self._AuditConfId
+
+    @AuditConfId.setter
+    def AuditConfId(self, AuditConfId):
+        self._AuditConfId = AuditConfId
+
+    @property
+    def ImageBizType(self):
+        r"""<p>天御图片审核策略BizType  Image 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Image&quot;的BizType值</p>
+        :rtype: str
+        """
+        return self._ImageBizType
+
+    @ImageBizType.setter
+    def ImageBizType(self, ImageBizType):
+        self._ImageBizType = ImageBizType
+
+    @property
+    def AudioBizType(self):
+        r"""<p>天御音频审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;ShortAudio&quot;的BizType值</p>
+        :rtype: str
+        """
+        return self._AudioBizType
+
+    @AudioBizType.setter
+    def AudioBizType(self, AudioBizType):
+        self._AudioBizType = AudioBizType
+
+    @property
+    def AudioTextBizType(self):
+        r"""<p>天御音频文本审核策略BizType  ShortAudio 。</p><p>取值为DescribeAuditTemplates返回的SceneInfos下BizInfos里面的对应的StrategyType为&quot;Text&quot;的BizType值</p>
+        :rtype: str
+        """
+        return self._AudioTextBizType
+
+    @AudioTextBizType.setter
+    def AudioTextBizType(self, AudioTextBizType):
+        self._AudioTextBizType = AudioTextBizType
+
+    @property
+    def CreateTime(self):
+        r"""<p>模板创建时间。</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>模板修改时间。</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def DisplayMode(self):
+        r"""<p>展示模式，取值 1:延时稳态展示; 3.实时动态展示。默认1 。</p>
+        :rtype: int
+        """
+        return self._DisplayMode
+
+    @DisplayMode.setter
+    def DisplayMode(self, DisplayMode):
+        self._DisplayMode = DisplayMode
+
+    @property
+    def DisplayDelayTime(self):
+        r"""<p>字幕延迟展示时间,单位毫秒。默认10000。</p>
+        :rtype: int
+        """
+        return self._DisplayDelayTime
+
+    @DisplayDelayTime.setter
+    def DisplayDelayTime(self, DisplayDelayTime):
+        self._DisplayDelayTime = DisplayDelayTime
+
+    @property
+    def PrivacyProtection(self):
+        r"""<p>仅当擦除类型选择了违规音频，该项可见</p><p>枚举值：</p><ul><li>blur face： 人脸模糊</li><li>blur license plate： 车牌模糊</li></ul>
+        :rtype: str
+        """
+        return self._PrivacyProtection
+
+    @PrivacyProtection.setter
+    def PrivacyProtection(self, PrivacyProtection):
+        self._PrivacyProtection = PrivacyProtection
+
+    @property
+    def AudioErasureMode(self):
+        r"""<p>仅当擦除类型选择了“隐私保护”后，该项可见</p><p>枚举值：</p><ul><li>0： 静音</li><li>1： 哔音</li></ul>
+        :rtype: int
+        """
+        return self._AudioErasureMode
+
+    @AudioErasureMode.setter
+    def AudioErasureMode(self, AudioErasureMode):
+        self._AudioErasureMode = AudioErasureMode
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._AuditConfId = params.get("AuditConfId")
+        self._ImageBizType = params.get("ImageBizType")
+        self._AudioBizType = params.get("AudioBizType")
+        self._AudioTextBizType = params.get("AudioTextBizType")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._DisplayMode = params.get("DisplayMode")
+        self._DisplayDelayTime = params.get("DisplayDelayTime")
+        self._PrivacyProtection = params.get("PrivacyProtection")
+        self._AudioErasureMode = params.get("AudioErasureMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SnapshotTemplateInfo(AbstractModel):

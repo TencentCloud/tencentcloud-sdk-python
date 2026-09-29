@@ -6722,7 +6722,7 @@ class ListConsoleGroupUsersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: <p>用户组 ID</p>
+        :param _GroupId: <p>用户组 ID，可通过 ListConsoleGroups 接口获取</p>
         :type GroupId: str
         :param _UserKeyword: <p>用户名称或 UIN 模糊匹配</p>
         :type UserKeyword: str
@@ -6744,7 +6744,7 @@ class ListConsoleGroupUsersRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""<p>用户组 ID</p>
+        r"""<p>用户组 ID，可通过 ListConsoleGroups 接口获取</p>
         :rtype: str
         """
         return self._GroupId
@@ -6990,7 +6990,7 @@ class ListConsoleGroupsRequest(AbstractModel):
         :type PageNumber: int
         :param _PageSize: <p>每页大小，默认10，最小10，最大100</p>
         :type PageSize: int
-        :param _GroupIds: <p>通过用户组 ID 批量查询</p>
+        :param _GroupIds: <p>通过用户组ID批量查询；用户组ID可通过 ListConsoleGroups 接口获取</p>
         :type GroupIds: list of str
         :param _GroupKeyword: <p>用户组名称模糊匹配</p>
         :type GroupKeyword: str
@@ -7027,7 +7027,7 @@ class ListConsoleGroupsRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        r"""<p>通过用户组 ID 批量查询</p>
+        r"""<p>通过用户组ID批量查询；用户组ID可通过 ListConsoleGroups 接口获取</p>
         :rtype: list of str
         """
         return self._GroupIds
@@ -7455,7 +7455,7 @@ class ListConsoleUsersRequest(AbstractModel):
         :type PageSize: int
         :param _UserKeyword: <p>用户名称与 UIN 模糊匹配</p>
         :type UserKeyword: str
-        :param _RoleIds: <p>用于过滤角色关联的用户</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul>
+        :param _RoleIds: <p>用于过滤角色关联的用户</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul><p>可通过 ListConsoleRoles 接口获取</p>
         :type RoleIds: list of str
         :param _OrderBys: <p>多字段排序，如 [{Name: &#39;CreateTime&#39;, Direction: &#39;Desc&#39;}, {Name: &#39;UserName&#39;, Direction: &#39;Asc&#39;}]，默认按创建时间降序</p>
         :type OrderBys: list of OrderBy
@@ -7501,7 +7501,7 @@ class ListConsoleUsersRequest(AbstractModel):
 
     @property
     def RoleIds(self):
-        r"""<p>用于过滤角色关联的用户</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul>
+        r"""<p>用于过滤角色关联的用户</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul><p>可通过 ListConsoleRoles 接口获取</p>
         :rtype: list of str
         """
         return self._RoleIds
@@ -9713,7 +9713,7 @@ class RoleBasicInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: <p>角色ID</p>
+        :param _Id: <p>角色ID，可通过 ListWorkspaceRoles / ListConsoleRoles 接口获取；创建/更新角色时无需填写（由系统自动生成，创建成功后从响应 Data.RoleId 获取）</p>
         :type Id: str
         :param _Name: <p>角色名称</p>
         :type Name: str
@@ -9721,11 +9721,11 @@ class RoleBasicInfo(AbstractModel):
         :type Description: str
         :param _DisplayName: <p>显示名称</p>
         :type DisplayName: str
-        :param _RoleType: <p>角色类型</p>
+        :param _RoleType: <p>角色类型：workspace=工作空间系统角色，workspace_custom=工作空间自定义角色，console=控制台角色；查询时返回，创建时无需填写（系统固定创建自定义角色）</p>
         :type RoleType: str
-        :param _Source: <p>角色来源，参考 web_enum_standard.proto -&gt; RoleSource：0=未指定 1=用户直绑 2=用户组继承 3=两者都有</p>
+        :param _Source: <p>角色来源（查询侧字段，创建时无需填写）：0=未指定，1=用户直绑，2=用户组继承，3=两者都有</p>
         :type Source: int
-        :param _GroupNames: <p>继承来源的用户组名称列表，Source=1 时为空</p>
+        :param _GroupNames: <p>继承来源的用户组名称列表（查询侧字段，创建时无需填写），Source=1 时为空</p>
         :type GroupNames: list of str
         """
         self._Id = None
@@ -9738,7 +9738,7 @@ class RoleBasicInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""<p>角色ID</p>
+        r"""<p>角色ID，可通过 ListWorkspaceRoles / ListConsoleRoles 接口获取；创建/更新角色时无需填写（由系统自动生成，创建成功后从响应 Data.RoleId 获取）</p>
         :rtype: str
         """
         return self._Id
@@ -9782,7 +9782,7 @@ class RoleBasicInfo(AbstractModel):
 
     @property
     def RoleType(self):
-        r"""<p>角色类型</p>
+        r"""<p>角色类型：workspace=工作空间系统角色，workspace_custom=工作空间自定义角色，console=控制台角色；查询时返回，创建时无需填写（系统固定创建自定义角色）</p>
         :rtype: str
         """
         return self._RoleType
@@ -9793,7 +9793,7 @@ class RoleBasicInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""<p>角色来源，参考 web_enum_standard.proto -&gt; RoleSource：0=未指定 1=用户直绑 2=用户组继承 3=两者都有</p>
+        r"""<p>角色来源（查询侧字段，创建时无需填写）：0=未指定，1=用户直绑，2=用户组继承，3=两者都有</p>
         :rtype: int
         """
         return self._Source
@@ -9804,7 +9804,7 @@ class RoleBasicInfo(AbstractModel):
 
     @property
     def GroupNames(self):
-        r"""<p>继承来源的用户组名称列表，Source=1 时为空</p>
+        r"""<p>继承来源的用户组名称列表（查询侧字段，创建时无需填写），Source=1 时为空</p>
         :rtype: list of str
         """
         return self._GroupNames
@@ -9920,9 +9920,9 @@ class RolePermission(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModuleId: 模块ID
+        :param _ModuleId: <p>模块ID，须为当前租户已开通的功能模块（叶子节点）的模块ID（层级编码字符串，如 101=快速开始、109=工作流、116101103=工作空间管理_角色权限），非法值返回 InvalidParameterValue；模块清单可通过控制台「工作空间设置-角色权限」页面查看</p>
         :type ModuleId: str
-        :param _Permissions: 权限点
+        :param _Permissions: <p>模块访问权限，单值：R=只读，RW=读写，RWD=读写删除，N=无权限</p>
         :type Permissions: str
         """
         self._ModuleId = None
@@ -9930,7 +9930,7 @@ class RolePermission(AbstractModel):
 
     @property
     def ModuleId(self):
-        r"""模块ID
+        r"""<p>模块ID，须为当前租户已开通的功能模块（叶子节点）的模块ID（层级编码字符串，如 101=快速开始、109=工作流、116101103=工作空间管理_角色权限），非法值返回 InvalidParameterValue；模块清单可通过控制台「工作空间设置-角色权限」页面查看</p>
         :rtype: str
         """
         return self._ModuleId
@@ -9941,7 +9941,7 @@ class RolePermission(AbstractModel):
 
     @property
     def Permissions(self):
-        r"""权限点
+        r"""<p>模块访问权限，单值：R=只读，RW=读写，RWD=读写删除，N=无权限</p>
         :rtype: str
         """
         return self._Permissions

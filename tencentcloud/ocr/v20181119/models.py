@@ -3807,7 +3807,7 @@ class ClassifyDetectOCRRequest(AbstractModel):
         :type ImageBase64: str
         :param _ImageUrl: <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
-        :param _DiscernType: <p>可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。</p><p>以下是当前支持的类型：<br>IDCardFront: 身份证正面识别<br>IDCardBack: 身份证背面识别<br>Passport: 护照<br>BusinessCard: 名片识别<br>BankCard: 银行卡识别<br>VehicleLicenseFront: 行驶证主页识别<br>VehicleLicenseBack: 行驶证副页识别<br>DriverLicenseFront: 驾驶证主页识别<br>DriverLicenseBack: 驾驶证副页识别<br>PermitFront: 港澳台通行证正面<br>ResidenceBooklet: 户口本资料页<br>MainlandPermitFront: 港澳台来往内地通行证正面<br>HmtResidentPermitFront: 港澳台居住证正面<br>HmtResidentPermitBack: 港澳台居住证背面<br>EstateCert: 不动产证<br>BizLicense: 营业执照<br>ForeignPermanentResidentFront: 外国人永居证正面识别<br>ForeignPermanentResidentBack: 外国人永居证背面识别<br>RoadTransportQualificationCert: 道路运输从业资格证识别<br>RoadTransportPermit: 道路运输证识别</p>
+        :param _DiscernType: <p>可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。</p><p>以下是当前支持的类型：<br>IDCardFront: 身份证正面识别<br>IDCardBack: 身份证背面识别<br>Passport: 护照<br>BusinessCard: 名片识别<br>BankCard: 银行卡识别<br>VehicleLicenseFront: 行驶证主页识别<br>VehicleLicenseBack: 行驶证副页识别<br>DriverLicenseFront: 驾驶证主页识别<br>DriverLicenseBack: 驾驶证副页识别<br>PermitFront: 港澳台通行证正面<br>ResidenceBooklet: 户口本资料页<br>MainlandPermitFront: 港澳台来往内地通行证正面<br>HmtResidentPermitFront: 港澳台居住证正面<br>HmtResidentPermitBack: 港澳台居住证背面<br>EstateCert: 不动产证<br>BizLicense: 营业执照<br>ForeignPermanentResidentFront: 外国人永居证正面识别<br>ForeignPermanentResidentBack: 外国人永居证背面识别<br>RoadTransportQualificationCert: 道路运输从业资格证识别<br>RoadTransportPermit: 道路运输证识别<br>BirthCert 出生证明<br>MarriageCert 结婚证</p>
         :type DiscernType: list of str
         """
         self._ImageBase64 = None
@@ -3838,7 +3838,7 @@ class ClassifyDetectOCRRequest(AbstractModel):
 
     @property
     def DiscernType(self):
-        r"""<p>可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。</p><p>以下是当前支持的类型：<br>IDCardFront: 身份证正面识别<br>IDCardBack: 身份证背面识别<br>Passport: 护照<br>BusinessCard: 名片识别<br>BankCard: 银行卡识别<br>VehicleLicenseFront: 行驶证主页识别<br>VehicleLicenseBack: 行驶证副页识别<br>DriverLicenseFront: 驾驶证主页识别<br>DriverLicenseBack: 驾驶证副页识别<br>PermitFront: 港澳台通行证正面<br>ResidenceBooklet: 户口本资料页<br>MainlandPermitFront: 港澳台来往内地通行证正面<br>HmtResidentPermitFront: 港澳台居住证正面<br>HmtResidentPermitBack: 港澳台居住证背面<br>EstateCert: 不动产证<br>BizLicense: 营业执照<br>ForeignPermanentResidentFront: 外国人永居证正面识别<br>ForeignPermanentResidentBack: 外国人永居证背面识别<br>RoadTransportQualificationCert: 道路运输从业资格证识别<br>RoadTransportPermit: 道路运输证识别</p>
+        r"""<p>可以指定要识别的票证类型,指定后不出现在此列表的票证将不返回类型。不指定时默认返回所有支持类别票证的识别信息。</p><p>以下是当前支持的类型：<br>IDCardFront: 身份证正面识别<br>IDCardBack: 身份证背面识别<br>Passport: 护照<br>BusinessCard: 名片识别<br>BankCard: 银行卡识别<br>VehicleLicenseFront: 行驶证主页识别<br>VehicleLicenseBack: 行驶证副页识别<br>DriverLicenseFront: 驾驶证主页识别<br>DriverLicenseBack: 驾驶证副页识别<br>PermitFront: 港澳台通行证正面<br>ResidenceBooklet: 户口本资料页<br>MainlandPermitFront: 港澳台来往内地通行证正面<br>HmtResidentPermitFront: 港澳台居住证正面<br>HmtResidentPermitBack: 港澳台居住证背面<br>EstateCert: 不动产证<br>BizLicense: 营业执照<br>ForeignPermanentResidentFront: 外国人永居证正面识别<br>ForeignPermanentResidentBack: 外国人永居证背面识别<br>RoadTransportQualificationCert: 道路运输从业资格证识别<br>RoadTransportPermit: 道路运输证识别<br>BirthCert 出生证明<br>MarriageCert 结婚证</p>
         :rtype: list of str
         """
         return self._DiscernType
@@ -41571,6 +41571,10 @@ class VerifyScenePhotoRequest(AbstractModel):
         r"""
         :param _Scene: <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照    </p><p><strong>车牌业务照</strong><br>0201 车牌</p>
         :type Scene: str
+        :param _Mode: <p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按1次调用计费。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持推理，支持屏幕翻拍提示。每次调用按1次调用计费。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按2次调用计费。</p>
+        :type Mode: str
+        :param _VideoUrl: <p>视频的 Url 地址。格式支持：xxxxxx。要求视频不超过 100M。建议视频时长不小于1s。</p>
+        :type VideoUrl: str
         :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
         :type ImageUrl: str
         :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
@@ -41579,12 +41583,17 @@ class VerifyScenePhotoRequest(AbstractModel):
         :type ReasoningPrompt: str
         :param _ReasoningConfig: <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
         :type ReasoningConfig: :class:`tencentcloud.ocr.v20181119.models.ReasoningConfig`
+        :param _IgnoreWatermarkCategories: <p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。<br>PhoneCam：手机相机水印<br>WatermarkCam：水印相机水印</p>
+        :type IgnoreWatermarkCategories: list of str
         """
         self._Scene = None
+        self._Mode = None
+        self._VideoUrl = None
         self._ImageUrl = None
         self._ImageBase64 = None
         self._ReasoningPrompt = None
         self._ReasoningConfig = None
+        self._IgnoreWatermarkCategories = None
 
     @property
     def Scene(self):
@@ -41596,6 +41605,28 @@ class VerifyScenePhotoRequest(AbstractModel):
     @Scene.setter
     def Scene(self, Scene):
         self._Scene = Scene
+
+    @property
+    def Mode(self):
+        r"""<p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按1次调用计费。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持推理，支持屏幕翻拍提示。每次调用按1次调用计费。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按2次调用计费。</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def VideoUrl(self):
+        r"""<p>视频的 Url 地址。格式支持：xxxxxx。要求视频不超过 100M。建议视频时长不小于1s。</p>
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
 
     @property
     def ImageUrl(self):
@@ -41641,15 +41672,29 @@ class VerifyScenePhotoRequest(AbstractModel):
     def ReasoningConfig(self, ReasoningConfig):
         self._ReasoningConfig = ReasoningConfig
 
+    @property
+    def IgnoreWatermarkCategories(self):
+        r"""<p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。<br>PhoneCam：手机相机水印<br>WatermarkCam：水印相机水印</p>
+        :rtype: list of str
+        """
+        return self._IgnoreWatermarkCategories
+
+    @IgnoreWatermarkCategories.setter
+    def IgnoreWatermarkCategories(self, IgnoreWatermarkCategories):
+        self._IgnoreWatermarkCategories = IgnoreWatermarkCategories
+
 
     def _deserialize(self, params):
         self._Scene = params.get("Scene")
+        self._Mode = params.get("Mode")
+        self._VideoUrl = params.get("VideoUrl")
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
         self._ReasoningPrompt = params.get("ReasoningPrompt")
         if params.get("ReasoningConfig") is not None:
             self._ReasoningConfig = ReasoningConfig()
             self._ReasoningConfig._deserialize(params.get("ReasoningConfig"))
+        self._IgnoreWatermarkCategories = params.get("IgnoreWatermarkCategories")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

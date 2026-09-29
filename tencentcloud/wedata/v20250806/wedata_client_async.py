@@ -1339,6 +1339,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetSQLRunResult(
+            self,
+            request: models.GetSQLRunResultRequest,
+            opts: Dict = None,
+    ) -> models.GetSQLRunResultResponse:
+        """
+        获取SQL查询任务的数据结果。直接返回预览数据结果，而非预览结果文件路径。不传 JobExecutionId 时返回该任务下全部子查询的结果数组。返回数据总大小不超过 10MB。任务处于非终态（QUEUED/RUNNING）时不报错，返回当前 Status 与空的 Results 数组，并通过 StatusMessage 说明原因，调用方应采用指数退避策略轮询直至进入终态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetSQLRunResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetSQLRunResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetSQLScript(
             self,
             request: models.GetSQLScriptRequest,

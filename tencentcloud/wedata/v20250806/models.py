@@ -17539,6 +17539,117 @@ class GetSQLFolderResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetSQLRunResultRequest(AbstractModel):
+    r"""GetSQLRunResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _JobId: 查询任务ID，由 RunSQLScript 返回
+        :type JobId: str
+        :param _JobExecutionId: 子查询任务运行ID。不传则返回该任务下全部子查询的结果
+        :type JobExecutionId: str
+        """
+        self._ProjectId = None
+        self._JobId = None
+        self._JobExecutionId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def JobId(self):
+        r"""查询任务ID，由 RunSQLScript 返回
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobExecutionId(self):
+        r"""子查询任务运行ID。不传则返回该任务下全部子查询的结果
+        :rtype: str
+        """
+        return self._JobExecutionId
+
+    @JobExecutionId.setter
+    def JobExecutionId(self, JobExecutionId):
+        self._JobExecutionId = JobExecutionId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._JobId = params.get("JobId")
+        self._JobExecutionId = params.get("JobExecutionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSQLRunResultResponse(AbstractModel):
+    r"""GetSQLRunResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: SQL查询结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.SqlRunResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""SQL查询结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.SqlRunResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = SqlRunResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class GetSQLScriptRequest(AbstractModel):
     r"""GetSQLScript请求参数结构体
 
@@ -46668,6 +46779,61 @@ class ResourceType(AbstractModel):
         
 
 
+class ResultColumnInfo(AbstractModel):
+    r"""查询结果字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColumnName: 字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnName: str
+        :param _ColumnType: 字段类型，如 int、string、bigint 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnType: str
+        """
+        self._ColumnName = None
+        self._ColumnType = None
+
+    @property
+    def ColumnName(self):
+        r"""字段名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ColumnName
+
+    @ColumnName.setter
+    def ColumnName(self, ColumnName):
+        self._ColumnName = ColumnName
+
+    @property
+    def ColumnType(self):
+        r"""字段类型，如 int、string、bigint 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ColumnType
+
+    @ColumnType.setter
+    def ColumnType(self, ColumnType):
+        self._ColumnType = ColumnType
+
+
+    def _deserialize(self, params):
+        self._ColumnName = params.get("ColumnName")
+        self._ColumnType = params.get("ColumnType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RevokeDataSourceAuthorizationRequest(AbstractModel):
     r"""RevokeDataSourceAuthorization请求参数结构体
 
@@ -48112,6 +48278,322 @@ class SqlCreateResult(AbstractModel):
 
     def _deserialize(self, params):
         self._FolderId = params.get("FolderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlRunExecutionResult(AbstractModel):
+    r"""单个子查询（对应一条 SQL 语句）的查询结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobExecutionId: 子查询任务运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobExecutionId: str
+        :param _Status: 子查询状态：SUCCESS、FAILED、TERMINATED、CANCELED 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Columns: 结果集字段信息；非查询类语句（INSERT/CREATE 等）为空列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of ResultColumnInfo
+        :param _Rows: 结果数据行，每个元素的 Values 顺序与 Columns 一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of SqlRunResultRow
+        :param _Total: 本子查询的预览结果行数。预览行数上限遵循「项目管理-数据分析配置-单次运行的预览行数上限」，由执行平台在结果产出阶段截断
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _CostMs: 本子查询耗时，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostMs: int
+        :param _Truncated: 本子查询结果是否不完整。返回数据总大小超过 10MB、或结果文件已被清理导致读取不完整时为 true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Truncated: bool
+        """
+        self._JobExecutionId = None
+        self._Status = None
+        self._Columns = None
+        self._Rows = None
+        self._Total = None
+        self._CostMs = None
+        self._Truncated = None
+
+    @property
+    def JobExecutionId(self):
+        r"""子查询任务运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobExecutionId
+
+    @JobExecutionId.setter
+    def JobExecutionId(self, JobExecutionId):
+        self._JobExecutionId = JobExecutionId
+
+    @property
+    def Status(self):
+        r"""子查询状态：SUCCESS、FAILED、TERMINATED、CANCELED 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Columns(self):
+        r"""结果集字段信息；非查询类语句（INSERT/CREATE 等）为空列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResultColumnInfo
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Rows(self):
+        r"""结果数据行，每个元素的 Values 顺序与 Columns 一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SqlRunResultRow
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def Total(self):
+        r"""本子查询的预览结果行数。预览行数上限遵循「项目管理-数据分析配置-单次运行的预览行数上限」，由执行平台在结果产出阶段截断
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def CostMs(self):
+        r"""本子查询耗时，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CostMs
+
+    @CostMs.setter
+    def CostMs(self, CostMs):
+        self._CostMs = CostMs
+
+    @property
+    def Truncated(self):
+        r"""本子查询结果是否不完整。返回数据总大小超过 10MB、或结果文件已被清理导致读取不完整时为 true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Truncated
+
+    @Truncated.setter
+    def Truncated(self, Truncated):
+        self._Truncated = Truncated
+
+
+    def _deserialize(self, params):
+        self._JobExecutionId = params.get("JobExecutionId")
+        self._Status = params.get("Status")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = ResultColumnInfo()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = SqlRunResultRow()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._Total = params.get("Total")
+        self._CostMs = params.get("CostMs")
+        self._Truncated = params.get("Truncated")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlRunResult(AbstractModel):
+    r"""GetSQLRunResult 出参：一个查询任务下全部（或指定）子查询的结果集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 查询任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobId: str
+        :param _Status: 查询任务状态。终态取值：SUCCESS（成功）、FAILED（失败）、TERMINATED（已终止）、CANCELED（已取消）；非终态取值：QUEUED（排队中）、RUNNING（执行中）。非终态时不报错，Results 返回空数组，调用方应指数退避轮询直至进入终态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _StatusMessage: 当前状态的可读说明，任意状态下均有值。用于说明 Results 为空的具体原因并给出下一步动作建议：任务未完成时提示稍后以相同 JobId 重试；任务失败/终止/取消时提示无结果数据及后续处理；成功且结果被截断时提示缩小查询范围。命名上与云API错误响应的 Error.Message 区分，本字段描述的是业务状态而非错误信息。随 Language 参数国际化
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusMessage: str
+        :param _CostMs: 查询任务总耗时，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CostMs: int
+        :param _Truncated: 是否存在结果不完整的子查询。任一子查询的 Truncated 为 true 时本字段为 true
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Truncated: bool
+        :param _Results: 各子查询的结果列表，顺序与 SQL 语句执行顺序一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of SqlRunExecutionResult
+        """
+        self._JobId = None
+        self._Status = None
+        self._StatusMessage = None
+        self._CostMs = None
+        self._Truncated = None
+        self._Results = None
+
+    @property
+    def JobId(self):
+        r"""查询任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Status(self):
+        r"""查询任务状态。终态取值：SUCCESS（成功）、FAILED（失败）、TERMINATED（已终止）、CANCELED（已取消）；非终态取值：QUEUED（排队中）、RUNNING（执行中）。非终态时不报错，Results 返回空数组，调用方应指数退避轮询直至进入终态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusMessage(self):
+        r"""当前状态的可读说明，任意状态下均有值。用于说明 Results 为空的具体原因并给出下一步动作建议：任务未完成时提示稍后以相同 JobId 重试；任务失败/终止/取消时提示无结果数据及后续处理；成功且结果被截断时提示缩小查询范围。命名上与云API错误响应的 Error.Message 区分，本字段描述的是业务状态而非错误信息。随 Language 参数国际化
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def CostMs(self):
+        r"""查询任务总耗时，单位毫秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CostMs
+
+    @CostMs.setter
+    def CostMs(self, CostMs):
+        self._CostMs = CostMs
+
+    @property
+    def Truncated(self):
+        r"""是否存在结果不完整的子查询。任一子查询的 Truncated 为 true 时本字段为 true
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Truncated
+
+    @Truncated.setter
+    def Truncated(self, Truncated):
+        self._Truncated = Truncated
+
+    @property
+    def Results(self):
+        r"""各子查询的结果列表，顺序与 SQL 语句执行顺序一致
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SqlRunExecutionResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
+        self._CostMs = params.get("CostMs")
+        self._Truncated = params.get("Truncated")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = SqlRunExecutionResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlRunResultRow(AbstractModel):
+    r"""查询结果的单行数据。云API 数据结构不支持二维数组，故将一行数据包装为对象。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: 该行各单元格取值，顺序与 Columns 一致。均为字符串：底层预览结果为 CSV 格式不携带类型信息，字段真实类型参见 Columns[].ColumnType
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Values = None
+
+    @property
+    def Values(self):
+        r"""该行各单元格取值，顺序与 Columns 一致。均为字符串：底层预览结果为 CSV 格式不携带类型信息，字段真实类型参见 Columns[].ColumnType
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

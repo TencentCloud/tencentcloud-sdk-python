@@ -706,6 +706,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLiveSmartEraseRule(
+            self,
+            request: models.CreateLiveSmartEraseRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateLiveSmartEraseRuleResponse:
+        """
+        创建直播智能擦除规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLiveSmartEraseRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLiveSmartEraseRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLiveSmartEraseTemplate(
             self,
             request: models.CreateLiveSmartEraseTemplateRequest,
@@ -1399,6 +1417,42 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DeleteLiveRecordTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteLiveRecordTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLiveSmartEraseRule(
+            self,
+            request: models.DeleteLiveSmartEraseRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLiveSmartEraseRuleResponse:
+        """
+        删除直播智能擦除规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLiveSmartEraseRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLiveSmartEraseRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLiveSmartEraseTemplate(
+            self,
+            request: models.DeleteLiveSmartEraseTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLiveSmartEraseTemplateResponse:
+        """
+        删除直播智能擦除模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLiveSmartEraseTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLiveSmartEraseTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2785,6 +2839,60 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLiveSmartEraseRules(
+            self,
+            request: models.DescribeLiveSmartEraseRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLiveSmartEraseRulesResponse:
+        """
+        获取直播智能擦除规则列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLiveSmartEraseRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLiveSmartEraseRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLiveSmartEraseTemplate(
+            self,
+            request: models.DescribeLiveSmartEraseTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLiveSmartEraseTemplateResponse:
+        """
+        获取单个直播智能擦除模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLiveSmartEraseTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLiveSmartEraseTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLiveSmartEraseTemplates(
+            self,
+            request: models.DescribeLiveSmartEraseTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLiveSmartEraseTemplatesResponse:
+        """
+        获取直播智能擦除模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLiveSmartEraseTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLiveSmartEraseTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLiveSnapshotRules(
             self,
             request: models.DescribeLiveSnapshotRulesRequest,
@@ -4149,6 +4257,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "ModifyLiveRecordTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyLiveRecordTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLiveSmartEraseTemplate(
+            self,
+            request: models.ModifyLiveSmartEraseTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLiveSmartEraseTemplateResponse:
+        """
+        修改直播智能擦除模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLiveSmartEraseTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLiveSmartEraseTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
