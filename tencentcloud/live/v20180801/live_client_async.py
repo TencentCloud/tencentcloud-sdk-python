@@ -3385,6 +3385,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeOriginWhiteIpList(
+            self,
+            request: models.DescribeOriginWhiteIpListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOriginWhiteIpListResponse:
+        """
+        获取直播源站的拉流IP白名单列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOriginWhiteIpList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOriginWhiteIpListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePlayErrorCodeDetailInfoList(
             self,
             request: models.DescribePlayErrorCodeDetailInfoListRequest,

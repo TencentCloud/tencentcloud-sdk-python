@@ -4291,6 +4291,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOriginWhiteIpList(self, request):
+        r"""获取直播源站的拉流IP白名单列表
+
+        :param request: Request instance for DescribeOriginWhiteIpList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeOriginWhiteIpListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeOriginWhiteIpListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginWhiteIpList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOriginWhiteIpListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePlayErrorCodeDetailInfoList(self, request):
         r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询下行播放错误码信息，某段时间内1分钟粒度的各http错误码出现的次数，包括4xx，5xx。
