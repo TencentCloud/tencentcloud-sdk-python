@@ -129,10 +129,9 @@ class CVMRoleCredential(object):
         try:
             resp = urlopen(self._role_endpoint)
             self.role = resp.read().decode("utf8")
+            return self.role
         except Exception as e:
             raise TencentCloudSDKException("ClientError.MetadataError", str(e))
-        finally:
-            return self.role
 
     def _need_refresh(self):
         ts_remain = self._expired_ts - int(time.time())
@@ -144,7 +143,12 @@ class CVMRoleCredential(object):
     def update_credential(self):
         if not self._need_refresh():
             return
-        role = self.get_role_name()
+        try:
+            role = self.get_role_name()
+        except TencentCloudSDKException:
+            # metadata endpoint unreachable: keep the credential empty so the
+            # provider chain (e.g. the TKE OIDC fallback) keeps trying
+            return
         try:
             # TODO: what if role has special characters such as space and unicode?
             resp = urlopen(self._role_endpoint + role)
