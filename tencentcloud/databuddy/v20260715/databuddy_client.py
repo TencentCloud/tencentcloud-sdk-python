@@ -49,6 +49,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCatalog(self, request):
+        r"""创建数据目录接口
+
+        :param request: Request instance for CreateCatalog.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateCatalogRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateCatalogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCatalog", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCatalogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConsoleGroup(self, request):
         r"""创建控制台用户组
 
@@ -125,6 +148,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSchema(self, request):
+        r"""创建schema
+
+        :param request: Request instance for CreateSchema.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateSchemaRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateSchemaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSchema", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSchemaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWorkflow(self, request):
         r"""创建工作流
 
@@ -162,6 +208,52 @@ class DatabuddyClient(AbstractClient):
             body = self.call("CreateWorkspace", params, headers=headers)
             response = json.loads(body)
             model = models.CreateWorkspaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateWorkspaceRole(self, request):
+        r"""创建工作空间角色
+
+        :param request: Request instance for CreateWorkspaceRole.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateWorkspaceRoleRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateWorkspaceRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkspaceRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkspaceRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCatalog(self, request):
+        r"""删除catalog
+
+        :param request: Request instance for DeleteCatalog.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteCatalogRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteCatalogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCatalog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCatalogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -257,6 +349,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteSchema(self, request):
+        r"""删除schema
+
+        :param request: Request instance for DeleteSchema.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteSchemaRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteSchemaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSchema", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSchemaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteWorkflow(self, request):
         r"""删除工作流
 
@@ -294,6 +409,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("DeleteWorkspace", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteWorkspaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWorkspaceRole(self, request):
+        r"""删除工作空间角色
+
+        :param request: Request instance for DeleteWorkspaceRole.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteWorkspaceRoleRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteWorkspaceRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWorkspaceRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWorkspaceRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -596,6 +734,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListSchemas(self, request):
+        r"""获取schema列表
+
+        :param request: Request instance for ListSchemas.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListSchemasRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListSchemasResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListSchemas", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListSchemasResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListWorkflowRuns(self, request):
         r"""工作流运行列表
 
@@ -665,6 +826,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListWorkspaces(self, request):
+        r"""查询工作空间列表
+
+        :param request: Request instance for ListWorkspaces.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListWorkspacesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListWorkspacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListWorkspaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListWorkspacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RemoveConsoleUsers(self, request):
         r"""<p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
 
@@ -725,6 +909,52 @@ class DatabuddyClient(AbstractClient):
             body = self.call("RunWorkflow", params, headers=headers)
             response = json.loads(body)
             model = models.RunWorkflowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartCompute(self, request):
+        r"""启动计算资源
+
+        :param request: Request instance for StartCompute.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.StartComputeRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.StartComputeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartCompute", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartComputeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopCompute(self, request):
+        r"""停止计算资源
+
+        :param request: Request instance for StopCompute.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.StopComputeRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.StopComputeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopCompute", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopComputeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -906,6 +1136,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("UpdateWorkspace", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateWorkspaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateWorkspaceRole(self, request):
+        r"""更新工作空间角色
+
+        :param request: Request instance for UpdateWorkspaceRole.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceRoleRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateWorkspaceRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateWorkspaceRoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
