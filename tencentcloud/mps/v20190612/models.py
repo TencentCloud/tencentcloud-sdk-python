@@ -78638,6 +78638,26 @@ class QueryHunyuan3DTaskResponse(AbstractModel):
         :type ErrorMessage: str
         :param _ResultFile3Ds: <p>仅 Status=DONE 时有值，产物文件列表</p>
         :type ResultFile3Ds: list of File3D
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>text_to_3d： 文生3D</li><li>image_to_3d： 图生3D</li><li>multiview_to_3d： 多视图生3D</li><li>mesh_to_texture： 网格生纹理</li><li>mesh_to_geometry： 网格生几何</li></ul>
+        :type TaskType: str
+        :param _Prompt: <p>输入的Prompt</p>
+        :type Prompt: str
+        :param _RefImage: <p>图生3D场景下输入的图片URL</p>
+        :type RefImage: str
+        :param _MultiViewImages: <p>多图生3D场景下输入的图片信息</p>
+        :type MultiViewImages: list of ViewImage
+        :param _CreateTime: <p>任务创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>任务更新时间</p>
+        :type UpdateTime: str
+        :param _FaceCount: <p>提交任务的目标面数</p>
+        :type FaceCount: int
+        :param _GenerateType: <p>生成类型</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）</li><li>Texture： 只生成纹理（需要传 MeshUrl）</li></ul><p>默认值：Normal</p>
+        :type GenerateType: str
+        :param _QueuePosition: <p>任务在队列中的位置，数值越小越靠前；</p>
+        :type QueuePosition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -78646,6 +78666,16 @@ class QueryHunyuan3DTaskResponse(AbstractModel):
         self._ErrorCode = None
         self._ErrorMessage = None
         self._ResultFile3Ds = None
+        self._TaskId = None
+        self._TaskType = None
+        self._Prompt = None
+        self._RefImage = None
+        self._MultiViewImages = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._FaceCount = None
+        self._GenerateType = None
+        self._QueuePosition = None
         self._RequestId = None
 
     @property
@@ -78704,6 +78734,116 @@ class QueryHunyuan3DTaskResponse(AbstractModel):
         self._ResultFile3Ds = ResultFile3Ds
 
     @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p><p>枚举值：</p><ul><li>text_to_3d： 文生3D</li><li>image_to_3d： 图生3D</li><li>multiview_to_3d： 多视图生3D</li><li>mesh_to_texture： 网格生纹理</li><li>mesh_to_geometry： 网格生几何</li></ul>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Prompt(self):
+        r"""<p>输入的Prompt</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def RefImage(self):
+        r"""<p>图生3D场景下输入的图片URL</p>
+        :rtype: str
+        """
+        return self._RefImage
+
+    @RefImage.setter
+    def RefImage(self, RefImage):
+        self._RefImage = RefImage
+
+    @property
+    def MultiViewImages(self):
+        r"""<p>多图生3D场景下输入的图片信息</p>
+        :rtype: list of ViewImage
+        """
+        return self._MultiViewImages
+
+    @MultiViewImages.setter
+    def MultiViewImages(self, MultiViewImages):
+        self._MultiViewImages = MultiViewImages
+
+    @property
+    def CreateTime(self):
+        r"""<p>任务创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>任务更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def FaceCount(self):
+        r"""<p>提交任务的目标面数</p>
+        :rtype: int
+        """
+        return self._FaceCount
+
+    @FaceCount.setter
+    def FaceCount(self, FaceCount):
+        self._FaceCount = FaceCount
+
+    @property
+    def GenerateType(self):
+        r"""<p>生成类型</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）</li><li>Texture： 只生成纹理（需要传 MeshUrl）</li></ul><p>默认值：Normal</p>
+        :rtype: str
+        """
+        return self._GenerateType
+
+    @GenerateType.setter
+    def GenerateType(self, GenerateType):
+        self._GenerateType = GenerateType
+
+    @property
+    def QueuePosition(self):
+        r"""<p>任务在队列中的位置，数值越小越靠前；</p>
+        :rtype: int
+        """
+        return self._QueuePosition
+
+    @QueuePosition.setter
+    def QueuePosition(self, QueuePosition):
+        self._QueuePosition = QueuePosition
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -78726,6 +78866,21 @@ class QueryHunyuan3DTaskResponse(AbstractModel):
                 obj = File3D()
                 obj._deserialize(item)
                 self._ResultFile3Ds.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._Prompt = params.get("Prompt")
+        self._RefImage = params.get("RefImage")
+        if params.get("MultiViewImages") is not None:
+            self._MultiViewImages = []
+            for item in params.get("MultiViewImages"):
+                obj = ViewImage()
+                obj._deserialize(item)
+                self._MultiViewImages.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._FaceCount = params.get("FaceCount")
+        self._GenerateType = params.get("GenerateType")
+        self._QueuePosition = params.get("QueuePosition")
         self._RequestId = params.get("RequestId")
 
 
@@ -89381,6 +89536,8 @@ class SubmitHunyuan3DTaskRequest(AbstractModel):
         :type Seed: int
         :param _Style: <p>风格控制词</p>
         :type Style: str
+        :param _StoreCosParam: <p>客户自己申请创建的COS存储桶</p>
+        :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         """
         self._Prompt = None
         self._ImageUrl = None
@@ -89393,6 +89550,7 @@ class SubmitHunyuan3DTaskRequest(AbstractModel):
         self._ResultFormat = None
         self._Seed = None
         self._Style = None
+        self._StoreCosParam = None
 
     @property
     def Prompt(self):
@@ -89515,6 +89673,17 @@ class SubmitHunyuan3DTaskRequest(AbstractModel):
     def Style(self, Style):
         self._Style = Style
 
+    @property
+    def StoreCosParam(self):
+        r"""<p>客户自己申请创建的COS存储桶</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
@@ -89533,6 +89702,9 @@ class SubmitHunyuan3DTaskRequest(AbstractModel):
         self._ResultFormat = params.get("ResultFormat")
         self._Seed = params.get("Seed")
         self._Style = params.get("Style")
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = AigcStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

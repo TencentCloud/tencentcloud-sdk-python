@@ -125,6 +125,9 @@ INVALIDPARAMETER_MODELNOTSUPPORTED = 'InvalidParameter.ModelNotSupported'
 # InvalidParameter.Name
 INVALIDPARAMETER_NAME = 'InvalidParameter.Name'
 
+# 未指定输入类型
+INVALIDPARAMETER_NOINPUTSPECIFIED = 'InvalidParameter.NoInputSpecified'
+
 # InvalidParameter.NotFound
 INVALIDPARAMETER_NOTFOUND = 'InvalidParameter.NotFound'
 

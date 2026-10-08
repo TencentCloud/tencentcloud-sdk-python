@@ -17234,10 +17234,10 @@ class CreatePrepareFlowRequest(AbstractModel):
         r"""
         :param _Operator: <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。<br>支持填入集团子公司经办人 userId 代发合同。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _ResourceId: <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
-        :type ResourceId: str
         :param _FlowName: <p>自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&amp;)、（+）组成。</p><p>该名称还将用于合同签署完成后文件下载的默认文件名称。</p>
         :type FlowName: str
+        :param _ResourceId: <p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
+        :type ResourceId: str
         :param _ResourceType: <p>资源类型，取值有：</p><ul><li> **1**：模板</li><li> **2**：文件（默认值）</li><li> **3**：草稿</li></ul>
         :type ResourceType: int
         :param _Unordered: <p>合同流程的签署顺序类型：</p><ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li><li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
@@ -17278,8 +17278,8 @@ class CreatePrepareFlowRequest(AbstractModel):
         :type Workflow: bool
         """
         self._Operator = None
-        self._ResourceId = None
         self._FlowName = None
+        self._ResourceId = None
         self._ResourceType = None
         self._Unordered = None
         self._Deadline = None
@@ -17312,17 +17312,6 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._Operator = Operator
 
     @property
-    def ResourceId(self):
-        r"""<p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
-        :rtype: str
-        """
-        return self._ResourceId
-
-    @ResourceId.setter
-    def ResourceId(self, ResourceId):
-        self._ResourceId = ResourceId
-
-    @property
     def FlowName(self):
         r"""<p>自定义的合同流程的名称，长度不能超过200个字符，只能由中文汉字、中文标点、英文字母、阿拉伯数字、空格、小括号、中括号、中划线、下划线以及（,）、（;）、（.）、(&amp;)、（+）组成。</p><p>该名称还将用于合同签署完成后文件下载的默认文件名称。</p>
         :rtype: str
@@ -17332,6 +17321,17 @@ class CreatePrepareFlowRequest(AbstractModel):
     @FlowName.setter
     def FlowName(self, FlowName):
         self._FlowName = FlowName
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源id，与ResourceType相对应，取值范围：</p><ul><li>文件Id（通过UploadFiles获取文件资源Id）</li><li>模板Id（通过控制台创建模板后获取模板Id）</li><li>草稿Id（通过嵌入页面保存草稿后获取草稿Id）</li></ul>注意：需要同时设置 ResourceType 参数指定资源类型
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
     @property
     def ResourceType(self):
@@ -17551,8 +17551,8 @@ class CreatePrepareFlowRequest(AbstractModel):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
-        self._ResourceId = params.get("ResourceId")
         self._FlowName = params.get("FlowName")
+        self._ResourceId = params.get("ResourceId")
         self._ResourceType = params.get("ResourceType")
         self._Unordered = params.get("Unordered")
         self._Deadline = params.get("Deadline")
