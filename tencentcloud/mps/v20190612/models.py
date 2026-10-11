@@ -8068,6 +8068,87 @@ class AiCutoutConfig(AbstractModel):
         
 
 
+class AiDecomposeConfig(AbstractModel):
+    r"""智能图层拆分配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关。</p><p>枚举值：</p><ul><li>ON： 开启图层分离功能。</li><li>OFF： 关闭图层分离功能。</li></ul><p>默认值：ON</p>
+        :type Switch: str
+        :param _Layers: <p>预期拆层数量。</p><p>取值范围：[2, 17]</p>
+        :type Layers: int
+        :param _Prompt: <p>提示词。</p>
+        :type Prompt: str
+        :param _Model: <p>模型名称。</p><p>枚举值：</p><ul><li>decompose-1.0-flash： 1.0版本 flash模型</li></ul>
+        :type Model: str
+        """
+        self._Switch = None
+        self._Layers = None
+        self._Prompt = None
+        self._Model = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关。</p><p>枚举值：</p><ul><li>ON： 开启图层分离功能。</li><li>OFF： 关闭图层分离功能。</li></ul><p>默认值：ON</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Layers(self):
+        r"""<p>预期拆层数量。</p><p>取值范围：[2, 17]</p>
+        :rtype: int
+        """
+        return self._Layers
+
+    @Layers.setter
+    def Layers(self, Layers):
+        self._Layers = Layers
+
+    @property
+    def Prompt(self):
+        r"""<p>提示词。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Model(self):
+        r"""<p>模型名称。</p><p>枚举值：</p><ul><li>decompose-1.0-flash： 1.0版本 flash模型</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Layers = params.get("Layers")
+        self._Prompt = params.get("Prompt")
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiDramaInput(AbstractModel):
     r"""Ai自动生成漫剧的输入
 
@@ -16790,27 +16871,31 @@ class AudioEnhanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Denoise: 音频降噪配置。
+        :param _Denoise: <p>音频降噪配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Denoise: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
-        :param _Separate: 音频分离配置。
+        :param _Separate: <p>音频分离配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Separate: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
-        :param _VolumeBalance: 音量均衡配置。
+        :param _VolumeBalance: <p>音量均衡配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeBalance: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
-        :param _Beautify: 音频美化配置。
+        :param _Beautify: <p>音频美化配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Beautify: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
+        :param _AudioEnhanceEdit: <p>音频增强编辑。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioEnhanceEdit: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceEditConfig`
         """
         self._Denoise = None
         self._Separate = None
         self._VolumeBalance = None
         self._Beautify = None
+        self._AudioEnhanceEdit = None
 
     @property
     def Denoise(self):
-        r"""音频降噪配置。
+        r"""<p>音频降噪配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioDenoiseConfig`
         """
@@ -16822,7 +16907,7 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def Separate(self):
-        r"""音频分离配置。
+        r"""<p>音频分离配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioSeparateConfig`
         """
@@ -16834,7 +16919,7 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def VolumeBalance(self):
-        r"""音量均衡配置。
+        r"""<p>音量均衡配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.VolumeBalanceConfig`
         """
@@ -16846,7 +16931,7 @@ class AudioEnhanceConfig(AbstractModel):
 
     @property
     def Beautify(self):
-        r"""音频美化配置。
+        r"""<p>音频美化配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioBeautifyConfig`
         """
@@ -16855,6 +16940,18 @@ class AudioEnhanceConfig(AbstractModel):
     @Beautify.setter
     def Beautify(self, Beautify):
         self._Beautify = Beautify
+
+    @property
+    def AudioEnhanceEdit(self):
+        r"""<p>音频增强编辑。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceEditConfig`
+        """
+        return self._AudioEnhanceEdit
+
+    @AudioEnhanceEdit.setter
+    def AudioEnhanceEdit(self, AudioEnhanceEdit):
+        self._AudioEnhanceEdit = AudioEnhanceEdit
 
 
     def _deserialize(self, params):
@@ -16870,6 +16967,60 @@ class AudioEnhanceConfig(AbstractModel):
         if params.get("Beautify") is not None:
             self._Beautify = AudioBeautifyConfig()
             self._Beautify._deserialize(params.get("Beautify"))
+        if params.get("AudioEnhanceEdit") is not None:
+            self._AudioEnhanceEdit = AudioEnhanceEditConfig()
+            self._AudioEnhanceEdit._deserialize(params.get("AudioEnhanceEdit"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioEnhanceEditConfig(AbstractModel):
+    r"""音频增强编辑
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :type Switch: str
+        :param _Type: <p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>默认值：restore</p>
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>默认值：restore</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34335,14 +34486,14 @@ class DeleteWordSamplesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keywords: 关键词，数组长度限制：100 个词。
+        :param _Keywords: <p>关键词，数组长度限制：100 个词。</p>
         :type Keywords: list of str
         """
         self._Keywords = None
 
     @property
     def Keywords(self):
-        r"""关键词，数组长度限制：100 个词。
+        r"""<p>关键词，数组长度限制：100 个词。</p>
         :rtype: list of str
         """
         return self._Keywords
@@ -37164,7 +37315,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definitions: 智能审核模板唯一标识过滤条件，数组长度限制：50。
+        :param _Definitions: 智能审核模板唯一标识过滤条件，数组长度限制：100。
         :type Definitions: list of int
         :param _Offset: 分页偏移量，默认值：0。
         :type Offset: int
@@ -37185,7 +37336,7 @@ class DescribeContentReviewTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        r"""智能审核模板唯一标识过滤条件，数组长度限制：50。
+        r"""智能审核模板唯一标识过滤条件，数组长度限制：100。
         :rtype: list of int
         """
         return self._Definitions
@@ -49210,6 +49361,59 @@ strong
         
 
 
+class DiffusionEnhanceV2Config(AbstractModel):
+    r"""大模型增强-专业版
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :type Switch: str
+        :param _Type: <p>强度类型</p><p>枚举值：</p><ul><li>weak： 弱</li><li>normal： 中</li><li>strong： 强</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>强度类型</p><p>枚举值：</p><ul><li>weak： 弱</li><li>normal： 中</li><li>strong： 强</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DisableScheduleRequest(AbstractModel):
     r"""DisableSchedule请求参数结构体
 
@@ -57263,6 +57467,8 @@ class ImageTaskInput(AbstractModel):
         :type ImageQualityConfig: :class:`tencentcloud.mps.v20190612.models.ImageQualityConfig`
         :param _AiComposeConfig: <p>图层融合配置。</p>
         :type AiComposeConfig: :class:`tencentcloud.mps.v20190612.models.AiComposeConfig`
+        :param _AiDecomposeConfig: <p>图层分离配置。</p>
+        :type AiDecomposeConfig: :class:`tencentcloud.mps.v20190612.models.AiDecomposeConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -57279,6 +57485,7 @@ class ImageTaskInput(AbstractModel):
         self._UnderstandImageConfig = None
         self._ImageQualityConfig = None
         self._AiComposeConfig = None
+        self._AiDecomposeConfig = None
 
     @property
     def EncodeConfig(self):
@@ -57449,6 +57656,17 @@ class ImageTaskInput(AbstractModel):
     def AiComposeConfig(self, AiComposeConfig):
         self._AiComposeConfig = AiComposeConfig
 
+    @property
+    def AiDecomposeConfig(self):
+        r"""<p>图层分离配置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiDecomposeConfig`
+        """
+        return self._AiDecomposeConfig
+
+    @AiDecomposeConfig.setter
+    def AiDecomposeConfig(self, AiDecomposeConfig):
+        self._AiDecomposeConfig = AiDecomposeConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -57496,6 +57714,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("AiComposeConfig") is not None:
             self._AiComposeConfig = AiComposeConfig()
             self._AiComposeConfig._deserialize(params.get("AiComposeConfig"))
+        if params.get("AiDecomposeConfig") is not None:
+            self._AiDecomposeConfig = AiDecomposeConfig()
+            self._AiDecomposeConfig._deserialize(params.get("AiDecomposeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -98131,6 +98352,9 @@ class VideoEnhanceConfig(AbstractModel):
         :param _AiRestoration: <p>大模型修复配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRestoration: :class:`tencentcloud.mps.v20190612.models.AiRestorationConfig`
+        :param _DiffusionEnhanceV2: <p>大模型增强专业版配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiffusionEnhanceV2: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceV2Config`
         """
         self._FrameRate = None
         self._SuperResolution = None
@@ -98145,6 +98369,7 @@ class VideoEnhanceConfig(AbstractModel):
         self._DiffusionEnhance = None
         self._FrameRateWithDen = None
         self._AiRestoration = None
+        self._DiffusionEnhanceV2 = None
 
     @property
     def FrameRate(self):
@@ -98302,6 +98527,18 @@ class VideoEnhanceConfig(AbstractModel):
     def AiRestoration(self, AiRestoration):
         self._AiRestoration = AiRestoration
 
+    @property
+    def DiffusionEnhanceV2(self):
+        r"""<p>大模型增强专业版配置。注意大模型、综合增强、去毛刺三项里最多配置一项。且不可与超分、降噪同时开启。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DiffusionEnhanceV2Config`
+        """
+        return self._DiffusionEnhanceV2
+
+    @DiffusionEnhanceV2.setter
+    def DiffusionEnhanceV2(self, DiffusionEnhanceV2):
+        self._DiffusionEnhanceV2 = DiffusionEnhanceV2
+
 
     def _deserialize(self, params):
         if params.get("FrameRate") is not None:
@@ -98341,6 +98578,9 @@ class VideoEnhanceConfig(AbstractModel):
         if params.get("AiRestoration") is not None:
             self._AiRestoration = AiRestorationConfig()
             self._AiRestoration._deserialize(params.get("AiRestoration"))
+        if params.get("DiffusionEnhanceV2") is not None:
+            self._DiffusionEnhanceV2 = DiffusionEnhanceV2Config()
+            self._DiffusionEnhanceV2._deserialize(params.get("DiffusionEnhanceV2"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

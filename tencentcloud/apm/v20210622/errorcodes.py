@@ -101,6 +101,9 @@ FAILEDOPERATION_INVALIDOPERATIONTYPE = 'FailedOperation.InvalidOperationType'
 # 不合法入参
 FAILEDOPERATION_INVALIDPARAM = 'FailedOperation.InvalidParam'
 
+# 查询起始时间应小于当前时间。
+FAILEDOPERATION_INVALIDQUERYTIMEINTERVAL = 'FailedOperation.InvalidQueryTimeInterval'
+
 # 非法的正则表达式。
 FAILEDOPERATION_INVALIDREGEX = 'FailedOperation.InvalidRegex'
 
@@ -115,6 +118,9 @@ FAILEDOPERATION_INVALIDTAGFIELD = 'FailedOperation.InvalidTagField'
 
 # 不合法token
 FAILEDOPERATION_INVALIDTOKEN = 'FailedOperation.InvalidToken'
+
+# 查询结果为空。
+FAILEDOPERATION_ITEMNOTFOUND = 'FailedOperation.ItemNotFound'
 
 # 查询指标类数据查询条件缺少过滤参数。
 FAILEDOPERATION_METRICFILTERSLACKPARAMS = 'FailedOperation.MetricFiltersLackParams'
@@ -149,8 +155,14 @@ FAILEDOPERATION_PROMRULENAMECONFLICT = 'FailedOperation.PromRuleNameConflict'
 # Prometheus指标匹配规则请求有误
 FAILEDOPERATION_PROMRULEREQUESTNOTVALIDERROR = 'FailedOperation.PromRuleRequestNotValidError'
 
+# 查询起始时间应小于终止时间。
+FAILEDOPERATION_QUERYTIMEINTERVALCONFLICT = 'FailedOperation.QueryTimeIntervalConflict'
+
 # 查询时间区间不支持。
 FAILEDOPERATION_QUERYTIMEINTERVALISNOTSUPPORTED = 'FailedOperation.QueryTimeIntervalIsNotSupported'
+
+# 当前查询trace不存在。
+FAILEDOPERATION_QUERYTRACEISEMPTY = 'FailedOperation.QueryTraceIsEmpty'
 
 # 不支持该地域。
 FAILEDOPERATION_REGIONNOTSUPPORT = 'FailedOperation.RegionNotSupport'
@@ -181,6 +193,12 @@ FAILEDOPERATION_SERVICENOTFOUND = 'FailedOperation.ServiceNotFound'
 
 # serviceId 与 appId 不匹配
 FAILEDOPERATION_SERVICENOTMATCHAPPIDERR = 'FailedOperation.ServiceNotMatchAppIdErr'
+
+# 当前trace生成时间较短，可能会存在链路不全的情况。
+FAILEDOPERATION_SHORTQUERYTIME = 'FailedOperation.ShortQueryTime'
+
+# 超时。
+FAILEDOPERATION_TIMEOUT = 'FailedOperation.Timeout'
 
 # topic不可用
 FAILEDOPERATION_TOPICNOTAVAILABLEERROR = 'FailedOperation.TopicNotAvailableError'
@@ -217,3 +235,9 @@ INVALIDPARAMETER_QUERYTIMEINTERVALISNOTSUPPORTED = 'InvalidParameter.QueryTimeIn
 
 # 视图名称不存在或非法。
 INVALIDPARAMETER_VIEWNAMENOTEXISTORILLEGAL = 'InvalidParameter.ViewNameNotExistOrIllegal'
+
+# 缺少参数错误。
+MISSINGPARAMETER = 'MissingParameter'
+
+# 未知参数错误。
+UNKNOWNPARAMETER = 'UnknownParameter'

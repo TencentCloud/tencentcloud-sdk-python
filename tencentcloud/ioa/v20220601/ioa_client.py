@@ -325,6 +325,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccountVirtualGroups(self, request):
+        r"""列表账户虚拟组，支持分页，名称搜索，私有化调用path为：capi/Assets/DescribeAccountVirtualGroups，从7.x版本开始支持
+
+        :param request: Request instance for DescribeAccountVirtualGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountVirtualGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountVirtualGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountVirtualGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountVirtualGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAggrSoftCategorySoftList(self, request):
         r"""聚合的分类软件列表
 

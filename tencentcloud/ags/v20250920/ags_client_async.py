@@ -208,6 +208,25 @@ class AgsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSandboxSnapshot(
+            self,
+            request: models.CreateSandboxSnapshotRequest,
+            opts: Dict = None,
+    ) -> models.CreateSandboxSnapshotResponse:
+        """
+        创建沙箱快照
+        该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。接入方需关注后续版本及变更说明，并根据需要调整调用代码。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSandboxSnapshot"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSandboxSnapshotResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSandboxTool(
             self,
             request: models.CreateSandboxToolRequest,
@@ -332,6 +351,25 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "DeleteRegistryRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRegistryRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSandboxSnapshot(
+            self,
+            request: models.DeleteSandboxSnapshotRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSandboxSnapshotResponse:
+        """
+        删除沙箱快照
+        该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。接入方需关注后续版本及变更说明，并根据需要调整调用代码。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSandboxSnapshot"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSandboxSnapshotResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -623,6 +661,25 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "DescribeSandboxInstanceList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSandboxInstanceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxSnapshotList(
+            self,
+            request: models.DescribeSandboxSnapshotListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxSnapshotListResponse:
+        """
+        查询沙箱快照
+        该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。请关注后续版本及变更说明，并根据需要调整调用代码。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxSnapshotList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxSnapshotListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -259,6 +259,24 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAccountVirtualGroups(
+            self,
+            request: models.DescribeAccountVirtualGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccountVirtualGroupsResponse:
+        """
+        列表账户虚拟组，支持分页，名称搜索，私有化调用path为：capi/Assets/DescribeAccountVirtualGroups，从7.x版本开始支持
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccountVirtualGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccountVirtualGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAggrSoftCategorySoftList(
             self,
             request: models.DescribeAggrSoftCategorySoftListRequest,

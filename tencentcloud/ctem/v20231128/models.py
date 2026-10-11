@@ -13276,6 +13276,10 @@ class DisplayConfig(AbstractModel):
         :type CloudAssetStatus: int
         :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
         :type AggregationCount: int
+        :param _Status: <p>状态</p>
+        :type Status: str
+        :param _LastCheckTime: <p>最近检测时间</p>
+        :type LastCheckTime: str
         """
         self._Id = None
         self._Url = None
@@ -13291,6 +13295,8 @@ class DisplayConfig(AbstractModel):
         self._IsCloudAsset = None
         self._CloudAssetStatus = None
         self._AggregationCount = None
+        self._Status = None
+        self._LastCheckTime = None
 
     @property
     def Id(self):
@@ -13446,6 +13452,28 @@ class DisplayConfig(AbstractModel):
     def AggregationCount(self, AggregationCount):
         self._AggregationCount = AggregationCount
 
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LastCheckTime(self):
+        r"""<p>最近检测时间</p>
+        :rtype: str
+        """
+        return self._LastCheckTime
+
+    @LastCheckTime.setter
+    def LastCheckTime(self, LastCheckTime):
+        self._LastCheckTime = LastCheckTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -13464,6 +13492,8 @@ class DisplayConfig(AbstractModel):
         self._IsCloudAsset = params.get("IsCloudAsset")
         self._CloudAssetStatus = params.get("CloudAssetStatus")
         self._AggregationCount = params.get("AggregationCount")
+        self._Status = params.get("Status")
+        self._LastCheckTime = params.get("LastCheckTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16814,6 +16844,10 @@ class DisplaySensitiveInfo(AbstractModel):
         :type CloudAssetStatus: int
         :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
         :type AggregationCount: int
+        :param _Status: <p>状态</p>
+        :type Status: str
+        :param _LastCheckTime: <p>最近检测时间</p>
+        :type LastCheckTime: str
         """
         self._Id = None
         self._Type = None
@@ -16823,6 +16857,8 @@ class DisplaySensitiveInfo(AbstractModel):
         self._IsCloudAsset = None
         self._CloudAssetStatus = None
         self._AggregationCount = None
+        self._Status = None
+        self._LastCheckTime = None
 
     @property
     def Id(self):
@@ -16912,6 +16948,28 @@ class DisplaySensitiveInfo(AbstractModel):
     def AggregationCount(self, AggregationCount):
         self._AggregationCount = AggregationCount
 
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LastCheckTime(self):
+        r"""<p>最近检测时间</p>
+        :rtype: str
+        """
+        return self._LastCheckTime
+
+    @LastCheckTime.setter
+    def LastCheckTime(self, LastCheckTime):
+        self._LastCheckTime = LastCheckTime
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -16924,6 +16982,8 @@ class DisplaySensitiveInfo(AbstractModel):
         self._IsCloudAsset = params.get("IsCloudAsset")
         self._CloudAssetStatus = params.get("CloudAssetStatus")
         self._AggregationCount = params.get("AggregationCount")
+        self._Status = params.get("Status")
+        self._LastCheckTime = params.get("LastCheckTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

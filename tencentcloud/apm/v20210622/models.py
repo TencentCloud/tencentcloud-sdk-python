@@ -4135,6 +4135,67 @@ class CVMMeta(AbstractModel):
         
 
 
+class ChartData(AbstractModel):
+    r"""接口参数列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Series: <p>接口参数id列表</p>
+        :type Series: list of Series
+        :param _YAxis: <p>接口参数列表</p>
+        :type YAxis: list of YAxis
+        """
+        self._Series = None
+        self._YAxis = None
+
+    @property
+    def Series(self):
+        r"""<p>接口参数id列表</p>
+        :rtype: list of Series
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def YAxis(self):
+        r"""<p>接口参数列表</p>
+        :rtype: list of YAxis
+        """
+        return self._YAxis
+
+    @YAxis.setter
+    def YAxis(self, YAxis):
+        self._YAxis = YAxis
+
+
+    def _deserialize(self, params):
+        if params.get("Series") is not None:
+            self._Series = []
+            for item in params.get("Series"):
+                obj = Series()
+                obj._deserialize(item)
+                self._Series.append(obj)
+        if params.get("YAxis") is not None:
+            self._YAxis = []
+            for item in params.get("YAxis"):
+                obj = YAxis()
+                obj._deserialize(item)
+                self._YAxis.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComponentTopologyView(AbstractModel):
     r"""包含了视图中节点组件类型的数量
 
@@ -8515,6 +8576,212 @@ class DescribeServiceOverviewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSpanTreeByIDRequest(AbstractModel):
+    r"""DescribeSpanTreeByID请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID</p>
+        :type InstanceId: str
+        :param _Filters: <p>TraceID</p>
+        :type Filters: list of Filter
+        :param _StartTime: <p>Span查询开始时间戳（单位:秒）</p>
+        :type StartTime: int
+        :param _EndTime: <p>Span查询结束时间戳（单位:秒）</p>
+        :type EndTime: int
+        :param _IsFold: <p>代表请求的是否为完整瀑布图</p>
+        :type IsFold: bool
+        :param _EntrySpanSelected: <p>开启关键调用视图</p>
+        :type EntrySpanSelected: bool
+        :param _FocusSpanId: <p>关注的SpanId</p>
+        :type FocusSpanId: str
+        :param _FilterViewTagKeyList: <p>过滤视图的Tag列表</p>
+        :type FilterViewTagKeyList: list of str
+        :param _EnableResourceLink: <p>是否开启云资源关联</p>
+        :type EnableResourceLink: bool
+        """
+        self._InstanceId = None
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._IsFold = None
+        self._EntrySpanSelected = None
+        self._FocusSpanId = None
+        self._FilterViewTagKeyList = None
+        self._EnableResourceLink = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Filters(self):
+        r"""<p>TraceID</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""<p>Span查询开始时间戳（单位:秒）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>Span查询结束时间戳（单位:秒）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def IsFold(self):
+        r"""<p>代表请求的是否为完整瀑布图</p>
+        :rtype: bool
+        """
+        return self._IsFold
+
+    @IsFold.setter
+    def IsFold(self, IsFold):
+        self._IsFold = IsFold
+
+    @property
+    def EntrySpanSelected(self):
+        r"""<p>开启关键调用视图</p>
+        :rtype: bool
+        """
+        return self._EntrySpanSelected
+
+    @EntrySpanSelected.setter
+    def EntrySpanSelected(self, EntrySpanSelected):
+        self._EntrySpanSelected = EntrySpanSelected
+
+    @property
+    def FocusSpanId(self):
+        r"""<p>关注的SpanId</p>
+        :rtype: str
+        """
+        return self._FocusSpanId
+
+    @FocusSpanId.setter
+    def FocusSpanId(self, FocusSpanId):
+        self._FocusSpanId = FocusSpanId
+
+    @property
+    def FilterViewTagKeyList(self):
+        r"""<p>过滤视图的Tag列表</p>
+        :rtype: list of str
+        """
+        return self._FilterViewTagKeyList
+
+    @FilterViewTagKeyList.setter
+    def FilterViewTagKeyList(self, FilterViewTagKeyList):
+        self._FilterViewTagKeyList = FilterViewTagKeyList
+
+    @property
+    def EnableResourceLink(self):
+        r"""<p>是否开启云资源关联</p>
+        :rtype: bool
+        """
+        return self._EnableResourceLink
+
+    @EnableResourceLink.setter
+    def EnableResourceLink(self, EnableResourceLink):
+        self._EnableResourceLink = EnableResourceLink
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._IsFold = params.get("IsFold")
+        self._EntrySpanSelected = params.get("EntrySpanSelected")
+        self._FocusSpanId = params.get("FocusSpanId")
+        self._FilterViewTagKeyList = params.get("FilterViewTagKeyList")
+        self._EnableResourceLink = params.get("EnableResourceLink")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSpanTreeByIDResponse(AbstractModel):
+    r"""DescribeSpanTreeByID返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpanTreeView: <p>树形图</p>
+        :type SpanTreeView: :class:`tencentcloud.apm.v20210622.models.SpanTreeView`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpanTreeView = None
+        self._RequestId = None
+
+    @property
+    def SpanTreeView(self):
+        r"""<p>树形图</p>
+        :rtype: :class:`tencentcloud.apm.v20210622.models.SpanTreeView`
+        """
+        return self._SpanTreeView
+
+    @SpanTreeView.setter
+    def SpanTreeView(self, SpanTreeView):
+        self._SpanTreeView = SpanTreeView
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SpanTreeView") is not None:
+            self._SpanTreeView = SpanTreeView()
+            self._SpanTreeView._deserialize(params.get("SpanTreeView"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTagValuesRequest(AbstractModel):
     r"""DescribeTagValues请求参数结构体
 
@@ -9122,6 +9389,57 @@ class DescribeTopologyNewResponse(AbstractModel):
             self._OverviewStats = OverviewStats()
             self._OverviewStats._deserialize(params.get("OverviewStats"))
         self._RequestId = params.get("RequestId")
+
+
+class ErrorSpan(AbstractModel):
+    r"""错误Span的数据项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpanID: <p>异常SpanId</p>
+        :type SpanID: str
+        :param _ErrorMessage: <p>异常信息</p>
+        :type ErrorMessage: str
+        """
+        self._SpanID = None
+        self._ErrorMessage = None
+
+    @property
+    def SpanID(self):
+        r"""<p>异常SpanId</p>
+        :rtype: str
+        """
+        return self._SpanID
+
+    @SpanID.setter
+    def SpanID(self, SpanID):
+        self._SpanID = SpanID
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>异常信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._SpanID = params.get("SpanID")
+        self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Filter(AbstractModel):
@@ -12226,11 +12544,11 @@ class QueryMetricItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MetricName: 指标名
+        :param _MetricName: <p>指标名</p>
         :type MetricName: str
-        :param _Compares: 同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比) 
+        :param _Compares: <p>同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比)</p>
         :type Compares: list of str
-        :param _Compare: 同比，已弃用，不建议使用
+        :param _Compare: <p>同比，已弃用，不建议使用</p>
         :type Compare: str
         """
         self._MetricName = None
@@ -12239,7 +12557,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def MetricName(self):
-        r"""指标名
+        r"""<p>指标名</p>
         :rtype: str
         """
         return self._MetricName
@@ -12250,7 +12568,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def Compares(self):
-        r"""同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比) 
+        r"""<p>同比，现支持 CompareByYesterday (与昨天相比)和CompareByLastWeek (与上周相比)</p>
         :rtype: list of str
         """
         return self._Compares
@@ -12261,7 +12579,7 @@ class QueryMetricItem(AbstractModel):
 
     @property
     def Compare(self):
-        r"""同比，已弃用，不建议使用
+        r"""<p>同比，已弃用，不建议使用</p>
         :rtype: str
         """
         return self._Compare
@@ -12412,7 +12730,7 @@ class Selectors(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Component: 组件勾选情况
+        :param _Component: <p>组件勾选情况</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Component: list of str
         """
@@ -12420,7 +12738,7 @@ class Selectors(AbstractModel):
 
     @property
     def Component(self):
-        r"""组件勾选情况
+        r"""<p>组件勾选情况</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -12433,6 +12751,74 @@ class Selectors(AbstractModel):
 
     def _deserialize(self, params):
         self._Component = params.get("Component")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Series(AbstractModel):
+    r"""耗时消耗时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 耗时列表信息
+        :type Data: list of int
+        :param _Stack: 描述
+        :type Stack: str
+        :param _Name: 字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        """
+        self._Data = None
+        self._Stack = None
+        self._Name = None
+
+    @property
+    def Data(self):
+        r"""耗时列表信息
+        :rtype: list of int
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Stack(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Stack
+
+    @Stack.setter
+    def Stack(self, Stack):
+        self._Stack = Stack
+
+    @property
+    def Name(self):
+        r"""字段名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Stack = params.get("Stack")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13204,6 +13590,207 @@ class SpanTag(AbstractModel):
         
 
 
+class SpanTreeView(AbstractModel):
+    r"""树形结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TreeData: 树结构json串
+        :type TreeData: str
+        :param _ChartData: 列表
+        :type ChartData: :class:`tencentcloud.apm.v20210622.models.ChartData`
+        :param _TraceOverview: Trace概览信息
+        :type TraceOverview: :class:`tencentcloud.apm.v20210622.models.TraceOverview`
+        :param _CompressedTreeData: 压缩编码后的树结构json串
+        :type CompressedTreeData: str
+        :param _CntExceeded: 整条链路的 span 数量是否超过限制
+        :type CntExceeded: bool
+        :param _QueryTimeout: 是否有内部查询超时
+        :type QueryTimeout: bool
+        :param _SpanTotalCnt: 链路中 span 总数量
+        :type SpanTotalCnt: int
+        :param _FilterViewTagValues: 过滤视图的标签值列表
+        :type FilterViewTagValues: list of TagValues
+        """
+        self._TreeData = None
+        self._ChartData = None
+        self._TraceOverview = None
+        self._CompressedTreeData = None
+        self._CntExceeded = None
+        self._QueryTimeout = None
+        self._SpanTotalCnt = None
+        self._FilterViewTagValues = None
+
+    @property
+    def TreeData(self):
+        r"""树结构json串
+        :rtype: str
+        """
+        return self._TreeData
+
+    @TreeData.setter
+    def TreeData(self, TreeData):
+        self._TreeData = TreeData
+
+    @property
+    def ChartData(self):
+        r"""列表
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ChartData`
+        """
+        return self._ChartData
+
+    @ChartData.setter
+    def ChartData(self, ChartData):
+        self._ChartData = ChartData
+
+    @property
+    def TraceOverview(self):
+        r"""Trace概览信息
+        :rtype: :class:`tencentcloud.apm.v20210622.models.TraceOverview`
+        """
+        return self._TraceOverview
+
+    @TraceOverview.setter
+    def TraceOverview(self, TraceOverview):
+        self._TraceOverview = TraceOverview
+
+    @property
+    def CompressedTreeData(self):
+        r"""压缩编码后的树结构json串
+        :rtype: str
+        """
+        return self._CompressedTreeData
+
+    @CompressedTreeData.setter
+    def CompressedTreeData(self, CompressedTreeData):
+        self._CompressedTreeData = CompressedTreeData
+
+    @property
+    def CntExceeded(self):
+        r"""整条链路的 span 数量是否超过限制
+        :rtype: bool
+        """
+        return self._CntExceeded
+
+    @CntExceeded.setter
+    def CntExceeded(self, CntExceeded):
+        self._CntExceeded = CntExceeded
+
+    @property
+    def QueryTimeout(self):
+        r"""是否有内部查询超时
+        :rtype: bool
+        """
+        return self._QueryTimeout
+
+    @QueryTimeout.setter
+    def QueryTimeout(self, QueryTimeout):
+        self._QueryTimeout = QueryTimeout
+
+    @property
+    def SpanTotalCnt(self):
+        r"""链路中 span 总数量
+        :rtype: int
+        """
+        return self._SpanTotalCnt
+
+    @SpanTotalCnt.setter
+    def SpanTotalCnt(self, SpanTotalCnt):
+        self._SpanTotalCnt = SpanTotalCnt
+
+    @property
+    def FilterViewTagValues(self):
+        r"""过滤视图的标签值列表
+        :rtype: list of TagValues
+        """
+        return self._FilterViewTagValues
+
+    @FilterViewTagValues.setter
+    def FilterViewTagValues(self, FilterViewTagValues):
+        self._FilterViewTagValues = FilterViewTagValues
+
+
+    def _deserialize(self, params):
+        self._TreeData = params.get("TreeData")
+        if params.get("ChartData") is not None:
+            self._ChartData = ChartData()
+            self._ChartData._deserialize(params.get("ChartData"))
+        if params.get("TraceOverview") is not None:
+            self._TraceOverview = TraceOverview()
+            self._TraceOverview._deserialize(params.get("TraceOverview"))
+        self._CompressedTreeData = params.get("CompressedTreeData")
+        self._CntExceeded = params.get("CntExceeded")
+        self._QueryTimeout = params.get("QueryTimeout")
+        self._SpanTotalCnt = params.get("SpanTotalCnt")
+        if params.get("FilterViewTagValues") is not None:
+            self._FilterViewTagValues = []
+            for item in params.get("FilterViewTagValues"):
+                obj = TagValues()
+                obj._deserialize(item)
+                self._FilterViewTagValues.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagValues(AbstractModel):
+    r"""维度值（值为List）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 维度键
+        :type Key: str
+        :param _Values: 维度值
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        r"""维度键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        r"""维度值
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TerminateApmInstanceRequest(AbstractModel):
     r"""TerminateApmInstance请求参数结构体
 
@@ -13275,19 +13862,19 @@ class TkeMeta(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _ClusterID: 集群ID
+        :param _ClusterID: <p>集群ID</p>
         :type ClusterID: str
-        :param _PodName: pod name
+        :param _PodName: <p>pod name</p>
         :type PodName: str
-        :param _Namespace: 命名空间
+        :param _Namespace: <p>命名空间</p>
         :type Namespace: str
-        :param _Deployment: 工作负载
+        :param _Deployment: <p>工作负载</p>
         :type Deployment: str
-        :param _PodIP: pod ip
+        :param _PodIP: <p>pod ip</p>
         :type PodIP: str
-        :param _NodeIP: node ip
+        :param _NodeIP: <p>node ip</p>
         :type NodeIP: str
         """
         self._Region = None
@@ -13300,7 +13887,7 @@ class TkeMeta(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -13311,7 +13898,7 @@ class TkeMeta(AbstractModel):
 
     @property
     def ClusterID(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterID
@@ -13322,7 +13909,7 @@ class TkeMeta(AbstractModel):
 
     @property
     def PodName(self):
-        r"""pod name
+        r"""<p>pod name</p>
         :rtype: str
         """
         return self._PodName
@@ -13333,7 +13920,7 @@ class TkeMeta(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""命名空间
+        r"""<p>命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -13344,7 +13931,7 @@ class TkeMeta(AbstractModel):
 
     @property
     def Deployment(self):
-        r"""工作负载
+        r"""<p>工作负载</p>
         :rtype: str
         """
         return self._Deployment
@@ -13355,7 +13942,7 @@ class TkeMeta(AbstractModel):
 
     @property
     def PodIP(self):
-        r"""pod ip
+        r"""<p>pod ip</p>
         :rtype: str
         """
         return self._PodIP
@@ -13366,7 +13953,7 @@ class TkeMeta(AbstractModel):
 
     @property
     def NodeIP(self):
-        r"""node ip
+        r"""<p>node ip</p>
         :rtype: str
         """
         return self._NodeIP
@@ -14098,6 +14685,226 @@ class TopologyNodeStats(AbstractModel):
         self._Healthy = params.get("Healthy")
         self._Warning = params.get("Warning")
         self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TraceOverview(AbstractModel):
+    r"""Trace概览查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>traceID调用状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _TraceID: <p>TraceId查询</p>
+        :type TraceID: str
+        :param _ErrorMsg: <p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _ServiceName: <p>服务名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _Duration: <p>耗时</p>
+        :type Duration: int
+        :param _Operation: <p>接口名</p>
+        :type Operation: str
+        :param _StartTime: <p>开始时间（微秒）</p>
+        :type StartTime: int
+        :param _ApplicationCount: <p>应用数</p>
+        :type ApplicationCount: int
+        :param _ErrorSpans: <p>异常Span列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorSpans: list of ErrorSpan
+        """
+        self._Status = None
+        self._TraceID = None
+        self._ErrorMsg = None
+        self._ServiceName = None
+        self._Duration = None
+        self._Operation = None
+        self._StartTime = None
+        self._ApplicationCount = None
+        self._ErrorSpans = None
+
+    @property
+    def Status(self):
+        r"""<p>traceID调用状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TraceID(self):
+        r"""<p>TraceId查询</p>
+        :rtype: str
+        """
+        return self._TraceID
+
+    @TraceID.setter
+    def TraceID(self, TraceID):
+        self._TraceID = TraceID
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Duration(self):
+        r"""<p>耗时</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Operation(self):
+        r"""<p>接口名</p>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间（微秒）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ApplicationCount(self):
+        r"""<p>应用数</p>
+        :rtype: int
+        """
+        return self._ApplicationCount
+
+    @ApplicationCount.setter
+    def ApplicationCount(self, ApplicationCount):
+        self._ApplicationCount = ApplicationCount
+
+    @property
+    def ErrorSpans(self):
+        r"""<p>异常Span列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ErrorSpan
+        """
+        return self._ErrorSpans
+
+    @ErrorSpans.setter
+    def ErrorSpans(self, ErrorSpans):
+        self._ErrorSpans = ErrorSpans
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._TraceID = params.get("TraceID")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._ServiceName = params.get("ServiceName")
+        self._Duration = params.get("Duration")
+        self._Operation = params.get("Operation")
+        self._StartTime = params.get("StartTime")
+        self._ApplicationCount = params.get("ApplicationCount")
+        if params.get("ErrorSpans") is not None:
+            self._ErrorSpans = []
+            for item in params.get("ErrorSpans"):
+                obj = ErrorSpan()
+                obj._deserialize(item)
+                self._ErrorSpans.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class YAxis(AbstractModel):
+    r"""接口列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Keys: <p>接口列表</p>
+        :type Keys: list of str
+        :param _Data: <p>接口列表</p>
+        :type Data: list of str
+        """
+        self._Keys = None
+        self._Data = None
+
+    @property
+    def Keys(self):
+        r"""<p>接口列表</p>
+        :rtype: list of str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def Data(self):
+        r"""<p>接口列表</p>
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Keys = params.get("Keys")
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

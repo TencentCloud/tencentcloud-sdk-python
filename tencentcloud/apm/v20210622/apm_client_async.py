@@ -478,6 +478,24 @@ class ApmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSpanTreeByID(
+            self,
+            request: models.DescribeSpanTreeByIDRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSpanTreeByIDResponse:
+        """
+        查询trace详情接口信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSpanTreeByID"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSpanTreeByIDResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTagValues(
             self,
             request: models.DescribeTagValuesRequest,

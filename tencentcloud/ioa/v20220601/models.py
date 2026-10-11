@@ -3759,6 +3759,357 @@ class DescribeAccountResourcesItems(AbstractModel):
         
 
 
+class DescribeAccountVirtualGroupsData(AbstractModel):
+    r"""列表账户虚拟组分页数据集
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _AccountGroupId: <p>分组id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountGroupId: int
+        :param _Name: <p>账户虚拟组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _SourceType: <p>源类型，手动、自动(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: int
+        :param _ExtraInfo: <p>扩展信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraInfo: str
+        :param _UserTotal: <p>用户总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserTotal: int
+        :param _Itime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Itime: str
+        :param _Utime: <p>最后更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Utime: str
+        """
+        self._Id = None
+        self._AccountGroupId = None
+        self._Name = None
+        self._Description = None
+        self._SourceType = None
+        self._ExtraInfo = None
+        self._UserTotal = None
+        self._Itime = None
+        self._Utime = None
+
+    @property
+    def Id(self):
+        r"""<p>id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AccountGroupId(self):
+        r"""<p>分组id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def Name(self):
+        r"""<p>账户虚拟组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SourceType(self):
+        r"""<p>源类型，手动、自动(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def ExtraInfo(self):
+        r"""<p>扩展信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtraInfo
+
+    @ExtraInfo.setter
+    def ExtraInfo(self, ExtraInfo):
+        self._ExtraInfo = ExtraInfo
+
+    @property
+    def UserTotal(self):
+        r"""<p>用户总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UserTotal
+
+    @UserTotal.setter
+    def UserTotal(self, UserTotal):
+        self._UserTotal = UserTotal
+
+    @property
+    def Itime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Itime
+
+    @Itime.setter
+    def Itime(self, Itime):
+        self._Itime = Itime
+
+    @property
+    def Utime(self):
+        r"""<p>最后更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Utime
+
+    @Utime.setter
+    def Utime(self, Utime):
+        self._Utime = Utime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._SourceType = params.get("SourceType")
+        self._ExtraInfo = params.get("ExtraInfo")
+        self._UserTotal = params.get("UserTotal")
+        self._Itime = params.get("Itime")
+        self._Utime = params.get("Utime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountVirtualGroupsPageData(AbstractModel):
+    r"""业务响应数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>分页公共对象</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        :param _Items: <p>列表账户虚拟组分页数据集</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DescribeAccountVirtualGroupsData
+        """
+        self._Page = None
+        self._Items = None
+
+    @property
+    def Page(self):
+        r"""<p>分页公共对象</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def Items(self):
+        r"""<p>列表账户虚拟组分页数据集</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeAccountVirtualGroupsData
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Page") is not None:
+            self._Page = Paging()
+            self._Page._deserialize(params.get("Page"))
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DescribeAccountVirtualGroupsData()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountVirtualGroupsRequest(AbstractModel):
+    r"""DescribeAccountVirtualGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _Condition: <p>滤条件、分页参数</p><li>Name - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号虚拟组名称过滤。</li>
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        :param _AccountGroupId: <p>顶层目录分组ID，表示要查询哪个目录下的虚拟组</p>
+        :type AccountGroupId: int
+        """
+        self._DomainInstanceId = None
+        self._Condition = None
+        self._AccountGroupId = None
+
+    @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def Condition(self):
+        r"""<p>滤条件、分页参数</p><li>Name - String - 是否必填：否 - 操作符: eq,like  - 排序支持：否- 按账号虚拟组名称过滤。</li>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def AccountGroupId(self):
+        r"""<p>顶层目录分组ID，表示要查询哪个目录下的虚拟组</p>
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+
+    def _deserialize(self, params):
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
+        self._AccountGroupId = params.get("AccountGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountVirtualGroupsResponse(AbstractModel):
+    r"""DescribeAccountVirtualGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>业务响应数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountVirtualGroupsPageData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>业务响应数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountVirtualGroupsPageData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeAccountVirtualGroupsPageData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAggrSoftCategorySoftListData(AbstractModel):
     r"""业务响应数据
 

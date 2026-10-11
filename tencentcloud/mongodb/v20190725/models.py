@@ -3790,6 +3790,364 @@ class CreateDBInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInstanceRoleRequest(AbstractModel):
+    r"""CreateInstanceRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _RoleName: <p>角色名</p>
+        :type RoleName: str
+        :param _Database: <p>角色所属db</p>
+        :type Database: str
+        :param _Privileges: <p>权限</p>
+        :type Privileges: list of RolePrivilege
+        :param _InheritedRoles: <p>继承角色</p>
+        :type InheritedRoles: list of Role
+        """
+        self._InstanceId = None
+        self._RoleName = None
+        self._Database = None
+        self._Privileges = None
+        self._InheritedRoles = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Database(self):
+        r"""<p>角色所属db</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Privileges(self):
+        r"""<p>权限</p>
+        :rtype: list of RolePrivilege
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def InheritedRoles(self):
+        r"""<p>继承角色</p>
+        :rtype: list of Role
+        """
+        return self._InheritedRoles
+
+    @InheritedRoles.setter
+    def InheritedRoles(self, InheritedRoles):
+        self._InheritedRoles = InheritedRoles
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RoleName = params.get("RoleName")
+        self._Database = params.get("Database")
+        if params.get("Privileges") is not None:
+            self._Privileges = []
+            for item in params.get("Privileges"):
+                obj = RolePrivilege()
+                obj._deserialize(item)
+                self._Privileges.append(obj)
+        if params.get("InheritedRoles") is not None:
+            self._InheritedRoles = []
+            for item in params.get("InheritedRoles"):
+                obj = Role()
+                obj._deserialize(item)
+                self._InheritedRoles.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstanceRoleResponse(AbstractModel):
+    r"""CreateInstanceRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateInstanceUserRequest(AbstractModel):
+    r"""CreateInstanceUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        :param _Password: <p>密码</p>
+        :type Password: str
+        :param _EncryptedPassword: <p>加密后的密码（与Password二选一）</p>
+        :type EncryptedPassword: str
+        :param _Database: <p>认证数据库（用户所属数据库）</p>
+        :type Database: str
+        :param _Roles: <p>角色列表（新方式，可包含内置角色和自定义角色）</p>
+        :type Roles: list of Role
+        :param _AuthRole: <p>权限列表（旧方式）</p>
+        :type AuthRole: list of Auth
+        :param _Description: <p>自定义描述</p>
+        :type Description: str
+        :param _EnablePasswordRotation: <p>是否开启密码轮转（0-不开启，1-开启）</p>
+        :type EnablePasswordRotation: int
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._Password = None
+        self._EncryptedPassword = None
+        self._Database = None
+        self._Roles = None
+        self._AuthRole = None
+        self._Description = None
+        self._EnablePasswordRotation = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptedPassword(self):
+        r"""<p>加密后的密码（与Password二选一）</p>
+        :rtype: str
+        """
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
+    @property
+    def Database(self):
+        r"""<p>认证数据库（用户所属数据库）</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Roles(self):
+        r"""<p>角色列表（新方式，可包含内置角色和自定义角色）</p>
+        :rtype: list of Role
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def AuthRole(self):
+        r"""<p>权限列表（旧方式）</p>
+        :rtype: list of Auth
+        """
+        return self._AuthRole
+
+    @AuthRole.setter
+    def AuthRole(self, AuthRole):
+        self._AuthRole = AuthRole
+
+    @property
+    def Description(self):
+        r"""<p>自定义描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EnablePasswordRotation(self):
+        r"""<p>是否开启密码轮转（0-不开启，1-开启）</p>
+        :rtype: int
+        """
+        return self._EnablePasswordRotation
+
+    @EnablePasswordRotation.setter
+    def EnablePasswordRotation(self, EnablePasswordRotation):
+        self._EnablePasswordRotation = EnablePasswordRotation
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._EncryptedPassword = params.get("EncryptedPassword")
+        self._Database = params.get("Database")
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = Role()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        if params.get("AuthRole") is not None:
+            self._AuthRole = []
+            for item in params.get("AuthRole"):
+                obj = Auth()
+                obj._deserialize(item)
+                self._AuthRole.append(obj)
+        self._Description = params.get("Description")
+        self._EnablePasswordRotation = params.get("EnablePasswordRotation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInstanceUserResponse(AbstractModel):
+    r"""CreateInstanceUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>异步任务ID</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>异步任务ID</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLogDownloadTaskRequest(AbstractModel):
     r"""CreateLogDownloadTask请求参数结构体
 
@@ -4773,6 +5131,224 @@ class DeleteDBBackupsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteInstanceRoleRequest(AbstractModel):
+    r"""DeleteInstanceRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _RoleName: <p>角色名</p>
+        :type RoleName: str
+        :param _Database: <p>角色所属数据库</p>
+        :type Database: str
+        """
+        self._InstanceId = None
+        self._RoleName = None
+        self._Database = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Database(self):
+        r"""<p>角色所属数据库</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RoleName = params.get("RoleName")
+        self._Database = params.get("Database")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstanceRoleResponse(AbstractModel):
+    r"""DeleteInstanceRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteInstanceUserRequest(AbstractModel):
+    r"""DeleteInstanceUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        :param _Database: <p>认证数据库</p>
+        :type Database: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._Database = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Database(self):
+        r"""<p>认证数据库</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._Database = params.get("Database")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstanceUserResponse(AbstractModel):
+    r"""DeleteInstanceUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>流程ID</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程ID</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8778,6 +9354,225 @@ class DescribeInstanceParamsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceRolesRequest(AbstractModel):
+    r"""DescribeInstanceRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _Database: <p>数据库名，为空则查询所有数据库的角色</p>
+        :type Database: str
+        :param _RoleType: <p>角色类型：builtin_database-内置数据库角色，builtin_cluster-内置集群角色，custom-自定义角色，为空则查询所有</p>
+        :type RoleType: list of str
+        :param _RoleName: <p>角色名称，为空则查询所有角色</p>
+        :type RoleName: str
+        :param _SearchKey: <p>通用搜索关键字，模糊匹配继承角色和权限相关数据库名、角色名、Action名等</p>
+        :type SearchKey: str
+        :param _OrderBy: <p>排序字段，支持：RoleName，默认为 RoleName</p>
+        :type OrderBy: str
+        :param _OrderType: <p>排序方式：asc-升序，desc-降序，默认为 asc</p>
+        :type OrderType: str
+        :param _Offset: <p>分页偏移量，默认为 0</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量，默认为 20，最大 100</p>
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Database = None
+        self._RoleType = None
+        self._RoleName = None
+        self._SearchKey = None
+        self._OrderBy = None
+        self._OrderType = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Database(self):
+        r"""<p>数据库名，为空则查询所有数据库的角色</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def RoleType(self):
+        r"""<p>角色类型：builtin_database-内置数据库角色，builtin_cluster-内置集群角色，custom-自定义角色，为空则查询所有</p>
+        :rtype: list of str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名称，为空则查询所有角色</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def SearchKey(self):
+        r"""<p>通用搜索关键字，模糊匹配继承角色和权限相关数据库名、角色名、Action名等</p>
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序字段，支持：RoleName，默认为 RoleName</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderType(self):
+        r"""<p>排序方式：asc-升序，desc-降序，默认为 asc</p>
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认为 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，默认为 20，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Database = params.get("Database")
+        self._RoleType = params.get("RoleType")
+        self._RoleName = params.get("RoleName")
+        self._SearchKey = params.get("SearchKey")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderType = params.get("OrderType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceRolesResponse(AbstractModel):
+    r"""DescribeInstanceRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _Roles: <p>角色列表</p>
+        :type Roles: list of RoleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Roles = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Roles(self):
+        r"""<p>角色列表</p>
+        :rtype: list of RoleInfo
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = RoleInfo()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceSSLRequest(AbstractModel):
     r"""DescribeInstanceSSL请求参数结构体
 
@@ -8890,6 +9685,195 @@ class DescribeInstanceSSLResponse(AbstractModel):
         self._Status = params.get("Status")
         self._ExpiredTime = params.get("ExpiredTime")
         self._CertUrl = params.get("CertUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceUsersRequest(AbstractModel):
+    r"""DescribeInstanceUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _UserName: <p>用户名，为空则查询所有用户</p>
+        :type UserName: str
+        :param _Database: <p>数据库名，为空则查询所有数据库的账号</p>
+        :type Database: str
+        :param _OrderBy: <p>排序字段，可选值：UserName；不传则默认按 UserName 排序</p>
+        :type OrderBy: str
+        :param _OrderType: <p>排序方式，可选值：asc（升序）、desc（降序），默认 asc</p>
+        :type OrderType: str
+        :param _Offset: <p>分页偏移量，默认为 0</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量，默认为 20，最大 100</p>
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._Database = None
+        self._OrderBy = None
+        self._OrderType = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        r"""<p>用户名，为空则查询所有用户</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Database(self):
+        r"""<p>数据库名，为空则查询所有数据库的账号</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序字段，可选值：UserName；不传则默认按 UserName 排序</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderType(self):
+        r"""<p>排序方式，可选值：asc（升序）、desc（降序），默认 asc</p>
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认为 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，默认为 20，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._Database = params.get("Database")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderType = params.get("OrderType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceUsersResponse(AbstractModel):
+    r"""DescribeInstanceUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Users: <p>账号列表</p>
+        :type Users: list of InstanceUserInfo
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Users = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Users(self):
+        r"""<p>账号列表</p>
+        :rtype: list of InstanceUserInfo
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = InstanceUserInfo()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -13549,6 +14533,172 @@ class InstanceTextParam(AbstractModel):
         
 
 
+class InstanceUserInfo(AbstractModel):
+    r"""账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        :param _Database: <p>认证数据库</p>
+        :type Database: str
+        :param _Roles: <p>角色列表（新方式）</p>
+        :type Roles: list of Role
+        :param _AuthRole: <p>权限列表（老方式）</p>
+        :type AuthRole: list of Auth
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _ConsolePassUpdateTime: <p>控制台密码更新时间</p>
+        :type ConsolePassUpdateTime: str
+        :param _EnablePasswordRotation: <p>是否开启密码轮转</p>
+        :type EnablePasswordRotation: int
+        :param _Description: <p>自定义描述</p>
+        :type Description: str
+        """
+        self._UserName = None
+        self._Database = None
+        self._Roles = None
+        self._AuthRole = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ConsolePassUpdateTime = None
+        self._EnablePasswordRotation = None
+        self._Description = None
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Database(self):
+        r"""<p>认证数据库</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Roles(self):
+        r"""<p>角色列表（新方式）</p>
+        :rtype: list of Role
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def AuthRole(self):
+        r"""<p>权限列表（老方式）</p>
+        :rtype: list of Auth
+        """
+        return self._AuthRole
+
+    @AuthRole.setter
+    def AuthRole(self, AuthRole):
+        self._AuthRole = AuthRole
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ConsolePassUpdateTime(self):
+        r"""<p>控制台密码更新时间</p>
+        :rtype: str
+        """
+        return self._ConsolePassUpdateTime
+
+    @ConsolePassUpdateTime.setter
+    def ConsolePassUpdateTime(self, ConsolePassUpdateTime):
+        self._ConsolePassUpdateTime = ConsolePassUpdateTime
+
+    @property
+    def EnablePasswordRotation(self):
+        r"""<p>是否开启密码轮转</p>
+        :rtype: int
+        """
+        return self._EnablePasswordRotation
+
+    @EnablePasswordRotation.setter
+    def EnablePasswordRotation(self, EnablePasswordRotation):
+        self._EnablePasswordRotation = EnablePasswordRotation
+
+    @property
+    def Description(self):
+        r"""<p>自定义描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Database = params.get("Database")
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = Role()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        if params.get("AuthRole") is not None:
+            self._AuthRole = []
+            for item in params.get("AuthRole"):
+                obj = Auth()
+                obj._deserialize(item)
+                self._AuthRole.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ConsolePassUpdateTime = params.get("ConsolePassUpdateTime")
+        self._EnablePasswordRotation = params.get("EnablePasswordRotation")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IsolateDBInstanceRequest(AbstractModel):
     r"""IsolateDBInstance请求参数结构体
 
@@ -17242,6 +18392,282 @@ class RestoreDatabases(AbstractModel):
         
 
 
+class Role(AbstractModel):
+    r"""角色
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: <p>角色名</p>
+        :type RoleName: str
+        :param _Database: <p>角色所属db</p>
+        :type Database: str
+        """
+        self._RoleName = None
+        self._Database = None
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Database(self):
+        r"""<p>角色所属db</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._Database = params.get("Database")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleInfo(AbstractModel):
+    r"""角色详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: <p>角色名称</p>
+        :type RoleName: str
+        :param _Database: <p>角色所属数据库</p>
+        :type Database: str
+        :param _RoleType: <p>角色类型：builtin_database-内置数据库角色，builtin_cluster-内置集群角色，custom-自定义角色</p>
+        :type RoleType: str
+        :param _Privileges: <p>授予的权限</p>
+        :type Privileges: list of RolePrivilege
+        :param _InheritedRoles: <p>继承的角色</p>
+        :type InheritedRoles: list of Role
+        """
+        self._RoleName = None
+        self._Database = None
+        self._RoleType = None
+        self._Privileges = None
+        self._InheritedRoles = None
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Database(self):
+        r"""<p>角色所属数据库</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def RoleType(self):
+        r"""<p>角色类型：builtin_database-内置数据库角色，builtin_cluster-内置集群角色，custom-自定义角色</p>
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def Privileges(self):
+        r"""<p>授予的权限</p>
+        :rtype: list of RolePrivilege
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def InheritedRoles(self):
+        r"""<p>继承的角色</p>
+        :rtype: list of Role
+        """
+        return self._InheritedRoles
+
+    @InheritedRoles.setter
+    def InheritedRoles(self, InheritedRoles):
+        self._InheritedRoles = InheritedRoles
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._Database = params.get("Database")
+        self._RoleType = params.get("RoleType")
+        if params.get("Privileges") is not None:
+            self._Privileges = []
+            for item in params.get("Privileges"):
+                obj = RolePrivilege()
+                obj._deserialize(item)
+                self._Privileges.append(obj)
+        if params.get("InheritedRoles") is not None:
+            self._InheritedRoles = []
+            for item in params.get("InheritedRoles"):
+                obj = Role()
+                obj._deserialize(item)
+                self._InheritedRoles.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RolePrivilege(AbstractModel):
+    r"""角色权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: <p>资源</p>
+        :type Resource: :class:`tencentcloud.mongodb.v20190725.models.RoleResource`
+        :param _Actions: <p>动作</p>
+        :type Actions: list of str
+        """
+        self._Resource = None
+        self._Actions = None
+
+    @property
+    def Resource(self):
+        r"""<p>资源</p>
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.RoleResource`
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Actions(self):
+        r"""<p>动作</p>
+        :rtype: list of str
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+
+    def _deserialize(self, params):
+        if params.get("Resource") is not None:
+            self._Resource = RoleResource()
+            self._Resource._deserialize(params.get("Resource"))
+        self._Actions = params.get("Actions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleResource(AbstractModel):
+    r"""角色资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cluster: <p>是否集群级资源</p>
+        :type Cluster: bool
+        :param _Database: <p>db名</p>
+        :type Database: str
+        :param _Collection: <p>collection名</p>
+        :type Collection: str
+        """
+        self._Cluster = None
+        self._Database = None
+        self._Collection = None
+
+    @property
+    def Cluster(self):
+        r"""<p>是否集群级资源</p>
+        :rtype: bool
+        """
+        return self._Cluster
+
+    @Cluster.setter
+    def Cluster(self, Cluster):
+        self._Cluster = Cluster
+
+    @property
+    def Database(self):
+        r"""<p>db名</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Collection(self):
+        r"""<p>collection名</p>
+        :rtype: str
+        """
+        return self._Collection
+
+    @Collection.setter
+    def Collection(self, Collection):
+        self._Collection = Collection
+
+
+    def _deserialize(self, params):
+        self._Cluster = params.get("Cluster")
+        self._Database = params.get("Database")
+        self._Collection = params.get("Collection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScaleDownDBInstanceCpuRequest(AbstractModel):
     r"""ScaleDownDBInstanceCpu请求参数结构体
 
@@ -19316,6 +20742,349 @@ class TerminateDBInstancesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateInstanceRoleRequest(AbstractModel):
+    r"""UpdateInstanceRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _RoleName: <p>角色名称</p>
+        :type RoleName: str
+        :param _Database: <p>角色所属数据库</p>
+        :type Database: str
+        :param _Privileges: <p>角色权限列表，不传则不修改</p>
+        :type Privileges: list of RolePrivilege
+        :param _InheritedRoles: <p>角色列表，不传则不修改</p>
+        :type InheritedRoles: list of Role
+        """
+        self._InstanceId = None
+        self._RoleName = None
+        self._Database = None
+        self._Privileges = None
+        self._InheritedRoles = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Database(self):
+        r"""<p>角色所属数据库</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Privileges(self):
+        r"""<p>角色权限列表，不传则不修改</p>
+        :rtype: list of RolePrivilege
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def InheritedRoles(self):
+        r"""<p>角色列表，不传则不修改</p>
+        :rtype: list of Role
+        """
+        return self._InheritedRoles
+
+    @InheritedRoles.setter
+    def InheritedRoles(self, InheritedRoles):
+        self._InheritedRoles = InheritedRoles
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RoleName = params.get("RoleName")
+        self._Database = params.get("Database")
+        if params.get("Privileges") is not None:
+            self._Privileges = []
+            for item in params.get("Privileges"):
+                obj = RolePrivilege()
+                obj._deserialize(item)
+                self._Privileges.append(obj)
+        if params.get("InheritedRoles") is not None:
+            self._InheritedRoles = []
+            for item in params.get("InheritedRoles"):
+                obj = Role()
+                obj._deserialize(item)
+                self._InheritedRoles.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateInstanceRoleResponse(AbstractModel):
+    r"""UpdateInstanceRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateInstanceUserRequest(AbstractModel):
+    r"""UpdateInstanceUser请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        :param _Database: <p>认证数据库</p>
+        :type Database: str
+        :param _Password: <p>新密码（可选，为空则不修改密码）</p>
+        :type Password: str
+        :param _EncryptedPassword: <p>加密后的密码（可选，与Password二选一）</p>
+        :type EncryptedPassword: str
+        :param _Roles: <p>新的角色列表（可选，为空则不修改角色）</p>
+        :type Roles: list of Role
+        :param _AuthRole: <p>新的权限列表（可选，为空则不修改权限）</p>
+        :type AuthRole: list of Auth
+        :param _Description: <p>用户描述（可选，为空则不修改描述）</p>
+        :type Description: str
+        """
+        self._InstanceId = None
+        self._UserName = None
+        self._Database = None
+        self._Password = None
+        self._EncryptedPassword = None
+        self._Roles = None
+        self._AuthRole = None
+        self._Description = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Database(self):
+        r"""<p>认证数据库</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Password(self):
+        r"""<p>新密码（可选，为空则不修改密码）</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EncryptedPassword(self):
+        r"""<p>加密后的密码（可选，与Password二选一）</p>
+        :rtype: str
+        """
+        return self._EncryptedPassword
+
+    @EncryptedPassword.setter
+    def EncryptedPassword(self, EncryptedPassword):
+        self._EncryptedPassword = EncryptedPassword
+
+    @property
+    def Roles(self):
+        r"""<p>新的角色列表（可选，为空则不修改角色）</p>
+        :rtype: list of Role
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def AuthRole(self):
+        r"""<p>新的权限列表（可选，为空则不修改权限）</p>
+        :rtype: list of Auth
+        """
+        return self._AuthRole
+
+    @AuthRole.setter
+    def AuthRole(self, AuthRole):
+        self._AuthRole = AuthRole
+
+    @property
+    def Description(self):
+        r"""<p>用户描述（可选，为空则不修改描述）</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._UserName = params.get("UserName")
+        self._Database = params.get("Database")
+        self._Password = params.get("Password")
+        self._EncryptedPassword = params.get("EncryptedPassword")
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = Role()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        if params.get("AuthRole") is not None:
+            self._AuthRole = []
+            for item in params.get("AuthRole"):
+                obj = Auth()
+                obj._deserialize(item)
+                self._AuthRole.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateInstanceUserResponse(AbstractModel):
+    r"""UpdateInstanceUser返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>流程ID</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程ID</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 

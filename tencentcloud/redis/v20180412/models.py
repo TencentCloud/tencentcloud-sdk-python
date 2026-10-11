@@ -2784,7 +2784,7 @@ class CreateInstancesRequest(AbstractModel):
         :type TemplateId: str
         :param _DryRun: <p>内部参数，标识创建实例是否需要检查。</p><ul><li>false ：默认值。发送正常请求，通过检查后直接创建实例。</li><li>true：发送检查请求，不会创建实例。</li></ul>
         :type DryRun: bool
-        :param _ProductVersion: <p>指实例部署模式。</p><ul><li>local：传统架构，默认为 local。</li><li>cdc：独享集群。</li><li>cloud：云原生，当前已暂停售卖。</li></ul>
+        :param _ProductVersion: <p>指实例部署类型。</p><p>枚举值：</p><ul><li>local： 通用 I 型。</li><li>localv2： 通用 II 型。</li><li>cdc： 独享集群型。</li><li>cloud： 云原生，当前已暂停售卖。</li></ul>
         :type ProductVersion: str
         :param _RedisClusterId: <p>独享集群 ID。</p><ul><li>当 <strong>ProductVersion</strong> 设置为 <strong>cdc</strong> 时，该参数必须设置。</li><li>请通过接口<a href="https://cloud.tencent.com/document/product/239/109628"> DescribeRedisClusters</a> 获取集群 ID。</li></ul>
         :type RedisClusterId: str
@@ -3088,7 +3088,7 @@ class CreateInstancesRequest(AbstractModel):
 
     @property
     def ProductVersion(self):
-        r"""<p>指实例部署模式。</p><ul><li>local：传统架构，默认为 local。</li><li>cdc：独享集群。</li><li>cloud：云原生，当前已暂停售卖。</li></ul>
+        r"""<p>指实例部署类型。</p><p>枚举值：</p><ul><li>local： 通用 I 型。</li><li>localv2： 通用 II 型。</li><li>cdc： 独享集群型。</li><li>cloud： 云原生，当前已暂停售卖。</li></ul>
         :rtype: str
         """
         return self._ProductVersion
@@ -25719,6 +25719,115 @@ class TradeDealDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpgradeInstanceProductVersionRequest(AbstractModel):
+    r"""UpgradeInstanceProductVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetProductVersion: <p>变更的目标产品类型。</p><p>枚举值：</p><ul><li>localv2： 通用 II 型</li></ul>
+        :type TargetProductVersion: str
+        :param _SwitchOption: <p>切换时间。</p><ul><li>1：维护时间窗切换。</li><li>2：立即切换。</li></ul>
+        :type SwitchOption: int
+        :param _InstanceId: <p>指定实例 ID。例如：crs-xjhsdj****，请登录<a href="https://console.cloud.tencent.com/redis#/">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        """
+        self._TargetProductVersion = None
+        self._SwitchOption = None
+        self._InstanceId = None
+
+    @property
+    def TargetProductVersion(self):
+        r"""<p>变更的目标产品类型。</p><p>枚举值：</p><ul><li>localv2： 通用 II 型</li></ul>
+        :rtype: str
+        """
+        return self._TargetProductVersion
+
+    @TargetProductVersion.setter
+    def TargetProductVersion(self, TargetProductVersion):
+        self._TargetProductVersion = TargetProductVersion
+
+    @property
+    def SwitchOption(self):
+        r"""<p>切换时间。</p><ul><li>1：维护时间窗切换。</li><li>2：立即切换。</li></ul>
+        :rtype: int
+        """
+        return self._SwitchOption
+
+    @SwitchOption.setter
+    def SwitchOption(self, SwitchOption):
+        self._SwitchOption = SwitchOption
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定实例 ID。例如：crs-xjhsdj****，请登录<a href="https://console.cloud.tencent.com/redis#/">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._TargetProductVersion = params.get("TargetProductVersion")
+        self._SwitchOption = params.get("SwitchOption")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeInstanceProductVersionResponse(AbstractModel):
+    r"""UpgradeInstanceProductVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: <p>订单号。</p>
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""<p>订单号。</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
 
 
 class UpgradeInstanceRequest(AbstractModel):

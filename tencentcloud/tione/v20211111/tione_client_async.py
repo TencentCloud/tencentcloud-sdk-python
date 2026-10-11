@@ -1110,6 +1110,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EnableTrainingTaskClsConfig(
+            self,
+            request: models.EnableTrainingTaskClsConfigRequest,
+            opts: Dict = None,
+    ) -> models.EnableTrainingTaskClsConfigResponse:
+        """
+        开启CLS日志投递
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableTrainingTaskClsConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableTrainingTaskClsConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyModelService(
             self,
             request: models.ModifyModelServiceRequest,

@@ -722,41 +722,44 @@ class AlarmNotifyHistory(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotifyId: 通知的唯一ID
+        :param _NotifyId: <p>通知的唯一ID</p>
         :type NotifyId: str
-        :param _PolicyId: 告警策略ID
+        :param _PolicyId: <p>告警策略ID</p>
         :type PolicyId: str
-        :param _SessionId: 告警周期iD
+        :param _SessionId: <p>告警周期iD</p>
         :type SessionId: str
-        :param _NotifyTime: 通知时间 unix秒级时间戳
+        :param _NotifyTime: <p>通知时间 unix秒级时间戳</p>
         :type NotifyTime: int
-        :param _TriggerTime: 触发时间 unix秒级时间戳
+        :param _TriggerTime: <p>触发时间 unix秒级时间戳</p>
         :type TriggerTime: int
-        :param _TriggerLevel: 告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别
+        :param _TriggerLevel: <p>告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别</p>
         :type TriggerLevel: str
-        :param _AlarmContent: 告警内容
+        :param _AlarmContent: <p>告警内容</p>
         :type AlarmContent: str
-        :param _AlarmObject: 告警对象
+        :param _AlarmObject: <p>告警对象</p>
         :type AlarmObject: str
-        :param _ChannelSet: 本次告警通知涉及到的渠道合集
+        :param _ChannelSet: <p>本次告警通知涉及到的渠道合集</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelSet: list of str
-        :param _ChannelsReceivers: 渠道的接收人信息
+        :param _ChannelsReceivers: <p>渠道的接收人信息</p>
         :type ChannelsReceivers: list of ChannelsReceivers
-        :param _PolicyName: 告警策略名称
+        :param _PolicyName: <p>告警策略名称</p>
         :type PolicyName: str
-        :param _PromeInstanceID: Prometheus实例ID, 仅当 MT_PROME 时有效
+        :param _PromeInstanceID: <p>Prometheus实例ID, 仅当 MT_PROME 时有效</p>
         :type PromeInstanceID: str
-        :param _PromeInstanceRegion: Prometheus实例所在的地域, 仅当 MT_PROME 时有效
+        :param _PromeInstanceRegion: <p>Prometheus实例所在的地域, 仅当 MT_PROME 时有效</p>
         :type PromeInstanceRegion: str
-        :param _Notices: 通知模板相关的配置信息
+        :param _Notices: <p>通知模板相关的配置信息</p>
         :type Notices: list of NotifyRelatedNotice
-        :param _TriggerStatus: 告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复
+        :param _TriggerStatus: <p>告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复</p>
         :type TriggerStatus: str
-        :param _PromeConsoleURL: 与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效
+        :param _PromeConsoleURL: <p>与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效</p>
         :type PromeConsoleURL: str
-        :param _Labels: 告警的lable
+        :param _Labels: <p>告警的lable</p>
         :type Labels: list of AlarmLable
+        :param _ReceiverGroups: <p>该条通知实际执行的接收人/组明细。一条元素对应通知模板里的一条渠道发送规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverGroups: list of ReceiverGroup
         """
         self._NotifyId = None
         self._PolicyId = None
@@ -775,10 +778,11 @@ class AlarmNotifyHistory(AbstractModel):
         self._TriggerStatus = None
         self._PromeConsoleURL = None
         self._Labels = None
+        self._ReceiverGroups = None
 
     @property
     def NotifyId(self):
-        r"""通知的唯一ID
+        r"""<p>通知的唯一ID</p>
         :rtype: str
         """
         return self._NotifyId
@@ -789,7 +793,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""告警策略ID
+        r"""<p>告警策略ID</p>
         :rtype: str
         """
         return self._PolicyId
@@ -800,7 +804,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""告警周期iD
+        r"""<p>告警周期iD</p>
         :rtype: str
         """
         return self._SessionId
@@ -811,7 +815,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def NotifyTime(self):
-        r"""通知时间 unix秒级时间戳
+        r"""<p>通知时间 unix秒级时间戳</p>
         :rtype: int
         """
         return self._NotifyTime
@@ -822,7 +826,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def TriggerTime(self):
-        r"""触发时间 unix秒级时间戳
+        r"""<p>触发时间 unix秒级时间戳</p>
         :rtype: int
         """
         return self._TriggerTime
@@ -833,7 +837,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def TriggerLevel(self):
-        r"""告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别
+        r"""<p>告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别</p>
         :rtype: str
         """
         return self._TriggerLevel
@@ -844,7 +848,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def AlarmContent(self):
-        r"""告警内容
+        r"""<p>告警内容</p>
         :rtype: str
         """
         return self._AlarmContent
@@ -855,7 +859,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def AlarmObject(self):
-        r"""告警对象
+        r"""<p>告警对象</p>
         :rtype: str
         """
         return self._AlarmObject
@@ -866,7 +870,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def ChannelSet(self):
-        r"""本次告警通知涉及到的渠道合集
+        r"""<p>本次告警通知涉及到的渠道合集</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -878,7 +882,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def ChannelsReceivers(self):
-        r"""渠道的接收人信息
+        r"""<p>渠道的接收人信息</p>
         :rtype: list of ChannelsReceivers
         """
         return self._ChannelsReceivers
@@ -889,7 +893,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def PolicyName(self):
-        r"""告警策略名称
+        r"""<p>告警策略名称</p>
         :rtype: str
         """
         return self._PolicyName
@@ -900,7 +904,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def PromeInstanceID(self):
-        r"""Prometheus实例ID, 仅当 MT_PROME 时有效
+        r"""<p>Prometheus实例ID, 仅当 MT_PROME 时有效</p>
         :rtype: str
         """
         return self._PromeInstanceID
@@ -911,7 +915,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def PromeInstanceRegion(self):
-        r"""Prometheus实例所在的地域, 仅当 MT_PROME 时有效
+        r"""<p>Prometheus实例所在的地域, 仅当 MT_PROME 时有效</p>
         :rtype: str
         """
         return self._PromeInstanceRegion
@@ -922,7 +926,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def Notices(self):
-        r"""通知模板相关的配置信息
+        r"""<p>通知模板相关的配置信息</p>
         :rtype: list of NotifyRelatedNotice
         """
         return self._Notices
@@ -933,7 +937,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def TriggerStatus(self):
-        r"""告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复
+        r"""<p>告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复</p>
         :rtype: str
         """
         return self._TriggerStatus
@@ -944,7 +948,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def PromeConsoleURL(self):
-        r"""与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效
+        r"""<p>与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效</p>
         :rtype: str
         """
         return self._PromeConsoleURL
@@ -955,7 +959,7 @@ class AlarmNotifyHistory(AbstractModel):
 
     @property
     def Labels(self):
-        r"""告警的lable
+        r"""<p>告警的lable</p>
         :rtype: list of AlarmLable
         """
         return self._Labels
@@ -963,6 +967,18 @@ class AlarmNotifyHistory(AbstractModel):
     @Labels.setter
     def Labels(self, Labels):
         self._Labels = Labels
+
+    @property
+    def ReceiverGroups(self):
+        r"""<p>该条通知实际执行的接收人/组明细。一条元素对应通知模板里的一条渠道发送规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReceiverGroup
+        """
+        return self._ReceiverGroups
+
+    @ReceiverGroups.setter
+    def ReceiverGroups(self, ReceiverGroups):
+        self._ReceiverGroups = ReceiverGroups
 
 
     def _deserialize(self, params):
@@ -998,6 +1014,12 @@ class AlarmNotifyHistory(AbstractModel):
                 obj = AlarmLable()
                 obj._deserialize(item)
                 self._Labels.append(obj)
+        if params.get("ReceiverGroups") is not None:
+            self._ReceiverGroups = []
+            for item in params.get("ReceiverGroups"):
+                obj = ReceiverGroup()
+                obj._deserialize(item)
+                self._ReceiverGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1263,30 +1285,117 @@ class CancelAIWorkbenchChatResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class ChannelsReceivers(AbstractModel):
-    r"""接受人详情信息
+class ChannelContent(AbstractModel):
+    r"""消息正文
 
     """
 
     def __init__(self):
         r"""
-        :param _ChannelName: 通知渠道名称
+        :param _SubChannel: <p>本段正文所属的渠道或子渠道全名</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li><li>WeWork： 企业微信机器人</li><li>WebHook： 自定义 WebHook</li><li>FeiShu： 飞书</li><li>DingDing： 钉钉</li><li>Slack： Slack</li><li>GoogleChat： Google Chat</li><li>Teams： Teams</li><li>TeamsWorkflow： Teams Workflow</li><li>PagerDuty： PagerDuty</li><li>CLS： 日志服务 CLS</li><li>AS： 弹性伸缩</li><li>TCSYehe： TCS 野鹤。正文的 SubChannel 取渠道名本身</li><li>SCF： 云函数。不返回 Contents</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubChannel: str
+        :param _Content: <p>该渠道实际发送的消息正文，由 Ark 按写时捕获的内容还原</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        """
+        self._SubChannel = None
+        self._Content = None
+
+    @property
+    def SubChannel(self):
+        r"""<p>本段正文所属的渠道或子渠道全名</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li><li>WeWork： 企业微信机器人</li><li>WebHook： 自定义 WebHook</li><li>FeiShu： 飞书</li><li>DingDing： 钉钉</li><li>Slack： Slack</li><li>GoogleChat： Google Chat</li><li>Teams： Teams</li><li>TeamsWorkflow： Teams Workflow</li><li>PagerDuty： PagerDuty</li><li>CLS： 日志服务 CLS</li><li>AS： 弹性伸缩</li><li>TCSYehe： TCS 野鹤。正文的 SubChannel 取渠道名本身</li><li>SCF： 云函数。不返回 Contents</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubChannel
+
+    @SubChannel.setter
+    def SubChannel(self, SubChannel):
+        self._SubChannel = SubChannel
+
+    @property
+    def Content(self):
+        r"""<p>该渠道实际发送的消息正文，由 Ark 按写时捕获的内容还原</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._SubChannel = params.get("SubChannel")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelsReceivers(AbstractModel):
+    r"""接受人详情信息和通知详情页展示
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelName: <p>通知渠道名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChannelName: str
-        :param _Receivers: 接收者
+        :param _Receivers: <p>接收者</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Receivers: list of str
-        :param _SendStatus: 发送结果,0-无效,1-成功,2-失败,3-无需发送
+        :param _SendStatus: <p>发送结果,0-无效,1-成功,2-失败,3-无需发送</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SendStatus: str
+        :param _SendStatusCode: <p>参数定义 渠道返回的原始状态码。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendStatusCode: str
+        :param _SendTime: <p>Ark 发起该渠道调用的时间</p><p>单位：Unix 秒级时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendTime: int
+        :param _SubChannels: <p>该渠道本次实际发送的子渠道全名，格式为 父渠道_子渠道</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubChannels: list of str
+        :param _ExecDetail: <p>该渠道本次执行情况的文字描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecDetail: str
+        :param _RealDeliverStatus: <p>短信真实投递状态，来自野鹤 smsStatus 回调的 reportStatus 原值</p><p>枚举值：</p><ul><li>SUCCESS： 短信已真实送达</li><li>FAIL： 短信真实投递失败，失败原因见 RealDeliverErrMsg</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealDeliverStatus: str
+        :param _RealDeliverTime: <p>用户真实收到短信的时间，取野鹤回调 userReceiverTime 原文字符串</p><p>参数格式：YYYY-MM-DD HH:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealDeliverTime: str
+        :param _RealDeliverErrMsg: <p>短信真实投递回执中的结果码，取野鹤回调 errmsg 原值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RealDeliverErrMsg: str
+        :param _Contents: <p>该渠道下各子渠道的消息正文明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Contents: list of ChannelContent
         """
         self._ChannelName = None
         self._Receivers = None
         self._SendStatus = None
+        self._SendStatusCode = None
+        self._SendTime = None
+        self._SubChannels = None
+        self._ExecDetail = None
+        self._RealDeliverStatus = None
+        self._RealDeliverTime = None
+        self._RealDeliverErrMsg = None
+        self._Contents = None
 
     @property
     def ChannelName(self):
-        r"""通知渠道名称
+        r"""<p>通知渠道名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1298,7 +1407,7 @@ class ChannelsReceivers(AbstractModel):
 
     @property
     def Receivers(self):
-        r"""接收者
+        r"""<p>接收者</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1310,7 +1419,7 @@ class ChannelsReceivers(AbstractModel):
 
     @property
     def SendStatus(self):
-        r"""发送结果,0-无效,1-成功,2-失败,3-无需发送
+        r"""<p>发送结果,0-无效,1-成功,2-失败,3-无需发送</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1320,11 +1429,120 @@ class ChannelsReceivers(AbstractModel):
     def SendStatus(self, SendStatus):
         self._SendStatus = SendStatus
 
+    @property
+    def SendStatusCode(self):
+        r"""<p>参数定义 渠道返回的原始状态码。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SendStatusCode
+
+    @SendStatusCode.setter
+    def SendStatusCode(self, SendStatusCode):
+        self._SendStatusCode = SendStatusCode
+
+    @property
+    def SendTime(self):
+        r"""<p>Ark 发起该渠道调用的时间</p><p>单位：Unix 秒级时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SendTime
+
+    @SendTime.setter
+    def SendTime(self, SendTime):
+        self._SendTime = SendTime
+
+    @property
+    def SubChannels(self):
+        r"""<p>该渠道本次实际发送的子渠道全名，格式为 父渠道_子渠道</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SubChannels
+
+    @SubChannels.setter
+    def SubChannels(self, SubChannels):
+        self._SubChannels = SubChannels
+
+    @property
+    def ExecDetail(self):
+        r"""<p>该渠道本次执行情况的文字描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecDetail
+
+    @ExecDetail.setter
+    def ExecDetail(self, ExecDetail):
+        self._ExecDetail = ExecDetail
+
+    @property
+    def RealDeliverStatus(self):
+        r"""<p>短信真实投递状态，来自野鹤 smsStatus 回调的 reportStatus 原值</p><p>枚举值：</p><ul><li>SUCCESS： 短信已真实送达</li><li>FAIL： 短信真实投递失败，失败原因见 RealDeliverErrMsg</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RealDeliverStatus
+
+    @RealDeliverStatus.setter
+    def RealDeliverStatus(self, RealDeliverStatus):
+        self._RealDeliverStatus = RealDeliverStatus
+
+    @property
+    def RealDeliverTime(self):
+        r"""<p>用户真实收到短信的时间，取野鹤回调 userReceiverTime 原文字符串</p><p>参数格式：YYYY-MM-DD HH:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RealDeliverTime
+
+    @RealDeliverTime.setter
+    def RealDeliverTime(self, RealDeliverTime):
+        self._RealDeliverTime = RealDeliverTime
+
+    @property
+    def RealDeliverErrMsg(self):
+        r"""<p>短信真实投递回执中的结果码，取野鹤回调 errmsg 原值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RealDeliverErrMsg
+
+    @RealDeliverErrMsg.setter
+    def RealDeliverErrMsg(self, RealDeliverErrMsg):
+        self._RealDeliverErrMsg = RealDeliverErrMsg
+
+    @property
+    def Contents(self):
+        r"""<p>该渠道下各子渠道的消息正文明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChannelContent
+        """
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
 
     def _deserialize(self, params):
         self._ChannelName = params.get("ChannelName")
         self._Receivers = params.get("Receivers")
         self._SendStatus = params.get("SendStatus")
+        self._SendStatusCode = params.get("SendStatusCode")
+        self._SendTime = params.get("SendTime")
+        self._SubChannels = params.get("SubChannels")
+        self._ExecDetail = params.get("ExecDetail")
+        self._RealDeliverStatus = params.get("RealDeliverStatus")
+        self._RealDeliverTime = params.get("RealDeliverTime")
+        self._RealDeliverErrMsg = params.get("RealDeliverErrMsg")
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = ChannelContent()
+                obj._deserialize(item)
+                self._Contents.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3280,20 +3498,22 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MonitorType: 监控类型
+        :param _MonitorType: <p>监控类型</p>
         :type MonitorType: str
-        :param _QueryBaseTime: 起始时间点，unix秒级时间戳
+        :param _QueryBaseTime: <p>起始时间点，unix秒级时间戳</p>
         :type QueryBaseTime: int
-        :param _QueryBeforeSeconds: 从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒
+        :param _QueryBeforeSeconds: <p>从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒</p>
         :type QueryBeforeSeconds: int
-        :param _PageParams: 分页参数
+        :param _PageParams: <p>分页参数</p>
         :type PageParams: :class:`tencentcloud.monitor.v20230616.models.PageByNoParams`
-        :param _Namespace: 当监控类型为 MT_QCE 时候需要填写，归属的命名空间
+        :param _Namespace: <p>当监控类型为 MT_QCE 时候需要填写，归属的命名空间</p>
         :type Namespace: str
-        :param _ModelName: 当监控类型为 MT_QCE 时候需要填写， 告警策略类型
+        :param _ModelName: <p>当监控类型为 MT_QCE 时候需要填写， 告警策略类型</p>
         :type ModelName: str
-        :param _PolicyId: 查询某个策略的通知历史
+        :param _PolicyId: <p>查询某个策略的通知历史</p>
         :type PolicyId: str
+        :param _NotifyId: <p>详情页展示所需id</p>
+        :type NotifyId: str
         """
         self._MonitorType = None
         self._QueryBaseTime = None
@@ -3302,10 +3522,11 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
         self._Namespace = None
         self._ModelName = None
         self._PolicyId = None
+        self._NotifyId = None
 
     @property
     def MonitorType(self):
-        r"""监控类型
+        r"""<p>监控类型</p>
         :rtype: str
         """
         return self._MonitorType
@@ -3316,7 +3537,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def QueryBaseTime(self):
-        r"""起始时间点，unix秒级时间戳
+        r"""<p>起始时间点，unix秒级时间戳</p>
         :rtype: int
         """
         return self._QueryBaseTime
@@ -3327,7 +3548,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def QueryBeforeSeconds(self):
-        r"""从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒
+        r"""<p>从 QueryBaseTime 开始，需要查询往前多久的时间，单位秒</p>
         :rtype: int
         """
         return self._QueryBeforeSeconds
@@ -3338,7 +3559,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def PageParams(self):
-        r"""分页参数
+        r"""<p>分页参数</p>
         :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNoParams`
         """
         return self._PageParams
@@ -3349,7 +3570,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""当监控类型为 MT_QCE 时候需要填写，归属的命名空间
+        r"""<p>当监控类型为 MT_QCE 时候需要填写，归属的命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -3360,7 +3581,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""当监控类型为 MT_QCE 时候需要填写， 告警策略类型
+        r"""<p>当监控类型为 MT_QCE 时候需要填写， 告警策略类型</p>
         :rtype: str
         """
         return self._ModelName
@@ -3371,7 +3592,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""查询某个策略的通知历史
+        r"""<p>查询某个策略的通知历史</p>
         :rtype: str
         """
         return self._PolicyId
@@ -3379,6 +3600,17 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
     @PolicyId.setter
     def PolicyId(self, PolicyId):
         self._PolicyId = PolicyId
+
+    @property
+    def NotifyId(self):
+        r"""<p>详情页展示所需id</p>
+        :rtype: str
+        """
+        return self._NotifyId
+
+    @NotifyId.setter
+    def NotifyId(self, NotifyId):
+        self._NotifyId = NotifyId
 
 
     def _deserialize(self, params):
@@ -3391,6 +3623,7 @@ class DescribeAlarmNotifyHistoriesRequest(AbstractModel):
         self._Namespace = params.get("Namespace")
         self._ModelName = params.get("ModelName")
         self._PolicyId = params.get("PolicyId")
+        self._NotifyId = params.get("NotifyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3408,9 +3641,9 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmNotifyHistoryList: 告警历史
+        :param _AlarmNotifyHistoryList: <p>告警历史</p>
         :type AlarmNotifyHistoryList: list of AlarmNotifyHistory
-        :param _PageResult: 分页情况
+        :param _PageResult: <p>分页情况</p>
         :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNoResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3421,7 +3654,7 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
 
     @property
     def AlarmNotifyHistoryList(self):
-        r"""告警历史
+        r"""<p>告警历史</p>
         :rtype: list of AlarmNotifyHistory
         """
         return self._AlarmNotifyHistoryList
@@ -3432,7 +3665,7 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
 
     @property
     def PageResult(self):
-        r"""分页情况
+        r"""<p>分页情况</p>
         :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNoResult`
         """
         return self._PageResult
@@ -8417,10 +8650,10 @@ class PageByNoParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PerPage: 每个分页的数量是多少
+        :param _PerPage: <p>每个分页的数量是多少</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PerPage: int
-        :param _PageNo: 第几个分页，从1开始
+        :param _PageNo: <p>第几个分页，从1开始</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PageNo: str
         """
@@ -8429,7 +8662,7 @@ class PageByNoParams(AbstractModel):
 
     @property
     def PerPage(self):
-        r"""每个分页的数量是多少
+        r"""<p>每个分页的数量是多少</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8441,7 +8674,7 @@ class PageByNoParams(AbstractModel):
 
     @property
     def PageNo(self):
-        r"""第几个分页，从1开始
+        r"""<p>第几个分页，从1开始</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9359,6 +9592,180 @@ class QCloudYeheWeChatNoticeTmplItem(AbstractModel):
         self._AlarmObjectTmpl = params.get("AlarmObjectTmpl")
         self._AlarmRegionTmpl = params.get("AlarmRegionTmpl")
         self._AlarmTimeTmpl = params.get("AlarmTimeTmpl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReceiverGroup(AbstractModel):
+    r"""承载消息接收人/组明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReceiverType: <p>本条发送规则的接收者类型</p><p>枚举值：</p><ul><li>UIDs： 按用户 UID</li><li>UINs： 按账号 UIN</li><li>Group： 按用户分组。ReceiverIds 为分组 ID</li><li>Oncall： 按值班表，且未被发送时的真实接收人覆盖</li><li>RtxName： 发送时解析出的员工 RTX 英文名</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverType: str
+        :param _ReceiverIds: <p>本条规则配置的原始接收者 ID 列表。具体是哪一种 ID，由 ReceiverType 决定</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReceiverIds: list of str
+        :param _Names: <p>接收者展示名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Names: list of str
+        :param _MemberIds: <p>用户分组展开后的成员用户 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberIds: list of str
+        :param _WeekDay: <p>该规则允许通知的星期。语义与 time.Weekday 一致</p><p>枚举值：</p><ul><li>0： 周日</li><li>1： 周一</li><li>2： 周二</li><li>3： 周三</li><li>4： 周四</li><li>5： 周五</li><li>6： 周六</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeekDay: list of int
+        :param _DayStartSeconds: <p>通知时段相对当日零点的秒数偏移，需配合 TimeZoneName 解读</p><p>单位：秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DayStartSeconds: int
+        :param _DayEndSeconds: <p>通知时段相对当日零点的秒数偏移，需配合 TimeZoneName 解读</p><p>单位：秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DayEndSeconds: int
+        :param _TimeZoneName: <p>DayStartSeconds、DayEndSeconds 所属时区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZoneName: str
+        :param _ChannelNames: <p>该规则实际发送的接收渠道全名列表</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li><li>WeWork： 企业微信机器人</li><li>WebHook： 自定义 WebHook</li><li>FeiShu： 飞书</li><li>DingDing： 钉钉</li><li>Slack： Slack</li><li>GoogleChat： Google Chat</li><li>Teams： Teams</li><li>TeamsWorkflow： Teams Workflow</li><li>PagerDuty： PagerDuty</li><li>CLS： 日志服务 CLS</li><li>AS： 弹性伸缩</li><li>TCSYehe： TCS 野鹤。正文的 SubChannel 取渠道名本身</li><li>SCF： 云函数。不返回 Contents</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelNames: list of str
+        """
+        self._ReceiverType = None
+        self._ReceiverIds = None
+        self._Names = None
+        self._MemberIds = None
+        self._WeekDay = None
+        self._DayStartSeconds = None
+        self._DayEndSeconds = None
+        self._TimeZoneName = None
+        self._ChannelNames = None
+
+    @property
+    def ReceiverType(self):
+        r"""<p>本条发送规则的接收者类型</p><p>枚举值：</p><ul><li>UIDs： 按用户 UID</li><li>UINs： 按账号 UIN</li><li>Group： 按用户分组。ReceiverIds 为分组 ID</li><li>Oncall： 按值班表，且未被发送时的真实接收人覆盖</li><li>RtxName： 发送时解析出的员工 RTX 英文名</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReceiverType
+
+    @ReceiverType.setter
+    def ReceiverType(self, ReceiverType):
+        self._ReceiverType = ReceiverType
+
+    @property
+    def ReceiverIds(self):
+        r"""<p>本条规则配置的原始接收者 ID 列表。具体是哪一种 ID，由 ReceiverType 决定</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ReceiverIds
+
+    @ReceiverIds.setter
+    def ReceiverIds(self, ReceiverIds):
+        self._ReceiverIds = ReceiverIds
+
+    @property
+    def Names(self):
+        r"""<p>接收者展示名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def MemberIds(self):
+        r"""<p>用户分组展开后的成员用户 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._MemberIds
+
+    @MemberIds.setter
+    def MemberIds(self, MemberIds):
+        self._MemberIds = MemberIds
+
+    @property
+    def WeekDay(self):
+        r"""<p>该规则允许通知的星期。语义与 time.Weekday 一致</p><p>枚举值：</p><ul><li>0： 周日</li><li>1： 周一</li><li>2： 周二</li><li>3： 周三</li><li>4： 周四</li><li>5： 周五</li><li>6： 周六</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._WeekDay
+
+    @WeekDay.setter
+    def WeekDay(self, WeekDay):
+        self._WeekDay = WeekDay
+
+    @property
+    def DayStartSeconds(self):
+        r"""<p>通知时段相对当日零点的秒数偏移，需配合 TimeZoneName 解读</p><p>单位：秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DayStartSeconds
+
+    @DayStartSeconds.setter
+    def DayStartSeconds(self, DayStartSeconds):
+        self._DayStartSeconds = DayStartSeconds
+
+    @property
+    def DayEndSeconds(self):
+        r"""<p>通知时段相对当日零点的秒数偏移，需配合 TimeZoneName 解读</p><p>单位：秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DayEndSeconds
+
+    @DayEndSeconds.setter
+    def DayEndSeconds(self, DayEndSeconds):
+        self._DayEndSeconds = DayEndSeconds
+
+    @property
+    def TimeZoneName(self):
+        r"""<p>DayStartSeconds、DayEndSeconds 所属时区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimeZoneName
+
+    @TimeZoneName.setter
+    def TimeZoneName(self, TimeZoneName):
+        self._TimeZoneName = TimeZoneName
+
+    @property
+    def ChannelNames(self):
+        r"""<p>该规则实际发送的接收渠道全名列表</p><p>枚举值：</p><ul><li>QCloudYehe_site： 腾讯云野鹤，站内信</li><li>QCloudYehe_email： 腾讯云野鹤，电子邮件</li><li>QCloudYehe_sms： 腾讯云野鹤，短信</li><li>QCloudYehe_wechat： 腾讯云野鹤，微信</li><li>QCloudYehe_voice： 腾讯云野鹤，语音</li><li>QCloudYehe_qywx： 腾讯云野鹤，企业微信</li><li>QCloudYehe_andon： 腾讯云野鹤，安灯</li><li>TOF_weWorkMessage： TOF，企业微信消息</li><li>TOF_email： TOF，企业邮箱</li><li>TOF_phoneCall： TOF，电话</li><li>WeWork： 企业微信机器人</li><li>WebHook： 自定义 WebHook</li><li>FeiShu： 飞书</li><li>DingDing： 钉钉</li><li>Slack： Slack</li><li>GoogleChat： Google Chat</li><li>Teams： Teams</li><li>TeamsWorkflow： Teams Workflow</li><li>PagerDuty： PagerDuty</li><li>CLS： 日志服务 CLS</li><li>AS： 弹性伸缩</li><li>TCSYehe： TCS 野鹤。正文的 SubChannel 取渠道名本身</li><li>SCF： 云函数。不返回 Contents</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ChannelNames
+
+    @ChannelNames.setter
+    def ChannelNames(self, ChannelNames):
+        self._ChannelNames = ChannelNames
+
+
+    def _deserialize(self, params):
+        self._ReceiverType = params.get("ReceiverType")
+        self._ReceiverIds = params.get("ReceiverIds")
+        self._Names = params.get("Names")
+        self._MemberIds = params.get("MemberIds")
+        self._WeekDay = params.get("WeekDay")
+        self._DayStartSeconds = params.get("DayStartSeconds")
+        self._DayEndSeconds = params.get("DayEndSeconds")
+        self._TimeZoneName = params.get("TimeZoneName")
+        self._ChannelNames = params.get("ChannelNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

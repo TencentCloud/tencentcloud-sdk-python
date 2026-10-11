@@ -33363,20 +33363,19 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _ClusterType: 集群类型
+        :param _ClusterType: <p>集群类型</p>
         :type ClusterType: str
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _ServiceMonitors: ServiceMonitors配置
+        :param _ServiceMonitors: <p>ServiceMonitors配置</p>
         :type ServiceMonitors: list of PrometheusConfigItem
-        :param _PodMonitors: PodMonitors配置
+        :param _PodMonitors: <p>PodMonitors配置</p>
         :type PodMonitors: list of PrometheusConfigItem
-        :param _RawJobs: prometheus原生Job配置
+        :param _RawJobs: <p>prometheus原生Job配置</p>
         :type RawJobs: list of PrometheusConfigItem
-        :param _UpdateImage: 0: 更新实例组件镜像版本；
-1: 不更新实例组件镜像版本
+        :param _UpdateImage: <p>0: 更新实例组件镜像版本；<br>1: 不更新实例组件镜像版本</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
         :type UpdateImage: int
         """
         self._InstanceId = None
@@ -33389,7 +33388,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -33400,7 +33399,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型
+        r"""<p>集群类型</p>
         :rtype: str
         """
         return self._ClusterType
@@ -33411,7 +33410,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -33422,7 +33421,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def ServiceMonitors(self):
-        r"""ServiceMonitors配置
+        r"""<p>ServiceMonitors配置</p>
         :rtype: list of PrometheusConfigItem
         """
         return self._ServiceMonitors
@@ -33433,7 +33432,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def PodMonitors(self):
-        r"""PodMonitors配置
+        r"""<p>PodMonitors配置</p>
         :rtype: list of PrometheusConfigItem
         """
         return self._PodMonitors
@@ -33444,7 +33443,7 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def RawJobs(self):
-        r"""prometheus原生Job配置
+        r"""<p>prometheus原生Job配置</p>
         :rtype: list of PrometheusConfigItem
         """
         return self._RawJobs
@@ -33455,14 +33454,17 @@ class ModifyPrometheusConfigRequest(AbstractModel):
 
     @property
     def UpdateImage(self):
-        r"""0: 更新实例组件镜像版本；
-1: 不更新实例组件镜像版本
+        warnings.warn("parameter `UpdateImage` is deprecated", DeprecationWarning) 
+
+        r"""<p>0: 更新实例组件镜像版本；<br>1: 不更新实例组件镜像版本</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
         :rtype: int
         """
         return self._UpdateImage
 
     @UpdateImage.setter
     def UpdateImage(self, UpdateImage):
+        warnings.warn("parameter `UpdateImage` is deprecated", DeprecationWarning) 
+
         self._UpdateImage = UpdateImage
 
 

@@ -151,6 +151,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelPolicyRuleExecuteRecord(
+            self,
+            request: models.CancelPolicyRuleExecuteRecordRequest,
+            opts: Dict = None,
+    ) -> models.CancelPolicyRuleExecuteRecordResponse:
+        """
+        取消正在执行的扫描任务，正在扫描的任务取消后没有结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelPolicyRuleExecuteRecord"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelPolicyRuleExecuteRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDataRepositoryTask(
             self,
             request: models.CreateDataRepositoryTaskRequest,
@@ -223,6 +241,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePolicyRule(
+            self,
+            request: models.CreatePolicyRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreatePolicyRuleResponse:
+        """
+        创建数据洞察任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePolicyRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePolicyRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCrossVpcSubnetSupportForClientNode(
             self,
             request: models.DeleteCrossVpcSubnetSupportForClientNodeRequest,
@@ -290,6 +326,24 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "DeleteFileset"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteFilesetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePolicyRule(
+            self,
+            request: models.DeletePolicyRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeletePolicyRuleResponse:
+        """
+        删除扫描规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePolicyRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePolicyRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -475,6 +529,42 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePolicyRule(
+            self,
+            request: models.DescribePolicyRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribePolicyRuleResponse:
+        """
+        列出所有的扫描规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePolicyRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePolicyRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePolicyRuleExecuteRecord(
+            self,
+            request: models.DescribePolicyRuleExecuteRecordRequest,
+            opts: Dict = None,
+    ) -> models.DescribePolicyRuleExecuteRecordResponse:
+        """
+        列出指定扫描规则的执行记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePolicyRuleExecuteRecord"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePolicyRuleExecuteRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DetachFileSystemBucket(
             self,
             request: models.DetachFileSystemBucketRequest,
@@ -488,6 +578,42 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "DetachFileSystemBucket"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DetachFileSystemBucketResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DisablePolicyRule(
+            self,
+            request: models.DisablePolicyRuleRequest,
+            opts: Dict = None,
+    ) -> models.DisablePolicyRuleResponse:
+        """
+        禁用扫描任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisablePolicyRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisablePolicyRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnablePolicyRule(
+            self,
+            request: models.EnablePolicyRuleRequest,
+            opts: Dict = None,
+    ) -> models.EnablePolicyRuleResponse:
+        """
+        启用扫描任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnablePolicyRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnablePolicyRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1411,6 +1411,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnableTrainingTaskClsConfig(self, request):
+        r"""开启CLS日志投递
+
+        :param request: Request instance for EnableTrainingTaskClsConfig.
+        :type request: :class:`tencentcloud.tione.v20211111.models.EnableTrainingTaskClsConfigRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.EnableTrainingTaskClsConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableTrainingTaskClsConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableTrainingTaskClsConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyModelService(self, request):
         r"""用于更新模型服务
 

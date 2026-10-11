@@ -43,6 +43,42 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddWorkspaceGroups(
+            self,
+            request: models.AddWorkspaceGroupsRequest,
+            opts: Dict = None,
+    ) -> models.AddWorkspaceGroupsResponse:
+        """
+        添加工作空间用户组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddWorkspaceGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddWorkspaceGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddWorkspaceUsers(
+            self,
+            request: models.AddWorkspaceUsersRequest,
+            opts: Dict = None,
+    ) -> models.AddWorkspaceUsersResponse:
+        """
+        创建用户组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddWorkspaceUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddWorkspaceUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCatalog(
             self,
             request: models.CreateCatalogRequest,
@@ -301,6 +337,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteTable(
+            self,
+            request: models.DeleteTableRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTableResponse:
+        """
+        删除table
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteWorkflow(
             self,
             request: models.DeleteWorkflowRequest,
@@ -355,6 +409,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetCatalog(
+            self,
+            request: models.GetCatalogRequest,
+            opts: Dict = None,
+    ) -> models.GetCatalogResponse:
+        """
+        查询catalog详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetCatalog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetCatalogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetFile(
             self,
             request: models.GetFileRequest,
@@ -403,6 +475,60 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "GetFolder"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetSchema(
+            self,
+            request: models.GetSchemaRequest,
+            opts: Dict = None,
+    ) -> models.GetSchemaResponse:
+        """
+        查询schema详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetSchema"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetSchemaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTable(
+            self,
+            request: models.GetTableRequest,
+            opts: Dict = None,
+    ) -> models.GetTableResponse:
+        """
+        查询table详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTables(
+            self,
+            request: models.GetTablesRequest,
+            opts: Dict = None,
+    ) -> models.GetTablesResponse:
+        """
+        批量获取表的元数据。使用场景：根据表的全名列表（catalogName.schemaName.tableName）批量获取表的详细元数据信息。前置条件：需要有对应workspace的读权限，仅返回当前workspace有权限的catalog下的表。权限校验：通过getAuthedCatalogNames获取有权限的catalogName进行过滤，不在权限范围内的表会被静默跳过。限制：FullNames最大支持20个表全名
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTablesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -493,6 +619,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "KillWorkflowRun"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.KillWorkflowRunResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListCatalogs(
+            self,
+            request: models.ListCatalogsRequest,
+            opts: Dict = None,
+    ) -> models.ListCatalogsResponse:
+        """
+        分页获取数据目录列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListCatalogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListCatalogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -606,6 +750,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListTables(
+            self,
+            request: models.ListTablesRequest,
+            opts: Dict = None,
+    ) -> models.ListTablesResponse:
+        """
+        获取table列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListWorkflowRuns(
             self,
             request: models.ListWorkflowRunsRequest,
@@ -660,6 +822,60 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListWorkspaceGroupUsers(
+            self,
+            request: models.ListWorkspaceGroupUsersRequest,
+            opts: Dict = None,
+    ) -> models.ListWorkspaceGroupUsersResponse:
+        """
+        查询工作空间用户组用户列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListWorkspaceGroupUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListWorkspaceGroupUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListWorkspaceGroups(
+            self,
+            request: models.ListWorkspaceGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ListWorkspaceGroupsResponse:
+        """
+        查询工作空间用户组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListWorkspaceGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListWorkspaceGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListWorkspaceUsers(
+            self,
+            request: models.ListWorkspaceUsersRequest,
+            opts: Dict = None,
+    ) -> models.ListWorkspaceUsersResponse:
+        """
+        查询工作空间用户列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListWorkspaceUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListWorkspaceUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListWorkspaces(
             self,
             request: models.ListWorkspacesRequest,
@@ -691,6 +907,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "RemoveConsoleUsers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RemoveConsoleUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RemoveWorkspaceGroups(
+            self,
+            request: models.RemoveWorkspaceGroupsRequest,
+            opts: Dict = None,
+    ) -> models.RemoveWorkspaceGroupsResponse:
+        """
+        移除工作空间用户组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveWorkspaceGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveWorkspaceGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -914,6 +1148,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateWorkspaceGroupsRoles(
+            self,
+            request: models.UpdateWorkspaceGroupsRolesRequest,
+            opts: Dict = None,
+    ) -> models.UpdateWorkspaceGroupsRolesResponse:
+        """
+        更新工作空间用户组角色
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateWorkspaceGroupsRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateWorkspaceGroupsRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateWorkspaceRole(
             self,
             request: models.UpdateWorkspaceRoleRequest,
@@ -927,6 +1179,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "UpdateWorkspaceRole"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateWorkspaceRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateWorkspaceUsersRoles(
+            self,
+            request: models.UpdateWorkspaceUsersRolesRequest,
+            opts: Dict = None,
+    ) -> models.UpdateWorkspaceUsersRolesResponse:
+        """
+        修改工作空间用户角色
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateWorkspaceUsersRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateWorkspaceUsersRolesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

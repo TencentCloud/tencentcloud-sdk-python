@@ -259,6 +259,30 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSandboxSnapshot(self, request):
+        r"""创建沙箱快照
+        该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。接入方需关注后续版本及变更说明，并根据需要调整调用代码。
+
+        :param request: Request instance for CreateSandboxSnapshot.
+        :type request: :class:`tencentcloud.ags.v20250920.models.CreateSandboxSnapshotRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CreateSandboxSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSandboxSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSandboxSnapshotResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSandboxTool(self, request):
         r"""创建沙箱工具
 
@@ -414,6 +438,30 @@ class AgsClient(AbstractClient):
             body = self.call("DeleteRegistryRecord", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRegistryRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSandboxSnapshot(self, request):
+        r"""删除沙箱快照
+        该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。接入方需关注后续版本及变更说明，并根据需要调整调用代码。
+
+        :param request: Request instance for DeleteSandboxSnapshot.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DeleteSandboxSnapshotRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DeleteSandboxSnapshotResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSandboxSnapshot", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSandboxSnapshotResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -785,6 +833,30 @@ class AgsClient(AbstractClient):
             body = self.call("DescribeSandboxInstanceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSandboxInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSandboxSnapshotList(self, request):
+        r"""查询沙箱快照
+        该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。请关注后续版本及变更说明，并根据需要调整调用代码。
+
+        :param request: Request instance for DescribeSandboxSnapshotList.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribeSandboxSnapshotListRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribeSandboxSnapshotListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSandboxSnapshotList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSandboxSnapshotListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

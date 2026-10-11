@@ -187,6 +187,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelPolicyRuleExecuteRecord(self, request):
+        r"""取消正在执行的扫描任务，正在扫描的任务取消后没有结果
+
+        :param request: Request instance for CancelPolicyRuleExecuteRecord.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.CancelPolicyRuleExecuteRecordRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.CancelPolicyRuleExecuteRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelPolicyRuleExecuteRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelPolicyRuleExecuteRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDataRepositoryTask(self, request):
         r"""创建数据流通任务,包括从将文件系统的数据上传到存储桶下, 以及从存储桶下载到文件系统里。
 
@@ -279,6 +302,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePolicyRule(self, request):
+        r"""创建数据洞察任务
+
+        :param request: Request instance for CreatePolicyRule.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.CreatePolicyRuleRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.CreatePolicyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePolicyRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePolicyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCrossVpcSubnetSupportForClientNode(self, request):
         r"""为客户端节点删除跨vpc子网访问能力
 
@@ -362,6 +408,29 @@ class GoosefsClient(AbstractClient):
             body = self.call("DeleteFileset", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteFilesetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePolicyRule(self, request):
+        r"""删除扫描规则
+
+        :param request: Request instance for DeletePolicyRule.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DeletePolicyRuleRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DeletePolicyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePolicyRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePolicyRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -601,6 +670,52 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePolicyRule(self, request):
+        r"""列出所有的扫描规则
+
+        :param request: Request instance for DescribePolicyRule.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribePolicyRuleRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribePolicyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePolicyRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePolicyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePolicyRuleExecuteRecord(self, request):
+        r"""列出指定扫描规则的执行记录
+
+        :param request: Request instance for DescribePolicyRuleExecuteRecord.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribePolicyRuleExecuteRecordRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribePolicyRuleExecuteRecordResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePolicyRuleExecuteRecord", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePolicyRuleExecuteRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DetachFileSystemBucket(self, request):
         r"""解绑文件系统与Bucket的映射
 
@@ -615,6 +730,52 @@ class GoosefsClient(AbstractClient):
             body = self.call("DetachFileSystemBucket", params, headers=headers)
             response = json.loads(body)
             model = models.DetachFileSystemBucketResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DisablePolicyRule(self, request):
+        r"""禁用扫描任务
+
+        :param request: Request instance for DisablePolicyRule.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DisablePolicyRuleRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DisablePolicyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisablePolicyRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisablePolicyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnablePolicyRule(self, request):
+        r"""启用扫描任务
+
+        :param request: Request instance for EnablePolicyRule.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.EnablePolicyRuleRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.EnablePolicyRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnablePolicyRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnablePolicyRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

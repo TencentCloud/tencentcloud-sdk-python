@@ -14017,6 +14017,102 @@ class DeviceMaterialInfo(AbstractModel):
         
 
 
+class EnableTrainingTaskClsConfigRequest(AbstractModel):
+    r"""EnableTrainingTaskClsConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 训练任务ID
+        :type TaskId: str
+        :param _LogEnable: 是否开启CLS日志投递
+        :type LogEnable: bool
+        :param _LogConfig: 日志配置
+        :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
+        self._TaskId = None
+        self._LogEnable = None
+        self._LogConfig = None
+
+    @property
+    def TaskId(self):
+        r"""训练任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def LogEnable(self):
+        r"""是否开启CLS日志投递
+        :rtype: bool
+        """
+        return self._LogEnable
+
+    @LogEnable.setter
+    def LogEnable(self, LogEnable):
+        self._LogEnable = LogEnable
+
+    @property
+    def LogConfig(self):
+        r"""日志配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._LogEnable = params.get("LogEnable")
+        if params.get("LogConfig") is not None:
+            self._LogConfig = LogConfig()
+            self._LogConfig._deserialize(params.get("LogConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableTrainingTaskClsConfigResponse(AbstractModel):
+    r"""EnableTrainingTaskClsConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class EncodedStartCmdInfo(AbstractModel):
     r"""编码后的启动命令信息
 

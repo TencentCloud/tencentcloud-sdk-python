@@ -4862,6 +4862,135 @@ class DescribeCaCertificatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClientEventsRequest(AbstractModel):
+    r"""DescribeClientEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _ClientId: 客户端id
+        :type ClientId: str
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ClientId = None
+
+    @property
+    def InstanceId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ClientId(self):
+        r"""客户端id
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ClientId = params.get("ClientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClientEventsResponse(AbstractModel):
+    r"""DescribeClientEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: 轨迹
+        :type Events: list of EventItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        r"""轨迹
+        :rtype: list of EventItem
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = EventItem()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClientListRequest(AbstractModel):
     r"""DescribeClientList请求参数结构体
 
@@ -10054,6 +10183,155 @@ class DeviceIdentityItem(AbstractModel):
                 obj = PropagatingProperty()
                 obj._deserialize(item)
                 self._PropagatingProperties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventInfo(AbstractModel):
+    r"""客户端事件信息详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 事件信息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 事件信息值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""事件信息key
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""事件信息值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventItem(AbstractModel):
+    r"""事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _Event: <p>事件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Event: str
+        :param _ClientId: <p>发消息或者收消息的clientid</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        :param _Info: <p>事件的相关信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Info: list of EventInfo
+        """
+        self._Timestamp = None
+        self._Event = None
+        self._ClientId = None
+        self._Info = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Event(self):
+        r"""<p>事件</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def ClientId(self):
+        r"""<p>发消息或者收消息的clientid</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def Info(self):
+        r"""<p>事件的相关信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventInfo
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._Event = params.get("Event")
+        self._ClientId = params.get("ClientId")
+        if params.get("Info") is not None:
+            self._Info = []
+            for item in params.get("Info"):
+                obj = EventInfo()
+                obj._deserialize(item)
+                self._Info.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

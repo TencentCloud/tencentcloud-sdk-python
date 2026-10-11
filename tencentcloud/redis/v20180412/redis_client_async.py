@@ -2133,6 +2133,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpgradeInstanceProductVersion(
+            self,
+            request: models.UpgradeInstanceProductVersionRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeInstanceProductVersionResponse:
+        """
+        本接口（UpgradeInstanceProductVersion）用于升级实例类型，可从通用 I 型升级到通用 II 型。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeInstanceProductVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeInstanceProductVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpgradeInstanceVersion(
             self,
             request: models.UpgradeInstanceVersionRequest,

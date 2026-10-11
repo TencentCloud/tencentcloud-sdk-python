@@ -12009,71 +12009,71 @@ class Device(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 资产ID
+        :param _Id: <p>资产ID</p>
         :type Id: int
-        :param _InstanceId: 实例ID，对应CVM、CDB等实例ID
+        :param _InstanceId: <p>实例ID，对应CVM、CDB等实例ID</p>
         :type InstanceId: str
-        :param _Name: 资产名
+        :param _Name: <p>资产名</p>
         :type Name: str
-        :param _PublicIp: 公网IP
+        :param _PublicIp: <p>公网IP</p>
         :type PublicIp: str
-        :param _PrivateIp: 内网IP
+        :param _PrivateIp: <p>内网IP</p>
         :type PrivateIp: str
-        :param _ApCode: 地域编码
+        :param _ApCode: <p>地域编码</p>
         :type ApCode: str
-        :param _ApName: 地域名称
+        :param _ApName: <p>地域名称</p>
         :type ApName: str
-        :param _OsName: 操作系统名称
+        :param _OsName: <p>操作系统名称</p>
         :type OsName: str
-        :param _Kind: 资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+        :param _Kind: <p>资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
         :type Kind: int
-        :param _Port: 管理端口
+        :param _Port: <p>管理端口</p>
         :type Port: int
-        :param _GroupSet: 所属资产组列表
+        :param _GroupSet: <p>所属资产组列表</p>
         :type GroupSet: list of Group
-        :param _AccountCount: 资产绑定的账号数
+        :param _AccountCount: <p>资产绑定的账号数</p>
         :type AccountCount: int
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>VPC ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _Resource: 堡垒机服务信息，注意没有绑定服务时为null
+        :param _Resource: <p>堡垒机服务信息，注意没有绑定服务时为null</p>
         :type Resource: :class:`tencentcloud.bh.v20230418.models.Resource`
-        :param _Department: 资产所属部门
+        :param _Department: <p>资产所属部门</p>
         :type Department: :class:`tencentcloud.bh.v20230418.models.Department`
-        :param _IpPortSet: 数据库资产的多节点
+        :param _IpPortSet: <p>数据库资产的多节点</p>
         :type IpPortSet: list of str
-        :param _DomainId: 网络域Id
+        :param _DomainId: <p>网络域Id</p>
         :type DomainId: str
-        :param _DomainName: 网络域名称
+        :param _DomainName: <p>网络域名称</p>
         :type DomainName: str
-        :param _EnableSSL: 是否启用SSL，仅支持Redis资产。0：禁用 1：启用
+        :param _EnableSSL: <p>是否启用SSL，仅支持Redis资产。0：禁用 1：启用</p>
         :type EnableSSL: int
-        :param _SSLCertName: 已上传的SSL证书名称
+        :param _SSLCertName: <p>已上传的SSL证书名称</p>
         :type SSLCertName: str
-        :param _IOAId: IOA侧的资源ID
+        :param _IOAId: <p>IOA侧的资源ID</p>
         :type IOAId: int
-        :param _ManageDimension: K8S集群托管维度。1-集群，2-命名空间，3-工作负载
+        :param _ManageDimension: <p>K8S集群托管维度。1-集群，2-命名空间，3-工作负载</p>
         :type ManageDimension: int
-        :param _ManageAccountId: K8S集群托管账号id	
+        :param _ManageAccountId: <p>K8S集群托管账号id</p>
         :type ManageAccountId: int
-        :param _Namespace: K8S集群命名空间	
+        :param _Namespace: <p>K8S集群命名空间</p>
         :type Namespace: str
-        :param _Workload: K8S集群工作负载	
+        :param _Workload: <p>K8S集群工作负载</p>
         :type Workload: str
-        :param _SyncPodCount: K8S集群pod已同步数量
+        :param _SyncPodCount: <p>K8S集群pod已同步数量</p>
         :type SyncPodCount: int
-        :param _TotalPodCount: K8S集群pod总数量	
+        :param _TotalPodCount: <p>K8S集群pod总数量</p>
         :type TotalPodCount: int
-        :param _CloudAccountId: 云账号id
+        :param _CloudAccountId: <p>云账号id</p>
         :type CloudAccountId: int
-        :param _CloudAccountName: 云账号名称
+        :param _CloudAccountName: <p>云账号名称</p>
         :type CloudAccountName: str
-        :param _ProviderType: 云厂商类型1-腾讯云，2-阿里云
+        :param _ProviderType: <p>云厂商类型1-腾讯云，2-阿里云</p>
         :type ProviderType: int
-        :param _ProviderName: 云厂商名称
+        :param _ProviderName: <p>云厂商名称</p>
         :type ProviderName: str
-        :param _SyncCloudDeviceStatus: 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+        :param _SyncCloudDeviceStatus: <p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
         :type SyncCloudDeviceStatus: int
         """
         self._Id = None
@@ -12112,7 +12112,7 @@ class Device(AbstractModel):
 
     @property
     def Id(self):
-        r"""资产ID
+        r"""<p>资产ID</p>
         :rtype: int
         """
         return self._Id
@@ -12123,7 +12123,7 @@ class Device(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，对应CVM、CDB等实例ID
+        r"""<p>实例ID，对应CVM、CDB等实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12134,7 +12134,7 @@ class Device(AbstractModel):
 
     @property
     def Name(self):
-        r"""资产名
+        r"""<p>资产名</p>
         :rtype: str
         """
         return self._Name
@@ -12145,7 +12145,7 @@ class Device(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""公网IP
+        r"""<p>公网IP</p>
         :rtype: str
         """
         return self._PublicIp
@@ -12156,7 +12156,7 @@ class Device(AbstractModel):
 
     @property
     def PrivateIp(self):
-        r"""内网IP
+        r"""<p>内网IP</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -12167,7 +12167,7 @@ class Device(AbstractModel):
 
     @property
     def ApCode(self):
-        r"""地域编码
+        r"""<p>地域编码</p>
         :rtype: str
         """
         return self._ApCode
@@ -12178,7 +12178,7 @@ class Device(AbstractModel):
 
     @property
     def ApName(self):
-        r"""地域名称
+        r"""<p>地域名称</p>
         :rtype: str
         """
         return self._ApName
@@ -12189,7 +12189,7 @@ class Device(AbstractModel):
 
     @property
     def OsName(self):
-        r"""操作系统名称
+        r"""<p>操作系统名称</p>
         :rtype: str
         """
         return self._OsName
@@ -12200,7 +12200,7 @@ class Device(AbstractModel):
 
     @property
     def Kind(self):
-        r"""资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+        r"""<p>资产类型 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
         :rtype: int
         """
         return self._Kind
@@ -12211,7 +12211,7 @@ class Device(AbstractModel):
 
     @property
     def Port(self):
-        r"""管理端口
+        r"""<p>管理端口</p>
         :rtype: int
         """
         return self._Port
@@ -12222,7 +12222,7 @@ class Device(AbstractModel):
 
     @property
     def GroupSet(self):
-        r"""所属资产组列表
+        r"""<p>所属资产组列表</p>
         :rtype: list of Group
         """
         return self._GroupSet
@@ -12233,7 +12233,7 @@ class Device(AbstractModel):
 
     @property
     def AccountCount(self):
-        r"""资产绑定的账号数
+        r"""<p>资产绑定的账号数</p>
         :rtype: int
         """
         return self._AccountCount
@@ -12244,7 +12244,7 @@ class Device(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>VPC ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -12255,7 +12255,7 @@ class Device(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -12266,7 +12266,7 @@ class Device(AbstractModel):
 
     @property
     def Resource(self):
-        r"""堡垒机服务信息，注意没有绑定服务时为null
+        r"""<p>堡垒机服务信息，注意没有绑定服务时为null</p>
         :rtype: :class:`tencentcloud.bh.v20230418.models.Resource`
         """
         return self._Resource
@@ -12277,7 +12277,7 @@ class Device(AbstractModel):
 
     @property
     def Department(self):
-        r"""资产所属部门
+        r"""<p>资产所属部门</p>
         :rtype: :class:`tencentcloud.bh.v20230418.models.Department`
         """
         return self._Department
@@ -12288,7 +12288,7 @@ class Device(AbstractModel):
 
     @property
     def IpPortSet(self):
-        r"""数据库资产的多节点
+        r"""<p>数据库资产的多节点</p>
         :rtype: list of str
         """
         return self._IpPortSet
@@ -12299,7 +12299,7 @@ class Device(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""网络域Id
+        r"""<p>网络域Id</p>
         :rtype: str
         """
         return self._DomainId
@@ -12310,7 +12310,7 @@ class Device(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""网络域名称
+        r"""<p>网络域名称</p>
         :rtype: str
         """
         return self._DomainName
@@ -12321,7 +12321,7 @@ class Device(AbstractModel):
 
     @property
     def EnableSSL(self):
-        r"""是否启用SSL，仅支持Redis资产。0：禁用 1：启用
+        r"""<p>是否启用SSL，仅支持Redis资产。0：禁用 1：启用</p>
         :rtype: int
         """
         return self._EnableSSL
@@ -12332,7 +12332,7 @@ class Device(AbstractModel):
 
     @property
     def SSLCertName(self):
-        r"""已上传的SSL证书名称
+        r"""<p>已上传的SSL证书名称</p>
         :rtype: str
         """
         return self._SSLCertName
@@ -12343,7 +12343,7 @@ class Device(AbstractModel):
 
     @property
     def IOAId(self):
-        r"""IOA侧的资源ID
+        r"""<p>IOA侧的资源ID</p>
         :rtype: int
         """
         return self._IOAId
@@ -12354,7 +12354,7 @@ class Device(AbstractModel):
 
     @property
     def ManageDimension(self):
-        r"""K8S集群托管维度。1-集群，2-命名空间，3-工作负载
+        r"""<p>K8S集群托管维度。1-集群，2-命名空间，3-工作负载</p>
         :rtype: int
         """
         return self._ManageDimension
@@ -12365,7 +12365,7 @@ class Device(AbstractModel):
 
     @property
     def ManageAccountId(self):
-        r"""K8S集群托管账号id	
+        r"""<p>K8S集群托管账号id</p>
         :rtype: int
         """
         return self._ManageAccountId
@@ -12376,7 +12376,7 @@ class Device(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""K8S集群命名空间	
+        r"""<p>K8S集群命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -12387,7 +12387,7 @@ class Device(AbstractModel):
 
     @property
     def Workload(self):
-        r"""K8S集群工作负载	
+        r"""<p>K8S集群工作负载</p>
         :rtype: str
         """
         return self._Workload
@@ -12398,7 +12398,7 @@ class Device(AbstractModel):
 
     @property
     def SyncPodCount(self):
-        r"""K8S集群pod已同步数量
+        r"""<p>K8S集群pod已同步数量</p>
         :rtype: int
         """
         return self._SyncPodCount
@@ -12409,7 +12409,7 @@ class Device(AbstractModel):
 
     @property
     def TotalPodCount(self):
-        r"""K8S集群pod总数量	
+        r"""<p>K8S集群pod总数量</p>
         :rtype: int
         """
         return self._TotalPodCount
@@ -12420,7 +12420,7 @@ class Device(AbstractModel):
 
     @property
     def CloudAccountId(self):
-        r"""云账号id
+        r"""<p>云账号id</p>
         :rtype: int
         """
         return self._CloudAccountId
@@ -12431,7 +12431,7 @@ class Device(AbstractModel):
 
     @property
     def CloudAccountName(self):
-        r"""云账号名称
+        r"""<p>云账号名称</p>
         :rtype: str
         """
         return self._CloudAccountName
@@ -12442,7 +12442,7 @@ class Device(AbstractModel):
 
     @property
     def ProviderType(self):
-        r"""云厂商类型1-腾讯云，2-阿里云
+        r"""<p>云厂商类型1-腾讯云，2-阿里云</p>
         :rtype: int
         """
         return self._ProviderType
@@ -12453,7 +12453,7 @@ class Device(AbstractModel):
 
     @property
     def ProviderName(self):
-        r"""云厂商名称
+        r"""<p>云厂商名称</p>
         :rtype: str
         """
         return self._ProviderName
@@ -12464,7 +12464,7 @@ class Device(AbstractModel):
 
     @property
     def SyncCloudDeviceStatus(self):
-        r"""同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+        r"""<p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
         :rtype: int
         """
         return self._SyncCloudDeviceStatus

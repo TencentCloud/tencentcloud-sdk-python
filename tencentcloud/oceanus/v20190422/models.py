@@ -25,11 +25,11 @@ class CCN(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 私有网络 ID
+        :param _VpcId: <p>私有网络 ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网 ID
+        :param _SubnetId: <p>子网 ID</p>
         :type SubnetId: str
-        :param _CcnId: 云联网 ID，如 ccn-rahigzjd
+        :param _CcnId: <p>云联网 ID，如 ccn-rahigzjd</p>
         :type CcnId: str
         """
         self._VpcId = None
@@ -38,7 +38,7 @@ class CCN(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络 ID
+        r"""<p>私有网络 ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -49,7 +49,7 @@ class CCN(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网 ID
+        r"""<p>子网 ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -60,7 +60,7 @@ class CCN(AbstractModel):
 
     @property
     def CcnId(self):
-        r"""云联网 ID，如 ccn-rahigzjd
+        r"""<p>云联网 ID，如 ccn-rahigzjd</p>
         :rtype: str
         """
         return self._CcnId
@@ -2119,52 +2119,85 @@ class ClusterSession(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterGroupSerialId: 集群SerialId
+        :param _ClusterGroupSerialId: <p>集群SerialId</p>
         :type ClusterGroupSerialId: str
-        :param _AppId: 创建者appId
+        :param _AppId: <p>创建者appId</p>
         :type AppId: int
-        :param _OwnerUin: 创建者主账号
+        :param _OwnerUin: <p>创建者主账号</p>
         :type OwnerUin: str
-        :param _CreatorUin: 创建者账号
+        :param _CreatorUin: <p>创建者账号</p>
         :type CreatorUin: str
-        :param _Region: 区域
+        :param _Region: <p>区域</p>
         :type Region: str
-        :param _Zone: zone
+        :param _Zone: <p>zone</p>
         :type Zone: str
-        :param _Status: Session集群状态
+        :param _Status: <p>Session集群状态</p>
         :type Status: int
-        :param _CuNum: Session集群消耗的cu数量
+        :param _CuNum: <p>Session集群消耗的cu数量</p>
         :type CuNum: float
-        :param _FlinkVersion: Session集群的Flink版本
+        :param _FlinkVersion: <p>Session集群的Flink版本</p>
         :type FlinkVersion: str
-        :param _WebUIUrl: session集群FlinkUi地址
+        :param _WebUIUrl: <p>session集群FlinkUi地址</p>
         :type WebUIUrl: str
-        :param _Properties: session集群高级参数
+        :param _Properties: <p>session集群高级参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
-        :param _ResourceRefs: 引用资源
+        :param _ResourceRefs: <p>引用资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRefs: list of SessionClusterRefItem
-        :param _JobManagerCuSpec: JobManager的规格
+        :param _JobManagerCuSpec: <p>JobManager的规格</p>
         :type JobManagerCuSpec: float
-        :param _TaskManagerCuSpec: TaskManager的规格
+        :param _TaskManagerCuSpec: <p>TaskManager的规格</p>
         :type TaskManagerCuSpec: float
-        :param _TaskManagerNum: TaskManager启动的数量
+        :param _TaskManagerNum: <p>TaskManager启动的数量</p>
         :type TaskManagerNum: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _JobManagerCpu: JobManagerCpu
+        :param _JobManagerCpu: <p>JobManagerCpu</p>
         :type JobManagerCpu: float
-        :param _JobManagerMem: JobManagerMem
+        :param _JobManagerMem: <p>JobManagerMem</p>
         :type JobManagerMem: float
-        :param _TaskManagerCpu: TaskManagerCpu
+        :param _TaskManagerCpu: <p>TaskManagerCpu</p>
         :type TaskManagerCpu: float
-        :param _TaskManagerMem: TaskManagerMem
+        :param _TaskManagerMem: <p>TaskManagerMem</p>
         :type TaskManagerMem: float
-        :param _JdkVersion: jdk版本
+        :param _JdkVersion: <p>jdk版本</p>
         :type JdkVersion: str
+        :param _Description: <p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Name: <p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _SerialId: <p>session集群SerialId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialId: str
+        :param _ClusterGroupName: <p>集群名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterGroupName: str
+        :param _TotalCpu: <p>cu</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCpu: float
+        :param _TotalMem: <p>使用Mem</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalMem: float
+        :param _WorkSpaceId: <p>空间Id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkSpaceId: str
+        :param _WorkSpaceName: <p>空间名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkSpaceName: str
+        :param _Tags: <p>标签列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _LogConfig: <p>采集日志配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogConfig: str
+        :param _UpdateUin: <p>更新用户</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateUin: str
         """
         self._ClusterGroupSerialId = None
         self._AppId = None
@@ -2188,10 +2221,21 @@ class ClusterSession(AbstractModel):
         self._TaskManagerCpu = None
         self._TaskManagerMem = None
         self._JdkVersion = None
+        self._Description = None
+        self._Name = None
+        self._SerialId = None
+        self._ClusterGroupName = None
+        self._TotalCpu = None
+        self._TotalMem = None
+        self._WorkSpaceId = None
+        self._WorkSpaceName = None
+        self._Tags = None
+        self._LogConfig = None
+        self._UpdateUin = None
 
     @property
     def ClusterGroupSerialId(self):
-        r"""集群SerialId
+        r"""<p>集群SerialId</p>
         :rtype: str
         """
         return self._ClusterGroupSerialId
@@ -2202,7 +2246,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def AppId(self):
-        r"""创建者appId
+        r"""<p>创建者appId</p>
         :rtype: int
         """
         return self._AppId
@@ -2213,7 +2257,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""创建者主账号
+        r"""<p>创建者主账号</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -2224,7 +2268,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建者账号
+        r"""<p>创建者账号</p>
         :rtype: str
         """
         return self._CreatorUin
@@ -2235,7 +2279,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def Region(self):
-        r"""区域
+        r"""<p>区域</p>
         :rtype: str
         """
         return self._Region
@@ -2246,7 +2290,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def Zone(self):
-        r"""zone
+        r"""<p>zone</p>
         :rtype: str
         """
         return self._Zone
@@ -2257,7 +2301,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def Status(self):
-        r"""Session集群状态
+        r"""<p>Session集群状态</p>
         :rtype: int
         """
         return self._Status
@@ -2268,7 +2312,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def CuNum(self):
-        r"""Session集群消耗的cu数量
+        r"""<p>Session集群消耗的cu数量</p>
         :rtype: float
         """
         return self._CuNum
@@ -2279,7 +2323,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def FlinkVersion(self):
-        r"""Session集群的Flink版本
+        r"""<p>Session集群的Flink版本</p>
         :rtype: str
         """
         return self._FlinkVersion
@@ -2290,7 +2334,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def WebUIUrl(self):
-        r"""session集群FlinkUi地址
+        r"""<p>session集群FlinkUi地址</p>
         :rtype: str
         """
         return self._WebUIUrl
@@ -2301,7 +2345,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def Properties(self):
-        r"""session集群高级参数
+        r"""<p>session集群高级参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Property
         """
@@ -2313,7 +2357,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def ResourceRefs(self):
-        r"""引用资源
+        r"""<p>引用资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SessionClusterRefItem
         """
@@ -2325,7 +2369,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def JobManagerCuSpec(self):
-        r"""JobManager的规格
+        r"""<p>JobManager的规格</p>
         :rtype: float
         """
         return self._JobManagerCuSpec
@@ -2336,7 +2380,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def TaskManagerCuSpec(self):
-        r"""TaskManager的规格
+        r"""<p>TaskManager的规格</p>
         :rtype: float
         """
         return self._TaskManagerCuSpec
@@ -2347,7 +2391,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def TaskManagerNum(self):
-        r"""TaskManager启动的数量
+        r"""<p>TaskManager启动的数量</p>
         :rtype: int
         """
         return self._TaskManagerNum
@@ -2358,7 +2402,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2369,7 +2413,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -2380,7 +2424,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def JobManagerCpu(self):
-        r"""JobManagerCpu
+        r"""<p>JobManagerCpu</p>
         :rtype: float
         """
         return self._JobManagerCpu
@@ -2391,7 +2435,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def JobManagerMem(self):
-        r"""JobManagerMem
+        r"""<p>JobManagerMem</p>
         :rtype: float
         """
         return self._JobManagerMem
@@ -2402,7 +2446,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def TaskManagerCpu(self):
-        r"""TaskManagerCpu
+        r"""<p>TaskManagerCpu</p>
         :rtype: float
         """
         return self._TaskManagerCpu
@@ -2413,7 +2457,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def TaskManagerMem(self):
-        r"""TaskManagerMem
+        r"""<p>TaskManagerMem</p>
         :rtype: float
         """
         return self._TaskManagerMem
@@ -2424,7 +2468,7 @@ class ClusterSession(AbstractModel):
 
     @property
     def JdkVersion(self):
-        r"""jdk版本
+        r"""<p>jdk版本</p>
         :rtype: str
         """
         return self._JdkVersion
@@ -2432,6 +2476,138 @@ class ClusterSession(AbstractModel):
     @JdkVersion.setter
     def JdkVersion(self, JdkVersion):
         self._JdkVersion = JdkVersion
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SerialId(self):
+        r"""<p>session集群SerialId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def ClusterGroupName(self):
+        r"""<p>集群名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterGroupName
+
+    @ClusterGroupName.setter
+    def ClusterGroupName(self, ClusterGroupName):
+        self._ClusterGroupName = ClusterGroupName
+
+    @property
+    def TotalCpu(self):
+        r"""<p>cu</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TotalCpu
+
+    @TotalCpu.setter
+    def TotalCpu(self, TotalCpu):
+        self._TotalCpu = TotalCpu
+
+    @property
+    def TotalMem(self):
+        r"""<p>使用Mem</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TotalMem
+
+    @TotalMem.setter
+    def TotalMem(self, TotalMem):
+        self._TotalMem = TotalMem
+
+    @property
+    def WorkSpaceId(self):
+        r"""<p>空间Id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def WorkSpaceName(self):
+        r"""<p>空间名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkSpaceName
+
+    @WorkSpaceName.setter
+    def WorkSpaceName(self, WorkSpaceName):
+        self._WorkSpaceName = WorkSpaceName
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def LogConfig(self):
+        r"""<p>采集日志配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
+    @property
+    def UpdateUin(self):
+        r"""<p>更新用户</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateUin
+
+    @UpdateUin.setter
+    def UpdateUin(self, UpdateUin):
+        self._UpdateUin = UpdateUin
 
 
     def _deserialize(self, params):
@@ -2467,6 +2643,22 @@ class ClusterSession(AbstractModel):
         self._TaskManagerCpu = params.get("TaskManagerCpu")
         self._TaskManagerMem = params.get("TaskManagerMem")
         self._JdkVersion = params.get("JdkVersion")
+        self._Description = params.get("Description")
+        self._Name = params.get("Name")
+        self._SerialId = params.get("SerialId")
+        self._ClusterGroupName = params.get("ClusterGroupName")
+        self._TotalCpu = params.get("TotalCpu")
+        self._TotalMem = params.get("TotalMem")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._WorkSpaceName = params.get("WorkSpaceName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._LogConfig = params.get("LogConfig")
+        self._UpdateUin = params.get("UpdateUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16883,6 +17075,12 @@ class Setats(AbstractModel):
         :type Remark: str
         :param _IsolationPolicyVersion: <p>集群隔离时间，0为7天，1为15天</p>
         :type IsolationPolicyVersion: int
+        :param _SecurityGroupIds: <p>安全组信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
+        :param _CCNs: <p>网络信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CCNs: list of CCN
         """
         self._SetatsSerialId = None
         self._Status = None
@@ -16904,6 +17102,8 @@ class Setats(AbstractModel):
         self._Name = None
         self._Remark = None
         self._IsolationPolicyVersion = None
+        self._SecurityGroupIds = None
+        self._CCNs = None
 
     @property
     def SetatsSerialId(self):
@@ -17137,6 +17337,30 @@ class Setats(AbstractModel):
     def IsolationPolicyVersion(self, IsolationPolicyVersion):
         self._IsolationPolicyVersion = IsolationPolicyVersion
 
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>安全组信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def CCNs(self):
+        r"""<p>网络信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CCN
+        """
+        return self._CCNs
+
+    @CCNs.setter
+    def CCNs(self, CCNs):
+        self._CCNs = CCNs
+
 
     def _deserialize(self, params):
         self._SetatsSerialId = params.get("SetatsSerialId")
@@ -17170,6 +17394,13 @@ class Setats(AbstractModel):
         self._Name = params.get("Name")
         self._Remark = params.get("Remark")
         self._IsolationPolicyVersion = params.get("IsolationPolicyVersion")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("CCNs") is not None:
+            self._CCNs = []
+            for item in params.get("CCNs"):
+                obj = CCN()
+                obj._deserialize(item)
+                self._CCNs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19531,6 +19762,9 @@ class Warehouse(AbstractModel):
         :type Properties: list of Property
         :param _HiveCatalogType: <p>hive cata 类型</p>
         :type HiveCatalogType: int
+        :param _StorageSerialId: <p>流湖托管通serialId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSerialId: str
         """
         self._Status = None
         self._Location = None
@@ -19542,6 +19776,7 @@ class Warehouse(AbstractModel):
         self._HiveUri = None
         self._Properties = None
         self._HiveCatalogType = None
+        self._StorageSerialId = None
 
     @property
     def Status(self):
@@ -19662,6 +19897,18 @@ class Warehouse(AbstractModel):
     def HiveCatalogType(self, HiveCatalogType):
         self._HiveCatalogType = HiveCatalogType
 
+    @property
+    def StorageSerialId(self):
+        r"""<p>流湖托管通serialId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageSerialId
+
+    @StorageSerialId.setter
+    def StorageSerialId(self, StorageSerialId):
+        self._StorageSerialId = StorageSerialId
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -19684,6 +19931,7 @@ class Warehouse(AbstractModel):
                 obj._deserialize(item)
                 self._Properties.append(obj)
         self._HiveCatalogType = params.get("HiveCatalogType")
+        self._StorageSerialId = params.get("StorageSerialId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -431,30 +431,52 @@ class ArchiveLogModel(AbstractModel):
 
 
 class AutoScalingConfig(AbstractModel):
-    r"""serverless实例的资源范围
+    r"""实例变配的资源范围
     ResourceType 为 cpu 时表示 ccu
     为 nodecount 时表示节点数范围
+    为 disk 表示磁盘容量范围（单位 GB）
+    ScaleUpEnabled 为是否打开升配
+    ScaleDownEnabled 为是否打开降配
+    ThresholdPercent 为触发阈值（%）
+    Step 为变配步长
 
     """
 
     def __init__(self):
         r"""
-        :param _RangeMin: <p>ccu最小值</p>
+        :param _RangeMin: <p>最小值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RangeMin: float
-        :param _RangeMax: <p>ccu最大值</p>
+        :param _RangeMax: <p>最大值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RangeMax: float
-        :param _ResourceType: <p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li></ul>
+        :param _ResourceType: <p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li><li>datadisk： 返回的是磁盘扩容的容量限制范围</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: str
+        :param _ScaleUpEnabled: <p>是否允许升配</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleUpEnabled: bool
+        :param _ScaleDownEnabled: <p>是否允许降配</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScaleDownEnabled: bool
+        :param _ThresholdPercent: <p>触发阈值（%）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThresholdPercent: int
+        :param _Step: <p>变配步长</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Step: float
         """
         self._RangeMin = None
         self._RangeMax = None
         self._ResourceType = None
+        self._ScaleUpEnabled = None
+        self._ScaleDownEnabled = None
+        self._ThresholdPercent = None
+        self._Step = None
 
     @property
     def RangeMin(self):
-        r"""<p>ccu最小值</p>
+        r"""<p>最小值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -466,7 +488,7 @@ class AutoScalingConfig(AbstractModel):
 
     @property
     def RangeMax(self):
-        r"""<p>ccu最大值</p>
+        r"""<p>最大值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -478,7 +500,8 @@ class AutoScalingConfig(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""<p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li></ul>
+        r"""<p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li><li>datadisk： 返回的是磁盘扩容的容量限制范围</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ResourceType
@@ -487,11 +510,63 @@ class AutoScalingConfig(AbstractModel):
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
 
+    @property
+    def ScaleUpEnabled(self):
+        r"""<p>是否允许升配</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ScaleUpEnabled
+
+    @ScaleUpEnabled.setter
+    def ScaleUpEnabled(self, ScaleUpEnabled):
+        self._ScaleUpEnabled = ScaleUpEnabled
+
+    @property
+    def ScaleDownEnabled(self):
+        r"""<p>是否允许降配</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ScaleDownEnabled
+
+    @ScaleDownEnabled.setter
+    def ScaleDownEnabled(self, ScaleDownEnabled):
+        self._ScaleDownEnabled = ScaleDownEnabled
+
+    @property
+    def ThresholdPercent(self):
+        r"""<p>触发阈值（%）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ThresholdPercent
+
+    @ThresholdPercent.setter
+    def ThresholdPercent(self, ThresholdPercent):
+        self._ThresholdPercent = ThresholdPercent
+
+    @property
+    def Step(self):
+        r"""<p>变配步长</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
 
     def _deserialize(self, params):
         self._RangeMin = params.get("RangeMin")
         self._RangeMax = params.get("RangeMax")
         self._ResourceType = params.get("ResourceType")
+        self._ScaleUpEnabled = params.get("ScaleUpEnabled")
+        self._ScaleDownEnabled = params.get("ScaleDownEnabled")
+        self._ThresholdPercent = params.get("ThresholdPercent")
+        self._Step = params.get("Step")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9143,9 +9218,12 @@ class DescribeSpecsRequest(AbstractModel):
         :type FullReplications: int
         :param _IsExclusiveInstance: <p>独享实例</p>
         :type IsExclusiveInstance: int
+        :param _Zones: <p>可用区组合列表</p>
+        :type Zones: list of str
         """
         self._FullReplications = None
         self._IsExclusiveInstance = None
+        self._Zones = None
 
     @property
     def FullReplications(self):
@@ -9169,10 +9247,22 @@ class DescribeSpecsRequest(AbstractModel):
     def IsExclusiveInstance(self, IsExclusiveInstance):
         self._IsExclusiveInstance = IsExclusiveInstance
 
+    @property
+    def Zones(self):
+        r"""<p>可用区组合列表</p>
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
 
     def _deserialize(self, params):
         self._FullReplications = params.get("FullReplications")
         self._IsExclusiveInstance = params.get("IsExclusiveInstance")
+        self._Zones = params.get("Zones")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13079,9 +13169,15 @@ class ModifyInstanceSSLStatusRequest(AbstractModel):
         :type InstanceId: str
         :param _Enabled: <p>是否启用SSL</p>
         :type Enabled: bool
+        :param _CertificateType: <p>证书类型</p><p>枚举值：</p><ul><li>Cloud： 云端证书</li><li>Custom： 自定义证书</li></ul>
+        :type CertificateType: str
+        :param _CertificateId: <p>腾讯云SSL证书服务的证书ID</p>
+        :type CertificateId: str
         """
         self._InstanceId = None
         self._Enabled = None
+        self._CertificateType = None
+        self._CertificateId = None
 
     @property
     def InstanceId(self):
@@ -13105,10 +13201,34 @@ class ModifyInstanceSSLStatusRequest(AbstractModel):
     def Enabled(self, Enabled):
         self._Enabled = Enabled
 
+    @property
+    def CertificateType(self):
+        r"""<p>证书类型</p><p>枚举值：</p><ul><li>Cloud： 云端证书</li><li>Custom： 自定义证书</li></ul>
+        :rtype: str
+        """
+        return self._CertificateType
+
+    @CertificateType.setter
+    def CertificateType(self, CertificateType):
+        self._CertificateType = CertificateType
+
+    @property
+    def CertificateId(self):
+        r"""<p>腾讯云SSL证书服务的证书ID</p>
+        :rtype: str
+        """
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Enabled = params.get("Enabled")
+        self._CertificateType = params.get("CertificateType")
+        self._CertificateId = params.get("CertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -808,6 +808,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClientEvents(self, request):
+        r"""查询轨迹
+
+        :param request: Request instance for DescribeClientEvents.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeClientEventsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeClientEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClientEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClientEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClientList(self, request):
         r"""查询 MQTT 客户端详情
 

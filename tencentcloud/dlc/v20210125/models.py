@@ -14483,10 +14483,16 @@ class CreateJobRequest(AbstractModel):
         :type PartitionCode: str
         :param _QueueName: <p>队列名称，必须与 PartitionCode 成对使用（RunMode=JOB 下可选）；RunMode=WAREHOUSE 下被仓库反查值覆盖，无需传。</p>
         :type QueueName: str
+        :param _Spec: <p>集群规格配置。RunMode=JOB 时必填（MajorType 对应引擎字段须非空、其余引擎字段须为空）；RunMode=WAREHOUSE 时忽略。</p>
+        :type Spec: :class:`tencentcloud.dlc.v20210125.models.Spec`
         :param _CustomProperties: <p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
         :type CustomProperties: str
+        :param _Dependencies: <p>依赖管理（jars / files / archives / pyFiles）。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+        :type Dependencies: :class:`tencentcloud.dlc.v20210125.models.EngineConfigDependencies`
         :param _EnvVars: <p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
         :type EnvVars: list of KVPair
+        :param _Entrypoint: <p>入口点配置，必填。SPARK_SQL 时 Statement 必填（≤1MB）；SPARK_BATCH 时 Statement 或 EntryFile 至少其一（EntryFile 须匹配路径前缀白名单）。</p>
+        :type Entrypoint: :class:`tencentcloud.dlc.v20210125.models.EntrypointInfo`
         """
         self._JobName = None
         self._CheckpointLocation = None
@@ -14500,8 +14506,11 @@ class CreateJobRequest(AbstractModel):
         self._SysCatalogVersion = None
         self._PartitionCode = None
         self._QueueName = None
+        self._Spec = None
         self._CustomProperties = None
+        self._Dependencies = None
         self._EnvVars = None
+        self._Entrypoint = None
 
     @property
     def JobName(self):
@@ -14636,6 +14645,17 @@ class CreateJobRequest(AbstractModel):
         self._QueueName = QueueName
 
     @property
+    def Spec(self):
+        r"""<p>集群规格配置。RunMode=JOB 时必填（MajorType 对应引擎字段须非空、其余引擎字段须为空）；RunMode=WAREHOUSE 时忽略。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.Spec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
     def CustomProperties(self):
         r"""<p>自定义 Spark conf（JSON 字符串，亦接受多行 key=value 文本，归一化为 JSON 存储、出参恒为 JSON），作为 SPARK_CUSTOM 配置通道落库，两种运行模式均生效。</p>
         :rtype: str
@@ -14647,6 +14667,17 @@ class CreateJobRequest(AbstractModel):
         self._CustomProperties = CustomProperties
 
     @property
+    def Dependencies(self):
+        r"""<p>依赖管理（jars / files / archives / pyFiles）。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.EngineConfigDependencies`
+        """
+        return self._Dependencies
+
+    @Dependencies.setter
+    def Dependencies(self, Dependencies):
+        self._Dependencies = Dependencies
+
+    @property
     def EnvVars(self):
         r"""<p>环境变量（KEY=VALUE）列表。仅 RunMode=JOB 可传；RunMode=WAREHOUSE 时禁止传。</p>
         :rtype: list of KVPair
@@ -14656,6 +14687,17 @@ class CreateJobRequest(AbstractModel):
     @EnvVars.setter
     def EnvVars(self, EnvVars):
         self._EnvVars = EnvVars
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口点配置，必填。SPARK_SQL 时 Statement 必填（≤1MB）；SPARK_BATCH 时 Statement 或 EntryFile 至少其一（EntryFile 须匹配路径前缀白名单）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.EntrypointInfo`
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
 
 
     def _deserialize(self, params):
@@ -14671,13 +14713,22 @@ class CreateJobRequest(AbstractModel):
         self._SysCatalogVersion = params.get("SysCatalogVersion")
         self._PartitionCode = params.get("PartitionCode")
         self._QueueName = params.get("QueueName")
+        if params.get("Spec") is not None:
+            self._Spec = Spec()
+            self._Spec._deserialize(params.get("Spec"))
         self._CustomProperties = params.get("CustomProperties")
+        if params.get("Dependencies") is not None:
+            self._Dependencies = EngineConfigDependencies()
+            self._Dependencies._deserialize(params.get("Dependencies"))
         if params.get("EnvVars") is not None:
             self._EnvVars = []
             for item in params.get("EnvVars"):
                 obj = KVPair()
                 obj._deserialize(item)
                 self._EnvVars.append(obj)
+        if params.get("Entrypoint") is not None:
+            self._Entrypoint = EntrypointInfo()
+            self._Entrypoint._deserialize(params.get("Entrypoint"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37581,10 +37632,24 @@ class DescribeJobDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _JobDetail: <p>作业详情，JSON 嵌套在 JobDetail 键下。</p>
+        :type JobDetail: :class:`tencentcloud.dlc.v20210125.models.JobDetailInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._JobDetail = None
         self._RequestId = None
+
+    @property
+    def JobDetail(self):
+        r"""<p>作业详情，JSON 嵌套在 JobDetail 键下。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.JobDetailInfo`
+        """
+        return self._JobDetail
+
+    @JobDetail.setter
+    def JobDetail(self, JobDetail):
+        self._JobDetail = JobDetail
 
     @property
     def RequestId(self):
@@ -37599,6 +37664,9 @@ class DescribeJobDetailResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("JobDetail") is not None:
+            self._JobDetail = JobDetailInfo()
+            self._JobDetail._deserialize(params.get("JobDetail"))
         self._RequestId = params.get("RequestId")
 
 
@@ -38152,7 +38220,9 @@ class DescribeJobResultResponse(AbstractModel):
         :type TotalRows: int
         :param _Rows: <p>行数据（State=SUCCEEDED 才有），每行为 {"Values": [单元格值...]} 数组。</p>
         :type Rows: list of ResultRow
-        :param _Truncated: <p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows > Total 判断，完整结果通过 Download 获取.</p>
+        :param _Download: <p>下载链接（结果集可用时按需返回；结果过大无法内联展示时仅返回 Download）。</p>
+        :type Download: :class:`tencentcloud.dlc.v20210125.models.DownloadInfo`
+        :param _Truncated: <p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows &gt; Total 判断，完整结果通过 Download 获取.</p>
         :type Truncated: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -38164,6 +38234,7 @@ class DescribeJobResultResponse(AbstractModel):
         self._Columns = None
         self._TotalRows = None
         self._Rows = None
+        self._Download = None
         self._Truncated = None
         self._RequestId = None
 
@@ -38245,8 +38316,19 @@ class DescribeJobResultResponse(AbstractModel):
         self._Rows = Rows
 
     @property
+    def Download(self):
+        r"""<p>下载链接（结果集可用时按需返回；结果过大无法内联展示时仅返回 Download）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DownloadInfo`
+        """
+        return self._Download
+
+    @Download.setter
+    def Download(self, Download):
+        self._Download = Download
+
+    @property
     def Truncated(self):
-        r"""<p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows > Total 判断，完整结果通过 Download 获取.</p>
+        r"""<p>本页内容是否因响应大小限制被截断（单元格/行超限，结果集仅 1 行时也可能触发）。行数超过在线展示上限不由本标记表达，以 TotalRows &gt; Total 判断，完整结果通过 Download 获取.</p>
         :rtype: bool
         """
         return self._Truncated
@@ -38285,6 +38367,9 @@ class DescribeJobResultResponse(AbstractModel):
                 obj = ResultRow()
                 obj._deserialize(item)
                 self._Rows.append(obj)
+        if params.get("Download") is not None:
+            self._Download = DownloadInfo()
+            self._Download._deserialize(params.get("Download"))
         self._Truncated = params.get("Truncated")
         self._RequestId = params.get("RequestId")
 
@@ -49176,6 +49261,87 @@ class DorisConnection(AbstractModel):
         
 
 
+class DownloadInfo(AbstractModel):
+    r"""入站下载信息（结果集 / 日志通用）.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>下载链接地址.</p>
+        :type Url: str
+        :param _Format: <p>文件格式（如 CSV / JSON）.</p>
+        :type Format: str
+        :param _Size: <p>文件大小（字节）.</p>
+        :type Size: int
+        :param _ExpireSeconds: <p>链接有效时长（秒）.</p>
+        :type ExpireSeconds: int
+        """
+        self._Url = None
+        self._Format = None
+        self._Size = None
+        self._ExpireSeconds = None
+
+    @property
+    def Url(self):
+        r"""<p>下载链接地址.</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Format(self):
+        r"""<p>文件格式（如 CSV / JSON）.</p>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Size(self):
+        r"""<p>文件大小（字节）.</p>
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def ExpireSeconds(self):
+        r"""<p>链接有效时长（秒）.</p>
+        :rtype: int
+        """
+        return self._ExpireSeconds
+
+    @ExpireSeconds.setter
+    def ExpireSeconds(self, ExpireSeconds):
+        self._ExpireSeconds = ExpireSeconds
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Format = params.get("Format")
+        self._Size = params.get("Size")
+        self._ExpireSeconds = params.get("ExpireSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DropDMSDatabaseRequest(AbstractModel):
     r"""DropDMSDatabase请求参数结构体
 
@@ -49990,6 +50156,87 @@ class EngineCapabilities(AbstractModel):
         
 
 
+class EngineConfigDependencies(AbstractModel):
+    r"""引擎依赖管理，对应 Spark 的 --jars / --files / --archives / --py-files 四类资源。每条 JAR 要么 COS 路径（cos:///cosn://），要么 Maven GAV（group:artifact:version）；files/archives/pyFiles 是 COS 路径列表（pyFiles 支持 .py/.zip/.egg/.whl）。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Jars: <p>JAR 列表：每行一个 COS 路径或 Maven GAV。</p>
+        :type Jars: list of str
+        :param _Files: <p>files 列表：COS 路径，下载到 executor 工作目录（不解压）。</p>
+        :type Files: list of str
+        :param _Archives: <p>archives 列表：COS 路径，下载并解压到 executor 工作目录。</p>
+        :type Archives: list of str
+        :param _PyFiles: <p>pyFiles 列表：COS 路径（.py/.zip/.egg/.whl），等价 Spark --py-files。</p>
+        :type PyFiles: list of str
+        """
+        self._Jars = None
+        self._Files = None
+        self._Archives = None
+        self._PyFiles = None
+
+    @property
+    def Jars(self):
+        r"""<p>JAR 列表：每行一个 COS 路径或 Maven GAV。</p>
+        :rtype: list of str
+        """
+        return self._Jars
+
+    @Jars.setter
+    def Jars(self, Jars):
+        self._Jars = Jars
+
+    @property
+    def Files(self):
+        r"""<p>files 列表：COS 路径，下载到 executor 工作目录（不解压）。</p>
+        :rtype: list of str
+        """
+        return self._Files
+
+    @Files.setter
+    def Files(self, Files):
+        self._Files = Files
+
+    @property
+    def Archives(self):
+        r"""<p>archives 列表：COS 路径，下载并解压到 executor 工作目录。</p>
+        :rtype: list of str
+        """
+        return self._Archives
+
+    @Archives.setter
+    def Archives(self, Archives):
+        self._Archives = Archives
+
+    @property
+    def PyFiles(self):
+        r"""<p>pyFiles 列表：COS 路径（.py/.zip/.egg/.whl），等价 Spark --py-files。</p>
+        :rtype: list of str
+        """
+        return self._PyFiles
+
+    @PyFiles.setter
+    def PyFiles(self, PyFiles):
+        self._PyFiles = PyFiles
+
+
+    def _deserialize(self, params):
+        self._Jars = params.get("Jars")
+        self._Files = params.get("Files")
+        self._Archives = params.get("Archives")
+        self._PyFiles = params.get("PyFiles")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EngineNetworkInfo(AbstractModel):
     r"""引擎网络信息
 
@@ -50305,6 +50552,87 @@ class EngineSessionImage(AbstractModel):
         self._SparkImageVersion = params.get("SparkImageVersion")
         self._SparkImageType = params.get("SparkImageType")
         self._SparkImageTag = params.get("SparkImageTag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EntrypointInfo(AbstractModel):
+    r"""入站作业入口（Entrypoint）.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Statement: <p>SQL 语句文本，须为 Base64 编码的 UTF-8 文本。仅 SPARK_SQL 模式可传且必填（解码后 ≤1MB）；SPARK_BATCH 模式禁止传。</p>
+        :type Statement: str
+        :param _EntryFile: <p>作业文件路径（JAR/Python），须匹配配置的路径前缀白名单。以 .py 结尾判定为 Python 入口（EntryPoint 禁传），否则为 JAR 入口（EntryPoint 必填）。</p>
+        :type EntryFile: str
+        :param _EntryPoint: <p>入口类名（main class 全限定名）。JAR 入口（EntryFile 非 .py 结尾）必填；Python 入口（.py 结尾）禁传；SPARK_SQL 模式禁止传。</p>
+        :type EntryPoint: str
+        :param _MainArgs: <p>主方法参数列表（JSON 数组字符串），仅 SPARK_BATCH 模式可传；SPARK_SQL 模式禁止传。</p>
+        :type MainArgs: str
+        """
+        self._Statement = None
+        self._EntryFile = None
+        self._EntryPoint = None
+        self._MainArgs = None
+
+    @property
+    def Statement(self):
+        r"""<p>SQL 语句文本，须为 Base64 编码的 UTF-8 文本。仅 SPARK_SQL 模式可传且必填（解码后 ≤1MB）；SPARK_BATCH 模式禁止传。</p>
+        :rtype: str
+        """
+        return self._Statement
+
+    @Statement.setter
+    def Statement(self, Statement):
+        self._Statement = Statement
+
+    @property
+    def EntryFile(self):
+        r"""<p>作业文件路径（JAR/Python），须匹配配置的路径前缀白名单。以 .py 结尾判定为 Python 入口（EntryPoint 禁传），否则为 JAR 入口（EntryPoint 必填）。</p>
+        :rtype: str
+        """
+        return self._EntryFile
+
+    @EntryFile.setter
+    def EntryFile(self, EntryFile):
+        self._EntryFile = EntryFile
+
+    @property
+    def EntryPoint(self):
+        r"""<p>入口类名（main class 全限定名）。JAR 入口（EntryFile 非 .py 结尾）必填；Python 入口（.py 结尾）禁传；SPARK_SQL 模式禁止传。</p>
+        :rtype: str
+        """
+        return self._EntryPoint
+
+    @EntryPoint.setter
+    def EntryPoint(self, EntryPoint):
+        self._EntryPoint = EntryPoint
+
+    @property
+    def MainArgs(self):
+        r"""<p>主方法参数列表（JSON 数组字符串），仅 SPARK_BATCH 模式可传；SPARK_SQL 模式禁止传。</p>
+        :rtype: str
+        """
+        return self._MainArgs
+
+    @MainArgs.setter
+    def MainArgs(self, MainArgs):
+        self._MainArgs = MainArgs
+
+
+    def _deserialize(self, params):
+        self._Statement = params.get("Statement")
+        self._EntryFile = params.get("EntryFile")
+        self._EntryPoint = params.get("EntryPoint")
+        self._MainArgs = params.get("MainArgs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62684,6 +63012,452 @@ class JobDefinitionItemInfo(AbstractModel):
         self._RuntimeCode = params.get("RuntimeCode")
         self._RuntimeName = params.get("RuntimeName")
         self._WarehouseName = params.get("WarehouseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobDetailInfo(AbstractModel):
+    r"""作业详情 POJO.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>作业唯一标识.</p>
+        :type JobId: str
+        :param _JobName: <p>作业名称.</p>
+        :type JobName: str
+        :param _CreatorSubUin: <p>创建/提交者子账号 UIN。</p>
+        :type CreatorSubUin: str
+        :param _State: <p>作业状态.</p>
+        :type State: str
+        :param _MajorType: <p>引擎大类.</p>
+        :type MajorType: str
+        :param _MinorType: <p>引擎子类型.</p>
+        :type MinorType: str
+        :param _RunMode: <p>运行模式（WAREHOUSE / JOB）.</p>
+        :type RunMode: str
+        :param _WarehouseId: <p>计算仓库 ID，RunMode=WAREHOUSE 时非空.</p>
+        :type WarehouseId: str
+        :param _PartitionCode: <p>资源分区编码.</p>
+        :type PartitionCode: str
+        :param _PartitionName: <p>资源分区展示名（解析不到时为空）.</p>
+        :type PartitionName: str
+        :param _QueueName: <p>队列名称.</p>
+        :type QueueName: str
+        :param _CheckpointLocation: <p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :type CheckpointLocation: str
+        :param _CreateTime: <p>创建时间（Unix 毫秒时间戳）.</p>
+        :type CreateTime: int
+        :param _SubmitTime: <p>提交时间（Unix 毫秒时间戳）.</p>
+        :type SubmitTime: int
+        :param _FinishTime: <p>完成时间（Unix 毫秒时间戳）.</p>
+        :type FinishTime: int
+        :param _RunningTimeMs: <p>运行时长（毫秒）.</p>
+        :type RunningTimeMs: int
+        :param _WarehouseName: <p>计算仓库名称（详情接口反查填充，warehouse 模式下非空）.</p>
+        :type WarehouseName: str
+        :param _FlowId: <p>流程 ID。</p>
+        :type FlowId: str
+        :param _ExecutionId: <p>执行 ID。</p>
+        :type ExecutionId: str
+        :param _JobSource: <p>作业来源。</p>
+        :type JobSource: str
+        :param _WaitingTimeMs: <p>排队等待时长（毫秒）。</p>
+        :type WaitingTimeMs: int
+        :param _HistoryUrl: <p>Spark UI 历史链接。</p>
+        :type HistoryUrl: str
+        :param _ErrorMessage: <p>失败时的错误信息。</p>
+        :type ErrorMessage: str
+        :param _CustomProperties: <p>自定义 Spark conf（JSON 字符串，由 job_config 组装）.</p>
+        :type CustomProperties: str
+        :param _EnvVars: <p>环境变量.</p>
+        :type EnvVars: list of KVPair
+        :param _RuntimeCode: <p>运行时/镜像。</p>
+        :type RuntimeCode: str
+        :param _RuntimeName: <p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空。</p>
+        :type RuntimeName: str
+        :param _SysCatalogVersion: <p>Catalog 版本码。</p>
+        :type SysCatalogVersion: str
+        """
+        self._JobId = None
+        self._JobName = None
+        self._CreatorSubUin = None
+        self._State = None
+        self._MajorType = None
+        self._MinorType = None
+        self._RunMode = None
+        self._WarehouseId = None
+        self._PartitionCode = None
+        self._PartitionName = None
+        self._QueueName = None
+        self._CheckpointLocation = None
+        self._CreateTime = None
+        self._SubmitTime = None
+        self._FinishTime = None
+        self._RunningTimeMs = None
+        self._WarehouseName = None
+        self._FlowId = None
+        self._ExecutionId = None
+        self._JobSource = None
+        self._WaitingTimeMs = None
+        self._HistoryUrl = None
+        self._ErrorMessage = None
+        self._CustomProperties = None
+        self._EnvVars = None
+        self._RuntimeCode = None
+        self._RuntimeName = None
+        self._SysCatalogVersion = None
+
+    @property
+    def JobId(self):
+        r"""<p>作业唯一标识.</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        r"""<p>作业名称.</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def CreatorSubUin(self):
+        r"""<p>创建/提交者子账号 UIN。</p>
+        :rtype: str
+        """
+        return self._CreatorSubUin
+
+    @CreatorSubUin.setter
+    def CreatorSubUin(self, CreatorSubUin):
+        self._CreatorSubUin = CreatorSubUin
+
+    @property
+    def State(self):
+        r"""<p>作业状态.</p>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def MajorType(self):
+        r"""<p>引擎大类.</p>
+        :rtype: str
+        """
+        return self._MajorType
+
+    @MajorType.setter
+    def MajorType(self, MajorType):
+        self._MajorType = MajorType
+
+    @property
+    def MinorType(self):
+        r"""<p>引擎子类型.</p>
+        :rtype: str
+        """
+        return self._MinorType
+
+    @MinorType.setter
+    def MinorType(self, MinorType):
+        self._MinorType = MinorType
+
+    @property
+    def RunMode(self):
+        r"""<p>运行模式（WAREHOUSE / JOB）.</p>
+        :rtype: str
+        """
+        return self._RunMode
+
+    @RunMode.setter
+    def RunMode(self, RunMode):
+        self._RunMode = RunMode
+
+    @property
+    def WarehouseId(self):
+        r"""<p>计算仓库 ID，RunMode=WAREHOUSE 时非空.</p>
+        :rtype: str
+        """
+        return self._WarehouseId
+
+    @WarehouseId.setter
+    def WarehouseId(self, WarehouseId):
+        self._WarehouseId = WarehouseId
+
+    @property
+    def PartitionCode(self):
+        r"""<p>资源分区编码.</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def PartitionName(self):
+        r"""<p>资源分区展示名（解析不到时为空）.</p>
+        :rtype: str
+        """
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称.</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def CheckpointLocation(self):
+        r"""<p>流作业 checkpoint 路径（MinorType=SPARK_STREAM 时非空）。同一流作业的多次运行必须复用同一路径，变更等于重置消费进度。</p>
+        :rtype: str
+        """
+        return self._CheckpointLocation
+
+    @CheckpointLocation.setter
+    def CheckpointLocation(self, CheckpointLocation):
+        self._CheckpointLocation = CheckpointLocation
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（Unix 毫秒时间戳）.</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SubmitTime(self):
+        r"""<p>提交时间（Unix 毫秒时间戳）.</p>
+        :rtype: int
+        """
+        return self._SubmitTime
+
+    @SubmitTime.setter
+    def SubmitTime(self, SubmitTime):
+        self._SubmitTime = SubmitTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间（Unix 毫秒时间戳）.</p>
+        :rtype: int
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def RunningTimeMs(self):
+        r"""<p>运行时长（毫秒）.</p>
+        :rtype: int
+        """
+        return self._RunningTimeMs
+
+    @RunningTimeMs.setter
+    def RunningTimeMs(self, RunningTimeMs):
+        self._RunningTimeMs = RunningTimeMs
+
+    @property
+    def WarehouseName(self):
+        r"""<p>计算仓库名称（详情接口反查填充，warehouse 模式下非空）.</p>
+        :rtype: str
+        """
+        return self._WarehouseName
+
+    @WarehouseName.setter
+    def WarehouseName(self, WarehouseName):
+        self._WarehouseName = WarehouseName
+
+    @property
+    def FlowId(self):
+        r"""<p>流程 ID。</p>
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ExecutionId(self):
+        r"""<p>执行 ID。</p>
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def JobSource(self):
+        r"""<p>作业来源。</p>
+        :rtype: str
+        """
+        return self._JobSource
+
+    @JobSource.setter
+    def JobSource(self, JobSource):
+        self._JobSource = JobSource
+
+    @property
+    def WaitingTimeMs(self):
+        r"""<p>排队等待时长（毫秒）。</p>
+        :rtype: int
+        """
+        return self._WaitingTimeMs
+
+    @WaitingTimeMs.setter
+    def WaitingTimeMs(self, WaitingTimeMs):
+        self._WaitingTimeMs = WaitingTimeMs
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Spark UI 历史链接。</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败时的错误信息。</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def CustomProperties(self):
+        r"""<p>自定义 Spark conf（JSON 字符串，由 job_config 组装）.</p>
+        :rtype: str
+        """
+        return self._CustomProperties
+
+    @CustomProperties.setter
+    def CustomProperties(self, CustomProperties):
+        self._CustomProperties = CustomProperties
+
+    @property
+    def EnvVars(self):
+        r"""<p>环境变量.</p>
+        :rtype: list of KVPair
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+    @property
+    def RuntimeCode(self):
+        r"""<p>运行时/镜像。</p>
+        :rtype: str
+        """
+        return self._RuntimeCode
+
+    @RuntimeCode.setter
+    def RuntimeCode(self, RuntimeCode):
+        self._RuntimeCode = RuntimeCode
+
+    @property
+    def RuntimeName(self):
+        r"""<p>运行时展示名（如 Spark 3.5.5），与 RuntimeCode 配套；解析不到时为空。</p>
+        :rtype: str
+        """
+        return self._RuntimeName
+
+    @RuntimeName.setter
+    def RuntimeName(self, RuntimeName):
+        self._RuntimeName = RuntimeName
+
+    @property
+    def SysCatalogVersion(self):
+        r"""<p>Catalog 版本码。</p>
+        :rtype: str
+        """
+        return self._SysCatalogVersion
+
+    @SysCatalogVersion.setter
+    def SysCatalogVersion(self, SysCatalogVersion):
+        self._SysCatalogVersion = SysCatalogVersion
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._CreatorSubUin = params.get("CreatorSubUin")
+        self._State = params.get("State")
+        self._MajorType = params.get("MajorType")
+        self._MinorType = params.get("MinorType")
+        self._RunMode = params.get("RunMode")
+        self._WarehouseId = params.get("WarehouseId")
+        self._PartitionCode = params.get("PartitionCode")
+        self._PartitionName = params.get("PartitionName")
+        self._QueueName = params.get("QueueName")
+        self._CheckpointLocation = params.get("CheckpointLocation")
+        self._CreateTime = params.get("CreateTime")
+        self._SubmitTime = params.get("SubmitTime")
+        self._FinishTime = params.get("FinishTime")
+        self._RunningTimeMs = params.get("RunningTimeMs")
+        self._WarehouseName = params.get("WarehouseName")
+        self._FlowId = params.get("FlowId")
+        self._ExecutionId = params.get("ExecutionId")
+        self._JobSource = params.get("JobSource")
+        self._WaitingTimeMs = params.get("WaitingTimeMs")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._CustomProperties = params.get("CustomProperties")
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        self._RuntimeCode = params.get("RuntimeCode")
+        self._RuntimeName = params.get("RuntimeName")
+        self._SysCatalogVersion = params.get("SysCatalogVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -90893,6 +91667,117 @@ class SparkJobInfo(AbstractModel):
         
 
 
+class SparkJobSpec(AbstractModel):
+    r"""Spark 集群资源规格（CU 维度），Spec.Spark 平铺字段载体。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DriverCU: <p>Driver 资源规格（CU 数）.</p>
+        :type DriverCU: int
+        :param _ExecutorCU: <p>Executor 资源规格（CU 数）.</p>
+        :type ExecutorCU: int
+        :param _ExecutorNum: <p>Executor 实例数量（弹性伸缩关闭时的固定数量）.</p>
+        :type ExecutorNum: int
+        :param _DynamicAllocation: <p>是否开启弹性扩缩容.</p>
+        :type DynamicAllocation: bool
+        :param _MinExecutors: <p>弹性扩缩容最小 Executor 数.</p>
+        :type MinExecutors: int
+        :param _MaxExecutors: <p>弹性扩缩容最大 Executor 数.</p>
+        :type MaxExecutors: int
+        """
+        self._DriverCU = None
+        self._ExecutorCU = None
+        self._ExecutorNum = None
+        self._DynamicAllocation = None
+        self._MinExecutors = None
+        self._MaxExecutors = None
+
+    @property
+    def DriverCU(self):
+        r"""<p>Driver 资源规格（CU 数）.</p>
+        :rtype: int
+        """
+        return self._DriverCU
+
+    @DriverCU.setter
+    def DriverCU(self, DriverCU):
+        self._DriverCU = DriverCU
+
+    @property
+    def ExecutorCU(self):
+        r"""<p>Executor 资源规格（CU 数）.</p>
+        :rtype: int
+        """
+        return self._ExecutorCU
+
+    @ExecutorCU.setter
+    def ExecutorCU(self, ExecutorCU):
+        self._ExecutorCU = ExecutorCU
+
+    @property
+    def ExecutorNum(self):
+        r"""<p>Executor 实例数量（弹性伸缩关闭时的固定数量）.</p>
+        :rtype: int
+        """
+        return self._ExecutorNum
+
+    @ExecutorNum.setter
+    def ExecutorNum(self, ExecutorNum):
+        self._ExecutorNum = ExecutorNum
+
+    @property
+    def DynamicAllocation(self):
+        r"""<p>是否开启弹性扩缩容.</p>
+        :rtype: bool
+        """
+        return self._DynamicAllocation
+
+    @DynamicAllocation.setter
+    def DynamicAllocation(self, DynamicAllocation):
+        self._DynamicAllocation = DynamicAllocation
+
+    @property
+    def MinExecutors(self):
+        r"""<p>弹性扩缩容最小 Executor 数.</p>
+        :rtype: int
+        """
+        return self._MinExecutors
+
+    @MinExecutors.setter
+    def MinExecutors(self, MinExecutors):
+        self._MinExecutors = MinExecutors
+
+    @property
+    def MaxExecutors(self):
+        r"""<p>弹性扩缩容最大 Executor 数.</p>
+        :rtype: int
+        """
+        return self._MaxExecutors
+
+    @MaxExecutors.setter
+    def MaxExecutors(self, MaxExecutors):
+        self._MaxExecutors = MaxExecutors
+
+
+    def _deserialize(self, params):
+        self._DriverCU = params.get("DriverCU")
+        self._ExecutorCU = params.get("ExecutorCU")
+        self._ExecutorNum = params.get("ExecutorNum")
+        self._DynamicAllocation = params.get("DynamicAllocation")
+        self._MinExecutors = params.get("MinExecutors")
+        self._MaxExecutors = params.get("MaxExecutors")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SparkMonitorMetrics(AbstractModel):
     r"""Spark监控数据
 
@@ -91345,6 +92230,46 @@ class SparkSessionInfo(AbstractModel):
         self._State = params.get("State")
         self._ApplicationId = params.get("ApplicationId")
         self._ApplicationStartTime = params.get("ApplicationStartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Spec(AbstractModel):
+    r"""作业资源规格（跨引擎平铺载体；字段须与请求 MajorType 匹配）。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Spark: <p>SPARK 资源规格（CU 维度）；MajorType=SPARK 时必填，其余引擎字段须为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spark: :class:`tencentcloud.dlc.v20210125.models.SparkJobSpec`
+        """
+        self._Spark = None
+
+    @property
+    def Spark(self):
+        r"""<p>SPARK 资源规格（CU 维度）；MajorType=SPARK 时必填，其余引擎字段须为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SparkJobSpec`
+        """
+        return self._Spark
+
+    @Spark.setter
+    def Spark(self, Spark):
+        self._Spark = Spark
+
+
+    def _deserialize(self, params):
+        if params.get("Spark") is not None:
+            self._Spark = SparkJobSpec()
+            self._Spark._deserialize(params.get("Spark"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -98339,6 +99264,8 @@ class TaskFullRespInfo(AbstractModel):
         :type QueueTime: int
         :param _ResourceGroupType: <p>资源组类型</p>
         :type ResourceGroupType: str
+        :param _Tag: <p>任务标签</p><p>参数格式：任意字符串</p>
+        :type Tag: str
         """
         self._DatabaseName = None
         self._DataAmount = None
@@ -98412,6 +99339,7 @@ class TaskFullRespInfo(AbstractModel):
         self._ActiveCore = None
         self._QueueTime = None
         self._ResourceGroupType = None
+        self._Tag = None
 
     @property
     def DatabaseName(self):
@@ -99233,6 +100161,17 @@ class TaskFullRespInfo(AbstractModel):
     def ResourceGroupType(self, ResourceGroupType):
         self._ResourceGroupType = ResourceGroupType
 
+    @property
+    def Tag(self):
+        r"""<p>任务标签</p><p>参数格式：任意字符串</p>
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -99313,6 +100252,7 @@ class TaskFullRespInfo(AbstractModel):
         self._ActiveCore = params.get("ActiveCore")
         self._QueueTime = params.get("QueueTime")
         self._ResourceGroupType = params.get("ResourceGroupType")
+        self._Tag = params.get("Tag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

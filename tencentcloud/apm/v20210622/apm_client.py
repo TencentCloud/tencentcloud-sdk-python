@@ -599,6 +599,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSpanTreeByID(self, request):
+        r"""查询trace详情接口信息
+
+        :param request: Request instance for DescribeSpanTreeByID.
+        :type request: :class:`tencentcloud.apm.v20210622.models.DescribeSpanTreeByIDRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.DescribeSpanTreeByIDResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSpanTreeByID", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSpanTreeByIDResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTagValues(self, request):
         r"""根据维度名和过滤条件，查询维度数据.
 

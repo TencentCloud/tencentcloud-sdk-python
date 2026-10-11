@@ -735,6 +735,100 @@ class CancelLoadTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CancelPolicyRuleExecuteRecordRequest(AbstractModel):
+    r"""CancelPolicyRuleExecuteRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>规则id</p>
+        :type RuleId: str
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        :param _RecordId: <p>执行记录id</p>
+        :type RecordId: str
+        """
+        self._RuleId = None
+        self._FileSystemId = None
+        self._RecordId = None
+
+    @property
+    def RuleId(self):
+        r"""<p>规则id</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def RecordId(self):
+        r"""<p>执行记录id</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._FileSystemId = params.get("FileSystemId")
+        self._RecordId = params.get("RecordId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelPolicyRuleExecuteRecordResponse(AbstractModel):
+    r"""CancelPolicyRuleExecuteRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ChargeAttribute(AbstractModel):
     r"""付费信息详情
 
@@ -1987,6 +2081,184 @@ class CreateLoadTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePolicyRuleRequest(AbstractModel):
+    r"""CreatePolicyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统id</p>
+        :type FileSystemId: str
+        :param _ScanDir: <p>扫描目录</p>
+        :type ScanDir: str
+        :param _Name: <p>规则名称</p>
+        :type Name: str
+        :param _Execution: <p>执行计划</p>
+        :type Execution: :class:`tencentcloud.goosefs.v20220519.models.ExecutionPlan`
+        :param _PolicyRuleSet: <p>过滤规则</p>
+        :type PolicyRuleSet: list of PolicyRuleOperator
+        :param _EnableManifest: <p>是否输出清单</p>
+        :type EnableManifest: bool
+        :param _Manifest: <p>清单配置</p>
+        :type Manifest: :class:`tencentcloud.goosefs.v20220519.models.ManifestAttr`
+        """
+        self._FileSystemId = None
+        self._ScanDir = None
+        self._Name = None
+        self._Execution = None
+        self._PolicyRuleSet = None
+        self._EnableManifest = None
+        self._Manifest = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统id</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def ScanDir(self):
+        r"""<p>扫描目录</p>
+        :rtype: str
+        """
+        return self._ScanDir
+
+    @ScanDir.setter
+    def ScanDir(self, ScanDir):
+        self._ScanDir = ScanDir
+
+    @property
+    def Name(self):
+        r"""<p>规则名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Execution(self):
+        r"""<p>执行计划</p>
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.ExecutionPlan`
+        """
+        return self._Execution
+
+    @Execution.setter
+    def Execution(self, Execution):
+        self._Execution = Execution
+
+    @property
+    def PolicyRuleSet(self):
+        r"""<p>过滤规则</p>
+        :rtype: list of PolicyRuleOperator
+        """
+        return self._PolicyRuleSet
+
+    @PolicyRuleSet.setter
+    def PolicyRuleSet(self, PolicyRuleSet):
+        self._PolicyRuleSet = PolicyRuleSet
+
+    @property
+    def EnableManifest(self):
+        r"""<p>是否输出清单</p>
+        :rtype: bool
+        """
+        return self._EnableManifest
+
+    @EnableManifest.setter
+    def EnableManifest(self, EnableManifest):
+        self._EnableManifest = EnableManifest
+
+    @property
+    def Manifest(self):
+        r"""<p>清单配置</p>
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.ManifestAttr`
+        """
+        return self._Manifest
+
+    @Manifest.setter
+    def Manifest(self, Manifest):
+        self._Manifest = Manifest
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._ScanDir = params.get("ScanDir")
+        self._Name = params.get("Name")
+        if params.get("Execution") is not None:
+            self._Execution = ExecutionPlan()
+            self._Execution._deserialize(params.get("Execution"))
+        if params.get("PolicyRuleSet") is not None:
+            self._PolicyRuleSet = []
+            for item in params.get("PolicyRuleSet"):
+                obj = PolicyRuleOperator()
+                obj._deserialize(item)
+                self._PolicyRuleSet.append(obj)
+        self._EnableManifest = params.get("EnableManifest")
+        if params.get("Manifest") is not None:
+            self._Manifest = ManifestAttr()
+            self._Manifest._deserialize(params.get("Manifest"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePolicyRuleResponse(AbstractModel):
+    r"""CreatePolicyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>规则id</p>
+        :type RuleId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        r"""<p>规则id</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class CustomerClusterAttr(AbstractModel):
     r"""goosefsx客户端集群信息
 
@@ -2475,6 +2747,85 @@ class DeleteFilesetRequest(AbstractModel):
 
 class DeleteFilesetResponse(AbstractModel):
     r"""DeleteFileset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePolicyRuleRequest(AbstractModel):
+    r"""DeletePolicyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>规则id</p>
+        :type RuleId: str
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        """
+        self._RuleId = None
+        self._FileSystemId = None
+
+    @property
+    def RuleId(self):
+        r"""<p>规则id</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePolicyRuleResponse(AbstractModel):
+    r"""DeletePolicyRule返回参数结构体
 
     """
 
@@ -3493,6 +3844,279 @@ class DescribeLoadTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePolicyRuleExecuteRecordRequest(AbstractModel):
+    r"""DescribePolicyRuleExecuteRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>最大返回数量</p>
+        :type Limit: int
+        :param _RuleId: <p>规则id</p>
+        :type RuleId: str
+        """
+        self._FileSystemId = None
+        self._Offset = None
+        self._Limit = None
+        self._RuleId = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>最大返回数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def RuleId(self):
+        r"""<p>规则id</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePolicyRuleExecuteRecordResponse(AbstractModel):
+    r"""DescribePolicyRuleExecuteRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleExecuteList: <p>执行记录详情</p>
+        :type RuleExecuteList: list of RuleExecuteAttribute
+        :param _TotalCount: <p>任务总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleExecuteList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RuleExecuteList(self):
+        r"""<p>执行记录详情</p>
+        :rtype: list of RuleExecuteAttribute
+        """
+        return self._RuleExecuteList
+
+    @RuleExecuteList.setter
+    def RuleExecuteList(self, RuleExecuteList):
+        self._RuleExecuteList = RuleExecuteList
+
+    @property
+    def TotalCount(self):
+        r"""<p>任务总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleExecuteList") is not None:
+            self._RuleExecuteList = []
+            for item in params.get("RuleExecuteList"):
+                obj = RuleExecuteAttribute()
+                obj._deserialize(item)
+                self._RuleExecuteList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePolicyRuleRequest(AbstractModel):
+    r"""DescribePolicyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>最大返回数量</p>
+        :type Limit: int
+        """
+        self._FileSystemId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>最大返回数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePolicyRuleResponse(AbstractModel):
+    r"""DescribePolicyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyRuleTaskList: <p>规则任务详情</p>
+        :type PolicyRuleTaskList: list of PolicyRuleTaskAttribute
+        :param _TotalCount: <p>任务总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyRuleTaskList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def PolicyRuleTaskList(self):
+        r"""<p>规则任务详情</p>
+        :rtype: list of PolicyRuleTaskAttribute
+        """
+        return self._PolicyRuleTaskList
+
+    @PolicyRuleTaskList.setter
+    def PolicyRuleTaskList(self, PolicyRuleTaskList):
+        self._PolicyRuleTaskList = PolicyRuleTaskList
+
+    @property
+    def TotalCount(self):
+        r"""<p>任务总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyRuleTaskList") is not None:
+            self._PolicyRuleTaskList = []
+            for item in params.get("PolicyRuleTaskList"):
+                obj = PolicyRuleTaskAttribute()
+                obj._deserialize(item)
+                self._PolicyRuleTaskList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DetachFileSystemBucketRequest(AbstractModel):
     r"""DetachFileSystemBucket请求参数结构体
 
@@ -3546,6 +4170,85 @@ class DetachFileSystemBucketRequest(AbstractModel):
 
 class DetachFileSystemBucketResponse(AbstractModel):
     r"""DetachFileSystemBucket返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DisablePolicyRuleRequest(AbstractModel):
+    r"""DisablePolicyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>规则ID</p>
+        :type RuleId: str
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        """
+        self._RuleId = None
+        self._FileSystemId = None
+
+    @property
+    def RuleId(self):
+        r"""<p>规则ID</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisablePolicyRuleResponse(AbstractModel):
+    r"""DisablePolicyRule返回参数结构体
 
     """
 
@@ -3683,6 +4386,268 @@ class DistributedLoadAttrs(AbstractModel):
         
 
 
+class EnablePolicyRuleRequest(AbstractModel):
+    r"""EnablePolicyRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>规则ID</p>
+        :type RuleId: str
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        """
+        self._RuleId = None
+        self._FileSystemId = None
+
+    @property
+    def RuleId(self):
+        r"""<p>规则ID</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._FileSystemId = params.get("FileSystemId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnablePolicyRuleResponse(AbstractModel):
+    r"""EnablePolicyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ExecutePeriodAttribute(AbstractModel):
+    r"""周期执行启动配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PeriodType: <p>选择的周期类型</p><p>枚举值：</p><ul><li>DAY： 每天执行 </li><li>WEEK： 每周执行</li><li>MONTH： 每月执行</li></ul>
+        :type PeriodType: str
+        :param _StartWeekday: <p>选择每周执行时必填，需要选择周几,0-6 分别是周日到周六</p><p>取值范围：[0, 6]</p><p>默认值：0</p>
+        :type StartWeekday: int
+        :param _StartDate: <p>选择每月执行时必填，1-28日选择一天</p><p>取值范围：[1, 28]</p><p>默认值：1</p>
+        :type StartDate: int
+        :param _StartMinute: <p>周期中的时间点，取值0~59</p><p>取值范围：[0, 59]</p>
+        :type StartMinute: int
+        :param _StartHour: <p>24小时周期开始的小时数，取值0~23</p><p>取值范围：[0, 23]</p><p>默认值：1</p>
+        :type StartHour: int
+        """
+        self._PeriodType = None
+        self._StartWeekday = None
+        self._StartDate = None
+        self._StartMinute = None
+        self._StartHour = None
+
+    @property
+    def PeriodType(self):
+        r"""<p>选择的周期类型</p><p>枚举值：</p><ul><li>DAY： 每天执行 </li><li>WEEK： 每周执行</li><li>MONTH： 每月执行</li></ul>
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+    @property
+    def StartWeekday(self):
+        r"""<p>选择每周执行时必填，需要选择周几,0-6 分别是周日到周六</p><p>取值范围：[0, 6]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._StartWeekday
+
+    @StartWeekday.setter
+    def StartWeekday(self, StartWeekday):
+        self._StartWeekday = StartWeekday
+
+    @property
+    def StartDate(self):
+        r"""<p>选择每月执行时必填，1-28日选择一天</p><p>取值范围：[1, 28]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def StartMinute(self):
+        r"""<p>周期中的时间点，取值0~59</p><p>取值范围：[0, 59]</p>
+        :rtype: int
+        """
+        return self._StartMinute
+
+    @StartMinute.setter
+    def StartMinute(self, StartMinute):
+        self._StartMinute = StartMinute
+
+    @property
+    def StartHour(self):
+        r"""<p>24小时周期开始的小时数，取值0~23</p><p>取值范围：[0, 23]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._StartHour
+
+    @StartHour.setter
+    def StartHour(self, StartHour):
+        self._StartHour = StartHour
+
+
+    def _deserialize(self, params):
+        self._PeriodType = params.get("PeriodType")
+        self._StartWeekday = params.get("StartWeekday")
+        self._StartDate = params.get("StartDate")
+        self._StartMinute = params.get("StartMinute")
+        self._StartHour = params.get("StartHour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutionPlan(AbstractModel):
+    r"""执行时间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecuteMode: <p>执行类型</p><p>枚举值：</p><ul><li>scheduled： 指定时间执行</li><li>periodic： 周期执行</li></ul>
+        :type ExecuteMode: str
+        :param _ExecuteAt: <p>任务执行时间</p><p>参数格式：2026-07-23 08:30</p><p>入参限制：只有立即执行或者指定时间执行时设置，周期执行不需要设置</p><p>默认值：当前时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteAt: str
+        :param _ExecutePeriod: <p>周期执行的时间设置</p><p>入参限制：选择周期执行时必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutePeriod: :class:`tencentcloud.goosefs.v20220519.models.ExecutePeriodAttribute`
+        :param _WaitTime: <p>任务等待时间</p><p>取值范围：[1, 500]</p><p>单位：H</p><p>默认值：12</p><p>任务执行的等待时间，超过时间任务未启动，自动取消</p>
+        :type WaitTime: int
+        """
+        self._ExecuteMode = None
+        self._ExecuteAt = None
+        self._ExecutePeriod = None
+        self._WaitTime = None
+
+    @property
+    def ExecuteMode(self):
+        r"""<p>执行类型</p><p>枚举值：</p><ul><li>scheduled： 指定时间执行</li><li>periodic： 周期执行</li></ul>
+        :rtype: str
+        """
+        return self._ExecuteMode
+
+    @ExecuteMode.setter
+    def ExecuteMode(self, ExecuteMode):
+        self._ExecuteMode = ExecuteMode
+
+    @property
+    def ExecuteAt(self):
+        r"""<p>任务执行时间</p><p>参数格式：2026-07-23 08:30</p><p>入参限制：只有立即执行或者指定时间执行时设置，周期执行不需要设置</p><p>默认值：当前时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteAt
+
+    @ExecuteAt.setter
+    def ExecuteAt(self, ExecuteAt):
+        self._ExecuteAt = ExecuteAt
+
+    @property
+    def ExecutePeriod(self):
+        r"""<p>周期执行的时间设置</p><p>入参限制：选择周期执行时必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.ExecutePeriodAttribute`
+        """
+        return self._ExecutePeriod
+
+    @ExecutePeriod.setter
+    def ExecutePeriod(self, ExecutePeriod):
+        self._ExecutePeriod = ExecutePeriod
+
+    @property
+    def WaitTime(self):
+        r"""<p>任务等待时间</p><p>取值范围：[1, 500]</p><p>单位：H</p><p>默认值：12</p><p>任务执行的等待时间，超过时间任务未启动，自动取消</p>
+        :rtype: int
+        """
+        return self._WaitTime
+
+    @WaitTime.setter
+    def WaitTime(self, WaitTime):
+        self._WaitTime = WaitTime
+
+
+    def _deserialize(self, params):
+        self._ExecuteMode = params.get("ExecuteMode")
+        self._ExecuteAt = params.get("ExecuteAt")
+        if params.get("ExecutePeriod") is not None:
+            self._ExecutePeriod = ExecutePeriodAttribute()
+            self._ExecutePeriod._deserialize(params.get("ExecutePeriod"))
+        self._WaitTime = params.get("WaitTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExpandCapacityRequest(AbstractModel):
     r"""ExpandCapacity请求参数结构体
 
@@ -3692,14 +4657,17 @@ class ExpandCapacityRequest(AbstractModel):
         r"""
         :param _FileSystemId: 文件系统ID
         :type FileSystemId: str
-        :param _ExpandedCapacity: 新增扩容的系统容量
+        :param _ExpandedCapacity: 新增扩容的系统容量(单位 GiB)
         :type ExpandedCapacity: int
         :param _ModifyType: 容量修改类型：add/sub
         :type ModifyType: str
+        :param _RapidExpansion: 是否是快速扩容,只针对部分model有效
+        :type RapidExpansion: bool
         """
         self._FileSystemId = None
         self._ExpandedCapacity = None
         self._ModifyType = None
+        self._RapidExpansion = None
 
     @property
     def FileSystemId(self):
@@ -3714,7 +4682,7 @@ class ExpandCapacityRequest(AbstractModel):
 
     @property
     def ExpandedCapacity(self):
-        r"""新增扩容的系统容量
+        r"""新增扩容的系统容量(单位 GiB)
         :rtype: int
         """
         return self._ExpandedCapacity
@@ -3734,11 +4702,23 @@ class ExpandCapacityRequest(AbstractModel):
     def ModifyType(self, ModifyType):
         self._ModifyType = ModifyType
 
+    @property
+    def RapidExpansion(self):
+        r"""是否是快速扩容,只针对部分model有效
+        :rtype: bool
+        """
+        return self._RapidExpansion
+
+    @RapidExpansion.setter
+    def RapidExpansion(self, RapidExpansion):
+        self._RapidExpansion = RapidExpansion
+
 
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._ExpandedCapacity = params.get("ExpandedCapacity")
         self._ModifyType = params.get("ModifyType")
+        self._RapidExpansion = params.get("RapidExpansion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5119,6 +6099,87 @@ class LoadTaskCreationAttrs(AbstractModel):
         
 
 
+class ManifestAttr(AbstractModel):
+    r"""清单配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: <p>桶名字</p>
+        :type Bucket: str
+        :param _Prefix: <p>目录前缀</p>
+        :type Prefix: str
+        :param _Attributes: <p>文件属性</p>
+        :type Attributes: list of str
+        :param _Region: <p>桶所在地域</p><p>桶所在的地域，可以不填，认为是实例所在地域</p>
+        :type Region: str
+        """
+        self._Bucket = None
+        self._Prefix = None
+        self._Attributes = None
+        self._Region = None
+
+    @property
+    def Bucket(self):
+        r"""<p>桶名字</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Prefix(self):
+        r"""<p>目录前缀</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Attributes(self):
+        r"""<p>文件属性</p>
+        :rtype: list of str
+        """
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+    @property
+    def Region(self):
+        r"""<p>桶所在地域</p><p>桶所在的地域，可以不填，认为是实例所在地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Prefix = params.get("Prefix")
+        self._Attributes = params.get("Attributes")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MappedBucket(AbstractModel):
     r"""关联的对象Bucket, 并将其映射到文件系统某个路径上
 
@@ -5688,6 +6749,256 @@ class MountPointEntry(AbstractModel):
         
 
 
+class PolicyRuleOperator(AbstractModel):
+    r"""Policy扫描规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>规则名</p><p>枚举值：</p><ul><li>CREATION_TIME_DAYS： 创建时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 CREATION_TIME &gt; 5，指的是创建时间-今天大于5天，即5天前（以及更早）创建的文件</li><li>CHANGE_TIME_DAYS： 元数据修改时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 CHANGE_TIME &gt; 5，指的是元数据修改时间-今天大于5天，即5天前以及更早修改元数据的文件</li><li>MODIFICATION_TIME_DAYS： 数据修改时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 MODIFICATION_TIME &gt; 5，指的是数据修改时间-今天大于5天，即5天前（以及更早）修改的文件</li><li>ACCESS_TIME_DAYS： 访问时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 ACCESS_TIME &gt; 5，指的是访问时间-今天大于5天，即5天前（以及更早）访问的文件</li><li>CREATION_TIME_DATE： 创建时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 CREATION_TIME &gt; 2026-06-01，指的是创建时间晚于2026年6月1日</li><li>CHANGE_TIME_DATE： 元数据修改时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 CHANGE_TIME &gt; 2026-06-01，指的是元数据修改晚于2026年6月1日</li><li>MODIFICATION_TIME_DATE： 数据修改时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 MODIFICATION_TIME &gt; 2026-06-01，指的是数据修改时间晚于2026年6月1日</li><li>ACCESS_TIME_DATE： 访问时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 ACCESS_TIME &gt; 2026-06-01，指的是访问时间晚于2026年6月1日</li><li>FILE_SIZE： 文件大小，数字，单位byte，整数，0 ～ 64位整数最大值</li></ul>
+        :type Key: str
+        :param _Operator: <p>比较关系</p><p>枚举值：</p><ul><li>&gt;：  大于</li><li>&gt;=： 大于等于</li><li>=： 相等</li><li>&lt;： 小于</li><li>&lt;=： 小于等于</li></ul>
+        :type Operator: str
+        :param _Value: <p>比较值</p><p>如果Key是CREATION_TIME_DAYS、CHANGE_TIME_DAYS、MODIFICATION_TIME_DAYS、ACCESS_TIME_DAYS时，值是整数；<br>如果Key是CREATION_TIME_DATE、CHANGE_TIME_DATE、MODIFICATION_TIME_DATE、ACCESS_TIME_DATE时，值是日期，格式是YYYY-MM-DD；<br>如果Key是FILE_SIZE，值是整数，单位是byte</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Operator = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>规则名</p><p>枚举值：</p><ul><li>CREATION_TIME_DAYS： 创建时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 CREATION_TIME &gt; 5，指的是创建时间-今天大于5天，即5天前（以及更早）创建的文件</li><li>CHANGE_TIME_DAYS： 元数据修改时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 CHANGE_TIME &gt; 5，指的是元数据修改时间-今天大于5天，即5天前以及更早修改元数据的文件</li><li>MODIFICATION_TIME_DAYS： 数据修改时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 MODIFICATION_TIME &gt; 5，指的是数据修改时间-今天大于5天，即5天前（以及更早）修改的文件</li><li>ACCESS_TIME_DAYS： 访问时间，比较的value 是days，数字整数。判断条件均为与“今天”相差。例如 ACCESS_TIME &gt; 5，指的是访问时间-今天大于5天，即5天前（以及更早）访问的文件</li><li>CREATION_TIME_DATE： 创建时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 CREATION_TIME &gt; 2026-06-01，指的是创建时间晚于2026年6月1日</li><li>CHANGE_TIME_DATE： 元数据修改时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 CHANGE_TIME &gt; 2026-06-01，指的是元数据修改晚于2026年6月1日</li><li>MODIFICATION_TIME_DATE： 数据修改时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 MODIFICATION_TIME &gt; 2026-06-01，指的是数据修改时间晚于2026年6月1日</li><li>ACCESS_TIME_DATE： 访问时间，比较的value 是date,日期，格式为YYYY-MM-DD。判断条件均为与value对应的日期的对比。例如 ACCESS_TIME &gt; 2026-06-01，指的是访问时间晚于2026年6月1日</li><li>FILE_SIZE： 文件大小，数字，单位byte，整数，0 ～ 64位整数最大值</li></ul>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Operator(self):
+        r"""<p>比较关系</p><p>枚举值：</p><ul><li>&gt;：  大于</li><li>&gt;=： 大于等于</li><li>=： 相等</li><li>&lt;： 小于</li><li>&lt;=： 小于等于</li></ul>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Value(self):
+        r"""<p>比较值</p><p>如果Key是CREATION_TIME_DAYS、CHANGE_TIME_DAYS、MODIFICATION_TIME_DAYS、ACCESS_TIME_DAYS时，值是整数；<br>如果Key是CREATION_TIME_DATE、CHANGE_TIME_DATE、MODIFICATION_TIME_DATE、ACCESS_TIME_DATE时，值是日期，格式是YYYY-MM-DD；<br>如果Key是FILE_SIZE，值是整数，单位是byte</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Operator = params.get("Operator")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PolicyRuleTaskAttribute(AbstractModel):
+    r"""扫描规则信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>规则id</p>
+        :type RuleId: str
+        :param _Name: <p>规则名称</p>
+        :type Name: str
+        :param _ScanDir: <p>扫描目录</p>
+        :type ScanDir: str
+        :param _Execution: <p>执行计划</p>
+        :type Execution: :class:`tencentcloud.goosefs.v20220519.models.ExecutionPlan`
+        :param _PolicyRuleSet: <p>扫描规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyRuleSet: list of PolicyRuleOperator
+        :param _EnableManifest: <p>是否输出清单</p>
+        :type EnableManifest: bool
+        :param _Manifest: <p>输出清单配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Manifest: :class:`tencentcloud.goosefs.v20220519.models.ManifestAttr`
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>0： 启用（enable）</li><li>1： 禁用（disable）</li></ul><p>默认值：0</p>
+        :type Status: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>修改时间</p>
+        :type ModifyTime: str
+        """
+        self._RuleId = None
+        self._Name = None
+        self._ScanDir = None
+        self._Execution = None
+        self._PolicyRuleSet = None
+        self._EnableManifest = None
+        self._Manifest = None
+        self._Status = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def RuleId(self):
+        r"""<p>规则id</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        r"""<p>规则名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ScanDir(self):
+        r"""<p>扫描目录</p>
+        :rtype: str
+        """
+        return self._ScanDir
+
+    @ScanDir.setter
+    def ScanDir(self, ScanDir):
+        self._ScanDir = ScanDir
+
+    @property
+    def Execution(self):
+        r"""<p>执行计划</p>
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.ExecutionPlan`
+        """
+        return self._Execution
+
+    @Execution.setter
+    def Execution(self, Execution):
+        self._Execution = Execution
+
+    @property
+    def PolicyRuleSet(self):
+        r"""<p>扫描规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PolicyRuleOperator
+        """
+        return self._PolicyRuleSet
+
+    @PolicyRuleSet.setter
+    def PolicyRuleSet(self, PolicyRuleSet):
+        self._PolicyRuleSet = PolicyRuleSet
+
+    @property
+    def EnableManifest(self):
+        r"""<p>是否输出清单</p>
+        :rtype: bool
+        """
+        return self._EnableManifest
+
+    @EnableManifest.setter
+    def EnableManifest(self, EnableManifest):
+        self._EnableManifest = EnableManifest
+
+    @property
+    def Manifest(self):
+        r"""<p>输出清单配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.ManifestAttr`
+        """
+        return self._Manifest
+
+    @Manifest.setter
+    def Manifest(self, Manifest):
+        self._Manifest = Manifest
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>0： 启用（enable）</li><li>1： 禁用（disable）</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>修改时间</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._ScanDir = params.get("ScanDir")
+        if params.get("Execution") is not None:
+            self._Execution = ExecutionPlan()
+            self._Execution._deserialize(params.get("Execution"))
+        if params.get("PolicyRuleSet") is not None:
+            self._PolicyRuleSet = []
+            for item in params.get("PolicyRuleSet"):
+                obj = PolicyRuleOperator()
+                obj._deserialize(item)
+                self._PolicyRuleSet.append(obj)
+        self._EnableManifest = params.get("EnableManifest")
+        if params.get("Manifest") is not None:
+            self._Manifest = ManifestAttr()
+            self._Manifest._deserialize(params.get("Manifest"))
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryClientNodeMountCommandRequest(AbstractModel):
     r"""QueryClientNodeMountCommand请求参数结构体
 
@@ -6036,6 +7347,132 @@ class RoleToken(AbstractModel):
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
         self._Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleExecuteAttribute(AbstractModel):
+    r"""扫描规则执行信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: <p>执行id</p>
+        :type RecordId: str
+        :param _StartTime: <p>开始执行时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>执行结束时间</p>
+        :type EndTime: str
+        :param _Status: <p>执行状态</p><p>枚举值：</p><ul><li>0： 等待中</li><li>1： 执行中</li><li>2： 已完成</li><li>3： 已跳过</li></ul><p>默认值：0</p><p>已跳过是指任务排队超过了任务的等待时间会自动跳过</p>
+        :type Status: int
+        :param _Capacity: <p>存储量</p><p>单位：GB</p><p>默认值：0</p><p>不足1G按照1G 统计</p>
+        :type Capacity: int
+        :param _FileCount: <p>文件数</p>
+        :type FileCount: int
+        :param _ManifestUrl: <p>文件清单路径</p><p>参数格式：http://xxx/xxx/xx</p>
+        :type ManifestUrl: str
+        """
+        self._RecordId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._Capacity = None
+        self._FileCount = None
+        self._ManifestUrl = None
+
+    @property
+    def RecordId(self):
+        r"""<p>执行id</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始执行时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>执行结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        r"""<p>执行状态</p><p>枚举值：</p><ul><li>0： 等待中</li><li>1： 执行中</li><li>2： 已完成</li><li>3： 已跳过</li></ul><p>默认值：0</p><p>已跳过是指任务排队超过了任务的等待时间会自动跳过</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Capacity(self):
+        r"""<p>存储量</p><p>单位：GB</p><p>默认值：0</p><p>不足1G按照1G 统计</p>
+        :rtype: int
+        """
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def FileCount(self):
+        r"""<p>文件数</p>
+        :rtype: int
+        """
+        return self._FileCount
+
+    @FileCount.setter
+    def FileCount(self, FileCount):
+        self._FileCount = FileCount
+
+    @property
+    def ManifestUrl(self):
+        r"""<p>文件清单路径</p><p>参数格式：http://xxx/xxx/xx</p>
+        :rtype: str
+        """
+        return self._ManifestUrl
+
+    @ManifestUrl.setter
+    def ManifestUrl(self, ManifestUrl):
+        self._ManifestUrl = ManifestUrl
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._Capacity = params.get("Capacity")
+        self._FileCount = params.get("FileCount")
+        self._ManifestUrl = params.get("ManifestUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

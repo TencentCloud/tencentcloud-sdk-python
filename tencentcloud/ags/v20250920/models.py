@@ -3565,6 +3565,152 @@ class CreateRegistryResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSandboxSnapshotRequest(AbstractModel):
+    r"""CreateSandboxSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>待制作快照的沙箱实例 ID</p>
+        :type InstanceId: str
+        :param _SnapshotName: <p>快照名称</p>
+        :type SnapshotName: str
+        :param _Memory: <p>制作快照时是否包含内存状态</p>
+        :type Memory: bool
+        :param _Tags: <p>云资源标签</p>
+        :type Tags: list of Tag
+        :param _ClientToken: <p>幂等 token</p>
+        :type ClientToken: str
+        """
+        self._InstanceId = None
+        self._SnapshotName = None
+        self._Memory = None
+        self._Tags = None
+        self._ClientToken = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>待制作快照的沙箱实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SnapshotName(self):
+        r"""<p>快照名称</p>
+        :rtype: str
+        """
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def Memory(self):
+        r"""<p>制作快照时是否包含内存状态</p>
+        :rtype: bool
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Tags(self):
+        r"""<p>云资源标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ClientToken(self):
+        r"""<p>幂等 token</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SnapshotName = params.get("SnapshotName")
+        self._Memory = params.get("Memory")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSandboxSnapshotResponse(AbstractModel):
+    r"""CreateSandboxSnapshot返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Snapshot: <p>沙箱快照</p>
+        :type Snapshot: :class:`tencentcloud.ags.v20250920.models.SandboxSnapshot`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Snapshot = None
+        self._RequestId = None
+
+    @property
+    def Snapshot(self):
+        r"""<p>沙箱快照</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SandboxSnapshot`
+        """
+        return self._Snapshot
+
+    @Snapshot.setter
+    def Snapshot(self, Snapshot):
+        self._Snapshot = Snapshot
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Snapshot") is not None:
+            self._Snapshot = SandboxSnapshot()
+            self._Snapshot._deserialize(params.get("Snapshot"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSandboxToolRequest(AbstractModel):
     r"""CreateSandboxTool请求参数结构体
 
@@ -4840,6 +4986,70 @@ class DeleteRegistryRequest(AbstractModel):
 
 class DeleteRegistryResponse(AbstractModel):
     r"""DeleteRegistry返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSandboxSnapshotRequest(AbstractModel):
+    r"""DeleteSandboxSnapshot请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotId: <p>待删除的沙箱快照 ID</p>
+        :type SnapshotId: str
+        """
+        self._SnapshotId = None
+
+    @property
+    def SnapshotId(self):
+        r"""<p>待删除的沙箱快照 ID</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+
+    def _deserialize(self, params):
+        self._SnapshotId = params.get("SnapshotId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSandboxSnapshotResponse(AbstractModel):
+    r"""DeleteSandboxSnapshot返回参数结构体
 
     """
 
@@ -7366,6 +7576,200 @@ class DescribeSandboxInstanceListResponse(AbstractModel):
                 obj = SandboxInstance()
                 obj._deserialize(item)
                 self._InstanceSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSandboxSnapshotListRequest(AbstractModel):
+    r"""DescribeSandboxSnapshotList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotIds: <p>待查询的沙箱快照 ID 列表</p>
+        :type SnapshotIds: list of str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移量，与 NextToken 参数互斥</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量上限</p>
+        :type Limit: int
+        :param _NextToken: <p>分页偏移 token，与 Offset 参数互斥</p>
+        :type NextToken: str
+        :param _MaxResults: <p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
+        :type MaxResults: int
+        """
+        self._SnapshotIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._NextToken = None
+        self._MaxResults = None
+
+    @property
+    def SnapshotIds(self):
+        r"""<p>待查询的沙箱快照 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._SnapshotIds
+
+    @SnapshotIds.setter
+    def SnapshotIds(self, SnapshotIds):
+        self._SnapshotIds = SnapshotIds
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，与 NextToken 参数互斥</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量上限</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NextToken(self):
+        r"""<p>分页偏移 token，与 Offset 参数互斥</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def MaxResults(self):
+        r"""<p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+
+    def _deserialize(self, params):
+        self._SnapshotIds = params.get("SnapshotIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._NextToken = params.get("NextToken")
+        self._MaxResults = params.get("MaxResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSandboxSnapshotListResponse(AbstractModel):
+    r"""DescribeSandboxSnapshotList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotSet: <p>查询到的沙箱快照列表</p>
+        :type SnapshotSet: list of SandboxSnapshot
+        :param _TotalCount: <p>查询到的沙箱快照数量</p>
+        :type TotalCount: int
+        :param _NextToken: <p>分页偏移 token，可用于下一次查询</p>
+        :type NextToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SnapshotSet = None
+        self._TotalCount = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def SnapshotSet(self):
+        r"""<p>查询到的沙箱快照列表</p>
+        :rtype: list of SandboxSnapshot
+        """
+        return self._SnapshotSet
+
+    @SnapshotSet.setter
+    def SnapshotSet(self, SnapshotSet):
+        self._SnapshotSet = SnapshotSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询到的沙箱快照数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NextToken(self):
+        r"""<p>分页偏移 token，可用于下一次查询</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SnapshotSet") is not None:
+            self._SnapshotSet = []
+            for item in params.get("SnapshotSet"):
+                obj = SandboxSnapshot()
+                obj._deserialize(item)
+                self._SnapshotSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
@@ -11051,6 +11455,167 @@ class SandboxInstance(AbstractModel):
         
 
 
+class SandboxSnapshot(AbstractModel):
+    r"""沙箱快照
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SnapshotId: <p>沙箱快照 ID</p>
+        :type SnapshotId: str
+        :param _SnapshotName: <p>沙箱快照名称</p>
+        :type SnapshotName: str
+        :param _SourceInstanceId: <p>源沙箱实例 ID，沙箱快照由其派生</p>
+        :type SourceInstanceId: str
+        :param _MemoryIncluded: <p>制作快照时是否包含内存状态</p>
+        :type MemoryIncluded: bool
+        :param _Status: <p>沙箱快照状态</p><p>枚举值：</p><ul><li>ACTIVE： 可用</li><li>DELETING： 删除中</li><li>DELETED： 已删除</li></ul>
+        :type Status: str
+        :param _StatusReason: <p>用于说明沙箱快照处于该状态的原因</p>
+        :type StatusReason: str
+        :param _Tags: <p>云资源标签</p>
+        :type Tags: list of Tag
+        :param _CreateTime: <p>创建时间</p><p>参数格式：ISO8601</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p><p>参数格式：ISO8601</p>
+        :type UpdateTime: str
+        """
+        self._SnapshotId = None
+        self._SnapshotName = None
+        self._SourceInstanceId = None
+        self._MemoryIncluded = None
+        self._Status = None
+        self._StatusReason = None
+        self._Tags = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def SnapshotId(self):
+        r"""<p>沙箱快照 ID</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def SnapshotName(self):
+        r"""<p>沙箱快照名称</p>
+        :rtype: str
+        """
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def SourceInstanceId(self):
+        r"""<p>源沙箱实例 ID，沙箱快照由其派生</p>
+        :rtype: str
+        """
+        return self._SourceInstanceId
+
+    @SourceInstanceId.setter
+    def SourceInstanceId(self, SourceInstanceId):
+        self._SourceInstanceId = SourceInstanceId
+
+    @property
+    def MemoryIncluded(self):
+        r"""<p>制作快照时是否包含内存状态</p>
+        :rtype: bool
+        """
+        return self._MemoryIncluded
+
+    @MemoryIncluded.setter
+    def MemoryIncluded(self, MemoryIncluded):
+        self._MemoryIncluded = MemoryIncluded
+
+    @property
+    def Status(self):
+        r"""<p>沙箱快照状态</p><p>枚举值：</p><ul><li>ACTIVE： 可用</li><li>DELETING： 删除中</li><li>DELETED： 已删除</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusReason(self):
+        r"""<p>用于说明沙箱快照处于该状态的原因</p>
+        :rtype: str
+        """
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
+
+    @property
+    def Tags(self):
+        r"""<p>云资源标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：ISO8601</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>参数格式：ISO8601</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._SnapshotId = params.get("SnapshotId")
+        self._SnapshotName = params.get("SnapshotName")
+        self._SourceInstanceId = params.get("SourceInstanceId")
+        self._MemoryIncluded = params.get("MemoryIncluded")
+        self._Status = params.get("Status")
+        self._StatusReason = params.get("StatusReason")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SandboxTool(AbstractModel):
     r"""沙箱工具结构体
 
@@ -11766,6 +12331,8 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type ToolId: str
         :param _ToolName: <p>沙箱工具名称，与 ToolId 至少有一个要填</p>
         :type ToolName: str
+        :param _SourceInstanceId: <p>待克隆的源沙箱 ID</p>
+        :type SourceInstanceId: str
         :param _Timeout: <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
         :type Timeout: str
         :param _ClientToken: <p>幂等性 Token，长度不超过 64 字符</p>
@@ -11781,6 +12348,7 @@ class StartSandboxInstanceRequest(AbstractModel):
         """
         self._ToolId = None
         self._ToolName = None
+        self._SourceInstanceId = None
         self._Timeout = None
         self._ClientToken = None
         self._MountOptions = None
@@ -11809,6 +12377,17 @@ class StartSandboxInstanceRequest(AbstractModel):
     @ToolName.setter
     def ToolName(self, ToolName):
         self._ToolName = ToolName
+
+    @property
+    def SourceInstanceId(self):
+        r"""<p>待克隆的源沙箱 ID</p>
+        :rtype: str
+        """
+        return self._SourceInstanceId
+
+    @SourceInstanceId.setter
+    def SourceInstanceId(self, SourceInstanceId):
+        self._SourceInstanceId = SourceInstanceId
 
     @property
     def Timeout(self):
@@ -11880,6 +12459,7 @@ class StartSandboxInstanceRequest(AbstractModel):
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
         self._ToolName = params.get("ToolName")
+        self._SourceInstanceId = params.get("SourceInstanceId")
         self._Timeout = params.get("Timeout")
         self._ClientToken = params.get("ClientToken")
         if params.get("MountOptions") is not None:

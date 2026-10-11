@@ -35,8 +35,14 @@ FAILEDOPERATION_ENCRYPTIONERROR = 'FailedOperation.EncryptionError'
 # 已有正在进行的轮转任务
 FAILEDOPERATION_ROTATETASKRUNNING = 'FailedOperation.RotateTaskRunning'
 
+# 签名运算失败
+FAILEDOPERATION_SIGNERROR = 'FailedOperation.SignError'
+
 # 标签服务错误。
 FAILEDOPERATION_TAGGINGERROR = 'FailedOperation.TaggingError'
+
+# 验证签名失败
+FAILEDOPERATION_VERIFYERROR = 'FailedOperation.VerifyError'
 
 # 内部错误。
 INTERNALERROR = 'InternalError'
@@ -199,3 +205,6 @@ UNSUPPORTEDOPERATION_SERVICETEMPORARYUNAVAILABLE = 'UnsupportedOperation.Service
 
 # 加密方式在当前region不支持。
 UNSUPPORTEDOPERATION_UNSUPPORTEDKEYUSAGEINCURRENTREGION = 'UnsupportedOperation.UnsupportedKeyUsageInCurrentRegion'
+
+# 用户版本不支持
+UNSUPPORTEDOPERATION_USERVERSIONNOTSUPPORT = 'UnsupportedOperation.UserVersionNotSupport'

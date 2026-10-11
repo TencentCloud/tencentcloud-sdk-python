@@ -2719,6 +2719,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpgradeInstanceProductVersion(self, request):
+        r"""本接口（UpgradeInstanceProductVersion）用于升级实例类型，可从通用 I 型升级到通用 II 型。
+
+        :param request: Request instance for UpgradeInstanceProductVersion.
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceProductVersionRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpgradeInstanceProductVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeInstanceProductVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeInstanceProductVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpgradeInstanceVersion(self, request):
         r"""本接口（UpgradeInstanceVersion）用于将当前实例升级到更高版本，或者将当前标准架构升级至集群架构。
 

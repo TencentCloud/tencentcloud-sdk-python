@@ -5048,6 +5048,180 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMultimodalDocParseJobRequest(AbstractModel):
+    r"""DescribeMultimodalDocParseJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>解析任务ID。由创建任务接口返回。</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>解析任务ID。由创建任务接口返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMultimodalDocParseJobResponse(AbstractModel):
+    r"""DescribeMultimodalDocParseJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态。取值：</p><ul><li>Created：已创建，等待处理</li><li>Processing：处理中</li><li>Success：成功</li><li>Failed：失败</li><li>Unknown：未知</li></ul>
+        :type Status: str
+        :param _ErrorCode: <p>任务执行错误码。当任务状态不为 Failed 时，该值为“”。</p>
+        :type ErrorCode: str
+        :param _ErrorMessage: <p>任务执行错误信息。当任务状态不为 Failed 时，该值为“”。</p>
+        :type ErrorMessage: str
+        :param _ResultUrl: <p>结果的临时下载地址。文件类型为 zip 压缩包，下载链接有效期 30 分钟。压缩包内包含 <em>.md、</em>.json 以及 images 文件夹。仅当任务状态为 Success 时返回该字段。</p>
+        :type ResultUrl: str
+        :param _FailedPages: <p>解析失败的页码列表。仅当任务状态为 Success 时返回该字段。</p>
+        :type FailedPages: list of ReconstructDocumentFailedPage
+        :param _SuccessPageNum: <p>解析成功页数。</p>
+        :type SuccessPageNum: int
+        :param _FailPageNum: <p>解析失败页数。</p>
+        :type FailPageNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ResultUrl = None
+        self._FailedPages = None
+        self._SuccessPageNum = None
+        self._FailPageNum = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。取值：</p><ul><li>Created：已创建，等待处理</li><li>Processing：处理中</li><li>Success：成功</li><li>Failed：失败</li><li>Unknown：未知</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        r"""<p>任务执行错误码。当任务状态不为 Failed 时，该值为“”。</p>
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>任务执行错误信息。当任务状态不为 Failed 时，该值为“”。</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultUrl(self):
+        r"""<p>结果的临时下载地址。文件类型为 zip 压缩包，下载链接有效期 30 分钟。压缩包内包含 <em>.md、</em>.json 以及 images 文件夹。仅当任务状态为 Success 时返回该字段。</p>
+        :rtype: str
+        """
+        return self._ResultUrl
+
+    @ResultUrl.setter
+    def ResultUrl(self, ResultUrl):
+        self._ResultUrl = ResultUrl
+
+    @property
+    def FailedPages(self):
+        r"""<p>解析失败的页码列表。仅当任务状态为 Success 时返回该字段。</p>
+        :rtype: list of ReconstructDocumentFailedPage
+        """
+        return self._FailedPages
+
+    @FailedPages.setter
+    def FailedPages(self, FailedPages):
+        self._FailedPages = FailedPages
+
+    @property
+    def SuccessPageNum(self):
+        r"""<p>解析成功页数。</p>
+        :rtype: int
+        """
+        return self._SuccessPageNum
+
+    @SuccessPageNum.setter
+    def SuccessPageNum(self, SuccessPageNum):
+        self._SuccessPageNum = SuccessPageNum
+
+    @property
+    def FailPageNum(self):
+        r"""<p>解析失败页数。</p>
+        :rtype: int
+        """
+        return self._FailPageNum
+
+    @FailPageNum.setter
+    def FailPageNum(self, FailPageNum):
+        self._FailPageNum = FailPageNum
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ResultUrl = params.get("ResultUrl")
+        if params.get("FailedPages") is not None:
+            self._FailedPages = []
+            for item in params.get("FailedPages"):
+                obj = ReconstructDocumentFailedPage()
+                obj._deserialize(item)
+                self._FailedPages.append(obj)
+        self._SuccessPageNum = params.get("SuccessPageNum")
+        self._FailPageNum = params.get("FailPageNum")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeQuestionMarkAgentJobRequest(AbstractModel):
     r"""DescribeQuestionMarkAgentJob请求参数结构体
 
@@ -23074,13 +23248,13 @@ class ReasoningConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OutputMode: <p>实际使用的推理输出模式：enum 或 string。</p>
+        :param _OutputMode: <p>推理输出模式。可选值：enum（枚举值输出）、string（自由文本输出）。<br>enum：VLM 必须从 EnumValues 中选择一个值输出，适用于二值判断或分类决策。<br>string：VLM 输出自由文本，适用于需要自然语言解释的场景。</p>
         :type OutputMode: str
-        :param _EnumValues: <p>枚举值集合，仅在 OutputMode=enum 时生效。  VLM 输出必须精确命中此集合中的某个值。</p>
+        :param _EnumValues: <p>枚举值集合，仅在 OutputMode=enum 时生效，设置后VLM推理结果必须精确命中此集合中的某个值，否则会返回“输出偏离枚举值”，Prompt中的指令应与枚举值匹配。</p>
         :type EnumValues: list of str
-        :param _MaxLength: <p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p><p>默认值：200</p>
+        :param _MaxLength: <p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p>
         :type MaxLength: int
-        :param _EnableImageInput: <p>是否在推理调用时向 VLM 传入原图进行多模态理解。  true（默认）：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。  false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理。适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景，可降低推理延迟和计费成本。  建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;直接看图&quot;等多模态指令，且推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以优化性能。</p>
+        :param _EnableImageInput: <p>是否在推理时向 VLM 传入原图进行多模态理解，不传入时默认为true。<br>true：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。<br>false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理，适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景。<br>建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;分析图片&quot;等多模态指令，推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以获得更低的延迟。</p>
         :type EnableImageInput: bool
         """
         self._OutputMode = None
@@ -23090,7 +23264,7 @@ class ReasoningConfig(AbstractModel):
 
     @property
     def OutputMode(self):
-        r"""<p>实际使用的推理输出模式：enum 或 string。</p>
+        r"""<p>推理输出模式。可选值：enum（枚举值输出）、string（自由文本输出）。<br>enum：VLM 必须从 EnumValues 中选择一个值输出，适用于二值判断或分类决策。<br>string：VLM 输出自由文本，适用于需要自然语言解释的场景。</p>
         :rtype: str
         """
         return self._OutputMode
@@ -23101,7 +23275,7 @@ class ReasoningConfig(AbstractModel):
 
     @property
     def EnumValues(self):
-        r"""<p>枚举值集合，仅在 OutputMode=enum 时生效。  VLM 输出必须精确命中此集合中的某个值。</p>
+        r"""<p>枚举值集合，仅在 OutputMode=enum 时生效，设置后VLM推理结果必须精确命中此集合中的某个值，否则会返回“输出偏离枚举值”，Prompt中的指令应与枚举值匹配。</p>
         :rtype: list of str
         """
         return self._EnumValues
@@ -23112,7 +23286,7 @@ class ReasoningConfig(AbstractModel):
 
     @property
     def MaxLength(self):
-        r"""<p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p><p>默认值：200</p>
+        r"""<p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p>
         :rtype: int
         """
         return self._MaxLength
@@ -23123,7 +23297,7 @@ class ReasoningConfig(AbstractModel):
 
     @property
     def EnableImageInput(self):
-        r"""<p>是否在推理调用时向 VLM 传入原图进行多模态理解。  true（默认）：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。  false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理。适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景，可降低推理延迟和计费成本。  建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;直接看图&quot;等多模态指令，且推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以优化性能。</p>
+        r"""<p>是否在推理时向 VLM 传入原图进行多模态理解，不传入时默认为true。<br>true：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。<br>false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理，适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景。<br>建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;分析图片&quot;等多模态指令，推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以获得更低的延迟。</p>
         :rtype: bool
         """
         return self._EnableImageInput
@@ -23157,13 +23331,13 @@ class ReasoningResult(AbstractModel):
         r"""
         :param _OutputMode: <p>实际使用的推理输出模式：enum 或 string。</p>
         :type OutputMode: str
-        :param _EnumValue: <p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，必定命中请求中 EnumValues 的某个值。 若 VLM 输出无法匹配任何枚举值，则返回 <strong>UNCERTAIN</strong>。</p>
+        :param _EnumValue: <p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，取值对应请求中配置的 EnumValues。</p>
         :type EnumValue: str
-        :param _TextValue: <p>文本模式下的推理结果值。当 OutputMode=string 时返回。 若 VLM 无法得出结论，则返回 <strong>UNCERTAIN</strong>。</p>
+        :param _TextValue: <p>文本模式下的推理结果值。当 OutputMode=string 时返回，以文本形式描述推理结论。</p>
         :type TextValue: str
-        :param _RawOutput: <p>VLM 原始输出文本（未经过结构化校验）。</p>
+        :param _RawOutput: <p>VLM 原始输出文本（未经过结构化校验）。该字段仅用于调试，生产环境可忽略。</p>
         :type RawOutput: str
-        :param _RenderedPrompt: <p>变量替换后的实际 Prompt（脱敏后）。</p>
+        :param _RenderedPrompt: <p>变量替换后的用户 Prompt 文本。该字段仅用于调试，生产环境可忽略。</p>
         :type RenderedPrompt: str
         """
         self._OutputMode = None
@@ -23185,7 +23359,7 @@ class ReasoningResult(AbstractModel):
 
     @property
     def EnumValue(self):
-        r"""<p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，必定命中请求中 EnumValues 的某个值。 若 VLM 输出无法匹配任何枚举值，则返回 <strong>UNCERTAIN</strong>。</p>
+        r"""<p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，取值对应请求中配置的 EnumValues。</p>
         :rtype: str
         """
         return self._EnumValue
@@ -23196,7 +23370,7 @@ class ReasoningResult(AbstractModel):
 
     @property
     def TextValue(self):
-        r"""<p>文本模式下的推理结果值。当 OutputMode=string 时返回。 若 VLM 无法得出结论，则返回 <strong>UNCERTAIN</strong>。</p>
+        r"""<p>文本模式下的推理结果值。当 OutputMode=string 时返回，以文本形式描述推理结论。</p>
         :rtype: str
         """
         return self._TextValue
@@ -23207,7 +23381,7 @@ class ReasoningResult(AbstractModel):
 
     @property
     def RawOutput(self):
-        r"""<p>VLM 原始输出文本（未经过结构化校验）。</p>
+        r"""<p>VLM 原始输出文本（未经过结构化校验）。该字段仅用于调试，生产环境可忽略。</p>
         :rtype: str
         """
         return self._RawOutput
@@ -23218,7 +23392,7 @@ class ReasoningResult(AbstractModel):
 
     @property
     def RenderedPrompt(self):
-        r"""<p>变量替换后的实际 Prompt（脱敏后）。</p>
+        r"""<p>变量替换后的用户 Prompt 文本。该字段仅用于调试，生产环境可忽略。</p>
         :rtype: str
         """
         return self._RenderedPrompt
@@ -26095,6 +26269,42 @@ class RecognizeValidIDCardOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReconstructDocumentFailedPage(AbstractModel):
+    r"""解析失败的页数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>解析失败页数。</p>
+        :type PageNumber: int
+        """
+        self._PageNumber = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>解析失败页数。</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Rect(AbstractModel):
     r"""矩形坐标
 
@@ -26363,6 +26573,57 @@ class RequestIdInfo(AbstractModel):
         self._ApiRequestId = params.get("ApiRequestId")
         self._ApiErrorCode = params.get("ApiErrorCode")
         self._WarnCodes = params.get("WarnCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RerankResult(AbstractModel):
+    r"""重排序结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 文档在输入 Docs 列表中的索引，从 0 开始，用于回溯原文档。
+        :type Index: int
+        :param _Score: 文档与查询内容的相关性得分，数值越大越相关。
+        :type Score: float
+        """
+        self._Index = None
+        self._Score = None
+
+    @property
+    def Index(self):
+        r"""文档在输入 Docs 列表中的索引，从 0 开始，用于回溯原文档。
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Score(self):
+        r"""文档与查询内容的相关性得分，数值越大越相关。
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Score = params.get("Score")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27622,6 +27883,120 @@ class RideHailingTransportLicenseOCRResponse(AbstractModel):
         self._StartDate = params.get("StartDate")
         self._EndDate = params.get("EndDate")
         self._ReleaseDate = params.get("ReleaseDate")
+        self._RequestId = params.get("RequestId")
+
+
+class RunRerankRequest(AbstractModel):
+    r"""RunRerank请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>选择模型。<br>0：Rerank-2b<br>1：Rerank-0.6b</p>
+        :type Model: str
+        :param _Query: <p>查询内容。用于匹配的query，即用户检索意图。</p>
+        :type Query: str
+        :param _Docs: <p>文档内容列表。</p>
+        :type Docs: list of str
+        """
+        self._Model = None
+        self._Query = None
+        self._Docs = None
+
+    @property
+    def Model(self):
+        r"""<p>选择模型。<br>0：Rerank-2b<br>1：Rerank-0.6b</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Query(self):
+        r"""<p>查询内容。用于匹配的query，即用户检索意图。</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def Docs(self):
+        r"""<p>文档内容列表。</p>
+        :rtype: list of str
+        """
+        return self._Docs
+
+    @Docs.setter
+    def Docs(self, Docs):
+        self._Docs = Docs
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Query = params.get("Query")
+        self._Docs = params.get("Docs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunRerankResponse(AbstractModel):
+    r"""RunRerank返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Results: <p>重排序后的结果列表，按相关性得分从高到低排列。</p>
+        :type Results: list of RerankResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        r"""<p>重排序后的结果列表，按相关性得分从高到低排列。</p>
+        :rtype: list of RerankResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = RerankResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -29945,6 +30320,190 @@ class SubmitMarkEssayAgentJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobIds = params.get("JobIds")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitMultimodalDocParseJobRequest(AbstractModel):
+    r"""SubmitMultimodalDocParseJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileType: <p>支持解析的文件类型。取值：</p><ul><li>1：PDF 文档</li><li>2：Word 文档（.doc/.docx）</li><li>3：PPT 演示文稿（.ppt/.pptx）</li><li>4：Excel 表格（.xls/.xlsx）</li><li>5：Markdown 文档（.md）</li><li>6：纯文本文件（.txt）</li><li>7：图片文件（.png/.jpg/.jpeg 等）</li><li>8：WPS 文档<br>支持的文件大小：PDF/WORD/PPT 支持 150M 且 300 页。</li></ul>
+        :type FileType: int
+        :param _FileUrl: <p>文件的 Url 地址，支持 FileType 参数对应的文件格式及大小。文件下载时间不超过 3 秒。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+        :type FileUrl: str
+        :param _FileBase64: <p>文件的 Base64 值。支持 FileType 参数对应的文件格式，支持的文件大小不超过 8M。文件下载时间不超过 3 秒。<br>文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。</p>
+        :type FileBase64: str
+        :param _ResultType: <p>输出格式。<br>1：json格式<br>2：markdown格式<br>3：xml格式<br>9：json+markdown+xml格式</p>
+        :type ResultType: int
+        :param _EnableSubImg: <p>是否开启子图提取，默认为 false。</p>
+        :type EnableSubImg: bool
+        :param _FileStartPageNumber: <p>文档的起始页码。用来指定识别的起始页码，识别的页码包含当前值，不填时默认从文档第一页开始解析。本参数与 FileEndPageNumber 可分开填写，也可只填其中一个。</p>
+        :type FileStartPageNumber: int
+        :param _FileEndPageNumber: <p>文档的结束页码。用来指定识别的结束页码，识别的页码包含当前值，不填时默认解析到文档最后一页。本参数与 FileStartPageNumber 可分开填写，也可只填其中一个。</p>
+        :type FileEndPageNumber: int
+        :param _TaskType: <p>任务类型，默认为 0。取值：</p><ul><li>0：默认</li><li>1：Free OCR</li><li>2：OCR</li><li>3：表格识别</li><li>4：代码识别</li></ul>
+        :type TaskType: int
+        """
+        self._FileType = None
+        self._FileUrl = None
+        self._FileBase64 = None
+        self._ResultType = None
+        self._EnableSubImg = None
+        self._FileStartPageNumber = None
+        self._FileEndPageNumber = None
+        self._TaskType = None
+
+    @property
+    def FileType(self):
+        r"""<p>支持解析的文件类型。取值：</p><ul><li>1：PDF 文档</li><li>2：Word 文档（.doc/.docx）</li><li>3：PPT 演示文稿（.ppt/.pptx）</li><li>4：Excel 表格（.xls/.xlsx）</li><li>5：Markdown 文档（.md）</li><li>6：纯文本文件（.txt）</li><li>7：图片文件（.png/.jpg/.jpeg 等）</li><li>8：WPS 文档<br>支持的文件大小：PDF/WORD/PPT 支持 150M 且 300 页。</li></ul>
+        :rtype: int
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        r"""<p>文件的 Url 地址，支持 FileType 参数对应的文件格式及大小。文件下载时间不超过 3 秒。文件存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议文件存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileBase64(self):
+        r"""<p>文件的 Base64 值。支持 FileType 参数对应的文件格式，支持的文件大小不超过 8M。文件下载时间不超过 3 秒。<br>文件的 FileUrl、FileBase64 必须提供一个，如果都提供，只使用 FileUrl。</p>
+        :rtype: str
+        """
+        return self._FileBase64
+
+    @FileBase64.setter
+    def FileBase64(self, FileBase64):
+        self._FileBase64 = FileBase64
+
+    @property
+    def ResultType(self):
+        r"""<p>输出格式。<br>1：json格式<br>2：markdown格式<br>3：xml格式<br>9：json+markdown+xml格式</p>
+        :rtype: int
+        """
+        return self._ResultType
+
+    @ResultType.setter
+    def ResultType(self, ResultType):
+        self._ResultType = ResultType
+
+    @property
+    def EnableSubImg(self):
+        r"""<p>是否开启子图提取，默认为 false。</p>
+        :rtype: bool
+        """
+        return self._EnableSubImg
+
+    @EnableSubImg.setter
+    def EnableSubImg(self, EnableSubImg):
+        self._EnableSubImg = EnableSubImg
+
+    @property
+    def FileStartPageNumber(self):
+        r"""<p>文档的起始页码。用来指定识别的起始页码，识别的页码包含当前值，不填时默认从文档第一页开始解析。本参数与 FileEndPageNumber 可分开填写，也可只填其中一个。</p>
+        :rtype: int
+        """
+        return self._FileStartPageNumber
+
+    @FileStartPageNumber.setter
+    def FileStartPageNumber(self, FileStartPageNumber):
+        self._FileStartPageNumber = FileStartPageNumber
+
+    @property
+    def FileEndPageNumber(self):
+        r"""<p>文档的结束页码。用来指定识别的结束页码，识别的页码包含当前值，不填时默认解析到文档最后一页。本参数与 FileStartPageNumber 可分开填写，也可只填其中一个。</p>
+        :rtype: int
+        """
+        return self._FileEndPageNumber
+
+    @FileEndPageNumber.setter
+    def FileEndPageNumber(self, FileEndPageNumber):
+        self._FileEndPageNumber = FileEndPageNumber
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型，默认为 0。取值：</p><ul><li>0：默认</li><li>1：Free OCR</li><li>2：OCR</li><li>3：表格识别</li><li>4：代码识别</li></ul>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+
+    def _deserialize(self, params):
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
+        self._FileBase64 = params.get("FileBase64")
+        self._ResultType = params.get("ResultType")
+        self._EnableSubImg = params.get("EnableSubImg")
+        self._FileStartPageNumber = params.get("FileStartPageNumber")
+        self._FileEndPageNumber = params.get("FileEndPageNumber")
+        self._TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitMultimodalDocParseJobResponse(AbstractModel):
+    r"""SubmitMultimodalDocParseJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务唯一 ID。30天内可以通过DescribeMultimodalDocParseJob接口查询TaskId对应的处理结果。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务唯一 ID。30天内可以通过DescribeMultimodalDocParseJob接口查询TaskId对应的处理结果。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -41571,15 +42130,15 @@ class VerifyScenePhotoRequest(AbstractModel):
         r"""
         :param _Scene: <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照    </p><p><strong>车牌业务照</strong><br>0201 车牌</p>
         :type Scene: str
-        :param _Mode: <p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按1次调用计费。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持推理，支持屏幕翻拍提示。每次调用按1次调用计费。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按2次调用计费。</p>
+        :param _Mode: <p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参，默认值为Image。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持自定义推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。<strong>每次调用按1次调用计费</strong>。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持自定义推理，支持屏幕翻拍提示。<strong>每次调用按1次调用计费</strong>。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持自定义推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。<strong>每次调用按2次调用计费</strong>。</p>
         :type Mode: str
-        :param _VideoUrl: <p>视频的 Url 地址。格式支持：xxxxxx。要求视频不超过 100M。建议视频时长不小于1s。</p>
+        :param _VideoUrl: <p>视频的 Url 地址。格式支持：mp4、avi、mov、mkv、webm，要求视频不超过 100M。建议视频时长不小于1s。</p>
         :type VideoUrl: str
         :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
         :type ImageUrl: str
         :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
         :type ImageBase64: str
-        :param _ReasoningPrompt: <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–2000 字符</p>
+        :param _ReasoningPrompt: <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–3000 字符</p>
         :type ReasoningPrompt: str
         :param _ReasoningConfig: <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
         :type ReasoningConfig: :class:`tencentcloud.ocr.v20181119.models.ReasoningConfig`
@@ -41608,7 +42167,7 @@ class VerifyScenePhotoRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""<p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按1次调用计费。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持推理，支持屏幕翻拍提示。每次调用按1次调用计费。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。每次调用按2次调用计费。</p>
+        r"""<p>鉴伪模式，目前支持以下模式，对应支持不同的入参、出参，默认值为Image。<br>Image：图像鉴伪模式，根据图像分析输出告警提示，支持自定义推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。<strong>每次调用按1次调用计费</strong>。<br>Video：视频鉴伪模式，根据视频分析输出告警提示，不支持自定义推理，支持屏幕翻拍提示。<strong>每次调用按1次调用计费</strong>。<br>Hybrid：混合鉴伪模式，综合图像、视频分析输出告警提示，支持自定义推理，支持区域篡改提示、AIGC合成提示、屏幕翻拍提示、截图提示、文字水印提示、水印内容、模板图片提示、VLM 推理结果。<strong>每次调用按2次调用计费</strong>。</p>
         :rtype: str
         """
         return self._Mode
@@ -41619,7 +42178,7 @@ class VerifyScenePhotoRequest(AbstractModel):
 
     @property
     def VideoUrl(self):
-        r"""<p>视频的 Url 地址。格式支持：xxxxxx。要求视频不超过 100M。建议视频时长不小于1s。</p>
+        r"""<p>视频的 Url 地址。格式支持：mp4、avi、mov、mkv、webm，要求视频不超过 100M。建议视频时长不小于1s。</p>
         :rtype: str
         """
         return self._VideoUrl
@@ -41652,7 +42211,7 @@ class VerifyScenePhotoRequest(AbstractModel):
 
     @property
     def ReasoningPrompt(self):
-        r"""<p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–2000 字符</p>
+        r"""<p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–3000 字符</p>
         :rtype: str
         """
         return self._ReasoningPrompt
