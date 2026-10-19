@@ -22565,9 +22565,25 @@ class LocalizedTemplate(AbstractModel):
         :param _EnUS: <p>英文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnUS: str
+        :param _SubjectZhCN: <p>中文主题</p><p>入参限制：长度限制100字符以内，仅允许：{{.VerificationCode}}、{{.Usage}}、{{.Email}}、{{.ExpireMinutes}}、{{.ConfirmationURL}}，未知变量拒绝</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubjectZhCN: str
+        :param _SubjectEnUS: <p>英文主题</p><p>入参限制：长度限制100字符以内，仅允许：{{.VerificationCode}}、{{.Usage}}、{{.Email}}、{{.ExpireMinutes}}、{{.ConfirmationURL}}，未知变量拒绝</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubjectEnUS: str
+        :param _SenderNameZhCN: <p>中文发件人</p><p>入参限制：长度限制50字符以内，静态纯文本，不支持变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SenderNameZhCN: str
+        :param _SenderNameEnUS: <p>英文发件人</p><p>默认值：长度限制50字符以内，静态纯文本，不支持变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SenderNameEnUS: str
         """
         self._ZhCN = None
         self._EnUS = None
+        self._SubjectZhCN = None
+        self._SubjectEnUS = None
+        self._SenderNameZhCN = None
+        self._SenderNameEnUS = None
 
     @property
     def ZhCN(self):
@@ -22593,10 +22609,62 @@ class LocalizedTemplate(AbstractModel):
     def EnUS(self, EnUS):
         self._EnUS = EnUS
 
+    @property
+    def SubjectZhCN(self):
+        r"""<p>中文主题</p><p>入参限制：长度限制100字符以内，仅允许：{{.VerificationCode}}、{{.Usage}}、{{.Email}}、{{.ExpireMinutes}}、{{.ConfirmationURL}}，未知变量拒绝</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubjectZhCN
+
+    @SubjectZhCN.setter
+    def SubjectZhCN(self, SubjectZhCN):
+        self._SubjectZhCN = SubjectZhCN
+
+    @property
+    def SubjectEnUS(self):
+        r"""<p>英文主题</p><p>入参限制：长度限制100字符以内，仅允许：{{.VerificationCode}}、{{.Usage}}、{{.Email}}、{{.ExpireMinutes}}、{{.ConfirmationURL}}，未知变量拒绝</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubjectEnUS
+
+    @SubjectEnUS.setter
+    def SubjectEnUS(self, SubjectEnUS):
+        self._SubjectEnUS = SubjectEnUS
+
+    @property
+    def SenderNameZhCN(self):
+        r"""<p>中文发件人</p><p>入参限制：长度限制50字符以内，静态纯文本，不支持变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SenderNameZhCN
+
+    @SenderNameZhCN.setter
+    def SenderNameZhCN(self, SenderNameZhCN):
+        self._SenderNameZhCN = SenderNameZhCN
+
+    @property
+    def SenderNameEnUS(self):
+        r"""<p>英文发件人</p><p>默认值：长度限制50字符以内，静态纯文本，不支持变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SenderNameEnUS
+
+    @SenderNameEnUS.setter
+    def SenderNameEnUS(self, SenderNameEnUS):
+        self._SenderNameEnUS = SenderNameEnUS
+
 
     def _deserialize(self, params):
         self._ZhCN = params.get("ZhCN")
         self._EnUS = params.get("EnUS")
+        self._SubjectZhCN = params.get("SubjectZhCN")
+        self._SubjectEnUS = params.get("SubjectEnUS")
+        self._SenderNameZhCN = params.get("SenderNameZhCN")
+        self._SenderNameEnUS = params.get("SenderNameEnUS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

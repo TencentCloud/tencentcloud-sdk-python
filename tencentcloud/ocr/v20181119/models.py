@@ -1114,6 +1114,72 @@ class AirTransport(AbstractModel):
         
 
 
+class AnswerElement(AbstractModel):
+    r"""试题识别结果-答案元素内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsCorrect: <p>答案是否正确</p>
+        :type IsCorrect: bool
+        :param _AnswerAnalysis: <p>答案分析结果</p>
+        :type AnswerAnalysis: str
+        :param _RightAnswer: <p>返回正确答案内容</p>
+        :type RightAnswer: str
+        """
+        self._IsCorrect = None
+        self._AnswerAnalysis = None
+        self._RightAnswer = None
+
+    @property
+    def IsCorrect(self):
+        r"""<p>答案是否正确</p>
+        :rtype: bool
+        """
+        return self._IsCorrect
+
+    @IsCorrect.setter
+    def IsCorrect(self, IsCorrect):
+        self._IsCorrect = IsCorrect
+
+    @property
+    def AnswerAnalysis(self):
+        r"""<p>答案分析结果</p>
+        :rtype: str
+        """
+        return self._AnswerAnalysis
+
+    @AnswerAnalysis.setter
+    def AnswerAnalysis(self, AnswerAnalysis):
+        self._AnswerAnalysis = AnswerAnalysis
+
+    @property
+    def RightAnswer(self):
+        r"""<p>返回正确答案内容</p>
+        :rtype: str
+        """
+        return self._RightAnswer
+
+    @RightAnswer.setter
+    def RightAnswer(self, RightAnswer):
+        self._RightAnswer = RightAnswer
+
+
+    def _deserialize(self, params):
+        self._IsCorrect = params.get("IsCorrect")
+        self._AnswerAnalysis = params.get("AnswerAnalysis")
+        self._RightAnswer = params.get("RightAnswer")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnswerInfo(AbstractModel):
     r"""单题所有答案区域批改信息
 
@@ -5203,14 +5269,14 @@ class DescribeQuestionMarkAgentJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务唯一ID。由服务端生成。	
+        :param _JobId: <p>任务唯一ID。由服务端生成。</p>
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务唯一ID。由服务端生成。	
+        r"""<p>任务唯一ID。由服务端生成。</p>
         :rtype: str
         """
         return self._JobId
@@ -5239,16 +5305,18 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :param _ErrorCode: <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :type ErrorCode: str
-        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :param _ErrorMessage: <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :type ErrorMessage: str
-        :param _JobStatus: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :param _JobStatus: <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :type JobStatus: str
-        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :param _Angle: <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
         :type Angle: float
-        :param _MarkInfos: 试题批改信息
+        :param _MarkInfos: <p>试题批改信息  （该字段后续废弃，使用QuestionInfo兼容多页批改场景）</p>
         :type MarkInfos: list of MarkInfo
+        :param _QuestionInfo: <p>试题批改信息。</p>
+        :type QuestionInfo: list of QuestionInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5257,11 +5325,12 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
         self._JobStatus = None
         self._Angle = None
         self._MarkInfos = None
+        self._QuestionInfo = None
         self._RequestId = None
 
     @property
     def ErrorCode(self):
-        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        r"""<p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :rtype: str
         """
         return self._ErrorCode
@@ -5272,7 +5341,7 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        r"""<p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -5283,7 +5352,7 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
 
     @property
     def JobStatus(self):
-        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        r"""<p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :rtype: str
         """
         return self._JobStatus
@@ -5294,7 +5363,7 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
 
     @property
     def Angle(self):
-        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        r"""<p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
         :rtype: float
         """
         return self._Angle
@@ -5305,7 +5374,7 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
 
     @property
     def MarkInfos(self):
-        r"""试题批改信息
+        r"""<p>试题批改信息  （该字段后续废弃，使用QuestionInfo兼容多页批改场景）</p>
         :rtype: list of MarkInfo
         """
         return self._MarkInfos
@@ -5313,6 +5382,17 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
     @MarkInfos.setter
     def MarkInfos(self, MarkInfos):
         self._MarkInfos = MarkInfos
+
+    @property
+    def QuestionInfo(self):
+        r"""<p>试题批改信息。</p>
+        :rtype: list of QuestionInfo
+        """
+        return self._QuestionInfo
+
+    @QuestionInfo.setter
+    def QuestionInfo(self, QuestionInfo):
+        self._QuestionInfo = QuestionInfo
 
     @property
     def RequestId(self):
@@ -5337,6 +5417,12 @@ class DescribeQuestionMarkAgentJobResponse(AbstractModel):
                 obj = MarkInfo()
                 obj._deserialize(item)
                 self._MarkInfos.append(obj)
+        if params.get("QuestionInfo") is not None:
+            self._QuestionInfo = []
+            for item in params.get("QuestionInfo"):
+                obj = QuestionInfo()
+                obj._deserialize(item)
+                self._QuestionInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8185,6 +8271,8 @@ class Element(AbstractModel):
         :type Index: int
         :param _PageIndex: <p>元素所在页</p><p>单位：页</p><p>默认值：1</p>
         :type PageIndex: int
+        :param _AnswerElement: <p>批改时答案的额外数据</p>
+        :type AnswerElement: :class:`tencentcloud.ocr.v20181119.models.AnswerElement`
         """
         self._Text = None
         self._Coord = None
@@ -8192,6 +8280,7 @@ class Element(AbstractModel):
         self._ResultList = None
         self._Index = None
         self._PageIndex = None
+        self._AnswerElement = None
 
     @property
     def Text(self):
@@ -8260,6 +8349,17 @@ class Element(AbstractModel):
     def PageIndex(self, PageIndex):
         self._PageIndex = PageIndex
 
+    @property
+    def AnswerElement(self):
+        r"""<p>批改时答案的额外数据</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.AnswerElement`
+        """
+        return self._AnswerElement
+
+    @AnswerElement.setter
+    def AnswerElement(self, AnswerElement):
+        self._AnswerElement = AnswerElement
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -8275,6 +8375,9 @@ class Element(AbstractModel):
                 self._ResultList.append(obj)
         self._Index = params.get("Index")
         self._PageIndex = params.get("PageIndex")
+        if params.get("AnswerElement") is not None:
+            self._AnswerElement = AnswerElement()
+            self._AnswerElement._deserialize(params.get("AnswerElement"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22048,6 +22151,8 @@ class QuestionInfo(AbstractModel):
         :type OrgWidth: int
         :param _ImageBase64: <p>预处理后的图片base64编码</p>
         :type ImageBase64: str
+        :param _ReturnImageUrl: <p>预处理后的图片URL,如果开启了图像切边矫正，后续的坐标都是基于当前图片返回的坐标</p>
+        :type ReturnImageUrl: str
         """
         self._Angle = None
         self._Height = None
@@ -22056,6 +22161,7 @@ class QuestionInfo(AbstractModel):
         self._OrgHeight = None
         self._OrgWidth = None
         self._ImageBase64 = None
+        self._ReturnImageUrl = None
 
     @property
     def Angle(self):
@@ -22135,6 +22241,17 @@ class QuestionInfo(AbstractModel):
     def ImageBase64(self, ImageBase64):
         self._ImageBase64 = ImageBase64
 
+    @property
+    def ReturnImageUrl(self):
+        r"""<p>预处理后的图片URL,如果开启了图像切边矫正，后续的坐标都是基于当前图片返回的坐标</p>
+        :rtype: str
+        """
+        return self._ReturnImageUrl
+
+    @ReturnImageUrl.setter
+    def ReturnImageUrl(self, ReturnImageUrl):
+        self._ReturnImageUrl = ReturnImageUrl
+
 
     def _deserialize(self, params):
         self._Angle = params.get("Angle")
@@ -22149,6 +22266,7 @@ class QuestionInfo(AbstractModel):
         self._OrgHeight = params.get("OrgHeight")
         self._OrgWidth = params.get("OrgWidth")
         self._ImageBase64 = params.get("ImageBase64")
+        self._ReturnImageUrl = params.get("ReturnImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27334,6 +27452,12 @@ class ResultList(AbstractModel):
         :type Coord: list of Polygon
         :param _CoordPageIndex: <p>多坐标返回，显示坐标所在页</p><p>默认值：[]</p>
         :type CoordPageIndex: list of int
+        :param _RightAnswer: <p>返回正确答案内容</p>
+        :type RightAnswer: str
+        :param _Subject: <p>学科（如语文、数学、英语）</p>
+        :type Subject: str
+        :param _KnowledgePoints: <p>返回题目的知识点内容</p>
+        :type KnowledgePoints: list of str
         """
         self._Question = None
         self._Option = None
@@ -27343,6 +27467,9 @@ class ResultList(AbstractModel):
         self._Parse = None
         self._Coord = None
         self._CoordPageIndex = None
+        self._RightAnswer = None
+        self._Subject = None
+        self._KnowledgePoints = None
 
     @property
     def Question(self):
@@ -27438,6 +27565,39 @@ class ResultList(AbstractModel):
     def CoordPageIndex(self, CoordPageIndex):
         self._CoordPageIndex = CoordPageIndex
 
+    @property
+    def RightAnswer(self):
+        r"""<p>返回正确答案内容</p>
+        :rtype: str
+        """
+        return self._RightAnswer
+
+    @RightAnswer.setter
+    def RightAnswer(self, RightAnswer):
+        self._RightAnswer = RightAnswer
+
+    @property
+    def Subject(self):
+        r"""<p>学科（如语文、数学、英语）</p>
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def KnowledgePoints(self):
+        r"""<p>返回题目的知识点内容</p>
+        :rtype: list of str
+        """
+        return self._KnowledgePoints
+
+    @KnowledgePoints.setter
+    def KnowledgePoints(self, KnowledgePoints):
+        self._KnowledgePoints = KnowledgePoints
+
 
     def _deserialize(self, params):
         if params.get("Question") is not None:
@@ -27483,6 +27643,9 @@ class ResultList(AbstractModel):
                 obj._deserialize(item)
                 self._Coord.append(obj)
         self._CoordPageIndex = params.get("CoordPageIndex")
+        self._RightAnswer = params.get("RightAnswer")
+        self._Subject = params.get("Subject")
+        self._KnowledgePoints = params.get("KnowledgePoints")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30448,24 +30611,26 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         :type ImageBase64: str
         :param _ImageUrl: <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg</p>
         :type ImageUrl: str
-        :param _PdfPageNumber: <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。</p>
+        :param _PdfPageNumber: <p>不传则默认识别整个PDF，如果识别单页则输入指定页码</p>
         :type PdfPageNumber: int
         :param _BoolSingleQuestion: <p>表示整张试卷批改需要先切题，默认为false</p>
         :type BoolSingleQuestion: bool
         :param _EnableDeepThink: <p>默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢</p>
         :type EnableDeepThink: bool
-        :param _QuestionConfigMap: <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；</p><p>当key为DisableAnswerAnalysis value为true表示不输出答案解析；</p><p>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p><p>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
+        :param _QuestionConfigMap: <p>题目信息输出配置，当key对应为true表示开启配置开关。<br>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；<br>当key为DisableAnswerAnalysis value为true表示不输出答案解析；<br>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；<br>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p>
         :type QuestionConfigMap: str
-        :param _ReferenceAnswer: <p>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
+        :param _ReferenceAnswer: <p>【废除字段】<br>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
         :type ReferenceAnswer: str
-        :param _ImageBase64List: <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
+        :param _ImageBase64List: <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
         :type ImageBase64List: list of str
-        :param _ImageUrlList: <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
+        :param _ImageUrlList: <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
         :type ImageUrlList: list of str
         :param _AssistMarkType: <p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
         :type AssistMarkType: int
         :param _AnswerAssistMap: <p>单题辅助批改文本内容列表，当AssistMarkType为1时生效，用于提供题目相关的辅助文本信息。</p><ol><li>当key为ReferenceAnswer，value可以输入单题的辅助答案文本。</li><li>当key为QuestionAuxStem，value可以输入单题的辅助题干。</li></ol>
         :type AnswerAssistMap: str
+        :param _EnableImageCrop: <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUr中l,默认为false不开启<br>示例值：false</p>
+        :type EnableImageCrop: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -30478,6 +30643,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         self._ImageUrlList = None
         self._AssistMarkType = None
         self._AnswerAssistMap = None
+        self._EnableImageCrop = None
 
     @property
     def ImageBase64(self):
@@ -30503,7 +30669,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        r"""<p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。</p>
+        r"""<p>不传则默认识别整个PDF，如果识别单页则输入指定页码</p>
         :rtype: int
         """
         return self._PdfPageNumber
@@ -30544,7 +30710,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def QuestionConfigMap(self):
-        r"""<p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；</p><p>当key为DisableAnswerAnalysis value为true表示不输出答案解析；</p><p>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p><p>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
+        r"""<p>题目信息输出配置，当key对应为true表示开启配置开关。<br>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；<br>当key为DisableAnswerAnalysis value为true表示不输出答案解析；<br>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；<br>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p>
         :rtype: str
         """
         return self._QuestionConfigMap
@@ -30555,7 +30721,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def ReferenceAnswer(self):
-        r"""<p>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
+        r"""<p>【废除字段】<br>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
         :rtype: str
         """
         return self._ReferenceAnswer
@@ -30566,7 +30732,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def ImageBase64List(self):
-        r"""<p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
+        r"""<p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
         :rtype: list of str
         """
         return self._ImageBase64List
@@ -30577,7 +30743,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def ImageUrlList(self):
-        r"""<p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
+        r"""<p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行多图同时批改逻辑（解决单题跨页场景）</li></ol>
         :rtype: list of str
         """
         return self._ImageUrlList
@@ -30608,6 +30774,17 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
     def AnswerAssistMap(self, AnswerAssistMap):
         self._AnswerAssistMap = AnswerAssistMap
 
+    @property
+    def EnableImageCrop(self):
+        r"""<p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUr中l,默认为false不开启<br>示例值：false</p>
+        :rtype: bool
+        """
+        return self._EnableImageCrop
+
+    @EnableImageCrop.setter
+    def EnableImageCrop(self, EnableImageCrop):
+        self._EnableImageCrop = EnableImageCrop
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -30621,6 +30798,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         self._ImageUrlList = params.get("ImageUrlList")
         self._AssistMarkType = params.get("AssistMarkType")
         self._AnswerAssistMap = params.get("AnswerAssistMap")
+        self._EnableImageCrop = params.get("EnableImageCrop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30644,7 +30822,7 @@ class SubmitQuestionMarkAgentJobResponse(AbstractModel):
         :type QuestionInfo: list of QuestionInfo
         :param _QuestionCount: <p>题目切题数量，作为计费题目数总量</p>
         :type QuestionCount: str
-        :param _OriginalImageUrl: <p>客户图片url</p>
+        :param _OriginalImageUrl: <p>废弃字段</p>
         :type OriginalImageUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30690,7 +30868,7 @@ class SubmitQuestionMarkAgentJobResponse(AbstractModel):
 
     @property
     def OriginalImageUrl(self):
-        r"""<p>客户图片url</p>
+        r"""<p>废弃字段</p>
         :rtype: str
         """
         return self._OriginalImageUrl
@@ -30737,10 +30915,13 @@ class SubmitQuestionSplitJobRequest(AbstractModel):
         :type ImageBase64List: list of str
         :param _ModelType: <p>选择切题模型</p><p>枚举值：</p><ul><li>youtu_crop： 轻量化切题模型，运算速度更快，适合常规切题</li><li>youtu_crop_pro： 属于切题精调大模型，针对双栏、跨栏等复杂版式识别精度大幅提升，但推理耗时更长</li></ul><p>默认值：youtu_crop</p>
         :type ModelType: str
+        :param _EnableImageCrop: <p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUr中l,默认为false不开启</p>
+        :type EnableImageCrop: bool
         """
         self._ImageUrlList = None
         self._ImageBase64List = None
         self._ModelType = None
+        self._EnableImageCrop = None
 
     @property
     def ImageUrlList(self):
@@ -30775,11 +30956,23 @@ class SubmitQuestionSplitJobRequest(AbstractModel):
     def ModelType(self, ModelType):
         self._ModelType = ModelType
 
+    @property
+    def EnableImageCrop(self):
+        r"""<p>是否开启切边、弯曲矫正、方向矫正，开启则批改之前先做图片前处理，图片url地址返回在查询接口的QuestionInfo-&gt; ReturnImageUr中l,默认为false不开启</p>
+        :rtype: bool
+        """
+        return self._EnableImageCrop
+
+    @EnableImageCrop.setter
+    def EnableImageCrop(self, EnableImageCrop):
+        self._EnableImageCrop = EnableImageCrop
+
 
     def _deserialize(self, params):
         self._ImageUrlList = params.get("ImageUrlList")
         self._ImageBase64List = params.get("ImageBase64List")
         self._ModelType = params.get("ModelType")
+        self._EnableImageCrop = params.get("EnableImageCrop")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

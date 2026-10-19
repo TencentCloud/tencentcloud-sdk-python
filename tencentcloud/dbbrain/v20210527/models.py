@@ -3080,6 +3080,707 @@ false - 关闭
         
 
 
+class BlockingLogItem(AbstractModel):
+    r"""阻塞日志扁平明细行：一次blocked_process_report（blocker→blocked边）在某一次monitorLoop内被lock monitor捕获的瞬时数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReportTime: <p>本条明细行上报时间（事件时间，__time；时区UTC+8），格式：yyyy-MM-dd HH:mm:ss。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportTime: str
+        :param _MonitorLoop: <p>监控轮次ID（同一实例内唯一标识一次采集快照，可透传至DescribeBlockingLockTree下钻查看完整阻塞树）。文本承载数值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorLoop: str
+        :param _DurationMs: <p>被阻塞方的等待时长（毫秒）。来源：Kafka顶层Fields.duration÷1000（微秒→毫秒），来自SQL Server内核XEvent事件的duration字段。与BlockedWaitTimeMs来源不同但通常非常接近（非严格相等，两者为同一事件的两个独立快照）；仅为OrderBy=durationMs排序别名保留。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationMs: int
+        :param _DatabaseName: <p>阻塞发生所在的数据库名称。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _DatabaseId: <p>阻塞发生所在的数据库 ID（Fields.database_id，对应 SQL Server sys.databases.database_id）。可配合 DatabaseName 使用：ID 稳定、Name 易读；Name 在重命名场景下会变化，ID 则不会。采样为空时该字段不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: int
+        :param _ObjectId: <p>阻塞锁资源归属的对象 ID（Fields.object_id，对应 SQL Server sys.objects.object_id）。标识具体的表/视图/存储过程等用户对象；可结合 sys.objects 元数据查询对象名。采样为空时该字段不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectId: int
+        :param _IndexId: <p>阻塞锁资源归属的索引 ID（Fields.index_id，对应 SQL Server sys.indexes.index_id）。常见取值：0=堆（无聚集索引）、1=聚集索引、&gt;1=非聚集索引；&gt;250 通常为系统内部索引（如全文/XML/空间索引），诊断时按&quot;是否为用户索引&quot;判断即可。采样为空时该字段不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexId: int
+        :param _RootCause: <p>根因分类（与枚举BlockingRootCause一一对应）。取值：C1_LONG_QUERY=长查询正常运行阻塞；C2_SLEEPING_UNCOMMITTED=休眠会话且存在未提交事务；C3_CLIENT_NOT_FETCHING=客户端未取完结果行；C4_APP_DEADLOCK=应用层分布式死锁；C5_ROLLBACK=会话正在rollback；C6_ORPHAN_TRANSACTION=孤立事务；UNKNOWN=未识别。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootCause: str
+        :param _RootCauseDesc: <p>根因分类的可读中文描述（服务端已完成中文化，前端可直接展示；与RootCause代号一一对应，例如C1_LONG_QUERY→&quot;长查询正常运行阻塞，考虑优化SQL/索引&quot;，未识别或空值统一返回&quot;未识别&quot;）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootCauseDesc: str
+        :param _BlockingSessionId: <p>头阻塞会话 ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingSessionId: int
+        :param _BlockingLoginName: <p>头阻塞会话数据库用户。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingLoginName: str
+        :param _BlockingHostName: <p>头阻塞会话客户端主机。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingHostName: str
+        :param _BlockingClientApp: <p>头阻塞会话客户端应用名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingClientApp: str
+        :param _BlockingStatus: <p>头阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status文本），常见取值：running / sleeping / suspended / background。sleeping+trancount&gt;0是C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingStatus: str
+        :param _BlockingIsolationLevel: <p>头阻塞会话事务隔离级别（SQL Server原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingIsolationLevel: str
+        :param _BlockingTransactionName: <p>头阻塞会话当前显式事务名（XEvent transactionname，如user_transaction / implicit_transaction）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingTransactionName: str
+        :param _BlockingTranCount: <p>头阻塞会话当前显式事务嵌套层数（XEvent trancount）。&gt;0表示持有显式事务；与BlockingStatus=sleeping组合是C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingTranCount: int
+        :param _BlockingLastTranStarted: <p>头阻塞会话显式事务BEGIN TRAN时刻（XEvent lasttranstarted，SQL Server服务端本地时区的ISO 8601字符串，无时区后缀）。该字段代表事务持锁开始时刻：ReportTime-BlockingLastTranStarted≈事务持锁时长，用于C1_LONG_QUERY / C6_ORPHAN_TRANSACTION根因复核；在多语句事务场景下比lastbatchstarted更稳定（不会被每个新batch刷新）。值为空表示XML未提供该属性（blocking-process侧常见）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingLastTranStarted: str
+        :param _BlockingInputBuffer: <p>头阻塞会话正在执行的SQL原文（对应DBCC INPUTBUFFER返回内容，单条最长16KB，超长截断）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingInputBuffer: str
+        :param _BlockingSqlTemplate: <p>头阻塞SQL归一化模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingSqlTemplate: str
+        :param _BlockingSqlMd5: <p>头阻塞SQL模板MD5。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingSqlMd5: str
+        :param _BlockingLockMode: <p>头阻塞会话持有或请求的锁模式（SQL Server原生lock_mode枚举；blocker通常不处于等锁状态，该字段多为空）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingLockMode: str
+        :param _BlockingWaitTimeMs: <p>头阻塞会话自身的等待时长（毫秒）。多数场景为0。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingWaitTimeMs: int
+        :param _BlockedSessionId: <p>被阻塞会话 ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedSessionId: int
+        :param _BlockedTransactionId: <p>被阻塞会话事务ID（SQL Server transaction_id，bigint）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedTransactionId: int
+        :param _BlockedWaitTimeMs: <p>被阻塞会话等待时长（毫秒）。来源：XML &lt;blocked-process&gt;&lt;process waittime&gt;属性（来自ys.dm_os_waiting_tasks.wait_duration_ms在report生成瞬间的快照）。与DurationMs来源不同但通常非常接近；仅为OrderBy=blockedWaitTimeMs排序别名保留。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedWaitTimeMs: int
+        :param _BlockedLockMode: <p>被阻塞会话正在等待的锁模式（SQL Server原生lock_mode枚举，常见取值：S、U、X、IS、IU、IX、SIU、SIX、UIX、Sch-S、Sch-M）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedLockMode: str
+        :param _BlockedWaitResource: <p>被阻塞会话等待资源。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedWaitResource: str
+        :param _BlockedLoginName: <p>被阻塞会话数据库用户。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedLoginName: str
+        :param _BlockedHostName: <p>被阻塞会话客户端主机。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedHostName: str
+        :param _BlockedClientApp: <p>被阻塞会话客户端应用名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedClientApp: str
+        :param _BlockedStatus: <p>被阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status文本），常见取值：running / sleeping / suspended / background。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedStatus: str
+        :param _BlockedIsolationLevel: <p>被阻塞会话事务隔离级别（SQL Server原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedIsolationLevel: str
+        :param _BlockedTransactionName: <p>被阻塞会话当前显式事务名（XEvent transactionname）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedTransactionName: str
+        :param _BlockedTranCount: <p>被阻塞会话当前显式事务嵌套层数（XEvent trancount）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedTranCount: int
+        :param _BlockedLastTranStarted: <p>被阻塞会话显式事务BEGIN TRAN时刻（XEvent lasttranstarted，SQL Server服务端本地时区的ISO 8601字符串，无时区后缀）。该字段代表事务开始时刻，在多语句事务场景下比lastbatchstarted更稳定。咨视值1900-01-01T00:00:00表示未知。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedLastTranStarted: str
+        :param _BlockedInputBuffer: <p>被阻塞会话正在执行的SQL原文（对应DBCC INPUTBUFFER返回内容，单条最长16KB，超长截断）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedInputBuffer: str
+        :param _BlockedSqlTemplate: <p>被阻塞SQL归一化模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedSqlTemplate: str
+        :param _BlockedSqlMd5: <p>被阻塞SQL模板MD5。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedSqlMd5: str
+        :param _BlockedProcessXml: <p>被阻塞方 blocked_process_report 原始 XML 文本（含完整执行计划、等待链、死锁明细等原始现场；字段体积较大，KB 级起步）。仅当请求参数 WithXml=true 时才返回；默认 false 时该字段省略，不出现在响应体中。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedProcessXml: str
+        """
+        self._ReportTime = None
+        self._MonitorLoop = None
+        self._DurationMs = None
+        self._DatabaseName = None
+        self._DatabaseId = None
+        self._ObjectId = None
+        self._IndexId = None
+        self._RootCause = None
+        self._RootCauseDesc = None
+        self._BlockingSessionId = None
+        self._BlockingLoginName = None
+        self._BlockingHostName = None
+        self._BlockingClientApp = None
+        self._BlockingStatus = None
+        self._BlockingIsolationLevel = None
+        self._BlockingTransactionName = None
+        self._BlockingTranCount = None
+        self._BlockingLastTranStarted = None
+        self._BlockingInputBuffer = None
+        self._BlockingSqlTemplate = None
+        self._BlockingSqlMd5 = None
+        self._BlockingLockMode = None
+        self._BlockingWaitTimeMs = None
+        self._BlockedSessionId = None
+        self._BlockedTransactionId = None
+        self._BlockedWaitTimeMs = None
+        self._BlockedLockMode = None
+        self._BlockedWaitResource = None
+        self._BlockedLoginName = None
+        self._BlockedHostName = None
+        self._BlockedClientApp = None
+        self._BlockedStatus = None
+        self._BlockedIsolationLevel = None
+        self._BlockedTransactionName = None
+        self._BlockedTranCount = None
+        self._BlockedLastTranStarted = None
+        self._BlockedInputBuffer = None
+        self._BlockedSqlTemplate = None
+        self._BlockedSqlMd5 = None
+        self._BlockedProcessXml = None
+
+    @property
+    def ReportTime(self):
+        r"""<p>本条明细行上报时间（事件时间，__time；时区UTC+8），格式：yyyy-MM-dd HH:mm:ss。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
+
+    @property
+    def MonitorLoop(self):
+        r"""<p>监控轮次ID（同一实例内唯一标识一次采集快照，可透传至DescribeBlockingLockTree下钻查看完整阻塞树）。文本承载数值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MonitorLoop
+
+    @MonitorLoop.setter
+    def MonitorLoop(self, MonitorLoop):
+        self._MonitorLoop = MonitorLoop
+
+    @property
+    def DurationMs(self):
+        r"""<p>被阻塞方的等待时长（毫秒）。来源：Kafka顶层Fields.duration÷1000（微秒→毫秒），来自SQL Server内核XEvent事件的duration字段。与BlockedWaitTimeMs来源不同但通常非常接近（非严格相等，两者为同一事件的两个独立快照）；仅为OrderBy=durationMs排序别名保留。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DurationMs
+
+    @DurationMs.setter
+    def DurationMs(self, DurationMs):
+        self._DurationMs = DurationMs
+
+    @property
+    def DatabaseName(self):
+        r"""<p>阻塞发生所在的数据库名称。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatabaseId(self):
+        r"""<p>阻塞发生所在的数据库 ID（Fields.database_id，对应 SQL Server sys.databases.database_id）。可配合 DatabaseName 使用：ID 稳定、Name 易读；Name 在重命名场景下会变化，ID 则不会。采样为空时该字段不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def ObjectId(self):
+        r"""<p>阻塞锁资源归属的对象 ID（Fields.object_id，对应 SQL Server sys.objects.object_id）。标识具体的表/视图/存储过程等用户对象；可结合 sys.objects 元数据查询对象名。采样为空时该字段不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def IndexId(self):
+        r"""<p>阻塞锁资源归属的索引 ID（Fields.index_id，对应 SQL Server sys.indexes.index_id）。常见取值：0=堆（无聚集索引）、1=聚集索引、&gt;1=非聚集索引；&gt;250 通常为系统内部索引（如全文/XML/空间索引），诊断时按&quot;是否为用户索引&quot;判断即可。采样为空时该字段不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndexId
+
+    @IndexId.setter
+    def IndexId(self, IndexId):
+        self._IndexId = IndexId
+
+    @property
+    def RootCause(self):
+        r"""<p>根因分类（与枚举BlockingRootCause一一对应）。取值：C1_LONG_QUERY=长查询正常运行阻塞；C2_SLEEPING_UNCOMMITTED=休眠会话且存在未提交事务；C3_CLIENT_NOT_FETCHING=客户端未取完结果行；C4_APP_DEADLOCK=应用层分布式死锁；C5_ROLLBACK=会话正在rollback；C6_ORPHAN_TRANSACTION=孤立事务；UNKNOWN=未识别。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RootCause
+
+    @RootCause.setter
+    def RootCause(self, RootCause):
+        self._RootCause = RootCause
+
+    @property
+    def RootCauseDesc(self):
+        r"""<p>根因分类的可读中文描述（服务端已完成中文化，前端可直接展示；与RootCause代号一一对应，例如C1_LONG_QUERY→&quot;长查询正常运行阻塞，考虑优化SQL/索引&quot;，未识别或空值统一返回&quot;未识别&quot;）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RootCauseDesc
+
+    @RootCauseDesc.setter
+    def RootCauseDesc(self, RootCauseDesc):
+        self._RootCauseDesc = RootCauseDesc
+
+    @property
+    def BlockingSessionId(self):
+        r"""<p>头阻塞会话 ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockingSessionId
+
+    @BlockingSessionId.setter
+    def BlockingSessionId(self, BlockingSessionId):
+        self._BlockingSessionId = BlockingSessionId
+
+    @property
+    def BlockingLoginName(self):
+        r"""<p>头阻塞会话数据库用户。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingLoginName
+
+    @BlockingLoginName.setter
+    def BlockingLoginName(self, BlockingLoginName):
+        self._BlockingLoginName = BlockingLoginName
+
+    @property
+    def BlockingHostName(self):
+        r"""<p>头阻塞会话客户端主机。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingHostName
+
+    @BlockingHostName.setter
+    def BlockingHostName(self, BlockingHostName):
+        self._BlockingHostName = BlockingHostName
+
+    @property
+    def BlockingClientApp(self):
+        r"""<p>头阻塞会话客户端应用名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingClientApp
+
+    @BlockingClientApp.setter
+    def BlockingClientApp(self, BlockingClientApp):
+        self._BlockingClientApp = BlockingClientApp
+
+    @property
+    def BlockingStatus(self):
+        r"""<p>头阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status文本），常见取值：running / sleeping / suspended / background。sleeping+trancount&gt;0是C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingStatus
+
+    @BlockingStatus.setter
+    def BlockingStatus(self, BlockingStatus):
+        self._BlockingStatus = BlockingStatus
+
+    @property
+    def BlockingIsolationLevel(self):
+        r"""<p>头阻塞会话事务隔离级别（SQL Server原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingIsolationLevel
+
+    @BlockingIsolationLevel.setter
+    def BlockingIsolationLevel(self, BlockingIsolationLevel):
+        self._BlockingIsolationLevel = BlockingIsolationLevel
+
+    @property
+    def BlockingTransactionName(self):
+        r"""<p>头阻塞会话当前显式事务名（XEvent transactionname，如user_transaction / implicit_transaction）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingTransactionName
+
+    @BlockingTransactionName.setter
+    def BlockingTransactionName(self, BlockingTransactionName):
+        self._BlockingTransactionName = BlockingTransactionName
+
+    @property
+    def BlockingTranCount(self):
+        r"""<p>头阻塞会话当前显式事务嵌套层数（XEvent trancount）。&gt;0表示持有显式事务；与BlockingStatus=sleeping组合是C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockingTranCount
+
+    @BlockingTranCount.setter
+    def BlockingTranCount(self, BlockingTranCount):
+        self._BlockingTranCount = BlockingTranCount
+
+    @property
+    def BlockingLastTranStarted(self):
+        r"""<p>头阻塞会话显式事务BEGIN TRAN时刻（XEvent lasttranstarted，SQL Server服务端本地时区的ISO 8601字符串，无时区后缀）。该字段代表事务持锁开始时刻：ReportTime-BlockingLastTranStarted≈事务持锁时长，用于C1_LONG_QUERY / C6_ORPHAN_TRANSACTION根因复核；在多语句事务场景下比lastbatchstarted更稳定（不会被每个新batch刷新）。值为空表示XML未提供该属性（blocking-process侧常见）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingLastTranStarted
+
+    @BlockingLastTranStarted.setter
+    def BlockingLastTranStarted(self, BlockingLastTranStarted):
+        self._BlockingLastTranStarted = BlockingLastTranStarted
+
+    @property
+    def BlockingInputBuffer(self):
+        r"""<p>头阻塞会话正在执行的SQL原文（对应DBCC INPUTBUFFER返回内容，单条最长16KB，超长截断）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingInputBuffer
+
+    @BlockingInputBuffer.setter
+    def BlockingInputBuffer(self, BlockingInputBuffer):
+        self._BlockingInputBuffer = BlockingInputBuffer
+
+    @property
+    def BlockingSqlTemplate(self):
+        r"""<p>头阻塞SQL归一化模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingSqlTemplate
+
+    @BlockingSqlTemplate.setter
+    def BlockingSqlTemplate(self, BlockingSqlTemplate):
+        self._BlockingSqlTemplate = BlockingSqlTemplate
+
+    @property
+    def BlockingSqlMd5(self):
+        r"""<p>头阻塞SQL模板MD5。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingSqlMd5
+
+    @BlockingSqlMd5.setter
+    def BlockingSqlMd5(self, BlockingSqlMd5):
+        self._BlockingSqlMd5 = BlockingSqlMd5
+
+    @property
+    def BlockingLockMode(self):
+        r"""<p>头阻塞会话持有或请求的锁模式（SQL Server原生lock_mode枚举；blocker通常不处于等锁状态，该字段多为空）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingLockMode
+
+    @BlockingLockMode.setter
+    def BlockingLockMode(self, BlockingLockMode):
+        self._BlockingLockMode = BlockingLockMode
+
+    @property
+    def BlockingWaitTimeMs(self):
+        r"""<p>头阻塞会话自身的等待时长（毫秒）。多数场景为0。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockingWaitTimeMs
+
+    @BlockingWaitTimeMs.setter
+    def BlockingWaitTimeMs(self, BlockingWaitTimeMs):
+        self._BlockingWaitTimeMs = BlockingWaitTimeMs
+
+    @property
+    def BlockedSessionId(self):
+        r"""<p>被阻塞会话 ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockedSessionId
+
+    @BlockedSessionId.setter
+    def BlockedSessionId(self, BlockedSessionId):
+        self._BlockedSessionId = BlockedSessionId
+
+    @property
+    def BlockedTransactionId(self):
+        r"""<p>被阻塞会话事务ID（SQL Server transaction_id，bigint）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockedTransactionId
+
+    @BlockedTransactionId.setter
+    def BlockedTransactionId(self, BlockedTransactionId):
+        self._BlockedTransactionId = BlockedTransactionId
+
+    @property
+    def BlockedWaitTimeMs(self):
+        r"""<p>被阻塞会话等待时长（毫秒）。来源：XML &lt;blocked-process&gt;&lt;process waittime&gt;属性（来自ys.dm_os_waiting_tasks.wait_duration_ms在report生成瞬间的快照）。与DurationMs来源不同但通常非常接近；仅为OrderBy=blockedWaitTimeMs排序别名保留。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockedWaitTimeMs
+
+    @BlockedWaitTimeMs.setter
+    def BlockedWaitTimeMs(self, BlockedWaitTimeMs):
+        self._BlockedWaitTimeMs = BlockedWaitTimeMs
+
+    @property
+    def BlockedLockMode(self):
+        r"""<p>被阻塞会话正在等待的锁模式（SQL Server原生lock_mode枚举，常见取值：S、U、X、IS、IU、IX、SIU、SIX、UIX、Sch-S、Sch-M）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedLockMode
+
+    @BlockedLockMode.setter
+    def BlockedLockMode(self, BlockedLockMode):
+        self._BlockedLockMode = BlockedLockMode
+
+    @property
+    def BlockedWaitResource(self):
+        r"""<p>被阻塞会话等待资源。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedWaitResource
+
+    @BlockedWaitResource.setter
+    def BlockedWaitResource(self, BlockedWaitResource):
+        self._BlockedWaitResource = BlockedWaitResource
+
+    @property
+    def BlockedLoginName(self):
+        r"""<p>被阻塞会话数据库用户。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedLoginName
+
+    @BlockedLoginName.setter
+    def BlockedLoginName(self, BlockedLoginName):
+        self._BlockedLoginName = BlockedLoginName
+
+    @property
+    def BlockedHostName(self):
+        r"""<p>被阻塞会话客户端主机。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedHostName
+
+    @BlockedHostName.setter
+    def BlockedHostName(self, BlockedHostName):
+        self._BlockedHostName = BlockedHostName
+
+    @property
+    def BlockedClientApp(self):
+        r"""<p>被阻塞会话客户端应用名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedClientApp
+
+    @BlockedClientApp.setter
+    def BlockedClientApp(self, BlockedClientApp):
+        self._BlockedClientApp = BlockedClientApp
+
+    @property
+    def BlockedStatus(self):
+        r"""<p>被阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status文本），常见取值：running / sleeping / suspended / background。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedStatus
+
+    @BlockedStatus.setter
+    def BlockedStatus(self, BlockedStatus):
+        self._BlockedStatus = BlockedStatus
+
+    @property
+    def BlockedIsolationLevel(self):
+        r"""<p>被阻塞会话事务隔离级别（SQL Server原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedIsolationLevel
+
+    @BlockedIsolationLevel.setter
+    def BlockedIsolationLevel(self, BlockedIsolationLevel):
+        self._BlockedIsolationLevel = BlockedIsolationLevel
+
+    @property
+    def BlockedTransactionName(self):
+        r"""<p>被阻塞会话当前显式事务名（XEvent transactionname）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedTransactionName
+
+    @BlockedTransactionName.setter
+    def BlockedTransactionName(self, BlockedTransactionName):
+        self._BlockedTransactionName = BlockedTransactionName
+
+    @property
+    def BlockedTranCount(self):
+        r"""<p>被阻塞会话当前显式事务嵌套层数（XEvent trancount）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockedTranCount
+
+    @BlockedTranCount.setter
+    def BlockedTranCount(self, BlockedTranCount):
+        self._BlockedTranCount = BlockedTranCount
+
+    @property
+    def BlockedLastTranStarted(self):
+        r"""<p>被阻塞会话显式事务BEGIN TRAN时刻（XEvent lasttranstarted，SQL Server服务端本地时区的ISO 8601字符串，无时区后缀）。该字段代表事务开始时刻，在多语句事务场景下比lastbatchstarted更稳定。咨视值1900-01-01T00:00:00表示未知。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedLastTranStarted
+
+    @BlockedLastTranStarted.setter
+    def BlockedLastTranStarted(self, BlockedLastTranStarted):
+        self._BlockedLastTranStarted = BlockedLastTranStarted
+
+    @property
+    def BlockedInputBuffer(self):
+        r"""<p>被阻塞会话正在执行的SQL原文（对应DBCC INPUTBUFFER返回内容，单条最长16KB，超长截断）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedInputBuffer
+
+    @BlockedInputBuffer.setter
+    def BlockedInputBuffer(self, BlockedInputBuffer):
+        self._BlockedInputBuffer = BlockedInputBuffer
+
+    @property
+    def BlockedSqlTemplate(self):
+        r"""<p>被阻塞SQL归一化模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedSqlTemplate
+
+    @BlockedSqlTemplate.setter
+    def BlockedSqlTemplate(self, BlockedSqlTemplate):
+        self._BlockedSqlTemplate = BlockedSqlTemplate
+
+    @property
+    def BlockedSqlMd5(self):
+        r"""<p>被阻塞SQL模板MD5。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedSqlMd5
+
+    @BlockedSqlMd5.setter
+    def BlockedSqlMd5(self, BlockedSqlMd5):
+        self._BlockedSqlMd5 = BlockedSqlMd5
+
+    @property
+    def BlockedProcessXml(self):
+        r"""<p>被阻塞方 blocked_process_report 原始 XML 文本（含完整执行计划、等待链、死锁明细等原始现场；字段体积较大，KB 级起步）。仅当请求参数 WithXml=true 时才返回；默认 false 时该字段省略，不出现在响应体中。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedProcessXml
+
+    @BlockedProcessXml.setter
+    def BlockedProcessXml(self, BlockedProcessXml):
+        self._BlockedProcessXml = BlockedProcessXml
+
+
+    def _deserialize(self, params):
+        self._ReportTime = params.get("ReportTime")
+        self._MonitorLoop = params.get("MonitorLoop")
+        self._DurationMs = params.get("DurationMs")
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatabaseId = params.get("DatabaseId")
+        self._ObjectId = params.get("ObjectId")
+        self._IndexId = params.get("IndexId")
+        self._RootCause = params.get("RootCause")
+        self._RootCauseDesc = params.get("RootCauseDesc")
+        self._BlockingSessionId = params.get("BlockingSessionId")
+        self._BlockingLoginName = params.get("BlockingLoginName")
+        self._BlockingHostName = params.get("BlockingHostName")
+        self._BlockingClientApp = params.get("BlockingClientApp")
+        self._BlockingStatus = params.get("BlockingStatus")
+        self._BlockingIsolationLevel = params.get("BlockingIsolationLevel")
+        self._BlockingTransactionName = params.get("BlockingTransactionName")
+        self._BlockingTranCount = params.get("BlockingTranCount")
+        self._BlockingLastTranStarted = params.get("BlockingLastTranStarted")
+        self._BlockingInputBuffer = params.get("BlockingInputBuffer")
+        self._BlockingSqlTemplate = params.get("BlockingSqlTemplate")
+        self._BlockingSqlMd5 = params.get("BlockingSqlMd5")
+        self._BlockingLockMode = params.get("BlockingLockMode")
+        self._BlockingWaitTimeMs = params.get("BlockingWaitTimeMs")
+        self._BlockedSessionId = params.get("BlockedSessionId")
+        self._BlockedTransactionId = params.get("BlockedTransactionId")
+        self._BlockedWaitTimeMs = params.get("BlockedWaitTimeMs")
+        self._BlockedLockMode = params.get("BlockedLockMode")
+        self._BlockedWaitResource = params.get("BlockedWaitResource")
+        self._BlockedLoginName = params.get("BlockedLoginName")
+        self._BlockedHostName = params.get("BlockedHostName")
+        self._BlockedClientApp = params.get("BlockedClientApp")
+        self._BlockedStatus = params.get("BlockedStatus")
+        self._BlockedIsolationLevel = params.get("BlockedIsolationLevel")
+        self._BlockedTransactionName = params.get("BlockedTransactionName")
+        self._BlockedTranCount = params.get("BlockedTranCount")
+        self._BlockedLastTranStarted = params.get("BlockedLastTranStarted")
+        self._BlockedInputBuffer = params.get("BlockedInputBuffer")
+        self._BlockedSqlTemplate = params.get("BlockedSqlTemplate")
+        self._BlockedSqlMd5 = params.get("BlockedSqlMd5")
+        self._BlockedProcessXml = params.get("BlockedProcessXml")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CancelDBAutonomyActionRequest(AbstractModel):
     r"""CancelDBAutonomyAction请求参数结构体
 
@@ -8089,6 +8790,450 @@ class DescribeAuditLogFilesResponse(AbstractModel):
             self._Items = []
             for item in params.get("Items"):
                 obj = AuditLogFile()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBlockingLogsRequest(AbstractModel):
+    r"""DescribeBlockingLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _Product: <p>服务产品类型，固定为sqlserver。</p>
+        :type Product: str
+        :param _StartTime: <p>查询起始时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss。必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss，需大于 StartTime。单次查询跨度必须 ≤ 1 天（24 小时），否则返回 InvalidParameterValue。大跨度趋势场景请改用 DescribeBlockingTrend。</p>
+        :type EndTime: str
+        :param _RootCause: <p>根因过滤（可选），支持：C1_LONG_QUERY=长事务查询持锁；C2_SLEEP_UNCOMMITTED=sleeping会话持未提交事务；C3_LOCK_ESCALATION=锁升级；C4_HIGH_CONCURRENCY=高并发争用；C5_INDEX_MISS=索引缺失导致大范围锁；C6_ORPHAN_TRAN=孤儿事务。</p>
+        :type RootCause: str
+        :param _BlockingSqlMd5: <p>头SQL（blocker）MD5过滤（可选）。</p>
+        :type BlockingSqlMd5: str
+        :param _BlockedSqlMd5: <p>被阻塞SQL（blocked）MD5过滤（可选）。</p>
+        :type BlockedSqlMd5: str
+        :param _DatabaseNames: <p>数据库名列表过滤（可选），按阻塞事件所在数据库名过滤；列表内任意匹配即命中，最多50项。多库实例场景下推荐用本字段定位阻塞所在库。</p>
+        :type DatabaseNames: list of str
+        :param _BlockingSessionIds: <p>头阻塞会话 ID（SPID）列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :type BlockingSessionIds: list of int
+        :param _BlockedSessionIds: <p>被阻塞会话 ID（SPID）列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :type BlockedSessionIds: list of int
+        :param _BlockingLoginNames: <p>头阻塞登录名列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :type BlockingLoginNames: list of str
+        :param _BlockedLoginNames: <p>被阻塞登录名列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :type BlockedLoginNames: list of str
+        :param _BlockingHostNames: <p>头阻塞客户端主机列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :type BlockingHostNames: list of str
+        :param _BlockedHostNames: <p>被阻塞客户端主机列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :type BlockedHostNames: list of str
+        :param _BlockingClientApps: <p>头阻塞客户端应用列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :type BlockingClientApps: list of str
+        :param _BlockedClientApps: <p>被阻塞客户端应用列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :type BlockedClientApps: list of str
+        :param _BlockedLockModes: <p>被阻塞方等待锁模式列表过滤（可选），SQL Server原生lock_mode枚举，常见取值（非穷尽）：S、U、X、IS、IU、IX、SIU、SIX、UIX、Sch-S、Sch-M；serializable隔离级别下还可能出现RangeS-S / RangeS-U / RangeX-X / RangeI-N系列。列表内任意匹配即命中，最多50项。</p>
+        :type BlockedLockModes: list of str
+        :param _DurationMsMin: <p>被阻塞方等待时长下限（毫秒，含），用于筛选慢阻塞（可选）。</p>
+        :type DurationMsMin: int
+        :param _DurationMsMax: <p>被阻塞方等待时长上限（毫秒，含），用于筛选阻塞时长不超过某值的记录（可选）。</p>
+        :type DurationMsMax: int
+        :param _OrderBy: <p>排序字段（可选），支持reportTime（按明细行上报时间，默认）/ durationMs（按链路阻塞时长）/ blockedWaitTimeMs（按被阻塞方等待时长）/ blockingWaitTimeMs（按头阻塞自身等待时长）。</p>
+        :type OrderBy: str
+        :param _OrderDirection: <p>排序方向（可选），支持desc（默认，倒序）/ asc（正序）。</p>
+        :type OrderDirection: str
+        :param _Limit: <p>返回条数上限，默认20，最大100。</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量，默认 0。</p>
+        :type Offset: int
+        :param _WithXml: <p>是否返回原始 blocked_process_report XML（可选，默认 false 不返回）。该字段体积较大（KB 级起步，含完整执行计划/等待链/死锁明细等原始上下文），常规列表展示不需要，仅在需要查看完整 XML 现场（如线下诊断、离线分析）时将本参数置为 true 按需拉取。</p>
+        :type WithXml: bool
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RootCause = None
+        self._BlockingSqlMd5 = None
+        self._BlockedSqlMd5 = None
+        self._DatabaseNames = None
+        self._BlockingSessionIds = None
+        self._BlockedSessionIds = None
+        self._BlockingLoginNames = None
+        self._BlockedLoginNames = None
+        self._BlockingHostNames = None
+        self._BlockedHostNames = None
+        self._BlockingClientApps = None
+        self._BlockedClientApps = None
+        self._BlockedLockModes = None
+        self._DurationMsMin = None
+        self._DurationMsMax = None
+        self._OrderBy = None
+        self._OrderDirection = None
+        self._Limit = None
+        self._Offset = None
+        self._WithXml = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型，固定为sqlserver。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def StartTime(self):
+        r"""<p>查询起始时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss。必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss，需大于 StartTime。单次查询跨度必须 ≤ 1 天（24 小时），否则返回 InvalidParameterValue。大跨度趋势场景请改用 DescribeBlockingTrend。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RootCause(self):
+        r"""<p>根因过滤（可选），支持：C1_LONG_QUERY=长事务查询持锁；C2_SLEEP_UNCOMMITTED=sleeping会话持未提交事务；C3_LOCK_ESCALATION=锁升级；C4_HIGH_CONCURRENCY=高并发争用；C5_INDEX_MISS=索引缺失导致大范围锁；C6_ORPHAN_TRAN=孤儿事务。</p>
+        :rtype: str
+        """
+        return self._RootCause
+
+    @RootCause.setter
+    def RootCause(self, RootCause):
+        self._RootCause = RootCause
+
+    @property
+    def BlockingSqlMd5(self):
+        r"""<p>头SQL（blocker）MD5过滤（可选）。</p>
+        :rtype: str
+        """
+        return self._BlockingSqlMd5
+
+    @BlockingSqlMd5.setter
+    def BlockingSqlMd5(self, BlockingSqlMd5):
+        self._BlockingSqlMd5 = BlockingSqlMd5
+
+    @property
+    def BlockedSqlMd5(self):
+        r"""<p>被阻塞SQL（blocked）MD5过滤（可选）。</p>
+        :rtype: str
+        """
+        return self._BlockedSqlMd5
+
+    @BlockedSqlMd5.setter
+    def BlockedSqlMd5(self, BlockedSqlMd5):
+        self._BlockedSqlMd5 = BlockedSqlMd5
+
+    @property
+    def DatabaseNames(self):
+        r"""<p>数据库名列表过滤（可选），按阻塞事件所在数据库名过滤；列表内任意匹配即命中，最多50项。多库实例场景下推荐用本字段定位阻塞所在库。</p>
+        :rtype: list of str
+        """
+        return self._DatabaseNames
+
+    @DatabaseNames.setter
+    def DatabaseNames(self, DatabaseNames):
+        self._DatabaseNames = DatabaseNames
+
+    @property
+    def BlockingSessionIds(self):
+        r"""<p>头阻塞会话 ID（SPID）列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of int
+        """
+        return self._BlockingSessionIds
+
+    @BlockingSessionIds.setter
+    def BlockingSessionIds(self, BlockingSessionIds):
+        self._BlockingSessionIds = BlockingSessionIds
+
+    @property
+    def BlockedSessionIds(self):
+        r"""<p>被阻塞会话 ID（SPID）列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of int
+        """
+        return self._BlockedSessionIds
+
+    @BlockedSessionIds.setter
+    def BlockedSessionIds(self, BlockedSessionIds):
+        self._BlockedSessionIds = BlockedSessionIds
+
+    @property
+    def BlockingLoginNames(self):
+        r"""<p>头阻塞登录名列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of str
+        """
+        return self._BlockingLoginNames
+
+    @BlockingLoginNames.setter
+    def BlockingLoginNames(self, BlockingLoginNames):
+        self._BlockingLoginNames = BlockingLoginNames
+
+    @property
+    def BlockedLoginNames(self):
+        r"""<p>被阻塞登录名列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of str
+        """
+        return self._BlockedLoginNames
+
+    @BlockedLoginNames.setter
+    def BlockedLoginNames(self, BlockedLoginNames):
+        self._BlockedLoginNames = BlockedLoginNames
+
+    @property
+    def BlockingHostNames(self):
+        r"""<p>头阻塞客户端主机列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of str
+        """
+        return self._BlockingHostNames
+
+    @BlockingHostNames.setter
+    def BlockingHostNames(self, BlockingHostNames):
+        self._BlockingHostNames = BlockingHostNames
+
+    @property
+    def BlockedHostNames(self):
+        r"""<p>被阻塞客户端主机列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of str
+        """
+        return self._BlockedHostNames
+
+    @BlockedHostNames.setter
+    def BlockedHostNames(self, BlockedHostNames):
+        self._BlockedHostNames = BlockedHostNames
+
+    @property
+    def BlockingClientApps(self):
+        r"""<p>头阻塞客户端应用列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of str
+        """
+        return self._BlockingClientApps
+
+    @BlockingClientApps.setter
+    def BlockingClientApps(self, BlockingClientApps):
+        self._BlockingClientApps = BlockingClientApps
+
+    @property
+    def BlockedClientApps(self):
+        r"""<p>被阻塞客户端应用列表过滤（可选），列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of str
+        """
+        return self._BlockedClientApps
+
+    @BlockedClientApps.setter
+    def BlockedClientApps(self, BlockedClientApps):
+        self._BlockedClientApps = BlockedClientApps
+
+    @property
+    def BlockedLockModes(self):
+        r"""<p>被阻塞方等待锁模式列表过滤（可选），SQL Server原生lock_mode枚举，常见取值（非穷尽）：S、U、X、IS、IU、IX、SIU、SIX、UIX、Sch-S、Sch-M；serializable隔离级别下还可能出现RangeS-S / RangeS-U / RangeX-X / RangeI-N系列。列表内任意匹配即命中，最多50项。</p>
+        :rtype: list of str
+        """
+        return self._BlockedLockModes
+
+    @BlockedLockModes.setter
+    def BlockedLockModes(self, BlockedLockModes):
+        self._BlockedLockModes = BlockedLockModes
+
+    @property
+    def DurationMsMin(self):
+        r"""<p>被阻塞方等待时长下限（毫秒，含），用于筛选慢阻塞（可选）。</p>
+        :rtype: int
+        """
+        return self._DurationMsMin
+
+    @DurationMsMin.setter
+    def DurationMsMin(self, DurationMsMin):
+        self._DurationMsMin = DurationMsMin
+
+    @property
+    def DurationMsMax(self):
+        r"""<p>被阻塞方等待时长上限（毫秒，含），用于筛选阻塞时长不超过某值的记录（可选）。</p>
+        :rtype: int
+        """
+        return self._DurationMsMax
+
+    @DurationMsMax.setter
+    def DurationMsMax(self, DurationMsMax):
+        self._DurationMsMax = DurationMsMax
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序字段（可选），支持reportTime（按明细行上报时间，默认）/ durationMs（按链路阻塞时长）/ blockedWaitTimeMs（按被阻塞方等待时长）/ blockingWaitTimeMs（按头阻塞自身等待时长）。</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderDirection(self):
+        r"""<p>排序方向（可选），支持desc（默认，倒序）/ asc（正序）。</p>
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+    @property
+    def Limit(self):
+        r"""<p>返回条数上限，默认20，最大100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def WithXml(self):
+        r"""<p>是否返回原始 blocked_process_report XML（可选，默认 false 不返回）。该字段体积较大（KB 级起步，含完整执行计划/等待链/死锁明细等原始上下文），常规列表展示不需要，仅在需要查看完整 XML 现场（如线下诊断、离线分析）时将本参数置为 true 按需拉取。</p>
+        :rtype: bool
+        """
+        return self._WithXml
+
+    @WithXml.setter
+    def WithXml(self, WithXml):
+        self._WithXml = WithXml
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RootCause = params.get("RootCause")
+        self._BlockingSqlMd5 = params.get("BlockingSqlMd5")
+        self._BlockedSqlMd5 = params.get("BlockedSqlMd5")
+        self._DatabaseNames = params.get("DatabaseNames")
+        self._BlockingSessionIds = params.get("BlockingSessionIds")
+        self._BlockedSessionIds = params.get("BlockedSessionIds")
+        self._BlockingLoginNames = params.get("BlockingLoginNames")
+        self._BlockedLoginNames = params.get("BlockedLoginNames")
+        self._BlockingHostNames = params.get("BlockingHostNames")
+        self._BlockedHostNames = params.get("BlockedHostNames")
+        self._BlockingClientApps = params.get("BlockingClientApps")
+        self._BlockedClientApps = params.get("BlockedClientApps")
+        self._BlockedLockModes = params.get("BlockedLockModes")
+        self._DurationMsMin = params.get("DurationMsMin")
+        self._DurationMsMax = params.get("DurationMsMax")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderDirection = params.get("OrderDirection")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._WithXml = params.get("WithXml")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlockingLogsResponse(AbstractModel):
+    r"""DescribeBlockingLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>满足条件的阻塞明细总条数。</p>
+        :type TotalCount: int
+        :param _Items: <p>阻塞明细行列表（按OrderBy / OrderDirection排序）。</p>
+        :type Items: list of BlockingLogItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>满足条件的阻塞明细总条数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>阻塞明细行列表（按OrderBy / OrderDirection排序）。</p>
+        :rtype: list of BlockingLogItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = BlockingLogItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._RequestId = params.get("RequestId")

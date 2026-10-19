@@ -239,40 +239,43 @@ class ConsumeGroupItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _ConsumerGroup: 消费组名称
+        :param _ConsumerGroup: <p>消费组名称</p>
         :type ConsumerGroup: str
-        :param _ConsumeEnable: 是否开启消费
+        :param _ConsumeEnable: <p>是否开启消费</p>
         :type ConsumeEnable: bool
-        :param _ConsumeMessageOrderly: 顺序投递：true
-并发投递：false
+        :param _ConsumeMessageOrderly: <p>顺序投递：true<br>并发投递：false</p>
         :type ConsumeMessageOrderly: bool
-        :param _MaxRetryTimes: 最大重试次数
+        :param _MaxRetryTimes: <p>最大重试次数</p>
         :type MaxRetryTimes: int
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _ClusterIdV4: 4.x的集群ID
+        :param _ClusterIdV4: <p>4.x的集群ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIdV4: str
-        :param _NamespaceV4: 4.x的命名空间
+        :param _NamespaceV4: <p>4.x的命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceV4: str
-        :param _ConsumerGroupV4: 4.x的消费组名称
+        :param _ConsumerGroupV4: <p>4.x的消费组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerGroupV4: str
-        :param _FullNamespaceV4: 4.x的完整命名空间
+        :param _FullNamespaceV4: <p>4.x的完整命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullNamespaceV4: str
-        :param _SubscribeTopicNum: 订阅的主题个数
+        :param _SubscribeTopicNum: <p>订阅的主题个数</p>
         :type SubscribeTopicNum: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
-        :param _TagList: 绑定的标签列表
+        :param _TagList: <p>绑定的标签列表</p>
         :type TagList: list of Tag
-        :param _RetryPolicy: 重试策略
+        :param _RetryPolicy: <p>重试策略</p>
         :type RetryPolicy: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
+        :param _ConsumeModel: <p>消费模式，枚举值如下：</p><ul><li>CLUSTERING：集群/广播消费</li><li>LITE：LiteTopic 消费</li></ul>
+        :type ConsumeModel: str
+        :param _DeadLetterTargetTopic: <p>自定义的死信Topic名称</p>
+        :type DeadLetterTargetTopic: str
         """
         self._InstanceId = None
         self._ConsumerGroup = None
@@ -288,10 +291,12 @@ class ConsumeGroupItem(AbstractModel):
         self._CreateTime = None
         self._TagList = None
         self._RetryPolicy = None
+        self._ConsumeModel = None
+        self._DeadLetterTargetTopic = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -302,7 +307,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ConsumerGroup(self):
-        r"""消费组名称
+        r"""<p>消费组名称</p>
         :rtype: str
         """
         return self._ConsumerGroup
@@ -313,7 +318,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ConsumeEnable(self):
-        r"""是否开启消费
+        r"""<p>是否开启消费</p>
         :rtype: bool
         """
         return self._ConsumeEnable
@@ -324,8 +329,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ConsumeMessageOrderly(self):
-        r"""顺序投递：true
-并发投递：false
+        r"""<p>顺序投递：true<br>并发投递：false</p>
         :rtype: bool
         """
         return self._ConsumeMessageOrderly
@@ -336,7 +340,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def MaxRetryTimes(self):
-        r"""最大重试次数
+        r"""<p>最大重试次数</p>
         :rtype: int
         """
         return self._MaxRetryTimes
@@ -347,7 +351,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -358,7 +362,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ClusterIdV4(self):
-        r"""4.x的集群ID
+        r"""<p>4.x的集群ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -370,7 +374,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def NamespaceV4(self):
-        r"""4.x的命名空间
+        r"""<p>4.x的命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -382,7 +386,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def ConsumerGroupV4(self):
-        r"""4.x的消费组名称
+        r"""<p>4.x的消费组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -394,7 +398,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def FullNamespaceV4(self):
-        r"""4.x的完整命名空间
+        r"""<p>4.x的完整命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -406,7 +410,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def SubscribeTopicNum(self):
-        r"""订阅的主题个数
+        r"""<p>订阅的主题个数</p>
         :rtype: int
         """
         return self._SubscribeTopicNum
@@ -417,7 +421,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -429,7 +433,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def TagList(self):
-        r"""绑定的标签列表
+        r"""<p>绑定的标签列表</p>
         :rtype: list of Tag
         """
         return self._TagList
@@ -440,7 +444,7 @@ class ConsumeGroupItem(AbstractModel):
 
     @property
     def RetryPolicy(self):
-        r"""重试策略
+        r"""<p>重试策略</p>
         :rtype: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
         """
         return self._RetryPolicy
@@ -448,6 +452,28 @@ class ConsumeGroupItem(AbstractModel):
     @RetryPolicy.setter
     def RetryPolicy(self, RetryPolicy):
         self._RetryPolicy = RetryPolicy
+
+    @property
+    def ConsumeModel(self):
+        r"""<p>消费模式，枚举值如下：</p><ul><li>CLUSTERING：集群/广播消费</li><li>LITE：LiteTopic 消费</li></ul>
+        :rtype: str
+        """
+        return self._ConsumeModel
+
+    @ConsumeModel.setter
+    def ConsumeModel(self, ConsumeModel):
+        self._ConsumeModel = ConsumeModel
+
+    @property
+    def DeadLetterTargetTopic(self):
+        r"""<p>自定义的死信Topic名称</p>
+        :rtype: str
+        """
+        return self._DeadLetterTargetTopic
+
+    @DeadLetterTargetTopic.setter
+    def DeadLetterTargetTopic(self, DeadLetterTargetTopic):
+        self._DeadLetterTargetTopic = DeadLetterTargetTopic
 
 
     def _deserialize(self, params):
@@ -472,6 +498,8 @@ class ConsumeGroupItem(AbstractModel):
         if params.get("RetryPolicy") is not None:
             self._RetryPolicy = RetryPolicy()
             self._RetryPolicy._deserialize(params.get("RetryPolicy"))
+        self._ConsumeModel = params.get("ConsumeModel")
+        self._DeadLetterTargetTopic = params.get("DeadLetterTargetTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1220,6 +1248,8 @@ class CreateConsumerGroupRequest(AbstractModel):
         :type RetryPolicy: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
         :param _LiteTopic: <p>轻量主题</p>
         :type LiteTopic: str
+        :param _DeadLetterTargetTopic: <p>自定义死信 Topic</p><p>非必选，死信消息默认投递到系统死信 Topic</p>
+        :type DeadLetterTargetTopic: str
         """
         self._InstanceId = None
         self._MaxRetryTimes = None
@@ -1230,6 +1260,7 @@ class CreateConsumerGroupRequest(AbstractModel):
         self._TagList = None
         self._RetryPolicy = None
         self._LiteTopic = None
+        self._DeadLetterTargetTopic = None
 
     @property
     def InstanceId(self):
@@ -1330,6 +1361,17 @@ class CreateConsumerGroupRequest(AbstractModel):
     def LiteTopic(self, LiteTopic):
         self._LiteTopic = LiteTopic
 
+    @property
+    def DeadLetterTargetTopic(self):
+        r"""<p>自定义死信 Topic</p><p>非必选，死信消息默认投递到系统死信 Topic</p>
+        :rtype: str
+        """
+        return self._DeadLetterTargetTopic
+
+    @DeadLetterTargetTopic.setter
+    def DeadLetterTargetTopic(self, DeadLetterTargetTopic):
+        self._DeadLetterTargetTopic = DeadLetterTargetTopic
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1348,6 +1390,7 @@ class CreateConsumerGroupRequest(AbstractModel):
             self._RetryPolicy = RetryPolicy()
             self._RetryPolicy._deserialize(params.get("RetryPolicy"))
         self._LiteTopic = params.get("LiteTopic")
+        self._DeadLetterTargetTopic = params.get("DeadLetterTargetTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2411,25 +2454,19 @@ class CreateTopicRequest(AbstractModel):
         :type InstanceId: str
         :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
-        :param _TopicType: 主题类型，枚举值如下：
-
-- NORMAL: 普通消息
-- FIFO: 顺序消息
-- DELAY: 延时消息
-- TRANSACTION: 事务消息
-- LITE: 轻量消息
+        :param _TopicType: <p>主题类型</p><p>枚举值：</p><ul><li>NORMAL： 普通消息</li><li>FIFO： 顺序消息</li><li>DELAY： 延迟消息</li><li>TRANSACTION： 事务消息</li><li>LITE： 轻量消息</li><li>PRIORITY： 优先级消息</li></ul>
         :type TopicType: str
-        :param _QueueNum: 队列数量，取值范围3～16
+        :param _QueueNum: <p>队列数量，取值范围3～16</p>
         :type QueueNum: int
-        :param _Remark: 备注信息，最多 128 个字符
+        :param _Remark: <p>备注信息，最多 128 个字符</p>
         :type Remark: str
-        :param _MsgTTL: 消息保留时长（单位：小时）
+        :param _MsgTTL: <p>消息保留时长（单位：小时）</p>
         :type MsgTTL: int
-        :param _TagList: 标签列表
+        :param _TagList: <p>标签列表</p>
         :type TagList: list of Tag
-        :param _AutoExpireDelete: 是否过期自动删除（仅针对轻量主题类型）
+        :param _AutoExpireDelete: <p>是否过期自动删除（仅针对轻量主题类型）</p>
         :type AutoExpireDelete: bool
-        :param _AutoExpireTime: 过期时间，单位：秒（仅针对轻量主题类型）
+        :param _AutoExpireTime: <p>过期时间，单位：秒（仅针对轻量主题类型）</p>
         :type AutoExpireTime: int
         """
         self._InstanceId = None
@@ -2466,13 +2503,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicType(self):
-        r"""主题类型，枚举值如下：
-
-- NORMAL: 普通消息
-- FIFO: 顺序消息
-- DELAY: 延时消息
-- TRANSACTION: 事务消息
-- LITE: 轻量消息
+        r"""<p>主题类型</p><p>枚举值：</p><ul><li>NORMAL： 普通消息</li><li>FIFO： 顺序消息</li><li>DELAY： 延迟消息</li><li>TRANSACTION： 事务消息</li><li>LITE： 轻量消息</li><li>PRIORITY： 优先级消息</li></ul>
         :rtype: str
         """
         return self._TopicType
@@ -2483,7 +2514,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def QueueNum(self):
-        r"""队列数量，取值范围3～16
+        r"""<p>队列数量，取值范围3～16</p>
         :rtype: int
         """
         return self._QueueNum
@@ -2494,7 +2525,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注信息，最多 128 个字符
+        r"""<p>备注信息，最多 128 个字符</p>
         :rtype: str
         """
         return self._Remark
@@ -2505,7 +2536,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MsgTTL(self):
-        r"""消息保留时长（单位：小时）
+        r"""<p>消息保留时长（单位：小时）</p>
         :rtype: int
         """
         return self._MsgTTL
@@ -2516,7 +2547,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._TagList
@@ -2527,7 +2558,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def AutoExpireDelete(self):
-        r"""是否过期自动删除（仅针对轻量主题类型）
+        r"""<p>是否过期自动删除（仅针对轻量主题类型）</p>
         :rtype: bool
         """
         return self._AutoExpireDelete
@@ -2538,7 +2569,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def AutoExpireTime(self):
-        r"""过期时间，单位：秒（仅针对轻量主题类型）
+        r"""<p>过期时间，单位：秒（仅针对轻量主题类型）</p>
         :rtype: int
         """
         return self._AutoExpireTime
@@ -2580,9 +2611,9 @@ class CreateTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: <p>集群ID</p>
         :type InstanceId: str
-        :param _Topic: 主题名
+        :param _Topic: <p>主题名</p>
         :type Topic: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2593,7 +2624,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2604,7 +2635,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题名
+        r"""<p>主题名</p>
         :rtype: str
         """
         return self._Topic
@@ -4198,6 +4229,8 @@ class DescribeConsumerGroupResponse(AbstractModel):
         :type ConsumeModel: str
         :param _LiteTopic: <p>订阅的轻量主题（仅适用于轻量消费模式）</p>
         :type LiteTopic: str
+        :param _DeadLetterTargetTopic: <p>自定义死信Topic</p>
+        :type DeadLetterTargetTopic: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4214,6 +4247,7 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._RetryPolicy = None
         self._ConsumeModel = None
         self._LiteTopic = None
+        self._DeadLetterTargetTopic = None
         self._RequestId = None
 
     @property
@@ -4360,6 +4394,17 @@ class DescribeConsumerGroupResponse(AbstractModel):
         self._LiteTopic = LiteTopic
 
     @property
+    def DeadLetterTargetTopic(self):
+        r"""<p>自定义死信Topic</p>
+        :rtype: str
+        """
+        return self._DeadLetterTargetTopic
+
+    @DeadLetterTargetTopic.setter
+    def DeadLetterTargetTopic(self, DeadLetterTargetTopic):
+        self._DeadLetterTargetTopic = DeadLetterTargetTopic
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4387,6 +4432,7 @@ class DescribeConsumerGroupResponse(AbstractModel):
             self._RetryPolicy._deserialize(params.get("RetryPolicy"))
         self._ConsumeModel = params.get("ConsumeModel")
         self._LiteTopic = params.get("LiteTopic")
+        self._DeadLetterTargetTopic = params.get("DeadLetterTargetTopic")
         self._RequestId = params.get("RequestId")
 
 
@@ -7043,12 +7089,18 @@ class DescribeMessageTraceRequest(AbstractModel):
         :type QueryDeadLetterMessage: bool
         :param _QueryDelayMessage: <p>是否是延时消息，默认为false</p>
         :type QueryDelayMessage: bool
+        :param _QueryRetryMessage: <p>是否为重试消息</p>
+        :type QueryRetryMessage: bool
+        :param _GroupId: <p>查询重试消息时，需要指定具体的消费组名称</p>
+        :type GroupId: str
         """
         self._InstanceId = None
         self._Topic = None
         self._MsgId = None
         self._QueryDeadLetterMessage = None
         self._QueryDelayMessage = None
+        self._QueryRetryMessage = None
+        self._GroupId = None
 
     @property
     def InstanceId(self):
@@ -7105,6 +7157,28 @@ class DescribeMessageTraceRequest(AbstractModel):
     def QueryDelayMessage(self, QueryDelayMessage):
         self._QueryDelayMessage = QueryDelayMessage
 
+    @property
+    def QueryRetryMessage(self):
+        r"""<p>是否为重试消息</p>
+        :rtype: bool
+        """
+        return self._QueryRetryMessage
+
+    @QueryRetryMessage.setter
+    def QueryRetryMessage(self, QueryRetryMessage):
+        self._QueryRetryMessage = QueryRetryMessage
+
+    @property
+    def GroupId(self):
+        r"""<p>查询重试消息时，需要指定具体的消费组名称</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7112,6 +7186,8 @@ class DescribeMessageTraceRequest(AbstractModel):
         self._MsgId = params.get("MsgId")
         self._QueryDeadLetterMessage = params.get("QueryDeadLetterMessage")
         self._QueryDelayMessage = params.get("QueryDelayMessage")
+        self._QueryRetryMessage = params.get("QueryRetryMessage")
+        self._GroupId = params.get("GroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8931,6 +9007,8 @@ class DescribeTopicResponse(AbstractModel):
         :type Topic: str
         :param _TopicType: <p>主题类型<br>UNSPECIFIED:未指定,<br>NORMAL:普通消息,<br>FIFO:顺序消息,<br>DELAY:延时消息,<br>TRANSACTION:事务消息</p>
         :type TopicType: str
+        :param _QueueNum: <p>队列数量</p>
+        :type QueueNum: int
         :param _Remark: <p>备注</p>
         :type Remark: str
         :param _CreatedTime: <p>创建时间，<strong>Unix时间戳（毫秒）</strong></p>
@@ -8953,6 +9031,7 @@ class DescribeTopicResponse(AbstractModel):
         self._InstanceId = None
         self._Topic = None
         self._TopicType = None
+        self._QueueNum = None
         self._Remark = None
         self._CreatedTime = None
         self._LastUpdateTime = None
@@ -8995,6 +9074,17 @@ class DescribeTopicResponse(AbstractModel):
     @TopicType.setter
     def TopicType(self, TopicType):
         self._TopicType = TopicType
+
+    @property
+    def QueueNum(self):
+        r"""<p>队列数量</p>
+        :rtype: int
+        """
+        return self._QueueNum
+
+    @QueueNum.setter
+    def QueueNum(self, QueueNum):
+        self._QueueNum = QueueNum
 
     @property
     def Remark(self):
@@ -9100,6 +9190,7 @@ class DescribeTopicResponse(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._Topic = params.get("Topic")
         self._TopicType = params.get("TopicType")
+        self._QueueNum = params.get("QueueNum")
         self._Remark = params.get("Remark")
         self._CreatedTime = params.get("CreatedTime")
         self._LastUpdateTime = params.get("LastUpdateTime")
@@ -11727,19 +11818,20 @@ class ModifyConsumerGroupRequest(AbstractModel):
         r"""
         :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _ConsumeEnable: 是否开启消费
+        :param _ConsumeEnable: <p>是否开启消费</p>
         :type ConsumeEnable: bool
-        :param _ConsumeMessageOrderly: 顺序投递：true
-并发投递：false
+        :param _ConsumeMessageOrderly: <p>顺序投递：true<br>并发投递：false</p>
         :type ConsumeMessageOrderly: bool
         :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
-        :param _MaxRetryTimes: 最大重试次数，取值范围0～1000
+        :param _MaxRetryTimes: <p>最大重试次数，取值范围0～1000</p>
         :type MaxRetryTimes: int
-        :param _Remark: 备注信息，最多 128 个字符
+        :param _Remark: <p>备注信息，最多 128 个字符</p>
         :type Remark: str
-        :param _RetryPolicy: 重试策略
+        :param _RetryPolicy: <p>重试策略</p>
         :type RetryPolicy: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
+        :param _DeadLetterTargetTopic: <p>自定义死信Topic</p>
+        :type DeadLetterTargetTopic: str
         """
         self._InstanceId = None
         self._ConsumeEnable = None
@@ -11748,6 +11840,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
         self._MaxRetryTimes = None
         self._Remark = None
         self._RetryPolicy = None
+        self._DeadLetterTargetTopic = None
 
     @property
     def InstanceId(self):
@@ -11762,7 +11855,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumeEnable(self):
-        r"""是否开启消费
+        r"""<p>是否开启消费</p>
         :rtype: bool
         """
         return self._ConsumeEnable
@@ -11773,8 +11866,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumeMessageOrderly(self):
-        r"""顺序投递：true
-并发投递：false
+        r"""<p>顺序投递：true<br>并发投递：false</p>
         :rtype: bool
         """
         return self._ConsumeMessageOrderly
@@ -11796,7 +11888,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def MaxRetryTimes(self):
-        r"""最大重试次数，取值范围0～1000
+        r"""<p>最大重试次数，取值范围0～1000</p>
         :rtype: int
         """
         return self._MaxRetryTimes
@@ -11807,7 +11899,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注信息，最多 128 个字符
+        r"""<p>备注信息，最多 128 个字符</p>
         :rtype: str
         """
         return self._Remark
@@ -11818,7 +11910,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
 
     @property
     def RetryPolicy(self):
-        r"""重试策略
+        r"""<p>重试策略</p>
         :rtype: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
         """
         return self._RetryPolicy
@@ -11826,6 +11918,17 @@ class ModifyConsumerGroupRequest(AbstractModel):
     @RetryPolicy.setter
     def RetryPolicy(self, RetryPolicy):
         self._RetryPolicy = RetryPolicy
+
+    @property
+    def DeadLetterTargetTopic(self):
+        r"""<p>自定义死信Topic</p>
+        :rtype: str
+        """
+        return self._DeadLetterTargetTopic
+
+    @DeadLetterTargetTopic.setter
+    def DeadLetterTargetTopic(self, DeadLetterTargetTopic):
+        self._DeadLetterTargetTopic = DeadLetterTargetTopic
 
 
     def _deserialize(self, params):
@@ -11838,6 +11941,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
         if params.get("RetryPolicy") is not None:
             self._RetryPolicy = RetryPolicy()
             self._RetryPolicy._deserialize(params.get("RetryPolicy"))
+        self._DeadLetterTargetTopic = params.get("DeadLetterTargetTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14241,14 +14345,16 @@ class SendMessageRequest(AbstractModel):
         :type InstanceId: str
         :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
-        :param _MsgBody: 消息内容
+        :param _MsgBody: <p>消息内容</p>
         :type MsgBody: str
-        :param _MsgKey: 消息Key
+        :param _MsgKey: <p>消息Key</p>
         :type MsgKey: str
-        :param _MsgTag: 消息Tag
+        :param _MsgTag: <p>消息Tag</p>
         :type MsgTag: str
-        :param _LiteTopic: 轻量主题
+        :param _LiteTopic: <p>轻量主题</p>
         :type LiteTopic: str
+        :param _Priority: <p>指定队列优先级</p>
+        :type Priority: int
         """
         self._InstanceId = None
         self._Topic = None
@@ -14256,6 +14362,7 @@ class SendMessageRequest(AbstractModel):
         self._MsgKey = None
         self._MsgTag = None
         self._LiteTopic = None
+        self._Priority = None
 
     @property
     def InstanceId(self):
@@ -14281,7 +14388,7 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def MsgBody(self):
-        r"""消息内容
+        r"""<p>消息内容</p>
         :rtype: str
         """
         return self._MsgBody
@@ -14292,7 +14399,7 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def MsgKey(self):
-        r"""消息Key
+        r"""<p>消息Key</p>
         :rtype: str
         """
         return self._MsgKey
@@ -14303,7 +14410,7 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def MsgTag(self):
-        r"""消息Tag
+        r"""<p>消息Tag</p>
         :rtype: str
         """
         return self._MsgTag
@@ -14314,7 +14421,7 @@ class SendMessageRequest(AbstractModel):
 
     @property
     def LiteTopic(self):
-        r"""轻量主题
+        r"""<p>轻量主题</p>
         :rtype: str
         """
         return self._LiteTopic
@@ -14322,6 +14429,17 @@ class SendMessageRequest(AbstractModel):
     @LiteTopic.setter
     def LiteTopic(self, LiteTopic):
         self._LiteTopic = LiteTopic
+
+    @property
+    def Priority(self):
+        r"""<p>指定队列优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
 
 
     def _deserialize(self, params):
@@ -14331,6 +14449,7 @@ class SendMessageRequest(AbstractModel):
         self._MsgKey = params.get("MsgKey")
         self._MsgTag = params.get("MsgTag")
         self._LiteTopic = params.get("LiteTopic")
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14348,7 +14467,7 @@ class SendMessageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MsgId: 消息ID
+        :param _MsgId: <p>消息ID</p>
         :type MsgId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14358,7 +14477,7 @@ class SendMessageResponse(AbstractModel):
 
     @property
     def MsgId(self):
-        r"""消息ID
+        r"""<p>消息ID</p>
         :rtype: str
         """
         return self._MsgId
@@ -15512,36 +15631,38 @@ class TopicItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Topic: 主题名称
+        :param _Topic: <p>主题名称</p>
         :type Topic: str
-        :param _TopicType: 主题类型
-NORMAL:普通消息,
-FIFO:顺序消息,
-DELAY:延时消息,
-TRANSACTION:事务消息
+        :param _TopicType: <p>主题类型<br>NORMAL:普通消息,<br>FIFO:顺序消息,<br>DELAY:延时消息,<br>TRANSACTION:事务消息</p>
         :type TopicType: str
-        :param _QueueNum: 队列数量
+        :param _QueueNum: <p>队列数量</p>
         :type QueueNum: int
-        :param _Remark: 备注信息
+        :param _Remark: <p>备注信息</p>
         :type Remark: str
-        :param _ClusterIdV4: 4.x的集群id
+        :param _ClusterIdV4: <p>4.x的集群id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterIdV4: str
-        :param _NamespaceV4: 4.x的命名空间
+        :param _NamespaceV4: <p>4.x的命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceV4: str
-        :param _TopicV4: 4.x的主题名称
+        :param _TopicV4: <p>4.x的主题名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicV4: str
-        :param _FullNamespaceV4: 4.x的完整命名空间
+        :param _FullNamespaceV4: <p>4.x的完整命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullNamespaceV4: str
-        :param _MsgTTL: 消息保留时长
+        :param _MsgTTL: <p>消息保留时长</p>
         :type MsgTTL: int
-        :param _TagList: 绑定的标签列表
+        :param _TagList: <p>绑定的标签列表</p>
         :type TagList: list of Tag
+        :param _AutoExpireDelete: <p>LITE 类型 Topic 专用：是否开启自动过期删除</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoExpireDelete: bool
+        :param _AutoExpireTime: <p>LITE 类型 Topic 专用：自动过期时间</p><p>单位：分钟</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoExpireTime: int
         """
         self._InstanceId = None
         self._Topic = None
@@ -15554,10 +15675,12 @@ TRANSACTION:事务消息
         self._FullNamespaceV4 = None
         self._MsgTTL = None
         self._TagList = None
+        self._AutoExpireDelete = None
+        self._AutoExpireTime = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15568,7 +15691,7 @@ TRANSACTION:事务消息
 
     @property
     def Topic(self):
-        r"""主题名称
+        r"""<p>主题名称</p>
         :rtype: str
         """
         return self._Topic
@@ -15579,11 +15702,7 @@ TRANSACTION:事务消息
 
     @property
     def TopicType(self):
-        r"""主题类型
-NORMAL:普通消息,
-FIFO:顺序消息,
-DELAY:延时消息,
-TRANSACTION:事务消息
+        r"""<p>主题类型<br>NORMAL:普通消息,<br>FIFO:顺序消息,<br>DELAY:延时消息,<br>TRANSACTION:事务消息</p>
         :rtype: str
         """
         return self._TopicType
@@ -15594,7 +15713,7 @@ TRANSACTION:事务消息
 
     @property
     def QueueNum(self):
-        r"""队列数量
+        r"""<p>队列数量</p>
         :rtype: int
         """
         return self._QueueNum
@@ -15605,7 +15724,7 @@ TRANSACTION:事务消息
 
     @property
     def Remark(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
         :rtype: str
         """
         return self._Remark
@@ -15616,7 +15735,7 @@ TRANSACTION:事务消息
 
     @property
     def ClusterIdV4(self):
-        r"""4.x的集群id
+        r"""<p>4.x的集群id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15628,7 +15747,7 @@ TRANSACTION:事务消息
 
     @property
     def NamespaceV4(self):
-        r"""4.x的命名空间
+        r"""<p>4.x的命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15640,7 +15759,7 @@ TRANSACTION:事务消息
 
     @property
     def TopicV4(self):
-        r"""4.x的主题名称
+        r"""<p>4.x的主题名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15652,7 +15771,7 @@ TRANSACTION:事务消息
 
     @property
     def FullNamespaceV4(self):
-        r"""4.x的完整命名空间
+        r"""<p>4.x的完整命名空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15664,7 +15783,7 @@ TRANSACTION:事务消息
 
     @property
     def MsgTTL(self):
-        r"""消息保留时长
+        r"""<p>消息保留时长</p>
         :rtype: int
         """
         return self._MsgTTL
@@ -15675,7 +15794,7 @@ TRANSACTION:事务消息
 
     @property
     def TagList(self):
-        r"""绑定的标签列表
+        r"""<p>绑定的标签列表</p>
         :rtype: list of Tag
         """
         return self._TagList
@@ -15683,6 +15802,30 @@ TRANSACTION:事务消息
     @TagList.setter
     def TagList(self, TagList):
         self._TagList = TagList
+
+    @property
+    def AutoExpireDelete(self):
+        r"""<p>LITE 类型 Topic 专用：是否开启自动过期删除</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AutoExpireDelete
+
+    @AutoExpireDelete.setter
+    def AutoExpireDelete(self, AutoExpireDelete):
+        self._AutoExpireDelete = AutoExpireDelete
+
+    @property
+    def AutoExpireTime(self):
+        r"""<p>LITE 类型 Topic 专用：自动过期时间</p><p>单位：分钟</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AutoExpireTime
+
+    @AutoExpireTime.setter
+    def AutoExpireTime(self, AutoExpireTime):
+        self._AutoExpireTime = AutoExpireTime
 
 
     def _deserialize(self, params):
@@ -15702,6 +15845,8 @@ TRANSACTION:事务消息
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        self._AutoExpireDelete = params.get("AutoExpireDelete")
+        self._AutoExpireTime = params.get("AutoExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

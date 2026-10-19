@@ -26,6 +26,29 @@ class AdpClient(AbstractClient):
     _service = 'adp'
 
 
+    def CallMCPTool(self, request):
+        r"""用户在 MCP App iframe 内触发的工具调用
+
+        :param request: Request instance for CallMCPTool.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CallMCPToolRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CallMCPToolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CallMCPTool", params, headers=headers)
+            response = json.loads(body)
+            model = models.CallMCPToolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckLabel(self, request):
         r"""校验标签
 
@@ -2732,6 +2755,29 @@ class AdpClient(AbstractClient):
             body = self.call("PauseAppTrigger", params, headers=headers)
             response = json.loads(body)
             model = models.PauseAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReadMCPResource(self, request):
+        r"""读取 MCP UI 资源（HTML），供前端 iframe 加载 MCP App 界面
+
+        :param request: Request instance for ReadMCPResource.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ReadMCPResourceRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ReadMCPResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReadMCPResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReadMCPResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

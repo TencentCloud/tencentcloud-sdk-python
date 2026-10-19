@@ -12811,11 +12811,15 @@ class TemplateOverrides(AbstractModel):
         :param _EnableMultiZone: <p>是否启用多可用区扩容。未传时保持已持久化的分区策略，局部更新不得覆盖。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableMultiZone: bool
+        :param _EnableJobLoadAutoscaling: <p>是否开启按作业负载自动伸缩。开启后扩容数量由队列中排队作业的实际资源需求（节点数 / GPU 卡数）决定；关闭（默认）时按 DesiredCapacity 配额收敛。仅支持 Slurm 集群与同构队列，由服务端校验。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableJobLoadAutoscaling: bool
         """
         self._InstanceFamilies = None
         self._GpuCountPerNode = None
         self._EnableMixedGpuCount = None
         self._EnableMultiZone = None
+        self._EnableJobLoadAutoscaling = None
 
     @property
     def InstanceFamilies(self):
@@ -12865,12 +12869,25 @@ class TemplateOverrides(AbstractModel):
     def EnableMultiZone(self, EnableMultiZone):
         self._EnableMultiZone = EnableMultiZone
 
+    @property
+    def EnableJobLoadAutoscaling(self):
+        r"""<p>是否开启按作业负载自动伸缩。开启后扩容数量由队列中排队作业的实际资源需求（节点数 / GPU 卡数）决定；关闭（默认）时按 DesiredCapacity 配额收敛。仅支持 Slurm 集群与同构队列，由服务端校验。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableJobLoadAutoscaling
+
+    @EnableJobLoadAutoscaling.setter
+    def EnableJobLoadAutoscaling(self, EnableJobLoadAutoscaling):
+        self._EnableJobLoadAutoscaling = EnableJobLoadAutoscaling
+
 
     def _deserialize(self, params):
         self._InstanceFamilies = params.get("InstanceFamilies")
         self._GpuCountPerNode = params.get("GpuCountPerNode")
         self._EnableMixedGpuCount = params.get("EnableMixedGpuCount")
         self._EnableMultiZone = params.get("EnableMultiZone")
+        self._EnableJobLoadAutoscaling = params.get("EnableJobLoadAutoscaling")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

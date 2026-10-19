@@ -1071,7 +1071,7 @@ class ChatCompletionRequest(AbstractModel):
         :type Model: str
         :param _Messages: <p>输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。</p>
         :type Messages: list of Message
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Temperature: <p>仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。</p>
         :type Temperature: float
@@ -1111,7 +1111,7 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -2380,7 +2380,7 @@ class CreateModelServiceAuthTokenRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: <p>服务组 id</p>
         :type ServiceGroupId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Name: <p>token 名称</p>
         :type Name: str
@@ -2405,7 +2405,7 @@ class CreateModelServiceAuthTokenRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -2487,7 +2487,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _ServiceGroupId: <p>新增版本时需要填写</p>
         :type ServiceGroupId: str
@@ -2638,7 +2638,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -3447,20 +3447,26 @@ class CreateNotebookImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageInfo: 镜像信息
+        :param _ImageInfo: <p>镜像信息</p>
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
-        :param _NotebookId: notebook id
+        :param _NotebookId: <p>notebook id</p>
         :type NotebookId: str
-        :param _Kernels: 要保存的kernel数组
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _Kernels: <p>要保存的kernel数组</p>
         :type Kernels: list of str
+        :param _RegisterToImageCenter: <p>是否保存到镜像中心</p>
+        :type RegisterToImageCenter: bool
         """
         self._ImageInfo = None
         self._NotebookId = None
+        self._TiProjectId = None
         self._Kernels = None
+        self._RegisterToImageCenter = None
 
     @property
     def ImageInfo(self):
-        r"""镜像信息
+        r"""<p>镜像信息</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         """
         return self._ImageInfo
@@ -3471,7 +3477,7 @@ class CreateNotebookImageRequest(AbstractModel):
 
     @property
     def NotebookId(self):
-        r"""notebook id
+        r"""<p>notebook id</p>
         :rtype: str
         """
         return self._NotebookId
@@ -3481,8 +3487,19 @@ class CreateNotebookImageRequest(AbstractModel):
         self._NotebookId = NotebookId
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def Kernels(self):
-        r"""要保存的kernel数组
+        r"""<p>要保存的kernel数组</p>
         :rtype: list of str
         """
         return self._Kernels
@@ -3491,13 +3508,26 @@ class CreateNotebookImageRequest(AbstractModel):
     def Kernels(self, Kernels):
         self._Kernels = Kernels
 
+    @property
+    def RegisterToImageCenter(self):
+        r"""<p>是否保存到镜像中心</p>
+        :rtype: bool
+        """
+        return self._RegisterToImageCenter
+
+    @RegisterToImageCenter.setter
+    def RegisterToImageCenter(self, RegisterToImageCenter):
+        self._RegisterToImageCenter = RegisterToImageCenter
+
 
     def _deserialize(self, params):
         if params.get("ImageInfo") is not None:
             self._ImageInfo = ImageInfo()
             self._ImageInfo._deserialize(params.get("ImageInfo"))
         self._NotebookId = params.get("NotebookId")
+        self._TiProjectId = params.get("TiProjectId")
         self._Kernels = params.get("Kernels")
+        self._RegisterToImageCenter = params.get("RegisterToImageCenter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4006,8 +4036,11 @@ class CreatePresignedNotebookUrlRequest(AbstractModel):
         r"""
         :param _Id: Notebook ID
         :type Id: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._Id = None
+        self._TiProjectId = None
 
     @property
     def Id(self):
@@ -4020,9 +4053,21 @@ class CreatePresignedNotebookUrlRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4594,7 +4639,7 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type ChargeType: str
         :param _ResourceConfigInfos: <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
         :type ResourceConfigInfos: list of ResourceConfigInfo
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _FrameworkName: <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
         :type FrameworkName: str
@@ -4715,7 +4760,7 @@ class CreateTrainingTaskRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -7493,7 +7538,7 @@ class DeleteModelServiceAuthTokenRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: <p>服务组 id</p>
         :type ServiceGroupId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _AuthTokenValue: <p>token 值</p>
         :type AuthTokenValue: str
@@ -7515,7 +7560,7 @@ class DeleteModelServiceAuthTokenRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -7587,7 +7632,7 @@ class DeleteModelServiceGroupRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: 服务id
         :type ServiceGroupId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._ServiceGroupId = None
@@ -7606,7 +7651,7 @@ class DeleteModelServiceGroupRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -7666,7 +7711,7 @@ class DeleteModelServiceRequest(AbstractModel):
         r"""
         :param _ServiceId: 服务id
         :type ServiceId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _ServiceCategory: 服务分类
         :type ServiceCategory: str
@@ -7688,7 +7733,7 @@ class DeleteModelServiceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -7858,8 +7903,11 @@ class DeleteNotebookRequest(AbstractModel):
         r"""
         :param _Id: notebook id
         :type Id: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._Id = None
+        self._TiProjectId = None
 
     @property
     def Id(self):
@@ -7872,9 +7920,21 @@ class DeleteNotebookRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8125,7 +8185,7 @@ class DeleteTrainingTaskRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._Id = None
@@ -8144,7 +8204,7 @@ class DeleteTrainingTaskRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -8405,7 +8465,7 @@ class DescribeBillingResourceGroupAttachedWorkspacesRequest(AbstractModel):
         r"""
         :param _ResourceGroupId: <p>资源组ID</p>
         :type ResourceGroupId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._ResourceGroupId = None
@@ -8424,7 +8484,7 @@ class DescribeBillingResourceGroupAttachedWorkspacesRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -8904,7 +8964,7 @@ class DescribeBillingResourceInstanceRunningJobsRequest(AbstractModel):
         :type ResourceGroupId: str
         :param _ResourceInstanceId: 资源组节点id
         :type ResourceInstanceId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._ResourceGroupId = None
@@ -8935,7 +8995,7 @@ class DescribeBillingResourceInstanceRunningJobsRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -9018,8 +9078,11 @@ class DescribeBillingSpecsPriceRequest(AbstractModel):
         r"""
         :param _SpecsParam: 询价参数，支持批量询价
         :type SpecsParam: list of SpecUnit
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._SpecsParam = None
+        self._TiProjectId = None
 
     @property
     def SpecsParam(self):
@@ -9032,6 +9095,17 @@ class DescribeBillingSpecsPriceRequest(AbstractModel):
     def SpecsParam(self, SpecsParam):
         self._SpecsParam = SpecsParam
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         if params.get("SpecsParam") is not None:
@@ -9040,6 +9114,7 @@ class DescribeBillingSpecsPriceRequest(AbstractModel):
                 obj = SpecUnit()
                 obj._deserialize(item)
                 self._SpecsParam.append(obj)
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9107,7 +9182,7 @@ class DescribeBillingSpecsRequest(AbstractModel):
         r"""
         :param _ChargeType: <p>付费模式：POSTPAID_BY_HOUR按量计费、PREPAID包年包月</p>
         :type ChargeType: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _TaskType: <p>枚举值：空、TRAIN、NOTEBOOK、INFERENCE或EMS</p>
         :type TaskType: str
@@ -9132,7 +9207,7 @@ class DescribeBillingSpecsRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -9898,46 +9973,29 @@ class DescribeEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Service: 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
-枚举值：
-- TRAIN
-- NOTEBOOK
-- INFER
-- BATCH
+        :param _Service: <p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
         :type Service: str
-        :param _ServiceId: 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
-- Service类型为TRAIN：
-  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
-- Service类型为NOTEBOOK：
-  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
-- Service类型为INFER：
-  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
-- Service类型为BATCH：
-  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _ServiceId: <p>服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75089">DescribeTrainingTask接口</a>查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82285">DescribeModelServiceGroup接口</a>查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId</li></ul>
         :type ServiceId: str
-        :param _StartTime: 查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+        :param _StartTime: <p>查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天</p>
         :type StartTime: str
-        :param _EndTime: 查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+        :param _EndTime: <p>查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间</p>
         :type EndTime: str
-        :param _Limit: 分页Limit，默认值为100，最大值为100
+        :param _Limit: <p>分页Limit，默认值为100，最大值为100</p>
         :type Limit: int
-        :param _Offset: 分页Offset，默认值为0
+        :param _Offset: <p>分页Offset，默认值为0</p>
         :type Offset: int
-        :param _Order: 排列顺序（可选值为ASC, DESC ），默认为DESC
+        :param _Order: <p>排列顺序（可选值为ASC, DESC ），默认为DESC</p>
         :type Order: str
-        :param _OrderField: 排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+        :param _OrderField: <p>排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp</p>
         :type OrderField: str
-        :param _Filters: 过滤条件
-注意: 
-1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
-2. Filter.Values：
-对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
-对于Name为Type，Values的可选取值仅为Normal或者Warning；
-Values为多个的时候表示同时满足
-3. Filter. Negative和Filter. Fuzzy没有使用
+        :param _Filters: <p>过滤条件<br>注意: </p><ol><li>Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）</li><li>Filter.Values：<br>对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；<br>对于Name为Type，Values的可选取值仅为Normal或者Warning；<br>Values为多个的时候表示同时满足</li><li>Filter. Negative和Filter. Fuzzy没有使用</li></ol>
         :type Filters: list of Filter
         """
         self._Service = None
+        self._TiProjectId = None
         self._ServiceId = None
         self._StartTime = None
         self._EndTime = None
@@ -9949,12 +10007,7 @@ Values为多个的时候表示同时满足
 
     @property
     def Service(self):
-        r"""服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
-枚举值：
-- TRAIN
-- NOTEBOOK
-- INFER
-- BATCH
+        r"""<p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
         :rtype: str
         """
         return self._Service
@@ -9964,16 +10017,19 @@ Values为多个的时候表示同时满足
         self._Service = Service
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def ServiceId(self):
-        r"""服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
-- Service类型为TRAIN：
-  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
-- Service类型为NOTEBOOK：
-  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
-- Service类型为INFER：
-  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
-- Service类型为BATCH：
-  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        r"""<p>服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75089">DescribeTrainingTask接口</a>查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82285">DescribeModelServiceGroup接口</a>查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId</li></ul>
         :rtype: str
         """
         return self._ServiceId
@@ -9984,7 +10040,7 @@ Values为多个的时候表示同时满足
 
     @property
     def StartTime(self):
-        r"""查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天
+        r"""<p>查询事件最早发生的时间（RFC3339格式的时间字符串），默认值为当前时间的前一天</p>
         :rtype: str
         """
         return self._StartTime
@@ -9995,7 +10051,7 @@ Values为多个的时候表示同时满足
 
     @property
     def EndTime(self):
-        r"""查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间
+        r"""<p>查询事件最晚发生的时间（RFC3339格式的时间字符串），默认值为当前时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -10006,7 +10062,7 @@ Values为多个的时候表示同时满足
 
     @property
     def Limit(self):
-        r"""分页Limit，默认值为100，最大值为100
+        r"""<p>分页Limit，默认值为100，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -10017,7 +10073,7 @@ Values为多个的时候表示同时满足
 
     @property
     def Offset(self):
-        r"""分页Offset，默认值为0
+        r"""<p>分页Offset，默认值为0</p>
         :rtype: int
         """
         return self._Offset
@@ -10028,7 +10084,7 @@ Values为多个的时候表示同时满足
 
     @property
     def Order(self):
-        r"""排列顺序（可选值为ASC, DESC ），默认为DESC
+        r"""<p>排列顺序（可选值为ASC, DESC ），默认为DESC</p>
         :rtype: str
         """
         return self._Order
@@ -10039,7 +10095,7 @@ Values为多个的时候表示同时满足
 
     @property
     def OrderField(self):
-        r"""排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp
+        r"""<p>排序的依据字段（可选值为FirstTimestamp, LastTimestamp），默认值为LastTimestamp</p>
         :rtype: str
         """
         return self._OrderField
@@ -10050,14 +10106,7 @@ Values为多个的时候表示同时满足
 
     @property
     def Filters(self):
-        r"""过滤条件
-注意: 
-1. Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）
-2. Filter.Values：
-对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；
-对于Name为Type，Values的可选取值仅为Normal或者Warning；
-Values为多个的时候表示同时满足
-3. Filter. Negative和Filter. Fuzzy没有使用
+        r"""<p>过滤条件<br>注意: </p><ol><li>Filter.Name：目前支持ResourceKind（按事件关联的资源类型过滤）；Type（按事件类型过滤）</li><li>Filter.Values：<br>对于Name为ResourceKind，Values的可选取值为Deployment, Replicaset, Pod等K8S资源类型；<br>对于Name为Type，Values的可选取值仅为Normal或者Warning；<br>Values为多个的时候表示同时满足</li><li>Filter. Negative和Filter. Fuzzy没有使用</li></ol>
         :rtype: list of Filter
         """
         return self._Filters
@@ -10069,6 +10118,7 @@ Values为多个的时候表示同时满足
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
+        self._TiProjectId = params.get("TiProjectId")
         self._ServiceId = params.get("ServiceId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
@@ -10099,10 +10149,10 @@ class DescribeEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Events: 事件的列表
+        :param _Events: <p>事件的列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Events: list of Event
-        :param _TotalCount: 此次查询的事件的个数
+        :param _TotalCount: <p>此次查询的事件的个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10114,7 +10164,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def Events(self):
-        r"""事件的列表
+        r"""<p>事件的列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Event
         """
@@ -10126,7 +10176,7 @@ class DescribeEventsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""此次查询的事件的个数
+        r"""<p>此次查询的事件的个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11036,7 +11086,7 @@ class DescribeModelServiceCallInfoRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: 服务组id
         :type ServiceGroupId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _ServiceCategory: 服务分类
         :type ServiceCategory: str
@@ -11058,7 +11108,7 @@ class DescribeModelServiceCallInfoRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -11240,7 +11290,7 @@ class DescribeModelServiceGroupRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: 服务组ID
         :type ServiceGroupId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _ServiceCategory: 服务分类
         :type ServiceCategory: str
@@ -11262,7 +11312,7 @@ class DescribeModelServiceGroupRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -11355,7 +11405,7 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
@@ -11383,7 +11433,7 @@ class DescribeModelServiceGroupsRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -11709,7 +11759,7 @@ class DescribeModelServiceRequest(AbstractModel):
         r"""
         :param _ServiceId: 服务id
         :type ServiceId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _ServiceCategory: 服务分类
         :type ServiceCategory: str
@@ -11731,7 +11781,7 @@ class DescribeModelServiceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -12258,7 +12308,7 @@ class DescribeNotebookRequest(AbstractModel):
         r"""
         :param _Id: notebook id
         :type Id: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._Id = None
@@ -12277,7 +12327,7 @@ class DescribeNotebookRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -12352,30 +12402,19 @@ class DescribeNotebooksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _Limit: 每页返回的实例数，默认为10
+        :param _Limit: <p>每页返回的实例数，默认为 10，最小值 0，最大值 100</p>
         :type Limit: int
-        :param _Order: 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC
+        :param _Order: <p>输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC</p>
         :type Order: str
-        :param _OrderField: 根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime
+        :param _OrderField: <p>根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime</p>
         :type OrderField: str
-        :param _Filters: 过滤器，eg：[{ "Name": "Id", "Values": ["nb-123456789"] }]
-
-取值范围
-Name（名称）：notebook1
-Id（notebook ID）：nb-123456789
-Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
-Creator（创建者 uin）：100014761913
-ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
-ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
-DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
-AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789
-LifecycleScriptId（生命周期ID）：ls-12312312311312
+        :param _Filters: <p>过滤器，eg：[{ &quot;Name&quot;: &quot;Id&quot;, &quot;Values&quot;: [&quot;nb-123456789&quot;] }]</p><p>取值范围<br>Name（名称）：notebook1<br>Id（notebook ID）：nb-123456789<br>Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed<br>Creator（创建者 uin）：100014761913<br>ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）<br>ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）<br>DefaultCodeRepoId（默认代码仓库ID）：cr-123456789<br>AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789<br>LifecycleScriptId（生命周期ID）：ls-12312312311312</p>
         :type Filters: list of Filter
-        :param _TagFilters: 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+        :param _TagFilters: <p>标签过滤器，eg：[{ &quot;TagKey&quot;: &quot;TagKeyA&quot;, &quot;TagValue&quot;: [&quot;TagValueA&quot;] }]</p>
         :type TagFilters: list of TagFilter
         """
         self._TiProjectId = None
@@ -12388,7 +12427,7 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -12399,7 +12438,7 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -12410,7 +12449,7 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def Limit(self):
-        r"""每页返回的实例数，默认为10
+        r"""<p>每页返回的实例数，默认为 10，最小值 0，最大值 100</p>
         :rtype: int
         """
         return self._Limit
@@ -12421,7 +12460,7 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def Order(self):
-        r"""输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC
+        r"""<p>输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC</p>
         :rtype: str
         """
         return self._Order
@@ -12432,7 +12471,7 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def OrderField(self):
-        r"""根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime
+        r"""<p>根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime</p>
         :rtype: str
         """
         return self._OrderField
@@ -12443,18 +12482,7 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def Filters(self):
-        r"""过滤器，eg：[{ "Name": "Id", "Values": ["nb-123456789"] }]
-
-取值范围
-Name（名称）：notebook1
-Id（notebook ID）：nb-123456789
-Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
-Creator（创建者 uin）：100014761913
-ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
-ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
-DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
-AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789
-LifecycleScriptId（生命周期ID）：ls-12312312311312
+        r"""<p>过滤器，eg：[{ &quot;Name&quot;: &quot;Id&quot;, &quot;Values&quot;: [&quot;nb-123456789&quot;] }]</p><p>取值范围<br>Name（名称）：notebook1<br>Id（notebook ID）：nb-123456789<br>Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed<br>Creator（创建者 uin）：100014761913<br>ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）<br>ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）<br>DefaultCodeRepoId（默认代码仓库ID）：cr-123456789<br>AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789<br>LifecycleScriptId（生命周期ID）：ls-12312312311312</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -12465,7 +12493,7 @@ LifecycleScriptId（生命周期ID）：ls-12312312311312
 
     @property
     def TagFilters(self):
-        r"""标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+        r"""<p>标签过滤器，eg：[{ &quot;TagKey&quot;: &quot;TagKeyA&quot;, &quot;TagValue&quot;: [&quot;TagValueA&quot;] }]</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -12510,9 +12538,9 @@ class DescribeNotebooksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotebookSet: notebook详情
+        :param _NotebookSet: <p>notebook详情</p>
         :type NotebookSet: list of NotebookSetItem
-        :param _TotalCount: 总条数
+        :param _TotalCount: <p>总条数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12523,7 +12551,7 @@ class DescribeNotebooksResponse(AbstractModel):
 
     @property
     def NotebookSet(self):
-        r"""notebook详情
+        r"""<p>notebook详情</p>
         :rtype: list of NotebookSetItem
         """
         return self._NotebookSet
@@ -12534,7 +12562,7 @@ class DescribeNotebooksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -12901,6 +12929,8 @@ class DescribePublicAlgoVersionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _Filters: 过滤器
         :type Filters: list of Filter
         :param _Offset: 偏移量
@@ -12910,10 +12940,22 @@ class DescribePublicAlgoVersionListRequest(AbstractModel):
         :param _NeedsAggregate: 是否需要聚合
         :type NeedsAggregate: bool
         """
+        self._TiProjectId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._NeedsAggregate = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Filters(self):
@@ -12961,6 +13003,7 @@ class DescribePublicAlgoVersionListRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -13076,6 +13119,8 @@ class DescribeSubAccountLinuxUserInfosRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _Offset: 分页偏移量（0 表示全量）
         :type Offset: int
         :param _Limit: 每页数量（0 表示全量）
@@ -13083,9 +13128,21 @@ class DescribeSubAccountLinuxUserInfosRequest(AbstractModel):
         :param _Filters: 过滤条件
         :type Filters: list of Filter
         """
+        self._TiProjectId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Offset(self):
@@ -13122,6 +13179,7 @@ class DescribeSubAccountLinuxUserInfosRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         if params.get("Filters") is not None:
@@ -13427,8 +13485,11 @@ class DescribeTrainingTaskPodUrlRequest(AbstractModel):
         r"""
         :param _PodName: 任务实例名
         :type PodName: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._PodName = None
+        self._TiProjectId = None
 
     @property
     def PodName(self):
@@ -13441,9 +13502,21 @@ class DescribeTrainingTaskPodUrlRequest(AbstractModel):
     def PodName(self, PodName):
         self._PodName = PodName
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._PodName = params.get("PodName")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13506,7 +13579,7 @@ class DescribeTrainingTaskPodsRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._Id = None
@@ -13525,7 +13598,7 @@ class DescribeTrainingTaskPodsRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -13635,7 +13708,7 @@ class DescribeTrainingTaskRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _InstanceId: 训练任务实例ID
         :type InstanceId: str
@@ -13657,7 +13730,7 @@ class DescribeTrainingTaskRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -13744,7 +13817,7 @@ class DescribeTrainingTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Filters: 过滤器，eg：[{ "Name": "Id", "Values": ["train-23091792777383936"] }]
 
@@ -13778,7 +13851,7 @@ CHARGE_STATUS（计费状态）：NOT_BILLING（未开始计费）/ BILLING（�
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -14258,11 +14331,14 @@ class EnableTrainingTaskClsConfigRequest(AbstractModel):
         :type TaskId: str
         :param _LogEnable: 是否开启CLS日志投递
         :type LogEnable: bool
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _LogConfig: 日志配置
         :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         self._TaskId = None
         self._LogEnable = None
+        self._TiProjectId = None
         self._LogConfig = None
 
     @property
@@ -14288,6 +14364,17 @@ class EnableTrainingTaskClsConfigRequest(AbstractModel):
         self._LogEnable = LogEnable
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def LogConfig(self):
         r"""日志配置
         :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
@@ -14302,6 +14389,7 @@ class EnableTrainingTaskClsConfigRequest(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._LogEnable = params.get("LogEnable")
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("LogConfig") is not None:
             self._LogConfig = LogConfig()
             self._LogConfig._deserialize(params.get("LogConfig"))
@@ -18961,7 +19049,7 @@ class ModifyModelServiceAuthTokenRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: <p>服务组 id</p>
         :type ServiceGroupId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _NeedReset: <p>是否需要重置，如果为 true，重置 token 值</p>
         :type NeedReset: bool
@@ -18986,7 +19074,7 @@ class ModifyModelServiceAuthTokenRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -19072,10 +19160,13 @@ class ModifyModelServiceAuthorizationRequest(AbstractModel):
         r"""
         :param _ServiceGroupId: 服务组Id
         :type ServiceGroupId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _AuthorizationEnable: 是否开启鉴权,true表示开启
         :type AuthorizationEnable: bool
         """
         self._ServiceGroupId = None
+        self._TiProjectId = None
         self._AuthorizationEnable = None
 
     @property
@@ -19088,6 +19179,17 @@ class ModifyModelServiceAuthorizationRequest(AbstractModel):
     @ServiceGroupId.setter
     def ServiceGroupId(self, ServiceGroupId):
         self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def AuthorizationEnable(self):
@@ -19103,6 +19205,7 @@ class ModifyModelServiceAuthorizationRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
+        self._TiProjectId = params.get("TiProjectId")
         self._AuthorizationEnable = params.get("AuthorizationEnable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -19151,7 +19254,7 @@ class ModifyModelServiceRequest(AbstractModel):
         r"""
         :param _ServiceId: <p>服务id</p>
         :type ServiceId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _ModelInfo: <p>模型信息，需要挂载模型时填写</p>
         :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
@@ -19281,7 +19384,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -19857,6 +19960,8 @@ class ModifyNotebookRequest(AbstractModel):
         :type RootAccess: bool
         :param _LogEnable: <p>是否上报日志</p>
         :type LogEnable: bool
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _ResourceGroupId: <p>资源组ID(for预付费)</p>
         :type ResourceGroupId: str
         :param _VpcId: <p>（不允许修改）Vpc-Id</p>
@@ -19902,6 +20007,7 @@ class ModifyNotebookRequest(AbstractModel):
         self._DirectInternetAccess = None
         self._RootAccess = None
         self._LogEnable = None
+        self._TiProjectId = None
         self._ResourceGroupId = None
         self._VpcId = None
         self._SubnetId = None
@@ -20008,6 +20114,17 @@ class ModifyNotebookRequest(AbstractModel):
     @LogEnable.setter
     def LogEnable(self, LogEnable):
         self._LogEnable = LogEnable
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def ResourceGroupId(self):
@@ -20219,6 +20336,7 @@ class ModifyNotebookRequest(AbstractModel):
         self._DirectInternetAccess = params.get("DirectInternetAccess")
         self._RootAccess = params.get("RootAccess")
         self._LogEnable = params.get("LogEnable")
+        self._TiProjectId = params.get("TiProjectId")
         self._ResourceGroupId = params.get("ResourceGroupId")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
@@ -20307,10 +20425,13 @@ class ModifyNotebookTagsRequest(AbstractModel):
         r"""
         :param _Id: Notebook Id
         :type Id: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _Tags: Notebook修改标签集合
         :type Tags: list of Tag
         """
         self._Id = None
+        self._TiProjectId = None
         self._Tags = None
 
     @property
@@ -20323,6 +20444,17 @@ class ModifyNotebookTagsRequest(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Tags(self):
@@ -20338,6 +20470,7 @@ class ModifyNotebookTagsRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -20393,9 +20526,12 @@ class ModifyServiceGroupWeightsRequest(AbstractModel):
         :type ServiceGroupId: str
         :param _Weights: 权重设置
         :type Weights: list of WeightEntry
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._ServiceGroupId = None
         self._Weights = None
+        self._TiProjectId = None
 
     @property
     def ServiceGroupId(self):
@@ -20419,6 +20555,17 @@ class ModifyServiceGroupWeightsRequest(AbstractModel):
     def Weights(self, Weights):
         self._Weights = Weights
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -20428,6 +20575,7 @@ class ModifyServiceGroupWeightsRequest(AbstractModel):
                 obj = WeightEntry()
                 obj._deserialize(item)
                 self._Weights.append(obj)
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27417,6 +27565,9 @@ class ServiceGroup(AbstractModel):
         :type Changer: str
         :param _ChangerName: <p>变更服务的子账户名称</p>
         :type ChangerName: str
+        :param _SmartRouter: <p>智能路由（SmartRouter）配置与运行时状态。未开启时该字段为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartRouter: :class:`tencentcloud.tione.v20211111.models.SmartRouter`
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -27446,6 +27597,7 @@ class ServiceGroup(AbstractModel):
         self._GatewayConfig = None
         self._Changer = None
         self._ChangerName = None
+        self._SmartRouter = None
 
     @property
     def ServiceGroupId(self):
@@ -27767,6 +27919,18 @@ class ServiceGroup(AbstractModel):
     def ChangerName(self, ChangerName):
         self._ChangerName = ChangerName
 
+    @property
+    def SmartRouter(self):
+        r"""<p>智能路由（SmartRouter）配置与运行时状态。未开启时该字段为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SmartRouter`
+        """
+        return self._SmartRouter
+
+    @SmartRouter.setter
+    def SmartRouter(self, SmartRouter):
+        self._SmartRouter = SmartRouter
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -27816,6 +27980,9 @@ class ServiceGroup(AbstractModel):
             self._GatewayConfig._deserialize(params.get("GatewayConfig"))
         self._Changer = params.get("Changer")
         self._ChangerName = params.get("ChangerName")
+        if params.get("SmartRouter") is not None:
+            self._SmartRouter = SmartRouter()
+            self._SmartRouter._deserialize(params.get("SmartRouter"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28704,6 +28871,525 @@ class SidecarSpec(AbstractModel):
         
 
 
+class SmartRouter(AbstractModel):
+    r"""智能路由完整对象（挂在 ServiceGroup 的 44 号）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 智能路由开关状态（true=已开启，false=未开启/已停止）
+        :type Enabled: bool
+        :param _ServiceGroupId: 绑定的服务组 ID（一对一）
+        :type ServiceGroupId: str
+        :param _ComponentList: 组件列表（gateway + scheduler；repeated 为未来扩展预留）
+        :type ComponentList: list of SmartRouterComponent
+        :param _Creator: 创建人
+        :type Creator: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._Enabled = None
+        self._ServiceGroupId = None
+        self._ComponentList = None
+        self._Creator = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Enabled(self):
+        r"""智能路由开关状态（true=已开启，false=未开启/已停止）
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ServiceGroupId(self):
+        r"""绑定的服务组 ID（一对一）
+        :rtype: str
+        """
+        return self._ServiceGroupId
+
+    @ServiceGroupId.setter
+    def ServiceGroupId(self, ServiceGroupId):
+        self._ServiceGroupId = ServiceGroupId
+
+    @property
+    def ComponentList(self):
+        r"""组件列表（gateway + scheduler；repeated 为未来扩展预留）
+        :rtype: list of SmartRouterComponent
+        """
+        return self._ComponentList
+
+    @ComponentList.setter
+    def ComponentList(self, ComponentList):
+        self._ComponentList = ComponentList
+
+    @property
+    def Creator(self):
+        r"""创建人
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._ServiceGroupId = params.get("ServiceGroupId")
+        if params.get("ComponentList") is not None:
+            self._ComponentList = []
+            for item in params.get("ComponentList"):
+                obj = SmartRouterComponent()
+                obj._deserialize(item)
+                self._ComponentList.append(obj)
+        self._Creator = params.get("Creator")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartRouterComponent(AbstractModel):
+    r"""智能路由组件（运行时视图，对齐 ModelService.RoleSpec + ServiceInfo.Status）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>组件名称：{ServiceGroupId}-gateway / {ServiceGroupId}-scheduler</p>
+        :type Name: str
+        :param _Type: <p>组件类型：&quot;Gateway&quot; / &quot;Scheduler&quot;</p>
+        :type Type: str
+        :param _ImageInfo: <p>组件镜像（从 K8s Deployment 实时查询）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param _ResourceConfig: <p>期望配置（Replicas/Cpu/Memory/Env）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceConfig: :class:`tencentcloud.tione.v20211111.models.SmartRouterResourceConfig`
+        :param _Status: <p>组件状态：CREATING 创建中 / CREATE_FAILED 创建失败 / Normal 正常运行中 / Stopped 已停止 / Stopping 停止中 / Abnormal 异常 / Pending 启动中 / Waiting 就绪中</p>
+        :type Status: str
+        :param _ResourceSpec: <p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute；内网版场景展示：QueueId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceSpec: :class:`tencentcloud.tione.v20211111.models.SmartRouterResourceSpec`
+        :param _BusinessStatus: <p>业务状态（组件级计费状态，Gateway/Scheduler 独立判定）：Billing 计费中 / Normal 正常（未计费或已停止计费）/ WhitelistUsing 白名单使用中（免计费）</p>
+        :type BusinessStatus: str
+        :param _BillingInfo: <p>费用信息（组件级计费明细 JSON 字符串，格式与 Service.BillingInfo 一致，前端可复用同一渲染逻辑）</p>
+        :type BillingInfo: str
+        """
+        self._Name = None
+        self._Type = None
+        self._ImageInfo = None
+        self._ResourceConfig = None
+        self._Status = None
+        self._ResourceSpec = None
+        self._BusinessStatus = None
+        self._BillingInfo = None
+
+    @property
+    def Name(self):
+        r"""<p>组件名称：{ServiceGroupId}-gateway / {ServiceGroupId}-scheduler</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>组件类型：&quot;Gateway&quot; / &quot;Scheduler&quot;</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ImageInfo(self):
+        r"""<p>组件镜像（从 K8s Deployment 实时查询）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        return self._ImageInfo
+
+    @ImageInfo.setter
+    def ImageInfo(self, ImageInfo):
+        self._ImageInfo = ImageInfo
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>期望配置（Replicas/Cpu/Memory/Env）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SmartRouterResourceConfig`
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Status(self):
+        r"""<p>组件状态：CREATING 创建中 / CREATE_FAILED 创建失败 / Normal 正常运行中 / Stopped 已停止 / Stopping 停止中 / Abnormal 异常 / Pending 启动中 / Waiting 就绪中</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResourceSpec(self):
+        r"""<p>资源规格（查询时回显用户创建/修改时的资源选择）。公有云场景展示：ChargeType / Zone / ResourceSupplyAttribute；内网版场景展示：QueueId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SmartRouterResourceSpec`
+        """
+        return self._ResourceSpec
+
+    @ResourceSpec.setter
+    def ResourceSpec(self, ResourceSpec):
+        self._ResourceSpec = ResourceSpec
+
+    @property
+    def BusinessStatus(self):
+        r"""<p>业务状态（组件级计费状态，Gateway/Scheduler 独立判定）：Billing 计费中 / Normal 正常（未计费或已停止计费）/ WhitelistUsing 白名单使用中（免计费）</p>
+        :rtype: str
+        """
+        return self._BusinessStatus
+
+    @BusinessStatus.setter
+    def BusinessStatus(self, BusinessStatus):
+        self._BusinessStatus = BusinessStatus
+
+    @property
+    def BillingInfo(self):
+        r"""<p>费用信息（组件级计费明细 JSON 字符串，格式与 Service.BillingInfo 一致，前端可复用同一渲染逻辑）</p>
+        :rtype: str
+        """
+        return self._BillingInfo
+
+    @BillingInfo.setter
+    def BillingInfo(self, BillingInfo):
+        self._BillingInfo = BillingInfo
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("ImageInfo") is not None:
+            self._ImageInfo = ImageInfo()
+            self._ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("ResourceConfig") is not None:
+            self._ResourceConfig = SmartRouterResourceConfig()
+            self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        self._Status = params.get("Status")
+        if params.get("ResourceSpec") is not None:
+            self._ResourceSpec = SmartRouterResourceSpec()
+            self._ResourceSpec._deserialize(params.get("ResourceSpec"))
+        self._BusinessStatus = params.get("BusinessStatus")
+        self._BillingInfo = params.get("BillingInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartRouterResourceConfig(AbstractModel):
+    r"""Gateway（Envoy）与 Scheduler（EPP）资源配置（字段完全一致，合并为统一类型）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Replicas: <p>副本数，最小 1，建议 &gt;=2 以确保高可用；Scheduler（EPP）默认 2（保障 EPP 高可用与 Gossip 同步）</p>
+        :type Replicas: int
+        :param _Cpu: <p>处理器资源，单位为 1/1000 核（milliCPU），与 EMS 一致</p>
+        :type Cpu: int
+        :param _Memory: <p>内存资源，单位为 1MB，与 EMS 一致</p>
+        :type Memory: int
+        :param _Env: <p>自定义环境变量，用于覆盖 Deployment 内置默认环境变量。Gateway 典型用途：覆盖 BACKEND_SERVICE_HOST 等；Scheduler 典型用途：覆盖 LRU_CAPACITY、BLOCK_SIZE_TOKENS 等</p>
+        :type Env: list of EnvVar
+        :param _InstanceType: <p>实例类型/规格，用于指定组件运行的机器规格</p>
+        :type InstanceType: str
+        :param _Sidecar: <p>sidecar 容器配置，复用推理服务同款 SidecarSpec；未设置或 ImageInfo.ImageUrl 为空时不创建 sidecar 容器。sidecar 容器环境变量与组件主容器保持一致，不单独下发</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
+        """
+        self._Replicas = None
+        self._Cpu = None
+        self._Memory = None
+        self._Env = None
+        self._InstanceType = None
+        self._Sidecar = None
+
+    @property
+    def Replicas(self):
+        r"""<p>副本数，最小 1，建议 &gt;=2 以确保高可用；Scheduler（EPP）默认 2（保障 EPP 高可用与 Gossip 同步）</p>
+        :rtype: int
+        """
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+    @property
+    def Cpu(self):
+        r"""<p>处理器资源，单位为 1/1000 核（milliCPU），与 EMS 一致</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""<p>内存资源，单位为 1MB，与 EMS 一致</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Env(self):
+        r"""<p>自定义环境变量，用于覆盖 Deployment 内置默认环境变量。Gateway 典型用途：覆盖 BACKEND_SERVICE_HOST 等；Scheduler 典型用途：覆盖 LRU_CAPACITY、BLOCK_SIZE_TOKENS 等</p>
+        :rtype: list of EnvVar
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型/规格，用于指定组件运行的机器规格</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Sidecar(self):
+        r"""<p>sidecar 容器配置，复用推理服务同款 SidecarSpec；未设置或 ImageInfo.ImageUrl 为空时不创建 sidecar 容器。sidecar 容器环境变量与组件主容器保持一致，不单独下发</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
+        """
+        return self._Sidecar
+
+    @Sidecar.setter
+    def Sidecar(self, Sidecar):
+        self._Sidecar = Sidecar
+
+
+    def _deserialize(self, params):
+        self._Replicas = params.get("Replicas")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        if params.get("Env") is not None:
+            self._Env = []
+            for item in params.get("Env"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._Env.append(obj)
+        self._InstanceType = params.get("InstanceType")
+        if params.get("Sidecar") is not None:
+            self._Sidecar = SidecarSpec()
+            self._Sidecar._deserialize(params.get("Sidecar"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SmartRouterResourceSpec(AbstractModel):
+    r"""智能路由资源规格（整个智能路由实例共享，Gateway/Scheduler 两个组件使用同一套资源池）。对应推理服务 CreateModelServiceRequest 顶层的 ChargeType/Zone/QueueId 等字段语义。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeType: <p>付费模式：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）。不传则默认 POSTPAID_BY_HOUR</p>
+        :type ChargeType: str
+        :param _ResourceGroupId: <p>预付费资源组 ID（ChargeType=PREPAID 时必填）</p>
+        :type ResourceGroupId: str
+        :param _ResourceGroupName: <p>预付费资源组名称（output only，ChargeType=PREPAID 时有值，查询时回显）</p>
+        :type ResourceGroupName: str
+        :param _Zone: <p>可用区（如 ap-guangzhou-3），公有云场景用于指定机器来源</p>
+        :type Zone: str
+        :param _QueueId: <p>资源队列 ID（内网版使用，标识任务所属的调度队列）</p>
+        :type QueueId: str
+        :param _Priority: <p>服务的优先级，可选范围 [0,9]，默认 0（内网版/私有化使用）</p>
+        :type Priority: int
+        :param _ResourceSupplyAttribute: <p>资源供应属性（潮汐/竞价等供应模式），公有云场景用于指定机器来源类型。仅区分供应来源，计费/部署/伸缩仍按后付费处理（ChargeType 恒为 POSTPAID_BY_HOUR）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        """
+        self._ChargeType = None
+        self._ResourceGroupId = None
+        self._ResourceGroupName = None
+        self._Zone = None
+        self._QueueId = None
+        self._Priority = None
+        self._ResourceSupplyAttribute = None
+
+    @property
+    def ChargeType(self):
+        r"""<p>付费模式：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）。不传则默认 POSTPAID_BY_HOUR</p>
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def ResourceGroupId(self):
+        r"""<p>预付费资源组 ID（ChargeType=PREPAID 时必填）</p>
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceGroupName(self):
+        r"""<p>预付费资源组名称（output only，ChargeType=PREPAID 时有值，查询时回显）</p>
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def Zone(self):
+        r"""<p>可用区（如 ap-guangzhou-3），公有云场景用于指定机器来源</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def QueueId(self):
+        r"""<p>资源队列 ID（内网版使用，标识任务所属的调度队列）</p>
+        :rtype: str
+        """
+        return self._QueueId
+
+    @QueueId.setter
+    def QueueId(self, QueueId):
+        self._QueueId = QueueId
+
+    @property
+    def Priority(self):
+        r"""<p>服务的优先级，可选范围 [0,9]，默认 0（内网版/私有化使用）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def ResourceSupplyAttribute(self):
+        r"""<p>资源供应属性（潮汐/竞价等供应模式），公有云场景用于指定机器来源类型。仅区分供应来源，计费/部署/伸缩仍按后付费处理（ChargeType 恒为 POSTPAID_BY_HOUR）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        """
+        return self._ResourceSupplyAttribute
+
+    @ResourceSupplyAttribute.setter
+    def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
+        self._ResourceSupplyAttribute = ResourceSupplyAttribute
+
+
+    def _deserialize(self, params):
+        self._ChargeType = params.get("ChargeType")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        self._Zone = params.get("Zone")
+        self._QueueId = params.get("QueueId")
+        self._Priority = params.get("Priority")
+        if params.get("ResourceSupplyAttribute") is not None:
+            self._ResourceSupplyAttribute = ResourceSupplyAttribute()
+            self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Spec(AbstractModel):
     r"""计费项内容
 
@@ -29075,8 +29761,11 @@ class StartNotebookRequest(AbstractModel):
         r"""
         :param _Id: notebook id
         :type Id: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._Id = None
+        self._TiProjectId = None
 
     @property
     def Id(self):
@@ -29089,9 +29778,21 @@ class StartNotebookRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29139,7 +29840,7 @@ class StartTrainingTaskRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._Id = None
@@ -29158,7 +29859,7 @@ class StartTrainingTaskRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -29454,8 +30155,11 @@ class StopNotebookRequest(AbstractModel):
         r"""
         :param _Id: notebook id
         :type Id: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._Id = None
+        self._TiProjectId = None
 
     @property
     def Id(self):
@@ -29468,9 +30172,21 @@ class StopNotebookRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29518,7 +30234,7 @@ class StopTrainingTaskRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._Id = None
@@ -29537,7 +30253,7 @@ class StopTrainingTaskRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -32232,10 +32948,24 @@ class UpdateSubAccountLinuxUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _SubAccountList: 子账号信息列表
         :type SubAccountList: list of SubAccountInfo
         """
+        self._TiProjectId = None
         self._SubAccountList = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def SubAccountList(self):
@@ -32250,6 +32980,7 @@ class UpdateSubAccountLinuxUserInfoRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("SubAccountList") is not None:
             self._SubAccountList = []
             for item in params.get("SubAccountList"):

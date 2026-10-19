@@ -14158,6 +14158,8 @@ class MigrateOption(AbstractModel):
         :type MigrateWay: str
         :param _RateLimit: <p>迁移配置阶段限速相关参数</p>
         :type RateLimit: :class:`tencentcloud.dts.v20211206.models.RateLimit`
+        :param _SkipDdlOnError: <p>跳过报错的DDL策略</p>
+        :type SkipDdlOnError: :class:`tencentcloud.dts.v20211206.models.SkipDdlOnError`
         """
         self._DatabaseTable = None
         self._MigrateType = None
@@ -14168,6 +14170,7 @@ class MigrateOption(AbstractModel):
         self._ExtraAttr = None
         self._MigrateWay = None
         self._RateLimit = None
+        self._SkipDdlOnError = None
 
     @property
     def DatabaseTable(self):
@@ -14269,6 +14272,17 @@ class MigrateOption(AbstractModel):
     def RateLimit(self, RateLimit):
         self._RateLimit = RateLimit
 
+    @property
+    def SkipDdlOnError(self):
+        r"""<p>跳过报错的DDL策略</p>
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SkipDdlOnError`
+        """
+        return self._SkipDdlOnError
+
+    @SkipDdlOnError.setter
+    def SkipDdlOnError(self, SkipDdlOnError):
+        self._SkipDdlOnError = SkipDdlOnError
+
 
     def _deserialize(self, params):
         if params.get("DatabaseTable") is not None:
@@ -14291,6 +14305,9 @@ class MigrateOption(AbstractModel):
         if params.get("RateLimit") is not None:
             self._RateLimit = RateLimit()
             self._RateLimit._deserialize(params.get("RateLimit"))
+        if params.get("SkipDdlOnError") is not None:
+            self._SkipDdlOnError = SkipDdlOnError()
+            self._SkipDdlOnError._deserialize(params.get("SkipDdlOnError"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16575,6 +16592,8 @@ class Options(AbstractModel):
         :type FilterBeginCommit: bool
         :param _FilterCheckpoint: <p>同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持</p>
         :type FilterCheckpoint: bool
+        :param _SkipDdlOnError: <p>跳过报错的DDL策略</p>
+        :type SkipDdlOnError: :class:`tencentcloud.dts.v20211206.models.SkipDdlOnError`
         """
         self._InitType = None
         self._DealOfExistSameTable = None
@@ -16589,6 +16608,7 @@ class Options(AbstractModel):
         self._StartPosition = None
         self._FilterBeginCommit = None
         self._FilterCheckpoint = None
+        self._SkipDdlOnError = None
 
     @property
     def InitType(self):
@@ -16735,6 +16755,17 @@ class Options(AbstractModel):
     def FilterCheckpoint(self, FilterCheckpoint):
         self._FilterCheckpoint = FilterCheckpoint
 
+    @property
+    def SkipDdlOnError(self):
+        r"""<p>跳过报错的DDL策略</p>
+        :rtype: :class:`tencentcloud.dts.v20211206.models.SkipDdlOnError`
+        """
+        return self._SkipDdlOnError
+
+    @SkipDdlOnError.setter
+    def SkipDdlOnError(self, SkipDdlOnError):
+        self._SkipDdlOnError = SkipDdlOnError
+
 
     def _deserialize(self, params):
         self._InitType = params.get("InitType")
@@ -16761,6 +16792,9 @@ class Options(AbstractModel):
         self._StartPosition = params.get("StartPosition")
         self._FilterBeginCommit = params.get("FilterBeginCommit")
         self._FilterCheckpoint = params.get("FilterCheckpoint")
+        if params.get("SkipDdlOnError") is not None:
+            self._SkipDdlOnError = SkipDdlOnError()
+            self._SkipDdlOnError._deserialize(params.get("SkipDdlOnError"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18610,6 +18644,57 @@ class SkipCheckItemResponse(AbstractModel):
     def _deserialize(self, params):
         self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
+
+
+class SkipDdlOnError(AbstractModel):
+    r"""跳过报错DDL的策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tables: <p>按表名跳过，支持精确 &quot;db.tbl&quot;、库通配 &quot;db.*&quot;、表通配 &quot;<em>.tbl&quot;、全通配 &quot;</em>&quot;</p>
+        :type Tables: list of str
+        :param _ErrorCodes: <p>按 MySQL 错误码（1~65535）跳过</p><p>取值范围：[1, 65535]</p>
+        :type ErrorCodes: list of int
+        """
+        self._Tables = None
+        self._ErrorCodes = None
+
+    @property
+    def Tables(self):
+        r"""<p>按表名跳过，支持精确 &quot;db.tbl&quot;、库通配 &quot;db.*&quot;、表通配 &quot;<em>.tbl&quot;、全通配 &quot;</em>&quot;</p>
+        :rtype: list of str
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def ErrorCodes(self):
+        r"""<p>按 MySQL 错误码（1~65535）跳过</p><p>取值范围：[1, 65535]</p>
+        :rtype: list of int
+        """
+        return self._ErrorCodes
+
+    @ErrorCodes.setter
+    def ErrorCodes(self, ErrorCodes):
+        self._ErrorCodes = ErrorCodes
+
+
+    def _deserialize(self, params):
+        self._Tables = params.get("Tables")
+        self._ErrorCodes = params.get("ErrorCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SkipSyncCheckItemRequest(AbstractModel):

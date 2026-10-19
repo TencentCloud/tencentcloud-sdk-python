@@ -12574,50 +12574,56 @@ class BashEventNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 数据ID
+        :param _Id: <p>数据ID</p>
         :type Id: int
-        :param _Uuid: 主机安全ID
+        :param _Uuid: <p>主机安全ID</p>
         :type Uuid: str
-        :param _Quuid: 主机ID
+        :param _Quuid: <p>主机ID</p>
         :type Quuid: str
-        :param _HostIp: 主机内网IP
+        :param _HostIp: <p>主机内网IP</p>
         :type HostIp: str
-        :param _User: 执行用户名
+        :param _User: <p>执行用户名</p>
         :type User: str
-        :param _Platform: 平台类型
+        :param _Platform: <p>平台类型</p>
         :type Platform: int
-        :param _BashCmd: 执行命令
+        :param _BashCmd: <p>执行命令</p>
         :type BashCmd: str
-        :param _RuleId: 规则ID
+        :param _RuleId: <p>规则ID</p>
         :type RuleId: int
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
         :type RuleName: str
-        :param _RuleLevel: 规则等级：1-高 2-中 3-低
+        :param _RuleLevel: <p>规则等级：1-高 2-中 3-低</p>
         :type RuleLevel: int
-        :param _Status: 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略
+        :param _Status: <p>处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略</p>
         :type Status: int
-        :param _CreateTime: 发生时间
+        :param _CreateTime: <p>发生时间</p>
         :type CreateTime: str
-        :param _MachineName: 主机名
+        :param _MachineName: <p>主机名</p>
         :type MachineName: str
-        :param _DetectBy: 0: bash日志 1: 实时监控(雷霆版)
+        :param _DetectBy: <p>0: bash日志 1: 实时监控(雷霆版)</p>
         :type DetectBy: int
-        :param _Pid: 进程id
+        :param _Pid: <p>进程id</p>
         :type Pid: str
-        :param _Exe: 进程名称
+        :param _Exe: <p>进程名称</p>
         :type Exe: str
-        :param _ModifyTime: 处理时间
+        :param _ModifyTime: <p>处理时间</p>
         :type ModifyTime: str
-        :param _RuleCategory: 规则类别  0=系统规则，1=用户规则
+        :param _RuleCategory: <p>规则类别  0=系统规则，1=用户规则</p>
         :type RuleCategory: int
-        :param _RegexBashCmd: 转义后的正则表达式
+        :param _RegexBashCmd: <p>转义后的正则表达式</p>
         :type RegexBashCmd: str
-        :param _RegexExe: 转义后的正则表达式
+        :param _RegexExe: <p>转义后的正则表达式</p>
         :type RegexExe: str
-        :param _MachineType: 0:普通 1:专业版 2:旗舰版
+        :param _MachineType: <p>0:普通 1:专业版 2:旗舰版</p>
         :type MachineType: int
-        :param _MachineExtraInfo: 机器额外信息
+        :param _MachineExtraInfo: <p>机器额外信息</p>
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _EventCount: <p>告警次数：同一聚合维度当天的告警命中次数，老数据为空</p>
+        :type EventCount: int
+        :param _FirstDetectTime: <p>首次发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+        :type FirstDetectTime: str
+        :param _LatestDetectTime: <p>最近发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+        :type LatestDetectTime: str
         """
         self._Id = None
         self._Uuid = None
@@ -12641,10 +12647,13 @@ class BashEventNew(AbstractModel):
         self._RegexExe = None
         self._MachineType = None
         self._MachineExtraInfo = None
+        self._EventCount = None
+        self._FirstDetectTime = None
+        self._LatestDetectTime = None
 
     @property
     def Id(self):
-        r"""数据ID
+        r"""<p>数据ID</p>
         :rtype: int
         """
         return self._Id
@@ -12655,7 +12664,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""主机安全ID
+        r"""<p>主机安全ID</p>
         :rtype: str
         """
         return self._Uuid
@@ -12666,7 +12675,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def Quuid(self):
-        r"""主机ID
+        r"""<p>主机ID</p>
         :rtype: str
         """
         return self._Quuid
@@ -12677,7 +12686,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def HostIp(self):
-        r"""主机内网IP
+        r"""<p>主机内网IP</p>
         :rtype: str
         """
         return self._HostIp
@@ -12688,7 +12697,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def User(self):
-        r"""执行用户名
+        r"""<p>执行用户名</p>
         :rtype: str
         """
         return self._User
@@ -12699,7 +12708,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def Platform(self):
-        r"""平台类型
+        r"""<p>平台类型</p>
         :rtype: int
         """
         return self._Platform
@@ -12710,7 +12719,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def BashCmd(self):
-        r"""执行命令
+        r"""<p>执行命令</p>
         :rtype: str
         """
         return self._BashCmd
@@ -12721,7 +12730,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: int
         """
         return self._RuleId
@@ -12732,7 +12741,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -12743,7 +12752,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def RuleLevel(self):
-        r"""规则等级：1-高 2-中 3-低
+        r"""<p>规则等级：1-高 2-中 3-低</p>
         :rtype: int
         """
         return self._RuleLevel
@@ -12754,7 +12763,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def Status(self):
-        r"""处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略
+        r"""<p>处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3 = 已忽略</p>
         :rtype: int
         """
         return self._Status
@@ -12765,7 +12774,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""发生时间
+        r"""<p>发生时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -12776,7 +12785,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def MachineName(self):
-        r"""主机名
+        r"""<p>主机名</p>
         :rtype: str
         """
         return self._MachineName
@@ -12787,7 +12796,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def DetectBy(self):
-        r"""0: bash日志 1: 实时监控(雷霆版)
+        r"""<p>0: bash日志 1: 实时监控(雷霆版)</p>
         :rtype: int
         """
         return self._DetectBy
@@ -12798,7 +12807,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def Pid(self):
-        r"""进程id
+        r"""<p>进程id</p>
         :rtype: str
         """
         return self._Pid
@@ -12809,7 +12818,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def Exe(self):
-        r"""进程名称
+        r"""<p>进程名称</p>
         :rtype: str
         """
         return self._Exe
@@ -12820,7 +12829,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""处理时间
+        r"""<p>处理时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -12831,7 +12840,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def RuleCategory(self):
-        r"""规则类别  0=系统规则，1=用户规则
+        r"""<p>规则类别  0=系统规则，1=用户规则</p>
         :rtype: int
         """
         return self._RuleCategory
@@ -12842,7 +12851,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def RegexBashCmd(self):
-        r"""转义后的正则表达式
+        r"""<p>转义后的正则表达式</p>
         :rtype: str
         """
         return self._RegexBashCmd
@@ -12853,7 +12862,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def RegexExe(self):
-        r"""转义后的正则表达式
+        r"""<p>转义后的正则表达式</p>
         :rtype: str
         """
         return self._RegexExe
@@ -12864,7 +12873,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""0:普通 1:专业版 2:旗舰版
+        r"""<p>0:普通 1:专业版 2:旗舰版</p>
         :rtype: int
         """
         return self._MachineType
@@ -12875,7 +12884,7 @@ class BashEventNew(AbstractModel):
 
     @property
     def MachineExtraInfo(self):
-        r"""机器额外信息
+        r"""<p>机器额外信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         """
         return self._MachineExtraInfo
@@ -12883,6 +12892,39 @@ class BashEventNew(AbstractModel):
     @MachineExtraInfo.setter
     def MachineExtraInfo(self, MachineExtraInfo):
         self._MachineExtraInfo = MachineExtraInfo
+
+    @property
+    def EventCount(self):
+        r"""<p>告警次数：同一聚合维度当天的告警命中次数，老数据为空</p>
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def FirstDetectTime(self):
+        r"""<p>首次发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+        :rtype: str
+        """
+        return self._FirstDetectTime
+
+    @FirstDetectTime.setter
+    def FirstDetectTime(self, FirstDetectTime):
+        self._FirstDetectTime = FirstDetectTime
+
+    @property
+    def LatestDetectTime(self):
+        r"""<p>最近发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+        :rtype: str
+        """
+        return self._LatestDetectTime
+
+    @LatestDetectTime.setter
+    def LatestDetectTime(self, LatestDetectTime):
+        self._LatestDetectTime = LatestDetectTime
 
 
     def _deserialize(self, params):
@@ -12910,6 +12952,9 @@ class BashEventNew(AbstractModel):
         if params.get("MachineExtraInfo") is not None:
             self._MachineExtraInfo = MachineExtraInfo()
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._EventCount = params.get("EventCount")
+        self._FirstDetectTime = params.get("FirstDetectTime")
+        self._LatestDetectTime = params.get("LatestDetectTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13338,62 +13383,88 @@ class BashEventsInfoNew(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 数据ID
+        :param _Id: <p>数据ID</p>
         :type Id: int
-        :param _Uuid: 主机安全ID
+        :param _Uuid: <p>主机安全ID</p>
         :type Uuid: str
-        :param _Quuid: 主机ID
+        :param _Quuid: <p>主机ID</p>
         :type Quuid: str
-        :param _HostIp: 主机内网IP
+        :param _HostIp: <p>主机内网IP</p>
         :type HostIp: str
-        :param _Platform: 平台类型
+        :param _Platform: <p>平台类型</p>
         :type Platform: int
-        :param _BashCmd: 执行命令
+        :param _BashCmd: <p>执行命令</p>
         :type BashCmd: str
-        :param _RuleId: 规则ID,等于0表示已规则已被删除或生效范围已修改
+        :param _RuleId: <p>规则ID,等于0表示已规则已被删除或生效范围已修改</p>
         :type RuleId: int
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
         :type RuleName: str
-        :param _RuleLevel: 规则等级：1-高 2-中 3-低
+        :param _RuleLevel: <p>规则等级：1-高 2-中 3-低</p>
         :type RuleLevel: int
-        :param _Status: 处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3= 已忽略
+        :param _Status: <p>处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3= 已忽略</p>
         :type Status: int
-        :param _CreateTime: 发生时间
+        :param _CreateTime: <p>发生时间</p>
         :type CreateTime: str
-        :param _MachineName: 主机名
+        :param _MachineName: <p>主机名</p>
         :type MachineName: str
-        :param _Exe: 进程名称
+        :param _Exe: <p>进程名称</p>
         :type Exe: str
-        :param _ModifyTime: 处理时间
+        :param _ModifyTime: <p>处理时间</p>
         :type ModifyTime: str
-        :param _RuleCategory: 规则类别  0=系统规则，1=用户规则
+        :param _RuleCategory: <p>规则类别  0=系统规则，1=用户规则</p>
         :type RuleCategory: int
-        :param _RegexBashCmd: 自动生成的正则表达式
+        :param _RegexBashCmd: <p>自动生成的正则表达式</p>
         :type RegexBashCmd: str
-        :param _PsTree: 进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+        :param _PsTree: <p>进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源</p>
         :type PsTree: str
-        :param _SuggestScheme: 建议方案
+        :param _SuggestScheme: <p>建议方案</p>
         :type SuggestScheme: str
-        :param _HarmDescribe: 描述
+        :param _HarmDescribe: <p>描述</p>
         :type HarmDescribe: str
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: list of str
-        :param _References: 参考链接
+        :param _References: <p>参考链接</p>
         :type References: list of str
-        :param _MachineWanIp: 主机外网ip
+        :param _MachineWanIp: <p>主机外网ip</p>
         :type MachineWanIp: str
-        :param _MachineStatus: 主机在线状态 OFFLINE  ONLINE
+        :param _MachineStatus: <p>主机在线状态 OFFLINE  ONLINE</p>
         :type MachineStatus: str
-        :param _User: 登录用户
+        :param _User: <p>登录用户</p>
         :type User: str
-        :param _Pid: 进程号
+        :param _Pid: <p>进程号</p>
         :type Pid: str
-        :param _MachineType: 0:普通 1:专业版 2:旗舰版
+        :param _MachineType: <p>0:普通 1:专业版 2:旗舰版</p>
         :type MachineType: int
-        :param _DetectBy: 检测来源 0:bash日志 1:实时监控
+        :param _DetectBy: <p>检测来源 0:bash日志 1:实时监控</p>
         :type DetectBy: int
-        :param _BashCmdDecoded: 执行命令(解码后)
+        :param _BashCmdDecoded: <p>执行命令(解码后)</p>
         :type BashCmdDecoded: str
+        :param _EventCount: <p>告警次数：同一聚合维度当天的告警命中次数，老数据为空</p>
+        :type EventCount: int
+        :param _FirstDetectTime: <p>首次发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+        :type FirstDetectTime: str
+        :param _LatestDetectTime: <p>最近发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+        :type LatestDetectTime: str
+        :param _FileProcessMd5: <p>进程MD5（文件监控行为独有）</p>
+        :type FileProcessMd5: str
+        :param _FileAction: <p>动作：进程对文件的操作，如 读/写/重命名/删除/清空内容（文件监控行为独有）</p>
+        :type FileAction: str
+        :param _FilePath: <p>文件路径（文件监控行为独有）</p>
+        :type FilePath: str
+        :param _FileMd5: <p>文件MD5（文件监控行为独有）</p>
+        :type FileMd5: str
+        :param _FileName: <p>文件名称（文件监控行为独有）</p>
+        :type FileName: str
+        :param _FileSize: <p>文件大小（文件监控行为独有）</p>
+        :type FileSize: str
+        :param _FileModifyTime: <p>文件修改时间（文件监控行为独有）</p>
+        :type FileModifyTime: str
+        :param _FilePermission: <p>文件权限（文件监控行为独有）</p>
+        :type FilePermission: str
+        :param _FileAccessTime: <p>文件访问时间</p>
+        :type FileAccessTime: str
+        :param _BashType: <p>高危命令事件类型</p><p>枚举值：</p><ul><li>filemon： 文件监控事件</li><li>connect： 外联行为事件</li><li>process： 进程启动事件</li></ul>
+        :type BashType: str
         """
         self._Id = None
         self._Uuid = None
@@ -13423,10 +13494,23 @@ class BashEventsInfoNew(AbstractModel):
         self._MachineType = None
         self._DetectBy = None
         self._BashCmdDecoded = None
+        self._EventCount = None
+        self._FirstDetectTime = None
+        self._LatestDetectTime = None
+        self._FileProcessMd5 = None
+        self._FileAction = None
+        self._FilePath = None
+        self._FileMd5 = None
+        self._FileName = None
+        self._FileSize = None
+        self._FileModifyTime = None
+        self._FilePermission = None
+        self._FileAccessTime = None
+        self._BashType = None
 
     @property
     def Id(self):
-        r"""数据ID
+        r"""<p>数据ID</p>
         :rtype: int
         """
         return self._Id
@@ -13437,7 +13521,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""主机安全ID
+        r"""<p>主机安全ID</p>
         :rtype: str
         """
         return self._Uuid
@@ -13448,7 +13532,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def Quuid(self):
-        r"""主机ID
+        r"""<p>主机ID</p>
         :rtype: str
         """
         return self._Quuid
@@ -13459,7 +13543,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def HostIp(self):
-        r"""主机内网IP
+        r"""<p>主机内网IP</p>
         :rtype: str
         """
         return self._HostIp
@@ -13470,7 +13554,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def Platform(self):
-        r"""平台类型
+        r"""<p>平台类型</p>
         :rtype: int
         """
         return self._Platform
@@ -13481,7 +13565,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def BashCmd(self):
-        r"""执行命令
+        r"""<p>执行命令</p>
         :rtype: str
         """
         return self._BashCmd
@@ -13492,7 +13576,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则ID,等于0表示已规则已被删除或生效范围已修改
+        r"""<p>规则ID,等于0表示已规则已被删除或生效范围已修改</p>
         :rtype: int
         """
         return self._RuleId
@@ -13503,7 +13587,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -13514,7 +13598,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def RuleLevel(self):
-        r"""规则等级：1-高 2-中 3-低
+        r"""<p>规则等级：1-高 2-中 3-低</p>
         :rtype: int
         """
         return self._RuleLevel
@@ -13525,7 +13609,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def Status(self):
-        r"""处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3= 已忽略
+        r"""<p>处理状态： 0 = 待处理 1= 已处理, 2 = 已加白， 3= 已忽略</p>
         :rtype: int
         """
         return self._Status
@@ -13536,7 +13620,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""发生时间
+        r"""<p>发生时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -13547,7 +13631,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def MachineName(self):
-        r"""主机名
+        r"""<p>主机名</p>
         :rtype: str
         """
         return self._MachineName
@@ -13558,7 +13642,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def Exe(self):
-        r"""进程名称
+        r"""<p>进程名称</p>
         :rtype: str
         """
         return self._Exe
@@ -13569,7 +13653,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""处理时间
+        r"""<p>处理时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -13580,7 +13664,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def RuleCategory(self):
-        r"""规则类别  0=系统规则，1=用户规则
+        r"""<p>规则类别  0=系统规则，1=用户规则</p>
         :rtype: int
         """
         return self._RuleCategory
@@ -13591,7 +13675,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def RegexBashCmd(self):
-        r"""自动生成的正则表达式
+        r"""<p>自动生成的正则表达式</p>
         :rtype: str
         """
         return self._RegexBashCmd
@@ -13602,7 +13686,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def PsTree(self):
-        r"""进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源
+        r"""<p>进程树 json  pid:进程id，exe:文件路径 ，account:进程所属用组和用户 ,cmdline:执行命令，ssh_service: SSH服务ip, ssh_soure:登录源</p>
         :rtype: str
         """
         return self._PsTree
@@ -13613,7 +13697,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def SuggestScheme(self):
-        r"""建议方案
+        r"""<p>建议方案</p>
         :rtype: str
         """
         return self._SuggestScheme
@@ -13624,7 +13708,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def HarmDescribe(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._HarmDescribe
@@ -13635,7 +13719,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of str
         """
         return self._Tags
@@ -13646,7 +13730,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def References(self):
-        r"""参考链接
+        r"""<p>参考链接</p>
         :rtype: list of str
         """
         return self._References
@@ -13657,7 +13741,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def MachineWanIp(self):
-        r"""主机外网ip
+        r"""<p>主机外网ip</p>
         :rtype: str
         """
         return self._MachineWanIp
@@ -13668,7 +13752,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def MachineStatus(self):
-        r"""主机在线状态 OFFLINE  ONLINE
+        r"""<p>主机在线状态 OFFLINE  ONLINE</p>
         :rtype: str
         """
         return self._MachineStatus
@@ -13679,7 +13763,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def User(self):
-        r"""登录用户
+        r"""<p>登录用户</p>
         :rtype: str
         """
         return self._User
@@ -13690,7 +13774,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def Pid(self):
-        r"""进程号
+        r"""<p>进程号</p>
         :rtype: str
         """
         return self._Pid
@@ -13701,7 +13785,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""0:普通 1:专业版 2:旗舰版
+        r"""<p>0:普通 1:专业版 2:旗舰版</p>
         :rtype: int
         """
         return self._MachineType
@@ -13712,7 +13796,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def DetectBy(self):
-        r"""检测来源 0:bash日志 1:实时监控
+        r"""<p>检测来源 0:bash日志 1:实时监控</p>
         :rtype: int
         """
         return self._DetectBy
@@ -13723,7 +13807,7 @@ class BashEventsInfoNew(AbstractModel):
 
     @property
     def BashCmdDecoded(self):
-        r"""执行命令(解码后)
+        r"""<p>执行命令(解码后)</p>
         :rtype: str
         """
         return self._BashCmdDecoded
@@ -13731,6 +13815,149 @@ class BashEventsInfoNew(AbstractModel):
     @BashCmdDecoded.setter
     def BashCmdDecoded(self, BashCmdDecoded):
         self._BashCmdDecoded = BashCmdDecoded
+
+    @property
+    def EventCount(self):
+        r"""<p>告警次数：同一聚合维度当天的告警命中次数，老数据为空</p>
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def FirstDetectTime(self):
+        r"""<p>首次发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+        :rtype: str
+        """
+        return self._FirstDetectTime
+
+    @FirstDetectTime.setter
+    def FirstDetectTime(self, FirstDetectTime):
+        self._FirstDetectTime = FirstDetectTime
+
+    @property
+    def LatestDetectTime(self):
+        r"""<p>最近发现时间（格式 yyyy-MM-dd HH:mm:ss）</p>
+        :rtype: str
+        """
+        return self._LatestDetectTime
+
+    @LatestDetectTime.setter
+    def LatestDetectTime(self, LatestDetectTime):
+        self._LatestDetectTime = LatestDetectTime
+
+    @property
+    def FileProcessMd5(self):
+        r"""<p>进程MD5（文件监控行为独有）</p>
+        :rtype: str
+        """
+        return self._FileProcessMd5
+
+    @FileProcessMd5.setter
+    def FileProcessMd5(self, FileProcessMd5):
+        self._FileProcessMd5 = FileProcessMd5
+
+    @property
+    def FileAction(self):
+        r"""<p>动作：进程对文件的操作，如 读/写/重命名/删除/清空内容（文件监控行为独有）</p>
+        :rtype: str
+        """
+        return self._FileAction
+
+    @FileAction.setter
+    def FileAction(self, FileAction):
+        self._FileAction = FileAction
+
+    @property
+    def FilePath(self):
+        r"""<p>文件路径（文件监控行为独有）</p>
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def FileMd5(self):
+        r"""<p>文件MD5（文件监控行为独有）</p>
+        :rtype: str
+        """
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
+    @property
+    def FileName(self):
+        r"""<p>文件名称（文件监控行为独有）</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""<p>文件大小（文件监控行为独有）</p>
+        :rtype: str
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def FileModifyTime(self):
+        r"""<p>文件修改时间（文件监控行为独有）</p>
+        :rtype: str
+        """
+        return self._FileModifyTime
+
+    @FileModifyTime.setter
+    def FileModifyTime(self, FileModifyTime):
+        self._FileModifyTime = FileModifyTime
+
+    @property
+    def FilePermission(self):
+        r"""<p>文件权限（文件监控行为独有）</p>
+        :rtype: str
+        """
+        return self._FilePermission
+
+    @FilePermission.setter
+    def FilePermission(self, FilePermission):
+        self._FilePermission = FilePermission
+
+    @property
+    def FileAccessTime(self):
+        r"""<p>文件访问时间</p>
+        :rtype: str
+        """
+        return self._FileAccessTime
+
+    @FileAccessTime.setter
+    def FileAccessTime(self, FileAccessTime):
+        self._FileAccessTime = FileAccessTime
+
+    @property
+    def BashType(self):
+        r"""<p>高危命令事件类型</p><p>枚举值：</p><ul><li>filemon： 文件监控事件</li><li>connect： 外联行为事件</li><li>process： 进程启动事件</li></ul>
+        :rtype: str
+        """
+        return self._BashType
+
+    @BashType.setter
+    def BashType(self, BashType):
+        self._BashType = BashType
 
 
     def _deserialize(self, params):
@@ -13762,6 +13989,19 @@ class BashEventsInfoNew(AbstractModel):
         self._MachineType = params.get("MachineType")
         self._DetectBy = params.get("DetectBy")
         self._BashCmdDecoded = params.get("BashCmdDecoded")
+        self._EventCount = params.get("EventCount")
+        self._FirstDetectTime = params.get("FirstDetectTime")
+        self._LatestDetectTime = params.get("LatestDetectTime")
+        self._FileProcessMd5 = params.get("FileProcessMd5")
+        self._FileAction = params.get("FileAction")
+        self._FilePath = params.get("FilePath")
+        self._FileMd5 = params.get("FileMd5")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._FileModifyTime = params.get("FileModifyTime")
+        self._FilePermission = params.get("FilePermission")
+        self._FileAccessTime = params.get("FileAccessTime")
+        self._BashType = params.get("BashType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13779,40 +14019,42 @@ class BashPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 策略名称
+        :param _Name: <p>策略名称</p>
         :type Name: str
-        :param _Enable: 1:有效 0:无效
+        :param _Enable: <p>1:有效 0:无效</p>
         :type Enable: int
-        :param _White: 0:黑名单 1:白名单
+        :param _White: <p>0:黑名单 1:白名单</p>
         :type White: int
-        :param _BashAction: 0:告警 1:白名单 2:拦截
+        :param _BashAction: <p>0:告警 1:白名单 2:拦截</p>
         :type BashAction: int
-        :param _Rule: 正则表达式 base64 加密,该字段废弃,如果写入则自动替换为Rules.Process.CmdLine
+        :param _Rule: <p>正则表达式 base64 加密,该字段废弃,如果写入则自动替换为Rules.Process.CmdLine</p>
         :type Rule: str
-        :param _Level: 危险等级(0:无，1: 高危 2:中危 3: 低危)
+        :param _Level: <p>危险等级(0:无，1: 高危 2:中危 3: 低危)</p>
         :type Level: int
-        :param _Scope: 生效范围（0:一组quuid 1:所有专业版(包含旗舰版) 2:所有旗舰版 3:所有主机）
+        :param _Scope: <p>生效范围（0:一组quuid 1:所有专业版(包含旗舰版) 2:所有旗舰版 3:所有主机）</p>
         :type Scope: int
-        :param _Id: 策略ID
+        :param _Id: <p>策略ID</p>
         :type Id: int
-        :param _Descript: 策略描述
+        :param _Descript: <p>策略描述</p>
         :type Descript: str
-        :param _EventId: 事件列表点击“加入白名单”时,需要传EventId 事件的id
+        :param _EventId: <p>事件列表点击“加入白名单”时,需要传EventId 事件的id</p>
         :type EventId: int
-        :param _DealOldEvents: 是否处理旧事件为白名单 0=不处理 1=处理
+        :param _DealOldEvents: <p>是否处理旧事件为白名单 0=不处理 1=处理</p>
         :type DealOldEvents: int
-        :param _Quuids: 生效主机的QUUID集合
+        :param _Quuids: <p>生效主机的QUUID集合</p>
         :type Quuids: list of str
-        :param _Category: 策略类型，0:系统  1:用户
+        :param _Category: <p>策略类型，0:系统  1:用户</p>
         :type Category: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _ModifyTime: 修改时间
+        :param _ModifyTime: <p>修改时间</p>
         :type ModifyTime: str
-        :param _Uuids: 老版本兼容可能会用到
+        :param _Uuids: <p>老版本兼容可能会用到</p>
         :type Uuids: list of str
-        :param _Rules: 规则表达式
+        :param _Rules: <p>规则表达式</p>
         :type Rules: :class:`tencentcloud.cwp.v20180228.models.PolicyRules`
+        :param _MatchType: <p>匹配类型：0-命令行（默认） 1-文件操作</p>
+        :type MatchType: int
         """
         self._Name = None
         self._Enable = None
@@ -13831,10 +14073,11 @@ class BashPolicy(AbstractModel):
         self._ModifyTime = None
         self._Uuids = None
         self._Rules = None
+        self._MatchType = None
 
     @property
     def Name(self):
-        r"""策略名称
+        r"""<p>策略名称</p>
         :rtype: str
         """
         return self._Name
@@ -13845,7 +14088,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Enable(self):
-        r"""1:有效 0:无效
+        r"""<p>1:有效 0:无效</p>
         :rtype: int
         """
         return self._Enable
@@ -13856,7 +14099,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def White(self):
-        r"""0:黑名单 1:白名单
+        r"""<p>0:黑名单 1:白名单</p>
         :rtype: int
         """
         return self._White
@@ -13867,7 +14110,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def BashAction(self):
-        r"""0:告警 1:白名单 2:拦截
+        r"""<p>0:告警 1:白名单 2:拦截</p>
         :rtype: int
         """
         return self._BashAction
@@ -13878,7 +14121,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Rule(self):
-        r"""正则表达式 base64 加密,该字段废弃,如果写入则自动替换为Rules.Process.CmdLine
+        r"""<p>正则表达式 base64 加密,该字段废弃,如果写入则自动替换为Rules.Process.CmdLine</p>
         :rtype: str
         """
         return self._Rule
@@ -13889,7 +14132,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Level(self):
-        r"""危险等级(0:无，1: 高危 2:中危 3: 低危)
+        r"""<p>危险等级(0:无，1: 高危 2:中危 3: 低危)</p>
         :rtype: int
         """
         return self._Level
@@ -13900,7 +14143,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Scope(self):
-        r"""生效范围（0:一组quuid 1:所有专业版(包含旗舰版) 2:所有旗舰版 3:所有主机）
+        r"""<p>生效范围（0:一组quuid 1:所有专业版(包含旗舰版) 2:所有旗舰版 3:所有主机）</p>
         :rtype: int
         """
         return self._Scope
@@ -13911,7 +14154,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Id(self):
-        r"""策略ID
+        r"""<p>策略ID</p>
         :rtype: int
         """
         return self._Id
@@ -13922,7 +14165,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Descript(self):
-        r"""策略描述
+        r"""<p>策略描述</p>
         :rtype: str
         """
         return self._Descript
@@ -13933,7 +14176,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def EventId(self):
-        r"""事件列表点击“加入白名单”时,需要传EventId 事件的id
+        r"""<p>事件列表点击“加入白名单”时,需要传EventId 事件的id</p>
         :rtype: int
         """
         return self._EventId
@@ -13944,7 +14187,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def DealOldEvents(self):
-        r"""是否处理旧事件为白名单 0=不处理 1=处理
+        r"""<p>是否处理旧事件为白名单 0=不处理 1=处理</p>
         :rtype: int
         """
         return self._DealOldEvents
@@ -13955,7 +14198,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Quuids(self):
-        r"""生效主机的QUUID集合
+        r"""<p>生效主机的QUUID集合</p>
         :rtype: list of str
         """
         return self._Quuids
@@ -13966,7 +14209,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Category(self):
-        r"""策略类型，0:系统  1:用户
+        r"""<p>策略类型，0:系统  1:用户</p>
         :rtype: int
         """
         return self._Category
@@ -13977,7 +14220,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -13988,7 +14231,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -13999,7 +14242,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Uuids(self):
-        r"""老版本兼容可能会用到
+        r"""<p>老版本兼容可能会用到</p>
         :rtype: list of str
         """
         return self._Uuids
@@ -14010,7 +14253,7 @@ class BashPolicy(AbstractModel):
 
     @property
     def Rules(self):
-        r"""规则表达式
+        r"""<p>规则表达式</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.PolicyRules`
         """
         return self._Rules
@@ -14018,6 +14261,17 @@ class BashPolicy(AbstractModel):
     @Rules.setter
     def Rules(self, Rules):
         self._Rules = Rules
+
+    @property
+    def MatchType(self):
+        r"""<p>匹配类型：0-命令行（默认） 1-文件操作</p>
+        :rtype: int
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
 
 
     def _deserialize(self, params):
@@ -14040,6 +14294,7 @@ class BashPolicy(AbstractModel):
         if params.get("Rules") is not None:
             self._Rules = PolicyRules()
             self._Rules._deserialize(params.get("Rules"))
+        self._MatchType = params.get("MatchType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93076,20 +93331,26 @@ class PolicyRules(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Process: 进程
+        :param _Process: <p>进程</p>
         :type Process: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
-        :param _PProcess: 父进程
+        :param _PProcess: <p>父进程</p>
         :type PProcess: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
-        :param _AProcess: 祖先进程
+        :param _AProcess: <p>祖先进程</p>
         :type AProcess: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
+        :param _FilePath: <p>目标文件路径（匹配类型=文件操作时有效）</p>
+        :type FilePath: str
+        :param _FileActions: <p>动作列表（匹配类型=文件操作时有效，多选为或关系）：read-读 write-写 rename-重命名 delete-删除 truncate-清空内容</p>
+        :type FileActions: list of str
         """
         self._Process = None
         self._PProcess = None
         self._AProcess = None
+        self._FilePath = None
+        self._FileActions = None
 
     @property
     def Process(self):
-        r"""进程
+        r"""<p>进程</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
         """
         return self._Process
@@ -93100,7 +93361,7 @@ class PolicyRules(AbstractModel):
 
     @property
     def PProcess(self):
-        r"""父进程
+        r"""<p>父进程</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
         """
         return self._PProcess
@@ -93111,7 +93372,7 @@ class PolicyRules(AbstractModel):
 
     @property
     def AProcess(self):
-        r"""祖先进程
+        r"""<p>祖先进程</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.CommandLine`
         """
         return self._AProcess
@@ -93119,6 +93380,28 @@ class PolicyRules(AbstractModel):
     @AProcess.setter
     def AProcess(self, AProcess):
         self._AProcess = AProcess
+
+    @property
+    def FilePath(self):
+        r"""<p>目标文件路径（匹配类型=文件操作时有效）</p>
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def FileActions(self):
+        r"""<p>动作列表（匹配类型=文件操作时有效，多选为或关系）：read-读 write-写 rename-重命名 delete-删除 truncate-清空内容</p>
+        :rtype: list of str
+        """
+        return self._FileActions
+
+    @FileActions.setter
+    def FileActions(self, FileActions):
+        self._FileActions = FileActions
 
 
     def _deserialize(self, params):
@@ -93131,6 +93414,8 @@ class PolicyRules(AbstractModel):
         if params.get("AProcess") is not None:
             self._AProcess = CommandLine()
             self._AProcess._deserialize(params.get("AProcess"))
+        self._FilePath = params.get("FilePath")
+        self._FileActions = params.get("FileActions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

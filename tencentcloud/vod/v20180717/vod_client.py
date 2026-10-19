@@ -5889,6 +5889,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def VideoDepthEstimation(self, request):
+        r"""视频深度估计接口。输入视频，输出灰度深度视频，白色为近、黑色为远。深度值为单视频内归一化的相对深度。输出存储由 OutputConfig 控制，默认临时存储 7 天后过期。任务提交成功后返回任务 ID，可通过 DescribeTaskDetail 查询结果
+
+        :param request: Request instance for VideoDepthEstimation.
+        :type request: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VideoDepthEstimation", params, headers=headers)
+            response = json.loads(body)
+            model = models.VideoDepthEstimationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def WeChatMiniProgramPublish(self, request):
         r"""将点播视频发布到微信小程序，供微信小程序播放器播放。
         本接口支持发布原始视频和转码后视频。

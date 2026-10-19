@@ -2838,9 +2838,12 @@ class AnonymousLoginInfo(AbstractModel):
         :param _SecretKey: <p>匿名登录账号secretKey</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
+        :param _RoleArn: <p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+        :type RoleArn: str
         """
         self._SecretId = None
         self._SecretKey = None
+        self._RoleArn = None
 
     @property
     def SecretId(self):
@@ -2866,10 +2869,22 @@ class AnonymousLoginInfo(AbstractModel):
     def SecretKey(self, SecretKey):
         self._SecretKey = SecretKey
 
+    @property
+    def RoleArn(self):
+        r"""<p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
 
     def _deserialize(self, params):
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
+        self._RoleArn = params.get("RoleArn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3046,10 +3061,13 @@ class AuthRoleInfo(AbstractModel):
         :param _SecretKey: <p>Auth角色对应权限SecretKey</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretKey: str
+        :param _RoleArn: <p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+        :type RoleArn: str
         """
         self._RoleName = None
         self._SecretId = None
         self._SecretKey = None
+        self._RoleArn = None
 
     @property
     def RoleName(self):
@@ -3085,11 +3103,23 @@ class AuthRoleInfo(AbstractModel):
     def SecretKey(self, SecretKey):
         self._SecretKey = SecretKey
 
+    @property
+    def RoleArn(self):
+        r"""<p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
 
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
+        self._RoleArn = params.get("RoleArn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5979,12 +6009,15 @@ class ConsoleAccount(AbstractModel):
         :param _Email: <p>电子邮箱，用于发送验证码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
+        :param _RoleArn: <p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+        :type RoleArn: str
         """
         self._UserName = None
         self._Password = None
         self._SecretId = None
         self._SecretKey = None
         self._Email = None
+        self._RoleArn = None
 
     @property
     def UserName(self):
@@ -6046,6 +6079,17 @@ class ConsoleAccount(AbstractModel):
     def Email(self, Email):
         self._Email = Email
 
+    @property
+    def RoleArn(self):
+        r"""<p>角色的资源描述，可在<a href="https://console.cloud.tencent.com/cam/role">访问管理</a>，点击角色名获取。<br>普通角色：<br>qcs::cam::uin/12345678:role/4611686018427397919、qcs::cam::uin/12345678:roleName/testRoleName<br>服务角色：<br>qcs::cam::uin/12345678:role/tencentcloudServiceRole/4611686018427397920、qcs::cam::uin/12345678:role/tencentcloudServiceRoleName/testServiceRoleName</p><p>DataSight将扮演此角色，使用此角色的临时密钥来发起API请求。</p>
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
@@ -6053,6 +6097,7 @@ class ConsoleAccount(AbstractModel):
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
         self._Email = params.get("Email")
+        self._RoleArn = params.get("RoleArn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9903,9 +9948,9 @@ class CreateConsoleRequest(AbstractModel):
         :type LoginMode: int
         :param _DomainPrefix: <p>自定义域名前缀</p>
         :type DomainPrefix: str
-        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
+        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
         :type Accounts: list of ConsoleAccount
-        :param _AnonymousLogin: <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+        :param _AnonymousLogin: <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
         :type AnonymousLogin: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
         :param _IntranetType: <p>内网类型，默认为0</p>
         :type IntranetType: int
@@ -9915,7 +9960,7 @@ class CreateConsoleRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: <p>内网子网SubnetId</p>
         :type SubnetId: str
-        :param _AuthRoles: <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传</p>
+        :param _AuthRoles: <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
         :type AuthRoles: list of AuthRoleInfo
         :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
         :type Tags: list of Tag
@@ -9979,7 +10024,7 @@ class CreateConsoleRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""<p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
+        r"""<p>用户账号信息</p><p>“账号密码鉴权”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
         :rtype: list of ConsoleAccount
         """
         return self._Accounts
@@ -9990,7 +10035,7 @@ class CreateConsoleRequest(AbstractModel):
 
     @property
     def AnonymousLogin(self):
-        r"""<p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+        r"""<p>匿名登录账号信息</p><p>“匿名登录”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
         """
         return self._AnonymousLogin
@@ -10045,7 +10090,7 @@ class CreateConsoleRequest(AbstractModel):
 
     @property
     def AuthRoles(self):
-        r"""<p>Auth角色信息</p><p>“第三方认证登录”登录方式必传</p>
+        r"""<p>Auth角色信息</p><p>“第三方认证登录”登录方式必传。<br>SecretId + SecretKey 或 RoleArn需要传其中一种。</p>
         :rtype: list of AuthRoleInfo
         """
         return self._AuthRoles
@@ -43689,9 +43734,9 @@ class ModifyConsoleRequest(AbstractModel):
         :type LoginMode: int
         :param _DomainPrefix: <p>自定义域名前缀</p>
         :type DomainPrefix: str
-        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
+        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
         :type Accounts: list of ConsoleAccount
-        :param _AnonymousLogin: <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+        :param _AnonymousLogin: <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
         :type AnonymousLogin: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
         :param _IntranetType: <p>内网类型，默认为0</p>
         :type IntranetType: int
@@ -43701,7 +43746,7 @@ class ModifyConsoleRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: <p>内网子网SubnetId</p>
         :type SubnetId: str
-        :param _AuthRoles: <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传</p>
+        :param _AuthRoles: <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
         :type AuthRoles: list of AuthRoleInfo
         :param _HideParams: <p>自定义隐藏参数</p>
         :type HideParams: list of str
@@ -43774,7 +43819,7 @@ class ModifyConsoleRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""<p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
+        r"""<p>用户账号信息</p><p>“账号密码鉴权”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
         :rtype: list of ConsoleAccount
         """
         return self._Accounts
@@ -43785,7 +43830,7 @@ class ModifyConsoleRequest(AbstractModel):
 
     @property
     def AnonymousLogin(self):
-        r"""<p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+        r"""<p>匿名登录账号信息</p><p>“匿名登录”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
         """
         return self._AnonymousLogin
@@ -43840,7 +43885,7 @@ class ModifyConsoleRequest(AbstractModel):
 
     @property
     def AuthRoles(self):
-        r"""<p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传</p>
+        r"""<p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传。<br>如果SecretId、SecretKey、RoleArn都不传，表示不修改这部分鉴权信息。</p>
         :rtype: list of AuthRoleInfo
         """
         return self._AuthRoles

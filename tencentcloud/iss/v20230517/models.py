@@ -3739,20 +3739,23 @@ class ControlDeviceStreamData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Flv: flv 流地址
+        :param _Flv: <p>flv 流地址</p>
         :type Flv: str
-        :param _Hls: hls 流地址
+        :param _Hls: <p>hls 流地址</p>
         :type Hls: str
-        :param _Rtmp: rtmp 流地址
+        :param _Rtmp: <p>rtmp 流地址</p>
         :type Rtmp: str
+        :param _FMp4: <p>fmp4地址</p>
+        :type FMp4: str
         """
         self._Flv = None
         self._Hls = None
         self._Rtmp = None
+        self._FMp4 = None
 
     @property
     def Flv(self):
-        r"""flv 流地址
+        r"""<p>flv 流地址</p>
         :rtype: str
         """
         return self._Flv
@@ -3763,7 +3766,7 @@ class ControlDeviceStreamData(AbstractModel):
 
     @property
     def Hls(self):
-        r"""hls 流地址
+        r"""<p>hls 流地址</p>
         :rtype: str
         """
         return self._Hls
@@ -3774,7 +3777,7 @@ class ControlDeviceStreamData(AbstractModel):
 
     @property
     def Rtmp(self):
-        r"""rtmp 流地址
+        r"""<p>rtmp 流地址</p>
         :rtype: str
         """
         return self._Rtmp
@@ -3783,11 +3786,23 @@ class ControlDeviceStreamData(AbstractModel):
     def Rtmp(self, Rtmp):
         self._Rtmp = Rtmp
 
+    @property
+    def FMp4(self):
+        r"""<p>fmp4地址</p>
+        :rtype: str
+        """
+        return self._FMp4
+
+    @FMp4.setter
+    def FMp4(self, FMp4):
+        self._FMp4 = FMp4
+
 
     def _deserialize(self, params):
         self._Flv = params.get("Flv")
         self._Hls = params.get("Hls")
         self._Rtmp = params.get("Rtmp")
+        self._FMp4 = params.get("FMp4")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3805,20 +3820,13 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelId: 通道 ID（从通道查询接口DescribeDeviceChannel中获取）
+        :param _ChannelId: <p>通道 ID（从通道查询接口DescribeDeviceChannel中获取）</p>
         :type ChannelId: str
-        :param _StreamType: 流类型（1:主码流；
-2:子码流（不可以和 Resolution 同时下发））
+        :param _StreamType: <p>流类型（1:主码流；<br>2:子码流（不可以和 Resolution 同时下发））</p>
         :type StreamType: str
-        :param _Resolution: 分辨率（1:QCIF；
-2:CIF；
-3:4CIF；
-4:D1；
-5:720P；
-6:1080P/I；
-自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+        :param _Resolution: <p>分辨率（1:QCIF；<br>2:CIF；<br>3:4CIF；<br>4:D1；<br>5:720P；<br>6:1080P/I；<br>自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））</p>
         :type Resolution: str
-        :param _IsInternal: 是否内网
+        :param _IsInternal: <p>是否内网</p>
         :type IsInternal: bool
         """
         self._ChannelId = None
@@ -3828,7 +3836,7 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通道 ID（从通道查询接口DescribeDeviceChannel中获取）
+        r"""<p>通道 ID（从通道查询接口DescribeDeviceChannel中获取）</p>
         :rtype: str
         """
         return self._ChannelId
@@ -3839,8 +3847,7 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     @property
     def StreamType(self):
-        r"""流类型（1:主码流；
-2:子码流（不可以和 Resolution 同时下发））
+        r"""<p>流类型（1:主码流；<br>2:子码流（不可以和 Resolution 同时下发））</p>
         :rtype: str
         """
         return self._StreamType
@@ -3851,13 +3858,7 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""分辨率（1:QCIF；
-2:CIF；
-3:4CIF；
-4:D1；
-5:720P；
-6:1080P/I；
-自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+        r"""<p>分辨率（1:QCIF；<br>2:CIF；<br>3:4CIF；<br>4:D1；<br>5:720P；<br>6:1080P/I；<br>自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））</p>
         :rtype: str
         """
         return self._Resolution
@@ -3868,7 +3869,7 @@ class ControlDeviceStreamRequest(AbstractModel):
 
     @property
     def IsInternal(self):
-        r"""是否内网
+        r"""<p>是否内网</p>
         :rtype: bool
         """
         return self._IsInternal
@@ -3900,7 +3901,7 @@ class ControlDeviceStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回数据
+        :param _Data: <p>返回数据</p>
         :type Data: :class:`tencentcloud.iss.v20230517.models.ControlDeviceStreamData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3910,7 +3911,7 @@ class ControlDeviceStreamResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回数据
+        r"""<p>返回数据</p>
         :rtype: :class:`tencentcloud.iss.v20230517.models.ControlDeviceStreamData`
         """
         return self._Data
@@ -14664,14 +14665,17 @@ class PlayRecordData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Flv: 录像播放地址
+        :param _Flv: <p>flv录像播放地址</p>
         :type Flv: str
+        :param _FMp4: <p>fmp4录像播放地址</p>
+        :type FMp4: str
         """
         self._Flv = None
+        self._FMp4 = None
 
     @property
     def Flv(self):
-        r"""录像播放地址
+        r"""<p>flv录像播放地址</p>
         :rtype: str
         """
         return self._Flv
@@ -14680,9 +14684,21 @@ class PlayRecordData(AbstractModel):
     def Flv(self, Flv):
         self._Flv = Flv
 
+    @property
+    def FMp4(self):
+        r"""<p>fmp4录像播放地址</p>
+        :rtype: str
+        """
+        return self._FMp4
+
+    @FMp4.setter
+    def FMp4(self, FMp4):
+        self._FMp4 = FMp4
+
 
     def _deserialize(self, params):
         self._Flv = params.get("Flv")
+        self._FMp4 = params.get("FMp4")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14700,17 +14716,17 @@ class PlayRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelId: 通道 ID（从查询通道DescribeDeviceChannel接口中获取）
+        :param _ChannelId: <p>通道 ID（从查询通道DescribeDeviceChannel接口中获取）</p>
         :type ChannelId: str
-        :param _Start: 起始时间
+        :param _Start: <p>起始时间</p>
         :type Start: int
-        :param _End:  结束时间
+        :param _End: <p>结束时间</p>
         :type End: int
-        :param _StreamType: 流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））
+        :param _StreamType: <p>流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））</p>
         :type StreamType: int
-        :param _Resolution: 分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+        :param _Resolution: <p>分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））</p>
         :type Resolution: str
-        :param _IsInternal: 是否内网
+        :param _IsInternal: <p>是否内网</p>
         :type IsInternal: bool
         """
         self._ChannelId = None
@@ -14722,7 +14738,7 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通道 ID（从查询通道DescribeDeviceChannel接口中获取）
+        r"""<p>通道 ID（从查询通道DescribeDeviceChannel接口中获取）</p>
         :rtype: str
         """
         return self._ChannelId
@@ -14733,7 +14749,7 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def Start(self):
-        r"""起始时间
+        r"""<p>起始时间</p>
         :rtype: int
         """
         return self._Start
@@ -14744,7 +14760,7 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def End(self):
-        r""" 结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._End
@@ -14755,7 +14771,7 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def StreamType(self):
-        r"""流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））
+        r"""<p>流类型（1:主码流；2:子码流（不可以和 Resolution 同时下发））</p>
         :rtype: int
         """
         return self._StreamType
@@ -14766,7 +14782,7 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））
+        r"""<p>分辨率（1:QCIF；2:CIF； 3:4CIF； 4:D1； 5:720P； 6:1080P/I； 自定义的19201080等等（需设备支持）（不可以和 StreamType 同时下发））</p>
         :rtype: str
         """
         return self._Resolution
@@ -14777,7 +14793,7 @@ class PlayRecordRequest(AbstractModel):
 
     @property
     def IsInternal(self):
-        r"""是否内网
+        r"""<p>是否内网</p>
         :rtype: bool
         """
         return self._IsInternal
@@ -14811,7 +14827,7 @@ class PlayRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回结果
+        :param _Data: <p>返回结果</p>
         :type Data: :class:`tencentcloud.iss.v20230517.models.PlayRecordData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14821,7 +14837,7 @@ class PlayRecordResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回结果
+        r"""<p>返回结果</p>
         :rtype: :class:`tencentcloud.iss.v20230517.models.PlayRecordData`
         """
         return self._Data

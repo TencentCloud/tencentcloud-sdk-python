@@ -8030,6 +8030,130 @@ class BillingAttribute(AbstractModel):
         
 
 
+class CallMCPToolRequest(AbstractModel):
+    r"""CallMCPTool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>能力边界：一次请求只能调该 plugin 上的工具</p>
+        :type PluginId: str
+        :param _ThreadId: <p>agent-exec 侧 thread</p>
+        :type ThreadId: str
+        :param _ToolName: <p>工具名，用于在 plugin 配置的 tool_list 中定位 tool_id</p>
+        :type ToolName: str
+        :param _Arguments: <p>JSON：工具入参原文，原样透传给 MCP Server</p>
+        :type Arguments: str
+        """
+        self._PluginId = None
+        self._ThreadId = None
+        self._ToolName = None
+        self._Arguments = None
+
+    @property
+    def PluginId(self):
+        r"""<p>能力边界：一次请求只能调该 plugin 上的工具</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def ThreadId(self):
+        r"""<p>agent-exec 侧 thread</p>
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def ToolName(self):
+        r"""<p>工具名，用于在 plugin 配置的 tool_list 中定位 tool_id</p>
+        :rtype: str
+        """
+        return self._ToolName
+
+    @ToolName.setter
+    def ToolName(self, ToolName):
+        self._ToolName = ToolName
+
+    @property
+    def Arguments(self):
+        r"""<p>JSON：工具入参原文，原样透传给 MCP Server</p>
+        :rtype: str
+        """
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._ThreadId = params.get("ThreadId")
+        self._ToolName = params.get("ToolName")
+        self._Arguments = params.get("Arguments")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CallMCPToolResponse(AbstractModel):
+    r"""CallMCPTool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>JSON：完整 CallToolResult 原文，含 structuredContent / isError / _meta</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>JSON：完整 CallToolResult 原文，含 structuredContent / isError / _meta</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CallSource(AbstractModel):
     r"""调用来源
 
@@ -31271,6 +31395,112 @@ class MCPPluginConfig(AbstractModel):
         
 
 
+class MCPResourceContents(AbstractModel):
+    r"""MCP ResourceContents，chat-manage 侧不解析内部字段，仅结构透传
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Blob: <p>二进制内容，与 text 二选一</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Blob: str
+        :param _Meta: <p>JSON：单个资源的 _meta 原文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Meta: str
+        :param _MimeType: <p>MIME 类型，MCP App 的 HTML 为 text/html;profile=mcp-app</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MimeType: str
+        :param _Text: <p>文本内容，与 blob 二选一</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _Uri: <p>资源 URI</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uri: str
+        """
+        self._Blob = None
+        self._Meta = None
+        self._MimeType = None
+        self._Text = None
+        self._Uri = None
+
+    @property
+    def Blob(self):
+        r"""<p>二进制内容，与 text 二选一</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Blob
+
+    @Blob.setter
+    def Blob(self, Blob):
+        self._Blob = Blob
+
+    @property
+    def Meta(self):
+        r"""<p>JSON：单个资源的 _meta 原文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
+    @property
+    def MimeType(self):
+        r"""<p>MIME 类型，MCP App 的 HTML 为 text/html;profile=mcp-app</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MimeType
+
+    @MimeType.setter
+    def MimeType(self, MimeType):
+        self._MimeType = MimeType
+
+    @property
+    def Text(self):
+        r"""<p>文本内容，与 blob 二选一</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Uri(self):
+        r"""<p>资源 URI</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+
+    def _deserialize(self, params):
+        self._Blob = params.get("Blob")
+        self._Meta = params.get("Meta")
+        self._MimeType = params.get("MimeType")
+        self._Text = params.get("Text")
+        self._Uri = params.get("Uri")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MCPToolConfig(AbstractModel):
     r"""MCPToolConfig
 
@@ -39517,6 +39747,135 @@ class QASummary(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReadMCPResourceRequest(AbstractModel):
+    r"""ReadMCPResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>能力边界：一次请求只能读该 plugin 的资源</p>
+        :type PluginId: str
+        :param _ThreadId: <p>agent-exec 侧 thread</p>
+        :type ThreadId: str
+        :param _Uri: <p>资源 URI，来源 tool 的 _meta.ui.resourceUri</p>
+        :type Uri: str
+        """
+        self._PluginId = None
+        self._ThreadId = None
+        self._Uri = None
+
+    @property
+    def PluginId(self):
+        r"""<p>能力边界：一次请求只能读该 plugin 的资源</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def ThreadId(self):
+        r"""<p>agent-exec 侧 thread</p>
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def Uri(self):
+        r"""<p>资源 URI，来源 tool 的 _meta.ui.resourceUri</p>
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._ThreadId = params.get("ThreadId")
+        self._Uri = params.get("Uri")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReadMCPResourceResponse(AbstractModel):
+    r"""ReadMCPResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Contents: <p>MCP resources/read 返回的资源内容</p>
+        :type Contents: list of MCPResourceContents
+        :param _ResourceMeta: <p>JSON：Resource 的 _meta 原文，MCP App 场景 Host 依据 ui.csp 强制 CSP 策略</p>
+        :type ResourceMeta: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Contents = None
+        self._ResourceMeta = None
+        self._RequestId = None
+
+    @property
+    def Contents(self):
+        r"""<p>MCP resources/read 返回的资源内容</p>
+        :rtype: list of MCPResourceContents
+        """
+        return self._Contents
+
+    @Contents.setter
+    def Contents(self, Contents):
+        self._Contents = Contents
+
+    @property
+    def ResourceMeta(self):
+        r"""<p>JSON：Resource 的 _meta 原文，MCP App 场景 Host 依据 ui.csp 强制 CSP 策略</p>
+        :rtype: str
+        """
+        return self._ResourceMeta
+
+    @ResourceMeta.setter
+    def ResourceMeta(self, ResourceMeta):
+        self._ResourceMeta = ResourceMeta
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Contents") is not None:
+            self._Contents = []
+            for item in params.get("Contents"):
+                obj = MCPResourceContents()
+                obj._deserialize(item)
+                self._Contents.append(obj)
+        self._ResourceMeta = params.get("ResourceMeta")
+        self._RequestId = params.get("RequestId")
 
 
 class ReleaseRecord(AbstractModel):

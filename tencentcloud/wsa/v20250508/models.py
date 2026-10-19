@@ -27,7 +27,7 @@ class SearchProRequest(AbstractModel):
         r"""
         :param _Query: <p>搜索词</p>
         :type Query: str
-        :param _Mode: <p>返回结果类型，不传默认为0。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>0： 公开网页信源结果（自然结果）</li><li>1： 优质权威垂直信源结果（VR 卡）</li><li>2： 混合结果（自然结果+VR卡）</li></ul>
+        :param _Mode: <p>返回结果类型，不传默认为0。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>0： 公开网页信源结果<pre><code>  注：旗舰版在此模式下会额外返回一部分不影响接口耗时的“优质权威垂直信源”结果。</code></pre></li><li>1： 优质权威垂直信源结果</li><li>2： 混合结果</li></ul>
         :type Mode: int
         :param _Site: <p>指定网址搜索/过滤。</p><ul><li>指定网址搜索：需要查询某个特定网址的内容时，传入&quot;Site=qq.com&quot;，实现只搜索qq.com的结果；每次搜索仅支持指定一个域名。</li><li>指定网址过滤：需要排除某个特定网址的内容时，传入&quot;Site=exclude:qq.com|sohu.com&quot;，实现过滤qq.com和sohu.com的结果；每次搜索最多支持过滤五个域名。</li></ul><p>注意： 该参数与mode参数共同使用时，仅对公开网页信源结果（自然结果）生效，对优质权威垂直信源结果（VR卡）不生效。</p>
         :type Site: str
@@ -61,7 +61,7 @@ class SearchProRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""<p>返回结果类型，不传默认为0。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>0： 公开网页信源结果（自然结果）</li><li>1： 优质权威垂直信源结果（VR 卡）</li><li>2： 混合结果（自然结果+VR卡）</li></ul>
+        r"""<p>返回结果类型，不传默认为0。（<strong>极速版不支持该参数</strong>）</p><p>枚举值：</p><ul><li>0： 公开网页信源结果<pre><code>  注：旗舰版在此模式下会额外返回一部分不影响接口耗时的“优质权威垂直信源”结果。</code></pre></li><li>1： 优质权威垂直信源结果</li><li>2： 混合结果</li></ul>
         :rtype: int
         """
         return self._Mode

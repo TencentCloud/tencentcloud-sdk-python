@@ -2934,59 +2934,61 @@ class Apply(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicantId: 申请人id
+        :param _ApplicantId: <p>申请人id</p>
         :type ApplicantId: str
-        :param _ApplicantName: 申请人名称
+        :param _ApplicantName: <p>申请人名称</p>
         :type ApplicantName: str
-        :param _Remark: 审批备注
+        :param _Remark: <p>审批备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _ApproveClassification: 审批分类key
+        :param _ApproveClassification: <p>审批分类key</p>
         :type ApproveClassification: str
-        :param _ApproveId: 审批单id
+        :param _ApproveId: <p>审批单id</p>
         :type ApproveId: str
-        :param _ApproveType: 审批类型key
+        :param _ApproveType: <p>审批类型key</p>
         :type ApproveType: str
-        :param _Reason: 申请原因
+        :param _Reason: <p>申请原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _ApproveTime: 审批时间
+        :param _ApproveTime: <p>审批时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveTime: str
-        :param _ApproveClassificationName: 审批分类名称
+        :param _ApproveClassificationName: <p>审批分类名称</p>
         :type ApproveClassificationName: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _ApproveTypeName: 审批类型名称
+        :param _ApproveTypeName: <p>审批类型名称</p>
         :type ApproveTypeName: str
-        :param _ErrorMessage: 审批异常或者失败信息
+        :param _ErrorMessage: <p>审批异常或者失败信息</p>
         :type ErrorMessage: str
-        :param _ApplyName: 申请名称
+        :param _ApplyName: <p>申请名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyName: str
-        :param _ApproverId: 审批人id
+        :param _ApproverId: <p>审批人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverId: str
-        :param _ApproverName: 审批人名称
+        :param _ApproverName: <p>审批人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproverName: str
-        :param _ApproveProjectName: 审批所属项目
+        :param _ApproveProjectName: <p>审批所属项目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveProjectName: str
-        :param _ApplyId: 审批id
+        :param _ApplyId: <p>审批id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApplyId: str
-        :param _Metadata: 扩展字段
+        :param _Metadata: <p>扩展字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: str
-        :param _CreateTimestamp: 创建时间
+        :param _CreateTimestamp: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTimestamp: int
-        :param _ApproveTimestamp: 审批时间
+        :param _ApproveTimestamp: <p>审批时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApproveTimestamp: int
+        :param _ApproveCode: <p>审批扩展码</p>
+        :type ApproveCode: str
         """
         self._ApplicantId = None
         self._ApplicantName = None
@@ -3009,10 +3011,11 @@ class Apply(AbstractModel):
         self._Metadata = None
         self._CreateTimestamp = None
         self._ApproveTimestamp = None
+        self._ApproveCode = None
 
     @property
     def ApplicantId(self):
-        r"""申请人id
+        r"""<p>申请人id</p>
         :rtype: str
         """
         return self._ApplicantId
@@ -3023,7 +3026,7 @@ class Apply(AbstractModel):
 
     @property
     def ApplicantName(self):
-        r"""申请人名称
+        r"""<p>申请人名称</p>
         :rtype: str
         """
         return self._ApplicantName
@@ -3034,7 +3037,7 @@ class Apply(AbstractModel):
 
     @property
     def Remark(self):
-        r"""审批备注
+        r"""<p>审批备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3046,7 +3049,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproveClassification(self):
-        r"""审批分类key
+        r"""<p>审批分类key</p>
         :rtype: str
         """
         return self._ApproveClassification
@@ -3057,7 +3060,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproveId(self):
-        r"""审批单id
+        r"""<p>审批单id</p>
         :rtype: str
         """
         return self._ApproveId
@@ -3068,7 +3071,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproveType(self):
-        r"""审批类型key
+        r"""<p>审批类型key</p>
         :rtype: str
         """
         return self._ApproveType
@@ -3079,7 +3082,7 @@ class Apply(AbstractModel):
 
     @property
     def Reason(self):
-        r"""申请原因
+        r"""<p>申请原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3091,7 +3094,7 @@ class Apply(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -3102,7 +3105,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproveTime(self):
-        r"""审批时间
+        r"""<p>审批时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3114,7 +3117,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproveClassificationName(self):
-        r"""审批分类名称
+        r"""<p>审批分类名称</p>
         :rtype: str
         """
         return self._ApproveClassificationName
@@ -3125,7 +3128,7 @@ class Apply(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -3136,7 +3139,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproveTypeName(self):
-        r"""审批类型名称
+        r"""<p>审批类型名称</p>
         :rtype: str
         """
         return self._ApproveTypeName
@@ -3147,7 +3150,7 @@ class Apply(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""审批异常或者失败信息
+        r"""<p>审批异常或者失败信息</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -3158,7 +3161,7 @@ class Apply(AbstractModel):
 
     @property
     def ApplyName(self):
-        r"""申请名称
+        r"""<p>申请名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3170,7 +3173,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproverId(self):
-        r"""审批人id
+        r"""<p>审批人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3182,7 +3185,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproverName(self):
-        r"""审批人名称
+        r"""<p>审批人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3194,7 +3197,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproveProjectName(self):
-        r"""审批所属项目
+        r"""<p>审批所属项目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3206,7 +3209,7 @@ class Apply(AbstractModel):
 
     @property
     def ApplyId(self):
-        r"""审批id
+        r"""<p>审批id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3218,7 +3221,7 @@ class Apply(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""扩展字段
+        r"""<p>扩展字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3230,7 +3233,7 @@ class Apply(AbstractModel):
 
     @property
     def CreateTimestamp(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3242,7 +3245,7 @@ class Apply(AbstractModel):
 
     @property
     def ApproveTimestamp(self):
-        r"""审批时间
+        r"""<p>审批时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3251,6 +3254,17 @@ class Apply(AbstractModel):
     @ApproveTimestamp.setter
     def ApproveTimestamp(self, ApproveTimestamp):
         self._ApproveTimestamp = ApproveTimestamp
+
+    @property
+    def ApproveCode(self):
+        r"""<p>审批扩展码</p>
+        :rtype: str
+        """
+        return self._ApproveCode
+
+    @ApproveCode.setter
+    def ApproveCode(self, ApproveCode):
+        self._ApproveCode = ApproveCode
 
 
     def _deserialize(self, params):
@@ -3275,6 +3289,7 @@ class Apply(AbstractModel):
         self._Metadata = params.get("Metadata")
         self._CreateTimestamp = params.get("CreateTimestamp")
         self._ApproveTimestamp = params.get("ApproveTimestamp")
+        self._ApproveCode = params.get("ApproveCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80067,78 +80082,80 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目Id
+        :param _ProjectId: <p>项目Id</p>
         :type ProjectId: str
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
-        :param _DelayTime: 执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟
+        :param _DelayTime: <p>执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟</p>
         :type DelayTime: int
-        :param _StartupTime: 启动时间：该字段已废弃，无需填写
+        :param _StartupTime: <p>启动时间：该字段已废弃，无需填写</p>
         :type StartupTime: int
-        :param _SelfDepend: 自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值
+        :param _SelfDepend: <p>自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值</p>
         :type SelfDepend: int
-        :param _StartTime: 生效开始时间，格式 yyyy-MM-dd HH:mm:ss
+        :param _StartTime: <p>生效开始时间，格式 yyyy-MM-dd HH:mm:ss</p>
         :type StartTime: str
-        :param _EndTime: 生效结束时间，格式 yyyy-MM-dd HH:mm:ss
+        :param _EndTime: <p>生效结束时间，格式 yyyy-MM-dd HH:mm:ss</p>
         :type EndTime: str
-        :param _TaskAction: 调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。
+        :param _TaskAction: <p>调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。</p>
         :type TaskAction: str
-        :param _CycleType: 周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离
+        :param _CycleType: <p>周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离</p>
         :type CycleType: int
-        :param _CycleStep: 小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。
+        :param _CycleStep: <p>小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。</p>
         :type CycleStep: int
-        :param _CrontabExpression: cron表达式  周期类型为crontab调度才需要
+        :param _CrontabExpression: <p>cron表达式  周期类型为crontab调度才需要</p>
         :type CrontabExpression: str
-        :param _ExecutionStartTime: 执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+        :param _ExecutionStartTime: <p>执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效</p>
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+        :param _ExecutionEndTime: <p>执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效</p>
         :type ExecutionEndTime: str
-        :param _TaskName: 任务名，该字段废弃，请勿使用该字段重命名任务
+        :param _TaskName: <p>任务名，该字段废弃，请勿使用该字段重命名任务</p>
         :type TaskName: str
-        :param _RetryWait: 失败重试间隔,单位分钟，创建任务的时候已经给了默认值
+        :param _RetryWait: <p>失败重试间隔,单位分钟，创建任务的时候已经给了默认值</p>
         :type RetryWait: int
-        :param _TryLimit: 失败重试次数，创建任务的时候已经给了默认值
+        :param _TryLimit: <p>失败重试次数，创建任务的时候已经给了默认值</p>
         :type TryLimit: int
-        :param _Retriable: 是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值
+        :param _Retriable: <p>是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值</p>
         :type Retriable: int
-        :param _RunPriority: 运行优先级，4高 5中 6低；暂不支持其他值
+        :param _RunPriority: <p>运行优先级，4高 5中 6低；暂不支持其他值</p>
         :type RunPriority: int
-        :param _TaskExt: 任务的扩展配置
+        :param _TaskExt: <p>任务的扩展配置</p>
         :type TaskExt: list of TaskExtInfo
-        :param _ResourceGroup: 执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器
+        :param _ResourceGroup: <p>执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器</p>
         :type ResourceGroup: str
-        :param _YarnQueue: 资源池队列名称
+        :param _YarnQueue: <p>资源池队列名称</p>
         :type YarnQueue: str
-        :param _BrokerIp: 资源组下具体执行机，any 表示可以跑在任意一台。
+        :param _BrokerIp: <p>资源组下具体执行机，any 表示可以跑在任意一台。</p>
         :type BrokerIp: str
-        :param _InCharge: 责任人，多个责任人请用分号隔开
+        :param _InCharge: <p>责任人，多个责任人请用分号隔开</p>
         :type InCharge: str
-        :param _Notes: 任务备注
+        :param _Notes: <p>任务备注</p>
         :type Notes: str
-        :param _TaskParamInfos: 任务参数
+        :param _TaskParamInfos: <p>任务参数</p>
         :type TaskParamInfos: list of ParamInfo
-        :param _SourceServer: 源数据源Id
+        :param _SourceServer: <p>源数据源Id</p>
         :type SourceServer: str
-        :param _TargetServer: 目标数据源Id
+        :param _TargetServer: <p>目标数据源Id</p>
         :type TargetServer: str
-        :param _DependencyWorkflow: 是否支持工作流依赖 yes / no 默认 no
+        :param _DependencyWorkflow: <p>是否支持工作流依赖 yes / no 默认 no</p>
         :type DependencyWorkflow: str
-        :param _DependencyConfigDTOs: 依赖配置,仅可修改上游任务实例配置方法
+        :param _DependencyConfigDTOs: <p>依赖配置,仅可修改上游任务实例配置方法</p>
         :type DependencyConfigDTOs: list of DependencyConfig
-        :param _ExecutionTTL: 运行耗时超时时间分钟数
+        :param _ExecutionTTL: <p>运行耗时超时时间分钟数</p>
         :type ExecutionTTL: int
-        :param _ScriptChange: 脚本是否改变
+        :param _ScriptChange: <p>脚本是否改变</p>
         :type ScriptChange: bool
-        :param _ScheduleTimeZone: 任务时区，仅支持整数时区配置
+        :param _ScheduleTimeZone: <p>任务时区，仅支持整数时区配置</p>
         :type ScheduleTimeZone: str
-        :param _ScheduleRunType: 0 正常调度 1 空跑调度；暂不支持其他值
+        :param _ScheduleRunType: <p>0 正常调度 1 空跑调度；暂不支持其他值</p>
         :type ScheduleRunType: int
-        :param _ConcurrentStrategy: 0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值
+        :param _ConcurrentStrategy: <p>0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值</p>
         :type ConcurrentStrategy: int
-        :param _RegisterDsEventPublisherRequest: shell任务发布事件
+        :param _RegisterDsEventPublisherRequest: <p>shell任务发布事件</p>
         :type RegisterDsEventPublisherRequest: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventPublisherReq`
-        :param _Content: base64编码后脚本内容
+        :param _Content: <p>base64编码后脚本内容</p>
         :type Content: str
+        :param _MinuteOffset: <p>分钟任务相位偏移</p>
+        :type MinuteOffset: int
         """
         self._ProjectId = None
         self._TaskId = None
@@ -80176,10 +80193,11 @@ class ModifyTaskInfoDsRequest(AbstractModel):
         self._ConcurrentStrategy = None
         self._RegisterDsEventPublisherRequest = None
         self._Content = None
+        self._MinuteOffset = None
 
     @property
     def ProjectId(self):
-        r"""项目Id
+        r"""<p>项目Id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -80190,7 +80208,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -80201,7 +80219,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟
+        r"""<p>执行时间，单位分钟，天/周/月/年调度才有。比如天调度，每天的02:00点执行一次，delayTime就是120分钟</p>
         :rtype: int
         """
         return self._DelayTime
@@ -80212,7 +80230,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def StartupTime(self):
-        r"""启动时间：该字段已废弃，无需填写
+        r"""<p>启动时间：该字段已废弃，无需填写</p>
         :rtype: int
         """
         return self._StartupTime
@@ -80223,7 +80241,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def SelfDepend(self):
-        r"""自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值
+        r"""<p>自依赖类型  1:有序串行 一次一个 排队  2: 无序串行 一次一个 不排队 3:并行 一次多个；暂不支持其他值</p>
         :rtype: int
         """
         return self._SelfDepend
@@ -80234,7 +80252,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""生效开始时间，格式 yyyy-MM-dd HH:mm:ss
+        r"""<p>生效开始时间，格式 yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._StartTime
@@ -80245,7 +80263,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""生效结束时间，格式 yyyy-MM-dd HH:mm:ss
+        r"""<p>生效结束时间，格式 yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._EndTime
@@ -80256,7 +80274,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def TaskAction(self):
-        r"""调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。
+        r"""<p>调度配置-弹性周期配置，小时/周/月/年调度才有，小时任务指定每天的0点3点4点跑，则为 0,3,4。设置该值时，请把CycleStep字段设置为1（如果原始值不为1）。</p>
         :rtype: str
         """
         return self._TaskAction
@@ -80267,7 +80285,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离
+        r"""<p>周期类型  0:crontab类型, 1:分钟，2:小时，3:天，4:周，5:月，6:一次性，7:用户驱动，10:弹性周期 周,11:弹性周期 月,12:年,13:即时触发Instant类型，与正常周期调度任务逻辑隔离</p>
         :rtype: int
         """
         return self._CycleType
@@ -80278,7 +80296,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def CycleStep(self):
-        r"""小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。
+        r"""<p>小时和分钟任务才有；分钟任务：5、10、15、20、30，表示每隔5【或其他值】分钟执行一次；小时任务：1、2、3、4、5、6、7、8、9、10、11、12，表示每隔1【或其他值】小时执行一次。该值大于1时，请把TaskAction字段设置为空字符串。</p>
         :rtype: int
         """
         return self._CycleStep
@@ -80289,7 +80307,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def CrontabExpression(self):
-        r"""cron表达式  周期类型为crontab调度才需要
+        r"""<p>cron表达式  周期类型为crontab调度才需要</p>
         :rtype: str
         """
         return self._CrontabExpression
@@ -80300,7 +80318,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+        r"""<p>执行时间左闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效</p>
         :rtype: str
         """
         return self._ExecutionStartTime
@@ -80311,7 +80329,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效
+        r"""<p>执行时间右闭区间，格式：HH:mm  小时调度才有，例如小时任务, 每日固定区间生效</p>
         :rtype: str
         """
         return self._ExecutionEndTime
@@ -80322,7 +80340,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名，该字段废弃，请勿使用该字段重命名任务
+        r"""<p>任务名，该字段废弃，请勿使用该字段重命名任务</p>
         :rtype: str
         """
         return self._TaskName
@@ -80333,7 +80351,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def RetryWait(self):
-        r"""失败重试间隔,单位分钟，创建任务的时候已经给了默认值
+        r"""<p>失败重试间隔,单位分钟，创建任务的时候已经给了默认值</p>
         :rtype: int
         """
         return self._RetryWait
@@ -80344,7 +80362,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def TryLimit(self):
-        r"""失败重试次数，创建任务的时候已经给了默认值
+        r"""<p>失败重试次数，创建任务的时候已经给了默认值</p>
         :rtype: int
         """
         return self._TryLimit
@@ -80355,7 +80373,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def Retriable(self):
-        r"""是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值
+        r"""<p>是否可重试，0代码不可重试，1代表可以重试；暂不支持其他值</p>
         :rtype: int
         """
         return self._Retriable
@@ -80366,7 +80384,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def RunPriority(self):
-        r"""运行优先级，4高 5中 6低；暂不支持其他值
+        r"""<p>运行优先级，4高 5中 6低；暂不支持其他值</p>
         :rtype: int
         """
         return self._RunPriority
@@ -80377,7 +80395,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def TaskExt(self):
-        r"""任务的扩展配置
+        r"""<p>任务的扩展配置</p>
         :rtype: list of TaskExtInfo
         """
         return self._TaskExt
@@ -80388,7 +80406,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def ResourceGroup(self):
-        r"""执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器
+        r"""<p>执行资源组Id，需要去资源管理服务上创建调度资源组，并且绑定cvm机器</p>
         :rtype: str
         """
         return self._ResourceGroup
@@ -80399,7 +80417,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def YarnQueue(self):
-        r"""资源池队列名称
+        r"""<p>资源池队列名称</p>
         :rtype: str
         """
         return self._YarnQueue
@@ -80410,7 +80428,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def BrokerIp(self):
-        r"""资源组下具体执行机，any 表示可以跑在任意一台。
+        r"""<p>资源组下具体执行机，any 表示可以跑在任意一台。</p>
         :rtype: str
         """
         return self._BrokerIp
@@ -80421,7 +80439,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def InCharge(self):
-        r"""责任人，多个责任人请用分号隔开
+        r"""<p>责任人，多个责任人请用分号隔开</p>
         :rtype: str
         """
         return self._InCharge
@@ -80432,7 +80450,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def Notes(self):
-        r"""任务备注
+        r"""<p>任务备注</p>
         :rtype: str
         """
         return self._Notes
@@ -80443,7 +80461,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def TaskParamInfos(self):
-        r"""任务参数
+        r"""<p>任务参数</p>
         :rtype: list of ParamInfo
         """
         return self._TaskParamInfos
@@ -80454,7 +80472,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def SourceServer(self):
-        r"""源数据源Id
+        r"""<p>源数据源Id</p>
         :rtype: str
         """
         return self._SourceServer
@@ -80465,7 +80483,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def TargetServer(self):
-        r"""目标数据源Id
+        r"""<p>目标数据源Id</p>
         :rtype: str
         """
         return self._TargetServer
@@ -80476,7 +80494,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def DependencyWorkflow(self):
-        r"""是否支持工作流依赖 yes / no 默认 no
+        r"""<p>是否支持工作流依赖 yes / no 默认 no</p>
         :rtype: str
         """
         return self._DependencyWorkflow
@@ -80487,7 +80505,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def DependencyConfigDTOs(self):
-        r"""依赖配置,仅可修改上游任务实例配置方法
+        r"""<p>依赖配置,仅可修改上游任务实例配置方法</p>
         :rtype: list of DependencyConfig
         """
         return self._DependencyConfigDTOs
@@ -80498,7 +80516,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def ExecutionTTL(self):
-        r"""运行耗时超时时间分钟数
+        r"""<p>运行耗时超时时间分钟数</p>
         :rtype: int
         """
         return self._ExecutionTTL
@@ -80509,7 +80527,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def ScriptChange(self):
-        r"""脚本是否改变
+        r"""<p>脚本是否改变</p>
         :rtype: bool
         """
         return self._ScriptChange
@@ -80520,7 +80538,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def ScheduleTimeZone(self):
-        r"""任务时区，仅支持整数时区配置
+        r"""<p>任务时区，仅支持整数时区配置</p>
         :rtype: str
         """
         return self._ScheduleTimeZone
@@ -80531,7 +80549,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def ScheduleRunType(self):
-        r"""0 正常调度 1 空跑调度；暂不支持其他值
+        r"""<p>0 正常调度 1 空跑调度；暂不支持其他值</p>
         :rtype: int
         """
         return self._ScheduleRunType
@@ -80542,7 +80560,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def ConcurrentStrategy(self):
-        r"""0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值
+        r"""<p>0 并发度达到上限时，本次排队等待 1 并发度达到上限时，本次不执行，直接kill；暂不支持其他值</p>
         :rtype: int
         """
         return self._ConcurrentStrategy
@@ -80553,7 +80571,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def RegisterDsEventPublisherRequest(self):
-        r"""shell任务发布事件
+        r"""<p>shell任务发布事件</p>
         :rtype: :class:`tencentcloud.wedata.v20210820.models.RegisterDsEventPublisherReq`
         """
         return self._RegisterDsEventPublisherRequest
@@ -80564,7 +80582,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""base64编码后脚本内容
+        r"""<p>base64编码后脚本内容</p>
         :rtype: str
         """
         return self._Content
@@ -80572,6 +80590,17 @@ class ModifyTaskInfoDsRequest(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def MinuteOffset(self):
+        r"""<p>分钟任务相位偏移</p>
+        :rtype: int
+        """
+        return self._MinuteOffset
+
+    @MinuteOffset.setter
+    def MinuteOffset(self, MinuteOffset):
+        self._MinuteOffset = MinuteOffset
 
 
     def _deserialize(self, params):
@@ -80628,6 +80657,7 @@ class ModifyTaskInfoDsRequest(AbstractModel):
             self._RegisterDsEventPublisherRequest = RegisterDsEventPublisherReq()
             self._RegisterDsEventPublisherRequest._deserialize(params.get("RegisterDsEventPublisherRequest"))
         self._Content = params.get("Content")
+        self._MinuteOffset = params.get("MinuteOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80645,7 +80675,7 @@ class ModifyTaskInfoDsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 执行结果
+        :param _Data: <p>执行结果</p>
         :type Data: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -80655,7 +80685,7 @@ class ModifyTaskInfoDsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""执行结果
+        r"""<p>执行结果</p>
         :rtype: bool
         """
         return self._Data
@@ -90031,53 +90061,54 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
         :type WorkflowId: str
-        :param _DelayTime: 延迟时间
+        :param _DelayTime: <p>延迟时间</p>
         :type DelayTime: int
-        :param _StartupTime: 启动时间
+        :param _StartupTime: <p>启动时间</p>
         :type StartupTime: int
-        :param _SelfDepend: 任务依赖
+        :param _SelfDepend: <p>任务依赖</p>
         :type SelfDepend: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _TaskAction: 指定运行时间
+        :param _TaskAction: <p>指定运行时间</p>
         :type TaskAction: str
-        :param _CycleType: 调度周期时间单位
+        :param _CycleType: <p>调度周期时间单位</p>
         :type CycleType: str
-        :param _CycleStep: 调度周期
+        :param _CycleStep: <p>调度周期</p>
         :type CycleStep: int
-        :param _ExecutionStartTime: 执行时间左闭区间
+        :param _ExecutionStartTime: <p>执行时间左闭区间</p>
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间右闭区间
+        :param _ExecutionEndTime: <p>执行时间右闭区间</p>
         :type ExecutionEndTime: str
-        :param _InstanceInitStrategy: 任务初始化策略，T_PLUS_1、T_PLUS_0、T_MINUS_1
+        :param _InstanceInitStrategy: <p>任务初始化策略，T_PLUS_1、T_PLUS_0、T_MINUS_1</p>
         :type InstanceInitStrategy: str
-        :param _DependencyWorkflow: 工作流依赖，yes or no
+        :param _DependencyWorkflow: <p>工作流依赖，yes or no</p>
         :type DependencyWorkflow: str
-        :param _CrontabExpression: CrontabExpression
+        :param _CrontabExpression: <p>CrontabExpression</p>
         :type CrontabExpression: str
-        :param _ModifyCycleValue: 0：不修改
-1：将任务的上游依赖配置改为默认值 
+        :param _ModifyCycleValue: <p>0：不修改<br>1：将任务的上游依赖配置改为默认值</p>
         :type ModifyCycleValue: str
-        :param _CalendarOpen: 是否开启日历调度 1 开启 0关闭
+        :param _CalendarOpen: <p>是否开启日历调度 1 开启 0关闭</p>
         :type CalendarOpen: str
-        :param _CalendarName: 日历名称
+        :param _CalendarName: <p>日历名称</p>
         :type CalendarName: str
-        :param _CalendarId: 日历id
+        :param _CalendarId: <p>日历id</p>
         :type CalendarId: str
-        :param _ScheduleTimeZone: 时区
+        :param _ScheduleTimeZone: <p>时区</p>
         :type ScheduleTimeZone: str
-        :param _ClearLink: 是否自动清理不支持的任务链接
+        :param _ClearLink: <p>是否自动清理不支持的任务链接</p>
         :type ClearLink: bool
-        :param _MainCyclicConfig: ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度
+        :param _MainCyclicConfig: <p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度</p>
         :type MainCyclicConfig: str
-        :param _SubordinateCyclicConfig: ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围
+        :param _SubordinateCyclicConfig: <p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围</p>
         :type SubordinateCyclicConfig: str
+        :param _MinuteOffset: <p>分钟任务相位偏移</p>
+        :type MinuteOffset: int
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -90102,10 +90133,11 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         self._ClearLink = None
         self._MainCyclicConfig = None
         self._SubordinateCyclicConfig = None
+        self._MinuteOffset = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -90116,7 +90148,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
         :rtype: str
         """
         return self._WorkflowId
@@ -90127,7 +90159,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""延迟时间
+        r"""<p>延迟时间</p>
         :rtype: int
         """
         return self._DelayTime
@@ -90138,7 +90170,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def StartupTime(self):
-        r"""启动时间
+        r"""<p>启动时间</p>
         :rtype: int
         """
         return self._StartupTime
@@ -90149,7 +90181,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def SelfDepend(self):
-        r"""任务依赖
+        r"""<p>任务依赖</p>
         :rtype: str
         """
         return self._SelfDepend
@@ -90160,7 +90192,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -90171,7 +90203,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -90182,7 +90214,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def TaskAction(self):
-        r"""指定运行时间
+        r"""<p>指定运行时间</p>
         :rtype: str
         """
         return self._TaskAction
@@ -90193,7 +90225,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""调度周期时间单位
+        r"""<p>调度周期时间单位</p>
         :rtype: str
         """
         return self._CycleType
@@ -90204,7 +90236,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def CycleStep(self):
-        r"""调度周期
+        r"""<p>调度周期</p>
         :rtype: int
         """
         return self._CycleStep
@@ -90215,7 +90247,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间左闭区间
+        r"""<p>执行时间左闭区间</p>
         :rtype: str
         """
         return self._ExecutionStartTime
@@ -90226,7 +90258,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间右闭区间
+        r"""<p>执行时间右闭区间</p>
         :rtype: str
         """
         return self._ExecutionEndTime
@@ -90237,7 +90269,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def InstanceInitStrategy(self):
-        r"""任务初始化策略，T_PLUS_1、T_PLUS_0、T_MINUS_1
+        r"""<p>任务初始化策略，T_PLUS_1、T_PLUS_0、T_MINUS_1</p>
         :rtype: str
         """
         return self._InstanceInitStrategy
@@ -90248,7 +90280,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def DependencyWorkflow(self):
-        r"""工作流依赖，yes or no
+        r"""<p>工作流依赖，yes or no</p>
         :rtype: str
         """
         return self._DependencyWorkflow
@@ -90259,7 +90291,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def CrontabExpression(self):
-        r"""CrontabExpression
+        r"""<p>CrontabExpression</p>
         :rtype: str
         """
         return self._CrontabExpression
@@ -90270,8 +90302,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def ModifyCycleValue(self):
-        r"""0：不修改
-1：将任务的上游依赖配置改为默认值 
+        r"""<p>0：不修改<br>1：将任务的上游依赖配置改为默认值</p>
         :rtype: str
         """
         return self._ModifyCycleValue
@@ -90282,7 +90313,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def CalendarOpen(self):
-        r"""是否开启日历调度 1 开启 0关闭
+        r"""<p>是否开启日历调度 1 开启 0关闭</p>
         :rtype: str
         """
         return self._CalendarOpen
@@ -90293,7 +90324,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def CalendarName(self):
-        r"""日历名称
+        r"""<p>日历名称</p>
         :rtype: str
         """
         return self._CalendarName
@@ -90304,7 +90335,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def CalendarId(self):
-        r"""日历id
+        r"""<p>日历id</p>
         :rtype: str
         """
         return self._CalendarId
@@ -90315,7 +90346,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def ScheduleTimeZone(self):
-        r"""时区
+        r"""<p>时区</p>
         :rtype: str
         """
         return self._ScheduleTimeZone
@@ -90326,7 +90357,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def ClearLink(self):
-        r"""是否自动清理不支持的任务链接
+        r"""<p>是否自动清理不支持的任务链接</p>
         :rtype: bool
         """
         return self._ClearLink
@@ -90337,7 +90368,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def MainCyclicConfig(self):
-        r"""ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度
+        r"""<p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度</p>
         :rtype: str
         """
         return self._MainCyclicConfig
@@ -90348,7 +90379,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
 
     @property
     def SubordinateCyclicConfig(self):
-        r"""ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围
+        r"""<p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围</p>
         :rtype: str
         """
         return self._SubordinateCyclicConfig
@@ -90356,6 +90387,17 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
     @SubordinateCyclicConfig.setter
     def SubordinateCyclicConfig(self, SubordinateCyclicConfig):
         self._SubordinateCyclicConfig = SubordinateCyclicConfig
+
+    @property
+    def MinuteOffset(self):
+        r"""<p>分钟任务相位偏移</p>
+        :rtype: int
+        """
+        return self._MinuteOffset
+
+    @MinuteOffset.setter
+    def MinuteOffset(self, MinuteOffset):
+        self._MinuteOffset = MinuteOffset
 
 
     def _deserialize(self, params):
@@ -90382,6 +90424,7 @@ class RenewWorkflowSchedulerInfoDsRequest(AbstractModel):
         self._ClearLink = params.get("ClearLink")
         self._MainCyclicConfig = params.get("MainCyclicConfig")
         self._SubordinateCyclicConfig = params.get("SubordinateCyclicConfig")
+        self._MinuteOffset = params.get("MinuteOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -90399,7 +90442,7 @@ class RenewWorkflowSchedulerInfoDsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 数据
+        :param _Data: <p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20210820.models.BatchResultDs`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -90410,7 +90453,7 @@ class RenewWorkflowSchedulerInfoDsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""数据
+        r"""<p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.BatchResultDs`
         """

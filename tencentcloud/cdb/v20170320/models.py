@@ -11027,9 +11027,9 @@ class DeleteAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
-        :param _Accounts: 云数据库账号。
+        :param _Accounts: <p>云数据库账号。</p>
         :type Accounts: list of Account
         """
         self._InstanceId = None
@@ -11037,7 +11037,7 @@ class DeleteAccountsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -11048,7 +11048,7 @@ class DeleteAccountsRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""云数据库账号。
+        r"""<p>云数据库账号。</p>
         :rtype: list of Account
         """
         return self._Accounts
@@ -11083,7 +11083,7 @@ class DeleteAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :param _AsyncRequestId: <p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11093,7 +11093,7 @@ class DeleteAccountsResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        r"""<p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -12292,19 +12292,19 @@ class DescribeAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
-        :param _Offset: 记录偏移量，默认值为0。
+        :param _Offset: <p>记录偏移量，默认值为0。</p>
         :type Offset: int
-        :param _Limit: 单次请求返回的数量，默认值为20，最小值为1，最大值为100。
+        :param _Limit: <p>单次请求返回的数量，默认值为20，最小值为1，最大值为100。</p>
         :type Limit: int
-        :param _AccountRegexp: 匹配账号名的正则表达式，规则同 MySQL 官网。
+        :param _AccountRegexp: <p>匹配账号名的正则表达式，规则同 MySQL 官网。</p>
         :type AccountRegexp: str
-        :param _SortBy: 默认无排序，支持：ASC、DESC、asc、desc
+        :param _SortBy: <p>默认无排序，支持：ASC、DESC、asc、desc</p>
         :type SortBy: str
-        :param _OrderBy: 待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
+        :param _OrderBy: <p>待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)</p>
         :type OrderBy: str
-        :param _HostRegexp: 匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网
+        :param _HostRegexp: <p>匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网</p>
         :type HostRegexp: str
         """
         self._InstanceId = None
@@ -12317,7 +12317,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12328,7 +12328,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""记录偏移量，默认值为0。
+        r"""<p>记录偏移量，默认值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -12339,7 +12339,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次请求返回的数量，默认值为20，最小值为1，最大值为100。
+        r"""<p>单次请求返回的数量，默认值为20，最小值为1，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -12350,7 +12350,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def AccountRegexp(self):
-        r"""匹配账号名的正则表达式，规则同 MySQL 官网。
+        r"""<p>匹配账号名的正则表达式，规则同 MySQL 官网。</p>
         :rtype: str
         """
         return self._AccountRegexp
@@ -12361,7 +12361,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        r"""默认无排序，支持：ASC、DESC、asc、desc
+        r"""<p>默认无排序，支持：ASC、DESC、asc、desc</p>
         :rtype: str
         """
         return self._SortBy
@@ -12372,7 +12372,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)
+        r"""<p>待排序的时间字段，可选：CreateTime(账号创建时间)、ModifyTime(账号更新时间)、ModifyPasswordTime(密码修改时间)</p>
         :rtype: str
         """
         return self._OrderBy
@@ -12383,7 +12383,7 @@ class DescribeAccountsRequest(AbstractModel):
 
     @property
     def HostRegexp(self):
-        r"""匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网
+        r"""<p>匹配账号主机地址（Host）的正则表达式，规则同 MySQL 官网</p>
         :rtype: str
         """
         return self._HostRegexp
@@ -12418,11 +12418,11 @@ class DescribeAccountsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合查询条件的账号数量。
+        :param _TotalCount: <p>符合查询条件的账号数量。</p>
         :type TotalCount: int
-        :param _Items: 符合查询条件的账号详细信息。
+        :param _Items: <p>符合查询条件的账号详细信息。</p>
         :type Items: list of AccountInfo
-        :param _MaxUserConnections: 用户可设置实例最大连接数。
+        :param _MaxUserConnections: <p>用户可设置实例最大连接数。</p>
         :type MaxUserConnections: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12434,7 +12434,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件的账号数量。
+        r"""<p>符合查询条件的账号数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -12445,7 +12445,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""符合查询条件的账号详细信息。
+        r"""<p>符合查询条件的账号详细信息。</p>
         :rtype: list of AccountInfo
         """
         return self._Items
@@ -12456,7 +12456,7 @@ class DescribeAccountsResponse(AbstractModel):
 
     @property
     def MaxUserConnections(self):
-        r"""用户可设置实例最大连接数。
+        r"""<p>用户可设置实例最大连接数。</p>
         :rtype: int
         """
         return self._MaxUserConnections

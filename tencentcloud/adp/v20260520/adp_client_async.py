@@ -25,6 +25,24 @@ class AdpClient(AbstractClient):
     _endpoint = 'adp.tencentcloudapi.com'
     _service = 'adp'
 
+    async def CallMCPTool(
+            self,
+            request: models.CallMCPToolRequest,
+            opts: Dict = None,
+    ) -> models.CallMCPToolResponse:
+        """
+        用户在 MCP App iframe 内触发的工具调用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CallMCPTool"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CallMCPToolResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckLabel(
             self,
             request: models.CheckLabelRequest,
@@ -2145,6 +2163,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "PauseAppTrigger"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.PauseAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReadMCPResource(
+            self,
+            request: models.ReadMCPResourceRequest,
+            opts: Dict = None,
+    ) -> models.ReadMCPResourceResponse:
+        """
+        读取 MCP UI 资源（HTML），供前端 iframe 加载 MCP App 界面
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReadMCPResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReadMCPResourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

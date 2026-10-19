@@ -14661,6 +14661,8 @@ class BaselineAggregatedPolicy(AbstractModel):
         :type CheckAssetType: str
         :param _Scanned: <p>该基线类别是否被扫描过</p>
         :type Scanned: bool
+        :param _AppID: <p>自定义策略情况下策略的appid</p>
+        :type AppID: int
         """
         self._ParentCategoryID = None
         self._PolicyID = None
@@ -14675,6 +14677,7 @@ class BaselineAggregatedPolicy(AbstractModel):
         self._PolicyType = None
         self._CheckAssetType = None
         self._Scanned = None
+        self._AppID = None
 
     @property
     def ParentCategoryID(self):
@@ -14819,6 +14822,17 @@ class BaselineAggregatedPolicy(AbstractModel):
     def Scanned(self, Scanned):
         self._Scanned = Scanned
 
+    @property
+    def AppID(self):
+        r"""<p>自定义策略情况下策略的appid</p>
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
 
     def _deserialize(self, params):
         self._ParentCategoryID = params.get("ParentCategoryID")
@@ -14844,6 +14858,7 @@ class BaselineAggregatedPolicy(AbstractModel):
         self._PolicyType = params.get("PolicyType")
         self._CheckAssetType = params.get("CheckAssetType")
         self._Scanned = params.get("Scanned")
+        self._AppID = params.get("AppID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16000,6 +16015,8 @@ class BaselineMainTask(AbstractModel):
         :type ScanFailedCount: int
         :param _ScanTotalCount: <p>子任务总数</p>
         :type ScanTotalCount: int
+        :param _PolicyList: <p>检测的策略列表</p>
+        :type PolicyList: list of BaselinePolicyBrief
         """
         self._JobID = None
         self._ID = None
@@ -16015,6 +16032,7 @@ class BaselineMainTask(AbstractModel):
         self._ScanSuccessCount = None
         self._ScanFailedCount = None
         self._ScanTotalCount = None
+        self._PolicyList = None
 
     @property
     def JobID(self):
@@ -16170,6 +16188,17 @@ class BaselineMainTask(AbstractModel):
     def ScanTotalCount(self, ScanTotalCount):
         self._ScanTotalCount = ScanTotalCount
 
+    @property
+    def PolicyList(self):
+        r"""<p>检测的策略列表</p>
+        :rtype: list of BaselinePolicyBrief
+        """
+        return self._PolicyList
+
+    @PolicyList.setter
+    def PolicyList(self, PolicyList):
+        self._PolicyList = PolicyList
+
 
     def _deserialize(self, params):
         self._JobID = params.get("JobID")
@@ -16186,6 +16215,12 @@ class BaselineMainTask(AbstractModel):
         self._ScanSuccessCount = params.get("ScanSuccessCount")
         self._ScanFailedCount = params.get("ScanFailedCount")
         self._ScanTotalCount = params.get("ScanTotalCount")
+        if params.get("PolicyList") is not None:
+            self._PolicyList = []
+            for item in params.get("PolicyList"):
+                obj = BaselinePolicyBrief()
+                obj._deserialize(item)
+                self._PolicyList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16665,6 +16700,72 @@ class BaselinePolicy(AbstractModel):
         self._LatestCycleScanTime = params.get("LatestCycleScanTime")
         self._TagIDList = params.get("TagIDList")
         self._CloudTagList = params.get("CloudTagList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BaselinePolicyBrief(AbstractModel):
+    r"""基线策略简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>基线策略 ID。</p>
+        :type ID: int
+        :param _PolicyName: <p>基线策略名称。</p>
+        :type PolicyName: str
+        :param _IsSystem: <p>是否为系统内置策略。true 是，false 否（用户自定义策略）。</p>
+        :type IsSystem: bool
+        """
+        self._ID = None
+        self._PolicyName = None
+        self._IsSystem = None
+
+    @property
+    def ID(self):
+        r"""<p>基线策略 ID。</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def PolicyName(self):
+        r"""<p>基线策略名称。</p>
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def IsSystem(self):
+        r"""<p>是否为系统内置策略。true 是，false 否（用户自定义策略）。</p>
+        :rtype: bool
+        """
+        return self._IsSystem
+
+    @IsSystem.setter
+    def IsSystem(self, IsSystem):
+        self._IsSystem = IsSystem
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._PolicyName = params.get("PolicyName")
+        self._IsSystem = params.get("IsSystem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63577,6 +63678,51 @@ class DescribeCSCPayInfoRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _NeedQuotaUsed: <p>是否返回配额已使用量。默认为 false：不采集用量，QuotaList 中的 QuotaUsed 恒为 0；需要展示已用量的调用方显式传 true。只关心订单状态、到期时间或配额购买数量的调用方无需传入</p>
+        :type NeedQuotaUsed: bool
+        """
+        self._MemberId = None
+        self._NeedQuotaUsed = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def NeedQuotaUsed(self):
+        r"""<p>是否返回配额已使用量。默认为 false：不采集用量，QuotaList 中的 QuotaUsed 恒为 0；需要展示已用量的调用方显式传 true。只关心订单状态、到期时间或配额购买数量的调用方无需传入</p>
+        :rtype: bool
+        """
+        return self._NeedQuotaUsed
+
+    @NeedQuotaUsed.setter
+    def NeedQuotaUsed(self, NeedQuotaUsed):
+        self._NeedQuotaUsed = NeedQuotaUsed
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._NeedQuotaUsed = params.get("NeedQuotaUsed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeCSCPayInfoResponse(AbstractModel):
     r"""DescribeCSCPayInfo返回参数结构体
@@ -63613,6 +63759,8 @@ class DescribeCSCPayInfoResponse(AbstractModel):
         :type NewUser: int
         :param _QuotaList: <p>用户计费信息，Key为L4</p>
         :type QuotaList: list of OrderQuotaInfo
+        :param _QuotaUsedError: <p>配额用量查询失败提示。仅请求参数 NeedQuotaUsed 为 true 时可能非空：此时订单信息仍正常返回，QuotaList 中的 QuotaUsed 恒为 0；查询正常或未请求用量时为空字符串</p>
+        :type QuotaUsedError: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -63630,6 +63778,7 @@ class DescribeCSCPayInfoResponse(AbstractModel):
         self._NickName = None
         self._NewUser = None
         self._QuotaList = None
+        self._QuotaUsedError = None
         self._RequestId = None
 
     @property
@@ -63787,6 +63936,17 @@ class DescribeCSCPayInfoResponse(AbstractModel):
         self._QuotaList = QuotaList
 
     @property
+    def QuotaUsedError(self):
+        r"""<p>配额用量查询失败提示。仅请求参数 NeedQuotaUsed 为 true 时可能非空：此时订单信息仍正常返回，QuotaList 中的 QuotaUsed 恒为 0；查询正常或未请求用量时为空字符串</p>
+        :rtype: str
+        """
+        return self._QuotaUsedError
+
+    @QuotaUsedError.setter
+    def QuotaUsedError(self, QuotaUsedError):
+        self._QuotaUsedError = QuotaUsedError
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -63818,6 +63978,7 @@ class DescribeCSCPayInfoResponse(AbstractModel):
                 obj = OrderQuotaInfo()
                 obj._deserialize(item)
                 self._QuotaList.append(obj)
+        self._QuotaUsedError = params.get("QuotaUsedError")
         self._RequestId = params.get("RequestId")
 
 
@@ -87753,6 +87914,8 @@ class DescribeEDRRuleListRequest(AbstractModel):
         :type Order: str
         :param _By: <p>可选排序列: [ModifyTime]</p>
         :type By: str
+        :param _FileOperationRules: <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+        :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
         """
         self._MemberId = None
         self._Filters = None
@@ -87760,6 +87923,7 @@ class DescribeEDRRuleListRequest(AbstractModel):
         self._Offset = None
         self._Order = None
         self._By = None
+        self._FileOperationRules = None
 
     @property
     def MemberId(self):
@@ -87827,6 +87991,17 @@ class DescribeEDRRuleListRequest(AbstractModel):
     def By(self, By):
         self._By = By
 
+    @property
+    def FileOperationRules(self):
+        r"""<p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        """
+        return self._FileOperationRules
+
+    @FileOperationRules.setter
+    def FileOperationRules(self, FileOperationRules):
+        self._FileOperationRules = FileOperationRules
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
@@ -87840,6 +88015,9 @@ class DescribeEDRRuleListRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Order = params.get("Order")
         self._By = params.get("By")
+        if params.get("FileOperationRules") is not None:
+            self._FileOperationRules = RuleContentFileOperation()
+            self._FileOperationRules._deserialize(params.get("FileOperationRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -129818,6 +129996,8 @@ class EDRRule(AbstractModel):
         :type ConditionMatches: list of ConditionMatch
         :param _TagItems: <p>安全中心标签</p>
         :type TagItems: list of EDRRuleTagItem
+        :param _FileOperationRules: <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+        :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
         """
         self._RuleID = None
         self._RuleType = None
@@ -129856,6 +130036,7 @@ class EDRRule(AbstractModel):
         self._ExcludeClusterIDs = None
         self._ConditionMatches = None
         self._TagItems = None
+        self._FileOperationRules = None
 
     @property
     def RuleID(self):
@@ -130264,6 +130445,17 @@ class EDRRule(AbstractModel):
     def TagItems(self, TagItems):
         self._TagItems = TagItems
 
+    @property
+    def FileOperationRules(self):
+        r"""<p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        """
+        return self._FileOperationRules
+
+    @FileOperationRules.setter
+    def FileOperationRules(self, FileOperationRules):
+        self._FileOperationRules = FileOperationRules
+
 
     def _deserialize(self, params):
         self._RuleID = params.get("RuleID")
@@ -130317,6 +130509,9 @@ class EDRRule(AbstractModel):
                 obj = EDRRuleTagItem()
                 obj._deserialize(item)
                 self._TagItems.append(obj)
+        if params.get("FileOperationRules") is not None:
+            self._FileOperationRules = RuleContentFileOperation()
+            self._FileOperationRules._deserialize(params.get("FileOperationRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -133679,11 +133874,14 @@ class ExportEDRRulesRequest(AbstractModel):
         :type Order: str
         :param _By: <p>排序列，ModifyTime</p>
         :type By: str
+        :param _FileOperationRules: <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+        :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
         """
         self._MemberId = None
         self._Filters = None
         self._Order = None
         self._By = None
+        self._FileOperationRules = None
 
     @property
     def MemberId(self):
@@ -133729,6 +133927,17 @@ class ExportEDRRulesRequest(AbstractModel):
     def By(self, By):
         self._By = By
 
+    @property
+    def FileOperationRules(self):
+        r"""<p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        """
+        return self._FileOperationRules
+
+    @FileOperationRules.setter
+    def FileOperationRules(self, FileOperationRules):
+        self._FileOperationRules = FileOperationRules
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
@@ -133740,6 +133949,9 @@ class ExportEDRRulesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Order = params.get("Order")
         self._By = params.get("By")
+        if params.get("FileOperationRules") is not None:
+            self._FileOperationRules = RuleContentFileOperation()
+            self._FileOperationRules._deserialize(params.get("FileOperationRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -146068,6 +146280,8 @@ class LicenseStatusItem(AbstractModel):
         :type BeginTime: str
         :param _EndTime: <p>最晚到期时间（格式：2006-01-02 15:04:05）</p>
         :type EndTime: str
+        :param _OrderType: <p>订单类型</p><p>枚举值：</p><ul><li>PURCHASED： 正式订单</li><li>TRIAL： 试用订单</li></ul>
+        :type OrderType: str
         """
         self._ResourceId = None
         self._LicenseType = None
@@ -146078,6 +146292,7 @@ class LicenseStatusItem(AbstractModel):
         self._RemainNum = None
         self._BeginTime = None
         self._EndTime = None
+        self._OrderType = None
 
     @property
     def ResourceId(self):
@@ -146178,6 +146393,17 @@ class LicenseStatusItem(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def OrderType(self):
+        r"""<p>订单类型</p><p>枚举值：</p><ul><li>PURCHASED： 正式订单</li><li>TRIAL： 试用订单</li></ul>
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -146189,6 +146415,7 @@ class LicenseStatusItem(AbstractModel):
         self._RemainNum = params.get("RemainNum")
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
+        self._OrderType = params.get("OrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -157690,6 +157917,8 @@ class ModifyEDRRuleRequest(AbstractModel):
         :type ImageIDsWithAppId: list of ImageIDWithAppIdItem
         :param _ConditionMatches: <p>容器条件匹配</p>
         :type ConditionMatches: list of ConditionMatch
+        :param _FileOperationRules: <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+        :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
         """
         self._RuleType = None
         self._AlertAction = None
@@ -157723,6 +157952,7 @@ class ModifyEDRRuleRequest(AbstractModel):
         self._ExcludeClusterIDsWithAppId = None
         self._ImageIDsWithAppId = None
         self._ConditionMatches = None
+        self._FileOperationRules = None
 
     @property
     def RuleType(self):
@@ -158076,6 +158306,17 @@ class ModifyEDRRuleRequest(AbstractModel):
     def ConditionMatches(self, ConditionMatches):
         self._ConditionMatches = ConditionMatches
 
+    @property
+    def FileOperationRules(self):
+        r"""<p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        """
+        return self._FileOperationRules
+
+    @FileOperationRules.setter
+    def FileOperationRules(self, FileOperationRules):
+        self._FileOperationRules = FileOperationRules
+
 
     def _deserialize(self, params):
         self._RuleType = params.get("RuleType")
@@ -158146,6 +158387,9 @@ class ModifyEDRRuleRequest(AbstractModel):
                 obj = ConditionMatch()
                 obj._deserialize(item)
                 self._ConditionMatches.append(obj)
+        if params.get("FileOperationRules") is not None:
+            self._FileOperationRules = RuleContentFileOperation()
+            self._FileOperationRules._deserialize(params.get("FileOperationRules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -169195,24 +169439,23 @@ class OrderQuotaInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QuotaKey: 配额键
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _QuotaKey: <p>配额键</p>
         :type QuotaKey: str
-        :param _QuotaNum: 配额总量
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _QuotaNum: <p>配额总量</p>
         :type QuotaNum: int
-        :param _QuotaUsed: 配额已使用量
-注意：此字段可能返回 null，表示取不到有效值。
+        :param _QuotaUsed: <p>配额已使用量（含共享给其他账号的消耗）。仅请求参数 NeedQuotaUsed 为 true 时采集；未传或为 false 时恒为 0；用量查询失败时恒为 0，错误提示见响应 QuotaUsedError 字段</p>
         :type QuotaUsed: int
+        :param _QuotaGranted: <p>赠送配额。仅 CSPM 存在赠送额度，其余计费项为 0</p>
+        :type QuotaGranted: int
         """
         self._QuotaKey = None
         self._QuotaNum = None
         self._QuotaUsed = None
+        self._QuotaGranted = None
 
     @property
     def QuotaKey(self):
-        r"""配额键
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>配额键</p>
         :rtype: str
         """
         return self._QuotaKey
@@ -169223,8 +169466,7 @@ class OrderQuotaInfo(AbstractModel):
 
     @property
     def QuotaNum(self):
-        r"""配额总量
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>配额总量</p>
         :rtype: int
         """
         return self._QuotaNum
@@ -169235,8 +169477,7 @@ class OrderQuotaInfo(AbstractModel):
 
     @property
     def QuotaUsed(self):
-        r"""配额已使用量
-注意：此字段可能返回 null，表示取不到有效值。
+        r"""<p>配额已使用量（含共享给其他账号的消耗）。仅请求参数 NeedQuotaUsed 为 true 时采集；未传或为 false 时恒为 0；用量查询失败时恒为 0，错误提示见响应 QuotaUsedError 字段</p>
         :rtype: int
         """
         return self._QuotaUsed
@@ -169245,11 +169486,23 @@ class OrderQuotaInfo(AbstractModel):
     def QuotaUsed(self, QuotaUsed):
         self._QuotaUsed = QuotaUsed
 
+    @property
+    def QuotaGranted(self):
+        r"""<p>赠送配额。仅 CSPM 存在赠送额度，其余计费项为 0</p>
+        :rtype: int
+        """
+        return self._QuotaGranted
+
+    @QuotaGranted.setter
+    def QuotaGranted(self, QuotaGranted):
+        self._QuotaGranted = QuotaGranted
+
 
     def _deserialize(self, params):
         self._QuotaKey = params.get("QuotaKey")
         self._QuotaNum = params.get("QuotaNum")
         self._QuotaUsed = params.get("QuotaUsed")
+        self._QuotaGranted = params.get("QuotaGranted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -174754,6 +175007,91 @@ class RuleContentCmdLine(AbstractModel):
         if params.get("AncestorProcess") is not None:
             self._AncestorProcess = RuleContentProcessInfo()
             self._AncestorProcess._deserialize(params.get("AncestorProcess"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleContentFileOperation(AbstractModel):
+    r"""EDR文件操作规则（ContentType=file_operation，高危命令聚合降噪新增）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Process: <p>当前进程命令行信息（可选，未配置时该维度不参与匹配）</p>
+        :type Process: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        :param _ParentProcess: <p>父进程命令行信息（可选，未配置时该维度不参与匹配）</p>
+        :type ParentProcess: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        :param _FilePath: <p>目标文件路径（正则）</p>
+        :type FilePath: str
+        :param _FileActions: <p>动作列表（多选为或关系）：read-读 write-写 rename-重命名 delete-删除 truncate-清空内容</p>
+        :type FileActions: list of str
+        """
+        self._Process = None
+        self._ParentProcess = None
+        self._FilePath = None
+        self._FileActions = None
+
+    @property
+    def Process(self):
+        r"""<p>当前进程命令行信息（可选，未配置时该维度不参与匹配）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._Process
+
+    @Process.setter
+    def Process(self, Process):
+        self._Process = Process
+
+    @property
+    def ParentProcess(self):
+        r"""<p>父进程命令行信息（可选，未配置时该维度不参与匹配）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentProcessInfo`
+        """
+        return self._ParentProcess
+
+    @ParentProcess.setter
+    def ParentProcess(self, ParentProcess):
+        self._ParentProcess = ParentProcess
+
+    @property
+    def FilePath(self):
+        r"""<p>目标文件路径（正则）</p>
+        :rtype: str
+        """
+        return self._FilePath
+
+    @FilePath.setter
+    def FilePath(self, FilePath):
+        self._FilePath = FilePath
+
+    @property
+    def FileActions(self):
+        r"""<p>动作列表（多选为或关系）：read-读 write-写 rename-重命名 delete-删除 truncate-清空内容</p>
+        :rtype: list of str
+        """
+        return self._FileActions
+
+    @FileActions.setter
+    def FileActions(self, FileActions):
+        self._FileActions = FileActions
+
+
+    def _deserialize(self, params):
+        if params.get("Process") is not None:
+            self._Process = RuleContentProcessInfo()
+            self._Process._deserialize(params.get("Process"))
+        if params.get("ParentProcess") is not None:
+            self._ParentProcess = RuleContentProcessInfo()
+            self._ParentProcess._deserialize(params.get("ParentProcess"))
+        self._FilePath = params.get("FilePath")
+        self._FileActions = params.get("FileActions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -195795,11 +196133,14 @@ class WebhookNotifyItem(AbstractModel):
         :type Levels: list of str
         :param _Items: <p>处理状态等</p>
         :type Items: list of str
+        :param _Options: <p>可选项</p>
+        :type Options: list of str
         """
         self._Module = None
         self._SubModule = None
         self._Levels = None
         self._Items = None
+        self._Options = None
 
     @property
     def Module(self):
@@ -195845,12 +196186,24 @@ class WebhookNotifyItem(AbstractModel):
     def Items(self, Items):
         self._Items = Items
 
+    @property
+    def Options(self):
+        r"""<p>可选项</p>
+        :rtype: list of str
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
 
     def _deserialize(self, params):
         self._Module = params.get("Module")
         self._SubModule = params.get("SubModule")
         self._Levels = params.get("Levels")
         self._Items = params.get("Items")
+        self._Options = params.get("Options")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

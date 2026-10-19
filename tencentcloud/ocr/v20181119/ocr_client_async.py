@@ -1130,9 +1130,9 @@ class OcrClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QuestionSplitOCRResponse:
         """
-        试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置。新接入客户请注意UseNewModel选择
+        试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，新接入客户请注意UseNewModel选择。如果涉及多页试卷录入和单题跨页/跨栏问题可以选择使用[异步试卷切题（提交任务）](https://cloud.tencent.com/document/product/866/137427)
 
-        默认接口请求频率限制：2次/秒。
+        默认接口请求频率限制：5次/秒。
         """
         
         kwargs = {}

@@ -53658,29 +53658,29 @@ class RedoLogItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileName: 文件名
+        :param _FileName: <p>文件名</p>
         :type FileName: str
-        :param _FileSize: 文件大小
+        :param _FileSize: <p>文件大小</p>
         :type FileSize: int
-        :param _BackupTime: 备份时间
+        :param _BackupTime: <p>备份时间</p>
         :type BackupTime: str
-        :param _RedoLogId: redoLogId
+        :param _RedoLogId: <p>redoLogId</p>
         :type RedoLogId: int
-        :param _RedoCrossRegions: 跨地域信息
+        :param _RedoCrossRegions: <p>跨地域信息</p>
         :type RedoCrossRegions: list of BackupRegionAndIds
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _FinishTime: 完成时间
+        :param _FinishTime: <p>完成时间</p>
         :type FinishTime: str
-        :param _VaultInfos: 保险箱信息
+        :param _VaultInfos: <p>保险箱信息</p>
         :type VaultInfos: list of VaultInfo
-        :param _CopyStatus: 备份投递状态
+        :param _CopyStatus: <p>备份投递状态</p>
         :type CopyStatus: str
-        :param _EncryptKeyId: 加密秘钥key
+        :param _EncryptKeyId: <p>加密秘钥key</p>
         :type EncryptKeyId: str
-        :param _EncryptRegion: 加密秘钥地域
+        :param _EncryptRegion: <p>加密秘钥地域</p>
         :type EncryptRegion: str
         """
         self._FileName = None
@@ -53698,7 +53698,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def FileName(self):
-        r"""文件名
+        r"""<p>文件名</p>
         :rtype: str
         """
         return self._FileName
@@ -53709,7 +53709,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""文件大小
+        r"""<p>文件大小</p>
         :rtype: int
         """
         return self._FileSize
@@ -53720,7 +53720,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def BackupTime(self):
-        r"""备份时间
+        r"""<p>备份时间</p>
         :rtype: str
         """
         return self._BackupTime
@@ -53731,7 +53731,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def RedoLogId(self):
-        r"""redoLogId
+        r"""<p>redoLogId</p>
         :rtype: int
         """
         return self._RedoLogId
@@ -53742,7 +53742,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def RedoCrossRegions(self):
-        r"""跨地域信息
+        r"""<p>跨地域信息</p>
         :rtype: list of BackupRegionAndIds
         """
         return self._RedoCrossRegions
@@ -53753,7 +53753,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -53764,7 +53764,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -53775,7 +53775,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""完成时间
+        r"""<p>完成时间</p>
         :rtype: str
         """
         return self._FinishTime
@@ -53786,7 +53786,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def VaultInfos(self):
-        r"""保险箱信息
+        r"""<p>保险箱信息</p>
         :rtype: list of VaultInfo
         """
         return self._VaultInfos
@@ -53797,7 +53797,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def CopyStatus(self):
-        r"""备份投递状态
+        r"""<p>备份投递状态</p>
         :rtype: str
         """
         return self._CopyStatus
@@ -53808,7 +53808,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def EncryptKeyId(self):
-        r"""加密秘钥key
+        r"""<p>加密秘钥key</p>
         :rtype: str
         """
         return self._EncryptKeyId
@@ -53819,7 +53819,7 @@ class RedoLogItem(AbstractModel):
 
     @property
     def EncryptRegion(self):
-        r"""加密秘钥地域
+        r"""<p>加密秘钥地域</p>
         :rtype: str
         """
         return self._EncryptRegion

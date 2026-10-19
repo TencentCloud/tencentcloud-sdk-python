@@ -6992,9 +6992,9 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceName: 应用名
+        :param _ServiceName: <p>应用名</p>
         :type ServiceName: str
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: <p>业务系统ID</p>
         :type InstanceId: str
         """
         self._ServiceName = None
@@ -7002,7 +7002,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""应用名
+        r"""<p>应用名</p>
         :rtype: str
         """
         return self._ServiceName
@@ -7013,7 +7013,7 @@ class DescribeGeneralApmApplicationConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""业务系统ID
+        r"""<p>业务系统ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7043,7 +7043,7 @@ class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApmApplicationConfigView: 应用配置项
+        :param _ApmApplicationConfigView: <p>应用配置项</p>
         :type ApmApplicationConfigView: :class:`tencentcloud.apm.v20210622.models.ApmApplicationConfigView`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7053,7 +7053,7 @@ class DescribeGeneralApmApplicationConfigResponse(AbstractModel):
 
     @property
     def ApmApplicationConfigView(self):
-        r"""应用配置项
+        r"""<p>应用配置项</p>
         :rtype: :class:`tencentcloud.apm.v20210622.models.ApmApplicationConfigView`
         """
         return self._ApmApplicationConfigView
