@@ -7085,6 +7085,14 @@ class ClusterInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Uin: <p>用户Uin</p>
+        :type Uin: str
+        :param _AppId: <p>用户AppId</p>
+        :type AppId: int
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
         :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
         :param _InstanceName: <p>实例名称</p>
@@ -7097,6 +7105,14 @@ class ClusterInstanceDetail(AbstractModel):
         :type InstanceStatusDesc: str
         :param _InstanceCpu: <p>cpu核数</p>
         :type InstanceCpu: int
+        :param _Cpu: <p>Cpu</p><p>单位：核</p>
+        :type Cpu: int
+        :param _MinCpu: <p>serverless实例cpu下限</p><p>单位：核</p>
+        :type MinCpu: float
+        :param _MaxCpu: <p>serverless实例cpu上限</p><p>单位：核</p>
+        :type MaxCpu: float
+        :param _Memory: <p>内存</p><p>单位：GB</p>
+        :type Memory: int
         :param _InstanceMemory: <p>内存</p>
         :type InstanceMemory: int
         :param _InstanceStorage: <p>硬盘</p>
@@ -7109,8 +7125,6 @@ class ClusterInstanceDetail(AbstractModel):
         :type MaintainDuration: int
         :param _MaintainWeekDays: <p>可以执行的时间，枚举值：[&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thu&quot;,&quot;Fri&quot;, &quot;Sat&quot;, &quot;Sun&quot;]</p>
         :type MaintainWeekDays: list of str
-        :param _ServerlessStatus: <p>serverless实例子状态</p>
-        :type ServerlessStatus: str
         :param _InstanceTasks: <p>实例任务信息</p>
         :type InstanceTasks: list of ObjectTask
         :param _InstanceDeviceType: <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
@@ -7121,28 +7135,191 @@ class ClusterInstanceDetail(AbstractModel):
         :type DbMode: str
         :param _NodeList: <p>节点列表<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
         :type NodeList: list of str
+        :param _ServerlessStatus: <p>serverless实例子状态</p>
+        :type ServerlessStatus: str
         :param _AIOptimizerStatus: <p>AI优化器状态</p>
         :type AIOptimizerStatus: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerStatus`
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: int
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _Zone: <p>可用区</p>
+        :type Zone: str
+        :param _PhysicalZone: <p>实例所在的物理可用区</p>
+        :type PhysicalZone: str
+        :param _Status: <p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
+        :type Status: str
+        :param _StatusDesc: <p>实例状态中文描述</p>
+        :type StatusDesc: str
+        :param _DbType: <p>数据库类型</p>
+        :type DbType: str
+        :param _DbVersion: <p>数据库版本</p>
+        :type DbVersion: str
+        :param _Storage: <p>存储量</p><p>单位：GB</p>
+        :type Storage: int
+        :param _StorageId: <p>预付费存储Id</p>
+        :type StorageId: str
+        :param _StoragePayMode: <p>存储付费类型</p><p>枚举值：</p><ul><li>0： 后付费</li><li>1： 预付费</li></ul>
+        :type StoragePayMode: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _IsolateTime: <p>隔离时间</p>
+        :type IsolateTime: str
+        :param _DestroyTime: <p>实例销毁时间</p>
+        :type DestroyTime: str
+        :param _DestroyDeadlineText: <p>销毁期限</p>
+        :type DestroyDeadlineText: str
+        :param _PeriodEndTime: <p>实例过期时间</p>
+        :type PeriodEndTime: str
+        :param _VpcId: <p>VPC网络ID</p>
+        :type VpcId: str
+        :param _SubnetId: <p>子网ID</p>
+        :type SubnetId: str
+        :param _Vip: <p>实例内网IP</p>
+        :type Vip: str
+        :param _Vport: <p>实例内网端口</p>
+        :type Vport: int
+        :param _NetType: <p>网络类型</p>
+        :type NetType: int
+        :param _WanIP: <p>外网IP</p>
+        :type WanIP: str
+        :param _WanPort: <p>外网端口</p>
+        :type WanPort: int
+        :param _WanStatus: <p>外网开启状态</p>
+        :type WanStatus: str
+        :param _WanDomain: <p>实例外网域名</p>
+        :type WanDomain: str
+        :param _InstanceNetInfo: <p>实例的网络信息</p>
+        :type InstanceNetInfo: list of InstanceNetInfo
+        :param _PayMode: <p>付费模式</p><p>枚举值：</p><ul><li>0： 后付费</li><li>1： 预付费</li></ul>
+        :type PayMode: int
+        :param _ProcessingTask: <p>正在处理的任务</p>
+        :type ProcessingTask: str
+        :param _RenewFlag: <p>续费标志</p>
+        :type RenewFlag: int
+        :param _Tasks: <p>任务</p>
+        :type Tasks: list of ObjectTask
+        :param _IsFreeze: <p>是否冻结</p>
+        :type IsFreeze: str
+        :param _ResourceTags: <p>资源标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of Tag
+        :param _InstanceAbility: <p>当前实例支持的能力</p>
+        :type InstanceAbility: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
+        :param _DeviceType: <p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
+        :type DeviceType: str
+        :param _GdnId: <p>全球数据库唯一标识</p>
+        :type GdnId: str
         """
+        self._Uin = None
+        self._AppId = None
+        self._ClusterId = None
+        self._ClusterName = None
         self._InstanceId = None
         self._InstanceName = None
         self._InstanceType = None
         self._InstanceStatus = None
         self._InstanceStatusDesc = None
         self._InstanceCpu = None
+        self._Cpu = None
+        self._MinCpu = None
+        self._MaxCpu = None
+        self._Memory = None
         self._InstanceMemory = None
         self._InstanceStorage = None
         self._InstanceRole = None
         self._MaintainStartTime = None
         self._MaintainDuration = None
         self._MaintainWeekDays = None
-        self._ServerlessStatus = None
         self._InstanceTasks = None
         self._InstanceDeviceType = None
         self._InstanceStorageType = None
         self._DbMode = None
         self._NodeList = None
+        self._ServerlessStatus = None
         self._AIOptimizerStatus = None
+        self._ProjectId = None
+        self._Region = None
+        self._Zone = None
+        self._PhysicalZone = None
+        self._Status = None
+        self._StatusDesc = None
+        self._DbType = None
+        self._DbVersion = None
+        self._Storage = None
+        self._StorageId = None
+        self._StoragePayMode = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._IsolateTime = None
+        self._DestroyTime = None
+        self._DestroyDeadlineText = None
+        self._PeriodEndTime = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Vip = None
+        self._Vport = None
+        self._NetType = None
+        self._WanIP = None
+        self._WanPort = None
+        self._WanStatus = None
+        self._WanDomain = None
+        self._InstanceNetInfo = None
+        self._PayMode = None
+        self._ProcessingTask = None
+        self._RenewFlag = None
+        self._Tasks = None
+        self._IsFreeze = None
+        self._ResourceTags = None
+        self._InstanceAbility = None
+        self._DeviceType = None
+        self._GdnId = None
+
+    @property
+    def Uin(self):
+        r"""<p>用户Uin</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""<p>用户AppId</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
 
     @property
     def InstanceId(self):
@@ -7201,6 +7378,8 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceCpu(self):
+        warnings.warn("parameter `InstanceCpu` is deprecated", DeprecationWarning) 
+
         r"""<p>cpu核数</p>
         :rtype: int
         """
@@ -7208,7 +7387,53 @@ class ClusterInstanceDetail(AbstractModel):
 
     @InstanceCpu.setter
     def InstanceCpu(self, InstanceCpu):
+        warnings.warn("parameter `InstanceCpu` is deprecated", DeprecationWarning) 
+
         self._InstanceCpu = InstanceCpu
+
+    @property
+    def Cpu(self):
+        r"""<p>Cpu</p><p>单位：核</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def MinCpu(self):
+        r"""<p>serverless实例cpu下限</p><p>单位：核</p>
+        :rtype: float
+        """
+        return self._MinCpu
+
+    @MinCpu.setter
+    def MinCpu(self, MinCpu):
+        self._MinCpu = MinCpu
+
+    @property
+    def MaxCpu(self):
+        r"""<p>serverless实例cpu上限</p><p>单位：核</p>
+        :rtype: float
+        """
+        return self._MaxCpu
+
+    @MaxCpu.setter
+    def MaxCpu(self, MaxCpu):
+        self._MaxCpu = MaxCpu
+
+    @property
+    def Memory(self):
+        r"""<p>内存</p><p>单位：GB</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
 
     @property
     def InstanceMemory(self):
@@ -7277,17 +7502,6 @@ class ClusterInstanceDetail(AbstractModel):
         self._MaintainWeekDays = MaintainWeekDays
 
     @property
-    def ServerlessStatus(self):
-        r"""<p>serverless实例子状态</p>
-        :rtype: str
-        """
-        return self._ServerlessStatus
-
-    @ServerlessStatus.setter
-    def ServerlessStatus(self, ServerlessStatus):
-        self._ServerlessStatus = ServerlessStatus
-
-    @property
     def InstanceTasks(self):
         r"""<p>实例任务信息</p>
         :rtype: list of ObjectTask
@@ -7343,6 +7557,17 @@ class ClusterInstanceDetail(AbstractModel):
         self._NodeList = NodeList
 
     @property
+    def ServerlessStatus(self):
+        r"""<p>serverless实例子状态</p>
+        :rtype: str
+        """
+        return self._ServerlessStatus
+
+    @ServerlessStatus.setter
+    def ServerlessStatus(self, ServerlessStatus):
+        self._ServerlessStatus = ServerlessStatus
+
+    @property
     def AIOptimizerStatus(self):
         r"""<p>AI优化器状态</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerStatus`
@@ -7353,21 +7578,425 @@ class ClusterInstanceDetail(AbstractModel):
     def AIOptimizerStatus(self, AIOptimizerStatus):
         self._AIOptimizerStatus = AIOptimizerStatus
 
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""<p>可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def PhysicalZone(self):
+        r"""<p>实例所在的物理可用区</p>
+        :rtype: str
+        """
+        return self._PhysicalZone
+
+    @PhysicalZone.setter
+    def PhysicalZone(self, PhysicalZone):
+        self._PhysicalZone = PhysicalZone
+
+    @property
+    def Status(self):
+        r"""<p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""<p>实例状态中文描述</p>
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def DbType(self):
+        r"""<p>数据库类型</p>
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def DbVersion(self):
+        r"""<p>数据库版本</p>
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
+    @property
+    def Storage(self):
+        r"""<p>存储量</p><p>单位：GB</p>
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def StorageId(self):
+        r"""<p>预付费存储Id</p>
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+    @property
+    def StoragePayMode(self):
+        r"""<p>存储付费类型</p><p>枚举值：</p><ul><li>0： 后付费</li><li>1： 预付费</li></ul>
+        :rtype: int
+        """
+        return self._StoragePayMode
+
+    @StoragePayMode.setter
+    def StoragePayMode(self, StoragePayMode):
+        self._StoragePayMode = StoragePayMode
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def IsolateTime(self):
+        r"""<p>隔离时间</p>
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def DestroyTime(self):
+        r"""<p>实例销毁时间</p>
+        :rtype: str
+        """
+        return self._DestroyTime
+
+    @DestroyTime.setter
+    def DestroyTime(self, DestroyTime):
+        self._DestroyTime = DestroyTime
+
+    @property
+    def DestroyDeadlineText(self):
+        r"""<p>销毁期限</p>
+        :rtype: str
+        """
+        return self._DestroyDeadlineText
+
+    @DestroyDeadlineText.setter
+    def DestroyDeadlineText(self, DestroyDeadlineText):
+        self._DestroyDeadlineText = DestroyDeadlineText
+
+    @property
+    def PeriodEndTime(self):
+        r"""<p>实例过期时间</p>
+        :rtype: str
+        """
+        return self._PeriodEndTime
+
+    @PeriodEndTime.setter
+    def PeriodEndTime(self, PeriodEndTime):
+        self._PeriodEndTime = PeriodEndTime
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC网络ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Vip(self):
+        r"""<p>实例内网IP</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>实例内网端口</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def NetType(self):
+        r"""<p>网络类型</p>
+        :rtype: int
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def WanIP(self):
+        r"""<p>外网IP</p>
+        :rtype: str
+        """
+        return self._WanIP
+
+    @WanIP.setter
+    def WanIP(self, WanIP):
+        self._WanIP = WanIP
+
+    @property
+    def WanPort(self):
+        r"""<p>外网端口</p>
+        :rtype: int
+        """
+        return self._WanPort
+
+    @WanPort.setter
+    def WanPort(self, WanPort):
+        self._WanPort = WanPort
+
+    @property
+    def WanStatus(self):
+        r"""<p>外网开启状态</p>
+        :rtype: str
+        """
+        return self._WanStatus
+
+    @WanStatus.setter
+    def WanStatus(self, WanStatus):
+        self._WanStatus = WanStatus
+
+    @property
+    def WanDomain(self):
+        r"""<p>实例外网域名</p>
+        :rtype: str
+        """
+        return self._WanDomain
+
+    @WanDomain.setter
+    def WanDomain(self, WanDomain):
+        self._WanDomain = WanDomain
+
+    @property
+    def InstanceNetInfo(self):
+        r"""<p>实例的网络信息</p>
+        :rtype: list of InstanceNetInfo
+        """
+        return self._InstanceNetInfo
+
+    @InstanceNetInfo.setter
+    def InstanceNetInfo(self, InstanceNetInfo):
+        self._InstanceNetInfo = InstanceNetInfo
+
+    @property
+    def PayMode(self):
+        r"""<p>付费模式</p><p>枚举值：</p><ul><li>0： 后付费</li><li>1： 预付费</li></ul>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ProcessingTask(self):
+        r"""<p>正在处理的任务</p>
+        :rtype: str
+        """
+        return self._ProcessingTask
+
+    @ProcessingTask.setter
+    def ProcessingTask(self, ProcessingTask):
+        self._ProcessingTask = ProcessingTask
+
+    @property
+    def RenewFlag(self):
+        r"""<p>续费标志</p>
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Tasks(self):
+        r"""<p>任务</p>
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def IsFreeze(self):
+        r"""<p>是否冻结</p>
+        :rtype: str
+        """
+        return self._IsFreeze
+
+    @IsFreeze.setter
+    def IsFreeze(self, IsFreeze):
+        self._IsFreeze = IsFreeze
+
+    @property
+    def ResourceTags(self):
+        r"""<p>资源标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def InstanceAbility(self):
+        r"""<p>当前实例支持的能力</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
+        """
+        return self._InstanceAbility
+
+    @InstanceAbility.setter
+    def InstanceAbility(self, InstanceAbility):
+        self._InstanceAbility = InstanceAbility
+
+    @property
+    def DeviceType(self):
+        r"""<p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def GdnId(self):
+        r"""<p>全球数据库唯一标识</p>
+        :rtype: str
+        """
+        return self._GdnId
+
+    @GdnId.setter
+    def GdnId(self, GdnId):
+        self._GdnId = GdnId
+
 
     def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
         self._InstanceType = params.get("InstanceType")
         self._InstanceStatus = params.get("InstanceStatus")
         self._InstanceStatusDesc = params.get("InstanceStatusDesc")
         self._InstanceCpu = params.get("InstanceCpu")
+        self._Cpu = params.get("Cpu")
+        self._MinCpu = params.get("MinCpu")
+        self._MaxCpu = params.get("MaxCpu")
+        self._Memory = params.get("Memory")
         self._InstanceMemory = params.get("InstanceMemory")
         self._InstanceStorage = params.get("InstanceStorage")
         self._InstanceRole = params.get("InstanceRole")
         self._MaintainStartTime = params.get("MaintainStartTime")
         self._MaintainDuration = params.get("MaintainDuration")
         self._MaintainWeekDays = params.get("MaintainWeekDays")
-        self._ServerlessStatus = params.get("ServerlessStatus")
         if params.get("InstanceTasks") is not None:
             self._InstanceTasks = []
             for item in params.get("InstanceTasks"):
@@ -7378,9 +8007,63 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceStorageType = params.get("InstanceStorageType")
         self._DbMode = params.get("DbMode")
         self._NodeList = params.get("NodeList")
+        self._ServerlessStatus = params.get("ServerlessStatus")
         if params.get("AIOptimizerStatus") is not None:
             self._AIOptimizerStatus = AIOptimizerStatus()
             self._AIOptimizerStatus._deserialize(params.get("AIOptimizerStatus"))
+        self._ProjectId = params.get("ProjectId")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._PhysicalZone = params.get("PhysicalZone")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._DbType = params.get("DbType")
+        self._DbVersion = params.get("DbVersion")
+        self._Storage = params.get("Storage")
+        self._StorageId = params.get("StorageId")
+        self._StoragePayMode = params.get("StoragePayMode")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._IsolateTime = params.get("IsolateTime")
+        self._DestroyTime = params.get("DestroyTime")
+        self._DestroyDeadlineText = params.get("DestroyDeadlineText")
+        self._PeriodEndTime = params.get("PeriodEndTime")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._NetType = params.get("NetType")
+        self._WanIP = params.get("WanIP")
+        self._WanPort = params.get("WanPort")
+        self._WanStatus = params.get("WanStatus")
+        self._WanDomain = params.get("WanDomain")
+        if params.get("InstanceNetInfo") is not None:
+            self._InstanceNetInfo = []
+            for item in params.get("InstanceNetInfo"):
+                obj = InstanceNetInfo()
+                obj._deserialize(item)
+                self._InstanceNetInfo.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._ProcessingTask = params.get("ProcessingTask")
+        self._RenewFlag = params.get("RenewFlag")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._IsFreeze = params.get("IsFreeze")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        if params.get("InstanceAbility") is not None:
+            self._InstanceAbility = InstanceAbility()
+            self._InstanceAbility._deserialize(params.get("InstanceAbility"))
+        self._DeviceType = params.get("DeviceType")
+        self._GdnId = params.get("GdnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11894,6 +12577,8 @@ class CreateProxyEndPointRequest(AbstractModel):
         :type InstanceWeights: list of ProxyInstanceWeight
         :param _LoadBalanceMode: <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
         :type LoadBalanceMode: str
+        :param _TransAllSplit: <p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+        :type TransAllSplit: bool
         """
         self._ClusterId = None
         self._UniqueVpcId = None
@@ -11914,6 +12599,7 @@ class CreateProxyEndPointRequest(AbstractModel):
         self._AccessMode = None
         self._InstanceWeights = None
         self._LoadBalanceMode = None
+        self._TransAllSplit = None
 
     @property
     def ClusterId(self):
@@ -12124,6 +12810,17 @@ class CreateProxyEndPointRequest(AbstractModel):
     def LoadBalanceMode(self, LoadBalanceMode):
         self._LoadBalanceMode = LoadBalanceMode
 
+    @property
+    def TransAllSplit(self):
+        r"""<p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+        :rtype: bool
+        """
+        return self._TransAllSplit
+
+    @TransAllSplit.setter
+    def TransAllSplit(self, TransAllSplit):
+        self._TransAllSplit = TransAllSplit
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -12150,6 +12847,7 @@ class CreateProxyEndPointRequest(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceWeights.append(obj)
         self._LoadBalanceMode = params.get("LoadBalanceMode")
+        self._TransAllSplit = params.get("TransAllSplit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46174,6 +46872,8 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         :type ApQueryToOtherNode: bool
         :param _LoadBalanceMode: <p>负载均衡模式</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
         :type LoadBalanceMode: str
+        :param _TransAllSplit: <p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+        :type TransAllSplit: bool
         """
         self._ClusterId = None
         self._ProxyGroupId = None
@@ -46193,6 +46893,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         self._ApNodeAsRoNode = None
         self._ApQueryToOtherNode = None
         self._LoadBalanceMode = None
+        self._TransAllSplit = None
 
     @property
     def ClusterId(self):
@@ -46392,6 +47093,17 @@ class ModifyProxyRwSplitRequest(AbstractModel):
     def LoadBalanceMode(self, LoadBalanceMode):
         self._LoadBalanceMode = LoadBalanceMode
 
+    @property
+    def TransAllSplit(self):
+        r"""<p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+        :rtype: bool
+        """
+        return self._TransAllSplit
+
+    @TransAllSplit.setter
+    def TransAllSplit(self, TransAllSplit):
+        self._TransAllSplit = TransAllSplit
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -46417,6 +47129,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
         self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
         self._LoadBalanceMode = params.get("LoadBalanceMode")
+        self._TransAllSplit = params.get("TransAllSplit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52083,6 +52796,8 @@ class ProxyGroupRwInfo(AbstractModel):
         :type ApQueryToOtherNode: bool
         :param _LoadBalanceMode: <p>自动负载</p><p>枚举值：</p><ul><li>static： 静态负载</li><li>dynamic： 动态负载</li></ul>
         :type LoadBalanceMode: str
+        :param _TransAllSplit: <p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+        :type TransAllSplit: bool
         """
         self._ConsistencyType = None
         self._ConsistencyTimeOut = None
@@ -52097,6 +52812,7 @@ class ProxyGroupRwInfo(AbstractModel):
         self._ApNodeAsRoNode = None
         self._ApQueryToOtherNode = None
         self._LoadBalanceMode = None
+        self._TransAllSplit = None
 
     @property
     def ConsistencyType(self):
@@ -52241,6 +52957,17 @@ class ProxyGroupRwInfo(AbstractModel):
     def LoadBalanceMode(self, LoadBalanceMode):
         self._LoadBalanceMode = LoadBalanceMode
 
+    @property
+    def TransAllSplit(self):
+        r"""<p>是否开启事务全拆分。在一个事务中将事务写前和写后的读拆分到不同的实例上去执行。</p>
+        :rtype: bool
+        """
+        return self._TransAllSplit
+
+    @TransAllSplit.setter
+    def TransAllSplit(self, TransAllSplit):
+        self._TransAllSplit = TransAllSplit
+
 
     def _deserialize(self, params):
         self._ConsistencyType = params.get("ConsistencyType")
@@ -52261,6 +52988,7 @@ class ProxyGroupRwInfo(AbstractModel):
         self._ApNodeAsRoNode = params.get("ApNodeAsRoNode")
         self._ApQueryToOtherNode = params.get("ApQueryToOtherNode")
         self._LoadBalanceMode = params.get("LoadBalanceMode")
+        self._TransAllSplit = params.get("TransAllSplit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

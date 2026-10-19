@@ -213,6 +213,52 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchAddVideoSnapshotConfigChannel(self, request):
+        r"""批量添加截图配置的通道
+
+        :param request: Request instance for BatchAddVideoSnapshotConfigChannel.
+        :type request: :class:`tencentcloud.iss.v20230517.models.BatchAddVideoSnapshotConfigChannelRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.BatchAddVideoSnapshotConfigChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchAddVideoSnapshotConfigChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchAddVideoSnapshotConfigChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BatchAssignVLPlanChannels(self, request):
+        r"""批量关联视觉理解计划通道
+
+        :param request: Request instance for BatchAssignVLPlanChannels.
+        :type request: :class:`tencentcloud.iss.v20230517.models.BatchAssignVLPlanChannelsRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.BatchAssignVLPlanChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchAssignVLPlanChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchAssignVLPlanChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchDeleteVideoDownloadTask(self, request):
         r"""用于批量删除本地录像下载失败的任务
 
@@ -227,6 +273,52 @@ class IssClient(AbstractClient):
             body = self.call("BatchDeleteVideoDownloadTask", params, headers=headers)
             response = json.loads(body)
             model = models.BatchDeleteVideoDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BatchGetVLPlanSourceFileURL(self, request):
+        r"""批量获取视觉理解计划源素材 URL
+
+        :param request: Request instance for BatchGetVLPlanSourceFileURL.
+        :type request: :class:`tencentcloud.iss.v20230517.models.BatchGetVLPlanSourceFileURLRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.BatchGetVLPlanSourceFileURLResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchGetVLPlanSourceFileURL", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchGetVLPlanSourceFileURLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BatchGetVideoSnapshotImageUrl(self, request):
+        r"""批量获取截图图片URL
+
+        :param request: Request instance for BatchGetVideoSnapshotImageUrl.
+        :type request: :class:`tencentcloud.iss.v20230517.models.BatchGetVideoSnapshotImageUrlRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.BatchGetVideoSnapshotImageUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchGetVideoSnapshotImageUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchGetVideoSnapshotImageUrlResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -420,6 +512,52 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVLPlan(self, request):
+        r"""创建视觉理解计划
+
+        :param request: Request instance for CreateVLPlan.
+        :type request: :class:`tencentcloud.iss.v20230517.models.CreateVLPlanRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CreateVLPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVLPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVLPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVLTemplate(self, request):
+        r"""创建视觉理解模板
+
+        :param request: Request instance for CreateVLTemplate.
+        :type request: :class:`tencentcloud.iss.v20230517.models.CreateVLTemplateRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CreateVLTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVLTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVLTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateVideoDownloadTask(self, request):
         r"""创建本地录像下载任务
 
@@ -434,6 +572,52 @@ class IssClient(AbstractClient):
             body = self.call("CreateVideoDownloadTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateVideoDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVideoSnapshotConfig(self, request):
+        r"""创建截图配置
+
+        :param request: Request instance for CreateVideoSnapshotConfig.
+        :type request: :class:`tencentcloud.iss.v20230517.models.CreateVideoSnapshotConfigRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CreateVideoSnapshotConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoSnapshotConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoSnapshotConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVideoSnapshotTemplate(self, request):
+        r"""创建截图模板
+
+        :param request: Request instance for CreateVideoSnapshotTemplate.
+        :type request: :class:`tencentcloud.iss.v20230517.models.CreateVideoSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CreateVideoSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoSnapshotTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoSnapshotTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -641,6 +825,98 @@ class IssClient(AbstractClient):
             body = self.call("DeleteUserDevice", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteUserDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVLPlan(self, request):
+        r"""删除视觉理解计划
+
+        :param request: Request instance for DeleteVLPlan.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DeleteVLPlanRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DeleteVLPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVLPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVLPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVLTemplate(self, request):
+        r"""删除视觉理解模板
+
+        :param request: Request instance for DeleteVLTemplate.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DeleteVLTemplateRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DeleteVLTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVLTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVLTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVideoSnapshotConfig(self, request):
+        r"""删除截图配置
+
+        :param request: Request instance for DeleteVideoSnapshotConfig.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DeleteVideoSnapshotConfigRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DeleteVideoSnapshotConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVideoSnapshotConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVideoSnapshotConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVideoSnapshotTemplate(self, request):
+        r"""删除截图模板
+
+        :param request: Request instance for DeleteVideoSnapshotTemplate.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DeleteVideoSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DeleteVideoSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVideoSnapshotTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVideoSnapshotTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1111,6 +1387,75 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVLPlan(self, request):
+        r"""查询视觉理解计划详情
+
+        :param request: Request instance for DescribeVLPlan.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeVLPlanRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeVLPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVLPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVLPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVLPlanResult(self, request):
+        r"""查询视觉理解计划结果详情
+
+        :param request: Request instance for DescribeVLPlanResult.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeVLPlanResultRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeVLPlanResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVLPlanResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVLPlanResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVLTemplate(self, request):
+        r"""查询视觉理解模板详情
+
+        :param request: Request instance for DescribeVLTemplate.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeVLTemplateRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeVLTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVLTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVLTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoBitRate(self, request):
         r"""用于获取视频通道的码率信息
 
@@ -1148,6 +1493,52 @@ class IssClient(AbstractClient):
             body = self.call("DescribeVideoDownloadUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVideoDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVideoSnapshotConfig(self, request):
+        r"""获取截图配置详情
+
+        :param request: Request instance for DescribeVideoSnapshotConfig.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeVideoSnapshotConfigRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeVideoSnapshotConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoSnapshotConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoSnapshotConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVideoSnapshotTemplate(self, request):
+        r"""获取截图模板详情
+
+        :param request: Request instance for DescribeVideoSnapshotTemplate.
+        :type request: :class:`tencentcloud.iss.v20230517.models.DescribeVideoSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.DescribeVideoSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoSnapshotTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoSnapshotTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1479,6 +1870,52 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListVLPlans(self, request):
+        r"""获取视觉理解计划列表
+
+        :param request: Request instance for ListVLPlans.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListVLPlansRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVLPlansResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListVLPlans", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListVLPlansResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListVLTemplates(self, request):
+        r"""获取视觉理解模板列表
+
+        :param request: Request instance for ListVLTemplates.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListVLTemplatesRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVLTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListVLTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListVLTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListVideoDownloadTask(self, request):
         r"""查询本店里录像下载任务列表
 
@@ -1493,6 +1930,75 @@ class IssClient(AbstractClient):
             body = self.call("ListVideoDownloadTask", params, headers=headers)
             response = json.loads(body)
             model = models.ListVideoDownloadTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListVideoSnapshotTemplate(self, request):
+        r"""获取截图模板详情列表
+
+        :param request: Request instance for ListVideoSnapshotTemplate.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListVideoSnapshotTemplateRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVideoSnapshotTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListVideoSnapshotTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListVideoSnapshotTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVLPlan(self, request):
+        r"""修改视觉理解计划
+
+        :param request: Request instance for ModifyVLPlan.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ModifyVLPlanRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ModifyVLPlanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVLPlan", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVLPlanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVideoSnapshotConfig(self, request):
+        r"""更新截图配置
+
+        :param request: Request instance for ModifyVideoSnapshotConfig.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ModifyVideoSnapshotConfigRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ModifyVideoSnapshotConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVideoSnapshotConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVideoSnapshotConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

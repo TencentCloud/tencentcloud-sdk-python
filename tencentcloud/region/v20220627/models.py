@@ -537,7 +537,7 @@ class ZoneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: <p>可用区名称，例如，ap-guangzhou-3<br>全网可用区名称如下：</p><li> ap-chongqing-1 </li><li> ap-seoul-1 </li><li> ap-seoul-2 </li><li> ap-chengdu-1 </li><li> ap-chengdu-2 </li><li> ap-hongkong-1 </li><li> ap-hongkong-2 </li><li> ap-shenzhen-fsi-1 </li><li> ap-shenzhen-fsi-2 </li><li> ap-shenzhen-fsi-3 </li><li> ap-guangzhou-1（售罄）</li><li> ap-guangzhou-3 </li><li> ap-guangzhou-4 </li><li> ap-guangzhou-6 </li><li> ap-tokyo-1 </li><li> ap-singapore-1 </li><li> ap-singapore-2 </li><li> ap-shanghai-fsi-1 </li><li> ap-shanghai-fsi-2 </li><li> ap-shanghai-fsi-3 </li><li> ap-bangkok-1 </li><li> ap-shanghai-2 </li><li> ap-shanghai-3 </li><li> ap-shanghai-4 </li><li> ap-shanghai-5 </li><li> ap-beijing-1 </li><li> ap-beijing-3 </li><li> ap-beijing-4 </li><li> ap-beijing-5 </li><li> na-siliconvalley-1 </li><li> na-siliconvalley-2 </li><li> eu-frankfurt-1 </li><li> na-ashburn-1 </li><li> na-ashburn-2 </li><li> ap-nanjing-1 </li><li> ap-nanjing-2 </li>
+        :param _Zone: <p>可用区名称，例如，ap-guangzhou-3<br>全网可用区名称如下：</p><li> ap-chongqing-1 </li><li> ap-seoul-1 </li><li> ap-seoul-2 </li><li> ap-chengdu-1 </li><li> ap-chengdu-2 </li><li> ap-hongkong-1 </li><li> ap-hongkong-2 </li><li> ap-shenzhen-fsi-1 </li><li> ap-shenzhen-fsi-2 </li><li> ap-shenzhen-fsi-3 </li><li> ap-guangzhou-1（售罄）</li><li> ap-guangzhou-3 </li><li> ap-guangzhou-4 </li><li> ap-guangzhou-6 </li><li> ap-tokyo-1 </li><li> ap-singapore-1 </li><li> ap-singapore-2 </li><li> ap-shanghai-fsi-2 </li><li> ap-shanghai-fsi-3 </li><li> ap-bangkok-1 </li><li> ap-shanghai-2 </li><li> ap-shanghai-3 </li><li> ap-shanghai-4 </li><li> ap-shanghai-5 </li><li> ap-beijing-1 </li><li> ap-beijing-3 </li><li> ap-beijing-4 </li><li> ap-beijing-5 </li><li> na-siliconvalley-1 </li><li> na-siliconvalley-2 </li><li> eu-frankfurt-1 </li><li> na-ashburn-1 </li><li> na-ashburn-2 </li><li> ap-nanjing-1 </li><li> ap-nanjing-2 </li>
         :type Zone: str
         :param _ZoneName: <p>可用区描述，例如，广州三区</p>
         :type ZoneName: str
@@ -554,7 +554,7 @@ class ZoneInfo(AbstractModel):
         :param _ParentZoneName: <p>父级可用区描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentZoneName: str
-        :param _ZoneType: <p>zone类型</p>
+        :param _ZoneType: <p>zone类型</p><p>枚举值：</p><ul><li>availability-zone： 中心可用区</li><li>edge-zone： 边缘可用区</li><li>dedicated-zone： 专属可用区</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneType: str
         :param _MachineRoomTypeMC: <p>控制台类型</p>
@@ -577,7 +577,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""<p>可用区名称，例如，ap-guangzhou-3<br>全网可用区名称如下：</p><li> ap-chongqing-1 </li><li> ap-seoul-1 </li><li> ap-seoul-2 </li><li> ap-chengdu-1 </li><li> ap-chengdu-2 </li><li> ap-hongkong-1 </li><li> ap-hongkong-2 </li><li> ap-shenzhen-fsi-1 </li><li> ap-shenzhen-fsi-2 </li><li> ap-shenzhen-fsi-3 </li><li> ap-guangzhou-1（售罄）</li><li> ap-guangzhou-3 </li><li> ap-guangzhou-4 </li><li> ap-guangzhou-6 </li><li> ap-tokyo-1 </li><li> ap-singapore-1 </li><li> ap-singapore-2 </li><li> ap-shanghai-fsi-1 </li><li> ap-shanghai-fsi-2 </li><li> ap-shanghai-fsi-3 </li><li> ap-bangkok-1 </li><li> ap-shanghai-2 </li><li> ap-shanghai-3 </li><li> ap-shanghai-4 </li><li> ap-shanghai-5 </li><li> ap-beijing-1 </li><li> ap-beijing-3 </li><li> ap-beijing-4 </li><li> ap-beijing-5 </li><li> na-siliconvalley-1 </li><li> na-siliconvalley-2 </li><li> eu-frankfurt-1 </li><li> na-ashburn-1 </li><li> na-ashburn-2 </li><li> ap-nanjing-1 </li><li> ap-nanjing-2 </li>
+        r"""<p>可用区名称，例如，ap-guangzhou-3<br>全网可用区名称如下：</p><li> ap-chongqing-1 </li><li> ap-seoul-1 </li><li> ap-seoul-2 </li><li> ap-chengdu-1 </li><li> ap-chengdu-2 </li><li> ap-hongkong-1 </li><li> ap-hongkong-2 </li><li> ap-shenzhen-fsi-1 </li><li> ap-shenzhen-fsi-2 </li><li> ap-shenzhen-fsi-3 </li><li> ap-guangzhou-1（售罄）</li><li> ap-guangzhou-3 </li><li> ap-guangzhou-4 </li><li> ap-guangzhou-6 </li><li> ap-tokyo-1 </li><li> ap-singapore-1 </li><li> ap-singapore-2 </li><li> ap-shanghai-fsi-2 </li><li> ap-shanghai-fsi-3 </li><li> ap-bangkok-1 </li><li> ap-shanghai-2 </li><li> ap-shanghai-3 </li><li> ap-shanghai-4 </li><li> ap-shanghai-5 </li><li> ap-beijing-1 </li><li> ap-beijing-3 </li><li> ap-beijing-4 </li><li> ap-beijing-5 </li><li> na-siliconvalley-1 </li><li> na-siliconvalley-2 </li><li> eu-frankfurt-1 </li><li> na-ashburn-1 </li><li> na-ashburn-2 </li><li> ap-nanjing-1 </li><li> ap-nanjing-2 </li>
         :rtype: str
         """
         return self._Zone
@@ -657,7 +657,7 @@ class ZoneInfo(AbstractModel):
 
     @property
     def ZoneType(self):
-        r"""<p>zone类型</p>
+        r"""<p>zone类型</p><p>枚举值：</p><ul><li>availability-zone： 中心可用区</li><li>edge-zone： 边缘可用区</li><li>dedicated-zone： 专属可用区</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

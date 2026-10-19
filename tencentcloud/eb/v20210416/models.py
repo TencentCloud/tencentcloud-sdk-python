@@ -356,20 +356,23 @@ class CkafkaTargetParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: 要投递到的ckafka topic
+        :param _TopicName: <p>要投递到的ckafka topic</p>
         :type TopicName: str
-        :param _RetryPolicy: 重试策略
+        :param _RetryPolicy: <p>重试策略</p>
         :type RetryPolicy: :class:`tencentcloud.eb.v20210416.models.RetryPolicy`
-        :param _EventDeliveryFormat: 事件投递kafka时的协议格式；目前只支持两种格式：1.CloudEvent(完整的cloudevent消息协议)2.CloudEventDataKey(cloudevent协议中的data字段内容)
+        :param _EventDeliveryFormat: <p>事件投递kafka时的协议格式；目前只支持两种格式：1.CloudEvent(完整的cloudevent消息协议)2.CloudEventDataKey(cloudevent协议中的data字段内容)</p>
         :type EventDeliveryFormat: str
+        :param _TimeFormat: <p>事件顶层Time参数投递格式</p><p>枚举值：</p><ul><li>RFC3339： 将时间戳转换成 YYYY-MM-DDTHH:mm:ssZ 格式</li></ul>
+        :type TimeFormat: str
         """
         self._TopicName = None
         self._RetryPolicy = None
         self._EventDeliveryFormat = None
+        self._TimeFormat = None
 
     @property
     def TopicName(self):
-        r"""要投递到的ckafka topic
+        r"""<p>要投递到的ckafka topic</p>
         :rtype: str
         """
         return self._TopicName
@@ -380,7 +383,7 @@ class CkafkaTargetParams(AbstractModel):
 
     @property
     def RetryPolicy(self):
-        r"""重试策略
+        r"""<p>重试策略</p>
         :rtype: :class:`tencentcloud.eb.v20210416.models.RetryPolicy`
         """
         return self._RetryPolicy
@@ -391,7 +394,7 @@ class CkafkaTargetParams(AbstractModel):
 
     @property
     def EventDeliveryFormat(self):
-        r"""事件投递kafka时的协议格式；目前只支持两种格式：1.CloudEvent(完整的cloudevent消息协议)2.CloudEventDataKey(cloudevent协议中的data字段内容)
+        r"""<p>事件投递kafka时的协议格式；目前只支持两种格式：1.CloudEvent(完整的cloudevent消息协议)2.CloudEventDataKey(cloudevent协议中的data字段内容)</p>
         :rtype: str
         """
         return self._EventDeliveryFormat
@@ -400,6 +403,17 @@ class CkafkaTargetParams(AbstractModel):
     def EventDeliveryFormat(self, EventDeliveryFormat):
         self._EventDeliveryFormat = EventDeliveryFormat
 
+    @property
+    def TimeFormat(self):
+        r"""<p>事件顶层Time参数投递格式</p><p>枚举值：</p><ul><li>RFC3339： 将时间戳转换成 YYYY-MM-DDTHH:mm:ssZ 格式</li></ul>
+        :rtype: str
+        """
+        return self._TimeFormat
+
+    @TimeFormat.setter
+    def TimeFormat(self, TimeFormat):
+        self._TimeFormat = TimeFormat
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -407,6 +421,7 @@ class CkafkaTargetParams(AbstractModel):
             self._RetryPolicy = RetryPolicy()
             self._RetryPolicy._deserialize(params.get("RetryPolicy"))
         self._EventDeliveryFormat = params.get("EventDeliveryFormat")
+        self._TimeFormat = params.get("TimeFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

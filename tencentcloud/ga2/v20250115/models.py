@@ -1732,7 +1732,7 @@ class CreateListenerRequest(AbstractModel):
         :type Protocol: str
         :param _IdleTimeout: <p>连接空闲等待时间。</p><p>1、HTTP/HTTPS监听器，默认值为15，支持范围为1-60；<br>2、TCP监听器，默认值为900，支持范围为10-900；<br>3、UDP监听器，默认值为20，支持范围为10-20；</p>
         :type IdleTimeout: int
-        :param _GetRealIpType: <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
+        :param _GetRealIpType: <p>四层获取源IP方式。</p><p>枚举值：</p><ul><li>TOA： TOA</li><li>ProxyProtocol： ProxyProtocol</li><li>ProxyProtocolV2： ProxyProtocolV2</li></ul><p>需要开启四层获取源IP方式，才填写此参数。</p>
         :type GetRealIpType: str
         :param _ClientAffinity: <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul><p>仅支持4层监听器 ，7层不支持修改</p>
         :type ClientAffinity: str
@@ -1847,7 +1847,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def GetRealIpType(self):
-        r"""<p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
+        r"""<p>四层获取源IP方式。</p><p>枚举值：</p><ul><li>TOA： TOA</li><li>ProxyProtocol： ProxyProtocol</li><li>ProxyProtocolV2： ProxyProtocolV2</li></ul><p>需要开启四层获取源IP方式，才填写此参数。</p>
         :rtype: str
         """
         return self._GetRealIpType
@@ -2351,13 +2351,13 @@ class DeleteForwardingRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _ListenerId: 监听器ID。
+        :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _ForwardingPolicyId: 策略ID。
+        :param _ForwardingPolicyId: <p>七层转发策略ID。</p>
         :type ForwardingPolicyId: str
-        :param _ForwardingRuleId: 七层转发规则ID。
+        :param _ForwardingRuleId: <p>七层转发规则ID。</p>
         :type ForwardingRuleId: str
         """
         self._GlobalAcceleratorId = None
@@ -2367,7 +2367,7 @@ class DeleteForwardingRuleRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -2378,7 +2378,7 @@ class DeleteForwardingRuleRequest(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器ID。
+        r"""<p>监听器ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -2389,7 +2389,7 @@ class DeleteForwardingRuleRequest(AbstractModel):
 
     @property
     def ForwardingPolicyId(self):
-        r"""策略ID。
+        r"""<p>七层转发策略ID。</p>
         :rtype: str
         """
         return self._ForwardingPolicyId
@@ -2400,7 +2400,7 @@ class DeleteForwardingRuleRequest(AbstractModel):
 
     @property
     def ForwardingRuleId(self):
-        r"""七层转发规则ID。
+        r"""<p>七层转发规则ID。</p>
         :rtype: str
         """
         return self._ForwardingRuleId
@@ -2432,7 +2432,7 @@ class DeleteForwardingRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2442,7 +2442,7 @@ class DeleteForwardingRuleResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -2477,7 +2477,7 @@ class DeleteGlobalAcceleratorAccessLogRequest(AbstractModel):
         r"""
         :param _LogPushTaskId: <p>日志唯一Id</p>
         :type LogPushTaskId: str
-        :param _GlobalAcceleratorId: <p>GA实例唯一Id</p>
+        :param _GlobalAcceleratorId: <p>全球加速实例ID</p>
         :type GlobalAcceleratorId: str
         """
         self._LogPushTaskId = None
@@ -2496,7 +2496,7 @@ class DeleteGlobalAcceleratorAccessLogRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""<p>GA实例唯一Id</p>
+        r"""<p>全球加速实例ID</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -2648,11 +2648,11 @@ class DeleteGlobalAcceleratorAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _GlobalAcceleratorAclPolicyId: 安全策略ID
+        :param _GlobalAcceleratorAclPolicyId: <p>访问控制策略ID</p>
         :type GlobalAcceleratorAclPolicyId: str
-        :param _GlobalAcceleratorAclRuleIds: Acl规则ID。
+        :param _GlobalAcceleratorAclRuleIds: <p>访问规则ID</p>
         :type GlobalAcceleratorAclRuleIds: list of str
         """
         self._GlobalAcceleratorId = None
@@ -2661,7 +2661,7 @@ class DeleteGlobalAcceleratorAclRuleRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -2672,7 +2672,7 @@ class DeleteGlobalAcceleratorAclRuleRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorAclPolicyId(self):
-        r"""安全策略ID
+        r"""<p>访问控制策略ID</p>
         :rtype: str
         """
         return self._GlobalAcceleratorAclPolicyId
@@ -2683,7 +2683,7 @@ class DeleteGlobalAcceleratorAclRuleRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorAclRuleIds(self):
-        r"""Acl规则ID。
+        r"""<p>访问规则ID</p>
         :rtype: list of str
         """
         return self._GlobalAcceleratorAclRuleIds
@@ -2714,7 +2714,7 @@ class DeleteGlobalAcceleratorAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务ID。
+        :param _TaskId: <p>异步任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2724,7 +2724,7 @@ class DeleteGlobalAcceleratorAclRuleResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -3466,7 +3466,7 @@ class DescribeEndpointGroupsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: <p>返回数量，默认为10，最大值为10。</p>
         :type Limit: int
-        :param _Filters: <p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。</p>
+        :param _Filters: <p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。listener-id- String -（过滤条件）监听器实例ID。endpoint-group-name- String -（过滤条件）终端节点组名称。</p>
         :type Filters: list of Filter
         """
         self._GlobalAcceleratorId = None
@@ -3509,7 +3509,7 @@ class DescribeEndpointGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。</p>
+        r"""<p>过滤条件。  endpoint-group-id- String -（过滤条件）终端节点组实例ID。endpoint-group-type- String -（过滤条件）终端节点组实例类型。listener-id- String -（过滤条件）监听器实例ID。endpoint-group-name- String -（过滤条件）终端节点组名称。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -4383,7 +4383,7 @@ class DescribeGlobalAcceleratorsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
         :type Limit: int
-        :param _Filters: <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li></p>
+        :param _Filters: <p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li><li>global-accelerator-name - String -（过滤条件）全球加速实例名称。</li></p>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -4414,7 +4414,7 @@ class DescribeGlobalAcceleratorsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li></p>
+        r"""<p>过滤条件。<li>global-accelerator-id - String -（过滤条件）全球加速实例ID。</li> <li>global-accelerator-state - String -（过滤条件）全球加速实例状态。</li><li>global-accelerator-name - String -（过滤条件）全球加速实例名称。</li></p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -5696,7 +5696,7 @@ class Filter(AbstractModel):
         r"""
         :param _Name: 属性名称, 若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
         :type Name: str
-        :param _Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。当值类型为布尔类型时，可直接取值为字符串"TRUE"或 "FALSE"。
+        :param _Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
         :type Values: list of str
         """
         self._Name = None
@@ -5715,7 +5715,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。当值类型为布尔类型时，可直接取值为字符串"TRUE"或 "FALSE"。
+        r"""属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
         :rtype: list of str
         """
         return self._Values
@@ -7211,7 +7211,7 @@ class ModifyAccessLogStatusRequest(AbstractModel):
         :type LogPushTaskId: str
         :param _Status: <p>状态（启动START， 停止STOP）</p><p>枚举值：</p><ul><li>START： 启动</li><li>STOP： 停止</li></ul>
         :type Status: str
-        :param _GlobalAcceleratorId: <p>GA实例唯一Id</p>
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
         """
         self._LogPushTaskId = None
@@ -7242,7 +7242,7 @@ class ModifyAccessLogStatusRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""<p>GA实例唯一Id</p>
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId

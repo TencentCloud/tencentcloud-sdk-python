@@ -7180,6 +7180,8 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         :type DependencyTriggerPolicy: str
         :param _AllowDownstreamDependency: <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
         :type AllowDownstreamDependency: int
+        :param _MinuteOffset: <p>分钟任务相位偏移</p>
+        :type MinuteOffset: int
         """
         self._CycleType = None
         self._ScheduleTimeZone = None
@@ -7212,6 +7214,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._WaitExecutionTotalTTLMinute = None
         self._DependencyTriggerPolicy = None
         self._AllowDownstreamDependency = None
+        self._MinuteOffset = None
 
     @property
     def CycleType(self):
@@ -7582,6 +7585,17 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
         self._AllowDownstreamDependency = AllowDownstreamDependency
 
+    @property
+    def MinuteOffset(self):
+        r"""<p>分钟任务相位偏移</p>
+        :rtype: int
+        """
+        return self._MinuteOffset
+
+    @MinuteOffset.setter
+    def MinuteOffset(self, MinuteOffset):
+        self._MinuteOffset = MinuteOffset
+
 
     def _deserialize(self, params):
         self._CycleType = params.get("CycleType")
@@ -7640,6 +7654,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
+        self._MinuteOffset = params.get("MinuteOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53472,6 +53487,9 @@ class TaskSchedulerConfiguration(AbstractModel):
         :param _AllowDownstreamDependency: <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowDownstreamDependency: int
+        :param _MinuteOffset: <p>分钟任务相位偏移</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinuteOffset: int
         """
         self._CycleType = None
         self._ScheduleTimeZone = None
@@ -53507,6 +53525,7 @@ class TaskSchedulerConfiguration(AbstractModel):
         self._WaitExecutionTotalTTLMinute = None
         self._DependencyTriggerPolicy = None
         self._AllowDownstreamDependency = None
+        self._MinuteOffset = None
 
     @property
     def CycleType(self):
@@ -53944,6 +53963,18 @@ class TaskSchedulerConfiguration(AbstractModel):
     def AllowDownstreamDependency(self, AllowDownstreamDependency):
         self._AllowDownstreamDependency = AllowDownstreamDependency
 
+    @property
+    def MinuteOffset(self):
+        r"""<p>分钟任务相位偏移</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinuteOffset
+
+    @MinuteOffset.setter
+    def MinuteOffset(self, MinuteOffset):
+        self._MinuteOffset = MinuteOffset
+
 
     def _deserialize(self, params):
         self._CycleType = params.get("CycleType")
@@ -54015,6 +54046,7 @@ class TaskSchedulerConfiguration(AbstractModel):
         self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
+        self._MinuteOffset = params.get("MinuteOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64761,50 +64793,45 @@ class WorkflowSchedulerConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScheduleTimeZone: 时区
+        :param _ScheduleTimeZone: <p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
-        :param _CycleType: 周期类型：支持的类型为
-ONEOFF_CYCLE: 一次性
-YEAR_CYCLE: 年
-MONTH_CYCLE: 月
-WEEK_CYCLE: 周
-DAY_CYCLE: 天
-HOUR_CYCLE: 小时
-MINUTE_CYCLE: 分钟
-CRONTAB_CYCLE: crontab表达式类型
+        :param _CycleType: <p>周期类型：支持的类型为<br>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _SelfDepend: 自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+        :param _SelfDepend: <p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfDepend: str
-        :param _StartTime: 生效开始时间
+        :param _StartTime: <p>生效开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 生效结束时间
+        :param _EndTime: <p>生效结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _DependencyWorkflow: 工作流依赖，yes or no
+        :param _DependencyWorkflow: <p>工作流依赖，yes or no</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyWorkflow: str
-        :param _ExecutionStartTime: 执行时间左闭区间，示例：00:00
+        :param _ExecutionStartTime: <p>执行时间左闭区间，示例：00:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间右闭区间，示例：23:59
+        :param _ExecutionEndTime: <p>执行时间右闭区间，示例：23:59</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionEndTime: str
-        :param _CrontabExpression: cron表达式
+        :param _CrontabExpression: <p>cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrontabExpression: str
-        :param _CalendarOpen: 是否开启日历调度 1 开启 0关闭
+        :param _CalendarOpen: <p>是否开启日历调度 1 开启 0关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarOpen: str
-        :param _CalendarName: 日历名称
+        :param _CalendarName: <p>日历名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarName: str
-        :param _CalendarId: 日历id
+        :param _CalendarId: <p>日历id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarId: str
+        :param _MinuteOffset: <p>分钟任务相位偏移</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinuteOffset: int
         """
         self._ScheduleTimeZone = None
         self._CycleType = None
@@ -64818,10 +64845,11 @@ CRONTAB_CYCLE: crontab表达式类型
         self._CalendarOpen = None
         self._CalendarName = None
         self._CalendarId = None
+        self._MinuteOffset = None
 
     @property
     def ScheduleTimeZone(self):
-        r"""时区
+        r"""<p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64833,15 +64861,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CycleType(self):
-        r"""周期类型：支持的类型为
-ONEOFF_CYCLE: 一次性
-YEAR_CYCLE: 年
-MONTH_CYCLE: 月
-WEEK_CYCLE: 周
-DAY_CYCLE: 天
-HOUR_CYCLE: 小时
-MINUTE_CYCLE: 分钟
-CRONTAB_CYCLE: crontab表达式类型
+        r"""<p>周期类型：支持的类型为<br>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64853,7 +64873,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def SelfDepend(self):
-        r"""自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+        r"""<p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64865,7 +64885,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def StartTime(self):
-        r"""生效开始时间
+        r"""<p>生效开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64877,7 +64897,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def EndTime(self):
-        r"""生效结束时间
+        r"""<p>生效结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64889,7 +64909,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def DependencyWorkflow(self):
-        r"""工作流依赖，yes or no
+        r"""<p>工作流依赖，yes or no</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64901,7 +64921,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间左闭区间，示例：00:00
+        r"""<p>执行时间左闭区间，示例：00:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64913,7 +64933,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间右闭区间，示例：23:59
+        r"""<p>执行时间右闭区间，示例：23:59</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64925,7 +64945,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CrontabExpression(self):
-        r"""cron表达式
+        r"""<p>cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64937,7 +64957,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CalendarOpen(self):
-        r"""是否开启日历调度 1 开启 0关闭
+        r"""<p>是否开启日历调度 1 开启 0关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64949,7 +64969,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CalendarName(self):
-        r"""日历名称
+        r"""<p>日历名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64961,7 +64981,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CalendarId(self):
-        r"""日历id
+        r"""<p>日历id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64970,6 +64990,18 @@ CRONTAB_CYCLE: crontab表达式类型
     @CalendarId.setter
     def CalendarId(self, CalendarId):
         self._CalendarId = CalendarId
+
+    @property
+    def MinuteOffset(self):
+        r"""<p>分钟任务相位偏移</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinuteOffset
+
+    @MinuteOffset.setter
+    def MinuteOffset(self, MinuteOffset):
+        self._MinuteOffset = MinuteOffset
 
 
     def _deserialize(self, params):
@@ -64985,6 +65017,7 @@ CRONTAB_CYCLE: crontab表达式类型
         self._CalendarOpen = params.get("CalendarOpen")
         self._CalendarName = params.get("CalendarName")
         self._CalendarId = params.get("CalendarId")
+        self._MinuteOffset = params.get("MinuteOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65131,85 +65164,38 @@ class WorkflowSchedulerConfigurationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScheduleTimeZone: 时区
+        :param _ScheduleTimeZone: <p>时区</p>
         :type ScheduleTimeZone: str
-        :param _CycleType: 周期类型：支持的类型为
-ONEOFF_CYCLE: 一次性
-YEAR_CYCLE: 年
-MONTH_CYCLE: 月
-WEEK_CYCLE: 周
-DAY_CYCLE: 天
-HOUR_CYCLE: 小时
-MINUTE_CYCLE: 分钟
-CRONTAB_CYCLE: crontab表达式类型
+        :param _CycleType: <p>周期类型：支持的类型为<br>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
         :type CycleType: str
-        :param _SelfDepend: 自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+        :param _SelfDepend: <p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
         :type SelfDepend: str
-        :param _StartTime: 生效开始时间
+        :param _StartTime: <p>生效开始时间</p>
         :type StartTime: str
-        :param _EndTime: 生效结束时间
+        :param _EndTime: <p>生效结束时间</p>
         :type EndTime: str
-        :param _CrontabExpression: cron表达式
+        :param _CrontabExpression: <p>cron表达式</p>
         :type CrontabExpression: str
-        :param _DependencyWorkflow: 工作流依赖，yes or no
+        :param _DependencyWorkflow: <p>工作流依赖，yes or no</p>
         :type DependencyWorkflow: str
-        :param _ModifyCycleValue: 0：不修改 1：将任务的上游依赖配置改为默认值
+        :param _ModifyCycleValue: <p>0：不修改 1：将任务的上游依赖配置改为默认值</p>
         :type ModifyCycleValue: str
-        :param _ClearLink: 工作流存在跨工作流依赖且使用cron表达式调度。如果保存统一调度，会断开不支持的依赖关系
+        :param _ClearLink: <p>工作流存在跨工作流依赖且使用cron表达式调度。如果保存统一调度，会断开不支持的依赖关系</p>
         :type ClearLink: bool
-        :param _MainCyclicConfig: ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度，取值为：
-* CRONTAB
-* DAY
-* HOUR
-* LIST_DAY
-* LIST_HOUR
-* LIST_MINUTE
-* MINUTE
-* MONTH
-* RANGE_DAY
-* RANGE_HOUR
-* RANGE_MINUTE
-* WEEK
-* YEAR
-
-https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06&name=WorkflowSchedulerConfigurationInfo
+        :param _MainCyclicConfig: <p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度，取值为：</p><ul><li>CRONTAB</li><li>DAY</li><li>HOUR</li><li>LIST_DAY</li><li>LIST_HOUR</li><li>LIST_MINUTE</li><li>MINUTE</li><li>MONTH</li><li>RANGE_DAY</li><li>RANGE_HOUR</li><li>RANGE_MINUTE</li><li>WEEK</li><li>YEAR</li></ul><p>https://capi.woa.com/object/detail?product=wedata&amp;env=api_dev&amp;version=2025-08-06&amp;name=WorkflowSchedulerConfigurationInfo</p>
         :type MainCyclicConfig: str
-        :param _SubordinateCyclicConfig: ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围
-取值为：
-* ALL_DAY_OF_YEAR
-* ALL_MONTH_OF_YEAR
-* CURRENT
-* CURRENT_DAY
-* CURRENT_HOUR
-* CURRENT_MINUTE
-* CURRENT_MONTH
-* CURRENT_WEEK
-* CURRENT_YEAR
-* PREVIOUS_BEGIN_OF_MONTH
-* PREVIOUS_DAY
-* PREVIOUS_DAY_LATER_OFFSET_HOUR
-* PREVIOUS_DAY_LATER_OFFSET_MINUTE
-* PREVIOUS_END_OF_MONTH
-* PREVIOUS_FRIDAY
-* PREVIOUS_HOUR
-* PREVIOUS_HOUR_CYCLE
-* PREVIOUS_HOUR_LATER_OFFSET_MINUTE
-* PREVIOUS_MINUTE_CYCLE
-* PREVIOUS_MONTH
-* PREVIOUS_WEEK
-* PREVIOUS_WEEKEND
-* RECENT_DATE
-
-https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06&name=WorkflowSchedulerConfigurationInfo
+        :param _SubordinateCyclicConfig: <p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围<br>取值为：</p><ul><li>ALL_DAY_OF_YEAR</li><li>ALL_MONTH_OF_YEAR</li><li>CURRENT</li><li>CURRENT_DAY</li><li>CURRENT_HOUR</li><li>CURRENT_MINUTE</li><li>CURRENT_MONTH</li><li>CURRENT_WEEK</li><li>CURRENT_YEAR</li><li>PREVIOUS_BEGIN_OF_MONTH</li><li>PREVIOUS_DAY</li><li>PREVIOUS_DAY_LATER_OFFSET_HOUR</li><li>PREVIOUS_DAY_LATER_OFFSET_MINUTE</li><li>PREVIOUS_END_OF_MONTH</li><li>PREVIOUS_FRIDAY</li><li>PREVIOUS_HOUR</li><li>PREVIOUS_HOUR_CYCLE</li><li>PREVIOUS_HOUR_LATER_OFFSET_MINUTE</li><li>PREVIOUS_MINUTE_CYCLE</li><li>PREVIOUS_MONTH</li><li>PREVIOUS_WEEK</li><li>PREVIOUS_WEEKEND</li><li>RECENT_DATE</li></ul><p>https://capi.woa.com/object/detail?product=wedata&amp;env=api_dev&amp;version=2025-08-06&amp;name=WorkflowSchedulerConfigurationInfo</p>
         :type SubordinateCyclicConfig: str
-        :param _ExecutionStartTime: 执行时间左闭区间，示例：00:00，只有周期类型为MINUTE_CYCLE才需要填入
+        :param _ExecutionStartTime: <p>执行时间左闭区间，示例：00:00，只有周期类型为MINUTE_CYCLE才需要填入</p>
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间右闭区间，示例：23:59，只有周期类型为MINUTE_CYCLE才需要填入
+        :param _ExecutionEndTime: <p>执行时间右闭区间，示例：23:59，只有周期类型为MINUTE_CYCLE才需要填入</p>
         :type ExecutionEndTime: str
-        :param _CalendarOpen: 是否开启日历调度 1 开启 0关闭
+        :param _CalendarOpen: <p>是否开启日历调度 1 开启 0关闭</p>
         :type CalendarOpen: str
-        :param _CalendarId: 日历id
+        :param _CalendarId: <p>日历id</p>
         :type CalendarId: str
+        :param _MinuteOffset: <p>分钟任务相位偏移</p>
+        :type MinuteOffset: int
         """
         self._ScheduleTimeZone = None
         self._CycleType = None
@@ -65226,10 +65212,11 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
         self._ExecutionEndTime = None
         self._CalendarOpen = None
         self._CalendarId = None
+        self._MinuteOffset = None
 
     @property
     def ScheduleTimeZone(self):
-        r"""时区
+        r"""<p>时区</p>
         :rtype: str
         """
         return self._ScheduleTimeZone
@@ -65240,15 +65227,7 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
 
     @property
     def CycleType(self):
-        r"""周期类型：支持的类型为
-ONEOFF_CYCLE: 一次性
-YEAR_CYCLE: 年
-MONTH_CYCLE: 月
-WEEK_CYCLE: 周
-DAY_CYCLE: 天
-HOUR_CYCLE: 小时
-MINUTE_CYCLE: 分钟
-CRONTAB_CYCLE: crontab表达式类型
+        r"""<p>周期类型：支持的类型为<br>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
         :rtype: str
         """
         return self._CycleType
@@ -65259,7 +65238,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def SelfDepend(self):
-        r"""自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+        r"""<p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
         :rtype: str
         """
         return self._SelfDepend
@@ -65270,7 +65249,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def StartTime(self):
-        r"""生效开始时间
+        r"""<p>生效开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -65281,7 +65260,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def EndTime(self):
-        r"""生效结束时间
+        r"""<p>生效结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -65292,7 +65271,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CrontabExpression(self):
-        r"""cron表达式
+        r"""<p>cron表达式</p>
         :rtype: str
         """
         return self._CrontabExpression
@@ -65303,7 +65282,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def DependencyWorkflow(self):
-        r"""工作流依赖，yes or no
+        r"""<p>工作流依赖，yes or no</p>
         :rtype: str
         """
         return self._DependencyWorkflow
@@ -65314,7 +65293,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ModifyCycleValue(self):
-        r"""0：不修改 1：将任务的上游依赖配置改为默认值
+        r"""<p>0：不修改 1：将任务的上游依赖配置改为默认值</p>
         :rtype: str
         """
         return self._ModifyCycleValue
@@ -65325,7 +65304,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ClearLink(self):
-        r"""工作流存在跨工作流依赖且使用cron表达式调度。如果保存统一调度，会断开不支持的依赖关系
+        r"""<p>工作流存在跨工作流依赖且使用cron表达式调度。如果保存统一调度，会断开不支持的依赖关系</p>
         :rtype: bool
         """
         return self._ClearLink
@@ -65336,22 +65315,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def MainCyclicConfig(self):
-        r"""ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度，取值为：
-* CRONTAB
-* DAY
-* HOUR
-* LIST_DAY
-* LIST_HOUR
-* LIST_MINUTE
-* MINUTE
-* MONTH
-* RANGE_DAY
-* RANGE_HOUR
-* RANGE_MINUTE
-* WEEK
-* YEAR
-
-https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06&name=WorkflowSchedulerConfigurationInfo
+        r"""<p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-时间维度，取值为：</p><ul><li>CRONTAB</li><li>DAY</li><li>HOUR</li><li>LIST_DAY</li><li>LIST_HOUR</li><li>LIST_MINUTE</li><li>MINUTE</li><li>MONTH</li><li>RANGE_DAY</li><li>RANGE_HOUR</li><li>RANGE_MINUTE</li><li>WEEK</li><li>YEAR</li></ul><p>https://capi.woa.com/object/detail?product=wedata&amp;env=api_dev&amp;version=2025-08-06&amp;name=WorkflowSchedulerConfigurationInfo</p>
         :rtype: str
         """
         return self._MainCyclicConfig
@@ -65362,33 +65326,7 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
 
     @property
     def SubordinateCyclicConfig(self):
-        r"""ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围
-取值为：
-* ALL_DAY_OF_YEAR
-* ALL_MONTH_OF_YEAR
-* CURRENT
-* CURRENT_DAY
-* CURRENT_HOUR
-* CURRENT_MINUTE
-* CURRENT_MONTH
-* CURRENT_WEEK
-* CURRENT_YEAR
-* PREVIOUS_BEGIN_OF_MONTH
-* PREVIOUS_DAY
-* PREVIOUS_DAY_LATER_OFFSET_HOUR
-* PREVIOUS_DAY_LATER_OFFSET_MINUTE
-* PREVIOUS_END_OF_MONTH
-* PREVIOUS_FRIDAY
-* PREVIOUS_HOUR
-* PREVIOUS_HOUR_CYCLE
-* PREVIOUS_HOUR_LATER_OFFSET_MINUTE
-* PREVIOUS_MINUTE_CYCLE
-* PREVIOUS_MONTH
-* PREVIOUS_WEEK
-* PREVIOUS_WEEKEND
-* RECENT_DATE
-
-https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06&name=WorkflowSchedulerConfigurationInfo
+        r"""<p>ModifyCycleValue为1的时候生效，表示默认修改的上游依赖-实例范围<br>取值为：</p><ul><li>ALL_DAY_OF_YEAR</li><li>ALL_MONTH_OF_YEAR</li><li>CURRENT</li><li>CURRENT_DAY</li><li>CURRENT_HOUR</li><li>CURRENT_MINUTE</li><li>CURRENT_MONTH</li><li>CURRENT_WEEK</li><li>CURRENT_YEAR</li><li>PREVIOUS_BEGIN_OF_MONTH</li><li>PREVIOUS_DAY</li><li>PREVIOUS_DAY_LATER_OFFSET_HOUR</li><li>PREVIOUS_DAY_LATER_OFFSET_MINUTE</li><li>PREVIOUS_END_OF_MONTH</li><li>PREVIOUS_FRIDAY</li><li>PREVIOUS_HOUR</li><li>PREVIOUS_HOUR_CYCLE</li><li>PREVIOUS_HOUR_LATER_OFFSET_MINUTE</li><li>PREVIOUS_MINUTE_CYCLE</li><li>PREVIOUS_MONTH</li><li>PREVIOUS_WEEK</li><li>PREVIOUS_WEEKEND</li><li>RECENT_DATE</li></ul><p>https://capi.woa.com/object/detail?product=wedata&amp;env=api_dev&amp;version=2025-08-06&amp;name=WorkflowSchedulerConfigurationInfo</p>
         :rtype: str
         """
         return self._SubordinateCyclicConfig
@@ -65399,7 +65337,7 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间左闭区间，示例：00:00，只有周期类型为MINUTE_CYCLE才需要填入
+        r"""<p>执行时间左闭区间，示例：00:00，只有周期类型为MINUTE_CYCLE才需要填入</p>
         :rtype: str
         """
         return self._ExecutionStartTime
@@ -65410,7 +65348,7 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间右闭区间，示例：23:59，只有周期类型为MINUTE_CYCLE才需要填入
+        r"""<p>执行时间右闭区间，示例：23:59，只有周期类型为MINUTE_CYCLE才需要填入</p>
         :rtype: str
         """
         return self._ExecutionEndTime
@@ -65421,7 +65359,7 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
 
     @property
     def CalendarOpen(self):
-        r"""是否开启日历调度 1 开启 0关闭
+        r"""<p>是否开启日历调度 1 开启 0关闭</p>
         :rtype: str
         """
         return self._CalendarOpen
@@ -65432,7 +65370,7 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
 
     @property
     def CalendarId(self):
-        r"""日历id
+        r"""<p>日历id</p>
         :rtype: str
         """
         return self._CalendarId
@@ -65440,6 +65378,17 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
     @CalendarId.setter
     def CalendarId(self, CalendarId):
         self._CalendarId = CalendarId
+
+    @property
+    def MinuteOffset(self):
+        r"""<p>分钟任务相位偏移</p>
+        :rtype: int
+        """
+        return self._MinuteOffset
+
+    @MinuteOffset.setter
+    def MinuteOffset(self, MinuteOffset):
+        self._MinuteOffset = MinuteOffset
 
 
     def _deserialize(self, params):
@@ -65458,6 +65407,7 @@ https://capi.woa.com/object/detail?product=wedata&env=api_dev&version=2025-08-06
         self._ExecutionEndTime = params.get("ExecutionEndTime")
         self._CalendarOpen = params.get("CalendarOpen")
         self._CalendarId = params.get("CalendarId")
+        self._MinuteOffset = params.get("MinuteOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

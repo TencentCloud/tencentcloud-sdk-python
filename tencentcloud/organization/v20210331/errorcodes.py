@@ -290,6 +290,9 @@ FAILEDOPERATION_PARTNERMANAGEMENTERR = 'FailedOperation.PartnerManagementErr'
 # 代付者不合法。
 FAILEDOPERATION_PAYUINILLEGAL = 'FailedOperation.PayUinIllegal'
 
+# 申请单非待审核，不可重复审批
+FAILEDOPERATION_PERMISSIONAPPLYORDERSTATUSINVALID = 'FailedOperation.PermissionApplyOrderStatusInvalid'
+
 # 操作权限被拒绝，OwnerUin不一致
 FAILEDOPERATION_PERMISSIONDENIED = 'FailedOperation.PermissionDenied'
 
@@ -808,6 +811,9 @@ RESOURCENOTFOUND_ORGANIZATIONSERVICEASSIGNNOTEXIST = 'ResourceNotFound.Organizat
 
 # 集团服务不存在。
 RESOURCENOTFOUND_ORGANIZATIONSERVICENOTEXIST = 'ResourceNotFound.OrganizationServiceNotExist'
+
+# 权限申请单不存在
+RESOURCENOTFOUND_PERMISSIONAPPLYORDERNOTFOUND = 'ResourceNotFound.PermissionApplyOrderNotFound'
 
 # 策略不存在。
 RESOURCENOTFOUND_POLICYIDNOTFOUND = 'ResourceNotFound.PolicyIdNotFound'

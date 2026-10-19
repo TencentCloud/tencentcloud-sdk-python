@@ -4725,6 +4725,130 @@ class DescribeBackupDownloadRestrictionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupEncryptConfigRequest(AbstractModel):
+    r"""DescribeBackupEncryptConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID，请登录<a href="https://console.cloud.tencent.com/redis/instance/list">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupEncryptConfigResponse(AbstractModel):
+    r"""DescribeBackupEncryptConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupEncrypt: <p>备份是否加密</p><p>枚举值：</p><ul><li>true： 加密</li><li>false： 不加密</li></ul>
+        :type BackupEncrypt: bool
+        :param _EncryptKeyType: <p>加密密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云托管（默认）</li><li>1： 用户自定义 KMS 密钥</li></ul>
+        :type EncryptKeyType: int
+        :param _KmsKeyId: <p>KMS的密钥ID。</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+        :type KmsKeyId: str
+        :param _KmsRegion: <p>KMS地域信息。</p><p>参数格式：ap-xxxx</p>
+        :type KmsRegion: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupEncrypt = None
+        self._EncryptKeyType = None
+        self._KmsKeyId = None
+        self._KmsRegion = None
+        self._RequestId = None
+
+    @property
+    def BackupEncrypt(self):
+        r"""<p>备份是否加密</p><p>枚举值：</p><ul><li>true： 加密</li><li>false： 不加密</li></ul>
+        :rtype: bool
+        """
+        return self._BackupEncrypt
+
+    @BackupEncrypt.setter
+    def BackupEncrypt(self, BackupEncrypt):
+        self._BackupEncrypt = BackupEncrypt
+
+    @property
+    def EncryptKeyType(self):
+        r"""<p>加密密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云托管（默认）</li><li>1： 用户自定义 KMS 密钥</li></ul>
+        :rtype: int
+        """
+        return self._EncryptKeyType
+
+    @EncryptKeyType.setter
+    def EncryptKeyType(self, EncryptKeyType):
+        self._EncryptKeyType = EncryptKeyType
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>KMS的密钥ID。</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def KmsRegion(self):
+        r"""<p>KMS地域信息。</p><p>参数格式：ap-xxxx</p>
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupEncrypt = params.get("BackupEncrypt")
+        self._EncryptKeyType = params.get("EncryptKeyType")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._KmsRegion = params.get("KmsRegion")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupUrlRequest(AbstractModel):
     r"""DescribeBackupUrl请求参数结构体
 
@@ -18675,6 +18799,130 @@ class ModifyBackupDownloadRestrictionRequest(AbstractModel):
 
 class ModifyBackupDownloadRestrictionResponse(AbstractModel):
     r"""ModifyBackupDownloadRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBackupEncryptRequest(AbstractModel):
+    r"""ModifyBackupEncrypt请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID，请登录Redis控制台在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _BackupEncrypt: <p>是否开启备份加密。</p><p>默认值：false</p>
+        :type BackupEncrypt: bool
+        :param _EncryptKeyType: <p>加密密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云托管（默认）</li><li>1： 用户自定义 KMS 密钥</li></ul><p>默认值：0</p>
+        :type EncryptKeyType: int
+        :param _KmsKeyId: <p>KMS的密钥ID。</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+        :type KmsKeyId: str
+        :param _KmsRegion: <p>地域信息。</p><p>参数格式：ap-xxxx</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/573/34406#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">KMS支持的地域列表</a></p>
+        :type KmsRegion: str
+        """
+        self._InstanceId = None
+        self._BackupEncrypt = None
+        self._EncryptKeyType = None
+        self._KmsKeyId = None
+        self._KmsRegion = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID，请登录Redis控制台在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BackupEncrypt(self):
+        r"""<p>是否开启备份加密。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._BackupEncrypt
+
+    @BackupEncrypt.setter
+    def BackupEncrypt(self, BackupEncrypt):
+        self._BackupEncrypt = BackupEncrypt
+
+    @property
+    def EncryptKeyType(self):
+        r"""<p>加密密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云托管（默认）</li><li>1： 用户自定义 KMS 密钥</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._EncryptKeyType
+
+    @EncryptKeyType.setter
+    def EncryptKeyType(self, EncryptKeyType):
+        self._EncryptKeyType = EncryptKeyType
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>KMS的密钥ID。</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def KmsRegion(self):
+        r"""<p>地域信息。</p><p>参数格式：ap-xxxx</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/573/34406#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">KMS支持的地域列表</a></p>
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BackupEncrypt = params.get("BackupEncrypt")
+        self._EncryptKeyType = params.get("EncryptKeyType")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._KmsRegion = params.get("KmsRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBackupEncryptResponse(AbstractModel):
+    r"""ModifyBackupEncrypt返回参数结构体
 
     """
 

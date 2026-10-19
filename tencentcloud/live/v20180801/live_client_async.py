@@ -3649,6 +3649,60 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeStreamPackageIngestStatistics(
+            self,
+            request: models.DescribeStreamPackageIngestStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageIngestStatisticsResponse:
+        """
+        DescribeStreamPackageIngestStatistics
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageIngestStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageIngestStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageOutputStatistics(
+            self,
+            request: models.DescribeStreamPackageOutputStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageOutputStatisticsResponse:
+        """
+        查询媒体包装输出用量信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageOutputStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageOutputStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageRemuxStatistics(
+            self,
+            request: models.DescribeStreamPackageRemuxStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageRemuxStatisticsResponse:
+        """
+        DescribeStreamPackageRemuxStatistics
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageRemuxStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageRemuxStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeStreamPlayInfoList(
             self,
             request: models.DescribeStreamPlayInfoListRequest,

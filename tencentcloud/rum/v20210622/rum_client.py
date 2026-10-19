@@ -1247,6 +1247,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFileCertificate(self, request):
+        r"""获取COS存储的临时密钥，具体到ProjectId
+
+        :param request: Request instance for DescribeFileCertificate.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeFileCertificateRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeFileCertificateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFileCertificate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFileCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIssuesDistribution(self, request):
         r"""获取问题分布数据
 

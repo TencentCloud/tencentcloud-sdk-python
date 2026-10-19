@@ -331,6 +331,24 @@ class CdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEdgeHostVm(
+            self,
+            request: models.DescribeEdgeHostVmRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdgeHostVmResponse:
+        """
+        查询专属集群宿主机上的虚机信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdgeHostVm"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdgeHostVmResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSites(
             self,
             request: models.DescribeSitesRequest,

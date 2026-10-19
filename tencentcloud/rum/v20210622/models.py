@@ -16586,6 +16586,205 @@ class DescribeFOOMReportListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFileCertificateRequest(AbstractModel):
+    r"""DescribeFileCertificate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timeout: 超时时间，不填默认是 5 分钟
+        :type Timeout: int
+        :param _FileType: bucket类型，不填默认1:web，2:app
+        :type FileType: int
+        :param _ID: ProjectID
+        :type ID: int
+        :param _RegionID: reigon对应的id
+        :type RegionID: int
+        """
+        self._Timeout = None
+        self._FileType = None
+        self._ID = None
+        self._RegionID = None
+
+    @property
+    def Timeout(self):
+        r"""超时时间，不填默认是 5 分钟
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def FileType(self):
+        r"""bucket类型，不填默认1:web，2:app
+        :rtype: int
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def ID(self):
+        r"""ProjectID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def RegionID(self):
+        r"""reigon对应的id
+        :rtype: int
+        """
+        return self._RegionID
+
+    @RegionID.setter
+    def RegionID(self, RegionID):
+        self._RegionID = RegionID
+
+
+    def _deserialize(self, params):
+        self._Timeout = params.get("Timeout")
+        self._FileType = params.get("FileType")
+        self._ID = params.get("ID")
+        self._RegionID = params.get("RegionID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFileCertificateResponse(AbstractModel):
+    r"""DescribeFileCertificate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretKey: 临时密钥key
+        :type SecretKey: str
+        :param _SecretID: 临时密钥 id
+        :type SecretID: str
+        :param _SessionToken: 临时密钥临时 token
+        :type SessionToken: str
+        :param _StartTime: 开始时间戳
+        :type StartTime: int
+        :param _ExpiredTime: 过期时间戳
+        :type ExpiredTime: int
+        :param _BucketAddress: 桶地址
+        :type BucketAddress: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecretKey = None
+        self._SecretID = None
+        self._SessionToken = None
+        self._StartTime = None
+        self._ExpiredTime = None
+        self._BucketAddress = None
+        self._RequestId = None
+
+    @property
+    def SecretKey(self):
+        r"""临时密钥key
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def SecretID(self):
+        r"""临时密钥 id
+        :rtype: str
+        """
+        return self._SecretID
+
+    @SecretID.setter
+    def SecretID(self, SecretID):
+        self._SecretID = SecretID
+
+    @property
+    def SessionToken(self):
+        r"""临时密钥临时 token
+        :rtype: str
+        """
+        return self._SessionToken
+
+    @SessionToken.setter
+    def SessionToken(self, SessionToken):
+        self._SessionToken = SessionToken
+
+    @property
+    def StartTime(self):
+        r"""开始时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def ExpiredTime(self):
+        r"""过期时间戳
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def BucketAddress(self):
+        r"""桶地址
+        :rtype: str
+        """
+        return self._BucketAddress
+
+    @BucketAddress.setter
+    def BucketAddress(self, BucketAddress):
+        self._BucketAddress = BucketAddress
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SecretKey = params.get("SecretKey")
+        self._SecretID = params.get("SecretID")
+        self._SessionToken = params.get("SessionToken")
+        self._StartTime = params.get("StartTime")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._BucketAddress = params.get("BucketAddress")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIssuesDistributionRequest(AbstractModel):
     r"""DescribeIssuesDistribution请求参数结构体
 

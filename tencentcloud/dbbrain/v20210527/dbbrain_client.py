@@ -739,6 +739,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBAuditLogs(self, request):
+        r"""查询指定实例在时间窗口内的审计日志明细，支持按 SQL 类型、执行耗时、错误码、关键词等多条件过滤。当前仅支持 dcdb、mariadb 产品（cdb、cynosdb 已切至中台）。注意 Filter.MultiSql 与 Filter.ExcludeMultiSql 需以 JSON 字符串形式传递二维数组内容，例如 [["a","b"]] 表示 (a OR b)，服务端会自动解析。
+
+        :param request: Request instance for DescribeDBAuditLogs.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAuditLogsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBAuditLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBAuditLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBAuditLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBAutonomyAction(self, request):
         r"""自治中心-查询自治事件任务详情。
 
@@ -1006,6 +1029,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeDatabaseAutonomyStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDatabaseAutonomyStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDatabaseObjectV2(self, request):
+        r"""查询指定 SELECT SQL 在实例上的执行计划，常用于慢 SQL 分析、SQL 优化等场景。仅支持 SELECT 类语句
+
+        :param request: Request instance for DescribeDatabaseObjectV2.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDatabaseObjectV2Request`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDatabaseObjectV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabaseObjectV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseObjectV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

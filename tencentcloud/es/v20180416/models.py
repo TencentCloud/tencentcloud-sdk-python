@@ -1482,41 +1482,58 @@ class CollectorTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetName: 采集配置名称
+        :param _TargetName: <p>采集配置名称</p>
         :type TargetName: str
-        :param _Namespaces: 命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。
+        :param _Namespaces: <p>命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Namespaces: :class:`tencentcloud.es.v20180416.models.Namespaces`
-        :param _PodLabels: Pod标签列表
+        :param _PodLabels: <p>Pod标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodLabels: list of PodLabel
-        :param _ContainerName: 容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+        :param _ContainerName: <p>容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerName: str
-        :param _IndexPrefix: ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+        :param _IndexPrefix: <p>ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexPrefix: str
-        :param _LogFilters: 日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符
+        :param _LogFilters: <p>日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogFilters: str
-        :param _ConfigContent: 高级配置，可自定义采集规则，最多支持2048个字符
+        :param _ConfigContent: <p>高级配置，可自定义采集规则，最多支持2048个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigContent: str
-        :param _KafkaTopic: Ckafka实例的Topic
+        :param _KafkaTopic: <p>Ckafka实例的Topic</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaTopic: str
-        :param _IndexAlias: ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+        :param _IndexAlias: <p>ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexAlias: str
-        :param _InputType: /
+        :param _InputType: <p>/</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputType: str
-        :param _InputPath: 日志采集host路径
+        :param _InputPath: <p>日志采集host路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputPath: str
-        :param _InputsTailFiles: inputs.tail_files
+        :param _InputsTailFiles: <p>inputs.tail_files</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputsTailFiles: bool
+        :param _InputsMultiLineEnabled: <p>开关inputs.multitline</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputsMultiLineEnabled: bool
+        :param _InputsMultiLineType: <p>inputs.multiline.type</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputsMultiLineType: str
+        :param _InputsMultiLinePattern: <p>inputs.multiline.pattern</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputsMultiLinePattern: str
+        :param _InputsMultiLineNegate: <p>inputs.multiline.negate</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputsMultiLineNegate: bool
+        :param _InputsMultiLineMatch: <p>inputs.multiline.match</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputsMultiLineMatch: str
+        :param _TkeCollectType: <p>按空间采集时 tke 的采集类型，默认为 container，支持 container、filestream</p>
+        :type TkeCollectType: str
         """
         self._TargetName = None
         self._Namespaces = None
@@ -1530,10 +1547,16 @@ class CollectorTarget(AbstractModel):
         self._InputType = None
         self._InputPath = None
         self._InputsTailFiles = None
+        self._InputsMultiLineEnabled = None
+        self._InputsMultiLineType = None
+        self._InputsMultiLinePattern = None
+        self._InputsMultiLineNegate = None
+        self._InputsMultiLineMatch = None
+        self._TkeCollectType = None
 
     @property
     def TargetName(self):
-        r"""采集配置名称
+        r"""<p>采集配置名称</p>
         :rtype: str
         """
         return self._TargetName
@@ -1544,7 +1567,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def Namespaces(self):
-        r"""命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。
+        r"""<p>命名空间列表，包括Include包含和Exclude不包含选项，两者都为空时等同于全部命名空间(包含当前所有的以及未来创建的)。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.Namespaces`
         """
@@ -1556,7 +1579,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def PodLabels(self):
-        r"""Pod标签列表
+        r"""<p>Pod标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PodLabel
         """
@@ -1568,7 +1591,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def ContainerName(self):
-        r"""容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符
+        r"""<p>容器名称，支持小写字母、数字、连接符-、下划线_，最多支持63个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1580,7 +1603,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def IndexPrefix(self):
-        r"""ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+        r"""<p>ES索引名称前缀，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称的前缀，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1592,7 +1615,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def LogFilters(self):
-        r"""日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符
+        r"""<p>日志内容过滤，以逗号分隔，支持大小写字母、数字、连接符-、下划线_以及逗号，最多支持50个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1604,7 +1627,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def ConfigContent(self):
-        r"""高级配置，可自定义采集规则，最多支持2048个字符
+        r"""<p>高级配置，可自定义采集规则，最多支持2048个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1616,7 +1639,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def KafkaTopic(self):
-        r"""Ckafka实例的Topic
+        r"""<p>Ckafka实例的Topic</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1628,7 +1651,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def IndexAlias(self):
-        r"""ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符
+        r"""<p>ES索引名称，如果当前采集配置下的容器日志输出到ES集群，则使用该字段作为ES索引名称，支持大小写字母、数字、连接符-、下划线_，最多支持50个字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1640,7 +1663,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def InputType(self):
-        r"""/
+        r"""<p>/</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1652,7 +1675,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def InputPath(self):
-        r"""日志采集host路径
+        r"""<p>日志采集host路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1664,7 +1687,7 @@ class CollectorTarget(AbstractModel):
 
     @property
     def InputsTailFiles(self):
-        r"""inputs.tail_files
+        r"""<p>inputs.tail_files</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1673,6 +1696,77 @@ class CollectorTarget(AbstractModel):
     @InputsTailFiles.setter
     def InputsTailFiles(self, InputsTailFiles):
         self._InputsTailFiles = InputsTailFiles
+
+    @property
+    def InputsMultiLineEnabled(self):
+        r"""<p>开关inputs.multitline</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._InputsMultiLineEnabled
+
+    @InputsMultiLineEnabled.setter
+    def InputsMultiLineEnabled(self, InputsMultiLineEnabled):
+        self._InputsMultiLineEnabled = InputsMultiLineEnabled
+
+    @property
+    def InputsMultiLineType(self):
+        r"""<p>inputs.multiline.type</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InputsMultiLineType
+
+    @InputsMultiLineType.setter
+    def InputsMultiLineType(self, InputsMultiLineType):
+        self._InputsMultiLineType = InputsMultiLineType
+
+    @property
+    def InputsMultiLinePattern(self):
+        r"""<p>inputs.multiline.pattern</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InputsMultiLinePattern
+
+    @InputsMultiLinePattern.setter
+    def InputsMultiLinePattern(self, InputsMultiLinePattern):
+        self._InputsMultiLinePattern = InputsMultiLinePattern
+
+    @property
+    def InputsMultiLineNegate(self):
+        r"""<p>inputs.multiline.negate</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._InputsMultiLineNegate
+
+    @InputsMultiLineNegate.setter
+    def InputsMultiLineNegate(self, InputsMultiLineNegate):
+        self._InputsMultiLineNegate = InputsMultiLineNegate
+
+    @property
+    def InputsMultiLineMatch(self):
+        r"""<p>inputs.multiline.match</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InputsMultiLineMatch
+
+    @InputsMultiLineMatch.setter
+    def InputsMultiLineMatch(self, InputsMultiLineMatch):
+        self._InputsMultiLineMatch = InputsMultiLineMatch
+
+    @property
+    def TkeCollectType(self):
+        r"""<p>按空间采集时 tke 的采集类型，默认为 container，支持 container、filestream</p>
+        :rtype: str
+        """
+        return self._TkeCollectType
+
+    @TkeCollectType.setter
+    def TkeCollectType(self, TkeCollectType):
+        self._TkeCollectType = TkeCollectType
 
 
     def _deserialize(self, params):
@@ -1695,6 +1789,12 @@ class CollectorTarget(AbstractModel):
         self._InputType = params.get("InputType")
         self._InputPath = params.get("InputPath")
         self._InputsTailFiles = params.get("InputsTailFiles")
+        self._InputsMultiLineEnabled = params.get("InputsMultiLineEnabled")
+        self._InputsMultiLineType = params.get("InputsMultiLineType")
+        self._InputsMultiLinePattern = params.get("InputsMultiLinePattern")
+        self._InputsMultiLineNegate = params.get("InputsMultiLineNegate")
+        self._InputsMultiLineMatch = params.get("InputsMultiLineMatch")
+        self._TkeCollectType = params.get("TkeCollectType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8036,31 +8136,33 @@ class DescribeInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 集群实例所属可用区，不传则默认所有可用区
+        :param _Zone: <p>集群实例所属可用区，不传则默认所有可用区</p>
         :type Zone: str
-        :param _InstanceIds: 集群实例ID列表
+        :param _InstanceIds: <p>集群实例ID列表</p>
         :type InstanceIds: list of str
-        :param _InstanceNames: 集群实例名称列表
+        :param _InstanceNames: <p>集群实例名称列表</p>
         :type InstanceNames: list of str
-        :param _Offset: 分页起始值, 默认值0
+        :param _Offset: <p>分页起始值, 默认值0</p>
         :type Offset: int
-        :param _Limit: 分页大小，默认值20
+        :param _Limit: <p>分页大小，默认值20</p>
         :type Limit: int
-        :param _OrderByKey: 排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序
+        :param _OrderByKey: <p>排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序</p>
         :type OrderByKey: int
-        :param _OrderByType: 排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
+        :param _OrderByType: <p>排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序</p>
         :type OrderByType: int
-        :param _TagList: 节点标签信息列表
+        :param _TagList: <p>节点标签信息列表</p>
         :type TagList: list of TagInfo
-        :param _IpList: 私有网络vip列表
+        :param _IpList: <p>私有网络vip列表</p>
         :type IpList: list of str
-        :param _ZoneList: 可用区列表
+        :param _NodeIps: <p>集群节点IP列表</p>
+        :type NodeIps: list of str
+        :param _ZoneList: <p>可用区列表</p>
         :type ZoneList: list of str
-        :param _HealthStatus: 健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知
+        :param _HealthStatus: <p>健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知</p>
         :type HealthStatus: list of int
-        :param _VpcIds: Vpc列表 筛选项
+        :param _VpcIds: <p>Vpc列表 筛选项</p>
         :type VpcIds: list of str
-        :param _CdcId: cdc集群id
+        :param _CdcId: <p>cdc集群id</p>
         :type CdcId: str
         """
         self._Zone = None
@@ -8072,6 +8174,7 @@ class DescribeInstancesRequest(AbstractModel):
         self._OrderByType = None
         self._TagList = None
         self._IpList = None
+        self._NodeIps = None
         self._ZoneList = None
         self._HealthStatus = None
         self._VpcIds = None
@@ -8079,7 +8182,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""集群实例所属可用区，不传则默认所有可用区
+        r"""<p>集群实例所属可用区，不传则默认所有可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -8090,7 +8193,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""集群实例ID列表
+        r"""<p>集群实例ID列表</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -8101,7 +8204,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
-        r"""集群实例名称列表
+        r"""<p>集群实例名称列表</p>
         :rtype: list of str
         """
         return self._InstanceNames
@@ -8112,7 +8215,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页起始值, 默认值0
+        r"""<p>分页起始值, 默认值0</p>
         :rtype: int
         """
         return self._Offset
@@ -8123,7 +8226,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小，默认值20
+        r"""<p>分页大小，默认值20</p>
         :rtype: int
         """
         return self._Limit
@@ -8134,7 +8237,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderByKey(self):
-        r"""排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序
+        r"""<p>排序字段<li>1：实例ID</li><li>2：实例名称</li><li>3：可用区</li><li>4：创建时间</li>若orderByKey未传递则按创建时间降序排序</p>
         :rtype: int
         """
         return self._OrderByKey
@@ -8145,7 +8248,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序
+        r"""<p>排序方式<li>0：升序</li><li>1：降序</li>若传递了orderByKey未传递orderByType, 则默认升序</p>
         :rtype: int
         """
         return self._OrderByType
@@ -8156,7 +8259,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""节点标签信息列表
+        r"""<p>节点标签信息列表</p>
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -8167,7 +8270,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def IpList(self):
-        r"""私有网络vip列表
+        r"""<p>私有网络vip列表</p>
         :rtype: list of str
         """
         return self._IpList
@@ -8177,8 +8280,19 @@ class DescribeInstancesRequest(AbstractModel):
         self._IpList = IpList
 
     @property
+    def NodeIps(self):
+        r"""<p>集群节点IP列表</p>
+        :rtype: list of str
+        """
+        return self._NodeIps
+
+    @NodeIps.setter
+    def NodeIps(self, NodeIps):
+        self._NodeIps = NodeIps
+
+    @property
     def ZoneList(self):
-        r"""可用区列表
+        r"""<p>可用区列表</p>
         :rtype: list of str
         """
         return self._ZoneList
@@ -8189,7 +8303,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def HealthStatus(self):
-        r"""健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知
+        r"""<p>健康状态筛列表:0表示绿色，1表示黄色，2表示红色,-1表示未知</p>
         :rtype: list of int
         """
         return self._HealthStatus
@@ -8200,7 +8314,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def VpcIds(self):
-        r"""Vpc列表 筛选项
+        r"""<p>Vpc列表 筛选项</p>
         :rtype: list of str
         """
         return self._VpcIds
@@ -8211,7 +8325,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""cdc集群id
+        r"""<p>cdc集群id</p>
         :rtype: str
         """
         return self._CdcId
@@ -8236,6 +8350,7 @@ class DescribeInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._TagList.append(obj)
         self._IpList = params.get("IpList")
+        self._NodeIps = params.get("NodeIps")
         self._ZoneList = params.get("ZoneList")
         self._HealthStatus = params.get("HealthStatus")
         self._VpcIds = params.get("VpcIds")
@@ -8257,9 +8372,9 @@ class DescribeInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 返回的实例个数
+        :param _TotalCount: <p>返回的实例个数</p>
         :type TotalCount: int
-        :param _InstanceList: 实例详细信息列表
+        :param _InstanceList: <p>实例详细信息列表</p>
         :type InstanceList: list of InstanceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8270,7 +8385,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""返回的实例个数
+        r"""<p>返回的实例个数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8281,7 +8396,7 @@ class DescribeInstancesResponse(AbstractModel):
 
     @property
     def InstanceList(self):
-        r"""实例详细信息列表
+        r"""<p>实例详细信息列表</p>
         :rtype: list of InstanceInfo
         """
         return self._InstanceList
@@ -13256,6 +13371,8 @@ class EventDataInfoOverview(AbstractModel):
         :type SubEventType: int
         :param _SubEventName: <p>子事件名称</p>
         :type SubEventName: str
+        :param _EventScope: <p>事件范围</p><p>枚举值：</p><ul><li>0： 实例级</li><li>1： 账号级</li></ul>
+        :type EventScope: int
         """
         self._EventType = None
         self._EventTaskId = None
@@ -13271,6 +13388,7 @@ class EventDataInfoOverview(AbstractModel):
         self._EndTime = None
         self._SubEventType = None
         self._SubEventName = None
+        self._EventScope = None
 
     @property
     def EventType(self):
@@ -13426,6 +13544,17 @@ class EventDataInfoOverview(AbstractModel):
     def SubEventName(self, SubEventName):
         self._SubEventName = SubEventName
 
+    @property
+    def EventScope(self):
+        r"""<p>事件范围</p><p>枚举值：</p><ul><li>0： 实例级</li><li>1： 账号级</li></ul>
+        :rtype: int
+        """
+        return self._EventScope
+
+    @EventScope.setter
+    def EventScope(self, EventScope):
+        self._EventScope = EventScope
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -13442,6 +13571,7 @@ class EventDataInfoOverview(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._SubEventType = params.get("SubEventType")
         self._SubEventName = params.get("SubEventName")
+        self._EventScope = params.get("EventScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13831,6 +13961,117 @@ class Failures(AbstractModel):
         self._ShardId = params.get("ShardId")
         self._Reason = params.get("Reason")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FamilyResourceStat(AbstractModel):
+    r"""机型族下单个机型族的资源可用性明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InsFamily: <p>机型族，如 &quot;SA5&quot;</p>
+        :type InsFamily: str
+        :param _CvmAvailable: <p>CVM资源是否有货</p>
+        :type CvmAvailable: bool
+        :param _SysDiskAvailable: <p>系统盘资源是否有货</p>
+        :type SysDiskAvailable: bool
+        :param _DiskAvailable: <p>该盘型数据盘资源是否有货</p>
+        :type DiskAvailable: bool
+        :param _Purchasable: <p>三类资源是否全部有货(可直接购买)</p>
+        :type Purchasable: bool
+        :param _MissingResources: <p>缺少的资源，取值 CVM/SYSDISK/DISK；为空表示不缺</p>
+        :type MissingResources: list of str
+        """
+        self._InsFamily = None
+        self._CvmAvailable = None
+        self._SysDiskAvailable = None
+        self._DiskAvailable = None
+        self._Purchasable = None
+        self._MissingResources = None
+
+    @property
+    def InsFamily(self):
+        r"""<p>机型族，如 &quot;SA5&quot;</p>
+        :rtype: str
+        """
+        return self._InsFamily
+
+    @InsFamily.setter
+    def InsFamily(self, InsFamily):
+        self._InsFamily = InsFamily
+
+    @property
+    def CvmAvailable(self):
+        r"""<p>CVM资源是否有货</p>
+        :rtype: bool
+        """
+        return self._CvmAvailable
+
+    @CvmAvailable.setter
+    def CvmAvailable(self, CvmAvailable):
+        self._CvmAvailable = CvmAvailable
+
+    @property
+    def SysDiskAvailable(self):
+        r"""<p>系统盘资源是否有货</p>
+        :rtype: bool
+        """
+        return self._SysDiskAvailable
+
+    @SysDiskAvailable.setter
+    def SysDiskAvailable(self, SysDiskAvailable):
+        self._SysDiskAvailable = SysDiskAvailable
+
+    @property
+    def DiskAvailable(self):
+        r"""<p>该盘型数据盘资源是否有货</p>
+        :rtype: bool
+        """
+        return self._DiskAvailable
+
+    @DiskAvailable.setter
+    def DiskAvailable(self, DiskAvailable):
+        self._DiskAvailable = DiskAvailable
+
+    @property
+    def Purchasable(self):
+        r"""<p>三类资源是否全部有货(可直接购买)</p>
+        :rtype: bool
+        """
+        return self._Purchasable
+
+    @Purchasable.setter
+    def Purchasable(self, Purchasable):
+        self._Purchasable = Purchasable
+
+    @property
+    def MissingResources(self):
+        r"""<p>缺少的资源，取值 CVM/SYSDISK/DISK；为空表示不缺</p>
+        :rtype: list of str
+        """
+        return self._MissingResources
+
+    @MissingResources.setter
+    def MissingResources(self, MissingResources):
+        self._MissingResources = MissingResources
+
+
+    def _deserialize(self, params):
+        self._InsFamily = params.get("InsFamily")
+        self._CvmAvailable = params.get("CvmAvailable")
+        self._SysDiskAvailable = params.get("SysDiskAvailable")
+        self._DiskAvailable = params.get("DiskAvailable")
+        self._Purchasable = params.get("Purchasable")
+        self._MissingResources = params.get("MissingResources")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18917,76 +19158,97 @@ class LogstashNodeTypeResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeTypeName: 规格名称
+        :param _NodeTypeName: <p>规格名称</p>
         :type NodeTypeName: str
-        :param _Available: 是否可售
+        :param _Available: <p>是否可售</p>
         :type Available: bool
-        :param _NodeTypeInfo: 规格信息
+        :param _NodeTypeInfo: <p>规格信息</p>
         :type NodeTypeInfo: :class:`tencentcloud.es.v20180416.models.NodeTypeInfo`
-        :param _SsdAvailable: SSD盘是否可售
+        :param _SsdAvailable: <p>SSD盘是否可售</p>
         :type SsdAvailable: bool
-        :param _SsdDiskSizeRange: SSD磁盘取值范围
+        :param _SsdDiskSizeRange: <p>SSD磁盘取值范围</p>
         :type SsdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _SataAvailable: SATA盘是否可售
+        :param _SsdSoldOutDetail: <p>SSD云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsdSoldOutDetail: list of FamilyResourceStat
+        :param _SataAvailable: <p>SATA盘是否可售</p>
         :type SataAvailable: bool
-        :param _SataDiskSizeRange: SATA磁盘取值范围
+        :param _SataDiskSizeRange: <p>SATA磁盘取值范围</p>
         :type SataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _SsdSoldOutReason: SSD机型售罄原因
+        :param _SsdSoldOutReason: <p>SSD机型售罄原因</p>
         :type SsdSoldOutReason: str
-        :param _SataSoldOutReason: SATA机型售罄原因
+        :param _SataSoldOutReason: <p>SATA机型售罄原因</p>
         :type SataSoldOutReason: str
-        :param _LocalDiskInfo: 本地盘信息
+        :param _SataSoldOutDetail: <p>高性能云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SataSoldOutDetail: list of FamilyResourceStat
+        :param _LocalDiskInfo: <p>本地盘信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
-        :param _DiskCountRange: 云盘块数取值范围
+        :param _DiskCountRange: <p>云盘块数取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskCountRange: :class:`tencentcloud.es.v20180416.models.DiskCountRange`
-        :param _HSsdAvailable: 增强型SSD是否可用
+        :param _HSsdAvailable: <p>增强型SSD是否可用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HSsdAvailable: bool
-        :param _HSsdSoldOutReason: 增强型SSD机型售罄原因
+        :param _HSsdSoldOutReason: <p>增强型SSD机型售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HSsdSoldOutReason: str
-        :param _HSsdDiskSizeRange: 增强型SSD磁盘取值范围
+        :param _HSsdSoldOutDetail: <p>增强型SSD售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HSsdSoldOutDetail: list of FamilyResourceStat
+        :param _HSsdDiskSizeRange: <p>增强型SSD磁盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HSsdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _ThroughputAvailable: 吞吐型云盘是否可用
+        :param _ThroughputAvailable: <p>吞吐型云盘是否可用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputAvailable: bool
-        :param _ThroughputSoldOutReason: 吞吐型云盘售罄原因
+        :param _ThroughputSoldOutReason: <p>吞吐型云盘售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputSoldOutReason: str
-        :param _ThroughputDiskSizeRange: 吞吐型云盘取值范围
+        :param _ThroughputSoldOutDetail: <p>吞吐型云硬盘售罄</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThroughputSoldOutDetail: list of FamilyResourceStat
+        :param _ThroughputDiskSizeRange: <p>吞吐型云盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _BigDataAvailable: BigData盘是否可售
+        :param _BigDataAvailable: <p>BigData盘是否可售</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BigDataAvailable: bool
-        :param _BigDataSoldOutReason: BigData盘售罄原因
+        :param _BigDataSoldOutReason: <p>BigData盘售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BigDataSoldOutReason: str
-        :param _BigDataDiskSizeRange: BigData磁盘取值范围
+        :param _BigDataSoldOutDetail: <p>大数据型云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDataSoldOutDetail: list of FamilyResourceStat
+        :param _BigDataDiskSizeRange: <p>BigData磁盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BigDataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _HighIOAvailable: HighIO盘是否可售
+        :param _HighIOAvailable: <p>HighIO盘是否可售</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighIOAvailable: bool
-        :param _HighIOSoldOutReason: HighIO盘售罄原因
+        :param _HighIOSoldOutReason: <p>HighIO盘售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighIOSoldOutReason: str
-        :param _HighIODiskSizeRange: HighIO磁盘取值范围
+        :param _HighIOSoldOutDetail: <p>高IO型云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighIOSoldOutDetail: list of FamilyResourceStat
+        :param _HighIODiskSizeRange: <p>HighIO磁盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighIODiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _BssdAvailable: Bssd盘是否可售
+        :param _BssdAvailable: <p>Bssd盘是否可售</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BssdAvailable: bool
-        :param _BssdSoldOutReason: Bssd盘售罄原因
+        :param _BssdSoldOutReason: <p>Bssd盘售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BssdSoldOutReason: str
-        :param _BssdDiskSizeRange: Bssd盘取值范围
+        :param _BssdDiskSizeRange: <p>Bssd盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BssdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _GpuInfo: GpuInfo
+        :param _BssdSoldOutDetail: <p>通用型SSD云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdSoldOutDetail: list of FamilyResourceStat
+        :param _GpuInfo: <p>GpuInfo</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuInfo: :class:`tencentcloud.es.v20180416.models.GpuInfo`
         """
@@ -18995,32 +19257,39 @@ class LogstashNodeTypeResource(AbstractModel):
         self._NodeTypeInfo = None
         self._SsdAvailable = None
         self._SsdDiskSizeRange = None
+        self._SsdSoldOutDetail = None
         self._SataAvailable = None
         self._SataDiskSizeRange = None
         self._SsdSoldOutReason = None
         self._SataSoldOutReason = None
+        self._SataSoldOutDetail = None
         self._LocalDiskInfo = None
         self._DiskCountRange = None
         self._HSsdAvailable = None
         self._HSsdSoldOutReason = None
+        self._HSsdSoldOutDetail = None
         self._HSsdDiskSizeRange = None
         self._ThroughputAvailable = None
         self._ThroughputSoldOutReason = None
+        self._ThroughputSoldOutDetail = None
         self._ThroughputDiskSizeRange = None
         self._BigDataAvailable = None
         self._BigDataSoldOutReason = None
+        self._BigDataSoldOutDetail = None
         self._BigDataDiskSizeRange = None
         self._HighIOAvailable = None
         self._HighIOSoldOutReason = None
+        self._HighIOSoldOutDetail = None
         self._HighIODiskSizeRange = None
         self._BssdAvailable = None
         self._BssdSoldOutReason = None
         self._BssdDiskSizeRange = None
+        self._BssdSoldOutDetail = None
         self._GpuInfo = None
 
     @property
     def NodeTypeName(self):
-        r"""规格名称
+        r"""<p>规格名称</p>
         :rtype: str
         """
         return self._NodeTypeName
@@ -19031,7 +19300,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def Available(self):
-        r"""是否可售
+        r"""<p>是否可售</p>
         :rtype: bool
         """
         return self._Available
@@ -19042,7 +19311,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def NodeTypeInfo(self):
-        r"""规格信息
+        r"""<p>规格信息</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.NodeTypeInfo`
         """
         return self._NodeTypeInfo
@@ -19053,7 +19322,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def SsdAvailable(self):
-        r"""SSD盘是否可售
+        r"""<p>SSD盘是否可售</p>
         :rtype: bool
         """
         return self._SsdAvailable
@@ -19064,7 +19333,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def SsdDiskSizeRange(self):
-        r"""SSD磁盘取值范围
+        r"""<p>SSD磁盘取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
         return self._SsdDiskSizeRange
@@ -19074,8 +19343,20 @@ class LogstashNodeTypeResource(AbstractModel):
         self._SsdDiskSizeRange = SsdDiskSizeRange
 
     @property
+    def SsdSoldOutDetail(self):
+        r"""<p>SSD云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._SsdSoldOutDetail
+
+    @SsdSoldOutDetail.setter
+    def SsdSoldOutDetail(self, SsdSoldOutDetail):
+        self._SsdSoldOutDetail = SsdSoldOutDetail
+
+    @property
     def SataAvailable(self):
-        r"""SATA盘是否可售
+        r"""<p>SATA盘是否可售</p>
         :rtype: bool
         """
         return self._SataAvailable
@@ -19086,7 +19367,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def SataDiskSizeRange(self):
-        r"""SATA磁盘取值范围
+        r"""<p>SATA磁盘取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
         return self._SataDiskSizeRange
@@ -19097,7 +19378,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def SsdSoldOutReason(self):
-        r"""SSD机型售罄原因
+        r"""<p>SSD机型售罄原因</p>
         :rtype: str
         """
         return self._SsdSoldOutReason
@@ -19108,7 +19389,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def SataSoldOutReason(self):
-        r"""SATA机型售罄原因
+        r"""<p>SATA机型售罄原因</p>
         :rtype: str
         """
         return self._SataSoldOutReason
@@ -19118,8 +19399,20 @@ class LogstashNodeTypeResource(AbstractModel):
         self._SataSoldOutReason = SataSoldOutReason
 
     @property
+    def SataSoldOutDetail(self):
+        r"""<p>高性能云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._SataSoldOutDetail
+
+    @SataSoldOutDetail.setter
+    def SataSoldOutDetail(self, SataSoldOutDetail):
+        self._SataSoldOutDetail = SataSoldOutDetail
+
+    @property
     def LocalDiskInfo(self):
-        r"""本地盘信息
+        r"""<p>本地盘信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         """
@@ -19131,7 +19424,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def DiskCountRange(self):
-        r"""云盘块数取值范围
+        r"""<p>云盘块数取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskCountRange`
         """
@@ -19143,7 +19436,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def HSsdAvailable(self):
-        r"""增强型SSD是否可用
+        r"""<p>增强型SSD是否可用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -19155,7 +19448,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def HSsdSoldOutReason(self):
-        r"""增强型SSD机型售罄原因
+        r"""<p>增强型SSD机型售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19166,8 +19459,20 @@ class LogstashNodeTypeResource(AbstractModel):
         self._HSsdSoldOutReason = HSsdSoldOutReason
 
     @property
+    def HSsdSoldOutDetail(self):
+        r"""<p>增强型SSD售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._HSsdSoldOutDetail
+
+    @HSsdSoldOutDetail.setter
+    def HSsdSoldOutDetail(self, HSsdSoldOutDetail):
+        self._HSsdSoldOutDetail = HSsdSoldOutDetail
+
+    @property
     def HSsdDiskSizeRange(self):
-        r"""增强型SSD磁盘取值范围
+        r"""<p>增强型SSD磁盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
@@ -19179,7 +19484,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def ThroughputAvailable(self):
-        r"""吞吐型云盘是否可用
+        r"""<p>吞吐型云盘是否可用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -19191,7 +19496,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def ThroughputSoldOutReason(self):
-        r"""吞吐型云盘售罄原因
+        r"""<p>吞吐型云盘售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19202,8 +19507,20 @@ class LogstashNodeTypeResource(AbstractModel):
         self._ThroughputSoldOutReason = ThroughputSoldOutReason
 
     @property
+    def ThroughputSoldOutDetail(self):
+        r"""<p>吞吐型云硬盘售罄</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._ThroughputSoldOutDetail
+
+    @ThroughputSoldOutDetail.setter
+    def ThroughputSoldOutDetail(self, ThroughputSoldOutDetail):
+        self._ThroughputSoldOutDetail = ThroughputSoldOutDetail
+
+    @property
     def ThroughputDiskSizeRange(self):
-        r"""吞吐型云盘取值范围
+        r"""<p>吞吐型云盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
@@ -19215,7 +19532,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def BigDataAvailable(self):
-        r"""BigData盘是否可售
+        r"""<p>BigData盘是否可售</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -19227,7 +19544,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def BigDataSoldOutReason(self):
-        r"""BigData盘售罄原因
+        r"""<p>BigData盘售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19238,8 +19555,20 @@ class LogstashNodeTypeResource(AbstractModel):
         self._BigDataSoldOutReason = BigDataSoldOutReason
 
     @property
+    def BigDataSoldOutDetail(self):
+        r"""<p>大数据型云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._BigDataSoldOutDetail
+
+    @BigDataSoldOutDetail.setter
+    def BigDataSoldOutDetail(self, BigDataSoldOutDetail):
+        self._BigDataSoldOutDetail = BigDataSoldOutDetail
+
+    @property
     def BigDataDiskSizeRange(self):
-        r"""BigData磁盘取值范围
+        r"""<p>BigData磁盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
@@ -19251,7 +19580,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def HighIOAvailable(self):
-        r"""HighIO盘是否可售
+        r"""<p>HighIO盘是否可售</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -19263,7 +19592,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def HighIOSoldOutReason(self):
-        r"""HighIO盘售罄原因
+        r"""<p>HighIO盘售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19274,8 +19603,20 @@ class LogstashNodeTypeResource(AbstractModel):
         self._HighIOSoldOutReason = HighIOSoldOutReason
 
     @property
+    def HighIOSoldOutDetail(self):
+        r"""<p>高IO型云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._HighIOSoldOutDetail
+
+    @HighIOSoldOutDetail.setter
+    def HighIOSoldOutDetail(self, HighIOSoldOutDetail):
+        self._HighIOSoldOutDetail = HighIOSoldOutDetail
+
+    @property
     def HighIODiskSizeRange(self):
-        r"""HighIO磁盘取值范围
+        r"""<p>HighIO磁盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
@@ -19287,7 +19628,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def BssdAvailable(self):
-        r"""Bssd盘是否可售
+        r"""<p>Bssd盘是否可售</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -19299,7 +19640,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def BssdSoldOutReason(self):
-        r"""Bssd盘售罄原因
+        r"""<p>Bssd盘售罄原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19311,7 +19652,7 @@ class LogstashNodeTypeResource(AbstractModel):
 
     @property
     def BssdDiskSizeRange(self):
-        r"""Bssd盘取值范围
+        r"""<p>Bssd盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
@@ -19322,8 +19663,20 @@ class LogstashNodeTypeResource(AbstractModel):
         self._BssdDiskSizeRange = BssdDiskSizeRange
 
     @property
+    def BssdSoldOutDetail(self):
+        r"""<p>通用型SSD云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._BssdSoldOutDetail
+
+    @BssdSoldOutDetail.setter
+    def BssdSoldOutDetail(self, BssdSoldOutDetail):
+        self._BssdSoldOutDetail = BssdSoldOutDetail
+
+    @property
     def GpuInfo(self):
-        r"""GpuInfo
+        r"""<p>GpuInfo</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.GpuInfo`
         """
@@ -19344,12 +19697,24 @@ class LogstashNodeTypeResource(AbstractModel):
         if params.get("SsdDiskSizeRange") is not None:
             self._SsdDiskSizeRange = DiskSizeRange()
             self._SsdDiskSizeRange._deserialize(params.get("SsdDiskSizeRange"))
+        if params.get("SsdSoldOutDetail") is not None:
+            self._SsdSoldOutDetail = []
+            for item in params.get("SsdSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._SsdSoldOutDetail.append(obj)
         self._SataAvailable = params.get("SataAvailable")
         if params.get("SataDiskSizeRange") is not None:
             self._SataDiskSizeRange = DiskSizeRange()
             self._SataDiskSizeRange._deserialize(params.get("SataDiskSizeRange"))
         self._SsdSoldOutReason = params.get("SsdSoldOutReason")
         self._SataSoldOutReason = params.get("SataSoldOutReason")
+        if params.get("SataSoldOutDetail") is not None:
+            self._SataSoldOutDetail = []
+            for item in params.get("SataSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._SataSoldOutDetail.append(obj)
         if params.get("LocalDiskInfo") is not None:
             self._LocalDiskInfo = LocalDiskInfo()
             self._LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
@@ -19358,21 +19723,45 @@ class LogstashNodeTypeResource(AbstractModel):
             self._DiskCountRange._deserialize(params.get("DiskCountRange"))
         self._HSsdAvailable = params.get("HSsdAvailable")
         self._HSsdSoldOutReason = params.get("HSsdSoldOutReason")
+        if params.get("HSsdSoldOutDetail") is not None:
+            self._HSsdSoldOutDetail = []
+            for item in params.get("HSsdSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._HSsdSoldOutDetail.append(obj)
         if params.get("HSsdDiskSizeRange") is not None:
             self._HSsdDiskSizeRange = DiskSizeRange()
             self._HSsdDiskSizeRange._deserialize(params.get("HSsdDiskSizeRange"))
         self._ThroughputAvailable = params.get("ThroughputAvailable")
         self._ThroughputSoldOutReason = params.get("ThroughputSoldOutReason")
+        if params.get("ThroughputSoldOutDetail") is not None:
+            self._ThroughputSoldOutDetail = []
+            for item in params.get("ThroughputSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._ThroughputSoldOutDetail.append(obj)
         if params.get("ThroughputDiskSizeRange") is not None:
             self._ThroughputDiskSizeRange = DiskSizeRange()
             self._ThroughputDiskSizeRange._deserialize(params.get("ThroughputDiskSizeRange"))
         self._BigDataAvailable = params.get("BigDataAvailable")
         self._BigDataSoldOutReason = params.get("BigDataSoldOutReason")
+        if params.get("BigDataSoldOutDetail") is not None:
+            self._BigDataSoldOutDetail = []
+            for item in params.get("BigDataSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._BigDataSoldOutDetail.append(obj)
         if params.get("BigDataDiskSizeRange") is not None:
             self._BigDataDiskSizeRange = DiskSizeRange()
             self._BigDataDiskSizeRange._deserialize(params.get("BigDataDiskSizeRange"))
         self._HighIOAvailable = params.get("HighIOAvailable")
         self._HighIOSoldOutReason = params.get("HighIOSoldOutReason")
+        if params.get("HighIOSoldOutDetail") is not None:
+            self._HighIOSoldOutDetail = []
+            for item in params.get("HighIOSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._HighIOSoldOutDetail.append(obj)
         if params.get("HighIODiskSizeRange") is not None:
             self._HighIODiskSizeRange = DiskSizeRange()
             self._HighIODiskSizeRange._deserialize(params.get("HighIODiskSizeRange"))
@@ -19381,6 +19770,12 @@ class LogstashNodeTypeResource(AbstractModel):
         if params.get("BssdDiskSizeRange") is not None:
             self._BssdDiskSizeRange = DiskSizeRange()
             self._BssdDiskSizeRange._deserialize(params.get("BssdDiskSizeRange"))
+        if params.get("BssdSoldOutDetail") is not None:
+            self._BssdSoldOutDetail = []
+            for item in params.get("BssdSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._BssdSoldOutDetail.append(obj)
         if params.get("GpuInfo") is not None:
             self._GpuInfo = GpuInfo()
             self._GpuInfo._deserialize(params.get("GpuInfo"))
@@ -21378,63 +21773,84 @@ class NodeTypeResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeTypeName: 规格名称
+        :param _NodeTypeName: <p>规格名称</p>
         :type NodeTypeName: str
-        :param _Available: 是否可售
+        :param _Available: <p>是否可售</p>
         :type Available: bool
-        :param _NodeTypeInfo: 规格信息
+        :param _NodeTypeInfo: <p>规格信息</p>
         :type NodeTypeInfo: :class:`tencentcloud.es.v20180416.models.NodeTypeInfo`
-        :param _SsdAvailable: SSD盘是否可售
+        :param _SsdAvailable: <p>SSD盘是否可售</p>
         :type SsdAvailable: bool
-        :param _SsdDiskSizeRange: SSD磁盘取值范围
+        :param _SsdDiskSizeRange: <p>SSD磁盘取值范围</p>
         :type SsdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _SataAvailable: SATA盘是否可售
-        :type SataAvailable: bool
-        :param _SataDiskSizeRange: SATA磁盘取值范围
-        :type SataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _SsdSoldOutReason: SSD机型售罄原因
+        :param _SsdSoldOutReason: <p>SSD机型售罄原因</p>
         :type SsdSoldOutReason: str
-        :param _SataSoldOutReason: SATA机型售罄原因
+        :param _SsdSoldOutDetail: <p>SSD云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SsdSoldOutDetail: list of FamilyResourceStat
+        :param _SataAvailable: <p>SATA盘是否可售</p>
+        :type SataAvailable: bool
+        :param _SataDiskSizeRange: <p>SATA磁盘取值范围</p>
+        :type SataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
+        :param _SataSoldOutReason: <p>SATA机型售罄原因</p>
         :type SataSoldOutReason: str
-        :param _LocalDiskInfo: 本地盘信息
+        :param _SataSoldOutDetail: <p>高性能云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SataSoldOutDetail: list of FamilyResourceStat
+        :param _LocalDiskInfo: <p>本地盘信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDiskInfo: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
-        :param _DiskCountRange: 云盘块数取值范围
+        :param _DiskCountRange: <p>云盘块数取值范围</p>
         :type DiskCountRange: :class:`tencentcloud.es.v20180416.models.DiskCountRange`
-        :param _HSsdAvailable: HSSD盘是否可售
+        :param _HSsdAvailable: <p>HSSD盘是否可售</p>
         :type HSsdAvailable: bool
-        :param _HSsdSoldOutReason: HSSD机型售罄原因
-        :type HSsdSoldOutReason: str
-        :param _HSsdDiskSizeRange: HSSD磁盘取值范围
+        :param _HSsdDiskSizeRange: <p>HSSD磁盘取值范围</p>
         :type HSsdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _ThroughputAvailable: Throughput盘是否可售
+        :param _HSsdSoldOutReason: <p>HSSD机型售罄原因</p>
+        :type HSsdSoldOutReason: str
+        :param _HSsdSoldOutDetail: <p>增强型SSD售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HSsdSoldOutDetail: list of FamilyResourceStat
+        :param _ThroughputAvailable: <p>Throughput盘是否可售</p>
         :type ThroughputAvailable: bool
-        :param _ThroughputSoldOutReason: Throughput机型售罄原因
-        :type ThroughputSoldOutReason: str
-        :param _ThroughputDiskSizeRange: Throughput磁盘取值范围
+        :param _ThroughputDiskSizeRange: <p>Throughput磁盘取值范围</p>
         :type ThroughputDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _BigDataAvailable: BigData盘是否可售
+        :param _ThroughputSoldOutReason: <p>Throughput机型售罄原因</p>
+        :type ThroughputSoldOutReason: str
+        :param _ThroughputSoldOutDetail: <p>吞吐型云硬盘售罄</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThroughputSoldOutDetail: list of FamilyResourceStat
+        :param _BigDataAvailable: <p>BigData盘是否可售</p>
         :type BigDataAvailable: bool
-        :param _BigDataSoldOutReason: BigData盘售罄原因
-        :type BigDataSoldOutReason: str
-        :param _BigDataDiskSizeRange: BigData磁盘取值范围
+        :param _BigDataDiskSizeRange: <p>BigData磁盘取值范围</p>
         :type BigDataDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _HighIOAvailable: HighIO盘是否可售
+        :param _BigDataSoldOutReason: <p>BigData盘售罄原因</p>
+        :type BigDataSoldOutReason: str
+        :param _BigDataSoldOutDetail: <p>大数据型云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDataSoldOutDetail: list of FamilyResourceStat
+        :param _HighIOAvailable: <p>HighIO盘是否可售</p>
         :type HighIOAvailable: bool
-        :param _HighIOSoldOutReason: HighIO盘售罄原因
+        :param _HighIOSoldOutReason: <p>HighIO盘售罄原因</p>
         :type HighIOSoldOutReason: str
-        :param _HighIODiskSizeRange: HighIO磁盘取值范围
+        :param _HighIODiskSizeRange: <p>HighIO磁盘取值范围</p>
         :type HighIODiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _BssdAvailable: Bssd盘是否可售
+        :param _HighIOSoldOutDetail: <p>高IO型云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighIOSoldOutDetail: list of FamilyResourceStat
+        :param _BssdAvailable: <p>Bssd盘是否可售</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BssdAvailable: bool
-        :param _BssdSoldOutReason: Bssd盘售罄原因
-注意：此字段可能返回 null，表示取不到有效值。
-        :type BssdSoldOutReason: str
-        :param _BssdDiskSizeRange: Bssd盘取值范围
+        :param _BssdDiskSizeRange: <p>Bssd盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BssdDiskSizeRange: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
-        :param _GpuInfo: 节点Gpu信息
+        :param _BssdSoldOutReason: <p>Bssd盘售罄原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdSoldOutReason: str
+        :param _BssdSoldOutDetail: <p>通用型SSD云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BssdSoldOutDetail: list of FamilyResourceStat
+        :param _GpuInfo: <p>节点Gpu信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GpuInfo: :class:`tencentcloud.es.v20180416.models.GpuInfo`
         """
@@ -21443,32 +21859,39 @@ class NodeTypeResource(AbstractModel):
         self._NodeTypeInfo = None
         self._SsdAvailable = None
         self._SsdDiskSizeRange = None
+        self._SsdSoldOutReason = None
+        self._SsdSoldOutDetail = None
         self._SataAvailable = None
         self._SataDiskSizeRange = None
-        self._SsdSoldOutReason = None
         self._SataSoldOutReason = None
+        self._SataSoldOutDetail = None
         self._LocalDiskInfo = None
         self._DiskCountRange = None
         self._HSsdAvailable = None
-        self._HSsdSoldOutReason = None
         self._HSsdDiskSizeRange = None
+        self._HSsdSoldOutReason = None
+        self._HSsdSoldOutDetail = None
         self._ThroughputAvailable = None
-        self._ThroughputSoldOutReason = None
         self._ThroughputDiskSizeRange = None
+        self._ThroughputSoldOutReason = None
+        self._ThroughputSoldOutDetail = None
         self._BigDataAvailable = None
-        self._BigDataSoldOutReason = None
         self._BigDataDiskSizeRange = None
+        self._BigDataSoldOutReason = None
+        self._BigDataSoldOutDetail = None
         self._HighIOAvailable = None
         self._HighIOSoldOutReason = None
         self._HighIODiskSizeRange = None
+        self._HighIOSoldOutDetail = None
         self._BssdAvailable = None
-        self._BssdSoldOutReason = None
         self._BssdDiskSizeRange = None
+        self._BssdSoldOutReason = None
+        self._BssdSoldOutDetail = None
         self._GpuInfo = None
 
     @property
     def NodeTypeName(self):
-        r"""规格名称
+        r"""<p>规格名称</p>
         :rtype: str
         """
         return self._NodeTypeName
@@ -21479,7 +21902,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def Available(self):
-        r"""是否可售
+        r"""<p>是否可售</p>
         :rtype: bool
         """
         return self._Available
@@ -21490,7 +21913,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def NodeTypeInfo(self):
-        r"""规格信息
+        r"""<p>规格信息</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.NodeTypeInfo`
         """
         return self._NodeTypeInfo
@@ -21501,7 +21924,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def SsdAvailable(self):
-        r"""SSD盘是否可售
+        r"""<p>SSD盘是否可售</p>
         :rtype: bool
         """
         return self._SsdAvailable
@@ -21512,7 +21935,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def SsdDiskSizeRange(self):
-        r"""SSD磁盘取值范围
+        r"""<p>SSD磁盘取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
         return self._SsdDiskSizeRange
@@ -21522,8 +21945,31 @@ class NodeTypeResource(AbstractModel):
         self._SsdDiskSizeRange = SsdDiskSizeRange
 
     @property
+    def SsdSoldOutReason(self):
+        r"""<p>SSD机型售罄原因</p>
+        :rtype: str
+        """
+        return self._SsdSoldOutReason
+
+    @SsdSoldOutReason.setter
+    def SsdSoldOutReason(self, SsdSoldOutReason):
+        self._SsdSoldOutReason = SsdSoldOutReason
+
+    @property
+    def SsdSoldOutDetail(self):
+        r"""<p>SSD云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._SsdSoldOutDetail
+
+    @SsdSoldOutDetail.setter
+    def SsdSoldOutDetail(self, SsdSoldOutDetail):
+        self._SsdSoldOutDetail = SsdSoldOutDetail
+
+    @property
     def SataAvailable(self):
-        r"""SATA盘是否可售
+        r"""<p>SATA盘是否可售</p>
         :rtype: bool
         """
         return self._SataAvailable
@@ -21534,7 +21980,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def SataDiskSizeRange(self):
-        r"""SATA磁盘取值范围
+        r"""<p>SATA磁盘取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
         return self._SataDiskSizeRange
@@ -21544,19 +21990,8 @@ class NodeTypeResource(AbstractModel):
         self._SataDiskSizeRange = SataDiskSizeRange
 
     @property
-    def SsdSoldOutReason(self):
-        r"""SSD机型售罄原因
-        :rtype: str
-        """
-        return self._SsdSoldOutReason
-
-    @SsdSoldOutReason.setter
-    def SsdSoldOutReason(self, SsdSoldOutReason):
-        self._SsdSoldOutReason = SsdSoldOutReason
-
-    @property
     def SataSoldOutReason(self):
-        r"""SATA机型售罄原因
+        r"""<p>SATA机型售罄原因</p>
         :rtype: str
         """
         return self._SataSoldOutReason
@@ -21566,8 +22001,20 @@ class NodeTypeResource(AbstractModel):
         self._SataSoldOutReason = SataSoldOutReason
 
     @property
+    def SataSoldOutDetail(self):
+        r"""<p>高性能云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._SataSoldOutDetail
+
+    @SataSoldOutDetail.setter
+    def SataSoldOutDetail(self, SataSoldOutDetail):
+        self._SataSoldOutDetail = SataSoldOutDetail
+
+    @property
     def LocalDiskInfo(self):
-        r"""本地盘信息
+        r"""<p>本地盘信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.LocalDiskInfo`
         """
@@ -21579,7 +22026,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def DiskCountRange(self):
-        r"""云盘块数取值范围
+        r"""<p>云盘块数取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskCountRange`
         """
         return self._DiskCountRange
@@ -21590,7 +22037,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def HSsdAvailable(self):
-        r"""HSSD盘是否可售
+        r"""<p>HSSD盘是否可售</p>
         :rtype: bool
         """
         return self._HSsdAvailable
@@ -21600,19 +22047,8 @@ class NodeTypeResource(AbstractModel):
         self._HSsdAvailable = HSsdAvailable
 
     @property
-    def HSsdSoldOutReason(self):
-        r"""HSSD机型售罄原因
-        :rtype: str
-        """
-        return self._HSsdSoldOutReason
-
-    @HSsdSoldOutReason.setter
-    def HSsdSoldOutReason(self, HSsdSoldOutReason):
-        self._HSsdSoldOutReason = HSsdSoldOutReason
-
-    @property
     def HSsdDiskSizeRange(self):
-        r"""HSSD磁盘取值范围
+        r"""<p>HSSD磁盘取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
         return self._HSsdDiskSizeRange
@@ -21622,8 +22058,31 @@ class NodeTypeResource(AbstractModel):
         self._HSsdDiskSizeRange = HSsdDiskSizeRange
 
     @property
+    def HSsdSoldOutReason(self):
+        r"""<p>HSSD机型售罄原因</p>
+        :rtype: str
+        """
+        return self._HSsdSoldOutReason
+
+    @HSsdSoldOutReason.setter
+    def HSsdSoldOutReason(self, HSsdSoldOutReason):
+        self._HSsdSoldOutReason = HSsdSoldOutReason
+
+    @property
+    def HSsdSoldOutDetail(self):
+        r"""<p>增强型SSD售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._HSsdSoldOutDetail
+
+    @HSsdSoldOutDetail.setter
+    def HSsdSoldOutDetail(self, HSsdSoldOutDetail):
+        self._HSsdSoldOutDetail = HSsdSoldOutDetail
+
+    @property
     def ThroughputAvailable(self):
-        r"""Throughput盘是否可售
+        r"""<p>Throughput盘是否可售</p>
         :rtype: bool
         """
         return self._ThroughputAvailable
@@ -21633,19 +22092,8 @@ class NodeTypeResource(AbstractModel):
         self._ThroughputAvailable = ThroughputAvailable
 
     @property
-    def ThroughputSoldOutReason(self):
-        r"""Throughput机型售罄原因
-        :rtype: str
-        """
-        return self._ThroughputSoldOutReason
-
-    @ThroughputSoldOutReason.setter
-    def ThroughputSoldOutReason(self, ThroughputSoldOutReason):
-        self._ThroughputSoldOutReason = ThroughputSoldOutReason
-
-    @property
     def ThroughputDiskSizeRange(self):
-        r"""Throughput磁盘取值范围
+        r"""<p>Throughput磁盘取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
         return self._ThroughputDiskSizeRange
@@ -21655,8 +22103,31 @@ class NodeTypeResource(AbstractModel):
         self._ThroughputDiskSizeRange = ThroughputDiskSizeRange
 
     @property
+    def ThroughputSoldOutReason(self):
+        r"""<p>Throughput机型售罄原因</p>
+        :rtype: str
+        """
+        return self._ThroughputSoldOutReason
+
+    @ThroughputSoldOutReason.setter
+    def ThroughputSoldOutReason(self, ThroughputSoldOutReason):
+        self._ThroughputSoldOutReason = ThroughputSoldOutReason
+
+    @property
+    def ThroughputSoldOutDetail(self):
+        r"""<p>吞吐型云硬盘售罄</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._ThroughputSoldOutDetail
+
+    @ThroughputSoldOutDetail.setter
+    def ThroughputSoldOutDetail(self, ThroughputSoldOutDetail):
+        self._ThroughputSoldOutDetail = ThroughputSoldOutDetail
+
+    @property
     def BigDataAvailable(self):
-        r"""BigData盘是否可售
+        r"""<p>BigData盘是否可售</p>
         :rtype: bool
         """
         return self._BigDataAvailable
@@ -21666,19 +22137,8 @@ class NodeTypeResource(AbstractModel):
         self._BigDataAvailable = BigDataAvailable
 
     @property
-    def BigDataSoldOutReason(self):
-        r"""BigData盘售罄原因
-        :rtype: str
-        """
-        return self._BigDataSoldOutReason
-
-    @BigDataSoldOutReason.setter
-    def BigDataSoldOutReason(self, BigDataSoldOutReason):
-        self._BigDataSoldOutReason = BigDataSoldOutReason
-
-    @property
     def BigDataDiskSizeRange(self):
-        r"""BigData磁盘取值范围
+        r"""<p>BigData磁盘取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
         return self._BigDataDiskSizeRange
@@ -21688,8 +22148,31 @@ class NodeTypeResource(AbstractModel):
         self._BigDataDiskSizeRange = BigDataDiskSizeRange
 
     @property
+    def BigDataSoldOutReason(self):
+        r"""<p>BigData盘售罄原因</p>
+        :rtype: str
+        """
+        return self._BigDataSoldOutReason
+
+    @BigDataSoldOutReason.setter
+    def BigDataSoldOutReason(self, BigDataSoldOutReason):
+        self._BigDataSoldOutReason = BigDataSoldOutReason
+
+    @property
+    def BigDataSoldOutDetail(self):
+        r"""<p>大数据型云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._BigDataSoldOutDetail
+
+    @BigDataSoldOutDetail.setter
+    def BigDataSoldOutDetail(self, BigDataSoldOutDetail):
+        self._BigDataSoldOutDetail = BigDataSoldOutDetail
+
+    @property
     def HighIOAvailable(self):
-        r"""HighIO盘是否可售
+        r"""<p>HighIO盘是否可售</p>
         :rtype: bool
         """
         return self._HighIOAvailable
@@ -21700,7 +22183,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def HighIOSoldOutReason(self):
-        r"""HighIO盘售罄原因
+        r"""<p>HighIO盘售罄原因</p>
         :rtype: str
         """
         return self._HighIOSoldOutReason
@@ -21711,7 +22194,7 @@ class NodeTypeResource(AbstractModel):
 
     @property
     def HighIODiskSizeRange(self):
-        r"""HighIO磁盘取值范围
+        r"""<p>HighIO磁盘取值范围</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
         return self._HighIODiskSizeRange
@@ -21721,8 +22204,20 @@ class NodeTypeResource(AbstractModel):
         self._HighIODiskSizeRange = HighIODiskSizeRange
 
     @property
+    def HighIOSoldOutDetail(self):
+        r"""<p>高IO型云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._HighIOSoldOutDetail
+
+    @HighIOSoldOutDetail.setter
+    def HighIOSoldOutDetail(self, HighIOSoldOutDetail):
+        self._HighIOSoldOutDetail = HighIOSoldOutDetail
+
+    @property
     def BssdAvailable(self):
-        r"""Bssd盘是否可售
+        r"""<p>Bssd盘是否可售</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -21733,20 +22228,8 @@ class NodeTypeResource(AbstractModel):
         self._BssdAvailable = BssdAvailable
 
     @property
-    def BssdSoldOutReason(self):
-        r"""Bssd盘售罄原因
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._BssdSoldOutReason
-
-    @BssdSoldOutReason.setter
-    def BssdSoldOutReason(self, BssdSoldOutReason):
-        self._BssdSoldOutReason = BssdSoldOutReason
-
-    @property
     def BssdDiskSizeRange(self):
-        r"""Bssd盘取值范围
+        r"""<p>Bssd盘取值范围</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.DiskSizeRange`
         """
@@ -21757,8 +22240,32 @@ class NodeTypeResource(AbstractModel):
         self._BssdDiskSizeRange = BssdDiskSizeRange
 
     @property
+    def BssdSoldOutReason(self):
+        r"""<p>Bssd盘售罄原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BssdSoldOutReason
+
+    @BssdSoldOutReason.setter
+    def BssdSoldOutReason(self, BssdSoldOutReason):
+        self._BssdSoldOutReason = BssdSoldOutReason
+
+    @property
+    def BssdSoldOutDetail(self):
+        r"""<p>通用型SSD云硬盘售罄明细</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FamilyResourceStat
+        """
+        return self._BssdSoldOutDetail
+
+    @BssdSoldOutDetail.setter
+    def BssdSoldOutDetail(self, BssdSoldOutDetail):
+        self._BssdSoldOutDetail = BssdSoldOutDetail
+
+    @property
     def GpuInfo(self):
-        r"""节点Gpu信息
+        r"""<p>节点Gpu信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.GpuInfo`
         """
@@ -21779,12 +22286,24 @@ class NodeTypeResource(AbstractModel):
         if params.get("SsdDiskSizeRange") is not None:
             self._SsdDiskSizeRange = DiskSizeRange()
             self._SsdDiskSizeRange._deserialize(params.get("SsdDiskSizeRange"))
+        self._SsdSoldOutReason = params.get("SsdSoldOutReason")
+        if params.get("SsdSoldOutDetail") is not None:
+            self._SsdSoldOutDetail = []
+            for item in params.get("SsdSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._SsdSoldOutDetail.append(obj)
         self._SataAvailable = params.get("SataAvailable")
         if params.get("SataDiskSizeRange") is not None:
             self._SataDiskSizeRange = DiskSizeRange()
             self._SataDiskSizeRange._deserialize(params.get("SataDiskSizeRange"))
-        self._SsdSoldOutReason = params.get("SsdSoldOutReason")
         self._SataSoldOutReason = params.get("SataSoldOutReason")
+        if params.get("SataSoldOutDetail") is not None:
+            self._SataSoldOutDetail = []
+            for item in params.get("SataSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._SataSoldOutDetail.append(obj)
         if params.get("LocalDiskInfo") is not None:
             self._LocalDiskInfo = LocalDiskInfo()
             self._LocalDiskInfo._deserialize(params.get("LocalDiskInfo"))
@@ -21792,30 +22311,60 @@ class NodeTypeResource(AbstractModel):
             self._DiskCountRange = DiskCountRange()
             self._DiskCountRange._deserialize(params.get("DiskCountRange"))
         self._HSsdAvailable = params.get("HSsdAvailable")
-        self._HSsdSoldOutReason = params.get("HSsdSoldOutReason")
         if params.get("HSsdDiskSizeRange") is not None:
             self._HSsdDiskSizeRange = DiskSizeRange()
             self._HSsdDiskSizeRange._deserialize(params.get("HSsdDiskSizeRange"))
+        self._HSsdSoldOutReason = params.get("HSsdSoldOutReason")
+        if params.get("HSsdSoldOutDetail") is not None:
+            self._HSsdSoldOutDetail = []
+            for item in params.get("HSsdSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._HSsdSoldOutDetail.append(obj)
         self._ThroughputAvailable = params.get("ThroughputAvailable")
-        self._ThroughputSoldOutReason = params.get("ThroughputSoldOutReason")
         if params.get("ThroughputDiskSizeRange") is not None:
             self._ThroughputDiskSizeRange = DiskSizeRange()
             self._ThroughputDiskSizeRange._deserialize(params.get("ThroughputDiskSizeRange"))
+        self._ThroughputSoldOutReason = params.get("ThroughputSoldOutReason")
+        if params.get("ThroughputSoldOutDetail") is not None:
+            self._ThroughputSoldOutDetail = []
+            for item in params.get("ThroughputSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._ThroughputSoldOutDetail.append(obj)
         self._BigDataAvailable = params.get("BigDataAvailable")
-        self._BigDataSoldOutReason = params.get("BigDataSoldOutReason")
         if params.get("BigDataDiskSizeRange") is not None:
             self._BigDataDiskSizeRange = DiskSizeRange()
             self._BigDataDiskSizeRange._deserialize(params.get("BigDataDiskSizeRange"))
+        self._BigDataSoldOutReason = params.get("BigDataSoldOutReason")
+        if params.get("BigDataSoldOutDetail") is not None:
+            self._BigDataSoldOutDetail = []
+            for item in params.get("BigDataSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._BigDataSoldOutDetail.append(obj)
         self._HighIOAvailable = params.get("HighIOAvailable")
         self._HighIOSoldOutReason = params.get("HighIOSoldOutReason")
         if params.get("HighIODiskSizeRange") is not None:
             self._HighIODiskSizeRange = DiskSizeRange()
             self._HighIODiskSizeRange._deserialize(params.get("HighIODiskSizeRange"))
+        if params.get("HighIOSoldOutDetail") is not None:
+            self._HighIOSoldOutDetail = []
+            for item in params.get("HighIOSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._HighIOSoldOutDetail.append(obj)
         self._BssdAvailable = params.get("BssdAvailable")
-        self._BssdSoldOutReason = params.get("BssdSoldOutReason")
         if params.get("BssdDiskSizeRange") is not None:
             self._BssdDiskSizeRange = DiskSizeRange()
             self._BssdDiskSizeRange._deserialize(params.get("BssdDiskSizeRange"))
+        self._BssdSoldOutReason = params.get("BssdSoldOutReason")
+        if params.get("BssdSoldOutDetail") is not None:
+            self._BssdSoldOutDetail = []
+            for item in params.get("BssdSoldOutDetail"):
+                obj = FamilyResourceStat()
+                obj._deserialize(item)
+                self._BssdSoldOutDetail.append(obj)
         if params.get("GpuInfo") is not None:
             self._GpuInfo = GpuInfo()
             self._GpuInfo._deserialize(params.get("GpuInfo"))
@@ -23781,13 +24330,13 @@ class RestartInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _ForceRestart: 是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false
+        :param _ForceRestart: <p>是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false</p>
         :type ForceRestart: bool
-        :param _RestartMode: 重启模式：0 滚动重启； 1 全量重启
+        :param _RestartMode: <p>重启模式：0 滚动重启； 1 全量重启</p>
         :type RestartMode: int
-        :param _UpgradeKernel: 重启时选择是否升级内核patch版本
+        :param _UpgradeKernel: <p>重启时选择是否升级内核patch版本</p>
         :type UpgradeKernel: bool
         """
         self._InstanceId = None
@@ -23797,7 +24346,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -23808,7 +24357,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def ForceRestart(self):
-        r"""是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false
+        r"""<p>是否强制重启<li>true：强制重启</li><li>false：不强制重启</li>默认false</p>
         :rtype: bool
         """
         return self._ForceRestart
@@ -23819,7 +24368,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def RestartMode(self):
-        r"""重启模式：0 滚动重启； 1 全量重启
+        r"""<p>重启模式：0 滚动重启； 1 全量重启</p>
         :rtype: int
         """
         return self._RestartMode
@@ -23830,7 +24379,7 @@ class RestartInstanceRequest(AbstractModel):
 
     @property
     def UpgradeKernel(self):
-        r"""重启时选择是否升级内核patch版本
+        r"""<p>重启时选择是否升级内核patch版本</p>
         :rtype: bool
         """
         return self._UpgradeKernel

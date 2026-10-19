@@ -16137,13 +16137,13 @@ class AigcVideoTaskUsage(AbstractModel):
         :type InputTokens: int
         :param _ThoughtTokens: <p>思考产生的 Token 数目。</p><p>仅使用 GV 的 omni 版本时取值有效。</p>
         :type ThoughtTokens: int
-        :param _InputImageCount: <p>输入图片数目。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+        :param _InputImageCount: <p>输入图片数目。</p><p>仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite) 时取值有效。</p>
         :type InputImageCount: int
-        :param _InputSeconds: <p>输入视频的时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+        :param _InputSeconds: <p>输入视频的时长。</p><p>单位：秒。</p><p> 仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite/1.0-pro/1.5-pro)、Wan(3.0/3.0-prime) 时取值有效。</p>
         :type InputSeconds: int
-        :param _OutputSeconds: <p>输出视频时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+        :param _OutputSeconds: <p>输出视频时长。</p><p>单位：秒。</p><p>所有模型版本取值均有效。</p>
         :type OutputSeconds: int
-        :param _TotalSeconds: <p>输入输出总时长。</p><p>默认值：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+        :param _TotalSeconds: <p>输入输出总时长。</p><p>默认值：秒。</p><p> 仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite/1.0-pro/1.5-pro)、Wan(3.0/3.0-prime) 时取值有效。</p>
         :type TotalSeconds: int
         """
         self._InputTokens = None
@@ -16177,7 +16177,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def InputImageCount(self):
-        r"""<p>输入图片数目。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+        r"""<p>输入图片数目。</p><p>仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite) 时取值有效。</p>
         :rtype: int
         """
         return self._InputImageCount
@@ -16188,7 +16188,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def InputSeconds(self):
-        r"""<p>输入视频的时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+        r"""<p>输入视频的时长。</p><p>单位：秒。</p><p> 仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite/1.0-pro/1.5-pro)、Wan(3.0/3.0-prime) 时取值有效。</p>
         :rtype: int
         """
         return self._InputSeconds
@@ -16199,7 +16199,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def OutputSeconds(self):
-        r"""<p>输出视频时长。</p><p>单位：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+        r"""<p>输出视频时长。</p><p>单位：秒。</p><p>所有模型版本取值均有效。</p>
         :rtype: int
         """
         return self._OutputSeconds
@@ -16210,7 +16210,7 @@ class AigcVideoTaskUsage(AbstractModel):
 
     @property
     def TotalSeconds(self):
-        r"""<p>输入输出总时长。</p><p>默认值：秒。</p><p>仅使用 Hailuo 的 H3 版本时取值有效。</p>
+        r"""<p>输入输出总时长。</p><p>默认值：秒。</p><p> 仅使用 Hailuo(H3/H3-Max)、wand-vega-video(1.0-lite/1.0-pro/1.5-pro)、Wan(3.0/3.0-prime) 时取值有效。</p>
         :rtype: int
         """
         return self._TotalSeconds
@@ -46272,7 +46272,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>AigcAudioTask：AIGC 生音频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li><li>AigcHunyuan3DTask：AIGC 混元 3D 任务</li><li>DesignVoiceAsync：音色设计</li><li>CloneVoiceAsync：音色克隆</li><li>TextToSpeechAsync：语音生成</li><li>VideoDubbingAsync：视频翻译配音</li></p>
+        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>AigcAudioTask：AIGC 生音频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li><li>AigcHunyuan3DTask：AIGC 混元 3D 任务</li><li>DesignVoiceAsync：音色设计</li><li>CloneVoiceAsync：音色克隆</li><li>TextToSpeechAsync：语音生成</li><li>VideoDubbingAsync：视频翻译配音</li><li>VideoDepthEstimation: 视频深度估计任务</li></p>
         :type TaskType: str
         :param _Status: <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成；</li><li>ABORTED：已终止。</li>
         :type Status: str
@@ -46388,6 +46388,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type TextToSpeechAsyncTask: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncTask`
         :param _VideoDubbingAsyncTask: <p>视频翻译配音，仅当 TaskType 为VideoDubbingAsync，该字段有值。</p>
         :type VideoDubbingAsyncTask: :class:`tencentcloud.vod.v20180717.models.VideoDubbingAsyncTask`
+        :param _VideoDepthEstimationTask: <p>视频深度估算任务，仅当 TaskType 为VideoDepthEstimation，该字段有值。</p>
+        :type VideoDepthEstimationTask: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -46438,11 +46440,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._CloneVoiceAsyncTask = None
         self._TextToSpeechAsyncTask = None
         self._VideoDubbingAsyncTask = None
+        self._VideoDepthEstimationTask = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>AigcAudioTask：AIGC 生音频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li><li>AigcHunyuan3DTask：AIGC 混元 3D 任务</li><li>DesignVoiceAsync：音色设计</li><li>CloneVoiceAsync：音色克隆</li><li>TextToSpeechAsync：语音生成</li><li>VideoDubbingAsync：视频翻译配音</li></p>
+        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>AigcAudioTask：AIGC 生音频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li><li>AigcHunyuan3DTask：AIGC 混元 3D 任务</li><li>DesignVoiceAsync：音色设计</li><li>CloneVoiceAsync：音色克隆</li><li>TextToSpeechAsync：语音生成</li><li>VideoDubbingAsync：视频翻译配音</li><li>VideoDepthEstimation: 视频深度估计任务</li></p>
         :rtype: str
         """
         return self._TaskType
@@ -46980,6 +46983,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._VideoDubbingAsyncTask = VideoDubbingAsyncTask
 
     @property
+    def VideoDepthEstimationTask(self):
+        r"""<p>视频深度估算任务，仅当 TaskType 为VideoDepthEstimation，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationTask`
+        """
+        return self._VideoDepthEstimationTask
+
+    @VideoDepthEstimationTask.setter
+    def VideoDepthEstimationTask(self, VideoDepthEstimationTask):
+        self._VideoDepthEstimationTask = VideoDepthEstimationTask
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -47123,6 +47137,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("VideoDubbingAsyncTask") is not None:
             self._VideoDubbingAsyncTask = VideoDubbingAsyncTask()
             self._VideoDubbingAsyncTask._deserialize(params.get("VideoDubbingAsyncTask"))
+        if params.get("VideoDepthEstimationTask") is not None:
+            self._VideoDepthEstimationTask = VideoDepthEstimationTask()
+            self._VideoDepthEstimationTask._deserialize(params.get("VideoDepthEstimationTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -102881,6 +102898,360 @@ class VideoDenoiseInfo(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDepthEstimationInput(AbstractModel):
+    r"""视频深度估计任务的输入信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>输入视频的 URL，支持以下三种形式：</p><li>以 <code>http://</code> 或 <code>https://</code> 开头的网络地址；</li><li><code>vod://</code> 开头的点播媒体文件 ID，例如 <code>vod://5285890815916760123</code>；</li><li><code>data:video/&lt;ext&gt;;base64,</code> 开头的 base64 编码视频数据。</li>
+        :type Url: str
+        :param _FileId: <p>输入视频的媒体文件 ID，仅当 Url 以 <code>vod://</code> 开头时有值。</p>
+        :type FileId: str
+        """
+        self._Url = None
+        self._FileId = None
+
+    @property
+    def Url(self):
+        r"""<p>输入视频的 URL，支持以下三种形式：</p><li>以 <code>http://</code> 或 <code>https://</code> 开头的网络地址；</li><li><code>vod://</code> 开头的点播媒体文件 ID，例如 <code>vod://5285890815916760123</code>；</li><li><code>data:video/&lt;ext&gt;;base64,</code> 开头的 base64 编码视频数据。</li>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def FileId(self):
+        r"""<p>输入视频的媒体文件 ID，仅当 Url 以 <code>vod://</code> 开头时有值。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDepthEstimationOutput(AbstractModel):
+    r"""视频深度估计任务的输出信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageMode: <p>输出文件的存储模式，取值：</p><li>Temporary：临时存储，文件默认 7 天后删除；</li><li>Permanent：永久存储，保存到点播媒资库。</li>
+        :type StorageMode: str
+        :param _MediaName: <p>输出文件的媒体名称，仅 StorageMode 为 Permanent 时有值。</p>
+        :type MediaName: str
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。<br><font color="red">注意：</font>StorageMode 为 Temporary 时，该字段为文件生成时间加 7 天。</p>
+        :type ExpireTime: str
+        :param _FileType: <p>输出文件的类型，取值 mp4。</p>
+        :type FileType: str
+        :param _FileId: <p>输出文件的媒体文件 ID，仅 StorageMode 为 Permanent 时有值。</p>
+        :type FileId: str
+        :param _FileUrl: <p>输出文件的播放地址。</p>
+        :type FileUrl: str
+        :param _MetaData: <p>输出视频的元信息。</p>
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        """
+        self._StorageMode = None
+        self._MediaName = None
+        self._ExpireTime = None
+        self._FileType = None
+        self._FileId = None
+        self._FileUrl = None
+        self._MetaData = None
+
+    @property
+    def StorageMode(self):
+        r"""<p>输出文件的存储模式，取值：</p><li>Temporary：临时存储，文件默认 7 天后删除；</li><li>Permanent：永久存储，保存到点播媒资库。</li>
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def MediaName(self):
+        r"""<p>输出文件的媒体名称，仅 StorageMode 为 Permanent 时有值。</p>
+        :rtype: str
+        """
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ExpireTime(self):
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。<br><font color="red">注意：</font>StorageMode 为 Temporary 时，该字段为文件生成时间加 7 天。</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def FileType(self):
+        r"""<p>输出文件的类型，取值 mp4。</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileId(self):
+        r"""<p>输出文件的媒体文件 ID，仅 StorageMode 为 Permanent 时有值。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def FileUrl(self):
+        r"""<p>输出文件的播放地址。</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def MetaData(self):
+        r"""<p>输出视频的元信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        """
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+
+    def _deserialize(self, params):
+        self._StorageMode = params.get("StorageMode")
+        self._MediaName = params.get("MediaName")
+        self._ExpireTime = params.get("ExpireTime")
+        self._FileType = params.get("FileType")
+        self._FileId = params.get("FileId")
+        self._FileUrl = params.get("FileUrl")
+        if params.get("MetaData") is not None:
+            self._MetaData = MediaMetaData()
+            self._MetaData._deserialize(params.get("MetaData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDepthEstimationTask(AbstractModel):
+    r"""视频深度估计任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li><p></p>
+        :type Status: str
+        :param _ErrCode: <p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param _ErrCodeExt: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _Progress: <p>任务进度，取值范围 [0-100] 。</p>
+        :type Progress: int
+        :param _Input: <p>视频深度估计任务的输入信息。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationInput`
+        :param _Output: <p>视频深度估计任务的输出信息。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationOutput`
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+        self._SessionContext = None
+        self._SessionId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li><p></p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Progress(self):
+        r"""<p>任务进度，取值范围 [0-100] 。</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        r"""<p>视频深度估计任务的输入信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>视频深度估计任务的输出信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = VideoDepthEstimationInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = VideoDepthEstimationOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

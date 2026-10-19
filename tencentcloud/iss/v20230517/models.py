@@ -2413,6 +2413,194 @@ class AddUserDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchAddVideoSnapshotConfigChannelRequest(AbstractModel):
+    r"""BatchAddVideoSnapshotConfigChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigId: <p>截图配置Id</p>
+        :type ConfigId: str
+        :param _Channels: <p>通道Id列表</p>
+        :type Channels: list of str
+        """
+        self._ConfigId = None
+        self._Channels = None
+
+    @property
+    def ConfigId(self):
+        r"""<p>截图配置Id</p>
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def Channels(self):
+        r"""<p>通道Id列表</p>
+        :rtype: list of str
+        """
+        return self._Channels
+
+    @Channels.setter
+    def Channels(self, Channels):
+        self._Channels = Channels
+
+
+    def _deserialize(self, params):
+        self._ConfigId = params.get("ConfigId")
+        self._Channels = params.get("Channels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchAddVideoSnapshotConfigChannelResponse(AbstractModel):
+    r"""BatchAddVideoSnapshotConfigChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class BatchAssignVLPlanChannelsRequest(AbstractModel):
+    r"""BatchAssignVLPlanChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanId: <p>计划 ID</p>
+        :type VLPlanId: str
+        :param _Cmd: <p>操作命令：1=关联，2=解绑</p>
+        :type Cmd: int
+        :param _ChannelIds: <p>通道 ID 列表，最多 500 个；与 OrganizationIds 至少传一个（Cmd=1 时）</p>
+        :type ChannelIds: list of str
+        :param _OrganizationIds: <p>组织 ID 列表（仅 Cmd=1 时有效，Cmd=2 时不允许传入）；展开该组织下所有通道参与关联，与 ChannelIds 取并集去重</p>
+        :type OrganizationIds: list of str
+        """
+        self._VLPlanId = None
+        self._Cmd = None
+        self._ChannelIds = None
+        self._OrganizationIds = None
+
+    @property
+    def VLPlanId(self):
+        r"""<p>计划 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanId
+
+    @VLPlanId.setter
+    def VLPlanId(self, VLPlanId):
+        self._VLPlanId = VLPlanId
+
+    @property
+    def Cmd(self):
+        r"""<p>操作命令：1=关联，2=解绑</p>
+        :rtype: int
+        """
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
+    @property
+    def ChannelIds(self):
+        r"""<p>通道 ID 列表，最多 500 个；与 OrganizationIds 至少传一个（Cmd=1 时）</p>
+        :rtype: list of str
+        """
+        return self._ChannelIds
+
+    @ChannelIds.setter
+    def ChannelIds(self, ChannelIds):
+        self._ChannelIds = ChannelIds
+
+    @property
+    def OrganizationIds(self):
+        r"""<p>组织 ID 列表（仅 Cmd=1 时有效，Cmd=2 时不允许传入）；展开该组织下所有通道参与关联，与 ChannelIds 取并集去重</p>
+        :rtype: list of str
+        """
+        return self._OrganizationIds
+
+    @OrganizationIds.setter
+    def OrganizationIds(self, OrganizationIds):
+        self._OrganizationIds = OrganizationIds
+
+
+    def _deserialize(self, params):
+        self._VLPlanId = params.get("VLPlanId")
+        self._Cmd = params.get("Cmd")
+        self._ChannelIds = params.get("ChannelIds")
+        self._OrganizationIds = params.get("OrganizationIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchAssignVLPlanChannelsResponse(AbstractModel):
+    r"""BatchAssignVLPlanChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class BatchDeleteVideoDownloadTaskRequest(AbstractModel):
     r"""BatchDeleteVideoDownloadTask请求参数结构体
 
@@ -2474,6 +2662,272 @@ class BatchDeleteVideoDownloadTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class BatchGetVLPlanSourceFileURLRequest(AbstractModel):
+    r"""BatchGetVLPlanSourceFileURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanResultIds: <p>分析结果 ID 列表，最多 200 个</p>
+        :type VLPlanResultIds: list of str
+        :param _Expire: <p>URL 有效期（秒），范围 [60, 86400]，默认 600</p>
+        :type Expire: int
+        """
+        self._VLPlanResultIds = None
+        self._Expire = None
+
+    @property
+    def VLPlanResultIds(self):
+        r"""<p>分析结果 ID 列表，最多 200 个</p>
+        :rtype: list of str
+        """
+        return self._VLPlanResultIds
+
+    @VLPlanResultIds.setter
+    def VLPlanResultIds(self, VLPlanResultIds):
+        self._VLPlanResultIds = VLPlanResultIds
+
+    @property
+    def Expire(self):
+        r"""<p>URL 有效期（秒），范围 [60, 86400]，默认 600</p>
+        :rtype: int
+        """
+        return self._Expire
+
+    @Expire.setter
+    def Expire(self, Expire):
+        self._Expire = Expire
+
+
+    def _deserialize(self, params):
+        self._VLPlanResultIds = params.get("VLPlanResultIds")
+        self._Expire = params.get("Expire")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchGetVLPlanSourceFileURLResponse(AbstractModel):
+    r"""BatchGetVLPlanSourceFileURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>URL 列表</p>
+        :type Data: list of VLPlanResultSnapshotImageUrlInfo
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>URL 列表</p>
+        :rtype: list of VLPlanResultSnapshotImageUrlInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VLPlanResultSnapshotImageUrlInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class BatchGetVideoSnapshotImageUrlData(AbstractModel):
+    r"""批量获取截图图片URL列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Images: <p>图片Url信息</p>
+        :type Images: list of ImageUrlInfo
+        :param _ImageUrlExpires: <p>图片Url有效期</p><p>单位：秒</p><p>默认值：600</p>
+        :type ImageUrlExpires: int
+        """
+        self._Images = None
+        self._ImageUrlExpires = None
+
+    @property
+    def Images(self):
+        r"""<p>图片Url信息</p>
+        :rtype: list of ImageUrlInfo
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def ImageUrlExpires(self):
+        r"""<p>图片Url有效期</p><p>单位：秒</p><p>默认值：600</p>
+        :rtype: int
+        """
+        return self._ImageUrlExpires
+
+    @ImageUrlExpires.setter
+    def ImageUrlExpires(self, ImageUrlExpires):
+        self._ImageUrlExpires = ImageUrlExpires
+
+
+    def _deserialize(self, params):
+        if params.get("Images") is not None:
+            self._Images = []
+            for item in params.get("Images"):
+                obj = ImageUrlInfo()
+                obj._deserialize(item)
+                self._Images.append(obj)
+        self._ImageUrlExpires = params.get("ImageUrlExpires")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchGetVideoSnapshotImageUrlRequest(AbstractModel):
+    r"""BatchGetVideoSnapshotImageUrl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageIds: <p>图片Id</p>
+        :type ImageIds: list of str
+        :param _ImageUrlExpires: <p>图片URL有效期，单位：秒</p><p>取值范围：[60, 86400]</p><p>默认值：600</p>
+        :type ImageUrlExpires: int
+        """
+        self._ImageIds = None
+        self._ImageUrlExpires = None
+
+    @property
+    def ImageIds(self):
+        r"""<p>图片Id</p>
+        :rtype: list of str
+        """
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
+
+    @property
+    def ImageUrlExpires(self):
+        r"""<p>图片URL有效期，单位：秒</p><p>取值范围：[60, 86400]</p><p>默认值：600</p>
+        :rtype: int
+        """
+        return self._ImageUrlExpires
+
+    @ImageUrlExpires.setter
+    def ImageUrlExpires(self, ImageUrlExpires):
+        self._ImageUrlExpires = ImageUrlExpires
+
+
+    def _deserialize(self, params):
+        self._ImageIds = params.get("ImageIds")
+        self._ImageUrlExpires = params.get("ImageUrlExpires")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchGetVideoSnapshotImageUrlResponse(AbstractModel):
+    r"""BatchGetVideoSnapshotImageUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>截图图片URL结果列表</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.BatchGetVideoSnapshotImageUrlData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>截图图片URL结果列表</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.BatchGetVideoSnapshotImageUrlData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BatchGetVideoSnapshotImageUrlData()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2769,6 +3223,72 @@ class CallISAPIResponse(AbstractModel):
             self._Data = ISAPIOutputData()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class CallbackURL(AbstractModel):
+    r"""截图结果的回调地址配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>图片回调地址</p>
+        :type Url: str
+        :param _Token: <p>Token</p>
+        :type Token: str
+        :param _Enable: <p>是否开启</p>
+        :type Enable: bool
+        """
+        self._Url = None
+        self._Token = None
+        self._Enable = None
+
+    @property
+    def Url(self):
+        r"""<p>图片回调地址</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Token(self):
+        r"""<p>Token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Enable(self):
+        r"""<p>是否开启</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Token = params.get("Token")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ChannelAttrInfo(AbstractModel):
@@ -3658,6 +4178,327 @@ class ControlRecordTimelineResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVLPlanRequest(AbstractModel):
+    r"""CreateVLPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>计划名称，仅支持中文/英文/数字/_/-，最长 32 个字符</p>
+        :type Name: str
+        :param _VLTemplateId: <p>关联的视觉理解模板 ID</p>
+        :type VLTemplateId: str
+        :param _Describe: <p>计划描述，最长 256 个字符</p>
+        :type Describe: str
+        :param _FileExpires: <p>截图文件存储天数，范围 [7, 1080]；图片模式必填，视频模式不传</p>
+        :type FileExpires: int
+        :param _Callback: <p>回调通知配置</p>
+        :type Callback: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        self._Name = None
+        self._VLTemplateId = None
+        self._Describe = None
+        self._FileExpires = None
+        self._Callback = None
+
+    @property
+    def Name(self):
+        r"""<p>计划名称，仅支持中文/英文/数字/_/-，最长 32 个字符</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VLTemplateId(self):
+        r"""<p>关联的视觉理解模板 ID</p>
+        :rtype: str
+        """
+        return self._VLTemplateId
+
+    @VLTemplateId.setter
+    def VLTemplateId(self, VLTemplateId):
+        self._VLTemplateId = VLTemplateId
+
+    @property
+    def Describe(self):
+        r"""<p>计划描述，最长 256 个字符</p>
+        :rtype: str
+        """
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def FileExpires(self):
+        r"""<p>截图文件存储天数，范围 [7, 1080]；图片模式必填，视频模式不传</p>
+        :rtype: int
+        """
+        return self._FileExpires
+
+    @FileExpires.setter
+    def FileExpires(self, FileExpires):
+        self._FileExpires = FileExpires
+
+    @property
+    def Callback(self):
+        r"""<p>回调通知配置</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._VLTemplateId = params.get("VLTemplateId")
+        self._Describe = params.get("Describe")
+        self._FileExpires = params.get("FileExpires")
+        if params.get("Callback") is not None:
+            self._Callback = CallbackURL()
+            self._Callback._deserialize(params.get("Callback"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVLPlanResponse(AbstractModel):
+    r"""CreateVLPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>视觉理解计划信息</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VLPlanInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>视觉理解计划信息</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VLPlanInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VLPlanInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVLTemplateRequest(AbstractModel):
+    r"""CreateVLTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AIModel: <p>AI 模型</p><p>枚举值：</p><ul><li>ivc-vl-1.0： 视图大模型</li></ul>
+        :type AIModel: str
+        :param _Name: <p>模板名称，仅支持中文/英文/数字/_/-，最长 32 个字符</p>
+        :type Name: str
+        :param _Prompt: <p>提示词，最大 2MB</p>
+        :type Prompt: str
+        :param _AnalysisMode: <p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+        :type AnalysisMode: str
+        :param _Times: <p>生效时段列表，最多 100 条</p>
+        :type Times: list of EffectiveTime
+        :param _Describe: <p>模板描述，最长 256 个字符</p>
+        :type Describe: str
+        :param _ImageConfig: <p>图片场景配置（AnalysisMode=image 时必填）</p>
+        :type ImageConfig: :class:`tencentcloud.iss.v20230517.models.ImageSceneInfo`
+        """
+        self._AIModel = None
+        self._Name = None
+        self._Prompt = None
+        self._AnalysisMode = None
+        self._Times = None
+        self._Describe = None
+        self._ImageConfig = None
+
+    @property
+    def AIModel(self):
+        r"""<p>AI 模型</p><p>枚举值：</p><ul><li>ivc-vl-1.0： 视图大模型</li></ul>
+        :rtype: str
+        """
+        return self._AIModel
+
+    @AIModel.setter
+    def AIModel(self, AIModel):
+        self._AIModel = AIModel
+
+    @property
+    def Name(self):
+        r"""<p>模板名称，仅支持中文/英文/数字/_/-，最长 32 个字符</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Prompt(self):
+        r"""<p>提示词，最大 2MB</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def AnalysisMode(self):
+        r"""<p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+        :rtype: str
+        """
+        return self._AnalysisMode
+
+    @AnalysisMode.setter
+    def AnalysisMode(self, AnalysisMode):
+        self._AnalysisMode = AnalysisMode
+
+    @property
+    def Times(self):
+        r"""<p>生效时段列表，最多 100 条</p>
+        :rtype: list of EffectiveTime
+        """
+        return self._Times
+
+    @Times.setter
+    def Times(self, Times):
+        self._Times = Times
+
+    @property
+    def Describe(self):
+        r"""<p>模板描述，最长 256 个字符</p>
+        :rtype: str
+        """
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def ImageConfig(self):
+        r"""<p>图片场景配置（AnalysisMode=image 时必填）</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ImageSceneInfo`
+        """
+        return self._ImageConfig
+
+    @ImageConfig.setter
+    def ImageConfig(self, ImageConfig):
+        self._ImageConfig = ImageConfig
+
+
+    def _deserialize(self, params):
+        self._AIModel = params.get("AIModel")
+        self._Name = params.get("Name")
+        self._Prompt = params.get("Prompt")
+        self._AnalysisMode = params.get("AnalysisMode")
+        if params.get("Times") is not None:
+            self._Times = []
+            for item in params.get("Times"):
+                obj = EffectiveTime()
+                obj._deserialize(item)
+                self._Times.append(obj)
+        self._Describe = params.get("Describe")
+        if params.get("ImageConfig") is not None:
+            self._ImageConfig = ImageSceneInfo()
+            self._ImageConfig._deserialize(params.get("ImageConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVLTemplateResponse(AbstractModel):
+    r"""CreateVLTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>视觉理解模板信息</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VLTemplateInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>视觉理解模板信息</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VLTemplateInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VLTemplateInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateVideoDownloadTaskRequest(AbstractModel):
     r"""CreateVideoDownloadTask请求参数结构体
 
@@ -3825,6 +4666,282 @@ class CreateVideoDownloadTaskResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = VideoDownloadTaskData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVideoSnapshotConfigRequest(AbstractModel):
+    r"""CreateVideoSnapshotConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>截图配置名称</p><p>入参限制：中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+        :type Name: str
+        :param _TemplateId: <p>截图模板Id</p>
+        :type TemplateId: str
+        :param _FileExpires: <p>图片文件的热存储天数</p><p>枚举值：</p><ul><li>7： 7天</li><li>15： 15天</li><li>30： 30天</li><li>60： 60天</li><li>90： 90天</li><li>180： 180天</li><li>270： 270天</li><li>360： 360天</li><li>540： 540天</li><li>720： 720天</li><li>900： 900天</li><li>1080： 1080天</li></ul>
+        :type FileExpires: int
+        :param _Callback: <p>截图结果回调地址</p>
+        :type Callback: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        self._Name = None
+        self._TemplateId = None
+        self._FileExpires = None
+        self._Callback = None
+
+    @property
+    def Name(self):
+        r"""<p>截图配置名称</p><p>入参限制：中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TemplateId(self):
+        r"""<p>截图模板Id</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def FileExpires(self):
+        r"""<p>图片文件的热存储天数</p><p>枚举值：</p><ul><li>7： 7天</li><li>15： 15天</li><li>30： 30天</li><li>60： 60天</li><li>90： 90天</li><li>180： 180天</li><li>270： 270天</li><li>360： 360天</li><li>540： 540天</li><li>720： 720天</li><li>900： 900天</li><li>1080： 1080天</li></ul>
+        :rtype: int
+        """
+        return self._FileExpires
+
+    @FileExpires.setter
+    def FileExpires(self, FileExpires):
+        self._FileExpires = FileExpires
+
+    @property
+    def Callback(self):
+        r"""<p>截图结果回调地址</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._TemplateId = params.get("TemplateId")
+        self._FileExpires = params.get("FileExpires")
+        if params.get("Callback") is not None:
+            self._Callback = CallbackURL()
+            self._Callback._deserialize(params.get("Callback"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoSnapshotConfigResponse(AbstractModel):
+    r"""CreateVideoSnapshotConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>截图配置信息</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotConfigInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>截图配置信息</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotConfigInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VideoSnapshotConfigInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVideoSnapshotTemplateRequest(AbstractModel):
+    r"""CreateVideoSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>模板名称： 中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+        :type Name: str
+        :param _Type: <p>截图类型： 1-实时截帧 2-低频截帧<br>注意：实时截帧在生效时段期间一直拉取实时流， 低频截帧在生效时段期间按需拉取实时流，每次拉流的最短持续时间不低于1分钟</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :type Type: int
+        :param _Interval: <p>截帧频率： Type = 1时，取值[5, 180]秒 Type = 2时 取值[30, 36000]秒</p>
+        :type Interval: int
+        :param _Times: <p>生效时段，注：数组大小不超过100个且每个时间段不低于1分钟</p>
+        :type Times: list of EffectiveTime
+        :param _MultiMode: <p>多张模式</p>
+        :type MultiMode: :class:`tencentcloud.iss.v20230517.models.MultiVideoSnapshotMode`
+        """
+        self._Name = None
+        self._Type = None
+        self._Interval = None
+        self._Times = None
+        self._MultiMode = None
+
+    @property
+    def Name(self):
+        r"""<p>模板名称： 中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>截图类型： 1-实时截帧 2-低频截帧<br>注意：实时截帧在生效时段期间一直拉取实时流， 低频截帧在生效时段期间按需拉取实时流，每次拉流的最短持续时间不低于1分钟</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Interval(self):
+        r"""<p>截帧频率： Type = 1时，取值[5, 180]秒 Type = 2时 取值[30, 36000]秒</p>
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Times(self):
+        r"""<p>生效时段，注：数组大小不超过100个且每个时间段不低于1分钟</p>
+        :rtype: list of EffectiveTime
+        """
+        return self._Times
+
+    @Times.setter
+    def Times(self, Times):
+        self._Times = Times
+
+    @property
+    def MultiMode(self):
+        r"""<p>多张模式</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.MultiVideoSnapshotMode`
+        """
+        return self._MultiMode
+
+    @MultiMode.setter
+    def MultiMode(self, MultiMode):
+        self._MultiMode = MultiMode
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Interval = params.get("Interval")
+        if params.get("Times") is not None:
+            self._Times = []
+            for item in params.get("Times"):
+                obj = EffectiveTime()
+                obj._deserialize(item)
+                self._Times.append(obj)
+        if params.get("MultiMode") is not None:
+            self._MultiMode = MultiVideoSnapshotMode()
+            self._MultiMode._deserialize(params.get("MultiMode"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoSnapshotTemplateResponse(AbstractModel):
+    r"""CreateVideoSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>截图模板信息</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotTemplateInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>截图模板信息</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotTemplateInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VideoSnapshotTemplateInfo()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -4379,6 +5496,262 @@ class DeleteUserDeviceRequest(AbstractModel):
 
 class DeleteUserDeviceResponse(AbstractModel):
     r"""DeleteUserDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVLPlanRequest(AbstractModel):
+    r"""DeleteVLPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanId: <p>计划 ID</p>
+        :type VLPlanId: str
+        """
+        self._VLPlanId = None
+
+    @property
+    def VLPlanId(self):
+        r"""<p>计划 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanId
+
+    @VLPlanId.setter
+    def VLPlanId(self, VLPlanId):
+        self._VLPlanId = VLPlanId
+
+
+    def _deserialize(self, params):
+        self._VLPlanId = params.get("VLPlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVLPlanResponse(AbstractModel):
+    r"""DeleteVLPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVLTemplateRequest(AbstractModel):
+    r"""DeleteVLTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLTemplateId: <p>模板 ID</p>
+        :type VLTemplateId: str
+        """
+        self._VLTemplateId = None
+
+    @property
+    def VLTemplateId(self):
+        r"""<p>模板 ID</p>
+        :rtype: str
+        """
+        return self._VLTemplateId
+
+    @VLTemplateId.setter
+    def VLTemplateId(self, VLTemplateId):
+        self._VLTemplateId = VLTemplateId
+
+
+    def _deserialize(self, params):
+        self._VLTemplateId = params.get("VLTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVLTemplateResponse(AbstractModel):
+    r"""DeleteVLTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVideoSnapshotConfigRequest(AbstractModel):
+    r"""DeleteVideoSnapshotConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigId: <p>截图配置Id</p>
+        :type ConfigId: str
+        """
+        self._ConfigId = None
+
+    @property
+    def ConfigId(self):
+        r"""<p>截图配置Id</p>
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+
+    def _deserialize(self, params):
+        self._ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVideoSnapshotConfigResponse(AbstractModel):
+    r"""DeleteVideoSnapshotConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVideoSnapshotTemplateRequest(AbstractModel):
+    r"""DeleteVideoSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>截图模板Id</p>
+        :type TemplateId: str
+        """
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>截图模板Id</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVideoSnapshotTemplateResponse(AbstractModel):
+    r"""DeleteVideoSnapshotTemplate返回参数结构体
 
     """
 
@@ -8041,6 +9414,249 @@ class DescribeUserDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVLPlanRequest(AbstractModel):
+    r"""DescribeVLPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanId: <p>计划 ID</p>
+        :type VLPlanId: str
+        """
+        self._VLPlanId = None
+
+    @property
+    def VLPlanId(self):
+        r"""<p>计划 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanId
+
+    @VLPlanId.setter
+    def VLPlanId(self, VLPlanId):
+        self._VLPlanId = VLPlanId
+
+
+    def _deserialize(self, params):
+        self._VLPlanId = params.get("VLPlanId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVLPlanResponse(AbstractModel):
+    r"""DescribeVLPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>视觉理解计划信息</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VLPlanInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>视觉理解计划信息</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VLPlanInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VLPlanInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVLPlanResultRequest(AbstractModel):
+    r"""DescribeVLPlanResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanResultId: <p>分析结果 ID</p>
+        :type VLPlanResultId: str
+        """
+        self._VLPlanResultId = None
+
+    @property
+    def VLPlanResultId(self):
+        r"""<p>分析结果 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanResultId
+
+    @VLPlanResultId.setter
+    def VLPlanResultId(self, VLPlanResultId):
+        self._VLPlanResultId = VLPlanResultId
+
+
+    def _deserialize(self, params):
+        self._VLPlanResultId = params.get("VLPlanResultId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVLPlanResultResponse(AbstractModel):
+    r"""DescribeVLPlanResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>分析结果详情</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VLPlanResultDetailInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>分析结果详情</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VLPlanResultDetailInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VLPlanResultDetailInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVLTemplateRequest(AbstractModel):
+    r"""DescribeVLTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLTemplateId: <p>模板 ID</p>
+        :type VLTemplateId: str
+        """
+        self._VLTemplateId = None
+
+    @property
+    def VLTemplateId(self):
+        r"""<p>模板 ID</p>
+        :rtype: str
+        """
+        return self._VLTemplateId
+
+    @VLTemplateId.setter
+    def VLTemplateId(self, VLTemplateId):
+        self._VLTemplateId = VLTemplateId
+
+
+    def _deserialize(self, params):
+        self._VLTemplateId = params.get("VLTemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVLTemplateResponse(AbstractModel):
+    r"""DescribeVLTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>视觉理解模板信息</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VLTemplateInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>视觉理解模板信息</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VLTemplateInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VLTemplateInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVideoBitRateList(AbstractModel):
     r"""查询视频通道码率的返回结果列表
 
@@ -8439,6 +10055,234 @@ class DescribeVideoDownloadUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVideoSnapshotConfigRequest(AbstractModel):
+    r"""DescribeVideoSnapshotConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigId: <p>截图配置Id</p>
+        :type ConfigId: str
+        """
+        self._ConfigId = None
+
+    @property
+    def ConfigId(self):
+        r"""<p>截图配置Id</p>
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+
+    def _deserialize(self, params):
+        self._ConfigId = params.get("ConfigId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoSnapshotConfigResponse(AbstractModel):
+    r"""DescribeVideoSnapshotConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>截图配置详情结果</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotConfigInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>截图配置详情结果</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotConfigInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VideoSnapshotConfigInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVideoSnapshotTemplateRequest(AbstractModel):
+    r"""DescribeVideoSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>截图模板Id</p>
+        :type TemplateId: str
+        """
+        self._TemplateId = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>截图模板Id</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVideoSnapshotTemplateResponse(AbstractModel):
+    r"""DescribeVideoSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>截图模板详情</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotTemplateInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>截图模板详情</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotTemplateInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VideoSnapshotTemplateInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class EffectiveTime(AbstractModel):
+    r"""生效时段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BeginTime: <p>开始时间</p><p>参数格式：hh:mm:ss</p>
+        :type BeginTime: str
+        :param _EndTime: <p>结束时间</p><p>参数格式：hh:mm:ss</p>
+        :type EndTime: str
+        :param _WeekDay: <p>重复周期： 1-周一 2-周二 3-周三 4-周四 5-周五 6-周六 7-周日</p><p>取值范围：[1, 7]</p>
+        :type WeekDay: int
+        """
+        self._BeginTime = None
+        self._EndTime = None
+        self._WeekDay = None
+
+    @property
+    def BeginTime(self):
+        r"""<p>开始时间</p><p>参数格式：hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p><p>参数格式：hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def WeekDay(self):
+        r"""<p>重复周期： 1-周一 2-周二 3-周三 4-周四 5-周五 6-周六 7-周日</p><p>取值范围：[1, 7]</p>
+        :rtype: int
+        """
+        return self._WeekDay
+
+    @WeekDay.setter
+    def WeekDay(self, WeekDay):
+        self._WeekDay = WeekDay
+
+
+    def _deserialize(self, params):
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._WeekDay = params.get("WeekDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GBDeviceSnapInfo(AbstractModel):
     r"""抓拍结果信息
 
@@ -8591,6 +10435,142 @@ class ISAPIOutputData(AbstractModel):
 
     def _deserialize(self, params):
         self._OutputData = params.get("OutputData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageSceneInfo(AbstractModel):
+    r"""图片场景配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>截图类型</p><p>枚举值：</p><ul><li>1：实时截帧</li><li>2：低频截帧</li></ul>
+        :type Type: int
+        :param _Interval: <p>截帧频率</p><p>Type=1时取值[5, 180]秒，Type=2时取值[30, 36000]秒</p>
+        :type Interval: int
+        :param _MultiMode: <p>多张截图模式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MultiMode: :class:`tencentcloud.iss.v20230517.models.MultiSnapshotMode`
+        """
+        self._Type = None
+        self._Interval = None
+        self._MultiMode = None
+
+    @property
+    def Type(self):
+        r"""<p>截图类型</p><p>枚举值：</p><ul><li>1：实时截帧</li><li>2：低频截帧</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Interval(self):
+        r"""<p>截帧频率</p><p>Type=1时取值[5, 180]秒，Type=2时取值[30, 36000]秒</p>
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def MultiMode(self):
+        r"""<p>多张截图模式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.iss.v20230517.models.MultiSnapshotMode`
+        """
+        return self._MultiMode
+
+    @MultiMode.setter
+    def MultiMode(self, MultiMode):
+        self._MultiMode = MultiMode
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Interval = params.get("Interval")
+        if params.get("MultiMode") is not None:
+            self._MultiMode = MultiSnapshotMode()
+            self._MultiMode._deserialize(params.get("MultiMode"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageUrlInfo(AbstractModel):
+    r"""图片下载URL信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: <p>图片Id</p>
+        :type ImageId: str
+        :param _ImageUrl: <p>图片Url</p>
+        :type ImageUrl: str
+        :param _ErrorMessage: <p>错误信息</p><p>说明获取图片url失败的原因</p>
+        :type ErrorMessage: str
+        """
+        self._ImageId = None
+        self._ImageUrl = None
+        self._ErrorMessage = None
+
+    @property
+    def ImageId(self):
+        r"""<p>图片Id</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def ImageUrl(self):
+        r"""<p>图片Url</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>错误信息</p><p>说明获取图片url失败的原因</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11316,6 +13296,294 @@ class ListTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListVLPlansRequest(AbstractModel):
+    r"""ListVLPlans请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>计划名称，精确匹配</p>
+        :type Name: str
+        :param _PageNumber: <p>页码，默认 1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 20，最大 200</p>
+        :type PageSize: int
+        """
+        self._Name = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def Name(self):
+        r"""<p>计划名称，精确匹配</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，默认 1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 20，最大 200</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVLPlansResponse(AbstractModel):
+    r"""ListVLPlans返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>计划列表</p>
+        :type Data: list of VLPlanInfo
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>计划列表</p>
+        :rtype: list of VLPlanInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VLPlanInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class ListVLTemplatesRequest(AbstractModel):
+    r"""ListVLTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>模板名称，精确匹配</p>
+        :type Name: str
+        :param _AnalysisMode: <p>分析模式过滤，image / video</p>
+        :type AnalysisMode: str
+        :param _CaptureType: <p>截图类型过滤（仅 AnalysisMode=image 时生效）：realtime / low</p>
+        :type CaptureType: str
+        :param _PageNumber: <p>页码，默认 1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 20，最大 200</p>
+        :type PageSize: int
+        """
+        self._Name = None
+        self._AnalysisMode = None
+        self._CaptureType = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def Name(self):
+        r"""<p>模板名称，精确匹配</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AnalysisMode(self):
+        r"""<p>分析模式过滤，image / video</p>
+        :rtype: str
+        """
+        return self._AnalysisMode
+
+    @AnalysisMode.setter
+    def AnalysisMode(self, AnalysisMode):
+        self._AnalysisMode = AnalysisMode
+
+    @property
+    def CaptureType(self):
+        r"""<p>截图类型过滤（仅 AnalysisMode=image 时生效）：realtime / low</p>
+        :rtype: str
+        """
+        return self._CaptureType
+
+    @CaptureType.setter
+    def CaptureType(self, CaptureType):
+        self._CaptureType = CaptureType
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，默认 1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 20，最大 200</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AnalysisMode = params.get("AnalysisMode")
+        self._CaptureType = params.get("CaptureType")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVLTemplatesResponse(AbstractModel):
+    r"""ListVLTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>模板列表</p>
+        :type Data: list of VLTemplateInfo
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>模板列表</p>
+        :rtype: list of VLTemplateInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VLTemplateInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class ListVideoDownloadTaskData(AbstractModel):
     r"""本地录像下载任务列表
 
@@ -11586,6 +13854,711 @@ class ListVideoDownloadTaskResponse(AbstractModel):
             self._Data = ListVideoDownloadTaskData()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class ListVideoSnapshotTemplateData(AbstractModel):
+    r"""获取截图模板详情列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _Sort: <p>排序参数</p>
+        :type Sort: str
+        :param _Order: <p>排序顺序</p>
+        :type Order: str
+        :param _PageNumber: <p>页码</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数目</p>
+        :type PageSize: int
+        :param _List: <p>截图模板列表</p>
+        :type List: list of VideoSnapshotTemplateInfo
+        """
+        self._TotalCount = None
+        self._Sort = None
+        self._Order = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._List = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Sort(self):
+        r"""<p>排序参数</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Order(self):
+        r"""<p>排序顺序</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数目</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def List(self):
+        r"""<p>截图模板列表</p>
+        :rtype: list of VideoSnapshotTemplateInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Sort = params.get("Sort")
+        self._Order = params.get("Order")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VideoSnapshotTemplateInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVideoSnapshotTemplateRequest(AbstractModel):
+    r"""ListVideoSnapshotTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>模板名称</p>
+        :type Name: str
+        :param _Type: <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :type Type: int
+        :param _Sort: <p>排序参数</p><p>默认值：update_time</p>
+        :type Sort: str
+        :param _Order: <p>排序顺序</p><p>枚举值：</p><ul><li>desc： 降序</li><li>asc： 生序</li></ul><p>默认值：desc</p>
+        :type Order: str
+        :param _PageNumber: <p>页码</p><p>默认值：1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数目</p><p>默认值：20</p>
+        :type PageSize: int
+        """
+        self._Name = None
+        self._Type = None
+        self._Sort = None
+        self._Order = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def Name(self):
+        r"""<p>模板名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Sort(self):
+        r"""<p>排序参数</p><p>默认值：update_time</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Order(self):
+        r"""<p>排序顺序</p><p>枚举值：</p><ul><li>desc： 降序</li><li>asc： 生序</li></ul><p>默认值：desc</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数目</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Sort = params.get("Sort")
+        self._Order = params.get("Order")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVideoSnapshotTemplateResponse(AbstractModel):
+    r"""ListVideoSnapshotTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>截图模板结果列表</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.ListVideoSnapshotTemplateData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>截图模板结果列表</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVideoSnapshotTemplateData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListVideoSnapshotTemplateData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyVLPlanRequest(AbstractModel):
+    r"""ModifyVLPlan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanId: <p>计划 ID</p>
+        :type VLPlanId: str
+        :param _Name: <p>新计划名称</p>
+        :type Name: str
+        :param _Describe: <p>新计划描述</p>
+        :type Describe: str
+        :param _VLTemplateId: <p>新关联视觉理解模板 ID</p>
+        :type VLTemplateId: str
+        :param _FileExpires: <p>新存储天数，范围 [7, 1080]，0 表示不修改</p>
+        :type FileExpires: int
+        :param _Callback: <p>新回调配置</p>
+        :type Callback: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        self._VLPlanId = None
+        self._Name = None
+        self._Describe = None
+        self._VLTemplateId = None
+        self._FileExpires = None
+        self._Callback = None
+
+    @property
+    def VLPlanId(self):
+        r"""<p>计划 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanId
+
+    @VLPlanId.setter
+    def VLPlanId(self, VLPlanId):
+        self._VLPlanId = VLPlanId
+
+    @property
+    def Name(self):
+        r"""<p>新计划名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Describe(self):
+        r"""<p>新计划描述</p>
+        :rtype: str
+        """
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def VLTemplateId(self):
+        r"""<p>新关联视觉理解模板 ID</p>
+        :rtype: str
+        """
+        return self._VLTemplateId
+
+    @VLTemplateId.setter
+    def VLTemplateId(self, VLTemplateId):
+        self._VLTemplateId = VLTemplateId
+
+    @property
+    def FileExpires(self):
+        r"""<p>新存储天数，范围 [7, 1080]，0 表示不修改</p>
+        :rtype: int
+        """
+        return self._FileExpires
+
+    @FileExpires.setter
+    def FileExpires(self, FileExpires):
+        self._FileExpires = FileExpires
+
+    @property
+    def Callback(self):
+        r"""<p>新回调配置</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+
+    def _deserialize(self, params):
+        self._VLPlanId = params.get("VLPlanId")
+        self._Name = params.get("Name")
+        self._Describe = params.get("Describe")
+        self._VLTemplateId = params.get("VLTemplateId")
+        self._FileExpires = params.get("FileExpires")
+        if params.get("Callback") is not None:
+            self._Callback = CallbackURL()
+            self._Callback._deserialize(params.get("Callback"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVLPlanResponse(AbstractModel):
+    r"""ModifyVLPlan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>视觉理解计划信息</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VLPlanInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>视觉理解计划信息</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VLPlanInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VLPlanInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyVideoSnapshotConfigRequest(AbstractModel):
+    r"""ModifyVideoSnapshotConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigId: <p>截图配置Id</p>
+        :type ConfigId: str
+        :param _Name: <p>截图配置名称</p><p>入参限制：中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+        :type Name: str
+        :param _TemplateId: <p>截图模板Id</p>
+        :type TemplateId: str
+        :param _FileExpires: <p>图片文件的热存储天数</p><p>枚举值：</p><ul><li>7： 7天</li><li>15： 15天</li><li>30： 30天</li><li>60： 60天</li><li>90： 90天</li><li>180： 180天</li><li>270： 270天</li><li>360： 360天</li><li>540： 540天</li><li>720： 720天</li><li>900： 900天</li><li>1080： 1080天</li></ul>
+        :type FileExpires: int
+        :param _Callback: <p>回调配置</p>
+        :type Callback: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        self._ConfigId = None
+        self._Name = None
+        self._TemplateId = None
+        self._FileExpires = None
+        self._Callback = None
+
+    @property
+    def ConfigId(self):
+        r"""<p>截图配置Id</p>
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def Name(self):
+        r"""<p>截图配置名称</p><p>入参限制：中文、英文、数字、“-”、“_” 长度不超过128个字符</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TemplateId(self):
+        r"""<p>截图模板Id</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def FileExpires(self):
+        r"""<p>图片文件的热存储天数</p><p>枚举值：</p><ul><li>7： 7天</li><li>15： 15天</li><li>30： 30天</li><li>60： 60天</li><li>90： 90天</li><li>180： 180天</li><li>270： 270天</li><li>360： 360天</li><li>540： 540天</li><li>720： 720天</li><li>900： 900天</li><li>1080： 1080天</li></ul>
+        :rtype: int
+        """
+        return self._FileExpires
+
+    @FileExpires.setter
+    def FileExpires(self, FileExpires):
+        self._FileExpires = FileExpires
+
+    @property
+    def Callback(self):
+        r"""<p>回调配置</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+
+    def _deserialize(self, params):
+        self._ConfigId = params.get("ConfigId")
+        self._Name = params.get("Name")
+        self._TemplateId = params.get("TemplateId")
+        self._FileExpires = params.get("FileExpires")
+        if params.get("Callback") is not None:
+            self._Callback = CallbackURL()
+            self._Callback._deserialize(params.get("Callback"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVideoSnapshotConfigResponse(AbstractModel):
+    r"""ModifyVideoSnapshotConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>截图配置信息</p>
+        :type Data: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotConfigInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>截图配置信息</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VideoSnapshotConfigInfo`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = VideoSnapshotConfigInfo()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class MultiSnapshotMode(AbstractModel):
+    r"""多张截图模式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否启用多张模式</p><p>false时为单张模式，忽略Interval、Total参数</p><p>默认值：false</p>
+        :type Enable: bool
+        :param _Interval: <p>截帧间隔</p><p>取值范围：[10, 600]</p><p>单位：秒</p>
+        :type Interval: int
+        :param _Total: <p>截帧张数</p><p>取值范围：[1, 10]</p>
+        :type Total: int
+        """
+        self._Enable = None
+        self._Interval = None
+        self._Total = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否启用多张模式</p><p>false时为单张模式，忽略Interval、Total参数</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Interval(self):
+        r"""<p>截帧间隔</p><p>取值范围：[10, 600]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Total(self):
+        r"""<p>截帧张数</p><p>取值范围：[1, 10]</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._Interval = params.get("Interval")
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MultiVideoSnapshotMode(AbstractModel):
+    r"""多张模式参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否启用多张模式， false时，为单张模式，忽略Interval、Total参数</p><p>默认值：false</p>
+        :type Enable: bool
+        :param _Interval: <p>截帧间隔</p><p>取值范围：[10, 600]</p><p>单位：秒</p>
+        :type Interval: int
+        :param _Total: <p>截帧张数</p><p>取值范围：[1, 10]</p>
+        :type Total: int
+        """
+        self._Enable = None
+        self._Interval = None
+        self._Total = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否启用多张模式， false时，为单张模式，忽略Interval、Total参数</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Interval(self):
+        r"""<p>截帧间隔</p><p>取值范围：[10, 600]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Total(self):
+        r"""<p>截帧张数</p><p>取值范围：[1, 10]</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._Interval = params.get("Interval")
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OrganizationChannelInfo(AbstractModel):
@@ -16001,6 +18974,776 @@ class UpdateUserDeviceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class VLPlanInfo(AbstractModel):
+    r"""视觉理解计划信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanId: <p>计划ID</p>
+        :type VLPlanId: str
+        :param _Name: <p>计划名称</p>
+        :type Name: str
+        :param _Describe: <p>计划描述</p>
+        :type Describe: str
+        :param _VLTemplateId: <p>视觉理解模板ID</p>
+        :type VLTemplateId: str
+        :param _Callback: <p>回调通知配置</p>
+        :type Callback: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        :param _FileExpires: <p>文件过期时间（秒）</p>
+        :type FileExpires: int
+        :param _ChannelCount: <p>计划包含的通道数量</p>
+        :type ChannelCount: int
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>最近一次更新时间</p>
+        :type UpdatedAt: str
+        """
+        self._VLPlanId = None
+        self._Name = None
+        self._Describe = None
+        self._VLTemplateId = None
+        self._Callback = None
+        self._FileExpires = None
+        self._ChannelCount = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def VLPlanId(self):
+        r"""<p>计划ID</p>
+        :rtype: str
+        """
+        return self._VLPlanId
+
+    @VLPlanId.setter
+    def VLPlanId(self, VLPlanId):
+        self._VLPlanId = VLPlanId
+
+    @property
+    def Name(self):
+        r"""<p>计划名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Describe(self):
+        r"""<p>计划描述</p>
+        :rtype: str
+        """
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def VLTemplateId(self):
+        r"""<p>视觉理解模板ID</p>
+        :rtype: str
+        """
+        return self._VLTemplateId
+
+    @VLTemplateId.setter
+    def VLTemplateId(self, VLTemplateId):
+        self._VLTemplateId = VLTemplateId
+
+    @property
+    def Callback(self):
+        r"""<p>回调通知配置</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+    @property
+    def FileExpires(self):
+        r"""<p>文件过期时间（秒）</p>
+        :rtype: int
+        """
+        return self._FileExpires
+
+    @FileExpires.setter
+    def FileExpires(self, FileExpires):
+        self._FileExpires = FileExpires
+
+    @property
+    def ChannelCount(self):
+        r"""<p>计划包含的通道数量</p>
+        :rtype: int
+        """
+        return self._ChannelCount
+
+    @ChannelCount.setter
+    def ChannelCount(self, ChannelCount):
+        self._ChannelCount = ChannelCount
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>最近一次更新时间</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._VLPlanId = params.get("VLPlanId")
+        self._Name = params.get("Name")
+        self._Describe = params.get("Describe")
+        self._VLTemplateId = params.get("VLTemplateId")
+        if params.get("Callback") is not None:
+            self._Callback = CallbackURL()
+            self._Callback._deserialize(params.get("Callback"))
+        self._FileExpires = params.get("FileExpires")
+        self._ChannelCount = params.get("ChannelCount")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VLPlanResultDetailInfo(AbstractModel):
+    r"""视觉理解计划结果详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanResultId: <p>分析结果 ID</p>
+        :type VLPlanResultId: str
+        :param _MediaType: <p>媒体类型，当前固定为 image</p>
+        :type MediaType: str
+        :param _VLPlanId: <p>所属分析计划 ID</p>
+        :type VLPlanId: str
+        :param _VLPlanName: <p>计划名称</p>
+        :type VLPlanName: str
+        :param _ChannelId: <p>通道 ID</p>
+        :type ChannelId: str
+        :param _ChannelName: <p>通道名称</p>
+        :type ChannelName: str
+        :param _DeviceId: <p>设备 ID</p>
+        :type DeviceId: str
+        :param _DeviceName: <p>设备名称</p>
+        :type DeviceName: str
+        :param _OrganizationId: <p>所属组织 ID</p>
+        :type OrganizationId: str
+        :param _OrganizationName: <p>所属组织名称</p>
+        :type OrganizationName: str
+        :param _VLResultTimestamp: <p>分析时间戳（秒）</p>
+        :type VLResultTimestamp: int
+        :param _SnapshotTimestamp: <p>图片模式截图时间戳（秒）</p>
+        :type SnapshotTimestamp: int
+        :param _VideoStartTimestamp: <p>视频片段开始时间戳（秒）</p>
+        :type VideoStartTimestamp: int
+        :param _VideoEndTimestamp: <p>视频片段结束时间戳（秒）</p>
+        :type VideoEndTimestamp: int
+        :param _BilledFrameCount: <p>视频模式计费帧数</p>
+        :type BilledFrameCount: int
+        :param _Content: <p>AI 分析结果内容（JSON 字符串）</p>
+        :type Content: str
+        :param _ImageUrl: <p>截图临时下载 URL（有效期 300 秒）</p>
+        :type ImageUrl: str
+        :param _ImageUrlExpire: <p>截图 URL 有效期（秒）</p>
+        :type ImageUrlExpire: int
+        :param _CreatedAt: <p>创建时间，格式 2006-01-02 15:04:05</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>更新时间，格式 2006-01-02 15:04:05</p>
+        :type UpdatedAt: str
+        """
+        self._VLPlanResultId = None
+        self._MediaType = None
+        self._VLPlanId = None
+        self._VLPlanName = None
+        self._ChannelId = None
+        self._ChannelName = None
+        self._DeviceId = None
+        self._DeviceName = None
+        self._OrganizationId = None
+        self._OrganizationName = None
+        self._VLResultTimestamp = None
+        self._SnapshotTimestamp = None
+        self._VideoStartTimestamp = None
+        self._VideoEndTimestamp = None
+        self._BilledFrameCount = None
+        self._Content = None
+        self._ImageUrl = None
+        self._ImageUrlExpire = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def VLPlanResultId(self):
+        r"""<p>分析结果 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanResultId
+
+    @VLPlanResultId.setter
+    def VLPlanResultId(self, VLPlanResultId):
+        self._VLPlanResultId = VLPlanResultId
+
+    @property
+    def MediaType(self):
+        r"""<p>媒体类型，当前固定为 image</p>
+        :rtype: str
+        """
+        return self._MediaType
+
+    @MediaType.setter
+    def MediaType(self, MediaType):
+        self._MediaType = MediaType
+
+    @property
+    def VLPlanId(self):
+        r"""<p>所属分析计划 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanId
+
+    @VLPlanId.setter
+    def VLPlanId(self, VLPlanId):
+        self._VLPlanId = VLPlanId
+
+    @property
+    def VLPlanName(self):
+        r"""<p>计划名称</p>
+        :rtype: str
+        """
+        return self._VLPlanName
+
+    @VLPlanName.setter
+    def VLPlanName(self, VLPlanName):
+        self._VLPlanName = VLPlanName
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        r"""<p>通道名称</p>
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def DeviceId(self):
+        r"""<p>设备 ID</p>
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def OrganizationId(self):
+        r"""<p>所属组织 ID</p>
+        :rtype: str
+        """
+        return self._OrganizationId
+
+    @OrganizationId.setter
+    def OrganizationId(self, OrganizationId):
+        self._OrganizationId = OrganizationId
+
+    @property
+    def OrganizationName(self):
+        r"""<p>所属组织名称</p>
+        :rtype: str
+        """
+        return self._OrganizationName
+
+    @OrganizationName.setter
+    def OrganizationName(self, OrganizationName):
+        self._OrganizationName = OrganizationName
+
+    @property
+    def VLResultTimestamp(self):
+        r"""<p>分析时间戳（秒）</p>
+        :rtype: int
+        """
+        return self._VLResultTimestamp
+
+    @VLResultTimestamp.setter
+    def VLResultTimestamp(self, VLResultTimestamp):
+        self._VLResultTimestamp = VLResultTimestamp
+
+    @property
+    def SnapshotTimestamp(self):
+        r"""<p>图片模式截图时间戳（秒）</p>
+        :rtype: int
+        """
+        return self._SnapshotTimestamp
+
+    @SnapshotTimestamp.setter
+    def SnapshotTimestamp(self, SnapshotTimestamp):
+        self._SnapshotTimestamp = SnapshotTimestamp
+
+    @property
+    def VideoStartTimestamp(self):
+        r"""<p>视频片段开始时间戳（秒）</p>
+        :rtype: int
+        """
+        return self._VideoStartTimestamp
+
+    @VideoStartTimestamp.setter
+    def VideoStartTimestamp(self, VideoStartTimestamp):
+        self._VideoStartTimestamp = VideoStartTimestamp
+
+    @property
+    def VideoEndTimestamp(self):
+        r"""<p>视频片段结束时间戳（秒）</p>
+        :rtype: int
+        """
+        return self._VideoEndTimestamp
+
+    @VideoEndTimestamp.setter
+    def VideoEndTimestamp(self, VideoEndTimestamp):
+        self._VideoEndTimestamp = VideoEndTimestamp
+
+    @property
+    def BilledFrameCount(self):
+        r"""<p>视频模式计费帧数</p>
+        :rtype: int
+        """
+        return self._BilledFrameCount
+
+    @BilledFrameCount.setter
+    def BilledFrameCount(self, BilledFrameCount):
+        self._BilledFrameCount = BilledFrameCount
+
+    @property
+    def Content(self):
+        r"""<p>AI 分析结果内容（JSON 字符串）</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ImageUrl(self):
+        r"""<p>截图临时下载 URL（有效期 300 秒）</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageUrlExpire(self):
+        r"""<p>截图 URL 有效期（秒）</p>
+        :rtype: int
+        """
+        return self._ImageUrlExpire
+
+    @ImageUrlExpire.setter
+    def ImageUrlExpire(self, ImageUrlExpire):
+        self._ImageUrlExpire = ImageUrlExpire
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间，格式 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间，格式 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._VLPlanResultId = params.get("VLPlanResultId")
+        self._MediaType = params.get("MediaType")
+        self._VLPlanId = params.get("VLPlanId")
+        self._VLPlanName = params.get("VLPlanName")
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
+        self._DeviceId = params.get("DeviceId")
+        self._DeviceName = params.get("DeviceName")
+        self._OrganizationId = params.get("OrganizationId")
+        self._OrganizationName = params.get("OrganizationName")
+        self._VLResultTimestamp = params.get("VLResultTimestamp")
+        self._SnapshotTimestamp = params.get("SnapshotTimestamp")
+        self._VideoStartTimestamp = params.get("VideoStartTimestamp")
+        self._VideoEndTimestamp = params.get("VideoEndTimestamp")
+        self._BilledFrameCount = params.get("BilledFrameCount")
+        self._Content = params.get("Content")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageUrlExpire = params.get("ImageUrlExpire")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VLPlanResultSnapshotImageUrlInfo(AbstractModel):
+    r"""视觉理解计划源素材 URL 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanResultId: <p>分析结果 ID</p>
+        :type VLPlanResultId: str
+        :param _SourceFileURL: <p>源素材下载 URL（失败时为空）</p>
+        :type SourceFileURL: str
+        :param _Expire: <p>URL 有效期（秒，失败时为 0）</p>
+        :type Expire: int
+        :param _ErrMsg: <p>错误信息（失败时有值）</p>
+        :type ErrMsg: str
+        """
+        self._VLPlanResultId = None
+        self._SourceFileURL = None
+        self._Expire = None
+        self._ErrMsg = None
+
+    @property
+    def VLPlanResultId(self):
+        r"""<p>分析结果 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanResultId
+
+    @VLPlanResultId.setter
+    def VLPlanResultId(self, VLPlanResultId):
+        self._VLPlanResultId = VLPlanResultId
+
+    @property
+    def SourceFileURL(self):
+        r"""<p>源素材下载 URL（失败时为空）</p>
+        :rtype: str
+        """
+        return self._SourceFileURL
+
+    @SourceFileURL.setter
+    def SourceFileURL(self, SourceFileURL):
+        self._SourceFileURL = SourceFileURL
+
+    @property
+    def Expire(self):
+        r"""<p>URL 有效期（秒，失败时为 0）</p>
+        :rtype: int
+        """
+        return self._Expire
+
+    @Expire.setter
+    def Expire(self, Expire):
+        self._Expire = Expire
+
+    @property
+    def ErrMsg(self):
+        r"""<p>错误信息（失败时有值）</p>
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._VLPlanResultId = params.get("VLPlanResultId")
+        self._SourceFileURL = params.get("SourceFileURL")
+        self._Expire = params.get("Expire")
+        self._ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VLTemplateInfo(AbstractModel):
+    r"""视觉理解模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLTemplateId: <p>模板ID</p>
+        :type VLTemplateId: str
+        :param _AIModel: <p>AI 模型</p><p>枚举值：</p><ul><li>IVC-G： 视图默认大模型</li></ul>
+        :type AIModel: str
+        :param _Name: <p>AI场景名称</p>
+        :type Name: str
+        :param _Describe: <p>AI场景描述</p>
+        :type Describe: str
+        :param _Prompt: <p>提示词</p>
+        :type Prompt: str
+        :param _AnalysisMode: <p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+        :type AnalysisMode: str
+        :param _ImageConfig: <p>图片场景配置</p>
+        :type ImageConfig: :class:`tencentcloud.iss.v20230517.models.ImageSceneInfo`
+        :param _Times: <p>生效时段列表</p>
+        :type Times: list of EffectiveTime
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>最近一次更新时间</p>
+        :type UpdatedAt: str
+        :param _IsUsed: <p>是否关联到视觉理解计划</p>
+        :type IsUsed: bool
+        :param _VideoConfig: <p>视频场景配置</p>
+        :type VideoConfig: :class:`tencentcloud.iss.v20230517.models.VideoSceneInfo`
+        """
+        self._VLTemplateId = None
+        self._AIModel = None
+        self._Name = None
+        self._Describe = None
+        self._Prompt = None
+        self._AnalysisMode = None
+        self._ImageConfig = None
+        self._Times = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._IsUsed = None
+        self._VideoConfig = None
+
+    @property
+    def VLTemplateId(self):
+        r"""<p>模板ID</p>
+        :rtype: str
+        """
+        return self._VLTemplateId
+
+    @VLTemplateId.setter
+    def VLTemplateId(self, VLTemplateId):
+        self._VLTemplateId = VLTemplateId
+
+    @property
+    def AIModel(self):
+        r"""<p>AI 模型</p><p>枚举值：</p><ul><li>IVC-G： 视图默认大模型</li></ul>
+        :rtype: str
+        """
+        return self._AIModel
+
+    @AIModel.setter
+    def AIModel(self, AIModel):
+        self._AIModel = AIModel
+
+    @property
+    def Name(self):
+        r"""<p>AI场景名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Describe(self):
+        r"""<p>AI场景描述</p>
+        :rtype: str
+        """
+        return self._Describe
+
+    @Describe.setter
+    def Describe(self, Describe):
+        self._Describe = Describe
+
+    @property
+    def Prompt(self):
+        r"""<p>提示词</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def AnalysisMode(self):
+        r"""<p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+        :rtype: str
+        """
+        return self._AnalysisMode
+
+    @AnalysisMode.setter
+    def AnalysisMode(self, AnalysisMode):
+        self._AnalysisMode = AnalysisMode
+
+    @property
+    def ImageConfig(self):
+        r"""<p>图片场景配置</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ImageSceneInfo`
+        """
+        return self._ImageConfig
+
+    @ImageConfig.setter
+    def ImageConfig(self, ImageConfig):
+        self._ImageConfig = ImageConfig
+
+    @property
+    def Times(self):
+        r"""<p>生效时段列表</p>
+        :rtype: list of EffectiveTime
+        """
+        return self._Times
+
+    @Times.setter
+    def Times(self, Times):
+        self._Times = Times
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>最近一次更新时间</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def IsUsed(self):
+        r"""<p>是否关联到视觉理解计划</p>
+        :rtype: bool
+        """
+        return self._IsUsed
+
+    @IsUsed.setter
+    def IsUsed(self, IsUsed):
+        self._IsUsed = IsUsed
+
+    @property
+    def VideoConfig(self):
+        r"""<p>视频场景配置</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.VideoSceneInfo`
+        """
+        return self._VideoConfig
+
+    @VideoConfig.setter
+    def VideoConfig(self, VideoConfig):
+        self._VideoConfig = VideoConfig
+
+
+    def _deserialize(self, params):
+        self._VLTemplateId = params.get("VLTemplateId")
+        self._AIModel = params.get("AIModel")
+        self._Name = params.get("Name")
+        self._Describe = params.get("Describe")
+        self._Prompt = params.get("Prompt")
+        self._AnalysisMode = params.get("AnalysisMode")
+        if params.get("ImageConfig") is not None:
+            self._ImageConfig = ImageSceneInfo()
+            self._ImageConfig._deserialize(params.get("ImageConfig"))
+        if params.get("Times") is not None:
+            self._Times = []
+            for item in params.get("Times"):
+                obj = EffectiveTime()
+                obj._deserialize(item)
+                self._Times.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._IsUsed = params.get("IsUsed")
+        if params.get("VideoConfig") is not None:
+            self._VideoConfig = VideoSceneInfo()
+            self._VideoConfig._deserialize(params.get("VideoConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VideoDownloadTask(AbstractModel):
     r"""本地录像下载任务
 
@@ -16008,40 +19751,39 @@ class VideoDownloadTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DownloadTaskId: 下载任务 ID
+        :param _DownloadTaskId: <p>下载任务 ID</p>
         :type DownloadTaskId: str
-        :param _ChannelId: 通道 ID
+        :param _ChannelId: <p>通道 ID</p>
         :type ChannelId: str
-        :param _ChannelName: 通道名称
+        :param _ChannelName: <p>通道名称</p>
         :type ChannelName: str
-        :param _ChannelCode: 通道编码
+        :param _ChannelCode: <p>通道编码</p>
         :type ChannelCode: str
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _DeviceCode: 设备编码
+        :param _DeviceCode: <p>设备编码</p>
         :type DeviceCode: str
-        :param _Status: 任务状态（0：未执行；1：执行中；2 任务完成；
-3：任务失败）
+        :param _Status: <p>任务状态（0：未执行；1：执行中；2 任务完成；<br>3：任务失败）</p>
         :type Status: int
-        :param _VideoTimeSection: 下载录像时间段
+        :param _VideoTimeSection: <p>下载录像时间段</p>
         :type VideoTimeSection: str
-        :param _Scale: 倍速
+        :param _Scale: <p>倍速</p>
         :type Scale: int
-        :param _DownloadTime: 下载时长
+        :param _DownloadTime: <p>下载时长</p><p>单位：秒</p>
         :type DownloadTime: int
-        :param _VideoSize: 录像大小
+        :param _VideoSize: <p>录像大小</p><p>单位：字节（Byte）</p>
         :type VideoSize: int
-        :param _StartTime: 任务开始时间
+        :param _StartTime: <p>任务开始时间</p>
         :type StartTime: str
-        :param _EndTime: 任务结束时间
+        :param _EndTime: <p>任务结束时间</p>
         :type EndTime: str
-        :param _FileDownloadUrl: 文件下载地址
+        :param _FileDownloadUrl: <p>文件下载地址</p>
         :type FileDownloadUrl: str
-        :param _FailedReason: 失败原因
+        :param _FailedReason: <p>失败原因</p>
         :type FailedReason: str
-        :param _Expire: 生命周期规则，热存天数
+        :param _Expire: <p>生命周期规则，热存天数</p>
         :type Expire: int
-        :param _PreviewUrl: mp4预览地址
+        :param _PreviewUrl: <p>mp4预览地址</p>
         :type PreviewUrl: str
         """
         self._DownloadTaskId = None
@@ -16064,7 +19806,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def DownloadTaskId(self):
-        r"""下载任务 ID
+        r"""<p>下载任务 ID</p>
         :rtype: str
         """
         return self._DownloadTaskId
@@ -16075,7 +19817,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通道 ID
+        r"""<p>通道 ID</p>
         :rtype: str
         """
         return self._ChannelId
@@ -16086,7 +19828,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def ChannelName(self):
-        r"""通道名称
+        r"""<p>通道名称</p>
         :rtype: str
         """
         return self._ChannelName
@@ -16097,7 +19839,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def ChannelCode(self):
-        r"""通道编码
+        r"""<p>通道编码</p>
         :rtype: str
         """
         return self._ChannelCode
@@ -16108,7 +19850,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -16119,7 +19861,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def DeviceCode(self):
-        r"""设备编码
+        r"""<p>设备编码</p>
         :rtype: str
         """
         return self._DeviceCode
@@ -16130,8 +19872,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态（0：未执行；1：执行中；2 任务完成；
-3：任务失败）
+        r"""<p>任务状态（0：未执行；1：执行中；2 任务完成；<br>3：任务失败）</p>
         :rtype: int
         """
         return self._Status
@@ -16142,7 +19883,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def VideoTimeSection(self):
-        r"""下载录像时间段
+        r"""<p>下载录像时间段</p>
         :rtype: str
         """
         return self._VideoTimeSection
@@ -16153,7 +19894,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def Scale(self):
-        r"""倍速
+        r"""<p>倍速</p>
         :rtype: int
         """
         return self._Scale
@@ -16164,7 +19905,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def DownloadTime(self):
-        r"""下载时长
+        r"""<p>下载时长</p><p>单位：秒</p>
         :rtype: int
         """
         return self._DownloadTime
@@ -16175,7 +19916,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def VideoSize(self):
-        r"""录像大小
+        r"""<p>录像大小</p><p>单位：字节（Byte）</p>
         :rtype: int
         """
         return self._VideoSize
@@ -16186,7 +19927,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""任务开始时间
+        r"""<p>任务开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -16197,7 +19938,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""任务结束时间
+        r"""<p>任务结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -16208,7 +19949,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def FileDownloadUrl(self):
-        r"""文件下载地址
+        r"""<p>文件下载地址</p>
         :rtype: str
         """
         return self._FileDownloadUrl
@@ -16219,7 +19960,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def FailedReason(self):
-        r"""失败原因
+        r"""<p>失败原因</p>
         :rtype: str
         """
         return self._FailedReason
@@ -16230,7 +19971,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def Expire(self):
-        r"""生命周期规则，热存天数
+        r"""<p>生命周期规则，热存天数</p>
         :rtype: int
         """
         return self._Expire
@@ -16241,7 +19982,7 @@ class VideoDownloadTask(AbstractModel):
 
     @property
     def PreviewUrl(self):
-        r"""mp4预览地址
+        r"""<p>mp4预览地址</p>
         :rtype: str
         """
         return self._PreviewUrl
@@ -16305,6 +20046,408 @@ class VideoDownloadTaskData(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadTaskId = params.get("DownloadTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoSceneInfo(AbstractModel):
+    r"""视频场景配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Interval: <p>分析周期（秒）：每隔多少秒从云端录像中截取一个视频片段进行分析。例如 Interval=3600、Duration=600，表示每隔1小时 取一个 10 分钟的视频片段进行分析。需满足 Duration ≤ Interval，否则相邻片段将重叠。取值范围［5,86400］。</p>
+        :type Interval: int
+        :param _Duration: <p>分析片段时长（秒）：每次分析截取的视频片段长度，即单次分析覆盖的视频时长。取值范围［5,12800］。</p>
+        :type Duration: int
+        :param _Fps: <p>抽帧率（FPS）：在片段内每隔1/Fps 秒截取一帧进行分析。取值越大，分析越精细，单次分析的帧数越多。默认值1，取值范围［0.1,1</p>
+        :type Fps: float
+        """
+        self._Interval = None
+        self._Duration = None
+        self._Fps = None
+
+    @property
+    def Interval(self):
+        r"""<p>分析周期（秒）：每隔多少秒从云端录像中截取一个视频片段进行分析。例如 Interval=3600、Duration=600，表示每隔1小时 取一个 10 分钟的视频片段进行分析。需满足 Duration ≤ Interval，否则相邻片段将重叠。取值范围［5,86400］。</p>
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Duration(self):
+        r"""<p>分析片段时长（秒）：每次分析截取的视频片段长度，即单次分析覆盖的视频时长。取值范围［5,12800］。</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Fps(self):
+        r"""<p>抽帧率（FPS）：在片段内每隔1/Fps 秒截取一帧进行分析。取值越大，分析越精细，单次分析的帧数越多。默认值1，取值范围［0.1,1</p>
+        :rtype: float
+        """
+        return self._Fps
+
+    @Fps.setter
+    def Fps(self, Fps):
+        self._Fps = Fps
+
+
+    def _deserialize(self, params):
+        self._Interval = params.get("Interval")
+        self._Duration = params.get("Duration")
+        self._Fps = params.get("Fps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoSnapshotConfigInfo(AbstractModel):
+    r"""截图配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConfigId: <p>截图配置Id</p>
+        :type ConfigId: str
+        :param _Name: <p>截图配置名称</p>
+        :type Name: str
+        :param _TemplateId: <p>截图模板Id</p>
+        :type TemplateId: str
+        :param _TemplateName: <p>截图模板名称</p>
+        :type TemplateName: str
+        :param _Type: <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :type Type: int
+        :param _FileExpires: <p>图片存储天数</p><p>单位：天</p>
+        :type FileExpires: int
+        :param _Callback: <p>回调配置</p>
+        :type Callback: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        :param _RelatedChannelCount: <p>截图配置关联的通道数</p>
+        :type RelatedChannelCount: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>最近一次更新时间</p>
+        :type UpdateTime: str
+        """
+        self._ConfigId = None
+        self._Name = None
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Type = None
+        self._FileExpires = None
+        self._Callback = None
+        self._RelatedChannelCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ConfigId(self):
+        r"""<p>截图配置Id</p>
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def Name(self):
+        r"""<p>截图配置名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TemplateId(self):
+        r"""<p>截图模板Id</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        r"""<p>截图模板名称</p>
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Type(self):
+        r"""<p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileExpires(self):
+        r"""<p>图片存储天数</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._FileExpires
+
+    @FileExpires.setter
+    def FileExpires(self, FileExpires):
+        self._FileExpires = FileExpires
+
+    @property
+    def Callback(self):
+        r"""<p>回调配置</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.CallbackURL`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+    @property
+    def RelatedChannelCount(self):
+        r"""<p>截图配置关联的通道数</p>
+        :rtype: int
+        """
+        return self._RelatedChannelCount
+
+    @RelatedChannelCount.setter
+    def RelatedChannelCount(self, RelatedChannelCount):
+        self._RelatedChannelCount = RelatedChannelCount
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>最近一次更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ConfigId = params.get("ConfigId")
+        self._Name = params.get("Name")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        self._Type = params.get("Type")
+        self._FileExpires = params.get("FileExpires")
+        if params.get("Callback") is not None:
+            self._Callback = CallbackURL()
+            self._Callback._deserialize(params.get("Callback"))
+        self._RelatedChannelCount = params.get("RelatedChannelCount")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoSnapshotTemplateInfo(AbstractModel):
+    r"""截图模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>截图模板Id</p>
+        :type TemplateId: str
+        :param _Name: <p>截图模板名称</p>
+        :type Name: str
+        :param _Type: <p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :type Type: int
+        :param _Interval: <p>截帧频率</p>
+        :type Interval: int
+        :param _MultiMode: <p>多张模式</p>
+        :type MultiMode: :class:`tencentcloud.iss.v20230517.models.MultiVideoSnapshotMode`
+        :param _Times: <p>生效时段</p>
+        :type Times: list of EffectiveTime
+        :param _RelatedConfigCount: <p>模板关联的配置数</p>
+        :type RelatedConfigCount: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>最近一次更新时间</p>
+        :type UpdateTime: str
+        """
+        self._TemplateId = None
+        self._Name = None
+        self._Type = None
+        self._Interval = None
+        self._MultiMode = None
+        self._Times = None
+        self._RelatedConfigCount = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>截图模板Id</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Name(self):
+        r"""<p>截图模板名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>截图类型</p><p>枚举值：</p><ul><li>1： 实时截帧</li><li>2： 低频截帧</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Interval(self):
+        r"""<p>截帧频率</p>
+        :rtype: int
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def MultiMode(self):
+        r"""<p>多张模式</p>
+        :rtype: :class:`tencentcloud.iss.v20230517.models.MultiVideoSnapshotMode`
+        """
+        return self._MultiMode
+
+    @MultiMode.setter
+    def MultiMode(self, MultiMode):
+        self._MultiMode = MultiMode
+
+    @property
+    def Times(self):
+        r"""<p>生效时段</p>
+        :rtype: list of EffectiveTime
+        """
+        return self._Times
+
+    @Times.setter
+    def Times(self, Times):
+        self._Times = Times
+
+    @property
+    def RelatedConfigCount(self):
+        r"""<p>模板关联的配置数</p>
+        :rtype: int
+        """
+        return self._RelatedConfigCount
+
+    @RelatedConfigCount.setter
+    def RelatedConfigCount(self, RelatedConfigCount):
+        self._RelatedConfigCount = RelatedConfigCount
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>最近一次更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Interval = params.get("Interval")
+        if params.get("MultiMode") is not None:
+            self._MultiMode = MultiVideoSnapshotMode()
+            self._MultiMode._deserialize(params.get("MultiMode"))
+        if params.get("Times") is not None:
+            self._Times = []
+            for item in params.get("Times"):
+                obj = EffectiveTime()
+                obj._deserialize(item)
+                self._Times.append(obj)
+        self._RelatedConfigCount = params.get("RelatedConfigCount")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -256,6 +256,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddLLMSdkAccess(self, request):
+        r"""llmwaf-sdk新增接入配置接口
+
+        :param request: Request instance for AddLLMSdkAccess.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddLLMSdkAccessRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddLLMSdkAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddLLMSdkAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddLLMSdkAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddSpartaProtection(self, request):
         r"""添加SaaS型WAF防护域名
 
@@ -992,6 +1015,52 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteLLMContentRule(self, request):
+        r"""删除大模型内容防护规则
+
+        :param request: Request instance for DeleteLLMContentRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteLLMContentRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteLLMContentRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLLMContentRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLLMContentRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLLMKeywordLibrary(self, request):
+        r"""删除词库列表
+
+        :param request: Request instance for DeleteLLMKeywordLibrary.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteLLMKeywordLibraryRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteLLMKeywordLibraryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLLMKeywordLibrary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLLMKeywordLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteOwaspRuleStatus(self, request):
         r"""解除门神规则的状态锁
 
@@ -1236,6 +1305,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeAccessIndex", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccessIndexResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAfterPayInstances(self, request):
+        r"""查询后付费实例列表（仅 Edition=llm-sdk-waf）。请求参数与 DescribeInstances 一致；仅返回 tb_instance_conf 基础数据，不含套餐/标签等扩展信息。
+
+        :param request: Request instance for DescribeAfterPayInstances.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAfterPayInstancesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeAfterPayInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAfterPayInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAfterPayInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2303,6 +2395,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLLMContentRuleList(self, request):
+        r"""获取LLM大模型内容防护规则
+
+        :param request: Request instance for DescribeLLMContentRuleList.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMContentRuleListRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMContentRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMContentRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMContentRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLLMContentSecCheck(self, request):
         r"""大模型请求内容和响应内容审核接口
 
@@ -2317,6 +2432,98 @@ class WafClient(AbstractClient):
             body = self.call("DescribeLLMContentSecCheck", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLLMContentSecCheckResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMKeywordLibrary(self, request):
+        r"""查询关键词列表
+
+        :param request: Request instance for DescribeLLMKeywordLibrary.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMKeywordLibraryRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMKeywordLibraryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMKeywordLibrary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMKeywordLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMSdkAccess(self, request):
+        r"""查询sdk接入配置
+
+        :param request: Request instance for DescribeLLMSdkAccess.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMSdkAccessRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMSdkAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMSdkAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMSdkAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMWafDLPRules(self, request):
+        r"""查询 DLP 规则
+
+        :param request: Request instance for DescribeLLMWafDLPRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafDLPRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafDLPRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMWafDLPRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMWafDLPRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLLMWafProtectRules(self, request):
+        r"""查询 LLM 规则请求
+
+        :param request: Request instance for DescribeLLMWafProtectRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafProtectRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMWafProtectRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMWafProtectRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMWafProtectRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3239,6 +3446,29 @@ class WafClient(AbstractClient):
             body = self.call("EnableRateLimitsV2", params, headers=headers)
             response = json.loads(body)
             model = models.EnableRateLimitsV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportLLMKeywordLib(self, request):
+        r"""导出词库文件
+
+        :param request: Request instance for ExportLLMKeywordLib.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ExportLLMKeywordLibRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ExportLLMKeywordLibResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportLLMKeywordLib", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportLLMKeywordLibResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4341,6 +4571,144 @@ class WafClient(AbstractClient):
             body = self.call("ModifyIpAccessControl", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyIpAccessControlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMContentRule(self, request):
+        r"""更新大模型内容安全规则
+
+        :param request: Request instance for ModifyLLMContentRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMContentRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMContentRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMContentRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMContentRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMContentRuleStatus(self, request):
+        r"""切换大模型内容防护规则开关
+
+        :param request: Request instance for ModifyLLMContentRuleStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMContentRuleStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMContentRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMContentRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMContentRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMKeywordLibrary(self, request):
+        r"""用户修改自定义词库
+
+        :param request: Request instance for ModifyLLMKeywordLibrary.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMKeywordLibraryRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMKeywordLibraryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMKeywordLibrary", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMKeywordLibraryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMStatus(self, request):
+        r"""修改大模型防护的模块开关状态，支持总开关及各子模块独立开关的开启/关闭操作。开启前需确保实例已购买大模型防护能力，未购买时开启操作会返回 AuthFailure.ErrCodeNoPurchased 错误。
+
+        :param request: Request instance for ModifyLLMStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMWafDLPRule(self, request):
+        r"""修改llmwaf DLP 规则
+
+        :param request: Request instance for ModifyLLMWafDLPRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafDLPRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafDLPRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMWafDLPRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMWafDLPRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLLMWafProtectRule(self, request):
+        r"""修改 LLM 规则
+
+        :param request: Request instance for ModifyLLMWafProtectRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafProtectRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyLLMWafProtectRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLLMWafProtectRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLLMWafProtectRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

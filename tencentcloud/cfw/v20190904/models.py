@@ -20851,6 +20851,117 @@ class DescribeOfflineExportTemporaryCredentialsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOverviewResourceQuotaRequest(AbstractModel):
+    r"""DescribeOverviewResourceQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scene: <p>返回视图范围</p><p>默认值：不传该参数时，默认返回完整的资源与配额详情数据</p>
+        :type Scene: str
+        """
+        self._Scene = None
+
+    @property
+    def Scene(self):
+        r"""<p>返回视图范围</p><p>默认值：不传该参数时，默认返回完整的资源与配额详情数据</p>
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeOverviewResourceQuotaResponse(AbstractModel):
+    r"""DescribeOverviewResourceQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>资源与配额详情数据</p><p>包含详情字段和能力标识，具体字段含义见关联数据结构说明。访问控制规则同时提供汇总字段及按互联网边界、NAT边界、VPC边界拆分的字段。</p>
+        :type Data: :class:`tencentcloud.cfw.v20190904.models.OverviewResourceQuotaDataLite`
+        :param _ReturnCode: <p>返回代码</p>
+        :type ReturnCode: int
+        :param _ReturnMsg: <p>返回状态字符</p>
+        :type ReturnMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>资源与配额详情数据</p><p>包含详情字段和能力标识，具体字段含义见关联数据结构说明。访问控制规则同时提供汇总字段及按互联网边界、NAT边界、VPC边界拆分的字段。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewResourceQuotaDataLite`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def ReturnCode(self):
+        r"""<p>返回代码</p>
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        r"""<p>返回状态字符</p>
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = OverviewResourceQuotaDataLite()
+            self._Data._deserialize(params.get("Data"))
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourceGroupNewRequest(AbstractModel):
     r"""DescribeResourceGroupNew请求参数结构体
 
@@ -23509,6 +23620,264 @@ class DescribeVpcFwGroupSwitchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVpcFwIpStatRequest(AbstractModel):
+    r"""DescribeVpcFwIpStat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>每页条数</p>
+        :type Limit: int
+        :param _Offset: <p>偏移值</p>
+        :type Offset: int
+        :param _FwGroupId: <p>防火墙组ID</p>
+        :type FwGroupId: str
+        :param _FwInsId: <p>防火墙的实例id</p>
+        :type FwInsId: str
+        :param _TimeType: <p>选择的时间区间 1:1小时内，2: 24 小时 ，3：7天， 4：1个月</p>
+        :type TimeType: int
+        :param _Filters: <p>过滤条件组合</p>
+        :type Filters: list of CommonFilter
+        :param _StartTime: <p>检索的起始时间，可不传</p>
+        :type StartTime: str
+        :param _EndTime: <p>检索的截止时间，可不传</p>
+        :type EndTime: str
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
+        :type Order: str
+        :param _By: <p>排序所用到的字段</p>
+        :type By: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._FwGroupId = None
+        self._FwInsId = None
+        self._TimeType = None
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Limit(self):
+        r"""<p>每页条数</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移值</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def FwGroupId(self):
+        r"""<p>防火墙组ID</p>
+        :rtype: str
+        """
+        return self._FwGroupId
+
+    @FwGroupId.setter
+    def FwGroupId(self, FwGroupId):
+        self._FwGroupId = FwGroupId
+
+    @property
+    def FwInsId(self):
+        r"""<p>防火墙的实例id</p>
+        :rtype: str
+        """
+        return self._FwInsId
+
+    @FwInsId.setter
+    def FwInsId(self, FwInsId):
+        self._FwInsId = FwInsId
+
+    @property
+    def TimeType(self):
+        r"""<p>选择的时间区间 1:1小时内，2: 24 小时 ，3：7天， 4：1个月</p>
+        :rtype: int
+        """
+        return self._TimeType
+
+    @TimeType.setter
+    def TimeType(self, TimeType):
+        self._TimeType = TimeType
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件组合</p>
+        :rtype: list of CommonFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""<p>检索的起始时间，可不传</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>检索的截止时间，可不传</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Order(self):
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序所用到的字段</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._FwGroupId = params.get("FwGroupId")
+        self._FwInsId = params.get("FwInsId")
+        self._TimeType = params.get("TimeType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVpcFwIpStatResponse(AbstractModel):
+    r"""DescribeVpcFwIpStat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>单台cvm峰值带宽统计列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of FwGroupIpFlowStat
+        :param _Total: <p>总行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Status: <p>异步查询状态，1查询执行中，0查询已结束</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>单台cvm峰值带宽统计列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FwGroupIpFlowStat
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""<p>总行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Status(self):
+        r"""<p>异步查询状态，1查询执行中，0查询已结束</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = FwGroupIpFlowStat()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DisposalSuggestionItem(AbstractModel):
     r"""处置建议-条目
 
@@ -26091,6 +26460,197 @@ class FwGroupIdName(AbstractModel):
     def _deserialize(self, params):
         self._FwGroupId = params.get("FwGroupId")
         self._FwGroupName = params.get("FwGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FwGroupIpFlowStat(AbstractModel):
+    r"""VPC防火墙状态监控图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ip: str
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _VpcId: VPCID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _VpcName: VPC 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcName: str
+        :param _FlowMax: 峰值流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowMax: int
+        :param _FlowAvg: 均值带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowAvg: float
+        :param _TcRuleStatus: 限速状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TcRuleStatus: int
+        :param _FwInsId: 防火墙ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwInsId: str
+        :param _IpVersion: 0 IPV4 , 1 IPV6
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IpVersion: int
+        """
+        self._Ip = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._VpcId = None
+        self._VpcName = None
+        self._FlowMax = None
+        self._FlowAvg = None
+        self._TcRuleStatus = None
+        self._FwInsId = None
+        self._IpVersion = None
+
+    @property
+    def Ip(self):
+        r"""IP
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def VpcId(self):
+        r"""VPCID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""VPC 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def FlowMax(self):
+        r"""峰值流量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowMax
+
+    @FlowMax.setter
+    def FlowMax(self, FlowMax):
+        self._FlowMax = FlowMax
+
+    @property
+    def FlowAvg(self):
+        r"""均值带宽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._FlowAvg
+
+    @FlowAvg.setter
+    def FlowAvg(self, FlowAvg):
+        self._FlowAvg = FlowAvg
+
+    @property
+    def TcRuleStatus(self):
+        r"""限速状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TcRuleStatus
+
+    @TcRuleStatus.setter
+    def TcRuleStatus(self, TcRuleStatus):
+        self._TcRuleStatus = TcRuleStatus
+
+    @property
+    def FwInsId(self):
+        r"""防火墙ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FwInsId
+
+    @FwInsId.setter
+    def FwInsId(self, FwInsId):
+        self._FwInsId = FwInsId
+
+    @property
+    def IpVersion(self):
+        r"""0 IPV4 , 1 IPV6
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._FlowMax = params.get("FlowMax")
+        self._FlowAvg = params.get("FlowAvg")
+        self._TcRuleStatus = params.get("TcRuleStatus")
+        self._FwInsId = params.get("FwInsId")
+        self._IpVersion = params.get("IpVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34942,6 +35502,1986 @@ class OperatorFilter(AbstractModel):
         
 
 
+class OverviewBlockListQuota(AbstractModel):
+    r"""概览封禁列表配额
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: <p>封禁列表总配额数量。</p>
+        :type TotalCnt: int
+        :param _UsedCnt: <p>封禁列表已使用数量。</p>
+        :type UsedCnt: int
+        :param _InUsedCnt: <p>入站方向已使用的封禁列表记录。</p>
+        :type InUsedCnt: int
+        :param _OutUsedCnt: <p>出方向封禁列表已使用数量。</p>
+        :type OutUsedCnt: int
+        """
+        self._TotalCnt = None
+        self._UsedCnt = None
+        self._InUsedCnt = None
+        self._OutUsedCnt = None
+
+    @property
+    def TotalCnt(self):
+        r"""<p>封禁列表总配额数量。</p>
+        :rtype: int
+        """
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def UsedCnt(self):
+        r"""<p>封禁列表已使用数量。</p>
+        :rtype: int
+        """
+        return self._UsedCnt
+
+    @UsedCnt.setter
+    def UsedCnt(self, UsedCnt):
+        self._UsedCnt = UsedCnt
+
+    @property
+    def InUsedCnt(self):
+        r"""<p>入站方向已使用的封禁列表记录。</p>
+        :rtype: int
+        """
+        return self._InUsedCnt
+
+    @InUsedCnt.setter
+    def InUsedCnt(self, InUsedCnt):
+        self._InUsedCnt = InUsedCnt
+
+    @property
+    def OutUsedCnt(self):
+        r"""<p>出方向封禁列表已使用数量。</p>
+        :rtype: int
+        """
+        return self._OutUsedCnt
+
+    @OutUsedCnt.setter
+    def OutUsedCnt(self, OutUsedCnt):
+        self._OutUsedCnt = OutUsedCnt
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        self._UsedCnt = params.get("UsedCnt")
+        self._InUsedCnt = params.get("InUsedCnt")
+        self._OutUsedCnt = params.get("OutUsedCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewBlockListQuotaDetail(AbstractModel):
+    r"""概览封禁列表配额详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCnt: <p>封禁列表总配额数量。</p>
+        :type TotalCnt: int
+        :param _UsedCnt: <p>封禁列表已使用数量。</p>
+        :type UsedCnt: int
+        :param _RemainCnt: <p>封禁列表剩余配额数量。</p>
+        :type RemainCnt: int
+        :param _BaseTotalCnt: <p>基础配额总数量。</p>
+        :type BaseTotalCnt: int
+        :param _BaseUsedCnt: <p>基础配额已使用数量。</p>
+        :type BaseUsedCnt: int
+        :param _BaseRemainCnt: <p>基础配额剩余数量。</p>
+        :type BaseRemainCnt: int
+        :param _ExtensionTotalCnt: <p>扩容配额总数量。</p>
+        :type ExtensionTotalCnt: int
+        :param _ExtensionUsedCnt: <p>扩容配额已使用数量。</p>
+        :type ExtensionUsedCnt: int
+        :param _ExtensionRemainCnt: <p>扩容配额剩余数量。</p>
+        :type ExtensionRemainCnt: int
+        """
+        self._TotalCnt = None
+        self._UsedCnt = None
+        self._RemainCnt = None
+        self._BaseTotalCnt = None
+        self._BaseUsedCnt = None
+        self._BaseRemainCnt = None
+        self._ExtensionTotalCnt = None
+        self._ExtensionUsedCnt = None
+        self._ExtensionRemainCnt = None
+
+    @property
+    def TotalCnt(self):
+        r"""<p>封禁列表总配额数量。</p>
+        :rtype: int
+        """
+        return self._TotalCnt
+
+    @TotalCnt.setter
+    def TotalCnt(self, TotalCnt):
+        self._TotalCnt = TotalCnt
+
+    @property
+    def UsedCnt(self):
+        r"""<p>封禁列表已使用数量。</p>
+        :rtype: int
+        """
+        return self._UsedCnt
+
+    @UsedCnt.setter
+    def UsedCnt(self, UsedCnt):
+        self._UsedCnt = UsedCnt
+
+    @property
+    def RemainCnt(self):
+        r"""<p>封禁列表剩余配额数量。</p>
+        :rtype: int
+        """
+        return self._RemainCnt
+
+    @RemainCnt.setter
+    def RemainCnt(self, RemainCnt):
+        self._RemainCnt = RemainCnt
+
+    @property
+    def BaseTotalCnt(self):
+        r"""<p>基础配额总数量。</p>
+        :rtype: int
+        """
+        return self._BaseTotalCnt
+
+    @BaseTotalCnt.setter
+    def BaseTotalCnt(self, BaseTotalCnt):
+        self._BaseTotalCnt = BaseTotalCnt
+
+    @property
+    def BaseUsedCnt(self):
+        r"""<p>基础配额已使用数量。</p>
+        :rtype: int
+        """
+        return self._BaseUsedCnt
+
+    @BaseUsedCnt.setter
+    def BaseUsedCnt(self, BaseUsedCnt):
+        self._BaseUsedCnt = BaseUsedCnt
+
+    @property
+    def BaseRemainCnt(self):
+        r"""<p>基础配额剩余数量。</p>
+        :rtype: int
+        """
+        return self._BaseRemainCnt
+
+    @BaseRemainCnt.setter
+    def BaseRemainCnt(self, BaseRemainCnt):
+        self._BaseRemainCnt = BaseRemainCnt
+
+    @property
+    def ExtensionTotalCnt(self):
+        r"""<p>扩容配额总数量。</p>
+        :rtype: int
+        """
+        return self._ExtensionTotalCnt
+
+    @ExtensionTotalCnt.setter
+    def ExtensionTotalCnt(self, ExtensionTotalCnt):
+        self._ExtensionTotalCnt = ExtensionTotalCnt
+
+    @property
+    def ExtensionUsedCnt(self):
+        r"""<p>扩容配额已使用数量。</p>
+        :rtype: int
+        """
+        return self._ExtensionUsedCnt
+
+    @ExtensionUsedCnt.setter
+    def ExtensionUsedCnt(self, ExtensionUsedCnt):
+        self._ExtensionUsedCnt = ExtensionUsedCnt
+
+    @property
+    def ExtensionRemainCnt(self):
+        r"""<p>扩容配额剩余数量。</p>
+        :rtype: int
+        """
+        return self._ExtensionRemainCnt
+
+    @ExtensionRemainCnt.setter
+    def ExtensionRemainCnt(self, ExtensionRemainCnt):
+        self._ExtensionRemainCnt = ExtensionRemainCnt
+
+
+    def _deserialize(self, params):
+        self._TotalCnt = params.get("TotalCnt")
+        self._UsedCnt = params.get("UsedCnt")
+        self._RemainCnt = params.get("RemainCnt")
+        self._BaseTotalCnt = params.get("BaseTotalCnt")
+        self._BaseUsedCnt = params.get("BaseUsedCnt")
+        self._BaseRemainCnt = params.get("BaseRemainCnt")
+        self._ExtensionTotalCnt = params.get("ExtensionTotalCnt")
+        self._ExtensionUsedCnt = params.get("ExtensionUsedCnt")
+        self._ExtensionRemainCnt = params.get("ExtensionRemainCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewCommonRuleQuotaDetail(AbstractModel):
+    r"""概览通用规则配额详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllowedNum: <p>允许使用的规则总数。</p>
+        :type AllowedNum: int
+        :param _UsedNum: <p>已使用规则数量。</p>
+        :type UsedNum: int
+        :param _RemainQuota: <p>剩余规则配额数量。</p>
+        :type RemainQuota: int
+        :param _RemainExtensionNum: <p>剩余扩容规则数量。</p>
+        :type RemainExtensionNum: int
+        :param _InTotal: <p>入方向规则总数。</p>
+        :type InTotal: int
+        :param _InEnableNum: <p>入方向启用规则数。</p>
+        :type InEnableNum: int
+        :param _OutTotal: <p>出方向规则总数。</p>
+        :type OutTotal: int
+        :param _OutEnableNum: <p>出方向启用规则数。</p>
+        :type OutEnableNum: int
+        """
+        self._AllowedNum = None
+        self._UsedNum = None
+        self._RemainQuota = None
+        self._RemainExtensionNum = None
+        self._InTotal = None
+        self._InEnableNum = None
+        self._OutTotal = None
+        self._OutEnableNum = None
+
+    @property
+    def AllowedNum(self):
+        r"""<p>允许使用的规则总数。</p>
+        :rtype: int
+        """
+        return self._AllowedNum
+
+    @AllowedNum.setter
+    def AllowedNum(self, AllowedNum):
+        self._AllowedNum = AllowedNum
+
+    @property
+    def UsedNum(self):
+        r"""<p>已使用规则数量。</p>
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RemainQuota(self):
+        r"""<p>剩余规则配额数量。</p>
+        :rtype: int
+        """
+        return self._RemainQuota
+
+    @RemainQuota.setter
+    def RemainQuota(self, RemainQuota):
+        self._RemainQuota = RemainQuota
+
+    @property
+    def RemainExtensionNum(self):
+        r"""<p>剩余扩容规则数量。</p>
+        :rtype: int
+        """
+        return self._RemainExtensionNum
+
+    @RemainExtensionNum.setter
+    def RemainExtensionNum(self, RemainExtensionNum):
+        self._RemainExtensionNum = RemainExtensionNum
+
+    @property
+    def InTotal(self):
+        r"""<p>入方向规则总数。</p>
+        :rtype: int
+        """
+        return self._InTotal
+
+    @InTotal.setter
+    def InTotal(self, InTotal):
+        self._InTotal = InTotal
+
+    @property
+    def InEnableNum(self):
+        r"""<p>入方向启用规则数。</p>
+        :rtype: int
+        """
+        return self._InEnableNum
+
+    @InEnableNum.setter
+    def InEnableNum(self, InEnableNum):
+        self._InEnableNum = InEnableNum
+
+    @property
+    def OutTotal(self):
+        r"""<p>出方向规则总数。</p>
+        :rtype: int
+        """
+        return self._OutTotal
+
+    @OutTotal.setter
+    def OutTotal(self, OutTotal):
+        self._OutTotal = OutTotal
+
+    @property
+    def OutEnableNum(self):
+        r"""<p>出方向启用规则数。</p>
+        :rtype: int
+        """
+        return self._OutEnableNum
+
+    @OutEnableNum.setter
+    def OutEnableNum(self, OutEnableNum):
+        self._OutEnableNum = OutEnableNum
+
+
+    def _deserialize(self, params):
+        self._AllowedNum = params.get("AllowedNum")
+        self._UsedNum = params.get("UsedNum")
+        self._RemainQuota = params.get("RemainQuota")
+        self._RemainExtensionNum = params.get("RemainExtensionNum")
+        self._InTotal = params.get("InTotal")
+        self._InEnableNum = params.get("InEnableNum")
+        self._OutTotal = params.get("OutTotal")
+        self._OutEnableNum = params.get("OutEnableNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewEastWestDetail(AbstractModel):
+    r"""概览东西向带宽详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalMbps: <p>东西向总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type TotalMbps: int
+        :param _UsedBps: <p>当前已使用流量，单位为 bps。</p><p>单位：bps</p>
+        :type UsedBps: int
+        :param _UsagePercent: <p>当前带宽使用率。</p><p>单位：%</p>
+        :type UsagePercent: float
+        :param _AllocatedBandwidthUsedMbps: <p>已分配并使用的带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type AllocatedBandwidthUsedMbps: int
+        :param _CanUsedBandwidthMbps: <p>当前仍可使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type CanUsedBandwidthMbps: int
+        :param _ClusterModeWidthMbps: <p>集群模式带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type ClusterModeWidthMbps: int
+        :param _MasterSlaveModeWidthMbps: <p>主备模式带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type MasterSlaveModeWidthMbps: int
+        :param _SameRegionFwInsId: <p>同地域防火墙实例 ID。</p>
+        :type SameRegionFwInsId: str
+        :param _SameRegionFwInsName: <p>同地域防火墙实例名称。</p>
+        :type SameRegionFwInsName: str
+        :param _SameRegionMaxFlowBps: <p>同地域防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type SameRegionMaxFlowBps: int
+        :param _DiffRegionFwInsId: <p>跨地域防火墙实例 ID。</p>
+        :type DiffRegionFwInsId: str
+        :param _DiffRegionFwInsName: <p>跨地域防火墙实例名称。</p>
+        :type DiffRegionFwInsName: str
+        :param _DiffRegionMaxFlowBps: <p>跨地域防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type DiffRegionMaxFlowBps: int
+        :param _FwGroupId: <p>防火墙实例组 ID。</p>
+        :type FwGroupId: str
+        :param _FwGroupName: <p>防火墙实例组名称。</p>
+        :type FwGroupName: str
+        :param _FwGroupMaxFlowBps: <p>防火墙实例组峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type FwGroupMaxFlowBps: int
+        :param _FwInsId: <p>防火墙实例 ID。</p>
+        :type FwInsId: str
+        :param _FwInsName: <p>防火墙实例名称。</p>
+        :type FwInsName: str
+        :param _FwInsMaxFlowBps: <p>防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type FwInsMaxFlowBps: int
+        :param _ClusterVpcMaxFlowBps: <p>集群 VPC 峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type ClusterVpcMaxFlowBps: int
+        """
+        self._TotalMbps = None
+        self._UsedBps = None
+        self._UsagePercent = None
+        self._AllocatedBandwidthUsedMbps = None
+        self._CanUsedBandwidthMbps = None
+        self._ClusterModeWidthMbps = None
+        self._MasterSlaveModeWidthMbps = None
+        self._SameRegionFwInsId = None
+        self._SameRegionFwInsName = None
+        self._SameRegionMaxFlowBps = None
+        self._DiffRegionFwInsId = None
+        self._DiffRegionFwInsName = None
+        self._DiffRegionMaxFlowBps = None
+        self._FwGroupId = None
+        self._FwGroupName = None
+        self._FwGroupMaxFlowBps = None
+        self._FwInsId = None
+        self._FwInsName = None
+        self._FwInsMaxFlowBps = None
+        self._ClusterVpcMaxFlowBps = None
+
+    @property
+    def TotalMbps(self):
+        r"""<p>东西向总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._TotalMbps
+
+    @TotalMbps.setter
+    def TotalMbps(self, TotalMbps):
+        self._TotalMbps = TotalMbps
+
+    @property
+    def UsedBps(self):
+        r"""<p>当前已使用流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._UsedBps
+
+    @UsedBps.setter
+    def UsedBps(self, UsedBps):
+        self._UsedBps = UsedBps
+
+    @property
+    def UsagePercent(self):
+        r"""<p>当前带宽使用率。</p><p>单位：%</p>
+        :rtype: float
+        """
+        return self._UsagePercent
+
+    @UsagePercent.setter
+    def UsagePercent(self, UsagePercent):
+        self._UsagePercent = UsagePercent
+
+    @property
+    def AllocatedBandwidthUsedMbps(self):
+        r"""<p>已分配并使用的带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._AllocatedBandwidthUsedMbps
+
+    @AllocatedBandwidthUsedMbps.setter
+    def AllocatedBandwidthUsedMbps(self, AllocatedBandwidthUsedMbps):
+        self._AllocatedBandwidthUsedMbps = AllocatedBandwidthUsedMbps
+
+    @property
+    def CanUsedBandwidthMbps(self):
+        r"""<p>当前仍可使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._CanUsedBandwidthMbps
+
+    @CanUsedBandwidthMbps.setter
+    def CanUsedBandwidthMbps(self, CanUsedBandwidthMbps):
+        self._CanUsedBandwidthMbps = CanUsedBandwidthMbps
+
+    @property
+    def ClusterModeWidthMbps(self):
+        r"""<p>集群模式带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._ClusterModeWidthMbps
+
+    @ClusterModeWidthMbps.setter
+    def ClusterModeWidthMbps(self, ClusterModeWidthMbps):
+        self._ClusterModeWidthMbps = ClusterModeWidthMbps
+
+    @property
+    def MasterSlaveModeWidthMbps(self):
+        r"""<p>主备模式带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._MasterSlaveModeWidthMbps
+
+    @MasterSlaveModeWidthMbps.setter
+    def MasterSlaveModeWidthMbps(self, MasterSlaveModeWidthMbps):
+        self._MasterSlaveModeWidthMbps = MasterSlaveModeWidthMbps
+
+    @property
+    def SameRegionFwInsId(self):
+        r"""<p>同地域防火墙实例 ID。</p>
+        :rtype: str
+        """
+        return self._SameRegionFwInsId
+
+    @SameRegionFwInsId.setter
+    def SameRegionFwInsId(self, SameRegionFwInsId):
+        self._SameRegionFwInsId = SameRegionFwInsId
+
+    @property
+    def SameRegionFwInsName(self):
+        r"""<p>同地域防火墙实例名称。</p>
+        :rtype: str
+        """
+        return self._SameRegionFwInsName
+
+    @SameRegionFwInsName.setter
+    def SameRegionFwInsName(self, SameRegionFwInsName):
+        self._SameRegionFwInsName = SameRegionFwInsName
+
+    @property
+    def SameRegionMaxFlowBps(self):
+        r"""<p>同地域防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._SameRegionMaxFlowBps
+
+    @SameRegionMaxFlowBps.setter
+    def SameRegionMaxFlowBps(self, SameRegionMaxFlowBps):
+        self._SameRegionMaxFlowBps = SameRegionMaxFlowBps
+
+    @property
+    def DiffRegionFwInsId(self):
+        r"""<p>跨地域防火墙实例 ID。</p>
+        :rtype: str
+        """
+        return self._DiffRegionFwInsId
+
+    @DiffRegionFwInsId.setter
+    def DiffRegionFwInsId(self, DiffRegionFwInsId):
+        self._DiffRegionFwInsId = DiffRegionFwInsId
+
+    @property
+    def DiffRegionFwInsName(self):
+        r"""<p>跨地域防火墙实例名称。</p>
+        :rtype: str
+        """
+        return self._DiffRegionFwInsName
+
+    @DiffRegionFwInsName.setter
+    def DiffRegionFwInsName(self, DiffRegionFwInsName):
+        self._DiffRegionFwInsName = DiffRegionFwInsName
+
+    @property
+    def DiffRegionMaxFlowBps(self):
+        r"""<p>跨地域防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._DiffRegionMaxFlowBps
+
+    @DiffRegionMaxFlowBps.setter
+    def DiffRegionMaxFlowBps(self, DiffRegionMaxFlowBps):
+        self._DiffRegionMaxFlowBps = DiffRegionMaxFlowBps
+
+    @property
+    def FwGroupId(self):
+        r"""<p>防火墙实例组 ID。</p>
+        :rtype: str
+        """
+        return self._FwGroupId
+
+    @FwGroupId.setter
+    def FwGroupId(self, FwGroupId):
+        self._FwGroupId = FwGroupId
+
+    @property
+    def FwGroupName(self):
+        r"""<p>防火墙实例组名称。</p>
+        :rtype: str
+        """
+        return self._FwGroupName
+
+    @FwGroupName.setter
+    def FwGroupName(self, FwGroupName):
+        self._FwGroupName = FwGroupName
+
+    @property
+    def FwGroupMaxFlowBps(self):
+        r"""<p>防火墙实例组峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._FwGroupMaxFlowBps
+
+    @FwGroupMaxFlowBps.setter
+    def FwGroupMaxFlowBps(self, FwGroupMaxFlowBps):
+        self._FwGroupMaxFlowBps = FwGroupMaxFlowBps
+
+    @property
+    def FwInsId(self):
+        r"""<p>防火墙实例 ID。</p>
+        :rtype: str
+        """
+        return self._FwInsId
+
+    @FwInsId.setter
+    def FwInsId(self, FwInsId):
+        self._FwInsId = FwInsId
+
+    @property
+    def FwInsName(self):
+        r"""<p>防火墙实例名称。</p>
+        :rtype: str
+        """
+        return self._FwInsName
+
+    @FwInsName.setter
+    def FwInsName(self, FwInsName):
+        self._FwInsName = FwInsName
+
+    @property
+    def FwInsMaxFlowBps(self):
+        r"""<p>防火墙实例峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._FwInsMaxFlowBps
+
+    @FwInsMaxFlowBps.setter
+    def FwInsMaxFlowBps(self, FwInsMaxFlowBps):
+        self._FwInsMaxFlowBps = FwInsMaxFlowBps
+
+    @property
+    def ClusterVpcMaxFlowBps(self):
+        r"""<p>集群 VPC 峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._ClusterVpcMaxFlowBps
+
+    @ClusterVpcMaxFlowBps.setter
+    def ClusterVpcMaxFlowBps(self, ClusterVpcMaxFlowBps):
+        self._ClusterVpcMaxFlowBps = ClusterVpcMaxFlowBps
+
+
+    def _deserialize(self, params):
+        self._TotalMbps = params.get("TotalMbps")
+        self._UsedBps = params.get("UsedBps")
+        self._UsagePercent = params.get("UsagePercent")
+        self._AllocatedBandwidthUsedMbps = params.get("AllocatedBandwidthUsedMbps")
+        self._CanUsedBandwidthMbps = params.get("CanUsedBandwidthMbps")
+        self._ClusterModeWidthMbps = params.get("ClusterModeWidthMbps")
+        self._MasterSlaveModeWidthMbps = params.get("MasterSlaveModeWidthMbps")
+        self._SameRegionFwInsId = params.get("SameRegionFwInsId")
+        self._SameRegionFwInsName = params.get("SameRegionFwInsName")
+        self._SameRegionMaxFlowBps = params.get("SameRegionMaxFlowBps")
+        self._DiffRegionFwInsId = params.get("DiffRegionFwInsId")
+        self._DiffRegionFwInsName = params.get("DiffRegionFwInsName")
+        self._DiffRegionMaxFlowBps = params.get("DiffRegionMaxFlowBps")
+        self._FwGroupId = params.get("FwGroupId")
+        self._FwGroupName = params.get("FwGroupName")
+        self._FwGroupMaxFlowBps = params.get("FwGroupMaxFlowBps")
+        self._FwInsId = params.get("FwInsId")
+        self._FwInsName = params.get("FwInsName")
+        self._FwInsMaxFlowBps = params.get("FwInsMaxFlowBps")
+        self._ClusterVpcMaxFlowBps = params.get("ClusterVpcMaxFlowBps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewLogStorageDetail(AbstractModel):
+    r"""概览日志存储详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsedBytes: <p>日志已使用存储容量，单位为 Byte。</p><p>单位：Byte</p>
+        :type UsedBytes: int
+        :param _TotalBytes: <p>日志总存储容量，单位为 Byte。</p><p>单位：Byte</p>
+        :type TotalBytes: int
+        :param _StorageDay: <p>日志保留天数。</p><p>单位：天</p>
+        :type StorageDay: int
+        :param _NDRStorageDay: <p>NDR 日志保留天数。</p><p>单位：天</p>
+        :type NDRStorageDay: int
+        :param _AclSize: <p>访问控制日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :type AclSize: int
+        :param _IdsSize: <p>入侵检测日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :type IdsSize: int
+        :param _NetFlowSize: <p>流量日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :type NetFlowSize: int
+        :param _OperateSize: <p>操作日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :type OperateSize: int
+        :param _NDRRiskSize: <p>NDR 风险日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :type NDRRiskSize: int
+        :param _NDRNetFlowSize: <p>NDR 流量日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :type NDRNetFlowSize: int
+        :param _PayMode: <p>日志存储计费模式标识。</p>
+        :type PayMode: int
+        :param _ArrearsStopWriting: <p>是否因欠费停止写入日志的状态标识。</p>
+        :type ArrearsStopWriting: int
+        """
+        self._UsedBytes = None
+        self._TotalBytes = None
+        self._StorageDay = None
+        self._NDRStorageDay = None
+        self._AclSize = None
+        self._IdsSize = None
+        self._NetFlowSize = None
+        self._OperateSize = None
+        self._NDRRiskSize = None
+        self._NDRNetFlowSize = None
+        self._PayMode = None
+        self._ArrearsStopWriting = None
+
+    @property
+    def UsedBytes(self):
+        r"""<p>日志已使用存储容量，单位为 Byte。</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._UsedBytes
+
+    @UsedBytes.setter
+    def UsedBytes(self, UsedBytes):
+        self._UsedBytes = UsedBytes
+
+    @property
+    def TotalBytes(self):
+        r"""<p>日志总存储容量，单位为 Byte。</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._TotalBytes
+
+    @TotalBytes.setter
+    def TotalBytes(self, TotalBytes):
+        self._TotalBytes = TotalBytes
+
+    @property
+    def StorageDay(self):
+        r"""<p>日志保留天数。</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._StorageDay
+
+    @StorageDay.setter
+    def StorageDay(self, StorageDay):
+        self._StorageDay = StorageDay
+
+    @property
+    def NDRStorageDay(self):
+        r"""<p>NDR 日志保留天数。</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._NDRStorageDay
+
+    @NDRStorageDay.setter
+    def NDRStorageDay(self, NDRStorageDay):
+        self._NDRStorageDay = NDRStorageDay
+
+    @property
+    def AclSize(self):
+        r"""<p>访问控制日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._AclSize
+
+    @AclSize.setter
+    def AclSize(self, AclSize):
+        self._AclSize = AclSize
+
+    @property
+    def IdsSize(self):
+        r"""<p>入侵检测日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._IdsSize
+
+    @IdsSize.setter
+    def IdsSize(self, IdsSize):
+        self._IdsSize = IdsSize
+
+    @property
+    def NetFlowSize(self):
+        r"""<p>流量日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._NetFlowSize
+
+    @NetFlowSize.setter
+    def NetFlowSize(self, NetFlowSize):
+        self._NetFlowSize = NetFlowSize
+
+    @property
+    def OperateSize(self):
+        r"""<p>操作日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._OperateSize
+
+    @OperateSize.setter
+    def OperateSize(self, OperateSize):
+        self._OperateSize = OperateSize
+
+    @property
+    def NDRRiskSize(self):
+        r"""<p>NDR 风险日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._NDRRiskSize
+
+    @NDRRiskSize.setter
+    def NDRRiskSize(self, NDRRiskSize):
+        self._NDRRiskSize = NDRRiskSize
+
+    @property
+    def NDRNetFlowSize(self):
+        r"""<p>NDR 流量日志占用容量，单位为 Byte。</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._NDRNetFlowSize
+
+    @NDRNetFlowSize.setter
+    def NDRNetFlowSize(self, NDRNetFlowSize):
+        self._NDRNetFlowSize = NDRNetFlowSize
+
+    @property
+    def PayMode(self):
+        r"""<p>日志存储计费模式标识。</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ArrearsStopWriting(self):
+        r"""<p>是否因欠费停止写入日志的状态标识。</p>
+        :rtype: int
+        """
+        return self._ArrearsStopWriting
+
+    @ArrearsStopWriting.setter
+    def ArrearsStopWriting(self, ArrearsStopWriting):
+        self._ArrearsStopWriting = ArrearsStopWriting
+
+
+    def _deserialize(self, params):
+        self._UsedBytes = params.get("UsedBytes")
+        self._TotalBytes = params.get("TotalBytes")
+        self._StorageDay = params.get("StorageDay")
+        self._NDRStorageDay = params.get("NDRStorageDay")
+        self._AclSize = params.get("AclSize")
+        self._IdsSize = params.get("IdsSize")
+        self._NetFlowSize = params.get("NetFlowSize")
+        self._OperateSize = params.get("OperateSize")
+        self._NDRRiskSize = params.get("NDRRiskSize")
+        self._NDRNetFlowSize = params.get("NDRNetFlowSize")
+        self._PayMode = params.get("PayMode")
+        self._ArrearsStopWriting = params.get("ArrearsStopWriting")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewNDRDetail(AbstractModel):
+    r"""概览 NDR 带宽详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>NDR 能力或服务状态标识。</p>
+        :type Status: int
+        :param _TotalMbps: <p>NDR 总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type TotalMbps: int
+        :param _InMaxBps: <p>入方向峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type InMaxBps: int
+        :param _OutMaxBps: <p>出方向峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type OutMaxBps: int
+        :param _MaxFlowBps: <p>总体峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type MaxFlowBps: int
+        :param _FlowPercent: <p>当前流量使用率。</p><p>单位：%</p>
+        :type FlowPercent: float
+        """
+        self._Status = None
+        self._TotalMbps = None
+        self._InMaxBps = None
+        self._OutMaxBps = None
+        self._MaxFlowBps = None
+        self._FlowPercent = None
+
+    @property
+    def Status(self):
+        r"""<p>NDR 能力或服务状态标识。</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TotalMbps(self):
+        r"""<p>NDR 总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._TotalMbps
+
+    @TotalMbps.setter
+    def TotalMbps(self, TotalMbps):
+        self._TotalMbps = TotalMbps
+
+    @property
+    def InMaxBps(self):
+        r"""<p>入方向峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._InMaxBps
+
+    @InMaxBps.setter
+    def InMaxBps(self, InMaxBps):
+        self._InMaxBps = InMaxBps
+
+    @property
+    def OutMaxBps(self):
+        r"""<p>出方向峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._OutMaxBps
+
+    @OutMaxBps.setter
+    def OutMaxBps(self, OutMaxBps):
+        self._OutMaxBps = OutMaxBps
+
+    @property
+    def MaxFlowBps(self):
+        r"""<p>总体峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._MaxFlowBps
+
+    @MaxFlowBps.setter
+    def MaxFlowBps(self, MaxFlowBps):
+        self._MaxFlowBps = MaxFlowBps
+
+    @property
+    def FlowPercent(self):
+        r"""<p>当前流量使用率。</p><p>单位：%</p>
+        :rtype: float
+        """
+        return self._FlowPercent
+
+    @FlowPercent.setter
+    def FlowPercent(self, FlowPercent):
+        self._FlowPercent = FlowPercent
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._TotalMbps = params.get("TotalMbps")
+        self._InMaxBps = params.get("InMaxBps")
+        self._OutMaxBps = params.get("OutMaxBps")
+        self._MaxFlowBps = params.get("MaxFlowBps")
+        self._FlowPercent = params.get("FlowPercent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewNorthSouthDetail(AbstractModel):
+    r"""概览南北向带宽详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetBandwidthTotalMbps: <p>南北向互联网总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type InternetBandwidthTotalMbps: float
+        :param _NetMaxFlowBps: <p>南北向网络峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :type NetMaxFlowBps: float
+        :param _SerialBandwidthTotalMbps: <p>串行接入总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type SerialBandwidthTotalMbps: int
+        :param _NatBandwidthTotalMbps: <p>NAT 防火墙总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type NatBandwidthTotalMbps: int
+        :param _BypassOnlyBandwidthMbps: <p>仅旁路接入带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type BypassOnlyBandwidthMbps: int
+        :param _UnusedBandwidthMbps: <p>未使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type UnusedBandwidthMbps: int
+        :param _CanUsedBandwidthMbps: <p>当前仍可使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :type CanUsedBandwidthMbps: int
+        :param _MaxSerialRegion: <p>串行链路峰值流量最高的地域名称。</p>
+        :type MaxSerialRegion: str
+        :param _SerialRegionInFlowMax: <p>峰值最高地域的入站流量峰值，单位为 bps。</p><p>单位：bps</p>
+        :type SerialRegionInFlowMax: int
+        :param _SerialRegionOutFlowMax: <p>峰值最高地域的出方向最大流量，单位为 bps。</p><p>单位：bps</p>
+        :type SerialRegionOutFlowMax: int
+        """
+        self._InternetBandwidthTotalMbps = None
+        self._NetMaxFlowBps = None
+        self._SerialBandwidthTotalMbps = None
+        self._NatBandwidthTotalMbps = None
+        self._BypassOnlyBandwidthMbps = None
+        self._UnusedBandwidthMbps = None
+        self._CanUsedBandwidthMbps = None
+        self._MaxSerialRegion = None
+        self._SerialRegionInFlowMax = None
+        self._SerialRegionOutFlowMax = None
+
+    @property
+    def InternetBandwidthTotalMbps(self):
+        r"""<p>南北向互联网总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: float
+        """
+        return self._InternetBandwidthTotalMbps
+
+    @InternetBandwidthTotalMbps.setter
+    def InternetBandwidthTotalMbps(self, InternetBandwidthTotalMbps):
+        self._InternetBandwidthTotalMbps = InternetBandwidthTotalMbps
+
+    @property
+    def NetMaxFlowBps(self):
+        r"""<p>南北向网络峰值流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: float
+        """
+        return self._NetMaxFlowBps
+
+    @NetMaxFlowBps.setter
+    def NetMaxFlowBps(self, NetMaxFlowBps):
+        self._NetMaxFlowBps = NetMaxFlowBps
+
+    @property
+    def SerialBandwidthTotalMbps(self):
+        r"""<p>串行接入总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._SerialBandwidthTotalMbps
+
+    @SerialBandwidthTotalMbps.setter
+    def SerialBandwidthTotalMbps(self, SerialBandwidthTotalMbps):
+        self._SerialBandwidthTotalMbps = SerialBandwidthTotalMbps
+
+    @property
+    def NatBandwidthTotalMbps(self):
+        r"""<p>NAT 防火墙总带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._NatBandwidthTotalMbps
+
+    @NatBandwidthTotalMbps.setter
+    def NatBandwidthTotalMbps(self, NatBandwidthTotalMbps):
+        self._NatBandwidthTotalMbps = NatBandwidthTotalMbps
+
+    @property
+    def BypassOnlyBandwidthMbps(self):
+        r"""<p>仅旁路接入带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._BypassOnlyBandwidthMbps
+
+    @BypassOnlyBandwidthMbps.setter
+    def BypassOnlyBandwidthMbps(self, BypassOnlyBandwidthMbps):
+        self._BypassOnlyBandwidthMbps = BypassOnlyBandwidthMbps
+
+    @property
+    def UnusedBandwidthMbps(self):
+        r"""<p>未使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._UnusedBandwidthMbps
+
+    @UnusedBandwidthMbps.setter
+    def UnusedBandwidthMbps(self, UnusedBandwidthMbps):
+        self._UnusedBandwidthMbps = UnusedBandwidthMbps
+
+    @property
+    def CanUsedBandwidthMbps(self):
+        r"""<p>当前仍可使用带宽，单位为 Mbps。</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._CanUsedBandwidthMbps
+
+    @CanUsedBandwidthMbps.setter
+    def CanUsedBandwidthMbps(self, CanUsedBandwidthMbps):
+        self._CanUsedBandwidthMbps = CanUsedBandwidthMbps
+
+    @property
+    def MaxSerialRegion(self):
+        r"""<p>串行链路峰值流量最高的地域名称。</p>
+        :rtype: str
+        """
+        return self._MaxSerialRegion
+
+    @MaxSerialRegion.setter
+    def MaxSerialRegion(self, MaxSerialRegion):
+        self._MaxSerialRegion = MaxSerialRegion
+
+    @property
+    def SerialRegionInFlowMax(self):
+        r"""<p>峰值最高地域的入站流量峰值，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._SerialRegionInFlowMax
+
+    @SerialRegionInFlowMax.setter
+    def SerialRegionInFlowMax(self, SerialRegionInFlowMax):
+        self._SerialRegionInFlowMax = SerialRegionInFlowMax
+
+    @property
+    def SerialRegionOutFlowMax(self):
+        r"""<p>峰值最高地域的出方向最大流量，单位为 bps。</p><p>单位：bps</p>
+        :rtype: int
+        """
+        return self._SerialRegionOutFlowMax
+
+    @SerialRegionOutFlowMax.setter
+    def SerialRegionOutFlowMax(self, SerialRegionOutFlowMax):
+        self._SerialRegionOutFlowMax = SerialRegionOutFlowMax
+
+
+    def _deserialize(self, params):
+        self._InternetBandwidthTotalMbps = params.get("InternetBandwidthTotalMbps")
+        self._NetMaxFlowBps = params.get("NetMaxFlowBps")
+        self._SerialBandwidthTotalMbps = params.get("SerialBandwidthTotalMbps")
+        self._NatBandwidthTotalMbps = params.get("NatBandwidthTotalMbps")
+        self._BypassOnlyBandwidthMbps = params.get("BypassOnlyBandwidthMbps")
+        self._UnusedBandwidthMbps = params.get("UnusedBandwidthMbps")
+        self._CanUsedBandwidthMbps = params.get("CanUsedBandwidthMbps")
+        self._MaxSerialRegion = params.get("MaxSerialRegion")
+        self._SerialRegionInFlowMax = params.get("SerialRegionInFlowMax")
+        self._SerialRegionOutFlowMax = params.get("SerialRegionOutFlowMax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewQuotaDetail(AbstractModel):
+    r"""概览资源与配额详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicIpUsed: <p>已使用公网 IP 数量。</p>
+        :type PublicIpUsed: int
+        :param _PublicIpTotal: <p>公网 IP 总配额数量。</p>
+        :type PublicIpTotal: int
+        :param _CommonInstanceTotal: <p>通用实例总配额数量。</p>
+        :type CommonInstanceTotal: int
+        :param _CommonInstanceRemain: <p>通用实例剩余配额数量。</p>
+        :type CommonInstanceRemain: int
+        :param _CommonInstanceUsed: <p>通用实例已使用数量。</p>
+        :type CommonInstanceUsed: int
+        :param _AccessControlRuleUsed: <p>访问控制规则已使用数量。</p>
+        :type AccessControlRuleUsed: int
+        :param _AccessControlRuleTotal: <p>访问控制规则总配额数量。</p>
+        :type AccessControlRuleTotal: int
+        :param _SerialRegionUsed: <p>已使用串行地域数量。</p>
+        :type SerialRegionUsed: int
+        :param _NatInstanceUsed: <p>已使用 NAT 防火墙实例数量。</p>
+        :type NatInstanceUsed: int
+        :param _VpcInstanceUsed: <p>已使用 VPC 防火墙实例数量。</p>
+        :type VpcInstanceUsed: int
+        :param _BorderRuleQuota: <p>边界规则配额详情。</p>
+        :type BorderRuleQuota: :class:`tencentcloud.cfw.v20190904.models.OverviewCommonRuleQuotaDetail`
+        :param _NatRuleQuota: <p>NAT 规则配额详情。</p>
+        :type NatRuleQuota: :class:`tencentcloud.cfw.v20190904.models.OverviewCommonRuleQuotaDetail`
+        :param _VpcRuleQuota: <p>VPC 规则配额详情。</p>
+        :type VpcRuleQuota: :class:`tencentcloud.cfw.v20190904.models.OverviewVpcRuleQuotaDetail`
+        :param _BlockListQuota: <p>封禁列表配额统计信息。</p>
+        :type BlockListQuota: :class:`tencentcloud.cfw.v20190904.models.OverviewBlockListQuota`
+        :param _BlockIpCount: <p>封禁 IP 总数量。</p>
+        :type BlockIpCount: int
+        :param _BlockIpUsed: <p>已使用封禁 IP 数量。</p>
+        :type BlockIpUsed: int
+        :param _BlockIpTotal: <p>封禁 IP 总配额数量。</p>
+        :type BlockIpTotal: int
+        :param _BlockListQuotaDetail: <p>封禁列表基础包与扩容包配额详情。</p>
+        :type BlockListQuotaDetail: :class:`tencentcloud.cfw.v20190904.models.OverviewBlockListQuotaDetail`
+        :param _SgRuleQuotaUsed: <p>安全组规则已使用数量。</p>
+        :type SgRuleQuotaUsed: int
+        :param _SgRuleQuotaTotal: <p>安全组规则总配额数量。</p>
+        :type SgRuleQuotaTotal: int
+        :param _TotalExtensionUsed: <p>总扩容资源已使用数量。</p>
+        :type TotalExtensionUsed: int
+        :param _TotalExtensionNum: <p>总扩容资源配额数量。</p>
+        :type TotalExtensionNum: int
+        :param _AddressTemplateUsed: <p>地址模板已使用数量。</p>
+        :type AddressTemplateUsed: int
+        :param _AddressTemplateTotal: <p>地址模板总配额数量。</p>
+        :type AddressTemplateTotal: int
+        :param _HoneyPotUsed: <p>蜜罐已使用数量。</p>
+        :type HoneyPotUsed: int
+        :param _HoneyPotTotal: <p>蜜罐总配额数量。</p>
+        :type HoneyPotTotal: int
+        """
+        self._PublicIpUsed = None
+        self._PublicIpTotal = None
+        self._CommonInstanceTotal = None
+        self._CommonInstanceRemain = None
+        self._CommonInstanceUsed = None
+        self._AccessControlRuleUsed = None
+        self._AccessControlRuleTotal = None
+        self._SerialRegionUsed = None
+        self._NatInstanceUsed = None
+        self._VpcInstanceUsed = None
+        self._BorderRuleQuota = None
+        self._NatRuleQuota = None
+        self._VpcRuleQuota = None
+        self._BlockListQuota = None
+        self._BlockIpCount = None
+        self._BlockIpUsed = None
+        self._BlockIpTotal = None
+        self._BlockListQuotaDetail = None
+        self._SgRuleQuotaUsed = None
+        self._SgRuleQuotaTotal = None
+        self._TotalExtensionUsed = None
+        self._TotalExtensionNum = None
+        self._AddressTemplateUsed = None
+        self._AddressTemplateTotal = None
+        self._HoneyPotUsed = None
+        self._HoneyPotTotal = None
+
+    @property
+    def PublicIpUsed(self):
+        r"""<p>已使用公网 IP 数量。</p>
+        :rtype: int
+        """
+        return self._PublicIpUsed
+
+    @PublicIpUsed.setter
+    def PublicIpUsed(self, PublicIpUsed):
+        self._PublicIpUsed = PublicIpUsed
+
+    @property
+    def PublicIpTotal(self):
+        r"""<p>公网 IP 总配额数量。</p>
+        :rtype: int
+        """
+        return self._PublicIpTotal
+
+    @PublicIpTotal.setter
+    def PublicIpTotal(self, PublicIpTotal):
+        self._PublicIpTotal = PublicIpTotal
+
+    @property
+    def CommonInstanceTotal(self):
+        r"""<p>通用实例总配额数量。</p>
+        :rtype: int
+        """
+        return self._CommonInstanceTotal
+
+    @CommonInstanceTotal.setter
+    def CommonInstanceTotal(self, CommonInstanceTotal):
+        self._CommonInstanceTotal = CommonInstanceTotal
+
+    @property
+    def CommonInstanceRemain(self):
+        r"""<p>通用实例剩余配额数量。</p>
+        :rtype: int
+        """
+        return self._CommonInstanceRemain
+
+    @CommonInstanceRemain.setter
+    def CommonInstanceRemain(self, CommonInstanceRemain):
+        self._CommonInstanceRemain = CommonInstanceRemain
+
+    @property
+    def CommonInstanceUsed(self):
+        r"""<p>通用实例已使用数量。</p>
+        :rtype: int
+        """
+        return self._CommonInstanceUsed
+
+    @CommonInstanceUsed.setter
+    def CommonInstanceUsed(self, CommonInstanceUsed):
+        self._CommonInstanceUsed = CommonInstanceUsed
+
+    @property
+    def AccessControlRuleUsed(self):
+        r"""<p>访问控制规则已使用数量。</p>
+        :rtype: int
+        """
+        return self._AccessControlRuleUsed
+
+    @AccessControlRuleUsed.setter
+    def AccessControlRuleUsed(self, AccessControlRuleUsed):
+        self._AccessControlRuleUsed = AccessControlRuleUsed
+
+    @property
+    def AccessControlRuleTotal(self):
+        r"""<p>访问控制规则总配额数量。</p>
+        :rtype: int
+        """
+        return self._AccessControlRuleTotal
+
+    @AccessControlRuleTotal.setter
+    def AccessControlRuleTotal(self, AccessControlRuleTotal):
+        self._AccessControlRuleTotal = AccessControlRuleTotal
+
+    @property
+    def SerialRegionUsed(self):
+        r"""<p>已使用串行地域数量。</p>
+        :rtype: int
+        """
+        return self._SerialRegionUsed
+
+    @SerialRegionUsed.setter
+    def SerialRegionUsed(self, SerialRegionUsed):
+        self._SerialRegionUsed = SerialRegionUsed
+
+    @property
+    def NatInstanceUsed(self):
+        r"""<p>已使用 NAT 防火墙实例数量。</p>
+        :rtype: int
+        """
+        return self._NatInstanceUsed
+
+    @NatInstanceUsed.setter
+    def NatInstanceUsed(self, NatInstanceUsed):
+        self._NatInstanceUsed = NatInstanceUsed
+
+    @property
+    def VpcInstanceUsed(self):
+        r"""<p>已使用 VPC 防火墙实例数量。</p>
+        :rtype: int
+        """
+        return self._VpcInstanceUsed
+
+    @VpcInstanceUsed.setter
+    def VpcInstanceUsed(self, VpcInstanceUsed):
+        self._VpcInstanceUsed = VpcInstanceUsed
+
+    @property
+    def BorderRuleQuota(self):
+        r"""<p>边界规则配额详情。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewCommonRuleQuotaDetail`
+        """
+        return self._BorderRuleQuota
+
+    @BorderRuleQuota.setter
+    def BorderRuleQuota(self, BorderRuleQuota):
+        self._BorderRuleQuota = BorderRuleQuota
+
+    @property
+    def NatRuleQuota(self):
+        r"""<p>NAT 规则配额详情。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewCommonRuleQuotaDetail`
+        """
+        return self._NatRuleQuota
+
+    @NatRuleQuota.setter
+    def NatRuleQuota(self, NatRuleQuota):
+        self._NatRuleQuota = NatRuleQuota
+
+    @property
+    def VpcRuleQuota(self):
+        r"""<p>VPC 规则配额详情。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewVpcRuleQuotaDetail`
+        """
+        return self._VpcRuleQuota
+
+    @VpcRuleQuota.setter
+    def VpcRuleQuota(self, VpcRuleQuota):
+        self._VpcRuleQuota = VpcRuleQuota
+
+    @property
+    def BlockListQuota(self):
+        r"""<p>封禁列表配额统计信息。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewBlockListQuota`
+        """
+        return self._BlockListQuota
+
+    @BlockListQuota.setter
+    def BlockListQuota(self, BlockListQuota):
+        self._BlockListQuota = BlockListQuota
+
+    @property
+    def BlockIpCount(self):
+        r"""<p>封禁 IP 总数量。</p>
+        :rtype: int
+        """
+        return self._BlockIpCount
+
+    @BlockIpCount.setter
+    def BlockIpCount(self, BlockIpCount):
+        self._BlockIpCount = BlockIpCount
+
+    @property
+    def BlockIpUsed(self):
+        r"""<p>已使用封禁 IP 数量。</p>
+        :rtype: int
+        """
+        return self._BlockIpUsed
+
+    @BlockIpUsed.setter
+    def BlockIpUsed(self, BlockIpUsed):
+        self._BlockIpUsed = BlockIpUsed
+
+    @property
+    def BlockIpTotal(self):
+        r"""<p>封禁 IP 总配额数量。</p>
+        :rtype: int
+        """
+        return self._BlockIpTotal
+
+    @BlockIpTotal.setter
+    def BlockIpTotal(self, BlockIpTotal):
+        self._BlockIpTotal = BlockIpTotal
+
+    @property
+    def BlockListQuotaDetail(self):
+        r"""<p>封禁列表基础包与扩容包配额详情。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewBlockListQuotaDetail`
+        """
+        return self._BlockListQuotaDetail
+
+    @BlockListQuotaDetail.setter
+    def BlockListQuotaDetail(self, BlockListQuotaDetail):
+        self._BlockListQuotaDetail = BlockListQuotaDetail
+
+    @property
+    def SgRuleQuotaUsed(self):
+        r"""<p>安全组规则已使用数量。</p>
+        :rtype: int
+        """
+        return self._SgRuleQuotaUsed
+
+    @SgRuleQuotaUsed.setter
+    def SgRuleQuotaUsed(self, SgRuleQuotaUsed):
+        self._SgRuleQuotaUsed = SgRuleQuotaUsed
+
+    @property
+    def SgRuleQuotaTotal(self):
+        r"""<p>安全组规则总配额数量。</p>
+        :rtype: int
+        """
+        return self._SgRuleQuotaTotal
+
+    @SgRuleQuotaTotal.setter
+    def SgRuleQuotaTotal(self, SgRuleQuotaTotal):
+        self._SgRuleQuotaTotal = SgRuleQuotaTotal
+
+    @property
+    def TotalExtensionUsed(self):
+        r"""<p>总扩容资源已使用数量。</p>
+        :rtype: int
+        """
+        return self._TotalExtensionUsed
+
+    @TotalExtensionUsed.setter
+    def TotalExtensionUsed(self, TotalExtensionUsed):
+        self._TotalExtensionUsed = TotalExtensionUsed
+
+    @property
+    def TotalExtensionNum(self):
+        r"""<p>总扩容资源配额数量。</p>
+        :rtype: int
+        """
+        return self._TotalExtensionNum
+
+    @TotalExtensionNum.setter
+    def TotalExtensionNum(self, TotalExtensionNum):
+        self._TotalExtensionNum = TotalExtensionNum
+
+    @property
+    def AddressTemplateUsed(self):
+        r"""<p>地址模板已使用数量。</p>
+        :rtype: int
+        """
+        return self._AddressTemplateUsed
+
+    @AddressTemplateUsed.setter
+    def AddressTemplateUsed(self, AddressTemplateUsed):
+        self._AddressTemplateUsed = AddressTemplateUsed
+
+    @property
+    def AddressTemplateTotal(self):
+        r"""<p>地址模板总配额数量。</p>
+        :rtype: int
+        """
+        return self._AddressTemplateTotal
+
+    @AddressTemplateTotal.setter
+    def AddressTemplateTotal(self, AddressTemplateTotal):
+        self._AddressTemplateTotal = AddressTemplateTotal
+
+    @property
+    def HoneyPotUsed(self):
+        r"""<p>蜜罐已使用数量。</p>
+        :rtype: int
+        """
+        return self._HoneyPotUsed
+
+    @HoneyPotUsed.setter
+    def HoneyPotUsed(self, HoneyPotUsed):
+        self._HoneyPotUsed = HoneyPotUsed
+
+    @property
+    def HoneyPotTotal(self):
+        r"""<p>蜜罐总配额数量。</p>
+        :rtype: int
+        """
+        return self._HoneyPotTotal
+
+    @HoneyPotTotal.setter
+    def HoneyPotTotal(self, HoneyPotTotal):
+        self._HoneyPotTotal = HoneyPotTotal
+
+
+    def _deserialize(self, params):
+        self._PublicIpUsed = params.get("PublicIpUsed")
+        self._PublicIpTotal = params.get("PublicIpTotal")
+        self._CommonInstanceTotal = params.get("CommonInstanceTotal")
+        self._CommonInstanceRemain = params.get("CommonInstanceRemain")
+        self._CommonInstanceUsed = params.get("CommonInstanceUsed")
+        self._AccessControlRuleUsed = params.get("AccessControlRuleUsed")
+        self._AccessControlRuleTotal = params.get("AccessControlRuleTotal")
+        self._SerialRegionUsed = params.get("SerialRegionUsed")
+        self._NatInstanceUsed = params.get("NatInstanceUsed")
+        self._VpcInstanceUsed = params.get("VpcInstanceUsed")
+        if params.get("BorderRuleQuota") is not None:
+            self._BorderRuleQuota = OverviewCommonRuleQuotaDetail()
+            self._BorderRuleQuota._deserialize(params.get("BorderRuleQuota"))
+        if params.get("NatRuleQuota") is not None:
+            self._NatRuleQuota = OverviewCommonRuleQuotaDetail()
+            self._NatRuleQuota._deserialize(params.get("NatRuleQuota"))
+        if params.get("VpcRuleQuota") is not None:
+            self._VpcRuleQuota = OverviewVpcRuleQuotaDetail()
+            self._VpcRuleQuota._deserialize(params.get("VpcRuleQuota"))
+        if params.get("BlockListQuota") is not None:
+            self._BlockListQuota = OverviewBlockListQuota()
+            self._BlockListQuota._deserialize(params.get("BlockListQuota"))
+        self._BlockIpCount = params.get("BlockIpCount")
+        self._BlockIpUsed = params.get("BlockIpUsed")
+        self._BlockIpTotal = params.get("BlockIpTotal")
+        if params.get("BlockListQuotaDetail") is not None:
+            self._BlockListQuotaDetail = OverviewBlockListQuotaDetail()
+            self._BlockListQuotaDetail._deserialize(params.get("BlockListQuotaDetail"))
+        self._SgRuleQuotaUsed = params.get("SgRuleQuotaUsed")
+        self._SgRuleQuotaTotal = params.get("SgRuleQuotaTotal")
+        self._TotalExtensionUsed = params.get("TotalExtensionUsed")
+        self._TotalExtensionNum = params.get("TotalExtensionNum")
+        self._AddressTemplateUsed = params.get("AddressTemplateUsed")
+        self._AddressTemplateTotal = params.get("AddressTemplateTotal")
+        self._HoneyPotUsed = params.get("HoneyPotUsed")
+        self._HoneyPotTotal = params.get("HoneyPotTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewResourceQuotaDataLite(AbstractModel):
+    r"""资源与配额详情返回数据，包含详情字段和能力标识
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Detail: <p>资源与配额详情核心数据，包含南北向带宽、东西向带宽、NDR 带宽、资源配额和日志存储信息。</p>
+        :type Detail: :class:`tencentcloud.cfw.v20190904.models.OverviewResourceQuotaDetail`
+        :param _VolumeUsageDetail: <p>纯按量计费使用情况</p>
+        :type VolumeUsageDetail: :class:`tencentcloud.cfw.v20190904.models.VolumeUsageDetail`
+        """
+        self._Detail = None
+        self._VolumeUsageDetail = None
+
+    @property
+    def Detail(self):
+        r"""<p>资源与配额详情核心数据，包含南北向带宽、东西向带宽、NDR 带宽、资源配额和日志存储信息。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewResourceQuotaDetail`
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def VolumeUsageDetail(self):
+        r"""<p>纯按量计费使用情况</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.VolumeUsageDetail`
+        """
+        return self._VolumeUsageDetail
+
+    @VolumeUsageDetail.setter
+    def VolumeUsageDetail(self, VolumeUsageDetail):
+        self._VolumeUsageDetail = VolumeUsageDetail
+
+
+    def _deserialize(self, params):
+        if params.get("Detail") is not None:
+            self._Detail = OverviewResourceQuotaDetail()
+            self._Detail._deserialize(params.get("Detail"))
+        if params.get("VolumeUsageDetail") is not None:
+            self._VolumeUsageDetail = VolumeUsageDetail()
+            self._VolumeUsageDetail._deserialize(params.get("VolumeUsageDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewResourceQuotaDetail(AbstractModel):
+    r"""概览资源与配额详情字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NorthSouthDetail: <p>南北向带宽与流量详情数据。</p>
+        :type NorthSouthDetail: :class:`tencentcloud.cfw.v20190904.models.OverviewNorthSouthDetail`
+        :param _EastWestDetail: <p>东西向带宽与流量详情数据。</p>
+        :type EastWestDetail: :class:`tencentcloud.cfw.v20190904.models.OverviewEastWestDetail`
+        :param _NDRDetail: <p>NDR 带宽与流量详情数据。</p>
+        :type NDRDetail: :class:`tencentcloud.cfw.v20190904.models.OverviewNDRDetail`
+        :param _QuotaDetail: <p>账号下资源、实例、规则和扩容配额详情数据。</p>
+        :type QuotaDetail: :class:`tencentcloud.cfw.v20190904.models.OverviewQuotaDetail`
+        :param _LogStorageDetail: <p>日志存储使用量、保留天数和各类日志容量详情数据。</p>
+        :type LogStorageDetail: :class:`tencentcloud.cfw.v20190904.models.OverviewLogStorageDetail`
+        """
+        self._NorthSouthDetail = None
+        self._EastWestDetail = None
+        self._NDRDetail = None
+        self._QuotaDetail = None
+        self._LogStorageDetail = None
+
+    @property
+    def NorthSouthDetail(self):
+        r"""<p>南北向带宽与流量详情数据。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewNorthSouthDetail`
+        """
+        return self._NorthSouthDetail
+
+    @NorthSouthDetail.setter
+    def NorthSouthDetail(self, NorthSouthDetail):
+        self._NorthSouthDetail = NorthSouthDetail
+
+    @property
+    def EastWestDetail(self):
+        r"""<p>东西向带宽与流量详情数据。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewEastWestDetail`
+        """
+        return self._EastWestDetail
+
+    @EastWestDetail.setter
+    def EastWestDetail(self, EastWestDetail):
+        self._EastWestDetail = EastWestDetail
+
+    @property
+    def NDRDetail(self):
+        r"""<p>NDR 带宽与流量详情数据。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewNDRDetail`
+        """
+        return self._NDRDetail
+
+    @NDRDetail.setter
+    def NDRDetail(self, NDRDetail):
+        self._NDRDetail = NDRDetail
+
+    @property
+    def QuotaDetail(self):
+        r"""<p>账号下资源、实例、规则和扩容配额详情数据。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewQuotaDetail`
+        """
+        return self._QuotaDetail
+
+    @QuotaDetail.setter
+    def QuotaDetail(self, QuotaDetail):
+        self._QuotaDetail = QuotaDetail
+
+    @property
+    def LogStorageDetail(self):
+        r"""<p>日志存储使用量、保留天数和各类日志容量详情数据。</p>
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.OverviewLogStorageDetail`
+        """
+        return self._LogStorageDetail
+
+    @LogStorageDetail.setter
+    def LogStorageDetail(self, LogStorageDetail):
+        self._LogStorageDetail = LogStorageDetail
+
+
+    def _deserialize(self, params):
+        if params.get("NorthSouthDetail") is not None:
+            self._NorthSouthDetail = OverviewNorthSouthDetail()
+            self._NorthSouthDetail._deserialize(params.get("NorthSouthDetail"))
+        if params.get("EastWestDetail") is not None:
+            self._EastWestDetail = OverviewEastWestDetail()
+            self._EastWestDetail._deserialize(params.get("EastWestDetail"))
+        if params.get("NDRDetail") is not None:
+            self._NDRDetail = OverviewNDRDetail()
+            self._NDRDetail._deserialize(params.get("NDRDetail"))
+        if params.get("QuotaDetail") is not None:
+            self._QuotaDetail = OverviewQuotaDetail()
+            self._QuotaDetail._deserialize(params.get("QuotaDetail"))
+        if params.get("LogStorageDetail") is not None:
+            self._LogStorageDetail = OverviewLogStorageDetail()
+            self._LogStorageDetail._deserialize(params.get("LogStorageDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewVpcRuleQuotaDetail(AbstractModel):
+    r"""概览 VPC 规则配额详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllowedNum: <p>允许使用的规则总数。</p>
+        :type AllowedNum: int
+        :param _UsedNum: <p>已使用规则数量。</p>
+        :type UsedNum: int
+        :param _RemainQuota: <p>剩余规则配额数量。</p>
+        :type RemainQuota: int
+        :param _RemainExtensionNum: <p>剩余扩容规则数量。</p>
+        :type RemainExtensionNum: int
+        :param _GlobalRuleNum: <p>全局规则总数。</p>
+        :type GlobalRuleNum: int
+        :param _GlobalEnableRuleNum: <p>当前已启用的全局规则条目。</p>
+        :type GlobalEnableRuleNum: int
+        :param _EdgeRuleNum: <p>边界规则总数。</p>
+        :type EdgeRuleNum: int
+        :param _EdgeEnableRuleNum: <p>边界启用规则数。</p>
+        :type EdgeEnableRuleNum: int
+        :param _V4RuleTotal: <p>IPv4 规则总数。</p>
+        :type V4RuleTotal: int
+        :param _V4EnableRuleTotal: <p>当前已启用的 IPv4 规则条目。</p>
+        :type V4EnableRuleTotal: int
+        :param _V6RuleTotal: <p>IPv6 规则总数。</p>
+        :type V6RuleTotal: int
+        :param _V6EnableRuleTotal: <p>当前已启用的 IPv6 规则条目。</p>
+        :type V6EnableRuleTotal: int
+        :param _IsSwitchEnable: <p>VPC 防火墙开关状态标识。</p>
+        :type IsSwitchEnable: int
+        """
+        self._AllowedNum = None
+        self._UsedNum = None
+        self._RemainQuota = None
+        self._RemainExtensionNum = None
+        self._GlobalRuleNum = None
+        self._GlobalEnableRuleNum = None
+        self._EdgeRuleNum = None
+        self._EdgeEnableRuleNum = None
+        self._V4RuleTotal = None
+        self._V4EnableRuleTotal = None
+        self._V6RuleTotal = None
+        self._V6EnableRuleTotal = None
+        self._IsSwitchEnable = None
+
+    @property
+    def AllowedNum(self):
+        r"""<p>允许使用的规则总数。</p>
+        :rtype: int
+        """
+        return self._AllowedNum
+
+    @AllowedNum.setter
+    def AllowedNum(self, AllowedNum):
+        self._AllowedNum = AllowedNum
+
+    @property
+    def UsedNum(self):
+        r"""<p>已使用规则数量。</p>
+        :rtype: int
+        """
+        return self._UsedNum
+
+    @UsedNum.setter
+    def UsedNum(self, UsedNum):
+        self._UsedNum = UsedNum
+
+    @property
+    def RemainQuota(self):
+        r"""<p>剩余规则配额数量。</p>
+        :rtype: int
+        """
+        return self._RemainQuota
+
+    @RemainQuota.setter
+    def RemainQuota(self, RemainQuota):
+        self._RemainQuota = RemainQuota
+
+    @property
+    def RemainExtensionNum(self):
+        r"""<p>剩余扩容规则数量。</p>
+        :rtype: int
+        """
+        return self._RemainExtensionNum
+
+    @RemainExtensionNum.setter
+    def RemainExtensionNum(self, RemainExtensionNum):
+        self._RemainExtensionNum = RemainExtensionNum
+
+    @property
+    def GlobalRuleNum(self):
+        r"""<p>全局规则总数。</p>
+        :rtype: int
+        """
+        return self._GlobalRuleNum
+
+    @GlobalRuleNum.setter
+    def GlobalRuleNum(self, GlobalRuleNum):
+        self._GlobalRuleNum = GlobalRuleNum
+
+    @property
+    def GlobalEnableRuleNum(self):
+        r"""<p>当前已启用的全局规则条目。</p>
+        :rtype: int
+        """
+        return self._GlobalEnableRuleNum
+
+    @GlobalEnableRuleNum.setter
+    def GlobalEnableRuleNum(self, GlobalEnableRuleNum):
+        self._GlobalEnableRuleNum = GlobalEnableRuleNum
+
+    @property
+    def EdgeRuleNum(self):
+        r"""<p>边界规则总数。</p>
+        :rtype: int
+        """
+        return self._EdgeRuleNum
+
+    @EdgeRuleNum.setter
+    def EdgeRuleNum(self, EdgeRuleNum):
+        self._EdgeRuleNum = EdgeRuleNum
+
+    @property
+    def EdgeEnableRuleNum(self):
+        r"""<p>边界启用规则数。</p>
+        :rtype: int
+        """
+        return self._EdgeEnableRuleNum
+
+    @EdgeEnableRuleNum.setter
+    def EdgeEnableRuleNum(self, EdgeEnableRuleNum):
+        self._EdgeEnableRuleNum = EdgeEnableRuleNum
+
+    @property
+    def V4RuleTotal(self):
+        r"""<p>IPv4 规则总数。</p>
+        :rtype: int
+        """
+        return self._V4RuleTotal
+
+    @V4RuleTotal.setter
+    def V4RuleTotal(self, V4RuleTotal):
+        self._V4RuleTotal = V4RuleTotal
+
+    @property
+    def V4EnableRuleTotal(self):
+        r"""<p>当前已启用的 IPv4 规则条目。</p>
+        :rtype: int
+        """
+        return self._V4EnableRuleTotal
+
+    @V4EnableRuleTotal.setter
+    def V4EnableRuleTotal(self, V4EnableRuleTotal):
+        self._V4EnableRuleTotal = V4EnableRuleTotal
+
+    @property
+    def V6RuleTotal(self):
+        r"""<p>IPv6 规则总数。</p>
+        :rtype: int
+        """
+        return self._V6RuleTotal
+
+    @V6RuleTotal.setter
+    def V6RuleTotal(self, V6RuleTotal):
+        self._V6RuleTotal = V6RuleTotal
+
+    @property
+    def V6EnableRuleTotal(self):
+        r"""<p>当前已启用的 IPv6 规则条目。</p>
+        :rtype: int
+        """
+        return self._V6EnableRuleTotal
+
+    @V6EnableRuleTotal.setter
+    def V6EnableRuleTotal(self, V6EnableRuleTotal):
+        self._V6EnableRuleTotal = V6EnableRuleTotal
+
+    @property
+    def IsSwitchEnable(self):
+        r"""<p>VPC 防火墙开关状态标识。</p>
+        :rtype: int
+        """
+        return self._IsSwitchEnable
+
+    @IsSwitchEnable.setter
+    def IsSwitchEnable(self, IsSwitchEnable):
+        self._IsSwitchEnable = IsSwitchEnable
+
+
+    def _deserialize(self, params):
+        self._AllowedNum = params.get("AllowedNum")
+        self._UsedNum = params.get("UsedNum")
+        self._RemainQuota = params.get("RemainQuota")
+        self._RemainExtensionNum = params.get("RemainExtensionNum")
+        self._GlobalRuleNum = params.get("GlobalRuleNum")
+        self._GlobalEnableRuleNum = params.get("GlobalEnableRuleNum")
+        self._EdgeRuleNum = params.get("EdgeRuleNum")
+        self._EdgeEnableRuleNum = params.get("EdgeEnableRuleNum")
+        self._V4RuleTotal = params.get("V4RuleTotal")
+        self._V4EnableRuleTotal = params.get("V4EnableRuleTotal")
+        self._V6RuleTotal = params.get("V6RuleTotal")
+        self._V6EnableRuleTotal = params.get("V6EnableRuleTotal")
+        self._IsSwitchEnable = params.get("IsSwitchEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PolicyRoutePreCheckReport(AbstractModel):
     r"""策略路由预编排配额报告
 
@@ -40445,6 +42985,102 @@ class UpdateClusterVpcFwResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class VolumeUsageDetail(AbstractModel):
+    r"""纯按量计费版本使用详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicIpUsed: <p>防护IP数</p><p>默认值：0</p>
+        :type PublicIpUsed: int
+        :param _InstanceUsed: <p>防护实例数</p><p>默认值：0</p>
+        :type InstanceUsed: int
+        :param _StatDate: <p>统计日期</p>
+        :type StatDate: str
+        :param _TodayTrafficGB: <p>处理流量</p>
+        :type TodayTrafficGB: float
+        :param _ProtectDays: <p>防护天数</p>
+        :type ProtectDays: int
+        """
+        self._PublicIpUsed = None
+        self._InstanceUsed = None
+        self._StatDate = None
+        self._TodayTrafficGB = None
+        self._ProtectDays = None
+
+    @property
+    def PublicIpUsed(self):
+        r"""<p>防护IP数</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._PublicIpUsed
+
+    @PublicIpUsed.setter
+    def PublicIpUsed(self, PublicIpUsed):
+        self._PublicIpUsed = PublicIpUsed
+
+    @property
+    def InstanceUsed(self):
+        r"""<p>防护实例数</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._InstanceUsed
+
+    @InstanceUsed.setter
+    def InstanceUsed(self, InstanceUsed):
+        self._InstanceUsed = InstanceUsed
+
+    @property
+    def StatDate(self):
+        r"""<p>统计日期</p>
+        :rtype: str
+        """
+        return self._StatDate
+
+    @StatDate.setter
+    def StatDate(self, StatDate):
+        self._StatDate = StatDate
+
+    @property
+    def TodayTrafficGB(self):
+        r"""<p>处理流量</p>
+        :rtype: float
+        """
+        return self._TodayTrafficGB
+
+    @TodayTrafficGB.setter
+    def TodayTrafficGB(self, TodayTrafficGB):
+        self._TodayTrafficGB = TodayTrafficGB
+
+    @property
+    def ProtectDays(self):
+        r"""<p>防护天数</p>
+        :rtype: int
+        """
+        return self._ProtectDays
+
+    @ProtectDays.setter
+    def ProtectDays(self, ProtectDays):
+        self._ProtectDays = ProtectDays
+
+
+    def _deserialize(self, params):
+        self._PublicIpUsed = params.get("PublicIpUsed")
+        self._InstanceUsed = params.get("InstanceUsed")
+        self._StatDate = params.get("StatDate")
+        self._TodayTrafficGB = params.get("TodayTrafficGB")
+        self._ProtectDays = params.get("ProtectDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VpcDnsInfo(AbstractModel):

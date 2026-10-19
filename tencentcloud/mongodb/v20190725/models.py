@@ -15661,19 +15661,15 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
-
+        :param _InstanceId: <p>指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _OldIpExpiredTime: 原 IP 地址保留时长。
-- 单位为分钟，0表示立即回收原 IP 地址。
-- 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
-
+        :param _OldIpExpiredTime: <p>原 IP 地址保留时长。</p><ul><li>单位为分钟，0表示立即回收原 IP 地址。</li><li>原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。</li></ul>
         :type OldIpExpiredTime: int
-        :param _NewUniqVpcId: 切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络 ID。
+        :param _NewUniqVpcId: <p>切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 <a href="https://cloud.tencent.com/document/product/240/38568">DescribeDBInstances</a> 获取私有网络 ID。</p>
         :type NewUniqVpcId: str
-        :param _NewUniqSubnetId: 切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络的子网 ID。
+        :param _NewUniqSubnetId: <p>切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 <a href="https://cloud.tencent.com/document/product/240/38568">DescribeDBInstances</a> 获取私有网络的子网 ID。</p>
         :type NewUniqSubnetId: str
-        :param _NetworkAddresses: IP 地址信息，包含新 IP 地址与 原 IP 地址。
+        :param _NetworkAddresses: <p>IP 地址信息，包含新 IP 地址与 原 IP 地址。</p>
         :type NetworkAddresses: list of ModifyNetworkAddress
         """
         self._InstanceId = None
@@ -15684,8 +15680,7 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
-
+        r"""<p>指定需修改网络的实例 ID。例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15696,10 +15691,7 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 
     @property
     def OldIpExpiredTime(self):
-        r"""原 IP 地址保留时长。
-- 单位为分钟，0表示立即回收原 IP 地址。
-- 原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。
-
+        r"""<p>原 IP 地址保留时长。</p><ul><li>单位为分钟，0表示立即回收原 IP 地址。</li><li>原 IP 将在约定时间后释放，在释放前原 IP和新 IP均可访问。</li></ul>
         :rtype: int
         """
         return self._OldIpExpiredTime
@@ -15710,7 +15702,7 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 
     @property
     def NewUniqVpcId(self):
-        r"""切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络 ID。
+        r"""<p>切换后的私有网络 ID，若实例当前为基础网络，该字段无需配置。请通过接口 <a href="https://cloud.tencent.com/document/product/240/38568">DescribeDBInstances</a> 获取私有网络 ID。</p>
         :rtype: str
         """
         return self._NewUniqVpcId
@@ -15721,7 +15713,7 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 
     @property
     def NewUniqSubnetId(self):
-        r"""切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 [DescribeDBInstances](https://cloud.tencent.com/document/product/240/38568) 获取私有网络的子网 ID。
+        r"""<p>切换后私有网络的子网 ID。若实例当前为基础网络，该字段无需配置。请通过接口 <a href="https://cloud.tencent.com/document/product/240/38568">DescribeDBInstances</a> 获取私有网络的子网 ID。</p>
         :rtype: str
         """
         return self._NewUniqSubnetId
@@ -15732,7 +15724,7 @@ class ModifyDBInstanceNetworkAddressRequest(AbstractModel):
 
     @property
     def NetworkAddresses(self):
-        r"""IP 地址信息，包含新 IP 地址与 原 IP 地址。
+        r"""<p>IP 地址信息，包含新 IP 地址与 原 IP 地址。</p>
         :rtype: list of ModifyNetworkAddress
         """
         return self._NetworkAddresses
@@ -15770,7 +15762,7 @@ class ModifyDBInstanceNetworkAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 修改网络异步流程任务ID。
+        :param _FlowId: <p>修改网络异步流程任务ID。</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15780,7 +15772,7 @@ class ModifyDBInstanceNetworkAddressResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""修改网络异步流程任务ID。
+        r"""<p>修改网络异步流程任务ID。</p>
         :rtype: int
         """
         return self._FlowId
@@ -16620,17 +16612,20 @@ class ModifyNetworkAddress(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NewIPAddress: 新IP地址。
+        :param _NewIPAddress: <p>新IP地址。</p>
         :type NewIPAddress: str
-        :param _OldIpAddress: 原IP地址。
+        :param _OldIpAddress: <p>原IP地址。</p>
         :type OldIpAddress: str
+        :param _NodeType: <p>在副本集时，修改网络需要传此字段，用于标识该ip地址为主节点或者hidden节点</p><p>枚举值：</p><ul><li>PRIMARY： 主节点</li><li>HIDDEN： hidden节点</li></ul>
+        :type NodeType: str
         """
         self._NewIPAddress = None
         self._OldIpAddress = None
+        self._NodeType = None
 
     @property
     def NewIPAddress(self):
-        r"""新IP地址。
+        r"""<p>新IP地址。</p>
         :rtype: str
         """
         return self._NewIPAddress
@@ -16641,7 +16636,7 @@ class ModifyNetworkAddress(AbstractModel):
 
     @property
     def OldIpAddress(self):
-        r"""原IP地址。
+        r"""<p>原IP地址。</p>
         :rtype: str
         """
         return self._OldIpAddress
@@ -16650,10 +16645,22 @@ class ModifyNetworkAddress(AbstractModel):
     def OldIpAddress(self, OldIpAddress):
         self._OldIpAddress = OldIpAddress
 
+    @property
+    def NodeType(self):
+        r"""<p>在副本集时，修改网络需要传此字段，用于标识该ip地址为主节点或者hidden节点</p><p>枚举值：</p><ul><li>PRIMARY： 主节点</li><li>HIDDEN： hidden节点</li></ul>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
 
     def _deserialize(self, params):
         self._NewIPAddress = params.get("NewIPAddress")
         self._OldIpAddress = params.get("OldIpAddress")
+        self._NodeType = params.get("NodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

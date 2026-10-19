@@ -2098,22 +2098,15 @@ class BizLicenseOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片的 Base64 值。<br>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。<br>支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。<br>图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: <p>图片的 Url 地址。<br>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。<br>支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。<br>图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。<br>非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
-        :param _EnableCopyWarn: 是否返回告警码，默认为false
+        :param _EnableCopyWarn: <p>是否返回告警码，默认为false</p>
         :type EnableCopyWarn: bool
-        :param _EnablePeriodComplete: 是否返回自动拼接的有效期，默认为true
+        :param _EnablePeriodComplete: <p>是否返回自动拼接的有效期，默认为true</p>
         :type EnablePeriodComplete: bool
-        :param _EnableBusinessCertificate: 是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+        :param _EnableBusinessCertificate: <p>是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false</p>
         :type EnableBusinessCertificate: bool
         """
         self._ImageBase64 = None
@@ -2124,10 +2117,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        r"""图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片的 Base64 值。<br>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。<br>支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。<br>图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -2138,11 +2128,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""图片的 Url 地址。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>图片的 Url 地址。<br>支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。<br>支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。<br>图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。<br>非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -2153,7 +2139,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def EnableCopyWarn(self):
-        r"""是否返回告警码，默认为false
+        r"""<p>是否返回告警码，默认为false</p>
         :rtype: bool
         """
         return self._EnableCopyWarn
@@ -2164,7 +2150,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def EnablePeriodComplete(self):
-        r"""是否返回自动拼接的有效期，默认为true
+        r"""<p>是否返回自动拼接的有效期，默认为true</p>
         :rtype: bool
         """
         return self._EnablePeriodComplete
@@ -2175,7 +2161,7 @@ class BizLicenseOCRRequest(AbstractModel):
 
     @property
     def EnableBusinessCertificate(self):
-        r"""是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false
+        r"""<p>是否支持营业类证件识别（包括营业执照和非营业执照的其他证件），默认为false</p>
         :rtype: bool
         """
         return self._EnableBusinessCertificate
@@ -2208,59 +2194,53 @@ class BizLicenseOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegNum: 统一社会信用代码（三合一之前为注册号）
+        :param _RegNum: <p>统一社会信用代码（三合一之前为注册号）</p>
         :type RegNum: str
-        :param _Name: 公司名称
+        :param _Name: <p>公司名称</p>
         :type Name: str
-        :param _Capital: 注册资本
+        :param _Capital: <p>注册资本</p>
         :type Capital: str
-        :param _Person: 法定代表人
+        :param _Person: <p>法定代表人</p>
         :type Person: str
-        :param _Address: 地址
+        :param _Address: <p>地址</p>
         :type Address: str
-        :param _Business: 经营范围
+        :param _Business: <p>经营范围</p>
         :type Business: str
-        :param _Type: 主体类型
+        :param _Type: <p>主体类型</p>
         :type Type: str
-        :param _Period: 营业期限
+        :param _Period: <p>营业期限</p>
         :type Period: str
-        :param _ComposingForm: 组成形式
+        :param _ComposingForm: <p>组成形式</p>
         :type ComposingForm: str
-        :param _SetDate: 成立日期
+        :param _SetDate: <p>成立日期</p>
         :type SetDate: str
-        :param _RecognizeWarnCode: Code 告警码列表和释义：
--9102 黑白复印件告警
--9104 翻拍件告警
+        :param _RecognizeWarnCode: <p>Code 告警码列表和释义：<br>-9102 黑白复印件告警<br>-9104 翻拍件告警<br>-9108 经营范围识别异常告警（由于文字过小、模糊、反光、遮挡或明显倾斜等情况导致未能正常识别）</p>
         :type RecognizeWarnCode: list of int
-        :param _RecognizeWarnMsg: 告警码说明：
-WARN_COPY_CARD 黑白复印件告警
-WARN_RESHOOT_CARD翻拍件告警
+        :param _RecognizeWarnMsg: <p>告警码说明：<br>WARN_COPY_CARD 黑白复印件告警<br>WARN_RESHOOT_CARD翻拍件告警<br>WARN_EARLY_STOP 经营范围识别异常告警</p>
         :type RecognizeWarnMsg: list of str
-        :param _IsDuplication: 是否为副本。1为是，-1为不是。
+        :param _IsDuplication: <p>是否为副本。1为是，-1为不是。</p>
         :type IsDuplication: int
-        :param _RegistrationDate: 登记日期
+        :param _RegistrationDate: <p>登记日期</p>
         :type RegistrationDate: str
-        :param _Angle:  图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度
-
-
+        :param _Angle: <p>图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度</p>
         :type Angle: float
-        :param _NationalEmblem: 是否有国徽。false为没有，true为有。
+        :param _NationalEmblem: <p>是否有国徽。false为没有，true为有。</p>
         :type NationalEmblem: bool
-        :param _QRCode: 是否有二维码。false为没有，true为有。
+        :param _QRCode: <p>是否有二维码。false为没有，true为有。</p>
         :type QRCode: bool
-        :param _Seal: 是否有印章。false为没有，true为有。
+        :param _Seal: <p>是否有印章。false为没有，true为有。</p>
         :type Seal: bool
-        :param _Title: 标题
+        :param _Title: <p>标题</p>
         :type Title: str
-        :param _SerialNumber: 编号
+        :param _SerialNumber: <p>编号</p>
         :type SerialNumber: str
-        :param _RegistrationAuthority: 登记机关
+        :param _RegistrationAuthority: <p>登记机关</p>
         :type RegistrationAuthority: str
-        :param _Electronic: 是否是电子营业执照。false为没有，true为有。
+        :param _Electronic: <p>是否是电子营业执照。false为没有，true为有。</p>
         :type Electronic: bool
-        :param _BusinessCertificate: 非营业执照的营业类证件识别结果，将以结构化形式呈现。
+        :param _BusinessCertificate: <p>非营业执照的营业类证件识别结果，将以结构化形式呈现。</p>
         :type BusinessCertificate: list of BusinessCertificateInfo
-        :param _Important: 重要提示字段
+        :param _Important: <p>重要提示字段</p>
         :type Important: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2293,7 +2273,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RegNum(self):
-        r"""统一社会信用代码（三合一之前为注册号）
+        r"""<p>统一社会信用代码（三合一之前为注册号）</p>
         :rtype: str
         """
         return self._RegNum
@@ -2304,7 +2284,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Name(self):
-        r"""公司名称
+        r"""<p>公司名称</p>
         :rtype: str
         """
         return self._Name
@@ -2315,7 +2295,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Capital(self):
-        r"""注册资本
+        r"""<p>注册资本</p>
         :rtype: str
         """
         return self._Capital
@@ -2326,7 +2306,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Person(self):
-        r"""法定代表人
+        r"""<p>法定代表人</p>
         :rtype: str
         """
         return self._Person
@@ -2337,7 +2317,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Address(self):
-        r"""地址
+        r"""<p>地址</p>
         :rtype: str
         """
         return self._Address
@@ -2348,7 +2328,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Business(self):
-        r"""经营范围
+        r"""<p>经营范围</p>
         :rtype: str
         """
         return self._Business
@@ -2359,7 +2339,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Type(self):
-        r"""主体类型
+        r"""<p>主体类型</p>
         :rtype: str
         """
         return self._Type
@@ -2370,7 +2350,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Period(self):
-        r"""营业期限
+        r"""<p>营业期限</p>
         :rtype: str
         """
         return self._Period
@@ -2381,7 +2361,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def ComposingForm(self):
-        r"""组成形式
+        r"""<p>组成形式</p>
         :rtype: str
         """
         return self._ComposingForm
@@ -2392,7 +2372,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def SetDate(self):
-        r"""成立日期
+        r"""<p>成立日期</p>
         :rtype: str
         """
         return self._SetDate
@@ -2403,9 +2383,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RecognizeWarnCode(self):
-        r"""Code 告警码列表和释义：
--9102 黑白复印件告警
--9104 翻拍件告警
+        r"""<p>Code 告警码列表和释义：<br>-9102 黑白复印件告警<br>-9104 翻拍件告警<br>-9108 经营范围识别异常告警（由于文字过小、模糊、反光、遮挡或明显倾斜等情况导致未能正常识别）</p>
         :rtype: list of int
         """
         return self._RecognizeWarnCode
@@ -2416,9 +2394,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RecognizeWarnMsg(self):
-        r"""告警码说明：
-WARN_COPY_CARD 黑白复印件告警
-WARN_RESHOOT_CARD翻拍件告警
+        r"""<p>告警码说明：<br>WARN_COPY_CARD 黑白复印件告警<br>WARN_RESHOOT_CARD翻拍件告警<br>WARN_EARLY_STOP 经营范围识别异常告警</p>
         :rtype: list of str
         """
         return self._RecognizeWarnMsg
@@ -2429,7 +2405,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def IsDuplication(self):
-        r"""是否为副本。1为是，-1为不是。
+        r"""<p>是否为副本。1为是，-1为不是。</p>
         :rtype: int
         """
         return self._IsDuplication
@@ -2440,7 +2416,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RegistrationDate(self):
-        r"""登记日期
+        r"""<p>登记日期</p>
         :rtype: str
         """
         return self._RegistrationDate
@@ -2451,9 +2427,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Angle(self):
-        r""" 图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度
-
-
+        r"""<p>图片旋转角度(角度制)，文本的水平方向为0度；顺时针为正，角度范围是0-360度</p>
         :rtype: float
         """
         return self._Angle
@@ -2464,7 +2438,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def NationalEmblem(self):
-        r"""是否有国徽。false为没有，true为有。
+        r"""<p>是否有国徽。false为没有，true为有。</p>
         :rtype: bool
         """
         return self._NationalEmblem
@@ -2475,7 +2449,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def QRCode(self):
-        r"""是否有二维码。false为没有，true为有。
+        r"""<p>是否有二维码。false为没有，true为有。</p>
         :rtype: bool
         """
         return self._QRCode
@@ -2486,7 +2460,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Seal(self):
-        r"""是否有印章。false为没有，true为有。
+        r"""<p>是否有印章。false为没有，true为有。</p>
         :rtype: bool
         """
         return self._Seal
@@ -2497,7 +2471,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Title(self):
-        r"""标题
+        r"""<p>标题</p>
         :rtype: str
         """
         return self._Title
@@ -2508,7 +2482,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def SerialNumber(self):
-        r"""编号
+        r"""<p>编号</p>
         :rtype: str
         """
         return self._SerialNumber
@@ -2519,7 +2493,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def RegistrationAuthority(self):
-        r"""登记机关
+        r"""<p>登记机关</p>
         :rtype: str
         """
         return self._RegistrationAuthority
@@ -2530,7 +2504,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Electronic(self):
-        r"""是否是电子营业执照。false为没有，true为有。
+        r"""<p>是否是电子营业执照。false为没有，true为有。</p>
         :rtype: bool
         """
         return self._Electronic
@@ -2541,7 +2515,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def BusinessCertificate(self):
-        r"""非营业执照的营业类证件识别结果，将以结构化形式呈现。
+        r"""<p>非营业执照的营业类证件识别结果，将以结构化形式呈现。</p>
         :rtype: list of BusinessCertificateInfo
         """
         return self._BusinessCertificate
@@ -2552,7 +2526,7 @@ WARN_RESHOOT_CARD翻拍件告警
 
     @property
     def Important(self):
-        r"""重要提示字段
+        r"""<p>重要提示字段</p>
         :rtype: str
         """
         return self._Important
@@ -24151,26 +24125,15 @@ class RecognizeGeneralCardWarnRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageUrl: 图片链接
+        :param _ImageUrl: <p>图片链接</p>
         :type ImageUrl: str
-        :param _ImageBase64: 图片base64
+        :param _ImageBase64: <p>图片base64</p>
         :type ImageBase64: str
-        :param _CardType: 卡证类型参数，包含以下范围：  
-General：通用卡证
-IDCard：身份证 
-Passport：护照 
-BankCard：银行卡
-VehicleLicense：行驶证
-DriverLicense：驾驶证
-BizLicense：营业执照 
-HmtResidentPermit：港澳台居住证
-ForeignPermanentResident：外国人永居证
-MainlandPermit：港澳台来往内地通行证
-SocialSecurityCard：社保卡
+        :param _CardType: <p>卡证类型参数，选填，不填则默认为General，枚举值：<br>（如输入图片的卡证类型明确，建议填入，可降低请求耗时）</p><p>General：系统自动分类/其他类型<br>IDCard：身份证<br>Passport：护照<br>BankCard：银行卡<br>VehicleLicense：行驶证<br>DriverLicense：驾驶证<br>BizLicense：营业执照<br>HmtResidentPermit：港澳台居住证<br>ForeignPermanentResident：外国人永居证<br>MainlandPermit：港澳台来往内地通行证<br>SocialSecurityCard：社保卡</p>
         :type CardType: str
-        :param _IsPdf: 是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        :param _IsPdf: <p>是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。</p>
         :type IsPdf: bool
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        :param _PdfPageNumber: <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。</p>
         :type PdfPageNumber: int
         """
         self._ImageUrl = None
@@ -24181,7 +24144,7 @@ SocialSecurityCard：社保卡
 
     @property
     def ImageUrl(self):
-        r"""图片链接
+        r"""<p>图片链接</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -24192,7 +24155,7 @@ SocialSecurityCard：社保卡
 
     @property
     def ImageBase64(self):
-        r"""图片base64
+        r"""<p>图片base64</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -24203,18 +24166,7 @@ SocialSecurityCard：社保卡
 
     @property
     def CardType(self):
-        r"""卡证类型参数，包含以下范围：  
-General：通用卡证
-IDCard：身份证 
-Passport：护照 
-BankCard：银行卡
-VehicleLicense：行驶证
-DriverLicense：驾驶证
-BizLicense：营业执照 
-HmtResidentPermit：港澳台居住证
-ForeignPermanentResident：外国人永居证
-MainlandPermit：港澳台来往内地通行证
-SocialSecurityCard：社保卡
+        r"""<p>卡证类型参数，选填，不填则默认为General，枚举值：<br>（如输入图片的卡证类型明确，建议填入，可降低请求耗时）</p><p>General：系统自动分类/其他类型<br>IDCard：身份证<br>Passport：护照<br>BankCard：银行卡<br>VehicleLicense：行驶证<br>DriverLicense：驾驶证<br>BizLicense：营业执照<br>HmtResidentPermit：港澳台居住证<br>ForeignPermanentResident：外国人永居证<br>MainlandPermit：港澳台来往内地通行证<br>SocialSecurityCard：社保卡</p>
         :rtype: str
         """
         return self._CardType
@@ -24225,7 +24177,7 @@ SocialSecurityCard：社保卡
 
     @property
     def IsPdf(self):
-        r"""是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。
+        r"""<p>是否开启PDF识别，默认值为false，开启后可同时支持图片和PDF的识别。</p>
         :rtype: bool
         """
         return self._IsPdf
@@ -24236,7 +24188,7 @@ SocialSecurityCard：社保卡
 
     @property
     def PdfPageNumber(self):
-        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
+        r"""<p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。</p>
         :rtype: int
         """
         return self._PdfPageNumber
@@ -24269,40 +24221,29 @@ class RecognizeGeneralCardWarnResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CardType: 卡证类型参数，包含以下范围： 
-General：通用卡证
-IDCard：身份证 
-Passport：护照 
-BankCard：银行卡
-VehicleLicense：行驶证
-DriverLicense：驾驶证
-BizLicense：营业执照 
-HmtResidentPermit：港澳台居住证
-ForeignPermanentResident：外国人永居证
-MainlandPermit：港澳台来往内地通行证
-SocialSecurityCard：社保卡
+        :param _CardType: <p>卡证类型参数，枚举值：<br>（如入参CardType未填或填入General，返回自动分类的卡证类型，未能分类的其他类型返回General；如入参CardType填入General以外的值，则不进行自动分类、返回相同的值）</p><p>General：其他类型<br>IDCard：身份证<br>Passport：护照<br>BankCard：银行卡<br>VehicleLicense：行驶证<br>DriverLicense：驾驶证<br>BizLicense：营业执照<br>HmtResidentPermit：港澳台居住证<br>ForeignPermanentResident：外国人永居证<br>MainlandPermit：港澳台来往内地通行证<br>SocialSecurityCard：社保卡</p>
         :type CardType: str
-        :param _Blur: 模糊信息
+        :param _Blur: <p>模糊信息</p>
         :type Blur: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _BorderIncomplete: 边框不完整信息
+        :param _BorderIncomplete: <p>边框不完整信息</p>
         :type BorderIncomplete: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Copy: 复印件信息
+        :param _Copy: <p>复印件信息</p>
         :type Copy: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Ps: ps篡改信息
+        :param _Ps: <p>ps篡改信息</p>
         :type Ps: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Reflection: 反光信息
+        :param _Reflection: <p>反光信息</p>
         :type Reflection: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Reprint: 翻拍件信息
+        :param _Reprint: <p>翻拍件信息</p>
         :type Reprint: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Screenshot: 是否截图
+        :param _Screenshot: <p>是否截图</p>
         :type Screenshot: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Cover: 是否遮挡
+        :param _Cover: <p>是否遮挡</p>
         :type Cover: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Overlap: 是否重叠
+        :param _Overlap: <p>是否重叠</p>
         :type Overlap: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Watermark: 是否水印
+        :param _Watermark: <p>是否水印</p>
         :type Watermark: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
-        :param _Electron: 是否电子证照（目前仅支持电子身份证、电子营业执照识别
+        :param _Electron: <p>是否电子证照（目前仅支持电子身份证、电子营业执照识别</p>
         :type Electron: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24323,18 +24264,7 @@ SocialSecurityCard：社保卡
 
     @property
     def CardType(self):
-        r"""卡证类型参数，包含以下范围： 
-General：通用卡证
-IDCard：身份证 
-Passport：护照 
-BankCard：银行卡
-VehicleLicense：行驶证
-DriverLicense：驾驶证
-BizLicense：营业执照 
-HmtResidentPermit：港澳台居住证
-ForeignPermanentResident：外国人永居证
-MainlandPermit：港澳台来往内地通行证
-SocialSecurityCard：社保卡
+        r"""<p>卡证类型参数，枚举值：<br>（如入参CardType未填或填入General，返回自动分类的卡证类型，未能分类的其他类型返回General；如入参CardType填入General以外的值，则不进行自动分类、返回相同的值）</p><p>General：其他类型<br>IDCard：身份证<br>Passport：护照<br>BankCard：银行卡<br>VehicleLicense：行驶证<br>DriverLicense：驾驶证<br>BizLicense：营业执照<br>HmtResidentPermit：港澳台居住证<br>ForeignPermanentResident：外国人永居证<br>MainlandPermit：港澳台来往内地通行证<br>SocialSecurityCard：社保卡</p>
         :rtype: str
         """
         return self._CardType
@@ -24345,7 +24275,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Blur(self):
-        r"""模糊信息
+        r"""<p>模糊信息</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Blur
@@ -24356,7 +24286,7 @@ SocialSecurityCard：社保卡
 
     @property
     def BorderIncomplete(self):
-        r"""边框不完整信息
+        r"""<p>边框不完整信息</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._BorderIncomplete
@@ -24367,7 +24297,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Copy(self):
-        r"""复印件信息
+        r"""<p>复印件信息</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Copy
@@ -24378,7 +24308,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Ps(self):
-        r"""ps篡改信息
+        r"""<p>ps篡改信息</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Ps
@@ -24389,7 +24319,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Reflection(self):
-        r"""反光信息
+        r"""<p>反光信息</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Reflection
@@ -24400,7 +24330,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Reprint(self):
-        r"""翻拍件信息
+        r"""<p>翻拍件信息</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Reprint
@@ -24411,7 +24341,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Screenshot(self):
-        r"""是否截图
+        r"""<p>是否截图</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Screenshot
@@ -24422,7 +24352,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Cover(self):
-        r"""是否遮挡
+        r"""<p>是否遮挡</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Cover
@@ -24433,7 +24363,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Overlap(self):
-        r"""是否重叠
+        r"""<p>是否重叠</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Overlap
@@ -24444,7 +24374,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Watermark(self):
-        r"""是否水印
+        r"""<p>是否水印</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Watermark
@@ -24455,7 +24385,7 @@ SocialSecurityCard：社保卡
 
     @property
     def Electron(self):
-        r"""是否电子证照（目前仅支持电子身份证、电子营业执照识别
+        r"""<p>是否电子证照（目前仅支持电子身份证、电子营业执照识别</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         """
         return self._Electron

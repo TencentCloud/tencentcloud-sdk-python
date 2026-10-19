@@ -1222,6 +1222,135 @@ class AttachPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AuditPermissionApplyOrderRequest(AbstractModel):
+    r"""AuditPermissionApplyOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>空间 ID</p>
+        :type ZoneId: str
+        :param _ApplyId: <p>申请单 ID</p>
+        :type ApplyId: str
+        :param _AuditResult: <p>审批结果</p><p>枚举值：</p><ul><li>Approve： 通过</li><li>Reject： 拒绝</li></ul>
+        :type AuditResult: str
+        :param _AuditOpinion: <p>审批意见</p>
+        :type AuditOpinion: str
+        """
+        self._ZoneId = None
+        self._ApplyId = None
+        self._AuditResult = None
+        self._AuditOpinion = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>空间 ID</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ApplyId(self):
+        r"""<p>申请单 ID</p>
+        :rtype: str
+        """
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
+
+    @property
+    def AuditResult(self):
+        r"""<p>审批结果</p><p>枚举值：</p><ul><li>Approve： 通过</li><li>Reject： 拒绝</li></ul>
+        :rtype: str
+        """
+        return self._AuditResult
+
+    @AuditResult.setter
+    def AuditResult(self, AuditResult):
+        self._AuditResult = AuditResult
+
+    @property
+    def AuditOpinion(self):
+        r"""<p>审批意见</p>
+        :rtype: str
+        """
+        return self._AuditOpinion
+
+    @AuditOpinion.setter
+    def AuditOpinion(self, AuditOpinion):
+        self._AuditOpinion = AuditOpinion
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._ApplyId = params.get("ApplyId")
+        self._AuditResult = params.get("AuditResult")
+        self._AuditOpinion = params.get("AuditOpinion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditPermissionApplyOrderResponse(AbstractModel):
+    r"""AuditPermissionApplyOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: <p>同步任务列表</p>
+        :type Tasks: list of TaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        r"""<p>同步任务列表</p>
+        :rtype: list of TaskInfo
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskInfo()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class AuthNode(AbstractModel):
     r"""互信主体主要信息
 

@@ -172,6 +172,42 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BatchAddVideoSnapshotConfigChannel(
+            self,
+            request: models.BatchAddVideoSnapshotConfigChannelRequest,
+            opts: Dict = None,
+    ) -> models.BatchAddVideoSnapshotConfigChannelResponse:
+        """
+        批量添加截图配置的通道
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchAddVideoSnapshotConfigChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchAddVideoSnapshotConfigChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BatchAssignVLPlanChannels(
+            self,
+            request: models.BatchAssignVLPlanChannelsRequest,
+            opts: Dict = None,
+    ) -> models.BatchAssignVLPlanChannelsResponse:
+        """
+        批量关联视觉理解计划通道
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchAssignVLPlanChannels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchAssignVLPlanChannelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BatchDeleteVideoDownloadTask(
             self,
             request: models.BatchDeleteVideoDownloadTaskRequest,
@@ -185,6 +221,42 @@ class IssClient(AbstractClient):
         kwargs["action"] = "BatchDeleteVideoDownloadTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.BatchDeleteVideoDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BatchGetVLPlanSourceFileURL(
+            self,
+            request: models.BatchGetVLPlanSourceFileURLRequest,
+            opts: Dict = None,
+    ) -> models.BatchGetVLPlanSourceFileURLResponse:
+        """
+        批量获取视觉理解计划源素材 URL
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchGetVLPlanSourceFileURL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchGetVLPlanSourceFileURLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BatchGetVideoSnapshotImageUrl(
+            self,
+            request: models.BatchGetVideoSnapshotImageUrlRequest,
+            opts: Dict = None,
+    ) -> models.BatchGetVideoSnapshotImageUrlResponse:
+        """
+        批量获取截图图片URL
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchGetVideoSnapshotImageUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchGetVideoSnapshotImageUrlResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -334,6 +406,42 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateVLPlan(
+            self,
+            request: models.CreateVLPlanRequest,
+            opts: Dict = None,
+    ) -> models.CreateVLPlanResponse:
+        """
+        创建视觉理解计划
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVLPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVLPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVLTemplate(
+            self,
+            request: models.CreateVLTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateVLTemplateResponse:
+        """
+        创建视觉理解模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVLTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVLTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateVideoDownloadTask(
             self,
             request: models.CreateVideoDownloadTaskRequest,
@@ -347,6 +455,42 @@ class IssClient(AbstractClient):
         kwargs["action"] = "CreateVideoDownloadTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateVideoDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVideoSnapshotConfig(
+            self,
+            request: models.CreateVideoSnapshotConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateVideoSnapshotConfigResponse:
+        """
+        创建截图配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVideoSnapshotConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVideoSnapshotConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVideoSnapshotTemplate(
+            self,
+            request: models.CreateVideoSnapshotTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateVideoSnapshotTemplateResponse:
+        """
+        创建截图模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVideoSnapshotTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVideoSnapshotTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -509,6 +653,78 @@ class IssClient(AbstractClient):
         kwargs["action"] = "DeleteUserDevice"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteUserDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVLPlan(
+            self,
+            request: models.DeleteVLPlanRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVLPlanResponse:
+        """
+        删除视觉理解计划
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVLPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVLPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVLTemplate(
+            self,
+            request: models.DeleteVLTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVLTemplateResponse:
+        """
+        删除视觉理解模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVLTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVLTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVideoSnapshotConfig(
+            self,
+            request: models.DeleteVideoSnapshotConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVideoSnapshotConfigResponse:
+        """
+        删除截图配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVideoSnapshotConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVideoSnapshotConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVideoSnapshotTemplate(
+            self,
+            request: models.DeleteVideoSnapshotTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVideoSnapshotTemplateResponse:
+        """
+        删除截图模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVideoSnapshotTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVideoSnapshotTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -875,6 +1091,60 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVLPlan(
+            self,
+            request: models.DescribeVLPlanRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVLPlanResponse:
+        """
+        查询视觉理解计划详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVLPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVLPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVLPlanResult(
+            self,
+            request: models.DescribeVLPlanResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVLPlanResultResponse:
+        """
+        查询视觉理解计划结果详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVLPlanResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVLPlanResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVLTemplate(
+            self,
+            request: models.DescribeVLTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVLTemplateResponse:
+        """
+        查询视觉理解模板详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVLTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVLTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVideoBitRate(
             self,
             request: models.DescribeVideoBitRateRequest,
@@ -906,6 +1176,42 @@ class IssClient(AbstractClient):
         kwargs["action"] = "DescribeVideoDownloadUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVideoDownloadUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVideoSnapshotConfig(
+            self,
+            request: models.DescribeVideoSnapshotConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVideoSnapshotConfigResponse:
+        """
+        获取截图配置详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVideoSnapshotConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVideoSnapshotConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVideoSnapshotTemplate(
+            self,
+            request: models.DescribeVideoSnapshotTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVideoSnapshotTemplateResponse:
+        """
+        获取截图模板详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVideoSnapshotTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVideoSnapshotTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1163,6 +1469,42 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListVLPlans(
+            self,
+            request: models.ListVLPlansRequest,
+            opts: Dict = None,
+    ) -> models.ListVLPlansResponse:
+        """
+        获取视觉理解计划列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListVLPlans"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListVLPlansResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListVLTemplates(
+            self,
+            request: models.ListVLTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.ListVLTemplatesResponse:
+        """
+        获取视觉理解模板列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListVLTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListVLTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListVideoDownloadTask(
             self,
             request: models.ListVideoDownloadTaskRequest,
@@ -1176,6 +1518,60 @@ class IssClient(AbstractClient):
         kwargs["action"] = "ListVideoDownloadTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListVideoDownloadTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListVideoSnapshotTemplate(
+            self,
+            request: models.ListVideoSnapshotTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ListVideoSnapshotTemplateResponse:
+        """
+        获取截图模板详情列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListVideoSnapshotTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListVideoSnapshotTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVLPlan(
+            self,
+            request: models.ModifyVLPlanRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVLPlanResponse:
+        """
+        修改视觉理解计划
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVLPlan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVLPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVideoSnapshotConfig(
+            self,
+            request: models.ModifyVideoSnapshotConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVideoSnapshotConfigResponse:
+        """
+        更新截图配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVideoSnapshotConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVideoSnapshotConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

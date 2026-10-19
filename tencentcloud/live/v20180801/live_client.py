@@ -4625,6 +4625,75 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeStreamPackageIngestStatistics(self, request):
+        r"""DescribeStreamPackageIngestStatistics
+
+        :param request: Request instance for DescribeStreamPackageIngestStatistics.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPackageIngestStatisticsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPackageIngestStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageIngestStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageIngestStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageOutputStatistics(self, request):
+        r"""查询媒体包装输出用量信息
+
+        :param request: Request instance for DescribeStreamPackageOutputStatistics.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPackageOutputStatisticsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPackageOutputStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageOutputStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageOutputStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageRemuxStatistics(self, request):
+        r"""DescribeStreamPackageRemuxStatistics
+
+        :param request: Request instance for DescribeStreamPackageRemuxStatistics.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeStreamPackageRemuxStatisticsRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeStreamPackageRemuxStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageRemuxStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageRemuxStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStreamPlayInfoList(self, request):
         r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询播放数据，支持按流名称查询详细播放数据，也可按播放域名查询详细总数据，数据延迟4分钟左右。

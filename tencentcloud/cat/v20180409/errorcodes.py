@@ -65,6 +65,9 @@ FAILEDOPERATION_TASKOPERATIONNOTALLOW = 'FailedOperation.TaskOperationNotAllow'
 # 批量拨测任务的类型不相同。
 FAILEDOPERATION_TASKTYPENOTSAME = 'FailedOperation.TaskTypeNotSame'
 
+# 试用任务选择的拨测点数量超过试用限制
+FAILEDOPERATION_TRIALNODESEXCEED = 'FailedOperation.TrialNodesExceed'
+
 # 试用任务量超时。
 FAILEDOPERATION_TRIALTASKEXCEED = 'FailedOperation.TrialTaskExceed'
 

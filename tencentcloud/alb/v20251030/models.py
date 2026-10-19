@@ -7426,8 +7426,6 @@ class LoadBalancer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccessLogConfig: 访问日志配置结构。
-        :type AccessLogConfig: :class:`tencentcloud.alb.v20251030.models.AccessLogConfig`
         :param _AddressIpVersion: IP 地址版本，取值 IPv4 或 IPv6。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AddressIpVersion: str
@@ -7478,7 +7476,6 @@ class LoadBalancer(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
         """
-        self._AccessLogConfig = None
         self._AddressIpVersion = None
         self._AddressType = None
         self._CreateTime = None
@@ -7492,17 +7489,6 @@ class LoadBalancer(AbstractModel):
         self._ModificationProtection = None
         self._Tags = None
         self._VpcId = None
-
-    @property
-    def AccessLogConfig(self):
-        r"""访问日志配置结构。
-        :rtype: :class:`tencentcloud.alb.v20251030.models.AccessLogConfig`
-        """
-        return self._AccessLogConfig
-
-    @AccessLogConfig.setter
-    def AccessLogConfig(self, AccessLogConfig):
-        self._AccessLogConfig = AccessLogConfig
 
     @property
     def AddressIpVersion(self):
@@ -7672,9 +7658,6 @@ class LoadBalancer(AbstractModel):
 
 
     def _deserialize(self, params):
-        if params.get("AccessLogConfig") is not None:
-            self._AccessLogConfig = AccessLogConfig()
-            self._AccessLogConfig._deserialize(params.get("AccessLogConfig"))
         self._AddressIpVersion = params.get("AddressIpVersion")
         self._AddressType = params.get("AddressType")
         self._CreateTime = params.get("CreateTime")
@@ -8228,14 +8211,11 @@ class ModificationProtectionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModificationProtectionEnabled: 是否开启修改保护。开启后，可防止实例被意外修改或删除。
-- true：开启修改保护
-- false：关闭修改保护
+        :param _ModificationProtectionEnabled: <p>是否开启修改保护。开启后，可防止实例被意外修改或删除。</p><ul><li>true：开启修改保护</li><li>false：关闭修改保护</li></ul>
         :type ModificationProtectionEnabled: bool
-        :param _OperatorUin: 1238716123
+        :param _OperatorUin: <p>1238716123</p>
         :type OperatorUin: str
-        :param _Reason: 开启修改保护的原因说明。
-长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。
+        :param _Reason: <p>开启修改保护的原因说明。<br>长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。</p>
         :type Reason: str
         """
         self._ModificationProtectionEnabled = None
@@ -8244,9 +8224,7 @@ class ModificationProtectionInfo(AbstractModel):
 
     @property
     def ModificationProtectionEnabled(self):
-        r"""是否开启修改保护。开启后，可防止实例被意外修改或删除。
-- true：开启修改保护
-- false：关闭修改保护
+        r"""<p>是否开启修改保护。开启后，可防止实例被意外修改或删除。</p><ul><li>true：开启修改保护</li><li>false：关闭修改保护</li></ul>
         :rtype: bool
         """
         return self._ModificationProtectionEnabled
@@ -8257,7 +8235,7 @@ class ModificationProtectionInfo(AbstractModel):
 
     @property
     def OperatorUin(self):
-        r"""1238716123
+        r"""<p>1238716123</p>
         :rtype: str
         """
         return self._OperatorUin
@@ -8268,8 +8246,7 @@ class ModificationProtectionInfo(AbstractModel):
 
     @property
     def Reason(self):
-        r"""开启修改保护的原因说明。
-长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。
+        r"""<p>开启修改保护的原因说明。<br>长度为 1~255 个字符，必须是中文和无害字符串中的字符， 可包含中文、字母、数字、短划线（-）、正斜线（/）、半角句号（.）、下划线（_）。</p>
         :rtype: str
         """
         return self._Reason
@@ -10628,20 +10605,23 @@ class RuleHealthStatusInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsDefaultRule: 是否为默认转发规则。
+        :param _IsDefaultRule: <p>是否为默认转发规则。</p>
         :type IsDefaultRule: str
-        :param _RuleId: 转发规则 ID，格式为 rule- 后接 8 位字母数字。
+        :param _RuleId: <p>转发规则 ID，格式为 rule- 后接 8 位字母数字。</p>
         :type RuleId: str
-        :param _TargetGroupHealthInfos: 目标组健康状态。
+        :param _TargetGroupHealthInfos: <p>目标组健康状态。</p>
         :type TargetGroupHealthInfos: list of TargetGroupHealthInfo
+        :param _Priority: <p>优先级，值越小优先级越高，取值范围：1~10000。</p>
+        :type Priority: int
         """
         self._IsDefaultRule = None
         self._RuleId = None
         self._TargetGroupHealthInfos = None
+        self._Priority = None
 
     @property
     def IsDefaultRule(self):
-        r"""是否为默认转发规则。
+        r"""<p>是否为默认转发规则。</p>
         :rtype: str
         """
         return self._IsDefaultRule
@@ -10652,7 +10632,7 @@ class RuleHealthStatusInfo(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""转发规则 ID，格式为 rule- 后接 8 位字母数字。
+        r"""<p>转发规则 ID，格式为 rule- 后接 8 位字母数字。</p>
         :rtype: str
         """
         return self._RuleId
@@ -10663,7 +10643,7 @@ class RuleHealthStatusInfo(AbstractModel):
 
     @property
     def TargetGroupHealthInfos(self):
-        r"""目标组健康状态。
+        r"""<p>目标组健康状态。</p>
         :rtype: list of TargetGroupHealthInfo
         """
         return self._TargetGroupHealthInfos
@@ -10671,6 +10651,17 @@ class RuleHealthStatusInfo(AbstractModel):
     @TargetGroupHealthInfos.setter
     def TargetGroupHealthInfos(self, TargetGroupHealthInfos):
         self._TargetGroupHealthInfos = TargetGroupHealthInfos
+
+    @property
+    def Priority(self):
+        r"""<p>优先级，值越小优先级越高，取值范围：1~10000。</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
 
 
     def _deserialize(self, params):
@@ -10682,6 +10673,7 @@ class RuleHealthStatusInfo(AbstractModel):
                 obj = TargetGroupHealthInfo()
                 obj._deserialize(item)
                 self._TargetGroupHealthInfos.append(obj)
+        self._Priority = params.get("Priority")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

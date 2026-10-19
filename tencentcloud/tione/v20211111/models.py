@@ -1666,7 +1666,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Name: 数据源名称
         :type Name: str
@@ -1691,7 +1691,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -1844,7 +1844,7 @@ class CreateDatasetRequest(AbstractModel):
         r"""
         :param _DatasetName: <p>数据集名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
         :type DatasetName: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _DatasetType: <p>数据集类型</p><p>枚举值：</p><ul><li>TYPE_DATASET_IMAGE： 图片</li><li>TYPE_DATASET_LLM： 大模型</li><li>TYPE_DATASET_TABLE： 表格</li><li>TYPE_DATASET_OTHER： 其他</li></ul>
         :type DatasetType: str
@@ -1902,7 +1902,7 @@ class CreateDatasetRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -2151,6 +2151,8 @@ class CreateExportRequest(AbstractModel):
         r"""
         :param _Service: 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测枚举值：- TRAIN- NOTEBOOK- INFER- BATCH
         :type Service: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _ServiceId: 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：- Service类型为TRAIN：  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId- Service类型为NOTEBOOK：  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName- Service类型为INFER：  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId- Service类型为BATCH：  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
         :type ServiceId: str
         :param _StartTime: 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
@@ -2171,6 +2173,7 @@ class CreateExportRequest(AbstractModel):
         :type Type: str
         """
         self._Service = None
+        self._TiProjectId = None
         self._ServiceId = None
         self._StartTime = None
         self._EndTime = None
@@ -2191,6 +2194,17 @@ class CreateExportRequest(AbstractModel):
     @Service.setter
     def Service(self, Service):
         self._Service = Service
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def ServiceId(self):
@@ -2294,6 +2308,7 @@ class CreateExportRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
+        self._TiProjectId = params.get("TiProjectId")
         self._ServiceId = params.get("ServiceId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
@@ -3327,7 +3342,7 @@ class CreateMountLimitRequest(AbstractModel):
         :type Type: str
         :param _StorageId: 存储实例ID
         :type StorageId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _LimitMount: 限制开关是否开启，只有开启时才有限制，默认关闭
         :type LimitMount: bool
@@ -3361,7 +3376,7 @@ class CreateMountLimitRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -3399,6 +3414,102 @@ class CreateMountLimitRequest(AbstractModel):
 
 class CreateMountLimitResponse(AbstractModel):
     r"""CreateMountLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateNotebookImageRequest(AbstractModel):
+    r"""CreateNotebookImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageInfo: 镜像信息
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param _NotebookId: notebook id
+        :type NotebookId: str
+        :param _Kernels: 要保存的kernel数组
+        :type Kernels: list of str
+        """
+        self._ImageInfo = None
+        self._NotebookId = None
+        self._Kernels = None
+
+    @property
+    def ImageInfo(self):
+        r"""镜像信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        return self._ImageInfo
+
+    @ImageInfo.setter
+    def ImageInfo(self, ImageInfo):
+        self._ImageInfo = ImageInfo
+
+    @property
+    def NotebookId(self):
+        r"""notebook id
+        :rtype: str
+        """
+        return self._NotebookId
+
+    @NotebookId.setter
+    def NotebookId(self, NotebookId):
+        self._NotebookId = NotebookId
+
+    @property
+    def Kernels(self):
+        r"""要保存的kernel数组
+        :rtype: list of str
+        """
+        return self._Kernels
+
+    @Kernels.setter
+    def Kernels(self, Kernels):
+        self._Kernels = Kernels
+
+
+    def _deserialize(self, params):
+        if params.get("ImageInfo") is not None:
+            self._ImageInfo = ImageInfo()
+            self._ImageInfo._deserialize(params.get("ImageInfo"))
+        self._NotebookId = params.get("NotebookId")
+        self._Kernels = params.get("Kernels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNotebookImageResponse(AbstractModel):
+    r"""CreateNotebookImage返回参数结构体
 
     """
 
@@ -3979,6 +4090,8 @@ EXIST：导入现有版本
         :type ImportMethod: str
         :param _ReasoningEnvironmentSource: 推理环境来源（SYSTEM/CUSTOM）
         :type ReasoningEnvironmentSource: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _TrainingModelName: 模型名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
         :type TrainingModelName: str
         :param _Tags: 标签配置
@@ -4032,6 +4145,7 @@ EXIST：导入现有版本
         """
         self._ImportMethod = None
         self._ReasoningEnvironmentSource = None
+        self._TiProjectId = None
         self._TrainingModelName = None
         self._Tags = None
         self._TrainingJobName = None
@@ -4081,6 +4195,17 @@ EXIST：导入现有版本
     @ReasoningEnvironmentSource.setter
     def ReasoningEnvironmentSource(self, ReasoningEnvironmentSource):
         self._ReasoningEnvironmentSource = ReasoningEnvironmentSource
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def TrainingModelName(self):
@@ -4352,6 +4477,7 @@ EXIST：导入现有版本
     def _deserialize(self, params):
         self._ImportMethod = params.get("ImportMethod")
         self._ReasoningEnvironmentSource = params.get("ReasoningEnvironmentSource")
+        self._TiProjectId = params.get("TiProjectId")
         self._TrainingModelName = params.get("TrainingModelName")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -7098,7 +7224,7 @@ class DeleteDataSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Id: 数据源ID
         :type Id: str
@@ -7108,7 +7234,7 @@ class DeleteDataSourceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -7181,7 +7307,7 @@ class DeleteDatasetRequest(AbstractModel):
         :type DatasetId: str
         :param _DeleteLabelEnable: <p>是否删除cos标签文件</p>
         :type DeleteLabelEnable: bool
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._DatasetId = None
@@ -7212,7 +7338,7 @@ class DeleteDatasetRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -7288,8 +7414,11 @@ class DeleteExportRequest(AbstractModel):
         r"""
         :param _ExportId: 日志下载任务的ID
         :type ExportId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._ExportId = None
+        self._TiProjectId = None
 
     @property
     def ExportId(self):
@@ -7302,9 +7431,21 @@ class DeleteExportRequest(AbstractModel):
     def ExportId(self, ExportId):
         self._ExportId = ExportId
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._ExportId = params.get("ExportId")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7781,12 +7922,15 @@ class DeleteTrainingModelRequest(AbstractModel):
         r"""
         :param _TrainingModelId: 模型ID
         :type TrainingModelId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _EnableDeleteCos: 是否同步清理cos
         :type EnableDeleteCos: bool
         :param _ModelVersionType: 删除模型类型，枚举值：NORMAL 普通，ACCELERATE 加速，不传则删除所有
         :type ModelVersionType: str
         """
         self._TrainingModelId = None
+        self._TiProjectId = None
         self._EnableDeleteCos = None
         self._ModelVersionType = None
 
@@ -7800,6 +7944,17 @@ class DeleteTrainingModelRequest(AbstractModel):
     @TrainingModelId.setter
     def TrainingModelId(self, TrainingModelId):
         self._TrainingModelId = TrainingModelId
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def EnableDeleteCos(self):
@@ -7826,6 +7981,7 @@ class DeleteTrainingModelRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._TrainingModelId = params.get("TrainingModelId")
+        self._TiProjectId = params.get("TiProjectId")
         self._EnableDeleteCos = params.get("EnableDeleteCos")
         self._ModelVersionType = params.get("ModelVersionType")
         memeber_set = set(params.keys())
@@ -7875,10 +8031,13 @@ class DeleteTrainingModelVersionRequest(AbstractModel):
         r"""
         :param _TrainingModelVersionId: 模型版本ID
         :type TrainingModelVersionId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _EnableDeleteCos: 是否同步清理cos
         :type EnableDeleteCos: bool
         """
         self._TrainingModelVersionId = None
+        self._TiProjectId = None
         self._EnableDeleteCos = None
 
     @property
@@ -7891,6 +8050,17 @@ class DeleteTrainingModelVersionRequest(AbstractModel):
     @TrainingModelVersionId.setter
     def TrainingModelVersionId(self, TrainingModelVersionId):
         self._TrainingModelVersionId = TrainingModelVersionId
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def EnableDeleteCos(self):
@@ -7906,6 +8076,7 @@ class DeleteTrainingModelVersionRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._TrainingModelVersionId = params.get("TrainingModelVersionId")
+        self._TiProjectId = params.get("TiProjectId")
         self._EnableDeleteCos = params.get("EnableDeleteCos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -8035,7 +8206,7 @@ class DescribeAnnotatedTaskListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 页面大小，默认为10
         :type Limit: int
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Filters: 过滤条件数组，支持数据集ID，标注场景、任务状态、数据集名称、人物名称的过滤，后面两个支持模糊查询
         :type Filters: list of Filter
@@ -8078,7 +8249,7 @@ class DescribeAnnotatedTaskListRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -9152,7 +9323,7 @@ class DescribeDataSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Id: 数据源id
         :type Id: str
@@ -9162,7 +9333,7 @@ class DescribeDataSourceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -9248,7 +9419,7 @@ class DescribeDataSourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Filters: 过滤条件
         :type Filters: list of Filter
@@ -9273,7 +9444,7 @@ class DescribeDataSourcesRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -9447,7 +9618,7 @@ class DescribeDatasetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _DatasetIds: <p>数据集id列表</p>
         :type DatasetIds: list of str
@@ -9481,7 +9652,7 @@ class DescribeDatasetsRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -9997,7 +10168,7 @@ class DescribeExportRequest(AbstractModel):
         r"""
         :param _ExportId: <p>日志下载任务的ID</p>
         :type ExportId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._ExportId = None
@@ -10016,7 +10187,7 @@ class DescribeExportRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -10222,7 +10393,7 @@ class DescribeLogsRequest(AbstractModel):
         r"""
         :param _Service: <p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
         :type Service: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _StartTime: <p>日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时</p>
         :type StartTime: str
@@ -10274,7 +10445,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -10508,14 +10679,17 @@ class DescribeModelAccelerateTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelAccTaskId: 模型加速任务ID
+        :param _ModelAccTaskId: <p>模型加速任务ID</p>
         :type ModelAccTaskId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._ModelAccTaskId = None
+        self._TiProjectId = None
 
     @property
     def ModelAccTaskId(self):
-        r"""模型加速任务ID
+        r"""<p>模型加速任务ID</p>
         :rtype: str
         """
         return self._ModelAccTaskId
@@ -10524,9 +10698,21 @@ class DescribeModelAccelerateTaskRequest(AbstractModel):
     def ModelAccTaskId(self, ModelAccTaskId):
         self._ModelAccTaskId = ModelAccTaskId
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._ModelAccTaskId = params.get("ModelAccTaskId")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10544,16 +10730,16 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelAccelerateTask: 模型加速任务详情
+        :param _ModelAccelerateTask: <p>模型加速任务详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelAccelerateTask: :class:`tencentcloud.tione.v20211111.models.ModelAccelerateTask`
-        :param _ModelAccRuntimeInSecond: 模型加速时长，单位s
+        :param _ModelAccRuntimeInSecond: <p>模型加速时长，单位s</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelAccRuntimeInSecond: int
-        :param _ModelAccStartTime: 模型加速任务开始时间
+        :param _ModelAccStartTime: <p>模型加速任务开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelAccStartTime: str
-        :param _ModelAccEndTime: 模型加速任务结束时间
+        :param _ModelAccEndTime: <p>模型加速任务结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelAccEndTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -10567,7 +10753,7 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccelerateTask(self):
-        r"""模型加速任务详情
+        r"""<p>模型加速任务详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ModelAccelerateTask`
         """
@@ -10579,7 +10765,7 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccRuntimeInSecond(self):
-        r"""模型加速时长，单位s
+        r"""<p>模型加速时长，单位s</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10591,7 +10777,7 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccStartTime(self):
-        r"""模型加速任务开始时间
+        r"""<p>模型加速任务开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10603,7 +10789,7 @@ class DescribeModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccEndTime(self):
-        r"""模型加速任务结束时间
+        r"""<p>模型加速任务结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10642,6 +10828,8 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _Filters: 过滤条件
     Filter.Name: 枚举值: ModelJobName (任务名称)|TrainingModelVersionId (模型版本id)
     Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
@@ -10658,12 +10846,24 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
         :param _TrainingModelId: 模型ID
         :type TrainingModelId: str
         """
+        self._TiProjectId = None
         self._Filters = None
         self._OrderField = None
         self._Order = None
         self._Offset = None
         self._Limit = None
         self._TrainingModelId = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Filters(self):
@@ -10736,6 +10936,7 @@ class DescribeModelAccelerateVersionsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -11623,7 +11824,7 @@ class DescribeMountInstanceRequest(AbstractModel):
         r"""
         :param _Type: 数据源类型英文名
         :type Type: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _StorageId: 存储实例ID
         :type StorageId: str
@@ -11645,7 +11846,7 @@ class DescribeMountInstanceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -11734,7 +11935,7 @@ class DescribeMountInstancesRequest(AbstractModel):
         r"""
         :param _Type: 数据源类型英文名
         :type Type: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Offset: 偏移量
         :type Offset: int
@@ -11759,7 +11960,7 @@ class DescribeMountInstancesRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -11876,7 +12077,7 @@ class DescribeMountLimitsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Filters: 过滤条件
         :type Filters: list of Filter
@@ -11898,7 +12099,7 @@ class DescribeMountLimitsRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -12372,6 +12573,8 @@ class DescribePlatformImagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _Filters: 过滤器,  Name支持ImageId/ImageName/SupportDataPipeline/AllowSaveAllContent/ImageRange，其中ImageRange支持枚举值Train,Inference,Notebook
         :type Filters: list of Filter
         :param _Offset: 偏移信息
@@ -12379,9 +12582,21 @@ class DescribePlatformImagesRequest(AbstractModel):
         :param _Limit: 返回数量, 默认100
         :type Limit: int
         """
+        self._TiProjectId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Filters(self):
@@ -12418,6 +12633,7 @@ class DescribePlatformImagesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -12506,7 +12722,7 @@ class DescribePresetImageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Filters: <p>业务过滤表达式</p>
         :type Filters: list of Filter
@@ -12528,7 +12744,7 @@ class DescribePresetImageListRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -12994,14 +13210,17 @@ class DescribeTrainingModelVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrainingModelVersionId: 模型版本ID
+        :param _TrainingModelVersionId: <p>模型版本ID</p>
         :type TrainingModelVersionId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._TrainingModelVersionId = None
+        self._TiProjectId = None
 
     @property
     def TrainingModelVersionId(self):
-        r"""模型版本ID
+        r"""<p>模型版本ID</p>
         :rtype: str
         """
         return self._TrainingModelVersionId
@@ -13010,9 +13229,21 @@ class DescribeTrainingModelVersionRequest(AbstractModel):
     def TrainingModelVersionId(self, TrainingModelVersionId):
         self._TrainingModelVersionId = TrainingModelVersionId
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._TrainingModelVersionId = params.get("TrainingModelVersionId")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13030,7 +13261,7 @@ class DescribeTrainingModelVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrainingModelVersion: 模型版本
+        :param _TrainingModelVersion: <p>模型版本</p>
         :type TrainingModelVersion: :class:`tencentcloud.tione.v20211111.models.TrainingModelVersionDTO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13040,7 +13271,7 @@ class DescribeTrainingModelVersionResponse(AbstractModel):
 
     @property
     def TrainingModelVersion(self):
-        r"""模型版本
+        r"""<p>模型版本</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.TrainingModelVersionDTO`
         """
         return self._TrainingModelVersion
@@ -13075,25 +13306,20 @@ class DescribeTrainingModelVersionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrainingModelId: 模型ID
+        :param _TrainingModelId: <p>模型ID</p>
         :type TrainingModelId: str
-        :param _Filters: 过滤条件
-Filter.Name: 枚举值:
-    TrainingModelVersionId (模型版本ID)
-    ModelVersionType (模型版本类型) 其值支持: NORMAL(通用) ACCELERATE (加速)
-    ModelFormat（模型格式）其值Filter.Values支持：
-TORCH_SCRIPT/PYTORCH/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML
-    AlgorithmFramework (算法框架) 其值Filter.Values支持：TENSORFLOW/PYTORCH/DETECTRON2
-Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
-每次请求的Filters的上限为10，Filter.Values的上限为100
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _Filters: <p>过滤条件<br>Filter.Name: 枚举值:<br>    TrainingModelVersionId (模型版本ID)<br>    ModelVersionType (模型版本类型) 其值支持: NORMAL(通用) ACCELERATE (加速)<br>    ModelFormat（模型格式）其值Filter.Values支持：<br>TORCH_SCRIPT/PYTORCH/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML<br>    AlgorithmFramework (算法框架) 其值Filter.Values支持：TENSORFLOW/PYTORCH/DETECTRON2<br>Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询<br>每次请求的Filters的上限为10，Filter.Values的上限为100</p>
         :type Filters: list of Filter
         """
         self._TrainingModelId = None
+        self._TiProjectId = None
         self._Filters = None
 
     @property
     def TrainingModelId(self):
-        r"""模型ID
+        r"""<p>模型ID</p>
         :rtype: str
         """
         return self._TrainingModelId
@@ -13103,16 +13329,19 @@ Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
         self._TrainingModelId = TrainingModelId
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def Filters(self):
-        r"""过滤条件
-Filter.Name: 枚举值:
-    TrainingModelVersionId (模型版本ID)
-    ModelVersionType (模型版本类型) 其值支持: NORMAL(通用) ACCELERATE (加速)
-    ModelFormat（模型格式）其值Filter.Values支持：
-TORCH_SCRIPT/PYTORCH/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML
-    AlgorithmFramework (算法框架) 其值Filter.Values支持：TENSORFLOW/PYTORCH/DETECTRON2
-Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
-每次请求的Filters的上限为10，Filter.Values的上限为100
+        r"""<p>过滤条件<br>Filter.Name: 枚举值:<br>    TrainingModelVersionId (模型版本ID)<br>    ModelVersionType (模型版本类型) 其值支持: NORMAL(通用) ACCELERATE (加速)<br>    ModelFormat（模型格式）其值Filter.Values支持：<br>TORCH_SCRIPT/PYTORCH/DETECTRON2/SAVED_MODEL/FROZEN_GRAPH/PMML<br>    AlgorithmFramework (算法框架) 其值Filter.Values支持：TENSORFLOW/PYTORCH/DETECTRON2<br>Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询<br>每次请求的Filters的上限为10，Filter.Values的上限为100</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -13124,6 +13353,7 @@ Filter.Values: 当长度为1时，支持模糊查询; 不为1时，精确查询
 
     def _deserialize(self, params):
         self._TrainingModelId = params.get("TrainingModelId")
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -13147,7 +13377,7 @@ class DescribeTrainingModelVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TrainingModelVersions: 模型版本列表
+        :param _TrainingModelVersions: <p>模型版本列表</p>
         :type TrainingModelVersions: list of TrainingModelVersionDTO
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13157,7 +13387,7 @@ class DescribeTrainingModelVersionsResponse(AbstractModel):
 
     @property
     def TrainingModelVersions(self):
-        r"""模型版本列表
+        r"""<p>模型版本列表</p>
         :rtype: list of TrainingModelVersionDTO
         """
         return self._TrainingModelVersions
@@ -13731,7 +13961,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Filters: <p>过滤条件</p>
         :type Filters: list of Filter
@@ -13753,7 +13983,7 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -29109,14 +29339,17 @@ class StopModelAccelerateTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelAccTaskId: 模型加速任务ID
+        :param _ModelAccTaskId: <p>模型加速任务ID</p>
         :type ModelAccTaskId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         """
         self._ModelAccTaskId = None
+        self._TiProjectId = None
 
     @property
     def ModelAccTaskId(self):
-        r"""模型加速任务ID
+        r"""<p>模型加速任务ID</p>
         :rtype: str
         """
         return self._ModelAccTaskId
@@ -29125,9 +29358,21 @@ class StopModelAccelerateTaskRequest(AbstractModel):
     def ModelAccTaskId(self, ModelAccTaskId):
         self._ModelAccTaskId = ModelAccTaskId
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._ModelAccTaskId = params.get("ModelAccTaskId")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29145,10 +29390,10 @@ class StopModelAccelerateTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelAccTaskId: 模型加速任务ID
+        :param _ModelAccTaskId: <p>模型加速任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelAccTaskId: str
-        :param _AsyncTaskId: 异步任务ID
+        :param _AsyncTaskId: <p>异步任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -29160,7 +29405,7 @@ class StopModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def ModelAccTaskId(self):
-        r"""模型加速任务ID
+        r"""<p>模型加速任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29172,7 +29417,7 @@ class StopModelAccelerateTaskResponse(AbstractModel):
 
     @property
     def AsyncTaskId(self):
-        r"""异步任务ID
+        r"""<p>异步任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -31752,7 +31997,7 @@ class UpdateDataSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Id: 数据源ID
         :type Id: str
@@ -31771,7 +32016,7 @@ class UpdateDataSourceRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -31884,7 +32129,7 @@ class UpdateMountLimitRequest(AbstractModel):
         :type StorageId: str
         :param _LimitMount: 限制开关是否开启，只有开启时才有限制，默认关闭
         :type LimitMount: bool
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         """
         self._Type = None
@@ -31927,7 +32172,7 @@ class UpdateMountLimitRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId

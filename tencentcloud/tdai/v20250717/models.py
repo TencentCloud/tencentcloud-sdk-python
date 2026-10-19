@@ -409,6 +409,8 @@ class AgentInstance(AbstractModel):
         :type DeploymentFree: bool
         :param _AgentMem: <p>agent memory 服务详情</p>
         :type AgentMem: :class:`tencentcloud.tdai.v20250717.models.AgentMemInfo`
+        :param _MemInstanceId: <p>关联的 memory（AGM）实例ID（仅免部署实例有值）</p>
+        :type MemInstanceId: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -436,6 +438,7 @@ class AgentInstance(AbstractModel):
         self._Capabilities = None
         self._DeploymentFree = None
         self._AgentMem = None
+        self._MemInstanceId = None
 
     @property
     def InstanceId(self):
@@ -723,6 +726,17 @@ class AgentInstance(AbstractModel):
     def AgentMem(self, AgentMem):
         self._AgentMem = AgentMem
 
+    @property
+    def MemInstanceId(self):
+        r"""<p>关联的 memory（AGM）实例ID（仅免部署实例有值）</p>
+        :rtype: str
+        """
+        return self._MemInstanceId
+
+    @MemInstanceId.setter
+    def MemInstanceId(self, MemInstanceId):
+        self._MemInstanceId = MemInstanceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -767,6 +781,7 @@ class AgentInstance(AbstractModel):
         if params.get("AgentMem") is not None:
             self._AgentMem = AgentMemInfo()
             self._AgentMem._deserialize(params.get("AgentMem"))
+        self._MemInstanceId = params.get("MemInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3921,6 +3936,8 @@ class DescribeMemoryPlusSpaceResponse(AbstractModel):
         :type CreditUsage: float
         :param _CreditLimit: <p>Memory 实例 Credit 的最大使用数量。</p>
         :type CreditLimit: float
+        :param _Compressed: <p>是否开启压缩</p>
+        :type Compressed: bool
         :param _AccessUrl: <p>Memory 实例的内网访问地址。</p>
         :type AccessUrl: str
         :param _WanAccessUrl: <p>Memory 实例的外网访问地址。</p>
@@ -3950,6 +3967,7 @@ class DescribeMemoryPlusSpaceResponse(AbstractModel):
         self._MemoryLimit = None
         self._CreditUsage = None
         self._CreditLimit = None
+        self._Compressed = None
         self._AccessUrl = None
         self._WanAccessUrl = None
         self._CreatedAt = None
@@ -4113,6 +4131,17 @@ class DescribeMemoryPlusSpaceResponse(AbstractModel):
         self._CreditLimit = CreditLimit
 
     @property
+    def Compressed(self):
+        r"""<p>是否开启压缩</p>
+        :rtype: bool
+        """
+        return self._Compressed
+
+    @Compressed.setter
+    def Compressed(self, Compressed):
+        self._Compressed = Compressed
+
+    @property
     def AccessUrl(self):
         r"""<p>Memory 实例的内网访问地址。</p>
         :rtype: str
@@ -4210,6 +4239,7 @@ class DescribeMemoryPlusSpaceResponse(AbstractModel):
         self._MemoryLimit = params.get("MemoryLimit")
         self._CreditUsage = params.get("CreditUsage")
         self._CreditLimit = params.get("CreditLimit")
+        self._Compressed = params.get("Compressed")
         self._AccessUrl = params.get("AccessUrl")
         self._WanAccessUrl = params.get("WanAccessUrl")
         self._CreatedAt = params.get("CreatedAt")
@@ -4920,6 +4950,8 @@ class MemoryPlusInfo(AbstractModel):
         :type MemoryUsage: int
         :param _CreditUsage: <p>当月积分数</p>
         :type CreditUsage: float
+        :param _Compressed: <p>是否开启压缩</p>
+        :type Compressed: bool
         :param _ResourceTags: <p>资源标签</p>
         :type ResourceTags: list of ResourceTag
         :param _Version: <p>版本号</p>
@@ -4942,6 +4974,7 @@ class MemoryPlusInfo(AbstractModel):
         self._AutoRenew = None
         self._MemoryUsage = None
         self._CreditUsage = None
+        self._Compressed = None
         self._ResourceTags = None
         self._Version = None
         self._CreatedAt = None
@@ -5049,6 +5082,17 @@ class MemoryPlusInfo(AbstractModel):
         self._CreditUsage = CreditUsage
 
     @property
+    def Compressed(self):
+        r"""<p>是否开启压缩</p>
+        :rtype: bool
+        """
+        return self._Compressed
+
+    @Compressed.setter
+    def Compressed(self, Compressed):
+        self._Compressed = Compressed
+
+    @property
     def ResourceTags(self):
         r"""<p>资源标签</p>
         :rtype: list of ResourceTag
@@ -5125,6 +5169,7 @@ class MemoryPlusInfo(AbstractModel):
         self._AutoRenew = params.get("AutoRenew")
         self._MemoryUsage = params.get("MemoryUsage")
         self._CreditUsage = params.get("CreditUsage")
+        self._Compressed = params.get("Compressed")
         if params.get("ResourceTags") is not None:
             self._ResourceTags = []
             for item in params.get("ResourceTags"):
@@ -5366,10 +5411,13 @@ class ModifyMemoryPlusSpaceRequest(AbstractModel):
         :type Name: str
         :param _Description: <p>指定修改后的实例描述。最多支持 200 个字符。</p>
         :type Description: str
+        :param _Compressed: <p>是否开启压缩</p>
+        :type Compressed: bool
         """
         self._SpaceId = None
         self._Name = None
         self._Description = None
+        self._Compressed = None
 
     @property
     def SpaceId(self):
@@ -5404,11 +5452,23 @@ class ModifyMemoryPlusSpaceRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def Compressed(self):
+        r"""<p>是否开启压缩</p>
+        :rtype: bool
+        """
+        return self._Compressed
+
+    @Compressed.setter
+    def Compressed(self, Compressed):
+        self._Compressed = Compressed
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
         self._Name = params.get("Name")
         self._Description = params.get("Description")
+        self._Compressed = params.get("Compressed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

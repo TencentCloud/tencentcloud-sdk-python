@@ -1623,9 +1623,9 @@ class CreateEdgeAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 规则组ID
+        :param _GroupId: <p>规则组ID</p>
         :type GroupId: str
-        :param _Rules: 规则列表
+        :param _Rules: <p>规则列表</p>
         :type Rules: list of EdgeAclRuleInfo
         """
         self._GroupId = None
@@ -1633,7 +1633,7 @@ class CreateEdgeAclRuleRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""规则组ID
+        r"""<p>规则组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -1644,7 +1644,7 @@ class CreateEdgeAclRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""规则列表
+        r"""<p>规则列表</p>
         :rtype: list of EdgeAclRuleInfo
         """
         return self._Rules
@@ -1679,10 +1679,24 @@ class CreateEdgeAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleIds: <p>规则Id列表</p>
+        :type RuleIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RuleIds = None
         self._RequestId = None
+
+    @property
+    def RuleIds(self):
+        r"""<p>规则Id列表</p>
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
 
     @property
     def RequestId(self):
@@ -1697,6 +1711,7 @@ class CreateEdgeAclRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -1821,9 +1836,9 @@ class CreateNatAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 规则组ID
+        :param _GroupId: <p>规则组ID</p>
         :type GroupId: str
-        :param _Rules: 规则列表
+        :param _Rules: <p>规则列表</p>
         :type Rules: list of NatAclRule
         """
         self._GroupId = None
@@ -1831,7 +1846,7 @@ class CreateNatAclRuleRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""规则组ID
+        r"""<p>规则组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -1842,7 +1857,7 @@ class CreateNatAclRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""规则列表
+        r"""<p>规则列表</p>
         :rtype: list of NatAclRule
         """
         return self._Rules
@@ -1877,10 +1892,24 @@ class CreateNatAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleIds: <p>规则Id列表</p>
+        :type RuleIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RuleIds = None
         self._RequestId = None
+
+    @property
+    def RuleIds(self):
+        r"""<p>规则Id列表</p>
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
 
     @property
     def RequestId(self):
@@ -1895,6 +1924,101 @@ class CreateNatAclRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRuleGroupRequest(AbstractModel):
+    r"""CreateRuleGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: <p>规则组名称，不可为空，最长50字符（按字符数计，中文按1个字符计）</p>
+        :type GroupName: str
+        :param _Product: <p>规则组归属产品。enterprise_sg-企业安全组，cfw_vpc_acl-VPC边界防火墙，cfw_nat_acl-NAT边界防火墙，cfw_edge_acl-互联网边界防火墙。必填，不接受 all</p>
+        :type Product: str
+        """
+        self._GroupName = None
+        self._Product = None
+
+    @property
+    def GroupName(self):
+        r"""<p>规则组名称，不可为空，最长50字符（按字符数计，中文按1个字符计）</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Product(self):
+        r"""<p>规则组归属产品。enterprise_sg-企业安全组，cfw_vpc_acl-VPC边界防火墙，cfw_nat_acl-NAT边界防火墙，cfw_edge_acl-互联网边界防火墙。必填，不接受 all</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRuleGroupResponse(AbstractModel):
+    r"""CreateRuleGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: <p>创建成功的规则组唯一标识，fwmrg- 前缀</p>
+        :type GroupId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""<p>创建成功的规则组唯一标识，fwmrg- 前缀</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
         self._RequestId = params.get("RequestId")
 
 
@@ -2019,9 +2143,9 @@ class CreateSecurityGroupRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 规则组Id
+        :param _GroupId: <p>规则组Id</p>
         :type GroupId: str
-        :param _Rules: 规则列表
+        :param _Rules: <p>规则列表</p>
         :type Rules: list of SecurityGroupRule
         """
         self._GroupId = None
@@ -2029,7 +2153,7 @@ class CreateSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""规则组Id
+        r"""<p>规则组Id</p>
         :rtype: str
         """
         return self._GroupId
@@ -2040,7 +2164,7 @@ class CreateSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""规则列表
+        r"""<p>规则列表</p>
         :rtype: list of SecurityGroupRule
         """
         return self._Rules
@@ -2075,10 +2199,24 @@ class CreateSecurityGroupRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleIds: <p>规则Id列表</p>
+        :type RuleIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RuleIds = None
         self._RequestId = None
+
+    @property
+    def RuleIds(self):
+        r"""<p>规则Id列表</p>
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
 
     @property
     def RequestId(self):
@@ -2093,6 +2231,7 @@ class CreateSecurityGroupRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -2103,15 +2242,15 @@ class CreateStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 产品类型
+        :param _Product: <p>产品类型</p>
         :type Product: str
-        :param _ReceiveAccount: 下发账号
+        :param _ReceiveAccount: <p>下发账号</p>
         :type ReceiveAccount: list of str
-        :param _PreStrategy: 前区规则组
+        :param _PreStrategy: <p>前区规则组</p>
         :type PreStrategy: list of StrategyReq
-        :param _PostStrategy: 后区规则组
+        :param _PostStrategy: <p>后区规则组</p>
         :type PostStrategy: list of StrategyReq
-        :param _ReceiveGroup: 下发账号组
+        :param _ReceiveGroup: <p>下发账号组</p>
         :type ReceiveGroup: list of str
         """
         self._Product = None
@@ -2122,7 +2261,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""产品类型
+        r"""<p>产品类型</p>
         :rtype: str
         """
         return self._Product
@@ -2133,7 +2272,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def ReceiveAccount(self):
-        r"""下发账号
+        r"""<p>下发账号</p>
         :rtype: list of str
         """
         return self._ReceiveAccount
@@ -2144,7 +2283,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def PreStrategy(self):
-        r"""前区规则组
+        r"""<p>前区规则组</p>
         :rtype: list of StrategyReq
         """
         return self._PreStrategy
@@ -2155,7 +2294,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def PostStrategy(self):
-        r"""后区规则组
+        r"""<p>后区规则组</p>
         :rtype: list of StrategyReq
         """
         return self._PostStrategy
@@ -2166,7 +2305,7 @@ class CreateStrategyRequest(AbstractModel):
 
     @property
     def ReceiveGroup(self):
-        r"""下发账号组
+        r"""<p>下发账号组</p>
         :rtype: list of str
         """
         return self._ReceiveGroup
@@ -2209,10 +2348,24 @@ class CreateStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _StrategyIds: <p>策略Id列表</p>
+        :type StrategyIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._StrategyIds = None
         self._RequestId = None
+
+    @property
+    def StrategyIds(self):
+        r"""<p>策略Id列表</p>
+        :rtype: list of str
+        """
+        return self._StrategyIds
+
+    @StrategyIds.setter
+    def StrategyIds(self, StrategyIds):
+        self._StrategyIds = StrategyIds
 
     @property
     def RequestId(self):
@@ -2227,6 +2380,7 @@ class CreateStrategyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._StrategyIds = params.get("StrategyIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -2351,9 +2505,9 @@ class CreateVpcAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 规则组ID
+        :param _GroupId: <p>规则组ID</p>
         :type GroupId: str
-        :param _Rules: 规则列表
+        :param _Rules: <p>规则列表</p>
         :type Rules: list of VpcAclRule
         """
         self._GroupId = None
@@ -2361,7 +2515,7 @@ class CreateVpcAclRuleRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""规则组ID
+        r"""<p>规则组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -2372,7 +2526,7 @@ class CreateVpcAclRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""规则列表
+        r"""<p>规则列表</p>
         :rtype: list of VpcAclRule
         """
         return self._Rules
@@ -2407,10 +2561,24 @@ class CreateVpcAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleIds: <p>规则Id列表</p>
+        :type RuleIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RuleIds = None
         self._RequestId = None
+
+    @property
+    def RuleIds(self):
+        r"""<p>规则Id列表</p>
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
 
     @property
     def RequestId(self):
@@ -2425,6 +2593,7 @@ class CreateVpcAclRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -5592,6 +5761,10 @@ class EdgeAclRuleResp(AbstractModel):
         :type UpdateTime: str
         :param _DnsParseCnt: 域名数
         :type DnsParseCnt: int
+        :param _HitCount: 命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+        :type HitCount: int
+        :param _LastHitTime: 最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+        :type LastHitTime: str
         """
         self._RuleId = None
         self._Sequence = None
@@ -5624,6 +5797,8 @@ class EdgeAclRuleResp(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._DnsParseCnt = None
+        self._HitCount = None
+        self._LastHitTime = None
 
     @property
     def RuleId(self):
@@ -5974,6 +6149,28 @@ class EdgeAclRuleResp(AbstractModel):
     def DnsParseCnt(self, DnsParseCnt):
         self._DnsParseCnt = DnsParseCnt
 
+    @property
+    def HitCount(self):
+        r"""命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+        :rtype: int
+        """
+        return self._HitCount
+
+    @HitCount.setter
+    def HitCount(self, HitCount):
+        self._HitCount = HitCount
+
+    @property
+    def LastHitTime(self):
+        r"""最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+        :rtype: str
+        """
+        return self._LastHitTime
+
+    @LastHitTime.setter
+    def LastHitTime(self, LastHitTime):
+        self._LastHitTime = LastHitTime
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -6009,6 +6206,8 @@ class EdgeAclRuleResp(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._DnsParseCnt = params.get("DnsParseCnt")
+        self._HitCount = params.get("HitCount")
+        self._LastHitTime = params.get("LastHitTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7435,6 +7634,10 @@ class NatAclRuleResp(AbstractModel):
         :type UpdateTime: str
         :param _DnsParseCnt: 域名数
         :type DnsParseCnt: int
+        :param _HitCount: 命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+        :type HitCount: int
+        :param _LastHitTime: 最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+        :type LastHitTime: str
         """
         self._RuleId = None
         self._Sequence = None
@@ -7468,6 +7671,8 @@ class NatAclRuleResp(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._DnsParseCnt = None
+        self._HitCount = None
+        self._LastHitTime = None
 
     @property
     def RuleId(self):
@@ -7842,6 +8047,28 @@ class NatAclRuleResp(AbstractModel):
     def DnsParseCnt(self, DnsParseCnt):
         self._DnsParseCnt = DnsParseCnt
 
+    @property
+    def HitCount(self):
+        r"""命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+        :rtype: int
+        """
+        return self._HitCount
+
+    @HitCount.setter
+    def HitCount(self, HitCount):
+        self._HitCount = HitCount
+
+    @property
+    def LastHitTime(self):
+        r"""最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+        :rtype: str
+        """
+        return self._LastHitTime
+
+    @LastHitTime.setter
+    def LastHitTime(self, LastHitTime):
+        self._LastHitTime = LastHitTime
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -7878,6 +8105,8 @@ class NatAclRuleResp(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._DnsParseCnt = params.get("DnsParseCnt")
+        self._HitCount = params.get("HitCount")
+        self._LastHitTime = params.get("LastHitTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8263,30 +8492,32 @@ class OrganSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 集团名称
+        :param _GroupName: <p>集团名称</p>
         :type GroupName: str
-        :param _AdminInfo: 管理员账号信息
+        :param _AdminInfo: <p>管理员账号信息</p>
         :type AdminInfo: :class:`tencentcloud.fwm.v20250611.models.MemberInfo`
-        :param _AdminCount: 管理员/委派管理员数量
+        :param _AdminCount: <p>管理员/委派管理员数量</p>
         :type AdminCount: int
-        :param _JoinedMemberCount: 已接入成员数
+        :param _JoinedMemberCount: <p>已接入成员数</p>
         :type JoinedMemberCount: int
-        :param _MemberLimit: 接入成员上限（-1表示无上限）
+        :param _MemberLimit: <p>接入成员上限（-1表示无上限）</p>
         :type MemberLimit: int
-        :param _MemberLimitDisplay: 接入成员上限显示
+        :param _MemberLimitDisplay: <p>接入成员上限显示</p>
         :type MemberLimitDisplay: str
-        :param _CfwSharerCount: 规格共享者数量
+        :param _CfwSharerCount: <p>规格共享者数量</p>
         :type CfwSharerCount: int
-        :param _CfwUserCount: 规格使用者数量
+        :param _CfwUserCount: <p>规格使用者数量</p>
         :type CfwUserCount: int
-        :param _Departments: 部门名称列表
+        :param _Departments: <p>部门名称列表</p>
         :type Departments: list of str
-        :param _ManagedMemberCount: 纳管账号数
+        :param _ManagedMemberCount: <p>纳管账号数</p>
         :type ManagedMemberCount: int
-        :param _ManagedProductCount: 纳管产品数
+        :param _ManagedProductCount: <p>纳管产品数</p>
         :type ManagedProductCount: int
-        :param _CfwManageCount: 纳管账号数
+        :param _CfwManageCount: <p>纳管账号数</p>
         :type CfwManageCount: int
+        :param _FwmShareUserQuota: <p>规格共享总配额</p>
+        :type FwmShareUserQuota: int
         """
         self._GroupName = None
         self._AdminInfo = None
@@ -8300,10 +8531,11 @@ class OrganSummary(AbstractModel):
         self._ManagedMemberCount = None
         self._ManagedProductCount = None
         self._CfwManageCount = None
+        self._FwmShareUserQuota = None
 
     @property
     def GroupName(self):
-        r"""集团名称
+        r"""<p>集团名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -8314,7 +8546,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def AdminInfo(self):
-        r"""管理员账号信息
+        r"""<p>管理员账号信息</p>
         :rtype: :class:`tencentcloud.fwm.v20250611.models.MemberInfo`
         """
         return self._AdminInfo
@@ -8325,7 +8557,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def AdminCount(self):
-        r"""管理员/委派管理员数量
+        r"""<p>管理员/委派管理员数量</p>
         :rtype: int
         """
         return self._AdminCount
@@ -8336,7 +8568,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def JoinedMemberCount(self):
-        r"""已接入成员数
+        r"""<p>已接入成员数</p>
         :rtype: int
         """
         return self._JoinedMemberCount
@@ -8347,7 +8579,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def MemberLimit(self):
-        r"""接入成员上限（-1表示无上限）
+        r"""<p>接入成员上限（-1表示无上限）</p>
         :rtype: int
         """
         return self._MemberLimit
@@ -8358,7 +8590,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def MemberLimitDisplay(self):
-        r"""接入成员上限显示
+        r"""<p>接入成员上限显示</p>
         :rtype: str
         """
         return self._MemberLimitDisplay
@@ -8369,7 +8601,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def CfwSharerCount(self):
-        r"""规格共享者数量
+        r"""<p>规格共享者数量</p>
         :rtype: int
         """
         return self._CfwSharerCount
@@ -8380,7 +8612,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def CfwUserCount(self):
-        r"""规格使用者数量
+        r"""<p>规格使用者数量</p>
         :rtype: int
         """
         return self._CfwUserCount
@@ -8391,7 +8623,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def Departments(self):
-        r"""部门名称列表
+        r"""<p>部门名称列表</p>
         :rtype: list of str
         """
         return self._Departments
@@ -8402,7 +8634,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def ManagedMemberCount(self):
-        r"""纳管账号数
+        r"""<p>纳管账号数</p>
         :rtype: int
         """
         return self._ManagedMemberCount
@@ -8413,7 +8645,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def ManagedProductCount(self):
-        r"""纳管产品数
+        r"""<p>纳管产品数</p>
         :rtype: int
         """
         return self._ManagedProductCount
@@ -8424,7 +8656,7 @@ class OrganSummary(AbstractModel):
 
     @property
     def CfwManageCount(self):
-        r"""纳管账号数
+        r"""<p>纳管账号数</p>
         :rtype: int
         """
         return self._CfwManageCount
@@ -8432,6 +8664,17 @@ class OrganSummary(AbstractModel):
     @CfwManageCount.setter
     def CfwManageCount(self, CfwManageCount):
         self._CfwManageCount = CfwManageCount
+
+    @property
+    def FwmShareUserQuota(self):
+        r"""<p>规格共享总配额</p>
+        :rtype: int
+        """
+        return self._FwmShareUserQuota
+
+    @FwmShareUserQuota.setter
+    def FwmShareUserQuota(self, FwmShareUserQuota):
+        self._FwmShareUserQuota = FwmShareUserQuota
 
 
     def _deserialize(self, params):
@@ -8449,6 +8692,7 @@ class OrganSummary(AbstractModel):
         self._ManagedMemberCount = params.get("ManagedMemberCount")
         self._ManagedProductCount = params.get("ManagedProductCount")
         self._CfwManageCount = params.get("CfwManageCount")
+        self._FwmShareUserQuota = params.get("FwmShareUserQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9141,6 +9385,7 @@ class SecGroupRuleResp(AbstractModel):
         :param _Id: <p>规则id  等同RuleUuid</p>
         :type Id: int
         :param _DnsParseCount: <p>域名解析的IP统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type DnsParseCount: :class:`tencentcloud.fwm.v20250611.models.SgDnsParseCount`
         :param _Scope: <p>规则生效范围</p>
         :type Scope: str
@@ -9458,6 +9703,7 @@ class SecGroupRuleResp(AbstractModel):
     @property
     def DnsParseCount(self):
         r"""<p>域名解析的IP统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.fwm.v20250611.models.SgDnsParseCount`
         """
         return self._DnsParseCount
@@ -11076,6 +11322,10 @@ class VpcAclRuleResp(AbstractModel):
         :type DnsParseCnt: int
         :param _FwGroupName: 防火墙组名称
         :type FwGroupName: str
+        :param _HitCount: 命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+        :type HitCount: int
+        :param _LastHitTime: 最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+        :type LastHitTime: str
         """
         self._RuleId = None
         self._Sequence = None
@@ -11100,6 +11350,8 @@ class VpcAclRuleResp(AbstractModel):
         self._UpdateTime = None
         self._DnsParseCnt = None
         self._FwGroupName = None
+        self._HitCount = None
+        self._LastHitTime = None
 
     @property
     def RuleId(self):
@@ -11361,6 +11613,28 @@ class VpcAclRuleResp(AbstractModel):
     def FwGroupName(self, FwGroupName):
         self._FwGroupName = FwGroupName
 
+    @property
+    def HitCount(self):
+        r"""命中次数。该规则在所有已下发成员账号下的累计命中次数合计，直接采用云防火墙返回值，不做时间窗口换算；从未命中时为 0
+        :rtype: int
+        """
+        return self._HitCount
+
+    @HitCount.setter
+    def HitCount(self, HitCount):
+        self._HitCount = HitCount
+
+    @property
+    def LastHitTime(self):
+        r"""最近命中时间。取该规则在所有已下发成员账号中最新的命中时间；从未命中时为 "-"
+        :rtype: str
+        """
+        return self._LastHitTime
+
+    @LastHitTime.setter
+    def LastHitTime(self, LastHitTime):
+        self._LastHitTime = LastHitTime
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -11388,6 +11662,8 @@ class VpcAclRuleResp(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._DnsParseCnt = params.get("DnsParseCnt")
         self._FwGroupName = params.get("FwGroupName")
+        self._HitCount = params.get("HitCount")
+        self._LastHitTime = params.get("LastHitTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

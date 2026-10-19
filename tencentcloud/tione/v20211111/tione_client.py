@@ -213,6 +213,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateNotebookImage(self, request):
+        r"""保存镜像
+
+        :param request: Request instance for CreateNotebookImage.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateNotebookImageRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateNotebookImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNotebookImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNotebookImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePresignedNotebookUrl(self, request):
         r"""生成Notebook访问链接
 

@@ -532,6 +532,30 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWorkflowRun(self, request):
+        r"""本接口用来创建工作流的异步运行实例，创建成功后工作流会在后台异步运行，接口返回工作流运行实例ID（WorkflowRunId）等信息。后面可通过调用DescribeWorkflowRun接口查工作流运行的详情。
+        注意：工作流的异步运行是基于应用的，需要先把对应的应用配置成“单工作流模式”，才能创建成功。
+
+        :param request: Request instance for CreateWorkflowRun.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWorkflowRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWorkspaceCredential(self, request):
         r"""创建工作空间凭证
 
@@ -1705,6 +1729,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNodeBatchRun(self, request):
+        r"""DescribeNodeBatchRun
+
+        :param request: Request instance for DescribeNodeBatchRun.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeNodeBatchRunRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeNodeBatchRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodeBatchRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodeBatchRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNodeRunDetail(self, request):
+        r"""查看工作流节点运行详情
+
+        :param request: Request instance for DescribeNodeRunDetail.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeNodeRunDetailRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeNodeRunDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNodeRunDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNodeRunDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePlugin(self, request):
         r"""获取插件详情
 
@@ -2087,6 +2157,52 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeVariableList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVariableListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowRun(self, request):
+        r"""查询工作流运行详情
+
+        :param request: Request instance for DescribeWorkflowRun.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkflowRunSummaryList(self, request):
+        r"""查询工作流运行实例列表
+
+        :param request: Request instance for DescribeWorkflowRunSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeWorkflowRunSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeWorkflowRunSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkflowRunSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkflowRunSummaryListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2695,6 +2811,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResumeWorkflowRun(self, request):
+        r"""继续运行等待输入的工作流异步运行实例
+
+        :param request: Request instance for ResumeWorkflowRun.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ResumeWorkflowRunRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ResumeWorkflowRunResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeWorkflowRun", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeWorkflowRunResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RetryRelease(self, request):
         r"""重试发布(发布暂停之后再次重新发布)
 
@@ -2764,6 +2903,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SaveWorkflowDebugContext(self, request):
+        r"""SaveWorkflowDebugContext
+
+        :param request: Request instance for SaveWorkflowDebugContext.
+        :type request: :class:`tencentcloud.adp.v20260520.models.SaveWorkflowDebugContextRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SaveWorkflowDebugContextResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SaveWorkflowDebugContext", params, headers=headers)
+            response = json.loads(body)
+            model = models.SaveWorkflowDebugContextResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SaveWorkflowToolNodeOutput(self, request):
+        r"""SaveWorkflowToolNodeOutput
+
+        :param request: Request instance for SaveWorkflowToolNodeOutput.
+        :type request: :class:`tencentcloud.adp.v20260520.models.SaveWorkflowToolNodeOutputRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SaveWorkflowToolNodeOutputResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SaveWorkflowToolNodeOutput", params, headers=headers)
+            response = json.loads(body)
+            model = models.SaveWorkflowToolNodeOutputResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SearchKnowledge(self, request):
         r"""知识检索
 
@@ -2778,6 +2963,29 @@ class AdpClient(AbstractClient):
             body = self.call("SearchKnowledge", params, headers=headers)
             response = json.loads(body)
             model = models.SearchKnowledgeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopWorkflowRunList(self, request):
+        r"""批量停止正在进行的工作流运行实例。
+
+        :param request: Request instance for StopWorkflowRunList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.StopWorkflowRunListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.StopWorkflowRunListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopWorkflowRunList", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopWorkflowRunListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

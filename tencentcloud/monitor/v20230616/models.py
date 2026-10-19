@@ -1067,6 +1067,15 @@ class ArtifactInfo(AbstractModel):
         :param _StoragePath: <p>用于解析调用下载接口</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StoragePath: str
+        :param _SourceType: <p>来源类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: str
+        :param _SourceName: <p>来源名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceName: str
+        :param _ExecutionSummary: <p>预览摘要</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionSummary: str
         """
         self._ArtifactId = None
         self._Name = None
@@ -1078,6 +1087,9 @@ class ArtifactInfo(AbstractModel):
         self._AgentId = None
         self._SkillId = None
         self._StoragePath = None
+        self._SourceType = None
+        self._SourceName = None
+        self._ExecutionSummary = None
 
     @property
     def ArtifactId(self):
@@ -1199,6 +1211,42 @@ class ArtifactInfo(AbstractModel):
     def StoragePath(self, StoragePath):
         self._StoragePath = StoragePath
 
+    @property
+    def SourceType(self):
+        r"""<p>来源类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceName(self):
+        r"""<p>来源名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def ExecutionSummary(self):
+        r"""<p>预览摘要</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionSummary
+
+    @ExecutionSummary.setter
+    def ExecutionSummary(self, ExecutionSummary):
+        self._ExecutionSummary = ExecutionSummary
+
 
     def _deserialize(self, params):
         self._ArtifactId = params.get("ArtifactId")
@@ -1211,6 +1259,9 @@ class ArtifactInfo(AbstractModel):
         self._AgentId = params.get("AgentId")
         self._SkillId = params.get("SkillId")
         self._StoragePath = params.get("StoragePath")
+        self._SourceType = params.get("SourceType")
+        self._SourceName = params.get("SourceName")
+        self._ExecutionSummary = params.get("ExecutionSummary")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5921,12 +5972,18 @@ class ListAIWorkbenchArtifactsRequest(AbstractModel):
         :type MimeTypes: list of str
         :param _OrderDirection: <p>排序</p><p>枚举值：</p><ul><li>ASC： 正序</li><li>DESC： 倒序</li></ul>
         :type OrderDirection: str
+        :param _AgentId: <p>数字分身ID</p>
+        :type AgentId: str
+        :param _NameKeyword: <p>模糊搜索制品信息</p>
+        :type NameKeyword: str
         """
         self._PerPage = None
         self._PageNo = None
         self._SessionIds = None
         self._MimeTypes = None
         self._OrderDirection = None
+        self._AgentId = None
+        self._NameKeyword = None
 
     @property
     def PerPage(self):
@@ -5983,6 +6040,28 @@ class ListAIWorkbenchArtifactsRequest(AbstractModel):
     def OrderDirection(self, OrderDirection):
         self._OrderDirection = OrderDirection
 
+    @property
+    def AgentId(self):
+        r"""<p>数字分身ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def NameKeyword(self):
+        r"""<p>模糊搜索制品信息</p>
+        :rtype: str
+        """
+        return self._NameKeyword
+
+    @NameKeyword.setter
+    def NameKeyword(self, NameKeyword):
+        self._NameKeyword = NameKeyword
+
 
     def _deserialize(self, params):
         self._PerPage = params.get("PerPage")
@@ -5990,6 +6069,8 @@ class ListAIWorkbenchArtifactsRequest(AbstractModel):
         self._SessionIds = params.get("SessionIds")
         self._MimeTypes = params.get("MimeTypes")
         self._OrderDirection = params.get("OrderDirection")
+        self._AgentId = params.get("AgentId")
+        self._NameKeyword = params.get("NameKeyword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

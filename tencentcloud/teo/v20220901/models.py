@@ -2519,7 +2519,12 @@ class AliasDomain(AbstractModel):
 
 
 class AllowActionParameters(AbstractModel):
-    r"""Web 安全 Allow 的附加参数
+    r"""安全执行动作为放行时的附加参数。
+
+    该参数用于指定在命中安全规则并执行放行动作时，系统所采取的附加处置动作。
+    不同处置动作由不同且固定的参数组合进行配置，系统将根据所配置的参数组合判定实际生效的处置动作类型。
+    在同一次放行执行过程中，仅允许配置并生效一种处置动作，多个处置动作对应的参数组合不可同时出现，否则视为非法配置。为空则采用默认放行处置动作。
+    AllowActionParameters 支持以下附加处置动作：<li>默认：当 AllowActionParameters 为空，立即跳过当前安全模块剩余规则，继续匹配后续安全模块。</li><li>延迟放行：对请求增加响应延迟，并继续匹配当前模块的剩余规则。对应参数 MinDelayTime、MaxDelayTime。</li>
 
     """
 
@@ -4951,17 +4956,17 @@ class BotManagementCustomRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Bot 自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：BotManagementCustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+        :param _Id: <p>Bot 自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：BotManagementCustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></p>
         :type Id: str
-        :param _Name: Bot 自定义规则的名称。
+        :param _Name: <p>Bot 自定义规则的名称。</p>
         :type Name: str
-        :param _Enabled: Bot 自定义规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :param _Enabled: <p>Bot 自定义规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li></p>
         :type Enabled: str
-        :param _Priority: Bot 自定义规则的优先级，范围是 1 ~ 100，默认为 50。
+        :param _Priority: <p>Bot 自定义规则的优先级，范围是 1 ~ 100，默认为 50。</p>
         :type Priority: int
-        :param _Condition: Bot 自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :param _Condition: <p>Bot 自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。</p>
         :type Condition: str
-        :param _Action: Bot 自定义规则的处置方式。取值有：<li>Monitor：观察；</li><li>Deny：拦截，其中 DenyActionParameters.Name 支持 Deny 和 ReturnCustomPage；</li><li>Challenge：挑战，其中 ChallengeActionParameters.Name 支持 JSChallenge 和 ManagedChallenge；</li><li>Redirect：重定向至 URL。</li>
+        :param _Action: <p>按权重分配的安全执行动作列表。</p>
         :type Action: list of SecurityWeightedAction
         """
         self._Id = None
@@ -4973,7 +4978,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""Bot 自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：BotManagementCustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+        r"""<p>Bot 自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：BotManagementCustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></p>
         :rtype: str
         """
         return self._Id
@@ -4984,7 +4989,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""Bot 自定义规则的名称。
+        r"""<p>Bot 自定义规则的名称。</p>
         :rtype: str
         """
         return self._Name
@@ -4995,7 +5000,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""Bot 自定义规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        r"""<p>Bot 自定义规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li></p>
         :rtype: str
         """
         return self._Enabled
@@ -5006,7 +5011,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""Bot 自定义规则的优先级，范围是 1 ~ 100，默认为 50。
+        r"""<p>Bot 自定义规则的优先级，范围是 1 ~ 100，默认为 50。</p>
         :rtype: int
         """
         return self._Priority
@@ -5017,7 +5022,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""Bot 自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        r"""<p>Bot 自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。</p>
         :rtype: str
         """
         return self._Condition
@@ -5028,7 +5033,7 @@ class BotManagementCustomRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""Bot 自定义规则的处置方式。取值有：<li>Monitor：观察；</li><li>Deny：拦截，其中 DenyActionParameters.Name 支持 Deny 和 ReturnCustomPage；</li><li>Challenge：挑战，其中 ChallengeActionParameters.Name 支持 JSChallenge 和 ManagedChallenge；</li><li>Redirect：重定向至 URL。</li>
+        r"""<p>按权重分配的安全执行动作列表。</p>
         :rtype: list of SecurityWeightedAction
         """
         return self._Action
@@ -7307,18 +7312,21 @@ class CertificateInfo(AbstractModel):
 
 
 class ChallengeActionParameters(AbstractModel):
-    r"""Web 安全 Challenge 挑战的附加参数
+    r"""安全执行动作为挑战时的附加参数。
+
+    该参数用于指定在命中安全规则并执行挑战动作时，系统所采取的附加处置动作。
+    挑战处置动作通过 ChallengeOption 进行细分，不同挑战类型对应不同的交互形式及参数要求，系统将根据所选挑战类型，生效对应的参数配置。
+    ChallengeActionParameters 支持以下挑战处置类型：<li>插页式挑战：响应新页面，并在新页面内运行认证机制。对应 ChallengeOption 取值 InterstitialChallenge。</li><li>内嵌式挑战：响应 SDK 挑战。对应 ChallengeOption 取值 InlineChallenge。</li><li>JavaScript 挑战：浏览器无感验证，浏览器自动完成校验并展示请求资源。对应 ChallengeOption 取值 JSChallenge。</li><li>托管挑战：响应包含 JavaScript 程序的重定向页面，用于校验浏览器运行环境。对应 ChallengeOption 取值 ManagedChallenge。</li>
 
     """
 
     def __init__(self):
         r"""
-        :param _ChallengeOption: 安全执行的具体挑战动作。取值有：<li> InterstitialChallenge：插页式挑战；</li><li> InlineChallenge：内嵌式挑战；</li><li> JSChallenge：JavaScript 挑战；</li><li> ManagedChallenge：托管挑战。</li>
+        :param _ChallengeOption: <p>安全执行的具体挑战动作。</p><p>枚举值：</p><ul><li>InterstitialChallenge： 插页式挑战；</li><li>InlineChallenge： 内嵌式挑战（SDK 挑战）；</li><li>ManagedChallenge： 托管挑战。仅适用于用户通过浏览器直接访问的 HTML 网页。API 接口、网页内 XHR/AJAX 异步请求、移动 App、命令行工具等场景无法完成验证，请勿配置；</li><li>JSChallenge： JavaScript 挑战。仅适用于用户通过浏览器直接访问的 HTML 网页。API 接口、网页内 XHR/AJAX 异步请求、移动 App、命令行工具等场景无法完成验证，请勿配置。</li></ul>
         :type ChallengeOption: str
-        :param _Interval: 重复挑战的时间间隔，当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。默认值为 300s。支持的单位有：<li>s：秒，取值范围1～60；</li><li>m：分，取值范围1～60；</li><li>h：小时，取值范围1～24。</li>
-
+        :param _Interval: <p>重复挑战的时间间隔，当 ChallengeOption 为 InterstitialChallenge/InlineChallenge 时，该字段必填。默认值为 300s。支持的单位有：<li>s：秒，取值范围1～60；</li><li>m：分，取值范围1～60；</li><li>h：小时，取值范围1～24。</li></p>
         :type Interval: str
-        :param _AttesterId: 客户端认证方式 ID 。当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。
+        :param _AttesterId: <p>客户端认证方式 ID 。当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。</p>
         :type AttesterId: str
         """
         self._ChallengeOption = None
@@ -7327,7 +7335,7 @@ class ChallengeActionParameters(AbstractModel):
 
     @property
     def ChallengeOption(self):
-        r"""安全执行的具体挑战动作。取值有：<li> InterstitialChallenge：插页式挑战；</li><li> InlineChallenge：内嵌式挑战；</li><li> JSChallenge：JavaScript 挑战；</li><li> ManagedChallenge：托管挑战。</li>
+        r"""<p>安全执行的具体挑战动作。</p><p>枚举值：</p><ul><li>InterstitialChallenge： 插页式挑战；</li><li>InlineChallenge： 内嵌式挑战（SDK 挑战）；</li><li>ManagedChallenge： 托管挑战。仅适用于用户通过浏览器直接访问的 HTML 网页。API 接口、网页内 XHR/AJAX 异步请求、移动 App、命令行工具等场景无法完成验证，请勿配置；</li><li>JSChallenge： JavaScript 挑战。仅适用于用户通过浏览器直接访问的 HTML 网页。API 接口、网页内 XHR/AJAX 异步请求、移动 App、命令行工具等场景无法完成验证，请勿配置。</li></ul>
         :rtype: str
         """
         return self._ChallengeOption
@@ -7338,8 +7346,7 @@ class ChallengeActionParameters(AbstractModel):
 
     @property
     def Interval(self):
-        r"""重复挑战的时间间隔，当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。默认值为 300s。支持的单位有：<li>s：秒，取值范围1～60；</li><li>m：分，取值范围1～60；</li><li>h：小时，取值范围1～24。</li>
-
+        r"""<p>重复挑战的时间间隔，当 ChallengeOption 为 InterstitialChallenge/InlineChallenge 时，该字段必填。默认值为 300s。支持的单位有：<li>s：秒，取值范围1～60；</li><li>m：分，取值范围1～60；</li><li>h：小时，取值范围1～24。</li></p>
         :rtype: str
         """
         return self._Interval
@@ -7350,7 +7357,7 @@ class ChallengeActionParameters(AbstractModel):
 
     @property
     def AttesterId(self):
-        r"""客户端认证方式 ID 。当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。
+        r"""<p>客户端认证方式 ID 。当 Name 为 InterstitialChallenge/InlineChallenge 时，该字段必填。</p>
         :rtype: str
         """
         return self._AttesterId
@@ -16584,19 +16591,19 @@ class CustomRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 自定义规则的名称。
+        :param _Name: <p>自定义规则的名称。</p>
         :type Name: str
-        :param _Condition: 自定义规则的具体内容，需符合表达式语法，详细规范参见 [产品文档](https://cloud.tencent.com/document/product/1552/125343) 。
+        :param _Condition: <p>自定义规则的具体内容，需符合表达式语法，详细规范参见 <a href="https://cloud.tencent.com/document/product/1552/125343">产品文档</a> 。</p>
         :type Condition: str
-        :param _Action: 自定义规则的处置动作。SecurityAction.Name 取值范围如下：<ul><li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li></ul>
+        :param _Action: <p>自定义规则的处置动作。SecurityAction.Name 取值范围如下：</p><ul><li>Allow：放行，其中 AllowActionParameters 支持 MinDelayTime 和 MaxDelayTime 配置；</li><li>Deny：拦截，其中 DenyActionParameters 中支持 BlockIp、ReturnCustomPage 和 Stall 配置；</li><li>Monitor：观察；</li><li>Challenge：挑战，其中 ChallengeActionParameters.ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Redirect：重定向至URL。</li></ul>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _Enabled: 自定义规则是否开启。取值有：<ul><li>on：开启</li><li>off：关闭</li></ul>
+        :param _Enabled: <p>自定义规则是否开启。取值有：<ul><li>on：开启；</li><li>off：关闭。</li></ul></p>
         :type Enabled: str
-        :param _Id: 自定义规则的 ID。通过规则 ID 可支持不同的规则配置操作：<ul><li>增加新规则：ID 为空或不指定 ID 参数；</li><li>修改已有规则：指定需要更新/修改的规则 ID；</li><li>删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></ul>
+        :param _Id: <p>自定义规则的 ID。通过规则 ID 可支持不同的规则配置操作：<ul><li>增加新规则：ID 为空或不指定 ID 参数；</li><li>修改已有规则：指定需要更新/修改的规则 ID；</li><li>删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></ul></p>
         :type Id: str
-        :param _RuleType: 自定义规则的类型。取值有：<ul><li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则；</li><li>ManagedAccessRule：专家定制规则，仅出参支持。</li></ul>说明：当未指定 RuleType 时，默认为 `PreciseMatchRule`。
+        :param _RuleType: <p>自定义规则的类型。取值有：<ul><li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则；</li><li>ManagedAccessRule：专家定制规则，仅出参支持。</li></ul>说明：当未指定 RuleType 时，默认为 <code>PreciseMatchRule</code>。</p>
         :type RuleType: str
-        :param _Priority: 自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（`PreciseMatchRule`）。
+        :param _Priority: <p>自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（<code>PreciseMatchRule</code>）。</p>
         :type Priority: int
         """
         self._Name = None
@@ -16609,7 +16616,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""自定义规则的名称。
+        r"""<p>自定义规则的名称。</p>
         :rtype: str
         """
         return self._Name
@@ -16620,7 +16627,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""自定义规则的具体内容，需符合表达式语法，详细规范参见 [产品文档](https://cloud.tencent.com/document/product/1552/125343) 。
+        r"""<p>自定义规则的具体内容，需符合表达式语法，详细规范参见 <a href="https://cloud.tencent.com/document/product/1552/125343">产品文档</a> 。</p>
         :rtype: str
         """
         return self._Condition
@@ -16631,7 +16638,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""自定义规则的处置动作。SecurityAction.Name 取值范围如下：<ul><li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li></ul>
+        r"""<p>自定义规则的处置动作。SecurityAction.Name 取值范围如下：</p><ul><li>Allow：放行，其中 AllowActionParameters 支持 MinDelayTime 和 MaxDelayTime 配置；</li><li>Deny：拦截，其中 DenyActionParameters 中支持 BlockIp、ReturnCustomPage 和 Stall 配置；</li><li>Monitor：观察；</li><li>Challenge：挑战，其中 ChallengeActionParameters.ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Redirect：重定向至URL。</li></ul>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -16642,7 +16649,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""自定义规则是否开启。取值有：<ul><li>on：开启</li><li>off：关闭</li></ul>
+        r"""<p>自定义规则是否开启。取值有：<ul><li>on：开启；</li><li>off：关闭。</li></ul></p>
         :rtype: str
         """
         return self._Enabled
@@ -16653,7 +16660,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""自定义规则的 ID。通过规则 ID 可支持不同的规则配置操作：<ul><li>增加新规则：ID 为空或不指定 ID 参数；</li><li>修改已有规则：指定需要更新/修改的规则 ID；</li><li>删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></ul>
+        r"""<p>自定义规则的 ID。通过规则 ID 可支持不同的规则配置操作：<ul><li>增加新规则：ID 为空或不指定 ID 参数；</li><li>修改已有规则：指定需要更新/修改的规则 ID；</li><li>删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></ul></p>
         :rtype: str
         """
         return self._Id
@@ -16664,7 +16671,7 @@ class CustomRule(AbstractModel):
 
     @property
     def RuleType(self):
-        r"""自定义规则的类型。取值有：<ul><li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则；</li><li>ManagedAccessRule：专家定制规则，仅出参支持。</li></ul>说明：当未指定 RuleType 时，默认为 `PreciseMatchRule`。
+        r"""<p>自定义规则的类型。取值有：<ul><li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则；</li><li>ManagedAccessRule：专家定制规则，仅出参支持。</li></ul>说明：当未指定 RuleType 时，默认为 <code>PreciseMatchRule</code>。</p>
         :rtype: str
         """
         return self._RuleType
@@ -16675,7 +16682,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（`PreciseMatchRule`）。
+        r"""<p>自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（<code>PreciseMatchRule</code>）。</p>
         :rtype: int
         """
         return self._Priority
@@ -20429,7 +20436,12 @@ class DeliveryCondition(AbstractModel):
 
 
 class DenyActionParameters(AbstractModel):
-    r"""安全执行动作为封禁的附加参数。
+    r"""安全执行动作为拦截时的附加参数。
+
+    该参数用于指定在命中安全规则并执行拦截动作时，系统所采取的附加处置动作。
+    不同处置动作由不同且固定的参数组合进行配置，系统将根据所配置的参数组合判定实际生效的处置动作类型。
+    在同一次拦截执行过程中，仅允许配置并生效一种处置动作，多个处置动作对应的参数组合不可同时出现，否则视为非法配置。为空则采用默认拦截处置动作。
+    DenyActionParameters 支持以下附加处置动作：<li>默认：当 DenyActionParameters 为空，或未启用任何附加处置动作时，系统将执行默认拦截处置，即响应拦截页面。</li><li>IP 封禁：对触发规则的客户端来源 IP 进行持续封禁。对应参数 BlockIp、BlockIpDuration。</li><li>自定义页面拦截：使用指定的自定义页面内容响应请求。对应参数 ReturnCustomPage、ResponseCode、ErrorPageId。</li><li>静默：接受客户端请求但不返回。对应参数 Stall。</li>
 
     """
 
@@ -38335,7 +38347,7 @@ class FunctionEnvironmentVariable(AbstractModel):
         :type Value: str
         :param _Type: 变量的类型，取值有：
 <li>string：字符串类型；</li>
-<li>json：json 对象类型。</li>默认值为：string。
+<li>json：json 对象类型。</li><li>secret：密钥类型。</li>默认值为：string。
         :type Type: str
         """
         self._Key = None
@@ -38368,7 +38380,7 @@ class FunctionEnvironmentVariable(AbstractModel):
     def Type(self):
         r"""变量的类型，取值有：
 <li>string：字符串类型；</li>
-<li>json：json 对象类型。</li>默认值为：string。
+<li>json：json 对象类型。</li><li>secret：密钥类型。</li>默认值为：string。
         :rtype: str
         """
         return self._Type
@@ -42046,7 +42058,7 @@ class InferenceDomain(AbstractModel):
         r"""
         :param _Domain: <p>域名名称。</p>
         :type Domain: str
-        :param _Status: <p>域名状态。</p><p>枚举值：</p><ul><li>Online： 已生效；</li><li>Process： 部署中；</li><li>Offline： 已停用；</li><li>Init： 未生效，待激活站点。</li></ul>
+        :param _Status: <p>域名状态。</p><p>枚举值：</p><ul><li>Online： 已生效；</li><li>Process： 部署中；</li><li>Offline： 已停用；</li><li>Init： 未生效，待激活站点；</li><li>Forbidden： 域名被禁用。</li></ul>
         :type Status: str
         :param _AuthSwitch: <p>推理任务请求鉴权开关。</p><p>枚举值：</p><ul><li>Off： 关闭鉴权；</li><li>On： 开启鉴权。</li></ul><p>默认值：On。</p>
         :type AuthSwitch: str
@@ -42083,7 +42095,7 @@ class InferenceDomain(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>域名状态。</p><p>枚举值：</p><ul><li>Online： 已生效；</li><li>Process： 部署中；</li><li>Offline： 已停用；</li><li>Init： 未生效，待激活站点。</li></ul>
+        r"""<p>域名状态。</p><p>枚举值：</p><ul><li>Online： 已生效；</li><li>Process： 部署中；</li><li>Offline： 已停用；</li><li>Init： 未生效，待激活站点；</li><li>Forbidden： 域名被禁用。</li></ul>
         :rtype: str
         """
         return self._Status
@@ -49275,25 +49287,21 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _RuleId: 规则 ID。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
+        :param _RuleId: <p>规则 ID。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。</p>
         :type RuleId: str
-        :param _FunctionRuleConditions: 规则条件列表，相同触发规则的不同条件匹配项之间为或关系，不填写保持原有配置。
+        :param _FunctionRuleConditions: <p>规则条件列表，相同触发规则的不同条件匹配项之间为或关系，不填写保持原有配置。</p>
         :type FunctionRuleConditions: list of FunctionRuleCondition
-        :param _TriggerType: 函数选择配置类型：
-<li> direct：直接指定执行函数；</li>
-<li> weight：基于权重比选择函数；</li>
-<li> region：基于客户端 IP 的国家/地区选择函数。</li>
-不填时默认为 direct 。
+        :param _TriggerType: <p>函数选择配置类型：</p><li> direct：直接指定执行函数；</li><li> weight：基于权重比选择函数；</li><li> region：基于客户端 IP 的国家/地区选择函数。</li>不填时默认为 direct 。
         :type TriggerType: str
-        :param _FunctionId: 指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
+        :param _FunctionId: <p>指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。</p>
         :type FunctionId: str
-        :param _RegionMappingSelections: 基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+        :param _RegionMappingSelections: <p>基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中必须包含一项 Regions 为 Default 的配置，同时还需至少配置一项其他具体的 Region。</p>
         :type RegionMappingSelections: list of FunctionRegionSelection
-        :param _WeightedSelections: 基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+        :param _WeightedSelections: <p>基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。</p>
         :type WeightedSelections: list of FunctionWeightedSelection
-        :param _Remark: 规则描述，最大支持 60 个字符，不填写保持原有配置。
+        :param _Remark: <p>规则描述，最大支持 60 个字符，不填写保持原有配置。</p>
         :type Remark: str
         """
         self._ZoneId = None
@@ -49307,7 +49315,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -49318,7 +49326,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则 ID。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。
+        r"""<p>规则 ID。您可以先通过 DescribeFunctionRules 接口来获取需要修改的规则的 RuleId，然后传入修改后的规则内容，原规则内容会被覆盖式更新。</p>
         :rtype: str
         """
         return self._RuleId
@@ -49329,7 +49337,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def FunctionRuleConditions(self):
-        r"""规则条件列表，相同触发规则的不同条件匹配项之间为或关系，不填写保持原有配置。
+        r"""<p>规则条件列表，相同触发规则的不同条件匹配项之间为或关系，不填写保持原有配置。</p>
         :rtype: list of FunctionRuleCondition
         """
         return self._FunctionRuleConditions
@@ -49340,11 +49348,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""函数选择配置类型：
-<li> direct：直接指定执行函数；</li>
-<li> weight：基于权重比选择函数；</li>
-<li> region：基于客户端 IP 的国家/地区选择函数。</li>
-不填时默认为 direct 。
+        r"""<p>函数选择配置类型：</p><li> direct：直接指定执行函数；</li><li> weight：基于权重比选择函数；</li><li> region：基于客户端 IP 的国家/地区选择函数。</li>不填时默认为 direct 。
         :rtype: str
         """
         return self._TriggerType
@@ -49355,7 +49359,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def FunctionId(self):
-        r"""指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。
+        r"""<p>指定执行的函数 ID。当 TriggerType 为 direct 或 TriggerType 不填时生效。</p>
         :rtype: str
         """
         return self._FunctionId
@@ -49366,7 +49370,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def RegionMappingSelections(self):
-        r"""基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中至少包含一项 Regions 为 Default 的配置。
+        r"""<p>基于客户端 IP 国家/地区的函数选择配置，当 TriggerType 为 region 时生效且 RegionMappingSelections 必填。RegionMappingSelections 中必须包含一项 Regions 为 Default 的配置，同时还需至少配置一项其他具体的 Region。</p>
         :rtype: list of FunctionRegionSelection
         """
         return self._RegionMappingSelections
@@ -49377,7 +49381,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def WeightedSelections(self):
-        r"""基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。
+        r"""<p>基于权重的函数选择配置，当 TriggerType 为 weight 时生效且 WeightedSelections 必填。WeightedSelections 中的所有权重之和需要为100。</p>
         :rtype: list of FunctionWeightedSelection
         """
         return self._WeightedSelections
@@ -49388,7 +49392,7 @@ class ModifyFunctionRuleRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""规则描述，最大支持 60 个字符，不填写保持原有配置。
+        r"""<p>规则描述，最大支持 60 个字符，不填写保持原有配置。</p>
         :rtype: str
         """
         return self._Remark
@@ -59555,27 +59559,27 @@ class RateLimitingRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 精准速率限制的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：RateLimitingRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+        :param _Id: <p>精准速率限制的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：RateLimitingRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></p>
         :type Id: str
-        :param _Name: 精准速率限制的名称。
+        :param _Name: <p>精准速率限制的名称。</p>
         :type Name: str
-        :param _Condition: 精准速率限制的具体内容，需符合表达式语法，详细规范参见[产品文档](https://cloud.tencent.com/document/product/1552/125343)。
+        :param _Condition: <p>精准速率限制的具体内容，需符合表达式语法，详细规范参见<a href="https://cloud.tencent.com/document/product/1552/125343">产品文档</a>。</p>
         :type Condition: str
-        :param _Mode: 限速方式。在统计时间窗口 CountingPeriod 内，对满足特征 CountBy 的请求，支持配置以下限速方式：<li>Block: 阻断访问源。当统计次数超过阈值 MaxRequestThreshold 时，在 ActionDuration 时长内，对满足特征的所有后续请求执行 Action 处置；</li><li>Throttle: 仅处置超额请求。当统计次数超过阈值 MaxRequestThreshold 时，仅对超过阈值的请求执行 Action 处置，窗口结束后停止处置。此时，ActionDuration 参数将被忽略。</li><br />默认值为 Block。
+        :param _Mode: <p>限速方式。在统计时间窗口 CountingPeriod 内，对满足特征 CountBy 的请求，支持配置以下限速方式：<li>Block: 阻断访问源。当统计次数超过阈值 MaxRequestThreshold 时，在 ActionDuration 时长内，对满足特征的所有后续请求执行 Action 处置；</li><li>Throttle: 仅处置超额请求。当统计次数超过阈值 MaxRequestThreshold 时，仅对超过阈值的请求执行 Action 处置，窗口结束后停止处置。此时，ActionDuration 参数将被忽略。</li><br>默认值为 Block。</p>
         :type Mode: str
-        :param _CountBy: 速率阈值请求特征的匹配方式， 当 Enabled 为 on 时，此字段必填。<br /><br />当条件有多个时，将组合多个条件共同进行统计计算，条件最多不可超过5条。取值有：<br/><li><b>http.request.ip</b>：客户端 IP；</li><li><b>http.request.xff_header_ip</b>：客户端 IP（优先匹配 XFF 头部）；</li><li><b>http.request.uri.path</b>：请求的访问路径；</li><li><b>http.request.cookies['session']</b>：名称为 session 的 Cookie，其中 session 可替换为自己指定的参数；</li><li><b>http.request.headers['user-agent']</b>：名称为 user-agent 的 HTTP 头部，其中 user-agent 可替换为自己指定的参数；</li><li><b>http.request.ja3</b>：请求的 JA3 指纹；</li><li><b>http.request.ja4</b>：请求的 JA4 指纹；</li><li><b>http.request.uri.query['test']</b>：名称为 test 的 URL 查询参数，其中 test 可替换为自己指定的参数。</li> 
+        :param _CountBy: <p>速率阈值请求特征的匹配方式， 当 Enabled 为 on 时，此字段必填。<br><br>当条件有多个时，将组合多个条件共同进行统计计算，条件最多不可超过5条。取值有：<br><li><b>http.request.ip</b>：客户端 IP；</li><li><b>http.request.xff_header_ip</b>：客户端 IP（优先匹配 XFF 头部）；</li><li><b>http.request.uri.path</b>：请求的访问路径；</li><li><b>http.request.cookies[&#39;session&#39;]</b>：名称为 session 的 Cookie，其中 session 可替换为自己指定的参数；</li><li><b>http.request.headers[&#39;user-agent&#39;]</b>：名称为 user-agent 的 HTTP 头部，其中 user-agent 可替换为自己指定的参数；</li><li><b>http.request.ja3</b>：请求的 JA3 指纹；</li><li><b>http.request.ja4</b>：请求的 JA4 指纹；</li><li><b>http.request.uri.query[&#39;test&#39;]</b>：名称为 test 的 URL 查询参数，其中 test 可替换为自己指定的参数。</li></p>
         :type CountBy: list of str
-        :param _MaxRequestThreshold: 精准速率限制在时间范围内的累计拦截次数，取值范围 1 ~ 100000。
+        :param _MaxRequestThreshold: <p>精准速率限制在时间范围内的累计拦截次数，取值范围 1 ~ 100000。</p>
         :type MaxRequestThreshold: int
-        :param _CountingPeriod: 统计的时间窗口，取值有：<li>1s：1秒；</li><li>5s：5秒；</li><li>10s：10秒；</li><li>20s：20秒；</li><li>30s：30秒；</li><li>40s：40秒；</li><li>50s：50秒；</li><li>1m：1分钟；</li><li>2m：2分钟；</li><li>5m：5分钟；</li><li>10m：10分钟；</li><li>1h：1小时。</li> 
+        :param _CountingPeriod: <p>统计的时间窗口，取值有：<li>1s：1秒；</li><li>5s：5秒；</li><li>10s：10秒；</li><li>20s：20秒；</li><li>30s：30秒；</li><li>40s：40秒；</li><li>50s：50秒；</li><li>1m：1分钟；</li><li>2m：2分钟；</li><li>5m：5分钟；</li><li>10m：10分钟；</li><li>1h：1小时。</li></p>
         :type CountingPeriod: str
-        :param _ActionDuration: Action 动作的持续时长，单位仅支持：<li>s：秒，取值 1 ~ 120；</li><li>m：分钟，取值 1 ~ 120；</li><li>h：小时，取值 1 ~ 48；</li><li>d：天，取值 1 ~ 30。</li><br />当 Mode 为 Throttle 时，此参数将被忽略，不会生效。
+        :param _ActionDuration: <p>Action 动作的持续时长，单位仅支持：<li>s：秒，取值 1 ~ 120；</li><li>m：分钟，取值 1 ~ 120；</li><li>h：小时，取值 1 ~ 48；</li><li>d：天，取值 1 ~ 30。</li><br>当 Mode 为 Throttle 时，此参数将被忽略，不会生效。</p>
         :type ActionDuration: str
-        :param _Action: 精准速率限制的处置方式。取值有：<li>Monitor：观察；</li><li>Deny：拦截，其中DenyActionParameters.Name支持Deny和ReturnCustomPage；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name支持JSChallenge和ManagedChallenge；</li><li>Redirect：重定向至URL；</li>
+        :param _Action: <p>精准速率限制的处置方式。SecurityAction.Name 取值范围如下：</p><ul><li>Allow：放行，其中 AllowActionParameters 支持 MinDelayTime 和 MaxDelayTime 配置；</li><li>Deny：拦截，其中 DenyActionParameters 中支持 ReturnCustomPage 和 Stall 配置；</li><li>Monitor：观察；</li><li>Challenge：挑战，其中 ChallengeActionParameters.ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Redirect：重定向至URL。</li></ul>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _Priority: 精准速率限制的优先级，范围是 0 ~ 100，默认为 0。
+        :param _Priority: <p>精准速率限制的优先级，范围是 0 ~ 100，默认为 0。</p>
         :type Priority: int
-        :param _Enabled: 精准速率限制规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        :param _Enabled: <p>精准速率限制规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li></p>
         :type Enabled: str
         """
         self._Id = None
@@ -59592,7 +59596,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""精准速率限制的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：RateLimitingRules 参数中，Rules 列表中未包含的已有规则将被删除。</li>
+        r"""<p>精准速率限制的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> <li> <b>增加</b>新规则：ID 为空或不指定 ID 参数；</li><li><b>修改</b>已有规则：指定需要更新/修改的规则 ID；</li><li><b>删除</b>已有规则：RateLimitingRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></p>
         :rtype: str
         """
         return self._Id
@@ -59603,7 +59607,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""精准速率限制的名称。
+        r"""<p>精准速率限制的名称。</p>
         :rtype: str
         """
         return self._Name
@@ -59614,7 +59618,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""精准速率限制的具体内容，需符合表达式语法，详细规范参见[产品文档](https://cloud.tencent.com/document/product/1552/125343)。
+        r"""<p>精准速率限制的具体内容，需符合表达式语法，详细规范参见<a href="https://cloud.tencent.com/document/product/1552/125343">产品文档</a>。</p>
         :rtype: str
         """
         return self._Condition
@@ -59625,7 +59629,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Mode(self):
-        r"""限速方式。在统计时间窗口 CountingPeriod 内，对满足特征 CountBy 的请求，支持配置以下限速方式：<li>Block: 阻断访问源。当统计次数超过阈值 MaxRequestThreshold 时，在 ActionDuration 时长内，对满足特征的所有后续请求执行 Action 处置；</li><li>Throttle: 仅处置超额请求。当统计次数超过阈值 MaxRequestThreshold 时，仅对超过阈值的请求执行 Action 处置，窗口结束后停止处置。此时，ActionDuration 参数将被忽略。</li><br />默认值为 Block。
+        r"""<p>限速方式。在统计时间窗口 CountingPeriod 内，对满足特征 CountBy 的请求，支持配置以下限速方式：<li>Block: 阻断访问源。当统计次数超过阈值 MaxRequestThreshold 时，在 ActionDuration 时长内，对满足特征的所有后续请求执行 Action 处置；</li><li>Throttle: 仅处置超额请求。当统计次数超过阈值 MaxRequestThreshold 时，仅对超过阈值的请求执行 Action 处置，窗口结束后停止处置。此时，ActionDuration 参数将被忽略。</li><br>默认值为 Block。</p>
         :rtype: str
         """
         return self._Mode
@@ -59636,7 +59640,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def CountBy(self):
-        r"""速率阈值请求特征的匹配方式， 当 Enabled 为 on 时，此字段必填。<br /><br />当条件有多个时，将组合多个条件共同进行统计计算，条件最多不可超过5条。取值有：<br/><li><b>http.request.ip</b>：客户端 IP；</li><li><b>http.request.xff_header_ip</b>：客户端 IP（优先匹配 XFF 头部）；</li><li><b>http.request.uri.path</b>：请求的访问路径；</li><li><b>http.request.cookies['session']</b>：名称为 session 的 Cookie，其中 session 可替换为自己指定的参数；</li><li><b>http.request.headers['user-agent']</b>：名称为 user-agent 的 HTTP 头部，其中 user-agent 可替换为自己指定的参数；</li><li><b>http.request.ja3</b>：请求的 JA3 指纹；</li><li><b>http.request.ja4</b>：请求的 JA4 指纹；</li><li><b>http.request.uri.query['test']</b>：名称为 test 的 URL 查询参数，其中 test 可替换为自己指定的参数。</li> 
+        r"""<p>速率阈值请求特征的匹配方式， 当 Enabled 为 on 时，此字段必填。<br><br>当条件有多个时，将组合多个条件共同进行统计计算，条件最多不可超过5条。取值有：<br><li><b>http.request.ip</b>：客户端 IP；</li><li><b>http.request.xff_header_ip</b>：客户端 IP（优先匹配 XFF 头部）；</li><li><b>http.request.uri.path</b>：请求的访问路径；</li><li><b>http.request.cookies[&#39;session&#39;]</b>：名称为 session 的 Cookie，其中 session 可替换为自己指定的参数；</li><li><b>http.request.headers[&#39;user-agent&#39;]</b>：名称为 user-agent 的 HTTP 头部，其中 user-agent 可替换为自己指定的参数；</li><li><b>http.request.ja3</b>：请求的 JA3 指纹；</li><li><b>http.request.ja4</b>：请求的 JA4 指纹；</li><li><b>http.request.uri.query[&#39;test&#39;]</b>：名称为 test 的 URL 查询参数，其中 test 可替换为自己指定的参数。</li></p>
         :rtype: list of str
         """
         return self._CountBy
@@ -59647,7 +59651,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def MaxRequestThreshold(self):
-        r"""精准速率限制在时间范围内的累计拦截次数，取值范围 1 ~ 100000。
+        r"""<p>精准速率限制在时间范围内的累计拦截次数，取值范围 1 ~ 100000。</p>
         :rtype: int
         """
         return self._MaxRequestThreshold
@@ -59658,7 +59662,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def CountingPeriod(self):
-        r"""统计的时间窗口，取值有：<li>1s：1秒；</li><li>5s：5秒；</li><li>10s：10秒；</li><li>20s：20秒；</li><li>30s：30秒；</li><li>40s：40秒；</li><li>50s：50秒；</li><li>1m：1分钟；</li><li>2m：2分钟；</li><li>5m：5分钟；</li><li>10m：10分钟；</li><li>1h：1小时。</li> 
+        r"""<p>统计的时间窗口，取值有：<li>1s：1秒；</li><li>5s：5秒；</li><li>10s：10秒；</li><li>20s：20秒；</li><li>30s：30秒；</li><li>40s：40秒；</li><li>50s：50秒；</li><li>1m：1分钟；</li><li>2m：2分钟；</li><li>5m：5分钟；</li><li>10m：10分钟；</li><li>1h：1小时。</li></p>
         :rtype: str
         """
         return self._CountingPeriod
@@ -59669,7 +59673,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def ActionDuration(self):
-        r"""Action 动作的持续时长，单位仅支持：<li>s：秒，取值 1 ~ 120；</li><li>m：分钟，取值 1 ~ 120；</li><li>h：小时，取值 1 ~ 48；</li><li>d：天，取值 1 ~ 30。</li><br />当 Mode 为 Throttle 时，此参数将被忽略，不会生效。
+        r"""<p>Action 动作的持续时长，单位仅支持：<li>s：秒，取值 1 ~ 120；</li><li>m：分钟，取值 1 ~ 120；</li><li>h：小时，取值 1 ~ 48；</li><li>d：天，取值 1 ~ 30。</li><br>当 Mode 为 Throttle 时，此参数将被忽略，不会生效。</p>
         :rtype: str
         """
         return self._ActionDuration
@@ -59680,7 +59684,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""精准速率限制的处置方式。取值有：<li>Monitor：观察；</li><li>Deny：拦截，其中DenyActionParameters.Name支持Deny和ReturnCustomPage；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name支持JSChallenge和ManagedChallenge；</li><li>Redirect：重定向至URL；</li>
+        r"""<p>精准速率限制的处置方式。SecurityAction.Name 取值范围如下：</p><ul><li>Allow：放行，其中 AllowActionParameters 支持 MinDelayTime 和 MaxDelayTime 配置；</li><li>Deny：拦截，其中 DenyActionParameters 中支持 ReturnCustomPage 和 Stall 配置；</li><li>Monitor：观察；</li><li>Challenge：挑战，其中 ChallengeActionParameters.ChallengeOption 支持 JSChallenge 和 ManagedChallenge；</li><li>Redirect：重定向至URL。</li></ul>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -59691,7 +59695,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""精准速率限制的优先级，范围是 0 ~ 100，默认为 0。
+        r"""<p>精准速率限制的优先级，范围是 0 ~ 100，默认为 0。</p>
         :rtype: int
         """
         return self._Priority
@@ -59702,7 +59706,7 @@ class RateLimitingRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""精准速率限制规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
+        r"""<p>精准速率限制规则是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li></p>
         :rtype: str
         """
         return self._Enabled
@@ -60100,7 +60104,12 @@ class RealtimeLogDeliveryTask(AbstractModel):
 
 
 class RedirectActionParameters(AbstractModel):
-    r"""Web安全重定向的附加参数
+    r"""安全执行动作为重定向时的附加参数。
+
+    该参数用于指定在命中安全规则并执行重定向动作时，系统所采取的附加处置动作。
+    不同处置动作由不同且固定的参数组合进行配置，系统将根据所配置的参数组合判定实际生效的处置动作类型。
+    在同一次重定向执行过程中，仅允许配置并生效一种处置动作，多个处置动作对应的参数组合不可同时出现，否则视为非法配置。
+    RedirectActionParameters 支持以下附加处置动作：<li>重定向：将客户端请求重定向至指的目标 URL 。对应参数 URL。</li>
 
     """
 
@@ -63951,30 +63960,19 @@ class SecurityAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 安全执行的具体动作。取值有：
-<li>Deny：拦截，阻止请求访问站点资源；</li>
-<li>Monitor：观察，仅记录日志；</li>
-<li>Redirect：重定向至 URL；</li>
-<li>Disabled：未启用，不启用指定规则；</li>
-<li>Allow：允许访问，但延迟处理请求；</li>
-<li>Challenge：挑战，响应挑战内容；</li>
-<li>Trans：放行，允许请求直接访问站点资源；</li>
-<li>BlockIP：待废弃，IP 封禁；</li>
-<li>ReturnCustomPage：待废弃，使用指定页面拦截；</li>
-<li>JSChallenge：待废弃，JavaScript 挑战；</li>
-<li>ManagedChallenge：待废弃，托管挑战。</li>
+        :param _Name: <p>安全执行的具体动作。取值有：</p><ul><li>Deny：拦截，阻止请求访问站点资源；</li><li>Monitor：观察，仅记录日志；</li><li>Redirect：重定向至 URL；</li><li>Disabled：未启用，不启用指定规则；</li><li>Allow：放行， 跳过当前安全模块剩余规则。当配置 AllowActionParameters 参数时延迟响应；</li><li>Challenge：挑战，响应挑战内容；</li><li>BlockIP：待废弃，IP 封禁；</li><li>ReturnCustomPage：待废弃，使用指定页面拦截；</li><li>JSChallenge：待废弃，JavaScript 挑战；</li><li>ManagedChallenge：待废弃，托管挑战。</li></ul>
         :type Name: str
-        :param _DenyActionParameters: 当 Name 为 Deny 时的附加参数。
+        :param _DenyActionParameters: <p>当 Name 为 Deny 时的附加参数。</p>
         :type DenyActionParameters: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
-        :param _RedirectActionParameters: 当 Name 为 Redirect 时的附加参数。
+        :param _RedirectActionParameters: <p>当 Name 为 Redirect 时的附加参数。</p>
         :type RedirectActionParameters: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
-        :param _AllowActionParameters: 当 Name 为 Allow 时的附加参数。
+        :param _AllowActionParameters: <p>当 Name 为 Allow 时的附加参数。</p>
         :type AllowActionParameters: :class:`tencentcloud.teo.v20220901.models.AllowActionParameters`
-        :param _ChallengeActionParameters: 当 Name 为 Challenge 时的附加参数。
+        :param _ChallengeActionParameters: <p>当 Name 为 Challenge 时的附加参数。</p>
         :type ChallengeActionParameters: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
-        :param _BlockIPActionParameters: 待废弃，当 Name 为 BlockIP 时的附加参数。
+        :param _BlockIPActionParameters: <p>待废弃，当 Name 为 BlockIP 时的附加参数。</p>
         :type BlockIPActionParameters: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
-        :param _ReturnCustomPageActionParameters: 待废弃，当 Name 为 ReturnCustomPage 时的附加参数。
+        :param _ReturnCustomPageActionParameters: <p>待废弃，当 Name 为 ReturnCustomPage 时的附加参数。</p>
         :type ReturnCustomPageActionParameters: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
         """
         self._Name = None
@@ -63987,18 +63985,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def Name(self):
-        r"""安全执行的具体动作。取值有：
-<li>Deny：拦截，阻止请求访问站点资源；</li>
-<li>Monitor：观察，仅记录日志；</li>
-<li>Redirect：重定向至 URL；</li>
-<li>Disabled：未启用，不启用指定规则；</li>
-<li>Allow：允许访问，但延迟处理请求；</li>
-<li>Challenge：挑战，响应挑战内容；</li>
-<li>Trans：放行，允许请求直接访问站点资源；</li>
-<li>BlockIP：待废弃，IP 封禁；</li>
-<li>ReturnCustomPage：待废弃，使用指定页面拦截；</li>
-<li>JSChallenge：待废弃，JavaScript 挑战；</li>
-<li>ManagedChallenge：待废弃，托管挑战。</li>
+        r"""<p>安全执行的具体动作。取值有：</p><ul><li>Deny：拦截，阻止请求访问站点资源；</li><li>Monitor：观察，仅记录日志；</li><li>Redirect：重定向至 URL；</li><li>Disabled：未启用，不启用指定规则；</li><li>Allow：放行， 跳过当前安全模块剩余规则。当配置 AllowActionParameters 参数时延迟响应；</li><li>Challenge：挑战，响应挑战内容；</li><li>BlockIP：待废弃，IP 封禁；</li><li>ReturnCustomPage：待废弃，使用指定页面拦截；</li><li>JSChallenge：待废弃，JavaScript 挑战；</li><li>ManagedChallenge：待废弃，托管挑战。</li></ul>
         :rtype: str
         """
         return self._Name
@@ -64009,7 +63996,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def DenyActionParameters(self):
-        r"""当 Name 为 Deny 时的附加参数。
+        r"""<p>当 Name 为 Deny 时的附加参数。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
         """
         return self._DenyActionParameters
@@ -64020,7 +64007,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def RedirectActionParameters(self):
-        r"""当 Name 为 Redirect 时的附加参数。
+        r"""<p>当 Name 为 Redirect 时的附加参数。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.RedirectActionParameters`
         """
         return self._RedirectActionParameters
@@ -64031,7 +64018,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def AllowActionParameters(self):
-        r"""当 Name 为 Allow 时的附加参数。
+        r"""<p>当 Name 为 Allow 时的附加参数。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.AllowActionParameters`
         """
         return self._AllowActionParameters
@@ -64042,7 +64029,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def ChallengeActionParameters(self):
-        r"""当 Name 为 Challenge 时的附加参数。
+        r"""<p>当 Name 为 Challenge 时的附加参数。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ChallengeActionParameters`
         """
         return self._ChallengeActionParameters
@@ -64053,7 +64040,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def BlockIPActionParameters(self):
-        r"""待废弃，当 Name 为 BlockIP 时的附加参数。
+        r"""<p>待废弃，当 Name 为 BlockIP 时的附加参数。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.BlockIPActionParameters`
         """
         return self._BlockIPActionParameters
@@ -64064,7 +64051,7 @@ class SecurityAction(AbstractModel):
 
     @property
     def ReturnCustomPageActionParameters(self):
-        r"""待废弃，当 Name 为 ReturnCustomPage 时的附加参数。
+        r"""<p>待废弃，当 Name 为 ReturnCustomPage 时的附加参数。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.ReturnCustomPageActionParameters`
         """
         return self._ReturnCustomPageActionParameters
@@ -66753,14 +66740,17 @@ class TCEOCaptchaOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaMode: EdgeOne 人机校验模式，取值有：<li> Invisible：无感验证；</li><li>Adaptive：自适应交互验证。</li>
+        :param _CaptchaMode: <p>浏览器端 WebView 人机校验交互模式。</p><p>枚举值：</p><ul><li>Invisible： 无感验证</li><li>Adaptive： 自适应交互验证</li></ul><p>默认值：Invisible</p>
         :type CaptchaMode: str
+        :param _MobileCaptchaMode: <p>移动端原生 App 人机校验交互模式。</p><p>枚举值：</p><ul><li>Invisible： 无感验证</li><li>Visible： 交互验证</li></ul><p>默认值：Invisible</p>
+        :type MobileCaptchaMode: str
         """
         self._CaptchaMode = None
+        self._MobileCaptchaMode = None
 
     @property
     def CaptchaMode(self):
-        r"""EdgeOne 人机校验模式，取值有：<li> Invisible：无感验证；</li><li>Adaptive：自适应交互验证。</li>
+        r"""<p>浏览器端 WebView 人机校验交互模式。</p><p>枚举值：</p><ul><li>Invisible： 无感验证</li><li>Adaptive： 自适应交互验证</li></ul><p>默认值：Invisible</p>
         :rtype: str
         """
         return self._CaptchaMode
@@ -66769,9 +66759,21 @@ class TCEOCaptchaOption(AbstractModel):
     def CaptchaMode(self, CaptchaMode):
         self._CaptchaMode = CaptchaMode
 
+    @property
+    def MobileCaptchaMode(self):
+        r"""<p>移动端原生 App 人机校验交互模式。</p><p>枚举值：</p><ul><li>Invisible： 无感验证</li><li>Visible： 交互验证</li></ul><p>默认值：Invisible</p>
+        :rtype: str
+        """
+        return self._MobileCaptchaMode
+
+    @MobileCaptchaMode.setter
+    def MobileCaptchaMode(self, MobileCaptchaMode):
+        self._MobileCaptchaMode = MobileCaptchaMode
+
 
     def _deserialize(self, params):
         self._CaptchaMode = params.get("CaptchaMode")
+        self._MobileCaptchaMode = params.get("MobileCaptchaMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

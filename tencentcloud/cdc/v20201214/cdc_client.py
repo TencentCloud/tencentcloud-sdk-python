@@ -417,6 +417,29 @@ class CdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEdgeHostVm(self, request):
+        r"""查询专属集群宿主机上的虚机信息
+
+        :param request: Request instance for DescribeEdgeHostVm.
+        :type request: :class:`tencentcloud.cdc.v20201214.models.DescribeEdgeHostVmRequest`
+        :rtype: :class:`tencentcloud.cdc.v20201214.models.DescribeEdgeHostVmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeHostVm", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEdgeHostVmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSites(self, request):
         r"""查询站点列表
 

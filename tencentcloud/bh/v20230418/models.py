@@ -9543,41 +9543,42 @@ class DescribeDevicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdSet: 资产ID集合
+        :param _IdSet: <p>资产ID集合</p>
         :type IdSet: list of int non-negative
-        :param _Name: 资产名或资产IP，模糊查询
+        :param _Name: <p>资产名或资产IP，模糊查询</p>
         :type Name: str
-        :param _Ip: 暂未使用
+        :param _Ip: <p>暂未使用</p>
         :type Ip: str
-        :param _ApCodeSet: 地域码集合
+        :param _ApCodeSet: <p>地域码集合</p>
         :type ApCodeSet: list of str
-        :param _Kind: 操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+        :param _Kind: <p>操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
         :type Kind: int
-        :param _Offset: 分页偏移位置，默认值为0
+        :param _Offset: <p>分页偏移位置，默认值为0</p>
         :type Offset: int
-        :param _Limit: 每页条目数量，默认20
+        :param _Limit: <p>每页条目数量</p><p>取值范围：[0, 500]</p><p>默认值：20</p>
         :type Limit: int
-        :param _AuthorizedUserIdSet: 有该资产访问权限的用户ID集合
+        :param _AuthorizedUserIdSet: <p>有该资产访问权限的用户ID集合</p>
         :type AuthorizedUserIdSet: list of int non-negative
-        :param _ResourceIdSet: 过滤条件，资产绑定的堡垒机服务ID集合
+        :param _ResourceIdSet: <p>过滤条件，资产绑定的堡垒机服务ID集合</p>
         :type ResourceIdSet: list of str
-        :param _KindSet: 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+        :param _KindSet: <p>可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
         :type KindSet: list of int non-negative
-        :param _ManagedAccount: 资产是否包含托管账号。1，包含；0，不包含
+        :param _ManagedAccount: <p>资产是否包含托管账号。1，包含；0，不包含</p>
         :type ManagedAccount: str
-        :param _DepartmentId: 过滤条件，可按照部门ID进行过滤
+        :param _DepartmentId: <p>过滤条件，可按照部门ID进行过滤</p>
         :type DepartmentId: str
-        :param _AccountIdSet: 资产所属云账号id
+        :param _AccountIdSet: <p>资产所属云账号id</p>
         :type AccountIdSet: list of int non-negative
-        :param _ProviderTypeSet: 云厂商类型，1-腾讯云，2-阿里云
+        :param _ProviderTypeSet: <p>云厂商类型，1-腾讯云，2-阿里云</p>
         :type ProviderTypeSet: list of int non-negative
-        :param _CloudDeviceStatusSet: 同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+        :param _CloudDeviceStatusSet: <p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
         :type CloudDeviceStatusSet: list of int non-negative
-        :param _TagFilters: 过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+        :param _TagFilters: <p>过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系</p>
         :type TagFilters: list of TagFilter
-        :param _Filters: 过滤数组。支持的Name：
-BindingStatus 绑定状态
+        :param _Filters: <p>过滤数组。支持的Name：<br>BindingStatus 绑定状态</p>
         :type Filters: list of Filter
+        :param _OwnerAppIds: <p>所属成员 AppId</p>
+        :type OwnerAppIds: list of int non-negative
         """
         self._IdSet = None
         self._Name = None
@@ -9596,10 +9597,11 @@ BindingStatus 绑定状态
         self._CloudDeviceStatusSet = None
         self._TagFilters = None
         self._Filters = None
+        self._OwnerAppIds = None
 
     @property
     def IdSet(self):
-        r"""资产ID集合
+        r"""<p>资产ID集合</p>
         :rtype: list of int non-negative
         """
         return self._IdSet
@@ -9610,7 +9612,7 @@ BindingStatus 绑定状态
 
     @property
     def Name(self):
-        r"""资产名或资产IP，模糊查询
+        r"""<p>资产名或资产IP，模糊查询</p>
         :rtype: str
         """
         return self._Name
@@ -9621,7 +9623,7 @@ BindingStatus 绑定状态
 
     @property
     def Ip(self):
-        r"""暂未使用
+        r"""<p>暂未使用</p>
         :rtype: str
         """
         return self._Ip
@@ -9632,7 +9634,7 @@ BindingStatus 绑定状态
 
     @property
     def ApCodeSet(self):
-        r"""地域码集合
+        r"""<p>地域码集合</p>
         :rtype: list of str
         """
         return self._ApCodeSet
@@ -9643,7 +9645,7 @@ BindingStatus 绑定状态
 
     @property
     def Kind(self):
-        r"""操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+        r"""<p>操作系统类型, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
         :rtype: int
         """
         return self._Kind
@@ -9654,7 +9656,7 @@ BindingStatus 绑定状态
 
     @property
     def Offset(self):
-        r"""分页偏移位置，默认值为0
+        r"""<p>分页偏移位置，默认值为0</p>
         :rtype: int
         """
         return self._Offset
@@ -9665,7 +9667,7 @@ BindingStatus 绑定状态
 
     @property
     def Limit(self):
-        r"""每页条目数量，默认20
+        r"""<p>每页条目数量</p><p>取值范围：[0, 500]</p><p>默认值：20</p>
         :rtype: int
         """
         return self._Limit
@@ -9676,7 +9678,7 @@ BindingStatus 绑定状态
 
     @property
     def AuthorizedUserIdSet(self):
-        r"""有该资产访问权限的用户ID集合
+        r"""<p>有该资产访问权限的用户ID集合</p>
         :rtype: list of int non-negative
         """
         return self._AuthorizedUserIdSet
@@ -9687,7 +9689,7 @@ BindingStatus 绑定状态
 
     @property
     def ResourceIdSet(self):
-        r"""过滤条件，资产绑定的堡垒机服务ID集合
+        r"""<p>过滤条件，资产绑定的堡垒机服务ID集合</p>
         :rtype: list of str
         """
         return self._ResourceIdSet
@@ -9698,7 +9700,7 @@ BindingStatus 绑定状态
 
     @property
     def KindSet(self):
-        r"""可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
+        r"""<p>可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer</p>
         :rtype: list of int non-negative
         """
         return self._KindSet
@@ -9709,7 +9711,7 @@ BindingStatus 绑定状态
 
     @property
     def ManagedAccount(self):
-        r"""资产是否包含托管账号。1，包含；0，不包含
+        r"""<p>资产是否包含托管账号。1，包含；0，不包含</p>
         :rtype: str
         """
         return self._ManagedAccount
@@ -9720,7 +9722,7 @@ BindingStatus 绑定状态
 
     @property
     def DepartmentId(self):
-        r"""过滤条件，可按照部门ID进行过滤
+        r"""<p>过滤条件，可按照部门ID进行过滤</p>
         :rtype: str
         """
         return self._DepartmentId
@@ -9731,7 +9733,7 @@ BindingStatus 绑定状态
 
     @property
     def AccountIdSet(self):
-        r"""资产所属云账号id
+        r"""<p>资产所属云账号id</p>
         :rtype: list of int non-negative
         """
         return self._AccountIdSet
@@ -9742,7 +9744,7 @@ BindingStatus 绑定状态
 
     @property
     def ProviderTypeSet(self):
-        r"""云厂商类型，1-腾讯云，2-阿里云
+        r"""<p>云厂商类型，1-腾讯云，2-阿里云</p>
         :rtype: list of int non-negative
         """
         return self._ProviderTypeSet
@@ -9753,7 +9755,7 @@ BindingStatus 绑定状态
 
     @property
     def CloudDeviceStatusSet(self):
-        r"""同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期
+        r"""<p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
         :rtype: list of int non-negative
         """
         return self._CloudDeviceStatusSet
@@ -9764,7 +9766,7 @@ BindingStatus 绑定状态
 
     @property
     def TagFilters(self):
-        r"""过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系
+        r"""<p>过滤条件，可按照标签键、标签进行过滤。如果同时指定标签键和标签过滤条件，它们之间为“AND”的关系</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -9775,8 +9777,7 @@ BindingStatus 绑定状态
 
     @property
     def Filters(self):
-        r"""过滤数组。支持的Name：
-BindingStatus 绑定状态
+        r"""<p>过滤数组。支持的Name：<br>BindingStatus 绑定状态</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -9784,6 +9785,17 @@ BindingStatus 绑定状态
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def OwnerAppIds(self):
+        r"""<p>所属成员 AppId</p>
+        :rtype: list of int non-negative
+        """
+        return self._OwnerAppIds
+
+    @OwnerAppIds.setter
+    def OwnerAppIds(self, OwnerAppIds):
+        self._OwnerAppIds = OwnerAppIds
 
 
     def _deserialize(self, params):
@@ -9814,6 +9826,7 @@ BindingStatus 绑定状态
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._OwnerAppIds = params.get("OwnerAppIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9831,9 +9844,9 @@ class DescribeDevicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 资产总数
+        :param _TotalCount: <p>资产总数</p>
         :type TotalCount: int
-        :param _DeviceSet: 资产信息列表
+        :param _DeviceSet: <p>资产信息列表</p>
         :type DeviceSet: list of Device
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9844,7 +9857,7 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""资产总数
+        r"""<p>资产总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9855,7 +9868,7 @@ class DescribeDevicesResponse(AbstractModel):
 
     @property
     def DeviceSet(self):
-        r"""资产信息列表
+        r"""<p>资产信息列表</p>
         :rtype: list of Device
         """
         return self._DeviceSet
@@ -10899,15 +10912,15 @@ class DescribeResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApCode: 地域码, 如: ap-guangzhou
+        :param _ApCode: <p>地域码, 如: ap-guangzhou</p>
         :type ApCode: str
-        :param _VpcId: 按照堡垒机开通的 VPC 实例ID查询
+        :param _VpcId: <p>按照堡垒机开通的 VPC 实例ID查询</p>
         :type VpcId: str
-        :param _ResourceIds: 资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
+        :param _ResourceIds: <p>资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId</p>
         :type ResourceIds: list of str
-        :param _Limit: 每页条目数量
+        :param _Limit: <p>每页条目数量</p>
         :type Limit: int
-        :param _Offset: 分页偏移位置
+        :param _Offset: <p>分页偏移位置</p>
         :type Offset: int
         """
         self._ApCode = None
@@ -10918,7 +10931,7 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def ApCode(self):
-        r"""地域码, 如: ap-guangzhou
+        r"""<p>地域码, 如: ap-guangzhou</p>
         :rtype: str
         """
         return self._ApCode
@@ -10929,7 +10942,7 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""按照堡垒机开通的 VPC 实例ID查询
+        r"""<p>按照堡垒机开通的 VPC 实例ID查询</p>
         :rtype: str
         """
         return self._VpcId
@@ -10940,7 +10953,7 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId
+        r"""<p>资源ID集合，当传入ID集合时忽略 ApCode 和 VpcId</p>
         :rtype: list of str
         """
         return self._ResourceIds
@@ -10951,7 +10964,7 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条目数量
+        r"""<p>每页条目数量</p>
         :rtype: int
         """
         return self._Limit
@@ -10962,7 +10975,7 @@ class DescribeResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移位置
+        r"""<p>分页偏移位置</p>
         :rtype: int
         """
         return self._Offset
@@ -10995,9 +11008,9 @@ class DescribeResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceSet: 堡垒机资源列表
+        :param _ResourceSet: <p>堡垒机资源列表</p>
         :type ResourceSet: list of Resource
-        :param _TotalCount: 堡垒机资源数量
+        :param _TotalCount: <p>堡垒机资源数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11008,7 +11021,7 @@ class DescribeResourcesResponse(AbstractModel):
 
     @property
     def ResourceSet(self):
-        r"""堡垒机资源列表
+        r"""<p>堡垒机资源列表</p>
         :rtype: list of Resource
         """
         return self._ResourceSet
@@ -11019,7 +11032,7 @@ class DescribeResourcesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""堡垒机资源数量
+        r"""<p>堡垒机资源数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -12075,6 +12088,12 @@ class Device(AbstractModel):
         :type ProviderName: str
         :param _SyncCloudDeviceStatus: <p>同步的云资产状态，标记同步的资产的状态情况，0-已删除,1-正常,2-已隔离,3-已过期</p>
         :type SyncCloudDeviceStatus: int
+        :param _OwnerAppId: <p>所属账号 AppId</p>
+        :type OwnerAppId: int
+        :param _OwnerAccountUin: <p>所属账号 UIN</p>
+        :type OwnerAccountUin: str
+        :param _OwnerAccountName: <p>所属账号展示名</p>
+        :type OwnerAccountName: str
         """
         self._Id = None
         self._InstanceId = None
@@ -12109,6 +12128,9 @@ class Device(AbstractModel):
         self._ProviderType = None
         self._ProviderName = None
         self._SyncCloudDeviceStatus = None
+        self._OwnerAppId = None
+        self._OwnerAccountUin = None
+        self._OwnerAccountName = None
 
     @property
     def Id(self):
@@ -12473,6 +12495,39 @@ class Device(AbstractModel):
     def SyncCloudDeviceStatus(self, SyncCloudDeviceStatus):
         self._SyncCloudDeviceStatus = SyncCloudDeviceStatus
 
+    @property
+    def OwnerAppId(self):
+        r"""<p>所属账号 AppId</p>
+        :rtype: int
+        """
+        return self._OwnerAppId
+
+    @OwnerAppId.setter
+    def OwnerAppId(self, OwnerAppId):
+        self._OwnerAppId = OwnerAppId
+
+    @property
+    def OwnerAccountUin(self):
+        r"""<p>所属账号 UIN</p>
+        :rtype: str
+        """
+        return self._OwnerAccountUin
+
+    @OwnerAccountUin.setter
+    def OwnerAccountUin(self, OwnerAccountUin):
+        self._OwnerAccountUin = OwnerAccountUin
+
+    @property
+    def OwnerAccountName(self):
+        r"""<p>所属账号展示名</p>
+        :rtype: str
+        """
+        return self._OwnerAccountName
+
+    @OwnerAccountName.setter
+    def OwnerAccountName(self, OwnerAccountName):
+        self._OwnerAccountName = OwnerAccountName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12517,6 +12572,9 @@ class Device(AbstractModel):
         self._ProviderType = params.get("ProviderType")
         self._ProviderName = params.get("ProviderName")
         self._SyncCloudDeviceStatus = params.get("SyncCloudDeviceStatus")
+        self._OwnerAppId = params.get("OwnerAppId")
+        self._OwnerAccountUin = params.get("OwnerAccountUin")
+        self._OwnerAccountName = params.get("OwnerAccountName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18791,6 +18849,8 @@ class Resource(AbstractModel):
         :type DeployCvmCount: int
         :param _ResourceZoneSet: <p>堡垒机实例的可用区信息</p>
         :type ResourceZoneSet: list of ResourceDeployZone
+        :param _OrgAccountQuota: <p>多账号额度</p>
+        :type OrgAccountQuota: int
         """
         self._ResourceId = None
         self._ApCode = None
@@ -18856,6 +18916,7 @@ class Resource(AbstractModel):
         self._BillingZone = None
         self._DeployCvmCount = None
         self._ResourceZoneSet = None
+        self._OrgAccountQuota = None
 
     @property
     def ResourceId(self):
@@ -19565,6 +19626,17 @@ class Resource(AbstractModel):
     def ResourceZoneSet(self, ResourceZoneSet):
         self._ResourceZoneSet = ResourceZoneSet
 
+    @property
+    def OrgAccountQuota(self):
+        r"""<p>多账号额度</p>
+        :rtype: int
+        """
+        return self._OrgAccountQuota
+
+    @OrgAccountQuota.setter
+    def OrgAccountQuota(self, OrgAccountQuota):
+        self._OrgAccountQuota = OrgAccountQuota
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -19641,6 +19713,7 @@ class Resource(AbstractModel):
                 obj = ResourceDeployZone()
                 obj._deserialize(item)
                 self._ResourceZoneSet.append(obj)
+        self._OrgAccountQuota = params.get("OrgAccountQuota")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

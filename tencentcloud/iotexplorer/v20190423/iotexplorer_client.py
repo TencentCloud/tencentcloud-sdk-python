@@ -302,29 +302,6 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def BindTWeTalkAIBot(self, request):
-        r"""用于绑定一个产品和智能体。
-
-        :param request: Request instance for BindTWeTalkAIBot.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BindTWeTalkAIBotRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BindTWeTalkAIBotResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("BindTWeTalkAIBot", params, headers=headers)
-            response = json.loads(body)
-            model = models.BindTWeTalkAIBotResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def BindTWeTalkAgent(self, request):
         r"""绑定智能体到产品或设备
         - `BindingScope=product` 时，`DeviceName` 必须为空。
@@ -1191,29 +1168,6 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateTWeTalkAIBot(self, request):
-        r"""用于新增TWeTalk智能体。
-
-        :param request: Request instance for CreateTWeTalkAIBot.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeTalkAIBotRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeTalkAIBotResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateTWeTalkAIBot", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateTWeTalkAIBotResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateTWeTalkAgent(self, request):
         r"""新增TWeTalk智能体。
 
@@ -1688,29 +1642,6 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DeleteTWeSeeTasksByCondition", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTWeSeeTasksByConditionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteTWeTalkAIBot(self, request):
-        r"""用于删除TWeTalk智能体。
-
-        :param request: Request instance for DeleteTWeTalkAIBot.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeTalkAIBotRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeTalkAIBotResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteTWeTalkAIBot", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteTWeTalkAIBotResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3353,29 +3284,6 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeTWeTalkAIBot(self, request):
-        r"""用于查询TWeTalk智能体详情。
-
-        :param request: Request instance for DescribeTWeTalkAIBot.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeTalkAIBotRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeTalkAIBotResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeTWeTalkAIBot", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeTWeTalkAIBotResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeTWeTalkAgent(self, request):
         r"""用户查询TWeTalk智能体详情
 
@@ -4082,29 +3990,6 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GetTWeCallActiveStatus", params, headers=headers)
             response = json.loads(body)
             model = models.GetTWeCallActiveStatusResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetTWeTalkAIBotList(self, request):
-        r"""用于查询TWeTalk智能体列表。
-
-        :param request: Request instance for GetTWeTalkAIBotList.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkAIBotListRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkAIBotListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetTWeTalkAIBotList", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetTWeTalkAIBotListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5195,29 +5080,6 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ModifyTWeTalkAIBot(self, request):
-        r"""用于修改TWeTalk智能体。
-
-        :param request: Request instance for ModifyTWeTalkAIBot.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeTalkAIBotRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeTalkAIBotResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyTWeTalkAIBot", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyTWeTalkAIBotResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ModifyTWeTalkAgent(self, request):
         r"""修改TWeTalk智能体
 
@@ -5913,29 +5775,6 @@ class IotexplorerClient(AbstractClient):
             body = self.call("UnbindProducts", params, headers=headers)
             response = json.loads(body)
             model = models.UnbindProductsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UnbindTWeTalkAIBot(self, request):
-        r"""用于解除一个产品和智能体的绑定。
-
-        :param request: Request instance for UnbindTWeTalkAIBot.
-        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UnbindTWeTalkAIBotRequest`
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.UnbindTWeTalkAIBotResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UnbindTWeTalkAIBot", params, headers=headers)
-            response = json.loads(body)
-            model = models.UnbindTWeTalkAIBotResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

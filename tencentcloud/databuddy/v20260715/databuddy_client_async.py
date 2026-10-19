@@ -31,7 +31,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.AddConsoleUsersResponse:
         """
-        添加控制台用户
+        添加控制台用户，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -103,7 +103,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateConsoleGroupResponse:
         """
-        创建控制台用户组
+        创建控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -200,7 +200,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateWorkspaceResponse:
         """
-        创建工作空间
+        创建工作空间，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -254,7 +254,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteConsoleGroupsResponse:
         """
-        删除控制台用户组
+        删除控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -882,7 +882,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ListWorkspacesResponse:
         """
-        查询工作空间列表
+        查询工作空间列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -900,7 +900,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RemoveConsoleUsersResponse:
         """
-        <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
+        <p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准），该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。</p>
         """
         
         kwargs = {}
@@ -1027,7 +1027,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateConsoleGroupResponse:
         """
-        修改控制台用户组
+        修改控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -1045,7 +1045,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateConsoleUsersResponse:
         """
-        修改控制台用户角色
+        修改控制台用户角色，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}
@@ -1136,7 +1136,7 @@ class DatabuddyClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateWorkspaceResponse:
         """
-        修改工作空间
+        修改工作空间，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
         """
         
         kwargs = {}

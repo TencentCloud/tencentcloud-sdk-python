@@ -27,7 +27,7 @@ class AddConsoleUsersRequest(AbstractModel):
         r"""
         :param _UserUins: <p>用户 UIN 列表，单次最多100个</p>
         :type UserUins: list of str
-        :param _RoleIds: <p>角色 ID 列表</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul>
+        :param _RoleIds: <p>角色 ID 列表</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul><p>可通过 ListConsoleRoles 接口获取</p>
         :type RoleIds: list of str
         """
         self._UserUins = None
@@ -46,7 +46,7 @@ class AddConsoleUsersRequest(AbstractModel):
 
     @property
     def RoleIds(self):
-        r"""<p>角色 ID 列表</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul>
+        r"""<p>角色 ID 列表</p><p>枚举值：</p><ul><li>2001： 控制台管理员</li><li>2002： 控制台成员</li></ul><p>可通过 ListConsoleRoles 接口获取</p>
         :rtype: list of str
         """
         return self._RoleIds
@@ -157,11 +157,11 @@ class AddWorkspaceGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupIds: 用户组ID，可通过 ListWorkspaceGroups 接口获取
+        :param _GroupIds: <p>用户组ID，可通过 ListConsoleGroups 接口获取</p>
         :type GroupIds: list of str
-        :param _WorkspaceId: 工作空间ID
+        :param _WorkspaceId: <p>工作空间ID</p>
         :type WorkspaceId: str
-        :param _RoleIds: 角色ID，可通过 ListWorkspaceRoles 接口获取
+        :param _RoleIds: <p>角色ID，可通过 ListWorkspaceRoles 接口获取</p>
         :type RoleIds: list of str
         """
         self._GroupIds = None
@@ -170,7 +170,7 @@ class AddWorkspaceGroupsRequest(AbstractModel):
 
     @property
     def GroupIds(self):
-        r"""用户组ID，可通过 ListWorkspaceGroups 接口获取
+        r"""<p>用户组ID，可通过 ListConsoleGroups 接口获取</p>
         :rtype: list of str
         """
         return self._GroupIds
@@ -181,7 +181,7 @@ class AddWorkspaceGroupsRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        r"""工作空间ID
+        r"""<p>工作空间ID</p>
         :rtype: str
         """
         return self._WorkspaceId
@@ -192,7 +192,7 @@ class AddWorkspaceGroupsRequest(AbstractModel):
 
     @property
     def RoleIds(self):
-        r"""角色ID，可通过 ListWorkspaceRoles 接口获取
+        r"""<p>角色ID，可通过 ListWorkspaceRoles 接口获取</p>
         :rtype: list of str
         """
         return self._RoleIds
@@ -223,7 +223,7 @@ class AddWorkspaceGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 添加结果
+        :param _Data: <p>添加结果</p>
         :type Data: :class:`tencentcloud.databuddy.v20260715.models.PlatformStatusRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -233,7 +233,7 @@ class AddWorkspaceGroupsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""添加结果
+        r"""<p>添加结果</p>
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.PlatformStatusRsp`
         """
         return self._Data
@@ -12294,12 +12294,12 @@ class ListSchemasRequest(AbstractModel):
         r"""
         :param _CatalogName: <p>数据目录名</p>
         :type CatalogName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
         :param _MaxResults: <p>最大结果条数</p>
         :type MaxResults: int
         :param _PageToken: <p>分页token</p>
         :type PageToken: str
-        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
-        :type WorkspaceId: str
         :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
         :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
         :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
@@ -12308,9 +12308,9 @@ class ListSchemasRequest(AbstractModel):
         :type CatalogSource: str
         """
         self._CatalogName = None
+        self._WorkspaceId = None
         self._MaxResults = None
         self._PageToken = None
-        self._WorkspaceId = None
         self._FetchOption = None
         self._ConnectionId = None
         self._CatalogSource = None
@@ -12325,6 +12325,17 @@ class ListSchemasRequest(AbstractModel):
     @CatalogName.setter
     def CatalogName(self, CatalogName):
         self._CatalogName = CatalogName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
 
     @property
     def MaxResults(self):
@@ -12347,17 +12358,6 @@ class ListSchemasRequest(AbstractModel):
     @PageToken.setter
     def PageToken(self, PageToken):
         self._PageToken = PageToken
-
-    @property
-    def WorkspaceId(self):
-        r"""<p>调用时所在workspace唯一id</p>
-        :rtype: str
-        """
-        return self._WorkspaceId
-
-    @WorkspaceId.setter
-    def WorkspaceId(self, WorkspaceId):
-        self._WorkspaceId = WorkspaceId
 
     @property
     def FetchOption(self):
@@ -12395,9 +12395,9 @@ class ListSchemasRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._CatalogName = params.get("CatalogName")
+        self._WorkspaceId = params.get("WorkspaceId")
         self._MaxResults = params.get("MaxResults")
         self._PageToken = params.get("PageToken")
-        self._WorkspaceId = params.get("WorkspaceId")
         if params.get("FetchOption") is not None:
             self._FetchOption = FetchOption()
             self._FetchOption._deserialize(params.get("FetchOption"))
@@ -12531,12 +12531,12 @@ class ListTablesRequest(AbstractModel):
         :type CatalogName: str
         :param _SchemaName: <p>数据库名</p>
         :type SchemaName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
         :param _MaxResults: <p>最大结果条数</p>
         :type MaxResults: int
         :param _PageToken: <p>分页token</p>
         :type PageToken: str
-        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
-        :type WorkspaceId: str
         :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
         :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
         :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
@@ -12546,9 +12546,9 @@ class ListTablesRequest(AbstractModel):
         """
         self._CatalogName = None
         self._SchemaName = None
+        self._WorkspaceId = None
         self._MaxResults = None
         self._PageToken = None
-        self._WorkspaceId = None
         self._FetchOption = None
         self._ConnectionId = None
         self._CatalogSource = None
@@ -12576,6 +12576,17 @@ class ListTablesRequest(AbstractModel):
         self._SchemaName = SchemaName
 
     @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
     def MaxResults(self):
         r"""<p>最大结果条数</p>
         :rtype: int
@@ -12596,17 +12607,6 @@ class ListTablesRequest(AbstractModel):
     @PageToken.setter
     def PageToken(self, PageToken):
         self._PageToken = PageToken
-
-    @property
-    def WorkspaceId(self):
-        r"""<p>调用时所在workspace唯一id</p>
-        :rtype: str
-        """
-        return self._WorkspaceId
-
-    @WorkspaceId.setter
-    def WorkspaceId(self, WorkspaceId):
-        self._WorkspaceId = WorkspaceId
 
     @property
     def FetchOption(self):
@@ -12645,9 +12645,9 @@ class ListTablesRequest(AbstractModel):
     def _deserialize(self, params):
         self._CatalogName = params.get("CatalogName")
         self._SchemaName = params.get("SchemaName")
+        self._WorkspaceId = params.get("WorkspaceId")
         self._MaxResults = params.get("MaxResults")
         self._PageToken = params.get("PageToken")
-        self._WorkspaceId = params.get("WorkspaceId")
         if params.get("FetchOption") is not None:
             self._FetchOption = FetchOption()
             self._FetchOption._deserialize(params.get("FetchOption"))

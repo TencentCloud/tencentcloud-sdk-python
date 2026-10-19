@@ -208,6 +208,8 @@ class AddDeploymentRequest(AbstractModel):
         :type Image: str
         :param _AdvancedOptions: <p>高级参数</p>
         :type AdvancedOptions: str
+        :param _NetworkConfig: <p>NetworkConfig</p>
+        :type NetworkConfig: str
         """
         self._ServiceId = None
         self._DeploymentName = None
@@ -221,6 +223,7 @@ class AddDeploymentRequest(AbstractModel):
         self._AutoscalingEnabled = None
         self._Image = None
         self._AdvancedOptions = None
+        self._NetworkConfig = None
 
     @property
     def ServiceId(self):
@@ -354,6 +357,17 @@ class AddDeploymentRequest(AbstractModel):
     def AdvancedOptions(self, AdvancedOptions):
         self._AdvancedOptions = AdvancedOptions
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>NetworkConfig</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -368,6 +382,7 @@ class AddDeploymentRequest(AbstractModel):
         self._AutoscalingEnabled = params.get("AutoscalingEnabled")
         self._Image = params.get("Image")
         self._AdvancedOptions = params.get("AdvancedOptions")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13136,6 +13151,8 @@ class CreateInferenceServiceRequest(AbstractModel):
         :type IsCustom: bool
         :param _RuntimeEnv: <p>python runtime env</p>
         :type RuntimeEnv: str
+        :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :type NetworkConfig: str
         """
         self._Name = None
         self._ModelUid = None
@@ -13159,6 +13176,7 @@ class CreateInferenceServiceRequest(AbstractModel):
         self._ResourceTags = None
         self._IsCustom = None
         self._RuntimeEnv = None
+        self._NetworkConfig = None
 
     @property
     def Name(self):
@@ -13402,6 +13420,17 @@ class CreateInferenceServiceRequest(AbstractModel):
     def RuntimeEnv(self, RuntimeEnv):
         self._RuntimeEnv = RuntimeEnv
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -13431,6 +13460,7 @@ class CreateInferenceServiceRequest(AbstractModel):
                 self._ResourceTags.append(obj)
         self._IsCustom = params.get("IsCustom")
         self._RuntimeEnv = params.get("RuntimeEnv")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13529,6 +13559,8 @@ class CreateInferenceServiceResponse(AbstractModel):
         :type DeploymentMode: str
         :param _IsCustom: <p>是否是自定义 RayServe 创建</p>
         :type IsCustom: bool
+        :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -13562,6 +13594,7 @@ class CreateInferenceServiceResponse(AbstractModel):
         self._ResourceTags = None
         self._DeploymentMode = None
         self._IsCustom = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -13916,6 +13949,17 @@ class CreateInferenceServiceResponse(AbstractModel):
         self._IsCustom = IsCustom
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13965,6 +14009,7 @@ class CreateInferenceServiceResponse(AbstractModel):
                 self._ResourceTags.append(obj)
         self._DeploymentMode = params.get("DeploymentMode")
         self._IsCustom = params.get("IsCustom")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -14833,6 +14878,8 @@ class CreateJobSpecRequest(AbstractModel):
         :type Tags: list of Tag
         :param _DispatchStrategy: <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
         :type DispatchStrategy: str
+        :param _NetworkConfig: <p>用户自定义网络配置JSON</p>
+        :type NetworkConfig: str
         """
         self._Entrypoint = None
         self._Name = None
@@ -14856,6 +14903,7 @@ class CreateJobSpecRequest(AbstractModel):
         self._Priority = None
         self._Tags = None
         self._DispatchStrategy = None
+        self._NetworkConfig = None
 
     @property
     def Entrypoint(self):
@@ -15099,6 +15147,17 @@ class CreateJobSpecRequest(AbstractModel):
     def DispatchStrategy(self, DispatchStrategy):
         self._DispatchStrategy = DispatchStrategy
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户自定义网络配置JSON</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._Entrypoint = params.get("Entrypoint")
@@ -15128,6 +15187,7 @@ class CreateJobSpecRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._DispatchStrategy = params.get("DispatchStrategy")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15222,6 +15282,8 @@ class CreateJobSpecResponse(AbstractModel):
         :type GroupName: str
         :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15262,6 +15324,7 @@ class CreateJobSpecResponse(AbstractModel):
         self._SubmissionTarget = None
         self._GroupName = None
         self._ClusterName = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -15675,6 +15738,17 @@ class CreateJobSpecResponse(AbstractModel):
         self._ClusterName = ClusterName
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -15729,6 +15803,7 @@ class CreateJobSpecResponse(AbstractModel):
         self._SubmissionTarget = params.get("SubmissionTarget")
         self._GroupName = params.get("GroupName")
         self._ClusterName = params.get("ClusterName")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -15783,6 +15858,8 @@ class CreateLabRequest(AbstractModel):
         :type ImagePullType: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type LabImagePullType: str
+        :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :type NetworkConfig: str
         """
         self._Name = None
         self._ResourcePartitionId = None
@@ -15806,6 +15883,7 @@ class CreateLabRequest(AbstractModel):
         self._EnableToken = None
         self._ImagePullType = None
         self._LabImagePullType = None
+        self._NetworkConfig = None
 
     @property
     def Name(self):
@@ -16049,6 +16127,17 @@ class CreateLabRequest(AbstractModel):
     def LabImagePullType(self, LabImagePullType):
         self._LabImagePullType = LabImagePullType
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -16080,6 +16169,7 @@ class CreateLabRequest(AbstractModel):
         self._EnableToken = params.get("EnableToken")
         self._ImagePullType = params.get("ImagePullType")
         self._LabImagePullType = params.get("LabImagePullType")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16155,6 +16245,8 @@ class CreateLabResponse(AbstractModel):
         :type SubAccountName: str
         :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type ImagePullType: str
+        :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -16187,6 +16279,7 @@ class CreateLabResponse(AbstractModel):
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -16509,6 +16602,17 @@ class CreateLabResponse(AbstractModel):
         self._ImagePullType = ImagePullType
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -16562,6 +16666,7 @@ class CreateLabResponse(AbstractModel):
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -18242,6 +18347,8 @@ class CreateRayClusterRequest(AbstractModel):
         :type Priority: int
         :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
         :type Tags: list of Tag
+        :param _NetworkConfig: <p>自定义网络配置</p><p>参数格式：{"appId":22,"uin":"111","uniqVpcId":"vpc-xxx","subnetId":"subnet-xxx"}</p>
+        :type NetworkConfig: str
         """
         self._Name = None
         self._Description = None
@@ -18257,6 +18364,7 @@ class CreateRayClusterRequest(AbstractModel):
         self._AdvancedOptions = None
         self._Priority = None
         self._Tags = None
+        self._NetworkConfig = None
 
     @property
     def Name(self):
@@ -18412,6 +18520,17 @@ class CreateRayClusterRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>自定义网络配置</p><p>参数格式：{"appId":22,"uin":"111","uniqVpcId":"vpc-xxx","subnetId":"subnet-xxx"}</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -18433,6 +18552,7 @@ class CreateRayClusterRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18496,6 +18616,8 @@ class CreateRayClusterResponse(AbstractModel):
         :type Priority: int
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
         :type Tags: list of Tag
+        :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -18522,6 +18644,7 @@ class CreateRayClusterResponse(AbstractModel):
         self._AdvancedOptions = None
         self._Priority = None
         self._Tags = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -18778,6 +18901,17 @@ class CreateRayClusterResponse(AbstractModel):
         self._Tags = Tags
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -18818,6 +18952,7 @@ class CreateRayClusterResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -44608,7 +44743,7 @@ class DescribeTaskListRequest(AbstractModel):
         :type Offset: int
         :param _Filters: <p>过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。<br>task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。<br>task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。<br>task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。<br>task-operator- string （子uin过滤）<br>task-kind - string （任务类型过滤）</p>
         :type Filters: list of Filter
-        :param _SortBy: <p>排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）</p>
+        :param _SortBy: <p>排序字段，支持如下字段类型，create-time（创建时间，默认）</p>
         :type SortBy: str
         :param _Sorting: <p>排序方式，desc表示正序，asc表示反序， 默认为asc。</p>
         :type Sorting: str
@@ -44669,7 +44804,7 @@ class DescribeTaskListRequest(AbstractModel):
 
     @property
     def SortBy(self):
-        r"""<p>排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）</p>
+        r"""<p>排序字段，支持如下字段类型，create-time（创建时间，默认）</p>
         :rtype: str
         """
         return self._SortBy
@@ -54026,6 +54161,8 @@ class GetJobSpecResponse(AbstractModel):
         :type GroupName: str
         :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _NetworkConfig: <p>用户自定义网络配置</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -54066,6 +54203,7 @@ class GetJobSpecResponse(AbstractModel):
         self._SubmissionTarget = None
         self._GroupName = None
         self._ClusterName = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -54481,6 +54619,17 @@ class GetJobSpecResponse(AbstractModel):
         self._ClusterName = ClusterName
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户自定义网络配置</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -54535,6 +54684,7 @@ class GetJobSpecResponse(AbstractModel):
         self._SubmissionTarget = params.get("SubmissionTarget")
         self._GroupName = params.get("GroupName")
         self._ClusterName = params.get("ClusterName")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -54647,6 +54797,8 @@ class GetLabDetailResponse(AbstractModel):
         :type SubAccountName: str
         :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type ImagePullType: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -54683,6 +54835,7 @@ class GetLabDetailResponse(AbstractModel):
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -55049,6 +55202,17 @@ class GetLabDetailResponse(AbstractModel):
         self._ImagePullType = ImagePullType
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -55106,6 +55270,7 @@ class GetLabDetailResponse(AbstractModel):
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -57342,6 +57507,8 @@ class GetRayClusterResponse(AbstractModel):
         :type Tags: list of Tag
         :param _ResourceConfigId: <p>资源配置ID</p>
         :type ResourceConfigId: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -57374,6 +57541,7 @@ class GetRayClusterResponse(AbstractModel):
         self._StopTime = None
         self._Tags = None
         self._ResourceConfigId = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -57696,6 +57864,17 @@ class GetRayClusterResponse(AbstractModel):
         self._ResourceConfigId = ResourceConfigId
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -57742,6 +57921,7 @@ class GetRayClusterResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._ResourceConfigId = params.get("ResourceConfigId")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -63918,6 +64098,8 @@ class JobSpec(AbstractModel):
         :type GroupName: str
         :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _NetworkConfig: <p>网络配置，JSON 字符串</p>
+        :type NetworkConfig: str
         """
         self._Id = None
         self._Name = None
@@ -63957,6 +64139,7 @@ class JobSpec(AbstractModel):
         self._SubmissionTarget = None
         self._GroupName = None
         self._ClusterName = None
+        self._NetworkConfig = None
 
     @property
     def Id(self):
@@ -64376,6 +64559,17 @@ class JobSpec(AbstractModel):
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>网络配置，JSON 字符串</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -64421,6 +64615,7 @@ class JobSpec(AbstractModel):
         self._SubmissionTarget = params.get("SubmissionTarget")
         self._GroupName = params.get("GroupName")
         self._ClusterName = params.get("ClusterName")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64830,6 +65025,8 @@ class LabResponse(AbstractModel):
         :type EnableToken: bool
         :param _Token: <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
         :type Token: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         """
         self._ExampleId = None
         self._CodeArchiveUrl = None
@@ -64871,6 +65068,7 @@ class LabResponse(AbstractModel):
         self._PersistentWorkDir = None
         self._EnableToken = None
         self._Token = None
+        self._NetworkConfig = None
 
     @property
     def ExampleId(self):
@@ -65313,6 +65511,17 @@ class LabResponse(AbstractModel):
     def Token(self, Token):
         self._Token = Token
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._ExampleId = params.get("ExampleId")
@@ -65367,6 +65576,7 @@ class LabResponse(AbstractModel):
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
         self._EnableToken = params.get("EnableToken")
         self._Token = params.get("Token")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -78150,6 +78360,8 @@ class ModifyTrainingJobSpecRequest(AbstractModel):
         :type ResumeTraining: bool
         :param _TuningParams: <p>调优参数（整体替换，未填字段回模板默认值；不传则不更新；仅 POST_TRAINING）</p>
         :type TuningParams: :class:`tencentcloud.dlc.v20210125.models.TrainingTuningParams`
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         """
         self._SpecId = None
         self._SpecName = None
@@ -78176,6 +78388,7 @@ class ModifyTrainingJobSpecRequest(AbstractModel):
         self._Checkpoint = None
         self._ResumeTraining = None
         self._TuningParams = None
+        self._NetworkConfig = None
 
     @property
     def SpecId(self):
@@ -78452,6 +78665,17 @@ class ModifyTrainingJobSpecRequest(AbstractModel):
     def TuningParams(self, TuningParams):
         self._TuningParams = TuningParams
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._SpecId = params.get("SpecId")
@@ -78495,6 +78719,7 @@ class ModifyTrainingJobSpecRequest(AbstractModel):
         if params.get("TuningParams") is not None:
             self._TuningParams = TrainingTuningParams()
             self._TuningParams._deserialize(params.get("TuningParams"))
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -82447,7 +82672,7 @@ class Policy(AbstractModel):
         :type Database: str
         :param _Catalog: <p>需要授权的数据源名称，管理员级别下只支持填  * （代表该级别全部资源）；数据源级别和数据库级别鉴权的情况下，只支持填COSDataCatalog或者*；在数据表级别鉴权下可以填写用户自定义数据源。不填情况下默认为DataLakeCatalog。注意：如果是对用户自定义数据源进行鉴权，DLC能够管理的权限是用户接入数据源的时候提供的账户的子集。</p>
         :type Catalog: str
-        :param _Table: <p>需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
+        :param _Table: <p>需要授权的表名，填 * 代表当前Database有表（TClake场景下暂不支持通配符）。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
         :type Table: str
         :param _Operation: <p>授权的权限操作，对于不同级别的鉴权提供不同操作。管理员权限：ALL，不填默认为ALL；数据连接级鉴权：CREATE；数据库级别鉴权：ALL、CREATE、ALTER、DROP；数据表权限：ALL、SELECT、INSERT、ALTER、DELETE、DROP、UPDATE。注意：在数据表权限下，指定的数据源不为COSDataCatalog的时候，只支持SELECT操作。</p>
         :type Operation: str
@@ -82544,7 +82769,7 @@ class Policy(AbstractModel):
 
     @property
     def Table(self):
-        r"""<p>需要授权的表名，填 * 代表当前Database下所有表。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
+        r"""<p>需要授权的表名，填 * 代表当前Database有表（TClake场景下暂不支持通配符）。当授权类型为管理员级别时，只允许填“*”，当授权类型为数据连接级别、数据库级别时只允许填空，其他类型下可以任意指定数据表。</p>
         :rtype: str
         """
         return self._Table
@@ -84783,6 +85008,8 @@ class RayClusterEntity(AbstractModel):
         :type StopTime: int
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
         :type Tags: list of Tag
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         """
         self._Id = None
         self._Type = None
@@ -84812,6 +85039,7 @@ class RayClusterEntity(AbstractModel):
         self._StartTime = None
         self._StopTime = None
         self._Tags = None
+        self._NetworkConfig = None
 
     @property
     def Id(self):
@@ -85121,6 +85349,17 @@ class RayClusterEntity(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -85156,6 +85395,7 @@ class RayClusterEntity(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93245,6 +93485,8 @@ class StartLabResponse(AbstractModel):
         :type SubAccountName: str
         :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type ImagePullType: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -93281,6 +93523,7 @@ class StartLabResponse(AbstractModel):
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -93647,6 +93890,17 @@ class StartLabResponse(AbstractModel):
         self._ImagePullType = ImagePullType
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -93704,6 +93958,7 @@ class StartLabResponse(AbstractModel):
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -93883,6 +94138,8 @@ class StartRayClusterResponse(AbstractModel):
         :type StopTime: int
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
         :type Tags: list of Tag
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -93912,6 +94169,7 @@ class StartRayClusterResponse(AbstractModel):
         self._StartTime = None
         self._StopTime = None
         self._Tags = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -94201,6 +94459,17 @@ class StartRayClusterResponse(AbstractModel):
         self._Tags = Tags
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -94244,6 +94513,7 @@ class StartRayClusterResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -95932,6 +96202,8 @@ class StopLabResponse(AbstractModel):
         :type SubAccountName: str
         :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type ImagePullType: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -95963,6 +96235,7 @@ class StopLabResponse(AbstractModel):
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -96274,6 +96547,17 @@ class StopLabResponse(AbstractModel):
         self._ImagePullType = ImagePullType
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -96326,6 +96610,7 @@ class StopLabResponse(AbstractModel):
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -96482,6 +96767,8 @@ class StopRayClusterResponse(AbstractModel):
         :type StopTime: int
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
         :type Tags: list of Tag
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -96508,6 +96795,7 @@ class StopRayClusterResponse(AbstractModel):
         self._StartTime = None
         self._StopTime = None
         self._Tags = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -96764,6 +97052,17 @@ class StopRayClusterResponse(AbstractModel):
         self._Tags = Tags
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -96804,6 +97103,7 @@ class StopRayClusterResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -97050,6 +97350,8 @@ class SubmitTrainingJobRequest(AbstractModel):
         :type Tags: list of Tag
         :param _OutputModelName: <p>产出模型名称（用于后续模型注册，当前仅保存）</p>
         :type OutputModelName: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         """
         self._SpecName = None
         self._Description = None
@@ -97076,6 +97378,7 @@ class SubmitTrainingJobRequest(AbstractModel):
         self._MlFlowConfig = None
         self._Tags = None
         self._OutputModelName = None
+        self._NetworkConfig = None
 
     @property
     def SpecName(self):
@@ -97352,6 +97655,17 @@ class SubmitTrainingJobRequest(AbstractModel):
     def OutputModelName(self, OutputModelName):
         self._OutputModelName = OutputModelName
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._SpecName = params.get("SpecName")
@@ -97395,6 +97709,7 @@ class SubmitTrainingJobRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._OutputModelName = params.get("OutputModelName")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -102472,6 +102787,12 @@ class TrainingJobSpec(AbstractModel):
         :type ResumeTraining: bool
         :param _AdvancedOptions: <p>高级参数 JSON（透传给 Neutrino advanced_options）</p>
         :type AdvancedOptions: str
+        :param _SubAccountUin: <p>创建人子账号 UIN（实际提交者）</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>创建人子账号名称（CAM 解析，解析失败为 null）</p>
+        :type SubAccountName: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         """
         self._SpecId = None
         self._SpecName = None
@@ -102509,6 +102830,9 @@ class TrainingJobSpec(AbstractModel):
         self._TuningParams = None
         self._ResumeTraining = None
         self._AdvancedOptions = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._NetworkConfig = None
 
     @property
     def SpecId(self):
@@ -102925,6 +103249,39 @@ class TrainingJobSpec(AbstractModel):
     def AdvancedOptions(self, AdvancedOptions):
         self._AdvancedOptions = AdvancedOptions
 
+    @property
+    def SubAccountUin(self):
+        r"""<p>创建人子账号 UIN（实际提交者）</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>创建人子账号名称（CAM 解析，解析失败为 null）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._SpecId = params.get("SpecId")
@@ -102979,6 +103336,9 @@ class TrainingJobSpec(AbstractModel):
             self._TuningParams._deserialize(params.get("TuningParams"))
         self._ResumeTraining = params.get("ResumeTraining")
         self._AdvancedOptions = params.get("AdvancedOptions")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -106729,6 +107089,8 @@ class UpdateJobSpecRequest(AbstractModel):
         :type Tags: list of Tag
         :param _DispatchStrategy: <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
         :type DispatchStrategy: str
+        :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :type NetworkConfig: str
         """
         self._SpecId = None
         self._Entrypoint = None
@@ -106753,6 +107115,7 @@ class UpdateJobSpecRequest(AbstractModel):
         self._Priority = None
         self._Tags = None
         self._DispatchStrategy = None
+        self._NetworkConfig = None
 
     @property
     def SpecId(self):
@@ -107007,6 +107370,17 @@ class UpdateJobSpecRequest(AbstractModel):
     def DispatchStrategy(self, DispatchStrategy):
         self._DispatchStrategy = DispatchStrategy
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._SpecId = params.get("SpecId")
@@ -107037,6 +107411,7 @@ class UpdateJobSpecRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._DispatchStrategy = params.get("DispatchStrategy")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -107131,6 +107506,8 @@ class UpdateJobSpecResponse(AbstractModel):
         :type GroupName: str
         :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -107171,6 +107548,7 @@ class UpdateJobSpecResponse(AbstractModel):
         self._SubmissionTarget = None
         self._GroupName = None
         self._ClusterName = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -107584,6 +107962,17 @@ class UpdateJobSpecResponse(AbstractModel):
         self._ClusterName = ClusterName
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -107638,6 +108027,7 @@ class UpdateJobSpecResponse(AbstractModel):
         self._SubmissionTarget = params.get("SubmissionTarget")
         self._GroupName = params.get("GroupName")
         self._ClusterName = params.get("ClusterName")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -107684,6 +108074,8 @@ class UpdateLabRequest(AbstractModel):
         :type ImagePullType: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type LabImagePullType: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         """
         self._Name = None
         self._Image = None
@@ -107703,6 +108095,7 @@ class UpdateLabRequest(AbstractModel):
         self._PersistentWorkDir = None
         self._ImagePullType = None
         self._LabImagePullType = None
+        self._NetworkConfig = None
 
     @property
     def Name(self):
@@ -107902,6 +108295,17 @@ class UpdateLabRequest(AbstractModel):
     def LabImagePullType(self, LabImagePullType):
         self._LabImagePullType = LabImagePullType
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -107929,6 +108333,7 @@ class UpdateLabRequest(AbstractModel):
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
         self._ImagePullType = params.get("ImagePullType")
         self._LabImagePullType = params.get("LabImagePullType")
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -107998,6 +108403,8 @@ class UpdateLabResponse(AbstractModel):
         :type SubAccountName: str
         :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type ImagePullType: str
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -108027,6 +108434,7 @@ class UpdateLabResponse(AbstractModel):
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -108316,6 +108724,17 @@ class UpdateLabResponse(AbstractModel):
         self._ImagePullType = ImagePullType
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -108361,6 +108780,7 @@ class UpdateLabResponse(AbstractModel):
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -108480,6 +108900,8 @@ class UpdateRayClusterRequest(AbstractModel):
         :type Priority: int
         :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
         :type Tags: list of Tag
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         """
         self._Id = None
         self._Name = None
@@ -108496,6 +108918,7 @@ class UpdateRayClusterRequest(AbstractModel):
         self._AdvancedOptions = None
         self._Priority = None
         self._Tags = None
+        self._NetworkConfig = None
 
     @property
     def Id(self):
@@ -108662,6 +109085,17 @@ class UpdateRayClusterRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -108684,6 +109118,7 @@ class UpdateRayClusterRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -108747,6 +109182,8 @@ class UpdateRayClusterResponse(AbstractModel):
         :type Priority: int
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
         :type Tags: list of Tag
+        :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :type NetworkConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -108773,6 +109210,7 @@ class UpdateRayClusterResponse(AbstractModel):
         self._AdvancedOptions = None
         self._Priority = None
         self._Tags = None
+        self._NetworkConfig = None
         self._RequestId = None
 
     @property
@@ -109029,6 +109467,17 @@ class UpdateRayClusterResponse(AbstractModel):
         self._Tags = Tags
 
     @property
+    def NetworkConfig(self):
+        r"""<p>用户网络配置(JSON，跨租户 ENI 等)</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -109069,6 +109518,7 @@ class UpdateRayClusterResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._NetworkConfig = params.get("NetworkConfig")
         self._RequestId = params.get("RequestId")
 
 
@@ -112584,6 +113034,9 @@ class WarehouseInfo(AbstractModel):
         :type PartitionName: str
         :param _QueueName: <p>资源组/队列名。</p>
         :type QueueName: str
+        :param _ProfileDetail: <p>规格详情（profile 完整基础信息，describe 与 list 均返回）.</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProfileDetail: :class:`tencentcloud.dlc.v20210125.models.WarehouseProfileBriefInfo`
         :param _CreateTime: <p>创建时间（毫秒时间戳）。</p>
         :type CreateTime: int
         :param _UpdateTime: <p>最后更新时间（毫秒时间戳）。</p>
@@ -112615,6 +113068,7 @@ class WarehouseInfo(AbstractModel):
         self._PartitionCode = None
         self._PartitionName = None
         self._QueueName = None
+        self._ProfileDetail = None
         self._CreateTime = None
         self._UpdateTime = None
         self._ActiveClusters = None
@@ -112714,6 +113168,18 @@ class WarehouseInfo(AbstractModel):
     @QueueName.setter
     def QueueName(self, QueueName):
         self._QueueName = QueueName
+
+    @property
+    def ProfileDetail(self):
+        r"""<p>规格详情（profile 完整基础信息，describe 与 list 均返回）.</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.WarehouseProfileBriefInfo`
+        """
+        return self._ProfileDetail
+
+    @ProfileDetail.setter
+    def ProfileDetail(self, ProfileDetail):
+        self._ProfileDetail = ProfileDetail
 
     @property
     def CreateTime(self):
@@ -112846,6 +113312,9 @@ class WarehouseInfo(AbstractModel):
         self._PartitionCode = params.get("PartitionCode")
         self._PartitionName = params.get("PartitionName")
         self._QueueName = params.get("QueueName")
+        if params.get("ProfileDetail") is not None:
+            self._ProfileDetail = WarehouseProfileBriefInfo()
+            self._ProfileDetail._deserialize(params.get("ProfileDetail"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._ActiveClusters = params.get("ActiveClusters")
@@ -112862,6 +113331,102 @@ class WarehouseInfo(AbstractModel):
                 self._EnvVars.append(obj)
         self._RuntimeConf = params.get("RuntimeConf")
         self._DynamicProperties = params.get("DynamicProperties")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WarehouseProfileBriefInfo(AbstractModel):
+    r"""Warehouse Profile 对外基础信息（对外 API 精简视图）.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProfileCode: <p>规格编码（常见 XS / S / M / L / XL，租户自定义编码亦合法）.</p>
+        :type ProfileCode: str
+        :param _ProfileName: <p>规格名称.</p>
+        :type ProfileName: str
+        :param _Description: <p>规格描述.</p>
+        :type Description: str
+        :param _Spec: <p>规格展示文案（后端渲染后的字符串，如 "4CU"；前端直接展示，不做二次拼装）.</p>
+        :type Spec: str
+        :param _Scenario: <p>适用场景描述.</p>
+        :type Scenario: str
+        """
+        self._ProfileCode = None
+        self._ProfileName = None
+        self._Description = None
+        self._Spec = None
+        self._Scenario = None
+
+    @property
+    def ProfileCode(self):
+        r"""<p>规格编码（常见 XS / S / M / L / XL，租户自定义编码亦合法）.</p>
+        :rtype: str
+        """
+        return self._ProfileCode
+
+    @ProfileCode.setter
+    def ProfileCode(self, ProfileCode):
+        self._ProfileCode = ProfileCode
+
+    @property
+    def ProfileName(self):
+        r"""<p>规格名称.</p>
+        :rtype: str
+        """
+        return self._ProfileName
+
+    @ProfileName.setter
+    def ProfileName(self, ProfileName):
+        self._ProfileName = ProfileName
+
+    @property
+    def Description(self):
+        r"""<p>规格描述.</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Spec(self):
+        r"""<p>规格展示文案（后端渲染后的字符串，如 "4CU"；前端直接展示，不做二次拼装）.</p>
+        :rtype: str
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def Scenario(self):
+        r"""<p>适用场景描述.</p>
+        :rtype: str
+        """
+        return self._Scenario
+
+    @Scenario.setter
+    def Scenario(self, Scenario):
+        self._Scenario = Scenario
+
+
+    def _deserialize(self, params):
+        self._ProfileCode = params.get("ProfileCode")
+        self._ProfileName = params.get("ProfileName")
+        self._Description = params.get("Description")
+        self._Spec = params.get("Spec")
+        self._Scenario = params.get("Scenario")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

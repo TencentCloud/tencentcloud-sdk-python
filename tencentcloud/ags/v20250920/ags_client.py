@@ -401,6 +401,29 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeletePreCacheImage(self, request):
+        r"""删除预热镜像
+
+        :param request: Request instance for DeletePreCacheImage.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DeletePreCacheImageRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DeletePreCacheImageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePreCacheImage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePreCacheImageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteRegistry(self, request):
         r"""删除 Registry。
 
@@ -626,6 +649,29 @@ class AgsClient(AbstractClient):
             body = self.call("DescribeEvents", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePreCacheImageList(self, request):
+        r"""查询镜像预热列表
+
+        :param request: Request instance for DescribePreCacheImageList.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribePreCacheImageListRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribePreCacheImageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePreCacheImageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePreCacheImageListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

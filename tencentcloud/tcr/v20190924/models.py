@@ -3361,20 +3361,26 @@ class CreateWebhookTriggerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 实例 Id
+        :param _RegistryId: <p>实例 Id</p>
         :type RegistryId: str
-        :param _Trigger: 触发器参数
+        :param _Trigger: <p>触发器参数</p>
         :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
-        :param _Namespace: 命名空间
+        :param _Namespace: <p>命名空间</p>
         :type Namespace: str
+        :param _Product: <p>产品名称，非空时创建的 webhook 将被隐藏</p>
+        :type Product: str
+        :param _PreheatRegion: <p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+        :type PreheatRegion: str
         """
         self._RegistryId = None
         self._Trigger = None
         self._Namespace = None
+        self._Product = None
+        self._PreheatRegion = None
 
     @property
     def RegistryId(self):
-        r"""实例 Id
+        r"""<p>实例 Id</p>
         :rtype: str
         """
         return self._RegistryId
@@ -3385,7 +3391,7 @@ class CreateWebhookTriggerRequest(AbstractModel):
 
     @property
     def Trigger(self):
-        r"""触发器参数
+        r"""<p>触发器参数</p>
         :rtype: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
         """
         return self._Trigger
@@ -3396,7 +3402,7 @@ class CreateWebhookTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""命名空间
+        r"""<p>命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -3405,6 +3411,28 @@ class CreateWebhookTriggerRequest(AbstractModel):
     def Namespace(self, Namespace):
         self._Namespace = Namespace
 
+    @property
+    def Product(self):
+        r"""<p>产品名称，非空时创建的 webhook 将被隐藏</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def PreheatRegion(self):
+        r"""<p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+        :rtype: str
+        """
+        return self._PreheatRegion
+
+    @PreheatRegion.setter
+    def PreheatRegion(self, PreheatRegion):
+        self._PreheatRegion = PreheatRegion
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
@@ -3412,6 +3440,8 @@ class CreateWebhookTriggerRequest(AbstractModel):
             self._Trigger = WebhookTrigger()
             self._Trigger._deserialize(params.get("Trigger"))
         self._Namespace = params.get("Namespace")
+        self._Product = params.get("Product")
+        self._PreheatRegion = params.get("PreheatRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3429,7 +3459,7 @@ class CreateWebhookTriggerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Trigger: 新建的触发器
+        :param _Trigger: <p>新建的触发器</p>
         :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3439,7 +3469,7 @@ class CreateWebhookTriggerResponse(AbstractModel):
 
     @property
     def Trigger(self):
-        r"""新建的触发器
+        r"""<p>新建的触发器</p>
         :rtype: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
         """
         return self._Trigger
@@ -16237,10 +16267,16 @@ class ModifyWebhookTriggerRequest(AbstractModel):
         :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
         :param _Namespace: <p>命名空间</p>
         :type Namespace: str
+        :param _Product: <p>产品名称，非空时创建的 webhook 将被隐藏</p>
+        :type Product: str
+        :param _PreheatRegion: <p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+        :type PreheatRegion: str
         """
         self._RegistryId = None
         self._Trigger = None
         self._Namespace = None
+        self._Product = None
+        self._PreheatRegion = None
 
     @property
     def RegistryId(self):
@@ -16275,6 +16311,28 @@ class ModifyWebhookTriggerRequest(AbstractModel):
     def Namespace(self, Namespace):
         self._Namespace = Namespace
 
+    @property
+    def Product(self):
+        r"""<p>产品名称，非空时创建的 webhook 将被隐藏</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def PreheatRegion(self):
+        r"""<p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+        :rtype: str
+        """
+        return self._PreheatRegion
+
+    @PreheatRegion.setter
+    def PreheatRegion(self, PreheatRegion):
+        self._PreheatRegion = PreheatRegion
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
@@ -16282,6 +16340,8 @@ class ModifyWebhookTriggerRequest(AbstractModel):
             self._Trigger = WebhookTrigger()
             self._Trigger._deserialize(params.get("Trigger"))
         self._Namespace = params.get("Namespace")
+        self._Product = params.get("Product")
+        self._PreheatRegion = params.get("PreheatRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22189,6 +22249,12 @@ class WebhookTrigger(AbstractModel):
         :param _NamespaceName: <p>触发器所属命名空间名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
+        :param _Product: <p>触发器所属产品类型：ags 为镜像预热，apparate 为镜像加速，普通 webhook 为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Product: str
+        :param _PreheatRegion: <p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreheatRegion: str
         """
         self._Name = None
         self._Targets = None
@@ -22199,6 +22265,8 @@ class WebhookTrigger(AbstractModel):
         self._Description = None
         self._NamespaceId = None
         self._NamespaceName = None
+        self._Product = None
+        self._PreheatRegion = None
 
     @property
     def Name(self):
@@ -22300,6 +22368,30 @@ class WebhookTrigger(AbstractModel):
     def NamespaceName(self, NamespaceName):
         self._NamespaceName = NamespaceName
 
+    @property
+    def Product(self):
+        r"""<p>触发器所属产品类型：ags 为镜像预热，apparate 为镜像加速，普通 webhook 为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def PreheatRegion(self):
+        r"""<p>预热目标地域，AGS 镜像预热的目标地域，非 AGS 触发器为空</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PreheatRegion
+
+    @PreheatRegion.setter
+    def PreheatRegion(self, PreheatRegion):
+        self._PreheatRegion = PreheatRegion
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -22316,6 +22408,8 @@ class WebhookTrigger(AbstractModel):
         self._Description = params.get("Description")
         self._NamespaceId = params.get("NamespaceId")
         self._NamespaceName = params.get("NamespaceName")
+        self._Product = params.get("Product")
+        self._PreheatRegion = params.get("PreheatRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

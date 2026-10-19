@@ -31979,6 +31979,513 @@ class DescribeStreamDayPlayInfoListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeStreamPackageIngestStatisticsRequest(AbstractModel):
+    r"""DescribeStreamPackageIngestStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>查询起始时间，RFC3339 格式，如2026-08-24T00:00:00+08:00</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+        :type EndTime: str
+        :param _ChannelIds: <p>频道ID列表，不传则查全部频道</p>
+        :type ChannelIds: list of str
+        :param _Types: <p>频道类型过滤，枚举值：LiveChannel、SSAI、FASTChannel</p>
+        :type Types: list of str
+        :param _Dimension: <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+        :type Dimension: bool
+        :param _Granularity: <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+        :type Granularity: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ChannelIds = None
+        self._Types = None
+        self._Dimension = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""<p>查询起始时间，RFC3339 格式，如2026-08-24T00:00:00+08:00</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ChannelIds(self):
+        r"""<p>频道ID列表，不传则查全部频道</p>
+        :rtype: list of str
+        """
+        return self._ChannelIds
+
+    @ChannelIds.setter
+    def ChannelIds(self, ChannelIds):
+        self._ChannelIds = ChannelIds
+
+    @property
+    def Types(self):
+        r"""<p>频道类型过滤，枚举值：LiveChannel、SSAI、FASTChannel</p>
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def Dimension(self):
+        r"""<p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+        :rtype: bool
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Granularity(self):
+        r"""<p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+        :rtype: int
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ChannelIds = params.get("ChannelIds")
+        self._Types = params.get("Types")
+        self._Dimension = params.get("Dimension")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageIngestStatisticsResponse(AbstractModel):
+    r"""DescribeStreamPackageIngestStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataInfoList: <p>输入流量数据</p>
+        :type DataInfoList: list of IngestStatisticsDataInfo
+        :param _TotalIngest: <p>总输入用量</p>
+        :type TotalIngest: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataInfoList = None
+        self._TotalIngest = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        r"""<p>输入流量数据</p>
+        :rtype: list of IngestStatisticsDataInfo
+        """
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def TotalIngest(self):
+        r"""<p>总输入用量</p>
+        :rtype: int
+        """
+        return self._TotalIngest
+
+    @TotalIngest.setter
+    def TotalIngest(self, TotalIngest):
+        self._TotalIngest = TotalIngest
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self._DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = IngestStatisticsDataInfo()
+                obj._deserialize(item)
+                self._DataInfoList.append(obj)
+        self._TotalIngest = params.get("TotalIngest")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageOutputStatisticsRequest(AbstractModel):
+    r"""DescribeStreamPackageOutputStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>查询起始时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+        :type EndTime: str
+        :param _ChannelIds: <p>频道ID列表，不传则查全部频道</p>
+        :type ChannelIds: list of str
+        :param _Types: <p>频道类型过滤，枚举值：LiveChannel</p>
+        :type Types: list of str
+        :param _Dimension: <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+        :type Dimension: bool
+        :param _Granularity: <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+        :type Granularity: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ChannelIds = None
+        self._Types = None
+        self._Dimension = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""<p>查询起始时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ChannelIds(self):
+        r"""<p>频道ID列表，不传则查全部频道</p>
+        :rtype: list of str
+        """
+        return self._ChannelIds
+
+    @ChannelIds.setter
+    def ChannelIds(self, ChannelIds):
+        self._ChannelIds = ChannelIds
+
+    @property
+    def Types(self):
+        r"""<p>频道类型过滤，枚举值：LiveChannel</p>
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def Dimension(self):
+        r"""<p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+        :rtype: bool
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Granularity(self):
+        r"""<p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+        :rtype: int
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ChannelIds = params.get("ChannelIds")
+        self._Types = params.get("Types")
+        self._Dimension = params.get("Dimension")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageOutputStatisticsResponse(AbstractModel):
+    r"""DescribeStreamPackageOutputStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataInfoList: <p>输出流量统计</p>
+        :type DataInfoList: list of OutputStatisticsDataInfo
+        :param _TotalOutput: <p>输出总用量</p>
+        :type TotalOutput: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataInfoList = None
+        self._TotalOutput = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        r"""<p>输出流量统计</p>
+        :rtype: list of OutputStatisticsDataInfo
+        """
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def TotalOutput(self):
+        r"""<p>输出总用量</p>
+        :rtype: int
+        """
+        return self._TotalOutput
+
+    @TotalOutput.setter
+    def TotalOutput(self, TotalOutput):
+        self._TotalOutput = TotalOutput
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self._DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = OutputStatisticsDataInfo()
+                obj._deserialize(item)
+                self._DataInfoList.append(obj)
+        self._TotalOutput = params.get("TotalOutput")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageRemuxStatisticsRequest(AbstractModel):
+    r"""DescribeStreamPackageRemuxStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>查询起始时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+        :type EndTime: str
+        :param _ChannelIds: <p>频道ID列表，不传则查全部频道</p>
+        :type ChannelIds: list of str
+        :param _Dimension: <p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+        :type Dimension: bool
+        :param _Granularity: <p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+        :type Granularity: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ChannelIds = None
+        self._Dimension = None
+        self._Granularity = None
+
+    @property
+    def StartTime(self):
+        r"""<p>查询起始时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，RFC3339 格式，如 2026-08-24T00:00:00+08:00；必须晚于 StartTime</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ChannelIds(self):
+        r"""<p>频道ID列表，不传则查全部频道</p>
+        :rtype: list of str
+        """
+        return self._ChannelIds
+
+    @ChannelIds.setter
+    def ChannelIds(self, ChannelIds):
+        self._ChannelIds = ChannelIds
+
+    @property
+    def Dimension(self):
+        r"""<p>维度，false(默认): summary 汇总模式；true: detail 明细模式（按时间拆分），当为false时粒度不生效</p>
+        :rtype: bool
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Granularity(self):
+        r"""<p>时间粒度（分钟），支持5（默认）/ 60 / 1440</p>
+        :rtype: int
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ChannelIds = params.get("ChannelIds")
+        self._Dimension = params.get("Dimension")
+        self._Granularity = params.get("Granularity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageRemuxStatisticsResponse(AbstractModel):
+    r"""DescribeStreamPackageRemuxStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataInfoList: <p>封装用量数据</p>
+        :type DataInfoList: list of RemuxStatisticsDataInfo
+        :param _TotalRemux: <p>封装总用量</p>
+        :type TotalRemux: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataInfoList = None
+        self._TotalRemux = None
+        self._RequestId = None
+
+    @property
+    def DataInfoList(self):
+        r"""<p>封装用量数据</p>
+        :rtype: list of RemuxStatisticsDataInfo
+        """
+        return self._DataInfoList
+
+    @DataInfoList.setter
+    def DataInfoList(self, DataInfoList):
+        self._DataInfoList = DataInfoList
+
+    @property
+    def TotalRemux(self):
+        r"""<p>封装总用量</p>
+        :rtype: int
+        """
+        return self._TotalRemux
+
+    @TotalRemux.setter
+    def TotalRemux(self, TotalRemux):
+        self._TotalRemux = TotalRemux
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataInfoList") is not None:
+            self._DataInfoList = []
+            for item in params.get("DataInfoList"):
+                obj = RemuxStatisticsDataInfo()
+                obj._deserialize(item)
+                self._DataInfoList.append(obj)
+        self._TotalRemux = params.get("TotalRemux")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeStreamPlayInfoListRequest(AbstractModel):
     r"""DescribeStreamPlayInfoList请求参数结构体
 
@@ -35068,6 +35575,87 @@ class HttpStatusInfo(AbstractModel):
     def _deserialize(self, params):
         self._HttpStatus = params.get("HttpStatus")
         self._Num = params.get("Num")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IngestStatisticsDataInfo(AbstractModel):
+    r"""IngestStatisticsDataInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ingest: <p>输入用量</p>
+        :type Ingest: int
+        :param _Time: <p>时间</p>
+        :type Time: str
+        :param _ChannelId: <p>频道Id</p>
+        :type ChannelId: str
+        :param _Type: <p>频道类型</p>
+        :type Type: str
+        """
+        self._Ingest = None
+        self._Time = None
+        self._ChannelId = None
+        self._Type = None
+
+    @property
+    def Ingest(self):
+        r"""<p>输入用量</p>
+        :rtype: int
+        """
+        return self._Ingest
+
+    @Ingest.setter
+    def Ingest(self, Ingest):
+        self._Ingest = Ingest
+
+    @property
+    def Time(self):
+        r"""<p>时间</p>
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ChannelId(self):
+        r"""<p>频道Id</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Type(self):
+        r"""<p>频道类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Ingest = params.get("Ingest")
+        self._Time = params.get("Time")
+        self._ChannelId = params.get("ChannelId")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42532,6 +43120,87 @@ class OriginStreamCustomizationRule(AbstractModel):
         
 
 
+class OutputStatisticsDataInfo(AbstractModel):
+    r"""OutputStatisticsDataInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Output: <p>输出用量</p>
+        :type Output: int
+        :param _Time: <p>时间</p>
+        :type Time: str
+        :param _ChannelId: <p>频道Id</p>
+        :type ChannelId: str
+        :param _Type: <p>类型</p>
+        :type Type: str
+        """
+        self._Output = None
+        self._Time = None
+        self._ChannelId = None
+        self._Type = None
+
+    @property
+    def Output(self):
+        r"""<p>输出用量</p>
+        :rtype: int
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Time(self):
+        r"""<p>时间</p>
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ChannelId(self):
+        r"""<p>频道Id</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Type(self):
+        r"""<p>类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Output = params.get("Output")
+        self._Time = params.get("Time")
+        self._ChannelId = params.get("ChannelId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PadStreamInfo(AbstractModel):
     r"""查询当前垫片流的信息
 
@@ -45934,6 +46603,72 @@ class ReleaseCasterResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RemuxStatisticsDataInfo(AbstractModel):
+    r"""RemuxStatisticsDataInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Remux: <p>转封装用量</p>
+        :type Remux: int
+        :param _Time: <p>时间</p>
+        :type Time: str
+        :param _ChannelId: <p>频道Id</p>
+        :type ChannelId: str
+        """
+        self._Remux = None
+        self._Time = None
+        self._ChannelId = None
+
+    @property
+    def Remux(self):
+        r"""<p>转封装用量</p>
+        :rtype: int
+        """
+        return self._Remux
+
+    @Remux.setter
+    def Remux(self, Remux):
+        self._Remux = Remux
+
+    @property
+    def Time(self):
+        r"""<p>时间</p>
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ChannelId(self):
+        r"""<p>频道Id</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._Remux = params.get("Remux")
+        self._Time = params.get("Time")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RestartLivePullStreamTaskRequest(AbstractModel):

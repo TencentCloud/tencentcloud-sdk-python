@@ -469,6 +469,10 @@ class ApmAppConfig(AbstractModel):
         :type CrossAccountStatus: int
         :param _CrossAccountPeerId: <p>跨账号关联ID</p>
         :type CrossAccountPeerId: str
+        :param _SpanStatusConfig: <p>自定义 Span 状态配置</p>
+        :type SpanStatusConfig: :class:`tencentcloud.apm.v20210622.models.SpanStatusConfig`
+        :param _EnableSpanStatusConfig: <p>应用级自定义 Span 状态开关</p>
+        :type EnableSpanStatusConfig: bool
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -538,6 +542,8 @@ class ApmAppConfig(AbstractModel):
         self._HeadSamplerArg = None
         self._CrossAccountStatus = None
         self._CrossAccountPeerId = None
+        self._SpanStatusConfig = None
+        self._EnableSpanStatusConfig = None
 
     @property
     def InstanceKey(self):
@@ -1310,6 +1316,28 @@ class ApmAppConfig(AbstractModel):
     def CrossAccountPeerId(self, CrossAccountPeerId):
         self._CrossAccountPeerId = CrossAccountPeerId
 
+    @property
+    def SpanStatusConfig(self):
+        r"""<p>自定义 Span 状态配置</p>
+        :rtype: :class:`tencentcloud.apm.v20210622.models.SpanStatusConfig`
+        """
+        return self._SpanStatusConfig
+
+    @SpanStatusConfig.setter
+    def SpanStatusConfig(self, SpanStatusConfig):
+        self._SpanStatusConfig = SpanStatusConfig
+
+    @property
+    def EnableSpanStatusConfig(self):
+        r"""<p>应用级自定义 Span 状态开关</p>
+        :rtype: bool
+        """
+        return self._EnableSpanStatusConfig
+
+    @EnableSpanStatusConfig.setter
+    def EnableSpanStatusConfig(self, EnableSpanStatusConfig):
+        self._EnableSpanStatusConfig = EnableSpanStatusConfig
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1394,6 +1422,10 @@ class ApmAppConfig(AbstractModel):
         self._HeadSamplerArg = params.get("HeadSamplerArg")
         self._CrossAccountStatus = params.get("CrossAccountStatus")
         self._CrossAccountPeerId = params.get("CrossAccountPeerId")
+        if params.get("SpanStatusConfig") is not None:
+            self._SpanStatusConfig = SpanStatusConfig()
+            self._SpanStatusConfig._deserialize(params.get("SpanStatusConfig"))
+        self._EnableSpanStatusConfig = params.get("EnableSpanStatusConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2571,6 +2603,8 @@ class ApmInstanceDetail(AbstractModel):
         :type CrossAccountPeerId: str
         :param _TokenDisplayProtection: <p>开启Token展示安全保护</p><p>单位：是、否</p>
         :type TokenDisplayProtection: int
+        :param _SpanStatusConfig: <p>自定义 Span 状态配置</p>
+        :type SpanStatusConfig: :class:`tencentcloud.apm.v20210622.models.SpanStatusConfig`
         """
         self._InstanceId = None
         self._Name = None
@@ -2633,6 +2667,7 @@ class ApmInstanceDetail(AbstractModel):
         self._CrossAccountStatus = None
         self._CrossAccountPeerId = None
         self._TokenDisplayProtection = None
+        self._SpanStatusConfig = None
 
     @property
     def InstanceId(self):
@@ -3305,6 +3340,17 @@ class ApmInstanceDetail(AbstractModel):
     def TokenDisplayProtection(self, TokenDisplayProtection):
         self._TokenDisplayProtection = TokenDisplayProtection
 
+    @property
+    def SpanStatusConfig(self):
+        r"""<p>自定义 Span 状态配置</p>
+        :rtype: :class:`tencentcloud.apm.v20210622.models.SpanStatusConfig`
+        """
+        return self._SpanStatusConfig
+
+    @SpanStatusConfig.setter
+    def SpanStatusConfig(self, SpanStatusConfig):
+        self._SpanStatusConfig = SpanStatusConfig
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3373,6 +3419,9 @@ class ApmInstanceDetail(AbstractModel):
         self._CrossAccountStatus = params.get("CrossAccountStatus")
         self._CrossAccountPeerId = params.get("CrossAccountPeerId")
         self._TokenDisplayProtection = params.get("TokenDisplayProtection")
+        if params.get("SpanStatusConfig") is not None:
+            self._SpanStatusConfig = SpanStatusConfig()
+            self._SpanStatusConfig._deserialize(params.get("SpanStatusConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9442,6 +9491,61 @@ class ErrorSpan(AbstractModel):
         
 
 
+class ErrorSpanConf(AbstractModel):
+    r"""具体单个配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorObjectPatterns: <p>错误类型匹配规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorObjectPatterns: list of str
+        :param _ErrorCodes: <p>错误码匹配规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCodes: list of str
+        """
+        self._ErrorObjectPatterns = None
+        self._ErrorCodes = None
+
+    @property
+    def ErrorObjectPatterns(self):
+        r"""<p>错误类型匹配规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ErrorObjectPatterns
+
+    @ErrorObjectPatterns.setter
+    def ErrorObjectPatterns(self, ErrorObjectPatterns):
+        self._ErrorObjectPatterns = ErrorObjectPatterns
+
+    @property
+    def ErrorCodes(self):
+        r"""<p>错误码匹配规则列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ErrorCodes
+
+    @ErrorCodes.setter
+    def ErrorCodes(self, ErrorCodes):
+        self._ErrorCodes = ErrorCodes
+
+
+    def _deserialize(self, params):
+        self._ErrorObjectPatterns = params.get("ErrorObjectPatterns")
+        self._ErrorCodes = params.get("ErrorCodes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""查询过滤参数
 
@@ -9861,6 +9965,10 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         :type CrossAccountStatus: int
         :param _CrossAccountPeerId: <p>跨账号关联ID</p>
         :type CrossAccountPeerId: str
+        :param _EnableSpanStatusConfig: <p>应用级自定义 Span 状态开关</p>
+        :type EnableSpanStatusConfig: bool
+        :param _SpanStatusConfig: <p>自定义 Span 状态配置</p>
+        :type SpanStatusConfig: :class:`tencentcloud.apm.v20210622.models.SpanStatusConfig`
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -9926,6 +10034,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._HeadSamplerArg = None
         self._CrossAccountStatus = None
         self._CrossAccountPeerId = None
+        self._EnableSpanStatusConfig = None
+        self._SpanStatusConfig = None
 
     @property
     def InstanceId(self):
@@ -10631,6 +10741,28 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     def CrossAccountPeerId(self, CrossAccountPeerId):
         self._CrossAccountPeerId = CrossAccountPeerId
 
+    @property
+    def EnableSpanStatusConfig(self):
+        r"""<p>应用级自定义 Span 状态开关</p>
+        :rtype: bool
+        """
+        return self._EnableSpanStatusConfig
+
+    @EnableSpanStatusConfig.setter
+    def EnableSpanStatusConfig(self, EnableSpanStatusConfig):
+        self._EnableSpanStatusConfig = EnableSpanStatusConfig
+
+    @property
+    def SpanStatusConfig(self):
+        r"""<p>自定义 Span 状态配置</p>
+        :rtype: :class:`tencentcloud.apm.v20210622.models.SpanStatusConfig`
+        """
+        return self._SpanStatusConfig
+
+    @SpanStatusConfig.setter
+    def SpanStatusConfig(self, SpanStatusConfig):
+        self._SpanStatusConfig = SpanStatusConfig
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10711,6 +10843,10 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._HeadSamplerArg = params.get("HeadSamplerArg")
         self._CrossAccountStatus = params.get("CrossAccountStatus")
         self._CrossAccountPeerId = params.get("CrossAccountPeerId")
+        self._EnableSpanStatusConfig = params.get("EnableSpanStatusConfig")
+        if params.get("SpanStatusConfig") is not None:
+            self._SpanStatusConfig = SpanStatusConfig()
+            self._SpanStatusConfig._deserialize(params.get("SpanStatusConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10995,6 +11131,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type CrossAccountPeerId: str
         :param _TokenDisplayProtection: <p>是否开启Token 展示安全保护</p><p>单位：0：不开启，1：开启</p><p>默认值：0</p>
         :type TokenDisplayProtection: int
+        :param _SpanStatusConfig: <p>自定义 Span 状态配置</p>
+        :type SpanStatusConfig: :class:`tencentcloud.apm.v20210622.models.SpanStatusConfig`
         """
         self._InstanceId = None
         self._Name = None
@@ -11046,6 +11184,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._CrossAccountStatus = None
         self._CrossAccountPeerId = None
         self._TokenDisplayProtection = None
+        self._SpanStatusConfig = None
 
     @property
     def InstanceId(self):
@@ -11597,6 +11736,17 @@ class ModifyApmInstanceRequest(AbstractModel):
     def TokenDisplayProtection(self, TokenDisplayProtection):
         self._TokenDisplayProtection = TokenDisplayProtection
 
+    @property
+    def SpanStatusConfig(self):
+        r"""<p>自定义 Span 状态配置</p>
+        :rtype: :class:`tencentcloud.apm.v20210622.models.SpanStatusConfig`
+        """
+        return self._SpanStatusConfig
+
+    @SpanStatusConfig.setter
+    def SpanStatusConfig(self, SpanStatusConfig):
+        self._SpanStatusConfig = SpanStatusConfig
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11654,6 +11804,9 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._CrossAccountStatus = params.get("CrossAccountStatus")
         self._CrossAccountPeerId = params.get("CrossAccountPeerId")
         self._TokenDisplayProtection = params.get("TokenDisplayProtection")
+        if params.get("SpanStatusConfig") is not None:
+            self._SpanStatusConfig = SpanStatusConfig()
+            self._SpanStatusConfig._deserialize(params.get("SpanStatusConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13510,6 +13663,66 @@ class SpanReference(AbstractModel):
         self._RefType = params.get("RefType")
         self._SpanID = params.get("SpanID")
         self._TraceID = params.get("TraceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpanStatusConfig(AbstractModel):
+    r"""https://iwiki.woa.com/p/4035597532
+    自定义 Span 状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkAsError: <p>标记为错误规则组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkAsError: :class:`tencentcloud.apm.v20210622.models.ErrorSpanConf`
+        :param _MarkAsOk: <p>标记为正常规则组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MarkAsOk: :class:`tencentcloud.apm.v20210622.models.ErrorSpanConf`
+        """
+        self._MarkAsError = None
+        self._MarkAsOk = None
+
+    @property
+    def MarkAsError(self):
+        r"""<p>标记为错误规则组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ErrorSpanConf`
+        """
+        return self._MarkAsError
+
+    @MarkAsError.setter
+    def MarkAsError(self, MarkAsError):
+        self._MarkAsError = MarkAsError
+
+    @property
+    def MarkAsOk(self):
+        r"""<p>标记为正常规则组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ErrorSpanConf`
+        """
+        return self._MarkAsOk
+
+    @MarkAsOk.setter
+    def MarkAsOk(self, MarkAsOk):
+        self._MarkAsOk = MarkAsOk
+
+
+    def _deserialize(self, params):
+        if params.get("MarkAsError") is not None:
+            self._MarkAsError = ErrorSpanConf()
+            self._MarkAsError._deserialize(params.get("MarkAsError"))
+        if params.get("MarkAsOk") is not None:
+            self._MarkAsOk = ErrorSpanConf()
+            self._MarkAsOk._deserialize(params.get("MarkAsOk"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -124049,6 +124049,8 @@ class DspmDbAsset(AbstractModel):
         :type TotalAuditLogs: int
         :param _LogDeliveryDisableReason: <p>日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists</p>
         :type LogDeliveryDisableReason: str
+        :param _LogDeliveryDisableMessage: <p>日志审计禁止开通时的详细说明</p>
+        :type LogDeliveryDisableMessage: str
         :param _OldestOnlineLogTimestamp: <p>在线日志的起始时间戳，精确到秒</p>
         :type OldestOnlineLogTimestamp: int
         :param _NewestOnlineLogTimestamp: <p>在线日志的最新时间戳，精确到秒</p>
@@ -124069,6 +124071,8 @@ class DspmDbAsset(AbstractModel):
         :param _ClusterName: <p>集群名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
+        :param _DbVersion: <p>数据库版本</p>
+        :type DbVersion: str
         """
         self._AssetId = None
         self._AssetType = None
@@ -124098,6 +124102,7 @@ class DspmDbAsset(AbstractModel):
         self._SecurityAnalyseStatus = None
         self._TotalAuditLogs = None
         self._LogDeliveryDisableReason = None
+        self._LogDeliveryDisableMessage = None
         self._OldestOnlineLogTimestamp = None
         self._NewestOnlineLogTimestamp = None
         self._OperationErrorMsg = None
@@ -124107,6 +124112,7 @@ class DspmDbAsset(AbstractModel):
         self._IdentifyScanSupported = None
         self._ClusterId = None
         self._ClusterName = None
+        self._DbVersion = None
 
     @property
     def AssetId(self):
@@ -124417,6 +124423,17 @@ class DspmDbAsset(AbstractModel):
         self._LogDeliveryDisableReason = LogDeliveryDisableReason
 
     @property
+    def LogDeliveryDisableMessage(self):
+        r"""<p>日志审计禁止开通时的详细说明</p>
+        :rtype: str
+        """
+        return self._LogDeliveryDisableMessage
+
+    @LogDeliveryDisableMessage.setter
+    def LogDeliveryDisableMessage(self, LogDeliveryDisableMessage):
+        self._LogDeliveryDisableMessage = LogDeliveryDisableMessage
+
+    @property
     def OldestOnlineLogTimestamp(self):
         r"""<p>在线日志的起始时间戳，精确到秒</p>
         :rtype: int
@@ -124517,6 +124534,17 @@ class DspmDbAsset(AbstractModel):
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
 
+    @property
+    def DbVersion(self):
+        r"""<p>数据库版本</p>
+        :rtype: str
+        """
+        return self._DbVersion
+
+    @DbVersion.setter
+    def DbVersion(self, DbVersion):
+        self._DbVersion = DbVersion
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -124556,6 +124584,7 @@ class DspmDbAsset(AbstractModel):
         self._SecurityAnalyseStatus = params.get("SecurityAnalyseStatus")
         self._TotalAuditLogs = params.get("TotalAuditLogs")
         self._LogDeliveryDisableReason = params.get("LogDeliveryDisableReason")
+        self._LogDeliveryDisableMessage = params.get("LogDeliveryDisableMessage")
         self._OldestOnlineLogTimestamp = params.get("OldestOnlineLogTimestamp")
         self._NewestOnlineLogTimestamp = params.get("NewestOnlineLogTimestamp")
         self._OperationErrorMsg = params.get("OperationErrorMsg")
@@ -124565,6 +124594,7 @@ class DspmDbAsset(AbstractModel):
         self._IdentifyScanSupported = params.get("IdentifyScanSupported")
         self._ClusterId = params.get("ClusterId")
         self._ClusterName = params.get("ClusterName")
+        self._DbVersion = params.get("DbVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -127629,30 +127659,34 @@ class DspmRiskCount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UnprocessedRisk: 待处理风险个数
+        :param _UnprocessedRisk: <p>待处理风险个数</p>
         :type UnprocessedRisk: int
-        :param _ConfigurationRisk: 配置风险个数
+        :param _ConfigurationRisk: <p>配置风险个数</p>
         :type ConfigurationRisk: int
-        :param _BaselineDeviation: 基线风险个数
+        :param _BaselineDeviation: <p>基线风险个数</p>
         :type BaselineDeviation: int
-        :param _LeakDetection: 泄露风险个数
+        :param _LeakDetection: <p>泄露风险个数</p>
         :type LeakDetection: int
-        :param _SQLBehaviorAnomaly: SQL行为异常风险个数
+        :param _SQLBehaviorAnomaly: <p>SQL行为异常风险个数</p>
         :type SQLBehaviorAnomaly: int
-        :param _PermissionAnomaly: 权限异常风险个数
+        :param _PermissionAnomaly: <p>权限异常风险个数</p>
         :type PermissionAnomaly: int
-        :param _LoginBehaviorAnomaly: 登录行为异常风险个数
+        :param _LoginBehaviorAnomaly: <p>登录行为异常风险个数</p>
         :type LoginBehaviorAnomaly: int
-        :param _AttackSurfaceRisk: 攻击面风险个数
+        :param _AttackSurfaceRisk: <p>攻击面风险个数</p>
         :type AttackSurfaceRisk: int
-        :param _AccountSensitiveOperation: 账号敏感操作个数
+        :param _AccountSensitiveOperation: <p>账号敏感操作个数</p>
         :type AccountSensitiveOperation: int
-        :param _UnprocessedAlarm: 待处理告警个数
+        :param _UnprocessedAlarm: <p>待处理告警个数</p>
         :type UnprocessedAlarm: int
-        :param _NumOfNewAlarmEvent: 新增事件告警
+        :param _NumOfNewAlarmEvent: <p>新增事件告警</p>
         :type NumOfNewAlarmEvent: int
-        :param _NumOfNewConfigRisk: 新增配置风险
+        :param _NumOfNewConfigRisk: <p>新增配置风险</p>
         :type NumOfNewConfigRisk: int
+        :param _AccountRisk: <p>账号风险条数</p>
+        :type AccountRisk: int
+        :param _ConfigRisk: <p>配置风险条数</p>
+        :type ConfigRisk: int
         """
         self._UnprocessedRisk = None
         self._ConfigurationRisk = None
@@ -127666,10 +127700,12 @@ class DspmRiskCount(AbstractModel):
         self._UnprocessedAlarm = None
         self._NumOfNewAlarmEvent = None
         self._NumOfNewConfigRisk = None
+        self._AccountRisk = None
+        self._ConfigRisk = None
 
     @property
     def UnprocessedRisk(self):
-        r"""待处理风险个数
+        r"""<p>待处理风险个数</p>
         :rtype: int
         """
         return self._UnprocessedRisk
@@ -127682,7 +127718,7 @@ class DspmRiskCount(AbstractModel):
     def ConfigurationRisk(self):
         warnings.warn("parameter `ConfigurationRisk` is deprecated", DeprecationWarning) 
 
-        r"""配置风险个数
+        r"""<p>配置风险个数</p>
         :rtype: int
         """
         return self._ConfigurationRisk
@@ -127697,7 +127733,7 @@ class DspmRiskCount(AbstractModel):
     def BaselineDeviation(self):
         warnings.warn("parameter `BaselineDeviation` is deprecated", DeprecationWarning) 
 
-        r"""基线风险个数
+        r"""<p>基线风险个数</p>
         :rtype: int
         """
         return self._BaselineDeviation
@@ -127712,7 +127748,7 @@ class DspmRiskCount(AbstractModel):
     def LeakDetection(self):
         warnings.warn("parameter `LeakDetection` is deprecated", DeprecationWarning) 
 
-        r"""泄露风险个数
+        r"""<p>泄露风险个数</p>
         :rtype: int
         """
         return self._LeakDetection
@@ -127725,7 +127761,7 @@ class DspmRiskCount(AbstractModel):
 
     @property
     def SQLBehaviorAnomaly(self):
-        r"""SQL行为异常风险个数
+        r"""<p>SQL行为异常风险个数</p>
         :rtype: int
         """
         return self._SQLBehaviorAnomaly
@@ -127736,7 +127772,7 @@ class DspmRiskCount(AbstractModel):
 
     @property
     def PermissionAnomaly(self):
-        r"""权限异常风险个数
+        r"""<p>权限异常风险个数</p>
         :rtype: int
         """
         return self._PermissionAnomaly
@@ -127747,7 +127783,7 @@ class DspmRiskCount(AbstractModel):
 
     @property
     def LoginBehaviorAnomaly(self):
-        r"""登录行为异常风险个数
+        r"""<p>登录行为异常风险个数</p>
         :rtype: int
         """
         return self._LoginBehaviorAnomaly
@@ -127758,7 +127794,7 @@ class DspmRiskCount(AbstractModel):
 
     @property
     def AttackSurfaceRisk(self):
-        r"""攻击面风险个数
+        r"""<p>攻击面风险个数</p>
         :rtype: int
         """
         return self._AttackSurfaceRisk
@@ -127769,7 +127805,7 @@ class DspmRiskCount(AbstractModel):
 
     @property
     def AccountSensitiveOperation(self):
-        r"""账号敏感操作个数
+        r"""<p>账号敏感操作个数</p>
         :rtype: int
         """
         return self._AccountSensitiveOperation
@@ -127780,7 +127816,7 @@ class DspmRiskCount(AbstractModel):
 
     @property
     def UnprocessedAlarm(self):
-        r"""待处理告警个数
+        r"""<p>待处理告警个数</p>
         :rtype: int
         """
         return self._UnprocessedAlarm
@@ -127791,7 +127827,7 @@ class DspmRiskCount(AbstractModel):
 
     @property
     def NumOfNewAlarmEvent(self):
-        r"""新增事件告警
+        r"""<p>新增事件告警</p>
         :rtype: int
         """
         return self._NumOfNewAlarmEvent
@@ -127802,7 +127838,7 @@ class DspmRiskCount(AbstractModel):
 
     @property
     def NumOfNewConfigRisk(self):
-        r"""新增配置风险
+        r"""<p>新增配置风险</p>
         :rtype: int
         """
         return self._NumOfNewConfigRisk
@@ -127810,6 +127846,28 @@ class DspmRiskCount(AbstractModel):
     @NumOfNewConfigRisk.setter
     def NumOfNewConfigRisk(self, NumOfNewConfigRisk):
         self._NumOfNewConfigRisk = NumOfNewConfigRisk
+
+    @property
+    def AccountRisk(self):
+        r"""<p>账号风险条数</p>
+        :rtype: int
+        """
+        return self._AccountRisk
+
+    @AccountRisk.setter
+    def AccountRisk(self, AccountRisk):
+        self._AccountRisk = AccountRisk
+
+    @property
+    def ConfigRisk(self):
+        r"""<p>配置风险条数</p>
+        :rtype: int
+        """
+        return self._ConfigRisk
+
+    @ConfigRisk.setter
+    def ConfigRisk(self, ConfigRisk):
+        self._ConfigRisk = ConfigRisk
 
 
     def _deserialize(self, params):
@@ -127825,6 +127883,8 @@ class DspmRiskCount(AbstractModel):
         self._UnprocessedAlarm = params.get("UnprocessedAlarm")
         self._NumOfNewAlarmEvent = params.get("NumOfNewAlarmEvent")
         self._NumOfNewConfigRisk = params.get("NumOfNewConfigRisk")
+        self._AccountRisk = params.get("AccountRisk")
+        self._ConfigRisk = params.get("ConfigRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -139146,6 +139206,8 @@ class ImageAssociatedAssetCount(AbstractModel):
         :type OwnerAppId: int
         :param _OwnerUin: <p>镜像所属账号uin</p>
         :type OwnerUin: str
+        :param _SuperNodeHostCount: <p>镜像关联超级节点数</p>
+        :type SuperNodeHostCount: int
         """
         self._Id = None
         self._HostCount = None
@@ -139153,6 +139215,7 @@ class ImageAssociatedAssetCount(AbstractModel):
         self._OwnerAccountName = None
         self._OwnerAppId = None
         self._OwnerUin = None
+        self._SuperNodeHostCount = None
 
     @property
     def Id(self):
@@ -139220,6 +139283,17 @@ class ImageAssociatedAssetCount(AbstractModel):
     def OwnerUin(self, OwnerUin):
         self._OwnerUin = OwnerUin
 
+    @property
+    def SuperNodeHostCount(self):
+        r"""<p>镜像关联超级节点数</p>
+        :rtype: int
+        """
+        return self._SuperNodeHostCount
+
+    @SuperNodeHostCount.setter
+    def SuperNodeHostCount(self, SuperNodeHostCount):
+        self._SuperNodeHostCount = SuperNodeHostCount
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -139228,6 +139302,7 @@ class ImageAssociatedAssetCount(AbstractModel):
         self._OwnerAccountName = params.get("OwnerAccountName")
         self._OwnerAppId = params.get("OwnerAppId")
         self._OwnerUin = params.get("OwnerUin")
+        self._SuperNodeHostCount = params.get("SuperNodeHostCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -169623,56 +169698,58 @@ class OrganizationUserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 成员账号Uin
+        :param _Uin: <p>成员账号Uin</p>
         :type Uin: str
-        :param _NickName: 成员账号名称
+        :param _NickName: <p>成员账号名称</p>
         :type NickName: str
-        :param _NodeName: 部门节点名称，账号所属部门
+        :param _NodeName: <p>部门节点名称，账号所属部门</p>
         :type NodeName: str
-        :param _AssetCount: 资产数量
+        :param _AssetCount: <p>资产数量</p>
         :type AssetCount: int
-        :param _RiskCount: 风险数量
+        :param _RiskCount: <p>风险数量</p>
         :type RiskCount: int
-        :param _AttackCount: 攻击数量
+        :param _AttackCount: <p>攻击数量</p>
         :type AttackCount: int
-        :param _Role: Member/Admin/;成员或者管理员
+        :param _Role: <p>Member/Admin/;成员或者管理员</p>
         :type Role: str
-        :param _MemberId: 成员账号id
+        :param _MemberId: <p>成员账号id</p>
         :type MemberId: str
-        :param _AppId: 成员账号Appid
+        :param _AppId: <p>成员账号Appid</p>
         :type AppId: str
-        :param _JoinType: 账号加入方式,create/invite
+        :param _JoinType: <p>账号加入方式,create/invite</p>
         :type JoinType: str
-        :param _CFWProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :param _CFWProtect: <p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
         :type CFWProtect: str
-        :param _WAFProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :param _WAFProtect: <p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
         :type WAFProtect: str
-        :param _CWPProtect: 空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        :param _CWPProtect: <p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
         :type CWPProtect: str
-        :param _Enable: 1启用，0未启用
+        :param _Enable: <p>1启用，0未启用</p>
         :type Enable: int
-        :param _CSIPProtect: "Free"       //免费版  "Advanced"   //高级版 "Enterprise" //企业版 "Ultimate"   //旗舰版
+        :param _CSIPProtect: <p>&quot;Free&quot;       //免费版  &quot;Advanced&quot;   //高级版 &quot;Enterprise&quot; //企业版 &quot;Ultimate&quot;   //旗舰版</p>
         :type CSIPProtect: str
-        :param _QuotaConsumer: 1为配额消耗者
+        :param _QuotaConsumer: <p>1为配额消耗者</p>
         :type QuotaConsumer: int
-        :param _CloudType: 账户类型，0为腾讯云账户，1为AWS账户
+        :param _CloudType: <p>账户类型，0为腾讯云账户，1为AWS账户</p>
         :type CloudType: int
-        :param _SyncFrequency: 0为缺省值，1为10分钟，2为1小时，3为24小时
+        :param _SyncFrequency: <p>0为缺省值，1为10分钟，2为1小时，3为24小时</p>
         :type SyncFrequency: int
-        :param _IsExpired: 多云账户是否过期
+        :param _IsExpired: <p>多云账户是否过期</p>
         :type IsExpired: bool
-        :param _PermissionList: 多云账户 权限列表
+        :param _PermissionList: <p>多云账户 权限列表</p>
         :type PermissionList: list of str
-        :param _AuthType: 1
+        :param _AuthType: <p>账户权限类型</p><p>枚举值：</p><ul><li>1： 认证类型-Root账号AKSK</li><li>2： 认证类型-子账号AKSK</li><li>3： 认证类型-角色</li></ul>
         :type AuthType: int
-        :param _TcMemberType: 0 腾讯云集团账户
-1 腾讯云接入账户
-2 非腾讯云
+        :param _TcMemberType: <p>0 腾讯云集团账户<br>1 腾讯云接入账户<br>2 非腾讯云</p>
         :type TcMemberType: int
-        :param _SubUserCount: 子账号数量
+        :param _SubUserCount: <p>子账号数量</p>
         :type SubUserCount: int
-        :param _JoinTypeInfo: 加入方式详细信息
+        :param _JoinTypeInfo: <p>加入方式详细信息</p>
         :type JoinTypeInfo: str
+        :param _SharedModules: <p>被共享模块列表</p><p>枚举值：</p><ul><li>AKSK： 云API异常监测</li><li>SDL： 日志分析</li><li>CSPM： 云安全态势管理</li><li>CWP： 主机安全</li><li>COS_AUDIT： COS审计</li><li>IMAGE_SCAN： 容器镜像扫描</li><li>SKILL_SCAN： Skill安全检测</li><li>SKILL_SCAN_POST： Skill安全检测(后付费)</li><li>DSPM： 数据安全态势管理</li></ul><p>默认值：[]</p>
+        :type SharedModules: list of str
+        :param _SecurityScore: <p>安全分</p>
+        :type SecurityScore: int
         """
         self._Uin = None
         self._NickName = None
@@ -169698,10 +169775,12 @@ class OrganizationUserInfo(AbstractModel):
         self._TcMemberType = None
         self._SubUserCount = None
         self._JoinTypeInfo = None
+        self._SharedModules = None
+        self._SecurityScore = None
 
     @property
     def Uin(self):
-        r"""成员账号Uin
+        r"""<p>成员账号Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -169712,7 +169791,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def NickName(self):
-        r"""成员账号名称
+        r"""<p>成员账号名称</p>
         :rtype: str
         """
         return self._NickName
@@ -169723,7 +169802,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""部门节点名称，账号所属部门
+        r"""<p>部门节点名称，账号所属部门</p>
         :rtype: str
         """
         return self._NodeName
@@ -169734,7 +169813,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AssetCount(self):
-        r"""资产数量
+        r"""<p>资产数量</p>
         :rtype: int
         """
         return self._AssetCount
@@ -169745,7 +169824,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def RiskCount(self):
-        r"""风险数量
+        r"""<p>风险数量</p>
         :rtype: int
         """
         return self._RiskCount
@@ -169756,7 +169835,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AttackCount(self):
-        r"""攻击数量
+        r"""<p>攻击数量</p>
         :rtype: int
         """
         return self._AttackCount
@@ -169767,7 +169846,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def Role(self):
-        r"""Member/Admin/;成员或者管理员
+        r"""<p>Member/Admin/;成员或者管理员</p>
         :rtype: str
         """
         return self._Role
@@ -169778,7 +169857,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""成员账号id
+        r"""<p>成员账号id</p>
         :rtype: str
         """
         return self._MemberId
@@ -169789,7 +169868,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""成员账号Appid
+        r"""<p>成员账号Appid</p>
         :rtype: str
         """
         return self._AppId
@@ -169800,7 +169879,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def JoinType(self):
-        r"""账号加入方式,create/invite
+        r"""<p>账号加入方式,create/invite</p>
         :rtype: str
         """
         return self._JoinType
@@ -169811,7 +169890,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CFWProtect(self):
-        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""<p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
         :rtype: str
         """
         return self._CFWProtect
@@ -169822,7 +169901,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def WAFProtect(self):
-        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""<p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
         :rtype: str
         """
         return self._WAFProtect
@@ -169833,7 +169912,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CWPProtect(self):
-        r"""空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本
+        r"""<p>空则未开启，否则不同字符串对应不同版本，common为通用，不区分版本</p>
         :rtype: str
         """
         return self._CWPProtect
@@ -169844,7 +169923,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def Enable(self):
-        r"""1启用，0未启用
+        r"""<p>1启用，0未启用</p>
         :rtype: int
         """
         return self._Enable
@@ -169855,7 +169934,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CSIPProtect(self):
-        r""""Free"       //免费版  "Advanced"   //高级版 "Enterprise" //企业版 "Ultimate"   //旗舰版
+        r"""<p>&quot;Free&quot;       //免费版  &quot;Advanced&quot;   //高级版 &quot;Enterprise&quot; //企业版 &quot;Ultimate&quot;   //旗舰版</p>
         :rtype: str
         """
         return self._CSIPProtect
@@ -169866,7 +169945,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def QuotaConsumer(self):
-        r"""1为配额消耗者
+        r"""<p>1为配额消耗者</p>
         :rtype: int
         """
         return self._QuotaConsumer
@@ -169877,7 +169956,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""账户类型，0为腾讯云账户，1为AWS账户
+        r"""<p>账户类型，0为腾讯云账户，1为AWS账户</p>
         :rtype: int
         """
         return self._CloudType
@@ -169888,7 +169967,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def SyncFrequency(self):
-        r"""0为缺省值，1为10分钟，2为1小时，3为24小时
+        r"""<p>0为缺省值，1为10分钟，2为1小时，3为24小时</p>
         :rtype: int
         """
         return self._SyncFrequency
@@ -169899,7 +169978,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def IsExpired(self):
-        r"""多云账户是否过期
+        r"""<p>多云账户是否过期</p>
         :rtype: bool
         """
         return self._IsExpired
@@ -169910,7 +169989,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def PermissionList(self):
-        r"""多云账户 权限列表
+        r"""<p>多云账户 权限列表</p>
         :rtype: list of str
         """
         return self._PermissionList
@@ -169921,7 +170000,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""1
+        r"""<p>账户权限类型</p><p>枚举值：</p><ul><li>1： 认证类型-Root账号AKSK</li><li>2： 认证类型-子账号AKSK</li><li>3： 认证类型-角色</li></ul>
         :rtype: int
         """
         return self._AuthType
@@ -169932,9 +170011,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def TcMemberType(self):
-        r"""0 腾讯云集团账户
-1 腾讯云接入账户
-2 非腾讯云
+        r"""<p>0 腾讯云集团账户<br>1 腾讯云接入账户<br>2 非腾讯云</p>
         :rtype: int
         """
         return self._TcMemberType
@@ -169945,7 +170022,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def SubUserCount(self):
-        r"""子账号数量
+        r"""<p>子账号数量</p>
         :rtype: int
         """
         return self._SubUserCount
@@ -169956,7 +170033,7 @@ class OrganizationUserInfo(AbstractModel):
 
     @property
     def JoinTypeInfo(self):
-        r"""加入方式详细信息
+        r"""<p>加入方式详细信息</p>
         :rtype: str
         """
         return self._JoinTypeInfo
@@ -169964,6 +170041,28 @@ class OrganizationUserInfo(AbstractModel):
     @JoinTypeInfo.setter
     def JoinTypeInfo(self, JoinTypeInfo):
         self._JoinTypeInfo = JoinTypeInfo
+
+    @property
+    def SharedModules(self):
+        r"""<p>被共享模块列表</p><p>枚举值：</p><ul><li>AKSK： 云API异常监测</li><li>SDL： 日志分析</li><li>CSPM： 云安全态势管理</li><li>CWP： 主机安全</li><li>COS_AUDIT： COS审计</li><li>IMAGE_SCAN： 容器镜像扫描</li><li>SKILL_SCAN： Skill安全检测</li><li>SKILL_SCAN_POST： Skill安全检测(后付费)</li><li>DSPM： 数据安全态势管理</li></ul><p>默认值：[]</p>
+        :rtype: list of str
+        """
+        return self._SharedModules
+
+    @SharedModules.setter
+    def SharedModules(self, SharedModules):
+        self._SharedModules = SharedModules
+
+    @property
+    def SecurityScore(self):
+        r"""<p>安全分</p>
+        :rtype: int
+        """
+        return self._SecurityScore
+
+    @SecurityScore.setter
+    def SecurityScore(self, SecurityScore):
+        self._SecurityScore = SecurityScore
 
 
     def _deserialize(self, params):
@@ -169991,6 +170090,8 @@ class OrganizationUserInfo(AbstractModel):
         self._TcMemberType = params.get("TcMemberType")
         self._SubUserCount = params.get("SubUserCount")
         self._JoinTypeInfo = params.get("JoinTypeInfo")
+        self._SharedModules = params.get("SharedModules")
+        self._SecurityScore = params.get("SecurityScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -188517,28 +188618,32 @@ class UserDspmInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppID: APPID
+        :param _AppID: <p>APPID</p>
         :type AppID: int
-        :param _Uin: UIN
+        :param _Uin: <p>UIN</p>
         :type Uin: str
-        :param _NickName: 账号昵称
+        :param _NickName: <p>账号昵称</p>
         :type NickName: str
-        :param _AssetNum: 账号下数据库资产数量
+        :param _AssetNum: <p>账号下数据库资产数量</p>
         :type AssetNum: int
-        :param _UsedAssetNum: 账号下开启安全分析数据库资产数量
+        :param _UsedAssetNum: <p>账号下开启安全分析数据库资产数量</p>
         :type UsedAssetNum: int
-        :param _IsShared: 是否被共享，1-被共享，2-未被共享
+        :param _IsShared: <p>是否被共享，1-被共享，2-未被共享</p>
         :type IsShared: int
-        :param _IsSelfBuy: 是否单独购买，1-单独购买，2-未单独购买
+        :param _IsSelfBuy: <p>是否单独购买，1-单独购买，2-未单独购买</p>
         :type IsSelfBuy: int
-        :param _ShareFromAppID: 配额来源账号
+        :param _ShareFromAppID: <p>配额来源账号</p>
         :type ShareFromAppID: int
-        :param _CloudType: 云类型（0：腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云）
+        :param _CloudType: <p>云类型（0：腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云）</p>
         :type CloudType: int
-        :param _IsIsolating: 账号是否隔离中
+        :param _IsIsolating: <p>账号是否隔离中</p>
         :type IsIsolating: bool
-        :param _IsDataCleaning: 是否正在数据清理
+        :param _IsDataCleaning: <p>是否正在数据清理</p>
         :type IsDataCleaning: bool
+        :param _Role: <p>集团账号角色（member-普通成员/admin-管理员/delegatedAdmin-委派管理员），非集团账号为空</p>
+        :type Role: str
+        :param _NodeName: <p>所属部门名称，未分配部门或非集团账号为空</p>
+        :type NodeName: str
         """
         self._AppID = None
         self._Uin = None
@@ -188551,10 +188656,12 @@ class UserDspmInfo(AbstractModel):
         self._CloudType = None
         self._IsIsolating = None
         self._IsDataCleaning = None
+        self._Role = None
+        self._NodeName = None
 
     @property
     def AppID(self):
-        r"""APPID
+        r"""<p>APPID</p>
         :rtype: int
         """
         return self._AppID
@@ -188565,7 +188672,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""UIN
+        r"""<p>UIN</p>
         :rtype: str
         """
         return self._Uin
@@ -188576,7 +188683,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def NickName(self):
-        r"""账号昵称
+        r"""<p>账号昵称</p>
         :rtype: str
         """
         return self._NickName
@@ -188587,7 +188694,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def AssetNum(self):
-        r"""账号下数据库资产数量
+        r"""<p>账号下数据库资产数量</p>
         :rtype: int
         """
         return self._AssetNum
@@ -188598,7 +188705,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def UsedAssetNum(self):
-        r"""账号下开启安全分析数据库资产数量
+        r"""<p>账号下开启安全分析数据库资产数量</p>
         :rtype: int
         """
         return self._UsedAssetNum
@@ -188609,7 +188716,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def IsShared(self):
-        r"""是否被共享，1-被共享，2-未被共享
+        r"""<p>是否被共享，1-被共享，2-未被共享</p>
         :rtype: int
         """
         return self._IsShared
@@ -188620,7 +188727,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def IsSelfBuy(self):
-        r"""是否单独购买，1-单独购买，2-未单独购买
+        r"""<p>是否单独购买，1-单独购买，2-未单独购买</p>
         :rtype: int
         """
         return self._IsSelfBuy
@@ -188631,7 +188738,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def ShareFromAppID(self):
-        r"""配额来源账号
+        r"""<p>配额来源账号</p>
         :rtype: int
         """
         return self._ShareFromAppID
@@ -188642,7 +188749,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def CloudType(self):
-        r"""云类型（0：腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云）
+        r"""<p>云类型（0：腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云）</p>
         :rtype: int
         """
         return self._CloudType
@@ -188653,7 +188760,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def IsIsolating(self):
-        r"""账号是否隔离中
+        r"""<p>账号是否隔离中</p>
         :rtype: bool
         """
         return self._IsIsolating
@@ -188664,7 +188771,7 @@ class UserDspmInfo(AbstractModel):
 
     @property
     def IsDataCleaning(self):
-        r"""是否正在数据清理
+        r"""<p>是否正在数据清理</p>
         :rtype: bool
         """
         return self._IsDataCleaning
@@ -188672,6 +188779,28 @@ class UserDspmInfo(AbstractModel):
     @IsDataCleaning.setter
     def IsDataCleaning(self, IsDataCleaning):
         self._IsDataCleaning = IsDataCleaning
+
+    @property
+    def Role(self):
+        r"""<p>集团账号角色（member-普通成员/admin-管理员/delegatedAdmin-委派管理员），非集团账号为空</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def NodeName(self):
+        r"""<p>所属部门名称，未分配部门或非集团账号为空</p>
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
 
 
     def _deserialize(self, params):
@@ -188686,6 +188815,8 @@ class UserDspmInfo(AbstractModel):
         self._CloudType = params.get("CloudType")
         self._IsIsolating = params.get("IsIsolating")
         self._IsDataCleaning = params.get("IsDataCleaning")
+        self._Role = params.get("Role")
+        self._NodeName = params.get("NodeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

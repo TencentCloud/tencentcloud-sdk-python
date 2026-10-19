@@ -17081,6 +17081,9 @@ class Setats(AbstractModel):
         :param _CCNs: <p>网络信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CCNs: list of CCN
+        :param _ClusterGroupSerialId: <p>挂靠的宿主集群</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterGroupSerialId: str
         """
         self._SetatsSerialId = None
         self._Status = None
@@ -17104,6 +17107,7 @@ class Setats(AbstractModel):
         self._IsolationPolicyVersion = None
         self._SecurityGroupIds = None
         self._CCNs = None
+        self._ClusterGroupSerialId = None
 
     @property
     def SetatsSerialId(self):
@@ -17361,6 +17365,18 @@ class Setats(AbstractModel):
     def CCNs(self, CCNs):
         self._CCNs = CCNs
 
+    @property
+    def ClusterGroupSerialId(self):
+        r"""<p>挂靠的宿主集群</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterGroupSerialId
+
+    @ClusterGroupSerialId.setter
+    def ClusterGroupSerialId(self, ClusterGroupSerialId):
+        self._ClusterGroupSerialId = ClusterGroupSerialId
+
 
     def _deserialize(self, params):
         self._SetatsSerialId = params.get("SetatsSerialId")
@@ -17401,6 +17417,7 @@ class Setats(AbstractModel):
                 obj = CCN()
                 obj._deserialize(item)
                 self._CCNs.append(obj)
+        self._ClusterGroupSerialId = params.get("ClusterGroupSerialId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

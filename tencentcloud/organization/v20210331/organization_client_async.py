@@ -223,6 +223,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AuditPermissionApplyOrder(
+            self,
+            request: models.AuditPermissionApplyOrderRequest,
+            opts: Dict = None,
+    ) -> models.AuditPermissionApplyOrderResponse:
+        """
+        审批用户权限申请
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AuditPermissionApplyOrder"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AuditPermissionApplyOrderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindOrganizationMemberAuthAccount(
             self,
             request: models.BindOrganizationMemberAuthAccountRequest,

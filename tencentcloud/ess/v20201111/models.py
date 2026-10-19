@@ -247,8 +247,6 @@ class Agent(AbstractModel):
 
     @property
     def AppId(self):
-        warnings.warn("parameter `AppId` is deprecated", DeprecationWarning) 
-
         r"""<p>CA-API应用编号，用于同平台企业下标识不同的CA-API应用</p>
         :rtype: str
         """
@@ -256,8 +254,6 @@ class Agent(AbstractModel):
 
     @AppId.setter
     def AppId(self, AppId):
-        warnings.warn("parameter `AppId` is deprecated", DeprecationWarning) 
-
         self._AppId = AppId
 
     @property
@@ -8533,26 +8529,29 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :param _Operator: <p>执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Requirement: 起草要求，范围要求 5-1000 字
+        :param _Requirement: <p>起草要求，范围要求 5-1000 字</p>
         :type Requirement: str
-        :param _ReferenceTemplateId: 参考模板文件资源id（PDF/Word格式），大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
+        :param _ReferenceTemplateId: <p>参考模板文件资源id（PDF/Word格式），大小不超过1M，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">上传文件</a>接口来获取。</p>
         :type ReferenceTemplateId: str
-        :param _RequirementFileIds: 相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
+        :param _RequirementFileIds: <p>相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">上传文件</a>接口来获取。</p>
         :type RequirementFileIds: list of str
-        :param _ContractLanguage: 起草合同的语言要求（zh，en）默认zh
+        :param _ContractLanguage: <p>起草合同的语言要求（zh，en）默认zh</p>
         :type ContractLanguage: str
+        :param _ReviewTaskId: <p>审查任务id，仅支持传入1个，通过<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask/">批量创建合同审查任务</a>接口来获取。</p>
+        :type ReviewTaskId: str
         """
         self._Operator = None
         self._Requirement = None
         self._ReferenceTemplateId = None
         self._RequirementFileIds = None
         self._ContractLanguage = None
+        self._ReviewTaskId = None
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        r"""<p>执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -8563,7 +8562,7 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
 
     @property
     def Requirement(self):
-        r"""起草要求，范围要求 5-1000 字
+        r"""<p>起草要求，范围要求 5-1000 字</p>
         :rtype: str
         """
         return self._Requirement
@@ -8574,7 +8573,7 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
 
     @property
     def ReferenceTemplateId(self):
-        r"""参考模板文件资源id（PDF/Word格式），大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
+        r"""<p>参考模板文件资源id（PDF/Word格式），大小不超过1M，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">上传文件</a>接口来获取。</p>
         :rtype: str
         """
         return self._ReferenceTemplateId
@@ -8585,7 +8584,7 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
 
     @property
     def RequirementFileIds(self):
-        r"""相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
+        r"""<p>相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles">上传文件</a>接口来获取。</p>
         :rtype: list of str
         """
         return self._RequirementFileIds
@@ -8596,7 +8595,7 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
 
     @property
     def ContractLanguage(self):
-        r"""起草合同的语言要求（zh，en）默认zh
+        r"""<p>起草合同的语言要求（zh，en）默认zh</p>
         :rtype: str
         """
         return self._ContractLanguage
@@ -8604,6 +8603,17 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
     @ContractLanguage.setter
     def ContractLanguage(self, ContractLanguage):
         self._ContractLanguage = ContractLanguage
+
+    @property
+    def ReviewTaskId(self):
+        r"""<p>审查任务id，仅支持传入1个，通过<a href="https://qian.tencent.com/developers/companyApis/%E5%90%88%E5%90%8C%E6%99%BA%E8%83%BD%E7%9B%B8%E5%85%B3%E6%8E%A5%E5%8F%A3/CreateBatchContractReviewTask/">批量创建合同审查任务</a>接口来获取。</p>
+        :rtype: str
+        """
+        return self._ReviewTaskId
+
+    @ReviewTaskId.setter
+    def ReviewTaskId(self, ReviewTaskId):
+        self._ReviewTaskId = ReviewTaskId
 
 
     def _deserialize(self, params):
@@ -8614,6 +8624,7 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
         self._ReferenceTemplateId = params.get("ReferenceTemplateId")
         self._RequirementFileIds = params.get("RequirementFileIds")
         self._ContractLanguage = params.get("ContractLanguage")
+        self._ReviewTaskId = params.get("ReviewTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8631,7 +8642,7 @@ class CreateDraftContractByPromptsTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 起草任务id
+        :param _TaskId: <p>起草任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8642,7 +8653,7 @@ class CreateDraftContractByPromptsTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""起草任务id
+        r"""<p>起草任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

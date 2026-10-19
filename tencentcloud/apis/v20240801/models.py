@@ -350,6 +350,8 @@ class AgentAppModelServiceDTO(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""是否开启流量控制
         :rtype: bool
         """
@@ -357,10 +359,14 @@ class AgentAppModelServiceDTO(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""流量控制
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -368,10 +374,14 @@ class AgentAppModelServiceDTO(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
     def TokenLimitStatus(self):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
         r"""是否开启token控制
         :rtype: bool
         """
@@ -379,10 +389,14 @@ class AgentAppModelServiceDTO(AbstractModel):
 
     @TokenLimitStatus.setter
     def TokenLimitStatus(self, TokenLimitStatus):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
         self._TokenLimitStatus = TokenLimitStatus
 
     @property
     def TokenLimitConfig(self):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""token控制
         :rtype: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
         """
@@ -390,6 +404,8 @@ class AgentAppModelServiceDTO(AbstractModel):
 
     @TokenLimitConfig.setter
     def TokenLimitConfig(self, TokenLimitConfig):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
         self._TokenLimitConfig = TokenLimitConfig
 
 
@@ -501,6 +517,8 @@ class AgentAppServiceDTO(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>是否限流</p>
         :rtype: bool
         """
@@ -508,10 +526,14 @@ class AgentAppServiceDTO(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>限流配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -519,6 +541,8 @@ class AgentAppServiceDTO(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
@@ -2063,6 +2087,8 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制开启状态</p>
         :rtype: bool
         """
@@ -2070,10 +2096,14 @@ class CreateMcpServerRequest(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -2081,6 +2111,8 @@ class CreateMcpServerRequest(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
@@ -2786,6 +2818,8 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>是否开启限流</p>
         :rtype: bool
         """
@@ -2793,10 +2827,14 @@ class CreateModelServiceRequest(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>限流配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -2804,10 +2842,14 @@ class CreateModelServiceRequest(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
     def TokenLimitStatus(self):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>是否开启token控制</p>
         :rtype: bool
         """
@@ -2815,10 +2857,14 @@ class CreateModelServiceRequest(AbstractModel):
 
     @TokenLimitStatus.setter
     def TokenLimitStatus(self, TokenLimitStatus):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
         self._TokenLimitStatus = TokenLimitStatus
 
     @property
     def TokenLimitConfig(self):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>token控制</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
         """
@@ -2826,6 +2872,8 @@ class CreateModelServiceRequest(AbstractModel):
 
     @TokenLimitConfig.setter
     def TokenLimitConfig(self, TokenLimitConfig):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
         self._TokenLimitConfig = TokenLimitConfig
 
     @property
@@ -4775,10 +4823,10 @@ class DescribeAgentAppServicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: <p>实例ID</p>
-        :type InstanceID: str
         :param _Limit: <p>数据量</p>
         :type Limit: int
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
         :param _IDs: <p>IDs</p>
         :type IDs: list of str
         :param _AgentAppIDs: <p>应用IDs</p>
@@ -4794,8 +4842,8 @@ class DescribeAgentAppServicesRequest(AbstractModel):
         :param _AgentCredentialIDs: <p>凭据ID</p>
         :type AgentCredentialIDs: list of str
         """
-        self._InstanceID = None
         self._Limit = None
+        self._InstanceID = None
         self._IDs = None
         self._AgentAppIDs = None
         self._ServiceIDs = None
@@ -4803,17 +4851,6 @@ class DescribeAgentAppServicesRequest(AbstractModel):
         self._Offset = None
         self._AgentCredentialExist = None
         self._AgentCredentialIDs = None
-
-    @property
-    def InstanceID(self):
-        r"""<p>实例ID</p>
-        :rtype: str
-        """
-        return self._InstanceID
-
-    @InstanceID.setter
-    def InstanceID(self, InstanceID):
-        self._InstanceID = InstanceID
 
     @property
     def Limit(self):
@@ -4825,6 +4862,17 @@ class DescribeAgentAppServicesRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
 
     @property
     def IDs(self):
@@ -4905,8 +4953,8 @@ class DescribeAgentAppServicesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._InstanceID = params.get("InstanceID")
         self._Limit = params.get("Limit")
+        self._InstanceID = params.get("InstanceID")
         self._IDs = params.get("IDs")
         self._AgentAppIDs = params.get("AgentAppIDs")
         self._ServiceIDs = params.get("ServiceIDs")
@@ -6088,6 +6136,8 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
@@ -6096,10 +6146,14 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
@@ -6108,6 +6162,8 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
@@ -7645,6 +7701,8 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>是否开启限流</p>
         :rtype: bool
         """
@@ -7652,10 +7710,14 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>限流配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -7663,6 +7725,8 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
@@ -7689,6 +7753,8 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def TokenLimitStatus(self):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>是否开启token控制</p>
         :rtype: bool
         """
@@ -7696,10 +7762,14 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @TokenLimitStatus.setter
     def TokenLimitStatus(self, TokenLimitStatus):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
         self._TokenLimitStatus = TokenLimitStatus
 
     @property
     def TokenLimitConfig(self):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>token控制</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
         """
@@ -7707,6 +7777,8 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @TokenLimitConfig.setter
     def TokenLimitConfig(self, TokenLimitConfig):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
         self._TokenLimitConfig = TokenLimitConfig
 
     @property
@@ -10705,6 +10777,8 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制开启状态</p>
         :rtype: bool
         """
@@ -10712,10 +10786,14 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -10723,6 +10801,8 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
@@ -11415,6 +11495,8 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>是否开启限流</p>
         :rtype: bool
         """
@@ -11422,10 +11504,14 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>限流配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -11433,10 +11519,14 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
     def TokenLimitStatus(self):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>是否开启token控制</p>
         :rtype: bool
         """
@@ -11444,10 +11534,14 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @TokenLimitStatus.setter
     def TokenLimitStatus(self, TokenLimitStatus):
+        warnings.warn("parameter `TokenLimitStatus` is deprecated", DeprecationWarning) 
+
         self._TokenLimitStatus = TokenLimitStatus
 
     @property
     def TokenLimitConfig(self):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>token控制</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
         """
@@ -11455,6 +11549,8 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @TokenLimitConfig.setter
     def TokenLimitConfig(self, TokenLimitConfig):
+        warnings.warn("parameter `TokenLimitConfig` is deprecated", DeprecationWarning) 
+
         self._TokenLimitConfig = TokenLimitConfig
 
     @property
@@ -12200,6 +12296,8 @@ class ModifyServiceRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制</p>
         :rtype: bool
         """
@@ -12207,10 +12305,14 @@ class ModifyServiceRequest(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -12218,6 +12320,8 @@ class ModifyServiceRequest(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
@@ -13624,6 +13728,8 @@ class ServiceVO(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
@@ -13632,10 +13738,14 @@ class ServiceVO(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""<p>流量控制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
@@ -13644,6 +13754,8 @@ class ServiceVO(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property
@@ -15382,6 +15494,8 @@ class ToolConfigDTO(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         r"""是否开启限流配置
         :rtype: bool
         """
@@ -15389,10 +15503,14 @@ class ToolConfigDTO(AbstractModel):
 
     @InvokeLimitConfigStatus.setter
     def InvokeLimitConfigStatus(self, InvokeLimitConfigStatus):
+        warnings.warn("parameter `InvokeLimitConfigStatus` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfigStatus = InvokeLimitConfigStatus
 
     @property
     def InvokeLimitConfig(self):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         r"""限流配置
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -15400,6 +15518,8 @@ class ToolConfigDTO(AbstractModel):
 
     @InvokeLimitConfig.setter
     def InvokeLimitConfig(self, InvokeLimitConfig):
+        warnings.warn("parameter `InvokeLimitConfig` is deprecated", DeprecationWarning) 
+
         self._InvokeLimitConfig = InvokeLimitConfig
 
     @property

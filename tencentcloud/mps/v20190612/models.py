@@ -16989,7 +16989,7 @@ class AudioEnhanceEditConfig(AbstractModel):
         r"""
         :param _Switch: <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
         :type Switch: str
-        :param _Type: <p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>默认值：restore</p>
+        :param _Type: <p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>开关开启时，必须显式指定枚举值</p>
         :type Type: str
         """
         self._Switch = None
@@ -17008,7 +17008,7 @@ class AudioEnhanceEditConfig(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>默认值：restore</p>
+        r"""<p>音频编辑类型</p><p>枚举值：</p><ul><li>restore： 修复</li></ul><p>开关开启时，必须显式指定枚举值</p>
         :rtype: str
         """
         return self._Type
@@ -19310,7 +19310,7 @@ class CloneViralAIGC(AbstractModel):
         :type AspectRatio: str
         :param _Resolution: <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
         :type Resolution: str
-        :param _ModelTier: <p>模型等级。flagship（默认）、standard</p>
+        :param _ModelTier: <p>模式。flagship（高级版，默认）、standard（标准版）、depthcrafter(深度提取)</p>
         :type ModelTier: str
         """
         self._Duration = None
@@ -19353,7 +19353,7 @@ class CloneViralAIGC(AbstractModel):
 
     @property
     def ModelTier(self):
-        r"""<p>模型等级。flagship（默认）、standard</p>
+        r"""<p>模式。flagship（高级版，默认）、standard（标准版）、depthcrafter(深度提取)</p>
         :rtype: str
         """
         return self._ModelTier
@@ -19734,7 +19734,7 @@ class CloneViralRequest(AbstractModel):
         r"""
         :param _VideoUrl: <p>爆款视频Url</p>
         :type VideoUrl: str
-        :param _Product: <p>产品信息</p>
+        :param _Product: <p>产品信息。除深度提取外，其他模式必填</p>
         :type Product: :class:`tencentcloud.mps.v20190612.models.CloneViralProduct`
         :param _AIGCParam: <p>AIGC生视频相关参数</p>
         :type AIGCParam: :class:`tencentcloud.mps.v20190612.models.CloneViralAIGC`
@@ -19765,7 +19765,7 @@ class CloneViralRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""<p>产品信息</p>
+        r"""<p>产品信息。除深度提取外，其他模式必填</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralProduct`
         """
         return self._Product
@@ -24490,9 +24490,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan，<br>Hailuo，<br>Kling，<br>Vidu，<br>PixVerse，<br>Mingmou，<br>H2。</p>
+        :param _ModelName: <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan，<br>wand-vega-video，<br>Hailuo，<br>Kling，<br>Vidu，<br>PixVerse，<br>Mingmou，<br>H2。</p>
         :type ModelName: str
-        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>wand-vega-video, 可选[1.0-lite]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
         :type ModelVersion: str
         :param _SceneType: <p>指定场景生成视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持：动作控制，motion_control；数字人，avatar_i2v；对口型，lip_sync。</li><li>Mingmou支持：横转竖，land2port。</li><li>Vidu支持：特效模板，template_effect。</li><li>Hunyuan支持: 3d世界模型, 3d_scene；涉及的返回文件非视频。</li></ol>
         :type SceneType: str
@@ -24504,9 +24504,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type EnhancePrompt: bool
         :param _ImageUrl: <p>用于指导视频生成的图片 URL。该URL需外网可访问。<br>注意：</p><ol><li>推荐图片大小不超过10M，不同模型大小限制不相同，可查看相应模型官网获取更完整描述。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :type ImageUrl: str
-        :param _LastImageUrl: <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>Kling，2.0、O1、3.0、3.0-Omni 支持首尾帧。</li><li>Kling，1.6、2.1、2.5、2.6 在 Resolution:1080P 的情况下支持首尾帧。</li><li>Vidu，q2-pro、q2-turbo、q3-pro、q3-turbo 支持首尾帧。</li><li>PixVerse，v5.6、v6、c1 支持首尾帧。</li><li>Hailuo，02 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
+        :param _LastImageUrl: <p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>Kling，2.0、O1、3.0、3.0-Omni 支持首尾帧。</li><li>Kling，1.6、2.1、2.5、2.6 在 Resolution:1080P 的情况下支持首尾帧。</li><li>Vidu，q2-pro、q2-turbo、q3-pro、q3-turbo 支持首尾帧。</li><li>PixVerse，v5.6、v6、c1 支持首尾帧。</li><li>Hailuo，02 支持首尾帧。</li><li>wand-vega-video，1.0-lite 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :type LastImageUrl: str
-        :param _ImageInfos: <p>包含多张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>Vidu，q2、q2-pro、q3-turbo、q3、q3-mix 支持多图参考生视频。支持上传 1-7 张图片，可通过 ImageInfos 里面的 ReferenceType 作为主体 id 来传入。</li><li>Kling，O1、3.0-Omni、1.6 支持多图参考生视频。<ol><li>Kling 1.6 支持上传 1-4 张图片。</li><li>Kling O1、3.0-Omni 支持上传 1-7 张图片。当有参考视频时，支持上传 0-4 张图片。</li></ol></li><li>PixVerse，v5.6、v6、c1 支持多图参考生视频。支持上传 1-7 张图片，需要通过 ImageInfos 里面的 Text 字段传入图片名称。</li><li>H2，1.0 支持多图参数生视频。支持上传 1-9 张图片。当有参考视频时，支持上传 0-5 张图片。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
+        :param _ImageInfos: <p>包含多张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>Vidu，q2、q2-pro、q3-turbo、q3、q3-mix 支持多图参考生视频。支持上传 1-7 张图片，可通过 ImageInfos 里面的 ReferenceType 作为主体 id 来传入。</li><li>wand-vega-video，1.0-lite支持最多9张参考图。</li><li>Kling，O1、3.0-Omni、1.6 支持多图参考生视频。<ol><li>Kling 1.6 支持上传 1-4 张图片。</li><li>Kling O1、3.0-Omni 支持上传 1-7 张图片。当有参考视频时，支持上传 0-4 张图片。</li></ol></li><li>PixVerse，v5.6、v6、c1 支持多图参考生视频。支持上传 1-7 张图片，需要通过 ImageInfos 里面的 Text 字段传入图片名称。</li><li>H2，1.0 支持多图参数生视频。支持上传 1-9 张图片。当有参考视频时，支持上传 0-5 张图片。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :type ImageInfos: list of AigcVideoReferenceImageInfo
         :param _VideoInfos: <p>目前仅 Kling O1、Kling 3.0-Omni、Vidu q2-pro、H2 1.0 支持参考视频信息传入。</p><ol><li>Kling O1、3.0-Omni 可作为特征参考视频，也可作为待编辑视频，默认为待编辑视频；可选择性保留视频原声。</li><li>Vidu q2-pro 支持视频参考。</li><li>H2 1.0 支持视频参考。</li></ol>
         :type VideoInfos: list of AigcVideoReferenceVideoInfo
@@ -24514,7 +24514,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type AudioInfos: list of AigcVideoReferenceAudioInfo
         :param _SubjectInfos: <p>主体信息。</p>
         :type SubjectInfos: list of AigcVideoReferenceSubjectInfo
-        :param _Duration: <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
+        :param _Duration: <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>wand-vega-video, 1.0-lite支持：4-15秒。</li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
         :type Duration: int
         :param _ExtraParameters: <p>用于传入要求的额外参数。</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcVideoExtraParam`
@@ -24545,7 +24545,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。<br>当前支持的模型列表:<br>Hunyuan，<br>Hailuo，<br>Kling，<br>Vidu，<br>PixVerse，<br>Mingmou，<br>H2。</p>
+        r"""<p>模型名称。<br>当前支持的模型列表:<br>Hunyuan，<br>wand-vega-video，<br>Hailuo，<br>Kling，<br>Vidu，<br>PixVerse，<br>Mingmou，<br>H2。</p>
         :rtype: str
         """
         return self._ModelName
@@ -24556,7 +24556,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [1.5]。</li><li>wand-vega-video, 可选[1.0-lite]。</li><li>Hailuo，可选 [02、2.3、2.3-fast]。</li><li>Kling，可选 [1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu，可选 [q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>PixVerse，可选 [v5.6、v6、c1]。</li><li>H2，可选 [1.0]。</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -24622,7 +24622,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def LastImageUrl(self):
-        r"""<p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>Kling，2.0、O1、3.0、3.0-Omni 支持首尾帧。</li><li>Kling，1.6、2.1、2.5、2.6 在 Resolution:1080P 的情况下支持首尾帧。</li><li>Vidu，q2-pro、q2-turbo、q3-pro、q3-turbo 支持首尾帧。</li><li>PixVerse，v5.6、v6、c1 支持首尾帧。</li><li>Hailuo，02 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
+        r"""<p>模型将以此参数传入的图片作为尾帧画面来生成视频。<br>支持此参数的模型：</p><ol><li>Kling，2.0、O1、3.0、3.0-Omni 支持首尾帧。</li><li>Kling，1.6、2.1、2.5、2.6 在 Resolution:1080P 的情况下支持首尾帧。</li><li>Vidu，q2-pro、q2-turbo、q3-pro、q3-turbo 支持首尾帧。</li><li>PixVerse，v5.6、v6、c1 支持首尾帧。</li><li>Hailuo，02 支持首尾帧。</li><li>wand-vega-video，1.0-lite 支持首尾帧。</li></ol><p>注意：</p><ol><li>推荐图片大小不超过10M，各模型限制不同。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :rtype: str
         """
         return self._LastImageUrl
@@ -24633,7 +24633,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ImageInfos(self):
-        r"""<p>包含多张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>Vidu，q2、q2-pro、q3-turbo、q3、q3-mix 支持多图参考生视频。支持上传 1-7 张图片，可通过 ImageInfos 里面的 ReferenceType 作为主体 id 来传入。</li><li>Kling，O1、3.0-Omni、1.6 支持多图参考生视频。<ol><li>Kling 1.6 支持上传 1-4 张图片。</li><li>Kling O1、3.0-Omni 支持上传 1-7 张图片。当有参考视频时，支持上传 0-4 张图片。</li></ol></li><li>PixVerse，v5.6、v6、c1 支持多图参考生视频。支持上传 1-7 张图片，需要通过 ImageInfos 里面的 Text 字段传入图片名称。</li><li>H2，1.0 支持多图参数生视频。支持上传 1-9 张图片。当有参考视频时，支持上传 0-5 张图片。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
+        r"""<p>包含多张素材资源图片的列表，用于描述模型在生成视频时要使用的资源图片。</p><p>支持多图输入的模型：</p><ol><li>Vidu，q2、q2-pro、q3-turbo、q3、q3-mix 支持多图参考生视频。支持上传 1-7 张图片，可通过 ImageInfos 里面的 ReferenceType 作为主体 id 来传入。</li><li>wand-vega-video，1.0-lite支持最多9张参考图。</li><li>Kling，O1、3.0-Omni、1.6 支持多图参考生视频。<ol><li>Kling 1.6 支持上传 1-4 张图片。</li><li>Kling O1、3.0-Omni 支持上传 1-7 张图片。当有参考视频时，支持上传 0-4 张图片。</li></ol></li><li>PixVerse，v5.6、v6、c1 支持多图参考生视频。支持上传 1-7 张图片，需要通过 ImageInfos 里面的 Text 字段传入图片名称。</li><li>H2，1.0 支持多图参数生视频。支持上传 1-9 张图片。当有参考视频时，支持上传 0-5 张图片。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :rtype: list of AigcVideoReferenceImageInfo
         """
         return self._ImageInfos
@@ -24677,7 +24677,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def Duration(self):
-        r"""<p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
+        r"""<p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>wand-vega-video, 1.0-lite支持：4-15秒。</li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
         :rtype: int
         """
         return self._Duration
@@ -29708,9 +29708,9 @@ class CreateStreamLinkInputRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 媒体传输流ID。
+        :param _FlowId: <p>媒体传输流ID。</p>
         :type FlowId: str
-        :param _InputGroup: 流的输入组。
+        :param _InputGroup: <p>流的输入组。</p>
         :type InputGroup: list of CreateInput
         """
         self._FlowId = None
@@ -29718,7 +29718,7 @@ class CreateStreamLinkInputRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""媒体传输流ID。
+        r"""<p>媒体传输流ID。</p>
         :rtype: str
         """
         return self._FlowId
@@ -29729,7 +29729,7 @@ class CreateStreamLinkInputRequest(AbstractModel):
 
     @property
     def InputGroup(self):
-        r"""流的输入组。
+        r"""<p>流的输入组。</p>
         :rtype: list of CreateInput
         """
         return self._InputGroup
@@ -29764,7 +29764,7 @@ class CreateStreamLinkInputResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: 创建的Flow信息。
+        :param _Info: <p>创建的Flow信息。</p>
         :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeFlow`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29774,7 +29774,7 @@ class CreateStreamLinkInputResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""创建的Flow信息。
+        r"""<p>创建的Flow信息。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeFlow`
         """
         return self._Info
@@ -42716,14 +42716,14 @@ class DescribeStreamLinkEventRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventId: 媒体传输事件ID。
+        :param _EventId: <p>媒体传输事件ID。</p>
         :type EventId: str
         """
         self._EventId = None
 
     @property
     def EventId(self):
-        r"""媒体传输事件ID。
+        r"""<p>媒体传输事件ID。</p>
         :rtype: str
         """
         return self._EventId
@@ -42752,7 +42752,7 @@ class DescribeStreamLinkEventResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: 媒体传输事件的配置信息。
+        :param _Info: <p>媒体传输事件的配置信息。</p>
         :type Info: :class:`tencentcloud.mps.v20190612.models.DescribeEvent`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42762,7 +42762,7 @@ class DescribeStreamLinkEventResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""媒体传输事件的配置信息。
+        r"""<p>媒体传输事件的配置信息。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeEvent`
         """
         return self._Info
@@ -42797,9 +42797,9 @@ class DescribeStreamLinkEventsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNum: 当前页数，默认1。
+        :param _PageNum: <p>当前页数，默认1。</p>
         :type PageNum: int
-        :param _PageSize: 每页大小，默认10。
+        :param _PageSize: <p>每页大小，默认10。</p>
         :type PageSize: int
         """
         self._PageNum = None
@@ -42807,7 +42807,7 @@ class DescribeStreamLinkEventsRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""当前页数，默认1。
+        r"""<p>当前页数，默认1。</p>
         :rtype: int
         """
         return self._PageNum
@@ -42818,7 +42818,7 @@ class DescribeStreamLinkEventsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页大小，默认10。
+        r"""<p>每页大小，默认10。</p>
         :rtype: int
         """
         return self._PageSize
@@ -42848,15 +42848,15 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Infos: 媒体传输事件的配置信息列表。
+        :param _Infos: <p>媒体传输事件的配置信息列表。</p>
         :type Infos: list of DescribeEvent
-        :param _PageNum: 当前页数。
+        :param _PageNum: <p>当前页数。</p>
         :type PageNum: int
-        :param _PageSize: 每页大小。
+        :param _PageSize: <p>每页大小。</p>
         :type PageSize: int
-        :param _TotalNum: 总数量。
+        :param _TotalNum: <p>总数量。</p>
         :type TotalNum: int
-        :param _TotalPage: 总页数。
+        :param _TotalPage: <p>总页数。</p>
         :type TotalPage: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42870,7 +42870,7 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        r"""媒体传输事件的配置信息列表。
+        r"""<p>媒体传输事件的配置信息列表。</p>
         :rtype: list of DescribeEvent
         """
         return self._Infos
@@ -42881,7 +42881,7 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""当前页数。
+        r"""<p>当前页数。</p>
         :rtype: int
         """
         return self._PageNum
@@ -42892,7 +42892,7 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页大小。
+        r"""<p>每页大小。</p>
         :rtype: int
         """
         return self._PageSize
@@ -42903,7 +42903,7 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        r"""总数量。
+        r"""<p>总数量。</p>
         :rtype: int
         """
         return self._TotalNum
@@ -42914,7 +42914,7 @@ class DescribeStreamLinkEventsResponse(AbstractModel):
 
     @property
     def TotalPage(self):
-        r"""总页数。
+        r"""<p>总页数。</p>
         :rtype: int
         """
         return self._TotalPage
@@ -48476,16 +48476,13 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowIds: 工作流 ID 过滤条件，数组长度限制：100。
+        :param _WorkflowIds: <p>工作流 ID 过滤条件，数组长度限制：100。</p>
         :type WorkflowIds: list of int
-        :param _Status: 工作流状态，取值范围：
-<li>Enabled：已启用，</li>
-<li>Disabled：已禁用。</li>
-不填此参数，则不区分工作流状态。
+        :param _Status: <p>工作流状态，取值范围：</p><li>Enabled：已启用，</li><li>Disabled：已禁用。</li>不填此参数，则不区分工作流状态。
         :type Status: str
-        :param _Offset: 分页偏移量，默认值：0。
+        :param _Offset: <p>分页偏移量，默认值：0。</p>
         :type Offset: int
-        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :param _Limit: <p>返回记录条数，默认值：10，最大值：100。</p>
         :type Limit: int
         """
         self._WorkflowIds = None
@@ -48495,7 +48492,7 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     @property
     def WorkflowIds(self):
-        r"""工作流 ID 过滤条件，数组长度限制：100。
+        r"""<p>工作流 ID 过滤条件，数组长度限制：100。</p>
         :rtype: list of int
         """
         return self._WorkflowIds
@@ -48506,10 +48503,7 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""工作流状态，取值范围：
-<li>Enabled：已启用，</li>
-<li>Disabled：已禁用。</li>
-不填此参数，则不区分工作流状态。
+        r"""<p>工作流状态，取值范围：</p><li>Enabled：已启用，</li><li>Disabled：已禁用。</li>不填此参数，则不区分工作流状态。
         :rtype: str
         """
         return self._Status
@@ -48520,7 +48514,7 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认值：0。
+        r"""<p>分页偏移量，默认值：0。</p>
         :rtype: int
         """
         return self._Offset
@@ -48531,7 +48525,7 @@ class DescribeWorkflowsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回记录条数，默认值：10，最大值：100。
+        r"""<p>返回记录条数，默认值：10，最大值：100。</p>
         :rtype: int
         """
         return self._Limit
@@ -48563,9 +48557,9 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合过滤条件的记录总数。
+        :param _TotalCount: <p>符合过滤条件的记录总数。</p>
         :type TotalCount: int
-        :param _WorkflowInfoSet: 工作流信息数组。
+        :param _WorkflowInfoSet: <p>工作流信息数组。</p>
         :type WorkflowInfoSet: list of WorkflowInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -48576,7 +48570,7 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合过滤条件的记录总数。
+        r"""<p>符合过滤条件的记录总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -48587,7 +48581,7 @@ class DescribeWorkflowsResponse(AbstractModel):
 
     @property
     def WorkflowInfoSet(self):
-        r"""工作流信息数组。
+        r"""<p>工作流信息数组。</p>
         :rtype: list of WorkflowInfo
         """
         return self._WorkflowInfoSet

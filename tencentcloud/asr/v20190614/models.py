@@ -5619,6 +5619,8 @@ class VoicePrintEnrollRequest(AbstractModel):
         :type GroupId: str
         :param _AudioUrl: <p>声纹cos url 注意:仅支持腾讯云cos url 地址</p>
         :type AudioUrl: str
+        :param _QualityCheck: <p>是否对注册/更新的音频做质量检测。开启后使用质检专用引擎提取特征，对音频进行多说话人、信噪比、截幅等检查，不合格返回对应错误码；关闭时不做这些检查，沿用常规注册流。默认false</p><p>默认值：false</p>
+        :type QualityCheck: bool
         """
         self._VoiceFormat = None
         self._SampleRate = None
@@ -5626,6 +5628,7 @@ class VoicePrintEnrollRequest(AbstractModel):
         self._SpeakerNick = None
         self._GroupId = None
         self._AudioUrl = None
+        self._QualityCheck = None
 
     @property
     def VoiceFormat(self):
@@ -5693,6 +5696,17 @@ class VoicePrintEnrollRequest(AbstractModel):
     def AudioUrl(self, AudioUrl):
         self._AudioUrl = AudioUrl
 
+    @property
+    def QualityCheck(self):
+        r"""<p>是否对注册/更新的音频做质量检测。开启后使用质检专用引擎提取特征，对音频进行多说话人、信噪比、截幅等检查，不合格返回对应错误码；关闭时不做这些检查，沿用常规注册流。默认false</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._QualityCheck
+
+    @QualityCheck.setter
+    def QualityCheck(self, QualityCheck):
+        self._QualityCheck = QualityCheck
+
 
     def _deserialize(self, params):
         self._VoiceFormat = params.get("VoiceFormat")
@@ -5701,6 +5715,7 @@ class VoicePrintEnrollRequest(AbstractModel):
         self._SpeakerNick = params.get("SpeakerNick")
         self._GroupId = params.get("GroupId")
         self._AudioUrl = params.get("AudioUrl")
+        self._QualityCheck = params.get("QualityCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

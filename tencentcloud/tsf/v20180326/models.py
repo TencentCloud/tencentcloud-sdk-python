@@ -10642,37 +10642,37 @@ class CreateApplicationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationName: 应用名称，最长60字符
+        :param _ApplicationName: <p>应用名称，最长60字符</p>
         :type ApplicationName: str
-        :param _ApplicationType: 应用类型，V：虚拟机应用；C：容器应用；S：serverless应用
+        :param _ApplicationType: <p>应用类型，V：虚拟机应用；C：容器应用；S：serverless应用</p>
         :type ApplicationType: str
-        :param _MicroserviceType: 应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用
+        :param _MicroserviceType: <p>应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用</p>
         :type MicroserviceType: str
-        :param _ApplicationDesc: 应用描述
+        :param _ApplicationDesc: <p>应用描述</p>
         :type ApplicationDesc: str
-        :param _ApplicationLogConfig: 应用日志配置项，废弃参数
+        :param _ApplicationLogConfig: <p>应用日志配置项，废弃参数</p>
         :type ApplicationLogConfig: str
-        :param _ApplicationResourceType: 应用资源类型，废弃参数
+        :param _ApplicationResourceType: <p>应用资源类型，废弃参数</p>
         :type ApplicationResourceType: str
-        :param _ApplicationRuntimeType: 应用runtime类型
+        :param _ApplicationRuntimeType: <p>应用runtime类型</p>
         :type ApplicationRuntimeType: str
-        :param _ProgramId: 【数据集ID】。可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a26486wy)进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
+        :param _ProgramId: <p>【数据集ID】。可通过调用<a href="https://cloud.tencent.com/document/product/649/73477">DescribePrograms</a>查询已创建的数据集列表或登录<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program&amp;roleId=role-a26486wy">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/108544">CreateProgram</a>创建新的数据集。</p>
         :type ProgramId: str
-        :param _ServiceConfigList: 服务配置信息列表
+        :param _ServiceConfigList: <p>服务配置信息列表</p>
         :type ServiceConfigList: list of ServiceConfig
-        :param _IgnoreCreateImageRepository: 忽略创建镜像仓库
+        :param _IgnoreCreateImageRepository: <p>忽略创建镜像仓库</p>
         :type IgnoreCreateImageRepository: bool
-        :param _ProgramIdList: 数据集id列表
+        :param _ProgramIdList: <p>数据集id列表</p>
         :type ProgramIdList: list of str
-        :param _ApmInstanceId: apm业务系统id
+        :param _ApmInstanceId: <p>apm业务系统id</p>
         :type ApmInstanceId: str
-        :param _ProgramLanguage: 编程语言:  Java；C/C++；Python；Go；Other
+        :param _ProgramLanguage: <p>编程语言:  Java；C/C++；Python；Go；Other</p>
         :type ProgramLanguage: str
-        :param _FrameworkType: 开发框架-SpringCloud/Dubbo/Go-GRPC/Other
+        :param _FrameworkType: <p>开发框架-SpringCloud/Dubbo/Go-GRPC/Other</p>
         :type FrameworkType: str
-        :param _ServiceGovernanceConfig: 注册配置治理
+        :param _ServiceGovernanceConfig: <p>注册配置治理，关闭注册配置治理或者使用北极星注册中心时必须传值</p>
         :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
-        :param _CreateSameNameImageRepository: 是否创建并关联同名镜像仓库
+        :param _CreateSameNameImageRepository: <p>是否创建并关联同名镜像仓库</p>
         :type CreateSameNameImageRepository: bool
         """
         self._ApplicationName = None
@@ -10694,7 +10694,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationName(self):
-        r"""应用名称，最长60字符
+        r"""<p>应用名称，最长60字符</p>
         :rtype: str
         """
         return self._ApplicationName
@@ -10705,7 +10705,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""应用类型，V：虚拟机应用；C：容器应用；S：serverless应用
+        r"""<p>应用类型，V：虚拟机应用；C：容器应用；S：serverless应用</p>
         :rtype: str
         """
         return self._ApplicationType
@@ -10716,7 +10716,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def MicroserviceType(self):
-        r"""应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用
+        r"""<p>应用微服务类型，M：service mesh应用；N：普通应用；G：网关应用</p>
         :rtype: str
         """
         return self._MicroserviceType
@@ -10727,7 +10727,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationDesc(self):
-        r"""应用描述
+        r"""<p>应用描述</p>
         :rtype: str
         """
         return self._ApplicationDesc
@@ -10740,7 +10740,7 @@ class CreateApplicationRequest(AbstractModel):
     def ApplicationLogConfig(self):
         warnings.warn("parameter `ApplicationLogConfig` is deprecated", DeprecationWarning) 
 
-        r"""应用日志配置项，废弃参数
+        r"""<p>应用日志配置项，废弃参数</p>
         :rtype: str
         """
         return self._ApplicationLogConfig
@@ -10755,7 +10755,7 @@ class CreateApplicationRequest(AbstractModel):
     def ApplicationResourceType(self):
         warnings.warn("parameter `ApplicationResourceType` is deprecated", DeprecationWarning) 
 
-        r"""应用资源类型，废弃参数
+        r"""<p>应用资源类型，废弃参数</p>
         :rtype: str
         """
         return self._ApplicationResourceType
@@ -10768,7 +10768,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApplicationRuntimeType(self):
-        r"""应用runtime类型
+        r"""<p>应用runtime类型</p>
         :rtype: str
         """
         return self._ApplicationRuntimeType
@@ -10779,7 +10779,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ProgramId(self):
-        r"""【数据集ID】。可通过调用[DescribePrograms](https://cloud.tencent.com/document/product/649/73477)查询已创建的数据集列表或登录[控制台](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program&roleId=role-a26486wy)进行查看；也可以调用[CreateProgram](https://cloud.tencent.com/document/product/649/108544)创建新的数据集。
+        r"""<p>【数据集ID】。可通过调用<a href="https://cloud.tencent.com/document/product/649/73477">DescribePrograms</a>查询已创建的数据集列表或登录<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program&amp;roleId=role-a26486wy">控制台</a>进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/108544">CreateProgram</a>创建新的数据集。</p>
         :rtype: str
         """
         return self._ProgramId
@@ -10790,7 +10790,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ServiceConfigList(self):
-        r"""服务配置信息列表
+        r"""<p>服务配置信息列表</p>
         :rtype: list of ServiceConfig
         """
         return self._ServiceConfigList
@@ -10801,7 +10801,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def IgnoreCreateImageRepository(self):
-        r"""忽略创建镜像仓库
+        r"""<p>忽略创建镜像仓库</p>
         :rtype: bool
         """
         return self._IgnoreCreateImageRepository
@@ -10812,7 +10812,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ProgramIdList(self):
-        r"""数据集id列表
+        r"""<p>数据集id列表</p>
         :rtype: list of str
         """
         return self._ProgramIdList
@@ -10823,7 +10823,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ApmInstanceId(self):
-        r"""apm业务系统id
+        r"""<p>apm业务系统id</p>
         :rtype: str
         """
         return self._ApmInstanceId
@@ -10834,7 +10834,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ProgramLanguage(self):
-        r"""编程语言:  Java；C/C++；Python；Go；Other
+        r"""<p>编程语言:  Java；C/C++；Python；Go；Other</p>
         :rtype: str
         """
         return self._ProgramLanguage
@@ -10845,7 +10845,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def FrameworkType(self):
-        r"""开发框架-SpringCloud/Dubbo/Go-GRPC/Other
+        r"""<p>开发框架-SpringCloud/Dubbo/Go-GRPC/Other</p>
         :rtype: str
         """
         return self._FrameworkType
@@ -10856,7 +10856,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def ServiceGovernanceConfig(self):
-        r"""注册配置治理
+        r"""<p>注册配置治理，关闭注册配置治理或者使用北极星注册中心时必须传值</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
         """
         return self._ServiceGovernanceConfig
@@ -10867,7 +10867,7 @@ class CreateApplicationRequest(AbstractModel):
 
     @property
     def CreateSameNameImageRepository(self):
-        r"""是否创建并关联同名镜像仓库
+        r"""<p>是否创建并关联同名镜像仓库</p>
         :rtype: bool
         """
         return self._CreateSameNameImageRepository
@@ -10918,7 +10918,7 @@ class CreateApplicationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 应用ID
+        :param _Result: <p>应用ID</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10928,7 +10928,7 @@ class CreateApplicationResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._Result
@@ -48649,11 +48649,11 @@ class ServiceGovernanceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnableGovernance: 是否开启服务注册治理
+        :param _EnableGovernance: <p>是否开启服务注册治理</p><p>枚举值：</p><ul><li>true： 使用Consul或者北极星服务注册治理</li><li>false： 不使用服务注册治理</li></ul>
         :type EnableGovernance: bool
-        :param _GovernanceType: 服务治理类型（枚举：SHARE表示共享型、EXCLUSIVE表示独占型）
+        :param _GovernanceType: <p>服务治理类型</p><p>枚举值：</p><ul><li>SHARE： 使用Consul注册中心</li><li>EXCLUSIVE： 使用北极星注册中心</li></ul>
         :type GovernanceType: str
-        :param _ExclusiveInstances: 独享实例列表
+        :param _ExclusiveInstances: <p>北极星实例列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExclusiveInstances: list of ExclusiveInstance
         """
@@ -48663,7 +48663,7 @@ class ServiceGovernanceConfig(AbstractModel):
 
     @property
     def EnableGovernance(self):
-        r"""是否开启服务注册治理
+        r"""<p>是否开启服务注册治理</p><p>枚举值：</p><ul><li>true： 使用Consul或者北极星服务注册治理</li><li>false： 不使用服务注册治理</li></ul>
         :rtype: bool
         """
         return self._EnableGovernance
@@ -48674,7 +48674,7 @@ class ServiceGovernanceConfig(AbstractModel):
 
     @property
     def GovernanceType(self):
-        r"""服务治理类型（枚举：SHARE表示共享型、EXCLUSIVE表示独占型）
+        r"""<p>服务治理类型</p><p>枚举值：</p><ul><li>SHARE： 使用Consul注册中心</li><li>EXCLUSIVE： 使用北极星注册中心</li></ul>
         :rtype: str
         """
         return self._GovernanceType
@@ -48685,7 +48685,7 @@ class ServiceGovernanceConfig(AbstractModel):
 
     @property
     def ExclusiveInstances(self):
-        r"""独享实例列表
+        r"""<p>北极星实例列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExclusiveInstance
         """

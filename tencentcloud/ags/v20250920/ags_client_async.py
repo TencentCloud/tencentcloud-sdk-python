@@ -320,6 +320,24 @@ class AgsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeletePreCacheImage(
+            self,
+            request: models.DeletePreCacheImageRequest,
+            opts: Dict = None,
+    ) -> models.DeletePreCacheImageResponse:
+        """
+        删除预热镜像
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePreCacheImage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePreCacheImageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteRegistry(
             self,
             request: models.DeleteRegistryRequest,
@@ -499,6 +517,24 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "DescribeEvents"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeEventsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePreCacheImageList(
+            self,
+            request: models.DescribePreCacheImageListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePreCacheImageListResponse:
+        """
+        查询镜像预热列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePreCacheImageList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePreCacheImageListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

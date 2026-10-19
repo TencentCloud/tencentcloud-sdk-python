@@ -457,6 +457,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBackupEncryptConfig(
+            self,
+            request: models.DescribeBackupEncryptConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupEncryptConfigResponse:
+        """
+        本接口（DescribeBackupEncryptConfig）用于查询实例 备份加密相关信息，包括开启状态、加密密钥等。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupEncryptConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupEncryptConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBackupUrl(
             self,
             request: models.DescribeBackupUrlRequest,
@@ -1570,6 +1588,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "ModifyBackupDownloadRestriction"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyBackupDownloadRestrictionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBackupEncrypt(
+            self,
+            request: models.ModifyBackupEncryptRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBackupEncryptResponse:
+        """
+        本接口（ModifyBackupEncrypt）用于开启 /关闭备份加密，修改备份密钥功能。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBackupEncrypt"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBackupEncryptResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

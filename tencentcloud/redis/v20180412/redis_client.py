@@ -578,6 +578,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupEncryptConfig(self, request):
+        r"""本接口（DescribeBackupEncryptConfig）用于查询实例 备份加密相关信息，包括开启状态、加密密钥等。
+
+        :param request: Request instance for DescribeBackupEncryptConfig.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeBackupEncryptConfigRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeBackupEncryptConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupEncryptConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupEncryptConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBackupUrl(self, request):
         r"""本接口（DescribeBackupUrl）用于查询备份 Rdb 文件的下载地址。
 
@@ -1997,6 +2020,29 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyBackupDownloadRestriction", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBackupDownloadRestrictionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBackupEncrypt(self, request):
+        r"""本接口（ModifyBackupEncrypt）用于开启 /关闭备份加密，修改备份密钥功能。
+
+        :param request: Request instance for ModifyBackupEncrypt.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyBackupEncryptRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyBackupEncryptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBackupEncrypt", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBackupEncryptResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

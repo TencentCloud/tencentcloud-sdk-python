@@ -2678,6 +2678,115 @@ class AddDomainWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddLLMSdkAccessRequest(AbstractModel):
+    r"""AddLLMSdkAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 要接入的应用名称
+        :type Name: str
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._Name = None
+        self._InstanceId = None
+        self._Remark = None
+
+    @property
+    def Name(self):
+        r"""要接入的应用名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._InstanceId = params.get("InstanceId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddLLMSdkAccessResponse(AbstractModel):
+    r"""AddLLMSdkAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 服务id
+        :type Domain: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Domain = None
+        self._RequestId = None
+
+    @property
+    def Domain(self):
+        r"""服务id
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._RequestId = params.get("RequestId")
+
+
 class AddSpartaProtectionRequest(AbstractModel):
     r"""AddSpartaProtection请求参数结构体
 
@@ -3529,6 +3638,376 @@ class AddSpartaProtectionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class AfterPayInstanceInfo(AbstractModel):
+    r"""后付费实例（Edition=llm-sdk-waf）的基础信息，仅包含 tb_instance_conf 基础字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>用户appid</p>
+        :type AppId: int
+        :param _InstanceId: <p>实例唯一ID</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        :param _ResourceIds: <p>实例对应资源ID，计费使用</p>
+        :type ResourceIds: str
+        :param _Edition: <p>实例版本，后付费实例固定为 llm-sdk-waf</p>
+        :type Edition: str
+        :param _Region: <p>实例所属地域</p>
+        :type Region: str
+        :param _PayMode: <p>付费模式，后付费实例为 0</p>
+        :type PayMode: int
+        :param _ValidTime: <p>实例过期时间</p>
+        :type ValidTime: str
+        :param _BeginTime: <p>实例开始时间</p>
+        :type BeginTime: str
+        :param _BillingItem: <p>计费项</p>
+        :type BillingItem: str
+        :param _RenewFlag: <p>自动续费标识。<br>0：关闭<br>1：开启</p>
+        :type RenewFlag: int
+        :param _Level: <p>实例套餐版本</p>
+        :type Level: int
+        :param _ModifyTime: <p>实例修改时间</p>
+        :type ModifyTime: str
+        :param _SubDomainLimit: <p>域名数量上限</p>
+        :type SubDomainLimit: int
+        :param _MainDomainLimit: <p>主域名数量上限</p>
+        :type MainDomainLimit: int
+        :param _ElasticBilling: <p>qps弹性计费上限</p>
+        :type ElasticBilling: int
+        :param _AttackLogPost: <p>攻击日志投递开关</p>
+        :type AttackLogPost: int
+        :param _APISecurity: <p>api安全是否购买</p>
+        :type APISecurity: int
+        :param _IsAPISecurityTrial: <p>是否api 安全试用</p>
+        :type IsAPISecurityTrial: int
+        :param _FreeDelayFlag: <p>实例延期释放标识</p>
+        :type FreeDelayFlag: int
+        :param _BasicFlag: <p>1是基础2025版本；0不是</p>
+        :type BasicFlag: int
+        :param _LLMPkg: <p>大模型安全「后付费」资源信息，结构与内容与 DescribeInstances 的 InstanceDetail.LLMPkg 保持一致</p>
+        :type LLMPkg: :class:`tencentcloud.waf.v20180125.models.LLMPkg`
+        :param _LLMTokenUsage: <p>LLM实例当天4个计费模块token消耗量及近7天趋势（仅后付费llm-sdk-waf实例返回）</p>
+        :type LLMTokenUsage: :class:`tencentcloud.waf.v20180125.models.LLMTokenUsage`
+        """
+        self._AppId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._ResourceIds = None
+        self._Edition = None
+        self._Region = None
+        self._PayMode = None
+        self._ValidTime = None
+        self._BeginTime = None
+        self._BillingItem = None
+        self._RenewFlag = None
+        self._Level = None
+        self._ModifyTime = None
+        self._SubDomainLimit = None
+        self._MainDomainLimit = None
+        self._ElasticBilling = None
+        self._AttackLogPost = None
+        self._APISecurity = None
+        self._IsAPISecurityTrial = None
+        self._FreeDelayFlag = None
+        self._BasicFlag = None
+        self._LLMPkg = None
+        self._LLMTokenUsage = None
+
+    @property
+    def AppId(self):
+        r"""<p>用户appid</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例唯一ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ResourceIds(self):
+        r"""<p>实例对应资源ID，计费使用</p>
+        :rtype: str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Edition(self):
+        r"""<p>实例版本，后付费实例固定为 llm-sdk-waf</p>
+        :rtype: str
+        """
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def Region(self):
+        r"""<p>实例所属地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def PayMode(self):
+        r"""<p>付费模式，后付费实例为 0</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ValidTime(self):
+        r"""<p>实例过期时间</p>
+        :rtype: str
+        """
+        return self._ValidTime
+
+    @ValidTime.setter
+    def ValidTime(self, ValidTime):
+        self._ValidTime = ValidTime
+
+    @property
+    def BeginTime(self):
+        r"""<p>实例开始时间</p>
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def BillingItem(self):
+        r"""<p>计费项</p>
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+    @property
+    def RenewFlag(self):
+        r"""<p>自动续费标识。<br>0：关闭<br>1：开启</p>
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Level(self):
+        r"""<p>实例套餐版本</p>
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def ModifyTime(self):
+        r"""<p>实例修改时间</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def SubDomainLimit(self):
+        r"""<p>域名数量上限</p>
+        :rtype: int
+        """
+        return self._SubDomainLimit
+
+    @SubDomainLimit.setter
+    def SubDomainLimit(self, SubDomainLimit):
+        self._SubDomainLimit = SubDomainLimit
+
+    @property
+    def MainDomainLimit(self):
+        r"""<p>主域名数量上限</p>
+        :rtype: int
+        """
+        return self._MainDomainLimit
+
+    @MainDomainLimit.setter
+    def MainDomainLimit(self, MainDomainLimit):
+        self._MainDomainLimit = MainDomainLimit
+
+    @property
+    def ElasticBilling(self):
+        r"""<p>qps弹性计费上限</p>
+        :rtype: int
+        """
+        return self._ElasticBilling
+
+    @ElasticBilling.setter
+    def ElasticBilling(self, ElasticBilling):
+        self._ElasticBilling = ElasticBilling
+
+    @property
+    def AttackLogPost(self):
+        r"""<p>攻击日志投递开关</p>
+        :rtype: int
+        """
+        return self._AttackLogPost
+
+    @AttackLogPost.setter
+    def AttackLogPost(self, AttackLogPost):
+        self._AttackLogPost = AttackLogPost
+
+    @property
+    def APISecurity(self):
+        r"""<p>api安全是否购买</p>
+        :rtype: int
+        """
+        return self._APISecurity
+
+    @APISecurity.setter
+    def APISecurity(self, APISecurity):
+        self._APISecurity = APISecurity
+
+    @property
+    def IsAPISecurityTrial(self):
+        r"""<p>是否api 安全试用</p>
+        :rtype: int
+        """
+        return self._IsAPISecurityTrial
+
+    @IsAPISecurityTrial.setter
+    def IsAPISecurityTrial(self, IsAPISecurityTrial):
+        self._IsAPISecurityTrial = IsAPISecurityTrial
+
+    @property
+    def FreeDelayFlag(self):
+        r"""<p>实例延期释放标识</p>
+        :rtype: int
+        """
+        return self._FreeDelayFlag
+
+    @FreeDelayFlag.setter
+    def FreeDelayFlag(self, FreeDelayFlag):
+        self._FreeDelayFlag = FreeDelayFlag
+
+    @property
+    def BasicFlag(self):
+        r"""<p>1是基础2025版本；0不是</p>
+        :rtype: int
+        """
+        return self._BasicFlag
+
+    @BasicFlag.setter
+    def BasicFlag(self, BasicFlag):
+        self._BasicFlag = BasicFlag
+
+    @property
+    def LLMPkg(self):
+        r"""<p>大模型安全「后付费」资源信息，结构与内容与 DescribeInstances 的 InstanceDetail.LLMPkg 保持一致</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LLMPkg`
+        """
+        return self._LLMPkg
+
+    @LLMPkg.setter
+    def LLMPkg(self, LLMPkg):
+        self._LLMPkg = LLMPkg
+
+    @property
+    def LLMTokenUsage(self):
+        r"""<p>LLM实例当天4个计费模块token消耗量及近7天趋势（仅后付费llm-sdk-waf实例返回）</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LLMTokenUsage`
+        """
+        return self._LLMTokenUsage
+
+    @LLMTokenUsage.setter
+    def LLMTokenUsage(self, LLMTokenUsage):
+        self._LLMTokenUsage = LLMTokenUsage
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._ResourceIds = params.get("ResourceIds")
+        self._Edition = params.get("Edition")
+        self._Region = params.get("Region")
+        self._PayMode = params.get("PayMode")
+        self._ValidTime = params.get("ValidTime")
+        self._BeginTime = params.get("BeginTime")
+        self._BillingItem = params.get("BillingItem")
+        self._RenewFlag = params.get("RenewFlag")
+        self._Level = params.get("Level")
+        self._ModifyTime = params.get("ModifyTime")
+        self._SubDomainLimit = params.get("SubDomainLimit")
+        self._MainDomainLimit = params.get("MainDomainLimit")
+        self._ElasticBilling = params.get("ElasticBilling")
+        self._AttackLogPost = params.get("AttackLogPost")
+        self._APISecurity = params.get("APISecurity")
+        self._IsAPISecurityTrial = params.get("IsAPISecurityTrial")
+        self._FreeDelayFlag = params.get("FreeDelayFlag")
+        self._BasicFlag = params.get("BasicFlag")
+        if params.get("LLMPkg") is not None:
+            self._LLMPkg = LLMPkg()
+            self._LLMPkg._deserialize(params.get("LLMPkg"))
+        if params.get("LLMTokenUsage") is not None:
+            self._LLMTokenUsage = LLMTokenUsage()
+            self._LLMTokenUsage._deserialize(params.get("LLMTokenUsage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AnonymousInfo(AbstractModel):
@@ -11459,6 +11938,77 @@ class CacheUrlItems(AbstractModel):
         
 
 
+class CategoryGroup(AbstractModel):
+    r"""按分类分组的规则列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>分类</p>
+        :type Category: str
+        :param _Count: <p>总数</p>
+        :type Count: int
+        :param _Rules: <p>规则列表</p>
+        :type Rules: list of RuleDetail
+        """
+        self._Category = None
+        self._Count = None
+        self._Rules = None
+
+    @property
+    def Category(self):
+        r"""<p>分类</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Count(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Rules(self):
+        r"""<p>规则列表</p>
+        :rtype: list of RuleDetail
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Count = params.get("Count")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RuleDetail()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CdcCluster(AbstractModel):
     r"""CDC场景下负载均衡WAF的集群信息
 
@@ -17876,6 +18426,149 @@ class DeleteIpAccessControlV2Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteLLMContentRuleRequest(AbstractModel):
+    r"""DeleteLLMContentRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: <p>Id列表</p>
+        :type Ids: list of str
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        """
+        self._Ids = None
+        self._Domain = None
+
+    @property
+    def Ids(self):
+        r"""<p>Id列表</p>
+        :rtype: list of str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLLMContentRuleResponse(AbstractModel):
+    r"""DeleteLLMContentRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLLMKeywordLibraryRequest(AbstractModel):
+    r"""DeleteLLMKeywordLibrary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: 要删除的词库 id 列表
+        :type Ids: list of str
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        r"""要删除的词库 id 列表
+        :rtype: list of str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLLMKeywordLibraryResponse(AbstractModel):
+    r"""DeleteLLMKeywordLibrary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteOwaspRuleStatusRequest(AbstractModel):
     r"""DeleteOwaspRuleStatus请求参数结构体
 
@@ -19052,6 +19745,155 @@ class DescribeAccessIndexResponse(AbstractModel):
             self._Rule = AccessRuleInfo()
             self._Rule._deserialize(params.get("Rule"))
         self._ModifyTime = params.get("ModifyTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAfterPayInstancesRequest(AbstractModel):
+    r"""DescribeAfterPayInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 容量
+        :type Limit: int
+        :param _Filters: 过滤数组
+        :type Filters: list of FiltersItemNew
+        :param _FreeDelayFlag: 释放延期标识
+        :type FreeDelayFlag: int
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._FreeDelayFlag = None
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""容量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤数组
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def FreeDelayFlag(self):
+        r"""释放延期标识
+        :rtype: int
+        """
+        return self._FreeDelayFlag
+
+    @FreeDelayFlag.setter
+    def FreeDelayFlag(self, FreeDelayFlag):
+        self._FreeDelayFlag = FreeDelayFlag
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._FreeDelayFlag = params.get("FreeDelayFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAfterPayInstancesResponse(AbstractModel):
+    r"""DescribeAfterPayInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Instances: 后付费实例列表
+        :type Instances: list of AfterPayInstanceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Instances = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Instances(self):
+        r"""后付费实例列表
+        :rtype: list of AfterPayInstanceInfo
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Instances") is not None:
+            self._Instances = []
+            for item in params.get("Instances"):
+                obj = AfterPayInstanceInfo()
+                obj._deserialize(item)
+                self._Instances.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -27729,6 +28571,40 @@ class DescribeIpHitItemsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLLMContentRuleListRequest(AbstractModel):
+    r"""DescribeLLMContentRuleList请求参数结构体
+
+    """
+
+
+class DescribeLLMContentRuleListResponse(AbstractModel):
+    r"""DescribeLLMContentRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLLMContentSecCheckRequest(AbstractModel):
     r"""DescribeLLMContentSecCheck请求参数结构体
 
@@ -27989,6 +28865,593 @@ class DescribeLLMContentSecCheckResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = LLMDetectResult()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLLMKeywordLibraryRequest(AbstractModel):
+    r"""DescribeLLMKeywordLibrary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 词库类型筛选
+枚举值：
+custom：自定义黑库
+builtin：内置词库
+all：全部词库
+white：自定义白库
+        :type Type: str
+        :param _Offset: 分页偏移量
+取值范围：[0, +∞)
+默认值：0
+        :type Offset: int
+        :param _Limit: 每页返回数量
+取值范围：[1, 1000]
+默认值：10
+        :type Limit: int
+        :param _By: 排序字段
+枚举值：
+UpdateTime：按更新时间排序
+CreateTime：按创建时间排序
+Name：按名称排序
+默认值：UpdateTime
+        :type By: str
+        :param _Order: 排序方向
+枚举值：
+ASC：升序
+DESC：降序
+默认值：DESC
+        :type Order: str
+        """
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def Type(self):
+        r"""词库类型筛选
+枚举值：
+custom：自定义黑库
+builtin：内置词库
+all：全部词库
+white：自定义白库
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        r"""分页偏移量
+取值范围：[0, +∞)
+默认值：0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页返回数量
+取值范围：[1, 1000]
+默认值：10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        r"""排序字段
+枚举值：
+UpdateTime：按更新时间排序
+CreateTime：按创建时间排序
+Name：按名称排序
+默认值：UpdateTime
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        r"""排序方向
+枚举值：
+ASC：升序
+DESC：降序
+默认值：DESC
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMKeywordLibraryResponse(AbstractModel):
+    r"""DescribeLLMKeywordLibrary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibList: 关键词库列表
+        :type LibList: list of LLMKeywordLibrary
+        :param _Total: 词库总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LibList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def LibList(self):
+        r"""关键词库列表
+        :rtype: list of LLMKeywordLibrary
+        """
+        return self._LibList
+
+    @LibList.setter
+    def LibList(self, LibList):
+        self._LibList = LibList
+
+    @property
+    def Total(self):
+        r"""词库总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("LibList") is not None:
+            self._LibList = []
+            for item in params.get("LibList"):
+                obj = LLMKeywordLibrary()
+                obj._deserialize(item)
+                self._LibList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLLMSdkAccessRequest(AbstractModel):
+    r"""DescribeLLMSdkAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _Offset: 分页的起始位置
+        :type Offset: int
+        :param _Limit: 每页行数
+        :type Limit: int
+        :param _Filters: 过滤器
+        :type Filters: list of FiltersItemNew
+        :param _By: 支持根据ts排序
+        :type By: str
+        :param _Order: asc或者desc
+        :type Order: str
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        r"""分页的起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页行数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤器
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def By(self):
+        r"""支持根据ts排序
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        r"""asc或者desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMSdkAccessResponse(AbstractModel):
+    r"""DescribeLLMSdkAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 查询结果中规则数量
+        :type Total: int
+        :param _Data: 操作结果
+        :type Data: list of LLMSdkAccessItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""查询结果中规则数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""操作结果
+        :rtype: list of LLMSdkAccessItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = LLMSdkAccessItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLLMWafDLPRulesRequest(AbstractModel):
+    r"""DescribeLLMWafDLPRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>服务ID</p>
+        :type ServiceId: str
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        """
+        self._ServiceId = None
+        self._InstanceId = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMWafDLPRulesResponse(AbstractModel):
+    r"""DescribeLLMWafDLPRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: <p>规则列表</p>
+        :type Rules: list of RuleDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rules = None
+        self._RequestId = None
+
+    @property
+    def Rules(self):
+        r"""<p>规则列表</p>
+        :rtype: list of RuleDetail
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RuleDetail()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLLMWafProtectRulesRequest(AbstractModel):
+    r"""DescribeLLMWafProtectRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>服务ID</p>
+        :type ServiceId: str
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _RuleType: <p>规则类型</p>
+        :type RuleType: str
+        """
+        self._ServiceId = None
+        self._InstanceId = None
+        self._RuleType = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RuleType(self):
+        r"""<p>规则类型</p>
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._InstanceId = params.get("InstanceId")
+        self._RuleType = params.get("RuleType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMWafProtectRulesResponse(AbstractModel):
+    r"""DescribeLLMWafProtectRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Categories: <p>类别列表</p>
+        :type Categories: list of CategoryGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Categories = None
+        self._RequestId = None
+
+    @property
+    def Categories(self):
+        r"""<p>类别列表</p>
+        :rtype: list of CategoryGroup
+        """
+        return self._Categories
+
+    @Categories.setter
+    def Categories(self, Categories):
+        self._Categories = Categories
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Categories") is not None:
+            self._Categories = []
+            for item in params.get("Categories"):
+                obj = CategoryGroup()
+                obj._deserialize(item)
+                self._Categories.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -35987,6 +37450,85 @@ class ExportInfo(AbstractModel):
         
 
 
+class ExportLLMKeywordLibRequest(AbstractModel):
+    r"""ExportLLMKeywordLib请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIds: 要导出的词库id列表
+        :type RuleIds: list of str
+        """
+        self._RuleIds = None
+
+    @property
+    def RuleIds(self):
+        r"""要导出的词库id列表
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+
+    def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportLLMKeywordLibResponse(AbstractModel):
+    r"""ExportLLMKeywordLib返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 导出的文件url
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        r"""导出的文件url
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
+
+
 class FieldWriteConfig(AbstractModel):
     r"""设置哪些字段是否存储或转发
 
@@ -41783,6 +43325,198 @@ class LLMDetectResult(AbstractModel):
         
 
 
+class LLMImageTrendItem(AbstractModel):
+    r"""近7天图片送检趋势的单日数据点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DayTime: <p>YYYYMMDD 格式日期</p>
+        :type DayTime: str
+        :param _ImageUsage: <p>当日图片送检量（单位：张）</p>
+        :type ImageUsage: int
+        """
+        self._DayTime = None
+        self._ImageUsage = None
+
+    @property
+    def DayTime(self):
+        r"""<p>YYYYMMDD 格式日期</p>
+        :rtype: str
+        """
+        return self._DayTime
+
+    @DayTime.setter
+    def DayTime(self, DayTime):
+        self._DayTime = DayTime
+
+    @property
+    def ImageUsage(self):
+        r"""<p>当日图片送检量（单位：张）</p>
+        :rtype: int
+        """
+        return self._ImageUsage
+
+    @ImageUsage.setter
+    def ImageUsage(self, ImageUsage):
+        self._ImageUsage = ImageUsage
+
+
+    def _deserialize(self, params):
+        self._DayTime = params.get("DayTime")
+        self._ImageUsage = params.get("ImageUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMKeywordLibrary(AbstractModel):
+    r"""LLM waf 自定义词库实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 词库名
+        :type Name: str
+        :param _Description: 词库描述
+        :type Description: str
+        :param _Type: 词库类型，custom 或 builtin
+        :type Type: str
+        :param _Keywords: 关键词列表
+        :type Keywords: list of str
+        :param _RuleId: 词库规则 id
+        :type RuleId: str
+        :param _ReferencedRules: 被引用的规则 id 列表
+        :type ReferencedRules: list of str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _Category: 词库类别：black-黑库(默认)，white-白库；空值按黑库处理
+        :type Category: str
+        """
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._Keywords = None
+        self._RuleId = None
+        self._ReferencedRules = None
+        self._UpdateTime = None
+        self._Category = None
+
+    @property
+    def Name(self):
+        r"""词库名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""词库描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""词库类型，custom 或 builtin
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Keywords(self):
+        r"""关键词列表
+        :rtype: list of str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def RuleId(self):
+        r"""词库规则 id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def ReferencedRules(self):
+        r"""被引用的规则 id 列表
+        :rtype: list of str
+        """
+        return self._ReferencedRules
+
+    @ReferencedRules.setter
+    def ReferencedRules(self, ReferencedRules):
+        self._ReferencedRules = ReferencedRules
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Category(self):
+        r"""词库类别：black-黑库(默认)，white-白库；空值按黑库处理
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._Keywords = params.get("Keywords")
+        self._RuleId = params.get("RuleId")
+        self._ReferencedRules = params.get("ReferencedRules")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LLMMonPkg(AbstractModel):
     r"""有效预付费大模型安全包信息
 
@@ -41931,6 +43665,107 @@ class LLMMonPkg(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._UseToken = params.get("UseToken")
         self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMOptionsItem(AbstractModel):
+    r"""大模型Rule生效条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键
+        :type Key: str
+        :param _Op: 操作符
+        :type Op: str
+        :param _Value: 值
+        :type Value: list of str
+        :param _Name: Header参数值时使用
+        :type Name: str
+        :param _Areas: 区域选择
+        :type Areas: list of Area
+        """
+        self._Key = None
+        self._Op = None
+        self._Value = None
+        self._Name = None
+        self._Areas = None
+
+    @property
+    def Key(self):
+        r"""键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Op(self):
+        r"""操作符
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def Value(self):
+        r"""值
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Name(self):
+        r"""Header参数值时使用
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Areas(self):
+        r"""区域选择
+        :rtype: list of Area
+        """
+        return self._Areas
+
+    @Areas.setter
+    def Areas(self, Areas):
+        self._Areas = Areas
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Op = params.get("Op")
+        self._Value = params.get("Value")
+        self._Name = params.get("Name")
+        if params.get("Areas") is not None:
+            self._Areas = []
+            for item in params.get("Areas"):
+                obj = Area()
+                obj._deserialize(item)
+                self._Areas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42108,6 +43943,312 @@ class LLMRisks(AbstractModel):
         
 
 
+class LLMSdkAccessItem(AbstractModel):
+    r"""sdk接入配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: <p>服务id</p>
+        :type Domain: str
+        :param _Name: <p>服务名称</p>
+        :type Name: str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _SdkSource: <p>SDK接入来源，可不填</p>
+        :type SdkSource: str
+        :param _MainStatus: <p>总开关</p>
+        :type MainStatus: bool
+        :param _LimitRuleStatus: <p>限速开关</p>
+        :type LimitRuleStatus: bool
+        :param _ContentRuleStatus: <p>内容安全开关</p>
+        :type ContentRuleStatus: bool
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>修改时间</p>
+        :type UpdateTime: int
+        :param _LimitRuleCount: <p>限流规则数量</p>
+        :type LimitRuleCount: int
+        :param _ContentRuleCount: <p>内容安全规则数量</p>
+        :type ContentRuleCount: int
+        :param _ToolCallStatus: <p>toolcall防护开关</p>
+        :type ToolCallStatus: bool
+        :param _LLMProtectStatus: <p>llm推理防护开关</p>
+        :type LLMProtectStatus: bool
+        :param _ContentComplianceStatus: <p>内容合规检测开关</p>
+        :type ContentComplianceStatus: bool
+        :param _DLPStatus: <p>dlp防护开关</p>
+        :type DLPStatus: bool
+        :param _SkillsStatus: <p>skills防护开关</p>
+        :type SkillsStatus: bool
+        :param _IntentStatus: <p>意图识别检测开关</p>
+        :type IntentStatus: bool
+        :param _UrlDetectStatus: <p>恶意URL检测开关</p>
+        :type UrlDetectStatus: bool
+        :param _EffectiveRules: <p>生效规则数量</p>
+        :type EffectiveRules: int
+        """
+        self._Domain = None
+        self._Name = None
+        self._Remark = None
+        self._SdkSource = None
+        self._MainStatus = None
+        self._LimitRuleStatus = None
+        self._ContentRuleStatus = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LimitRuleCount = None
+        self._ContentRuleCount = None
+        self._ToolCallStatus = None
+        self._LLMProtectStatus = None
+        self._ContentComplianceStatus = None
+        self._DLPStatus = None
+        self._SkillsStatus = None
+        self._IntentStatus = None
+        self._UrlDetectStatus = None
+        self._EffectiveRules = None
+
+    @property
+    def Domain(self):
+        r"""<p>服务id</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Name(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def SdkSource(self):
+        r"""<p>SDK接入来源，可不填</p>
+        :rtype: str
+        """
+        return self._SdkSource
+
+    @SdkSource.setter
+    def SdkSource(self, SdkSource):
+        self._SdkSource = SdkSource
+
+    @property
+    def MainStatus(self):
+        r"""<p>总开关</p>
+        :rtype: bool
+        """
+        return self._MainStatus
+
+    @MainStatus.setter
+    def MainStatus(self, MainStatus):
+        self._MainStatus = MainStatus
+
+    @property
+    def LimitRuleStatus(self):
+        r"""<p>限速开关</p>
+        :rtype: bool
+        """
+        return self._LimitRuleStatus
+
+    @LimitRuleStatus.setter
+    def LimitRuleStatus(self, LimitRuleStatus):
+        self._LimitRuleStatus = LimitRuleStatus
+
+    @property
+    def ContentRuleStatus(self):
+        r"""<p>内容安全开关</p>
+        :rtype: bool
+        """
+        return self._ContentRuleStatus
+
+    @ContentRuleStatus.setter
+    def ContentRuleStatus(self, ContentRuleStatus):
+        self._ContentRuleStatus = ContentRuleStatus
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>修改时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LimitRuleCount(self):
+        r"""<p>限流规则数量</p>
+        :rtype: int
+        """
+        return self._LimitRuleCount
+
+    @LimitRuleCount.setter
+    def LimitRuleCount(self, LimitRuleCount):
+        self._LimitRuleCount = LimitRuleCount
+
+    @property
+    def ContentRuleCount(self):
+        r"""<p>内容安全规则数量</p>
+        :rtype: int
+        """
+        return self._ContentRuleCount
+
+    @ContentRuleCount.setter
+    def ContentRuleCount(self, ContentRuleCount):
+        self._ContentRuleCount = ContentRuleCount
+
+    @property
+    def ToolCallStatus(self):
+        r"""<p>toolcall防护开关</p>
+        :rtype: bool
+        """
+        return self._ToolCallStatus
+
+    @ToolCallStatus.setter
+    def ToolCallStatus(self, ToolCallStatus):
+        self._ToolCallStatus = ToolCallStatus
+
+    @property
+    def LLMProtectStatus(self):
+        r"""<p>llm推理防护开关</p>
+        :rtype: bool
+        """
+        return self._LLMProtectStatus
+
+    @LLMProtectStatus.setter
+    def LLMProtectStatus(self, LLMProtectStatus):
+        self._LLMProtectStatus = LLMProtectStatus
+
+    @property
+    def ContentComplianceStatus(self):
+        r"""<p>内容合规检测开关</p>
+        :rtype: bool
+        """
+        return self._ContentComplianceStatus
+
+    @ContentComplianceStatus.setter
+    def ContentComplianceStatus(self, ContentComplianceStatus):
+        self._ContentComplianceStatus = ContentComplianceStatus
+
+    @property
+    def DLPStatus(self):
+        r"""<p>dlp防护开关</p>
+        :rtype: bool
+        """
+        return self._DLPStatus
+
+    @DLPStatus.setter
+    def DLPStatus(self, DLPStatus):
+        self._DLPStatus = DLPStatus
+
+    @property
+    def SkillsStatus(self):
+        r"""<p>skills防护开关</p>
+        :rtype: bool
+        """
+        return self._SkillsStatus
+
+    @SkillsStatus.setter
+    def SkillsStatus(self, SkillsStatus):
+        self._SkillsStatus = SkillsStatus
+
+    @property
+    def IntentStatus(self):
+        r"""<p>意图识别检测开关</p>
+        :rtype: bool
+        """
+        return self._IntentStatus
+
+    @IntentStatus.setter
+    def IntentStatus(self, IntentStatus):
+        self._IntentStatus = IntentStatus
+
+    @property
+    def UrlDetectStatus(self):
+        r"""<p>恶意URL检测开关</p>
+        :rtype: bool
+        """
+        return self._UrlDetectStatus
+
+    @UrlDetectStatus.setter
+    def UrlDetectStatus(self, UrlDetectStatus):
+        self._UrlDetectStatus = UrlDetectStatus
+
+    @property
+    def EffectiveRules(self):
+        r"""<p>生效规则数量</p>
+        :rtype: int
+        """
+        return self._EffectiveRules
+
+    @EffectiveRules.setter
+    def EffectiveRules(self, EffectiveRules):
+        self._EffectiveRules = EffectiveRules
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._SdkSource = params.get("SdkSource")
+        self._MainStatus = params.get("MainStatus")
+        self._LimitRuleStatus = params.get("LimitRuleStatus")
+        self._ContentRuleStatus = params.get("ContentRuleStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LimitRuleCount = params.get("LimitRuleCount")
+        self._ContentRuleCount = params.get("ContentRuleCount")
+        self._ToolCallStatus = params.get("ToolCallStatus")
+        self._LLMProtectStatus = params.get("LLMProtectStatus")
+        self._ContentComplianceStatus = params.get("ContentComplianceStatus")
+        self._DLPStatus = params.get("DLPStatus")
+        self._SkillsStatus = params.get("SkillsStatus")
+        self._IntentStatus = params.get("IntentStatus")
+        self._UrlDetectStatus = params.get("UrlDetectStatus")
+        self._EffectiveRules = params.get("EffectiveRules")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LLMSensitiveValueLevel(AbstractModel):
     r"""涉敏信息结果结构体
 
@@ -42149,6 +44290,178 @@ class LLMSensitiveValueLevel(AbstractModel):
     def _deserialize(self, params):
         self._Label = params.get("Label")
         self._Level = params.get("Level")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMTokenTrendItem(AbstractModel):
+    r"""近7天token总量趋势的单日数据点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DayTime: <p>YYYYMMDD 格式日期</p>
+        :type DayTime: str
+        :param _TokenUsage: <p>当日token总用量</p>
+        :type TokenUsage: int
+        """
+        self._DayTime = None
+        self._TokenUsage = None
+
+    @property
+    def DayTime(self):
+        r"""<p>YYYYMMDD 格式日期</p>
+        :rtype: str
+        """
+        return self._DayTime
+
+    @DayTime.setter
+    def DayTime(self, DayTime):
+        self._DayTime = DayTime
+
+    @property
+    def TokenUsage(self):
+        r"""<p>当日token总用量</p>
+        :rtype: int
+        """
+        return self._TokenUsage
+
+    @TokenUsage.setter
+    def TokenUsage(self, TokenUsage):
+        self._TokenUsage = TokenUsage
+
+
+    def _deserialize(self, params):
+        self._DayTime = params.get("DayTime")
+        self._TokenUsage = params.get("TokenUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMTokenUsage(AbstractModel):
+    r"""LLM实例当天4个计费模块的token消耗量及近7天趋势（均为实例维度）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptUsage: <p>今日提示词攻击防护 token 消耗量</p>
+        :type PromptUsage: int
+        :param _ContentTextUsage: <p>今日内容安全文本检测 token 消耗量</p>
+        :type ContentTextUsage: int
+        :param _SensitiveDataUsage: <p>今日敏感数据检测 token 消耗量</p>
+        :type SensitiveDataUsage: int
+        :param _ContentImageUsage: <p>今日图片送检量（单位：张）</p>
+        :type ContentImageUsage: int
+        :param _TokenTrend: <p>该实例近7天token总量趋势（按天，缺失日期补0）</p>
+        :type TokenTrend: list of LLMTokenTrendItem
+        :param _ImageTrend: <p>该实例近7天图片送检趋势（按天，缺失日期补0）</p>
+        :type ImageTrend: list of LLMImageTrendItem
+        """
+        self._PromptUsage = None
+        self._ContentTextUsage = None
+        self._SensitiveDataUsage = None
+        self._ContentImageUsage = None
+        self._TokenTrend = None
+        self._ImageTrend = None
+
+    @property
+    def PromptUsage(self):
+        r"""<p>今日提示词攻击防护 token 消耗量</p>
+        :rtype: int
+        """
+        return self._PromptUsage
+
+    @PromptUsage.setter
+    def PromptUsage(self, PromptUsage):
+        self._PromptUsage = PromptUsage
+
+    @property
+    def ContentTextUsage(self):
+        r"""<p>今日内容安全文本检测 token 消耗量</p>
+        :rtype: int
+        """
+        return self._ContentTextUsage
+
+    @ContentTextUsage.setter
+    def ContentTextUsage(self, ContentTextUsage):
+        self._ContentTextUsage = ContentTextUsage
+
+    @property
+    def SensitiveDataUsage(self):
+        r"""<p>今日敏感数据检测 token 消耗量</p>
+        :rtype: int
+        """
+        return self._SensitiveDataUsage
+
+    @SensitiveDataUsage.setter
+    def SensitiveDataUsage(self, SensitiveDataUsage):
+        self._SensitiveDataUsage = SensitiveDataUsage
+
+    @property
+    def ContentImageUsage(self):
+        r"""<p>今日图片送检量（单位：张）</p>
+        :rtype: int
+        """
+        return self._ContentImageUsage
+
+    @ContentImageUsage.setter
+    def ContentImageUsage(self, ContentImageUsage):
+        self._ContentImageUsage = ContentImageUsage
+
+    @property
+    def TokenTrend(self):
+        r"""<p>该实例近7天token总量趋势（按天，缺失日期补0）</p>
+        :rtype: list of LLMTokenTrendItem
+        """
+        return self._TokenTrend
+
+    @TokenTrend.setter
+    def TokenTrend(self, TokenTrend):
+        self._TokenTrend = TokenTrend
+
+    @property
+    def ImageTrend(self):
+        r"""<p>该实例近7天图片送检趋势（按天，缺失日期补0）</p>
+        :rtype: list of LLMImageTrendItem
+        """
+        return self._ImageTrend
+
+    @ImageTrend.setter
+    def ImageTrend(self, ImageTrend):
+        self._ImageTrend = ImageTrend
+
+
+    def _deserialize(self, params):
+        self._PromptUsage = params.get("PromptUsage")
+        self._ContentTextUsage = params.get("ContentTextUsage")
+        self._SensitiveDataUsage = params.get("SensitiveDataUsage")
+        self._ContentImageUsage = params.get("ContentImageUsage")
+        if params.get("TokenTrend") is not None:
+            self._TokenTrend = []
+            for item in params.get("TokenTrend"):
+                obj = LLMTokenTrendItem()
+                obj._deserialize(item)
+                self._TokenTrend.append(obj)
+        if params.get("ImageTrend") is not None:
+            self._ImageTrend = []
+            for item in params.get("ImageTrend"):
+                obj = LLMImageTrendItem()
+                obj._deserialize(item)
+                self._ImageTrend.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50128,6 +52441,960 @@ class ModifyIpAccessControlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLLMContentRuleRequest(AbstractModel):
+    r"""ModifyLLMContentRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Priority: <p>优先级</p>
+        :type Priority: int
+        :param _Status: <p>规则开关</p>
+        :type Status: int
+        :param _CheckType: <p>检测范围，1：入向，2：出向，3：入向和出向</p>
+        :type CheckType: int
+        :param _RuleItem: <p>检测内容匹配</p>
+        :type RuleItem: list of RuleItem
+        :param _Options: <p>匹配条件</p>
+        :type Options: list of LLMOptionsItem
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _ActionType: <p>动作，观察monitor，拦截intercept</p>
+        :type ActionType: str
+        :param _ResponseText: <p>响应提示内容</p>
+        :type ResponseText: str
+        :param _SessionApplied: <p>规则需要启用的SessionID</p>
+        :type SessionApplied: list of str
+        :param _RuleId: <p>规则ID，新增时填0</p>
+        :type RuleId: str
+        :param _PageId: <p>拦截页面id</p>
+        :type PageId: int
+        :param _ContentLogicalOp: <p>检测内容and or表达式,默认为and</p>
+        :type ContentLogicalOp: str
+        :param _InstanceId: <p>实例id，必填项</p>
+        :type InstanceId: str
+        :param _ReplyType: <p>代答类型：1-内置可信模型安全代答，2-自定义代答（ActionType=reply时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答ActionType=reply时生效</li></ul>
+        :type ReplyType: int
+        :param _CustomReplyRuleId: <p>自定义回答模板</p>
+        :type CustomReplyRuleId: str
+        :param _ModalType: <p>模态类型：0-文本（默认），1-图片</p><p>枚举值：</p><ul><li>0： 文本</li><li>1： 图片</li></ul>
+        :type ModalType: int
+        :param _Category: <p>规则类别：black-普通规则(默认)，white-白名单规则；空值按black处理。white时ActionType仅允许pass(放行)，RuleItem支持白名单匹配字段(Key: ip/geo/type/content/chat_id/user_id/tool_name/tool_args/keyword_whitelist；Op: belong/not_belong/equal/not_equal/contain/not_contain/prefix/suffix/wildcard)</p>
+        :type Category: str
+        :param _Domains: <p>白名单规则生效范围：多个serviceId/domain列表（Category=white时使用），表示该白名单规则同时生效于哪些域名/serviceId。黑名单规则不使用此字段。</p>
+        :type Domains: list of str
+        :param _AppliedModules: <p>加白生效模块type列表（Category=white时使用），表示该白名单规则命中后对哪些防护模块生效(放行)。取值：2-算力消耗规则，3-自定义防护规则，4-ToolCall防护，5-提示词攻击防护，6-内容合规检测，7-敏感数据检测。</p>
+        :type AppliedModules: list of int non-negative
+        """
+        self._Name = None
+        self._Priority = None
+        self._Status = None
+        self._CheckType = None
+        self._RuleItem = None
+        self._Options = None
+        self._Domain = None
+        self._ActionType = None
+        self._ResponseText = None
+        self._SessionApplied = None
+        self._RuleId = None
+        self._PageId = None
+        self._ContentLogicalOp = None
+        self._InstanceId = None
+        self._ReplyType = None
+        self._CustomReplyRuleId = None
+        self._ModalType = None
+        self._Category = None
+        self._Domains = None
+        self._AppliedModules = None
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Priority(self):
+        r"""<p>优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Status(self):
+        r"""<p>规则开关</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CheckType(self):
+        r"""<p>检测范围，1：入向，2：出向，3：入向和出向</p>
+        :rtype: int
+        """
+        return self._CheckType
+
+    @CheckType.setter
+    def CheckType(self, CheckType):
+        self._CheckType = CheckType
+
+    @property
+    def RuleItem(self):
+        r"""<p>检测内容匹配</p>
+        :rtype: list of RuleItem
+        """
+        return self._RuleItem
+
+    @RuleItem.setter
+    def RuleItem(self, RuleItem):
+        self._RuleItem = RuleItem
+
+    @property
+    def Options(self):
+        r"""<p>匹配条件</p>
+        :rtype: list of LLMOptionsItem
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def ActionType(self):
+        r"""<p>动作，观察monitor，拦截intercept</p>
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ResponseText(self):
+        r"""<p>响应提示内容</p>
+        :rtype: str
+        """
+        return self._ResponseText
+
+    @ResponseText.setter
+    def ResponseText(self, ResponseText):
+        self._ResponseText = ResponseText
+
+    @property
+    def SessionApplied(self):
+        r"""<p>规则需要启用的SessionID</p>
+        :rtype: list of str
+        """
+        return self._SessionApplied
+
+    @SessionApplied.setter
+    def SessionApplied(self, SessionApplied):
+        self._SessionApplied = SessionApplied
+
+    @property
+    def RuleId(self):
+        r"""<p>规则ID，新增时填0</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def PageId(self):
+        r"""<p>拦截页面id</p>
+        :rtype: int
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def ContentLogicalOp(self):
+        r"""<p>检测内容and or表达式,默认为and</p>
+        :rtype: str
+        """
+        return self._ContentLogicalOp
+
+    @ContentLogicalOp.setter
+    def ContentLogicalOp(self, ContentLogicalOp):
+        self._ContentLogicalOp = ContentLogicalOp
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id，必填项</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ReplyType(self):
+        r"""<p>代答类型：1-内置可信模型安全代答，2-自定义代答（ActionType=reply时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答ActionType=reply时生效</li></ul>
+        :rtype: int
+        """
+        return self._ReplyType
+
+    @ReplyType.setter
+    def ReplyType(self, ReplyType):
+        self._ReplyType = ReplyType
+
+    @property
+    def CustomReplyRuleId(self):
+        r"""<p>自定义回答模板</p>
+        :rtype: str
+        """
+        return self._CustomReplyRuleId
+
+    @CustomReplyRuleId.setter
+    def CustomReplyRuleId(self, CustomReplyRuleId):
+        self._CustomReplyRuleId = CustomReplyRuleId
+
+    @property
+    def ModalType(self):
+        r"""<p>模态类型：0-文本（默认），1-图片</p><p>枚举值：</p><ul><li>0： 文本</li><li>1： 图片</li></ul>
+        :rtype: int
+        """
+        return self._ModalType
+
+    @ModalType.setter
+    def ModalType(self, ModalType):
+        self._ModalType = ModalType
+
+    @property
+    def Category(self):
+        r"""<p>规则类别：black-普通规则(默认)，white-白名单规则；空值按black处理。white时ActionType仅允许pass(放行)，RuleItem支持白名单匹配字段(Key: ip/geo/type/content/chat_id/user_id/tool_name/tool_args/keyword_whitelist；Op: belong/not_belong/equal/not_equal/contain/not_contain/prefix/suffix/wildcard)</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Domains(self):
+        r"""<p>白名单规则生效范围：多个serviceId/domain列表（Category=white时使用），表示该白名单规则同时生效于哪些域名/serviceId。黑名单规则不使用此字段。</p>
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def AppliedModules(self):
+        r"""<p>加白生效模块type列表（Category=white时使用），表示该白名单规则命中后对哪些防护模块生效(放行)。取值：2-算力消耗规则，3-自定义防护规则，4-ToolCall防护，5-提示词攻击防护，6-内容合规检测，7-敏感数据检测。</p>
+        :rtype: list of int non-negative
+        """
+        return self._AppliedModules
+
+    @AppliedModules.setter
+    def AppliedModules(self, AppliedModules):
+        self._AppliedModules = AppliedModules
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Priority = params.get("Priority")
+        self._Status = params.get("Status")
+        self._CheckType = params.get("CheckType")
+        if params.get("RuleItem") is not None:
+            self._RuleItem = []
+            for item in params.get("RuleItem"):
+                obj = RuleItem()
+                obj._deserialize(item)
+                self._RuleItem.append(obj)
+        if params.get("Options") is not None:
+            self._Options = []
+            for item in params.get("Options"):
+                obj = LLMOptionsItem()
+                obj._deserialize(item)
+                self._Options.append(obj)
+        self._Domain = params.get("Domain")
+        self._ActionType = params.get("ActionType")
+        self._ResponseText = params.get("ResponseText")
+        self._SessionApplied = params.get("SessionApplied")
+        self._RuleId = params.get("RuleId")
+        self._PageId = params.get("PageId")
+        self._ContentLogicalOp = params.get("ContentLogicalOp")
+        self._InstanceId = params.get("InstanceId")
+        self._ReplyType = params.get("ReplyType")
+        self._CustomReplyRuleId = params.get("CustomReplyRuleId")
+        self._ModalType = params.get("ModalType")
+        self._Category = params.get("Category")
+        self._Domains = params.get("Domains")
+        self._AppliedModules = params.get("AppliedModules")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMContentRuleResponse(AbstractModel):
+    r"""ModifyLLMContentRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>操作的RuleId</p>
+        :type RuleId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        r"""<p>操作的RuleId</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLLMContentRuleStatusRequest(AbstractModel):
+    r"""ModifyLLMContentRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>状态</p>
+        :type Status: int
+        :param _Ids: <p>Id列表</p>
+        :type Ids: list of str
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        """
+        self._Status = None
+        self._Ids = None
+        self._Domain = None
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Ids(self):
+        r"""<p>Id列表</p>
+        :rtype: list of str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Ids = params.get("Ids")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMContentRuleStatusResponse(AbstractModel):
+    r"""ModifyLLMContentRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLLMKeywordLibraryRequest(AbstractModel):
+    r"""ModifyLLMKeywordLibrary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibList: 新增的关键词库列表
+        :type LibList: list of LLMKeywordLibrary
+        """
+        self._LibList = None
+
+    @property
+    def LibList(self):
+        r"""新增的关键词库列表
+        :rtype: list of LLMKeywordLibrary
+        """
+        return self._LibList
+
+    @LibList.setter
+    def LibList(self, LibList):
+        self._LibList = LibList
+
+
+    def _deserialize(self, params):
+        if params.get("LibList") is not None:
+            self._LibList = []
+            for item in params.get("LibList"):
+                obj = LLMKeywordLibrary()
+                obj._deserialize(item)
+                self._LibList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMKeywordLibraryResponse(AbstractModel):
+    r"""ModifyLLMKeywordLibrary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIds: 成功创建的列表id
+        :type RuleIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleIds = None
+        self._RequestId = None
+
+    @property
+    def RuleIds(self):
+        r"""成功创建的列表id
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleIds = params.get("RuleIds")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLLMStatusRequest(AbstractModel):
+    r"""ModifyLLMStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>开关状态。true：开启，false：关闭。</p>
+        :type Status: bool
+        :param _Domain: <p>需要操作的域名或者serviceid</p>
+        :type Domain: str
+        :param _SwitchType: <p>开关类型，用于指定要操作的防护模块开关。取值如下：<br>1：防护总开关，控制大模型防护功能的全局开启/关闭。<br>2：算力消耗防护规则开关，控制算力消耗限制功能的开启/关闭。<br>3：自定义防护规则开关，控制内容安全自定义规则功能的开启/关闭。<br>4：ToolCall 防护开关，控制工具调用安全检测功能的开启/关闭。<br>5：提示词攻击防护开关，控制提示词注入/越狱攻击检测功能的开启/关闭。<br>6：内容合规检测开关，控制输入输出内容合规检测功能的开启/关闭。<br>7：敏感数据检测开关，控制敏感信息泄露检测（DLP）功能的开启/关闭。<br>8：Skill 安全检测开关，控制 Skill/Plugin 调用安全检测功能的开启/关闭。<br>9：意图行为检测开关，控制用户意图识别与行为检测功能的开启/关闭。<br>10：恶意URL检测开关，控制响应中恶意链接检测功能的开启/关闭。</p>
+        :type SwitchType: int
+        :param _InstanceId: <p>WAF 实例 ID，表示当前操作所属的 WAF 实例。可通过 DescribeInstances 接口获取。</p>
+        :type InstanceId: str
+        """
+        self._Status = None
+        self._Domain = None
+        self._SwitchType = None
+        self._InstanceId = None
+
+    @property
+    def Status(self):
+        r"""<p>开关状态。true：开启，false：关闭。</p>
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Domain(self):
+        r"""<p>需要操作的域名或者serviceid</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SwitchType(self):
+        r"""<p>开关类型，用于指定要操作的防护模块开关。取值如下：<br>1：防护总开关，控制大模型防护功能的全局开启/关闭。<br>2：算力消耗防护规则开关，控制算力消耗限制功能的开启/关闭。<br>3：自定义防护规则开关，控制内容安全自定义规则功能的开启/关闭。<br>4：ToolCall 防护开关，控制工具调用安全检测功能的开启/关闭。<br>5：提示词攻击防护开关，控制提示词注入/越狱攻击检测功能的开启/关闭。<br>6：内容合规检测开关，控制输入输出内容合规检测功能的开启/关闭。<br>7：敏感数据检测开关，控制敏感信息泄露检测（DLP）功能的开启/关闭。<br>8：Skill 安全检测开关，控制 Skill/Plugin 调用安全检测功能的开启/关闭。<br>9：意图行为检测开关，控制用户意图识别与行为检测功能的开启/关闭。<br>10：恶意URL检测开关，控制响应中恶意链接检测功能的开启/关闭。</p>
+        :rtype: int
+        """
+        return self._SwitchType
+
+    @SwitchType.setter
+    def SwitchType(self, SwitchType):
+        self._SwitchType = SwitchType
+
+    @property
+    def InstanceId(self):
+        r"""<p>WAF 实例 ID，表示当前操作所属的 WAF 实例。可通过 DescribeInstances 接口获取。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Domain = params.get("Domain")
+        self._SwitchType = params.get("SwitchType")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMStatusResponse(AbstractModel):
+    r"""ModifyLLMStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Res: <p>操作结果，成功时返回 &quot;Success&quot;。</p>
+        :type Res: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Res = None
+        self._RequestId = None
+
+    @property
+    def Res(self):
+        r"""<p>操作结果，成功时返回 &quot;Success&quot;。</p>
+        :rtype: str
+        """
+        return self._Res
+
+    @Res.setter
+    def Res(self, Res):
+        self._Res = Res
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Res = params.get("Res")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLLMWafDLPRuleRequest(AbstractModel):
+    r"""ModifyLLMWafDLPRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>服务ID</p>
+        :type ServiceId: str
+        :param _RuleIds: <p>要修改的规则id列表</p>
+        :type RuleIds: list of str
+        :param _RuleAction: <p>动作</p>
+        :type RuleAction: str
+        :param _Status: <p>开关</p>
+        :type Status: int
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _Direction: <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+        :type Direction: int
+        """
+        self._ServiceId = None
+        self._RuleIds = None
+        self._RuleAction = None
+        self._Status = None
+        self._InstanceId = None
+        self._Direction = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def RuleIds(self):
+        r"""<p>要修改的规则id列表</p>
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RuleAction(self):
+        r"""<p>动作</p>
+        :rtype: str
+        """
+        return self._RuleAction
+
+    @RuleAction.setter
+    def RuleAction(self, RuleAction):
+        self._RuleAction = RuleAction
+
+    @property
+    def Status(self):
+        r"""<p>开关</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Direction(self):
+        r"""<p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._RuleIds = params.get("RuleIds")
+        self._RuleAction = params.get("RuleAction")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMWafDLPRuleResponse(AbstractModel):
+    r"""ModifyLLMWafDLPRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLLMWafProtectRuleRequest(AbstractModel):
+    r"""ModifyLLMWafProtectRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>服务ID</p>
+        :type ServiceId: str
+        :param _RuleIds: <p>要修改的规则id列表</p>
+        :type RuleIds: list of str
+        :param _RuleAction: <p>规则动作</p>
+        :type RuleAction: str
+        :param _Status: <p>开关</p>
+        :type Status: int
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _Direction: <p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+        :type Direction: int
+        """
+        self._ServiceId = None
+        self._RuleIds = None
+        self._RuleAction = None
+        self._Status = None
+        self._InstanceId = None
+        self._Direction = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def RuleIds(self):
+        r"""<p>要修改的规则id列表</p>
+        :rtype: list of str
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RuleAction(self):
+        r"""<p>规则动作</p>
+        :rtype: str
+        """
+        return self._RuleAction
+
+    @RuleAction.setter
+    def RuleAction(self, RuleAction):
+        self._RuleAction = RuleAction
+
+    @property
+    def Status(self):
+        r"""<p>开关</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Direction(self):
+        r"""<p>检测方向：1是入向，2是出向，3是入向和出向都检测</p>
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._RuleIds = params.get("RuleIds")
+        self._RuleAction = params.get("RuleAction")
+        self._Status = params.get("Status")
+        self._InstanceId = params.get("InstanceId")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLLMWafProtectRuleResponse(AbstractModel):
+    r"""ModifyLLMWafProtectRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyModuleStatusRequest(AbstractModel):
     r"""ModifyModuleStatus请求参数结构体
 
@@ -56648,6 +59915,235 @@ class Rule(AbstractModel):
         self._Status = params.get("Status")
         self._ModifyTime = params.get("ModifyTime")
         self._AddTime = params.get("AddTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleDetail(AbstractModel):
+    r"""aiguard规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: <p>规则ID</p>
+        :type RuleId: str
+        :param _RuleName: <p>规则名称</p>
+        :type RuleName: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Severity: <p>严重度</p>
+        :type Severity: str
+        :param _Action: <p>动作</p>
+        :type Action: str
+        :param _Status: <p>开关</p>
+        :type Status: int
+        :param _DesensitizeSample: <p>脱敏样例</p>
+        :type DesensitizeSample: str
+        :param _Direction: <p>检测方向</p><p>取值范围：[0, 3]</p>
+        :type Direction: int
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._Description = None
+        self._Severity = None
+        self._Action = None
+        self._Status = None
+        self._DesensitizeSample = None
+        self._Direction = None
+
+    @property
+    def RuleId(self):
+        r"""<p>规则ID</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""<p>规则名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Severity(self):
+        r"""<p>严重度</p>
+        :rtype: str
+        """
+        return self._Severity
+
+    @Severity.setter
+    def Severity(self, Severity):
+        self._Severity = Severity
+
+    @property
+    def Action(self):
+        r"""<p>动作</p>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Status(self):
+        r"""<p>开关</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DesensitizeSample(self):
+        r"""<p>脱敏样例</p>
+        :rtype: str
+        """
+        return self._DesensitizeSample
+
+    @DesensitizeSample.setter
+    def DesensitizeSample(self, DesensitizeSample):
+        self._DesensitizeSample = DesensitizeSample
+
+    @property
+    def Direction(self):
+        r"""<p>检测方向</p><p>取值范围：[0, 3]</p>
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Description = params.get("Description")
+        self._Severity = params.get("Severity")
+        self._Action = params.get("Action")
+        self._Status = params.get("Status")
+        self._DesensitizeSample = params.get("DesensitizeSample")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleItem(AbstractModel):
+    r"""大模型检测内容匹配
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key:  信息类型
+        :type Key: str
+        :param _Op:  操作符，默认是包含
+
+        :type Op: str
+        :param _Value: 信息类型
+        :type Value: list of str
+        :param _Levels: 信息类
+        :type Levels: list of ValueLevel
+        """
+        self._Key = None
+        self._Op = None
+        self._Value = None
+        self._Levels = None
+
+    @property
+    def Key(self):
+        r""" 信息类型
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Op(self):
+        r""" 操作符，默认是包含
+
+        :rtype: str
+        """
+        return self._Op
+
+    @Op.setter
+    def Op(self, Op):
+        self._Op = Op
+
+    @property
+    def Value(self):
+        r"""信息类型
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Levels(self):
+        r"""信息类
+        :rtype: list of ValueLevel
+        """
+        return self._Levels
+
+    @Levels.setter
+    def Levels(self, Levels):
+        self._Levels = Levels
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Op = params.get("Op")
+        self._Value = params.get("Value")
+        if params.get("Levels") is not None:
+            self._Levels = []
+            for item in params.get("Levels"):
+                obj = ValueLevel()
+                obj._deserialize(item)
+                self._Levels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63821,6 +67317,57 @@ class UserWhiteRuleItem(AbstractModel):
         self._MatchMethod = params.get("MatchMethod")
         self._MatchContent = params.get("MatchContent")
         self._MatchParams = params.get("MatchParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ValueLevel(AbstractModel):
+    r"""大模型内容安全，不当信息配置中，敏感度配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 标签，如政治等
+        :type Label: str
+        :param _Level: 敏感度
+        :type Level: int
+        """
+        self._Label = None
+        self._Level = None
+
+    @property
+    def Label(self):
+        r"""标签，如政治等
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Level(self):
+        r"""敏感度
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

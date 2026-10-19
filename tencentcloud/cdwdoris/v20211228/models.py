@@ -3293,7 +3293,7 @@ class CreateInstanceNewRequest(AbstractModel):
         :type CacheDiskSize: str
         :param _CacheDataDiskSize: <p>缓存盘大小</p>
         :type CacheDataDiskSize: int
-        :param _DiskEncrypt: <p>磁盘加密</p>
+        :param _DiskEncrypt: <p>磁盘加密</p><p>默认为0不加密，1表示加密</p>
         :type DiskEncrypt: int
         """
         self._Zone = None
@@ -3548,7 +3548,7 @@ class CreateInstanceNewRequest(AbstractModel):
 
     @property
     def DiskEncrypt(self):
-        r"""<p>磁盘加密</p>
+        r"""<p>磁盘加密</p><p>默认为0不加密，1表示加密</p>
         :rtype: int
         """
         return self._DiskEncrypt
@@ -10212,141 +10212,135 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例ID, "cdwdoris-xxxx" 字符串类型
+        :param _InstanceId: <p>集群实例ID, &quot;cdwdoris-xxxx&quot; 字符串类型</p>
         :type InstanceId: str
-        :param _InstanceName: 集群实例名称
+        :param _InstanceName: <p>集群实例名称</p>
         :type InstanceName: str
-        :param _Status: 状态,
-Init  创建中
-Serving   运行中
-Isolated   已隔离
-Changing  变更中
+        :param _Status: <p>状态,<br>Init  创建中<br>Serving   运行中<br>Isolated   已隔离<br>Changing  变更中</p>
         :type Status: str
-        :param _Version: 版本
+        :param _Version: <p>版本</p>
         :type Version: str
-        :param _Region: 地域, ap-guangzhou
+        :param _Region: <p>地域, ap-guangzhou</p>
         :type Region: str
-        :param _Zone: 可用区， ap-guangzhou-3
+        :param _Zone: <p>可用区， ap-guangzhou-3</p>
         :type Zone: str
-        :param _VpcId: 私有网络名称
+        :param _VpcId: <p>私有网络名称</p>
         :type VpcId: str
-        :param _SubnetId: 子网名称
+        :param _SubnetId: <p>子网名称</p>
         :type SubnetId: str
-        :param _PayMode: 付费类型，"hour", "prepay"
+        :param _PayMode: <p>付费类型，&quot;hour&quot;, &quot;prepay&quot;</p>
         :type PayMode: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: <p>过期时间</p>
         :type ExpireTime: str
-        :param _MasterSummary: 数据节点描述信息
+        :param _MasterSummary: <p>数据节点描述信息</p>
         :type MasterSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
-        :param _CoreSummary: zookeeper节点描述信息
+        :param _CoreSummary: <p>zookeeper节点描述信息</p>
         :type CoreSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
-        :param _HA: 高可用，"true" "false"
+        :param _HA: <p>高可用，&quot;true&quot; &quot;false&quot;</p>
         :type HA: str
-        :param _HaType: 高可用类型：
-0：非高可用
-1：读高可用
-2：读写高可用。
+        :param _HaType: <p>高可用类型：<br>0：非高可用<br>1：读高可用<br>2：读写高可用。</p>
         :type HaType: int
-        :param _AccessInfo: 访问地址，例如 "10.0.0.1:9000"
+        :param _AccessInfo: <p>访问地址，例如 &quot;10.0.0.1:9000&quot;</p>
         :type AccessInfo: str
-        :param _Id: 记录ID，数值型
+        :param _Id: <p>记录ID，数值型</p>
         :type Id: int
-        :param _RegionId: regionId, 表示地域
+        :param _RegionId: <p>regionId, 表示地域</p>
         :type RegionId: int
-        :param _ZoneDesc: 可用区说明，例如 "广州三区"
+        :param _ZoneDesc: <p>可用区说明，例如 &quot;广州三区&quot;</p>
         :type ZoneDesc: str
-        :param _FlowMsg: 错误流程说明信息
+        :param _FlowMsg: <p>错误流程说明信息</p>
         :type FlowMsg: str
-        :param _StatusDesc: 状态描述，例如“运行中”等
+        :param _StatusDesc: <p>状态描述，例如“运行中”等</p>
         :type StatusDesc: str
-        :param _RenewFlag: 自动续费标记
+        :param _RenewFlag: <p>自动续费标记</p>
         :type RenewFlag: bool
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
-        :param _Monitor: 监控信息
+        :param _Monitor: <p>监控信息</p>
         :type Monitor: str
-        :param _HasClsTopic: 是否开通日志
+        :param _HasClsTopic: <p>是否开通日志</p>
         :type HasClsTopic: bool
-        :param _ClsTopicId: 日志主题ID
+        :param _ClsTopicId: <p>日志主题ID</p>
         :type ClsTopicId: str
-        :param _ClsLogSetId: 日志集ID
+        :param _ClsLogSetId: <p>日志集ID</p>
         :type ClsLogSetId: str
-        :param _EnableXMLConfig: 是否支持xml配置管理
+        :param _EnableXMLConfig: <p>是否支持xml配置管理</p>
         :type EnableXMLConfig: int
-        :param _RegionDesc: 区域
+        :param _RegionDesc: <p>区域</p>
         :type RegionDesc: str
-        :param _Eip: 弹性网卡地址
+        :param _Eip: <p>弹性网卡地址</p>
         :type Eip: str
-        :param _CosMoveFactor: 冷热分层系数
+        :param _CosMoveFactor: <p>冷热分层系数</p>
         :type CosMoveFactor: int
-        :param _Kind: external/local/yunti
+        :param _Kind: <p>external/local/yunti</p>
         :type Kind: str
-        :param _CosBucketName: cos桶
+        :param _CosBucketName: <p>cos桶</p>
         :type CosBucketName: str
-        :param _CanAttachCbs: cbs
+        :param _CanAttachCbs: <p>cbs</p>
         :type CanAttachCbs: bool
-        :param _BuildVersion: 小版本
+        :param _BuildVersion: <p>小版本</p>
         :type BuildVersion: str
-        :param _Components: 组件信息
-注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。
+        :param _Components: <p>组件信息<br>注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。</p>
         :type Components: str
-        :param _IfExistCatalog: 判断审计日志表是否有catalog字段
+        :param _IfExistCatalog: <p>判断审计日志表是否有catalog字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IfExistCatalog: int
-        :param _Characteristic: 页面特性，用于前端屏蔽一些页面入口
+        :param _Characteristic: <p>页面特性，用于前端屏蔽一些页面入口</p>
         :type Characteristic: list of str
-        :param _RestartTimeout: 超时时间 单位s
+        :param _RestartTimeout: <p>超时时间 单位s</p>
         :type RestartTimeout: str
-        :param _GraceShutdownWaitSeconds: 内核优雅重启超时时间，如果为-1说明未设置
+        :param _GraceShutdownWaitSeconds: <p>内核优雅重启超时时间，如果为-1说明未设置</p>
         :type GraceShutdownWaitSeconds: str
-        :param _CaseSensitive: 表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+        :param _CaseSensitive: <p>表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储</p>
         :type CaseSensitive: int
-        :param _IsWhiteSGs: 用户是否可以绑定安全组
+        :param _IsWhiteSGs: <p>用户是否可以绑定安全组</p>
         :type IsWhiteSGs: bool
-        :param _BindSGs: 已绑定的安全组信息
+        :param _BindSGs: <p>已绑定的安全组信息</p>
         :type BindSGs: list of str
-        :param _EnableMultiZones: 是否为多可用区
+        :param _EnableMultiZones: <p>是否为多可用区</p>
         :type EnableMultiZones: bool
-        :param _UserNetworkInfos: 用户可用区和子网信息
+        :param _UserNetworkInfos: <p>用户可用区和子网信息</p>
         :type UserNetworkInfos: str
-        :param _EnableCoolDown: 是否启用冷热分层。0：未开启 1：已开启
+        :param _EnableCoolDown: <p>是否启用冷热分层。0：未开启 1：已开启</p>
         :type EnableCoolDown: int
-        :param _CoolDownBucket: 冷热分层使用COS桶
+        :param _CoolDownBucket: <p>冷热分层使用COS桶</p>
         :type CoolDownBucket: str
-        :param _Details: 实例扩展信息
+        :param _Details: <p>实例扩展信息</p>
         :type Details: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceDetail`
-        :param _EnableDlc: 是否启用DLC 0:关闭 1:开启
+        :param _EnableDlc: <p>是否启用DLC 0:关闭 1:开启</p>
         :type EnableDlc: int
-        :param _AccountType: 账户类型 0:普通用户 1:CAM用户
+        :param _AccountType: <p>账户类型 0:普通用户 1:CAM用户</p>
         :type AccountType: int
-        :param _MonitorMode: 监控模式 0: 老监控 1：新监控
+        :param _MonitorMode: <p>监控模式 0: 老监控 1：新监控</p>
         :type MonitorMode: int
-        :param _CNSummary: cn节点信息
+        :param _CNSummary: <p>cn节点信息</p>
         :type CNSummary: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
-        :param _ComputeGroupCount: 计算组个数
+        :param _ComputeGroupCount: <p>计算组个数</p>
         :type ComputeGroupCount: int
-        :param _CosStorageSize: 存算分离cos存储数据
+        :param _CosStorageSize: <p>存算分离cos存储数据</p>
         :type CosStorageSize: float
-        :param _IsMasterNonVM: 存算分离的指标 当是true 不支持新建计算组
+        :param _IsMasterNonVM: <p>存算分离的指标 当是true 不支持新建计算组</p>
         :type IsMasterNonVM: bool
-        :param _CosPkgCapacity: Cos容量包大小
+        :param _CosPkgCapacity: <p>Cos容量包大小</p>
         :type CosPkgCapacity: int
-        :param _UseManagedBucket: 集群是否使用托管桶
+        :param _UseManagedBucket: <p>集群是否使用托管桶</p>
         :type UseManagedBucket: bool
-        :param _InstanceType: 集群类型
+        :param _InstanceType: <p>集群类型</p>
         :type InstanceType: str
-        :param _MasterInstance: 对应主集群
+        :param _MasterInstance: <p>对应主集群</p>
         :type MasterInstance: str
-        :param _SlaveInstances: 对应备集群
+        :param _SlaveInstances: <p>对应备集群</p>
         :type SlaveInstances: list of str
-        :param _SyncerIp: ccr服务部署节点ip
+        :param _SyncerIp: <p>ccr服务部署节点ip</p>
         :type SyncerIp: str
-        :param _EnableSqlConv: 是否支持sql convertor
+        :param _EnableSqlConv: <p>是否支持sql convertor</p>
         :type EnableSqlConv: int
-        :param _TimeZone: 集群时区，默认+08:00
+        :param _TimeZone: <p>集群时区，默认+08:00</p>
         :type TimeZone: str
+        :param _CacheDiskType: <p>缓存盘介质：任一计算组为单副本SSD即ELASTIC_REMOTE_SSD（不支持变配多可用区部署等），否则为默认计算组介质；非存算分离为空</p>
+        :type CacheDiskType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -10411,10 +10405,11 @@ Changing  变更中
         self._SyncerIp = None
         self._EnableSqlConv = None
         self._TimeZone = None
+        self._CacheDiskType = None
 
     @property
     def InstanceId(self):
-        r"""集群实例ID, "cdwdoris-xxxx" 字符串类型
+        r"""<p>集群实例ID, &quot;cdwdoris-xxxx&quot; 字符串类型</p>
         :rtype: str
         """
         return self._InstanceId
@@ -10425,7 +10420,7 @@ Changing  变更中
 
     @property
     def InstanceName(self):
-        r"""集群实例名称
+        r"""<p>集群实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -10436,11 +10431,7 @@ Changing  变更中
 
     @property
     def Status(self):
-        r"""状态,
-Init  创建中
-Serving   运行中
-Isolated   已隔离
-Changing  变更中
+        r"""<p>状态,<br>Init  创建中<br>Serving   运行中<br>Isolated   已隔离<br>Changing  变更中</p>
         :rtype: str
         """
         return self._Status
@@ -10451,7 +10442,7 @@ Changing  变更中
 
     @property
     def Version(self):
-        r"""版本
+        r"""<p>版本</p>
         :rtype: str
         """
         return self._Version
@@ -10462,7 +10453,7 @@ Changing  变更中
 
     @property
     def Region(self):
-        r"""地域, ap-guangzhou
+        r"""<p>地域, ap-guangzhou</p>
         :rtype: str
         """
         return self._Region
@@ -10473,7 +10464,7 @@ Changing  变更中
 
     @property
     def Zone(self):
-        r"""可用区， ap-guangzhou-3
+        r"""<p>可用区， ap-guangzhou-3</p>
         :rtype: str
         """
         return self._Zone
@@ -10484,7 +10475,7 @@ Changing  变更中
 
     @property
     def VpcId(self):
-        r"""私有网络名称
+        r"""<p>私有网络名称</p>
         :rtype: str
         """
         return self._VpcId
@@ -10495,7 +10486,7 @@ Changing  变更中
 
     @property
     def SubnetId(self):
-        r"""子网名称
+        r"""<p>子网名称</p>
         :rtype: str
         """
         return self._SubnetId
@@ -10506,7 +10497,7 @@ Changing  变更中
 
     @property
     def PayMode(self):
-        r"""付费类型，"hour", "prepay"
+        r"""<p>付费类型，&quot;hour&quot;, &quot;prepay&quot;</p>
         :rtype: str
         """
         return self._PayMode
@@ -10517,7 +10508,7 @@ Changing  变更中
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10528,7 +10519,7 @@ Changing  变更中
 
     @property
     def ExpireTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -10539,7 +10530,7 @@ Changing  变更中
 
     @property
     def MasterSummary(self):
-        r"""数据节点描述信息
+        r"""<p>数据节点描述信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         """
         return self._MasterSummary
@@ -10550,7 +10541,7 @@ Changing  变更中
 
     @property
     def CoreSummary(self):
-        r"""zookeeper节点描述信息
+        r"""<p>zookeeper节点描述信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         """
         return self._CoreSummary
@@ -10561,7 +10552,7 @@ Changing  变更中
 
     @property
     def HA(self):
-        r"""高可用，"true" "false"
+        r"""<p>高可用，&quot;true&quot; &quot;false&quot;</p>
         :rtype: str
         """
         return self._HA
@@ -10572,10 +10563,7 @@ Changing  变更中
 
     @property
     def HaType(self):
-        r"""高可用类型：
-0：非高可用
-1：读高可用
-2：读写高可用。
+        r"""<p>高可用类型：<br>0：非高可用<br>1：读高可用<br>2：读写高可用。</p>
         :rtype: int
         """
         return self._HaType
@@ -10586,7 +10574,7 @@ Changing  变更中
 
     @property
     def AccessInfo(self):
-        r"""访问地址，例如 "10.0.0.1:9000"
+        r"""<p>访问地址，例如 &quot;10.0.0.1:9000&quot;</p>
         :rtype: str
         """
         return self._AccessInfo
@@ -10597,7 +10585,7 @@ Changing  变更中
 
     @property
     def Id(self):
-        r"""记录ID，数值型
+        r"""<p>记录ID，数值型</p>
         :rtype: int
         """
         return self._Id
@@ -10608,7 +10596,7 @@ Changing  变更中
 
     @property
     def RegionId(self):
-        r"""regionId, 表示地域
+        r"""<p>regionId, 表示地域</p>
         :rtype: int
         """
         return self._RegionId
@@ -10619,7 +10607,7 @@ Changing  变更中
 
     @property
     def ZoneDesc(self):
-        r"""可用区说明，例如 "广州三区"
+        r"""<p>可用区说明，例如 &quot;广州三区&quot;</p>
         :rtype: str
         """
         return self._ZoneDesc
@@ -10630,7 +10618,7 @@ Changing  变更中
 
     @property
     def FlowMsg(self):
-        r"""错误流程说明信息
+        r"""<p>错误流程说明信息</p>
         :rtype: str
         """
         return self._FlowMsg
@@ -10641,7 +10629,7 @@ Changing  变更中
 
     @property
     def StatusDesc(self):
-        r"""状态描述，例如“运行中”等
+        r"""<p>状态描述，例如“运行中”等</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -10652,7 +10640,7 @@ Changing  变更中
 
     @property
     def RenewFlag(self):
-        r"""自动续费标记
+        r"""<p>自动续费标记</p>
         :rtype: bool
         """
         return self._RenewFlag
@@ -10663,7 +10651,7 @@ Changing  变更中
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -10674,7 +10662,7 @@ Changing  变更中
 
     @property
     def Monitor(self):
-        r"""监控信息
+        r"""<p>监控信息</p>
         :rtype: str
         """
         return self._Monitor
@@ -10685,7 +10673,7 @@ Changing  变更中
 
     @property
     def HasClsTopic(self):
-        r"""是否开通日志
+        r"""<p>是否开通日志</p>
         :rtype: bool
         """
         return self._HasClsTopic
@@ -10696,7 +10684,7 @@ Changing  变更中
 
     @property
     def ClsTopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._ClsTopicId
@@ -10707,7 +10695,7 @@ Changing  变更中
 
     @property
     def ClsLogSetId(self):
-        r"""日志集ID
+        r"""<p>日志集ID</p>
         :rtype: str
         """
         return self._ClsLogSetId
@@ -10718,7 +10706,7 @@ Changing  变更中
 
     @property
     def EnableXMLConfig(self):
-        r"""是否支持xml配置管理
+        r"""<p>是否支持xml配置管理</p>
         :rtype: int
         """
         return self._EnableXMLConfig
@@ -10729,7 +10717,7 @@ Changing  变更中
 
     @property
     def RegionDesc(self):
-        r"""区域
+        r"""<p>区域</p>
         :rtype: str
         """
         return self._RegionDesc
@@ -10740,7 +10728,7 @@ Changing  变更中
 
     @property
     def Eip(self):
-        r"""弹性网卡地址
+        r"""<p>弹性网卡地址</p>
         :rtype: str
         """
         return self._Eip
@@ -10751,7 +10739,7 @@ Changing  变更中
 
     @property
     def CosMoveFactor(self):
-        r"""冷热分层系数
+        r"""<p>冷热分层系数</p>
         :rtype: int
         """
         return self._CosMoveFactor
@@ -10762,7 +10750,7 @@ Changing  变更中
 
     @property
     def Kind(self):
-        r"""external/local/yunti
+        r"""<p>external/local/yunti</p>
         :rtype: str
         """
         return self._Kind
@@ -10773,7 +10761,7 @@ Changing  变更中
 
     @property
     def CosBucketName(self):
-        r"""cos桶
+        r"""<p>cos桶</p>
         :rtype: str
         """
         return self._CosBucketName
@@ -10784,7 +10772,7 @@ Changing  变更中
 
     @property
     def CanAttachCbs(self):
-        r"""cbs
+        r"""<p>cbs</p>
         :rtype: bool
         """
         return self._CanAttachCbs
@@ -10795,7 +10783,7 @@ Changing  变更中
 
     @property
     def BuildVersion(self):
-        r"""小版本
+        r"""<p>小版本</p>
         :rtype: str
         """
         return self._BuildVersion
@@ -10806,8 +10794,7 @@ Changing  变更中
 
     @property
     def Components(self):
-        r"""组件信息
-注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。
+        r"""<p>组件信息<br>注：这里返回类型实际为map[string]struct类型，并非显示的string类型，可以参考“示例值”进行数据的解析。</p>
         :rtype: str
         """
         return self._Components
@@ -10820,7 +10807,7 @@ Changing  变更中
     def IfExistCatalog(self):
         warnings.warn("parameter `IfExistCatalog` is deprecated", DeprecationWarning) 
 
-        r"""判断审计日志表是否有catalog字段
+        r"""<p>判断审计日志表是否有catalog字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10834,7 +10821,7 @@ Changing  变更中
 
     @property
     def Characteristic(self):
-        r"""页面特性，用于前端屏蔽一些页面入口
+        r"""<p>页面特性，用于前端屏蔽一些页面入口</p>
         :rtype: list of str
         """
         return self._Characteristic
@@ -10845,7 +10832,7 @@ Changing  变更中
 
     @property
     def RestartTimeout(self):
-        r"""超时时间 单位s
+        r"""<p>超时时间 单位s</p>
         :rtype: str
         """
         return self._RestartTimeout
@@ -10856,7 +10843,7 @@ Changing  变更中
 
     @property
     def GraceShutdownWaitSeconds(self):
-        r"""内核优雅重启超时时间，如果为-1说明未设置
+        r"""<p>内核优雅重启超时时间，如果为-1说明未设置</p>
         :rtype: str
         """
         return self._GraceShutdownWaitSeconds
@@ -10867,7 +10854,7 @@ Changing  变更中
 
     @property
     def CaseSensitive(self):
-        r"""表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储
+        r"""<p>表名大小写是否敏感，0：敏感；1：不敏感，以小写进行比较；2：不敏感，表名改为以小写存储</p>
         :rtype: int
         """
         return self._CaseSensitive
@@ -10878,7 +10865,7 @@ Changing  变更中
 
     @property
     def IsWhiteSGs(self):
-        r"""用户是否可以绑定安全组
+        r"""<p>用户是否可以绑定安全组</p>
         :rtype: bool
         """
         return self._IsWhiteSGs
@@ -10889,7 +10876,7 @@ Changing  变更中
 
     @property
     def BindSGs(self):
-        r"""已绑定的安全组信息
+        r"""<p>已绑定的安全组信息</p>
         :rtype: list of str
         """
         return self._BindSGs
@@ -10900,7 +10887,7 @@ Changing  变更中
 
     @property
     def EnableMultiZones(self):
-        r"""是否为多可用区
+        r"""<p>是否为多可用区</p>
         :rtype: bool
         """
         return self._EnableMultiZones
@@ -10911,7 +10898,7 @@ Changing  变更中
 
     @property
     def UserNetworkInfos(self):
-        r"""用户可用区和子网信息
+        r"""<p>用户可用区和子网信息</p>
         :rtype: str
         """
         return self._UserNetworkInfos
@@ -10922,7 +10909,7 @@ Changing  变更中
 
     @property
     def EnableCoolDown(self):
-        r"""是否启用冷热分层。0：未开启 1：已开启
+        r"""<p>是否启用冷热分层。0：未开启 1：已开启</p>
         :rtype: int
         """
         return self._EnableCoolDown
@@ -10933,7 +10920,7 @@ Changing  变更中
 
     @property
     def CoolDownBucket(self):
-        r"""冷热分层使用COS桶
+        r"""<p>冷热分层使用COS桶</p>
         :rtype: str
         """
         return self._CoolDownBucket
@@ -10944,7 +10931,7 @@ Changing  变更中
 
     @property
     def Details(self):
-        r"""实例扩展信息
+        r"""<p>实例扩展信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.InstanceDetail`
         """
         return self._Details
@@ -10955,7 +10942,7 @@ Changing  变更中
 
     @property
     def EnableDlc(self):
-        r"""是否启用DLC 0:关闭 1:开启
+        r"""<p>是否启用DLC 0:关闭 1:开启</p>
         :rtype: int
         """
         return self._EnableDlc
@@ -10966,7 +10953,7 @@ Changing  变更中
 
     @property
     def AccountType(self):
-        r"""账户类型 0:普通用户 1:CAM用户
+        r"""<p>账户类型 0:普通用户 1:CAM用户</p>
         :rtype: int
         """
         return self._AccountType
@@ -10977,7 +10964,7 @@ Changing  变更中
 
     @property
     def MonitorMode(self):
-        r"""监控模式 0: 老监控 1：新监控
+        r"""<p>监控模式 0: 老监控 1：新监控</p>
         :rtype: int
         """
         return self._MonitorMode
@@ -10988,7 +10975,7 @@ Changing  变更中
 
     @property
     def CNSummary(self):
-        r"""cn节点信息
+        r"""<p>cn节点信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.NodesSummary`
         """
         return self._CNSummary
@@ -10999,7 +10986,7 @@ Changing  变更中
 
     @property
     def ComputeGroupCount(self):
-        r"""计算组个数
+        r"""<p>计算组个数</p>
         :rtype: int
         """
         return self._ComputeGroupCount
@@ -11010,7 +10997,7 @@ Changing  变更中
 
     @property
     def CosStorageSize(self):
-        r"""存算分离cos存储数据
+        r"""<p>存算分离cos存储数据</p>
         :rtype: float
         """
         return self._CosStorageSize
@@ -11021,7 +11008,7 @@ Changing  变更中
 
     @property
     def IsMasterNonVM(self):
-        r"""存算分离的指标 当是true 不支持新建计算组
+        r"""<p>存算分离的指标 当是true 不支持新建计算组</p>
         :rtype: bool
         """
         return self._IsMasterNonVM
@@ -11032,7 +11019,7 @@ Changing  变更中
 
     @property
     def CosPkgCapacity(self):
-        r"""Cos容量包大小
+        r"""<p>Cos容量包大小</p>
         :rtype: int
         """
         return self._CosPkgCapacity
@@ -11043,7 +11030,7 @@ Changing  变更中
 
     @property
     def UseManagedBucket(self):
-        r"""集群是否使用托管桶
+        r"""<p>集群是否使用托管桶</p>
         :rtype: bool
         """
         return self._UseManagedBucket
@@ -11054,7 +11041,7 @@ Changing  变更中
 
     @property
     def InstanceType(self):
-        r"""集群类型
+        r"""<p>集群类型</p>
         :rtype: str
         """
         return self._InstanceType
@@ -11065,7 +11052,7 @@ Changing  变更中
 
     @property
     def MasterInstance(self):
-        r"""对应主集群
+        r"""<p>对应主集群</p>
         :rtype: str
         """
         return self._MasterInstance
@@ -11076,7 +11063,7 @@ Changing  变更中
 
     @property
     def SlaveInstances(self):
-        r"""对应备集群
+        r"""<p>对应备集群</p>
         :rtype: list of str
         """
         return self._SlaveInstances
@@ -11087,7 +11074,7 @@ Changing  变更中
 
     @property
     def SyncerIp(self):
-        r"""ccr服务部署节点ip
+        r"""<p>ccr服务部署节点ip</p>
         :rtype: str
         """
         return self._SyncerIp
@@ -11098,7 +11085,7 @@ Changing  变更中
 
     @property
     def EnableSqlConv(self):
-        r"""是否支持sql convertor
+        r"""<p>是否支持sql convertor</p>
         :rtype: int
         """
         return self._EnableSqlConv
@@ -11109,7 +11096,7 @@ Changing  变更中
 
     @property
     def TimeZone(self):
-        r"""集群时区，默认+08:00
+        r"""<p>集群时区，默认+08:00</p>
         :rtype: str
         """
         return self._TimeZone
@@ -11117,6 +11104,17 @@ Changing  变更中
     @TimeZone.setter
     def TimeZone(self, TimeZone):
         self._TimeZone = TimeZone
+
+    @property
+    def CacheDiskType(self):
+        r"""<p>缓存盘介质：任一计算组为单副本SSD即ELASTIC_REMOTE_SSD（不支持变配多可用区部署等），否则为默认计算组介质；非存算分离为空</p>
+        :rtype: str
+        """
+        return self._CacheDiskType
+
+    @CacheDiskType.setter
+    def CacheDiskType(self, CacheDiskType):
+        self._CacheDiskType = CacheDiskType
 
 
     def _deserialize(self, params):
@@ -11196,6 +11194,7 @@ Changing  变更中
         self._SyncerIp = params.get("SyncerIp")
         self._EnableSqlConv = params.get("EnableSqlConv")
         self._TimeZone = params.get("TimeZone")
+        self._CacheDiskType = params.get("CacheDiskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14854,26 +14853,28 @@ class ResourceSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 规格名称，例如“SCH1"
+        :param _Name: <p>规格名称，例如“SCH1&quot;</p>
         :type Name: str
-        :param _Cpu: cpu核数
+        :param _Cpu: <p>cpu核数</p>
         :type Cpu: int
-        :param _Mem: 内存大小，单位G
+        :param _Mem: <p>内存大小，单位G</p>
         :type Mem: int
-        :param _Type: 分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO
+        :param _Type: <p>分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO</p>
         :type Type: str
-        :param _SystemDisk: 系统盘描述信息
+        :param _SystemDisk: <p>系统盘描述信息</p>
         :type SystemDisk: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
-        :param _DataDisk: 数据盘描述信息
+        :param _DataDisk: <p>数据盘描述信息</p>
         :type DataDisk: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
-        :param _MaxNodeSize: 最大节点数目限制
+        :param _MaxNodeSize: <p>最大节点数目限制</p>
         :type MaxNodeSize: int
-        :param _Available: 是否可用，false代表售罄
+        :param _Available: <p>是否可用，false代表售罄</p>
         :type Available: bool
-        :param _ComputeSpecDesc: 规格描述信息
+        :param _ComputeSpecDesc: <p>规格描述信息</p>
         :type ComputeSpecDesc: str
-        :param _InstanceQuota: cvm库存
+        :param _InstanceQuota: <p>cvm库存</p>
         :type InstanceQuota: int
+        :param _ComputeGroupSuffix: <p>计算组ID自定义后缀。1到8位小写字母、数字或连字符，首尾须为字母或数字；不传则随机生成8位后缀。最终计算组ID格式为实例ID-后缀，同时作为内核计算组名</p>
+        :type ComputeGroupSuffix: str
         """
         self._Name = None
         self._Cpu = None
@@ -14885,10 +14886,11 @@ class ResourceSpec(AbstractModel):
         self._Available = None
         self._ComputeSpecDesc = None
         self._InstanceQuota = None
+        self._ComputeGroupSuffix = None
 
     @property
     def Name(self):
-        r"""规格名称，例如“SCH1"
+        r"""<p>规格名称，例如“SCH1&quot;</p>
         :rtype: str
         """
         return self._Name
@@ -14899,7 +14901,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""cpu核数
+        r"""<p>cpu核数</p>
         :rtype: int
         """
         return self._Cpu
@@ -14910,7 +14912,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def Mem(self):
-        r"""内存大小，单位G
+        r"""<p>内存大小，单位G</p>
         :rtype: int
         """
         return self._Mem
@@ -14921,7 +14923,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def Type(self):
-        r"""分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO
+        r"""<p>分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO</p>
         :rtype: str
         """
         return self._Type
@@ -14932,7 +14934,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""系统盘描述信息
+        r"""<p>系统盘描述信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
         """
         return self._SystemDisk
@@ -14943,7 +14945,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def DataDisk(self):
-        r"""数据盘描述信息
+        r"""<p>数据盘描述信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DiskSpec`
         """
         return self._DataDisk
@@ -14954,7 +14956,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def MaxNodeSize(self):
-        r"""最大节点数目限制
+        r"""<p>最大节点数目限制</p>
         :rtype: int
         """
         return self._MaxNodeSize
@@ -14965,7 +14967,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def Available(self):
-        r"""是否可用，false代表售罄
+        r"""<p>是否可用，false代表售罄</p>
         :rtype: bool
         """
         return self._Available
@@ -14976,7 +14978,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def ComputeSpecDesc(self):
-        r"""规格描述信息
+        r"""<p>规格描述信息</p>
         :rtype: str
         """
         return self._ComputeSpecDesc
@@ -14987,7 +14989,7 @@ class ResourceSpec(AbstractModel):
 
     @property
     def InstanceQuota(self):
-        r"""cvm库存
+        r"""<p>cvm库存</p>
         :rtype: int
         """
         return self._InstanceQuota
@@ -14995,6 +14997,17 @@ class ResourceSpec(AbstractModel):
     @InstanceQuota.setter
     def InstanceQuota(self, InstanceQuota):
         self._InstanceQuota = InstanceQuota
+
+    @property
+    def ComputeGroupSuffix(self):
+        r"""<p>计算组ID自定义后缀。1到8位小写字母、数字或连字符，首尾须为字母或数字；不传则随机生成8位后缀。最终计算组ID格式为实例ID-后缀，同时作为内核计算组名</p>
+        :rtype: str
+        """
+        return self._ComputeGroupSuffix
+
+    @ComputeGroupSuffix.setter
+    def ComputeGroupSuffix(self, ComputeGroupSuffix):
+        self._ComputeGroupSuffix = ComputeGroupSuffix
 
 
     def _deserialize(self, params):
@@ -15012,6 +15025,7 @@ class ResourceSpec(AbstractModel):
         self._Available = params.get("Available")
         self._ComputeSpecDesc = params.get("ComputeSpecDesc")
         self._InstanceQuota = params.get("InstanceQuota")
+        self._ComputeGroupSuffix = params.get("ComputeGroupSuffix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

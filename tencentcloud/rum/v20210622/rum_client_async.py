@@ -981,6 +981,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeFileCertificate(
+            self,
+            request: models.DescribeFileCertificateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFileCertificateResponse:
+        """
+        获取COS存储的临时密钥，具体到ProjectId
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFileCertificate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFileCertificateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeIssuesDistribution(
             self,
             request: models.DescribeIssuesDistributionRequest,

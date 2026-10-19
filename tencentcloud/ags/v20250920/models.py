@@ -924,6 +924,57 @@ class CancelRegistryRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Capabilities(AbstractModel):
+    r"""可以添加到正在运行的容器中或从中移除的 POSIX POSIX capabilities。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Add: <p>要添加的capabilities</p><p>取值参考：[&quot;SYS_ADMIN&quot;]</p>
+        :type Add: list of str
+        :param _Drop: <p>要移除的capabilities</p><p>取值参考：[&quot;ALL&quot;]</p>
+        :type Drop: list of str
+        """
+        self._Add = None
+        self._Drop = None
+
+    @property
+    def Add(self):
+        r"""<p>要添加的capabilities</p><p>取值参考：[&quot;SYS_ADMIN&quot;]</p>
+        :rtype: list of str
+        """
+        return self._Add
+
+    @Add.setter
+    def Add(self, Add):
+        self._Add = Add
+
+    @property
+    def Drop(self):
+        r"""<p>要移除的capabilities</p><p>取值参考：[&quot;ALL&quot;]</p>
+        :rtype: list of str
+        """
+        return self._Drop
+
+    @Drop.setter
+    def Drop(self, Drop):
+        self._Drop = Drop
+
+
+    def _deserialize(self, params):
+        self._Add = params.get("Add")
+        self._Drop = params.get("Drop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CfsStorageSource(AbstractModel):
     r"""文件存储配置
 
@@ -4311,6 +4362,8 @@ class CustomConfiguration(AbstractModel):
         :type Probe: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
         :param _DNSConfig: <p>沙箱 DNS 配置</p>
         :type DNSConfig: :class:`tencentcloud.ags.v20250920.models.DNSConfig`
+        :param _SecurityContext: <p>沙箱安全上下文</p>
+        :type SecurityContext: :class:`tencentcloud.ags.v20250920.models.SecurityContext`
         """
         self._Image = None
         self._ImageRegistryType = None
@@ -4321,6 +4374,7 @@ class CustomConfiguration(AbstractModel):
         self._Resources = None
         self._Probe = None
         self._DNSConfig = None
+        self._SecurityContext = None
 
     @property
     def Image(self):
@@ -4421,6 +4475,17 @@ class CustomConfiguration(AbstractModel):
     def DNSConfig(self, DNSConfig):
         self._DNSConfig = DNSConfig
 
+    @property
+    def SecurityContext(self):
+        r"""<p>沙箱安全上下文</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SecurityContext`
+        """
+        return self._SecurityContext
+
+    @SecurityContext.setter
+    def SecurityContext(self, SecurityContext):
+        self._SecurityContext = SecurityContext
+
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
@@ -4448,6 +4513,9 @@ class CustomConfiguration(AbstractModel):
         if params.get("DNSConfig") is not None:
             self._DNSConfig = DNSConfig()
             self._DNSConfig._deserialize(params.get("DNSConfig"))
+        if params.get("SecurityContext") is not None:
+            self._SecurityContext = SecurityContext()
+            self._SecurityContext._deserialize(params.get("SecurityContext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4485,6 +4553,8 @@ class CustomConfigurationDetail(AbstractModel):
         :type Probe: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
         :param _DNSConfig: <p>沙箱 DNS 配置</p>
         :type DNSConfig: :class:`tencentcloud.ags.v20250920.models.DNSConfig`
+        :param _SecurityContext: <p>沙箱安全上下文</p>
+        :type SecurityContext: :class:`tencentcloud.ags.v20250920.models.SecurityContext`
         """
         self._Image = None
         self._ImageRegistryType = None
@@ -4496,6 +4566,7 @@ class CustomConfigurationDetail(AbstractModel):
         self._Resources = None
         self._Probe = None
         self._DNSConfig = None
+        self._SecurityContext = None
 
     @property
     def Image(self):
@@ -4607,6 +4678,17 @@ class CustomConfigurationDetail(AbstractModel):
     def DNSConfig(self, DNSConfig):
         self._DNSConfig = DNSConfig
 
+    @property
+    def SecurityContext(self):
+        r"""<p>沙箱安全上下文</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.SecurityContext`
+        """
+        return self._SecurityContext
+
+    @SecurityContext.setter
+    def SecurityContext(self, SecurityContext):
+        self._SecurityContext = SecurityContext
+
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
@@ -4635,6 +4717,9 @@ class CustomConfigurationDetail(AbstractModel):
         if params.get("DNSConfig") is not None:
             self._DNSConfig = DNSConfig()
             self._DNSConfig._deserialize(params.get("DNSConfig"))
+        if params.get("SecurityContext") is not None:
+            self._SecurityContext = SecurityContext()
+            self._SecurityContext._deserialize(params.get("SecurityContext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4813,6 +4898,115 @@ class DeleteDeploymentRequest(AbstractModel):
 
 class DeleteDeploymentResponse(AbstractModel):
     r"""DeleteDeployment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePreCacheImageRequest(AbstractModel):
+    r"""DeletePreCacheImage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImageDigest: <p>镜像仓库配置</p>
+        :type ImageDigest: str
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+        :type ImageRegistryType: str
+        :param _PreCacheImageId: <p>镜像预热ID</p>
+        :type PreCacheImageId: str
+        """
+        self._Image = None
+        self._ImageDigest = None
+        self._ImageRegistryType = None
+        self._PreCacheImageId = None
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageDigest(self):
+        r"""<p>镜像仓库配置</p>
+        :rtype: str
+        """
+        return self._ImageDigest
+
+    @ImageDigest.setter
+    def ImageDigest(self, ImageDigest):
+        self._ImageDigest = ImageDigest
+
+    @property
+    def ImageRegistryType(self):
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+    @property
+    def PreCacheImageId(self):
+        r"""<p>镜像预热ID</p>
+        :rtype: str
+        """
+        return self._PreCacheImageId
+
+    @PreCacheImageId.setter
+    def PreCacheImageId(self, PreCacheImageId):
+        self._PreCacheImageId = PreCacheImageId
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._ImageDigest = params.get("ImageDigest")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        self._PreCacheImageId = params.get("PreCacheImageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePreCacheImageResponse(AbstractModel):
+    r"""DeletePreCacheImage返回参数结构体
 
     """
 
@@ -6003,6 +6197,170 @@ class DescribeEventsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Events.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePreCacheImageListRequest(AbstractModel):
+    r"""DescribePreCacheImageList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>查询过滤条件。支持 Image, ImageDigest, ImageRegistryType, Status, SourceType；不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
+        :type Filters: list of Filter
+        :param _MaxResults: <p>返回数据列数</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type MaxResults: int
+        :param _NextToken: <p>NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。</p>
+        :type NextToken: str
+        :param _NeedTotalCount: <p>默认 false；仅控制是否返回精确总数</p>
+        :type NeedTotalCount: bool
+        """
+        self._Filters = None
+        self._MaxResults = None
+        self._NextToken = None
+        self._NeedTotalCount = None
+
+    @property
+    def Filters(self):
+        r"""<p>查询过滤条件。支持 Image, ImageDigest, ImageRegistryType, Status, SourceType；不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def MaxResults(self):
+        r"""<p>返回数据列数</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""<p>NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def NeedTotalCount(self):
+        r"""<p>默认 false；仅控制是否返回精确总数</p>
+        :rtype: bool
+        """
+        return self._NeedTotalCount
+
+    @NeedTotalCount.setter
+    def NeedTotalCount(self, NeedTotalCount):
+        self._NeedTotalCount = NeedTotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
+        self._NeedTotalCount = params.get("NeedTotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePreCacheImageListResponse(AbstractModel):
+    r"""DescribePreCacheImageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>镜像预热总数</p>
+        :type TotalCount: int
+        :param _PreCacheImageList: <p>镜像预热列表</p>
+        :type PreCacheImageList: list of PreCacheImage
+        :param _NextToken: <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。</p>
+        :type NextToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PreCacheImageList = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>镜像预热总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PreCacheImageList(self):
+        r"""<p>镜像预热列表</p>
+        :rtype: list of PreCacheImage
+        """
+        return self._PreCacheImageList
+
+    @PreCacheImageList.setter
+    def PreCacheImageList(self, PreCacheImageList):
+        self._PreCacheImageList = PreCacheImageList
+
+    @property
+    def NextToken(self):
+        r"""<p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PreCacheImageList") is not None:
+            self._PreCacheImageList = []
+            for item in params.get("PreCacheImageList"):
+                obj = PreCacheImage()
+                obj._deserialize(item)
+                self._PreCacheImageList.append(obj)
+        self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -10442,6 +10800,162 @@ class PortConfiguration(AbstractModel):
         
 
 
+class PreCacheImage(AbstractModel):
+    r"""镜像预热产物
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImageDigest: <p>镜像 Digest</p>
+        :type ImageDigest: str
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+        :type ImageRegistryType: str
+        :param _Status: <p>镜像预热状态</p>
+        :type Status: str
+        :param _CreateTime: <p>镜像预热创建时间</p>
+        :type CreateTime: str
+        :param _PreCacheImageId: <p>镜像预热ID</p>
+        :type PreCacheImageId: str
+        :param _SourceType: <p>镜像预热来源</p><p>枚举值：</p><ul><li>AUTO： Sandbox Tool / Instance 自动预热</li><li>EXPLICIT： 手动预热</li><li>TCR_AUTO： TCR自动预热</li></ul>
+        :type SourceType: str
+        :param _CachedImageSizeBytes: <p>镜像预热存储大小</p><p>单位：Byte</p>
+        :type CachedImageSizeBytes: int
+        :param _LastUsedTime: <p>该预热镜像最近一次被沙箱实例使用时间</p>
+        :type LastUsedTime: str
+        """
+        self._Image = None
+        self._ImageDigest = None
+        self._ImageRegistryType = None
+        self._Status = None
+        self._CreateTime = None
+        self._PreCacheImageId = None
+        self._SourceType = None
+        self._CachedImageSizeBytes = None
+        self._LastUsedTime = None
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImageDigest(self):
+        r"""<p>镜像 Digest</p>
+        :rtype: str
+        """
+        return self._ImageDigest
+
+    @ImageDigest.setter
+    def ImageDigest(self, ImageDigest):
+        self._ImageDigest = ImageDigest
+
+    @property
+    def ImageRegistryType(self):
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
+        :rtype: str
+        """
+        return self._ImageRegistryType
+
+    @ImageRegistryType.setter
+    def ImageRegistryType(self, ImageRegistryType):
+        self._ImageRegistryType = ImageRegistryType
+
+    @property
+    def Status(self):
+        r"""<p>镜像预热状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>镜像预热创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PreCacheImageId(self):
+        r"""<p>镜像预热ID</p>
+        :rtype: str
+        """
+        return self._PreCacheImageId
+
+    @PreCacheImageId.setter
+    def PreCacheImageId(self, PreCacheImageId):
+        self._PreCacheImageId = PreCacheImageId
+
+    @property
+    def SourceType(self):
+        r"""<p>镜像预热来源</p><p>枚举值：</p><ul><li>AUTO： Sandbox Tool / Instance 自动预热</li><li>EXPLICIT： 手动预热</li><li>TCR_AUTO： TCR自动预热</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def CachedImageSizeBytes(self):
+        r"""<p>镜像预热存储大小</p><p>单位：Byte</p>
+        :rtype: int
+        """
+        return self._CachedImageSizeBytes
+
+    @CachedImageSizeBytes.setter
+    def CachedImageSizeBytes(self, CachedImageSizeBytes):
+        self._CachedImageSizeBytes = CachedImageSizeBytes
+
+    @property
+    def LastUsedTime(self):
+        r"""<p>该预热镜像最近一次被沙箱实例使用时间</p>
+        :rtype: str
+        """
+        return self._LastUsedTime
+
+    @LastUsedTime.setter
+    def LastUsedTime(self, LastUsedTime):
+        self._LastUsedTime = LastUsedTime
+
+
+    def _deserialize(self, params):
+        self._Image = params.get("Image")
+        self._ImageDigest = params.get("ImageDigest")
+        self._ImageRegistryType = params.get("ImageRegistryType")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._PreCacheImageId = params.get("PreCacheImageId")
+        self._SourceType = params.get("SourceType")
+        self._CachedImageSizeBytes = params.get("CachedImageSizeBytes")
+        self._LastUsedTime = params.get("LastUsedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PreviewRegistryRecordRequest(AbstractModel):
     r"""PreviewRegistryRecord请求参数结构体
 
@@ -11976,6 +12490,59 @@ class ScalingConfiguration(AbstractModel):
         
 
 
+class SecurityContext(AbstractModel):
+    r"""SecurityContext 包含将应用于容器的安全配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Privileged: <p>是否开启特权</p><p>默认值：true</p>
+        :type Privileged: bool
+        :param _Capabilities: <p>Capabilities 指的是可以添加到正在运行的容器中或从中移除的 POSIX capabilities。</p>
+        :type Capabilities: :class:`tencentcloud.ags.v20250920.models.Capabilities`
+        """
+        self._Privileged = None
+        self._Capabilities = None
+
+    @property
+    def Privileged(self):
+        r"""<p>是否开启特权</p><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._Privileged
+
+    @Privileged.setter
+    def Privileged(self, Privileged):
+        self._Privileged = Privileged
+
+    @property
+    def Capabilities(self):
+        r"""<p>Capabilities 指的是可以添加到正在运行的容器中或从中移除的 POSIX capabilities。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.Capabilities`
+        """
+        return self._Capabilities
+
+    @Capabilities.setter
+    def Capabilities(self, Capabilities):
+        self._Capabilities = Capabilities
+
+
+    def _deserialize(self, params):
+        self._Privileged = params.get("Privileged")
+        if params.get("Capabilities") is not None:
+            self._Capabilities = Capabilities()
+            self._Capabilities._deserialize(params.get("Capabilities"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SessionInfo(AbstractModel):
     r"""会话信息
 
@@ -12333,6 +12900,8 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type ToolName: str
         :param _SourceInstanceId: <p>待克隆的源沙箱 ID</p>
         :type SourceInstanceId: str
+        :param _SnapshotId: <p>待启动的沙箱快照 ID</p>
+        :type SnapshotId: str
         :param _Timeout: <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
         :type Timeout: str
         :param _ClientToken: <p>幂等性 Token，长度不超过 64 字符</p>
@@ -12349,6 +12918,7 @@ class StartSandboxInstanceRequest(AbstractModel):
         self._ToolId = None
         self._ToolName = None
         self._SourceInstanceId = None
+        self._SnapshotId = None
         self._Timeout = None
         self._ClientToken = None
         self._MountOptions = None
@@ -12388,6 +12958,17 @@ class StartSandboxInstanceRequest(AbstractModel):
     @SourceInstanceId.setter
     def SourceInstanceId(self, SourceInstanceId):
         self._SourceInstanceId = SourceInstanceId
+
+    @property
+    def SnapshotId(self):
+        r"""<p>待启动的沙箱快照 ID</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
 
     @property
     def Timeout(self):
@@ -12460,6 +13041,7 @@ class StartSandboxInstanceRequest(AbstractModel):
         self._ToolId = params.get("ToolId")
         self._ToolName = params.get("ToolName")
         self._SourceInstanceId = params.get("SourceInstanceId")
+        self._SnapshotId = params.get("SnapshotId")
         self._Timeout = params.get("Timeout")
         self._ClientToken = params.get("ClientToken")
         if params.get("MountOptions") is not None:
@@ -12613,11 +13195,19 @@ class StorageMount(AbstractModel):
         :type MountPath: str
         :param _ReadOnly: <p>存储挂载读写权限配置，默认为false</p>
         :type ReadOnly: bool
+        :param _Volume: <p>Volume的引用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Volume: :class:`tencentcloud.ags.v20250920.models.VolumeRef`
+        :param _VolumeTemplate: <p>VolumeTemplate 的引用以及派生规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeTemplate: :class:`tencentcloud.ags.v20250920.models.VolumeTemplateRef`
         """
         self._Name = None
         self._StorageSource = None
         self._MountPath = None
         self._ReadOnly = None
+        self._Volume = None
+        self._VolumeTemplate = None
 
     @property
     def Name(self):
@@ -12664,6 +13254,30 @@ class StorageMount(AbstractModel):
     def ReadOnly(self, ReadOnly):
         self._ReadOnly = ReadOnly
 
+    @property
+    def Volume(self):
+        r"""<p>Volume的引用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.VolumeRef`
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+    @property
+    def VolumeTemplate(self):
+        r"""<p>VolumeTemplate 的引用以及派生规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ags.v20250920.models.VolumeTemplateRef`
+        """
+        return self._VolumeTemplate
+
+    @VolumeTemplate.setter
+    def VolumeTemplate(self, VolumeTemplate):
+        self._VolumeTemplate = VolumeTemplate
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12672,6 +13286,12 @@ class StorageMount(AbstractModel):
             self._StorageSource._deserialize(params.get("StorageSource"))
         self._MountPath = params.get("MountPath")
         self._ReadOnly = params.get("ReadOnly")
+        if params.get("Volume") is not None:
+            self._Volume = VolumeRef()
+            self._Volume._deserialize(params.get("Volume"))
+        if params.get("VolumeTemplate") is not None:
+            self._VolumeTemplate = VolumeTemplateRef()
+            self._VolumeTemplate._deserialize(params.get("VolumeTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13746,6 +14366,116 @@ class VPCConfig(AbstractModel):
     def _deserialize(self, params):
         self._SubnetIds = params.get("SubnetIds")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeRef(AbstractModel):
+    r"""对 Volume 的引用，其中 Name 或 Id 之一必须不为空
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeName: Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeName: str
+        :param _VolumeId: 稳定 Volume ID，格式 vol-xxxxxxxx
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeId: str
+        """
+        self._VolumeName = None
+        self._VolumeId = None
+
+    @property
+    def VolumeName(self):
+        r"""Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def VolumeId(self):
+        r"""稳定 Volume ID，格式 vol-xxxxxxxx
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VolumeId
+
+    @VolumeId.setter
+    def VolumeId(self, VolumeId):
+        self._VolumeId = VolumeId
+
+
+    def _deserialize(self, params):
+        self._VolumeName = params.get("VolumeName")
+        self._VolumeId = params.get("VolumeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeTemplateRef(AbstractModel):
+    r"""对 VolumeTemplate 的引用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeTemplateName: <p>VolumeTemplate 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VolumeTemplateName: str
+        :param _ReuseKey: <p>复用键，可为字面量或 ${metadata.xxx}</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReuseKey: str
+        """
+        self._VolumeTemplateName = None
+        self._ReuseKey = None
+
+    @property
+    def VolumeTemplateName(self):
+        r"""<p>VolumeTemplate 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VolumeTemplateName
+
+    @VolumeTemplateName.setter
+    def VolumeTemplateName(self, VolumeTemplateName):
+        self._VolumeTemplateName = VolumeTemplateName
+
+    @property
+    def ReuseKey(self):
+        r"""<p>复用键，可为字面量或 ${metadata.xxx}</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReuseKey
+
+    @ReuseKey.setter
+    def ReuseKey(self, ReuseKey):
+        self._ReuseKey = ReuseKey
+
+
+    def _deserialize(self, params):
+        self._VolumeTemplateName = params.get("VolumeTemplateName")
+        self._ReuseKey = params.get("ReuseKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -583,6 +583,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBAuditLogs(
+            self,
+            request: models.DescribeDBAuditLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBAuditLogsResponse:
+        """
+        查询指定实例在时间窗口内的审计日志明细，支持按 SQL 类型、执行耗时、错误码、关键词等多条件过滤。当前仅支持 dcdb、mariadb 产品（cdb、cynosdb 已切至中台）。注意 Filter.MultiSql 与 Filter.ExcludeMultiSql 需以 JSON 字符串形式传递二维数组内容，例如 [["a","b"]] 表示 (a OR b)，服务端会自动解析。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBAuditLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBAuditLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBAutonomyAction(
             self,
             request: models.DescribeDBAutonomyActionRequest,
@@ -794,6 +812,24 @@ class DbbrainClient(AbstractClient):
         kwargs["action"] = "DescribeDatabaseAutonomyStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDatabaseAutonomyStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDatabaseObjectV2(
+            self,
+            request: models.DescribeDatabaseObjectV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDatabaseObjectV2Response:
+        """
+        查询指定 SELECT SQL 在实例上的执行计划，常用于慢 SQL 分析、SQL 优化等场景。仅支持 SELECT 类语句
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDatabaseObjectV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDatabaseObjectV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

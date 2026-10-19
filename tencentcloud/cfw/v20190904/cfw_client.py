@@ -2167,6 +2167,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOverviewResourceQuota(self, request):
+        r"""查询云防火墙概览页资源与配额详情信息，返回带宽配额、实例与规则配额、日志存储信息及相关能力标识。
+
+        :param request: Request instance for DescribeOverviewResourceQuota.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeOverviewResourceQuotaRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeOverviewResourceQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOverviewResourceQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOverviewResourceQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceGroup(self, request):
         r"""DescribeResourceGroup资产中心资产树信息
 
@@ -2549,6 +2572,29 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeVpcFwGroupSwitch", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVpcFwGroupSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVpcFwIpStat(self, request):
+        r"""查询VPC防火墙下，单IP粒度的流量统计
+
+        :param request: Request instance for DescribeVpcFwIpStat.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcFwIpStatRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcFwIpStatResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVpcFwIpStat", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVpcFwIpStatResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

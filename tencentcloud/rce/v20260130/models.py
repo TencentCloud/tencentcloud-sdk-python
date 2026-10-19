@@ -18,6 +18,47 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccountSecurityEvent(AbstractModel):
+    r"""账号安全详情（账号保护）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cust: <p>与RCE约定的定制化信息，为K:V 格式的对象数组，示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :type Cust: list of Cust
+        """
+        self._Cust = None
+
+    @property
+    def Cust(self):
+        r"""<p>与RCE约定的定制化信息，为K:V 格式的对象数组，示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :rtype: list of Cust
+        """
+        return self._Cust
+
+    @Cust.setter
+    def Cust(self, Cust):
+        self._Cust = Cust
+
+
+    def _deserialize(self, params):
+        if params.get("Cust") is not None:
+            self._Cust = []
+            for item in params.get("Cust"):
+                obj = Cust()
+                obj._deserialize(item)
+                self._Cust.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddFriendEvent(AbstractModel):
     r"""添加好友事件详情
 
@@ -1545,6 +1586,92 @@ class Billing(AbstractModel):
         self._Phone = params.get("Phone")
         self._Email = params.get("Email")
         self._Recipient = params.get("Recipient")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BookingEvent(AbstractModel):
+    r"""预约事件详情（营销保护）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BookingScene: <p>预约场景。例如：预订机票、预订酒店</p>
+        :type BookingScene: str
+        :param _BookingTime: <p>预约时间。要求符合ISO-8601标准的带时区的毫秒级时间，格式&quot;YYYY-MM-DDTHH:mm:ss.sssZ&quot; ，例如&quot;2025-10-19T09:11:10.145+08:00&quot;。</p>
+        :type BookingTime: str
+        :param _BookingId: <p>预约单唯一ID。</p>
+        :type BookingId: str
+        :param _Cust: <p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。<br>示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :type Cust: list of Cust
+        """
+        self._BookingScene = None
+        self._BookingTime = None
+        self._BookingId = None
+        self._Cust = None
+
+    @property
+    def BookingScene(self):
+        r"""<p>预约场景。例如：预订机票、预订酒店</p>
+        :rtype: str
+        """
+        return self._BookingScene
+
+    @BookingScene.setter
+    def BookingScene(self, BookingScene):
+        self._BookingScene = BookingScene
+
+    @property
+    def BookingTime(self):
+        r"""<p>预约时间。要求符合ISO-8601标准的带时区的毫秒级时间，格式&quot;YYYY-MM-DDTHH:mm:ss.sssZ&quot; ，例如&quot;2025-10-19T09:11:10.145+08:00&quot;。</p>
+        :rtype: str
+        """
+        return self._BookingTime
+
+    @BookingTime.setter
+    def BookingTime(self, BookingTime):
+        self._BookingTime = BookingTime
+
+    @property
+    def BookingId(self):
+        r"""<p>预约单唯一ID。</p>
+        :rtype: str
+        """
+        return self._BookingId
+
+    @BookingId.setter
+    def BookingId(self, BookingId):
+        self._BookingId = BookingId
+
+    @property
+    def Cust(self):
+        r"""<p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。<br>示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :rtype: list of Cust
+        """
+        return self._Cust
+
+    @Cust.setter
+    def Cust(self, Cust):
+        self._Cust = Cust
+
+
+    def _deserialize(self, params):
+        self._BookingScene = params.get("BookingScene")
+        self._BookingTime = params.get("BookingTime")
+        self._BookingId = params.get("BookingId")
+        if params.get("Cust") is not None:
+            self._Cust = []
+            for item in params.get("Cust"):
+                obj = Cust()
+                obj._deserialize(item)
+                self._Cust.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3658,6 +3785,12 @@ class EventDetail(AbstractModel):
         :type AddFriend: :class:`tencentcloud.rce.v20260130.models.AddFriendEvent`
         :param _ModifyGuild: <p>编辑公会资料</p>
         :type ModifyGuild: :class:`tencentcloud.rce.v20260130.models.ModifyGuildEvent`
+        :param _Search: <p>搜索</p>
+        :type Search: :class:`tencentcloud.rce.v20260130.models.SearchEvent`
+        :param _Booking: <p>预约</p>
+        :type Booking: :class:`tencentcloud.rce.v20260130.models.BookingEvent`
+        :param _AccountSecurity: <p>账号安全</p>
+        :type AccountSecurity: :class:`tencentcloud.rce.v20260130.models.AccountSecurityEvent`
         """
         self._Login = None
         self._Register = None
@@ -3683,6 +3816,9 @@ class EventDetail(AbstractModel):
         self._ModifyRole = None
         self._AddFriend = None
         self._ModifyGuild = None
+        self._Search = None
+        self._Booking = None
+        self._AccountSecurity = None
 
     @property
     def Login(self):
@@ -3948,6 +4084,39 @@ class EventDetail(AbstractModel):
     def ModifyGuild(self, ModifyGuild):
         self._ModifyGuild = ModifyGuild
 
+    @property
+    def Search(self):
+        r"""<p>搜索</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.SearchEvent`
+        """
+        return self._Search
+
+    @Search.setter
+    def Search(self, Search):
+        self._Search = Search
+
+    @property
+    def Booking(self):
+        r"""<p>预约</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.BookingEvent`
+        """
+        return self._Booking
+
+    @Booking.setter
+    def Booking(self, Booking):
+        self._Booking = Booking
+
+    @property
+    def AccountSecurity(self):
+        r"""<p>账号安全</p>
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AccountSecurityEvent`
+        """
+        return self._AccountSecurity
+
+    @AccountSecurity.setter
+    def AccountSecurity(self, AccountSecurity):
+        self._AccountSecurity = AccountSecurity
+
 
     def _deserialize(self, params):
         if params.get("Login") is not None:
@@ -4022,6 +4191,15 @@ class EventDetail(AbstractModel):
         if params.get("ModifyGuild") is not None:
             self._ModifyGuild = ModifyGuildEvent()
             self._ModifyGuild._deserialize(params.get("ModifyGuild"))
+        if params.get("Search") is not None:
+            self._Search = SearchEvent()
+            self._Search._deserialize(params.get("Search"))
+        if params.get("Booking") is not None:
+            self._Booking = BookingEvent()
+            self._Booking._deserialize(params.get("Booking"))
+        if params.get("AccountSecurity") is not None:
+            self._AccountSecurity = AccountSecurityEvent()
+            self._AccountSecurity._deserialize(params.get("AccountSecurity"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7671,6 +7849,107 @@ class Score(AbstractModel):
                 obj = RiskLabel()
                 obj._deserialize(item)
                 self._RiskLabels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchEvent(AbstractModel):
+    r"""查询事件详情（营销保护）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SearchScene: <p>查询场景。例如：查询航班、查询库存等。</p>
+        :type SearchScene: str
+        :param _SearchParam: <p>查询参数。查询时输入的参数。</p>
+        :type SearchParam: str
+        :param _ReferPageUrl: <p>上一个网页URL</p>
+        :type ReferPageUrl: str
+        :param _GuestId: <p>游客账号ID</p>
+        :type GuestId: str
+        :param _Cust: <p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。<br>示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :type Cust: list of Cust
+        """
+        self._SearchScene = None
+        self._SearchParam = None
+        self._ReferPageUrl = None
+        self._GuestId = None
+        self._Cust = None
+
+    @property
+    def SearchScene(self):
+        r"""<p>查询场景。例如：查询航班、查询库存等。</p>
+        :rtype: str
+        """
+        return self._SearchScene
+
+    @SearchScene.setter
+    def SearchScene(self, SearchScene):
+        self._SearchScene = SearchScene
+
+    @property
+    def SearchParam(self):
+        r"""<p>查询参数。查询时输入的参数。</p>
+        :rtype: str
+        """
+        return self._SearchParam
+
+    @SearchParam.setter
+    def SearchParam(self, SearchParam):
+        self._SearchParam = SearchParam
+
+    @property
+    def ReferPageUrl(self):
+        r"""<p>上一个网页URL</p>
+        :rtype: str
+        """
+        return self._ReferPageUrl
+
+    @ReferPageUrl.setter
+    def ReferPageUrl(self, ReferPageUrl):
+        self._ReferPageUrl = ReferPageUrl
+
+    @property
+    def GuestId(self):
+        r"""<p>游客账号ID</p>
+        :rtype: str
+        """
+        return self._GuestId
+
+    @GuestId.setter
+    def GuestId(self, GuestId):
+        self._GuestId = GuestId
+
+    @property
+    def Cust(self):
+        r"""<p>与RCE-PRO约定的定制化信息。为K:V 格式的对象数组。<br>示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
+        :rtype: list of Cust
+        """
+        return self._Cust
+
+    @Cust.setter
+    def Cust(self, Cust):
+        self._Cust = Cust
+
+
+    def _deserialize(self, params):
+        self._SearchScene = params.get("SearchScene")
+        self._SearchParam = params.get("SearchParam")
+        self._ReferPageUrl = params.get("ReferPageUrl")
+        self._GuestId = params.get("GuestId")
+        if params.get("Cust") is not None:
+            self._Cust = []
+            for item in params.get("Cust"):
+                obj = Cust()
+                obj._deserialize(item)
+                self._Cust.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

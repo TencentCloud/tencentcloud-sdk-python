@@ -17942,7 +17942,7 @@ class DataTransformResouceInfo(AbstractModel):
         :type RoleARN: str
         :param _ExternalId: <p>外部ID值，可以在被投递账号的角色-载体里找到该值</p>
         :type ExternalId: str
-        :param _TopicName: <p>topic名称</p>
+        :param _TopicName: <p>目标日志主题的名称,当DataTransformType=1(前置加工任务)时, 该值和源日志主题名称的值相同.</p>
         :type TopicName: str
         :param _LogsetName: <p>日志集的名称</p>
         :type LogsetName: str
@@ -18012,7 +18012,7 @@ class DataTransformResouceInfo(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""<p>topic名称</p>
+        r"""<p>目标日志主题的名称,当DataTransformType=1(前置加工任务)时, 该值和源日志主题名称的值相同.</p>
         :rtype: str
         """
         return self._TopicName
@@ -18173,59 +18173,53 @@ class DataTransformTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 数据加工任务名称
+        :param _Name: <p>数据加工任务名称</p>
         :type Name: str
-        :param _TaskId: 数据加工任务id
+        :param _TaskId: <p>数据加工任务id</p>
         :type TaskId: str
-        :param _EnableFlag: 任务启用状态，默认为1，正常开启,  2关闭
+        :param _EnableFlag: <p>任务启用状态，默认为1，正常开启,  2关闭</p>
         :type EnableFlag: int
-        :param _Type: 加工任务类型，1： DSL(使用自定义加工语言的加工任务)， 2：SQL(使用sql的加工任务)
+        :param _Type: <p>加工任务类型，1： DSL(使用自定义加工语言的加工任务)， 2：SQL(使用sql的加工任务)</p>
         :type Type: int
-        :param _SrcTopicId: 源日志主题
+        :param _SrcTopicId: <p>源日志主题ID,当DataTransformType=1,代表当前任务的类型是前置加工任务,该值和目标日志主题的ID值相同.</p>
         :type SrcTopicId: str
-        :param _Status: 当前加工任务状态（1准备中/2运行中/3停止中/4已停止）
+        :param _Status: <p>当前加工任务状态（1准备中/2运行中/3停止中/4已停止）</p>
         :type Status: int
-        :param _CreateTime: 创建时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        :param _CreateTime: <p>创建时间<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :type CreateTime: str
-        :param _UpdateTime: 最近修改时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        :param _UpdateTime: <p>最近修改时间<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :type UpdateTime: str
-        :param _LastEnableTime: 最后启用时间，如果需要重建集群，修改该时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        :param _LastEnableTime: <p>最后启用时间，如果需要重建集群，修改该时间<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :type LastEnableTime: str
-        :param _SrcTopicName: 日志主题名称
+        :param _SrcTopicName: <p>源日志主题名称,当DataTransformType=1,代表当前任务的类型是前置加工任务,该值和目标日志主题名称的值相同.</p>
         :type SrcTopicName: str
-        :param _LogsetId: 日志集id
+        :param _LogsetId: <p>日志集id</p>
         :type LogsetId: str
-        :param _DstResources: 加工任务目的topic_id以及别名
+        :param _DstResources: <p>加工任务目的topic_id以及别名</p>
         :type DstResources: list of DataTransformResouceInfo
-        :param _EtlContent: 加工逻辑函数。
+        :param _EtlContent: <p>加工逻辑函数。</p>
         :type EtlContent: str
-        :param _BackupTopicID: 兜底topic_id
+        :param _BackupTopicID: <p>兜底topic_id</p>
         :type BackupTopicID: str
-        :param _BackupGiveUpData: 超限之后是否丢弃日志数据
+        :param _BackupGiveUpData: <p>超限之后是否丢弃日志数据</p>
         :type BackupGiveUpData: bool
-        :param _HasServicesLog: 是否开启投递服务日志。 1关闭,2开启
+        :param _HasServicesLog: <p>是否开启投递服务日志。 1关闭,2开启</p>
         :type HasServicesLog: int
-        :param _TaskDstCount: 任务目标日志主题数量
+        :param _TaskDstCount: <p>任务目标日志主题数量</p>
         :type TaskDstCount: int
-        :param _DataTransformType: 数据加工类型。0：标准加工任务；1：前置加工任务。
+        :param _DataTransformType: <p>数据加工类型。0：标准加工任务；1：前置加工任务。当该值=1时, 源日志主题和目标日志主题的名称和ID相同.</p><p>枚举值：</p><ul><li>1： 前置加工任务</li><li>0： 标准加工任务</li></ul>
         :type DataTransformType: int
-        :param _KeepFailureLog: 保留失败日志状态。 1:不保留，2:保留
+        :param _KeepFailureLog: <p>保留失败日志状态。 1:不保留，2:保留</p>
         :type KeepFailureLog: int
-        :param _FailureLogKey: 失败日志的字段名称
+        :param _FailureLogKey: <p>失败日志的字段名称</p>
         :type FailureLogKey: str
-        :param _ProcessFromTimestamp: 指定加工数据的开始时间，秒级时间戳。
-- 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+        :param _ProcessFromTimestamp: <p>指定加工数据的开始时间，秒级时间戳。</p><ul><li>日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。</li></ul>
         :type ProcessFromTimestamp: int
-        :param _ProcessToTimestamp: 指定加工数据的结束时间，秒级时间戳。
-1. 不可指定未来的时间
-2. 不填则表示持续执行
+        :param _ProcessToTimestamp: <p>指定加工数据的结束时间，秒级时间戳。</p><ol><li>不可指定未来的时间</li><li>不填则表示持续执行</li></ol>
         :type ProcessToTimestamp: int
-        :param _DataTransformSqlDataSources: sql数据源信息
+        :param _DataTransformSqlDataSources: <p>sql数据源信息</p>
         :type DataTransformSqlDataSources: list of DataTransformSqlDataSource
-        :param _EnvInfos: 环境变量
+        :param _EnvInfos: <p>环境变量</p>
         :type EnvInfos: list of EnvInfo
         """
         self._Name = None
@@ -18255,7 +18249,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""数据加工任务名称
+        r"""<p>数据加工任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -18266,7 +18260,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""数据加工任务id
+        r"""<p>数据加工任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -18277,7 +18271,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def EnableFlag(self):
-        r"""任务启用状态，默认为1，正常开启,  2关闭
+        r"""<p>任务启用状态，默认为1，正常开启,  2关闭</p>
         :rtype: int
         """
         return self._EnableFlag
@@ -18288,7 +18282,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""加工任务类型，1： DSL(使用自定义加工语言的加工任务)， 2：SQL(使用sql的加工任务)
+        r"""<p>加工任务类型，1： DSL(使用自定义加工语言的加工任务)， 2：SQL(使用sql的加工任务)</p>
         :rtype: int
         """
         return self._Type
@@ -18299,7 +18293,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def SrcTopicId(self):
-        r"""源日志主题
+        r"""<p>源日志主题ID,当DataTransformType=1,代表当前任务的类型是前置加工任务,该值和目标日志主题的ID值相同.</p>
         :rtype: str
         """
         return self._SrcTopicId
@@ -18310,7 +18304,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""当前加工任务状态（1准备中/2运行中/3停止中/4已停止）
+        r"""<p>当前加工任务状态（1准备中/2运行中/3停止中/4已停止）</p>
         :rtype: int
         """
         return self._Status
@@ -18321,8 +18315,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        r"""<p>创建时间<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._CreateTime
@@ -18333,8 +18326,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最近修改时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        r"""<p>最近修改时间<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -18345,8 +18337,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def LastEnableTime(self):
-        r"""最后启用时间，如果需要重建集群，修改该时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        r"""<p>最后启用时间，如果需要重建集群，修改该时间<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._LastEnableTime
@@ -18357,7 +18348,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def SrcTopicName(self):
-        r"""日志主题名称
+        r"""<p>源日志主题名称,当DataTransformType=1,代表当前任务的类型是前置加工任务,该值和目标日志主题名称的值相同.</p>
         :rtype: str
         """
         return self._SrcTopicName
@@ -18368,7 +18359,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""日志集id
+        r"""<p>日志集id</p>
         :rtype: str
         """
         return self._LogsetId
@@ -18379,7 +18370,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def DstResources(self):
-        r"""加工任务目的topic_id以及别名
+        r"""<p>加工任务目的topic_id以及别名</p>
         :rtype: list of DataTransformResouceInfo
         """
         return self._DstResources
@@ -18390,7 +18381,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def EtlContent(self):
-        r"""加工逻辑函数。
+        r"""<p>加工逻辑函数。</p>
         :rtype: str
         """
         return self._EtlContent
@@ -18401,7 +18392,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def BackupTopicID(self):
-        r"""兜底topic_id
+        r"""<p>兜底topic_id</p>
         :rtype: str
         """
         return self._BackupTopicID
@@ -18412,7 +18403,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def BackupGiveUpData(self):
-        r"""超限之后是否丢弃日志数据
+        r"""<p>超限之后是否丢弃日志数据</p>
         :rtype: bool
         """
         return self._BackupGiveUpData
@@ -18423,7 +18414,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def HasServicesLog(self):
-        r"""是否开启投递服务日志。 1关闭,2开启
+        r"""<p>是否开启投递服务日志。 1关闭,2开启</p>
         :rtype: int
         """
         return self._HasServicesLog
@@ -18434,7 +18425,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def TaskDstCount(self):
-        r"""任务目标日志主题数量
+        r"""<p>任务目标日志主题数量</p>
         :rtype: int
         """
         return self._TaskDstCount
@@ -18445,7 +18436,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def DataTransformType(self):
-        r"""数据加工类型。0：标准加工任务；1：前置加工任务。
+        r"""<p>数据加工类型。0：标准加工任务；1：前置加工任务。当该值=1时, 源日志主题和目标日志主题的名称和ID相同.</p><p>枚举值：</p><ul><li>1： 前置加工任务</li><li>0： 标准加工任务</li></ul>
         :rtype: int
         """
         return self._DataTransformType
@@ -18456,7 +18447,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def KeepFailureLog(self):
-        r"""保留失败日志状态。 1:不保留，2:保留
+        r"""<p>保留失败日志状态。 1:不保留，2:保留</p>
         :rtype: int
         """
         return self._KeepFailureLog
@@ -18467,7 +18458,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def FailureLogKey(self):
-        r"""失败日志的字段名称
+        r"""<p>失败日志的字段名称</p>
         :rtype: str
         """
         return self._FailureLogKey
@@ -18478,8 +18469,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def ProcessFromTimestamp(self):
-        r"""指定加工数据的开始时间，秒级时间戳。
-- 日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。
+        r"""<p>指定加工数据的开始时间，秒级时间戳。</p><ul><li>日志主题生命周期内的任意时间范围，如果超出了生命周期,只处理生命周期内有数据的部分。</li></ul>
         :rtype: int
         """
         return self._ProcessFromTimestamp
@@ -18490,9 +18480,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def ProcessToTimestamp(self):
-        r"""指定加工数据的结束时间，秒级时间戳。
-1. 不可指定未来的时间
-2. 不填则表示持续执行
+        r"""<p>指定加工数据的结束时间，秒级时间戳。</p><ol><li>不可指定未来的时间</li><li>不填则表示持续执行</li></ol>
         :rtype: int
         """
         return self._ProcessToTimestamp
@@ -18503,7 +18491,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def DataTransformSqlDataSources(self):
-        r"""sql数据源信息
+        r"""<p>sql数据源信息</p>
         :rtype: list of DataTransformSqlDataSource
         """
         return self._DataTransformSqlDataSources
@@ -18514,7 +18502,7 @@ class DataTransformTaskInfo(AbstractModel):
 
     @property
     def EnvInfos(self):
-        r"""环境变量
+        r"""<p>环境变量</p>
         :rtype: list of EnvInfo
         """
         return self._EnvInfos

@@ -14930,20 +14930,26 @@ class DescribeBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
-        :param _Offset: 偏移量，最小值为0。
+        :param _Offset: <p>偏移量，最小值为0。</p>
         :type Offset: int
-        :param _Limit: 分页大小，默认值为20，最小值为1，最大值为1000。
+        :param _Limit: <p>分页大小，默认值为20，最小值为1，最大值为1000。</p>
         :type Limit: int
+        :param _MinStartTime: <p>备份开始时间，筛选大于等于此值，时间格式：2016-03-17 02:10:37</p>
+        :type MinStartTime: str
+        :param _MaxStartTime: <p>备份开始时间，筛选小于等于此值，时间格式：2016-03-17 02:10:37</p>
+        :type MaxStartTime: str
         """
         self._InstanceId = None
         self._Offset = None
         self._Limit = None
+        self._MinStartTime = None
+        self._MaxStartTime = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14954,7 +14960,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，最小值为0。
+        r"""<p>偏移量，最小值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -14965,7 +14971,7 @@ class DescribeBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小，默认值为20，最小值为1，最大值为1000。
+        r"""<p>分页大小，默认值为20，最小值为1，最大值为1000。</p>
         :rtype: int
         """
         return self._Limit
@@ -14974,11 +14980,35 @@ class DescribeBackupsRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def MinStartTime(self):
+        r"""<p>备份开始时间，筛选大于等于此值，时间格式：2016-03-17 02:10:37</p>
+        :rtype: str
+        """
+        return self._MinStartTime
+
+    @MinStartTime.setter
+    def MinStartTime(self, MinStartTime):
+        self._MinStartTime = MinStartTime
+
+    @property
+    def MaxStartTime(self):
+        r"""<p>备份开始时间，筛选小于等于此值，时间格式：2016-03-17 02:10:37</p>
+        :rtype: str
+        """
+        return self._MaxStartTime
+
+    @MaxStartTime.setter
+    def MaxStartTime(self, MaxStartTime):
+        self._MaxStartTime = MaxStartTime
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._MinStartTime = params.get("MinStartTime")
+        self._MaxStartTime = params.get("MaxStartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14996,9 +15026,9 @@ class DescribeBackupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合查询条件的实例总数。
+        :param _TotalCount: <p>符合查询条件的实例总数。</p>
         :type TotalCount: int
-        :param _Items: 符合查询条件的备份信息详情。
+        :param _Items: <p>符合查询条件的备份信息详情。</p>
         :type Items: list of BackupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15009,7 +15039,7 @@ class DescribeBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件的实例总数。
+        r"""<p>符合查询条件的实例总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -15020,7 +15050,7 @@ class DescribeBackupsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""符合查询条件的备份信息详情。
+        r"""<p>符合查询条件的备份信息详情。</p>
         :rtype: list of BackupInfo
         """
         return self._Items
@@ -38569,14 +38599,17 @@ class SwitchDrInstanceToMasterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
+        :param _IgnoreSyncDelay: <p>忽略同步延迟的阈值，不填默认为0表示完全等待追平</p><p>取值范围：[0, 104857600]</p><p>默认值：0</p>
+        :type IgnoreSyncDelay: int
         """
         self._InstanceId = None
+        self._IgnoreSyncDelay = None
 
     @property
     def InstanceId(self):
-        r"""灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>灾备实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -38585,9 +38618,21 @@ class SwitchDrInstanceToMasterRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def IgnoreSyncDelay(self):
+        r"""<p>忽略同步延迟的阈值，不填默认为0表示完全等待追平</p><p>取值范围：[0, 104857600]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._IgnoreSyncDelay
+
+    @IgnoreSyncDelay.setter
+    def IgnoreSyncDelay(self, IgnoreSyncDelay):
+        self._IgnoreSyncDelay = IgnoreSyncDelay
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._IgnoreSyncDelay = params.get("IgnoreSyncDelay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38605,7 +38650,7 @@ class SwitchDrInstanceToMasterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        :param _AsyncRequestId: <p>异步任务的请求ID，可使用此ID查询异步任务的执行结果。</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -38615,7 +38660,7 @@ class SwitchDrInstanceToMasterResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务的请求ID，可使用此ID查询异步任务的执行结果。
+        r"""<p>异步任务的请求ID，可使用此ID查询异步任务的执行结果。</p>
         :rtype: str
         """
         return self._AsyncRequestId

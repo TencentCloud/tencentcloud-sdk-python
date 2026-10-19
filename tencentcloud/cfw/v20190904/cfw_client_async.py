@@ -1701,6 +1701,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeOverviewResourceQuota(
+            self,
+            request: models.DescribeOverviewResourceQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOverviewResourceQuotaResponse:
+        """
+        查询云防火墙概览页资源与配额详情信息，返回带宽配额、实例与规则配额、日志存储信息及相关能力标识。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOverviewResourceQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOverviewResourceQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeResourceGroup(
             self,
             request: models.DescribeResourceGroupRequest,
@@ -2002,6 +2020,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeVpcFwGroupSwitch"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVpcFwGroupSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVpcFwIpStat(
+            self,
+            request: models.DescribeVpcFwIpStatRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVpcFwIpStatResponse:
+        """
+        查询VPC防火墙下，单IP粒度的流量统计
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVpcFwIpStat"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVpcFwIpStatResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

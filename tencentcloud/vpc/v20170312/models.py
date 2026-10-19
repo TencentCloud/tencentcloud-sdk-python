@@ -7017,16 +7017,18 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
         r"""
         :param _PolicyBasedRoutingNextHopId: <p>策略路由下一跳ID</p>
         :type PolicyBasedRoutingNextHopId: str
-        :param _InstanceType: <p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
-        :type InstanceType: str
-        :param _InstanceId: <p>实例ID</p>
-        :type InstanceId: str
         :param _SourceCidrBlock: <p>源地址CIDR</p>
         :type SourceCidrBlock: str
         :param _DestinationCidrBlock: <p>目的地址CIDR</p>
         :type DestinationCidrBlock: str
         :param _Priority: <p>优先级</p>
         :type Priority: int
+        :param _InstanceType: <p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
+        :type InstanceType: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _InstanceRegion: <p>实例所在地域</p>
+        :type InstanceRegion: str
         :param _Description: <p>描述</p>
         :type Description: str
         :param _PolicyBasedRoutingRuleId: <p>策略路由匹配策略ID</p>
@@ -7037,11 +7039,12 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
         :type DestinationInstanceId: str
         """
         self._PolicyBasedRoutingNextHopId = None
-        self._InstanceType = None
-        self._InstanceId = None
         self._SourceCidrBlock = None
         self._DestinationCidrBlock = None
         self._Priority = None
+        self._InstanceType = None
+        self._InstanceId = None
+        self._InstanceRegion = None
         self._Description = None
         self._PolicyBasedRoutingRuleId = None
         self._DestinationInstanceType = None
@@ -7057,28 +7060,6 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
     @PolicyBasedRoutingNextHopId.setter
     def PolicyBasedRoutingNextHopId(self, PolicyBasedRoutingNextHopId):
         self._PolicyBasedRoutingNextHopId = PolicyBasedRoutingNextHopId
-
-    @property
-    def InstanceType(self):
-        r"""<p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
-        :rtype: str
-        """
-        return self._InstanceType
-
-    @InstanceType.setter
-    def InstanceType(self, InstanceType):
-        self._InstanceType = InstanceType
-
-    @property
-    def InstanceId(self):
-        r"""<p>实例ID</p>
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
 
     @property
     def SourceCidrBlock(self):
@@ -7112,6 +7093,39 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
     @Priority.setter
     def Priority(self, Priority):
         self._Priority = Priority
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型[VPC,DIRECTCONNECT,VPNGW]</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceRegion(self):
+        r"""<p>实例所在地域</p>
+        :rtype: str
+        """
+        return self._InstanceRegion
+
+    @InstanceRegion.setter
+    def InstanceRegion(self, InstanceRegion):
+        self._InstanceRegion = InstanceRegion
 
     @property
     def Description(self):
@@ -7160,11 +7174,12 @@ class CcnPolicyBasedRoutingRule(AbstractModel):
 
     def _deserialize(self, params):
         self._PolicyBasedRoutingNextHopId = params.get("PolicyBasedRoutingNextHopId")
-        self._InstanceType = params.get("InstanceType")
-        self._InstanceId = params.get("InstanceId")
         self._SourceCidrBlock = params.get("SourceCidrBlock")
         self._DestinationCidrBlock = params.get("DestinationCidrBlock")
         self._Priority = params.get("Priority")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceRegion = params.get("InstanceRegion")
         self._Description = params.get("Description")
         self._PolicyBasedRoutingRuleId = params.get("PolicyBasedRoutingRuleId")
         self._DestinationInstanceType = params.get("DestinationInstanceType")

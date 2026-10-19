@@ -563,6 +563,8 @@ class CreateNativeNodePoolParam(AbstractModel):
         :type Password: str
         :param _CustomImage: <p>自定义镜像 ID</p>
         :type CustomImage: str
+        :param _RuntimeVersion: 原生节点池 containerd 运行时纯版本号，例如 1.7.28 或 1.7.28-tke.3。未指定或为空时使用原有 GPE 默认版本。仅对新建节点生效。
+        :type RuntimeVersion: str
         """
         self._Scaling = None
         self._SubnetIds = None
@@ -590,6 +592,7 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._AutomationService = None
         self._Password = None
         self._CustomImage = None
+        self._RuntimeVersion = None
 
     @property
     def Scaling(self):
@@ -877,6 +880,17 @@ class CreateNativeNodePoolParam(AbstractModel):
     def CustomImage(self, CustomImage):
         self._CustomImage = CustomImage
 
+    @property
+    def RuntimeVersion(self):
+        r"""原生节点池 containerd 运行时纯版本号，例如 1.7.28 或 1.7.28-tke.3。未指定或为空时使用原有 GPE 默认版本。仅对新建节点生效。
+        :rtype: str
+        """
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
 
     def _deserialize(self, params):
         if params.get("Scaling") is not None:
@@ -929,6 +943,7 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._AutomationService = params.get("AutomationService")
         self._Password = params.get("Password")
         self._CustomImage = params.get("CustomImage")
+        self._RuntimeVersion = params.get("RuntimeVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

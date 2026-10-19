@@ -580,6 +580,520 @@ information-通知
         
 
 
+class AuditDBLogItem(AbstractModel):
+    r"""DB 层审计日志单条明细。字段由 DruidCommonUtil#changeLogsTdsqlDB 和 BusinessCodeUtils 固定输出。LogType=All 时额外追加 FlowTime。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>SQL 执行时间点（格式化字符串，yyyy-MM-dd HH:mm:ss）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        :param _ClusterId: <p>集群 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _AffectRows: <p>影响行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectRows: int
+        :param _CheckRows: <p>扫描行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckRows: int
+        :param _CpuTime: <p>CPU 耗时（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CpuTime: int
+        :param _SetHost: <p>后端 Set Host（源字段 dbHost）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetHost: str
+        :param _DBName: <p>SQL 执行所在的数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBName: str
+        :param _ErrCode: <p>SQL 执行返回的错误码，0 表示成功。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: str
+        :param _ExecTime: <p>SQL 执行耗时（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecTime: int
+        :param _Host: <p>客户端来源 IP。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _SetName: <p>Set 名称（源字段 instanceId）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SetName: str
+        :param _IoWaitTime: <p>IO 等待时间（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IoWaitTime: int
+        :param _LockWaitTime: <p>锁等待时间（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockWaitTime: int
+        :param _SqlStartTimeNs: <p>SQL 开始时间（纳秒级时间戳）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlStartTimeNs: int
+        :param _QueryId: <p>查询 ID（用于关联查询）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryId: str
+        :param _QueryNo: <p>查询序号（同一事务内 SQL 的序列号）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryNo: int
+        :param _SentRows: <p>返回行数（扫描结果集行数）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SentRows: int
+        :param _Sql: <p>执行的 SQL 语句原文。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sql: str
+        :param _SqlTemplateId: <p>SQL 模板 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlTemplateId: str
+        :param _SqlType: <p>SQL 类型（如 Select、Insert、Update、Delete 等）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlType: str
+        :param _Tables: <p>涉及的表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tables: str
+        :param _ThreadId: <p>线程 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThreadId: str
+        :param _SqlStartTime: <p>SQL 开始时间（毫秒级时间戳）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlStartTime: int
+        :param _TrxLivingTime: <p>事务存活时间（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrxLivingTime: int
+        :param _User: <p>执行 SQL 的数据库用户名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _TrxId: <p>事务 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrxId: str
+        :param _InternalXId: <p>内部 XID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InternalXId: str
+        :param _BusinessCode: <p>业务码（由业务侧 SQL 注释中 i/o/p 等 KV 提取）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _FlowTime: <p>网关流转耗时（毫秒），仅 LogType=All 时由 Gateway 日志关联后返回；LogType=DB 时该字段不下发。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowTime: int
+        """
+        self._Timestamp = None
+        self._ClusterId = None
+        self._AffectRows = None
+        self._CheckRows = None
+        self._CpuTime = None
+        self._SetHost = None
+        self._DBName = None
+        self._ErrCode = None
+        self._ExecTime = None
+        self._Host = None
+        self._SetName = None
+        self._IoWaitTime = None
+        self._LockWaitTime = None
+        self._SqlStartTimeNs = None
+        self._QueryId = None
+        self._QueryNo = None
+        self._SentRows = None
+        self._Sql = None
+        self._SqlTemplateId = None
+        self._SqlType = None
+        self._Tables = None
+        self._ThreadId = None
+        self._SqlStartTime = None
+        self._TrxLivingTime = None
+        self._User = None
+        self._TrxId = None
+        self._InternalXId = None
+        self._BusinessCode = None
+        self._FlowTime = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>SQL 执行时间点（格式化字符串，yyyy-MM-dd HH:mm:ss）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AffectRows(self):
+        r"""<p>影响行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def CheckRows(self):
+        r"""<p>扫描行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CheckRows
+
+    @CheckRows.setter
+    def CheckRows(self, CheckRows):
+        self._CheckRows = CheckRows
+
+    @property
+    def CpuTime(self):
+        r"""<p>CPU 耗时（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CpuTime
+
+    @CpuTime.setter
+    def CpuTime(self, CpuTime):
+        self._CpuTime = CpuTime
+
+    @property
+    def SetHost(self):
+        r"""<p>后端 Set Host（源字段 dbHost）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SetHost
+
+    @SetHost.setter
+    def SetHost(self, SetHost):
+        self._SetHost = SetHost
+
+    @property
+    def DBName(self):
+        r"""<p>SQL 执行所在的数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def ErrCode(self):
+        r"""<p>SQL 执行返回的错误码，0 表示成功。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ExecTime(self):
+        r"""<p>SQL 执行耗时（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Host(self):
+        r"""<p>客户端来源 IP。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def SetName(self):
+        r"""<p>Set 名称（源字段 instanceId）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SetName
+
+    @SetName.setter
+    def SetName(self, SetName):
+        self._SetName = SetName
+
+    @property
+    def IoWaitTime(self):
+        r"""<p>IO 等待时间（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IoWaitTime
+
+    @IoWaitTime.setter
+    def IoWaitTime(self, IoWaitTime):
+        self._IoWaitTime = IoWaitTime
+
+    @property
+    def LockWaitTime(self):
+        r"""<p>锁等待时间（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LockWaitTime
+
+    @LockWaitTime.setter
+    def LockWaitTime(self, LockWaitTime):
+        self._LockWaitTime = LockWaitTime
+
+    @property
+    def SqlStartTimeNs(self):
+        r"""<p>SQL 开始时间（纳秒级时间戳）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SqlStartTimeNs
+
+    @SqlStartTimeNs.setter
+    def SqlStartTimeNs(self, SqlStartTimeNs):
+        self._SqlStartTimeNs = SqlStartTimeNs
+
+    @property
+    def QueryId(self):
+        r"""<p>查询 ID（用于关联查询）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueryId
+
+    @QueryId.setter
+    def QueryId(self, QueryId):
+        self._QueryId = QueryId
+
+    @property
+    def QueryNo(self):
+        r"""<p>查询序号（同一事务内 SQL 的序列号）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._QueryNo
+
+    @QueryNo.setter
+    def QueryNo(self, QueryNo):
+        self._QueryNo = QueryNo
+
+    @property
+    def SentRows(self):
+        r"""<p>返回行数（扫描结果集行数）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def Sql(self):
+        r"""<p>执行的 SQL 语句原文。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def SqlTemplateId(self):
+        r"""<p>SQL 模板 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlTemplateId
+
+    @SqlTemplateId.setter
+    def SqlTemplateId(self, SqlTemplateId):
+        self._SqlTemplateId = SqlTemplateId
+
+    @property
+    def SqlType(self):
+        r"""<p>SQL 类型（如 Select、Insert、Update、Delete 等）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def Tables(self):
+        r"""<p>涉及的表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def ThreadId(self):
+        r"""<p>线程 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def SqlStartTime(self):
+        r"""<p>SQL 开始时间（毫秒级时间戳）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SqlStartTime
+
+    @SqlStartTime.setter
+    def SqlStartTime(self, SqlStartTime):
+        self._SqlStartTime = SqlStartTime
+
+    @property
+    def TrxLivingTime(self):
+        r"""<p>事务存活时间（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TrxLivingTime
+
+    @TrxLivingTime.setter
+    def TrxLivingTime(self, TrxLivingTime):
+        self._TrxLivingTime = TrxLivingTime
+
+    @property
+    def User(self):
+        r"""<p>执行 SQL 的数据库用户名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def TrxId(self):
+        r"""<p>事务 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TrxId
+
+    @TrxId.setter
+    def TrxId(self, TrxId):
+        self._TrxId = TrxId
+
+    @property
+    def InternalXId(self):
+        r"""<p>内部 XID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InternalXId
+
+    @InternalXId.setter
+    def InternalXId(self, InternalXId):
+        self._InternalXId = InternalXId
+
+    @property
+    def BusinessCode(self):
+        r"""<p>业务码（由业务侧 SQL 注释中 i/o/p 等 KV 提取）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def FlowTime(self):
+        r"""<p>网关流转耗时（毫秒），仅 LogType=All 时由 Gateway 日志关联后返回；LogType=DB 时该字段不下发。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowTime
+
+    @FlowTime.setter
+    def FlowTime(self, FlowTime):
+        self._FlowTime = FlowTime
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._ClusterId = params.get("ClusterId")
+        self._AffectRows = params.get("AffectRows")
+        self._CheckRows = params.get("CheckRows")
+        self._CpuTime = params.get("CpuTime")
+        self._SetHost = params.get("SetHost")
+        self._DBName = params.get("DBName")
+        self._ErrCode = params.get("ErrCode")
+        self._ExecTime = params.get("ExecTime")
+        self._Host = params.get("Host")
+        self._SetName = params.get("SetName")
+        self._IoWaitTime = params.get("IoWaitTime")
+        self._LockWaitTime = params.get("LockWaitTime")
+        self._SqlStartTimeNs = params.get("SqlStartTimeNs")
+        self._QueryId = params.get("QueryId")
+        self._QueryNo = params.get("QueryNo")
+        self._SentRows = params.get("SentRows")
+        self._Sql = params.get("Sql")
+        self._SqlTemplateId = params.get("SqlTemplateId")
+        self._SqlType = params.get("SqlType")
+        self._Tables = params.get("Tables")
+        self._ThreadId = params.get("ThreadId")
+        self._SqlStartTime = params.get("SqlStartTime")
+        self._TrxLivingTime = params.get("TrxLivingTime")
+        self._User = params.get("User")
+        self._TrxId = params.get("TrxId")
+        self._InternalXId = params.get("InternalXId")
+        self._BusinessCode = params.get("BusinessCode")
+        self._FlowTime = params.get("FlowTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuditInstance(AbstractModel):
     r"""实例详细信息
 
@@ -1208,6 +1722,911 @@ class AuditLogFilter(AbstractModel):
         self._SentRows = params.get("SentRows")
         self._AffectRows = params.get("AffectRows")
         self._ExecTime = params.get("ExecTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogQueryFilter(AbstractModel):
+    r"""审计日志查询过滤条件集合。所有字段均可选。注意：MultiSql 、 ExcludeMultiSql 以 JSON 字符串承载二维数组（云 API 平台不支持二维数组），示例：[[a,b]] 表示 (a OR b)。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SqlType: <p>SQL 类型列表，取值如 SELECT、INSERT、UPDATE、DELETE 等。</p>
+        :type SqlType: list of str
+        :param _ExecTime: <p>执行耗时范围（毫秒），长度为 2 的数组：[最小值, 最大值]。</p>
+        :type ExecTime: list of int
+        :param _IoWaitTime: <p>IO 等待耗时范围（毫秒），长度为 2 的数组。</p>
+        :type IoWaitTime: list of int
+        :param _CpuTime: <p>CPU 耗时范围（毫秒），长度为 2 的数组。</p>
+        :type CpuTime: list of int
+        :param _LockWaitTime: <p>锁等待耗时范围（毫秒），长度为 2 的数组。</p>
+        :type LockWaitTime: list of int
+        :param _ErrCode: <p>SQL 执行错误码，例如 0 表示成功。</p>
+        :type ErrCode: str
+        :param _ErrInfo: <p>错误信息。</p>
+        :type ErrInfo: str
+        :param _DBName: <p>数据库名列表。</p>
+        :type DBName: list of str
+        :param _User: <p>用户名列表。</p>
+        :type User: list of str
+        :param _Host: <p>来源 IP 列表。</p>
+        :type Host: list of str
+        :param _ThreadId: <p>线程 ID 列表。</p>
+        :type ThreadId: list of str
+        :param _ProxyHostList: <p>代理节点 Host 列表。</p>
+        :type ProxyHostList: list of str
+        :param _SetHostList: <p>后端 Set Host 列表。</p>
+        :type SetHostList: list of str
+        :param _SetIdList: <p>后端 Set ID 列表。</p>
+        :type SetIdList: list of str
+        :param _MultiSql: <p>多 SQL 关键词条件，JSON 字符串，内部为二维数组：第一级为 AND，第二级为 OR。注意云 API 平台不支持二维数组，此处用字符串承载，服务端自动解析。</p>
+        :type MultiSql: str
+        :param _ExcludeMultiSql: <p>排除的多 SQL 关键词条件，JSON 字符串，结构同 MultiSql。</p>
+        :type ExcludeMultiSql: str
+        :param _SqlTemplateId: <p>SQL 模板 ID。</p>
+        :type SqlTemplateId: str
+        :param _SqlStartTime: <p>SQL 开始时间，示例：2026-10-10 11:05:06.002211</p><p>参数格式：YYYY-MM-DD hh:mm:ss.SSSSSS</p>
+        :type SqlStartTime: str
+        :param _QueryId: <p>查询 ID，关联查询时使用（LogType=All 时必填）。</p>
+        :type QueryId: str
+        """
+        self._SqlType = None
+        self._ExecTime = None
+        self._IoWaitTime = None
+        self._CpuTime = None
+        self._LockWaitTime = None
+        self._ErrCode = None
+        self._ErrInfo = None
+        self._DBName = None
+        self._User = None
+        self._Host = None
+        self._ThreadId = None
+        self._ProxyHostList = None
+        self._SetHostList = None
+        self._SetIdList = None
+        self._MultiSql = None
+        self._ExcludeMultiSql = None
+        self._SqlTemplateId = None
+        self._SqlStartTime = None
+        self._QueryId = None
+
+    @property
+    def SqlType(self):
+        r"""<p>SQL 类型列表，取值如 SELECT、INSERT、UPDATE、DELETE 等。</p>
+        :rtype: list of str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def ExecTime(self):
+        r"""<p>执行耗时范围（毫秒），长度为 2 的数组：[最小值, 最大值]。</p>
+        :rtype: list of int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def IoWaitTime(self):
+        r"""<p>IO 等待耗时范围（毫秒），长度为 2 的数组。</p>
+        :rtype: list of int
+        """
+        return self._IoWaitTime
+
+    @IoWaitTime.setter
+    def IoWaitTime(self, IoWaitTime):
+        self._IoWaitTime = IoWaitTime
+
+    @property
+    def CpuTime(self):
+        r"""<p>CPU 耗时范围（毫秒），长度为 2 的数组。</p>
+        :rtype: list of int
+        """
+        return self._CpuTime
+
+    @CpuTime.setter
+    def CpuTime(self, CpuTime):
+        self._CpuTime = CpuTime
+
+    @property
+    def LockWaitTime(self):
+        r"""<p>锁等待耗时范围（毫秒），长度为 2 的数组。</p>
+        :rtype: list of int
+        """
+        return self._LockWaitTime
+
+    @LockWaitTime.setter
+    def LockWaitTime(self, LockWaitTime):
+        self._LockWaitTime = LockWaitTime
+
+    @property
+    def ErrCode(self):
+        r"""<p>SQL 执行错误码，例如 0 表示成功。</p>
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrInfo(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._ErrInfo
+
+    @ErrInfo.setter
+    def ErrInfo(self, ErrInfo):
+        self._ErrInfo = ErrInfo
+
+    @property
+    def DBName(self):
+        r"""<p>数据库名列表。</p>
+        :rtype: list of str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def User(self):
+        r"""<p>用户名列表。</p>
+        :rtype: list of str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        r"""<p>来源 IP 列表。</p>
+        :rtype: list of str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def ThreadId(self):
+        r"""<p>线程 ID 列表。</p>
+        :rtype: list of str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def ProxyHostList(self):
+        r"""<p>代理节点 Host 列表。</p>
+        :rtype: list of str
+        """
+        return self._ProxyHostList
+
+    @ProxyHostList.setter
+    def ProxyHostList(self, ProxyHostList):
+        self._ProxyHostList = ProxyHostList
+
+    @property
+    def SetHostList(self):
+        r"""<p>后端 Set Host 列表。</p>
+        :rtype: list of str
+        """
+        return self._SetHostList
+
+    @SetHostList.setter
+    def SetHostList(self, SetHostList):
+        self._SetHostList = SetHostList
+
+    @property
+    def SetIdList(self):
+        r"""<p>后端 Set ID 列表。</p>
+        :rtype: list of str
+        """
+        return self._SetIdList
+
+    @SetIdList.setter
+    def SetIdList(self, SetIdList):
+        self._SetIdList = SetIdList
+
+    @property
+    def MultiSql(self):
+        r"""<p>多 SQL 关键词条件，JSON 字符串，内部为二维数组：第一级为 AND，第二级为 OR。注意云 API 平台不支持二维数组，此处用字符串承载，服务端自动解析。</p>
+        :rtype: str
+        """
+        return self._MultiSql
+
+    @MultiSql.setter
+    def MultiSql(self, MultiSql):
+        self._MultiSql = MultiSql
+
+    @property
+    def ExcludeMultiSql(self):
+        r"""<p>排除的多 SQL 关键词条件，JSON 字符串，结构同 MultiSql。</p>
+        :rtype: str
+        """
+        return self._ExcludeMultiSql
+
+    @ExcludeMultiSql.setter
+    def ExcludeMultiSql(self, ExcludeMultiSql):
+        self._ExcludeMultiSql = ExcludeMultiSql
+
+    @property
+    def SqlTemplateId(self):
+        r"""<p>SQL 模板 ID。</p>
+        :rtype: str
+        """
+        return self._SqlTemplateId
+
+    @SqlTemplateId.setter
+    def SqlTemplateId(self, SqlTemplateId):
+        self._SqlTemplateId = SqlTemplateId
+
+    @property
+    def SqlStartTime(self):
+        r"""<p>SQL 开始时间，示例：2026-10-10 11:05:06.002211</p><p>参数格式：YYYY-MM-DD hh:mm:ss.SSSSSS</p>
+        :rtype: str
+        """
+        return self._SqlStartTime
+
+    @SqlStartTime.setter
+    def SqlStartTime(self, SqlStartTime):
+        self._SqlStartTime = SqlStartTime
+
+    @property
+    def QueryId(self):
+        r"""<p>查询 ID，关联查询时使用（LogType=All 时必填）。</p>
+        :rtype: str
+        """
+        return self._QueryId
+
+    @QueryId.setter
+    def QueryId(self, QueryId):
+        self._QueryId = QueryId
+
+
+    def _deserialize(self, params):
+        self._SqlType = params.get("SqlType")
+        self._ExecTime = params.get("ExecTime")
+        self._IoWaitTime = params.get("IoWaitTime")
+        self._CpuTime = params.get("CpuTime")
+        self._LockWaitTime = params.get("LockWaitTime")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrInfo = params.get("ErrInfo")
+        self._DBName = params.get("DBName")
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._ThreadId = params.get("ThreadId")
+        self._ProxyHostList = params.get("ProxyHostList")
+        self._SetHostList = params.get("SetHostList")
+        self._SetIdList = params.get("SetIdList")
+        self._MultiSql = params.get("MultiSql")
+        self._ExcludeMultiSql = params.get("ExcludeMultiSql")
+        self._SqlTemplateId = params.get("SqlTemplateId")
+        self._SqlStartTime = params.get("SqlStartTime")
+        self._QueryId = params.get("QueryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditProxyLogItem(AbstractModel):
+    r"""Proxy 层审计日志单条明细。字段由 DruidCommonUtil#changeLogsTdsqlProxy 和 BusinessCodeUtils 固定输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>SQL 执行时间点（格式化字符串，yyyy-MM-dd HH:mm:ss）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        :param _ClusterId: <p>集群 ID（dcdb/mariadb 集群标识，与 InstanceId 相同）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _AffectRows: <p>影响行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectRows: int
+        :param _Autocommit: <p>是否自动提交。1 表示开启，0 表示关闭。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Autocommit: str
+        :param _ComType: <p>MySQL 网络协议命令类型（如 COM_QUERY、COM_CONNECT 等）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComType: str
+        :param _ConnTc: <p>新建连接耗时。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnTc: int
+        :param _DBHost: <p>后端 DB 实例地址（多个用英文逗号分隔）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBHost: str
+        :param _DBName: <p>SQL 执行所在的数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBName: str
+        :param _ErrCode: <p>SQL 执行返回的错误码，0 表示成功。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: str
+        :param _ErrInfo: <p>错误信息。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrInfo: str
+        :param _ExecTime: <p>SQL 执行耗时（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecTime: int
+        :param _HoldConns: <p>请求结束后仍占用的连接数（非事务请求通常为 0）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HoldConns: str
+        :param _Host: <p>客户端来源 IP。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _Mc: <p>是否开启全局一致性读（0 否、1 是）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Mc: str
+        :param _SqlStartTimeUs: <p>SQL 开始时间（微秒精度中的微秒部分）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlStartTimeUs: int
+        :param _NewConnNum: <p>本次请求新建的连接数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewConnNum: int
+        :param _ProxyHost: <p>Proxy 代理节点地址。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyHost: str
+        :param _ProxyId: <p>Proxy ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyId: str
+        :param _QueryId: <p>查询 ID（用于关联查询）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryId: str
+        :param _SentRows: <p>返回行数（扫描结果集行数）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SentRows: int
+        :param _Splited: <p>是否为 Proxy 改写后的查询：0 原始查询，1 改写后查询。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Splited: int
+        :param _Sql: <p>执行的 SQL 语句原文。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sql: str
+        :param _SqlTemplate: <p>SQL 模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlTemplate: str
+        :param _SqlTemplateId: <p>SQL 模板 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlTemplateId: str
+        :param _SqlType: <p>SQL 类型（如 Select、Insert、Create、Login、Set 等）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlType: str
+        :param _Tables: <p>涉及的表（多表以英文逗号分隔）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tables: str
+        :param _ThreadId: <p>线程 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThreadId: str
+        :param _SqlStartTime: <p>SQL 开始时间（毫秒级时间戳）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlStartTime: int
+        :param _User: <p>执行 SQL 的数据库用户名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _HostPort: <p>客户端连接的 HostPort。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostPort: str
+        :param _ProxyThread: <p>Proxy 节点处理线程 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProxyThread: str
+        :param _DbHostNum: <p>后端 DB Host 数量。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbHostNum: str
+        :param _BusinessCode: <p>业务码（由业务侧 SQL 注释中 i/o/p 等 KV 提取）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessCode: str
+        :param _BusinessTag: <p>业务标签（根据业务码后置补齐）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BusinessTag: str
+        """
+        self._Timestamp = None
+        self._ClusterId = None
+        self._AffectRows = None
+        self._Autocommit = None
+        self._ComType = None
+        self._ConnTc = None
+        self._DBHost = None
+        self._DBName = None
+        self._ErrCode = None
+        self._ErrInfo = None
+        self._ExecTime = None
+        self._HoldConns = None
+        self._Host = None
+        self._Mc = None
+        self._SqlStartTimeUs = None
+        self._NewConnNum = None
+        self._ProxyHost = None
+        self._ProxyId = None
+        self._QueryId = None
+        self._SentRows = None
+        self._Splited = None
+        self._Sql = None
+        self._SqlTemplate = None
+        self._SqlTemplateId = None
+        self._SqlType = None
+        self._Tables = None
+        self._ThreadId = None
+        self._SqlStartTime = None
+        self._User = None
+        self._HostPort = None
+        self._ProxyThread = None
+        self._DbHostNum = None
+        self._BusinessCode = None
+        self._BusinessTag = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>SQL 执行时间点（格式化字符串，yyyy-MM-dd HH:mm:ss）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID（dcdb/mariadb 集群标识，与 InstanceId 相同）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AffectRows(self):
+        r"""<p>影响行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def Autocommit(self):
+        r"""<p>是否自动提交。1 表示开启，0 表示关闭。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Autocommit
+
+    @Autocommit.setter
+    def Autocommit(self, Autocommit):
+        self._Autocommit = Autocommit
+
+    @property
+    def ComType(self):
+        r"""<p>MySQL 网络协议命令类型（如 COM_QUERY、COM_CONNECT 等）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ComType
+
+    @ComType.setter
+    def ComType(self, ComType):
+        self._ComType = ComType
+
+    @property
+    def ConnTc(self):
+        r"""<p>新建连接耗时。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ConnTc
+
+    @ConnTc.setter
+    def ConnTc(self, ConnTc):
+        self._ConnTc = ConnTc
+
+    @property
+    def DBHost(self):
+        r"""<p>后端 DB 实例地址（多个用英文逗号分隔）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DBHost
+
+    @DBHost.setter
+    def DBHost(self, DBHost):
+        self._DBHost = DBHost
+
+    @property
+    def DBName(self):
+        r"""<p>SQL 执行所在的数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def ErrCode(self):
+        r"""<p>SQL 执行返回的错误码，0 表示成功。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrInfo(self):
+        r"""<p>错误信息。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrInfo
+
+    @ErrInfo.setter
+    def ErrInfo(self, ErrInfo):
+        self._ErrInfo = ErrInfo
+
+    @property
+    def ExecTime(self):
+        r"""<p>SQL 执行耗时（微秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def HoldConns(self):
+        r"""<p>请求结束后仍占用的连接数（非事务请求通常为 0）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HoldConns
+
+    @HoldConns.setter
+    def HoldConns(self, HoldConns):
+        self._HoldConns = HoldConns
+
+    @property
+    def Host(self):
+        r"""<p>客户端来源 IP。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Mc(self):
+        r"""<p>是否开启全局一致性读（0 否、1 是）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Mc
+
+    @Mc.setter
+    def Mc(self, Mc):
+        self._Mc = Mc
+
+    @property
+    def SqlStartTimeUs(self):
+        r"""<p>SQL 开始时间（微秒精度中的微秒部分）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SqlStartTimeUs
+
+    @SqlStartTimeUs.setter
+    def SqlStartTimeUs(self, SqlStartTimeUs):
+        self._SqlStartTimeUs = SqlStartTimeUs
+
+    @property
+    def NewConnNum(self):
+        r"""<p>本次请求新建的连接数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NewConnNum
+
+    @NewConnNum.setter
+    def NewConnNum(self, NewConnNum):
+        self._NewConnNum = NewConnNum
+
+    @property
+    def ProxyHost(self):
+        r"""<p>Proxy 代理节点地址。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProxyHost
+
+    @ProxyHost.setter
+    def ProxyHost(self, ProxyHost):
+        self._ProxyHost = ProxyHost
+
+    @property
+    def ProxyId(self):
+        r"""<p>Proxy ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProxyId
+
+    @ProxyId.setter
+    def ProxyId(self, ProxyId):
+        self._ProxyId = ProxyId
+
+    @property
+    def QueryId(self):
+        r"""<p>查询 ID（用于关联查询）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueryId
+
+    @QueryId.setter
+    def QueryId(self, QueryId):
+        self._QueryId = QueryId
+
+    @property
+    def SentRows(self):
+        r"""<p>返回行数（扫描结果集行数）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SentRows
+
+    @SentRows.setter
+    def SentRows(self, SentRows):
+        self._SentRows = SentRows
+
+    @property
+    def Splited(self):
+        r"""<p>是否为 Proxy 改写后的查询：0 原始查询，1 改写后查询。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Splited
+
+    @Splited.setter
+    def Splited(self, Splited):
+        self._Splited = Splited
+
+    @property
+    def Sql(self):
+        r"""<p>执行的 SQL 语句原文。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def SqlTemplate(self):
+        r"""<p>SQL 模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlTemplate
+
+    @SqlTemplate.setter
+    def SqlTemplate(self, SqlTemplate):
+        self._SqlTemplate = SqlTemplate
+
+    @property
+    def SqlTemplateId(self):
+        r"""<p>SQL 模板 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlTemplateId
+
+    @SqlTemplateId.setter
+    def SqlTemplateId(self, SqlTemplateId):
+        self._SqlTemplateId = SqlTemplateId
+
+    @property
+    def SqlType(self):
+        r"""<p>SQL 类型（如 Select、Insert、Create、Login、Set 等）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def Tables(self):
+        r"""<p>涉及的表（多表以英文逗号分隔）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def ThreadId(self):
+        r"""<p>线程 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def SqlStartTime(self):
+        r"""<p>SQL 开始时间（毫秒级时间戳）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SqlStartTime
+
+    @SqlStartTime.setter
+    def SqlStartTime(self, SqlStartTime):
+        self._SqlStartTime = SqlStartTime
+
+    @property
+    def User(self):
+        r"""<p>执行 SQL 的数据库用户名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def HostPort(self):
+        r"""<p>客户端连接的 HostPort。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HostPort
+
+    @HostPort.setter
+    def HostPort(self, HostPort):
+        self._HostPort = HostPort
+
+    @property
+    def ProxyThread(self):
+        r"""<p>Proxy 节点处理线程 ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProxyThread
+
+    @ProxyThread.setter
+    def ProxyThread(self, ProxyThread):
+        self._ProxyThread = ProxyThread
+
+    @property
+    def DbHostNum(self):
+        r"""<p>后端 DB Host 数量。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbHostNum
+
+    @DbHostNum.setter
+    def DbHostNum(self, DbHostNum):
+        self._DbHostNum = DbHostNum
+
+    @property
+    def BusinessCode(self):
+        r"""<p>业务码（由业务侧 SQL 注释中 i/o/p 等 KV 提取）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def BusinessTag(self):
+        r"""<p>业务标签（根据业务码后置补齐）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BusinessTag
+
+    @BusinessTag.setter
+    def BusinessTag(self, BusinessTag):
+        self._BusinessTag = BusinessTag
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._ClusterId = params.get("ClusterId")
+        self._AffectRows = params.get("AffectRows")
+        self._Autocommit = params.get("Autocommit")
+        self._ComType = params.get("ComType")
+        self._ConnTc = params.get("ConnTc")
+        self._DBHost = params.get("DBHost")
+        self._DBName = params.get("DBName")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrInfo = params.get("ErrInfo")
+        self._ExecTime = params.get("ExecTime")
+        self._HoldConns = params.get("HoldConns")
+        self._Host = params.get("Host")
+        self._Mc = params.get("Mc")
+        self._SqlStartTimeUs = params.get("SqlStartTimeUs")
+        self._NewConnNum = params.get("NewConnNum")
+        self._ProxyHost = params.get("ProxyHost")
+        self._ProxyId = params.get("ProxyId")
+        self._QueryId = params.get("QueryId")
+        self._SentRows = params.get("SentRows")
+        self._Splited = params.get("Splited")
+        self._Sql = params.get("Sql")
+        self._SqlTemplate = params.get("SqlTemplate")
+        self._SqlTemplateId = params.get("SqlTemplateId")
+        self._SqlType = params.get("SqlType")
+        self._Tables = params.get("Tables")
+        self._ThreadId = params.get("ThreadId")
+        self._SqlStartTime = params.get("SqlStartTime")
+        self._User = params.get("User")
+        self._HostPort = params.get("HostPort")
+        self._ProxyThread = params.get("ProxyThread")
+        self._DbHostNum = params.get("DbHostNum")
+        self._BusinessCode = params.get("BusinessCode")
+        self._BusinessTag = params.get("BusinessTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6954,6 +8373,311 @@ class DescribeDBAuditLogTopSqlsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBAuditLogsRequest(AbstractModel):
+    r"""DescribeDBAuditLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: <p>服务产品类型。当前  云 API 仅支持：dcdb、mariadb（cdb、cynosdb 已切至中台）。</p>
+        :type Product: str
+        :param _StartTime: <p>开始时间，格式 yyyy-MM-dd HH:mm:ss。</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间，格式 yyyy-MM-dd HH:mm:ss。</p>
+        :type EndTime: str
+        :param _InstanceId: <p>实例 ID，必填。dcdb、mariadb 场景以实例维度查询审计日志。</p>
+        :type InstanceId: str
+        :param _LogType: <p>日志类型：Proxy 代理日志，DB 数据库日志，All 全部。</p>
+        :type LogType: str
+        :param _SortBy: <p>排序字段，默认 Timestamp。</p>
+        :type SortBy: str
+        :param _OrderBy: <p>排序方式：ASC 升序，DESC 降序。默认 DESC。</p>
+        :type OrderBy: str
+        :param _Offset: <p>偏移量，默认 0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，默认 20，最大 100。</p>
+        :type Limit: int
+        :param _SqlStartTime: <p>SQL 开始时间（毫秒级时间戳），根据 QueryId 关联查询时使用。</p>
+        :type SqlStartTime: int
+        :param _Filter: <p>审计日志查询过滤条件集合。</p>
+        :type Filter: :class:`tencentcloud.dbbrain.v20210527.models.AuditLogQueryFilter`
+        :param _ClusterId: <p>集群 ID，dcdb 产品以集群维度查询审计日志</p>
+        :type ClusterId: str
+        """
+        self._Product = None
+        self._StartTime = None
+        self._EndTime = None
+        self._InstanceId = None
+        self._LogType = None
+        self._SortBy = None
+        self._OrderBy = None
+        self._Offset = None
+        self._Limit = None
+        self._SqlStartTime = None
+        self._Filter = None
+        self._ClusterId = None
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型。当前  云 API 仅支持：dcdb、mariadb（cdb、cynosdb 已切至中台）。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，格式 yyyy-MM-dd HH:mm:ss。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，格式 yyyy-MM-dd HH:mm:ss。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID，必填。dcdb、mariadb 场景以实例维度查询审计日志。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型：Proxy 代理日志，DB 数据库日志，All 全部。</p>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段，默认 Timestamp。</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序方式：ASC 升序，DESC 降序。默认 DESC。</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认 20，最大 100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SqlStartTime(self):
+        r"""<p>SQL 开始时间（毫秒级时间戳），根据 QueryId 关联查询时使用。</p>
+        :rtype: int
+        """
+        return self._SqlStartTime
+
+    @SqlStartTime.setter
+    def SqlStartTime(self, SqlStartTime):
+        self._SqlStartTime = SqlStartTime
+
+    @property
+    def Filter(self):
+        r"""<p>审计日志查询过滤条件集合。</p>
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.AuditLogQueryFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID，dcdb 产品以集群维度查询审计日志</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._InstanceId = params.get("InstanceId")
+        self._LogType = params.get("LogType")
+        self._SortBy = params.get("SortBy")
+        self._OrderBy = params.get("OrderBy")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SqlStartTime = params.get("SqlStartTime")
+        if params.get("Filter") is not None:
+            self._Filter = AuditLogQueryFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBAuditLogsResponse(AbstractModel):
+    r"""DescribeDBAuditLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>满足条件的总条数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _FilteredRecords: <p>过滤后记录数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilteredRecords: int
+        :param _ProxyLogs: <p>Proxy 层审计日志列表。LogType=Proxy 或 All 时返回，字段结构参见 AuditProxyLogItem。</p>
+        :type ProxyLogs: list of AuditProxyLogItem
+        :param _DBLogs: <p>DB 层审计日志列表。LogType=DB 或 All 时返回，字段结构参见 AuditDBLogItem。</p>
+        :type DBLogs: list of AuditDBLogItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FilteredRecords = None
+        self._ProxyLogs = None
+        self._DBLogs = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>满足条件的总条数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FilteredRecords(self):
+        r"""<p>过滤后记录数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FilteredRecords
+
+    @FilteredRecords.setter
+    def FilteredRecords(self, FilteredRecords):
+        self._FilteredRecords = FilteredRecords
+
+    @property
+    def ProxyLogs(self):
+        r"""<p>Proxy 层审计日志列表。LogType=Proxy 或 All 时返回，字段结构参见 AuditProxyLogItem。</p>
+        :rtype: list of AuditProxyLogItem
+        """
+        return self._ProxyLogs
+
+    @ProxyLogs.setter
+    def ProxyLogs(self, ProxyLogs):
+        self._ProxyLogs = ProxyLogs
+
+    @property
+    def DBLogs(self):
+        r"""<p>DB 层审计日志列表。LogType=DB 或 All 时返回，字段结构参见 AuditDBLogItem。</p>
+        :rtype: list of AuditDBLogItem
+        """
+        return self._DBLogs
+
+    @DBLogs.setter
+    def DBLogs(self, DBLogs):
+        self._DBLogs = DBLogs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._FilteredRecords = params.get("FilteredRecords")
+        if params.get("ProxyLogs") is not None:
+            self._ProxyLogs = []
+            for item in params.get("ProxyLogs"):
+                obj = AuditProxyLogItem()
+                obj._deserialize(item)
+                self._ProxyLogs.append(obj)
+        if params.get("DBLogs") is not None:
+            self._DBLogs = []
+            for item in params.get("DBLogs"):
+                obj = AuditDBLogItem()
+                obj._deserialize(item)
+                self._DBLogs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBAutonomyActionRequest(AbstractModel):
     r"""DescribeDBAutonomyAction请求参数结构体
 
@@ -9054,6 +10778,212 @@ class DescribeDatabaseAutonomyStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseObjectV2Request(AbstractModel):
+    r"""DescribeDatabaseObjectV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: <p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
+        :type Product: str
+        :param _ObjectType: <p>查询对象类型。</p><p>枚举值：</p><ul><li>TableDDL： 建表+索引DDL</li><li>TableStatistics： 表空间统计</li></ul>
+        :type ObjectType: str
+        :param _InstanceId: <p>实例 ID。SQLServer: mssql-xxxx。</p>
+        :type InstanceId: str
+        :param _TableSchema: <p>库名（catalog）。TableStatistics 时必填；TableDDL 时可选。</p>
+        :type TableSchema: str
+        :param _TableName: <p>当产品为sqlserver时，表名/视图名，支持 schema.table 格式，未带 schema 默认 dbo</p>
+        :type TableName: str
+        """
+        self._Product = None
+        self._ObjectType = None
+        self._InstanceId = None
+        self._TableSchema = None
+        self._TableName = None
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型。取值：sqlserver（云数据库 Sqlserver）。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def ObjectType(self):
+        r"""<p>查询对象类型。</p><p>枚举值：</p><ul><li>TableDDL： 建表+索引DDL</li><li>TableStatistics： 表空间统计</li></ul>
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。SQLServer: mssql-xxxx。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TableSchema(self):
+        r"""<p>库名（catalog）。TableStatistics 时必填；TableDDL 时可选。</p>
+        :rtype: str
+        """
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def TableName(self):
+        r"""<p>当产品为sqlserver时，表名/视图名，支持 schema.table 格式，未带 schema 默认 dbo</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._ObjectType = params.get("ObjectType")
+        self._InstanceId = params.get("InstanceId")
+        self._TableSchema = params.get("TableSchema")
+        self._TableName = params.get("TableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseObjectV2Response(AbstractModel):
+    r"""DescribeDatabaseObjectV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexDDLs: <p>索引 DDL 列表，每项为一条 CREATE INDEX 语句，无索引时为空数组。</p>
+        :type IndexDDLs: list of IndexDDLInfo
+        :param _TableDDL: <p>建表 DDL 语句，对象不存在时为空串。</p>
+        :type TableDDL: str
+        :param _TableName: <p>表名。</p>
+        :type TableName: str
+        :param _TableSchema: <p>库名。</p>
+        :type TableSchema: str
+        :param _TableStatistics: <p>表空间统计。</p>
+        :type TableStatistics: :class:`tencentcloud.dbbrain.v20210527.models.TableStatistics`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IndexDDLs = None
+        self._TableDDL = None
+        self._TableName = None
+        self._TableSchema = None
+        self._TableStatistics = None
+        self._RequestId = None
+
+    @property
+    def IndexDDLs(self):
+        r"""<p>索引 DDL 列表，每项为一条 CREATE INDEX 语句，无索引时为空数组。</p>
+        :rtype: list of IndexDDLInfo
+        """
+        return self._IndexDDLs
+
+    @IndexDDLs.setter
+    def IndexDDLs(self, IndexDDLs):
+        self._IndexDDLs = IndexDDLs
+
+    @property
+    def TableDDL(self):
+        r"""<p>建表 DDL 语句，对象不存在时为空串。</p>
+        :rtype: str
+        """
+        return self._TableDDL
+
+    @TableDDL.setter
+    def TableDDL(self, TableDDL):
+        self._TableDDL = TableDDL
+
+    @property
+    def TableName(self):
+        r"""<p>表名。</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableSchema(self):
+        r"""<p>库名。</p>
+        :rtype: str
+        """
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def TableStatistics(self):
+        r"""<p>表空间统计。</p>
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.TableStatistics`
+        """
+        return self._TableStatistics
+
+    @TableStatistics.setter
+    def TableStatistics(self, TableStatistics):
+        self._TableStatistics = TableStatistics
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("IndexDDLs") is not None:
+            self._IndexDDLs = []
+            for item in params.get("IndexDDLs"):
+                obj = IndexDDLInfo()
+                obj._deserialize(item)
+                self._IndexDDLs.append(obj)
+        self._TableDDL = params.get("TableDDL")
+        self._TableName = params.get("TableName")
+        self._TableSchema = params.get("TableSchema")
+        if params.get("TableStatistics") is not None:
+            self._TableStatistics = TableStatistics()
+            self._TableStatistics._deserialize(params.get("TableStatistics"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDeadLockLogsRequest(AbstractModel):
     r"""DescribeDeadLockLogs请求参数结构体
 
@@ -11035,7 +12965,7 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID 。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
         :param _InstanceProxyId: 该实例下需要查询的某一个 ProxyID 。
         :type InstanceProxyId: str
@@ -11046,8 +12976,17 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
         :param _Offset: 偏移量，默认0。
         :type Offset: int
         :param _SortBy: 按照某字段排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+其中：
+
+- AllConn ：表示总连接数（活跃连接 + 非活跃连接）
+- ActiveConn：表示活跃连接数
+- Ip：表示 IP 地址
         :type SortBy: str
         :param _OrderDirection: 排序方向。支持值包括："DESC"，"ASC"。
+其中：
+
+- DESC：降序
+- ASC：升序
         :type OrderDirection: str
         """
         self._InstanceId = None
@@ -11060,7 +12999,7 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID 。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -11116,6 +13055,11 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
     @property
     def SortBy(self):
         r"""按照某字段排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
+其中：
+
+- AllConn ：表示总连接数（活跃连接 + 非活跃连接）
+- ActiveConn：表示活跃连接数
+- Ip：表示 IP 地址
         :rtype: str
         """
         return self._SortBy
@@ -11127,6 +13071,10 @@ class DescribeProxyProcessStatisticsRequest(AbstractModel):
     @property
     def OrderDirection(self):
         r"""排序方向。支持值包括："DESC"，"ASC"。
+其中：
+
+- DESC：降序
+- ASC：升序
         :rtype: str
         """
         return self._OrderDirection
@@ -17046,6 +18994,57 @@ class HealthStatus(AbstractModel):
                 obj._deserialize(item)
                 self._ScoreDetails.append(obj)
         self._HealthLevelVersion = params.get("HealthLevelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IndexDDLInfo(AbstractModel):
+    r"""索引详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexName: <p>索引名称。</p>
+        :type IndexName: str
+        :param _DDL: <p>创建索引语句。</p>
+        :type DDL: str
+        """
+        self._IndexName = None
+        self._DDL = None
+
+    @property
+    def IndexName(self):
+        r"""<p>索引名称。</p>
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def DDL(self):
+        r"""<p>创建索引语句。</p>
+        :rtype: str
+        """
+        return self._DDL
+
+    @DDL.setter
+    def DDL(self, DDL):
+        self._DDL = DDL
+
+
+    def _deserialize(self, params):
+        self._IndexName = params.get("IndexName")
+        self._DDL = params.get("DDL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24828,6 +26827,207 @@ class TableSpaceTimeSeries(AbstractModel):
         if params.get("SeriesData") is not None:
             self._SeriesData = MonitorFloatMetricSeriesData()
             self._SeriesData._deserialize(params.get("SeriesData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableStatistics(AbstractModel):
+    r"""表统计信息明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: <p>表名。</p>
+        :type TableName: str
+        :param _TableSchema: <p>Schema 名。</p>
+        :type TableSchema: str
+        :param _DatabaseName: <p>库名（catalog）。</p>
+        :type DatabaseName: str
+        :param _Engine: <p>存储引擎。</p>
+        :type Engine: str
+        :param _DataLength: <p>数据空间。</p><p>单位：MB</p>
+        :type DataLength: float
+        :param _IndexLength: <p>索引空间。</p><p>单位：MB</p>
+        :type IndexLength: float
+        :param _TotalLength: <p>总分配空间。</p><p>单位：MB</p>
+        :type TotalLength: float
+        :param _UsedLength: <p>已用空间。</p><p>单位：MB</p>
+        :type UsedLength: float
+        :param _DataFree: <p>碎片空间。</p><p>单位：MB</p>
+        :type DataFree: float
+        :param _TableRows: <p>行数。</p>
+        :type TableRows: int
+        :param _FragRatio: <p>碎片率（%）。</p>
+        :type FragRatio: float
+        :param _PhysicalFileSize: <p>物理文件大小。</p><p>单位：MB</p>
+        :type PhysicalFileSize: float
+        """
+        self._TableName = None
+        self._TableSchema = None
+        self._DatabaseName = None
+        self._Engine = None
+        self._DataLength = None
+        self._IndexLength = None
+        self._TotalLength = None
+        self._UsedLength = None
+        self._DataFree = None
+        self._TableRows = None
+        self._FragRatio = None
+        self._PhysicalFileSize = None
+
+    @property
+    def TableName(self):
+        r"""<p>表名。</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableSchema(self):
+        r"""<p>Schema 名。</p>
+        :rtype: str
+        """
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def DatabaseName(self):
+        r"""<p>库名（catalog）。</p>
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def Engine(self):
+        r"""<p>存储引擎。</p>
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def DataLength(self):
+        r"""<p>数据空间。</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._DataLength
+
+    @DataLength.setter
+    def DataLength(self, DataLength):
+        self._DataLength = DataLength
+
+    @property
+    def IndexLength(self):
+        r"""<p>索引空间。</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
+    @property
+    def TotalLength(self):
+        r"""<p>总分配空间。</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._TotalLength
+
+    @TotalLength.setter
+    def TotalLength(self, TotalLength):
+        self._TotalLength = TotalLength
+
+    @property
+    def UsedLength(self):
+        r"""<p>已用空间。</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._UsedLength
+
+    @UsedLength.setter
+    def UsedLength(self, UsedLength):
+        self._UsedLength = UsedLength
+
+    @property
+    def DataFree(self):
+        r"""<p>碎片空间。</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._DataFree
+
+    @DataFree.setter
+    def DataFree(self, DataFree):
+        self._DataFree = DataFree
+
+    @property
+    def TableRows(self):
+        r"""<p>行数。</p>
+        :rtype: int
+        """
+        return self._TableRows
+
+    @TableRows.setter
+    def TableRows(self, TableRows):
+        self._TableRows = TableRows
+
+    @property
+    def FragRatio(self):
+        r"""<p>碎片率（%）。</p>
+        :rtype: float
+        """
+        return self._FragRatio
+
+    @FragRatio.setter
+    def FragRatio(self, FragRatio):
+        self._FragRatio = FragRatio
+
+    @property
+    def PhysicalFileSize(self):
+        r"""<p>物理文件大小。</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._PhysicalFileSize
+
+    @PhysicalFileSize.setter
+    def PhysicalFileSize(self, PhysicalFileSize):
+        self._PhysicalFileSize = PhysicalFileSize
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._TableSchema = params.get("TableSchema")
+        self._DatabaseName = params.get("DatabaseName")
+        self._Engine = params.get("Engine")
+        self._DataLength = params.get("DataLength")
+        self._IndexLength = params.get("IndexLength")
+        self._TotalLength = params.get("TotalLength")
+        self._UsedLength = params.get("UsedLength")
+        self._DataFree = params.get("DataFree")
+        self._TableRows = params.get("TableRows")
+        self._FragRatio = params.get("FragRatio")
+        self._PhysicalFileSize = params.get("PhysicalFileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

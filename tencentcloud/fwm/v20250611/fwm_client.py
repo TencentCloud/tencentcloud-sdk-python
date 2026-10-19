@@ -164,6 +164,29 @@ class FwmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRuleGroup(self, request):
+        r"""创建一个不含规则的规则组，归属产品由 Product 指定。规则组是四类防火墙产品共用的资源，落库于 fwm_rule_group 并以 product 字段区分归属；规则需另行通过 CreateSecurityGroupRule / CreateVpcAclRule / CreateNatAclRule / CreateEdgeAclRule 追加。规则组的查询/修改/删除已由 DescribeRuleGroup / DescribeRuleGroups / ModifyRuleGroup / DeleteRuleGroup 统一承载，本接口补齐创建侧，供 Terraform 等需要「建组」与「建规则」分离的资源模型使用。返回新规则组 ID（fwmrg- 前缀），初始 RuleCount 为 0。注意：创建空规则组同样计入规则组配额，且三墙（VPC/NAT/Edge）受预付费写门禁约束，企业安全组不受该门禁约束。
+
+        :param request: Request instance for CreateRuleGroup.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.CreateRuleGroupRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.CreateRuleGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRuleGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRuleGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSecurityGroupRule(self, request):
         r"""规则组编辑时添加规则（规则组管理）
 

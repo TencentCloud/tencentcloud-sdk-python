@@ -27,7 +27,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def AddConsoleUsers(self, request):
-        r"""添加控制台用户
+        r"""添加控制台用户，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for AddConsoleUsers.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.AddConsoleUsersRequest`
@@ -119,7 +119,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def CreateConsoleGroup(self, request):
-        r"""创建控制台用户组
+        r"""创建控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for CreateConsoleGroup.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateConsoleGroupRequest`
@@ -241,7 +241,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def CreateWorkspace(self, request):
-        r"""创建工作空间
+        r"""创建工作空间，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for CreateWorkspace.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateWorkspaceRequest`
@@ -310,7 +310,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def DeleteConsoleGroups(self, request):
-        r"""删除控制台用户组
+        r"""删除控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for DeleteConsoleGroups.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteConsoleGroupsRequest`
@@ -1103,7 +1103,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def ListWorkspaces(self, request):
-        r"""查询工作空间列表
+        r"""查询工作空间列表，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for ListWorkspaces.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.ListWorkspacesRequest`
@@ -1126,7 +1126,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def RemoveConsoleUsers(self, request):
-        r"""<p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准）</p>
+        r"""<p>批量移除控制台用户（单次最多10个；前置校验任一不满足整体拒绝；执行阶段单个失败不中断后续删除，成败以 SuccessUins/FailItems 为准），该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。</p>
 
         :param request: Request instance for RemoveConsoleUsers.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.RemoveConsoleUsersRequest`
@@ -1288,7 +1288,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def UpdateConsoleGroup(self, request):
-        r"""修改控制台用户组
+        r"""修改控制台用户组，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for UpdateConsoleGroup.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateConsoleGroupRequest`
@@ -1311,7 +1311,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def UpdateConsoleUsers(self, request):
-        r"""修改控制台用户角色
+        r"""修改控制台用户角色，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for UpdateConsoleUsers.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateConsoleUsersRequest`
@@ -1422,7 +1422,7 @@ class DatabuddyClient(AbstractClient):
 
 
     def UpdateWorkspace(self, request):
-        r"""修改工作空间
+        r"""修改工作空间，该接口为控制台级接口，仅支持在中心地域调用：国内站请传入 ap-guangzhou，国际站请传入 ap-singapore；其他地域调用将返回 UnsupportedRegion。
 
         :param request: Request instance for UpdateWorkspace.
         :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceRequest`

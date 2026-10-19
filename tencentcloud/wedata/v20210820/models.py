@@ -110946,6 +110946,9 @@ class TaskDsDTO(AbstractModel):
         :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Privilege: str
+        :param _MinuteOffset: <p>分钟任务相位偏移</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinuteOffset: int
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -111054,6 +111057,7 @@ class TaskDsDTO(AbstractModel):
         self._DependencyTriggerPolicy = None
         self._LastUpdateTimestamp = None
         self._Privilege = None
+        self._MinuteOffset = None
 
     @property
     def TaskId(self):
@@ -112339,6 +112343,18 @@ class TaskDsDTO(AbstractModel):
     def Privilege(self, Privilege):
         self._Privilege = Privilege
 
+    @property
+    def MinuteOffset(self):
+        r"""<p>分钟任务相位偏移</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinuteOffset
+
+    @MinuteOffset.setter
+    def MinuteOffset(self, MinuteOffset):
+        self._MinuteOffset = MinuteOffset
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -112497,6 +112513,7 @@ class TaskDsDTO(AbstractModel):
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         self._LastUpdateTimestamp = params.get("LastUpdateTimestamp")
         self._Privilege = params.get("Privilege")
+        self._MinuteOffset = params.get("MinuteOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -124443,6 +124460,9 @@ class WorkflowScheduleDtoDs(AbstractModel):
         :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Privilege: str
+        :param _MinuteOffset: <p>分钟任务相位偏移</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinuteOffset: int
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -124470,6 +124490,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
         self._CalendarId = None
         self._ScheduleTimeZone = None
         self._Privilege = None
+        self._MinuteOffset = None
 
     @property
     def ProjectId(self):
@@ -124783,6 +124804,18 @@ class WorkflowScheduleDtoDs(AbstractModel):
     def Privilege(self, Privilege):
         self._Privilege = Privilege
 
+    @property
+    def MinuteOffset(self):
+        r"""<p>分钟任务相位偏移</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinuteOffset
+
+    @MinuteOffset.setter
+    def MinuteOffset(self, MinuteOffset):
+        self._MinuteOffset = MinuteOffset
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -124811,6 +124844,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
         self._CalendarId = params.get("CalendarId")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._Privilege = params.get("Privilege")
+        self._MinuteOffset = params.get("MinuteOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -279,6 +279,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AuditPermissionApplyOrder(self, request):
+        r"""审批用户权限申请
+
+        :param request: Request instance for AuditPermissionApplyOrder.
+        :type request: :class:`tencentcloud.organization.v20210331.models.AuditPermissionApplyOrderRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.AuditPermissionApplyOrderResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AuditPermissionApplyOrder", params, headers=headers)
+            response = json.loads(body)
+            model = models.AuditPermissionApplyOrderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindOrganizationMemberAuthAccount(self, request):
         r"""绑定组织成员和组织管理员子账号的授权关系
 

@@ -5159,6 +5159,8 @@ class Coefficient(AbstractModel):
         :type InputVideoSecondCoefficient: float
         :param _OutputVideoSecondCoefficient: <p>输出视频每秒系数</p>
         :type OutputVideoSecondCoefficient: float
+        :param _OutputImageCoefficient: <p>输出图片系数</p>
+        :type OutputImageCoefficient: float
         """
         self._InputCachedCoefficient = None
         self._InputCacheCreationCoefficient = None
@@ -5167,6 +5169,7 @@ class Coefficient(AbstractModel):
         self._InputImageCoefficient = None
         self._InputVideoSecondCoefficient = None
         self._OutputVideoSecondCoefficient = None
+        self._OutputImageCoefficient = None
 
     @property
     def InputCachedCoefficient(self):
@@ -5245,6 +5248,17 @@ class Coefficient(AbstractModel):
     def OutputVideoSecondCoefficient(self, OutputVideoSecondCoefficient):
         self._OutputVideoSecondCoefficient = OutputVideoSecondCoefficient
 
+    @property
+    def OutputImageCoefficient(self):
+        r"""<p>输出图片系数</p>
+        :rtype: float
+        """
+        return self._OutputImageCoefficient
+
+    @OutputImageCoefficient.setter
+    def OutputImageCoefficient(self, OutputImageCoefficient):
+        self._OutputImageCoefficient = OutputImageCoefficient
+
 
     def _deserialize(self, params):
         self._InputCachedCoefficient = params.get("InputCachedCoefficient")
@@ -5254,6 +5268,7 @@ class Coefficient(AbstractModel):
         self._InputImageCoefficient = params.get("InputImageCoefficient")
         self._InputVideoSecondCoefficient = params.get("InputVideoSecondCoefficient")
         self._OutputVideoSecondCoefficient = params.get("OutputVideoSecondCoefficient")
+        self._OutputImageCoefficient = params.get("OutputImageCoefficient")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8062,6 +8077,8 @@ class CreateModelRouterRequest(AbstractModel):
         :type RerankConfig: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
         :param _DecisionsConfig: <p>Decisions 调度配置</p>
         :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
+        :param _ImageConfig: <p>Images 生图配置</p>
+        :type ImageConfig: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
         """
         self._ModelRouterType = None
         self._BudgetId = None
@@ -8084,6 +8101,7 @@ class CreateModelRouterRequest(AbstractModel):
         self._VideoConfig = None
         self._RerankConfig = None
         self._DecisionsConfig = None
+        self._ImageConfig = None
 
     @property
     def ModelRouterType(self):
@@ -8316,6 +8334,17 @@ class CreateModelRouterRequest(AbstractModel):
     def DecisionsConfig(self, DecisionsConfig):
         self._DecisionsConfig = DecisionsConfig
 
+    @property
+    def ImageConfig(self):
+        r"""<p>Images 生图配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
+        """
+        return self._ImageConfig
+
+    @ImageConfig.setter
+    def ImageConfig(self, ImageConfig):
+        self._ImageConfig = ImageConfig
+
 
     def _deserialize(self, params):
         self._ModelRouterType = params.get("ModelRouterType")
@@ -8360,6 +8389,9 @@ class CreateModelRouterRequest(AbstractModel):
         if params.get("DecisionsConfig") is not None:
             self._DecisionsConfig = DecisionsConfig()
             self._DecisionsConfig._deserialize(params.get("DecisionsConfig"))
+        if params.get("ImageConfig") is not None:
+            self._ImageConfig = ImageConfig()
+            self._ImageConfig._deserialize(params.get("ImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20124,6 +20156,95 @@ class IdleLoadBalancer(AbstractModel):
         
 
 
+class ImageConfig(AbstractModel):
+    r"""video配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutingStrategy: <p>模型内路由策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategy: str
+        :param _RoutingStrategyArgs: <p>路由参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        :param _NumRetries: <p>同一模型请求重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumRetries: int
+        :param _WaitSeconds: <p>同步超时时间</p><p>取值范围：[0, 60]</p><p>单位：秒</p>
+        :type WaitSeconds: int
+        """
+        self._RoutingStrategy = None
+        self._RoutingStrategyArgs = None
+        self._NumRetries = None
+        self._WaitSeconds = None
+
+    @property
+    def RoutingStrategy(self):
+        r"""<p>模型内路由策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
+
+    @property
+    def RoutingStrategyArgs(self):
+        r"""<p>路由参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        """
+        return self._RoutingStrategyArgs
+
+    @RoutingStrategyArgs.setter
+    def RoutingStrategyArgs(self, RoutingStrategyArgs):
+        self._RoutingStrategyArgs = RoutingStrategyArgs
+
+    @property
+    def NumRetries(self):
+        r"""<p>同一模型请求重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumRetries
+
+    @NumRetries.setter
+    def NumRetries(self, NumRetries):
+        self._NumRetries = NumRetries
+
+    @property
+    def WaitSeconds(self):
+        r"""<p>同步超时时间</p><p>取值范围：[0, 60]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._WaitSeconds
+
+    @WaitSeconds.setter
+    def WaitSeconds(self, WaitSeconds):
+        self._WaitSeconds = WaitSeconds
+
+
+    def _deserialize(self, params):
+        self._RoutingStrategy = params.get("RoutingStrategy")
+        if params.get("RoutingStrategyArgs") is not None:
+            self._RoutingStrategyArgs = RoutingStrategyArgs()
+            self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
+        self._NumRetries = params.get("NumRetries")
+        self._WaitSeconds = params.get("WaitSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputKeyInfo(AbstractModel):
     r"""创建Key的信息
 
@@ -26414,6 +26535,8 @@ class ModelRouterDetail(AbstractModel):
         :type RerankConfig: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
         :param _DecisionsConfig: <p>决策模型设置</p>
         :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
+        :param _ImageConfig: <p>Images 生图配置</p>
+        :type ImageConfig: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -26445,6 +26568,7 @@ class ModelRouterDetail(AbstractModel):
         self._VideoConfig = None
         self._RerankConfig = None
         self._DecisionsConfig = None
+        self._ImageConfig = None
 
     @property
     def BudgetId(self):
@@ -26782,6 +26906,17 @@ class ModelRouterDetail(AbstractModel):
     def DecisionsConfig(self, DecisionsConfig):
         self._DecisionsConfig = DecisionsConfig
 
+    @property
+    def ImageConfig(self):
+        r"""<p>Images 生图配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
+        """
+        return self._ImageConfig
+
+    @ImageConfig.setter
+    def ImageConfig(self, ImageConfig):
+        self._ImageConfig = ImageConfig
+
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
@@ -26845,6 +26980,9 @@ class ModelRouterDetail(AbstractModel):
         if params.get("DecisionsConfig") is not None:
             self._DecisionsConfig = DecisionsConfig()
             self._DecisionsConfig._deserialize(params.get("DecisionsConfig"))
+        if params.get("ImageConfig") is not None:
+            self._ImageConfig = ImageConfig()
+            self._ImageConfig._deserialize(params.get("ImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30582,6 +30720,8 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         :type RerankConfig: :class:`tencentcloud.clb.v20180317.models.RerankConfig`
         :param _DecisionsConfig: <p>Decisions 调度配置</p>
         :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
+        :param _ImageConfig: <p>Images 生图配置</p>
+        :type ImageConfig: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
         """
         self._ModelRouterId = None
         self._CertId = None
@@ -30594,6 +30734,7 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         self._VideoConfig = None
         self._RerankConfig = None
         self._DecisionsConfig = None
+        self._ImageConfig = None
 
     @property
     def ModelRouterId(self):
@@ -30716,6 +30857,17 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
     def DecisionsConfig(self, DecisionsConfig):
         self._DecisionsConfig = DecisionsConfig
 
+    @property
+    def ImageConfig(self):
+        r"""<p>Images 生图配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
+        """
+        return self._ImageConfig
+
+    @ImageConfig.setter
+    def ImageConfig(self, ImageConfig):
+        self._ImageConfig = ImageConfig
+
 
     def _deserialize(self, params):
         self._ModelRouterId = params.get("ModelRouterId")
@@ -30741,6 +30893,9 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         if params.get("DecisionsConfig") is not None:
             self._DecisionsConfig = DecisionsConfig()
             self._DecisionsConfig._deserialize(params.get("DecisionsConfig"))
+        if params.get("ImageConfig") is not None:
+            self._ImageConfig = ImageConfig()
+            self._ImageConfig._deserialize(params.get("ImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36216,6 +36371,8 @@ class ServiceProviderHealthCheckConfigItemInput(AbstractModel):
         :type HealthCheckPath: str
         :param _HealthCheckMethod: <p>健康检查方式。</p><p>枚举值：</p><ul><li>Service： 探测服务可用性</li><li>Model： 探测模型可用性</li></ul>
         :type HealthCheckMethod: str
+        :param _HealthCheckTimeout: <p>健康检查超时时间</p><p>取值范围：[1, 60]</p><p>单位：秒</p>
+        :type HealthCheckTimeout: int
         """
         self._HealthCheckEnabled = None
         self._HealthCheckInterval = None
@@ -36224,6 +36381,7 @@ class ServiceProviderHealthCheckConfigItemInput(AbstractModel):
         self._HealthCheckProtocol = None
         self._HealthCheckPath = None
         self._HealthCheckMethod = None
+        self._HealthCheckTimeout = None
 
     @property
     def HealthCheckEnabled(self):
@@ -36302,6 +36460,17 @@ class ServiceProviderHealthCheckConfigItemInput(AbstractModel):
     def HealthCheckMethod(self, HealthCheckMethod):
         self._HealthCheckMethod = HealthCheckMethod
 
+    @property
+    def HealthCheckTimeout(self):
+        r"""<p>健康检查超时时间</p><p>取值范围：[1, 60]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._HealthCheckTimeout
+
+    @HealthCheckTimeout.setter
+    def HealthCheckTimeout(self, HealthCheckTimeout):
+        self._HealthCheckTimeout = HealthCheckTimeout
+
 
     def _deserialize(self, params):
         self._HealthCheckEnabled = params.get("HealthCheckEnabled")
@@ -36311,6 +36480,7 @@ class ServiceProviderHealthCheckConfigItemInput(AbstractModel):
         self._HealthCheckProtocol = params.get("HealthCheckProtocol")
         self._HealthCheckPath = params.get("HealthCheckPath")
         self._HealthCheckMethod = params.get("HealthCheckMethod")
+        self._HealthCheckTimeout = params.get("HealthCheckTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36344,6 +36514,8 @@ class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
         :type HealthCheckPath: str
         :param _HealthCheckMethod: <p>健康检查方式。</p>
         :type HealthCheckMethod: str
+        :param _HealthCheckTimeout: <p>健康检查超时时间</p><p>单位：秒</p><p>默认值：15</p>
+        :type HealthCheckTimeout: int
         """
         self._HealthCheckEnabled = None
         self._HealthCheckInterval = None
@@ -36352,6 +36524,7 @@ class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
         self._HealthCheckProtocol = None
         self._HealthCheckPath = None
         self._HealthCheckMethod = None
+        self._HealthCheckTimeout = None
 
     @property
     def HealthCheckEnabled(self):
@@ -36432,6 +36605,17 @@ class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
     def HealthCheckMethod(self, HealthCheckMethod):
         self._HealthCheckMethod = HealthCheckMethod
 
+    @property
+    def HealthCheckTimeout(self):
+        r"""<p>健康检查超时时间</p><p>单位：秒</p><p>默认值：15</p>
+        :rtype: int
+        """
+        return self._HealthCheckTimeout
+
+    @HealthCheckTimeout.setter
+    def HealthCheckTimeout(self, HealthCheckTimeout):
+        self._HealthCheckTimeout = HealthCheckTimeout
+
 
     def _deserialize(self, params):
         self._HealthCheckEnabled = params.get("HealthCheckEnabled")
@@ -36441,6 +36625,7 @@ class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
         self._HealthCheckProtocol = params.get("HealthCheckProtocol")
         self._HealthCheckPath = params.get("HealthCheckPath")
         self._HealthCheckMethod = params.get("HealthCheckMethod")
+        self._HealthCheckTimeout = params.get("HealthCheckTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
