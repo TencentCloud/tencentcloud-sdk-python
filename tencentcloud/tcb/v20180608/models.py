@@ -347,6 +347,57 @@ class AIModelSecret(AbstractModel):
         
 
 
+class AIModelStatus(AbstractModel):
+    r"""控制模型启用和停止
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>模型名称</p>
+        :type Model: str
+        :param _Status: <p>开关状态</p><p>枚举值：</p><ul><li>ENABLE： 打开模型</li><li>DISABLE： 关闭模型</li></ul>
+        :type Status: str
+        """
+        self._Model = None
+        self._Status = None
+
+    @property
+    def Model(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Status(self):
+        r"""<p>开关状态</p><p>枚举值：</p><ul><li>ENABLE： 打开模型</li><li>DISABLE： 关闭模型</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddProviderRequest(AbstractModel):
     r"""AddProvider请求参数结构体
 
@@ -24291,6 +24342,120 @@ class MigrationSummary(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAIModelStatusRequest(AbstractModel):
+    r"""ModifyAIModelStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _GroupName: <p>分组名</p><p>枚举值：</p><ul><li>cloudbase： 生文系列内置模型</li><li>hunyuan-image： 生图系列内置模型</li></ul><p>系统内置分组固定标识</p>
+        :type GroupName: str
+        :param _Models: <p>模型设置</p><p>空数组表示无操作</p>
+        :type Models: list of AIModelStatus
+        """
+        self._EnvId = None
+        self._GroupName = None
+        self._Models = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def GroupName(self):
+        r"""<p>分组名</p><p>枚举值：</p><ul><li>cloudbase： 生文系列内置模型</li><li>hunyuan-image： 生图系列内置模型</li></ul><p>系统内置分组固定标识</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Models(self):
+        r"""<p>模型设置</p><p>空数组表示无操作</p>
+        :rtype: list of AIModelStatus
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._GroupName = params.get("GroupName")
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = AIModelStatus()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAIModelStatusResponse(AbstractModel):
+    r"""ModifyAIModelStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: <p>影响的分组数</p>
+        :type Count: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""<p>影响的分组数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyClientRequest(AbstractModel):

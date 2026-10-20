@@ -493,6 +493,24 @@ class FwmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRuleGroups(
+            self,
+            request: models.DescribeRuleGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRuleGroupsResponse:
+        """
+        查询规则组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRuleGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRuleGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSecurityGroupRule(
             self,
             request: models.DescribeSecurityGroupRuleRequest,

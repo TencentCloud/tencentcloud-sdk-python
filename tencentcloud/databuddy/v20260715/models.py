@@ -17488,24 +17488,16 @@ class StartComputeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 计算资源 ID
-        :type ResourceId: str
         :param _WorkspaceId: 工作空间 ID
         :type WorkspaceId: str
+        :param _ComputeResourceId: 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）。替代已废弃的 ResourceId；过渡期 ComputeResourceId 与 ResourceId 至少传一个，同时传时必须一致
+        :type ComputeResourceId: str
+        :param _ResourceId: [已废弃，请使用 ComputeResourceId] 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）
+        :type ResourceId: str
         """
-        self._ResourceId = None
         self._WorkspaceId = None
-
-    @property
-    def ResourceId(self):
-        r"""计算资源 ID
-        :rtype: str
-        """
-        return self._ResourceId
-
-    @ResourceId.setter
-    def ResourceId(self, ResourceId):
-        self._ResourceId = ResourceId
+        self._ComputeResourceId = None
+        self._ResourceId = None
 
     @property
     def WorkspaceId(self):
@@ -17518,10 +17510,33 @@ class StartComputeRequest(AbstractModel):
     def WorkspaceId(self, WorkspaceId):
         self._WorkspaceId = WorkspaceId
 
+    @property
+    def ComputeResourceId(self):
+        r"""计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）。替代已废弃的 ResourceId；过渡期 ComputeResourceId 与 ResourceId 至少传一个，同时传时必须一致
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+    @property
+    def ResourceId(self):
+        r"""[已废弃，请使用 ComputeResourceId] 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
-        self._ResourceId = params.get("ResourceId")
         self._WorkspaceId = params.get("WorkspaceId")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17620,24 +17635,16 @@ class StopComputeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 计算资源 ID
-        :type ResourceId: str
         :param _WorkspaceId: 工作空间 ID
         :type WorkspaceId: str
+        :param _ComputeResourceId: 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）。替代已废弃的 ResourceId；过渡期 ComputeResourceId 与 ResourceId 至少传一个，同时传时必须一致
+        :type ComputeResourceId: str
+        :param _ResourceId: [已废弃，请使用 ComputeResourceId] 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）
+        :type ResourceId: str
         """
-        self._ResourceId = None
         self._WorkspaceId = None
-
-    @property
-    def ResourceId(self):
-        r"""计算资源 ID
-        :rtype: str
-        """
-        return self._ResourceId
-
-    @ResourceId.setter
-    def ResourceId(self, ResourceId):
-        self._ResourceId = ResourceId
+        self._ComputeResourceId = None
+        self._ResourceId = None
 
     @property
     def WorkspaceId(self):
@@ -17650,10 +17657,33 @@ class StopComputeRequest(AbstractModel):
     def WorkspaceId(self, WorkspaceId):
         self._WorkspaceId = WorkspaceId
 
+    @property
+    def ComputeResourceId(self):
+        r"""计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）。替代已废弃的 ResourceId；过渡期 ComputeResourceId 与 ResourceId 至少传一个，同时传时必须一致
+        :rtype: str
+        """
+        return self._ComputeResourceId
+
+    @ComputeResourceId.setter
+    def ComputeResourceId(self, ComputeResourceId):
+        self._ComputeResourceId = ComputeResourceId
+
+    @property
+    def ResourceId(self):
+        r"""[已废弃，请使用 ComputeResourceId] 计算资源 ID，可通过 ListComputes 接口获取（返回字段 Items[].BasicInfo.ResourceId）
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
-        self._ResourceId = params.get("ResourceId")
         self._WorkspaceId = params.get("WorkspaceId")
+        self._ComputeResourceId = params.get("ComputeResourceId")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -223,6 +223,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelTask(
+            self,
+            request: models.CancelTaskRequest,
+            opts: Dict = None,
+    ) -> models.CancelTaskResponse:
+        """
+        取消等待执行的任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckCreateLibraDBInstance(
             self,
             request: models.CheckCreateLibraDBInstanceRequest,
@@ -2180,6 +2198,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeProxySpecs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeProxySpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProxyZoneStocks(
+            self,
+            request: models.DescribeProxyZoneStocksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProxyZoneStocksResponse:
+        """
+        该接口(DescribeProxyZoneStocks)查询数据库代理地域库存
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProxyZoneStocks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProxyZoneStocksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

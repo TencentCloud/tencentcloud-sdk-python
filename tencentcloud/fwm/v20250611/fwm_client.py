@@ -624,6 +624,29 @@ class FwmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRuleGroups(self, request):
+        r"""查询规则组列表
+
+        :param request: Request instance for DescribeRuleGroups.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.DescribeRuleGroupsRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.DescribeRuleGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRuleGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRuleGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSecurityGroupRule(self, request):
         r"""查询规则详情（规则组管理）
 

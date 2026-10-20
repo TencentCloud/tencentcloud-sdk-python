@@ -223,6 +223,42 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDeliveryServer(
+            self,
+            request: models.DeleteDeliveryServerRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDeliveryServerResponse:
+        """
+        删除转发服务器，私有化调用path为：capi/LogCenter/DeliveryLog/DeleteDeliveryServer
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDeliveryServer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDeliveryServerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDeliveryStrategy(
+            self,
+            request: models.DeleteDeliveryStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDeliveryStrategyResponse:
+        """
+        删除转发策略，私有化调用path为：capi/LogCenter/DeliveryLog/DeleteDeliveryStrategy
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDeliveryStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDeliveryStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDeviceVirtualGroup(
             self,
             request: models.DeleteDeviceVirtualGroupRequest,
@@ -439,6 +475,42 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDeliveryServer(
+            self,
+            request: models.DescribeDeliveryServerRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeliveryServerResponse:
+        """
+        转发服务器详情，私有化调用path为：capi/LogCenter/DescribeDeliveryServer
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeliveryServer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeliveryServerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDeliveryStrategy(
+            self,
+            request: models.DescribeDeliveryStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeliveryStrategyResponse:
+        """
+        转发策略详情，私有化调用path为：capi/LogCenter/DeliveryLog/DescribeDeliveryStrategy
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeliveryStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeliveryStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDeviceChildGroups(
             self,
             request: models.DescribeDeviceChildGroupsRequest,
@@ -616,6 +688,24 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "DescribeProfileFieldsMenu"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeProfileFieldsMenuResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePublicEncryptKey(
+            self,
+            request: models.DescribePublicEncryptKeyRequest,
+            opts: Dict = None,
+    ) -> models.DescribePublicEncryptKeyResponse:
+        """
+        获取用于RSA加密的公钥，对敏感数据进行加密传输。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePublicEncryptKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePublicEncryptKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -886,6 +976,42 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "ModifyCompanyDirectoryConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCompanyDirectoryConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDeliveryServer(
+            self,
+            request: models.ModifyDeliveryServerRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDeliveryServerResponse:
+        """
+        创建或编辑日志转发服务器，私有化调用path为：capi/LogCenter/DeliveryLog/ModifyDeliveryServer
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDeliveryServer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDeliveryServerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDeliveryStrategy(
+            self,
+            request: models.ModifyDeliveryStrategyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDeliveryStrategyResponse:
+        """
+        创建或编辑日志转发策略，私有化调用path为：capi/LogCenter/DeliveryLog/ModifyDeliveryStrategy
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDeliveryStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDeliveryStrategyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

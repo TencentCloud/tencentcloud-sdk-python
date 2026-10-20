@@ -41420,6 +41420,434 @@ class PublishRRPCMessageResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PurchaseImagePackageRequest(AbstractModel):
+    r"""PurchaseImagePackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RetentionDays: <p>存储天数</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+        :type RetentionDays: int
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _ValidityPeriod: <p>卡有效期类型：monthly_card=月卡（12 个月有效期），annual_card=年卡（24 个月有效期）</p>
+        :type ValidityPeriod: str
+        :param _ImageCapacity: <p>图片档位：每日可上传的图片张数上限，&quot;300&quot;=300 张/日，&quot;1000&quot;=1000 张/日</p>
+        :type ImageCapacity: str
+        :param _GoodsNum: <p>同规格资源包个数（默认 1）</p>
+        :type GoodsNum: int
+        :param _ChannelId: <p>通道 ID</p>
+        :type ChannelId: int
+        :param _PackageQueue: <p>套餐生效策略：&quot;&quot;=默认语义，front=插队生效，end=排队末尾</p>
+        :type PackageQueue: str
+        :param _Override: <p>覆盖当前生效套餐：0=否，1=是</p>
+        :type Override: int
+        :param _OrderId: <p>订单id</p>
+        :type OrderId: str
+        """
+        self._RetentionDays = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._ValidityPeriod = None
+        self._ImageCapacity = None
+        self._GoodsNum = None
+        self._ChannelId = None
+        self._PackageQueue = None
+        self._Override = None
+        self._OrderId = None
+
+    @property
+    def RetentionDays(self):
+        r"""<p>存储天数</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+        :rtype: int
+        """
+        return self._RetentionDays
+
+    @RetentionDays.setter
+    def RetentionDays(self, RetentionDays):
+        self._RetentionDays = RetentionDays
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ValidityPeriod(self):
+        r"""<p>卡有效期类型：monthly_card=月卡（12 个月有效期），annual_card=年卡（24 个月有效期）</p>
+        :rtype: str
+        """
+        return self._ValidityPeriod
+
+    @ValidityPeriod.setter
+    def ValidityPeriod(self, ValidityPeriod):
+        self._ValidityPeriod = ValidityPeriod
+
+    @property
+    def ImageCapacity(self):
+        r"""<p>图片档位：每日可上传的图片张数上限，&quot;300&quot;=300 张/日，&quot;1000&quot;=1000 张/日</p>
+        :rtype: str
+        """
+        return self._ImageCapacity
+
+    @ImageCapacity.setter
+    def ImageCapacity(self, ImageCapacity):
+        self._ImageCapacity = ImageCapacity
+
+    @property
+    def GoodsNum(self):
+        r"""<p>同规格资源包个数（默认 1）</p>
+        :rtype: int
+        """
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def PackageQueue(self):
+        r"""<p>套餐生效策略：&quot;&quot;=默认语义，front=插队生效，end=排队末尾</p>
+        :rtype: str
+        """
+        return self._PackageQueue
+
+    @PackageQueue.setter
+    def PackageQueue(self, PackageQueue):
+        self._PackageQueue = PackageQueue
+
+    @property
+    def Override(self):
+        r"""<p>覆盖当前生效套餐：0=否，1=是</p>
+        :rtype: int
+        """
+        return self._Override
+
+    @Override.setter
+    def Override(self, Override):
+        self._Override = Override
+
+    @property
+    def OrderId(self):
+        r"""<p>订单id</p>
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+
+    def _deserialize(self, params):
+        self._RetentionDays = params.get("RetentionDays")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ValidityPeriod = params.get("ValidityPeriod")
+        self._ImageCapacity = params.get("ImageCapacity")
+        self._GoodsNum = params.get("GoodsNum")
+        self._ChannelId = params.get("ChannelId")
+        self._PackageQueue = params.get("PackageQueue")
+        self._Override = params.get("Override")
+        self._OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PurchaseImagePackageResponse(AbstractModel):
+    r"""PurchaseImagePackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class PurchaseVideoPackageRequest(AbstractModel):
+    r"""PurchaseVideoPackage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RetentionDays: <p>存储天数（每份录像保留的天数）</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+        :type RetentionDays: int
+        :param _RecordingMode: <p>录制模式：low_power=2 / event=8 / full_time=24，单位：小时/日</p><p>枚举值：</p><ul><li>low_power： 2小时/日</li><li>event： 8小时/日</li><li>full_time： 24小时/日</li></ul>
+        :type RecordingMode: str
+        :param _Bitrate: <p>码率（视频必填）</p><p>枚举值：</p><ul><li>0.5m： 0.5Mbps</li><li>1m： 1Mbps</li><li>1.5m： 1.5Mbps</li><li>2m： 2Mbps</li></ul>
+        :type Bitrate: str
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _ValidityPeriod: <p>卡有效期类型：monthly_card=月卡（12 个月有效期），annual_card=年卡（24 个月有效期）</p>
+        :type ValidityPeriod: str
+        :param _GoodsNum: <p>同规格资源包个数（默认 1）</p>
+        :type GoodsNum: int
+        :param _ChannelId: <p>通道 ID（多通道场景必填，否则填 0）</p>
+        :type ChannelId: int
+        :param _StorageRegion: <p>存储地域（可选）</p>
+        :type StorageRegion: str
+        :param _PackageQueue: <p>套餐生效策略：&quot;&quot;=默认语义，front=插队生效，end=排队末尾</p>
+        :type PackageQueue: str
+        :param _Override: <p>覆盖当前生效套餐：0=否，1=是</p>
+        :type Override: int
+        :param _OrderId: <p>订单id</p>
+        :type OrderId: str
+        """
+        self._RetentionDays = None
+        self._RecordingMode = None
+        self._Bitrate = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._ValidityPeriod = None
+        self._GoodsNum = None
+        self._ChannelId = None
+        self._StorageRegion = None
+        self._PackageQueue = None
+        self._Override = None
+        self._OrderId = None
+
+    @property
+    def RetentionDays(self):
+        r"""<p>存储天数（每份录像保留的天数）</p><p>枚举值：</p><ul><li>3： 存储3天</li><li>7： 存储7天</li><li>15： 存储15天</li><li>30： 存储30天</li></ul>
+        :rtype: int
+        """
+        return self._RetentionDays
+
+    @RetentionDays.setter
+    def RetentionDays(self, RetentionDays):
+        self._RetentionDays = RetentionDays
+
+    @property
+    def RecordingMode(self):
+        r"""<p>录制模式：low_power=2 / event=8 / full_time=24，单位：小时/日</p><p>枚举值：</p><ul><li>low_power： 2小时/日</li><li>event： 8小时/日</li><li>full_time： 24小时/日</li></ul>
+        :rtype: str
+        """
+        return self._RecordingMode
+
+    @RecordingMode.setter
+    def RecordingMode(self, RecordingMode):
+        self._RecordingMode = RecordingMode
+
+    @property
+    def Bitrate(self):
+        r"""<p>码率（视频必填）</p><p>枚举值：</p><ul><li>0.5m： 0.5Mbps</li><li>1m： 1Mbps</li><li>1.5m： 1.5Mbps</li><li>2m： 2Mbps</li></ul>
+        :rtype: str
+        """
+        return self._Bitrate
+
+    @Bitrate.setter
+    def Bitrate(self, Bitrate):
+        self._Bitrate = Bitrate
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ValidityPeriod(self):
+        r"""<p>卡有效期类型：monthly_card=月卡（12 个月有效期），annual_card=年卡（24 个月有效期）</p>
+        :rtype: str
+        """
+        return self._ValidityPeriod
+
+    @ValidityPeriod.setter
+    def ValidityPeriod(self, ValidityPeriod):
+        self._ValidityPeriod = ValidityPeriod
+
+    @property
+    def GoodsNum(self):
+        r"""<p>同规格资源包个数（默认 1）</p>
+        :rtype: int
+        """
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID（多通道场景必填，否则填 0）</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def StorageRegion(self):
+        r"""<p>存储地域（可选）</p>
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def PackageQueue(self):
+        r"""<p>套餐生效策略：&quot;&quot;=默认语义，front=插队生效，end=排队末尾</p>
+        :rtype: str
+        """
+        return self._PackageQueue
+
+    @PackageQueue.setter
+    def PackageQueue(self, PackageQueue):
+        self._PackageQueue = PackageQueue
+
+    @property
+    def Override(self):
+        r"""<p>覆盖当前生效套餐：0=否，1=是</p>
+        :rtype: int
+        """
+        return self._Override
+
+    @Override.setter
+    def Override(self, Override):
+        self._Override = Override
+
+    @property
+    def OrderId(self):
+        r"""<p>订单id</p>
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+
+    def _deserialize(self, params):
+        self._RetentionDays = params.get("RetentionDays")
+        self._RecordingMode = params.get("RecordingMode")
+        self._Bitrate = params.get("Bitrate")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ValidityPeriod = params.get("ValidityPeriod")
+        self._GoodsNum = params.get("GoodsNum")
+        self._ChannelId = params.get("ChannelId")
+        self._StorageRegion = params.get("StorageRegion")
+        self._PackageQueue = params.get("PackageQueue")
+        self._Override = params.get("Override")
+        self._OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PurchaseVideoPackageResponse(AbstractModel):
+    r"""PurchaseVideoPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RegisteredDeviceNetTypeInfo(AbstractModel):
     r"""已注册通信类型信息
 
@@ -46268,6 +46696,314 @@ class ShareDeviceToUserResponse(AbstractModel):
     def _deserialize(self, params):
         self._OwnerUserID = params.get("OwnerUserID")
         self._ToUserID = params.get("ToUserID")
+        self._RequestId = params.get("RequestId")
+
+
+class StartPackageUsageReportRequest(AbstractModel):
+    r"""StartPackageUsageReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _ResourceId: <p>预付费 resourceId（ncs- 前缀，必填）</p>
+        :type ResourceId: str
+        :param _ChannelId: <p>通道 ID（无通道填 0）</p>
+        :type ChannelId: int
+        :param _Operator: <p>操作者</p>
+        :type Operator: str
+        :param _Remark: <p>备注（可选）</p>
+        :type Remark: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ResourceId = None
+        self._ChannelId = None
+        self._Operator = None
+        self._Remark = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ResourceId(self):
+        r"""<p>预付费 resourceId（ncs- 前缀，必填）</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID（无通道填 0）</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Operator(self):
+        r"""<p>操作者</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Remark(self):
+        r"""<p>备注（可选）</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ResourceId = params.get("ResourceId")
+        self._ChannelId = params.get("ChannelId")
+        self._Operator = params.get("Operator")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartPackageUsageReportResponse(AbstractModel):
+    r"""StartPackageUsageReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>启停后状态（0 停用 / 1 启用）</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>启停后状态（0 停用 / 1 启用）</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class StopPackageUsageReportRequest(AbstractModel):
+    r"""StopPackageUsageReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名</p>
+        :type DeviceName: str
+        :param _MediaType: <p>区分停用的云存类别，必填</p><p>枚举值：</p><ul><li>image： 图片云存</li><li>video： 视频云存</li></ul>
+        :type MediaType: str
+        :param _ChannelId: <p>通道 ID</p>
+        :type ChannelId: int
+        :param _Operator: <p>操作者</p>
+        :type Operator: str
+        :param _Remark: <p>备注（可选）</p>
+        :type Remark: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._MediaType = None
+        self._ChannelId = None
+        self._Operator = None
+        self._Remark = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def MediaType(self):
+        r"""<p>区分停用的云存类别，必填</p><p>枚举值：</p><ul><li>image： 图片云存</li><li>video： 视频云存</li></ul>
+        :rtype: str
+        """
+        return self._MediaType
+
+    @MediaType.setter
+    def MediaType(self, MediaType):
+        self._MediaType = MediaType
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Operator(self):
+        r"""<p>操作者</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Remark(self):
+        r"""<p>备注（可选）</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._MediaType = params.get("MediaType")
+        self._ChannelId = params.get("ChannelId")
+        self._Operator = params.get("Operator")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopPackageUsageReportResponse(AbstractModel):
+    r"""StopPackageUsageReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>启停后状态</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>启停后状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 

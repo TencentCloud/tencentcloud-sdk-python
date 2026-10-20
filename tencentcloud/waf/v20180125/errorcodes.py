@@ -248,8 +248,17 @@ INVALIDPARAMETER_UNAUTHORIZEDOPERATIONPARAMETERERR = 'InvalidParameter.Unauthori
 # UnknownAction
 INVALIDPARAMETER_UNKNOWNACTION = 'InvalidParameter.UnknownAction'
 
+# InvalidParameter.UploadMaxSizeErr
+INVALIDPARAMETER_UPLOADMAXSIZEERR = 'InvalidParameter.UploadMaxSizeErr'
+
+# InvalidParameter.UpstreamIpsErr
+INVALIDPARAMETER_UPSTREAMIPSERR = 'InvalidParameter.UpstreamIpsErr'
+
 # 回源信息参数错误
 INVALIDPARAMETER_UPSTREAMPARAMETERERR = 'InvalidParameter.UpstreamParameterErr'
+
+# InvalidParameter.UpstreamPolicyErr
+INVALIDPARAMETER_UPSTREAMPOLICYERR = 'InvalidParameter.UpstreamPolicyErr'
 
 # XFF重置参数错误
 INVALIDPARAMETER_XFFRESETPARAMETERERR = 'InvalidParameter.XFFResetParameterErr'

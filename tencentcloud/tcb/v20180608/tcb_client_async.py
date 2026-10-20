@@ -1805,6 +1805,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyAIModelStatus(
+            self,
+            request: models.ModifyAIModelStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAIModelStatusResponse:
+        """
+        启停AI模型，只支持内置分组 cloudbase 和 hunyuan-image
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAIModelStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAIModelStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyClient(
             self,
             request: models.ModifyClientRequest,

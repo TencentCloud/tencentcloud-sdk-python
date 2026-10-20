@@ -2886,7 +2886,7 @@ class AddSpartaProtectionRequest(AbstractModel):
         :type GmEncPrivateKey: str
         :param _GmSSLId: <p>GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id</p>
         :type GmSSLId: str
-        :param _UpstreamPolicy: <p>回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源</p>
+        :param _UpstreamPolicy: <p>回源策略。<br>枚举值：<br>0：负载均衡回源（默认值）<br>1：分流回源<br>2：五元组精准回源，每个服务端口通过 UpstreamIps 单独配置回源 IP。仅高级版及以上可用，且仅支持 IP 回源</p>
         :type UpstreamPolicy: int
         :param _UpstreamRules: <p>分流回源时生效，分流回源的规则。</p>
         :type UpstreamRules: list of UpstreamRule
@@ -3481,7 +3481,7 @@ class AddSpartaProtectionRequest(AbstractModel):
 
     @property
     def UpstreamPolicy(self):
-        r"""<p>回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源</p>
+        r"""<p>回源策略。<br>枚举值：<br>0：负载均衡回源（默认值）<br>1：分流回源<br>2：五元组精准回源，每个服务端口通过 UpstreamIps 单独配置回源 IP。仅高级版及以上可用，且仅支持 IP 回源</p>
         :rtype: int
         """
         return self._UpstreamPolicy
@@ -3641,7 +3641,7 @@ class AddSpartaProtectionResponse(AbstractModel):
 
 
 class AfterPayInstanceInfo(AbstractModel):
-    r"""后付费实例（Edition=llm-sdk-waf）的基础信息，仅包含 tb_instance_conf 基础字段
+    r"""后付费实例详情，结构与 DescribeInstances 的 InstanceInfo 保持一致，全量返回实例字段（含各类套餐包信息），并额外填充 LLMTokenUsage；基础安全实例另返回 DomainCount、ExpertRuleCount、CustomRuleCount 实时统计
 
     """
 
@@ -3693,6 +3693,86 @@ class AfterPayInstanceInfo(AbstractModel):
         :type LLMPkg: :class:`tencentcloud.waf.v20180125.models.LLMPkg`
         :param _LLMTokenUsage: <p>LLM实例当天4个计费模块token消耗量及近7天趋势（仅后付费llm-sdk-waf实例返回）</p>
         :type LLMTokenUsage: :class:`tencentcloud.waf.v20180125.models.LLMTokenUsage`
+        :param _Mode: <p>弹性计费开关。<br>0：关闭<br>1：开启</p>
+        :type Mode: int
+        :param _DomainCount: <p>已配置域名个数。</p><p>按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回实时去重后的接入域名数，统计范围覆盖SaaS接入域名、云原生防护对象（含默认虚拟域名）与四层REIP接入域名，同一域名多条接入记录只计一次。</p>
+        :type DomainCount: int
+        :param _MainDomainCount: <p>已配置主域名个数。</p><p>按接入域名归属的主域名去重统计；未接入任何域名时为0。</p>
+        :type MainDomainCount: int
+        :param _ExpertRuleCount: <p>实例当前实时开启的专家规则数量。统计口径：接入一个防护对象（域名）即默认计1个专家规则，即等于该实例的实时接入域名数DomainCount；未接入任何对象时为0。</p><p>仅按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回，其余实例类型固定为0。</p><p>该值为实时快照，与账单接口DescribeWafPostpaidBillDetail返回的小时计量值ExpertUsage可能存在差异。</p>
+        :type ExpertRuleCount: int
+        :param _CustomRuleCount: <p>实例下所有接入域名的实时自定义规则条数之和。统计范围包含自定义策略、规则白名单、IP封禁、自定义CC、紧急CC、地域封禁、防信息泄露、防篡改、IP黑白名单等模块；同一条批量规则命中该实例下N个域名时计N条。</p><p>仅按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回，其余实例类型固定为0。</p><p>该值为实时快照且不做多实例平分，与账单接口DescribeWafPostpaidBillDetail返回的小时计量值CustomUsage可能存在差异。</p>
+        :type CustomRuleCount: int
+        :param _MaxQPS: <p>实例30天内QPS峰值</p>
+        :type MaxQPS: int
+        :param _QPS: <p>qps扩展包信息</p>
+        :type QPS: :class:`tencentcloud.waf.v20180125.models.QPSPackageNew`
+        :param _DomainPkg: <p>域名扩展包信息</p>
+        :type DomainPkg: :class:`tencentcloud.waf.v20180125.models.DomainPackageNew`
+        :param _FraudPkg: <p>业务安全包</p>
+        :type FraudPkg: :class:`tencentcloud.waf.v20180125.models.FraudPkg`
+        :param _BotPkg: <p>Bot资源包</p>
+        :type BotPkg: :class:`tencentcloud.waf.v20180125.models.BotPkg`
+        :param _BotQPS: <p>bot的qps详情</p>
+        :type BotQPS: :class:`tencentcloud.waf.v20180125.models.BotQPS`
+        :param _MaxBandwidth: <p>带宽峰值，单位为B/s(字节每秒)</p>
+        :type MaxBandwidth: int
+        :param _QpsStandard: <p>购买的qps规格</p>
+        :type QpsStandard: int
+        :param _BandwidthStandard: <p>购买的带宽规格</p>
+        :type BandwidthStandard: int
+        :param _Status: <p>实例状态</p>
+        :type Status: int
+        :param _SandboxQps: <p>实例沙箱qps值</p>
+        :type SandboxQps: int
+        :param _MajorEventsPkg: <p>重保包</p>
+        :type MajorEventsPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsPkg`
+        :param _HybridPkg: <p>混合云子节点包</p>
+        :type HybridPkg: :class:`tencentcloud.waf.v20180125.models.HybridPkg`
+        :param _ApiPkg: <p>API安全资源包</p>
+        :type ApiPkg: :class:`tencentcloud.waf.v20180125.models.ApiPkg`
+        :param _MiniPkg: <p>小程序安全加速包</p>
+        :type MiniPkg: :class:`tencentcloud.waf.v20180125.models.MiniPkg`
+        :param _MiniQpsStandard: <p>小程序qps规格</p>
+        :type MiniQpsStandard: int
+        :param _MiniMaxQPS: <p>小程序qps峰值</p>
+        :type MiniMaxQPS: int
+        :param _LastQpsExceedTime: <p>最近一次超量时间</p>
+        :type LastQpsExceedTime: str
+        :param _MiniExtendPkg: <p>小程序安全接入ID数量扩张包</p>
+        :type MiniExtendPkg: :class:`tencentcloud.waf.v20180125.models.MiniExtendPkg`
+        :param _Last3MaxQPS: <p>最近3天最大qps</p>
+        :type Last3MaxQPS: int
+        :param _Last3MaxBandwidth: <p>最近3天最大带宽</p>
+        :type Last3MaxBandwidth: int
+        :param _Last7MaxMiniBandwidth: <p>过去7天小程序流量最大带宽，单位Byte/s，仅开启小程序安全时有值。转换为Mbps请使用 *8/1000/1000（十进制），不要使用MaxBandwidth所用的*8/1024/1024（二进制），否则会有约4.63%的偏差</p>
+        :type Last7MaxMiniBandwidth: int
+        :param _MiniBandwidthStandard: <p>小程序带宽上限，单位Mbps，仅开启小程序安全时有值</p>
+        :type MiniBandwidthStandard: int
+        :param _MajorEventsProPkg: <p>重保增强包</p>
+        :type MajorEventsProPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
+        :param _NetworkConfig: <p>实例的网络配置</p>
+        :type NetworkConfig: :class:`tencentcloud.waf.v20180125.models.NetworkConfig`
+        :param _RCEPkg: <p>RCE设备安全信息包</p>
+        :type RCEPkg: :class:`tencentcloud.waf.v20180125.models.RCEPkg`
+        :param _ExceedPolicy: <p>超量策略。0：超量沙箱<br>1：超量限流</p>
+        :type ExceedPolicy: int
+        :param _ElasticResourceId: <p>弹性资源Id</p>
+        :type ElasticResourceId: str
+        :param _LLMMonPkg: <p>预付费大模型安全信息包</p>
+        :type LLMMonPkg: :class:`tencentcloud.waf.v20180125.models.LLMMonPkg`
+        :param _RegionId: <p>地域id</p>
+        :type RegionId: int
+        :param _BotSecurityPkg: <p>BOT安全护航信息</p>
+        :type BotSecurityPkg: :class:`tencentcloud.waf.v20180125.models.BotSecurityPkg`
+        :param _BotMonitorPkg: <p>BOT安全监测资源信息</p>
+        :type BotMonitorPkg: :class:`tencentcloud.waf.v20180125.models.BotMonitorPkg`
+        :param _DedicatedIPPkg: <p>独享ip资源信息</p>
+        :type DedicatedIPPkg: :class:`tencentcloud.waf.v20180125.models.DedicatedIPPkg`
+        :param _DedicatedIPCount: <p>已经配置独享ip的数量</p>
+        :type DedicatedIPCount: int
+        :param _TagInfos: <p>标签结构体</p>
+        :type TagInfos: list of TagInfo
         """
         self._AppId = None
         self._InstanceId = None
@@ -3717,6 +3797,46 @@ class AfterPayInstanceInfo(AbstractModel):
         self._BasicFlag = None
         self._LLMPkg = None
         self._LLMTokenUsage = None
+        self._Mode = None
+        self._DomainCount = None
+        self._MainDomainCount = None
+        self._ExpertRuleCount = None
+        self._CustomRuleCount = None
+        self._MaxQPS = None
+        self._QPS = None
+        self._DomainPkg = None
+        self._FraudPkg = None
+        self._BotPkg = None
+        self._BotQPS = None
+        self._MaxBandwidth = None
+        self._QpsStandard = None
+        self._BandwidthStandard = None
+        self._Status = None
+        self._SandboxQps = None
+        self._MajorEventsPkg = None
+        self._HybridPkg = None
+        self._ApiPkg = None
+        self._MiniPkg = None
+        self._MiniQpsStandard = None
+        self._MiniMaxQPS = None
+        self._LastQpsExceedTime = None
+        self._MiniExtendPkg = None
+        self._Last3MaxQPS = None
+        self._Last3MaxBandwidth = None
+        self._Last7MaxMiniBandwidth = None
+        self._MiniBandwidthStandard = None
+        self._MajorEventsProPkg = None
+        self._NetworkConfig = None
+        self._RCEPkg = None
+        self._ExceedPolicy = None
+        self._ElasticResourceId = None
+        self._LLMMonPkg = None
+        self._RegionId = None
+        self._BotSecurityPkg = None
+        self._BotMonitorPkg = None
+        self._DedicatedIPPkg = None
+        self._DedicatedIPCount = None
+        self._TagInfos = None
 
     @property
     def AppId(self):
@@ -3971,6 +4091,446 @@ class AfterPayInstanceInfo(AbstractModel):
     def LLMTokenUsage(self, LLMTokenUsage):
         self._LLMTokenUsage = LLMTokenUsage
 
+    @property
+    def Mode(self):
+        r"""<p>弹性计费开关。<br>0：关闭<br>1：开启</p>
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def DomainCount(self):
+        r"""<p>已配置域名个数。</p><p>按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回实时去重后的接入域名数，统计范围覆盖SaaS接入域名、云原生防护对象（含默认虚拟域名）与四层REIP接入域名，同一域名多条接入记录只计一次。</p>
+        :rtype: int
+        """
+        return self._DomainCount
+
+    @DomainCount.setter
+    def DomainCount(self, DomainCount):
+        self._DomainCount = DomainCount
+
+    @property
+    def MainDomainCount(self):
+        r"""<p>已配置主域名个数。</p><p>按接入域名归属的主域名去重统计；未接入任何域名时为0。</p>
+        :rtype: int
+        """
+        return self._MainDomainCount
+
+    @MainDomainCount.setter
+    def MainDomainCount(self, MainDomainCount):
+        self._MainDomainCount = MainDomainCount
+
+    @property
+    def ExpertRuleCount(self):
+        r"""<p>实例当前实时开启的专家规则数量。统计口径：接入一个防护对象（域名）即默认计1个专家规则，即等于该实例的实时接入域名数DomainCount；未接入任何对象时为0。</p><p>仅按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回，其余实例类型固定为0。</p><p>该值为实时快照，与账单接口DescribeWafPostpaidBillDetail返回的小时计量值ExpertUsage可能存在差异。</p>
+        :rtype: int
+        """
+        return self._ExpertRuleCount
+
+    @ExpertRuleCount.setter
+    def ExpertRuleCount(self, ExpertRuleCount):
+        self._ExpertRuleCount = ExpertRuleCount
+
+    @property
+    def CustomRuleCount(self):
+        r"""<p>实例下所有接入域名的实时自定义规则条数之和。统计范围包含自定义策略、规则白名单、IP封禁、自定义CC、紧急CC、地域封禁、防信息泄露、防篡改、IP黑白名单等模块；同一条批量规则命中该实例下N个域名时计N条。</p><p>仅按量后付费基础安全实例（Edition为sparta-waf或clb-waf）返回，其余实例类型固定为0。</p><p>该值为实时快照且不做多实例平分，与账单接口DescribeWafPostpaidBillDetail返回的小时计量值CustomUsage可能存在差异。</p>
+        :rtype: int
+        """
+        return self._CustomRuleCount
+
+    @CustomRuleCount.setter
+    def CustomRuleCount(self, CustomRuleCount):
+        self._CustomRuleCount = CustomRuleCount
+
+    @property
+    def MaxQPS(self):
+        r"""<p>实例30天内QPS峰值</p>
+        :rtype: int
+        """
+        return self._MaxQPS
+
+    @MaxQPS.setter
+    def MaxQPS(self, MaxQPS):
+        self._MaxQPS = MaxQPS
+
+    @property
+    def QPS(self):
+        r"""<p>qps扩展包信息</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.QPSPackageNew`
+        """
+        return self._QPS
+
+    @QPS.setter
+    def QPS(self, QPS):
+        self._QPS = QPS
+
+    @property
+    def DomainPkg(self):
+        r"""<p>域名扩展包信息</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DomainPackageNew`
+        """
+        return self._DomainPkg
+
+    @DomainPkg.setter
+    def DomainPkg(self, DomainPkg):
+        self._DomainPkg = DomainPkg
+
+    @property
+    def FraudPkg(self):
+        r"""<p>业务安全包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.FraudPkg`
+        """
+        return self._FraudPkg
+
+    @FraudPkg.setter
+    def FraudPkg(self, FraudPkg):
+        self._FraudPkg = FraudPkg
+
+    @property
+    def BotPkg(self):
+        r"""<p>Bot资源包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BotPkg`
+        """
+        return self._BotPkg
+
+    @BotPkg.setter
+    def BotPkg(self, BotPkg):
+        self._BotPkg = BotPkg
+
+    @property
+    def BotQPS(self):
+        r"""<p>bot的qps详情</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BotQPS`
+        """
+        return self._BotQPS
+
+    @BotQPS.setter
+    def BotQPS(self, BotQPS):
+        self._BotQPS = BotQPS
+
+    @property
+    def MaxBandwidth(self):
+        r"""<p>带宽峰值，单位为B/s(字节每秒)</p>
+        :rtype: int
+        """
+        return self._MaxBandwidth
+
+    @MaxBandwidth.setter
+    def MaxBandwidth(self, MaxBandwidth):
+        self._MaxBandwidth = MaxBandwidth
+
+    @property
+    def QpsStandard(self):
+        r"""<p>购买的qps规格</p>
+        :rtype: int
+        """
+        return self._QpsStandard
+
+    @QpsStandard.setter
+    def QpsStandard(self, QpsStandard):
+        self._QpsStandard = QpsStandard
+
+    @property
+    def BandwidthStandard(self):
+        r"""<p>购买的带宽规格</p>
+        :rtype: int
+        """
+        return self._BandwidthStandard
+
+    @BandwidthStandard.setter
+    def BandwidthStandard(self, BandwidthStandard):
+        self._BandwidthStandard = BandwidthStandard
+
+    @property
+    def Status(self):
+        r"""<p>实例状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SandboxQps(self):
+        r"""<p>实例沙箱qps值</p>
+        :rtype: int
+        """
+        return self._SandboxQps
+
+    @SandboxQps.setter
+    def SandboxQps(self, SandboxQps):
+        self._SandboxQps = SandboxQps
+
+    @property
+    def MajorEventsPkg(self):
+        r"""<p>重保包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MajorEventsPkg`
+        """
+        return self._MajorEventsPkg
+
+    @MajorEventsPkg.setter
+    def MajorEventsPkg(self, MajorEventsPkg):
+        self._MajorEventsPkg = MajorEventsPkg
+
+    @property
+    def HybridPkg(self):
+        r"""<p>混合云子节点包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.HybridPkg`
+        """
+        return self._HybridPkg
+
+    @HybridPkg.setter
+    def HybridPkg(self, HybridPkg):
+        self._HybridPkg = HybridPkg
+
+    @property
+    def ApiPkg(self):
+        r"""<p>API安全资源包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiPkg`
+        """
+        return self._ApiPkg
+
+    @ApiPkg.setter
+    def ApiPkg(self, ApiPkg):
+        self._ApiPkg = ApiPkg
+
+    @property
+    def MiniPkg(self):
+        r"""<p>小程序安全加速包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MiniPkg`
+        """
+        return self._MiniPkg
+
+    @MiniPkg.setter
+    def MiniPkg(self, MiniPkg):
+        self._MiniPkg = MiniPkg
+
+    @property
+    def MiniQpsStandard(self):
+        r"""<p>小程序qps规格</p>
+        :rtype: int
+        """
+        return self._MiniQpsStandard
+
+    @MiniQpsStandard.setter
+    def MiniQpsStandard(self, MiniQpsStandard):
+        self._MiniQpsStandard = MiniQpsStandard
+
+    @property
+    def MiniMaxQPS(self):
+        r"""<p>小程序qps峰值</p>
+        :rtype: int
+        """
+        return self._MiniMaxQPS
+
+    @MiniMaxQPS.setter
+    def MiniMaxQPS(self, MiniMaxQPS):
+        self._MiniMaxQPS = MiniMaxQPS
+
+    @property
+    def LastQpsExceedTime(self):
+        r"""<p>最近一次超量时间</p>
+        :rtype: str
+        """
+        return self._LastQpsExceedTime
+
+    @LastQpsExceedTime.setter
+    def LastQpsExceedTime(self, LastQpsExceedTime):
+        self._LastQpsExceedTime = LastQpsExceedTime
+
+    @property
+    def MiniExtendPkg(self):
+        r"""<p>小程序安全接入ID数量扩张包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MiniExtendPkg`
+        """
+        return self._MiniExtendPkg
+
+    @MiniExtendPkg.setter
+    def MiniExtendPkg(self, MiniExtendPkg):
+        self._MiniExtendPkg = MiniExtendPkg
+
+    @property
+    def Last3MaxQPS(self):
+        r"""<p>最近3天最大qps</p>
+        :rtype: int
+        """
+        return self._Last3MaxQPS
+
+    @Last3MaxQPS.setter
+    def Last3MaxQPS(self, Last3MaxQPS):
+        self._Last3MaxQPS = Last3MaxQPS
+
+    @property
+    def Last3MaxBandwidth(self):
+        r"""<p>最近3天最大带宽</p>
+        :rtype: int
+        """
+        return self._Last3MaxBandwidth
+
+    @Last3MaxBandwidth.setter
+    def Last3MaxBandwidth(self, Last3MaxBandwidth):
+        self._Last3MaxBandwidth = Last3MaxBandwidth
+
+    @property
+    def Last7MaxMiniBandwidth(self):
+        r"""<p>过去7天小程序流量最大带宽，单位Byte/s，仅开启小程序安全时有值。转换为Mbps请使用 *8/1000/1000（十进制），不要使用MaxBandwidth所用的*8/1024/1024（二进制），否则会有约4.63%的偏差</p>
+        :rtype: int
+        """
+        return self._Last7MaxMiniBandwidth
+
+    @Last7MaxMiniBandwidth.setter
+    def Last7MaxMiniBandwidth(self, Last7MaxMiniBandwidth):
+        self._Last7MaxMiniBandwidth = Last7MaxMiniBandwidth
+
+    @property
+    def MiniBandwidthStandard(self):
+        r"""<p>小程序带宽上限，单位Mbps，仅开启小程序安全时有值</p>
+        :rtype: int
+        """
+        return self._MiniBandwidthStandard
+
+    @MiniBandwidthStandard.setter
+    def MiniBandwidthStandard(self, MiniBandwidthStandard):
+        self._MiniBandwidthStandard = MiniBandwidthStandard
+
+    @property
+    def MajorEventsProPkg(self):
+        r"""<p>重保增强包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
+        """
+        return self._MajorEventsProPkg
+
+    @MajorEventsProPkg.setter
+    def MajorEventsProPkg(self, MajorEventsProPkg):
+        self._MajorEventsProPkg = MajorEventsProPkg
+
+    @property
+    def NetworkConfig(self):
+        r"""<p>实例的网络配置</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.NetworkConfig`
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
+    def RCEPkg(self):
+        r"""<p>RCE设备安全信息包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RCEPkg`
+        """
+        return self._RCEPkg
+
+    @RCEPkg.setter
+    def RCEPkg(self, RCEPkg):
+        self._RCEPkg = RCEPkg
+
+    @property
+    def ExceedPolicy(self):
+        r"""<p>超量策略。0：超量沙箱<br>1：超量限流</p>
+        :rtype: int
+        """
+        return self._ExceedPolicy
+
+    @ExceedPolicy.setter
+    def ExceedPolicy(self, ExceedPolicy):
+        self._ExceedPolicy = ExceedPolicy
+
+    @property
+    def ElasticResourceId(self):
+        r"""<p>弹性资源Id</p>
+        :rtype: str
+        """
+        return self._ElasticResourceId
+
+    @ElasticResourceId.setter
+    def ElasticResourceId(self, ElasticResourceId):
+        self._ElasticResourceId = ElasticResourceId
+
+    @property
+    def LLMMonPkg(self):
+        r"""<p>预付费大模型安全信息包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LLMMonPkg`
+        """
+        return self._LLMMonPkg
+
+    @LLMMonPkg.setter
+    def LLMMonPkg(self, LLMMonPkg):
+        self._LLMMonPkg = LLMMonPkg
+
+    @property
+    def RegionId(self):
+        r"""<p>地域id</p>
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def BotSecurityPkg(self):
+        r"""<p>BOT安全护航信息</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BotSecurityPkg`
+        """
+        return self._BotSecurityPkg
+
+    @BotSecurityPkg.setter
+    def BotSecurityPkg(self, BotSecurityPkg):
+        self._BotSecurityPkg = BotSecurityPkg
+
+    @property
+    def BotMonitorPkg(self):
+        r"""<p>BOT安全监测资源信息</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BotMonitorPkg`
+        """
+        return self._BotMonitorPkg
+
+    @BotMonitorPkg.setter
+    def BotMonitorPkg(self, BotMonitorPkg):
+        self._BotMonitorPkg = BotMonitorPkg
+
+    @property
+    def DedicatedIPPkg(self):
+        r"""<p>独享ip资源信息</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DedicatedIPPkg`
+        """
+        return self._DedicatedIPPkg
+
+    @DedicatedIPPkg.setter
+    def DedicatedIPPkg(self, DedicatedIPPkg):
+        self._DedicatedIPPkg = DedicatedIPPkg
+
+    @property
+    def DedicatedIPCount(self):
+        r"""<p>已经配置独享ip的数量</p>
+        :rtype: int
+        """
+        return self._DedicatedIPCount
+
+    @DedicatedIPCount.setter
+    def DedicatedIPCount(self, DedicatedIPCount):
+        self._DedicatedIPCount = DedicatedIPCount
+
+    @property
+    def TagInfos(self):
+        r"""<p>标签结构体</p>
+        :rtype: list of TagInfo
+        """
+        return self._TagInfos
+
+    @TagInfos.setter
+    def TagInfos(self, TagInfos):
+        self._TagInfos = TagInfos
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -4000,6 +4560,85 @@ class AfterPayInstanceInfo(AbstractModel):
         if params.get("LLMTokenUsage") is not None:
             self._LLMTokenUsage = LLMTokenUsage()
             self._LLMTokenUsage._deserialize(params.get("LLMTokenUsage"))
+        self._Mode = params.get("Mode")
+        self._DomainCount = params.get("DomainCount")
+        self._MainDomainCount = params.get("MainDomainCount")
+        self._ExpertRuleCount = params.get("ExpertRuleCount")
+        self._CustomRuleCount = params.get("CustomRuleCount")
+        self._MaxQPS = params.get("MaxQPS")
+        if params.get("QPS") is not None:
+            self._QPS = QPSPackageNew()
+            self._QPS._deserialize(params.get("QPS"))
+        if params.get("DomainPkg") is not None:
+            self._DomainPkg = DomainPackageNew()
+            self._DomainPkg._deserialize(params.get("DomainPkg"))
+        if params.get("FraudPkg") is not None:
+            self._FraudPkg = FraudPkg()
+            self._FraudPkg._deserialize(params.get("FraudPkg"))
+        if params.get("BotPkg") is not None:
+            self._BotPkg = BotPkg()
+            self._BotPkg._deserialize(params.get("BotPkg"))
+        if params.get("BotQPS") is not None:
+            self._BotQPS = BotQPS()
+            self._BotQPS._deserialize(params.get("BotQPS"))
+        self._MaxBandwidth = params.get("MaxBandwidth")
+        self._QpsStandard = params.get("QpsStandard")
+        self._BandwidthStandard = params.get("BandwidthStandard")
+        self._Status = params.get("Status")
+        self._SandboxQps = params.get("SandboxQps")
+        if params.get("MajorEventsPkg") is not None:
+            self._MajorEventsPkg = MajorEventsPkg()
+            self._MajorEventsPkg._deserialize(params.get("MajorEventsPkg"))
+        if params.get("HybridPkg") is not None:
+            self._HybridPkg = HybridPkg()
+            self._HybridPkg._deserialize(params.get("HybridPkg"))
+        if params.get("ApiPkg") is not None:
+            self._ApiPkg = ApiPkg()
+            self._ApiPkg._deserialize(params.get("ApiPkg"))
+        if params.get("MiniPkg") is not None:
+            self._MiniPkg = MiniPkg()
+            self._MiniPkg._deserialize(params.get("MiniPkg"))
+        self._MiniQpsStandard = params.get("MiniQpsStandard")
+        self._MiniMaxQPS = params.get("MiniMaxQPS")
+        self._LastQpsExceedTime = params.get("LastQpsExceedTime")
+        if params.get("MiniExtendPkg") is not None:
+            self._MiniExtendPkg = MiniExtendPkg()
+            self._MiniExtendPkg._deserialize(params.get("MiniExtendPkg"))
+        self._Last3MaxQPS = params.get("Last3MaxQPS")
+        self._Last3MaxBandwidth = params.get("Last3MaxBandwidth")
+        self._Last7MaxMiniBandwidth = params.get("Last7MaxMiniBandwidth")
+        self._MiniBandwidthStandard = params.get("MiniBandwidthStandard")
+        if params.get("MajorEventsProPkg") is not None:
+            self._MajorEventsProPkg = MajorEventsProPkg()
+            self._MajorEventsProPkg._deserialize(params.get("MajorEventsProPkg"))
+        if params.get("NetworkConfig") is not None:
+            self._NetworkConfig = NetworkConfig()
+            self._NetworkConfig._deserialize(params.get("NetworkConfig"))
+        if params.get("RCEPkg") is not None:
+            self._RCEPkg = RCEPkg()
+            self._RCEPkg._deserialize(params.get("RCEPkg"))
+        self._ExceedPolicy = params.get("ExceedPolicy")
+        self._ElasticResourceId = params.get("ElasticResourceId")
+        if params.get("LLMMonPkg") is not None:
+            self._LLMMonPkg = LLMMonPkg()
+            self._LLMMonPkg._deserialize(params.get("LLMMonPkg"))
+        self._RegionId = params.get("RegionId")
+        if params.get("BotSecurityPkg") is not None:
+            self._BotSecurityPkg = BotSecurityPkg()
+            self._BotSecurityPkg._deserialize(params.get("BotSecurityPkg"))
+        if params.get("BotMonitorPkg") is not None:
+            self._BotMonitorPkg = BotMonitorPkg()
+            self._BotMonitorPkg._deserialize(params.get("BotMonitorPkg"))
+        if params.get("DedicatedIPPkg") is not None:
+            self._DedicatedIPPkg = DedicatedIPPkg()
+            self._DedicatedIPPkg._deserialize(params.get("DedicatedIPPkg"))
+        self._DedicatedIPCount = params.get("DedicatedIPCount")
+        if params.get("TagInfos") is not None:
+            self._TagInfos = []
+            for item in params.get("TagInfos"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5079,7 +5718,7 @@ class ApiPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -5091,7 +5730,7 @@ class ApiPkg(AbstractModel):
         :type InquireNum: int
         :param _UsedNum: 使用数量
         :type UsedNum: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
@@ -5122,7 +5761,7 @@ class ApiPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -5188,7 +5827,7 @@ class ApiPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -9052,7 +9691,7 @@ class BotMonitorPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -9064,7 +9703,7 @@ class BotMonitorPkg(AbstractModel):
         :type InquireNum: int
         :param _UsedNum: 使用数量
         :type UsedNum: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
@@ -9092,7 +9731,7 @@ class BotMonitorPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -9158,7 +9797,7 @@ class BotMonitorPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -9208,7 +9847,7 @@ class BotPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -9222,7 +9861,7 @@ class BotPkg(AbstractModel):
         :type UsedNum: int
         :param _Type: 子产品code
         :type Type: str
-        :param _RenewFlag: 续费标志	
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         :param _BotCPWaf: 购买页bot6折
         :type BotCPWaf: int
@@ -9257,7 +9896,7 @@ class BotPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -9334,7 +9973,7 @@ class BotPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志	
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -9417,7 +10056,7 @@ class BotQPS(AbstractModel):
         :type Region: str
         :param _MaxBotQPS: 使用qps的最大值
         :type MaxBotQPS: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         """
         self._ResourceIds = None
@@ -9484,7 +10123,7 @@ class BotQPS(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -10424,7 +11063,7 @@ class BotSecurityPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -10436,7 +11075,7 @@ class BotSecurityPkg(AbstractModel):
         :type InquireNum: int
         :param _UsedNum: 使用数量
         :type UsedNum: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
@@ -10464,7 +11103,7 @@ class BotSecurityPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -10530,7 +11169,7 @@ class BotSecurityPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -12522,8 +13161,58 @@ class ClbObject(AbstractModel):
         :type PostCKafkaStatus: int
         :param _Type: <p>对象类型：CLB:负载均衡器，TSE:云原生网关</p>
         :type Type: str
-        :param _Region: <p>对象地域</p>
+        :param _Region: <p>对象地域<br>对象地域，地域缩写，例如 gz。与 ApRegion 表达同一含义、格式不同</p>
         :type Region: str
+        :param _ApRegion: 对象所在地域，腾讯云标准地域格式
+参数格式：形如 ap-guangzhou
+与 Region 表达同一含义、格式不同。对象恒为单地域，数组长度恒为 0 或 1
+出参在可识别时填充，无法识别时为空
+枚举值：
+ap-guangzhou：广州
+ap-shanghai：上海
+ap-beijing：北京
+ap-chengdu：成都
+ap-chongqing：重庆
+ap-hongkong：中国香港
+ap-nanjing：南京
+ap-tianjin：天津
+ap-shenzhen：深圳
+ap-qingyuan：清远
+ap-guangzhou-open：广州Open
+ap-shenzhen-fsi：深圳金融
+ap-beijing-fsi：北京金融
+ap-shanghai-fsi：上海金融
+ap-hangzhou-ec：杭州
+ap-fuzhou-ec：福州
+ap-jinan-ec：济南
+ap-wuhan-ec：武汉
+ap-changsha-ec：长沙
+ap-hefei-ec：合肥
+ap-shenyang-ec：沈阳
+ap-xian-ec：西安
+ap-xibei-ec：西北
+ap-shijiazhuang-ec：石家庄
+ap-zhengzhou-ec：郑州
+ap-qingyuan-xinan：清远信安
+ap-shanghai-adc：上海ADC
+ap-shanghai-wxp-ops：上海无线城市运营
+ap-singapore：新加坡
+ap-seoul：首尔
+ap-tokyo：东京
+ap-osaka：大阪
+ap-mumbai：孟买
+ap-bangkok：曼谷
+ap-jakarta：雅加达
+ap-taipei：台北
+ap-johorbahru：柔佛巴鲁
+eu-frankfurt：法兰克福
+eu-moscow：莫斯科
+na-ashburn：弗吉尼亚
+na-siliconvalley：硅谷
+na-toronto：多伦多
+sa-saopaulo：圣保罗
+me-saudi-arabia：沙特阿拉伯
+        :type ApRegion: list of str
         :param _Proxy: <p>代理状态: 0:不开启,1:以XFF的第一个IP地址作为客户端IP,2:以remote_addr作为客户端IP,3:从指定的头部字段获取客户端IP，字段通过IpHeaders字段给出</p>
         :type Proxy: int
         :param _IpHeaders: <p>指定获取客户端IP的头部字段列表。IsCdn为3时有效</p>
@@ -12574,6 +13263,7 @@ class ClbObject(AbstractModel):
         self._PostCKafkaStatus = None
         self._Type = None
         self._Region = None
+        self._ApRegion = None
         self._Proxy = None
         self._IpHeaders = None
         self._BotStatus = None
@@ -12769,7 +13459,7 @@ class ClbObject(AbstractModel):
 
     @property
     def Region(self):
-        r"""<p>对象地域</p>
+        r"""<p>对象地域<br>对象地域，地域缩写，例如 gz。与 ApRegion 表达同一含义、格式不同</p>
         :rtype: str
         """
         return self._Region
@@ -12777,6 +13467,65 @@ class ClbObject(AbstractModel):
     @Region.setter
     def Region(self, Region):
         self._Region = Region
+
+    @property
+    def ApRegion(self):
+        r"""对象所在地域，腾讯云标准地域格式
+参数格式：形如 ap-guangzhou
+与 Region 表达同一含义、格式不同。对象恒为单地域，数组长度恒为 0 或 1
+出参在可识别时填充，无法识别时为空
+枚举值：
+ap-guangzhou：广州
+ap-shanghai：上海
+ap-beijing：北京
+ap-chengdu：成都
+ap-chongqing：重庆
+ap-hongkong：中国香港
+ap-nanjing：南京
+ap-tianjin：天津
+ap-shenzhen：深圳
+ap-qingyuan：清远
+ap-guangzhou-open：广州Open
+ap-shenzhen-fsi：深圳金融
+ap-beijing-fsi：北京金融
+ap-shanghai-fsi：上海金融
+ap-hangzhou-ec：杭州
+ap-fuzhou-ec：福州
+ap-jinan-ec：济南
+ap-wuhan-ec：武汉
+ap-changsha-ec：长沙
+ap-hefei-ec：合肥
+ap-shenyang-ec：沈阳
+ap-xian-ec：西安
+ap-xibei-ec：西北
+ap-shijiazhuang-ec：石家庄
+ap-zhengzhou-ec：郑州
+ap-qingyuan-xinan：清远信安
+ap-shanghai-adc：上海ADC
+ap-shanghai-wxp-ops：上海无线城市运营
+ap-singapore：新加坡
+ap-seoul：首尔
+ap-tokyo：东京
+ap-osaka：大阪
+ap-mumbai：孟买
+ap-bangkok：曼谷
+ap-jakarta：雅加达
+ap-taipei：台北
+ap-johorbahru：柔佛巴鲁
+eu-frankfurt：法兰克福
+eu-moscow：莫斯科
+na-ashburn：弗吉尼亚
+na-siliconvalley：硅谷
+na-toronto：多伦多
+sa-saopaulo：圣保罗
+me-saudi-arabia：沙特阿拉伯
+        :rtype: list of str
+        """
+        return self._ApRegion
+
+    @ApRegion.setter
+    def ApRegion(self, ApRegion):
+        self._ApRegion = ApRegion
 
     @property
     def Proxy(self):
@@ -12973,6 +13722,7 @@ class ClbObject(AbstractModel):
         self._PostCKafkaStatus = params.get("PostCKafkaStatus")
         self._Type = params.get("Type")
         self._Region = params.get("Region")
+        self._ApRegion = params.get("ApRegion")
         self._Proxy = params.get("Proxy")
         self._IpHeaders = params.get("IpHeaders")
         self._BotStatus = params.get("BotStatus")
@@ -19843,7 +20593,7 @@ class DescribeAfterPayInstancesResponse(AbstractModel):
         r"""
         :param _Total: 总数
         :type Total: int
-        :param _Instances: 后付费实例列表
+        :param _Instances: 后付费实例列表（结构与 DescribeInstances 的 InstanceInfo 一致，全量返回实例字段含各类套餐包信息，额外填充 LLMTokenUsage）
         :type Instances: list of AfterPayInstanceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19865,7 +20615,7 @@ class DescribeAfterPayInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        r"""后付费实例列表
+        r"""后付费实例列表（结构与 DescribeInstances 的 InstanceInfo 一致，全量返回实例字段含各类套餐包信息，额外填充 LLMTokenUsage）
         :rtype: list of AfterPayInstanceInfo
         """
         return self._Instances
@@ -26079,11 +26829,11 @@ class DescribeDomainDetailsClbRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainId: 域名id
+        :param _DomainId: <p>域名id</p>
         :type DomainId: str
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
         """
         self._Domain = None
@@ -26092,7 +26842,7 @@ class DescribeDomainDetailsClbRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -26103,7 +26853,7 @@ class DescribeDomainDetailsClbRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名id
+        r"""<p>域名id</p>
         :rtype: str
         """
         return self._DomainId
@@ -26114,7 +26864,7 @@ class DescribeDomainDetailsClbRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -26145,7 +26895,7 @@ class DescribeDomainDetailsClbResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainsClbPartInfo: clb域名详情
+        :param _DomainsClbPartInfo: <p>clb域名详情</p>
         :type DomainsClbPartInfo: :class:`tencentcloud.waf.v20180125.models.ClbDomainsInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26155,7 +26905,7 @@ class DescribeDomainDetailsClbResponse(AbstractModel):
 
     @property
     def DomainsClbPartInfo(self):
-        r"""clb域名详情
+        r"""<p>clb域名详情</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.ClbDomainsInfo`
         """
         return self._DomainsClbPartInfo
@@ -27792,7 +28542,7 @@ class DescribeInstancesRequest(AbstractModel):
         :type Limit: int
         :param _Filters: 过滤数组
         :type Filters: list of FiltersItemNew
-        :param _FreeDelayFlag: 释放延期标识
+        :param _FreeDelayFlag: 释放延期标识，0表示不延期，1表示延期释放
         :type FreeDelayFlag: int
         """
         self._Offset = None
@@ -27835,7 +28585,7 @@ class DescribeInstancesRequest(AbstractModel):
 
     @property
     def FreeDelayFlag(self):
-        r"""释放延期标识
+        r"""释放延期标识，0表示不延期，1表示延期释放
         :rtype: int
         """
         return self._FreeDelayFlag
@@ -28638,6 +29388,12 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         :type IntentContent: :class:`tencentcloud.waf.v20180125.models.IntentContent`
         :param _ClientIP: <p>客户端来源IP地址，用于白名单匹配等场景，支持IPv4和IPv6格式</p>
         :type ClientIP: str
+        :param _History: 多轮历史用户输入，按时间旧到新排列，仅用于提示词注入检测
+入参限制：最多10条，超出保留最新10条；History + Content 拼接后不超过6K字符，超限从最早History开始丢弃
+        :type History: list of str
+        :param _Urls: 待检测的URL列表，用于恶意URL检测
+入参限制：最多50个，单个URL长度不超过2048字符，超出截断
+        :type Urls: list of str
         """
         self._ServiceId = None
         self._Type = None
@@ -28652,6 +29408,8 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         self._SessionId = None
         self._IntentContent = None
         self._ClientIP = None
+        self._History = None
+        self._Urls = None
 
     @property
     def ServiceId(self):
@@ -28796,6 +29554,30 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
     def ClientIP(self, ClientIP):
         self._ClientIP = ClientIP
 
+    @property
+    def History(self):
+        r"""多轮历史用户输入，按时间旧到新排列，仅用于提示词注入检测
+入参限制：最多10条，超出保留最新10条；History + Content 拼接后不超过6K字符，超限从最早History开始丢弃
+        :rtype: list of str
+        """
+        return self._History
+
+    @History.setter
+    def History(self, History):
+        self._History = History
+
+    @property
+    def Urls(self):
+        r"""待检测的URL列表，用于恶意URL检测
+入参限制：最多50个，单个URL长度不超过2048字符，超出截断
+        :rtype: list of str
+        """
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -28813,6 +29595,8 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
             self._IntentContent = IntentContent()
             self._IntentContent._deserialize(params.get("IntentContent"))
         self._ClientIP = params.get("ClientIP")
+        self._History = params.get("History")
+        self._Urls = params.get("Urls")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29249,17 +30033,26 @@ class DescribeLLMWafDLPRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: <p>服务ID</p>
+        :param _ServiceId: <p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
         :type ServiceId: str
         :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
+        :param _By: <p>排序字段，当前仅支持 UpdateTime；为空则按规则默认顺序返回</p>
+        :type By: str
+        :param _Order: <p>排序方向：asc(升序)/desc(降序)，默认 desc</p>
+        :type Order: str
+        :param _Domain: <p>域名模式传 Domain（与 ServiceId 二选一）</p>
+        :type Domain: str
         """
         self._ServiceId = None
         self._InstanceId = None
+        self._By = None
+        self._Order = None
+        self._Domain = None
 
     @property
     def ServiceId(self):
-        r"""<p>服务ID</p>
+        r"""<p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
         :rtype: str
         """
         return self._ServiceId
@@ -29279,10 +30072,46 @@ class DescribeLLMWafDLPRulesRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def By(self):
+        r"""<p>排序字段，当前仅支持 UpdateTime；为空则按规则默认顺序返回</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        r"""<p>排序方向：asc(升序)/desc(降序)，默认 desc</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Domain(self):
+        r"""<p>域名模式传 Domain（与 ServiceId 二选一）</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
         self._InstanceId = params.get("InstanceId")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29348,20 +30177,23 @@ class DescribeLLMWafProtectRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: <p>服务ID</p>
+        :param _ServiceId: <p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
         :type ServiceId: str
         :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
         :param _RuleType: <p>规则类型</p>
         :type RuleType: str
+        :param _Domain: <p>域名模式传 Domain（与 ServiceId 二选一）</p>
+        :type Domain: str
         """
         self._ServiceId = None
         self._InstanceId = None
         self._RuleType = None
+        self._Domain = None
 
     @property
     def ServiceId(self):
-        r"""<p>服务ID</p>
+        r"""<p>SDK 模式传 ServiceId（与 Domain 二选一）</p>
         :rtype: str
         """
         return self._ServiceId
@@ -29392,11 +30224,23 @@ class DescribeLLMWafProtectRulesRequest(AbstractModel):
     def RuleType(self, RuleType):
         self._RuleType = RuleType
 
+    @property
+    def Domain(self):
+        r"""<p>域名模式传 Domain（与 ServiceId 二选一）</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
         self._InstanceId = params.get("InstanceId")
         self._RuleType = params.get("RuleType")
+        self._Domain = params.get("Domain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34752,7 +35596,7 @@ class DomainInfo(AbstractModel):
         :type Cname: str
         :param _Edition: <p>域名所属实例类型。<br>sparta-waf：SaaS型WAF实例<br>clb-waf：负载均衡型WAF实例<br>cdc-clb-waf：CDC环境下负载均衡型WAF实例</p>
         :type Edition: str
-        :param _Region: <p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;</p>
+        :param _Region: <p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;<br>与 ApRegion 表达同一含义、格式不同：本字段为地域缩写，ApRegion 为腾讯云标准 ap-xxx 格式</p>
         :type Region: str
         :param _InstanceName: <p>实例名</p>
         :type InstanceName: str
@@ -34778,6 +35622,59 @@ class DomainInfo(AbstractModel):
         :type AppId: int
         :param _State: <p>SAAS型WAF域名状态：<br>-2：配置下发失败<br>-1：配置下发中<br>0：DNS解析中<br>1：无DNS解析记录，请接入WAF<br>10：DNS解析未知，域名启用了代理<br>11：DNS解析异常，使用A记录接入WAF IP<br>200：检测源站不可达<br>220：源站不支持长连接<br>311：证书过期<br>312：证书即将过期<br>310：证书异常<br>316：备案异常<br>5：WAF回源已变更<br>负载均衡型WAF域名LB监听器状态：<br>0：操作成功<br>4：正在绑定LB<br>6：正在解绑LB<br>7：解绑LB失败<br>8：绑定LB失败<br>10：内部错误</p>
         :type State: int
+        :param _ApRegion: 域名所在地域，腾讯云标准地域格式
+参数格式：形如 ap-guangzhou
+与 Region 表达同一含义、格式不同：Region 为地域缩写，本字段为标准地域名数组。负载均衡型多地域接入时数组可含多个元素
+出参在可识别时填充，无法识别的地域不返回对应元素
+枚举值：
+ap-guangzhou：广州
+ap-shanghai：上海
+ap-beijing：北京
+ap-chengdu：成都
+ap-chongqing：重庆
+ap-hongkong：中国香港
+ap-nanjing：南京
+ap-tianjin：天津
+ap-shenzhen：深圳
+ap-qingyuan：清远
+ap-guangzhou-open：广州Open
+ap-shenzhen-fsi：深圳金融
+ap-beijing-fsi：北京金融
+ap-shanghai-fsi：上海金融
+ap-hangzhou-ec：杭州
+ap-fuzhou-ec：福州
+ap-jinan-ec：济南
+ap-wuhan-ec：武汉
+ap-changsha-ec：长沙
+ap-hefei-ec：合肥
+ap-shenyang-ec：沈阳
+ap-xian-ec：西安
+ap-xibei-ec：西北
+ap-shijiazhuang-ec：石家庄
+ap-zhengzhou-ec：郑州
+ap-qingyuan-xinan：清远信安
+ap-shanghai-adc：上海ADC
+ap-shanghai-wxp-ops：上海无线城市运营
+ap-singapore：新加坡
+ap-seoul：首尔
+ap-tokyo：东京
+ap-osaka：大阪
+ap-mumbai：孟买
+ap-bangkok：曼谷
+ap-jakarta：雅加达
+ap-taipei：台北
+ap-johorbahru：柔佛巴鲁
+eu-frankfurt：法兰克福
+eu-moscow：莫斯科
+na-ashburn：弗吉尼亚
+na-siliconvalley：硅谷
+na-toronto：多伦多
+sa-saopaulo：圣保罗
+me-saudi-arabia：沙特阿拉伯
+        :type ApRegion: list of str
+        :param _DnssecCname: DNSSEC CNAME 地址。客户开启 DNSSEC CNAME 校验后，将业务域名 CNAME 到该地址即可接入。开关关闭、非 SaaS CNAME 接入或无法映射时为空字符串。
+默认值：""
+        :type DnssecCname: str
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
         :param _ModifyTime: <p>编辑时间</p>
@@ -34845,6 +35742,8 @@ class DomainInfo(AbstractModel):
         self._LoadBalancerSet = None
         self._AppId = None
         self._State = None
+        self._ApRegion = None
+        self._DnssecCname = None
         self._CreateTime = None
         self._ModifyTime = None
         self._Ipv6Status = None
@@ -34927,7 +35826,7 @@ class DomainInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""<p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;</p>
+        r"""<p>地域。<br>&quot;多伦多&quot;: &quot;ca&quot;<br>&quot;广州&quot;: &quot;gz&quot;<br>&quot;成都&quot;: &quot;cd&quot;<br>&quot;福州&quot;: &quot;fzec&quot;<br>&quot;深圳&quot;: &quot;szx&quot;<br>&quot;印度&quot;: &quot;in&quot;<br>&quot;济南&quot;: &quot;jnec&quot;<br>&quot;重庆&quot;: &quot;cq&quot;<br>&quot;天津&quot;: &quot;tsn&quot;<br>&quot;欧洲东北&quot;: &quot;ru&quot;<br>&quot;南京&quot;: &quot;nj&quot;<br>&quot;美国硅谷&quot;: &quot;usw&quot;<br>&quot;泰国&quot;: &quot;th&quot;<br>&quot;广州Open&quot;: &quot;gzopen&quot;<br>&quot;深圳金融&quot;: &quot;szjr&quot;<br>&quot;法兰克福&quot;: &quot;de&quot;<br>&quot;日本&quot;: &quot;jp&quot;<br>&quot;弗吉尼亚&quot;: &quot;use&quot;<br>&quot;北京&quot;: &quot;bj&quot;<br>&quot;中国香港&quot;: &quot;hk&quot;<br>&quot;杭州&quot;: &quot;hzec&quot;<br>&quot;北京金融&quot;: &quot;bjjr&quot;<br>&quot;上海金融&quot;: &quot;shjr&quot;<br>&quot;台北&quot;: &quot;tpe&quot;<br>&quot;首尔&quot;: &quot;kr&quot;<br>&quot;上海&quot;: &quot;sh&quot;<br>&quot;新加坡&quot;: &quot;sg&quot;<br>&quot;清远&quot;: &quot;qy&quot;<br>与 ApRegion 表达同一含义、格式不同：本字段为地域缩写，ApRegion 为腾讯云标准 ap-xxx 格式</p>
         :rtype: str
         """
         return self._Region
@@ -35067,6 +35966,77 @@ class DomainInfo(AbstractModel):
     @State.setter
     def State(self, State):
         self._State = State
+
+    @property
+    def ApRegion(self):
+        r"""域名所在地域，腾讯云标准地域格式
+参数格式：形如 ap-guangzhou
+与 Region 表达同一含义、格式不同：Region 为地域缩写，本字段为标准地域名数组。负载均衡型多地域接入时数组可含多个元素
+出参在可识别时填充，无法识别的地域不返回对应元素
+枚举值：
+ap-guangzhou：广州
+ap-shanghai：上海
+ap-beijing：北京
+ap-chengdu：成都
+ap-chongqing：重庆
+ap-hongkong：中国香港
+ap-nanjing：南京
+ap-tianjin：天津
+ap-shenzhen：深圳
+ap-qingyuan：清远
+ap-guangzhou-open：广州Open
+ap-shenzhen-fsi：深圳金融
+ap-beijing-fsi：北京金融
+ap-shanghai-fsi：上海金融
+ap-hangzhou-ec：杭州
+ap-fuzhou-ec：福州
+ap-jinan-ec：济南
+ap-wuhan-ec：武汉
+ap-changsha-ec：长沙
+ap-hefei-ec：合肥
+ap-shenyang-ec：沈阳
+ap-xian-ec：西安
+ap-xibei-ec：西北
+ap-shijiazhuang-ec：石家庄
+ap-zhengzhou-ec：郑州
+ap-qingyuan-xinan：清远信安
+ap-shanghai-adc：上海ADC
+ap-shanghai-wxp-ops：上海无线城市运营
+ap-singapore：新加坡
+ap-seoul：首尔
+ap-tokyo：东京
+ap-osaka：大阪
+ap-mumbai：孟买
+ap-bangkok：曼谷
+ap-jakarta：雅加达
+ap-taipei：台北
+ap-johorbahru：柔佛巴鲁
+eu-frankfurt：法兰克福
+eu-moscow：莫斯科
+na-ashburn：弗吉尼亚
+na-siliconvalley：硅谷
+na-toronto：多伦多
+sa-saopaulo：圣保罗
+me-saudi-arabia：沙特阿拉伯
+        :rtype: list of str
+        """
+        return self._ApRegion
+
+    @ApRegion.setter
+    def ApRegion(self, ApRegion):
+        self._ApRegion = ApRegion
+
+    @property
+    def DnssecCname(self):
+        r"""DNSSEC CNAME 地址。客户开启 DNSSEC CNAME 校验后，将业务域名 CNAME 到该地址即可接入。开关关闭、非 SaaS CNAME 接入或无法映射时为空字符串。
+默认值：""
+        :rtype: str
+        """
+        return self._DnssecCname
+
+    @DnssecCname.setter
+    def DnssecCname(self, DnssecCname):
+        self._DnssecCname = DnssecCname
 
     @property
     def CreateTime(self):
@@ -35362,6 +36332,8 @@ class DomainInfo(AbstractModel):
                 self._LoadBalancerSet.append(obj)
         self._AppId = params.get("AppId")
         self._State = params.get("State")
+        self._ApRegion = params.get("ApRegion")
+        self._DnssecCname = params.get("DnssecCname")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
         self._Ipv6Status = params.get("Ipv6Status")
@@ -35675,6 +36647,8 @@ class DomainsPartInfo(AbstractModel):
         :type Cls: int
         :param _Cname: <p>接入Cname，SaaS型域名使用此Cname进行接入</p>
         :type Cname: str
+        :param _DnssecCname: <p>DNSSEC CNAME 地址。客户开启 DNSSEC CNAME 校验后，将业务域名 CNAME 到该地址即可接入。开关关闭、非 SaaS CNAME 接入或无法映射时为空字符串。<br>默认值：&quot;&quot;</p>
+        :type DnssecCname: str
         :param _IsKeepAlive: <p>是否开启长连接。<br>0： 短连接<br>1： 长连接</p>
         :type IsKeepAlive: int
         :param _ActiveCheck: <p>是否开启主动健康检测。<br>0：不开启<br>1：开启</p>
@@ -35771,6 +36745,7 @@ class DomainsPartInfo(AbstractModel):
         self._UpstreamScheme = None
         self._Cls = None
         self._Cname = None
+        self._DnssecCname = None
         self._IsKeepAlive = None
         self._ActiveCheck = None
         self._TLSVersion = None
@@ -36106,6 +37081,17 @@ class DomainsPartInfo(AbstractModel):
     @Cname.setter
     def Cname(self, Cname):
         self._Cname = Cname
+
+    @property
+    def DnssecCname(self):
+        r"""<p>DNSSEC CNAME 地址。客户开启 DNSSEC CNAME 校验后，将业务域名 CNAME 到该地址即可接入。开关关闭、非 SaaS CNAME 接入或无法映射时为空字符串。<br>默认值：&quot;&quot;</p>
+        :rtype: str
+        """
+        return self._DnssecCname
+
+    @DnssecCname.setter
+    def DnssecCname(self, DnssecCname):
+        self._DnssecCname = DnssecCname
 
     @property
     def IsKeepAlive(self):
@@ -36515,6 +37501,7 @@ class DomainsPartInfo(AbstractModel):
         self._UpstreamScheme = params.get("UpstreamScheme")
         self._Cls = params.get("Cls")
         self._Cname = params.get("Cname")
+        self._DnssecCname = params.get("DnssecCname")
         self._IsKeepAlive = params.get("IsKeepAlive")
         self._ActiveCheck = params.get("ActiveCheck")
         self._TLSVersion = params.get("TLSVersion")
@@ -37544,11 +38531,20 @@ class FieldWriteConfig(AbstractModel):
         :type EnableBot: int
         :param _EnableResponse: <p>响应方向body<br>1:开启 0:不开启</p>
         :type EnableResponse: int
+        :param _EnableResponseHeaders: <p>是否投递 response_headers（响应头，完整键值对，原样投递不做过滤/脱敏，超过2KB截断）。1:开启 0/不填:不开启。与 EnableResponse（响应体）完全独立，互不影响。</p>
+        :type EnableResponseHeaders: int
+        :param _EnableResponseLength: <p>是否投递 response_length（响应包长度，单位字节）。1:开启 0/不填:不开启。与 EnableResponse 完全独立，互不影响。</p>
+        :type EnableResponseLength: int
+        :param _EnableResponseStatusLine: <p>是否投递 response_status_line（客户端可见 HTTP 状态行，如 HTTP/1.1 200 OK，超过1KB截断）。1:开启 0/不填:不开启。与 EnableResponse 完全独立，互不影响。拦截/未回源时也会有值，记录的是 WAF 返回给客户端的状态行。</p>
+        :type EnableResponseStatusLine: int
         """
         self._EnableHeaders = None
         self._EnableBody = None
         self._EnableBot = None
         self._EnableResponse = None
+        self._EnableResponseHeaders = None
+        self._EnableResponseLength = None
+        self._EnableResponseStatusLine = None
 
     @property
     def EnableHeaders(self):
@@ -37594,12 +38590,48 @@ class FieldWriteConfig(AbstractModel):
     def EnableResponse(self, EnableResponse):
         self._EnableResponse = EnableResponse
 
+    @property
+    def EnableResponseHeaders(self):
+        r"""<p>是否投递 response_headers（响应头，完整键值对，原样投递不做过滤/脱敏，超过2KB截断）。1:开启 0/不填:不开启。与 EnableResponse（响应体）完全独立，互不影响。</p>
+        :rtype: int
+        """
+        return self._EnableResponseHeaders
+
+    @EnableResponseHeaders.setter
+    def EnableResponseHeaders(self, EnableResponseHeaders):
+        self._EnableResponseHeaders = EnableResponseHeaders
+
+    @property
+    def EnableResponseLength(self):
+        r"""<p>是否投递 response_length（响应包长度，单位字节）。1:开启 0/不填:不开启。与 EnableResponse 完全独立，互不影响。</p>
+        :rtype: int
+        """
+        return self._EnableResponseLength
+
+    @EnableResponseLength.setter
+    def EnableResponseLength(self, EnableResponseLength):
+        self._EnableResponseLength = EnableResponseLength
+
+    @property
+    def EnableResponseStatusLine(self):
+        r"""<p>是否投递 response_status_line（客户端可见 HTTP 状态行，如 HTTP/1.1 200 OK，超过1KB截断）。1:开启 0/不填:不开启。与 EnableResponse 完全独立，互不影响。拦截/未回源时也会有值，记录的是 WAF 返回给客户端的状态行。</p>
+        :rtype: int
+        """
+        return self._EnableResponseStatusLine
+
+    @EnableResponseStatusLine.setter
+    def EnableResponseStatusLine(self, EnableResponseStatusLine):
+        self._EnableResponseStatusLine = EnableResponseStatusLine
+
 
     def _deserialize(self, params):
         self._EnableHeaders = params.get("EnableHeaders")
         self._EnableBody = params.get("EnableBody")
         self._EnableBot = params.get("EnableBot")
         self._EnableResponse = params.get("EnableResponse")
+        self._EnableResponseHeaders = params.get("EnableResponseHeaders")
+        self._EnableResponseLength = params.get("EnableResponseLength")
+        self._EnableResponseStatusLine = params.get("EnableResponseStatusLine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37879,7 +38911,7 @@ class FraudPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -37891,7 +38923,7 @@ class FraudPkg(AbstractModel):
         :type InquireNum: int
         :param _UsedNum: 使用数量
         :type UsedNum: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         """
         self._ResourceIds = None
@@ -37916,7 +38948,7 @@ class FraudPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -37982,7 +39014,7 @@ class FraudPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -39845,6 +40877,7 @@ class HostRecord(AbstractModel):
         :param _LoadBalancerSet: 绑定的负载均衡器信息列表
         :type LoadBalancerSet: list of LoadBalancer
         :param _Region: 域名绑定的LB的地域，以逗号分割多个地域
+与 ApRegion 表达同一含义、格式不同。本字段为地域缩写，多个地域以英文逗号拼接；入参与 ApRegion 同时传入时以 ApRegion 为准
         :type Region: str
         :param _Edition: 域名所属实例类型。负载均衡型WAF为"clb-waf"
         :type Edition: str
@@ -39856,6 +40889,57 @@ class HostRecord(AbstractModel):
 1：开启
 0：关闭
         :type ClsStatus: int
+        :param _ApRegion: 域名绑定的负载均衡所在地域，腾讯云标准地域格式
+参数格式：形如 ap-guangzhou
+与 Region 表达同一含义、格式不同：Region 为地域缩写且多个地域以英文逗号拼接，本字段为标准地域名数组
+入参可选；与 Region 同时传入时以本字段为准；取值不在枚举范围内时返回 UnsupportedRegion
+出参在可识别时填充，无法识别的地域不返回对应元素
+枚举值：
+ap-guangzhou：广州
+ap-shanghai：上海
+ap-beijing：北京
+ap-chengdu：成都
+ap-chongqing：重庆
+ap-hongkong：中国香港
+ap-nanjing：南京
+ap-tianjin：天津
+ap-shenzhen：深圳
+ap-qingyuan：清远
+ap-guangzhou-open：广州Open
+ap-shenzhen-fsi：深圳金融
+ap-beijing-fsi：北京金融
+ap-shanghai-fsi：上海金融
+ap-hangzhou-ec：杭州
+ap-fuzhou-ec：福州
+ap-jinan-ec：济南
+ap-wuhan-ec：武汉
+ap-changsha-ec：长沙
+ap-hefei-ec：合肥
+ap-shenyang-ec：沈阳
+ap-xian-ec：西安
+ap-xibei-ec：西北
+ap-shijiazhuang-ec：石家庄
+ap-zhengzhou-ec：郑州
+ap-qingyuan-xinan：清远信安
+ap-shanghai-adc：上海ADC
+ap-shanghai-wxp-ops：上海无线城市运营
+ap-singapore：新加坡
+ap-seoul：首尔
+ap-tokyo：东京
+ap-osaka：大阪
+ap-mumbai：孟买
+ap-bangkok：曼谷
+ap-jakarta：雅加达
+ap-taipei：台北
+ap-johorbahru：柔佛巴鲁
+eu-frankfurt：法兰克福
+eu-moscow：莫斯科
+na-ashburn：弗吉尼亚
+na-siliconvalley：硅谷
+na-toronto：多伦多
+sa-saopaulo：圣保罗
+me-saudi-arabia：沙特阿拉伯
+        :type ApRegion: list of str
         :param _Level: 防护等级，可选值100,200,300
         :type Level: int
         :param _CdcClusters: 域名需要下发到的cdc集群列表。仅CDC场景下填充
@@ -39893,6 +40977,7 @@ hybrid:混合云
         self._Edition = None
         self._FlowMode = None
         self._ClsStatus = None
+        self._ApRegion = None
         self._Level = None
         self._CdcClusters = None
         self._AlbType = None
@@ -40020,6 +41105,7 @@ hybrid:混合云
     @property
     def Region(self):
         r"""域名绑定的LB的地域，以逗号分割多个地域
+与 ApRegion 表达同一含义、格式不同。本字段为地域缩写，多个地域以英文逗号拼接；入参与 ApRegion 同时传入时以 ApRegion 为准
         :rtype: str
         """
         return self._Region
@@ -40064,6 +41150,66 @@ hybrid:混合云
     @ClsStatus.setter
     def ClsStatus(self, ClsStatus):
         self._ClsStatus = ClsStatus
+
+    @property
+    def ApRegion(self):
+        r"""域名绑定的负载均衡所在地域，腾讯云标准地域格式
+参数格式：形如 ap-guangzhou
+与 Region 表达同一含义、格式不同：Region 为地域缩写且多个地域以英文逗号拼接，本字段为标准地域名数组
+入参可选；与 Region 同时传入时以本字段为准；取值不在枚举范围内时返回 UnsupportedRegion
+出参在可识别时填充，无法识别的地域不返回对应元素
+枚举值：
+ap-guangzhou：广州
+ap-shanghai：上海
+ap-beijing：北京
+ap-chengdu：成都
+ap-chongqing：重庆
+ap-hongkong：中国香港
+ap-nanjing：南京
+ap-tianjin：天津
+ap-shenzhen：深圳
+ap-qingyuan：清远
+ap-guangzhou-open：广州Open
+ap-shenzhen-fsi：深圳金融
+ap-beijing-fsi：北京金融
+ap-shanghai-fsi：上海金融
+ap-hangzhou-ec：杭州
+ap-fuzhou-ec：福州
+ap-jinan-ec：济南
+ap-wuhan-ec：武汉
+ap-changsha-ec：长沙
+ap-hefei-ec：合肥
+ap-shenyang-ec：沈阳
+ap-xian-ec：西安
+ap-xibei-ec：西北
+ap-shijiazhuang-ec：石家庄
+ap-zhengzhou-ec：郑州
+ap-qingyuan-xinan：清远信安
+ap-shanghai-adc：上海ADC
+ap-shanghai-wxp-ops：上海无线城市运营
+ap-singapore：新加坡
+ap-seoul：首尔
+ap-tokyo：东京
+ap-osaka：大阪
+ap-mumbai：孟买
+ap-bangkok：曼谷
+ap-jakarta：雅加达
+ap-taipei：台北
+ap-johorbahru：柔佛巴鲁
+eu-frankfurt：法兰克福
+eu-moscow：莫斯科
+na-ashburn：弗吉尼亚
+na-siliconvalley：硅谷
+na-toronto：多伦多
+sa-saopaulo：圣保罗
+me-saudi-arabia：沙特阿拉伯
+        :rtype: list of str
+        """
+        return self._ApRegion
+
+    @ApRegion.setter
+    def ApRegion(self, ApRegion):
+        self._ApRegion = ApRegion
 
     @property
     def Level(self):
@@ -40171,6 +41317,7 @@ hybrid:混合云
         self._Edition = params.get("Edition")
         self._FlowMode = params.get("FlowMode")
         self._ClsStatus = params.get("ClsStatus")
+        self._ApRegion = params.get("ApRegion")
         self._Level = params.get("Level")
         self._CdcClusters = params.get("CdcClusters")
         self._AlbType = params.get("AlbType")
@@ -40278,7 +41425,7 @@ class HybridPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -40290,8 +41437,10 @@ class HybridPkg(AbstractModel):
         :type InquireNum: int
         :param _UsedNum: 使用数量
         :type UsedNum: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
+        :param _ElasticNodeNum: 可接入弹性节点数。仅 Edition 为 clb-waf 的实例有混合云接入节点；弹性关闭或不满足版本、已购混合云节点条件时为 0；满足时为 1 + floor(弹性计费 QPS 上限 / 5000)，不含已购买节点数
+        :type ElasticNodeNum: int
         """
         self._ResourceIds = None
         self._Status = None
@@ -40301,6 +41450,7 @@ class HybridPkg(AbstractModel):
         self._InquireNum = None
         self._UsedNum = None
         self._RenewFlag = None
+        self._ElasticNodeNum = None
 
     @property
     def ResourceIds(self):
@@ -40315,7 +41465,7 @@ class HybridPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -40381,7 +41531,7 @@ class HybridPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -40389,6 +41539,17 @@ class HybridPkg(AbstractModel):
     @RenewFlag.setter
     def RenewFlag(self, RenewFlag):
         self._RenewFlag = RenewFlag
+
+    @property
+    def ElasticNodeNum(self):
+        r"""可接入弹性节点数。仅 Edition 为 clb-waf 的实例有混合云接入节点；弹性关闭或不满足版本、已购混合云节点条件时为 0；满足时为 1 + floor(弹性计费 QPS 上限 / 5000)，不含已购买节点数
+        :rtype: int
+        """
+        return self._ElasticNodeNum
+
+    @ElasticNodeNum.setter
+    def ElasticNodeNum(self, ElasticNodeNum):
+        self._ElasticNodeNum = ElasticNodeNum
 
 
     def _deserialize(self, params):
@@ -40400,6 +41561,7 @@ class HybridPkg(AbstractModel):
         self._InquireNum = params.get("InquireNum")
         self._UsedNum = params.get("UsedNum")
         self._RenewFlag = params.get("RenewFlag")
+        self._ElasticNodeNum = params.get("ElasticNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41294,7 +42456,7 @@ class InstanceInfo(AbstractModel):
         :type ResourceIds: str
         :param _Region: <p>实例所属地域</p>
         :type Region: str
-        :param _PayMode: <p>付费模式</p>
+        :param _PayMode: 付费模式，0表示后付费（按量计费），1表示预付费（包年包月）
         :type PayMode: int
         :param _RenewFlag: <p>自动续费标识。<br>0：关闭<br>1：开启</p>
         :type RenewFlag: int
@@ -41340,9 +42502,9 @@ class InstanceInfo(AbstractModel):
         :type APISecurity: int
         :param _QpsStandard: <p>购买的qps规格</p>
         :type QpsStandard: int
-        :param _BandwidthStandard: <p>购买的带宽规格</p>
+        :param _BandwidthStandard: 购买的带宽规格上限，单位：Mbps
         :type BandwidthStandard: int
-        :param _Status: <p>实例状态</p>
+        :param _Status: 实例状态，0表示正常，1表示正常使用，2表示隔离期，3表示已销毁
         :type Status: int
         :param _SandboxQps: <p>实例沙箱qps值</p>
         :type SandboxQps: int
@@ -41354,7 +42516,7 @@ class InstanceInfo(AbstractModel):
         :type HybridPkg: :class:`tencentcloud.waf.v20180125.models.HybridPkg`
         :param _ApiPkg: <p>API安全资源包</p>
         :type ApiPkg: :class:`tencentcloud.waf.v20180125.models.ApiPkg`
-        :param _MiniPkg: <p>小程序安全加速包</p>
+        :param _MiniPkg: <p>小程序安全防护包</p>
         :type MiniPkg: :class:`tencentcloud.waf.v20180125.models.MiniPkg`
         :param _MiniQpsStandard: <p>小程序qps规格</p>
         :type MiniQpsStandard: int
@@ -41366,12 +42528,16 @@ class InstanceInfo(AbstractModel):
         :type MiniExtendPkg: :class:`tencentcloud.waf.v20180125.models.MiniExtendPkg`
         :param _BillingItem: <p>计费项</p>
         :type BillingItem: str
-        :param _FreeDelayFlag: <p>实例延期释放标识</p>
+        :param _FreeDelayFlag: 实例延期释放标识，0表示不延期，1表示延期释放
         :type FreeDelayFlag: int
         :param _Last3MaxQPS: <p>最近3天最大qps</p>
         :type Last3MaxQPS: int
         :param _Last3MaxBandwidth: <p>最近3天最大带宽</p>
         :type Last3MaxBandwidth: int
+        :param _Last7MaxMiniBandwidth: <p>过去7天小程序流量最大带宽，单位Byte/s，仅开启小程序安全时有值。转换为Mbps请使用 *8/1000/1000（十进制），不要使用MaxBandwidth所用的*8/1024/1024（二进制），否则会有约4.63%的偏差</p>
+        :type Last7MaxMiniBandwidth: int
+        :param _MiniBandwidthStandard: <p>小程序带宽上限，单位Mbps，仅开启小程序安全时有值</p>
+        :type MiniBandwidthStandard: int
         :param _MajorEventsProPkg: <p>重保增强包</p>
         :type MajorEventsProPkg: :class:`tencentcloud.waf.v20180125.models.MajorEventsProPkg`
         :param _BasicFlag: <p>1是基础2025版本；0不是</p>
@@ -41380,6 +42546,8 @@ class InstanceInfo(AbstractModel):
         :type NetworkConfig: :class:`tencentcloud.waf.v20180125.models.NetworkConfig`
         :param _RCEPkg: <p>RCE设备安全信息包</p>
         :type RCEPkg: :class:`tencentcloud.waf.v20180125.models.RCEPkg`
+        :param _RCEExtendPkg: <p>RCE QPS扩展包</p>
+        :type RCEExtendPkg: :class:`tencentcloud.waf.v20180125.models.RCEExtendPkg`
         :param _ExceedPolicy: <p>超量策略。0：超量沙箱<br>1：超量限流</p>
         :type ExceedPolicy: int
         :param _LLMPkg: <p>大模型安全信息包</p>
@@ -41444,10 +42612,13 @@ class InstanceInfo(AbstractModel):
         self._FreeDelayFlag = None
         self._Last3MaxQPS = None
         self._Last3MaxBandwidth = None
+        self._Last7MaxMiniBandwidth = None
+        self._MiniBandwidthStandard = None
         self._MajorEventsProPkg = None
         self._BasicFlag = None
         self._NetworkConfig = None
         self._RCEPkg = None
+        self._RCEExtendPkg = None
         self._ExceedPolicy = None
         self._LLMPkg = None
         self._ElasticResourceId = None
@@ -41505,7 +42676,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""<p>付费模式</p>
+        r"""付费模式，0表示后付费（按量计费），1表示预付费（包年包月）
         :rtype: int
         """
         return self._PayMode
@@ -41758,7 +42929,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def BandwidthStandard(self):
-        r"""<p>购买的带宽规格</p>
+        r"""购买的带宽规格上限，单位：Mbps
         :rtype: int
         """
         return self._BandwidthStandard
@@ -41769,7 +42940,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>实例状态</p>
+        r"""实例状态，0表示正常，1表示正常使用，2表示隔离期，3表示已销毁
         :rtype: int
         """
         return self._Status
@@ -41835,7 +43006,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MiniPkg(self):
-        r"""<p>小程序安全加速包</p>
+        r"""<p>小程序安全防护包</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.MiniPkg`
         """
         return self._MiniPkg
@@ -41901,7 +43072,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def FreeDelayFlag(self):
-        r"""<p>实例延期释放标识</p>
+        r"""实例延期释放标识，0表示不延期，1表示延期释放
         :rtype: int
         """
         return self._FreeDelayFlag
@@ -41931,6 +43102,28 @@ class InstanceInfo(AbstractModel):
     @Last3MaxBandwidth.setter
     def Last3MaxBandwidth(self, Last3MaxBandwidth):
         self._Last3MaxBandwidth = Last3MaxBandwidth
+
+    @property
+    def Last7MaxMiniBandwidth(self):
+        r"""<p>过去7天小程序流量最大带宽，单位Byte/s，仅开启小程序安全时有值。转换为Mbps请使用 *8/1000/1000（十进制），不要使用MaxBandwidth所用的*8/1024/1024（二进制），否则会有约4.63%的偏差</p>
+        :rtype: int
+        """
+        return self._Last7MaxMiniBandwidth
+
+    @Last7MaxMiniBandwidth.setter
+    def Last7MaxMiniBandwidth(self, Last7MaxMiniBandwidth):
+        self._Last7MaxMiniBandwidth = Last7MaxMiniBandwidth
+
+    @property
+    def MiniBandwidthStandard(self):
+        r"""<p>小程序带宽上限，单位Mbps，仅开启小程序安全时有值</p>
+        :rtype: int
+        """
+        return self._MiniBandwidthStandard
+
+    @MiniBandwidthStandard.setter
+    def MiniBandwidthStandard(self, MiniBandwidthStandard):
+        self._MiniBandwidthStandard = MiniBandwidthStandard
 
     @property
     def MajorEventsProPkg(self):
@@ -41975,6 +43168,17 @@ class InstanceInfo(AbstractModel):
     @RCEPkg.setter
     def RCEPkg(self, RCEPkg):
         self._RCEPkg = RCEPkg
+
+    @property
+    def RCEExtendPkg(self):
+        r"""<p>RCE QPS扩展包</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.RCEExtendPkg`
+        """
+        return self._RCEExtendPkg
+
+    @RCEExtendPkg.setter
+    def RCEExtendPkg(self, RCEExtendPkg):
+        self._RCEExtendPkg = RCEExtendPkg
 
     @property
     def ExceedPolicy(self):
@@ -42151,6 +43355,8 @@ class InstanceInfo(AbstractModel):
         self._FreeDelayFlag = params.get("FreeDelayFlag")
         self._Last3MaxQPS = params.get("Last3MaxQPS")
         self._Last3MaxBandwidth = params.get("Last3MaxBandwidth")
+        self._Last7MaxMiniBandwidth = params.get("Last7MaxMiniBandwidth")
+        self._MiniBandwidthStandard = params.get("MiniBandwidthStandard")
         if params.get("MajorEventsProPkg") is not None:
             self._MajorEventsProPkg = MajorEventsProPkg()
             self._MajorEventsProPkg._deserialize(params.get("MajorEventsProPkg"))
@@ -42161,6 +43367,9 @@ class InstanceInfo(AbstractModel):
         if params.get("RCEPkg") is not None:
             self._RCEPkg = RCEPkg()
             self._RCEPkg._deserialize(params.get("RCEPkg"))
+        if params.get("RCEExtendPkg") is not None:
+            self._RCEExtendPkg = RCEExtendPkg()
+            self._RCEExtendPkg._deserialize(params.get("RCEExtendPkg"))
         self._ExceedPolicy = params.get("ExceedPolicy")
         if params.get("LLMPkg") is not None:
             self._LLMPkg = LLMPkg()
@@ -43126,6 +44335,8 @@ class LLMDetectResult(AbstractModel):
         :type Action: str
         :param _Payload: <p>攻击payload</p>
         :type Payload: str
+        :param _Desensitization: <p>脱敏后的内容。Action为mask时返回；如果未生成脱敏证据，则返回原文。</p>
+        :type Desensitization: str
         :param _ImageResult: <p>图片检测结果</p>
         :type ImageResult: list of ImageResult
         :param _MsgID: <p>要代答的消息id，此消息id用于作为GenerateLLMSecAnswer接口的入参</p>
@@ -43134,6 +44345,8 @@ class LLMDetectResult(AbstractModel):
         :type ToolCallResult: :class:`tencentcloud.waf.v20180125.models.ToolCallResult`
         :param _IntentDetectResult: <p>意图检测结果</p>
         :type IntentDetectResult: :class:`tencentcloud.waf.v20180125.models.IntentDetectResult`
+        :param _UrlDetectResult: <p>恶意URL检测结果</p>
+        :type UrlDetectResult: :class:`tencentcloud.waf.v20180125.models.UrlDetectResult`
         """
         self._SensitiveResult = None
         self._KeyWordsResult = None
@@ -43143,10 +44356,12 @@ class LLMDetectResult(AbstractModel):
         self._RuleName = None
         self._Action = None
         self._Payload = None
+        self._Desensitization = None
         self._ImageResult = None
         self._MsgID = None
         self._ToolCallResult = None
         self._IntentDetectResult = None
+        self._UrlDetectResult = None
 
     @property
     def SensitiveResult(self):
@@ -43237,6 +44452,17 @@ class LLMDetectResult(AbstractModel):
         self._Payload = Payload
 
     @property
+    def Desensitization(self):
+        r"""<p>脱敏后的内容。Action为mask时返回；如果未生成脱敏证据，则返回原文。</p>
+        :rtype: str
+        """
+        return self._Desensitization
+
+    @Desensitization.setter
+    def Desensitization(self, Desensitization):
+        self._Desensitization = Desensitization
+
+    @property
     def ImageResult(self):
         r"""<p>图片检测结果</p>
         :rtype: list of ImageResult
@@ -43280,6 +44506,17 @@ class LLMDetectResult(AbstractModel):
     def IntentDetectResult(self, IntentDetectResult):
         self._IntentDetectResult = IntentDetectResult
 
+    @property
+    def UrlDetectResult(self):
+        r"""<p>恶意URL检测结果</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.UrlDetectResult`
+        """
+        return self._UrlDetectResult
+
+    @UrlDetectResult.setter
+    def UrlDetectResult(self, UrlDetectResult):
+        self._UrlDetectResult = UrlDetectResult
+
 
     def _deserialize(self, params):
         if params.get("SensitiveResult") is not None:
@@ -43302,6 +44539,7 @@ class LLMDetectResult(AbstractModel):
         self._RuleName = params.get("RuleName")
         self._Action = params.get("Action")
         self._Payload = params.get("Payload")
+        self._Desensitization = params.get("Desensitization")
         if params.get("ImageResult") is not None:
             self._ImageResult = []
             for item in params.get("ImageResult"):
@@ -43315,6 +44553,9 @@ class LLMDetectResult(AbstractModel):
         if params.get("IntentDetectResult") is not None:
             self._IntentDetectResult = IntentDetectResult()
             self._IntentDetectResult._deserialize(params.get("IntentDetectResult"))
+        if params.get("UrlDetectResult") is not None:
+            self._UrlDetectResult = UrlDetectResult()
+            self._UrlDetectResult._deserialize(params.get("UrlDetectResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43526,7 +44767,7 @@ class LLMMonPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -43567,7 +44808,7 @@ class LLMMonPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -43785,7 +45026,7 @@ class LLMPkg(AbstractModel):
         r"""
         :param _ResourceIds: <p>资源id</p>
         :type ResourceIds: str
-        :param _Status: <p>状态</p>
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: <p>地域</p>
         :type Region: int
@@ -43819,7 +45060,7 @@ class LLMPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>状态</p>
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -45223,33 +46464,35 @@ class LoadBalancer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡LD的ID
+        :param _LoadBalancerId: <p>负载均衡LD的ID</p>
         :type LoadBalancerId: str
-        :param _LoadBalancerName: 负载均衡LD的名称
+        :param _LoadBalancerName: <p>负载均衡LD的名称</p>
         :type LoadBalancerName: str
-        :param _ListenerId: 负载均衡监听器的ID
+        :param _ListenerId: <p>负载均衡监听器的ID</p>
         :type ListenerId: str
-        :param _ListenerName: 负载均衡监听器的名称
+        :param _ListenerName: <p>负载均衡监听器的名称</p>
         :type ListenerName: str
-        :param _Vport: 负载均衡实例的端口
+        :param _Vport: <p>负载均衡实例的端口</p>
         :type Vport: int
-        :param _Region: 负载均衡LD的地域
+        :param _Region: <p>负载均衡LD的地域<br>与 ApRegion 表达同一含义、格式不同。本字段为地域缩写；入参与 ApRegion 同时传入时以 ApRegion 为准</p>
         :type Region: str
-        :param _Protocol: 监听器协议，http、https
+        :param _Protocol: <p>监听器协议，http、https</p>
         :type Protocol: str
-        :param _Zone: 负载均衡监听器所在的zone
+        :param _Zone: <p>负载均衡监听器所在的zone</p>
         :type Zone: str
-        :param _Vip: 负载均衡实例的IP。域名化CLB VIP可填空。
+        :param _ApRegion: <p>负载均衡实例所在地域，腾讯云标准地域格式<br>参数格式：形如 ap-guangzhou<br>与 Region 表达同一含义、格式不同。监听器恒为单地域，数组长度恒为 0 或 1<br>入参可选；与 Region 同时传入时以本字段为准；取值不在枚举范围内时返回 UnsupportedRegion<br>出参在可识别时填充，无法识别时为空数组<br>枚举值：<br>ap-guangzhou：广州<br>ap-shanghai：上海<br>ap-beijing：北京<br>ap-chengdu：成都<br>ap-chongqing：重庆<br>ap-hongkong：中国香港<br>ap-nanjing：南京<br>ap-tianjin：天津<br>ap-shenzhen：深圳<br>ap-qingyuan：清远<br>ap-guangzhou-open：广州Open<br>ap-shenzhen-fsi：深圳金融<br>ap-beijing-fsi：北京金融<br>ap-shanghai-fsi：上海金融<br>ap-hangzhou-ec：杭州<br>ap-fuzhou-ec：福州<br>ap-jinan-ec：济南<br>ap-wuhan-ec：武汉<br>ap-changsha-ec：长沙<br>ap-hefei-ec：合肥<br>ap-shenyang-ec：沈阳<br>ap-xian-ec：西安<br>ap-xibei-ec：西北<br>ap-shijiazhuang-ec：石家庄<br>ap-zhengzhou-ec：郑州<br>ap-qingyuan-xinan：清远信安<br>ap-shanghai-adc：上海ADC<br>ap-shanghai-wxp-ops：上海无线城市运营<br>ap-singapore：新加坡<br>ap-seoul：首尔<br>ap-tokyo：东京<br>ap-osaka：大阪<br>ap-mumbai：孟买<br>ap-bangkok：曼谷<br>ap-jakarta：雅加达<br>ap-taipei：台北<br>ap-johorbahru：柔佛巴鲁<br>eu-frankfurt：法兰克福<br>eu-moscow：莫斯科<br>na-ashburn：弗吉尼亚<br>na-siliconvalley：硅谷<br>na-toronto：多伦多<br>sa-saopaulo：圣保罗<br>me-saudi-arabia：沙特阿拉伯</p>
+        :type ApRegion: list of str
+        :param _Vip: <p>负载均衡实例的IP。域名化CLB VIP可填空。</p>
         :type Vip: str
-        :param _NumericalVpcId: 负载均衡的VPCID，公网为-1，内网按实际填写
+        :param _NumericalVpcId: <p>负载均衡的VPCID，公网为-1，内网按实际填写</p>
         :type NumericalVpcId: int
-        :param _LoadBalancerType: 负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网
+        :param _LoadBalancerType: <p>负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网</p>
         :type LoadBalancerType: str
-        :param _LoadBalancerDomain: 负载均衡的域名
+        :param _LoadBalancerDomain: <p>负载均衡的域名</p>
         :type LoadBalancerDomain: str
-        :param _MemberAppId: 监听器所属成员id
+        :param _MemberAppId: <p>监听器所属成员id</p>
         :type MemberAppId: int
-        :param _MemberUin: 监听器所属成员的uin
+        :param _MemberUin: <p>监听器所属成员的uin</p>
         :type MemberUin: str
         """
         self._LoadBalancerId = None
@@ -45260,6 +46503,7 @@ class LoadBalancer(AbstractModel):
         self._Region = None
         self._Protocol = None
         self._Zone = None
+        self._ApRegion = None
         self._Vip = None
         self._NumericalVpcId = None
         self._LoadBalancerType = None
@@ -45269,7 +46513,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡LD的ID
+        r"""<p>负载均衡LD的ID</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -45280,7 +46524,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerName(self):
-        r"""负载均衡LD的名称
+        r"""<p>负载均衡LD的名称</p>
         :rtype: str
         """
         return self._LoadBalancerName
@@ -45291,7 +46535,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""负载均衡监听器的ID
+        r"""<p>负载均衡监听器的ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -45302,7 +46546,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""负载均衡监听器的名称
+        r"""<p>负载均衡监听器的名称</p>
         :rtype: str
         """
         return self._ListenerName
@@ -45313,7 +46557,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Vport(self):
-        r"""负载均衡实例的端口
+        r"""<p>负载均衡实例的端口</p>
         :rtype: int
         """
         return self._Vport
@@ -45324,7 +46568,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Region(self):
-        r"""负载均衡LD的地域
+        r"""<p>负载均衡LD的地域<br>与 ApRegion 表达同一含义、格式不同。本字段为地域缩写；入参与 ApRegion 同时传入时以 ApRegion 为准</p>
         :rtype: str
         """
         return self._Region
@@ -45335,7 +46579,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""监听器协议，http、https
+        r"""<p>监听器协议，http、https</p>
         :rtype: str
         """
         return self._Protocol
@@ -45346,7 +46590,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def Zone(self):
-        r"""负载均衡监听器所在的zone
+        r"""<p>负载均衡监听器所在的zone</p>
         :rtype: str
         """
         return self._Zone
@@ -45356,8 +46600,19 @@ class LoadBalancer(AbstractModel):
         self._Zone = Zone
 
     @property
+    def ApRegion(self):
+        r"""<p>负载均衡实例所在地域，腾讯云标准地域格式<br>参数格式：形如 ap-guangzhou<br>与 Region 表达同一含义、格式不同。监听器恒为单地域，数组长度恒为 0 或 1<br>入参可选；与 Region 同时传入时以本字段为准；取值不在枚举范围内时返回 UnsupportedRegion<br>出参在可识别时填充，无法识别时为空数组<br>枚举值：<br>ap-guangzhou：广州<br>ap-shanghai：上海<br>ap-beijing：北京<br>ap-chengdu：成都<br>ap-chongqing：重庆<br>ap-hongkong：中国香港<br>ap-nanjing：南京<br>ap-tianjin：天津<br>ap-shenzhen：深圳<br>ap-qingyuan：清远<br>ap-guangzhou-open：广州Open<br>ap-shenzhen-fsi：深圳金融<br>ap-beijing-fsi：北京金融<br>ap-shanghai-fsi：上海金融<br>ap-hangzhou-ec：杭州<br>ap-fuzhou-ec：福州<br>ap-jinan-ec：济南<br>ap-wuhan-ec：武汉<br>ap-changsha-ec：长沙<br>ap-hefei-ec：合肥<br>ap-shenyang-ec：沈阳<br>ap-xian-ec：西安<br>ap-xibei-ec：西北<br>ap-shijiazhuang-ec：石家庄<br>ap-zhengzhou-ec：郑州<br>ap-qingyuan-xinan：清远信安<br>ap-shanghai-adc：上海ADC<br>ap-shanghai-wxp-ops：上海无线城市运营<br>ap-singapore：新加坡<br>ap-seoul：首尔<br>ap-tokyo：东京<br>ap-osaka：大阪<br>ap-mumbai：孟买<br>ap-bangkok：曼谷<br>ap-jakarta：雅加达<br>ap-taipei：台北<br>ap-johorbahru：柔佛巴鲁<br>eu-frankfurt：法兰克福<br>eu-moscow：莫斯科<br>na-ashburn：弗吉尼亚<br>na-siliconvalley：硅谷<br>na-toronto：多伦多<br>sa-saopaulo：圣保罗<br>me-saudi-arabia：沙特阿拉伯</p>
+        :rtype: list of str
+        """
+        return self._ApRegion
+
+    @ApRegion.setter
+    def ApRegion(self, ApRegion):
+        self._ApRegion = ApRegion
+
+    @property
     def Vip(self):
-        r"""负载均衡实例的IP。域名化CLB VIP可填空。
+        r"""<p>负载均衡实例的IP。域名化CLB VIP可填空。</p>
         :rtype: str
         """
         return self._Vip
@@ -45368,7 +46623,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def NumericalVpcId(self):
-        r"""负载均衡的VPCID，公网为-1，内网按实际填写
+        r"""<p>负载均衡的VPCID，公网为-1，内网按实际填写</p>
         :rtype: int
         """
         return self._NumericalVpcId
@@ -45379,7 +46634,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerType(self):
-        r"""负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网
+        r"""<p>负载均衡的网络类型。OPEN： 公网 INTERNAL ：内网</p>
         :rtype: str
         """
         return self._LoadBalancerType
@@ -45390,7 +46645,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def LoadBalancerDomain(self):
-        r"""负载均衡的域名
+        r"""<p>负载均衡的域名</p>
         :rtype: str
         """
         return self._LoadBalancerDomain
@@ -45401,7 +46656,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def MemberAppId(self):
-        r"""监听器所属成员id
+        r"""<p>监听器所属成员id</p>
         :rtype: int
         """
         return self._MemberAppId
@@ -45412,7 +46667,7 @@ class LoadBalancer(AbstractModel):
 
     @property
     def MemberUin(self):
-        r"""监听器所属成员的uin
+        r"""<p>监听器所属成员的uin</p>
         :rtype: str
         """
         return self._MemberUin
@@ -45431,6 +46686,7 @@ class LoadBalancer(AbstractModel):
         self._Region = params.get("Region")
         self._Protocol = params.get("Protocol")
         self._Zone = params.get("Zone")
+        self._ApRegion = params.get("ApRegion")
         self._Vip = params.get("Vip")
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
@@ -45494,6 +46750,7 @@ class LoadBalancerPackageNew(AbstractModel):
     "新加坡": "sg",
     "清远": "qy",
     "雅加达": "jkt"
+与 ApRegion 表达同一含义、格式不同：本字段为地域缩写，ApRegion 为腾讯云标准 ap-xxx 格式
         :type Region: str
         :param _Vip: 接入IP
         :type Vip: str
@@ -45505,6 +46762,56 @@ class LoadBalancerPackageNew(AbstractModel):
         :type NumericalVpcId: int
         :param _LoadBalancerType: CLB类型
         :type LoadBalancerType: str
+        :param _ApRegion: 负载均衡实例所在地域，腾讯云标准地域格式
+参数格式：形如 ap-guangzhou
+与 Region 表达同一含义、格式不同。监听器恒为单地域，数组长度恒为 0 或 1
+出参在可识别时填充，无法识别时为空数组
+枚举值：
+ap-guangzhou：广州
+ap-shanghai：上海
+ap-beijing：北京
+ap-chengdu：成都
+ap-chongqing：重庆
+ap-hongkong：中国香港
+ap-nanjing：南京
+ap-tianjin：天津
+ap-shenzhen：深圳
+ap-qingyuan：清远
+ap-guangzhou-open：广州Open
+ap-shenzhen-fsi：深圳金融
+ap-beijing-fsi：北京金融
+ap-shanghai-fsi：上海金融
+ap-hangzhou-ec：杭州
+ap-fuzhou-ec：福州
+ap-jinan-ec：济南
+ap-wuhan-ec：武汉
+ap-changsha-ec：长沙
+ap-hefei-ec：合肥
+ap-shenyang-ec：沈阳
+ap-xian-ec：西安
+ap-xibei-ec：西北
+ap-shijiazhuang-ec：石家庄
+ap-zhengzhou-ec：郑州
+ap-qingyuan-xinan：清远信安
+ap-shanghai-adc：上海ADC
+ap-shanghai-wxp-ops：上海无线城市运营
+ap-singapore：新加坡
+ap-seoul：首尔
+ap-tokyo：东京
+ap-osaka：大阪
+ap-mumbai：孟买
+ap-bangkok：曼谷
+ap-jakarta：雅加达
+ap-taipei：台北
+ap-johorbahru：柔佛巴鲁
+eu-frankfurt：法兰克福
+eu-moscow：莫斯科
+na-ashburn：弗吉尼亚
+na-siliconvalley：硅谷
+na-toronto：多伦多
+sa-saopaulo：圣保罗
+me-saudi-arabia：沙特阿拉伯
+        :type ApRegion: list of str
         :param _LoadBalancerDomain: 负载均衡器的域名
         :type LoadBalancerDomain: str
         :param _MemberAppId: 监听器所属appid
@@ -45527,6 +46834,7 @@ class LoadBalancerPackageNew(AbstractModel):
         self._Zone = None
         self._NumericalVpcId = None
         self._LoadBalancerType = None
+        self._ApRegion = None
         self._LoadBalancerDomain = None
         self._MemberAppId = None
         self._MemberUin = None
@@ -45620,6 +46928,7 @@ class LoadBalancerPackageNew(AbstractModel):
     "新加坡": "sg",
     "清远": "qy",
     "雅加达": "jkt"
+与 ApRegion 表达同一含义、格式不同：本字段为地域缩写，ApRegion 为腾讯云标准 ap-xxx 格式
         :rtype: str
         """
         return self._Region
@@ -45682,6 +46991,65 @@ class LoadBalancerPackageNew(AbstractModel):
     @LoadBalancerType.setter
     def LoadBalancerType(self, LoadBalancerType):
         self._LoadBalancerType = LoadBalancerType
+
+    @property
+    def ApRegion(self):
+        r"""负载均衡实例所在地域，腾讯云标准地域格式
+参数格式：形如 ap-guangzhou
+与 Region 表达同一含义、格式不同。监听器恒为单地域，数组长度恒为 0 或 1
+出参在可识别时填充，无法识别时为空数组
+枚举值：
+ap-guangzhou：广州
+ap-shanghai：上海
+ap-beijing：北京
+ap-chengdu：成都
+ap-chongqing：重庆
+ap-hongkong：中国香港
+ap-nanjing：南京
+ap-tianjin：天津
+ap-shenzhen：深圳
+ap-qingyuan：清远
+ap-guangzhou-open：广州Open
+ap-shenzhen-fsi：深圳金融
+ap-beijing-fsi：北京金融
+ap-shanghai-fsi：上海金融
+ap-hangzhou-ec：杭州
+ap-fuzhou-ec：福州
+ap-jinan-ec：济南
+ap-wuhan-ec：武汉
+ap-changsha-ec：长沙
+ap-hefei-ec：合肥
+ap-shenyang-ec：沈阳
+ap-xian-ec：西安
+ap-xibei-ec：西北
+ap-shijiazhuang-ec：石家庄
+ap-zhengzhou-ec：郑州
+ap-qingyuan-xinan：清远信安
+ap-shanghai-adc：上海ADC
+ap-shanghai-wxp-ops：上海无线城市运营
+ap-singapore：新加坡
+ap-seoul：首尔
+ap-tokyo：东京
+ap-osaka：大阪
+ap-mumbai：孟买
+ap-bangkok：曼谷
+ap-jakarta：雅加达
+ap-taipei：台北
+ap-johorbahru：柔佛巴鲁
+eu-frankfurt：法兰克福
+eu-moscow：莫斯科
+na-ashburn：弗吉尼亚
+na-siliconvalley：硅谷
+na-toronto：多伦多
+sa-saopaulo：圣保罗
+me-saudi-arabia：沙特阿拉伯
+        :rtype: list of str
+        """
+        return self._ApRegion
+
+    @ApRegion.setter
+    def ApRegion(self, ApRegion):
+        self._ApRegion = ApRegion
 
     @property
     def LoadBalancerDomain(self):
@@ -45751,6 +47119,7 @@ class LoadBalancerPackageNew(AbstractModel):
         self._Zone = params.get("Zone")
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._LoadBalancerType = params.get("LoadBalancerType")
+        self._ApRegion = params.get("ApRegion")
         self._LoadBalancerDomain = params.get("LoadBalancerDomain")
         self._MemberAppId = params.get("MemberAppId")
         self._MemberUin = params.get("MemberUin")
@@ -46112,7 +47481,7 @@ class MajorEventsPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -46124,7 +47493,7 @@ class MajorEventsPkg(AbstractModel):
         :type InquireNum: int
         :param _UsedNum: 使用数量
         :type UsedNum: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
@@ -46155,7 +47524,7 @@ class MajorEventsPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -46221,7 +47590,7 @@ class MajorEventsPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -46283,7 +47652,7 @@ class MajorEventsProPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -46295,7 +47664,7 @@ class MajorEventsProPkg(AbstractModel):
         :type InquireNum: int
         :param _UsedNum: 使用数量
         :type UsedNum: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
@@ -46323,7 +47692,7 @@ class MajorEventsProPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -46389,7 +47758,7 @@ class MajorEventsProPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -46511,7 +47880,7 @@ class MiniExtendPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -46521,7 +47890,7 @@ class MiniExtendPkg(AbstractModel):
         :type EndTime: str
         :param _Count: 购买数量
         :type Count: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
@@ -46548,7 +47917,7 @@ class MiniExtendPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -46603,7 +47972,7 @@ class MiniExtendPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -46652,7 +48021,7 @@ class MiniPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -46662,7 +48031,7 @@ class MiniPkg(AbstractModel):
         :type EndTime: str
         :param _Count: 购买数量
         :type Count: int
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
@@ -46692,7 +48061,7 @@ class MiniPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -46747,7 +48116,7 @@ class MiniPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -52476,7 +53845,7 @@ class ModifyLLMContentRuleRequest(AbstractModel):
         :type ContentLogicalOp: str
         :param _InstanceId: <p>实例id，必填项</p>
         :type InstanceId: str
-        :param _ReplyType: <p>代答类型：1-内置可信模型安全代答，2-自定义代答（ActionType=reply时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答ActionType=reply时生效</li></ul>
+        :param _ReplyType: <p>代答类型：1-内置可信模型安全代答，2-自定义代答(ActionType=reply)时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答(ActionType=reply)时生效</li></ul>
         :type ReplyType: int
         :param _CustomReplyRuleId: <p>自定义回答模板</p>
         :type CustomReplyRuleId: str
@@ -52488,6 +53857,8 @@ class ModifyLLMContentRuleRequest(AbstractModel):
         :type Domains: list of str
         :param _AppliedModules: <p>加白生效模块type列表（Category=white时使用），表示该白名单规则命中后对哪些防护模块生效(放行)。取值：2-算力消耗规则，3-自定义防护规则，4-ToolCall防护，5-提示词攻击防护，6-内容合规检测，7-敏感数据检测。</p>
         :type AppliedModules: list of int non-negative
+        :param _RiskLevel: <p>严重程度：critical-超高危，high-高危，medium-中危(默认)，low-低危。命中该规则时攻击日志按此展示风险等级；不传或空值按medium处理。</p><p>枚举值：</p><ul><li>critical： 超高危</li><li>high： 高危</li><li>medium： 中危(默认)</li><li>low： 低危</li></ul>
+        :type RiskLevel: str
         """
         self._Name = None
         self._Priority = None
@@ -52509,6 +53880,7 @@ class ModifyLLMContentRuleRequest(AbstractModel):
         self._Category = None
         self._Domains = None
         self._AppliedModules = None
+        self._RiskLevel = None
 
     @property
     def Name(self):
@@ -52666,7 +54038,7 @@ class ModifyLLMContentRuleRequest(AbstractModel):
 
     @property
     def ReplyType(self):
-        r"""<p>代答类型：1-内置可信模型安全代答，2-自定义代答（ActionType=reply时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答ActionType=reply时生效</li></ul>
+        r"""<p>代答类型：1-内置可信模型安全代答，2-自定义代答(ActionType=reply)时生效</p><p>枚举值：</p><ul><li>1： 内置可信模型安全代答</li><li>2： 自定义代答(ActionType=reply)时生效</li></ul>
         :rtype: int
         """
         return self._ReplyType
@@ -52730,6 +54102,17 @@ class ModifyLLMContentRuleRequest(AbstractModel):
     def AppliedModules(self, AppliedModules):
         self._AppliedModules = AppliedModules
 
+    @property
+    def RiskLevel(self):
+        r"""<p>严重程度：critical-超高危，high-高危，medium-中危(默认)，low-低危。命中该规则时攻击日志按此展示风险等级；不传或空值按medium处理。</p><p>枚举值：</p><ul><li>critical： 超高危</li><li>high： 高危</li><li>medium： 中危(默认)</li><li>low： 低危</li></ul>
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -52762,6 +54145,7 @@ class ModifyLLMContentRuleRequest(AbstractModel):
         self._Category = params.get("Category")
         self._Domains = params.get("Domains")
         self._AppliedModules = params.get("AppliedModules")
+        self._RiskLevel = params.get("RiskLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55131,7 +56515,11 @@ https：使用https协议回源
         :type GmEncPrivateKey: str
         :param _GmSSLId: GmCertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
         :type GmSSLId: str
-        :param _UpstreamPolicy: 回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+        :param _UpstreamPolicy: 回源策略。
+枚举值：
+0：负载均衡回源（默认值）
+1：分流回源
+2：五元组精准回源，每个服务端口通过 UpstreamIps 单独配置回源 IP。仅高级版及以上可用，且仅支持 IP 回源
         :type UpstreamPolicy: int
         :param _UpstreamRules: 分流回源时生效，分流回源的规则。
         :type UpstreamRules: list of UpstreamRule
@@ -55701,7 +57089,11 @@ https：使用https协议回源
 
     @property
     def UpstreamPolicy(self):
-        r"""回源策略，支持负载均衡回源和分流回源两种方式。0：默认值，负载均衡回源；1：分流回源
+        r"""回源策略。
+枚举值：
+0：负载均衡回源（默认值）
+1：分流回源
+2：五元组精准回源，每个服务端口通过 UpstreamIps 单独配置回源 IP。仅高级版及以上可用，且仅支持 IP 回源
         :rtype: int
         """
         return self._UpstreamPolicy
@@ -59274,8 +60666,8 @@ class QueryClientMsgResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class RCEPkg(AbstractModel):
-    r"""有效REC设备安全包信息
+class RCEExtendPkg(AbstractModel):
+    r"""RCE QPS扩展包资源信息。与基础套餐同表，inquire_key为sv_wsm_waf_qps_rce_pack系列。不支持弹性
 
     """
 
@@ -59283,7 +60675,7 @@ class RCEPkg(AbstractModel):
         r"""
         :param _ResourceIds: 资源id
         :type ResourceIds: str
-        :param _Status: 状态
+        :param _Status: 状态，0表示关闭，1表示开启
         :type Status: int
         :param _Region: 地域
         :type Region: int
@@ -59291,14 +60683,12 @@ class RCEPkg(AbstractModel):
         :type BeginTime: str
         :param _EndTime: 结束时间
         :type EndTime: str
-        :param _InquireNum: 申请数量
+        :param _InquireNum: 扩展包个数，每个包1000 QPS
         :type InquireNum: int
-        :param _UsedNum: 使用数量
-        :type UsedNum: int
-        :param _RenewFlag: 续费标志
-        :type RenewFlag: int
         :param _BillingItem: 计费项
         :type BillingItem: str
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
+        :type RenewFlag: int
         """
         self._ResourceIds = None
         self._Status = None
@@ -59306,9 +60696,8 @@ class RCEPkg(AbstractModel):
         self._BeginTime = None
         self._EndTime = None
         self._InquireNum = None
-        self._UsedNum = None
-        self._RenewFlag = None
         self._BillingItem = None
+        self._RenewFlag = None
 
     @property
     def ResourceIds(self):
@@ -59323,7 +60712,157 @@ class RCEPkg(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""状态，0表示关闭，1表示开启
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: int
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BeginTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def InquireNum(self):
+        r"""扩展包个数，每个包1000 QPS
+        :rtype: int
+        """
+        return self._InquireNum
+
+    @InquireNum.setter
+    def InquireNum(self, InquireNum):
+        self._InquireNum = InquireNum
+
+    @property
+    def BillingItem(self):
+        r"""计费项
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+    @property
+    def RenewFlag(self):
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._ResourceIds = params.get("ResourceIds")
+        self._Status = params.get("Status")
+        self._Region = params.get("Region")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._InquireNum = params.get("InquireNum")
+        self._BillingItem = params.get("BillingItem")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RCEPkg(AbstractModel):
+    r"""有效REC设备安全包信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceIds: 资源id
+        :type ResourceIds: str
+        :param _Status: 状态，0表示关闭，1表示开启
+        :type Status: int
+        :param _Region: 地域
+        :type Region: int
+        :param _BeginTime: 开始时间
+        :type BeginTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _InquireNum: 申请数量
+        :type InquireNum: int
+        :param _UsedNum: 使用数量
+        :type UsedNum: int
+        :param _RenewFlag: 续费标识，0表示手动续费，1表示自动续费，2表示到期不续
+        :type RenewFlag: int
+        :param _BillingItem: 计费项
+        :type BillingItem: str
+        :param _ElasticMode: 弹性开关。0表示关闭，1表示开启。没有弹性资源时为0
+        :type ElasticMode: int
+        :param _ElasticBilling: 弹性QPS上限，单位QPS。合法区间为10000到300000。开关关闭时仍保留上次设置的上限
+        :type ElasticBilling: int
+        """
+        self._ResourceIds = None
+        self._Status = None
+        self._Region = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._InquireNum = None
+        self._UsedNum = None
+        self._RenewFlag = None
+        self._BillingItem = None
+        self._ElasticMode = None
+        self._ElasticBilling = None
+
+    @property
+    def ResourceIds(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def Status(self):
+        r"""状态，0表示关闭，1表示开启
         :rtype: int
         """
         return self._Status
@@ -59389,7 +60928,7 @@ class RCEPkg(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""续费标识，0表示手动续费，1表示自动续费，2表示到期不续
         :rtype: int
         """
         return self._RenewFlag
@@ -59409,6 +60948,28 @@ class RCEPkg(AbstractModel):
     def BillingItem(self, BillingItem):
         self._BillingItem = BillingItem
 
+    @property
+    def ElasticMode(self):
+        r"""弹性开关。0表示关闭，1表示开启。没有弹性资源时为0
+        :rtype: int
+        """
+        return self._ElasticMode
+
+    @ElasticMode.setter
+    def ElasticMode(self, ElasticMode):
+        self._ElasticMode = ElasticMode
+
+    @property
+    def ElasticBilling(self):
+        r"""弹性QPS上限，单位QPS。合法区间为10000到300000。开关关闭时仍保留上次设置的上限
+        :rtype: int
+        """
+        return self._ElasticBilling
+
+    @ElasticBilling.setter
+    def ElasticBilling(self, ElasticBilling):
+        self._ElasticBilling = ElasticBilling
+
 
     def _deserialize(self, params):
         self._ResourceIds = params.get("ResourceIds")
@@ -59420,6 +60981,8 @@ class RCEPkg(AbstractModel):
         self._UsedNum = params.get("UsedNum")
         self._RenewFlag = params.get("RenewFlag")
         self._BillingItem = params.get("BillingItem")
+        self._ElasticMode = params.get("ElasticMode")
+        self._ElasticBilling = params.get("ElasticBilling")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59948,6 +61511,8 @@ class RuleDetail(AbstractModel):
         :type DesensitizeSample: str
         :param _Direction: <p>检测方向</p><p>取值范围：[0, 3]</p>
         :type Direction: int
+        :param _UpdateTime: <p>规则修改时间（秒级时间戳）：租户对该规则的最近一次修改时间，从未修改则为0</p>
+        :type UpdateTime: int
         """
         self._RuleId = None
         self._RuleName = None
@@ -59957,6 +61522,7 @@ class RuleDetail(AbstractModel):
         self._Status = None
         self._DesensitizeSample = None
         self._Direction = None
+        self._UpdateTime = None
 
     @property
     def RuleId(self):
@@ -60046,6 +61612,17 @@ class RuleDetail(AbstractModel):
     def Direction(self, Direction):
         self._Direction = Direction
 
+    @property
+    def UpdateTime(self):
+        r"""<p>规则修改时间（秒级时间戳）：租户对该规则的最近一次修改时间，从未修改则为0</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -60056,6 +61633,7 @@ class RuleDetail(AbstractModel):
         self._Status = params.get("Status")
         self._DesensitizeSample = params.get("DesensitizeSample")
         self._Direction = params.get("Direction")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60082,11 +61660,14 @@ class RuleItem(AbstractModel):
         :type Value: list of str
         :param _Levels: 信息类
         :type Levels: list of ValueLevel
+        :param _Name: Toolcall工具参数名，支持多层路径(如apiData.operate_op)，仅tool_args信息类型使用
+        :type Name: str
         """
         self._Key = None
         self._Op = None
         self._Value = None
         self._Levels = None
+        self._Name = None
 
     @property
     def Key(self):
@@ -60133,6 +61714,17 @@ class RuleItem(AbstractModel):
     def Levels(self, Levels):
         self._Levels = Levels
 
+    @property
+    def Name(self):
+        r"""Toolcall工具参数名，支持多层路径(如apiData.operate_op)，仅tool_args信息类型使用
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
@@ -60144,6 +61736,7 @@ class RuleItem(AbstractModel):
                 obj = ValueLevel()
                 obj._deserialize(item)
                 self._Levels.append(obj)
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66538,6 +68131,113 @@ not belong：不属于
         self._ContentList = params.get("ContentList")
         self._AddressList = params.get("AddressList")
         self._BalanceType = params.get("BalanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UrlDetectResult(AbstractModel):
+    r"""恶意URL检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitUrls: <p>命中的恶意URL列表</p>
+        :type HitUrls: list of UrlHitInfo
+        """
+        self._HitUrls = None
+
+    @property
+    def HitUrls(self):
+        r"""<p>命中的恶意URL列表</p>
+        :rtype: list of UrlHitInfo
+        """
+        return self._HitUrls
+
+    @HitUrls.setter
+    def HitUrls(self, HitUrls):
+        self._HitUrls = HitUrls
+
+
+    def _deserialize(self, params):
+        if params.get("HitUrls") is not None:
+            self._HitUrls = []
+            for item in params.get("HitUrls"):
+                obj = UrlHitInfo()
+                obj._deserialize(item)
+                self._HitUrls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UrlHitInfo(AbstractModel):
+    r"""恶意URL命中信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>命中的URL</p>
+        :type Url: str
+        :param _RuleId: <p>命中的规则ID</p>
+        :type RuleId: str
+        :param _RuleName: <p>命中的规则名称</p>
+        :type RuleName: str
+        """
+        self._Url = None
+        self._RuleId = None
+        self._RuleName = None
+
+    @property
+    def Url(self):
+        r"""<p>命中的URL</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RuleId(self):
+        r"""<p>命中的规则ID</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""<p>命中的规则名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -657,65 +657,68 @@ class CloudAttachInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 敏捷上云实例id
+        :param _InstanceId: <p>敏捷上云实例id</p>
         :type InstanceId: str
-        :param _Name: 敏捷上云名称
+        :param _Name: <p>敏捷上云名称</p>
         :type Name: str
-        :param _IapId: 合作伙伴的AppId
+        :param _IapId: <p>合作伙伴的AppId</p>
         :type IapId: str
-        :param _IdcAddress: 需要接入敏捷上云的IDC的地址
+        :param _IdcAddress: <p>需要接入敏捷上云的IDC的地址</p>
         :type IdcAddress: str
-        :param _IdcType: 需要接入敏捷上云的IDC的互联网服务提供商类型
+        :param _IdcType: <p>需要接入敏捷上云的IDC的互联网服务提供商类型</p>
         :type IdcType: str
-        :param _Bandwidth: 敏捷上云的带宽，单位为MB
+        :param _Bandwidth: <p>敏捷上云的带宽，单位为MB</p>
         :type Bandwidth: int
-        :param _Telephone: 联系电话
+        :param _Telephone: <p>联系电话</p>
         :type Telephone: str
-        :param _Status: 敏捷上云的状态
-available：就绪状态
-applying：申请，待审核状态
-pendingpay：代付款状态
-building：建设中状态
-confirming：待确认状态
-isolate: 隔离状态
-stoped：终止状态
+        :param _Status: <p>敏捷上云的状态<br>available：就绪状态<br>applying：申请，待审核状态<br>pendingpay：代付款状态<br>building：建设中状态<br>confirming：待确认状态<br>isolate: 隔离状态<br>stoped：终止状态</p>
         :type Status: str
-        :param _ApplyTime: 敏捷上云申请的时间
+        :param _ApplyTime: <p>敏捷上云申请的时间</p>
         :type ApplyTime: str
-        :param _ReadyTime: 敏捷上云建设完成的时间
+        :param _ReadyTime: <p>敏捷上云建设完成的时间</p>
         :type ReadyTime: str
-        :param _ExpireTime: 敏捷上云过期时间
+        :param _ExpireTime: <p>敏捷上云过期时间</p>
         :type ExpireTime: str
-        :param _Remarks: 备注信息
+        :param _Remarks: <p>备注信息</p>
         :type Remarks: str
-        :param _RegionStatus: 敏捷上云的地域状态。
-same-region：同地域
-cross-region：跨地域
+        :param _RegionStatus: <p>敏捷上云的地域状态。<br>same-region：同地域<br>cross-region：跨地域</p>
         :type RegionStatus: str
-        :param _AppId: 用户的AppId
+        :param _AppId: <p>用户的AppId</p>
         :type AppId: str
-        :param _Uin: 用户的Uin
+        :param _Uin: <p>用户的Uin</p>
         :type Uin: str
-        :param _CustomerAuthName: 用户注册名称
+        :param _CustomerAuthName: <p>用户注册名称</p>
         :type CustomerAuthName: str
-        :param _DirectConnectId: 物理专线实例ID
+        :param _DirectConnectId: <p>物理专线实例ID</p>
         :type DirectConnectId: str
-        :param _CloudAttachServiceGatewaysSupport: 敏捷上云是否支持创建高速上云专线网关
+        :param _CloudAttachServiceGatewaysSupport: <p>敏捷上云是否支持创建高速上云专线网关</p>
         :type CloudAttachServiceGatewaysSupport: bool
-        :param _BUpdateBandwidth: 敏捷上云服务是否处于升降配中
+        :param _BUpdateBandwidth: <p>敏捷上云服务是否处于升降配中</p>
         :type BUpdateBandwidth: bool
-        :param _ArRegion: 接入地域
+        :param _ArRegion: <p>接入地域</p>
         :type ArRegion: str
-        :param _IapCode: 运营商代码
+        :param _IapCode: <p>运营商代码</p>
         :type IapCode: str
-        :param _IdcPointType: IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+        :param _IdcPointType: <p>IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方</p>
         :type IdcPointType: str
-        :param _BIapLinkProtected: 运营商链路是否有保护
+        :param _BIapLinkProtected: <p>运营商链路是否有保护</p>
         :type BIapLinkProtected: bool
-        :param _ServiceType: 服务类型：SHARE-共享型，EXCLUSIVE-独占型
+        :param _ServiceType: <p>服务类型：SHARE-共享型，EXCLUSIVE-独占型</p>
         :type ServiceType: str
-        :param _VlanRange: VLAN范围
+        :param _VlanRange: <p>VLAN范围</p>
         :type VlanRange: str
+        :param _RepealStatus: <p>裁撤状态</p><p>枚举值：</p><ul><li>APPLYING： 申请裁撤</li><li>EXECUTING： 裁撤执行中</li><li>FAILED： 裁撤失败</li></ul>
+        :type RepealStatus: str
+        :param _PlanRepealTime: <p>计划裁撤时间</p>
+        :type PlanRepealTime: str
+        :param _RenewFlag: <p>续费标记</p><p>枚举值：</p><ul><li>MANUAL_RENEW： 手动续费</li><li>AUTO_RENEW： 自动续费</li><li>NO_RENEW： 到期不续</li></ul>
+        :type RenewFlag: str
+        :param _AccessPointId: <p>接入点ID</p>
+        :type AccessPointId: str
+        :param _AccessPointName: <p>接入点名称</p>
+        :type AccessPointName: str
+        :param _BillStairBandwidth: <p>计费阶梯带宽(Mbps)</p>
+        :type BillStairBandwidth: int
         """
         self._InstanceId = None
         self._Name = None
@@ -742,10 +745,16 @@ cross-region：跨地域
         self._BIapLinkProtected = None
         self._ServiceType = None
         self._VlanRange = None
+        self._RepealStatus = None
+        self._PlanRepealTime = None
+        self._RenewFlag = None
+        self._AccessPointId = None
+        self._AccessPointName = None
+        self._BillStairBandwidth = None
 
     @property
     def InstanceId(self):
-        r"""敏捷上云实例id
+        r"""<p>敏捷上云实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -756,7 +765,7 @@ cross-region：跨地域
 
     @property
     def Name(self):
-        r"""敏捷上云名称
+        r"""<p>敏捷上云名称</p>
         :rtype: str
         """
         return self._Name
@@ -767,7 +776,7 @@ cross-region：跨地域
 
     @property
     def IapId(self):
-        r"""合作伙伴的AppId
+        r"""<p>合作伙伴的AppId</p>
         :rtype: str
         """
         return self._IapId
@@ -778,7 +787,7 @@ cross-region：跨地域
 
     @property
     def IdcAddress(self):
-        r"""需要接入敏捷上云的IDC的地址
+        r"""<p>需要接入敏捷上云的IDC的地址</p>
         :rtype: str
         """
         return self._IdcAddress
@@ -789,7 +798,7 @@ cross-region：跨地域
 
     @property
     def IdcType(self):
-        r"""需要接入敏捷上云的IDC的互联网服务提供商类型
+        r"""<p>需要接入敏捷上云的IDC的互联网服务提供商类型</p>
         :rtype: str
         """
         return self._IdcType
@@ -800,7 +809,7 @@ cross-region：跨地域
 
     @property
     def Bandwidth(self):
-        r"""敏捷上云的带宽，单位为MB
+        r"""<p>敏捷上云的带宽，单位为MB</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -811,7 +820,7 @@ cross-region：跨地域
 
     @property
     def Telephone(self):
-        r"""联系电话
+        r"""<p>联系电话</p>
         :rtype: str
         """
         return self._Telephone
@@ -822,14 +831,7 @@ cross-region：跨地域
 
     @property
     def Status(self):
-        r"""敏捷上云的状态
-available：就绪状态
-applying：申请，待审核状态
-pendingpay：代付款状态
-building：建设中状态
-confirming：待确认状态
-isolate: 隔离状态
-stoped：终止状态
+        r"""<p>敏捷上云的状态<br>available：就绪状态<br>applying：申请，待审核状态<br>pendingpay：代付款状态<br>building：建设中状态<br>confirming：待确认状态<br>isolate: 隔离状态<br>stoped：终止状态</p>
         :rtype: str
         """
         return self._Status
@@ -840,7 +842,7 @@ stoped：终止状态
 
     @property
     def ApplyTime(self):
-        r"""敏捷上云申请的时间
+        r"""<p>敏捷上云申请的时间</p>
         :rtype: str
         """
         return self._ApplyTime
@@ -851,7 +853,7 @@ stoped：终止状态
 
     @property
     def ReadyTime(self):
-        r"""敏捷上云建设完成的时间
+        r"""<p>敏捷上云建设完成的时间</p>
         :rtype: str
         """
         return self._ReadyTime
@@ -862,7 +864,7 @@ stoped：终止状态
 
     @property
     def ExpireTime(self):
-        r"""敏捷上云过期时间
+        r"""<p>敏捷上云过期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -873,7 +875,7 @@ stoped：终止状态
 
     @property
     def Remarks(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
         :rtype: str
         """
         return self._Remarks
@@ -884,9 +886,7 @@ stoped：终止状态
 
     @property
     def RegionStatus(self):
-        r"""敏捷上云的地域状态。
-same-region：同地域
-cross-region：跨地域
+        r"""<p>敏捷上云的地域状态。<br>same-region：同地域<br>cross-region：跨地域</p>
         :rtype: str
         """
         return self._RegionStatus
@@ -897,7 +897,7 @@ cross-region：跨地域
 
     @property
     def AppId(self):
-        r"""用户的AppId
+        r"""<p>用户的AppId</p>
         :rtype: str
         """
         return self._AppId
@@ -908,7 +908,7 @@ cross-region：跨地域
 
     @property
     def Uin(self):
-        r"""用户的Uin
+        r"""<p>用户的Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -919,7 +919,7 @@ cross-region：跨地域
 
     @property
     def CustomerAuthName(self):
-        r"""用户注册名称
+        r"""<p>用户注册名称</p>
         :rtype: str
         """
         return self._CustomerAuthName
@@ -930,7 +930,7 @@ cross-region：跨地域
 
     @property
     def DirectConnectId(self):
-        r"""物理专线实例ID
+        r"""<p>物理专线实例ID</p>
         :rtype: str
         """
         return self._DirectConnectId
@@ -941,7 +941,7 @@ cross-region：跨地域
 
     @property
     def CloudAttachServiceGatewaysSupport(self):
-        r"""敏捷上云是否支持创建高速上云专线网关
+        r"""<p>敏捷上云是否支持创建高速上云专线网关</p>
         :rtype: bool
         """
         return self._CloudAttachServiceGatewaysSupport
@@ -952,7 +952,7 @@ cross-region：跨地域
 
     @property
     def BUpdateBandwidth(self):
-        r"""敏捷上云服务是否处于升降配中
+        r"""<p>敏捷上云服务是否处于升降配中</p>
         :rtype: bool
         """
         return self._BUpdateBandwidth
@@ -963,7 +963,7 @@ cross-region：跨地域
 
     @property
     def ArRegion(self):
-        r"""接入地域
+        r"""<p>接入地域</p>
         :rtype: str
         """
         return self._ArRegion
@@ -974,7 +974,7 @@ cross-region：跨地域
 
     @property
     def IapCode(self):
-        r"""运营商代码
+        r"""<p>运营商代码</p>
         :rtype: str
         """
         return self._IapCode
@@ -985,7 +985,7 @@ cross-region：跨地域
 
     @property
     def IdcPointType(self):
-        r"""IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+        r"""<p>IDC侧类型。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方</p>
         :rtype: str
         """
         return self._IdcPointType
@@ -996,7 +996,7 @@ cross-region：跨地域
 
     @property
     def BIapLinkProtected(self):
-        r"""运营商链路是否有保护
+        r"""<p>运营商链路是否有保护</p>
         :rtype: bool
         """
         return self._BIapLinkProtected
@@ -1007,7 +1007,7 @@ cross-region：跨地域
 
     @property
     def ServiceType(self):
-        r"""服务类型：SHARE-共享型，EXCLUSIVE-独占型
+        r"""<p>服务类型：SHARE-共享型，EXCLUSIVE-独占型</p>
         :rtype: str
         """
         return self._ServiceType
@@ -1018,7 +1018,7 @@ cross-region：跨地域
 
     @property
     def VlanRange(self):
-        r"""VLAN范围
+        r"""<p>VLAN范围</p>
         :rtype: str
         """
         return self._VlanRange
@@ -1026,6 +1026,72 @@ cross-region：跨地域
     @VlanRange.setter
     def VlanRange(self, VlanRange):
         self._VlanRange = VlanRange
+
+    @property
+    def RepealStatus(self):
+        r"""<p>裁撤状态</p><p>枚举值：</p><ul><li>APPLYING： 申请裁撤</li><li>EXECUTING： 裁撤执行中</li><li>FAILED： 裁撤失败</li></ul>
+        :rtype: str
+        """
+        return self._RepealStatus
+
+    @RepealStatus.setter
+    def RepealStatus(self, RepealStatus):
+        self._RepealStatus = RepealStatus
+
+    @property
+    def PlanRepealTime(self):
+        r"""<p>计划裁撤时间</p>
+        :rtype: str
+        """
+        return self._PlanRepealTime
+
+    @PlanRepealTime.setter
+    def PlanRepealTime(self, PlanRepealTime):
+        self._PlanRepealTime = PlanRepealTime
+
+    @property
+    def RenewFlag(self):
+        r"""<p>续费标记</p><p>枚举值：</p><ul><li>MANUAL_RENEW： 手动续费</li><li>AUTO_RENEW： 自动续费</li><li>NO_RENEW： 到期不续</li></ul>
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def AccessPointId(self):
+        r"""<p>接入点ID</p>
+        :rtype: str
+        """
+        return self._AccessPointId
+
+    @AccessPointId.setter
+    def AccessPointId(self, AccessPointId):
+        self._AccessPointId = AccessPointId
+
+    @property
+    def AccessPointName(self):
+        r"""<p>接入点名称</p>
+        :rtype: str
+        """
+        return self._AccessPointName
+
+    @AccessPointName.setter
+    def AccessPointName(self, AccessPointName):
+        self._AccessPointName = AccessPointName
+
+    @property
+    def BillStairBandwidth(self):
+        r"""<p>计费阶梯带宽(Mbps)</p>
+        :rtype: int
+        """
+        return self._BillStairBandwidth
+
+    @BillStairBandwidth.setter
+    def BillStairBandwidth(self, BillStairBandwidth):
+        self._BillStairBandwidth = BillStairBandwidth
 
 
     def _deserialize(self, params):
@@ -1054,6 +1120,12 @@ cross-region：跨地域
         self._BIapLinkProtected = params.get("BIapLinkProtected")
         self._ServiceType = params.get("ServiceType")
         self._VlanRange = params.get("VlanRange")
+        self._RepealStatus = params.get("RepealStatus")
+        self._PlanRepealTime = params.get("PlanRepealTime")
+        self._RenewFlag = params.get("RenewFlag")
+        self._AccessPointId = params.get("AccessPointId")
+        self._AccessPointName = params.get("AccessPointName")
+        self._BillStairBandwidth = params.get("BillStairBandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1142,6 +1214,8 @@ class CreateCasInput(AbstractModel):
         :type BIapLinkProtected: bool
         :param _ServiceType: <p>服务类型，SHARE-共享型，EXCLUSIVE-独占型</p>
         :type ServiceType: str
+        :param _AccessPointId: <p>接入点ID</p>
+        :type AccessPointId: str
         """
         self._Name = None
         self._IdcAddress = None
@@ -1153,6 +1227,7 @@ class CreateCasInput(AbstractModel):
         self._IdcPointType = None
         self._BIapLinkProtected = None
         self._ServiceType = None
+        self._AccessPointId = None
 
     @property
     def Name(self):
@@ -1264,6 +1339,17 @@ class CreateCasInput(AbstractModel):
     def ServiceType(self, ServiceType):
         self._ServiceType = ServiceType
 
+    @property
+    def AccessPointId(self):
+        r"""<p>接入点ID</p>
+        :rtype: str
+        """
+        return self._AccessPointId
+
+    @AccessPointId.setter
+    def AccessPointId(self, AccessPointId):
+        self._AccessPointId = AccessPointId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -1276,6 +1362,7 @@ class CreateCasInput(AbstractModel):
         self._IdcPointType = params.get("IdcPointType")
         self._BIapLinkProtected = params.get("BIapLinkProtected")
         self._ServiceType = params.get("ServiceType")
+        self._AccessPointId = params.get("AccessPointId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

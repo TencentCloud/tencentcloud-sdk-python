@@ -3464,23 +3464,11 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 图片 base64 数据。
-- base64 编码后大小不可超过5M。
-- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
-- 图片的宽高比请接近 3:4，手机拍摄比例最佳。
-- 人脸尺寸大于100X100像素。
-- 图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Image: <p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 </li><li>图片的宽高比请接近 3:4，手机拍摄比例最佳。</li><li>人脸尺寸大于100X100像素。</li><li>图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
         :type Image: str
-        :param _Url: 图片的 Url 。
-- 对应图片 base64 编码后大小不可超过5M。
-- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-- Url、Image必须提供一个，如果都提供，只使用 Url。 
-- 图片的宽高比请接近 3:4，手机拍摄比例最佳。
-- 人脸尺寸大于100X100像素。
-- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
-- 图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        :param _Url: <p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。 </li><li>图片的宽高比请接近 3:4，手机拍摄比例最佳。</li><li>人脸尺寸大于100X100像素。</li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
         :type Url: str
-        :param _FaceModelVersion: 人脸识别服务所用的算法模型版本。目前入参支持“3.0“。
+        :param _FaceModelVersion: <p>人脸识别服务所用的算法模型版本。目前入参支持“3.0“。</p>
         :type FaceModelVersion: str
         """
         self._Image = None
@@ -3489,12 +3477,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def Image(self):
-        r"""图片 base64 数据。
-- base64 编码后大小不可超过5M。
-- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
-- 图片的宽高比请接近 3:4，手机拍摄比例最佳。
-- 人脸尺寸大于100X100像素。
-- 图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        r"""<p>图片 base64 数据。</p><ul><li>base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 </li><li>图片的宽高比请接近 3:4，手机拍摄比例最佳。</li><li>人脸尺寸大于100X100像素。</li><li>图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
         :rtype: str
         """
         return self._Image
@@ -3505,14 +3488,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""图片的 Url 。
-- 对应图片 base64 编码后大小不可超过5M。
-- jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
-- Url、Image必须提供一个，如果都提供，只使用 Url。 
-- 图片的宽高比请接近 3:4，手机拍摄比例最佳。
-- 人脸尺寸大于100X100像素。
-- 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。
-- 图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
+        r"""<p>图片的 Url 。</p><ul><li>对应图片 base64 编码后大小不可超过5M。</li><li>jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。</li><li>Url、Image必须提供一个，如果都提供，只使用 Url。 </li><li>图片的宽高比请接近 3:4，手机拍摄比例最佳。</li><li>人脸尺寸大于100X100像素。</li><li>图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的Url速度和稳定性可能受一定影响。</li><li>图片格式支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。</li></ul>
         :rtype: str
         """
         return self._Url
@@ -3523,7 +3499,7 @@ class DetectLiveFaceAccurateRequest(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        r"""人脸识别服务所用的算法模型版本。目前入参支持“3.0“。
+        r"""<p>人脸识别服务所用的算法模型版本。目前入参支持“3.0“。</p>
         :rtype: str
         """
         return self._FaceModelVersion
@@ -3554,12 +3530,9 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Score: 活体打分。
-- 取值范围 [0,100]。
-- 根据活体分数对应的阈值区间来判断是否为翻拍。
-- 目前阈值可分为[5,10,40,70,90]，其中推荐阈值为40。
+        :param _Score: <p>活体真实度打分。</p><ul><li>取值范围 [0,100]。</li><li>根据活体分数对应的阈值区间来判断是否为翻拍。</li><li>目前阈值可分为[5,10,40,70,90]，其中推荐阈值为40。</li><li>分数值越高越接近真人，翻拍风险越低。</li></ul>
         :type Score: float
-        :param _FaceModelVersion: 人脸识别所用的算法模型版本。
+        :param _FaceModelVersion: <p>人脸识别所用的算法模型版本。</p>
         :type FaceModelVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3570,10 +3543,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def Score(self):
-        r"""活体打分。
-- 取值范围 [0,100]。
-- 根据活体分数对应的阈值区间来判断是否为翻拍。
-- 目前阈值可分为[5,10,40,70,90]，其中推荐阈值为40。
+        r"""<p>活体真实度打分。</p><ul><li>取值范围 [0,100]。</li><li>根据活体分数对应的阈值区间来判断是否为翻拍。</li><li>目前阈值可分为[5,10,40,70,90]，其中推荐阈值为40。</li><li>分数值越高越接近真人，翻拍风险越低。</li></ul>
         :rtype: float
         """
         return self._Score
@@ -3584,7 +3554,7 @@ class DetectLiveFaceAccurateResponse(AbstractModel):
 
     @property
     def FaceModelVersion(self):
-        r"""人脸识别所用的算法模型版本。
+        r"""<p>人脸识别所用的算法模型版本。</p>
         :rtype: str
         """
         return self._FaceModelVersion

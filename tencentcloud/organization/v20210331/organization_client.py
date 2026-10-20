@@ -693,6 +693,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRoleConfigurationApplyScope(self, request):
+        r"""创建权限申请范围，支持批量upsert
+
+        :param request: Request instance for CreateRoleConfigurationApplyScope.
+        :type request: :class:`tencentcloud.organization.v20210331.models.CreateRoleConfigurationApplyScopeRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.CreateRoleConfigurationApplyScopeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRoleConfigurationApplyScope", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRoleConfigurationApplyScopeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSCIMCredential(self, request):
         r"""创建SCIM密钥
 
@@ -1029,6 +1052,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("DeleteRoleConfiguration", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRoleConfigurationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRoleConfigurationApplyScope(self, request):
+        r"""删除权限申请范围
+
+        :param request: Request instance for DeleteRoleConfigurationApplyScope.
+        :type request: :class:`tencentcloud.organization.v20210331.models.DeleteRoleConfigurationApplyScopeRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.DeleteRoleConfigurationApplyScopeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRoleConfigurationApplyScope", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRoleConfigurationApplyScopeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2257,6 +2303,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListPermissionApplyOrders(self, request):
+        r"""管理员审批列表
+
+        :param request: Request instance for ListPermissionApplyOrders.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListPermissionApplyOrdersRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListPermissionApplyOrdersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListPermissionApplyOrders", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListPermissionApplyOrdersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListPermissionPoliciesInRoleConfiguration(self, request):
         r"""获取权限配置中的策略列表
 
@@ -2340,6 +2409,29 @@ class OrganizationClient(AbstractClient):
             body = self.call("ListRoleAssignments", params, headers=headers)
             response = json.loads(body)
             model = models.ListRoleAssignmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListRoleConfigurationApplyScopes(self, request):
+        r"""权限申请范围列表
+
+        :param request: Request instance for ListRoleConfigurationApplyScopes.
+        :type request: :class:`tencentcloud.organization.v20210331.models.ListRoleConfigurationApplyScopesRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.ListRoleConfigurationApplyScopesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListRoleConfigurationApplyScopes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListRoleConfigurationApplyScopesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1236,7 +1236,7 @@ class ConnectorInfo(AbstractModel):
         :type Type: str
         :param _ServiceUrl: 上游服务地址
         :type ServiceUrl: str
-        :param _AuthModes: 授权方式列表：NONE / ONEID / OAUTH2_IDP
+        :param _AuthModes: 授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY
         :type AuthModes: list of str
         :param _LatestVersionNo: 最新版本号
         :type LatestVersionNo: int
@@ -1248,6 +1248,8 @@ class ConnectorInfo(AbstractModel):
         :type CreatedTime: str
         :param _ModifiedTime: 最后修改时间（ISO8601，UTC）
         :type ModifiedTime: str
+        :param _VpcConfigId: VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。
+        :type VpcConfigId: str
         """
         self._ConnectorId = None
         self._ConnectorSlug = None
@@ -1265,6 +1267,7 @@ class ConnectorInfo(AbstractModel):
         self._CreatorId = None
         self._CreatedTime = None
         self._ModifiedTime = None
+        self._VpcConfigId = None
 
     @property
     def ConnectorId(self):
@@ -1378,7 +1381,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def AuthModes(self):
-        r"""授权方式列表：NONE / ONEID / OAUTH2_IDP
+        r"""授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY
         :rtype: list of str
         """
         return self._AuthModes
@@ -1442,6 +1445,17 @@ class ConnectorInfo(AbstractModel):
     def ModifiedTime(self, ModifiedTime):
         self._ModifiedTime = ModifiedTime
 
+    @property
+    def VpcConfigId(self):
+        r"""VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。
+        :rtype: str
+        """
+        return self._VpcConfigId
+
+    @VpcConfigId.setter
+    def VpcConfigId(self, VpcConfigId):
+        self._VpcConfigId = VpcConfigId
+
 
     def _deserialize(self, params):
         self._ConnectorId = params.get("ConnectorId")
@@ -1460,6 +1474,7 @@ class ConnectorInfo(AbstractModel):
         self._CreatorId = params.get("CreatorId")
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
+        self._VpcConfigId = params.get("VpcConfigId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

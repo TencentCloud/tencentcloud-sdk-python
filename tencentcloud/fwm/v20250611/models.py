@@ -4397,6 +4397,185 @@ class DescribeRiskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRuleGroupsRequest(AbstractModel):
+    r"""DescribeRuleGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: 产品类型
+        :type Product: str
+        :param _Filters: 产品类型
+        :type Filters: list of CommonFilter
+        :param _Order: 排序
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        :param _Offset: 起始位置
+        :type Offset: int
+        :param _Limit: 查询数量
+        :type Limit: int
+        """
+        self._Product = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Product(self):
+        r"""产品类型
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Filters(self):
+        r"""产品类型
+        :rtype: list of CommonFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""排序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Offset(self):
+        r"""起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""查询数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRuleGroupsResponse(AbstractModel):
+    r"""DescribeRuleGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总记录数
+        :type TotalCount: int
+        :param _RuleGroups: 规则组列表
+        :type RuleGroups: list of RuleGroupResp
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RuleGroups = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RuleGroups(self):
+        r"""规则组列表
+        :rtype: list of RuleGroupResp
+        """
+        return self._RuleGroups
+
+    @RuleGroups.setter
+    def RuleGroups(self, RuleGroups):
+        self._RuleGroups = RuleGroups
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RuleGroups") is not None:
+            self._RuleGroups = []
+            for item in params.get("RuleGroups"):
+                obj = RuleGroupResp()
+                obj._deserialize(item)
+                self._RuleGroups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSecurityGroupRuleRequest(AbstractModel):
     r"""DescribeSecurityGroupRule请求参数结构体
 
@@ -9317,6 +9496,242 @@ Incomplete： 未整改完成（整改率 < 100%）
         self._DisposalRate = params.get("DisposalRate")
         self._HasRisk = params.get("HasRisk")
         self._RemediationStatus = params.get("RemediationStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleGroupResp(AbstractModel):
+    r"""规则组详情数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 租户Id
+        :type AppId: str
+        :param _GroupId: 规则组Id
+        :type GroupId: str
+        :param _GroupName: 规则组名称
+        :type GroupName: str
+        :param _RuleCount: 规则数量
+        :type RuleCount: int
+        :param _Product: 产品类型
+        :type Product: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _CreateBy: 创建人SubUin
+        :type CreateBy: str
+        :param _CreateName: 创建人名称
+        :type CreateName: str
+        :param _UpdateBy: 更新人SubUin
+        :type UpdateBy: str
+        :param _UpdateName: 更新人名称
+        :type UpdateName: str
+        :param _ReceiveAccount: 下发关联账号
+        :type ReceiveAccount: list of ReceiveAccount
+        :param _ExecAreas:  所属阶段
+        :type ExecAreas: list of str
+        :param _Direction: 规则方向：1-入站规则，0-出站规则，-1 表示无方向
+        :type Direction: int
+        """
+        self._AppId = None
+        self._GroupId = None
+        self._GroupName = None
+        self._RuleCount = None
+        self._Product = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._CreateBy = None
+        self._CreateName = None
+        self._UpdateBy = None
+        self._UpdateName = None
+        self._ReceiveAccount = None
+        self._ExecAreas = None
+        self._Direction = None
+
+    @property
+    def AppId(self):
+        r"""租户Id
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def GroupId(self):
+        r"""规则组Id
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""规则组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def RuleCount(self):
+        r"""规则数量
+        :rtype: int
+        """
+        return self._RuleCount
+
+    @RuleCount.setter
+    def RuleCount(self, RuleCount):
+        self._RuleCount = RuleCount
+
+    @property
+    def Product(self):
+        r"""产品类型
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreateBy(self):
+        r"""创建人SubUin
+        :rtype: str
+        """
+        return self._CreateBy
+
+    @CreateBy.setter
+    def CreateBy(self, CreateBy):
+        self._CreateBy = CreateBy
+
+    @property
+    def CreateName(self):
+        r"""创建人名称
+        :rtype: str
+        """
+        return self._CreateName
+
+    @CreateName.setter
+    def CreateName(self, CreateName):
+        self._CreateName = CreateName
+
+    @property
+    def UpdateBy(self):
+        r"""更新人SubUin
+        :rtype: str
+        """
+        return self._UpdateBy
+
+    @UpdateBy.setter
+    def UpdateBy(self, UpdateBy):
+        self._UpdateBy = UpdateBy
+
+    @property
+    def UpdateName(self):
+        r"""更新人名称
+        :rtype: str
+        """
+        return self._UpdateName
+
+    @UpdateName.setter
+    def UpdateName(self, UpdateName):
+        self._UpdateName = UpdateName
+
+    @property
+    def ReceiveAccount(self):
+        r"""下发关联账号
+        :rtype: list of ReceiveAccount
+        """
+        return self._ReceiveAccount
+
+    @ReceiveAccount.setter
+    def ReceiveAccount(self, ReceiveAccount):
+        self._ReceiveAccount = ReceiveAccount
+
+    @property
+    def ExecAreas(self):
+        r""" 所属阶段
+        :rtype: list of str
+        """
+        return self._ExecAreas
+
+    @ExecAreas.setter
+    def ExecAreas(self, ExecAreas):
+        self._ExecAreas = ExecAreas
+
+    @property
+    def Direction(self):
+        r"""规则方向：1-入站规则，0-出站规则，-1 表示无方向
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._RuleCount = params.get("RuleCount")
+        self._Product = params.get("Product")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreateBy = params.get("CreateBy")
+        self._CreateName = params.get("CreateName")
+        self._UpdateBy = params.get("UpdateBy")
+        self._UpdateName = params.get("UpdateName")
+        if params.get("ReceiveAccount") is not None:
+            self._ReceiveAccount = []
+            for item in params.get("ReceiveAccount"):
+                obj = ReceiveAccount()
+                obj._deserialize(item)
+                self._ReceiveAccount.append(obj)
+        self._ExecAreas = params.get("ExecAreas")
+        self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

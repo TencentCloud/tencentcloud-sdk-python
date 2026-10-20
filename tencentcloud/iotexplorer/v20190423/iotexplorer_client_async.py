@@ -4191,6 +4191,42 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def PurchaseImagePackage(
+            self,
+            request: models.PurchaseImagePackageRequest,
+            opts: Dict = None,
+    ) -> models.PurchaseImagePackageResponse:
+        """
+        新购图片云存资源包
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PurchaseImagePackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PurchaseImagePackageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def PurchaseVideoPackage(
+            self,
+            request: models.PurchaseVideoPackageRequest,
+            opts: Dict = None,
+    ) -> models.PurchaseVideoPackageResponse:
+        """
+        新购视频云存资源包
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PurchaseVideoPackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PurchaseVideoPackageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ReleaseStudioProduct(
             self,
             request: models.ReleaseStudioProductRequest,
@@ -4448,6 +4484,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "ShareDeviceToUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ShareDeviceToUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StartPackageUsageReport(
+            self,
+            request: models.StartPackageUsageReportRequest,
+            opts: Dict = None,
+    ) -> models.StartPackageUsageReportResponse:
+        """
+        启用套餐用量上报
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartPackageUsageReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartPackageUsageReportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopPackageUsageReport(
+            self,
+            request: models.StopPackageUsageReportRequest,
+            opts: Dict = None,
+    ) -> models.StopPackageUsageReportResponse:
+        """
+        停用套餐用量上报
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopPackageUsageReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopPackageUsageReportResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

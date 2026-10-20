@@ -2675,6 +2675,134 @@ class DeleteAccountGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDeliveryServerRequest(AbstractModel):
+    r"""DeleteDeliveryServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>服务器id</p>
+        :type ID: int
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""<p>服务器id</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeliveryServerResponse(AbstractModel):
+    r"""DeleteDeliveryServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDeliveryStrategyRequest(AbstractModel):
+    r"""DeleteDeliveryStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>转发策略id</p>
+        :type ID: int
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""<p>转发策略id</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeliveryStrategyResponse(AbstractModel):
+    r"""DeleteDeliveryStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDeviceVirtualGroupRequest(AbstractModel):
     r"""DeleteDeviceVirtualGroup请求参数结构体
 
@@ -2814,6 +2942,526 @@ class DeleteResourceData(AbstractModel):
     def _deserialize(self, params):
         self._ResourceType = params.get("ResourceType")
         self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeliverServerItem(AbstractModel):
+    r"""编辑的数据内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>服务器id  (创建时忽略)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _Name: <p>服务器名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: <p>转发服务器地址类型 4:syslog, 2:kafka, 3:http(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Description: <p>服务器描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _TargetSyslogAddress: <p>syslog服务器地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSyslogAddress: str
+        :param _TargetSyslogProtocol: <p>syslog协议类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSyslogProtocol: str
+        :param _TargetSyslogPort: <p>syslog协议端口(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSyslogPort: int
+        :param _SyslogFacility: <p>syslog设备/Facility</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyslogFacility: str
+        :param _TargetKafkaAddress: <p>Kafka服务器地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetKafkaAddress: str
+        :param _TargetKafkaTopic: <p>Kafka主题</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetKafkaTopic: str
+        :param _KafkaVersion: <p>Kafka版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaVersion: str
+        :param _KafkaSaslUserName: <p>Kafka sasl用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaSaslUserName: str
+        :param _KafkaSaslPassword: <p>Kafka sasl密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KafkaSaslPassword: str
+        :param _TargetHttpUrl: <p>http服务器地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetHttpUrl: str
+        :param _TargetHttpTimeout: <p>http服务超时时间(只支持32位)</p><p>单位：毫秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetHttpTimeout: int
+        :param _ConnectorGroupId: <p>连接器分组ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectorGroupId: str
+        :param _ConnectorGroupName: <p>连接器分组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectorGroupName: str
+        :param _KafkaSSLEnable: <p>KAFKA是否启用SSL</p>
+        :type KafkaSSLEnable: bool
+        :param _SSLSkipVerify: <p>跳过证书检查</p>
+        :type SSLSkipVerify: bool
+        """
+        self._ID = None
+        self._Name = None
+        self._Type = None
+        self._Description = None
+        self._TargetSyslogAddress = None
+        self._TargetSyslogProtocol = None
+        self._TargetSyslogPort = None
+        self._SyslogFacility = None
+        self._TargetKafkaAddress = None
+        self._TargetKafkaTopic = None
+        self._KafkaVersion = None
+        self._KafkaSaslUserName = None
+        self._KafkaSaslPassword = None
+        self._TargetHttpUrl = None
+        self._TargetHttpTimeout = None
+        self._ConnectorGroupId = None
+        self._ConnectorGroupName = None
+        self._KafkaSSLEnable = None
+        self._SSLSkipVerify = None
+
+    @property
+    def ID(self):
+        r"""<p>服务器id  (创建时忽略)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""<p>服务器名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>转发服务器地址类型 4:syslog, 2:kafka, 3:http(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Description(self):
+        r"""<p>服务器描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TargetSyslogAddress(self):
+        r"""<p>syslog服务器地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetSyslogAddress
+
+    @TargetSyslogAddress.setter
+    def TargetSyslogAddress(self, TargetSyslogAddress):
+        self._TargetSyslogAddress = TargetSyslogAddress
+
+    @property
+    def TargetSyslogProtocol(self):
+        r"""<p>syslog协议类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetSyslogProtocol
+
+    @TargetSyslogProtocol.setter
+    def TargetSyslogProtocol(self, TargetSyslogProtocol):
+        self._TargetSyslogProtocol = TargetSyslogProtocol
+
+    @property
+    def TargetSyslogPort(self):
+        r"""<p>syslog协议端口(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetSyslogPort
+
+    @TargetSyslogPort.setter
+    def TargetSyslogPort(self, TargetSyslogPort):
+        self._TargetSyslogPort = TargetSyslogPort
+
+    @property
+    def SyslogFacility(self):
+        r"""<p>syslog设备/Facility</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SyslogFacility
+
+    @SyslogFacility.setter
+    def SyslogFacility(self, SyslogFacility):
+        self._SyslogFacility = SyslogFacility
+
+    @property
+    def TargetKafkaAddress(self):
+        r"""<p>Kafka服务器地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetKafkaAddress
+
+    @TargetKafkaAddress.setter
+    def TargetKafkaAddress(self, TargetKafkaAddress):
+        self._TargetKafkaAddress = TargetKafkaAddress
+
+    @property
+    def TargetKafkaTopic(self):
+        r"""<p>Kafka主题</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetKafkaTopic
+
+    @TargetKafkaTopic.setter
+    def TargetKafkaTopic(self, TargetKafkaTopic):
+        self._TargetKafkaTopic = TargetKafkaTopic
+
+    @property
+    def KafkaVersion(self):
+        r"""<p>Kafka版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KafkaVersion
+
+    @KafkaVersion.setter
+    def KafkaVersion(self, KafkaVersion):
+        self._KafkaVersion = KafkaVersion
+
+    @property
+    def KafkaSaslUserName(self):
+        r"""<p>Kafka sasl用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KafkaSaslUserName
+
+    @KafkaSaslUserName.setter
+    def KafkaSaslUserName(self, KafkaSaslUserName):
+        self._KafkaSaslUserName = KafkaSaslUserName
+
+    @property
+    def KafkaSaslPassword(self):
+        r"""<p>Kafka sasl密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KafkaSaslPassword
+
+    @KafkaSaslPassword.setter
+    def KafkaSaslPassword(self, KafkaSaslPassword):
+        self._KafkaSaslPassword = KafkaSaslPassword
+
+    @property
+    def TargetHttpUrl(self):
+        r"""<p>http服务器地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetHttpUrl
+
+    @TargetHttpUrl.setter
+    def TargetHttpUrl(self, TargetHttpUrl):
+        self._TargetHttpUrl = TargetHttpUrl
+
+    @property
+    def TargetHttpTimeout(self):
+        r"""<p>http服务超时时间(只支持32位)</p><p>单位：毫秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetHttpTimeout
+
+    @TargetHttpTimeout.setter
+    def TargetHttpTimeout(self, TargetHttpTimeout):
+        self._TargetHttpTimeout = TargetHttpTimeout
+
+    @property
+    def ConnectorGroupId(self):
+        r"""<p>连接器分组ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConnectorGroupId
+
+    @ConnectorGroupId.setter
+    def ConnectorGroupId(self, ConnectorGroupId):
+        self._ConnectorGroupId = ConnectorGroupId
+
+    @property
+    def ConnectorGroupName(self):
+        r"""<p>连接器分组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConnectorGroupName
+
+    @ConnectorGroupName.setter
+    def ConnectorGroupName(self, ConnectorGroupName):
+        self._ConnectorGroupName = ConnectorGroupName
+
+    @property
+    def KafkaSSLEnable(self):
+        r"""<p>KAFKA是否启用SSL</p>
+        :rtype: bool
+        """
+        return self._KafkaSSLEnable
+
+    @KafkaSSLEnable.setter
+    def KafkaSSLEnable(self, KafkaSSLEnable):
+        self._KafkaSSLEnable = KafkaSSLEnable
+
+    @property
+    def SSLSkipVerify(self):
+        r"""<p>跳过证书检查</p>
+        :rtype: bool
+        """
+        return self._SSLSkipVerify
+
+    @SSLSkipVerify.setter
+    def SSLSkipVerify(self, SSLSkipVerify):
+        self._SSLSkipVerify = SSLSkipVerify
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Description = params.get("Description")
+        self._TargetSyslogAddress = params.get("TargetSyslogAddress")
+        self._TargetSyslogProtocol = params.get("TargetSyslogProtocol")
+        self._TargetSyslogPort = params.get("TargetSyslogPort")
+        self._SyslogFacility = params.get("SyslogFacility")
+        self._TargetKafkaAddress = params.get("TargetKafkaAddress")
+        self._TargetKafkaTopic = params.get("TargetKafkaTopic")
+        self._KafkaVersion = params.get("KafkaVersion")
+        self._KafkaSaslUserName = params.get("KafkaSaslUserName")
+        self._KafkaSaslPassword = params.get("KafkaSaslPassword")
+        self._TargetHttpUrl = params.get("TargetHttpUrl")
+        self._TargetHttpTimeout = params.get("TargetHttpTimeout")
+        self._ConnectorGroupId = params.get("ConnectorGroupId")
+        self._ConnectorGroupName = params.get("ConnectorGroupName")
+        self._KafkaSSLEnable = params.get("KafkaSSLEnable")
+        self._SSLSkipVerify = params.get("SSLSkipVerify")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeliveryStrategyData(AbstractModel):
+    r"""数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DeliveryStrategyItem`
+        """
+        self._Data = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeliveryStrategyItem`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeliveryStrategyItem()
+            self._Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeliveryStrategyItem(AbstractModel):
+    r"""数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>策略名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Type: <p>转发方式 0:syslog, 2:kafka, 3:http(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _LogTypes: <p>转发日志类型列表 身份安全:&quot;040201000000&quot;,资源访问日志:&quot;040203000000&quot;,客户端操作日志:&quot;040202000000&quot;,终端安全日志:&quot;040205000000&quot;,终端管控日志:&quot;040206000000&quot;,终端合规日志:&quot;040207000000&quot;,license授权日志:&quot;040212000000&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogTypes: list of str
+        :param _ConfigName: <p>转发配置服务器名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigName: str
+        :param _Description: <p>策略描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ID: <p>转发策略id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: int
+        :param _ConfigId: <p>转发服务器id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigId: int
+        """
+        self._Name = None
+        self._Type = None
+        self._LogTypes = None
+        self._ConfigName = None
+        self._Description = None
+        self._ID = None
+        self._ConfigId = None
+
+    @property
+    def Name(self):
+        r"""<p>策略名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>转发方式 0:syslog, 2:kafka, 3:http(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LogTypes(self):
+        r"""<p>转发日志类型列表 身份安全:&quot;040201000000&quot;,资源访问日志:&quot;040203000000&quot;,客户端操作日志:&quot;040202000000&quot;,终端安全日志:&quot;040205000000&quot;,终端管控日志:&quot;040206000000&quot;,终端合规日志:&quot;040207000000&quot;,license授权日志:&quot;040212000000&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._LogTypes
+
+    @LogTypes.setter
+    def LogTypes(self, LogTypes):
+        self._LogTypes = LogTypes
+
+    @property
+    def ConfigName(self):
+        r"""<p>转发配置服务器名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConfigName
+
+    @ConfigName.setter
+    def ConfigName(self, ConfigName):
+        self._ConfigName = ConfigName
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ID(self):
+        r"""<p>转发策略id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def ConfigId(self):
+        r"""<p>转发服务器id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._LogTypes = params.get("LogTypes")
+        self._ConfigName = params.get("ConfigName")
+        self._Description = params.get("Description")
+        self._ID = params.get("ID")
+        self._ConfigId = params.get("ConfigId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7243,6 +7891,172 @@ class DescribeDLPFileDetectTaskResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDeliveryServerRequest(AbstractModel):
+    r"""DescribeDeliveryServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>服务器id</p>
+        :type ID: int
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""<p>服务器id</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeliveryServerResponse(AbstractModel):
+    r"""DescribeDeliveryServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DeliverServerItem`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeliverServerItem`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeliverServerItem()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeliveryStrategyRequest(AbstractModel):
+    r"""DescribeDeliveryStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>转发策略id</p>
+        :type ID: int
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""<p>转发策略id</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeliveryStrategyResponse(AbstractModel):
+    r"""DescribeDeliveryStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DeliveryStrategyData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeliveryStrategyData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeliveryStrategyData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDeviceChildGroupsRequest(AbstractModel):
     r"""DescribeDeviceChildGroups请求参数结构体
 
@@ -10170,6 +10984,93 @@ class DescribeProfileFieldsRspData(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribePublicEncryptKeyData(AbstractModel):
+    r"""获取公钥加密的key数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicEncryptKey: <p>返回公钥，base64编码后返回，使用需要base64解码</p>
+        :type PublicEncryptKey: str
+        """
+        self._PublicEncryptKey = None
+
+    @property
+    def PublicEncryptKey(self):
+        r"""<p>返回公钥，base64编码后返回，使用需要base64解码</p>
+        :rtype: str
+        """
+        return self._PublicEncryptKey
+
+    @PublicEncryptKey.setter
+    def PublicEncryptKey(self, PublicEncryptKey):
+        self._PublicEncryptKey = PublicEncryptKey
+
+
+    def _deserialize(self, params):
+        self._PublicEncryptKey = params.get("PublicEncryptKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePublicEncryptKeyRequest(AbstractModel):
+    r"""DescribePublicEncryptKey请求参数结构体
+
+    """
+
+
+class DescribePublicEncryptKeyResponse(AbstractModel):
+    r"""DescribePublicEncryptKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 获取公钥加密的key数据
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribePublicEncryptKeyData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""获取公钥加密的key数据
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribePublicEncryptKeyData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribePublicEncryptKeyData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeResourceGrantedAccountGroupsData(AbstractModel):
@@ -16369,6 +17270,332 @@ class ModifyCompanyDirectoryConfigResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = DirectoryConfigResultData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDeliveryServerData(AbstractModel):
+    r"""修改转发服务器返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>服务器ID</p>
+        :type ID: int
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""<p>服务器ID</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeliveryServerRequest(AbstractModel):
+    r"""ModifyDeliveryServer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>编辑的数据内容</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DeliverServerItem`
+        """
+        self._Data = None
+
+    @property
+    def Data(self):
+        r"""<p>编辑的数据内容</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeliverServerItem`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeliverServerItem()
+            self._Data._deserialize(params.get("Data"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeliveryServerResponse(AbstractModel):
+    r"""ModifyDeliveryServer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>转发服务器返回内容</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.ModifyDeliveryServerData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>转发服务器返回内容</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ModifyDeliveryServerData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ModifyDeliveryServerData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDeliveryStrategyData(AbstractModel):
+    r"""修改转发策略返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>策略ID</p>
+        :type ID: int
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""<p>策略ID</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeliveryStrategyRequest(AbstractModel):
+    r"""ModifyDeliveryStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>策略名称</p>
+        :type Name: str
+        :param _LogTypes: <p>转发日志类型列表 身份安全:&quot;040201000000&quot;,资源访问日志:&quot;040203000000&quot;,客户端操作日志:&quot;040202000000&quot;,终端安全日志:&quot;040205000000&quot;,终端管控日志:&quot;040206000000&quot;,终端合规日志:&quot;040207000000&quot;,license授权日志:&quot;040212000000&quot;</p>
+        :type LogTypes: list of str
+        :param _Type: <p>转发方式 0:syslog, 2:kafka, 3:http(只支持32位)</p>
+        :type Type: int
+        :param _ConfigId: <p>转发服务器id(只支持32位)</p>
+        :type ConfigId: int
+        :param _Description: <p>转发策略描述</p>
+        :type Description: str
+        :param _Enabled: <p>是否开启</p>
+        :type Enabled: bool
+        :param _ID: <p>转发策略id 创建时传递 编辑时候无需传递(只支持32位)</p>
+        :type ID: int
+        """
+        self._Name = None
+        self._LogTypes = None
+        self._Type = None
+        self._ConfigId = None
+        self._Description = None
+        self._Enabled = None
+        self._ID = None
+
+    @property
+    def Name(self):
+        r"""<p>策略名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LogTypes(self):
+        r"""<p>转发日志类型列表 身份安全:&quot;040201000000&quot;,资源访问日志:&quot;040203000000&quot;,客户端操作日志:&quot;040202000000&quot;,终端安全日志:&quot;040205000000&quot;,终端管控日志:&quot;040206000000&quot;,终端合规日志:&quot;040207000000&quot;,license授权日志:&quot;040212000000&quot;</p>
+        :rtype: list of str
+        """
+        return self._LogTypes
+
+    @LogTypes.setter
+    def LogTypes(self, LogTypes):
+        self._LogTypes = LogTypes
+
+    @property
+    def Type(self):
+        r"""<p>转发方式 0:syslog, 2:kafka, 3:http(只支持32位)</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ConfigId(self):
+        r"""<p>转发服务器id(只支持32位)</p>
+        :rtype: int
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def Description(self):
+        r"""<p>转发策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ID(self):
+        r"""<p>转发策略id 创建时传递 编辑时候无需传递(只支持32位)</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._LogTypes = params.get("LogTypes")
+        self._Type = params.get("Type")
+        self._ConfigId = params.get("ConfigId")
+        self._Description = params.get("Description")
+        self._Enabled = params.get("Enabled")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeliveryStrategyResponse(AbstractModel):
+    r"""ModifyDeliveryStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>策略返回内容</p>
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.ModifyDeliveryStrategyData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>策略返回内容</p>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ModifyDeliveryStrategyData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ModifyDeliveryStrategyData()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 

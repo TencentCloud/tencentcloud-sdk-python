@@ -279,6 +279,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelTask(self, request):
+        r"""取消等待执行的任务
+
+        :param request: Request instance for CancelTask.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CancelTaskRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CancelTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckCreateLibraDBInstance(self, request):
         r"""本接口（CheckCreateLibraDBInstance）用于校验集群是否可以添加只读分析引擎实例
 
@@ -2777,6 +2800,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeProxySpecs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProxySpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProxyZoneStocks(self, request):
+        r"""该接口(DescribeProxyZoneStocks)查询数据库代理地域库存
+
+        :param request: Request instance for DescribeProxyZoneStocks.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxyZoneStocksRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeProxyZoneStocksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProxyZoneStocks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProxyZoneStocksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

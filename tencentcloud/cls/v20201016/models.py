@@ -4630,6 +4630,224 @@ class CloudProductLogTaskInfo(AbstractModel):
         
 
 
+class CloudProductTopicConfig(AbstractModel):
+    r"""云产品投递任务topic配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Encryption: <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。</p><p>枚举值：</p><ul><li>0： 不加密</li><li>1： kms-cls 云产品密钥加密</li></ul><p>默认值：0</p>
+        :type Encryption: int
+        :param _PartitionCount: <p>主题分区个数。默认创建1个，最大支持创建10个分区。</p>
+        :type PartitionCount: int
+        :param _AutoSplit: <p>是否开启自动分裂，默认值为true</p>
+        :type AutoSplit: bool
+        :param _MaxSplitPartitions: <p>开启自动分裂后，每个主题能够允许的最大分区数</p><p>默认值：50</p>
+        :type MaxSplitPartitions: int
+        :param _StorageType: <p>日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）。指标主题不支持该配置。</p><p>默认值：hot</p>
+        :type StorageType: str
+        :param _Period: <p>存储时间，单位天。</p><ul><li>日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li><li>指标主题：支持1至3600天，值为3640时代表永久保存。</li></ul>
+        :type Period: int
+        :param _HotPeriod: <p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
+        :type HotPeriod: int
+        :param _BillingMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
+        :type BillingMode: int
+        :param _Describes: <p>主题描述</p>
+        :type Describes: str
+        :param _IsSourceFrom: <p>开启记录公网来源ip和服务端接收时间</p>
+        :type IsSourceFrom: bool
+        :param _IsWebTracking: <p>免鉴权开关。 false：关闭； true：开启。默认为false。 开启后将支持指定操作匿名访问该日志主题。</p>
+        :type IsWebTracking: bool
+        :param _CustomKmsInfo: <p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）<br>当参数 Encryption为 1 时有效。</p>
+        :type CustomKmsInfo: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
+        :param _TopicId: <p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
+        :type TopicId: str
+        """
+        self._Encryption = None
+        self._PartitionCount = None
+        self._AutoSplit = None
+        self._MaxSplitPartitions = None
+        self._StorageType = None
+        self._Period = None
+        self._HotPeriod = None
+        self._BillingMode = None
+        self._Describes = None
+        self._IsSourceFrom = None
+        self._IsWebTracking = None
+        self._CustomKmsInfo = None
+        self._TopicId = None
+
+    @property
+    def Encryption(self):
+        r"""<p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。</p><p>枚举值：</p><ul><li>0： 不加密</li><li>1： kms-cls 云产品密钥加密</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Encryption
+
+    @Encryption.setter
+    def Encryption(self, Encryption):
+        self._Encryption = Encryption
+
+    @property
+    def PartitionCount(self):
+        r"""<p>主题分区个数。默认创建1个，最大支持创建10个分区。</p>
+        :rtype: int
+        """
+        return self._PartitionCount
+
+    @PartitionCount.setter
+    def PartitionCount(self, PartitionCount):
+        self._PartitionCount = PartitionCount
+
+    @property
+    def AutoSplit(self):
+        r"""<p>是否开启自动分裂，默认值为true</p>
+        :rtype: bool
+        """
+        return self._AutoSplit
+
+    @AutoSplit.setter
+    def AutoSplit(self, AutoSplit):
+        self._AutoSplit = AutoSplit
+
+    @property
+    def MaxSplitPartitions(self):
+        r"""<p>开启自动分裂后，每个主题能够允许的最大分区数</p><p>默认值：50</p>
+        :rtype: int
+        """
+        return self._MaxSplitPartitions
+
+    @MaxSplitPartitions.setter
+    def MaxSplitPartitions(self, MaxSplitPartitions):
+        self._MaxSplitPartitions = MaxSplitPartitions
+
+    @property
+    def StorageType(self):
+        r"""<p>日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）。指标主题不支持该配置。</p><p>默认值：hot</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def Period(self):
+        r"""<p>存储时间，单位天。</p><ul><li>日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li><li>指标主题：支持1至3600天，值为3640时代表永久保存。</li></ul>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def HotPeriod(self):
+        r"""<p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
+        :rtype: int
+        """
+        return self._HotPeriod
+
+    @HotPeriod.setter
+    def HotPeriod(self, HotPeriod):
+        self._HotPeriod = HotPeriod
+
+    @property
+    def BillingMode(self):
+        r"""<p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul>
+        :rtype: int
+        """
+        return self._BillingMode
+
+    @BillingMode.setter
+    def BillingMode(self, BillingMode):
+        self._BillingMode = BillingMode
+
+    @property
+    def Describes(self):
+        r"""<p>主题描述</p>
+        :rtype: str
+        """
+        return self._Describes
+
+    @Describes.setter
+    def Describes(self, Describes):
+        self._Describes = Describes
+
+    @property
+    def IsSourceFrom(self):
+        r"""<p>开启记录公网来源ip和服务端接收时间</p>
+        :rtype: bool
+        """
+        return self._IsSourceFrom
+
+    @IsSourceFrom.setter
+    def IsSourceFrom(self, IsSourceFrom):
+        self._IsSourceFrom = IsSourceFrom
+
+    @property
+    def IsWebTracking(self):
+        r"""<p>免鉴权开关。 false：关闭； true：开启。默认为false。 开启后将支持指定操作匿名访问该日志主题。</p>
+        :rtype: bool
+        """
+        return self._IsWebTracking
+
+    @IsWebTracking.setter
+    def IsWebTracking(self, IsWebTracking):
+        self._IsWebTracking = IsWebTracking
+
+    @property
+    def CustomKmsInfo(self):
+        r"""<p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）<br>当参数 Encryption为 1 时有效。</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
+        """
+        return self._CustomKmsInfo
+
+    @CustomKmsInfo.setter
+    def CustomKmsInfo(self, CustomKmsInfo):
+        self._CustomKmsInfo = CustomKmsInfo
+
+    @property
+    def TopicId(self):
+        r"""<p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._Encryption = params.get("Encryption")
+        self._PartitionCount = params.get("PartitionCount")
+        self._AutoSplit = params.get("AutoSplit")
+        self._MaxSplitPartitions = params.get("MaxSplitPartitions")
+        self._StorageType = params.get("StorageType")
+        self._Period = params.get("Period")
+        self._HotPeriod = params.get("HotPeriod")
+        self._BillingMode = params.get("BillingMode")
+        self._Describes = params.get("Describes")
+        self._IsSourceFrom = params.get("IsSourceFrom")
+        self._IsWebTracking = params.get("IsWebTracking")
+        if params.get("CustomKmsInfo") is not None:
+            self._CustomKmsInfo = CustomKmsInfo()
+            self._CustomKmsInfo._deserialize(params.get("CustomKmsInfo"))
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CollectConfig(AbstractModel):
     r"""采集配置信息
 
@@ -7889,10 +8107,13 @@ class CreateAgentApplicationRequest(AbstractModel):
         :type AccessType: str
         :param _LogsetId: <p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
         :type LogsetId: str
+        :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到应用创建的主题和日志集。</p>
+        :type Tags: list of Tag
         """
         self._ApplicationName = None
         self._AccessType = None
         self._LogsetId = None
+        self._Tags = None
 
     @property
     def ApplicationName(self):
@@ -7927,11 +8148,28 @@ class CreateAgentApplicationRequest(AbstractModel):
     def LogsetId(self, LogsetId):
         self._LogsetId = LogsetId
 
+    @property
+    def Tags(self):
+        r"""<p>标签描述列表，通过指定该参数可以同时绑定标签到应用创建的主题和日志集。</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._ApplicationName = params.get("ApplicationName")
         self._AccessType = params.get("AccessType")
         self._LogsetId = params.get("LogsetId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9033,6 +9271,8 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
         :type TopicId: str
         :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
         :type Tags: list of Tag
+        :param _TopicConfig: <p>日志主题信息。当创建云产品投递任务并传递TopicName时，会创建具备这些属性的日志主题。</p>
+        :type TopicConfig: :class:`tencentcloud.cls.v20201016.models.CloudProductTopicConfig`
         """
         self._InstanceId = None
         self._AssumerName = None
@@ -9045,6 +9285,7 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
         self._LogsetId = None
         self._TopicId = None
         self._Tags = None
+        self._TopicConfig = None
 
     @property
     def InstanceId(self):
@@ -9167,6 +9408,17 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def TopicConfig(self):
+        r"""<p>日志主题信息。当创建云产品投递任务并传递TopicName时，会创建具备这些属性的日志主题。</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CloudProductTopicConfig`
+        """
+        return self._TopicConfig
+
+    @TopicConfig.setter
+    def TopicConfig(self, TopicConfig):
+        self._TopicConfig = TopicConfig
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9185,6 +9437,9 @@ class CreateCloudProductLogCollectionRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("TopicConfig") is not None:
+            self._TopicConfig = CloudProductTopicConfig()
+            self._TopicConfig._deserialize(params.get("TopicConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

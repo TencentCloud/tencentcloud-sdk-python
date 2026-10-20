@@ -5337,6 +5337,52 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PurchaseImagePackage(self, request):
+        r"""新购图片云存资源包
+
+        :param request: Request instance for PurchaseImagePackage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PurchaseImagePackageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.PurchaseImagePackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PurchaseImagePackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.PurchaseImagePackageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PurchaseVideoPackage(self, request):
+        r"""新购视频云存资源包
+
+        :param request: Request instance for PurchaseVideoPackage.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.PurchaseVideoPackageRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.PurchaseVideoPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PurchaseVideoPackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.PurchaseVideoPackageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ReleaseStudioProduct(self, request):
         r"""产品开发完成并测试通过后，通过发布产品将产品设置为发布状态
 
@@ -5660,6 +5706,52 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ShareDeviceToUser", params, headers=headers)
             response = json.loads(body)
             model = models.ShareDeviceToUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartPackageUsageReport(self, request):
+        r"""启用套餐用量上报
+
+        :param request: Request instance for StartPackageUsageReport.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.StartPackageUsageReportRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.StartPackageUsageReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartPackageUsageReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartPackageUsageReportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopPackageUsageReport(self, request):
+        r"""停用套餐用量上报
+
+        :param request: Request instance for StopPackageUsageReport.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.StopPackageUsageReportRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.StopPackageUsageReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopPackageUsageReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopPackageUsageReportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

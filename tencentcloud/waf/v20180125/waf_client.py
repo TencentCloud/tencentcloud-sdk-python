@@ -1315,7 +1315,17 @@ class WafClient(AbstractClient):
 
 
     def DescribeAfterPayInstances(self, request):
-        r"""查询后付费实例列表（仅 Edition=llm-sdk-waf）。请求参数与 DescribeInstances 一致；仅返回 tb_instance_conf 基础数据，不含套餐/标签等扩展信息。
+        r"""查询后付费实例列表。响应结构与 DescribeInstances 保持一致，全量返回实例字段（含各类套餐包信息），并额外填充 LLMTokenUsage（当天 token 消耗量与近 7 天趋势）。
+
+        针对按量后付费基础安全实例（Edition 为 sparta-waf / clb-waf），额外返回实例维度的实时统计，用于控制台「实例管理」页展示：
+        1. DomainCount：实时去重后的接入域名数（含云原生防护对象默认虚拟域名）；
+        2. ExpertRuleCount：实时开启的专家规则数，口径为接入域名数 × 1；
+        3. CustomRuleCount：该实例下所有接入域名的实时自定义规则条数之和。
+
+        注意事项：
+        - 上述 3 个字段均为调用时刻的实时快照，非按小时的计费计量值；
+        - 与账单接口 DescribeWafPostpaidBillDetail 返回的小时计量值（DomainUsage / ExpertUsage / CustomUsage）可能存在差异：账单侧按自然小时计量、包含小时内已删除的规则，且自定义规则在多实例共用同一域名时会平分并向上取整，而本接口不做平分、不含已删除规则；
+        - Edition 为 llm-sdk-waf 等非基础安全实例无域名接入与规则概念，上述 3 个字段固定为 0。
 
         :param request: Request instance for DescribeAfterPayInstances.
         :type request: :class:`tencentcloud.waf.v20180125.models.DescribeAfterPayInstancesRequest`

@@ -25,35 +25,33 @@ class CreateProbeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchTasks: 批量任务名-地址
+        :param _BatchTasks: <p>批量任务名-地址</p>
         :type BatchTasks: list of ProbeTaskBasicConfiguration
-        :param _TaskType: 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois
+        :param _TaskType: <p>任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois</p>
         :type TaskType: int
-        :param _Nodes: 拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。
+        :param _Nodes: <p>拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。</p>
         :type Nodes: list of str
-        :param _Interval: 拨测间隔，单位为分钟
+        :param _Interval: <p>拨测间隔，单位为分钟</p>
         :type Interval: int
-        :param _Parameters: 拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。
+        :param _Parameters: <p>拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。</p>
         :type Parameters: str
-        :param _TaskCategory: 任务分类
-<li>1 = PC</li>
-<li> 2 = Mobile </li>
+        :param _TaskCategory: <p>任务分类</p><li>1 = PC</li><li> 2 = Mobile </li>
         :type TaskCategory: int
-        :param _Cron: 定时任务cron表达式
+        :param _Cron: <p>定时任务cron表达式</p>
         :type Cron: str
-        :param _Tag: 资源标签值
+        :param _Tag: <p>资源标签值</p>
         :type Tag: list of Tag
-        :param _ProbeType: 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+        :param _ProbeType: <p>测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。</p>
         :type ProbeType: int
-        :param _PluginSource: 插件类型，如CDN，详情参考云拨测官方文档。
+        :param _PluginSource: <p>插件类型，如CDN，详情参考云拨测官方文档。</p>
         :type PluginSource: str
-        :param _ClientNum: 客户端ID
+        :param _ClientNum: <p>客户端ID</p>
         :type ClientNum: str
-        :param _NodeIpType: 拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
+        :param _NodeIpType: <p>拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6</p>
         :type NodeIpType: int
-        :param _SubSyncFlag: 供应商子账户同步标志
+        :param _SubSyncFlag: <p>供应商子账户同步标志</p>
         :type SubSyncFlag: int
-        :param _RtxName: 创建者名称
+        :param _RtxName: <p>创建者名称</p>
         :type RtxName: str
         """
         self._BatchTasks = None
@@ -73,7 +71,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def BatchTasks(self):
-        r"""批量任务名-地址
+        r"""<p>批量任务名-地址</p>
         :rtype: list of ProbeTaskBasicConfiguration
         """
         return self._BatchTasks
@@ -84,7 +82,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois
+        r"""<p>任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois</p>
         :rtype: int
         """
         return self._TaskType
@@ -95,7 +93,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Nodes(self):
-        r"""拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。
+        r"""<p>拨测节点，如10001，具体拨测地域运营商对应的拨测点编号可联系云拨测确认。</p>
         :rtype: list of str
         """
         return self._Nodes
@@ -106,7 +104,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Interval(self):
-        r"""拨测间隔，单位为分钟
+        r"""<p>拨测间隔，单位为分钟</p>
         :rtype: int
         """
         return self._Interval
@@ -117,7 +115,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Parameters(self):
-        r"""拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。
+        r"""<p>拨测参数，详细可参考云拨测官方文档,链接:https://cloud.tencent.com/document/product/248/87308#createprobetasks。</p>
         :rtype: str
         """
         return self._Parameters
@@ -128,9 +126,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def TaskCategory(self):
-        r"""任务分类
-<li>1 = PC</li>
-<li> 2 = Mobile </li>
+        r"""<p>任务分类</p><li>1 = PC</li><li> 2 = Mobile </li>
         :rtype: int
         """
         return self._TaskCategory
@@ -141,7 +137,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Cron(self):
-        r"""定时任务cron表达式
+        r"""<p>定时任务cron表达式</p>
         :rtype: str
         """
         return self._Cron
@@ -152,7 +148,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def Tag(self):
-        r"""资源标签值
+        r"""<p>资源标签值</p>
         :rtype: list of Tag
         """
         return self._Tag
@@ -163,7 +159,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def ProbeType(self):
-        r"""测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+        r"""<p>测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。</p>
         :rtype: int
         """
         return self._ProbeType
@@ -174,7 +170,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def PluginSource(self):
-        r"""插件类型，如CDN，详情参考云拨测官方文档。
+        r"""<p>插件类型，如CDN，详情参考云拨测官方文档。</p>
         :rtype: str
         """
         return self._PluginSource
@@ -185,7 +181,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def ClientNum(self):
-        r"""客户端ID
+        r"""<p>客户端ID</p>
         :rtype: str
         """
         return self._ClientNum
@@ -196,7 +192,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def NodeIpType(self):
-        r"""拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6
+        r"""<p>拨测点IP类型：0-不限制IP类型，1-IPv4，2-IPv6</p>
         :rtype: int
         """
         return self._NodeIpType
@@ -207,7 +203,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def SubSyncFlag(self):
-        r"""供应商子账户同步标志
+        r"""<p>供应商子账户同步标志</p>
         :rtype: int
         """
         return self._SubSyncFlag
@@ -218,7 +214,7 @@ class CreateProbeTasksRequest(AbstractModel):
 
     @property
     def RtxName(self):
-        r"""创建者名称
+        r"""<p>创建者名称</p>
         :rtype: str
         """
         return self._RtxName
@@ -270,7 +266,7 @@ class CreateProbeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskIDs: 任务ID列表
+        :param _TaskIDs: <p>任务ID列表</p>
         :type TaskIDs: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -280,7 +276,7 @@ class CreateProbeTasksResponse(AbstractModel):
 
     @property
     def TaskIDs(self):
-        r"""任务ID列表
+        r"""<p>任务ID列表</p>
         :rtype: list of str
         """
         return self._TaskIDs
@@ -755,9 +751,9 @@ class DescribeInstantTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量
+        :param _Limit: <p>数量</p>
         :type Limit: int
-        :param _Offset: 起始位置
+        :param _Offset: <p>起始位置</p>
         :type Offset: int
         """
         self._Limit = None
@@ -765,7 +761,7 @@ class DescribeInstantTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: int
         """
         return self._Limit
@@ -776,7 +772,7 @@ class DescribeInstantTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""起始位置
+        r"""<p>起始位置</p>
         :rtype: int
         """
         return self._Offset
@@ -806,10 +802,10 @@ class DescribeInstantTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Tasks: 任务
+        :param _Tasks: <p>任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of SingleInstantTask
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -820,7 +816,7 @@ class DescribeInstantTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""任务
+        r"""<p>任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SingleInstantTask
         """
@@ -832,7 +828,7 @@ class DescribeInstantTasksResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -871,25 +867,25 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeType: 节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0
+        :param _NodeType: <p>节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0</p>
         :type NodeType: list of int
-        :param _TaskCategory: 节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。
+        :param _TaskCategory: <p>节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。</p>
         :type TaskCategory: int
-        :param _IPType: IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0
+        :param _IPType: <p>IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0</p>
         :type IPType: int
-        :param _Name: 拨测点描述关键词。
+        :param _Name: <p>拨测点描述关键词。</p>
         :type Name: str
-        :param _RegionID: 地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0
+        :param _RegionID: <p>地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0</p>
         :type RegionID: int
-        :param _DistrictID: 省份或国家ID。0表示全部，不填默认为0
+        :param _DistrictID: <p>省份或国家ID。0表示全部，不填默认为0</p>
         :type DistrictID: int
-        :param _NetServiceID: 运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0
+        :param _NetServiceID: <p>运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0</p>
         :type NetServiceID: int
-        :param _NodeGroupType: 节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0
+        :param _NodeGroupType: <p>节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0</p>
         :type NodeGroupType: int
-        :param _TaskType: 任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤
+        :param _TaskType: <p>任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤</p>
         :type TaskType: int
-        :param _ProbeType: 测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+        :param _ProbeType: <p>测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。</p>
         :type ProbeType: int
         """
         self._NodeType = None
@@ -905,7 +901,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0
+        r"""<p>节点类型。0: 全部 1: IDC 2: LastMile 3: Mobile，不填默认为0</p>
         :rtype: list of int
         """
         return self._NodeType
@@ -916,7 +912,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def TaskCategory(self):
-        r"""节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。
+        r"""<p>节点分类。0: 全部 1: PC 2：Mobile，不填默认为0。PC分类包括IDC和LM节点类型，Mobile分类包括Mobile节点类型。与NodeType参数取交集。</p>
         :rtype: int
         """
         return self._TaskCategory
@@ -927,7 +923,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def IPType(self):
-        r"""IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0
+        r"""<p>IP类型。0: 全部 1: IPv4 2: IPv6，不填默认为0</p>
         :rtype: int
         """
         return self._IPType
@@ -938,7 +934,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""拨测点描述关键词。
+        r"""<p>拨测点描述关键词。</p>
         :rtype: str
         """
         return self._Name
@@ -949,7 +945,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def RegionID(self):
-        r"""地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0
+        r"""<p>地域ID。0: 精选拨测点 1: 国内 2: 港澳台 3: 亚太 4: 欧洲与美洲 5: 非洲与大洋洲，不填默认为0</p>
         :rtype: int
         """
         return self._RegionID
@@ -960,7 +956,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def DistrictID(self):
-        r"""省份或国家ID。0表示全部，不填默认为0
+        r"""<p>省份或国家ID。0表示全部，不填默认为0</p>
         :rtype: int
         """
         return self._DistrictID
@@ -971,7 +967,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def NetServiceID(self):
-        r"""运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0
+        r"""<p>运营商ID。0: 全部 1: 中国电信 2: 中国联通 3: 中国移动 99: 其他，不填默认为0</p>
         :rtype: int
         """
         return self._NetServiceID
@@ -982,7 +978,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def NodeGroupType(self):
-        r"""节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0
+        r"""<p>节点组类型。0: 高级拨测点组 1: 可用性节点 2: 我的拨测点组，不填默认为0</p>
         :rtype: int
         """
         return self._NodeGroupType
@@ -993,7 +989,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤
+        r"""<p>任务类型，如1、2、3、4、5、6、7；1-页面性能、2-文件上传、3-文件下载、4-端口性能、5-网络质量、6-音视频体验、7-域名whois，不填默认为0，不对任务类型做过滤</p>
         :rtype: int
         """
         return self._TaskType
@@ -1004,7 +1000,7 @@ class DescribeNodeGroupsRequest(AbstractModel):
 
     @property
     def ProbeType(self):
-        r"""测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。
+        r"""<p>测试类型，包含定时测试与即时测试。0-定时拨测，其它表示即时拨测。</p>
         :rtype: int
         """
         return self._ProbeType
@@ -1042,13 +1038,13 @@ class DescribeNodeGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeList: 树状节点列表，总共两级
+        :param _NodeList: <p>树状节点列表，总共两级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeList: list of NodeTree
-        :param _DistrictList: 省份或国家列表
+        :param _DistrictList: <p>省份或国家列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DistrictList: list of DistinctOrNetServiceInfo
-        :param _NetServiceList: 运营商列表
+        :param _NetServiceList: <p>运营商列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetServiceList: list of DistinctOrNetServiceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1061,7 +1057,7 @@ class DescribeNodeGroupsResponse(AbstractModel):
 
     @property
     def NodeList(self):
-        r"""树状节点列表，总共两级
+        r"""<p>树状节点列表，总共两级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeTree
         """
@@ -1073,7 +1069,7 @@ class DescribeNodeGroupsResponse(AbstractModel):
 
     @property
     def DistrictList(self):
-        r"""省份或国家列表
+        r"""<p>省份或国家列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DistinctOrNetServiceInfo
         """
@@ -1085,7 +1081,7 @@ class DescribeNodeGroupsResponse(AbstractModel):
 
     @property
     def NetServiceList(self):
-        r"""运营商列表
+        r"""<p>运营商列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DistinctOrNetServiceInfo
         """
@@ -1479,26 +1475,15 @@ class DescribeProbeMetricTagValuesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AnalyzeTaskType: 分析任务类型，支持以下几种类型：
-AnalyzeTaskType_Network：网络质量
-AnalyzeTaskType_Browse：页面性能 
-AnalyzeTaskType_Transport：端口性能
-AnalyzeTaskType_UploadDownload：文件传输
-AnalyzeTaskType_MediaStream：音视频体验
-
+        :param _AnalyzeTaskType: <p>分析任务类型，支持以下几种类型：<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_UploadDownload：文件传输<br>AnalyzeTaskType_MediaStream：音视频体验</p>
         :type AnalyzeTaskType: str
-        :param _Key: 维度标签值，参考：
-host：任务域名
-errorInfo：状态类型
-area：拨测点地区
-operator：拨测点运营商
-taskId：任务ID
+        :param _Key: <p>维度标签值，参考：<br>host：任务域名<br>errorInfo：状态类型<br>area：拨测点地区<br>operator：拨测点运营商<br>taskId：任务ID</p>
         :type Key: str
-        :param _Filter: 过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配
+        :param _Filter: <p>过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配</p>
         :type Filter: str
-        :param _Filters: 过滤条件数组
+        :param _Filters: <p>过滤条件数组</p>
         :type Filters: list of str
-        :param _TimeRange: 时间范围
+        :param _TimeRange: <p>时间范围</p>
         :type TimeRange: str
         """
         self._AnalyzeTaskType = None
@@ -1509,13 +1494,7 @@ taskId：任务ID
 
     @property
     def AnalyzeTaskType(self):
-        r"""分析任务类型，支持以下几种类型：
-AnalyzeTaskType_Network：网络质量
-AnalyzeTaskType_Browse：页面性能 
-AnalyzeTaskType_Transport：端口性能
-AnalyzeTaskType_UploadDownload：文件传输
-AnalyzeTaskType_MediaStream：音视频体验
-
+        r"""<p>分析任务类型，支持以下几种类型：<br>AnalyzeTaskType_Network：网络质量<br>AnalyzeTaskType_Browse：页面性能<br>AnalyzeTaskType_Transport：端口性能<br>AnalyzeTaskType_UploadDownload：文件传输<br>AnalyzeTaskType_MediaStream：音视频体验</p>
         :rtype: str
         """
         return self._AnalyzeTaskType
@@ -1526,12 +1505,7 @@ AnalyzeTaskType_MediaStream：音视频体验
 
     @property
     def Key(self):
-        r"""维度标签值，参考：
-host：任务域名
-errorInfo：状态类型
-area：拨测点地区
-operator：拨测点运营商
-taskId：任务ID
+        r"""<p>维度标签值，参考：<br>host：任务域名<br>errorInfo：状态类型<br>area：拨测点地区<br>operator：拨测点运营商<br>taskId：任务ID</p>
         :rtype: str
         """
         return self._Key
@@ -1542,7 +1516,7 @@ taskId：任务ID
 
     @property
     def Filter(self):
-        r"""过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配
+        r"""<p>过滤条件，可以传单个过滤条件也可以拼接多个参数，支持正则匹配</p>
         :rtype: str
         """
         return self._Filter
@@ -1553,7 +1527,7 @@ taskId：任务ID
 
     @property
     def Filters(self):
-        r"""过滤条件数组
+        r"""<p>过滤条件数组</p>
         :rtype: list of str
         """
         return self._Filters
@@ -1564,7 +1538,7 @@ taskId：任务ID
 
     @property
     def TimeRange(self):
-        r"""时间范围
+        r"""<p>时间范围</p>
         :rtype: str
         """
         return self._TimeRange
@@ -1597,7 +1571,7 @@ class DescribeProbeMetricTagValuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagValueSet: 标签值序列化后的字符串
+        :param _TagValueSet: <p>标签值序列化后的字符串</p>
         :type TagValueSet: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1607,7 +1581,7 @@ class DescribeProbeMetricTagValuesResponse(AbstractModel):
 
     @property
     def TagValueSet(self):
-        r"""标签值序列化后的字符串
+        r"""<p>标签值序列化后的字符串</p>
         :rtype: str
         """
         return self._TagValueSet
@@ -1802,53 +1776,31 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskIDs: 任务 ID  列表
+        :param _TaskIDs: <p>任务 ID  列表</p>
         :type TaskIDs: list of str
-        :param _TaskName: 任务名
+        :param _TaskName: <p>任务名</p>
         :type TaskName: str
-        :param _TargetAddress: 拨测目标
+        :param _TargetAddress: <p>拨测目标</p>
         :type TargetAddress: str
-        :param _TaskStatus: 任务状态列表
-<li>1 = 创建中</li>
-<li> 2 = 运行中 </li>
-<li> 3 = 运行异常 </li>
-<li> 4 = 暂停中 </li>
-<li> 5 = 暂停异常 </li>
-<li> 6 = 任务暂停 </li>
-<li> 7 = 任务删除中 </li>
-<li> 8 = 任务删除异常 </li>
-<li> 9 = 任务删除</li>
-<li> 10 = 定时任务暂停中 </li>
+        :param _TaskStatus: <p>任务状态列表</p><li>1 = 创建中</li><li> 2 = 运行中 </li><li> 3 = 运行异常 </li><li> 4 = 暂停中 </li><li> 5 = 暂停异常 </li><li> 6 = 任务暂停 </li><li> 7 = 任务删除中 </li><li> 8 = 任务删除异常 </li><li> 9 = 任务删除</li><li> 10 = 定时任务暂停中 </li>
         :type TaskStatus: list of int
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100
+        :param _Limit: <p>返回数量，默认为20，最大值为100</p>
         :type Limit: int
-        :param _PayMode: 付费模式
-<li>1 = 试用版本</li>
-<li> 2 = 付费版本 </li>
+        :param _PayMode: <p>付费模式</p><li>1 = 试用版本</li><li> 2 = 付费版本 </li>
         :type PayMode: int
-        :param _OrderState: 订单状态
-<li>1 = 正常</li>
-<li> 2 = 欠费 </li>
+        :param _OrderState: <p>订单状态</p><li>1 = 正常</li><li> 2 = 欠费 </li>
         :type OrderState: int
-        :param _TaskType: 拨测类型
-<li>1 = 页面浏览</li>
-<li> 2 =文件上传 </li>
-<li> 3 = 文件下载</li>
-<li> 4 = 端口性能 </li>
-<li> 5 = 网络质量 </li>
-<li> 6 =流媒体 </li>
-
-即使拨测只支持页面浏览，网络质量，文件下载
+        :param _TaskType: <p>拨测类型</p><li>1 = 页面浏览</li><li> 2 =文件上传 </li><li> 3 = 文件下载</li><li> 4 = 端口性能 </li><li> 5 = 网络质量 </li><li> 6 =流媒体 </li><p>即使拨测只支持页面浏览，网络质量，文件下载</p>
         :type TaskType: list of int
-        :param _TaskCategory: 节点类型
+        :param _TaskCategory: <p>节点类型</p>
         :type TaskCategory: list of int
-        :param _OrderBy: 排序的列
+        :param _OrderBy: <p>排序的列</p>
         :type OrderBy: str
-        :param _Ascend: 是否正序
+        :param _Ascend: <p>是否正序</p>
         :type Ascend: bool
-        :param _TagFilters: 资源标签值
+        :param _TagFilters: <p>资源标签值</p>
         :type TagFilters: list of KeyValuePair
         """
         self._TaskIDs = None
@@ -1867,7 +1819,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskIDs(self):
-        r"""任务 ID  列表
+        r"""<p>任务 ID  列表</p>
         :rtype: list of str
         """
         return self._TaskIDs
@@ -1878,7 +1830,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名
+        r"""<p>任务名</p>
         :rtype: str
         """
         return self._TaskName
@@ -1889,7 +1841,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TargetAddress(self):
-        r"""拨测目标
+        r"""<p>拨测目标</p>
         :rtype: str
         """
         return self._TargetAddress
@@ -1900,17 +1852,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""任务状态列表
-<li>1 = 创建中</li>
-<li> 2 = 运行中 </li>
-<li> 3 = 运行异常 </li>
-<li> 4 = 暂停中 </li>
-<li> 5 = 暂停异常 </li>
-<li> 6 = 任务暂停 </li>
-<li> 7 = 任务删除中 </li>
-<li> 8 = 任务删除异常 </li>
-<li> 9 = 任务删除</li>
-<li> 10 = 定时任务暂停中 </li>
+        r"""<p>任务状态列表</p><li>1 = 创建中</li><li> 2 = 运行中 </li><li> 3 = 运行异常 </li><li> 4 = 暂停中 </li><li> 5 = 暂停异常 </li><li> 6 = 任务暂停 </li><li> 7 = 任务删除中 </li><li> 8 = 任务删除异常 </li><li> 9 = 任务删除</li><li> 10 = 定时任务暂停中 </li>
         :rtype: list of int
         """
         return self._TaskStatus
@@ -1921,7 +1863,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -1932,7 +1874,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100
+        r"""<p>返回数量，默认为20，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -1943,9 +1885,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式
-<li>1 = 试用版本</li>
-<li> 2 = 付费版本 </li>
+        r"""<p>付费模式</p><li>1 = 试用版本</li><li> 2 = 付费版本 </li>
         :rtype: int
         """
         return self._PayMode
@@ -1956,9 +1896,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def OrderState(self):
-        r"""订单状态
-<li>1 = 正常</li>
-<li> 2 = 欠费 </li>
+        r"""<p>订单状态</p><li>1 = 正常</li><li> 2 = 欠费 </li>
         :rtype: int
         """
         return self._OrderState
@@ -1969,15 +1907,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""拨测类型
-<li>1 = 页面浏览</li>
-<li> 2 =文件上传 </li>
-<li> 3 = 文件下载</li>
-<li> 4 = 端口性能 </li>
-<li> 5 = 网络质量 </li>
-<li> 6 =流媒体 </li>
-
-即使拨测只支持页面浏览，网络质量，文件下载
+        r"""<p>拨测类型</p><li>1 = 页面浏览</li><li> 2 =文件上传 </li><li> 3 = 文件下载</li><li> 4 = 端口性能 </li><li> 5 = 网络质量 </li><li> 6 =流媒体 </li><p>即使拨测只支持页面浏览，网络质量，文件下载</p>
         :rtype: list of int
         """
         return self._TaskType
@@ -1988,7 +1918,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TaskCategory(self):
-        r"""节点类型
+        r"""<p>节点类型</p>
         :rtype: list of int
         """
         return self._TaskCategory
@@ -1999,7 +1929,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序的列
+        r"""<p>排序的列</p>
         :rtype: str
         """
         return self._OrderBy
@@ -2010,7 +1940,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def Ascend(self):
-        r"""是否正序
+        r"""<p>是否正序</p>
         :rtype: bool
         """
         return self._Ascend
@@ -2021,7 +1951,7 @@ class DescribeProbeTasksRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""资源标签值
+        r"""<p>资源标签值</p>
         :rtype: list of KeyValuePair
         """
         return self._TagFilters
@@ -2067,10 +1997,10 @@ class DescribeProbeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskSet: 任务列表
+        :param _TaskSet: <p>任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSet: list of ProbeTask
-        :param _Total: 任务总数
+        :param _Total: <p>任务总数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2081,7 +2011,7 @@ class DescribeProbeTasksResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        r"""任务列表
+        r"""<p>任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ProbeTask
         """
@@ -2093,7 +2023,7 @@ class DescribeProbeTasksResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""任务总数
+        r"""<p>任务总数</p>
         :rtype: int
         """
         return self._Total
@@ -3025,70 +2955,44 @@ class ProbeTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 任务名
+        :param _Name: <p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _TaskId: 任务 ID
+        :param _TaskId: <p>任务 ID</p>
         :type TaskId: str
-        :param _TaskType: 拨测类型
-<li>1 = 页面浏览</li>
-<li> 2 =文件上传 </li>
-<li> 3 = 文件下载</li>
-<li> 4 = 端口性能 </li>
-<li> 5 = 网络质量 </li>
-<li> 6 =流媒体 </li>
-
-即时拨测只支持页面浏览，网络质量，文件下载
+        :param _TaskType: <p>拨测类型</p><li>1 = 页面浏览</li><li> 2 =文件上传 </li><li> 3 = 文件下载</li><li> 4 = 端口性能 </li><li> 5 = 网络质量 </li><li> 6 =流媒体 </li><p>即时拨测只支持页面浏览，网络质量，文件下载</p>
         :type TaskType: int
-        :param _Nodes: 拨测节点列表
+        :param _Nodes: <p>拨测节点列表</p>
         :type Nodes: list of str
-        :param _NodeIpType: 拨测任务所选的拨测点IP类型，0-不限，1-IPv4，2-IPv6
+        :param _NodeIpType: <p>拨测任务所选的拨测点IP类型，0-不限，1-IPv4，2-IPv6</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeIpType: int
-        :param _Interval: 拨测间隔，单位为分钟
+        :param _Interval: <p>拨测间隔，单位为分钟</p>
         :type Interval: int
-        :param _Parameters: 拨测参数
+        :param _Parameters: <p>拨测参数</p>
         :type Parameters: str
-        :param _Status: 任务状态
-<li>1 = 创建中</li>
-<li> 2 = 运行中 </li>
-<li> 3 = 运行异常 </li>
-<li> 4 = 暂停中 </li>
-<li> 5 = 暂停异常 </li>
-<li> 6 = 任务暂停 </li>
-<li> 7 = 任务删除中 </li>
-<li> 8 = 任务删除异常 </li>
-<li> 9 = 任务删除</li>
-<li> 10 = 定时任务暂停中 </li>
+        :param _Status: <p>任务状态</p><li>1 = 创建中</li><li> 2 = 运行中 </li><li> 3 = 运行异常 </li><li> 4 = 暂停中 </li><li> 5 = 暂停异常 </li><li> 6 = 任务暂停 </li><li> 7 = 任务删除中 </li><li> 8 = 任务删除异常 </li><li> 9 = 任务删除</li><li> 10 = 定时任务暂停中 </li>
         :type Status: int
-        :param _TargetAddress: 目标地址
+        :param _TargetAddress: <p>目标地址</p>
         :type TargetAddress: str
-        :param _PayMode: 付费模式
-<li>1 = 试用版本</li>
-<li> 2 = 付费版本 </li>
+        :param _PayMode: <p>付费模式</p><li>1 = 试用版本</li><li> 2 = 付费版本 </li>
         :type PayMode: int
-        :param _OrderState: 订单状态
-<li>1 = 正常</li>
-<li> 2 = 欠费 </li>
+        :param _OrderState: <p>订单状态</p><li>1 = 正常</li><li> 2 = 欠费 </li>
         :type OrderState: int
-        :param _TaskCategory: 任务分类
-<li>1 = PC</li>
-<li> 2 = Mobile </li>
+        :param _TaskCategory: <p>任务分类</p><li>1 = PC</li><li> 2 = Mobile </li>
         :type TaskCategory: int
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: <p>创建时间</p>
         :type CreatedAt: str
-        :param _Cron: 定时任务cron表达式
+        :param _Cron: <p>定时任务cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cron: str
-        :param _CronState: 定时任务启动状态
-<li>1 = 定时任务表达式生效</li>
-<li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
+        :param _CronState: <p>定时任务启动状态</p><li>1 = 定时任务表达式生效</li><li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CronState: int
-        :param _TagInfoList: 任务当前绑定的标签
+        :param _TagInfoList: <p>任务当前绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagInfoList: list of KeyValuePair
-        :param _SubSyncFlag: 是否为同步账号
+        :param _SubSyncFlag: <p>是否为同步账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubSyncFlag: int
         """
@@ -3112,7 +3016,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名
+        r"""<p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3124,7 +3028,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -3135,15 +3039,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""拨测类型
-<li>1 = 页面浏览</li>
-<li> 2 =文件上传 </li>
-<li> 3 = 文件下载</li>
-<li> 4 = 端口性能 </li>
-<li> 5 = 网络质量 </li>
-<li> 6 =流媒体 </li>
-
-即时拨测只支持页面浏览，网络质量，文件下载
+        r"""<p>拨测类型</p><li>1 = 页面浏览</li><li> 2 =文件上传 </li><li> 3 = 文件下载</li><li> 4 = 端口性能 </li><li> 5 = 网络质量 </li><li> 6 =流媒体 </li><p>即时拨测只支持页面浏览，网络质量，文件下载</p>
         :rtype: int
         """
         return self._TaskType
@@ -3154,7 +3050,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def Nodes(self):
-        r"""拨测节点列表
+        r"""<p>拨测节点列表</p>
         :rtype: list of str
         """
         return self._Nodes
@@ -3165,7 +3061,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def NodeIpType(self):
-        r"""拨测任务所选的拨测点IP类型，0-不限，1-IPv4，2-IPv6
+        r"""<p>拨测任务所选的拨测点IP类型，0-不限，1-IPv4，2-IPv6</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3177,7 +3073,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def Interval(self):
-        r"""拨测间隔，单位为分钟
+        r"""<p>拨测间隔，单位为分钟</p>
         :rtype: int
         """
         return self._Interval
@@ -3188,7 +3084,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def Parameters(self):
-        r"""拨测参数
+        r"""<p>拨测参数</p>
         :rtype: str
         """
         return self._Parameters
@@ -3199,17 +3095,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态
-<li>1 = 创建中</li>
-<li> 2 = 运行中 </li>
-<li> 3 = 运行异常 </li>
-<li> 4 = 暂停中 </li>
-<li> 5 = 暂停异常 </li>
-<li> 6 = 任务暂停 </li>
-<li> 7 = 任务删除中 </li>
-<li> 8 = 任务删除异常 </li>
-<li> 9 = 任务删除</li>
-<li> 10 = 定时任务暂停中 </li>
+        r"""<p>任务状态</p><li>1 = 创建中</li><li> 2 = 运行中 </li><li> 3 = 运行异常 </li><li> 4 = 暂停中 </li><li> 5 = 暂停异常 </li><li> 6 = 任务暂停 </li><li> 7 = 任务删除中 </li><li> 8 = 任务删除异常 </li><li> 9 = 任务删除</li><li> 10 = 定时任务暂停中 </li>
         :rtype: int
         """
         return self._Status
@@ -3220,7 +3106,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def TargetAddress(self):
-        r"""目标地址
+        r"""<p>目标地址</p>
         :rtype: str
         """
         return self._TargetAddress
@@ -3231,9 +3117,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式
-<li>1 = 试用版本</li>
-<li> 2 = 付费版本 </li>
+        r"""<p>付费模式</p><li>1 = 试用版本</li><li> 2 = 付费版本 </li>
         :rtype: int
         """
         return self._PayMode
@@ -3244,9 +3128,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def OrderState(self):
-        r"""订单状态
-<li>1 = 正常</li>
-<li> 2 = 欠费 </li>
+        r"""<p>订单状态</p><li>1 = 正常</li><li> 2 = 欠费 </li>
         :rtype: int
         """
         return self._OrderState
@@ -3257,9 +3139,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def TaskCategory(self):
-        r"""任务分类
-<li>1 = PC</li>
-<li> 2 = Mobile </li>
+        r"""<p>任务分类</p><li>1 = PC</li><li> 2 = Mobile </li>
         :rtype: int
         """
         return self._TaskCategory
@@ -3270,7 +3150,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -3281,7 +3161,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def Cron(self):
-        r"""定时任务cron表达式
+        r"""<p>定时任务cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3293,9 +3173,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def CronState(self):
-        r"""定时任务启动状态
-<li>1 = 定时任务表达式生效</li>
-<li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
+        r"""<p>定时任务启动状态</p><li>1 = 定时任务表达式生效</li><li> 2 = 定时任务表达式未生效（一般为任务手动暂停）</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3307,7 +3185,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def TagInfoList(self):
-        r"""任务当前绑定的标签
+        r"""<p>任务当前绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyValuePair
         """
@@ -3319,7 +3197,7 @@ class ProbeTask(AbstractModel):
 
     @property
     def SubSyncFlag(self):
-        r"""是否为同步账号
+        r"""<p>是否为同步账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3998,22 +3876,21 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskIds: 任务 ID，如task-n1wchki8
+        :param _TaskIds: <p>任务 ID，如task-n1wchki8</p>
         :type TaskIds: list of str
-        :param _Nodes: 拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。
+        :param _Nodes: <p>拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。</p>
         :type Nodes: list of str
-        :param _Interval: 拨测间隔，如30，单位为分钟。
+        :param _Interval: <p>拨测间隔，如30，单位为分钟。</p>
         :type Interval: int
-        :param _Parameters: 拨测参数，详细参数配置可参考云拨测官网文档。
+        :param _Parameters: <p>拨测参数，详细参数配置可参考云拨测官网文档。</p>
         :type Parameters: str
-        :param _Cron: 定时任务cron表达式
+        :param _Cron: <p>定时任务cron表达式</p>
         :type Cron: str
-        :param _ResourceIDs: 预付费套餐id
-需要与taskId对应
+        :param _ResourceIDs: <p>预付费套餐id<br>需要与taskId对应</p>
         :type ResourceIDs: list of str
-        :param _NodeIpType: 拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
+        :param _NodeIpType: <p>拨测节点的IP类型，0-不限，1-IPv4，2-IPv6</p>
         :type NodeIpType: int
-        :param _BatchTasks: 批量任务名-地址
+        :param _BatchTasks: <p>批量任务名-地址</p>
         :type BatchTasks: list of ProbeTaskBasicConfiguration
         """
         self._TaskIds = None
@@ -4027,7 +3904,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def TaskIds(self):
-        r"""任务 ID，如task-n1wchki8
+        r"""<p>任务 ID，如task-n1wchki8</p>
         :rtype: list of str
         """
         return self._TaskIds
@@ -4038,7 +3915,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def Nodes(self):
-        r"""拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。
+        r"""<p>拨测节点，如10001，详细地区运营商拨测编号请联系云拨测。</p>
         :rtype: list of str
         """
         return self._Nodes
@@ -4049,7 +3926,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def Interval(self):
-        r"""拨测间隔，如30，单位为分钟。
+        r"""<p>拨测间隔，如30，单位为分钟。</p>
         :rtype: int
         """
         return self._Interval
@@ -4060,7 +3937,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def Parameters(self):
-        r"""拨测参数，详细参数配置可参考云拨测官网文档。
+        r"""<p>拨测参数，详细参数配置可参考云拨测官网文档。</p>
         :rtype: str
         """
         return self._Parameters
@@ -4071,7 +3948,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def Cron(self):
-        r"""定时任务cron表达式
+        r"""<p>定时任务cron表达式</p>
         :rtype: str
         """
         return self._Cron
@@ -4082,8 +3959,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def ResourceIDs(self):
-        r"""预付费套餐id
-需要与taskId对应
+        r"""<p>预付费套餐id<br>需要与taskId对应</p>
         :rtype: list of str
         """
         return self._ResourceIDs
@@ -4094,7 +3970,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def NodeIpType(self):
-        r"""拨测节点的IP类型，0-不限，1-IPv4，2-IPv6
+        r"""<p>拨测节点的IP类型，0-不限，1-IPv4，2-IPv6</p>
         :rtype: int
         """
         return self._NodeIpType
@@ -4105,7 +3981,7 @@ class UpdateProbeTaskConfigurationListRequest(AbstractModel):
 
     @property
     def BatchTasks(self):
-        r"""批量任务名-地址
+        r"""<p>批量任务名-地址</p>
         :rtype: list of ProbeTaskBasicConfiguration
         """
         return self._BatchTasks

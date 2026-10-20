@@ -1113,6 +1113,72 @@ class AddUserToGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ApplyRoleConfiguration(AbstractModel):
+    r"""申请的权限配置，包含用户申请权限配置的配置 ID、配置名称、描述信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleConfigurationId: <p>权限配置 ID</p>
+        :type RoleConfigurationId: str
+        :param _RoleConfigurationName: <p>权限配置名称</p>
+        :type RoleConfigurationName: str
+        :param _Description: <p>说明</p>
+        :type Description: str
+        """
+        self._RoleConfigurationId = None
+        self._RoleConfigurationName = None
+        self._Description = None
+
+    @property
+    def RoleConfigurationId(self):
+        r"""<p>权限配置 ID</p>
+        :rtype: str
+        """
+        return self._RoleConfigurationId
+
+    @RoleConfigurationId.setter
+    def RoleConfigurationId(self, RoleConfigurationId):
+        self._RoleConfigurationId = RoleConfigurationId
+
+    @property
+    def RoleConfigurationName(self):
+        r"""<p>权限配置名称</p>
+        :rtype: str
+        """
+        return self._RoleConfigurationName
+
+    @RoleConfigurationName.setter
+    def RoleConfigurationName(self, RoleConfigurationName):
+        self._RoleConfigurationName = RoleConfigurationName
+
+    @property
+    def Description(self):
+        r"""<p>说明</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._RoleConfigurationId = params.get("RoleConfigurationId")
+        self._RoleConfigurationName = params.get("RoleConfigurationName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AttachPolicyRequest(AbstractModel):
     r"""AttachPolicy请求参数结构体
 
@@ -3210,6 +3276,105 @@ class CreateRoleAssignmentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRoleConfigurationApplyScopeRequest(AbstractModel):
+    r"""CreateRoleConfigurationApplyScope请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>用户目录</p>
+        :type ZoneId: str
+        :param _ApplyScopeInfo: <p>申请范围条目</p>
+        :type ApplyScopeInfo: list of RoleAssignmentInfo
+        """
+        self._ZoneId = None
+        self._ApplyScopeInfo = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>用户目录</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ApplyScopeInfo(self):
+        r"""<p>申请范围条目</p>
+        :rtype: list of RoleAssignmentInfo
+        """
+        return self._ApplyScopeInfo
+
+    @ApplyScopeInfo.setter
+    def ApplyScopeInfo(self, ApplyScopeInfo):
+        self._ApplyScopeInfo = ApplyScopeInfo
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("ApplyScopeInfo") is not None:
+            self._ApplyScopeInfo = []
+            for item in params.get("ApplyScopeInfo"):
+                obj = RoleAssignmentInfo()
+                obj._deserialize(item)
+                self._ApplyScopeInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoleConfigurationApplyScopeResponse(AbstractModel):
+    r"""CreateRoleConfigurationApplyScope返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuccessCount: <p>成功 upsert 的条目数</p>
+        :type SuccessCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SuccessCount = None
+        self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        r"""<p>成功 upsert 的条目数</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRoleConfigurationRequest(AbstractModel):
     r"""CreateRoleConfiguration请求参数结构体
 
@@ -4710,6 +4875,130 @@ class DeleteRoleAssignmentResponse(AbstractModel):
         if params.get("Task") is not None:
             self._Task = TaskInfo()
             self._Task._deserialize(params.get("Task"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRoleConfigurationApplyScopeRequest(AbstractModel):
+    r"""DeleteRoleConfigurationApplyScope请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>空间ID</p>
+        :type ZoneId: str
+        :param _RoleConfigurationIds: <p>权限配置 ID 列表</p>
+        :type RoleConfigurationIds: list of str
+        :param _TargetUin: <p>目标账号 UIN</p>
+        :type TargetUin: int
+        :param _PrincipalId: <p>身份 ID</p>
+        :type PrincipalId: str
+        :param _PrincipalType: <p>身份类型</p><p>枚举值：</p><ul><li>User： 用户</li><li>Group： 用户组</li></ul>
+        :type PrincipalType: str
+        """
+        self._ZoneId = None
+        self._RoleConfigurationIds = None
+        self._TargetUin = None
+        self._PrincipalId = None
+        self._PrincipalType = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>空间ID</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def RoleConfigurationIds(self):
+        r"""<p>权限配置 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._RoleConfigurationIds
+
+    @RoleConfigurationIds.setter
+    def RoleConfigurationIds(self, RoleConfigurationIds):
+        self._RoleConfigurationIds = RoleConfigurationIds
+
+    @property
+    def TargetUin(self):
+        r"""<p>目标账号 UIN</p>
+        :rtype: int
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def PrincipalId(self):
+        r"""<p>身份 ID</p>
+        :rtype: str
+        """
+        return self._PrincipalId
+
+    @PrincipalId.setter
+    def PrincipalId(self, PrincipalId):
+        self._PrincipalId = PrincipalId
+
+    @property
+    def PrincipalType(self):
+        r"""<p>身份类型</p><p>枚举值：</p><ul><li>User： 用户</li><li>Group： 用户组</li></ul>
+        :rtype: str
+        """
+        return self._PrincipalType
+
+    @PrincipalType.setter
+    def PrincipalType(self, PrincipalType):
+        self._PrincipalType = PrincipalType
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._RoleConfigurationIds = params.get("RoleConfigurationIds")
+        self._TargetUin = params.get("TargetUin")
+        self._PrincipalId = params.get("PrincipalId")
+        self._PrincipalType = params.get("PrincipalType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoleConfigurationApplyScopeResponse(AbstractModel):
+    r"""DeleteRoleConfigurationApplyScope返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -12354,6 +12643,210 @@ class ListOrganizationServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListPermissionApplyOrdersRequest(AbstractModel):
+    r"""ListPermissionApplyOrders请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>空间 ID</p>
+        :type ZoneId: str
+        :param _SearchValue: <p>搜索字段</p><p>按用户名 / 用户 ID 搜索</p>
+        :type SearchValue: str
+        :param _Status: <p>状态值</p><p>枚举值：</p><ul><li>1： 待审核</li><li>2： 已通过 - 同步中</li><li>3： 已通过 - 同步成功</li><li>4： 已通过 - 同步失败</li><li>5： 已拒绝</li></ul>
+        :type Status: int
+        :param _MaxResults: <p>每页条数</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :type MaxResults: int
+        :param _NextToken: <p>翻页游标</p>
+        :type NextToken: str
+        """
+        self._ZoneId = None
+        self._SearchValue = None
+        self._Status = None
+        self._MaxResults = None
+        self._NextToken = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>空间 ID</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SearchValue(self):
+        r"""<p>搜索字段</p><p>按用户名 / 用户 ID 搜索</p>
+        :rtype: str
+        """
+        return self._SearchValue
+
+    @SearchValue.setter
+    def SearchValue(self, SearchValue):
+        self._SearchValue = SearchValue
+
+    @property
+    def Status(self):
+        r"""<p>状态值</p><p>枚举值：</p><ul><li>1： 待审核</li><li>2： 已通过 - 同步中</li><li>3： 已通过 - 同步成功</li><li>4： 已通过 - 同步失败</li><li>5： 已拒绝</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MaxResults(self):
+        r"""<p>每页条数</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""<p>翻页游标</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SearchValue = params.get("SearchValue")
+        self._Status = params.get("Status")
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListPermissionApplyOrdersResponse(AbstractModel):
+    r"""ListPermissionApplyOrders返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyOrders: <p>申请单列表</p>
+        :type ApplyOrders: list of PermissionApplyOrder
+        :param _TotalCounts: <p>总数</p>
+        :type TotalCounts: int
+        :param _NextToken: <p>翻页游标</p>
+        :type NextToken: str
+        :param _IsTruncated: <p>是否还有下一页</p>
+        :type IsTruncated: bool
+        :param _MaxResults: <p>每页条数</p>
+        :type MaxResults: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApplyOrders = None
+        self._TotalCounts = None
+        self._NextToken = None
+        self._IsTruncated = None
+        self._MaxResults = None
+        self._RequestId = None
+
+    @property
+    def ApplyOrders(self):
+        r"""<p>申请单列表</p>
+        :rtype: list of PermissionApplyOrder
+        """
+        return self._ApplyOrders
+
+    @ApplyOrders.setter
+    def ApplyOrders(self, ApplyOrders):
+        self._ApplyOrders = ApplyOrders
+
+    @property
+    def TotalCounts(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCounts
+
+    @TotalCounts.setter
+    def TotalCounts(self, TotalCounts):
+        self._TotalCounts = TotalCounts
+
+    @property
+    def NextToken(self):
+        r"""<p>翻页游标</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def IsTruncated(self):
+        r"""<p>是否还有下一页</p>
+        :rtype: bool
+        """
+        return self._IsTruncated
+
+    @IsTruncated.setter
+    def IsTruncated(self, IsTruncated):
+        self._IsTruncated = IsTruncated
+
+    @property
+    def MaxResults(self):
+        r"""<p>每页条数</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ApplyOrders") is not None:
+            self._ApplyOrders = []
+            for item in params.get("ApplyOrders"):
+                obj = PermissionApplyOrder()
+                obj._deserialize(item)
+                self._ApplyOrders.append(obj)
+        self._TotalCounts = params.get("TotalCounts")
+        self._NextToken = params.get("NextToken")
+        self._IsTruncated = params.get("IsTruncated")
+        self._MaxResults = params.get("MaxResults")
+        self._RequestId = params.get("RequestId")
+
+
 class ListPermissionPoliciesInRoleConfigurationRequest(AbstractModel):
     r"""ListPermissionPoliciesInRoleConfiguration请求参数结构体
 
@@ -13359,6 +13852,240 @@ class ListRoleAssignmentsResponse(AbstractModel):
                 obj = RoleAssignments()
                 obj._deserialize(item)
                 self._RoleAssignments.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListRoleConfigurationApplyScopesRequest(AbstractModel):
+    r"""ListRoleConfigurationApplyScopes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>空间 ID</p>
+        :type ZoneId: str
+        :param _PrincipalId: <p>身份 ID</p>
+        :type PrincipalId: str
+        :param _PrincipalType: <p>身份类型</p><p>枚举值：</p><ul><li>User： 用户</li><li>Group： 用户组</li></ul>
+        :type PrincipalType: str
+        :param _TargetUin: <p>目标账号 UIN</p>
+        :type TargetUin: int
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: str
+        :param _MaxResults: <p>每页条数</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :type MaxResults: int
+        :param _NextToken: <p>翻页游标</p>
+        :type NextToken: str
+        """
+        self._ZoneId = None
+        self._PrincipalId = None
+        self._PrincipalType = None
+        self._TargetUin = None
+        self._Filter = None
+        self._MaxResults = None
+        self._NextToken = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>空间 ID</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def PrincipalId(self):
+        r"""<p>身份 ID</p>
+        :rtype: str
+        """
+        return self._PrincipalId
+
+    @PrincipalId.setter
+    def PrincipalId(self, PrincipalId):
+        self._PrincipalId = PrincipalId
+
+    @property
+    def PrincipalType(self):
+        r"""<p>身份类型</p><p>枚举值：</p><ul><li>User： 用户</li><li>Group： 用户组</li></ul>
+        :rtype: str
+        """
+        return self._PrincipalType
+
+    @PrincipalType.setter
+    def PrincipalType(self, PrincipalType):
+        self._PrincipalType = PrincipalType
+
+    @property
+    def TargetUin(self):
+        r"""<p>目标账号 UIN</p>
+        :rtype: int
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: str
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MaxResults(self):
+        r"""<p>每页条数</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""<p>翻页游标</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._PrincipalId = params.get("PrincipalId")
+        self._PrincipalType = params.get("PrincipalType")
+        self._TargetUin = params.get("TargetUin")
+        self._Filter = params.get("Filter")
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListRoleConfigurationApplyScopesResponse(AbstractModel):
+    r"""ListRoleConfigurationApplyScopes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyScopes: <p>申请范围列表</p>
+        :type ApplyScopes: list of RoleAssignments
+        :param _TotalCounts: <p>总数</p>
+        :type TotalCounts: int
+        :param _MaxResults: <p>每页条数</p>
+        :type MaxResults: int
+        :param _NextToken: <p>翻页游标</p>
+        :type NextToken: str
+        :param _IsTruncated: <p>是否被截断</p>
+        :type IsTruncated: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApplyScopes = None
+        self._TotalCounts = None
+        self._MaxResults = None
+        self._NextToken = None
+        self._IsTruncated = None
+        self._RequestId = None
+
+    @property
+    def ApplyScopes(self):
+        r"""<p>申请范围列表</p>
+        :rtype: list of RoleAssignments
+        """
+        return self._ApplyScopes
+
+    @ApplyScopes.setter
+    def ApplyScopes(self, ApplyScopes):
+        self._ApplyScopes = ApplyScopes
+
+    @property
+    def TotalCounts(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCounts
+
+    @TotalCounts.setter
+    def TotalCounts(self, TotalCounts):
+        self._TotalCounts = TotalCounts
+
+    @property
+    def MaxResults(self):
+        r"""<p>每页条数</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""<p>翻页游标</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def IsTruncated(self):
+        r"""<p>是否被截断</p>
+        :rtype: bool
+        """
+        return self._IsTruncated
+
+    @IsTruncated.setter
+    def IsTruncated(self, IsTruncated):
+        self._IsTruncated = IsTruncated
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ApplyScopes") is not None:
+            self._ApplyScopes = []
+            for item in params.get("ApplyScopes"):
+                obj = RoleAssignments()
+                obj._deserialize(item)
+                self._ApplyScopes.append(obj)
+        self._TotalCounts = params.get("TotalCounts")
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
+        self._IsTruncated = params.get("IsTruncated")
         self._RequestId = params.get("RequestId")
 
 
@@ -17653,6 +18380,182 @@ class OrganizationServiceAssignMember(AbstractModel):
                 obj = NodeMainInfo()
                 obj._deserialize(item)
                 self._ManagementScopeNodes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PermissionApplyOrder(AbstractModel):
+    r"""权限申请单，描述一张完整的权限申请工单，即谁（UserId/UserName）向哪个成员账号（TargetUin/TargetName）申请了哪些权限配置（RoleConfigurations），以及审批进展如何
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplyId: <p>申请单 ID</p>
+        :type ApplyId: str
+        :param _UserId: <p>申请人用户 ID</p>
+        :type UserId: str
+        :param _UserName: <p>申请人用户名</p>
+        :type UserName: str
+        :param _TargetUin: <p>目标成员账号 UIN</p>
+        :type TargetUin: int
+        :param _TargetName: <p>目标成员账号名称</p>
+        :type TargetName: str
+        :param _RoleConfigurations: <p>申请的权限配置</p>
+        :type RoleConfigurations: list of ApplyRoleConfiguration
+        :param _Status: <p>申请单状态</p><p>枚举值：</p><ul><li>1： 待审核</li><li>2： 已通过 - 同步中</li><li>3： 已通过 - 同步成功</li><li>4： 已通过 - 同步失败</li><li>5： 已拒绝</li></ul>
+        :type Status: int
+        :param _CreateTime: <p>创建时间</p><p>参数格式：YYYY-M-DD hh:mm:ss</p>
+        :type CreateTime: str
+        :param _AuditOpinion: <p>审批意见</p>
+        :type AuditOpinion: str
+        :param _AuditTime: <p>审批时间</p><p>参数格式：YYYY-M-DD hh:mm:ss</p><p>未审批为空</p>
+        :type AuditTime: str
+        """
+        self._ApplyId = None
+        self._UserId = None
+        self._UserName = None
+        self._TargetUin = None
+        self._TargetName = None
+        self._RoleConfigurations = None
+        self._Status = None
+        self._CreateTime = None
+        self._AuditOpinion = None
+        self._AuditTime = None
+
+    @property
+    def ApplyId(self):
+        r"""<p>申请单 ID</p>
+        :rtype: str
+        """
+        return self._ApplyId
+
+    @ApplyId.setter
+    def ApplyId(self, ApplyId):
+        self._ApplyId = ApplyId
+
+    @property
+    def UserId(self):
+        r"""<p>申请人用户 ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""<p>申请人用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def TargetUin(self):
+        r"""<p>目标成员账号 UIN</p>
+        :rtype: int
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def TargetName(self):
+        r"""<p>目标成员账号名称</p>
+        :rtype: str
+        """
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
+
+    @property
+    def RoleConfigurations(self):
+        r"""<p>申请的权限配置</p>
+        :rtype: list of ApplyRoleConfiguration
+        """
+        return self._RoleConfigurations
+
+    @RoleConfigurations.setter
+    def RoleConfigurations(self, RoleConfigurations):
+        self._RoleConfigurations = RoleConfigurations
+
+    @property
+    def Status(self):
+        r"""<p>申请单状态</p><p>枚举值：</p><ul><li>1： 待审核</li><li>2： 已通过 - 同步中</li><li>3： 已通过 - 同步成功</li><li>4： 已通过 - 同步失败</li><li>5： 已拒绝</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：YYYY-M-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AuditOpinion(self):
+        r"""<p>审批意见</p>
+        :rtype: str
+        """
+        return self._AuditOpinion
+
+    @AuditOpinion.setter
+    def AuditOpinion(self, AuditOpinion):
+        self._AuditOpinion = AuditOpinion
+
+    @property
+    def AuditTime(self):
+        r"""<p>审批时间</p><p>参数格式：YYYY-M-DD hh:mm:ss</p><p>未审批为空</p>
+        :rtype: str
+        """
+        return self._AuditTime
+
+    @AuditTime.setter
+    def AuditTime(self, AuditTime):
+        self._AuditTime = AuditTime
+
+
+    def _deserialize(self, params):
+        self._ApplyId = params.get("ApplyId")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._TargetUin = params.get("TargetUin")
+        self._TargetName = params.get("TargetName")
+        if params.get("RoleConfigurations") is not None:
+            self._RoleConfigurations = []
+            for item in params.get("RoleConfigurations"):
+                obj = ApplyRoleConfiguration()
+                obj._deserialize(item)
+                self._RoleConfigurations.append(obj)
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._AuditOpinion = params.get("AuditOpinion")
+        self._AuditTime = params.get("AuditTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

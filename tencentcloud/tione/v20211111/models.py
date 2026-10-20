@@ -3587,6 +3587,8 @@ class CreateNotebookRequest(AbstractModel):
         :type AutoStopping: bool
         :param _DirectInternetAccess: <p>是否访问公网</p>
         :type DirectInternetAccess: bool
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
         :param _ResourceGroupId: <p>资源组ID(for预付费)</p>
         :type ResourceGroupId: str
         :param _VpcId: <p>Vpc-Id</p>
@@ -3631,6 +3633,7 @@ class CreateNotebookRequest(AbstractModel):
         self._RootAccess = None
         self._AutoStopping = None
         self._DirectInternetAccess = None
+        self._TiProjectId = None
         self._ResourceGroupId = None
         self._VpcId = None
         self._SubnetId = None
@@ -3726,6 +3729,17 @@ class CreateNotebookRequest(AbstractModel):
     @DirectInternetAccess.setter
     def DirectInternetAccess(self, DirectInternetAccess):
         self._DirectInternetAccess = DirectInternetAccess
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def ResourceGroupId(self):
@@ -3936,6 +3950,7 @@ class CreateNotebookRequest(AbstractModel):
         self._RootAccess = params.get("RootAccess")
         self._AutoStopping = params.get("AutoStopping")
         self._DirectInternetAccess = params.get("DirectInternetAccess")
+        self._TiProjectId = params.get("TiProjectId")
         self._ResourceGroupId = params.get("ResourceGroupId")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")

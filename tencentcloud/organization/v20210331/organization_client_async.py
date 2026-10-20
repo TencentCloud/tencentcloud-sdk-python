@@ -547,6 +547,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRoleConfigurationApplyScope(
+            self,
+            request: models.CreateRoleConfigurationApplyScopeRequest,
+            opts: Dict = None,
+    ) -> models.CreateRoleConfigurationApplyScopeResponse:
+        """
+        创建权限申请范围，支持批量upsert
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRoleConfigurationApplyScope"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRoleConfigurationApplyScopeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSCIMCredential(
             self,
             request: models.CreateSCIMCredentialRequest,
@@ -812,6 +830,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "DeleteRoleConfiguration"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRoleConfigurationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRoleConfigurationApplyScope(
+            self,
+            request: models.DeleteRoleConfigurationApplyScopeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRoleConfigurationApplyScopeResponse:
+        """
+        删除权限申请范围
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRoleConfigurationApplyScope"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRoleConfigurationApplyScopeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1771,6 +1807,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListPermissionApplyOrders(
+            self,
+            request: models.ListPermissionApplyOrdersRequest,
+            opts: Dict = None,
+    ) -> models.ListPermissionApplyOrdersResponse:
+        """
+        管理员审批列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListPermissionApplyOrders"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListPermissionApplyOrdersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListPermissionPoliciesInRoleConfiguration(
             self,
             request: models.ListPermissionPoliciesInRoleConfigurationRequest,
@@ -1838,6 +1892,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "ListRoleAssignments"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListRoleAssignmentsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListRoleConfigurationApplyScopes(
+            self,
+            request: models.ListRoleConfigurationApplyScopesRequest,
+            opts: Dict = None,
+    ) -> models.ListRoleConfigurationApplyScopesResponse:
+        """
+        权限申请范围列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListRoleConfigurationApplyScopes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListRoleConfigurationApplyScopesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

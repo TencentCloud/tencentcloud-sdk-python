@@ -279,6 +279,52 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDeliveryServer(self, request):
+        r"""删除转发服务器，私有化调用path为：capi/LogCenter/DeliveryLog/DeleteDeliveryServer
+
+        :param request: Request instance for DeleteDeliveryServer.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DeleteDeliveryServerRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeleteDeliveryServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeliveryServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeliveryServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDeliveryStrategy(self, request):
+        r"""删除转发策略，私有化调用path为：capi/LogCenter/DeliveryLog/DeleteDeliveryStrategy
+
+        :param request: Request instance for DeleteDeliveryStrategy.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DeleteDeliveryStrategyRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeleteDeliveryStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeliveryStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeliveryStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDeviceVirtualGroup(self, request):
         r"""删除终端自定义分组，私有化调用path为：/capi/Assets/Device/DeleteDeviceVirtualGroup
 
@@ -555,6 +601,52 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeliveryServer(self, request):
+        r"""转发服务器详情，私有化调用path为：capi/LogCenter/DescribeDeliveryServer
+
+        :param request: Request instance for DescribeDeliveryServer.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeliveryServerRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeliveryServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeliveryServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeliveryServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeliveryStrategy(self, request):
+        r"""转发策略详情，私有化调用path为：capi/LogCenter/DeliveryLog/DescribeDeliveryStrategy
+
+        :param request: Request instance for DescribeDeliveryStrategy.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDeliveryStrategyRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDeliveryStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeliveryStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeliveryStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceChildGroups(self, request):
         r"""查询设备组子分组详情，私有化调用path为：capi/Assets/Device/DescribeDeviceChildGroups
 
@@ -778,6 +870,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeProfileFieldsMenu", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProfileFieldsMenuResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePublicEncryptKey(self, request):
+        r"""获取用于RSA加密的公钥，对敏感数据进行加密传输。
+
+        :param request: Request instance for DescribePublicEncryptKey.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribePublicEncryptKeyRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribePublicEncryptKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePublicEncryptKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePublicEncryptKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1123,6 +1238,52 @@ class IoaClient(AbstractClient):
             body = self.call("ModifyCompanyDirectoryConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCompanyDirectoryConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDeliveryServer(self, request):
+        r"""创建或编辑日志转发服务器，私有化调用path为：capi/LogCenter/DeliveryLog/ModifyDeliveryServer
+
+        :param request: Request instance for ModifyDeliveryServer.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.ModifyDeliveryServerRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ModifyDeliveryServerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeliveryServer", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeliveryServerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDeliveryStrategy(self, request):
+        r"""创建或编辑日志转发策略，私有化调用path为：capi/LogCenter/DeliveryLog/ModifyDeliveryStrategy
+
+        :param request: Request instance for ModifyDeliveryStrategy.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.ModifyDeliveryStrategyRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ModifyDeliveryStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeliveryStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeliveryStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

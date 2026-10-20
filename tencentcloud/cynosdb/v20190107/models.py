@@ -6144,6 +6144,70 @@ class CancelClusterServerlessScalePlanResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CancelTaskRequest(AbstractModel):
+    r"""CancelTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelTaskResponse(AbstractModel):
+    r"""CancelTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CheckCreateLibraDBInstanceRequest(AbstractModel):
     r"""CheckCreateLibraDBInstance请求参数结构体
 
@@ -7099,14 +7163,18 @@ class ClusterInstanceDetail(AbstractModel):
         :type InstanceName: str
         :param _InstanceType: <p>引擎类型</p>
         :type InstanceType: str
+        :param _Status: <p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
+        :type Status: str
         :param _InstanceStatus: <p>实例状态</p>
         :type InstanceStatus: str
+        :param _StatusDesc: <p>实例状态中文描述</p>
+        :type StatusDesc: str
         :param _InstanceStatusDesc: <p>实例状态描述</p>
         :type InstanceStatusDesc: str
-        :param _InstanceCpu: <p>cpu核数</p>
-        :type InstanceCpu: int
         :param _Cpu: <p>Cpu</p><p>单位：核</p>
         :type Cpu: int
+        :param _InstanceCpu: <p>cpu核数</p>
+        :type InstanceCpu: int
         :param _MinCpu: <p>serverless实例cpu下限</p><p>单位：核</p>
         :type MinCpu: float
         :param _MaxCpu: <p>serverless实例cpu上限</p><p>单位：核</p>
@@ -7127,6 +7195,8 @@ class ClusterInstanceDetail(AbstractModel):
         :type MaintainWeekDays: list of str
         :param _InstanceTasks: <p>实例任务信息</p>
         :type InstanceTasks: list of ObjectTask
+        :param _DeviceType: <p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
+        :type DeviceType: str
         :param _InstanceDeviceType: <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
         :type InstanceDeviceType: str
         :param _InstanceStorageType: <p>实例存储类型<br>说明：仅当要查询的资源为 LibraDB 时，此参数才会返回值。</p>
@@ -7147,10 +7217,6 @@ class ClusterInstanceDetail(AbstractModel):
         :type Zone: str
         :param _PhysicalZone: <p>实例所在的物理可用区</p>
         :type PhysicalZone: str
-        :param _Status: <p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
-        :type Status: str
-        :param _StatusDesc: <p>实例状态中文描述</p>
-        :type StatusDesc: str
         :param _DbType: <p>数据库类型</p>
         :type DbType: str
         :param _DbVersion: <p>数据库版本</p>
@@ -7208,8 +7274,6 @@ class ClusterInstanceDetail(AbstractModel):
         :type ResourceTags: list of Tag
         :param _InstanceAbility: <p>当前实例支持的能力</p>
         :type InstanceAbility: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
-        :param _DeviceType: <p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
-        :type DeviceType: str
         :param _GdnId: <p>全球数据库唯一标识</p>
         :type GdnId: str
         """
@@ -7220,10 +7284,12 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceId = None
         self._InstanceName = None
         self._InstanceType = None
+        self._Status = None
         self._InstanceStatus = None
+        self._StatusDesc = None
         self._InstanceStatusDesc = None
-        self._InstanceCpu = None
         self._Cpu = None
+        self._InstanceCpu = None
         self._MinCpu = None
         self._MaxCpu = None
         self._Memory = None
@@ -7234,6 +7300,7 @@ class ClusterInstanceDetail(AbstractModel):
         self._MaintainDuration = None
         self._MaintainWeekDays = None
         self._InstanceTasks = None
+        self._DeviceType = None
         self._InstanceDeviceType = None
         self._InstanceStorageType = None
         self._DbMode = None
@@ -7244,8 +7311,6 @@ class ClusterInstanceDetail(AbstractModel):
         self._Region = None
         self._Zone = None
         self._PhysicalZone = None
-        self._Status = None
-        self._StatusDesc = None
         self._DbType = None
         self._DbVersion = None
         self._Storage = None
@@ -7274,7 +7339,6 @@ class ClusterInstanceDetail(AbstractModel):
         self._IsFreeze = None
         self._ResourceTags = None
         self._InstanceAbility = None
-        self._DeviceType = None
         self._GdnId = None
 
     @property
@@ -7355,7 +7419,20 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceType = InstanceType
 
     @property
+    def Status(self):
+        r"""<p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
     def InstanceStatus(self):
+        warnings.warn("parameter `InstanceStatus` is deprecated", DeprecationWarning) 
+
         r"""<p>实例状态</p>
         :rtype: str
         """
@@ -7363,10 +7440,25 @@ class ClusterInstanceDetail(AbstractModel):
 
     @InstanceStatus.setter
     def InstanceStatus(self, InstanceStatus):
+        warnings.warn("parameter `InstanceStatus` is deprecated", DeprecationWarning) 
+
         self._InstanceStatus = InstanceStatus
 
     @property
+    def StatusDesc(self):
+        r"""<p>实例状态中文描述</p>
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
     def InstanceStatusDesc(self):
+        warnings.warn("parameter `InstanceStatusDesc` is deprecated", DeprecationWarning) 
+
         r"""<p>实例状态描述</p>
         :rtype: str
         """
@@ -7374,7 +7466,20 @@ class ClusterInstanceDetail(AbstractModel):
 
     @InstanceStatusDesc.setter
     def InstanceStatusDesc(self, InstanceStatusDesc):
+        warnings.warn("parameter `InstanceStatusDesc` is deprecated", DeprecationWarning) 
+
         self._InstanceStatusDesc = InstanceStatusDesc
+
+    @property
+    def Cpu(self):
+        r"""<p>Cpu</p><p>单位：核</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
 
     @property
     def InstanceCpu(self):
@@ -7390,17 +7495,6 @@ class ClusterInstanceDetail(AbstractModel):
         warnings.warn("parameter `InstanceCpu` is deprecated", DeprecationWarning) 
 
         self._InstanceCpu = InstanceCpu
-
-    @property
-    def Cpu(self):
-        r"""<p>Cpu</p><p>单位：核</p>
-        :rtype: int
-        """
-        return self._Cpu
-
-    @Cpu.setter
-    def Cpu(self, Cpu):
-        self._Cpu = Cpu
 
     @property
     def MinCpu(self):
@@ -7437,6 +7531,8 @@ class ClusterInstanceDetail(AbstractModel):
 
     @property
     def InstanceMemory(self):
+        warnings.warn("parameter `InstanceMemory` is deprecated", DeprecationWarning) 
+
         r"""<p>内存</p>
         :rtype: int
         """
@@ -7444,6 +7540,8 @@ class ClusterInstanceDetail(AbstractModel):
 
     @InstanceMemory.setter
     def InstanceMemory(self, InstanceMemory):
+        warnings.warn("parameter `InstanceMemory` is deprecated", DeprecationWarning) 
+
         self._InstanceMemory = InstanceMemory
 
     @property
@@ -7513,7 +7611,20 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceTasks = InstanceTasks
 
     @property
+    def DeviceType(self):
+        r"""<p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
     def InstanceDeviceType(self):
+        warnings.warn("parameter `InstanceDeviceType` is deprecated", DeprecationWarning) 
+
         r"""<p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
         :rtype: str
         """
@@ -7521,6 +7632,8 @@ class ClusterInstanceDetail(AbstractModel):
 
     @InstanceDeviceType.setter
     def InstanceDeviceType(self, InstanceDeviceType):
+        warnings.warn("parameter `InstanceDeviceType` is deprecated", DeprecationWarning) 
+
         self._InstanceDeviceType = InstanceDeviceType
 
     @property
@@ -7621,28 +7734,6 @@ class ClusterInstanceDetail(AbstractModel):
     @PhysicalZone.setter
     def PhysicalZone(self, PhysicalZone):
         self._PhysicalZone = PhysicalZone
-
-    @property
-    def Status(self):
-        r"""<p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 恢复中</li><li>offlining： 下线中</li><li>offlined： 已下线</li></ul>
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def StatusDesc(self):
-        r"""<p>实例状态中文描述</p>
-        :rtype: str
-        """
-        return self._StatusDesc
-
-    @StatusDesc.setter
-    def StatusDesc(self, StatusDesc):
-        self._StatusDesc = StatusDesc
 
     @property
     def DbType(self):
@@ -7954,17 +8045,6 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceAbility = InstanceAbility
 
     @property
-    def DeviceType(self):
-        r"""<p>实例机器类型</p><p>枚举值：</p><ul><li>common： 通用型</li><li>exclusive： 独享型</li></ul>
-        :rtype: str
-        """
-        return self._DeviceType
-
-    @DeviceType.setter
-    def DeviceType(self, DeviceType):
-        self._DeviceType = DeviceType
-
-    @property
     def GdnId(self):
         r"""<p>全球数据库唯一标识</p>
         :rtype: str
@@ -7984,10 +8064,12 @@ class ClusterInstanceDetail(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
         self._InstanceType = params.get("InstanceType")
+        self._Status = params.get("Status")
         self._InstanceStatus = params.get("InstanceStatus")
+        self._StatusDesc = params.get("StatusDesc")
         self._InstanceStatusDesc = params.get("InstanceStatusDesc")
-        self._InstanceCpu = params.get("InstanceCpu")
         self._Cpu = params.get("Cpu")
+        self._InstanceCpu = params.get("InstanceCpu")
         self._MinCpu = params.get("MinCpu")
         self._MaxCpu = params.get("MaxCpu")
         self._Memory = params.get("Memory")
@@ -8003,6 +8085,7 @@ class ClusterInstanceDetail(AbstractModel):
                 obj = ObjectTask()
                 obj._deserialize(item)
                 self._InstanceTasks.append(obj)
+        self._DeviceType = params.get("DeviceType")
         self._InstanceDeviceType = params.get("InstanceDeviceType")
         self._InstanceStorageType = params.get("InstanceStorageType")
         self._DbMode = params.get("DbMode")
@@ -8015,8 +8098,6 @@ class ClusterInstanceDetail(AbstractModel):
         self._Region = params.get("Region")
         self._Zone = params.get("Zone")
         self._PhysicalZone = params.get("PhysicalZone")
-        self._Status = params.get("Status")
-        self._StatusDesc = params.get("StatusDesc")
         self._DbType = params.get("DbType")
         self._DbVersion = params.get("DbVersion")
         self._Storage = params.get("Storage")
@@ -8062,7 +8143,6 @@ class ClusterInstanceDetail(AbstractModel):
         if params.get("InstanceAbility") is not None:
             self._InstanceAbility = InstanceAbility()
             self._InstanceAbility._deserialize(params.get("InstanceAbility"))
-        self._DeviceType = params.get("DeviceType")
         self._GdnId = params.get("GdnId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -30572,6 +30652,90 @@ class DescribeProxySpecsResponse(AbstractModel):
                 obj = ProxySpec()
                 obj._deserialize(item)
                 self._ProxySpecs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProxyZoneStocksRequest(AbstractModel):
+    r"""DescribeProxyZoneStocks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: <p>可用区</p>
+        :type Zone: str
+        """
+        self._Zone = None
+
+    @property
+    def Zone(self):
+        r"""<p>可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProxyZoneStocksResponse(AbstractModel):
+    r"""DescribeProxyZoneStocks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyZoneStockInfos: <p>数据库代理地域库存列表</p>
+        :type ProxyZoneStockInfos: list of ProxyZoneStockInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProxyZoneStockInfos = None
+        self._RequestId = None
+
+    @property
+    def ProxyZoneStockInfos(self):
+        r"""<p>数据库代理地域库存列表</p>
+        :rtype: list of ProxyZoneStockInfo
+        """
+        return self._ProxyZoneStockInfos
+
+    @ProxyZoneStockInfos.setter
+    def ProxyZoneStockInfos(self, ProxyZoneStockInfos):
+        self._ProxyZoneStockInfos = ProxyZoneStockInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProxyZoneStockInfos") is not None:
+            self._ProxyZoneStockInfos = []
+            for item in params.get("ProxyZoneStockInfos"):
+                obj = ProxyZoneStockInfo()
+                obj._deserialize(item)
+                self._ProxyZoneStockInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -53409,6 +53573,87 @@ class ProxyZone(AbstractModel):
     def _deserialize(self, params):
         self._ProxyNodeZone = params.get("ProxyNodeZone")
         self._ProxyNodeCount = params.get("ProxyNodeCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyZoneStockInfo(AbstractModel):
+    r"""数据库代理规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _Zone: <p>可用区</p>
+        :type Zone: str
+        :param _CpuStock: <p>CPU库存</p><p>该字段不作为发货是否有资源的判断标准，资源请参考CheckProxyStockInfos</p>
+        :type CpuStock: int
+        :param _MemStock: <p>内存库存</p><p>该字段不作为发货是否有资源的判断标准，资源请参考CheckProxyStockInfos</p>
+        :type MemStock: int
+        """
+        self._Region = None
+        self._Zone = None
+        self._CpuStock = None
+        self._MemStock = None
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""<p>可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def CpuStock(self):
+        r"""<p>CPU库存</p><p>该字段不作为发货是否有资源的判断标准，资源请参考CheckProxyStockInfos</p>
+        :rtype: int
+        """
+        return self._CpuStock
+
+    @CpuStock.setter
+    def CpuStock(self, CpuStock):
+        self._CpuStock = CpuStock
+
+    @property
+    def MemStock(self):
+        r"""<p>内存库存</p><p>该字段不作为发货是否有资源的判断标准，资源请参考CheckProxyStockInfos</p>
+        :rtype: int
+        """
+        return self._MemStock
+
+    @MemStock.setter
+    def MemStock(self, MemStock):
+        self._MemStock = MemStock
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._CpuStock = params.get("CpuStock")
+        self._MemStock = params.get("MemStock")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
