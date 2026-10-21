@@ -322,6 +322,8 @@ class ComputeDetail(AbstractModel):
         :type PrepaidEnable: bool
         :param _PostpaidEnable: <p>该套餐是否支持按量计费</p>
         :type PostpaidEnable: bool
+        :param _SupportedChargeTypes: <p>该算力套餐支持的计费模式列表：POSTPAID_BY_HOUR（按量）、PREPAID（包年包月）、SPOT（竞价）</p>
+        :type SupportedChargeTypes: list of str
         """
         self._BundleType = None
         self._Count = None
@@ -332,6 +334,7 @@ class ComputeDetail(AbstractModel):
         self._Memory = None
         self._PrepaidEnable = None
         self._PostpaidEnable = None
+        self._SupportedChargeTypes = None
 
     @property
     def BundleType(self):
@@ -432,6 +435,17 @@ class ComputeDetail(AbstractModel):
     def PostpaidEnable(self, PostpaidEnable):
         self._PostpaidEnable = PostpaidEnable
 
+    @property
+    def SupportedChargeTypes(self):
+        r"""<p>该算力套餐支持的计费模式列表：POSTPAID_BY_HOUR（按量）、PREPAID（包年包月）、SPOT（竞价）</p>
+        :rtype: list of str
+        """
+        return self._SupportedChargeTypes
+
+    @SupportedChargeTypes.setter
+    def SupportedChargeTypes(self, SupportedChargeTypes):
+        self._SupportedChargeTypes = SupportedChargeTypes
+
 
     def _deserialize(self, params):
         self._BundleType = params.get("BundleType")
@@ -443,6 +457,7 @@ class ComputeDetail(AbstractModel):
         self._Memory = params.get("Memory")
         self._PrepaidEnable = params.get("PrepaidEnable")
         self._PostpaidEnable = params.get("PostpaidEnable")
+        self._SupportedChargeTypes = params.get("SupportedChargeTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -807,7 +822,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
         :type ServiceName: str
         :param _Replicas: <p>副本数</p>
         :type Replicas: int
-        :param _ServiceChargeType: <p>付费方式，POSTPAID_BY_HOUR按量后付费</p>
+        :param _ServiceChargeType: <p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
         :type ServiceChargeType: str
         :param _HyperParam: <p>描述了服务的超参数配置</p>
         :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
@@ -862,7 +877,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
 
     @property
     def ServiceChargeType(self):
-        r"""<p>付费方式，POSTPAID_BY_HOUR按量后付费</p>
+        r"""<p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
         :rtype: str
         """
         return self._ServiceChargeType
@@ -5836,7 +5851,7 @@ class ServiceMetaData(AbstractModel):
         r"""
         :param _ServiceName: 服务名称
         :type ServiceName: str
-        :param _ServiceChargeType: 收费类型
+        :param _ServiceChargeType: <p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
         :type ServiceChargeType: str
         """
         self._ServiceName = None
@@ -5855,7 +5870,7 @@ class ServiceMetaData(AbstractModel):
 
     @property
     def ServiceChargeType(self):
-        r"""收费类型
+        r"""<p>付费方式：POSTPAID_BY_HOUR 按量后付费，PREPAID_BY_MONTH 包年包月，SPOT 竞价售卖（竞价需先调用 BidSpotInferService 对套餐出价）</p>
         :rtype: str
         """
         return self._ServiceChargeType

@@ -38456,26 +38456,32 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: <p>实例 ID。</p>
         :type InstanceId: str
-        :param _DstSlave: 目标从实例。可选值："first" - 第一备机；"second" - 第二备机。默认值为 "first"，仅多可用区实例支持设置为 "second"。
+        :param _DstSlave: <p>目标从实例。可选值：&quot;first&quot; - 第一备机；&quot;second&quot; - 第二备机；&quot;third&quot; - 第三备机。默认值为 &quot;first&quot;，仅多可用区实例支持设置为 &quot;second&quot;。</p>
         :type DstSlave: str
-        :param _ForceSwitch: 是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。
+        :param _ForceSwitch: <p>是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。</p>
         :type ForceSwitch: bool
-        :param _WaitSwitch: 是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
+        :param _WaitSwitch: <p>是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。</p>
         :type WaitSwitch: bool
-        :param _DstNodeId: 集群版实例指定节点 ID 发起主从切换。
+        :param _DstNodeId: <p>集群版实例指定节点 ID 发起主从切换。</p>
         :type DstNodeId: str
+        :param _SyncTimeout: <p>等待主备位点差收敛到阈值以内的最长时间,范围：30s-3600s</p>
+        :type SyncTimeout: int
+        :param _SyncDistance: <p>slave 执行位点和读到位点差值，在最长等待时间内，位点差需小于该值才启动切换</p>
+        :type SyncDistance: str
         """
         self._InstanceId = None
         self._DstSlave = None
         self._ForceSwitch = None
         self._WaitSwitch = None
         self._DstNodeId = None
+        self._SyncTimeout = None
+        self._SyncDistance = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -38486,7 +38492,7 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
 
     @property
     def DstSlave(self):
-        r"""目标从实例。可选值："first" - 第一备机；"second" - 第二备机。默认值为 "first"，仅多可用区实例支持设置为 "second"。
+        r"""<p>目标从实例。可选值：&quot;first&quot; - 第一备机；&quot;second&quot; - 第二备机；&quot;third&quot; - 第三备机。默认值为 &quot;first&quot;，仅多可用区实例支持设置为 &quot;second&quot;。</p>
         :rtype: str
         """
         return self._DstSlave
@@ -38499,7 +38505,7 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
     def ForceSwitch(self):
         warnings.warn("parameter `ForceSwitch` is deprecated", DeprecationWarning) 
 
-        r"""是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。
+        r"""<p>是否强制切换。默认为 False。注意，若设置强制切换为 True，实例存在丢失数据的风险，请谨慎使用。</p>
         :rtype: bool
         """
         return self._ForceSwitch
@@ -38512,7 +38518,7 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
 
     @property
     def WaitSwitch(self):
-        r"""是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。
+        r"""<p>是否时间窗内切换。默认为 False，即不在时间窗内切换。注意，如果设置了 ForceSwitch 参数为 True，则该参数不生效。</p>
         :rtype: bool
         """
         return self._WaitSwitch
@@ -38523,7 +38529,7 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
 
     @property
     def DstNodeId(self):
-        r"""集群版实例指定节点 ID 发起主从切换。
+        r"""<p>集群版实例指定节点 ID 发起主从切换。</p>
         :rtype: str
         """
         return self._DstNodeId
@@ -38532,6 +38538,28 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
     def DstNodeId(self, DstNodeId):
         self._DstNodeId = DstNodeId
 
+    @property
+    def SyncTimeout(self):
+        r"""<p>等待主备位点差收敛到阈值以内的最长时间,范围：30s-3600s</p>
+        :rtype: int
+        """
+        return self._SyncTimeout
+
+    @SyncTimeout.setter
+    def SyncTimeout(self, SyncTimeout):
+        self._SyncTimeout = SyncTimeout
+
+    @property
+    def SyncDistance(self):
+        r"""<p>slave 执行位点和读到位点差值，在最长等待时间内，位点差需小于该值才启动切换</p>
+        :rtype: str
+        """
+        return self._SyncDistance
+
+    @SyncDistance.setter
+    def SyncDistance(self, SyncDistance):
+        self._SyncDistance = SyncDistance
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -38539,6 +38567,8 @@ class SwitchDBInstanceMasterSlaveRequest(AbstractModel):
         self._ForceSwitch = params.get("ForceSwitch")
         self._WaitSwitch = params.get("WaitSwitch")
         self._DstNodeId = params.get("DstNodeId")
+        self._SyncTimeout = params.get("SyncTimeout")
+        self._SyncDistance = params.get("SyncDistance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38556,7 +38586,7 @@ class SwitchDBInstanceMasterSlaveResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务 ID。
+        :param _AsyncRequestId: <p>异步任务 ID。</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -38566,7 +38596,7 @@ class SwitchDBInstanceMasterSlaveResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务 ID。
+        r"""<p>异步任务 ID。</p>
         :rtype: str
         """
         return self._AsyncRequestId

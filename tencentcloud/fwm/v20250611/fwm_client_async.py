@@ -43,6 +43,24 @@ class FwmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAccountGroup(
+            self,
+            request: models.CreateAccountGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateAccountGroupResponse:
+        """
+        创建账户组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAccountGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAccountGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAnalyzePolicyTask(
             self,
             request: models.CreateAnalyzePolicyTaskRequest,
@@ -241,6 +259,24 @@ class FwmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAccountGroup(
+            self,
+            request: models.DeleteAccountGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAccountGroupResponse:
+        """
+        删除账户组，账户组下有成员时不可删除
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAccountGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAccountGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteEdgeAclRule(
             self,
             request: models.DeleteEdgeAclRuleRequest,
@@ -344,6 +380,24 @@ class FwmClient(AbstractClient):
         kwargs["action"] = "DeleteVpcAclRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteVpcAclRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAccountGroups(
+            self,
+            request: models.DescribeAccountGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccountGroupsResponse:
+        """
+        获取账户组列表，支持分页和关键词搜索
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccountGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccountGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -673,6 +727,60 @@ class FwmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyAccountGroup(
+            self,
+            request: models.ModifyAccountGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAccountGroupResponse:
+        """
+        修改账户组名称
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAccountGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAccountGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCfwManaged(
+            self,
+            request: models.ModifyCfwManagedRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCfwManagedResponse:
+        """
+        设置成员账号的云防火墙纳管状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCfwManaged"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCfwManagedResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCfwShareRole(
+            self,
+            request: models.ModifyCfwShareRoleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCfwShareRoleResponse:
+        """
+        设置集团成员的云防火墙共享角色（sharer/user/none）。共享者全集团唯一；共享者→使用者禁止直接变更，需先将角色改为 none；设为使用者时必须指定共享者 SharerAppId。仅管理员可操作。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCfwShareRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCfwShareRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyEdgeAclRule(
             self,
             request: models.ModifyEdgeAclRuleRequest,
@@ -704,6 +812,24 @@ class FwmClient(AbstractClient):
         kwargs["action"] = "ModifyEdgeAclRuleSequence"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyEdgeAclRuleSequenceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMemberGroup(
+            self,
+            request: models.ModifyMemberGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMemberGroupResponse:
+        """
+        设置成员所属账户组，GroupId为空字符串表示移出账户组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMemberGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMemberGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

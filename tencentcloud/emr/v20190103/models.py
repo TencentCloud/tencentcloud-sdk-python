@@ -5703,6 +5703,8 @@ class CreateCloudInstanceRequest(AbstractModel):
         :type AirflowDagSource: :class:`tencentcloud.emr.v20190103.models.AirflowDagSourceInput`
         :param _AirflowGitCredential: <p>airflow源凭证</p>
         :type AirflowGitCredential: :class:`tencentcloud.emr.v20190103.models.AirflowGitCredentialInput`
+        :param _SgIds: <p>多安全组绑定</p>
+        :type SgIds: list of str
         """
         self._InstanceName = None
         self._ClusterClass = None
@@ -5731,6 +5733,7 @@ class CreateCloudInstanceRequest(AbstractModel):
         self._LogStoreID = None
         self._AirflowDagSource = None
         self._AirflowGitCredential = None
+        self._SgIds = None
 
     @property
     def InstanceName(self):
@@ -6029,6 +6032,17 @@ class CreateCloudInstanceRequest(AbstractModel):
     def AirflowGitCredential(self, AirflowGitCredential):
         self._AirflowGitCredential = AirflowGitCredential
 
+    @property
+    def SgIds(self):
+        r"""<p>多安全组绑定</p>
+        :rtype: list of str
+        """
+        return self._SgIds
+
+    @SgIds.setter
+    def SgIds(self, SgIds):
+        self._SgIds = SgIds
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -6087,6 +6101,7 @@ class CreateCloudInstanceRequest(AbstractModel):
         if params.get("AirflowGitCredential") is not None:
             self._AirflowGitCredential = AirflowGitCredentialInput()
             self._AirflowGitCredential._deserialize(params.get("AirflowGitCredential"))
+        self._SgIds = params.get("SgIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

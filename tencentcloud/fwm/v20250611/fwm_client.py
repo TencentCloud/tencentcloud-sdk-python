@@ -49,6 +49,29 @@ class FwmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAccountGroup(self, request):
+        r"""创建账户组
+
+        :param request: Request instance for CreateAccountGroup.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.CreateAccountGroupRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.CreateAccountGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAccountGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAccountGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAnalyzePolicyTask(self, request):
         r"""创建策略风险分析任务
 
@@ -302,6 +325,29 @@ class FwmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAccountGroup(self, request):
+        r"""删除账户组，账户组下有成员时不可删除
+
+        :param request: Request instance for DeleteAccountGroup.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.DeleteAccountGroupRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.DeleteAccountGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccountGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAccountGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteEdgeAclRule(self, request):
         r"""批量删除互联网边界ACL规则。支持一次删除多条规则。
 
@@ -431,6 +477,29 @@ class FwmClient(AbstractClient):
             body = self.call("DeleteVpcAclRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteVpcAclRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccountGroups(self, request):
+        r"""获取账户组列表，支持分页和关键词搜索
+
+        :param request: Request instance for DescribeAccountGroups.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.DescribeAccountGroupsRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.DescribeAccountGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -854,6 +923,75 @@ class FwmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAccountGroup(self, request):
+        r"""修改账户组名称
+
+        :param request: Request instance for ModifyAccountGroup.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.ModifyAccountGroupRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.ModifyAccountGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccountGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCfwManaged(self, request):
+        r"""设置成员账号的云防火墙纳管状态
+
+        :param request: Request instance for ModifyCfwManaged.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.ModifyCfwManagedRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.ModifyCfwManagedResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCfwManaged", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCfwManagedResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCfwShareRole(self, request):
+        r"""设置集团成员的云防火墙共享角色（sharer/user/none）。共享者全集团唯一；共享者→使用者禁止直接变更，需先将角色改为 none；设为使用者时必须指定共享者 SharerAppId。仅管理员可操作。
+
+        :param request: Request instance for ModifyCfwShareRole.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.ModifyCfwShareRoleRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.ModifyCfwShareRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCfwShareRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCfwShareRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyEdgeAclRule(self, request):
         r"""修改互联网边界ACL规则。Rule 参数中必须包含 RuleId 用于指定要修改的规则。
 
@@ -891,6 +1029,29 @@ class FwmClient(AbstractClient):
             body = self.call("ModifyEdgeAclRuleSequence", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyEdgeAclRuleSequenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMemberGroup(self, request):
+        r"""设置成员所属账户组，GroupId为空字符串表示移出账户组
+
+        :param request: Request instance for ModifyMemberGroup.
+        :type request: :class:`tencentcloud.fwm.v20250611.models.ModifyMemberGroupRequest`
+        :rtype: :class:`tencentcloud.fwm.v20250611.models.ModifyMemberGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMemberGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMemberGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

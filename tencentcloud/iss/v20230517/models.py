@@ -1802,22 +1802,24 @@ class AddStreamAuthData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 鉴权配置ID（uuid）
+        :param _Id: <p>鉴权配置ID（uuid）</p>
         :type Id: str
-        :param _PullState: 是否开播放鉴权（1:开启,0:关闭）
+        :param _PullState: <p>是否开播放鉴权（1:开启,0:关闭）</p>
         :type PullState: int
-        :param _PullSecret: 播放密钥（仅支持字母数字，长度0-10位）
+        :param _PullSecret: <p>播放密钥（仅支持字母数字，长度0-10位）</p>
         :type PullSecret: str
-        :param _PullExpired: 播放过期时间（单位：分钟）
+        :param _PullExpired: <p>播放过期时间（单位：分钟）</p>
         :type PullExpired: int
-        :param _PushState: 是否开启推流鉴权（1:开启,0:关闭）
+        :param _PushState: <p>是否开启推流鉴权（1:开启,0:关闭）</p>
         :type PushState: int
-        :param _PushSecret: 推流密钥（仅支持字母数字，长度0-10位）
+        :param _PushSecret: <p>推流密钥（仅支持字母数字，长度0-10位）</p>
         :type PushSecret: str
-        :param _PushExpired: 推流过期时间（单位：分钟）
+        :param _PushExpired: <p>推流过期时间（单位：分钟）</p>
         :type PushExpired: int
-        :param _AppId: 用户ID
+        :param _AppId: <p>用户ID</p>
         :type AppId: int
+        :param _ExcludePushDomainIds: <p>不生效推流鉴权的域名 ID 列表</p>
+        :type ExcludePushDomainIds: list of str
         """
         self._Id = None
         self._PullState = None
@@ -1827,10 +1829,11 @@ class AddStreamAuthData(AbstractModel):
         self._PushSecret = None
         self._PushExpired = None
         self._AppId = None
+        self._ExcludePushDomainIds = None
 
     @property
     def Id(self):
-        r"""鉴权配置ID（uuid）
+        r"""<p>鉴权配置ID（uuid）</p>
         :rtype: str
         """
         return self._Id
@@ -1841,7 +1844,7 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PullState(self):
-        r"""是否开播放鉴权（1:开启,0:关闭）
+        r"""<p>是否开播放鉴权（1:开启,0:关闭）</p>
         :rtype: int
         """
         return self._PullState
@@ -1852,7 +1855,7 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PullSecret(self):
-        r"""播放密钥（仅支持字母数字，长度0-10位）
+        r"""<p>播放密钥（仅支持字母数字，长度0-10位）</p>
         :rtype: str
         """
         return self._PullSecret
@@ -1863,7 +1866,7 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PullExpired(self):
-        r"""播放过期时间（单位：分钟）
+        r"""<p>播放过期时间（单位：分钟）</p>
         :rtype: int
         """
         return self._PullExpired
@@ -1874,7 +1877,7 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PushState(self):
-        r"""是否开启推流鉴权（1:开启,0:关闭）
+        r"""<p>是否开启推流鉴权（1:开启,0:关闭）</p>
         :rtype: int
         """
         return self._PushState
@@ -1885,7 +1888,7 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PushSecret(self):
-        r"""推流密钥（仅支持字母数字，长度0-10位）
+        r"""<p>推流密钥（仅支持字母数字，长度0-10位）</p>
         :rtype: str
         """
         return self._PushSecret
@@ -1896,7 +1899,7 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def PushExpired(self):
-        r"""推流过期时间（单位：分钟）
+        r"""<p>推流过期时间（单位：分钟）</p>
         :rtype: int
         """
         return self._PushExpired
@@ -1907,7 +1910,7 @@ class AddStreamAuthData(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: int
         """
         return self._AppId
@@ -1915,6 +1918,17 @@ class AddStreamAuthData(AbstractModel):
     @AppId.setter
     def AppId(self, AppId):
         self._AppId = AppId
+
+    @property
+    def ExcludePushDomainIds(self):
+        r"""<p>不生效推流鉴权的域名 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludePushDomainIds
+
+    @ExcludePushDomainIds.setter
+    def ExcludePushDomainIds(self, ExcludePushDomainIds):
+        self._ExcludePushDomainIds = ExcludePushDomainIds
 
 
     def _deserialize(self, params):
@@ -1926,6 +1940,7 @@ class AddStreamAuthData(AbstractModel):
         self._PushSecret = params.get("PushSecret")
         self._PushExpired = params.get("PushExpired")
         self._AppId = params.get("AppId")
+        self._ExcludePushDomainIds = params.get("ExcludePushDomainIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1943,20 +1958,22 @@ class AddStreamAuthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 鉴权配置ID（uuid）
+        :param _Id: <p>鉴权配置ID（uuid）</p>
         :type Id: str
-        :param _PullState: 是否开播放鉴权（1:开启,0:关闭）
+        :param _PullState: <p>是否开播放鉴权（1:开启,0:关闭）</p>
         :type PullState: int
-        :param _PullSecret: 播放密钥（仅支持字母数字，长度0-10位）
+        :param _PullSecret: <p>播放密钥（仅支持字母数字，长度0-10位）</p>
         :type PullSecret: str
-        :param _PullExpired: 播放过期时间（单位：分钟）
+        :param _PullExpired: <p>播放过期时间（单位：分钟）</p>
         :type PullExpired: int
-        :param _PushState: 是否开启推流鉴权（1:开启,0:关闭）
+        :param _PushState: <p>是否开启推流鉴权（1:开启,0:关闭）</p>
         :type PushState: int
-        :param _PushSecret: 推流密钥（仅支持字母数字，长度0-10位）
+        :param _PushSecret: <p>推流密钥（仅支持字母数字，长度0-10位）</p>
         :type PushSecret: str
-        :param _PushExpired: 推流过期时间（单位：分钟）
+        :param _PushExpired: <p>推流过期时间（单位：分钟）</p>
         :type PushExpired: int
+        :param _ExcludePushDomainIds: <p>不生效推流鉴权的域名 ID 列表</p>
+        :type ExcludePushDomainIds: list of str
         """
         self._Id = None
         self._PullState = None
@@ -1965,10 +1982,11 @@ class AddStreamAuthRequest(AbstractModel):
         self._PushState = None
         self._PushSecret = None
         self._PushExpired = None
+        self._ExcludePushDomainIds = None
 
     @property
     def Id(self):
-        r"""鉴权配置ID（uuid）
+        r"""<p>鉴权配置ID（uuid）</p>
         :rtype: str
         """
         return self._Id
@@ -1979,7 +1997,7 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PullState(self):
-        r"""是否开播放鉴权（1:开启,0:关闭）
+        r"""<p>是否开播放鉴权（1:开启,0:关闭）</p>
         :rtype: int
         """
         return self._PullState
@@ -1990,7 +2008,7 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PullSecret(self):
-        r"""播放密钥（仅支持字母数字，长度0-10位）
+        r"""<p>播放密钥（仅支持字母数字，长度0-10位）</p>
         :rtype: str
         """
         return self._PullSecret
@@ -2001,7 +2019,7 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PullExpired(self):
-        r"""播放过期时间（单位：分钟）
+        r"""<p>播放过期时间（单位：分钟）</p>
         :rtype: int
         """
         return self._PullExpired
@@ -2012,7 +2030,7 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PushState(self):
-        r"""是否开启推流鉴权（1:开启,0:关闭）
+        r"""<p>是否开启推流鉴权（1:开启,0:关闭）</p>
         :rtype: int
         """
         return self._PushState
@@ -2023,7 +2041,7 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PushSecret(self):
-        r"""推流密钥（仅支持字母数字，长度0-10位）
+        r"""<p>推流密钥（仅支持字母数字，长度0-10位）</p>
         :rtype: str
         """
         return self._PushSecret
@@ -2034,7 +2052,7 @@ class AddStreamAuthRequest(AbstractModel):
 
     @property
     def PushExpired(self):
-        r"""推流过期时间（单位：分钟）
+        r"""<p>推流过期时间（单位：分钟）</p>
         :rtype: int
         """
         return self._PushExpired
@@ -2042,6 +2060,17 @@ class AddStreamAuthRequest(AbstractModel):
     @PushExpired.setter
     def PushExpired(self, PushExpired):
         self._PushExpired = PushExpired
+
+    @property
+    def ExcludePushDomainIds(self):
+        r"""<p>不生效推流鉴权的域名 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludePushDomainIds
+
+    @ExcludePushDomainIds.setter
+    def ExcludePushDomainIds(self, ExcludePushDomainIds):
+        self._ExcludePushDomainIds = ExcludePushDomainIds
 
 
     def _deserialize(self, params):
@@ -2052,6 +2081,7 @@ class AddStreamAuthRequest(AbstractModel):
         self._PushState = params.get("PushState")
         self._PushSecret = params.get("PushSecret")
         self._PushExpired = params.get("PushExpired")
+        self._ExcludePushDomainIds = params.get("ExcludePushDomainIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2069,7 +2099,7 @@ class AddStreamAuthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 设置推拉流鉴权返回数据
+        :param _Data: <p>设置推拉流鉴权返回数据</p>
         :type Data: :class:`tencentcloud.iss.v20230517.models.AddStreamAuthData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2079,7 +2109,7 @@ class AddStreamAuthResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""设置推拉流鉴权返回数据
+        r"""<p>设置推拉流鉴权返回数据</p>
         :rtype: :class:`tencentcloud.iss.v20230517.models.AddStreamAuthData`
         """
         return self._Data
@@ -8987,22 +9017,24 @@ class DescribeStreamAuthData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 鉴权配置ID（uuid）
+        :param _Id: <p>鉴权配置ID（uuid）</p>
         :type Id: str
-        :param _PullState: 是否开播放鉴权（1:开启,0:关闭）
+        :param _PullState: <p>是否开播放鉴权（1:开启,0:关闭）</p>
         :type PullState: int
-        :param _PullSecret: 播放密钥（仅支持字母数字，长度0-10位）
+        :param _PullSecret: <p>播放密钥（仅支持字母数字，长度0-10位）</p>
         :type PullSecret: str
-        :param _PullExpired: 播放过期时间（单位：分钟）
+        :param _PullExpired: <p>播放过期时间（单位：分钟）</p>
         :type PullExpired: int
-        :param _PushState: 是否开启推流鉴权（1:开启,0:关闭）
+        :param _PushState: <p>是否开启推流鉴权（1:开启,0:关闭）</p>
         :type PushState: int
-        :param _PushSecret: 推流密钥（仅支持字母数字，长度0-10位）
+        :param _PushSecret: <p>推流密钥（仅支持字母数字，长度0-10位）</p>
         :type PushSecret: str
-        :param _PushExpired: 推流过期时间（单位：分钟）
+        :param _PushExpired: <p>推流过期时间（单位：分钟）</p>
         :type PushExpired: int
-        :param _AppId: 用户ID
+        :param _AppId: <p>用户ID</p>
         :type AppId: int
+        :param _ExcludePushDomainIds: <p>不生效推流鉴权的域名 ID 列表</p>
+        :type ExcludePushDomainIds: list of str
         """
         self._Id = None
         self._PullState = None
@@ -9012,10 +9044,11 @@ class DescribeStreamAuthData(AbstractModel):
         self._PushSecret = None
         self._PushExpired = None
         self._AppId = None
+        self._ExcludePushDomainIds = None
 
     @property
     def Id(self):
-        r"""鉴权配置ID（uuid）
+        r"""<p>鉴权配置ID（uuid）</p>
         :rtype: str
         """
         return self._Id
@@ -9026,7 +9059,7 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PullState(self):
-        r"""是否开播放鉴权（1:开启,0:关闭）
+        r"""<p>是否开播放鉴权（1:开启,0:关闭）</p>
         :rtype: int
         """
         return self._PullState
@@ -9037,7 +9070,7 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PullSecret(self):
-        r"""播放密钥（仅支持字母数字，长度0-10位）
+        r"""<p>播放密钥（仅支持字母数字，长度0-10位）</p>
         :rtype: str
         """
         return self._PullSecret
@@ -9048,7 +9081,7 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PullExpired(self):
-        r"""播放过期时间（单位：分钟）
+        r"""<p>播放过期时间（单位：分钟）</p>
         :rtype: int
         """
         return self._PullExpired
@@ -9059,7 +9092,7 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PushState(self):
-        r"""是否开启推流鉴权（1:开启,0:关闭）
+        r"""<p>是否开启推流鉴权（1:开启,0:关闭）</p>
         :rtype: int
         """
         return self._PushState
@@ -9070,7 +9103,7 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PushSecret(self):
-        r"""推流密钥（仅支持字母数字，长度0-10位）
+        r"""<p>推流密钥（仅支持字母数字，长度0-10位）</p>
         :rtype: str
         """
         return self._PushSecret
@@ -9081,7 +9114,7 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def PushExpired(self):
-        r"""推流过期时间（单位：分钟）
+        r"""<p>推流过期时间（单位：分钟）</p>
         :rtype: int
         """
         return self._PushExpired
@@ -9092,7 +9125,7 @@ class DescribeStreamAuthData(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: int
         """
         return self._AppId
@@ -9100,6 +9133,17 @@ class DescribeStreamAuthData(AbstractModel):
     @AppId.setter
     def AppId(self, AppId):
         self._AppId = AppId
+
+    @property
+    def ExcludePushDomainIds(self):
+        r"""<p>不生效推流鉴权的域名 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludePushDomainIds
+
+    @ExcludePushDomainIds.setter
+    def ExcludePushDomainIds(self, ExcludePushDomainIds):
+        self._ExcludePushDomainIds = ExcludePushDomainIds
 
 
     def _deserialize(self, params):
@@ -9111,6 +9155,7 @@ class DescribeStreamAuthData(AbstractModel):
         self._PushSecret = params.get("PushSecret")
         self._PushExpired = params.get("PushExpired")
         self._AppId = params.get("AppId")
+        self._ExcludePushDomainIds = params.get("ExcludePushDomainIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -15876,7 +15876,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: <p>云开发环境ID</p>
+        :param _EnvId: <p>云开发环境 ID。查询 PGDump 任务时，所有状态均须提供且与任务环境一致，用于验证调用方环境归属。环境隔离或销毁后，仍可在归档保留期内查询历史任务及下载文件。</p>
         :type EnvId: str
         :param _TaskId: <p>任务ID</p>
         :type TaskId: str
@@ -15886,7 +15886,7 @@ class DescribeTaskResultRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""<p>云开发环境ID</p>
+        r"""<p>云开发环境 ID。查询 PGDump 任务时，所有状态均须提供且与任务环境一致，用于验证调用方环境归属。环境隔离或销毁后，仍可在归档保留期内查询历史任务及下载文件。</p>
         :rtype: str
         """
         return self._EnvId
@@ -15929,19 +15929,19 @@ class DescribeTaskResultResponse(AbstractModel):
         r"""
         :param _TaskId: <p>任务ID</p>
         :type TaskId: str
-        :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>PGUserMigration： PG Migrate 任务</li></ul>
+        :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>PGUserMigration： PG Migrate 任务</li><li>PGDump： PG 数据库整库导出任务</li></ul>
         :type TaskType: str
-        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>Failed： 失败</li><li>Succeed： 成功</li><li>Accepted： 已接收</li><li>Running： 运行中</li></ul>
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>Failed： 失败</li><li>Succeed： 成功</li><li>Accepted： 已接收</li><li>Running： 运行中</li><li>Pending： 已受理，等待工作流启动</li></ul>
         :type Status: str
-        :param _Phase: <p>当前步骤</p>
+        :param _Phase: <p>任务当前执行步骤。PGDump 任务可能为 Queued（排队）、Preparing（准备）、Dumping（导出）、Validating（校验）、Uploading（上传）、Finalizing（收尾）、Completed（完成）；其他任务的步骤由任务类型决定。</p>
         :type Phase: str
-        :param _Reason: <p>失败原因</p>
+        :param _Reason: <p>失败原因。PGDump 任务返回稳定业务码：PGDumpPermissionDenied、PGDumpToolVersionMismatch、PGDumpSizeExceeded、PGDumpTimeout、PGDumpProcessFailed、PGDumpUploadFailed、PGDumpSourceChanged；成功时为空。其他任务按原有失败原因返回。</p>
         :type Reason: str
         :param _CreatedAt: <p>创建时间</p><p>参数格式：2026-05-26T11:26:14+08:00</p>
         :type CreatedAt: str
         :param _UpdatedAt: <p>最后更新时间</p><p>参数格式：2026-05-26T11:26:14+08:00</p>
         :type UpdatedAt: str
-        :param _Params: <p>任务参数</p>
+        :param _Params: <p>任务参数键值对列表，Value 均为字符串。PGDump 成功任务包含 file_name（文件名）、file_size_bytes（字节数）、checksum_sha256（SHA256）、source_db_version（源库版本）、dump_tool_version（工具版本）、file_expires_at（RFC3339 过期时间）。文件未过期且对象存在时返回 download_url；URL 过期后可重新查询，勿记录或持久化签名 URL。仅对象确认缺失时返回 file_missing=true；文件过期不返回下载 URL。归档查询或签名临时故障返回系统错误，任务终态不变。</p>
         :type Params: list of ObjectKV
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15969,7 +15969,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""<p>任务类型</p><p>枚举值：</p><ul><li>PGUserMigration： PG Migrate 任务</li></ul>
+        r"""<p>任务类型</p><p>枚举值：</p><ul><li>PGUserMigration： PG Migrate 任务</li><li>PGDump： PG 数据库整库导出任务</li></ul>
         :rtype: str
         """
         return self._TaskType
@@ -15980,7 +15980,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>任务状态</p><p>枚举值：</p><ul><li>Failed： 失败</li><li>Succeed： 成功</li><li>Accepted： 已接收</li><li>Running： 运行中</li></ul>
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>Failed： 失败</li><li>Succeed： 成功</li><li>Accepted： 已接收</li><li>Running： 运行中</li><li>Pending： 已受理，等待工作流启动</li></ul>
         :rtype: str
         """
         return self._Status
@@ -15991,7 +15991,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def Phase(self):
-        r"""<p>当前步骤</p>
+        r"""<p>任务当前执行步骤。PGDump 任务可能为 Queued（排队）、Preparing（准备）、Dumping（导出）、Validating（校验）、Uploading（上传）、Finalizing（收尾）、Completed（完成）；其他任务的步骤由任务类型决定。</p>
         :rtype: str
         """
         return self._Phase
@@ -16002,7 +16002,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def Reason(self):
-        r"""<p>失败原因</p>
+        r"""<p>失败原因。PGDump 任务返回稳定业务码：PGDumpPermissionDenied、PGDumpToolVersionMismatch、PGDumpSizeExceeded、PGDumpTimeout、PGDumpProcessFailed、PGDumpUploadFailed、PGDumpSourceChanged；成功时为空。其他任务按原有失败原因返回。</p>
         :rtype: str
         """
         return self._Reason
@@ -16035,7 +16035,7 @@ class DescribeTaskResultResponse(AbstractModel):
 
     @property
     def Params(self):
-        r"""<p>任务参数</p>
+        r"""<p>任务参数键值对列表，Value 均为字符串。PGDump 成功任务包含 file_name（文件名）、file_size_bytes（字节数）、checksum_sha256（SHA256）、source_db_version（源库版本）、dump_tool_version（工具版本）、file_expires_at（RFC3339 过期时间）。文件未过期且对象存在时返回 download_url；URL 过期后可重新查询，勿记录或持久化签名 URL。仅对象确认缺失时返回 file_missing=true；文件过期不返回下载 URL。归档查询或签名临时故障返回系统错误，任务终态不变。</p>
         :rtype: list of ObjectKV
         """
         return self._Params

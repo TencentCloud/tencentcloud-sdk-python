@@ -8067,20 +8067,26 @@ class CreateTWeSeeCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 回调类型。可选值：\n- `http` HTTP 回调
+        :param _Type: <p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
         :type Type: str
-        :param _CallbackUrl: 回调 URL。要求 http 或 https 协议，仅支持 80 或 443 端口
+        :param _CallbackUrl: <p>回调 URL。要求 http 或 https 协议，仅支持 80 或 443 端口</p>
         :type CallbackUrl: str
-        :param _CallbackToken: 回调签名 Token。最大长度 128
+        :param _CallbackToken: <p>回调签名 Token。最大长度 128</p>
         :type CallbackToken: str
+        :param _CallbackCKafka: <p>回调 CKafka 配置</p>
+        :type CallbackCKafka: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCallbackCKafkaConfig`
+        :param _ProductId: <p>要创建回调目标的产品 ID</p>
+        :type ProductId: str
         """
         self._Type = None
         self._CallbackUrl = None
         self._CallbackToken = None
+        self._CallbackCKafka = None
+        self._ProductId = None
 
     @property
     def Type(self):
-        r"""回调类型。可选值：\n- `http` HTTP 回调
+        r"""<p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
         :rtype: str
         """
         return self._Type
@@ -8091,7 +8097,7 @@ class CreateTWeSeeCallbackRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        r"""回调 URL。要求 http 或 https 协议，仅支持 80 或 443 端口
+        r"""<p>回调 URL。要求 http 或 https 协议，仅支持 80 或 443 端口</p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -8102,7 +8108,7 @@ class CreateTWeSeeCallbackRequest(AbstractModel):
 
     @property
     def CallbackToken(self):
-        r"""回调签名 Token。最大长度 128
+        r"""<p>回调签名 Token。最大长度 128</p>
         :rtype: str
         """
         return self._CallbackToken
@@ -8111,11 +8117,37 @@ class CreateTWeSeeCallbackRequest(AbstractModel):
     def CallbackToken(self, CallbackToken):
         self._CallbackToken = CallbackToken
 
+    @property
+    def CallbackCKafka(self):
+        r"""<p>回调 CKafka 配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCallbackCKafkaConfig`
+        """
+        return self._CallbackCKafka
+
+    @CallbackCKafka.setter
+    def CallbackCKafka(self, CallbackCKafka):
+        self._CallbackCKafka = CallbackCKafka
+
+    @property
+    def ProductId(self):
+        r"""<p>要创建回调目标的产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._CallbackUrl = params.get("CallbackUrl")
         self._CallbackToken = params.get("CallbackToken")
+        if params.get("CallbackCKafka") is not None:
+            self._CallbackCKafka = SeeCallbackCKafkaConfig()
+            self._CallbackCKafka._deserialize(params.get("CallbackCKafka"))
+        self._ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8133,7 +8165,7 @@ class CreateTWeSeeCallbackResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CallbackId: 回调目标 ID
+        :param _CallbackId: <p>回调目标 ID</p>
         :type CallbackId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8143,7 +8175,7 @@ class CreateTWeSeeCallbackResponse(AbstractModel):
 
     @property
     def CallbackId(self):
-        r"""回调目标 ID
+        r"""<p>回调目标 ID</p>
         :rtype: str
         """
         return self._CallbackId
@@ -11867,14 +11899,14 @@ class DeleteTWeSeeCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CallbackId: 回调目标 ID，格式为 `callback-` + 8 位小写字母数字
+        :param _CallbackId: <p>回调目标 ID</p>
         :type CallbackId: str
         """
         self._CallbackId = None
 
     @property
     def CallbackId(self):
-        r"""回调目标 ID，格式为 `callback-` + 8 位小写字母数字
+        r"""<p>回调目标 ID</p>
         :rtype: str
         """
         return self._CallbackId
@@ -37285,23 +37317,26 @@ class ModifyTWeSeeCallbackRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CallbackId: 回调目标 ID，格式为 `callback-` + 8 位小写字母数字
+        :param _CallbackId: <p>回调目标 ID</p>
         :type CallbackId: str
-        :param _CallbackUrl: 回调 URL，需要可访问并通过 Echo 校验
-        :type CallbackUrl: str
-        :param _Type: 回调类型。当前仅支持：`http`
+        :param _Type: <p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
         :type Type: str
-        :param _CallbackToken: 回调签名 token，最大长度 128
+        :param _CallbackUrl: <p>回调 URL，需要可访问并通过 Echo 校验</p>
+        :type CallbackUrl: str
+        :param _CallbackToken: <p>回调签名 token，最大长度 128</p>
         :type CallbackToken: str
+        :param _CallbackCKafka: <p>回调 CKafka 配置</p>
+        :type CallbackCKafka: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCallbackCKafkaConfig`
         """
         self._CallbackId = None
-        self._CallbackUrl = None
         self._Type = None
+        self._CallbackUrl = None
         self._CallbackToken = None
+        self._CallbackCKafka = None
 
     @property
     def CallbackId(self):
-        r"""回调目标 ID，格式为 `callback-` + 8 位小写字母数字
+        r"""<p>回调目标 ID</p>
         :rtype: str
         """
         return self._CallbackId
@@ -37311,19 +37346,8 @@ class ModifyTWeSeeCallbackRequest(AbstractModel):
         self._CallbackId = CallbackId
 
     @property
-    def CallbackUrl(self):
-        r"""回调 URL，需要可访问并通过 Echo 校验
-        :rtype: str
-        """
-        return self._CallbackUrl
-
-    @CallbackUrl.setter
-    def CallbackUrl(self, CallbackUrl):
-        self._CallbackUrl = CallbackUrl
-
-    @property
     def Type(self):
-        r"""回调类型。当前仅支持：`http`
+        r"""<p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
         :rtype: str
         """
         return self._Type
@@ -37333,8 +37357,19 @@ class ModifyTWeSeeCallbackRequest(AbstractModel):
         self._Type = Type
 
     @property
+    def CallbackUrl(self):
+        r"""<p>回调 URL，需要可访问并通过 Echo 校验</p>
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
     def CallbackToken(self):
-        r"""回调签名 token，最大长度 128
+        r"""<p>回调签名 token，最大长度 128</p>
         :rtype: str
         """
         return self._CallbackToken
@@ -37343,12 +37378,26 @@ class ModifyTWeSeeCallbackRequest(AbstractModel):
     def CallbackToken(self, CallbackToken):
         self._CallbackToken = CallbackToken
 
+    @property
+    def CallbackCKafka(self):
+        r"""<p>回调 CKafka 配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCallbackCKafkaConfig`
+        """
+        return self._CallbackCKafka
+
+    @CallbackCKafka.setter
+    def CallbackCKafka(self, CallbackCKafka):
+        self._CallbackCKafka = CallbackCKafka
+
 
     def _deserialize(self, params):
         self._CallbackId = params.get("CallbackId")
-        self._CallbackUrl = params.get("CallbackUrl")
         self._Type = params.get("Type")
+        self._CallbackUrl = params.get("CallbackUrl")
         self._CallbackToken = params.get("CallbackToken")
+        if params.get("CallbackCKafka") is not None:
+            self._CallbackCKafka = SeeCallbackCKafkaConfig()
+            self._CallbackCKafka._deserialize(params.get("CallbackCKafka"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43602,6 +43651,72 @@ class SearchTopicRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SeeCallbackCKafkaConfig(AbstractModel):
+    r"""TWeSee CKafka 回调配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>CKafka 实例 ID</p>
+        :type InstanceId: str
+        :param _Topic: <p>CKafka 实例中的 Topic 名</p>
+        :type Topic: str
+        :param _Region: <p>CKafka 实例所在的地域</p>
+        :type Region: str
+        """
+        self._InstanceId = None
+        self._Topic = None
+        self._Region = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>CKafka 实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Topic(self):
+        r"""<p>CKafka 实例中的 Topic 名</p>
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Region(self):
+        r"""<p>CKafka 实例所在的地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Topic = params.get("Topic")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SeeCallbackInfo(AbstractModel):
     r"""TWeSee 回调目标信息
 
@@ -43609,29 +43724,32 @@ class SeeCallbackInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CallbackId: 回调目标 ID
+        :param _CallbackId: <p>回调目标 ID</p>
         :type CallbackId: str
-        :param _CallbackToken: 回调签名 token
-        :type CallbackToken: str
-        :param _CallbackUrl: 回调 URL
-        :type CallbackUrl: str
-        :param _CreateTime: 创建时间（秒级时间戳）
-        :type CreateTime: int
-        :param _Type: 回调类型
+        :param _Type: <p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
         :type Type: str
-        :param _UpdateTime: 更新时间（秒级时间戳）
+        :param _CallbackUrl: <p>回调 URL</p>
+        :type CallbackUrl: str
+        :param _CallbackToken: <p>回调签名 token</p>
+        :type CallbackToken: str
+        :param _CallbackCKafka: <p>回调 CKafka 配置</p>
+        :type CallbackCKafka: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCallbackCKafkaConfig`
+        :param _CreateTime: <p>创建时间（秒级时间戳）</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间（秒级时间戳）</p>
         :type UpdateTime: int
         """
         self._CallbackId = None
-        self._CallbackToken = None
-        self._CallbackUrl = None
-        self._CreateTime = None
         self._Type = None
+        self._CallbackUrl = None
+        self._CallbackToken = None
+        self._CallbackCKafka = None
+        self._CreateTime = None
         self._UpdateTime = None
 
     @property
     def CallbackId(self):
-        r"""回调目标 ID
+        r"""<p>回调目标 ID</p>
         :rtype: str
         """
         return self._CallbackId
@@ -43641,41 +43759,8 @@ class SeeCallbackInfo(AbstractModel):
         self._CallbackId = CallbackId
 
     @property
-    def CallbackToken(self):
-        r"""回调签名 token
-        :rtype: str
-        """
-        return self._CallbackToken
-
-    @CallbackToken.setter
-    def CallbackToken(self, CallbackToken):
-        self._CallbackToken = CallbackToken
-
-    @property
-    def CallbackUrl(self):
-        r"""回调 URL
-        :rtype: str
-        """
-        return self._CallbackUrl
-
-    @CallbackUrl.setter
-    def CallbackUrl(self, CallbackUrl):
-        self._CallbackUrl = CallbackUrl
-
-    @property
-    def CreateTime(self):
-        r"""创建时间（秒级时间戳）
-        :rtype: int
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
     def Type(self):
-        r"""回调类型
+        r"""<p>回调类型</p><p>枚举值：</p><ul><li>none： 不回调</li><li>http： HTTP 回调</li><li>ckafka： 投递 CKafka Topic</li></ul>
         :rtype: str
         """
         return self._Type
@@ -43685,8 +43770,52 @@ class SeeCallbackInfo(AbstractModel):
         self._Type = Type
 
     @property
+    def CallbackUrl(self):
+        r"""<p>回调 URL</p>
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def CallbackToken(self):
+        r"""<p>回调签名 token</p>
+        :rtype: str
+        """
+        return self._CallbackToken
+
+    @CallbackToken.setter
+    def CallbackToken(self, CallbackToken):
+        self._CallbackToken = CallbackToken
+
+    @property
+    def CallbackCKafka(self):
+        r"""<p>回调 CKafka 配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCallbackCKafkaConfig`
+        """
+        return self._CallbackCKafka
+
+    @CallbackCKafka.setter
+    def CallbackCKafka(self, CallbackCKafka):
+        self._CallbackCKafka = CallbackCKafka
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（秒级时间戳）</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
     def UpdateTime(self):
-        r"""更新时间（秒级时间戳）
+        r"""<p>更新时间（秒级时间戳）</p>
         :rtype: int
         """
         return self._UpdateTime
@@ -43698,10 +43827,13 @@ class SeeCallbackInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._CallbackId = params.get("CallbackId")
-        self._CallbackToken = params.get("CallbackToken")
-        self._CallbackUrl = params.get("CallbackUrl")
-        self._CreateTime = params.get("CreateTime")
         self._Type = params.get("Type")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._CallbackToken = params.get("CallbackToken")
+        if params.get("CallbackCKafka") is not None:
+            self._CallbackCKafka = SeeCallbackCKafkaConfig()
+            self._CallbackCKafka._deserialize(params.get("CallbackCKafka"))
+        self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

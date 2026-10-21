@@ -6655,7 +6655,7 @@ class HideResponseHeaders(AbstractModel):
         r"""
         :param _Key: <p>key</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
         :type Key: str
-        :param _Value: <p>value</p><p>当前仅支持传空字符串&quot;&quot;</p>
+        :param _Value: <p>value值</p><p>枚举值：</p><ul><li>&#39;&#39;： &#39;&#39;</li></ul>
         :type Value: str
         """
         self._Key = None
@@ -6674,7 +6674,7 @@ class HideResponseHeaders(AbstractModel):
 
     @property
     def Value(self):
-        r"""<p>value</p><p>当前仅支持传空字符串&quot;&quot;</p>
+        r"""<p>value值</p><p>枚举值：</p><ul><li>&#39;&#39;： &#39;&#39;</li></ul>
         :rtype: str
         """
         return self._Value

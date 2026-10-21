@@ -159,6 +159,119 @@ class Account(AbstractModel):
         
 
 
+class AccountGroup(AbstractModel):
+    r"""账户组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 账户组ID
+        :type GroupId: str
+        :param _GroupName: 账户组名称
+        :type GroupName: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _MemberCount: 成员数量
+        :type MemberCount: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _CanDelete: 是否可删除
+        :type CanDelete: bool
+        """
+        self._GroupId = None
+        self._GroupName = None
+        self._Description = None
+        self._MemberCount = None
+        self._CreateTime = None
+        self._CanDelete = None
+
+    @property
+    def GroupId(self):
+        r"""账户组ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""账户组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Description(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def MemberCount(self):
+        r"""成员数量
+        :rtype: int
+        """
+        return self._MemberCount
+
+    @MemberCount.setter
+    def MemberCount(self, MemberCount):
+        self._MemberCount = MemberCount
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CanDelete(self):
+        r"""是否可删除
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._Description = params.get("Description")
+        self._MemberCount = params.get("MemberCount")
+        self._CreateTime = params.get("CreateTime")
+        self._CanDelete = params.get("CanDelete")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccountGroupInfo(AbstractModel):
     r"""账户组信息
 
@@ -1408,6 +1521,100 @@ class CommonFilter(AbstractModel):
         
 
 
+class CreateAccountGroupRequest(AbstractModel):
+    r"""CreateAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 账户组名称
+        :type GroupName: str
+        :param _Description: 描述（可选）
+        :type Description: str
+        """
+        self._GroupName = None
+        self._Description = None
+
+    @property
+    def GroupName(self):
+        r"""账户组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Description(self):
+        r"""描述（可选）
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAccountGroupResponse(AbstractModel):
+    r"""CreateAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 新建账户组ID
+        :type GroupId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""新建账户组ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAnalyzePolicyTaskRequest(AbstractModel):
     r"""CreateAnalyzePolicyTask请求参数结构体
 
@@ -2597,6 +2804,70 @@ class CreateVpcAclRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAccountGroupRequest(AbstractModel):
+    r"""DeleteAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 账户组ID
+        :type GroupId: str
+        """
+        self._GroupId = None
+
+    @property
+    def GroupId(self):
+        r"""账户组ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountGroupResponse(AbstractModel):
+    r"""DeleteAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteEdgeAclRuleRequest(AbstractModel):
     r"""DeleteEdgeAclRule请求参数结构体
 
@@ -3038,6 +3309,170 @@ class DeleteVpcAclRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccountGroupsRequest(AbstractModel):
+    r"""DescribeAccountGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 关键词搜索（可选）
+        :type Filters: list of CommonFilter
+        :param _Limit: 分页大小，默认20
+        :type Limit: int
+        :param _Offset: 分页偏移，默认0
+        :type Offset: int
+        :param _Order: 顺序
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Filters(self):
+        r"""关键词搜索（可选）
+        :rtype: list of CommonFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""分页大小，默认20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""顺序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountGroupsResponse(AbstractModel):
+    r"""DescribeAccountGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _AccountGroups: 账户组列表
+        :type AccountGroups: list of AccountGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AccountGroups = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AccountGroups(self):
+        r"""账户组列表
+        :rtype: list of AccountGroup
+        """
+        return self._AccountGroups
+
+    @AccountGroups.setter
+    def AccountGroups(self, AccountGroups):
+        self._AccountGroups = AccountGroups
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AccountGroups") is not None:
+            self._AccountGroups = []
+            for item in params.get("AccountGroups"):
+                obj = AccountGroup()
+                obj._deserialize(item)
+                self._AccountGroups.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6572,6 +7007,258 @@ class MemberInfo(AbstractModel):
         
 
 
+class ModifyAccountGroupRequest(AbstractModel):
+    r"""ModifyAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 账户组ID
+        :type GroupId: str
+        :param _GroupName: 账户组名称
+        :type GroupName: str
+        """
+        self._GroupId = None
+        self._GroupName = None
+
+    @property
+    def GroupId(self):
+        r"""账户组ID
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""账户组名称
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountGroupResponse(AbstractModel):
+    r"""ModifyAccountGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCfwManagedRequest(AbstractModel):
+    r"""ModifyCfwManaged请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 目标成员 Id
+        :type MemberId: str
+        :param _CfwManaged: 云防火墙纳管：0-关闭，1-开启
+        :type CfwManaged: int
+        """
+        self._MemberId = None
+        self._CfwManaged = None
+
+    @property
+    def MemberId(self):
+        r"""目标成员 Id
+        :rtype: str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def CfwManaged(self):
+        r"""云防火墙纳管：0-关闭，1-开启
+        :rtype: int
+        """
+        return self._CfwManaged
+
+    @CfwManaged.setter
+    def CfwManaged(self, CfwManaged):
+        self._CfwManaged = CfwManaged
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._CfwManaged = params.get("CfwManaged")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCfwManagedResponse(AbstractModel):
+    r"""ModifyCfwManaged返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCfwShareRoleRequest(AbstractModel):
+    r"""ModifyCfwShareRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CfwShareRole: 云防火墙共享角色，取值：sharer（共享者）、user（使用者）、none（无共享角色）。共享者→使用者禁止直接变更，需先设为 none
+        :type CfwShareRole: str
+        :param _UserMemberId: 使用者Id
+        :type UserMemberId: str
+        :param _SharerMemberId: 共享者账号ID，CfwShareRole 为 user 时必填
+        :type SharerMemberId: str
+        """
+        self._CfwShareRole = None
+        self._UserMemberId = None
+        self._SharerMemberId = None
+
+    @property
+    def CfwShareRole(self):
+        r"""云防火墙共享角色，取值：sharer（共享者）、user（使用者）、none（无共享角色）。共享者→使用者禁止直接变更，需先设为 none
+        :rtype: str
+        """
+        return self._CfwShareRole
+
+    @CfwShareRole.setter
+    def CfwShareRole(self, CfwShareRole):
+        self._CfwShareRole = CfwShareRole
+
+    @property
+    def UserMemberId(self):
+        r"""使用者Id
+        :rtype: str
+        """
+        return self._UserMemberId
+
+    @UserMemberId.setter
+    def UserMemberId(self, UserMemberId):
+        self._UserMemberId = UserMemberId
+
+    @property
+    def SharerMemberId(self):
+        r"""共享者账号ID，CfwShareRole 为 user 时必填
+        :rtype: str
+        """
+        return self._SharerMemberId
+
+    @SharerMemberId.setter
+    def SharerMemberId(self, SharerMemberId):
+        self._SharerMemberId = SharerMemberId
+
+
+    def _deserialize(self, params):
+        self._CfwShareRole = params.get("CfwShareRole")
+        self._UserMemberId = params.get("UserMemberId")
+        self._SharerMemberId = params.get("SharerMemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCfwShareRoleResponse(AbstractModel):
+    r"""ModifyCfwShareRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyEdgeAclRuleRequest(AbstractModel):
     r"""ModifyEdgeAclRule请求参数结构体
 
@@ -6726,6 +7413,85 @@ class ModifyEdgeAclRuleSequenceRequest(AbstractModel):
 
 class ModifyEdgeAclRuleSequenceResponse(AbstractModel):
     r"""ModifyEdgeAclRuleSequence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMemberGroupRequest(AbstractModel):
+    r"""ModifyMemberGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserMemberId: 目标成员 AppId
+        :type UserMemberId: str
+        :param _GroupId: 账户组ID（空字符串表示移出账户组）
+        :type GroupId: str
+        """
+        self._UserMemberId = None
+        self._GroupId = None
+
+    @property
+    def UserMemberId(self):
+        r"""目标成员 AppId
+        :rtype: str
+        """
+        return self._UserMemberId
+
+    @UserMemberId.setter
+    def UserMemberId(self, UserMemberId):
+        self._UserMemberId = UserMemberId
+
+    @property
+    def GroupId(self):
+        r"""账户组ID（空字符串表示移出账户组）
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+
+    def _deserialize(self, params):
+        self._UserMemberId = params.get("UserMemberId")
+        self._GroupId = params.get("GroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMemberGroupResponse(AbstractModel):
+    r"""ModifyMemberGroup返回参数结构体
 
     """
 

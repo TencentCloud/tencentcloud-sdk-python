@@ -168,7 +168,7 @@ class DescribeFinanceFraudUltimateRequest(AbstractModel):
         :type ElapsedTime: int
         :param _WeChatOpenId: <p>微信的OpenId</p>
         :type WeChatOpenId: str
-        :param _PhoneNumber: <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
+        :param _PhoneNumber: <p>手机号码（注：不需要带国家代码 例如：15xxxxxxxxx）。可以传入原文、MD5或SHA256</p>
         :type PhoneNumber: str
         :param _BizClientIp: <p>业务客户端IP</p>
         :type BizClientIp: str
@@ -256,7 +256,7 @@ class DescribeFinanceFraudUltimateRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""<p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
+        r"""<p>手机号码（注：不需要带国家代码 例如：15xxxxxxxxx）。可以传入原文、MD5或SHA256</p>
         :rtype: str
         """
         return self._PhoneNumber
@@ -1207,7 +1207,7 @@ class DescribeFraudUltimateRequest(AbstractModel):
         :type ElapsedTime: int
         :param _WeChatOpenId: <p>微信的OpenId</p>
         :type WeChatOpenId: str
-        :param _PhoneNumber: <p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
+        :param _PhoneNumber: <p>手机号码（注：不需要带国家代码 例如：15xxxxxxxxx）。可以传入原文、MD5或SHA256</p>
         :type PhoneNumber: str
         :param _ClientIP: <p>客户端IP</p>
         :type ClientIP: str
@@ -1295,7 +1295,7 @@ class DescribeFraudUltimateRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""<p>手机号码（注：不需要带国家代码 例如：13430421011）。可以传入原文或MD5</p>
+        r"""<p>手机号码（注：不需要带国家代码 例如：15xxxxxxxxx）。可以传入原文、MD5或SHA256</p>
         :rtype: str
         """
         return self._PhoneNumber

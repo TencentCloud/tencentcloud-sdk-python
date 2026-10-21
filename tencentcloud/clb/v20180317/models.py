@@ -9156,6 +9156,10 @@ class CreateUserGroupRequest(AbstractModel):
         :type UserGroupName: str
         :param _BudgetId: <p>建组时直接关联的预算 ID（须为已存在的 Budget）。关联后由该 Budget 统一管理本组的消费上限与限速。不传表示不关联预算，可建组后再用 AssociateBudget 关联。</p>
         :type BudgetId: str
+        :param _PromptId: <p>建组时绑定的 Prompt 资源 ID（pmt-xxx，须为该实例下已存在的 Prompt）。与 PromptVersion 必须成对传入，仅传其一将返回错误。不传表示默认不绑定 Prompt，可建组后再调用 ModifyUserGroupPrompt 绑定或更换版本。绑定后，组内 Key 的请求将按该版本 Prompt 的 Content 与 RewriteStrategy 注入或改写 system 内容。</p>
+        :type PromptId: str
+        :param _PromptVersion: <p>绑定的 Prompt 版本号（如 v1、v2，由 CreatePrompt / CreatePromptVersion 生成，长度不超过16个字符），与 PromptId 必须成对传入，须为该 Prompt 下已存在的版本。版本为不可变快照，Prompt 后续新增版本不会自动生效于已绑定的用户组，需显式重新绑定新版本。一个用户组同时只关联一份 Prompt 的一个版本，重复绑定即为替换。</p>
+        :type PromptVersion: str
         :param _IntentRouters: <p>用户组意图路由白名单（ir-xxx）。每一项须为该实例已创建的意图路由名。命中意图路由名时其内部真实模型自动豁免白名单。为空表示不授权任何意图路由。</p>
         :type IntentRouters: list of str
         :param _KeyIds: <p>建组时同时绑定的已有 Key ID 列表，最多100个。每个 Key 须属于同一模型路由实例。建组与绑定为一个原子异步任务，任一 Key 失败则整组创建回滚。不传表示建空组。</p>
@@ -9168,6 +9172,8 @@ class CreateUserGroupRequest(AbstractModel):
         self._ModelRouterId = None
         self._UserGroupName = None
         self._BudgetId = None
+        self._PromptId = None
+        self._PromptVersion = None
         self._IntentRouters = None
         self._KeyIds = None
         self._Models = None
@@ -9205,6 +9211,28 @@ class CreateUserGroupRequest(AbstractModel):
     @BudgetId.setter
     def BudgetId(self, BudgetId):
         self._BudgetId = BudgetId
+
+    @property
+    def PromptId(self):
+        r"""<p>建组时绑定的 Prompt 资源 ID（pmt-xxx，须为该实例下已存在的 Prompt）。与 PromptVersion 必须成对传入，仅传其一将返回错误。不传表示默认不绑定 Prompt，可建组后再调用 ModifyUserGroupPrompt 绑定或更换版本。绑定后，组内 Key 的请求将按该版本 Prompt 的 Content 与 RewriteStrategy 注入或改写 system 内容。</p>
+        :rtype: str
+        """
+        return self._PromptId
+
+    @PromptId.setter
+    def PromptId(self, PromptId):
+        self._PromptId = PromptId
+
+    @property
+    def PromptVersion(self):
+        r"""<p>绑定的 Prompt 版本号（如 v1、v2，由 CreatePrompt / CreatePromptVersion 生成，长度不超过16个字符），与 PromptId 必须成对传入，须为该 Prompt 下已存在的版本。版本为不可变快照，Prompt 后续新增版本不会自动生效于已绑定的用户组，需显式重新绑定新版本。一个用户组同时只关联一份 Prompt 的一个版本，重复绑定即为替换。</p>
+        :rtype: str
+        """
+        return self._PromptVersion
+
+    @PromptVersion.setter
+    def PromptVersion(self, PromptVersion):
+        self._PromptVersion = PromptVersion
 
     @property
     def IntentRouters(self):
@@ -9255,6 +9283,8 @@ class CreateUserGroupRequest(AbstractModel):
         self._ModelRouterId = params.get("ModelRouterId")
         self._UserGroupName = params.get("UserGroupName")
         self._BudgetId = params.get("BudgetId")
+        self._PromptId = params.get("PromptId")
+        self._PromptVersion = params.get("PromptVersion")
         self._IntentRouters = params.get("IntentRouters")
         self._KeyIds = params.get("KeyIds")
         self._Models = params.get("Models")

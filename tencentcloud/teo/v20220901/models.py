@@ -262,6 +262,102 @@ class APIService(AbstractModel):
         
 
 
+class AWSS3(AbstractModel):
+    r"""AWS S3 目的地信息。通过 IAM 角色 + External ID 授权 EdgeOne 将实时日志投递至客户的 AWS S3 桶，无需提供长期访问密钥，详情见 [推送至 AWS S3](https://cloud.tencent.com/document/product/1552/96007)。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Endpoint: <p>AWS S3 存储桶对应的服务端点域名，取值可参考 <a href="https://docs.aws.amazon.com/zh_cn/general/latest/gr/rande.html#regional-endpoints">AWS 服务端点</a>。例如：s3.us-west-2.amazonaws.com 。</p>
+        :type Endpoint: str
+        :param _BucketName: <p>AWS S3 存储桶名称。可在 AWS S3 控制台 Buckets（存储桶）列表中查看对应桶名。<br>长度须为 3–63 个字符，只能包含小写字母、数字、句点（.）和连字符（-），且必须以字母或数字开头和结尾。</p>
+        :type BucketName: str
+        :param _Path: <p>日志文件在 AWS S3 桶中的存储目录路径，以 <code>/</code> 分隔可创建多级目录，且不能包含 <code>./..</code> 等相对路径段，路径总长度不超过 1024 个字节。<br>当目录路径存在时直接使用该路径，当目录路径不存在时会自动创建。<br>目录名仅允许由字母、数字、 及 <code>!-_.*&#39;()</code> 构成。<br>示例：<code>eo-logs/l7-access-logs</code> 。</p>
+        :type Path: str
+        :param _RoleARN: <p>授权 EdgeOne 访问 AWS S3 桶的 IAM 角色的 ARN。<br>需先在 AWS 账号中创建一个授予 EdgeOne 写入权限的 IAM 角色（创建方式详情见 <a href="https://cloud.tencent.com/document/product/1552/96007">推送至 AWS S3</a>），创建后可在 AWS IAM 控制台的角色详情页顶部查看并复制该角色的 ARN。<br>例如：<code>arn:aws:iam::123456789012:role/eo-logs</code> 。</p>
+        :type RoleARN: str
+        :param _CompressType: <p>数据压缩类型，取值有: <ul><li> gzip：gzip压缩。</li></ul>不填表示不启用压缩。</p>
+        :type CompressType: str
+        """
+        self._Endpoint = None
+        self._BucketName = None
+        self._Path = None
+        self._RoleARN = None
+        self._CompressType = None
+
+    @property
+    def Endpoint(self):
+        r"""<p>AWS S3 存储桶对应的服务端点域名，取值可参考 <a href="https://docs.aws.amazon.com/zh_cn/general/latest/gr/rande.html#regional-endpoints">AWS 服务端点</a>。例如：s3.us-west-2.amazonaws.com 。</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def BucketName(self):
+        r"""<p>AWS S3 存储桶名称。可在 AWS S3 控制台 Buckets（存储桶）列表中查看对应桶名。<br>长度须为 3–63 个字符，只能包含小写字母、数字、句点（.）和连字符（-），且必须以字母或数字开头和结尾。</p>
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Path(self):
+        r"""<p>日志文件在 AWS S3 桶中的存储目录路径，以 <code>/</code> 分隔可创建多级目录，且不能包含 <code>./..</code> 等相对路径段，路径总长度不超过 1024 个字节。<br>当目录路径存在时直接使用该路径，当目录路径不存在时会自动创建。<br>目录名仅允许由字母、数字、 及 <code>!-_.*&#39;()</code> 构成。<br>示例：<code>eo-logs/l7-access-logs</code> 。</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def RoleARN(self):
+        r"""<p>授权 EdgeOne 访问 AWS S3 桶的 IAM 角色的 ARN。<br>需先在 AWS 账号中创建一个授予 EdgeOne 写入权限的 IAM 角色（创建方式详情见 <a href="https://cloud.tencent.com/document/product/1552/96007">推送至 AWS S3</a>），创建后可在 AWS IAM 控制台的角色详情页顶部查看并复制该角色的 ARN。<br>例如：<code>arn:aws:iam::123456789012:role/eo-logs</code> 。</p>
+        :rtype: str
+        """
+        return self._RoleARN
+
+    @RoleARN.setter
+    def RoleARN(self, RoleARN):
+        self._RoleARN = RoleARN
+
+    @property
+    def CompressType(self):
+        r"""<p>数据压缩类型，取值有: <ul><li> gzip：gzip压缩。</li></ul>不填表示不启用压缩。</p>
+        :rtype: str
+        """
+        return self._CompressType
+
+    @CompressType.setter
+    def CompressType(self, CompressType):
+        self._CompressType = CompressType
+
+
+    def _deserialize(self, params):
+        self._Endpoint = params.get("Endpoint")
+        self._BucketName = params.get("BucketName")
+        self._Path = params.get("Path")
+        self._RoleARN = params.get("RoleARN")
+        self._CompressType = params.get("CompressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccelerateMainland(AbstractModel):
     r"""中国大陆加速优化配置。
 
@@ -754,20 +850,17 @@ class AccessURLRedirectParameters(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StatusCode: 状态码，取值为 301、302、303、307、308 之一。
+        :param _StatusCode: <p>状态码，取值为 301、302、303、307、308 之一。</p>
         :type StatusCode: int
-        :param _Protocol: 目标请求协议，取值有：
-<li>http：目标请求协议 HTTP；</li>
-<li>https：目标请求协议 HTTPS；</li>
-<li>follow：跟随请求。</li>
+        :param _Protocol: <p>目标请求协议。</p><p>枚举值：</p><ul><li>http： 目标请求协议为 HTTP。</li><li>https： 目标请求协议为 HTTPS。</li><li>follow： 跟随请求。</li></ul>
         :type Protocol: str
-        :param _HostName: 目标 HostName 。
+        :param _HostName: <p>目标 HostName。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HostName: :class:`tencentcloud.teo.v20220901.models.HostName`
-        :param _URLPath: 目标路径。
+        :param _URLPath: <p>目标路径。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type URLPath: :class:`tencentcloud.teo.v20220901.models.URLPath`
-        :param _QueryString: 携带查询参数。
+        :param _QueryString: <p>携带查询参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueryString: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
         """
@@ -779,7 +872,7 @@ class AccessURLRedirectParameters(AbstractModel):
 
     @property
     def StatusCode(self):
-        r"""状态码，取值为 301、302、303、307、308 之一。
+        r"""<p>状态码，取值为 301、302、303、307、308 之一。</p>
         :rtype: int
         """
         return self._StatusCode
@@ -790,10 +883,7 @@ class AccessURLRedirectParameters(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""目标请求协议，取值有：
-<li>http：目标请求协议 HTTP；</li>
-<li>https：目标请求协议 HTTPS；</li>
-<li>follow：跟随请求。</li>
+        r"""<p>目标请求协议。</p><p>枚举值：</p><ul><li>http： 目标请求协议为 HTTP。</li><li>https： 目标请求协议为 HTTPS。</li><li>follow： 跟随请求。</li></ul>
         :rtype: str
         """
         return self._Protocol
@@ -804,7 +894,7 @@ class AccessURLRedirectParameters(AbstractModel):
 
     @property
     def HostName(self):
-        r"""目标 HostName 。
+        r"""<p>目标 HostName。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.HostName`
         """
@@ -816,7 +906,7 @@ class AccessURLRedirectParameters(AbstractModel):
 
     @property
     def URLPath(self):
-        r"""目标路径。
+        r"""<p>目标路径。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.URLPath`
         """
@@ -828,7 +918,7 @@ class AccessURLRedirectParameters(AbstractModel):
 
     @property
     def QueryString(self):
-        r"""携带查询参数。
+        r"""<p>携带查询参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
         """
@@ -14422,7 +14512,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type LogType: str
         :param _TaskName: <p>实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。</p>
         :type TaskName: str
-        :param _TaskType: <p>实时日志投递任务类型，取值有：<ul><li>cls: 推送到腾讯云 CLS；</li><li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li><li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析，仅当 LogType = l7-access-logs 或 web-attack 时支持。</li></ul></p>
+        :param _TaskType: <p>实时日志投递任务类型，取值有：<ul><li>cls: 推送到腾讯云 CLS；</li><li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li><li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址，当 <code>LogType = web-attack</code> 时不支持该任务类型；</li><li>aws_s3：推送到 AWS S3 存储桶地址，使用 IAM 角色授权，免长期密钥，仅适用于 AWS 原生 S3；</li><li>log_analysis：推送到 EdgeOne 日志分析，仅当 <code>LogType = l7-access-logs</code> 或 <code>web-attack</code> 时支持。</li></ul></p>
         :type TaskType: str
         :param _EntityList: <p>实时日志投递任务对应的实体列表。取值示例如下：<ul><li>七层域名：domain.example.com</li><li>四层代理实例：sid-2s69eb5wcms7</li><li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li></ul></p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1552/103413">DescribeL4Proxy</a></p>
         :type EntityList: list of str
@@ -14430,20 +14520,22 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type Fields: list of str
         :param _CustomFields: <p>投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。<br>自定义字段名称不能重复，仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE)。</p>
         :type CustomFields: list of CustomField
-        :param _CustomExpressionFields: <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+        :param _CustomExpressionFields: <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式](https://cloud.tencent.com/document/product/1552/105794)。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
         :type CustomExpressionFields: list of CustomExpressionField
         :param _DeliveryConditions: <p>日志投递的过滤条件，不填表示投递全量日志。</p>
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: <p>采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。</p>
         :type Sample: int
-        :param _LogFormat: <p>日志投递的输出格式，使用详情见 <a href="https://cloud.tencent.com/document/product/1552/110448">自定义日志输出格式</a>。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。</p>
+        :param _LogFormat: <p>日志投递的输出格式，使用详情见 <a href="https://cloud.tencent.com/document/product/1552/110448">自定义日志输出格式</a>。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 或 aws_s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。</p>
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CLS: <p>CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。</p>
         :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
         :param _CustomEndpoint: <p>自定义 HTTP 服务的配置信息。当 TaskType 取值为 custom_endpoint 时，该参数必填。</p>
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
-        :param _S3: <p>AWS S3 兼容存储桶的配置信息。当 TaskType 取值为 s3 时，该参数必填。</p>
+        :param _S3: <p>S3 兼容（兼容 SigV4 鉴权算法）的对象存储的配置信息。当 TaskType 取值为 s3 时，该参数必填。</p>
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
+        :param _AWSS3: <p>AWS S3 的对象存储的配置信息，使用 IAM 角色授权，免长期密钥，仅适用于 AWS 原生 S3 。当 TaskType 为 aws_s3 时，该参数必填。</p>
+        :type AWSS3: :class:`tencentcloud.teo.v20220901.models.AWSS3`
         """
         self._ZoneId = None
         self._Area = None
@@ -14460,6 +14552,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._CLS = None
         self._CustomEndpoint = None
         self._S3 = None
+        self._AWSS3 = None
 
     @property
     def ZoneId(self):
@@ -14507,7 +14600,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""<p>实时日志投递任务类型，取值有：<ul><li>cls: 推送到腾讯云 CLS；</li><li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li><li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析，仅当 LogType = l7-access-logs 或 web-attack 时支持。</li></ul></p>
+        r"""<p>实时日志投递任务类型，取值有：<ul><li>cls: 推送到腾讯云 CLS；</li><li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li><li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址，当 <code>LogType = web-attack</code> 时不支持该任务类型；</li><li>aws_s3：推送到 AWS S3 存储桶地址，使用 IAM 角色授权，免长期密钥，仅适用于 AWS 原生 S3；</li><li>log_analysis：推送到 EdgeOne 日志分析，仅当 <code>LogType = l7-access-logs</code> 或 <code>web-attack</code> 时支持。</li></ul></p>
         :rtype: str
         """
         return self._TaskType
@@ -14551,7 +14644,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomExpressionFields(self):
-        r"""<p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+        r"""<p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式](https://cloud.tencent.com/document/product/1552/105794)。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
         :rtype: list of CustomExpressionField
         """
         return self._CustomExpressionFields
@@ -14584,7 +14677,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        r"""<p>日志投递的输出格式，使用详情见 <a href="https://cloud.tencent.com/document/product/1552/110448">自定义日志输出格式</a>。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。</p>
+        r"""<p>日志投递的输出格式，使用详情见 <a href="https://cloud.tencent.com/document/product/1552/110448">自定义日志输出格式</a>。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 或 aws_s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         """
         return self._LogFormat
@@ -14617,7 +14710,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def S3(self):
-        r"""<p>AWS S3 兼容存储桶的配置信息。当 TaskType 取值为 s3 时，该参数必填。</p>
+        r"""<p>S3 兼容（兼容 SigV4 鉴权算法）的对象存储的配置信息。当 TaskType 取值为 s3 时，该参数必填。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.S3`
         """
         return self._S3
@@ -14625,6 +14718,17 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
     @S3.setter
     def S3(self, S3):
         self._S3 = S3
+
+    @property
+    def AWSS3(self):
+        r"""<p>AWS S3 的对象存储的配置信息，使用 IAM 角色授权，免长期密钥，仅适用于 AWS 原生 S3 。当 TaskType 为 aws_s3 时，该参数必填。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AWSS3`
+        """
+        return self._AWSS3
+
+    @AWSS3.setter
+    def AWSS3(self, AWSS3):
+        self._AWSS3 = AWSS3
 
 
     def _deserialize(self, params):
@@ -14666,6 +14770,9 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         if params.get("S3") is not None:
             self._S3 = S3()
             self._S3._deserialize(params.get("S3"))
+        if params.get("AWSS3") is not None:
+            self._AWSS3 = AWSS3()
+            self._AWSS3._deserialize(params.get("AWSS3"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45374,8 +45481,8 @@ class L4ProxyRule(AbstractModel):
         :type OriginType: str
         :param _OriginValue: 源站地址：
 <li>当 OriginType 为 IP_DOMAIN 时，填写 IP 或域名，如 8.8.8.8 或 test.com ；</li>
-<li>当 OriginType 为 ORIGIN_GROUP 时，填写源站组 ID，如 og-537y24vf5b41；</li>
-<li>当 OriginType 为 LB 时，填写负载均衡实例 ID，如 lb-2qwk30xf7s9g。</li>
+<li>当 OriginType 为 ORIGIN_GROUP 时，填写源站组 ID，如 og-537y24vf5b41；如果引用了其它站点的源站组，格式为{源站组 ID}@{ZoneID}。例如：og-testorigin@zone-38moq1z10wwwy；</li>
+<li>当 OriginType 为 LB 时，填写负载均衡实例 ID，如 lb-2qwk30xf7s9g；如果引用了其它站点的负载均衡，格式为{负载均衡 ID}@{ZoneID}。例如：lb-2rxpamcyqfzg@zone-38moq1z10wwwy。</li>
 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数必填；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写时表示不修改。
 
         :type OriginValue: list of str
@@ -45491,8 +45598,8 @@ class L4ProxyRule(AbstractModel):
     def OriginValue(self):
         r"""源站地址：
 <li>当 OriginType 为 IP_DOMAIN 时，填写 IP 或域名，如 8.8.8.8 或 test.com ；</li>
-<li>当 OriginType 为 ORIGIN_GROUP 时，填写源站组 ID，如 og-537y24vf5b41；</li>
-<li>当 OriginType 为 LB 时，填写负载均衡实例 ID，如 lb-2qwk30xf7s9g。</li>
+<li>当 OriginType 为 ORIGIN_GROUP 时，填写源站组 ID，如 og-537y24vf5b41；如果引用了其它站点的源站组，格式为{源站组 ID}@{ZoneID}。例如：og-testorigin@zone-38moq1z10wwwy；</li>
+<li>当 OriginType 为 LB 时，填写负载均衡实例 ID，如 lb-2qwk30xf7s9g；如果引用了其它站点的负载均衡，格式为{负载均衡 ID}@{ZoneID}。例如：lb-2rxpamcyqfzg@zone-38moq1z10wwwy。</li>
 注意：L4ProxyRule 在 CreateL4ProxyRules 作为入参使用时，该参数必填；在 ModifyL4ProxyRules 作为入参使用时，该参数选填，不填写时表示不修改。
 
         :rtype: list of str
@@ -51792,9 +51899,9 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type EntityList: list of str
         :param _Fields: <p>投递的预设字段列表。不填保持原有配置。</p><p>取值参考：DescribeLogFields</p>
         :type Fields: list of str
-        :param _CustomFields: <p>投递的自定义日志字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，详见 <a href="">自定义日志字段表达式</a>。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段，允许配置的自定义字段个数有配额限制，如遇配额不足请 <a href="https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE">联系我们</a> 。</p>
+        :param _CustomFields: <p>投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。<br>自定义字段名称不能重复，仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE)。</p>
         :type CustomFields: list of CustomField
-        :param _CustomExpressionFields: <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+        :param _CustomExpressionFields: <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式](https://cloud.tencent.com/document/product/1552/105794)。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
         :type CustomExpressionFields: list of CustomExpressionField
         :param _DeliveryConditions: <p>日志投递的过滤条件。不填表示投递全量日志。</p>
         :type DeliveryConditions: list of DeliveryCondition
@@ -51804,8 +51911,10 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CustomEndpoint: <p>自定义 HTTP 服务的配置信息，不填保持原有配置。</p>
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
-        :param _S3: <p>AWS S3 兼容存储桶的配置信息，不填保持原有配置。</p>
+        :param _S3: <p>S3 兼容（兼容 SigV4 鉴权算法）的对象存储的配置信息，不填保持原有配置。</p>
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
+        :param _AWSS3: <p>AWS S3 对象存储的配置信息，不填保持原有配置。</p>
+        :type AWSS3: :class:`tencentcloud.teo.v20220901.models.AWSS3`
         """
         self._ZoneId = None
         self._TaskId = None
@@ -51820,6 +51929,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._LogFormat = None
         self._CustomEndpoint = None
         self._S3 = None
+        self._AWSS3 = None
 
     @property
     def ZoneId(self):
@@ -51889,7 +51999,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomFields(self):
-        r"""<p>投递的自定义日志字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，详见 <a href="">自定义日志字段表达式</a>。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段，允许配置的自定义字段个数有配额限制，如遇配额不足请 <a href="https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE">联系我们</a> 。</p>
+        r"""<p>投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。<br>自定义字段名称不能重复，仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE)。</p>
         :rtype: list of CustomField
         """
         return self._CustomFields
@@ -51900,7 +52010,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomExpressionFields(self):
-        r"""<p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+        r"""<p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式](https://cloud.tencent.com/document/product/1552/105794)。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
         :rtype: list of CustomExpressionField
         """
         return self._CustomExpressionFields
@@ -51955,7 +52065,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def S3(self):
-        r"""<p>AWS S3 兼容存储桶的配置信息，不填保持原有配置。</p>
+        r"""<p>S3 兼容（兼容 SigV4 鉴权算法）的对象存储的配置信息，不填保持原有配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.S3`
         """
         return self._S3
@@ -51963,6 +52073,17 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
     @S3.setter
     def S3(self, S3):
         self._S3 = S3
+
+    @property
+    def AWSS3(self):
+        r"""<p>AWS S3 对象存储的配置信息，不填保持原有配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AWSS3`
+        """
+        return self._AWSS3
+
+    @AWSS3.setter
+    def AWSS3(self, AWSS3):
+        self._AWSS3 = AWSS3
 
 
     def _deserialize(self, params):
@@ -52000,6 +52121,9 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         if params.get("S3") is not None:
             self._S3 = S3()
             self._S3._deserialize(params.get("S3"))
+        if params.get("AWSS3") is not None:
+            self._AWSS3 = AWSS3()
+            self._AWSS3._deserialize(params.get("AWSS3"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59794,7 +59918,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
         :type TaskName: str
         :param _DeliveryStatus: <p>实时日志投递任务的状态，取值有： <li>enabled: 已启用；</li> <li>disabled: 已停用；</li><li>deleted: 异常删除状态，请检查目的地腾讯云 CLS 日志集/日志主题是否已被删除。</li></p>
         :type DeliveryStatus: str
-        :param _TaskType: <p>实时日志投递任务类型，取值有： <ul><li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></ul></p>
+        :param _TaskType: <p>实时日志投递任务类型，取值有： <ul><li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址；</li><li>aws_s3：推送到 AWS S3 存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></ul></p>
         :type TaskType: str
         :param _EntityList: <p>实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下： <li>七层域名：domain.example.com；</li> <li>四层代理实例：sid-2s69eb5wcms7。</li></p>
         :type EntityList: list of str
@@ -59824,6 +59948,9 @@ class RealtimeLogDeliveryTask(AbstractModel):
         :param _S3: <p>S3 兼容（兼容 SigV4 鉴权算法）的对象存储的配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
+        :param _AWSS3: <p>AWS S3 的对象存储的配置信息，使用 IAM 角色授权，免长期密钥，仅适用于 AWS 原生 S3 。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AWSS3: :class:`tencentcloud.teo.v20220901.models.AWSS3`
         :param _CreateTime: <p>创建时间。</p>
         :type CreateTime: str
         :param _UpdateTime: <p>更新时间。</p>
@@ -59845,6 +59972,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
         self._CLS = None
         self._CustomEndpoint = None
         self._S3 = None
+        self._AWSS3 = None
         self._CreateTime = None
         self._UpdateTime = None
 
@@ -59883,7 +60011,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""<p>实时日志投递任务类型，取值有： <ul><li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></ul></p>
+        r"""<p>实时日志投递任务类型，取值有： <ul><li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址；</li><li>aws_s3：推送到 AWS S3 存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></ul></p>
         :rtype: str
         """
         return self._TaskType
@@ -60029,6 +60157,18 @@ class RealtimeLogDeliveryTask(AbstractModel):
         self._S3 = S3
 
     @property
+    def AWSS3(self):
+        r"""<p>AWS S3 的对象存储的配置信息，使用 IAM 角色授权，免长期密钥，仅适用于 AWS 原生 S3 。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AWSS3`
+        """
+        return self._AWSS3
+
+    @AWSS3.setter
+    def AWSS3(self, AWSS3):
+        self._AWSS3 = AWSS3
+
+    @property
     def CreateTime(self):
         r"""<p>创建时间。</p>
         :rtype: str
@@ -60091,6 +60231,9 @@ class RealtimeLogDeliveryTask(AbstractModel):
         if params.get("S3") is not None:
             self._S3 = S3()
             self._S3._deserialize(params.get("S3"))
+        if params.get("AWSS3") is not None:
+            self._AWSS3 = AWSS3()
+            self._AWSS3._deserialize(params.get("AWSS3"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())

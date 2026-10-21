@@ -47006,7 +47006,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
         :type ProxyGroupId: str
         :param _ConsistencyType: <p>一致性类型；“eventual&quot;-最终一致性, &quot;session&quot;-会话一致性, &quot;global&quot;-全局一致性</p>
         :type ConsistencyType: str
-        :param _ConsistencyTimeOut: <p>一致性超时时间。<br>取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。</p>
+        :param _ConsistencyTimeOut: <p>一致性超时时间。取值范围：0~1000000（毫秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。</p>
         :type ConsistencyTimeOut: str
         :param _WeightMode: <p>读写权重分配模式；系统自动分配：&quot;system&quot;， 自定义：&quot;custom&quot;</p>
         :type WeightMode: str
@@ -47094,7 +47094,7 @@ class ModifyProxyRwSplitRequest(AbstractModel):
 
     @property
     def ConsistencyTimeOut(self):
-        r"""<p>一致性超时时间。<br>取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。</p>
+        r"""<p>一致性超时时间。取值范围：0~1000000（毫秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。</p>
         :rtype: str
         """
         return self._ConsistencyTimeOut

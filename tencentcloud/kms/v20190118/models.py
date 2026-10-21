@@ -5303,6 +5303,10 @@ class GetServiceStatusResponse(AbstractModel):
         :type ResourceZone: int
         :param _ResourceRegion: <p>资源的地域可用区信息</p>
         :type ResourceRegion: int
+        :param _MultiAccountLimit: <p>多账号开通额度</p><p>单位：个数</p>
+        :type MultiAccountLimit: int
+        :param _MultiAccountUsedCount: <p>多账号启用个数</p><p>单位：个数</p>
+        :type MultiAccountUsedCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5329,6 +5333,8 @@ class GetServiceStatusResponse(AbstractModel):
         self._RegionsQps = None
         self._ResourceZone = None
         self._ResourceRegion = None
+        self._MultiAccountLimit = None
+        self._MultiAccountUsedCount = None
         self._RequestId = None
 
     @property
@@ -5585,6 +5591,28 @@ class GetServiceStatusResponse(AbstractModel):
         self._ResourceRegion = ResourceRegion
 
     @property
+    def MultiAccountLimit(self):
+        r"""<p>多账号开通额度</p><p>单位：个数</p>
+        :rtype: int
+        """
+        return self._MultiAccountLimit
+
+    @MultiAccountLimit.setter
+    def MultiAccountLimit(self, MultiAccountLimit):
+        self._MultiAccountLimit = MultiAccountLimit
+
+    @property
+    def MultiAccountUsedCount(self):
+        r"""<p>多账号启用个数</p><p>单位：个数</p>
+        :rtype: int
+        """
+        return self._MultiAccountUsedCount
+
+    @MultiAccountUsedCount.setter
+    def MultiAccountUsedCount(self, MultiAccountUsedCount):
+        self._MultiAccountUsedCount = MultiAccountUsedCount
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5635,6 +5663,8 @@ class GetServiceStatusResponse(AbstractModel):
                 self._RegionsQps.append(obj)
         self._ResourceZone = params.get("ResourceZone")
         self._ResourceRegion = params.get("ResourceRegion")
+        self._MultiAccountLimit = params.get("MultiAccountLimit")
+        self._MultiAccountUsedCount = params.get("MultiAccountUsedCount")
         self._RequestId = params.get("RequestId")
 
 

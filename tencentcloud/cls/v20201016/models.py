@@ -4663,6 +4663,8 @@ class CloudProductTopicConfig(AbstractModel):
         :type CustomKmsInfo: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
         :param _TopicId: <p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
         :type TopicId: str
+        :param _Extends: <p>主题扩展信息</p>
+        :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         self._Encryption = None
         self._PartitionCount = None
@@ -4677,6 +4679,7 @@ class CloudProductTopicConfig(AbstractModel):
         self._IsWebTracking = None
         self._CustomKmsInfo = None
         self._TopicId = None
+        self._Extends = None
 
     @property
     def Encryption(self):
@@ -4821,6 +4824,17 @@ class CloudProductTopicConfig(AbstractModel):
     def TopicId(self, TopicId):
         self._TopicId = TopicId
 
+    @property
+    def Extends(self):
+        r"""<p>主题扩展信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
+        """
+        return self._Extends
+
+    @Extends.setter
+    def Extends(self, Extends):
+        self._Extends = Extends
+
 
     def _deserialize(self, params):
         self._Encryption = params.get("Encryption")
@@ -4838,6 +4852,9 @@ class CloudProductTopicConfig(AbstractModel):
             self._CustomKmsInfo = CustomKmsInfo()
             self._CustomKmsInfo._deserialize(params.get("CustomKmsInfo"))
         self._TopicId = params.get("TopicId")
+        if params.get("Extends") is not None:
+            self._Extends = TopicExtendInfo()
+            self._Extends._deserialize(params.get("Extends"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
