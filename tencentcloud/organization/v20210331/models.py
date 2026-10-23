@@ -9643,6 +9643,57 @@ class EnablePolicyTypeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class FailedAccount(AbstractModel):
+    r"""失败账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetUin: <p>下发失败的成员账号 UIN</p>
+        :type TargetUin: int
+        :param _TargetName: <p>下发失败的成员账号名</p>
+        :type TargetName: str
+        """
+        self._TargetUin = None
+        self._TargetName = None
+
+    @property
+    def TargetUin(self):
+        r"""<p>下发失败的成员账号 UIN</p>
+        :rtype: int
+        """
+        return self._TargetUin
+
+    @TargetUin.setter
+    def TargetUin(self, TargetUin):
+        self._TargetUin = TargetUin
+
+    @property
+    def TargetName(self):
+        r"""<p>下发失败的成员账号名</p>
+        :rtype: str
+        """
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
+
+
+    def _deserialize(self, params):
+        self._TargetUin = params.get("TargetUin")
+        self._TargetName = params.get("TargetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetExternalSAMLIdentityProviderRequest(AbstractModel):
     r"""GetExternalSAMLIdentityProvider请求参数结构体
 
@@ -19582,23 +19633,30 @@ class RoleConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleConfigurationId: 权限配置配置ID。
+        :param _RoleConfigurationId: <p>权限配置配置ID。</p>
         :type RoleConfigurationId: str
-        :param _RoleConfigurationName: 权限配置配名称。
+        :param _RoleConfigurationName: <p>权限配置配名称。</p>
         :type RoleConfigurationName: str
-        :param _Description: 权限配置的描述。
+        :param _Description: <p>权限配置的描述。</p>
         :type Description: str
-        :param _SessionDuration: 会话持续时间。CIC 用户使用访问配置访问成员账号时，会话最多保持的时间。
-单位：秒。
+        :param _SessionDuration: <p>会话持续时间。CIC 用户使用访问配置访问成员账号时，会话最多保持的时间。<br>单位：秒。</p>
         :type SessionDuration: int
-        :param _RelayState: 初始访问页面。CIC 用户使用访问配置访问成员账号时，初始访问的页面地址。
+        :param _RelayState: <p>初始访问页面。CIC 用户使用访问配置访问成员账号时，初始访问的页面地址。</p>
         :type RelayState: str
-        :param _CreateTime: 权限配置的创建时间。
+        :param _CreateTime: <p>权限配置的创建时间。</p>
         :type CreateTime: str
-        :param _UpdateTime: 权限配置的更新时间。
+        :param _UpdateTime: <p>权限配置的更新时间。</p>
         :type UpdateTime: str
-        :param _IsSelected: 如果有入参FilterTargets查询成员账号是否配置过权限，配置了返回true，否则返回false。
+        :param _IsSelected: <p>如果有入参FilterTargets查询成员账号是否配置过权限，配置了返回true，否则返回false。</p>
         :type IsSelected: bool
+        :param _ApplyStatus: <p>会话时长应用状态</p><p>枚举值：</p><ul><li>Success： 全部账号应用成功</li><li>Failed： 存在失败账号</li><li>Applying： 任务在途</li><li>Unknown： 已部署账号超查询上限</li></ul>
+        :type ApplyStatus: str
+        :param _AppliedSessionDuration: <p>当前已真实下发到 CAM 的会话时长</p><p>取值范围：[900, 43200]</p><p>单位：秒</p>
+        :type AppliedSessionDuration: int
+        :param _SessionDurationUpdateTime: <p>最近一次成功下发时间</p><p>参数格式： YYYY-MM-DD hh:mm:ss</p>
+        :type SessionDurationUpdateTime: str
+        :param _FailedAccounts: <p>未成功应用的账号明细</p><p>仅 Failed 态返回</p>
+        :type FailedAccounts: list of FailedAccount
         """
         self._RoleConfigurationId = None
         self._RoleConfigurationName = None
@@ -19608,10 +19666,14 @@ class RoleConfiguration(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._IsSelected = None
+        self._ApplyStatus = None
+        self._AppliedSessionDuration = None
+        self._SessionDurationUpdateTime = None
+        self._FailedAccounts = None
 
     @property
     def RoleConfigurationId(self):
-        r"""权限配置配置ID。
+        r"""<p>权限配置配置ID。</p>
         :rtype: str
         """
         return self._RoleConfigurationId
@@ -19622,7 +19684,7 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def RoleConfigurationName(self):
-        r"""权限配置配名称。
+        r"""<p>权限配置配名称。</p>
         :rtype: str
         """
         return self._RoleConfigurationName
@@ -19633,7 +19695,7 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def Description(self):
-        r"""权限配置的描述。
+        r"""<p>权限配置的描述。</p>
         :rtype: str
         """
         return self._Description
@@ -19644,8 +19706,7 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def SessionDuration(self):
-        r"""会话持续时间。CIC 用户使用访问配置访问成员账号时，会话最多保持的时间。
-单位：秒。
+        r"""<p>会话持续时间。CIC 用户使用访问配置访问成员账号时，会话最多保持的时间。<br>单位：秒。</p>
         :rtype: int
         """
         return self._SessionDuration
@@ -19656,7 +19717,7 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def RelayState(self):
-        r"""初始访问页面。CIC 用户使用访问配置访问成员账号时，初始访问的页面地址。
+        r"""<p>初始访问页面。CIC 用户使用访问配置访问成员账号时，初始访问的页面地址。</p>
         :rtype: str
         """
         return self._RelayState
@@ -19667,7 +19728,7 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""权限配置的创建时间。
+        r"""<p>权限配置的创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -19678,7 +19739,7 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""权限配置的更新时间。
+        r"""<p>权限配置的更新时间。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -19689,7 +19750,7 @@ class RoleConfiguration(AbstractModel):
 
     @property
     def IsSelected(self):
-        r"""如果有入参FilterTargets查询成员账号是否配置过权限，配置了返回true，否则返回false。
+        r"""<p>如果有入参FilterTargets查询成员账号是否配置过权限，配置了返回true，否则返回false。</p>
         :rtype: bool
         """
         return self._IsSelected
@@ -19697,6 +19758,50 @@ class RoleConfiguration(AbstractModel):
     @IsSelected.setter
     def IsSelected(self, IsSelected):
         self._IsSelected = IsSelected
+
+    @property
+    def ApplyStatus(self):
+        r"""<p>会话时长应用状态</p><p>枚举值：</p><ul><li>Success： 全部账号应用成功</li><li>Failed： 存在失败账号</li><li>Applying： 任务在途</li><li>Unknown： 已部署账号超查询上限</li></ul>
+        :rtype: str
+        """
+        return self._ApplyStatus
+
+    @ApplyStatus.setter
+    def ApplyStatus(self, ApplyStatus):
+        self._ApplyStatus = ApplyStatus
+
+    @property
+    def AppliedSessionDuration(self):
+        r"""<p>当前已真实下发到 CAM 的会话时长</p><p>取值范围：[900, 43200]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._AppliedSessionDuration
+
+    @AppliedSessionDuration.setter
+    def AppliedSessionDuration(self, AppliedSessionDuration):
+        self._AppliedSessionDuration = AppliedSessionDuration
+
+    @property
+    def SessionDurationUpdateTime(self):
+        r"""<p>最近一次成功下发时间</p><p>参数格式： YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._SessionDurationUpdateTime
+
+    @SessionDurationUpdateTime.setter
+    def SessionDurationUpdateTime(self, SessionDurationUpdateTime):
+        self._SessionDurationUpdateTime = SessionDurationUpdateTime
+
+    @property
+    def FailedAccounts(self):
+        r"""<p>未成功应用的账号明细</p><p>仅 Failed 态返回</p>
+        :rtype: list of FailedAccount
+        """
+        return self._FailedAccounts
+
+    @FailedAccounts.setter
+    def FailedAccounts(self, FailedAccounts):
+        self._FailedAccounts = FailedAccounts
 
 
     def _deserialize(self, params):
@@ -19708,6 +19813,15 @@ class RoleConfiguration(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._IsSelected = params.get("IsSelected")
+        self._ApplyStatus = params.get("ApplyStatus")
+        self._AppliedSessionDuration = params.get("AppliedSessionDuration")
+        self._SessionDurationUpdateTime = params.get("SessionDurationUpdateTime")
+        if params.get("FailedAccounts") is not None:
+            self._FailedAccounts = []
+            for item in params.get("FailedAccounts"):
+                obj = FailedAccount()
+                obj._deserialize(item)
+                self._FailedAccounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22803,26 +22917,29 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 空间 ID
+        :param _ZoneId: <p>空间 ID</p>
         :type ZoneId: str
-        :param _RoleConfigurationId: 权限配置 ID
+        :param _RoleConfigurationId: <p>权限配置 ID</p>
         :type RoleConfigurationId: str
-        :param _NewDescription: 新的权限配置描述。  长度：最大 1024 个字符。
+        :param _NewDescription: <p>新的权限配置描述。  长度：最大 1024 个字符。</p>
         :type NewDescription: str
-        :param _NewSessionDuration: 新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
+        :param _NewSessionDuration: <p>新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。</p>
         :type NewSessionDuration: int
-        :param _NewRelayState: 新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
+        :param _NewRelayState: <p>新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。</p>
         :type NewRelayState: str
+        :param _IsApply: <p>true=保存并应用（立即下发）；false/缺省=仅保存</p>
+        :type IsApply: bool
         """
         self._ZoneId = None
         self._RoleConfigurationId = None
         self._NewDescription = None
         self._NewSessionDuration = None
         self._NewRelayState = None
+        self._IsApply = None
 
     @property
     def ZoneId(self):
-        r"""空间 ID
+        r"""<p>空间 ID</p>
         :rtype: str
         """
         return self._ZoneId
@@ -22833,7 +22950,7 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def RoleConfigurationId(self):
-        r"""权限配置 ID
+        r"""<p>权限配置 ID</p>
         :rtype: str
         """
         return self._RoleConfigurationId
@@ -22844,7 +22961,7 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewDescription(self):
-        r"""新的权限配置描述。  长度：最大 1024 个字符。
+        r"""<p>新的权限配置描述。  长度：最大 1024 个字符。</p>
         :rtype: str
         """
         return self._NewDescription
@@ -22855,7 +22972,7 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewSessionDuration(self):
-        r"""新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。
+        r"""<p>新的会话持续时间。  CIC 用户使用权限配置访问集团账号目标账号时，会话最多保持的时间。  单位：秒。  取值范围：900-43200（15 分钟-12 小时）。</p>
         :rtype: int
         """
         return self._NewSessionDuration
@@ -22866,7 +22983,7 @@ class UpdateRoleConfigurationRequest(AbstractModel):
 
     @property
     def NewRelayState(self):
-        r"""新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。
+        r"""<p>新的初始访问页面。  CIC 用户使用权限配置访问集团账号目标账号时，初始访问的页面地址。  该页面必须是腾讯云控制台页面。</p>
         :rtype: str
         """
         return self._NewRelayState
@@ -22875,6 +22992,17 @@ class UpdateRoleConfigurationRequest(AbstractModel):
     def NewRelayState(self, NewRelayState):
         self._NewRelayState = NewRelayState
 
+    @property
+    def IsApply(self):
+        r"""<p>true=保存并应用（立即下发）；false/缺省=仅保存</p>
+        :rtype: bool
+        """
+        return self._IsApply
+
+    @IsApply.setter
+    def IsApply(self, IsApply):
+        self._IsApply = IsApply
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -22882,6 +23010,7 @@ class UpdateRoleConfigurationRequest(AbstractModel):
         self._NewDescription = params.get("NewDescription")
         self._NewSessionDuration = params.get("NewSessionDuration")
         self._NewRelayState = params.get("NewRelayState")
+        self._IsApply = params.get("IsApply")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22899,7 +23028,7 @@ class UpdateRoleConfigurationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleConfigurationInfo: 权限配置详情
+        :param _RoleConfigurationInfo: <p>权限配置详情</p>
         :type RoleConfigurationInfo: :class:`tencentcloud.organization.v20210331.models.RoleConfiguration`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22909,7 +23038,7 @@ class UpdateRoleConfigurationResponse(AbstractModel):
 
     @property
     def RoleConfigurationInfo(self):
-        r"""权限配置详情
+        r"""<p>权限配置详情</p>
         :rtype: :class:`tencentcloud.organization.v20210331.models.RoleConfiguration`
         """
         return self._RoleConfigurationInfo

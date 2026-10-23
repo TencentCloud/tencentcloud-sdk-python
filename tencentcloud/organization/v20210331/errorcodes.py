@@ -80,6 +80,9 @@ FAILEDOPERATION_DBOPERATIONERROR = 'FailedOperation.DBOperationError'
 # 解码元数据文档失败。
 FAILEDOPERATION_DECODEMETADATADOCUMENTFAILED = 'FailedOperation.DecodeMetadataDocumentFailed'
 
+# 委派管理员不能修改已部署到集团管理账号的配置
+FAILEDOPERATION_DELEGATEDADMINCANNOTMODIFYDEPLOYEDCONFIG = 'FailedOperation.DelegatedAdminCannotModifyDeployedConfig'
+
 # 委派管理员不能操作策略（添加、编辑、删除）
 FAILEDOPERATION_DELEGATEDADMINCANNOTMODIFYPOLICY = 'FailedOperation.DelegatedAdminCannotModifyPolicy'
 
@@ -598,6 +601,9 @@ INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = 'InvalidParameter.PrincipalQcsNotExist'
 
 # PrincipalService不存在。
 INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = 'InvalidParameter.PrincipalServiceNotExist'
+
+# RelayState格式错误或域名不允许
+INVALIDPARAMETER_RELAYSTATEFORMATERROR = 'InvalidParameter.RelayStateFormatError'
 
 # 系统预留标签键 qcloud、tencent和project 禁止创建。
 INVALIDPARAMETER_RESERVEDTAGKEY = 'InvalidParameter.ReservedTagKey'

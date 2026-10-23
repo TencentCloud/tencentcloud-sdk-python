@@ -688,89 +688,68 @@ class Address(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressId: `EIP`的`ID`，是`EIP`的唯一标识。
+        :param _AddressId: <p><code>EIP</code>的<code>ID</code>，是<code>EIP</code>的唯一标识。</p>
         :type AddressId: str
-        :param _AddressName: `EIP`名称。
+        :param _AddressName: <p><code>EIP</code>名称。</p>
         :type AddressName: str
-        :param _AddressStatus: `EIP`状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)
+        :param _AddressStatus: <p><code>EIP</code>状态，包含&#39;CREATING&#39;(创建中),&#39;BINDING&#39;(绑定中),&#39;BIND&#39;(已绑定),&#39;UNBINDING&#39;(解绑中),&#39;UNBIND&#39;(已解绑),&#39;OFFLINING&#39;(释放中),&#39;BIND_ENI&#39;(绑定悬空弹性网卡)</p>
         :type AddressStatus: str
-        :param _AddressIp: 外网IP地址
+        :param _AddressIp: <p>外网IP地址</p>
         :type AddressIp: str
-        :param _InstanceId: 绑定的资源实例`ID`。可能是一个`CVM`，`NAT`。
+        :param _InstanceId: <p>绑定的资源实例<code>ID</code>。可能是一个<code>CVM</code>，<code>NAT</code>。</p>
         :type InstanceId: str
-        :param _CreatedTime: 创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        :param _CreatedTime: <p>创建时间。按照<code>ISO8601</code>标准表示，并且使用<code>UTC</code>时间。格式为：<code>YYYY-MM-DDThh:mm:ssZ</code>。</p>
         :type CreatedTime: str
-        :param _NetworkInterfaceId: 绑定的弹性网卡ID，null表示没有绑定弹性网卡。
+        :param _NetworkInterfaceId: <p>绑定的弹性网卡ID，null表示没有绑定弹性网卡。</p>
         :type NetworkInterfaceId: str
-        :param _PrivateAddressIp: 绑定的资源内网ip，null表示没有绑定资源内网ip。
+        :param _PrivateAddressIp: <p>绑定的资源内网ip，null表示没有绑定资源内网ip。</p>
         :type PrivateAddressIp: str
-        :param _IsArrears: 资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
+        :param _IsArrears: <p>资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态</p>
         :type IsArrears: bool
-        :param _IsBlocked: 资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
+        :param _IsBlocked: <p>资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态</p>
         :type IsBlocked: bool
-        :param _IsEipDirectConnection: eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式
+        :param _IsEipDirectConnection: <p>eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式</p>
         :type IsEipDirectConnection: bool
-        :param _AddressType: EIP 资源类型，包括CalcIP、WanIP、EIP和AnycastEIP、高防EIP。其中：`CalcIP` 表示设备 IP，`WanIP` 表示普通公网 IP，`EIP` 表示弹性公网 IP，`AnycastEIP` 表示加速 EIP，`AntiDDoSEIP`表示高防EIP。
+        :param _AddressType: <p>EIP 资源类型，包括CalcIP、WanIP、EIP和AnycastEIP、高防EIP。其中：<code>CalcIP</code> 表示设备 IP，<code>WanIP</code> 表示普通公网 IP，<code>EIP</code> 表示弹性公网 IP，<code>AnycastEIP</code> 表示加速 EIP，<code>AntiDDoSEIP</code>表示高防EIP。</p>
         :type AddressType: str
-        :param _CascadeRelease: eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
+        :param _CascadeRelease: <p>eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放</p>
         :type CascadeRelease: bool
-        :param _EipAlgType: EIP ALG开启的协议类型。
+        :param _EipAlgType: <p>EIP ALG开启的协议类型。</p>
         :type EipAlgType: :class:`tencentcloud.vpc.v20170312.models.AlgType`
-        :param _InternetServiceProvider: 弹性公网IP的运营商信息，当前可能返回值包括"CMCC"(移动),"CTCC"(电信),"CUCC"(联通),"BGP"(常规BGP)。
+        :param _InternetServiceProvider: <p>弹性公网IP的运营商信息，当前可能返回值包括&quot;CMCC&quot;(移动),&quot;CTCC&quot;(电信),&quot;CUCC&quot;(联通),&quot;BGP&quot;(常规BGP)。</p>
         :type InternetServiceProvider: str
-        :param _LocalBgp: 是否本地带宽EIP，可选值：
-<li>true：本地带宽EIP</li>
-<li>false：非本地带宽EIP</li>
+        :param _LocalBgp: <p>是否本地带宽EIP，可选值：</p><li>true：本地带宽EIP</li><li>false：非本地带宽EIP</li>
         :type LocalBgp: bool
-        :param _Bandwidth: 弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。
+        :param _Bandwidth: <p>弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Bandwidth: int
-        :param _InternetChargeType: 弹性公网IP的网络计费模式。注意，传统账户类型账户的弹性公网IP没有网络计费模式属性，值为空。
-注意：此字段可能返回 null，表示取不到有效值。
-包括：
-<li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li>
-<p style="padding-left: 30px;">表示包月带宽预付费。</p>
-<li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li>
-<p style="padding-left: 30px;">表示按小时流量后付费。</p>
-<li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li>
-<p style="padding-left: 30px;">表示按小时带宽后付费。</p>
-<li><strong>BANDWIDTH_PACKAGE</strong></li>
-<p style="padding-left: 30px;">表示共享带宽包。</p>
+        :param _InternetChargeType: <p>弹性公网IP的网络计费模式。注意，传统账户类型账户的弹性公网IP没有网络计费模式属性，值为空。<br>注意：此字段可能返回 null，表示取不到有效值。<br>包括：</p><li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li><p style="padding-left: 30px;">表示包月带宽预付费。</p><li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li><p style="padding-left: 30px;">表示按小时流量后付费。</p><li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li><p style="padding-left: 30px;">表示按小时带宽后付费。</p><li><strong>BANDWIDTH_PACKAGE</strong></li><p style="padding-left: 30px;">表示共享带宽包。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InternetChargeType: str
-        :param _TagSet: 弹性公网IP关联的标签列表。
+        :param _TagSet: <p>弹性公网IP关联的标签列表。</p>
         :type TagSet: list of Tag
-        :param _DeadlineDate: 预付费包月带宽IP到期时间。
-时间格式：YYYY-MM-DDThh:mm:ssZ
+        :param _DeadlineDate: <p>预付费包月带宽IP到期时间。<br>时间格式：YYYY-MM-DDThh:mm:ssZ</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadlineDate: str
-        :param _InstanceType: EIP绑定的实例类型。可选值：
-<li>CVM：云服务器</li>
-<li>NAT：NAT 网关</li>
-<li>HAVIP：高可用虚拟IP</li>
-<li>ENI：弹性网卡</li>
-<li>CLB：内网CLB</li>
-<li>DHCPIP：弹性内网IP</li>
-
-
+        :param _InstanceType: <p>EIP绑定的实例类型。可选值：</p><li>CVM：云服务器</li><li>NAT：NAT 网关</li><li>HAVIP：高可用虚拟IP</li><li>ENI：弹性网卡</li><li>CLB：内网CLB</li><li>DHCPIP：弹性内网IP</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param _Egress: 静态单线IP网络出口
+        :param _Egress: <p>静态单线IP网络出口</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Egress: str
-        :param _AntiDDoSPackageId: 高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.
+        :param _AntiDDoSPackageId: <p>高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.</p>
         :type AntiDDoSPackageId: str
-        :param _RenewFlag: 当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:
-<li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
-
+        :param _RenewFlag: <p>当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:</p><li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
         :type RenewFlag: str
-        :param _BandwidthPackageId: 当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空
+        :param _BandwidthPackageId: <p>当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthPackageId: str
-        :param _UnVpcId: 传统弹性公网IPv6所属vpc唯一ID
+        :param _UnVpcId: <p>传统弹性公网IPv6所属vpc唯一ID</p>
         :type UnVpcId: str
-        :param _DedicatedClusterId: CDC唯一ID
+        :param _DedicatedClusterId: <p>CDC唯一ID</p>
         :type DedicatedClusterId: str
+        :param _EipVisibleOnEni: <p>eip是否在网卡上可见。true表示支持，false表示不支持</p>
+        :type EipVisibleOnEni: bool
         """
         self._AddressId = None
         self._AddressName = None
@@ -799,10 +778,11 @@ class Address(AbstractModel):
         self._BandwidthPackageId = None
         self._UnVpcId = None
         self._DedicatedClusterId = None
+        self._EipVisibleOnEni = None
 
     @property
     def AddressId(self):
-        r"""`EIP`的`ID`，是`EIP`的唯一标识。
+        r"""<p><code>EIP</code>的<code>ID</code>，是<code>EIP</code>的唯一标识。</p>
         :rtype: str
         """
         return self._AddressId
@@ -813,7 +793,7 @@ class Address(AbstractModel):
 
     @property
     def AddressName(self):
-        r"""`EIP`名称。
+        r"""<p><code>EIP</code>名称。</p>
         :rtype: str
         """
         return self._AddressName
@@ -824,7 +804,7 @@ class Address(AbstractModel):
 
     @property
     def AddressStatus(self):
-        r"""`EIP`状态，包含'CREATING'(创建中),'BINDING'(绑定中),'BIND'(已绑定),'UNBINDING'(解绑中),'UNBIND'(已解绑),'OFFLINING'(释放中),'BIND_ENI'(绑定悬空弹性网卡)
+        r"""<p><code>EIP</code>状态，包含&#39;CREATING&#39;(创建中),&#39;BINDING&#39;(绑定中),&#39;BIND&#39;(已绑定),&#39;UNBINDING&#39;(解绑中),&#39;UNBIND&#39;(已解绑),&#39;OFFLINING&#39;(释放中),&#39;BIND_ENI&#39;(绑定悬空弹性网卡)</p>
         :rtype: str
         """
         return self._AddressStatus
@@ -835,7 +815,7 @@ class Address(AbstractModel):
 
     @property
     def AddressIp(self):
-        r"""外网IP地址
+        r"""<p>外网IP地址</p>
         :rtype: str
         """
         return self._AddressIp
@@ -846,7 +826,7 @@ class Address(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""绑定的资源实例`ID`。可能是一个`CVM`，`NAT`。
+        r"""<p>绑定的资源实例<code>ID</code>。可能是一个<code>CVM</code>，<code>NAT</code>。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -857,7 +837,7 @@ class Address(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        r"""<p>创建时间。按照<code>ISO8601</code>标准表示，并且使用<code>UTC</code>时间。格式为：<code>YYYY-MM-DDThh:mm:ssZ</code>。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -868,7 +848,7 @@ class Address(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
-        r"""绑定的弹性网卡ID，null表示没有绑定弹性网卡。
+        r"""<p>绑定的弹性网卡ID，null表示没有绑定弹性网卡。</p>
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -879,7 +859,7 @@ class Address(AbstractModel):
 
     @property
     def PrivateAddressIp(self):
-        r"""绑定的资源内网ip，null表示没有绑定资源内网ip。
+        r"""<p>绑定的资源内网ip，null表示没有绑定资源内网ip。</p>
         :rtype: str
         """
         return self._PrivateAddressIp
@@ -890,7 +870,7 @@ class Address(AbstractModel):
 
     @property
     def IsArrears(self):
-        r"""资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态
+        r"""<p>资源隔离状态。true表示eip处于隔离状态，false表示资源处于未隔离状态</p>
         :rtype: bool
         """
         return self._IsArrears
@@ -901,7 +881,7 @@ class Address(AbstractModel):
 
     @property
     def IsBlocked(self):
-        r"""资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态
+        r"""<p>资源封堵状态。true表示eip处于封堵状态，false表示eip处于未封堵状态</p>
         :rtype: bool
         """
         return self._IsBlocked
@@ -912,7 +892,7 @@ class Address(AbstractModel):
 
     @property
     def IsEipDirectConnection(self):
-        r"""eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式
+        r"""<p>eip是否支持直通模式。true表示eip支持直通模式，false表示资源不支持直通模式</p>
         :rtype: bool
         """
         return self._IsEipDirectConnection
@@ -923,7 +903,7 @@ class Address(AbstractModel):
 
     @property
     def AddressType(self):
-        r"""EIP 资源类型，包括CalcIP、WanIP、EIP和AnycastEIP、高防EIP。其中：`CalcIP` 表示设备 IP，`WanIP` 表示普通公网 IP，`EIP` 表示弹性公网 IP，`AnycastEIP` 表示加速 EIP，`AntiDDoSEIP`表示高防EIP。
+        r"""<p>EIP 资源类型，包括CalcIP、WanIP、EIP和AnycastEIP、高防EIP。其中：<code>CalcIP</code> 表示设备 IP，<code>WanIP</code> 表示普通公网 IP，<code>EIP</code> 表示弹性公网 IP，<code>AnycastEIP</code> 表示加速 EIP，<code>AntiDDoSEIP</code>表示高防EIP。</p>
         :rtype: str
         """
         return self._AddressType
@@ -934,7 +914,7 @@ class Address(AbstractModel):
 
     @property
     def CascadeRelease(self):
-        r"""eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放
+        r"""<p>eip是否在解绑后自动释放。true表示eip将会在解绑后自动释放，false表示eip在解绑后不会自动释放</p>
         :rtype: bool
         """
         return self._CascadeRelease
@@ -945,7 +925,7 @@ class Address(AbstractModel):
 
     @property
     def EipAlgType(self):
-        r"""EIP ALG开启的协议类型。
+        r"""<p>EIP ALG开启的协议类型。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AlgType`
         """
         return self._EipAlgType
@@ -956,7 +936,7 @@ class Address(AbstractModel):
 
     @property
     def InternetServiceProvider(self):
-        r"""弹性公网IP的运营商信息，当前可能返回值包括"CMCC"(移动),"CTCC"(电信),"CUCC"(联通),"BGP"(常规BGP)。
+        r"""<p>弹性公网IP的运营商信息，当前可能返回值包括&quot;CMCC&quot;(移动),&quot;CTCC&quot;(电信),&quot;CUCC&quot;(联通),&quot;BGP&quot;(常规BGP)。</p>
         :rtype: str
         """
         return self._InternetServiceProvider
@@ -967,9 +947,7 @@ class Address(AbstractModel):
 
     @property
     def LocalBgp(self):
-        r"""是否本地带宽EIP，可选值：
-<li>true：本地带宽EIP</li>
-<li>false：非本地带宽EIP</li>
+        r"""<p>是否本地带宽EIP，可选值：</p><li>true：本地带宽EIP</li><li>false：非本地带宽EIP</li>
         :rtype: bool
         """
         return self._LocalBgp
@@ -980,7 +958,7 @@ class Address(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。
+        r"""<p>弹性公网IP的带宽值。注意，传统账户类型账户的弹性公网IP没有带宽属性，值为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -992,17 +970,7 @@ class Address(AbstractModel):
 
     @property
     def InternetChargeType(self):
-        r"""弹性公网IP的网络计费模式。注意，传统账户类型账户的弹性公网IP没有网络计费模式属性，值为空。
-注意：此字段可能返回 null，表示取不到有效值。
-包括：
-<li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li>
-<p style="padding-left: 30px;">表示包月带宽预付费。</p>
-<li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li>
-<p style="padding-left: 30px;">表示按小时流量后付费。</p>
-<li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li>
-<p style="padding-left: 30px;">表示按小时带宽后付费。</p>
-<li><strong>BANDWIDTH_PACKAGE</strong></li>
-<p style="padding-left: 30px;">表示共享带宽包。</p>
+        r"""<p>弹性公网IP的网络计费模式。注意，传统账户类型账户的弹性公网IP没有网络计费模式属性，值为空。<br>注意：此字段可能返回 null，表示取不到有效值。<br>包括：</p><li><strong>BANDWIDTH_PREPAID_BY_MONTH</strong></li><p style="padding-left: 30px;">表示包月带宽预付费。</p><li><strong>TRAFFIC_POSTPAID_BY_HOUR</strong></li><p style="padding-left: 30px;">表示按小时流量后付费。</p><li><strong>BANDWIDTH_POSTPAID_BY_HOUR</strong></li><p style="padding-left: 30px;">表示按小时带宽后付费。</p><li><strong>BANDWIDTH_PACKAGE</strong></li><p style="padding-left: 30px;">表示共享带宽包。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1014,7 +982,7 @@ class Address(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""弹性公网IP关联的标签列表。
+        r"""<p>弹性公网IP关联的标签列表。</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -1025,8 +993,7 @@ class Address(AbstractModel):
 
     @property
     def DeadlineDate(self):
-        r"""预付费包月带宽IP到期时间。
-时间格式：YYYY-MM-DDThh:mm:ssZ
+        r"""<p>预付费包月带宽IP到期时间。<br>时间格式：YYYY-MM-DDThh:mm:ssZ</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1038,15 +1005,7 @@ class Address(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""EIP绑定的实例类型。可选值：
-<li>CVM：云服务器</li>
-<li>NAT：NAT 网关</li>
-<li>HAVIP：高可用虚拟IP</li>
-<li>ENI：弹性网卡</li>
-<li>CLB：内网CLB</li>
-<li>DHCPIP：弹性内网IP</li>
-
-
+        r"""<p>EIP绑定的实例类型。可选值：</p><li>CVM：云服务器</li><li>NAT：NAT 网关</li><li>HAVIP：高可用虚拟IP</li><li>ENI：弹性网卡</li><li>CLB：内网CLB</li><li>DHCPIP：弹性内网IP</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1058,7 +1017,7 @@ class Address(AbstractModel):
 
     @property
     def Egress(self):
-        r"""静态单线IP网络出口
+        r"""<p>静态单线IP网络出口</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1070,7 +1029,7 @@ class Address(AbstractModel):
 
     @property
     def AntiDDoSPackageId(self):
-        r"""高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.
+        r"""<p>高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.</p>
         :rtype: str
         """
         return self._AntiDDoSPackageId
@@ -1081,9 +1040,7 @@ class Address(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:
-<li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
-
+        r"""<p>当前EIP是否自动续费，只有按月带宽预付费的EIP才会显示该字段，具体值示例如下:</p><li>NOTIFY_AND_MANUAL_RENEW:正常续费</li><li>NOTIFY_AND_AUTO_RENEW:自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW:到期不续费 </li>
         :rtype: str
         """
         return self._RenewFlag
@@ -1094,7 +1051,7 @@ class Address(AbstractModel):
 
     @property
     def BandwidthPackageId(self):
-        r"""当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空
+        r"""<p>当前公网IP所关联的带宽包ID，如果该公网IP未使用带宽包计费，则返回为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1106,7 +1063,7 @@ class Address(AbstractModel):
 
     @property
     def UnVpcId(self):
-        r"""传统弹性公网IPv6所属vpc唯一ID
+        r"""<p>传统弹性公网IPv6所属vpc唯一ID</p>
         :rtype: str
         """
         return self._UnVpcId
@@ -1117,7 +1074,7 @@ class Address(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        r"""CDC唯一ID
+        r"""<p>CDC唯一ID</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -1125,6 +1082,17 @@ class Address(AbstractModel):
     @DedicatedClusterId.setter
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def EipVisibleOnEni(self):
+        r"""<p>eip是否在网卡上可见。true表示支持，false表示不支持</p>
+        :rtype: bool
+        """
+        return self._EipVisibleOnEni
+
+    @EipVisibleOnEni.setter
+    def EipVisibleOnEni(self, EipVisibleOnEni):
+        self._EipVisibleOnEni = EipVisibleOnEni
 
 
     def _deserialize(self, params):
@@ -1162,6 +1130,7 @@ class Address(AbstractModel):
         self._BandwidthPackageId = params.get("BandwidthPackageId")
         self._UnVpcId = params.get("UnVpcId")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._EipVisibleOnEni = params.get("EipVisibleOnEni")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51698,21 +51667,23 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressId: 标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
+        :param _AddressId: <p>标识 EIP 的唯一 ID。EIP 唯一 ID 形如：<code>eip-11112222</code>。可以使用<a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a>接口获取AddressId。</p>
         :type AddressId: str
-        :param _AddressName: 修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"\_"，不能包含空格。
+        :param _AddressName: <p>修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。</p>
         :type AddressName: str
-        :param _EipDirectConnection: 设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。
-注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。
+        :param _EipDirectConnection: <p>设定EIP是否直通，&quot;TRUE&quot;表示直通，&quot;FALSE&quot;表示非直通。<br>注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。</p>
         :type EipDirectConnection: str
+        :param _EipVisibleOnEni: <p>设定EIP是否在网卡可见</p>
+        :type EipVisibleOnEni: bool
         """
         self._AddressId = None
         self._AddressName = None
         self._EipDirectConnection = None
+        self._EipVisibleOnEni = None
 
     @property
     def AddressId(self):
-        r"""标识 EIP 的唯一 ID。EIP 唯一 ID 形如：`eip-11112222`。可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
+        r"""<p>标识 EIP 的唯一 ID。EIP 唯一 ID 形如：<code>eip-11112222</code>。可以使用<a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a>接口获取AddressId。</p>
         :rtype: str
         """
         return self._AddressId
@@ -51723,7 +51694,7 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     @property
     def AddressName(self):
-        r"""修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"\_"，不能包含空格。
+        r"""<p>修改后的 EIP 名称。长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。</p>
         :rtype: str
         """
         return self._AddressName
@@ -51734,8 +51705,7 @@ class ModifyAddressAttributeRequest(AbstractModel):
 
     @property
     def EipDirectConnection(self):
-        r"""设定EIP是否直通，"TRUE"表示直通，"FALSE"表示非直通。
-注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。
+        r"""<p>设定EIP是否直通，&quot;TRUE&quot;表示直通，&quot;FALSE&quot;表示非直通。<br>注意：该参数仅对 EIP 直通功能可见的用户可以设定，EIP 必须为绑定状态，绑定的对象为 CVM 。</p>
         :rtype: str
         """
         return self._EipDirectConnection
@@ -51744,11 +51714,23 @@ class ModifyAddressAttributeRequest(AbstractModel):
     def EipDirectConnection(self, EipDirectConnection):
         self._EipDirectConnection = EipDirectConnection
 
+    @property
+    def EipVisibleOnEni(self):
+        r"""<p>设定EIP是否在网卡可见</p>
+        :rtype: bool
+        """
+        return self._EipVisibleOnEni
+
+    @EipVisibleOnEni.setter
+    def EipVisibleOnEni(self, EipVisibleOnEni):
+        self._EipVisibleOnEni = EipVisibleOnEni
+
 
     def _deserialize(self, params):
         self._AddressId = params.get("AddressId")
         self._AddressName = params.get("AddressName")
         self._EipDirectConnection = params.get("EipDirectConnection")
+        self._EipVisibleOnEni = params.get("EipVisibleOnEni")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54410,17 +54392,20 @@ class ModifyIPv6AddressesAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IPv6AddressIds: 弹性公网IPv6唯一ID列表。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressIds。
+        :param _IPv6AddressIds: <p>弹性公网IPv6唯一ID列表。可以使用<a href="https://cloud.tencent.com/document/api/215/113677">DescribeIPv6Addresses</a>接口获取IPv6AddressIds。</p>
         :type IPv6AddressIds: list of str
-        :param _IPv6AddressName: 弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
+        :param _IPv6AddressName: <p>弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。</p>
         :type IPv6AddressName: str
+        :param _EipVisibleOnEni: <p>是否开启弹性公网IPv6地址网卡可见</p>
+        :type EipVisibleOnEni: bool
         """
         self._IPv6AddressIds = None
         self._IPv6AddressName = None
+        self._EipVisibleOnEni = None
 
     @property
     def IPv6AddressIds(self):
-        r"""弹性公网IPv6唯一ID列表。可以使用[DescribeIPv6Addresses](https://cloud.tencent.com/document/api/215/113677)接口获取IPv6AddressIds。
+        r"""<p>弹性公网IPv6唯一ID列表。可以使用<a href="https://cloud.tencent.com/document/api/215/113677">DescribeIPv6Addresses</a>接口获取IPv6AddressIds。</p>
         :rtype: list of str
         """
         return self._IPv6AddressIds
@@ -54431,7 +54416,7 @@ class ModifyIPv6AddressesAttributesRequest(AbstractModel):
 
     @property
     def IPv6AddressName(self):
-        r"""弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符"-"和下划线"_"，不能包含空格。
+        r"""<p>弹性公网IPv6地址名称，长度上限为128个字符，允许使用大小写字母、汉字、数字、连字符&quot;-&quot;和下划线&quot;_&quot;，不能包含空格。</p>
         :rtype: str
         """
         return self._IPv6AddressName
@@ -54440,10 +54425,22 @@ class ModifyIPv6AddressesAttributesRequest(AbstractModel):
     def IPv6AddressName(self, IPv6AddressName):
         self._IPv6AddressName = IPv6AddressName
 
+    @property
+    def EipVisibleOnEni(self):
+        r"""<p>是否开启弹性公网IPv6地址网卡可见</p>
+        :rtype: bool
+        """
+        return self._EipVisibleOnEni
+
+    @EipVisibleOnEni.setter
+    def EipVisibleOnEni(self, EipVisibleOnEni):
+        self._EipVisibleOnEni = EipVisibleOnEni
+
 
     def _deserialize(self, params):
         self._IPv6AddressIds = params.get("IPv6AddressIds")
         self._IPv6AddressName = params.get("IPv6AddressName")
+        self._EipVisibleOnEni = params.get("EipVisibleOnEni")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1483,57 +1483,45 @@ class CreateDirectConnectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectName: 物理专线的名称。
+        :param _DirectConnectName: <p>物理专线的名称。</p>
         :type DirectConnectName: str
-        :param _AccessPointId: 物理专线所在的接入点。
-您可以通过调用[DescribeAccessPoints](https://cloud.tencent.com/document/product/216/34827)接口获取接入点ID。
+        :param _AccessPointId: <p>物理专线所在的接入点。<br>您可以通过调用<a href="https://cloud.tencent.com/document/product/216/34827">DescribeAccessPoints</a>接口获取接入点ID。</p>
         :type AccessPointId: str
-        :param _LineOperator: 提供接入物理专线的运营商。
-ChinaTelecom：中国电信； 
-ChinaMobile：中国移动；
-ChinaUnicom：中国联通；
- In-houseWiring：楼内线；
-ChinaOther：中国其他；
- InternationalOperator：境外其他。
+        :param _LineOperator: <p>提供接入物理专线的运营商。<br>ChinaTelecom：中国电信；<br>ChinaMobile：中国移动；<br>ChinaUnicom：中国联通；<br> In-houseWiring：楼内线；<br>ChinaOther：中国其他；<br> InternationalOperator：境外其他。</p>
         :type LineOperator: str
-        :param _PortType: 物理专线接入端口类型，取值：
-100Base-T：百兆电口；
-1000Base-T（默认值）：千兆电口；
-1000Base-LX：千兆单模光口（10千米）；
-10GBase-T：万兆电口；
-10GBase-LR（默认值）：万兆单模光口（10千米）。
+        :param _PortType: <p>物理专线接入端口类型，取值：<br>100Base-T：百兆电口；<br>1000Base-T（默认值）：千兆电口；<br>1000Base-LX：千兆单模光口（10千米）；<br>10GBase-T：万兆电口；<br>10GBase-LR（默认值）：万兆单模光口（10千米）。</p>
         :type PortType: str
-        :param _CircuitCode: 运营商或者服务商为物理专线提供的电路编码。
+        :param _CircuitCode: <p>运营商或者服务商为物理专线提供的电路编码。</p>
         :type CircuitCode: str
-        :param _Location: 本地数据中心的地理位置。
+        :param _Location: <p>本地数据中心的地理位置。</p>
         :type Location: str
-        :param _Bandwidth: 物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。
+        :param _Bandwidth: <p>物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。</p>
         :type Bandwidth: int
-        :param _RedundantDirectConnectId: 冗余物理专线的ID。
+        :param _RedundantDirectConnectId: <p>冗余物理专线的ID。</p>
         :type RedundantDirectConnectId: str
-        :param _Vlan: 物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
+        :param _Vlan: <p>物理专线调试VLAN。默认开启VLAN，自动分配VLAN。</p>
         :type Vlan: int
-        :param _TencentAddress: 物理专线调试腾讯侧互联 IP。默认自动分配。
+        :param _TencentAddress: <p>物理专线调试腾讯侧互联 IP。默认自动分配。</p>
         :type TencentAddress: str
-        :param _CustomerAddress: 物理专线调试用户侧互联 IP。默认自动分配。
+        :param _CustomerAddress: <p>物理专线调试用户侧互联 IP。默认自动分配。</p>
         :type CustomerAddress: str
-        :param _CustomerName: 物理专线申请者姓名。默认从账户体系获取。
+        :param _CustomerName: <p>物理专线申请者姓名。默认从账户体系获取。</p>
         :type CustomerName: str
-        :param _CustomerContactMail: 物理专线申请者联系邮箱。默认从账户体系获取。
+        :param _CustomerContactMail: <p>物理专线申请者联系邮箱。默认从账户体系获取。</p>
         :type CustomerContactMail: str
-        :param _CustomerContactNumber: 物理专线申请者联系号码。默认从账户体系获取。
+        :param _CustomerContactNumber: <p>物理专线申请者联系号码。默认从账户体系获取。</p>
         :type CustomerContactNumber: str
-        :param _FaultReportContactPerson: 报障联系人。
+        :param _FaultReportContactPerson: <p>报障联系人。</p>
         :type FaultReportContactPerson: str
-        :param _FaultReportContactNumber: 报障联系电话。
+        :param _FaultReportContactNumber: <p>报障联系电话。</p>
         :type FaultReportContactNumber: str
-        :param _FaultReportContactEmail: 报障联系邮箱。
+        :param _FaultReportContactEmail: <p>报障联系邮箱。</p>
         :type FaultReportContactEmail: str
-        :param _SignLaw: 物理专线申请者是否签署了用户使用协议。默认已签署。
+        :param _SignLaw: <p>物理专线申请者是否签署了用户使用协议。默认已签署。</p>
         :type SignLaw: bool
-        :param _Tags: 标签键值对
+        :param _Tags: <p>标签键值对</p>
         :type Tags: list of Tag
-        :param _IsMacSec: 是否MACsec需求
+        :param _IsMacSec: <p>是否MACsec需求</p>
         :type IsMacSec: bool
         """
         self._DirectConnectName = None
@@ -1559,7 +1547,7 @@ ChinaOther：中国其他；
 
     @property
     def DirectConnectName(self):
-        r"""物理专线的名称。
+        r"""<p>物理专线的名称。</p>
         :rtype: str
         """
         return self._DirectConnectName
@@ -1570,8 +1558,7 @@ ChinaOther：中国其他；
 
     @property
     def AccessPointId(self):
-        r"""物理专线所在的接入点。
-您可以通过调用[DescribeAccessPoints](https://cloud.tencent.com/document/product/216/34827)接口获取接入点ID。
+        r"""<p>物理专线所在的接入点。<br>您可以通过调用<a href="https://cloud.tencent.com/document/product/216/34827">DescribeAccessPoints</a>接口获取接入点ID。</p>
         :rtype: str
         """
         return self._AccessPointId
@@ -1582,13 +1569,7 @@ ChinaOther：中国其他；
 
     @property
     def LineOperator(self):
-        r"""提供接入物理专线的运营商。
-ChinaTelecom：中国电信； 
-ChinaMobile：中国移动；
-ChinaUnicom：中国联通；
- In-houseWiring：楼内线；
-ChinaOther：中国其他；
- InternationalOperator：境外其他。
+        r"""<p>提供接入物理专线的运营商。<br>ChinaTelecom：中国电信；<br>ChinaMobile：中国移动；<br>ChinaUnicom：中国联通；<br> In-houseWiring：楼内线；<br>ChinaOther：中国其他；<br> InternationalOperator：境外其他。</p>
         :rtype: str
         """
         return self._LineOperator
@@ -1599,12 +1580,7 @@ ChinaOther：中国其他；
 
     @property
     def PortType(self):
-        r"""物理专线接入端口类型，取值：
-100Base-T：百兆电口；
-1000Base-T（默认值）：千兆电口；
-1000Base-LX：千兆单模光口（10千米）；
-10GBase-T：万兆电口；
-10GBase-LR（默认值）：万兆单模光口（10千米）。
+        r"""<p>物理专线接入端口类型，取值：<br>100Base-T：百兆电口；<br>1000Base-T（默认值）：千兆电口；<br>1000Base-LX：千兆单模光口（10千米）；<br>10GBase-T：万兆电口；<br>10GBase-LR（默认值）：万兆单模光口（10千米）。</p>
         :rtype: str
         """
         return self._PortType
@@ -1615,7 +1591,7 @@ ChinaOther：中国其他；
 
     @property
     def CircuitCode(self):
-        r"""运营商或者服务商为物理专线提供的电路编码。
+        r"""<p>运营商或者服务商为物理专线提供的电路编码。</p>
         :rtype: str
         """
         return self._CircuitCode
@@ -1626,7 +1602,7 @@ ChinaOther：中国其他；
 
     @property
     def Location(self):
-        r"""本地数据中心的地理位置。
+        r"""<p>本地数据中心的地理位置。</p>
         :rtype: str
         """
         return self._Location
@@ -1637,7 +1613,7 @@ ChinaOther：中国其他；
 
     @property
     def Bandwidth(self):
-        r"""物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。
+        r"""<p>物理专线接入接口带宽，单位为Mbps，默认值为1000，取值范围为 [2, 10240]。</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -1648,7 +1624,7 @@ ChinaOther：中国其他；
 
     @property
     def RedundantDirectConnectId(self):
-        r"""冗余物理专线的ID。
+        r"""<p>冗余物理专线的ID。</p>
         :rtype: str
         """
         return self._RedundantDirectConnectId
@@ -1659,7 +1635,7 @@ ChinaOther：中国其他；
 
     @property
     def Vlan(self):
-        r"""物理专线调试VLAN。默认开启VLAN，自动分配VLAN。
+        r"""<p>物理专线调试VLAN。默认开启VLAN，自动分配VLAN。</p>
         :rtype: int
         """
         return self._Vlan
@@ -1670,7 +1646,7 @@ ChinaOther：中国其他；
 
     @property
     def TencentAddress(self):
-        r"""物理专线调试腾讯侧互联 IP。默认自动分配。
+        r"""<p>物理专线调试腾讯侧互联 IP。默认自动分配。</p>
         :rtype: str
         """
         return self._TencentAddress
@@ -1681,7 +1657,7 @@ ChinaOther：中国其他；
 
     @property
     def CustomerAddress(self):
-        r"""物理专线调试用户侧互联 IP。默认自动分配。
+        r"""<p>物理专线调试用户侧互联 IP。默认自动分配。</p>
         :rtype: str
         """
         return self._CustomerAddress
@@ -1692,7 +1668,7 @@ ChinaOther：中国其他；
 
     @property
     def CustomerName(self):
-        r"""物理专线申请者姓名。默认从账户体系获取。
+        r"""<p>物理专线申请者姓名。默认从账户体系获取。</p>
         :rtype: str
         """
         return self._CustomerName
@@ -1703,7 +1679,7 @@ ChinaOther：中国其他；
 
     @property
     def CustomerContactMail(self):
-        r"""物理专线申请者联系邮箱。默认从账户体系获取。
+        r"""<p>物理专线申请者联系邮箱。默认从账户体系获取。</p>
         :rtype: str
         """
         return self._CustomerContactMail
@@ -1714,7 +1690,7 @@ ChinaOther：中国其他；
 
     @property
     def CustomerContactNumber(self):
-        r"""物理专线申请者联系号码。默认从账户体系获取。
+        r"""<p>物理专线申请者联系号码。默认从账户体系获取。</p>
         :rtype: str
         """
         return self._CustomerContactNumber
@@ -1725,7 +1701,7 @@ ChinaOther：中国其他；
 
     @property
     def FaultReportContactPerson(self):
-        r"""报障联系人。
+        r"""<p>报障联系人。</p>
         :rtype: str
         """
         return self._FaultReportContactPerson
@@ -1736,7 +1712,7 @@ ChinaOther：中国其他；
 
     @property
     def FaultReportContactNumber(self):
-        r"""报障联系电话。
+        r"""<p>报障联系电话。</p>
         :rtype: str
         """
         return self._FaultReportContactNumber
@@ -1747,7 +1723,7 @@ ChinaOther：中国其他；
 
     @property
     def FaultReportContactEmail(self):
-        r"""报障联系邮箱。
+        r"""<p>报障联系邮箱。</p>
         :rtype: str
         """
         return self._FaultReportContactEmail
@@ -1758,7 +1734,7 @@ ChinaOther：中国其他；
 
     @property
     def SignLaw(self):
-        r"""物理专线申请者是否签署了用户使用协议。默认已签署。
+        r"""<p>物理专线申请者是否签署了用户使用协议。默认已签署。</p>
         :rtype: bool
         """
         return self._SignLaw
@@ -1769,7 +1745,7 @@ ChinaOther：中国其他；
 
     @property
     def Tags(self):
-        r"""标签键值对
+        r"""<p>标签键值对</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -1780,7 +1756,7 @@ ChinaOther：中国其他；
 
     @property
     def IsMacSec(self):
-        r"""是否MACsec需求
+        r"""<p>是否MACsec需求</p>
         :rtype: bool
         """
         return self._IsMacSec
@@ -1833,7 +1809,7 @@ class CreateDirectConnectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectIdSet: 物理专线的ID。
+        :param _DirectConnectIdSet: <p>物理专线的ID。</p>
         :type DirectConnectIdSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1843,7 +1819,7 @@ class CreateDirectConnectResponse(AbstractModel):
 
     @property
     def DirectConnectIdSet(self):
-        r"""物理专线的ID。
+        r"""<p>物理专线的ID。</p>
         :rtype: list of str
         """
         return self._DirectConnectIdSet

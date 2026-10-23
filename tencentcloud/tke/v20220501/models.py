@@ -5914,6 +5914,10 @@ class NativeNodeInfo(AbstractModel):
         :param _Tags: <p>原生节点云标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _IsMigrated: <p>是否是迁移的节点</p><p>默认值：false</p>
+        :type IsMigrated: bool
+        :param _ResourceId: <p>资源 ID</p>
+        :type ResourceId: str
         """
         self._MachineName = None
         self._MachineState = None
@@ -5945,6 +5949,8 @@ class NativeNodeInfo(AbstractModel):
         self._MachineType = None
         self._InstanceId = None
         self._Tags = None
+        self._IsMigrated = None
+        self._ResourceId = None
 
     @property
     def MachineName(self):
@@ -6289,6 +6295,28 @@ class NativeNodeInfo(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IsMigrated(self):
+        r"""<p>是否是迁移的节点</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._IsMigrated
+
+    @IsMigrated.setter
+    def IsMigrated(self, IsMigrated):
+        self._IsMigrated = IsMigrated
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源 ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._MachineName = params.get("MachineName")
@@ -6337,6 +6365,8 @@ class NativeNodeInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._IsMigrated = params.get("IsMigrated")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

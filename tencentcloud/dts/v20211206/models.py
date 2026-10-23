@@ -15024,17 +15024,17 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+        :param _JobId: <p>迁移任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :type JobId: str
-        :param _DumpThread: 迁移任务全量导出线程数、有效值为 1-16
+        :param _DumpThread: <p>迁移任务全量导出线程数、有效值为 1-16</p>
         :type DumpThread: int
-        :param _DumpRps: 迁移全量导出的 Rps 限制、需要大于 0
+        :param _DumpRps: <p>迁移全量导出的 Rps 限制、需要大于 0</p>
         :type DumpRps: int
-        :param _LoadThread: 迁移任务全量导入线程数、有效值为 1-16
+        :param _LoadThread: <p>迁移任务全量导入线程数、有效值为 1-16</p>
         :type LoadThread: int
-        :param _SinkerThread: 迁移任务增量导入线程数、有效值为 1-128
+        :param _SinkerThread: <p>迁移任务增量导入线程数、有效值为 1-128</p>
         :type SinkerThread: int
-        :param _LoadRps: 全量导入Rps限制
+        :param _LoadRps: <p>全量导入Rps限制</p>
         :type LoadRps: int
         """
         self._JobId = None
@@ -15046,7 +15046,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
+        r"""<p>迁移任务 Id，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -15057,7 +15057,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def DumpThread(self):
-        r"""迁移任务全量导出线程数、有效值为 1-16
+        r"""<p>迁移任务全量导出线程数、有效值为 1-16</p>
         :rtype: int
         """
         return self._DumpThread
@@ -15068,7 +15068,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def DumpRps(self):
-        r"""迁移全量导出的 Rps 限制、需要大于 0
+        r"""<p>迁移全量导出的 Rps 限制、需要大于 0</p>
         :rtype: int
         """
         return self._DumpRps
@@ -15079,7 +15079,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def LoadThread(self):
-        r"""迁移任务全量导入线程数、有效值为 1-16
+        r"""<p>迁移任务全量导入线程数、有效值为 1-16</p>
         :rtype: int
         """
         return self._LoadThread
@@ -15090,7 +15090,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def SinkerThread(self):
-        r"""迁移任务增量导入线程数、有效值为 1-128
+        r"""<p>迁移任务增量导入线程数、有效值为 1-128</p>
         :rtype: int
         """
         return self._SinkerThread
@@ -15101,7 +15101,7 @@ class ModifyMigrateRateLimitRequest(AbstractModel):
 
     @property
     def LoadRps(self):
-        r"""全量导入Rps限制
+        r"""<p>全量导入Rps限制</p>
         :rtype: int
         """
         return self._LoadRps

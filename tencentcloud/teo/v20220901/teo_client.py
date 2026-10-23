@@ -2946,6 +2946,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLogAnalysisStatistics(self, request):
+        r"""本接口用于日志分析统计结果查询。用户在检索语句后追加 SQL 聚合语句（[检索条件] | [SQL语句]），后端执行聚合并返回列式统计结果（列定义 + 数据行）。
+
+        :param request: Request instance for DescribeLogAnalysisStatistics.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisStatisticsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeLogAnalysisStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogAnalysisStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogAnalysisStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMultiPathGateway(self, request):
         r"""通过本接口查询多通道安全加速网关详情。如名称、网关 ID、IP、端口、类型等。
 

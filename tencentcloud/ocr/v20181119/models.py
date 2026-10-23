@@ -41508,10 +41508,19 @@ class VerifyGeneralCardWarnRequest(AbstractModel):
         :type ImageUrl: str
         :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
         :type ImageBase64: str
+        :param _ReasoningPrompt: <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–3000 字符</p>
+        :type ReasoningPrompt: str
+        :param _ReasoningConfig: <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
+        :type ReasoningConfig: :class:`tencentcloud.ocr.v20181119.models.ReasoningConfig`
+        :param _IgnoreWatermarkCategories: <p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。 PhoneCam：手机相机水印  WatermarkCam：水印相机水印</p>
+        :type IgnoreWatermarkCategories: list of str
         """
         self._CardType = None
         self._ImageUrl = None
         self._ImageBase64 = None
+        self._ReasoningPrompt = None
+        self._ReasoningConfig = None
+        self._IgnoreWatermarkCategories = None
 
     @property
     def CardType(self):
@@ -41546,11 +41555,49 @@ class VerifyGeneralCardWarnRequest(AbstractModel):
     def ImageBase64(self, ImageBase64):
         self._ImageBase64 = ImageBase64
 
+    @property
+    def ReasoningPrompt(self):
+        r"""<p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–3000 字符</p>
+        :rtype: str
+        """
+        return self._ReasoningPrompt
+
+    @ReasoningPrompt.setter
+    def ReasoningPrompt(self, ReasoningPrompt):
+        self._ReasoningPrompt = ReasoningPrompt
+
+    @property
+    def ReasoningConfig(self):
+        r"""<p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ReasoningConfig`
+        """
+        return self._ReasoningConfig
+
+    @ReasoningConfig.setter
+    def ReasoningConfig(self, ReasoningConfig):
+        self._ReasoningConfig = ReasoningConfig
+
+    @property
+    def IgnoreWatermarkCategories(self):
+        r"""<p>水印提示排除类型，选择出参“水印提示”排除掉的水印类型，不传的话即代表任意水印都会提示。 PhoneCam：手机相机水印  WatermarkCam：水印相机水印</p>
+        :rtype: list of str
+        """
+        return self._IgnoreWatermarkCategories
+
+    @IgnoreWatermarkCategories.setter
+    def IgnoreWatermarkCategories(self, IgnoreWatermarkCategories):
+        self._IgnoreWatermarkCategories = IgnoreWatermarkCategories
+
 
     def _deserialize(self, params):
         self._CardType = params.get("CardType")
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
+        self._ReasoningPrompt = params.get("ReasoningPrompt")
+        if params.get("ReasoningConfig") is not None:
+            self._ReasoningConfig = ReasoningConfig()
+            self._ReasoningConfig._deserialize(params.get("ReasoningConfig"))
+        self._IgnoreWatermarkCategories = params.get("IgnoreWatermarkCategories")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41596,6 +41643,10 @@ class VerifyGeneralCardWarnResponse(AbstractModel):
         :type TextWatermark: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
         :param _WatermarkContent: <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
         :type WatermarkContent: str
+        :param _ReasoningResult: <p>VLM 推理结果。仅当请求中传入 ReasoningPrompt 时返回，否则不返回此字段。</p>
+        :type ReasoningResult: :class:`tencentcloud.ocr.v20181119.models.ReasoningResult`
+        :param _IsKeyFieldTamper: <p>是否关键字段被篡改（用于排除卡证背景等非字段区域篡改），目前支持的卡证类型：行驶证、驾驶证。<br>枚举值：<br>是<br>否<br>暂不支持</p>
+        :type IsKeyFieldTamper: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -41613,6 +41664,8 @@ class VerifyGeneralCardWarnResponse(AbstractModel):
         self._Electron = None
         self._TextWatermark = None
         self._WatermarkContent = None
+        self._ReasoningResult = None
+        self._IsKeyFieldTamper = None
         self._RequestId = None
 
     @property
@@ -41770,6 +41823,28 @@ class VerifyGeneralCardWarnResponse(AbstractModel):
         self._WatermarkContent = WatermarkContent
 
     @property
+    def ReasoningResult(self):
+        r"""<p>VLM 推理结果。仅当请求中传入 ReasoningPrompt 时返回，否则不返回此字段。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ReasoningResult`
+        """
+        return self._ReasoningResult
+
+    @ReasoningResult.setter
+    def ReasoningResult(self, ReasoningResult):
+        self._ReasoningResult = ReasoningResult
+
+    @property
+    def IsKeyFieldTamper(self):
+        r"""<p>是否关键字段被篡改（用于排除卡证背景等非字段区域篡改），目前支持的卡证类型：行驶证、驾驶证。<br>枚举值：<br>是<br>否<br>暂不支持</p>
+        :rtype: str
+        """
+        return self._IsKeyFieldTamper
+
+    @IsKeyFieldTamper.setter
+    def IsKeyFieldTamper(self, IsKeyFieldTamper):
+        self._IsKeyFieldTamper = IsKeyFieldTamper
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -41822,6 +41897,10 @@ class VerifyGeneralCardWarnResponse(AbstractModel):
             self._TextWatermark = GeneralCardWarnInfo()
             self._TextWatermark._deserialize(params.get("TextWatermark"))
         self._WatermarkContent = params.get("WatermarkContent")
+        if params.get("ReasoningResult") is not None:
+            self._ReasoningResult = ReasoningResult()
+            self._ReasoningResult._deserialize(params.get("ReasoningResult"))
+        self._IsKeyFieldTamper = params.get("IsKeyFieldTamper")
         self._RequestId = params.get("RequestId")
 
 

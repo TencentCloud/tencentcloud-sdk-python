@@ -2325,6 +2325,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLogAnalysisStatistics(
+            self,
+            request: models.DescribeLogAnalysisStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogAnalysisStatisticsResponse:
+        """
+        本接口用于日志分析统计结果查询。用户在检索语句后追加 SQL 聚合语句（[检索条件] | [SQL语句]），后端执行聚合并返回列式统计结果（列定义 + 数据行）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogAnalysisStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogAnalysisStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMultiPathGateway(
             self,
             request: models.DescribeMultiPathGatewayRequest,

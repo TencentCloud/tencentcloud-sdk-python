@@ -24416,7 +24416,7 @@ class ClusterListItem(AbstractModel):
         :type TotalCoresCount: int
         :param _DefendCoresCount: <p>已防护核数</p>
         :type DefendCoresCount: int
-        :param _AuditLogSwitchStatus: <p>审计日志开关<br>(0:关闭 1:开启 2:开启失败 3:关闭失败)</p>
+        :param _AuditLogSwitchStatus: <p>审计日志状态<br>0：已关闭<br>1：已开启<br>2：开启失败（失败原因见 AuditLogFailedInfo）<br>3：关闭失败（失败原因见 AuditLogFailedInfo）<br>4：开启中<br>5：关闭中<br>6：不支持（当前集群类型不支持读取审计状态，如边缘集群）<br>7：未知（集群未接入或接入异常，无法判断审计状态）</p><p>枚举值：</p><ul><li>0： 已关闭</li><li>1： 已开启</li><li>2： 开启失败</li><li>3： 关闭失败</li><li>4： 开启中</li><li>5： 关闭中</li><li>6： 不支持</li><li>7： 未知</li></ul>
         :type AuditLogSwitchStatus: int
         :param _DefendStatus: <p>防护状态<br>已防护: Defended</p>
         :type DefendStatus: str
@@ -24458,6 +24458,10 @@ class ClusterListItem(AbstractModel):
         :type RegionNameEn: str
         :param _UnboundUltimateNodeCount: <p>未绑定旗舰版的节点数量</p>
         :type UnboundUltimateNodeCount: int
+        :param _TagItems: <p>资产标签列表</p>
+        :type TagItems: list of MiniTagItem
+        :param _TagModifyInfo: <p>标签修改信息</p>
+        :type TagModifyInfo: :class:`tencentcloud.csip.v20221121.models.AssetTagModifyAssetItem`
         """
         self._AppID = None
         self._AssetId = None
@@ -24498,6 +24502,8 @@ class ClusterListItem(AbstractModel):
         self._RegionName = None
         self._RegionNameEn = None
         self._UnboundUltimateNodeCount = None
+        self._TagItems = None
+        self._TagModifyInfo = None
 
     @property
     def AppID(self):
@@ -24739,7 +24745,7 @@ class ClusterListItem(AbstractModel):
 
     @property
     def AuditLogSwitchStatus(self):
-        r"""<p>审计日志开关<br>(0:关闭 1:开启 2:开启失败 3:关闭失败)</p>
+        r"""<p>审计日志状态<br>0：已关闭<br>1：已开启<br>2：开启失败（失败原因见 AuditLogFailedInfo）<br>3：关闭失败（失败原因见 AuditLogFailedInfo）<br>4：开启中<br>5：关闭中<br>6：不支持（当前集群类型不支持读取审计状态，如边缘集群）<br>7：未知（集群未接入或接入异常，无法判断审计状态）</p><p>枚举值：</p><ul><li>0： 已关闭</li><li>1： 已开启</li><li>2： 开启失败</li><li>3： 关闭失败</li><li>4： 开启中</li><li>5： 关闭中</li><li>6： 不支持</li><li>7： 未知</li></ul>
         :rtype: int
         """
         return self._AuditLogSwitchStatus
@@ -24976,6 +24982,28 @@ class ClusterListItem(AbstractModel):
     def UnboundUltimateNodeCount(self, UnboundUltimateNodeCount):
         self._UnboundUltimateNodeCount = UnboundUltimateNodeCount
 
+    @property
+    def TagItems(self):
+        r"""<p>资产标签列表</p>
+        :rtype: list of MiniTagItem
+        """
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
+    @property
+    def TagModifyInfo(self):
+        r"""<p>标签修改信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AssetTagModifyAssetItem`
+        """
+        return self._TagModifyInfo
+
+    @TagModifyInfo.setter
+    def TagModifyInfo(self, TagModifyInfo):
+        self._TagModifyInfo = TagModifyInfo
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -25022,6 +25050,15 @@ class ClusterListItem(AbstractModel):
         self._RegionName = params.get("RegionName")
         self._RegionNameEn = params.get("RegionNameEn")
         self._UnboundUltimateNodeCount = params.get("UnboundUltimateNodeCount")
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = MiniTagItem()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
+        if params.get("TagModifyInfo") is not None:
+            self._TagModifyInfo = AssetTagModifyAssetItem()
+            self._TagModifyInfo._deserialize(params.get("TagModifyInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

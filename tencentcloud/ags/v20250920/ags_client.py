@@ -888,6 +888,29 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSandboxInstances(self, request):
+        r"""查询沙箱实例
+
+        :param request: Request instance for DescribeSandboxInstances.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribeSandboxInstancesRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribeSandboxInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSandboxInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSandboxInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSandboxSnapshotList(self, request):
         r"""查询沙箱快照
         该接口属于 Runtime Snapshot API ，当前为预览版本（Beta）。接口后续可能发生不兼容变更或被弃用，不保证向后兼容。请关注后续版本及变更说明，并根据需要调整调用代码。

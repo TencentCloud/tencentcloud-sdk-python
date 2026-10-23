@@ -30609,12 +30609,27 @@ class ModifyModelAttributesRequest(AbstractModel):
         :type ApiBase: str
         :param _EndpointPath: <p>非chat输出模态的请求后缀</p>
         :type EndpointPath: str
+        :param _ModelProvider: <p>所属厂商</p>
+        :type ModelProvider: str
+        :param _Protocol: <p>协议</p>
+        :type Protocol: str
+        :param _CMRPrivateNetworkTunnelId: <p>所使用的CMR 私网管道 ID</p>
+        :type CMRPrivateNetworkTunnelId: str
+        :param _HostHeader: <p>携带的Host Header</p>
+        :type HostHeader: str
+        :param _VerifySSL: <p>是否需要进行ssl校验</p>
+        :type VerifySSL: bool
         """
         self._ServiceProviderId = None
         self._ServiceProviderName = None
         self._ApiBases = None
         self._ApiBase = None
         self._EndpointPath = None
+        self._ModelProvider = None
+        self._Protocol = None
+        self._CMRPrivateNetworkTunnelId = None
+        self._HostHeader = None
+        self._VerifySSL = None
 
     @property
     def ServiceProviderId(self):
@@ -30671,6 +30686,61 @@ class ModifyModelAttributesRequest(AbstractModel):
     def EndpointPath(self, EndpointPath):
         self._EndpointPath = EndpointPath
 
+    @property
+    def ModelProvider(self):
+        r"""<p>所属厂商</p>
+        :rtype: str
+        """
+        return self._ModelProvider
+
+    @ModelProvider.setter
+    def ModelProvider(self, ModelProvider):
+        self._ModelProvider = ModelProvider
+
+    @property
+    def Protocol(self):
+        r"""<p>协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CMRPrivateNetworkTunnelId(self):
+        r"""<p>所使用的CMR 私网管道 ID</p>
+        :rtype: str
+        """
+        return self._CMRPrivateNetworkTunnelId
+
+    @CMRPrivateNetworkTunnelId.setter
+    def CMRPrivateNetworkTunnelId(self, CMRPrivateNetworkTunnelId):
+        self._CMRPrivateNetworkTunnelId = CMRPrivateNetworkTunnelId
+
+    @property
+    def HostHeader(self):
+        r"""<p>携带的Host Header</p>
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
+    @property
+    def VerifySSL(self):
+        r"""<p>是否需要进行ssl校验</p>
+        :rtype: bool
+        """
+        return self._VerifySSL
+
+    @VerifySSL.setter
+    def VerifySSL(self, VerifySSL):
+        self._VerifySSL = VerifySSL
+
 
     def _deserialize(self, params):
         self._ServiceProviderId = params.get("ServiceProviderId")
@@ -30683,6 +30753,11 @@ class ModifyModelAttributesRequest(AbstractModel):
                 self._ApiBases.append(obj)
         self._ApiBase = params.get("ApiBase")
         self._EndpointPath = params.get("EndpointPath")
+        self._ModelProvider = params.get("ModelProvider")
+        self._Protocol = params.get("Protocol")
+        self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
+        self._HostHeader = params.get("HostHeader")
+        self._VerifySSL = params.get("VerifySSL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31377,10 +31452,16 @@ class ModifyServiceProviderModelAttributesRequest(AbstractModel):
         :type ModelName: str
         :param _InputModalities: <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
         :type InputModalities: list of str
+        :param _NewModelName: <p>新的上游模型名称</p>
+        :type NewModelName: str
+        :param _NewModelAlias: <p>新的对外模型名称</p>
+        :type NewModelAlias: str
         """
         self._ServiceProviderId = None
         self._ModelName = None
         self._InputModalities = None
+        self._NewModelName = None
+        self._NewModelAlias = None
 
     @property
     def ServiceProviderId(self):
@@ -31415,11 +31496,35 @@ class ModifyServiceProviderModelAttributesRequest(AbstractModel):
     def InputModalities(self, InputModalities):
         self._InputModalities = InputModalities
 
+    @property
+    def NewModelName(self):
+        r"""<p>新的上游模型名称</p>
+        :rtype: str
+        """
+        return self._NewModelName
+
+    @NewModelName.setter
+    def NewModelName(self, NewModelName):
+        self._NewModelName = NewModelName
+
+    @property
+    def NewModelAlias(self):
+        r"""<p>新的对外模型名称</p>
+        :rtype: str
+        """
+        return self._NewModelAlias
+
+    @NewModelAlias.setter
+    def NewModelAlias(self, NewModelAlias):
+        self._NewModelAlias = NewModelAlias
+
 
     def _deserialize(self, params):
         self._ServiceProviderId = params.get("ServiceProviderId")
         self._ModelName = params.get("ModelName")
         self._InputModalities = params.get("InputModalities")
+        self._NewModelName = params.get("NewModelName")
+        self._NewModelAlias = params.get("NewModelAlias")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37694,8 +37799,11 @@ class StickyConfig(AbstractModel):
         r"""
         :param _Enabled: <p>是否开启粘连路由</p>
         :type Enabled: bool
+        :param _TimeoutSeconds: <p>会话粘性的超时时间（秒），取值范围 1–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[1, 86400]</p><p>单位：秒</p><p>默认值：1800</p>
+        :type TimeoutSeconds: int
         """
         self._Enabled = None
+        self._TimeoutSeconds = None
 
     @property
     def Enabled(self):
@@ -37708,9 +37816,21 @@ class StickyConfig(AbstractModel):
     def Enabled(self, Enabled):
         self._Enabled = Enabled
 
+    @property
+    def TimeoutSeconds(self):
+        r"""<p>会话粘性的超时时间（秒），取值范围 1–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[1, 86400]</p><p>单位：秒</p><p>默认值：1800</p>
+        :rtype: int
+        """
+        return self._TimeoutSeconds
+
+    @TimeoutSeconds.setter
+    def TimeoutSeconds(self, TimeoutSeconds):
+        self._TimeoutSeconds = TimeoutSeconds
+
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        self._TimeoutSeconds = params.get("TimeoutSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

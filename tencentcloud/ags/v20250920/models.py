@@ -7939,6 +7939,90 @@ class DescribeSandboxInstanceListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSandboxInstancesRequest(AbstractModel):
+    r"""DescribeSandboxInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: <p>沙箱实例ID列表，指定要查询的实例。如果为空则查询所有实例。最大支持100个ID</p>
+        :type InstanceIds: list of str
+        """
+        self._InstanceIds = None
+
+    @property
+    def InstanceIds(self):
+        r"""<p>沙箱实例ID列表，指定要查询的实例。如果为空则查询所有实例。最大支持100个ID</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSandboxInstancesResponse(AbstractModel):
+    r"""DescribeSandboxInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceSet: <p>沙箱实例列表</p>
+        :type InstanceSet: list of SandboxInstance
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceSet(self):
+        r"""<p>沙箱实例列表</p>
+        :rtype: list of SandboxInstance
+        """
+        return self._InstanceSet
+
+    @InstanceSet.setter
+    def InstanceSet(self, InstanceSet):
+        self._InstanceSet = InstanceSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSet") is not None:
+            self._InstanceSet = []
+            for item in params.get("InstanceSet"):
+                obj = SandboxInstance()
+                obj._deserialize(item)
+                self._InstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSandboxSnapshotListRequest(AbstractModel):
     r"""DescribeSandboxSnapshotList请求参数结构体
 
@@ -14383,10 +14467,10 @@ class VolumeRef(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VolumeName: Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId
+        :param _VolumeName: <p>Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeName: str
-        :param _VolumeId: 稳定 Volume ID，格式 vol-xxxxxxxx
+        :param _VolumeId: <p>稳定 Volume ID，格式 vol-xxxxxxxx</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeId: str
         """
@@ -14395,7 +14479,7 @@ class VolumeRef(AbstractModel):
 
     @property
     def VolumeName(self):
-        r"""Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId
+        r"""<p>Volume 名称；服务端在当前认证 AppId 下解析为稳定 VolumeId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14407,7 +14491,7 @@ class VolumeRef(AbstractModel):
 
     @property
     def VolumeId(self):
-        r"""稳定 Volume ID，格式 vol-xxxxxxxx
+        r"""<p>稳定 Volume ID，格式 vol-xxxxxxxx</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

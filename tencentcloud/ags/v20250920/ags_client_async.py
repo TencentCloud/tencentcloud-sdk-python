@@ -702,6 +702,24 @@ class AgsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSandboxInstances(
+            self,
+            request: models.DescribeSandboxInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxInstancesResponse:
+        """
+        查询沙箱实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSandboxSnapshotList(
             self,
             request: models.DescribeSandboxSnapshotListRequest,
