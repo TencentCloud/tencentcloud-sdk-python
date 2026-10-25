@@ -22966,11 +22966,14 @@ class DescribeBillUsageRequest(AbstractModel):
         :type QuotaType: str
         :param _DisplaySubEnterprise: <p>是否展示集团子企业的明细，默认否</p>
         :type DisplaySubEnterprise: bool
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         self._StartTime = None
         self._EndTime = None
         self._QuotaType = None
         self._DisplaySubEnterprise = None
+        self._Operator = None
 
     @property
     def StartTime(self):
@@ -23016,12 +23019,26 @@ class DescribeBillUsageRequest(AbstractModel):
     def DisplaySubEnterprise(self, DisplaySubEnterprise):
         self._DisplaySubEnterprise = DisplaySubEnterprise
 
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._QuotaType = params.get("QuotaType")
         self._DisplaySubEnterprise = params.get("DisplaySubEnterprise")
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

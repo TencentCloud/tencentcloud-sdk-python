@@ -1216,40 +1216,43 @@ class ConnectorInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConnectorId: 连接器 ID
+        :param _ConnectorId: <p>连接器 ID</p>
         :type ConnectorId: str
-        :param _ConnectorSlug: 连接器短标识（终身不变，跨版本稳定）
+        :param _ConnectorSlug: <p>连接器短标识（终身不变，跨版本稳定）</p>
         :type ConnectorSlug: str
-        :param _ConnectorKey: 版本级连接器密钥
+        :param _ConnectorKey: <p>版本级连接器密钥</p>
         :type ConnectorKey: str
-        :param _Name: 连接器名称
+        :param _Name: <p>连接器名称</p>
         :type Name: str
-        :param _Description: 连接器描述
+        :param _Description: <p>连接器描述</p>
         :type Description: str
-        :param _AvatarUrl: 头像 URL
+        :param _AvatarUrl: <p>头像 URL</p>
         :type AvatarUrl: str
-        :param _Source: 连接器来源：ENTERPRISE_AGENT / ASSISTANT
+        :param _Source: <p>连接器来源：ENTERPRISE_AGENT / ASSISTANT</p>
         :type Source: str
-        :param _EnterpriseId: 归属企业 ID
+        :param _EnterpriseId: <p>归属企业 ID</p>
         :type EnterpriseId: str
-        :param _Type: 连接器类型：MCP_SERVER / A2A / API_SERVICE
+        :param _Type: <p>连接器类型：MCP_SERVER / A2A / API_SERVICE</p>
         :type Type: str
-        :param _ServiceUrl: 上游服务地址
+        :param _ServiceUrl: <p>上游服务地址</p>
         :type ServiceUrl: str
-        :param _AuthModes: 授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY
+        :param _AuthModes: <p>授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY / DYNAMIC_API_KEY。DYNAMIC_API_KEY 表示按每轮请求提供的动态字段，通过 HeaderMappings 注入出站 HTTP Header。</p>
         :type AuthModes: list of str
-        :param _LatestVersionNo: 最新版本号
+        :param _LatestVersionNo: <p>最新版本号</p>
         :type LatestVersionNo: int
-        :param _Status: 连接器状态：ACTIVE / DISABLED
+        :param _Status: <p>连接器状态：ACTIVE / DISABLED</p>
         :type Status: str
-        :param _CreatorId: 创建人 ID
+        :param _CreatorId: <p>创建人 ID</p>
         :type CreatorId: str
-        :param _CreatedTime: 创建时间（ISO8601，UTC）
+        :param _CreatedTime: <p>创建时间（ISO8601，UTC）</p>
         :type CreatedTime: str
-        :param _ModifiedTime: 最后修改时间（ISO8601，UTC）
+        :param _ModifiedTime: <p>最后修改时间（ISO8601，UTC）</p>
         :type ModifiedTime: str
-        :param _VpcConfigId: VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。
+        :param _VpcConfigId: <p>VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。</p>
         :type VpcConfigId: str
+        :param _DisplayName: <p>展示名：console 老连接器目录（DescribeConsoleConnectorList）下发，取 registry data.display_name，老数据缺失时回落 Name；云上目录无独立展示名，省略不返回。Name 是存储名/选型回写键（含 scope 前缀），不承担展示职责。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisplayName: str
         """
         self._ConnectorId = None
         self._ConnectorSlug = None
@@ -1268,10 +1271,11 @@ class ConnectorInfo(AbstractModel):
         self._CreatedTime = None
         self._ModifiedTime = None
         self._VpcConfigId = None
+        self._DisplayName = None
 
     @property
     def ConnectorId(self):
-        r"""连接器 ID
+        r"""<p>连接器 ID</p>
         :rtype: str
         """
         return self._ConnectorId
@@ -1282,7 +1286,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def ConnectorSlug(self):
-        r"""连接器短标识（终身不变，跨版本稳定）
+        r"""<p>连接器短标识（终身不变，跨版本稳定）</p>
         :rtype: str
         """
         return self._ConnectorSlug
@@ -1293,7 +1297,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def ConnectorKey(self):
-        r"""版本级连接器密钥
+        r"""<p>版本级连接器密钥</p>
         :rtype: str
         """
         return self._ConnectorKey
@@ -1304,7 +1308,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""连接器名称
+        r"""<p>连接器名称</p>
         :rtype: str
         """
         return self._Name
@@ -1315,7 +1319,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""连接器描述
+        r"""<p>连接器描述</p>
         :rtype: str
         """
         return self._Description
@@ -1326,7 +1330,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def AvatarUrl(self):
-        r"""头像 URL
+        r"""<p>头像 URL</p>
         :rtype: str
         """
         return self._AvatarUrl
@@ -1337,7 +1341,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""连接器来源：ENTERPRISE_AGENT / ASSISTANT
+        r"""<p>连接器来源：ENTERPRISE_AGENT / ASSISTANT</p>
         :rtype: str
         """
         return self._Source
@@ -1348,7 +1352,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def EnterpriseId(self):
-        r"""归属企业 ID
+        r"""<p>归属企业 ID</p>
         :rtype: str
         """
         return self._EnterpriseId
@@ -1359,7 +1363,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""连接器类型：MCP_SERVER / A2A / API_SERVICE
+        r"""<p>连接器类型：MCP_SERVER / A2A / API_SERVICE</p>
         :rtype: str
         """
         return self._Type
@@ -1370,7 +1374,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def ServiceUrl(self):
-        r"""上游服务地址
+        r"""<p>上游服务地址</p>
         :rtype: str
         """
         return self._ServiceUrl
@@ -1381,7 +1385,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def AuthModes(self):
-        r"""授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY
+        r"""<p>授权方式列表：NONE / ONEID / OAUTH2_IDP / API_KEY / DYNAMIC_API_KEY。DYNAMIC_API_KEY 表示按每轮请求提供的动态字段，通过 HeaderMappings 注入出站 HTTP Header。</p>
         :rtype: list of str
         """
         return self._AuthModes
@@ -1392,7 +1396,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def LatestVersionNo(self):
-        r"""最新版本号
+        r"""<p>最新版本号</p>
         :rtype: int
         """
         return self._LatestVersionNo
@@ -1403,7 +1407,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""连接器状态：ACTIVE / DISABLED
+        r"""<p>连接器状态：ACTIVE / DISABLED</p>
         :rtype: str
         """
         return self._Status
@@ -1414,7 +1418,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def CreatorId(self):
-        r"""创建人 ID
+        r"""<p>创建人 ID</p>
         :rtype: str
         """
         return self._CreatorId
@@ -1425,7 +1429,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间（ISO8601，UTC）
+        r"""<p>创建时间（ISO8601，UTC）</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -1436,7 +1440,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        r"""最后修改时间（ISO8601，UTC）
+        r"""<p>最后修改时间（ISO8601，UTC）</p>
         :rtype: str
         """
         return self._ModifiedTime
@@ -1447,7 +1451,7 @@ class ConnectorInfo(AbstractModel):
 
     @property
     def VpcConfigId(self):
-        r"""VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。
+        r"""<p>VPC 网络配置 ID。为空表示该连接器通过公网访问 ServiceUrl。仅绑定 VPC 网络配置时本字段有值。</p>
         :rtype: str
         """
         return self._VpcConfigId
@@ -1455,6 +1459,18 @@ class ConnectorInfo(AbstractModel):
     @VpcConfigId.setter
     def VpcConfigId(self, VpcConfigId):
         self._VpcConfigId = VpcConfigId
+
+    @property
+    def DisplayName(self):
+        r"""<p>展示名：console 老连接器目录（DescribeConsoleConnectorList）下发，取 registry data.display_name，老数据缺失时回落 Name；云上目录无独立展示名，省略不返回。Name 是存储名/选型回写键（含 scope 前缀），不承担展示职责。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
 
 
     def _deserialize(self, params):
@@ -1475,6 +1491,7 @@ class ConnectorInfo(AbstractModel):
         self._CreatedTime = params.get("CreatedTime")
         self._ModifiedTime = params.get("ModifiedTime")
         self._VpcConfigId = params.get("VpcConfigId")
+        self._DisplayName = params.get("DisplayName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

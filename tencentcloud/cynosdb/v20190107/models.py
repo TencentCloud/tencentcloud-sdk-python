@@ -4015,10 +4015,8 @@ class BackupLimitRestriction(AbstractModel):
         :param _IpComparisonSymbol: In: 指定的ip可以下载； NotIn: 指定的ip不可以下载
         :type IpComparisonSymbol: str
         :param _LimitVpcs: 限制下载的vpc设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type LimitVpcs: list of BackupLimitVpcItem
         :param _LimitIps: 限制下载的ip设置
-注意：此字段可能返回 null，表示取不到有效值。
         :type LimitIps: list of str
         """
         self._LimitType = None
@@ -4063,7 +4061,6 @@ class BackupLimitRestriction(AbstractModel):
     @property
     def LimitVpcs(self):
         r"""限制下载的vpc设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackupLimitVpcItem
         """
         return self._LimitVpcs
@@ -4075,7 +4072,6 @@ class BackupLimitRestriction(AbstractModel):
     @property
     def LimitIps(self):
         r"""限制下载的ip设置
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._LimitIps
@@ -21169,11 +21165,11 @@ class DescribeBackupDownloadUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _BackupId: 备份ID
+        :param _BackupId: <p>备份ID</p>
         :type BackupId: int
-        :param _DownloadRestriction: 备份下载来源限制条件
+        :param _DownloadRestriction: <p>备份下载来源限制条件</p>
         :type DownloadRestriction: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
         """
         self._ClusterId = None
@@ -21182,7 +21178,7 @@ class DescribeBackupDownloadUrlRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -21193,7 +21189,7 @@ class DescribeBackupDownloadUrlRequest(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""备份ID
+        r"""<p>备份ID</p>
         :rtype: int
         """
         return self._BackupId
@@ -21204,7 +21200,7 @@ class DescribeBackupDownloadUrlRequest(AbstractModel):
 
     @property
     def DownloadRestriction(self):
-        r"""备份下载来源限制条件
+        r"""<p>备份下载来源限制条件</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
         """
         return self._DownloadRestriction
@@ -21237,7 +21233,7 @@ class DescribeBackupDownloadUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DownloadUrl: 备份下载地址
+        :param _DownloadUrl: <p>备份下载地址</p>
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21247,7 +21243,7 @@ class DescribeBackupDownloadUrlResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        r"""备份下载地址
+        r"""<p>备份下载地址</p>
         :rtype: str
         """
         return self._DownloadUrl
@@ -22389,11 +22385,11 @@ class DescribeBinlogDownloadUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _BinlogId: Binlog文件ID
+        :param _BinlogId: <p>Binlog文件ID</p>
         :type BinlogId: int
-        :param _DownloadRestriction: 备份下载来源限制条件
+        :param _DownloadRestriction: <p>备份下载来源限制条件</p>
         :type DownloadRestriction: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
         """
         self._ClusterId = None
@@ -22402,7 +22398,7 @@ class DescribeBinlogDownloadUrlRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -22413,7 +22409,7 @@ class DescribeBinlogDownloadUrlRequest(AbstractModel):
 
     @property
     def BinlogId(self):
-        r"""Binlog文件ID
+        r"""<p>Binlog文件ID</p>
         :rtype: int
         """
         return self._BinlogId
@@ -22424,7 +22420,7 @@ class DescribeBinlogDownloadUrlRequest(AbstractModel):
 
     @property
     def DownloadRestriction(self):
-        r"""备份下载来源限制条件
+        r"""<p>备份下载来源限制条件</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupLimitRestriction`
         """
         return self._DownloadRestriction
@@ -22457,7 +22453,7 @@ class DescribeBinlogDownloadUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DownloadUrl: 下载地址
+        :param _DownloadUrl: <p>下载地址</p>
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22467,7 +22463,7 @@ class DescribeBinlogDownloadUrlResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        r"""下载地址
+        r"""<p>下载地址</p>
         :rtype: str
         """
         return self._DownloadUrl

@@ -915,6 +915,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreatePrivateCA(self, request):
+        r"""创建私有CA证书
+
+        :param request: Request instance for CreatePrivateCA.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePrivateCARequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreatePrivateCAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePrivateCA", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePrivateCAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateProject(self, request):
         r"""为用户提供新建项目的能力，用于集中管理产品和应用。
 
@@ -1504,6 +1527,52 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DeletePositionSpace", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePositionSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePrivateCA(self, request):
+        r"""删除私有CA证书
+
+        :param request: Request instance for DeletePrivateCA.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePrivateCARequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeletePrivateCAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePrivateCA", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePrivateCAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteProductPrivateCA(self, request):
+        r"""删除产品绑定的CA证书
+
+        :param request: Request instance for DeleteProductPrivateCA.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteProductPrivateCARequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteProductPrivateCAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProductPrivateCA", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProductPrivateCAResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2907,6 +2976,98 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DescribePositionFenceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePositionFenceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePrivateCA(self, request):
+        r"""查询私有化CA信息
+
+        :param request: Request instance for DescribePrivateCA.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePrivateCARequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePrivateCAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrivateCA", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrivateCAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePrivateCABindedProducts(self, request):
+        r"""查询私有CA绑定的产品列表
+
+        :param request: Request instance for DescribePrivateCABindedProducts.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePrivateCABindedProductsRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePrivateCABindedProductsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrivateCABindedProducts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrivateCABindedProductsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePrivateCAs(self, request):
+        r"""查询私有CA证书列表
+
+        :param request: Request instance for DescribePrivateCAs.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePrivateCAsRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribePrivateCAsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePrivateCAs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePrivateCAsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProductCA(self, request):
+        r"""查询产品绑定的CA证书
+
+        :param request: Request instance for DescribeProductCA.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeProductCARequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeProductCAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProductCA", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProductCAResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6005,6 +6166,52 @@ class IotexplorerClient(AbstractClient):
             body = self.call("UpdateOtaTaskStatus", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateOtaTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdatePrivateCA(self, request):
+        r"""更新私有CA证书
+
+        :param request: Request instance for UpdatePrivateCA.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdatePrivateCARequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.UpdatePrivateCAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdatePrivateCA", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdatePrivateCAResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateProductPrivateCA(self, request):
+        r"""更新产品的私有CA
+
+        :param request: Request instance for UpdateProductPrivateCA.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateProductPrivateCARequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.UpdateProductPrivateCAResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProductPrivateCA", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateProductPrivateCAResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

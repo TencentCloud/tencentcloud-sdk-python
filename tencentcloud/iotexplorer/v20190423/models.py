@@ -3502,6 +3502,147 @@ class CamTag(AbstractModel):
         
 
 
+class CertInfo(AbstractModel):
+    r"""X509证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertName: <p>证书名称</p>
+        :type CertName: str
+        :param _CertSN: <p>证书序列号</p>
+        :type CertSN: str
+        :param _IssuerName: <p>证书颁发者名称（颁发机构的 CN）</p>
+        :type IssuerName: str
+        :param _Subject: <p>证书主题，即证书持有者信息</p>
+        :type Subject: str
+        :param _CreateTime: <p>证书创建时间，Unix 时间戳，</p><p>单位：秒</p>
+        :type CreateTime: int
+        :param _EffectiveTime: <p>证书生效时间，Unix 时间戳，</p><p>单位：秒</p>
+        :type EffectiveTime: int
+        :param _ExpireTime: <p>证书过期时间，Unix 时间戳，</p><p>单位：秒</p>
+        :type ExpireTime: int
+        :param _CertText: <p>证书内容，PEM 格式文本</p>
+        :type CertText: str
+        """
+        self._CertName = None
+        self._CertSN = None
+        self._IssuerName = None
+        self._Subject = None
+        self._CreateTime = None
+        self._EffectiveTime = None
+        self._ExpireTime = None
+        self._CertText = None
+
+    @property
+    def CertName(self):
+        r"""<p>证书名称</p>
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def CertSN(self):
+        r"""<p>证书序列号</p>
+        :rtype: str
+        """
+        return self._CertSN
+
+    @CertSN.setter
+    def CertSN(self, CertSN):
+        self._CertSN = CertSN
+
+    @property
+    def IssuerName(self):
+        r"""<p>证书颁发者名称（颁发机构的 CN）</p>
+        :rtype: str
+        """
+        return self._IssuerName
+
+    @IssuerName.setter
+    def IssuerName(self, IssuerName):
+        self._IssuerName = IssuerName
+
+    @property
+    def Subject(self):
+        r"""<p>证书主题，即证书持有者信息</p>
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def CreateTime(self):
+        r"""<p>证书创建时间，Unix 时间戳，</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EffectiveTime(self):
+        r"""<p>证书生效时间，Unix 时间戳，</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EffectiveTime
+
+    @EffectiveTime.setter
+    def EffectiveTime(self, EffectiveTime):
+        self._EffectiveTime = EffectiveTime
+
+    @property
+    def ExpireTime(self):
+        r"""<p>证书过期时间，Unix 时间戳，</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CertText(self):
+        r"""<p>证书内容，PEM 格式文本</p>
+        :rtype: str
+        """
+        return self._CertText
+
+    @CertText.setter
+    def CertText(self, CertText):
+        self._CertText = CertText
+
+
+    def _deserialize(self, params):
+        self._CertName = params.get("CertName")
+        self._CertSN = params.get("CertSN")
+        self._IssuerName = params.get("IssuerName")
+        self._Subject = params.get("Subject")
+        self._CreateTime = params.get("CreateTime")
+        self._EffectiveTime = params.get("EffectiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CertText = params.get("CertText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ChangeP2PRouteRequest(AbstractModel):
     r"""ChangeP2PRoute请求参数结构体
 
@@ -5884,22 +6025,24 @@ class CreateDeviceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID。
+        :param _ProductId: <p>产品ID。</p>
         :type ProductId: str
-        :param _DeviceName: 设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
+        :param _DeviceName: <p>设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。</p>
         :type DeviceName: str
-        :param _DevAddr: LoRaWAN 设备地址
+        :param _DevAddr: <p>LoRaWAN 设备地址</p>
         :type DevAddr: str
-        :param _AppKey: LoRaWAN 应用密钥
+        :param _AppKey: <p>LoRaWAN 应用密钥</p>
         :type AppKey: str
-        :param _DevEUI: LoRaWAN 设备唯一标识
+        :param _DevEUI: <p>LoRaWAN 设备唯一标识</p>
         :type DevEUI: str
-        :param _AppSKey: LoRaWAN 应用会话密钥
+        :param _AppSKey: <p>LoRaWAN 应用会话密钥</p>
         :type AppSKey: str
-        :param _NwkSKey: LoRaWAN 网络会话密钥
+        :param _NwkSKey: <p>LoRaWAN 网络会话密钥</p>
         :type NwkSKey: str
-        :param _DefinedPsk: 手动指定设备的PSK密钥
+        :param _DefinedPsk: <p>手动指定设备的PSK密钥</p>
         :type DefinedPsk: str
+        :param _TlsCrt: <p>设备证书。第三方CA证书认证的产品下必填；腾讯云CA证书产品传入会报错；非证书认证产品传入会被忽略</p>
+        :type TlsCrt: str
         """
         self._ProductId = None
         self._DeviceName = None
@@ -5909,10 +6052,11 @@ class CreateDeviceRequest(AbstractModel):
         self._AppSKey = None
         self._NwkSKey = None
         self._DefinedPsk = None
+        self._TlsCrt = None
 
     @property
     def ProductId(self):
-        r"""产品ID。
+        r"""<p>产品ID。</p>
         :rtype: str
         """
         return self._ProductId
@@ -5923,7 +6067,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。
+        r"""<p>设备名称。命名规则：[a-zA-Z0-9:_-]{1,48}。</p>
         :rtype: str
         """
         return self._DeviceName
@@ -5934,7 +6078,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DevAddr(self):
-        r"""LoRaWAN 设备地址
+        r"""<p>LoRaWAN 设备地址</p>
         :rtype: str
         """
         return self._DevAddr
@@ -5945,7 +6089,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def AppKey(self):
-        r"""LoRaWAN 应用密钥
+        r"""<p>LoRaWAN 应用密钥</p>
         :rtype: str
         """
         return self._AppKey
@@ -5956,7 +6100,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DevEUI(self):
-        r"""LoRaWAN 设备唯一标识
+        r"""<p>LoRaWAN 设备唯一标识</p>
         :rtype: str
         """
         return self._DevEUI
@@ -5967,7 +6111,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def AppSKey(self):
-        r"""LoRaWAN 应用会话密钥
+        r"""<p>LoRaWAN 应用会话密钥</p>
         :rtype: str
         """
         return self._AppSKey
@@ -5978,7 +6122,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def NwkSKey(self):
-        r"""LoRaWAN 网络会话密钥
+        r"""<p>LoRaWAN 网络会话密钥</p>
         :rtype: str
         """
         return self._NwkSKey
@@ -5989,7 +6133,7 @@ class CreateDeviceRequest(AbstractModel):
 
     @property
     def DefinedPsk(self):
-        r"""手动指定设备的PSK密钥
+        r"""<p>手动指定设备的PSK密钥</p>
         :rtype: str
         """
         return self._DefinedPsk
@@ -5997,6 +6141,17 @@ class CreateDeviceRequest(AbstractModel):
     @DefinedPsk.setter
     def DefinedPsk(self, DefinedPsk):
         self._DefinedPsk = DefinedPsk
+
+    @property
+    def TlsCrt(self):
+        r"""<p>设备证书。第三方CA证书认证的产品下必填；腾讯云CA证书产品传入会报错；非证书认证产品传入会被忽略</p>
+        :rtype: str
+        """
+        return self._TlsCrt
+
+    @TlsCrt.setter
+    def TlsCrt(self, TlsCrt):
+        self._TlsCrt = TlsCrt
 
 
     def _deserialize(self, params):
@@ -6008,6 +6163,7 @@ class CreateDeviceRequest(AbstractModel):
         self._AppSKey = params.get("AppSKey")
         self._NwkSKey = params.get("NwkSKey")
         self._DefinedPsk = params.get("DefinedPsk")
+        self._TlsCrt = params.get("TlsCrt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6025,7 +6181,7 @@ class CreateDeviceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 设备参数描述。
+        :param _Data: <p>设备参数描述。</p>
         :type Data: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6035,7 +6191,7 @@ class CreateDeviceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""设备参数描述。
+        r"""<p>设备参数描述。</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeviceData`
         """
         return self._Data
@@ -7634,6 +7790,100 @@ class CreatePositionSpaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePrivateCARequest(AbstractModel):
+    r"""CreatePrivateCA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertName: <p>证书名称，长度 1~32 个字符。</p>
+        :type CertName: str
+        :param _CertText: <p>证书内容，PEM 格式文本，需为 CA 证书。</p>
+        :type CertText: str
+        :param _VerifyCertText: <p>验证证书内容，PEM 格式文本。须由所上传的 CA 签发，且 CN 为 sha256(&quot;iothub_主账号Uin&quot;) 的小写十六进制值，用于验证您持有 CA 私钥。</p>
+        :type VerifyCertText: str
+        """
+        self._CertName = None
+        self._CertText = None
+        self._VerifyCertText = None
+
+    @property
+    def CertName(self):
+        r"""<p>证书名称，长度 1~32 个字符。</p>
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def CertText(self):
+        r"""<p>证书内容，PEM 格式文本，需为 CA 证书。</p>
+        :rtype: str
+        """
+        return self._CertText
+
+    @CertText.setter
+    def CertText(self, CertText):
+        self._CertText = CertText
+
+    @property
+    def VerifyCertText(self):
+        r"""<p>验证证书内容，PEM 格式文本。须由所上传的 CA 签发，且 CN 为 sha256(&quot;iothub_主账号Uin&quot;) 的小写十六进制值，用于验证您持有 CA 私钥。</p>
+        :rtype: str
+        """
+        return self._VerifyCertText
+
+    @VerifyCertText.setter
+    def VerifyCertText(self, VerifyCertText):
+        self._VerifyCertText = VerifyCertText
+
+
+    def _deserialize(self, params):
+        self._CertName = params.get("CertName")
+        self._CertText = params.get("CertText")
+        self._VerifyCertText = params.get("VerifyCertText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePrivateCAResponse(AbstractModel):
+    r"""CreatePrivateCA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateProjectRequest(AbstractModel):
     r"""CreateProject请求参数结构体
 
@@ -7752,26 +8002,28 @@ class CreateStudioProductRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductName: 产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
+        :param _ProductName: <p>产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}</p>
         :type ProductName: str
-        :param _CategoryId: 产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
+        :param _CategoryId: <p>产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)</p>
         :type CategoryId: int
-        :param _ProductType: 产品类型 填写 ( 0 普通产品 ， 5 网关产品)
+        :param _ProductType: <p>产品类型 填写 ( 0 普通产品 ， 5 网关产品)</p>
         :type ProductType: int
-        :param _EncryptionType: 加密类型 ，1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+        :param _EncryptionType: <p>设备认证方式 ，1表示证书认证，2表示密钥认证</p><p>枚举值：</p><ul><li>1： 证书认证(X.509证书认证)</li><li>2： 密钥认证</li></ul>
         :type EncryptionType: str
-        :param _NetType: 连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
+        :param _NetType: <p>连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh</p>
         :type NetType: str
-        :param _DataProtocol: 数据协议 (1 使用物模型 2 为自定义)
+        :param _DataProtocol: <p>数据协议 (1 使用物模型，即使用腾讯云物联网开发平台制定的物模型协议 2 自定义透传，即用户自由定义MQTT协议Payload部分)</p>
         :type DataProtocol: int
-        :param _ProductDesc: 产品描述
+        :param _ProductDesc: <p>产品描述</p>
         :type ProductDesc: str
-        :param _ProjectId: 产品的项目ID
+        :param _ProjectId: <p>产品所在的项目ID，可从产品管理页的当前URL中获取project_id的值</p>
         :type ProjectId: str
-        :param _Rate: 平均传输速率
+        :param _Rate: <p>平均传输速率</p>
         :type Rate: str
-        :param _Period: 期限
+        :param _Period: <p>期限</p>
         :type Period: str
+        :param _PrivateCAName: <p>第三方CA证书名称。空/不传 = 腾讯云默认CA证书；非空 = 使用该证书（须为当前账号已上传的 CA，不存在会报错）</p>
+        :type PrivateCAName: str
         """
         self._ProductName = None
         self._CategoryId = None
@@ -7783,10 +8035,11 @@ class CreateStudioProductRequest(AbstractModel):
         self._ProjectId = None
         self._Rate = None
         self._Period = None
+        self._PrivateCAName = None
 
     @property
     def ProductName(self):
-        r"""产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}
+        r"""<p>产品名称，名称不能和已经存在的产品名称重复。命名规则：[a-zA-Z0-9:_-]{1,32}</p>
         :rtype: str
         """
         return self._ProductName
@@ -7797,7 +8050,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def CategoryId(self):
-        r"""产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)
+        r"""<p>产品分组模板ID , ( 自定义模板填写1 , 控制台调用会使用预置的其他ID)</p>
         :rtype: int
         """
         return self._CategoryId
@@ -7808,7 +8061,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""产品类型 填写 ( 0 普通产品 ， 5 网关产品)
+        r"""<p>产品类型 填写 ( 0 普通产品 ， 5 网关产品)</p>
         :rtype: int
         """
         return self._ProductType
@@ -7819,7 +8072,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def EncryptionType(self):
-        r"""加密类型 ，1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+        r"""<p>设备认证方式 ，1表示证书认证，2表示密钥认证</p><p>枚举值：</p><ul><li>1： 证书认证(X.509证书认证)</li><li>2： 密钥认证</li></ul>
         :rtype: str
         """
         return self._EncryptionType
@@ -7830,7 +8083,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def NetType(self):
-        r"""连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
+        r"""<p>连接类型 可以填写 wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh</p>
         :rtype: str
         """
         return self._NetType
@@ -7841,7 +8094,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def DataProtocol(self):
-        r"""数据协议 (1 使用物模型 2 为自定义)
+        r"""<p>数据协议 (1 使用物模型，即使用腾讯云物联网开发平台制定的物模型协议 2 自定义透传，即用户自由定义MQTT协议Payload部分)</p>
         :rtype: int
         """
         return self._DataProtocol
@@ -7852,7 +8105,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def ProductDesc(self):
-        r"""产品描述
+        r"""<p>产品描述</p>
         :rtype: str
         """
         return self._ProductDesc
@@ -7863,7 +8116,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""产品的项目ID
+        r"""<p>产品所在的项目ID，可从产品管理页的当前URL中获取project_id的值</p>
         :rtype: str
         """
         return self._ProjectId
@@ -7874,7 +8127,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def Rate(self):
-        r"""平均传输速率
+        r"""<p>平均传输速率</p>
         :rtype: str
         """
         return self._Rate
@@ -7885,7 +8138,7 @@ class CreateStudioProductRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""期限
+        r"""<p>期限</p>
         :rtype: str
         """
         return self._Period
@@ -7893,6 +8146,17 @@ class CreateStudioProductRequest(AbstractModel):
     @Period.setter
     def Period(self, Period):
         self._Period = Period
+
+    @property
+    def PrivateCAName(self):
+        r"""<p>第三方CA证书名称。空/不传 = 腾讯云默认CA证书；非空 = 使用该证书（须为当前账号已上传的 CA，不存在会报错）</p>
+        :rtype: str
+        """
+        return self._PrivateCAName
+
+    @PrivateCAName.setter
+    def PrivateCAName(self, PrivateCAName):
+        self._PrivateCAName = PrivateCAName
 
 
     def _deserialize(self, params):
@@ -7906,6 +8170,7 @@ class CreateStudioProductRequest(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._Rate = params.get("Rate")
         self._Period = params.get("Period")
+        self._PrivateCAName = params.get("PrivateCAName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7923,7 +8188,7 @@ class CreateStudioProductResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 产品描述
+        :param _Product: <p>产品描述</p>
         :type Product: :class:`tencentcloud.iotexplorer.v20190423.models.ProductEntry`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7933,7 +8198,7 @@ class CreateStudioProductResponse(AbstractModel):
 
     @property
     def Product(self):
-        r"""产品描述
+        r"""<p>产品描述</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ProductEntry`
         """
         return self._Product
@@ -11738,6 +12003,134 @@ class DeletePositionSpaceRequest(AbstractModel):
 
 class DeletePositionSpaceResponse(AbstractModel):
     r"""DeletePositionSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeletePrivateCARequest(AbstractModel):
+    r"""DeletePrivateCA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertName: <p>证书名称。</p>
+        :type CertName: str
+        """
+        self._CertName = None
+
+    @property
+    def CertName(self):
+        r"""<p>证书名称。</p>
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+
+    def _deserialize(self, params):
+        self._CertName = params.get("CertName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePrivateCAResponse(AbstractModel):
+    r"""DeletePrivateCA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProductPrivateCARequest(AbstractModel):
+    r"""DeleteProductPrivateCA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品ID</p>
+        :type ProductId: str
+        """
+        self._ProductId = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProductPrivateCAResponse(AbstractModel):
+    r"""DeleteProductPrivateCA返回参数结构体
 
     """
 
@@ -20258,6 +20651,339 @@ class DescribePositionFenceListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrivateCABindedProductsRequest(AbstractModel):
+    r"""DescribePrivateCABindedProducts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertName: <p>证书名称，长度 1~32 个字符。</p>
+        :type CertName: str
+        :param _Offset: <p>分页偏移量。</p><p>取值范围：[0, 5000000]</p>
+        :type Offset: int
+        :param _Limit: <p>单次返回的数量。</p><p>取值范围：[1, 200]</p>
+        :type Limit: int
+        """
+        self._CertName = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def CertName(self):
+        r"""<p>证书名称，长度 1~32 个字符。</p>
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量。</p><p>取值范围：[0, 5000000]</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单次返回的数量。</p><p>取值范围：[1, 200]</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._CertName = params.get("CertName")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateCABindedProductsResponse(AbstractModel):
+    r"""DescribePrivateCABindedProducts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Products: <p>绑定了该 CA 证书的产品列表。</p>
+        :type Products: list of PrivateCABindProductInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Products = None
+        self._RequestId = None
+
+    @property
+    def Products(self):
+        r"""<p>绑定了该 CA 证书的产品列表。</p>
+        :rtype: list of PrivateCABindProductInfo
+        """
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Products") is not None:
+            self._Products = []
+            for item in params.get("Products"):
+                obj = PrivateCABindProductInfo()
+                obj._deserialize(item)
+                self._Products.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrivateCARequest(AbstractModel):
+    r"""DescribePrivateCA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertName: <p>证书名称。</p>
+        :type CertName: str
+        """
+        self._CertName = None
+
+    @property
+    def CertName(self):
+        r"""<p>证书名称。</p>
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+
+    def _deserialize(self, params):
+        self._CertName = params.get("CertName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePrivateCAResponse(AbstractModel):
+    r"""DescribePrivateCA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CA: <p>CA 证书信息。</p>
+        :type CA: :class:`tencentcloud.iotexplorer.v20190423.models.CertInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CA = None
+        self._RequestId = None
+
+    @property
+    def CA(self):
+        r"""<p>CA 证书信息。</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CertInfo`
+        """
+        return self._CA
+
+    @CA.setter
+    def CA(self, CA):
+        self._CA = CA
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CA") is not None:
+            self._CA = CertInfo()
+            self._CA._deserialize(params.get("CA"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePrivateCAsRequest(AbstractModel):
+    r"""DescribePrivateCAs请求参数结构体
+
+    """
+
+
+class DescribePrivateCAsResponse(AbstractModel):
+    r"""DescribePrivateCAs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CAs: <p>产品绑定的 CA 证书信息列表。产品绑定了第三方 CA 时,返回该 CA 的证书信息;产品未绑定第三方 CA 时,返回平台默认 CA;产品未绑定 CA 时为空数组。</p>
+        :type CAs: list of CertInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CAs = None
+        self._RequestId = None
+
+    @property
+    def CAs(self):
+        r"""<p>产品绑定的 CA 证书信息列表。产品绑定了第三方 CA 时,返回该 CA 的证书信息;产品未绑定第三方 CA 时,返回平台默认 CA;产品未绑定 CA 时为空数组。</p>
+        :rtype: list of CertInfo
+        """
+        return self._CAs
+
+    @CAs.setter
+    def CAs(self, CAs):
+        self._CAs = CAs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CAs") is not None:
+            self._CAs = []
+            for item in params.get("CAs"):
+                obj = CertInfo()
+                obj._deserialize(item)
+                self._CAs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProductCARequest(AbstractModel):
+    r"""DescribeProductCA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品ID。</p>
+        :type ProductId: str
+        """
+        self._ProductId = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品ID。</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProductCAResponse(AbstractModel):
+    r"""DescribeProductCA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CAs: <p>产品绑定的 CA 证书信息列表。产品绑定了第三方 CA 时,返回该 CA 的证书信息;产品未绑定第三方 CA 时,返回平台默认 CA;产品未绑定 CA 时为空数组。</p>
+        :type CAs: list of CertInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CAs = None
+        self._RequestId = None
+
+    @property
+    def CAs(self):
+        r"""<p>产品绑定的 CA 证书信息列表。产品绑定了第三方 CA 时,返回该 CA 的证书信息;产品未绑定第三方 CA 时,返回平台默认 CA;产品未绑定 CA 时为空数组。</p>
+        :rtype: list of CertInfo
+        """
+        return self._CAs
+
+    @CAs.setter
+    def CAs(self, CAs):
+        self._CAs = CAs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CAs") is not None:
+            self._CAs = []
+            for item in params.get("CAs"):
+                obj = CertInfo()
+                obj._deserialize(item)
+                self._CAs.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -40137,6 +40863,72 @@ class PositionSpaceInfo(AbstractModel):
         
 
 
+class PrivateCABindProductInfo(AbstractModel):
+    r"""子产品信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品ID</p>
+        :type ProductId: str
+        :param _ProductName: <p>产品名</p>
+        :type ProductName: str
+        :param _CreateTime: <p>产品创建时间</p><p>单位：秒</p>
+        :type CreateTime: int
+        """
+        self._ProductId = None
+        self._ProductName = None
+        self._CreateTime = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ProductName(self):
+        r"""<p>产品名</p>
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
+    @property
+    def CreateTime(self):
+        r"""<p>产品创建时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ProductName = params.get("ProductName")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProductDevicesPositionItem(AbstractModel):
     r"""产品设备位置信息
 
@@ -40215,51 +41007,72 @@ class ProductEntry(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: <p>产品ID</p>
         :type ProductId: str
-        :param _ProductName: 产品名称
+        :param _ProductName: <p>产品名称</p>
         :type ProductName: str
-        :param _CategoryId: 产品分组模板ID
+        :param _CategoryId: <p>产品分组模板ID</p>
         :type CategoryId: int
-        :param _EncryptionType: 加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+        :param _EncryptionType: <p>加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式</p>
         :type EncryptionType: str
-        :param _NetType: 连接类型。如：
-wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
+        :param _NetType: <p>连接类型。如：<br>wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh</p>
         :type NetType: str
-        :param _DataProtocol: 数据协议 (1 使用物模型 2 为自定义类型)
+        :param _DataProtocol: <p>数据协议 (1 使用物模型 2 为自定义类型)</p>
         :type DataProtocol: int
-        :param _ProductDesc: 产品描述
+        :param _ProductDesc: <p>产品描述</p>
         :type ProductDesc: str
-        :param _DevStatus: 状态 如：all 全部, dev 开发中, audit 审核中 released 已发布
+        :param _DevStatus: <p>状态 如：all 全部, dev 开发中, audit 审核中 released 已发布</p>
         :type DevStatus: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: int
-        :param _Region: 区域
+        :param _Region: <p>区域</p>
         :type Region: str
-        :param _ProductType: 产品类型。如： 0 普通产品 ， 5 网关产品
+        :param _ProductType: <p>产品类型。如： 0 普通产品 ， 5 网关产品</p>
         :type ProductType: int
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _ModuleId: 产品ModuleId
+        :param _ModuleId: <p>产品ModuleId</p>
         :type ModuleId: int
-        :param _EnableProductScript: 是否使用脚本进行二进制转json功能 可以取值 true / false
+        :param _EnableProductScript: <p>是否使用脚本进行二进制转json功能 可以取值 true / false</p>
         :type EnableProductScript: str
-        :param _CreateUserId: 创建人 UinId
+        :param _CreateUserId: <p>创建人 UinId</p>
         :type CreateUserId: int
-        :param _CreatorNickName: 创建者昵称
+        :param _CreatorNickName: <p>创建者昵称</p>
         :type CreatorNickName: str
-        :param _BindStrategy: 绑定策略（1：强踢；2：非强踢；0：表示无意义）
+        :param _BindStrategy: <p>绑定策略（1：强踢；2：非强踢；0：表示无意义）</p>
         :type BindStrategy: int
-        :param _DeviceCount: 设备数量
+        :param _DeviceCount: <p>设备数量</p>
         :type DeviceCount: int
-        :param _Rate: 平均传输速率
+        :param _Rate: <p>平均传输速率</p>
         :type Rate: str
-        :param _Period: 有效期
+        :param _Period: <p>有效期</p>
         :type Period: str
-        :param _IsInterconnection: 互联互通标识
+        :param _IsInterconnection: <p>互联互通标识</p>
         :type IsInterconnection: int
+        :param _Uin: <p>UIN</p>
+        :type Uin: str
+        :param _AppId: <p>AppID</p>
+        :type AppId: int
+        :param _PrivateCAName: <p>绑定的第三方CA名称；空 = 腾讯云CA证书</p>
+        :type PrivateCAName: str
+        :param _IsPrivateCA: <p>true = 第三方CA</p>
+        :type IsPrivateCA: bool
+        :param _CertName: <p>CA 证书名称</p>
+        :type CertName: str
+        :param _CertSN: <p>证书序列号</p>
+        :type CertSN: str
+        :param _IssuerName: <p>颁发者</p>
+        :type IssuerName: str
+        :param _Subject: <p>证书主题</p>
+        :type Subject: str
+        :param _EffectiveTime: <p>生效时间（Unix 秒）</p><p>单位：秒</p>
+        :type EffectiveTime: int
+        :param _ExpireTime: <p>过期时间（Unix 秒）</p><p>单位：秒</p>
+        :type ExpireTime: int
+        :param _CertText: <p>CA 证书 PEM 全文</p>
+        :type CertText: str
         """
         self._ProductId = None
         self._ProductName = None
@@ -40283,10 +41096,21 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         self._Rate = None
         self._Period = None
         self._IsInterconnection = None
+        self._Uin = None
+        self._AppId = None
+        self._PrivateCAName = None
+        self._IsPrivateCA = None
+        self._CertName = None
+        self._CertSN = None
+        self._IssuerName = None
+        self._Subject = None
+        self._EffectiveTime = None
+        self._ExpireTime = None
+        self._CertText = None
 
     @property
     def ProductId(self):
-        r"""产品ID
+        r"""<p>产品ID</p>
         :rtype: str
         """
         return self._ProductId
@@ -40297,7 +41121,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def ProductName(self):
-        r"""产品名称
+        r"""<p>产品名称</p>
         :rtype: str
         """
         return self._ProductName
@@ -40308,7 +41132,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def CategoryId(self):
-        r"""产品分组模板ID
+        r"""<p>产品分组模板ID</p>
         :rtype: int
         """
         return self._CategoryId
@@ -40319,7 +41143,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def EncryptionType(self):
-        r"""加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式
+        r"""<p>加密类型。1表示证书认证，2表示密钥认证，21表示TID认证-SE方式，22表示TID认证-软加固方式</p>
         :rtype: str
         """
         return self._EncryptionType
@@ -40330,8 +41154,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def NetType(self):
-        r"""连接类型。如：
-wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh
+        r"""<p>连接类型。如：<br>wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、else、sub_zigbee、sub_ble、sub_433mhz、sub_else、sub_blemesh</p>
         :rtype: str
         """
         return self._NetType
@@ -40342,7 +41165,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def DataProtocol(self):
-        r"""数据协议 (1 使用物模型 2 为自定义类型)
+        r"""<p>数据协议 (1 使用物模型 2 为自定义类型)</p>
         :rtype: int
         """
         return self._DataProtocol
@@ -40353,7 +41176,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def ProductDesc(self):
-        r"""产品描述
+        r"""<p>产品描述</p>
         :rtype: str
         """
         return self._ProductDesc
@@ -40364,7 +41187,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def DevStatus(self):
-        r"""状态 如：all 全部, dev 开发中, audit 审核中 released 已发布
+        r"""<p>状态 如：all 全部, dev 开发中, audit 审核中 released 已发布</p>
         :rtype: str
         """
         return self._DevStatus
@@ -40375,7 +41198,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: int
         """
         return self._CreateTime
@@ -40386,7 +41209,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: int
         """
         return self._UpdateTime
@@ -40397,7 +41220,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def Region(self):
-        r"""区域
+        r"""<p>区域</p>
         :rtype: str
         """
         return self._Region
@@ -40408,7 +41231,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def ProductType(self):
-        r"""产品类型。如： 0 普通产品 ， 5 网关产品
+        r"""<p>产品类型。如： 0 普通产品 ， 5 网关产品</p>
         :rtype: int
         """
         return self._ProductType
@@ -40419,7 +41242,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -40430,7 +41253,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def ModuleId(self):
-        r"""产品ModuleId
+        r"""<p>产品ModuleId</p>
         :rtype: int
         """
         return self._ModuleId
@@ -40441,7 +41264,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def EnableProductScript(self):
-        r"""是否使用脚本进行二进制转json功能 可以取值 true / false
+        r"""<p>是否使用脚本进行二进制转json功能 可以取值 true / false</p>
         :rtype: str
         """
         return self._EnableProductScript
@@ -40452,7 +41275,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def CreateUserId(self):
-        r"""创建人 UinId
+        r"""<p>创建人 UinId</p>
         :rtype: int
         """
         return self._CreateUserId
@@ -40463,7 +41286,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def CreatorNickName(self):
-        r"""创建者昵称
+        r"""<p>创建者昵称</p>
         :rtype: str
         """
         return self._CreatorNickName
@@ -40474,7 +41297,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def BindStrategy(self):
-        r"""绑定策略（1：强踢；2：非强踢；0：表示无意义）
+        r"""<p>绑定策略（1：强踢；2：非强踢；0：表示无意义）</p>
         :rtype: int
         """
         return self._BindStrategy
@@ -40485,7 +41308,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def DeviceCount(self):
-        r"""设备数量
+        r"""<p>设备数量</p>
         :rtype: int
         """
         return self._DeviceCount
@@ -40496,7 +41319,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def Rate(self):
-        r"""平均传输速率
+        r"""<p>平均传输速率</p>
         :rtype: str
         """
         return self._Rate
@@ -40507,7 +41330,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def Period(self):
-        r"""有效期
+        r"""<p>有效期</p>
         :rtype: str
         """
         return self._Period
@@ -40518,7 +41341,7 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
 
     @property
     def IsInterconnection(self):
-        r"""互联互通标识
+        r"""<p>互联互通标识</p>
         :rtype: int
         """
         return self._IsInterconnection
@@ -40526,6 +41349,127 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
     @IsInterconnection.setter
     def IsInterconnection(self, IsInterconnection):
         self._IsInterconnection = IsInterconnection
+
+    @property
+    def Uin(self):
+        r"""<p>UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""<p>AppID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PrivateCAName(self):
+        r"""<p>绑定的第三方CA名称；空 = 腾讯云CA证书</p>
+        :rtype: str
+        """
+        return self._PrivateCAName
+
+    @PrivateCAName.setter
+    def PrivateCAName(self, PrivateCAName):
+        self._PrivateCAName = PrivateCAName
+
+    @property
+    def IsPrivateCA(self):
+        r"""<p>true = 第三方CA</p>
+        :rtype: bool
+        """
+        return self._IsPrivateCA
+
+    @IsPrivateCA.setter
+    def IsPrivateCA(self, IsPrivateCA):
+        self._IsPrivateCA = IsPrivateCA
+
+    @property
+    def CertName(self):
+        r"""<p>CA 证书名称</p>
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def CertSN(self):
+        r"""<p>证书序列号</p>
+        :rtype: str
+        """
+        return self._CertSN
+
+    @CertSN.setter
+    def CertSN(self, CertSN):
+        self._CertSN = CertSN
+
+    @property
+    def IssuerName(self):
+        r"""<p>颁发者</p>
+        :rtype: str
+        """
+        return self._IssuerName
+
+    @IssuerName.setter
+    def IssuerName(self, IssuerName):
+        self._IssuerName = IssuerName
+
+    @property
+    def Subject(self):
+        r"""<p>证书主题</p>
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def EffectiveTime(self):
+        r"""<p>生效时间（Unix 秒）</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EffectiveTime
+
+    @EffectiveTime.setter
+    def EffectiveTime(self, EffectiveTime):
+        self._EffectiveTime = EffectiveTime
+
+    @property
+    def ExpireTime(self):
+        r"""<p>过期时间（Unix 秒）</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CertText(self):
+        r"""<p>CA 证书 PEM 全文</p>
+        :rtype: str
+        """
+        return self._CertText
+
+    @CertText.setter
+    def CertText(self, CertText):
+        self._CertText = CertText
 
 
     def _deserialize(self, params):
@@ -40551,6 +41495,17 @@ wifi、wifi-ble、cellular、5g、lorawan、ble、ethernet、wifi-ethernet、els
         self._Rate = params.get("Rate")
         self._Period = params.get("Period")
         self._IsInterconnection = params.get("IsInterconnection")
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._PrivateCAName = params.get("PrivateCAName")
+        self._IsPrivateCA = params.get("IsPrivateCA")
+        self._CertName = params.get("CertName")
+        self._CertSN = params.get("CertSN")
+        self._IssuerName = params.get("IssuerName")
+        self._Subject = params.get("Subject")
+        self._EffectiveTime = params.get("EffectiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CertText = params.get("CertText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52191,6 +53146,179 @@ class UpdateOtaTaskStatusRequest(AbstractModel):
 
 class UpdateOtaTaskStatusResponse(AbstractModel):
     r"""UpdateOtaTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdatePrivateCARequest(AbstractModel):
+    r"""UpdatePrivateCA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertName: <p>证书名称。</p>
+        :type CertName: str
+        :param _CertText: <p>证书内容，PEM 格式文本，需为 CA 证书。</p>
+        :type CertText: str
+        :param _VerifyCertText: <p>验证证书内容，PEM 格式文本。须由所上传的 CA 签发，且 CN 为 sha256(&quot;iothub_主账号Uin&quot;) 的小写十六进制值，用于验证您持有 CA 私钥。</p>
+        :type VerifyCertText: str
+        """
+        self._CertName = None
+        self._CertText = None
+        self._VerifyCertText = None
+
+    @property
+    def CertName(self):
+        r"""<p>证书名称。</p>
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+    @property
+    def CertText(self):
+        r"""<p>证书内容，PEM 格式文本，需为 CA 证书。</p>
+        :rtype: str
+        """
+        return self._CertText
+
+    @CertText.setter
+    def CertText(self, CertText):
+        self._CertText = CertText
+
+    @property
+    def VerifyCertText(self):
+        r"""<p>验证证书内容，PEM 格式文本。须由所上传的 CA 签发，且 CN 为 sha256(&quot;iothub_主账号Uin&quot;) 的小写十六进制值，用于验证您持有 CA 私钥。</p>
+        :rtype: str
+        """
+        return self._VerifyCertText
+
+    @VerifyCertText.setter
+    def VerifyCertText(self, VerifyCertText):
+        self._VerifyCertText = VerifyCertText
+
+
+    def _deserialize(self, params):
+        self._CertName = params.get("CertName")
+        self._CertText = params.get("CertText")
+        self._VerifyCertText = params.get("VerifyCertText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdatePrivateCAResponse(AbstractModel):
+    r"""UpdatePrivateCA返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateProductPrivateCARequest(AbstractModel):
+    r"""UpdateProductPrivateCA请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品ID。</p>
+        :type ProductId: str
+        :param _CertName: <p>证书名称，长度 1~32 个字符。</p>
+        :type CertName: str
+        """
+        self._ProductId = None
+        self._CertName = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品ID。</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def CertName(self):
+        r"""<p>证书名称，长度 1~32 个字符。</p>
+        :rtype: str
+        """
+        return self._CertName
+
+    @CertName.setter
+    def CertName(self, CertName):
+        self._CertName = CertName
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._CertName = params.get("CertName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateProductPrivateCAResponse(AbstractModel):
+    r"""UpdateProductPrivateCA返回参数结构体
 
     """
 

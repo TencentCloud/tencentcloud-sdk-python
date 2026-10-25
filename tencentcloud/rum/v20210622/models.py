@@ -18,6 +18,408 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AppOverviewScore(AbstractModel):
+    r"""单应用总览评分
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _Platform: <p>端</p>
+        :type Platform: str
+        :param _TotalScore: <p>加权总分，全部缺失时省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalScore: float
+        :param _Items: <p>计分项</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of OverviewScoreItem
+        """
+        self._AppId = None
+        self._Platform = None
+        self._TotalScore = None
+        self._Items = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Platform(self):
+        r"""<p>端</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def TotalScore(self):
+        r"""<p>加权总分，全部缺失时省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TotalScore
+
+    @TotalScore.setter
+    def TotalScore(self, TotalScore):
+        self._TotalScore = TotalScore
+
+    @property
+    def Items(self):
+        r"""<p>计分项</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OverviewScoreItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Platform = params.get("Platform")
+        self._TotalScore = params.get("TotalScore")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = OverviewScoreItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApplicationItem(AbstractModel):
+    r"""应用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _ProjectKey: <p>应用 Key</p>
+        :type ProjectKey: str
+        :param _InstanceId: <p>业务系统 ID</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>业务系统名称</p>
+        :type InstanceName: str
+        :param _Name: <p>应用名称</p>
+        :type Name: str
+        :param _Type: <p>端类型</p>
+        :type Type: str
+        :param _Desc: <p>描述</p>
+        :type Desc: str
+        :param _ExcludeIgnoredErrors: <p>是否排除已忽略错误</p>
+        :type ExcludeIgnoredErrors: bool
+        :param _Status: <p>状态：2 运行 / 6 停止 / 7 删除</p>
+        :type Status: int
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _ApmInstanceIds: <p>该应用绑定的腾讯云 APM 实例 ID 列表。空数组表示未绑定。</p>
+        :type ApmInstanceIds: list of str
+        """
+        self._AppId = None
+        self._ProjectKey = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Name = None
+        self._Type = None
+        self._Desc = None
+        self._ExcludeIgnoredErrors = None
+        self._Status = None
+        self._CreatedAt = None
+        self._ApmInstanceIds = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ProjectKey(self):
+        r"""<p>应用 Key</p>
+        :rtype: str
+        """
+        return self._ProjectKey
+
+    @ProjectKey.setter
+    def ProjectKey(self, ProjectKey):
+        self._ProjectKey = ProjectKey
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>业务系统名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Name(self):
+        r"""<p>应用名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>端类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Desc(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def ExcludeIgnoredErrors(self):
+        r"""<p>是否排除已忽略错误</p>
+        :rtype: bool
+        """
+        return self._ExcludeIgnoredErrors
+
+    @ExcludeIgnoredErrors.setter
+    def ExcludeIgnoredErrors(self, ExcludeIgnoredErrors):
+        self._ExcludeIgnoredErrors = ExcludeIgnoredErrors
+
+    @property
+    def Status(self):
+        r"""<p>状态：2 运行 / 6 停止 / 7 删除</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def ApmInstanceIds(self):
+        r"""<p>该应用绑定的腾讯云 APM 实例 ID 列表。空数组表示未绑定。</p>
+        :rtype: list of str
+        """
+        return self._ApmInstanceIds
+
+    @ApmInstanceIds.setter
+    def ApmInstanceIds(self, ApmInstanceIds):
+        self._ApmInstanceIds = ApmInstanceIds
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ProjectKey = params.get("ProjectKey")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Desc = params.get("Desc")
+        self._ExcludeIgnoredErrors = params.get("ExcludeIgnoredErrors")
+        self._Status = params.get("Status")
+        self._CreatedAt = params.get("CreatedAt")
+        self._ApmInstanceIds = params.get("ApmInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BusinessSystemItem(AbstractModel):
+    r"""业务系统
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>名称</p>
+        :type InstanceName: str
+        :param _InstanceDesc: <p>描述</p>
+        :type InstanceDesc: str
+        :param _Status: <p>状态：2 运行 / 6 停止 / 7 删除</p>
+        :type Status: int
+        :param _ChargeStatus: <p>状态： 2（隔离），1（使用中），3（已销毁）</p>
+        :type ChargeStatus: int
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>更新时间</p>
+        :type UpdatedAt: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceDesc = None
+        self._Status = None
+        self._ChargeStatus = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceDesc(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._InstanceDesc
+
+    @InstanceDesc.setter
+    def InstanceDesc(self, InstanceDesc):
+        self._InstanceDesc = InstanceDesc
+
+    @property
+    def Status(self):
+        r"""<p>状态：2 运行 / 6 停止 / 7 删除</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ChargeStatus(self):
+        r"""<p>状态： 2（隔离），1（使用中），3（已销毁）</p>
+        :rtype: int
+        """
+        return self._ChargeStatus
+
+    @ChargeStatus.setter
+    def ChargeStatus(self, ChargeStatus):
+        self._ChargeStatus = ChargeStatus
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceDesc = params.get("InstanceDesc")
+        self._Status = params.get("Status")
+        self._ChargeStatus = params.get("ChargeStatus")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CompareCondition(AbstractModel):
     r"""BugLY比较结构体
 
@@ -99,6 +501,220 @@ class CompareCondition(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateFieldTransformRuleRequest(AbstractModel):
+    r"""CreateFieldTransformRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: int
+        :param _TargetField: <p>目标字段</p>
+        :type TargetField: str
+        :param _MatchType: <p>匹配方式</p>
+        :type MatchType: str
+        :param _MatchPattern: <p>匹配规则</p>
+        :type MatchPattern: str
+        :param _TransformAction: <p>转换类型</p>
+        :type TransformAction: str
+        :param _Name: <p>规则名</p>
+        :type Name: str
+        :param _ReplaceValue: <p>替换值</p>
+        :type ReplaceValue: str
+        :param _Priority: <p>优先级</p>
+        :type Priority: int
+        :param _Enabled: <p>是否开启</p>
+        :type Enabled: bool
+        """
+        self._ProjectId = None
+        self._TargetField = None
+        self._MatchType = None
+        self._MatchPattern = None
+        self._TransformAction = None
+        self._Name = None
+        self._ReplaceValue = None
+        self._Priority = None
+        self._Enabled = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TargetField(self):
+        r"""<p>目标字段</p>
+        :rtype: str
+        """
+        return self._TargetField
+
+    @TargetField.setter
+    def TargetField(self, TargetField):
+        self._TargetField = TargetField
+
+    @property
+    def MatchType(self):
+        r"""<p>匹配方式</p>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def MatchPattern(self):
+        r"""<p>匹配规则</p>
+        :rtype: str
+        """
+        return self._MatchPattern
+
+    @MatchPattern.setter
+    def MatchPattern(self, MatchPattern):
+        self._MatchPattern = MatchPattern
+
+    @property
+    def TransformAction(self):
+        r"""<p>转换类型</p>
+        :rtype: str
+        """
+        return self._TransformAction
+
+    @TransformAction.setter
+    def TransformAction(self, TransformAction):
+        self._TransformAction = TransformAction
+
+    @property
+    def Name(self):
+        r"""<p>规则名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ReplaceValue(self):
+        r"""<p>替换值</p>
+        :rtype: str
+        """
+        return self._ReplaceValue
+
+    @ReplaceValue.setter
+    def ReplaceValue(self, ReplaceValue):
+        self._ReplaceValue = ReplaceValue
+
+    @property
+    def Priority(self):
+        r"""<p>优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._TargetField = params.get("TargetField")
+        self._MatchType = params.get("MatchType")
+        self._MatchPattern = params.get("MatchPattern")
+        self._TransformAction = params.get("TransformAction")
+        self._Name = params.get("Name")
+        self._ReplaceValue = params.get("ReplaceValue")
+        self._Priority = params.get("Priority")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFieldTransformRuleResponse(AbstractModel):
+    r"""CreateFieldTransformRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误消息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误消息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateReleaseFileRequest(AbstractModel):
@@ -294,6 +910,1058 @@ class CreateStarProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTDEMApplicationRequest(AbstractModel):
+    r"""CreateTDEMApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID（必填）</p>
+        :type InstanceId: str
+        :param _Name: <p>应用名称（必填）</p>
+        :type Name: str
+        :param _Type: <p>应用类型。取值：web、wx-miniprogram、uniapp、ios、android、electron、rn（React Native）。</p>
+        :type Type: str
+        :param _Desc: <p>应用描述（可选）</p>
+        :type Desc: str
+        :param _ApmInstanceIds: <p>APM 实例 ID</p>
+        :type ApmInstanceIds: list of str
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Type = None
+        self._Desc = None
+        self._ApmInstanceIds = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID（必填）</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""<p>应用名称（必填）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>应用类型。取值：web、wx-miniprogram、uniapp、ios、android、electron、rn（React Native）。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Desc(self):
+        r"""<p>应用描述（可选）</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def ApmInstanceIds(self):
+        r"""<p>APM 实例 ID</p>
+        :rtype: list of str
+        """
+        return self._ApmInstanceIds
+
+    @ApmInstanceIds.setter
+    def ApmInstanceIds(self, ApmInstanceIds):
+        self._ApmInstanceIds = ApmInstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Desc = params.get("Desc")
+        self._ApmInstanceIds = params.get("ApmInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTDEMApplicationResponse(AbstractModel):
+    r"""CreateTDEMApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _ProjectKey: <p>应用 Key</p>
+        :type ProjectKey: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._ProjectKey = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ProjectKey(self):
+        r"""<p>应用 Key</p>
+        :rtype: str
+        """
+        return self._ProjectKey
+
+    @ProjectKey.setter
+    def ProjectKey(self, ProjectKey):
+        self._ProjectKey = ProjectKey
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ProjectKey = params.get("ProjectKey")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTDEMBusinessSystemRequest(AbstractModel):
+    r"""CreateTDEMBusinessSystem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: <p>业务系统名称（必填）</p>
+        :type InstanceName: str
+        :param _InstanceDesc: <p>业务系统描述（可选）</p>
+        :type InstanceDesc: str
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tag
+        """
+        self._InstanceName = None
+        self._InstanceDesc = None
+        self._Tags = None
+
+    @property
+    def InstanceName(self):
+        r"""<p>业务系统名称（必填）</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceDesc(self):
+        r"""<p>业务系统描述（可选）</p>
+        :rtype: str
+        """
+        return self._InstanceDesc
+
+    @InstanceDesc.setter
+    def InstanceDesc(self, InstanceDesc):
+        self._InstanceDesc = InstanceDesc
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceDesc = params.get("InstanceDesc")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTDEMBusinessSystemResponse(AbstractModel):
+    r"""CreateTDEMBusinessSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID</p>
+        :type InstanceId: str
+        :param _Status: <p>业务系统状态</p><p>状态：2 运行 / 6 停止 / 7 删除</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Status(self):
+        r"""<p>业务系统状态</p><p>状态：2 运行 / 6 停止 / 7 删除</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTDEMDialTaskRequest(AbstractModel):
+    r"""CreateTDEMDialTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _TaskName: <p>任务名称，最长 128 个字符</p>
+        :type TaskName: str
+        :param _Type: <p>探测类型。取值说明：icmp、tcp。</p>
+        :type Type: str
+        :param _ExecutionTime: <p>执行时机。取值说明：realtime、after_request、after_error、after_slow、after_dns_slow。tcp 不能使用 after_dns_slow。</p>
+        :type ExecutionTime: str
+        :param _TimeoutMs: <p>单次探测超时，单位毫秒。范围 1000 到 20000。</p>
+        :type TimeoutMs: int
+        :param _PeriodMs: <p>探测周期，单位毫秒，必须大于 0。</p>
+        :type PeriodMs: int
+        :param _PackageCount: <p>发包次数。范围 3 到 40。</p>
+        :type PackageCount: int
+        :param _Status: <p>任务状态。取值说明：active、paused。不传时默认为 active。</p>
+        :type Status: str
+        :param _WatchDomain: <p>监听域名。ExecutionTime 不是 realtime 时必填。</p>
+        :type WatchDomain: str
+        :param _DialDomain: <p>拨测目标。域名、IP 或 ldns。after_dns_slow 固定为 ldns，其它时机必填。</p>
+        :type DialDomain: str
+        :param _Port: <p>TCP 端口，1 到 65535。Type 为 tcp 时必填。</p>
+        :type Port: int
+        :param _FrequencyMs: <p>实时拨测间隔，单位毫秒。ExecutionTime 为 realtime 时必填。取值说明：60000、300000、600000、900000、1800000、3600000。</p>
+        :type FrequencyMs: int
+        :param _PackageSize: <p>ICMP 包大小，单位字节。范围 32 到 1024。不传时默认 64。</p>
+        :type PackageSize: int
+        :param _NeedMTR: <p>是否做路由追踪。取值说明：0 否，1 是。不传时为 0。</p>
+        :type NeedMTR: int
+        :param _MTRTimeoutMs: <p>路由追踪超时，单位毫秒。NeedMTR 为 1 时必填。</p>
+        :type MTRTimeoutMs: int
+        :param _MTRMaxHop: <p>路由追踪最大跳数。NeedMTR 为 1 时填写。</p>
+        :type MTRMaxHop: int
+        :param _MTRPingCount: <p>每一跳发包次数。范围 3 到 40。</p>
+        :type MTRPingCount: int
+        :param _SlowThresholdMs: <p>慢请求阈值，单位毫秒。after_slow、after_dns_slow 不传时默认 2000。</p>
+        :type SlowThresholdMs: int
+        :param _ErrorType: <p>错误类型过滤。after_error 时使用。</p>
+        :type ErrorType: str
+        :param _Regions: <p>允许启动的客户端地区，逗号分隔，名称必须与分析页客户端地区完全一致。不传或空字符串表示不限制。</p>
+        :type Regions: str
+        :param _Operators: <p>允许启动的客户端运营商，逗号分隔，名称必须与分析页客户端运营商完全一致。不传或空字符串表示不限制。</p>
+        :type Operators: str
+        :param _UserIds: <p>允许启动的用户 ID，逗号分隔。不传或空字符串表示不限制。</p>
+        :type UserIds: str
+        :param _DeviceIds: <p>允许启动的设备 ID，逗号分隔。不传或空字符串表示不限制。</p>
+        :type DeviceIds: str
+        """
+        self._AppId = None
+        self._TaskName = None
+        self._Type = None
+        self._ExecutionTime = None
+        self._TimeoutMs = None
+        self._PeriodMs = None
+        self._PackageCount = None
+        self._Status = None
+        self._WatchDomain = None
+        self._DialDomain = None
+        self._Port = None
+        self._FrequencyMs = None
+        self._PackageSize = None
+        self._NeedMTR = None
+        self._MTRTimeoutMs = None
+        self._MTRMaxHop = None
+        self._MTRPingCount = None
+        self._SlowThresholdMs = None
+        self._ErrorType = None
+        self._Regions = None
+        self._Operators = None
+        self._UserIds = None
+        self._DeviceIds = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称，最长 128 个字符</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Type(self):
+        r"""<p>探测类型。取值说明：icmp、tcp。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExecutionTime(self):
+        r"""<p>执行时机。取值说明：realtime、after_request、after_error、after_slow、after_dns_slow。tcp 不能使用 after_dns_slow。</p>
+        :rtype: str
+        """
+        return self._ExecutionTime
+
+    @ExecutionTime.setter
+    def ExecutionTime(self, ExecutionTime):
+        self._ExecutionTime = ExecutionTime
+
+    @property
+    def TimeoutMs(self):
+        r"""<p>单次探测超时，单位毫秒。范围 1000 到 20000。</p>
+        :rtype: int
+        """
+        return self._TimeoutMs
+
+    @TimeoutMs.setter
+    def TimeoutMs(self, TimeoutMs):
+        self._TimeoutMs = TimeoutMs
+
+    @property
+    def PeriodMs(self):
+        r"""<p>探测周期，单位毫秒，必须大于 0。</p>
+        :rtype: int
+        """
+        return self._PeriodMs
+
+    @PeriodMs.setter
+    def PeriodMs(self, PeriodMs):
+        self._PeriodMs = PeriodMs
+
+    @property
+    def PackageCount(self):
+        r"""<p>发包次数。范围 3 到 40。</p>
+        :rtype: int
+        """
+        return self._PackageCount
+
+    @PackageCount.setter
+    def PackageCount(self, PackageCount):
+        self._PackageCount = PackageCount
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。取值说明：active、paused。不传时默认为 active。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def WatchDomain(self):
+        r"""<p>监听域名。ExecutionTime 不是 realtime 时必填。</p>
+        :rtype: str
+        """
+        return self._WatchDomain
+
+    @WatchDomain.setter
+    def WatchDomain(self, WatchDomain):
+        self._WatchDomain = WatchDomain
+
+    @property
+    def DialDomain(self):
+        r"""<p>拨测目标。域名、IP 或 ldns。after_dns_slow 固定为 ldns，其它时机必填。</p>
+        :rtype: str
+        """
+        return self._DialDomain
+
+    @DialDomain.setter
+    def DialDomain(self, DialDomain):
+        self._DialDomain = DialDomain
+
+    @property
+    def Port(self):
+        r"""<p>TCP 端口，1 到 65535。Type 为 tcp 时必填。</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def FrequencyMs(self):
+        r"""<p>实时拨测间隔，单位毫秒。ExecutionTime 为 realtime 时必填。取值说明：60000、300000、600000、900000、1800000、3600000。</p>
+        :rtype: int
+        """
+        return self._FrequencyMs
+
+    @FrequencyMs.setter
+    def FrequencyMs(self, FrequencyMs):
+        self._FrequencyMs = FrequencyMs
+
+    @property
+    def PackageSize(self):
+        r"""<p>ICMP 包大小，单位字节。范围 32 到 1024。不传时默认 64。</p>
+        :rtype: int
+        """
+        return self._PackageSize
+
+    @PackageSize.setter
+    def PackageSize(self, PackageSize):
+        self._PackageSize = PackageSize
+
+    @property
+    def NeedMTR(self):
+        r"""<p>是否做路由追踪。取值说明：0 否，1 是。不传时为 0。</p>
+        :rtype: int
+        """
+        return self._NeedMTR
+
+    @NeedMTR.setter
+    def NeedMTR(self, NeedMTR):
+        self._NeedMTR = NeedMTR
+
+    @property
+    def MTRTimeoutMs(self):
+        r"""<p>路由追踪超时，单位毫秒。NeedMTR 为 1 时必填。</p>
+        :rtype: int
+        """
+        return self._MTRTimeoutMs
+
+    @MTRTimeoutMs.setter
+    def MTRTimeoutMs(self, MTRTimeoutMs):
+        self._MTRTimeoutMs = MTRTimeoutMs
+
+    @property
+    def MTRMaxHop(self):
+        r"""<p>路由追踪最大跳数。NeedMTR 为 1 时填写。</p>
+        :rtype: int
+        """
+        return self._MTRMaxHop
+
+    @MTRMaxHop.setter
+    def MTRMaxHop(self, MTRMaxHop):
+        self._MTRMaxHop = MTRMaxHop
+
+    @property
+    def MTRPingCount(self):
+        r"""<p>每一跳发包次数。范围 3 到 40。</p>
+        :rtype: int
+        """
+        return self._MTRPingCount
+
+    @MTRPingCount.setter
+    def MTRPingCount(self, MTRPingCount):
+        self._MTRPingCount = MTRPingCount
+
+    @property
+    def SlowThresholdMs(self):
+        r"""<p>慢请求阈值，单位毫秒。after_slow、after_dns_slow 不传时默认 2000。</p>
+        :rtype: int
+        """
+        return self._SlowThresholdMs
+
+    @SlowThresholdMs.setter
+    def SlowThresholdMs(self, SlowThresholdMs):
+        self._SlowThresholdMs = SlowThresholdMs
+
+    @property
+    def ErrorType(self):
+        r"""<p>错误类型过滤。after_error 时使用。</p>
+        :rtype: str
+        """
+        return self._ErrorType
+
+    @ErrorType.setter
+    def ErrorType(self, ErrorType):
+        self._ErrorType = ErrorType
+
+    @property
+    def Regions(self):
+        r"""<p>允许启动的客户端地区，逗号分隔，名称必须与分析页客户端地区完全一致。不传或空字符串表示不限制。</p>
+        :rtype: str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def Operators(self):
+        r"""<p>允许启动的客户端运营商，逗号分隔，名称必须与分析页客户端运营商完全一致。不传或空字符串表示不限制。</p>
+        :rtype: str
+        """
+        return self._Operators
+
+    @Operators.setter
+    def Operators(self, Operators):
+        self._Operators = Operators
+
+    @property
+    def UserIds(self):
+        r"""<p>允许启动的用户 ID，逗号分隔。不传或空字符串表示不限制。</p>
+        :rtype: str
+        """
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def DeviceIds(self):
+        r"""<p>允许启动的设备 ID，逗号分隔。不传或空字符串表示不限制。</p>
+        :rtype: str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TaskName = params.get("TaskName")
+        self._Type = params.get("Type")
+        self._ExecutionTime = params.get("ExecutionTime")
+        self._TimeoutMs = params.get("TimeoutMs")
+        self._PeriodMs = params.get("PeriodMs")
+        self._PackageCount = params.get("PackageCount")
+        self._Status = params.get("Status")
+        self._WatchDomain = params.get("WatchDomain")
+        self._DialDomain = params.get("DialDomain")
+        self._Port = params.get("Port")
+        self._FrequencyMs = params.get("FrequencyMs")
+        self._PackageSize = params.get("PackageSize")
+        self._NeedMTR = params.get("NeedMTR")
+        self._MTRTimeoutMs = params.get("MTRTimeoutMs")
+        self._MTRMaxHop = params.get("MTRMaxHop")
+        self._MTRPingCount = params.get("MTRPingCount")
+        self._SlowThresholdMs = params.get("SlowThresholdMs")
+        self._ErrorType = params.get("ErrorType")
+        self._Regions = params.get("Regions")
+        self._Operators = params.get("Operators")
+        self._UserIds = params.get("UserIds")
+        self._DeviceIds = params.get("DeviceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTDEMDialTaskResponse(AbstractModel):
+    r"""CreateTDEMDialTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTDEMFieldTransformRuleRequest(AbstractModel):
+    r"""CreateTDEMFieldTransformRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _TargetField: <p>目标字段（必填）：page_url / normalized_page_url / page_title / referrer / resource_url / user_id / target_element / target_text</p>
+        :type TargetField: str
+        :param _MatchType: <p>匹配方式（必填）：exact / prefix / contains / regex</p>
+        :type MatchType: str
+        :param _MatchPattern: <p>匹配模式（必填）</p>
+        :type MatchPattern: str
+        :param _TransformAction: <p>替换动作（必填）：replace / regex_replace / mask</p>
+        :type TransformAction: str
+        :param _Name: <p>规则名称（可选）</p>
+        :type Name: str
+        :param _ReplaceValue: <p>替换值（replace / regex_replace 使用）</p>
+        :type ReplaceValue: str
+        :param _Priority: <p>优先级（可选）</p>
+        :type Priority: int
+        :param _Enabled: <p>是否启用，默认 true</p>
+        :type Enabled: bool
+        """
+        self._AppId = None
+        self._TargetField = None
+        self._MatchType = None
+        self._MatchPattern = None
+        self._TransformAction = None
+        self._Name = None
+        self._ReplaceValue = None
+        self._Priority = None
+        self._Enabled = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TargetField(self):
+        r"""<p>目标字段（必填）：page_url / normalized_page_url / page_title / referrer / resource_url / user_id / target_element / target_text</p>
+        :rtype: str
+        """
+        return self._TargetField
+
+    @TargetField.setter
+    def TargetField(self, TargetField):
+        self._TargetField = TargetField
+
+    @property
+    def MatchType(self):
+        r"""<p>匹配方式（必填）：exact / prefix / contains / regex</p>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def MatchPattern(self):
+        r"""<p>匹配模式（必填）</p>
+        :rtype: str
+        """
+        return self._MatchPattern
+
+    @MatchPattern.setter
+    def MatchPattern(self, MatchPattern):
+        self._MatchPattern = MatchPattern
+
+    @property
+    def TransformAction(self):
+        r"""<p>替换动作（必填）：replace / regex_replace / mask</p>
+        :rtype: str
+        """
+        return self._TransformAction
+
+    @TransformAction.setter
+    def TransformAction(self, TransformAction):
+        self._TransformAction = TransformAction
+
+    @property
+    def Name(self):
+        r"""<p>规则名称（可选）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ReplaceValue(self):
+        r"""<p>替换值（replace / regex_replace 使用）</p>
+        :rtype: str
+        """
+        return self._ReplaceValue
+
+    @ReplaceValue.setter
+    def ReplaceValue(self, ReplaceValue):
+        self._ReplaceValue = ReplaceValue
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（可选）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用，默认 true</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TargetField = params.get("TargetField")
+        self._MatchType = params.get("MatchType")
+        self._MatchPattern = params.get("MatchPattern")
+        self._TransformAction = params.get("TransformAction")
+        self._Name = params.get("Name")
+        self._ReplaceValue = params.get("ReplaceValue")
+        self._Priority = params.get("Priority")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTDEMFieldTransformRuleResponse(AbstractModel):
+    r"""CreateTDEMFieldTransformRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rule: <p>创建后的规则</p>
+        :type Rule: :class:`tencentcloud.rum.v20210622.models.FieldTransformRuleItem`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rule = None
+        self._RequestId = None
+
+    @property
+    def Rule(self):
+        r"""<p>创建后的规则</p>
+        :rtype: :class:`tencentcloud.rum.v20210622.models.FieldTransformRuleItem`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rule") is not None:
+            self._Rule = FieldTransformRuleItem()
+            self._Rule._deserialize(params.get("Rule"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTDEMFunnelRequest(AbstractModel):
+    r"""CreateTDEMFunnel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FunnelName: <p>漏斗名</p>
+        :type FunnelName: str
+        :param _Steps: <p>漏斗步骤</p>
+        :type Steps: list of FunnelStepInput
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Status: <p>漏斗状态</p>
+        :type Status: str
+        :param _Source: <p>漏斗来源</p>
+        :type Source: str
+        """
+        self._AppId = None
+        self._FunnelName = None
+        self._Steps = None
+        self._Description = None
+        self._Status = None
+        self._Source = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FunnelName(self):
+        r"""<p>漏斗名</p>
+        :rtype: str
+        """
+        return self._FunnelName
+
+    @FunnelName.setter
+    def FunnelName(self, FunnelName):
+        self._FunnelName = FunnelName
+
+    @property
+    def Steps(self):
+        r"""<p>漏斗步骤</p>
+        :rtype: list of FunnelStepInput
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>漏斗状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Source(self):
+        r"""<p>漏斗来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FunnelName = params.get("FunnelName")
+        if params.get("Steps") is not None:
+            self._Steps = []
+            for item in params.get("Steps"):
+                obj = FunnelStepInput()
+                obj._deserialize(item)
+                self._Steps.append(obj)
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTDEMFunnelResponse(AbstractModel):
+    r"""CreateTDEMFunnel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateWhitelistRequest(AbstractModel):
     r"""CreateWhitelist请求参数结构体
 
@@ -433,6 +2101,115 @@ class CreateWhitelistResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteFieldTransformRuleRequest(AbstractModel):
+    r"""DeleteFieldTransformRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>规则id</p>
+        :type Id: int
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: int
+        """
+        self._Id = None
+        self._ProjectId = None
+
+    @property
+    def Id(self):
+        r"""<p>规则id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFieldTransformRuleResponse(AbstractModel):
+    r"""DeleteFieldTransformRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteInstanceRequest(AbstractModel):
     r"""DeleteInstance请求参数结构体
 
@@ -494,6 +2271,115 @@ class DeleteInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMiniProgramReplayPackRequest(AbstractModel):
+    r"""DeleteMiniProgramReplayPack请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _PackId: <p>回放包id（前缀mpr_）</p>
+        :type PackId: str
+        """
+        self._AppId = None
+        self._PackId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PackId(self):
+        r"""<p>回放包id（前缀mpr_）</p>
+        :rtype: str
+        """
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._PackId = params.get("PackId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMiniProgramReplayPackResponse(AbstractModel):
+    r"""DeleteMiniProgramReplayPack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _Result: <p>请求结果（JSON字符串，包含 AppId/PackId/Deleted）</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def Result(self):
+        r"""<p>请求结果（JSON字符串，包含 AppId/PackId/Deleted）</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -746,6 +2632,690 @@ class DeleteStarProjectResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSymbolArtifactRequest(AbstractModel):
+    r"""DeleteSymbolArtifact请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Kind: <p>制品类型。取值：js_sourcemap、ios_dsym、macos_dsym、windows_pdb、android_mapping、android_native、system_symbol。</p>
+        :type Kind: str
+        :param _ArtifactId: <p>制品 ID。</p>
+        :type ArtifactId: str
+        :param _AppId: <p>应用 ID。删除应用级制品时必填，须与制品所属应用一致。</p>
+        :type AppId: str
+        :param _ProjectId: <p>兼容别名，未传 AppId 时使用。</p>
+        :type ProjectId: str
+        :param _AppVersion: <p>兼容字段，请勿传入。</p>
+        :type AppVersion: str
+        :param _Platform: <p>兼容字段，请勿传入。</p>
+        :type Platform: str
+        :param _OS: <p>系统名称。system_symbol 场景可用于归属校验。</p>
+        :type OS: str
+        :param _OSVersion: <p>系统版本。system_symbol 场景可用于归属校验。</p>
+        :type OSVersion: str
+        """
+        self._Kind = None
+        self._ArtifactId = None
+        self._AppId = None
+        self._ProjectId = None
+        self._AppVersion = None
+        self._Platform = None
+        self._OS = None
+        self._OSVersion = None
+
+    @property
+    def Kind(self):
+        r"""<p>制品类型。取值：js_sourcemap、ios_dsym、macos_dsym、windows_pdb、android_mapping、android_native、system_symbol。</p>
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def ArtifactId(self):
+        r"""<p>制品 ID。</p>
+        :rtype: str
+        """
+        return self._ArtifactId
+
+    @ArtifactId.setter
+    def ArtifactId(self, ArtifactId):
+        self._ArtifactId = ArtifactId
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。删除应用级制品时必填，须与制品所属应用一致。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ProjectId(self):
+        r"""<p>兼容别名，未传 AppId 时使用。</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def AppVersion(self):
+        r"""<p>兼容字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Platform(self):
+        r"""<p>兼容字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def OS(self):
+        r"""<p>系统名称。system_symbol 场景可用于归属校验。</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def OSVersion(self):
+        r"""<p>系统版本。system_symbol 场景可用于归属校验。</p>
+        :rtype: str
+        """
+        return self._OSVersion
+
+    @OSVersion.setter
+    def OSVersion(self, OSVersion):
+        self._OSVersion = OSVersion
+
+
+    def _deserialize(self, params):
+        self._Kind = params.get("Kind")
+        self._ArtifactId = params.get("ArtifactId")
+        self._AppId = params.get("AppId")
+        self._ProjectId = params.get("ProjectId")
+        self._AppVersion = params.get("AppVersion")
+        self._Platform = params.get("Platform")
+        self._OS = params.get("OS")
+        self._OSVersion = params.get("OSVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSymbolArtifactResponse(AbstractModel):
+    r"""DeleteSymbolArtifact返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>删除结果，JSON 格式字符串，包含 artifact_id、status 和 deleted_at。</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>删除结果，JSON 格式字符串，包含 artifact_id、status 和 deleted_at。</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTDEMApplicationRequest(AbstractModel):
+    r"""DeleteTDEMApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        """
+        self._AppId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTDEMApplicationResponse(AbstractModel):
+    r"""DeleteTDEMApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTDEMBusinessSystemRequest(AbstractModel):
+    r"""DeleteTDEMBusinessSystem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID（必填）</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID（必填）</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTDEMBusinessSystemResponse(AbstractModel):
+    r"""DeleteTDEMBusinessSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID</p>
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTDEMDialTaskRequest(AbstractModel):
+    r"""DeleteTDEMDialTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        """
+        self._AppId = None
+        self._TaskId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTDEMDialTaskResponse(AbstractModel):
+    r"""DeleteTDEMDialTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>已删除的任务 ID</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>已删除的任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTDEMFieldTransformRuleRequest(AbstractModel):
+    r"""DeleteTDEMFieldTransformRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>规则 ID（必填）</p>
+        :type Id: int
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        """
+        self._Id = None
+        self._AppId = None
+
+    @property
+    def Id(self):
+        r"""<p>规则 ID（必填）</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTDEMFieldTransformRuleResponse(AbstractModel):
+    r"""DeleteTDEMFieldTransformRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>规则 ID</p>
+        :type Id: int
+        :param _Deleted: <p>是否已删除</p>
+        :type Deleted: bool
+        :param _Message: <p>提示信息</p>
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Deleted = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>规则 ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Deleted(self):
+        r"""<p>是否已删除</p>
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def Message(self):
+        r"""<p>提示信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Deleted = params.get("Deleted")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTDEMFunnelRequest(AbstractModel):
+    r"""DeleteTDEMFunnel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FunnelId: <p>漏斗id</p>
+        :type FunnelId: str
+        """
+        self._AppId = None
+        self._FunnelId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FunnelId(self):
+        r"""<p>漏斗id</p>
+        :rtype: str
+        """
+        return self._FunnelId
+
+    @FunnelId.setter
+    def FunnelId(self, FunnelId):
+        self._FunnelId = FunnelId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FunnelId = params.get("FunnelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTDEMFunnelResponse(AbstractModel):
+    r"""DeleteTDEMFunnel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -16586,6 +19156,389 @@ class DescribeFOOMReportListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFieldTransformRulesRequest(AbstractModel):
+    r"""DescribeFieldTransformRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: int
+        :param _Offset: <p>偏移</p>
+        :type Offset: int
+        :param _Limit: <p>限制</p>
+        :type Limit: int
+        """
+        self._ProjectId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>限制</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFieldTransformRulesResponse(AbstractModel):
+    r"""DescribeFieldTransformRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFieldValuesRequest(AbstractModel):
+    r"""DescribeFieldValues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间</p><p>单位：毫秒</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p><p>单位：毫秒</p>
+        :type EndTime: int
+        :param _FieldName: <p>字段名</p>
+        :type FieldName: str
+        :param _Limit: <p>数量限制</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: str
+        :param _Category: <p>事件分类</p>
+        :type Category: str
+        :param _Prefix: <p>可选。按前缀过滤字段去重结果。查询 user_id 或 device_id 且开启 StrictPiiPrefix 时必填，去除首尾空格后长度须不少于 2。</p>
+        :type Prefix: str
+        :param _StrictPiiPrefix: <p>用于采样配置，是否对 user_id、device_id 强制前缀匹配。为 true 时必须同时传入合法 Prefix，否则返回 InvalidParameter，且不会返回无前缀的全量去重列表。为 false 或不传时，按字段返回热门去重值，行为与历史接口一致。</p><p>默认值：false</p>
+        :type StrictPiiPrefix: bool
+        :param _Scope: <p>查询口径。可选。只允许空或 event。Issue 标签分布传 event。为 event 时不能同时传 HasError、MinDuration、MaxDuration，也不能把 Category 设为 session。</p>
+        :type Scope: str
+        :param _HasError: <p>是否只看有错误的会话。可选。不传表示不过滤。Scope 为 event 时不能传。</p>
+        :type HasError: bool
+        :param _MinDuration: <p>会话最短时长，单位毫秒。可选。0 或不传表示不限制。Scope 为 event 时不能传。</p>
+        :type MinDuration: int
+        :param _MaxDuration: <p>会话最长时长，单位毫秒。可选。0 或不传表示不限制。Scope 为 event 时不能传。</p>
+        :type MaxDuration: int
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FieldName = None
+        self._Limit = None
+        self._Filters = None
+        self._Category = None
+        self._Prefix = None
+        self._StrictPiiPrefix = None
+        self._Scope = None
+        self._HasError = None
+        self._MinDuration = None
+        self._MaxDuration = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FieldName(self):
+        r"""<p>字段名</p>
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def Limit(self):
+        r"""<p>数量限制</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Category(self):
+        r"""<p>事件分类</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Prefix(self):
+        r"""<p>可选。按前缀过滤字段去重结果。查询 user_id 或 device_id 且开启 StrictPiiPrefix 时必填，去除首尾空格后长度须不少于 2。</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def StrictPiiPrefix(self):
+        r"""<p>用于采样配置，是否对 user_id、device_id 强制前缀匹配。为 true 时必须同时传入合法 Prefix，否则返回 InvalidParameter，且不会返回无前缀的全量去重列表。为 false 或不传时，按字段返回热门去重值，行为与历史接口一致。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._StrictPiiPrefix
+
+    @StrictPiiPrefix.setter
+    def StrictPiiPrefix(self, StrictPiiPrefix):
+        self._StrictPiiPrefix = StrictPiiPrefix
+
+    @property
+    def Scope(self):
+        r"""<p>查询口径。可选。只允许空或 event。Issue 标签分布传 event。为 event 时不能同时传 HasError、MinDuration、MaxDuration，也不能把 Category 设为 session。</p>
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def HasError(self):
+        r"""<p>是否只看有错误的会话。可选。不传表示不过滤。Scope 为 event 时不能传。</p>
+        :rtype: bool
+        """
+        return self._HasError
+
+    @HasError.setter
+    def HasError(self, HasError):
+        self._HasError = HasError
+
+    @property
+    def MinDuration(self):
+        r"""<p>会话最短时长，单位毫秒。可选。0 或不传表示不限制。Scope 为 event 时不能传。</p>
+        :rtype: int
+        """
+        return self._MinDuration
+
+    @MinDuration.setter
+    def MinDuration(self, MinDuration):
+        self._MinDuration = MinDuration
+
+    @property
+    def MaxDuration(self):
+        r"""<p>会话最长时长，单位毫秒。可选。0 或不传表示不限制。Scope 为 event 时不能传。</p>
+        :rtype: int
+        """
+        return self._MaxDuration
+
+    @MaxDuration.setter
+    def MaxDuration(self, MaxDuration):
+        self._MaxDuration = MaxDuration
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FieldName = params.get("FieldName")
+        self._Limit = params.get("Limit")
+        self._Filters = params.get("Filters")
+        self._Category = params.get("Category")
+        self._Prefix = params.get("Prefix")
+        self._StrictPiiPrefix = params.get("StrictPiiPrefix")
+        self._Scope = params.get("Scope")
+        self._HasError = params.get("HasError")
+        self._MinDuration = params.get("MinDuration")
+        self._MaxDuration = params.get("MaxDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFieldValuesResponse(AbstractModel):
+    r"""DescribeFieldValues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeFileCertificateRequest(AbstractModel):
     r"""DescribeFileCertificate请求参数结构体
 
@@ -16782,6 +19735,1219 @@ class DescribeFileCertificateResponse(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._ExpiredTime = params.get("ExpiredTime")
         self._BucketAddress = params.get("BucketAddress")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssueAffectedUsersRequest(AbstractModel):
+    r"""DescribeIssueAffectedUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（string，必填）。空 → InvalidParameter</p>
+        :type AppId: str
+        :param _IssueId: <p>问题 ID（string，必填）。空 → InvalidParameter</p>
+        :type IssueId: str
+        :param _Page: <p>页码（整数，选填）。&lt; 1 钳制为 1；缺省 1</p>
+        :type Page: int
+        :param _PageSize: <p>每页条数（整数，选填）。&lt; 1 或 &gt; 1000 回落默认 20；导出场景按 1000 一批拉全量</p>
+        :type PageSize: int
+        :param _AppVersion: <p>应用版本（string，选填）。按 app_version 精确匹配；空表示不限版本</p>
+        :type AppVersion: str
+        :param _StartTime: <p>起始毫秒时间戳（整数，选填）。&lt;= 0 表示该侧不限</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束毫秒时间戳（整数，选填）。&lt;= 0 表示该侧不限；与 StartTime 同时给出且 StartTime &gt; EndTime → InvalidParameter</p>
+        :type EndTime: int
+        :param _Keyword: <p>身份值关键字（string，选填）。不区分大小写的子串匹配，命中 if(user_id='', session_id, user_id)；空表示不限</p>
+        :type Keyword: str
+        :param _OrderKey: <p>排序字段（string，选填）。可选 last_seen / first_seen / event_count；缺省 last_seen；其它值 → InvalidParameter</p>
+        :type OrderKey: str
+        :param _OrderBy: <p>排序方向（string，选填）。可选 asc / desc；缺省 desc；其它值 → InvalidParameter</p>
+        :type OrderBy: str
+        """
+        self._AppId = None
+        self._IssueId = None
+        self._Page = None
+        self._PageSize = None
+        self._AppVersion = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Keyword = None
+        self._OrderKey = None
+        self._OrderBy = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（string，必填）。空 → InvalidParameter</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IssueId(self):
+        r"""<p>问题 ID（string，必填）。空 → InvalidParameter</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def Page(self):
+        r"""<p>页码（整数，选填）。&lt; 1 钳制为 1；缺省 1</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页条数（整数，选填）。&lt; 1 或 &gt; 1000 回落默认 20；导出场景按 1000 一批拉全量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本（string，选填）。按 app_version 精确匹配；空表示不限版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def StartTime(self):
+        r"""<p>起始毫秒时间戳（整数，选填）。&lt;= 0 表示该侧不限</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束毫秒时间戳（整数，选填）。&lt;= 0 表示该侧不限；与 StartTime 同时给出且 StartTime &gt; EndTime → InvalidParameter</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Keyword(self):
+        r"""<p>身份值关键字（string，选填）。不区分大小写的子串匹配，命中 if(user_id='', session_id, user_id)；空表示不限</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def OrderKey(self):
+        r"""<p>排序字段（string，选填）。可选 last_seen / first_seen / event_count；缺省 last_seen；其它值 → InvalidParameter</p>
+        :rtype: str
+        """
+        return self._OrderKey
+
+    @OrderKey.setter
+    def OrderKey(self, OrderKey):
+        self._OrderKey = OrderKey
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序方向（string，选填）。可选 asc / desc；缺省 desc；其它值 → InvalidParameter</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IssueId = params.get("IssueId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._AppVersion = params.get("AppVersion")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Keyword = params.get("Keyword")
+        self._OrderKey = params.get("OrderKey")
+        self._OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssueAffectedUsersResponse(AbstractModel):
+    r"""DescribeIssueAffectedUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务数据 JSON 字符串，反序列化后：{Users,Total,Page,PageSize}。 Users[] 含 UserId（身份值）、HasUin（是否来自 user_id）、EventCount、FirstSeen / LastSeen（毫秒时间戳）。</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息（成功时为空）</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务数据 JSON 字符串，反序列化后：{Users,Total,Page,PageSize}。 Users[] 含 UserId（身份值）、HasUin（是否来自 user_id）、EventCount、FirstSeen / LastSeen（毫秒时间戳）。</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息（成功时为空）</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssueBreadcrumbsRequest(AbstractModel):
+    r"""DescribeIssueBreadcrumbs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _IssueId: <p>Issue ID</p>
+        :type IssueId: str
+        :param _EventId: <p>事件 ID；为空时默认回退到最新事件</p>
+        :type EventId: str
+        :param _Before: <p>向前回溯秒数，默认 60，最大 300</p>
+        :type Before: int
+        :param _Limit: <p>返回条数上限，默认 50，最大 100</p>
+        :type Limit: int
+        """
+        self._AppId = None
+        self._IssueId = None
+        self._EventId = None
+        self._Before = None
+        self._Limit = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IssueId(self):
+        r"""<p>Issue ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def EventId(self):
+        r"""<p>事件 ID；为空时默认回退到最新事件</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Before(self):
+        r"""<p>向前回溯秒数，默认 60，最大 300</p>
+        :rtype: int
+        """
+        return self._Before
+
+    @Before.setter
+    def Before(self, Before):
+        self._Before = Before
+
+    @property
+    def Limit(self):
+        r"""<p>返回条数上限，默认 50，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IssueId = params.get("IssueId")
+        self._EventId = params.get("EventId")
+        self._Before = params.get("Before")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssueBreadcrumbsResponse(AbstractModel):
+    r"""DescribeIssueBreadcrumbs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是 session_id + items</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息；正常返回时为空</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是 session_id + items</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息；正常返回时为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssueCrashLogDownloadURLRequest(AbstractModel):
+    r"""DescribeIssueCrashLogDownloadURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _IssueId: <p>Issue ID</p>
+        :type IssueId: str
+        :param _EventId: <p>Issue 事件ID</p>
+        :type EventId: str
+        """
+        self._AppId = None
+        self._IssueId = None
+        self._EventId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IssueId(self):
+        r"""<p>Issue ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def EventId(self):
+        r"""<p>Issue 事件ID</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IssueId = params.get("IssueId")
+        self._EventId = params.get("EventId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssueCrashLogDownloadURLResponse(AbstractModel):
+    r"""DescribeIssueCrashLogDownloadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误时返回的错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误时返回的错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssueDetailRequest(AbstractModel):
+    r"""DescribeIssueDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _IssueId: <p>Issue ID</p>
+        :type IssueId: str
+        :param _StartTime: <p>开始时间，Unix 毫秒时间戳。可选。与 EndTime 必须成对传入；都不传时按全保留期统计。</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，Unix 毫秒时间戳。可选。与 StartTime 必须成对传入。</p>
+        :type EndTime: int
+        :param _Env: <p>环境。可选。为空表示全部环境。</p>
+        :type Env: str
+        :param _Filters: <p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。可选。不传表示不附加这组筛选。</p>
+        :type Filters: str
+        """
+        self._AppId = None
+        self._IssueId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Env = None
+        self._Filters = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IssueId(self):
+        r"""<p>Issue ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，Unix 毫秒时间戳。可选。与 EndTime 必须成对传入；都不传时按全保留期统计。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，Unix 毫秒时间戳。可选。与 StartTime 必须成对传入。</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Env(self):
+        r"""<p>环境。可选。为空表示全部环境。</p>
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。可选。不传表示不附加这组筛选。</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IssueId = params.get("IssueId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Env = params.get("Env")
+        self._Filters = params.get("Filters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssueDetailResponse(AbstractModel):
+    r"""DescribeIssueDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是单个 Issue 详情</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息；正常返回时为空</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是单个 Issue 详情</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息；正常返回时为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssueEventDetailRequest(AbstractModel):
+    r"""DescribeIssueEventDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _IssueId: <p>Issue ID</p>
+        :type IssueId: str
+        :param _EventId: <p>事件 ID</p>
+        :type EventId: str
+        """
+        self._AppId = None
+        self._IssueId = None
+        self._EventId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IssueId(self):
+        r"""<p>Issue ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def EventId(self):
+        r"""<p>事件 ID</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IssueId = params.get("IssueId")
+        self._EventId = params.get("EventId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssueEventDetailResponse(AbstractModel):
+    r"""DescribeIssueEventDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是单个事件详情</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息；正常返回时为空</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是单个事件详情</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息；正常返回时为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssueEventsRequest(AbstractModel):
+    r"""DescribeIssueEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 应用 ID
+        :type AppId: str
+        :param _IssueId: Issue ID
+        :type IssueId: str
+        :param _StartTime: 开始时间，Unix 毫秒时间戳
+        :type StartTime: int
+        :param _EndTime: 结束时间，Unix 毫秒时间戳
+        :type EndTime: int
+        :param _Keyword: 事件关键字过滤
+        :type Keyword: str
+        :param _Filters: 扩展过滤器 JSON 字符串；白名单字段包括 app_version、country、province、city、device_type、browser、os、isp、referrer、user_type、platform、normalized_page_url、event_type、issue_id、environment、process_type
+        :type Filters: str
+        :param _Page: 页码，默认 1
+        :type Page: int
+        :param _PageSize: 分页大小，默认 20，范围 1~100
+        :type PageSize: int
+        :param _SortOrder: 排序方向，可选值：asc、desc
+        :type SortOrder: str
+        """
+        self._AppId = None
+        self._IssueId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Keyword = None
+        self._Filters = None
+        self._Page = None
+        self._PageSize = None
+        self._SortOrder = None
+
+    @property
+    def AppId(self):
+        r"""应用 ID
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IssueId(self):
+        r"""Issue ID
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def StartTime(self):
+        r"""开始时间，Unix 毫秒时间戳
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间，Unix 毫秒时间戳
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Keyword(self):
+        r"""事件关键字过滤
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Filters(self):
+        r"""扩展过滤器 JSON 字符串；白名单字段包括 app_version、country、province、city、device_type、browser、os、isp、referrer、user_type、platform、normalized_page_url、event_type、issue_id、environment、process_type
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Page(self):
+        r"""页码，默认 1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""分页大小，默认 20，范围 1~100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortOrder(self):
+        r"""排序方向，可选值：asc、desc
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IssueId = params.get("IssueId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Keyword = params.get("Keyword")
+        self._Filters = params.get("Filters")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssueEventsResponse(AbstractModel):
+    r"""DescribeIssueEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是 total + items
+        :type Result: str
+        :param _ErrorMsg: 错误信息；正常返回时为空
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是 total + items
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""错误信息；正常返回时为空
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssueTrendRequest(AbstractModel):
+    r"""DescribeIssueTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _IssueId: <p>Issue ID</p>
+        :type IssueId: str
+        :param _StartTime: <p>开始时间，Unix 毫秒时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，Unix 毫秒时间戳</p>
+        :type EndTime: int
+        :param _Bucket: <p>趋势分桶，可选值：auto、1m、10m、1h、1d</p>
+        :type Bucket: str
+        :param _Env: <p>环境。可选。为空表示全部环境。</p>
+        :type Env: str
+        :param _Keyword: <p>关键字。可选。不传表示不过滤。</p>
+        :type Keyword: str
+        :param _Filters: <p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。可选。不传表示不附加这组筛选。</p>
+        :type Filters: str
+        """
+        self._AppId = None
+        self._IssueId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Bucket = None
+        self._Env = None
+        self._Keyword = None
+        self._Filters = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IssueId(self):
+        r"""<p>Issue ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，Unix 毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，Unix 毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Bucket(self):
+        r"""<p>趋势分桶，可选值：auto、1m、10m、1h、1d</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Env(self):
+        r"""<p>环境。可选。为空表示全部环境。</p>
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def Keyword(self):
+        r"""<p>关键字。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。可选。不传表示不附加这组筛选。</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IssueId = params.get("IssueId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Bucket = params.get("Bucket")
+        self._Env = params.get("Env")
+        self._Keyword = params.get("Keyword")
+        self._Filters = params.get("Filters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssueTrendResponse(AbstractModel):
+    r"""DescribeIssueTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是 bucket + points</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息；正常返回时为空</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是 bucket + points</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息；正常返回时为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -17450,6 +21616,265 @@ class DescribeIssuesListResponse(AbstractModel):
         self._Data = params.get("Data")
         self._Code = params.get("Code")
         self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssuesRequest(AbstractModel):
+    r"""DescribeIssues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，Unix 毫秒时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，Unix 毫秒时间戳</p>
+        :type EndTime: int
+        :param _Env: <p>环境过滤，如 prod、test</p>
+        :type Env: str
+        :param _IssueTypes: <p>Issue 类型过滤，可选值：native_crash、js_error、event_loop_block</p>
+        :type IssueTypes: list of str
+        :param _Statuses: <p>状态过滤，可选值：Unresolved、Resolved、Ignored、Regressed</p>
+        :type Statuses: list of str
+        :param _Keyword: <p>Issue 标题或错误关键字模糊搜索</p>
+        :type Keyword: str
+        :param _Filters: <p>扩展过滤器 JSON 字符串；白名单字段包括 app_version、country、province、city、device_type、browser、os、isp、referrer、user_type、platform、normalized_page_url、event_type、issue_id、environment、process_type</p>
+        :type Filters: str
+        :param _SortBy: <p>排序字段，可选值：last_seen、first_seen、event_count、affected_users</p>
+        :type SortBy: str
+        :param _SortOrder: <p>排序方向，可选值：asc、desc</p>
+        :type SortOrder: str
+        :param _Page: <p>页码，默认 1</p>
+        :type Page: int
+        :param _PageSize: <p>分页大小，默认 20，范围 1~100</p>
+        :type PageSize: int
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Env = None
+        self._IssueTypes = None
+        self._Statuses = None
+        self._Keyword = None
+        self._Filters = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，Unix 毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，Unix 毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Env(self):
+        r"""<p>环境过滤，如 prod、test</p>
+        :rtype: str
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def IssueTypes(self):
+        r"""<p>Issue 类型过滤，可选值：native_crash、js_error、event_loop_block</p>
+        :rtype: list of str
+        """
+        return self._IssueTypes
+
+    @IssueTypes.setter
+    def IssueTypes(self, IssueTypes):
+        self._IssueTypes = IssueTypes
+
+    @property
+    def Statuses(self):
+        r"""<p>状态过滤，可选值：Unresolved、Resolved、Ignored、Regressed</p>
+        :rtype: list of str
+        """
+        return self._Statuses
+
+    @Statuses.setter
+    def Statuses(self, Statuses):
+        self._Statuses = Statuses
+
+    @property
+    def Keyword(self):
+        r"""<p>Issue 标题或错误关键字模糊搜索</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Filters(self):
+        r"""<p>扩展过滤器 JSON 字符串；白名单字段包括 app_version、country、province、city、device_type、browser、os、isp、referrer、user_type、platform、normalized_page_url、event_type、issue_id、environment、process_type</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段，可选值：last_seen、first_seen、event_count、affected_users</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序方向，可选值：asc、desc</p>
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Page(self):
+        r"""<p>页码，默认 1</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>分页大小，默认 20，范围 1~100</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Env = params.get("Env")
+        self._IssueTypes = params.get("IssueTypes")
+        self._Statuses = params.get("Statuses")
+        self._Keyword = params.get("Keyword")
+        self._Filters = params.get("Filters")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssuesResponse(AbstractModel):
+    r"""DescribeIssues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Total + Items</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息；正常返回时为空</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Total + Items</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息；正常返回时为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -18399,6 +22824,483 @@ class DescribeLagANRProblemListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMiniProgramReplayPackRequest(AbstractModel):
+    r"""DescribeMiniProgramReplayPack请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _BundleHash: <p>回放包hash（sha256前16位hex）</p>
+        :type BundleHash: str
+        """
+        self._AppId = None
+        self._BundleHash = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BundleHash(self):
+        r"""<p>回放包hash（sha256前16位hex）</p>
+        :rtype: str
+        """
+        return self._BundleHash
+
+    @BundleHash.setter
+    def BundleHash(self, BundleHash):
+        self._BundleHash = BundleHash
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BundleHash = params.get("BundleHash")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMiniProgramReplayPackResponse(AbstractModel):
+    r"""DescribeMiniProgramReplayPack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _Result: <p>请求结果（JSON字符串，包含 PackId/AppId/BundleHash/Status/PageCount/ComponentCount/Pack）</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def Result(self):
+        r"""<p>请求结果（JSON字符串，包含 PackId/AppId/BundleHash/Status/PageCount/ComponentCount/Pack）</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMiniProgramReplayPacksRequest(AbstractModel):
+    r"""DescribeMiniProgramReplayPacks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _Status: <p>状态过滤（compiling/ready/failed，可选）</p>
+        :type Status: str
+        :param _Limit: <p>返回条数（默认20，最大100）</p>
+        :type Limit: int
+        :param _Cursor: <p>分页游标（可选）</p>
+        :type Cursor: str
+        """
+        self._AppId = None
+        self._Status = None
+        self._Limit = None
+        self._Cursor = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Status(self):
+        r"""<p>状态过滤（compiling/ready/failed，可选）</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Limit(self):
+        r"""<p>返回条数（默认20，最大100）</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Cursor(self):
+        r"""<p>分页游标（可选）</p>
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Status = params.get("Status")
+        self._Limit = params.get("Limit")
+        self._Cursor = params.get("Cursor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMiniProgramReplayPacksResponse(AbstractModel):
+    r"""DescribeMiniProgramReplayPacks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _Result: <p>请求结果（JSON字符串，包含 Items/NextCursor）</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def Result(self):
+        r"""<p>请求结果（JSON字符串，包含 Items/NextCursor）</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePerformanceMetricsRequest(AbstractModel):
+    r"""DescribePerformanceMetrics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: str
+        :param _Quantile: <p>分位值</p>
+        :type Quantile: float
+        :param _JourneyFilters: <p>旅程筛选条件 JSON 字符串，格式与 Filters 相同：[{Key,Op,Values}]。可选。不传表示不过滤。</p>
+        :type JourneyFilters: str
+        :param _HasStruggle: <p>是否只看包含挣扎的会话。可选。不传表示不过滤。</p>
+        :type HasStruggle: bool
+        :param _StartPage: <p>旅程起点页面。可选。不传表示不过滤。</p>
+        :type StartPage: str
+        :param _EndPage: <p>旅程终点页面。可选。不传表示不过滤。</p>
+        :type EndPage: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Platform = None
+        self._Filters = None
+        self._Quantile = None
+        self._JourneyFilters = None
+        self._HasStruggle = None
+        self._StartPage = None
+        self._EndPage = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Quantile(self):
+        r"""<p>分位值</p>
+        :rtype: float
+        """
+        return self._Quantile
+
+    @Quantile.setter
+    def Quantile(self, Quantile):
+        self._Quantile = Quantile
+
+    @property
+    def JourneyFilters(self):
+        r"""<p>旅程筛选条件 JSON 字符串，格式与 Filters 相同：[{Key,Op,Values}]。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._JourneyFilters
+
+    @JourneyFilters.setter
+    def JourneyFilters(self, JourneyFilters):
+        self._JourneyFilters = JourneyFilters
+
+    @property
+    def HasStruggle(self):
+        r"""<p>是否只看包含挣扎的会话。可选。不传表示不过滤。</p>
+        :rtype: bool
+        """
+        return self._HasStruggle
+
+    @HasStruggle.setter
+    def HasStruggle(self, HasStruggle):
+        self._HasStruggle = HasStruggle
+
+    @property
+    def StartPage(self):
+        r"""<p>旅程起点页面。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._StartPage
+
+    @StartPage.setter
+    def StartPage(self, StartPage):
+        self._StartPage = StartPage
+
+    @property
+    def EndPage(self):
+        r"""<p>旅程终点页面。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._EndPage
+
+    @EndPage.setter
+    def EndPage(self, EndPage):
+        self._EndPage = EndPage
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Platform = params.get("Platform")
+        self._Filters = params.get("Filters")
+        self._Quantile = params.get("Quantile")
+        self._JourneyFilters = params.get("JourneyFilters")
+        self._HasStruggle = params.get("HasStruggle")
+        self._StartPage = params.get("StartPage")
+        self._EndPage = params.get("EndPage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePerformanceMetricsResponse(AbstractModel):
+    r"""DescribePerformanceMetrics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProjectLimitsRequest(AbstractModel):
     r"""DescribeProjectLimits请求参数结构体
 
@@ -19075,6 +23977,513 @@ class DescribeReleaseFilesResponse(AbstractModel):
                 obj = ReleaseFile()
                 obj._deserialize(item)
                 self._Files.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReplayDataRequest(AbstractModel):
+    r"""DescribeReplayData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _ReplayId: <p>回放id</p>
+        :type ReplayId: str
+        :param _SessionId: <p>session id</p>
+        :type SessionId: str
+        :param _SegmentId: <p>segment id</p>
+        :type SegmentId: int
+        :param _MaxDecodedBytes: <p>单个录制分片解压后的最大允许字节数</p><p>取值范围：[1, 8388608]</p><p>单位：字节（Byte）</p>
+        :type MaxDecodedBytes: int
+        """
+        self._AppId = None
+        self._ReplayId = None
+        self._SessionId = None
+        self._SegmentId = None
+        self._MaxDecodedBytes = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ReplayId(self):
+        r"""<p>回放id</p>
+        :rtype: str
+        """
+        return self._ReplayId
+
+    @ReplayId.setter
+    def ReplayId(self, ReplayId):
+        self._ReplayId = ReplayId
+
+    @property
+    def SessionId(self):
+        r"""<p>session id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SegmentId(self):
+        r"""<p>segment id</p>
+        :rtype: int
+        """
+        return self._SegmentId
+
+    @SegmentId.setter
+    def SegmentId(self, SegmentId):
+        self._SegmentId = SegmentId
+
+    @property
+    def MaxDecodedBytes(self):
+        r"""<p>单个录制分片解压后的最大允许字节数</p><p>取值范围：[1, 8388608]</p><p>单位：字节（Byte）</p>
+        :rtype: int
+        """
+        return self._MaxDecodedBytes
+
+    @MaxDecodedBytes.setter
+    def MaxDecodedBytes(self, MaxDecodedBytes):
+        self._MaxDecodedBytes = MaxDecodedBytes
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ReplayId = params.get("ReplayId")
+        self._SessionId = params.get("SessionId")
+        self._SegmentId = params.get("SegmentId")
+        self._MaxDecodedBytes = params.get("MaxDecodedBytes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplayDataResponse(AbstractModel):
+    r"""DescribeReplayData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReplayDetailsRequest(AbstractModel):
+    r"""DescribeReplayDetails请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _SessionId: <p>会话id</p>
+        :type SessionId: str
+        :param _ReplayId: <p>回放id</p>
+        :type ReplayId: str
+        :param _Categories: <p>事件类别， 默认为all</p>
+        :type Categories: str
+        :param _Limit: <p>每页返回数量</p>
+        :type Limit: int
+        :param _Cursor: <p>游标分页，传上一次返回的 NextCursor 值。首次请求不传</p>
+        :type Cursor: int
+        :param _StartOffsetMs: <p>起始偏移（毫秒），相对于录屏开始时间。用于只查某个时间段的事件</p>
+        :type StartOffsetMs: int
+        :param _EndOffsetMs: <p>结束偏移（毫秒），必须 ≥ StartOffsetMs</p>
+        :type EndOffsetMs: int
+        """
+        self._AppId = None
+        self._SessionId = None
+        self._ReplayId = None
+        self._Categories = None
+        self._Limit = None
+        self._Cursor = None
+        self._StartOffsetMs = None
+        self._EndOffsetMs = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ReplayId(self):
+        r"""<p>回放id</p>
+        :rtype: str
+        """
+        return self._ReplayId
+
+    @ReplayId.setter
+    def ReplayId(self, ReplayId):
+        self._ReplayId = ReplayId
+
+    @property
+    def Categories(self):
+        r"""<p>事件类别， 默认为all</p>
+        :rtype: str
+        """
+        return self._Categories
+
+    @Categories.setter
+    def Categories(self, Categories):
+        self._Categories = Categories
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Cursor(self):
+        r"""<p>游标分页，传上一次返回的 NextCursor 值。首次请求不传</p>
+        :rtype: int
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def StartOffsetMs(self):
+        r"""<p>起始偏移（毫秒），相对于录屏开始时间。用于只查某个时间段的事件</p>
+        :rtype: int
+        """
+        return self._StartOffsetMs
+
+    @StartOffsetMs.setter
+    def StartOffsetMs(self, StartOffsetMs):
+        self._StartOffsetMs = StartOffsetMs
+
+    @property
+    def EndOffsetMs(self):
+        r"""<p>结束偏移（毫秒），必须 ≥ StartOffsetMs</p>
+        :rtype: int
+        """
+        return self._EndOffsetMs
+
+    @EndOffsetMs.setter
+    def EndOffsetMs(self, EndOffsetMs):
+        self._EndOffsetMs = EndOffsetMs
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._SessionId = params.get("SessionId")
+        self._ReplayId = params.get("ReplayId")
+        self._Categories = params.get("Categories")
+        self._Limit = params.get("Limit")
+        self._Cursor = params.get("Cursor")
+        self._StartOffsetMs = params.get("StartOffsetMs")
+        self._EndOffsetMs = params.get("EndOffsetMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplayDetailsResponse(AbstractModel):
+    r"""DescribeReplayDetails返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReplayMetaRequest(AbstractModel):
+    r"""DescribeReplayMeta请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _ReplayId: <p>回放id</p>
+        :type ReplayId: str
+        :param _SessionId: <p>会话id</p>
+        :type SessionId: str
+        :param _IndexOnly: <p>是否仅查询指定录制分片的轻量索引。默认false。为true时必须通过IndexSegmentIds指定1～16个分片ID，返回IndexEntries，不返回录制正文。</p>
+        :type IndexOnly: bool
+        :param _IndexSegmentIds: <p>待查询索引的录制分片ID列表。仅在IndexOnly为true时使用，包含1～16个非负且不重复的分片ID。ProbeMissingIndex为true时仅允许指定一个分片ID。</p>
+        :type IndexSegmentIds: list of int
+        :param _ProbeMissingIndex: <p>是否在录制分片缺少索引时进行受限兼容探测。默认false。为true时必须同时设置IndexOnly为true，且IndexSegmentIds仅包含一个分片ID。</p>
+        :type ProbeMissingIndex: bool
+        """
+        self._AppId = None
+        self._ReplayId = None
+        self._SessionId = None
+        self._IndexOnly = None
+        self._IndexSegmentIds = None
+        self._ProbeMissingIndex = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ReplayId(self):
+        r"""<p>回放id</p>
+        :rtype: str
+        """
+        return self._ReplayId
+
+    @ReplayId.setter
+    def ReplayId(self, ReplayId):
+        self._ReplayId = ReplayId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def IndexOnly(self):
+        r"""<p>是否仅查询指定录制分片的轻量索引。默认false。为true时必须通过IndexSegmentIds指定1～16个分片ID，返回IndexEntries，不返回录制正文。</p>
+        :rtype: bool
+        """
+        return self._IndexOnly
+
+    @IndexOnly.setter
+    def IndexOnly(self, IndexOnly):
+        self._IndexOnly = IndexOnly
+
+    @property
+    def IndexSegmentIds(self):
+        r"""<p>待查询索引的录制分片ID列表。仅在IndexOnly为true时使用，包含1～16个非负且不重复的分片ID。ProbeMissingIndex为true时仅允许指定一个分片ID。</p>
+        :rtype: list of int
+        """
+        return self._IndexSegmentIds
+
+    @IndexSegmentIds.setter
+    def IndexSegmentIds(self, IndexSegmentIds):
+        self._IndexSegmentIds = IndexSegmentIds
+
+    @property
+    def ProbeMissingIndex(self):
+        r"""<p>是否在录制分片缺少索引时进行受限兼容探测。默认false。为true时必须同时设置IndexOnly为true，且IndexSegmentIds仅包含一个分片ID。</p>
+        :rtype: bool
+        """
+        return self._ProbeMissingIndex
+
+    @ProbeMissingIndex.setter
+    def ProbeMissingIndex(self, ProbeMissingIndex):
+        self._ProbeMissingIndex = ProbeMissingIndex
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ReplayId = params.get("ReplayId")
+        self._SessionId = params.get("SessionId")
+        self._IndexOnly = params.get("IndexOnly")
+        self._IndexSegmentIds = params.get("IndexSegmentIds")
+        self._ProbeMissingIndex = params.get("ProbeMissingIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplayMetaResponse(AbstractModel):
+    r"""DescribeReplayMeta返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -20787,6 +26196,85 @@ class DescribeRumStatsLogListV2Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSampleRateRequest(AbstractModel):
+    r"""DescribeSampleRate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: int
+        """
+        self._ProjectId = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSampleRateResponse(AbstractModel):
+    r"""DescribeSampleRate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeScoresRequest(AbstractModel):
     r"""DescribeScores请求参数结构体
 
@@ -21076,6 +26564,8860 @@ class DescribeScoresV2Response(AbstractModel):
                 obj = ScoreInfoV2()
                 obj._deserialize(item)
                 self._ScoreSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSessionListRequest(AbstractModel):
+    r"""DescribeSessionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间</p><p>单位：毫秒</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p><p>单位：毫秒</p>
+        :type EndTime: int
+        :param _SessionType: <p>session类型</p><p>枚举值：</p><ul><li>all： 所有</li><li>error： 错</li><li>slow： 慢</li></ul>
+        :type SessionType: str
+        :param _Page: <p>页面号</p><p>默认值：1</p>
+        :type Page: int
+        :param _PageSize: <p>每一页的数量</p>
+        :type PageSize: int
+        :param _SortBy: <p>排序字段</p>
+        :type SortBy: str
+        :param _SortOrder: <p>排序方式，ASC或DESC</p>
+        :type SortOrder: str
+        :param _UserId: <p>用户id</p>
+        :type UserId: str
+        :param _SessionId: <p>session id</p>
+        :type SessionId: str
+        :param _DeviceTypes: <p>设备类型</p>
+        :type DeviceTypes: list of str
+        :param _Browsers: <p>浏览器</p>
+        :type Browsers: list of str
+        :param _OSList: <p>操作系统</p>
+        :type OSList: list of str
+        :param _Platforms: <p>平台</p>
+        :type Platforms: list of str
+        :param _AppVersions: <p>应用版本</p>
+        :type AppVersions: list of str
+        :param _Countries: <p>国家</p>
+        :type Countries: list of str
+        :param _HasStruggle: <p>是否有挣扎事件</p>
+        :type HasStruggle: bool
+        :param _StruggleRanks: <p>挣扎等级</p>
+        :type StruggleRanks: list of str
+        :param _StruggleTypes: <p>挣扎事件类型</p>
+        :type StruggleTypes: list of str
+        :param _HasError: <p>是否有错误</p>
+        :type HasError: bool
+        :param _VisitedPage: <p>访问页面</p>
+        :type VisitedPage: str
+        :param _ContainsEvent: <p>包含事件</p>
+        :type ContainsEvent: str
+        :param _MinDuration: <p>最小持续时间</p>
+        :type MinDuration: int
+        :param _MaxDuration: <p>最大持续时间</p>
+        :type MaxDuration: int
+        :param _PerfFilter: <p>性能过滤</p>
+        :type PerfFilter: str
+        :param _Regions: <p>地区</p>
+        :type Regions: list of str
+        :param _Environments: <p>环境</p>
+        :type Environments: list of str
+        :param _Filters: <p>筛选</p>
+        :type Filters: str
+        :param _StartPage: <p>旅程起点页面。可选。不传表示不过滤。</p>
+        :type StartPage: str
+        :param _EndPage: <p>旅程终点页面。可选。不传表示不过滤。</p>
+        :type EndPage: str
+        :param _JourneyFilters: <p>旅程筛选条件 JSON 字符串，格式与 Filters 相同：[{Key,Op,Values}]。可选。不传表示不过滤。</p>
+        :type JourneyFilters: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SessionType = None
+        self._Page = None
+        self._PageSize = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._UserId = None
+        self._SessionId = None
+        self._DeviceTypes = None
+        self._Browsers = None
+        self._OSList = None
+        self._Platforms = None
+        self._AppVersions = None
+        self._Countries = None
+        self._HasStruggle = None
+        self._StruggleRanks = None
+        self._StruggleTypes = None
+        self._HasError = None
+        self._VisitedPage = None
+        self._ContainsEvent = None
+        self._MinDuration = None
+        self._MaxDuration = None
+        self._PerfFilter = None
+        self._Regions = None
+        self._Environments = None
+        self._Filters = None
+        self._StartPage = None
+        self._EndPage = None
+        self._JourneyFilters = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SessionType(self):
+        r"""<p>session类型</p><p>枚举值：</p><ul><li>all： 所有</li><li>error： 错</li><li>slow： 慢</li></ul>
+        :rtype: str
+        """
+        return self._SessionType
+
+    @SessionType.setter
+    def SessionType(self, SessionType):
+        self._SessionType = SessionType
+
+    @property
+    def Page(self):
+        r"""<p>页面号</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每一页的数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序方式，ASC或DESC</p>
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def UserId(self):
+        r"""<p>用户id</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        r"""<p>session id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def DeviceTypes(self):
+        r"""<p>设备类型</p>
+        :rtype: list of str
+        """
+        return self._DeviceTypes
+
+    @DeviceTypes.setter
+    def DeviceTypes(self, DeviceTypes):
+        self._DeviceTypes = DeviceTypes
+
+    @property
+    def Browsers(self):
+        r"""<p>浏览器</p>
+        :rtype: list of str
+        """
+        return self._Browsers
+
+    @Browsers.setter
+    def Browsers(self, Browsers):
+        self._Browsers = Browsers
+
+    @property
+    def OSList(self):
+        r"""<p>操作系统</p>
+        :rtype: list of str
+        """
+        return self._OSList
+
+    @OSList.setter
+    def OSList(self, OSList):
+        self._OSList = OSList
+
+    @property
+    def Platforms(self):
+        r"""<p>平台</p>
+        :rtype: list of str
+        """
+        return self._Platforms
+
+    @Platforms.setter
+    def Platforms(self, Platforms):
+        self._Platforms = Platforms
+
+    @property
+    def AppVersions(self):
+        r"""<p>应用版本</p>
+        :rtype: list of str
+        """
+        return self._AppVersions
+
+    @AppVersions.setter
+    def AppVersions(self, AppVersions):
+        self._AppVersions = AppVersions
+
+    @property
+    def Countries(self):
+        r"""<p>国家</p>
+        :rtype: list of str
+        """
+        return self._Countries
+
+    @Countries.setter
+    def Countries(self, Countries):
+        self._Countries = Countries
+
+    @property
+    def HasStruggle(self):
+        r"""<p>是否有挣扎事件</p>
+        :rtype: bool
+        """
+        return self._HasStruggle
+
+    @HasStruggle.setter
+    def HasStruggle(self, HasStruggle):
+        self._HasStruggle = HasStruggle
+
+    @property
+    def StruggleRanks(self):
+        r"""<p>挣扎等级</p>
+        :rtype: list of str
+        """
+        return self._StruggleRanks
+
+    @StruggleRanks.setter
+    def StruggleRanks(self, StruggleRanks):
+        self._StruggleRanks = StruggleRanks
+
+    @property
+    def StruggleTypes(self):
+        r"""<p>挣扎事件类型</p>
+        :rtype: list of str
+        """
+        return self._StruggleTypes
+
+    @StruggleTypes.setter
+    def StruggleTypes(self, StruggleTypes):
+        self._StruggleTypes = StruggleTypes
+
+    @property
+    def HasError(self):
+        r"""<p>是否有错误</p>
+        :rtype: bool
+        """
+        return self._HasError
+
+    @HasError.setter
+    def HasError(self, HasError):
+        self._HasError = HasError
+
+    @property
+    def VisitedPage(self):
+        r"""<p>访问页面</p>
+        :rtype: str
+        """
+        return self._VisitedPage
+
+    @VisitedPage.setter
+    def VisitedPage(self, VisitedPage):
+        self._VisitedPage = VisitedPage
+
+    @property
+    def ContainsEvent(self):
+        r"""<p>包含事件</p>
+        :rtype: str
+        """
+        return self._ContainsEvent
+
+    @ContainsEvent.setter
+    def ContainsEvent(self, ContainsEvent):
+        self._ContainsEvent = ContainsEvent
+
+    @property
+    def MinDuration(self):
+        r"""<p>最小持续时间</p>
+        :rtype: int
+        """
+        return self._MinDuration
+
+    @MinDuration.setter
+    def MinDuration(self, MinDuration):
+        self._MinDuration = MinDuration
+
+    @property
+    def MaxDuration(self):
+        r"""<p>最大持续时间</p>
+        :rtype: int
+        """
+        return self._MaxDuration
+
+    @MaxDuration.setter
+    def MaxDuration(self, MaxDuration):
+        self._MaxDuration = MaxDuration
+
+    @property
+    def PerfFilter(self):
+        r"""<p>性能过滤</p>
+        :rtype: str
+        """
+        return self._PerfFilter
+
+    @PerfFilter.setter
+    def PerfFilter(self, PerfFilter):
+        self._PerfFilter = PerfFilter
+
+    @property
+    def Regions(self):
+        r"""<p>地区</p>
+        :rtype: list of str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def Environments(self):
+        r"""<p>环境</p>
+        :rtype: list of str
+        """
+        return self._Environments
+
+    @Environments.setter
+    def Environments(self, Environments):
+        self._Environments = Environments
+
+    @property
+    def Filters(self):
+        r"""<p>筛选</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartPage(self):
+        r"""<p>旅程起点页面。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._StartPage
+
+    @StartPage.setter
+    def StartPage(self, StartPage):
+        self._StartPage = StartPage
+
+    @property
+    def EndPage(self):
+        r"""<p>旅程终点页面。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._EndPage
+
+    @EndPage.setter
+    def EndPage(self, EndPage):
+        self._EndPage = EndPage
+
+    @property
+    def JourneyFilters(self):
+        r"""<p>旅程筛选条件 JSON 字符串，格式与 Filters 相同：[{Key,Op,Values}]。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._JourneyFilters
+
+    @JourneyFilters.setter
+    def JourneyFilters(self, JourneyFilters):
+        self._JourneyFilters = JourneyFilters
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SessionType = params.get("SessionType")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        self._DeviceTypes = params.get("DeviceTypes")
+        self._Browsers = params.get("Browsers")
+        self._OSList = params.get("OSList")
+        self._Platforms = params.get("Platforms")
+        self._AppVersions = params.get("AppVersions")
+        self._Countries = params.get("Countries")
+        self._HasStruggle = params.get("HasStruggle")
+        self._StruggleRanks = params.get("StruggleRanks")
+        self._StruggleTypes = params.get("StruggleTypes")
+        self._HasError = params.get("HasError")
+        self._VisitedPage = params.get("VisitedPage")
+        self._ContainsEvent = params.get("ContainsEvent")
+        self._MinDuration = params.get("MinDuration")
+        self._MaxDuration = params.get("MaxDuration")
+        self._PerfFilter = params.get("PerfFilter")
+        self._Regions = params.get("Regions")
+        self._Environments = params.get("Environments")
+        self._Filters = params.get("Filters")
+        self._StartPage = params.get("StartPage")
+        self._EndPage = params.get("EndPage")
+        self._JourneyFilters = params.get("JourneyFilters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSessionListResponse(AbstractModel):
+    r"""DescribeSessionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStruggleDistributionRequest(AbstractModel):
+    r"""DescribeStruggleDistribution请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间戳</p>
+        :type EndTime: int
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: str
+        :param _JourneyFilters: <p>旅程筛选条件 JSON 字符串，格式与 Filters 相同：[{Key,Op,Values}]。可选。不传表示不过滤。</p>
+        :type JourneyFilters: str
+        :param _HasStruggle: <p>是否只看包含挣扎的会话。可选。不传表示不过滤。</p>
+        :type HasStruggle: bool
+        :param _StartPage: <p>旅程起点页面。可选。不传表示不过滤。</p>
+        :type StartPage: str
+        :param _EndPage: <p>旅程终点页面。可选。不传表示不过滤。</p>
+        :type EndPage: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Platform = None
+        self._Filters = None
+        self._JourneyFilters = None
+        self._HasStruggle = None
+        self._StartPage = None
+        self._EndPage = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间戳</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def JourneyFilters(self):
+        r"""<p>旅程筛选条件 JSON 字符串，格式与 Filters 相同：[{Key,Op,Values}]。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._JourneyFilters
+
+    @JourneyFilters.setter
+    def JourneyFilters(self, JourneyFilters):
+        self._JourneyFilters = JourneyFilters
+
+    @property
+    def HasStruggle(self):
+        r"""<p>是否只看包含挣扎的会话。可选。不传表示不过滤。</p>
+        :rtype: bool
+        """
+        return self._HasStruggle
+
+    @HasStruggle.setter
+    def HasStruggle(self, HasStruggle):
+        self._HasStruggle = HasStruggle
+
+    @property
+    def StartPage(self):
+        r"""<p>旅程起点页面。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._StartPage
+
+    @StartPage.setter
+    def StartPage(self, StartPage):
+        self._StartPage = StartPage
+
+    @property
+    def EndPage(self):
+        r"""<p>旅程终点页面。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._EndPage
+
+    @EndPage.setter
+    def EndPage(self, EndPage):
+        self._EndPage = EndPage
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Platform = params.get("Platform")
+        self._Filters = params.get("Filters")
+        self._JourneyFilters = params.get("JourneyFilters")
+        self._HasStruggle = params.get("HasStruggle")
+        self._StartPage = params.get("StartPage")
+        self._EndPage = params.get("EndPage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStruggleDistributionResponse(AbstractModel):
+    r"""DescribeStruggleDistribution返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSymbolArtifactUploadCredentialRequest(AbstractModel):
+    r"""DescribeSymbolArtifactUploadCredential请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Kind: <p>制品类型。取值：js_sourcemap、ios_dsym、macos_dsym、windows_pdb、android_mapping、android_native、system_symbol。</p>
+        :type Kind: str
+        :param _FileName: <p>上传文件名。</p>
+        :type FileName: str
+        :param _AppId: <p>应用 ID。应用级制品必填；system_symbol 不传。</p>
+        :type AppId: str
+        :param _ProjectId: <p>兼容别名，未传 AppId 时使用。</p>
+        :type ProjectId: str
+        :param _Release: <p>保留字段，请勿传入。</p>
+        :type Release: str
+        :param _Dist: <p>保留字段，请勿传入。</p>
+        :type Dist: str
+        :param _MinifiedUrl: <p>保留字段，请勿传入。</p>
+        :type MinifiedUrl: str
+        :param _FileType: <p>保留字段，请勿传入。</p>
+        :type FileType: str
+        :param _DebugId: <p>保留字段，请勿传入。</p>
+        :type DebugId: str
+        :param _BuildId: <p>保留字段，请勿传入。</p>
+        :type BuildId: str
+        :param _AppVersion: <p>保留字段，请勿传入。</p>
+        :type AppVersion: str
+        :param _Platform: <p>保留字段，请勿传入。</p>
+        :type Platform: str
+        :param _OS: <p>系统名称。</p>
+        :type OS: str
+        :param _OSVersion: <p>系统版本。</p>
+        :type OSVersion: str
+        :param _StorePath: <p>保留字段，请勿传入。</p>
+        :type StorePath: str
+        :param _ContentType: <p>文件内容类型，如 application/json。</p>
+        :type ContentType: str
+        """
+        self._Kind = None
+        self._FileName = None
+        self._AppId = None
+        self._ProjectId = None
+        self._Release = None
+        self._Dist = None
+        self._MinifiedUrl = None
+        self._FileType = None
+        self._DebugId = None
+        self._BuildId = None
+        self._AppVersion = None
+        self._Platform = None
+        self._OS = None
+        self._OSVersion = None
+        self._StorePath = None
+        self._ContentType = None
+
+    @property
+    def Kind(self):
+        r"""<p>制品类型。取值：js_sourcemap、ios_dsym、macos_dsym、windows_pdb、android_mapping、android_native、system_symbol。</p>
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def FileName(self):
+        r"""<p>上传文件名。</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。应用级制品必填；system_symbol 不传。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ProjectId(self):
+        r"""<p>兼容别名，未传 AppId 时使用。</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Release(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._Release
+
+    @Release.setter
+    def Release(self, Release):
+        self._Release = Release
+
+    @property
+    def Dist(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._Dist
+
+    @Dist.setter
+    def Dist(self, Dist):
+        self._Dist = Dist
+
+    @property
+    def MinifiedUrl(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._MinifiedUrl
+
+    @MinifiedUrl.setter
+    def MinifiedUrl(self, MinifiedUrl):
+        self._MinifiedUrl = MinifiedUrl
+
+    @property
+    def FileType(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def DebugId(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._DebugId
+
+    @DebugId.setter
+    def DebugId(self, DebugId):
+        self._DebugId = DebugId
+
+    @property
+    def BuildId(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def AppVersion(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Platform(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def OS(self):
+        r"""<p>系统名称。</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def OSVersion(self):
+        r"""<p>系统版本。</p>
+        :rtype: str
+        """
+        return self._OSVersion
+
+    @OSVersion.setter
+    def OSVersion(self, OSVersion):
+        self._OSVersion = OSVersion
+
+    @property
+    def StorePath(self):
+        r"""<p>保留字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._StorePath
+
+    @StorePath.setter
+    def StorePath(self, StorePath):
+        self._StorePath = StorePath
+
+    @property
+    def ContentType(self):
+        r"""<p>文件内容类型，如 application/json。</p>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+
+    def _deserialize(self, params):
+        self._Kind = params.get("Kind")
+        self._FileName = params.get("FileName")
+        self._AppId = params.get("AppId")
+        self._ProjectId = params.get("ProjectId")
+        self._Release = params.get("Release")
+        self._Dist = params.get("Dist")
+        self._MinifiedUrl = params.get("MinifiedUrl")
+        self._FileType = params.get("FileType")
+        self._DebugId = params.get("DebugId")
+        self._BuildId = params.get("BuildId")
+        self._AppVersion = params.get("AppVersion")
+        self._Platform = params.get("Platform")
+        self._OS = params.get("OS")
+        self._OSVersion = params.get("OSVersion")
+        self._StorePath = params.get("StorePath")
+        self._ContentType = params.get("ContentType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSymbolArtifactUploadCredentialResponse(AbstractModel):
+    r"""DescribeSymbolArtifactUploadCredential返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>上传临时凭证，JSON 格式字符串。</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>上传临时凭证，JSON 格式字符串。</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSymbolArtifactsRequest(AbstractModel):
+    r"""DescribeSymbolArtifacts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Kind: <p>制品类型。取值：js_sourcemap、ios_dsym、macos_dsym、windows_pdb、android_mapping、android_native、system_symbol。native_symbol 仅查询历史数据。</p>
+        :type Kind: str
+        :param _AppId: <p>应用 ID。js_sourcemap 必填，其他应用级制品用于过滤。</p>
+        :type AppId: str
+        :param _ProjectId: <p>兼容别名，未传 AppId 时使用。</p>
+        :type ProjectId: str
+        :param _Release: <p>JS 应用版本过滤条件。</p>
+        :type Release: str
+        :param _Dist: <p>JS 制品的历史 Dist 过滤条件。</p>
+        :type Dist: str
+        :param _FileType: <p>JS 制品文件类型过滤条件。</p>
+        :type FileType: str
+        :param _AppVersion: <p>应用版本过滤条件。</p>
+        :type AppVersion: str
+        :param _Platform: <p>历史 native_symbol 的平台过滤条件。</p>
+        :type Platform: str
+        :param _OS: <p>系统名称。system_symbol 场景过滤条件。</p>
+        :type OS: str
+        :param _OSVersion: <p>系统版本。system_symbol 场景过滤条件。</p>
+        :type OSVersion: str
+        :param _Status: <p>状态过滤。可按 active、superseded、deleted、invalid 过滤。</p>
+        :type Status: str
+        :param _Limit: <p>分页大小。默认 50。</p>
+        :type Limit: int
+        :param _Cursor: <p>分页游标。</p>
+        :type Cursor: str
+        """
+        self._Kind = None
+        self._AppId = None
+        self._ProjectId = None
+        self._Release = None
+        self._Dist = None
+        self._FileType = None
+        self._AppVersion = None
+        self._Platform = None
+        self._OS = None
+        self._OSVersion = None
+        self._Status = None
+        self._Limit = None
+        self._Cursor = None
+
+    @property
+    def Kind(self):
+        r"""<p>制品类型。取值：js_sourcemap、ios_dsym、macos_dsym、windows_pdb、android_mapping、android_native、system_symbol。native_symbol 仅查询历史数据。</p>
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。js_sourcemap 必填，其他应用级制品用于过滤。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ProjectId(self):
+        r"""<p>兼容别名，未传 AppId 时使用。</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Release(self):
+        r"""<p>JS 应用版本过滤条件。</p>
+        :rtype: str
+        """
+        return self._Release
+
+    @Release.setter
+    def Release(self, Release):
+        self._Release = Release
+
+    @property
+    def Dist(self):
+        r"""<p>JS 制品的历史 Dist 过滤条件。</p>
+        :rtype: str
+        """
+        return self._Dist
+
+    @Dist.setter
+    def Dist(self, Dist):
+        self._Dist = Dist
+
+    @property
+    def FileType(self):
+        r"""<p>JS 制品文件类型过滤条件。</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本过滤条件。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Platform(self):
+        r"""<p>历史 native_symbol 的平台过滤条件。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def OS(self):
+        r"""<p>系统名称。system_symbol 场景过滤条件。</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def OSVersion(self):
+        r"""<p>系统版本。system_symbol 场景过滤条件。</p>
+        :rtype: str
+        """
+        return self._OSVersion
+
+    @OSVersion.setter
+    def OSVersion(self, OSVersion):
+        self._OSVersion = OSVersion
+
+    @property
+    def Status(self):
+        r"""<p>状态过滤。可按 active、superseded、deleted、invalid 过滤。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小。默认 50。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Cursor(self):
+        r"""<p>分页游标。</p>
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+
+    def _deserialize(self, params):
+        self._Kind = params.get("Kind")
+        self._AppId = params.get("AppId")
+        self._ProjectId = params.get("ProjectId")
+        self._Release = params.get("Release")
+        self._Dist = params.get("Dist")
+        self._FileType = params.get("FileType")
+        self._AppVersion = params.get("AppVersion")
+        self._Platform = params.get("Platform")
+        self._OS = params.get("OS")
+        self._OSVersion = params.get("OSVersion")
+        self._Status = params.get("Status")
+        self._Limit = params.get("Limit")
+        self._Cursor = params.get("Cursor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSymbolArtifactsResponse(AbstractModel):
+    r"""DescribeSymbolArtifacts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>制品列表，JSON 格式字符串，包含 artifacts、next_cursor 和 total。</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>制品列表，JSON 格式字符串，包含 artifacts、next_cursor 和 total。</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMApplicationsRequest(AbstractModel):
+    r"""DescribeTDEMApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移，默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量，默认 20，上限 100</p>
+        :type Limit: int
+        :param _InstanceId: <p>业务系统 ID（可选，缺省返回名下全部应用）</p>
+        :type InstanceId: str
+        :param _DemoMode: <p>演示模式开关</p>
+        :type DemoMode: bool
+        """
+        self._Offset = None
+        self._Limit = None
+        self._InstanceId = None
+        self._DemoMode = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，默认 20，上限 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID（可选，缺省返回名下全部应用）</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DemoMode(self):
+        r"""<p>演示模式开关</p>
+        :rtype: bool
+        """
+        return self._DemoMode
+
+    @DemoMode.setter
+    def DemoMode(self, DemoMode):
+        self._DemoMode = DemoMode
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._InstanceId = params.get("InstanceId")
+        self._DemoMode = params.get("DemoMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMApplicationsResponse(AbstractModel):
+    r"""DescribeTDEMApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _ApplicationSet: <p>应用列表</p>
+        :type ApplicationSet: list of ApplicationItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ApplicationSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApplicationSet(self):
+        r"""<p>应用列表</p>
+        :rtype: list of ApplicationItem
+        """
+        return self._ApplicationSet
+
+    @ApplicationSet.setter
+    def ApplicationSet(self, ApplicationSet):
+        self._ApplicationSet = ApplicationSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ApplicationSet") is not None:
+            self._ApplicationSet = []
+            for item in params.get("ApplicationSet"):
+                obj = ApplicationItem()
+                obj._deserialize(item)
+                self._ApplicationSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMBusinessSystemsRequest(AbstractModel):
+    r"""DescribeTDEMBusinessSystems请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移，默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量，默认 20，上限 100</p>
+        :type Limit: int
+        :param _DemoMode: <p>演示模式开关</p>
+        :type DemoMode: bool
+        """
+        self._Offset = None
+        self._Limit = None
+        self._DemoMode = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，默认 20，上限 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def DemoMode(self):
+        r"""<p>演示模式开关</p>
+        :rtype: bool
+        """
+        return self._DemoMode
+
+    @DemoMode.setter
+    def DemoMode(self, DemoMode):
+        self._DemoMode = DemoMode
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._DemoMode = params.get("DemoMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMBusinessSystemsResponse(AbstractModel):
+    r"""DescribeTDEMBusinessSystems返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _BusinessSystemSet: <p>业务系统列表</p>
+        :type BusinessSystemSet: list of BusinessSystemItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BusinessSystemSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BusinessSystemSet(self):
+        r"""<p>业务系统列表</p>
+        :rtype: list of BusinessSystemItem
+        """
+        return self._BusinessSystemSet
+
+    @BusinessSystemSet.setter
+    def BusinessSystemSet(self, BusinessSystemSet):
+        self._BusinessSystemSet = BusinessSystemSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BusinessSystemSet") is not None:
+            self._BusinessSystemSet = []
+            for item in params.get("BusinessSystemSet"):
+                obj = BusinessSystemItem()
+                obj._deserialize(item)
+                self._BusinessSystemSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMDialDimensionsRequest(AbstractModel):
+    r"""DescribeTDEMDialDimensions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，毫秒时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :type EndTime: int
+        :param _Dimension: <p>维度。取值说明：platform、app_version、device、net_type、operator、region、country、target_ip。</p>
+        :type Dimension: str
+        :param _TaskId: <p>任务 ID。不传表示不过滤。</p>
+        :type TaskId: str
+        :param _Platform: <p>客户端平台。不传表示不过滤。</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本。不传表示不过滤。</p>
+        :type AppVersion: str
+        :param _Device: <p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :type Device: str
+        :param _NetType: <p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :type NetType: str
+        :param _Operator: <p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :type Operator: str
+        :param _ClientRegion: <p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :type ClientRegion: str
+        :param _TargetIp: <p>目标 IP。不传表示不过滤。</p>
+        :type TargetIp: str
+        :param _Environment: <p>环境。可选。不传表示不过滤。</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Dimension = None
+        self._TaskId = None
+        self._Platform = None
+        self._AppVersion = None
+        self._Device = None
+        self._NetType = None
+        self._Operator = None
+        self._ClientRegion = None
+        self._TargetIp = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Dimension(self):
+        r"""<p>维度。取值说明：platform、app_version、device、net_type、operator、region、country、target_ip。</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Platform(self):
+        r"""<p>客户端平台。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Device(self):
+        r"""<p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def NetType(self):
+        r"""<p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Operator(self):
+        r"""<p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ClientRegion(self):
+        r"""<p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :rtype: str
+        """
+        return self._ClientRegion
+
+    @ClientRegion.setter
+    def ClientRegion(self, ClientRegion):
+        self._ClientRegion = ClientRegion
+
+    @property
+    def TargetIp(self):
+        r"""<p>目标 IP。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TargetIp
+
+    @TargetIp.setter
+    def TargetIp(self, TargetIp):
+        self._TargetIp = TargetIp
+
+    @property
+    def Environment(self):
+        r"""<p>环境。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Dimension = params.get("Dimension")
+        self._TaskId = params.get("TaskId")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._Device = params.get("Device")
+        self._NetType = params.get("NetType")
+        self._Operator = params.get("Operator")
+        self._ClientRegion = params.get("ClientRegion")
+        self._TargetIp = params.get("TargetIp")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMDialDimensionsResponse(AbstractModel):
+    r"""DescribeTDEMDialDimensions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Dimension: <p>本次查询的维度</p>
+        :type Dimension: str
+        :param _Items: <p>维度统计项</p>
+        :type Items: list of DialDimensionItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Dimension = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Dimension(self):
+        r"""<p>本次查询的维度</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Items(self):
+        r"""<p>维度统计项</p>
+        :rtype: list of DialDimensionItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Dimension = params.get("Dimension")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DialDimensionItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMDialExecutionDetailRequest(AbstractModel):
+    r"""DescribeTDEMDialExecutionDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，毫秒时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :type EndTime: int
+        :param _TaskId: <p>任务 ID。不传表示不过滤。</p>
+        :type TaskId: str
+        :param _TaskSessionId: <p>拨测批次 ID</p>
+        :type TaskSessionId: str
+        :param _Platform: <p>客户端平台。不传表示不过滤。</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本。不传表示不过滤。</p>
+        :type AppVersion: str
+        :param _Device: <p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :type Device: str
+        :param _NetType: <p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :type NetType: str
+        :param _Operator: <p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :type Operator: str
+        :param _ClientRegion: <p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :type ClientRegion: str
+        :param _TargetIp: <p>目标 IP。不传表示不过滤。</p>
+        :type TargetIp: str
+        :param _Environment: <p>环境。可选。不传表示不过滤。</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskId = None
+        self._TaskSessionId = None
+        self._Platform = None
+        self._AppVersion = None
+        self._Device = None
+        self._NetType = None
+        self._Operator = None
+        self._ClientRegion = None
+        self._TargetIp = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskSessionId(self):
+        r"""<p>拨测批次 ID</p>
+        :rtype: str
+        """
+        return self._TaskSessionId
+
+    @TaskSessionId.setter
+    def TaskSessionId(self, TaskSessionId):
+        self._TaskSessionId = TaskSessionId
+
+    @property
+    def Platform(self):
+        r"""<p>客户端平台。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Device(self):
+        r"""<p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def NetType(self):
+        r"""<p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Operator(self):
+        r"""<p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ClientRegion(self):
+        r"""<p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :rtype: str
+        """
+        return self._ClientRegion
+
+    @ClientRegion.setter
+    def ClientRegion(self, ClientRegion):
+        self._ClientRegion = ClientRegion
+
+    @property
+    def TargetIp(self):
+        r"""<p>目标 IP。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TargetIp
+
+    @TargetIp.setter
+    def TargetIp(self, TargetIp):
+        self._TargetIp = TargetIp
+
+    @property
+    def Environment(self):
+        r"""<p>环境。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskId = params.get("TaskId")
+        self._TaskSessionId = params.get("TaskSessionId")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._Device = params.get("Device")
+        self._NetType = params.get("NetType")
+        self._Operator = params.get("Operator")
+        self._ClientRegion = params.get("ClientRegion")
+        self._TargetIp = params.get("TargetIp")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMDialExecutionDetailResponse(AbstractModel):
+    r"""DescribeTDEMDialExecutionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名称</p>
+        :type TaskName: str
+        :param _TaskSessionId: <p>拨测批次 ID</p>
+        :type TaskSessionId: str
+        :param _StartTime: <p>批次开始时间，毫秒时间戳</p>
+        :type StartTime: int
+        :param _SessionId: <p>所属用户会话 ID</p>
+        :type SessionId: str
+        :param _Success: <p>本批次是否全部探测成功</p>
+        :type Success: bool
+        :param _AvgDuration: <p>平均时延，单位毫秒</p>
+        :type AvgDuration: float
+        :param _Platform: <p>客户端平台</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本</p>
+        :type AppVersion: str
+        :param _Device: <p>设备机型</p>
+        :type Device: str
+        :param _NetType: <p>网络类型</p>
+        :type NetType: str
+        :param _Operator: <p>客户端运营商</p>
+        :type Operator: str
+        :param _Region: <p>客户端地区</p>
+        :type Region: str
+        :param _TargetIps: <p>本批次目标 IP</p>
+        :type TargetIps: list of str
+        :param _Probes: <p>每个目标的探测结果</p>
+        :type Probes: list of DialProbe
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._TaskSessionId = None
+        self._StartTime = None
+        self._SessionId = None
+        self._Success = None
+        self._AvgDuration = None
+        self._Platform = None
+        self._AppVersion = None
+        self._Device = None
+        self._NetType = None
+        self._Operator = None
+        self._Region = None
+        self._TargetIps = None
+        self._Probes = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskSessionId(self):
+        r"""<p>拨测批次 ID</p>
+        :rtype: str
+        """
+        return self._TaskSessionId
+
+    @TaskSessionId.setter
+    def TaskSessionId(self, TaskSessionId):
+        self._TaskSessionId = TaskSessionId
+
+    @property
+    def StartTime(self):
+        r"""<p>批次开始时间，毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def SessionId(self):
+        r"""<p>所属用户会话 ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Success(self):
+        r"""<p>本批次是否全部探测成功</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def AvgDuration(self):
+        r"""<p>平均时延，单位毫秒</p>
+        :rtype: float
+        """
+        return self._AvgDuration
+
+    @AvgDuration.setter
+    def AvgDuration(self, AvgDuration):
+        self._AvgDuration = AvgDuration
+
+    @property
+    def Platform(self):
+        r"""<p>客户端平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Device(self):
+        r"""<p>设备机型</p>
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def NetType(self):
+        r"""<p>网络类型</p>
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Operator(self):
+        r"""<p>客户端运营商</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Region(self):
+        r"""<p>客户端地区</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TargetIps(self):
+        r"""<p>本批次目标 IP</p>
+        :rtype: list of str
+        """
+        return self._TargetIps
+
+    @TargetIps.setter
+    def TargetIps(self, TargetIps):
+        self._TargetIps = TargetIps
+
+    @property
+    def Probes(self):
+        r"""<p>每个目标的探测结果</p>
+        :rtype: list of DialProbe
+        """
+        return self._Probes
+
+    @Probes.setter
+    def Probes(self, Probes):
+        self._Probes = Probes
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._TaskSessionId = params.get("TaskSessionId")
+        self._StartTime = params.get("StartTime")
+        self._SessionId = params.get("SessionId")
+        self._Success = params.get("Success")
+        self._AvgDuration = params.get("AvgDuration")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._Device = params.get("Device")
+        self._NetType = params.get("NetType")
+        self._Operator = params.get("Operator")
+        self._Region = params.get("Region")
+        self._TargetIps = params.get("TargetIps")
+        if params.get("Probes") is not None:
+            self._Probes = []
+            for item in params.get("Probes"):
+                obj = DialProbe()
+                obj._deserialize(item)
+                self._Probes.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMDialExecutionListRequest(AbstractModel):
+    r"""DescribeTDEMDialExecutionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，毫秒时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :type EndTime: int
+        :param _TaskId: <p>任务 ID。不传表示不过滤。</p>
+        :type TaskId: str
+        :param _Platform: <p>客户端平台。不传表示不过滤。</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本。不传表示不过滤。</p>
+        :type AppVersion: str
+        :param _Device: <p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :type Device: str
+        :param _NetType: <p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :type NetType: str
+        :param _Operator: <p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :type Operator: str
+        :param _ClientRegion: <p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :type ClientRegion: str
+        :param _TargetIp: <p>目标 IP。不传表示不过滤。</p>
+        :type TargetIp: str
+        :param _Limit: <p>返回条数。范围 1 到 100，不传时为 20。</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量。不传时为 0。</p>
+        :type Offset: int
+        :param _Success: <p>是否只看成功或失败批次。不传表示不过滤。</p>
+        :type Success: bool
+        :param _Environment: <p>环境。可选。不传表示不过滤。</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskId = None
+        self._Platform = None
+        self._AppVersion = None
+        self._Device = None
+        self._NetType = None
+        self._Operator = None
+        self._ClientRegion = None
+        self._TargetIp = None
+        self._Limit = None
+        self._Offset = None
+        self._Success = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Platform(self):
+        r"""<p>客户端平台。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Device(self):
+        r"""<p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def NetType(self):
+        r"""<p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Operator(self):
+        r"""<p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ClientRegion(self):
+        r"""<p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :rtype: str
+        """
+        return self._ClientRegion
+
+    @ClientRegion.setter
+    def ClientRegion(self, ClientRegion):
+        self._ClientRegion = ClientRegion
+
+    @property
+    def TargetIp(self):
+        r"""<p>目标 IP。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TargetIp
+
+    @TargetIp.setter
+    def TargetIp(self, TargetIp):
+        self._TargetIp = TargetIp
+
+    @property
+    def Limit(self):
+        r"""<p>返回条数。范围 1 到 100，不传时为 20。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量。不传时为 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Success(self):
+        r"""<p>是否只看成功或失败批次。不传表示不过滤。</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Environment(self):
+        r"""<p>环境。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskId = params.get("TaskId")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._Device = params.get("Device")
+        self._NetType = params.get("NetType")
+        self._Operator = params.get("Operator")
+        self._ClientRegion = params.get("ClientRegion")
+        self._TargetIp = params.get("TargetIp")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Success = params.get("Success")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMDialExecutionListResponse(AbstractModel):
+    r"""DescribeTDEMDialExecutionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>满足条件的批次数</p>
+        :type TotalCount: int
+        :param _ExecutionSet: <p>执行批次列表</p>
+        :type ExecutionSet: list of DialExecution
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ExecutionSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>满足条件的批次数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ExecutionSet(self):
+        r"""<p>执行批次列表</p>
+        :rtype: list of DialExecution
+        """
+        return self._ExecutionSet
+
+    @ExecutionSet.setter
+    def ExecutionSet(self, ExecutionSet):
+        self._ExecutionSet = ExecutionSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ExecutionSet") is not None:
+            self._ExecutionSet = []
+            for item in params.get("ExecutionSet"):
+                obj = DialExecution()
+                obj._deserialize(item)
+                self._ExecutionSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMDialOverviewRequest(AbstractModel):
+    r"""DescribeTDEMDialOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，毫秒时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :type EndTime: int
+        :param _TaskId: <p>任务 ID。不传表示不过滤。</p>
+        :type TaskId: str
+        :param _Platform: <p>客户端平台。不传表示不过滤。</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本。不传表示不过滤。</p>
+        :type AppVersion: str
+        :param _Device: <p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :type Device: str
+        :param _NetType: <p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :type NetType: str
+        :param _Operator: <p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :type Operator: str
+        :param _ClientRegion: <p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :type ClientRegion: str
+        :param _TargetIp: <p>目标 IP。不传表示不过滤。</p>
+        :type TargetIp: str
+        :param _Environment: <p>环境。可选。不传表示不过滤。</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskId = None
+        self._Platform = None
+        self._AppVersion = None
+        self._Device = None
+        self._NetType = None
+        self._Operator = None
+        self._ClientRegion = None
+        self._TargetIp = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Platform(self):
+        r"""<p>客户端平台。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Device(self):
+        r"""<p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def NetType(self):
+        r"""<p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Operator(self):
+        r"""<p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ClientRegion(self):
+        r"""<p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :rtype: str
+        """
+        return self._ClientRegion
+
+    @ClientRegion.setter
+    def ClientRegion(self, ClientRegion):
+        self._ClientRegion = ClientRegion
+
+    @property
+    def TargetIp(self):
+        r"""<p>目标 IP。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TargetIp
+
+    @TargetIp.setter
+    def TargetIp(self, TargetIp):
+        self._TargetIp = TargetIp
+
+    @property
+    def Environment(self):
+        r"""<p>环境。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskId = params.get("TaskId")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._Device = params.get("Device")
+        self._NetType = params.get("NetType")
+        self._Operator = params.get("Operator")
+        self._ClientRegion = params.get("ClientRegion")
+        self._TargetIp = params.get("TargetIp")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMDialOverviewResponse(AbstractModel):
+    r"""DescribeTDEMDialOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskCount: <p>任务数</p>
+        :type TaskCount: int
+        :param _ExecutionCount: <p>执行批次数</p>
+        :type ExecutionCount: int
+        :param _SuccessCount: <p>成功批次数</p>
+        :type SuccessCount: int
+        :param _FailCount: <p>失败批次数</p>
+        :type FailCount: int
+        :param _AvgDuration: <p>平均时延，单位毫秒</p>
+        :type AvgDuration: float
+        :param _AvgLoss: <p>平均丢包率，0 到 100</p>
+        :type AvgLoss: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskCount = None
+        self._ExecutionCount = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._AvgDuration = None
+        self._AvgLoss = None
+        self._RequestId = None
+
+    @property
+    def TaskCount(self):
+        r"""<p>任务数</p>
+        :rtype: int
+        """
+        return self._TaskCount
+
+    @TaskCount.setter
+    def TaskCount(self, TaskCount):
+        self._TaskCount = TaskCount
+
+    @property
+    def ExecutionCount(self):
+        r"""<p>执行批次数</p>
+        :rtype: int
+        """
+        return self._ExecutionCount
+
+    @ExecutionCount.setter
+    def ExecutionCount(self, ExecutionCount):
+        self._ExecutionCount = ExecutionCount
+
+    @property
+    def SuccessCount(self):
+        r"""<p>成功批次数</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        r"""<p>失败批次数</p>
+        :rtype: int
+        """
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def AvgDuration(self):
+        r"""<p>平均时延，单位毫秒</p>
+        :rtype: float
+        """
+        return self._AvgDuration
+
+    @AvgDuration.setter
+    def AvgDuration(self, AvgDuration):
+        self._AvgDuration = AvgDuration
+
+    @property
+    def AvgLoss(self):
+        r"""<p>平均丢包率，0 到 100</p>
+        :rtype: float
+        """
+        return self._AvgLoss
+
+    @AvgLoss.setter
+    def AvgLoss(self, AvgLoss):
+        self._AvgLoss = AvgLoss
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskCount = params.get("TaskCount")
+        self._ExecutionCount = params.get("ExecutionCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        self._AvgDuration = params.get("AvgDuration")
+        self._AvgLoss = params.get("AvgLoss")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMDialTasksRequest(AbstractModel):
+    r"""DescribeTDEMDialTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        """
+        self._AppId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMDialTasksResponse(AbstractModel):
+    r"""DescribeTDEMDialTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskSet: <p>拨测任务列表</p>
+        :type TaskSet: list of DialTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskSet = None
+        self._RequestId = None
+
+    @property
+    def TaskSet(self):
+        r"""<p>拨测任务列表</p>
+        :rtype: list of DialTask
+        """
+        return self._TaskSet
+
+    @TaskSet.setter
+    def TaskSet(self, TaskSet):
+        self._TaskSet = TaskSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskSet") is not None:
+            self._TaskSet = []
+            for item in params.get("TaskSet"):
+                obj = DialTask()
+                obj._deserialize(item)
+                self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMDialTrendRequest(AbstractModel):
+    r"""DescribeTDEMDialTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，毫秒时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :type EndTime: int
+        :param _TaskId: <p>任务 ID。不传表示不过滤。</p>
+        :type TaskId: str
+        :param _Platform: <p>客户端平台。不传表示不过滤。</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本。不传表示不过滤。</p>
+        :type AppVersion: str
+        :param _Device: <p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :type Device: str
+        :param _NetType: <p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :type NetType: str
+        :param _Operator: <p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :type Operator: str
+        :param _ClientRegion: <p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :type ClientRegion: str
+        :param _TargetIp: <p>目标 IP。不传表示不过滤。</p>
+        :type TargetIp: str
+        :param _Granularity: <p>时间粒度。取值说明：hour、day。不传时为 hour。</p>
+        :type Granularity: str
+        :param _Environment: <p>环境。可选。不传表示不过滤。</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TaskId = None
+        self._Platform = None
+        self._AppVersion = None
+        self._Device = None
+        self._NetType = None
+        self._Operator = None
+        self._ClientRegion = None
+        self._TargetIp = None
+        self._Granularity = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，毫秒时间戳，必须大于 StartTime</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Platform(self):
+        r"""<p>客户端平台。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Device(self):
+        r"""<p>设备机型，对应 device_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def NetType(self):
+        r"""<p>网络类型，对应 network_type。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Operator(self):
+        r"""<p>客户端运营商，对应 isp。不传表示不过滤。不是目标 IP 运营商。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ClientRegion(self):
+        r"""<p>客户端地区，对应 province。云 API 公共参数已占用 Region，筛选入参名为 ClientRegion。不传表示不过滤。不是目标 IP 地区。</p>
+        :rtype: str
+        """
+        return self._ClientRegion
+
+    @ClientRegion.setter
+    def ClientRegion(self, ClientRegion):
+        self._ClientRegion = ClientRegion
+
+    @property
+    def TargetIp(self):
+        r"""<p>目标 IP。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._TargetIp
+
+    @TargetIp.setter
+    def TargetIp(self, TargetIp):
+        self._TargetIp = TargetIp
+
+    @property
+    def Granularity(self):
+        r"""<p>时间粒度。取值说明：hour、day。不传时为 hour。</p>
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def Environment(self):
+        r"""<p>环境。可选。不传表示不过滤。</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TaskId = params.get("TaskId")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._Device = params.get("Device")
+        self._NetType = params.get("NetType")
+        self._Operator = params.get("Operator")
+        self._ClientRegion = params.get("ClientRegion")
+        self._TargetIp = params.get("TargetIp")
+        self._Granularity = params.get("Granularity")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMDialTrendResponse(AbstractModel):
+    r"""DescribeTDEMDialTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Points: <p>趋势点</p>
+        :type Points: list of DialTrendPoint
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Points = None
+        self._RequestId = None
+
+    @property
+    def Points(self):
+        r"""<p>趋势点</p>
+        :rtype: list of DialTrendPoint
+        """
+        return self._Points
+
+    @Points.setter
+    def Points(self, Points):
+        self._Points = Points
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Points") is not None:
+            self._Points = []
+            for item in params.get("Points"):
+                obj = DialTrendPoint()
+                obj._deserialize(item)
+                self._Points.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMEventDetailRequest(AbstractModel):
+    r"""DescribeTDEMEventDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _EventId: <p>事件 ID（必填）</p>
+        :type EventId: str
+        :param _Date: <p>分区日期 YYYY-MM-DD（推荐）</p>
+        :type Date: str
+        """
+        self._AppId = None
+        self._EventId = None
+        self._Date = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def EventId(self):
+        r"""<p>事件 ID（必填）</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Date(self):
+        r"""<p>分区日期 YYYY-MM-DD（推荐）</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._EventId = params.get("EventId")
+        self._Date = params.get("Date")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMEventDetailResponse(AbstractModel):
+    r"""DescribeTDEMEventDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Event: <p>事件主表视图</p>
+        :type Event: :class:`tencentcloud.rum.v20210622.models.EventView`
+        :param _Symbolicated: <p>符号化结果，未翻译时可省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Symbolicated: :class:`tencentcloud.rum.v20210622.models.SymbolicatedView`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Event = None
+        self._Symbolicated = None
+        self._RequestId = None
+
+    @property
+    def Event(self):
+        r"""<p>事件主表视图</p>
+        :rtype: :class:`tencentcloud.rum.v20210622.models.EventView`
+        """
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def Symbolicated(self):
+        r"""<p>符号化结果，未翻译时可省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.rum.v20210622.models.SymbolicatedView`
+        """
+        return self._Symbolicated
+
+    @Symbolicated.setter
+    def Symbolicated(self, Symbolicated):
+        self._Symbolicated = Symbolicated
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Event") is not None:
+            self._Event = EventView()
+            self._Event._deserialize(params.get("Event"))
+        if params.get("Symbolicated") is not None:
+            self._Symbolicated = SymbolicatedView()
+            self._Symbolicated._deserialize(params.get("Symbolicated"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMEventRankRequest(AbstractModel):
+    r"""DescribeTDEMEventRank请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间 Unix 毫秒（必填）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间 Unix 毫秒（必填）</p>
+        :type EndTime: int
+        :param _Kind: <p>排行类型：error/api/resource/api_page/resource_page/api_status/api_status_top/resource_status/tag；exception_dimension 为异常维度同源统计，使用 ExceptionDistribution 返回结果。</p>
+        :type Kind: str
+        :param _EventTypes: <p>旧 Kind 保持既有错误类型过滤规则；Kind=exception_dimension 标签模式必填，允许 js_error、promise_error、api_error、resource_error、blank_screen、log、native_crash、crash、no_response、lag_detected、app_launch。合法重复值去重，未知值拒绝；普通维度模式不传。</p>
+        :type EventTypes: list of str
+        :param _TagKey: <p>旧 Kind=tag 保持既有标签查询；Kind=exception_dimension 标签模式必填，与 GroupBy 二选一。使用既有标签名规范，长度 1–64，允许字母数字及 _-.；标签值保留原始内容。</p>
+        :type TagKey: str
+        :param _Limit: <p>返回条数，上限100。旧 Kind 缺省50；Kind=exception_dimension 缺省100，显式值为1–100，限制完整归一化维度行数，不裁剪分类向量。</p>
+        :type Limit: int
+        :param _Granularity: <p>旧 Kind 可选粒度5m/1h/1d；Kind=exception_dimension 不支持，传非空值返回 InvalidParameter。</p>
+        :type Granularity: str
+        :param _Filters: <p>筛选条件 JSON 字符串，走 events 表白名单</p>
+        :type Filters: str
+        :param _CostType: <p>旧 Kind 耗时口径 avg/p50/p75/p95/p99；Kind=exception_dimension 不支持，传非空值返回 InvalidParameter。</p>
+        :type CostType: str
+        :param _GroupBy: <p>异常分布的聚合维度，仅 Kind=exception_dimension 的普通维度模式使用且必填。标签模式只传 TagKey，不传 GroupBy。</p><p>枚举值：</p><ul><li>device_type： 设备型号</li><li>os： 操作系统</li><li>browser： 浏览器</li><li>app_version： 应用版本</li><li>province： 省份</li><li>platform： 平台</li><li>network_type： 网络类型</li></ul>
+        :type GroupBy: str
+        :param _ProjectType: <p>仅 Kind=exception_dimension 普通维度模式必填。允许 web、android、ios，须与应用平台及 CategoryKeys 目录一致。标签模式不传。</p>
+        :type ProjectType: str
+        :param _CategoryKeys: <p>仅 Kind=exception_dimension 普通维度模式必填，为页面实际有效的异常目录 key 非空去重集合。仅接受对应 ProjectType 的固定目录，包含项须同时选择父项；未知、重复、空目录及互斥参数组合返回 InvalidParameter。标签模式不传。</p>
+        :type CategoryKeys: list of str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Kind = None
+        self._EventTypes = None
+        self._TagKey = None
+        self._Limit = None
+        self._Granularity = None
+        self._Filters = None
+        self._CostType = None
+        self._GroupBy = None
+        self._ProjectType = None
+        self._CategoryKeys = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Kind(self):
+        r"""<p>排行类型：error/api/resource/api_page/resource_page/api_status/api_status_top/resource_status/tag；exception_dimension 为异常维度同源统计，使用 ExceptionDistribution 返回结果。</p>
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def EventTypes(self):
+        r"""<p>旧 Kind 保持既有错误类型过滤规则；Kind=exception_dimension 标签模式必填，允许 js_error、promise_error、api_error、resource_error、blank_screen、log、native_crash、crash、no_response、lag_detected、app_launch。合法重复值去重，未知值拒绝；普通维度模式不传。</p>
+        :rtype: list of str
+        """
+        return self._EventTypes
+
+    @EventTypes.setter
+    def EventTypes(self, EventTypes):
+        self._EventTypes = EventTypes
+
+    @property
+    def TagKey(self):
+        r"""<p>旧 Kind=tag 保持既有标签查询；Kind=exception_dimension 标签模式必填，与 GroupBy 二选一。使用既有标签名规范，长度 1–64，允许字母数字及 _-.；标签值保留原始内容。</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def Limit(self):
+        r"""<p>返回条数，上限100。旧 Kind 缺省50；Kind=exception_dimension 缺省100，显式值为1–100，限制完整归一化维度行数，不裁剪分类向量。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Granularity(self):
+        r"""<p>旧 Kind 可选粒度5m/1h/1d；Kind=exception_dimension 不支持，传非空值返回 InvalidParameter。</p>
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，走 events 表白名单</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def CostType(self):
+        r"""<p>旧 Kind 耗时口径 avg/p50/p75/p95/p99；Kind=exception_dimension 不支持，传非空值返回 InvalidParameter。</p>
+        :rtype: str
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
+    @property
+    def GroupBy(self):
+        r"""<p>异常分布的聚合维度，仅 Kind=exception_dimension 的普通维度模式使用且必填。标签模式只传 TagKey，不传 GroupBy。</p><p>枚举值：</p><ul><li>device_type： 设备型号</li><li>os： 操作系统</li><li>browser： 浏览器</li><li>app_version： 应用版本</li><li>province： 省份</li><li>platform： 平台</li><li>network_type： 网络类型</li></ul>
+        :rtype: str
+        """
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
+    def ProjectType(self):
+        r"""<p>仅 Kind=exception_dimension 普通维度模式必填。允许 web、android、ios，须与应用平台及 CategoryKeys 目录一致。标签模式不传。</p>
+        :rtype: str
+        """
+        return self._ProjectType
+
+    @ProjectType.setter
+    def ProjectType(self, ProjectType):
+        self._ProjectType = ProjectType
+
+    @property
+    def CategoryKeys(self):
+        r"""<p>仅 Kind=exception_dimension 普通维度模式必填，为页面实际有效的异常目录 key 非空去重集合。仅接受对应 ProjectType 的固定目录，包含项须同时选择父项；未知、重复、空目录及互斥参数组合返回 InvalidParameter。标签模式不传。</p>
+        :rtype: list of str
+        """
+        return self._CategoryKeys
+
+    @CategoryKeys.setter
+    def CategoryKeys(self, CategoryKeys):
+        self._CategoryKeys = CategoryKeys
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Kind = params.get("Kind")
+        self._EventTypes = params.get("EventTypes")
+        self._TagKey = params.get("TagKey")
+        self._Limit = params.get("Limit")
+        self._Granularity = params.get("Granularity")
+        self._Filters = params.get("Filters")
+        self._CostType = params.get("CostType")
+        self._GroupBy = params.get("GroupBy")
+        self._ProjectType = params.get("ProjectType")
+        self._CategoryKeys = params.get("CategoryKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMEventRankResponse(AbstractModel):
+    r"""DescribeTDEMEventRank返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>排行行</p>
+        :type Items: list of EventRankItem
+        :param _ExceptionDistribution: <p>仅 Kind=exception_dimension 返回。Rows 为完整维度行及固定分类向量；空数据返回 Rows=[]。父行 TotalCount 等于 IncludedInTotal=true 的主项 Count 之和，包含项仅展示且不重复计总。所有计数为0至9007199254740991的整数。旧 Kind 继续使用 Items。</p>
+        :type ExceptionDistribution: :class:`tencentcloud.rum.v20210622.models.ExceptionDistribution`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._ExceptionDistribution = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>排行行</p>
+        :rtype: list of EventRankItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def ExceptionDistribution(self):
+        r"""<p>仅 Kind=exception_dimension 返回。Rows 为完整维度行及固定分类向量；空数据返回 Rows=[]。父行 TotalCount 等于 IncludedInTotal=true 的主项 Count 之和，包含项仅展示且不重复计总。所有计数为0至9007199254740991的整数。旧 Kind 继续使用 Items。</p>
+        :rtype: :class:`tencentcloud.rum.v20210622.models.ExceptionDistribution`
+        """
+        return self._ExceptionDistribution
+
+    @ExceptionDistribution.setter
+    def ExceptionDistribution(self, ExceptionDistribution):
+        self._ExceptionDistribution = ExceptionDistribution
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = EventRankItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        if params.get("ExceptionDistribution") is not None:
+            self._ExceptionDistribution = ExceptionDistribution()
+            self._ExceptionDistribution._deserialize(params.get("ExceptionDistribution"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMEventSearchRequest(AbstractModel):
+    r"""DescribeTDEMEventSearch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间 Unix 毫秒（必填）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间 Unix 毫秒（必填）</p>
+        :type EndTime: int
+        :param _Category: <p>事件分类（必填，禁止 session）</p>
+        :type Category: str
+        :param _Filters: <p>筛选条件 JSON 字符串：[{Key,Op,Values}]，须在探索白名单</p>
+        :type Filters: str
+        :param _SortBy: <p>排序字段：timestamp（默认）/ duration</p>
+        :type SortBy: str
+        :param _SortOrder: <p>排序方向：asc / desc，默认 desc</p>
+        :type SortOrder: str
+        :param _Page: <p>页码，&gt;=1，默认 1</p>
+        :type Page: int
+        :param _PageSize: <p>每页条数，1-100，默认 20</p>
+        :type PageSize: int
+        :param _HasError: <p>是否只看有错误的会话。可选。不传表示不过滤。Category 为 session 的汇总查询会使用该条件。</p>
+        :type HasError: bool
+        :param _MinDuration: <p>会话最短时长，单位毫秒。可选。0 或不传表示不限制。Category 为 session 的汇总查询会使用该条件。</p>
+        :type MinDuration: int
+        :param _MaxDuration: <p>会话最长时长，单位毫秒。可选。0 或不传表示不限制。Category 为 session 的汇总查询会使用该条件。</p>
+        :type MaxDuration: int
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Category = None
+        self._Filters = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Page = None
+        self._PageSize = None
+        self._HasError = None
+        self._MinDuration = None
+        self._MaxDuration = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Category(self):
+        r"""<p>事件分类（必填，禁止 session）</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串：[{Key,Op,Values}]，须在探索白名单</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段：timestamp（默认）/ duration</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序方向：asc / desc，默认 desc</p>
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Page(self):
+        r"""<p>页码，&gt;=1，默认 1</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页条数，1-100，默认 20</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def HasError(self):
+        r"""<p>是否只看有错误的会话。可选。不传表示不过滤。Category 为 session 的汇总查询会使用该条件。</p>
+        :rtype: bool
+        """
+        return self._HasError
+
+    @HasError.setter
+    def HasError(self, HasError):
+        self._HasError = HasError
+
+    @property
+    def MinDuration(self):
+        r"""<p>会话最短时长，单位毫秒。可选。0 或不传表示不限制。Category 为 session 的汇总查询会使用该条件。</p>
+        :rtype: int
+        """
+        return self._MinDuration
+
+    @MinDuration.setter
+    def MinDuration(self, MinDuration):
+        self._MinDuration = MinDuration
+
+    @property
+    def MaxDuration(self):
+        r"""<p>会话最长时长，单位毫秒。可选。0 或不传表示不限制。Category 为 session 的汇总查询会使用该条件。</p>
+        :rtype: int
+        """
+        return self._MaxDuration
+
+    @MaxDuration.setter
+    def MaxDuration(self, MaxDuration):
+        self._MaxDuration = MaxDuration
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Category = params.get("Category")
+        self._Filters = params.get("Filters")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._HasError = params.get("HasError")
+        self._MinDuration = params.get("MinDuration")
+        self._MaxDuration = params.get("MaxDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMEventSearchResponse(AbstractModel):
+    r"""DescribeTDEMEventSearch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: <p>事件列表</p>
+        :type Events: list of ExplorationEventItem
+        :param _Total: <p>总条数</p>
+        :type Total: int
+        :param _Page: <p>页码</p>
+        :type Page: int
+        :param _PageSize: <p>每页条数</p>
+        :type PageSize: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        r"""<p>事件列表</p>
+        :rtype: list of ExplorationEventItem
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def Total(self):
+        r"""<p>总条数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页条数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = ExplorationEventItem()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMEventSearchSummaryRequest(AbstractModel):
+    r"""DescribeTDEMEventSearchSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间 Unix 毫秒（必填）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间 Unix 毫秒（必填）</p>
+        :type EndTime: int
+        :param _Category: <p>事件分类（必填，可含 session）</p>
+        :type Category: str
+        :param _Filters: <p>筛选条件 JSON 字符串：[{Key,Op,Values}]</p>
+        :type Filters: str
+        :param _IntervalSec: <p>分桶秒数，正整数；缺省由服务端按窗口选取</p>
+        :type IntervalSec: int
+        :param _HasError: <p>是否只看有错误的会话。可选。不传表示不过滤。Category 为 session 的汇总查询会使用该条件。</p>
+        :type HasError: bool
+        :param _MinDuration: <p>会话最短时长，单位毫秒。可选。0 或不传表示不限制。Category 为 session 的汇总查询会使用该条件。</p>
+        :type MinDuration: int
+        :param _MaxDuration: <p>会话最长时长，单位毫秒。可选。0 或不传表示不限制。Category 为 session 的汇总查询会使用该条件。</p>
+        :type MaxDuration: int
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Category = None
+        self._Filters = None
+        self._IntervalSec = None
+        self._HasError = None
+        self._MinDuration = None
+        self._MaxDuration = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Category(self):
+        r"""<p>事件分类（必填，可含 session）</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串：[{Key,Op,Values}]</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def IntervalSec(self):
+        r"""<p>分桶秒数，正整数；缺省由服务端按窗口选取</p>
+        :rtype: int
+        """
+        return self._IntervalSec
+
+    @IntervalSec.setter
+    def IntervalSec(self, IntervalSec):
+        self._IntervalSec = IntervalSec
+
+    @property
+    def HasError(self):
+        r"""<p>是否只看有错误的会话。可选。不传表示不过滤。Category 为 session 的汇总查询会使用该条件。</p>
+        :rtype: bool
+        """
+        return self._HasError
+
+    @HasError.setter
+    def HasError(self, HasError):
+        self._HasError = HasError
+
+    @property
+    def MinDuration(self):
+        r"""<p>会话最短时长，单位毫秒。可选。0 或不传表示不限制。Category 为 session 的汇总查询会使用该条件。</p>
+        :rtype: int
+        """
+        return self._MinDuration
+
+    @MinDuration.setter
+    def MinDuration(self, MinDuration):
+        self._MinDuration = MinDuration
+
+    @property
+    def MaxDuration(self):
+        r"""<p>会话最长时长，单位毫秒。可选。0 或不传表示不限制。Category 为 session 的汇总查询会使用该条件。</p>
+        :rtype: int
+        """
+        return self._MaxDuration
+
+    @MaxDuration.setter
+    def MaxDuration(self, MaxDuration):
+        self._MaxDuration = MaxDuration
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Category = params.get("Category")
+        self._Filters = params.get("Filters")
+        self._IntervalSec = params.get("IntervalSec")
+        self._HasError = params.get("HasError")
+        self._MinDuration = params.get("MinDuration")
+        self._MaxDuration = params.get("MaxDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMEventSearchSummaryResponse(AbstractModel):
+    r"""DescribeTDEMEventSearchSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryCounts: <p>各分类窗口计数，Key 为分类 id</p>
+        :type CategoryCounts: list of IntKeyValue
+        :param _Total: <p>当前分类窗口条数</p>
+        :type Total: int
+        :param _Visitors: <p>访问用户（设备）</p>
+        :type Visitors: int
+        :param _Users: <p>业务用户</p>
+        :type Users: int
+        :param _IntervalSec: <p>实际分桶秒数</p>
+        :type IntervalSec: int
+        :param _Series: <p>分桶趋势</p>
+        :type Series: list of EventSearchSeriesPoint
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CategoryCounts = None
+        self._Total = None
+        self._Visitors = None
+        self._Users = None
+        self._IntervalSec = None
+        self._Series = None
+        self._RequestId = None
+
+    @property
+    def CategoryCounts(self):
+        r"""<p>各分类窗口计数，Key 为分类 id</p>
+        :rtype: list of IntKeyValue
+        """
+        return self._CategoryCounts
+
+    @CategoryCounts.setter
+    def CategoryCounts(self, CategoryCounts):
+        self._CategoryCounts = CategoryCounts
+
+    @property
+    def Total(self):
+        r"""<p>当前分类窗口条数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Visitors(self):
+        r"""<p>访问用户（设备）</p>
+        :rtype: int
+        """
+        return self._Visitors
+
+    @Visitors.setter
+    def Visitors(self, Visitors):
+        self._Visitors = Visitors
+
+    @property
+    def Users(self):
+        r"""<p>业务用户</p>
+        :rtype: int
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def IntervalSec(self):
+        r"""<p>实际分桶秒数</p>
+        :rtype: int
+        """
+        return self._IntervalSec
+
+    @IntervalSec.setter
+    def IntervalSec(self, IntervalSec):
+        self._IntervalSec = IntervalSec
+
+    @property
+    def Series(self):
+        r"""<p>分桶趋势</p>
+        :rtype: list of EventSearchSeriesPoint
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CategoryCounts") is not None:
+            self._CategoryCounts = []
+            for item in params.get("CategoryCounts"):
+                obj = IntKeyValue()
+                obj._deserialize(item)
+                self._CategoryCounts.append(obj)
+        self._Total = params.get("Total")
+        self._Visitors = params.get("Visitors")
+        self._Users = params.get("Users")
+        self._IntervalSec = params.get("IntervalSec")
+        if params.get("Series") is not None:
+            self._Series = []
+            for item in params.get("Series"):
+                obj = EventSearchSeriesPoint()
+                obj._deserialize(item)
+                self._Series.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMFieldTransformRulesRequest(AbstractModel):
+    r"""DescribeTDEMFieldTransformRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _Offset: <p>分页偏移，默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量</p>
+        :type Limit: int
+        """
+        self._AppId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMFieldTransformRulesResponse(AbstractModel):
+    r"""DescribeTDEMFieldTransformRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _FieldTransformRuleSet: <p>规则列表</p>
+        :type FieldTransformRuleSet: list of FieldTransformRuleItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FieldTransformRuleSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FieldTransformRuleSet(self):
+        r"""<p>规则列表</p>
+        :rtype: list of FieldTransformRuleItem
+        """
+        return self._FieldTransformRuleSet
+
+    @FieldTransformRuleSet.setter
+    def FieldTransformRuleSet(self, FieldTransformRuleSet):
+        self._FieldTransformRuleSet = FieldTransformRuleSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("FieldTransformRuleSet") is not None:
+            self._FieldTransformRuleSet = []
+            for item in params.get("FieldTransformRuleSet"):
+                obj = FieldTransformRuleItem()
+                obj._deserialize(item)
+                self._FieldTransformRuleSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMFunnelDetailRequest(AbstractModel):
+    r"""DescribeTDEMFunnelDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FunnelId: <p>漏斗id</p>
+        :type FunnelId: str
+        """
+        self._AppId = None
+        self._FunnelId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FunnelId(self):
+        r"""<p>漏斗id</p>
+        :rtype: str
+        """
+        return self._FunnelId
+
+    @FunnelId.setter
+    def FunnelId(self, FunnelId):
+        self._FunnelId = FunnelId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FunnelId = params.get("FunnelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMFunnelDetailResponse(AbstractModel):
+    r"""DescribeTDEMFunnelDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMFunnelDimensionsRequest(AbstractModel):
+    r"""DescribeTDEMFunnelDimensions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FunnelId: <p>漏斗id</p>
+        :type FunnelId: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Dimension: <p>维度</p>
+        :type Dimension: str
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _DeviceType: <p>设备类型</p>
+        :type DeviceType: str
+        :param _Browser: <p>浏览器</p>
+        :type Browser: str
+        :param _OS: <p>操作系统</p>
+        :type OS: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _Referrer: <p>页面来源</p>
+        :type Referrer: str
+        :param _AppVersion: <p>应用版本</p>
+        :type AppVersion: str
+        :param _Environment: <p>环境</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._FunnelId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Dimension = None
+        self._Platform = None
+        self._DeviceType = None
+        self._Browser = None
+        self._OS = None
+        self._Country = None
+        self._Referrer = None
+        self._AppVersion = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FunnelId(self):
+        r"""<p>漏斗id</p>
+        :rtype: str
+        """
+        return self._FunnelId
+
+    @FunnelId.setter
+    def FunnelId(self, FunnelId):
+        self._FunnelId = FunnelId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Dimension(self):
+        r"""<p>维度</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def DeviceType(self):
+        r"""<p>设备类型</p>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Browser(self):
+        r"""<p>浏览器</p>
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def OS(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Referrer(self):
+        r"""<p>页面来源</p>
+        :rtype: str
+        """
+        return self._Referrer
+
+    @Referrer.setter
+    def Referrer(self, Referrer):
+        self._Referrer = Referrer
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Environment(self):
+        r"""<p>环境</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FunnelId = params.get("FunnelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Dimension = params.get("Dimension")
+        self._Platform = params.get("Platform")
+        self._DeviceType = params.get("DeviceType")
+        self._Browser = params.get("Browser")
+        self._OS = params.get("OS")
+        self._Country = params.get("Country")
+        self._Referrer = params.get("Referrer")
+        self._AppVersion = params.get("AppVersion")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMFunnelDimensionsResponse(AbstractModel):
+    r"""DescribeTDEMFunnelDimensions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMFunnelListRequest(AbstractModel):
+    r"""DescribeTDEMFunnelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _Keyword: <p>关键字，用于过滤漏斗名</p>
+        :type Keyword: str
+        :param _Status: <p>漏斗状态</p>
+        :type Status: str
+        :param _Page: <p>页面号</p>
+        :type Page: int
+        :param _PageSize: <p>页面数量</p>
+        :type PageSize: int
+        """
+        self._AppId = None
+        self._Keyword = None
+        self._Status = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Keyword(self):
+        r"""<p>关键字，用于过滤漏斗名</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Status(self):
+        r"""<p>漏斗状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Page(self):
+        r"""<p>页面号</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页面数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Keyword = params.get("Keyword")
+        self._Status = params.get("Status")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMFunnelListResponse(AbstractModel):
+    r"""DescribeTDEMFunnelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMFunnelReportRequest(AbstractModel):
+    r"""DescribeTDEMFunnelReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FunnelId: <p>漏斗id</p>
+        :type FunnelId: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _DeviceType: <p>设备类型</p>
+        :type DeviceType: str
+        :param _Browser: <p>浏览器</p>
+        :type Browser: str
+        :param _OS: <p>操作系统</p>
+        :type OS: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _Referrer: <p>页面来源</p>
+        :type Referrer: str
+        :param _AppVersion: <p>应用版本</p>
+        :type AppVersion: str
+        :param _Environment: <p>环境选择</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._FunnelId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Platform = None
+        self._DeviceType = None
+        self._Browser = None
+        self._OS = None
+        self._Country = None
+        self._Referrer = None
+        self._AppVersion = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FunnelId(self):
+        r"""<p>漏斗id</p>
+        :rtype: str
+        """
+        return self._FunnelId
+
+    @FunnelId.setter
+    def FunnelId(self, FunnelId):
+        self._FunnelId = FunnelId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def DeviceType(self):
+        r"""<p>设备类型</p>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Browser(self):
+        r"""<p>浏览器</p>
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def OS(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Referrer(self):
+        r"""<p>页面来源</p>
+        :rtype: str
+        """
+        return self._Referrer
+
+    @Referrer.setter
+    def Referrer(self, Referrer):
+        self._Referrer = Referrer
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Environment(self):
+        r"""<p>环境选择</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FunnelId = params.get("FunnelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Platform = params.get("Platform")
+        self._DeviceType = params.get("DeviceType")
+        self._Browser = params.get("Browser")
+        self._OS = params.get("OS")
+        self._Country = params.get("Country")
+        self._Referrer = params.get("Referrer")
+        self._AppVersion = params.get("AppVersion")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMFunnelReportResponse(AbstractModel):
+    r"""DescribeTDEMFunnelReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMFunnelStepSessionListRequest(AbstractModel):
+    r"""DescribeTDEMFunnelStepSessionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FunnelId: <p>漏斗id</p>
+        :type FunnelId: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _StepIndex: <p>步骤索引</p>
+        :type StepIndex: int
+        :param _Steps: <p>漏斗步骤</p>
+        :type Steps: str
+        :param _DrillType: <p>下钻类型</p>
+        :type DrillType: str
+        :param _Page: <p>页面号</p>
+        :type Page: int
+        :param _PageSize: <p>每页大小</p>
+        :type PageSize: int
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本</p>
+        :type AppVersion: str
+        :param _DeviceType: <p>设备类型</p>
+        :type DeviceType: str
+        :param _Browser: <p>浏览器</p>
+        :type Browser: str
+        :param _OS: <p>操作系统</p>
+        :type OS: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _Referrer: <p>页面来源</p>
+        :type Referrer: str
+        :param _Environment: <p>环境</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._FunnelId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._StepIndex = None
+        self._Steps = None
+        self._DrillType = None
+        self._Page = None
+        self._PageSize = None
+        self._Platform = None
+        self._AppVersion = None
+        self._DeviceType = None
+        self._Browser = None
+        self._OS = None
+        self._Country = None
+        self._Referrer = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FunnelId(self):
+        r"""<p>漏斗id</p>
+        :rtype: str
+        """
+        return self._FunnelId
+
+    @FunnelId.setter
+    def FunnelId(self, FunnelId):
+        self._FunnelId = FunnelId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StepIndex(self):
+        r"""<p>步骤索引</p>
+        :rtype: int
+        """
+        return self._StepIndex
+
+    @StepIndex.setter
+    def StepIndex(self, StepIndex):
+        self._StepIndex = StepIndex
+
+    @property
+    def Steps(self):
+        r"""<p>漏斗步骤</p>
+        :rtype: str
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+    @property
+    def DrillType(self):
+        r"""<p>下钻类型</p>
+        :rtype: str
+        """
+        return self._DrillType
+
+    @DrillType.setter
+    def DrillType(self, DrillType):
+        self._DrillType = DrillType
+
+    @property
+    def Page(self):
+        r"""<p>页面号</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def DeviceType(self):
+        r"""<p>设备类型</p>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Browser(self):
+        r"""<p>浏览器</p>
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def OS(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Referrer(self):
+        r"""<p>页面来源</p>
+        :rtype: str
+        """
+        return self._Referrer
+
+    @Referrer.setter
+    def Referrer(self, Referrer):
+        self._Referrer = Referrer
+
+    @property
+    def Environment(self):
+        r"""<p>环境</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FunnelId = params.get("FunnelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._StepIndex = params.get("StepIndex")
+        self._Steps = params.get("Steps")
+        self._DrillType = params.get("DrillType")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._DeviceType = params.get("DeviceType")
+        self._Browser = params.get("Browser")
+        self._OS = params.get("OS")
+        self._Country = params.get("Country")
+        self._Referrer = params.get("Referrer")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMFunnelStepSessionListResponse(AbstractModel):
+    r"""DescribeTDEMFunnelStepSessionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMFunnelTrendRequest(AbstractModel):
+    r"""DescribeTDEMFunnelTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FunnelId: <p>漏斗id</p>
+        :type FunnelId: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Interval: <p>间隔</p>
+        :type Interval: str
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本</p>
+        :type AppVersion: str
+        :param _DeviceType: <p>设备类型</p>
+        :type DeviceType: str
+        :param _Browser: <p>浏览器</p>
+        :type Browser: str
+        :param _OS: <p>操作系统</p>
+        :type OS: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _Referrer: <p>页面来源</p>
+        :type Referrer: str
+        :param _Environment: <p>环境</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._FunnelId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Interval = None
+        self._Platform = None
+        self._AppVersion = None
+        self._DeviceType = None
+        self._Browser = None
+        self._OS = None
+        self._Country = None
+        self._Referrer = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FunnelId(self):
+        r"""<p>漏斗id</p>
+        :rtype: str
+        """
+        return self._FunnelId
+
+    @FunnelId.setter
+    def FunnelId(self, FunnelId):
+        self._FunnelId = FunnelId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Interval(self):
+        r"""<p>间隔</p>
+        :rtype: str
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def DeviceType(self):
+        r"""<p>设备类型</p>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Browser(self):
+        r"""<p>浏览器</p>
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def OS(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Referrer(self):
+        r"""<p>页面来源</p>
+        :rtype: str
+        """
+        return self._Referrer
+
+    @Referrer.setter
+    def Referrer(self, Referrer):
+        self._Referrer = Referrer
+
+    @property
+    def Environment(self):
+        r"""<p>环境</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FunnelId = params.get("FunnelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Interval = params.get("Interval")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._DeviceType = params.get("DeviceType")
+        self._Browser = params.get("Browser")
+        self._OS = params.get("OS")
+        self._Country = params.get("Country")
+        self._Referrer = params.get("Referrer")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMFunnelTrendResponse(AbstractModel):
+    r"""DescribeTDEMFunnelTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMMetricDistributionRequest(AbstractModel):
+    r"""DescribeTDEMMetricDistribution请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间 Unix 毫秒（必填）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间 Unix 毫秒（必填）</p>
+        :type EndTime: int
+        :param _EventType: <p>顶层事件类型；单查必填，批量用 Queries 时可不填</p>
+        :type EventType: str
+        :param _SubType: <p>子类型；未知返回 0</p>
+        :type SubType: str
+        :param _Filters: <p>筛选条件 JSON 字符串：[{Key,Op,Values}]，走分析立方白名单</p>
+        :type Filters: str
+        :param _Metrics: <p>指标名列表，如 count / rate；单查必填</p>
+        :type Metrics: list of str
+        :param _MeasurementKey: <p>分位/均值必填，如 lcp / duration</p>
+        :type MeasurementKey: str
+        :param _GroupBy: <p>单维度（Distribution 用）</p>
+        :type GroupBy: str
+        :param _Limit: <p>返回条数，Top 默认 10 上限 100</p>
+        :type Limit: int
+        :param _Queries: <p>批量查询，上限 32</p>
+        :type Queries: list of MetricQueryItem
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._EventType = None
+        self._SubType = None
+        self._Filters = None
+        self._Metrics = None
+        self._MeasurementKey = None
+        self._GroupBy = None
+        self._Limit = None
+        self._Queries = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EventType(self):
+        r"""<p>顶层事件类型；单查必填，批量用 Queries 时可不填</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def SubType(self):
+        r"""<p>子类型；未知返回 0</p>
+        :rtype: str
+        """
+        return self._SubType
+
+    @SubType.setter
+    def SubType(self, SubType):
+        self._SubType = SubType
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串：[{Key,Op,Values}]，走分析立方白名单</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Metrics(self):
+        r"""<p>指标名列表，如 count / rate；单查必填</p>
+        :rtype: list of str
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def MeasurementKey(self):
+        r"""<p>分位/均值必填，如 lcp / duration</p>
+        :rtype: str
+        """
+        return self._MeasurementKey
+
+    @MeasurementKey.setter
+    def MeasurementKey(self, MeasurementKey):
+        self._MeasurementKey = MeasurementKey
+
+    @property
+    def GroupBy(self):
+        r"""<p>单维度（Distribution 用）</p>
+        :rtype: str
+        """
+        return self._GroupBy
+
+    @GroupBy.setter
+    def GroupBy(self, GroupBy):
+        self._GroupBy = GroupBy
+
+    @property
+    def Limit(self):
+        r"""<p>返回条数，Top 默认 10 上限 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Queries(self):
+        r"""<p>批量查询，上限 32</p>
+        :rtype: list of MetricQueryItem
+        """
+        return self._Queries
+
+    @Queries.setter
+    def Queries(self, Queries):
+        self._Queries = Queries
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._EventType = params.get("EventType")
+        self._SubType = params.get("SubType")
+        self._Filters = params.get("Filters")
+        self._Metrics = params.get("Metrics")
+        self._MeasurementKey = params.get("MeasurementKey")
+        self._GroupBy = params.get("GroupBy")
+        self._Limit = params.get("Limit")
+        if params.get("Queries") is not None:
+            self._Queries = []
+            for item in params.get("Queries"):
+                obj = MetricQueryItem()
+                obj._deserialize(item)
+                self._Queries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMMetricDistributionResponse(AbstractModel):
+    r"""DescribeTDEMMetricDistribution返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>单查分布桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of MetricDistributionItem
+        :param _Total: <p>单查合计，批量为空时省略</p>
+        :type Total: int
+        :param _Results: <p>批量结果，Queries 非空时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of MetricDistributionBatchItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._Total = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>单查分布桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricDistributionItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Total(self):
+        r"""<p>单查合计，批量为空时省略</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Results(self):
+        r"""<p>批量结果，Queries 非空时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricDistributionBatchItem
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = MetricDistributionItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._Total = params.get("Total")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = MetricDistributionBatchItem()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMMetricSummaryRequest(AbstractModel):
+    r"""DescribeTDEMMetricSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间 Unix 毫秒（必填）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间 Unix 毫秒（必填）</p>
+        :type EndTime: int
+        :param _EventType: <p>顶层事件类型；单查必填，批量用 Queries 时可不填</p>
+        :type EventType: str
+        :param _SubType: <p>子类型；未知返回 0</p>
+        :type SubType: str
+        :param _Filters: <p>筛选条件 JSON 字符串：[{Key,Op,Values}]，走分析立方白名单</p>
+        :type Filters: str
+        :param _Metrics: <p>指标名列表，如 count / rate；单查必填</p>
+        :type Metrics: list of str
+        :param _MeasurementKey: <p>分位/均值必填，如 lcp / duration</p>
+        :type MeasurementKey: str
+        :param _Queries: <p>批量查询，上限 32</p>
+        :type Queries: list of MetricQueryItem
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._EventType = None
+        self._SubType = None
+        self._Filters = None
+        self._Metrics = None
+        self._MeasurementKey = None
+        self._Queries = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def EventType(self):
+        r"""<p>顶层事件类型；单查必填，批量用 Queries 时可不填</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def SubType(self):
+        r"""<p>子类型；未知返回 0</p>
+        :rtype: str
+        """
+        return self._SubType
+
+    @SubType.setter
+    def SubType(self, SubType):
+        self._SubType = SubType
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串：[{Key,Op,Values}]，走分析立方白名单</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Metrics(self):
+        r"""<p>指标名列表，如 count / rate；单查必填</p>
+        :rtype: list of str
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def MeasurementKey(self):
+        r"""<p>分位/均值必填，如 lcp / duration</p>
+        :rtype: str
+        """
+        return self._MeasurementKey
+
+    @MeasurementKey.setter
+    def MeasurementKey(self, MeasurementKey):
+        self._MeasurementKey = MeasurementKey
+
+    @property
+    def Queries(self):
+        r"""<p>批量查询，上限 32</p>
+        :rtype: list of MetricQueryItem
+        """
+        return self._Queries
+
+    @Queries.setter
+    def Queries(self, Queries):
+        self._Queries = Queries
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._EventType = params.get("EventType")
+        self._SubType = params.get("SubType")
+        self._Filters = params.get("Filters")
+        self._Metrics = params.get("Metrics")
+        self._MeasurementKey = params.get("MeasurementKey")
+        if params.get("Queries") is not None:
+            self._Queries = []
+            for item in params.get("Queries"):
+                obj = MetricQueryItem()
+                obj._deserialize(item)
+                self._Queries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMMetricSummaryResponse(AbstractModel):
+    r"""DescribeTDEMMetricSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Metrics: <p>单查指标。缺测指标不出现，禁止 null</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metrics: list of FloatNameValue
+        :param _Results: <p>批量结果，Queries 非空时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of MetricSummaryBatchItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Metrics = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Metrics(self):
+        r"""<p>单查指标。缺测指标不出现，禁止 null</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FloatNameValue
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def Results(self):
+        r"""<p>批量结果，Queries 非空时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricSummaryBatchItem
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = FloatNameValue()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = MetricSummaryBatchItem()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMMetricTrendRequest(AbstractModel):
+    r"""DescribeTDEMMetricTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间 Unix 毫秒（必填）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间 Unix 毫秒（必填）</p>
+        :type EndTime: int
+        :param _Granularity: <p>粒度：5m（默认）/ 1h / 1d；跨度大时服务端可加粗</p>
+        :type Granularity: str
+        :param _EventType: <p>顶层事件类型；单查必填，批量用 Queries 时可不填</p>
+        :type EventType: str
+        :param _SubType: <p>子类型；未知返回 0</p>
+        :type SubType: str
+        :param _Filters: <p>筛选条件 JSON 字符串：[{Key,Op,Values}]，走分析立方白名单</p>
+        :type Filters: str
+        :param _Metrics: <p>指标名列表，如 count / rate；单查必填</p>
+        :type Metrics: list of str
+        :param _MeasurementKey: <p>分位/均值必填，如 lcp / duration</p>
+        :type MeasurementKey: str
+        :param _Queries: <p>批量查询，上限 32</p>
+        :type Queries: list of MetricQueryItem
+        :param _CompareStartTime: <p>对比窗开始 Unix 毫秒（仅 Trend 批量，须与 CompareEndTime 成对）</p>
+        :type CompareStartTime: int
+        :param _CompareEndTime: <p>对比窗结束 Unix 毫秒（仅 Trend 批量）</p>
+        :type CompareEndTime: int
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Granularity = None
+        self._EventType = None
+        self._SubType = None
+        self._Filters = None
+        self._Metrics = None
+        self._MeasurementKey = None
+        self._Queries = None
+        self._CompareStartTime = None
+        self._CompareEndTime = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Granularity(self):
+        r"""<p>粒度：5m（默认）/ 1h / 1d；跨度大时服务端可加粗</p>
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def EventType(self):
+        r"""<p>顶层事件类型；单查必填，批量用 Queries 时可不填</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def SubType(self):
+        r"""<p>子类型；未知返回 0</p>
+        :rtype: str
+        """
+        return self._SubType
+
+    @SubType.setter
+    def SubType(self, SubType):
+        self._SubType = SubType
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串：[{Key,Op,Values}]，走分析立方白名单</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Metrics(self):
+        r"""<p>指标名列表，如 count / rate；单查必填</p>
+        :rtype: list of str
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def MeasurementKey(self):
+        r"""<p>分位/均值必填，如 lcp / duration</p>
+        :rtype: str
+        """
+        return self._MeasurementKey
+
+    @MeasurementKey.setter
+    def MeasurementKey(self, MeasurementKey):
+        self._MeasurementKey = MeasurementKey
+
+    @property
+    def Queries(self):
+        r"""<p>批量查询，上限 32</p>
+        :rtype: list of MetricQueryItem
+        """
+        return self._Queries
+
+    @Queries.setter
+    def Queries(self, Queries):
+        self._Queries = Queries
+
+    @property
+    def CompareStartTime(self):
+        r"""<p>对比窗开始 Unix 毫秒（仅 Trend 批量，须与 CompareEndTime 成对）</p>
+        :rtype: int
+        """
+        return self._CompareStartTime
+
+    @CompareStartTime.setter
+    def CompareStartTime(self, CompareStartTime):
+        self._CompareStartTime = CompareStartTime
+
+    @property
+    def CompareEndTime(self):
+        r"""<p>对比窗结束 Unix 毫秒（仅 Trend 批量）</p>
+        :rtype: int
+        """
+        return self._CompareEndTime
+
+    @CompareEndTime.setter
+    def CompareEndTime(self, CompareEndTime):
+        self._CompareEndTime = CompareEndTime
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Granularity = params.get("Granularity")
+        self._EventType = params.get("EventType")
+        self._SubType = params.get("SubType")
+        self._Filters = params.get("Filters")
+        self._Metrics = params.get("Metrics")
+        self._MeasurementKey = params.get("MeasurementKey")
+        if params.get("Queries") is not None:
+            self._Queries = []
+            for item in params.get("Queries"):
+                obj = MetricQueryItem()
+                obj._deserialize(item)
+                self._Queries.append(obj)
+        self._CompareStartTime = params.get("CompareStartTime")
+        self._CompareEndTime = params.get("CompareEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMMetricTrendResponse(AbstractModel):
+    r"""DescribeTDEMMetricTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Granularity: <p>实际生效粒度</p>
+        :type Granularity: str
+        :param _Series: <p>单查时序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Series: list of MetricTrendPoint
+        :param _Results: <p>批量结果，Queries 非空时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Results: list of MetricTrendBatchItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Granularity = None
+        self._Series = None
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Granularity(self):
+        r"""<p>实际生效粒度</p>
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def Series(self):
+        r"""<p>单查时序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricTrendPoint
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def Results(self):
+        r"""<p>批量结果，Queries 非空时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricTrendBatchItem
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Granularity = params.get("Granularity")
+        if params.get("Series") is not None:
+            self._Series = []
+            for item in params.get("Series"):
+                obj = MetricTrendPoint()
+                obj._deserialize(item)
+                self._Series.append(obj)
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = MetricTrendBatchItem()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMOverviewScoresRequest(AbstractModel):
+    r"""DescribeTDEMOverviewScores请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppIds: <p>应用 ID 列表，1-200（必填）</p>
+        :type AppIds: list of str
+        :param _StartTime: <p>开始时间 Unix 毫秒（必填）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间 Unix 毫秒（必填）</p>
+        :type EndTime: int
+        :param _Filters: <p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。可选。总览总分按环境筛选时传入。</p>
+        :type Filters: str
+        """
+        self._AppIds = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+
+    @property
+    def AppIds(self):
+        r"""<p>应用 ID 列表，1-200（必填）</p>
+        :rtype: list of str
+        """
+        return self._AppIds
+
+    @AppIds.setter
+    def AppIds(self, AppIds):
+        self._AppIds = AppIds
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。可选。总览总分按环境筛选时传入。</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._AppIds = params.get("AppIds")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Filters = params.get("Filters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMOverviewScoresResponse(AbstractModel):
+    r"""DescribeTDEMOverviewScores返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scores: <p>各应用评分</p>
+        :type Scores: list of AppOverviewScore
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Scores = None
+        self._RequestId = None
+
+    @property
+    def Scores(self):
+        r"""<p>各应用评分</p>
+        :rtype: list of AppOverviewScore
+        """
+        return self._Scores
+
+    @Scores.setter
+    def Scores(self, Scores):
+        self._Scores = Scores
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Scores") is not None:
+            self._Scores = []
+            for item in params.get("Scores"):
+                obj = AppOverviewScore()
+                obj._deserialize(item)
+                self._Scores.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMRelatedEventsRequest(AbstractModel):
+    r"""DescribeTDEMRelatedEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间 Unix 毫秒（必填，用于分区裁剪）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间 Unix 毫秒（必填）</p>
+        :type EndTime: int
+        :param _Mode: <p>模式：timeline / page / breadcrumb（必填）</p>
+        :type Mode: str
+        :param _SessionId: <p>会话 ID（必填）</p>
+        :type SessionId: str
+        :param _PageUrl: <p>页面 URL（Mode=page 必填）</p>
+        :type PageUrl: str
+        :param _AnchorTimestamp: <p>锚点 Unix 毫秒（Mode=page/breadcrumb 使用）</p>
+        :type AnchorTimestamp: int
+        :param _Offset: <p>偏移，&gt;=0，默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>条数，1-200，默认 200</p>
+        :type Limit: int
+        :param _Category: <p>事件分类（可选）</p>
+        :type Category: str
+        :param _Keyword: <p>关键字（可选）</p>
+        :type Keyword: str
+        :param _ViewId: <p>视图 ID</p>
+        :type ViewId: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Mode = None
+        self._SessionId = None
+        self._PageUrl = None
+        self._AnchorTimestamp = None
+        self._Offset = None
+        self._Limit = None
+        self._Category = None
+        self._Keyword = None
+        self._ViewId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间 Unix 毫秒（必填，用于分区裁剪）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间 Unix 毫秒（必填）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Mode(self):
+        r"""<p>模式：timeline / page / breadcrumb（必填）</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID（必填）</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def PageUrl(self):
+        r"""<p>页面 URL（Mode=page 必填）</p>
+        :rtype: str
+        """
+        return self._PageUrl
+
+    @PageUrl.setter
+    def PageUrl(self, PageUrl):
+        self._PageUrl = PageUrl
+
+    @property
+    def AnchorTimestamp(self):
+        r"""<p>锚点 Unix 毫秒（Mode=page/breadcrumb 使用）</p>
+        :rtype: int
+        """
+        return self._AnchorTimestamp
+
+    @AnchorTimestamp.setter
+    def AnchorTimestamp(self, AnchorTimestamp):
+        self._AnchorTimestamp = AnchorTimestamp
+
+    @property
+    def Offset(self):
+        r"""<p>偏移，&gt;=0，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>条数，1-200，默认 200</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Category(self):
+        r"""<p>事件分类（可选）</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Keyword(self):
+        r"""<p>关键字（可选）</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def ViewId(self):
+        r"""<p>视图 ID</p>
+        :rtype: str
+        """
+        return self._ViewId
+
+    @ViewId.setter
+    def ViewId(self, ViewId):
+        self._ViewId = ViewId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Mode = params.get("Mode")
+        self._SessionId = params.get("SessionId")
+        self._PageUrl = params.get("PageUrl")
+        self._AnchorTimestamp = params.get("AnchorTimestamp")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Category = params.get("Category")
+        self._Keyword = params.get("Keyword")
+        self._ViewId = params.get("ViewId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMRelatedEventsResponse(AbstractModel):
+    r"""DescribeTDEMRelatedEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: <p>关联事件，schema 与 Search 列表项相同</p>
+        :type Events: list of ExplorationEventItem
+        :param _Offset: <p>偏移</p>
+        :type Offset: int
+        :param _Limit: <p>条数</p>
+        :type Limit: int
+        :param _HasMore: <p>是否还有下一页</p>
+        :type HasMore: bool
+        :param _CategoryCounts: <p>各分类计数，Key 为分类 id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CategoryCounts: list of IntKeyValue
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._Offset = None
+        self._Limit = None
+        self._HasMore = None
+        self._CategoryCounts = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        r"""<p>关联事件，schema 与 Search 列表项相同</p>
+        :rtype: list of ExplorationEventItem
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def Offset(self):
+        r"""<p>偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>条数</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def HasMore(self):
+        r"""<p>是否还有下一页</p>
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def CategoryCounts(self):
+        r"""<p>各分类计数，Key 为分类 id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IntKeyValue
+        """
+        return self._CategoryCounts
+
+    @CategoryCounts.setter
+    def CategoryCounts(self, CategoryCounts):
+        self._CategoryCounts = CategoryCounts
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = ExplorationEventItem()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._HasMore = params.get("HasMore")
+        if params.get("CategoryCounts") is not None:
+            self._CategoryCounts = []
+            for item in params.get("CategoryCounts"):
+                obj = IntKeyValue()
+                obj._deserialize(item)
+                self._CategoryCounts.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMSSEDimensionsRequest(AbstractModel):
+    r"""DescribeTDEMSSEDimensions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，Unix 毫秒。</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :type EndTime: int
+        :param _Metric: <p>指标。取值说明：token_throughput（token 吞吐率，token/秒）、first_message_delay（首次消息时延，毫秒）、error_rate（错误率，已乘 100 的百分比）、stall_rate（卡死率，已乘 100 的百分比）、fluency（流畅度，已乘 100 的百分比）。</p>
+        :type Metric: str
+        :param _Dimension: <p>多维分析维度。取值说明：region、app_version、platform、os、network_type、server_ip、isp、model_version。region 由 country 与 province 拼接，不属于趋势维度。</p>
+        :type Dimension: str
+        :param _Filters: <p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :type Filters: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Metric = None
+        self._Dimension = None
+        self._Filters = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metric(self):
+        r"""<p>指标。取值说明：token_throughput（token 吞吐率，token/秒）、first_message_delay（首次消息时延，毫秒）、error_rate（错误率，已乘 100 的百分比）、stall_rate（卡死率，已乘 100 的百分比）、fluency（流畅度，已乘 100 的百分比）。</p>
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Dimension(self):
+        r"""<p>多维分析维度。取值说明：region、app_version、platform、os、network_type、server_ip、isp、model_version。region 由 country 与 province 拼接，不属于趋势维度。</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Metric = params.get("Metric")
+        self._Dimension = params.get("Dimension")
+        self._Filters = params.get("Filters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMSSEDimensionsResponse(AbstractModel):
+    r"""DescribeTDEMSSEDimensions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rows: <p>按当前指标值降序的维度行，最多 200 行。没有对话时为空数组。</p>
+        :type Rows: list of TDEMSSEDimensionRow
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rows = None
+        self._RequestId = None
+
+    @property
+    def Rows(self):
+        r"""<p>按当前指标值降序的维度行，最多 200 行。没有对话时为空数组。</p>
+        :rtype: list of TDEMSSEDimensionRow
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = TDEMSSEDimensionRow()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMSSEDistributionRequest(AbstractModel):
+    r"""DescribeTDEMSSEDistribution请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，Unix 毫秒。</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :type EndTime: int
+        :param _Metric: <p>指标。只允许 token_throughput、first_message_delay、fluency。error_rate 与 stall_rate 返回 InvalidParameter。</p>
+        :type Metric: str
+        :param _Filters: <p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :type Filters: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Metric = None
+        self._Filters = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metric(self):
+        r"""<p>指标。只允许 token_throughput、first_message_delay、fluency。error_rate 与 stall_rate 返回 InvalidParameter。</p>
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Metric = params.get("Metric")
+        self._Filters = params.get("Filters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMSSEDistributionResponse(AbstractModel):
+    r"""DescribeTDEMSSEDistribution返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bins: <p>分布档。没有样本时为空数组。最后一档 Overflow 为 true 且省略 End。</p>
+        :type Bins: list of TDEMSSEDistributionBin
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Bins = None
+        self._RequestId = None
+
+    @property
+    def Bins(self):
+        r"""<p>分布档。没有样本时为空数组。最后一档 Overflow 为 true 且省略 End。</p>
+        :rtype: list of TDEMSSEDistributionBin
+        """
+        return self._Bins
+
+    @Bins.setter
+    def Bins(self, Bins):
+        self._Bins = Bins
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Bins") is not None:
+            self._Bins = []
+            for item in params.get("Bins"):
+                obj = TDEMSSEDistributionBin()
+                obj._deserialize(item)
+                self._Bins.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMSSEPercentileRequest(AbstractModel):
+    r"""DescribeTDEMSSEPercentile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，Unix 毫秒。</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :type EndTime: int
+        :param _Metric: <p>指标。只允许 token_throughput、first_message_delay、fluency。error_rate 与 stall_rate 返回 InvalidParameter。</p>
+        :type Metric: str
+        :param _Filters: <p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :type Filters: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Metric = None
+        self._Filters = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metric(self):
+        r"""<p>指标。只允许 token_throughput、first_message_delay、fluency。error_rate 与 stall_rate 返回 InvalidParameter。</p>
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Metric = params.get("Metric")
+        self._Filters = params.get("Filters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMSSEPercentileResponse(AbstractModel):
+    r"""DescribeTDEMSSEPercentile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntervalSec: <p>时间桶宽度，单位秒，与趋势查询使用同一套分桶。</p>
+        :type IntervalSec: int
+        :param _Average: <p>整个时间窗的算术平均。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Average: float
+        :param _P50: <p>整个时间窗的 50 分位。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P50: float
+        :param _P75: <p>整个时间窗的 75 分位。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P75: float
+        :param _P95: <p>整个时间窗的 95 分位。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P95: float
+        :param _P99: <p>整个时间窗的 99 分位。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P99: float
+        :param _Points: <p>各时间桶的平均值和分位。没有样本的桶不返回，全部没有样本时为空数组。</p>
+        :type Points: list of TDEMSSEPercentilePoint
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IntervalSec = None
+        self._Average = None
+        self._P50 = None
+        self._P75 = None
+        self._P95 = None
+        self._P99 = None
+        self._Points = None
+        self._RequestId = None
+
+    @property
+    def IntervalSec(self):
+        r"""<p>时间桶宽度，单位秒，与趋势查询使用同一套分桶。</p>
+        :rtype: int
+        """
+        return self._IntervalSec
+
+    @IntervalSec.setter
+    def IntervalSec(self, IntervalSec):
+        self._IntervalSec = IntervalSec
+
+    @property
+    def Average(self):
+        r"""<p>整个时间窗的算术平均。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Average
+
+    @Average.setter
+    def Average(self, Average):
+        self._Average = Average
+
+    @property
+    def P50(self):
+        r"""<p>整个时间窗的 50 分位。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._P50
+
+    @P50.setter
+    def P50(self, P50):
+        self._P50 = P50
+
+    @property
+    def P75(self):
+        r"""<p>整个时间窗的 75 分位。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._P75
+
+    @P75.setter
+    def P75(self, P75):
+        self._P75 = P75
+
+    @property
+    def P95(self):
+        r"""<p>整个时间窗的 95 分位。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._P95
+
+    @P95.setter
+    def P95(self, P95):
+        self._P95 = P95
+
+    @property
+    def P99(self):
+        r"""<p>整个时间窗的 99 分位。没有有效样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._P99
+
+    @P99.setter
+    def P99(self, P99):
+        self._P99 = P99
+
+    @property
+    def Points(self):
+        r"""<p>各时间桶的平均值和分位。没有样本的桶不返回，全部没有样本时为空数组。</p>
+        :rtype: list of TDEMSSEPercentilePoint
+        """
+        return self._Points
+
+    @Points.setter
+    def Points(self, Points):
+        self._Points = Points
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IntervalSec = params.get("IntervalSec")
+        self._Average = params.get("Average")
+        self._P50 = params.get("P50")
+        self._P75 = params.get("P75")
+        self._P95 = params.get("P95")
+        self._P99 = params.get("P99")
+        if params.get("Points") is not None:
+            self._Points = []
+            for item in params.get("Points"):
+                obj = TDEMSSEPercentilePoint()
+                obj._deserialize(item)
+                self._Points.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMSSESummaryRequest(AbstractModel):
+    r"""DescribeTDEMSSESummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，Unix 毫秒。</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :type EndTime: int
+        :param _Filters: <p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :type Filters: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Filters = params.get("Filters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMSSESummaryResponse(AbstractModel):
+    r"""DescribeTDEMSSESummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConversationCount: <p>对话次数。一条大模型对话对应一条 sse_call。</p>
+        :type ConversationCount: int
+        :param _TotalTokenCount: <p>token 总数。对话次数为 0 时为 0。</p>
+        :type TotalTokenCount: int
+        :param _TokenThroughput: <p>token 吞吐率，单位 token/秒。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenThroughput: float
+        :param _FirstMessageDelay: <p>首次消息时延，单位毫秒。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstMessageDelay: float
+        :param _ErrorRate: <p>错误率，已乘 100。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorRate: float
+        :param _StallRate: <p>卡死率，已乘 100。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StallRate: float
+        :param _Fluency: <p>流畅度，已乘 100。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Fluency: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConversationCount = None
+        self._TotalTokenCount = None
+        self._TokenThroughput = None
+        self._FirstMessageDelay = None
+        self._ErrorRate = None
+        self._StallRate = None
+        self._Fluency = None
+        self._RequestId = None
+
+    @property
+    def ConversationCount(self):
+        r"""<p>对话次数。一条大模型对话对应一条 sse_call。</p>
+        :rtype: int
+        """
+        return self._ConversationCount
+
+    @ConversationCount.setter
+    def ConversationCount(self, ConversationCount):
+        self._ConversationCount = ConversationCount
+
+    @property
+    def TotalTokenCount(self):
+        r"""<p>token 总数。对话次数为 0 时为 0。</p>
+        :rtype: int
+        """
+        return self._TotalTokenCount
+
+    @TotalTokenCount.setter
+    def TotalTokenCount(self, TotalTokenCount):
+        self._TotalTokenCount = TotalTokenCount
+
+    @property
+    def TokenThroughput(self):
+        r"""<p>token 吞吐率，单位 token/秒。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TokenThroughput
+
+    @TokenThroughput.setter
+    def TokenThroughput(self, TokenThroughput):
+        self._TokenThroughput = TokenThroughput
+
+    @property
+    def FirstMessageDelay(self):
+        r"""<p>首次消息时延，单位毫秒。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._FirstMessageDelay
+
+    @FirstMessageDelay.setter
+    def FirstMessageDelay(self, FirstMessageDelay):
+        self._FirstMessageDelay = FirstMessageDelay
+
+    @property
+    def ErrorRate(self):
+        r"""<p>错误率，已乘 100。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ErrorRate
+
+    @ErrorRate.setter
+    def ErrorRate(self, ErrorRate):
+        self._ErrorRate = ErrorRate
+
+    @property
+    def StallRate(self):
+        r"""<p>卡死率，已乘 100。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._StallRate
+
+    @StallRate.setter
+    def StallRate(self, StallRate):
+        self._StallRate = StallRate
+
+    @property
+    def Fluency(self):
+        r"""<p>流畅度，已乘 100。对话次数为 0 时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Fluency
+
+    @Fluency.setter
+    def Fluency(self, Fluency):
+        self._Fluency = Fluency
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConversationCount = params.get("ConversationCount")
+        self._TotalTokenCount = params.get("TotalTokenCount")
+        self._TokenThroughput = params.get("TokenThroughput")
+        self._FirstMessageDelay = params.get("FirstMessageDelay")
+        self._ErrorRate = params.get("ErrorRate")
+        self._StallRate = params.get("StallRate")
+        self._Fluency = params.get("Fluency")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMSSETrendRequest(AbstractModel):
+    r"""DescribeTDEMSSETrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间，Unix 毫秒。</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :type EndTime: int
+        :param _Metric: <p>指标。取值说明：token_throughput（token 吞吐率，token/秒）、first_message_delay（首次消息时延，毫秒）、error_rate（错误率，已乘 100 的百分比）、stall_rate（卡死率，已乘 100 的百分比）、fluency（流畅度，已乘 100 的百分比）。</p>
+        :type Metric: str
+        :param _Dimension: <p>趋势维度。取值说明：overall、model_version、network_type、server_ip、isp。overall 返回 Points，其他维度返回 Series。</p>
+        :type Dimension: str
+        :param _Filters: <p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :type Filters: str
+        :param _TopN: <p>头部维度数量，只允许 7、10、20。Dimension 为 overall 时忽略。</p>
+        :type TopN: int
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Metric = None
+        self._Dimension = None
+        self._Filters = None
+        self._TopN = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。这里是业务应用标识，不是腾讯云账号 AppId。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，Unix 毫秒。须通过现有时间范围校验。</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Metric(self):
+        r"""<p>指标。取值说明：token_throughput（token 吞吐率，token/秒）、first_message_delay（首次消息时延，毫秒）、error_rate（错误率，已乘 100 的百分比）、stall_rate（卡死率，已乘 100 的百分比）、fluency（流畅度，已乘 100 的百分比）。</p>
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def Dimension(self):
+        r"""<p>趋势维度。取值说明：overall、model_version、network_type、server_ip、isp。overall 返回 Points，其他维度返回 Series。</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件 JSON 字符串，格式为 [{Key,Op,Values}]。Op 只允许 in。Key 只允许 model_version、app_version、platform、os、region、is_error、is_stall、network_type、server_ip、isp、user_id。is_error 与 is_stall 的值只允许 true 或 false。</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def TopN(self):
+        r"""<p>头部维度数量，只允许 7、10、20。Dimension 为 overall 时忽略。</p>
+        :rtype: int
+        """
+        return self._TopN
+
+    @TopN.setter
+    def TopN(self, TopN):
+        self._TopN = TopN
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Metric = params.get("Metric")
+        self._Dimension = params.get("Dimension")
+        self._Filters = params.get("Filters")
+        self._TopN = params.get("TopN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMSSETrendResponse(AbstractModel):
+    r"""DescribeTDEMSSETrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IntervalSec: <p>时间桶宽度，单位秒。</p>
+        :type IntervalSec: int
+        :param _Points: <p>Dimension 为 overall 时的时间桶。没有对话时为空数组。</p>
+        :type Points: list of TDEMSSETrendPoint
+        :param _Series: <p>非 overall 时按指标从高到低取 TopN 后的序列。没有对话时为空数组。</p>
+        :type Series: list of TDEMSSETrendSeries
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IntervalSec = None
+        self._Points = None
+        self._Series = None
+        self._RequestId = None
+
+    @property
+    def IntervalSec(self):
+        r"""<p>时间桶宽度，单位秒。</p>
+        :rtype: int
+        """
+        return self._IntervalSec
+
+    @IntervalSec.setter
+    def IntervalSec(self, IntervalSec):
+        self._IntervalSec = IntervalSec
+
+    @property
+    def Points(self):
+        r"""<p>Dimension 为 overall 时的时间桶。没有对话时为空数组。</p>
+        :rtype: list of TDEMSSETrendPoint
+        """
+        return self._Points
+
+    @Points.setter
+    def Points(self, Points):
+        self._Points = Points
+
+    @property
+    def Series(self):
+        r"""<p>非 overall 时按指标从高到低取 TopN 后的序列。没有对话时为空数组。</p>
+        :rtype: list of TDEMSSETrendSeries
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IntervalSec = params.get("IntervalSec")
+        if params.get("Points") is not None:
+            self._Points = []
+            for item in params.get("Points"):
+                obj = TDEMSSETrendPoint()
+                obj._deserialize(item)
+                self._Points.append(obj)
+        if params.get("Series") is not None:
+            self._Series = []
+            for item in params.get("Series"):
+                obj = TDEMSSETrendSeries()
+                obj._deserialize(item)
+                self._Series.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMSampleConfigRequest(AbstractModel):
+    r"""DescribeTDEMSampleConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>项目ID</p>
+        :type AppId: str
+        """
+        self._AppId = None
+
+    @property
+    def AppId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMSampleConfigResponse(AbstractModel):
+    r"""DescribeTDEMSampleConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务数据 JSON 字符串，反序列化后：{ProjectId,Event,Replay,SnapshotId,UpdatedAt}。Event/Replay 结构见 ModifyTDEMSampleConfig 入参说明。无行时 SnapshotId=0、UpdatedAt 为空。</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务数据 JSON 字符串，反序列化后：{ProjectId,Event,Replay,SnapshotId,UpdatedAt}。Event/Replay 结构见 ModifyTDEMSampleConfig 入参说明。无行时 SnapshotId=0、UpdatedAt 为空。</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMSampleRateRequest(AbstractModel):
+    r"""DescribeTDEMSampleRate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        """
+        self._AppId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMSampleRateResponse(AbstractModel):
+    r"""DescribeTDEMSampleRate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _SampleRate: <p>采集采样率 0-100</p>
+        :type SampleRate: float
+        :param _ReplaySampleRate: <p>会话回放采样率 0-100；未配置时为 1</p>
+        :type ReplaySampleRate: float
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>更新时间</p>
+        :type UpdatedAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._SampleRate = None
+        self._ReplaySampleRate = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def SampleRate(self):
+        r"""<p>采集采样率 0-100</p>
+        :rtype: float
+        """
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def ReplaySampleRate(self):
+        r"""<p>会话回放采样率 0-100；未配置时为 1</p>
+        :rtype: float
+        """
+        return self._ReplaySampleRate
+
+    @ReplaySampleRate.setter
+    def ReplaySampleRate(self, ReplaySampleRate):
+        self._ReplaySampleRate = ReplaySampleRate
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._SampleRate = params.get("SampleRate")
+        self._ReplaySampleRate = params.get("ReplaySampleRate")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMSessionReplayTimelineRequest(AbstractModel):
+    r"""DescribeTDEMSessionReplayTimeline请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _SessionId: <p>会话id</p>
+        :type SessionId: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Limit: <p>数量限制</p>
+        :type Limit: int
+        :param _Cursor: <p>游标</p>
+        :type Cursor: int
+        :param _CursorEventId: <p>时间线分页的事件ID游标，与时间游标Cursor共同定位续页起点，用于同一时间戳下的稳定分页。</p>
+        :type CursorEventId: str
+        """
+        self._AppId = None
+        self._SessionId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Cursor = None
+        self._CursorEventId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        r"""<p>数量限制</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Cursor(self):
+        r"""<p>游标</p>
+        :rtype: int
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def CursorEventId(self):
+        r"""<p>时间线分页的事件ID游标，与时间游标Cursor共同定位续页起点，用于同一时间戳下的稳定分页。</p>
+        :rtype: str
+        """
+        return self._CursorEventId
+
+    @CursorEventId.setter
+    def CursorEventId(self, CursorEventId):
+        self._CursorEventId = CursorEventId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._SessionId = params.get("SessionId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Cursor = params.get("Cursor")
+        self._CursorEventId = params.get("CursorEventId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMSessionReplayTimelineResponse(AbstractModel):
+    r"""DescribeTDEMSessionReplayTimeline返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMUsageDetailRequest(AbstractModel):
+    r"""DescribeTDEMUsageDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>开始时间，YYYY-MM-DD HH:00:00（小时对齐，必填）</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间，YYYY-MM-DD HH:00:00（小时对齐，必填）</p>
+        :type EndTime: str
+        :param _Keyword: <p>可选关键字，匹配业务系统名称、应用名称或应用 ID</p>
+        :type Keyword: str
+        :param _Offset: <p>分页偏移，默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量，默认 20，上限 100</p>
+        :type Limit: int
+        :param _DemoMode: <p>演示模式开关</p>
+        :type DemoMode: bool
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Keyword = None
+        self._Offset = None
+        self._Limit = None
+        self._DemoMode = None
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，YYYY-MM-DD HH:00:00（小时对齐，必填）</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，YYYY-MM-DD HH:00:00（小时对齐，必填）</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Keyword(self):
+        r"""<p>可选关键字，匹配业务系统名称、应用名称或应用 ID</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，默认 20，上限 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def DemoMode(self):
+        r"""<p>演示模式开关</p>
+        :rtype: bool
+        """
+        return self._DemoMode
+
+    @DemoMode.setter
+    def DemoMode(self, DemoMode):
+        self._DemoMode = DemoMode
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Keyword = params.get("Keyword")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._DemoMode = params.get("DemoMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMUsageDetailResponse(AbstractModel):
+    r"""DescribeTDEMUsageDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总行数</p>
+        :type TotalCount: int
+        :param _ReportVolume: <p>当前结果集上报合计</p>
+        :type ReportVolume: int
+        :param _DetailSet: <p>明细</p>
+        :type DetailSet: list of UsageDetailRow
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ReportVolume = None
+        self._DetailSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总行数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ReportVolume(self):
+        r"""<p>当前结果集上报合计</p>
+        :rtype: int
+        """
+        return self._ReportVolume
+
+    @ReportVolume.setter
+    def ReportVolume(self, ReportVolume):
+        self._ReportVolume = ReportVolume
+
+    @property
+    def DetailSet(self):
+        r"""<p>明细</p>
+        :rtype: list of UsageDetailRow
+        """
+        return self._DetailSet
+
+    @DetailSet.setter
+    def DetailSet(self, DetailSet):
+        self._DetailSet = DetailSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ReportVolume = params.get("ReportVolume")
+        if params.get("DetailSet") is not None:
+            self._DetailSet = []
+            for item in params.get("DetailSet"):
+                obj = UsageDetailRow()
+                obj._deserialize(item)
+                self._DetailSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTDEMUsageSummaryRequest(AbstractModel):
+    r"""DescribeTDEMUsageSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>开始时间，YYYY-MM-DD HH:00:00（小时对齐，必填）</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间，YYYY-MM-DD HH:00:00（小时对齐，必填）</p>
+        :type EndTime: str
+        :param _DemoMode: <p>演示模式开关</p>
+        :type DemoMode: bool
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._DemoMode = None
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间，YYYY-MM-DD HH:00:00（小时对齐，必填）</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，YYYY-MM-DD HH:00:00（小时对齐，必填）</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DemoMode(self):
+        r"""<p>演示模式开关</p>
+        :rtype: bool
+        """
+        return self._DemoMode
+
+    @DemoMode.setter
+    def DemoMode(self, DemoMode):
+        self._DemoMode = DemoMode
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DemoMode = params.get("DemoMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTDEMUsageSummaryResponse(AbstractModel):
+    r"""DescribeTDEMUsageSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReportVolume: <p>上报总量</p>
+        :type ReportVolume: int
+        :param _ResourceCount: <p>窗口内有量应用数</p>
+        :type ResourceCount: int
+        :param _Granularity: <p>hour 或 day</p>
+        :type Granularity: str
+        :param _ByDate: <p>趋势</p>
+        :type ByDate: list of UsageTimePoint
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReportVolume = None
+        self._ResourceCount = None
+        self._Granularity = None
+        self._ByDate = None
+        self._RequestId = None
+
+    @property
+    def ReportVolume(self):
+        r"""<p>上报总量</p>
+        :rtype: int
+        """
+        return self._ReportVolume
+
+    @ReportVolume.setter
+    def ReportVolume(self, ReportVolume):
+        self._ReportVolume = ReportVolume
+
+    @property
+    def ResourceCount(self):
+        r"""<p>窗口内有量应用数</p>
+        :rtype: int
+        """
+        return self._ResourceCount
+
+    @ResourceCount.setter
+    def ResourceCount(self, ResourceCount):
+        self._ResourceCount = ResourceCount
+
+    @property
+    def Granularity(self):
+        r"""<p>hour 或 day</p>
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def ByDate(self):
+        r"""<p>趋势</p>
+        :rtype: list of UsageTimePoint
+        """
+        return self._ByDate
+
+    @ByDate.setter
+    def ByDate(self, ByDate):
+        self._ByDate = ByDate
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReportVolume = params.get("ReportVolume")
+        self._ResourceCount = params.get("ResourceCount")
+        self._Granularity = params.get("Granularity")
+        if params.get("ByDate") is not None:
+            self._ByDate = []
+            for item in params.get("ByDate"):
+                obj = UsageTimePoint()
+                obj._deserialize(item)
+                self._ByDate.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -21876,6 +36218,235 @@ class DescribeTopIssuesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserJourneySanKeyRequest(AbstractModel):
+    r"""DescribeUserJourneySanKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: str
+        :param _TopPagesPerStep: <p>每一步骤的数量</p>
+        :type TopPagesPerStep: int
+        :param _MinSessionThreshold: <p>每一个节点最小的会话数量</p>
+        :type MinSessionThreshold: int
+        :param _StartPage: <p>开始页面</p>
+        :type StartPage: str
+        :param _EndPage: <p>结束页面</p>
+        :type EndPage: str
+        :param _HasStruggle: <p>是否有挣扎事件</p>
+        :type HasStruggle: bool
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Platform = None
+        self._Filters = None
+        self._TopPagesPerStep = None
+        self._MinSessionThreshold = None
+        self._StartPage = None
+        self._EndPage = None
+        self._HasStruggle = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: str
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def TopPagesPerStep(self):
+        r"""<p>每一步骤的数量</p>
+        :rtype: int
+        """
+        return self._TopPagesPerStep
+
+    @TopPagesPerStep.setter
+    def TopPagesPerStep(self, TopPagesPerStep):
+        self._TopPagesPerStep = TopPagesPerStep
+
+    @property
+    def MinSessionThreshold(self):
+        r"""<p>每一个节点最小的会话数量</p>
+        :rtype: int
+        """
+        return self._MinSessionThreshold
+
+    @MinSessionThreshold.setter
+    def MinSessionThreshold(self, MinSessionThreshold):
+        self._MinSessionThreshold = MinSessionThreshold
+
+    @property
+    def StartPage(self):
+        r"""<p>开始页面</p>
+        :rtype: str
+        """
+        return self._StartPage
+
+    @StartPage.setter
+    def StartPage(self, StartPage):
+        self._StartPage = StartPage
+
+    @property
+    def EndPage(self):
+        r"""<p>结束页面</p>
+        :rtype: str
+        """
+        return self._EndPage
+
+    @EndPage.setter
+    def EndPage(self, EndPage):
+        self._EndPage = EndPage
+
+    @property
+    def HasStruggle(self):
+        r"""<p>是否有挣扎事件</p>
+        :rtype: bool
+        """
+        return self._HasStruggle
+
+    @HasStruggle.setter
+    def HasStruggle(self, HasStruggle):
+        self._HasStruggle = HasStruggle
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Platform = params.get("Platform")
+        self._Filters = params.get("Filters")
+        self._TopPagesPerStep = params.get("TopPagesPerStep")
+        self._MinSessionThreshold = params.get("MinSessionThreshold")
+        self._StartPage = params.get("StartPage")
+        self._EndPage = params.get("EndPage")
+        self._HasStruggle = params.get("HasStruggle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserJourneySanKeyResponse(AbstractModel):
+    r"""DescribeUserJourneySanKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUvListRequest(AbstractModel):
     r"""DescribeUvList请求参数结构体
 
@@ -22089,6 +36660,3580 @@ class DescribeWhitelistsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DialDimensionItem(AbstractModel):
+    r"""拨测维度统计项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: <p>维度值。空值在控制台展示为未知。</p>
+        :type Value: str
+        :param _ExecutionCount: <p>执行次数。target_ip 按探测条数，其它维度按批次。</p>
+        :type ExecutionCount: int
+        :param _SuccessCount: <p>成功次数</p>
+        :type SuccessCount: int
+        :param _FailCount: <p>失败次数</p>
+        :type FailCount: int
+        :param _AvgDuration: <p>平均时延，单位毫秒</p>
+        :type AvgDuration: float
+        :param _AvgLoss: <p>平均丢包率，0 到 100</p>
+        :type AvgLoss: float
+        """
+        self._Value = None
+        self._ExecutionCount = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._AvgDuration = None
+        self._AvgLoss = None
+
+    @property
+    def Value(self):
+        r"""<p>维度值。空值在控制台展示为未知。</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ExecutionCount(self):
+        r"""<p>执行次数。target_ip 按探测条数，其它维度按批次。</p>
+        :rtype: int
+        """
+        return self._ExecutionCount
+
+    @ExecutionCount.setter
+    def ExecutionCount(self, ExecutionCount):
+        self._ExecutionCount = ExecutionCount
+
+    @property
+    def SuccessCount(self):
+        r"""<p>成功次数</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        r"""<p>失败次数</p>
+        :rtype: int
+        """
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def AvgDuration(self):
+        r"""<p>平均时延，单位毫秒</p>
+        :rtype: float
+        """
+        return self._AvgDuration
+
+    @AvgDuration.setter
+    def AvgDuration(self, AvgDuration):
+        self._AvgDuration = AvgDuration
+
+    @property
+    def AvgLoss(self):
+        r"""<p>平均丢包率，0 到 100</p>
+        :rtype: float
+        """
+        return self._AvgLoss
+
+    @AvgLoss.setter
+    def AvgLoss(self, AvgLoss):
+        self._AvgLoss = AvgLoss
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._ExecutionCount = params.get("ExecutionCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        self._AvgDuration = params.get("AvgDuration")
+        self._AvgLoss = params.get("AvgLoss")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DialExecution(AbstractModel):
+    r"""一次拨测执行批次
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名称。任务已删除时仍返回当时名称，找不到则为空。</p>
+        :type TaskName: str
+        :param _TaskSessionId: <p>拨测批次 ID</p>
+        :type TaskSessionId: str
+        :param _StartTime: <p>批次开始时间，毫秒时间戳</p>
+        :type StartTime: int
+        :param _Platform: <p>客户端平台</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本</p>
+        :type AppVersion: str
+        :param _Device: <p>设备机型</p>
+        :type Device: str
+        :param _NetType: <p>网络类型</p>
+        :type NetType: str
+        :param _Operator: <p>客户端运营商。不是目标 IP 运营商。</p>
+        :type Operator: str
+        :param _Region: <p>客户端地区。不是目标 IP 地区。</p>
+        :type Region: str
+        :param _TargetIps: <p>本批次探测到的目标 IP，顺序与 TargetIpGeo 一致</p>
+        :type TargetIps: list of str
+        :param _TargetIpGeo: <p>每个目标 IP 的地区和运营商</p>
+        :type TargetIpGeo: list of DialTargetIpGeo
+        :param _Success: <p>本批次是否全部探测成功</p>
+        :type Success: bool
+        :param _NotProbed: <p>本批次是否未实际探测</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotProbed: bool
+        :param _AvgDuration: <p>本批次成功目标的平均时延，单位毫秒</p>
+        :type AvgDuration: float
+        :param _HasMTR: <p>本批次是否包含路由追踪</p>
+        :type HasMTR: bool
+        :param _SessionId: <p>所属用户会话 ID</p>
+        :type SessionId: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._TaskSessionId = None
+        self._StartTime = None
+        self._Platform = None
+        self._AppVersion = None
+        self._Device = None
+        self._NetType = None
+        self._Operator = None
+        self._Region = None
+        self._TargetIps = None
+        self._TargetIpGeo = None
+        self._Success = None
+        self._NotProbed = None
+        self._AvgDuration = None
+        self._HasMTR = None
+        self._SessionId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称。任务已删除时仍返回当时名称，找不到则为空。</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskSessionId(self):
+        r"""<p>拨测批次 ID</p>
+        :rtype: str
+        """
+        return self._TaskSessionId
+
+    @TaskSessionId.setter
+    def TaskSessionId(self, TaskSessionId):
+        self._TaskSessionId = TaskSessionId
+
+    @property
+    def StartTime(self):
+        r"""<p>批次开始时间，毫秒时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Platform(self):
+        r"""<p>客户端平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Device(self):
+        r"""<p>设备机型</p>
+        :rtype: str
+        """
+        return self._Device
+
+    @Device.setter
+    def Device(self, Device):
+        self._Device = Device
+
+    @property
+    def NetType(self):
+        r"""<p>网络类型</p>
+        :rtype: str
+        """
+        return self._NetType
+
+    @NetType.setter
+    def NetType(self, NetType):
+        self._NetType = NetType
+
+    @property
+    def Operator(self):
+        r"""<p>客户端运营商。不是目标 IP 运营商。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Region(self):
+        r"""<p>客户端地区。不是目标 IP 地区。</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TargetIps(self):
+        r"""<p>本批次探测到的目标 IP，顺序与 TargetIpGeo 一致</p>
+        :rtype: list of str
+        """
+        return self._TargetIps
+
+    @TargetIps.setter
+    def TargetIps(self, TargetIps):
+        self._TargetIps = TargetIps
+
+    @property
+    def TargetIpGeo(self):
+        r"""<p>每个目标 IP 的地区和运营商</p>
+        :rtype: list of DialTargetIpGeo
+        """
+        return self._TargetIpGeo
+
+    @TargetIpGeo.setter
+    def TargetIpGeo(self, TargetIpGeo):
+        self._TargetIpGeo = TargetIpGeo
+
+    @property
+    def Success(self):
+        r"""<p>本批次是否全部探测成功</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def NotProbed(self):
+        r"""<p>本批次是否未实际探测</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._NotProbed
+
+    @NotProbed.setter
+    def NotProbed(self, NotProbed):
+        self._NotProbed = NotProbed
+
+    @property
+    def AvgDuration(self):
+        r"""<p>本批次成功目标的平均时延，单位毫秒</p>
+        :rtype: float
+        """
+        return self._AvgDuration
+
+    @AvgDuration.setter
+    def AvgDuration(self, AvgDuration):
+        self._AvgDuration = AvgDuration
+
+    @property
+    def HasMTR(self):
+        r"""<p>本批次是否包含路由追踪</p>
+        :rtype: bool
+        """
+        return self._HasMTR
+
+    @HasMTR.setter
+    def HasMTR(self, HasMTR):
+        self._HasMTR = HasMTR
+
+    @property
+    def SessionId(self):
+        r"""<p>所属用户会话 ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._TaskSessionId = params.get("TaskSessionId")
+        self._StartTime = params.get("StartTime")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._Device = params.get("Device")
+        self._NetType = params.get("NetType")
+        self._Operator = params.get("Operator")
+        self._Region = params.get("Region")
+        self._TargetIps = params.get("TargetIps")
+        if params.get("TargetIpGeo") is not None:
+            self._TargetIpGeo = []
+            for item in params.get("TargetIpGeo"):
+                obj = DialTargetIpGeo()
+                obj._deserialize(item)
+                self._TargetIpGeo.append(obj)
+        self._Success = params.get("Success")
+        self._NotProbed = params.get("NotProbed")
+        self._AvgDuration = params.get("AvgDuration")
+        self._HasMTR = params.get("HasMTR")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DialProbe(AbstractModel):
+    r"""一次目标探测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetIp: <p>探测目标 IP</p>
+        :type TargetIp: str
+        :param _PingSuccess: <p>本次探测是否成功</p>
+        :type PingSuccess: bool
+        :param _Sent: <p>发送包数</p>
+        :type Sent: float
+        :param _Received: <p>接收包数</p>
+        :type Received: float
+        :param _Loss: <p>丢包率，0 到 100</p>
+        :type Loss: float
+        :param _Min: <p>最小时延，单位毫秒</p>
+        :type Min: float
+        :param _Max: <p>最大时延，单位毫秒</p>
+        :type Max: float
+        :param _Avg: <p>平均时延，单位毫秒</p>
+        :type Avg: float
+        :param _Protocol: <p>探测协议</p>
+        :type Protocol: str
+        :param _Domain: <p>探测目标域名或地址</p>
+        :type Domain: str
+        :param _SkipReason: <p>未探测原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkipReason: str
+        :param _Region: <p>目标 IP 所在地区。与客户端地区无关。无法解析时为未知。</p>
+        :type Region: str
+        :param _Operator: <p>目标 IP 所属运营商。与客户端运营商无关。无法解析时为未知。</p>
+        :type Operator: str
+        """
+        self._TargetIp = None
+        self._PingSuccess = None
+        self._Sent = None
+        self._Received = None
+        self._Loss = None
+        self._Min = None
+        self._Max = None
+        self._Avg = None
+        self._Protocol = None
+        self._Domain = None
+        self._SkipReason = None
+        self._Region = None
+        self._Operator = None
+
+    @property
+    def TargetIp(self):
+        r"""<p>探测目标 IP</p>
+        :rtype: str
+        """
+        return self._TargetIp
+
+    @TargetIp.setter
+    def TargetIp(self, TargetIp):
+        self._TargetIp = TargetIp
+
+    @property
+    def PingSuccess(self):
+        r"""<p>本次探测是否成功</p>
+        :rtype: bool
+        """
+        return self._PingSuccess
+
+    @PingSuccess.setter
+    def PingSuccess(self, PingSuccess):
+        self._PingSuccess = PingSuccess
+
+    @property
+    def Sent(self):
+        r"""<p>发送包数</p>
+        :rtype: float
+        """
+        return self._Sent
+
+    @Sent.setter
+    def Sent(self, Sent):
+        self._Sent = Sent
+
+    @property
+    def Received(self):
+        r"""<p>接收包数</p>
+        :rtype: float
+        """
+        return self._Received
+
+    @Received.setter
+    def Received(self, Received):
+        self._Received = Received
+
+    @property
+    def Loss(self):
+        r"""<p>丢包率，0 到 100</p>
+        :rtype: float
+        """
+        return self._Loss
+
+    @Loss.setter
+    def Loss(self, Loss):
+        self._Loss = Loss
+
+    @property
+    def Min(self):
+        r"""<p>最小时延，单位毫秒</p>
+        :rtype: float
+        """
+        return self._Min
+
+    @Min.setter
+    def Min(self, Min):
+        self._Min = Min
+
+    @property
+    def Max(self):
+        r"""<p>最大时延，单位毫秒</p>
+        :rtype: float
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+    @property
+    def Avg(self):
+        r"""<p>平均时延，单位毫秒</p>
+        :rtype: float
+        """
+        return self._Avg
+
+    @Avg.setter
+    def Avg(self, Avg):
+        self._Avg = Avg
+
+    @property
+    def Protocol(self):
+        r"""<p>探测协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Domain(self):
+        r"""<p>探测目标域名或地址</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SkipReason(self):
+        r"""<p>未探测原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SkipReason
+
+    @SkipReason.setter
+    def SkipReason(self, SkipReason):
+        self._SkipReason = SkipReason
+
+    @property
+    def Region(self):
+        r"""<p>目标 IP 所在地区。与客户端地区无关。无法解析时为未知。</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Operator(self):
+        r"""<p>目标 IP 所属运营商。与客户端运营商无关。无法解析时为未知。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._TargetIp = params.get("TargetIp")
+        self._PingSuccess = params.get("PingSuccess")
+        self._Sent = params.get("Sent")
+        self._Received = params.get("Received")
+        self._Loss = params.get("Loss")
+        self._Min = params.get("Min")
+        self._Max = params.get("Max")
+        self._Avg = params.get("Avg")
+        self._Protocol = params.get("Protocol")
+        self._Domain = params.get("Domain")
+        self._SkipReason = params.get("SkipReason")
+        self._Region = params.get("Region")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DialTargetIpGeo(AbstractModel):
+    r"""拨测目标 IP 的地区和运营商
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: <p>目标 IP，与 TargetIps 中的地址一致</p>
+        :type Ip: str
+        :param _Region: <p>目标 IP 所在地区。无法解析时为未知。</p>
+        :type Region: str
+        :param _Operator: <p>目标 IP 所属运营商。无法解析时为未知。</p>
+        :type Operator: str
+        """
+        self._Ip = None
+        self._Region = None
+        self._Operator = None
+
+    @property
+    def Ip(self):
+        r"""<p>目标 IP，与 TargetIps 中的地址一致</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Region(self):
+        r"""<p>目标 IP 所在地区。无法解析时为未知。</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Operator(self):
+        r"""<p>目标 IP 所属运营商。无法解析时为未知。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._Region = params.get("Region")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DialTask(AbstractModel):
+    r"""拨测任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名称</p>
+        :type TaskName: str
+        :param _Status: <p>任务状态。取值说明：active、paused；已删除任务不返回。</p>
+        :type Status: str
+        :param _Type: <p>探测类型。取值说明：icmp、tcp。</p>
+        :type Type: str
+        :param _ExecutionTime: <p>执行时机。取值说明：realtime、after_request、after_error、after_slow、after_dns_slow。</p>
+        :type ExecutionTime: str
+        :param _WatchDomain: <p>监听域名。非 realtime 时有值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WatchDomain: str
+        :param _DialDomain: <p>拨测目标。域名、IP 或 ldns。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DialDomain: str
+        :param _Port: <p>TCP 端口。仅 tcp 任务返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        :param _FrequencyMs: <p>实时拨测间隔，单位毫秒。仅 realtime 返回。取值说明：60000、300000、600000、900000、1800000、3600000。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrequencyMs: int
+        :param _TimeoutMs: <p>单次探测超时，单位毫秒。范围 1000 到 20000。</p>
+        :type TimeoutMs: int
+        :param _PeriodMs: <p>探测周期，单位毫秒。</p>
+        :type PeriodMs: int
+        :param _PackageCount: <p>发包次数。范围 3 到 40。</p>
+        :type PackageCount: int
+        :param _PackageSize: <p>ICMP 包大小，单位字节。范围 32 到 1024，默认 64。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageSize: int
+        :param _NeedMTR: <p>是否做路由追踪。取值说明：0 否，1 是。</p>
+        :type NeedMTR: int
+        :param _MTRTimeoutMs: <p>路由追踪超时，单位毫秒。NeedMTR 为 1 时有值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MTRTimeoutMs: int
+        :param _MTRMaxHop: <p>路由追踪最大跳数。NeedMTR 为 1 时有值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MTRMaxHop: int
+        :param _MTRPingCount: <p>每一跳发包次数。范围 3 到 40。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MTRPingCount: int
+        :param _SlowThresholdMs: <p>慢请求阈值，单位毫秒。after_slow、after_dns_slow 时使用，默认 2000。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlowThresholdMs: int
+        :param _ErrorType: <p>错误类型过滤。after_error 时使用。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorType: str
+        :param _Regions: <p>允许启动的客户端地区，逗号分隔，名称与分析页客户端地区一致。空表示不限制。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Regions: str
+        :param _Operators: <p>允许启动的客户端运营商，逗号分隔，名称与分析页客户端运营商一致。空表示不限制。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Operators: str
+        :param _UserIds: <p>允许启动的用户 ID，逗号分隔。空表示不限制。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserIds: str
+        :param _DeviceIds: <p>允许启动的设备 ID，逗号分隔。空表示不限制。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceIds: str
+        :param _CreatedBy: <p>创建人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedBy: str
+        :param _CreatedAt: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._Status = None
+        self._Type = None
+        self._ExecutionTime = None
+        self._WatchDomain = None
+        self._DialDomain = None
+        self._Port = None
+        self._FrequencyMs = None
+        self._TimeoutMs = None
+        self._PeriodMs = None
+        self._PackageCount = None
+        self._PackageSize = None
+        self._NeedMTR = None
+        self._MTRTimeoutMs = None
+        self._MTRMaxHop = None
+        self._MTRPingCount = None
+        self._SlowThresholdMs = None
+        self._ErrorType = None
+        self._Regions = None
+        self._Operators = None
+        self._UserIds = None
+        self._DeviceIds = None
+        self._CreatedBy = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。取值说明：active、paused；已删除任务不返回。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""<p>探测类型。取值说明：icmp、tcp。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExecutionTime(self):
+        r"""<p>执行时机。取值说明：realtime、after_request、after_error、after_slow、after_dns_slow。</p>
+        :rtype: str
+        """
+        return self._ExecutionTime
+
+    @ExecutionTime.setter
+    def ExecutionTime(self, ExecutionTime):
+        self._ExecutionTime = ExecutionTime
+
+    @property
+    def WatchDomain(self):
+        r"""<p>监听域名。非 realtime 时有值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WatchDomain
+
+    @WatchDomain.setter
+    def WatchDomain(self, WatchDomain):
+        self._WatchDomain = WatchDomain
+
+    @property
+    def DialDomain(self):
+        r"""<p>拨测目标。域名、IP 或 ldns。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DialDomain
+
+    @DialDomain.setter
+    def DialDomain(self, DialDomain):
+        self._DialDomain = DialDomain
+
+    @property
+    def Port(self):
+        r"""<p>TCP 端口。仅 tcp 任务返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def FrequencyMs(self):
+        r"""<p>实时拨测间隔，单位毫秒。仅 realtime 返回。取值说明：60000、300000、600000、900000、1800000、3600000。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FrequencyMs
+
+    @FrequencyMs.setter
+    def FrequencyMs(self, FrequencyMs):
+        self._FrequencyMs = FrequencyMs
+
+    @property
+    def TimeoutMs(self):
+        r"""<p>单次探测超时，单位毫秒。范围 1000 到 20000。</p>
+        :rtype: int
+        """
+        return self._TimeoutMs
+
+    @TimeoutMs.setter
+    def TimeoutMs(self, TimeoutMs):
+        self._TimeoutMs = TimeoutMs
+
+    @property
+    def PeriodMs(self):
+        r"""<p>探测周期，单位毫秒。</p>
+        :rtype: int
+        """
+        return self._PeriodMs
+
+    @PeriodMs.setter
+    def PeriodMs(self, PeriodMs):
+        self._PeriodMs = PeriodMs
+
+    @property
+    def PackageCount(self):
+        r"""<p>发包次数。范围 3 到 40。</p>
+        :rtype: int
+        """
+        return self._PackageCount
+
+    @PackageCount.setter
+    def PackageCount(self, PackageCount):
+        self._PackageCount = PackageCount
+
+    @property
+    def PackageSize(self):
+        r"""<p>ICMP 包大小，单位字节。范围 32 到 1024，默认 64。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PackageSize
+
+    @PackageSize.setter
+    def PackageSize(self, PackageSize):
+        self._PackageSize = PackageSize
+
+    @property
+    def NeedMTR(self):
+        r"""<p>是否做路由追踪。取值说明：0 否，1 是。</p>
+        :rtype: int
+        """
+        return self._NeedMTR
+
+    @NeedMTR.setter
+    def NeedMTR(self, NeedMTR):
+        self._NeedMTR = NeedMTR
+
+    @property
+    def MTRTimeoutMs(self):
+        r"""<p>路由追踪超时，单位毫秒。NeedMTR 为 1 时有值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MTRTimeoutMs
+
+    @MTRTimeoutMs.setter
+    def MTRTimeoutMs(self, MTRTimeoutMs):
+        self._MTRTimeoutMs = MTRTimeoutMs
+
+    @property
+    def MTRMaxHop(self):
+        r"""<p>路由追踪最大跳数。NeedMTR 为 1 时有值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MTRMaxHop
+
+    @MTRMaxHop.setter
+    def MTRMaxHop(self, MTRMaxHop):
+        self._MTRMaxHop = MTRMaxHop
+
+    @property
+    def MTRPingCount(self):
+        r"""<p>每一跳发包次数。范围 3 到 40。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MTRPingCount
+
+    @MTRPingCount.setter
+    def MTRPingCount(self, MTRPingCount):
+        self._MTRPingCount = MTRPingCount
+
+    @property
+    def SlowThresholdMs(self):
+        r"""<p>慢请求阈值，单位毫秒。after_slow、after_dns_slow 时使用，默认 2000。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SlowThresholdMs
+
+    @SlowThresholdMs.setter
+    def SlowThresholdMs(self, SlowThresholdMs):
+        self._SlowThresholdMs = SlowThresholdMs
+
+    @property
+    def ErrorType(self):
+        r"""<p>错误类型过滤。after_error 时使用。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorType
+
+    @ErrorType.setter
+    def ErrorType(self, ErrorType):
+        self._ErrorType = ErrorType
+
+    @property
+    def Regions(self):
+        r"""<p>允许启动的客户端地区，逗号分隔，名称与分析页客户端地区一致。空表示不限制。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def Operators(self):
+        r"""<p>允许启动的客户端运营商，逗号分隔，名称与分析页客户端运营商一致。空表示不限制。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Operators
+
+    @Operators.setter
+    def Operators(self, Operators):
+        self._Operators = Operators
+
+    @property
+    def UserIds(self):
+        r"""<p>允许启动的用户 ID，逗号分隔。空表示不限制。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def DeviceIds(self):
+        r"""<p>允许启动的设备 ID，逗号分隔。空表示不限制。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+    @property
+    def CreatedBy(self):
+        r"""<p>创建人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._ExecutionTime = params.get("ExecutionTime")
+        self._WatchDomain = params.get("WatchDomain")
+        self._DialDomain = params.get("DialDomain")
+        self._Port = params.get("Port")
+        self._FrequencyMs = params.get("FrequencyMs")
+        self._TimeoutMs = params.get("TimeoutMs")
+        self._PeriodMs = params.get("PeriodMs")
+        self._PackageCount = params.get("PackageCount")
+        self._PackageSize = params.get("PackageSize")
+        self._NeedMTR = params.get("NeedMTR")
+        self._MTRTimeoutMs = params.get("MTRTimeoutMs")
+        self._MTRMaxHop = params.get("MTRMaxHop")
+        self._MTRPingCount = params.get("MTRPingCount")
+        self._SlowThresholdMs = params.get("SlowThresholdMs")
+        self._ErrorType = params.get("ErrorType")
+        self._Regions = params.get("Regions")
+        self._Operators = params.get("Operators")
+        self._UserIds = params.get("UserIds")
+        self._DeviceIds = params.get("DeviceIds")
+        self._CreatedBy = params.get("CreatedBy")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DialTrendPoint(AbstractModel):
+    r"""拨测趋势点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: <p>时间桶，格式 yyyy-MM-dd HH:mm:ss</p>
+        :type Time: str
+        :param _ExecutionCount: <p>执行批次数</p>
+        :type ExecutionCount: int
+        :param _SuccessCount: <p>成功批次数</p>
+        :type SuccessCount: int
+        :param _FailCount: <p>失败批次数</p>
+        :type FailCount: int
+        :param _AvgDuration: <p>平均时延，单位毫秒</p>
+        :type AvgDuration: float
+        """
+        self._Time = None
+        self._ExecutionCount = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._AvgDuration = None
+
+    @property
+    def Time(self):
+        r"""<p>时间桶，格式 yyyy-MM-dd HH:mm:ss</p>
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ExecutionCount(self):
+        r"""<p>执行批次数</p>
+        :rtype: int
+        """
+        return self._ExecutionCount
+
+    @ExecutionCount.setter
+    def ExecutionCount(self, ExecutionCount):
+        self._ExecutionCount = ExecutionCount
+
+    @property
+    def SuccessCount(self):
+        r"""<p>成功批次数</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        r"""<p>失败批次数</p>
+        :rtype: int
+        """
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def AvgDuration(self):
+        r"""<p>平均时延，单位毫秒</p>
+        :rtype: float
+        """
+        return self._AvgDuration
+
+    @AvgDuration.setter
+    def AvgDuration(self, AvgDuration):
+        self._AvgDuration = AvgDuration
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._ExecutionCount = params.get("ExecutionCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        self._AvgDuration = params.get("AvgDuration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventFrame(AbstractModel):
+    r"""堆栈帧
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AbsPath: <p>绝对路径</p>
+        :type AbsPath: str
+        :param _ColNo: <p>列号</p>
+        :type ColNo: int
+        :param _Filename: <p>文件名</p>
+        :type Filename: str
+        :param _Function: <p>函数名</p>
+        :type Function: str
+        :param _LineNo: <p>行号</p>
+        :type LineNo: int
+        :param _InApp: <p>是否应用内 0/1</p>
+        :type InApp: int
+        :param _Module: <p>模块</p>
+        :type Module: str
+        :param _Package: <p>包名</p>
+        :type Package: str
+        :param _StackLevel: <p>栈层级</p>
+        :type StackLevel: int
+        """
+        self._AbsPath = None
+        self._ColNo = None
+        self._Filename = None
+        self._Function = None
+        self._LineNo = None
+        self._InApp = None
+        self._Module = None
+        self._Package = None
+        self._StackLevel = None
+
+    @property
+    def AbsPath(self):
+        r"""<p>绝对路径</p>
+        :rtype: str
+        """
+        return self._AbsPath
+
+    @AbsPath.setter
+    def AbsPath(self, AbsPath):
+        self._AbsPath = AbsPath
+
+    @property
+    def ColNo(self):
+        r"""<p>列号</p>
+        :rtype: int
+        """
+        return self._ColNo
+
+    @ColNo.setter
+    def ColNo(self, ColNo):
+        self._ColNo = ColNo
+
+    @property
+    def Filename(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._Filename
+
+    @Filename.setter
+    def Filename(self, Filename):
+        self._Filename = Filename
+
+    @property
+    def Function(self):
+        r"""<p>函数名</p>
+        :rtype: str
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+    @property
+    def LineNo(self):
+        r"""<p>行号</p>
+        :rtype: int
+        """
+        return self._LineNo
+
+    @LineNo.setter
+    def LineNo(self, LineNo):
+        self._LineNo = LineNo
+
+    @property
+    def InApp(self):
+        r"""<p>是否应用内 0/1</p>
+        :rtype: int
+        """
+        return self._InApp
+
+    @InApp.setter
+    def InApp(self, InApp):
+        self._InApp = InApp
+
+    @property
+    def Module(self):
+        r"""<p>模块</p>
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def Package(self):
+        r"""<p>包名</p>
+        :rtype: str
+        """
+        return self._Package
+
+    @Package.setter
+    def Package(self, Package):
+        self._Package = Package
+
+    @property
+    def StackLevel(self):
+        r"""<p>栈层级</p>
+        :rtype: int
+        """
+        return self._StackLevel
+
+    @StackLevel.setter
+    def StackLevel(self, StackLevel):
+        self._StackLevel = StackLevel
+
+
+    def _deserialize(self, params):
+        self._AbsPath = params.get("AbsPath")
+        self._ColNo = params.get("ColNo")
+        self._Filename = params.get("Filename")
+        self._Function = params.get("Function")
+        self._LineNo = params.get("LineNo")
+        self._InApp = params.get("InApp")
+        self._Module = params.get("Module")
+        self._Package = params.get("Package")
+        self._StackLevel = params.get("StackLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventRankItem(AbstractModel):
+    r"""事件排行。Kind=error 填指纹字段；URL 排行填 URL/Fail/Duration。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Fingerprint: <p>错误指纹</p>
+        :type Fingerprint: str
+        :param _EventType: <p>事件类型</p>
+        :type EventType: str
+        :param _CrashType: <p>崩溃类型</p>
+        :type CrashType: str
+        :param _ErrorType: <p>错误类型</p>
+        :type ErrorType: str
+        :param _ErrorValue: <p>错误值</p>
+        :type ErrorValue: str
+        :param _IssueId: <p>问题单 ID</p>
+        :type IssueId: str
+        :param _Status: <p>问题单状态</p>
+        :type Status: str
+        :param _URL: <p>API 或资源 URL</p>
+        :type URL: str
+        :param _Count: <p>次数</p>
+        :type Count: int
+        :param _AffectedUser: <p>影响用户数</p>
+        :type AffectedUser: int
+        :param _Fail: <p>失败次数</p>
+        :type Fail: int
+        :param _Duration: <p>耗时</p>
+        :type Duration: float
+        :param _ConnectTime: <p>连接时长</p>
+        :type ConnectTime: float
+        :param _DomainLookupTime: <p>DNS 时长</p>
+        :type DomainLookupTime: float
+        :param _Series: <p>时序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Series: list of EventRankPoint
+        """
+        self._Fingerprint = None
+        self._EventType = None
+        self._CrashType = None
+        self._ErrorType = None
+        self._ErrorValue = None
+        self._IssueId = None
+        self._Status = None
+        self._URL = None
+        self._Count = None
+        self._AffectedUser = None
+        self._Fail = None
+        self._Duration = None
+        self._ConnectTime = None
+        self._DomainLookupTime = None
+        self._Series = None
+
+    @property
+    def Fingerprint(self):
+        r"""<p>错误指纹</p>
+        :rtype: str
+        """
+        return self._Fingerprint
+
+    @Fingerprint.setter
+    def Fingerprint(self, Fingerprint):
+        self._Fingerprint = Fingerprint
+
+    @property
+    def EventType(self):
+        r"""<p>事件类型</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def CrashType(self):
+        r"""<p>崩溃类型</p>
+        :rtype: str
+        """
+        return self._CrashType
+
+    @CrashType.setter
+    def CrashType(self, CrashType):
+        self._CrashType = CrashType
+
+    @property
+    def ErrorType(self):
+        r"""<p>错误类型</p>
+        :rtype: str
+        """
+        return self._ErrorType
+
+    @ErrorType.setter
+    def ErrorType(self, ErrorType):
+        self._ErrorType = ErrorType
+
+    @property
+    def ErrorValue(self):
+        r"""<p>错误值</p>
+        :rtype: str
+        """
+        return self._ErrorValue
+
+    @ErrorValue.setter
+    def ErrorValue(self, ErrorValue):
+        self._ErrorValue = ErrorValue
+
+    @property
+    def IssueId(self):
+        r"""<p>问题单 ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def Status(self):
+        r"""<p>问题单状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def URL(self):
+        r"""<p>API 或资源 URL</p>
+        :rtype: str
+        """
+        return self._URL
+
+    @URL.setter
+    def URL(self, URL):
+        self._URL = URL
+
+    @property
+    def Count(self):
+        r"""<p>次数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def AffectedUser(self):
+        r"""<p>影响用户数</p>
+        :rtype: int
+        """
+        return self._AffectedUser
+
+    @AffectedUser.setter
+    def AffectedUser(self, AffectedUser):
+        self._AffectedUser = AffectedUser
+
+    @property
+    def Fail(self):
+        r"""<p>失败次数</p>
+        :rtype: int
+        """
+        return self._Fail
+
+    @Fail.setter
+    def Fail(self, Fail):
+        self._Fail = Fail
+
+    @property
+    def Duration(self):
+        r"""<p>耗时</p>
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ConnectTime(self):
+        r"""<p>连接时长</p>
+        :rtype: float
+        """
+        return self._ConnectTime
+
+    @ConnectTime.setter
+    def ConnectTime(self, ConnectTime):
+        self._ConnectTime = ConnectTime
+
+    @property
+    def DomainLookupTime(self):
+        r"""<p>DNS 时长</p>
+        :rtype: float
+        """
+        return self._DomainLookupTime
+
+    @DomainLookupTime.setter
+    def DomainLookupTime(self, DomainLookupTime):
+        self._DomainLookupTime = DomainLookupTime
+
+    @property
+    def Series(self):
+        r"""<p>时序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventRankPoint
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+
+    def _deserialize(self, params):
+        self._Fingerprint = params.get("Fingerprint")
+        self._EventType = params.get("EventType")
+        self._CrashType = params.get("CrashType")
+        self._ErrorType = params.get("ErrorType")
+        self._ErrorValue = params.get("ErrorValue")
+        self._IssueId = params.get("IssueId")
+        self._Status = params.get("Status")
+        self._URL = params.get("URL")
+        self._Count = params.get("Count")
+        self._AffectedUser = params.get("AffectedUser")
+        self._Fail = params.get("Fail")
+        self._Duration = params.get("Duration")
+        self._ConnectTime = params.get("ConnectTime")
+        self._DomainLookupTime = params.get("DomainLookupTime")
+        if params.get("Series") is not None:
+            self._Series = []
+            for item in params.get("Series"):
+                obj = EventRankPoint()
+                obj._deserialize(item)
+                self._Series.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventRankPoint(AbstractModel):
+    r"""事件排行时序点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ts: <p>时间戳 Unix 毫秒</p>
+        :type Ts: int
+        :param _Count: <p>次数</p>
+        :type Count: int
+        :param _Fail: <p>失败次数</p>
+        :type Fail: int
+        :param _Duration: <p>耗时</p>
+        :type Duration: float
+        """
+        self._Ts = None
+        self._Count = None
+        self._Fail = None
+        self._Duration = None
+
+    @property
+    def Ts(self):
+        r"""<p>时间戳 Unix 毫秒</p>
+        :rtype: int
+        """
+        return self._Ts
+
+    @Ts.setter
+    def Ts(self, Ts):
+        self._Ts = Ts
+
+    @property
+    def Count(self):
+        r"""<p>次数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Fail(self):
+        r"""<p>失败次数</p>
+        :rtype: int
+        """
+        return self._Fail
+
+    @Fail.setter
+    def Fail(self, Fail):
+        self._Fail = Fail
+
+    @property
+    def Duration(self):
+        r"""<p>耗时</p>
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Ts = params.get("Ts")
+        self._Count = params.get("Count")
+        self._Fail = params.get("Fail")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventSearchSeriesPoint(AbstractModel):
+    r"""探索汇总分桶点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>时间戳 Unix 毫秒</p>
+        :type Timestamp: int
+        :param _Count: <p>次数</p>
+        :type Count: int
+        """
+        self._Timestamp = None
+        self._Count = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>时间戳 Unix 毫秒</p>
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Count(self):
+        r"""<p>次数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventStack(AbstractModel):
+    r"""事件异常栈
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>异常类型</p>
+        :type Type: str
+        :param _Value: <p>异常信息</p>
+        :type Value: str
+        :param _MechanismType: <p>mechanism 类型</p>
+        :type MechanismType: str
+        :param _MechanismHandled: <p>是否已处理 0/1</p>
+        :type MechanismHandled: int
+        """
+        self._Type = None
+        self._Value = None
+        self._MechanismType = None
+        self._MechanismHandled = None
+
+    @property
+    def Type(self):
+        r"""<p>异常类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""<p>异常信息</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def MechanismType(self):
+        r"""<p>mechanism 类型</p>
+        :rtype: str
+        """
+        return self._MechanismType
+
+    @MechanismType.setter
+    def MechanismType(self, MechanismType):
+        self._MechanismType = MechanismType
+
+    @property
+    def MechanismHandled(self):
+        r"""<p>是否已处理 0/1</p>
+        :rtype: int
+        """
+        return self._MechanismHandled
+
+    @MechanismHandled.setter
+    def MechanismHandled(self, MechanismHandled):
+        self._MechanismHandled = MechanismHandled
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._MechanismType = params.get("MechanismType")
+        self._MechanismHandled = params.get("MechanismHandled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventView(AbstractModel):
+    r"""事件详情主表视图。空字符串省略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _EventId: <p>事件 ID</p>
+        :type EventId: str
+        :param _ViewId: <p>视图 ID</p>
+        :type ViewId: str
+        :param _EventType: <p>事件类型</p>
+        :type EventType: str
+        :param _EventCategory: <p>事件分类</p>
+        :type EventCategory: str
+        :param _EventName: <p>事件名</p>
+        :type EventName: str
+        :param _Timestamp: <p>时间 RFC3339</p>
+        :type Timestamp: str
+        :param _Date: <p>分区日期 YYYY-MM-DD</p>
+        :type Date: str
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本</p>
+        :type AppVersion: str
+        :param _SdkVersion: <p>SDK 版本</p>
+        :type SdkVersion: str
+        :param _IssueId: <p>问题单 ID</p>
+        :type IssueId: str
+        :param _Fingerprint: <p>错误指纹</p>
+        :type Fingerprint: str
+        :param _IsSourceMapped: <p>是否已符号化 0/1</p>
+        :type IsSourceMapped: int
+        :param _ExceptionStacks: <p>异常栈</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptionStacks: list of EventStack
+        :param _ExceptionFrames: <p>原始堆栈帧</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptionFrames: list of EventFrame
+        :param _EventProperties: <p>事件属性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventProperties: list of StringKeyValue
+        :param _SessionId: <p>会话 ID</p>
+        :type SessionId: str
+        :param _UserId: <p>业务用户 ID</p>
+        :type UserId: str
+        :param _DeviceId: <p>设备 ID</p>
+        :type DeviceId: str
+        :param _PageUrl: <p>页面 URL</p>
+        :type PageUrl: str
+        :param _NormalizedPageUrl: <p>归一化页面 URL</p>
+        :type NormalizedPageUrl: str
+        :param _PageTitle: <p>页面标题</p>
+        :type PageTitle: str
+        :param _ResourceUrl: <p>资源 URL</p>
+        :type ResourceUrl: str
+        :param _ResourceType: <p>资源类型</p>
+        :type ResourceType: str
+        :param _TargetElement: <p>目标元素</p>
+        :type TargetElement: str
+        :param _TargetText: <p>目标文本</p>
+        :type TargetText: str
+        :param _LogLevel: <p>日志级别</p>
+        :type LogLevel: str
+        :param _Ip: <p>IP</p>
+        :type Ip: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _Province: <p>省份</p>
+        :type Province: str
+        :param _City: <p>城市</p>
+        :type City: str
+        :param _Isp: <p>运营商</p>
+        :type Isp: str
+        :param _NetworkType: <p>网络类型</p>
+        :type NetworkType: str
+        :param _DeviceType: <p>设备类型</p>
+        :type DeviceType: str
+        :param _Os: <p>操作系统</p>
+        :type Os: str
+        :param _Browser: <p>浏览器</p>
+        :type Browser: str
+        :param _Environment: <p>环境</p>
+        :type Environment: str
+        :param _Measurements: <p>测量值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Measurements: list of FloatKeyValue
+        :param _Tags: <p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of StringKeyValue
+        """
+        self._AppId = None
+        self._EventId = None
+        self._ViewId = None
+        self._EventType = None
+        self._EventCategory = None
+        self._EventName = None
+        self._Timestamp = None
+        self._Date = None
+        self._Platform = None
+        self._AppVersion = None
+        self._SdkVersion = None
+        self._IssueId = None
+        self._Fingerprint = None
+        self._IsSourceMapped = None
+        self._ExceptionStacks = None
+        self._ExceptionFrames = None
+        self._EventProperties = None
+        self._SessionId = None
+        self._UserId = None
+        self._DeviceId = None
+        self._PageUrl = None
+        self._NormalizedPageUrl = None
+        self._PageTitle = None
+        self._ResourceUrl = None
+        self._ResourceType = None
+        self._TargetElement = None
+        self._TargetText = None
+        self._LogLevel = None
+        self._Ip = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._Isp = None
+        self._NetworkType = None
+        self._DeviceType = None
+        self._Os = None
+        self._Browser = None
+        self._Environment = None
+        self._Measurements = None
+        self._Tags = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def EventId(self):
+        r"""<p>事件 ID</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def ViewId(self):
+        r"""<p>视图 ID</p>
+        :rtype: str
+        """
+        return self._ViewId
+
+    @ViewId.setter
+    def ViewId(self, ViewId):
+        self._ViewId = ViewId
+
+    @property
+    def EventType(self):
+        r"""<p>事件类型</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def EventCategory(self):
+        r"""<p>事件分类</p>
+        :rtype: str
+        """
+        return self._EventCategory
+
+    @EventCategory.setter
+    def EventCategory(self, EventCategory):
+        self._EventCategory = EventCategory
+
+    @property
+    def EventName(self):
+        r"""<p>事件名</p>
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def Timestamp(self):
+        r"""<p>时间 RFC3339</p>
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def Date(self):
+        r"""<p>分区日期 YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def SdkVersion(self):
+        r"""<p>SDK 版本</p>
+        :rtype: str
+        """
+        return self._SdkVersion
+
+    @SdkVersion.setter
+    def SdkVersion(self, SdkVersion):
+        self._SdkVersion = SdkVersion
+
+    @property
+    def IssueId(self):
+        r"""<p>问题单 ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def Fingerprint(self):
+        r"""<p>错误指纹</p>
+        :rtype: str
+        """
+        return self._Fingerprint
+
+    @Fingerprint.setter
+    def Fingerprint(self, Fingerprint):
+        self._Fingerprint = Fingerprint
+
+    @property
+    def IsSourceMapped(self):
+        r"""<p>是否已符号化 0/1</p>
+        :rtype: int
+        """
+        return self._IsSourceMapped
+
+    @IsSourceMapped.setter
+    def IsSourceMapped(self, IsSourceMapped):
+        self._IsSourceMapped = IsSourceMapped
+
+    @property
+    def ExceptionStacks(self):
+        r"""<p>异常栈</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventStack
+        """
+        return self._ExceptionStacks
+
+    @ExceptionStacks.setter
+    def ExceptionStacks(self, ExceptionStacks):
+        self._ExceptionStacks = ExceptionStacks
+
+    @property
+    def ExceptionFrames(self):
+        r"""<p>原始堆栈帧</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventFrame
+        """
+        return self._ExceptionFrames
+
+    @ExceptionFrames.setter
+    def ExceptionFrames(self, ExceptionFrames):
+        self._ExceptionFrames = ExceptionFrames
+
+    @property
+    def EventProperties(self):
+        r"""<p>事件属性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StringKeyValue
+        """
+        return self._EventProperties
+
+    @EventProperties.setter
+    def EventProperties(self, EventProperties):
+        self._EventProperties = EventProperties
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def UserId(self):
+        r"""<p>业务用户 ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def DeviceId(self):
+        r"""<p>设备 ID</p>
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def PageUrl(self):
+        r"""<p>页面 URL</p>
+        :rtype: str
+        """
+        return self._PageUrl
+
+    @PageUrl.setter
+    def PageUrl(self, PageUrl):
+        self._PageUrl = PageUrl
+
+    @property
+    def NormalizedPageUrl(self):
+        r"""<p>归一化页面 URL</p>
+        :rtype: str
+        """
+        return self._NormalizedPageUrl
+
+    @NormalizedPageUrl.setter
+    def NormalizedPageUrl(self, NormalizedPageUrl):
+        self._NormalizedPageUrl = NormalizedPageUrl
+
+    @property
+    def PageTitle(self):
+        r"""<p>页面标题</p>
+        :rtype: str
+        """
+        return self._PageTitle
+
+    @PageTitle.setter
+    def PageTitle(self, PageTitle):
+        self._PageTitle = PageTitle
+
+    @property
+    def ResourceUrl(self):
+        r"""<p>资源 URL</p>
+        :rtype: str
+        """
+        return self._ResourceUrl
+
+    @ResourceUrl.setter
+    def ResourceUrl(self, ResourceUrl):
+        self._ResourceUrl = ResourceUrl
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def TargetElement(self):
+        r"""<p>目标元素</p>
+        :rtype: str
+        """
+        return self._TargetElement
+
+    @TargetElement.setter
+    def TargetElement(self, TargetElement):
+        self._TargetElement = TargetElement
+
+    @property
+    def TargetText(self):
+        r"""<p>目标文本</p>
+        :rtype: str
+        """
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
+
+    @property
+    def LogLevel(self):
+        r"""<p>日志级别</p>
+        :rtype: str
+        """
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def Ip(self):
+        r"""<p>IP</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Isp(self):
+        r"""<p>运营商</p>
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def NetworkType(self):
+        r"""<p>网络类型</p>
+        :rtype: str
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def DeviceType(self):
+        r"""<p>设备类型</p>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Os(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""<p>浏览器</p>
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def Environment(self):
+        r"""<p>环境</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def Measurements(self):
+        r"""<p>测量值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FloatKeyValue
+        """
+        return self._Measurements
+
+    @Measurements.setter
+    def Measurements(self, Measurements):
+        self._Measurements = Measurements
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StringKeyValue
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._EventId = params.get("EventId")
+        self._ViewId = params.get("ViewId")
+        self._EventType = params.get("EventType")
+        self._EventCategory = params.get("EventCategory")
+        self._EventName = params.get("EventName")
+        self._Timestamp = params.get("Timestamp")
+        self._Date = params.get("Date")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._SdkVersion = params.get("SdkVersion")
+        self._IssueId = params.get("IssueId")
+        self._Fingerprint = params.get("Fingerprint")
+        self._IsSourceMapped = params.get("IsSourceMapped")
+        if params.get("ExceptionStacks") is not None:
+            self._ExceptionStacks = []
+            for item in params.get("ExceptionStacks"):
+                obj = EventStack()
+                obj._deserialize(item)
+                self._ExceptionStacks.append(obj)
+        if params.get("ExceptionFrames") is not None:
+            self._ExceptionFrames = []
+            for item in params.get("ExceptionFrames"):
+                obj = EventFrame()
+                obj._deserialize(item)
+                self._ExceptionFrames.append(obj)
+        if params.get("EventProperties") is not None:
+            self._EventProperties = []
+            for item in params.get("EventProperties"):
+                obj = StringKeyValue()
+                obj._deserialize(item)
+                self._EventProperties.append(obj)
+        self._SessionId = params.get("SessionId")
+        self._UserId = params.get("UserId")
+        self._DeviceId = params.get("DeviceId")
+        self._PageUrl = params.get("PageUrl")
+        self._NormalizedPageUrl = params.get("NormalizedPageUrl")
+        self._PageTitle = params.get("PageTitle")
+        self._ResourceUrl = params.get("ResourceUrl")
+        self._ResourceType = params.get("ResourceType")
+        self._TargetElement = params.get("TargetElement")
+        self._TargetText = params.get("TargetText")
+        self._LogLevel = params.get("LogLevel")
+        self._Ip = params.get("Ip")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Isp = params.get("Isp")
+        self._NetworkType = params.get("NetworkType")
+        self._DeviceType = params.get("DeviceType")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._Environment = params.get("Environment")
+        if params.get("Measurements") is not None:
+            self._Measurements = []
+            for item in params.get("Measurements"):
+                obj = FloatKeyValue()
+                obj._deserialize(item)
+                self._Measurements.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = StringKeyValue()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptionBucket(AbstractModel):
+    r"""异常维度同批计数桶；IncludedInTotal 表示计入父行总数，ParentKey 表示包含关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>固定目录分类 key，与请求平台、CategoryKeys 或 EventTypes 派生目录一致。</p>
+        :type Key: str
+        :param _Count: <p>精确事件行数，0至9007199254740991的整数，0必须保留。</p>
+        :type Count: int
+        :param _IncludedInTotal: <p>是否为计入 TotalCount 的互斥主项。包含项为false，不重复计总。</p>
+        :type IncludedInTotal: bool
+        :param _ParentKey: <p>包含项所属主项的 Key；主项不返回该字段。</p>
+        :type ParentKey: str
+        """
+        self._Key = None
+        self._Count = None
+        self._IncludedInTotal = None
+        self._ParentKey = None
+
+    @property
+    def Key(self):
+        r"""<p>固定目录分类 key，与请求平台、CategoryKeys 或 EventTypes 派生目录一致。</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Count(self):
+        r"""<p>精确事件行数，0至9007199254740991的整数，0必须保留。</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def IncludedInTotal(self):
+        r"""<p>是否为计入 TotalCount 的互斥主项。包含项为false，不重复计总。</p>
+        :rtype: bool
+        """
+        return self._IncludedInTotal
+
+    @IncludedInTotal.setter
+    def IncludedInTotal(self, IncludedInTotal):
+        self._IncludedInTotal = IncludedInTotal
+
+    @property
+    def ParentKey(self):
+        r"""<p>包含项所属主项的 Key；主项不返回该字段。</p>
+        :rtype: str
+        """
+        return self._ParentKey
+
+    @ParentKey.setter
+    def ParentKey(self, ParentKey):
+        self._ParentKey = ParentKey
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Count = params.get("Count")
+        self._IncludedInTotal = params.get("IncludedInTotal")
+        self._ParentKey = params.get("ParentKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptionDimensionRow(AbstractModel):
+    r"""异常维度值的同批完整分类计数；TotalCount为互斥主类之和，Items包含全部适用类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RowKey: <p>由目录域、维度或TagKey及归一化值确定的稳定、不透明唯一标识。</p>
+        :type RowKey: str
+        :param _Value: <p>维度显示值；标签保留原始值，普通province/platform/network_type按既有显示别名归一化。</p>
+        :type Value: str
+        :param _TotalCount: <p>本行全部 IncludedInTotal=true 主项的 Count 之和，安全非负整数。</p>
+        :type TotalCount: int
+        :param _Items: <p>完整固定分类向量，含0计数及适用包含项；不按数量裁剪。</p>
+        :type Items: list of ExceptionBucket
+        """
+        self._RowKey = None
+        self._Value = None
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def RowKey(self):
+        r"""<p>由目录域、维度或TagKey及归一化值确定的稳定、不透明唯一标识。</p>
+        :rtype: str
+        """
+        return self._RowKey
+
+    @RowKey.setter
+    def RowKey(self, RowKey):
+        self._RowKey = RowKey
+
+    @property
+    def Value(self):
+        r"""<p>维度显示值；标签保留原始值，普通province/platform/network_type按既有显示别名归一化。</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def TotalCount(self):
+        r"""<p>本行全部 IncludedInTotal=true 主项的 Count 之和，安全非负整数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>完整固定分类向量，含0计数及适用包含项；不按数量裁剪。</p>
+        :rtype: list of ExceptionBucket
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._RowKey = params.get("RowKey")
+        self._Value = params.get("Value")
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ExceptionBucket()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExceptionDistribution(AbstractModel):
+    r"""Kind=exception_dimension时返回；Rows为同一次聚合的有界排行及完整分类向量，成功空结果返回空数组。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rows: <p>按 TotalCount 降序、归一化值升序返回的完整维度行，行数不超过Limit；无数据返回空数组。</p>
+        :type Rows: list of ExceptionDimensionRow
+        """
+        self._Rows = None
+
+    @property
+    def Rows(self):
+        r"""<p>按 TotalCount 降序、归一化值升序返回的完整维度行，行数不超过Limit；无数据返回空数组。</p>
+        :rtype: list of ExceptionDimensionRow
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+
+    def _deserialize(self, params):
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = ExceptionDimensionRow()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExplorationEventItem(AbstractModel):
+    r"""探索事件列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: <p>事件 ID</p>
+        :type EventId: str
+        :param _EventType: <p>事件类型</p>
+        :type EventType: str
+        :param _EventName: <p>事件名</p>
+        :type EventName: str
+        :param _EventCategory: <p>事件分类</p>
+        :type EventCategory: str
+        :param _Timestamp: <p>时间戳 Unix 毫秒</p>
+        :type Timestamp: int
+        :param _SessionId: <p>会话 ID</p>
+        :type SessionId: str
+        :param _ViewId: <p>视图 ID</p>
+        :type ViewId: str
+        :param _UserId: <p>业务用户 ID</p>
+        :type UserId: str
+        :param _DeviceId: <p>设备 ID</p>
+        :type DeviceId: str
+        :param _PageUrl: <p>页面 URL</p>
+        :type PageUrl: str
+        :param _NormalizedPageUrl: <p>归一化页面 URL</p>
+        :type NormalizedPageUrl: str
+        :param _PageTitle: <p>页面标题</p>
+        :type PageTitle: str
+        :param _Platform: <p>平台</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本</p>
+        :type AppVersion: str
+        :param _Os: <p>操作系统</p>
+        :type Os: str
+        :param _Browser: <p>浏览器</p>
+        :type Browser: str
+        :param _DeviceType: <p>设备类型</p>
+        :type DeviceType: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _Province: <p>省份</p>
+        :type Province: str
+        :param _City: <p>城市</p>
+        :type City: str
+        :param _Isp: <p>运营商</p>
+        :type Isp: str
+        :param _NetworkType: <p>网络类型</p>
+        :type NetworkType: str
+        :param _Ip: <p>IP</p>
+        :type Ip: str
+        :param _ResourceUrl: <p>资源 URL</p>
+        :type ResourceUrl: str
+        :param _ResourceType: <p>资源类型</p>
+        :type ResourceType: str
+        :param _TargetElement: <p>目标元素</p>
+        :type TargetElement: str
+        :param _TargetText: <p>目标文本</p>
+        :type TargetText: str
+        :param _LogLevel: <p>日志级别</p>
+        :type LogLevel: str
+        :param _IssueId: <p>问题单 ID</p>
+        :type IssueId: str
+        :param _IsSourceMapped: <p>是否已符号化 0/1</p>
+        :type IsSourceMapped: int
+        :param _Measurements: <p>测量值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Measurements: list of FloatKeyValue
+        :param _EventProperties: <p>事件属性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventProperties: list of StringKeyValue
+        :param _ExceptionStacks: <p>异常栈摘要</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExceptionStacks: list of ExplorationExceptionStack
+        :param _Tags: <p>事件标签列表。APM 全链路时包含 Key=trace_id，Value 为 32 位 hex TraceId（不是整段 traceparent）。无标签时省略或空数组。</p>
+        :type Tags: list of StringKeyValue
+        """
+        self._EventId = None
+        self._EventType = None
+        self._EventName = None
+        self._EventCategory = None
+        self._Timestamp = None
+        self._SessionId = None
+        self._ViewId = None
+        self._UserId = None
+        self._DeviceId = None
+        self._PageUrl = None
+        self._NormalizedPageUrl = None
+        self._PageTitle = None
+        self._Platform = None
+        self._AppVersion = None
+        self._Os = None
+        self._Browser = None
+        self._DeviceType = None
+        self._Country = None
+        self._Province = None
+        self._City = None
+        self._Isp = None
+        self._NetworkType = None
+        self._Ip = None
+        self._ResourceUrl = None
+        self._ResourceType = None
+        self._TargetElement = None
+        self._TargetText = None
+        self._LogLevel = None
+        self._IssueId = None
+        self._IsSourceMapped = None
+        self._Measurements = None
+        self._EventProperties = None
+        self._ExceptionStacks = None
+        self._Tags = None
+
+    @property
+    def EventId(self):
+        r"""<p>事件 ID</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def EventType(self):
+        r"""<p>事件类型</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def EventName(self):
+        r"""<p>事件名</p>
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventCategory(self):
+        r"""<p>事件分类</p>
+        :rtype: str
+        """
+        return self._EventCategory
+
+    @EventCategory.setter
+    def EventCategory(self, EventCategory):
+        self._EventCategory = EventCategory
+
+    @property
+    def Timestamp(self):
+        r"""<p>时间戳 Unix 毫秒</p>
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ViewId(self):
+        r"""<p>视图 ID</p>
+        :rtype: str
+        """
+        return self._ViewId
+
+    @ViewId.setter
+    def ViewId(self, ViewId):
+        self._ViewId = ViewId
+
+    @property
+    def UserId(self):
+        r"""<p>业务用户 ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def DeviceId(self):
+        r"""<p>设备 ID</p>
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def PageUrl(self):
+        r"""<p>页面 URL</p>
+        :rtype: str
+        """
+        return self._PageUrl
+
+    @PageUrl.setter
+    def PageUrl(self, PageUrl):
+        self._PageUrl = PageUrl
+
+    @property
+    def NormalizedPageUrl(self):
+        r"""<p>归一化页面 URL</p>
+        :rtype: str
+        """
+        return self._NormalizedPageUrl
+
+    @NormalizedPageUrl.setter
+    def NormalizedPageUrl(self, NormalizedPageUrl):
+        self._NormalizedPageUrl = NormalizedPageUrl
+
+    @property
+    def PageTitle(self):
+        r"""<p>页面标题</p>
+        :rtype: str
+        """
+        return self._PageTitle
+
+    @PageTitle.setter
+    def PageTitle(self, PageTitle):
+        self._PageTitle = PageTitle
+
+    @property
+    def Platform(self):
+        r"""<p>平台</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Os(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._Os
+
+    @Os.setter
+    def Os(self, Os):
+        self._Os = Os
+
+    @property
+    def Browser(self):
+        r"""<p>浏览器</p>
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def DeviceType(self):
+        r"""<p>设备类型</p>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Isp(self):
+        r"""<p>运营商</p>
+        :rtype: str
+        """
+        return self._Isp
+
+    @Isp.setter
+    def Isp(self, Isp):
+        self._Isp = Isp
+
+    @property
+    def NetworkType(self):
+        r"""<p>网络类型</p>
+        :rtype: str
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def Ip(self):
+        r"""<p>IP</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def ResourceUrl(self):
+        r"""<p>资源 URL</p>
+        :rtype: str
+        """
+        return self._ResourceUrl
+
+    @ResourceUrl.setter
+    def ResourceUrl(self, ResourceUrl):
+        self._ResourceUrl = ResourceUrl
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def TargetElement(self):
+        r"""<p>目标元素</p>
+        :rtype: str
+        """
+        return self._TargetElement
+
+    @TargetElement.setter
+    def TargetElement(self, TargetElement):
+        self._TargetElement = TargetElement
+
+    @property
+    def TargetText(self):
+        r"""<p>目标文本</p>
+        :rtype: str
+        """
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
+
+    @property
+    def LogLevel(self):
+        r"""<p>日志级别</p>
+        :rtype: str
+        """
+        return self._LogLevel
+
+    @LogLevel.setter
+    def LogLevel(self, LogLevel):
+        self._LogLevel = LogLevel
+
+    @property
+    def IssueId(self):
+        r"""<p>问题单 ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def IsSourceMapped(self):
+        r"""<p>是否已符号化 0/1</p>
+        :rtype: int
+        """
+        return self._IsSourceMapped
+
+    @IsSourceMapped.setter
+    def IsSourceMapped(self, IsSourceMapped):
+        self._IsSourceMapped = IsSourceMapped
+
+    @property
+    def Measurements(self):
+        r"""<p>测量值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FloatKeyValue
+        """
+        return self._Measurements
+
+    @Measurements.setter
+    def Measurements(self, Measurements):
+        self._Measurements = Measurements
+
+    @property
+    def EventProperties(self):
+        r"""<p>事件属性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StringKeyValue
+        """
+        return self._EventProperties
+
+    @EventProperties.setter
+    def EventProperties(self, EventProperties):
+        self._EventProperties = EventProperties
+
+    @property
+    def ExceptionStacks(self):
+        r"""<p>异常栈摘要</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExplorationExceptionStack
+        """
+        return self._ExceptionStacks
+
+    @ExceptionStacks.setter
+    def ExceptionStacks(self, ExceptionStacks):
+        self._ExceptionStacks = ExceptionStacks
+
+    @property
+    def Tags(self):
+        r"""<p>事件标签列表。APM 全链路时包含 Key=trace_id，Value 为 32 位 hex TraceId（不是整段 traceparent）。无标签时省略或空数组。</p>
+        :rtype: list of StringKeyValue
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._EventType = params.get("EventType")
+        self._EventName = params.get("EventName")
+        self._EventCategory = params.get("EventCategory")
+        self._Timestamp = params.get("Timestamp")
+        self._SessionId = params.get("SessionId")
+        self._ViewId = params.get("ViewId")
+        self._UserId = params.get("UserId")
+        self._DeviceId = params.get("DeviceId")
+        self._PageUrl = params.get("PageUrl")
+        self._NormalizedPageUrl = params.get("NormalizedPageUrl")
+        self._PageTitle = params.get("PageTitle")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._Os = params.get("Os")
+        self._Browser = params.get("Browser")
+        self._DeviceType = params.get("DeviceType")
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Isp = params.get("Isp")
+        self._NetworkType = params.get("NetworkType")
+        self._Ip = params.get("Ip")
+        self._ResourceUrl = params.get("ResourceUrl")
+        self._ResourceType = params.get("ResourceType")
+        self._TargetElement = params.get("TargetElement")
+        self._TargetText = params.get("TargetText")
+        self._LogLevel = params.get("LogLevel")
+        self._IssueId = params.get("IssueId")
+        self._IsSourceMapped = params.get("IsSourceMapped")
+        if params.get("Measurements") is not None:
+            self._Measurements = []
+            for item in params.get("Measurements"):
+                obj = FloatKeyValue()
+                obj._deserialize(item)
+                self._Measurements.append(obj)
+        if params.get("EventProperties") is not None:
+            self._EventProperties = []
+            for item in params.get("EventProperties"):
+                obj = StringKeyValue()
+                obj._deserialize(item)
+                self._EventProperties.append(obj)
+        if params.get("ExceptionStacks") is not None:
+            self._ExceptionStacks = []
+            for item in params.get("ExceptionStacks"):
+                obj = ExplorationExceptionStack()
+                obj._deserialize(item)
+                self._ExceptionStacks.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = StringKeyValue()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExplorationExceptionStack(AbstractModel):
+    r"""探索列表异常栈摘要
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>异常类型</p>
+        :type Type: str
+        :param _Value: <p>异常信息</p>
+        :type Value: str
+        :param _MechanismType: <p>mechanism 类型</p>
+        :type MechanismType: str
+        :param _MechanismHandled: <p>是否已处理 0/1</p>
+        :type MechanismHandled: int
+        """
+        self._Type = None
+        self._Value = None
+        self._MechanismType = None
+        self._MechanismHandled = None
+
+    @property
+    def Type(self):
+        r"""<p>异常类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""<p>异常信息</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def MechanismType(self):
+        r"""<p>mechanism 类型</p>
+        :rtype: str
+        """
+        return self._MechanismType
+
+    @MechanismType.setter
+    def MechanismType(self, MechanismType):
+        self._MechanismType = MechanismType
+
+    @property
+    def MechanismHandled(self):
+        r"""<p>是否已处理 0/1</p>
+        :rtype: int
+        """
+        return self._MechanismHandled
+
+    @MechanismHandled.setter
+    def MechanismHandled(self, MechanismHandled):
+        self._MechanismHandled = MechanismHandled
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._MechanismType = params.get("MechanismType")
+        self._MechanismHandled = params.get("MechanismHandled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FieldTransformRuleItem(AbstractModel):
+    r"""字段值替换规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>规则 ID</p>
+        :type Id: int
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _Name: <p>规则名称</p>
+        :type Name: str
+        :param _TargetField: <p>目标字段</p>
+        :type TargetField: str
+        :param _MatchType: <p>匹配方式：exact / prefix / contains / regex</p>
+        :type MatchType: str
+        :param _MatchPattern: <p>匹配模式</p>
+        :type MatchPattern: str
+        :param _TransformAction: <p>替换动作：replace / regex_replace / mask</p>
+        :type TransformAction: str
+        :param _ReplaceValue: <p>替换值</p>
+        :type ReplaceValue: str
+        :param _Priority: <p>优先级</p>
+        :type Priority: int
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        :param _CreatedBy: <p>创建人</p>
+        :type CreatedBy: str
+        :param _UpdatedBy: <p>更新人</p>
+        :type UpdatedBy: str
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>更新时间</p>
+        :type UpdatedAt: str
+        """
+        self._Id = None
+        self._AppId = None
+        self._Name = None
+        self._TargetField = None
+        self._MatchType = None
+        self._MatchPattern = None
+        self._TransformAction = None
+        self._ReplaceValue = None
+        self._Priority = None
+        self._Enabled = None
+        self._CreatedBy = None
+        self._UpdatedBy = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def Id(self):
+        r"""<p>规则 ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Name(self):
+        r"""<p>规则名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TargetField(self):
+        r"""<p>目标字段</p>
+        :rtype: str
+        """
+        return self._TargetField
+
+    @TargetField.setter
+    def TargetField(self, TargetField):
+        self._TargetField = TargetField
+
+    @property
+    def MatchType(self):
+        r"""<p>匹配方式：exact / prefix / contains / regex</p>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def MatchPattern(self):
+        r"""<p>匹配模式</p>
+        :rtype: str
+        """
+        return self._MatchPattern
+
+    @MatchPattern.setter
+    def MatchPattern(self, MatchPattern):
+        self._MatchPattern = MatchPattern
+
+    @property
+    def TransformAction(self):
+        r"""<p>替换动作：replace / regex_replace / mask</p>
+        :rtype: str
+        """
+        return self._TransformAction
+
+    @TransformAction.setter
+    def TransformAction(self, TransformAction):
+        self._TransformAction = TransformAction
+
+    @property
+    def ReplaceValue(self):
+        r"""<p>替换值</p>
+        :rtype: str
+        """
+        return self._ReplaceValue
+
+    @ReplaceValue.setter
+    def ReplaceValue(self, ReplaceValue):
+        self._ReplaceValue = ReplaceValue
+
+    @property
+    def Priority(self):
+        r"""<p>优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def CreatedBy(self):
+        r"""<p>创建人</p>
+        :rtype: str
+        """
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+    @property
+    def UpdatedBy(self):
+        r"""<p>更新人</p>
+        :rtype: str
+        """
+        return self._UpdatedBy
+
+    @UpdatedBy.setter
+    def UpdatedBy(self, UpdatedBy):
+        self._UpdatedBy = UpdatedBy
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._Name = params.get("Name")
+        self._TargetField = params.get("TargetField")
+        self._MatchType = params.get("MatchType")
+        self._MatchPattern = params.get("MatchPattern")
+        self._TransformAction = params.get("TransformAction")
+        self._ReplaceValue = params.get("ReplaceValue")
+        self._Priority = params.get("Priority")
+        self._Enabled = params.get("Enabled")
+        self._CreatedBy = params.get("CreatedBy")
+        self._UpdatedBy = params.get("UpdatedBy")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
@@ -22254,6 +40399,270 @@ class Filters(AbstractModel):
         
 
 
+class FloatKeyValue(AbstractModel):
+    r"""数值键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键</p>
+        :type Key: str
+        :param _Value: <p>值</p>
+        :type Value: float
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FloatNameValue(AbstractModel):
+    r"""指标名值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>指标名，如 Count / Rate / P95</p>
+        :type Name: str
+        :param _Value: <p>指标值</p>
+        :type Value: float
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>指标名，如 Count / Rate / P95</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>指标值</p>
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunnelStepInput(AbstractModel):
+    r"""TDEM漏斗步骤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StepName: <p>应用id</p>
+        :type StepName: str
+        :param _PagePattern: <p>页面特征</p>
+        :type PagePattern: str
+        :param _PageMatchMode: <p>页面匹配模式</p>
+        :type PageMatchMode: str
+        :param _Selector: <p>控件Selector</p>
+        :type Selector: str
+        :param _ActionType: <p>事件类型</p>
+        :type ActionType: str
+        :param _VisualName: <p>可视化名称，如控件文本、自定义事件名</p>
+        :type VisualName: str
+        """
+        self._StepName = None
+        self._PagePattern = None
+        self._PageMatchMode = None
+        self._Selector = None
+        self._ActionType = None
+        self._VisualName = None
+
+    @property
+    def StepName(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._StepName
+
+    @StepName.setter
+    def StepName(self, StepName):
+        self._StepName = StepName
+
+    @property
+    def PagePattern(self):
+        r"""<p>页面特征</p>
+        :rtype: str
+        """
+        return self._PagePattern
+
+    @PagePattern.setter
+    def PagePattern(self, PagePattern):
+        self._PagePattern = PagePattern
+
+    @property
+    def PageMatchMode(self):
+        r"""<p>页面匹配模式</p>
+        :rtype: str
+        """
+        return self._PageMatchMode
+
+    @PageMatchMode.setter
+    def PageMatchMode(self, PageMatchMode):
+        self._PageMatchMode = PageMatchMode
+
+    @property
+    def Selector(self):
+        r"""<p>控件Selector</p>
+        :rtype: str
+        """
+        return self._Selector
+
+    @Selector.setter
+    def Selector(self, Selector):
+        self._Selector = Selector
+
+    @property
+    def ActionType(self):
+        r"""<p>事件类型</p>
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def VisualName(self):
+        r"""<p>可视化名称，如控件文本、自定义事件名</p>
+        :rtype: str
+        """
+        return self._VisualName
+
+    @VisualName.setter
+    def VisualName(self, VisualName):
+        self._VisualName = VisualName
+
+
+    def _deserialize(self, params):
+        self._StepName = params.get("StepName")
+        self._PagePattern = params.get("PagePattern")
+        self._PageMatchMode = params.get("PageMatchMode")
+        self._Selector = params.get("Selector")
+        self._ActionType = params.get("ActionType")
+        self._VisualName = params.get("VisualName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IntKeyValue(AbstractModel):
+    r"""整型键值对。分类计数等枚举键用此结构，不把枚举值做成结构体字段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键，如 error / session</p>
+        :type Key: str
+        :param _Value: <p>整型值</p>
+        :type Value: int
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>键，如 error / session</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>整型值</p>
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Kafka(AbstractModel):
     r"""旁路kafka配置
 
@@ -22399,6 +40808,805 @@ class Kafka(AbstractModel):
         
 
 
+class MetricDistributionBatchItem(AbstractModel):
+    r"""批量分布条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>条目 Key</p>
+        :type Key: str
+        :param _Items: <p>分布桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of MetricDistributionItem
+        :param _Total: <p>合计</p>
+        :type Total: int
+        """
+        self._Key = None
+        self._Items = None
+        self._Total = None
+
+    @property
+    def Key(self):
+        r"""<p>条目 Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Items(self):
+        r"""<p>分布桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricDistributionItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Total(self):
+        r"""<p>合计</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = MetricDistributionItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricDistributionItem(AbstractModel):
+    r"""分析指标分布桶
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: <p>维度值</p>
+        :type Value: str
+        :param _Count: <p>次数</p>
+        :type Count: int
+        :param _AffectedUser: <p>影响用户数</p>
+        :type AffectedUser: int
+        :param _Rate: <p>率，分母为 0 时省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rate: float
+        :param _AffectedUserRate: <p>影响用户率，缺省省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectedUserRate: float
+        :param _Avg: <p>均值，缺省省略</p>
+        :type Avg: float
+        :param _P50: <p>P50，缺省省略</p>
+        :type P50: float
+        :param _P75: <p>P75，缺省省略</p>
+        :type P75: float
+        :param _P95: <p>P95，缺省省略</p>
+        :type P95: float
+        :param _P99: <p>P99，缺省省略</p>
+        :type P99: float
+        """
+        self._Value = None
+        self._Count = None
+        self._AffectedUser = None
+        self._Rate = None
+        self._AffectedUserRate = None
+        self._Avg = None
+        self._P50 = None
+        self._P75 = None
+        self._P95 = None
+        self._P99 = None
+
+    @property
+    def Value(self):
+        r"""<p>维度值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Count(self):
+        r"""<p>次数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def AffectedUser(self):
+        r"""<p>影响用户数</p>
+        :rtype: int
+        """
+        return self._AffectedUser
+
+    @AffectedUser.setter
+    def AffectedUser(self, AffectedUser):
+        self._AffectedUser = AffectedUser
+
+    @property
+    def Rate(self):
+        r"""<p>率，分母为 0 时省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+    @property
+    def AffectedUserRate(self):
+        r"""<p>影响用户率，缺省省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._AffectedUserRate
+
+    @AffectedUserRate.setter
+    def AffectedUserRate(self, AffectedUserRate):
+        self._AffectedUserRate = AffectedUserRate
+
+    @property
+    def Avg(self):
+        r"""<p>均值，缺省省略</p>
+        :rtype: float
+        """
+        return self._Avg
+
+    @Avg.setter
+    def Avg(self, Avg):
+        self._Avg = Avg
+
+    @property
+    def P50(self):
+        r"""<p>P50，缺省省略</p>
+        :rtype: float
+        """
+        return self._P50
+
+    @P50.setter
+    def P50(self, P50):
+        self._P50 = P50
+
+    @property
+    def P75(self):
+        r"""<p>P75，缺省省略</p>
+        :rtype: float
+        """
+        return self._P75
+
+    @P75.setter
+    def P75(self, P75):
+        self._P75 = P75
+
+    @property
+    def P95(self):
+        r"""<p>P95，缺省省略</p>
+        :rtype: float
+        """
+        return self._P95
+
+    @P95.setter
+    def P95(self, P95):
+        self._P95 = P95
+
+    @property
+    def P99(self):
+        r"""<p>P99，缺省省略</p>
+        :rtype: float
+        """
+        return self._P99
+
+    @P99.setter
+    def P99(self, P99):
+        self._P99 = P99
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._Count = params.get("Count")
+        self._AffectedUser = params.get("AffectedUser")
+        self._Rate = params.get("Rate")
+        self._AffectedUserRate = params.get("AffectedUserRate")
+        self._Avg = params.get("Avg")
+        self._P50 = params.get("P50")
+        self._P75 = params.get("P75")
+        self._P95 = params.get("P95")
+        self._P99 = params.get("P99")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricQueryItem(AbstractModel):
+    r"""批量指标查询条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventType: <p>事件类型</p>
+        :type EventType: str
+        :param _Metrics: <p>指标名列表，如 count / rate</p>
+        :type Metrics: list of str
+        :param _Key: <p>条目 Key，缺省为 EventType/SubType/MeasurementKey</p>
+        :type Key: str
+        :param _SubType: <p>子类型</p>
+        :type SubType: str
+        :param _MeasurementKey: <p>分位/均值测量键</p>
+        :type MeasurementKey: str
+        """
+        self._EventType = None
+        self._Metrics = None
+        self._Key = None
+        self._SubType = None
+        self._MeasurementKey = None
+
+    @property
+    def EventType(self):
+        r"""<p>事件类型</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def Metrics(self):
+        r"""<p>指标名列表，如 count / rate</p>
+        :rtype: list of str
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def Key(self):
+        r"""<p>条目 Key，缺省为 EventType/SubType/MeasurementKey</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def SubType(self):
+        r"""<p>子类型</p>
+        :rtype: str
+        """
+        return self._SubType
+
+    @SubType.setter
+    def SubType(self, SubType):
+        self._SubType = SubType
+
+    @property
+    def MeasurementKey(self):
+        r"""<p>分位/均值测量键</p>
+        :rtype: str
+        """
+        return self._MeasurementKey
+
+    @MeasurementKey.setter
+    def MeasurementKey(self, MeasurementKey):
+        self._MeasurementKey = MeasurementKey
+
+
+    def _deserialize(self, params):
+        self._EventType = params.get("EventType")
+        self._Metrics = params.get("Metrics")
+        self._Key = params.get("Key")
+        self._SubType = params.get("SubType")
+        self._MeasurementKey = params.get("MeasurementKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricSummaryBatchItem(AbstractModel):
+    r"""批量合计条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>条目 Key</p>
+        :type Key: str
+        :param _Metrics: <p>指标列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metrics: list of FloatNameValue
+        :param _MaybeUncollected: <p>可能尚未采集，false 时省略</p>
+        :type MaybeUncollected: bool
+        """
+        self._Key = None
+        self._Metrics = None
+        self._MaybeUncollected = None
+
+    @property
+    def Key(self):
+        r"""<p>条目 Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Metrics(self):
+        r"""<p>指标列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FloatNameValue
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+    @property
+    def MaybeUncollected(self):
+        r"""<p>可能尚未采集，false 时省略</p>
+        :rtype: bool
+        """
+        return self._MaybeUncollected
+
+    @MaybeUncollected.setter
+    def MaybeUncollected(self, MaybeUncollected):
+        self._MaybeUncollected = MaybeUncollected
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = FloatNameValue()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        self._MaybeUncollected = params.get("MaybeUncollected")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricTrendBatchItem(AbstractModel):
+    r"""批量趋势条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>条目 Key</p>
+        :type Key: str
+        :param _Series: <p>主窗时序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Series: list of MetricTrendPoint
+        :param _CompareSeries: <p>对比窗时序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompareSeries: list of MetricTrendPoint
+        :param _MaybeUncollected: <p>可能尚未采集，false 时省略</p>
+        :type MaybeUncollected: bool
+        """
+        self._Key = None
+        self._Series = None
+        self._CompareSeries = None
+        self._MaybeUncollected = None
+
+    @property
+    def Key(self):
+        r"""<p>条目 Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Series(self):
+        r"""<p>主窗时序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricTrendPoint
+        """
+        return self._Series
+
+    @Series.setter
+    def Series(self, Series):
+        self._Series = Series
+
+    @property
+    def CompareSeries(self):
+        r"""<p>对比窗时序</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MetricTrendPoint
+        """
+        return self._CompareSeries
+
+    @CompareSeries.setter
+    def CompareSeries(self, CompareSeries):
+        self._CompareSeries = CompareSeries
+
+    @property
+    def MaybeUncollected(self):
+        r"""<p>可能尚未采集，false 时省略</p>
+        :rtype: bool
+        """
+        return self._MaybeUncollected
+
+    @MaybeUncollected.setter
+    def MaybeUncollected(self, MaybeUncollected):
+        self._MaybeUncollected = MaybeUncollected
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        if params.get("Series") is not None:
+            self._Series = []
+            for item in params.get("Series"):
+                obj = MetricTrendPoint()
+                obj._deserialize(item)
+                self._Series.append(obj)
+        if params.get("CompareSeries") is not None:
+            self._CompareSeries = []
+            for item in params.get("CompareSeries"):
+                obj = MetricTrendPoint()
+                obj._deserialize(item)
+                self._CompareSeries.append(obj)
+        self._MaybeUncollected = params.get("MaybeUncollected")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetricTrendPoint(AbstractModel):
+    r"""分析指标趋势点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ts: <p>时间戳 Unix 毫秒</p>
+        :type Ts: int
+        :param _Metrics: <p>该桶指标</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Metrics: list of FloatNameValue
+        """
+        self._Ts = None
+        self._Metrics = None
+
+    @property
+    def Ts(self):
+        r"""<p>时间戳 Unix 毫秒</p>
+        :rtype: int
+        """
+        return self._Ts
+
+    @Ts.setter
+    def Ts(self, Ts):
+        self._Ts = Ts
+
+    @property
+    def Metrics(self):
+        r"""<p>该桶指标</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FloatNameValue
+        """
+        return self._Metrics
+
+    @Metrics.setter
+    def Metrics(self, Metrics):
+        self._Metrics = Metrics
+
+
+    def _deserialize(self, params):
+        self._Ts = params.get("Ts")
+        if params.get("Metrics") is not None:
+            self._Metrics = []
+            for item in params.get("Metrics"):
+                obj = FloatNameValue()
+                obj._deserialize(item)
+                self._Metrics.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFieldTransformRuleRequest(AbstractModel):
+    r"""ModifyFieldTransformRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>规则id</p>
+        :type Id: int
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: int
+        :param _Name: <p>规则名</p>
+        :type Name: str
+        :param _TargetField: <p>目标字段</p>
+        :type TargetField: str
+        :param _MatchType: <p>匹配方式</p>
+        :type MatchType: str
+        :param _MatchPattern: <p>匹配规则</p>
+        :type MatchPattern: str
+        :param _TransformAction: <p>转换方式</p>
+        :type TransformAction: str
+        :param _ReplaceValue: <p>替换值</p>
+        :type ReplaceValue: str
+        :param _Priority: <p>规则优先级</p>
+        :type Priority: int
+        :param _Enabled: <p>是否开启</p>
+        :type Enabled: bool
+        """
+        self._Id = None
+        self._ProjectId = None
+        self._Name = None
+        self._TargetField = None
+        self._MatchType = None
+        self._MatchPattern = None
+        self._TransformAction = None
+        self._ReplaceValue = None
+        self._Priority = None
+        self._Enabled = None
+
+    @property
+    def Id(self):
+        r"""<p>规则id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Name(self):
+        r"""<p>规则名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TargetField(self):
+        r"""<p>目标字段</p>
+        :rtype: str
+        """
+        return self._TargetField
+
+    @TargetField.setter
+    def TargetField(self, TargetField):
+        self._TargetField = TargetField
+
+    @property
+    def MatchType(self):
+        r"""<p>匹配方式</p>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def MatchPattern(self):
+        r"""<p>匹配规则</p>
+        :rtype: str
+        """
+        return self._MatchPattern
+
+    @MatchPattern.setter
+    def MatchPattern(self, MatchPattern):
+        self._MatchPattern = MatchPattern
+
+    @property
+    def TransformAction(self):
+        r"""<p>转换方式</p>
+        :rtype: str
+        """
+        return self._TransformAction
+
+    @TransformAction.setter
+    def TransformAction(self, TransformAction):
+        self._TransformAction = TransformAction
+
+    @property
+    def ReplaceValue(self):
+        r"""<p>替换值</p>
+        :rtype: str
+        """
+        return self._ReplaceValue
+
+    @ReplaceValue.setter
+    def ReplaceValue(self, ReplaceValue):
+        self._ReplaceValue = ReplaceValue
+
+    @property
+    def Priority(self):
+        r"""<p>规则优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ProjectId = params.get("ProjectId")
+        self._Name = params.get("Name")
+        self._TargetField = params.get("TargetField")
+        self._MatchType = params.get("MatchType")
+        self._MatchPattern = params.get("MatchPattern")
+        self._TransformAction = params.get("TransformAction")
+        self._ReplaceValue = params.get("ReplaceValue")
+        self._Priority = params.get("Priority")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFieldTransformRuleResponse(AbstractModel):
+    r"""ModifyFieldTransformRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceRequest(AbstractModel):
     r"""ModifyInstance请求参数结构体
 
@@ -22490,6 +41698,269 @@ class ModifyInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyIssueStatusRequest(AbstractModel):
+    r"""ModifyIssueStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _IssueId: <p>Issue ID</p>
+        :type IssueId: str
+        :param _IssueAction: <p>状态动作，可选值：resolve、ignore、reopen</p>
+        :type IssueAction: str
+        :param _ResolvedRelease: <p>解决版本；当 IssueAction=resolve 时可传，不传则默认使用 latest_release</p>
+        :type ResolvedRelease: str
+        """
+        self._AppId = None
+        self._IssueId = None
+        self._IssueAction = None
+        self._ResolvedRelease = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def IssueId(self):
+        r"""<p>Issue ID</p>
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def IssueAction(self):
+        r"""<p>状态动作，可选值：resolve、ignore、reopen</p>
+        :rtype: str
+        """
+        return self._IssueAction
+
+    @IssueAction.setter
+    def IssueAction(self, IssueAction):
+        self._IssueAction = IssueAction
+
+    @property
+    def ResolvedRelease(self):
+        r"""<p>解决版本；当 IssueAction=resolve 时可传，不传则默认使用 latest_release</p>
+        :rtype: str
+        """
+        return self._ResolvedRelease
+
+    @ResolvedRelease.setter
+    def ResolvedRelease(self, ResolvedRelease):
+        self._ResolvedRelease = ResolvedRelease
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._IssueId = params.get("IssueId")
+        self._IssueAction = params.get("IssueAction")
+        self._ResolvedRelease = params.get("ResolvedRelease")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyIssueStatusResponse(AbstractModel):
+    r"""ModifyIssueStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是状态流转结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息；正常返回时为空</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务结果 JSON 字符串；前端会再做一次 JSON 解析。Result 内业务 JSON 为 Data，内容是状态流转结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息；正常返回时为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyMiniProgramReplayPackRequest(AbstractModel):
+    r"""ModifyMiniProgramReplayPack请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _PackId: <p>回放包id（前缀mpr_）</p>
+        :type PackId: str
+        :param _Release: <p>应用版本（可选）</p>
+        :type Release: str
+        """
+        self._AppId = None
+        self._PackId = None
+        self._Release = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PackId(self):
+        r"""<p>回放包id（前缀mpr_）</p>
+        :rtype: str
+        """
+        return self._PackId
+
+    @PackId.setter
+    def PackId(self, PackId):
+        self._PackId = PackId
+
+    @property
+    def Release(self):
+        r"""<p>应用版本（可选）</p>
+        :rtype: str
+        """
+        return self._Release
+
+    @Release.setter
+    def Release(self, Release):
+        self._Release = Release
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._PackId = params.get("PackId")
+        self._Release = params.get("Release")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMiniProgramReplayPackResponse(AbstractModel):
+    r"""ModifyMiniProgramReplayPack返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _Result: <p>请求结果（JSON字符串，包含 PackId/AppId/BundleHash/Release/Status）</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def Result(self):
+        r"""<p>请求结果（JSON字符串，包含 PackId/AppId/BundleHash/Release/Status）</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -22966,6 +42437,1784 @@ class ModifyProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySampleRateRequest(AbstractModel):
+    r"""ModifySampleRate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: int
+        :param _SampleRate: <p>会话采样率</p>
+        :type SampleRate: float
+        :param _ReplaySampleRate: <p>录制采样率</p>
+        :type ReplaySampleRate: float
+        """
+        self._ProjectId = None
+        self._SampleRate = None
+        self._ReplaySampleRate = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def SampleRate(self):
+        r"""<p>会话采样率</p>
+        :rtype: float
+        """
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def ReplaySampleRate(self):
+        r"""<p>录制采样率</p>
+        :rtype: float
+        """
+        return self._ReplaySampleRate
+
+    @ReplaySampleRate.setter
+    def ReplaySampleRate(self, ReplaySampleRate):
+        self._ReplaySampleRate = ReplaySampleRate
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._SampleRate = params.get("SampleRate")
+        self._ReplaySampleRate = params.get("ReplaySampleRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySampleRateResponse(AbstractModel):
+    r"""ModifySampleRate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTDEMApplicationRequest(AbstractModel):
+    r"""ModifyTDEMApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _Name: <p>应用名称（可选）</p>
+        :type Name: str
+        :param _Desc: <p>应用描述（可选）</p>
+        :type Desc: str
+        :param _ExcludeIgnoredErrors: <p>是否排除已忽略错误</p>
+        :type ExcludeIgnoredErrors: bool
+        :param _ApmInstanceIds: <p>APM 实例 ID 列表</p>
+        :type ApmInstanceIds: list of str
+        """
+        self._AppId = None
+        self._Name = None
+        self._Desc = None
+        self._ExcludeIgnoredErrors = None
+        self._ApmInstanceIds = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Name(self):
+        r"""<p>应用名称（可选）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Desc(self):
+        r"""<p>应用描述（可选）</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+    @property
+    def ExcludeIgnoredErrors(self):
+        r"""<p>是否排除已忽略错误</p>
+        :rtype: bool
+        """
+        return self._ExcludeIgnoredErrors
+
+    @ExcludeIgnoredErrors.setter
+    def ExcludeIgnoredErrors(self, ExcludeIgnoredErrors):
+        self._ExcludeIgnoredErrors = ExcludeIgnoredErrors
+
+    @property
+    def ApmInstanceIds(self):
+        r"""<p>APM 实例 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._ApmInstanceIds
+
+    @ApmInstanceIds.setter
+    def ApmInstanceIds(self, ApmInstanceIds):
+        self._ApmInstanceIds = ApmInstanceIds
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Name = params.get("Name")
+        self._Desc = params.get("Desc")
+        self._ExcludeIgnoredErrors = params.get("ExcludeIgnoredErrors")
+        self._ApmInstanceIds = params.get("ApmInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTDEMApplicationResponse(AbstractModel):
+    r"""ModifyTDEMApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTDEMBusinessSystemRequest(AbstractModel):
+    r"""ModifyTDEMBusinessSystem请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID（必填）</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>业务系统名称（可选）</p>
+        :type InstanceName: str
+        :param _InstanceDesc: <p>业务系统描述（可选）</p>
+        :type InstanceDesc: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceDesc = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID（必填）</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>业务系统名称（可选）</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceDesc(self):
+        r"""<p>业务系统描述（可选）</p>
+        :rtype: str
+        """
+        return self._InstanceDesc
+
+    @InstanceDesc.setter
+    def InstanceDesc(self, InstanceDesc):
+        self._InstanceDesc = InstanceDesc
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceDesc = params.get("InstanceDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTDEMBusinessSystemResponse(AbstractModel):
+    r"""ModifyTDEMBusinessSystem返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID</p>
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTDEMDialTaskRequest(AbstractModel):
+    r"""ModifyTDEMDialTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名称。不传表示不修改。</p>
+        :type TaskName: str
+        :param _Status: <p>任务状态。取值说明：active、paused。不传表示不修改。不能改为 deleted。</p>
+        :type Status: str
+        :param _Type: <p>探测类型。创建后不可修改。</p>
+        :type Type: str
+        :param _ExecutionTime: <p>执行时机。创建后不可修改。</p>
+        :type ExecutionTime: str
+        :param _WatchDomain: <p>监听域名。不传表示不修改。</p>
+        :type WatchDomain: str
+        :param _DialDomain: <p>拨测目标。不传表示不修改。</p>
+        :type DialDomain: str
+        :param _Port: <p>TCP 端口。不传表示不修改。</p>
+        :type Port: int
+        :param _FrequencyMs: <p>实时拨测间隔，单位毫秒。不传表示不修改。</p>
+        :type FrequencyMs: int
+        :param _TimeoutMs: <p>单次探测超时，单位毫秒。不传表示不修改。</p>
+        :type TimeoutMs: int
+        :param _PeriodMs: <p>探测周期，单位毫秒。不传表示不修改。</p>
+        :type PeriodMs: int
+        :param _PackageCount: <p>发包次数。不传表示不修改。</p>
+        :type PackageCount: int
+        :param _PackageSize: <p>ICMP 包大小，单位字节。不传表示不修改。</p>
+        :type PackageSize: int
+        :param _NeedMTR: <p>是否做路由追踪。取值说明：0 否，1 是。不传表示不修改。</p>
+        :type NeedMTR: int
+        :param _MTRTimeoutMs: <p>路由追踪超时，单位毫秒。不传表示不修改。</p>
+        :type MTRTimeoutMs: int
+        :param _MTRMaxHop: <p>路由追踪最大跳数。不传表示不修改。</p>
+        :type MTRMaxHop: int
+        :param _MTRPingCount: <p>每一跳发包次数。不传表示不修改。</p>
+        :type MTRPingCount: int
+        :param _SlowThresholdMs: <p>慢请求阈值，单位毫秒。不传表示不修改。</p>
+        :type SlowThresholdMs: int
+        :param _ErrorType: <p>错误类型过滤。不传表示不修改。</p>
+        :type ErrorType: str
+        :param _Regions: <p>允许启动的客户端地区，逗号分隔，名称必须与分析页客户端地区完全一致。不传保留原值，空字符串清空。空名单表示不限制。</p>
+        :type Regions: str
+        :param _Operators: <p>允许启动的客户端运营商，逗号分隔，名称必须与分析页客户端运营商完全一致。不传保留原值，空字符串清空。空名单表示不限制。</p>
+        :type Operators: str
+        :param _UserIds: <p>允许启动的用户 ID，逗号分隔。不传保留原值，空字符串清空。空名单表示不限制。</p>
+        :type UserIds: str
+        :param _DeviceIds: <p>允许启动的设备 ID，逗号分隔。不传保留原值，空字符串清空。空名单表示不限制。</p>
+        :type DeviceIds: str
+        """
+        self._AppId = None
+        self._TaskId = None
+        self._TaskName = None
+        self._Status = None
+        self._Type = None
+        self._ExecutionTime = None
+        self._WatchDomain = None
+        self._DialDomain = None
+        self._Port = None
+        self._FrequencyMs = None
+        self._TimeoutMs = None
+        self._PeriodMs = None
+        self._PackageCount = None
+        self._PackageSize = None
+        self._NeedMTR = None
+        self._MTRTimeoutMs = None
+        self._MTRMaxHop = None
+        self._MTRPingCount = None
+        self._SlowThresholdMs = None
+        self._ErrorType = None
+        self._Regions = None
+        self._Operators = None
+        self._UserIds = None
+        self._DeviceIds = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称。不传表示不修改。</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。取值说明：active、paused。不传表示不修改。不能改为 deleted。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Type(self):
+        r"""<p>探测类型。创建后不可修改。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ExecutionTime(self):
+        r"""<p>执行时机。创建后不可修改。</p>
+        :rtype: str
+        """
+        return self._ExecutionTime
+
+    @ExecutionTime.setter
+    def ExecutionTime(self, ExecutionTime):
+        self._ExecutionTime = ExecutionTime
+
+    @property
+    def WatchDomain(self):
+        r"""<p>监听域名。不传表示不修改。</p>
+        :rtype: str
+        """
+        return self._WatchDomain
+
+    @WatchDomain.setter
+    def WatchDomain(self, WatchDomain):
+        self._WatchDomain = WatchDomain
+
+    @property
+    def DialDomain(self):
+        r"""<p>拨测目标。不传表示不修改。</p>
+        :rtype: str
+        """
+        return self._DialDomain
+
+    @DialDomain.setter
+    def DialDomain(self, DialDomain):
+        self._DialDomain = DialDomain
+
+    @property
+    def Port(self):
+        r"""<p>TCP 端口。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def FrequencyMs(self):
+        r"""<p>实时拨测间隔，单位毫秒。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._FrequencyMs
+
+    @FrequencyMs.setter
+    def FrequencyMs(self, FrequencyMs):
+        self._FrequencyMs = FrequencyMs
+
+    @property
+    def TimeoutMs(self):
+        r"""<p>单次探测超时，单位毫秒。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._TimeoutMs
+
+    @TimeoutMs.setter
+    def TimeoutMs(self, TimeoutMs):
+        self._TimeoutMs = TimeoutMs
+
+    @property
+    def PeriodMs(self):
+        r"""<p>探测周期，单位毫秒。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._PeriodMs
+
+    @PeriodMs.setter
+    def PeriodMs(self, PeriodMs):
+        self._PeriodMs = PeriodMs
+
+    @property
+    def PackageCount(self):
+        r"""<p>发包次数。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._PackageCount
+
+    @PackageCount.setter
+    def PackageCount(self, PackageCount):
+        self._PackageCount = PackageCount
+
+    @property
+    def PackageSize(self):
+        r"""<p>ICMP 包大小，单位字节。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._PackageSize
+
+    @PackageSize.setter
+    def PackageSize(self, PackageSize):
+        self._PackageSize = PackageSize
+
+    @property
+    def NeedMTR(self):
+        r"""<p>是否做路由追踪。取值说明：0 否，1 是。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._NeedMTR
+
+    @NeedMTR.setter
+    def NeedMTR(self, NeedMTR):
+        self._NeedMTR = NeedMTR
+
+    @property
+    def MTRTimeoutMs(self):
+        r"""<p>路由追踪超时，单位毫秒。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._MTRTimeoutMs
+
+    @MTRTimeoutMs.setter
+    def MTRTimeoutMs(self, MTRTimeoutMs):
+        self._MTRTimeoutMs = MTRTimeoutMs
+
+    @property
+    def MTRMaxHop(self):
+        r"""<p>路由追踪最大跳数。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._MTRMaxHop
+
+    @MTRMaxHop.setter
+    def MTRMaxHop(self, MTRMaxHop):
+        self._MTRMaxHop = MTRMaxHop
+
+    @property
+    def MTRPingCount(self):
+        r"""<p>每一跳发包次数。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._MTRPingCount
+
+    @MTRPingCount.setter
+    def MTRPingCount(self, MTRPingCount):
+        self._MTRPingCount = MTRPingCount
+
+    @property
+    def SlowThresholdMs(self):
+        r"""<p>慢请求阈值，单位毫秒。不传表示不修改。</p>
+        :rtype: int
+        """
+        return self._SlowThresholdMs
+
+    @SlowThresholdMs.setter
+    def SlowThresholdMs(self, SlowThresholdMs):
+        self._SlowThresholdMs = SlowThresholdMs
+
+    @property
+    def ErrorType(self):
+        r"""<p>错误类型过滤。不传表示不修改。</p>
+        :rtype: str
+        """
+        return self._ErrorType
+
+    @ErrorType.setter
+    def ErrorType(self, ErrorType):
+        self._ErrorType = ErrorType
+
+    @property
+    def Regions(self):
+        r"""<p>允许启动的客户端地区，逗号分隔，名称必须与分析页客户端地区完全一致。不传保留原值，空字符串清空。空名单表示不限制。</p>
+        :rtype: str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def Operators(self):
+        r"""<p>允许启动的客户端运营商，逗号分隔，名称必须与分析页客户端运营商完全一致。不传保留原值，空字符串清空。空名单表示不限制。</p>
+        :rtype: str
+        """
+        return self._Operators
+
+    @Operators.setter
+    def Operators(self, Operators):
+        self._Operators = Operators
+
+    @property
+    def UserIds(self):
+        r"""<p>允许启动的用户 ID，逗号分隔。不传保留原值，空字符串清空。空名单表示不限制。</p>
+        :rtype: str
+        """
+        return self._UserIds
+
+    @UserIds.setter
+    def UserIds(self, UserIds):
+        self._UserIds = UserIds
+
+    @property
+    def DeviceIds(self):
+        r"""<p>允许启动的设备 ID，逗号分隔。不传保留原值，空字符串清空。空名单表示不限制。</p>
+        :rtype: str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._Status = params.get("Status")
+        self._Type = params.get("Type")
+        self._ExecutionTime = params.get("ExecutionTime")
+        self._WatchDomain = params.get("WatchDomain")
+        self._DialDomain = params.get("DialDomain")
+        self._Port = params.get("Port")
+        self._FrequencyMs = params.get("FrequencyMs")
+        self._TimeoutMs = params.get("TimeoutMs")
+        self._PeriodMs = params.get("PeriodMs")
+        self._PackageCount = params.get("PackageCount")
+        self._PackageSize = params.get("PackageSize")
+        self._NeedMTR = params.get("NeedMTR")
+        self._MTRTimeoutMs = params.get("MTRTimeoutMs")
+        self._MTRMaxHop = params.get("MTRMaxHop")
+        self._MTRPingCount = params.get("MTRPingCount")
+        self._SlowThresholdMs = params.get("SlowThresholdMs")
+        self._ErrorType = params.get("ErrorType")
+        self._Regions = params.get("Regions")
+        self._Operators = params.get("Operators")
+        self._UserIds = params.get("UserIds")
+        self._DeviceIds = params.get("DeviceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTDEMDialTaskResponse(AbstractModel):
+    r"""ModifyTDEMDialTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTDEMFieldTransformRuleRequest(AbstractModel):
+    r"""ModifyTDEMFieldTransformRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>规则 ID（必填）</p>
+        :type Id: int
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _TargetField: <p>目标字段（必填）</p>
+        :type TargetField: str
+        :param _MatchType: <p>匹配方式（必填）：exact / prefix / contains / regex</p>
+        :type MatchType: str
+        :param _MatchPattern: <p>匹配模式（必填）</p>
+        :type MatchPattern: str
+        :param _TransformAction: <p>替换动作（必填）：replace / regex_replace / mask</p>
+        :type TransformAction: str
+        :param _Name: <p>规则名称（可选）</p>
+        :type Name: str
+        :param _ReplaceValue: <p>替换值</p>
+        :type ReplaceValue: str
+        :param _Priority: <p>优先级</p>
+        :type Priority: int
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        """
+        self._Id = None
+        self._AppId = None
+        self._TargetField = None
+        self._MatchType = None
+        self._MatchPattern = None
+        self._TransformAction = None
+        self._Name = None
+        self._ReplaceValue = None
+        self._Priority = None
+        self._Enabled = None
+
+    @property
+    def Id(self):
+        r"""<p>规则 ID（必填）</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TargetField(self):
+        r"""<p>目标字段（必填）</p>
+        :rtype: str
+        """
+        return self._TargetField
+
+    @TargetField.setter
+    def TargetField(self, TargetField):
+        self._TargetField = TargetField
+
+    @property
+    def MatchType(self):
+        r"""<p>匹配方式（必填）：exact / prefix / contains / regex</p>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def MatchPattern(self):
+        r"""<p>匹配模式（必填）</p>
+        :rtype: str
+        """
+        return self._MatchPattern
+
+    @MatchPattern.setter
+    def MatchPattern(self, MatchPattern):
+        self._MatchPattern = MatchPattern
+
+    @property
+    def TransformAction(self):
+        r"""<p>替换动作（必填）：replace / regex_replace / mask</p>
+        :rtype: str
+        """
+        return self._TransformAction
+
+    @TransformAction.setter
+    def TransformAction(self, TransformAction):
+        self._TransformAction = TransformAction
+
+    @property
+    def Name(self):
+        r"""<p>规则名称（可选）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ReplaceValue(self):
+        r"""<p>替换值</p>
+        :rtype: str
+        """
+        return self._ReplaceValue
+
+    @ReplaceValue.setter
+    def ReplaceValue(self, ReplaceValue):
+        self._ReplaceValue = ReplaceValue
+
+    @property
+    def Priority(self):
+        r"""<p>优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._TargetField = params.get("TargetField")
+        self._MatchType = params.get("MatchType")
+        self._MatchPattern = params.get("MatchPattern")
+        self._TransformAction = params.get("TransformAction")
+        self._Name = params.get("Name")
+        self._ReplaceValue = params.get("ReplaceValue")
+        self._Priority = params.get("Priority")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTDEMFieldTransformRuleResponse(AbstractModel):
+    r"""ModifyTDEMFieldTransformRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rule: <p>修改后的规则</p>
+        :type Rule: :class:`tencentcloud.rum.v20210622.models.FieldTransformRuleItem`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rule = None
+        self._RequestId = None
+
+    @property
+    def Rule(self):
+        r"""<p>修改后的规则</p>
+        :rtype: :class:`tencentcloud.rum.v20210622.models.FieldTransformRuleItem`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rule") is not None:
+            self._Rule = FieldTransformRuleItem()
+            self._Rule._deserialize(params.get("Rule"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTDEMFunnelRequest(AbstractModel):
+    r"""ModifyTDEMFunnel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FunnelId: <p>漏斗id</p>
+        :type FunnelId: str
+        :param _FunnelName: <p>漏斗名</p>
+        :type FunnelName: str
+        :param _Steps: <p>漏斗步骤</p>
+        :type Steps: list of FunnelStepInput
+        :param _Description: <p>漏斗描述</p>
+        :type Description: str
+        :param _Status: <p>漏斗状态</p>
+        :type Status: str
+        :param _Source: <p>漏斗来源</p>
+        :type Source: str
+        """
+        self._AppId = None
+        self._FunnelId = None
+        self._FunnelName = None
+        self._Steps = None
+        self._Description = None
+        self._Status = None
+        self._Source = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FunnelId(self):
+        r"""<p>漏斗id</p>
+        :rtype: str
+        """
+        return self._FunnelId
+
+    @FunnelId.setter
+    def FunnelId(self, FunnelId):
+        self._FunnelId = FunnelId
+
+    @property
+    def FunnelName(self):
+        r"""<p>漏斗名</p>
+        :rtype: str
+        """
+        return self._FunnelName
+
+    @FunnelName.setter
+    def FunnelName(self, FunnelName):
+        self._FunnelName = FunnelName
+
+    @property
+    def Steps(self):
+        r"""<p>漏斗步骤</p>
+        :rtype: list of FunnelStepInput
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+    @property
+    def Description(self):
+        r"""<p>漏斗描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>漏斗状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Source(self):
+        r"""<p>漏斗来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FunnelId = params.get("FunnelId")
+        self._FunnelName = params.get("FunnelName")
+        if params.get("Steps") is not None:
+            self._Steps = []
+            for item in params.get("Steps"):
+                obj = FunnelStepInput()
+                obj._deserialize(item)
+                self._Steps.append(obj)
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTDEMFunnelResponse(AbstractModel):
+    r"""ModifyTDEMFunnel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTDEMSampleConfigRequest(AbstractModel):
+    r"""ModifyTDEMSampleConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _Event: <p>事件采样配置 JSON 字符串。反序列化后：{"Enabled":bool,"Types":{&lt;event_type&gt;:{"SampleRate":0-100最多两位小数,"Rules":[{"Name":string,"Enabled":bool,"SampleRate":0-100,"Conditions":[{"Field":string,"Operator":string,"Value":string或string[]}]}]}}}。Types 可只含改过的 type；未出现的 type 服务端视为 100% + 空规则。Types key 闭集：js_error,promise_error,resource_error,api_error,blank_screen,no_response,page_load,web_vitals,lag_detected,memory_usage,memory_oom,resource_load,api_call,sse_call,click,page_view,tab_hidden,tab_visible,form_focus,form_blur,form_change,form_submit,form_submit_result,struggle,custom,log（不含 rage_click/lcp）。Operator 白名单：equals,not_equals,contains,not_contains,in,not_in,starts_with,ends_with。规则 Conditions 至少 1 条；in/not_in 的 Value 为字符串数组。</p>
+        :type Event: str
+        :param _Replay: <p>回放采样配置 JSON 字符串。反序列化后：{"Enabled":bool,"ExperienceSampleRate":0-100最多两位小数,"ErrorTraceback":bool,"ErrorSampleRate":0-100最多两位小数}。控制台/远程字段名为 ExperienceSampleRate（非 SessionSampleRate）。</p>
+        :type Replay: str
+        """
+        self._AppId = None
+        self._Event = None
+        self._Replay = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Event(self):
+        r"""<p>事件采样配置 JSON 字符串。反序列化后：{"Enabled":bool,"Types":{&lt;event_type&gt;:{"SampleRate":0-100最多两位小数,"Rules":[{"Name":string,"Enabled":bool,"SampleRate":0-100,"Conditions":[{"Field":string,"Operator":string,"Value":string或string[]}]}]}}}。Types 可只含改过的 type；未出现的 type 服务端视为 100% + 空规则。Types key 闭集：js_error,promise_error,resource_error,api_error,blank_screen,no_response,page_load,web_vitals,lag_detected,memory_usage,memory_oom,resource_load,api_call,sse_call,click,page_view,tab_hidden,tab_visible,form_focus,form_blur,form_change,form_submit,form_submit_result,struggle,custom,log（不含 rage_click/lcp）。Operator 白名单：equals,not_equals,contains,not_contains,in,not_in,starts_with,ends_with。规则 Conditions 至少 1 条；in/not_in 的 Value 为字符串数组。</p>
+        :rtype: str
+        """
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def Replay(self):
+        r"""<p>回放采样配置 JSON 字符串。反序列化后：{"Enabled":bool,"ExperienceSampleRate":0-100最多两位小数,"ErrorTraceback":bool,"ErrorSampleRate":0-100最多两位小数}。控制台/远程字段名为 ExperienceSampleRate（非 SessionSampleRate）。</p>
+        :rtype: str
+        """
+        return self._Replay
+
+    @Replay.setter
+    def Replay(self, Replay):
+        self._Replay = Replay
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Event = params.get("Event")
+        self._Replay = params.get("Replay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTDEMSampleConfigResponse(AbstractModel):
+    r"""ModifyTDEMSampleConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>业务数据 JSON 字符串，反序列化后：{ProjectId,Event,Replay,SnapshotId,UpdatedAt}。SnapshotId 为本次写入的快照主键。</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>业务数据 JSON 字符串，反序列化后：{ProjectId,Event,Replay,SnapshotId,UpdatedAt}。SnapshotId 为本次写入的快照主键。</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTDEMSampleRateRequest(AbstractModel):
+    r"""ModifyTDEMSampleRate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        :param _SampleRate: <p>采集采样率 0-100（必填）</p>
+        :type SampleRate: float
+        :param _ReplaySampleRate: <p>会话回放采样率 0-100（可选）</p>
+        :type ReplaySampleRate: float
+        """
+        self._AppId = None
+        self._SampleRate = None
+        self._ReplaySampleRate = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def SampleRate(self):
+        r"""<p>采集采样率 0-100（必填）</p>
+        :rtype: float
+        """
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def ReplaySampleRate(self):
+        r"""<p>会话回放采样率 0-100（可选）</p>
+        :rtype: float
+        """
+        return self._ReplaySampleRate
+
+    @ReplaySampleRate.setter
+    def ReplaySampleRate(self, ReplaySampleRate):
+        self._ReplaySampleRate = ReplaySampleRate
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._SampleRate = params.get("SampleRate")
+        self._ReplaySampleRate = params.get("ReplaySampleRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTDEMSampleRateResponse(AbstractModel):
+    r"""ModifyTDEMSampleRate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _SampleRate: <p>采集采样率 0-100</p>
+        :type SampleRate: float
+        :param _ReplaySampleRate: <p>会话回放采样率 0-100</p>
+        :type ReplaySampleRate: float
+        :param _UpdatedAt: <p>更新时间</p>
+        :type UpdatedAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._SampleRate = None
+        self._ReplaySampleRate = None
+        self._UpdatedAt = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def SampleRate(self):
+        r"""<p>采集采样率 0-100</p>
+        :rtype: float
+        """
+        return self._SampleRate
+
+    @SampleRate.setter
+    def SampleRate(self, SampleRate):
+        self._SampleRate = SampleRate
+
+    @property
+    def ReplaySampleRate(self):
+        r"""<p>会话回放采样率 0-100</p>
+        :rtype: float
+        """
+        return self._ReplaySampleRate
+
+    @ReplaySampleRate.setter
+    def ReplaySampleRate(self, ReplaySampleRate):
+        self._ReplaySampleRate = ReplaySampleRate
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._SampleRate = params.get("SampleRate")
+        self._ReplaySampleRate = params.get("ReplaySampleRate")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._RequestId = params.get("RequestId")
+
+
+class OverviewScoreItem(AbstractModel):
+    r"""总览计分项。Score/Value 缺失时省略，前端展示 —。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>计分项，如 crash / anr / lag</p>
+        :type Key: str
+        :param _Score: <p>单项 0-100，缺失省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Score: float
+        :param _Value: <p>原始值（率为小数、耗时为 ms）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        """
+        self._Key = None
+        self._Score = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>计分项，如 crash / anr / lag</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Score(self):
+        r"""<p>单项 0-100，缺失省略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Value(self):
+        r"""<p>原始值（率为小数、耗时为 ms）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Score = params.get("Score")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreviewTDEMFunnelReportRequest(AbstractModel):
+    r"""PreviewTDEMFunnelReport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _StartTime: <p>开始时间戳（毫秒）</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间戳（毫秒）</p>
+        :type EndTime: str
+        :param _Steps: <p>漏斗步骤配置JSON字符串（2~20步），格式：[{"StepName":"首页","PagePattern":"/","PageMatchMode":"exact","Selector":"","ActionType":"page_view","VisualName":""}]</p>
+        :type Steps: str
+        :param _Platform: <p>平台筛选</p>
+        :type Platform: str
+        :param _AppVersion: <p>应用版本筛选</p>
+        :type AppVersion: str
+        :param _DeviceType: <p>设备类型筛选</p>
+        :type DeviceType: str
+        :param _Browser: <p>浏览器筛选</p>
+        :type Browser: str
+        :param _OS: <p>操作系统筛选</p>
+        :type OS: str
+        :param _Country: <p>国家/地区筛选</p>
+        :type Country: str
+        :param _Referrer: <p>来源筛选</p>
+        :type Referrer: str
+        :param _Environment: <p>环境选择</p>
+        :type Environment: str
+        """
+        self._AppId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Steps = None
+        self._Platform = None
+        self._AppVersion = None
+        self._DeviceType = None
+        self._Browser = None
+        self._OS = None
+        self._Country = None
+        self._Referrer = None
+        self._Environment = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间戳（毫秒）</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间戳（毫秒）</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Steps(self):
+        r"""<p>漏斗步骤配置JSON字符串（2~20步），格式：[{"StepName":"首页","PagePattern":"/","PageMatchMode":"exact","Selector":"","ActionType":"page_view","VisualName":""}]</p>
+        :rtype: str
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+    @property
+    def Platform(self):
+        r"""<p>平台筛选</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本筛选</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def DeviceType(self):
+        r"""<p>设备类型筛选</p>
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def Browser(self):
+        r"""<p>浏览器筛选</p>
+        :rtype: str
+        """
+        return self._Browser
+
+    @Browser.setter
+    def Browser(self, Browser):
+        self._Browser = Browser
+
+    @property
+    def OS(self):
+        r"""<p>操作系统筛选</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def Country(self):
+        r"""<p>国家/地区筛选</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Referrer(self):
+        r"""<p>来源筛选</p>
+        :rtype: str
+        """
+        return self._Referrer
+
+    @Referrer.setter
+    def Referrer(self, Referrer):
+        self._Referrer = Referrer
+
+    @property
+    def Environment(self):
+        r"""<p>环境选择</p>
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Steps = params.get("Steps")
+        self._Platform = params.get("Platform")
+        self._AppVersion = params.get("AppVersion")
+        self._DeviceType = params.get("DeviceType")
+        self._Browser = params.get("Browser")
+        self._OS = params.get("OS")
+        self._Country = params.get("Country")
+        self._Referrer = params.get("Referrer")
+        self._Environment = params.get("Environment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreviewTDEMFunnelReportResponse(AbstractModel):
+    r"""PreviewTDEMFunnelReport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>请求结果（JSON字符串，包含 FunnelId/FunnelName/Summary/Steps/Chart）</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>请求结果（JSON字符串，包含 FunnelId/FunnelName/Summary/Steps/Chart）</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class ProjectLimit(AbstractModel):
     r"""项目接口限制类型
 
@@ -23313,6 +44562,100 @@ class ResumeProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResumeTDEMApplicationRequest(AbstractModel):
+    r"""ResumeTDEMApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        """
+        self._AppId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeTDEMApplicationResponse(AbstractModel):
+    r"""ResumeTDEMApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _Status: <p>恢复后为 2</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Status(self):
+        r"""<p>恢复后为 2</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -24933,6 +46276,740 @@ class StopProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StopTDEMApplicationRequest(AbstractModel):
+    r"""StopTDEMApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID（必填）</p>
+        :type AppId: str
+        """
+        self._AppId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（必填）</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopTDEMApplicationResponse(AbstractModel):
+    r"""StopTDEMApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _Status: <p>停止后为 6</p>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Status(self):
+        r"""<p>停止后为 6</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class StringKeyValue(AbstractModel):
+    r"""字符串键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>键</p>
+        :type Key: str
+        :param _Value: <p>值</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SymbolicatedView(AbstractModel):
+    r"""符号化结果。未翻译时只填 Status / SkipReason。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SymbolicationVersion: <p>符号化版本</p>
+        :type SymbolicationVersion: int
+        :param _SymbolicatedAt: <p>符号化时间</p>
+        :type SymbolicatedAt: str
+        :param _SymbolicationStatus: <p>状态：success / missing / skipped</p>
+        :type SymbolicationStatus: str
+        :param _SymbolicationSkipReason: <p>跳过原因</p>
+        :type SymbolicationSkipReason: str
+        :param _SymbolicationSource: <p>来源</p>
+        :type SymbolicationSource: str
+        :param _SymbolicationRelease: <p>release</p>
+        :type SymbolicationRelease: str
+        :param _SymbolicationDist: <p>dist</p>
+        :type SymbolicationDist: str
+        :param _SymbolicationDurationMs: <p>耗时毫秒</p>
+        :type SymbolicationDurationMs: int
+        :param _SymbolicatorRequestId: <p>Symbolicator 请求 ID</p>
+        :type SymbolicatorRequestId: str
+        :param _Frames: <p>翻译后堆栈帧</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Frames: list of EventFrame
+        """
+        self._SymbolicationVersion = None
+        self._SymbolicatedAt = None
+        self._SymbolicationStatus = None
+        self._SymbolicationSkipReason = None
+        self._SymbolicationSource = None
+        self._SymbolicationRelease = None
+        self._SymbolicationDist = None
+        self._SymbolicationDurationMs = None
+        self._SymbolicatorRequestId = None
+        self._Frames = None
+
+    @property
+    def SymbolicationVersion(self):
+        r"""<p>符号化版本</p>
+        :rtype: int
+        """
+        return self._SymbolicationVersion
+
+    @SymbolicationVersion.setter
+    def SymbolicationVersion(self, SymbolicationVersion):
+        self._SymbolicationVersion = SymbolicationVersion
+
+    @property
+    def SymbolicatedAt(self):
+        r"""<p>符号化时间</p>
+        :rtype: str
+        """
+        return self._SymbolicatedAt
+
+    @SymbolicatedAt.setter
+    def SymbolicatedAt(self, SymbolicatedAt):
+        self._SymbolicatedAt = SymbolicatedAt
+
+    @property
+    def SymbolicationStatus(self):
+        r"""<p>状态：success / missing / skipped</p>
+        :rtype: str
+        """
+        return self._SymbolicationStatus
+
+    @SymbolicationStatus.setter
+    def SymbolicationStatus(self, SymbolicationStatus):
+        self._SymbolicationStatus = SymbolicationStatus
+
+    @property
+    def SymbolicationSkipReason(self):
+        r"""<p>跳过原因</p>
+        :rtype: str
+        """
+        return self._SymbolicationSkipReason
+
+    @SymbolicationSkipReason.setter
+    def SymbolicationSkipReason(self, SymbolicationSkipReason):
+        self._SymbolicationSkipReason = SymbolicationSkipReason
+
+    @property
+    def SymbolicationSource(self):
+        r"""<p>来源</p>
+        :rtype: str
+        """
+        return self._SymbolicationSource
+
+    @SymbolicationSource.setter
+    def SymbolicationSource(self, SymbolicationSource):
+        self._SymbolicationSource = SymbolicationSource
+
+    @property
+    def SymbolicationRelease(self):
+        r"""<p>release</p>
+        :rtype: str
+        """
+        return self._SymbolicationRelease
+
+    @SymbolicationRelease.setter
+    def SymbolicationRelease(self, SymbolicationRelease):
+        self._SymbolicationRelease = SymbolicationRelease
+
+    @property
+    def SymbolicationDist(self):
+        r"""<p>dist</p>
+        :rtype: str
+        """
+        return self._SymbolicationDist
+
+    @SymbolicationDist.setter
+    def SymbolicationDist(self, SymbolicationDist):
+        self._SymbolicationDist = SymbolicationDist
+
+    @property
+    def SymbolicationDurationMs(self):
+        r"""<p>耗时毫秒</p>
+        :rtype: int
+        """
+        return self._SymbolicationDurationMs
+
+    @SymbolicationDurationMs.setter
+    def SymbolicationDurationMs(self, SymbolicationDurationMs):
+        self._SymbolicationDurationMs = SymbolicationDurationMs
+
+    @property
+    def SymbolicatorRequestId(self):
+        r"""<p>Symbolicator 请求 ID</p>
+        :rtype: str
+        """
+        return self._SymbolicatorRequestId
+
+    @SymbolicatorRequestId.setter
+    def SymbolicatorRequestId(self, SymbolicatorRequestId):
+        self._SymbolicatorRequestId = SymbolicatorRequestId
+
+    @property
+    def Frames(self):
+        r"""<p>翻译后堆栈帧</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventFrame
+        """
+        return self._Frames
+
+    @Frames.setter
+    def Frames(self, Frames):
+        self._Frames = Frames
+
+
+    def _deserialize(self, params):
+        self._SymbolicationVersion = params.get("SymbolicationVersion")
+        self._SymbolicatedAt = params.get("SymbolicatedAt")
+        self._SymbolicationStatus = params.get("SymbolicationStatus")
+        self._SymbolicationSkipReason = params.get("SymbolicationSkipReason")
+        self._SymbolicationSource = params.get("SymbolicationSource")
+        self._SymbolicationRelease = params.get("SymbolicationRelease")
+        self._SymbolicationDist = params.get("SymbolicationDist")
+        self._SymbolicationDurationMs = params.get("SymbolicationDurationMs")
+        self._SymbolicatorRequestId = params.get("SymbolicatorRequestId")
+        if params.get("Frames") is not None:
+            self._Frames = []
+            for item in params.get("Frames"):
+                obj = EventFrame()
+                obj._deserialize(item)
+                self._Frames.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TDEMSSEDimensionRow(AbstractModel):
+    r"""大模型对话多维分析行
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DimensionValue: <p>维度取值。空值保留为空字符串。</p>
+        :type DimensionValue: str
+        :param _ConversationCount: <p>该取值的对话次数。</p>
+        :type ConversationCount: int
+        :param _Value: <p>该取值上当前指标的值。没有可计算样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        """
+        self._DimensionValue = None
+        self._ConversationCount = None
+        self._Value = None
+
+    @property
+    def DimensionValue(self):
+        r"""<p>维度取值。空值保留为空字符串。</p>
+        :rtype: str
+        """
+        return self._DimensionValue
+
+    @DimensionValue.setter
+    def DimensionValue(self, DimensionValue):
+        self._DimensionValue = DimensionValue
+
+    @property
+    def ConversationCount(self):
+        r"""<p>该取值的对话次数。</p>
+        :rtype: int
+        """
+        return self._ConversationCount
+
+    @ConversationCount.setter
+    def ConversationCount(self, ConversationCount):
+        self._ConversationCount = ConversationCount
+
+    @property
+    def Value(self):
+        r"""<p>该取值上当前指标的值。没有可计算样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._DimensionValue = params.get("DimensionValue")
+        self._ConversationCount = params.get("ConversationCount")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TDEMSSEDistributionBin(AbstractModel):
+    r"""大模型对话分布档
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: <p>档位左端，左闭。</p>
+        :type Start: float
+        :param _End: <p>档位右端。溢出档省略。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type End: float
+        :param _Overflow: <p>是否为溢出档。溢出档为 true，且不返回 End。</p>
+        :type Overflow: bool
+        :param _Count: <p>落入该档的对话次数。</p>
+        :type Count: int
+        :param _Rate: <p>该档占有效样本的百分比，已乘 100。</p>
+        :type Rate: float
+        """
+        self._Start = None
+        self._End = None
+        self._Overflow = None
+        self._Count = None
+        self._Rate = None
+
+    @property
+    def Start(self):
+        r"""<p>档位左端，左闭。</p>
+        :rtype: float
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>档位右端。溢出档省略。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def Overflow(self):
+        r"""<p>是否为溢出档。溢出档为 true，且不返回 End。</p>
+        :rtype: bool
+        """
+        return self._Overflow
+
+    @Overflow.setter
+    def Overflow(self, Overflow):
+        self._Overflow = Overflow
+
+    @property
+    def Count(self):
+        r"""<p>落入该档的对话次数。</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Rate(self):
+        r"""<p>该档占有效样本的百分比，已乘 100。</p>
+        :rtype: float
+        """
+        return self._Rate
+
+    @Rate.setter
+    def Rate(self, Rate):
+        self._Rate = Rate
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        self._Overflow = params.get("Overflow")
+        self._Count = params.get("Count")
+        self._Rate = params.get("Rate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TDEMSSEPercentilePoint(AbstractModel):
+    r"""大模型对话分位时间桶
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: <p>时间桶起点，Unix 毫秒。</p>
+        :type Time: int
+        :param _Average: <p>该桶算术平均值。没有样本的桶不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Average: float
+        :param _P50: <p>50 分位。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P50: float
+        :param _P75: <p>75 分位。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P75: float
+        :param _P95: <p>95 分位。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P95: float
+        :param _P99: <p>99 分位。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type P99: float
+        """
+        self._Time = None
+        self._Average = None
+        self._P50 = None
+        self._P75 = None
+        self._P95 = None
+        self._P99 = None
+
+    @property
+    def Time(self):
+        r"""<p>时间桶起点，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def Average(self):
+        r"""<p>该桶算术平均值。没有样本的桶不返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Average
+
+    @Average.setter
+    def Average(self, Average):
+        self._Average = Average
+
+    @property
+    def P50(self):
+        r"""<p>50 分位。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._P50
+
+    @P50.setter
+    def P50(self, P50):
+        self._P50 = P50
+
+    @property
+    def P75(self):
+        r"""<p>75 分位。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._P75
+
+    @P75.setter
+    def P75(self, P75):
+        self._P75 = P75
+
+    @property
+    def P95(self):
+        r"""<p>95 分位。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._P95
+
+    @P95.setter
+    def P95(self, P95):
+        self._P95 = P95
+
+    @property
+    def P99(self):
+        r"""<p>99 分位。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._P99
+
+    @P99.setter
+    def P99(self, P99):
+        self._P99 = P99
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._Average = params.get("Average")
+        self._P50 = params.get("P50")
+        self._P75 = params.get("P75")
+        self._P95 = params.get("P95")
+        self._P99 = params.get("P99")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TDEMSSETrendPoint(AbstractModel):
+    r"""大模型对话趋势时间桶
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: <p>时间桶起点，Unix 毫秒。</p>
+        :type Time: int
+        :param _ConversationCount: <p>该桶内的对话次数。</p>
+        :type ConversationCount: int
+        :param _Value: <p>该桶内当前指标的值。桶内没有可计算样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: float
+        """
+        self._Time = None
+        self._ConversationCount = None
+        self._Value = None
+
+    @property
+    def Time(self):
+        r"""<p>时间桶起点，Unix 毫秒。</p>
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ConversationCount(self):
+        r"""<p>该桶内的对话次数。</p>
+        :rtype: int
+        """
+        return self._ConversationCount
+
+    @ConversationCount.setter
+    def ConversationCount(self, ConversationCount):
+        self._ConversationCount = ConversationCount
+
+    @property
+    def Value(self):
+        r"""<p>该桶内当前指标的值。桶内没有可计算样本时为 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._ConversationCount = params.get("ConversationCount")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TDEMSSETrendSeries(AbstractModel):
+    r"""大模型对话趋势维度序列
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DimensionValue: <p>维度取值。空值保留为空字符串。</p>
+        :type DimensionValue: str
+        :param _Points: <p>该取值在各个时间桶上的点。</p>
+        :type Points: list of TDEMSSETrendPoint
+        """
+        self._DimensionValue = None
+        self._Points = None
+
+    @property
+    def DimensionValue(self):
+        r"""<p>维度取值。空值保留为空字符串。</p>
+        :rtype: str
+        """
+        return self._DimensionValue
+
+    @DimensionValue.setter
+    def DimensionValue(self, DimensionValue):
+        self._DimensionValue = DimensionValue
+
+    @property
+    def Points(self):
+        r"""<p>该取值在各个时间桶上的点。</p>
+        :rtype: list of TDEMSSETrendPoint
+        """
+        return self._Points
+
+    @Points.setter
+    def Points(self, Points):
+        self._Points = Points
+
+
+    def _deserialize(self, params):
+        self._DimensionValue = params.get("DimensionValue")
+        if params.get("Points") is not None:
+            self._Points = []
+            for item in params.get("Points"):
+                obj = TDEMSSETrendPoint()
+                obj._deserialize(item)
+                self._Points.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tag(AbstractModel):
     r"""标签
 
@@ -24974,6 +47051,753 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadMiniProgramSourceRequest(AbstractModel):
+    r"""UploadMiniProgramSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用id</p>
+        :type AppId: str
+        :param _FileBase64: <p>源码zip的Base64，请求包上限10240KB</p>
+        :type FileBase64: str
+        :param _Release: <p>应用版本（可选）</p>
+        :type Release: str
+        :param _FileName: <p>原始文件名（可选）</p>
+        :type FileName: str
+        """
+        self._AppId = None
+        self._FileBase64 = None
+        self._Release = None
+        self._FileName = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用id</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FileBase64(self):
+        r"""<p>源码zip的Base64，请求包上限10240KB</p>
+        :rtype: str
+        """
+        return self._FileBase64
+
+    @FileBase64.setter
+    def FileBase64(self, FileBase64):
+        self._FileBase64 = FileBase64
+
+    @property
+    def Release(self):
+        r"""<p>应用版本（可选）</p>
+        :rtype: str
+        """
+        return self._Release
+
+    @Release.setter
+    def Release(self, Release):
+        self._Release = Release
+
+    @property
+    def FileName(self):
+        r"""<p>原始文件名（可选）</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._FileBase64 = params.get("FileBase64")
+        self._Release = params.get("Release")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadMiniProgramSourceResponse(AbstractModel):
+    r"""UploadMiniProgramSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _Result: <p>请求结果（JSON字符串，包含 PackId/AppId/Release/BundleHash/Status/PageCount/ComponentCount/FileSize/Idempotent）</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMsg = None
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def Result(self):
+        r"""<p>请求结果（JSON字符串，包含 PackId/AppId/Release/BundleHash/Status/PageCount/ComponentCount/FileSize/Idempotent）</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class UploadSymbolArtifactRequest(AbstractModel):
+    r"""UploadSymbolArtifact请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Kind: <p>制品类型。取值：js_sourcemap、ios_dsym、macos_dsym、windows_pdb、android_mapping、android_native、system_symbol。</p>
+        :type Kind: str
+        :param _FileSize: <p>对象大小（字节）。</p>
+        :type FileSize: int
+        :param _Sha256: <p>对象内容的 SHA256 十六进制摘要，长度固定为 64 个字符。</p>
+        :type Sha256: str
+        :param _COSUrl: <p>已上传对象的腾讯云 COS URL。与 FileUrl 二选一至少传一个；优先使用 COSUrl。必须属于当前配置的 Bucket 和 Region。</p>
+        :type COSUrl: str
+        :param _AppId: <p>应用 ID。应用级制品必填；system_symbol 不传。</p>
+        :type AppId: str
+        :param _ProjectId: <p>兼容别名，未传 AppId 时使用。</p>
+        :type ProjectId: str
+        :param _Release: <p>JS 应用版本。未传 AppVersion 时使用。</p>
+        :type Release: str
+        :param _Dist: <p>兼容字段，不参与制品匹配。</p>
+        :type Dist: str
+        :param _MinifiedUrl: <p>压缩文件 URL。Kind=js_sourcemap 且 FileType 非 source_bundle 时必填。</p>
+        :type MinifiedUrl: str
+        :param _FileType: <p>JS 制品文件类型。可选值说明：sourcemap、minified、source_bundle；为空时默认 sourcemap。</p>
+        :type FileType: str
+        :param _DebugId: <p>调试 ID。除 js_sourcemap 外均必填。</p>
+        :type DebugId: str
+        :param _BuildId: <p>构建 ID。ios_dsym、android_mapping、android_native 必填。</p>
+        :type BuildId: str
+        :param _AppVersion: <p>应用版本。js_sourcemap 必填，未传时使用 Release。</p>
+        :type AppVersion: str
+        :param _Platform: <p>兼容字段，请勿传入。</p>
+        :type Platform: str
+        :param _OS: <p>系统名称。system_symbol 可填写。</p>
+        :type OS: str
+        :param _OSVersion: <p>系统版本。system_symbol 可填写。</p>
+        :type OSVersion: str
+        :param _StorePath: <p>兼容字段，请勿传入。</p>
+        :type StorePath: str
+        :param _FileName: <p>文件名。原生和系统符号必填；ios_dsym 使用模块名，android_native 使用 abi/文件名。</p>
+        :type FileName: str
+        :param _ContentType: <p>文件内容类型，如 application/json。</p>
+        :type ContentType: str
+        :param _FileUrl: <p>COSUrl 的兼容别名；当未传 COSUrl 时使用。与 COSUrl 二选一至少传一个。</p>
+        :type FileUrl: str
+        """
+        self._Kind = None
+        self._FileSize = None
+        self._Sha256 = None
+        self._COSUrl = None
+        self._AppId = None
+        self._ProjectId = None
+        self._Release = None
+        self._Dist = None
+        self._MinifiedUrl = None
+        self._FileType = None
+        self._DebugId = None
+        self._BuildId = None
+        self._AppVersion = None
+        self._Platform = None
+        self._OS = None
+        self._OSVersion = None
+        self._StorePath = None
+        self._FileName = None
+        self._ContentType = None
+        self._FileUrl = None
+
+    @property
+    def Kind(self):
+        r"""<p>制品类型。取值：js_sourcemap、ios_dsym、macos_dsym、windows_pdb、android_mapping、android_native、system_symbol。</p>
+        :rtype: str
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def FileSize(self):
+        r"""<p>对象大小（字节）。</p>
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def Sha256(self):
+        r"""<p>对象内容的 SHA256 十六进制摘要，长度固定为 64 个字符。</p>
+        :rtype: str
+        """
+        return self._Sha256
+
+    @Sha256.setter
+    def Sha256(self, Sha256):
+        self._Sha256 = Sha256
+
+    @property
+    def COSUrl(self):
+        r"""<p>已上传对象的腾讯云 COS URL。与 FileUrl 二选一至少传一个；优先使用 COSUrl。必须属于当前配置的 Bucket 和 Region。</p>
+        :rtype: str
+        """
+        return self._COSUrl
+
+    @COSUrl.setter
+    def COSUrl(self, COSUrl):
+        self._COSUrl = COSUrl
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID。应用级制品必填；system_symbol 不传。</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ProjectId(self):
+        r"""<p>兼容别名，未传 AppId 时使用。</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Release(self):
+        r"""<p>JS 应用版本。未传 AppVersion 时使用。</p>
+        :rtype: str
+        """
+        return self._Release
+
+    @Release.setter
+    def Release(self, Release):
+        self._Release = Release
+
+    @property
+    def Dist(self):
+        r"""<p>兼容字段，不参与制品匹配。</p>
+        :rtype: str
+        """
+        return self._Dist
+
+    @Dist.setter
+    def Dist(self, Dist):
+        self._Dist = Dist
+
+    @property
+    def MinifiedUrl(self):
+        r"""<p>压缩文件 URL。Kind=js_sourcemap 且 FileType 非 source_bundle 时必填。</p>
+        :rtype: str
+        """
+        return self._MinifiedUrl
+
+    @MinifiedUrl.setter
+    def MinifiedUrl(self, MinifiedUrl):
+        self._MinifiedUrl = MinifiedUrl
+
+    @property
+    def FileType(self):
+        r"""<p>JS 制品文件类型。可选值说明：sourcemap、minified、source_bundle；为空时默认 sourcemap。</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def DebugId(self):
+        r"""<p>调试 ID。除 js_sourcemap 外均必填。</p>
+        :rtype: str
+        """
+        return self._DebugId
+
+    @DebugId.setter
+    def DebugId(self, DebugId):
+        self._DebugId = DebugId
+
+    @property
+    def BuildId(self):
+        r"""<p>构建 ID。ios_dsym、android_mapping、android_native 必填。</p>
+        :rtype: str
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def AppVersion(self):
+        r"""<p>应用版本。js_sourcemap 必填，未传时使用 Release。</p>
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Platform(self):
+        r"""<p>兼容字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+    @property
+    def OS(self):
+        r"""<p>系统名称。system_symbol 可填写。</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def OSVersion(self):
+        r"""<p>系统版本。system_symbol 可填写。</p>
+        :rtype: str
+        """
+        return self._OSVersion
+
+    @OSVersion.setter
+    def OSVersion(self, OSVersion):
+        self._OSVersion = OSVersion
+
+    @property
+    def StorePath(self):
+        r"""<p>兼容字段，请勿传入。</p>
+        :rtype: str
+        """
+        return self._StorePath
+
+    @StorePath.setter
+    def StorePath(self, StorePath):
+        self._StorePath = StorePath
+
+    @property
+    def FileName(self):
+        r"""<p>文件名。原生和系统符号必填；ios_dsym 使用模块名，android_native 使用 abi/文件名。</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def ContentType(self):
+        r"""<p>文件内容类型，如 application/json。</p>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def FileUrl(self):
+        r"""<p>COSUrl 的兼容别名；当未传 COSUrl 时使用。与 COSUrl 二选一至少传一个。</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+
+    def _deserialize(self, params):
+        self._Kind = params.get("Kind")
+        self._FileSize = params.get("FileSize")
+        self._Sha256 = params.get("Sha256")
+        self._COSUrl = params.get("COSUrl")
+        self._AppId = params.get("AppId")
+        self._ProjectId = params.get("ProjectId")
+        self._Release = params.get("Release")
+        self._Dist = params.get("Dist")
+        self._MinifiedUrl = params.get("MinifiedUrl")
+        self._FileType = params.get("FileType")
+        self._DebugId = params.get("DebugId")
+        self._BuildId = params.get("BuildId")
+        self._AppVersion = params.get("AppVersion")
+        self._Platform = params.get("Platform")
+        self._OS = params.get("OS")
+        self._OSVersion = params.get("OSVersion")
+        self._StorePath = params.get("StorePath")
+        self._FileName = params.get("FileName")
+        self._ContentType = params.get("ContentType")
+        self._FileUrl = params.get("FileUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UploadSymbolArtifactResponse(AbstractModel):
+    r"""UploadSymbolArtifact返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>登记的制品信息，JSON 格式字符串。</p>
+        :type Result: str
+        :param _ErrorMsg: <p>错误信息</p>
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>登记的制品信息，JSON 格式字符串。</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class UsageDetailRow(AbstractModel):
+    r"""用量明细行
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>业务系统 ID</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>业务系统名称</p>
+        :type InstanceName: str
+        :param _InstanceStatus: <p>业务系统状态</p>
+        :type InstanceStatus: int
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _AppName: <p>应用名称</p>
+        :type AppName: str
+        :param _AppType: <p>端类型</p>
+        :type AppType: str
+        :param _AppStatus: <p>应用状态</p>
+        :type AppStatus: int
+        :param _ReportVolume: <p>上报量</p>
+        :type ReportVolume: int
+        :param _Percent: <p>占当前结果集比例</p>
+        :type Percent: float
+        :param _ByDate: <p>行趋势</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ByDate: list of UsageTimePoint
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceStatus = None
+        self._AppId = None
+        self._AppName = None
+        self._AppType = None
+        self._AppStatus = None
+        self._ReportVolume = None
+        self._Percent = None
+        self._ByDate = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>业务系统名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceStatus(self):
+        r"""<p>业务系统状态</p>
+        :rtype: int
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppName(self):
+        r"""<p>应用名称</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def AppType(self):
+        r"""<p>端类型</p>
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def AppStatus(self):
+        r"""<p>应用状态</p>
+        :rtype: int
+        """
+        return self._AppStatus
+
+    @AppStatus.setter
+    def AppStatus(self, AppStatus):
+        self._AppStatus = AppStatus
+
+    @property
+    def ReportVolume(self):
+        r"""<p>上报量</p>
+        :rtype: int
+        """
+        return self._ReportVolume
+
+    @ReportVolume.setter
+    def ReportVolume(self, ReportVolume):
+        self._ReportVolume = ReportVolume
+
+    @property
+    def Percent(self):
+        r"""<p>占当前结果集比例</p>
+        :rtype: float
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def ByDate(self):
+        r"""<p>行趋势</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UsageTimePoint
+        """
+        return self._ByDate
+
+    @ByDate.setter
+    def ByDate(self, ByDate):
+        self._ByDate = ByDate
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._AppId = params.get("AppId")
+        self._AppName = params.get("AppName")
+        self._AppType = params.get("AppType")
+        self._AppStatus = params.get("AppStatus")
+        self._ReportVolume = params.get("ReportVolume")
+        self._Percent = params.get("Percent")
+        if params.get("ByDate") is not None:
+            self._ByDate = []
+            for item in params.get("ByDate"):
+                obj = UsageTimePoint()
+                obj._deserialize(item)
+                self._ByDate.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageTimePoint(AbstractModel):
+    r"""用量趋势点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Time: <p>时间 YYYY-MM-DD HH:00:00</p>
+        :type Time: str
+        :param _ReportVolume: <p>上报量</p>
+        :type ReportVolume: int
+        """
+        self._Time = None
+        self._ReportVolume = None
+
+    @property
+    def Time(self):
+        r"""<p>时间 YYYY-MM-DD HH:00:00</p>
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ReportVolume(self):
+        r"""<p>上报量</p>
+        :rtype: int
+        """
+        return self._ReportVolume
+
+    @ReportVolume.setter
+    def ReportVolume(self, ReportVolume):
+        self._ReportVolume = ReportVolume
+
+
+    def _deserialize(self, params):
+        self._Time = params.get("Time")
+        self._ReportVolume = params.get("ReportVolume")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

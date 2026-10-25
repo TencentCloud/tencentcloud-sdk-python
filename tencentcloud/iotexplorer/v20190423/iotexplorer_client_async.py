@@ -729,6 +729,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreatePrivateCA(
+            self,
+            request: models.CreatePrivateCARequest,
+            opts: Dict = None,
+    ) -> models.CreatePrivateCAResponse:
+        """
+        创建私有CA证书
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePrivateCA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePrivateCAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateProject(
             self,
             request: models.CreateProjectRequest,
@@ -1192,6 +1210,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DeletePositionSpace"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePositionSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePrivateCA(
+            self,
+            request: models.DeletePrivateCARequest,
+            opts: Dict = None,
+    ) -> models.DeletePrivateCAResponse:
+        """
+        删除私有CA证书
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePrivateCA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePrivateCAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProductPrivateCA(
+            self,
+            request: models.DeleteProductPrivateCARequest,
+            opts: Dict = None,
+    ) -> models.DeleteProductPrivateCAResponse:
+        """
+        删除产品绑定的CA证书
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProductPrivateCA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProductPrivateCAResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2290,6 +2344,78 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DescribePositionFenceList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePositionFenceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePrivateCA(
+            self,
+            request: models.DescribePrivateCARequest,
+            opts: Dict = None,
+    ) -> models.DescribePrivateCAResponse:
+        """
+        查询私有化CA信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePrivateCA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePrivateCAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePrivateCABindedProducts(
+            self,
+            request: models.DescribePrivateCABindedProductsRequest,
+            opts: Dict = None,
+    ) -> models.DescribePrivateCABindedProductsResponse:
+        """
+        查询私有CA绑定的产品列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePrivateCABindedProducts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePrivateCABindedProductsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePrivateCAs(
+            self,
+            request: models.DescribePrivateCAsRequest,
+            opts: Dict = None,
+    ) -> models.DescribePrivateCAsResponse:
+        """
+        查询私有CA证书列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePrivateCAs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePrivateCAsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProductCA(
+            self,
+            request: models.DescribeProductCARequest,
+            opts: Dict = None,
+    ) -> models.DescribeProductCAResponse:
+        """
+        查询产品绑定的CA证书
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProductCA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProductCAResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4718,6 +4844,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "UpdateOtaTaskStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateOtaTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdatePrivateCA(
+            self,
+            request: models.UpdatePrivateCARequest,
+            opts: Dict = None,
+    ) -> models.UpdatePrivateCAResponse:
+        """
+        更新私有CA证书
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdatePrivateCA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdatePrivateCAResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateProductPrivateCA(
+            self,
+            request: models.UpdateProductPrivateCARequest,
+            opts: Dict = None,
+    ) -> models.UpdateProductPrivateCAResponse:
+        """
+        更新产品的私有CA
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateProductPrivateCA"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateProductPrivateCAResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

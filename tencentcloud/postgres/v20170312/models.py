@@ -1977,71 +1977,45 @@ class CloneDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 克隆的源实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>克隆的源实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
-        :param _SpecCode: 售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
+        :param _SpecCode: <p>售卖规格码。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/409/89019">DescribeClasses</a>的返回值中的SpecCode字段来获取。</p>
         :type SpecCode: str
-        :param _Storage: 实例磁盘容量大小，设置步长限制为10。单位：GB。
+        :param _Storage: <p>实例磁盘容量大小，设置步长限制为10。单位：GB。</p>
         :type Storage: int
-        :param _Period: 购买时长，单位：月。
-
-- 预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-- 后付费：只支持1
-
+        :param _Period: <p>购买时长，单位：月。</p><ul><li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li><li>后付费：只支持1</li></ul>
         :type Period: int
-        :param _AutoRenewFlag: 续费标记。仅当计费模式为预付费时生效。
-枚举值：
-
-- 0：手动续费
-- 1：自动续费
-
-默认值：0
+        :param _AutoRenewFlag: <p>续费标记。仅当计费模式为预付费时生效。<br>枚举值：</p><ul><li>0：手动续费</li><li>1：自动续费</li></ul><p>默认值：0</p>
         :type AutoRenewFlag: int
-        :param _VpcId: 私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+        :param _VpcId: <p>私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/1372">DescribeVpcEx</a> ，从接口返回中的unVpcId字段获取。</p>
         :type VpcId: str
-        :param _SubnetId: 私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+        :param _SubnetId: <p>私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets </a>，从接口返回中的unSubnetId字段获取。</p>
         :type SubnetId: str
-        :param _Name: 新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"源实例名-Copy"。
+        :param _Name: <p>新购的实例名称，仅支持长度小于60的中文/英文/数字/&quot;_&quot;/&quot;-&quot;，不指定实例名称则默认显示&quot;源实例名-Copy&quot;。</p>
         :type Name: str
-        :param _InstanceChargeType: 实例计费类型，目前支持：
-
-- PREPAID：预付费，即包年包月
-- POSTPAID_BY_HOUR：后付费，即按量计费
-
-默认值：PREPAID
+        :param _InstanceChargeType: <p>实例计费类型，目前支持：</p><ul><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：后付费，即按量计费</li></ul><p>默认值：PREPAID</p>
         :type InstanceChargeType: str
-        :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。
-
+        :param _SecurityGroupIds: <p>实例所属安全组。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a>的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。</p>
         :type SecurityGroupIds: list of str
-        :param _ProjectId: 项目ID。默认值为0，表示所属默认项目。
+        :param _ProjectId: <p>项目ID。默认值为0，表示所属默认项目。</p>
         :type ProjectId: int
-        :param _TagList: 实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
+        :param _TagList: <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
         :type TagList: list of Tag
-        :param _DBNodeSet: 实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。
-可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
+        :param _DBNodeSet: <p>实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
         :type DBNodeSet: list of DBNode
-        :param _AutoVoucher: 是否自动使用代金券：
-
-- 0：否
-- 1：是
-
-默认值：0
+        :param _AutoVoucher: <p>是否自动使用代金券：</p><ul><li>0：否</li><li>1：是</li></ul><p>默认值：0</p>
         :type AutoVoucher: int
-        :param _VoucherIds: 代金券ID列表。
+        :param _VoucherIds: <p>代金券ID列表。</p>
         :type VoucherIds: str
-        :param _ActivityId: 活动ID。
+        :param _ActivityId: <p>活动ID。</p>
         :type ActivityId: int
-        :param _BackupSetId: 基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
+        :param _BackupSetId: <p>基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。</p>
         :type BackupSetId: str
-        :param _RecoveryTargetTime: 恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
+        :param _RecoveryTargetTime: <p>恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。</p>
         :type RecoveryTargetTime: str
-        :param _SyncMode: 主从同步方式，支持： 
-<li>Semi-sync：半同步</li>
-<li>Async：异步</li>
-主实例默认值：Semi-sync
-只读实例默认值：Async
+        :param _SyncMode: <p>主从同步方式，支持： </p><li>Semi-sync：半同步</li><li>Async：异步</li>主实例默认值：Semi-sync只读实例默认值：Async
         :type SyncMode: str
-        :param _DeletionProtection: 实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+        :param _DeletionProtection: <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
         :type DeletionProtection: bool
         """
         self._DBInstanceId = None
@@ -2067,7 +2041,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""克隆的源实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>克隆的源实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -2078,7 +2052,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SpecCode(self):
-        r"""售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
+        r"""<p>售卖规格码。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/409/89019">DescribeClasses</a>的返回值中的SpecCode字段来获取。</p>
         :rtype: str
         """
         return self._SpecCode
@@ -2089,7 +2063,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""实例磁盘容量大小，设置步长限制为10。单位：GB。
+        r"""<p>实例磁盘容量大小，设置步长限制为10。单位：GB。</p>
         :rtype: int
         """
         return self._Storage
@@ -2100,11 +2074,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""购买时长，单位：月。
-
-- 预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
-- 后付费：只支持1
-
+        r"""<p>购买时长，单位：月。</p><ul><li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li><li>后付费：只支持1</li></ul>
         :rtype: int
         """
         return self._Period
@@ -2115,13 +2085,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""续费标记。仅当计费模式为预付费时生效。
-枚举值：
-
-- 0：手动续费
-- 1：自动续费
-
-默认值：0
+        r"""<p>续费标记。仅当计费模式为预付费时生效。<br>枚举值：</p><ul><li>0：手动续费</li><li>1：自动续费</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2132,7 +2096,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+        r"""<p>私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/1372">DescribeVpcEx</a> ，从接口返回中的unVpcId字段获取。</p>
         :rtype: str
         """
         return self._VpcId
@@ -2143,7 +2107,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+        r"""<p>私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 <a href="https://cloud.tencent.com/document/api/215/15784">DescribeSubnets </a>，从接口返回中的unSubnetId字段获取。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -2154,7 +2118,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""新购的实例名称，仅支持长度小于60的中文/英文/数字/"_"/"-"，不指定实例名称则默认显示"源实例名-Copy"。
+        r"""<p>新购的实例名称，仅支持长度小于60的中文/英文/数字/&quot;_&quot;/&quot;-&quot;，不指定实例名称则默认显示&quot;源实例名-Copy&quot;。</p>
         :rtype: str
         """
         return self._Name
@@ -2165,12 +2129,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""实例计费类型，目前支持：
-
-- PREPAID：预付费，即包年包月
-- POSTPAID_BY_HOUR：后付费，即按量计费
-
-默认值：PREPAID
+        r"""<p>实例计费类型，目前支持：</p><ul><li>PREPAID：预付费，即包年包月</li><li>POSTPAID_BY_HOUR：后付费，即按量计费</li></ul><p>默认值：PREPAID</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -2181,8 +2140,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""实例所属安全组。该参数可以通过调用[DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808)的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。
-
+        r"""<p>实例所属安全组。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a>的返回值中的SecurityGroupId字段来获取。若不指定该参数，则绑定默认安全组。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -2193,7 +2151,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID。默认值为0，表示所属默认项目。
+        r"""<p>项目ID。默认值为0，表示所属默认项目。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -2204,7 +2162,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
+        r"""<p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
         :rtype: list of Tag
         """
         return self._TagList
@@ -2215,8 +2173,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def DBNodeSet(self):
-        r"""实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。
-可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
+        r"""<p>实例节点部署信息，必须填写主备节点可用区。支持多可用区部署时需要指定每个节点的部署可用区信息。<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
         :rtype: list of DBNode
         """
         return self._DBNodeSet
@@ -2227,12 +2184,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""是否自动使用代金券：
-
-- 0：否
-- 1：是
-
-默认值：0
+        r"""<p>是否自动使用代金券：</p><ul><li>0：否</li><li>1：是</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -2243,7 +2195,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        r"""代金券ID列表。
+        r"""<p>代金券ID列表。</p>
         :rtype: str
         """
         return self._VoucherIds
@@ -2254,7 +2206,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        r"""活动ID。
+        r"""<p>活动ID。</p>
         :rtype: int
         """
         return self._ActivityId
@@ -2265,7 +2217,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        r"""基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
+        r"""<p>基础备份集ID。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。</p>
         :rtype: str
         """
         return self._BackupSetId
@@ -2276,7 +2228,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def RecoveryTargetTime(self):
-        r"""恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。
+        r"""<p>恢复时间点。参数BackupSetId、RecoveryTargetTime两者必须填写一项，且不能同时填写。</p>
         :rtype: str
         """
         return self._RecoveryTargetTime
@@ -2287,11 +2239,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def SyncMode(self):
-        r"""主从同步方式，支持： 
-<li>Semi-sync：半同步</li>
-<li>Async：异步</li>
-主实例默认值：Semi-sync
-只读实例默认值：Async
+        r"""<p>主从同步方式，支持： </p><li>Semi-sync：半同步</li><li>Async：异步</li>主实例默认值：Semi-sync只读实例默认值：Async
         :rtype: str
         """
         return self._SyncMode
@@ -2302,7 +2250,7 @@ class CloneDBInstanceRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。
+        r"""<p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -2360,11 +2308,11 @@ class CloneDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 订单号。
+        :param _DealName: <p>订单号。</p>
         :type DealName: str
-        :param _BillId: 订单流水号。
+        :param _BillId: <p>订单流水号。</p>
         :type BillId: str
-        :param _DBInstanceId: 克隆出的新实例ID，当前只支持后付费返回该值。
+        :param _DBInstanceId: <p>克隆出的新实例ID，当前只支持后付费返回该值。</p>
         :type DBInstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2376,7 +2324,7 @@ class CloneDBInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号。
+        r"""<p>订单号。</p>
         :rtype: str
         """
         return self._DealName
@@ -2387,7 +2335,7 @@ class CloneDBInstanceResponse(AbstractModel):
 
     @property
     def BillId(self):
-        r"""订单流水号。
+        r"""<p>订单流水号。</p>
         :rtype: str
         """
         return self._BillId
@@ -2398,7 +2346,7 @@ class CloneDBInstanceResponse(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""克隆出的新实例ID，当前只支持后付费返回该值。
+        r"""<p>克隆出的新实例ID，当前只支持后付费返回该值。</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -10433,11 +10381,11 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
-        :param _BackupSetId: 基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+        :param _BackupSetId: <p>基础备份集ID，可通过<a href="https://cloud.tencent.com/document/api/409/89022">DescribeBaseBackups</a>接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。</p>
         :type BackupSetId: str
-        :param _RecoveryTargetTime: 恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
+        :param _RecoveryTargetTime: <p>恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。</p>
         :type RecoveryTargetTime: str
         """
         self._DBInstanceId = None
@@ -10446,7 +10394,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -10457,7 +10405,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def BackupSetId(self):
-        r"""基础备份集ID，可通过[DescribeBaseBackups](https://cloud.tencent.com/document/api/409/89022)接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。
+        r"""<p>基础备份集ID，可通过<a href="https://cloud.tencent.com/document/api/409/89022">DescribeBaseBackups</a>接口获取。此入参和RecoveryTargetTime必须选择一个传入。如与RecoveryTargetTime参数同时设置，则以此参数为准。</p>
         :rtype: str
         """
         return self._BackupSetId
@@ -10468,7 +10416,7 @@ class DescribeCloneDBInstanceSpecRequest(AbstractModel):
 
     @property
     def RecoveryTargetTime(self):
-        r"""恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。
+        r"""<p>恢复目标时间，此入参和BackupSetId必须选择一个传入。时区以东八区（UTC+8）为准。</p>
         :rtype: str
         """
         return self._RecoveryTargetTime
@@ -10499,9 +10447,9 @@ class DescribeCloneDBInstanceSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MinSpecCode: 可购买的最小规格码。
+        :param _MinSpecCode: <p>可购买的最小规格码。</p>
         :type MinSpecCode: str
-        :param _MinStorage: 可购买的最小磁盘容量，单位GB。
+        :param _MinStorage: <p>可购买的最小磁盘容量，单位GB。</p>
         :type MinStorage: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10512,7 +10460,7 @@ class DescribeCloneDBInstanceSpecResponse(AbstractModel):
 
     @property
     def MinSpecCode(self):
-        r"""可购买的最小规格码。
+        r"""<p>可购买的最小规格码。</p>
         :rtype: str
         """
         return self._MinSpecCode
@@ -10523,7 +10471,7 @@ class DescribeCloneDBInstanceSpecResponse(AbstractModel):
 
     @property
     def MinStorage(self):
-        r"""可购买的最小磁盘容量，单位GB。
+        r"""<p>可购买的最小磁盘容量，单位GB。</p>
         :rtype: int
         """
         return self._MinStorage

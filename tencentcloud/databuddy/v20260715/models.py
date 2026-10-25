@@ -721,6 +721,237 @@ class AlarmGroup(AbstractModel):
         
 
 
+class AssetTagVote(AbstractModel):
+    r"""资产标签投票记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 主键ID
+        :type Id: str
+        :param _PropertyType: 资产类型，取值参考AssetType定义，如CATALOG、SCHEMA、TABLE、VIEW、MODEL、VOLUME、FUNCTION等
+        :type PropertyType: str
+        :param _PropertyId: 资产ID
+        :type PropertyId: str
+        :param _LabelId: 标签ID
+        :type LabelId: str
+        :param _LabelName: 标签名称
+        :type LabelName: str
+        :param _LabelValueId: 标签值ID
+        :type LabelValueId: str
+        :param _LabelValue: 标签值
+        :type LabelValue: str
+        :param _Creator: 创建人
+        :type Creator: str
+        :param _Modifier: 修改者
+        :type Modifier: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ModifiedTime: 修改时间
+        :type ModifiedTime: str
+        :param _OwnerAccount: 所有者账号
+        :type OwnerAccount: str
+        :param _Type: 标签类型，取值：0=未知，1=治理标签，2=自定义标签，3=属性标签，4=脱敏标签
+        :type Type: int
+        :param _Deleted: 是否删除
+        :type Deleted: bool
+        """
+        self._Id = None
+        self._PropertyType = None
+        self._PropertyId = None
+        self._LabelId = None
+        self._LabelName = None
+        self._LabelValueId = None
+        self._LabelValue = None
+        self._Creator = None
+        self._Modifier = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+        self._OwnerAccount = None
+        self._Type = None
+        self._Deleted = None
+
+    @property
+    def Id(self):
+        r"""主键ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PropertyType(self):
+        r"""资产类型，取值参考AssetType定义，如CATALOG、SCHEMA、TABLE、VIEW、MODEL、VOLUME、FUNCTION等
+        :rtype: str
+        """
+        return self._PropertyType
+
+    @PropertyType.setter
+    def PropertyType(self, PropertyType):
+        self._PropertyType = PropertyType
+
+    @property
+    def PropertyId(self):
+        r"""资产ID
+        :rtype: str
+        """
+        return self._PropertyId
+
+    @PropertyId.setter
+    def PropertyId(self, PropertyId):
+        self._PropertyId = PropertyId
+
+    @property
+    def LabelId(self):
+        r"""标签ID
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LabelName(self):
+        r"""标签名称
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def LabelValueId(self):
+        r"""标签值ID
+        :rtype: str
+        """
+        return self._LabelValueId
+
+    @LabelValueId.setter
+    def LabelValueId(self, LabelValueId):
+        self._LabelValueId = LabelValueId
+
+    @property
+    def LabelValue(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+    @property
+    def Creator(self):
+        r"""创建人
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def Modifier(self):
+        r"""修改者
+        :rtype: str
+        """
+        return self._Modifier
+
+    @Modifier.setter
+    def Modifier(self, Modifier):
+        self._Modifier = Modifier
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        r"""修改时间
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def OwnerAccount(self):
+        r"""所有者账号
+        :rtype: str
+        """
+        return self._OwnerAccount
+
+    @OwnerAccount.setter
+    def OwnerAccount(self, OwnerAccount):
+        self._OwnerAccount = OwnerAccount
+
+    @property
+    def Type(self):
+        r"""标签类型，取值：0=未知，1=治理标签，2=自定义标签，3=属性标签，4=脱敏标签
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Deleted(self):
+        r"""是否删除
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._PropertyType = params.get("PropertyType")
+        self._PropertyId = params.get("PropertyId")
+        self._LabelId = params.get("LabelId")
+        self._LabelName = params.get("LabelName")
+        self._LabelValueId = params.get("LabelValueId")
+        self._LabelValue = params.get("LabelValue")
+        self._Creator = params.get("Creator")
+        self._Modifier = params.get("Modifier")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._OwnerAccount = params.get("OwnerAccount")
+        self._Type = params.get("Type")
+        self._Deleted = params.get("Deleted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AsyncActionRsp(AbstractModel):
     r"""批量异步操作的逐项结果
 
@@ -1331,6 +1562,123 @@ class Catalog(AbstractModel):
                 self._Tags.append(obj)
         self._CatalogSource = params.get("CatalogSource")
         self._ConnectionCatalogName = params.get("ConnectionCatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ColumnBrief(AbstractModel):
+    r"""字段简要信息，用于批量修改表字段描述时传入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 字段名称
+        :type Name: str
+        :param _Type: 字段类型
+        :type Type: str
+        :param _Comment: 描述配置
+        :type Comment: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Comment = None
+
+    @property
+    def Name(self):
+        r"""字段名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""字段类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Comment(self):
+        r"""描述配置
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ColumnErrorMessages(AbstractModel):
+    r"""字段描述更新失败信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 字段名称
+        :type Name: str
+        :param _ErrorMessage: 错误原因
+        :type ErrorMessage: str
+        """
+        self._Name = None
+        self._ErrorMessage = None
+
+    @property
+    def Name(self):
+        r"""字段名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ErrorMessage(self):
+        r"""错误原因
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2156,19 +2504,19 @@ class CreateCatalogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: catalog名称
+        :param _Name: <p>catalog名称</p>
         :type Name: str
-        :param _Type: catalog类型, 可选值TABLE、MODEL、VOLUME
+        :param _Type: <p>catalog类型, 可选值TABLE、MODEL、VOLUME</p>
         :type Type: str
-        :param _WorkspaceId: 工作空间唯一id
+        :param _WorkspaceId: <p>工作空间唯一id</p>
         :type WorkspaceId: str
-        :param _Comment: 描述
+        :param _Comment: <p>描述</p>
         :type Comment: str
-        :param _ConnectionId: connection 的 ID
+        :param _ConnectionId: <p>connection 的 ID，通过ListConnections接口获取</p>
         :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（融合版新增字段），取值参考 CatalogSourceEnum：METALAKE（专业版）/ CONNECTION（分析版），不传时默认按 METALAKE 处理
+        :param _CatalogSource: <p>数据目录来源，可选（融合版新增字段），取值参考 CatalogSourceEnum：METALAKE（专业版）/ CONNECTION（分析版），不传时默认按 METALAKE 处理</p>
         :type CatalogSource: str
-        :param _ConnectionCatalogName: 连接侧数据目录名或数据库名，三段式数据源必填，二段式数据源（如 MySQL）不填。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源填写 external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源填写 databaseName；MySQL 等二段式数据源不填。
+        :param _ConnectionCatalogName: <p>连接侧数据目录名或数据库名，三段式数据源必填，二段式数据源（如 MySQL）不填。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源填写 external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源填写 databaseName；MySQL 等二段式数据源不填。</p>
         :type ConnectionCatalogName: str
         """
         self._Name = None
@@ -2181,7 +2529,7 @@ class CreateCatalogRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""catalog名称
+        r"""<p>catalog名称</p>
         :rtype: str
         """
         return self._Name
@@ -2192,7 +2540,7 @@ class CreateCatalogRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""catalog类型, 可选值TABLE、MODEL、VOLUME
+        r"""<p>catalog类型, 可选值TABLE、MODEL、VOLUME</p>
         :rtype: str
         """
         return self._Type
@@ -2203,7 +2551,7 @@ class CreateCatalogRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        r"""工作空间唯一id
+        r"""<p>工作空间唯一id</p>
         :rtype: str
         """
         return self._WorkspaceId
@@ -2214,7 +2562,7 @@ class CreateCatalogRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Comment
@@ -2225,7 +2573,7 @@ class CreateCatalogRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""connection 的 ID
+        r"""<p>connection 的 ID，通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -2236,7 +2584,7 @@ class CreateCatalogRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（融合版新增字段），取值参考 CatalogSourceEnum：METALAKE（专业版）/ CONNECTION（分析版），不传时默认按 METALAKE 处理
+        r"""<p>数据目录来源，可选（融合版新增字段），取值参考 CatalogSourceEnum：METALAKE（专业版）/ CONNECTION（分析版），不传时默认按 METALAKE 处理</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -2247,7 +2595,7 @@ class CreateCatalogRequest(AbstractModel):
 
     @property
     def ConnectionCatalogName(self):
-        r"""连接侧数据目录名或数据库名，三段式数据源必填，二段式数据源（如 MySQL）不填。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源填写 external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源填写 databaseName；MySQL 等二段式数据源不填。
+        r"""<p>连接侧数据目录名或数据库名，三段式数据源必填，二段式数据源（如 MySQL）不填。Doris/StarRocks/TChouse-D 等 MySQL 内核三段式数据源填写 external catalog 名称；PostgreSQL/Tencent PG/GaussDB/Hologres 等 PG 内核三段式数据源填写 databaseName；MySQL 等二段式数据源不填。</p>
         :rtype: str
         """
         return self._ConnectionCatalogName
@@ -2282,7 +2630,7 @@ class CreateCatalogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 创建catalog响应
+        :param _Data: <p>创建catalog响应</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.databuddy.v20260715.models.CreateCatalogRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2293,7 +2641,7 @@ class CreateCatalogResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""创建catalog响应
+        r"""<p>创建catalog响应</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateCatalogRsp`
         """
@@ -2895,36 +3243,70 @@ class CreateFolderRsp(AbstractModel):
         
 
 
-class CreateSchemaRequest(AbstractModel):
-    r"""CreateSchema请求参数结构体
+class CreateLocationRequest(AbstractModel):
+    r"""CreateLocation请求参数结构体
+
+    """
+
+
+class CreateLocationResponse(AbstractModel):
+    r"""CreateLocation返回参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _CatalogName: catalog名称
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateModelRequest(AbstractModel):
+    r"""CreateModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: catalog 信息
         :type CatalogName: str
-        :param _Name: schema名称
-        :type Name: str
+        :param _SchemaName: schema 信息
+        :type SchemaName: str
+        :param _ModelName: 模型名称
+        :type ModelName: str
         :param _WorkspaceId: 调用时所在workspace唯一id
         :type WorkspaceId: str
-        :param _Comment: 描述
+        :param _Comment: 描述信息
         :type Comment: str
-        :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持创建schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
-        :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
-        :type CatalogSource: str
+        :param _Properties: 扩展参数
+        :type Properties: list of KVPair
         """
         self._CatalogName = None
-        self._Name = None
+        self._SchemaName = None
+        self._ModelName = None
         self._WorkspaceId = None
         self._Comment = None
-        self._ConnectionId = None
-        self._CatalogSource = None
+        self._Properties = None
 
     @property
     def CatalogName(self):
-        r"""catalog名称
+        r"""catalog 信息
         :rtype: str
         """
         return self._CatalogName
@@ -2934,15 +3316,26 @@ class CreateSchemaRequest(AbstractModel):
         self._CatalogName = CatalogName
 
     @property
-    def Name(self):
-        r"""schema名称
+    def SchemaName(self):
+        r"""schema 信息
         :rtype: str
         """
-        return self._Name
+        return self._SchemaName
 
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ModelName(self):
+        r"""模型名称
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
 
     @property
     def WorkspaceId(self):
@@ -2957,7 +3350,422 @@ class CreateSchemaRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""描述
+        r"""描述信息
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Properties(self):
+        r"""扩展参数
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ModelName = params.get("ModelName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._Comment = params.get("Comment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModelResponse(AbstractModel):
+    r"""CreateModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 创建返回模型信息
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.CreateModelRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""创建返回模型信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateModelRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateModelRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateModelRsp(AbstractModel):
+    r"""创建模型返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 模型信息
+        :type Model: :class:`tencentcloud.databuddy.v20260715.models.ModelInfo`
+        """
+        self._Model = None
+
+    @property
+    def Model(self):
+        r"""模型信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ModelInfo`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        if params.get("Model") is not None:
+            self._Model = ModelInfo()
+            self._Model._deserialize(params.get("Model"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModelVersionRequest(AbstractModel):
+    r"""CreateModelVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称</p>
+        :type SchemaName: str
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _Uri: <p>地址</p>
+        :type Uri: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _Aliases: <p>别名列表</p>
+        :type Aliases: list of str
+        :param _Comment: <p>描述</p>
+        :type Comment: str
+        :param _Properties: <p>扩展信息</p>
+        :type Properties: list of KVPair
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ModelName = None
+        self._Uri = None
+        self._WorkspaceId = None
+        self._Aliases = None
+        self._Comment = None
+        self._Properties = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def Uri(self):
+        r"""<p>地址</p>
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Aliases(self):
+        r"""<p>别名列表</p>
+        :rtype: list of str
+        """
+        return self._Aliases
+
+    @Aliases.setter
+    def Aliases(self, Aliases):
+        self._Aliases = Aliases
+
+    @property
+    def Comment(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Properties(self):
+        r"""<p>扩展信息</p>
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ModelName = params.get("ModelName")
+        self._Uri = params.get("Uri")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._Aliases = params.get("Aliases")
+        self._Comment = params.get("Comment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModelVersionResponse(AbstractModel):
+    r"""CreateModelVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>创建返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.CreateModelVersionRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>创建返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateModelVersionRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateModelVersionRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateModelVersionRsp(AbstractModel):
+    r"""创建模型版本返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Created: 创建成功
+        :type Created: bool
+        """
+        self._Created = None
+
+    @property
+    def Created(self):
+        r"""创建成功
+        :rtype: bool
+        """
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+
+    def _deserialize(self, params):
+        self._Created = params.get("Created")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSchemaRequest(AbstractModel):
+    r"""CreateSchema请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>catalog名称</p>
+        :type CatalogName: str
+        :param _Name: <p>schema名称</p>
+        :type Name: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _Comment: <p>描述</p>
+        :type Comment: str
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持创建schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._Name = None
+        self._WorkspaceId = None
+        self._Comment = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>catalog名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def Name(self):
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Comment(self):
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Comment
@@ -2968,7 +3776,7 @@ class CreateSchemaRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""数据源连接ID，可选（融合版新增字段）。分析版catalog不支持创建schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+        r"""<p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持创建schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -2979,7 +3787,7 @@ class CreateSchemaRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -3013,7 +3821,7 @@ class CreateSchemaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: schema信息
+        :param _Data: <p>schema信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.databuddy.v20260715.models.CreateSchemaRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -3024,7 +3832,7 @@ class CreateSchemaResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""schema信息
+        r"""<p>schema信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateSchemaRsp`
         """
@@ -3083,6 +3891,235 @@ class CreateSchemaRsp(AbstractModel):
         if params.get("Schema") is not None:
             self._Schema = Schema()
             self._Schema._deserialize(params.get("Schema"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVolumeRequest(AbstractModel):
+    r"""CreateVolume请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: catalog 信息
+        :type CatalogName: str
+        :param _SchemaName: schema 信息
+        :type SchemaName: str
+        :param _VolumeName: 数据卷名称
+        :type VolumeName: str
+        :param _WorkspaceId: 调用时所在workspace唯一id
+        :type WorkspaceId: str
+        :param _Comment: 描述信息
+        :type Comment: str
+        :param _Properties: 扩展参数
+        :type Properties: list of KVPair
+        :param _StorageLocation: 存储位置
+        :type StorageLocation: str
+        :param _Type: 数据卷类型
+        :type Type: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._VolumeName = None
+        self._WorkspaceId = None
+        self._Comment = None
+        self._Properties = None
+        self._StorageLocation = None
+        self._Type = None
+
+    @property
+    def CatalogName(self):
+        r"""catalog 信息
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""schema 信息
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def VolumeName(self):
+        r"""数据卷名称
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Comment(self):
+        r"""描述信息
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Properties(self):
+        r"""扩展参数
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def StorageLocation(self):
+        r"""存储位置
+        :rtype: str
+        """
+        return self._StorageLocation
+
+    @StorageLocation.setter
+    def StorageLocation(self, StorageLocation):
+        self._StorageLocation = StorageLocation
+
+    @property
+    def Type(self):
+        r"""数据卷类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._VolumeName = params.get("VolumeName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._Comment = params.get("Comment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._StorageLocation = params.get("StorageLocation")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVolumeResponse(AbstractModel):
+    r"""CreateVolume返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 创建返回数据卷信息
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.CreateVolumeRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""创建返回数据卷信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateVolumeRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateVolumeRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVolumeRsp(AbstractModel):
+    r"""创建模型返回数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Volume: 数据卷信息
+        :type Volume: :class:`tencentcloud.databuddy.v20260715.models.Volume`
+        """
+        self._Volume = None
+
+    @property
+    def Volume(self):
+        r"""数据卷信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Volume`
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+
+    def _deserialize(self, params):
+        if params.get("Volume") is not None:
+            self._Volume = Volume()
+            self._Volume._deserialize(params.get("Volume"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4010,13 +5047,13 @@ class DeleteCatalogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CatalogName: 数据目录名
+        :param _CatalogName: <p>数据目录名</p>
         :type CatalogName: str
-        :param _WorkspaceId: 调用时所在workspace唯一id
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
         :type WorkspaceId: str
-        :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :type CatalogSource: str
         """
         self._CatalogName = None
@@ -4026,7 +5063,7 @@ class DeleteCatalogRequest(AbstractModel):
 
     @property
     def CatalogName(self):
-        r"""数据目录名
+        r"""<p>数据目录名</p>
         :rtype: str
         """
         return self._CatalogName
@@ -4037,7 +5074,7 @@ class DeleteCatalogRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        r"""调用时所在workspace唯一id
+        r"""<p>调用时所在workspace唯一id</p>
         :rtype: str
         """
         return self._WorkspaceId
@@ -4048,7 +5085,7 @@ class DeleteCatalogRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+        r"""<p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -4059,7 +5096,7 @@ class DeleteCatalogRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -4091,7 +5128,7 @@ class DeleteCatalogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 操作结果
+        :param _Data: <p>操作结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteCatalogRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4102,7 +5139,7 @@ class DeleteCatalogResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""操作结果
+        r"""<p>操作结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteCatalogRsp`
         """
@@ -4603,33 +5640,162 @@ class DeleteFolderRsp(AbstractModel):
         
 
 
-class DeleteSchemaRequest(AbstractModel):
-    r"""DeleteSchema请求参数结构体
+class DeleteLocationRequest(AbstractModel):
+    r"""DeleteLocation请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _CatalogName: 数据目录名
-        :type CatalogName: str
-        :param _SchemaName: 数据库名
-        :type SchemaName: str
-        :param _WorkspaceId: 调用时所在workspace唯一id
+        :param _LocationName: 存储位置名，必填
+        :type LocationName: str
+        :param _WorkspaceId: 调用时所在workspace唯一id，必填
         :type WorkspaceId: str
-        :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
-        :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
-        :type CatalogSource: str
+        """
+        self._LocationName = None
+        self._WorkspaceId = None
+
+    @property
+    def LocationName(self):
+        r"""存储位置名，必填
+        :rtype: str
+        """
+        return self._LocationName
+
+    @LocationName.setter
+    def LocationName(self, LocationName):
+        self._LocationName = LocationName
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id，必填
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._LocationName = params.get("LocationName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLocationResponse(AbstractModel):
+    r"""DeleteLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteLocationRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteLocationRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteLocationRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLocationRsp(AbstractModel):
+    r"""删除存储位置响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Deleted: 是否成功删除
+        :type Deleted: bool
+        """
+        self._Deleted = None
+
+    @property
+    def Deleted(self):
+        r"""是否成功删除
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+
+    def _deserialize(self, params):
+        self._Deleted = params.get("Deleted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteModelRequest(AbstractModel):
+    r"""DeleteModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称</p>
+        :type SchemaName: str
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
         """
         self._CatalogName = None
         self._SchemaName = None
+        self._ModelName = None
         self._WorkspaceId = None
-        self._ConnectionId = None
-        self._CatalogSource = None
 
     @property
     def CatalogName(self):
-        r"""数据目录名
+        r"""<p>数据目录名称</p>
         :rtype: str
         """
         return self._CatalogName
@@ -4640,7 +5806,172 @@ class DeleteSchemaRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""数据库名
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ModelName = params.get("ModelName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteModelResponse(AbstractModel):
+    r"""DeleteModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>删除结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteModelRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>删除结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteModelRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteModelRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteModelRsp(AbstractModel):
+    r"""删除模型结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否删除成功
+        :type Result: bool
+        """
+        self._Result = None
+
+    @property
+    def Result(self):
+        r"""是否删除成功
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSchemaRequest(AbstractModel):
+    r"""DeleteSchema请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>数据库名</p>
+        :type SchemaName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._WorkspaceId = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>数据库名</p>
         :rtype: str
         """
         return self._SchemaName
@@ -4651,7 +5982,7 @@ class DeleteSchemaRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        r"""调用时所在workspace唯一id
+        r"""<p>调用时所在workspace唯一id</p>
         :rtype: str
         """
         return self._WorkspaceId
@@ -4662,7 +5993,7 @@ class DeleteSchemaRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+        r"""<p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除schema，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -4673,7 +6004,7 @@ class DeleteSchemaRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -4706,7 +6037,7 @@ class DeleteSchemaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 操作结果
+        :param _Data: <p>操作结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteSchemaRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4717,7 +6048,7 @@ class DeleteSchemaResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""操作结果
+        r"""<p>操作结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteSchemaRsp`
         """
@@ -4791,17 +6122,17 @@ class DeleteTableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CatalogName: 数据目录名
+        :param _CatalogName: <p>数据目录名</p>
         :type CatalogName: str
-        :param _SchemaName: 数据库名
+        :param _SchemaName: <p>数据库名</p>
         :type SchemaName: str
-        :param _TableName: 表名
+        :param _TableName: <p>表名</p>
         :type TableName: str
-        :param _WorkspaceId: 调用时所在workspace唯一id
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
         :type WorkspaceId: str
-        :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除表，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除表，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
         :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :type CatalogSource: str
         """
         self._CatalogName = None
@@ -4813,7 +6144,7 @@ class DeleteTableRequest(AbstractModel):
 
     @property
     def CatalogName(self):
-        r"""数据目录名
+        r"""<p>数据目录名</p>
         :rtype: str
         """
         return self._CatalogName
@@ -4824,7 +6155,7 @@ class DeleteTableRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""数据库名
+        r"""<p>数据库名</p>
         :rtype: str
         """
         return self._SchemaName
@@ -4835,7 +6166,7 @@ class DeleteTableRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._TableName
@@ -4846,7 +6177,7 @@ class DeleteTableRequest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        r"""调用时所在workspace唯一id
+        r"""<p>调用时所在workspace唯一id</p>
         :rtype: str
         """
         return self._WorkspaceId
@@ -4857,7 +6188,7 @@ class DeleteTableRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除表，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误
+        r"""<p>数据源连接ID，可选（融合版新增字段）。分析版catalog不支持删除表，传入非空时服务端返回ANA_CATALOG_NOT_SUPPORTED错误。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -4868,7 +6199,7 @@ class DeleteTableRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -4902,7 +6233,7 @@ class DeleteTableResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 操作结果
+        :param _Data: <p>操作结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteTableRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -4913,7 +6244,7 @@ class DeleteTableResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""操作结果
+        r"""<p>操作结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteTableRsp`
         """
@@ -4959,6 +6290,334 @@ class DeleteTableRsp(AbstractModel):
     def Result(self):
         r"""操作结果
 注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteViewRequest(AbstractModel):
+    r"""DeleteView请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: 数据目录名
+        :type CatalogName: str
+        :param _SchemaName: 数据库名
+        :type SchemaName: str
+        :param _ViewName: View名称
+        :type ViewName: str
+        :param _WorkspaceId: 调用时所在workspace唯一id
+        :type WorkspaceId: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ViewName = None
+        self._WorkspaceId = None
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""数据库名
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ViewName(self):
+        r"""View名称
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ViewName = params.get("ViewName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteViewResponse(AbstractModel):
+    r"""DeleteView返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteViewRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteViewRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteViewRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteViewRsp(AbstractModel):
+    r"""删除view的响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        """
+        self._Result = None
+
+    @property
+    def Result(self):
+        r"""操作结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVolumeRequest(AbstractModel):
+    r"""DeleteVolume请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称</p>
+        :type SchemaName: str
+        :param _VolumeName: <p>数据卷名称</p>
+        :type VolumeName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._VolumeName = None
+        self._WorkspaceId = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def VolumeName(self):
+        r"""<p>数据卷名称</p>
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._VolumeName = params.get("VolumeName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVolumeResponse(AbstractModel):
+    r"""DeleteVolume返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>删除结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.DeleteVolumeRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>删除结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteVolumeRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DeleteVolumeRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVolumeRsp(AbstractModel):
+    r"""删除模型结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否删除成功
+        :type Result: bool
+        """
+        self._Result = None
+
+    @property
+    def Result(self):
+        r"""是否删除成功
         :rtype: bool
         """
         return self._Result
@@ -5529,6 +7188,200 @@ class DictItem(AbstractModel):
         
 
 
+class FeatureTable(AbstractModel):
+    r"""特征表定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 表名称
+        :type Name: str
+        :param _FullName: 全称
+        :type FullName: str
+        :param _Comment: 资产描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _ModifiedTime: 修改时间，iso8601格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param _CreateTime: 创建时间，iso8601格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Tags: 标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _Owner: 责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: :class:`tencentcloud.databuddy.v20260715.models.Owner`
+        :param _WorkspaceId: 工作空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceId: str
+        :param _AssetGuid: 资产ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetGuid: str
+        """
+        self._Name = None
+        self._FullName = None
+        self._Comment = None
+        self._DatabaseName = None
+        self._ModifiedTime = None
+        self._CreateTime = None
+        self._Tags = None
+        self._Owner = None
+        self._WorkspaceId = None
+        self._AssetGuid = None
+
+    @property
+    def Name(self):
+        r"""表名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FullName(self):
+        r"""全称
+        :rtype: str
+        """
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def Comment(self):
+        r"""资产描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def ModifiedTime(self):
+        r"""修改时间，iso8601格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，iso8601格式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Tags(self):
+        r"""标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Owner(self):
+        r"""责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Owner`
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def WorkspaceId(self):
+        r"""工作空间ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def AssetGuid(self):
+        r"""资产ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetGuid
+
+    @AssetGuid.setter
+    def AssetGuid(self, AssetGuid):
+        self._AssetGuid = AssetGuid
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._FullName = params.get("FullName")
+        self._Comment = params.get("Comment")
+        self._DatabaseName = params.get("DatabaseName")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("Owner") is not None:
+            self._Owner = Owner()
+            self._Owner._deserialize(params.get("Owner"))
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._AssetGuid = params.get("AssetGuid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FeatureTableDetail(AbstractModel):
     r"""catalog特征表详情
 
@@ -5536,26 +7389,32 @@ class FeatureTableDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PrimaryKeys: 特征表主键字段列表
+        :param _PrimaryKeys: <p>特征表主键字段列表</p>
         :type PrimaryKeys: list of str
-        :param _TimestampField: 特征表时间戳字段名称
+        :param _TimestampField: <p>特征表时间戳字段名称</p>
         :type TimestampField: str
-        :param _SourceTableName: 在线特征表对应的来源表名称（离线表）
+        :param _SourceTableName: <p>在线特征表对应的来源表名称（离线表）</p>
         :type SourceTableName: str
-        :param _WorkflowId: 在线特征表关联的工作流ID
+        :param _WorkflowId: <p>在线特征表关联的工作流ID</p>
         :type WorkflowId: str
-        :param _OnlineTableName: 离线特征表对应生成的在线特征表名称
+        :param _OnlineTableName: <p>离线特征表对应生成的在线特征表名称</p>
         :type OnlineTableName: str
+        :param _OnlineTableType: <p>离线特征表对应生成的在线特征表类型，取值：TENCENT_POSTGRESQL | REDIS），缺省 TENCENT_POSTGRESQL</p>
+        :type OnlineTableType: str
+        :param _ConnectionId: <p>离线特征表对应生成的在线特征表ConnectionId</p>
+        :type ConnectionId: str
         """
         self._PrimaryKeys = None
         self._TimestampField = None
         self._SourceTableName = None
         self._WorkflowId = None
         self._OnlineTableName = None
+        self._OnlineTableType = None
+        self._ConnectionId = None
 
     @property
     def PrimaryKeys(self):
-        r"""特征表主键字段列表
+        r"""<p>特征表主键字段列表</p>
         :rtype: list of str
         """
         return self._PrimaryKeys
@@ -5566,7 +7425,7 @@ class FeatureTableDetail(AbstractModel):
 
     @property
     def TimestampField(self):
-        r"""特征表时间戳字段名称
+        r"""<p>特征表时间戳字段名称</p>
         :rtype: str
         """
         return self._TimestampField
@@ -5577,7 +7436,7 @@ class FeatureTableDetail(AbstractModel):
 
     @property
     def SourceTableName(self):
-        r"""在线特征表对应的来源表名称（离线表）
+        r"""<p>在线特征表对应的来源表名称（离线表）</p>
         :rtype: str
         """
         return self._SourceTableName
@@ -5588,7 +7447,7 @@ class FeatureTableDetail(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""在线特征表关联的工作流ID
+        r"""<p>在线特征表关联的工作流ID</p>
         :rtype: str
         """
         return self._WorkflowId
@@ -5599,7 +7458,7 @@ class FeatureTableDetail(AbstractModel):
 
     @property
     def OnlineTableName(self):
-        r"""离线特征表对应生成的在线特征表名称
+        r"""<p>离线特征表对应生成的在线特征表名称</p>
         :rtype: str
         """
         return self._OnlineTableName
@@ -5608,6 +7467,28 @@ class FeatureTableDetail(AbstractModel):
     def OnlineTableName(self, OnlineTableName):
         self._OnlineTableName = OnlineTableName
 
+    @property
+    def OnlineTableType(self):
+        r"""<p>离线特征表对应生成的在线特征表类型，取值：TENCENT_POSTGRESQL | REDIS），缺省 TENCENT_POSTGRESQL</p>
+        :rtype: str
+        """
+        return self._OnlineTableType
+
+    @OnlineTableType.setter
+    def OnlineTableType(self, OnlineTableType):
+        self._OnlineTableType = OnlineTableType
+
+    @property
+    def ConnectionId(self):
+        r"""<p>离线特征表对应生成的在线特征表ConnectionId</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
 
     def _deserialize(self, params):
         self._PrimaryKeys = params.get("PrimaryKeys")
@@ -5615,6 +7496,8 @@ class FeatureTableDetail(AbstractModel):
         self._SourceTableName = params.get("SourceTableName")
         self._WorkflowId = params.get("WorkflowId")
         self._OnlineTableName = params.get("OnlineTableName")
+        self._OnlineTableType = params.get("OnlineTableType")
+        self._ConnectionId = params.get("ConnectionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5756,6 +7639,243 @@ class FetchOption(AbstractModel):
         self._FetchMask = params.get("FetchMask")
         self._FetchTags = params.get("FetchTags")
         self._FetchDimensions = params.get("FetchDimensions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FieldInfo(AbstractModel):
+    r"""统一搜索字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>字段名称</p>
+        :type Name: str
+        :param _Comment: <p>字段描述</p>
+        :type Comment: str
+        :param _Type: <p>字段类型</p>
+        :type Type: str
+        :param _Lang: <p>语言类型</p>
+        :type Lang: str
+        :param _Content: <p>字段内容或代码片段</p>
+        :type Content: str
+        :param _SampleValues: <p>字段采样值</p>
+        :type SampleValues: list of str
+        """
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._Lang = None
+        self._Content = None
+        self._SampleValues = None
+
+    @property
+    def Name(self):
+        r"""<p>字段名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>字段描述</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        r"""<p>字段类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Lang(self):
+        r"""<p>语言类型</p>
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def Content(self):
+        r"""<p>字段内容或代码片段</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def SampleValues(self):
+        r"""<p>字段采样值</p>
+        :rtype: list of str
+        """
+        return self._SampleValues
+
+    @SampleValues.setter
+    def SampleValues(self, SampleValues):
+        self._SampleValues = SampleValues
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        self._Lang = params.get("Lang")
+        self._Content = params.get("Content")
+        self._SampleValues = params.get("SampleValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FieldTagInfo(AbstractModel):
+    r"""字段级标签信息，用于资产打标时指定字段维度的标签（入参+出参共用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldName: 字段名称（必填）；清除标记场景（LabelId=-1）下为待清除字段名
+        :type FieldName: str
+        :param _LabelId: <p>标签ID</p><p>特殊值：-1 表示「清除标记」，仅在 BatchAttachAssetTag 接口中生效：服务端会清除该 FieldName 下所有已有字段标签。使用 -1 时 FieldName 必填，其余字段可留空。</p>
+        :type LabelId: str
+        :param _LabelName: 标签名称（可选）
+        :type LabelName: str
+        :param _LabelType: <p>标签类型</p><p>枚举值：</p><ul><li>1：GOVERNANCE_LABEL：治理标签</li><li>2：CUSTOM_LABEL：自定义标签</li><li>3：PROPERTY_LABEL：属性标签</li><li>4：DESENSITIZATION_LABEL：脱敏标签</li></ul><p>字段打标规则：非脱敏标签（1/2/3）时 LabelValue 必填；脱敏标签（4）时 LabelValue 可为空</p>
+        :type LabelType: int
+        :param _FieldType: 字段类型（可选），如 string、int、bigint 等
+        :type FieldType: str
+        :param _LabelValueId: 标签值ID（可选）；非脱敏标签（LabelType!=4）建议填充；属性标签（LabelType=3）可为0；脱敏标签（LabelType=4）及清除标记（LabelId=-1）场景可留空
+        :type LabelValueId: str
+        :param _LabelValue: 标签值；非脱敏标签（LabelType!=4）必填，例如治理/自定义/属性标签均需携带业务语义值；脱敏标签（LabelType=4）及清除标记（LabelId=-1）场景可为空
+        :type LabelValue: str
+        """
+        self._FieldName = None
+        self._LabelId = None
+        self._LabelName = None
+        self._LabelType = None
+        self._FieldType = None
+        self._LabelValueId = None
+        self._LabelValue = None
+
+    @property
+    def FieldName(self):
+        r"""字段名称（必填）；清除标记场景（LabelId=-1）下为待清除字段名
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def LabelId(self):
+        r"""<p>标签ID</p><p>特殊值：-1 表示「清除标记」，仅在 BatchAttachAssetTag 接口中生效：服务端会清除该 FieldName 下所有已有字段标签。使用 -1 时 FieldName 必填，其余字段可留空。</p>
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LabelName(self):
+        r"""标签名称（可选）
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def LabelType(self):
+        r"""<p>标签类型</p><p>枚举值：</p><ul><li>1：GOVERNANCE_LABEL：治理标签</li><li>2：CUSTOM_LABEL：自定义标签</li><li>3：PROPERTY_LABEL：属性标签</li><li>4：DESENSITIZATION_LABEL：脱敏标签</li></ul><p>字段打标规则：非脱敏标签（1/2/3）时 LabelValue 必填；脱敏标签（4）时 LabelValue 可为空</p>
+        :rtype: int
+        """
+        return self._LabelType
+
+    @LabelType.setter
+    def LabelType(self, LabelType):
+        self._LabelType = LabelType
+
+    @property
+    def FieldType(self):
+        r"""字段类型（可选），如 string、int、bigint 等
+        :rtype: str
+        """
+        return self._FieldType
+
+    @FieldType.setter
+    def FieldType(self, FieldType):
+        self._FieldType = FieldType
+
+    @property
+    def LabelValueId(self):
+        r"""标签值ID（可选）；非脱敏标签（LabelType!=4）建议填充；属性标签（LabelType=3）可为0；脱敏标签（LabelType=4）及清除标记（LabelId=-1）场景可留空
+        :rtype: str
+        """
+        return self._LabelValueId
+
+    @LabelValueId.setter
+    def LabelValueId(self, LabelValueId):
+        self._LabelValueId = LabelValueId
+
+    @property
+    def LabelValue(self):
+        r"""标签值；非脱敏标签（LabelType!=4）必填，例如治理/自定义/属性标签均需携带业务语义值；脱敏标签（LabelType=4）及清除标记（LabelId=-1）场景可为空
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+
+    def _deserialize(self, params):
+        self._FieldName = params.get("FieldName")
+        self._LabelId = params.get("LabelId")
+        self._LabelName = params.get("LabelName")
+        self._LabelType = params.get("LabelType")
+        self._FieldType = params.get("FieldType")
+        self._LabelValueId = params.get("LabelValueId")
+        self._LabelValue = params.get("LabelValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6855,6 +8975,375 @@ class FolderLocator(AbstractModel):
         
 
 
+class Fragment(AbstractModel):
+    r"""代码片段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 字段名称
+        :type Name: str
+        :param _Type: 字段类型
+        :type Type: str
+        :param _Comment: 表字段描述
+        :type Comment: str
+        :param _Content: 片段内容
+        :type Content: str
+        :param _Lang: 片段语言
+        :type Lang: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Comment = None
+        self._Content = None
+        self._Lang = None
+
+    @property
+    def Name(self):
+        r"""字段名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""字段类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Comment(self):
+        r"""表字段描述
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Content(self):
+        r"""片段内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Lang(self):
+        r"""片段语言
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Comment = params.get("Comment")
+        self._Content = params.get("Content")
+        self._Lang = params.get("Lang")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionInfo(AbstractModel):
+    r"""函数详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>函数名</p>
+        :type Name: str
+        :param _FunctionType: 函数类型，取值如JAVA、SCALA、PYTHON、SQL等
+        :type FunctionType: str
+        :param _EngineType: 引擎类型，取值如SPARK、HIVE、PRESTO等
+        :type EngineType: str
+        :param _ClassName: <p>类名</p>
+        :type ClassName: str
+        :param _Resources: <p>函数依赖的资源</p>
+        :type Resources: list of FunctionResource
+        :param _Comment: <p>描述</p>
+        :type Comment: str
+        :param _Properties: <p>属性</p>
+        :type Properties: list of KVPair
+        :param _Audit: <p>审计信息</p>
+        :type Audit: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        :param _MetaOwner: <p>owner信息</p>
+        :type MetaOwner: :class:`tencentcloud.databuddy.v20260715.models.MetaOwner`
+        :param _AssetGuid: <p>资产全局唯一ID</p>
+        :type AssetGuid: str
+        :param _PermissionDetail: <p>当前用户对该实体的权限信息</p>
+        :type PermissionDetail: :class:`tencentcloud.databuddy.v20260715.models.PermissionDetail`
+        :param _Tags: <p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+        :type Tags: list of CommonTagInfo
+        """
+        self._Name = None
+        self._FunctionType = None
+        self._EngineType = None
+        self._ClassName = None
+        self._Resources = None
+        self._Comment = None
+        self._Properties = None
+        self._Audit = None
+        self._MetaOwner = None
+        self._AssetGuid = None
+        self._PermissionDetail = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""<p>函数名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FunctionType(self):
+        r"""函数类型，取值如JAVA、SCALA、PYTHON、SQL等
+        :rtype: str
+        """
+        return self._FunctionType
+
+    @FunctionType.setter
+    def FunctionType(self, FunctionType):
+        self._FunctionType = FunctionType
+
+    @property
+    def EngineType(self):
+        r"""引擎类型，取值如SPARK、HIVE、PRESTO等
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def ClassName(self):
+        r"""<p>类名</p>
+        :rtype: str
+        """
+        return self._ClassName
+
+    @ClassName.setter
+    def ClassName(self, ClassName):
+        self._ClassName = ClassName
+
+    @property
+    def Resources(self):
+        r"""<p>函数依赖的资源</p>
+        :rtype: list of FunctionResource
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+    @property
+    def Comment(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Properties(self):
+        r"""<p>属性</p>
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Audit(self):
+        r"""<p>审计信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+    @property
+    def MetaOwner(self):
+        r"""<p>owner信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.MetaOwner`
+        """
+        return self._MetaOwner
+
+    @MetaOwner.setter
+    def MetaOwner(self, MetaOwner):
+        self._MetaOwner = MetaOwner
+
+    @property
+    def AssetGuid(self):
+        r"""<p>资产全局唯一ID</p>
+        :rtype: str
+        """
+        return self._AssetGuid
+
+    @AssetGuid.setter
+    def AssetGuid(self, AssetGuid):
+        self._AssetGuid = AssetGuid
+
+    @property
+    def PermissionDetail(self):
+        r"""<p>当前用户对该实体的权限信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.PermissionDetail`
+        """
+        return self._PermissionDetail
+
+    @PermissionDetail.setter
+    def PermissionDetail(self, PermissionDetail):
+        self._PermissionDetail = PermissionDetail
+
+    @property
+    def Tags(self):
+        r"""<p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+        :rtype: list of CommonTagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._FunctionType = params.get("FunctionType")
+        self._EngineType = params.get("EngineType")
+        self._ClassName = params.get("ClassName")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = FunctionResource()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        self._Comment = params.get("Comment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        if params.get("MetaOwner") is not None:
+            self._MetaOwner = MetaOwner()
+            self._MetaOwner._deserialize(params.get("MetaOwner"))
+        self._AssetGuid = params.get("AssetGuid")
+        if params.get("PermissionDetail") is not None:
+            self._PermissionDetail = PermissionDetail()
+            self._PermissionDetail._deserialize(params.get("PermissionDetail"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = CommonTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionResource(AbstractModel):
+    r"""函数资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型，取值如file(文件)、jar(jar包)、archive(归档文件)等
+        :type ResourceType: str
+        :param _Uri: 资源路径
+        :type Uri: str
+        """
+        self._ResourceType = None
+        self._Uri = None
+
+    @property
+    def ResourceType(self):
+        r"""资源类型，取值如file(文件)、jar(jar包)、archive(归档文件)等
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Uri(self):
+        r"""资源路径
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._Uri = params.get("Uri")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetCatalogRequest(AbstractModel):
     r"""GetCatalog请求参数结构体
 
@@ -6870,7 +9359,7 @@ class GetCatalogRequest(AbstractModel):
         :type CatalogId: str
         :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
         :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
-        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径</p>
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :type ConnectionId: str
         :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :type CatalogSource: str
@@ -6928,7 +9417,7 @@ class GetCatalogRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""<p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径</p>
+        r"""<p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -7070,7 +9559,7 @@ class GetFileRequest(AbstractModel):
         :type FileType: str
         :param _IncludeContent: <p>是否返回文件内容。true 时 Storage.Content 返回 base64 内容，默认 false</p>
         :type IncludeContent: bool
-        :param _VersionId: <p>文件版本 ID。来源：ListFileVersions 接口返回的 VersionId。不传则读取最新版本</p>
+        :param _VersionId: <p>文件版本 ID。来源：ListCodeFileVersions 接口返回的 VersionId。不传则读取最新版本</p>
         :type VersionId: str
         :param _FilePath: <p>文件完整路径，以 / 开头，如 /etl/daily/demo.ipynb。与 FileId 二选一</p>
         :type FilePath: str
@@ -7128,7 +9617,7 @@ class GetFileRequest(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""<p>文件版本 ID。来源：ListFileVersions 接口返回的 VersionId。不传则读取最新版本</p>
+        r"""<p>文件版本 ID。来源：ListCodeFileVersions 接口返回的 VersionId。不传则读取最新版本</p>
         :rtype: str
         """
         return self._VersionId
@@ -7349,6 +9838,500 @@ class GetFolderRsp(AbstractModel):
         
 
 
+class GetLocationRequest(AbstractModel):
+    r"""GetLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocationName: 存储位置名，必填
+        :type LocationName: str
+        :param _WorkspaceId: 调用时所在workspace唯一id，必填
+        :type WorkspaceId: str
+        """
+        self._LocationName = None
+        self._WorkspaceId = None
+
+    @property
+    def LocationName(self):
+        r"""存储位置名，必填
+        :rtype: str
+        """
+        return self._LocationName
+
+    @LocationName.setter
+    def LocationName(self, LocationName):
+        self._LocationName = LocationName
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id，必填
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._LocationName = params.get("LocationName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLocationResponse(AbstractModel):
+    r"""GetLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.GetLocationRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetLocationRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetLocationRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetLocationRsp(AbstractModel):
+    r"""查询存储位置详情响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Location: 存储位置详情
+        :type Location: :class:`tencentcloud.databuddy.v20260715.models.LocationInfo`
+        """
+        self._Location = None
+
+    @property
+    def Location(self):
+        r"""存储位置详情
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.LocationInfo`
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        if params.get("Location") is not None:
+            self._Location = LocationInfo()
+            self._Location._deserialize(params.get("Location"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetModelRequest(AbstractModel):
+    r"""GetModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称</p>
+        :type SchemaName: str
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ModelName = None
+        self._WorkspaceId = None
+        self._FetchOption = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def FetchOption(self):
+        r"""<p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        return self._FetchOption
+
+    @FetchOption.setter
+    def FetchOption(self, FetchOption):
+        self._FetchOption = FetchOption
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ModelName = params.get("ModelName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("FetchOption") is not None:
+            self._FetchOption = FetchOption()
+            self._FetchOption._deserialize(params.get("FetchOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetModelResponse(AbstractModel):
+    r"""GetModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>获取模型结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.GetModelRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>获取模型结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetModelRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetModelRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetModelRsp(AbstractModel):
+    r"""获取模型结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 模型详情
+        :type Model: :class:`tencentcloud.databuddy.v20260715.models.ModelInfo`
+        """
+        self._Model = None
+
+    @property
+    def Model(self):
+        r"""模型详情
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ModelInfo`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        if params.get("Model") is not None:
+            self._Model = ModelInfo()
+            self._Model._deserialize(params.get("Model"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetModelVersionRequest(AbstractModel):
+    r"""GetModelVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称</p>
+        :type SchemaName: str
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>模型版本号</p>
+        :type ModelVersion: int
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ModelName = None
+        self._ModelVersion = None
+        self._WorkspaceId = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>模型版本号</p>
+        :rtype: int
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetModelVersionResponse(AbstractModel):
+    r"""GetModelVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>获取模型结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.GetModelVersionRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>获取模型结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetModelVersionRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetModelVersionRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetModelVersionRsp(AbstractModel):
+    r"""获取模型版本结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelVersion: 模型详情
+        :type ModelVersion: :class:`tencentcloud.databuddy.v20260715.models.ModelVersionInfo`
+        """
+        self._ModelVersion = None
+
+    @property
+    def ModelVersion(self):
+        r"""模型详情
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ModelVersionInfo`
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+
+    def _deserialize(self, params):
+        if params.get("ModelVersion") is not None:
+            self._ModelVersion = ModelVersionInfo()
+            self._ModelVersion._deserialize(params.get("ModelVersion"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetSchemaRequest(AbstractModel):
     r"""GetSchema请求参数结构体
 
@@ -7364,9 +10347,9 @@ class GetSchemaRequest(AbstractModel):
         :type WorkspaceId: str
         :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
         :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
-        :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :type CatalogSource: str
         """
         self._CatalogName = None
@@ -7422,7 +10405,7 @@ class GetSchemaRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+        r"""<p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -7433,7 +10416,7 @@ class GetSchemaRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -7566,9 +10549,9 @@ class GetTableRequest(AbstractModel):
         :type WorkspaceId: str
         :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
         :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
-        :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :type CatalogSource: str
         """
         self._CatalogName = None
@@ -7636,7 +10619,7 @@ class GetTableRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+        r"""<p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -7647,7 +10630,7 @@ class GetTableRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -7777,9 +10760,9 @@ class GetTablesRequest(AbstractModel):
         :type FullNames: list of str
         :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
         :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
-        :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，要求所有FullNames属于同一catalog（分析版额外约束）；空/缺省→走专业版TcLake路径
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，要求所有FullNames属于同一catalog（分析版额外约束）；空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :type CatalogSource: str
         """
         self._WorkspaceId = None
@@ -7823,7 +10806,7 @@ class GetTablesRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，要求所有FullNames属于同一catalog（分析版额外约束）；空/缺省→走专业版TcLake路径
+        r"""<p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，要求所有FullNames属于同一catalog（分析版额外约束）；空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -7834,7 +10817,7 @@ class GetTablesRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -7940,6 +10923,372 @@ class GetTablesRsp(AbstractModel):
                 obj = TableInfo()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetViewRequest(AbstractModel):
+    r"""GetView请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>数据库名</p>
+        :type SchemaName: str
+        :param _ViewName: <p>View名称</p>
+        :type ViewName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ViewName = None
+        self._WorkspaceId = None
+        self._FetchOption = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>数据库名</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ViewName(self):
+        r"""<p>View名称</p>
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def FetchOption(self):
+        r"""<p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        return self._FetchOption
+
+    @FetchOption.setter
+    def FetchOption(self, FetchOption):
+        self._FetchOption = FetchOption
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ViewName = params.get("ViewName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("FetchOption") is not None:
+            self._FetchOption = FetchOption()
+            self._FetchOption._deserialize(params.get("FetchOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetViewResponse(AbstractModel):
+    r"""GetView返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>view详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.GetViewRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>view详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetViewRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetViewRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetViewRsp(AbstractModel):
+    r"""获取view详情的响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _View: view详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type View: :class:`tencentcloud.databuddy.v20260715.models.ViewInfo`
+        """
+        self._View = None
+
+    @property
+    def View(self):
+        r"""view详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ViewInfo`
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+
+    def _deserialize(self, params):
+        if params.get("View") is not None:
+            self._View = ViewInfo()
+            self._View._deserialize(params.get("View"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVolumeRequest(AbstractModel):
+    r"""GetVolume请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称</p>
+        :type SchemaName: str
+        :param _VolumeName: <p>数据卷名称</p>
+        :type VolumeName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._VolumeName = None
+        self._WorkspaceId = None
+        self._FetchOption = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def VolumeName(self):
+        r"""<p>数据卷名称</p>
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def FetchOption(self):
+        r"""<p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        return self._FetchOption
+
+    @FetchOption.setter
+    def FetchOption(self, FetchOption):
+        self._FetchOption = FetchOption
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._VolumeName = params.get("VolumeName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("FetchOption") is not None:
+            self._FetchOption = FetchOption()
+            self._FetchOption._deserialize(params.get("FetchOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetVolumeResponse(AbstractModel):
+    r"""GetVolume返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>获取volume详情</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.GetVolumeRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>获取volume详情</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetVolumeRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetVolumeRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetVolumeRsp(AbstractModel):
+    r"""volume返回详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Volume: volume详情
+        :type Volume: :class:`tencentcloud.databuddy.v20260715.models.Volume`
+        """
+        self._Volume = None
+
+    @property
+    def Volume(self):
+        r"""volume详情
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Volume`
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+
+    def _deserialize(self, params):
+        if params.get("Volume") is not None:
+            self._Volume = Volume()
+            self._Volume._deserialize(params.get("Volume"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9562,6 +12911,254 @@ class GroupUserInfo(AbstractModel):
         
 
 
+class Highlighting(AbstractModel):
+    r"""搜索命中的高亮
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+        :type Name: str
+        :param _Comment: 描述
+        :type Comment: str
+        :param _TextFragments: 片段
+        :type TextFragments: list of Fragment
+        """
+        self._Name = None
+        self._Comment = None
+        self._TextFragments = None
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def TextFragments(self):
+        r"""片段
+        :rtype: list of Fragment
+        """
+        return self._TextFragments
+
+    @TextFragments.setter
+    def TextFragments(self, TextFragments):
+        self._TextFragments = TextFragments
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("TextFragments") is not None:
+            self._TextFragments = []
+            for item in params.get("TextFragments"):
+                obj = Fragment()
+                obj._deserialize(item)
+                self._TextFragments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HighlightingInfo(AbstractModel):
+    r"""高亮信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetName: <p>资产名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetName: str
+        :param _FullName: <p>资产全名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullName: str
+        :param _Comment: <p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _CodeFragments: <p>代码片段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeFragments: list of Fragment
+        :param _TextFragments: <p>文本片段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TextFragments: list of Fragment
+        :param _Tags: <p>标签(废弃)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        :param _TagFragments: <p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagFragments: list of TagInfo
+        :param _AliasFragments: <p>别名高亮片段列表。使用场景：资产别名命中关键词时，返回带 <em></em> 标签的高亮片段供前端渲染</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasFragments: list of str
+        """
+        self._AssetName = None
+        self._FullName = None
+        self._Comment = None
+        self._CodeFragments = None
+        self._TextFragments = None
+        self._Tags = None
+        self._TagFragments = None
+        self._AliasFragments = None
+
+    @property
+    def AssetName(self):
+        r"""<p>资产名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def FullName(self):
+        r"""<p>资产全名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def Comment(self):
+        r"""<p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def CodeFragments(self):
+        r"""<p>代码片段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Fragment
+        """
+        return self._CodeFragments
+
+    @CodeFragments.setter
+    def CodeFragments(self, CodeFragments):
+        self._CodeFragments = CodeFragments
+
+    @property
+    def TextFragments(self):
+        r"""<p>文本片段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Fragment
+        """
+        return self._TextFragments
+
+    @TextFragments.setter
+    def TextFragments(self, TextFragments):
+        self._TextFragments = TextFragments
+
+    @property
+    def Tags(self):
+        r"""<p>标签(废弃)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def TagFragments(self):
+        r"""<p>标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfo
+        """
+        return self._TagFragments
+
+    @TagFragments.setter
+    def TagFragments(self, TagFragments):
+        self._TagFragments = TagFragments
+
+    @property
+    def AliasFragments(self):
+        r"""<p>别名高亮片段列表。使用场景：资产别名命中关键词时，返回带 <em></em> 标签的高亮片段供前端渲染</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AliasFragments
+
+    @AliasFragments.setter
+    def AliasFragments(self, AliasFragments):
+        self._AliasFragments = AliasFragments
+
+
+    def _deserialize(self, params):
+        self._AssetName = params.get("AssetName")
+        self._FullName = params.get("FullName")
+        self._Comment = params.get("Comment")
+        if params.get("CodeFragments") is not None:
+            self._CodeFragments = []
+            for item in params.get("CodeFragments"):
+                obj = Fragment()
+                obj._deserialize(item)
+                self._CodeFragments.append(obj)
+        if params.get("TextFragments") is not None:
+            self._TextFragments = []
+            for item in params.get("TextFragments"):
+                obj = Fragment()
+                obj._deserialize(item)
+                self._TextFragments.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("TagFragments") is not None:
+            self._TagFragments = []
+            for item in params.get("TagFragments"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._TagFragments.append(obj)
+        self._AliasFragments = params.get("AliasFragments")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Index(AbstractModel):
     r"""索引结构
 
@@ -10623,6 +14220,209 @@ class LabelBrief(AbstractModel):
         self._LabelValue = params.get("LabelValue")
         self._LabelKeyId = params.get("LabelKeyId")
         self._LabelValueId = params.get("LabelValueId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListCatalogNamesRequest(AbstractModel):
+    r"""ListCatalogNames请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _MaxResults: <p>最大结果条数，可选，默认10</p>
+        :type MaxResults: str
+        :param _PageToken: <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+        :type PageToken: str
+        :param _Types: <p>catalog类型，参考CatalogType(当前支持：TABLE、MODEL、VOLUME)，可选，不填默认查询所有类型</p>
+        :type Types: list of str
+        :param _CatalogSources: <p>数据目录来源筛选，取值参考CatalogSourceEnum(METALAKE/CONNECTION/SETATS)</p>
+        :type CatalogSources: list of str
+        """
+        self._WorkspaceId = None
+        self._MaxResults = None
+        self._PageToken = None
+        self._Types = None
+        self._CatalogSources = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def MaxResults(self):
+        r"""<p>最大结果条数，可选，默认10</p>
+        :rtype: str
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def PageToken(self):
+        r"""<p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def Types(self):
+        r"""<p>catalog类型，参考CatalogType(当前支持：TABLE、MODEL、VOLUME)，可选，不填默认查询所有类型</p>
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def CatalogSources(self):
+        r"""<p>数据目录来源筛选，取值参考CatalogSourceEnum(METALAKE/CONNECTION/SETATS)</p>
+        :rtype: list of str
+        """
+        return self._CatalogSources
+
+    @CatalogSources.setter
+    def CatalogSources(self, CatalogSources):
+        self._CatalogSources = CatalogSources
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._MaxResults = params.get("MaxResults")
+        self._PageToken = params.get("PageToken")
+        self._Types = params.get("Types")
+        self._CatalogSources = params.get("CatalogSources")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListCatalogNamesResponse(AbstractModel):
+    r"""ListCatalogNames返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListCatalogNamesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListCatalogNamesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListCatalogNamesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListCatalogNamesRsp(AbstractModel):
+    r"""获取数据目录名称列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 数据目录名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of NameIdentifier
+        :param _NextPageToken: 下页分页token信息(base64编码，包含offset、snapshotId等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextPageToken: str
+        """
+        self._Items = None
+        self._NextPageToken = None
+
+    @property
+    def Items(self):
+        r"""数据目录名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NameIdentifier
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextPageToken(self):
+        r"""下页分页token信息(base64编码，包含offset、snapshotId等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = NameIdentifier()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextPageToken = params.get("NextPageToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11844,6 +15644,276 @@ class ListConsoleUsersRsp(AbstractModel):
         
 
 
+class ListFeatureTableResp(AbstractModel):
+    r"""ListFeatureTableResp返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: str
+        :param _Items: 返回列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of FeatureTable
+        :param _NextPageToken: 下一页token，为空表示没有更多数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextPageToken: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._NextPageToken = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""返回列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FeatureTable
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextPageToken(self):
+        r"""下一页token，为空表示没有更多数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = FeatureTable()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextPageToken = params.get("NextPageToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFeatureTablesRequest(AbstractModel):
+    r"""ListFeatureTables请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        :param _Keyword: <p>关键字</p>
+        :type Keyword: str
+        :param _CatalogNames: <p>Catalog目录列表</p>
+        :type CatalogNames: list of str
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of str
+        :param _OwnerMe: <p>我负责的</p>
+        :type OwnerMe: bool
+        :param _MaxResults: <p>最大结果条数，可选，取值1～50</p>
+        :type MaxResults: int
+        :param _PageToken: <p>分页token信息(base64编码)，可选</p>
+        :type PageToken: str
+        :param _OrderBys: <p>排序，Name(CreateTime/ModifiedTime), Direction(Desc/Asc)</p>
+        :type OrderBys: list of OrderBy
+        """
+        self._WorkspaceId = None
+        self._Keyword = None
+        self._CatalogNames = None
+        self._Tags = None
+        self._OwnerMe = None
+        self._MaxResults = None
+        self._PageToken = None
+        self._OrderBys = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Keyword(self):
+        r"""<p>关键字</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def CatalogNames(self):
+        r"""<p>Catalog目录列表</p>
+        :rtype: list of str
+        """
+        return self._CatalogNames
+
+    @CatalogNames.setter
+    def CatalogNames(self, CatalogNames):
+        self._CatalogNames = CatalogNames
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def OwnerMe(self):
+        r"""<p>我负责的</p>
+        :rtype: bool
+        """
+        return self._OwnerMe
+
+    @OwnerMe.setter
+    def OwnerMe(self, OwnerMe):
+        self._OwnerMe = OwnerMe
+
+    @property
+    def MaxResults(self):
+        r"""<p>最大结果条数，可选，取值1～50</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def PageToken(self):
+        r"""<p>分页token信息(base64编码)，可选</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def OrderBys(self):
+        r"""<p>排序，Name(CreateTime/ModifiedTime), Direction(Desc/Asc)</p>
+        :rtype: list of OrderBy
+        """
+        return self._OrderBys
+
+    @OrderBys.setter
+    def OrderBys(self, OrderBys):
+        self._OrderBys = OrderBys
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._Keyword = params.get("Keyword")
+        self._CatalogNames = params.get("CatalogNames")
+        self._Tags = params.get("Tags")
+        self._OwnerMe = params.get("OwnerMe")
+        self._MaxResults = params.get("MaxResults")
+        self._PageToken = params.get("PageToken")
+        if params.get("OrderBys") is not None:
+            self._OrderBys = []
+            for item in params.get("OrderBys"):
+                obj = OrderBy()
+                obj._deserialize(item)
+                self._OrderBys.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFeatureTablesResponse(AbstractModel):
+    r"""ListFeatureTables返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListFeatureTableResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListFeatureTableResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListFeatureTableResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListFilesRequest(AbstractModel):
     r"""ListFiles请求参数结构体
 
@@ -12153,6 +16223,462 @@ class ListFilesRsp(AbstractModel):
         
 
 
+class ListLocationsRequest(AbstractModel):
+    r"""ListLocations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _LocationNamePattern: <p>存储位置名匹配模式，支持SQL LIKE语法</p>
+        :type LocationNamePattern: str
+        :param _SnapshotBased: <p>是否基于快照分页</p>
+        :type SnapshotBased: bool
+        :param _SnapshotId: <p>快照ID</p>
+        :type SnapshotId: str
+        :param _PageNumber: <p>页码，从1开始，可选，默认1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页大小，默认10，取值范围 1~500</p>
+        :type PageSize: int
+        """
+        self._WorkspaceId = None
+        self._LocationNamePattern = None
+        self._SnapshotBased = None
+        self._SnapshotId = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def LocationNamePattern(self):
+        r"""<p>存储位置名匹配模式，支持SQL LIKE语法</p>
+        :rtype: str
+        """
+        return self._LocationNamePattern
+
+    @LocationNamePattern.setter
+    def LocationNamePattern(self, LocationNamePattern):
+        self._LocationNamePattern = LocationNamePattern
+
+    @property
+    def SnapshotBased(self):
+        r"""<p>是否基于快照分页</p>
+        :rtype: bool
+        """
+        return self._SnapshotBased
+
+    @SnapshotBased.setter
+    def SnapshotBased(self, SnapshotBased):
+        self._SnapshotBased = SnapshotBased
+
+    @property
+    def SnapshotId(self):
+        r"""<p>快照ID</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从1开始，可选，默认1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小，默认10，取值范围 1~500</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._LocationNamePattern = params.get("LocationNamePattern")
+        self._SnapshotBased = params.get("SnapshotBased")
+        self._SnapshotId = params.get("SnapshotId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListLocationsResponse(AbstractModel):
+    r"""ListLocations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListLocationsRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListLocationsRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListLocationsRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListLocationsRsp(AbstractModel):
+    r"""分页查询存储位置列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Locations: 存储位置详情列表
+        :type Locations: list of LocationInfo
+        :param _TotalCount: 结果总条数
+        :type TotalCount: int
+        :param _SnapshotId: 快照ID
+        :type SnapshotId: str
+        """
+        self._Locations = None
+        self._TotalCount = None
+        self._SnapshotId = None
+
+    @property
+    def Locations(self):
+        r"""存储位置详情列表
+        :rtype: list of LocationInfo
+        """
+        return self._Locations
+
+    @Locations.setter
+    def Locations(self, Locations):
+        self._Locations = Locations
+
+    @property
+    def TotalCount(self):
+        r"""结果总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SnapshotId(self):
+        r"""快照ID
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+
+    def _deserialize(self, params):
+        if params.get("Locations") is not None:
+            self._Locations = []
+            for item in params.get("Locations"):
+                obj = LocationInfo()
+                obj._deserialize(item)
+                self._Locations.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._SnapshotId = params.get("SnapshotId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListModelsRequest(AbstractModel):
+    r"""ListModels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称</p>
+        :type SchemaName: str
+        :param _MaxResults: <p>最大结果条数，默认10，取值1~10000</p>
+        :type MaxResults: int
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _PageToken: <p>分页信息</p>
+        :type PageToken: str
+        :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._MaxResults = None
+        self._WorkspaceId = None
+        self._PageToken = None
+        self._FetchOption = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def MaxResults(self):
+        r"""<p>最大结果条数，默认10，取值1~10000</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def PageToken(self):
+        r"""<p>分页信息</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def FetchOption(self):
+        r"""<p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        return self._FetchOption
+
+    @FetchOption.setter
+    def FetchOption(self, FetchOption):
+        self._FetchOption = FetchOption
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._MaxResults = params.get("MaxResults")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._PageToken = params.get("PageToken")
+        if params.get("FetchOption") is not None:
+            self._FetchOption = FetchOption()
+            self._FetchOption._deserialize(params.get("FetchOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListModelsResponse(AbstractModel):
+    r"""ListModels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回信息</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListModelsRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListModelsRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListModelsRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListModelsRsp(AbstractModel):
+    r"""模型列表返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 模型列表
+        :type Items: list of ModelInfo
+        :param _TotalCount: 总数量
+        :type TotalCount: str
+        :param _NextPageToken: 分页令牌
+        :type NextPageToken: str
+        """
+        self._Items = None
+        self._TotalCount = None
+        self._NextPageToken = None
+
+    @property
+    def Items(self):
+        r"""模型列表
+        :rtype: list of ModelInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NextPageToken(self):
+        r"""分页令牌
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ModelInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._NextPageToken = params.get("NextPageToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListPartition(AbstractModel):
     r"""列表分区
 
@@ -12275,6 +16801,224 @@ class ListPartitioning(AbstractModel):
                 obj = ListPartition()
                 obj._deserialize(item)
                 self._Assignments.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSchemaNamesRequest(AbstractModel):
+    r"""ListSchemaNames请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名，必填</p>
+        :type CatalogName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _MaxResults: <p>最大结果条数，可选，默认10</p>
+        :type MaxResults: str
+        :param _PageToken: <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+        :type PageToken: str
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._WorkspaceId = None
+        self._MaxResults = None
+        self._PageToken = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名，必填</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def MaxResults(self):
+        r"""<p>最大结果条数，可选，默认10</p>
+        :rtype: str
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def PageToken(self):
+        r"""<p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def ConnectionId(self):
+        r"""<p>数据源连接ID，可选（融合版新增字段）</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def CatalogSource(self):
+        r"""<p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._MaxResults = params.get("MaxResults")
+        self._PageToken = params.get("PageToken")
+        self._ConnectionId = params.get("ConnectionId")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListSchemaNamesResponse(AbstractModel):
+    r"""ListSchemaNames返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListSchemaNamesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListSchemaNamesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListSchemaNamesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListSchemaNamesRsp(AbstractModel):
+    r"""获取数据库名称列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 数据库名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of NameIdentifier
+        :param _NextPageToken: 下页分页token信息(base64编码，包含offset、snapshotId等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextPageToken: str
+        """
+        self._Items = None
+        self._NextPageToken = None
+
+    @property
+    def Items(self):
+        r"""数据库名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NameIdentifier
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextPageToken(self):
+        r"""下页分页token信息(base64编码，包含offset、snapshotId等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = NameIdentifier()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextPageToken = params.get("NextPageToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12520,6 +17264,239 @@ class ListSchemasRsp(AbstractModel):
         
 
 
+class ListTableNamesRequest(AbstractModel):
+    r"""ListTableNames请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名，必填</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>数据库名，必填</p>
+        :type SchemaName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _MaxResults: <p>最大结果条数，可选，默认10</p>
+        :type MaxResults: str
+        :param _PageToken: <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+        :type PageToken: str
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._WorkspaceId = None
+        self._MaxResults = None
+        self._PageToken = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名，必填</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>数据库名，必填</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def MaxResults(self):
+        r"""<p>最大结果条数，可选，默认10</p>
+        :rtype: str
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def PageToken(self):
+        r"""<p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def ConnectionId(self):
+        r"""<p>数据源连接ID，可选（融合版新增字段）</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def CatalogSource(self):
+        r"""<p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._MaxResults = params.get("MaxResults")
+        self._PageToken = params.get("PageToken")
+        self._ConnectionId = params.get("ConnectionId")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTableNamesResponse(AbstractModel):
+    r"""ListTableNames返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListTableNamesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListTableNamesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListTableNamesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListTableNamesRsp(AbstractModel):
+    r"""获取数据表名称列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 数据表名数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of NameIdentifier
+        :param _NextPageToken: 下页分页token信息(base64编码，包含offset、snapshotId等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextPageToken: str
+        """
+        self._Items = None
+        self._NextPageToken = None
+
+    @property
+    def Items(self):
+        r"""数据表名数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NameIdentifier
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextPageToken(self):
+        r"""下页分页token信息(base64编码，包含offset、snapshotId等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = NameIdentifier()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextPageToken = params.get("NextPageToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListTablesRequest(AbstractModel):
     r"""ListTables请求参数结构体
 
@@ -12539,9 +17516,9 @@ class ListTablesRequest(AbstractModel):
         :type PageToken: str
         :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
         :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
-        :param _ConnectionId: 数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :type ConnectionId: str
-        :param _CatalogSource: 数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :type CatalogSource: str
         """
         self._CatalogName = None
@@ -12621,7 +17598,7 @@ class ListTablesRequest(AbstractModel):
 
     @property
     def ConnectionId(self):
-        r"""数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径
+        r"""<p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。通过ListConnections接口获取</p>
         :rtype: str
         """
         return self._ConnectionId
@@ -12632,7 +17609,7 @@ class ListTablesRequest(AbstractModel):
 
     @property
     def CatalogSource(self):
-        r"""数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource > 非空ConnectionId（视为CONNECTION）> 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
         :rtype: str
         """
         return self._CatalogSource
@@ -12759,6 +17736,718 @@ class ListTablesRsp(AbstractModel):
                 obj = TableInfo()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._NextPageToken = params.get("NextPageToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListViewNamesRequest(AbstractModel):
+    r"""ListViewNames请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名，必填</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>数据库名，必填</p>
+        :type SchemaName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _MaxResults: <p>最大结果条数，可选，默认10</p>
+        :type MaxResults: str
+        :param _PageToken: <p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+        :type PageToken: str
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._WorkspaceId = None
+        self._MaxResults = None
+        self._PageToken = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名，必填</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>数据库名，必填</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def MaxResults(self):
+        r"""<p>最大结果条数，可选，默认10</p>
+        :rtype: str
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def PageToken(self):
+        r"""<p>分页token信息(base64编码，包含offset、snapshotId等)</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def ConnectionId(self):
+        r"""<p>数据源连接ID，可选（融合版新增字段）</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def CatalogSource(self):
+        r"""<p>数据目录来源，取值参考CatalogSourceEnum：METALAKE/CONNECTION/SETATS</p>
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._MaxResults = params.get("MaxResults")
+        self._PageToken = params.get("PageToken")
+        self._ConnectionId = params.get("ConnectionId")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListViewNamesResponse(AbstractModel):
+    r"""ListViewNames返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListViewNamesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListViewNamesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListViewNamesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListViewNamesRsp(AbstractModel):
+    r"""获取视图名称列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 视图名数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of NameIdentifier
+        :param _NextPageToken: 下页分页token信息(base64编码，包含offset、snapshotId等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextPageToken: str
+        """
+        self._Items = None
+        self._NextPageToken = None
+
+    @property
+    def Items(self):
+        r"""视图名数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of NameIdentifier
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextPageToken(self):
+        r"""下页分页token信息(base64编码，包含offset、snapshotId等)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = NameIdentifier()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextPageToken = params.get("NextPageToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListViewsRequest(AbstractModel):
+    r"""ListViews请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>数据库名</p>
+        :type SchemaName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _MaxResults: <p>最大结果条数，默认10</p>
+        :type MaxResults: int
+        :param _PageToken: <p>分页token</p>
+        :type PageToken: str
+        :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        :param _ConnectionId: <p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。可通过 ListConnections 获取</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._WorkspaceId = None
+        self._MaxResults = None
+        self._PageToken = None
+        self._FetchOption = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>数据库名</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def MaxResults(self):
+        r"""<p>最大结果条数，默认10</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def PageToken(self):
+        r"""<p>分页token</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def FetchOption(self):
+        r"""<p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        return self._FetchOption
+
+    @FetchOption.setter
+    def FetchOption(self, FetchOption):
+        self._FetchOption = FetchOption
+
+    @property
+    def ConnectionId(self):
+        r"""<p>数据源连接ID，可选（融合版新增字段）。非空→走分析版路径，空/缺省→走专业版TcLake路径。可通过 ListConnections 获取</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def CatalogSource(self):
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._MaxResults = params.get("MaxResults")
+        self._PageToken = params.get("PageToken")
+        if params.get("FetchOption") is not None:
+            self._FetchOption = FetchOption()
+            self._FetchOption._deserialize(params.get("FetchOption"))
+        self._ConnectionId = params.get("ConnectionId")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListViewsResponse(AbstractModel):
+    r"""ListViews返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>操作结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListViewsRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>操作结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListViewsRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListViewsRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListViewsRsp(AbstractModel):
+    r"""获取view列表响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: view列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ViewInfo
+        :param _NextPageToken: 下页分页token
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextPageToken: str
+        """
+        self._Items = None
+        self._NextPageToken = None
+
+    @property
+    def Items(self):
+        r"""view列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ViewInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextPageToken(self):
+        r"""下页分页token
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ViewInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextPageToken = params.get("NextPageToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVolumesRequest(AbstractModel):
+    r"""ListVolumes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称</p>
+        :type SchemaName: str
+        :param _MaxResults: <p>获取数量</p>
+        :type MaxResults: int
+        :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
+        :type WorkspaceId: str
+        :param _PageToken: <p>分页信息</p>
+        :type PageToken: str
+        :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._MaxResults = None
+        self._WorkspaceId = None
+        self._PageToken = None
+        self._FetchOption = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名称</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def MaxResults(self):
+        r"""<p>获取数量</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def PageToken(self):
+        r"""<p>分页信息</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def FetchOption(self):
+        r"""<p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
+        """
+        return self._FetchOption
+
+    @FetchOption.setter
+    def FetchOption(self, FetchOption):
+        self._FetchOption = FetchOption
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._MaxResults = params.get("MaxResults")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._PageToken = params.get("PageToken")
+        if params.get("FetchOption") is not None:
+            self._FetchOption = FetchOption()
+            self._FetchOption._deserialize(params.get("FetchOption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVolumesResponse(AbstractModel):
+    r"""ListVolumes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>接口返回信息</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListVolumesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>接口返回信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListVolumesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListVolumesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListVolumesRsp(AbstractModel):
+    r"""数据卷返回信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 数据卷信息
+        :type Items: list of Volume
+        :param _TotalCount: 总数据卷数量
+        :type TotalCount: str
+        :param _NextPageToken: 分页信息
+        :type NextPageToken: str
+        """
+        self._Items = None
+        self._TotalCount = None
+        self._NextPageToken = None
+
+    @property
+    def Items(self):
+        r"""数据卷信息
+        :rtype: list of Volume
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        r"""总数据卷数量
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NextPageToken(self):
+        r"""分页信息
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = Volume()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._NextPageToken = params.get("NextPageToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -15034,6 +20723,210 @@ class Literal(AbstractModel):
         
 
 
+class LocationInfo(AbstractModel):
+    r"""存储位置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocationName: 存储位置名
+        :type LocationName: str
+        :param _LocationUri: 存储位置URI
+        :type LocationUri: str
+        :param _Comment: 存储位置描述
+        :type Comment: str
+        :param _Properties: 存储位置属性
+        :type Properties: list of KVPair
+        :param _Audit: 审计信息
+        :type Audit: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        """
+        self._LocationName = None
+        self._LocationUri = None
+        self._Comment = None
+        self._Properties = None
+        self._Audit = None
+
+    @property
+    def LocationName(self):
+        r"""存储位置名
+        :rtype: str
+        """
+        return self._LocationName
+
+    @LocationName.setter
+    def LocationName(self, LocationName):
+        self._LocationName = LocationName
+
+    @property
+    def LocationUri(self):
+        r"""存储位置URI
+        :rtype: str
+        """
+        return self._LocationUri
+
+    @LocationUri.setter
+    def LocationUri(self, LocationUri):
+        self._LocationUri = LocationUri
+
+    @property
+    def Comment(self):
+        r"""存储位置描述
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Properties(self):
+        r"""存储位置属性
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Audit(self):
+        r"""审计信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+
+    def _deserialize(self, params):
+        self._LocationName = params.get("LocationName")
+        self._LocationUri = params.get("LocationUri")
+        self._Comment = params.get("Comment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LocationUpdate(AbstractModel):
+    r"""更新location的操作单元，通过 UpdateType 指定操作类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UpdateType: 更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties
+        :type UpdateType: str
+        :param _NewComment: 新的备注，可选，UpdateType 为 modify_location_comment 时使用
+        :type NewComment: str
+        :param _SetProperties: 新增/修改的属性键值对列表，可选，UpdateType 为 modify_location_properties 时使用
+        :type SetProperties: list of KVPair
+        :param _RemoveProperties: 要移除的属性key列表，可选，UpdateType 为 modify_location_properties 时使用
+        :type RemoveProperties: list of str
+        :param _NewName: 新的名称，可选，UpdateType 为 modify_location_name 时使用
+        :type NewName: str
+        """
+        self._UpdateType = None
+        self._NewComment = None
+        self._SetProperties = None
+        self._RemoveProperties = None
+        self._NewName = None
+
+    @property
+    def UpdateType(self):
+        r"""更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties
+        :rtype: str
+        """
+        return self._UpdateType
+
+    @UpdateType.setter
+    def UpdateType(self, UpdateType):
+        self._UpdateType = UpdateType
+
+    @property
+    def NewComment(self):
+        r"""新的备注，可选，UpdateType 为 modify_location_comment 时使用
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+    @property
+    def SetProperties(self):
+        r"""新增/修改的属性键值对列表，可选，UpdateType 为 modify_location_properties 时使用
+        :rtype: list of KVPair
+        """
+        return self._SetProperties
+
+    @SetProperties.setter
+    def SetProperties(self, SetProperties):
+        self._SetProperties = SetProperties
+
+    @property
+    def RemoveProperties(self):
+        r"""要移除的属性key列表，可选，UpdateType 为 modify_location_properties 时使用
+        :rtype: list of str
+        """
+        return self._RemoveProperties
+
+    @RemoveProperties.setter
+    def RemoveProperties(self, RemoveProperties):
+        self._RemoveProperties = RemoveProperties
+
+    @property
+    def NewName(self):
+        r"""新的名称，可选，UpdateType 为 modify_location_name 时使用
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+
+    def _deserialize(self, params):
+        self._UpdateType = params.get("UpdateType")
+        self._NewComment = params.get("NewComment")
+        if params.get("SetProperties") is not None:
+            self._SetProperties = []
+            for item in params.get("SetProperties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._SetProperties.append(obj)
+        self._RemoveProperties = params.get("RemoveProperties")
+        self._NewName = params.get("NewName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MetaOwner(AbstractModel):
     r"""元数据责任人信息数据结构
 
@@ -15053,11 +20946,15 @@ class MetaOwner(AbstractModel):
         :param _OwnerName: 所有者名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerName: str
+        :param _CatalogSource: 数据目录来源，取值参考 CatalogSourceEnum：METALAKE / CONNECTION / SETATS。ListMetaOwners 走新参数 Catalogs 查询时，按入参回填；走旧参数 FullNames 查询时，按请求顶层 CatalogSource 回填（默认 METALAKE）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogSource: str
         """
         self._FullName = None
         self._OwnerType = None
         self._Owner = None
         self._OwnerName = None
+        self._CatalogSource = None
 
     @property
     def FullName(self):
@@ -15107,12 +21004,442 @@ class MetaOwner(AbstractModel):
     def OwnerName(self, OwnerName):
         self._OwnerName = OwnerName
 
+    @property
+    def CatalogSource(self):
+        r"""数据目录来源，取值参考 CatalogSourceEnum：METALAKE / CONNECTION / SETATS。ListMetaOwners 走新参数 Catalogs 查询时，按入参回填；走旧参数 FullNames 查询时，按请求顶层 CatalogSource 回填（默认 METALAKE）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
 
     def _deserialize(self, params):
         self._FullName = params.get("FullName")
         self._OwnerType = params.get("OwnerType")
         self._Owner = params.get("Owner")
         self._OwnerName = params.get("OwnerName")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelInfo(AbstractModel):
+    r"""模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>模型名称</p>
+        :type Name: str
+        :param _CatalogName: <p>catalog信息</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema 信息</p>
+        :type SchemaName: str
+        :param _Comment: <p>模型描述</p>
+        :type Comment: str
+        :param _LatestVersion: <p>最新版本号</p>
+        :type LatestVersion: str
+        :param _Properties: <p>扩展数据</p>
+        :type Properties: list of KVPair
+        :param _Audit: <p>审计数据</p>
+        :type Audit: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        :param _MetaOwner: <p>责任人信息</p>
+        :type MetaOwner: :class:`tencentcloud.databuddy.v20260715.models.MetaOwner`
+        :param _Id: <p>id</p>
+        :type Id: str
+        :param _AssetGuid: <p>资产全局唯一ID</p>
+        :type AssetGuid: str
+        :param _PermissionDetail: <p>当前用户对该实体的权限信息</p>
+        :type PermissionDetail: :class:`tencentcloud.databuddy.v20260715.models.PermissionDetail`
+        :param _Tags: <p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of CommonTagInfo
+        """
+        self._Name = None
+        self._CatalogName = None
+        self._SchemaName = None
+        self._Comment = None
+        self._LatestVersion = None
+        self._Properties = None
+        self._Audit = None
+        self._MetaOwner = None
+        self._Id = None
+        self._AssetGuid = None
+        self._PermissionDetail = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CatalogName(self):
+        r"""<p>catalog信息</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema 信息</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Comment(self):
+        r"""<p>模型描述</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def LatestVersion(self):
+        r"""<p>最新版本号</p>
+        :rtype: str
+        """
+        return self._LatestVersion
+
+    @LatestVersion.setter
+    def LatestVersion(self, LatestVersion):
+        self._LatestVersion = LatestVersion
+
+    @property
+    def Properties(self):
+        r"""<p>扩展数据</p>
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Audit(self):
+        r"""<p>审计数据</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+    @property
+    def MetaOwner(self):
+        r"""<p>责任人信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.MetaOwner`
+        """
+        return self._MetaOwner
+
+    @MetaOwner.setter
+    def MetaOwner(self, MetaOwner):
+        self._MetaOwner = MetaOwner
+
+    @property
+    def Id(self):
+        r"""<p>id</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AssetGuid(self):
+        r"""<p>资产全局唯一ID</p>
+        :rtype: str
+        """
+        return self._AssetGuid
+
+    @AssetGuid.setter
+    def AssetGuid(self, AssetGuid):
+        self._AssetGuid = AssetGuid
+
+    @property
+    def PermissionDetail(self):
+        r"""<p>当前用户对该实体的权限信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.PermissionDetail`
+        """
+        return self._PermissionDetail
+
+    @PermissionDetail.setter
+    def PermissionDetail(self, PermissionDetail):
+        self._PermissionDetail = PermissionDetail
+
+    @property
+    def Tags(self):
+        r"""<p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonTagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._Comment = params.get("Comment")
+        self._LatestVersion = params.get("LatestVersion")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        if params.get("MetaOwner") is not None:
+            self._MetaOwner = MetaOwner()
+            self._MetaOwner._deserialize(params.get("MetaOwner"))
+        self._Id = params.get("Id")
+        self._AssetGuid = params.get("AssetGuid")
+        if params.get("PermissionDetail") is not None:
+            self._PermissionDetail = PermissionDetail()
+            self._PermissionDetail._deserialize(params.get("PermissionDetail"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = CommonTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelVersionInfo(AbstractModel):
+    r"""模型版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: 版本号
+        :type Version: str
+        :param _Uri: 模型版本uri
+        :type Uri: str
+        :param _Comment: 描述信息
+        :type Comment: str
+        :param _Properties: 扩展参数
+        :type Properties: list of KVPair
+        :param _Aliases: 别名
+        :type Aliases: list of str
+        :param _Audit: 审计信息
+        :type Audit: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        :param _CatalogName: Catalog Name
+        :type CatalogName: str
+        :param _SchemaName: Schema Name
+        :type SchemaName: str
+        :param _ModelName: Model Name
+        :type ModelName: str
+        :param _Tags: 标签列表
+        :type Tags: list of AssetTagVote
+        :param _AssetGuid: 资产全局唯一ID
+        :type AssetGuid: str
+        """
+        self._Version = None
+        self._Uri = None
+        self._Comment = None
+        self._Properties = None
+        self._Aliases = None
+        self._Audit = None
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ModelName = None
+        self._Tags = None
+        self._AssetGuid = None
+
+    @property
+    def Version(self):
+        r"""版本号
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Uri(self):
+        r"""模型版本uri
+        :rtype: str
+        """
+        return self._Uri
+
+    @Uri.setter
+    def Uri(self, Uri):
+        self._Uri = Uri
+
+    @property
+    def Comment(self):
+        r"""描述信息
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Properties(self):
+        r"""扩展参数
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Aliases(self):
+        r"""别名
+        :rtype: list of str
+        """
+        return self._Aliases
+
+    @Aliases.setter
+    def Aliases(self, Aliases):
+        self._Aliases = Aliases
+
+    @property
+    def Audit(self):
+        r"""审计信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+    @property
+    def CatalogName(self):
+        r"""Catalog Name
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""Schema Name
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ModelName(self):
+        r"""Model Name
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def Tags(self):
+        r"""标签列表
+        :rtype: list of AssetTagVote
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def AssetGuid(self):
+        r"""资产全局唯一ID
+        :rtype: str
+        """
+        return self._AssetGuid
+
+    @AssetGuid.setter
+    def AssetGuid(self, AssetGuid):
+        self._AssetGuid = AssetGuid
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
+        self._Uri = params.get("Uri")
+        self._Comment = params.get("Comment")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._Aliases = params.get("Aliases")
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ModelName = params.get("ModelName")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = AssetTagVote()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._AssetGuid = params.get("AssetGuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15272,6 +21599,93 @@ class MonitorMetricItem(AbstractModel):
         
 
 
+class NameIdentifier(AbstractModel):
+    r"""名称标识符，用于各层级（catalog/schema/table/view等）名称列表接口的返回条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Namespace: <p>命名空间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: list of str
+        :param _CatalogSource: <p>元数据来源，取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。响应体始终返回具体来源值，不会返回CATALOG_SOURCE_ALL。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogSource: str
+        :param _Status: <p>TCLAKE Catalog取值：（注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5）<br>SETATS Catalog取值：（Creating=30, Available=31, Deleted=32, Scaling=33, Isolated=34, Failed=35，未知=0）</p>
+        :type Status: str
+        """
+        self._Name = None
+        self._Namespace = None
+        self._CatalogSource = None
+        self._Status = None
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def CatalogSource(self):
+        r"""<p>元数据来源，取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。响应体始终返回具体来源值，不会返回CATALOG_SOURCE_ALL。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+    @property
+    def Status(self):
+        r"""<p>TCLAKE Catalog取值：（注册中0，待测试1，连接成功2，连接失败3，删除中4，已删除5）<br>SETATS Catalog取值：（Creating=30, Available=31, Deleted=32, Scaling=33, Isolated=34, Failed=35，未知=0）</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Namespace = params.get("Namespace")
+        self._CatalogSource = params.get("CatalogSource")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OrderBy(AbstractModel):
     r"""排序字段
 
@@ -15313,6 +21727,76 @@ class OrderBy(AbstractModel):
     def _deserialize(self, params):
         self._Direction = params.get("Direction")
         self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Owner(AbstractModel):
+    r"""责任人
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserId: str
+        :param _UserName: 用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Type:  0:USER, 1:GROUP
+        :type Type: int
+        """
+        self._UserId = None
+        self._UserName = None
+        self._Type = None
+
+    @property
+    def UserId(self):
+        r"""用户ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""用户名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Type(self):
+        r""" 0:USER, 1:GROUP
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17292,6 +23776,792 @@ class Schema(AbstractModel):
         
 
 
+class SearchAssetRequest(AbstractModel):
+    r"""SearchAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        :param _MaxResults: <p>最大结果条数，默认30，可选30～50</p>
+        :type MaxResults: int
+        :param _Keyword: <p>关键字</p>
+        :type Keyword: str
+        :param _AssetTypes: <p>资产类型列表，类型参见ListEntityTypeMetas的返回</p>
+        :type AssetTypes: list of str
+        :param _PageToken: <p>分页token信息，取上一页返回NextPageToken</p>
+        :type PageToken: str
+        :param _Owner: <p>按资产负责人检索</p><ul><li>my 我负责的(包含my时其他uin不生效)</li><li>uin 指定用户uin</li></ul>
+        :type Owner: list of str
+        :param _TagIds: <p>标签IDs，可通过 ListTags 获取</p>
+        :type TagIds: list of int
+        :param _TagValueIds: <p>标签值IDs，可通过 ListTags 获取</p>
+        :type TagValueIds: list of int
+        :param _ModifiedTime: <p>更新时间，13位时间戳</p>
+        :type ModifiedTime: str
+        :param _CatalogNames: <p>数据目录列表</p>
+        :type CatalogNames: list of str
+        :param _WorkspacePaths: <p>工作空间路径筛选(非catalog类资产)</p>
+        :type WorkspacePaths: list of str
+        :param _EnableHybridSearch: <p>是否开启混合搜索</p>
+        :type EnableHybridSearch: bool
+        :param _FieldTagIds: <p>字段标签ID列表（可选）。使用场景：根据字段上打的标签检索资产（表），返回包含该字段标签的资产。与 TagIds 的区别：TagIds 是表级标签过滤，FieldTagIds 是字段级标签过滤。规格要求：int64 数组，最多支持 20 个标签 ID 同时过滤。可通过 ListTags 获取</p>
+        :type FieldTagIds: list of int
+        :param _OrderBys: <p>排序，为空时默认按相关度倒排序</p><p>Name:<br>PopularityQuantity 热度</p><p>Direction:<br>Desc 降序<br>Asc 升序</p>
+        :type OrderBys: list of OrderBy
+        """
+        self._WorkspaceId = None
+        self._MaxResults = None
+        self._Keyword = None
+        self._AssetTypes = None
+        self._PageToken = None
+        self._Owner = None
+        self._TagIds = None
+        self._TagValueIds = None
+        self._ModifiedTime = None
+        self._CatalogNames = None
+        self._WorkspacePaths = None
+        self._EnableHybridSearch = None
+        self._FieldTagIds = None
+        self._OrderBys = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def MaxResults(self):
+        r"""<p>最大结果条数，默认30，可选30～50</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def Keyword(self):
+        r"""<p>关键字</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def AssetTypes(self):
+        r"""<p>资产类型列表，类型参见ListEntityTypeMetas的返回</p>
+        :rtype: list of str
+        """
+        return self._AssetTypes
+
+    @AssetTypes.setter
+    def AssetTypes(self, AssetTypes):
+        self._AssetTypes = AssetTypes
+
+    @property
+    def PageToken(self):
+        r"""<p>分页token信息，取上一页返回NextPageToken</p>
+        :rtype: str
+        """
+        return self._PageToken
+
+    @PageToken.setter
+    def PageToken(self, PageToken):
+        self._PageToken = PageToken
+
+    @property
+    def Owner(self):
+        r"""<p>按资产负责人检索</p><ul><li>my 我负责的(包含my时其他uin不生效)</li><li>uin 指定用户uin</li></ul>
+        :rtype: list of str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def TagIds(self):
+        r"""<p>标签IDs，可通过 ListTags 获取</p>
+        :rtype: list of int
+        """
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+    @property
+    def TagValueIds(self):
+        r"""<p>标签值IDs，可通过 ListTags 获取</p>
+        :rtype: list of int
+        """
+        return self._TagValueIds
+
+    @TagValueIds.setter
+    def TagValueIds(self, TagValueIds):
+        self._TagValueIds = TagValueIds
+
+    @property
+    def ModifiedTime(self):
+        r"""<p>更新时间，13位时间戳</p>
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def CatalogNames(self):
+        r"""<p>数据目录列表</p>
+        :rtype: list of str
+        """
+        return self._CatalogNames
+
+    @CatalogNames.setter
+    def CatalogNames(self, CatalogNames):
+        self._CatalogNames = CatalogNames
+
+    @property
+    def WorkspacePaths(self):
+        r"""<p>工作空间路径筛选(非catalog类资产)</p>
+        :rtype: list of str
+        """
+        return self._WorkspacePaths
+
+    @WorkspacePaths.setter
+    def WorkspacePaths(self, WorkspacePaths):
+        self._WorkspacePaths = WorkspacePaths
+
+    @property
+    def EnableHybridSearch(self):
+        r"""<p>是否开启混合搜索</p>
+        :rtype: bool
+        """
+        return self._EnableHybridSearch
+
+    @EnableHybridSearch.setter
+    def EnableHybridSearch(self, EnableHybridSearch):
+        self._EnableHybridSearch = EnableHybridSearch
+
+    @property
+    def FieldTagIds(self):
+        r"""<p>字段标签ID列表（可选）。使用场景：根据字段上打的标签检索资产（表），返回包含该字段标签的资产。与 TagIds 的区别：TagIds 是表级标签过滤，FieldTagIds 是字段级标签过滤。规格要求：int64 数组，最多支持 20 个标签 ID 同时过滤。可通过 ListTags 获取</p>
+        :rtype: list of int
+        """
+        return self._FieldTagIds
+
+    @FieldTagIds.setter
+    def FieldTagIds(self, FieldTagIds):
+        self._FieldTagIds = FieldTagIds
+
+    @property
+    def OrderBys(self):
+        r"""<p>排序，为空时默认按相关度倒排序</p><p>Name:<br>PopularityQuantity 热度</p><p>Direction:<br>Desc 降序<br>Asc 升序</p>
+        :rtype: list of OrderBy
+        """
+        return self._OrderBys
+
+    @OrderBys.setter
+    def OrderBys(self, OrderBys):
+        self._OrderBys = OrderBys
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._MaxResults = params.get("MaxResults")
+        self._Keyword = params.get("Keyword")
+        self._AssetTypes = params.get("AssetTypes")
+        self._PageToken = params.get("PageToken")
+        self._Owner = params.get("Owner")
+        self._TagIds = params.get("TagIds")
+        self._TagValueIds = params.get("TagValueIds")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._CatalogNames = params.get("CatalogNames")
+        self._WorkspacePaths = params.get("WorkspacePaths")
+        self._EnableHybridSearch = params.get("EnableHybridSearch")
+        self._FieldTagIds = params.get("FieldTagIds")
+        if params.get("OrderBys") is not None:
+            self._OrderBys = []
+            for item in params.get("OrderBys"):
+                obj = OrderBy()
+                obj._deserialize(item)
+                self._OrderBys.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchAssetResponse(AbstractModel):
+    r"""SearchAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.SearchAssetRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.SearchAssetRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = SearchAssetRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class SearchAssetRsp(AbstractModel):
+    r"""统一搜索出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of SearchResult
+        :param _NextPageToken: 分页token，不为空时表示还有下一页数据，作为参数PageToken传递
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextPageToken: str
+        """
+        self._Items = None
+        self._NextPageToken = None
+
+    @property
+    def Items(self):
+        r"""结果列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchResult
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def NextPageToken(self):
+        r"""分页token，不为空时表示还有下一页数据，作为参数PageToken传递
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextPageToken
+
+    @NextPageToken.setter
+    def NextPageToken(self, NextPageToken):
+        self._NextPageToken = NextPageToken
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SearchResult()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._NextPageToken = params.get("NextPageToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SearchResult(AbstractModel):
+    r"""统一搜索返回结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullName: <p>资产全名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullName: str
+        :param _AssetGuid: <p>资产全局ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetGuid: str
+        :param _AssetId: <p>各资产类别下的唯一ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetId: str
+        :param _AssetName: <p>资产名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetName: str
+        :param _AssetType: <p>资产类型，参见ListEntityTypeMetas返回的EntityType</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: str
+        :param _UserActivityInfo: <p>用户活动</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserActivityInfo: :class:`tencentcloud.databuddy.v20260715.models.UserActivityInfo`
+        :param _Popularity: <p>热度，值范围：[1,2,3,4]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Popularity: str
+        :param _Tags: <p>资产标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of TagInfo
+        :param _Owner: <p>责任人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: :class:`tencentcloud.databuddy.v20260715.models.Owner`
+        :param _ModifiedTime: <p>最近更新时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param _Comment: <p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _WorkspaceId: <p>工作空间ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceId: str
+        :param _WorkspaceFolderPath: <p>工作空间文件夹路径（废弃）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspaceFolderPath: str
+        :param _Highlighting: <p>高亮(废弃)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Highlighting: list of Highlighting
+        :param _Properties: <p>各类资产扩展信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of KVPair
+        :param _WorkspacePath: <p>工作空间文件夹路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkspacePath: str
+        :param _FieldInfo: <p>字段信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldInfo: list of FieldInfo
+        :param _SignalLevel: <p>废弃</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignalLevel: str
+        :param _PopularityQuantity: <p>热度值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PopularityQuantity: str
+        :param _HighlightingInfo: <p>高亮</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighlightingInfo: :class:`tencentcloud.databuddy.v20260715.models.HighlightingInfo`
+        :param _FieldTags: <p>字段标签列表，返回资产下所有字段上打的标签信息，用于展示字段级标签；每项包含 LabelId、LabelName、LabelType、FieldName、FieldType</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FieldTags: list of FieldTagInfo
+        :param _Aliases: <p>资产别名列表。使用场景：仅指标、语义模型等业务资产支持多别名，其他资产类型返回空列表。前端可选择在资产名后面以【别名1、别名2】的形式展示</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Aliases: list of str
+        :param _CatalogSource: <p>资产元数据来源。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。仅catalog类资产（CATALOG/SCHEMA/TABLE/VIEW/MODEL/VOLUME/FUNCTION/TABLE_COLUMN）返回该字段，非catalog类资产该字段为空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogSource: str
+        """
+        self._FullName = None
+        self._AssetGuid = None
+        self._AssetId = None
+        self._AssetName = None
+        self._AssetType = None
+        self._UserActivityInfo = None
+        self._Popularity = None
+        self._Tags = None
+        self._Owner = None
+        self._ModifiedTime = None
+        self._Comment = None
+        self._WorkspaceId = None
+        self._WorkspaceFolderPath = None
+        self._Highlighting = None
+        self._Properties = None
+        self._WorkspacePath = None
+        self._FieldInfo = None
+        self._SignalLevel = None
+        self._PopularityQuantity = None
+        self._HighlightingInfo = None
+        self._FieldTags = None
+        self._Aliases = None
+        self._CatalogSource = None
+
+    @property
+    def FullName(self):
+        r"""<p>资产全名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def AssetGuid(self):
+        r"""<p>资产全局ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetGuid
+
+    @AssetGuid.setter
+    def AssetGuid(self, AssetGuid):
+        self._AssetGuid = AssetGuid
+
+    @property
+    def AssetId(self):
+        r"""<p>各资产类别下的唯一ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        r"""<p>资产名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型，参见ListEntityTypeMetas返回的EntityType</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def UserActivityInfo(self):
+        r"""<p>用户活动</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UserActivityInfo`
+        """
+        return self._UserActivityInfo
+
+    @UserActivityInfo.setter
+    def UserActivityInfo(self, UserActivityInfo):
+        self._UserActivityInfo = UserActivityInfo
+
+    @property
+    def Popularity(self):
+        r"""<p>热度，值范围：[1,2,3,4]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Popularity
+
+    @Popularity.setter
+    def Popularity(self, Popularity):
+        self._Popularity = Popularity
+
+    @property
+    def Tags(self):
+        r"""<p>资产标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Owner(self):
+        r"""<p>责任人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Owner`
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def ModifiedTime(self):
+        r"""<p>最近更新时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def Comment(self):
+        r"""<p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def WorkspaceFolderPath(self):
+        r"""<p>工作空间文件夹路径（废弃）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkspaceFolderPath
+
+    @WorkspaceFolderPath.setter
+    def WorkspaceFolderPath(self, WorkspaceFolderPath):
+        self._WorkspaceFolderPath = WorkspaceFolderPath
+
+    @property
+    def Highlighting(self):
+        r"""<p>高亮(废弃)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Highlighting
+        """
+        return self._Highlighting
+
+    @Highlighting.setter
+    def Highlighting(self, Highlighting):
+        self._Highlighting = Highlighting
+
+    @property
+    def Properties(self):
+        r"""<p>各类资产扩展信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def WorkspacePath(self):
+        r"""<p>工作空间文件夹路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkspacePath
+
+    @WorkspacePath.setter
+    def WorkspacePath(self, WorkspacePath):
+        self._WorkspacePath = WorkspacePath
+
+    @property
+    def FieldInfo(self):
+        r"""<p>字段信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FieldInfo
+        """
+        return self._FieldInfo
+
+    @FieldInfo.setter
+    def FieldInfo(self, FieldInfo):
+        self._FieldInfo = FieldInfo
+
+    @property
+    def SignalLevel(self):
+        r"""<p>废弃</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SignalLevel
+
+    @SignalLevel.setter
+    def SignalLevel(self, SignalLevel):
+        self._SignalLevel = SignalLevel
+
+    @property
+    def PopularityQuantity(self):
+        r"""<p>热度值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PopularityQuantity
+
+    @PopularityQuantity.setter
+    def PopularityQuantity(self, PopularityQuantity):
+        self._PopularityQuantity = PopularityQuantity
+
+    @property
+    def HighlightingInfo(self):
+        r"""<p>高亮</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.HighlightingInfo`
+        """
+        return self._HighlightingInfo
+
+    @HighlightingInfo.setter
+    def HighlightingInfo(self, HighlightingInfo):
+        self._HighlightingInfo = HighlightingInfo
+
+    @property
+    def FieldTags(self):
+        r"""<p>字段标签列表，返回资产下所有字段上打的标签信息，用于展示字段级标签；每项包含 LabelId、LabelName、LabelType、FieldName、FieldType</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FieldTagInfo
+        """
+        return self._FieldTags
+
+    @FieldTags.setter
+    def FieldTags(self, FieldTags):
+        self._FieldTags = FieldTags
+
+    @property
+    def Aliases(self):
+        r"""<p>资产别名列表。使用场景：仅指标、语义模型等业务资产支持多别名，其他资产类型返回空列表。前端可选择在资产名后面以【别名1、别名2】的形式展示</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Aliases
+
+    @Aliases.setter
+    def Aliases(self, Aliases):
+        self._Aliases = Aliases
+
+    @property
+    def CatalogSource(self):
+        r"""<p>资产元数据来源。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。仅catalog类资产（CATALOG/SCHEMA/TABLE/VIEW/MODEL/VOLUME/FUNCTION/TABLE_COLUMN）返回该字段，非catalog类资产该字段为空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._FullName = params.get("FullName")
+        self._AssetGuid = params.get("AssetGuid")
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._AssetType = params.get("AssetType")
+        if params.get("UserActivityInfo") is not None:
+            self._UserActivityInfo = UserActivityInfo()
+            self._UserActivityInfo._deserialize(params.get("UserActivityInfo"))
+        self._Popularity = params.get("Popularity")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("Owner") is not None:
+            self._Owner = Owner()
+            self._Owner._deserialize(params.get("Owner"))
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._Comment = params.get("Comment")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._WorkspaceFolderPath = params.get("WorkspaceFolderPath")
+        if params.get("Highlighting") is not None:
+            self._Highlighting = []
+            for item in params.get("Highlighting"):
+                obj = Highlighting()
+                obj._deserialize(item)
+                self._Highlighting.append(obj)
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        self._WorkspacePath = params.get("WorkspacePath")
+        if params.get("FieldInfo") is not None:
+            self._FieldInfo = []
+            for item in params.get("FieldInfo"):
+                obj = FieldInfo()
+                obj._deserialize(item)
+                self._FieldInfo.append(obj)
+        self._SignalLevel = params.get("SignalLevel")
+        self._PopularityQuantity = params.get("PopularityQuantity")
+        if params.get("HighlightingInfo") is not None:
+            self._HighlightingInfo = HighlightingInfo()
+            self._HighlightingInfo._deserialize(params.get("HighlightingInfo"))
+        if params.get("FieldTags") is not None:
+            self._FieldTags = []
+            for item in params.get("FieldTags"):
+                obj = FieldTagInfo()
+                obj._deserialize(item)
+                self._FieldTags.append(obj)
+        self._Aliases = params.get("Aliases")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SingleFieldPartitioning(AbstractModel):
     r"""单字段分区
 
@@ -18106,6 +25376,204 @@ class TableInfo(AbstractModel):
                 obj = CommonTagInfo()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    r"""标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Type: 标签类型，参考 LabelType 枚举：0=未知，1=治理标签，2=自定义标签，3=属性标签，4=脱敏标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        """
+        self._Name = None
+        self._Value = None
+        self._Type = None
+
+    @property
+    def Name(self):
+        r"""名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        r"""标签类型，参考 LabelType 枚举：0=未知，1=治理标签，2=自定义标签，3=属性标签，4=脱敏标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagInfo(AbstractModel):
+    r"""标签信息，入参时用于指定打标标签，出参时返回资产已打的标签（入参+出参共用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelId: 标签ID（入参必填）
+        :type LabelId: str
+        :param _LabelName: 标签名称（入参必填）
+        :type LabelName: str
+        :param _Type: <p>标签类型（入参必填）</p><p>枚举值：</p><ul><li>1：GOVERNANCE_LABEL：治理标签（标签管理页手动创建）</li><li>2：CUSTOM_LABEL：自定义标签（打标时自动创建）</li><li>3：PROPERTY_LABEL：属性标签（Key-Value键值对）</li><li>4：DESENSITIZATION_LABEL：脱敏标签（与脱敏策略绑定）</li></ul>
+        :type Type: int
+        :param _LabelValueId: 标签值ID（可选）；属性标签可为0；LabelType=4（脱敏标签）时非必填
+        :type LabelValueId: str
+        :param _LabelValue: 标签值（可选）；LabelType=4（脱敏标签）时非必填
+        :type LabelValue: str
+        :param _IsDeleted: 【仅出参，入参无需填写】标签是否已被物理删除（true=已删除）
+        :type IsDeleted: bool
+        :param _CreateCustomLabel: 【仅入参，出参不返回】是否自动创建自定义标签（可选，默认 false）；true=当 LabelName 非空且标签不存在时，自动创建 LabelType=2（CUSTOM_LABEL）的自定义标签；false=仅使用已有标签打标，标签不存在时报错
+        :type CreateCustomLabel: bool
+        """
+        self._LabelId = None
+        self._LabelName = None
+        self._Type = None
+        self._LabelValueId = None
+        self._LabelValue = None
+        self._IsDeleted = None
+        self._CreateCustomLabel = None
+
+    @property
+    def LabelId(self):
+        r"""标签ID（入参必填）
+        :rtype: str
+        """
+        return self._LabelId
+
+    @LabelId.setter
+    def LabelId(self, LabelId):
+        self._LabelId = LabelId
+
+    @property
+    def LabelName(self):
+        r"""标签名称（入参必填）
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def Type(self):
+        r"""<p>标签类型（入参必填）</p><p>枚举值：</p><ul><li>1：GOVERNANCE_LABEL：治理标签（标签管理页手动创建）</li><li>2：CUSTOM_LABEL：自定义标签（打标时自动创建）</li><li>3：PROPERTY_LABEL：属性标签（Key-Value键值对）</li><li>4：DESENSITIZATION_LABEL：脱敏标签（与脱敏策略绑定）</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LabelValueId(self):
+        r"""标签值ID（可选）；属性标签可为0；LabelType=4（脱敏标签）时非必填
+        :rtype: str
+        """
+        return self._LabelValueId
+
+    @LabelValueId.setter
+    def LabelValueId(self, LabelValueId):
+        self._LabelValueId = LabelValueId
+
+    @property
+    def LabelValue(self):
+        r"""标签值（可选）；LabelType=4（脱敏标签）时非必填
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+    @property
+    def IsDeleted(self):
+        r"""【仅出参，入参无需填写】标签是否已被物理删除（true=已删除）
+        :rtype: bool
+        """
+        return self._IsDeleted
+
+    @IsDeleted.setter
+    def IsDeleted(self, IsDeleted):
+        self._IsDeleted = IsDeleted
+
+    @property
+    def CreateCustomLabel(self):
+        r"""【仅入参，出参不返回】是否自动创建自定义标签（可选，默认 false）；true=当 LabelName 非空且标签不存在时，自动创建 LabelType=2（CUSTOM_LABEL）的自定义标签；false=仅使用已有标签打标，标签不存在时报错
+        :rtype: bool
+        """
+        return self._CreateCustomLabel
+
+    @CreateCustomLabel.setter
+    def CreateCustomLabel(self, CreateCustomLabel):
+        self._CreateCustomLabel = CreateCustomLabel
+
+
+    def _deserialize(self, params):
+        self._LabelId = params.get("LabelId")
+        self._LabelName = params.get("LabelName")
+        self._Type = params.get("Type")
+        self._LabelValueId = params.get("LabelValueId")
+        self._LabelValue = params.get("LabelValue")
+        self._IsDeleted = params.get("IsDeleted")
+        self._CreateCustomLabel = params.get("CreateCustomLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19002,6 +26470,183 @@ class UnbindWorkflowBundleRsp(AbstractModel):
         
 
 
+class UpdateCatalogRequest(AbstractModel):
+    r"""UpdateCatalog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称，必填</p>
+        :type CatalogName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _NewComment: <p>新描述，可选，为空表示不修改注释</p>
+        :type NewComment: str
+        :param _ConnectionId: <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._WorkspaceId = None
+        self._NewComment = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称，必填</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def NewComment(self):
+        r"""<p>新描述，可选，为空表示不修改注释</p>
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+    @property
+    def ConnectionId(self):
+        r"""<p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def CatalogSource(self):
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._NewComment = params.get("NewComment")
+        self._ConnectionId = params.get("ConnectionId")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCatalogResponse(AbstractModel):
+    r"""UpdateCatalog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateCatalogRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateCatalogRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateCatalogRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateCatalogRsp(AbstractModel):
+    r"""修改数据目录信息响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否成功
+        :type Result: bool
+        """
+        self._Result = None
+
+    @property
+    def Result(self):
+        r"""是否成功
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateConsoleGroupRequest(AbstractModel):
     r"""UpdateConsoleGroup请求参数结构体
 
@@ -19744,6 +27389,1795 @@ class UpdateFolderRsp(AbstractModel):
         
 
 
+class UpdateFunctionRequest(AbstractModel):
+    r"""UpdateFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: 数据目录名称，必填
+        :type CatalogName: str
+        :param _SchemaName: schema名称，必填
+        :type SchemaName: str
+        :param _FunctionName: 函数名称，必填
+        :type FunctionName: str
+        :param _WorkspaceId: 调用时所在workspace唯一id，必填
+        :type WorkspaceId: str
+        :param _NewComment: 新描述，可选，为空表示不修改注释
+        :type NewComment: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._FunctionName = None
+        self._WorkspaceId = None
+        self._NewComment = None
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名称，必填
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""schema名称，必填
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def FunctionName(self):
+        r"""函数名称，必填
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id，必填
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def NewComment(self):
+        r"""新描述，可选，为空表示不修改注释
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._FunctionName = params.get("FunctionName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._NewComment = params.get("NewComment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateFunctionResponse(AbstractModel):
+    r"""UpdateFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateFunctionRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateFunctionRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateFunctionRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateFunctionRsp(AbstractModel):
+    r"""修改函数信息响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Function: 更新后的函数信息
+        :type Function: :class:`tencentcloud.databuddy.v20260715.models.FunctionInfo`
+        """
+        self._Function = None
+
+    @property
+    def Function(self):
+        r"""更新后的函数信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FunctionInfo`
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+
+    def _deserialize(self, params):
+        if params.get("Function") is not None:
+            self._Function = FunctionInfo()
+            self._Function._deserialize(params.get("Function"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateLocationRequest(AbstractModel):
+    r"""UpdateLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LocationName: 存储位置名，必填
+        :type LocationName: str
+        :param _Updates: 更新location的操作列表，必填
+        :type Updates: list of LocationUpdate
+        :param _WorkspaceId: 调用时所在workspace唯一id，必填
+        :type WorkspaceId: str
+        """
+        self._LocationName = None
+        self._Updates = None
+        self._WorkspaceId = None
+
+    @property
+    def LocationName(self):
+        r"""存储位置名，必填
+        :rtype: str
+        """
+        return self._LocationName
+
+    @LocationName.setter
+    def LocationName(self, LocationName):
+        self._LocationName = LocationName
+
+    @property
+    def Updates(self):
+        r"""更新location的操作列表，必填
+        :rtype: list of LocationUpdate
+        """
+        return self._Updates
+
+    @Updates.setter
+    def Updates(self, Updates):
+        self._Updates = Updates
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id，必填
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._LocationName = params.get("LocationName")
+        if params.get("Updates") is not None:
+            self._Updates = []
+            for item in params.get("Updates"):
+                obj = LocationUpdate()
+                obj._deserialize(item)
+                self._Updates.append(obj)
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateLocationResponse(AbstractModel):
+    r"""UpdateLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateLocationRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateLocationRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateLocationRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateLocationRsp(AbstractModel):
+    r"""修改存储位置响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Location: 修改后的存储位置详情
+        :type Location: :class:`tencentcloud.databuddy.v20260715.models.LocationInfo`
+        """
+        self._Location = None
+
+    @property
+    def Location(self):
+        r"""修改后的存储位置详情
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.LocationInfo`
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        if params.get("Location") is not None:
+            self._Location = LocationInfo()
+            self._Location._deserialize(params.get("Location"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateModelRequest(AbstractModel):
+    r"""UpdateModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: 目录名称，必填
+        :type CatalogName: str
+        :param _SchemaName: 模式名称，必填
+        :type SchemaName: str
+        :param _ModelName: 模型名称，必填
+        :type ModelName: str
+        :param _WorkspaceId: 调用时所在workspace唯一id，必填
+        :type WorkspaceId: str
+        :param _NewName: 新名称，可选，为空表示不修改名称
+        :type NewName: str
+        :param _NewComment: 新注释，可选，为空表示不修改注释
+        :type NewComment: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ModelName = None
+        self._WorkspaceId = None
+        self._NewName = None
+        self._NewComment = None
+
+    @property
+    def CatalogName(self):
+        r"""目录名称，必填
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""模式名称，必填
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ModelName(self):
+        r"""模型名称，必填
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id，必填
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def NewName(self):
+        r"""新名称，可选，为空表示不修改名称
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+    @property
+    def NewComment(self):
+        r"""新注释，可选，为空表示不修改注释
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ModelName = params.get("ModelName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._NewName = params.get("NewName")
+        self._NewComment = params.get("NewComment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateModelResponse(AbstractModel):
+    r"""UpdateModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateModelRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateModelRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateModelRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateModelRsp(AbstractModel):
+    r"""修改模型信息响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 更新后的模型信息
+        :type Model: :class:`tencentcloud.databuddy.v20260715.models.ModelInfo`
+        """
+        self._Model = None
+
+    @property
+    def Model(self):
+        r"""更新后的模型信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ModelInfo`
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        if params.get("Model") is not None:
+            self._Model = ModelInfo()
+            self._Model._deserialize(params.get("Model"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateModelVersionRequest(AbstractModel):
+    r"""UpdateModelVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>目录名称，必填</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>模式名称，必填</p>
+        :type SchemaName: str
+        :param _ModelName: <p>模型名称，必填</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>模型版本号，必填</p>
+        :type ModelVersion: int
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _AddedAliases: <p>要添加的别名，可选</p>
+        :type AddedAliases: list of str
+        :param _RemovedAliases: <p>要移除的别名，可选</p>
+        :type RemovedAliases: list of str
+        :param _NewComment: <p>新注释，可选，为空表示不修改注释</p>
+        :type NewComment: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ModelName = None
+        self._ModelVersion = None
+        self._WorkspaceId = None
+        self._AddedAliases = None
+        self._RemovedAliases = None
+        self._NewComment = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>目录名称，必填</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>模式名称，必填</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称，必填</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>模型版本号，必填</p>
+        :rtype: int
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def AddedAliases(self):
+        r"""<p>要添加的别名，可选</p>
+        :rtype: list of str
+        """
+        return self._AddedAliases
+
+    @AddedAliases.setter
+    def AddedAliases(self, AddedAliases):
+        self._AddedAliases = AddedAliases
+
+    @property
+    def RemovedAliases(self):
+        r"""<p>要移除的别名，可选</p>
+        :rtype: list of str
+        """
+        return self._RemovedAliases
+
+    @RemovedAliases.setter
+    def RemovedAliases(self, RemovedAliases):
+        self._RemovedAliases = RemovedAliases
+
+    @property
+    def NewComment(self):
+        r"""<p>新注释，可选，为空表示不修改注释</p>
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._AddedAliases = params.get("AddedAliases")
+        self._RemovedAliases = params.get("RemovedAliases")
+        self._NewComment = params.get("NewComment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateModelVersionResponse(AbstractModel):
+    r"""UpdateModelVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateModelVersionRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateModelVersionRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateModelVersionRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateModelVersionRsp(AbstractModel):
+    r"""修改模型版本信息响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelVersion: 更新后的模型版本信息
+        :type ModelVersion: :class:`tencentcloud.databuddy.v20260715.models.ModelVersionInfo`
+        """
+        self._ModelVersion = None
+
+    @property
+    def ModelVersion(self):
+        r"""更新后的模型版本信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ModelVersionInfo`
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+
+    def _deserialize(self, params):
+        if params.get("ModelVersion") is not None:
+            self._ModelVersion = ModelVersionInfo()
+            self._ModelVersion._deserialize(params.get("ModelVersion"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSchemaRequest(AbstractModel):
+    r"""UpdateSchema请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称，必填</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema名称，必填</p>
+        :type SchemaName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _NewComment: <p>新描述，可选，为空表示不修改注释</p>
+        :type NewComment: str
+        :param _ConnectionId: <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._WorkspaceId = None
+        self._NewComment = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称，必填</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema名称，必填</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def NewComment(self):
+        r"""<p>新描述，可选，为空表示不修改注释</p>
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+    @property
+    def ConnectionId(self):
+        r"""<p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def CatalogSource(self):
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._NewComment = params.get("NewComment")
+        self._ConnectionId = params.get("ConnectionId")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSchemaResponse(AbstractModel):
+    r"""UpdateSchema返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateSchemaRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateSchemaRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateSchemaRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateSchemaRsp(AbstractModel):
+    r"""修改 schema 信息响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Schema: <p>更新后的 schema 信息</p>
+        :type Schema: :class:`tencentcloud.databuddy.v20260715.models.Schema`
+        """
+        self._Schema = None
+
+    @property
+    def Schema(self):
+        r"""<p>更新后的 schema 信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Schema`
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+
+    def _deserialize(self, params):
+        if params.get("Schema") is not None:
+            self._Schema = Schema()
+            self._Schema._deserialize(params.get("Schema"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTableColumnRequest(AbstractModel):
+    r"""UpdateTableColumn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称，必填</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>数据库名称，必填</p>
+        :type SchemaName: str
+        :param _TableName: <p>表名，必填</p>
+        :type TableName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _Columns: <p>字段描述列表，必填</p>
+        :type Columns: list of ColumnBrief
+        :param _ConnectionId: <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._WorkspaceId = None
+        self._Columns = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称，必填</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>数据库名称，必填</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""<p>表名，必填</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Columns(self):
+        r"""<p>字段描述列表，必填</p>
+        :rtype: list of ColumnBrief
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def ConnectionId(self):
+        r"""<p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def CatalogSource(self):
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = ColumnBrief()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        self._ConnectionId = params.get("ConnectionId")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTableColumnResponse(AbstractModel):
+    r"""UpdateTableColumn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateTableColumnRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateTableColumnRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateTableColumnRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTableColumnRsp(AbstractModel):
+    r"""修改表字段描述响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 整体结果，true表示全部成功
+        :type Result: bool
+        :param _FailedColumns: 失败的字段列表（部分成功场景），全部成功时为空
+        :type FailedColumns: list of ColumnErrorMessages
+        """
+        self._Result = None
+        self._FailedColumns = None
+
+    @property
+    def Result(self):
+        r"""整体结果，true表示全部成功
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def FailedColumns(self):
+        r"""失败的字段列表（部分成功场景），全部成功时为空
+        :rtype: list of ColumnErrorMessages
+        """
+        return self._FailedColumns
+
+    @FailedColumns.setter
+    def FailedColumns(self, FailedColumns):
+        self._FailedColumns = FailedColumns
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        if params.get("FailedColumns") is not None:
+            self._FailedColumns = []
+            for item in params.get("FailedColumns"):
+                obj = ColumnErrorMessages()
+                obj._deserialize(item)
+                self._FailedColumns.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTableRequest(AbstractModel):
+    r"""UpdateTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录名称，必填</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>数据库名称，必填</p>
+        :type SchemaName: str
+        :param _TableName: <p>表名，必填</p>
+        :type TableName: str
+        :param _WorkspaceId: <p>调用时所在workspace唯一id，必填</p>
+        :type WorkspaceId: str
+        :param _NewName: <p>新名称，可选，为空表示不修改名称</p>
+        :type NewName: str
+        :param _NewComment: <p>新描述，可选，为空表示不修改注释</p>
+        :type NewComment: str
+        :param _ConnectionId: <p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+        :type ConnectionId: str
+        :param _CatalogSource: <p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :type CatalogSource: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._WorkspaceId = None
+        self._NewName = None
+        self._NewComment = None
+        self._ConnectionId = None
+        self._CatalogSource = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录名称，必填</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>数据库名称，必填</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""<p>表名，必填</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>调用时所在workspace唯一id，必填</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def NewName(self):
+        r"""<p>新名称，可选，为空表示不修改名称</p>
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+    @property
+    def NewComment(self):
+        r"""<p>新描述，可选，为空表示不修改注释</p>
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+    @property
+    def ConnectionId(self):
+        r"""<p>数据源连接ID，可选。分析版catalog不支持写操作，传入非空时返回错误。可通过 ListConnections 获取</p>
+        :rtype: str
+        """
+        return self._ConnectionId
+
+    @ConnectionId.setter
+    def ConnectionId(self, ConnectionId):
+        self._ConnectionId = ConnectionId
+
+    @property
+    def CatalogSource(self):
+        r"""<p>数据目录来源，可选（Setats融合新增字段）。取值：METALAKE（专业版tclake）/ CONNECTION（分析版Linked Catalog）/ SETATS（Setats元数据）。路由优先级：显式非空CatalogSource &gt; 非空ConnectionId（视为CONNECTION）&gt; 默认METALAKE；CatalogSource非空时ConnectionId将被忽略。</p>
+        :rtype: str
+        """
+        return self._CatalogSource
+
+    @CatalogSource.setter
+    def CatalogSource(self, CatalogSource):
+        self._CatalogSource = CatalogSource
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._NewName = params.get("NewName")
+        self._NewComment = params.get("NewComment")
+        self._ConnectionId = params.get("ConnectionId")
+        self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTableResponse(AbstractModel):
+    r"""UpdateTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateTableRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateTableRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateTableRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateTableRsp(AbstractModel):
+    r"""修改表信息响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Table: 更新后的表信息
+        :type Table: :class:`tencentcloud.databuddy.v20260715.models.TableInfo`
+        """
+        self._Table = None
+
+    @property
+    def Table(self):
+        r"""更新后的表信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.TableInfo`
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+
+    def _deserialize(self, params):
+        if params.get("Table") is not None:
+            self._Table = TableInfo()
+            self._Table._deserialize(params.get("Table"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateViewRequest(AbstractModel):
+    r"""UpdateView请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: 数据目录名称，必填
+        :type CatalogName: str
+        :param _SchemaName: 数据库名称，必填
+        :type SchemaName: str
+        :param _ViewName: View名，必填
+        :type ViewName: str
+        :param _WorkspaceId: 调用时所在workspace唯一id，必填
+        :type WorkspaceId: str
+        :param _NewName: 新名称，可选，为空表示不修改名称
+        :type NewName: str
+        :param _NewComment: 新描述，可选，为空表示不修改注释
+        :type NewComment: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._ViewName = None
+        self._WorkspaceId = None
+        self._NewName = None
+        self._NewComment = None
+
+    @property
+    def CatalogName(self):
+        r"""数据目录名称，必填
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""数据库名称，必填
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ViewName(self):
+        r"""View名，必填
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id，必填
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def NewName(self):
+        r"""新名称，可选，为空表示不修改名称
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+    @property
+    def NewComment(self):
+        r"""新描述，可选，为空表示不修改注释
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._ViewName = params.get("ViewName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._NewName = params.get("NewName")
+        self._NewComment = params.get("NewComment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateViewResponse(AbstractModel):
+    r"""UpdateView返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateViewRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateViewRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateViewRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateViewRsp(AbstractModel):
+    r"""修改视图信息响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _View: 更新后的视图信息
+        :type View: :class:`tencentcloud.databuddy.v20260715.models.ViewInfo`
+        """
+        self._View = None
+
+    @property
+    def View(self):
+        r"""更新后的视图信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ViewInfo`
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+
+    def _deserialize(self, params):
+        if params.get("View") is not None:
+            self._View = ViewInfo()
+            self._View._deserialize(params.get("View"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateVolumeRequest(AbstractModel):
+    r"""UpdateVolume请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: 目录名称，必填
+        :type CatalogName: str
+        :param _SchemaName: 模式名称，必填
+        :type SchemaName: str
+        :param _VolumeName: 数据卷名称，必填
+        :type VolumeName: str
+        :param _WorkspaceId: 调用时所在workspace唯一id，必填
+        :type WorkspaceId: str
+        :param _NewName: 新名称，可选，为空表示不修改名称
+        :type NewName: str
+        :param _NewComment: 新注释，可选，为空表示不修改注释
+        :type NewComment: str
+        """
+        self._CatalogName = None
+        self._SchemaName = None
+        self._VolumeName = None
+        self._WorkspaceId = None
+        self._NewName = None
+        self._NewComment = None
+
+    @property
+    def CatalogName(self):
+        r"""目录名称，必填
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""模式名称，必填
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def VolumeName(self):
+        r"""数据卷名称，必填
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def WorkspaceId(self):
+        r"""调用时所在workspace唯一id，必填
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def NewName(self):
+        r"""新名称，可选，为空表示不修改名称
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+    @property
+    def NewComment(self):
+        r"""新注释，可选，为空表示不修改注释
+        :rtype: str
+        """
+        return self._NewComment
+
+    @NewComment.setter
+    def NewComment(self, NewComment):
+        self._NewComment = NewComment
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._VolumeName = params.get("VolumeName")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._NewName = params.get("NewName")
+        self._NewComment = params.get("NewComment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateVolumeResponse(AbstractModel):
+    r"""UpdateVolume返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回结果
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateVolumeRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateVolumeRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateVolumeRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateVolumeRsp(AbstractModel):
+    r"""修改数据卷信息响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Volume: 更新后的数据卷信息
+        :type Volume: :class:`tencentcloud.databuddy.v20260715.models.Volume`
+        """
+        self._Volume = None
+
+    @property
+    def Volume(self):
+        r"""更新后的数据卷信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Volume`
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+
+    def _deserialize(self, params):
+        if params.get("Volume") is not None:
+            self._Volume = Volume()
+            self._Volume._deserialize(params.get("Volume"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateWorkflowRequest(AbstractModel):
     r"""UpdateWorkflow请求参数结构体
 
@@ -20435,6 +29869,61 @@ class UpdateWorkspaceUsersRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UserActivityInfo(AbstractModel):
+    r"""用户对资产的操作信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsFavorite: 是否收藏
+- true  是
+- false 否
+        :type IsFavorite: bool
+        :param _LastViewTime: 上次查看时间
+        :type LastViewTime: str
+        """
+        self._IsFavorite = None
+        self._LastViewTime = None
+
+    @property
+    def IsFavorite(self):
+        r"""是否收藏
+- true  是
+- false 否
+        :rtype: bool
+        """
+        return self._IsFavorite
+
+    @IsFavorite.setter
+    def IsFavorite(self, IsFavorite):
+        self._IsFavorite = IsFavorite
+
+    @property
+    def LastViewTime(self):
+        r"""上次查看时间
+        :rtype: str
+        """
+        return self._LastViewTime
+
+    @LastViewTime.setter
+    def LastViewTime(self, LastViewTime):
+        self._LastViewTime = LastViewTime
+
+
+    def _deserialize(self, params):
+        self._IsFavorite = params.get("IsFavorite")
+        self._LastViewTime = params.get("LastViewTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UserInfo(AbstractModel):
     r"""用户基本信息
 
@@ -20577,6 +30066,416 @@ class UserTagInfo(AbstractModel):
                 obj = TagValueInfo()
                 obj._deserialize(item)
                 self._Values.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ViewInfo(AbstractModel):
+    r"""视图信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Comment: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Columns: 字段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of ColumnInfo
+        :param _Properties: 属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: list of KVPair
+        :param _Audit: 编辑者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Audit: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        :param _MetaOwner: owner信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaOwner: :class:`tencentcloud.databuddy.v20260715.models.MetaOwner`
+        :param _AssetGuid: 资产全局唯一ID
+        :type AssetGuid: str
+        :param _PermissionDetail: 当前用户对该实体的权限信息
+        :type PermissionDetail: :class:`tencentcloud.databuddy.v20260715.models.PermissionDetail`
+        :param _Tags: 标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of CommonTagInfo
+        """
+        self._Name = None
+        self._Comment = None
+        self._Columns = None
+        self._Properties = None
+        self._Audit = None
+        self._MetaOwner = None
+        self._AssetGuid = None
+        self._PermissionDetail = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Columns(self):
+        r"""字段信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ColumnInfo
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Properties(self):
+        r"""属性值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Audit(self):
+        r"""编辑者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+    @property
+    def MetaOwner(self):
+        r"""owner信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.MetaOwner`
+        """
+        return self._MetaOwner
+
+    @MetaOwner.setter
+    def MetaOwner(self, MetaOwner):
+        self._MetaOwner = MetaOwner
+
+    @property
+    def AssetGuid(self):
+        r"""资产全局唯一ID
+        :rtype: str
+        """
+        return self._AssetGuid
+
+    @AssetGuid.setter
+    def AssetGuid(self, AssetGuid):
+        self._AssetGuid = AssetGuid
+
+    @property
+    def PermissionDetail(self):
+        r"""当前用户对该实体的权限信息
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.PermissionDetail`
+        """
+        return self._PermissionDetail
+
+    @PermissionDetail.setter
+    def PermissionDetail(self, PermissionDetail):
+        self._PermissionDetail = PermissionDetail
+
+    @property
+    def Tags(self):
+        r"""标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonTagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("Columns") is not None:
+            self._Columns = []
+            for item in params.get("Columns"):
+                obj = ColumnInfo()
+                obj._deserialize(item)
+                self._Columns.append(obj)
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        if params.get("MetaOwner") is not None:
+            self._MetaOwner = MetaOwner()
+            self._MetaOwner._deserialize(params.get("MetaOwner"))
+        self._AssetGuid = params.get("AssetGuid")
+        if params.get("PermissionDetail") is not None:
+            self._PermissionDetail = PermissionDetail()
+            self._PermissionDetail._deserialize(params.get("PermissionDetail"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = CommonTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Volume(AbstractModel):
+    r"""数据卷信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _CatalogName: <p>catalog信息</p>
+        :type CatalogName: str
+        :param _SchemaName: <p>schema 信息</p>
+        :type SchemaName: str
+        :param _Comment: <p>模型描述</p>
+        :type Comment: str
+        :param _StorageLocation: <p>存储位置</p>
+        :type StorageLocation: str
+        :param _Properties: <p>扩展数据</p>
+        :type Properties: list of KVPair
+        :param _Audit: <p>审计数据</p>
+        :type Audit: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        :param _Type: 数据卷类型，取值：MANAGED(内部管理)、EXTERNAL(外部存储)
+        :type Type: str
+        :param _MetaOwner: <p>责任人信息</p>
+        :type MetaOwner: :class:`tencentcloud.databuddy.v20260715.models.MetaOwner`
+        :param _AssetGuid: <p>资产全局唯一ID</p>
+        :type AssetGuid: str
+        :param _PermissionDetail: <p>当前用户对该实体的权限信息</p>
+        :type PermissionDetail: :class:`tencentcloud.databuddy.v20260715.models.PermissionDetail`
+        :param _Tags: <p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of CommonTagInfo
+        """
+        self._Name = None
+        self._CatalogName = None
+        self._SchemaName = None
+        self._Comment = None
+        self._StorageLocation = None
+        self._Properties = None
+        self._Audit = None
+        self._Type = None
+        self._MetaOwner = None
+        self._AssetGuid = None
+        self._PermissionDetail = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CatalogName(self):
+        r"""<p>catalog信息</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def SchemaName(self):
+        r"""<p>schema 信息</p>
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def Comment(self):
+        r"""<p>模型描述</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def StorageLocation(self):
+        r"""<p>存储位置</p>
+        :rtype: str
+        """
+        return self._StorageLocation
+
+    @StorageLocation.setter
+    def StorageLocation(self, StorageLocation):
+        self._StorageLocation = StorageLocation
+
+    @property
+    def Properties(self):
+        r"""<p>扩展数据</p>
+        :rtype: list of KVPair
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+    @property
+    def Audit(self):
+        r"""<p>审计数据</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.Audit`
+        """
+        return self._Audit
+
+    @Audit.setter
+    def Audit(self, Audit):
+        self._Audit = Audit
+
+    @property
+    def Type(self):
+        r"""数据卷类型，取值：MANAGED(内部管理)、EXTERNAL(外部存储)
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def MetaOwner(self):
+        r"""<p>责任人信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.MetaOwner`
+        """
+        return self._MetaOwner
+
+    @MetaOwner.setter
+    def MetaOwner(self, MetaOwner):
+        self._MetaOwner = MetaOwner
+
+    @property
+    def AssetGuid(self):
+        r"""<p>资产全局唯一ID</p>
+        :rtype: str
+        """
+        return self._AssetGuid
+
+    @AssetGuid.setter
+    def AssetGuid(self, AssetGuid):
+        self._AssetGuid = AssetGuid
+
+    @property
+    def PermissionDetail(self):
+        r"""<p>当前用户对该实体的权限信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.PermissionDetail`
+        """
+        return self._PermissionDetail
+
+    @PermissionDetail.setter
+    def PermissionDetail(self, PermissionDetail):
+        self._PermissionDetail = PermissionDetail
+
+    @property
+    def Tags(self):
+        r"""<p>标签信息列表。注意：仅当请求中 FetchTags=true 时返回，默认不返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CommonTagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._CatalogName = params.get("CatalogName")
+        self._SchemaName = params.get("SchemaName")
+        self._Comment = params.get("Comment")
+        self._StorageLocation = params.get("StorageLocation")
+        if params.get("Properties") is not None:
+            self._Properties = []
+            for item in params.get("Properties"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Properties.append(obj)
+        if params.get("Audit") is not None:
+            self._Audit = Audit()
+            self._Audit._deserialize(params.get("Audit"))
+        self._Type = params.get("Type")
+        if params.get("MetaOwner") is not None:
+            self._MetaOwner = MetaOwner()
+            self._MetaOwner._deserialize(params.get("MetaOwner"))
+        self._AssetGuid = params.get("AssetGuid")
+        if params.get("PermissionDetail") is not None:
+            self._PermissionDetail = PermissionDetail()
+            self._PermissionDetail._deserialize(params.get("PermissionDetail"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = CommonTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

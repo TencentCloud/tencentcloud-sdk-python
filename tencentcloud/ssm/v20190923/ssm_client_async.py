@@ -79,6 +79,24 @@ class SsmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateService(
+            self,
+            request: models.CreateServiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateServiceResponse:
+        """
+        开通 ssm 服务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteSecret(
             self,
             request: models.DeleteSecretRequest,

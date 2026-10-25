@@ -194,6 +194,76 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLocation(self, request):
+        r"""创建存储位置
+        使用场景：在数据湖仓库中创建新的存储位置
+
+        :param request: Request instance for CreateLocation.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateLocationRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateModel(self, request):
+        r"""创建模型接口
+
+        :param request: Request instance for CreateModel.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateModelRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateModelVersion(self, request):
+        r"""创建模型版本
+
+        :param request: Request instance for CreateModelVersion.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateModelVersionRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateModelVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModelVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModelVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSchema(self, request):
         r"""创建schema
 
@@ -208,6 +278,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("CreateSchema", params, headers=headers)
             response = json.loads(body)
             model = models.CreateSchemaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateVolume(self, request):
+        r"""创建数据卷接口
+
+        :param request: Request instance for CreateVolume.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.CreateVolumeRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CreateVolumeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVolume", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVolumeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -395,6 +488,55 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteLocation(self, request):
+        r"""删除存储位置
+        使用场景：删除指定的存储位置
+        前置条件：存储位置名称必须存在
+        错误码：MetaLakeNotFound - 存储位置不存在
+
+        :param request: Request instance for DeleteLocation.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteLocationRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteModel(self, request):
+        r"""删除模型
+
+        :param request: Request instance for DeleteModel.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteModelRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSchema(self, request):
         r"""删除schema
 
@@ -432,6 +574,52 @@ class DatabuddyClient(AbstractClient):
             body = self.call("DeleteTable", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteView(self, request):
+        r"""删除view
+
+        :param request: Request instance for DeleteView.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteViewRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteViewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteView", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteViewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVolume(self, request):
+        r"""删除数据卷
+
+        :param request: Request instance for DeleteVolume.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.DeleteVolumeRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.DeleteVolumeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVolume", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVolumeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -596,6 +784,78 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetLocation(self, request):
+        r"""查询存储位置详情
+        使用场景：根据存储位置名获取单个存储位置的详细信息
+        前置条件：存储位置名称必须存在
+        错误码：MetaLakeNotFound - 存储位置不存在
+
+        :param request: Request instance for GetLocation.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetLocationRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetModel(self, request):
+        r"""获取模型详情
+
+        :param request: Request instance for GetModel.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetModelRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetModelVersion(self, request):
+        r"""获取模型版本详情
+
+        :param request: Request instance for GetModelVersion.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetModelVersionRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetModelVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetModelVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetModelVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetSchema(self, request):
         r"""查询schema详情
 
@@ -656,6 +916,52 @@ class DatabuddyClient(AbstractClient):
             body = self.call("GetTables", params, headers=headers)
             response = json.loads(body)
             model = models.GetTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetView(self, request):
+        r"""查询view详情
+
+        :param request: Request instance for GetView.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetViewRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetViewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetView", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetViewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetVolume(self, request):
+        r"""获取模型详情
+
+        :param request: Request instance for GetVolume.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetVolumeRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetVolumeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetVolume", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetVolumeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -780,6 +1086,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListCatalogNames(self, request):
+        r"""分页查询数据目录名称列表
+
+        :param request: Request instance for ListCatalogNames.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListCatalogNamesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListCatalogNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListCatalogNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListCatalogNamesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListCatalogs(self, request):
         r"""分页获取数据目录列表
 
@@ -895,6 +1224,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListFeatureTables(self, request):
+        r"""查询特征表列表
+
+        :param request: Request instance for ListFeatureTables.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListFeatureTablesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListFeatureTablesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListFeatureTables", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListFeatureTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListFiles(self, request):
         r"""获取文件夹和文件列表
 
@@ -909,6 +1261,76 @@ class DatabuddyClient(AbstractClient):
             body = self.call("ListFiles", params, headers=headers)
             response = json.loads(body)
             model = models.ListFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListLocations(self, request):
+        r"""分页查询存储位置列表
+        使用场景：分页查询数据湖仓库中的存储位置详情列表，支持模式匹配和快照分页
+
+        :param request: Request instance for ListLocations.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListLocationsRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListLocationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListLocations", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListLocationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListModels(self, request):
+        r"""分页获取模型信息
+
+        :param request: Request instance for ListModels.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListModelsRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListModelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListModels", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListModelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListSchemaNames(self, request):
+        r"""分页查询数据库名称列表
+
+        :param request: Request instance for ListSchemaNames.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListSchemaNamesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListSchemaNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListSchemaNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListSchemaNamesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -941,6 +1363,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListTableNames(self, request):
+        r"""分页查询数据表名称列表
+
+        :param request: Request instance for ListTableNames.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListTableNamesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListTableNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTableNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTableNamesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListTables(self, request):
         r"""获取table列表
 
@@ -955,6 +1400,75 @@ class DatabuddyClient(AbstractClient):
             body = self.call("ListTables", params, headers=headers)
             response = json.loads(body)
             model = models.ListTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListViewNames(self, request):
+        r"""分页查询视图名称列表
+
+        :param request: Request instance for ListViewNames.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListViewNamesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListViewNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListViewNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListViewNamesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListViews(self, request):
+        r"""获取view列表
+
+        :param request: Request instance for ListViews.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListViewsRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListViewsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListViews", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListViewsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListVolumes(self, request):
+        r"""分页获取数据卷信息
+
+        :param request: Request instance for ListVolumes.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListVolumesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListVolumesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListVolumes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListVolumesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1217,6 +1731,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SearchAsset(self, request):
+        r"""资产统一搜索
+
+        :param request: Request instance for SearchAsset.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.SearchAssetRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.SearchAssetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SearchAsset", params, headers=headers)
+            response = json.loads(body)
+            model = models.SearchAssetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StartCompute(self, request):
         r"""启动计算资源
 
@@ -1278,6 +1815,31 @@ class DatabuddyClient(AbstractClient):
             body = self.call("UnbindWorkflowBundle", params, headers=headers)
             response = json.loads(body)
             model = models.UnbindWorkflowBundleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCatalog(self, request):
+        r"""修改数据目录信息
+        使用场景：修改数据目录的注释，按需传入NewComment字段
+        前置条件：数据目录必须存在
+
+        :param request: Request instance for UpdateCatalog.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateCatalogRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateCatalogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCatalog", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCatalogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1389,6 +1951,232 @@ class DatabuddyClient(AbstractClient):
             body = self.call("UpdateFolder", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateFolderResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateFunction(self, request):
+        r"""修改函数信息
+        使用场景：修改函数的注释，按需传入NewComment字段
+        前置条件：函数必须存在
+
+        :param request: Request instance for UpdateFunction.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateFunctionRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateLocation(self, request):
+        r"""修改存储位置
+        使用场景：修改存储位置的名称、描述或属性信息
+        前置条件：存储位置名称必须存在
+        错误码：MetaLakeNotFound - 存储位置不存在
+
+        :param request: Request instance for UpdateLocation.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateLocationRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateModel(self, request):
+        r"""修改模型信息
+        使用场景：修改模型的名称或注释，按需传入NewName/NewComment字段
+        前置条件：模型必须存在
+
+        :param request: Request instance for UpdateModel.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateModelRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateModelVersion(self, request):
+        r"""修改模型版本信息
+        使用场景：修改模型版本的别名或注释，按需传入对应字段
+        前置条件：模型版本必须存在
+
+        :param request: Request instance for UpdateModelVersion.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateModelVersionRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateModelVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateModelVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateModelVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateSchema(self, request):
+        r"""修改schema信息
+        使用场景：修改schema的注释，按需传入NewComment字段
+        前置条件：schema必须存在
+
+        :param request: Request instance for UpdateSchema.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateSchemaRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateSchemaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateSchema", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateSchemaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTable(self, request):
+        r"""修改表信息
+        使用场景：修改表的名称或注释，按需传入NewName/NewComment字段
+        前置条件：表必须存在
+
+        :param request: Request instance for UpdateTable.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateTableRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateTableColumn(self, request):
+        r"""修改表字段描述
+        使用场景：修改表中一个或多个字段的注释
+        前置条件：用户需对目标表有写权限；字段名必须存在于目标表中
+
+        :param request: Request instance for UpdateTableColumn.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateTableColumnRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateTableColumnResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateTableColumn", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateTableColumnResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateView(self, request):
+        r"""修改视图信息
+        使用场景：修改视图的名称或注释，按需传入NewName/NewComment字段
+        前置条件：视图必须存在
+
+        :param request: Request instance for UpdateView.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateViewRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateViewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateView", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateViewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateVolume(self, request):
+        r"""修改数据卷信息
+        使用场景：修改数据卷的名称或注释，按需传入NewName/NewComment字段
+        前置条件：数据卷必须存在
+
+        :param request: Request instance for UpdateVolume.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateVolumeRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateVolumeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateVolume", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateVolumeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

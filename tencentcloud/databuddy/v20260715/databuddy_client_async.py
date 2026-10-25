@@ -158,6 +158,61 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLocation(
+            self,
+            request: models.CreateLocationRequest,
+            opts: Dict = None,
+    ) -> models.CreateLocationResponse:
+        """
+        创建存储位置
+        使用场景：在数据湖仓库中创建新的存储位置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLocation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateModel(
+            self,
+            request: models.CreateModelRequest,
+            opts: Dict = None,
+    ) -> models.CreateModelResponse:
+        """
+        创建模型接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateModelVersion(
+            self,
+            request: models.CreateModelVersionRequest,
+            opts: Dict = None,
+    ) -> models.CreateModelVersionResponse:
+        """
+        创建模型版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateModelVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateModelVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSchema(
             self,
             request: models.CreateSchemaRequest,
@@ -171,6 +226,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "CreateSchema"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateSchemaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVolume(
+            self,
+            request: models.CreateVolumeRequest,
+            opts: Dict = None,
+    ) -> models.CreateVolumeResponse:
+        """
+        创建数据卷接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVolume"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVolumeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -319,6 +392,45 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteLocation(
+            self,
+            request: models.DeleteLocationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLocationResponse:
+        """
+        删除存储位置
+        使用场景：删除指定的存储位置
+        前置条件：存储位置名称必须存在
+        错误码：MetaLakeNotFound - 存储位置不存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLocation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteModel(
+            self,
+            request: models.DeleteModelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteModelResponse:
+        """
+        删除模型
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteSchema(
             self,
             request: models.DeleteSchemaRequest,
@@ -350,6 +462,42 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "DeleteTable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteView(
+            self,
+            request: models.DeleteViewRequest,
+            opts: Dict = None,
+    ) -> models.DeleteViewResponse:
+        """
+        删除view
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteViewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVolume(
+            self,
+            request: models.DeleteVolumeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVolumeResponse:
+        """
+        删除数据卷
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVolume"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVolumeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -480,6 +628,63 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetLocation(
+            self,
+            request: models.GetLocationRequest,
+            opts: Dict = None,
+    ) -> models.GetLocationResponse:
+        """
+        查询存储位置详情
+        使用场景：根据存储位置名获取单个存储位置的详细信息
+        前置条件：存储位置名称必须存在
+        错误码：MetaLakeNotFound - 存储位置不存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetLocation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetModel(
+            self,
+            request: models.GetModelRequest,
+            opts: Dict = None,
+    ) -> models.GetModelResponse:
+        """
+        获取模型详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetModelVersion(
+            self,
+            request: models.GetModelVersionRequest,
+            opts: Dict = None,
+    ) -> models.GetModelVersionResponse:
+        """
+        获取模型版本详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetModelVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetModelVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetSchema(
             self,
             request: models.GetSchemaRequest,
@@ -529,6 +734,42 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "GetTables"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetView(
+            self,
+            request: models.GetViewRequest,
+            opts: Dict = None,
+    ) -> models.GetViewResponse:
+        """
+        查询view详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetViewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetVolume(
+            self,
+            request: models.GetVolumeRequest,
+            opts: Dict = None,
+    ) -> models.GetVolumeResponse:
+        """
+        获取模型详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetVolume"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetVolumeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -624,6 +865,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListCatalogNames(
+            self,
+            request: models.ListCatalogNamesRequest,
+            opts: Dict = None,
+    ) -> models.ListCatalogNamesResponse:
+        """
+        分页查询数据目录名称列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListCatalogNames"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListCatalogNamesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListCatalogs(
             self,
             request: models.ListCatalogsRequest,
@@ -714,6 +973,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListFeatureTables(
+            self,
+            request: models.ListFeatureTablesRequest,
+            opts: Dict = None,
+    ) -> models.ListFeatureTablesResponse:
+        """
+        查询特征表列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListFeatureTables"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListFeatureTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListFiles(
             self,
             request: models.ListFilesRequest,
@@ -727,6 +1004,61 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "ListFiles"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListLocations(
+            self,
+            request: models.ListLocationsRequest,
+            opts: Dict = None,
+    ) -> models.ListLocationsResponse:
+        """
+        分页查询存储位置列表
+        使用场景：分页查询数据湖仓库中的存储位置详情列表，支持模式匹配和快照分页
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListLocations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListLocationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListModels(
+            self,
+            request: models.ListModelsRequest,
+            opts: Dict = None,
+    ) -> models.ListModelsResponse:
+        """
+        分页获取模型信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListModels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListModelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListSchemaNames(
+            self,
+            request: models.ListSchemaNamesRequest,
+            opts: Dict = None,
+    ) -> models.ListSchemaNamesResponse:
+        """
+        分页查询数据库名称列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListSchemaNames"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListSchemaNamesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -750,6 +1082,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListTableNames(
+            self,
+            request: models.ListTableNamesRequest,
+            opts: Dict = None,
+    ) -> models.ListTableNamesResponse:
+        """
+        分页查询数据表名称列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTableNames"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTableNamesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListTables(
             self,
             request: models.ListTablesRequest,
@@ -763,6 +1113,60 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "ListTables"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListViewNames(
+            self,
+            request: models.ListViewNamesRequest,
+            opts: Dict = None,
+    ) -> models.ListViewNamesResponse:
+        """
+        分页查询视图名称列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListViewNames"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListViewNamesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListViews(
+            self,
+            request: models.ListViewsRequest,
+            opts: Dict = None,
+    ) -> models.ListViewsResponse:
+        """
+        获取view列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListViews"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListViewsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListVolumes(
+            self,
+            request: models.ListVolumesRequest,
+            opts: Dict = None,
+    ) -> models.ListVolumesResponse:
+        """
+        分页获取数据卷信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListVolumes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListVolumesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -966,6 +1370,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SearchAsset(
+            self,
+            request: models.SearchAssetRequest,
+            opts: Dict = None,
+    ) -> models.SearchAssetResponse:
+        """
+        资产统一搜索
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SearchAsset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SearchAssetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StartCompute(
             self,
             request: models.StartComputeRequest,
@@ -1016,6 +1438,26 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "UnbindWorkflowBundle"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnbindWorkflowBundleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateCatalog(
+            self,
+            request: models.UpdateCatalogRequest,
+            opts: Dict = None,
+    ) -> models.UpdateCatalogResponse:
+        """
+        修改数据目录信息
+        使用场景：修改数据目录的注释，按需传入NewComment字段
+        前置条件：数据目录必须存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateCatalog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateCatalogResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1107,6 +1549,187 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "UpdateFolder"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateFolderResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateFunction(
+            self,
+            request: models.UpdateFunctionRequest,
+            opts: Dict = None,
+    ) -> models.UpdateFunctionResponse:
+        """
+        修改函数信息
+        使用场景：修改函数的注释，按需传入NewComment字段
+        前置条件：函数必须存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateFunction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateFunctionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateLocation(
+            self,
+            request: models.UpdateLocationRequest,
+            opts: Dict = None,
+    ) -> models.UpdateLocationResponse:
+        """
+        修改存储位置
+        使用场景：修改存储位置的名称、描述或属性信息
+        前置条件：存储位置名称必须存在
+        错误码：MetaLakeNotFound - 存储位置不存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateLocation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateModel(
+            self,
+            request: models.UpdateModelRequest,
+            opts: Dict = None,
+    ) -> models.UpdateModelResponse:
+        """
+        修改模型信息
+        使用场景：修改模型的名称或注释，按需传入NewName/NewComment字段
+        前置条件：模型必须存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateModelVersion(
+            self,
+            request: models.UpdateModelVersionRequest,
+            opts: Dict = None,
+    ) -> models.UpdateModelVersionResponse:
+        """
+        修改模型版本信息
+        使用场景：修改模型版本的别名或注释，按需传入对应字段
+        前置条件：模型版本必须存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateModelVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateModelVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateSchema(
+            self,
+            request: models.UpdateSchemaRequest,
+            opts: Dict = None,
+    ) -> models.UpdateSchemaResponse:
+        """
+        修改schema信息
+        使用场景：修改schema的注释，按需传入NewComment字段
+        前置条件：schema必须存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateSchema"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateSchemaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTable(
+            self,
+            request: models.UpdateTableRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTableResponse:
+        """
+        修改表信息
+        使用场景：修改表的名称或注释，按需传入NewName/NewComment字段
+        前置条件：表必须存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateTableColumn(
+            self,
+            request: models.UpdateTableColumnRequest,
+            opts: Dict = None,
+    ) -> models.UpdateTableColumnResponse:
+        """
+        修改表字段描述
+        使用场景：修改表中一个或多个字段的注释
+        前置条件：用户需对目标表有写权限；字段名必须存在于目标表中
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateTableColumn"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateTableColumnResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateView(
+            self,
+            request: models.UpdateViewRequest,
+            opts: Dict = None,
+    ) -> models.UpdateViewResponse:
+        """
+        修改视图信息
+        使用场景：修改视图的名称或注释，按需传入NewName/NewComment字段
+        前置条件：视图必须存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateViewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateVolume(
+            self,
+            request: models.UpdateVolumeRequest,
+            opts: Dict = None,
+    ) -> models.UpdateVolumeResponse:
+        """
+        修改数据卷信息
+        使用场景：修改数据卷的名称或注释，按需传入NewName/NewComment字段
+        前置条件：数据卷必须存在
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateVolume"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateVolumeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

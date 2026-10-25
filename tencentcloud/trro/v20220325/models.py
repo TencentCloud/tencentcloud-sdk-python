@@ -5473,6 +5473,8 @@ class Job(AbstractModel):
         :type CreateTime: str
         :param _FinishTime: <p>完成时间，Unix 时间戳（秒），未完成为 0</p>
         :type FinishTime: str
+        :param _TaskStatusCount: <p>任务下各状态处理项的数量分布，JSON 格式字符串</p>
+        :type TaskStatusCount: str
         """
         self._JobId = None
         self._JobType = None
@@ -5483,6 +5485,7 @@ class Job(AbstractModel):
         self._TotalNumber = None
         self._CreateTime = None
         self._FinishTime = None
+        self._TaskStatusCount = None
 
     @property
     def JobId(self):
@@ -5583,6 +5586,17 @@ class Job(AbstractModel):
     def FinishTime(self, FinishTime):
         self._FinishTime = FinishTime
 
+    @property
+    def TaskStatusCount(self):
+        r"""<p>任务下各状态处理项的数量分布，JSON 格式字符串</p>
+        :rtype: str
+        """
+        return self._TaskStatusCount
+
+    @TaskStatusCount.setter
+    def TaskStatusCount(self, TaskStatusCount):
+        self._TaskStatusCount = TaskStatusCount
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -5594,6 +5608,7 @@ class Job(AbstractModel):
         self._TotalNumber = params.get("TotalNumber")
         self._CreateTime = params.get("CreateTime")
         self._FinishTime = params.get("FinishTime")
+        self._TaskStatusCount = params.get("TaskStatusCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6748,8 +6763,14 @@ class ProcessParams(AbstractModel):
         r"""
         :param _Mode: <p>标注处理模式，预留字段</p>
         :type Mode: str
+        :param _Edition: <p>标注档位</p>
+        :type Edition: str
+        :param _ExtraParams: <p>通用扩展参数，json格式字符串</p>
+        :type ExtraParams: str
         """
         self._Mode = None
+        self._Edition = None
+        self._ExtraParams = None
 
     @property
     def Mode(self):
@@ -6762,9 +6783,33 @@ class ProcessParams(AbstractModel):
     def Mode(self, Mode):
         self._Mode = Mode
 
+    @property
+    def Edition(self):
+        r"""<p>标注档位</p>
+        :rtype: str
+        """
+        return self._Edition
+
+    @Edition.setter
+    def Edition(self, Edition):
+        self._Edition = Edition
+
+    @property
+    def ExtraParams(self):
+        r"""<p>通用扩展参数，json格式字符串</p>
+        :rtype: str
+        """
+        return self._ExtraParams
+
+    @ExtraParams.setter
+    def ExtraParams(self, ExtraParams):
+        self._ExtraParams = ExtraParams
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
+        self._Edition = params.get("Edition")
+        self._ExtraParams = params.get("ExtraParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

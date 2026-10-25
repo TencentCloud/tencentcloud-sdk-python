@@ -3080,6 +3080,755 @@ false - 关闭
         
 
 
+class BlockingChainNode(AbstractModel):
+    r"""阻塞树节点，表示一个被阻塞会话。若该会话又阻塞了其它会话，则通过children递归表达。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlockedSessionId: <p>被阻塞会话 ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedSessionId: int
+        :param _BlockedTransactionId: <p>被阻塞会话事务ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedTransactionId: int
+        :param _BlockedWaitTimeMs: <p>被阻塞会话等待时长（毫秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedWaitTimeMs: int
+        :param _BlockedLockMode: <p>被阻塞会话正在等待的锁模式（SQL Server原生lock_mode枚举，常见取值：S、U、X、IS、IU、IX、SIU、SIX、UIX、Sch-S、Sch-M）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedLockMode: str
+        :param _BlockedWaitResource: <p>被阻塞会话等待资源。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedWaitResource: str
+        :param _BlockedLoginName: <p>被阻塞会话数据库用户。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedLoginName: str
+        :param _BlockedHostName: <p>被阻塞会话客户端主机。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedHostName: str
+        :param _BlockedClientApp: <p>被阻塞会话客户端应用名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedClientApp: str
+        :param _BlockedStatus: <p>被阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status 文本），常见取值：running / sleeping / suspended / background。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedStatus: str
+        :param _BlockedIsolationLevel: <p>被阻塞会话事务隔离级别（SQL Server 原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedIsolationLevel: str
+        :param _BlockedTransactionName: <p>被阻塞会话当前显式事务名（XEvent transactionname）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedTransactionName: str
+        :param _BlockedTranCount: <p>被阻塞会话当前显式事务嵌套层数（XEvent trancount）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedTranCount: int
+        :param _BlockedLastTranStarted: <p>被阻塞会话显式事务 BEGIN TRAN 时刻（XEvent lasttranstarted，SQL Server 服务端本地时区的 ISO 8601 字符串，无时区后缀）。多语句事务场景下比 lastbatchstarted 更稳定。咨视值 1900-01-01T00:00:00 表示未知。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedLastTranStarted: str
+        :param _BlockedInputBuffer: <p>被阻塞会话正在执行的 SQL 原文（对应 DBCC INPUTBUFFER 返回内容，单条最长 16KB，超长截断）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedInputBuffer: str
+        :param _BlockedSqlTemplate: <p>被阻塞SQL归一化模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedSqlTemplate: str
+        :param _BlockedSqlMd5: <p>被阻塞SQL模板MD5。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockedSqlMd5: str
+        :param _RootCause: <p>根因分类（继承自所属报告的rootCause）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootCause: str
+        :param _ReportTime: <p>本节点上报事件时间（__time），格式：yyyy-MM-dd HH:mm:ss。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportTime: str
+        :param _Children: <p>本节点又阻塞的下级会话（可能为空）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Children: list of BlockingChainNode
+        """
+        self._BlockedSessionId = None
+        self._BlockedTransactionId = None
+        self._BlockedWaitTimeMs = None
+        self._BlockedLockMode = None
+        self._BlockedWaitResource = None
+        self._BlockedLoginName = None
+        self._BlockedHostName = None
+        self._BlockedClientApp = None
+        self._BlockedStatus = None
+        self._BlockedIsolationLevel = None
+        self._BlockedTransactionName = None
+        self._BlockedTranCount = None
+        self._BlockedLastTranStarted = None
+        self._BlockedInputBuffer = None
+        self._BlockedSqlTemplate = None
+        self._BlockedSqlMd5 = None
+        self._RootCause = None
+        self._ReportTime = None
+        self._Children = None
+
+    @property
+    def BlockedSessionId(self):
+        r"""<p>被阻塞会话 ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockedSessionId
+
+    @BlockedSessionId.setter
+    def BlockedSessionId(self, BlockedSessionId):
+        self._BlockedSessionId = BlockedSessionId
+
+    @property
+    def BlockedTransactionId(self):
+        r"""<p>被阻塞会话事务ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockedTransactionId
+
+    @BlockedTransactionId.setter
+    def BlockedTransactionId(self, BlockedTransactionId):
+        self._BlockedTransactionId = BlockedTransactionId
+
+    @property
+    def BlockedWaitTimeMs(self):
+        r"""<p>被阻塞会话等待时长（毫秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockedWaitTimeMs
+
+    @BlockedWaitTimeMs.setter
+    def BlockedWaitTimeMs(self, BlockedWaitTimeMs):
+        self._BlockedWaitTimeMs = BlockedWaitTimeMs
+
+    @property
+    def BlockedLockMode(self):
+        r"""<p>被阻塞会话正在等待的锁模式（SQL Server原生lock_mode枚举，常见取值：S、U、X、IS、IU、IX、SIU、SIX、UIX、Sch-S、Sch-M）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedLockMode
+
+    @BlockedLockMode.setter
+    def BlockedLockMode(self, BlockedLockMode):
+        self._BlockedLockMode = BlockedLockMode
+
+    @property
+    def BlockedWaitResource(self):
+        r"""<p>被阻塞会话等待资源。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedWaitResource
+
+    @BlockedWaitResource.setter
+    def BlockedWaitResource(self, BlockedWaitResource):
+        self._BlockedWaitResource = BlockedWaitResource
+
+    @property
+    def BlockedLoginName(self):
+        r"""<p>被阻塞会话数据库用户。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedLoginName
+
+    @BlockedLoginName.setter
+    def BlockedLoginName(self, BlockedLoginName):
+        self._BlockedLoginName = BlockedLoginName
+
+    @property
+    def BlockedHostName(self):
+        r"""<p>被阻塞会话客户端主机。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedHostName
+
+    @BlockedHostName.setter
+    def BlockedHostName(self, BlockedHostName):
+        self._BlockedHostName = BlockedHostName
+
+    @property
+    def BlockedClientApp(self):
+        r"""<p>被阻塞会话客户端应用名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedClientApp
+
+    @BlockedClientApp.setter
+    def BlockedClientApp(self, BlockedClientApp):
+        self._BlockedClientApp = BlockedClientApp
+
+    @property
+    def BlockedStatus(self):
+        r"""<p>被阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status 文本），常见取值：running / sleeping / suspended / background。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedStatus
+
+    @BlockedStatus.setter
+    def BlockedStatus(self, BlockedStatus):
+        self._BlockedStatus = BlockedStatus
+
+    @property
+    def BlockedIsolationLevel(self):
+        r"""<p>被阻塞会话事务隔离级别（SQL Server 原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedIsolationLevel
+
+    @BlockedIsolationLevel.setter
+    def BlockedIsolationLevel(self, BlockedIsolationLevel):
+        self._BlockedIsolationLevel = BlockedIsolationLevel
+
+    @property
+    def BlockedTransactionName(self):
+        r"""<p>被阻塞会话当前显式事务名（XEvent transactionname）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedTransactionName
+
+    @BlockedTransactionName.setter
+    def BlockedTransactionName(self, BlockedTransactionName):
+        self._BlockedTransactionName = BlockedTransactionName
+
+    @property
+    def BlockedTranCount(self):
+        r"""<p>被阻塞会话当前显式事务嵌套层数（XEvent trancount）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockedTranCount
+
+    @BlockedTranCount.setter
+    def BlockedTranCount(self, BlockedTranCount):
+        self._BlockedTranCount = BlockedTranCount
+
+    @property
+    def BlockedLastTranStarted(self):
+        r"""<p>被阻塞会话显式事务 BEGIN TRAN 时刻（XEvent lasttranstarted，SQL Server 服务端本地时区的 ISO 8601 字符串，无时区后缀）。多语句事务场景下比 lastbatchstarted 更稳定。咨视值 1900-01-01T00:00:00 表示未知。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedLastTranStarted
+
+    @BlockedLastTranStarted.setter
+    def BlockedLastTranStarted(self, BlockedLastTranStarted):
+        self._BlockedLastTranStarted = BlockedLastTranStarted
+
+    @property
+    def BlockedInputBuffer(self):
+        r"""<p>被阻塞会话正在执行的 SQL 原文（对应 DBCC INPUTBUFFER 返回内容，单条最长 16KB，超长截断）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedInputBuffer
+
+    @BlockedInputBuffer.setter
+    def BlockedInputBuffer(self, BlockedInputBuffer):
+        self._BlockedInputBuffer = BlockedInputBuffer
+
+    @property
+    def BlockedSqlTemplate(self):
+        r"""<p>被阻塞SQL归一化模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedSqlTemplate
+
+    @BlockedSqlTemplate.setter
+    def BlockedSqlTemplate(self, BlockedSqlTemplate):
+        self._BlockedSqlTemplate = BlockedSqlTemplate
+
+    @property
+    def BlockedSqlMd5(self):
+        r"""<p>被阻塞SQL模板MD5。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockedSqlMd5
+
+    @BlockedSqlMd5.setter
+    def BlockedSqlMd5(self, BlockedSqlMd5):
+        self._BlockedSqlMd5 = BlockedSqlMd5
+
+    @property
+    def RootCause(self):
+        r"""<p>根因分类（继承自所属报告的rootCause）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RootCause
+
+    @RootCause.setter
+    def RootCause(self, RootCause):
+        self._RootCause = RootCause
+
+    @property
+    def ReportTime(self):
+        r"""<p>本节点上报事件时间（__time），格式：yyyy-MM-dd HH:mm:ss。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReportTime
+
+    @ReportTime.setter
+    def ReportTime(self, ReportTime):
+        self._ReportTime = ReportTime
+
+    @property
+    def Children(self):
+        r"""<p>本节点又阻塞的下级会话（可能为空）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BlockingChainNode
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+
+    def _deserialize(self, params):
+        self._BlockedSessionId = params.get("BlockedSessionId")
+        self._BlockedTransactionId = params.get("BlockedTransactionId")
+        self._BlockedWaitTimeMs = params.get("BlockedWaitTimeMs")
+        self._BlockedLockMode = params.get("BlockedLockMode")
+        self._BlockedWaitResource = params.get("BlockedWaitResource")
+        self._BlockedLoginName = params.get("BlockedLoginName")
+        self._BlockedHostName = params.get("BlockedHostName")
+        self._BlockedClientApp = params.get("BlockedClientApp")
+        self._BlockedStatus = params.get("BlockedStatus")
+        self._BlockedIsolationLevel = params.get("BlockedIsolationLevel")
+        self._BlockedTransactionName = params.get("BlockedTransactionName")
+        self._BlockedTranCount = params.get("BlockedTranCount")
+        self._BlockedLastTranStarted = params.get("BlockedLastTranStarted")
+        self._BlockedInputBuffer = params.get("BlockedInputBuffer")
+        self._BlockedSqlTemplate = params.get("BlockedSqlTemplate")
+        self._BlockedSqlMd5 = params.get("BlockedSqlMd5")
+        self._RootCause = params.get("RootCause")
+        self._ReportTime = params.get("ReportTime")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = BlockingChainNode()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlockingChainTree(AbstractModel):
+    r"""阻塞树，一棵阻塞链的完整视图。一棵树的定义：同一(instanceId, monitorLoop)下，通过blocker/blocked边可达构成的一个连通分量。根节点是入度为0的会话（即从未被任何会话阻塞的头blocker）。一个monitorLoop可能对应多棵独立阻塞树。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorLoop: <p>监控轮次ID（同一实例内唯一标识一次采集快照，同一快照可包含多棵独立阻塞树）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorLoop: str
+        :param _DatabaseName: <p>阻塞发生所在的数据库名称（整条链路隶属同一 database，放在树级返回一次即可）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _BlockingSessionId: <p>头阻塞会话ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingSessionId: int
+        :param _BlockingTransactionId: <p>头阻塞会话事务ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingTransactionId: int
+        :param _BlockingLoginName: <p>头阻塞会话数据库用户。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingLoginName: str
+        :param _BlockingHostName: <p>头阻塞会话客户端主机。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingHostName: str
+        :param _BlockingClientApp: <p>头阻塞会话客户端应用名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingClientApp: str
+        :param _BlockingStatus: <p>头阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status 文本），常见取值：running / sleeping / suspended / background。sleeping + BlockingTranCount&gt;0 是 C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingStatus: str
+        :param _BlockingIsolationLevel: <p>头阻塞会话事务隔离级别（SQL Server 原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingIsolationLevel: str
+        :param _BlockingTranCount: <p>头阻塞会话当前显式事务嵌套层数（XEvent trancount）。&gt;0 表示持有显式事务；与 BlockingStatus=sleeping 组合是 C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingTranCount: int
+        :param _BlockingInputBuffer: <p>头阻塞会话正在执行的 SQL 原文（对应 DBCC INPUTBUFFER 返回内容，单条最长 16KB，超长截断）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingInputBuffer: str
+        :param _BlockingSqlTemplate: <p>头阻塞SQL归一化模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingSqlTemplate: str
+        :param _BlockingSqlMd5: <p>头阻塞SQL模板MD5。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingSqlMd5: str
+        :param _BlockingWaitTimeMs: <p>头阻塞会话自身的等待时长（毫秒，来自XML blocking-process/process的waittime属性）。多数场景为0。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BlockingWaitTimeMs: int
+        :param _RootCause: <p>根因分类。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootCause: str
+        :param _RootCauseDesc: <p>根因分类的可读中文描述（服务端已完成中文化，前端可直接展示；与 RootCause 代号一一对应；未识别或空值统一返回“未识别”）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RootCauseDesc: str
+        :param _StartTime: <p>该链路阻塞事件的起始时间（该树内__time最小值），格式：yyyy-MM-dd HH:mm:ss。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: <p>该链路阻塞事件的结束时间（该树内__time最大值），格式：yyyy-MM-dd HH:mm:ss。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _DurationMs: <p>该链路最长等待时长（毫秒），作为链路影响时长。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationMs: int
+        :param _ChainLength: <p>该链路被阻塞会话数（等价于树节点数-1，即受影响会话数）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChainLength: int
+        :param _ChainDepth: <p>树深度（根节点为0，最长路径的深度）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChainDepth: int
+        :param _Details: <p>被阻塞节点子树（可能为空，也可能多叉或多层）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Details: list of BlockingChainNode
+        """
+        self._MonitorLoop = None
+        self._DatabaseName = None
+        self._BlockingSessionId = None
+        self._BlockingTransactionId = None
+        self._BlockingLoginName = None
+        self._BlockingHostName = None
+        self._BlockingClientApp = None
+        self._BlockingStatus = None
+        self._BlockingIsolationLevel = None
+        self._BlockingTranCount = None
+        self._BlockingInputBuffer = None
+        self._BlockingSqlTemplate = None
+        self._BlockingSqlMd5 = None
+        self._BlockingWaitTimeMs = None
+        self._RootCause = None
+        self._RootCauseDesc = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DurationMs = None
+        self._ChainLength = None
+        self._ChainDepth = None
+        self._Details = None
+
+    @property
+    def MonitorLoop(self):
+        r"""<p>监控轮次ID（同一实例内唯一标识一次采集快照，同一快照可包含多棵独立阻塞树）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MonitorLoop
+
+    @MonitorLoop.setter
+    def MonitorLoop(self, MonitorLoop):
+        self._MonitorLoop = MonitorLoop
+
+    @property
+    def DatabaseName(self):
+        r"""<p>阻塞发生所在的数据库名称（整条链路隶属同一 database，放在树级返回一次即可）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def BlockingSessionId(self):
+        r"""<p>头阻塞会话ID（对应 SQL Server sys.dm_exec_sessions.session_id，即 SPID）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockingSessionId
+
+    @BlockingSessionId.setter
+    def BlockingSessionId(self, BlockingSessionId):
+        self._BlockingSessionId = BlockingSessionId
+
+    @property
+    def BlockingTransactionId(self):
+        r"""<p>头阻塞会话事务ID。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockingTransactionId
+
+    @BlockingTransactionId.setter
+    def BlockingTransactionId(self, BlockingTransactionId):
+        self._BlockingTransactionId = BlockingTransactionId
+
+    @property
+    def BlockingLoginName(self):
+        r"""<p>头阻塞会话数据库用户。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingLoginName
+
+    @BlockingLoginName.setter
+    def BlockingLoginName(self, BlockingLoginName):
+        self._BlockingLoginName = BlockingLoginName
+
+    @property
+    def BlockingHostName(self):
+        r"""<p>头阻塞会话客户端主机。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingHostName
+
+    @BlockingHostName.setter
+    def BlockingHostName(self, BlockingHostName):
+        self._BlockingHostName = BlockingHostName
+
+    @property
+    def BlockingClientApp(self):
+        r"""<p>头阻塞会话客户端应用名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingClientApp
+
+    @BlockingClientApp.setter
+    def BlockingClientApp(self, BlockingClientApp):
+        self._BlockingClientApp = BlockingClientApp
+
+    @property
+    def BlockingStatus(self):
+        r"""<p>头阻塞会话运行时状态（SQL Server sys.dm_exec_sessions.status 文本），常见取值：running / sleeping / suspended / background。sleeping + BlockingTranCount&gt;0 是 C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingStatus
+
+    @BlockingStatus.setter
+    def BlockingStatus(self, BlockingStatus):
+        self._BlockingStatus = BlockingStatus
+
+    @property
+    def BlockingIsolationLevel(self):
+        r"""<p>头阻塞会话事务隔离级别（SQL Server 原生取值：read uncommitted / read committed / repeatable read / serializable / snapshot）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingIsolationLevel
+
+    @BlockingIsolationLevel.setter
+    def BlockingIsolationLevel(self, BlockingIsolationLevel):
+        self._BlockingIsolationLevel = BlockingIsolationLevel
+
+    @property
+    def BlockingTranCount(self):
+        r"""<p>头阻塞会话当前显式事务嵌套层数（XEvent trancount）。&gt;0 表示持有显式事务；与 BlockingStatus=sleeping 组合是 C2_SLEEPING_UNCOMMITTED（休眠会话持未提交事务）的直接证据。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockingTranCount
+
+    @BlockingTranCount.setter
+    def BlockingTranCount(self, BlockingTranCount):
+        self._BlockingTranCount = BlockingTranCount
+
+    @property
+    def BlockingInputBuffer(self):
+        r"""<p>头阻塞会话正在执行的 SQL 原文（对应 DBCC INPUTBUFFER 返回内容，单条最长 16KB，超长截断）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingInputBuffer
+
+    @BlockingInputBuffer.setter
+    def BlockingInputBuffer(self, BlockingInputBuffer):
+        self._BlockingInputBuffer = BlockingInputBuffer
+
+    @property
+    def BlockingSqlTemplate(self):
+        r"""<p>头阻塞SQL归一化模板。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingSqlTemplate
+
+    @BlockingSqlTemplate.setter
+    def BlockingSqlTemplate(self, BlockingSqlTemplate):
+        self._BlockingSqlTemplate = BlockingSqlTemplate
+
+    @property
+    def BlockingSqlMd5(self):
+        r"""<p>头阻塞SQL模板MD5。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BlockingSqlMd5
+
+    @BlockingSqlMd5.setter
+    def BlockingSqlMd5(self, BlockingSqlMd5):
+        self._BlockingSqlMd5 = BlockingSqlMd5
+
+    @property
+    def BlockingWaitTimeMs(self):
+        r"""<p>头阻塞会话自身的等待时长（毫秒，来自XML blocking-process/process的waittime属性）。多数场景为0。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BlockingWaitTimeMs
+
+    @BlockingWaitTimeMs.setter
+    def BlockingWaitTimeMs(self, BlockingWaitTimeMs):
+        self._BlockingWaitTimeMs = BlockingWaitTimeMs
+
+    @property
+    def RootCause(self):
+        r"""<p>根因分类。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RootCause
+
+    @RootCause.setter
+    def RootCause(self, RootCause):
+        self._RootCause = RootCause
+
+    @property
+    def RootCauseDesc(self):
+        r"""<p>根因分类的可读中文描述（服务端已完成中文化，前端可直接展示；与 RootCause 代号一一对应；未识别或空值统一返回“未识别”）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RootCauseDesc
+
+    @RootCauseDesc.setter
+    def RootCauseDesc(self, RootCauseDesc):
+        self._RootCauseDesc = RootCauseDesc
+
+    @property
+    def StartTime(self):
+        r"""<p>该链路阻塞事件的起始时间（该树内__time最小值），格式：yyyy-MM-dd HH:mm:ss。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>该链路阻塞事件的结束时间（该树内__time最大值），格式：yyyy-MM-dd HH:mm:ss。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DurationMs(self):
+        r"""<p>该链路最长等待时长（毫秒），作为链路影响时长。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DurationMs
+
+    @DurationMs.setter
+    def DurationMs(self, DurationMs):
+        self._DurationMs = DurationMs
+
+    @property
+    def ChainLength(self):
+        r"""<p>该链路被阻塞会话数（等价于树节点数-1，即受影响会话数）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ChainLength
+
+    @ChainLength.setter
+    def ChainLength(self, ChainLength):
+        self._ChainLength = ChainLength
+
+    @property
+    def ChainDepth(self):
+        r"""<p>树深度（根节点为0，最长路径的深度）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ChainDepth
+
+    @ChainDepth.setter
+    def ChainDepth(self, ChainDepth):
+        self._ChainDepth = ChainDepth
+
+    @property
+    def Details(self):
+        r"""<p>被阻塞节点子树（可能为空，也可能多叉或多层）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BlockingChainNode
+        """
+        return self._Details
+
+    @Details.setter
+    def Details(self, Details):
+        self._Details = Details
+
+
+    def _deserialize(self, params):
+        self._MonitorLoop = params.get("MonitorLoop")
+        self._DatabaseName = params.get("DatabaseName")
+        self._BlockingSessionId = params.get("BlockingSessionId")
+        self._BlockingTransactionId = params.get("BlockingTransactionId")
+        self._BlockingLoginName = params.get("BlockingLoginName")
+        self._BlockingHostName = params.get("BlockingHostName")
+        self._BlockingClientApp = params.get("BlockingClientApp")
+        self._BlockingStatus = params.get("BlockingStatus")
+        self._BlockingIsolationLevel = params.get("BlockingIsolationLevel")
+        self._BlockingTranCount = params.get("BlockingTranCount")
+        self._BlockingInputBuffer = params.get("BlockingInputBuffer")
+        self._BlockingSqlTemplate = params.get("BlockingSqlTemplate")
+        self._BlockingSqlMd5 = params.get("BlockingSqlMd5")
+        self._BlockingWaitTimeMs = params.get("BlockingWaitTimeMs")
+        self._RootCause = params.get("RootCause")
+        self._RootCauseDesc = params.get("RootCauseDesc")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DurationMs = params.get("DurationMs")
+        self._ChainLength = params.get("ChainLength")
+        self._ChainDepth = params.get("ChainDepth")
+        if params.get("Details") is not None:
+            self._Details = []
+            for item in params.get("Details"):
+                obj = BlockingChainNode()
+                obj._deserialize(item)
+                self._Details.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlockingLogItem(AbstractModel):
     r"""阻塞日志扁平明细行：一次blocked_process_report（blocker→blocked边）在某一次monitorLoop内被lock monitor捕获的瞬时数据。
 
@@ -3771,6 +4520,95 @@ class BlockingLogItem(AbstractModel):
         self._BlockedSqlTemplate = params.get("BlockedSqlTemplate")
         self._BlockedSqlMd5 = params.get("BlockedSqlMd5")
         self._BlockedProcessXml = params.get("BlockedProcessXml")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BlockingTrendPoint(AbstractModel):
+    r"""阻塞趋势时序点，表示某个粒度 bucket 的阻塞聚合统计。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>该 bucket 的实际聚合区间左端（含），格式：yyyy-MM-dd HH:mm:ss。聚合区间为前闭后开 [StartTime, EndTime)。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: <p>该 bucket 的实际聚合区间右端（不含），格式：yyyy-MM-dd HH:mm:ss。即 StartTime + GranularityMs。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _LockCount: <p>该 bucket 内的阻塞 report 行数（底层 blocked_process_report 事件数），无数据 bucket 返回 0。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LockCount: int
+        :param _MonitorLoopCount: <p>该 bucket 内观测到的不同 monitorLoop 数量（lock monitor 扫描快照数），无数据 bucket 返回 0。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorLoopCount: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._LockCount = None
+        self._MonitorLoopCount = None
+
+    @property
+    def StartTime(self):
+        r"""<p>该 bucket 的实际聚合区间左端（含），格式：yyyy-MM-dd HH:mm:ss。聚合区间为前闭后开 [StartTime, EndTime)。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>该 bucket 的实际聚合区间右端（不含），格式：yyyy-MM-dd HH:mm:ss。即 StartTime + GranularityMs。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LockCount(self):
+        r"""<p>该 bucket 内的阻塞 report 行数（底层 blocked_process_report 事件数），无数据 bucket 返回 0。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LockCount
+
+    @LockCount.setter
+    def LockCount(self, LockCount):
+        self._LockCount = LockCount
+
+    @property
+    def MonitorLoopCount(self):
+        r"""<p>该 bucket 内观测到的不同 monitorLoop 数量（lock monitor 扫描快照数），无数据 bucket 返回 0。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorLoopCount
+
+    @MonitorLoopCount.setter
+    def MonitorLoopCount(self, MonitorLoopCount):
+        self._MonitorLoopCount = MonitorLoopCount
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LockCount = params.get("LockCount")
+        self._MonitorLoopCount = params.get("MonitorLoopCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8795,6 +9633,135 @@ class DescribeAuditLogFilesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBlockingLockTreeRequest(AbstractModel):
+    r"""DescribeBlockingLockTree请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _Product: <p>服务产品类型，固定为sqlserver。</p>
+        :type Product: str
+        :param _MonitorLoop: <p>lock monitor 扫描轮次 ID（可从 DescribeBlockingTimeRange 返回的 MonitorLoops 列表选择，也可从 DescribeBlockingLogs / DescribeBlockingTrees 返回的 MonitorLoop 字段获取）。与 BlockingTime 二选一，MonitorLoop 优先。</p>
+        :type MonitorLoop: str
+        :param _BlockingTime: <p>阻塞时间点，格式：yyyy-MM-dd HH:mm:ss。当 MonitorLoop 为空时使用该字段定位：后端会在该时间点±1分钟范围内寻找最接近的 MonitorLoop 并下钻其阻塞树。与 MonitorLoop 二选一。BlockingTime 必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+        :type BlockingTime: str
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._MonitorLoop = None
+        self._BlockingTime = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型，固定为sqlserver。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def MonitorLoop(self):
+        r"""<p>lock monitor 扫描轮次 ID（可从 DescribeBlockingTimeRange 返回的 MonitorLoops 列表选择，也可从 DescribeBlockingLogs / DescribeBlockingTrees 返回的 MonitorLoop 字段获取）。与 BlockingTime 二选一，MonitorLoop 优先。</p>
+        :rtype: str
+        """
+        return self._MonitorLoop
+
+    @MonitorLoop.setter
+    def MonitorLoop(self, MonitorLoop):
+        self._MonitorLoop = MonitorLoop
+
+    @property
+    def BlockingTime(self):
+        r"""<p>阻塞时间点，格式：yyyy-MM-dd HH:mm:ss。当 MonitorLoop 为空时使用该字段定位：后端会在该时间点±1分钟范围内寻找最接近的 MonitorLoop 并下钻其阻塞树。与 MonitorLoop 二选一。BlockingTime 必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+        :rtype: str
+        """
+        return self._BlockingTime
+
+    @BlockingTime.setter
+    def BlockingTime(self, BlockingTime):
+        self._BlockingTime = BlockingTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._MonitorLoop = params.get("MonitorLoop")
+        self._BlockingTime = params.get("BlockingTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlockingLockTreeResponse(AbstractModel):
+    r"""DescribeBlockingLockTree返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>阻塞树列表（同一 MonitorLoop 下可能存在多棵独立阻塞树，按链路影响时长倒序）。若按 BlockingTime 定位时未找到附近 MonitorLoop，返回空列表。</p>
+        :type Items: list of BlockingChainTree
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>阻塞树列表（同一 MonitorLoop 下可能存在多棵独立阻塞树，按链路影响时长倒序）。若按 BlockingTime 定位时未找到附近 MonitorLoop，返回空列表。</p>
+        :rtype: list of BlockingChainTree
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = BlockingChainTree()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBlockingLogsRequest(AbstractModel):
     r"""DescribeBlockingLogs请求参数结构体
 
@@ -9236,6 +10203,165 @@ class DescribeBlockingLogsResponse(AbstractModel):
                 obj = BlockingLogItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBlockingTrendRequest(AbstractModel):
+    r"""DescribeBlockingTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _Product: <p>服务产品类型，固定为sqlserver。</p>
+        :type Product: str
+        :param _StartTime: <p>查询起始时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss。必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss，需大于 StartTime。单次查询跨度必须 ≤ 7 天（Trend 走 Druid 原生聚合，跨度比明细类接口更宽泛），否则返回 InvalidParameterValue。</p>
+        :type EndTime: str
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型，固定为sqlserver。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def StartTime(self):
+        r"""<p>查询起始时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss。必须在最近 30 天内，否则返回 InvalidParameterValue。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间（服务端时区 UTC+8），格式：yyyy-MM-dd HH:mm:ss，需大于 StartTime。单次查询跨度必须 ≤ 7 天（Trend 走 Druid 原生聚合，跨度比明细类接口更宽泛），否则返回 InvalidParameterValue。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlockingTrendResponse(AbstractModel):
+    r"""DescribeBlockingTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Granularity: <p>使用的粒度名称，取值：SECONDS / MINUTES / FIVE_MINUTES / TEN_MINUTES / FIFTEEN_MINUTES / THIRTY_MINUTES / HOUR。时间窗口 ≤ 1 分钟时自动采用 SECONDS（1 秒）粒度。</p>
+        :type Granularity: str
+        :param _GranularityMs: <p>粒度对应的毫秒值（SECONDS=1000，MINUTES=60000，... HOUR=3600000）。</p>
+        :type GranularityMs: int
+        :param _DataPoints: <p>阻塞趋势时序点列表（按 ReportTime 升序，稠密时序：窗口内每个 bucket 都返回一个点，无数据 bucket 补零）。</p>
+        :type DataPoints: list of BlockingTrendPoint
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Granularity = None
+        self._GranularityMs = None
+        self._DataPoints = None
+        self._RequestId = None
+
+    @property
+    def Granularity(self):
+        r"""<p>使用的粒度名称，取值：SECONDS / MINUTES / FIVE_MINUTES / TEN_MINUTES / FIFTEEN_MINUTES / THIRTY_MINUTES / HOUR。时间窗口 ≤ 1 分钟时自动采用 SECONDS（1 秒）粒度。</p>
+        :rtype: str
+        """
+        return self._Granularity
+
+    @Granularity.setter
+    def Granularity(self, Granularity):
+        self._Granularity = Granularity
+
+    @property
+    def GranularityMs(self):
+        r"""<p>粒度对应的毫秒值（SECONDS=1000，MINUTES=60000，... HOUR=3600000）。</p>
+        :rtype: int
+        """
+        return self._GranularityMs
+
+    @GranularityMs.setter
+    def GranularityMs(self, GranularityMs):
+        self._GranularityMs = GranularityMs
+
+    @property
+    def DataPoints(self):
+        r"""<p>阻塞趋势时序点列表（按 ReportTime 升序，稠密时序：窗口内每个 bucket 都返回一个点，无数据 bucket 补零）。</p>
+        :rtype: list of BlockingTrendPoint
+        """
+        return self._DataPoints
+
+    @DataPoints.setter
+    def DataPoints(self, DataPoints):
+        self._DataPoints = DataPoints
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Granularity = params.get("Granularity")
+        self._GranularityMs = params.get("GranularityMs")
+        if params.get("DataPoints") is not None:
+            self._DataPoints = []
+            for item in params.get("DataPoints"):
+                obj = BlockingTrendPoint()
+                obj._deserialize(item)
+                self._DataPoints.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17947,6 +19073,283 @@ class DescribeSqlTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTableSpaceDataV2Request(AbstractModel):
+    r"""DescribeTableSpaceDataV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID。</p>
+        :type InstanceId: str
+        :param _Product: <p>服务产品类型（用于云 API 平台路由到对应产品后端）。取值：mysql / cynosdb / mariadb / postgres / mongodb / sqlserver 等。</p>
+        :type Product: str
+        :param _TableSchema: <p>数据库名（PG 系产品的 schema 名；MongoDB 为 database 名；MySQL / CynosDB / SqlServer 为库名）。PostgreSQL / MySQL / CynosDB / SqlServer 必传；MongoDB 可不传（底层使用 optString(&quot;&quot;), 不传时按空库名查询）。</p>
+        :type TableSchema: str
+        :param _TableName: <p>表名（MongoDB 场景下为 collection 名，如 oplog.rs）。PostgreSQL / MySQL / CynosDB / SqlServer 必传；MongoDB 可不传（底层对该字段为空时直接返回空列表而非报错）。</p>
+        :type TableName: str
+        :param _TableCatalog: <p>表所在的 Catalog（数据库目录）名。PostgreSQL / TBase 等 PG 系产品必传（例如 postgres），用于唯一定位 (catalog, schema, name) 三元组；MySQL / CynosDB / MongoDB / SqlServer 等非 PG 系产品可不传。</p>
+        :type TableCatalog: str
+        :param _Date: <p>查询日期，格式：yyyy-MM-dd。MySQL / CynosDB / PostgreSQL / SqlServer 可选（默认当天）；MongoDB 本接口不读取该字段（底层通过 dbbrain.collInfo 直接查询实时集合空间，不区分日期）。</p>
+        :type Date: str
+        :param _SortBy: <p>排序字段。本接口（单表/单集合明细查询）均为可选：MySQL / CynosDB 可选，默认按 total_length 排序；PostgreSQL 可选，默认按 relation_size 排序；SqlServer 本接口不消费该字段的值；MongoDB 本接口完全不读取该字段。如需在 Top 表/库场景使用排序，请改用 DescribeTopSpaceTablesV2 / DescribeTopSpaceSchemasV2 接口。</p>
+        :type SortBy: str
+        :param _Limit: <p>返回条数上限，默认 20，最大 100。MySQL / CynosDB / PostgreSQL 本接口会读取该参数控制明细条数；MongoDB 本接口不读取该字段（底层按入参 TableName 精确匹配返回集合明细，不受 Limit 控制）；SqlServer 本接口会校验但不消费其值。</p>
+        :type Limit: int
+        :param _Regex: <p>MongoDB 专用——表名/集合名是否按正则模糊匹配。默认 true。其他产品忽略该字段。</p>
+        :type Regex: bool
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._TableSchema = None
+        self._TableName = None
+        self._TableCatalog = None
+        self._Date = None
+        self._SortBy = None
+        self._Limit = None
+        self._Regex = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型（用于云 API 平台路由到对应产品后端）。取值：mysql / cynosdb / mariadb / postgres / mongodb / sqlserver 等。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def TableSchema(self):
+        r"""<p>数据库名（PG 系产品的 schema 名；MongoDB 为 database 名；MySQL / CynosDB / SqlServer 为库名）。PostgreSQL / MySQL / CynosDB / SqlServer 必传；MongoDB 可不传（底层使用 optString(&quot;&quot;), 不传时按空库名查询）。</p>
+        :rtype: str
+        """
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def TableName(self):
+        r"""<p>表名（MongoDB 场景下为 collection 名，如 oplog.rs）。PostgreSQL / MySQL / CynosDB / SqlServer 必传；MongoDB 可不传（底层对该字段为空时直接返回空列表而非报错）。</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableCatalog(self):
+        r"""<p>表所在的 Catalog（数据库目录）名。PostgreSQL / TBase 等 PG 系产品必传（例如 postgres），用于唯一定位 (catalog, schema, name) 三元组；MySQL / CynosDB / MongoDB / SqlServer 等非 PG 系产品可不传。</p>
+        :rtype: str
+        """
+        return self._TableCatalog
+
+    @TableCatalog.setter
+    def TableCatalog(self, TableCatalog):
+        self._TableCatalog = TableCatalog
+
+    @property
+    def Date(self):
+        r"""<p>查询日期，格式：yyyy-MM-dd。MySQL / CynosDB / PostgreSQL / SqlServer 可选（默认当天）；MongoDB 本接口不读取该字段（底层通过 dbbrain.collInfo 直接查询实时集合空间，不区分日期）。</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段。本接口（单表/单集合明细查询）均为可选：MySQL / CynosDB 可选，默认按 total_length 排序；PostgreSQL 可选，默认按 relation_size 排序；SqlServer 本接口不消费该字段的值；MongoDB 本接口完全不读取该字段。如需在 Top 表/库场景使用排序，请改用 DescribeTopSpaceTablesV2 / DescribeTopSpaceSchemasV2 接口。</p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def Limit(self):
+        r"""<p>返回条数上限，默认 20，最大 100。MySQL / CynosDB / PostgreSQL 本接口会读取该参数控制明细条数；MongoDB 本接口不读取该字段（底层按入参 TableName 精确匹配返回集合明细，不受 Limit 控制）；SqlServer 本接口会校验但不消费其值。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Regex(self):
+        r"""<p>MongoDB 专用——表名/集合名是否按正则模糊匹配。默认 true。其他产品忽略该字段。</p>
+        :rtype: bool
+        """
+        return self._Regex
+
+    @Regex.setter
+    def Regex(self, Regex):
+        self._Regex = Regex
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._TableSchema = params.get("TableSchema")
+        self._TableName = params.get("TableName")
+        self._TableCatalog = params.get("TableCatalog")
+        self._Date = params.get("Date")
+        self._SortBy = params.get("SortBy")
+        self._Limit = params.get("Limit")
+        self._Regex = params.get("Regex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableSpaceDataV2Response(AbstractModel):
+    r"""DescribeTableSpaceDataV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MysqlTableSpaceData: <p>MySQL 系列产品表空间数据。当产品为 mysql/cynosdb/tdsql/dcdb/mariadb 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MysqlTableSpaceData: :class:`tencentcloud.dbbrain.v20210527.models.MysqlSpaceObjectItem`
+        :param _PostgresTableSpaceData: <p>PostgreSQL 产品表空间数据。当产品为 postgres 时返回。字段语义与 MySQL 不同：使用 RelationSize / TableSize / IndexSize / TotalRelationSize / TableBloat 等 PG 特有指标。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PostgresTableSpaceData: :class:`tencentcloud.dbbrain.v20210527.models.PostgresSpaceObjectItem`
+        :param _MongodbTableSpaceData: <p>MongoDB 产品表空间数据。当产品为 mongodb 时返回。包含集合级明细数组 SpaceSchemas 以及外层采集时间戳 Timestamp（秒级）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MongodbTableSpaceData: :class:`tencentcloud.dbbrain.v20210527.models.MongodbSpaceObjectItem`
+        :param _SqlServerTableSpaceData: <p>SQL Server 产品表空间数据。当产品为 sqlserver 时返回。字段结构与 MysqlSpaceObjectItem 同构，无 FragRatio / PhysicalFileSize。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlServerTableSpaceData: :class:`tencentcloud.dbbrain.v20210527.models.SqlServerSpaceObjectItem`
+        :param _Timestamp: <p>数据采集时间戳（秒）。可能为空（部分产品分支/异常场景下不保证返回），调用方请做空值兼容。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MysqlTableSpaceData = None
+        self._PostgresTableSpaceData = None
+        self._MongodbTableSpaceData = None
+        self._SqlServerTableSpaceData = None
+        self._Timestamp = None
+        self._RequestId = None
+
+    @property
+    def MysqlTableSpaceData(self):
+        r"""<p>MySQL 系列产品表空间数据。当产品为 mysql/cynosdb/tdsql/dcdb/mariadb 时返回。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MysqlSpaceObjectItem`
+        """
+        return self._MysqlTableSpaceData
+
+    @MysqlTableSpaceData.setter
+    def MysqlTableSpaceData(self, MysqlTableSpaceData):
+        self._MysqlTableSpaceData = MysqlTableSpaceData
+
+    @property
+    def PostgresTableSpaceData(self):
+        r"""<p>PostgreSQL 产品表空间数据。当产品为 postgres 时返回。字段语义与 MySQL 不同：使用 RelationSize / TableSize / IndexSize / TotalRelationSize / TableBloat 等 PG 特有指标。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.PostgresSpaceObjectItem`
+        """
+        return self._PostgresTableSpaceData
+
+    @PostgresTableSpaceData.setter
+    def PostgresTableSpaceData(self, PostgresTableSpaceData):
+        self._PostgresTableSpaceData = PostgresTableSpaceData
+
+    @property
+    def MongodbTableSpaceData(self):
+        r"""<p>MongoDB 产品表空间数据。当产品为 mongodb 时返回。包含集合级明细数组 SpaceSchemas 以及外层采集时间戳 Timestamp（秒级）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MongodbSpaceObjectItem`
+        """
+        return self._MongodbTableSpaceData
+
+    @MongodbTableSpaceData.setter
+    def MongodbTableSpaceData(self, MongodbTableSpaceData):
+        self._MongodbTableSpaceData = MongodbTableSpaceData
+
+    @property
+    def SqlServerTableSpaceData(self):
+        r"""<p>SQL Server 产品表空间数据。当产品为 sqlserver 时返回。字段结构与 MysqlSpaceObjectItem 同构，无 FragRatio / PhysicalFileSize。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.SqlServerSpaceObjectItem`
+        """
+        return self._SqlServerTableSpaceData
+
+    @SqlServerTableSpaceData.setter
+    def SqlServerTableSpaceData(self, SqlServerTableSpaceData):
+        self._SqlServerTableSpaceData = SqlServerTableSpaceData
+
+    @property
+    def Timestamp(self):
+        r"""<p>数据采集时间戳（秒）。可能为空（部分产品分支/异常场景下不保证返回），调用方请做空值兼容。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MysqlTableSpaceData") is not None:
+            self._MysqlTableSpaceData = MysqlSpaceObjectItem()
+            self._MysqlTableSpaceData._deserialize(params.get("MysqlTableSpaceData"))
+        if params.get("PostgresTableSpaceData") is not None:
+            self._PostgresTableSpaceData = PostgresSpaceObjectItem()
+            self._PostgresTableSpaceData._deserialize(params.get("PostgresTableSpaceData"))
+        if params.get("MongodbTableSpaceData") is not None:
+            self._MongodbTableSpaceData = MongodbSpaceObjectItem()
+            self._MongodbTableSpaceData._deserialize(params.get("MongodbTableSpaceData"))
+        if params.get("SqlServerTableSpaceData") is not None:
+            self._SqlServerTableSpaceData = SqlServerSpaceObjectItem()
+            self._SqlServerTableSpaceData._deserialize(params.get("SqlServerTableSpaceData"))
+        self._Timestamp = params.get("Timestamp")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTopSpaceSchemaTimeSeriesRequest(AbstractModel):
     r"""DescribeTopSpaceSchemaTimeSeries请求参数结构体
 
@@ -22653,40 +24056,40 @@ class MongoCollectionDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CollStats: <p>集合命名空间，格式为 db.collection。</p>
+        :param _CollStats: 集合命名空间，格式为 db.collection。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CollStats: str
-        :param _CollectionSize: <p>集合逻辑大小（字节，未压缩）。</p>
+        :param _CollectionSize: 集合逻辑大小（字节，未压缩）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CollectionSize: int
-        :param _DataFree: <p>集合已分配但未使用的空间（字节）。</p>
+        :param _DataFree: 集合已分配但未使用的空间（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataFree: int
-        :param _SpaceRatio: <p>空间利用率（百分比字符串）。</p>
+        :param _SpaceRatio: 空间利用率（百分比字符串）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpaceRatio: str
-        :param _FragRatio: <p>碎片率（百分比字符串）。</p>
+        :param _FragRatio: 碎片率（百分比字符串）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FragRatio: str
-        :param _Size: <p>集合数据大小（字节）。</p>
+        :param _Size: 集合数据大小（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: int
-        :param _TotalIndexSize: <p>所有索引占用大小（字节）。</p>
+        :param _TotalIndexSize: 所有索引占用大小（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalIndexSize: int
-        :param _AvgObjSize: <p>平均文档大小（字节）。</p>
+        :param _AvgObjSize: 平均文档大小（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvgObjSize: int
-        :param _StorageSize: <p>集合实际占用存储大小（字节，压缩后）。</p>
+        :param _StorageSize: 集合实际占用存储大小（字节，压缩后）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageSize: int
-        :param _Count: <p>文档数量。</p>
+        :param _Count: 文档数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Count: int
-        :param _CompressionRatio: <p>压缩率（百分比字符串）。</p>
+        :param _CompressionRatio: 压缩率（百分比字符串）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type CompressionRatio: str
-        :param _FileReuseBytes: <p>可复用文件空间（字节）。</p>
+        :param _FileReuseBytes: 可复用文件空间（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileReuseBytes: int
         """
@@ -22705,7 +24108,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def CollStats(self):
-        r"""<p>集合命名空间，格式为 db.collection。</p>
+        r"""集合命名空间，格式为 db.collection。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22717,7 +24120,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def CollectionSize(self):
-        r"""<p>集合逻辑大小（字节，未压缩）。</p>
+        r"""集合逻辑大小（字节，未压缩）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22729,7 +24132,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def DataFree(self):
-        r"""<p>集合已分配但未使用的空间（字节）。</p>
+        r"""集合已分配但未使用的空间（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22741,7 +24144,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def SpaceRatio(self):
-        r"""<p>空间利用率（百分比字符串）。</p>
+        r"""空间利用率（百分比字符串）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22753,7 +24156,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def FragRatio(self):
-        r"""<p>碎片率（百分比字符串）。</p>
+        r"""碎片率（百分比字符串）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22765,7 +24168,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def Size(self):
-        r"""<p>集合数据大小（字节）。</p>
+        r"""集合数据大小（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22777,7 +24180,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def TotalIndexSize(self):
-        r"""<p>所有索引占用大小（字节）。</p>
+        r"""所有索引占用大小（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22789,7 +24192,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def AvgObjSize(self):
-        r"""<p>平均文档大小（字节）。</p>
+        r"""平均文档大小（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22801,7 +24204,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def StorageSize(self):
-        r"""<p>集合实际占用存储大小（字节，压缩后）。</p>
+        r"""集合实际占用存储大小（字节，压缩后）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22813,7 +24216,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def Count(self):
-        r"""<p>文档数量。</p>
+        r"""文档数量。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -22825,7 +24228,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def CompressionRatio(self):
-        r"""<p>压缩率（百分比字符串）。</p>
+        r"""压缩率（百分比字符串）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -22837,7 +24240,7 @@ class MongoCollectionDetail(AbstractModel):
 
     @property
     def FileReuseBytes(self):
-        r"""<p>可复用文件空间（字节）。</p>
+        r"""可复用文件空间（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23261,28 +24664,28 @@ class MongoDBProcessList(AbstractModel):
 
 
 class MongoDBTableSpaceItem(AbstractModel):
-    r"""MongoDB 产品表级（集合级）空间对象项，描述单个集合的空间使用统计信息。
+    r"""MongoDB 产品集合级空间对象项，包含顶层标识字段与嵌套 Collection 明细。
 
     """
 
     def __init__(self):
         r"""
-        :param _AppId: <p>应用 Id（AppId）。</p>
+        :param _AppId: 应用 Id（AppId）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
-        :param _InstanceId: <p>实例 Id。</p>
+        :param _InstanceId: 实例 Id。
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _Db: <p>数据库名。</p>
+        :param _Db: 数据库名。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Db: str
-        :param _Timestamp: <p>数据采集时间戳（毫秒）。</p>
+        :param _Timestamp: 数据采集时间戳（毫秒）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: int
-        :param _SizeOnDisk: <p>磁盘占用大小（字节）。</p>
+        :param _SizeOnDisk: 磁盘占用大小（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :type SizeOnDisk: int
-        :param _Collection: <p>集合级空间使用明细。</p>
+        :param _Collection: 集合级空间使用明细。
 注意：此字段可能返回 null，表示取不到有效值。
         :type Collection: :class:`tencentcloud.dbbrain.v20210527.models.MongoCollectionDetail`
         """
@@ -23295,7 +24698,7 @@ class MongoDBTableSpaceItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""<p>应用 Id（AppId）。</p>
+        r"""应用 Id（AppId）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23307,7 +24710,7 @@ class MongoDBTableSpaceItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""<p>实例 Id。</p>
+        r"""实例 Id。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23319,7 +24722,7 @@ class MongoDBTableSpaceItem(AbstractModel):
 
     @property
     def Db(self):
-        r"""<p>数据库名。</p>
+        r"""数据库名。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23331,7 +24734,7 @@ class MongoDBTableSpaceItem(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""<p>数据采集时间戳（毫秒）。</p>
+        r"""数据采集时间戳（毫秒）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23343,7 +24746,7 @@ class MongoDBTableSpaceItem(AbstractModel):
 
     @property
     def SizeOnDisk(self):
-        r"""<p>磁盘占用大小（字节）。</p>
+        r"""磁盘占用大小（字节）。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23355,7 +24758,7 @@ class MongoDBTableSpaceItem(AbstractModel):
 
     @property
     def Collection(self):
-        r"""<p>集合级空间使用明细。</p>
+        r"""集合级空间使用明细。
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MongoCollectionDetail`
         """
@@ -23375,6 +24778,66 @@ class MongoDBTableSpaceItem(AbstractModel):
         if params.get("Collection") is not None:
             self._Collection = MongoCollectionDetail()
             self._Collection._deserialize(params.get("Collection"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MongodbSpaceObjectItem(AbstractModel):
+    r"""MongoDB 产品表空间数据对象。对应 V1 底层返回的顶层包装结构，包含集合级空间明细数组 SpaceSchemas 与外层采集时间戳 Timestamp。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceSchemas: <p>集合级空间明细数组。每项含顶层标识字段（AppId/InstanceId/Db/Timestamp/SizeOnDisk）与嵌套 Collection 明细。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpaceSchemas: list of MongoDBTableSpaceItem
+        :param _Timestamp: <p>数据采集时间戳（秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: int
+        """
+        self._SpaceSchemas = None
+        self._Timestamp = None
+
+    @property
+    def SpaceSchemas(self):
+        r"""<p>集合级空间明细数组。每项含顶层标识字段（AppId/InstanceId/Db/Timestamp/SizeOnDisk）与嵌套 Collection 明细。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MongoDBTableSpaceItem
+        """
+        return self._SpaceSchemas
+
+    @SpaceSchemas.setter
+    def SpaceSchemas(self, SpaceSchemas):
+        self._SpaceSchemas = SpaceSchemas
+
+    @property
+    def Timestamp(self):
+        r"""<p>数据采集时间戳（秒）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+
+    def _deserialize(self, params):
+        if params.get("SpaceSchemas") is not None:
+            self._SpaceSchemas = []
+            for item in params.get("SpaceSchemas"):
+                obj = MongoDBTableSpaceItem()
+                obj._deserialize(item)
+                self._SpaceSchemas.append(obj)
+        self._Timestamp = params.get("Timestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23788,7 +25251,7 @@ class MySqlProcess(AbstractModel):
 
 
 class MysqlSpaceObjectItem(AbstractModel):
-    r"""MySQL 系列产品空间对象项。库级查询时不包含 TableName/Engine 字段；表级查询时包含全部字段。
+    r"""MySQL 系列产品空间对象项（单表明细）。
 
     """
 
@@ -23803,6 +25266,9 @@ class MysqlSpaceObjectItem(AbstractModel):
         :param _Engine: <p>存储引擎（Level=TABLE时返回）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Engine: str
+        :param _TableStatus: <p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableStatus: int
         :param _TableRows: <p>行数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableRows: int
@@ -23828,6 +25294,7 @@ class MysqlSpaceObjectItem(AbstractModel):
         self._TableSchema = None
         self._TableName = None
         self._Engine = None
+        self._TableStatus = None
         self._TableRows = None
         self._TotalLength = None
         self._DataLength = None
@@ -23871,6 +25338,18 @@ class MysqlSpaceObjectItem(AbstractModel):
     @Engine.setter
     def Engine(self, Engine):
         self._Engine = Engine
+
+    @property
+    def TableStatus(self):
+        r"""<p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableStatus
+
+    @TableStatus.setter
+    def TableStatus(self, TableStatus):
+        self._TableStatus = TableStatus
 
     @property
     def TableRows(self):
@@ -23961,6 +25440,7 @@ class MysqlSpaceObjectItem(AbstractModel):
         self._TableSchema = params.get("TableSchema")
         self._TableName = params.get("TableName")
         self._Engine = params.get("Engine")
+        self._TableStatus = params.get("TableStatus")
         self._TableRows = params.get("TableRows")
         self._TotalLength = params.get("TotalLength")
         self._DataLength = params.get("DataLength")
@@ -24199,7 +25679,7 @@ class OwnerItem(AbstractModel):
 
 
 class PostgresSpaceObjectItem(AbstractModel):
-    r"""PostgreSQL 产品空间对象项。字段语义与 MySQL 不同：使用 pg_relation_size / pg_total_relation_size 等 PG 特有指标。库级查询时不包含 TableSchema/TableName 字段；表级查询时包含全部字段。
+    r"""PostgreSQL 产品空间对象项（单表明细）。字段语义与 MySQL 不同：使用 pg_relation_size / pg_total_relation_size 等 PG 特有指标。
 
     """
 
@@ -24214,6 +25694,9 @@ class PostgresSpaceObjectItem(AbstractModel):
         :param _TableName: <p>表名（Level=TABLE 时返回）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
+        :param _TableStatus: <p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableStatus: int
         :param _RelationSize: <p>表本身大小（MB），对应 pg_relation_size。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelationSize: float
@@ -24236,6 +25719,7 @@ class PostgresSpaceObjectItem(AbstractModel):
         self._TableCatalog = None
         self._TableSchema = None
         self._TableName = None
+        self._TableStatus = None
         self._RelationSize = None
         self._TableSize = None
         self._IndexSize = None
@@ -24278,6 +25762,18 @@ class PostgresSpaceObjectItem(AbstractModel):
     @TableName.setter
     def TableName(self, TableName):
         self._TableName = TableName
+
+    @property
+    def TableStatus(self):
+        r"""<p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableStatus
+
+    @TableStatus.setter
+    def TableStatus(self, TableStatus):
+        self._TableStatus = TableStatus
 
     @property
     def RelationSize(self):
@@ -24356,6 +25852,7 @@ class PostgresSpaceObjectItem(AbstractModel):
         self._TableCatalog = params.get("TableCatalog")
         self._TableSchema = params.get("TableSchema")
         self._TableName = params.get("TableName")
+        self._TableStatus = params.get("TableStatus")
         self._RelationSize = params.get("RelationSize")
         self._TableSize = params.get("TableSize")
         self._IndexSize = params.get("IndexSize")
@@ -27416,6 +28913,180 @@ class SqlCostDistribution(AbstractModel):
         self._From = params.get("From")
         self._To = params.get("To")
         self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlServerSpaceObjectItem(AbstractModel):
+    r"""SQL Server 产品空间对象项（单表明细）。字段命名与 MySQL 同构（TableSchema/TableName/Engine/TableRows/TotalLength/DataLength/IndexLength/DataFree，单位 MB），无 FragRatio / PhysicalFileSize。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableSchema: <p>数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableSchema: str
+        :param _TableName: <p>表名（库内限定名 schema.table，如 dbo.users）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _Engine: <p>存储引擎标识，固定为 SqlServer。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Engine: str
+        :param _TableStatus: <p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableStatus: int
+        :param _TableRows: <p>行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableRows: int
+        :param _TotalLength: <p>总使用空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalLength: float
+        :param _DataLength: <p>数据空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataLength: float
+        :param _IndexLength: <p>索引空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexLength: float
+        :param _DataFree: <p>碎片空间（MB），对应保留空洞 reserved-used。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataFree: float
+        """
+        self._TableSchema = None
+        self._TableName = None
+        self._Engine = None
+        self._TableStatus = None
+        self._TableRows = None
+        self._TotalLength = None
+        self._DataLength = None
+        self._IndexLength = None
+        self._DataFree = None
+
+    @property
+    def TableSchema(self):
+        r"""<p>数据库名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+    @property
+    def TableName(self):
+        r"""<p>表名（库内限定名 schema.table，如 dbo.users）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def Engine(self):
+        r"""<p>存储引擎标识，固定为 SqlServer。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def TableStatus(self):
+        r"""<p>表状态（仅单表查询 DescribeTableSpaceDataV2 返回；取值：-1 表示库表最新一次采集不到或实例超限不拉取，0 正在拉取，1 拉取完成；该字段仅针对实例级别）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableStatus
+
+    @TableStatus.setter
+    def TableStatus(self, TableStatus):
+        self._TableStatus = TableStatus
+
+    @property
+    def TableRows(self):
+        r"""<p>行数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TableRows
+
+    @TableRows.setter
+    def TableRows(self, TableRows):
+        self._TableRows = TableRows
+
+    @property
+    def TotalLength(self):
+        r"""<p>总使用空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TotalLength
+
+    @TotalLength.setter
+    def TotalLength(self, TotalLength):
+        self._TotalLength = TotalLength
+
+    @property
+    def DataLength(self):
+        r"""<p>数据空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._DataLength
+
+    @DataLength.setter
+    def DataLength(self, DataLength):
+        self._DataLength = DataLength
+
+    @property
+    def IndexLength(self):
+        r"""<p>索引空间（MB）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._IndexLength
+
+    @IndexLength.setter
+    def IndexLength(self, IndexLength):
+        self._IndexLength = IndexLength
+
+    @property
+    def DataFree(self):
+        r"""<p>碎片空间（MB），对应保留空洞 reserved-used。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._DataFree
+
+    @DataFree.setter
+    def DataFree(self, DataFree):
+        self._DataFree = DataFree
+
+
+    def _deserialize(self, params):
+        self._TableSchema = params.get("TableSchema")
+        self._TableName = params.get("TableName")
+        self._Engine = params.get("Engine")
+        self._TableStatus = params.get("TableStatus")
+        self._TableRows = params.get("TableRows")
+        self._TotalLength = params.get("TotalLength")
+        self._DataLength = params.get("DataLength")
+        self._IndexLength = params.get("IndexLength")
+        self._DataFree = params.get("DataFree")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

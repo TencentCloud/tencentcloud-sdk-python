@@ -15117,19 +15117,20 @@ class AigcVideoSceneInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: AI生视频场景类型，可选值：
-- product_showcase： 产品360度展示。
+        :param _Type: <p>AIGC 生视频场景类型。</p><p>枚举值：</p><ul><li>product_showcase：  产品360度展示。</li><li>character_scene： 角色场景。</li></ul>
         :type Type: str
-        :param _ProductShowcaseConfig: 产品展示参数
+        :param _ProductShowcaseConfig: <p>产品展示参数配置。</p>
         :type ProductShowcaseConfig: :class:`tencentcloud.vod.v20180717.models.ProductShowcaseConfig`
+        :param _CharacterSceneConfig: <p>角色场景参数配置。</p>
+        :type CharacterSceneConfig: :class:`tencentcloud.vod.v20180717.models.CharacterSceneConfig`
         """
         self._Type = None
         self._ProductShowcaseConfig = None
+        self._CharacterSceneConfig = None
 
     @property
     def Type(self):
-        r"""AI生视频场景类型，可选值：
-- product_showcase： 产品360度展示。
+        r"""<p>AIGC 生视频场景类型。</p><p>枚举值：</p><ul><li>product_showcase：  产品360度展示。</li><li>character_scene： 角色场景。</li></ul>
         :rtype: str
         """
         return self._Type
@@ -15140,7 +15141,7 @@ class AigcVideoSceneInfo(AbstractModel):
 
     @property
     def ProductShowcaseConfig(self):
-        r"""产品展示参数
+        r"""<p>产品展示参数配置。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProductShowcaseConfig`
         """
         return self._ProductShowcaseConfig
@@ -15149,12 +15150,26 @@ class AigcVideoSceneInfo(AbstractModel):
     def ProductShowcaseConfig(self, ProductShowcaseConfig):
         self._ProductShowcaseConfig = ProductShowcaseConfig
 
+    @property
+    def CharacterSceneConfig(self):
+        r"""<p>角色场景参数配置。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CharacterSceneConfig`
+        """
+        return self._CharacterSceneConfig
+
+    @CharacterSceneConfig.setter
+    def CharacterSceneConfig(self, CharacterSceneConfig):
+        self._CharacterSceneConfig = CharacterSceneConfig
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         if params.get("ProductShowcaseConfig") is not None:
             self._ProductShowcaseConfig = ProductShowcaseConfig()
             self._ProductShowcaseConfig._deserialize(params.get("ProductShowcaseConfig"))
+        if params.get("CharacterSceneConfig") is not None:
+            self._CharacterSceneConfig = CharacterSceneConfig()
+            self._CharacterSceneConfig._deserialize(params.get("CharacterSceneConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19748,6 +19763,57 @@ class ChangeClothesConfig(AbstractModel):
                 obj._deserialize(item)
                 self._ClothesFileInfos.append(obj)
         self._Prompt = params.get("Prompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CharacterSceneConfig(AbstractModel):
+    r"""角色场景配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>模型。</p><p>枚举值：</p><ul><li>character_scene_standard： 标准。</li><li>character_scene_mini： 轻量。</li><li>character_scene_fast： 快速。</li></ul>
+        :type Model: str
+        :param _PromptMode: <p>提示词模式。</p><p>枚举值：</p><ul><li>Standard： 标准模式，自行填写提示词。</li><li>Dynamic： 动态模式，由大模型根据参考素材产生提示词。</li></ul><p>默认值：Standard</p>
+        :type PromptMode: str
+        """
+        self._Model = None
+        self._PromptMode = None
+
+    @property
+    def Model(self):
+        r"""<p>模型。</p><p>枚举值：</p><ul><li>character_scene_standard： 标准。</li><li>character_scene_mini： 轻量。</li><li>character_scene_fast： 快速。</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def PromptMode(self):
+        r"""<p>提示词模式。</p><p>枚举值：</p><ul><li>Standard： 标准模式，自行填写提示词。</li><li>Dynamic： 动态模式，由大模型根据参考素材产生提示词。</li></ul><p>默认值：Standard</p>
+        :rtype: str
+        """
+        return self._PromptMode
+
+    @PromptMode.setter
+    def PromptMode(self, PromptMode):
+        self._PromptMode = PromptMode
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._PromptMode = params.get("PromptMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93328,20 +93394,20 @@ class SceneAigcVideoOutputConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageMode: 存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
-默认值：Temporary
+        :param _StorageMode: <p>存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p><p>当使用角色场景时，不支持指定为 Permanent。</p>
         :type StorageMode: str
-        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :param _MediaName: <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
         :type MediaName: str
-        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>
         :type ClassId: int
-        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type ExpireTime: str
-        :param _AspectRatio: 指定所生成视频的宽高比。输入格式为 W:H。仅生商品图场景有效。可选：16:9、9:16。
+        :param _AspectRatio: <p>指定所生成视频的宽高比。输入格式为 W:H。</p><ul><li>当生商品图场景时，可选：16:9、9:16。</li><li>当角色场景时，可选：21:9、16:9、9:16、4:3、3:4、1:1。</li></ul>
         :type AspectRatio: str
-        :param _Duration: 生成视频时长。可选值4、6、8秒
+        :param _Duration: <p>生成视频时长。</p><ul><li>当使用生商品图场景时，可选值4、6、8秒。</li><li>当使用角色场景时，可选值为4到15秒。</li></ul>
         :type Duration: float
+        :param _Resolution: <p>分辨率。仅当角色场景时有效。取值如下：</p><ul><li>当 Model 是 character_scene_standard 时，支持 480p、720p、1080p、4K；</li><li>当 Model 是 character_scene_mini 时，支持 480p、720p；</li><li>当 Model 是 character_scene_fast 时，支持 720p。</li></ul>
+        :type Resolution: str
         """
         self._StorageMode = None
         self._MediaName = None
@@ -93349,11 +93415,11 @@ class SceneAigcVideoOutputConfig(AbstractModel):
         self._ExpireTime = None
         self._AspectRatio = None
         self._Duration = None
+        self._Resolution = None
 
     @property
     def StorageMode(self):
-        r"""存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
-默认值：Temporary
+        r"""<p>存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p><p>当使用角色场景时，不支持指定为 Permanent。</p>
         :rtype: str
         """
         return self._StorageMode
@@ -93364,7 +93430,7 @@ class SceneAigcVideoOutputConfig(AbstractModel):
 
     @property
     def MediaName(self):
-        r"""输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        r"""<p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
         :rtype: str
         """
         return self._MediaName
@@ -93375,8 +93441,7 @@ class SceneAigcVideoOutputConfig(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>
         :rtype: int
         """
         return self._ClassId
@@ -93387,7 +93452,7 @@ class SceneAigcVideoOutputConfig(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -93398,7 +93463,7 @@ class SceneAigcVideoOutputConfig(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""指定所生成视频的宽高比。输入格式为 W:H。仅生商品图场景有效。可选：16:9、9:16。
+        r"""<p>指定所生成视频的宽高比。输入格式为 W:H。</p><ul><li>当生商品图场景时，可选：16:9、9:16。</li><li>当角色场景时，可选：21:9、16:9、9:16、4:3、3:4、1:1。</li></ul>
         :rtype: str
         """
         return self._AspectRatio
@@ -93409,7 +93474,7 @@ class SceneAigcVideoOutputConfig(AbstractModel):
 
     @property
     def Duration(self):
-        r"""生成视频时长。可选值4、6、8秒
+        r"""<p>生成视频时长。</p><ul><li>当使用生商品图场景时，可选值4、6、8秒。</li><li>当使用角色场景时，可选值为4到15秒。</li></ul>
         :rtype: float
         """
         return self._Duration
@@ -93417,6 +93482,17 @@ class SceneAigcVideoOutputConfig(AbstractModel):
     @Duration.setter
     def Duration(self, Duration):
         self._Duration = Duration
+
+    @property
+    def Resolution(self):
+        r"""<p>分辨率。仅当角色场景时有效。取值如下：</p><ul><li>当 Model 是 character_scene_standard 时，支持 480p、720p、1080p、4K；</li><li>当 Model 是 character_scene_mini 时，支持 480p、720p；</li><li>当 Model 是 character_scene_fast 时，支持 720p。</li></ul>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
 
 
     def _deserialize(self, params):
@@ -93426,6 +93502,7 @@ class SceneAigcVideoOutputConfig(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._AspectRatio = params.get("AspectRatio")
         self._Duration = params.get("Duration")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

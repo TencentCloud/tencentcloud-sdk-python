@@ -15670,7 +15670,7 @@ class DescribeModelNamesRequest(AbstractModel):
         :type Limit: int
         :param _VpcId: <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
         :type VpcId: str
-        :param _Filters: <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照模态过滤。</li></ul>
+        :param _Filters: <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照输入模态过滤。</li><li>Capability：按照输出模态过滤。</li></ul>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -15713,7 +15713,7 @@ class DescribeModelNamesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照模态过滤。</li></ul>
+        r"""<p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照输入模态过滤。</li><li>Capability：按照输出模态过滤。</li></ul>
         :rtype: list of Filter
         """
         return self._Filters
@@ -21001,8 +21001,11 @@ class IntentRouterDecisionModelConfig(AbstractModel):
         r"""
         :param _Enabled: <p>是否开启使用决策模型</p>
         :type Enabled: bool
+        :param _ModelName: <p>选定的分类决策模型名，不传递表示随机选用。</p>
+        :type ModelName: str
         """
         self._Enabled = None
+        self._ModelName = None
 
     @property
     def Enabled(self):
@@ -21015,9 +21018,21 @@ class IntentRouterDecisionModelConfig(AbstractModel):
     def Enabled(self, Enabled):
         self._Enabled = Enabled
 
+    @property
+    def ModelName(self):
+        r"""<p>选定的分类决策模型名，不传递表示随机选用。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        self._ModelName = params.get("ModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25561,7 +25576,7 @@ class ModelAssociation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputModalitiesUnion: <p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :param _InputModalitiesUnion: <p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
         :type InputModalitiesUnion: list of str
         :param _ModelName: <p>模型名称</p>
         :type ModelName: str
@@ -25580,7 +25595,7 @@ class ModelAssociation(AbstractModel):
 
     @property
     def InputModalitiesUnion(self):
-        r"""<p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        r"""<p>该模型最大可支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
         :rtype: list of str
         """
         return self._InputModalitiesUnion
@@ -25662,7 +25677,7 @@ class ModelAvailability(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputModalities: <p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :param _InputModalities: <p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
         :type InputModalities: list of str
         :param _Model: <p>模型</p>
         :type Model: str
@@ -25675,7 +25690,7 @@ class ModelAvailability(AbstractModel):
 
     @property
     def InputModalities(self):
-        r"""<p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        r"""<p>该模型所有健康BYOK实例下支持的输入多模态能力的并集。模型不健康时返回空列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
         :rtype: list of str
         """
         return self._InputModalities
@@ -25796,7 +25811,7 @@ class ModelItem(AbstractModel):
         r"""
         :param _ModelId: <p>模型唯一标识, 用于实际访问</p>
         :type ModelId: str
-        :param _InputModalities: <p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+        :param _InputModalities: <p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul><p>默认值：text</p>
         :type InputModalities: list of str
         :param _ModelAlias: <p>模型别名, 可以用于实际访问</p>
         :type ModelAlias: str
@@ -25818,7 +25833,7 @@ class ModelItem(AbstractModel):
 
     @property
     def InputModalities(self):
-        r"""<p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>默认值：text</p>
+        r"""<p>该模型当前支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul><p>默认值：text</p>
         :rtype: list of str
         """
         return self._InputModalities
@@ -26294,7 +26309,7 @@ class ModelNameAggregatedItem(AbstractModel):
         :type ModelName: str
         :param _ServiceProviders: <p>关联的服务商列表</p>
         :type ServiceProviders: list of ServiceProviderItem
-        :param _InputModalitiesUnion: <p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :param _InputModalitiesUnion: <p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
         :type InputModalitiesUnion: list of str
         """
         self._ModelName = None
@@ -26325,7 +26340,7 @@ class ModelNameAggregatedItem(AbstractModel):
 
     @property
     def InputModalitiesUnion(self):
-        r"""<p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        r"""<p>该模型最大可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
         :rtype: list of str
         """
         return self._InputModalitiesUnion
@@ -26567,6 +26582,8 @@ class ModelRouterDetail(AbstractModel):
         :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
         :param _ImageConfig: <p>Images 生图配置</p>
         :type ImageConfig: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
+        :param _RedirectConfig: <p>实例重定向配置</p>
+        :type RedirectConfig: :class:`tencentcloud.clb.v20180317.models.RedirectConfig`
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -26599,6 +26616,7 @@ class ModelRouterDetail(AbstractModel):
         self._RerankConfig = None
         self._DecisionsConfig = None
         self._ImageConfig = None
+        self._RedirectConfig = None
 
     @property
     def BudgetId(self):
@@ -26947,6 +26965,17 @@ class ModelRouterDetail(AbstractModel):
     def ImageConfig(self, ImageConfig):
         self._ImageConfig = ImageConfig
 
+    @property
+    def RedirectConfig(self):
+        r"""<p>实例重定向配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RedirectConfig`
+        """
+        return self._RedirectConfig
+
+    @RedirectConfig.setter
+    def RedirectConfig(self, RedirectConfig):
+        self._RedirectConfig = RedirectConfig
+
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
@@ -27013,6 +27042,9 @@ class ModelRouterDetail(AbstractModel):
         if params.get("ImageConfig") is not None:
             self._ImageConfig = ImageConfig()
             self._ImageConfig._deserialize(params.get("ImageConfig"))
+        if params.get("RedirectConfig") is not None:
+            self._RedirectConfig = RedirectConfig()
+            self._RedirectConfig._deserialize(params.get("RedirectConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27965,6 +27997,8 @@ class ModelRouterSet(AbstractModel):
         :type EipAddressId: str
         :param _BillingConfig: <p>计费信息</p>
         :type BillingConfig: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigOutput`
+        :param _RedirectConfig: <p>实例重定向配置</p>
+        :type RedirectConfig: :class:`tencentcloud.clb.v20180317.models.RedirectConfig`
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -27986,6 +28020,7 @@ class ModelRouterSet(AbstractModel):
         self._Bandwidth = None
         self._EipAddressId = None
         self._BillingConfig = None
+        self._RedirectConfig = None
 
     @property
     def BudgetId(self):
@@ -28210,6 +28245,17 @@ class ModelRouterSet(AbstractModel):
     def BillingConfig(self, BillingConfig):
         self._BillingConfig = BillingConfig
 
+    @property
+    def RedirectConfig(self):
+        r"""<p>实例重定向配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RedirectConfig`
+        """
+        return self._RedirectConfig
+
+    @RedirectConfig.setter
+    def RedirectConfig(self, RedirectConfig):
+        self._RedirectConfig = RedirectConfig
+
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
@@ -28246,6 +28292,9 @@ class ModelRouterSet(AbstractModel):
         if params.get("BillingConfig") is not None:
             self._BillingConfig = ModelRouterBillingConfigOutput()
             self._BillingConfig._deserialize(params.get("BillingConfig"))
+        if params.get("RedirectConfig") is not None:
+            self._RedirectConfig = RedirectConfig()
+            self._RedirectConfig._deserialize(params.get("RedirectConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30827,6 +30876,12 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         :type DecisionsConfig: :class:`tencentcloud.clb.v20180317.models.DecisionsConfig`
         :param _ImageConfig: <p>Images 生图配置</p>
         :type ImageConfig: :class:`tencentcloud.clb.v20180317.models.ImageConfig`
+        :param _RedirectConfig: <p>实例重定向配置</p>
+        :type RedirectConfig: :class:`tencentcloud.clb.v20180317.models.RedirectConfig`
+        :param _Schema: <p>网络协议</p>
+        :type Schema: str
+        :param _Port: <p>监听端口</p><p>取值范围：[1, 65535]</p>
+        :type Port: int
         """
         self._ModelRouterId = None
         self._CertId = None
@@ -30840,6 +30895,9 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         self._RerankConfig = None
         self._DecisionsConfig = None
         self._ImageConfig = None
+        self._RedirectConfig = None
+        self._Schema = None
+        self._Port = None
 
     @property
     def ModelRouterId(self):
@@ -30973,6 +31031,39 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
     def ImageConfig(self, ImageConfig):
         self._ImageConfig = ImageConfig
 
+    @property
+    def RedirectConfig(self):
+        r"""<p>实例重定向配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RedirectConfig`
+        """
+        return self._RedirectConfig
+
+    @RedirectConfig.setter
+    def RedirectConfig(self, RedirectConfig):
+        self._RedirectConfig = RedirectConfig
+
+    @property
+    def Schema(self):
+        r"""<p>网络协议</p>
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def Port(self):
+        r"""<p>监听端口</p><p>取值范围：[1, 65535]</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
 
     def _deserialize(self, params):
         self._ModelRouterId = params.get("ModelRouterId")
@@ -31001,6 +31092,11 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         if params.get("ImageConfig") is not None:
             self._ImageConfig = ImageConfig()
             self._ImageConfig._deserialize(params.get("ImageConfig"))
+        if params.get("RedirectConfig") is not None:
+            self._RedirectConfig = RedirectConfig()
+            self._RedirectConfig._deserialize(params.get("RedirectConfig"))
+        self._Schema = params.get("Schema")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32454,7 +32550,7 @@ class MultiModalityAttachments(AbstractModel):
         r"""
         :param _Data: <p>base64 url编码的文件内容</p>
         :type Data: str
-        :param _Type: <p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li></ul>
+        :param _Type: <p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li><li>video： 视频</li></ul>
         :type Type: str
         """
         self._Data = None
@@ -32473,7 +32569,7 @@ class MultiModalityAttachments(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li></ul>
+        r"""<p>附件类型</p><p>枚举值：</p><ul><li>image： 图像</li><li>pdf： pdf（文件）</li><li>video： 视频</li></ul>
         :rtype: str
         """
         return self._Type
@@ -33024,6 +33120,57 @@ class RateLimitConfigForModelRouter(AbstractModel):
     def _deserialize(self, params):
         self._RPM = params.get("RPM")
         self._TPM = params.get("TPM")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedirectConfig(AbstractModel):
+    r"""重定向配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: <p>重定向状态码</p><p>枚举值：</p><ul><li>301： 永久重定向</li><li>302： 临时重定向</li><li>303： 查看其他位置</li><li>307： 临时重定向（保留请求方法）</li><li>308： 永久重定向（保留请求方法）</li></ul>
+        :type StatusCode: int
+        :param _TargetUrl: <p>目标地址，填写为空表示关闭重定向。不支持路径填写。</p>
+        :type TargetUrl: str
+        """
+        self._StatusCode = None
+        self._TargetUrl = None
+
+    @property
+    def StatusCode(self):
+        r"""<p>重定向状态码</p><p>枚举值：</p><ul><li>301： 永久重定向</li><li>302： 临时重定向</li><li>303： 查看其他位置</li><li>307： 临时重定向（保留请求方法）</li><li>308： 永久重定向（保留请求方法）</li></ul>
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def TargetUrl(self):
+        r"""<p>目标地址，填写为空表示关闭重定向。不支持路径填写。</p>
+        :rtype: str
+        """
+        return self._TargetUrl
+
+    @TargetUrl.setter
+    def TargetUrl(self, TargetUrl):
+        self._TargetUrl = TargetUrl
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._TargetUrl = params.get("TargetUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36192,7 +36339,7 @@ class ServiceProvider(AbstractModel):
         r"""
         :param _AccessType: <p>BYOK类型</p>
         :type AccessType: str
-        :param _InputModalities: <p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+        :param _InputModalities: <p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li><li>video： 支持视频输入</li></ul>
         :type InputModalities: list of str
         :param _Protocol: <p>模型协议</p>
         :type Protocol: str
@@ -36232,7 +36379,7 @@ class ServiceProvider(AbstractModel):
 
     @property
     def InputModalities(self):
-        r"""<p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+        r"""<p>单个byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li><li>video： 支持视频输入</li></ul>
         :rtype: list of str
         """
         return self._InputModalities
@@ -36821,7 +36968,7 @@ class ServiceProviderItem(AbstractModel):
         :type ServiceProviderName: str
         :param _ModelProvider: <p>模型供应商</p>
         :type ModelProvider: str
-        :param _InputModalities: <p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+        :param _InputModalities: <p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li><li>video： 支持视频输入</li></ul>
         :type InputModalities: list of str
         """
         self._ServiceProviderId = None
@@ -36865,7 +37012,7 @@ class ServiceProviderItem(AbstractModel):
 
     @property
     def InputModalities(self):
-        r"""<p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li></ul>
+        r"""<p>该byok实例下该模型可支持的输入多模态能力列表。</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>image： 支持图像输入</li><li>video： 支持视频输入</li></ul>
         :rtype: list of str
         """
         return self._InputModalities
@@ -37799,7 +37946,7 @@ class StickyConfig(AbstractModel):
         r"""
         :param _Enabled: <p>是否开启粘连路由</p>
         :type Enabled: bool
-        :param _TimeoutSeconds: <p>会话粘性的超时时间（秒），取值范围 1–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[1, 86400]</p><p>单位：秒</p><p>默认值：1800</p>
+        :param _TimeoutSeconds: <p>会话粘性的超时时间（秒），取值范围 180–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
         :type TimeoutSeconds: int
         """
         self._Enabled = None
@@ -37818,7 +37965,7 @@ class StickyConfig(AbstractModel):
 
     @property
     def TimeoutSeconds(self):
-        r"""<p>会话粘性的超时时间（秒），取值范围 1–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[1, 86400]</p><p>单位：秒</p><p>默认值：1800</p>
+        r"""<p>会话粘性的超时时间（秒），取值范围 180–86400。创建时默认为 1800；修改时若不设置该字段，则保留原有值。</p><p>取值范围：[180, 21600]</p><p>单位：秒</p><p>默认值：1800</p>
         :rtype: int
         """
         return self._TimeoutSeconds
@@ -39610,7 +39757,7 @@ class TestModelInputModalitiesResponse(AbstractModel):
         r"""
         :param _Model: <p>探测的模型</p>
         :type Model: str
-        :param _SupportedModalities: <p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
+        :param _SupportedModalities: <p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
         :type SupportedModalities: list of str
         :param _ProbeDetails: <p>每个待探测模态的详细请求结果</p>
         :type ProbeDetails: list of ModalityProbeDetail
@@ -39635,7 +39782,7 @@ class TestModelInputModalitiesResponse(AbstractModel):
 
     @property
     def SupportedModalities(self):
-        r"""<p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
+        r"""<p>该模型确认支持的输入模态列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul><p>收到上游大模型对于输入模态的响应即为“确认支持”</p>
         :rtype: list of str
         """
         return self._SupportedModalities
