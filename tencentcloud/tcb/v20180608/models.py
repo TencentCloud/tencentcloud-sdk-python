@@ -398,209 +398,6 @@ class AIModelStatus(AbstractModel):
         
 
 
-class APIsUserKeyInfo(AbstractModel):
-    r"""用户密钥对管理
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Name: <p>用户创建的集成的名称</p>
-        :type Name: str
-        :param _Description: <p>用户对创建的集成的描述</p>
-        :type Description: str
-        :param _KeyID: <p>集成ID，用户创建的集成的标识id，前半部分用户填写，后半部分平台按照一定规则生成</p>
-        :type KeyID: str
-        :param _Ext: <p>额外信息,根据集成类型不同，ext会有不同的子结构</p>
-        :type Ext: str
-        :param _AuthTypeCode: <p>集成类型Code</p>
-        :type AuthTypeCode: str
-        :param _Status: <p>状态</p>
-        :type Status: str
-        :param _BindServiceList: <p>引用该集成的服务列表</p>
-        :type BindServiceList: :class:`tencentcloud.tcb.v20180608.models.BindServiceList`
-        :param _AuthTypeName: <p>AuthTypeName 和AuthType 分别1-1对应</p>
-        :type AuthTypeName: str
-        :param _TicketID: <p>github、gitlab、gitee、腾讯会议等oauth类型的，需要传这个ticket_id，创建的密钥对跟auth_ticket_token(对于github、gitlab、gitee)、weda_ticket_token(对于腾讯会议)关联起来</p>
-        :type TicketID: str
-        :param _DemoCodeFunctionName: <p>用户在创建(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)这五种之一时创建的关联的示例代码云函数的函数名</p>
-        :type DemoCodeFunctionName: str
-        :param _CreateAt: <p>创建时间</p><p>参数格式：2026-05-25T11:18:28+08:00</p>
-        :type CreateAt: str
-        :param _UpdateAt: <p>更新时间</p><p>参数格式：2026-05-25T11:18:28+08:00</p>
-        :type UpdateAt: str
-        """
-        self._Name = None
-        self._Description = None
-        self._KeyID = None
-        self._Ext = None
-        self._AuthTypeCode = None
-        self._Status = None
-        self._BindServiceList = None
-        self._AuthTypeName = None
-        self._TicketID = None
-        self._DemoCodeFunctionName = None
-        self._CreateAt = None
-        self._UpdateAt = None
-
-    @property
-    def Name(self):
-        r"""<p>用户创建的集成的名称</p>
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Description(self):
-        r"""<p>用户对创建的集成的描述</p>
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def KeyID(self):
-        r"""<p>集成ID，用户创建的集成的标识id，前半部分用户填写，后半部分平台按照一定规则生成</p>
-        :rtype: str
-        """
-        return self._KeyID
-
-    @KeyID.setter
-    def KeyID(self, KeyID):
-        self._KeyID = KeyID
-
-    @property
-    def Ext(self):
-        r"""<p>额外信息,根据集成类型不同，ext会有不同的子结构</p>
-        :rtype: str
-        """
-        return self._Ext
-
-    @Ext.setter
-    def Ext(self, Ext):
-        self._Ext = Ext
-
-    @property
-    def AuthTypeCode(self):
-        r"""<p>集成类型Code</p>
-        :rtype: str
-        """
-        return self._AuthTypeCode
-
-    @AuthTypeCode.setter
-    def AuthTypeCode(self, AuthTypeCode):
-        self._AuthTypeCode = AuthTypeCode
-
-    @property
-    def Status(self):
-        r"""<p>状态</p>
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def BindServiceList(self):
-        r"""<p>引用该集成的服务列表</p>
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.BindServiceList`
-        """
-        return self._BindServiceList
-
-    @BindServiceList.setter
-    def BindServiceList(self, BindServiceList):
-        self._BindServiceList = BindServiceList
-
-    @property
-    def AuthTypeName(self):
-        r"""<p>AuthTypeName 和AuthType 分别1-1对应</p>
-        :rtype: str
-        """
-        return self._AuthTypeName
-
-    @AuthTypeName.setter
-    def AuthTypeName(self, AuthTypeName):
-        self._AuthTypeName = AuthTypeName
-
-    @property
-    def TicketID(self):
-        r"""<p>github、gitlab、gitee、腾讯会议等oauth类型的，需要传这个ticket_id，创建的密钥对跟auth_ticket_token(对于github、gitlab、gitee)、weda_ticket_token(对于腾讯会议)关联起来</p>
-        :rtype: str
-        """
-        return self._TicketID
-
-    @TicketID.setter
-    def TicketID(self, TicketID):
-        self._TicketID = TicketID
-
-    @property
-    def DemoCodeFunctionName(self):
-        r"""<p>用户在创建(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)这五种之一时创建的关联的示例代码云函数的函数名</p>
-        :rtype: str
-        """
-        return self._DemoCodeFunctionName
-
-    @DemoCodeFunctionName.setter
-    def DemoCodeFunctionName(self, DemoCodeFunctionName):
-        self._DemoCodeFunctionName = DemoCodeFunctionName
-
-    @property
-    def CreateAt(self):
-        r"""<p>创建时间</p><p>参数格式：2026-05-25T11:18:28+08:00</p>
-        :rtype: str
-        """
-        return self._CreateAt
-
-    @CreateAt.setter
-    def CreateAt(self, CreateAt):
-        self._CreateAt = CreateAt
-
-    @property
-    def UpdateAt(self):
-        r"""<p>更新时间</p><p>参数格式：2026-05-25T11:18:28+08:00</p>
-        :rtype: str
-        """
-        return self._UpdateAt
-
-    @UpdateAt.setter
-    def UpdateAt(self, UpdateAt):
-        self._UpdateAt = UpdateAt
-
-
-    def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._Description = params.get("Description")
-        self._KeyID = params.get("KeyID")
-        self._Ext = params.get("Ext")
-        self._AuthTypeCode = params.get("AuthTypeCode")
-        self._Status = params.get("Status")
-        if params.get("BindServiceList") is not None:
-            self._BindServiceList = BindServiceList()
-            self._BindServiceList._deserialize(params.get("BindServiceList"))
-        self._AuthTypeName = params.get("AuthTypeName")
-        self._TicketID = params.get("TicketID")
-        self._DemoCodeFunctionName = params.get("DemoCodeFunctionName")
-        self._CreateAt = params.get("CreateAt")
-        self._UpdateAt = params.get("UpdateAt")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class AddProviderRequest(AbstractModel):
     r"""AddProvider请求参数结构体
 
@@ -879,134 +676,6 @@ class AddProviderResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class AgentRuntimeCode(AbstractModel):
-    r"""Agent 云函数代码
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _CosBucketName: 对象存储桶名称
-        :type CosBucketName: str
-        :param _CosObjectName: 对象存储中代码包文件路径，以/开头
-        :type CosObjectName: str
-        :param _ZipFile: 包含函数代码文件及其依赖项的 zip 格式文件，zip包大小上限为 50MB，使用该接口时要求将 zip 文件的内容转成 base64 编码
-        :type ZipFile: str
-        :param _CosBucketRegion: 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
-        :type CosBucketRegion: str
-        :param _TempCosObjectName: 如果是从TempCos创建的话，需要传入TempCosObjectName
-        :type TempCosObjectName: str
-        :param _ImageConfig: 镜像部署时配置TCR镜像信息
-        :type ImageConfig: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeCodeImageConfig`
-        :param _DemoId: 云函数DemoId
-        :type DemoId: str
-        """
-        self._CosBucketName = None
-        self._CosObjectName = None
-        self._ZipFile = None
-        self._CosBucketRegion = None
-        self._TempCosObjectName = None
-        self._ImageConfig = None
-        self._DemoId = None
-
-    @property
-    def CosBucketName(self):
-        r"""对象存储桶名称
-        :rtype: str
-        """
-        return self._CosBucketName
-
-    @CosBucketName.setter
-    def CosBucketName(self, CosBucketName):
-        self._CosBucketName = CosBucketName
-
-    @property
-    def CosObjectName(self):
-        r"""对象存储中代码包文件路径，以/开头
-        :rtype: str
-        """
-        return self._CosObjectName
-
-    @CosObjectName.setter
-    def CosObjectName(self, CosObjectName):
-        self._CosObjectName = CosObjectName
-
-    @property
-    def ZipFile(self):
-        r"""包含函数代码文件及其依赖项的 zip 格式文件，zip包大小上限为 50MB，使用该接口时要求将 zip 文件的内容转成 base64 编码
-        :rtype: str
-        """
-        return self._ZipFile
-
-    @ZipFile.setter
-    def ZipFile(self, ZipFile):
-        self._ZipFile = ZipFile
-
-    @property
-    def CosBucketRegion(self):
-        r"""对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
-        :rtype: str
-        """
-        return self._CosBucketRegion
-
-    @CosBucketRegion.setter
-    def CosBucketRegion(self, CosBucketRegion):
-        self._CosBucketRegion = CosBucketRegion
-
-    @property
-    def TempCosObjectName(self):
-        r"""如果是从TempCos创建的话，需要传入TempCosObjectName
-        :rtype: str
-        """
-        return self._TempCosObjectName
-
-    @TempCosObjectName.setter
-    def TempCosObjectName(self, TempCosObjectName):
-        self._TempCosObjectName = TempCosObjectName
-
-    @property
-    def ImageConfig(self):
-        r"""镜像部署时配置TCR镜像信息
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeCodeImageConfig`
-        """
-        return self._ImageConfig
-
-    @ImageConfig.setter
-    def ImageConfig(self, ImageConfig):
-        self._ImageConfig = ImageConfig
-
-    @property
-    def DemoId(self):
-        r"""云函数DemoId
-        :rtype: str
-        """
-        return self._DemoId
-
-    @DemoId.setter
-    def DemoId(self, DemoId):
-        self._DemoId = DemoId
-
-
-    def _deserialize(self, params):
-        self._CosBucketName = params.get("CosBucketName")
-        self._CosObjectName = params.get("CosObjectName")
-        self._ZipFile = params.get("ZipFile")
-        self._CosBucketRegion = params.get("CosBucketRegion")
-        self._TempCosObjectName = params.get("TempCosObjectName")
-        if params.get("ImageConfig") is not None:
-            self._ImageConfig = AgentRuntimeCodeImageConfig()
-            self._ImageConfig._deserialize(params.get("ImageConfig"))
-        self._DemoId = params.get("DemoId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class AgentRuntimeCodeImageConfig(AbstractModel):
     r"""Agent 创建云函数镜像配置
 
@@ -1108,287 +777,6 @@ class AgentRuntimeCodeImageConfig(AbstractModel):
         self._Command = params.get("Command")
         self._Args = params.get("Args")
         self._ContainerImageAccelerate = params.get("ContainerImageAccelerate")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AgentRuntimeConfig(AbstractModel):
-    r"""Agent 云函数配置
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Code: 函数代码. 注意：不能同时指定Cos和ZipFile
-        :type Code: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeCode`
-        :param _Runtime: 函数运行环境，默认Python2.7
-目前支持的运行环境：
-- Python2.7
-- Python3.6
-- Python3.7
-- Python3.9
-- Python3.10
-- Nodejs6.10
-- Nodejs8.9
-- Nodejs10.15
-- Nodejs12.16
-- Nodejs14.18
-- Nodejs16.13
-- Nodejs18.15
-- Php5.6
-- Php7(7.2版本)
-- Php7.4
-- Php8.0
-- Go1
-- Java8
-- CustomRuntime
-        :type Runtime: str
-        :param _MemorySize: 函数运行时内存大小，默认为 128M，可选范围 64、128MB-3072MB，并且以 128MB 为阶梯
-        :type MemorySize: int
-        :param _InstallDependency: 函数是否自动安装依赖
-        :type InstallDependency: bool
-        :param _Timeout: 函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒
-        :type Timeout: int
-        :param _Environment: 函数的环境变量，满足json格式
-        :type Environment: str
-        :param _SessionConfig: Agent Session 配置
-        :type SessionConfig: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeSessionConfig`
-        """
-        self._Code = None
-        self._Runtime = None
-        self._MemorySize = None
-        self._InstallDependency = None
-        self._Timeout = None
-        self._Environment = None
-        self._SessionConfig = None
-
-    @property
-    def Code(self):
-        r"""函数代码. 注意：不能同时指定Cos和ZipFile
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeCode`
-        """
-        return self._Code
-
-    @Code.setter
-    def Code(self, Code):
-        self._Code = Code
-
-    @property
-    def Runtime(self):
-        r"""函数运行环境，默认Python2.7
-目前支持的运行环境：
-- Python2.7
-- Python3.6
-- Python3.7
-- Python3.9
-- Python3.10
-- Nodejs6.10
-- Nodejs8.9
-- Nodejs10.15
-- Nodejs12.16
-- Nodejs14.18
-- Nodejs16.13
-- Nodejs18.15
-- Php5.6
-- Php7(7.2版本)
-- Php7.4
-- Php8.0
-- Go1
-- Java8
-- CustomRuntime
-        :rtype: str
-        """
-        return self._Runtime
-
-    @Runtime.setter
-    def Runtime(self, Runtime):
-        self._Runtime = Runtime
-
-    @property
-    def MemorySize(self):
-        r"""函数运行时内存大小，默认为 128M，可选范围 64、128MB-3072MB，并且以 128MB 为阶梯
-        :rtype: int
-        """
-        return self._MemorySize
-
-    @MemorySize.setter
-    def MemorySize(self, MemorySize):
-        self._MemorySize = MemorySize
-
-    @property
-    def InstallDependency(self):
-        r"""函数是否自动安装依赖
-        :rtype: bool
-        """
-        return self._InstallDependency
-
-    @InstallDependency.setter
-    def InstallDependency(self, InstallDependency):
-        self._InstallDependency = InstallDependency
-
-    @property
-    def Timeout(self):
-        r"""函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒
-        :rtype: int
-        """
-        return self._Timeout
-
-    @Timeout.setter
-    def Timeout(self, Timeout):
-        self._Timeout = Timeout
-
-    @property
-    def Environment(self):
-        r"""函数的环境变量，满足json格式
-        :rtype: str
-        """
-        return self._Environment
-
-    @Environment.setter
-    def Environment(self, Environment):
-        self._Environment = Environment
-
-    @property
-    def SessionConfig(self):
-        r"""Agent Session 配置
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeSessionConfig`
-        """
-        return self._SessionConfig
-
-    @SessionConfig.setter
-    def SessionConfig(self, SessionConfig):
-        self._SessionConfig = SessionConfig
-
-
-    def _deserialize(self, params):
-        if params.get("Code") is not None:
-            self._Code = AgentRuntimeCode()
-            self._Code._deserialize(params.get("Code"))
-        self._Runtime = params.get("Runtime")
-        self._MemorySize = params.get("MemorySize")
-        self._InstallDependency = params.get("InstallDependency")
-        self._Timeout = params.get("Timeout")
-        self._Environment = params.get("Environment")
-        if params.get("SessionConfig") is not None:
-            self._SessionConfig = AgentRuntimeSessionConfig()
-            self._SessionConfig._deserialize(params.get("SessionConfig"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class AgentRuntimeSessionConfig(AbstractModel):
-    r"""Agent 运行时 Session 配置
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _MaxConcurrency: 单实例并发数最大值。取值范围 [1,100]
-        :type MaxConcurrency: int
-        :param _SessionSource: session 来源，三选一：'HEADER', 'COOKIE', 'QUERY_STRING'
-        :type SessionSource: str
-        :param _SessionName: session 名称，以字母开头，非首字母可包含数字、字母、下划线、中划线，长度5-40个字符
-        :type SessionName: str
-        :param _MaximumConcurrencySessionPerInstance: 最大并发会话数
-        :type MaximumConcurrencySessionPerInstance: int
-        :param _MaximumTTLInSeconds: 生命周期
-        :type MaximumTTLInSeconds: int
-        :param _MaximumIdleTimeInSeconds: 空闲时长
-        :type MaximumIdleTimeInSeconds: int
-        """
-        self._MaxConcurrency = None
-        self._SessionSource = None
-        self._SessionName = None
-        self._MaximumConcurrencySessionPerInstance = None
-        self._MaximumTTLInSeconds = None
-        self._MaximumIdleTimeInSeconds = None
-
-    @property
-    def MaxConcurrency(self):
-        r"""单实例并发数最大值。取值范围 [1,100]
-        :rtype: int
-        """
-        return self._MaxConcurrency
-
-    @MaxConcurrency.setter
-    def MaxConcurrency(self, MaxConcurrency):
-        self._MaxConcurrency = MaxConcurrency
-
-    @property
-    def SessionSource(self):
-        r"""session 来源，三选一：'HEADER', 'COOKIE', 'QUERY_STRING'
-        :rtype: str
-        """
-        return self._SessionSource
-
-    @SessionSource.setter
-    def SessionSource(self, SessionSource):
-        self._SessionSource = SessionSource
-
-    @property
-    def SessionName(self):
-        r"""session 名称，以字母开头，非首字母可包含数字、字母、下划线、中划线，长度5-40个字符
-        :rtype: str
-        """
-        return self._SessionName
-
-    @SessionName.setter
-    def SessionName(self, SessionName):
-        self._SessionName = SessionName
-
-    @property
-    def MaximumConcurrencySessionPerInstance(self):
-        r"""最大并发会话数
-        :rtype: int
-        """
-        return self._MaximumConcurrencySessionPerInstance
-
-    @MaximumConcurrencySessionPerInstance.setter
-    def MaximumConcurrencySessionPerInstance(self, MaximumConcurrencySessionPerInstance):
-        self._MaximumConcurrencySessionPerInstance = MaximumConcurrencySessionPerInstance
-
-    @property
-    def MaximumTTLInSeconds(self):
-        r"""生命周期
-        :rtype: int
-        """
-        return self._MaximumTTLInSeconds
-
-    @MaximumTTLInSeconds.setter
-    def MaximumTTLInSeconds(self, MaximumTTLInSeconds):
-        self._MaximumTTLInSeconds = MaximumTTLInSeconds
-
-    @property
-    def MaximumIdleTimeInSeconds(self):
-        r"""空闲时长
-        :rtype: int
-        """
-        return self._MaximumIdleTimeInSeconds
-
-    @MaximumIdleTimeInSeconds.setter
-    def MaximumIdleTimeInSeconds(self, MaximumIdleTimeInSeconds):
-        self._MaximumIdleTimeInSeconds = MaximumIdleTimeInSeconds
-
-
-    def _deserialize(self, params):
-        self._MaxConcurrency = params.get("MaxConcurrency")
-        self._SessionSource = params.get("SessionSource")
-        self._SessionName = params.get("SessionName")
-        self._MaximumConcurrencySessionPerInstance = params.get("MaximumConcurrencySessionPerInstance")
-        self._MaximumTTLInSeconds = params.get("MaximumTTLInSeconds")
-        self._MaximumIdleTimeInSeconds = params.get("MaximumIdleTimeInSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2252,153 +1640,6 @@ class BindClsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
-
-
-class BindService(AbstractModel):
-    r"""ID:服务标识ID，Name:服务名称
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ID: 服务标识
-        :type ID: str
-        :param _Name: 服务名称
-        :type Name: str
-        :param _Scene: 场景，云托管、云函数、aibuilder等
-        :type Scene: str
-        """
-        self._ID = None
-        self._Name = None
-        self._Scene = None
-
-    @property
-    def ID(self):
-        r"""服务标识
-        :rtype: str
-        """
-        return self._ID
-
-    @ID.setter
-    def ID(self, ID):
-        self._ID = ID
-
-    @property
-    def Name(self):
-        r"""服务名称
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Scene(self):
-        r"""场景，云托管、云函数、aibuilder等
-        :rtype: str
-        """
-        return self._Scene
-
-    @Scene.setter
-    def Scene(self, Scene):
-        self._Scene = Scene
-
-
-    def _deserialize(self, params):
-        self._ID = params.get("ID")
-        self._Name = params.get("Name")
-        self._Scene = params.get("Scene")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BindServiceList(AbstractModel):
-    r"""密钥对绑定的mcp服务列表和apis服务列表
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Mcp: 密钥对绑定的mcp服务列表
-        :type Mcp: list of BindService
-        :param _Apis: 密钥对绑定的apis服务列表
-        :type Apis: list of BindService
-        :param _Other: 登记哪个资源下的哪个场景使用了密钥对
-        :type Other: list of BindService
-        """
-        self._Mcp = None
-        self._Apis = None
-        self._Other = None
-
-    @property
-    def Mcp(self):
-        r"""密钥对绑定的mcp服务列表
-        :rtype: list of BindService
-        """
-        return self._Mcp
-
-    @Mcp.setter
-    def Mcp(self, Mcp):
-        self._Mcp = Mcp
-
-    @property
-    def Apis(self):
-        r"""密钥对绑定的apis服务列表
-        :rtype: list of BindService
-        """
-        return self._Apis
-
-    @Apis.setter
-    def Apis(self, Apis):
-        self._Apis = Apis
-
-    @property
-    def Other(self):
-        r"""登记哪个资源下的哪个场景使用了密钥对
-        :rtype: list of BindService
-        """
-        return self._Other
-
-    @Other.setter
-    def Other(self, Other):
-        self._Other = Other
-
-
-    def _deserialize(self, params):
-        if params.get("Mcp") is not None:
-            self._Mcp = []
-            for item in params.get("Mcp"):
-                obj = BindService()
-                obj._deserialize(item)
-                self._Mcp.append(obj)
-        if params.get("Apis") is not None:
-            self._Apis = []
-            for item in params.get("Apis"):
-                obj = BindService()
-                obj._deserialize(item)
-                self._Apis.append(obj)
-        if params.get("Other") is not None:
-            self._Other = []
-            for item in params.get("Other"):
-                obj = BindService()
-                obj._deserialize(item)
-                self._Other.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class BindStorageSourceRequest(AbstractModel):
@@ -7394,222 +6635,6 @@ class CreateTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateUserKeyRequest(AbstractModel):
-    r"""CreateUserKey请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EnvId: <p>环境ID</p>
-        :type EnvId: str
-        :param _Name: <p>用户创建的集成名称，或者密钥名称</p>
-        :type Name: str
-        :param _KeyID: <p>用户创建的集成ID，集成表示，或者密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-        :type KeyID: str
-        :param _Description: <p>集成描述</p>
-        :type Description: str
-        :param _AuthTypeCode: <p>集成类型，或者授权类型码，对应GetUserKeyTemplateList接口的AuthTypeCode字段，比如github、gitlab、gitee、meeting、PublicAccountOpenService等</p>
-        :type AuthTypeCode: str
-        :param _Ext: <p>根据集成类型的不同，ext会有不同的子结构，具体每种授权类型的ext需要填写的信息，可以通过GetUserKeyTemplateList获取</p>
-        :type Ext: str
-        :param _TicketID: <p>github、gitlab、gitee、腾讯会议等oauth类型的，需要传这个ticket_id，创建的密钥对跟auth_ticket_token(对于github、gitlab、gitee)、weda_ticket_token(对于腾讯会议)关联起来</p>
-        :type TicketID: str
-        :param _Business: <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-        :type Business: str
-        :param _RuntimeConfig: <p>创建demo代码云函数需要的参数信息</p><p>入参限制：当Business为integration，且AuthTypeCode为(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)之一时必填</p>
-        :type RuntimeConfig: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeConfig`
-        :param _DemoCodeFunctionName: <p>创建集成时创建关联的示例代码云函数的名称，当Business为integration，且AuthTypeCode为(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)之一时必填</p>
-        :type DemoCodeFunctionName: str
-        """
-        self._EnvId = None
-        self._Name = None
-        self._KeyID = None
-        self._Description = None
-        self._AuthTypeCode = None
-        self._Ext = None
-        self._TicketID = None
-        self._Business = None
-        self._RuntimeConfig = None
-        self._DemoCodeFunctionName = None
-
-    @property
-    def EnvId(self):
-        r"""<p>环境ID</p>
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-    @property
-    def Name(self):
-        r"""<p>用户创建的集成名称，或者密钥名称</p>
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def KeyID(self):
-        r"""<p>用户创建的集成ID，集成表示，或者密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-        :rtype: str
-        """
-        return self._KeyID
-
-    @KeyID.setter
-    def KeyID(self, KeyID):
-        self._KeyID = KeyID
-
-    @property
-    def Description(self):
-        r"""<p>集成描述</p>
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def AuthTypeCode(self):
-        r"""<p>集成类型，或者授权类型码，对应GetUserKeyTemplateList接口的AuthTypeCode字段，比如github、gitlab、gitee、meeting、PublicAccountOpenService等</p>
-        :rtype: str
-        """
-        return self._AuthTypeCode
-
-    @AuthTypeCode.setter
-    def AuthTypeCode(self, AuthTypeCode):
-        self._AuthTypeCode = AuthTypeCode
-
-    @property
-    def Ext(self):
-        r"""<p>根据集成类型的不同，ext会有不同的子结构，具体每种授权类型的ext需要填写的信息，可以通过GetUserKeyTemplateList获取</p>
-        :rtype: str
-        """
-        return self._Ext
-
-    @Ext.setter
-    def Ext(self, Ext):
-        self._Ext = Ext
-
-    @property
-    def TicketID(self):
-        r"""<p>github、gitlab、gitee、腾讯会议等oauth类型的，需要传这个ticket_id，创建的密钥对跟auth_ticket_token(对于github、gitlab、gitee)、weda_ticket_token(对于腾讯会议)关联起来</p>
-        :rtype: str
-        """
-        return self._TicketID
-
-    @TicketID.setter
-    def TicketID(self, TicketID):
-        self._TicketID = TicketID
-
-    @property
-    def Business(self):
-        r"""<p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-        :rtype: str
-        """
-        return self._Business
-
-    @Business.setter
-    def Business(self, Business):
-        self._Business = Business
-
-    @property
-    def RuntimeConfig(self):
-        r"""<p>创建demo代码云函数需要的参数信息</p><p>入参限制：当Business为integration，且AuthTypeCode为(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)之一时必填</p>
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeConfig`
-        """
-        return self._RuntimeConfig
-
-    @RuntimeConfig.setter
-    def RuntimeConfig(self, RuntimeConfig):
-        self._RuntimeConfig = RuntimeConfig
-
-    @property
-    def DemoCodeFunctionName(self):
-        r"""<p>创建集成时创建关联的示例代码云函数的名称，当Business为integration，且AuthTypeCode为(weixinmp、wxvirtualpay、weixin-store、channels、weixinpaydc)之一时必填</p>
-        :rtype: str
-        """
-        return self._DemoCodeFunctionName
-
-    @DemoCodeFunctionName.setter
-    def DemoCodeFunctionName(self, DemoCodeFunctionName):
-        self._DemoCodeFunctionName = DemoCodeFunctionName
-
-
-    def _deserialize(self, params):
-        self._EnvId = params.get("EnvId")
-        self._Name = params.get("Name")
-        self._KeyID = params.get("KeyID")
-        self._Description = params.get("Description")
-        self._AuthTypeCode = params.get("AuthTypeCode")
-        self._Ext = params.get("Ext")
-        self._TicketID = params.get("TicketID")
-        self._Business = params.get("Business")
-        if params.get("RuntimeConfig") is not None:
-            self._RuntimeConfig = AgentRuntimeConfig()
-            self._RuntimeConfig._deserialize(params.get("RuntimeConfig"))
-        self._DemoCodeFunctionName = params.get("DemoCodeFunctionName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateUserKeyResponse(AbstractModel):
-    r"""CreateUserKey返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _CreateResult: <p>创建成功记录条数</p>
-        :type CreateResult: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._CreateResult = None
-        self._RequestId = None
-
-    @property
-    def CreateResult(self):
-        r"""<p>创建成功记录条数</p>
-        :rtype: int
-        """
-        return self._CreateResult
-
-    @CreateResult.setter
-    def CreateResult(self, CreateResult):
-        self._CreateResult = CreateResult
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._CreateResult = params.get("CreateResult")
-        self._RequestId = params.get("RequestId")
-
-
 class CreateUserRequest(AbstractModel):
     r"""CreateUser请求参数结构体
 
@@ -9195,100 +8220,6 @@ class DeleteTableResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class DeleteUserKeyRequest(AbstractModel):
-    r"""DeleteUserKey请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EnvId: 环境ID
-        :type EnvId: str
-        :param _KeyID: 用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成
-        :type KeyID: str
-        """
-        self._EnvId = None
-        self._KeyID = None
-
-    @property
-    def EnvId(self):
-        r"""环境ID
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-    @property
-    def KeyID(self):
-        r"""用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成
-        :rtype: str
-        """
-        return self._KeyID
-
-    @KeyID.setter
-    def KeyID(self, KeyID):
-        self._KeyID = KeyID
-
-
-    def _deserialize(self, params):
-        self._EnvId = params.get("EnvId")
-        self._KeyID = params.get("KeyID")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteUserKeyResponse(AbstractModel):
-    r"""DeleteUserKey返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DeleteResult: 删除记录条数
-        :type DeleteResult: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._DeleteResult = None
-        self._RequestId = None
-
-    @property
-    def DeleteResult(self):
-        r"""删除记录条数
-        :rtype: int
-        """
-        return self._DeleteResult
-
-    @DeleteResult.setter
-    def DeleteResult(self, DeleteResult):
-        self._DeleteResult = DeleteResult
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._DeleteResult = params.get("DeleteResult")
         self._RequestId = params.get("RequestId")
 
 
@@ -20896,132 +19827,6 @@ class GetFunctionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class GetOneUserKeyRequest(AbstractModel):
-    r"""GetOneUserKey请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EnvId: <p>环境ID</p>
-        :type EnvId: str
-        :param _KeyID: <p>用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-        :type KeyID: str
-        :param _Business: <p>业务场景来源，默认不传，表示来源授权中心，integration表示来源集成中心，当从集成中心请求时必传integration</p>
-        :type Business: str
-        :param _NeedPwd: <p>是否需要加密字段的值，true：是，false：否，默认不传，不需要</p><p>默认值：false</p><p>当为true时，返回加密字段的值，前端进行按约定解密</p>
-        :type NeedPwd: bool
-        """
-        self._EnvId = None
-        self._KeyID = None
-        self._Business = None
-        self._NeedPwd = None
-
-    @property
-    def EnvId(self):
-        r"""<p>环境ID</p>
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-    @property
-    def KeyID(self):
-        r"""<p>用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-        :rtype: str
-        """
-        return self._KeyID
-
-    @KeyID.setter
-    def KeyID(self, KeyID):
-        self._KeyID = KeyID
-
-    @property
-    def Business(self):
-        r"""<p>业务场景来源，默认不传，表示来源授权中心，integration表示来源集成中心，当从集成中心请求时必传integration</p>
-        :rtype: str
-        """
-        return self._Business
-
-    @Business.setter
-    def Business(self, Business):
-        self._Business = Business
-
-    @property
-    def NeedPwd(self):
-        r"""<p>是否需要加密字段的值，true：是，false：否，默认不传，不需要</p><p>默认值：false</p><p>当为true时，返回加密字段的值，前端进行按约定解密</p>
-        :rtype: bool
-        """
-        return self._NeedPwd
-
-    @NeedPwd.setter
-    def NeedPwd(self, NeedPwd):
-        self._NeedPwd = NeedPwd
-
-
-    def _deserialize(self, params):
-        self._EnvId = params.get("EnvId")
-        self._KeyID = params.get("KeyID")
-        self._Business = params.get("Business")
-        self._NeedPwd = params.get("NeedPwd")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetOneUserKeyResponse(AbstractModel):
-    r"""GetOneUserKey返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _UserKeyInfo: <p>单个密钥对详情页</p>
-        :type UserKeyInfo: :class:`tencentcloud.tcb.v20180608.models.APIsUserKeyInfo`
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._UserKeyInfo = None
-        self._RequestId = None
-
-    @property
-    def UserKeyInfo(self):
-        r"""<p>单个密钥对详情页</p>
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.APIsUserKeyInfo`
-        """
-        return self._UserKeyInfo
-
-    @UserKeyInfo.setter
-    def UserKeyInfo(self, UserKeyInfo):
-        self._UserKeyInfo = UserKeyInfo
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("UserKeyInfo") is not None:
-            self._UserKeyInfo = APIsUserKeyInfo()
-            self._UserKeyInfo._deserialize(params.get("UserKeyInfo"))
-        self._RequestId = params.get("RequestId")
-
-
 class GetProvidersRequest(AbstractModel):
     r"""GetProviders请求参数结构体
 
@@ -21122,180 +19927,6 @@ class GetProvidersResponse(AbstractModel):
                 obj = Provider()
                 obj._deserialize(item)
                 self._Data.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class GetUserKeyListRequest(AbstractModel):
-    r"""GetUserKeyList请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EnvId: <p>环境ID</p>
-        :type EnvId: str
-        :param _Offset: <p>分页的offset，从0开始</p>
-        :type Offset: int
-        :param _Limit: <p>分页的每页多少条</p>
-        :type Limit: int
-        :param _Name: <p>根据集成名称模糊查询，name</p>
-        :type Name: str
-        :param _AuthTypeCode: <p>集成类型映射码</p>
-        :type AuthTypeCode: str
-        :param _Business: <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-        :type Business: str
-        """
-        self._EnvId = None
-        self._Offset = None
-        self._Limit = None
-        self._Name = None
-        self._AuthTypeCode = None
-        self._Business = None
-
-    @property
-    def EnvId(self):
-        r"""<p>环境ID</p>
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-    @property
-    def Offset(self):
-        r"""<p>分页的offset，从0开始</p>
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        r"""<p>分页的每页多少条</p>
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def Name(self):
-        r"""<p>根据集成名称模糊查询，name</p>
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def AuthTypeCode(self):
-        r"""<p>集成类型映射码</p>
-        :rtype: str
-        """
-        return self._AuthTypeCode
-
-    @AuthTypeCode.setter
-    def AuthTypeCode(self, AuthTypeCode):
-        self._AuthTypeCode = AuthTypeCode
-
-    @property
-    def Business(self):
-        r"""<p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-        :rtype: str
-        """
-        return self._Business
-
-    @Business.setter
-    def Business(self, Business):
-        self._Business = Business
-
-
-    def _deserialize(self, params):
-        self._EnvId = params.get("EnvId")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
-        self._Name = params.get("Name")
-        self._AuthTypeCode = params.get("AuthTypeCode")
-        self._Business = params.get("Business")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetUserKeyListResponse(AbstractModel):
-    r"""GetUserKeyList返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _UserKeyList: <p>用户密钥对列表</p>
-        :type UserKeyList: list of APIsUserKeyInfo
-        :param _TotalCount: <p>数据记录条数</p>
-        :type TotalCount: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._UserKeyList = None
-        self._TotalCount = None
-        self._RequestId = None
-
-    @property
-    def UserKeyList(self):
-        r"""<p>用户密钥对列表</p>
-        :rtype: list of APIsUserKeyInfo
-        """
-        return self._UserKeyList
-
-    @UserKeyList.setter
-    def UserKeyList(self, UserKeyList):
-        self._UserKeyList = UserKeyList
-
-    @property
-    def TotalCount(self):
-        r"""<p>数据记录条数</p>
-        :rtype: int
-        """
-        return self._TotalCount
-
-    @TotalCount.setter
-    def TotalCount(self, TotalCount):
-        self._TotalCount = TotalCount
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("UserKeyList") is not None:
-            self._UserKeyList = []
-            for item in params.get("UserKeyList"):
-                obj = APIsUserKeyInfo()
-                obj._deserialize(item)
-                self._UserKeyList.append(obj)
-        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -22536,10 +21167,12 @@ class HTTPServiceRoute(AbstractModel):
         :type Path: str
         :param _PathRewrite: <p>路径重写规则</p>
         :type PathRewrite: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
-        :param _UpstreamResourceType: <p>上游服务类型。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse</p>
+        :param _UpstreamResourceType: <p>上游资源类型</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： WEB云函数</li><li>STORAGE： 云存储</li></ul>
         :type UpstreamResourceType: str
-        :param _UpstreamResourceName: <p>上游服务名</p>
+        :param _UpstreamResourceName: <p>上游资源名</p>
         :type UpstreamResourceName: str
+        :param _UpstreamResourceVersion: <p>上游资源版本。仅支持云函数，可填具体的版本，$DEFAULT:请求转发到资源，流量比例由资源控制；$LATEST: 请求转发到最新版本；为空默认是$DEFAULT</p>
+        :type UpstreamResourceVersion: str
         :param _EnableSafeDomain: <p>是否开启安全域名</p>
         :type EnableSafeDomain: bool
         :param _EnableAuth: <p>是否开启身份认证</p>
@@ -22561,6 +21194,7 @@ class HTTPServiceRoute(AbstractModel):
         self._PathRewrite = None
         self._UpstreamResourceType = None
         self._UpstreamResourceName = None
+        self._UpstreamResourceVersion = None
         self._EnableSafeDomain = None
         self._EnableAuth = None
         self._EnablePathTransmission = None
@@ -22594,7 +21228,7 @@ class HTTPServiceRoute(AbstractModel):
 
     @property
     def UpstreamResourceType(self):
-        r"""<p>上游服务类型。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse</p>
+        r"""<p>上游资源类型</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： WEB云函数</li><li>STORAGE： 云存储</li></ul>
         :rtype: str
         """
         return self._UpstreamResourceType
@@ -22605,7 +21239,7 @@ class HTTPServiceRoute(AbstractModel):
 
     @property
     def UpstreamResourceName(self):
-        r"""<p>上游服务名</p>
+        r"""<p>上游资源名</p>
         :rtype: str
         """
         return self._UpstreamResourceName
@@ -22613,6 +21247,17 @@ class HTTPServiceRoute(AbstractModel):
     @UpstreamResourceName.setter
     def UpstreamResourceName(self, UpstreamResourceName):
         self._UpstreamResourceName = UpstreamResourceName
+
+    @property
+    def UpstreamResourceVersion(self):
+        r"""<p>上游资源版本。仅支持云函数，可填具体的版本，$DEFAULT:请求转发到资源，流量比例由资源控制；$LATEST: 请求转发到最新版本；为空默认是$DEFAULT</p>
+        :rtype: str
+        """
+        return self._UpstreamResourceVersion
+
+    @UpstreamResourceVersion.setter
+    def UpstreamResourceVersion(self, UpstreamResourceVersion):
+        self._UpstreamResourceVersion = UpstreamResourceVersion
 
     @property
     def EnableSafeDomain(self):
@@ -22710,6 +21355,7 @@ class HTTPServiceRoute(AbstractModel):
             self._PathRewrite._deserialize(params.get("PathRewrite"))
         self._UpstreamResourceType = params.get("UpstreamResourceType")
         self._UpstreamResourceName = params.get("UpstreamResourceName")
+        self._UpstreamResourceVersion = params.get("UpstreamResourceVersion")
         self._EnableSafeDomain = params.get("EnableSafeDomain")
         self._EnableAuth = params.get("EnableAuth")
         self._EnablePathTransmission = params.get("EnablePathTransmission")
@@ -22741,10 +21387,12 @@ class HTTPServiceRouteParam(AbstractModel):
         r"""
         :param _Path: <p>路径</p>
         :type Path: str
-        :param _UpstreamResourceType: <p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li><li>STORAGE： 云存储</li></ul>
+        :param _UpstreamResourceType: <p>上游资源类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>STORAGE： 云存储</li></ul>
         :type UpstreamResourceType: str
-        :param _UpstreamResourceName: <p>上游服务名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
+        :param _UpstreamResourceName: <p>上游资源名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
         :type UpstreamResourceName: str
+        :param _UpstreamResourceVersion: <p>上游资源版本。仅支持云函数，可填具体的版本，$DEFAULT:请求转发到资源，流量比例由资源控制；$LATEST: 请求转发到最新版本；为空默认是$DEFAULT</p>
+        :type UpstreamResourceVersion: str
         :param _PathRewrite: <p>路径重写</p>
         :type PathRewrite: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
         :param _EnableSafeDomain: <p>是否开启安全域名。默认开启</p>
@@ -22763,6 +21411,7 @@ class HTTPServiceRouteParam(AbstractModel):
         self._Path = None
         self._UpstreamResourceType = None
         self._UpstreamResourceName = None
+        self._UpstreamResourceVersion = None
         self._PathRewrite = None
         self._EnableSafeDomain = None
         self._EnableAuth = None
@@ -22784,7 +21433,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def UpstreamResourceType(self):
-        r"""<p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li><li>STORAGE： 云存储</li></ul>
+        r"""<p>上游资源类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>STORAGE： 云存储</li></ul>
         :rtype: str
         """
         return self._UpstreamResourceType
@@ -22795,7 +21444,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def UpstreamResourceName(self):
-        r"""<p>上游服务名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
+        r"""<p>上游资源名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
         :rtype: str
         """
         return self._UpstreamResourceName
@@ -22803,6 +21452,17 @@ class HTTPServiceRouteParam(AbstractModel):
     @UpstreamResourceName.setter
     def UpstreamResourceName(self, UpstreamResourceName):
         self._UpstreamResourceName = UpstreamResourceName
+
+    @property
+    def UpstreamResourceVersion(self):
+        r"""<p>上游资源版本。仅支持云函数，可填具体的版本，$DEFAULT:请求转发到资源，流量比例由资源控制；$LATEST: 请求转发到最新版本；为空默认是$DEFAULT</p>
+        :rtype: str
+        """
+        return self._UpstreamResourceVersion
+
+    @UpstreamResourceVersion.setter
+    def UpstreamResourceVersion(self, UpstreamResourceVersion):
+        self._UpstreamResourceVersion = UpstreamResourceVersion
 
     @property
     def PathRewrite(self):
@@ -22886,6 +21546,7 @@ class HTTPServiceRouteParam(AbstractModel):
         self._Path = params.get("Path")
         self._UpstreamResourceType = params.get("UpstreamResourceType")
         self._UpstreamResourceName = params.get("UpstreamResourceName")
+        self._UpstreamResourceVersion = params.get("UpstreamResourceVersion")
         if params.get("PathRewrite") is not None:
             self._PathRewrite = HTTPServicePathRewrite()
             self._PathRewrite._deserialize(params.get("PathRewrite"))
@@ -34482,207 +33143,6 @@ class UpdateTableResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class UpdateUserKeyRequest(AbstractModel):
-    r"""UpdateUserKey请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EnvId: <p>环境ID</p>
-        :type EnvId: str
-        :param _Name: <p>用户密钥名称</p>
-        :type Name: str
-        :param _KeyID: <p>用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-        :type KeyID: str
-        :param _Description: <p>密钥对描述</p>
-        :type Description: str
-        :param _AuthTypeCode: <p>授权类型code</p>
-        :type AuthTypeCode: str
-        :param _Ext: <p>根据授权类型的不同，ext会有不同的子结构</p>
-        :type Ext: str
-        :param _Business: <p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-        :type Business: str
-        :param _RuntimeConfig: <p>创建集成时创建对应的示例代码云函数需要的参数</p>
-        :type RuntimeConfig: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeConfig`
-        :param _DemoCodeFunctionName: <p>创建集成时创建对应的示例代码云函数需要的函数名</p>
-        :type DemoCodeFunctionName: str
-        """
-        self._EnvId = None
-        self._Name = None
-        self._KeyID = None
-        self._Description = None
-        self._AuthTypeCode = None
-        self._Ext = None
-        self._Business = None
-        self._RuntimeConfig = None
-        self._DemoCodeFunctionName = None
-
-    @property
-    def EnvId(self):
-        r"""<p>环境ID</p>
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-    @property
-    def Name(self):
-        r"""<p>用户密钥名称</p>
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def KeyID(self):
-        r"""<p>用户密钥对标识，前半部分用户填写，后半部分平台按照一定规则生成</p>
-        :rtype: str
-        """
-        return self._KeyID
-
-    @KeyID.setter
-    def KeyID(self, KeyID):
-        self._KeyID = KeyID
-
-    @property
-    def Description(self):
-        r"""<p>密钥对描述</p>
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def AuthTypeCode(self):
-        r"""<p>授权类型code</p>
-        :rtype: str
-        """
-        return self._AuthTypeCode
-
-    @AuthTypeCode.setter
-    def AuthTypeCode(self, AuthTypeCode):
-        self._AuthTypeCode = AuthTypeCode
-
-    @property
-    def Ext(self):
-        r"""<p>根据授权类型的不同，ext会有不同的子结构</p>
-        :rtype: str
-        """
-        return self._Ext
-
-    @Ext.setter
-    def Ext(self, Ext):
-        self._Ext = Ext
-
-    @property
-    def Business(self):
-        r"""<p>业务类型，integration：从集成中心来的，默认为空，表示是从授权管理中心来的</p>
-        :rtype: str
-        """
-        return self._Business
-
-    @Business.setter
-    def Business(self, Business):
-        self._Business = Business
-
-    @property
-    def RuntimeConfig(self):
-        r"""<p>创建集成时创建对应的示例代码云函数需要的参数</p>
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeConfig`
-        """
-        return self._RuntimeConfig
-
-    @RuntimeConfig.setter
-    def RuntimeConfig(self, RuntimeConfig):
-        self._RuntimeConfig = RuntimeConfig
-
-    @property
-    def DemoCodeFunctionName(self):
-        r"""<p>创建集成时创建对应的示例代码云函数需要的函数名</p>
-        :rtype: str
-        """
-        return self._DemoCodeFunctionName
-
-    @DemoCodeFunctionName.setter
-    def DemoCodeFunctionName(self, DemoCodeFunctionName):
-        self._DemoCodeFunctionName = DemoCodeFunctionName
-
-
-    def _deserialize(self, params):
-        self._EnvId = params.get("EnvId")
-        self._Name = params.get("Name")
-        self._KeyID = params.get("KeyID")
-        self._Description = params.get("Description")
-        self._AuthTypeCode = params.get("AuthTypeCode")
-        self._Ext = params.get("Ext")
-        self._Business = params.get("Business")
-        if params.get("RuntimeConfig") is not None:
-            self._RuntimeConfig = AgentRuntimeConfig()
-            self._RuntimeConfig._deserialize(params.get("RuntimeConfig"))
-        self._DemoCodeFunctionName = params.get("DemoCodeFunctionName")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class UpdateUserKeyResponse(AbstractModel):
-    r"""UpdateUserKey返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _UpdateResult: <p>更新记录条数</p>
-        :type UpdateResult: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._UpdateResult = None
-        self._RequestId = None
-
-    @property
-    def UpdateResult(self):
-        r"""<p>更新记录条数</p>
-        :rtype: int
-        """
-        return self._UpdateResult
-
-    @UpdateResult.setter
-    def UpdateResult(self, UpdateResult):
-        self._UpdateResult = UpdateResult
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._UpdateResult = params.get("UpdateResult")
         self._RequestId = params.get("RequestId")
 
 

@@ -439,6 +439,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataRepositoryTasks(
+            self,
+            request: models.DescribeDataRepositoryTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDataRepositoryTasksResponse:
+        """
+        列出所有的数据流通任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataRepositoryTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataRepositoryTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeFileSystemBuckets(
             self,
             request: models.DescribeFileSystemBucketsRequest,

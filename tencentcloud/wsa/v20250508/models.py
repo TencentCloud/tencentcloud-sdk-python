@@ -153,7 +153,7 @@ class SearchProResponse(AbstractModel):
         r"""
         :param _Query: <p>原始查询语</p>
         :type Query: str
-        :param _Pages: <p>搜索结果页面详情，格式为json字符串。</p><ul><li><p>title：结果标题</p></li><li><p>date：内容发布时间</p></li><li><p>url：内容发布源url</p></li><li><p>passage：标准摘要</p></li><li><p>content：动态摘要（<strong>极速版不返回该字段</strong>）</p></li><li><p>site：网站名称，部分不知名站点结果可能为空</p></li><li><p>score：相关性得分，取值0～1，越靠近1表示越相关</p></li><li><p>authority_level：权威度得分，取值0～5，数值越大表示越权威（<strong>仅旗舰版返回该字段</strong>）</p></li><li><p>pics：图片列表，单个doc返回0～10条（<strong>极速版不返回该字段</strong>）</p><ul><li>caption：图片描述</li><li>origin_url：源图url地</li></ul></li><li><p>favicon：网站图标链接，部分不知名站点结果可能为空</p></li><li><p>deeplinks：附件子链信息，单个doc最多返回10条子链信息。（<strong>仅旗舰版返回该字段，通过Deeplinks入参控制</strong>）</p><ul><li>title：子链标题</li><li>url：子链地址</li></ul></li></ul>
+        :param _Pages: <p>搜索结果页面详情，格式为json字符串。</p><ul><li><p>title：结果标题</p></li><li><p>date：内容发布时间</p></li><li><p>url：内容发布源url</p></li><li><p>passage：标准摘要</p></li><li><p>content：动态摘要（<strong>极速版不返回该字段</strong>）</p></li><li><p>site：网站名称，部分不知名站点结果可能为空</p></li><li><p>score：相关性得分，取值0～1，越靠近1表示越相关（<strong>极速版不返回该字段</strong>）</p></li><li><p>authority_level：权威度得分，取值0～5，数值越大表示越权威（<strong>仅旗舰版返回该字段</strong>）</p></li><li><p>pics：图片列表，单个doc返回0～10条（<strong>极速版不返回该字段</strong>）</p><ul><li>caption：图片描述</li><li>origin_url：源图url地</li></ul></li><li><p>favicon：网站图标链接，部分不知名站点结果可能为空</p></li><li><p>deeplinks：附件子链信息，单个doc最多返回10条子链信息。（<strong>仅旗舰版返回该字段，通过Deeplinks入参控制</strong>）</p><ul><li>title：子链标题</li><li>url：子链地址</li></ul></li></ul>
         :type Pages: list of str
         :param _Version: <p>用户版本：lite/standard/flagship（极速/标准/旗舰）</p>
         :type Version: str
@@ -181,7 +181,7 @@ class SearchProResponse(AbstractModel):
 
     @property
     def Pages(self):
-        r"""<p>搜索结果页面详情，格式为json字符串。</p><ul><li><p>title：结果标题</p></li><li><p>date：内容发布时间</p></li><li><p>url：内容发布源url</p></li><li><p>passage：标准摘要</p></li><li><p>content：动态摘要（<strong>极速版不返回该字段</strong>）</p></li><li><p>site：网站名称，部分不知名站点结果可能为空</p></li><li><p>score：相关性得分，取值0～1，越靠近1表示越相关</p></li><li><p>authority_level：权威度得分，取值0～5，数值越大表示越权威（<strong>仅旗舰版返回该字段</strong>）</p></li><li><p>pics：图片列表，单个doc返回0～10条（<strong>极速版不返回该字段</strong>）</p><ul><li>caption：图片描述</li><li>origin_url：源图url地</li></ul></li><li><p>favicon：网站图标链接，部分不知名站点结果可能为空</p></li><li><p>deeplinks：附件子链信息，单个doc最多返回10条子链信息。（<strong>仅旗舰版返回该字段，通过Deeplinks入参控制</strong>）</p><ul><li>title：子链标题</li><li>url：子链地址</li></ul></li></ul>
+        r"""<p>搜索结果页面详情，格式为json字符串。</p><ul><li><p>title：结果标题</p></li><li><p>date：内容发布时间</p></li><li><p>url：内容发布源url</p></li><li><p>passage：标准摘要</p></li><li><p>content：动态摘要（<strong>极速版不返回该字段</strong>）</p></li><li><p>site：网站名称，部分不知名站点结果可能为空</p></li><li><p>score：相关性得分，取值0～1，越靠近1表示越相关（<strong>极速版不返回该字段</strong>）</p></li><li><p>authority_level：权威度得分，取值0～5，数值越大表示越权威（<strong>仅旗舰版返回该字段</strong>）</p></li><li><p>pics：图片列表，单个doc返回0～10条（<strong>极速版不返回该字段</strong>）</p><ul><li>caption：图片描述</li><li>origin_url：源图url地</li></ul></li><li><p>favicon：网站图标链接，部分不知名站点结果可能为空</p></li><li><p>deeplinks：附件子链信息，单个doc最多返回10条子链信息。（<strong>仅旗舰版返回该字段，通过Deeplinks入参控制</strong>）</p><ul><li>title：子链标题</li><li>url：子链地址</li></ul></li></ul>
         :rtype: list of str
         """
         return self._Pages

@@ -495,9 +495,13 @@ class AIGWConsumerGroupBrief(AbstractModel):
         :type Name: str
         :param _ConsumerGroupId: <p>消费者组Id</p>
         :type ConsumerGroupId: str
+        :param _ConsumerGroupPath: <p>消费者组（组织节点）的当前展示路径，可选。TokenUsageList 在网关版本不低于 3.9.8 时，从 Kong CP 当前目录补齐，用于展示当前直接所属组的位置；多父节点使用确定性路径。更早版本、无可用路径或未补齐此元数据的接口可省略；前端缺省时回退 Name。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumerGroupPath: str
         """
         self._Name = None
         self._ConsumerGroupId = None
+        self._ConsumerGroupPath = None
 
     @property
     def Name(self):
@@ -521,10 +525,23 @@ class AIGWConsumerGroupBrief(AbstractModel):
     def ConsumerGroupId(self, ConsumerGroupId):
         self._ConsumerGroupId = ConsumerGroupId
 
+    @property
+    def ConsumerGroupPath(self):
+        r"""<p>消费者组（组织节点）的当前展示路径，可选。TokenUsageList 在网关版本不低于 3.9.8 时，从 Kong CP 当前目录补齐，用于展示当前直接所属组的位置；多父节点使用确定性路径。更早版本、无可用路径或未补齐此元数据的接口可省略；前端缺省时回退 Name。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConsumerGroupPath
+
+    @ConsumerGroupPath.setter
+    def ConsumerGroupPath(self, ConsumerGroupPath):
+        self._ConsumerGroupPath = ConsumerGroupPath
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._ConsumerGroupId = params.get("ConsumerGroupId")
+        self._ConsumerGroupPath = params.get("ConsumerGroupPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -994,6 +1011,260 @@ class AIGWForwardDesensitizeConfig(AbstractModel):
         
 
 
+class AIGWGatewayVerifyConfig(AbstractModel):
+    r"""AI 网关 MCP Server 网关验签配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否开启网关验签</p>
+        :type Enable: bool
+        :param _VerifyType: <p>网关验签类型</p><p>枚举值：</p><ul><li>OAuth： OAuth2</li></ul>
+        :type VerifyType: str
+        :param _OAuthConfig: <p>OAuth2验签配置</p>
+        :type OAuthConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWGatewayVerifyOAuthConfig`
+        """
+        self._Enable = None
+        self._VerifyType = None
+        self._OAuthConfig = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否开启网关验签</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def VerifyType(self):
+        r"""<p>网关验签类型</p><p>枚举值：</p><ul><li>OAuth： OAuth2</li></ul>
+        :rtype: str
+        """
+        return self._VerifyType
+
+    @VerifyType.setter
+    def VerifyType(self, VerifyType):
+        self._VerifyType = VerifyType
+
+    @property
+    def OAuthConfig(self):
+        r"""<p>OAuth2验签配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWGatewayVerifyOAuthConfig`
+        """
+        return self._OAuthConfig
+
+    @OAuthConfig.setter
+    def OAuthConfig(self, OAuthConfig):
+        self._OAuthConfig = OAuthConfig
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._VerifyType = params.get("VerifyType")
+        if params.get("OAuthConfig") is not None:
+            self._OAuthConfig = AIGWGatewayVerifyOAuthConfig()
+            self._OAuthConfig._deserialize(params.get("OAuthConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWGatewayVerifyOAuthConfig(AbstractModel):
+    r"""AI 网关 MCP Server OAuth2 验签配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerifyMethod: <p>令牌校验方式</p><p>枚举值：</p><ul><li>JWTJWKS： JWTJWKS</li><li>Introspection： Introspection</li></ul><p>切换方式后另一方式专属字段不生效</p>
+        :type VerifyMethod: str
+        :param _Issuer: <p>令牌签发者，校验 iss；VerifyMethod=JWTJWKS 时必填</p>
+        :type Issuer: str
+        :param _JwksUri: <p>JWKS 地址</p><p>入参限制：VerifyMethod=JWTJWKS 时必填</p>
+        :type JwksUri: str
+        :param _Audience: <p>校验 aud</p>
+        :type Audience: str
+        :param _JwksCacheTtl: <p>JWKS 缓存秒数，默认 3600，必须大于 0</p><p>默认值：3600</p>
+        :type JwksCacheTtl: int
+        :param _IntrospectionEndpoint: <p>令牌内省端点</p><p>入参限制：VerifyMethod=Introspection 时必填</p>
+        :type IntrospectionEndpoint: str
+        :param _IntrospectionClientId: <p>调用内省端点的 Client ID</p><p>入参限制：VerifyMethod=Introspection 时必填</p>
+        :type IntrospectionClientId: str
+        :param _IntrospectionClientSecret: <p>调用内省端点的 Client Secret</p><p>入参限制：VerifyMethod=Introspection 时必填</p><p>加密落库，查询时无论 Enable 状态均脱敏</p>
+        :type IntrospectionClientSecret: str
+        :param _IntrospectionCacheTtl: <p>内省结果缓存秒数</p><p>默认值：60</p><p>0 表示不缓存</p>
+        :type IntrospectionCacheTtl: int
+        :param _ScopeWhitelist: <p>逗号分隔的 scope 白名单；令牌需命中其一，否则 401</p>
+        :type ScopeWhitelist: str
+        :param _TokenHeader: <p>读取调用方令牌的 Header 名</p><p>默认值：Authorization</p>
+        :type TokenHeader: str
+        """
+        self._VerifyMethod = None
+        self._Issuer = None
+        self._JwksUri = None
+        self._Audience = None
+        self._JwksCacheTtl = None
+        self._IntrospectionEndpoint = None
+        self._IntrospectionClientId = None
+        self._IntrospectionClientSecret = None
+        self._IntrospectionCacheTtl = None
+        self._ScopeWhitelist = None
+        self._TokenHeader = None
+
+    @property
+    def VerifyMethod(self):
+        r"""<p>令牌校验方式</p><p>枚举值：</p><ul><li>JWTJWKS： JWTJWKS</li><li>Introspection： Introspection</li></ul><p>切换方式后另一方式专属字段不生效</p>
+        :rtype: str
+        """
+        return self._VerifyMethod
+
+    @VerifyMethod.setter
+    def VerifyMethod(self, VerifyMethod):
+        self._VerifyMethod = VerifyMethod
+
+    @property
+    def Issuer(self):
+        r"""<p>令牌签发者，校验 iss；VerifyMethod=JWTJWKS 时必填</p>
+        :rtype: str
+        """
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def JwksUri(self):
+        r"""<p>JWKS 地址</p><p>入参限制：VerifyMethod=JWTJWKS 时必填</p>
+        :rtype: str
+        """
+        return self._JwksUri
+
+    @JwksUri.setter
+    def JwksUri(self, JwksUri):
+        self._JwksUri = JwksUri
+
+    @property
+    def Audience(self):
+        r"""<p>校验 aud</p>
+        :rtype: str
+        """
+        return self._Audience
+
+    @Audience.setter
+    def Audience(self, Audience):
+        self._Audience = Audience
+
+    @property
+    def JwksCacheTtl(self):
+        r"""<p>JWKS 缓存秒数，默认 3600，必须大于 0</p><p>默认值：3600</p>
+        :rtype: int
+        """
+        return self._JwksCacheTtl
+
+    @JwksCacheTtl.setter
+    def JwksCacheTtl(self, JwksCacheTtl):
+        self._JwksCacheTtl = JwksCacheTtl
+
+    @property
+    def IntrospectionEndpoint(self):
+        r"""<p>令牌内省端点</p><p>入参限制：VerifyMethod=Introspection 时必填</p>
+        :rtype: str
+        """
+        return self._IntrospectionEndpoint
+
+    @IntrospectionEndpoint.setter
+    def IntrospectionEndpoint(self, IntrospectionEndpoint):
+        self._IntrospectionEndpoint = IntrospectionEndpoint
+
+    @property
+    def IntrospectionClientId(self):
+        r"""<p>调用内省端点的 Client ID</p><p>入参限制：VerifyMethod=Introspection 时必填</p>
+        :rtype: str
+        """
+        return self._IntrospectionClientId
+
+    @IntrospectionClientId.setter
+    def IntrospectionClientId(self, IntrospectionClientId):
+        self._IntrospectionClientId = IntrospectionClientId
+
+    @property
+    def IntrospectionClientSecret(self):
+        r"""<p>调用内省端点的 Client Secret</p><p>入参限制：VerifyMethod=Introspection 时必填</p><p>加密落库，查询时无论 Enable 状态均脱敏</p>
+        :rtype: str
+        """
+        return self._IntrospectionClientSecret
+
+    @IntrospectionClientSecret.setter
+    def IntrospectionClientSecret(self, IntrospectionClientSecret):
+        self._IntrospectionClientSecret = IntrospectionClientSecret
+
+    @property
+    def IntrospectionCacheTtl(self):
+        r"""<p>内省结果缓存秒数</p><p>默认值：60</p><p>0 表示不缓存</p>
+        :rtype: int
+        """
+        return self._IntrospectionCacheTtl
+
+    @IntrospectionCacheTtl.setter
+    def IntrospectionCacheTtl(self, IntrospectionCacheTtl):
+        self._IntrospectionCacheTtl = IntrospectionCacheTtl
+
+    @property
+    def ScopeWhitelist(self):
+        r"""<p>逗号分隔的 scope 白名单；令牌需命中其一，否则 401</p>
+        :rtype: str
+        """
+        return self._ScopeWhitelist
+
+    @ScopeWhitelist.setter
+    def ScopeWhitelist(self, ScopeWhitelist):
+        self._ScopeWhitelist = ScopeWhitelist
+
+    @property
+    def TokenHeader(self):
+        r"""<p>读取调用方令牌的 Header 名</p><p>默认值：Authorization</p>
+        :rtype: str
+        """
+        return self._TokenHeader
+
+    @TokenHeader.setter
+    def TokenHeader(self, TokenHeader):
+        self._TokenHeader = TokenHeader
+
+
+    def _deserialize(self, params):
+        self._VerifyMethod = params.get("VerifyMethod")
+        self._Issuer = params.get("Issuer")
+        self._JwksUri = params.get("JwksUri")
+        self._Audience = params.get("Audience")
+        self._JwksCacheTtl = params.get("JwksCacheTtl")
+        self._IntrospectionEndpoint = params.get("IntrospectionEndpoint")
+        self._IntrospectionClientId = params.get("IntrospectionClientId")
+        self._IntrospectionClientSecret = params.get("IntrospectionClientSecret")
+        self._IntrospectionCacheTtl = params.get("IntrospectionCacheTtl")
+        self._ScopeWhitelist = params.get("ScopeWhitelist")
+        self._TokenHeader = params.get("TokenHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWHeaderRule(AbstractModel):
     r"""MCP路由 Header规则对象
 
@@ -1201,11 +1472,17 @@ class AIGWIntentRoute(AbstractModel):
         :type DefaultModelServiceId: str
         :param _Rules: <p>规则</p>
         :type Rules: list of AIGWIntentRouteRule
+        :param _DefaultStandardModelName: <p>默认路由目标 DefaultModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :type DefaultStandardModelName: str
+        :param _IntentStandardModelName: <p>执行意图识别的 IntentModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :type IntentStandardModelName: str
         """
         self._IntentModelServiceId = None
         self._ConfidenceThreshold = None
         self._DefaultModelServiceId = None
         self._Rules = None
+        self._DefaultStandardModelName = None
+        self._IntentStandardModelName = None
 
     @property
     def IntentModelServiceId(self):
@@ -1251,6 +1528,28 @@ class AIGWIntentRoute(AbstractModel):
     def Rules(self, Rules):
         self._Rules = Rules
 
+    @property
+    def DefaultStandardModelName(self):
+        r"""<p>默认路由目标 DefaultModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :rtype: str
+        """
+        return self._DefaultStandardModelName
+
+    @DefaultStandardModelName.setter
+    def DefaultStandardModelName(self, DefaultStandardModelName):
+        self._DefaultStandardModelName = DefaultStandardModelName
+
+    @property
+    def IntentStandardModelName(self):
+        r"""<p>执行意图识别的 IntentModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :rtype: str
+        """
+        return self._IntentStandardModelName
+
+    @IntentStandardModelName.setter
+    def IntentStandardModelName(self, IntentStandardModelName):
+        self._IntentStandardModelName = IntentStandardModelName
+
 
     def _deserialize(self, params):
         self._IntentModelServiceId = params.get("IntentModelServiceId")
@@ -1262,6 +1561,8 @@ class AIGWIntentRoute(AbstractModel):
                 obj = AIGWIntentRouteRule()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._DefaultStandardModelName = params.get("DefaultStandardModelName")
+        self._IntentStandardModelName = params.get("IntentStandardModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1283,9 +1584,18 @@ class AIGWIntentRouteRule(AbstractModel):
         :type IntentCode: str
         :param _ModelServiceId: <p>模型服务id</p>
         :type ModelServiceId: str
+        :param _IntentId: <p>意图ID</p>
+        :type IntentId: str
+        :param _IntentName: <p>意图名称</p>
+        :type IntentName: str
+        :param _StandardModelName: <p>当前意图路由规则中目标 ModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :type StandardModelName: str
         """
         self._IntentCode = None
         self._ModelServiceId = None
+        self._IntentId = None
+        self._IntentName = None
+        self._StandardModelName = None
 
     @property
     def IntentCode(self):
@@ -1309,10 +1619,46 @@ class AIGWIntentRouteRule(AbstractModel):
     def ModelServiceId(self, ModelServiceId):
         self._ModelServiceId = ModelServiceId
 
+    @property
+    def IntentId(self):
+        r"""<p>意图ID</p>
+        :rtype: str
+        """
+        return self._IntentId
+
+    @IntentId.setter
+    def IntentId(self, IntentId):
+        self._IntentId = IntentId
+
+    @property
+    def IntentName(self):
+        r"""<p>意图名称</p>
+        :rtype: str
+        """
+        return self._IntentName
+
+    @IntentName.setter
+    def IntentName(self, IntentName):
+        self._IntentName = IntentName
+
+    @property
+    def StandardModelName(self):
+        r"""<p>当前意图路由规则中目标 ModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :rtype: str
+        """
+        return self._StandardModelName
+
+    @StandardModelName.setter
+    def StandardModelName(self, StandardModelName):
+        self._StandardModelName = StandardModelName
+
 
     def _deserialize(self, params):
         self._IntentCode = params.get("IntentCode")
         self._ModelServiceId = params.get("ModelServiceId")
+        self._IntentId = params.get("IntentId")
+        self._IntentName = params.get("IntentName")
+        self._StandardModelName = params.get("StandardModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1914,6 +2260,57 @@ class AIGWLLMQuotaLimit(AbstractModel):
         
 
 
+class AIGWLLMResourceDimension(AbstractModel):
+    r"""AI网关成本报表列表维度信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>维度Key</p>
+        :type Key: str
+        :param _Values: <p>维度值</p>
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        r"""<p>维度Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        r"""<p>维度值</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWLLMTokenUsageItem(AbstractModel):
     r"""单个消费者 Token 用量查询结果
 
@@ -1925,7 +2322,7 @@ class AIGWLLMTokenUsageItem(AbstractModel):
         :type ConsumerId: str
         :param _ConsumerName: <p>消费者名称</p>
         :type ConsumerName: str
-        :param _ConsumerGroups: <p>消费者组信息列表</p>
+        :param _ConsumerGroups: <p>消费者当前直接所属组列表。网关版本不低于 3.9.8 时，从 Kong CP 当前目录补齐全部直接所属组的 ID、名称和 ConsumerGroupPath，不按 IsPrimary 筛选；无所属组为 []。更早版本保留原消费者组信息且省略路径。</p>
         :type ConsumerGroups: list of AIGWConsumerGroupBrief
         :param _ModelServiceId: <p>模型服务Id</p>
         :type ModelServiceId: str
@@ -1945,6 +2342,9 @@ class AIGWLLMTokenUsageItem(AbstractModel):
         :type Cost: str
         :param _Currency: <p>成本货币单位</p><p>枚举值：</p><ul><li>CNY： 人民币</li></ul><p>当前仅支持CNY</p>
         :type Currency: str
+        :param _DimensionList: <p>按 Dimension 聚合的维度键值；未传 Dimension 的二维列表不使用此字段。</p><p>Key 顺序：</p><ul><li>SecretKey：SecretKeyId、SecretKeyName</li><li>Model：ModelName</li><li>ModelAPI：ModelAPIId、ModelAPIName</li><li>ModelService：ModelServiceId、ModelServiceName</li><li>Consumer：ConsumerId、ConsumerName、ConsumerGroupId、ConsumerGroupName、ConsumerGroupPath</li><li>ConsumerGroup 组行：ConsumerGroupId、ConsumerGroupName、MemberCount、ConsumerGroupPath</li></ul><p>3.9.8 起，消费者行的 ConsumerGroupId、ConsumerGroupName、ConsumerGroupPath 数组按同一下标对应，表示当前全部直接所属组，不按 IsPrimary 筛选；无所属组为 []。组行的 MemberCount 是当前节点及下属存在且未软删消费者的去重人数，不是历史活跃人数；人数已知为零时为 ["0"]，未知为 []。路径来自 Kong CP 当前目录，多父节点使用确定性展示路径；元数据缺失时名称回退 ID，路径为 []。更早版本保留原字段，省略 ConsumerGroupPath。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimensionList: list of AIGWLLMResourceDimension
         """
         self._ConsumerId = None
         self._ConsumerName = None
@@ -1958,6 +2358,7 @@ class AIGWLLMTokenUsageItem(AbstractModel):
         self._RequestCount = None
         self._Cost = None
         self._Currency = None
+        self._DimensionList = None
 
     @property
     def ConsumerId(self):
@@ -1983,7 +2384,7 @@ class AIGWLLMTokenUsageItem(AbstractModel):
 
     @property
     def ConsumerGroups(self):
-        r"""<p>消费者组信息列表</p>
+        r"""<p>消费者当前直接所属组列表。网关版本不低于 3.9.8 时，从 Kong CP 当前目录补齐全部直接所属组的 ID、名称和 ConsumerGroupPath，不按 IsPrimary 筛选；无所属组为 []。更早版本保留原消费者组信息且省略路径。</p>
         :rtype: list of AIGWConsumerGroupBrief
         """
         return self._ConsumerGroups
@@ -2091,6 +2492,18 @@ class AIGWLLMTokenUsageItem(AbstractModel):
     def Currency(self, Currency):
         self._Currency = Currency
 
+    @property
+    def DimensionList(self):
+        r"""<p>按 Dimension 聚合的维度键值；未传 Dimension 的二维列表不使用此字段。</p><p>Key 顺序：</p><ul><li>SecretKey：SecretKeyId、SecretKeyName</li><li>Model：ModelName</li><li>ModelAPI：ModelAPIId、ModelAPIName</li><li>ModelService：ModelServiceId、ModelServiceName</li><li>Consumer：ConsumerId、ConsumerName、ConsumerGroupId、ConsumerGroupName、ConsumerGroupPath</li><li>ConsumerGroup 组行：ConsumerGroupId、ConsumerGroupName、MemberCount、ConsumerGroupPath</li></ul><p>3.9.8 起，消费者行的 ConsumerGroupId、ConsumerGroupName、ConsumerGroupPath 数组按同一下标对应，表示当前全部直接所属组，不按 IsPrimary 筛选；无所属组为 []。组行的 MemberCount 是当前节点及下属存在且未软删消费者的去重人数，不是历史活跃人数；人数已知为零时为 ["0"]，未知为 []。路径来自 Kong CP 当前目录，多父节点使用确定性展示路径；元数据缺失时名称回退 ID，路径为 []。更早版本保留原字段，省略 ConsumerGroupPath。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AIGWLLMResourceDimension
+        """
+        return self._DimensionList
+
+    @DimensionList.setter
+    def DimensionList(self, DimensionList):
+        self._DimensionList = DimensionList
+
 
     def _deserialize(self, params):
         self._ConsumerId = params.get("ConsumerId")
@@ -2110,6 +2523,12 @@ class AIGWLLMTokenUsageItem(AbstractModel):
         self._RequestCount = params.get("RequestCount")
         self._Cost = params.get("Cost")
         self._Currency = params.get("Currency")
+        if params.get("DimensionList") is not None:
+            self._DimensionList = []
+            for item in params.get("DimensionList"):
+                obj = AIGWLLMResourceDimension()
+                obj._deserialize(item)
+                self._DimensionList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2127,17 +2546,21 @@ class AIGWLLMTokenUsageListResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataList: <p>Token用量明细返回结果列表</p>
+        :param _DataList: <p>网关版本不低于 3.9.8 且 Dimension=ConsumerGroup 时，未指定节点筛选则列出 Kong CP 当前目录的全部真实节点，包含同步、自定义、禁用及保留中的软删节点，排除合成展示节点。按当前名称、节点 UUID 升序，先分页节点再查询历史指标；无调用节点仍返回，Token 与请求数补零。节点指标包含历史下属，同一请求可计入多个组行，不能逐行相加作为网关总量。</p>
         :type DataList: list of AIGWLLMTokenUsageItem
-        :param _TotalCount: <p>结果总数</p>
+        :param _TotalCount: <p>筛选后的结果总数。新版 ConsumerGroup 查询为候选节点总数，包含无调用节点，不受 Limit / Offset 影响。</p>
         :type TotalCount: int
+        :param _OrgAttributionIncomplete: <p>组织归属是否不完整。网关版本不低于 3.9.8，使用 ConsumerGroup 维度或 ConsumerGroupId / ConsumerGroupName 筛选时返回，其余请求省略。true 表示时间及业务筛选范围内存在组归属未知的日志；检查不受组筛选条件遮蔽，空结果也执行检查。组范围统计仅计入可归因日志。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgAttributionIncomplete: bool
         """
         self._DataList = None
         self._TotalCount = None
+        self._OrgAttributionIncomplete = None
 
     @property
     def DataList(self):
-        r"""<p>Token用量明细返回结果列表</p>
+        r"""<p>网关版本不低于 3.9.8 且 Dimension=ConsumerGroup 时，未指定节点筛选则列出 Kong CP 当前目录的全部真实节点，包含同步、自定义、禁用及保留中的软删节点，排除合成展示节点。按当前名称、节点 UUID 升序，先分页节点再查询历史指标；无调用节点仍返回，Token 与请求数补零。节点指标包含历史下属，同一请求可计入多个组行，不能逐行相加作为网关总量。</p>
         :rtype: list of AIGWLLMTokenUsageItem
         """
         return self._DataList
@@ -2148,7 +2571,7 @@ class AIGWLLMTokenUsageListResult(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""<p>结果总数</p>
+        r"""<p>筛选后的结果总数。新版 ConsumerGroup 查询为候选节点总数，包含无调用节点，不受 Limit / Offset 影响。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2156,6 +2579,18 @@ class AIGWLLMTokenUsageListResult(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def OrgAttributionIncomplete(self):
+        r"""<p>组织归属是否不完整。网关版本不低于 3.9.8，使用 ConsumerGroup 维度或 ConsumerGroupId / ConsumerGroupName 筛选时返回，其余请求省略。true 表示时间及业务筛选范围内存在组归属未知的日志；检查不受组筛选条件遮蔽，空结果也执行检查。组范围统计仅计入可归因日志。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._OrgAttributionIncomplete
+
+    @OrgAttributionIncomplete.setter
+    def OrgAttributionIncomplete(self, OrgAttributionIncomplete):
+        self._OrgAttributionIncomplete = OrgAttributionIncomplete
 
 
     def _deserialize(self, params):
@@ -2166,6 +2601,7 @@ class AIGWLLMTokenUsageListResult(AbstractModel):
                 obj._deserialize(item)
                 self._DataList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._OrgAttributionIncomplete = params.get("OrgAttributionIncomplete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2195,8 +2631,13 @@ class AIGWLLMTokenUsageStatisticsResult(AbstractModel):
         :type TotalCost: str
         :param _Currency: <p>成本货币单位</p>
         :type Currency: str
-        :param _TopConsumers: <p>查询时间范围内成本最高的消费者</p>
+        :param _TopConsumers: <p>未传 Dimension 时返回原消费者排行；传入 Dimension 时为 []。ConsumerGroup 汇总不逐组拆分。</p>
         :type TopConsumers: list of AIGWTopConsumersItem
+        :param _TotalTokens: <p>查询时间范围内原始 total_tokens 累计</p>
+        :type TotalTokens: int
+        :param _OrgAttributionIncomplete: <p>组织归属是否不完整。网关版本不低于 3.9.8，使用 ConsumerGroup 维度或 ConsumerGroupId / ConsumerGroupName 筛选时返回，其余请求省略。true 表示时间及业务筛选范围内存在组归属未知的日志；检查不受组筛选条件遮蔽，空结果也执行检查。组范围统计仅计入可归因日志。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OrgAttributionIncomplete: bool
         """
         self._TotalRequestCount = None
         self._TotalInputTokens = None
@@ -2205,6 +2646,8 @@ class AIGWLLMTokenUsageStatisticsResult(AbstractModel):
         self._TotalCost = None
         self._Currency = None
         self._TopConsumers = None
+        self._TotalTokens = None
+        self._OrgAttributionIncomplete = None
 
     @property
     def TotalRequestCount(self):
@@ -2274,7 +2717,7 @@ class AIGWLLMTokenUsageStatisticsResult(AbstractModel):
 
     @property
     def TopConsumers(self):
-        r"""<p>查询时间范围内成本最高的消费者</p>
+        r"""<p>未传 Dimension 时返回原消费者排行；传入 Dimension 时为 []。ConsumerGroup 汇总不逐组拆分。</p>
         :rtype: list of AIGWTopConsumersItem
         """
         return self._TopConsumers
@@ -2282,6 +2725,29 @@ class AIGWLLMTokenUsageStatisticsResult(AbstractModel):
     @TopConsumers.setter
     def TopConsumers(self, TopConsumers):
         self._TopConsumers = TopConsumers
+
+    @property
+    def TotalTokens(self):
+        r"""<p>查询时间范围内原始 total_tokens 累计</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def OrgAttributionIncomplete(self):
+        r"""<p>组织归属是否不完整。网关版本不低于 3.9.8，使用 ConsumerGroup 维度或 ConsumerGroupId / ConsumerGroupName 筛选时返回，其余请求省略。true 表示时间及业务筛选范围内存在组归属未知的日志；检查不受组筛选条件遮蔽，空结果也执行检查。组范围统计仅计入可归因日志。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._OrgAttributionIncomplete
+
+    @OrgAttributionIncomplete.setter
+    def OrgAttributionIncomplete(self, OrgAttributionIncomplete):
+        self._OrgAttributionIncomplete = OrgAttributionIncomplete
 
 
     def _deserialize(self, params):
@@ -2297,6 +2763,8 @@ class AIGWLLMTokenUsageStatisticsResult(AbstractModel):
                 obj = AIGWTopConsumersItem()
                 obj._deserialize(item)
                 self._TopConsumers.append(obj)
+        self._TotalTokens = params.get("TotalTokens")
+        self._OrgAttributionIncomplete = params.get("OrgAttributionIncomplete")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2414,6 +2882,57 @@ class AIGWLatencyPriorityRouteRule(AbstractModel):
         
 
 
+class AIGWLengthLimitConfig(AbstractModel):
+    r"""AI 网关模型服务单次请求输入字符长度限制。只拒绝超限输入，不做截断。计量为整个请求 JSON 的 Unicode 字符数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableInputLimit: <p>是否开启输入长度限制</p>
+        :type EnableInputLimit: bool
+        :param _MaxInputChars: <p>最大输入长度字符数</p>
+        :type MaxInputChars: int
+        """
+        self._EnableInputLimit = None
+        self._MaxInputChars = None
+
+    @property
+    def EnableInputLimit(self):
+        r"""<p>是否开启输入长度限制</p>
+        :rtype: bool
+        """
+        return self._EnableInputLimit
+
+    @EnableInputLimit.setter
+    def EnableInputLimit(self, EnableInputLimit):
+        self._EnableInputLimit = EnableInputLimit
+
+    @property
+    def MaxInputChars(self):
+        r"""<p>最大输入长度字符数</p>
+        :rtype: int
+        """
+        return self._MaxInputChars
+
+    @MaxInputChars.setter
+    def MaxInputChars(self, MaxInputChars):
+        self._MaxInputChars = MaxInputChars
+
+
+    def _deserialize(self, params):
+        self._EnableInputLimit = params.get("EnableInputLimit")
+        self._MaxInputChars = params.get("MaxInputChars")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWLoadBalanceConfig(AbstractModel):
     r"""负载均衡配置，仅服务来源（ServiceSource，SourceId 非空）场景生效。
 
@@ -2465,9 +2984,9 @@ class AIGWLogConfig(AbstractModel):
         :type RequestLogPayloadMaxSize: int
         :param _ResponseLogPayloadMaxSize: <p>日志记录的响应body的最大字节数</p><p>取值范围：[512, 1048576]</p><p>EnableResponseLogPayloads 为true时必填</p>
         :type ResponseLogPayloadMaxSize: int
-        :param _RequestLogPayloadMode: <p>请求 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始请求</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
+        :param _RequestLogPayloadMode: <p>请求 payload access log 输出模式。MCP情况下不需要传入</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始请求</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
         :type RequestLogPayloadMode: str
-        :param _ResponseLogPayloadMode: <p>上游原始 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
+        :param _ResponseLogPayloadMode: <p>上游原始 payload access log 输出模式。MCP情况下不需要传入</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
         :type ResponseLogPayloadMode: str
         :param _RequestLogPayloadTruncationPolicy: <p>请求 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
         :type RequestLogPayloadTruncationPolicy: str
@@ -2529,7 +3048,7 @@ class AIGWLogConfig(AbstractModel):
 
     @property
     def RequestLogPayloadMode(self):
-        r"""<p>请求 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始请求</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
+        r"""<p>请求 payload access log 输出模式。MCP情况下不需要传入</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始请求</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
         :rtype: str
         """
         return self._RequestLogPayloadMode
@@ -2540,7 +3059,7 @@ class AIGWLogConfig(AbstractModel):
 
     @property
     def ResponseLogPayloadMode(self):
-        r"""<p>上游原始 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
+        r"""<p>上游原始 payload access log 输出模式。MCP情况下不需要传入</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
         :rtype: str
         """
         return self._ResponseLogPayloadMode
@@ -3059,6 +3578,10 @@ class AIGWMCPServer(AbstractModel):
         :type PreserveHost: bool
         :param _LogConfig: <p>日志采集配置</p>
         :type LogConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
+        :param _ParamRewriteConfig: <p>服务级参数重写规则</p>
+        :type ParamRewriteConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPServerParamRewriteConfig`
+        :param _GatewayVerifyConfig: <p>网关验签配置</p>
+        :type GatewayVerifyConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWGatewayVerifyConfig`
         """
         self._ServerId = None
         self._Name = None
@@ -3082,6 +3605,8 @@ class AIGWMCPServer(AbstractModel):
         self._MarketStatus = None
         self._PreserveHost = None
         self._LogConfig = None
+        self._ParamRewriteConfig = None
+        self._GatewayVerifyConfig = None
 
     @property
     def ServerId(self):
@@ -3328,6 +3853,28 @@ class AIGWMCPServer(AbstractModel):
     def LogConfig(self, LogConfig):
         self._LogConfig = LogConfig
 
+    @property
+    def ParamRewriteConfig(self):
+        r"""<p>服务级参数重写规则</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPServerParamRewriteConfig`
+        """
+        return self._ParamRewriteConfig
+
+    @ParamRewriteConfig.setter
+    def ParamRewriteConfig(self, ParamRewriteConfig):
+        self._ParamRewriteConfig = ParamRewriteConfig
+
+    @property
+    def GatewayVerifyConfig(self):
+        r"""<p>网关验签配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWGatewayVerifyConfig`
+        """
+        return self._GatewayVerifyConfig
+
+    @GatewayVerifyConfig.setter
+    def GatewayVerifyConfig(self, GatewayVerifyConfig):
+        self._GatewayVerifyConfig = GatewayVerifyConfig
+
 
     def _deserialize(self, params):
         self._ServerId = params.get("ServerId")
@@ -3360,6 +3907,12 @@ class AIGWMCPServer(AbstractModel):
         if params.get("LogConfig") is not None:
             self._LogConfig = AIGWLogConfig()
             self._LogConfig._deserialize(params.get("LogConfig"))
+        if params.get("ParamRewriteConfig") is not None:
+            self._ParamRewriteConfig = AIGWMCPServerParamRewriteConfig()
+            self._ParamRewriteConfig._deserialize(params.get("ParamRewriteConfig"))
+        if params.get("GatewayVerifyConfig") is not None:
+            self._GatewayVerifyConfig = AIGWGatewayVerifyConfig()
+            self._GatewayVerifyConfig._deserialize(params.get("GatewayVerifyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3596,6 +4149,166 @@ class AIGWMCPServerList(AbstractModel):
                 obj = AIGWMCPServer()
                 obj._deserialize(item)
                 self._DataList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWMCPServerParamRewriteConfig(AbstractModel):
+    r"""AI 网关 HTTP 转 MCP 参数改写配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否开启服务级参数重写</p>
+        :type Enable: bool
+        :param _Request: <p>服务级请求参数重写配置</p>
+        :type Request: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPServerRequestRewriteConfig`
+        """
+        self._Enable = None
+        self._Request = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否开启服务级参数重写</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Request(self):
+        r"""<p>服务级请求参数重写配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPServerRequestRewriteConfig`
+        """
+        return self._Request
+
+    @Request.setter
+    def Request(self, Request):
+        self._Request = Request
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        if params.get("Request") is not None:
+            self._Request = AIGWMCPServerRequestRewriteConfig()
+            self._Request._deserialize(params.get("Request"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWMCPServerParamRewriteRule(AbstractModel):
+    r"""AI 网关 MCP Server 参数改写规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operate: <p>操作方式</p>
+        :type Operate: str
+        :param _Key: <p>键</p>
+        :type Key: str
+        :param _Value: <p>值</p>
+        :type Value: str
+        """
+        self._Operate = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Operate(self):
+        r"""<p>操作方式</p>
+        :rtype: str
+        """
+        return self._Operate
+
+    @Operate.setter
+    def Operate(self, Operate):
+        self._Operate = Operate
+
+    @property
+    def Key(self):
+        r"""<p>键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Operate = params.get("Operate")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWMCPServerRequestRewriteConfig(AbstractModel):
+    r"""AI 网关 HTTP 转 MCP 请求阶段参数改写配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Headers: <p>头部重写规则</p>
+        :type Headers: list of AIGWMCPServerParamRewriteRule
+        """
+        self._Headers = None
+
+    @property
+    def Headers(self):
+        r"""<p>头部重写规则</p>
+        :rtype: list of AIGWMCPServerParamRewriteRule
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+
+    def _deserialize(self, params):
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = AIGWMCPServerParamRewriteRule()
+                obj._deserialize(item)
+                self._Headers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4394,6 +5107,42 @@ class AIGWMCPUpstreamInfoDetail(AbstractModel):
         
 
 
+class AIGWModelNameRoute(AbstractModel):
+    r"""AI网关入口按模型名称路由
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelNames: <p>模型名称和别名列表；对象存在即启用</p>
+        :type ModelNames: list of str
+        """
+        self._ModelNames = None
+
+    @property
+    def ModelNames(self):
+        r"""<p>模型名称和别名列表；对象存在即启用</p>
+        :rtype: list of str
+        """
+        return self._ModelNames
+
+    @ModelNames.setter
+    def ModelNames(self, ModelNames):
+        self._ModelNames = ModelNames
+
+
+    def _deserialize(self, params):
+        self._ModelNames = params.get("ModelNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWModelRewriteRule(AbstractModel):
     r"""模型名字重写规则
 
@@ -4940,6 +5689,42 @@ class AIGWOIDCCredentialConfig(AbstractModel):
         
 
 
+class AIGWPriorityScheduleConfig(AbstractModel):
+    r"""模型API请求优先级调度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启优先级调度</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启优先级调度</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWQueryParamCredentialConfig(AbstractModel):
     r"""AI网关 Query Param 凭证物料配置
 
@@ -5020,10 +5805,35 @@ class AIGWQuota(AbstractModel):
         :type ModifyTime: str
         :param _Source: <p>配额类型，手动配额还是默认配额</p>
         :type Source: str
-        :param _ExceedAction: <p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>AllowOverage： 允许超支</li></ul>
+        :param _ExceedAction: <p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝消费者请求</li><li>AllowOverage： 允许超限</li></ul>
         :type ExceedAction: str
         :param _CacheHitStat: <p>缓存是否计入限额</p><p>枚举值：</p><ul><li>Full： 全量计入</li><li>Exclude： 不计入网关缓存命中部分</li></ul>
         :type CacheHitStat: str
+        :param _ExceedPercentage: <p>超限百分比</p><p>默认值：0</p><p>Consumer 的超量百分比，指定模型服务配额默认为 0；ConsumerGroup 固定为 0。</p><p>举例：20，超出设置额度的20%，可用额度为（1+20%）*QuotaLimit。当SetExceedPercentage=true时，条件必选。</p>
+        :type ExceedPercentage: int
+        :param _SetExceedPercentage: <p>是否设置超限百分比</p><p>仅 Consumer 的 AllowOverage 场景可用，指定模型服务的配额必须为 false；ConsumerGroup 必须为 false。</p><p>枚举值：</p><ul><li>true： 设置超限百分比</li><li>false： 不设置超限百分比，即不设上限</li></ul><p>默认值：false</p><p>当ExceedAction=AllowOverage时，条件必选。</p>
+        :type SetExceedPercentage: bool
+        :param _Scope: <p>Consumer粒度某资源对象的配额范围，支持：全部模型服务（all）、指定模型服务（specified）</p><p>枚举值：</p><ul><li>All： 全部</li><li>Specified： 指定</li></ul><p>默认值：All</p>
+        :type Scope: str
+        :param _SubResourceType: <p>Consumer粒度配额的资源类型，如“模型服务”</p><p>枚举值：</p><ul><li>ModelService： 模型服务</li></ul><p>默认值：ModelService</p>
+        :type SubResourceType: str
+        :param _SubResourceCount: <p>Consumer粒度配额若支持指定子资源配额，则该项为子资源配额个数</p>
+        :type SubResourceCount: int
+        :param _ConsumerGroupPath: <p>消费者组完整层级路径。仅 ResourceType=ConsumerGroup 返回，未知时为空字符串；Consumer 行省略。</p>
+        :type ConsumerGroupPath: str
+        :param _ConsumerGroupActive: <p>消费者组是否有效。仅 ResourceType=ConsumerGroup 返回；组不存在或非 active 时为 false。与配额规则 Enabled 区分，字段省略与 false 含义不同。</p>
+        :type ConsumerGroupActive: bool
+        :param _Used: <p>兼容用量字段。Cost 为向下取整的整数元；TotalToken 单位为 token；RequestCount 单位为次。精确显示优先使用 UsedExact。</p> 仅支持用量查询的实际规则返回；旧 Consumer 网关和 DefaultPolicy 模板可省略。
+        :type Used: int
+        :param _UsedExact: <p>精确使用量。Cost 单位为元，保留 1e-7 元精度；TotalToken 单位为 token；RequestCount 单位为次。旧版插件不提供精确值时省略，调用方可回退使用 Used；该值已换算为业务单位，不要再除以 ValueScale。</p> 仅支持用量查询的实际规则返回；旧 Consumer 网关和 DefaultPolicy 模板可省略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedExact: float
+        :param _UsageRate: <p>使用率</p> 仅支持用量查询的实际规则返回；旧 Consumer 网关和 DefaultPolicy 模板可省略。
+        :type UsageRate: float
+        :param _AlarmLevel: <p>预警级别</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Warning： 预警</li><li>NearLimit： 临近超限</li><li>Exceeded： 超限</li></ul> 仅支持用量查询的实际规则返回；旧 Consumer 网关和 DefaultPolicy 模板可省略。
+        :type AlarmLevel: str
+        :param _SecretKeyCount: <p>关联消费者密钥数量。ConsumerGroup 规则固定为 0。</p>
+        :type SecretKeyCount: int
         """
         self._Id = None
         self._ResourceType = None
@@ -5038,6 +5848,18 @@ class AIGWQuota(AbstractModel):
         self._Source = None
         self._ExceedAction = None
         self._CacheHitStat = None
+        self._ExceedPercentage = None
+        self._SetExceedPercentage = None
+        self._Scope = None
+        self._SubResourceType = None
+        self._SubResourceCount = None
+        self._ConsumerGroupPath = None
+        self._ConsumerGroupActive = None
+        self._Used = None
+        self._UsedExact = None
+        self._UsageRate = None
+        self._AlarmLevel = None
+        self._SecretKeyCount = None
 
     @property
     def Id(self):
@@ -5162,7 +5984,7 @@ class AIGWQuota(AbstractModel):
 
     @property
     def ExceedAction(self):
-        r"""<p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>AllowOverage： 允许超支</li></ul>
+        r"""<p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝消费者请求</li><li>AllowOverage： 允许超限</li></ul>
         :rtype: str
         """
         return self._ExceedAction
@@ -5182,6 +6004,139 @@ class AIGWQuota(AbstractModel):
     def CacheHitStat(self, CacheHitStat):
         self._CacheHitStat = CacheHitStat
 
+    @property
+    def ExceedPercentage(self):
+        r"""<p>超限百分比</p><p>默认值：0</p><p>Consumer 的超量百分比，指定模型服务配额默认为 0；ConsumerGroup 固定为 0。</p><p>举例：20，超出设置额度的20%，可用额度为（1+20%）*QuotaLimit。当SetExceedPercentage=true时，条件必选。</p>
+        :rtype: int
+        """
+        return self._ExceedPercentage
+
+    @ExceedPercentage.setter
+    def ExceedPercentage(self, ExceedPercentage):
+        self._ExceedPercentage = ExceedPercentage
+
+    @property
+    def SetExceedPercentage(self):
+        r"""<p>是否设置超限百分比</p><p>仅 Consumer 的 AllowOverage 场景可用，指定模型服务的配额必须为 false；ConsumerGroup 必须为 false。</p><p>枚举值：</p><ul><li>true： 设置超限百分比</li><li>false： 不设置超限百分比，即不设上限</li></ul><p>默认值：false</p><p>当ExceedAction=AllowOverage时，条件必选。</p>
+        :rtype: bool
+        """
+        return self._SetExceedPercentage
+
+    @SetExceedPercentage.setter
+    def SetExceedPercentage(self, SetExceedPercentage):
+        self._SetExceedPercentage = SetExceedPercentage
+
+    @property
+    def Scope(self):
+        r"""<p>Consumer粒度某资源对象的配额范围，支持：全部模型服务（all）、指定模型服务（specified）</p><p>枚举值：</p><ul><li>All： 全部</li><li>Specified： 指定</li></ul><p>默认值：All</p>
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def SubResourceType(self):
+        r"""<p>Consumer粒度配额的资源类型，如“模型服务”</p><p>枚举值：</p><ul><li>ModelService： 模型服务</li></ul><p>默认值：ModelService</p>
+        :rtype: str
+        """
+        return self._SubResourceType
+
+    @SubResourceType.setter
+    def SubResourceType(self, SubResourceType):
+        self._SubResourceType = SubResourceType
+
+    @property
+    def SubResourceCount(self):
+        r"""<p>Consumer粒度配额若支持指定子资源配额，则该项为子资源配额个数</p>
+        :rtype: int
+        """
+        return self._SubResourceCount
+
+    @SubResourceCount.setter
+    def SubResourceCount(self, SubResourceCount):
+        self._SubResourceCount = SubResourceCount
+
+    @property
+    def ConsumerGroupPath(self):
+        r"""<p>消费者组完整层级路径。仅 ResourceType=ConsumerGroup 返回，未知时为空字符串；Consumer 行省略。</p>
+        :rtype: str
+        """
+        return self._ConsumerGroupPath
+
+    @ConsumerGroupPath.setter
+    def ConsumerGroupPath(self, ConsumerGroupPath):
+        self._ConsumerGroupPath = ConsumerGroupPath
+
+    @property
+    def ConsumerGroupActive(self):
+        r"""<p>消费者组是否有效。仅 ResourceType=ConsumerGroup 返回；组不存在或非 active 时为 false。与配额规则 Enabled 区分，字段省略与 false 含义不同。</p>
+        :rtype: bool
+        """
+        return self._ConsumerGroupActive
+
+    @ConsumerGroupActive.setter
+    def ConsumerGroupActive(self, ConsumerGroupActive):
+        self._ConsumerGroupActive = ConsumerGroupActive
+
+    @property
+    def Used(self):
+        r"""<p>兼容用量字段。Cost 为向下取整的整数元；TotalToken 单位为 token；RequestCount 单位为次。精确显示优先使用 UsedExact。</p> 仅支持用量查询的实际规则返回；旧 Consumer 网关和 DefaultPolicy 模板可省略。
+        :rtype: int
+        """
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+    @property
+    def UsedExact(self):
+        r"""<p>精确使用量。Cost 单位为元，保留 1e-7 元精度；TotalToken 单位为 token；RequestCount 单位为次。旧版插件不提供精确值时省略，调用方可回退使用 Used；该值已换算为业务单位，不要再除以 ValueScale。</p> 仅支持用量查询的实际规则返回；旧 Consumer 网关和 DefaultPolicy 模板可省略。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._UsedExact
+
+    @UsedExact.setter
+    def UsedExact(self, UsedExact):
+        self._UsedExact = UsedExact
+
+    @property
+    def UsageRate(self):
+        r"""<p>使用率</p> 仅支持用量查询的实际规则返回；旧 Consumer 网关和 DefaultPolicy 模板可省略。
+        :rtype: float
+        """
+        return self._UsageRate
+
+    @UsageRate.setter
+    def UsageRate(self, UsageRate):
+        self._UsageRate = UsageRate
+
+    @property
+    def AlarmLevel(self):
+        r"""<p>预警级别</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Warning： 预警</li><li>NearLimit： 临近超限</li><li>Exceeded： 超限</li></ul> 仅支持用量查询的实际规则返回；旧 Consumer 网关和 DefaultPolicy 模板可省略。
+        :rtype: str
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def SecretKeyCount(self):
+        r"""<p>关联消费者密钥数量。ConsumerGroup 规则固定为 0。</p>
+        :rtype: int
+        """
+        return self._SecretKeyCount
+
+    @SecretKeyCount.setter
+    def SecretKeyCount(self, SecretKeyCount):
+        self._SecretKeyCount = SecretKeyCount
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5197,6 +6152,18 @@ class AIGWQuota(AbstractModel):
         self._Source = params.get("Source")
         self._ExceedAction = params.get("ExceedAction")
         self._CacheHitStat = params.get("CacheHitStat")
+        self._ExceedPercentage = params.get("ExceedPercentage")
+        self._SetExceedPercentage = params.get("SetExceedPercentage")
+        self._Scope = params.get("Scope")
+        self._SubResourceType = params.get("SubResourceType")
+        self._SubResourceCount = params.get("SubResourceCount")
+        self._ConsumerGroupPath = params.get("ConsumerGroupPath")
+        self._ConsumerGroupActive = params.get("ConsumerGroupActive")
+        self._Used = params.get("Used")
+        self._UsedExact = params.get("UsedExact")
+        self._UsageRate = params.get("UsageRate")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._SecretKeyCount = params.get("SecretKeyCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5238,7 +6205,7 @@ class AIGWQuotaDetail(AbstractModel):
         :type AlarmLevel: str
         :param _Source: <p>配额规则来源</p><p>枚举值：</p><ul><li>Manual： 手动配置</li><li>Default： 默认配额</li></ul>
         :type Source: str
-        :param _ExceedAction: <p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>AllowOverage： 允许超支</li></ul>
+        :param _ExceedAction: <p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝消费者请求</li><li>AllowOverage： 允许超限</li></ul>
         :type ExceedAction: str
         :param _CreateTime: <p>创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5248,6 +6215,19 @@ class AIGWQuotaDetail(AbstractModel):
         :type ModifyTime: str
         :param _CacheHitStat: <p>缓存是否计入限额</p><p>枚举值：</p><ul><li>Full： 全量计入</li><li>Exclude： 不计入网关缓存命中部分</li></ul>
         :type CacheHitStat: str
+        :param _SetExceedPercentage: <p>是否设置超限百分比</p><p>仅 Consumer 的 AllowOverage 场景可用，指定模型服务的配额必须为 false；ConsumerGroup 必须为 false。</p><p>枚举值：</p><ul><li>true： 设置超限百分比</li><li>false： 不设置超限百分比，即不设上限</li></ul><p>默认值：false</p><p>当ExceedAction=AllowOverage时，条件必选。</p>
+        :type SetExceedPercentage: bool
+        :param _ExceedPercentage: <p>超限百分比</p><p>默认值：0</p><p>Consumer 的超量百分比，指定模型服务配额默认为 0；ConsumerGroup 固定为 0。</p><p>举例：20，超出设置额度的20%，可用额度为（1+20%）*QuotaLimit。当SetExceedPercentage=true时，条件必选。</p>
+        :type ExceedPercentage: int
+        :param _UsedExact: <p>精确使用量。Cost 单位为元，保留 1e-7 元精度；TotalToken 单位为 token；RequestCount 单位为次。旧版插件不提供精确值时省略，调用方可回退使用 Used；该值已换算为业务单位，不要再除以 ValueScale。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsedExact: float
+        :param _ConsumerGroupPath: <p>消费者组完整层级路径。仅 ResourceType=ConsumerGroup 返回，未知时为空字符串；Consumer 行省略。</p>
+        :type ConsumerGroupPath: str
+        :param _ConsumerGroupActive: <p>消费者组是否有效。仅 ResourceType=ConsumerGroup 返回；组不存在或非 active 时为 false。与配额规则 Enabled 区分，字段省略与 false 含义不同。</p>
+        :type ConsumerGroupActive: bool
+        :param _SubResources: <p>配额规则中，某资源对象的指定子资源配额信息。如资源对象“模型服务”的“指定模型服务”的配额信息。</p>
+        :type SubResources: list of AIGWQuotaSubItem
         """
         self._Id = None
         self._ResourceType = None
@@ -5265,6 +6245,12 @@ class AIGWQuotaDetail(AbstractModel):
         self._CreateTime = None
         self._ModifyTime = None
         self._CacheHitStat = None
+        self._SetExceedPercentage = None
+        self._ExceedPercentage = None
+        self._UsedExact = None
+        self._ConsumerGroupPath = None
+        self._ConsumerGroupActive = None
+        self._SubResources = None
 
     @property
     def Id(self):
@@ -5400,7 +6386,7 @@ class AIGWQuotaDetail(AbstractModel):
 
     @property
     def ExceedAction(self):
-        r"""<p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>AllowOverage： 允许超支</li></ul>
+        r"""<p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝消费者请求</li><li>AllowOverage： 允许超限</li></ul>
         :rtype: str
         """
         return self._ExceedAction
@@ -5444,6 +6430,73 @@ class AIGWQuotaDetail(AbstractModel):
     def CacheHitStat(self, CacheHitStat):
         self._CacheHitStat = CacheHitStat
 
+    @property
+    def SetExceedPercentage(self):
+        r"""<p>是否设置超限百分比</p><p>仅 Consumer 的 AllowOverage 场景可用，指定模型服务的配额必须为 false；ConsumerGroup 必须为 false。</p><p>枚举值：</p><ul><li>true： 设置超限百分比</li><li>false： 不设置超限百分比，即不设上限</li></ul><p>默认值：false</p><p>当ExceedAction=AllowOverage时，条件必选。</p>
+        :rtype: bool
+        """
+        return self._SetExceedPercentage
+
+    @SetExceedPercentage.setter
+    def SetExceedPercentage(self, SetExceedPercentage):
+        self._SetExceedPercentage = SetExceedPercentage
+
+    @property
+    def ExceedPercentage(self):
+        r"""<p>超限百分比</p><p>默认值：0</p><p>Consumer 的超量百分比，指定模型服务配额默认为 0；ConsumerGroup 固定为 0。</p><p>举例：20，超出设置额度的20%，可用额度为（1+20%）*QuotaLimit。当SetExceedPercentage=true时，条件必选。</p>
+        :rtype: int
+        """
+        return self._ExceedPercentage
+
+    @ExceedPercentage.setter
+    def ExceedPercentage(self, ExceedPercentage):
+        self._ExceedPercentage = ExceedPercentage
+
+    @property
+    def UsedExact(self):
+        r"""<p>精确使用量。Cost 单位为元，保留 1e-7 元精度；TotalToken 单位为 token；RequestCount 单位为次。旧版插件不提供精确值时省略，调用方可回退使用 Used；该值已换算为业务单位，不要再除以 ValueScale。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._UsedExact
+
+    @UsedExact.setter
+    def UsedExact(self, UsedExact):
+        self._UsedExact = UsedExact
+
+    @property
+    def ConsumerGroupPath(self):
+        r"""<p>消费者组完整层级路径。仅 ResourceType=ConsumerGroup 返回，未知时为空字符串；Consumer 行省略。</p>
+        :rtype: str
+        """
+        return self._ConsumerGroupPath
+
+    @ConsumerGroupPath.setter
+    def ConsumerGroupPath(self, ConsumerGroupPath):
+        self._ConsumerGroupPath = ConsumerGroupPath
+
+    @property
+    def ConsumerGroupActive(self):
+        r"""<p>消费者组是否有效。仅 ResourceType=ConsumerGroup 返回；组不存在或非 active 时为 false。与配额规则 Enabled 区分，字段省略与 false 含义不同。</p>
+        :rtype: bool
+        """
+        return self._ConsumerGroupActive
+
+    @ConsumerGroupActive.setter
+    def ConsumerGroupActive(self, ConsumerGroupActive):
+        self._ConsumerGroupActive = ConsumerGroupActive
+
+    @property
+    def SubResources(self):
+        r"""<p>配额规则中，某资源对象的指定子资源配额信息。如资源对象“模型服务”的“指定模型服务”的配额信息。</p>
+        :rtype: list of AIGWQuotaSubItem
+        """
+        return self._SubResources
+
+    @SubResources.setter
+    def SubResources(self, SubResources):
+        self._SubResources = SubResources
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5462,6 +6515,17 @@ class AIGWQuotaDetail(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
         self._CacheHitStat = params.get("CacheHitStat")
+        self._SetExceedPercentage = params.get("SetExceedPercentage")
+        self._ExceedPercentage = params.get("ExceedPercentage")
+        self._UsedExact = params.get("UsedExact")
+        self._ConsumerGroupPath = params.get("ConsumerGroupPath")
+        self._ConsumerGroupActive = params.get("ConsumerGroupActive")
+        if params.get("SubResources") is not None:
+            self._SubResources = []
+            for item in params.get("SubResources"):
+                obj = AIGWQuotaSubItem()
+                obj._deserialize(item)
+                self._SubResources.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5518,6 +6582,57 @@ class AIGWQuotaList(AbstractModel):
                 obj = AIGWQuota()
                 obj._deserialize(item)
                 self._DataList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWQuotaSubItem(AbstractModel):
+    r"""配额规则中，某资源对象的指定子资源信息。如资源对象“模型服务”的“指定模型服务”的信息。当Scope=Specified 必填（1~50 项，msvc_id 不重复，QuotaLimit>0）；Scope=All 必须为空。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubResourceId: <p>子资源 ID（如：模型服务 ID）</p>
+        :type SubResourceId: str
+        :param _QuotaLimit: <p>该子资源独立配额上限，必须 &gt; 0；单位与 QuotaType 对齐（Cost=元 TotalToken=tokens RequestCount=次）</p>
+        :type QuotaLimit: int
+        """
+        self._SubResourceId = None
+        self._QuotaLimit = None
+
+    @property
+    def SubResourceId(self):
+        r"""<p>子资源 ID（如：模型服务 ID）</p>
+        :rtype: str
+        """
+        return self._SubResourceId
+
+    @SubResourceId.setter
+    def SubResourceId(self, SubResourceId):
+        self._SubResourceId = SubResourceId
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>该子资源独立配额上限，必须 &gt; 0；单位与 QuotaType 对齐（Cost=元 TotalToken=tokens RequestCount=次）</p>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+
+    def _deserialize(self, params):
+        self._SubResourceId = params.get("SubResourceId")
+        self._QuotaLimit = params.get("QuotaLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5745,6 +6860,8 @@ class AIGWSensitiveWordRoute(AbstractModel):
         :type WeightedConfig: list of CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy
         :param _ModelNameConfig: <p>路由名称路由配置</p>
         :type ModelNameConfig: list of CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy
+        :param _StandardModelName: <p>敏感词路由单模型直选时的标准模型名称。仅在 Enabled=true、SelectedTypes 为空且 ModelServiceRefs 只有一个模型服务时可设置；使用 Weighted 或 ModelName 策略时应在相应配置条目中填写。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :type StandardModelName: str
         """
         self._Enabled = None
         self._ModelServiceRefs = None
@@ -5752,6 +6869,7 @@ class AIGWSensitiveWordRoute(AbstractModel):
         self._SelectedTypes = None
         self._WeightedConfig = None
         self._ModelNameConfig = None
+        self._StandardModelName = None
 
     @property
     def Enabled(self):
@@ -5819,6 +6937,17 @@ class AIGWSensitiveWordRoute(AbstractModel):
     def ModelNameConfig(self, ModelNameConfig):
         self._ModelNameConfig = ModelNameConfig
 
+    @property
+    def StandardModelName(self):
+        r"""<p>敏感词路由单模型直选时的标准模型名称。仅在 Enabled=true、SelectedTypes 为空且 ModelServiceRefs 只有一个模型服务时可设置；使用 Weighted 或 ModelName 策略时应在相应配置条目中填写。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :rtype: str
+        """
+        return self._StandardModelName
+
+    @StandardModelName.setter
+    def StandardModelName(self, StandardModelName):
+        self._StandardModelName = StandardModelName
+
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
@@ -5837,6 +6966,7 @@ class AIGWSensitiveWordRoute(AbstractModel):
                 obj = CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy()
                 obj._deserialize(item)
                 self._ModelNameConfig.append(obj)
+        self._StandardModelName = params.get("StandardModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5933,6 +7063,42 @@ class AIGWSimpleSecretKey(AbstractModel):
         self._Status = params.get("Status")
         self._SecretType = params.get("SecretType")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWSmartBalanceConfig(AbstractModel):
+    r"""智能负载均衡配置，仅服务来源（ServiceSource，SourceId 非空）场景生效。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Algorithm: <p>负载均衡类型</p><p>枚举值：</p><ul><li>LeastRequests： 最少运行请求</li><li>LeastQueued： 最少排队请求</li><li>LeastTTFT： 最少TTFT</li><li>LeastTPOT： 最少TPOT</li></ul>
+        :type Algorithm: str
+        """
+        self._Algorithm = None
+
+    @property
+    def Algorithm(self):
+        r"""<p>负载均衡类型</p><p>枚举值：</p><ul><li>LeastRequests： 最少运行请求</li><li>LeastQueued： 最少排队请求</li><li>LeastTTFT： 最少TTFT</li><li>LeastTPOT： 最少TPOT</li></ul>
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+
+    def _deserialize(self, params):
+        self._Algorithm = params.get("Algorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6485,6 +7651,61 @@ class AddCloudNativeAPIGatewayConsumerInGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AutoSecretKey(AbstractModel):
+    r"""新建消费者时为消费者自动绑定API密钥时自动生成密钥的参数体。仅当 SecretBindType="AutoGenerate" 时必填，其他分支禁止携带，否则返回 InvalidParameterValue.CreateError。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>密钥名称，2-60 字符。</p><p>字符集与「密钥管理-新建密钥」一致（中英文、数字、下划线、短横线），禁止 -share 后缀，同网关内不可重名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>密钥描述。长度 ≤ 200，可为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        r"""<p>密钥名称，2-60 字符。</p><p>字符集与「密钥管理-新建密钥」一致（中英文、数字、下划线、短横线），禁止 -share 后缀，同网关内不可重名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>密钥描述。长度 ≤ 200，可为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
     r"""BindCloudNativeAPIGatewaySecretKey请求参数结构体
 
@@ -6971,6 +8192,18 @@ class CNAPIGwConsumer(AbstractModel):
         :type SourceType: str
         :param _SyncedVersion: <p>同步版本</p>
         :type SyncedVersion: str
+        :param _DisplayName: <p>消费者展示名称；目录同步对象可与登录名不同。</p>
+        :type DisplayName: str
+        :param _UserName: <p>消费者登录名称。</p>
+        :type UserName: str
+        :param _Status: <p>目录消费者状态：active / disabled / soft_deleted。保留存量接口原始值，不转换为 AIGW 枚举。</p>
+        :type Status: str
+        :param _Origin: <p>消费者来源：manual / sync；保留目录隔离和同步对象只读规则。</p>
+        :type Origin: str
+        :param _SyncSourceId: <p>产生该消费者的同步源 ID；手工消费者可为空。</p>
+        :type SyncSourceId: str
+        :param _ExternalId: <p>对象在外部目录中的稳定标识；手工消费者可为空。</p>
+        :type ExternalId: str
         """
         self._ConsumerId = None
         self._Name = None
@@ -6982,6 +8215,12 @@ class CNAPIGwConsumer(AbstractModel):
         self._SyncStatus = None
         self._SourceType = None
         self._SyncedVersion = None
+        self._DisplayName = None
+        self._UserName = None
+        self._Status = None
+        self._Origin = None
+        self._SyncSourceId = None
+        self._ExternalId = None
 
     @property
     def ConsumerId(self):
@@ -7095,6 +8334,72 @@ class CNAPIGwConsumer(AbstractModel):
     def SyncedVersion(self, SyncedVersion):
         self._SyncedVersion = SyncedVersion
 
+    @property
+    def DisplayName(self):
+        r"""<p>消费者展示名称；目录同步对象可与登录名不同。</p>
+        :rtype: str
+        """
+        return self._DisplayName
+
+    @DisplayName.setter
+    def DisplayName(self, DisplayName):
+        self._DisplayName = DisplayName
+
+    @property
+    def UserName(self):
+        r"""<p>消费者登录名称。</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Status(self):
+        r"""<p>目录消费者状态：active / disabled / soft_deleted。保留存量接口原始值，不转换为 AIGW 枚举。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Origin(self):
+        r"""<p>消费者来源：manual / sync；保留目录隔离和同步对象只读规则。</p>
+        :rtype: str
+        """
+        return self._Origin
+
+    @Origin.setter
+    def Origin(self, Origin):
+        self._Origin = Origin
+
+    @property
+    def SyncSourceId(self):
+        r"""<p>产生该消费者的同步源 ID；手工消费者可为空。</p>
+        :rtype: str
+        """
+        return self._SyncSourceId
+
+    @SyncSourceId.setter
+    def SyncSourceId(self, SyncSourceId):
+        self._SyncSourceId = SyncSourceId
+
+    @property
+    def ExternalId(self):
+        r"""<p>对象在外部目录中的稳定标识；手工消费者可为空。</p>
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
 
     def _deserialize(self, params):
         self._ConsumerId = params.get("ConsumerId")
@@ -7112,6 +8417,12 @@ class CNAPIGwConsumer(AbstractModel):
         self._SyncStatus = params.get("SyncStatus")
         self._SourceType = params.get("SourceType")
         self._SyncedVersion = params.get("SyncedVersion")
+        self._DisplayName = params.get("DisplayName")
+        self._UserName = params.get("UserName")
+        self._Status = params.get("Status")
+        self._Origin = params.get("Origin")
+        self._SyncSourceId = params.get("SyncSourceId")
+        self._ExternalId = params.get("ExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7150,6 +8461,8 @@ class CNAPIGwConsumerGroup(AbstractModel):
         :type SourceType: str
         :param _SyncedVersion: <p>同步版本</p>
         :type SyncedVersion: str
+        :param _ExternalId: <p>只读保留的组织部门外部标识，仅 SoftDeleted 对象返回；用于后续删除检查，不在基础信息页面展示。</p>
+        :type ExternalId: str
         """
         self._ConsumerGroupId = None
         self._Name = None
@@ -7161,6 +8474,7 @@ class CNAPIGwConsumerGroup(AbstractModel):
         self._SyncStatus = None
         self._SourceType = None
         self._SyncedVersion = None
+        self._ExternalId = None
 
     @property
     def ConsumerGroupId(self):
@@ -7273,6 +8587,17 @@ class CNAPIGwConsumerGroup(AbstractModel):
     def SyncedVersion(self, SyncedVersion):
         self._SyncedVersion = SyncedVersion
 
+    @property
+    def ExternalId(self):
+        r"""<p>只读保留的组织部门外部标识，仅 SoftDeleted 对象返回；用于后续删除检查，不在基础信息页面展示。</p>
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
 
     def _deserialize(self, params):
         self._ConsumerGroupId = params.get("ConsumerGroupId")
@@ -7285,6 +8610,7 @@ class CNAPIGwConsumerGroup(AbstractModel):
         self._SyncStatus = params.get("SyncStatus")
         self._SourceType = params.get("SourceType")
         self._SyncedVersion = params.get("SyncedVersion")
+        self._ExternalId = params.get("ExternalId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8360,6 +9686,12 @@ class CNAPIGwSecretKey(AbstractModel):
         :type BoundModelSecretKeys: list of AIGWSimpleSecretKey
         :param _BoundConsumerSecretKeys: <p>绑定了该模型密钥的消费者密钥列表</p>
         :type BoundConsumerSecretKeys: list of AIGWSimpleSecretKey
+        :param _CredentialGenerateType: <p>可选返回字段，仅 IncludeCreationInfo=true 且 ResourceType=Consumer 时存在。凭证内容生成方式：System 自动生成、Custom 自定义、KMS。旧 GenerateType=AutoWithConsumer 映射为 System；其他值保持原 GenerateType，未知值由前端显示“未知”。不改写原 GenerateType。</p>
+        :type CredentialGenerateType: str
+        :param _CreationSource: <p>可选返回字段，仅 IncludeCreationInfo=true 且 ResourceType=Consumer 时存在。创建来源：Manual 手动新建、AutoWithConsumer 随消费者自动新建、Batch 批量新建。按持久化 BatchId 和原 GenerateType 判定，不按名称前缀猜测。</p>
+        :type CreationSource: str
+        :param _BatchId: <p>可选返回字段，仅 IncludeCreationInfo=true 且 ResourceType=Consumer 时存在。批量创建填原批次 ID，非批量为空字符串。来源关联随密钥保留，不因批次结果过期而消失；此字段不表示批次结果或明文仍可读取。</p>
+        :type BatchId: str
         """
         self._BindCount = None
         self._CanBind = None
@@ -8390,6 +9722,9 @@ class CNAPIGwSecretKey(AbstractModel):
         self._QueryParamCredentialConfig = None
         self._BoundModelSecretKeys = None
         self._BoundConsumerSecretKeys = None
+        self._CredentialGenerateType = None
+        self._CreationSource = None
+        self._BatchId = None
 
     @property
     def BindCount(self):
@@ -8714,6 +10049,39 @@ class CNAPIGwSecretKey(AbstractModel):
     def BoundConsumerSecretKeys(self, BoundConsumerSecretKeys):
         self._BoundConsumerSecretKeys = BoundConsumerSecretKeys
 
+    @property
+    def CredentialGenerateType(self):
+        r"""<p>可选返回字段，仅 IncludeCreationInfo=true 且 ResourceType=Consumer 时存在。凭证内容生成方式：System 自动生成、Custom 自定义、KMS。旧 GenerateType=AutoWithConsumer 映射为 System；其他值保持原 GenerateType，未知值由前端显示“未知”。不改写原 GenerateType。</p>
+        :rtype: str
+        """
+        return self._CredentialGenerateType
+
+    @CredentialGenerateType.setter
+    def CredentialGenerateType(self, CredentialGenerateType):
+        self._CredentialGenerateType = CredentialGenerateType
+
+    @property
+    def CreationSource(self):
+        r"""<p>可选返回字段，仅 IncludeCreationInfo=true 且 ResourceType=Consumer 时存在。创建来源：Manual 手动新建、AutoWithConsumer 随消费者自动新建、Batch 批量新建。按持久化 BatchId 和原 GenerateType 判定，不按名称前缀猜测。</p>
+        :rtype: str
+        """
+        return self._CreationSource
+
+    @CreationSource.setter
+    def CreationSource(self, CreationSource):
+        self._CreationSource = CreationSource
+
+    @property
+    def BatchId(self):
+        r"""<p>可选返回字段，仅 IncludeCreationInfo=true 且 ResourceType=Consumer 时存在。批量创建填原批次 ID，非批量为空字符串。来源关联随密钥保留，不因批次结果过期而消失；此字段不表示批次结果或明文仍可读取。</p>
+        :rtype: str
+        """
+        return self._BatchId
+
+    @BatchId.setter
+    def BatchId(self, BatchId):
+        self._BatchId = BatchId
+
 
     def _deserialize(self, params):
         self._BindCount = params.get("BindCount")
@@ -8773,6 +10141,9 @@ class CNAPIGwSecretKey(AbstractModel):
                 obj = AIGWSimpleSecretKey()
                 obj._deserialize(item)
                 self._BoundConsumerSecretKeys.append(obj)
+        self._CredentialGenerateType = params.get("CredentialGenerateType")
+        self._CreationSource = params.get("CreationSource")
+        self._BatchId = params.get("BatchId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9198,6 +10569,18 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
         :type ConsumerGroupModelScopes: list of AIGWAuthModelScopeItem
         :param _ConsumerInheritModelScope: <p>消费者继承的模型范围</p>
         :type ConsumerInheritModelScope: :class:`tencentcloud.cngw.v20230418.models.AIGWConsumerModelScope`
+        :param _ConsumerDirectModelScopes: <p>消费者模型范围</p>
+        :type ConsumerDirectModelScopes: list of AIGWAuthModelScopeItem
+        :param _SecretKeyModelScopes: <p>消费者密钥模型范围</p>
+        :type SecretKeyModelScopes: list of AIGWAuthModelScopeItem
+        :param _PriorityScheduleConfig: <p>请求优先级配置</p>
+        :type PriorityScheduleConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWPriorityScheduleConfig`
+        :param _PlaygroundAvailable: <p>模型API是否支持Playground调试</p>
+        :type PlaygroundAvailable: bool
+        :param _ModelNameRoute: <p>模型 API 当前配置的入口模型名路由规则，根据请求体顶层 model 字段匹配 ModelNames 中的名称或别名；未配置时不启用该入口路由规则。</p>
+        :type ModelNameRoute: :class:`tencentcloud.cngw.v20230418.models.AIGWModelNameRoute`
+        :param _StandardModelName: <p>单模型 API 当前配置的顶层标准模型名称，仅适用于其关联的 TIONE 模型服务；为空表示未配置。多模型场景的标准模型名称在各路由或降级条目中返回。</p>
+        :type StandardModelName: str
         """
         self._Id = None
         self._CreateTime = None
@@ -9224,6 +10607,12 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
         self._SensitiveWordRoute = None
         self._ConsumerGroupModelScopes = None
         self._ConsumerInheritModelScope = None
+        self._ConsumerDirectModelScopes = None
+        self._SecretKeyModelScopes = None
+        self._PriorityScheduleConfig = None
+        self._PlaygroundAvailable = None
+        self._ModelNameRoute = None
+        self._StandardModelName = None
 
     @property
     def Id(self):
@@ -9500,6 +10889,72 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
     def ConsumerInheritModelScope(self, ConsumerInheritModelScope):
         self._ConsumerInheritModelScope = ConsumerInheritModelScope
 
+    @property
+    def ConsumerDirectModelScopes(self):
+        r"""<p>消费者模型范围</p>
+        :rtype: list of AIGWAuthModelScopeItem
+        """
+        return self._ConsumerDirectModelScopes
+
+    @ConsumerDirectModelScopes.setter
+    def ConsumerDirectModelScopes(self, ConsumerDirectModelScopes):
+        self._ConsumerDirectModelScopes = ConsumerDirectModelScopes
+
+    @property
+    def SecretKeyModelScopes(self):
+        r"""<p>消费者密钥模型范围</p>
+        :rtype: list of AIGWAuthModelScopeItem
+        """
+        return self._SecretKeyModelScopes
+
+    @SecretKeyModelScopes.setter
+    def SecretKeyModelScopes(self, SecretKeyModelScopes):
+        self._SecretKeyModelScopes = SecretKeyModelScopes
+
+    @property
+    def PriorityScheduleConfig(self):
+        r"""<p>请求优先级配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWPriorityScheduleConfig`
+        """
+        return self._PriorityScheduleConfig
+
+    @PriorityScheduleConfig.setter
+    def PriorityScheduleConfig(self, PriorityScheduleConfig):
+        self._PriorityScheduleConfig = PriorityScheduleConfig
+
+    @property
+    def PlaygroundAvailable(self):
+        r"""<p>模型API是否支持Playground调试</p>
+        :rtype: bool
+        """
+        return self._PlaygroundAvailable
+
+    @PlaygroundAvailable.setter
+    def PlaygroundAvailable(self, PlaygroundAvailable):
+        self._PlaygroundAvailable = PlaygroundAvailable
+
+    @property
+    def ModelNameRoute(self):
+        r"""<p>模型 API 当前配置的入口模型名路由规则，根据请求体顶层 model 字段匹配 ModelNames 中的名称或别名；未配置时不启用该入口路由规则。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWModelNameRoute`
+        """
+        return self._ModelNameRoute
+
+    @ModelNameRoute.setter
+    def ModelNameRoute(self, ModelNameRoute):
+        self._ModelNameRoute = ModelNameRoute
+
+    @property
+    def StandardModelName(self):
+        r"""<p>单模型 API 当前配置的顶层标准模型名称，仅适用于其关联的 TIONE 模型服务；为空表示未配置。多模型场景的标准模型名称在各路由或降级条目中返回。</p>
+        :rtype: str
+        """
+        return self._StandardModelName
+
+    @StandardModelName.setter
+    def StandardModelName(self, StandardModelName):
+        self._StandardModelName = StandardModelName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -9560,6 +11015,26 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
         if params.get("ConsumerInheritModelScope") is not None:
             self._ConsumerInheritModelScope = AIGWConsumerModelScope()
             self._ConsumerInheritModelScope._deserialize(params.get("ConsumerInheritModelScope"))
+        if params.get("ConsumerDirectModelScopes") is not None:
+            self._ConsumerDirectModelScopes = []
+            for item in params.get("ConsumerDirectModelScopes"):
+                obj = AIGWAuthModelScopeItem()
+                obj._deserialize(item)
+                self._ConsumerDirectModelScopes.append(obj)
+        if params.get("SecretKeyModelScopes") is not None:
+            self._SecretKeyModelScopes = []
+            for item in params.get("SecretKeyModelScopes"):
+                obj = AIGWAuthModelScopeItem()
+                obj._deserialize(item)
+                self._SecretKeyModelScopes.append(obj)
+        if params.get("PriorityScheduleConfig") is not None:
+            self._PriorityScheduleConfig = AIGWPriorityScheduleConfig()
+            self._PriorityScheduleConfig._deserialize(params.get("PriorityScheduleConfig"))
+        self._PlaygroundAvailable = params.get("PlaygroundAvailable")
+        if params.get("ModelNameRoute") is not None:
+            self._ModelNameRoute = AIGWModelNameRoute()
+            self._ModelNameRoute._deserialize(params.get("ModelNameRoute"))
+        self._StandardModelName = params.get("StandardModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9750,6 +11225,10 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
         :type EnableHealthCheck: bool
         :param _HealthCheck: <p>健康检查配置</p>
         :type HealthCheck: :class:`tencentcloud.cngw.v20230418.models.AIGWLLMHealthCheckSetting`
+        :param _LengthLimitConfig: <p>内容长度限制配置</p>
+        :type LengthLimitConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLengthLimitConfig`
+        :param _SmartBalance: <p>智能负载均衡配置。</p>
+        :type SmartBalance: :class:`tencentcloud.cngw.v20230418.models.AIGWSmartBalanceConfig`
         """
         self._Id = None
         self._Name = None
@@ -9794,6 +11273,8 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
         self._Status = None
         self._EnableHealthCheck = None
         self._HealthCheck = None
+        self._LengthLimitConfig = None
+        self._SmartBalance = None
 
     @property
     def Id(self):
@@ -10268,6 +11749,28 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
     def HealthCheck(self, HealthCheck):
         self._HealthCheck = HealthCheck
 
+    @property
+    def LengthLimitConfig(self):
+        r"""<p>内容长度限制配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLengthLimitConfig`
+        """
+        return self._LengthLimitConfig
+
+    @LengthLimitConfig.setter
+    def LengthLimitConfig(self, LengthLimitConfig):
+        self._LengthLimitConfig = LengthLimitConfig
+
+    @property
+    def SmartBalance(self):
+        r"""<p>智能负载均衡配置。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWSmartBalanceConfig`
+        """
+        return self._SmartBalance
+
+    @SmartBalance.setter
+    def SmartBalance(self, SmartBalance):
+        self._SmartBalance = SmartBalance
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10333,6 +11836,12 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
         if params.get("HealthCheck") is not None:
             self._HealthCheck = AIGWLLMHealthCheckSetting()
             self._HealthCheck._deserialize(params.get("HealthCheck"))
+        if params.get("LengthLimitConfig") is not None:
+            self._LengthLimitConfig = AIGWLengthLimitConfig()
+            self._LengthLimitConfig._deserialize(params.get("LengthLimitConfig"))
+        if params.get("SmartBalance") is not None:
+            self._SmartBalance = AIGWSmartBalanceConfig()
+            self._SmartBalance._deserialize(params.get("SmartBalance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10500,10 +12009,13 @@ class CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy(AbstractModel):
         :type MatchModelName: str
         :param _RewriteModelName: <p>重写模型</p>
         :type RewriteModelName: str
+        :param _StandardModelName: <p>当前模型名称匹配路由条目中 ModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :type StandardModelName: str
         """
         self._ModelServiceId = None
         self._MatchModelName = None
         self._RewriteModelName = None
+        self._StandardModelName = None
 
     @property
     def ModelServiceId(self):
@@ -10538,11 +12050,23 @@ class CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy(AbstractModel):
     def RewriteModelName(self, RewriteModelName):
         self._RewriteModelName = RewriteModelName
 
+    @property
+    def StandardModelName(self):
+        r"""<p>当前模型名称匹配路由条目中 ModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :rtype: str
+        """
+        return self._StandardModelName
+
+    @StandardModelName.setter
+    def StandardModelName(self, StandardModelName):
+        self._StandardModelName = StandardModelName
+
 
     def _deserialize(self, params):
         self._ModelServiceId = params.get("ModelServiceId")
         self._MatchModelName = params.get("MatchModelName")
         self._RewriteModelName = params.get("RewriteModelName")
+        self._StandardModelName = params.get("StandardModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10564,9 +12088,12 @@ class CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy(AbstractModel):
         :type ModelServiceId: str
         :param _Weight: <p>权重值</p>
         :type Weight: int
+        :param _StandardModelName: <p>当前权重路由条目中 ModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :type StandardModelName: str
         """
         self._ModelServiceId = None
         self._Weight = None
+        self._StandardModelName = None
 
     @property
     def ModelServiceId(self):
@@ -10590,10 +12117,22 @@ class CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy(AbstractModel):
     def Weight(self, Weight):
         self._Weight = Weight
 
+    @property
+    def StandardModelName(self):
+        r"""<p>当前权重路由条目中 ModelServiceId 对应的标准模型名称；为空表示未配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :rtype: str
+        """
+        return self._StandardModelName
+
+    @StandardModelName.setter
+    def StandardModelName(self, StandardModelName):
+        self._StandardModelName = StandardModelName
+
 
     def _deserialize(self, params):
         self._ModelServiceId = params.get("ModelServiceId")
         self._Weight = params.get("Weight")
+        self._StandardModelName = params.get("StandardModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10912,17 +12451,23 @@ class CreateCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
         r"""
         :param _GatewayId: <p>网关实例id</p>
         :type GatewayId: str
-        :param _Name: <p>消费者组名称，最长 60 字符。同一网关下唯一。</p>
+        :param _Name: <p>消费者组名称，最长 60 字符。同一网关下唯一。</p><p>CustomOrganization 时非空、最大 255 字符；Legacy 原规则不变。</p>
         :type Name: str
-        :param _Status: <p>启用状态。</p><p>枚举值：</p><ul><li>Enable：启用</li><li>Disable：禁用</li></ul>
+        :param _Status: <p>启用状态。</p><p>枚举值：</p><ul><li>Enable：启用</li><li>Disable：禁用</li></ul><p>CustomOrganization 时传 Active 或 Disabled；保持 Status 必填。Legacy 原 Enable/Disable 不变。</p>
         :type Status: str
-        :param _Description: <p>消费者组描述。最长 200 字符。</p>
+        :param _Description: <p>消费者组描述。最长 200 字符。</p><p>CustomOrganization 时最大 500 字符；Legacy 原规则不变。</p>
         :type Description: str
+        :param _OperationSource: <p>调用业务来源，可选 Legacy 或 CustomOrganization；省略或空串按 Legacy。Legacy 保持原行为，CustomOrganization 用于自定义组织架构。该字段不替代鉴权，不改变资源归属，不覆盖 RequestSource。来源保存在操作记录请求内容中。</p>
+        :type OperationSource: str
+        :param _ParentConsumerGroupIds: <p>仅 CustomOrganization 使用。1–32 个当前网关自定义父部门 UUID，完整保留多父关系；省略时挂自定义根，空数组非法。不得使用同步部门或未归属组。Legacy 不使用此字段。</p>
+        :type ParentConsumerGroupIds: list of str
         """
         self._GatewayId = None
         self._Name = None
         self._Status = None
         self._Description = None
+        self._OperationSource = None
+        self._ParentConsumerGroupIds = None
 
     @property
     def GatewayId(self):
@@ -10937,7 +12482,7 @@ class CreateCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>消费者组名称，最长 60 字符。同一网关下唯一。</p>
+        r"""<p>消费者组名称，最长 60 字符。同一网关下唯一。</p><p>CustomOrganization 时非空、最大 255 字符；Legacy 原规则不变。</p>
         :rtype: str
         """
         return self._Name
@@ -10948,7 +12493,7 @@ class CreateCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>启用状态。</p><p>枚举值：</p><ul><li>Enable：启用</li><li>Disable：禁用</li></ul>
+        r"""<p>启用状态。</p><p>枚举值：</p><ul><li>Enable：启用</li><li>Disable：禁用</li></ul><p>CustomOrganization 时传 Active 或 Disabled；保持 Status 必填。Legacy 原 Enable/Disable 不变。</p>
         :rtype: str
         """
         return self._Status
@@ -10959,7 +12504,7 @@ class CreateCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>消费者组描述。最长 200 字符。</p>
+        r"""<p>消费者组描述。最长 200 字符。</p><p>CustomOrganization 时最大 500 字符；Legacy 原规则不变。</p>
         :rtype: str
         """
         return self._Description
@@ -10968,12 +12513,36 @@ class CreateCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def OperationSource(self):
+        r"""<p>调用业务来源，可选 Legacy 或 CustomOrganization；省略或空串按 Legacy。Legacy 保持原行为，CustomOrganization 用于自定义组织架构。该字段不替代鉴权，不改变资源归属，不覆盖 RequestSource。来源保存在操作记录请求内容中。</p>
+        :rtype: str
+        """
+        return self._OperationSource
+
+    @OperationSource.setter
+    def OperationSource(self, OperationSource):
+        self._OperationSource = OperationSource
+
+    @property
+    def ParentConsumerGroupIds(self):
+        r"""<p>仅 CustomOrganization 使用。1–32 个当前网关自定义父部门 UUID，完整保留多父关系；省略时挂自定义根，空数组非法。不得使用同步部门或未归属组。Legacy 不使用此字段。</p>
+        :rtype: list of str
+        """
+        return self._ParentConsumerGroupIds
+
+    @ParentConsumerGroupIds.setter
+    def ParentConsumerGroupIds(self, ParentConsumerGroupIds):
+        self._ParentConsumerGroupIds = ParentConsumerGroupIds
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Name = params.get("Name")
         self._Status = params.get("Status")
         self._Description = params.get("Description")
+        self._OperationSource = params.get("OperationSource")
+        self._ParentConsumerGroupIds = params.get("ParentConsumerGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11044,11 +12613,23 @@ class CreateCloudNativeAPIGatewayConsumerRequest(AbstractModel):
         :type Priority: str
         :param _Description: <p>消费者描述。最长 200 字符。</p>
         :type Description: str
+        :param _OperationSource: <p>调用业务来源，可选 Legacy 或 CustomOrganization；省略或空串按 Legacy。Legacy 保持原行为，CustomOrganization 用于自定义组织架构。该字段不替代鉴权，不改变资源归属，不覆盖 RequestSource。来源保存在操作记录请求内容中。</p>
+        :type OperationSource: str
+        :param _Status: <p>仅 CustomOrganization 使用 Active 或 Disabled，默认 Active。Legacy 不新增状态行为。</p>
+        :type Status: str
+        :param _SecretBindType: <p>密钥关联方式，三选一枚举。不传时兼容老逻辑（等价于 None 或 Existing，取决于是否传 SecretKeyId）</p><p>枚举值：</p><ul><li>Existing： 选择已有密钥</li><li>AutoGenerate： 自动生成并关联密钥</li><li>None： 暂不关联密钥</li></ul><p>默认值：None</p>
+        :type SecretBindType: str
+        :param _AutoSecretKey: <p>自动生成密钥的参数体。仅当 SecretBindType=&quot;AutoGenerate&quot; 时必填，其他分支禁止携带，否则返回 InvalidParameterValue.CreateError。</p>
+        :type AutoSecretKey: :class:`tencentcloud.cngw.v20230418.models.AutoSecretKey`
         """
         self._GatewayId = None
         self._Name = None
         self._Priority = None
         self._Description = None
+        self._OperationSource = None
+        self._Status = None
+        self._SecretBindType = None
+        self._AutoSecretKey = None
 
     @property
     def GatewayId(self):
@@ -11094,12 +12675,62 @@ class CreateCloudNativeAPIGatewayConsumerRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def OperationSource(self):
+        r"""<p>调用业务来源，可选 Legacy 或 CustomOrganization；省略或空串按 Legacy。Legacy 保持原行为，CustomOrganization 用于自定义组织架构。该字段不替代鉴权，不改变资源归属，不覆盖 RequestSource。来源保存在操作记录请求内容中。</p>
+        :rtype: str
+        """
+        return self._OperationSource
+
+    @OperationSource.setter
+    def OperationSource(self, OperationSource):
+        self._OperationSource = OperationSource
+
+    @property
+    def Status(self):
+        r"""<p>仅 CustomOrganization 使用 Active 或 Disabled，默认 Active。Legacy 不新增状态行为。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SecretBindType(self):
+        r"""<p>密钥关联方式，三选一枚举。不传时兼容老逻辑（等价于 None 或 Existing，取决于是否传 SecretKeyId）</p><p>枚举值：</p><ul><li>Existing： 选择已有密钥</li><li>AutoGenerate： 自动生成并关联密钥</li><li>None： 暂不关联密钥</li></ul><p>默认值：None</p>
+        :rtype: str
+        """
+        return self._SecretBindType
+
+    @SecretBindType.setter
+    def SecretBindType(self, SecretBindType):
+        self._SecretBindType = SecretBindType
+
+    @property
+    def AutoSecretKey(self):
+        r"""<p>自动生成密钥的参数体。仅当 SecretBindType=&quot;AutoGenerate&quot; 时必填，其他分支禁止携带，否则返回 InvalidParameterValue.CreateError。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AutoSecretKey`
+        """
+        return self._AutoSecretKey
+
+    @AutoSecretKey.setter
+    def AutoSecretKey(self, AutoSecretKey):
+        self._AutoSecretKey = AutoSecretKey
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Name = params.get("Name")
         self._Priority = params.get("Priority")
         self._Description = params.get("Description")
+        self._OperationSource = params.get("OperationSource")
+        self._Status = params.get("Status")
+        self._SecretBindType = params.get("SecretBindType")
+        if params.get("AutoSecretKey") is not None:
+            self._AutoSecretKey = AutoSecretKey()
+            self._AutoSecretKey._deserialize(params.get("AutoSecretKey"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11194,6 +12825,12 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         :type MaxDocumentsConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWRerankMaxDocumentsConfig`
         :param _SensitiveWordRoute: <p>敏感词路由配置</p>
         :type SensitiveWordRoute: :class:`tencentcloud.cngw.v20230418.models.AIGWSensitiveWordRoute`
+        :param _PriorityScheduleConfig: <p>请求优先级调度配置</p>
+        :type PriorityScheduleConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWPriorityScheduleConfig`
+        :param _ModelNameRoute: <p>按请求体顶层 model 字段选择模型 API 的入口路由配置。传入对象即启用，ModelNames 须为非空列表；不传表示不启用。仅用于 Chat 场景下受支持的 POST 路由：openai 协议的 /v1/chat/completions、/v1/responses，或 anthropic 协议的 /v1/messages。公有云要求网关版本不低于 3.9.8，TCS 要求不低于 3.9.6。</p>
+        :type ModelNameRoute: :class:`tencentcloud.cngw.v20230418.models.AIGWModelNameRoute`
+        :param _StandardModelName: <p>单模型 API 的顶层标准模型名称。仅当 ListModelServiceId 包含一个模型服务且未配置 ModelServiceRoute 时可设置；多模型场景应在对应路由或降级条目中配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :type StandardModelName: str
         """
         self._GatewayId = None
         self._Name = None
@@ -11211,6 +12848,9 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         self._LogConfig = None
         self._MaxDocumentsConfig = None
         self._SensitiveWordRoute = None
+        self._PriorityScheduleConfig = None
+        self._ModelNameRoute = None
+        self._StandardModelName = None
 
     @property
     def GatewayId(self):
@@ -11388,6 +13028,39 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
     def SensitiveWordRoute(self, SensitiveWordRoute):
         self._SensitiveWordRoute = SensitiveWordRoute
 
+    @property
+    def PriorityScheduleConfig(self):
+        r"""<p>请求优先级调度配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWPriorityScheduleConfig`
+        """
+        return self._PriorityScheduleConfig
+
+    @PriorityScheduleConfig.setter
+    def PriorityScheduleConfig(self, PriorityScheduleConfig):
+        self._PriorityScheduleConfig = PriorityScheduleConfig
+
+    @property
+    def ModelNameRoute(self):
+        r"""<p>按请求体顶层 model 字段选择模型 API 的入口路由配置。传入对象即启用，ModelNames 须为非空列表；不传表示不启用。仅用于 Chat 场景下受支持的 POST 路由：openai 协议的 /v1/chat/completions、/v1/responses，或 anthropic 协议的 /v1/messages。公有云要求网关版本不低于 3.9.8，TCS 要求不低于 3.9.6。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWModelNameRoute`
+        """
+        return self._ModelNameRoute
+
+    @ModelNameRoute.setter
+    def ModelNameRoute(self, ModelNameRoute):
+        self._ModelNameRoute = ModelNameRoute
+
+    @property
+    def StandardModelName(self):
+        r"""<p>单模型 API 的顶层标准模型名称。仅当 ListModelServiceId 包含一个模型服务且未配置 ModelServiceRoute 时可设置；多模型场景应在对应路由或降级条目中配置。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :rtype: str
+        """
+        return self._StandardModelName
+
+    @StandardModelName.setter
+    def StandardModelName(self, StandardModelName):
+        self._StandardModelName = StandardModelName
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -11428,6 +13101,13 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         if params.get("SensitiveWordRoute") is not None:
             self._SensitiveWordRoute = AIGWSensitiveWordRoute()
             self._SensitiveWordRoute._deserialize(params.get("SensitiveWordRoute"))
+        if params.get("PriorityScheduleConfig") is not None:
+            self._PriorityScheduleConfig = AIGWPriorityScheduleConfig()
+            self._PriorityScheduleConfig._deserialize(params.get("PriorityScheduleConfig"))
+        if params.get("ModelNameRoute") is not None:
+            self._ModelNameRoute = AIGWModelNameRoute()
+            self._ModelNameRoute._deserialize(params.get("ModelNameRoute"))
+        self._StandardModelName = params.get("StandardModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11569,6 +13249,10 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type Protocol: str
         :param _LoadBalanceConfig: <p>负载均衡配置</p>
         :type LoadBalanceConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLoadBalanceConfig`
+        :param _SmartBalance: <p>智能负载均衡配置</p>
+        :type SmartBalance: :class:`tencentcloud.cngw.v20230418.models.AIGWSmartBalanceConfig`
+        :param _LengthLimitConfig: <p>内容长度限制配置</p>
+        :type LengthLimitConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLengthLimitConfig`
         """
         self._GatewayId = None
         self._Name = None
@@ -11603,6 +13287,8 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._ServiceName = None
         self._Protocol = None
         self._LoadBalanceConfig = None
+        self._SmartBalance = None
+        self._LengthLimitConfig = None
 
     @property
     def GatewayId(self):
@@ -11967,6 +13653,28 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def LoadBalanceConfig(self, LoadBalanceConfig):
         self._LoadBalanceConfig = LoadBalanceConfig
 
+    @property
+    def SmartBalance(self):
+        r"""<p>智能负载均衡配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWSmartBalanceConfig`
+        """
+        return self._SmartBalance
+
+    @SmartBalance.setter
+    def SmartBalance(self, SmartBalance):
+        self._SmartBalance = SmartBalance
+
+    @property
+    def LengthLimitConfig(self):
+        r"""<p>内容长度限制配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLengthLimitConfig`
+        """
+        return self._LengthLimitConfig
+
+    @LengthLimitConfig.setter
+    def LengthLimitConfig(self, LengthLimitConfig):
+        self._LengthLimitConfig = LengthLimitConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -12020,6 +13728,12 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         if params.get("LoadBalanceConfig") is not None:
             self._LoadBalanceConfig = AIGWLoadBalanceConfig()
             self._LoadBalanceConfig._deserialize(params.get("LoadBalanceConfig"))
+        if params.get("SmartBalance") is not None:
+            self._SmartBalance = AIGWSmartBalanceConfig()
+            self._SmartBalance._deserialize(params.get("SmartBalance"))
+        if params.get("LengthLimitConfig") is not None:
+            self._LengthLimitConfig = AIGWLengthLimitConfig()
+            self._LengthLimitConfig._deserialize(params.get("LengthLimitConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12333,6 +14047,8 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         :type PreserveHost: bool
         :param _LogConfig: <p>日志采集配置</p>
         :type LogConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
+        :param _ParamRewriteConfig: <p>服务级参数改写规则</p>
+        :type ParamRewriteConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPServerParamRewriteConfig`
         """
         self._GatewayId = None
         self._Name = None
@@ -12349,6 +14065,7 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         self._HealthCheck = None
         self._PreserveHost = None
         self._LogConfig = None
+        self._ParamRewriteConfig = None
 
     @property
     def GatewayId(self):
@@ -12515,6 +14232,17 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
     def LogConfig(self, LogConfig):
         self._LogConfig = LogConfig
 
+    @property
+    def ParamRewriteConfig(self):
+        r"""<p>服务级参数改写规则</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPServerParamRewriteConfig`
+        """
+        return self._ParamRewriteConfig
+
+    @ParamRewriteConfig.setter
+    def ParamRewriteConfig(self, ParamRewriteConfig):
+        self._ParamRewriteConfig = ParamRewriteConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -12540,6 +14268,9 @@ class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         if params.get("LogConfig") is not None:
             self._LogConfig = AIGWLogConfig()
             self._LogConfig._deserialize(params.get("LogConfig"))
+        if params.get("ParamRewriteConfig") is not None:
+            self._ParamRewriteConfig = AIGWMCPServerParamRewriteConfig()
+            self._ParamRewriteConfig._deserialize(params.get("ParamRewriteConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13259,11 +14990,14 @@ class DeleteCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
         r"""
         :param _GatewayId: 网关实例id
         :type GatewayId: str
-        :param _ConsumerGroupId: 消费者组ID
+        :param _ConsumerGroupId: 消费者组ID<p>CustomOrganization 时必须为当前网关自定义部门 UUID，保留系统节点、子部门、成员与授权/MCP 依赖检查。Legacy 原 cg-* 及已有 UUID 兼容行为不变。成功响应不新增 Result。</p>
         :type ConsumerGroupId: str
+        :param _OperationSource: <p>调用业务来源，可选 Legacy 或 CustomOrganization；省略或空串按 Legacy。Legacy 保持原行为，CustomOrganization 用于自定义组织架构。该字段不替代鉴权，不改变资源归属，不覆盖 RequestSource。来源保存在操作记录请求内容中。</p>
+        :type OperationSource: str
         """
         self._GatewayId = None
         self._ConsumerGroupId = None
+        self._OperationSource = None
 
     @property
     def GatewayId(self):
@@ -13278,7 +15012,7 @@ class DeleteCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
 
     @property
     def ConsumerGroupId(self):
-        r"""消费者组ID
+        r"""消费者组ID<p>CustomOrganization 时必须为当前网关自定义部门 UUID，保留系统节点、子部门、成员与授权/MCP 依赖检查。Legacy 原 cg-* 及已有 UUID 兼容行为不变。成功响应不新增 Result。</p>
         :rtype: str
         """
         return self._ConsumerGroupId
@@ -13287,10 +15021,22 @@ class DeleteCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
     def ConsumerGroupId(self, ConsumerGroupId):
         self._ConsumerGroupId = ConsumerGroupId
 
+    @property
+    def OperationSource(self):
+        r"""<p>调用业务来源，可选 Legacy 或 CustomOrganization；省略或空串按 Legacy。Legacy 保持原行为，CustomOrganization 用于自定义组织架构。该字段不替代鉴权，不改变资源归属，不覆盖 RequestSource。来源保存在操作记录请求内容中。</p>
+        :rtype: str
+        """
+        return self._OperationSource
+
+    @OperationSource.setter
+    def OperationSource(self, OperationSource):
+        self._OperationSource = OperationSource
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._ConsumerGroupId = params.get("ConsumerGroupId")
+        self._OperationSource = params.get("OperationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13338,11 +15084,14 @@ class DeleteCloudNativeAPIGatewayConsumerRequest(AbstractModel):
         r"""
         :param _GatewayId: 网关实例id
         :type GatewayId: str
-        :param _ConsumerId: 消费者ID
+        :param _ConsumerId: 消费者ID<p>CustomOrganization 仅允许手工/存量消费者，拒绝目录来源、非空 SyncSourceId、Public 和只读保留对象，即使原源已删除也不借此入口清理。删除复用原依赖检查及全归属/凭证/授权清理，Legacy 原行为不变。成功响应不新增 Result。</p>
         :type ConsumerId: str
+        :param _OperationSource: <p>调用业务来源，可选 Legacy 或 CustomOrganization；省略或空串按 Legacy。Legacy 保持原行为，CustomOrganization 用于自定义组织架构。该字段不替代鉴权，不改变资源归属，不覆盖 RequestSource。来源保存在操作记录请求内容中。</p>
+        :type OperationSource: str
         """
         self._GatewayId = None
         self._ConsumerId = None
+        self._OperationSource = None
 
     @property
     def GatewayId(self):
@@ -13357,7 +15106,7 @@ class DeleteCloudNativeAPIGatewayConsumerRequest(AbstractModel):
 
     @property
     def ConsumerId(self):
-        r"""消费者ID
+        r"""消费者ID<p>CustomOrganization 仅允许手工/存量消费者，拒绝目录来源、非空 SyncSourceId、Public 和只读保留对象，即使原源已删除也不借此入口清理。删除复用原依赖检查及全归属/凭证/授权清理，Legacy 原行为不变。成功响应不新增 Result。</p>
         :rtype: str
         """
         return self._ConsumerId
@@ -13366,10 +15115,22 @@ class DeleteCloudNativeAPIGatewayConsumerRequest(AbstractModel):
     def ConsumerId(self, ConsumerId):
         self._ConsumerId = ConsumerId
 
+    @property
+    def OperationSource(self):
+        r"""<p>调用业务来源，可选 Legacy 或 CustomOrganization；省略或空串按 Legacy。Legacy 保持原行为，CustomOrganization 用于自定义组织架构。该字段不替代鉴权，不改变资源归属，不覆盖 RequestSource。来源保存在操作记录请求内容中。</p>
+        :rtype: str
+        """
+        return self._OperationSource
+
+    @OperationSource.setter
+    def OperationSource(self, OperationSource):
+        self._OperationSource = OperationSource
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._ConsumerId = params.get("ConsumerId")
+        self._OperationSource = params.get("OperationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14212,7 +15973,7 @@ class DescribeCloudNativeAPIGatewayAIQuotaListRequest(AbstractModel):
         :type Limit: int
         :param _Keyword: <p>关键字</p>
         :type Keyword: str
-        :param _Filters: <p>过滤条件</p>
+        :param _Filters: 可选过滤条件，不同 Name 为 AND，同一 Values 为 OR。支持 ResourceType（单值 Consumer 或 ConsumerGroup，省略默认 Consumer）、ResourceId（资源 ID，1～100 项）、ConsumerId（仅 Consumer 可用）、Source（Manual / Default / DefaultPolicy）、QuotaId、QuotaType（RequestCount / TotalToken / Cost）、PeriodUnit（Day / Week / Month / Year / Unlimit）。Values 不得为空，QuotaId、QuotaType、PeriodUnit 各为 1～100 项。ConsumerGroup 使用 ResourceId，不使用 ConsumerId；不自动展开上下级。Source 省略时排除 DefaultPolicy。
         :type Filters: list of Filter
         :param _AlarmLevels: <p>配额预警级别</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Warning： 预警</li><li>NearLimit： 临近超限</li><li>Exceeded： 超限</li></ul>
         :type AlarmLevels: list of str
@@ -14270,7 +16031,7 @@ class DescribeCloudNativeAPIGatewayAIQuotaListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>过滤条件</p>
+        r"""可选过滤条件，不同 Name 为 AND，同一 Values 为 OR。支持 ResourceType（单值 Consumer 或 ConsumerGroup，省略默认 Consumer）、ResourceId（资源 ID，1～100 项）、ConsumerId（仅 Consumer 可用）、Source（Manual / Default / DefaultPolicy）、QuotaId、QuotaType（RequestCount / TotalToken / Cost）、PeriodUnit（Day / Week / Month / Year / Unlimit）。Values 不得为空，QuotaId、QuotaType、PeriodUnit 各为 1～100 项。ConsumerGroup 使用 ResourceId，不使用 ConsumerId；不自动展开上下级。Source 省略时排除 DefaultPolicy。
         :rtype: list of Filter
         """
         return self._Filters
@@ -14895,7 +16656,7 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关 id。
+        :param _GatewayId: <p>网关 id。</p>
         :type GatewayId: str
         :param _Limit: <p>每页条数，范围 [1, 1000]，默认 10。</p>
         :type Limit: int
@@ -14911,6 +16672,8 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
         :type UseToBind: bool
         :param _ConsumerId: <p>消费者 ID（以 consumer- 开头）。</p>
         :type ConsumerId: str
+        :param _SecretKeyId: <p>密钥ID</p>
+        :type SecretKeyId: str
         """
         self._GatewayId = None
         self._Limit = None
@@ -14920,10 +16683,11 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
         self._ConsumerGroupId = None
         self._UseToBind = None
         self._ConsumerId = None
+        self._SecretKeyId = None
 
     @property
     def GatewayId(self):
-        r"""网关 id。
+        r"""<p>网关 id。</p>
         :rtype: str
         """
         return self._GatewayId
@@ -15009,6 +16773,17 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
     def ConsumerId(self, ConsumerId):
         self._ConsumerId = ConsumerId
 
+    @property
+    def SecretKeyId(self):
+        r"""<p>密钥ID</p>
+        :rtype: str
+        """
+        return self._SecretKeyId
+
+    @SecretKeyId.setter
+    def SecretKeyId(self, SecretKeyId):
+        self._SecretKeyId = SecretKeyId
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -15024,6 +16799,7 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
         self._ConsumerGroupId = params.get("ConsumerGroupId")
         self._UseToBind = params.get("UseToBind")
         self._ConsumerId = params.get("ConsumerId")
+        self._SecretKeyId = params.get("SecretKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15041,7 +16817,7 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 模型 API 列表。
+        :param _Result: <p>模型 API 列表。</p>
         :type Result: :class:`tencentcloud.cngw.v20230418.models.ListCloudNativeAPIGatewayLLMModelAPI`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15051,7 +16827,7 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""模型 API 列表。
+        r"""<p>模型 API 列表。</p>
         :rtype: :class:`tencentcloud.cngw.v20230418.models.ListCloudNativeAPIGatewayLLMModelAPI`
         """
         return self._Result
@@ -17056,6 +18832,8 @@ class DescribeCloudNativeAPIGatewaySecretKeyListRequest(AbstractModel):
         :type ResourceType: str
         :param _UseToBind: <p>是否用于绑定场景。true 时返回可被绑定到指定资源的密钥。</p>
         :type UseToBind: bool
+        :param _IncludeCreationInfo: <p>可选 Boolean，默认 false。仅传 true 且返回记录 ResourceType=Consumer 时，额外返回 CredentialGenerateType、CreationSource、BatchId；省略或 false 时不返回这三个字段，原字段和返回结构保持不变。此参数只控制展示字段，不控制 Filters 是否生效。</p>
+        :type IncludeCreationInfo: bool
         """
         self._GatewayId = None
         self._Limit = None
@@ -17065,6 +18843,7 @@ class DescribeCloudNativeAPIGatewaySecretKeyListRequest(AbstractModel):
         self._ResourceId = None
         self._ResourceType = None
         self._UseToBind = None
+        self._IncludeCreationInfo = None
 
     @property
     def GatewayId(self):
@@ -17154,6 +18933,17 @@ class DescribeCloudNativeAPIGatewaySecretKeyListRequest(AbstractModel):
     def UseToBind(self, UseToBind):
         self._UseToBind = UseToBind
 
+    @property
+    def IncludeCreationInfo(self):
+        r"""<p>可选 Boolean，默认 false。仅传 true 且返回记录 ResourceType=Consumer 时，额外返回 CredentialGenerateType、CreationSource、BatchId；省略或 false 时不返回这三个字段，原字段和返回结构保持不变。此参数只控制展示字段，不控制 Filters 是否生效。</p>
+        :rtype: bool
+        """
+        return self._IncludeCreationInfo
+
+    @IncludeCreationInfo.setter
+    def IncludeCreationInfo(self, IncludeCreationInfo):
+        self._IncludeCreationInfo = IncludeCreationInfo
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -17169,6 +18959,7 @@ class DescribeCloudNativeAPIGatewaySecretKeyListRequest(AbstractModel):
         self._ResourceId = params.get("ResourceId")
         self._ResourceType = params.get("ResourceType")
         self._UseToBind = params.get("UseToBind")
+        self._IncludeCreationInfo = params.get("IncludeCreationInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17235,9 +19026,12 @@ class DescribeCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         :type GatewayId: str
         :param _SecretKeyId: <p>密钥id</p>
         :type SecretKeyId: str
+        :param _IncludeCreationInfo: <p>可选 Boolean，默认 false。仅传 true 且返回记录 ResourceType=Consumer 时，额外返回 CredentialGenerateType、CreationSource、BatchId；省略或 false 时不返回这三个字段，原字段和返回结构保持不变。此参数只控制展示字段，不控制 Filters 是否生效。</p>
+        :type IncludeCreationInfo: bool
         """
         self._GatewayId = None
         self._SecretKeyId = None
+        self._IncludeCreationInfo = None
 
     @property
     def GatewayId(self):
@@ -17261,10 +19055,22 @@ class DescribeCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
     def SecretKeyId(self, SecretKeyId):
         self._SecretKeyId = SecretKeyId
 
+    @property
+    def IncludeCreationInfo(self):
+        r"""<p>可选 Boolean，默认 false。仅传 true 且返回记录 ResourceType=Consumer 时，额外返回 CredentialGenerateType、CreationSource、BatchId；省略或 false 时不返回这三个字段，原字段和返回结构保持不变。此参数只控制展示字段，不控制 Filters 是否生效。</p>
+        :rtype: bool
+        """
+        return self._IncludeCreationInfo
+
+    @IncludeCreationInfo.setter
+    def IncludeCreationInfo(self, IncludeCreationInfo):
+        self._IncludeCreationInfo = IncludeCreationInfo
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._SecretKeyId = params.get("SecretKeyId")
+        self._IncludeCreationInfo = params.get("IncludeCreationInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19318,6 +21124,8 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         :type ModelServiceRoute: :class:`tencentcloud.cngw.v20230418.models.CloudNativeAPIGatewayLLMModelServiceRoute`
         :param _MatchHeaders: <p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
         :type MatchHeaders: list of AIGWKVMatch
+        :param _ModelNameRoute: <p>按请求体顶层 model 字段匹配模型 API 的全量最终态配置。要保留现值必须提交完整对象；省略或 null 表示清空。</p>
+        :type ModelNameRoute: :class:`tencentcloud.cngw.v20230418.models.AIGWModelNameRoute`
         :param _EnableCrossServiceFallback: <p>是否启用跨服务 Fallback。</p>
         :type EnableCrossServiceFallback: bool
         :param _CrossServiceFallbackConfig: <p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
@@ -19330,6 +21138,10 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         :type MaxDocumentsConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWRerankMaxDocumentsConfig`
         :param _SensitiveWordRoute: <p>敏感词路由配置</p>
         :type SensitiveWordRoute: :class:`tencentcloud.cngw.v20230418.models.AIGWSensitiveWordRoute`
+        :param _PriorityScheduleConfig: <p>请求优先级配置</p>
+        :type PriorityScheduleConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWPriorityScheduleConfig`
+        :param _StandardModelName: <p>单模型 API 的顶层标准模型名称。不传保留原值，传空字符串清空，传非空字符串设置新值；仅单模型场景可设置。已配置顶层标准模型名时，需先清空该字段再切换多模型路由。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :type StandardModelName: str
         """
         self._GatewayId = None
         self._ModelAPIId = None
@@ -19339,12 +21151,15 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         self._ListModelServiceId = None
         self._ModelServiceRoute = None
         self._MatchHeaders = None
+        self._ModelNameRoute = None
         self._EnableCrossServiceFallback = None
         self._CrossServiceFallbackConfig = None
         self._TagFilter = None
         self._LogConfig = None
         self._MaxDocumentsConfig = None
         self._SensitiveWordRoute = None
+        self._PriorityScheduleConfig = None
+        self._StandardModelName = None
 
     @property
     def GatewayId(self):
@@ -19435,6 +21250,17 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         self._MatchHeaders = MatchHeaders
 
     @property
+    def ModelNameRoute(self):
+        r"""<p>按请求体顶层 model 字段匹配模型 API 的全量最终态配置。要保留现值必须提交完整对象；省略或 null 表示清空。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWModelNameRoute`
+        """
+        return self._ModelNameRoute
+
+    @ModelNameRoute.setter
+    def ModelNameRoute(self, ModelNameRoute):
+        self._ModelNameRoute = ModelNameRoute
+
+    @property
     def EnableCrossServiceFallback(self):
         r"""<p>是否启用跨服务 Fallback。</p>
         :rtype: bool
@@ -19500,6 +21326,28 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
     def SensitiveWordRoute(self, SensitiveWordRoute):
         self._SensitiveWordRoute = SensitiveWordRoute
 
+    @property
+    def PriorityScheduleConfig(self):
+        r"""<p>请求优先级配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWPriorityScheduleConfig`
+        """
+        return self._PriorityScheduleConfig
+
+    @PriorityScheduleConfig.setter
+    def PriorityScheduleConfig(self, PriorityScheduleConfig):
+        self._PriorityScheduleConfig = PriorityScheduleConfig
+
+    @property
+    def StandardModelName(self):
+        r"""<p>单模型 API 的顶层标准模型名称。不传保留原值，传空字符串清空，传非空字符串设置新值；仅单模型场景可设置。已配置顶层标准模型名时，需先清空该字段再切换多模型路由。仅对应 TIONE 模型服务时可配置。非空值最长 256 字节，支持中文、英文、数字、下划线和短横线，须以中文、英文或数字开头。同一网关内不同模型 API 不得使用相同的标准模型名称；同一模型 API 内同一模型服务在多处配置时须保持一致。</p>
+        :rtype: str
+        """
+        return self._StandardModelName
+
+    @StandardModelName.setter
+    def StandardModelName(self, StandardModelName):
+        self._StandardModelName = StandardModelName
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -19517,6 +21365,9 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
                 obj = AIGWKVMatch()
                 obj._deserialize(item)
                 self._MatchHeaders.append(obj)
+        if params.get("ModelNameRoute") is not None:
+            self._ModelNameRoute = AIGWModelNameRoute()
+            self._ModelNameRoute._deserialize(params.get("ModelNameRoute"))
         self._EnableCrossServiceFallback = params.get("EnableCrossServiceFallback")
         if params.get("CrossServiceFallbackConfig") is not None:
             self._CrossServiceFallbackConfig = AIGWCrossServiceFallbackConfig()
@@ -19533,6 +21384,10 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         if params.get("SensitiveWordRoute") is not None:
             self._SensitiveWordRoute = AIGWSensitiveWordRoute()
             self._SensitiveWordRoute._deserialize(params.get("SensitiveWordRoute"))
+        if params.get("PriorityScheduleConfig") is not None:
+            self._PriorityScheduleConfig = AIGWPriorityScheduleConfig()
+            self._PriorityScheduleConfig._deserialize(params.get("PriorityScheduleConfig"))
+        self._StandardModelName = params.get("StandardModelName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19653,6 +21508,8 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type CustomProviderName: str
         :param _LoadBalanceConfig: <p>负载均衡配置</p>
         :type LoadBalanceConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLoadBalanceConfig`
+        :param _SmartBalance: <p>智能负载均衡配置</p>
+        :type SmartBalance: :class:`tencentcloud.cngw.v20230418.models.AIGWSmartBalanceConfig`
         """
         self._GatewayId = None
         self._ModelServiceId = None
@@ -19684,6 +21541,7 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._Protocol = None
         self._CustomProviderName = None
         self._LoadBalanceConfig = None
+        self._SmartBalance = None
 
     @property
     def GatewayId(self):
@@ -20015,6 +21873,17 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def LoadBalanceConfig(self, LoadBalanceConfig):
         self._LoadBalanceConfig = LoadBalanceConfig
 
+    @property
+    def SmartBalance(self):
+        r"""<p>智能负载均衡配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWSmartBalanceConfig`
+        """
+        return self._SmartBalance
+
+    @SmartBalance.setter
+    def SmartBalance(self, SmartBalance):
+        self._SmartBalance = SmartBalance
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -20065,6 +21934,9 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         if params.get("LoadBalanceConfig") is not None:
             self._LoadBalanceConfig = AIGWLoadBalanceConfig()
             self._LoadBalanceConfig._deserialize(params.get("LoadBalanceConfig"))
+        if params.get("SmartBalance") is not None:
+            self._SmartBalance = AIGWSmartBalanceConfig()
+            self._SmartBalance._deserialize(params.get("SmartBalance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20735,6 +22607,8 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         :type PreserveHost: bool
         :param _LogConfig: <p>日志配置</p>
         :type LogConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLogConfig`
+        :param _ParamRewriteConfig: <p>服务级参数改写配置</p>
+        :type ParamRewriteConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPServerParamRewriteConfig`
         """
         self._GatewayId = None
         self._DisplayName = None
@@ -20749,6 +22623,7 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         self._HealthCheck = None
         self._PreserveHost = None
         self._LogConfig = None
+        self._ParamRewriteConfig = None
 
     @property
     def GatewayId(self):
@@ -20893,6 +22768,17 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
     def LogConfig(self, LogConfig):
         self._LogConfig = LogConfig
 
+    @property
+    def ParamRewriteConfig(self):
+        r"""<p>服务级参数改写配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPServerParamRewriteConfig`
+        """
+        return self._ParamRewriteConfig
+
+    @ParamRewriteConfig.setter
+    def ParamRewriteConfig(self, ParamRewriteConfig):
+        self._ParamRewriteConfig = ParamRewriteConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -20916,6 +22802,9 @@ class ModifyCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
         if params.get("LogConfig") is not None:
             self._LogConfig = AIGWLogConfig()
             self._LogConfig._deserialize(params.get("LogConfig"))
+        if params.get("ParamRewriteConfig") is not None:
+            self._ParamRewriteConfig = AIGWMCPServerParamRewriteConfig()
+            self._ParamRewriteConfig._deserialize(params.get("ParamRewriteConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

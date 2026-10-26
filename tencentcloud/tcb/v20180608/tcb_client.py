@@ -606,29 +606,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateUserKey(self, request):
-        r"""用户创建集成
-
-        :param request: Request instance for CreateUserKey.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateUserKeyRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateUserKeyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateUserKey", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateUserKeyResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteAIModel(self, request):
         r"""删除 AI 模型配置分组，支持批量删除。内置分组无法删除。分组删除后，该分组下的所有模型配置将同步移除，针对该分组模型的请求将会失败，请在删除前确认业务侧已停止对该分组的调用。
 
@@ -864,29 +841,6 @@ class TcbClient(AbstractClient):
             body = self.call("DeleteTable", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTableResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteUserKey(self, request):
-        r"""用户删除集成
-
-        :param request: Request instance for DeleteUserKey.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteUserKeyRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteUserKeyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteUserKey", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteUserKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2213,29 +2167,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetOneUserKey(self, request):
-        r"""用户获取集成详情
-
-        :param request: Request instance for GetOneUserKey.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.GetOneUserKeyRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.GetOneUserKeyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetOneUserKey", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetOneUserKeyResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetProviders(self, request):
         r"""查询指定云开发环境下的身份认证源列表。返回该环境已配置的所有身份认证源信息，包括第三方登录（OAuth、OIDC、SAML）、微信小程序登录、自定义登录和邮箱登录等。返回结果包含认证源基本信息、关联应用、配置状态及启用情况。若自定义登录或邮箱登录的身份源尚未创建，接口会自动追加一个默认关闭状态的身份源记录。
 
@@ -2250,29 +2181,6 @@ class TcbClient(AbstractClient):
             body = self.call("GetProviders", params, headers=headers)
             response = json.loads(body)
             model = models.GetProvidersResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def GetUserKeyList(self, request):
-        r"""用户获取集成列表
-
-        :param request: Request instance for GetUserKeyList.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.GetUserKeyListRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.GetUserKeyListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetUserKeyList", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetUserKeyListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3118,29 +3026,6 @@ class TcbClient(AbstractClient):
             body = self.call("UpdateTable", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateTableResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpdateUserKey(self, request):
-        r"""用户更新集成信息
-
-        :param request: Request instance for UpdateUserKey.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.UpdateUserKeyRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.UpdateUserKeyResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateUserKey", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateUserKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

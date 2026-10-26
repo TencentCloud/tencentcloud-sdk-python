@@ -3637,6 +3637,10 @@ class CosParam(AbstractModel):
         :type ObjectKeyPrefix: str
         :param _DirectoryTimeFormat: <p>根据strptime 时间格式化的分区格式</p>
         :type DirectoryTimeFormat: str
+        :param _Timezone: <p>时间时区, 默认 UTC+08:00</p><p>参数格式：UTC+08:00</p>
+        :type Timezone: str
+        :param _SourceDataFormat: <p>源数据解析格式</p><p>枚举值：</p><ul><li>JSON： JSON格式</li><li>Debezium： Debezium格式</li></ul>
+        :type SourceDataFormat: str
         """
         self._BucketName = None
         self._Region = None
@@ -3646,6 +3650,8 @@ class CosParam(AbstractModel):
         self._FormatOutputType = None
         self._ObjectKeyPrefix = None
         self._DirectoryTimeFormat = None
+        self._Timezone = None
+        self._SourceDataFormat = None
 
     @property
     def BucketName(self):
@@ -3735,6 +3741,28 @@ class CosParam(AbstractModel):
     def DirectoryTimeFormat(self, DirectoryTimeFormat):
         self._DirectoryTimeFormat = DirectoryTimeFormat
 
+    @property
+    def Timezone(self):
+        r"""<p>时间时区, 默认 UTC+08:00</p><p>参数格式：UTC+08:00</p>
+        :rtype: str
+        """
+        return self._Timezone
+
+    @Timezone.setter
+    def Timezone(self, Timezone):
+        self._Timezone = Timezone
+
+    @property
+    def SourceDataFormat(self):
+        r"""<p>源数据解析格式</p><p>枚举值：</p><ul><li>JSON： JSON格式</li><li>Debezium： Debezium格式</li></ul>
+        :rtype: str
+        """
+        return self._SourceDataFormat
+
+    @SourceDataFormat.setter
+    def SourceDataFormat(self, SourceDataFormat):
+        self._SourceDataFormat = SourceDataFormat
+
 
     def _deserialize(self, params):
         self._BucketName = params.get("BucketName")
@@ -3745,6 +3773,8 @@ class CosParam(AbstractModel):
         self._FormatOutputType = params.get("FormatOutputType")
         self._ObjectKeyPrefix = params.get("ObjectKeyPrefix")
         self._DirectoryTimeFormat = params.get("DirectoryTimeFormat")
+        self._Timezone = params.get("Timezone")
+        self._SourceDataFormat = params.get("SourceDataFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11076,9 +11106,9 @@ class DescModifyType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModifyType: 变配类型
+        :param _ModifyType: <p>变配类型</p>
         :type ModifyType: int
-        :param _MigrateFlag: 是否迁移标志
+        :param _MigrateFlag: <p>是否迁移标志</p>
         :type MigrateFlag: bool
         """
         self._ModifyType = None
@@ -11086,7 +11116,7 @@ class DescModifyType(AbstractModel):
 
     @property
     def ModifyType(self):
-        r"""变配类型
+        r"""<p>变配类型</p>
         :rtype: int
         """
         return self._ModifyType
@@ -11097,7 +11127,7 @@ class DescModifyType(AbstractModel):
 
     @property
     def MigrateFlag(self):
-        r"""是否迁移标志
+        r"""<p>是否迁移标志</p>
         :rtype: bool
         """
         return self._MigrateFlag
@@ -24844,29 +24874,31 @@ class KafkaConnectParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Resource: Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id
+        :param _Resource: <p>Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id</p>
         :type Resource: str
-        :param _SelfBuilt: 是否为自建集群
+        :param _SelfBuilt: <p>是否为自建集群</p>
         :type SelfBuilt: bool
-        :param _IsUpdate: 是否更新到关联的Dip任务
+        :param _IsUpdate: <p>是否更新到关联的Dip任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
-        :param _BrokerAddress: Kafka连接的broker地址, NetworkType=PUBLIC公网时必填
+        :param _BrokerAddress: <p>Kafka连接的broker地址, NetworkType=PUBLIC公网时必填</p>
         :type BrokerAddress: str
-        :param _Region: CKafka连接源的实例资源地域, 跨地域时必填
+        :param _Region: <p>CKafka连接源的实例资源地域, 跨地域时必填</p>
         :type Region: str
-        :param _NetworkType: 网络类型：PUBLIC公网；VPC
+        :param _NetworkType: <p>网络类型：PUBLIC公网；VPC</p>
         :type NetworkType: str
-        :param _UniqVpcId: vpcId，NetworkType=VPC时必传
+        :param _UniqVpcId: <p>vpcId，NetworkType=VPC时必传</p>
         :type UniqVpcId: str
-        :param _ServiceVip: vip，NetworkType=VPC时必传
+        :param _ServiceVip: <p>vip，NetworkType=VPC时必传</p>
         :type ServiceVip: str
-        :param _Port: 端口，NetworkType=VPC时必传
+        :param _Port: <p>端口，NetworkType=VPC时必传</p>
         :type Port: int
-        :param _CrossNetResourceUniqueId: 跨云同步下需要客户传递唯一Id标志一组资源
+        :param _CrossNetResourceUniqueId: <p>跨云同步下需要客户传递唯一Id标志一组资源</p>
         :type CrossNetResourceUniqueId: str
-        :param _CrossNetVpcSubNetId: 跨云子网ID
+        :param _CrossNetVpcSubNetId: <p>跨云子网ID</p>
         :type CrossNetVpcSubNetId: str
+        :param _OriginalBrokerAddresses: <p>用户输入原始broker接入点地址</p>
+        :type OriginalBrokerAddresses: str
         """
         self._Resource = None
         self._SelfBuilt = None
@@ -24879,10 +24911,11 @@ class KafkaConnectParam(AbstractModel):
         self._Port = None
         self._CrossNetResourceUniqueId = None
         self._CrossNetVpcSubNetId = None
+        self._OriginalBrokerAddresses = None
 
     @property
     def Resource(self):
-        r"""Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id
+        r"""<p>Kafka连接源的实例资源, 非自建时必填，NetworkType=VPC时传clb实例id</p>
         :rtype: str
         """
         return self._Resource
@@ -24893,7 +24926,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
-        r"""是否为自建集群
+        r"""<p>是否为自建集群</p>
         :rtype: bool
         """
         return self._SelfBuilt
@@ -24904,7 +24937,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
-        r"""是否更新到关联的Dip任务
+        r"""<p>是否更新到关联的Dip任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -24916,7 +24949,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def BrokerAddress(self):
-        r"""Kafka连接的broker地址, NetworkType=PUBLIC公网时必填
+        r"""<p>Kafka连接的broker地址, NetworkType=PUBLIC公网时必填</p>
         :rtype: str
         """
         return self._BrokerAddress
@@ -24927,7 +24960,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def Region(self):
-        r"""CKafka连接源的实例资源地域, 跨地域时必填
+        r"""<p>CKafka连接源的实例资源地域, 跨地域时必填</p>
         :rtype: str
         """
         return self._Region
@@ -24938,7 +24971,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def NetworkType(self):
-        r"""网络类型：PUBLIC公网；VPC
+        r"""<p>网络类型：PUBLIC公网；VPC</p>
         :rtype: str
         """
         return self._NetworkType
@@ -24949,7 +24982,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""vpcId，NetworkType=VPC时必传
+        r"""<p>vpcId，NetworkType=VPC时必传</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -24960,7 +24993,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
-        r"""vip，NetworkType=VPC时必传
+        r"""<p>vip，NetworkType=VPC时必传</p>
         :rtype: str
         """
         return self._ServiceVip
@@ -24971,7 +25004,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口，NetworkType=VPC时必传
+        r"""<p>端口，NetworkType=VPC时必传</p>
         :rtype: int
         """
         return self._Port
@@ -24982,7 +25015,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def CrossNetResourceUniqueId(self):
-        r"""跨云同步下需要客户传递唯一Id标志一组资源
+        r"""<p>跨云同步下需要客户传递唯一Id标志一组资源</p>
         :rtype: str
         """
         return self._CrossNetResourceUniqueId
@@ -24993,7 +25026,7 @@ class KafkaConnectParam(AbstractModel):
 
     @property
     def CrossNetVpcSubNetId(self):
-        r"""跨云子网ID
+        r"""<p>跨云子网ID</p>
         :rtype: str
         """
         return self._CrossNetVpcSubNetId
@@ -25001,6 +25034,17 @@ class KafkaConnectParam(AbstractModel):
     @CrossNetVpcSubNetId.setter
     def CrossNetVpcSubNetId(self, CrossNetVpcSubNetId):
         self._CrossNetVpcSubNetId = CrossNetVpcSubNetId
+
+    @property
+    def OriginalBrokerAddresses(self):
+        r"""<p>用户输入原始broker接入点地址</p>
+        :rtype: str
+        """
+        return self._OriginalBrokerAddresses
+
+    @OriginalBrokerAddresses.setter
+    def OriginalBrokerAddresses(self, OriginalBrokerAddresses):
+        self._OriginalBrokerAddresses = OriginalBrokerAddresses
 
 
     def _deserialize(self, params):
@@ -25015,6 +25059,7 @@ class KafkaConnectParam(AbstractModel):
         self._Port = params.get("Port")
         self._CrossNetResourceUniqueId = params.get("CrossNetResourceUniqueId")
         self._CrossNetVpcSubNetId = params.get("CrossNetVpcSubNetId")
+        self._OriginalBrokerAddresses = params.get("OriginalBrokerAddresses")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

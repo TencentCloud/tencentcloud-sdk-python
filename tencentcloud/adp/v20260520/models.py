@@ -10779,6 +10779,8 @@ class ConversationExperience(AbstractModel):
         :type Method: int
         :param _RecommendPromptMode: <p>推荐问生成prompt模式。枚举值: 1:仅结合知识库输出推荐问的prompt</p>
         :type RecommendPromptMode: int
+        :param _EnableNewMessageInterrupt: <p>新消息中断正在进行的消息</p>
+        :type EnableNewMessageInterrupt: bool
         """
         self._AiCall = None
         self._BackgroundImage = None
@@ -10789,6 +10791,7 @@ class ConversationExperience(AbstractModel):
         self._InputBoxConfig = None
         self._Method = None
         self._RecommendPromptMode = None
+        self._EnableNewMessageInterrupt = None
 
     @property
     def AiCall(self):
@@ -10892,6 +10895,17 @@ class ConversationExperience(AbstractModel):
     def RecommendPromptMode(self, RecommendPromptMode):
         self._RecommendPromptMode = RecommendPromptMode
 
+    @property
+    def EnableNewMessageInterrupt(self):
+        r"""<p>新消息中断正在进行的消息</p>
+        :rtype: bool
+        """
+        return self._EnableNewMessageInterrupt
+
+    @EnableNewMessageInterrupt.setter
+    def EnableNewMessageInterrupt(self, EnableNewMessageInterrupt):
+        self._EnableNewMessageInterrupt = EnableNewMessageInterrupt
+
 
     def _deserialize(self, params):
         if params.get("AiCall") is not None:
@@ -10909,6 +10923,7 @@ class ConversationExperience(AbstractModel):
             self._InputBoxConfig._deserialize(params.get("InputBoxConfig"))
         self._Method = params.get("Method")
         self._RecommendPromptMode = params.get("RecommendPromptMode")
+        self._EnableNewMessageInterrupt = params.get("EnableNewMessageInterrupt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37240,11 +37255,11 @@ class OperationResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: <p>资源 ID</p>
+        :param _Id: 资源 ID
         :type Id: str
-        :param _Reason: <p>失败原因（succeeded=false 时填充）</p>
+        :param _Reason: 失败原因（succeeded=false 时填充）
         :type Reason: str
-        :param _Succeeded: <p>是否成功</p>
+        :param _Succeeded: 是否成功
         :type Succeeded: bool
         """
         self._Id = None
@@ -37253,7 +37268,7 @@ class OperationResult(AbstractModel):
 
     @property
     def Id(self):
-        r"""<p>资源 ID</p>
+        r"""资源 ID
         :rtype: str
         """
         return self._Id
@@ -37264,7 +37279,7 @@ class OperationResult(AbstractModel):
 
     @property
     def Reason(self):
-        r"""<p>失败原因（succeeded=false 时填充）</p>
+        r"""失败原因（succeeded=false 时填充）
         :rtype: str
         """
         return self._Reason
@@ -37275,7 +37290,7 @@ class OperationResult(AbstractModel):
 
     @property
     def Succeeded(self):
-        r"""<p>是否成功</p>
+        r"""是否成功
         :rtype: bool
         """
         return self._Succeeded

@@ -857,10 +857,21 @@ class AddClusterSlaveZoneResponse(AbstractModel):
         r"""
         :param _FlowId: <p>异步FlowId</p>
         :type FlowId: int
+        :param _BigDealIds: <p>订单ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIds: list of str
+        :param _DealNames: <p>订单名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _TranId: <p>交易ID</p>
+        :type TranId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
+        self._BigDealIds = None
+        self._DealNames = None
+        self._TranId = None
         self._RequestId = None
 
     @property
@@ -873,6 +884,41 @@ class AddClusterSlaveZoneResponse(AbstractModel):
     @FlowId.setter
     def FlowId(self, FlowId):
         self._FlowId = FlowId
+
+    @property
+    def BigDealIds(self):
+        r"""<p>订单ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def DealNames(self):
+        r"""<p>订单名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def TranId(self):
+        r"""<p>交易ID</p>
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
 
     @property
     def RequestId(self):
@@ -888,6 +934,9 @@ class AddClusterSlaveZoneResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._BigDealIds = params.get("BigDealIds")
+        self._DealNames = params.get("DealNames")
+        self._TranId = params.get("TranId")
         self._RequestId = params.get("RequestId")
 
 
@@ -36499,13 +36548,13 @@ class InquirePriceMultiSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区,每个地域提供最佳实践
+        :param _Zone: <p>可用区,每个地域提供最佳实践</p>
         :type Zone: str
-        :param _InstancePayMode: 实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+        :param _InstancePayMode: <p>实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS</p>
         :type InstancePayMode: str
-        :param _StoragePayMode: 存储购买类型，可选值为：PREPAID, POSTPAID
+        :param _StoragePayMode: <p>存储购买类型，可选值为：PREPAID, POSTPAID</p>
         :type StoragePayMode: str
-        :param _GoodsSpecs: 商品规格
+        :param _GoodsSpecs: <p>商品规格</p>
         :type GoodsSpecs: list of GoodsSpec
         """
         self._Zone = None
@@ -36515,7 +36564,7 @@ class InquirePriceMultiSpecRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区,每个地域提供最佳实践
+        r"""<p>可用区,每个地域提供最佳实践</p>
         :rtype: str
         """
         return self._Zone
@@ -36526,7 +36575,7 @@ class InquirePriceMultiSpecRequest(AbstractModel):
 
     @property
     def InstancePayMode(self):
-        r"""实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS
+        r"""<p>实例购买类型，可选值为：PREPAID, POSTPAID, SERVERLESS</p>
         :rtype: str
         """
         return self._InstancePayMode
@@ -36537,7 +36586,7 @@ class InquirePriceMultiSpecRequest(AbstractModel):
 
     @property
     def StoragePayMode(self):
-        r"""存储购买类型，可选值为：PREPAID, POSTPAID
+        r"""<p>存储购买类型，可选值为：PREPAID, POSTPAID</p>
         :rtype: str
         """
         return self._StoragePayMode
@@ -36548,7 +36597,7 @@ class InquirePriceMultiSpecRequest(AbstractModel):
 
     @property
     def GoodsSpecs(self):
-        r"""商品规格
+        r"""<p>商品规格</p>
         :rtype: list of GoodsSpec
         """
         return self._GoodsSpecs
@@ -36585,7 +36634,7 @@ class InquirePriceMultiSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GoodsPrice: 商品价格
+        :param _GoodsPrice: <p>商品价格</p>
         :type GoodsPrice: list of GoodsPrice
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -36595,7 +36644,7 @@ class InquirePriceMultiSpecResponse(AbstractModel):
 
     @property
     def GoodsPrice(self):
-        r"""商品价格
+        r"""<p>商品价格</p>
         :rtype: list of GoodsPrice
         """
         return self._GoodsPrice
@@ -61699,17 +61748,17 @@ class TransferClusterZoneRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 源集群Id
+        :param _ClusterId: <p>源集群Id</p>
         :type ClusterId: str
-        :param _DstZone: 目标可用区
+        :param _DstZone: <p>目标可用区</p>
         :type DstZone: str
-        :param _MaxLag: 跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)
+        :param _MaxLag: <p>跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)</p>
         :type MaxLag: int
-        :param _TransferType: Immediate:立即执行，InMaintain:时间窗口执行
+        :param _TransferType: <p>Immediate:立即执行，InMaintain:时间窗口执行</p>
         :type TransferType: str
-        :param _DstSlaveZone: 多可用区备区
+        :param _DstSlaveZone: <p>多可用区备区</p>
         :type DstSlaveZone: str
-        :param _ProxyZones: proxy迁移的目标可用区信息
+        :param _ProxyZones: <p>proxy迁移的目标可用区信息</p>
         :type ProxyZones: list of ProxyZone
         """
         self._ClusterId = None
@@ -61721,7 +61770,7 @@ class TransferClusterZoneRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""源集群Id
+        r"""<p>源集群Id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -61732,7 +61781,7 @@ class TransferClusterZoneRequest(AbstractModel):
 
     @property
     def DstZone(self):
-        r"""目标可用区
+        r"""<p>目标可用区</p>
         :rtype: str
         """
         return self._DstZone
@@ -61743,7 +61792,7 @@ class TransferClusterZoneRequest(AbstractModel):
 
     @property
     def MaxLag(self):
-        r"""跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)
+        r"""<p>跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)</p>
         :rtype: int
         """
         return self._MaxLag
@@ -61754,7 +61803,7 @@ class TransferClusterZoneRequest(AbstractModel):
 
     @property
     def TransferType(self):
-        r"""Immediate:立即执行，InMaintain:时间窗口执行
+        r"""<p>Immediate:立即执行，InMaintain:时间窗口执行</p>
         :rtype: str
         """
         return self._TransferType
@@ -61765,7 +61814,7 @@ class TransferClusterZoneRequest(AbstractModel):
 
     @property
     def DstSlaveZone(self):
-        r"""多可用区备区
+        r"""<p>多可用区备区</p>
         :rtype: str
         """
         return self._DstSlaveZone
@@ -61776,7 +61825,7 @@ class TransferClusterZoneRequest(AbstractModel):
 
     @property
     def ProxyZones(self):
-        r"""proxy迁移的目标可用区信息
+        r"""<p>proxy迁移的目标可用区信息</p>
         :rtype: list of ProxyZone
         """
         return self._ProxyZones
@@ -61815,7 +61864,7 @@ class TransferClusterZoneResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务id
+        :param _TaskId: <p>异步任务id</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -61825,7 +61874,7 @@ class TransferClusterZoneResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务id
+        r"""<p>异步任务id</p>
         :rtype: int
         """
         return self._TaskId

@@ -12247,41 +12247,27 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateName: 模板名称。
-长度上限：255字节。
-仅支持中文、英文、数字、_、-。
+        :param _TemplateName: <p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
         :type TemplateName: str
-        :param _CosAppId: Cos 应用 ID。
+        :param _CosAppId: <p>Cos 应用 ID。</p>
         :type CosAppId: int
-        :param _CosBucket: Cos Bucket名称。
-注：CosBucket参数值不能包含-[appid] 部分。
+        :param _CosBucket: <p>Cos Bucket名称。<br>注：CosBucket参数值不能包含-[appid] 部分。</p>
         :type CosBucket: str
-        :param _CosRegion: Cos地区。
+        :param _CosRegion: <p>Cos地区。</p>
         :type CosRegion: str
-        :param _Description: 描述信息。
-长度上限：1024字节。
-仅支持中文、英文、数字、_、-。
+        :param _Description: <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
         :type Description: str
-        :param _SnapshotInterval: 截图间隔，单位s，默认10s。
-范围： 2s ~ 300s。
+        :param _SnapshotInterval: <p>截图间隔，单位s，默认10s。<br>范围： 2s ~ 300s。</p>
         :type SnapshotInterval: int
-        :param _Width: 截图宽度。默认：0（原始宽）。
-范围：0-3000 。
+        :param _Width: <p>截图宽度。默认：0（原始宽）。<br>范围：0-3000 。</p>
         :type Width: int
-        :param _Height: 截图高度。默认：0（原始高）。
-范围：0-2000 。
+        :param _Height: <p>截图高度。默认：0（原始高）。<br>范围：0-2000 。</p>
         :type Height: int
-        :param _PornFlag: 是否开启鉴黄，0：不开启，1：开启。默认：0。
+        :param _PornFlag: <p>是否开启鉴黄，0：不开启，1：开启。默认：0。</p>
         :type PornFlag: int
-        :param _CosPrefix: Cos Bucket文件夹前缀。
-如不传，实际按默认值
-/{Year}-{Month}-{Day}
-生效
+        :param _CosPrefix: <p>Cos Bucket文件夹前缀。<br>如不传，实际按默认值<br>/{Year}-{Month}-{Day}<br>生效</p>
         :type CosPrefix: str
-        :param _CosFileName: Cos 文件名称。
-如不传，实际按默认值
-{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}
-生效
+        :param _CosFileName: <p>Cos 文件名称。<br>如不传，实际按默认值<br>{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}<br>生效</p>
         :type CosFileName: str
         """
         self._TemplateName = None
@@ -12298,9 +12284,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称。
-长度上限：255字节。
-仅支持中文、英文、数字、_、-。
+        r"""<p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -12311,7 +12295,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosAppId(self):
-        r"""Cos 应用 ID。
+        r"""<p>Cos 应用 ID。</p>
         :rtype: int
         """
         return self._CosAppId
@@ -12322,8 +12306,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosBucket(self):
-        r"""Cos Bucket名称。
-注：CosBucket参数值不能包含-[appid] 部分。
+        r"""<p>Cos Bucket名称。<br>注：CosBucket参数值不能包含-[appid] 部分。</p>
         :rtype: str
         """
         return self._CosBucket
@@ -12334,7 +12317,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosRegion(self):
-        r"""Cos地区。
+        r"""<p>Cos地区。</p>
         :rtype: str
         """
         return self._CosRegion
@@ -12345,9 +12328,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息。
-长度上限：1024字节。
-仅支持中文、英文、数字、_、-。
+        r"""<p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._Description
@@ -12358,8 +12339,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SnapshotInterval(self):
-        r"""截图间隔，单位s，默认10s。
-范围： 2s ~ 300s。
+        r"""<p>截图间隔，单位s，默认10s。<br>范围： 2s ~ 300s。</p>
         :rtype: int
         """
         return self._SnapshotInterval
@@ -12370,8 +12350,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""截图宽度。默认：0（原始宽）。
-范围：0-3000 。
+        r"""<p>截图宽度。默认：0（原始宽）。<br>范围：0-3000 。</p>
         :rtype: int
         """
         return self._Width
@@ -12382,8 +12361,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        r"""截图高度。默认：0（原始高）。
-范围：0-2000 。
+        r"""<p>截图高度。默认：0（原始高）。<br>范围：0-2000 。</p>
         :rtype: int
         """
         return self._Height
@@ -12394,7 +12372,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def PornFlag(self):
-        r"""是否开启鉴黄，0：不开启，1：开启。默认：0。
+        r"""<p>是否开启鉴黄，0：不开启，1：开启。默认：0。</p>
         :rtype: int
         """
         return self._PornFlag
@@ -12405,10 +12383,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosPrefix(self):
-        r"""Cos Bucket文件夹前缀。
-如不传，实际按默认值
-/{Year}-{Month}-{Day}
-生效
+        r"""<p>Cos Bucket文件夹前缀。<br>如不传，实际按默认值<br>/{Year}-{Month}-{Day}<br>生效</p>
         :rtype: str
         """
         return self._CosPrefix
@@ -12419,10 +12394,7 @@ class CreateLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosFileName(self):
-        r"""Cos 文件名称。
-如不传，实际按默认值
-{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}
-生效
+        r"""<p>Cos 文件名称。<br>如不传，实际按默认值<br>{StreamID}-screenshot-{Hour}-{Minute}-{Second}-{Width}x{Height}{Ext}<br>生效</p>
         :rtype: str
         """
         return self._CosFileName
@@ -12461,7 +12433,7 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板Id。
+        :param _TemplateId: <p>模板Id。</p>
         :type TemplateId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12471,7 +12443,7 @@ class CreateLiveSnapshotTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板Id。
+        r"""<p>模板Id。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -40815,38 +40787,29 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板 ID。
+        :param _TemplateId: <p>模板 ID。</p>
         :type TemplateId: int
-        :param _CosAppId: Cos 应用 ID。
-**注：此参数现在须必选。**
+        :param _CosAppId: <p>Cos 应用 ID。<br><strong>注：此参数现在须必选。</strong></p>
         :type CosAppId: int
-        :param _CosBucket: Cos Bucket名称。
-注：CosBucket参数值不能包含-[appid] 部分。
-**注：此参数现在须必选。**
+        :param _CosBucket: <p>Cos Bucket名称。<br>注：CosBucket参数值不能包含-[appid] 部分。<br><strong>注：此参数现在须必选。</strong></p>
         :type CosBucket: str
-        :param _CosRegion: Cos 地域。
-**注：此参数现在须必选。**
+        :param _CosRegion: <p>Cos 地域。<br><strong>注：此参数现在须必选。</strong></p>
         :type CosRegion: str
-        :param _TemplateName: 模板名称。
-长度上限：255字节。
+        :param _TemplateName: <p>模板名称。<br>长度上限：255字节。</p>
         :type TemplateName: str
-        :param _Description: 描述信息。
-长度上限：1024字节。
+        :param _Description: <p>描述信息。<br>长度上限：1024字节。</p>
         :type Description: str
-        :param _SnapshotInterval: 截图间隔，单位s，默认10s。
-范围： 5s ~ 300s。
+        :param _SnapshotInterval: <p>截图间隔，单位s，默认10s。<br>范围： 5s ~ 300s。</p>
         :type SnapshotInterval: int
-        :param _Width: 截图宽度。默认：0（原始宽）。
+        :param _Width: <p>截图宽度。默认：0（原始宽）。</p>
         :type Width: int
-        :param _Height: 截图高度。默认：0（原始高）。
+        :param _Height: <p>截图高度。默认：0（原始高）。</p>
         :type Height: int
-        :param _PornFlag: 是否开启鉴黄，默认 0 。
-0：不开启。
-1：开启。
+        :param _PornFlag: <p>是否开启鉴黄，默认 0 。<br>0：不开启。<br>1：开启。</p>
         :type PornFlag: int
-        :param _CosPrefix: Cos Bucket文件夹前缀。
+        :param _CosPrefix: <p>Cos Bucket文件夹前缀。</p>
         :type CosPrefix: str
-        :param _CosFileName: Cos 文件名称。
+        :param _CosFileName: <p>Cos 文件名称。</p>
         :type CosFileName: str
         """
         self._TemplateId = None
@@ -40864,7 +40827,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板 ID。
+        r"""<p>模板 ID。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -40875,8 +40838,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosAppId(self):
-        r"""Cos 应用 ID。
-**注：此参数现在须必选。**
+        r"""<p>Cos 应用 ID。<br><strong>注：此参数现在须必选。</strong></p>
         :rtype: int
         """
         return self._CosAppId
@@ -40887,9 +40849,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosBucket(self):
-        r"""Cos Bucket名称。
-注：CosBucket参数值不能包含-[appid] 部分。
-**注：此参数现在须必选。**
+        r"""<p>Cos Bucket名称。<br>注：CosBucket参数值不能包含-[appid] 部分。<br><strong>注：此参数现在须必选。</strong></p>
         :rtype: str
         """
         return self._CosBucket
@@ -40900,8 +40860,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosRegion(self):
-        r"""Cos 地域。
-**注：此参数现在须必选。**
+        r"""<p>Cos 地域。<br><strong>注：此参数现在须必选。</strong></p>
         :rtype: str
         """
         return self._CosRegion
@@ -40912,8 +40871,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称。
-长度上限：255字节。
+        r"""<p>模板名称。<br>长度上限：255字节。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -40924,8 +40882,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息。
-长度上限：1024字节。
+        r"""<p>描述信息。<br>长度上限：1024字节。</p>
         :rtype: str
         """
         return self._Description
@@ -40936,8 +40893,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SnapshotInterval(self):
-        r"""截图间隔，单位s，默认10s。
-范围： 5s ~ 300s。
+        r"""<p>截图间隔，单位s，默认10s。<br>范围： 5s ~ 300s。</p>
         :rtype: int
         """
         return self._SnapshotInterval
@@ -40948,7 +40904,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""截图宽度。默认：0（原始宽）。
+        r"""<p>截图宽度。默认：0（原始宽）。</p>
         :rtype: int
         """
         return self._Width
@@ -40959,7 +40915,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        r"""截图高度。默认：0（原始高）。
+        r"""<p>截图高度。默认：0（原始高）。</p>
         :rtype: int
         """
         return self._Height
@@ -40970,9 +40926,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def PornFlag(self):
-        r"""是否开启鉴黄，默认 0 。
-0：不开启。
-1：开启。
+        r"""<p>是否开启鉴黄，默认 0 。<br>0：不开启。<br>1：开启。</p>
         :rtype: int
         """
         return self._PornFlag
@@ -40983,7 +40937,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosPrefix(self):
-        r"""Cos Bucket文件夹前缀。
+        r"""<p>Cos Bucket文件夹前缀。</p>
         :rtype: str
         """
         return self._CosPrefix
@@ -40994,7 +40948,7 @@ class ModifyLiveSnapshotTemplateRequest(AbstractModel):
 
     @property
     def CosFileName(self):
-        r"""Cos 文件名称。
+        r"""<p>Cos 文件名称。</p>
         :rtype: str
         """
         return self._CosFileName
@@ -48061,34 +48015,36 @@ class SnapshotTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板 ID。
+        :param _TemplateId: <p>模板 ID。</p>
         :type TemplateId: int
-        :param _TemplateName: 模板名称。
+        :param _TemplateName: <p>模板名称。</p>
         :type TemplateName: str
-        :param _SnapshotInterval: 截图时间间隔，5-300秒。
+        :param _SnapshotInterval: <p>截图时间间隔，5-300秒。</p>
         :type SnapshotInterval: int
-        :param _Width: 截图宽度，范围：0-3000。 
-0：原始宽度并适配原始比例。
+        :param _Width: <p>截图宽度，范围：0-3000。<br>0：原始宽度并适配原始比例。</p>
         :type Width: int
-        :param _Height: 截图高度，范围：0-2000。
-0：原始高度并适配原始比例。
+        :param _Height: <p>截图高度，范围：0-2000。<br>0：原始高度并适配原始比例。</p>
         :type Height: int
-        :param _PornFlag: 是否开启鉴黄，0：不开启，1：开启。
+        :param _PornFlag: <p>是否开启鉴黄，0：不开启，1：开启。</p>
         :type PornFlag: int
-        :param _CosAppId: Cos 应用 ID。
+        :param _CosAppId: <p>Cos 应用 ID。</p>
         :type CosAppId: int
-        :param _CosBucket: Cos Bucket名称。
+        :param _CosBucket: <p>Cos Bucket名称。</p>
         :type CosBucket: str
-        :param _CosRegion: Cos 地域。
+        :param _CosRegion: <p>Cos 地域。</p>
         :type CosRegion: str
-        :param _Description: 模板描述。
+        :param _Description: <p>模板描述。</p>
         :type Description: str
-        :param _CosPrefix: Cos Bucket文件夹前缀。
+        :param _CosPrefix: <p>Cos Bucket文件夹前缀。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosPrefix: str
-        :param _CosFileName: Cos 文件名称。
+        :param _CosFileName: <p>Cos 文件名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosFileName: str
+        :param _CosSecretId: <p>第三方存储时账号的SecretId</p>
+        :type CosSecretId: str
+        :param _CosSecretKey: <p>第三方存储时，账号的SecretKey</p><p>当查询时，该值返回为<code>******</code></p>
+        :type CosSecretKey: str
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -48102,10 +48058,12 @@ class SnapshotTemplateInfo(AbstractModel):
         self._Description = None
         self._CosPrefix = None
         self._CosFileName = None
+        self._CosSecretId = None
+        self._CosSecretKey = None
 
     @property
     def TemplateId(self):
-        r"""模板 ID。
+        r"""<p>模板 ID。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -48116,7 +48074,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称。
+        r"""<p>模板名称。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -48127,7 +48085,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def SnapshotInterval(self):
-        r"""截图时间间隔，5-300秒。
+        r"""<p>截图时间间隔，5-300秒。</p>
         :rtype: int
         """
         return self._SnapshotInterval
@@ -48138,8 +48096,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def Width(self):
-        r"""截图宽度，范围：0-3000。 
-0：原始宽度并适配原始比例。
+        r"""<p>截图宽度，范围：0-3000。<br>0：原始宽度并适配原始比例。</p>
         :rtype: int
         """
         return self._Width
@@ -48150,8 +48107,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def Height(self):
-        r"""截图高度，范围：0-2000。
-0：原始高度并适配原始比例。
+        r"""<p>截图高度，范围：0-2000。<br>0：原始高度并适配原始比例。</p>
         :rtype: int
         """
         return self._Height
@@ -48162,7 +48118,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def PornFlag(self):
-        r"""是否开启鉴黄，0：不开启，1：开启。
+        r"""<p>是否开启鉴黄，0：不开启，1：开启。</p>
         :rtype: int
         """
         return self._PornFlag
@@ -48173,7 +48129,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosAppId(self):
-        r"""Cos 应用 ID。
+        r"""<p>Cos 应用 ID。</p>
         :rtype: int
         """
         return self._CosAppId
@@ -48184,7 +48140,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosBucket(self):
-        r"""Cos Bucket名称。
+        r"""<p>Cos Bucket名称。</p>
         :rtype: str
         """
         return self._CosBucket
@@ -48195,7 +48151,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosRegion(self):
-        r"""Cos 地域。
+        r"""<p>Cos 地域。</p>
         :rtype: str
         """
         return self._CosRegion
@@ -48206,7 +48162,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""模板描述。
+        r"""<p>模板描述。</p>
         :rtype: str
         """
         return self._Description
@@ -48217,7 +48173,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosPrefix(self):
-        r"""Cos Bucket文件夹前缀。
+        r"""<p>Cos Bucket文件夹前缀。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -48229,7 +48185,7 @@ class SnapshotTemplateInfo(AbstractModel):
 
     @property
     def CosFileName(self):
-        r"""Cos 文件名称。
+        r"""<p>Cos 文件名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -48238,6 +48194,28 @@ class SnapshotTemplateInfo(AbstractModel):
     @CosFileName.setter
     def CosFileName(self, CosFileName):
         self._CosFileName = CosFileName
+
+    @property
+    def CosSecretId(self):
+        r"""<p>第三方存储时账号的SecretId</p>
+        :rtype: str
+        """
+        return self._CosSecretId
+
+    @CosSecretId.setter
+    def CosSecretId(self, CosSecretId):
+        self._CosSecretId = CosSecretId
+
+    @property
+    def CosSecretKey(self):
+        r"""<p>第三方存储时，账号的SecretKey</p><p>当查询时，该值返回为<code>******</code></p>
+        :rtype: str
+        """
+        return self._CosSecretKey
+
+    @CosSecretKey.setter
+    def CosSecretKey(self, CosSecretKey):
+        self._CosSecretKey = CosSecretKey
 
 
     def _deserialize(self, params):
@@ -48253,6 +48231,8 @@ class SnapshotTemplateInfo(AbstractModel):
         self._Description = params.get("Description")
         self._CosPrefix = params.get("CosPrefix")
         self._CosFileName = params.get("CosFileName")
+        self._CosSecretId = params.get("CosSecretId")
+        self._CosSecretKey = params.get("CosSecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

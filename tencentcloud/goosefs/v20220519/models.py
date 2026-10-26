@@ -2470,6 +2470,420 @@ class CustomerClusterAttr(AbstractModel):
         
 
 
+class DataRepositoryTaskAttribute(AbstractModel):
+    r"""数据流通任务属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: <p>数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者Bucket到文件系统(COS_TO_FS)</p>
+        :type TaskType: str
+        :param _Bucket: <p>bucket名</p>
+        :type Bucket: str
+        :param _TaskPath: <p>bucket路径</p>
+        :type TaskPath: str
+        :param _TotalCapacity: <p>总的容量(单位Byte)</p>
+        :type TotalCapacity: int
+        :param _FinishedCapacity: <p>已完成的数据量(单位Byte)</p>
+        :type FinishedCapacity: int
+        :param _TaskCreateTime: <p>任务创建时间</p>
+        :type TaskCreateTime: str
+        :param _TaskStartTime: <p>任务开始执行时间</p>
+        :type TaskStartTime: str
+        :param _TaskEndTime: <p>任务结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskEndTime: str
+        :param _TaskStatus: <p>INIT(任务初始化中) RUNNING(任务执行中) SUCCESS(任务已完成) FAIL(任务失败)</p>
+        :type TaskStatus: str
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名</p>
+        :type TaskName: str
+        :param _TaskFailMsg: <p>任务失败原因</p>
+        :type TaskFailMsg: str
+        :param _TotalFileNumber: <p>总共的文件个数</p>
+        :type TotalFileNumber: int
+        :param _FinishedFileNumber: <p>已完成的文件个数</p>
+        :type FinishedFileNumber: int
+        :param _TextLocation: <p>列表地址</p>
+        :type TextLocation: str
+        :param _RepositoryType: <p>执行器类型</p>
+        :type RepositoryType: str
+        :param _EnableDataFlowSubPath: <p>是否自定义路径</p>
+        :type EnableDataFlowSubPath: bool
+        :param _DataFlowSubPath: <p>自定义路径</p>
+        :type DataFlowSubPath: str
+        :param _EnableCustomDestPath: <p>是否支持自定义目的路径（沉降表示桶前缀，预热表示本地路径）</p>
+        :type EnableCustomDestPath: bool
+        :param _CustomDestPath: <p>自定义目的路径（沉降表示桶前缀，预热表示本地路径）</p>
+        :type CustomDestPath: str
+        :param _IsTaskPathAbsolute: <p>任务路径是否表示绝对路径（暂时仅支持沉降使用）</p>
+        :type IsTaskPathAbsolute: bool
+        :param _OutputBucket: <p>任务内容输出桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputBucket: str
+        :param _OutputPrefix: <p>任务内容输出桶前缀</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputPrefix: str
+        :param _EnableCustomSrcPath: <p>是否支持自定义数据源路径(暂时仅支持清单过滤使用)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableCustomSrcPath: bool
+        :param _CustomSrcPath: <p>自定义数据源路径(暂时仅支持清单过滤使用)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomSrcPath: str
+        """
+        self._TaskType = None
+        self._Bucket = None
+        self._TaskPath = None
+        self._TotalCapacity = None
+        self._FinishedCapacity = None
+        self._TaskCreateTime = None
+        self._TaskStartTime = None
+        self._TaskEndTime = None
+        self._TaskStatus = None
+        self._TaskId = None
+        self._TaskName = None
+        self._TaskFailMsg = None
+        self._TotalFileNumber = None
+        self._FinishedFileNumber = None
+        self._TextLocation = None
+        self._RepositoryType = None
+        self._EnableDataFlowSubPath = None
+        self._DataFlowSubPath = None
+        self._EnableCustomDestPath = None
+        self._CustomDestPath = None
+        self._IsTaskPathAbsolute = None
+        self._OutputBucket = None
+        self._OutputPrefix = None
+        self._EnableCustomSrcPath = None
+        self._CustomSrcPath = None
+
+    @property
+    def TaskType(self):
+        r"""<p>数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者Bucket到文件系统(COS_TO_FS)</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def Bucket(self):
+        r"""<p>bucket名</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def TaskPath(self):
+        r"""<p>bucket路径</p>
+        :rtype: str
+        """
+        return self._TaskPath
+
+    @TaskPath.setter
+    def TaskPath(self, TaskPath):
+        self._TaskPath = TaskPath
+
+    @property
+    def TotalCapacity(self):
+        r"""<p>总的容量(单位Byte)</p>
+        :rtype: int
+        """
+        return self._TotalCapacity
+
+    @TotalCapacity.setter
+    def TotalCapacity(self, TotalCapacity):
+        self._TotalCapacity = TotalCapacity
+
+    @property
+    def FinishedCapacity(self):
+        r"""<p>已完成的数据量(单位Byte)</p>
+        :rtype: int
+        """
+        return self._FinishedCapacity
+
+    @FinishedCapacity.setter
+    def FinishedCapacity(self, FinishedCapacity):
+        self._FinishedCapacity = FinishedCapacity
+
+    @property
+    def TaskCreateTime(self):
+        r"""<p>任务创建时间</p>
+        :rtype: str
+        """
+        return self._TaskCreateTime
+
+    @TaskCreateTime.setter
+    def TaskCreateTime(self, TaskCreateTime):
+        self._TaskCreateTime = TaskCreateTime
+
+    @property
+    def TaskStartTime(self):
+        r"""<p>任务开始执行时间</p>
+        :rtype: str
+        """
+        return self._TaskStartTime
+
+    @TaskStartTime.setter
+    def TaskStartTime(self, TaskStartTime):
+        self._TaskStartTime = TaskStartTime
+
+    @property
+    def TaskEndTime(self):
+        r"""<p>任务结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskEndTime
+
+    @TaskEndTime.setter
+    def TaskEndTime(self, TaskEndTime):
+        self._TaskEndTime = TaskEndTime
+
+    @property
+    def TaskStatus(self):
+        r"""<p>INIT(任务初始化中) RUNNING(任务执行中) SUCCESS(任务已完成) FAIL(任务失败)</p>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskFailMsg(self):
+        r"""<p>任务失败原因</p>
+        :rtype: str
+        """
+        return self._TaskFailMsg
+
+    @TaskFailMsg.setter
+    def TaskFailMsg(self, TaskFailMsg):
+        self._TaskFailMsg = TaskFailMsg
+
+    @property
+    def TotalFileNumber(self):
+        r"""<p>总共的文件个数</p>
+        :rtype: int
+        """
+        return self._TotalFileNumber
+
+    @TotalFileNumber.setter
+    def TotalFileNumber(self, TotalFileNumber):
+        self._TotalFileNumber = TotalFileNumber
+
+    @property
+    def FinishedFileNumber(self):
+        r"""<p>已完成的文件个数</p>
+        :rtype: int
+        """
+        return self._FinishedFileNumber
+
+    @FinishedFileNumber.setter
+    def FinishedFileNumber(self, FinishedFileNumber):
+        self._FinishedFileNumber = FinishedFileNumber
+
+    @property
+    def TextLocation(self):
+        r"""<p>列表地址</p>
+        :rtype: str
+        """
+        return self._TextLocation
+
+    @TextLocation.setter
+    def TextLocation(self, TextLocation):
+        self._TextLocation = TextLocation
+
+    @property
+    def RepositoryType(self):
+        r"""<p>执行器类型</p>
+        :rtype: str
+        """
+        return self._RepositoryType
+
+    @RepositoryType.setter
+    def RepositoryType(self, RepositoryType):
+        self._RepositoryType = RepositoryType
+
+    @property
+    def EnableDataFlowSubPath(self):
+        warnings.warn("parameter `EnableDataFlowSubPath` is deprecated", DeprecationWarning) 
+
+        r"""<p>是否自定义路径</p>
+        :rtype: bool
+        """
+        return self._EnableDataFlowSubPath
+
+    @EnableDataFlowSubPath.setter
+    def EnableDataFlowSubPath(self, EnableDataFlowSubPath):
+        warnings.warn("parameter `EnableDataFlowSubPath` is deprecated", DeprecationWarning) 
+
+        self._EnableDataFlowSubPath = EnableDataFlowSubPath
+
+    @property
+    def DataFlowSubPath(self):
+        warnings.warn("parameter `DataFlowSubPath` is deprecated", DeprecationWarning) 
+
+        r"""<p>自定义路径</p>
+        :rtype: str
+        """
+        return self._DataFlowSubPath
+
+    @DataFlowSubPath.setter
+    def DataFlowSubPath(self, DataFlowSubPath):
+        warnings.warn("parameter `DataFlowSubPath` is deprecated", DeprecationWarning) 
+
+        self._DataFlowSubPath = DataFlowSubPath
+
+    @property
+    def EnableCustomDestPath(self):
+        r"""<p>是否支持自定义目的路径（沉降表示桶前缀，预热表示本地路径）</p>
+        :rtype: bool
+        """
+        return self._EnableCustomDestPath
+
+    @EnableCustomDestPath.setter
+    def EnableCustomDestPath(self, EnableCustomDestPath):
+        self._EnableCustomDestPath = EnableCustomDestPath
+
+    @property
+    def CustomDestPath(self):
+        r"""<p>自定义目的路径（沉降表示桶前缀，预热表示本地路径）</p>
+        :rtype: str
+        """
+        return self._CustomDestPath
+
+    @CustomDestPath.setter
+    def CustomDestPath(self, CustomDestPath):
+        self._CustomDestPath = CustomDestPath
+
+    @property
+    def IsTaskPathAbsolute(self):
+        r"""<p>任务路径是否表示绝对路径（暂时仅支持沉降使用）</p>
+        :rtype: bool
+        """
+        return self._IsTaskPathAbsolute
+
+    @IsTaskPathAbsolute.setter
+    def IsTaskPathAbsolute(self, IsTaskPathAbsolute):
+        self._IsTaskPathAbsolute = IsTaskPathAbsolute
+
+    @property
+    def OutputBucket(self):
+        r"""<p>任务内容输出桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutputBucket
+
+    @OutputBucket.setter
+    def OutputBucket(self, OutputBucket):
+        self._OutputBucket = OutputBucket
+
+    @property
+    def OutputPrefix(self):
+        r"""<p>任务内容输出桶前缀</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutputPrefix
+
+    @OutputPrefix.setter
+    def OutputPrefix(self, OutputPrefix):
+        self._OutputPrefix = OutputPrefix
+
+    @property
+    def EnableCustomSrcPath(self):
+        r"""<p>是否支持自定义数据源路径(暂时仅支持清单过滤使用)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableCustomSrcPath
+
+    @EnableCustomSrcPath.setter
+    def EnableCustomSrcPath(self, EnableCustomSrcPath):
+        self._EnableCustomSrcPath = EnableCustomSrcPath
+
+    @property
+    def CustomSrcPath(self):
+        r"""<p>自定义数据源路径(暂时仅支持清单过滤使用)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomSrcPath
+
+    @CustomSrcPath.setter
+    def CustomSrcPath(self, CustomSrcPath):
+        self._CustomSrcPath = CustomSrcPath
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._Bucket = params.get("Bucket")
+        self._TaskPath = params.get("TaskPath")
+        self._TotalCapacity = params.get("TotalCapacity")
+        self._FinishedCapacity = params.get("FinishedCapacity")
+        self._TaskCreateTime = params.get("TaskCreateTime")
+        self._TaskStartTime = params.get("TaskStartTime")
+        self._TaskEndTime = params.get("TaskEndTime")
+        self._TaskStatus = params.get("TaskStatus")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._TaskFailMsg = params.get("TaskFailMsg")
+        self._TotalFileNumber = params.get("TotalFileNumber")
+        self._FinishedFileNumber = params.get("FinishedFileNumber")
+        self._TextLocation = params.get("TextLocation")
+        self._RepositoryType = params.get("RepositoryType")
+        self._EnableDataFlowSubPath = params.get("EnableDataFlowSubPath")
+        self._DataFlowSubPath = params.get("DataFlowSubPath")
+        self._EnableCustomDestPath = params.get("EnableCustomDestPath")
+        self._CustomDestPath = params.get("CustomDestPath")
+        self._IsTaskPathAbsolute = params.get("IsTaskPathAbsolute")
+        self._OutputBucket = params.get("OutputBucket")
+        self._OutputPrefix = params.get("OutputPrefix")
+        self._EnableCustomSrcPath = params.get("EnableCustomSrcPath")
+        self._CustomSrcPath = params.get("CustomSrcPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteCrossVpcSubnetSupportForClientNodeRequest(AbstractModel):
     r"""DeleteCrossVpcSubnetSupportForClientNode请求参数结构体
 
@@ -3339,6 +3753,135 @@ class DescribeDataRepositoryTaskStatusResponse(AbstractModel):
         self._Status = params.get("Status")
         self._FinishedFileNumber = params.get("FinishedFileNumber")
         self._FinishedCapacity = params.get("FinishedCapacity")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataRepositoryTasksRequest(AbstractModel):
+    r"""DescribeDataRepositoryTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统ID
+        :type FileSystemId: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 最大返回数量
+        :type Limit: int
+        """
+        self._FileSystemId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统ID
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""最大返回数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataRepositoryTasksResponse(AbstractModel):
+    r"""DescribeDataRepositoryTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataRepositoryTaskList: 数据流通任务列表
+        :type DataRepositoryTaskList: list of DataRepositoryTaskAttribute
+        :param _TotalCount: 任务总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataRepositoryTaskList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DataRepositoryTaskList(self):
+        r"""数据流通任务列表
+        :rtype: list of DataRepositoryTaskAttribute
+        """
+        return self._DataRepositoryTaskList
+
+    @DataRepositoryTaskList.setter
+    def DataRepositoryTaskList(self, DataRepositoryTaskList):
+        self._DataRepositoryTaskList = DataRepositoryTaskList
+
+    @property
+    def TotalCount(self):
+        r"""任务总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataRepositoryTaskList") is not None:
+            self._DataRepositoryTaskList = []
+            for item in params.get("DataRepositoryTaskList"):
+                obj = DataRepositoryTaskAttribute()
+                obj._deserialize(item)
+                self._DataRepositoryTaskList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

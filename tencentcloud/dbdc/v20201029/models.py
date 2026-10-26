@@ -2083,6 +2083,8 @@ class DBCustomNode(AbstractModel):
         :type DisasterRecoverGroupId: str
         :param _LatestRunningTaskType: <p>节点最新进行中的任务类型</p><p>枚举值：</p><ul><li>add-nodes-to-cluster： 添加节点到集群</li><li>remove-nodes-from-cluster： 从集群中移除节点</li><li>modify-nodes-attributes： 修改节点属性</li><li>modify-nodes-drg： 修改节点置放群组</li></ul>
         :type LatestRunningTaskType: str
+        :param _BusinessType: <p>节点所属的业务类型</p><p>枚举值：</p><ul><li>sqlserver： 腾讯云 SQL Server 数据库实例 Custom 形态的节点</li></ul>
+        :type BusinessType: str
         """
         self._NodeId = None
         self._NodeName = None
@@ -2114,6 +2116,7 @@ class DBCustomNode(AbstractModel):
         self._SecurityGroupIds = None
         self._DisasterRecoverGroupId = None
         self._LatestRunningTaskType = None
+        self._BusinessType = None
 
     @property
     def NodeId(self):
@@ -2449,6 +2452,17 @@ class DBCustomNode(AbstractModel):
     def LatestRunningTaskType(self, LatestRunningTaskType):
         self._LatestRunningTaskType = LatestRunningTaskType
 
+    @property
+    def BusinessType(self):
+        r"""<p>节点所属的业务类型</p><p>枚举值：</p><ul><li>sqlserver： 腾讯云 SQL Server 数据库实例 Custom 形态的节点</li></ul>
+        :rtype: str
+        """
+        return self._BusinessType
+
+    @BusinessType.setter
+    def BusinessType(self, BusinessType):
+        self._BusinessType = BusinessType
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -2493,6 +2507,7 @@ class DBCustomNode(AbstractModel):
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
         self._LatestRunningTaskType = params.get("LatestRunningTaskType")
+        self._BusinessType = params.get("BusinessType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3008,10 +3023,22 @@ class DataDisk(AbstractModel):
         :type DiskSize: int
         :param _DiskName: <p>磁盘名称</p><p>DataDisk 作为输入参数时，DiskName 无效。</p>
         :type DiskName: str
+        :param _Encrypt: <p>数据盘是否加密</p><p>枚举值：</p><ul><li>false： 不加密</li><li>true： 加密</li></ul>
+        :type Encrypt: bool
+        :param _DiskId: <p>磁盘ID</p><p>入参限制：该参数目前仅用于 DescribeDBCustomNodes 等查询类接口的返回参数，不可用于 CreateDBCustomNodes 等写接口的入参。</p>
+        :type DiskId: str
+        :param _SnapshotId: <p>数据盘快照ID</p><p>入参限制：选择的数据盘快照大小需小于数据盘大小</p>
+        :type SnapshotId: str
+        :param _ClientDiskKey: <p>自定义的数据盘标识（如 data / log / backup）</p>
+        :type ClientDiskKey: str
         """
         self._DiskType = None
         self._DiskSize = None
         self._DiskName = None
+        self._Encrypt = None
+        self._DiskId = None
+        self._SnapshotId = None
+        self._ClientDiskKey = None
 
     @property
     def DiskType(self):
@@ -3046,11 +3073,59 @@ class DataDisk(AbstractModel):
     def DiskName(self, DiskName):
         self._DiskName = DiskName
 
+    @property
+    def Encrypt(self):
+        r"""<p>数据盘是否加密</p><p>枚举值：</p><ul><li>false： 不加密</li><li>true： 加密</li></ul>
+        :rtype: bool
+        """
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def DiskId(self):
+        r"""<p>磁盘ID</p><p>入参限制：该参数目前仅用于 DescribeDBCustomNodes 等查询类接口的返回参数，不可用于 CreateDBCustomNodes 等写接口的入参。</p>
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def SnapshotId(self):
+        r"""<p>数据盘快照ID</p><p>入参限制：选择的数据盘快照大小需小于数据盘大小</p>
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
+    @property
+    def ClientDiskKey(self):
+        r"""<p>自定义的数据盘标识（如 data / log / backup）</p>
+        :rtype: str
+        """
+        return self._ClientDiskKey
+
+    @ClientDiskKey.setter
+    def ClientDiskKey(self, ClientDiskKey):
+        self._ClientDiskKey = ClientDiskKey
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
         self._DiskName = params.get("DiskName")
+        self._Encrypt = params.get("Encrypt")
+        self._DiskId = params.get("DiskId")
+        self._SnapshotId = params.get("SnapshotId")
+        self._ClientDiskKey = params.get("ClientDiskKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5104,10 +5179,13 @@ class DescribeDBCustomTaskStatusResponse(AbstractModel):
         r"""
         :param _Status: <p>任务 ID</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>Succeeded： 成功</li><li>Failed： 失败</li></ul>
         :type Status: str
+        :param _ResourceStatusSet: <p>任务所操作的每个资源的执行结果</p>
+        :type ResourceStatusSet: list of TaskResourceStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
+        self._ResourceStatusSet = None
         self._RequestId = None
 
     @property
@@ -5120,6 +5198,17 @@ class DescribeDBCustomTaskStatusResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ResourceStatusSet(self):
+        r"""<p>任务所操作的每个资源的执行结果</p>
+        :rtype: list of TaskResourceStatus
+        """
+        return self._ResourceStatusSet
+
+    @ResourceStatusSet.setter
+    def ResourceStatusSet(self, ResourceStatusSet):
+        self._ResourceStatusSet = ResourceStatusSet
 
     @property
     def RequestId(self):
@@ -5135,6 +5224,12 @@ class DescribeDBCustomTaskStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        if params.get("ResourceStatusSet") is not None:
+            self._ResourceStatusSet = []
+            for item in params.get("ResourceStatusSet"):
+                obj = TaskResourceStatus()
+                obj._deserialize(item)
+                self._ResourceStatusSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10370,9 +10465,12 @@ class SystemDisk(AbstractModel):
         :type DiskType: str
         :param _DiskSize: <p>磁盘大小</p><p>单位：GiB</p>
         :type DiskSize: int
+        :param _DiskId: <p>磁盘ID</p>
+        :type DiskId: str
         """
         self._DiskType = None
         self._DiskSize = None
+        self._DiskId = None
 
     @property
     def DiskType(self):
@@ -10396,10 +10494,22 @@ class SystemDisk(AbstractModel):
     def DiskSize(self, DiskSize):
         self._DiskSize = DiskSize
 
+    @property
+    def DiskId(self):
+        r"""<p>磁盘ID</p>
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
+        self._DiskId = params.get("DiskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10517,6 +10627,57 @@ class Taint(AbstractModel):
         self._Key = params.get("Key")
         self._Effect = params.get("Effect")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskResourceStatus(AbstractModel):
+    r"""DB Custom 资源任务状态信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: <p>资源ID。如节点ID dbcn-tnjzxz3n</p>
+        :type ResourceId: str
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>Succeeded： 成功</li><li>Failed： 失败</li></ul>
+        :type Status: str
+        """
+        self._ResourceId = None
+        self._Status = None
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源ID。如节点ID dbcn-tnjzxz3n</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>Succeeded： 成功</li><li>Failed： 失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

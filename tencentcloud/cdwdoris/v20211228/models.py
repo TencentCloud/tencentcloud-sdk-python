@@ -12609,22 +12609,26 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: <p>集群id</p>
         :type InstanceId: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _UserPrivileges: 用户权限
+        :param _UserPrivileges: <p>用户权限</p>
         :type UserPrivileges: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
-        :param _WhiteHost: 用户链接来自的 IP	
+        :param _WhiteHost: <p>用户链接来自的 IP</p>
         :type WhiteHost: str
-        :param _UpdateType: 更新类型，默认0，1为更新绑定计算组，2为更新默认计算组
+        :param _UpdateType: <p>更新类型，默认0，1为更新绑定计算组，2为更新默认计算组，4 为 GrantPrivileges, RevokePrivileges 接口专用批量授权</p><p>枚举值：</p><ul><li>0： 默认</li><li>1： 更新绑定计算组</li><li>2： 更新默认计算组</li><li>4： GrantPrivileges, RevokePrivileges 接口专用批量授权</li></ul>
         :type UpdateType: int
-        :param _UpdateComputeGroups: 需绑定计算组列表
+        :param _UpdateComputeGroups: <p>需绑定计算组列表</p>
         :type UpdateComputeGroups: list of str
-        :param _DefaultComputeGroup: 默认计算组
+        :param _DefaultComputeGroup: <p>默认计算组</p>
         :type DefaultComputeGroup: str
-        :param _ComputeGroupType: 0: 灵活场景 1: 固定场景
+        :param _ComputeGroupType: <p>0: 灵活场景 1: 固定场景</p>
         :type ComputeGroupType: int
+        :param _GrantPrivileges: <p>本次新增授权的库表，仅 UpdateType=4 时生效</p>
+        :type GrantPrivileges: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
+        :param _RevokePrivileges: <p>本次取消授权的库表，仅 UpdateType=4 时生效</p>
+        :type RevokePrivileges: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
         """
         self._InstanceId = None
         self._UserName = None
@@ -12634,10 +12638,12 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         self._UpdateComputeGroups = None
         self._DefaultComputeGroup = None
         self._ComputeGroupType = None
+        self._GrantPrivileges = None
+        self._RevokePrivileges = None
 
     @property
     def InstanceId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12648,7 +12654,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -12659,7 +12665,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     @property
     def UserPrivileges(self):
-        r"""用户权限
+        r"""<p>用户权限</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
         """
         return self._UserPrivileges
@@ -12670,7 +12676,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     @property
     def WhiteHost(self):
-        r"""用户链接来自的 IP	
+        r"""<p>用户链接来自的 IP</p>
         :rtype: str
         """
         return self._WhiteHost
@@ -12681,7 +12687,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     @property
     def UpdateType(self):
-        r"""更新类型，默认0，1为更新绑定计算组，2为更新默认计算组
+        r"""<p>更新类型，默认0，1为更新绑定计算组，2为更新默认计算组，4 为 GrantPrivileges, RevokePrivileges 接口专用批量授权</p><p>枚举值：</p><ul><li>0： 默认</li><li>1： 更新绑定计算组</li><li>2： 更新默认计算组</li><li>4： GrantPrivileges, RevokePrivileges 接口专用批量授权</li></ul>
         :rtype: int
         """
         return self._UpdateType
@@ -12692,7 +12698,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     @property
     def UpdateComputeGroups(self):
-        r"""需绑定计算组列表
+        r"""<p>需绑定计算组列表</p>
         :rtype: list of str
         """
         return self._UpdateComputeGroups
@@ -12703,7 +12709,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     @property
     def DefaultComputeGroup(self):
-        r"""默认计算组
+        r"""<p>默认计算组</p>
         :rtype: str
         """
         return self._DefaultComputeGroup
@@ -12714,7 +12720,7 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
 
     @property
     def ComputeGroupType(self):
-        r"""0: 灵活场景 1: 固定场景
+        r"""<p>0: 灵活场景 1: 固定场景</p>
         :rtype: int
         """
         return self._ComputeGroupType
@@ -12722,6 +12728,28 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
     @ComputeGroupType.setter
     def ComputeGroupType(self, ComputeGroupType):
         self._ComputeGroupType = ComputeGroupType
+
+    @property
+    def GrantPrivileges(self):
+        r"""<p>本次新增授权的库表，仅 UpdateType=4 时生效</p>
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
+        """
+        return self._GrantPrivileges
+
+    @GrantPrivileges.setter
+    def GrantPrivileges(self, GrantPrivileges):
+        self._GrantPrivileges = GrantPrivileges
+
+    @property
+    def RevokePrivileges(self):
+        r"""<p>本次取消授权的库表，仅 UpdateType=4 时生效</p>
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.UpdateUserPrivileges`
+        """
+        return self._RevokePrivileges
+
+    @RevokePrivileges.setter
+    def RevokePrivileges(self, RevokePrivileges):
+        self._RevokePrivileges = RevokePrivileges
 
 
     def _deserialize(self, params):
@@ -12735,6 +12763,12 @@ class ModifyUserPrivilegesV3Request(AbstractModel):
         self._UpdateComputeGroups = params.get("UpdateComputeGroups")
         self._DefaultComputeGroup = params.get("DefaultComputeGroup")
         self._ComputeGroupType = params.get("ComputeGroupType")
+        if params.get("GrantPrivileges") is not None:
+            self._GrantPrivileges = UpdateUserPrivileges()
+            self._GrantPrivileges._deserialize(params.get("GrantPrivileges"))
+        if params.get("RevokePrivileges") is not None:
+            self._RevokePrivileges = UpdateUserPrivileges()
+            self._RevokePrivileges._deserialize(params.get("RevokePrivileges"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12752,20 +12786,23 @@ class ModifyUserPrivilegesV3Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorMsg: 错误信息，为空就是没有错误
+        :param _ErrorMsg: <p>错误信息，为空就是没有错误</p>
         :type ErrorMsg: str
-        :param _InstanceId: 集群id
+        :param _InstanceId: <p>集群id</p>
         :type InstanceId: str
+        :param _SkippedItems: <p>因库/表已删除而被跳过的目标；ErrorMsg 为空时不代表失败，前端需弹窗提示</p>
+        :type SkippedItems: :class:`tencentcloud.cdwdoris.v20211228.models.SkippedPrivilegeItem`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ErrorMsg = None
         self._InstanceId = None
+        self._SkippedItems = None
         self._RequestId = None
 
     @property
     def ErrorMsg(self):
-        r"""错误信息，为空就是没有错误
+        r"""<p>错误信息，为空就是没有错误</p>
         :rtype: str
         """
         return self._ErrorMsg
@@ -12776,7 +12813,7 @@ class ModifyUserPrivilegesV3Response(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12784,6 +12821,17 @@ class ModifyUserPrivilegesV3Response(AbstractModel):
     @InstanceId.setter
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
+
+    @property
+    def SkippedItems(self):
+        r"""<p>因库/表已删除而被跳过的目标；ErrorMsg 为空时不代表失败，前端需弹窗提示</p>
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.SkippedPrivilegeItem`
+        """
+        return self._SkippedItems
+
+    @SkippedItems.setter
+    def SkippedItems(self, SkippedItems):
+        self._SkippedItems = SkippedItems
 
     @property
     def RequestId(self):
@@ -12800,6 +12848,9 @@ class ModifyUserPrivilegesV3Response(AbstractModel):
     def _deserialize(self, params):
         self._ErrorMsg = params.get("ErrorMsg")
         self._InstanceId = params.get("InstanceId")
+        if params.get("SkippedItems") is not None:
+            self._SkippedItems = SkippedPrivilegeItem()
+            self._SkippedItems._deserialize(params.get("SkippedItems"))
         self._RequestId = params.get("RequestId")
 
 
@@ -16237,6 +16288,87 @@ class SearchTags(AbstractModel):
         self._TagKey = params.get("TagKey")
         self._TagValue = params.get("TagValue")
         self._AllValue = params.get("AllValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkippedPrivilegeItem(AbstractModel):
+    r"""增量授权（UpdateType=4）时因库/表已被物理删除而被跳过的目标，后端已自动清理其残留权限，前端需弹窗提示用户
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: <p>数据目录（catalog）名称</p>
+        :type CatalogName: str
+        :param _Database: <p>库名</p>
+        :type Database: str
+        :param _Table: <p>表名；库级条目被跳过时该字段为空（Go 定义带 omitempty，为空时响应里整个字段不出现）</p>
+        :type Table: str
+        :param _Reason: <p>跳过原因，如 table not found, maybe already dropped、database not found, maybe already dropped、existence check failed, granting  skipped this round, please retry</p>
+        :type Reason: str
+        """
+        self._CatalogName = None
+        self._Database = None
+        self._Table = None
+        self._Reason = None
+
+    @property
+    def CatalogName(self):
+        r"""<p>数据目录（catalog）名称</p>
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def Database(self):
+        r"""<p>库名</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        r"""<p>表名；库级条目被跳过时该字段为空（Go 定义带 omitempty，为空时响应里整个字段不出现）</p>
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Reason(self):
+        r"""<p>跳过原因，如 table not found, maybe already dropped、database not found, maybe already dropped、existence check failed, granting  skipped this round, please retry</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

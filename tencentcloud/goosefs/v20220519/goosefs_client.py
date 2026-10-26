@@ -555,6 +555,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataRepositoryTasks(self, request):
+        r"""列出所有的数据流通任务
+
+        :param request: Request instance for DescribeDataRepositoryTasks.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeDataRepositoryTasksRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribeDataRepositoryTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataRepositoryTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataRepositoryTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFileSystemBuckets(self, request):
         r"""罗列文件系统关联的Bucket映射
 

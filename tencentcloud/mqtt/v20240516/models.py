@@ -7326,23 +7326,26 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Topic: home/room
+        :param _Topic: <p>home/room</p>
         :type Topic: str
-        :param _StartTime: 开始时间，毫秒级时间戳 。
+        :param _StartTime: <p>开始时间，毫秒级时间戳 。</p>
         :type StartTime: int
-        :param _MaxNumber: 查询消息条数，最大1024，默认100.
+        :param _MaxNumber: <p>查询消息条数，最大1024，默认100.</p>
         :type MaxNumber: int
+        :param _FilterExpression: <p>消息 body 过滤表达式（Base64 编码），jq 1.6 语法</p><p>枚举值：</p><ul><li>LmxldmVsID09ICJFUlJPUiI=： .level == &quot;ERROR&quot; Base64编码后的字符串</li></ul>
+        :type FilterExpression: str
         """
         self._InstanceId = None
         self._Topic = None
         self._StartTime = None
         self._MaxNumber = None
+        self._FilterExpression = None
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7353,7 +7356,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""home/room
+        r"""<p>home/room</p>
         :rtype: str
         """
         return self._Topic
@@ -7364,7 +7367,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间，毫秒级时间戳 。
+        r"""<p>开始时间，毫秒级时间戳 。</p>
         :rtype: int
         """
         return self._StartTime
@@ -7375,7 +7378,7 @@ class DescribeMessageByTopicRequest(AbstractModel):
 
     @property
     def MaxNumber(self):
-        r"""查询消息条数，最大1024，默认100.
+        r"""<p>查询消息条数，最大1024，默认100.</p>
         :rtype: int
         """
         return self._MaxNumber
@@ -7384,12 +7387,24 @@ class DescribeMessageByTopicRequest(AbstractModel):
     def MaxNumber(self, MaxNumber):
         self._MaxNumber = MaxNumber
 
+    @property
+    def FilterExpression(self):
+        r"""<p>消息 body 过滤表达式（Base64 编码），jq 1.6 语法</p><p>枚举值：</p><ul><li>LmxldmVsID09ICJFUlJPUiI=： .level == &quot;ERROR&quot; Base64编码后的字符串</li></ul>
+        :rtype: str
+        """
+        return self._FilterExpression
+
+    @FilterExpression.setter
+    def FilterExpression(self, FilterExpression):
+        self._FilterExpression = FilterExpression
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Topic = params.get("Topic")
         self._StartTime = params.get("StartTime")
         self._MaxNumber = params.get("MaxNumber")
+        self._FilterExpression = params.get("FilterExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7407,7 +7422,7 @@ class DescribeMessageByTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 消息列表
+        :param _Data: <p>消息列表</p>
         :type Data: list of MQTTMessage
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7417,7 +7432,7 @@ class DescribeMessageByTopicResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""消息列表
+        r"""<p>消息列表</p>
         :rtype: list of MQTTMessage
         """
         return self._Data
@@ -7455,11 +7470,11 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _MessageId: 消息ID
+        :param _MessageId: <p>消息ID</p>
         :type MessageId: str
-        :param _Subscription: 订阅表达式
+        :param _Subscription: <p>订阅表达式</p>
         :type Subscription: str
         """
         self._InstanceId = None
@@ -7468,7 +7483,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7479,7 +7494,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     @property
     def MessageId(self):
-        r"""消息ID
+        r"""<p>消息ID</p>
         :rtype: str
         """
         return self._MessageId
@@ -7490,7 +7505,7 @@ class DescribeMessageDetailsRequest(AbstractModel):
 
     @property
     def Subscription(self):
-        r"""订阅表达式
+        r"""<p>订阅表达式</p>
         :rtype: str
         """
         return self._Subscription
@@ -7521,57 +7536,34 @@ class DescribeMessageDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Body: 消息体
+        :param _Body: <p>消息体</p>
         :type Body: str
-        :param _UserProperties: 用户自定义属性
+        :param _UserProperties: <p>用户自定义属性</p>
         :type UserProperties: list of UserProperty
-        :param _StoreTimestamp: 消息存储时间，毫秒级时间戳。
+        :param _StoreTimestamp: <p>消息存储时间，毫秒级时间戳。</p>
         :type StoreTimestamp: int
-        :param _MessageId: 消息ID
+        :param _MessageId: <p>消息ID</p>
         :type MessageId: str
-        :param _ClientId: 生产者地址
+        :param _ClientId: <p>生产者地址</p>
         :type ClientId: str
-        :param _Qos: Topic
+        :param _Qos: <p>Topic</p>
         :type Qos: str
-        :param _OriginTopic: 源topic
+        :param _OriginTopic: <p>源topic</p>
         :type OriginTopic: str
-        :param _ContentType: 内容类型（MQTT5）
-含义：指示消息载荷的内容类型，使用标准的 MIME 类型格式。这帮助接收方正确解析和处理消息内容。
-示例：
-application/json：表示载荷是 JSON 格式的数据。
-text/plain：表示载荷是纯文本。
-application/octet-stream：表示载荷是二进制数据。
+        :param _ContentType: <p>内容类型（MQTT5）<br>含义：指示消息载荷的内容类型，使用标准的 MIME 类型格式。这帮助接收方正确解析和处理消息内容。<br>示例：<br>application/json：表示载荷是 JSON 格式的数据。<br>text/plain：表示载荷是纯文本。<br>application/octet-stream：表示载荷是二进制数据。</p>
         :type ContentType: str
-        :param _PayloadFormatIndicator: 载荷格式指示符（MQTT5）
-含义：指示载荷的格式，是一个布尔值。0表示未指定格式（二进制），1表示 UTF-8 编码的字符串。
-示例：
-值为0：当载荷是二进制数据，如图片、音频等。
-值为1：当载荷是 UTF-8 编码的文本，如 JSON 字符串、XML 等。
+        :param _PayloadFormatIndicator: <p>载荷格式指示符（MQTT5）<br>含义：指示载荷的格式，是一个布尔值。0表示未指定格式（二进制），1表示 UTF-8 编码的字符串。<br>示例：<br>值为0：当载荷是二进制数据，如图片、音频等。<br>值为1：当载荷是 UTF-8 编码的文本，如 JSON 字符串、XML 等。</p>
         :type PayloadFormatIndicator: int
-        :param _MessageExpiryInterval: 消息过期间隔（MQTT5）
-含义：指定消息在被丢弃前的有效时间（秒）。如果消息在过期前未能送达，则会被 MQTT 服务器丢弃。
-示例：
-值为60：表示消息在发布后的 60 秒内有效，过期后未送达则被丢弃。
-值为0：表示消息不过期，永久有效（直到被接收或会话结束）。
+        :param _MessageExpiryInterval: <p>消息过期间隔（MQTT5）<br>含义：指定消息在被丢弃前的有效时间（秒）。如果消息在过期前未能送达，则会被 MQTT 服务器丢弃。<br>示例：<br>值为60：表示消息在发布后的 60 秒内有效，过期后未送达则被丢弃。<br>值为0：表示消息不过期，永久有效（直到被接收或会话结束）。</p>
         :type MessageExpiryInterval: int
-        :param _ResponseTopic: 响应主题（MQTT5）
-含义：指定一个主题，用于请求 - 响应模式中的响应消息。发送方可以指定接收方应该将响应发送到哪个主题。
-示例：
-发送方发布请求到主题devices/device1/commands，并设置ResponseTopic为devices/device1/responses。
-接收方处理请求后，将响应发布到devices/device1/responses主题。
+        :param _ResponseTopic: <p>响应主题（MQTT5）<br>含义：指定一个主题，用于请求 - 响应模式中的响应消息。发送方可以指定接收方应该将响应发送到哪个主题。<br>示例：<br>发送方发布请求到主题devices/device1/commands，并设置ResponseTopic为devices/device1/responses。<br>接收方处理请求后，将响应发布到devices/device1/responses主题。</p>
         :type ResponseTopic: str
-        :param _CorrelationData: 关联数据（MQTT5）
-含义：用于关联请求和响应的标识符，通常是一个字节数组。在请求 - 响应模式中，发送方设置此值，接收方在响应中包含相同的值，以便发送方识别响应对应的请求。
-示例：
-发送方生成一个唯一 ID（如 UUID 的字节数组）作为CorrelationData，附加到请求消息中。
-接收方在响应消息中包含相同的CorrelationData，发送方通过比较此值来匹配响应和请求。
+        :param _CorrelationData: <p>关联数据（MQTT5）<br>含义：用于关联请求和响应的标识符，通常是一个字节数组。在请求 - 响应模式中，发送方设置此值，接收方在响应中包含相同的值，以便发送方识别响应对应的请求。<br>示例：<br>发送方生成一个唯一 ID（如 UUID 的字节数组）作为CorrelationData，附加到请求消息中。<br>接收方在响应消息中包含相同的CorrelationData，发送方通过比较此值来匹配响应和请求。</p>
         :type CorrelationData: str
-        :param _SubscriptionIdentifier: 订阅标识符（MQTT5）
-含义：为订阅分配的唯一标识符，用于标识客户端的特定订阅。当服务器向客户端发送消息时，可以包含此标识符，帮助客户端识别消息对应的订阅。
-示例：
-客户端订阅主题devices/+/temperature，并设置SubscriptionIdentifier为123。
-当服务器向客户端发送此主题的消息时，会在消息中包含SubscriptionIdentifier: 123，客户端可以根据此值知道消息是通过哪个订阅接收的。
+        :param _SubscriptionIdentifier: <p>订阅标识符（MQTT5）<br>含义：为订阅分配的唯一标识符，用于标识客户端的特定订阅。当服务器向客户端发送消息时，可以包含此标识符，帮助客户端识别消息对应的订阅。<br>示例：<br>客户端订阅主题devices/+/temperature，并设置SubscriptionIdentifier为123。<br>当服务器向客户端发送此主题的消息时，会在消息中包含SubscriptionIdentifier: 123，客户端可以根据此值知道消息是通过哪个订阅接收的。</p>
         :type SubscriptionIdentifier: str
+        :param _Retain: <p>是否保留消息</p>
+        :type Retain: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7588,11 +7580,12 @@ application/octet-stream：表示载荷是二进制数据。
         self._ResponseTopic = None
         self._CorrelationData = None
         self._SubscriptionIdentifier = None
+        self._Retain = None
         self._RequestId = None
 
     @property
     def Body(self):
-        r"""消息体
+        r"""<p>消息体</p>
         :rtype: str
         """
         return self._Body
@@ -7603,7 +7596,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def UserProperties(self):
-        r"""用户自定义属性
+        r"""<p>用户自定义属性</p>
         :rtype: list of UserProperty
         """
         return self._UserProperties
@@ -7614,7 +7607,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def StoreTimestamp(self):
-        r"""消息存储时间，毫秒级时间戳。
+        r"""<p>消息存储时间，毫秒级时间戳。</p>
         :rtype: int
         """
         return self._StoreTimestamp
@@ -7625,7 +7618,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def MessageId(self):
-        r"""消息ID
+        r"""<p>消息ID</p>
         :rtype: str
         """
         return self._MessageId
@@ -7636,7 +7629,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def ClientId(self):
-        r"""生产者地址
+        r"""<p>生产者地址</p>
         :rtype: str
         """
         return self._ClientId
@@ -7647,7 +7640,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def Qos(self):
-        r"""Topic
+        r"""<p>Topic</p>
         :rtype: str
         """
         return self._Qos
@@ -7658,7 +7651,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def OriginTopic(self):
-        r"""源topic
+        r"""<p>源topic</p>
         :rtype: str
         """
         return self._OriginTopic
@@ -7669,12 +7662,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def ContentType(self):
-        r"""内容类型（MQTT5）
-含义：指示消息载荷的内容类型，使用标准的 MIME 类型格式。这帮助接收方正确解析和处理消息内容。
-示例：
-application/json：表示载荷是 JSON 格式的数据。
-text/plain：表示载荷是纯文本。
-application/octet-stream：表示载荷是二进制数据。
+        r"""<p>内容类型（MQTT5）<br>含义：指示消息载荷的内容类型，使用标准的 MIME 类型格式。这帮助接收方正确解析和处理消息内容。<br>示例：<br>application/json：表示载荷是 JSON 格式的数据。<br>text/plain：表示载荷是纯文本。<br>application/octet-stream：表示载荷是二进制数据。</p>
         :rtype: str
         """
         return self._ContentType
@@ -7685,11 +7673,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def PayloadFormatIndicator(self):
-        r"""载荷格式指示符（MQTT5）
-含义：指示载荷的格式，是一个布尔值。0表示未指定格式（二进制），1表示 UTF-8 编码的字符串。
-示例：
-值为0：当载荷是二进制数据，如图片、音频等。
-值为1：当载荷是 UTF-8 编码的文本，如 JSON 字符串、XML 等。
+        r"""<p>载荷格式指示符（MQTT5）<br>含义：指示载荷的格式，是一个布尔值。0表示未指定格式（二进制），1表示 UTF-8 编码的字符串。<br>示例：<br>值为0：当载荷是二进制数据，如图片、音频等。<br>值为1：当载荷是 UTF-8 编码的文本，如 JSON 字符串、XML 等。</p>
         :rtype: int
         """
         return self._PayloadFormatIndicator
@@ -7700,11 +7684,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def MessageExpiryInterval(self):
-        r"""消息过期间隔（MQTT5）
-含义：指定消息在被丢弃前的有效时间（秒）。如果消息在过期前未能送达，则会被 MQTT 服务器丢弃。
-示例：
-值为60：表示消息在发布后的 60 秒内有效，过期后未送达则被丢弃。
-值为0：表示消息不过期，永久有效（直到被接收或会话结束）。
+        r"""<p>消息过期间隔（MQTT5）<br>含义：指定消息在被丢弃前的有效时间（秒）。如果消息在过期前未能送达，则会被 MQTT 服务器丢弃。<br>示例：<br>值为60：表示消息在发布后的 60 秒内有效，过期后未送达则被丢弃。<br>值为0：表示消息不过期，永久有效（直到被接收或会话结束）。</p>
         :rtype: int
         """
         return self._MessageExpiryInterval
@@ -7715,11 +7695,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def ResponseTopic(self):
-        r"""响应主题（MQTT5）
-含义：指定一个主题，用于请求 - 响应模式中的响应消息。发送方可以指定接收方应该将响应发送到哪个主题。
-示例：
-发送方发布请求到主题devices/device1/commands，并设置ResponseTopic为devices/device1/responses。
-接收方处理请求后，将响应发布到devices/device1/responses主题。
+        r"""<p>响应主题（MQTT5）<br>含义：指定一个主题，用于请求 - 响应模式中的响应消息。发送方可以指定接收方应该将响应发送到哪个主题。<br>示例：<br>发送方发布请求到主题devices/device1/commands，并设置ResponseTopic为devices/device1/responses。<br>接收方处理请求后，将响应发布到devices/device1/responses主题。</p>
         :rtype: str
         """
         return self._ResponseTopic
@@ -7730,11 +7706,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def CorrelationData(self):
-        r"""关联数据（MQTT5）
-含义：用于关联请求和响应的标识符，通常是一个字节数组。在请求 - 响应模式中，发送方设置此值，接收方在响应中包含相同的值，以便发送方识别响应对应的请求。
-示例：
-发送方生成一个唯一 ID（如 UUID 的字节数组）作为CorrelationData，附加到请求消息中。
-接收方在响应消息中包含相同的CorrelationData，发送方通过比较此值来匹配响应和请求。
+        r"""<p>关联数据（MQTT5）<br>含义：用于关联请求和响应的标识符，通常是一个字节数组。在请求 - 响应模式中，发送方设置此值，接收方在响应中包含相同的值，以便发送方识别响应对应的请求。<br>示例：<br>发送方生成一个唯一 ID（如 UUID 的字节数组）作为CorrelationData，附加到请求消息中。<br>接收方在响应消息中包含相同的CorrelationData，发送方通过比较此值来匹配响应和请求。</p>
         :rtype: str
         """
         return self._CorrelationData
@@ -7745,11 +7717,7 @@ application/octet-stream：表示载荷是二进制数据。
 
     @property
     def SubscriptionIdentifier(self):
-        r"""订阅标识符（MQTT5）
-含义：为订阅分配的唯一标识符，用于标识客户端的特定订阅。当服务器向客户端发送消息时，可以包含此标识符，帮助客户端识别消息对应的订阅。
-示例：
-客户端订阅主题devices/+/temperature，并设置SubscriptionIdentifier为123。
-当服务器向客户端发送此主题的消息时，会在消息中包含SubscriptionIdentifier: 123，客户端可以根据此值知道消息是通过哪个订阅接收的。
+        r"""<p>订阅标识符（MQTT5）<br>含义：为订阅分配的唯一标识符，用于标识客户端的特定订阅。当服务器向客户端发送消息时，可以包含此标识符，帮助客户端识别消息对应的订阅。<br>示例：<br>客户端订阅主题devices/+/temperature，并设置SubscriptionIdentifier为123。<br>当服务器向客户端发送此主题的消息时，会在消息中包含SubscriptionIdentifier: 123，客户端可以根据此值知道消息是通过哪个订阅接收的。</p>
         :rtype: str
         """
         return self._SubscriptionIdentifier
@@ -7757,6 +7725,17 @@ application/octet-stream：表示载荷是二进制数据。
     @SubscriptionIdentifier.setter
     def SubscriptionIdentifier(self, SubscriptionIdentifier):
         self._SubscriptionIdentifier = SubscriptionIdentifier
+
+    @property
+    def Retain(self):
+        r"""<p>是否保留消息</p>
+        :rtype: bool
+        """
+        return self._Retain
+
+    @Retain.setter
+    def Retain(self, Retain):
+        self._Retain = Retain
 
     @property
     def RequestId(self):
@@ -7789,6 +7768,7 @@ application/octet-stream：表示载荷是二进制数据。
         self._ResponseTopic = params.get("ResponseTopic")
         self._CorrelationData = params.get("CorrelationData")
         self._SubscriptionIdentifier = params.get("SubscriptionIdentifier")
+        self._Retain = params.get("Retain")
         self._RequestId = params.get("RequestId")
 
 

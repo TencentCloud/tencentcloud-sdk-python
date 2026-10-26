@@ -67869,6 +67869,18 @@ class InstanceOpsDto(AbstractModel):
         :param _Privilege: <p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSIONS： 无权限</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Privilege: str
+        :param _TriggerSource: <p>触发记录来源 (仅嵌套工作流触发场景有值, 取值以 SUB_PROCESS_ 开头时表示由嵌套工作流生成运行记录触发</p><p>枚举值：</p><ul><li>SUB_PROCESS_MAKEUP： 补录</li><li>SUB_PROCESS_TRIGGER： 调度触发</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerSource: str
+        :param _ParentSpTaskId: <p>父 嵌套工作流任务 ID (仅触发记录来源为嵌套工作流时有值)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSpTaskId: str
+        :param _ParentSpInstanceName: <p>父嵌套工作流实例名称 (仅触发记录来源为嵌套工作流时有值)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSpInstanceName: str
+        :param _ParentSpInstanceDataTime: <p>父嵌套工作流实例数据时间 (仅触发记录来源为嵌套工作流时有值)</p><p>参数格式：2026-10-12 00:00:00</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentSpInstanceDataTime: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -67947,6 +67959,10 @@ class InstanceOpsDto(AbstractModel):
         self._WorkflowRunName = None
         self._ProxyTaskType = None
         self._Privilege = None
+        self._TriggerSource = None
+        self._ParentSpTaskId = None
+        self._ParentSpInstanceName = None
+        self._ParentSpInstanceDataTime = None
 
     @property
     def TaskId(self):
@@ -68868,6 +68884,54 @@ class InstanceOpsDto(AbstractModel):
     def Privilege(self, Privilege):
         self._Privilege = Privilege
 
+    @property
+    def TriggerSource(self):
+        r"""<p>触发记录来源 (仅嵌套工作流触发场景有值, 取值以 SUB_PROCESS_ 开头时表示由嵌套工作流生成运行记录触发</p><p>枚举值：</p><ul><li>SUB_PROCESS_MAKEUP： 补录</li><li>SUB_PROCESS_TRIGGER： 调度触发</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerSource
+
+    @TriggerSource.setter
+    def TriggerSource(self, TriggerSource):
+        self._TriggerSource = TriggerSource
+
+    @property
+    def ParentSpTaskId(self):
+        r"""<p>父 嵌套工作流任务 ID (仅触发记录来源为嵌套工作流时有值)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentSpTaskId
+
+    @ParentSpTaskId.setter
+    def ParentSpTaskId(self, ParentSpTaskId):
+        self._ParentSpTaskId = ParentSpTaskId
+
+    @property
+    def ParentSpInstanceName(self):
+        r"""<p>父嵌套工作流实例名称 (仅触发记录来源为嵌套工作流时有值)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentSpInstanceName
+
+    @ParentSpInstanceName.setter
+    def ParentSpInstanceName(self, ParentSpInstanceName):
+        self._ParentSpInstanceName = ParentSpInstanceName
+
+    @property
+    def ParentSpInstanceDataTime(self):
+        r"""<p>父嵌套工作流实例数据时间 (仅触发记录来源为嵌套工作流时有值)</p><p>参数格式：2026-10-12 00:00:00</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentSpInstanceDataTime
+
+    @ParentSpInstanceDataTime.setter
+    def ParentSpInstanceDataTime(self, ParentSpInstanceDataTime):
+        self._ParentSpInstanceDataTime = ParentSpInstanceDataTime
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -68970,6 +69034,10 @@ class InstanceOpsDto(AbstractModel):
             self._ProxyTaskType = TaskTypeOpsDto()
             self._ProxyTaskType._deserialize(params.get("ProxyTaskType"))
         self._Privilege = params.get("Privilege")
+        self._TriggerSource = params.get("TriggerSource")
+        self._ParentSpTaskId = params.get("ParentSpTaskId")
+        self._ParentSpInstanceName = params.get("ParentSpInstanceName")
+        self._ParentSpInstanceDataTime = params.get("ParentSpInstanceDataTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

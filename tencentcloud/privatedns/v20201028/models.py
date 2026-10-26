@@ -2867,11 +2867,11 @@ class DescribeExtendEndpointListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 分页偏移量，从0开始
+        :param _Offset: <p>分页偏移量，从0开始</p>
         :type Offset: int
-        :param _Limit: 分页限制数目， 最大100，默认20
+        :param _Limit: <p>分页限制数目， 最大100，默认20</p>
         :type Limit: int
-        :param _Filters: 过滤参数，支持EndpointName,EndpointId
+        :param _Filters: <p>过滤参数，支持EndpointName,EndpointId</p>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -2880,7 +2880,7 @@ class DescribeExtendEndpointListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，从0开始
+        r"""<p>分页偏移量，从0开始</p>
         :rtype: int
         """
         return self._Offset
@@ -2891,7 +2891,7 @@ class DescribeExtendEndpointListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页限制数目， 最大100，默认20
+        r"""<p>分页限制数目， 最大100，默认20</p>
         :rtype: int
         """
         return self._Limit
@@ -2902,7 +2902,7 @@ class DescribeExtendEndpointListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤参数，支持EndpointName,EndpointId
+        r"""<p>过滤参数，支持EndpointName,EndpointId</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -2938,10 +2938,38 @@ class DescribeExtendEndpointListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: <p>终端节点总数</p>
+        :type TotalCount: int
+        :param _OutboundEndpointSet: <p>终端节点列表</p>
+        :type OutboundEndpointSet: list of OutboundEndpoint
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._OutboundEndpointSet = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>终端节点总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def OutboundEndpointSet(self):
+        r"""<p>终端节点列表</p>
+        :rtype: list of OutboundEndpoint
+        """
+        return self._OutboundEndpointSet
+
+    @OutboundEndpointSet.setter
+    def OutboundEndpointSet(self, OutboundEndpointSet):
+        self._OutboundEndpointSet = OutboundEndpointSet
 
     @property
     def RequestId(self):
@@ -2956,6 +2984,13 @@ class DescribeExtendEndpointListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("OutboundEndpointSet") is not None:
+            self._OutboundEndpointSet = []
+            for item in params.get("OutboundEndpointSet"):
+                obj = OutboundEndpoint()
+                obj._deserialize(item)
+                self._OutboundEndpointSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4186,6 +4221,42 @@ class EndPointServiceInfo(AbstractModel):
         self._EndPointStatus = params.get("EndPointStatus")
         self._EndPointRemark = params.get("EndPointRemark")
         self._EndPointIsolateFlag = params.get("EndPointIsolateFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EndpointService(AbstractModel):
+    r"""PrivateDNS出站终端节点转发IP
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubnetLessIp: <p>子网剩余IP数</p>
+        :type SubnetLessIp: int
+        """
+        self._SubnetLessIp = None
+
+    @property
+    def SubnetLessIp(self):
+        r"""<p>子网剩余IP数</p>
+        :rtype: int
+        """
+        return self._SubnetLessIp
+
+    @SubnetLessIp.setter
+    def SubnetLessIp(self, SubnetLessIp):
+        self._SubnetLessIp = SubnetLessIp
+
+
+    def _deserialize(self, params):
+        self._SubnetLessIp = params.get("SubnetLessIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5488,6 +5559,169 @@ class ModifyRecordsStatusResponse(AbstractModel):
         self._RecordIds = params.get("RecordIds")
         self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
+
+
+class OutboundEndpoint(AbstractModel):
+    r"""出站终端节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EndpointId: 出站终端节点ID
+        :type EndpointId: str
+        :param _EndpointName: 出站终端节点名
+        :type EndpointName: str
+        :param _Region: 出站终端节点所属地域
+        :type Region: str
+        :param _Tags: tag标签
+        :type Tags: list of TagInfo
+        :param _EndpointServiceSet: 出站终端节点信息
+仅在转发架构为 V2R的情况下返回
+        :type EndpointServiceSet: list of EndpointService
+        :param _ForwardLinkArch: 转发链接架构
+V2V: privatelink
+V2R: jnsgw
+        :type ForwardLinkArch: str
+        :param _EndPointServiceId: 终端节点服务ID
+仅在转发架构为 V2V的情况下返回
+
+        :type EndPointServiceId: str
+        :param _EndPointVipSet: 终端节点VIP列表
+仅在转发架构为 V2V的情况下返回
+        :type EndPointVipSet: list of str
+        """
+        self._EndpointId = None
+        self._EndpointName = None
+        self._Region = None
+        self._Tags = None
+        self._EndpointServiceSet = None
+        self._ForwardLinkArch = None
+        self._EndPointServiceId = None
+        self._EndPointVipSet = None
+
+    @property
+    def EndpointId(self):
+        r"""出站终端节点ID
+        :rtype: str
+        """
+        return self._EndpointId
+
+    @EndpointId.setter
+    def EndpointId(self, EndpointId):
+        self._EndpointId = EndpointId
+
+    @property
+    def EndpointName(self):
+        r"""出站终端节点名
+        :rtype: str
+        """
+        return self._EndpointName
+
+    @EndpointName.setter
+    def EndpointName(self, EndpointName):
+        self._EndpointName = EndpointName
+
+    @property
+    def Region(self):
+        r"""出站终端节点所属地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Tags(self):
+        r"""tag标签
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def EndpointServiceSet(self):
+        r"""出站终端节点信息
+仅在转发架构为 V2R的情况下返回
+        :rtype: list of EndpointService
+        """
+        return self._EndpointServiceSet
+
+    @EndpointServiceSet.setter
+    def EndpointServiceSet(self, EndpointServiceSet):
+        self._EndpointServiceSet = EndpointServiceSet
+
+    @property
+    def ForwardLinkArch(self):
+        r"""转发链接架构
+V2V: privatelink
+V2R: jnsgw
+        :rtype: str
+        """
+        return self._ForwardLinkArch
+
+    @ForwardLinkArch.setter
+    def ForwardLinkArch(self, ForwardLinkArch):
+        self._ForwardLinkArch = ForwardLinkArch
+
+    @property
+    def EndPointServiceId(self):
+        r"""终端节点服务ID
+仅在转发架构为 V2V的情况下返回
+
+        :rtype: str
+        """
+        return self._EndPointServiceId
+
+    @EndPointServiceId.setter
+    def EndPointServiceId(self, EndPointServiceId):
+        self._EndPointServiceId = EndPointServiceId
+
+    @property
+    def EndPointVipSet(self):
+        r"""终端节点VIP列表
+仅在转发架构为 V2V的情况下返回
+        :rtype: list of str
+        """
+        return self._EndPointVipSet
+
+    @EndPointVipSet.setter
+    def EndPointVipSet(self, EndPointVipSet):
+        self._EndPointVipSet = EndPointVipSet
+
+
+    def _deserialize(self, params):
+        self._EndpointId = params.get("EndpointId")
+        self._EndpointName = params.get("EndpointName")
+        self._Region = params.get("Region")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("EndpointServiceSet") is not None:
+            self._EndpointServiceSet = []
+            for item in params.get("EndpointServiceSet"):
+                obj = EndpointService()
+                obj._deserialize(item)
+                self._EndpointServiceSet.append(obj)
+        self._ForwardLinkArch = params.get("ForwardLinkArch")
+        self._EndPointServiceId = params.get("EndPointServiceId")
+        self._EndPointVipSet = params.get("EndPointVipSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PrivateDNSAccount(AbstractModel):

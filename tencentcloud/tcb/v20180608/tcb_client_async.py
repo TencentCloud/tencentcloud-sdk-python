@@ -490,24 +490,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateUserKey(
-            self,
-            request: models.CreateUserKeyRequest,
-            opts: Dict = None,
-    ) -> models.CreateUserKeyResponse:
-        """
-        用户创建集成
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateUserKey"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateUserKeyResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteAIModel(
             self,
             request: models.DeleteAIModelRequest,
@@ -697,24 +679,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DeleteTable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTableResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteUserKey(
-            self,
-            request: models.DeleteUserKeyRequest,
-            opts: Dict = None,
-    ) -> models.DeleteUserKeyResponse:
-        """
-        用户删除集成
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteUserKey"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteUserKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1767,24 +1731,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def GetOneUserKey(
-            self,
-            request: models.GetOneUserKeyRequest,
-            opts: Dict = None,
-    ) -> models.GetOneUserKeyResponse:
-        """
-        用户获取集成详情
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetOneUserKey"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetOneUserKeyResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def GetProviders(
             self,
             request: models.GetProvidersRequest,
@@ -1798,24 +1744,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "GetProviders"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetProvidersResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def GetUserKeyList(
-            self,
-            request: models.GetUserKeyListRequest,
-            opts: Dict = None,
-    ) -> models.GetUserKeyListResponse:
-        """
-        用户获取集成列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetUserKeyList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetUserKeyListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2486,24 +2414,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "UpdateTable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateTableResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UpdateUserKey(
-            self,
-            request: models.UpdateUserKeyRequest,
-            opts: Dict = None,
-    ) -> models.UpdateUserKeyResponse:
-        """
-        用户更新集成信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UpdateUserKey"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UpdateUserKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

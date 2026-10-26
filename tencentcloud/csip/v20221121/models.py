@@ -166630,6 +166630,8 @@ class ModifyVulScanPeriodicRequest(AbstractModel):
         :type SyncTo: list of int non-negative
         :param _TagIds: <p>标签ID</p>
         :type TagIds: list of int non-negative
+        :param _PreferCloudSource: <p>优先使用腾讯云软件源</p>
+        :type PreferCloudSource: bool
         """
         self._Status = None
         self._VulCategory = None
@@ -166647,6 +166649,7 @@ class ModifyVulScanPeriodicRequest(AbstractModel):
         self._EnableSync = None
         self._SyncTo = None
         self._TagIds = None
+        self._PreferCloudSource = None
 
     @property
     def Status(self):
@@ -166824,6 +166827,17 @@ class ModifyVulScanPeriodicRequest(AbstractModel):
     def TagIds(self, TagIds):
         self._TagIds = TagIds
 
+    @property
+    def PreferCloudSource(self):
+        r"""<p>优先使用腾讯云软件源</p>
+        :rtype: bool
+        """
+        return self._PreferCloudSource
+
+    @PreferCloudSource.setter
+    def PreferCloudSource(self, PreferCloudSource):
+        self._PreferCloudSource = PreferCloudSource
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
@@ -166842,6 +166856,7 @@ class ModifyVulScanPeriodicRequest(AbstractModel):
         self._EnableSync = params.get("EnableSync")
         self._SyncTo = params.get("SyncTo")
         self._TagIds = params.get("TagIds")
+        self._PreferCloudSource = params.get("PreferCloudSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
