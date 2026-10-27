@@ -61,6 +61,24 @@ class CtemClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCheck(
+            self,
+            request: models.CreateCheckRequest,
+            opts: Dict = None,
+    ) -> models.CreateCheckResponse:
+        """
+        检查修复状况
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCheck"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCheckResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCustomer(
             self,
             request: models.CreateCustomerRequest,
@@ -182,6 +200,24 @@ class CtemClient(AbstractClient):
         kwargs["action"] = "CreatePort"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreatePortResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateScan(
+            self,
+            request: models.CreateScanRequest,
+            opts: Dict = None,
+    ) -> models.CreateScanResponse:
+        """
+        扫描巡检
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateScanResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -547,6 +583,24 @@ class CtemClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBannerAssetData(
+            self,
+            request: models.DescribeBannerAssetDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBannerAssetDataResponse:
+        """
+        相关资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBannerAssetData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBannerAssetDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeConfigs(
             self,
             request: models.DescribeConfigsRequest,
@@ -745,6 +799,24 @@ class CtemClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeIntelligences(
+            self,
+            request: models.DescribeIntelligencesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIntelligencesResponse:
+        """
+        查询情报列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIntelligences"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIntelligencesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeJobRecordDetails(
             self,
             request: models.DescribeJobRecordDetailsRequest,
@@ -866,6 +938,24 @@ class CtemClient(AbstractClient):
         kwargs["action"] = "DescribeNetDisks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeNetDisksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePocAssetData(
+            self,
+            request: models.DescribePocAssetDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribePocAssetDataResponse:
+        """
+        实际受影响资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePocAssetData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePocAssetDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

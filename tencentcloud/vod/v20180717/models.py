@@ -30062,10 +30062,16 @@ class CreateKnowledgeBaseRequest(AbstractModel):
         :type Name: str
         :param _Description: <p>知识库描述。长度限制：最多256个字符。</p>
         :type Description: str
+        :param _IndexType: <p>知识库的索引类型</p><p>枚举值：</p><ul><li>Semantic： 语义索引</li><li>DNA： DNA 索引</li></ul><p>默认值：Semantic</p>
+        :type IndexType: str
+        :param _MediaType: <p>允许入库的媒体类型</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li></ul><p>默认值：Video</p>
+        :type MediaType: str
         """
         self._SubAppId = None
         self._Name = None
         self._Description = None
+        self._IndexType = None
+        self._MediaType = None
 
     @property
     def SubAppId(self):
@@ -30100,11 +30106,35 @@ class CreateKnowledgeBaseRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def IndexType(self):
+        r"""<p>知识库的索引类型</p><p>枚举值：</p><ul><li>Semantic： 语义索引</li><li>DNA： DNA 索引</li></ul><p>默认值：Semantic</p>
+        :rtype: str
+        """
+        return self._IndexType
+
+    @IndexType.setter
+    def IndexType(self, IndexType):
+        self._IndexType = IndexType
+
+    @property
+    def MediaType(self):
+        r"""<p>允许入库的媒体类型</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li></ul><p>默认值：Video</p>
+        :rtype: str
+        """
+        return self._MediaType
+
+    @MediaType.setter
+    def MediaType(self, MediaType):
+        self._MediaType = MediaType
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._Name = params.get("Name")
         self._Description = params.get("Description")
+        self._IndexType = params.get("IndexType")
+        self._MediaType = params.get("MediaType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30179,6 +30209,8 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
         :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
         :param _FaceRecognition: <p>人脸识别配置</p>
         :type FaceRecognition: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognition`
+        :param _DNA: <p>DNA解析配置</p>
+        :type DNA: :class:`tencentcloud.vod.v20180717.models.LLMComprehendDNA`
         """
         self._Level = None
         self._SubAppId = None
@@ -30187,6 +30219,7 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
         self._Summary = None
         self._Asr = None
         self._FaceRecognition = None
+        self._DNA = None
 
     @property
     def Level(self):
@@ -30265,6 +30298,17 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
     def FaceRecognition(self, FaceRecognition):
         self._FaceRecognition = FaceRecognition
 
+    @property
+    def DNA(self):
+        r"""<p>DNA解析配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendDNA`
+        """
+        return self._DNA
+
+    @DNA.setter
+    def DNA(self, DNA):
+        self._DNA = DNA
+
 
     def _deserialize(self, params):
         self._Level = params.get("Level")
@@ -30280,6 +30324,9 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
         if params.get("FaceRecognition") is not None:
             self._FaceRecognition = LLMComprehendFaceRecognition()
             self._FaceRecognition._deserialize(params.get("FaceRecognition"))
+        if params.get("DNA") is not None:
+            self._DNA = LLMComprehendDNA()
+            self._DNA._deserialize(params.get("DNA"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34079,6 +34126,265 @@ class CustomVoiceInfo(AbstractModel):
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
         self._VoiceInfo = params.get("VoiceInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DNATask(AbstractModel):
+    r"""DNA查重估计任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态。</p><p>枚举值：</p><ul><li>WAITING： 等待中</li><li>PROCESSING： 处理中</li><li>FINISH： 已完成</li></ul>
+        :type Status: str
+        :param _ErrCode: <p>错误码，0 表示成功，其他值表示失败：</p><p>40000：输入参数不合法，请检查输入参数；<br>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；<br>70000：内部服务错误，建议重试。</p>
+        :type ErrCode: int
+        :param _ErrCodeExt: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _FileId: <p>被检测的媒资 FileId。</p>
+        :type FileId: str
+        :param _Output: <p>查重命中列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: list of DNATaskOutput
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._FileId = None
+        self._Output = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。</p><p>枚举值：</p><ul><li>WAITING： 等待中</li><li>PROCESSING： 处理中</li><li>FINISH： 已完成</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码，0 表示成功，其他值表示失败：</p><p>40000：输入参数不合法，请检查输入参数；<br>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；<br>70000：内部服务错误，建议重试。</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def FileId(self):
+        r"""<p>被检测的媒资 FileId。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Output(self):
+        r"""<p>查重命中列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DNATaskOutput
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        self._FileId = params.get("FileId")
+        if params.get("Output") is not None:
+            self._Output = []
+            for item in params.get("Output"):
+                obj = DNATaskOutput()
+                obj._deserialize(item)
+                self._Output.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DNATaskOutput(AbstractModel):
+    r"""DNA查重任务输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RefFileId: <p>命中的参考媒资 FileId。</p>
+        :type RefFileId: str
+        :param _QueryStartSec: <p>查询媒资命中片段起始时间。</p><p>单位：秒</p>
+        :type QueryStartSec: float
+        :param _QueryEndSec: <p>查询媒资命中片段结束时间。</p><p>单位：秒</p>
+        :type QueryEndSec: float
+        :param _RefStartSec: <p>参考媒资对应片段起始时间。</p><p>单位：秒</p>
+        :type RefStartSec: float
+        :param _RefEndSec: <p>参考媒资对应片段结束时间。</p><p>单位：秒</p>
+        :type RefEndSec: float
+        :param _Confidence: <p>匹配置信度。</p><p>取值范围：[0, 1]</p>
+        :type Confidence: float
+        :param _SpeedRatio: <p>变速比（1.0 表示原速，非 1 表示加速或者减速）。</p>
+        :type SpeedRatio: float
+        """
+        self._RefFileId = None
+        self._QueryStartSec = None
+        self._QueryEndSec = None
+        self._RefStartSec = None
+        self._RefEndSec = None
+        self._Confidence = None
+        self._SpeedRatio = None
+
+    @property
+    def RefFileId(self):
+        r"""<p>命中的参考媒资 FileId。</p>
+        :rtype: str
+        """
+        return self._RefFileId
+
+    @RefFileId.setter
+    def RefFileId(self, RefFileId):
+        self._RefFileId = RefFileId
+
+    @property
+    def QueryStartSec(self):
+        r"""<p>查询媒资命中片段起始时间。</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._QueryStartSec
+
+    @QueryStartSec.setter
+    def QueryStartSec(self, QueryStartSec):
+        self._QueryStartSec = QueryStartSec
+
+    @property
+    def QueryEndSec(self):
+        r"""<p>查询媒资命中片段结束时间。</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._QueryEndSec
+
+    @QueryEndSec.setter
+    def QueryEndSec(self, QueryEndSec):
+        self._QueryEndSec = QueryEndSec
+
+    @property
+    def RefStartSec(self):
+        r"""<p>参考媒资对应片段起始时间。</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._RefStartSec
+
+    @RefStartSec.setter
+    def RefStartSec(self, RefStartSec):
+        self._RefStartSec = RefStartSec
+
+    @property
+    def RefEndSec(self):
+        r"""<p>参考媒资对应片段结束时间。</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._RefEndSec
+
+    @RefEndSec.setter
+    def RefEndSec(self, RefEndSec):
+        self._RefEndSec = RefEndSec
+
+    @property
+    def Confidence(self):
+        r"""<p>匹配置信度。</p><p>取值范围：[0, 1]</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def SpeedRatio(self):
+        r"""<p>变速比（1.0 表示原速，非 1 表示加速或者减速）。</p>
+        :rtype: float
+        """
+        return self._SpeedRatio
+
+    @SpeedRatio.setter
+    def SpeedRatio(self, SpeedRatio):
+        self._SpeedRatio = SpeedRatio
+
+
+    def _deserialize(self, params):
+        self._RefFileId = params.get("RefFileId")
+        self._QueryStartSec = params.get("QueryStartSec")
+        self._QueryEndSec = params.get("QueryEndSec")
+        self._RefStartSec = params.get("RefStartSec")
+        self._RefEndSec = params.get("RefEndSec")
+        self._Confidence = params.get("Confidence")
+        self._SpeedRatio = params.get("SpeedRatio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46456,6 +46762,10 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type VideoDubbingAsyncTask: :class:`tencentcloud.vod.v20180717.models.VideoDubbingAsyncTask`
         :param _VideoDepthEstimationTask: <p>视频深度估算任务，仅当 TaskType 为VideoDepthEstimation，该字段有值。</p>
         :type VideoDepthEstimationTask: :class:`tencentcloud.vod.v20180717.models.VideoDepthEstimationTask`
+        :param _DNATask: <p>DNA查重任务，仅当TaskType为CreateDnaTask，该字段有值。</p>
+        :type DNATask: :class:`tencentcloud.vod.v20180717.models.DNATask`
+        :param _SearchMediaBySemanticsAsync: <p>异步按语义搜索媒体任务，仅当TaskType为SearchMediaBySemanticsAsync，该字段有值。</p>
+        :type SearchMediaBySemanticsAsync: :class:`tencentcloud.vod.v20180717.models.SearchMediaBySemanticsAsync`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -46507,6 +46817,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._TextToSpeechAsyncTask = None
         self._VideoDubbingAsyncTask = None
         self._VideoDepthEstimationTask = None
+        self._DNATask = None
+        self._SearchMediaBySemanticsAsync = None
         self._RequestId = None
 
     @property
@@ -47060,6 +47372,28 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._VideoDepthEstimationTask = VideoDepthEstimationTask
 
     @property
+    def DNATask(self):
+        r"""<p>DNA查重任务，仅当TaskType为CreateDnaTask，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DNATask`
+        """
+        return self._DNATask
+
+    @DNATask.setter
+    def DNATask(self, DNATask):
+        self._DNATask = DNATask
+
+    @property
+    def SearchMediaBySemanticsAsync(self):
+        r"""<p>异步按语义搜索媒体任务，仅当TaskType为SearchMediaBySemanticsAsync，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SearchMediaBySemanticsAsync`
+        """
+        return self._SearchMediaBySemanticsAsync
+
+    @SearchMediaBySemanticsAsync.setter
+    def SearchMediaBySemanticsAsync(self, SearchMediaBySemanticsAsync):
+        self._SearchMediaBySemanticsAsync = SearchMediaBySemanticsAsync
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -47206,6 +47540,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("VideoDepthEstimationTask") is not None:
             self._VideoDepthEstimationTask = VideoDepthEstimationTask()
             self._VideoDepthEstimationTask._deserialize(params.get("VideoDepthEstimationTask"))
+        if params.get("DNATask") is not None:
+            self._DNATask = DNATask()
+            self._DNATask._deserialize(params.get("DNATask"))
+        if params.get("SearchMediaBySemanticsAsync") is not None:
+            self._SearchMediaBySemanticsAsync = SearchMediaBySemanticsAsync()
+            self._SearchMediaBySemanticsAsync._deserialize(params.get("SearchMediaBySemanticsAsync"))
         self._RequestId = params.get("RequestId")
 
 
@@ -58382,6 +58722,10 @@ class KnowledgeBaseInfo(AbstractModel):
         :type Name: str
         :param _Description: <p>知识库描述。</p>
         :type Description: str
+        :param _IndexType: <p>知识库的索引类型</p><p>枚举值：</p><ul><li>Semantic： 语义索引</li><li>DNA： DNA 索引</li></ul>
+        :type IndexType: str
+        :param _MediaType: <p>允许入库的媒体类型</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li></ul>
+        :type MediaType: str
         :param _Status: <p>知识库状态。</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>active： 正常</li><li>deleting： 删除中</li></ul>
         :type Status: str
         :param _CreateTime: <p>知识库创建时间。</p>
@@ -58390,6 +58734,8 @@ class KnowledgeBaseInfo(AbstractModel):
         self._KnowledgeBaseId = None
         self._Name = None
         self._Description = None
+        self._IndexType = None
+        self._MediaType = None
         self._Status = None
         self._CreateTime = None
 
@@ -58427,6 +58773,28 @@ class KnowledgeBaseInfo(AbstractModel):
         self._Description = Description
 
     @property
+    def IndexType(self):
+        r"""<p>知识库的索引类型</p><p>枚举值：</p><ul><li>Semantic： 语义索引</li><li>DNA： DNA 索引</li></ul>
+        :rtype: str
+        """
+        return self._IndexType
+
+    @IndexType.setter
+    def IndexType(self, IndexType):
+        self._IndexType = IndexType
+
+    @property
+    def MediaType(self):
+        r"""<p>允许入库的媒体类型</p><p>枚举值：</p><ul><li>Video： 视频</li><li>Image： 图片</li></ul>
+        :rtype: str
+        """
+        return self._MediaType
+
+    @MediaType.setter
+    def MediaType(self, MediaType):
+        self._MediaType = MediaType
+
+    @property
     def Status(self):
         r"""<p>知识库状态。</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>active： 正常</li><li>deleting： 删除中</li></ul>
         :rtype: str
@@ -58453,6 +58821,8 @@ class KnowledgeBaseInfo(AbstractModel):
         self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         self._Name = params.get("Name")
         self._Description = params.get("Description")
+        self._IndexType = params.get("IndexType")
+        self._MediaType = params.get("MediaType")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
@@ -58600,6 +58970,42 @@ class LLMComprehendAsrForUpdate(AbstractModel):
         r"""文本转录任务开关，可选值：
 - ON：开启文本转录任务；
 - OFF：关闭文本转录任务。
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendDNA(AbstractModel):
+    r"""大模型解析DNA解析配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>DNA解析任务开关</p><p>枚举值：</p><ul><li>ON： 开启DNA解析任务</li><li>OFF： 关闭DNA解析任务</li></ul><p>默认值：OFF</p>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""<p>DNA解析任务开关</p><p>枚举值：</p><ul><li>ON： 开启DNA解析任务</li><li>OFF： 关闭DNA解析任务</li></ul><p>默认值：OFF</p>
         :rtype: str
         """
         return self._Switch
@@ -58946,6 +59352,8 @@ class LLMComprehendTemplateItem(AbstractModel):
         :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
         :param _FaceRecognition: <p>人脸识别解析配置</p>
         :type FaceRecognition: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognition`
+        :param _DNA: <p>DNA解析配置</p>
+        :type DNA: :class:`tencentcloud.vod.v20180717.models.LLMComprehendDNA`
         :param _CreateTime: <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type CreateTime: str
         :param _UpdateTime: <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
@@ -58959,6 +59367,7 @@ class LLMComprehendTemplateItem(AbstractModel):
         self._Summary = None
         self._Asr = None
         self._FaceRecognition = None
+        self._DNA = None
         self._CreateTime = None
         self._UpdateTime = None
 
@@ -59051,6 +59460,17 @@ class LLMComprehendTemplateItem(AbstractModel):
         self._FaceRecognition = FaceRecognition
 
     @property
+    def DNA(self):
+        r"""<p>DNA解析配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendDNA`
+        """
+        return self._DNA
+
+    @DNA.setter
+    def DNA(self, DNA):
+        self._DNA = DNA
+
+    @property
     def CreateTime(self):
         r"""<p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
@@ -59088,6 +59508,9 @@ class LLMComprehendTemplateItem(AbstractModel):
         if params.get("FaceRecognition") is not None:
             self._FaceRecognition = LLMComprehendFaceRecognition()
             self._FaceRecognition._deserialize(params.get("FaceRecognition"))
+        if params.get("DNA") is not None:
+            self._DNA = LLMComprehendDNA()
+            self._DNA._deserialize(params.get("DNA"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -73032,6 +73455,8 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
         :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsrForUpdate`
         :param _FaceRecognition: <p>人脸识别配置</p>
         :type FaceRecognition: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognitionForUpdate`
+        :param _DNA: <p>DNA解析配置</p>
+        :type DNA: :class:`tencentcloud.vod.v20180717.models.LLMComprehendDNA`
         """
         self._Definition = None
         self._SubAppId = None
@@ -73041,6 +73466,7 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
         self._Summary = None
         self._Asr = None
         self._FaceRecognition = None
+        self._DNA = None
 
     @property
     def Definition(self):
@@ -73130,6 +73556,17 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
     def FaceRecognition(self, FaceRecognition):
         self._FaceRecognition = FaceRecognition
 
+    @property
+    def DNA(self):
+        r"""<p>DNA解析配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendDNA`
+        """
+        return self._DNA
+
+    @DNA.setter
+    def DNA(self, DNA):
+        self._DNA = DNA
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
@@ -73146,6 +73583,9 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
         if params.get("FaceRecognition") is not None:
             self._FaceRecognition = LLMComprehendFaceRecognitionForUpdate()
             self._FaceRecognition._deserialize(params.get("FaceRecognition"))
+        if params.get("DNA") is not None:
+            self._DNA = LLMComprehendDNA()
+            self._DNA._deserialize(params.get("DNA"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93943,6 +94383,139 @@ class ScratchRepairInfo(AbstractModel):
         
 
 
+class SearchMediaBySemanticsAsync(AbstractModel):
+    r"""异步按语义搜索媒体任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
+        :type Status: str
+        :param _ErrCode: <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+        :type ErrCode: int
+        :param _ErrCodeExt: <p>扩展错误码。</p>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _QueryText: <p>本次查询文本（图片查询时为空）。</p>
+        :type QueryText: str
+        :param _SearchResults: <p>召回列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchResults: list of SemanticsSearchResult
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._QueryText = None
+        self._SearchResults = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>扩展错误码。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def QueryText(self):
+        r"""<p>本次查询文本（图片查询时为空）。</p>
+        :rtype: str
+        """
+        return self._QueryText
+
+    @QueryText.setter
+    def QueryText(self, QueryText):
+        self._QueryText = QueryText
+
+    @property
+    def SearchResults(self):
+        r"""<p>召回列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SemanticsSearchResult
+        """
+        return self._SearchResults
+
+    @SearchResults.setter
+    def SearchResults(self, SearchResults):
+        self._SearchResults = SearchResults
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        self._QueryText = params.get("QueryText")
+        if params.get("SearchResults") is not None:
+            self._SearchResults = []
+            for item in params.get("SearchResults"):
+                obj = SemanticsSearchResult()
+                obj._deserialize(item)
+                self._SearchResults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchMediaBySemanticsRequest(AbstractModel):
     r"""SearchMediaBySemantics请求参数结构体
 
@@ -93952,9 +94525,13 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Text: <p>需要进行搜索的内容</p>
+        :param _Text: <p>需要进行搜索的文本内容。</p><p>入参限制：与 <code>FileId</code>、<code>Url</code> <strong>三选一且互斥</strong>。</p>
         :type Text: str
-        :param _KnowledgeBaseId: <p>知识库ID，留空时将使用默认知识库</p>
+        :param _FileId: <p>需要进行搜索的图片FileId。</p><p>入参限制：必须是<strong>图片</strong>类型媒资，且与 <code>Text</code>、<code>Url</code> <strong>三选一且互斥</strong>。</p>
+        :type FileId: str
+        :param _Url: <p>需要进行搜索的图片Url。 </p><p>入参限制：必须是<strong>图片</strong>Url，且与 <code>Text</code>、<code>FileId</code> <strong>三选一且互斥</strong>。</p>
+        :type Url: str
+        :param _KnowledgeBaseId: <p>知识库ID，留空时将使用默认知识库。<br>当输入为图片时，必须选择MediaType=Image的知识库。</p>
         :type KnowledgeBaseId: str
         :param _Limit: <p>返回的记录条数，默认值：20。</p><p>取值范围：[1, 100]</p>
         :type Limit: int
@@ -93969,6 +94546,8 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         """
         self._SubAppId = None
         self._Text = None
+        self._FileId = None
+        self._Url = None
         self._KnowledgeBaseId = None
         self._Limit = None
         self._Categories = None
@@ -93989,7 +94568,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Text(self):
-        r"""<p>需要进行搜索的内容</p>
+        r"""<p>需要进行搜索的文本内容。</p><p>入参限制：与 <code>FileId</code>、<code>Url</code> <strong>三选一且互斥</strong>。</p>
         :rtype: str
         """
         return self._Text
@@ -93999,8 +94578,30 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         self._Text = Text
 
     @property
+    def FileId(self):
+        r"""<p>需要进行搜索的图片FileId。</p><p>入参限制：必须是<strong>图片</strong>类型媒资，且与 <code>Text</code>、<code>Url</code> <strong>三选一且互斥</strong>。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        r"""<p>需要进行搜索的图片Url。 </p><p>入参限制：必须是<strong>图片</strong>Url，且与 <code>Text</code>、<code>FileId</code> <strong>三选一且互斥</strong>。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
     def KnowledgeBaseId(self):
-        r"""<p>知识库ID，留空时将使用默认知识库</p>
+        r"""<p>知识库ID，留空时将使用默认知识库。<br>当输入为图片时，必须选择MediaType=Image的知识库。</p>
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -94068,6 +94669,8 @@ class SearchMediaBySemanticsRequest(AbstractModel):
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._Text = params.get("Text")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
         self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         self._Limit = params.get("Limit")
         self._Categories = params.get("Categories")

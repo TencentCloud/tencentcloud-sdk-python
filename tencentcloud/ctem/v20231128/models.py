@@ -431,6 +431,85 @@ class CreateAssetResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCheckRequest(AbstractModel):
+    r"""CreateCheck请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>漏洞情报ID</p>
+        :type VulId: str
+        :param _CustomerId: <p>企业ID</p>
+        :type CustomerId: int
+        """
+        self._VulId = None
+        self._CustomerId = None
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞情报ID</p>
+        :rtype: str
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def CustomerId(self):
+        r"""<p>企业ID</p>
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._CustomerId = params.get("CustomerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCheckResponse(AbstractModel):
+    r"""CreateCheck返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCustomerRequest(AbstractModel):
     r"""CreateCustomer请求参数结构体
 
@@ -2020,6 +2099,85 @@ class CreatePortResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateScanRequest(AbstractModel):
+    r"""CreateScan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>漏洞情报ID</p>
+        :type VulId: str
+        :param _CustomerId: <p>企业ID</p>
+        :type CustomerId: int
+        """
+        self._VulId = None
+        self._CustomerId = None
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞情报ID</p>
+        :rtype: str
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def CustomerId(self):
+        r"""<p>企业ID</p>
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._CustomerId = params.get("CustomerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScanResponse(AbstractModel):
+    r"""CreateScan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -5205,6 +5363,135 @@ class DescribeAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBannerAssetDataRequest(AbstractModel):
+    r"""DescribeBannerAssetData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>漏洞情报ID</p>
+        :type VulId: str
+        :param _Offset: 分页偏移
+        :type Offset: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        """
+        self._VulId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞情报ID</p>
+        :rtype: str
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def Offset(self):
+        r"""分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBannerAssetDataResponse(AbstractModel):
+    r"""DescribeBannerAssetData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>数组</p>
+        :type List: list of IntelligenceResult
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>数组</p>
+        :rtype: list of IntelligenceResult
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = IntelligenceResult()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeConfigsRequest(AbstractModel):
     r"""DescribeConfigs请求参数结构体
 
@@ -8322,6 +8609,105 @@ class DescribeHttpsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIntelligencesRequest(AbstractModel):
+    r"""DescribeIntelligences请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 查询数组
+        :type Filters: list of Filter
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Filters(self):
+        r"""查询数组
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIntelligencesResponse(AbstractModel):
+    r"""DescribeIntelligences返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeJobRecordDetailsRequest(AbstractModel):
     r"""DescribeJobRecordDetails请求参数结构体
 
@@ -10088,6 +10474,135 @@ class DescribeNetDisksResponse(AbstractModel):
                 obj = DisplayNetDisk()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePocAssetDataRequest(AbstractModel):
+    r"""DescribePocAssetData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>漏洞情报ID</p>
+        :type VulId: str
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        """
+        self._VulId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞情报ID</p>
+        :rtype: str
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePocAssetDataResponse(AbstractModel):
+    r"""DescribePocAssetData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>数组</p>
+        :type List: list of IntelligenceResult
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>数组</p>
+        :rtype: list of IntelligenceResult
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = IntelligenceResult()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -18947,6 +19462,132 @@ class IgnoreDataResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class IntelligenceResult(AbstractModel):
+    r"""漏洞情报扫描结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomerId: <p>客户ID</p>
+        :type CustomerId: int
+        :param _CustomerName: <p>客户名称</p>
+        :type CustomerName: str
+        :param _Title: <p>标题</p>
+        :type Title: str
+        :param _Banner: <p>指纹</p>
+        :type Banner: str
+        :param _ScreenshotUrl: <p>截图预览</p>
+        :type ScreenshotUrl: str
+        :param _IsAffected: <p>是否受影响</p>
+        :type IsAffected: bool
+        :param _Url: <p>网址</p>
+        :type Url: str
+        """
+        self._CustomerId = None
+        self._CustomerName = None
+        self._Title = None
+        self._Banner = None
+        self._ScreenshotUrl = None
+        self._IsAffected = None
+        self._Url = None
+
+    @property
+    def CustomerId(self):
+        r"""<p>客户ID</p>
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
+
+    @property
+    def CustomerName(self):
+        r"""<p>客户名称</p>
+        :rtype: str
+        """
+        return self._CustomerName
+
+    @CustomerName.setter
+    def CustomerName(self, CustomerName):
+        self._CustomerName = CustomerName
+
+    @property
+    def Title(self):
+        r"""<p>标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Banner(self):
+        r"""<p>指纹</p>
+        :rtype: str
+        """
+        return self._Banner
+
+    @Banner.setter
+    def Banner(self, Banner):
+        self._Banner = Banner
+
+    @property
+    def ScreenshotUrl(self):
+        r"""<p>截图预览</p>
+        :rtype: str
+        """
+        return self._ScreenshotUrl
+
+    @ScreenshotUrl.setter
+    def ScreenshotUrl(self, ScreenshotUrl):
+        self._ScreenshotUrl = ScreenshotUrl
+
+    @property
+    def IsAffected(self):
+        r"""<p>是否受影响</p>
+        :rtype: bool
+        """
+        return self._IsAffected
+
+    @IsAffected.setter
+    def IsAffected(self, IsAffected):
+        self._IsAffected = IsAffected
+
+    @property
+    def Url(self):
+        r"""<p>网址</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._CustomerId = params.get("CustomerId")
+        self._CustomerName = params.get("CustomerName")
+        self._Title = params.get("Title")
+        self._Banner = params.get("Banner")
+        self._ScreenshotUrl = params.get("ScreenshotUrl")
+        self._IsAffected = params.get("IsAffected")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class JobRecordProgress(AbstractModel):

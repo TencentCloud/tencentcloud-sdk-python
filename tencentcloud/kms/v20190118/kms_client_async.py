@@ -169,6 +169,24 @@ class KmsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateKmsInstance(
+            self,
+            request: models.CreateKmsInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateKmsInstanceResponse:
+        """
+        购买开通KMS服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateKmsInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateKmsInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateWhiteBoxKey(
             self,
             request: models.CreateWhiteBoxKeyRequest,

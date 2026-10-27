@@ -318,15 +318,15 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CloudDedicatedZoneID: 专属可用区ID 
+        :param _CloudDedicatedZoneID: <p>专属可用区ID</p>
         :type CloudDedicatedZoneID: str
-        :param _HostUuids: 一个或多个Host面的CVM实例信息。最大支持查询100台Host。
+        :param _HostUuids: <p>一个或多个Host面的CVM实例信息。最大支持查询100台Host。</p>
         :type HostUuids: list of str
-        :param _InstanceIds: 查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。
+        :param _InstanceIds: <p>查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。</p>
         :type InstanceIds: list of str
-        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+        :param _Offset: <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。</p>
         :type Limit: int
         """
         self._CloudDedicatedZoneID = None
@@ -337,7 +337,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def CloudDedicatedZoneID(self):
-        r"""专属可用区ID 
+        r"""<p>专属可用区ID</p>
         :rtype: str
         """
         return self._CloudDedicatedZoneID
@@ -348,7 +348,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def HostUuids(self):
-        r"""一个或多个Host面的CVM实例信息。最大支持查询100台Host。
+        r"""<p>一个或多个Host面的CVM实例信息。最大支持查询100台Host。</p>
         :rtype: list of str
         """
         return self._HostUuids
@@ -359,7 +359,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。
+        r"""<p>查询一个实例或者多个实例所在的Host上面的CVM实例信息。最大支持查询100台实例。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -370,7 +370,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+        r"""<p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。</p>
         :rtype: int
         """
         return self._Offset
@@ -381,7 +381,7 @@ class DescribeCloudDedicatedZoneHostsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。
+        r"""<p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。该参数仅与CloudDedicatedZoneID有关，传递了HostUuids和InstanceIds则会失效。</p>
         :rtype: int
         """
         return self._Limit
@@ -414,17 +414,20 @@ class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CloudDedicatedZoneHostsInfoSet: 返回Host和Host上部署的实例信息之间的关系
+        :param _CloudDedicatedZoneHostsInfoSet: <p>返回Host和Host上部署的实例信息之间的关系</p>
         :type CloudDedicatedZoneHostsInfoSet: list of CloudDedicatedZoneHostsInfo
+        :param _TotalCount: <p>母机总数</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._CloudDedicatedZoneHostsInfoSet = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
     def CloudDedicatedZoneHostsInfoSet(self):
-        r"""返回Host和Host上部署的实例信息之间的关系
+        r"""<p>返回Host和Host上部署的实例信息之间的关系</p>
         :rtype: list of CloudDedicatedZoneHostsInfo
         """
         return self._CloudDedicatedZoneHostsInfoSet
@@ -432,6 +435,17 @@ class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
     @CloudDedicatedZoneHostsInfoSet.setter
     def CloudDedicatedZoneHostsInfoSet(self, CloudDedicatedZoneHostsInfoSet):
         self._CloudDedicatedZoneHostsInfoSet = CloudDedicatedZoneHostsInfoSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>母机总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -452,6 +466,7 @@ class DescribeCloudDedicatedZoneHostsResponse(AbstractModel):
                 obj = CloudDedicatedZoneHostsInfo()
                 obj._deserialize(item)
                 self._CloudDedicatedZoneHostsInfoSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

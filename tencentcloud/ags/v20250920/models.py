@@ -11779,7 +11779,7 @@ class ResumeSandboxInstanceResponse(AbstractModel):
 
 
 class SandboxInstance(AbstractModel):
-    r"""沙箱实例结构体
+    r"""沙箱实例结构体信息
 
     """
 
@@ -14169,9 +14169,9 @@ class UpdateSandboxInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>沙箱实例ID</p>
         :type InstanceId: str
-        :param _Timeout: <p>新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置</p>
+        :param _Timeout: 手动设置实例还需运行多久，如 5m、300s、1h。未传入时保持原设置；传入后从本次设置开始重新计时。仅正在运行、且未设置为永久运行的实例可修改。修改时不会缩短已获得的自动续期时间。
         :type Timeout: str
-        :param _Metadata: <p>沙箱实例元数据</p>
+        :param _Metadata: 实例元数据。
         :type Metadata: list of MetadataVar
         """
         self._InstanceId = None
@@ -14191,7 +14191,7 @@ class UpdateSandboxInstanceRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""<p>新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置</p>
+        r"""手动设置实例还需运行多久，如 5m、300s、1h。未传入时保持原设置；传入后从本次设置开始重新计时。仅正在运行、且未设置为永久运行的实例可修改。修改时不会缩短已获得的自动续期时间。
         :rtype: str
         """
         return self._Timeout
@@ -14202,7 +14202,7 @@ class UpdateSandboxInstanceRequest(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""<p>沙箱实例元数据</p>
+        r"""实例元数据。
         :rtype: list of MetadataVar
         """
         return self._Metadata

@@ -383,7 +383,7 @@ class CreateAccelerateAreasRequest(AbstractModel):
         :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
         :param _AcceleratorAreas: <p>加速地域信息。一次最多创建10组加速地域。</p>
-        :type AcceleratorAreas: list of AcceleratorAreas
+        :type AcceleratorAreas: list of CreateAcceleratorAreasInfo
         """
         self._GlobalAcceleratorId = None
         self._AcceleratorAreas = None
@@ -402,7 +402,7 @@ class CreateAccelerateAreasRequest(AbstractModel):
     @property
     def AcceleratorAreas(self):
         r"""<p>加速地域信息。一次最多创建10组加速地域。</p>
-        :rtype: list of AcceleratorAreas
+        :rtype: list of CreateAcceleratorAreasInfo
         """
         return self._AcceleratorAreas
 
@@ -416,7 +416,7 @@ class CreateAccelerateAreasRequest(AbstractModel):
         if params.get("AcceleratorAreas") is not None:
             self._AcceleratorAreas = []
             for item in params.get("AcceleratorAreas"):
-                obj = AcceleratorAreas()
+                obj = CreateAcceleratorAreasInfo()
                 obj._deserialize(item)
                 self._AcceleratorAreas.append(obj)
         memeber_set = set(params.keys())
@@ -470,6 +470,87 @@ class CreateAccelerateAreasResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class CreateAcceleratorAreasInfo(AbstractModel):
+    r"""创建加速地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccelerateRegion: <p>加速地域</p>
+        :type AccelerateRegion: str
+        :param _Bandwidth: <p>带宽</p><p>单位：Mbps</p>
+        :type Bandwidth: int
+        :param _IspType: <p>公网质量类型</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>QUALITY_BGP： 精品BGP</li><li>STATIC_IP： 三网</li></ul><p>默认值：BGP</p>
+        :type IspType: str
+        :param _IpVersion: <p>IP 地址协议</p><p>枚举值：</p><ul><li>IPv4： IPv4</li></ul><p>默认值：IPv4</p>
+        :type IpVersion: str
+        """
+        self._AccelerateRegion = None
+        self._Bandwidth = None
+        self._IspType = None
+        self._IpVersion = None
+
+    @property
+    def AccelerateRegion(self):
+        r"""<p>加速地域</p>
+        :rtype: str
+        """
+        return self._AccelerateRegion
+
+    @AccelerateRegion.setter
+    def AccelerateRegion(self, AccelerateRegion):
+        self._AccelerateRegion = AccelerateRegion
+
+    @property
+    def Bandwidth(self):
+        r"""<p>带宽</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def IspType(self):
+        r"""<p>公网质量类型</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>QUALITY_BGP： 精品BGP</li><li>STATIC_IP： 三网</li></ul><p>默认值：BGP</p>
+        :rtype: str
+        """
+        return self._IspType
+
+    @IspType.setter
+    def IspType(self, IspType):
+        self._IspType = IspType
+
+    @property
+    def IpVersion(self):
+        r"""<p>IP 地址协议</p><p>枚举值：</p><ul><li>IPv4： IPv4</li></ul><p>默认值：IPv4</p>
+        :rtype: str
+        """
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+
+    def _deserialize(self, params):
+        self._AccelerateRegion = params.get("AccelerateRegion")
+        self._Bandwidth = params.get("Bandwidth")
+        self._IspType = params.get("IspType")
+        self._IpVersion = params.get("IpVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateEndpointGroupRequest(AbstractModel):
@@ -3615,7 +3696,7 @@ class DescribeForwardingPolicyRequest(AbstractModel):
         :type ListenerId: str
         :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
+        :param _Limit: <p>返回数量，默认为20，最大值为200。</p>
         :type Limit: int
         :param _Filters: <p>过滤条件。<li>forwarding-policy-id - String -（过滤条件）策略ID。</li></p>
         :type Filters: list of Filter
@@ -3661,7 +3742,7 @@ class DescribeForwardingPolicyRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>返回数量，默认为20，最大值为100。</p>
+        r"""<p>返回数量，默认为20，最大值为200。</p>
         :rtype: int
         """
         return self._Limit
@@ -3781,7 +3862,7 @@ class DescribeForwardingRuleRequest(AbstractModel):
         :type ForwardingPolicyId: str
         :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
+        :param _Limit: <p>返回数量，默认为20，最大值为200。</p>
         :type Limit: int
         :param _Filters: <p>过滤条件。<li>forwarding-rule-id - String -（过滤条件）规则ID。</li></p>
         :type Filters: list of Filter
@@ -3839,7 +3920,7 @@ class DescribeForwardingRuleRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>返回数量，默认为20，最大值为100。</p>
+        r"""<p>返回数量，默认为20，最大值为200。</p>
         :rtype: int
         """
         return self._Limit
@@ -3958,7 +4039,7 @@ class DescribeGlobalAcceleratorAccessLogRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: <p>返回数量。</p><p>取值范围：[0, 200]</p>
+        :param _Limit: <p>返回数量。</p><p>取值范围：[1, 200]</p>
         :type Limit: int
         """
         self._GlobalAcceleratorId = None
@@ -4001,7 +4082,7 @@ class DescribeGlobalAcceleratorAccessLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""<p>返回数量。</p><p>取值范围：[0, 200]</p>
+        r"""<p>返回数量。</p><p>取值范围：[1, 200]</p>
         :rtype: int
         """
         return self._Limit
@@ -7101,6 +7182,87 @@ class ListenerSet(AbstractModel):
         
 
 
+class ModifyAccelerateAreasInfo(AbstractModel):
+    r"""修改加速地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccelerateRegion: <p>加速地域</p>
+        :type AccelerateRegion: str
+        :param _Bandwidth: <p>带宽</p><p>单位：Mbps</p>
+        :type Bandwidth: int
+        :param _IspType: <p>公网质量类型</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>QUALITY_BGP： 精品BGP</li><li>STATIC_IP： 三网</li></ul>
+        :type IspType: str
+        :param _IpVersion: <p>IP 地址协议</p><p>枚举值：</p><ul><li>IPv4： IPv4</li></ul>
+        :type IpVersion: str
+        """
+        self._AccelerateRegion = None
+        self._Bandwidth = None
+        self._IspType = None
+        self._IpVersion = None
+
+    @property
+    def AccelerateRegion(self):
+        r"""<p>加速地域</p>
+        :rtype: str
+        """
+        return self._AccelerateRegion
+
+    @AccelerateRegion.setter
+    def AccelerateRegion(self, AccelerateRegion):
+        self._AccelerateRegion = AccelerateRegion
+
+    @property
+    def Bandwidth(self):
+        r"""<p>带宽</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def IspType(self):
+        r"""<p>公网质量类型</p><p>枚举值：</p><ul><li>BGP： BGP</li><li>QUALITY_BGP： 精品BGP</li><li>STATIC_IP： 三网</li></ul>
+        :rtype: str
+        """
+        return self._IspType
+
+    @IspType.setter
+    def IspType(self, IspType):
+        self._IspType = IspType
+
+    @property
+    def IpVersion(self):
+        r"""<p>IP 地址协议</p><p>枚举值：</p><ul><li>IPv4： IPv4</li></ul>
+        :rtype: str
+        """
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+
+    def _deserialize(self, params):
+        self._AccelerateRegion = params.get("AccelerateRegion")
+        self._Bandwidth = params.get("Bandwidth")
+        self._IspType = params.get("IspType")
+        self._IpVersion = params.get("IpVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAccelerateAreasRequest(AbstractModel):
     r"""ModifyAccelerateAreas请求参数结构体
 
@@ -7111,7 +7273,7 @@ class ModifyAccelerateAreasRequest(AbstractModel):
         :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
         :param _AcceleratorAreas: <p>加速地域信息。</p><p>入参限制：数组长度不能超过10。</p>
-        :type AcceleratorAreas: list of AcceleratorAreas
+        :type AcceleratorAreas: list of ModifyAccelerateAreasInfo
         """
         self._GlobalAcceleratorId = None
         self._AcceleratorAreas = None
@@ -7130,7 +7292,7 @@ class ModifyAccelerateAreasRequest(AbstractModel):
     @property
     def AcceleratorAreas(self):
         r"""<p>加速地域信息。</p><p>入参限制：数组长度不能超过10。</p>
-        :rtype: list of AcceleratorAreas
+        :rtype: list of ModifyAccelerateAreasInfo
         """
         return self._AcceleratorAreas
 
@@ -7144,7 +7306,7 @@ class ModifyAccelerateAreasRequest(AbstractModel):
         if params.get("AcceleratorAreas") is not None:
             self._AcceleratorAreas = []
             for item in params.get("AcceleratorAreas"):
-                obj = AcceleratorAreas()
+                obj = ModifyAccelerateAreasInfo()
                 obj._deserialize(item)
                 self._AcceleratorAreas.append(obj)
         memeber_set = set(params.keys())

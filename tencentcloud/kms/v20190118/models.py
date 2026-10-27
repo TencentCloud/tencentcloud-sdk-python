@@ -1029,6 +1029,182 @@ class CreateKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateKmsInstanceRequest(AbstractModel):
+    r"""CreateKmsInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceChargeType: <p>实例付费类型(PREPAID)</p>
+        :type InstanceChargeType: str
+        :param _ProductVersion: <p>版本类型</p><p>枚举值：</p><ul><li>professional： 专业版</li></ul>
+        :type ProductVersion: str
+        :param _InstanceChargePrepaid: <p>预付费实例信息</p>
+        :type InstanceChargePrepaid: :class:`tencentcloud.kms.v20190118.models.InstanceChargePrepaid`
+        :param _ClientToken: <p>可重入客户端ID</p>
+        :type ClientToken: str
+        :param _Tags: <p>实例标签</p>
+        :type Tags: list of Tag
+        """
+        self._InstanceChargeType = None
+        self._ProductVersion = None
+        self._InstanceChargePrepaid = None
+        self._ClientToken = None
+        self._Tags = None
+
+    @property
+    def InstanceChargeType(self):
+        r"""<p>实例付费类型(PREPAID)</p>
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def ProductVersion(self):
+        r"""<p>版本类型</p><p>枚举值：</p><ul><li>professional： 专业版</li></ul>
+        :rtype: str
+        """
+        return self._ProductVersion
+
+    @ProductVersion.setter
+    def ProductVersion(self, ProductVersion):
+        self._ProductVersion = ProductVersion
+
+    @property
+    def InstanceChargePrepaid(self):
+        r"""<p>预付费实例信息</p>
+        :rtype: :class:`tencentcloud.kms.v20190118.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+    @property
+    def ClientToken(self):
+        r"""<p>可重入客户端ID</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+    @property
+    def Tags(self):
+        r"""<p>实例标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        self._ProductVersion = params.get("ProductVersion")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        self._ClientToken = params.get("ClientToken")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKmsInstanceResponse(AbstractModel):
+    r"""CreateKmsInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _DealName: <p>计费订单号</p>
+        :type DealName: str
+        :param _BillId: <p>计费冻结流水号</p>
+        :type BillId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._DealName = None
+        self._BillId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DealName(self):
+        r"""<p>计费订单号</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def BillId(self):
+        r"""<p>计费冻结流水号</p>
+        :rtype: str
+        """
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DealName = params.get("DealName")
+        self._BillId = params.get("BillId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateWhiteBoxKeyRequest(AbstractModel):
     r"""CreateWhiteBoxKey请求参数结构体
 
@@ -5996,6 +6172,57 @@ class ImportKeyMaterialResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class InstanceChargePrepaid(AbstractModel):
+    r"""预付费计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: <p>按月购买时长（1～100）月</p>
+        :type Period: int
+        :param _RenewFlag: <p>续费标记（0:用户未设置，1:自动续费 2:不自动续费）</p>
+        :type RenewFlag: int
+        """
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        r"""<p>按月购买时长（1～100）月</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        r"""<p>续费标记（0:用户未设置，1:自动续费 2:不自动续费）</p>
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Key(AbstractModel):

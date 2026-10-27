@@ -17140,7 +17140,9 @@ class DescribeCloudNativeAPIGatewayLLMTokenUsageListRequest(AbstractModel):
         :type StartTime: int
         :param _EndTime: <p>查询结束时间戳</p><p>单位：秒</p>
         :type EndTime: int
-        :param _Filters: <p>查询过滤条件，Name取值为ConsumerId或ConsumerGroupId</p>
+        :param _Dimension: <p>聚合维度。枚举值：</p><ul><li>SecretKey：密钥</li><li>Model：模型</li><li>ModelAPI：模型 API</li><li>ModelService：模型服务</li><li>Consumer：消费者</li><li>ConsumerGroup：消费者组（组织节点）</li></ul><p>网关版本不低于 3.9.8 时，ConsumerGroup 表示消费者组（组织节点），按请求发生时的组织归属查询，包含节点自身及全部下属，仅支持 CLS。更早版本的 ConsumerGroup 保留原消费者组查询。OrganizationNode 已移除，传入返回 InvalidParameterValue。</p><p>可选，未传时按消费者与模型服务二维聚合。</p>
+        :type Dimension: str
+        :param _Filters: <p>传入 Dimension 时支持：SecretKeyId、SecretKeyName、ModelName、ModelAPIId、ModelAPIName、ModelServiceId、ModelServiceName、ConsumerId、ConsumerName、ConsumerGroupId、ConsumerGroupName。</p><p>网关版本不低于 3.9.8 时，所有支持的 Dimension（包括可选 Dimension 未传）均支持 ConsumerGroupId、ConsumerGroupName，按请求发生时的消费者组及全部下属归属筛选历史日志，仅支持 CLS；不按当前组成员重算历史。ConsumerGroupId 必须为 UUID，允许显式查询已删除节点历史；ConsumerGroupName 从 Kong CP 当前目录按名称子串解析，包含同步、自定义、禁用及保留中的软删节点。同名节点保留各自身份。OrganizationNodeId / OrganizationNodeName 已移除，旧名称返回 InvalidParameterValue。</p><p>最多 10 项，Name 不重复；新版组筛选的每项 Values 为 1～50 个非空字符串，同项多个值为 OR。名称无匹配返回空结果。</p><p>未传 Dimension 时支持 ConsumerId、ConsumerName、ConsumerGroupId、ConsumerGroupName、ModelServiceId、ModelServiceName；新版组筛选同样走历史归属。更早版本保留原筛选及当前成员算法。</p><p>Dimension=ConsumerGroup 时，组 ID 与名称对候选节点求交，名称展开数量不限 50 个；请求 Values 仍最多 50 个。其他维度按历史日志条件 AND，同一请求只计一次，名称展开每项最多 50 个节点，超过返回 InvalidParameterValue。</p><p>未传 Dimension 时也按日志条件 AND，名称展开每项最多 50 个节点。</p>
         :type Filters: list of Filter
         :param _Limit: <p>分页条件，每页条数</p>
         :type Limit: int
@@ -17150,6 +17152,7 @@ class DescribeCloudNativeAPIGatewayLLMTokenUsageListRequest(AbstractModel):
         self._GatewayId = None
         self._StartTime = None
         self._EndTime = None
+        self._Dimension = None
         self._Filters = None
         self._Limit = None
         self._Offset = None
@@ -17188,8 +17191,19 @@ class DescribeCloudNativeAPIGatewayLLMTokenUsageListRequest(AbstractModel):
         self._EndTime = EndTime
 
     @property
+    def Dimension(self):
+        r"""<p>聚合维度。枚举值：</p><ul><li>SecretKey：密钥</li><li>Model：模型</li><li>ModelAPI：模型 API</li><li>ModelService：模型服务</li><li>Consumer：消费者</li><li>ConsumerGroup：消费者组（组织节点）</li></ul><p>网关版本不低于 3.9.8 时，ConsumerGroup 表示消费者组（组织节点），按请求发生时的组织归属查询，包含节点自身及全部下属，仅支持 CLS。更早版本的 ConsumerGroup 保留原消费者组查询。OrganizationNode 已移除，传入返回 InvalidParameterValue。</p><p>可选，未传时按消费者与模型服务二维聚合。</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
     def Filters(self):
-        r"""<p>查询过滤条件，Name取值为ConsumerId或ConsumerGroupId</p>
+        r"""<p>传入 Dimension 时支持：SecretKeyId、SecretKeyName、ModelName、ModelAPIId、ModelAPIName、ModelServiceId、ModelServiceName、ConsumerId、ConsumerName、ConsumerGroupId、ConsumerGroupName。</p><p>网关版本不低于 3.9.8 时，所有支持的 Dimension（包括可选 Dimension 未传）均支持 ConsumerGroupId、ConsumerGroupName，按请求发生时的消费者组及全部下属归属筛选历史日志，仅支持 CLS；不按当前组成员重算历史。ConsumerGroupId 必须为 UUID，允许显式查询已删除节点历史；ConsumerGroupName 从 Kong CP 当前目录按名称子串解析，包含同步、自定义、禁用及保留中的软删节点。同名节点保留各自身份。OrganizationNodeId / OrganizationNodeName 已移除，旧名称返回 InvalidParameterValue。</p><p>最多 10 项，Name 不重复；新版组筛选的每项 Values 为 1～50 个非空字符串，同项多个值为 OR。名称无匹配返回空结果。</p><p>未传 Dimension 时支持 ConsumerId、ConsumerName、ConsumerGroupId、ConsumerGroupName、ModelServiceId、ModelServiceName；新版组筛选同样走历史归属。更早版本保留原筛选及当前成员算法。</p><p>Dimension=ConsumerGroup 时，组 ID 与名称对候选节点求交，名称展开数量不限 50 个；请求 Values 仍最多 50 个。其他维度按历史日志条件 AND，同一请求只计一次，名称展开每项最多 50 个节点，超过返回 InvalidParameterValue。</p><p>未传 Dimension 时也按日志条件 AND，名称展开每项最多 50 个节点。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -17225,6 +17239,7 @@ class DescribeCloudNativeAPIGatewayLLMTokenUsageListRequest(AbstractModel):
         self._GatewayId = params.get("GatewayId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._Dimension = params.get("Dimension")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -17301,12 +17316,15 @@ class DescribeCloudNativeAPIGatewayLLMTokenUsageStatisticsRequest(AbstractModel)
         :type StartTime: int
         :param _EndTime: <p>查询结束时间戳</p><p>单位：秒</p>
         :type EndTime: int
-        :param _Filters: <p>查询过滤条件</p>
+        :param _Dimension: <p>聚合维度。枚举值：</p><ul><li>SecretKey：密钥</li><li>Model：模型</li><li>ModelAPI：模型 API</li><li>ModelService：模型服务</li><li>Consumer：消费者</li><li>ConsumerGroup：消费者组（组织节点）</li></ul><p>网关版本不低于 3.9.8 时，ConsumerGroup 表示消费者组（组织节点），按请求发生时的组织归属查询，包含节点自身及全部下属，仅支持 CLS。更早版本的 ConsumerGroup 保留原消费者组查询。OrganizationNode 已移除，传入返回 InvalidParameterValue。</p><p>可选，未传时保留原汇总及 TopConsumers；传入时 TopConsumers 为 []。</p>
+        :type Dimension: str
+        :param _Filters: <p>传入 Dimension 时支持：SecretKeyId、SecretKeyName、ModelName、ModelAPIId、ModelAPIName、ModelServiceId、ModelServiceName、ConsumerId、ConsumerName、ConsumerGroupId、ConsumerGroupName。</p><p>网关版本不低于 3.9.8 时，所有支持的 Dimension（包括可选 Dimension 未传）均支持 ConsumerGroupId、ConsumerGroupName，按请求发生时的消费者组及全部下属归属筛选历史日志，仅支持 CLS；不按当前组成员重算历史。ConsumerGroupId 必须为 UUID，允许显式查询已删除节点历史；ConsumerGroupName 从 Kong CP 当前目录按名称子串解析，包含同步、自定义、禁用及保留中的软删节点。同名节点保留各自身份。OrganizationNodeId / OrganizationNodeName 已移除，旧名称返回 InvalidParameterValue。</p><p>最多 10 项，Name 不重复；新版组筛选的每项 Values 为 1～50 个非空字符串，同项多个值为 OR。名称无匹配返回空结果。</p><p>未传 Dimension 时支持 ConsumerId、ConsumerGroupId、ConsumerGroupName；更早版本该模式仍仅支持 ConsumerId、ConsumerGroupId。更早版本组筛选保留当前成员算法。</p><p>组 ID 与组名称分别生成历史日志条件并做 AND；日志同时属于不同组时仍可匹配，不能预先对节点 ID 求交。同一请求只计一次。每个名称筛选最多展开 50 个节点，超过返回 InvalidParameterValue。</p>
         :type Filters: list of Filter
         """
         self._GatewayId = None
         self._StartTime = None
         self._EndTime = None
+        self._Dimension = None
         self._Filters = None
 
     @property
@@ -17343,8 +17361,19 @@ class DescribeCloudNativeAPIGatewayLLMTokenUsageStatisticsRequest(AbstractModel)
         self._EndTime = EndTime
 
     @property
+    def Dimension(self):
+        r"""<p>聚合维度。枚举值：</p><ul><li>SecretKey：密钥</li><li>Model：模型</li><li>ModelAPI：模型 API</li><li>ModelService：模型服务</li><li>Consumer：消费者</li><li>ConsumerGroup：消费者组（组织节点）</li></ul><p>网关版本不低于 3.9.8 时，ConsumerGroup 表示消费者组（组织节点），按请求发生时的组织归属查询，包含节点自身及全部下属，仅支持 CLS。更早版本的 ConsumerGroup 保留原消费者组查询。OrganizationNode 已移除，传入返回 InvalidParameterValue。</p><p>可选，未传时保留原汇总及 TopConsumers；传入时 TopConsumers 为 []。</p>
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
     def Filters(self):
-        r"""<p>查询过滤条件</p>
+        r"""<p>传入 Dimension 时支持：SecretKeyId、SecretKeyName、ModelName、ModelAPIId、ModelAPIName、ModelServiceId、ModelServiceName、ConsumerId、ConsumerName、ConsumerGroupId、ConsumerGroupName。</p><p>网关版本不低于 3.9.8 时，所有支持的 Dimension（包括可选 Dimension 未传）均支持 ConsumerGroupId、ConsumerGroupName，按请求发生时的消费者组及全部下属归属筛选历史日志，仅支持 CLS；不按当前组成员重算历史。ConsumerGroupId 必须为 UUID，允许显式查询已删除节点历史；ConsumerGroupName 从 Kong CP 当前目录按名称子串解析，包含同步、自定义、禁用及保留中的软删节点。同名节点保留各自身份。OrganizationNodeId / OrganizationNodeName 已移除，旧名称返回 InvalidParameterValue。</p><p>最多 10 项，Name 不重复；新版组筛选的每项 Values 为 1～50 个非空字符串，同项多个值为 OR。名称无匹配返回空结果。</p><p>未传 Dimension 时支持 ConsumerId、ConsumerGroupId、ConsumerGroupName；更早版本该模式仍仅支持 ConsumerId、ConsumerGroupId。更早版本组筛选保留当前成员算法。</p><p>组 ID 与组名称分别生成历史日志条件并做 AND；日志同时属于不同组时仍可匹配，不能预先对节点 ID 求交。同一请求只计一次。每个名称筛选最多展开 50 个节点，超过返回 InvalidParameterValue。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -17358,6 +17387,7 @@ class DescribeCloudNativeAPIGatewayLLMTokenUsageStatisticsRequest(AbstractModel)
         self._GatewayId = params.get("GatewayId")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._Dimension = params.get("Dimension")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -21510,6 +21540,8 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type LoadBalanceConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLoadBalanceConfig`
         :param _SmartBalance: <p>智能负载均衡配置</p>
         :type SmartBalance: :class:`tencentcloud.cngw.v20230418.models.AIGWSmartBalanceConfig`
+        :param _LengthLimitConfig: <p>内容长度限制配置</p>
+        :type LengthLimitConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWLengthLimitConfig`
         """
         self._GatewayId = None
         self._ModelServiceId = None
@@ -21542,6 +21574,7 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._CustomProviderName = None
         self._LoadBalanceConfig = None
         self._SmartBalance = None
+        self._LengthLimitConfig = None
 
     @property
     def GatewayId(self):
@@ -21884,6 +21917,17 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def SmartBalance(self, SmartBalance):
         self._SmartBalance = SmartBalance
 
+    @property
+    def LengthLimitConfig(self):
+        r"""<p>内容长度限制配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWLengthLimitConfig`
+        """
+        return self._LengthLimitConfig
+
+    @LengthLimitConfig.setter
+    def LengthLimitConfig(self, LengthLimitConfig):
+        self._LengthLimitConfig = LengthLimitConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -21937,6 +21981,9 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         if params.get("SmartBalance") is not None:
             self._SmartBalance = AIGWSmartBalanceConfig()
             self._SmartBalance._deserialize(params.get("SmartBalance"))
+        if params.get("LengthLimitConfig") is not None:
+            self._LengthLimitConfig = AIGWLengthLimitConfig()
+            self._LengthLimitConfig._deserialize(params.get("LengthLimitConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

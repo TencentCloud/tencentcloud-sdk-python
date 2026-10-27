@@ -39410,13 +39410,13 @@ class GetAttackHistogramRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 查询的域名，所有域名使用all
+        :param _Domain: <p>查询的域名，所有域名使用all</p>
         :type Domain: str
-        :param _StartTime: 查询起始时间
+        :param _StartTime: <p>查询起始时间</p>
         :type StartTime: str
-        :param _EndTime: 查询结束时间
+        :param _EndTime: <p>查询结束时间</p>
         :type EndTime: str
-        :param _QueryString: Lucene语法
+        :param _QueryString: <p>Lucene语法</p>
         :type QueryString: str
         """
         self._Domain = None
@@ -39426,7 +39426,7 @@ class GetAttackHistogramRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""查询的域名，所有域名使用all
+        r"""<p>查询的域名，所有域名使用all</p>
         :rtype: str
         """
         return self._Domain
@@ -39437,7 +39437,7 @@ class GetAttackHistogramRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""查询起始时间
+        r"""<p>查询起始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -39448,7 +39448,7 @@ class GetAttackHistogramRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询结束时间
+        r"""<p>查询结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -39459,7 +39459,7 @@ class GetAttackHistogramRequest(AbstractModel):
 
     @property
     def QueryString(self):
-        r"""Lucene语法
+        r"""<p>Lucene语法</p>
         :rtype: str
         """
         return self._QueryString
@@ -39491,11 +39491,11 @@ class GetAttackHistogramResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 统计详情
+        :param _Data: <p>统计详情</p>
         :type Data: list of LogHistogramInfo
-        :param _Period: 时间段大小
+        :param _Period: <p>时间段大小</p><p>单位：秒</p>
         :type Period: int
-        :param _TotalCount: 统计的条目数
+        :param _TotalCount: <p>统计的条目数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39507,7 +39507,7 @@ class GetAttackHistogramResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""统计详情
+        r"""<p>统计详情</p>
         :rtype: list of LogHistogramInfo
         """
         return self._Data
@@ -39518,7 +39518,7 @@ class GetAttackHistogramResponse(AbstractModel):
 
     @property
     def Period(self):
-        r"""时间段大小
+        r"""<p>时间段大小</p><p>单位：秒</p>
         :rtype: int
         """
         return self._Period
@@ -39529,7 +39529,7 @@ class GetAttackHistogramResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""统计的条目数
+        r"""<p>统计的条目数</p>
         :rtype: int
         """
         return self._TotalCount

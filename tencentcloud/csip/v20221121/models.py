@@ -117449,6 +117449,8 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
         :type AdminInfo: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
         :param _TagIds: <p>标签id</p>
         :type TagIds: list of int non-negative
+        :param _PreferCloudSource: <p>优先使用腾讯云软件源</p>
+        :type PreferCloudSource: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -117467,6 +117469,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
         self._EnableSync = None
         self._AdminInfo = None
         self._TagIds = None
+        self._PreferCloudSource = None
         self._RequestId = None
 
     @property
@@ -117635,6 +117638,17 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
         self._TagIds = TagIds
 
     @property
+    def PreferCloudSource(self):
+        r"""<p>优先使用腾讯云软件源</p>
+        :rtype: bool
+        """
+        return self._PreferCloudSource
+
+    @PreferCloudSource.setter
+    def PreferCloudSource(self, PreferCloudSource):
+        self._PreferCloudSource = PreferCloudSource
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -117664,6 +117678,7 @@ class DescribeVulScanPeriodicResponse(AbstractModel):
             self._AdminInfo = AccountBriefInfo()
             self._AdminInfo._deserialize(params.get("AdminInfo"))
         self._TagIds = params.get("TagIds")
+        self._PreferCloudSource = params.get("PreferCloudSource")
         self._RequestId = params.get("RequestId")
 
 

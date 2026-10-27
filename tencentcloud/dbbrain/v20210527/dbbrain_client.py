@@ -1958,6 +1958,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTopSpaceSchemasV2(self, request):
+        r"""库级空间 Top 对象查询（融合接口，多产品统一入口），按 SortBy 指定的排序字段返回实例内空间占用 Top N 的数据库。支持产品：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、mongodb（云数据库 MongoDB）、postgres（云数据库 PostgreSQL）、dcdb（TDSQL MySQL 版）、tdsql（TDSQL）、mariadb（云数据库 MariaDB）。返回值根据产品类型返回对应字段：MySQL 系列返回 MysqlObjects（库级返回项中不包含 TableName/Engine 字段），PostgreSQL 返回 PostgresObjects（PG 的 relation/bloat 字段与 MySQL 语义不同），MongoDB 返回 MongodbObjects。
+
+        :param request: Request instance for DescribeTopSpaceSchemasV2.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeTopSpaceSchemasV2Request`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeTopSpaceSchemasV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopSpaceSchemasV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopSpaceSchemasV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopSpaceTableTimeSeries(self, request):
         r"""获取实例占用空间最大的前几张表在指定时间段内的每日由DBbrain定时采集的空间数据，默认返回按大小排序。
 

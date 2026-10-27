@@ -210,6 +210,29 @@ class KmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateKmsInstance(self, request):
+        r"""购买开通KMS服务
+
+        :param request: Request instance for CreateKmsInstance.
+        :type request: :class:`tencentcloud.kms.v20190118.models.CreateKmsInstanceRequest`
+        :rtype: :class:`tencentcloud.kms.v20190118.models.CreateKmsInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKmsInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateKmsInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateWhiteBoxKey(self, request):
         r"""创建白盒密钥。 密钥个数的上限为 50。
 

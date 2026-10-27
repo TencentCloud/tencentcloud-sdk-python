@@ -98694,14 +98694,14 @@ class VideoRedrawTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Style: <p>转绘视频风格，如动漫、赛博朋克、水墨等</p>
+        :param _Style: <p>转绘视频风格，如动漫、赛博朋克、水墨等</p><p>默认值：动漫风</p>
         :type Style: str
         """
         self._Style = None
 
     @property
     def Style(self):
-        r"""<p>转绘视频风格，如动漫、赛博朋克、水墨等</p>
+        r"""<p>转绘视频风格，如动漫、赛博朋克、水墨等</p><p>默认值：动漫风</p>
         :rtype: str
         """
         return self._Style

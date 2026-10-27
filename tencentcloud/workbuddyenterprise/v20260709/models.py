@@ -924,6 +924,18 @@ class BuiltinModel(AbstractModel):
         :param _SupportsImages: 是否支持视觉（图片输入）
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportsImages: bool
+        :param _SupportsThinking: 模型是否支持思考。仅用于展示；能否配置思考强度以 ThinkingLevels 和 CanDisableThinking 为准
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportsThinking: bool
+        :param _ThinkingLevels: 可选的思考强度，取值：MINIMAL、LOW、MEDIUM、HIGH、XHIGH、MAX，数组顺序即展示顺序。不包含「关闭」，空数组表示不支持调整强度。在 Agent 版本 Manifest 中配置 thinking.level 时使用对应的小写值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThinkingLevels: list of str
+        :param _DefaultThinkingLevel: 模型默认的思考强度，取值同 ThinkingLevels；空字符串表示未声明。Agent 版本 Manifest 未配置 thinking 时按模型默认档位运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultThinkingLevel: str
+        :param _CanDisableThinking: 是否支持关闭思考。为 true 时，可在 Agent 版本 Manifest 中配置 thinking.level 为 disabled
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanDisableThinking: bool
         :param _DescriptionZh: 模型中文描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescriptionZh: str
@@ -953,6 +965,10 @@ class BuiltinModel(AbstractModel):
         self._MaxInputTokens = None
         self._SupportsToolCall = None
         self._SupportsImages = None
+        self._SupportsThinking = None
+        self._ThinkingLevels = None
+        self._DefaultThinkingLevel = None
+        self._CanDisableThinking = None
         self._DescriptionZh = None
         self._DescriptionEn = None
         self._Tags = None
@@ -1043,6 +1059,54 @@ class BuiltinModel(AbstractModel):
     @SupportsImages.setter
     def SupportsImages(self, SupportsImages):
         self._SupportsImages = SupportsImages
+
+    @property
+    def SupportsThinking(self):
+        r"""模型是否支持思考。仅用于展示；能否配置思考强度以 ThinkingLevels 和 CanDisableThinking 为准
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SupportsThinking
+
+    @SupportsThinking.setter
+    def SupportsThinking(self, SupportsThinking):
+        self._SupportsThinking = SupportsThinking
+
+    @property
+    def ThinkingLevels(self):
+        r"""可选的思考强度，取值：MINIMAL、LOW、MEDIUM、HIGH、XHIGH、MAX，数组顺序即展示顺序。不包含「关闭」，空数组表示不支持调整强度。在 Agent 版本 Manifest 中配置 thinking.level 时使用对应的小写值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ThinkingLevels
+
+    @ThinkingLevels.setter
+    def ThinkingLevels(self, ThinkingLevels):
+        self._ThinkingLevels = ThinkingLevels
+
+    @property
+    def DefaultThinkingLevel(self):
+        r"""模型默认的思考强度，取值同 ThinkingLevels；空字符串表示未声明。Agent 版本 Manifest 未配置 thinking 时按模型默认档位运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DefaultThinkingLevel
+
+    @DefaultThinkingLevel.setter
+    def DefaultThinkingLevel(self, DefaultThinkingLevel):
+        self._DefaultThinkingLevel = DefaultThinkingLevel
+
+    @property
+    def CanDisableThinking(self):
+        r"""是否支持关闭思考。为 true 时，可在 Agent 版本 Manifest 中配置 thinking.level 为 disabled
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanDisableThinking
+
+    @CanDisableThinking.setter
+    def CanDisableThinking(self, CanDisableThinking):
+        self._CanDisableThinking = CanDisableThinking
 
     @property
     def DescriptionZh(self):
@@ -1137,6 +1201,10 @@ class BuiltinModel(AbstractModel):
         self._MaxInputTokens = params.get("MaxInputTokens")
         self._SupportsToolCall = params.get("SupportsToolCall")
         self._SupportsImages = params.get("SupportsImages")
+        self._SupportsThinking = params.get("SupportsThinking")
+        self._ThinkingLevels = params.get("ThinkingLevels")
+        self._DefaultThinkingLevel = params.get("DefaultThinkingLevel")
+        self._CanDisableThinking = params.get("CanDisableThinking")
         self._DescriptionZh = params.get("DescriptionZh")
         self._DescriptionEn = params.get("DescriptionEn")
         self._Tags = params.get("Tags")
@@ -4168,7 +4236,7 @@ class DescribeExpertListRequest(AbstractModel):
         r"""
         :param _Source: <p>专家来源，必填：BUILTIN（内置）/ CUSTOM（自建）</p>
         :type Source: str
-        :param _Filters: <p>标准过滤条件：ExpertId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）</p>
+        :param _Filters: <p>标准过滤条件：ExpertId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）/ PublishStatus（DRAFT、PUBLISHED、ALL，仅 CUSTOM）/ ExpertType（AGENT 普通专家、TEAM 专家团）。ExpertType 只允许一个过滤条件且 Values 必须仅含一个值，不传则不增加形态过滤；可与 ExpertId 组合取交集，分页总数 TotalCount 为过滤后的匹配数。专家选择列表建议传 {&quot;Name&quot;:&quot;ExpertType&quot;,&quot;Values&quot;:[&quot;AGENT&quot;]}。CAPI 的 CUSTOM 目录仅有普通专家，按 TEAM 过滤返回空集。</p>
         :type Filters: list of Filter
         :param _Offset: <p>偏移量，从 0 开始，默认 0（按 ID 批量查询时忽略）</p>
         :type Offset: int
@@ -4193,7 +4261,7 @@ class DescribeExpertListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>标准过滤条件：ExpertId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）</p>
+        r"""<p>标准过滤条件：ExpertId（精确，多值 OR，携带即按 ID 批量查询，忽略分页）/ Keyword（模糊）/ PublishStatus（DRAFT、PUBLISHED、ALL，仅 CUSTOM）/ ExpertType（AGENT 普通专家、TEAM 专家团）。ExpertType 只允许一个过滤条件且 Values 必须仅含一个值，不传则不增加形态过滤；可与 ExpertId 组合取交集，分页总数 TotalCount 为过滤后的匹配数。专家选择列表建议传 {&quot;Name&quot;:&quot;ExpertType&quot;,&quot;Values&quot;:[&quot;AGENT&quot;]}。CAPI 的 CUSTOM 目录仅有普通专家，按 TEAM 过滤返回空集。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -4259,12 +4327,15 @@ class DescribeExpertListResponse(AbstractModel):
         :param _Counts: <p>全局计数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Counts: :class:`tencentcloud.workbuddyenterprise.v20260709.models.ExpertCounts`
+        :param _MaxBindings: <p>Agent 可绑定的专家数量上限，当前默认值为 5。</p>
+        :type MaxBindings: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._ExpertSet = None
         self._Counts = None
+        self._MaxBindings = None
         self._RequestId = None
 
     @property
@@ -4302,6 +4373,17 @@ class DescribeExpertListResponse(AbstractModel):
         self._Counts = Counts
 
     @property
+    def MaxBindings(self):
+        r"""<p>Agent 可绑定的专家数量上限，当前默认值为 5。</p>
+        :rtype: int
+        """
+        return self._MaxBindings
+
+    @MaxBindings.setter
+    def MaxBindings(self, MaxBindings):
+        self._MaxBindings = MaxBindings
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4324,6 +4406,7 @@ class DescribeExpertListResponse(AbstractModel):
         if params.get("Counts") is not None:
             self._Counts = ExpertCounts()
             self._Counts._deserialize(params.get("Counts"))
+        self._MaxBindings = params.get("MaxBindings")
         self._RequestId = params.get("RequestId")
 
 
@@ -4754,12 +4837,15 @@ class DescribeMessageEventListRequest(AbstractModel):
         :type Limit: int
         :param _Filters: <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系</p>
         :type Filters: list of Filter
+        :param _SubAgentId: 
+        :type SubAgentId: str
         """
         self._SessionId = None
         self._AgentId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._SubAgentId = None
 
     @property
     def SessionId(self):
@@ -4816,6 +4902,17 @@ class DescribeMessageEventListRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def SubAgentId(self):
+        r"""
+        :rtype: str
+        """
+        return self._SubAgentId
+
+    @SubAgentId.setter
+    def SubAgentId(self, SubAgentId):
+        self._SubAgentId = SubAgentId
+
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
@@ -4828,6 +4925,7 @@ class DescribeMessageEventListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._SubAgentId = params.get("SubAgentId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5411,6 +5509,9 @@ class ExternalAgentInfo(AbstractModel):
         :param _A2AVersion: 外部 agent card 声明的版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type A2AVersion: str
+        :param _LatestVersionName: 子 Agent 的最新版本名，返回版本存储名（default / test-N / prod-N），非 V1/V2 展示名。取值规则：有正式版本（prod）时取最新 prod，否则取最新 test，再否则取 default。仅企业 Agent 来源返回（其 A2AVersion 恒为 default）；其他来源或查询失败时不返回。注意：不代表 A2A 调用时实际执行的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestVersionName: str
         :param _A2ASkillSet: A2A card skills 集合
 注意：此字段可能返回 null，表示取不到有效值。
         :type A2ASkillSet: list of A2ASkillItem
@@ -5423,6 +5524,7 @@ class ExternalAgentInfo(AbstractModel):
         self._Bound = None
         self._IconUrl = None
         self._A2AVersion = None
+        self._LatestVersionName = None
         self._A2ASkillSet = None
 
     @property
@@ -5522,6 +5624,18 @@ class ExternalAgentInfo(AbstractModel):
         self._A2AVersion = A2AVersion
 
     @property
+    def LatestVersionName(self):
+        r"""子 Agent 的最新版本名，返回版本存储名（default / test-N / prod-N），非 V1/V2 展示名。取值规则：有正式版本（prod）时取最新 prod，否则取最新 test，再否则取 default。仅企业 Agent 来源返回（其 A2AVersion 恒为 default）；其他来源或查询失败时不返回。注意：不代表 A2A 调用时实际执行的版本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LatestVersionName
+
+    @LatestVersionName.setter
+    def LatestVersionName(self, LatestVersionName):
+        self._LatestVersionName = LatestVersionName
+
+    @property
     def A2ASkillSet(self):
         r"""A2A card skills 集合
 注意：此字段可能返回 null，表示取不到有效值。
@@ -5543,6 +5657,7 @@ class ExternalAgentInfo(AbstractModel):
         self._Bound = params.get("Bound")
         self._IconUrl = params.get("IconUrl")
         self._A2AVersion = params.get("A2AVersion")
+        self._LatestVersionName = params.get("LatestVersionName")
         if params.get("A2ASkillSet") is not None:
             self._A2ASkillSet = []
             for item in params.get("A2ASkillSet"):
@@ -5829,6 +5944,18 @@ class MessageEventToolCall(AbstractModel):
         :param _StartedAt: <p>调用开始时间（RFC3339 格式）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartedAt: str
+        :param _ExpertId: 本次调用对应的业务专家 ID。
+        :type ExpertId: str
+        :param _ExpertName: 本次调用对应的专家名称。
+        :type ExpertName: str
+        :param _ExpertVersion: 执行时解析到的专家资源版本。
+        :type ExpertVersion: str
+        :param _SubAgentId: CBC 子代理执行实例 ID，可用于查询该次专家调用的消息事件。
+        :type SubAgentId: str
+        :param _SubAgentName: CBC 子代理定义名称。
+        :type SubAgentName: str
+        :param _ParentToolCallId: 父会话中触发本次子代理执行的工具调用 ID。
+        :type ParentToolCallId: str
         """
         self._ToolCallId = None
         self._ToolName = None
@@ -5838,6 +5965,12 @@ class MessageEventToolCall(AbstractModel):
         self._EndedAt = None
         self._DurationMs = None
         self._StartedAt = None
+        self._ExpertId = None
+        self._ExpertName = None
+        self._ExpertVersion = None
+        self._SubAgentId = None
+        self._SubAgentName = None
+        self._ParentToolCallId = None
 
     @property
     def ToolCallId(self):
@@ -5935,6 +6068,72 @@ class MessageEventToolCall(AbstractModel):
     def StartedAt(self, StartedAt):
         self._StartedAt = StartedAt
 
+    @property
+    def ExpertId(self):
+        r"""本次调用对应的业务专家 ID。
+        :rtype: str
+        """
+        return self._ExpertId
+
+    @ExpertId.setter
+    def ExpertId(self, ExpertId):
+        self._ExpertId = ExpertId
+
+    @property
+    def ExpertName(self):
+        r"""本次调用对应的专家名称。
+        :rtype: str
+        """
+        return self._ExpertName
+
+    @ExpertName.setter
+    def ExpertName(self, ExpertName):
+        self._ExpertName = ExpertName
+
+    @property
+    def ExpertVersion(self):
+        r"""执行时解析到的专家资源版本。
+        :rtype: str
+        """
+        return self._ExpertVersion
+
+    @ExpertVersion.setter
+    def ExpertVersion(self, ExpertVersion):
+        self._ExpertVersion = ExpertVersion
+
+    @property
+    def SubAgentId(self):
+        r"""CBC 子代理执行实例 ID，可用于查询该次专家调用的消息事件。
+        :rtype: str
+        """
+        return self._SubAgentId
+
+    @SubAgentId.setter
+    def SubAgentId(self, SubAgentId):
+        self._SubAgentId = SubAgentId
+
+    @property
+    def SubAgentName(self):
+        r"""CBC 子代理定义名称。
+        :rtype: str
+        """
+        return self._SubAgentName
+
+    @SubAgentName.setter
+    def SubAgentName(self, SubAgentName):
+        self._SubAgentName = SubAgentName
+
+    @property
+    def ParentToolCallId(self):
+        r"""父会话中触发本次子代理执行的工具调用 ID。
+        :rtype: str
+        """
+        return self._ParentToolCallId
+
+    @ParentToolCallId.setter
+    def ParentToolCallId(self, ParentToolCallId):
+        self._ParentToolCallId = ParentToolCallId
+
 
     def _deserialize(self, params):
         self._ToolCallId = params.get("ToolCallId")
@@ -5945,6 +6144,12 @@ class MessageEventToolCall(AbstractModel):
         self._EndedAt = params.get("EndedAt")
         self._DurationMs = params.get("DurationMs")
         self._StartedAt = params.get("StartedAt")
+        self._ExpertId = params.get("ExpertId")
+        self._ExpertName = params.get("ExpertName")
+        self._ExpertVersion = params.get("ExpertVersion")
+        self._SubAgentId = params.get("SubAgentId")
+        self._SubAgentName = params.get("SubAgentName")
+        self._ParentToolCallId = params.get("ParentToolCallId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

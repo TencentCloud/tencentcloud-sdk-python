@@ -3227,6 +3227,8 @@ class Storage(AbstractModel):
         :type StorageAppId: str
         :param _Compress: <p>是否压缩。<br>1:压缩  2:不压缩</p>
         :type Compress: int
+        :param _CkafkaRoute: <p>CKAFKA路由信息</p>
+        :type CkafkaRoute: str
         """
         self._StorageType = None
         self._StorageRegion = None
@@ -3235,6 +3237,7 @@ class Storage(AbstractModel):
         self._StorageAccountId = None
         self._StorageAppId = None
         self._Compress = None
+        self._CkafkaRoute = None
 
     @property
     def StorageType(self):
@@ -3313,6 +3316,17 @@ class Storage(AbstractModel):
     def Compress(self, Compress):
         self._Compress = Compress
 
+    @property
+    def CkafkaRoute(self):
+        r"""<p>CKAFKA路由信息</p>
+        :rtype: str
+        """
+        return self._CkafkaRoute
+
+    @CkafkaRoute.setter
+    def CkafkaRoute(self, CkafkaRoute):
+        self._CkafkaRoute = CkafkaRoute
+
 
     def _deserialize(self, params):
         self._StorageType = params.get("StorageType")
@@ -3322,6 +3336,7 @@ class Storage(AbstractModel):
         self._StorageAccountId = params.get("StorageAccountId")
         self._StorageAppId = params.get("StorageAppId")
         self._Compress = params.get("Compress")
+        self._CkafkaRoute = params.get("CkafkaRoute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

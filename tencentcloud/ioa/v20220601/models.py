@@ -1270,22 +1270,42 @@ class CreateBusinessResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AreaId: 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+        :param _AreaId: <p>业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)</p>
         :type AreaId: int
-        :param _Protocol: 业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)
+        :param _Protocol: <p>业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)</p>
         :type Protocol: int
-        :param _ServiceName: 业务资源名称，同一个资源模块下面不可重复
+        :param _ServiceName: <p>业务资源名称，同一个资源模块下面不可重复</p>
         :type ServiceName: str
-        :param _ServiceType: 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+        :param _ServiceType: <p>业务资源类型:ip,domain,ip_section，对应ip、域名、ip段</p>
         :type ServiceType: str
-        :param _ServicePort: 业务资源端口 all,1-65535
+        :param _ServicePort: <p>业务资源端口 all,1-65535</p>
         :type ServicePort: str
-        :param _Levels: 业务资源优先级 1-65535(只支持32位)
+        :param _Levels: <p>业务资源优先级 1-65535(只支持32位)</p>
         :type Levels: int
-        :param _ServiceAddress: 业务资源地址(ip、域名、ip段)
+        :param _ServiceAddress: <p>业务资源地址(ip、域名、ip段)</p>
         :type ServiceAddress: str
-        :param _DirectConn: 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+        :param _DirectConn: <p>是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)</p>
         :type DirectConn: int
+        :param _ConnectivityCheckSwitch: <p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+        :type ConnectivityCheckSwitch: int
+        :param _ConnectivityCheckInterval: <p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+        :type ConnectivityCheckInterval: int
+        :param _ConnectivityCheckIntervalUnit: <p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+        :type ConnectivityCheckIntervalUnit: str
+        :param _ServiceNetwork: <p>资源网络类型：1-内网资源 2-外网资源，默认1</p>
+        :type ServiceNetwork: int
+        :param _WireGuardTunnel: <p>是否启用L3网络：1-不启用 2-启用，默认1</p>
+        :type WireGuardTunnel: int
+        :param _Description: <p>资源描述</p>
+        :type Description: str
+        :param _URLAuditState: <p>URL审计开关：0-关闭 1-开启，默认0</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :type URLAuditState: int
+        :param _URLAuditId: <p>URL审计证书ID列表，多个用分号分隔</p>
+        :type URLAuditId: str
+        :param _URLPath: <p>URL审计路径，多个用分号分隔</p>
+        :type URLPath: str
+        :param _SSLCertId: <p>证书Id</p>
+        :type SSLCertId: str
         """
         self._AreaId = None
         self._Protocol = None
@@ -1295,10 +1315,20 @@ class CreateBusinessResourceRequest(AbstractModel):
         self._Levels = None
         self._ServiceAddress = None
         self._DirectConn = None
+        self._ConnectivityCheckSwitch = None
+        self._ConnectivityCheckInterval = None
+        self._ConnectivityCheckIntervalUnit = None
+        self._ServiceNetwork = None
+        self._WireGuardTunnel = None
+        self._Description = None
+        self._URLAuditState = None
+        self._URLAuditId = None
+        self._URLPath = None
+        self._SSLCertId = None
 
     @property
     def AreaId(self):
-        r"""业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+        r"""<p>业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)</p>
         :rtype: int
         """
         return self._AreaId
@@ -1309,7 +1339,7 @@ class CreateBusinessResourceRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)
+        r"""<p>业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)</p>
         :rtype: int
         """
         return self._Protocol
@@ -1320,7 +1350,7 @@ class CreateBusinessResourceRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""业务资源名称，同一个资源模块下面不可重复
+        r"""<p>业务资源名称，同一个资源模块下面不可重复</p>
         :rtype: str
         """
         return self._ServiceName
@@ -1331,7 +1361,7 @@ class CreateBusinessResourceRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+        r"""<p>业务资源类型:ip,domain,ip_section，对应ip、域名、ip段</p>
         :rtype: str
         """
         return self._ServiceType
@@ -1342,7 +1372,7 @@ class CreateBusinessResourceRequest(AbstractModel):
 
     @property
     def ServicePort(self):
-        r"""业务资源端口 all,1-65535
+        r"""<p>业务资源端口 all,1-65535</p>
         :rtype: str
         """
         return self._ServicePort
@@ -1353,7 +1383,7 @@ class CreateBusinessResourceRequest(AbstractModel):
 
     @property
     def Levels(self):
-        r"""业务资源优先级 1-65535(只支持32位)
+        r"""<p>业务资源优先级 1-65535(只支持32位)</p>
         :rtype: int
         """
         return self._Levels
@@ -1364,7 +1394,7 @@ class CreateBusinessResourceRequest(AbstractModel):
 
     @property
     def ServiceAddress(self):
-        r"""业务资源地址(ip、域名、ip段)
+        r"""<p>业务资源地址(ip、域名、ip段)</p>
         :rtype: str
         """
         return self._ServiceAddress
@@ -1375,7 +1405,7 @@ class CreateBusinessResourceRequest(AbstractModel):
 
     @property
     def DirectConn(self):
-        r"""是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+        r"""<p>是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)</p>
         :rtype: int
         """
         return self._DirectConn
@@ -1383,6 +1413,116 @@ class CreateBusinessResourceRequest(AbstractModel):
     @DirectConn.setter
     def DirectConn(self, DirectConn):
         self._DirectConn = DirectConn
+
+    @property
+    def ConnectivityCheckSwitch(self):
+        r"""<p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+        :rtype: int
+        """
+        return self._ConnectivityCheckSwitch
+
+    @ConnectivityCheckSwitch.setter
+    def ConnectivityCheckSwitch(self, ConnectivityCheckSwitch):
+        self._ConnectivityCheckSwitch = ConnectivityCheckSwitch
+
+    @property
+    def ConnectivityCheckInterval(self):
+        r"""<p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+        :rtype: int
+        """
+        return self._ConnectivityCheckInterval
+
+    @ConnectivityCheckInterval.setter
+    def ConnectivityCheckInterval(self, ConnectivityCheckInterval):
+        self._ConnectivityCheckInterval = ConnectivityCheckInterval
+
+    @property
+    def ConnectivityCheckIntervalUnit(self):
+        r"""<p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+        :rtype: str
+        """
+        return self._ConnectivityCheckIntervalUnit
+
+    @ConnectivityCheckIntervalUnit.setter
+    def ConnectivityCheckIntervalUnit(self, ConnectivityCheckIntervalUnit):
+        self._ConnectivityCheckIntervalUnit = ConnectivityCheckIntervalUnit
+
+    @property
+    def ServiceNetwork(self):
+        r"""<p>资源网络类型：1-内网资源 2-外网资源，默认1</p>
+        :rtype: int
+        """
+        return self._ServiceNetwork
+
+    @ServiceNetwork.setter
+    def ServiceNetwork(self, ServiceNetwork):
+        self._ServiceNetwork = ServiceNetwork
+
+    @property
+    def WireGuardTunnel(self):
+        r"""<p>是否启用L3网络：1-不启用 2-启用，默认1</p>
+        :rtype: int
+        """
+        return self._WireGuardTunnel
+
+    @WireGuardTunnel.setter
+    def WireGuardTunnel(self, WireGuardTunnel):
+        self._WireGuardTunnel = WireGuardTunnel
+
+    @property
+    def Description(self):
+        r"""<p>资源描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def URLAuditState(self):
+        r"""<p>URL审计开关：0-关闭 1-开启，默认0</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :rtype: int
+        """
+        return self._URLAuditState
+
+    @URLAuditState.setter
+    def URLAuditState(self, URLAuditState):
+        self._URLAuditState = URLAuditState
+
+    @property
+    def URLAuditId(self):
+        r"""<p>URL审计证书ID列表，多个用分号分隔</p>
+        :rtype: str
+        """
+        return self._URLAuditId
+
+    @URLAuditId.setter
+    def URLAuditId(self, URLAuditId):
+        self._URLAuditId = URLAuditId
+
+    @property
+    def URLPath(self):
+        r"""<p>URL审计路径，多个用分号分隔</p>
+        :rtype: str
+        """
+        return self._URLPath
+
+    @URLPath.setter
+    def URLPath(self, URLPath):
+        self._URLPath = URLPath
+
+    @property
+    def SSLCertId(self):
+        r"""<p>证书Id</p>
+        :rtype: str
+        """
+        return self._SSLCertId
+
+    @SSLCertId.setter
+    def SSLCertId(self, SSLCertId):
+        self._SSLCertId = SSLCertId
 
 
     def _deserialize(self, params):
@@ -1394,6 +1534,16 @@ class CreateBusinessResourceRequest(AbstractModel):
         self._Levels = params.get("Levels")
         self._ServiceAddress = params.get("ServiceAddress")
         self._DirectConn = params.get("DirectConn")
+        self._ConnectivityCheckSwitch = params.get("ConnectivityCheckSwitch")
+        self._ConnectivityCheckInterval = params.get("ConnectivityCheckInterval")
+        self._ConnectivityCheckIntervalUnit = params.get("ConnectivityCheckIntervalUnit")
+        self._ServiceNetwork = params.get("ServiceNetwork")
+        self._WireGuardTunnel = params.get("WireGuardTunnel")
+        self._Description = params.get("Description")
+        self._URLAuditState = params.get("URLAuditState")
+        self._URLAuditId = params.get("URLAuditId")
+        self._URLPath = params.get("URLPath")
+        self._SSLCertId = params.get("SSLCertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1411,7 +1561,7 @@ class CreateBusinessResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 创建业务资源响应的数据
+        :param _Data: <p>创建业务资源响应的数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.CreateBusinessResourceData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1422,7 +1572,7 @@ class CreateBusinessResourceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""创建业务资源响应的数据
+        r"""<p>创建业务资源响应的数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateBusinessResourceData`
         """
@@ -6524,27 +6674,15 @@ class DescribeBusinessResourcePageRsp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: 业务资源列表数据对象集合
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Items: list of DescribeBusinessResourceData
         :param _Page: 分页公共对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
-        """
-        self._Items = None
-        self._Page = None
-
-    @property
-    def Items(self):
-        r"""业务资源列表数据对象集合
+        :param _Items: 业务资源列表数据对象集合
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of DescribeBusinessResourceData
+        :type Items: list of DescribeBusinessResourceData
         """
-        return self._Items
-
-    @Items.setter
-    def Items(self, Items):
-        self._Items = Items
+        self._Page = None
+        self._Items = None
 
     @property
     def Page(self):
@@ -6558,17 +6696,29 @@ class DescribeBusinessResourcePageRsp(AbstractModel):
     def Page(self, Page):
         self._Page = Page
 
+    @property
+    def Items(self):
+        r"""业务资源列表数据对象集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeBusinessResourceData
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
 
     def _deserialize(self, params):
+        if params.get("Page") is not None:
+            self._Page = Paging()
+            self._Page._deserialize(params.get("Page"))
         if params.get("Items") is not None:
             self._Items = []
             for item in params.get("Items"):
                 obj = DescribeBusinessResourceData()
                 obj._deserialize(item)
                 self._Items.append(obj)
-        if params.get("Page") is not None:
-            self._Page = Paging()
-            self._Page._deserialize(params.get("Page"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6586,39 +6736,46 @@ class DescribeBusinessResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AreaId: 资源模块Id
-        :type AreaId: int
-        :param _ServiceName: 搜索的业务资源名称
-        :type ServiceName: str
-        :param _StartTime: 获取业务资源列表的开始时间，时间格式：2006-01-02
-        :type StartTime: str
-        :param _Keywords: 搜索关键字
-        :type Keywords: str
-        :param _EndTime: 获取业务资源列表的结束时间，时间格式：2006-01-02
-        :type EndTime: str
-        :param _Condition: 滤条件、分页参数。分页内容不传，默认获取第1页，10条数据
-排序条件
-<li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li>
-<li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li>
-<li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
+        :param _Condition: <p>滤条件、分页参数。分页内容不传，默认获取第1页，10条数据<br>排序条件</p><li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li><li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li><li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
-        :param _AccessType: 资源类型
+        :param _AreaId: <p>资源模块Id</p>
+        :type AreaId: int
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        :param _Keywords: <p>搜索关键字</p>
+        :type Keywords: str
+        :param _StartTime: <p>获取业务资源列表的开始时间，时间格式：2006-01-02</p>
+        :type StartTime: str
+        :param _EndTime: <p>获取业务资源列表的结束时间，时间格式：2006-01-02</p>
+        :type EndTime: str
+        :param _AccessType: <p>资源类型</p>
         :type AccessType: str
-        :param _FrontAddr: web资源前端地址
+        :param _FrontAddr: <p>web资源前端地址</p>
         :type FrontAddr: str
         """
+        self._Condition = None
         self._AreaId = None
         self._ServiceName = None
-        self._StartTime = None
         self._Keywords = None
+        self._StartTime = None
         self._EndTime = None
-        self._Condition = None
         self._AccessType = None
         self._FrontAddr = None
 
     @property
+    def Condition(self):
+        r"""<p>滤条件、分页参数。分页内容不传，默认获取第1页，10条数据<br>排序条件</p><li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li><li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li><li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
     def AreaId(self):
-        r"""资源模块Id
+        r"""<p>资源模块Id</p>
         :rtype: int
         """
         return self._AreaId
@@ -6629,7 +6786,7 @@ class DescribeBusinessResourcesRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""搜索的业务资源名称
+        r"""<p>服务名称</p>
         :rtype: str
         """
         return self._ServiceName
@@ -6639,19 +6796,8 @@ class DescribeBusinessResourcesRequest(AbstractModel):
         self._ServiceName = ServiceName
 
     @property
-    def StartTime(self):
-        r"""获取业务资源列表的开始时间，时间格式：2006-01-02
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
     def Keywords(self):
-        r"""搜索关键字
+        r"""<p>搜索关键字</p>
         :rtype: str
         """
         return self._Keywords
@@ -6661,8 +6807,19 @@ class DescribeBusinessResourcesRequest(AbstractModel):
         self._Keywords = Keywords
 
     @property
+    def StartTime(self):
+        r"""<p>获取业务资源列表的开始时间，时间格式：2006-01-02</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
     def EndTime(self):
-        r"""获取业务资源列表的结束时间，时间格式：2006-01-02
+        r"""<p>获取业务资源列表的结束时间，时间格式：2006-01-02</p>
         :rtype: str
         """
         return self._EndTime
@@ -6672,23 +6829,8 @@ class DescribeBusinessResourcesRequest(AbstractModel):
         self._EndTime = EndTime
 
     @property
-    def Condition(self):
-        r"""滤条件、分页参数。分页内容不传，默认获取第1页，10条数据
-排序条件
-<li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li>
-<li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li>
-<li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
-        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
-        """
-        return self._Condition
-
-    @Condition.setter
-    def Condition(self, Condition):
-        self._Condition = Condition
-
-    @property
     def AccessType(self):
-        r"""资源类型
+        r"""<p>资源类型</p>
         :rtype: str
         """
         return self._AccessType
@@ -6699,7 +6841,7 @@ class DescribeBusinessResourcesRequest(AbstractModel):
 
     @property
     def FrontAddr(self):
-        r"""web资源前端地址
+        r"""<p>web资源前端地址</p>
         :rtype: str
         """
         return self._FrontAddr
@@ -6710,14 +6852,14 @@ class DescribeBusinessResourcesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._AreaId = params.get("AreaId")
-        self._ServiceName = params.get("ServiceName")
-        self._StartTime = params.get("StartTime")
-        self._Keywords = params.get("Keywords")
-        self._EndTime = params.get("EndTime")
         if params.get("Condition") is not None:
             self._Condition = Condition()
             self._Condition._deserialize(params.get("Condition"))
+        self._AreaId = params.get("AreaId")
+        self._ServiceName = params.get("ServiceName")
+        self._Keywords = params.get("Keywords")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         self._AccessType = params.get("AccessType")
         self._FrontAddr = params.get("FrontAddr")
         memeber_set = set(params.keys())
@@ -6737,7 +6879,7 @@ class DescribeBusinessResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 业务资源分页返回对象
+        :param _Data: <p>业务资源分页返回对象</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeBusinessResourcePageRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6748,7 +6890,7 @@ class DescribeBusinessResourcesResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""业务资源分页返回对象
+        r"""<p>业务资源分页返回对象</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeBusinessResourcePageRsp`
         """
@@ -16861,24 +17003,42 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AreaId: 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+        :param _AreaId: <p>业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)</p>
         :type AreaId: int
-        :param _Protocol: 业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)
+        :param _Protocol: <p>业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)</p>
         :type Protocol: int
-        :param _ServiceName: 业务资源名称，同一个资源模块下面不可重复
+        :param _ServiceName: <p>业务资源名称，同一个资源模块下面不可重复</p>
         :type ServiceName: str
-        :param _Levels: 业务资源优先级 1-65535(只支持32位)
+        :param _Levels: <p>业务资源优先级 1-65535(只支持32位)</p>
         :type Levels: int
-        :param _ServiceType: 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+        :param _ServiceType: <p>业务资源类型:ip,domain,ip_section，对应ip、域名、ip段</p>
         :type ServiceType: str
-        :param _ServicePort: 业务资源端口 all,1-65535
+        :param _ServicePort: <p>业务资源端口 all,1-65535</p>
         :type ServicePort: str
-        :param _ServiceId: 修改业务资源的id(只支持32位)
+        :param _ServiceId: <p>修改业务资源的id(只支持32位)</p>
         :type ServiceId: int
-        :param _ServiceAddress: 业务资源地址(ip、域名、ip段)
+        :param _ServiceAddress: <p>业务资源地址(ip、域名、ip段)</p>
         :type ServiceAddress: str
-        :param _DirectConn: 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+        :param _DirectConn: <p>是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)</p>
         :type DirectConn: int
+        :param _ConnectivityCheckSwitch: <p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+        :type ConnectivityCheckSwitch: int
+        :param _ConnectivityCheckInterval: <p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+        :type ConnectivityCheckInterval: int
+        :param _ConnectivityCheckIntervalUnit: <p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+        :type ConnectivityCheckIntervalUnit: str
+        :param _ServiceNetwork: <p>资源网络类型：1-内网资源 2-外网资源，默认1</p>
+        :type ServiceNetwork: int
+        :param _WireGuardTunnel: <p>是否启用L3网络：1-不启用 2-启用，默认1</p>
+        :type WireGuardTunnel: int
+        :param _Description: <p>资源描述</p>
+        :type Description: str
+        :param _URLAuditState: <p>URL审计开关：0-关闭 1-开启，默认0</p>
+        :type URLAuditState: int
+        :param _URLAuditId: <p>URL审计证书ID列表，多个用分号分隔</p>
+        :type URLAuditId: str
+        :param _URLPath: <p>URL审计路径，多个用分号分隔</p>
+        :type URLPath: str
         """
         self._AreaId = None
         self._Protocol = None
@@ -16889,10 +17049,19 @@ class ModifyBusinessResourceRequest(AbstractModel):
         self._ServiceId = None
         self._ServiceAddress = None
         self._DirectConn = None
+        self._ConnectivityCheckSwitch = None
+        self._ConnectivityCheckInterval = None
+        self._ConnectivityCheckIntervalUnit = None
+        self._ServiceNetwork = None
+        self._WireGuardTunnel = None
+        self._Description = None
+        self._URLAuditState = None
+        self._URLAuditId = None
+        self._URLPath = None
 
     @property
     def AreaId(self):
-        r"""业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+        r"""<p>业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)</p>
         :rtype: int
         """
         return self._AreaId
@@ -16903,7 +17072,7 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)
+        r"""<p>业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)</p>
         :rtype: int
         """
         return self._Protocol
@@ -16914,7 +17083,7 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""业务资源名称，同一个资源模块下面不可重复
+        r"""<p>业务资源名称，同一个资源模块下面不可重复</p>
         :rtype: str
         """
         return self._ServiceName
@@ -16925,7 +17094,7 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     @property
     def Levels(self):
-        r"""业务资源优先级 1-65535(只支持32位)
+        r"""<p>业务资源优先级 1-65535(只支持32位)</p>
         :rtype: int
         """
         return self._Levels
@@ -16936,7 +17105,7 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+        r"""<p>业务资源类型:ip,domain,ip_section，对应ip、域名、ip段</p>
         :rtype: str
         """
         return self._ServiceType
@@ -16947,7 +17116,7 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     @property
     def ServicePort(self):
-        r"""业务资源端口 all,1-65535
+        r"""<p>业务资源端口 all,1-65535</p>
         :rtype: str
         """
         return self._ServicePort
@@ -16958,7 +17127,7 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        r"""修改业务资源的id(只支持32位)
+        r"""<p>修改业务资源的id(只支持32位)</p>
         :rtype: int
         """
         return self._ServiceId
@@ -16969,7 +17138,7 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     @property
     def ServiceAddress(self):
-        r"""业务资源地址(ip、域名、ip段)
+        r"""<p>业务资源地址(ip、域名、ip段)</p>
         :rtype: str
         """
         return self._ServiceAddress
@@ -16980,7 +17149,7 @@ class ModifyBusinessResourceRequest(AbstractModel):
 
     @property
     def DirectConn(self):
-        r"""是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+        r"""<p>是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)</p>
         :rtype: int
         """
         return self._DirectConn
@@ -16988,6 +17157,105 @@ class ModifyBusinessResourceRequest(AbstractModel):
     @DirectConn.setter
     def DirectConn(self, DirectConn):
         self._DirectConn = DirectConn
+
+    @property
+    def ConnectivityCheckSwitch(self):
+        r"""<p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+        :rtype: int
+        """
+        return self._ConnectivityCheckSwitch
+
+    @ConnectivityCheckSwitch.setter
+    def ConnectivityCheckSwitch(self, ConnectivityCheckSwitch):
+        self._ConnectivityCheckSwitch = ConnectivityCheckSwitch
+
+    @property
+    def ConnectivityCheckInterval(self):
+        r"""<p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+        :rtype: int
+        """
+        return self._ConnectivityCheckInterval
+
+    @ConnectivityCheckInterval.setter
+    def ConnectivityCheckInterval(self, ConnectivityCheckInterval):
+        self._ConnectivityCheckInterval = ConnectivityCheckInterval
+
+    @property
+    def ConnectivityCheckIntervalUnit(self):
+        r"""<p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+        :rtype: str
+        """
+        return self._ConnectivityCheckIntervalUnit
+
+    @ConnectivityCheckIntervalUnit.setter
+    def ConnectivityCheckIntervalUnit(self, ConnectivityCheckIntervalUnit):
+        self._ConnectivityCheckIntervalUnit = ConnectivityCheckIntervalUnit
+
+    @property
+    def ServiceNetwork(self):
+        r"""<p>资源网络类型：1-内网资源 2-外网资源，默认1</p>
+        :rtype: int
+        """
+        return self._ServiceNetwork
+
+    @ServiceNetwork.setter
+    def ServiceNetwork(self, ServiceNetwork):
+        self._ServiceNetwork = ServiceNetwork
+
+    @property
+    def WireGuardTunnel(self):
+        r"""<p>是否启用L3网络：1-不启用 2-启用，默认1</p>
+        :rtype: int
+        """
+        return self._WireGuardTunnel
+
+    @WireGuardTunnel.setter
+    def WireGuardTunnel(self, WireGuardTunnel):
+        self._WireGuardTunnel = WireGuardTunnel
+
+    @property
+    def Description(self):
+        r"""<p>资源描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def URLAuditState(self):
+        r"""<p>URL审计开关：0-关闭 1-开启，默认0</p>
+        :rtype: int
+        """
+        return self._URLAuditState
+
+    @URLAuditState.setter
+    def URLAuditState(self, URLAuditState):
+        self._URLAuditState = URLAuditState
+
+    @property
+    def URLAuditId(self):
+        r"""<p>URL审计证书ID列表，多个用分号分隔</p>
+        :rtype: str
+        """
+        return self._URLAuditId
+
+    @URLAuditId.setter
+    def URLAuditId(self, URLAuditId):
+        self._URLAuditId = URLAuditId
+
+    @property
+    def URLPath(self):
+        r"""<p>URL审计路径，多个用分号分隔</p>
+        :rtype: str
+        """
+        return self._URLPath
+
+    @URLPath.setter
+    def URLPath(self, URLPath):
+        self._URLPath = URLPath
 
 
     def _deserialize(self, params):
@@ -17000,6 +17268,15 @@ class ModifyBusinessResourceRequest(AbstractModel):
         self._ServiceId = params.get("ServiceId")
         self._ServiceAddress = params.get("ServiceAddress")
         self._DirectConn = params.get("DirectConn")
+        self._ConnectivityCheckSwitch = params.get("ConnectivityCheckSwitch")
+        self._ConnectivityCheckInterval = params.get("ConnectivityCheckInterval")
+        self._ConnectivityCheckIntervalUnit = params.get("ConnectivityCheckIntervalUnit")
+        self._ServiceNetwork = params.get("ServiceNetwork")
+        self._WireGuardTunnel = params.get("WireGuardTunnel")
+        self._Description = params.get("Description")
+        self._URLAuditState = params.get("URLAuditState")
+        self._URLAuditId = params.get("URLAuditId")
+        self._URLPath = params.get("URLPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

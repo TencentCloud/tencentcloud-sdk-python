@@ -149,6 +149,12 @@ INVALIDPARAMETERVALUE_AGENTSOURCETYPE = 'InvalidParameterValue.AgentSourceType'
 # InvalidParameterValue.ApprovalMode
 INVALIDPARAMETERVALUE_APPROVALMODE = 'InvalidParameterValue.ApprovalMode'
 
+# 用户不在自动暂停白名单中
+INVALIDPARAMETERVALUE_AUTOPAUSENOTALLOWED = 'InvalidParameterValue.AutoPauseNotAllowed'
+
+# 用户不在自动恢复白名单中
+INVALIDPARAMETERVALUE_AUTORESUMENOTALLOWED = 'InvalidParameterValue.AutoResumeNotAllowed'
+
 # InvalidParameterValue.DescriptorType
 INVALIDPARAMETERVALUE_DESCRIPTORTYPE = 'InvalidParameterValue.DescriptorType'
 
@@ -178,6 +184,9 @@ INVALIDPARAMETERVALUE_SANDBOXTOOL = 'InvalidParameterValue.SandboxTool'
 
 # 参数 Scopes 取值无效，或当前地域不支持指定的镜像预热范围。
 INVALIDPARAMETERVALUE_SCOPE = 'InvalidParameterValue.Scope'
+
+# 参数 SecurityContext 取值无效
+INVALIDPARAMETERVALUE_SECURITYCONTEXT = 'InvalidParameterValue.SecurityContext'
 
 # 安全组ID格式错误
 INVALIDPARAMETERVALUE_SECURITYGROUPID = 'InvalidParameterValue.SecurityGroupId'

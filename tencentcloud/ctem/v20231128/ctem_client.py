@@ -72,6 +72,29 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCheck(self, request):
+        r"""检查修复状况
+
+        :param request: Request instance for CreateCheck.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateCheckRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCheck", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCheckResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomer(self, request):
         r"""创建企业
 
@@ -224,6 +247,29 @@ class CtemClient(AbstractClient):
             body = self.call("CreatePort", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePortResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateScan(self, request):
+        r"""扫描巡检
+
+        :param request: Request instance for CreateScan.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.CreateScanRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.CreateScanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateScan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateScanResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -693,6 +739,29 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBannerAssetData(self, request):
+        r"""相关资产
+
+        :param request: Request instance for DescribeBannerAssetData.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeBannerAssetDataRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribeBannerAssetDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBannerAssetData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBannerAssetDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConfigs(self, request):
         r"""查看目录爆破数据
 
@@ -946,6 +1015,29 @@ class CtemClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIntelligences(self, request):
+        r"""查询情报列表
+
+        :param request: Request instance for DescribeIntelligences.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribeIntelligencesRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribeIntelligencesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIntelligences", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIntelligencesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeJobRecordDetails(self, request):
         r"""查看链路详情
 
@@ -1098,6 +1190,29 @@ class CtemClient(AbstractClient):
             body = self.call("DescribeNetDisks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNetDisksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePocAssetData(self, request):
+        r"""实际受影响资产
+
+        :param request: Request instance for DescribePocAssetData.
+        :type request: :class:`tencentcloud.ctem.v20231128.models.DescribePocAssetDataRequest`
+        :rtype: :class:`tencentcloud.ctem.v20231128.models.DescribePocAssetDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePocAssetData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePocAssetDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

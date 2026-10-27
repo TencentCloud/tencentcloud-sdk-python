@@ -6253,6 +6253,132 @@ class CancelTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CertDetail(AbstractModel):
+    r"""证书详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CertId: <p>证书ID</p>
+        :type CertId: str
+        :param _Alias: <p>证书备注名</p>
+        :type Alias: str
+        :param _Domain: <p>证书绑定的主域名</p>
+        :type Domain: str
+        :param _Source: <p>证书来源</p>
+        :type Source: str
+        :param _EndTime: <p>有效期结束（秒级时间戳）</p><p>单位：秒</p>
+        :type EndTime: int
+        :param _RemainDays: <p>证书到期剩余天数</p>
+        :type RemainDays: int
+        :param _CertStatus: <p>证书状态，1为已通过</p>
+        :type CertStatus: int
+        """
+        self._CertId = None
+        self._Alias = None
+        self._Domain = None
+        self._Source = None
+        self._EndTime = None
+        self._RemainDays = None
+        self._CertStatus = None
+
+    @property
+    def CertId(self):
+        r"""<p>证书ID</p>
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Alias(self):
+        r"""<p>证书备注名</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def Domain(self):
+        r"""<p>证书绑定的主域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Source(self):
+        r"""<p>证书来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def EndTime(self):
+        r"""<p>有效期结束（秒级时间戳）</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RemainDays(self):
+        r"""<p>证书到期剩余天数</p>
+        :rtype: int
+        """
+        return self._RemainDays
+
+    @RemainDays.setter
+    def RemainDays(self, RemainDays):
+        self._RemainDays = RemainDays
+
+    @property
+    def CertStatus(self):
+        r"""<p>证书状态，1为已通过</p>
+        :rtype: int
+        """
+        return self._CertStatus
+
+    @CertStatus.setter
+    def CertStatus(self, CertStatus):
+        self._CertStatus = CertStatus
+
+
+    def _deserialize(self, params):
+        self._CertId = params.get("CertId")
+        self._Alias = params.get("Alias")
+        self._Domain = params.get("Domain")
+        self._Source = params.get("Source")
+        self._EndTime = params.get("EndTime")
+        self._RemainDays = params.get("RemainDays")
+        self._CertStatus = params.get("CertStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckCreateLibraDBInstanceRequest(AbstractModel):
     r"""CheckCreateLibraDBInstance请求参数结构体
 
@@ -32235,9 +32361,9 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
         """
         self._ClusterId = None
@@ -32245,7 +32371,7 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -32256,7 +32382,7 @@ class DescribeSSLStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -32286,20 +32412,26 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsOpenSSL: yes-开启，no-关闭
+        :param _IsOpenSSL: <p>yes-开启，no-关闭</p>
         :type IsOpenSSL: str
-        :param _DownloadUrl: 证书下载地址
+        :param _DownloadUrl: <p>证书下载地址</p>
         :type DownloadUrl: str
+        :param _CertType: <p>证书类型</p><p>枚举值：</p><ul><li>platform： 云端证书</li><li>custom： 自定义证书</li></ul>
+        :type CertType: str
+        :param _CertDetail: <p>自定义证书详情，仅 CertType=custom 时有值。</p>
+        :type CertDetail: :class:`tencentcloud.cynosdb.v20190107.models.CertDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._IsOpenSSL = None
         self._DownloadUrl = None
+        self._CertType = None
+        self._CertDetail = None
         self._RequestId = None
 
     @property
     def IsOpenSSL(self):
-        r"""yes-开启，no-关闭
+        r"""<p>yes-开启，no-关闭</p>
         :rtype: str
         """
         return self._IsOpenSSL
@@ -32310,7 +32442,7 @@ class DescribeSSLStatusResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        r"""证书下载地址
+        r"""<p>证书下载地址</p>
         :rtype: str
         """
         return self._DownloadUrl
@@ -32318,6 +32450,28 @@ class DescribeSSLStatusResponse(AbstractModel):
     @DownloadUrl.setter
     def DownloadUrl(self, DownloadUrl):
         self._DownloadUrl = DownloadUrl
+
+    @property
+    def CertType(self):
+        r"""<p>证书类型</p><p>枚举值：</p><ul><li>platform： 云端证书</li><li>custom： 自定义证书</li></ul>
+        :rtype: str
+        """
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def CertDetail(self):
+        r"""<p>自定义证书详情，仅 CertType=custom 时有值。</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CertDetail`
+        """
+        return self._CertDetail
+
+    @CertDetail.setter
+    def CertDetail(self, CertDetail):
+        self._CertDetail = CertDetail
 
     @property
     def RequestId(self):
@@ -32334,6 +32488,10 @@ class DescribeSSLStatusResponse(AbstractModel):
     def _deserialize(self, params):
         self._IsOpenSSL = params.get("IsOpenSSL")
         self._DownloadUrl = params.get("DownloadUrl")
+        self._CertType = params.get("CertType")
+        if params.get("CertDetail") is not None:
+            self._CertDetail = CertDetail()
+            self._CertDetail._deserialize(params.get("CertDetail"))
         self._RequestId = params.get("RequestId")
 
 
@@ -50256,17 +50414,23 @@ class OpenSSLRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
+        :param _CertType: <p>证书类型</p><p>枚举值：</p><ul><li>platform： 云端证书</li><li>custom： 自定义证书</li></ul><p>默认值：platform</p>
+        :type CertType: str
+        :param _CertId: <p>证书ID，CertType=custom 时必传</p>
+        :type CertId: str
         """
         self._ClusterId = None
         self._InstanceId = None
+        self._CertType = None
+        self._CertId = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -50277,7 +50441,7 @@ class OpenSSLRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -50286,10 +50450,34 @@ class OpenSSLRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def CertType(self):
+        r"""<p>证书类型</p><p>枚举值：</p><ul><li>platform： 云端证书</li><li>custom： 自定义证书</li></ul><p>默认值：platform</p>
+        :rtype: str
+        """
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def CertId(self):
+        r"""<p>证书ID，CertType=custom 时必传</p>
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._InstanceId = params.get("InstanceId")
+        self._CertType = params.get("CertType")
+        self._CertId = params.get("CertId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50307,9 +50495,9 @@ class OpenSSLResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 任务流ID
+        :param _FlowId: <p>任务流ID</p>
         :type FlowId: int
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -50320,7 +50508,7 @@ class OpenSSLResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""任务流ID
+        r"""<p>任务流ID</p>
         :rtype: int
         """
         return self._FlowId
@@ -50331,7 +50519,7 @@ class OpenSSLResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: int
         """
         return self._TaskId

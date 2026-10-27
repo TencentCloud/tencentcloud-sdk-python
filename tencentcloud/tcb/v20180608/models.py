@@ -1921,6 +1921,42 @@ class BuildContext(AbstractModel):
         
 
 
+class BuildRunner(AbstractModel):
+    r"""构建运行配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpus: <p>构建服务所需 CPU 规格</p>
+        :type Cpus: int
+        """
+        self._Cpus = None
+
+    @property
+    def Cpus(self):
+        r"""<p>构建服务所需 CPU 规格</p>
+        :rtype: int
+        """
+        return self._Cpus
+
+    @Cpus.setter
+    def Cpus(self, Cpus):
+        self._Cpus = Cpus
+
+
+    def _deserialize(self, params):
+        self._Cpus = params.get("Cpus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BuildSecret(AbstractModel):
     r"""构建密钥
 
@@ -4441,7 +4477,7 @@ class CreateCloudAppRequest(AbstractModel):
         :type EnvId: str
         :param _ServiceName: <p>服务名</p>
         :type ServiceName: str
-        :param _DeployType: <p>部署类型</p>
+        :param _DeployType: <p>部署类型</p><p>枚举值：</p><ul><li>statis-hosting： 静态托管应用</li><li>custom： 自定义流水线</li></ul>
         :type DeployType: str
         :param _BuildType: <p>构建类型</p>
         :type BuildType: str
@@ -4475,6 +4511,8 @@ class CreateCloudAppRequest(AbstractModel):
         :type PreDeployCommand: str
         :param _PostDeployCommand: <p>后置执行命令</p>
         :type PostDeployCommand: str
+        :param _Runner: <p>流水线运行配置</p>
+        :type Runner: :class:`tencentcloud.tcb.v20180608.models.BuildRunner`
         """
         self._EnvId = None
         self._ServiceName = None
@@ -4495,6 +4533,7 @@ class CreateCloudAppRequest(AbstractModel):
         self._ClientToken = None
         self._PreDeployCommand = None
         self._PostDeployCommand = None
+        self._Runner = None
 
     @property
     def EnvId(self):
@@ -4520,7 +4559,7 @@ class CreateCloudAppRequest(AbstractModel):
 
     @property
     def DeployType(self):
-        r"""<p>部署类型</p>
+        r"""<p>部署类型</p><p>枚举值：</p><ul><li>statis-hosting： 静态托管应用</li><li>custom： 自定义流水线</li></ul>
         :rtype: str
         """
         return self._DeployType
@@ -4705,6 +4744,17 @@ class CreateCloudAppRequest(AbstractModel):
     def PostDeployCommand(self, PostDeployCommand):
         self._PostDeployCommand = PostDeployCommand
 
+    @property
+    def Runner(self):
+        r"""<p>流水线运行配置</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BuildRunner`
+        """
+        return self._Runner
+
+    @Runner.setter
+    def Runner(self, Runner):
+        self._Runner = Runner
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -4759,6 +4809,9 @@ class CreateCloudAppRequest(AbstractModel):
         self._ClientToken = params.get("ClientToken")
         self._PreDeployCommand = params.get("PreDeployCommand")
         self._PostDeployCommand = params.get("PostDeployCommand")
+        if params.get("Runner") is not None:
+            self._Runner = BuildRunner()
+            self._Runner._deserialize(params.get("Runner"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -464,6 +464,11 @@ def test_import_ctsdb_v20230202():
     from tencentcloud.ctsdb.v20230202 import models
 
 
+def test_import_cvd_v20201104():
+    from tencentcloud.cvd.v20201104 import cvd_client
+    from tencentcloud.cvd.v20201104 import models
+
+
 def test_import_cvm_v20170312():
     from tencentcloud.cvm.v20170312 import cvm_client
     from tencentcloud.cvm.v20170312 import models

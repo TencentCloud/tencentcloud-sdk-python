@@ -845,7 +845,7 @@ class CngwClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMTokenUsageList(self, request):
-        r"""查询 AI 网关Token 消耗统计（消费者消费金额数据）
+        r"""查询 AI 网关 Token 用量列表。网关版本不低于 3.9.8 且 Dimension=ConsumerGroup 时，未指定节点筛选则列出 Kong CP 当前目录的全部真实节点，包含同步、自定义、禁用及保留中的软删节点，排除合成展示节点。按当前名称、节点 UUID 升序，先分页节点再查询历史指标；无调用节点仍返回，Token 与请求数补零。节点指标包含历史下属，同一请求可计入多个组行，不能逐行相加作为网关总量。 网关版本不低于 3.9.8 时，所有支持维度的消费者组筛选统一为 ConsumerGroupId / ConsumerGroupName，均按历史归属查询；旧 OrganizationNodeId / OrganizationNodeName 筛选不再接受。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMTokenUsageList.
         :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayLLMTokenUsageListRequest`
@@ -868,7 +868,7 @@ class CngwClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMTokenUsageStatistics(self, request):
-        r"""查询 AI 网关Token 消耗统计汇总含（消费者消费金额数据）
+        r"""查询 AI 网关 Token 用量汇总。网关版本不低于 3.9.8 且 Dimension=ConsumerGroup 时，按历史归属对日志并集去重统计；无节点筛选则查询全部成功归属且祖先集合非空的日志，不依赖当前组织目录候选。返回一份汇总，TopConsumers 为空数组。 网关版本不低于 3.9.8 时，所有支持维度的消费者组筛选统一为 ConsumerGroupId / ConsumerGroupName，均按历史归属查询；旧 OrganizationNodeId / OrganizationNodeName 筛选不再接受。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMTokenUsageStatistics.
         :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayLLMTokenUsageStatisticsRequest`
@@ -1332,7 +1332,7 @@ class CngwClient(AbstractClient):
 
 
     def ModifyCloudNativeAPIGatewayLLMModelService(self, request):
-        r"""修改 LLM 模型服务。
+        r"""更新指定网关实例内的 LLM 模型服务，可调整该服务向上游请求压缩响应的协商方式。
 
         :param request: Request instance for ModifyCloudNativeAPIGatewayLLMModelService.
         :type request: :class:`tencentcloud.cngw.v20230418.models.ModifyCloudNativeAPIGatewayLLMModelServiceRequest`
