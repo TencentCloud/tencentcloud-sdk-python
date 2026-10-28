@@ -1685,6 +1685,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RemoveWorkspaceUsers(self, request):
+        r"""<p>批量移除工作空间用户（单次最多10个；单个 UIN 失败不影响其他 UIN 移除，成败以 SuccessUins/FailItems 为准）</p>
+
+        :param request: Request instance for RemoveWorkspaceUsers.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.RemoveWorkspaceUsersRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.RemoveWorkspaceUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RemoveWorkspaceUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.RemoveWorkspaceUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RerunWorkflowRun(self, request):
         r"""重跑工作流
 
@@ -2255,6 +2278,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateWorkspaceGroupsTags(self, request):
+        r"""修改工作空间用户组标签
+
+        :param request: Request instance for UpdateWorkspaceGroupsTags.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceGroupsTagsRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceGroupsTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateWorkspaceGroupsTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateWorkspaceGroupsTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateWorkspaceRole(self, request):
         r"""更新工作空间角色
 
@@ -2292,6 +2338,34 @@ class DatabuddyClient(AbstractClient):
             body = self.call("UpdateWorkspaceUsersRoles", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateWorkspaceUsersRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateWorkspaceUsersTags(self, request):
+        r"""修改工作空间用户标签
+        本接口为整体覆盖式修改：每次调用以请求中的 Tags 为准，替换指定用户的全部直绑标签，而非增量追加。
+        1、传入 Tags（含 TagId/TagValueId）：替换为该批标签
+        2、不传 Tags 或传入空数组（"Tags": []）：将清除 UserUins 中所有用户的全部直绑标签，且操作不可逆，请谨慎调用
+        3、多个用户将共享同一批 Tags；仅修改单个用户时，UserUins 请只传该用户
+        4、仅清除用户直绑（Source=1）的标签，用户从用户组继承的标签（Source=2）不受影响
+
+        :param request: Request instance for UpdateWorkspaceUsersTags.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceUsersTagsRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceUsersTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateWorkspaceUsersTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateWorkspaceUsersTagsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

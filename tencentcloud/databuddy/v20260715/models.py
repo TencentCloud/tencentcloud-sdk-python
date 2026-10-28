@@ -22626,6 +22626,173 @@ class RemoveWorkspaceGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RemoveWorkspaceUsersRequest(AbstractModel):
+    r"""RemoveWorkspaceUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserUins: <p>必填，待移除的用户 UIN 列表，用户 UIN 可通过 ListWorkspaceUsers 接口获取，单次最多10个</p>
+        :type UserUins: list of str
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        """
+        self._UserUins = None
+        self._WorkspaceId = None
+
+    @property
+    def UserUins(self):
+        r"""<p>必填，待移除的用户 UIN 列表，用户 UIN 可通过 ListWorkspaceUsers 接口获取，单次最多10个</p>
+        :rtype: list of str
+        """
+        return self._UserUins
+
+    @UserUins.setter
+    def UserUins(self, UserUins):
+        self._UserUins = UserUins
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._UserUins = params.get("UserUins")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoveWorkspaceUsersResponse(AbstractModel):
+    r"""RemoveWorkspaceUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>批量移除工作空间用户结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.RemoveWorkspaceUsersRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>批量移除工作空间用户结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.RemoveWorkspaceUsersRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = RemoveWorkspaceUsersRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class RemoveWorkspaceUsersRsp(AbstractModel):
+    r"""批量移除工作空间用户响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>请求已完成处理；即使部分失败也为 true，逐个结果以 SuccessUins/FailItems 为准</p>
+        :type Status: bool
+        :param _SuccessUins: <p>移除成功的用户 UIN 列表</p>
+        :type SuccessUins: list of str
+        :param _FailItems: <p>失败项列表（Item 为用户 UIN，FailReason 为失败原因）</p>
+        :type FailItems: list of CommonFailItem
+        """
+        self._Status = None
+        self._SuccessUins = None
+        self._FailItems = None
+
+    @property
+    def Status(self):
+        r"""<p>请求已完成处理；即使部分失败也为 true，逐个结果以 SuccessUins/FailItems 为准</p>
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SuccessUins(self):
+        r"""<p>移除成功的用户 UIN 列表</p>
+        :rtype: list of str
+        """
+        return self._SuccessUins
+
+    @SuccessUins.setter
+    def SuccessUins(self, SuccessUins):
+        self._SuccessUins = SuccessUins
+
+    @property
+    def FailItems(self):
+        r"""<p>失败项列表（Item 为用户 UIN，FailReason 为失败原因）</p>
+        :rtype: list of CommonFailItem
+        """
+        return self._FailItems
+
+    @FailItems.setter
+    def FailItems(self, FailItems):
+        self._FailItems = FailItems
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._SuccessUins = params.get("SuccessUins")
+        if params.get("FailItems") is not None:
+            self._FailItems = []
+            for item in params.get("FailItems"):
+                obj = CommonFailItem()
+                obj._deserialize(item)
+                self._FailItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RerunWorkflowRunRequest(AbstractModel):
     r"""RerunWorkflowRun请求参数结构体
 
@@ -29457,6 +29624,158 @@ class UpdateWorkspaceGroupsRolesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateWorkspaceGroupsTagsRequest(AbstractModel):
+    r"""UpdateWorkspaceGroupsTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupIds: <p>必填，用户组ID列表，单次最多100个；可通过 ListWorkspaceGroups 接口获取</p>
+        :type GroupIds: list of str
+        :param _WorkspaceId: <p>必填，工作空间ID</p>
+        :type WorkspaceId: str
+        :param _Tags: <p>标签列表，覆盖写用户组的标签；传即覆盖更新，不传或为空则清除全部标签</p>
+        :type Tags: list of UserTagInfo
+        """
+        self._GroupIds = None
+        self._WorkspaceId = None
+        self._Tags = None
+
+    @property
+    def GroupIds(self):
+        r"""<p>必填，用户组ID列表，单次最多100个；可通过 ListWorkspaceGroups 接口获取</p>
+        :rtype: list of str
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>必填，工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表，覆盖写用户组的标签；传即覆盖更新，不传或为空则清除全部标签</p>
+        :rtype: list of UserTagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._GroupIds = params.get("GroupIds")
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = UserTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateWorkspaceGroupsTagsResponse(AbstractModel):
+    r"""UpdateWorkspaceGroupsTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>修改工作空间用户组标签响应</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceGroupsTagsRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>修改工作空间用户组标签响应</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceGroupsTagsRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateWorkspaceGroupsTagsRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateWorkspaceGroupsTagsRsp(AbstractModel):
+    r"""修改工作空间用户组标签响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 操作是否成功
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""操作是否成功
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateWorkspaceRequest(AbstractModel):
     r"""UpdateWorkspace请求参数结构体
 
@@ -29867,6 +30186,158 @@ class UpdateWorkspaceUsersRolesResponse(AbstractModel):
             self._Data = PlatformStatusRsp()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class UpdateWorkspaceUsersTagsRequest(AbstractModel):
+    r"""UpdateWorkspaceUsersTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserUins: <p>必填，用户UIN列表，单次最多100个</p>
+        :type UserUins: list of str
+        :param _WorkspaceId: <p>必填，工作空间ID</p>
+        :type WorkspaceId: str
+        :param _Tags: <p>待更新的标签集合（标签维度及标签值通过 ID 指定），覆盖更新语义：传入后将被覆盖为目标用户的全部直绑标签，不传或传空数组则清空目标用户的所有直绑标签。每个元素中 TagId 必填，Values[].TagValueId 必填；传入的 TagValue、Source、GroupNames 服务端不读取，无需传入。标签维度与标签值可先通过 CreateTags / CreateTagValues 创建，再通过 ListTags 获取 ID（TagId 取 Items[].TagId，TagValueId 取 Items[].TagValues[].TagValueId）。</p>
+        :type Tags: list of UserTagInfo
+        """
+        self._UserUins = None
+        self._WorkspaceId = None
+        self._Tags = None
+
+    @property
+    def UserUins(self):
+        r"""<p>必填，用户UIN列表，单次最多100个</p>
+        :rtype: list of str
+        """
+        return self._UserUins
+
+    @UserUins.setter
+    def UserUins(self, UserUins):
+        self._UserUins = UserUins
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>必填，工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Tags(self):
+        r"""<p>待更新的标签集合（标签维度及标签值通过 ID 指定），覆盖更新语义：传入后将被覆盖为目标用户的全部直绑标签，不传或传空数组则清空目标用户的所有直绑标签。每个元素中 TagId 必填，Values[].TagValueId 必填；传入的 TagValue、Source、GroupNames 服务端不读取，无需传入。标签维度与标签值可先通过 CreateTags / CreateTagValues 创建，再通过 ListTags 获取 ID（TagId 取 Items[].TagId，TagValueId 取 Items[].TagValues[].TagValueId）。</p>
+        :rtype: list of UserTagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._UserUins = params.get("UserUins")
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = UserTagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateWorkspaceUsersTagsResponse(AbstractModel):
+    r"""UpdateWorkspaceUsersTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>修改工作空间用户标签响应</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceUsersTagsRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>修改工作空间用户标签响应</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.UpdateWorkspaceUsersTagsRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = UpdateWorkspaceUsersTagsRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateWorkspaceUsersTagsRsp(AbstractModel):
+    r"""修改工作空间用户标签响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 操作是否成功
+        :type Status: bool
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""操作是否成功
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UserActivityInfo(AbstractModel):

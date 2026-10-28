@@ -325,6 +325,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUserQuota(self, request):
+        r"""创建用户配额
+
+        :param request: Request instance for CreateUserQuota.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.CreateUserQuotaRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.CreateUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCrossVpcSubnetSupportForClientNode(self, request):
         r"""为客户端节点删除跨vpc子网访问能力
 
@@ -431,6 +454,29 @@ class GoosefsClient(AbstractClient):
             body = self.call("DeletePolicyRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePolicyRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUserQuota(self, request):
+        r"""删除用户配额
+
+        :param request: Request instance for DeleteUserQuota.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DeleteUserQuotaRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DeleteUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -730,6 +776,29 @@ class GoosefsClient(AbstractClient):
             body = self.call("DescribePolicyRuleExecuteRecord", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePolicyRuleExecuteRecordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserQuota(self, request):
+        r"""查询用户配额
+
+        :param request: Request instance for DescribeUserQuota.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.DescribeUserQuotaRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.DescribeUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1052,6 +1121,29 @@ class GoosefsClient(AbstractClient):
             body = self.call("UpdateLoadTaskPriority", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateLoadTaskPriorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateUserQuota(self, request):
+        r"""修改用户配额
+
+        :param request: Request instance for UpdateUserQuota.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.UpdateUserQuotaRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.UpdateUserQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateUserQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateUserQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

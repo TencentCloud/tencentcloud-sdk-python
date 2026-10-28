@@ -835,6 +835,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteLLMSdkAccess(
+            self,
+            request: models.DeleteLLMSdkAccessRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLLMSdkAccessResponse:
+        """
+        llmwaf-sdk删除接入配置接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLLMSdkAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLLMSdkAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteOwaspRuleStatus(
             self,
             request: models.DeleteOwaspRuleStatusRequest,

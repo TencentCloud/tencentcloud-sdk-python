@@ -8616,16 +8616,33 @@ class DescribeIntelligencesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CustomerId: <p>企业ID</p>
+        :type CustomerId: int
         :param _Filters: 查询数组
         :type Filters: list of Filter
         :param _Limit: 分页大小
         :type Limit: int
         :param _Offset: 分页偏移
         :type Offset: int
+        :param _IsActual: <p>是否筛选有效情报</p>
+        :type IsActual: bool
         """
+        self._CustomerId = None
         self._Filters = None
         self._Limit = None
         self._Offset = None
+        self._IsActual = None
+
+    @property
+    def CustomerId(self):
+        r"""<p>企业ID</p>
+        :rtype: int
+        """
+        return self._CustomerId
+
+    @CustomerId.setter
+    def CustomerId(self, CustomerId):
+        self._CustomerId = CustomerId
 
     @property
     def Filters(self):
@@ -8660,8 +8677,20 @@ class DescribeIntelligencesRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def IsActual(self):
+        r"""<p>是否筛选有效情报</p>
+        :rtype: bool
+        """
+        return self._IsActual
+
+    @IsActual.setter
+    def IsActual(self, IsActual):
+        self._IsActual = IsActual
+
 
     def _deserialize(self, params):
+        self._CustomerId = params.get("CustomerId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -8670,6 +8699,7 @@ class DescribeIntelligencesRequest(AbstractModel):
                 self._Filters.append(obj)
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._IsActual = params.get("IsActual")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8687,10 +8717,38 @@ class DescribeIntelligencesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _List: <p>数组</p>
+        :type List: list of IntelligenceDesc
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Total = None
+        self._List = None
         self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def List(self):
+        r"""<p>数组</p>
+        :rtype: list of IntelligenceDesc
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
 
     @property
     def RequestId(self):
@@ -8705,6 +8763,13 @@ class DescribeIntelligencesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = IntelligenceDesc()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -19227,8 +19292,10 @@ class Filter(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 要搜索的字段
+注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Values: 目标值列表
+注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         """
         self._Name = None
@@ -19237,6 +19304,7 @@ class Filter(AbstractModel):
     @property
     def Name(self):
         r"""要搜索的字段
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -19248,6 +19316,7 @@ class Filter(AbstractModel):
     @property
     def Values(self):
         r"""目标值列表
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Values
@@ -19462,6 +19531,237 @@ class IgnoreDataResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class IntelligenceDesc(AbstractModel):
+    r"""漏洞情报详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>情报ID</p>
+        :type VulId: str
+        :param _VulName: <p>情报名称</p>
+        :type VulName: str
+        :param _VulOverview: <p>情报概述</p>
+        :type VulOverview: str
+        :param _InsertTime: <p>录入时间</p>
+        :type InsertTime: str
+        :param _RiskLevel: <p>漏洞风险等级 1：低风险，2：中风险，3：高风险</p>
+        :type RiskLevel: int
+        :param _Tags: <p>标签</p>
+        :type Tags: str
+        :param _VulComponents: <p>关联组件</p>
+        :type VulComponents: str
+        :param _BannerCount: <p>相关指纹数量</p>
+        :type BannerCount: int
+        :param _VulAssetCount: <p>漏洞资产数量</p>
+        :type VulAssetCount: int
+        :param _LastTaskStatus: <p>最新任务状态:todo/doing/done，如果为空表示没有任务</p>
+        :type LastTaskStatus: str
+        :param _LastTaskInstanceId: <p>任务id</p>
+        :type LastTaskInstanceId: str
+        :param _XscanBannerPluginId: <p>xscan指纹插件id</p>
+        :type XscanBannerPluginId: str
+        :param _XscanPocPluginId: <p>xscan poc插件id</p>
+        :type XscanPocPluginId: str
+        :param _LastScanTime: <p>上一次扫描时间</p>
+        :type LastScanTime: str
+        """
+        self._VulId = None
+        self._VulName = None
+        self._VulOverview = None
+        self._InsertTime = None
+        self._RiskLevel = None
+        self._Tags = None
+        self._VulComponents = None
+        self._BannerCount = None
+        self._VulAssetCount = None
+        self._LastTaskStatus = None
+        self._LastTaskInstanceId = None
+        self._XscanBannerPluginId = None
+        self._XscanPocPluginId = None
+        self._LastScanTime = None
+
+    @property
+    def VulId(self):
+        r"""<p>情报ID</p>
+        :rtype: str
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def VulName(self):
+        r"""<p>情报名称</p>
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def VulOverview(self):
+        r"""<p>情报概述</p>
+        :rtype: str
+        """
+        return self._VulOverview
+
+    @VulOverview.setter
+    def VulOverview(self, VulOverview):
+        self._VulOverview = VulOverview
+
+    @property
+    def InsertTime(self):
+        r"""<p>录入时间</p>
+        :rtype: str
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def RiskLevel(self):
+        r"""<p>漏洞风险等级 1：低风险，2：中风险，3：高风险</p>
+        :rtype: int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def VulComponents(self):
+        r"""<p>关联组件</p>
+        :rtype: str
+        """
+        return self._VulComponents
+
+    @VulComponents.setter
+    def VulComponents(self, VulComponents):
+        self._VulComponents = VulComponents
+
+    @property
+    def BannerCount(self):
+        r"""<p>相关指纹数量</p>
+        :rtype: int
+        """
+        return self._BannerCount
+
+    @BannerCount.setter
+    def BannerCount(self, BannerCount):
+        self._BannerCount = BannerCount
+
+    @property
+    def VulAssetCount(self):
+        r"""<p>漏洞资产数量</p>
+        :rtype: int
+        """
+        return self._VulAssetCount
+
+    @VulAssetCount.setter
+    def VulAssetCount(self, VulAssetCount):
+        self._VulAssetCount = VulAssetCount
+
+    @property
+    def LastTaskStatus(self):
+        r"""<p>最新任务状态:todo/doing/done，如果为空表示没有任务</p>
+        :rtype: str
+        """
+        return self._LastTaskStatus
+
+    @LastTaskStatus.setter
+    def LastTaskStatus(self, LastTaskStatus):
+        self._LastTaskStatus = LastTaskStatus
+
+    @property
+    def LastTaskInstanceId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._LastTaskInstanceId
+
+    @LastTaskInstanceId.setter
+    def LastTaskInstanceId(self, LastTaskInstanceId):
+        self._LastTaskInstanceId = LastTaskInstanceId
+
+    @property
+    def XscanBannerPluginId(self):
+        r"""<p>xscan指纹插件id</p>
+        :rtype: str
+        """
+        return self._XscanBannerPluginId
+
+    @XscanBannerPluginId.setter
+    def XscanBannerPluginId(self, XscanBannerPluginId):
+        self._XscanBannerPluginId = XscanBannerPluginId
+
+    @property
+    def XscanPocPluginId(self):
+        r"""<p>xscan poc插件id</p>
+        :rtype: str
+        """
+        return self._XscanPocPluginId
+
+    @XscanPocPluginId.setter
+    def XscanPocPluginId(self, XscanPocPluginId):
+        self._XscanPocPluginId = XscanPocPluginId
+
+    @property
+    def LastScanTime(self):
+        r"""<p>上一次扫描时间</p>
+        :rtype: str
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._VulName = params.get("VulName")
+        self._VulOverview = params.get("VulOverview")
+        self._InsertTime = params.get("InsertTime")
+        self._RiskLevel = params.get("RiskLevel")
+        self._Tags = params.get("Tags")
+        self._VulComponents = params.get("VulComponents")
+        self._BannerCount = params.get("BannerCount")
+        self._VulAssetCount = params.get("VulAssetCount")
+        self._LastTaskStatus = params.get("LastTaskStatus")
+        self._LastTaskInstanceId = params.get("LastTaskInstanceId")
+        self._XscanBannerPluginId = params.get("XscanBannerPluginId")
+        self._XscanPocPluginId = params.get("XscanPocPluginId")
+        self._LastScanTime = params.get("LastScanTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class IntelligenceResult(AbstractModel):

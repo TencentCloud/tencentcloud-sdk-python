@@ -677,6 +677,8 @@ class TextToVoiceRequest(AbstractModel):
         :type EmotionCategory: str
         :param _EmotionIntensity: <p>控制合成音频情感程度，取值范围为[50,200],默认为100；只有EmotionCategory不为空时生效；</p>
         :type EmotionIntensity: int
+        :param _EnableLatex: <p>是否开启LaTeX文本朗读功能，默认为false。<br>注：</p><ul><li>该参数适用于K12教育场景，启用后，会增加一定的时延</li><li>仅支持中文文本中使用LaTeX公式</li><li>仅支持部分超自然大模型2.0音色，详情见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。</li><li>公式使用需添加定界符，支持 $...$、$$...$$<br>例：同学们看这道题，$1 + 2 = 3$，这是最基础的加法。</li></ul>
+        :type EnableLatex: bool
         """
         self._Text = None
         self._SessionId = None
@@ -693,6 +695,7 @@ class TextToVoiceRequest(AbstractModel):
         self._SegmentRate = None
         self._EmotionCategory = None
         self._EmotionIntensity = None
+        self._EnableLatex = None
 
     @property
     def Text(self):
@@ -859,6 +862,17 @@ class TextToVoiceRequest(AbstractModel):
     def EmotionIntensity(self, EmotionIntensity):
         self._EmotionIntensity = EmotionIntensity
 
+    @property
+    def EnableLatex(self):
+        r"""<p>是否开启LaTeX文本朗读功能，默认为false。<br>注：</p><ul><li>该参数适用于K12教育场景，启用后，会增加一定的时延</li><li>仅支持中文文本中使用LaTeX公式</li><li>仅支持部分超自然大模型2.0音色，详情见<a href="https://cloud.tencent.com/document/product/1073/92668">音色列表</a>。</li><li>公式使用需添加定界符，支持 $...$、$$...$$<br>例：同学们看这道题，$1 + 2 = 3$，这是最基础的加法。</li></ul>
+        :rtype: bool
+        """
+        return self._EnableLatex
+
+    @EnableLatex.setter
+    def EnableLatex(self, EnableLatex):
+        self._EnableLatex = EnableLatex
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -876,6 +890,7 @@ class TextToVoiceRequest(AbstractModel):
         self._SegmentRate = params.get("SegmentRate")
         self._EmotionCategory = params.get("EmotionCategory")
         self._EmotionIntensity = params.get("EmotionIntensity")
+        self._EnableLatex = params.get("EnableLatex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

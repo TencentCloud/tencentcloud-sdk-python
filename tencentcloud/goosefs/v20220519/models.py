@@ -2259,6 +2259,145 @@ class CreatePolicyRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateUserQuotaRequest(AbstractModel):
+    r"""CreateUserQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param _QuotaType: 配额类型，UID或GID
+        :type QuotaType: str
+        :param _QuotaObjectName: 配额对象名称，对应UID或者GID的值
+        :type QuotaObjectName: str
+        :param _QuotaSizeLimit: 容量配额（需带单位G）
+        :type QuotaSizeLimit: str
+        :param _QuotaFilesLimit: 文件数配额
+        :type QuotaFilesLimit: str
+        """
+        self._FileSystemId = None
+        self._QuotaType = None
+        self._QuotaObjectName = None
+        self._QuotaSizeLimit = None
+        self._QuotaFilesLimit = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def QuotaType(self):
+        r"""配额类型，UID或GID
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def QuotaObjectName(self):
+        r"""配额对象名称，对应UID或者GID的值
+        :rtype: str
+        """
+        return self._QuotaObjectName
+
+    @QuotaObjectName.setter
+    def QuotaObjectName(self, QuotaObjectName):
+        self._QuotaObjectName = QuotaObjectName
+
+    @property
+    def QuotaSizeLimit(self):
+        r"""容量配额（需带单位G）
+        :rtype: str
+        """
+        return self._QuotaSizeLimit
+
+    @QuotaSizeLimit.setter
+    def QuotaSizeLimit(self, QuotaSizeLimit):
+        self._QuotaSizeLimit = QuotaSizeLimit
+
+    @property
+    def QuotaFilesLimit(self):
+        r"""文件数配额
+        :rtype: str
+        """
+        return self._QuotaFilesLimit
+
+    @QuotaFilesLimit.setter
+    def QuotaFilesLimit(self, QuotaFilesLimit):
+        self._QuotaFilesLimit = QuotaFilesLimit
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._QuotaType = params.get("QuotaType")
+        self._QuotaObjectName = params.get("QuotaObjectName")
+        self._QuotaSizeLimit = params.get("QuotaSizeLimit")
+        self._QuotaFilesLimit = params.get("QuotaFilesLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateUserQuotaResponse(AbstractModel):
+    r"""CreateUserQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuotaId: 配额id
+        :type QuotaId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QuotaId = None
+        self._RequestId = None
+
+    @property
+    def QuotaId(self):
+        r"""配额id
+        :rtype: str
+        """
+        return self._QuotaId
+
+    @QuotaId.setter
+    def QuotaId(self, QuotaId):
+        self._QuotaId = QuotaId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._QuotaId = params.get("QuotaId")
+        self._RequestId = params.get("RequestId")
+
+
 class CustomerClusterAttr(AbstractModel):
     r"""goosefsx客户端集群信息
 
@@ -3240,6 +3379,85 @@ class DeletePolicyRuleRequest(AbstractModel):
 
 class DeletePolicyRuleResponse(AbstractModel):
     r"""DeletePolicyRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteUserQuotaRequest(AbstractModel):
+    r"""DeleteUserQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param _QuotaId: 配额id
+        :type QuotaId: str
+        """
+        self._FileSystemId = None
+        self._QuotaId = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def QuotaId(self):
+        r"""配额id
+        :rtype: str
+        """
+        return self._QuotaId
+
+    @QuotaId.setter
+    def QuotaId(self, QuotaId):
+        self._QuotaId = QuotaId
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._QuotaId = params.get("QuotaId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteUserQuotaResponse(AbstractModel):
+    r"""DeleteUserQuota返回参数结构体
 
     """
 
@@ -4657,6 +4875,135 @@ class DescribePolicyRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self._PolicyRuleTaskList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeUserQuotaRequest(AbstractModel):
+    r"""DescribeUserQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统id</p>
+        :type FileSystemId: str
+        :param _QuotaIds: <p>QuotaId列表</p>
+        :type QuotaIds: list of str
+        :param _QuotaType: <p>配额类型</p>
+        :type QuotaType: str
+        :param _QuotaObjectNames: <p>配额对象名称列表</p>
+        :type QuotaObjectNames: list of str
+        """
+        self._FileSystemId = None
+        self._QuotaIds = None
+        self._QuotaType = None
+        self._QuotaObjectNames = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统id</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def QuotaIds(self):
+        r"""<p>QuotaId列表</p>
+        :rtype: list of str
+        """
+        return self._QuotaIds
+
+    @QuotaIds.setter
+    def QuotaIds(self, QuotaIds):
+        self._QuotaIds = QuotaIds
+
+    @property
+    def QuotaType(self):
+        r"""<p>配额类型</p>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def QuotaObjectNames(self):
+        r"""<p>配额对象名称列表</p>
+        :rtype: list of str
+        """
+        return self._QuotaObjectNames
+
+    @QuotaObjectNames.setter
+    def QuotaObjectNames(self, QuotaObjectNames):
+        self._QuotaObjectNames = QuotaObjectNames
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._QuotaIds = params.get("QuotaIds")
+        self._QuotaType = params.get("QuotaType")
+        self._QuotaObjectNames = params.get("QuotaObjectNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserQuotaResponse(AbstractModel):
+    r"""DescribeUserQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuotaList: <p>配额信息列表</p>
+        :type QuotaList: list of UserQuotaInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QuotaList = None
+        self._RequestId = None
+
+    @property
+    def QuotaList(self):
+        r"""<p>配额信息列表</p>
+        :rtype: list of UserQuotaInfo
+        """
+        return self._QuotaList
+
+    @QuotaList.setter
+    def QuotaList(self, QuotaList):
+        self._QuotaList = QuotaList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaList") is not None:
+            self._QuotaList = []
+            for item in params.get("QuotaList"):
+                obj = UserQuotaInfo()
+                obj._deserialize(item)
+                self._QuotaList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8468,3 +8815,313 @@ class UpdateLoadTaskPriorityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class UpdateUserQuotaRequest(AbstractModel):
+    r"""UpdateUserQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: 文件系统id
+        :type FileSystemId: str
+        :param _QuotaId: 配额id
+        :type QuotaId: str
+        :param _QuotaSizeLimit: 容量配额限定值
+        :type QuotaSizeLimit: str
+        :param _QuotaFilesLimit: 文件数配额限定值
+        :type QuotaFilesLimit: str
+        """
+        self._FileSystemId = None
+        self._QuotaId = None
+        self._QuotaSizeLimit = None
+        self._QuotaFilesLimit = None
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def QuotaId(self):
+        r"""配额id
+        :rtype: str
+        """
+        return self._QuotaId
+
+    @QuotaId.setter
+    def QuotaId(self, QuotaId):
+        self._QuotaId = QuotaId
+
+    @property
+    def QuotaSizeLimit(self):
+        r"""容量配额限定值
+        :rtype: str
+        """
+        return self._QuotaSizeLimit
+
+    @QuotaSizeLimit.setter
+    def QuotaSizeLimit(self, QuotaSizeLimit):
+        self._QuotaSizeLimit = QuotaSizeLimit
+
+    @property
+    def QuotaFilesLimit(self):
+        r"""文件数配额限定值
+        :rtype: str
+        """
+        return self._QuotaFilesLimit
+
+    @QuotaFilesLimit.setter
+    def QuotaFilesLimit(self, QuotaFilesLimit):
+        self._QuotaFilesLimit = QuotaFilesLimit
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._QuotaId = params.get("QuotaId")
+        self._QuotaSizeLimit = params.get("QuotaSizeLimit")
+        self._QuotaFilesLimit = params.get("QuotaFilesLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateUserQuotaResponse(AbstractModel):
+    r"""UpdateUserQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UserQuotaInfo(AbstractModel):
+    r"""用户配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuotaId: 配额id
+        :type QuotaId: str
+        :param _QuotaType: 配额类型
+        :type QuotaType: str
+        :param _QuotaObjectName: 配额对象名称，对应UID/GID的值
+        :type QuotaObjectName: str
+        :param _QuotaSizeLimit: 容量配额限定值
+        :type QuotaSizeLimit: str
+        :param _QuotaSizeUsed: 已使用容量配额
+        :type QuotaSizeUsed: str
+        :param _QuotaSizeUsedPercent: 容量配额使用占比
+        :type QuotaSizeUsedPercent: str
+        :param _QuotaFilesLimit: 文件数配额限定值
+        :type QuotaFilesLimit: str
+        :param _QuotaFilesUsed: 已使用文件数配额
+        :type QuotaFilesUsed: str
+        :param _QuotaFilesUsedPercent: 文件数配额使用占比
+        :type QuotaFilesUsedPercent: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param _Status: 配额状态：creating 配置中 active 已生效 modify 修改中
+        :type Status: str
+        """
+        self._QuotaId = None
+        self._QuotaType = None
+        self._QuotaObjectName = None
+        self._QuotaSizeLimit = None
+        self._QuotaSizeUsed = None
+        self._QuotaSizeUsedPercent = None
+        self._QuotaFilesLimit = None
+        self._QuotaFilesUsed = None
+        self._QuotaFilesUsedPercent = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Status = None
+
+    @property
+    def QuotaId(self):
+        r"""配额id
+        :rtype: str
+        """
+        return self._QuotaId
+
+    @QuotaId.setter
+    def QuotaId(self, QuotaId):
+        self._QuotaId = QuotaId
+
+    @property
+    def QuotaType(self):
+        r"""配额类型
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def QuotaObjectName(self):
+        r"""配额对象名称，对应UID/GID的值
+        :rtype: str
+        """
+        return self._QuotaObjectName
+
+    @QuotaObjectName.setter
+    def QuotaObjectName(self, QuotaObjectName):
+        self._QuotaObjectName = QuotaObjectName
+
+    @property
+    def QuotaSizeLimit(self):
+        r"""容量配额限定值
+        :rtype: str
+        """
+        return self._QuotaSizeLimit
+
+    @QuotaSizeLimit.setter
+    def QuotaSizeLimit(self, QuotaSizeLimit):
+        self._QuotaSizeLimit = QuotaSizeLimit
+
+    @property
+    def QuotaSizeUsed(self):
+        r"""已使用容量配额
+        :rtype: str
+        """
+        return self._QuotaSizeUsed
+
+    @QuotaSizeUsed.setter
+    def QuotaSizeUsed(self, QuotaSizeUsed):
+        self._QuotaSizeUsed = QuotaSizeUsed
+
+    @property
+    def QuotaSizeUsedPercent(self):
+        r"""容量配额使用占比
+        :rtype: str
+        """
+        return self._QuotaSizeUsedPercent
+
+    @QuotaSizeUsedPercent.setter
+    def QuotaSizeUsedPercent(self, QuotaSizeUsedPercent):
+        self._QuotaSizeUsedPercent = QuotaSizeUsedPercent
+
+    @property
+    def QuotaFilesLimit(self):
+        r"""文件数配额限定值
+        :rtype: str
+        """
+        return self._QuotaFilesLimit
+
+    @QuotaFilesLimit.setter
+    def QuotaFilesLimit(self, QuotaFilesLimit):
+        self._QuotaFilesLimit = QuotaFilesLimit
+
+    @property
+    def QuotaFilesUsed(self):
+        r"""已使用文件数配额
+        :rtype: str
+        """
+        return self._QuotaFilesUsed
+
+    @QuotaFilesUsed.setter
+    def QuotaFilesUsed(self, QuotaFilesUsed):
+        self._QuotaFilesUsed = QuotaFilesUsed
+
+    @property
+    def QuotaFilesUsedPercent(self):
+        r"""文件数配额使用占比
+        :rtype: str
+        """
+        return self._QuotaFilesUsedPercent
+
+    @QuotaFilesUsedPercent.setter
+    def QuotaFilesUsedPercent(self, QuotaFilesUsedPercent):
+        self._QuotaFilesUsedPercent = QuotaFilesUsedPercent
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Status(self):
+        r"""配额状态：creating 配置中 active 已生效 modify 修改中
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._QuotaId = params.get("QuotaId")
+        self._QuotaType = params.get("QuotaType")
+        self._QuotaObjectName = params.get("QuotaObjectName")
+        self._QuotaSizeLimit = params.get("QuotaSizeLimit")
+        self._QuotaSizeUsed = params.get("QuotaSizeUsed")
+        self._QuotaSizeUsedPercent = params.get("QuotaSizeUsedPercent")
+        self._QuotaFilesLimit = params.get("QuotaFilesLimit")
+        self._QuotaFilesUsed = params.get("QuotaFilesUsed")
+        self._QuotaFilesUsedPercent = params.get("QuotaFilesUsedPercent")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        

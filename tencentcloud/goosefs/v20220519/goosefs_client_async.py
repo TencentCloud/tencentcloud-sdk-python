@@ -259,6 +259,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateUserQuota(
+            self,
+            request: models.CreateUserQuotaRequest,
+            opts: Dict = None,
+    ) -> models.CreateUserQuotaResponse:
+        """
+        创建用户配额
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateUserQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateUserQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCrossVpcSubnetSupportForClientNode(
             self,
             request: models.DeleteCrossVpcSubnetSupportForClientNodeRequest,
@@ -344,6 +362,24 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "DeletePolicyRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePolicyRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteUserQuota(
+            self,
+            request: models.DeleteUserQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DeleteUserQuotaResponse:
+        """
+        删除用户配额
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteUserQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteUserQuotaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -578,6 +614,24 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "DescribePolicyRuleExecuteRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePolicyRuleExecuteRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserQuota(
+            self,
+            request: models.DescribeUserQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserQuotaResponse:
+        """
+        查询用户配额
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserQuotaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -830,6 +884,24 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "UpdateLoadTaskPriority"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateLoadTaskPriorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateUserQuota(
+            self,
+            request: models.UpdateUserQuotaRequest,
+            opts: Dict = None,
+    ) -> models.UpdateUserQuotaResponse:
+        """
+        修改用户配额
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateUserQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateUserQuotaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

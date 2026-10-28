@@ -9635,6 +9635,102 @@ class ModifyDBCustomNodeTagsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBCustomNodeTypeRequest(AbstractModel):
+    r"""ModifyDBCustomNodeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p>
+        :type NodeId: str
+        :param _NodeType: <p>节点机型</p>
+        :type NodeType: str
+        """
+        self._NodeId = None
+        self._NodeType = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def NodeType(self):
+        r"""<p>节点机型</p>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._NodeType = params.get("NodeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomNodeTypeResponse(AbstractModel):
+    r"""ModifyDBCustomNodeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>修改节点配置的任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>修改节点配置的任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBCustomNodesDisasterRecoverGroupRequest(AbstractModel):
     r"""ModifyDBCustomNodesDisasterRecoverGroup请求参数结构体
 
@@ -9966,6 +10062,102 @@ class PolicyRule(AbstractModel):
         
 
 
+class RebootDBCustomNodesRequest(AbstractModel):
+    r"""RebootDBCustomNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeIds: <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+        :type NodeIds: list of str
+        :param _StopType: <p>关机类型</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+        :type StopType: str
+        """
+        self._NodeIds = None
+        self._StopType = None
+
+    @property
+    def NodeIds(self):
+        r"""<p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def StopType(self):
+        r"""<p>关机类型</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+        :rtype: str
+        """
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
+
+
+    def _deserialize(self, params):
+        self._NodeIds = params.get("NodeIds")
+        self._StopType = params.get("StopType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebootDBCustomNodesResponse(AbstractModel):
+    r"""RebootDBCustomNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class RegionInfo(AbstractModel):
     r"""地域信息。
 
@@ -10267,6 +10459,245 @@ class RenewDBCustomNodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ResetDBCustomNodeRequest(AbstractModel):
+    r"""ResetDBCustomNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
+        :type NodeId: str
+        :param _LoginSettings: <p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+        :type LoginSettings: :class:`tencentcloud.dbdc.v20201029.models.LoginSettings`
+        :param _ImageId: <p>重设的操作系统镜像ID</p><p>取值参考：可通过&quot;DescribeDBCustomImages&quot;接口获取支持的镜像。</p>
+        :type ImageId: str
+        :param _HostName: <p>重装系统时，可以指定修改节点的主机名。</p><p>入参限制：- 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</p><ul><li>Windows ：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>Linux：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li></ul><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
+        :type HostName: str
+        """
+        self._NodeId = None
+        self._LoginSettings = None
+        self._ImageId = None
+        self._HostName = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def LoginSettings(self):
+        r"""<p>实例登录设置。通过该参数可以设置实例的登录方式密码、密钥或保持镜像的原始登录设置。</p><p>入参限制：若选择密钥方式，KeyIds 仅支持单个 ID。三种方式必须且仅可以设置其中一种。</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.LoginSettings`
+        """
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+    @property
+    def ImageId(self):
+        r"""<p>重设的操作系统镜像ID</p><p>取值参考：可通过&quot;DescribeDBCustomImages&quot;接口获取支持的镜像。</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def HostName(self):
+        r"""<p>重装系统时，可以指定修改节点的主机名。</p><p>入参限制：- 点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</p><ul><li>Windows ：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>Linux：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li></ul><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        if params.get("LoginSettings") is not None:
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
+        self._ImageId = params.get("ImageId")
+        self._HostName = params.get("HostName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetDBCustomNodeResponse(AbstractModel):
+    r"""ResetDBCustomNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ResizeDBCustomNodeDiskRequest(AbstractModel):
+    r"""ResizeDBCustomNodeDisk请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p>
+        :type NodeId: str
+        :param _DiskId: <p>节点磁盘ID</p>
+        :type DiskId: str
+        :param _DiskSize: <p>调整后的磁盘容量大小</p><p>单位：GB</p><p>必须大于当前硬盘大小。系统盘小于2048，数据盘小于32000</p>
+        :type DiskSize: int
+        """
+        self._NodeId = None
+        self._DiskId = None
+        self._DiskSize = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def DiskId(self):
+        r"""<p>节点磁盘ID</p>
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def DiskSize(self):
+        r"""<p>调整后的磁盘容量大小</p><p>单位：GB</p><p>必须大于当前硬盘大小。系统盘小于2048，数据盘小于32000</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._DiskId = params.get("DiskId")
+        self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResizeDBCustomNodeDiskResponse(AbstractModel):
+    r"""ResizeDBCustomNodeDisk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>调整节点磁盘容量的任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>调整节点磁盘容量的任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ResourceTag(AbstractModel):
     r"""标签对象，包含tagKey & tagValue
 
@@ -10452,6 +10883,183 @@ class SecurityGroup(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartDBCustomNodesRequest(AbstractModel):
+    r"""StartDBCustomNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeIds: <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+        :type NodeIds: list of str
+        """
+        self._NodeIds = None
+
+    @property
+    def NodeIds(self):
+        r"""<p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+
+    def _deserialize(self, params):
+        self._NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartDBCustomNodesResponse(AbstractModel):
+    r"""StartDBCustomNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopDBCustomNodesRequest(AbstractModel):
+    r"""StopDBCustomNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeIds: <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+        :type NodeIds: list of str
+        :param _StopType: <p>关机类型</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+        :type StopType: str
+        """
+        self._NodeIds = None
+        self._StopType = None
+
+    @property
+    def NodeIds(self):
+        r"""<p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def StopType(self):
+        r"""<p>关机类型</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+        :rtype: str
+        """
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
+
+
+    def _deserialize(self, params):
+        self._NodeIds = params.get("NodeIds")
+        self._StopType = params.get("StopType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopDBCustomNodesResponse(AbstractModel):
+    r"""StopDBCustomNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SystemDisk(AbstractModel):

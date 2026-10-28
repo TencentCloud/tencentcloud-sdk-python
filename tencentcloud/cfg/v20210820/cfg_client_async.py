@@ -133,6 +133,24 @@ class CfgClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceAgentList(
+            self,
+            request: models.DescribeInstanceAgentListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceAgentListResponse:
+        """
+        查询探针列表，换为OTeam探针版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceAgentList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceAgentListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeObjectTypeList(
             self,
             request: models.DescribeObjectTypeListRequest,
@@ -295,6 +313,24 @@ class CfgClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InstallAgentOpenApi(
+            self,
+            request: models.InstallAgentOpenApiRequest,
+            opts: Dict = None,
+    ) -> models.InstallAgentOpenApiResponse:
+        """
+        安装探针接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InstallAgentOpenApi"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InstallAgentOpenApiResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyTaskRunStatus(
             self,
             request: models.ModifyTaskRunStatusRequest,
@@ -326,6 +362,24 @@ class CfgClient(AbstractClient):
         kwargs["action"] = "TriggerPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TriggerPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UninstallAgentOpenApi(
+            self,
+            request: models.UninstallAgentOpenApiRequest,
+            opts: Dict = None,
+    ) -> models.UninstallAgentOpenApiResponse:
+        """
+        卸载探针
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UninstallAgentOpenApi"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UninstallAgentOpenApiResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

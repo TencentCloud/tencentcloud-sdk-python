@@ -8230,7 +8230,7 @@ class DescribeSandboxToolListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认为20，最大值为100
         :type Limit: int
-        :param _Filters: 过滤条件
+        :param _Filters: 过滤条件。支持 access-policy-id 按关联的访问策略 ID 反向查询；其他过滤条件沿用沙箱工具列表接口约定。
         :type Filters: list of Filter
         """
         self._ToolIds = None
@@ -8273,7 +8273,7 @@ class DescribeSandboxToolListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件
+        r"""过滤条件。支持 access-policy-id 按关联的访问策略 ID 反向查询；其他过滤条件沿用沙箱工具列表接口约定。
         :rtype: list of Filter
         """
         return self._Filters

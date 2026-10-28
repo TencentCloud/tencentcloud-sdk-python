@@ -727,6 +727,25 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBCustomNodeType(
+            self,
+            request: models.ModifyDBCustomNodeTypeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBCustomNodeTypeResponse:
+        """
+        该接口（ModifyDBCustomNodeType）用于修改 DB Custom 节点配置。
+        修改节点配置过程中会重启节点。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBCustomNodeType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBCustomNodeTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBCustomNodesDisasterRecoverGroup(
             self,
             request: models.ModifyDBCustomNodesDisasterRecoverGroupRequest,
@@ -763,6 +782,24 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RebootDBCustomNodes(
+            self,
+            request: models.RebootDBCustomNodesRequest,
+            opts: Dict = None,
+    ) -> models.RebootDBCustomNodesResponse:
+        """
+        该接口（RebootDBCustomNodes）用于重启 DB Custom 节点。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RebootDBCustomNodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RebootDBCustomNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RemoveNodesFromDBCustomCluster(
             self,
             request: models.RemoveNodesFromDBCustomClusterRequest,
@@ -794,6 +831,78 @@ class DbdcClient(AbstractClient):
         kwargs["action"] = "RenewDBCustomNode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RenewDBCustomNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResetDBCustomNode(
+            self,
+            request: models.ResetDBCustomNodeRequest,
+            opts: Dict = None,
+    ) -> models.ResetDBCustomNodeResponse:
+        """
+        该接口（ResetDBCustomNode）用于重装 DB Custom 节点的操作系统。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetDBCustomNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetDBCustomNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResizeDBCustomNodeDisk(
+            self,
+            request: models.ResizeDBCustomNodeDiskRequest,
+            opts: Dict = None,
+    ) -> models.ResizeDBCustomNodeDiskResponse:
+        """
+        该接口（ResizeDBCustomNodeDisk）用于调整 DB Custom 节点磁盘容量。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResizeDBCustomNodeDisk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResizeDBCustomNodeDiskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StartDBCustomNodes(
+            self,
+            request: models.StartDBCustomNodesRequest,
+            opts: Dict = None,
+    ) -> models.StartDBCustomNodesResponse:
+        """
+        该接口（StartDBCustomNodes）用于开机 DB Custom 节点。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartDBCustomNodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartDBCustomNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopDBCustomNodes(
+            self,
+            request: models.StopDBCustomNodesRequest,
+            opts: Dict = None,
+    ) -> models.StopDBCustomNodesResponse:
+        """
+        该接口（StopDBCustomNodes）用于关机 DB Custom 节点。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopDBCustomNodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopDBCustomNodesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -697,6 +697,57 @@ class ActionLibraryListResult(AbstractModel):
         
 
 
+class AgentFilter(AbstractModel):
+    r"""筛选符合条件的Agent
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 查询key
+        :type Name: str
+        :param _Value: 查询value
+        :type Value: list of str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""查询key
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""查询value
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApmServiceInfo(AbstractModel):
     r"""应用性能监控产品中应用信息
 
@@ -1611,6 +1662,170 @@ class DescribeActionLibraryListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Results.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceAgentListRequest(AbstractModel):
+    r"""DescribeInstanceAgentList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: <p>1:CVM<br>2.TKE</p>
+        :type InstanceType: int
+        :param _Filters: <p>筛选条件</p>
+        :type Filters: list of AgentFilter
+        :param _Page: <p>页数</p>
+        :type Page: int
+        :param _PageSize: <p>每页大小</p>
+        :type PageSize: int
+        :param _AgentScene: <p>查询探针场景</p>
+        :type AgentScene: int
+        """
+        self._InstanceType = None
+        self._Filters = None
+        self._Page = None
+        self._PageSize = None
+        self._AgentScene = None
+
+    @property
+    def InstanceType(self):
+        r"""<p>1:CVM<br>2.TKE</p>
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件</p>
+        :rtype: list of AgentFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Page(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def AgentScene(self):
+        r"""<p>查询探针场景</p>
+        :rtype: int
+        """
+        return self._AgentScene
+
+    @AgentScene.setter
+    def AgentScene(self, AgentScene):
+        self._AgentScene = AgentScene
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AgentFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._AgentScene = params.get("AgentScene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceAgentListResponse(AbstractModel):
+    r"""DescribeInstanceAgentList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceAgent: <p>返回InstnaceAgent详情</p>
+        :type InstanceAgent: list of InstanceAgent
+        :param _TotalCount: <p>总条目数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceAgent = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def InstanceAgent(self):
+        r"""<p>返回InstnaceAgent详情</p>
+        :rtype: list of InstanceAgent
+        """
+        return self._InstanceAgent
+
+    @InstanceAgent.setter
+    def InstanceAgent(self, InstanceAgent):
+        self._InstanceAgent = InstanceAgent
+
+    @property
+    def TotalCount(self):
+        r"""<p>总条目数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceAgent") is not None:
+            self._InstanceAgent = []
+            for item in params.get("InstanceAgent"):
+                obj = InstanceAgent()
+                obj._deserialize(item)
+                self._InstanceAgent.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -2953,6 +3168,200 @@ class ExecuteTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class InstallAgentOpenApiRequest(AbstractModel):
+    r"""InstallAgentOpenApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: <p>1:CVM<br>2:TKE</p>
+        :type InstanceType: int
+        :param _InstanceIds: <p>安装探针实例列表</p>
+        :type InstanceIds: list of str
+        """
+        self._InstanceType = None
+        self._InstanceIds = None
+
+    @property
+    def InstanceType(self):
+        r"""<p>1:CVM<br>2:TKE</p>
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceIds(self):
+        r"""<p>安装探针实例列表</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstallAgentOpenApiResponse(AbstractModel):
+    r"""InstallAgentOpenApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: <p>状态异常提示用户</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        r"""<p>状态异常提示用户</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class InstanceAgent(AbstractModel):
+    r"""添加探针的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceAgentItem: 添加InstanceAgent的参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceAgentItem: list of InstanceAgentItem
+        """
+        self._InstanceAgentItem = None
+
+    @property
+    def InstanceAgentItem(self):
+        r"""添加InstanceAgent的参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InstanceAgentItem
+        """
+        return self._InstanceAgentItem
+
+    @InstanceAgentItem.setter
+    def InstanceAgentItem(self, InstanceAgentItem):
+        self._InstanceAgentItem = InstanceAgentItem
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceAgentItem") is not None:
+            self._InstanceAgentItem = []
+            for item in params.get("InstanceAgentItem"):
+                obj = InstanceAgentItem()
+                obj._deserialize(item)
+                self._InstanceAgentItem.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceAgentItem(AbstractModel):
+    r"""添加探针入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>添加参数Key的名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: <p>添加参数的Value</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>添加参数Key的名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>添加参数的Value</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyTaskRunStatusRequest(AbstractModel):
@@ -7629,4 +8038,100 @@ class TriggerPolicyResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._Success = params.get("Success")
+        self._RequestId = params.get("RequestId")
+
+
+class UninstallAgentOpenApiRequest(AbstractModel):
+    r"""UninstallAgentOpenApi请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: <p>1: CVM<br>2: TKE</p>
+        :type InstanceType: int
+        :param _InstanceIds: <p>需要卸载的instance_id</p>
+        :type InstanceIds: list of str
+        """
+        self._InstanceType = None
+        self._InstanceIds = None
+
+    @property
+    def InstanceType(self):
+        r"""<p>1: CVM<br>2: TKE</p>
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceIds(self):
+        r"""<p>需要卸载的instance_id</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UninstallAgentOpenApiResponse(AbstractModel):
+    r"""UninstallAgentOpenApi返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: <p>提示用户状态不正确无法安装字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Message(self):
+        r"""<p>提示用户状态不正确无法安装字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")

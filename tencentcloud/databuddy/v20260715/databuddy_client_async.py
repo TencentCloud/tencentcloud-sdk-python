@@ -1334,6 +1334,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RemoveWorkspaceUsers(
+            self,
+            request: models.RemoveWorkspaceUsersRequest,
+            opts: Dict = None,
+    ) -> models.RemoveWorkspaceUsersResponse:
+        """
+        <p>批量移除工作空间用户（单次最多10个；单个 UIN 失败不影响其他 UIN 移除，成败以 SuccessUins/FailItems 为准）</p>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RemoveWorkspaceUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RemoveWorkspaceUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RerunWorkflowRun(
             self,
             request: models.RerunWorkflowRunRequest,
@@ -1789,6 +1807,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateWorkspaceGroupsTags(
+            self,
+            request: models.UpdateWorkspaceGroupsTagsRequest,
+            opts: Dict = None,
+    ) -> models.UpdateWorkspaceGroupsTagsResponse:
+        """
+        修改工作空间用户组标签
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateWorkspaceGroupsTags"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateWorkspaceGroupsTagsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateWorkspaceRole(
             self,
             request: models.UpdateWorkspaceRoleRequest,
@@ -1820,6 +1856,29 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "UpdateWorkspaceUsersRoles"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateWorkspaceUsersRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateWorkspaceUsersTags(
+            self,
+            request: models.UpdateWorkspaceUsersTagsRequest,
+            opts: Dict = None,
+    ) -> models.UpdateWorkspaceUsersTagsResponse:
+        """
+        修改工作空间用户标签
+        本接口为整体覆盖式修改：每次调用以请求中的 Tags 为准，替换指定用户的全部直绑标签，而非增量追加。
+        1、传入 Tags（含 TagId/TagValueId）：替换为该批标签
+        2、不传 Tags 或传入空数组（"Tags": []）：将清除 UserUins 中所有用户的全部直绑标签，且操作不可逆，请谨慎调用
+        3、多个用户将共享同一批 Tags；仅修改单个用户时，UserUins 请只传该用户
+        4、仅清除用户直绑（Source=1）的标签，用户从用户组继承的标签（Source=2）不受影响
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateWorkspaceUsersTags"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateWorkspaceUsersTagsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1061,6 +1061,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteLLMSdkAccess(self, request):
+        r"""llmwaf-sdk删除接入配置接口
+
+        :param request: Request instance for DeleteLLMSdkAccess.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteLLMSdkAccessRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteLLMSdkAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLLMSdkAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLLMSdkAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteOwaspRuleStatus(self, request):
         r"""解除门神规则的状态锁
 

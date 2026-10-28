@@ -164,6 +164,29 @@ class CfgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceAgentList(self, request):
+        r"""查询探针列表，换为OTeam探针版本
+
+        :param request: Request instance for DescribeInstanceAgentList.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.DescribeInstanceAgentListRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.DescribeInstanceAgentListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceAgentList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceAgentListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeObjectTypeList(self, request):
         r"""查询对象类型列表
 
@@ -371,6 +394,29 @@ class CfgClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InstallAgentOpenApi(self, request):
+        r"""安装探针接口
+
+        :param request: Request instance for InstallAgentOpenApi.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.InstallAgentOpenApiRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.InstallAgentOpenApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallAgentOpenApi", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallAgentOpenApiResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyTaskRunStatus(self, request):
         r"""修改任务运行状态
 
@@ -408,6 +454,29 @@ class CfgClient(AbstractClient):
             body = self.call("TriggerPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.TriggerPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UninstallAgentOpenApi(self, request):
+        r"""卸载探针
+
+        :param request: Request instance for UninstallAgentOpenApi.
+        :type request: :class:`tencentcloud.cfg.v20210820.models.UninstallAgentOpenApiRequest`
+        :rtype: :class:`tencentcloud.cfg.v20210820.models.UninstallAgentOpenApiResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UninstallAgentOpenApi", params, headers=headers)
+            response = json.loads(body)
+            model = models.UninstallAgentOpenApiResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

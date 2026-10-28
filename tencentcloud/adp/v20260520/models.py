@@ -44567,23 +44567,29 @@ class Space(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpaceId: 空间id
+        :param _SpaceId: <p>空间id</p>
         :type SpaceId: str
-        :param _Name: 空间名称
+        :param _Name: <p>空间名称</p>
         :type Name: str
-        :param _Description: 空间描述
+        :param _Description: <p>空间描述</p>
         :type Description: str
-        :param _PermissionIdList: 空间权限
+        :param _PermissionIdList: <p>空间权限</p>
         :type PermissionIdList: list of str
+        :param _CreateTime: <p>创建时间</p><p>参数格式：秒时间戳</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p><p>参数格式：秒时间戳</p>
+        :type UpdateTime: str
         """
         self._SpaceId = None
         self._Name = None
         self._Description = None
         self._PermissionIdList = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def SpaceId(self):
-        r"""空间id
+        r"""<p>空间id</p>
         :rtype: str
         """
         return self._SpaceId
@@ -44594,7 +44600,7 @@ class Space(AbstractModel):
 
     @property
     def Name(self):
-        r"""空间名称
+        r"""<p>空间名称</p>
         :rtype: str
         """
         return self._Name
@@ -44605,7 +44611,7 @@ class Space(AbstractModel):
 
     @property
     def Description(self):
-        r"""空间描述
+        r"""<p>空间描述</p>
         :rtype: str
         """
         return self._Description
@@ -44616,7 +44622,7 @@ class Space(AbstractModel):
 
     @property
     def PermissionIdList(self):
-        r"""空间权限
+        r"""<p>空间权限</p>
         :rtype: list of str
         """
         return self._PermissionIdList
@@ -44625,12 +44631,36 @@ class Space(AbstractModel):
     def PermissionIdList(self, PermissionIdList):
         self._PermissionIdList = PermissionIdList
 
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：秒时间戳</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>参数格式：秒时间戳</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
         self._Name = params.get("Name")
         self._Description = params.get("Description")
         self._PermissionIdList = params.get("PermissionIdList")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

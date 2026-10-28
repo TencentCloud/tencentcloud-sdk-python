@@ -923,6 +923,30 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBCustomNodeType(self, request):
+        r"""该接口（ModifyDBCustomNodeType）用于修改 DB Custom 节点配置。
+        修改节点配置过程中会重启节点。
+
+        :param request: Request instance for ModifyDBCustomNodeType.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomNodeTypeRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomNodeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBCustomNodeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBCustomNodeTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBCustomNodesDisasterRecoverGroup(self, request):
         r"""该接口（ModifyDBCustomNodesDisasterRecoverGroup）用于修改 DB Custom 节点的置放群组。
 
@@ -969,6 +993,29 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RebootDBCustomNodes(self, request):
+        r"""该接口（RebootDBCustomNodes）用于重启 DB Custom 节点。
+
+        :param request: Request instance for RebootDBCustomNodes.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.RebootDBCustomNodesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.RebootDBCustomNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RebootDBCustomNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.RebootDBCustomNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RemoveNodesFromDBCustomCluster(self, request):
         r"""该接口（RemoveNodesFromDBCustomCluster）用于从 DB Custom 集群移出节点。
 
@@ -1006,6 +1053,98 @@ class DbdcClient(AbstractClient):
             body = self.call("RenewDBCustomNode", params, headers=headers)
             response = json.loads(body)
             model = models.RenewDBCustomNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetDBCustomNode(self, request):
+        r"""该接口（ResetDBCustomNode）用于重装 DB Custom 节点的操作系统。
+
+        :param request: Request instance for ResetDBCustomNode.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ResetDBCustomNodeRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ResetDBCustomNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetDBCustomNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetDBCustomNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResizeDBCustomNodeDisk(self, request):
+        r"""该接口（ResizeDBCustomNodeDisk）用于调整 DB Custom 节点磁盘容量。
+
+        :param request: Request instance for ResizeDBCustomNodeDisk.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ResizeDBCustomNodeDiskRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ResizeDBCustomNodeDiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResizeDBCustomNodeDisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResizeDBCustomNodeDiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartDBCustomNodes(self, request):
+        r"""该接口（StartDBCustomNodes）用于开机 DB Custom 节点。
+
+        :param request: Request instance for StartDBCustomNodes.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.StartDBCustomNodesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.StartDBCustomNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartDBCustomNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartDBCustomNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopDBCustomNodes(self, request):
+        r"""该接口（StopDBCustomNodes）用于关机 DB Custom 节点。
+
+        :param request: Request instance for StopDBCustomNodes.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.StopDBCustomNodesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.StopDBCustomNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopDBCustomNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopDBCustomNodesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

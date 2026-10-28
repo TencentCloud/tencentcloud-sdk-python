@@ -963,42 +963,6 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateTWeTalkProductConfig(
-            self,
-            request: models.CreateTWeTalkProductConfigRequest,
-            opts: Dict = None,
-    ) -> models.CreateTWeTalkProductConfigResponse:
-        """
-        用于配置TWeTalk服务连接产品配置信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateTWeTalkProductConfig"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateTWeTalkProductConfigResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateTWeTalkProductConfigV2(
-            self,
-            request: models.CreateTWeTalkProductConfigV2Request,
-            opts: Dict = None,
-    ) -> models.CreateTWeTalkProductConfigV2Response:
-        """
-        用于配置TWeTalk服务连接产品配置信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateTWeTalkProductConfigV2"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateTWeTalkProductConfigV2Response
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateTopicPolicy(
             self,
             request: models.CreateTopicPolicyRequest,
@@ -1372,24 +1336,6 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DeleteTWeTalkAgent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTWeTalkAgentResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteTWeTalkProductConfigV2(
-            self,
-            request: models.DeleteTWeTalkProductConfigV2Request,
-            opts: Dict = None,
-    ) -> models.DeleteTWeTalkProductConfigV2Response:
-        """
-        用于删除配置TWeTalk服务连接产品配置信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteTWeTalkProductConfigV2"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteTWeTalkProductConfigV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2763,42 +2709,6 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeTWeTalkProductConfig(
-            self,
-            request: models.DescribeTWeTalkProductConfigRequest,
-            opts: Dict = None,
-    ) -> models.DescribeTWeTalkProductConfigResponse:
-        """
-        用于获取TWeTalk服务连接产品配置信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeTWeTalkProductConfig"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeTWeTalkProductConfigResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeTWeTalkProductConfigV2(
-            self,
-            request: models.DescribeTWeTalkProductConfigV2Request,
-            opts: Dict = None,
-    ) -> models.DescribeTWeTalkProductConfigV2Response:
-        """
-        用于查询TWeTalk服务连接产品配置信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeTWeTalkProductConfigV2"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeTWeTalkProductConfigV2Response
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeTopicPolicy(
             self,
             request: models.DescribeTopicPolicyRequest,
@@ -3300,42 +3210,6 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "GetTWeTalkActiveStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetTWeTalkActiveStatusResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def GetTWeTalkProductConfigList(
-            self,
-            request: models.GetTWeTalkProductConfigListRequest,
-            opts: Dict = None,
-    ) -> models.GetTWeTalkProductConfigListResponse:
-        """
-        用于获取TWeTalk服务连接产品配置信息列表。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetTWeTalkProductConfigList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetTWeTalkProductConfigListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def GetTWeTalkProductConfigListV2(
-            self,
-            request: models.GetTWeTalkProductConfigListV2Request,
-            opts: Dict = None,
-    ) -> models.GetTWeTalkProductConfigListV2Response:
-        """
-        用于查询TWeTalk服务连接产品配置信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetTWeTalkProductConfigListV2"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetTWeTalkProductConfigListV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4128,42 +4002,6 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "ModifyTWeTalkAgent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyTWeTalkAgentResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyTWeTalkProductConfig(
-            self,
-            request: models.ModifyTWeTalkProductConfigRequest,
-            opts: Dict = None,
-    ) -> models.ModifyTWeTalkProductConfigResponse:
-        """
-        用于修改TWeTalk服务连接产品配置信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyTWeTalkProductConfig"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyTWeTalkProductConfigResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyTWeTalkProductConfigV2(
-            self,
-            request: models.ModifyTWeTalkProductConfigV2Request,
-            opts: Dict = None,
-    ) -> models.ModifyTWeTalkProductConfigV2Response:
-        """
-        用于修改配置TWeTalk服务连接产品配置信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyTWeTalkProductConfigV2"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyTWeTalkProductConfigV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

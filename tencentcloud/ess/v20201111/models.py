@@ -387,7 +387,7 @@ class ApproverInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApproverType: <p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下: </p><p><strong>0</strong>：企业</p><p> <strong>1</strong>：个人</p><p> <strong>3</strong>：企业“授权签”注：<code>类型为3（企业“授权签”）时，此接口会默认完成该签署方的签署。“授权签”仅进行盖章操作，不能“授权签”名。</code></p><p> <strong>7</strong>: 个人“授权签”，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code> </p><p><strong>8</strong>：本方企业 PIN 码授权，注：<code>使用前需先完成员工PIN码授权</code> </p><p><strong>9</strong>：他方企业 PIN 码授权，注：<code>使用前需先完成合作方企业PIN码授权</code></p><p> <strong>10</strong>: 个人 PIN 码授权，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
+        :param _ApproverType: <p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下: </p><p><strong>0</strong>：企业</p><p> <strong>1</strong>：个人</p><p> <strong>3</strong>：企业“授权签”注：<code>类型为3（企业“授权签”）时，此接口会默认完成该签署方的签署。“授权签”仅进行盖章操作，不能“授权签”名。</code>  <font color="red">后续会下掉此种类型，请迁移到8或9</font></p><p> <strong>7</strong>: 个人“授权签”，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code> <font color="red">后续会下掉此种类型，请迁移到10</font></p><p><strong>8</strong>：本方企业 PIN 码授权，注：<code>使用前需先完成员工PIN码授权</code> </p><p><strong>9</strong>：他方企业 PIN 码授权，注：<code>使用前需先完成合作方企业PIN码授权</code></p><p> <strong>10</strong>: 个人 PIN 码授权，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :type ApproverType: int
         :param _ApproverName: <p>签署方经办人的姓名。<br>经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。</p>
         :type ApproverName: str
@@ -475,7 +475,7 @@ class ApproverInfo(AbstractModel):
 
     @property
     def ApproverType(self):
-        r"""<p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下: </p><p><strong>0</strong>：企业</p><p> <strong>1</strong>：个人</p><p> <strong>3</strong>：企业“授权签”注：<code>类型为3（企业“授权签”）时，此接口会默认完成该签署方的签署。“授权签”仅进行盖章操作，不能“授权签”名。</code></p><p> <strong>7</strong>: 个人“授权签”，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code> </p><p><strong>8</strong>：本方企业 PIN 码授权，注：<code>使用前需先完成员工PIN码授权</code> </p><p><strong>9</strong>：他方企业 PIN 码授权，注：<code>使用前需先完成合作方企业PIN码授权</code></p><p> <strong>10</strong>: 个人 PIN 码授权，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
+        r"""<p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下: </p><p><strong>0</strong>：企业</p><p> <strong>1</strong>：个人</p><p> <strong>3</strong>：企业“授权签”注：<code>类型为3（企业“授权签”）时，此接口会默认完成该签署方的签署。“授权签”仅进行盖章操作，不能“授权签”名。</code>  <font color="red">后续会下掉此种类型，请迁移到8或9</font></p><p> <strong>7</strong>: 个人“授权签”，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code> <font color="red">后续会下掉此种类型，请迁移到10</font></p><p><strong>8</strong>：本方企业 PIN 码授权，注：<code>使用前需先完成员工PIN码授权</code> </p><p><strong>9</strong>：他方企业 PIN 码授权，注：<code>使用前需先完成合作方企业PIN码授权</code></p><p> <strong>10</strong>: 个人 PIN 码授权，适用于个人“授权签”场景。注: <code>个人“授权签”场景为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :rtype: int
         """
         return self._ApproverType
@@ -23662,21 +23662,20 @@ class DescribeContractDiffTaskWebUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。
-
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。使用此接口时，必须填写userId。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _TaskId: 合同对比任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractDiffTaskWebUrl" target="_blank">创建合同对比web页面</a>获取。
+        :param _TaskId: <p>合同对比任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractDiffTaskWebUrl" target="_blank">创建合同对比web页面</a>获取。</p>
         :type TaskId: str
+        :param _FormatConfigs: <p>过滤项列表，获取合同对比结果根据此过滤项列表进行过滤展示。<br>注：</p><ul><li>参数不传，默认根据该用户的过滤项配置进行展示。</li><li>参数传空数组，不过滤合同对比结果。</li><li>参数传过滤项列表，根据过滤项列表对合同对比结果进行过滤展示。</li></ul>
+        :type FormatConfigs: :class:`tencentcloud.ess.v20201111.models.FormatConfigs`
         """
         self._Operator = None
         self._TaskId = None
+        self._FormatConfigs = None
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。
-
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。使用此接口时，必须填写userId。</p><p>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -23687,7 +23686,7 @@ class DescribeContractDiffTaskWebUrlRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""合同对比任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractDiffTaskWebUrl" target="_blank">创建合同对比web页面</a>获取。
+        r"""<p>合同对比任务ID，该参数通过调用接口<a href="https://qian.tencent.com/developers/companyApis/embedPages/CreateContractDiffTaskWebUrl" target="_blank">创建合同对比web页面</a>获取。</p>
         :rtype: str
         """
         return self._TaskId
@@ -23696,12 +23695,26 @@ class DescribeContractDiffTaskWebUrlRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def FormatConfigs(self):
+        r"""<p>过滤项列表，获取合同对比结果根据此过滤项列表进行过滤展示。<br>注：</p><ul><li>参数不传，默认根据该用户的过滤项配置进行展示。</li><li>参数传空数组，不过滤合同对比结果。</li><li>参数传过滤项列表，根据过滤项列表对合同对比结果进行过滤展示。</li></ul>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.FormatConfigs`
+        """
+        return self._FormatConfigs
+
+    @FormatConfigs.setter
+    def FormatConfigs(self, FormatConfigs):
+        self._FormatConfigs = FormatConfigs
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
             self._Operator = UserInfo()
             self._Operator._deserialize(params.get("Operator"))
         self._TaskId = params.get("TaskId")
+        if params.get("FormatConfigs") is not None:
+            self._FormatConfigs = FormatConfigs()
+            self._FormatConfigs._deserialize(params.get("FormatConfigs"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23719,8 +23732,7 @@ class DescribeContractDiffTaskWebUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WebUrl: 合同对比嵌入式web页面链接，有效期：5分钟
-链接仅能使用一次
+        :param _WebUrl: <p>合同对比嵌入式web页面链接，有效期：5分钟<br>链接仅能使用一次</p>
         :type WebUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23730,8 +23742,7 @@ class DescribeContractDiffTaskWebUrlResponse(AbstractModel):
 
     @property
     def WebUrl(self):
-        r"""合同对比嵌入式web页面链接，有效期：5分钟
-链接仅能使用一次
+        r"""<p>合同对比嵌入式web页面链接，有效期：5分钟<br>链接仅能使用一次</p>
         :rtype: str
         """
         return self._WebUrl
@@ -35237,6 +35248,42 @@ class FormField(AbstractModel):
         self._ComponentValue = params.get("ComponentValue")
         self._ComponentId = params.get("ComponentId")
         self._ComponentName = params.get("ComponentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FormatConfigs(AbstractModel):
+    r"""合同对比查询结果过滤项配置列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Values: <p>合同对比结果过滤项</p><p>枚举值：</p><ul><li>1： 标点符号</li><li>2： 页眉页脚（包含页码）</li><li>3： 目录</li><li>4： 印章</li><li>5： 序号</li><li>6： 水印</li><li>7： 下划线</li></ul>
+        :type Values: list of int
+        """
+        self._Values = None
+
+    @property
+    def Values(self):
+        r"""<p>合同对比结果过滤项</p><p>枚举值：</p><ul><li>1： 标点符号</li><li>2： 页眉页脚（包含页码）</li><li>3： 目录</li><li>4： 印章</li><li>5： 序号</li><li>6： 水印</li><li>7： 下划线</li></ul>
+        :rtype: list of int
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
