@@ -2121,6 +2121,30 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnablePGDocumentExt(self, request):
+        r"""当前环境下开启 Postgresql 数据库文档插件能力，开启后会在指定  EnvId 的 PostgreSQL 实例下自动生成  pgdoc schema 以提供文档能力，不会额外产生费用，可以云开发控制或云 API 开启使用。
+        当前支持地域已环境开通时所在地域为准。
+
+        :param request: Request instance for EnablePGDocumentExt.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.EnablePGDocumentExtRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EnablePGDocumentExtResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnablePGDocumentExt", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnablePGDocumentExtResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExecutePGSql(self, request):
         r"""在Postgres数据库上执行SQL
 

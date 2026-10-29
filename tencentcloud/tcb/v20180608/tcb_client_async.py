@@ -1695,6 +1695,25 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EnablePGDocumentExt(
+            self,
+            request: models.EnablePGDocumentExtRequest,
+            opts: Dict = None,
+    ) -> models.EnablePGDocumentExtResponse:
+        """
+        当前环境下开启 Postgresql 数据库文档插件能力，开启后会在指定  EnvId 的 PostgreSQL 实例下自动生成  pgdoc schema 以提供文档能力，不会额外产生费用，可以云开发控制或云 API 开启使用。
+        当前支持地域已环境开通时所在地域为准。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnablePGDocumentExt"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnablePGDocumentExtResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExecutePGSql(
             self,
             request: models.ExecutePGSqlRequest,
