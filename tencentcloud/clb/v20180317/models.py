@@ -5426,9 +5426,12 @@ class CoefficientTierCondition(AbstractModel):
         :type InputTokensAbove: int
         :param _Resolution: <p>video 仅 480p／720p／768p／1024p／1080p／2k／4k，统一小写；只校验全局枚举，不校验模型支持子集；列表内不重复</p>
         :type Resolution: str
+        :param _HasInputVideo: <p>是否有视频输入</p>
+        :type HasInputVideo: bool
         """
         self._InputTokensAbove = None
         self._Resolution = None
+        self._HasInputVideo = None
 
     @property
     def InputTokensAbove(self):
@@ -5452,10 +5455,22 @@ class CoefficientTierCondition(AbstractModel):
     def Resolution(self, Resolution):
         self._Resolution = Resolution
 
+    @property
+    def HasInputVideo(self):
+        r"""<p>是否有视频输入</p>
+        :rtype: bool
+        """
+        return self._HasInputVideo
+
+    @HasInputVideo.setter
+    def HasInputVideo(self, HasInputVideo):
+        self._HasInputVideo = HasInputVideo
+
 
     def _deserialize(self, params):
         self._InputTokensAbove = params.get("InputTokensAbove")
         self._Resolution = params.get("Resolution")
+        self._HasInputVideo = params.get("HasInputVideo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31546,18 +31561,21 @@ class ModifyServiceProviderModelAttributesRequest(AbstractModel):
         :type ServiceProviderId: str
         :param _ModelName: <p>待修改的模型的名称（原始模型名称）</p>
         :type ModelName: str
-        :param _InputModalities: <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        :param _InputModalities: <p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
         :type InputModalities: list of str
         :param _NewModelName: <p>新的上游模型名称</p>
         :type NewModelName: str
         :param _NewModelAlias: <p>新的对外模型名称</p>
         :type NewModelAlias: str
+        :param _UpstreamRollout: <p>上游模型灰度操作，支持 Set、Promote、Rollback。</p><p>入参限制：未传时沿用普通属性编辑；显式 null、空对象及未知字段拒绝。与显式传入的 NewModelName、NewModelAlias、InputModalities 互斥，包括 null 和空别名。</p><p>Set 必须提供候选 ModelName 和 1～99 的整数 Weight，可调整同一候选的比例；相同配置在资源可编辑时成功且不重复下发。Promote、Rollback 仅传 Operation，分别全量切换到候选或恢复主模型并结束灰度。外层 ModelName 定位当前主模型；响应仍为 RequestId，任务通过 DescribeAsyncJobs 查询。</p>
+        :type UpstreamRollout: :class:`tencentcloud.clb.v20180317.models.UpstreamRolloutOperation`
         """
         self._ServiceProviderId = None
         self._ModelName = None
         self._InputModalities = None
         self._NewModelName = None
         self._NewModelAlias = None
+        self._UpstreamRollout = None
 
     @property
     def ServiceProviderId(self):
@@ -31583,7 +31601,7 @@ class ModifyServiceProviderModelAttributesRequest(AbstractModel):
 
     @property
     def InputModalities(self):
-        r"""<p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li></ul>
+        r"""<p>该模型支持的输入多模态能力列表</p><p>枚举值：</p><ul><li>text： 支持文本输入</li><li>image： 支持图像输入</li><li>file： 支持文件输入（当前仅支持pdf）</li><li>video： 支持视频输入</li></ul>
         :rtype: list of str
         """
         return self._InputModalities
@@ -31614,6 +31632,17 @@ class ModifyServiceProviderModelAttributesRequest(AbstractModel):
     def NewModelAlias(self, NewModelAlias):
         self._NewModelAlias = NewModelAlias
 
+    @property
+    def UpstreamRollout(self):
+        r"""<p>上游模型灰度操作，支持 Set、Promote、Rollback。</p><p>入参限制：未传时沿用普通属性编辑；显式 null、空对象及未知字段拒绝。与显式传入的 NewModelName、NewModelAlias、InputModalities 互斥，包括 null 和空别名。</p><p>Set 必须提供候选 ModelName 和 1～99 的整数 Weight，可调整同一候选的比例；相同配置在资源可编辑时成功且不重复下发。Promote、Rollback 仅传 Operation，分别全量切换到候选或恢复主模型并结束灰度。外层 ModelName 定位当前主模型；响应仍为 RequestId，任务通过 DescribeAsyncJobs 查询。</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.UpstreamRolloutOperation`
+        """
+        return self._UpstreamRollout
+
+    @UpstreamRollout.setter
+    def UpstreamRollout(self, UpstreamRollout):
+        self._UpstreamRollout = UpstreamRollout
+
 
     def _deserialize(self, params):
         self._ServiceProviderId = params.get("ServiceProviderId")
@@ -31621,6 +31650,9 @@ class ModifyServiceProviderModelAttributesRequest(AbstractModel):
         self._InputModalities = params.get("InputModalities")
         self._NewModelName = params.get("NewModelName")
         self._NewModelAlias = params.get("NewModelAlias")
+        if params.get("UpstreamRollout") is not None:
+            self._UpstreamRollout = UpstreamRolloutOperation()
+            self._UpstreamRollout._deserialize(params.get("UpstreamRollout"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40232,6 +40264,72 @@ class TypeInfo(AbstractModel):
                 obj = SpecAvailability()
                 obj._deserialize(item)
                 self._SpecAvailabilitySet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpstreamRolloutOperation(AbstractModel):
+    r"""BYOK 上游模型灰度操作。Set 开启灰度或调整同一候选比例，Promote 全量切换，Rollback 结束灰度并恢复主模型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operation: <p>上游模型灰度操作类型。Set：开始灰度或调整同一候选的比例；Promote：全量切换到候选模型并结束灰度；Rollback：保留当前主模型并结束灰度。</p><p>入参限制：仅支持 Set、Promote、Rollback，区分大小写。Promote 和 Rollback 仅允许在灰度中使用，且禁止携带 ModelName、Weight。</p>
+        :type Operation: str
+        :param _ModelName: <p>候选上游模型的原始名称，保留名称中的斜杠。</p><p>入参限制：Operation 为 Set 时必填，非空且最长 128 个字符；不能与当前主模型相同，不能占用同一 BYOK 的其他主模型或有效灰度候选名称。Promote、Rollback 禁止传入。</p>
+        :type ModelName: str
+        :param _Weight: <p>候选上游模型的灰度流量比例。</p><p>取值范围：[1, 99]</p><p>单位：%</p><p>Set 时必填，无默认值，必须为整数；拒绝 0、100、小数、布尔值及字符串。Promote、Rollback 禁止传入。比例只影响需要重新选择上游的请求，已有有效 Sticky 绑定不迁移，实际流量占比不保证等于配置比例。</p>
+        :type Weight: int
+        """
+        self._Operation = None
+        self._ModelName = None
+        self._Weight = None
+
+    @property
+    def Operation(self):
+        r"""<p>上游模型灰度操作类型。Set：开始灰度或调整同一候选的比例；Promote：全量切换到候选模型并结束灰度；Rollback：保留当前主模型并结束灰度。</p><p>入参限制：仅支持 Set、Promote、Rollback，区分大小写。Promote 和 Rollback 仅允许在灰度中使用，且禁止携带 ModelName、Weight。</p>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def ModelName(self):
+        r"""<p>候选上游模型的原始名称，保留名称中的斜杠。</p><p>入参限制：Operation 为 Set 时必填，非空且最长 128 个字符；不能与当前主模型相同，不能占用同一 BYOK 的其他主模型或有效灰度候选名称。Promote、Rollback 禁止传入。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def Weight(self):
+        r"""<p>候选上游模型的灰度流量比例。</p><p>取值范围：[1, 99]</p><p>单位：%</p><p>Set 时必填，无默认值，必须为整数；拒绝 0、100、小数、布尔值及字符串。Promote、Rollback 禁止传入。比例只影响需要重新选择上游的请求，已有有效 Sticky 绑定不迁移，实际流量占比不保证等于配置比例。</p>
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._Operation = params.get("Operation")
+        self._ModelName = params.get("ModelName")
+        self._Weight = params.get("Weight")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

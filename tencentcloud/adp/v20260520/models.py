@@ -14216,6 +14216,115 @@ class CreateReleaseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSSETokenRequest(AbstractModel):
+    r"""CreateSSEToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoginUin: <p>主用户Uin</p>
+        :type LoginUin: str
+        :param _LoginSubAccountUin: <p>子用户Uin</p>
+        :type LoginSubAccountUin: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        """
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+        self._AppId = None
+
+    @property
+    def LoginUin(self):
+        r"""<p>主用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>子用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSSETokenResponse(AbstractModel):
+    r"""CreateSSEToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: <p>SSE 鉴权 Token</p>
+        :type Token: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Token = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        r"""<p>SSE 鉴权 Token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSimilarQuestionRequest(AbstractModel):
     r"""CreateSimilarQuestion请求参数结构体
 

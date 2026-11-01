@@ -8650,6 +8650,8 @@ class DescribeSpanTreeByIDRequest(AbstractModel):
         :type FilterViewTagKeyList: list of str
         :param _EnableResourceLink: <p>是否开启云资源关联</p>
         :type EnableResourceLink: bool
+        :param _FilterTagKeys: <p>字符串数组，tagstag里面的key</p>
+        :type FilterTagKeys: list of str
         """
         self._InstanceId = None
         self._Filters = None
@@ -8660,6 +8662,7 @@ class DescribeSpanTreeByIDRequest(AbstractModel):
         self._FocusSpanId = None
         self._FilterViewTagKeyList = None
         self._EnableResourceLink = None
+        self._FilterTagKeys = None
 
     @property
     def InstanceId(self):
@@ -8760,6 +8763,17 @@ class DescribeSpanTreeByIDRequest(AbstractModel):
     def EnableResourceLink(self, EnableResourceLink):
         self._EnableResourceLink = EnableResourceLink
 
+    @property
+    def FilterTagKeys(self):
+        r"""<p>字符串数组，tagstag里面的key</p>
+        :rtype: list of str
+        """
+        return self._FilterTagKeys
+
+    @FilterTagKeys.setter
+    def FilterTagKeys(self, FilterTagKeys):
+        self._FilterTagKeys = FilterTagKeys
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8776,6 +8790,7 @@ class DescribeSpanTreeByIDRequest(AbstractModel):
         self._FocusSpanId = params.get("FocusSpanId")
         self._FilterViewTagKeyList = params.get("FilterViewTagKeyList")
         self._EnableResourceLink = params.get("EnableResourceLink")
+        self._FilterTagKeys = params.get("FilterTagKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

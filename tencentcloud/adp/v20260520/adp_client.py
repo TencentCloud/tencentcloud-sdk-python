@@ -417,6 +417,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSSEToken(self, request):
+        r"""创建 SSE Token
+
+        :param request: Request instance for CreateSSEToken.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateSSETokenRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateSSETokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSSEToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSSETokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSimilarQuestion(self, request):
         r"""创建相似问生成任务
 

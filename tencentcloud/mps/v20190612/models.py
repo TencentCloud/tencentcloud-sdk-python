@@ -19312,11 +19312,14 @@ class CloneViralAIGC(AbstractModel):
         :type Resolution: str
         :param _ModelTier: <p>模式。flagship（高级版，默认）、standard（标准版）、depthcrafter(深度提取)</p>
         :type ModelTier: str
+        :param _DepthWithAudio: <p>深度估计结果是否含音频， 默认不含</p>
+        :type DepthWithAudio: bool
         """
         self._Duration = None
         self._AspectRatio = None
         self._Resolution = None
         self._ModelTier = None
+        self._DepthWithAudio = None
 
     @property
     def Duration(self):
@@ -19362,12 +19365,24 @@ class CloneViralAIGC(AbstractModel):
     def ModelTier(self, ModelTier):
         self._ModelTier = ModelTier
 
+    @property
+    def DepthWithAudio(self):
+        r"""<p>深度估计结果是否含音频， 默认不含</p>
+        :rtype: bool
+        """
+        return self._DepthWithAudio
+
+    @DepthWithAudio.setter
+    def DepthWithAudio(self, DepthWithAudio):
+        self._DepthWithAudio = DepthWithAudio
+
 
     def _deserialize(self, params):
         self._Duration = params.get("Duration")
         self._AspectRatio = params.get("AspectRatio")
         self._Resolution = params.get("Resolution")
         self._ModelTier = params.get("ModelTier")
+        self._DepthWithAudio = params.get("DepthWithAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19593,11 +19608,14 @@ class CloneViralPersona(AbstractModel):
         :type Ethnicity: str
         :param _BodyType: <p>体型。slim / standard / athletic / chubby</p>
         :type BodyType: str
+        :param _Images: <p>人物图片</p>
+        :type Images: list of str
         """
         self._Gender = None
         self._Age = None
         self._Ethnicity = None
         self._BodyType = None
+        self._Images = None
 
     @property
     def Gender(self):
@@ -19643,12 +19661,24 @@ class CloneViralPersona(AbstractModel):
     def BodyType(self, BodyType):
         self._BodyType = BodyType
 
+    @property
+    def Images(self):
+        r"""<p>人物图片</p>
+        :rtype: list of str
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
 
     def _deserialize(self, params):
         self._Gender = params.get("Gender")
         self._Age = params.get("Age")
         self._Ethnicity = params.get("Ethnicity")
         self._BodyType = params.get("BodyType")
+        self._Images = params.get("Images")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19725,6 +19755,57 @@ class CloneViralProduct(AbstractModel):
         
 
 
+class CloneViralReference(AbstractModel):
+    r"""动作级补充素材：服饰套装 / 背景
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Outfits: <p>服饰套装参考图，多套按视频中的分段换装</p>
+        :type Outfits: list of str
+        :param _Backgrounds: <p>背景/场景参考图</p>
+        :type Backgrounds: list of str
+        """
+        self._Outfits = None
+        self._Backgrounds = None
+
+    @property
+    def Outfits(self):
+        r"""<p>服饰套装参考图，多套按视频中的分段换装</p>
+        :rtype: list of str
+        """
+        return self._Outfits
+
+    @Outfits.setter
+    def Outfits(self, Outfits):
+        self._Outfits = Outfits
+
+    @property
+    def Backgrounds(self):
+        r"""<p>背景/场景参考图</p>
+        :rtype: list of str
+        """
+        return self._Backgrounds
+
+    @Backgrounds.setter
+    def Backgrounds(self, Backgrounds):
+        self._Backgrounds = Backgrounds
+
+
+    def _deserialize(self, params):
+        self._Outfits = params.get("Outfits")
+        self._Backgrounds = params.get("Backgrounds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloneViralRequest(AbstractModel):
     r"""CloneViral请求参数结构体
 
@@ -19734,6 +19815,8 @@ class CloneViralRequest(AbstractModel):
         r"""
         :param _VideoUrl: <p>爆款视频Url</p>
         :type VideoUrl: str
+        :param _Mode: <p>处理类型</p><p>枚举值：</p><ul><li>script ： 脚本级爆款复刻</li><li>motion： 动作级爆款复刻</li><li>depth： 深度估计</li></ul>
+        :type Mode: str
         :param _Product: <p>产品信息。除深度提取外，其他模式必填</p>
         :type Product: :class:`tencentcloud.mps.v20190612.models.CloneViralProduct`
         :param _AIGCParam: <p>AIGC生视频相关参数</p>
@@ -19744,13 +19827,17 @@ class CloneViralRequest(AbstractModel):
         :type Persona: :class:`tencentcloud.mps.v20190612.models.CloneViralPersona`
         :param _Output: <p>输出相关参数</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.CloneViralOutputOption`
+        :param _Reference: <p>其他参考素材（如背景、服装）</p>
+        :type Reference: :class:`tencentcloud.mps.v20190612.models.CloneViralReference`
         """
         self._VideoUrl = None
+        self._Mode = None
         self._Product = None
         self._AIGCParam = None
         self._ContentParam = None
         self._Persona = None
         self._Output = None
+        self._Reference = None
 
     @property
     def VideoUrl(self):
@@ -19762,6 +19849,17 @@ class CloneViralRequest(AbstractModel):
     @VideoUrl.setter
     def VideoUrl(self, VideoUrl):
         self._VideoUrl = VideoUrl
+
+    @property
+    def Mode(self):
+        r"""<p>处理类型</p><p>枚举值：</p><ul><li>script ： 脚本级爆款复刻</li><li>motion： 动作级爆款复刻</li><li>depth： 深度估计</li></ul>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
 
     @property
     def Product(self):
@@ -19818,9 +19916,21 @@ class CloneViralRequest(AbstractModel):
     def Output(self, Output):
         self._Output = Output
 
+    @property
+    def Reference(self):
+        r"""<p>其他参考素材（如背景、服装）</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralReference`
+        """
+        return self._Reference
+
+    @Reference.setter
+    def Reference(self, Reference):
+        self._Reference = Reference
+
 
     def _deserialize(self, params):
         self._VideoUrl = params.get("VideoUrl")
+        self._Mode = params.get("Mode")
         if params.get("Product") is not None:
             self._Product = CloneViralProduct()
             self._Product._deserialize(params.get("Product"))
@@ -19836,6 +19946,9 @@ class CloneViralRequest(AbstractModel):
         if params.get("Output") is not None:
             self._Output = CloneViralOutputOption()
             self._Output._deserialize(params.get("Output"))
+        if params.get("Reference") is not None:
+            self._Reference = CloneViralReference()
+            self._Reference._deserialize(params.get("Reference"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
