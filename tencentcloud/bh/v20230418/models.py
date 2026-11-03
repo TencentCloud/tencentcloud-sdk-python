@@ -2695,52 +2695,58 @@ class ChangePwdTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: id
+        :param _Id: <p>id</p>
         :type Id: int
-        :param _OperationId: 任务id
+        :param _OperationId: <p>任务id</p>
         :type OperationId: str
-        :param _TaskName: 任务名
+        :param _TaskName: <p>任务名</p>
         :type TaskName: str
-        :param _Department: 所属部门信息
+        :param _Department: <p>所属部门信息</p>
         :type Department: :class:`tencentcloud.bh.v20230418.models.Department`
-        :param _ChangeMethod: 改密方式。1：使用执行账号。2：修改自身密码
+        :param _ChangeMethod: <p>改密方式。1：使用执行账号。2：修改自身密码</p>
         :type ChangeMethod: int
-        :param _RunAccount: 执行账号
+        :param _RunAccount: <p>执行账号</p>
         :type RunAccount: str
-        :param _AuthGenerationStrategy: 密码生成策略
+        :param _AuthGenerationStrategy: <p>密码生成策略</p>
         :type AuthGenerationStrategy: int
-        :param _PasswordLength: 密码长度
+        :param _PasswordLength: <p>密码长度</p>
         :type PasswordLength: int
-        :param _SmallLetter: 包含小写字母
+        :param _SmallLetter: <p>包含小写字母</p>
         :type SmallLetter: int
-        :param _BigLetter: 包含大写字母
+        :param _BigLetter: <p>包含大写字母</p>
         :type BigLetter: int
-        :param _Digit: 包含数字
+        :param _Digit: <p>包含数字</p>
         :type Digit: int
-        :param _Symbol: 包含的特殊字符，入参base64
+        :param _Symbol: <p>包含的特殊字符，入参base64</p>
         :type Symbol: str
-        :param _CompleteNotify: 改密完成通知。0-通知，1-不通知
+        :param _CompleteNotify: <p>改密完成通知。0-通知，1-不通知</p>
         :type CompleteNotify: int
-        :param _NotifyEmails: 通知人邮箱
+        :param _NotifyEmails: <p>通知人邮箱</p>
         :type NotifyEmails: list of str
-        :param _FilePassword: 加密附件密码
+        :param _FilePassword: <p>加密附件密码</p>
         :type FilePassword: str
-        :param _AccountSet: 需要改密的账户
+        :param _AccountSet: <p>需要改密的账户</p>
         :type AccountSet: list of str
-        :param _DeviceSet: 需要改密的主机
+        :param _DeviceSet: <p>需要改密的主机</p>
         :type DeviceSet: list of Device
-        :param _Type: 任务类型：4手动，5自动
+        :param _Type: <p>任务类型：4手动，5自动</p>
         :type Type: int
-        :param _Period: 周期
+        :param _Period: <p>周期</p>
         :type Period: int
-        :param _FirstTime: 首次执行时间
+        :param _FirstTime: <p>首次执行时间</p>
         :type FirstTime: str
-        :param _NextTime: 下次执行时间
+        :param _NextTime: <p>下次执行时间</p>
         :type NextTime: str
-        :param _LastTime: 上次执行时间
+        :param _LastTime: <p>上次执行时间</p>
         :type LastTime: str
-        :param _Status: 改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时
+        :param _Status: <p>改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时</p>
         :type Status: int
+        :param _Category: <p>改密任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型改密任务</li><li>1： Windows 类型改密任务</li></ul><p>默认值：0</p>
+        :type Category: int
+        :param _Protocol: <p>改密任务协议类型</p><p>枚举值：</p><ul><li>0： 未定义，Linux 改密任务类型默认值</li><li>1： Windows OpenSSH 协议</li></ul><p>默认值：0</p>
+        :type Protocol: int
+        :param _Port: <p>改密协议端口号. Linux 改密协议类型端口号值为0</p><p>默认值：0</p>
+        :type Port: int
         """
         self._Id = None
         self._OperationId = None
@@ -2765,10 +2771,13 @@ class ChangePwdTaskInfo(AbstractModel):
         self._NextTime = None
         self._LastTime = None
         self._Status = None
+        self._Category = None
+        self._Protocol = None
+        self._Port = None
 
     @property
     def Id(self):
-        r"""id
+        r"""<p>id</p>
         :rtype: int
         """
         return self._Id
@@ -2779,7 +2788,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def OperationId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._OperationId
@@ -2790,7 +2799,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名
+        r"""<p>任务名</p>
         :rtype: str
         """
         return self._TaskName
@@ -2801,7 +2810,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def Department(self):
-        r"""所属部门信息
+        r"""<p>所属部门信息</p>
         :rtype: :class:`tencentcloud.bh.v20230418.models.Department`
         """
         return self._Department
@@ -2812,7 +2821,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def ChangeMethod(self):
-        r"""改密方式。1：使用执行账号。2：修改自身密码
+        r"""<p>改密方式。1：使用执行账号。2：修改自身密码</p>
         :rtype: int
         """
         return self._ChangeMethod
@@ -2823,7 +2832,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def RunAccount(self):
-        r"""执行账号
+        r"""<p>执行账号</p>
         :rtype: str
         """
         return self._RunAccount
@@ -2834,7 +2843,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def AuthGenerationStrategy(self):
-        r"""密码生成策略
+        r"""<p>密码生成策略</p>
         :rtype: int
         """
         return self._AuthGenerationStrategy
@@ -2845,7 +2854,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def PasswordLength(self):
-        r"""密码长度
+        r"""<p>密码长度</p>
         :rtype: int
         """
         return self._PasswordLength
@@ -2856,7 +2865,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def SmallLetter(self):
-        r"""包含小写字母
+        r"""<p>包含小写字母</p>
         :rtype: int
         """
         return self._SmallLetter
@@ -2867,7 +2876,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def BigLetter(self):
-        r"""包含大写字母
+        r"""<p>包含大写字母</p>
         :rtype: int
         """
         return self._BigLetter
@@ -2878,7 +2887,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def Digit(self):
-        r"""包含数字
+        r"""<p>包含数字</p>
         :rtype: int
         """
         return self._Digit
@@ -2889,7 +2898,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def Symbol(self):
-        r"""包含的特殊字符，入参base64
+        r"""<p>包含的特殊字符，入参base64</p>
         :rtype: str
         """
         return self._Symbol
@@ -2900,7 +2909,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def CompleteNotify(self):
-        r"""改密完成通知。0-通知，1-不通知
+        r"""<p>改密完成通知。0-通知，1-不通知</p>
         :rtype: int
         """
         return self._CompleteNotify
@@ -2911,7 +2920,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def NotifyEmails(self):
-        r"""通知人邮箱
+        r"""<p>通知人邮箱</p>
         :rtype: list of str
         """
         return self._NotifyEmails
@@ -2922,7 +2931,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def FilePassword(self):
-        r"""加密附件密码
+        r"""<p>加密附件密码</p>
         :rtype: str
         """
         return self._FilePassword
@@ -2933,7 +2942,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def AccountSet(self):
-        r"""需要改密的账户
+        r"""<p>需要改密的账户</p>
         :rtype: list of str
         """
         return self._AccountSet
@@ -2944,7 +2953,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def DeviceSet(self):
-        r"""需要改密的主机
+        r"""<p>需要改密的主机</p>
         :rtype: list of Device
         """
         return self._DeviceSet
@@ -2955,7 +2964,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""任务类型：4手动，5自动
+        r"""<p>任务类型：4手动，5自动</p>
         :rtype: int
         """
         return self._Type
@@ -2966,7 +2975,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def Period(self):
-        r"""周期
+        r"""<p>周期</p>
         :rtype: int
         """
         return self._Period
@@ -2977,7 +2986,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def FirstTime(self):
-        r"""首次执行时间
+        r"""<p>首次执行时间</p>
         :rtype: str
         """
         return self._FirstTime
@@ -2988,7 +2997,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def NextTime(self):
-        r"""下次执行时间
+        r"""<p>下次执行时间</p>
         :rtype: str
         """
         return self._NextTime
@@ -2999,7 +3008,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def LastTime(self):
-        r"""上次执行时间
+        r"""<p>上次执行时间</p>
         :rtype: str
         """
         return self._LastTime
@@ -3010,7 +3019,7 @@ class ChangePwdTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时
+        r"""<p>改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时</p>
         :rtype: int
         """
         return self._Status
@@ -3018,6 +3027,39 @@ class ChangePwdTaskInfo(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def Category(self):
+        r"""<p>改密任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型改密任务</li><li>1： Windows 类型改密任务</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Protocol(self):
+        r"""<p>改密任务协议类型</p><p>枚举值：</p><ul><li>0： 未定义，Linux 改密任务类型默认值</li><li>1： Windows OpenSSH 协议</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        r"""<p>改密协议端口号. Linux 改密协议类型端口号值为0</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
@@ -3051,6 +3093,9 @@ class ChangePwdTaskInfo(AbstractModel):
         self._NextTime = params.get("NextTime")
         self._LastTime = params.get("LastTime")
         self._Status = params.get("Status")
+        self._Category = params.get("Category")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4366,45 +4411,50 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskName: 任务名
+        :param _TaskName: <p>任务名</p>
         :type TaskName: str
-        :param _DeviceIdSet: 资产id数组
+        :param _DeviceIdSet: <p>资产id数组</p>
         :type DeviceIdSet: list of int non-negative
-        :param _AccountSet: 修改的账户数组
+        :param _AccountSet: <p>修改的账户数组</p>
         :type AccountSet: list of str
-        :param _ChangeMethod: 改密方式。1：使用执行账号修改密码；2：修改自身密码
+        :param _ChangeMethod: <p>改密方式。1：使用执行账号修改密码；2：修改自身密码</p>
         :type ChangeMethod: int
-        :param _AuthGenerationStrategy: 认证生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+        :param _AuthGenerationStrategy: <p>认证生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码</p>
         :type AuthGenerationStrategy: int
-        :param _RunAccount: 执行账号
+        :param _RunAccount: <p>执行账号</p>
         :type RunAccount: str
-        :param _Password: 手动指定密码时必传
+        :param _Password: <p>手动指定密码时必传</p>
         :type Password: str
-        :param _PasswordLength: 密码限制长度，长度大于 12 位
+        :param _PasswordLength: <p>密码限制长度，长度大于 12 位</p>
         :type PasswordLength: int
-        :param _SmallLetter: 密码包含小写字母。0：否，1：是
+        :param _SmallLetter: <p>密码包含小写字母。0：否，1：是</p>
         :type SmallLetter: int
-        :param _BigLetter: 密码包含大写字母。0：否，1：是
+        :param _BigLetter: <p>密码包含大写字母。0：否，1：是</p>
         :type BigLetter: int
-        :param _Digit: 密码包含数字。0：否，1：是
+        :param _Digit: <p>密码包含数字。0：否，1：是</p>
         :type Digit: int
-        :param _Symbol: 密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+        :param _Symbol: <p>密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$</p>
         :type Symbol: str
-        :param _CompleteNotify: 改密完成通知。0：不通知 
-  1：通知
+        :param _CompleteNotify: <p>改密完成通知。0：不通知<br>  1：通知</p>
         :type CompleteNotify: int
-        :param _NotifyEmails: 通知邮箱
+        :param _NotifyEmails: <p>通知邮箱</p>
         :type NotifyEmails: list of str
-        :param _FilePassword: 加密压缩文件密码
+        :param _FilePassword: <p>加密压缩文件密码</p>
         :type FilePassword: str
-        :param _DepartmentId: 所属部门id。“1.2.3”
+        :param _DepartmentId: <p>所属部门id。“1.2.3”</p>
         :type DepartmentId: str
-        :param _Type: 任务类型  4-手工执行  5-周期自动执行
+        :param _Type: <p>任务类型  4-手工执行  5-周期自动执行</p>
         :type Type: int
-        :param _Period: 执行周期，单位天（大于等于 1，小于等于 365）
+        :param _Period: <p>执行周期，单位天（大于等于 1，小于等于 365）</p>
         :type Period: int
-        :param _FirstTime: 周期任务首次执行时间
+        :param _FirstTime: <p>周期任务首次执行时间</p>
         :type FirstTime: str
+        :param _Category: <p>改密任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型改密任务</li><li>1： Windows 类型改密任务</li></ul><p>默认值：0</p>
+        :type Category: int
+        :param _Protocol: <p>改密任务协议类型</p><p>枚举值：</p><ul><li>0： 未定义，Linux改密任务类型默认值</li><li>1： Windows OpenSSH 协议</li></ul><p>默认值：0</p>
+        :type Protocol: int
+        :param _Port: <p>改密协议端口号. Linux 改密类型协议端口号需设置为0</p><p>取值范围：[0, 65535]</p><p>默认值：0</p>
+        :type Port: int
         """
         self._TaskName = None
         self._DeviceIdSet = None
@@ -4425,10 +4475,13 @@ class CreateChangePwdTaskRequest(AbstractModel):
         self._Type = None
         self._Period = None
         self._FirstTime = None
+        self._Category = None
+        self._Protocol = None
+        self._Port = None
 
     @property
     def TaskName(self):
-        r"""任务名
+        r"""<p>任务名</p>
         :rtype: str
         """
         return self._TaskName
@@ -4439,7 +4492,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def DeviceIdSet(self):
-        r"""资产id数组
+        r"""<p>资产id数组</p>
         :rtype: list of int non-negative
         """
         return self._DeviceIdSet
@@ -4450,7 +4503,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def AccountSet(self):
-        r"""修改的账户数组
+        r"""<p>修改的账户数组</p>
         :rtype: list of str
         """
         return self._AccountSet
@@ -4461,7 +4514,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def ChangeMethod(self):
-        r"""改密方式。1：使用执行账号修改密码；2：修改自身密码
+        r"""<p>改密方式。1：使用执行账号修改密码；2：修改自身密码</p>
         :rtype: int
         """
         return self._ChangeMethod
@@ -4472,7 +4525,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def AuthGenerationStrategy(self):
-        r"""认证生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+        r"""<p>认证生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码</p>
         :rtype: int
         """
         return self._AuthGenerationStrategy
@@ -4483,7 +4536,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def RunAccount(self):
-        r"""执行账号
+        r"""<p>执行账号</p>
         :rtype: str
         """
         return self._RunAccount
@@ -4494,7 +4547,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""手动指定密码时必传
+        r"""<p>手动指定密码时必传</p>
         :rtype: str
         """
         return self._Password
@@ -4505,7 +4558,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def PasswordLength(self):
-        r"""密码限制长度，长度大于 12 位
+        r"""<p>密码限制长度，长度大于 12 位</p>
         :rtype: int
         """
         return self._PasswordLength
@@ -4516,7 +4569,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def SmallLetter(self):
-        r"""密码包含小写字母。0：否，1：是
+        r"""<p>密码包含小写字母。0：否，1：是</p>
         :rtype: int
         """
         return self._SmallLetter
@@ -4527,7 +4580,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def BigLetter(self):
-        r"""密码包含大写字母。0：否，1：是
+        r"""<p>密码包含大写字母。0：否，1：是</p>
         :rtype: int
         """
         return self._BigLetter
@@ -4538,7 +4591,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def Digit(self):
-        r"""密码包含数字。0：否，1：是
+        r"""<p>密码包含数字。0：否，1：是</p>
         :rtype: int
         """
         return self._Digit
@@ -4549,7 +4602,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def Symbol(self):
-        r"""密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+        r"""<p>密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$</p>
         :rtype: str
         """
         return self._Symbol
@@ -4560,8 +4613,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def CompleteNotify(self):
-        r"""改密完成通知。0：不通知 
-  1：通知
+        r"""<p>改密完成通知。0：不通知<br>  1：通知</p>
         :rtype: int
         """
         return self._CompleteNotify
@@ -4572,7 +4624,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def NotifyEmails(self):
-        r"""通知邮箱
+        r"""<p>通知邮箱</p>
         :rtype: list of str
         """
         return self._NotifyEmails
@@ -4583,7 +4635,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def FilePassword(self):
-        r"""加密压缩文件密码
+        r"""<p>加密压缩文件密码</p>
         :rtype: str
         """
         return self._FilePassword
@@ -4594,7 +4646,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def DepartmentId(self):
-        r"""所属部门id。“1.2.3”
+        r"""<p>所属部门id。“1.2.3”</p>
         :rtype: str
         """
         return self._DepartmentId
@@ -4605,7 +4657,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""任务类型  4-手工执行  5-周期自动执行
+        r"""<p>任务类型  4-手工执行  5-周期自动执行</p>
         :rtype: int
         """
         return self._Type
@@ -4616,7 +4668,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""执行周期，单位天（大于等于 1，小于等于 365）
+        r"""<p>执行周期，单位天（大于等于 1，小于等于 365）</p>
         :rtype: int
         """
         return self._Period
@@ -4627,7 +4679,7 @@ class CreateChangePwdTaskRequest(AbstractModel):
 
     @property
     def FirstTime(self):
-        r"""周期任务首次执行时间
+        r"""<p>周期任务首次执行时间</p>
         :rtype: str
         """
         return self._FirstTime
@@ -4635,6 +4687,39 @@ class CreateChangePwdTaskRequest(AbstractModel):
     @FirstTime.setter
     def FirstTime(self, FirstTime):
         self._FirstTime = FirstTime
+
+    @property
+    def Category(self):
+        r"""<p>改密任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型改密任务</li><li>1： Windows 类型改密任务</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Protocol(self):
+        r"""<p>改密任务协议类型</p><p>枚举值：</p><ul><li>0： 未定义，Linux改密任务类型默认值</li><li>1： Windows OpenSSH 协议</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        r"""<p>改密协议端口号. Linux 改密类型协议端口号需设置为0</p><p>取值范围：[0, 65535]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
@@ -4657,6 +4742,9 @@ class CreateChangePwdTaskRequest(AbstractModel):
         self._Type = params.get("Type")
         self._Period = params.get("Period")
         self._FirstTime = params.get("FirstTime")
+        self._Category = params.get("Category")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4674,7 +4762,7 @@ class CreateChangePwdTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OperationId: 任务id
+        :param _OperationId: <p>任务id</p>
         :type OperationId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4684,7 +4772,7 @@ class CreateChangePwdTaskResponse(AbstractModel):
 
     @property
     def OperationId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._OperationId
@@ -15632,48 +15720,54 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OperationId: 改密任务id
+        :param _OperationId: <p>改密任务id</p>
         :type OperationId: str
-        :param _DeviceIdSet: 改密资产id列表
+        :param _DeviceIdSet: <p>改密资产id列表</p>
         :type DeviceIdSet: list of int non-negative
-        :param _AccountSet: 改密资产的账号列表
+        :param _AccountSet: <p>改密资产的账号列表</p>
         :type AccountSet: list of str
-        :param _ModifyType: 修改类型：1：修改任务信息  2：关联任务资产账号
+        :param _ModifyType: <p>修改类型：1：修改任务信息  2：关联任务资产账号</p>
         :type ModifyType: int
-        :param _ChangeMethod: 改密方式。1：使用执行账号修改密码；2：修改自身密码
+        :param _ChangeMethod: <p>改密方式。1：使用执行账号修改密码；2：修改自身密码</p>
         :type ChangeMethod: int
-        :param _AuthGenerationStrategy: 密码生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+        :param _AuthGenerationStrategy: <p>密码生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码</p>
         :type AuthGenerationStrategy: int
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _DepartmentId: 所属部门ID，"1,2,3"
+        :param _DepartmentId: <p>所属部门ID，&quot;1,2,3&quot;</p>
         :type DepartmentId: str
-        :param _RunAccount: 任务的执行账号	
+        :param _RunAccount: <p>任务的执行账号</p>
         :type RunAccount: str
-        :param _Password: 密码，手动指定密码时必传。
+        :param _Password: <p>密码，手动指定密码时必传。</p>
         :type Password: str
-        :param _PasswordLength: 密码限制长度，自动生成密码必传。	
+        :param _PasswordLength: <p>密码限制长度，自动生成密码必传。</p>
         :type PasswordLength: int
-        :param _SmallLetter: 密码包含小写字母，0：否，1：是。
+        :param _SmallLetter: <p>密码包含小写字母，0：否，1：是。</p>
         :type SmallLetter: int
-        :param _BigLetter: 密码包含大写字母，0：否，1：是。
+        :param _BigLetter: <p>密码包含大写字母，0：否，1：是。</p>
         :type BigLetter: int
-        :param _Digit: 密码包含数字，0：否，1：是。
+        :param _Digit: <p>密码包含数字，0：否，1：是。</p>
         :type Digit: int
-        :param _Symbol: 密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+        :param _Symbol: <p>密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$</p>
         :type Symbol: str
-        :param _CompleteNotify: 改密完成通知。0：不通知 1：通知
+        :param _CompleteNotify: <p>改密完成通知。0：不通知 1：通知</p>
         :type CompleteNotify: int
-        :param _NotifyEmails: 通知邮箱
+        :param _NotifyEmails: <p>通知邮箱</p>
         :type NotifyEmails: list of str
-        :param _FilePassword: 加密压缩文件密码
+        :param _FilePassword: <p>加密压缩文件密码</p>
         :type FilePassword: str
-        :param _Type: 任务类型， 4：手工执行  5：周期自动执行
+        :param _Type: <p>任务类型， 4：手工执行  5：周期自动执行</p>
         :type Type: int
-        :param _Period: 周期任务周期，单位天（大于等于 1，小于等于 365）
+        :param _Period: <p>周期任务周期，单位天（大于等于 1，小于等于 365）</p>
         :type Period: int
-        :param _FirstTime: 周期任务首次执行时间
+        :param _FirstTime: <p>周期任务首次执行时间</p>
         :type FirstTime: str
+        :param _Category: <p>改密任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型改密任务</li><li>1： Windows 类型改密任务</li></ul><p>默认值：0</p>
+        :type Category: int
+        :param _Protocol: <p>改密任务协议类型</p><p>枚举值：</p><ul><li>0： 未定义，Linux 改密任务类型默认值</li><li>1： Windows OpenSSH 协议</li></ul><p>默认值：0</p>
+        :type Protocol: int
+        :param _Port: <p>改密协议端口号，Linux 改密类型协议端口号需设置为0</p><p>取值范围：[0, 65535]</p><p>默认值：0</p>
+        :type Port: int
         """
         self._OperationId = None
         self._DeviceIdSet = None
@@ -15696,10 +15790,13 @@ class ModifyChangePwdTaskRequest(AbstractModel):
         self._Type = None
         self._Period = None
         self._FirstTime = None
+        self._Category = None
+        self._Protocol = None
+        self._Port = None
 
     @property
     def OperationId(self):
-        r"""改密任务id
+        r"""<p>改密任务id</p>
         :rtype: str
         """
         return self._OperationId
@@ -15710,7 +15807,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def DeviceIdSet(self):
-        r"""改密资产id列表
+        r"""<p>改密资产id列表</p>
         :rtype: list of int non-negative
         """
         return self._DeviceIdSet
@@ -15721,7 +15818,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def AccountSet(self):
-        r"""改密资产的账号列表
+        r"""<p>改密资产的账号列表</p>
         :rtype: list of str
         """
         return self._AccountSet
@@ -15732,7 +15829,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def ModifyType(self):
-        r"""修改类型：1：修改任务信息  2：关联任务资产账号
+        r"""<p>修改类型：1：修改任务信息  2：关联任务资产账号</p>
         :rtype: int
         """
         return self._ModifyType
@@ -15743,7 +15840,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def ChangeMethod(self):
-        r"""改密方式。1：使用执行账号修改密码；2：修改自身密码
+        r"""<p>改密方式。1：使用执行账号修改密码；2：修改自身密码</p>
         :rtype: int
         """
         return self._ChangeMethod
@@ -15754,7 +15851,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def AuthGenerationStrategy(self):
-        r"""密码生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码
+        r"""<p>密码生成方式。 1:自动生成相同密码 2:自动生成不同密码 3:手动指定相同密码</p>
         :rtype: int
         """
         return self._AuthGenerationStrategy
@@ -15765,7 +15862,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -15776,7 +15873,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def DepartmentId(self):
-        r"""所属部门ID，"1,2,3"
+        r"""<p>所属部门ID，&quot;1,2,3&quot;</p>
         :rtype: str
         """
         return self._DepartmentId
@@ -15787,7 +15884,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def RunAccount(self):
-        r"""任务的执行账号	
+        r"""<p>任务的执行账号</p>
         :rtype: str
         """
         return self._RunAccount
@@ -15798,7 +15895,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""密码，手动指定密码时必传。
+        r"""<p>密码，手动指定密码时必传。</p>
         :rtype: str
         """
         return self._Password
@@ -15809,7 +15906,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def PasswordLength(self):
-        r"""密码限制长度，自动生成密码必传。	
+        r"""<p>密码限制长度，自动生成密码必传。</p>
         :rtype: int
         """
         return self._PasswordLength
@@ -15820,7 +15917,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def SmallLetter(self):
-        r"""密码包含小写字母，0：否，1：是。
+        r"""<p>密码包含小写字母，0：否，1：是。</p>
         :rtype: int
         """
         return self._SmallLetter
@@ -15831,7 +15928,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def BigLetter(self):
-        r"""密码包含大写字母，0：否，1：是。
+        r"""<p>密码包含大写字母，0：否，1：是。</p>
         :rtype: int
         """
         return self._BigLetter
@@ -15842,7 +15939,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def Digit(self):
-        r"""密码包含数字，0：否，1：是。
+        r"""<p>密码包含数字，0：否，1：是。</p>
         :rtype: int
         """
         return self._Digit
@@ -15853,7 +15950,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def Symbol(self):
-        r"""密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$
+        r"""<p>密码包含的特殊字符（base64编码），包含：^[-_#();%~!+=]*$</p>
         :rtype: str
         """
         return self._Symbol
@@ -15864,7 +15961,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def CompleteNotify(self):
-        r"""改密完成通知。0：不通知 1：通知
+        r"""<p>改密完成通知。0：不通知 1：通知</p>
         :rtype: int
         """
         return self._CompleteNotify
@@ -15875,7 +15972,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def NotifyEmails(self):
-        r"""通知邮箱
+        r"""<p>通知邮箱</p>
         :rtype: list of str
         """
         return self._NotifyEmails
@@ -15886,7 +15983,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def FilePassword(self):
-        r"""加密压缩文件密码
+        r"""<p>加密压缩文件密码</p>
         :rtype: str
         """
         return self._FilePassword
@@ -15897,7 +15994,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""任务类型， 4：手工执行  5：周期自动执行
+        r"""<p>任务类型， 4：手工执行  5：周期自动执行</p>
         :rtype: int
         """
         return self._Type
@@ -15908,7 +16005,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""周期任务周期，单位天（大于等于 1，小于等于 365）
+        r"""<p>周期任务周期，单位天（大于等于 1，小于等于 365）</p>
         :rtype: int
         """
         return self._Period
@@ -15919,7 +16016,7 @@ class ModifyChangePwdTaskRequest(AbstractModel):
 
     @property
     def FirstTime(self):
-        r"""周期任务首次执行时间
+        r"""<p>周期任务首次执行时间</p>
         :rtype: str
         """
         return self._FirstTime
@@ -15927,6 +16024,39 @@ class ModifyChangePwdTaskRequest(AbstractModel):
     @FirstTime.setter
     def FirstTime(self, FirstTime):
         self._FirstTime = FirstTime
+
+    @property
+    def Category(self):
+        r"""<p>改密任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型改密任务</li><li>1： Windows 类型改密任务</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Protocol(self):
+        r"""<p>改密任务协议类型</p><p>枚举值：</p><ul><li>0： 未定义，Linux 改密任务类型默认值</li><li>1： Windows OpenSSH 协议</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Port(self):
+        r"""<p>改密协议端口号，Linux 改密类型协议端口号需设置为0</p><p>取值范围：[0, 65535]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
 
 
     def _deserialize(self, params):
@@ -15951,6 +16081,9 @@ class ModifyChangePwdTaskRequest(AbstractModel):
         self._Type = params.get("Type")
         self._Period = params.get("Period")
         self._FirstTime = params.get("FirstTime")
+        self._Category = params.get("Category")
+        self._Protocol = params.get("Protocol")
+        self._Port = params.get("Port")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24334,24 +24467,26 @@ class TaskResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 运维任务结果日志ID
+        :param _Id: <p>运维任务结果日志ID</p>
         :type Id: str
-        :param _OperationId: 运维任务ID
+        :param _OperationId: <p>运维任务ID</p>
         :type OperationId: str
-        :param _Name: 运维任务名称
+        :param _Name: <p>运维任务名称</p>
         :type Name: str
-        :param _FromIp: 执行任务来源IP
+        :param _FromIp: <p>执行任务来源IP</p>
         :type FromIp: str
-        :param _UserName: 运维任务所属用户
+        :param _UserName: <p>运维任务所属用户</p>
         :type UserName: str
-        :param _RealName: 运维任务所属用户的姓名
+        :param _RealName: <p>运维任务所属用户的姓名</p>
         :type RealName: str
-        :param _Status: 运维任务执行状态 1 - 执行中，2 - 成功，3 - 失败，4 - 部分失败
+        :param _Status: <p>运维任务执行状态 1 - 执行中，2 - 成功，3 - 失败，4 - 部分失败</p>
         :type Status: int
-        :param _StartTime: 运维任务开始时间
+        :param _StartTime: <p>运维任务开始时间</p>
         :type StartTime: str
-        :param _EndTime: 运维任务结束时间
+        :param _EndTime: <p>运维任务结束时间</p>
         :type EndTime: str
+        :param _Category: <p>任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型任务（默认类型）</li><li>1： Windows 类型任务</li></ul><p>默认值：0</p>
+        :type Category: int
         """
         self._Id = None
         self._OperationId = None
@@ -24362,10 +24497,11 @@ class TaskResult(AbstractModel):
         self._Status = None
         self._StartTime = None
         self._EndTime = None
+        self._Category = None
 
     @property
     def Id(self):
-        r"""运维任务结果日志ID
+        r"""<p>运维任务结果日志ID</p>
         :rtype: str
         """
         return self._Id
@@ -24376,7 +24512,7 @@ class TaskResult(AbstractModel):
 
     @property
     def OperationId(self):
-        r"""运维任务ID
+        r"""<p>运维任务ID</p>
         :rtype: str
         """
         return self._OperationId
@@ -24387,7 +24523,7 @@ class TaskResult(AbstractModel):
 
     @property
     def Name(self):
-        r"""运维任务名称
+        r"""<p>运维任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -24398,7 +24534,7 @@ class TaskResult(AbstractModel):
 
     @property
     def FromIp(self):
-        r"""执行任务来源IP
+        r"""<p>执行任务来源IP</p>
         :rtype: str
         """
         return self._FromIp
@@ -24409,7 +24545,7 @@ class TaskResult(AbstractModel):
 
     @property
     def UserName(self):
-        r"""运维任务所属用户
+        r"""<p>运维任务所属用户</p>
         :rtype: str
         """
         return self._UserName
@@ -24420,7 +24556,7 @@ class TaskResult(AbstractModel):
 
     @property
     def RealName(self):
-        r"""运维任务所属用户的姓名
+        r"""<p>运维任务所属用户的姓名</p>
         :rtype: str
         """
         return self._RealName
@@ -24431,7 +24567,7 @@ class TaskResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""运维任务执行状态 1 - 执行中，2 - 成功，3 - 失败，4 - 部分失败
+        r"""<p>运维任务执行状态 1 - 执行中，2 - 成功，3 - 失败，4 - 部分失败</p>
         :rtype: int
         """
         return self._Status
@@ -24442,7 +24578,7 @@ class TaskResult(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""运维任务开始时间
+        r"""<p>运维任务开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -24453,7 +24589,7 @@ class TaskResult(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""运维任务结束时间
+        r"""<p>运维任务结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -24461,6 +24597,17 @@ class TaskResult(AbstractModel):
     @EndTime.setter
     def EndTime(self, EndTime):
         self._EndTime = EndTime
+
+    @property
+    def Category(self):
+        r"""<p>任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型任务（默认类型）</li><li>1： Windows 类型任务</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
 
 
     def _deserialize(self, params):
@@ -24473,6 +24620,7 @@ class TaskResult(AbstractModel):
         self._Status = params.get("Status")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

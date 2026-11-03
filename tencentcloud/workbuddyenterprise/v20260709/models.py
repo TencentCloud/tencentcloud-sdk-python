@@ -285,6 +285,61 @@ class A2ASkillItem(AbstractModel):
         
 
 
+class AgentConfig(AbstractModel):
+    r"""任务关联的 Agent 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: <p>执行 Prompt（必填）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Prompt: str
+        :param _AgentId: <p>Agent 唯一标识（引用 CreateAgent 创建的 Managed Agent，必填）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        """
+        self._Prompt = None
+        self._AgentId = None
+
+    @property
+    def Prompt(self):
+        r"""<p>执行 Prompt（必填）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent 唯一标识（引用 CreateAgent 创建的 Managed Agent，必填）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentItem(AbstractModel):
     r"""Agent 列表项（原 AgentSummary；Agent 级纯字段，不再内嵌版本信息）
 
@@ -2629,6 +2684,242 @@ class CreateAgentVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateScheduledTaskRequest(AbstractModel):
+    r"""CreateScheduledTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskName: <p>任务名称</p>
+        :type TaskName: str
+        :param _AgentConfig: <p>任务关联的 Agent 配置</p>
+        :type AgentConfig: :class:`tencentcloud.workbuddyenterprise.v20260709.models.AgentConfig`
+        :param _CronExpr: <p>Cron 表达式</p>
+        :type CronExpr: str
+        :param _Description: <p>任务描述</p>
+        :type Description: str
+        :param _FrequencyType: <p>调度类型：CRON（按 Cron 周期执行，默认）或 ONCE（单次执行）</p>
+        :type FrequencyType: str
+        :param _EffectiveStart: <p>生效日期开始时间（YYYY-MM-DD 格式），可选，不传时不限制开始时间</p>
+        :type EffectiveStart: str
+        :param _EffectiveEnd: <p>生效日期结束时间（YYYY-MM-DD 格式），可选，不传时不限制结束时间</p>
+        :type EffectiveEnd: str
+        :param _DeliveryTargetSet: <p>投递目标集合（BOT_CHANNEL / WEBHOOK 可并存）</p>
+        :type DeliveryTargetSet: list of DeliveryTarget
+        """
+        self._TaskName = None
+        self._AgentConfig = None
+        self._CronExpr = None
+        self._Description = None
+        self._FrequencyType = None
+        self._EffectiveStart = None
+        self._EffectiveEnd = None
+        self._DeliveryTargetSet = None
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def AgentConfig(self):
+        r"""<p>任务关联的 Agent 配置</p>
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.AgentConfig`
+        """
+        return self._AgentConfig
+
+    @AgentConfig.setter
+    def AgentConfig(self, AgentConfig):
+        self._AgentConfig = AgentConfig
+
+    @property
+    def CronExpr(self):
+        r"""<p>Cron 表达式</p>
+        :rtype: str
+        """
+        return self._CronExpr
+
+    @CronExpr.setter
+    def CronExpr(self, CronExpr):
+        self._CronExpr = CronExpr
+
+    @property
+    def Description(self):
+        r"""<p>任务描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def FrequencyType(self):
+        r"""<p>调度类型：CRON（按 Cron 周期执行，默认）或 ONCE（单次执行）</p>
+        :rtype: str
+        """
+        return self._FrequencyType
+
+    @FrequencyType.setter
+    def FrequencyType(self, FrequencyType):
+        self._FrequencyType = FrequencyType
+
+    @property
+    def EffectiveStart(self):
+        r"""<p>生效日期开始时间（YYYY-MM-DD 格式），可选，不传时不限制开始时间</p>
+        :rtype: str
+        """
+        return self._EffectiveStart
+
+    @EffectiveStart.setter
+    def EffectiveStart(self, EffectiveStart):
+        self._EffectiveStart = EffectiveStart
+
+    @property
+    def EffectiveEnd(self):
+        r"""<p>生效日期结束时间（YYYY-MM-DD 格式），可选，不传时不限制结束时间</p>
+        :rtype: str
+        """
+        return self._EffectiveEnd
+
+    @EffectiveEnd.setter
+    def EffectiveEnd(self, EffectiveEnd):
+        self._EffectiveEnd = EffectiveEnd
+
+    @property
+    def DeliveryTargetSet(self):
+        r"""<p>投递目标集合（BOT_CHANNEL / WEBHOOK 可并存）</p>
+        :rtype: list of DeliveryTarget
+        """
+        return self._DeliveryTargetSet
+
+    @DeliveryTargetSet.setter
+    def DeliveryTargetSet(self, DeliveryTargetSet):
+        self._DeliveryTargetSet = DeliveryTargetSet
+
+
+    def _deserialize(self, params):
+        self._TaskName = params.get("TaskName")
+        if params.get("AgentConfig") is not None:
+            self._AgentConfig = AgentConfig()
+            self._AgentConfig._deserialize(params.get("AgentConfig"))
+        self._CronExpr = params.get("CronExpr")
+        self._Description = params.get("Description")
+        self._FrequencyType = params.get("FrequencyType")
+        self._EffectiveStart = params.get("EffectiveStart")
+        self._EffectiveEnd = params.get("EffectiveEnd")
+        if params.get("DeliveryTargetSet") is not None:
+            self._DeliveryTargetSet = []
+            for item in params.get("DeliveryTargetSet"):
+                obj = DeliveryTarget()
+                obj._deserialize(item)
+                self._DeliveryTargetSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateScheduledTaskResponse(AbstractModel):
+    r"""CreateScheduledTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _TaskKey: <p>任务唯一标识</p>
+        :type TaskKey: str
+        :param _Status: <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+        :type Status: str
+        :param _NextRunTime: <p>下次执行时间</p>
+        :type NextRunTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskKey = None
+        self._Status = None
+        self._NextRunTime = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskKey(self):
+        r"""<p>任务唯一标识</p>
+        :rtype: str
+        """
+        return self._TaskKey
+
+    @TaskKey.setter
+    def TaskKey(self, TaskKey):
+        self._TaskKey = TaskKey
+
+    @property
+    def Status(self):
+        r"""<p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def NextRunTime(self):
+        r"""<p>下次执行时间</p>
+        :rtype: str
+        """
+        return self._NextRunTime
+
+    @NextRunTime.setter
+    def NextRunTime(self, NextRunTime):
+        self._NextRunTime = NextRunTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskKey = params.get("TaskKey")
+        self._Status = params.get("Status")
+        self._NextRunTime = params.get("NextRunTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAgentRequest(AbstractModel):
     r"""DeleteAgent请求参数结构体
 
@@ -2691,6 +2982,144 @@ class DeleteAgentResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DeleteScheduledTaskRequest(AbstractModel):
+    r"""DeleteScheduledTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteScheduledTaskResponse(AbstractModel):
+    r"""DeleteScheduledTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeliveryTarget(AbstractModel):
+    r"""投递目标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>投递类型：BOT_CHANNEL（IM 渠道投递）或 WEBHOOK（自定义回调）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Enabled: <p>是否启用此投递目标</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _Options: <p>投递配置，按 Type 不同</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Options: :class:`tencentcloud.workbuddyenterprise.v20260709.models.TargetOptions`
+        """
+        self._Type = None
+        self._Enabled = None
+        self._Options = None
+
+    @property
+    def Type(self):
+        r"""<p>投递类型：BOT_CHANNEL（IM 渠道投递）或 WEBHOOK（自定义回调）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用此投递目标</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Options(self):
+        r"""<p>投递配置，按 Type 不同</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.TargetOptions`
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Enabled = params.get("Enabled")
+        if params.get("Options") is not None:
+            self._Options = TargetOptions()
+            self._Options._deserialize(params.get("Options"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAgentListRequest(AbstractModel):
@@ -4999,6 +5428,960 @@ class DescribeMessageEventListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeScheduledTaskListRequest(AbstractModel):
+    r"""DescribeScheduledTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>偏移量，从 0 开始</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，缺省为 20，最大 100</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系。支持的 Filter.Name：TaskName（模糊）、Status（精确 0/1）、AgentId（精确）</p>
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，从 0 开始</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，缺省为 20，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系。支持的 Filter.Name：TaskName（模糊）、Status（精确 0/1）、AgentId（精确）</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScheduledTaskListResponse(AbstractModel):
+    r"""DescribeScheduledTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _ScheduledTaskSet: <p>任务列表（分页后）</p>
+        :type ScheduledTaskSet: list of ScheduledTaskSummary
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ScheduledTaskSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ScheduledTaskSet(self):
+        r"""<p>任务列表（分页后）</p>
+        :rtype: list of ScheduledTaskSummary
+        """
+        return self._ScheduledTaskSet
+
+    @ScheduledTaskSet.setter
+    def ScheduledTaskSet(self, ScheduledTaskSet):
+        self._ScheduledTaskSet = ScheduledTaskSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ScheduledTaskSet") is not None:
+            self._ScheduledTaskSet = []
+            for item in params.get("ScheduledTaskSet"):
+                obj = ScheduledTaskSummary()
+                obj._deserialize(item)
+                self._ScheduledTaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeScheduledTaskLogListRequest(AbstractModel):
+    r"""DescribeScheduledTaskLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _Offset: <p>偏移量，从 0 开始</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，缺省为 20，最大 100</p>
+        :type Limit: int
+        :param _WithStats: <p>是否返回聚合统计（Stats）</p>
+        :type WithStats: bool
+        :param _Filters: <p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系</p>
+        :type Filters: list of Filter
+        """
+        self._TaskId = None
+        self._Offset = None
+        self._Limit = None
+        self._WithStats = None
+        self._Filters = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，从 0 开始</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，缺省为 20，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def WithStats(self):
+        r"""<p>是否返回聚合统计（Stats）</p>
+        :rtype: bool
+        """
+        return self._WithStats
+
+    @WithStats.setter
+    def WithStats(self, WithStats):
+        self._WithStats = WithStats
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件数组，多个 Filter 之间为 AND 关系，同一 Filter 内多个 Values 为 OR 关系</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._WithStats = params.get("WithStats")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScheduledTaskLogListResponse(AbstractModel):
+    r"""DescribeScheduledTaskLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _ScheduledTaskLogSet: <p>执行日志列表（分页后）</p>
+        :type ScheduledTaskLogSet: list of ScheduledTaskLogSummary
+        :param _Stats: <p>聚合统计（WithStats=true 时返回）</p>
+        :type Stats: :class:`tencentcloud.workbuddyenterprise.v20260709.models.ScheduledTaskLogStats`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ScheduledTaskLogSet = None
+        self._Stats = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ScheduledTaskLogSet(self):
+        r"""<p>执行日志列表（分页后）</p>
+        :rtype: list of ScheduledTaskLogSummary
+        """
+        return self._ScheduledTaskLogSet
+
+    @ScheduledTaskLogSet.setter
+    def ScheduledTaskLogSet(self, ScheduledTaskLogSet):
+        self._ScheduledTaskLogSet = ScheduledTaskLogSet
+
+    @property
+    def Stats(self):
+        r"""<p>聚合统计（WithStats=true 时返回）</p>
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.ScheduledTaskLogStats`
+        """
+        return self._Stats
+
+    @Stats.setter
+    def Stats(self, Stats):
+        self._Stats = Stats
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ScheduledTaskLogSet") is not None:
+            self._ScheduledTaskLogSet = []
+            for item in params.get("ScheduledTaskLogSet"):
+                obj = ScheduledTaskLogSummary()
+                obj._deserialize(item)
+                self._ScheduledTaskLogSet.append(obj)
+        if params.get("Stats") is not None:
+            self._Stats = ScheduledTaskLogStats()
+            self._Stats._deserialize(params.get("Stats"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeScheduledTaskLogRequest(AbstractModel):
+    r"""DescribeScheduledTaskLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _LogId: <p>执行日志 ID</p>
+        :type LogId: str
+        """
+        self._TaskId = None
+        self._LogId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def LogId(self):
+        r"""<p>执行日志 ID</p>
+        :rtype: str
+        """
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._LogId = params.get("LogId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScheduledTaskLogResponse(AbstractModel):
+    r"""DescribeScheduledTaskLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: <p>执行日志 ID</p>
+        :type LogId: str
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _TaskKey: <p>任务唯一标识</p>
+        :type TaskKey: str
+        :param _SessionId: <p>关联会话 ID</p>
+        :type SessionId: str
+        :param _TriggerType: <p>触发类型：MANUAL（手动）/ CRON（定时）</p>
+        :type TriggerType: str
+        :param _Status: <p>执行状态</p>
+        :type Status: str
+        :param _Prompt: <p>本次执行 Prompt</p>
+        :type Prompt: str
+        :param _Result: <p>执行输出内容（完整结果；列表接口 DescribeScheduledTaskLogList 仅返回前 50 字符预览）</p>
+        :type Result: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: str
+        :param _DurationMs: <p>执行时长（毫秒）</p>
+        :type DurationMs: int
+        :param _DeliveryStatus: <p>投递状态</p>
+        :type DeliveryStatus: str
+        :param _DeliveryError: <p>投递错误信息</p>
+        :type DeliveryError: str
+        :param _CreatedTime: <p>创建时间</p>
+        :type CreatedTime: str
+        :param _ErrorMessage: <p>失败原因</p>
+        :type ErrorMessage: str
+        :param _SessionName: <p>会话名称（AgentOS 侧生成的 AI 标题 / 用户改名）；缺失时为空，调用方可兜底展示 SessionId 后缀</p>
+        :type SessionName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogId = None
+        self._TaskId = None
+        self._TaskKey = None
+        self._SessionId = None
+        self._TriggerType = None
+        self._Status = None
+        self._Prompt = None
+        self._Result = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DurationMs = None
+        self._DeliveryStatus = None
+        self._DeliveryError = None
+        self._CreatedTime = None
+        self._ErrorMessage = None
+        self._SessionName = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        r"""<p>执行日志 ID</p>
+        :rtype: str
+        """
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskKey(self):
+        r"""<p>任务唯一标识</p>
+        :rtype: str
+        """
+        return self._TaskKey
+
+    @TaskKey.setter
+    def TaskKey(self, TaskKey):
+        self._TaskKey = TaskKey
+
+    @property
+    def SessionId(self):
+        r"""<p>关联会话 ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def TriggerType(self):
+        r"""<p>触发类型：MANUAL（手动）/ CRON（定时）</p>
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def Status(self):
+        r"""<p>执行状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Prompt(self):
+        r"""<p>本次执行 Prompt</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Result(self):
+        r"""<p>执行输出内容（完整结果；列表接口 DescribeScheduledTaskLogList 仅返回前 50 字符预览）</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DurationMs(self):
+        r"""<p>执行时长（毫秒）</p>
+        :rtype: int
+        """
+        return self._DurationMs
+
+    @DurationMs.setter
+    def DurationMs(self, DurationMs):
+        self._DurationMs = DurationMs
+
+    @property
+    def DeliveryStatus(self):
+        r"""<p>投递状态</p>
+        :rtype: str
+        """
+        return self._DeliveryStatus
+
+    @DeliveryStatus.setter
+    def DeliveryStatus(self, DeliveryStatus):
+        self._DeliveryStatus = DeliveryStatus
+
+    @property
+    def DeliveryError(self):
+        r"""<p>投递错误信息</p>
+        :rtype: str
+        """
+        return self._DeliveryError
+
+    @DeliveryError.setter
+    def DeliveryError(self, DeliveryError):
+        self._DeliveryError = DeliveryError
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败原因</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def SessionName(self):
+        r"""<p>会话名称（AgentOS 侧生成的 AI 标题 / 用户改名）；缺失时为空，调用方可兜底展示 SessionId 后缀</p>
+        :rtype: str
+        """
+        return self._SessionName
+
+    @SessionName.setter
+    def SessionName(self, SessionName):
+        self._SessionName = SessionName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
+        self._TaskId = params.get("TaskId")
+        self._TaskKey = params.get("TaskKey")
+        self._SessionId = params.get("SessionId")
+        self._TriggerType = params.get("TriggerType")
+        self._Status = params.get("Status")
+        self._Prompt = params.get("Prompt")
+        self._Result = params.get("Result")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DurationMs = params.get("DurationMs")
+        self._DeliveryStatus = params.get("DeliveryStatus")
+        self._DeliveryError = params.get("DeliveryError")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._SessionName = params.get("SessionName")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeScheduledTaskRequest(AbstractModel):
+    r"""DescribeScheduledTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeScheduledTaskResponse(AbstractModel):
+    r"""DescribeScheduledTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskKey: <p>任务唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskKey: str
+        :param _TaskName: <p>任务名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _Description: <p>任务描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _AgentId: <p>关联 Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param _CronExpr: <p>Cron 表达式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronExpr: str
+        :param _Status: <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _LastRunTime: <p>最近执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastRunTime: str
+        :param _NextRunTime: <p>下次执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextRunTime: str
+        :param _CreatedTime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _ModifiedTime: <p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param _AgentConfig: <p>任务 Agent 配置（Prompt/Model/AgentId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentConfig: :class:`tencentcloud.workbuddyenterprise.v20260709.models.AgentConfig`
+        :param _EffectiveStart: <p>生效日期开始时间（YYYY-MM-DD 格式），不传时不限制开始时间</p>
+        :type EffectiveStart: str
+        :param _EffectiveEnd: <p>生效日期结束时间（YYYY-MM-DD 格式），不传时不限制结束时间</p>
+        :type EffectiveEnd: str
+        :param _DeliveryTargetSet: <p>投递目标集合（BOT_CHANNEL / WEBHOOK 可并存）</p>
+        :type DeliveryTargetSet: list of DeliveryTarget
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskKey = None
+        self._TaskName = None
+        self._Description = None
+        self._AgentId = None
+        self._CronExpr = None
+        self._Status = None
+        self._LastRunTime = None
+        self._NextRunTime = None
+        self._CreatedTime = None
+        self._ModifiedTime = None
+        self._AgentConfig = None
+        self._EffectiveStart = None
+        self._EffectiveEnd = None
+        self._DeliveryTargetSet = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskKey(self):
+        r"""<p>任务唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskKey
+
+    @TaskKey.setter
+    def TaskKey(self, TaskKey):
+        self._TaskKey = TaskKey
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Description(self):
+        r"""<p>任务描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AgentId(self):
+        r"""<p>关联 Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def CronExpr(self):
+        r"""<p>Cron 表达式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CronExpr
+
+    @CronExpr.setter
+    def CronExpr(self, CronExpr):
+        self._CronExpr = CronExpr
+
+    @property
+    def Status(self):
+        r"""<p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LastRunTime(self):
+        r"""<p>最近执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastRunTime
+
+    @LastRunTime.setter
+    def LastRunTime(self, LastRunTime):
+        self._LastRunTime = LastRunTime
+
+    @property
+    def NextRunTime(self):
+        r"""<p>下次执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextRunTime
+
+    @NextRunTime.setter
+    def NextRunTime(self, NextRunTime):
+        self._NextRunTime = NextRunTime
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ModifiedTime(self):
+        r"""<p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def AgentConfig(self):
+        r"""<p>任务 Agent 配置（Prompt/Model/AgentId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.AgentConfig`
+        """
+        return self._AgentConfig
+
+    @AgentConfig.setter
+    def AgentConfig(self, AgentConfig):
+        self._AgentConfig = AgentConfig
+
+    @property
+    def EffectiveStart(self):
+        r"""<p>生效日期开始时间（YYYY-MM-DD 格式），不传时不限制开始时间</p>
+        :rtype: str
+        """
+        return self._EffectiveStart
+
+    @EffectiveStart.setter
+    def EffectiveStart(self, EffectiveStart):
+        self._EffectiveStart = EffectiveStart
+
+    @property
+    def EffectiveEnd(self):
+        r"""<p>生效日期结束时间（YYYY-MM-DD 格式），不传时不限制结束时间</p>
+        :rtype: str
+        """
+        return self._EffectiveEnd
+
+    @EffectiveEnd.setter
+    def EffectiveEnd(self, EffectiveEnd):
+        self._EffectiveEnd = EffectiveEnd
+
+    @property
+    def DeliveryTargetSet(self):
+        r"""<p>投递目标集合（BOT_CHANNEL / WEBHOOK 可并存）</p>
+        :rtype: list of DeliveryTarget
+        """
+        return self._DeliveryTargetSet
+
+    @DeliveryTargetSet.setter
+    def DeliveryTargetSet(self, DeliveryTargetSet):
+        self._DeliveryTargetSet = DeliveryTargetSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskKey = params.get("TaskKey")
+        self._TaskName = params.get("TaskName")
+        self._Description = params.get("Description")
+        self._AgentId = params.get("AgentId")
+        self._CronExpr = params.get("CronExpr")
+        self._Status = params.get("Status")
+        self._LastRunTime = params.get("LastRunTime")
+        self._NextRunTime = params.get("NextRunTime")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        if params.get("AgentConfig") is not None:
+            self._AgentConfig = AgentConfig()
+            self._AgentConfig._deserialize(params.get("AgentConfig"))
+        self._EffectiveStart = params.get("EffectiveStart")
+        self._EffectiveEnd = params.get("EffectiveEnd")
+        if params.get("DeliveryTargetSet") is not None:
+            self._DeliveryTargetSet = []
+            for item in params.get("DeliveryTargetSet"):
+                obj = DeliveryTarget()
+                obj._deserialize(item)
+                self._DeliveryTargetSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSkillListRequest(AbstractModel):
     r"""DescribeSkillList请求参数结构体
 
@@ -5736,6 +7119,61 @@ class Filter(AbstractModel):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
         self._ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Header(AbstractModel):
+    r"""自定义请求头键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>请求头名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: <p>请求头值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>请求头名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>请求头值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7356,6 +8794,197 @@ class ModifyAgentVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyScheduledTaskRequest(AbstractModel):
+    r"""ModifyScheduledTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名称</p>
+        :type TaskName: str
+        :param _Description: <p>任务描述</p>
+        :type Description: str
+        :param _AgentConfig: <p>任务关联的 Agent 配置</p>
+        :type AgentConfig: :class:`tencentcloud.workbuddyenterprise.v20260709.models.AgentConfig`
+        :param _CronExpr: <p>Cron 表达式</p>
+        :type CronExpr: str
+        :param _Status: <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+        :type Status: str
+        :param _EffectiveStart: <p>生效日期开始时间（YYYY-MM-DD 格式），传空串清除，不传保持原值</p>
+        :type EffectiveStart: str
+        :param _EffectiveEnd: <p>生效日期结束时间（YYYY-MM-DD 格式），传空串清除，不传保持原值</p>
+        :type EffectiveEnd: str
+        :param _DeliveryTargetSet: <p>投递目标集合（部分更新时整体替换）</p>
+        :type DeliveryTargetSet: list of DeliveryTarget
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._Description = None
+        self._AgentConfig = None
+        self._CronExpr = None
+        self._Status = None
+        self._EffectiveStart = None
+        self._EffectiveEnd = None
+        self._DeliveryTargetSet = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Description(self):
+        r"""<p>任务描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AgentConfig(self):
+        r"""<p>任务关联的 Agent 配置</p>
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.AgentConfig`
+        """
+        return self._AgentConfig
+
+    @AgentConfig.setter
+    def AgentConfig(self, AgentConfig):
+        self._AgentConfig = AgentConfig
+
+    @property
+    def CronExpr(self):
+        r"""<p>Cron 表达式</p>
+        :rtype: str
+        """
+        return self._CronExpr
+
+    @CronExpr.setter
+    def CronExpr(self, CronExpr):
+        self._CronExpr = CronExpr
+
+    @property
+    def Status(self):
+        r"""<p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EffectiveStart(self):
+        r"""<p>生效日期开始时间（YYYY-MM-DD 格式），传空串清除，不传保持原值</p>
+        :rtype: str
+        """
+        return self._EffectiveStart
+
+    @EffectiveStart.setter
+    def EffectiveStart(self, EffectiveStart):
+        self._EffectiveStart = EffectiveStart
+
+    @property
+    def EffectiveEnd(self):
+        r"""<p>生效日期结束时间（YYYY-MM-DD 格式），传空串清除，不传保持原值</p>
+        :rtype: str
+        """
+        return self._EffectiveEnd
+
+    @EffectiveEnd.setter
+    def EffectiveEnd(self, EffectiveEnd):
+        self._EffectiveEnd = EffectiveEnd
+
+    @property
+    def DeliveryTargetSet(self):
+        r"""<p>投递目标集合（部分更新时整体替换）</p>
+        :rtype: list of DeliveryTarget
+        """
+        return self._DeliveryTargetSet
+
+    @DeliveryTargetSet.setter
+    def DeliveryTargetSet(self, DeliveryTargetSet):
+        self._DeliveryTargetSet = DeliveryTargetSet
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._Description = params.get("Description")
+        if params.get("AgentConfig") is not None:
+            self._AgentConfig = AgentConfig()
+            self._AgentConfig._deserialize(params.get("AgentConfig"))
+        self._CronExpr = params.get("CronExpr")
+        self._Status = params.get("Status")
+        self._EffectiveStart = params.get("EffectiveStart")
+        self._EffectiveEnd = params.get("EffectiveEnd")
+        if params.get("DeliveryTargetSet") is not None:
+            self._DeliveryTargetSet = []
+            for item in params.get("DeliveryTargetSet"):
+                obj = DeliveryTarget()
+                obj._deserialize(item)
+                self._DeliveryTargetSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyScheduledTaskResponse(AbstractModel):
+    r"""ModifyScheduledTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RoutingItem(AbstractModel):
     r"""路由项
 
@@ -7401,6 +9030,513 @@ class RoutingItem(AbstractModel):
     def _deserialize(self, params):
         self._VersionId = params.get("VersionId")
         self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduledTaskLogStats(AbstractModel):
+    r"""定时任务执行聚合统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总执行次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _SuccessCount: <p>成功次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuccessCount: int
+        :param _FailedCount: <p>失败次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedCount: int
+        :param _AvgDurationMs: <p>平均执行时长（毫秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AvgDurationMs: int
+        """
+        self._TotalCount = None
+        self._SuccessCount = None
+        self._FailedCount = None
+        self._AvgDurationMs = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总执行次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SuccessCount(self):
+        r"""<p>成功次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedCount(self):
+        r"""<p>失败次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def AvgDurationMs(self):
+        r"""<p>平均执行时长（毫秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AvgDurationMs
+
+    @AvgDurationMs.setter
+    def AvgDurationMs(self, AvgDurationMs):
+        self._AvgDurationMs = AvgDurationMs
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedCount = params.get("FailedCount")
+        self._AvgDurationMs = params.get("AvgDurationMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduledTaskLogSummary(AbstractModel):
+    r"""定时任务执行日志列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: <p>执行日志 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LogId: str
+        :param _TaskKey: <p>任务唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskKey: str
+        :param _TriggerType: <p>触发类型：MANUAL（手动）/ CRON（定时）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: str
+        :param _Status: <p>执行状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _StartTime: <p>开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _DurationMs: <p>执行时长（毫秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationMs: int
+        :param _DeliveryStatus: <p>投递状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliveryStatus: str
+        :param _SessionId: <p>关联会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _ErrorMessage: <p>失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param _SessionName: <p>会话名称（AgentOS 侧生成的 AI 标题 / 用户改名）；缺失时为空，调用方可兜底展示 SessionId 后缀</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionName: str
+        :param _Result: <p>执行结果预览（前 50 字符），仅用于列表页展示；完整结果请调用 DescribeScheduledTaskLog</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: str
+        """
+        self._LogId = None
+        self._TaskKey = None
+        self._TriggerType = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+        self._DurationMs = None
+        self._DeliveryStatus = None
+        self._SessionId = None
+        self._ErrorMessage = None
+        self._SessionName = None
+        self._Result = None
+
+    @property
+    def LogId(self):
+        r"""<p>执行日志 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def TaskKey(self):
+        r"""<p>任务唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskKey
+
+    @TaskKey.setter
+    def TaskKey(self, TaskKey):
+        self._TaskKey = TaskKey
+
+    @property
+    def TriggerType(self):
+        r"""<p>触发类型：MANUAL（手动）/ CRON（定时）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def Status(self):
+        r"""<p>执行状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def DurationMs(self):
+        r"""<p>执行时长（毫秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DurationMs
+
+    @DurationMs.setter
+    def DurationMs(self, DurationMs):
+        self._DurationMs = DurationMs
+
+    @property
+    def DeliveryStatus(self):
+        r"""<p>投递状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeliveryStatus
+
+    @DeliveryStatus.setter
+    def DeliveryStatus(self, DeliveryStatus):
+        self._DeliveryStatus = DeliveryStatus
+
+    @property
+    def SessionId(self):
+        r"""<p>关联会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def SessionName(self):
+        r"""<p>会话名称（AgentOS 侧生成的 AI 标题 / 用户改名）；缺失时为空，调用方可兜底展示 SessionId 后缀</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionName
+
+    @SessionName.setter
+    def SessionName(self, SessionName):
+        self._SessionName = SessionName
+
+    @property
+    def Result(self):
+        r"""<p>执行结果预览（前 50 字符），仅用于列表页展示；完整结果请调用 DescribeScheduledTaskLog</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
+        self._TaskKey = params.get("TaskKey")
+        self._TriggerType = params.get("TriggerType")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._DurationMs = params.get("DurationMs")
+        self._DeliveryStatus = params.get("DeliveryStatus")
+        self._SessionId = params.get("SessionId")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._SessionName = params.get("SessionName")
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScheduledTaskSummary(AbstractModel):
+    r"""定时任务列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TaskKey: <p>任务唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskKey: str
+        :param _TaskName: <p>任务名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _AgentId: <p>关联 Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param _CronExpr: <p>Cron 表达式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronExpr: str
+        :param _Status: <p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _LastRunTime: <p>最近执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastRunTime: str
+        :param _NextRunTime: <p>下次执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextRunTime: str
+        :param _CreatedTime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _AgentConfig: <p>任务 Agent 配置（Prompt/Model/AgentId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentConfig: :class:`tencentcloud.workbuddyenterprise.v20260709.models.AgentConfig`
+        """
+        self._TaskId = None
+        self._TaskKey = None
+        self._TaskName = None
+        self._AgentId = None
+        self._CronExpr = None
+        self._Status = None
+        self._LastRunTime = None
+        self._NextRunTime = None
+        self._CreatedTime = None
+        self._AgentConfig = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskKey(self):
+        r"""<p>任务唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskKey
+
+    @TaskKey.setter
+    def TaskKey(self, TaskKey):
+        self._TaskKey = TaskKey
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def AgentId(self):
+        r"""<p>关联 Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def CronExpr(self):
+        r"""<p>Cron 表达式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CronExpr
+
+    @CronExpr.setter
+    def CronExpr(self, CronExpr):
+        self._CronExpr = CronExpr
+
+    @property
+    def Status(self):
+        r"""<p>任务状态：ACTIVE（启用）/ PAUSED（暂停）/ DISABLED（停用）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LastRunTime(self):
+        r"""<p>最近执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastRunTime
+
+    @LastRunTime.setter
+    def LastRunTime(self, LastRunTime):
+        self._LastRunTime = LastRunTime
+
+    @property
+    def NextRunTime(self):
+        r"""<p>下次执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextRunTime
+
+    @NextRunTime.setter
+    def NextRunTime(self, NextRunTime):
+        self._NextRunTime = NextRunTime
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def AgentConfig(self):
+        r"""<p>任务 Agent 配置（Prompt/Model/AgentId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.AgentConfig`
+        """
+        return self._AgentConfig
+
+    @AgentConfig.setter
+    def AgentConfig(self, AgentConfig):
+        self._AgentConfig = AgentConfig
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskKey = params.get("TaskKey")
+        self._TaskName = params.get("TaskName")
+        self._AgentId = params.get("AgentId")
+        self._CronExpr = params.get("CronExpr")
+        self._Status = params.get("Status")
+        self._LastRunTime = params.get("LastRunTime")
+        self._NextRunTime = params.get("NextRunTime")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("AgentConfig") is not None:
+            self._AgentConfig = AgentConfig()
+            self._AgentConfig._deserialize(params.get("AgentConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7879,6 +10015,134 @@ class SkillItem(AbstractModel):
         
 
 
+class TargetOptions(AbstractModel):
+    r"""投递目标配置，按 Type 选用不同字段组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelType: <p>渠道类型（BOT_CHANNEL 必填）：FEISHU / DINGTALK / QQ / WECOM_NEW / WECOM_AIBOT / WECHAT_KF</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelType: str
+        :param _ChannelId: <p>渠道标识（BOT_CHANNEL 必填）：飞书 appId / 钉钉 appKey / QQ appId / 企微 corpId:agentId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelId: str
+        :param _Url: <p>回调 URL（WEBHOOK 必填）：仅允许 http/https，禁止内网地址（SSRF 防护）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _Headers: <p>自定义请求头列表，与默认 Content-Type: application/json 合并</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: list of Header
+        :param _Secret: <p>HMAC-SHA256 签名密钥（WEBHOOK 可选）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Secret: str
+        :param _RecipientIdSet: <p>接收目标 ID 集合（群 ID / 用户 ID / 频道 ID），BOT_CHANNEL 模式必填，至少一个</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RecipientIdSet: list of str
+        """
+        self._ChannelType = None
+        self._ChannelId = None
+        self._Url = None
+        self._Headers = None
+        self._Secret = None
+        self._RecipientIdSet = None
+
+    @property
+    def ChannelType(self):
+        r"""<p>渠道类型（BOT_CHANNEL 必填）：FEISHU / DINGTALK / QQ / WECOM_NEW / WECOM_AIBOT / WECHAT_KF</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+    @property
+    def ChannelId(self):
+        r"""<p>渠道标识（BOT_CHANNEL 必填）：飞书 appId / 钉钉 appKey / QQ appId / 企微 corpId:agentId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Url(self):
+        r"""<p>回调 URL（WEBHOOK 必填）：仅允许 http/https，禁止内网地址（SSRF 防护）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Headers(self):
+        r"""<p>自定义请求头列表，与默认 Content-Type: application/json 合并</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Header
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def Secret(self):
+        r"""<p>HMAC-SHA256 签名密钥（WEBHOOK 可选）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+    @property
+    def RecipientIdSet(self):
+        r"""<p>接收目标 ID 集合（群 ID / 用户 ID / 频道 ID），BOT_CHANNEL 模式必填，至少一个</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._RecipientIdSet
+
+    @RecipientIdSet.setter
+    def RecipientIdSet(self, RecipientIdSet):
+        self._RecipientIdSet = RecipientIdSet
+
+
+    def _deserialize(self, params):
+        self._ChannelType = params.get("ChannelType")
+        self._ChannelId = params.get("ChannelId")
+        self._Url = params.get("Url")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = Header()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._Secret = params.get("Secret")
+        self._RecipientIdSet = params.get("RecipientIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TokenUsage(AbstractModel):
     r"""Token用量
 
@@ -7966,6 +10230,100 @@ class TokenUsage(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TriggerScheduledTaskRequest(AbstractModel):
+    r"""TriggerScheduledTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        :param _OverridePrompt: <p>覆盖 Prompt，为空则使用任务原 Prompt</p>
+        :type OverridePrompt: str
+        """
+        self._TaskId = None
+        self._OverridePrompt = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def OverridePrompt(self):
+        r"""<p>覆盖 Prompt，为空则使用任务原 Prompt</p>
+        :rtype: str
+        """
+        return self._OverridePrompt
+
+    @OverridePrompt.setter
+    def OverridePrompt(self, OverridePrompt):
+        self._OverridePrompt = OverridePrompt
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._OverridePrompt = params.get("OverridePrompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerScheduledTaskResponse(AbstractModel):
+    r"""TriggerScheduledTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogId: <p>本次触发产生的执行日志 ID</p>
+        :type LogId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogId = None
+        self._RequestId = None
+
+    @property
+    def LogId(self):
+        r"""<p>本次触发产生的执行日志 ID</p>
+        :rtype: str
+        """
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogId = params.get("LogId")
+        self._RequestId = params.get("RequestId")
 
 
 class UnbindExternalAgentRequest(AbstractModel):

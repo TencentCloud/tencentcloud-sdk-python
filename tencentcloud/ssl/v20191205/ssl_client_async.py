@@ -43,6 +43,24 @@ class SslClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BatchDeleteCSR(
+            self,
+            request: models.BatchDeleteCSRRequest,
+            opts: Dict = None,
+    ) -> models.BatchDeleteCSRResponse:
+        """
+        批量删除CSR
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchDeleteCSR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchDeleteCSRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CancelAuditCertificate(
             self,
             request: models.CancelAuditCertificateRequest,
@@ -200,6 +218,24 @@ class SslClient(AbstractClient):
         kwargs["action"] = "CompleteCertificate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CompleteCertificateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCSR(
+            self,
+            request: models.CreateCSRRequest,
+            opts: Dict = None,
+    ) -> models.CreateCSRResponse:
+        """
+        创建CSR
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCSR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCSRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -369,6 +405,42 @@ class SslClient(AbstractClient):
         kwargs["action"] = "DeployCertificateRecordRollback"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeployCertificateRecordRollbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCSR(
+            self,
+            request: models.DescribeCSRRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCSRResponse:
+        """
+        查询CSR详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCSR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCSRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCSRSet(
+            self,
+            request: models.DescribeCSRSetRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCSRSetResponse:
+        """
+        查询CSR列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCSRSet"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCSRSetResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -927,6 +999,24 @@ class SslClient(AbstractClient):
         kwargs["action"] = "DownloadCertificate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DownloadCertificateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCSR(
+            self,
+            request: models.ModifyCSRRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCSRResponse:
+        """
+        修改CSR信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCSR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCSRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

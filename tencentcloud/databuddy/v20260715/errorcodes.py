@@ -98,7 +98,7 @@ INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
-# 参数不正确
+# InvalidParameter.InvalidParameter
 INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
 
 # 无效参数

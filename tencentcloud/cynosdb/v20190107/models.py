@@ -23526,20 +23526,23 @@ class DescribeClusterDatabasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _Offset: 分页偏移
+        :param _FuzzyDBNames: <p>DB库名（支持模糊匹配）</p>
+        :type FuzzyDBNames: list of str
+        :param _Offset: <p>分页偏移</p>
         :type Offset: int
-        :param _Limit: 分页限制数量
+        :param _Limit: <p>分页限制数量</p>
         :type Limit: int
         """
         self._ClusterId = None
+        self._FuzzyDBNames = None
         self._Offset = None
         self._Limit = None
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -23549,8 +23552,19 @@ class DescribeClusterDatabasesRequest(AbstractModel):
         self._ClusterId = ClusterId
 
     @property
+    def FuzzyDBNames(self):
+        r"""<p>DB库名（支持模糊匹配）</p>
+        :rtype: list of str
+        """
+        return self._FuzzyDBNames
+
+    @FuzzyDBNames.setter
+    def FuzzyDBNames(self, FuzzyDBNames):
+        self._FuzzyDBNames = FuzzyDBNames
+
+    @property
     def Offset(self):
-        r"""分页偏移
+        r"""<p>分页偏移</p>
         :rtype: int
         """
         return self._Offset
@@ -23561,7 +23575,7 @@ class DescribeClusterDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页限制数量
+        r"""<p>分页限制数量</p>
         :rtype: int
         """
         return self._Limit
@@ -23573,6 +23587,7 @@ class DescribeClusterDatabasesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._FuzzyDBNames = params.get("FuzzyDBNames")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -23592,13 +23607,13 @@ class DescribeClusterDatabasesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总条数
+        :param _TotalCount: <p>总条数</p>
         :type TotalCount: int
-        :param _Offset: 分页偏移
+        :param _Offset: <p>分页偏移</p>
         :type Offset: int
-        :param _Databases: 数据库列表
+        :param _Databases: <p>数据库列表</p>
         :type Databases: list of str
-        :param _Limit: 分页限制数
+        :param _Limit: <p>分页限制数</p>
         :type Limit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23611,7 +23626,7 @@ class DescribeClusterDatabasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -23622,7 +23637,7 @@ class DescribeClusterDatabasesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移
+        r"""<p>分页偏移</p>
         :rtype: int
         """
         return self._Offset
@@ -23633,7 +23648,7 @@ class DescribeClusterDatabasesResponse(AbstractModel):
 
     @property
     def Databases(self):
-        r"""数据库列表
+        r"""<p>数据库列表</p>
         :rtype: list of str
         """
         return self._Databases
@@ -23644,7 +23659,7 @@ class DescribeClusterDatabasesResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页限制数
+        r"""<p>分页限制数</p>
         :rtype: int
         """
         return self._Limit
@@ -50010,11 +50025,11 @@ class OpenClusterReadOnlyInstanceGroupAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Port: 端口
+        :param _Port: <p>端口</p>
         :type Port: str
-        :param _SecurityGroupIds: 安全组ID 
+        :param _SecurityGroupIds: <p>安全组ID</p>
         :type SecurityGroupIds: list of str
         """
         self._ClusterId = None
@@ -50023,7 +50038,7 @@ class OpenClusterReadOnlyInstanceGroupAccessRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -50034,7 +50049,7 @@ class OpenClusterReadOnlyInstanceGroupAccessRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: str
         """
         return self._Port
@@ -50045,7 +50060,7 @@ class OpenClusterReadOnlyInstanceGroupAccessRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组ID 
+        r"""<p>安全组ID</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -50076,7 +50091,7 @@ class OpenClusterReadOnlyInstanceGroupAccessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 开启流程ID
+        :param _FlowId: <p>开启流程ID</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -50086,7 +50101,7 @@ class OpenClusterReadOnlyInstanceGroupAccessResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""开启流程ID
+        r"""<p>开启流程ID</p>
         :rtype: int
         """
         return self._FlowId

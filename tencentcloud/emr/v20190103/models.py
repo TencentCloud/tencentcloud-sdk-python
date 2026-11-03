@@ -14043,21 +14043,22 @@ class DescribeInstancesListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisplayStrategy: 集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li>
+        :param _DisplayStrategy: <p>集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li></p>
         :type DisplayStrategy: str
-        :param _Offset: 页编号，默认值为0，表示第一页。
+        :param _Offset: <p>页编号，默认值为0，表示第一页。</p>
         :type Offset: int
-        :param _Limit: 每页返回数量，默认值为100，最大值为100。
-如果limit和offset都为0，则查询全部记录；
+        :param _Limit: <p>每页返回数量，默认值为100，最大值为100。<br>如果limit和offset都为0，则查询全部记录；</p>
         :type Limit: int
-        :param _OrderField: 排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+        :param _OrderField: <p>排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li></p>
         :type OrderField: str
-        :param _Asc: 按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。
+        :param _Asc: <p>按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。</p>
         :type Asc: int
-        :param _Filters: 自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
+        :param _Filters: <p>自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{&quot;Name&quot;:&quot;ClusterId&quot;,&quot;Values&quot;:[&quot;emr-xxxxxxxx&quot;]}]</li><li>根据clusterName过滤实例：[{&quot;Name&quot;: &quot;ClusterName&quot;,&quot;Values&quot;: [&quot;cluster_name&quot;]}]</li><li>根据ClusterStatus过滤实例：[{&quot;Name&quot;: &quot;ClusterStatus&quot;,&quot;Values&quot;: [&quot;2&quot;]}]</li></p>
         :type Filters: list of Filters
-        :param _ClusterType: 默认0为普通集群，2为tke集群
+        :param _ClusterType: <p>默认0为普通集群，2为tke集群</p>
         :type ClusterType: int
+        :param _NeedMcpPasswordInfo: <p>是否返回需要密码信息</p>
+        :type NeedMcpPasswordInfo: bool
         """
         self._DisplayStrategy = None
         self._Offset = None
@@ -14066,10 +14067,11 @@ class DescribeInstancesListRequest(AbstractModel):
         self._Asc = None
         self._Filters = None
         self._ClusterType = None
+        self._NeedMcpPasswordInfo = None
 
     @property
     def DisplayStrategy(self):
-        r"""集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li>
+        r"""<p>集群筛选策略。取值范围：<li>clusterList：表示查询除了已销毁集群之外的集群列表。</li><li>monitorManage：表示查询除了已销毁、创建中以及创建失败的集群之外的集群列表。</li><li>cloudHardwareManage/componentManage：目前这两个取值为预留取值，暂时和monitorManage表示同样的含义。</li></p>
         :rtype: str
         """
         return self._DisplayStrategy
@@ -14080,7 +14082,7 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""页编号，默认值为0，表示第一页。
+        r"""<p>页编号，默认值为0，表示第一页。</p>
         :rtype: int
         """
         return self._Offset
@@ -14091,8 +14093,7 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页返回数量，默认值为100，最大值为100。
-如果limit和offset都为0，则查询全部记录；
+        r"""<p>每页返回数量，默认值为100，最大值为100。<br>如果limit和offset都为0，则查询全部记录；</p>
         :rtype: int
         """
         return self._Limit
@@ -14103,7 +14104,7 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li>
+        r"""<p>排序字段。取值范围：<li>clusterId：表示按照实例ID排序。</li><li>addTime：表示按照实例创建时间排序。</li><li>status：表示按照实例的状态码排序。</li></p>
         :rtype: str
         """
         return self._OrderField
@@ -14114,7 +14115,7 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def Asc(self):
-        r"""按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。
+        r"""<p>按照OrderField升序或者降序进行排序。取值范围：<li>0：表示升序。</li><li>1：表示降序。</li>默认值为0。</p>
         :rtype: int
         """
         return self._Asc
@@ -14125,7 +14126,7 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{"Name":"ClusterId","Values":["emr-xxxxxxxx"]}]</li><li>根据clusterName过滤实例：[{"Name": "ClusterName","Values": ["cluster_name"]}]</li><li>根据ClusterStatus过滤实例：[{"Name": "ClusterStatus","Values": ["2"]}]</li>
+        r"""<p>自定义查询过滤器。示例：<li>根据ClusterId过滤实例：[{&quot;Name&quot;:&quot;ClusterId&quot;,&quot;Values&quot;:[&quot;emr-xxxxxxxx&quot;]}]</li><li>根据clusterName过滤实例：[{&quot;Name&quot;: &quot;ClusterName&quot;,&quot;Values&quot;: [&quot;cluster_name&quot;]}]</li><li>根据ClusterStatus过滤实例：[{&quot;Name&quot;: &quot;ClusterStatus&quot;,&quot;Values&quot;: [&quot;2&quot;]}]</li></p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -14136,7 +14137,7 @@ class DescribeInstancesListRequest(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""默认0为普通集群，2为tke集群
+        r"""<p>默认0为普通集群，2为tke集群</p>
         :rtype: int
         """
         return self._ClusterType
@@ -14144,6 +14145,17 @@ class DescribeInstancesListRequest(AbstractModel):
     @ClusterType.setter
     def ClusterType(self, ClusterType):
         self._ClusterType = ClusterType
+
+    @property
+    def NeedMcpPasswordInfo(self):
+        r"""<p>是否返回需要密码信息</p>
+        :rtype: bool
+        """
+        return self._NeedMcpPasswordInfo
+
+    @NeedMcpPasswordInfo.setter
+    def NeedMcpPasswordInfo(self, NeedMcpPasswordInfo):
+        self._NeedMcpPasswordInfo = NeedMcpPasswordInfo
 
 
     def _deserialize(self, params):
@@ -14159,6 +14171,7 @@ class DescribeInstancesListRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._ClusterType = params.get("ClusterType")
+        self._NeedMcpPasswordInfo = params.get("NeedMcpPasswordInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14176,9 +14189,9 @@ class DescribeInstancesListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCnt: 符合条件的实例总数。
+        :param _TotalCnt: <p>符合条件的实例总数。</p>
         :type TotalCnt: int
-        :param _InstancesList: 集群实例列表
+        :param _InstancesList: <p>集群实例列表</p>
         :type InstancesList: list of EmrListInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14189,7 +14202,7 @@ class DescribeInstancesListResponse(AbstractModel):
 
     @property
     def TotalCnt(self):
-        r"""符合条件的实例总数。
+        r"""<p>符合条件的实例总数。</p>
         :rtype: int
         """
         return self._TotalCnt
@@ -14200,7 +14213,7 @@ class DescribeInstancesListResponse(AbstractModel):
 
     @property
     def InstancesList(self):
-        r"""集群实例列表
+        r"""<p>集群实例列表</p>
         :rtype: list of EmrListInstance
         """
         return self._InstancesList
@@ -20398,72 +20411,78 @@ class EmrListInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _StatusDesc: 常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除
+        :param _StatusDesc: <p>常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除</p>
         :type StatusDesc: str
-        :param _ClusterName: 集群名字
+        :param _ClusterName: <p>集群名字</p>
         :type ClusterName: str
-        :param _ZoneId: 集群地域
+        :param _ZoneId: <p>集群地域</p>
         :type ZoneId: int
-        :param _AppId: 用户APPID
+        :param _AppId: <p>用户APPID</p>
         :type AppId: int
-        :param _AddTime: 创建时间
+        :param _AddTime: <p>创建时间</p>
         :type AddTime: str
-        :param _RunTime: 运行时间
+        :param _RunTime: <p>运行时间</p>
         :type RunTime: str
-        :param _MasterIp: 集群IP
+        :param _MasterIp: <p>集群IP</p>
         :type MasterIp: str
-        :param _EmrVersion: 集群版本
+        :param _EmrVersion: <p>集群版本</p>
         :type EmrVersion: str
-        :param _ChargeType: 集群计费类型
+        :param _ChargeType: <p>集群计费类型</p>
         :type ChargeType: int
-        :param _Id: emr ID
+        :param _Id: <p>emr ID</p>
         :type Id: int
-        :param _ProductId: 产品ID
+        :param _ProductId: <p>产品ID</p>
         :type ProductId: int
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _RegionId: 区域
+        :param _RegionId: <p>区域</p>
         :type RegionId: int
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: int
-        :param _VpcId: 网络ID
+        :param _VpcId: <p>网络ID</p>
         :type VpcId: int
-        :param _Zone: 地区
+        :param _Zone: <p>地区</p>
         :type Zone: str
-        :param _Status: 状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)
+        :param _Status: <p>状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)</p>
         :type Status: int
-        :param _Tags: 实例标签
+        :param _Tags: <p>实例标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _AlarmInfo: 告警信息
+        :param _AlarmInfo: <p>告警信息</p>
         :type AlarmInfo: str
-        :param _IsWoodpeckerCluster: 是否是woodpecker集群
+        :param _IsWoodpeckerCluster: <p>是否是woodpecker集群</p>
         :type IsWoodpeckerCluster: int
-        :param _VpcName: Vpc中文
+        :param _VpcName: <p>Vpc中文</p>
         :type VpcName: str
-        :param _SubnetName: 子网中文
+        :param _SubnetName: <p>子网中文</p>
         :type SubnetName: str
-        :param _UniqVpcId: 字符串VpcId
+        :param _UniqVpcId: <p>字符串VpcId</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: 字符串子网
+        :param _UniqSubnetId: <p>字符串子网</p>
         :type UniqSubnetId: str
-        :param _ClusterClass: 集群类型
+        :param _ClusterClass: <p>集群类型</p>
         :type ClusterClass: str
-        :param _IsMultiZoneCluster: 是否为跨AZ集群
+        :param _IsMultiZoneCluster: <p>是否为跨AZ集群</p>
         :type IsMultiZoneCluster: bool
-        :param _IsHandsCluster: 是否手戳集群
+        :param _IsHandsCluster: <p>是否手戳集群</p>
         :type IsHandsCluster: bool
-        :param _OutSideSoftInfo: 体外客户端组件信息
+        :param _OutSideSoftInfo: <p>体外客户端组件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutSideSoftInfo: list of SoftDependInfo
-        :param _IsSupportOutsideCluster: 当前集群的应用场景是否支持体外客户端
+        :param _IsSupportOutsideCluster: <p>当前集群的应用场景是否支持体外客户端</p>
         :type IsSupportOutsideCluster: bool
-        :param _IsDedicatedCluster: 是否专有集群场景集群
+        :param _IsDedicatedCluster: <p>是否专有集群场景集群</p>
         :type IsDedicatedCluster: bool
-        :param _IsSupportClone: 集群支持克隆
+        :param _IsSupportClone: <p>集群支持克隆</p>
         :type IsSupportClone: bool
+        :param _Soft: <p>集群包含的组件</p>
+        :type Soft: list of str
+        :param _IsTerminateProtection: <p>是否开启了实例保护</p>
+        :type IsTerminateProtection: bool
+        :param _McpPasswordInfo: <p>mcp密码信息</p>
+        :type McpPasswordInfo: :class:`tencentcloud.emr.v20190103.models.McpPasswordInfo`
         """
         self._ClusterId = None
         self._StatusDesc = None
@@ -20497,10 +20516,13 @@ class EmrListInstance(AbstractModel):
         self._IsSupportOutsideCluster = None
         self._IsDedicatedCluster = None
         self._IsSupportClone = None
+        self._Soft = None
+        self._IsTerminateProtection = None
+        self._McpPasswordInfo = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -20511,7 +20533,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def StatusDesc(self):
-        r"""常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除
+        r"""<p>常见状态描述：集群生产中,集群运行中,集群创建中,集群已关闭,集群已删除</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -20522,7 +20544,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名字
+        r"""<p>集群名字</p>
         :rtype: str
         """
         return self._ClusterName
@@ -20533,7 +20555,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""集群地域
+        r"""<p>集群地域</p>
         :rtype: int
         """
         return self._ZoneId
@@ -20544,7 +20566,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户APPID
+        r"""<p>用户APPID</p>
         :rtype: int
         """
         return self._AppId
@@ -20555,7 +20577,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def AddTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._AddTime
@@ -20566,7 +20588,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def RunTime(self):
-        r"""运行时间
+        r"""<p>运行时间</p>
         :rtype: str
         """
         return self._RunTime
@@ -20577,7 +20599,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def MasterIp(self):
-        r"""集群IP
+        r"""<p>集群IP</p>
         :rtype: str
         """
         return self._MasterIp
@@ -20588,7 +20610,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def EmrVersion(self):
-        r"""集群版本
+        r"""<p>集群版本</p>
         :rtype: str
         """
         return self._EmrVersion
@@ -20599,7 +20621,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def ChargeType(self):
-        r"""集群计费类型
+        r"""<p>集群计费类型</p>
         :rtype: int
         """
         return self._ChargeType
@@ -20610,7 +20632,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def Id(self):
-        r"""emr ID
+        r"""<p>emr ID</p>
         :rtype: int
         """
         return self._Id
@@ -20621,7 +20643,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def ProductId(self):
-        r"""产品ID
+        r"""<p>产品ID</p>
         :rtype: int
         """
         return self._ProductId
@@ -20632,7 +20654,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -20643,7 +20665,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""区域
+        r"""<p>区域</p>
         :rtype: int
         """
         return self._RegionId
@@ -20654,7 +20676,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: int
         """
         return self._SubnetId
@@ -20665,7 +20687,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""网络ID
+        r"""<p>网络ID</p>
         :rtype: int
         """
         return self._VpcId
@@ -20676,7 +20698,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def Zone(self):
-        r"""地区
+        r"""<p>地区</p>
         :rtype: str
         """
         return self._Zone
@@ -20687,7 +20709,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)
+        r"""<p>状态码, 取值为-2(集群已删除), -1(集群已关闭), 0(集群生产中), 2(集群运行中), 3(集群创建中)</p>
         :rtype: int
         """
         return self._Status
@@ -20698,7 +20720,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def Tags(self):
-        r"""实例标签
+        r"""<p>实例标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -20710,7 +20732,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def AlarmInfo(self):
-        r"""告警信息
+        r"""<p>告警信息</p>
         :rtype: str
         """
         return self._AlarmInfo
@@ -20721,7 +20743,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def IsWoodpeckerCluster(self):
-        r"""是否是woodpecker集群
+        r"""<p>是否是woodpecker集群</p>
         :rtype: int
         """
         return self._IsWoodpeckerCluster
@@ -20732,7 +20754,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""Vpc中文
+        r"""<p>Vpc中文</p>
         :rtype: str
         """
         return self._VpcName
@@ -20743,7 +20765,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""子网中文
+        r"""<p>子网中文</p>
         :rtype: str
         """
         return self._SubnetName
@@ -20754,7 +20776,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""字符串VpcId
+        r"""<p>字符串VpcId</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -20765,7 +20787,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""字符串子网
+        r"""<p>字符串子网</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -20776,7 +20798,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def ClusterClass(self):
-        r"""集群类型
+        r"""<p>集群类型</p>
         :rtype: str
         """
         return self._ClusterClass
@@ -20787,7 +20809,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def IsMultiZoneCluster(self):
-        r"""是否为跨AZ集群
+        r"""<p>是否为跨AZ集群</p>
         :rtype: bool
         """
         return self._IsMultiZoneCluster
@@ -20798,7 +20820,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def IsHandsCluster(self):
-        r"""是否手戳集群
+        r"""<p>是否手戳集群</p>
         :rtype: bool
         """
         return self._IsHandsCluster
@@ -20809,7 +20831,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def OutSideSoftInfo(self):
-        r"""体外客户端组件信息
+        r"""<p>体外客户端组件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SoftDependInfo
         """
@@ -20821,7 +20843,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def IsSupportOutsideCluster(self):
-        r"""当前集群的应用场景是否支持体外客户端
+        r"""<p>当前集群的应用场景是否支持体外客户端</p>
         :rtype: bool
         """
         return self._IsSupportOutsideCluster
@@ -20832,7 +20854,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def IsDedicatedCluster(self):
-        r"""是否专有集群场景集群
+        r"""<p>是否专有集群场景集群</p>
         :rtype: bool
         """
         return self._IsDedicatedCluster
@@ -20843,7 +20865,7 @@ class EmrListInstance(AbstractModel):
 
     @property
     def IsSupportClone(self):
-        r"""集群支持克隆
+        r"""<p>集群支持克隆</p>
         :rtype: bool
         """
         return self._IsSupportClone
@@ -20851,6 +20873,39 @@ class EmrListInstance(AbstractModel):
     @IsSupportClone.setter
     def IsSupportClone(self, IsSupportClone):
         self._IsSupportClone = IsSupportClone
+
+    @property
+    def Soft(self):
+        r"""<p>集群包含的组件</p>
+        :rtype: list of str
+        """
+        return self._Soft
+
+    @Soft.setter
+    def Soft(self, Soft):
+        self._Soft = Soft
+
+    @property
+    def IsTerminateProtection(self):
+        r"""<p>是否开启了实例保护</p>
+        :rtype: bool
+        """
+        return self._IsTerminateProtection
+
+    @IsTerminateProtection.setter
+    def IsTerminateProtection(self, IsTerminateProtection):
+        self._IsTerminateProtection = IsTerminateProtection
+
+    @property
+    def McpPasswordInfo(self):
+        r"""<p>mcp密码信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.McpPasswordInfo`
+        """
+        return self._McpPasswordInfo
+
+    @McpPasswordInfo.setter
+    def McpPasswordInfo(self, McpPasswordInfo):
+        self._McpPasswordInfo = McpPasswordInfo
 
 
     def _deserialize(self, params):
@@ -20896,6 +20951,11 @@ class EmrListInstance(AbstractModel):
         self._IsSupportOutsideCluster = params.get("IsSupportOutsideCluster")
         self._IsDedicatedCluster = params.get("IsDedicatedCluster")
         self._IsSupportClone = params.get("IsSupportClone")
+        self._Soft = params.get("Soft")
+        self._IsTerminateProtection = params.get("IsTerminateProtection")
+        if params.get("McpPasswordInfo") is not None:
+            self._McpPasswordInfo = McpPasswordInfo()
+            self._McpPasswordInfo._deserialize(params.get("McpPasswordInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28001,6 +28061,57 @@ class LoginSettings(AbstractModel):
     def _deserialize(self, params):
         self._Password = params.get("Password")
         self._PublicKeyId = params.get("PublicKeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class McpPasswordInfo(AbstractModel):
+    r"""mcp是否需要密码
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HivePasswordRequired: <p>hive是否需要密码</p>
+        :type HivePasswordRequired: bool
+        :param _TrinoPasswordRequired: <p>trino是否需要密码</p>
+        :type TrinoPasswordRequired: bool
+        """
+        self._HivePasswordRequired = None
+        self._TrinoPasswordRequired = None
+
+    @property
+    def HivePasswordRequired(self):
+        r"""<p>hive是否需要密码</p>
+        :rtype: bool
+        """
+        return self._HivePasswordRequired
+
+    @HivePasswordRequired.setter
+    def HivePasswordRequired(self, HivePasswordRequired):
+        self._HivePasswordRequired = HivePasswordRequired
+
+    @property
+    def TrinoPasswordRequired(self):
+        r"""<p>trino是否需要密码</p>
+        :rtype: bool
+        """
+        return self._TrinoPasswordRequired
+
+    @TrinoPasswordRequired.setter
+    def TrinoPasswordRequired(self, TrinoPasswordRequired):
+        self._TrinoPasswordRequired = TrinoPasswordRequired
+
+
+    def _deserialize(self, params):
+        self._HivePasswordRequired = params.get("HivePasswordRequired")
+        self._TrinoPasswordRequired = params.get("TrinoPasswordRequired")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

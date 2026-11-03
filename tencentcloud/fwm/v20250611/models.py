@@ -1456,13 +1456,13 @@ class CommonFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 筛选字段名
+        :param _Name: <p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Values: 筛选值列表
+        :param _Values: <p>筛选值列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
-        :param _OperatorType: 操作类型：1=精确匹配，7=in，9=模糊匹配
+        :param _OperatorType: <p>操作类型。1=等于，7=in，9=模糊匹配</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorType: int
         """
@@ -1472,7 +1472,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def Name(self):
-        r"""筛选字段名
+        r"""<p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1484,7 +1484,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def Values(self):
-        r"""筛选值列表
+        r"""<p>筛选值列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1496,7 +1496,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def OperatorType(self):
-        r"""操作类型：1=精确匹配，7=in，9=模糊匹配
+        r"""<p>操作类型。1=等于，7=in，9=模糊匹配</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3901,15 +3901,15 @@ class DescribeOrganMembersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 搜索过滤条件列表，支持按成员 ID、账号名称、身份、纳管状态等字段筛选
+        :param _Filters: <p>搜索过滤条件列表，支持按成员 ID、账号名称、身份、纳管状态等字段筛选</p>
         :type Filters: list of CommonFilter
-        :param _Limit: 分页大小，默认 20
+        :param _Limit: <p>分页大小，默认 20</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，默认 0
+        :param _Offset: <p>分页偏移量，默认 0</p>
         :type Offset: int
-        :param _By: 排序字段，如 MemberCreateTime
+        :param _By: <p>排序字段，如 MemberCreateTime</p>
         :type By: str
-        :param _Order: 排序方式：asc 升序，desc 降序
+        :param _Order: <p>排序方式：asc 升序，desc 降序</p>
         :type Order: str
         """
         self._Filters = None
@@ -3920,7 +3920,7 @@ class DescribeOrganMembersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""搜索过滤条件列表，支持按成员 ID、账号名称、身份、纳管状态等字段筛选
+        r"""<p>搜索过滤条件列表，支持按成员 ID、账号名称、身份、纳管状态等字段筛选</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -3931,7 +3931,7 @@ class DescribeOrganMembersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小，默认 20
+        r"""<p>分页大小，默认 20</p>
         :rtype: int
         """
         return self._Limit
@@ -3942,7 +3942,7 @@ class DescribeOrganMembersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认 0
+        r"""<p>分页偏移量，默认 0</p>
         :rtype: int
         """
         return self._Offset
@@ -3953,7 +3953,7 @@ class DescribeOrganMembersRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序字段，如 MemberCreateTime
+        r"""<p>排序字段，如 MemberCreateTime</p>
         :rtype: str
         """
         return self._By
@@ -3964,7 +3964,7 @@ class DescribeOrganMembersRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式：asc 升序，desc 降序
+        r"""<p>排序方式：asc 升序，desc 降序</p>
         :rtype: str
         """
         return self._Order
@@ -4002,9 +4002,9 @@ class DescribeOrganMembersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 集团成员总数
+        :param _TotalCount: <p>集团成员总数</p>
         :type TotalCount: int
-        :param _Members: 集团成员列表
+        :param _Members: <p>集团成员列表</p>
         :type Members: list of OrganMemberItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4015,7 +4015,7 @@ class DescribeOrganMembersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""集团成员总数
+        r"""<p>集团成员总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4026,7 +4026,7 @@ class DescribeOrganMembersResponse(AbstractModel):
 
     @property
     def Members(self):
-        r"""集团成员列表
+        r"""<p>集团成员列表</p>
         :rtype: list of OrganMemberItem
         """
         return self._Members
@@ -5278,15 +5278,15 @@ class DescribeStrategiesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Product: 产品类型
+        :param _Product: <p>产品类型</p>
         :type Product: str
-        :param _ExecArea: 执行区域：pre是前区，post 是后区
+        :param _ExecArea: <p>执行区域：pre是前区，post 是后区</p>
         :type ExecArea: str
-        :param _Filters: 筛选条件
+        :param _Filters: <p>筛选条件</p>
         :type Filters: list of CommonFilter
-        :param _Limit: 条数限制
+        :param _Limit: <p>条数限制</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
         """
         self._Product = None
@@ -5297,7 +5297,7 @@ class DescribeStrategiesRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""产品类型
+        r"""<p>产品类型</p>
         :rtype: str
         """
         return self._Product
@@ -5308,7 +5308,7 @@ class DescribeStrategiesRequest(AbstractModel):
 
     @property
     def ExecArea(self):
-        r"""执行区域：pre是前区，post 是后区
+        r"""<p>执行区域：pre是前区，post 是后区</p>
         :rtype: str
         """
         return self._ExecArea
@@ -5319,7 +5319,7 @@ class DescribeStrategiesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""筛选条件
+        r"""<p>筛选条件</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -5330,7 +5330,7 @@ class DescribeStrategiesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""条数限制
+        r"""<p>条数限制</p>
         :rtype: int
         """
         return self._Limit
@@ -5341,7 +5341,7 @@ class DescribeStrategiesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -5379,9 +5379,9 @@ class DescribeStrategiesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
-        :param _Strategies: 策略列表
+        :param _Strategies: <p>策略列表</p>
         :type Strategies: list of StrategyResp
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5392,7 +5392,7 @@ class DescribeStrategiesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -5403,7 +5403,7 @@ class DescribeStrategiesResponse(AbstractModel):
 
     @property
     def Strategies(self):
-        r"""策略列表
+        r"""<p>策略列表</p>
         :rtype: list of StrategyResp
         """
         return self._Strategies
@@ -5735,14 +5735,14 @@ class DescribeStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StrategyId: 策略Id
+        :param _StrategyId: <p>策略Id</p>
         :type StrategyId: str
         """
         self._StrategyId = None
 
     @property
     def StrategyId(self):
-        r"""策略Id
+        r"""<p>策略Id</p>
         :rtype: str
         """
         return self._StrategyId
@@ -5771,7 +5771,7 @@ class DescribeStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Strategy: 策略详情
+        :param _Strategy: <p>策略详情</p>
         :type Strategy: :class:`tencentcloud.fwm.v20250611.models.StrategyResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5781,7 +5781,7 @@ class DescribeStrategyResponse(AbstractModel):
 
     @property
     def Strategy(self):
-        r"""策略详情
+        r"""<p>策略详情</p>
         :rtype: :class:`tencentcloud.fwm.v20250611.models.StrategyResp`
         """
         return self._Strategy
@@ -9107,6 +9107,9 @@ class OrganMemberItem(AbstractModel):
         :param _CfwSharerAppId: <p>云防火墙共享者 AppId，成员角色为使用者时有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfwSharerAppId: str
+        :param _CfwSharerMemberId: <p>共享者MemberId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CfwSharerMemberId: str
         :param _CfwInstanceId: <p>云防火墙计费实例 ID，非空表示已购买云防火墙</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfwInstanceId: str
@@ -9126,6 +9129,8 @@ class OrganMemberItem(AbstractModel):
         :type SgManaged: int
         :param _IsCfwPostPay: <p>是否是后付费云防版本</p><p>枚举值：</p><ul><li>1： 后付费</li><li>0： 非后付费</li><li>-1： 未知</li></ul>
         :type IsCfwPostPay: int
+        :param _SgFreeClaimed: <p>企业安全组免费额度领取态：0-未领用，1-已领用（永久领取态）</p>
+        :type SgFreeClaimed: int
         """
         self._MemberId = None
         self._AppId = None
@@ -9140,6 +9145,7 @@ class OrganMemberItem(AbstractModel):
         self._CfwShareRole = None
         self._CfwShareRoleDisplay = None
         self._CfwSharerAppId = None
+        self._CfwSharerMemberId = None
         self._CfwInstanceId = None
         self._PolicyAnalysisEnabled = None
         self._MemberCreateTime = None
@@ -9148,6 +9154,7 @@ class OrganMemberItem(AbstractModel):
         self._CfwCapable = None
         self._SgManaged = None
         self._IsCfwPostPay = None
+        self._SgFreeClaimed = None
 
     @property
     def MemberId(self):
@@ -9305,6 +9312,18 @@ class OrganMemberItem(AbstractModel):
         self._CfwSharerAppId = CfwSharerAppId
 
     @property
+    def CfwSharerMemberId(self):
+        r"""<p>共享者MemberId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CfwSharerMemberId
+
+    @CfwSharerMemberId.setter
+    def CfwSharerMemberId(self, CfwSharerMemberId):
+        self._CfwSharerMemberId = CfwSharerMemberId
+
+    @property
     def CfwInstanceId(self):
         r"""<p>云防火墙计费实例 ID，非空表示已购买云防火墙</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -9395,6 +9414,17 @@ class OrganMemberItem(AbstractModel):
     def IsCfwPostPay(self, IsCfwPostPay):
         self._IsCfwPostPay = IsCfwPostPay
 
+    @property
+    def SgFreeClaimed(self):
+        r"""<p>企业安全组免费额度领取态：0-未领用，1-已领用（永久领取态）</p>
+        :rtype: int
+        """
+        return self._SgFreeClaimed
+
+    @SgFreeClaimed.setter
+    def SgFreeClaimed(self, SgFreeClaimed):
+        self._SgFreeClaimed = SgFreeClaimed
+
 
     def _deserialize(self, params):
         self._MemberId = params.get("MemberId")
@@ -9412,6 +9442,7 @@ class OrganMemberItem(AbstractModel):
         self._CfwShareRole = params.get("CfwShareRole")
         self._CfwShareRoleDisplay = params.get("CfwShareRoleDisplay")
         self._CfwSharerAppId = params.get("CfwSharerAppId")
+        self._CfwSharerMemberId = params.get("CfwSharerMemberId")
         self._CfwInstanceId = params.get("CfwInstanceId")
         self._PolicyAnalysisEnabled = params.get("PolicyAnalysisEnabled")
         self._MemberCreateTime = params.get("MemberCreateTime")
@@ -9420,6 +9451,7 @@ class OrganMemberItem(AbstractModel):
         self._CfwCapable = params.get("CfwCapable")
         self._SgManaged = params.get("SgManaged")
         self._IsCfwPostPay = params.get("IsCfwPostPay")
+        self._SgFreeClaimed = params.get("SgFreeClaimed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11953,41 +11985,44 @@ class StrategyResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StrategyId: 策略Id
+        :param _StrategyId: <p>策略Id</p>
         :type StrategyId: str
-        :param _GroupId: 规则组Id
+        :param _GroupId: <p>规则组Id</p>
         :type GroupId: str
-        :param _GroupName: 规则组名称
+        :param _Product: <p>产品类型</p>
+        :type Product: str
+        :param _GroupName: <p>规则组名称</p>
         :type GroupName: str
-        :param _RuleCount: 规则数
+        :param _RuleCount: <p>规则数</p>
         :type RuleCount: int
-        :param _RuleStatus: 策略状态
+        :param _RuleStatus: <p>策略状态</p>
         :type RuleStatus: int
-        :param _ReceiveAccount: 下发账号
+        :param _ReceiveAccount: <p>下发账号</p>
         :type ReceiveAccount: list of ReceiveAccount
-        :param _Sequence: 优先级
+        :param _Sequence: <p>优先级</p>
         :type Sequence: int
-        :param _ErrMsg: 下发失败原因
+        :param _ErrMsg: <p>下发失败原因</p>
         :type ErrMsg: str
-        :param _ErrorType: 下发失败原因类型
+        :param _ErrorType: <p>下发失败原因类型</p>
         :type ErrorType: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _CreateBy: 创建人
+        :param _CreateBy: <p>创建人</p>
         :type CreateBy: str
-        :param _UpdateBy: 更新人
+        :param _UpdateBy: <p>更新人</p>
         :type UpdateBy: str
-        :param _ExecArea: 执行区域
+        :param _ExecArea: <p>执行区域</p>
         :type ExecArea: str
-        :param _CreateName: 创建人名称
+        :param _CreateName: <p>创建人名称</p>
         :type CreateName: str
-        :param _UpdateName: 更新人名称
+        :param _UpdateName: <p>更新人名称</p>
         :type UpdateName: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
         """
         self._StrategyId = None
         self._GroupId = None
+        self._Product = None
         self._GroupName = None
         self._RuleCount = None
         self._RuleStatus = None
@@ -12005,7 +12040,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def StrategyId(self):
-        r"""策略Id
+        r"""<p>策略Id</p>
         :rtype: str
         """
         return self._StrategyId
@@ -12016,7 +12051,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""规则组Id
+        r"""<p>规则组Id</p>
         :rtype: str
         """
         return self._GroupId
@@ -12026,8 +12061,19 @@ class StrategyResp(AbstractModel):
         self._GroupId = GroupId
 
     @property
+    def Product(self):
+        r"""<p>产品类型</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
     def GroupName(self):
-        r"""规则组名称
+        r"""<p>规则组名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -12038,7 +12084,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def RuleCount(self):
-        r"""规则数
+        r"""<p>规则数</p>
         :rtype: int
         """
         return self._RuleCount
@@ -12049,7 +12095,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def RuleStatus(self):
-        r"""策略状态
+        r"""<p>策略状态</p>
         :rtype: int
         """
         return self._RuleStatus
@@ -12060,7 +12106,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def ReceiveAccount(self):
-        r"""下发账号
+        r"""<p>下发账号</p>
         :rtype: list of ReceiveAccount
         """
         return self._ReceiveAccount
@@ -12071,7 +12117,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def Sequence(self):
-        r"""优先级
+        r"""<p>优先级</p>
         :rtype: int
         """
         return self._Sequence
@@ -12082,7 +12128,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def ErrMsg(self):
-        r"""下发失败原因
+        r"""<p>下发失败原因</p>
         :rtype: str
         """
         return self._ErrMsg
@@ -12093,7 +12139,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def ErrorType(self):
-        r"""下发失败原因类型
+        r"""<p>下发失败原因类型</p>
         :rtype: str
         """
         return self._ErrorType
@@ -12104,7 +12150,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -12115,7 +12161,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def CreateBy(self):
-        r"""创建人
+        r"""<p>创建人</p>
         :rtype: str
         """
         return self._CreateBy
@@ -12126,7 +12172,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def UpdateBy(self):
-        r"""更新人
+        r"""<p>更新人</p>
         :rtype: str
         """
         return self._UpdateBy
@@ -12137,7 +12183,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def ExecArea(self):
-        r"""执行区域
+        r"""<p>执行区域</p>
         :rtype: str
         """
         return self._ExecArea
@@ -12148,7 +12194,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def CreateName(self):
-        r"""创建人名称
+        r"""<p>创建人名称</p>
         :rtype: str
         """
         return self._CreateName
@@ -12159,7 +12205,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def UpdateName(self):
-        r"""更新人名称
+        r"""<p>更新人名称</p>
         :rtype: str
         """
         return self._UpdateName
@@ -12170,7 +12216,7 @@ class StrategyResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -12183,6 +12229,7 @@ class StrategyResp(AbstractModel):
     def _deserialize(self, params):
         self._StrategyId = params.get("StrategyId")
         self._GroupId = params.get("GroupId")
+        self._Product = params.get("Product")
         self._GroupName = params.get("GroupName")
         self._RuleCount = params.get("RuleCount")
         self._RuleStatus = params.get("RuleStatus")

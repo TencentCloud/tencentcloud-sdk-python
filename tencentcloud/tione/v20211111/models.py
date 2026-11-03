@@ -14896,13 +14896,13 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 过滤字段名称
+        :param _Name: <p>过滤字段名称</p>
         :type Name: str
-        :param _Values: 过滤字段取值
+        :param _Values: <p>过滤字段取值</p>
         :type Values: list of str
-        :param _Negative: 是否开启反向查询
+        :param _Negative: <p>是否开启反向查询</p>
         :type Negative: bool
-        :param _Fuzzy: 是否开启模糊匹配
+        :param _Fuzzy: <p>是否开启模糊匹配</p>
         :type Fuzzy: bool
         """
         self._Name = None
@@ -14912,7 +14912,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤字段名称
+        r"""<p>过滤字段名称</p>
         :rtype: str
         """
         return self._Name
@@ -14923,7 +14923,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""过滤字段取值
+        r"""<p>过滤字段取值</p>
         :rtype: list of str
         """
         return self._Values
@@ -14934,7 +14934,7 @@ class Filter(AbstractModel):
 
     @property
     def Negative(self):
-        r"""是否开启反向查询
+        r"""<p>是否开启反向查询</p>
         :rtype: bool
         """
         return self._Negative
@@ -14945,7 +14945,7 @@ class Filter(AbstractModel):
 
     @property
     def Fuzzy(self):
-        r"""是否开启模糊匹配
+        r"""<p>是否开启模糊匹配</p>
         :rtype: bool
         """
         return self._Fuzzy

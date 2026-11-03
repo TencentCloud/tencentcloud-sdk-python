@@ -115,6 +115,24 @@ class WorkbuddyenterpriseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateScheduledTask(
+            self,
+            request: models.CreateScheduledTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateScheduledTaskResponse:
+        """
+        创建自动化任务。AgentConfig 由上游传入，managed-agent 仅做协议透传。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateScheduledTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateScheduledTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAgent(
             self,
             request: models.DeleteAgentRequest,
@@ -128,6 +146,24 @@ class WorkbuddyenterpriseClient(AbstractClient):
         kwargs["action"] = "DeleteAgent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteScheduledTask(
+            self,
+            request: models.DeleteScheduledTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteScheduledTaskResponse:
+        """
+        删除指定的自动化任务。删除后不可恢复。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteScheduledTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteScheduledTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -349,6 +385,78 @@ class WorkbuddyenterpriseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeScheduledTask(
+            self,
+            request: models.DescribeScheduledTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeScheduledTaskResponse:
+        """
+        查询单个自动化任务的详细信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeScheduledTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeScheduledTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeScheduledTaskList(
+            self,
+            request: models.DescribeScheduledTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeScheduledTaskListResponse:
+        """
+        分页查询自动化任务列表，支持按任务名称、状态、Agent 过滤。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeScheduledTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeScheduledTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeScheduledTaskLog(
+            self,
+            request: models.DescribeScheduledTaskLogRequest,
+            opts: Dict = None,
+    ) -> models.DescribeScheduledTaskLogResponse:
+        """
+        查询单条自动化任务执行日志的详细信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeScheduledTaskLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeScheduledTaskLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeScheduledTaskLogList(
+            self,
+            request: models.DescribeScheduledTaskLogListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeScheduledTaskLogListResponse:
+        """
+        分页查询自动化任务执行日志列表，支持状态和时间范围过滤，可选返回聚合统计。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeScheduledTaskLogList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeScheduledTaskLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSkillList(
             self,
             request: models.DescribeSkillListRequest,
@@ -470,6 +578,42 @@ class WorkbuddyenterpriseClient(AbstractClient):
         kwargs["action"] = "ModifyAgentVersion"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAgentVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyScheduledTask(
+            self,
+            request: models.ModifyScheduledTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyScheduledTaskResponse:
+        """
+        部分更新自动化任务配置（Patch 语义：仅传递需要更新的字段），支持启停状态切换。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyScheduledTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyScheduledTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TriggerScheduledTask(
+            self,
+            request: models.TriggerScheduledTaskRequest,
+            opts: Dict = None,
+    ) -> models.TriggerScheduledTaskResponse:
+        """
+        手动触发一次自动化任务执行，返回执行日志 ID。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TriggerScheduledTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TriggerScheduledTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

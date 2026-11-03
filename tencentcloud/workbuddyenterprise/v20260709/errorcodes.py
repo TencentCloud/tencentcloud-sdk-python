@@ -65,11 +65,32 @@ FAILEDOPERATION_SESSIONNOTMIGRABLE = 'FailedOperation.SessionNotMigrable'
 # FailedOperation.VersionNotEditable
 FAILEDOPERATION_VERSIONNOTEDITABLE = 'FailedOperation.VersionNotEditable'
 
+# FailedOperation.WMASessionArrearsSuspended
+FAILEDOPERATION_WMASESSIONARREARSSUSPENDED = 'FailedOperation.WMASessionArrearsSuspended'
+
+# FailedOperation.WMASessionPrecheckBlocked
+FAILEDOPERATION_WMASESSIONPRECHECKBLOCKED = 'FailedOperation.WMASessionPrecheckBlocked'
+
 # InternalError.AgentOperationFailed
 INTERNALERROR_AGENTOPERATIONFAILED = 'InternalError.AgentOperationFailed'
 
+# InternalError.BizException
+INTERNALERROR_BIZEXCEPTION = 'InternalError.BizException'
+
 # InternalError.EntitlementCheckFailed
 INTERNALERROR_ENTITLEMENTCHECKFAILED = 'InternalError.EntitlementCheckFailed'
+
+# InternalError.FailedOperation
+INTERNALERROR_FAILEDOPERATION = 'InternalError.FailedOperation'
+
+# InternalError.InvalidCronExpression
+INTERNALERROR_INVALIDCRONEXPRESSION = 'InternalError.InvalidCronExpression'
+
+# InternalError.InvalidParameter
+INTERNALERROR_INVALIDPARAMETER = 'InternalError.InvalidParameter'
+
+# InternalError.LimitExceeded
+INTERNALERROR_LIMITEXCEEDED = 'InternalError.LimitExceeded'
 
 # InternalError.MarshalFailed
 INTERNALERROR_MARSHALFAILED = 'InternalError.MarshalFailed'
@@ -83,11 +104,26 @@ INTERNALERROR_NORESOLVER = 'InternalError.NoResolver'
 # InternalError.Panic
 INTERNALERROR_PANIC = 'InternalError.Panic'
 
+# InternalError.PermissionDenied
+INTERNALERROR_PERMISSIONDENIED = 'InternalError.PermissionDenied'
+
 # InternalError.ReadBodyFailed
 INTERNALERROR_READBODYFAILED = 'InternalError.ReadBodyFailed'
 
+# InternalError.RequestLimitExceeded
+INTERNALERROR_REQUESTLIMITEXCEEDED = 'InternalError.RequestLimitExceeded'
+
 # InternalError.ResolveEnterpriseFailed
 INTERNALERROR_RESOLVEENTERPRISEFAILED = 'InternalError.ResolveEnterpriseFailed'
+
+# InternalError.ResourceInUse
+INTERNALERROR_RESOURCEINUSE = 'InternalError.ResourceInUse'
+
+# InternalError.ResourceNotFound
+INTERNALERROR_RESOURCENOTFOUND = 'InternalError.ResourceNotFound'
+
+# InternalError.ResourceUnavailable
+INTERNALERROR_RESOURCEUNAVAILABLE = 'InternalError.ResourceUnavailable'
 
 # InternalError.RuntimeCreateFailed
 INTERNALERROR_RUNTIMECREATEFAILED = 'InternalError.RuntimeCreateFailed'
@@ -115,6 +151,9 @@ INTERNALERROR_USERACCESSTOKENNOTCONFIGURED = 'InternalError.UserAccessTokenNotCo
 
 # InternalError.VersionOperationFailed
 INTERNALERROR_VERSIONOPERATIONFAILED = 'InternalError.VersionOperationFailed'
+
+# InternalError.WMASessionPrecheckFailed
+INTERNALERROR_WMASESSIONPRECHECKFAILED = 'InternalError.WMASessionPrecheckFailed'
 
 # InvalidParameter.A2AEnabledRequired
 INVALIDPARAMETER_A2AENABLEDREQUIRED = 'InvalidParameter.A2AEnabledRequired'

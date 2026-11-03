@@ -7638,6 +7638,10 @@ class AssetComponent(AbstractModel):
         :type OwnerUin: str
         :param _AffectedImageCount: <p>影响镜像数</p>
         :type AffectedImageCount: int
+        :param _AffectedRegistryImageCount: <p>影响仓库镜像数</p>
+        :type AffectedRegistryImageCount: int
+        :param _AffectedCICDImageCount: <p>影响CICD镜像数</p>
+        :type AffectedCICDImageCount: int
         """
         self._Name = None
         self._Version = None
@@ -7649,6 +7653,8 @@ class AssetComponent(AbstractModel):
         self._OwnerAppId = None
         self._OwnerUin = None
         self._AffectedImageCount = None
+        self._AffectedRegistryImageCount = None
+        self._AffectedCICDImageCount = None
 
     @property
     def Name(self):
@@ -7760,6 +7766,28 @@ class AssetComponent(AbstractModel):
     def AffectedImageCount(self, AffectedImageCount):
         self._AffectedImageCount = AffectedImageCount
 
+    @property
+    def AffectedRegistryImageCount(self):
+        r"""<p>影响仓库镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedRegistryImageCount
+
+    @AffectedRegistryImageCount.setter
+    def AffectedRegistryImageCount(self, AffectedRegistryImageCount):
+        self._AffectedRegistryImageCount = AffectedRegistryImageCount
+
+    @property
+    def AffectedCICDImageCount(self):
+        r"""<p>影响CICD镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedCICDImageCount
+
+    @AffectedCICDImageCount.setter
+    def AffectedCICDImageCount(self, AffectedCICDImageCount):
+        self._AffectedCICDImageCount = AffectedCICDImageCount
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7772,6 +7800,8 @@ class AssetComponent(AbstractModel):
         self._OwnerAppId = params.get("OwnerAppId")
         self._OwnerUin = params.get("OwnerUin")
         self._AffectedImageCount = params.get("AffectedImageCount")
+        self._AffectedRegistryImageCount = params.get("AffectedRegistryImageCount")
+        self._AffectedCICDImageCount = params.get("AffectedCICDImageCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24462,6 +24492,10 @@ class ClusterListItem(AbstractModel):
         :type TagItems: list of MiniTagItem
         :param _TagModifyInfo: <p>标签修改信息</p>
         :type TagModifyInfo: :class:`tencentcloud.csip.v20221121.models.AssetTagModifyAssetItem`
+        :param _NormalNodeCount: <p>集群普通节点数</p>
+        :type NormalNodeCount: int
+        :param _AuditLogFailedInfo: <p>审计日志开关失败信息，只在 AuditLogSwitchStatus 为 2（开启失败）或 3（关闭失败）时非空。</p>
+        :type AuditLogFailedInfo: str
         """
         self._AppID = None
         self._AssetId = None
@@ -24504,6 +24538,8 @@ class ClusterListItem(AbstractModel):
         self._UnboundUltimateNodeCount = None
         self._TagItems = None
         self._TagModifyInfo = None
+        self._NormalNodeCount = None
+        self._AuditLogFailedInfo = None
 
     @property
     def AppID(self):
@@ -25004,6 +25040,28 @@ class ClusterListItem(AbstractModel):
     def TagModifyInfo(self, TagModifyInfo):
         self._TagModifyInfo = TagModifyInfo
 
+    @property
+    def NormalNodeCount(self):
+        r"""<p>集群普通节点数</p>
+        :rtype: int
+        """
+        return self._NormalNodeCount
+
+    @NormalNodeCount.setter
+    def NormalNodeCount(self, NormalNodeCount):
+        self._NormalNodeCount = NormalNodeCount
+
+    @property
+    def AuditLogFailedInfo(self):
+        r"""<p>审计日志开关失败信息，只在 AuditLogSwitchStatus 为 2（开启失败）或 3（关闭失败）时非空。</p>
+        :rtype: str
+        """
+        return self._AuditLogFailedInfo
+
+    @AuditLogFailedInfo.setter
+    def AuditLogFailedInfo(self, AuditLogFailedInfo):
+        self._AuditLogFailedInfo = AuditLogFailedInfo
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -25059,6 +25117,8 @@ class ClusterListItem(AbstractModel):
         if params.get("TagModifyInfo") is not None:
             self._TagModifyInfo = AssetTagModifyAssetItem()
             self._TagModifyInfo._deserialize(params.get("TagModifyInfo"))
+        self._NormalNodeCount = params.get("NormalNodeCount")
+        self._AuditLogFailedInfo = params.get("AuditLogFailedInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27139,6 +27199,42 @@ class ContainerAppItem(AbstractModel):
         self._ExePath = params.get("ExePath")
         self._ConfigPath = params.get("ConfigPath")
         self._ProcessCnt = params.get("ProcessCnt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerAutoScaleConfig(AbstractModel):
+    r"""容器安全模块自动扩容配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>容器自动扩容开关</p><p>枚举值：</p><ul><li>OFF： 关</li><li>ON： 开</li></ul>
+        :type Switch: str
+        """
+        self._Switch = None
+
+    @property
+    def Switch(self):
+        r"""<p>容器自动扩容开关</p><p>枚举值：</p><ul><li>OFF： 关</li><li>ON： 开</li></ul>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59943,7 +60039,7 @@ class DescribeBaselineAggregatedItemListRequest(AbstractModel):
         :type CategoryID: int
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Filters: <p>通用过滤条件。支持的 Name：ResultStatus（结果状态 PASS/NOT_PASS/CHECKING/CHECK_FAILED/NOT_INVOLVED）、Name（检测项名称，模糊搜索）、RiskLevel（风险等级 CRITICAL/HIGH/MEDIUM/LOW）、PolicyName（所属基线/策略名称，模糊搜索）。</p>
+        :param _Filters: <p>通用过滤条件。支持的 Name：<br>ResultStatus（结果状态 PASS/NOT_PASS/CHECKING/CHECK_FAILED/NOT_INVOLVED）<br>Name（检测项名称，模糊搜索）<br>RiskLevel（风险等级 CRITICAL/HIGH/MEDIUM/LOW）<br>ClusterCaMD5（集群CaMD5，精准搜索）<br>ClusterId（集群Id，精准搜索）</p>
         :type Filters: list of Filters
         :param _Limit: <p>分页查询每页数量，最大值 100；超过时服务端将自动回退为默认值 10。</p>
         :type Limit: int
@@ -60022,7 +60118,7 @@ class DescribeBaselineAggregatedItemListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>通用过滤条件。支持的 Name：ResultStatus（结果状态 PASS/NOT_PASS/CHECKING/CHECK_FAILED/NOT_INVOLVED）、Name（检测项名称，模糊搜索）、RiskLevel（风险等级 CRITICAL/HIGH/MEDIUM/LOW）、PolicyName（所属基线/策略名称，模糊搜索）。</p>
+        r"""<p>通用过滤条件。支持的 Name：<br>ResultStatus（结果状态 PASS/NOT_PASS/CHECKING/CHECK_FAILED/NOT_INVOLVED）<br>Name（检测项名称，模糊搜索）<br>RiskLevel（风险等级 CRITICAL/HIGH/MEDIUM/LOW）<br>ClusterCaMD5（集群CaMD5，精准搜索）<br>ClusterId（集群Id，精准搜索）</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -60725,7 +60821,7 @@ class DescribeBaselineItemRiskListRequest(AbstractModel):
         :type CategoryID: int
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Filters: <p>通用过滤条件。支持的 Name：ResultStatus（通过状态，Values: PASS/NOT_PASS）、AssetName（资产名称/ID，模糊搜索）、IP（IP地址，模糊搜索）、Tag（资产标签，模糊搜索）。</p>
+        :param _Filters: <p>通用过滤条件。支持的 Name：<br>ResultStatus（通过状态，Values: PASS/NOT_PASS）<br>AssetName（资产名称/ID，模糊搜索）<br>IP（IP地址，模糊搜索）<br>Tag（资产标签，模糊搜索）<br>ClusterCaMD5 (集群ca-md5,精确匹配)<br>ClusterId (集群Id,精确匹配)</p>
         :type Filters: list of Filters
         :param _Limit: <p>分页查询每页数量，最大值 100；超过时服务端将自动回退为默认值 10。</p>
         :type Limit: int
@@ -60816,7 +60912,7 @@ class DescribeBaselineItemRiskListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>通用过滤条件。支持的 Name：ResultStatus（通过状态，Values: PASS/NOT_PASS）、AssetName（资产名称/ID，模糊搜索）、IP（IP地址，模糊搜索）、Tag（资产标签，模糊搜索）。</p>
+        r"""<p>通用过滤条件。支持的 Name：<br>ResultStatus（通过状态，Values: PASS/NOT_PASS）<br>AssetName（资产名称/ID，模糊搜索）<br>IP（IP地址，模糊搜索）<br>Tag（资产标签，模糊搜索）<br>ClusterCaMD5 (集群ca-md5,精确匹配)<br>ClusterId (集群Id,精确匹配)</p>
         :rtype: list of Filters
         """
         return self._Filters
@@ -72221,6 +72317,8 @@ class DescribeClusterSummaryResponse(AbstractModel):
         :type HighRiskClusterCount: int
         :param _UnboundUltimateNodeCount: <p>未绑定旗舰版节点数量</p>
         :type UnboundUltimateNodeCount: int
+        :param _NormalNodeCount: <p>普通节点总数</p>
+        :type NormalNodeCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -72253,6 +72351,7 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._CriticalRiskClusterCount = None
         self._HighRiskClusterCount = None
         self._UnboundUltimateNodeCount = None
+        self._NormalNodeCount = None
         self._RequestId = None
 
     @property
@@ -72639,6 +72738,17 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._UnboundUltimateNodeCount = UnboundUltimateNodeCount
 
     @property
+    def NormalNodeCount(self):
+        r"""<p>普通节点总数</p>
+        :rtype: int
+        """
+        return self._NormalNodeCount
+
+    @NormalNodeCount.setter
+    def NormalNodeCount(self, NormalNodeCount):
+        self._NormalNodeCount = NormalNodeCount
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -72680,6 +72790,7 @@ class DescribeClusterSummaryResponse(AbstractModel):
         self._CriticalRiskClusterCount = params.get("CriticalRiskClusterCount")
         self._HighRiskClusterCount = params.get("HighRiskClusterCount")
         self._UnboundUltimateNodeCount = params.get("UnboundUltimateNodeCount")
+        self._NormalNodeCount = params.get("NormalNodeCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -94306,6 +94417,18 @@ class DescribeImageRegistryAssetOverviewResponse(AbstractModel):
         :type RemainingQuota: int
         :param _TrialQuota: <p>试用配额</p>
         :type TrialQuota: int
+        :param _RiskImageCnt: <p>有风险的镜像数</p>
+        :type RiskImageCnt: int
+        :param _CICDImageCnt: <p>CICD镜像数</p>
+        :type CICDImageCnt: int
+        :param _CICDImageScannedCnt: <p>CICD已扫描镜数</p>
+        :type CICDImageScannedCnt: int
+        :param _RiskCICDImageCnt: <p>有风险的CICD镜像数</p>
+        :type RiskCICDImageCnt: int
+        :param _SecretFileCnt: <p>敏感文件数</p>
+        :type SecretFileCnt: int
+        :param _BuildRiskCnt: <p>构建风险数</p>
+        :type BuildRiskCnt: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -94320,6 +94443,12 @@ class DescribeImageRegistryAssetOverviewResponse(AbstractModel):
         self._UsedQuota = None
         self._RemainingQuota = None
         self._TrialQuota = None
+        self._RiskImageCnt = None
+        self._CICDImageCnt = None
+        self._CICDImageScannedCnt = None
+        self._RiskCICDImageCnt = None
+        self._SecretFileCnt = None
+        self._BuildRiskCnt = None
         self._RequestId = None
 
     @property
@@ -94444,6 +94573,72 @@ class DescribeImageRegistryAssetOverviewResponse(AbstractModel):
         self._TrialQuota = TrialQuota
 
     @property
+    def RiskImageCnt(self):
+        r"""<p>有风险的镜像数</p>
+        :rtype: int
+        """
+        return self._RiskImageCnt
+
+    @RiskImageCnt.setter
+    def RiskImageCnt(self, RiskImageCnt):
+        self._RiskImageCnt = RiskImageCnt
+
+    @property
+    def CICDImageCnt(self):
+        r"""<p>CICD镜像数</p>
+        :rtype: int
+        """
+        return self._CICDImageCnt
+
+    @CICDImageCnt.setter
+    def CICDImageCnt(self, CICDImageCnt):
+        self._CICDImageCnt = CICDImageCnt
+
+    @property
+    def CICDImageScannedCnt(self):
+        r"""<p>CICD已扫描镜数</p>
+        :rtype: int
+        """
+        return self._CICDImageScannedCnt
+
+    @CICDImageScannedCnt.setter
+    def CICDImageScannedCnt(self, CICDImageScannedCnt):
+        self._CICDImageScannedCnt = CICDImageScannedCnt
+
+    @property
+    def RiskCICDImageCnt(self):
+        r"""<p>有风险的CICD镜像数</p>
+        :rtype: int
+        """
+        return self._RiskCICDImageCnt
+
+    @RiskCICDImageCnt.setter
+    def RiskCICDImageCnt(self, RiskCICDImageCnt):
+        self._RiskCICDImageCnt = RiskCICDImageCnt
+
+    @property
+    def SecretFileCnt(self):
+        r"""<p>敏感文件数</p>
+        :rtype: int
+        """
+        return self._SecretFileCnt
+
+    @SecretFileCnt.setter
+    def SecretFileCnt(self, SecretFileCnt):
+        self._SecretFileCnt = SecretFileCnt
+
+    @property
+    def BuildRiskCnt(self):
+        r"""<p>构建风险数</p>
+        :rtype: int
+        """
+        return self._BuildRiskCnt
+
+    @BuildRiskCnt.setter
+    def BuildRiskCnt(self, BuildRiskCnt):
+        self._BuildRiskCnt = BuildRiskCnt
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -94467,6 +94662,12 @@ class DescribeImageRegistryAssetOverviewResponse(AbstractModel):
         self._UsedQuota = params.get("UsedQuota")
         self._RemainingQuota = params.get("RemainingQuota")
         self._TrialQuota = params.get("TrialQuota")
+        self._RiskImageCnt = params.get("RiskImageCnt")
+        self._CICDImageCnt = params.get("CICDImageCnt")
+        self._CICDImageScannedCnt = params.get("CICDImageScannedCnt")
+        self._RiskCICDImageCnt = params.get("RiskCICDImageCnt")
+        self._SecretFileCnt = params.get("SecretFileCnt")
+        self._BuildRiskCnt = params.get("BuildRiskCnt")
         self._RequestId = params.get("RequestId")
 
 
@@ -98879,7 +99080,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type KillProcess: int
         :param _DoClean: <p>执行清理开关 0未开启 1开启</p>
         :type DoClean: int
-        :param _ProtectMode: <p>防护模式 0 标准 1 重保</p>
+        :param _ProtectMode: <p>防护模式 0 标准 1 重保  2-自定义隔离</p>
         :type ProtectMode: int
         :param _ProtectFileScope: <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
         :type ProtectFileScope: int
@@ -98897,6 +99098,10 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type QuaraExcludeClusterIDsWithAppId: list of ClusterIDWithAppIdItem
         :param _Timeout: <p>超时时长（秒）</p>
         :type Timeout: int
+        :param _QuaraTypes: <p>自定义隔离模式已保存的告警类型Code列表</p>
+        :type QuaraTypes: list of str
+        :param _QuaraTypeDict: <p>告警类型字典（灰度规则下发，供前端渲染勾选项）</p>
+        :type QuaraTypeDict: list of QuaraTypeDictItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -98930,6 +99135,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._QuaraClusterIDsWithAppId = None
         self._QuaraExcludeClusterIDsWithAppId = None
         self._Timeout = None
+        self._QuaraTypes = None
+        self._QuaraTypeDict = None
         self._RequestId = None
 
     @property
@@ -99165,7 +99372,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""<p>防护模式 0 标准 1 重保</p>
+        r"""<p>防护模式 0 标准 1 重保  2-自定义隔离</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -99263,6 +99470,28 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._Timeout = Timeout
 
     @property
+    def QuaraTypes(self):
+        r"""<p>自定义隔离模式已保存的告警类型Code列表</p>
+        :rtype: list of str
+        """
+        return self._QuaraTypes
+
+    @QuaraTypes.setter
+    def QuaraTypes(self, QuaraTypes):
+        self._QuaraTypes = QuaraTypes
+
+    @property
+    def QuaraTypeDict(self):
+        r"""<p>告警类型字典（灰度规则下发，供前端渲染勾选项）</p>
+        :rtype: list of QuaraTypeDictItem
+        """
+        return self._QuaraTypeDict
+
+    @QuaraTypeDict.setter
+    def QuaraTypeDict(self, QuaraTypeDict):
+        self._QuaraTypeDict = QuaraTypeDict
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -99345,6 +99574,13 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
                 obj._deserialize(item)
                 self._QuaraExcludeClusterIDsWithAppId.append(obj)
         self._Timeout = params.get("Timeout")
+        self._QuaraTypes = params.get("QuaraTypes")
+        if params.get("QuaraTypeDict") is not None:
+            self._QuaraTypeDict = []
+            for item in params.get("QuaraTypeDict"):
+                obj = QuaraTypeDictItem()
+                obj._deserialize(item)
+                self._QuaraTypeDict.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -129982,7 +130218,7 @@ class EDRRule(AbstractModel):
         :type Name: str
         :param _Description: <p>策略描述</p>
         :type Description: str
-        :param _ContentType: <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+        :param _ContentType: <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network, k8s_api-K8s API/K8s API</p><p>枚举值：</p><ul><li>md5-文件MD5： File MD5</li></ul>
         :type ContentType: str
         :param _Action: <p>执行动作 / Action: 0-告警/Alert, 1-放行/Allow, 2-告警并拦截/Alert and Block</p>
         :type Action: int
@@ -130050,6 +130286,8 @@ class EDRRule(AbstractModel):
         :type TagItems: list of EDRRuleTagItem
         :param _FileOperationRules: <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
         :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        :param _K8sApiRule: <p>K8s API 规则，ContentType=k8s_api 的自定义规则填充</p>
+        :type K8sApiRule: :class:`tencentcloud.csip.v20221121.models.RuleContentK8sAPI`
         """
         self._RuleID = None
         self._RuleType = None
@@ -130089,6 +130327,7 @@ class EDRRule(AbstractModel):
         self._ConditionMatches = None
         self._TagItems = None
         self._FileOperationRules = None
+        self._K8sApiRule = None
 
     @property
     def RuleID(self):
@@ -130136,7 +130375,7 @@ class EDRRule(AbstractModel):
 
     @property
     def ContentType(self):
-        r"""<p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+        r"""<p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network, k8s_api-K8s API/K8s API</p><p>枚举值：</p><ul><li>md5-文件MD5： File MD5</li></ul>
         :rtype: str
         """
         return self._ContentType
@@ -130508,6 +130747,17 @@ class EDRRule(AbstractModel):
     def FileOperationRules(self, FileOperationRules):
         self._FileOperationRules = FileOperationRules
 
+    @property
+    def K8sApiRule(self):
+        r"""<p>K8s API 规则，ContentType=k8s_api 的自定义规则填充</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentK8sAPI`
+        """
+        return self._K8sApiRule
+
+    @K8sApiRule.setter
+    def K8sApiRule(self, K8sApiRule):
+        self._K8sApiRule = K8sApiRule
+
 
     def _deserialize(self, params):
         self._RuleID = params.get("RuleID")
@@ -130564,6 +130814,9 @@ class EDRRule(AbstractModel):
         if params.get("FileOperationRules") is not None:
             self._FileOperationRules = RuleContentFileOperation()
             self._FileOperationRules._deserialize(params.get("FileOperationRules"))
+        if params.get("K8sApiRule") is not None:
+            self._K8sApiRule = RuleContentK8sAPI()
+            self._K8sApiRule._deserialize(params.get("K8sApiRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -131684,7 +131937,7 @@ class EdrAlertDetail(AbstractModel):
         :type AppId: int
         :param _AlertId: <p>告警唯一标识</p>
         :type AlertId: str
-        :param _AlertCategory: <p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE）</p>
+        :param _AlertCategory: <p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE/K8S_API）</p>
         :type AlertCategory: str
         :param _AlertSubType: <p>告警子类型（英文枚举：MALWARE_FILE/MALWARE_PROCESS/RISK_LOGIN/BRUTE_FORCE/DNS/BASH/PRIV_ESCALATION/REVERSE_SHELL/NET_ATTACK/VUL_DEFENCE/MEMORY_SHELL_INJECT/MEMORY_SHELL_SCAN/MULTI_BEHAVIOR_ATTACK）</p>
         :type AlertSubType: str
@@ -131714,7 +131967,7 @@ class EdrAlertDetail(AbstractModel):
         :type ImageId: str
         :param _ContainerId: <p>容器ID（保留字段，恒为空串）</p>
         :type ContainerId: str
-        :param _ClusterId: <p>集群ID（保留字段，恒为空串）</p>
+        :param _ClusterId: <p>集群ID。容器告警和 K8s API 异常请求告警有值</p>
         :type ClusterId: str
         :param _FirstDetectTime: <p>首次发现时间</p>
         :type FirstDetectTime: str
@@ -131722,7 +131975,7 @@ class EdrAlertDetail(AbstractModel):
         :type LatestDetectTime: str
         :param _RuleName: <p>规则名称（规则富化）</p>
         :type RuleName: str
-        :param _ContentType: <p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network</p>
+        :param _ContentType: <p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network/k8s_api</p><p>枚举值：</p><ul><li>k8s_api： k8s api告警类型</li></ul>
         :type ContentType: str
         :param _InstanceName: <p>实例名（资产富化）</p>
         :type InstanceName: str
@@ -131889,7 +132142,7 @@ class EdrAlertDetail(AbstractModel):
 
     @property
     def AlertCategory(self):
-        r"""<p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE）</p>
+        r"""<p>告警大类（英文枚举：VIRUS_TROJAN/ABNORMAL_LOGIN/HOST_BEHAVIOR/NETWORK_BEHAVIOR/LINK_ENGINE/K8S_API）</p>
         :rtype: str
         """
         return self._AlertCategory
@@ -132054,7 +132307,7 @@ class EdrAlertDetail(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""<p>集群ID（保留字段，恒为空串）</p>
+        r"""<p>集群ID。容器告警和 K8s API 异常请求告警有值</p>
         :rtype: str
         """
         return self._ClusterId
@@ -132098,7 +132351,7 @@ class EdrAlertDetail(AbstractModel):
 
     @property
     def ContentType(self):
-        r"""<p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network</p>
+        r"""<p>内容类型: md5/cmdline/dns/ip_inbound/ip_outbound/custom_file/process_network/k8s_api</p><p>枚举值：</p><ul><li>k8s_api： k8s api告警类型</li></ul>
         :rtype: str
         """
         return self._ContentType
@@ -136585,29 +136838,23 @@ class HostAutoScaleConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 主机自动扩容开关
-枚举值：
-ON：开启
-OFF：关闭
-补充说明：不传则不修改；映射底层自动加购开关 auto_repurchase_switch
+        :param _Switch: <p>主机自动扩容开关<br>枚举值：<br>ON：开启<br>OFF：关闭<br>补充说明：不传则不修改；映射底层自动加购开关 auto_repurchase_switch</p>
         :type Switch: str
-        :param _ProtectType: 扩容版本
-枚举值：
-PRO：专业版
-ULTIMATE：旗舰版
-补充说明：不传则不修改
+        :param _ProtectType: <p>扩容版本<br>枚举值：<br>PRO：专业版<br>ULTIMATE：旗舰版<br>补充说明：不传则不修改</p>
         :type ProtectType: str
+        :param _AssetRange: <p>扩容资产范围</p><p>枚举值：</p><ul><li>ALL： 全部资产</li><li>BY_TAG： 按标签扩容</li></ul>
+        :type AssetRange: str
+        :param _TagIds: <p>标签ID列表</p>
+        :type TagIds: list of int
         """
         self._Switch = None
         self._ProtectType = None
+        self._AssetRange = None
+        self._TagIds = None
 
     @property
     def Switch(self):
-        r"""主机自动扩容开关
-枚举值：
-ON：开启
-OFF：关闭
-补充说明：不传则不修改；映射底层自动加购开关 auto_repurchase_switch
+        r"""<p>主机自动扩容开关<br>枚举值：<br>ON：开启<br>OFF：关闭<br>补充说明：不传则不修改；映射底层自动加购开关 auto_repurchase_switch</p>
         :rtype: str
         """
         return self._Switch
@@ -136618,11 +136865,7 @@ OFF：关闭
 
     @property
     def ProtectType(self):
-        r"""扩容版本
-枚举值：
-PRO：专业版
-ULTIMATE：旗舰版
-补充说明：不传则不修改
+        r"""<p>扩容版本<br>枚举值：<br>PRO：专业版<br>ULTIMATE：旗舰版<br>补充说明：不传则不修改</p>
         :rtype: str
         """
         return self._ProtectType
@@ -136631,10 +136874,34 @@ ULTIMATE：旗舰版
     def ProtectType(self, ProtectType):
         self._ProtectType = ProtectType
 
+    @property
+    def AssetRange(self):
+        r"""<p>扩容资产范围</p><p>枚举值：</p><ul><li>ALL： 全部资产</li><li>BY_TAG： 按标签扩容</li></ul>
+        :rtype: str
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+    @property
+    def TagIds(self):
+        r"""<p>标签ID列表</p>
+        :rtype: list of int
+        """
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._ProtectType = params.get("ProtectType")
+        self._AssetRange = params.get("AssetRange")
+        self._TagIds = params.get("TagIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -137981,6 +138248,10 @@ class IaCFile(AbstractModel):
         :type Status: int
         :param _FailType: <p>扫描失败类型(0:无失败, 1:检测超时, 2:文件格式解析失败, 3:检测失败)</p>
         :type FailType: int
+        :param _FailReason: <p>扫描失败原因</p>
+        :type FailReason: str
+        :param _FailSolution: <p>扫描失败解决方案</p>
+        :type FailSolution: str
         """
         self._Id = None
         self._AppId = None
@@ -137994,6 +138265,8 @@ class IaCFile(AbstractModel):
         self._ScanTime = None
         self._Status = None
         self._FailType = None
+        self._FailReason = None
+        self._FailSolution = None
 
     @property
     def Id(self):
@@ -138127,6 +138400,28 @@ class IaCFile(AbstractModel):
     def FailType(self, FailType):
         self._FailType = FailType
 
+    @property
+    def FailReason(self):
+        r"""<p>扫描失败原因</p>
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def FailSolution(self):
+        r"""<p>扫描失败解决方案</p>
+        :rtype: str
+        """
+        return self._FailSolution
+
+    @FailSolution.setter
+    def FailSolution(self, FailSolution):
+        self._FailSolution = FailSolution
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -138146,6 +138441,8 @@ class IaCFile(AbstractModel):
         self._ScanTime = params.get("ScanTime")
         self._Status = params.get("Status")
         self._FailType = params.get("FailType")
+        self._FailReason = params.get("FailReason")
+        self._FailSolution = params.get("FailSolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -138329,6 +138626,10 @@ class ImageAssetDetail(AbstractModel):
         :type HighLevelSensitiveCnt: int
         :param _CriticalLevelSensitiveCnt: <p>严重敏感信息数</p>
         :type CriticalLevelSensitiveCnt: int
+        :param _SecretFileCnt: <p>敏感文件数</p>
+        :type SecretFileCnt: int
+        :param _BuildRiskCnt: <p>构建风险数</p>
+        :type BuildRiskCnt: int
         """
         self._ImageDigest = None
         self._ImageRepoAddress = None
@@ -138365,6 +138666,8 @@ class ImageAssetDetail(AbstractModel):
         self._MediumLevelSensitiveCnt = None
         self._HighLevelSensitiveCnt = None
         self._CriticalLevelSensitiveCnt = None
+        self._SecretFileCnt = None
+        self._BuildRiskCnt = None
 
     @property
     def ImageDigest(self):
@@ -138751,6 +139054,28 @@ class ImageAssetDetail(AbstractModel):
     def CriticalLevelSensitiveCnt(self, CriticalLevelSensitiveCnt):
         self._CriticalLevelSensitiveCnt = CriticalLevelSensitiveCnt
 
+    @property
+    def SecretFileCnt(self):
+        r"""<p>敏感文件数</p>
+        :rtype: int
+        """
+        return self._SecretFileCnt
+
+    @SecretFileCnt.setter
+    def SecretFileCnt(self, SecretFileCnt):
+        self._SecretFileCnt = SecretFileCnt
+
+    @property
+    def BuildRiskCnt(self):
+        r"""<p>构建风险数</p>
+        :rtype: int
+        """
+        return self._BuildRiskCnt
+
+    @BuildRiskCnt.setter
+    def BuildRiskCnt(self, BuildRiskCnt):
+        self._BuildRiskCnt = BuildRiskCnt
+
 
     def _deserialize(self, params):
         self._ImageDigest = params.get("ImageDigest")
@@ -138788,6 +139113,8 @@ class ImageAssetDetail(AbstractModel):
         self._MediumLevelSensitiveCnt = params.get("MediumLevelSensitiveCnt")
         self._HighLevelSensitiveCnt = params.get("HighLevelSensitiveCnt")
         self._CriticalLevelSensitiveCnt = params.get("CriticalLevelSensitiveCnt")
+        self._SecretFileCnt = params.get("SecretFileCnt")
+        self._BuildRiskCnt = params.get("BuildRiskCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -138889,6 +139216,24 @@ class ImageAssetInfo(AbstractModel):
         :type RegionInfo: :class:`tencentcloud.csip.v20221121.models.RegionInfo`
         :param _ScanTaskId: <p>最近扫描任务Id</p>
         :type ScanTaskId: int
+        :param _CICDName: <p>CICD名</p>
+        :type CICDName: str
+        :param _CICDId: <p>CICD Id</p>
+        :type CICDId: int
+        :param _IsCICD: <p>是否是CICD镜像</p>
+        :type IsCICD: int
+        :param _SecretFileCnt: <p>敏感文件数</p>
+        :type SecretFileCnt: int
+        :param _BuildRiskCnt: <p>构建风险数</p>
+        :type BuildRiskCnt: int
+        :param _HighLevelSecretFileCnt: <p>高危敏感文件数</p>
+        :type HighLevelSecretFileCnt: int
+        :param _CriticalLevelSecretFileCnt: <p>严重敏感文件数</p>
+        :type CriticalLevelSecretFileCnt: int
+        :param _HighLevelBuildRiskCnt: <p>高危构建风险数</p>
+        :type HighLevelBuildRiskCnt: int
+        :param _CriticalLevelBuildRiskCnt: <p>严重构建风险数</p>
+        :type CriticalLevelBuildRiskCnt: int
         """
         self._ImageRepoAddress = None
         self._ImageDigest = None
@@ -138932,6 +139277,15 @@ class ImageAssetInfo(AbstractModel):
         self._ScanSolution = None
         self._RegionInfo = None
         self._ScanTaskId = None
+        self._CICDName = None
+        self._CICDId = None
+        self._IsCICD = None
+        self._SecretFileCnt = None
+        self._BuildRiskCnt = None
+        self._HighLevelSecretFileCnt = None
+        self._CriticalLevelSecretFileCnt = None
+        self._HighLevelBuildRiskCnt = None
+        self._CriticalLevelBuildRiskCnt = None
 
     @property
     def ImageRepoAddress(self):
@@ -139395,6 +139749,105 @@ class ImageAssetInfo(AbstractModel):
     def ScanTaskId(self, ScanTaskId):
         self._ScanTaskId = ScanTaskId
 
+    @property
+    def CICDName(self):
+        r"""<p>CICD名</p>
+        :rtype: str
+        """
+        return self._CICDName
+
+    @CICDName.setter
+    def CICDName(self, CICDName):
+        self._CICDName = CICDName
+
+    @property
+    def CICDId(self):
+        r"""<p>CICD Id</p>
+        :rtype: int
+        """
+        return self._CICDId
+
+    @CICDId.setter
+    def CICDId(self, CICDId):
+        self._CICDId = CICDId
+
+    @property
+    def IsCICD(self):
+        r"""<p>是否是CICD镜像</p>
+        :rtype: int
+        """
+        return self._IsCICD
+
+    @IsCICD.setter
+    def IsCICD(self, IsCICD):
+        self._IsCICD = IsCICD
+
+    @property
+    def SecretFileCnt(self):
+        r"""<p>敏感文件数</p>
+        :rtype: int
+        """
+        return self._SecretFileCnt
+
+    @SecretFileCnt.setter
+    def SecretFileCnt(self, SecretFileCnt):
+        self._SecretFileCnt = SecretFileCnt
+
+    @property
+    def BuildRiskCnt(self):
+        r"""<p>构建风险数</p>
+        :rtype: int
+        """
+        return self._BuildRiskCnt
+
+    @BuildRiskCnt.setter
+    def BuildRiskCnt(self, BuildRiskCnt):
+        self._BuildRiskCnt = BuildRiskCnt
+
+    @property
+    def HighLevelSecretFileCnt(self):
+        r"""<p>高危敏感文件数</p>
+        :rtype: int
+        """
+        return self._HighLevelSecretFileCnt
+
+    @HighLevelSecretFileCnt.setter
+    def HighLevelSecretFileCnt(self, HighLevelSecretFileCnt):
+        self._HighLevelSecretFileCnt = HighLevelSecretFileCnt
+
+    @property
+    def CriticalLevelSecretFileCnt(self):
+        r"""<p>严重敏感文件数</p>
+        :rtype: int
+        """
+        return self._CriticalLevelSecretFileCnt
+
+    @CriticalLevelSecretFileCnt.setter
+    def CriticalLevelSecretFileCnt(self, CriticalLevelSecretFileCnt):
+        self._CriticalLevelSecretFileCnt = CriticalLevelSecretFileCnt
+
+    @property
+    def HighLevelBuildRiskCnt(self):
+        r"""<p>高危构建风险数</p>
+        :rtype: int
+        """
+        return self._HighLevelBuildRiskCnt
+
+    @HighLevelBuildRiskCnt.setter
+    def HighLevelBuildRiskCnt(self, HighLevelBuildRiskCnt):
+        self._HighLevelBuildRiskCnt = HighLevelBuildRiskCnt
+
+    @property
+    def CriticalLevelBuildRiskCnt(self):
+        r"""<p>严重构建风险数</p>
+        :rtype: int
+        """
+        return self._CriticalLevelBuildRiskCnt
+
+    @CriticalLevelBuildRiskCnt.setter
+    def CriticalLevelBuildRiskCnt(self, CriticalLevelBuildRiskCnt):
+        self._CriticalLevelBuildRiskCnt = CriticalLevelBuildRiskCnt
+
 
     def _deserialize(self, params):
         self._ImageRepoAddress = params.get("ImageRepoAddress")
@@ -139441,6 +139894,15 @@ class ImageAssetInfo(AbstractModel):
             self._RegionInfo = RegionInfo()
             self._RegionInfo._deserialize(params.get("RegionInfo"))
         self._ScanTaskId = params.get("ScanTaskId")
+        self._CICDName = params.get("CICDName")
+        self._CICDId = params.get("CICDId")
+        self._IsCICD = params.get("IsCICD")
+        self._SecretFileCnt = params.get("SecretFileCnt")
+        self._BuildRiskCnt = params.get("BuildRiskCnt")
+        self._HighLevelSecretFileCnt = params.get("HighLevelSecretFileCnt")
+        self._CriticalLevelSecretFileCnt = params.get("CriticalLevelSecretFileCnt")
+        self._HighLevelBuildRiskCnt = params.get("HighLevelBuildRiskCnt")
+        self._CriticalLevelBuildRiskCnt = params.get("CriticalLevelBuildRiskCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -140200,6 +140662,10 @@ class ImageLayer(AbstractModel):
         :type SensitiveCnt: int
         :param _LayerCreateTime: <p>镜像层创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
         :type LayerCreateTime: str
+        :param _SecretFileCnt: <p>敏感文件数</p>
+        :type SecretFileCnt: int
+        :param _BuildRiskCnt: <p>构建风险数</p>
+        :type BuildRiskCnt: int
         """
         self._LayerIndex = None
         self._LayerId = None
@@ -140212,6 +140678,8 @@ class ImageLayer(AbstractModel):
         self._VirusCnt = None
         self._SensitiveCnt = None
         self._LayerCreateTime = None
+        self._SecretFileCnt = None
+        self._BuildRiskCnt = None
 
     @property
     def LayerIndex(self):
@@ -140334,6 +140802,28 @@ class ImageLayer(AbstractModel):
     def LayerCreateTime(self, LayerCreateTime):
         self._LayerCreateTime = LayerCreateTime
 
+    @property
+    def SecretFileCnt(self):
+        r"""<p>敏感文件数</p>
+        :rtype: int
+        """
+        return self._SecretFileCnt
+
+    @SecretFileCnt.setter
+    def SecretFileCnt(self, SecretFileCnt):
+        self._SecretFileCnt = SecretFileCnt
+
+    @property
+    def BuildRiskCnt(self):
+        r"""<p>构建风险数</p>
+        :rtype: int
+        """
+        return self._BuildRiskCnt
+
+    @BuildRiskCnt.setter
+    def BuildRiskCnt(self, BuildRiskCnt):
+        self._BuildRiskCnt = BuildRiskCnt
+
 
     def _deserialize(self, params):
         self._LayerIndex = params.get("LayerIndex")
@@ -140347,6 +140837,8 @@ class ImageLayer(AbstractModel):
         self._VirusCnt = params.get("VirusCnt")
         self._SensitiveCnt = params.get("SensitiveCnt")
         self._LayerCreateTime = params.get("LayerCreateTime")
+        self._SecretFileCnt = params.get("SecretFileCnt")
+        self._BuildRiskCnt = params.get("BuildRiskCnt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -142376,6 +142868,10 @@ class ImageSensitiveInfo(AbstractModel):
         :type LatestFoundTime: str
         :param _LayerIndex: <p>镜像层序号</p>
         :type LayerIndex: int
+        :param _AffectedRegistryImageCount: <p>影响仓库镜像数</p>
+        :type AffectedRegistryImageCount: int
+        :param _AffectedCICDImageCount: <p>影响CICD镜像数</p>
+        :type AffectedCICDImageCount: int
         """
         self._Behavior = None
         self._Type = None
@@ -142392,6 +142888,8 @@ class ImageSensitiveInfo(AbstractModel):
         self._FirstFoundTime = None
         self._LatestFoundTime = None
         self._LayerIndex = None
+        self._AffectedRegistryImageCount = None
+        self._AffectedCICDImageCount = None
 
     @property
     def Behavior(self):
@@ -142558,6 +143056,28 @@ class ImageSensitiveInfo(AbstractModel):
     def LayerIndex(self, LayerIndex):
         self._LayerIndex = LayerIndex
 
+    @property
+    def AffectedRegistryImageCount(self):
+        r"""<p>影响仓库镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedRegistryImageCount
+
+    @AffectedRegistryImageCount.setter
+    def AffectedRegistryImageCount(self, AffectedRegistryImageCount):
+        self._AffectedRegistryImageCount = AffectedRegistryImageCount
+
+    @property
+    def AffectedCICDImageCount(self):
+        r"""<p>影响CICD镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedCICDImageCount
+
+    @AffectedCICDImageCount.setter
+    def AffectedCICDImageCount(self, AffectedCICDImageCount):
+        self._AffectedCICDImageCount = AffectedCICDImageCount
+
 
     def _deserialize(self, params):
         self._Behavior = params.get("Behavior")
@@ -142575,6 +143095,8 @@ class ImageSensitiveInfo(AbstractModel):
         self._FirstFoundTime = params.get("FirstFoundTime")
         self._LatestFoundTime = params.get("LatestFoundTime")
         self._LayerIndex = params.get("LayerIndex")
+        self._AffectedRegistryImageCount = params.get("AffectedRegistryImageCount")
+        self._AffectedCICDImageCount = params.get("AffectedCICDImageCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -142822,6 +143344,12 @@ class ImageVirus(AbstractModel):
         :type Description: str
         :param _VirusType: <p>木马类型</p>
         :type VirusType: str
+        :param _AffectedImageCount: <p>影响镜像数</p>
+        :type AffectedImageCount: int
+        :param _AffectedRegistryImageCount: <p>影响仓库镜像数</p>
+        :type AffectedRegistryImageCount: int
+        :param _AffectedCICDImageCount: <p>影响CICD镜像数</p>
+        :type AffectedCICDImageCount: int
         """
         self._Path = None
         self._RiskLevel = None
@@ -142845,6 +143373,9 @@ class ImageVirus(AbstractModel):
         self._Suggestion = None
         self._Description = None
         self._VirusType = None
+        self._AffectedImageCount = None
+        self._AffectedRegistryImageCount = None
+        self._AffectedCICDImageCount = None
 
     @property
     def Path(self):
@@ -143088,6 +143619,39 @@ class ImageVirus(AbstractModel):
     def VirusType(self, VirusType):
         self._VirusType = VirusType
 
+    @property
+    def AffectedImageCount(self):
+        r"""<p>影响镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedImageCount
+
+    @AffectedImageCount.setter
+    def AffectedImageCount(self, AffectedImageCount):
+        self._AffectedImageCount = AffectedImageCount
+
+    @property
+    def AffectedRegistryImageCount(self):
+        r"""<p>影响仓库镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedRegistryImageCount
+
+    @AffectedRegistryImageCount.setter
+    def AffectedRegistryImageCount(self, AffectedRegistryImageCount):
+        self._AffectedRegistryImageCount = AffectedRegistryImageCount
+
+    @property
+    def AffectedCICDImageCount(self):
+        r"""<p>影响CICD镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedCICDImageCount
+
+    @AffectedCICDImageCount.setter
+    def AffectedCICDImageCount(self, AffectedCICDImageCount):
+        self._AffectedCICDImageCount = AffectedCICDImageCount
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -143112,6 +143676,9 @@ class ImageVirus(AbstractModel):
         self._Suggestion = params.get("Suggestion")
         self._Description = params.get("Description")
         self._VirusType = params.get("VirusType")
+        self._AffectedImageCount = params.get("AffectedImageCount")
+        self._AffectedRegistryImageCount = params.get("AffectedRegistryImageCount")
+        self._AffectedCICDImageCount = params.get("AffectedCICDImageCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -143149,6 +143716,8 @@ class ImageVirusWhitelist(AbstractModel):
         :type UpdateTime: str
         :param _Name: <p>木马白名单名</p>
         :type Name: str
+        :param _Md5: <p>白名单Md5</p>
+        :type Md5: str
         """
         self._RuleId = None
         self._OwnerAccountName = None
@@ -143160,6 +143729,7 @@ class ImageVirusWhitelist(AbstractModel):
         self._Status = None
         self._UpdateTime = None
         self._Name = None
+        self._Md5 = None
 
     @property
     def RuleId(self):
@@ -143271,6 +143841,17 @@ class ImageVirusWhitelist(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Md5(self):
+        r"""<p>白名单Md5</p>
+        :rtype: str
+        """
+        return self._Md5
+
+    @Md5.setter
+    def Md5(self, Md5):
+        self._Md5 = Md5
+
 
     def _deserialize(self, params):
         self._RuleId = params.get("RuleId")
@@ -143283,6 +143864,7 @@ class ImageVirusWhitelist(AbstractModel):
         self._Status = params.get("Status")
         self._UpdateTime = params.get("UpdateTime")
         self._Name = params.get("Name")
+        self._Md5 = params.get("Md5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -143971,6 +144553,10 @@ class ImageVulSummary(AbstractModel):
         :type VulInfo: :class:`tencentcloud.csip.v20221121.models.ImageVulBaseInfo`
         :param _ID: <p>记录id</p>
         :type ID: int
+        :param _AffectedRegistryImageCount: <p>影响仓库镜像数</p>
+        :type AffectedRegistryImageCount: int
+        :param _AffectedCICDImageCount: <p>影响CICD镜像数</p>
+        :type AffectedCICDImageCount: int
         """
         self._OwnerAccountName = None
         self._OwnerUin = None
@@ -143980,6 +144566,8 @@ class ImageVulSummary(AbstractModel):
         self._AffectImageCount = None
         self._VulInfo = None
         self._ID = None
+        self._AffectedRegistryImageCount = None
+        self._AffectedCICDImageCount = None
 
     @property
     def OwnerAccountName(self):
@@ -144069,6 +144657,28 @@ class ImageVulSummary(AbstractModel):
     def ID(self, ID):
         self._ID = ID
 
+    @property
+    def AffectedRegistryImageCount(self):
+        r"""<p>影响仓库镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedRegistryImageCount
+
+    @AffectedRegistryImageCount.setter
+    def AffectedRegistryImageCount(self, AffectedRegistryImageCount):
+        self._AffectedRegistryImageCount = AffectedRegistryImageCount
+
+    @property
+    def AffectedCICDImageCount(self):
+        r"""<p>影响CICD镜像数</p>
+        :rtype: int
+        """
+        return self._AffectedCICDImageCount
+
+    @AffectedCICDImageCount.setter
+    def AffectedCICDImageCount(self, AffectedCICDImageCount):
+        self._AffectedCICDImageCount = AffectedCICDImageCount
+
 
     def _deserialize(self, params):
         self._OwnerAccountName = params.get("OwnerAccountName")
@@ -144081,6 +144691,8 @@ class ImageVulSummary(AbstractModel):
             self._VulInfo = ImageVulBaseInfo()
             self._VulInfo._deserialize(params.get("VulInfo"))
         self._ID = params.get("ID")
+        self._AffectedRegistryImageCount = params.get("AffectedRegistryImageCount")
+        self._AffectedCICDImageCount = params.get("AffectedCICDImageCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -157919,7 +158531,7 @@ class ModifyEDRRuleRequest(AbstractModel):
         :type MemberId: list of str
         :param _Name: <p>策略名称</p>
         :type Name: str
-        :param _ContentType: <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+        :param _ContentType: <p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network,k8s_api-K8s API/K8s API</p><p>枚举值：</p><ul><li>md5-文件MD5： File MD5</li></ul>
         :type ContentType: str
         :param _Level: <p>告警等级 / Alert Level: 1-高危/High, 2-中危/Medium, 3-低危/Low, 4-提示/Reminder</p>
         :type Level: int
@@ -157971,6 +158583,8 @@ class ModifyEDRRuleRequest(AbstractModel):
         :type ConditionMatches: list of ConditionMatch
         :param _FileOperationRules: <p>文件操作规则，ContentType=file_operation 时填充（文件路径正则 AND 动作多选或）</p>
         :type FileOperationRules: :class:`tencentcloud.csip.v20221121.models.RuleContentFileOperation`
+        :param _K8sApiRule: <p>ContentType=k8s_api 时传入的 K8s API 规则，各非空字段的值需要 Base64 编码，k8s_api 规则只按集群生效</p>
+        :type K8sApiRule: :class:`tencentcloud.csip.v20221121.models.RuleContentK8sAPI`
         """
         self._RuleType = None
         self._AlertAction = None
@@ -158005,6 +158619,7 @@ class ModifyEDRRuleRequest(AbstractModel):
         self._ImageIDsWithAppId = None
         self._ConditionMatches = None
         self._FileOperationRules = None
+        self._K8sApiRule = None
 
     @property
     def RuleType(self):
@@ -158085,7 +158700,7 @@ class ModifyEDRRuleRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        r"""<p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network</p>
+        r"""<p>内容类型 / Content Type: md5-文件MD5/File MD5, cmdline-命令行/Command Line, dns-DNS, ip_inbound-入站IP/Inbound IP, ip_outbound-出站IP/Outbound IP, custom_file-自定义文件/Custom File, process_network-进程网络/Process Network,k8s_api-K8s API/K8s API</p><p>枚举值：</p><ul><li>md5-文件MD5： File MD5</li></ul>
         :rtype: str
         """
         return self._ContentType
@@ -158369,6 +158984,17 @@ class ModifyEDRRuleRequest(AbstractModel):
     def FileOperationRules(self, FileOperationRules):
         self._FileOperationRules = FileOperationRules
 
+    @property
+    def K8sApiRule(self):
+        r"""<p>ContentType=k8s_api 时传入的 K8s API 规则，各非空字段的值需要 Base64 编码，k8s_api 规则只按集群生效</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RuleContentK8sAPI`
+        """
+        return self._K8sApiRule
+
+    @K8sApiRule.setter
+    def K8sApiRule(self, K8sApiRule):
+        self._K8sApiRule = K8sApiRule
+
 
     def _deserialize(self, params):
         self._RuleType = params.get("RuleType")
@@ -158442,6 +159068,9 @@ class ModifyEDRRuleRequest(AbstractModel):
         if params.get("FileOperationRules") is not None:
             self._FileOperationRules = RuleContentFileOperation()
             self._FileOperationRules._deserialize(params.get("FileOperationRules"))
+        if params.get("K8sApiRule") is not None:
+            self._K8sApiRule = RuleContentK8sAPI()
+            self._K8sApiRule._deserialize(params.get("K8sApiRule"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -161594,7 +162223,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type KillProcess: int
         :param _DoClean: <p>1 清理, 0 不清理本操作会修复被篡改的系统命令，计划任务等系统文件，操作中请确保yum/apt 可用</p>
         :type DoClean: int
-        :param _ProtectMode: <p>防护模式 0 标准 1重保</p>
+        :param _ProtectMode: <p>防护模式 0 标准 1重保  2-自定义隔离</p>
         :type ProtectMode: int
         :param _ProtectFileScope: <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
         :type ProtectFileScope: int
@@ -161612,6 +162241,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type QuaraExcludeClusterIDsWithAppId: list of ClusterIDWithAppIdItem
         :param _Timeout: <p>超时时长（秒）</p>
         :type Timeout: int
+        :param _QuaraTypes: <p>自定义隔离模式的告警类型Code列表（ProtectMode=2时必填，Code取自Describe返回的QuaraTypeDict）</p>
+        :type QuaraTypes: list of str
         """
         self._Cycle = None
         self._StartTime = None
@@ -161644,6 +162275,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._QuaraClusterIDsWithAppId = None
         self._QuaraExcludeClusterIDsWithAppId = None
         self._Timeout = None
+        self._QuaraTypes = None
 
     @property
     def Cycle(self):
@@ -161889,7 +162521,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""<p>防护模式 0 标准 1重保</p>
+        r"""<p>防护模式 0 标准 1重保  2-自定义隔离</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -161986,6 +162618,17 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     def Timeout(self, Timeout):
         self._Timeout = Timeout
 
+    @property
+    def QuaraTypes(self):
+        r"""<p>自定义隔离模式的告警类型Code列表（ProtectMode=2时必填，Code取自Describe返回的QuaraTypeDict）</p>
+        :rtype: list of str
+        """
+        return self._QuaraTypes
+
+    @QuaraTypes.setter
+    def QuaraTypes(self, QuaraTypes):
+        self._QuaraTypes = QuaraTypes
+
 
     def _deserialize(self, params):
         self._Cycle = params.get("Cycle")
@@ -162059,6 +162702,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._QuaraExcludeClusterIDsWithAppId.append(obj)
         self._Timeout = params.get("Timeout")
+        self._QuaraTypes = params.get("QuaraTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -163184,16 +163828,17 @@ class ModifyPayConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostConfig: 主机安全模块自动扩容配置
-补充说明：不传则不修改主机配置；本期至少需传本模块。后续可扩展 ContainerConfig / AIAgentConfig 命名模块字段
+        :param _HostConfig: <p>主机安全模块自动扩容配置<br>补充说明：不传则不修改主机配置；本期至少需传本模块。后续可扩展 ContainerConfig / AIAgentConfig 命名模块字段</p>
         :type HostConfig: :class:`tencentcloud.csip.v20221121.models.HostAutoScaleConfig`
+        :param _ContainerConfig: <p>容器安全模块自动扩容配置，不传则不修改</p>
+        :type ContainerConfig: :class:`tencentcloud.csip.v20221121.models.ContainerAutoScaleConfig`
         """
         self._HostConfig = None
+        self._ContainerConfig = None
 
     @property
     def HostConfig(self):
-        r"""主机安全模块自动扩容配置
-补充说明：不传则不修改主机配置；本期至少需传本模块。后续可扩展 ContainerConfig / AIAgentConfig 命名模块字段
+        r"""<p>主机安全模块自动扩容配置<br>补充说明：不传则不修改主机配置；本期至少需传本模块。后续可扩展 ContainerConfig / AIAgentConfig 命名模块字段</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.HostAutoScaleConfig`
         """
         return self._HostConfig
@@ -163202,11 +163847,25 @@ class ModifyPayConfigRequest(AbstractModel):
     def HostConfig(self, HostConfig):
         self._HostConfig = HostConfig
 
+    @property
+    def ContainerConfig(self):
+        r"""<p>容器安全模块自动扩容配置，不传则不修改</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ContainerAutoScaleConfig`
+        """
+        return self._ContainerConfig
+
+    @ContainerConfig.setter
+    def ContainerConfig(self, ContainerConfig):
+        self._ContainerConfig = ContainerConfig
+
 
     def _deserialize(self, params):
         if params.get("HostConfig") is not None:
             self._HostConfig = HostAutoScaleConfig()
             self._HostConfig._deserialize(params.get("HostConfig"))
+        if params.get("ContainerConfig") is not None:
+            self._ContainerConfig = ContainerAutoScaleConfig()
+            self._ContainerConfig._deserialize(params.get("ContainerConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -171909,6 +172568,87 @@ class PublicIpDomainListKey(AbstractModel):
         
 
 
+class QuaraTypeDictItem(AbstractModel):
+    r"""自定义隔离模式的告警类型字典条目（灰度规则系统下发）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: <p>告警类型标识，与 QuaraTypes 取值一致</p>
+        :type Code: str
+        :param _Name: <p>展示类型名</p>
+        :type Name: str
+        :param _Recommend: <p>是否推荐隔离</p>
+        :type Recommend: bool
+        :param _Desc: <p>描述和建议</p>
+        :type Desc: str
+        """
+        self._Code = None
+        self._Name = None
+        self._Recommend = None
+        self._Desc = None
+
+    @property
+    def Code(self):
+        r"""<p>告警类型标识，与 QuaraTypes 取值一致</p>
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Name(self):
+        r"""<p>展示类型名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Recommend(self):
+        r"""<p>是否推荐隔离</p>
+        :rtype: bool
+        """
+        return self._Recommend
+
+    @Recommend.setter
+    def Recommend(self, Recommend):
+        self._Recommend = Recommend
+
+    @property
+    def Desc(self):
+        r"""<p>描述和建议</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Name = params.get("Name")
+        self._Recommend = params.get("Recommend")
+        self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RaspLicenseList(AbstractModel):
     r"""重保授权包列表对象
 
@@ -175159,6 +175899,192 @@ class RuleContentFileOperation(AbstractModel):
             self._ParentProcess._deserialize(params.get("ParentProcess"))
         self._FilePath = params.get("FilePath")
         self._FileActions = params.get("FileActions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleContentK8sAPI(AbstractModel):
+    r"""EDR K8s API 异常请求规则内容。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestURI: <p>请求资源</p>
+        :type RequestURI: str
+        :param _Verb: <p>操作类型</p>
+        :type Verb: str
+        :param _RequestUser: <p>发起请求用户</p>
+        :type RequestUser: str
+        :param _UserAgent: <p>用户代理</p>
+        :type UserAgent: str
+        :param _SourceIPS: <p>来源 IP</p>
+        :type SourceIPS: str
+        :param _ResponseStatusCode: <p>响应状态码</p>
+        :type ResponseStatusCode: str
+        :param _RequestObject: <p>请求数据</p>
+        :type RequestObject: str
+        :param _ResponseObject: <p>响应数据</p>
+        :type ResponseObject: str
+        :param _MountHostDir: <p>挂载宿主机目录</p>
+        :type MountHostDir: str
+        :param _PodNameIP: <p>Pod 名称或 IP</p>
+        :type PodNameIP: str
+        :param _AuditID: <p>审计日志 ID</p>
+        :type AuditID: str
+        """
+        self._RequestURI = None
+        self._Verb = None
+        self._RequestUser = None
+        self._UserAgent = None
+        self._SourceIPS = None
+        self._ResponseStatusCode = None
+        self._RequestObject = None
+        self._ResponseObject = None
+        self._MountHostDir = None
+        self._PodNameIP = None
+        self._AuditID = None
+
+    @property
+    def RequestURI(self):
+        r"""<p>请求资源</p>
+        :rtype: str
+        """
+        return self._RequestURI
+
+    @RequestURI.setter
+    def RequestURI(self, RequestURI):
+        self._RequestURI = RequestURI
+
+    @property
+    def Verb(self):
+        r"""<p>操作类型</p>
+        :rtype: str
+        """
+        return self._Verb
+
+    @Verb.setter
+    def Verb(self, Verb):
+        self._Verb = Verb
+
+    @property
+    def RequestUser(self):
+        r"""<p>发起请求用户</p>
+        :rtype: str
+        """
+        return self._RequestUser
+
+    @RequestUser.setter
+    def RequestUser(self, RequestUser):
+        self._RequestUser = RequestUser
+
+    @property
+    def UserAgent(self):
+        r"""<p>用户代理</p>
+        :rtype: str
+        """
+        return self._UserAgent
+
+    @UserAgent.setter
+    def UserAgent(self, UserAgent):
+        self._UserAgent = UserAgent
+
+    @property
+    def SourceIPS(self):
+        r"""<p>来源 IP</p>
+        :rtype: str
+        """
+        return self._SourceIPS
+
+    @SourceIPS.setter
+    def SourceIPS(self, SourceIPS):
+        self._SourceIPS = SourceIPS
+
+    @property
+    def ResponseStatusCode(self):
+        r"""<p>响应状态码</p>
+        :rtype: str
+        """
+        return self._ResponseStatusCode
+
+    @ResponseStatusCode.setter
+    def ResponseStatusCode(self, ResponseStatusCode):
+        self._ResponseStatusCode = ResponseStatusCode
+
+    @property
+    def RequestObject(self):
+        r"""<p>请求数据</p>
+        :rtype: str
+        """
+        return self._RequestObject
+
+    @RequestObject.setter
+    def RequestObject(self, RequestObject):
+        self._RequestObject = RequestObject
+
+    @property
+    def ResponseObject(self):
+        r"""<p>响应数据</p>
+        :rtype: str
+        """
+        return self._ResponseObject
+
+    @ResponseObject.setter
+    def ResponseObject(self, ResponseObject):
+        self._ResponseObject = ResponseObject
+
+    @property
+    def MountHostDir(self):
+        r"""<p>挂载宿主机目录</p>
+        :rtype: str
+        """
+        return self._MountHostDir
+
+    @MountHostDir.setter
+    def MountHostDir(self, MountHostDir):
+        self._MountHostDir = MountHostDir
+
+    @property
+    def PodNameIP(self):
+        r"""<p>Pod 名称或 IP</p>
+        :rtype: str
+        """
+        return self._PodNameIP
+
+    @PodNameIP.setter
+    def PodNameIP(self, PodNameIP):
+        self._PodNameIP = PodNameIP
+
+    @property
+    def AuditID(self):
+        r"""<p>审计日志 ID</p>
+        :rtype: str
+        """
+        return self._AuditID
+
+    @AuditID.setter
+    def AuditID(self, AuditID):
+        self._AuditID = AuditID
+
+
+    def _deserialize(self, params):
+        self._RequestURI = params.get("RequestURI")
+        self._Verb = params.get("Verb")
+        self._RequestUser = params.get("RequestUser")
+        self._UserAgent = params.get("UserAgent")
+        self._SourceIPS = params.get("SourceIPS")
+        self._ResponseStatusCode = params.get("ResponseStatusCode")
+        self._RequestObject = params.get("RequestObject")
+        self._ResponseObject = params.get("ResponseObject")
+        self._MountHostDir = params.get("MountHostDir")
+        self._PodNameIP = params.get("PodNameIP")
+        self._AuditID = params.get("AuditID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -47068,7 +47068,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type EnableInspiredEngine: int
         :param _EnableMemShellScan: <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
         :type EnableMemShellScan: int
-        :param _ProtectMode: <p>防护模式 0 标准 1 重保</p>
+        :param _ProtectMode: <p>防护模式 0 标准 1 重保 2自定义隔离</p>
         :type ProtectMode: int
         :param _ProtectFileScope: <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
         :type ProtectFileScope: int
@@ -47078,6 +47078,10 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type QuaraUuids: list of str
         :param _QuaraScope: <p>用户选择的隔离范围，0：默认全隔离 1：用户自选</p>
         :type QuaraScope: int
+        :param _QuaraTypes: <p>自定义隔离模式已保存的告警类型Code列表</p>
+        :type QuaraTypes: list of str
+        :param _QuaraTypeDict: <p>告警类型字典（灰度规则下发，供前端渲染勾选项）</p>
+        :type QuaraTypeDict: list of QuaraTypeDictItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -47104,6 +47108,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._DoClean = None
         self._QuaraUuids = None
         self._QuaraScope = None
+        self._QuaraTypes = None
+        self._QuaraTypeDict = None
         self._RequestId = None
 
     @property
@@ -47306,7 +47312,7 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""<p>防护模式 0 标准 1 重保</p>
+        r"""<p>防护模式 0 标准 1 重保 2自定义隔离</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -47360,6 +47366,28 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._QuaraScope = QuaraScope
 
     @property
+    def QuaraTypes(self):
+        r"""<p>自定义隔离模式已保存的告警类型Code列表</p>
+        :rtype: list of str
+        """
+        return self._QuaraTypes
+
+    @QuaraTypes.setter
+    def QuaraTypes(self, QuaraTypes):
+        self._QuaraTypes = QuaraTypes
+
+    @property
+    def QuaraTypeDict(self):
+        r"""<p>告警类型字典（灰度规则下发，供前端渲染勾选项）</p>
+        :rtype: list of QuaraTypeDictItem
+        """
+        return self._QuaraTypeDict
+
+    @QuaraTypeDict.setter
+    def QuaraTypeDict(self, QuaraTypeDict):
+        self._QuaraTypeDict = QuaraTypeDict
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -47395,6 +47423,13 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         self._DoClean = params.get("DoClean")
         self._QuaraUuids = params.get("QuaraUuids")
         self._QuaraScope = params.get("QuaraScope")
+        self._QuaraTypes = params.get("QuaraTypes")
+        if params.get("QuaraTypeDict") is not None:
+            self._QuaraTypeDict = []
+            for item in params.get("QuaraTypeDict"):
+                obj = QuaraTypeDictItem()
+                obj._deserialize(item)
+                self._QuaraTypeDict.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -88109,7 +88144,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type EnableInspiredEngine: int
         :param _EnableMemShellScan: <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
         :type EnableMemShellScan: int
-        :param _ProtectMode: <p>防护模式 0 标准 1重保</p>
+        :param _ProtectMode: <p>防护模式 0 标准 1重保 2自定义隔离</p>
         :type ProtectMode: int
         :param _ProtectFileScope: <p>查杀范围 0 脚本类之外的恶意文件，1全部恶意文件</p>
         :type ProtectFileScope: int
@@ -88119,6 +88154,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type QuaraScope: int
         :param _ProductType: <p>产品类型 0-主机安全(默认) 1-安全中心</p>
         :type ProductType: int
+        :param _QuaraTypes: <p>自定义隔离模式的告警类型Code列表（ProtectMode=2时必填，Code取自Describe返回的QuaraTypeDict）</p>
+        :type QuaraTypes: list of str
         """
         self._CheckPattern = None
         self._StartTime = None
@@ -88142,6 +88179,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._QuaraUuids = None
         self._QuaraScope = None
         self._ProductType = None
+        self._QuaraTypes = None
 
     @property
     def CheckPattern(self):
@@ -88332,7 +88370,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""<p>防护模式 0 标准 1重保</p>
+        r"""<p>防护模式 0 标准 1重保 2自定义隔离</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -88385,6 +88423,17 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     def ProductType(self, ProductType):
         self._ProductType = ProductType
 
+    @property
+    def QuaraTypes(self):
+        r"""<p>自定义隔离模式的告警类型Code列表（ProtectMode=2时必填，Code取自Describe返回的QuaraTypeDict）</p>
+        :rtype: list of str
+        """
+        return self._QuaraTypes
+
+    @QuaraTypes.setter
+    def QuaraTypes(self, QuaraTypes):
+        self._QuaraTypes = QuaraTypes
+
 
     def _deserialize(self, params):
         self._CheckPattern = params.get("CheckPattern")
@@ -88409,6 +88458,7 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._QuaraUuids = params.get("QuaraUuids")
         self._QuaraScope = params.get("QuaraScope")
         self._ProductType = params.get("ProductType")
+        self._QuaraTypes = params.get("QuaraTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -95384,6 +95434,87 @@ class ProtectStat(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Num = params.get("Num")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuaraTypeDictItem(AbstractModel):
+    r"""自定义隔离模式的告警类型字典条目（灰度规则系统下发）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: <p>告警类型标识，与 QuaraTypes 取值一致</p>
+        :type Code: str
+        :param _Name: <p>展示类型名</p>
+        :type Name: str
+        :param _Recommend: <p>是否推荐隔离</p>
+        :type Recommend: bool
+        :param _Desc: <p>描述和建议</p>
+        :type Desc: str
+        """
+        self._Code = None
+        self._Name = None
+        self._Recommend = None
+        self._Desc = None
+
+    @property
+    def Code(self):
+        r"""<p>告警类型标识，与 QuaraTypes 取值一致</p>
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Name(self):
+        r"""<p>展示类型名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Recommend(self):
+        r"""<p>是否推荐隔离</p>
+        :rtype: bool
+        """
+        return self._Recommend
+
+    @Recommend.setter
+    def Recommend(self, Recommend):
+        self._Recommend = Recommend
+
+    @property
+    def Desc(self):
+        r"""<p>描述和建议</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Name = params.get("Name")
+        self._Recommend = params.get("Recommend")
+        self._Desc = params.get("Desc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

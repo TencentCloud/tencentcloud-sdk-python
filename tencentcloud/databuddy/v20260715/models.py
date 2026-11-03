@@ -2497,6 +2497,87 @@ class ConsoleUserInfo(AbstractModel):
         
 
 
+class CosEventSubscription(AbstractModel):
+    r"""COS 文件事件订阅配置（Location 与 COS 桶事件投递 CKafka 的联动）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: CKafka 实例 ID，例如 ckafka-xxxxxxxx（订阅时必填）
+        :type InstanceId: str
+        :param _TopicName: CKafka 主题名称（订阅时必填）
+        :type TopicName: str
+        :param _RoleArn: 服务角色名称，例如 COSNotifyRole（订阅时必填；服务端按当前租户拼接完整 ARN）
+        :type RoleArn: str
+        :param _Region: COS 存储桶所在地域，例如 ap-guangzhou（订阅时必填；过渡方案，后续可能改为服务端自动解析并移除）
+        :type Region: str
+        """
+        self._InstanceId = None
+        self._TopicName = None
+        self._RoleArn = None
+        self._Region = None
+
+    @property
+    def InstanceId(self):
+        r"""CKafka 实例 ID，例如 ckafka-xxxxxxxx（订阅时必填）
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TopicName(self):
+        r"""CKafka 主题名称（订阅时必填）
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def RoleArn(self):
+        r"""服务角色名称，例如 COSNotifyRole（订阅时必填；服务端按当前租户拼接完整 ARN）
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def Region(self):
+        r"""COS 存储桶所在地域，例如 ap-guangzhou（订阅时必填；过渡方案，后续可能改为服务端自动解析并移除）
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TopicName = params.get("TopicName")
+        self._RoleArn = params.get("RoleArn")
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCatalogRequest(AbstractModel):
     r"""CreateCatalog请求参数结构体
 
@@ -3247,6 +3328,38 @@ class CreateLocationRequest(AbstractModel):
     r"""CreateLocation请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _FileEventSubscription: COS 文件事件订阅配置，可选；不设置时不订阅（仅 COS 类型 Location 生效）。设置时先订阅 COS 桶事件投递到 CKafka 再创建 Location，创建失败自动回滚退订
+        :type FileEventSubscription: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
+        """
+        self._FileEventSubscription = None
+
+    @property
+    def FileEventSubscription(self):
+        r"""COS 文件事件订阅配置，可选；不设置时不订阅（仅 COS 类型 Location 生效）。设置时先订阅 COS 桶事件投递到 CKafka 再创建 Location，创建失败自动回滚退订
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
+        """
+        return self._FileEventSubscription
+
+    @FileEventSubscription.setter
+    def FileEventSubscription(self, FileEventSubscription):
+        self._FileEventSubscription = FileEventSubscription
+
+
+    def _deserialize(self, params):
+        if params.get("FileEventSubscription") is not None:
+            self._FileEventSubscription = CosEventSubscription()
+            self._FileEventSubscription._deserialize(params.get("FileEventSubscription"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateLocationResponse(AbstractModel):
@@ -9943,8 +10056,11 @@ class GetLocationRsp(AbstractModel):
         r"""
         :param _Location: 存储位置详情
         :type Location: :class:`tencentcloud.databuddy.v20260715.models.LocationInfo`
+        :param _FileEventSubscription: COS 文件事件订阅明细（未订阅时为空）
+        :type FileEventSubscription: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
         """
         self._Location = None
+        self._FileEventSubscription = None
 
     @property
     def Location(self):
@@ -9957,11 +10073,25 @@ class GetLocationRsp(AbstractModel):
     def Location(self, Location):
         self._Location = Location
 
+    @property
+    def FileEventSubscription(self):
+        r"""COS 文件事件订阅明细（未订阅时为空）
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
+        """
+        return self._FileEventSubscription
+
+    @FileEventSubscription.setter
+    def FileEventSubscription(self, FileEventSubscription):
+        self._FileEventSubscription = FileEventSubscription
+
 
     def _deserialize(self, params):
         if params.get("Location") is not None:
             self._Location = LocationInfo()
             self._Location._deserialize(params.get("Location"))
+        if params.get("FileEventSubscription") is not None:
+            self._FileEventSubscription = CosEventSubscription()
+            self._FileEventSubscription._deserialize(params.get("FileEventSubscription"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16223,6 +16353,61 @@ class ListFilesRsp(AbstractModel):
         
 
 
+class ListLocationItem(AbstractModel):
+    r"""列表条目：存储位置与其 COS 文件事件订阅平铺（前端无需二次取值/匹配）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Location: 存储位置详情
+        :type Location: :class:`tencentcloud.databuddy.v20260715.models.LocationInfo`
+        :param _FileEventSubscription: COS 文件事件订阅明细（未订阅时为空，非空即已订阅）
+        :type FileEventSubscription: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
+        """
+        self._Location = None
+        self._FileEventSubscription = None
+
+    @property
+    def Location(self):
+        r"""存储位置详情
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.LocationInfo`
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def FileEventSubscription(self):
+        r"""COS 文件事件订阅明细（未订阅时为空，非空即已订阅）
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
+        """
+        return self._FileEventSubscription
+
+    @FileEventSubscription.setter
+    def FileEventSubscription(self, FileEventSubscription):
+        self._FileEventSubscription = FileEventSubscription
+
+
+    def _deserialize(self, params):
+        if params.get("Location") is not None:
+            self._Location = LocationInfo()
+            self._Location._deserialize(params.get("Location"))
+        if params.get("FileEventSubscription") is not None:
+            self._FileEventSubscription = CosEventSubscription()
+            self._FileEventSubscription._deserialize(params.get("FileEventSubscription"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListLocationsRequest(AbstractModel):
     r"""ListLocations请求参数结构体
 
@@ -16236,7 +16421,7 @@ class ListLocationsRequest(AbstractModel):
         :type LocationNamePattern: str
         :param _SnapshotBased: <p>是否基于快照分页</p>
         :type SnapshotBased: bool
-        :param _SnapshotId: <p>快照ID</p>
+        :param _SnapshotId: <p>快照ID，首次查询时不传，后续传入上一次 ListLocations 响应返回的 SnapshotId</p>
         :type SnapshotId: str
         :param _PageNumber: <p>页码，从1开始，可选，默认1</p>
         :type PageNumber: int
@@ -16285,7 +16470,7 @@ class ListLocationsRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        r"""<p>快照ID</p>
+        r"""<p>快照ID，首次查询时不传，后续传入上一次 ListLocations 响应返回的 SnapshotId</p>
         :rtype: str
         """
         return self._SnapshotId
@@ -16386,20 +16571,23 @@ class ListLocationsRsp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Locations: 存储位置详情列表
+        :param _Locations: 存储位置详情列表（Deprecated: 请使用 Items，平铺含订阅状态；前端切换完成后移除）
         :type Locations: list of LocationInfo
         :param _TotalCount: 结果总条数
         :type TotalCount: int
         :param _SnapshotId: 快照ID
         :type SnapshotId: str
+        :param _Items: 存储位置 + 订阅平铺列表（与 Locations 同序同长，前端优先使用本字段）；订阅状态判断：FileEventSubscription 非空即已开启
+        :type Items: list of ListLocationItem
         """
         self._Locations = None
         self._TotalCount = None
         self._SnapshotId = None
+        self._Items = None
 
     @property
     def Locations(self):
-        r"""存储位置详情列表
+        r"""存储位置详情列表（Deprecated: 请使用 Items，平铺含订阅状态；前端切换完成后移除）
         :rtype: list of LocationInfo
         """
         return self._Locations
@@ -16430,6 +16618,17 @@ class ListLocationsRsp(AbstractModel):
     def SnapshotId(self, SnapshotId):
         self._SnapshotId = SnapshotId
 
+    @property
+    def Items(self):
+        r"""存储位置 + 订阅平铺列表（与 Locations 同序同长，前端优先使用本字段）；订阅状态判断：FileEventSubscription 非空即已开启
+        :rtype: list of ListLocationItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
 
     def _deserialize(self, params):
         if params.get("Locations") is not None:
@@ -16440,6 +16639,12 @@ class ListLocationsRsp(AbstractModel):
                 self._Locations.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._SnapshotId = params.get("SnapshotId")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ListLocationItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20833,7 +21038,7 @@ class LocationUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UpdateType: 更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties
+        :param _UpdateType: 更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties、modify_file_event_subscription（操作COS文件事件订阅，WeData侧联动不透传TCLake；配合请求顶层FileEventSubscription字段：有值=开启/编辑订阅，未设置=关闭订阅）
         :type UpdateType: str
         :param _NewComment: 新的备注，可选，UpdateType 为 modify_location_comment 时使用
         :type NewComment: str
@@ -20852,7 +21057,7 @@ class LocationUpdate(AbstractModel):
 
     @property
     def UpdateType(self):
-        r"""更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties
+        r"""更新类型，取值：modify_location_name、modify_location_comment、modify_location_properties、modify_file_event_subscription（操作COS文件事件订阅，WeData侧联动不透传TCLake；配合请求顶层FileEventSubscription字段：有值=开启/编辑订阅，未设置=关闭订阅）
         :rtype: str
         """
         return self._UpdateType
@@ -27744,14 +27949,17 @@ class UpdateLocationRequest(AbstractModel):
         r"""
         :param _LocationName: 存储位置名，必填
         :type LocationName: str
-        :param _Updates: 更新location的操作列表，必填
+        :param _Updates: 更新location的操作列表，必填。通过 UpdateType 指定操作类型，支持的 UpdateType：modify_location_name（修改名称）、modify_location_comment（修改描述）、modify_location_properties（修改属性）、modify_file_event_subscription（操作COS文件事件订阅开关）
         :type Updates: list of LocationUpdate
         :param _WorkspaceId: 调用时所在workspace唯一id，必填
         :type WorkspaceId: str
+        :param _FileEventSubscription: COS 文件事件订阅配置，可选；不设置时不改动现有订阅（仅 COS 类型 Location 生效）。设置时：先按新配置重新订阅（同桶覆盖写，幂等），再修改 Location 元数据。与 Updates 中的 modify_file_event_subscription 配合表达开关操作：Updates 含该类型且本字段有值=开启/编辑订阅；Updates 含该类型且本字段未设置=关闭订阅；Updates 不含该类型时维持默认语义（不设置不动、设置覆盖）
+        :type FileEventSubscription: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
         """
         self._LocationName = None
         self._Updates = None
         self._WorkspaceId = None
+        self._FileEventSubscription = None
 
     @property
     def LocationName(self):
@@ -27766,7 +27974,7 @@ class UpdateLocationRequest(AbstractModel):
 
     @property
     def Updates(self):
-        r"""更新location的操作列表，必填
+        r"""更新location的操作列表，必填。通过 UpdateType 指定操作类型，支持的 UpdateType：modify_location_name（修改名称）、modify_location_comment（修改描述）、modify_location_properties（修改属性）、modify_file_event_subscription（操作COS文件事件订阅开关）
         :rtype: list of LocationUpdate
         """
         return self._Updates
@@ -27786,6 +27994,17 @@ class UpdateLocationRequest(AbstractModel):
     def WorkspaceId(self, WorkspaceId):
         self._WorkspaceId = WorkspaceId
 
+    @property
+    def FileEventSubscription(self):
+        r"""COS 文件事件订阅配置，可选；不设置时不改动现有订阅（仅 COS 类型 Location 生效）。设置时：先按新配置重新订阅（同桶覆盖写，幂等），再修改 Location 元数据。与 Updates 中的 modify_file_event_subscription 配合表达开关操作：Updates 含该类型且本字段有值=开启/编辑订阅；Updates 含该类型且本字段未设置=关闭订阅；Updates 不含该类型时维持默认语义（不设置不动、设置覆盖）
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
+        """
+        return self._FileEventSubscription
+
+    @FileEventSubscription.setter
+    def FileEventSubscription(self, FileEventSubscription):
+        self._FileEventSubscription = FileEventSubscription
+
 
     def _deserialize(self, params):
         self._LocationName = params.get("LocationName")
@@ -27796,6 +28015,9 @@ class UpdateLocationRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Updates.append(obj)
         self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("FileEventSubscription") is not None:
+            self._FileEventSubscription = CosEventSubscription()
+            self._FileEventSubscription._deserialize(params.get("FileEventSubscription"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27860,8 +28082,11 @@ class UpdateLocationRsp(AbstractModel):
         r"""
         :param _Location: 修改后的存储位置详情
         :type Location: :class:`tencentcloud.databuddy.v20260715.models.LocationInfo`
+        :param _FileEventSubscription: COS 文件事件订阅明细（未订阅时为空）
+        :type FileEventSubscription: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
         """
         self._Location = None
+        self._FileEventSubscription = None
 
     @property
     def Location(self):
@@ -27874,11 +28099,25 @@ class UpdateLocationRsp(AbstractModel):
     def Location(self, Location):
         self._Location = Location
 
+    @property
+    def FileEventSubscription(self):
+        r"""COS 文件事件订阅明细（未订阅时为空）
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.CosEventSubscription`
+        """
+        return self._FileEventSubscription
+
+    @FileEventSubscription.setter
+    def FileEventSubscription(self, FileEventSubscription):
+        self._FileEventSubscription = FileEventSubscription
+
 
     def _deserialize(self, params):
         if params.get("Location") is not None:
             self._Location = LocationInfo()
             self._Location._deserialize(params.get("Location"))
+        if params.get("FileEventSubscription") is not None:
+            self._FileEventSubscription = CosEventSubscription()
+            self._FileEventSubscription._deserialize(params.get("FileEventSubscription"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

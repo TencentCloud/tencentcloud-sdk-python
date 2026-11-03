@@ -6752,21 +6752,21 @@ class DBInstanceNetInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Address: DNS域名
+        :param _Address: <p>DNS域名</p>
         :type Address: str
-        :param _Ip: IP地址
+        :param _Ip: <p>IP地址</p>
         :type Ip: str
-        :param _Port: 连接Port地址
+        :param _Port: <p>连接Port地址</p>
         :type Port: int
-        :param _NetType: 网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
+        :param _NetType: <p>网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；</p>
         :type NetType: str
-        :param _Status: 网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；
+        :param _Status: <p>网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；</p>
         :type Status: str
-        :param _VpcId: 私有网络ID
+        :param _VpcId: <p>私有网络ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _ProtocolType: 连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）
+        :param _ProtocolType: <p>连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）</p>
         :type ProtocolType: str
         """
         self._Address = None
@@ -6780,7 +6780,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def Address(self):
-        r"""DNS域名
+        r"""<p>DNS域名</p>
         :rtype: str
         """
         return self._Address
@@ -6791,7 +6791,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def Ip(self):
-        r"""IP地址
+        r"""<p>IP地址</p>
         :rtype: str
         """
         return self._Ip
@@ -6802,7 +6802,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def Port(self):
-        r"""连接Port地址
+        r"""<p>连接Port地址</p>
         :rtype: int
         """
         return self._Port
@@ -6813,7 +6813,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def NetType(self):
-        r"""网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；
+        r"""<p>网络类型，1、inner（基础网络内网地址）；2、private（私有网络内网地址）；3、public（基础网络或私有网络的外网地址）；</p>
         :rtype: str
         """
         return self._NetType
@@ -6824,7 +6824,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；
+        r"""<p>网络连接状态，1、initing（未开通）；2、opened（已开通）；3、closed（已关闭）；4、opening（开通中）；5、closing（关闭中）；</p>
         :rtype: str
         """
         return self._Status
@@ -6835,7 +6835,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID
+        r"""<p>私有网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -6846,7 +6846,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -6857,7 +6857,7 @@ class DBInstanceNetInfo(AbstractModel):
 
     @property
     def ProtocolType(self):
-        r"""连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）
+        r"""<p>连接数据库的协议类型，当前支持：postgresql、mssql（MSSQL兼容语法）</p>
         :rtype: str
         """
         return self._ProtocolType
@@ -16583,16 +16583,15 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Storage: 实例的磁盘大小，单位GB
+        :param _Storage: <p>实例的磁盘大小，单位GB</p>
         :type Storage: int
-        :param _Memory: 实例的内存大小，单位GB
+        :param _Memory: <p>实例的内存大小，单位GB</p>
         :type Memory: int
-        :param _DBInstanceId: 实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>实例ID，形如postgres-hez4fh0v。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
-        :param _InstanceChargeType: 实例计费类型。
+        :param _InstanceChargeType: <p>实例计费类型。</p>
         :type InstanceChargeType: str
-        :param _Cpu: 实例的Cpu大小，单位Core。
-不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+        :param _Cpu: <p>实例的Cpu大小，单位Core。<br>不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。</p>
         :type Cpu: int
         """
         self._Storage = None
@@ -16603,7 +16602,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""实例的磁盘大小，单位GB
+        r"""<p>实例的磁盘大小，单位GB</p>
         :rtype: int
         """
         return self._Storage
@@ -16614,7 +16613,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""实例的内存大小，单位GB
+        r"""<p>实例的内存大小，单位GB</p>
         :rtype: int
         """
         return self._Memory
@@ -16625,7 +16624,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""实例ID，形如postgres-hez4fh0v。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>实例ID，形如postgres-hez4fh0v。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -16638,7 +16637,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
     def InstanceChargeType(self):
         warnings.warn("parameter `InstanceChargeType` is deprecated", DeprecationWarning) 
 
-        r"""实例计费类型。
+        r"""<p>实例计费类型。</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -16651,8 +16650,7 @@ class InquiryPriceUpgradeDBInstanceRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""实例的Cpu大小，单位Core。
-不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+        r"""<p>实例的Cpu大小，单位Core。<br>不传入此参数时，默认根据Memory确定的售卖规格所对应的Cpu进行设置。如Memory为2，支持的售卖规格有1核2GiB，则不传入Cpu时，Cpu默认为1。</p>
         :rtype: int
         """
         return self._Cpu
@@ -16685,11 +16683,11 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalPrice: 刊例价费用
+        :param _OriginalPrice: <p>刊例价费用</p>
         :type OriginalPrice: int
-        :param _Price: 折后实际付款金额
+        :param _Price: <p>折后实际付款金额</p>
         :type Price: int
-        :param _Currency: 币种。例如，CNY：人民币。
+        :param _Currency: <p>币种。例如，CNY：人民币。</p>
         :type Currency: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16701,7 +16699,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""刊例价费用
+        r"""<p>刊例价费用</p>
         :rtype: int
         """
         return self._OriginalPrice
@@ -16712,7 +16710,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def Price(self):
-        r"""折后实际付款金额
+        r"""<p>折后实际付款金额</p>
         :rtype: int
         """
         return self._Price
@@ -16723,7 +16721,7 @@ class InquiryPriceUpgradeDBInstanceResponse(AbstractModel):
 
     @property
     def Currency(self):
-        r"""币种。例如，CNY：人民币。
+        r"""<p>币种。例如，CNY：人民币。</p>
         :rtype: str
         """
         return self._Currency

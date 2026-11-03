@@ -49,6 +49,29 @@ class SslClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchDeleteCSR(self, request):
+        r"""批量删除CSR
+
+        :param request: Request instance for BatchDeleteCSR.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.BatchDeleteCSRRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.BatchDeleteCSRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchDeleteCSR", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchDeleteCSRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelAuditCertificate(self, request):
         r"""取消证书审核
 
@@ -247,6 +270,29 @@ class SslClient(AbstractClient):
             body = self.call("CompleteCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.CompleteCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCSR(self, request):
+        r"""创建CSR
+
+        :param request: Request instance for CreateCSR.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.CreateCSRRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.CreateCSRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCSR", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCSRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -461,6 +507,52 @@ class SslClient(AbstractClient):
             body = self.call("DeployCertificateRecordRollback", params, headers=headers)
             response = json.loads(body)
             model = models.DeployCertificateRecordRollbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCSR(self, request):
+        r"""查询CSR详情
+
+        :param request: Request instance for DescribeCSR.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCSR", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCSRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCSRSet(self, request):
+        r"""查询CSR列表
+
+        :param request: Request instance for DescribeCSRSet.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRSetRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.DescribeCSRSetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCSRSet", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCSRSetResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1174,6 +1266,29 @@ class SslClient(AbstractClient):
             body = self.call("DownloadCertificate", params, headers=headers)
             response = json.loads(body)
             model = models.DownloadCertificateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCSR(self, request):
+        r"""修改CSR信息
+
+        :param request: Request instance for ModifyCSR.
+        :type request: :class:`tencentcloud.ssl.v20191205.models.ModifyCSRRequest`
+        :rtype: :class:`tencentcloud.ssl.v20191205.models.ModifyCSRResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCSR", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCSRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

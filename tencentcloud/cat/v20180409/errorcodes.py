@@ -83,6 +83,9 @@ INTERNALERROR = 'InternalError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 任务参数非法
+INVALIDPARAMETER_TASKPARAMSINVALID = 'InvalidParameter.TaskParamsInvalid'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 

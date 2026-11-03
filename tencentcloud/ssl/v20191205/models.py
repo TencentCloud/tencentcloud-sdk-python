@@ -495,6 +495,85 @@ class ApplyCertificateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchDeleteCSRRequest(AbstractModel):
+    r"""BatchDeleteCSR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CSRIds: 要删除的CSR Id标识。最多100个
+        :type CSRIds: list of int
+        """
+        self._CSRIds = None
+
+    @property
+    def CSRIds(self):
+        r"""要删除的CSR Id标识。最多100个
+        :rtype: list of int
+        """
+        return self._CSRIds
+
+    @CSRIds.setter
+    def CSRIds(self, CSRIds):
+        self._CSRIds = CSRIds
+
+
+    def _deserialize(self, params):
+        self._CSRIds = params.get("CSRIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDeleteCSRResponse(AbstractModel):
+    r"""BatchDeleteCSR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: 成功删除的CSR ID 标识
+        :type Success: list of int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Success = None
+        self._RequestId = None
+
+    @property
+    def Success(self):
+        r"""成功删除的CSR ID 标识
+        :rtype: list of int
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._RequestId = params.get("RequestId")
+
+
 class BatchDeleteFail(AbstractModel):
     r"""批量删除失败的项
 
@@ -744,6 +823,272 @@ class COSInstanceList(AbstractModel):
                 self._InstanceList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CSRItem(AbstractModel):
+    r"""CSR详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>CSR Id标识</p>
+        :type Id: int
+        :param _OwnerUin: <p>账号</p>
+        :type OwnerUin: str
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _Organization: <p>企业/单位名称</p>
+        :type Organization: str
+        :param _Department: <p>部门</p>
+        :type Department: str
+        :param _Email: <p>邮箱</p>
+        :type Email: str
+        :param _Province: <p>省份</p>
+        :type Province: str
+        :param _City: <p>城市</p>
+        :type City: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _Remarks: <p>备注</p>
+        :type Remarks: str
+        :param _Status: <p>状态</p>
+        :type Status: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _EncryptAlgo: <p>算法</p>
+        :type EncryptAlgo: str
+        :param _KeyParameter: <p>算法参数</p>
+        :type KeyParameter: str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of Tags
+        :param _SubjectAltName: <p>SAN域名</p>
+        :type SubjectAltName: list of str
+        """
+        self._Id = None
+        self._OwnerUin = None
+        self._Domain = None
+        self._Organization = None
+        self._Department = None
+        self._Email = None
+        self._Province = None
+        self._City = None
+        self._Country = None
+        self._Remarks = None
+        self._Status = None
+        self._CreateTime = None
+        self._EncryptAlgo = None
+        self._KeyParameter = None
+        self._Tags = None
+        self._SubjectAltName = None
+
+    @property
+    def Id(self):
+        r"""<p>CSR Id标识</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OwnerUin(self):
+        r"""<p>账号</p>
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Organization(self):
+        r"""<p>企业/单位名称</p>
+        :rtype: str
+        """
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+    @property
+    def Department(self):
+        r"""<p>部门</p>
+        :rtype: str
+        """
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Email(self):
+        r"""<p>邮箱</p>
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Remarks(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EncryptAlgo(self):
+        r"""<p>算法</p>
+        :rtype: str
+        """
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+    @property
+    def KeyParameter(self):
+        r"""<p>算法参数</p>
+        :rtype: str
+        """
+        return self._KeyParameter
+
+    @KeyParameter.setter
+    def KeyParameter(self, KeyParameter):
+        self._KeyParameter = KeyParameter
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of Tags
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SubjectAltName(self):
+        r"""<p>SAN域名</p>
+        :rtype: list of str
+        """
+        return self._SubjectAltName
+
+    @SubjectAltName.setter
+    def SubjectAltName(self, SubjectAltName):
+        self._SubjectAltName = SubjectAltName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OwnerUin = params.get("OwnerUin")
+        self._Domain = params.get("Domain")
+        self._Organization = params.get("Organization")
+        self._Department = params.get("Department")
+        self._Email = params.get("Email")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._Remarks = params.get("Remarks")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        self._KeyParameter = params.get("KeyParameter")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._SubjectAltName = params.get("SubjectAltName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2464,6 +2809,8 @@ class Certificates(AbstractModel):
         :type CertServiceShareEnabled: bool
         :param _CertServiceValidCertificateCount: <p>当前订阅服务下已经签发未过期的证书数量</p>
         :type CertServiceValidCertificateCount: int
+        :param _ResubmitAble: <p>是否可重新提交。</p><p>默认值：false</p>
+        :type ResubmitAble: bool
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -2528,6 +2875,7 @@ class Certificates(AbstractModel):
         self._CertServiceEndTime = None
         self._CertServiceShareEnabled = None
         self._CertServiceValidCertificateCount = None
+        self._ResubmitAble = None
 
     @property
     def OwnerUin(self):
@@ -3223,6 +3571,17 @@ class Certificates(AbstractModel):
     def CertServiceValidCertificateCount(self, CertServiceValidCertificateCount):
         self._CertServiceValidCertificateCount = CertServiceValidCertificateCount
 
+    @property
+    def ResubmitAble(self):
+        r"""<p>是否可重新提交。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._ResubmitAble
+
+    @ResubmitAble.setter
+    def ResubmitAble(self, ResubmitAble):
+        self._ResubmitAble = ResubmitAble
+
 
     def _deserialize(self, params):
         self._OwnerUin = params.get("OwnerUin")
@@ -3303,6 +3662,7 @@ class Certificates(AbstractModel):
         self._CertServiceEndTime = params.get("CertServiceEndTime")
         self._CertServiceShareEnabled = params.get("CertServiceShareEnabled")
         self._CertServiceValidCertificateCount = params.get("CertServiceValidCertificateCount")
+        self._ResubmitAble = params.get("ResubmitAble")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4477,6 +4837,285 @@ DISABLED:域名下线状态
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateCSRRequest(AbstractModel):
+    r"""CreateCSR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _Organization: <p>企业/单位名称</p>
+        :type Organization: str
+        :param _Department: <p>部门</p>
+        :type Department: str
+        :param _Email: <p>邮箱</p>
+        :type Email: str
+        :param _Province: <p>省份</p>
+        :type Province: str
+        :param _City: <p>城市</p>
+        :type City: str
+        :param _Country: <p>符合ISO 3166 标准的国家或地域代码。如:CN、US</p>
+        :type Country: str
+        :param _EncryptAlgo: <p>加密算法，支持 RSA及ECC。</p>
+        :type EncryptAlgo: str
+        :param _KeyParameter: <p>密钥参数，RSA仅支持2048，4096。ECC仅支持prime256v1</p>
+        :type KeyParameter: str
+        :param _Generate: <p>是否生成CSR内容。生成CSR内容后，此CSR记录不再支持修改</p>
+        :type Generate: bool
+        :param _KeyPassword: <p>私钥密码</p>
+        :type KeyPassword: str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tags
+        :param _SubjectAltName: <p>SAN域名</p>
+        :type SubjectAltName: list of str
+        """
+        self._Domain = None
+        self._Organization = None
+        self._Department = None
+        self._Email = None
+        self._Province = None
+        self._City = None
+        self._Country = None
+        self._EncryptAlgo = None
+        self._KeyParameter = None
+        self._Generate = None
+        self._KeyPassword = None
+        self._Remark = None
+        self._Tags = None
+        self._SubjectAltName = None
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Organization(self):
+        r"""<p>企业/单位名称</p>
+        :rtype: str
+        """
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+    @property
+    def Department(self):
+        r"""<p>部门</p>
+        :rtype: str
+        """
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Email(self):
+        r"""<p>邮箱</p>
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        r"""<p>符合ISO 3166 标准的国家或地域代码。如:CN、US</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def EncryptAlgo(self):
+        r"""<p>加密算法，支持 RSA及ECC。</p>
+        :rtype: str
+        """
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+    @property
+    def KeyParameter(self):
+        r"""<p>密钥参数，RSA仅支持2048，4096。ECC仅支持prime256v1</p>
+        :rtype: str
+        """
+        return self._KeyParameter
+
+    @KeyParameter.setter
+    def KeyParameter(self, KeyParameter):
+        self._KeyParameter = KeyParameter
+
+    @property
+    def Generate(self):
+        r"""<p>是否生成CSR内容。生成CSR内容后，此CSR记录不再支持修改</p>
+        :rtype: bool
+        """
+        return self._Generate
+
+    @Generate.setter
+    def Generate(self, Generate):
+        self._Generate = Generate
+
+    @property
+    def KeyPassword(self):
+        r"""<p>私钥密码</p>
+        :rtype: str
+        """
+        return self._KeyPassword
+
+    @KeyPassword.setter
+    def KeyPassword(self, KeyPassword):
+        self._KeyPassword = KeyPassword
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tags
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def SubjectAltName(self):
+        r"""<p>SAN域名</p>
+        :rtype: list of str
+        """
+        return self._SubjectAltName
+
+    @SubjectAltName.setter
+    def SubjectAltName(self, SubjectAltName):
+        self._SubjectAltName = SubjectAltName
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._Organization = params.get("Organization")
+        self._Department = params.get("Department")
+        self._Email = params.get("Email")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        self._KeyParameter = params.get("KeyParameter")
+        self._Generate = params.get("Generate")
+        self._KeyPassword = params.get("KeyPassword")
+        self._Remark = params.get("Remark")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tags()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._SubjectAltName = params.get("SubjectAltName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCSRResponse(AbstractModel):
+    r"""CreateCSR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>CSR ID标识</p>
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>CSR ID标识</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCertificateBindResourceSyncTaskRequest(AbstractModel):
@@ -7537,6 +8176,490 @@ class DeployedResources(AbstractModel):
         
 
 
+class DescribeCSRRequest(AbstractModel):
+    r"""DescribeCSR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CSRId: <p>CSR ID标识</p>
+        :type CSRId: int
+        """
+        self._CSRId = None
+
+    @property
+    def CSRId(self):
+        r"""<p>CSR ID标识</p>
+        :rtype: int
+        """
+        return self._CSRId
+
+    @CSRId.setter
+    def CSRId(self, CSRId):
+        self._CSRId = CSRId
+
+
+    def _deserialize(self, params):
+        self._CSRId = params.get("CSRId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCSRResponse(AbstractModel):
+    r"""DescribeCSR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>CSR Id标识</p>
+        :type Id: int
+        :param _OwnerUin: <p>账号</p>
+        :type OwnerUin: str
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _Organization: <p>企业/单位名称</p>
+        :type Organization: str
+        :param _Department: <p>部门</p>
+        :type Department: str
+        :param _Email: <p>邮箱</p>
+        :type Email: str
+        :param _Province: <p>省份</p>
+        :type Province: str
+        :param _City: <p>城市</p>
+        :type City: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _EncryptAlgo: <p>密钥算法</p>
+        :type EncryptAlgo: str
+        :param _KeyParameter: <p>算法参数</p>
+        :type KeyParameter: str
+        :param _Remarks: <p>备注</p>
+        :type Remarks: str
+        :param _Status: <p>状态</p>
+        :type Status: int
+        :param _KeyPassword: <p>私钥密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyPassword: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _CSR: <p>CSR内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CSR: str
+        :param _PrivateKey: <p>私钥内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateKey: str
+        :param _SubjectAltName: <p>SAN域名</p>
+        :type SubjectAltName: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._OwnerUin = None
+        self._Domain = None
+        self._Organization = None
+        self._Department = None
+        self._Email = None
+        self._Province = None
+        self._City = None
+        self._Country = None
+        self._EncryptAlgo = None
+        self._KeyParameter = None
+        self._Remarks = None
+        self._Status = None
+        self._KeyPassword = None
+        self._CreateTime = None
+        self._CSR = None
+        self._PrivateKey = None
+        self._SubjectAltName = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>CSR Id标识</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def OwnerUin(self):
+        r"""<p>账号</p>
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Organization(self):
+        r"""<p>企业/单位名称</p>
+        :rtype: str
+        """
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+    @property
+    def Department(self):
+        r"""<p>部门</p>
+        :rtype: str
+        """
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Email(self):
+        r"""<p>邮箱</p>
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def EncryptAlgo(self):
+        r"""<p>密钥算法</p>
+        :rtype: str
+        """
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+    @property
+    def KeyParameter(self):
+        r"""<p>算法参数</p>
+        :rtype: str
+        """
+        return self._KeyParameter
+
+    @KeyParameter.setter
+    def KeyParameter(self, KeyParameter):
+        self._KeyParameter = KeyParameter
+
+    @property
+    def Remarks(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def KeyPassword(self):
+        r"""<p>私钥密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KeyPassword
+
+    @KeyPassword.setter
+    def KeyPassword(self, KeyPassword):
+        self._KeyPassword = KeyPassword
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CSR(self):
+        r"""<p>CSR内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CSR
+
+    @CSR.setter
+    def CSR(self, CSR):
+        self._CSR = CSR
+
+    @property
+    def PrivateKey(self):
+        r"""<p>私钥内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def SubjectAltName(self):
+        r"""<p>SAN域名</p>
+        :rtype: list of str
+        """
+        return self._SubjectAltName
+
+    @SubjectAltName.setter
+    def SubjectAltName(self, SubjectAltName):
+        self._SubjectAltName = SubjectAltName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._OwnerUin = params.get("OwnerUin")
+        self._Domain = params.get("Domain")
+        self._Organization = params.get("Organization")
+        self._Department = params.get("Department")
+        self._Email = params.get("Email")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        self._KeyParameter = params.get("KeyParameter")
+        self._Remarks = params.get("Remarks")
+        self._Status = params.get("Status")
+        self._KeyPassword = params.get("KeyPassword")
+        self._CreateTime = params.get("CreateTime")
+        self._CSR = params.get("CSR")
+        self._PrivateKey = params.get("PrivateKey")
+        self._SubjectAltName = params.get("SubjectAltName")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCSRSetRequest(AbstractModel):
+    r"""DescribeCSRSet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 每页数量，默认10。最大100
+        :type Limit: int
+        :param _Offset: 分页偏移量，从0开始。	
+        :type Offset: int
+        :param _Domain: 使用域名过滤。
+        :type Domain: str
+        :param _EncryptAlgo: 使用加密算法过滤
+        :type EncryptAlgo: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Domain = None
+        self._EncryptAlgo = None
+
+    @property
+    def Limit(self):
+        r"""每页数量，默认10。最大100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，从0开始。	
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Domain(self):
+        r"""使用域名过滤。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def EncryptAlgo(self):
+        r"""使用加密算法过滤
+        :rtype: str
+        """
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Domain = params.get("Domain")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCSRSetResponse(AbstractModel):
+    r"""DescribeCSRSet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数量。	
+        :type Total: int
+        :param _Set: 列表。
+        :type Set: list of CSRItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Set = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数量。	
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Set(self):
+        r"""列表。
+        :rtype: list of CSRItem
+        """
+        return self._Set
+
+    @Set.setter
+    def Set(self, Set):
+        self._Set = Set
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Set") is not None:
+            self._Set = []
+            for item in params.get("Set"):
+                obj = CSRItem()
+                obj._deserialize(item)
+                self._Set.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCertificateBindResourceTaskDetailRequest(AbstractModel):
     r"""DescribeCertificateBindResourceTaskDetail请求参数结构体
 
@@ -8248,6 +9371,8 @@ class DescribeCertificateDetailResponse(AbstractModel):
         :type UseCrossSignRoot: bool
         :param _HostingStatus: <p>托管状态，0代表托管中，5代表资源替换中， 10代表托管完成， -1代表未托管</p>
         :type HostingStatus: int
+        :param _ResubmitAble: <p>是否可重新提交。</p>
+        :type ResubmitAble: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8297,6 +9422,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self._CertType = None
         self._UseCrossSignRoot = None
         self._HostingStatus = None
+        self._ResubmitAble = None
         self._RequestId = None
 
     @property
@@ -8824,6 +9950,17 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self._HostingStatus = HostingStatus
 
     @property
+    def ResubmitAble(self):
+        r"""<p>是否可重新提交。</p>
+        :rtype: bool
+        """
+        return self._ResubmitAble
+
+    @ResubmitAble.setter
+    def ResubmitAble(self, ResubmitAble):
+        self._ResubmitAble = ResubmitAble
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8905,6 +10042,7 @@ class DescribeCertificateDetailResponse(AbstractModel):
         self._CertType = params.get("CertType")
         self._UseCrossSignRoot = params.get("UseCrossSignRoot")
         self._HostingStatus = params.get("HostingStatus")
+        self._ResubmitAble = params.get("ResubmitAble")
         self._RequestId = params.get("RequestId")
 
 
@@ -9074,14 +10212,14 @@ class DescribeCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CertificateId: 证书 ID。
+        :param _CertificateId: <p>证书 ID。</p>
         :type CertificateId: str
         """
         self._CertificateId = None
 
     @property
     def CertificateId(self):
-        r"""证书 ID。
+        r"""<p>证书 ID。</p>
         :rtype: str
         """
         return self._CertificateId
@@ -9110,214 +10248,116 @@ class DescribeCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OwnerUin: 用户 UIN。
+        :param _OwnerUin: <p>用户 UIN。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param _ProjectId: 项目 ID。
+        :param _ProjectId: <p>项目 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _From: 证书来源：
-trustasia：亚洲诚信，
-upload：用户上传。
-wosign：沃通
-sheca：上海CA
+        :param _From: <p>证书来源：<br>trustasia：亚洲诚信，<br>upload：用户上传。<br>wosign：沃通<br>sheca：上海CA</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type From: str
-        :param _CertificateType: 证书类型：CA = 客户端证书，SVR = 服务器证书。
+        :param _CertificateType: <p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateType: str
-        :param _PackageType: 证书套餐类型：
-null：用户上传证书（没有套餐类型），
-2：TrustAsia TLS RSA CA， 
-3：SecureSite 增强型企业版（EV Pro）， 
-4：SecureSite 增强型（EV）， 
-5：SecureSite 企业型专业版（OV Pro），
-6：SecureSite 企业型（OV）， 
-7：SecureSite 企业型（OV）通配符， 
-8：Geotrust 增强型（EV）， 
-9：Geotrust 企业型（OV）， 
-10：Geotrust 企业型（OV）通配符， 
-11：TrustAsia 域名型多域名 SSL 证书， 
-12：TrustAsia 域名型（DV）通配符， 
-13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
-14：TrustAsia 企业型（OV）SSL 证书（D3）， 
-15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
-16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
-17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
-18：GlobalSign 企业型（OV）SSL 证书， 
-19：GlobalSign 企业型通配符 （OV）SSL 证书， 
-20：GlobalSign 增强型 （EV）SSL 证书， 
-21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
-22：GlobalSign 企业型多域名（OV）SSL 证书， 
-23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
-24：GlobalSign 增强型多域名（EV）SSL 证书，
-25：Wotrus 域名型证书，
-26：Wotrus 域名型多域名证书，
-27：Wotrus 域名型通配符证书，
-28：Wotrus 企业型证书，
-29：Wotrus 企业型多域名证书，
-30：Wotrus 企业型通配符证书，
-31：Wotrus 增强型证书，
-32：Wotrus 增强型多域名证书，
-33：WoTrus-国密域名型证书，
-34：WoTrus-国密域名型证书（多域名），
-35：WoTrus-国密域名型证书（通配符），
-37：WoTrus-国密企业型证书，
-38：WoTrus-国密企业型证书（多域名），
-39：WoTrus-国密企业型证书（通配符），
-40：WoTrus-国密增强型证书，
-41：WoTrus-国密增强型证书（多域名），
-42：TrustAsia-域名型证书（通配符多域名），
-43：DNSPod-企业型(OV)SSL证书
-44：DNSPod-企业型(OV)通配符SSL证书
-45：DNSPod-企业型(OV)多域名SSL证书
-46：DNSPod-增强型(EV)SSL证书
-47：DNSPod-增强型(EV)多域名SSL证书
-48：DNSPod-域名型(DV)SSL证书
-49：DNSPod-域名型(DV)通配符SSL证书
-50：DNSPod-域名型(DV)多域名SSL证书
-51：DNSPod（国密）-企业型(OV)SSL证书
-52：DNSPod（国密）-企业型(OV)通配符SSL证书
-53：DNSPod（国密）-企业型(OV)多域名SSL证书
-54：DNSPod（国密）-域名型(DV)SSL证书
-55：DNSPod（国密）-域名型(DV)通配符SSL证书
-56：DNSPod（国密）-域名型(DV)多域名SSL证书
-57：SecureSite 企业型专业版多域名(OV Pro)
-58：SecureSite 企业型多域名(OV)
-59：SecureSite 增强型专业版多域名(EV Pro)
-60：SecureSite 增强型多域名(EV)
-61：Geotrust 增强型多域名(EV)
-75：SecureSite 企业型(OV)
-76：SecureSite 企业型(OV)通配符
-77：SecureSite 增强型(EV)
-78：Geotrust 企业型(OV)
-79：Geotrust 企业型(OV)通配符
-80：Geotrust 增强型(EV)
-81：GlobalSign 企业型（OV）SSL证书
-82：GlobalSign 企业型通配符 （OV）SSL证书
-83：TrustAsia C1 DV Free
-85：GlobalSign 增强型 （EV）SSL证书
-88：GlobalSign 企业型通配符多域名 （OV）SSL证书
-89：GlobalSign 企业型多域名 （OV）SSL证书
-90：GlobalSign 增强型多域名（EV） SSL证书
-91：Geotrust 增强型多域名(EV)
-92：SecureSite 企业型专业版多域名(OV Pro)
-93：SecureSite 企业型多域名(OV)
-94：SecureSite 增强型专业版多域名(EV Pro)
-95：SecureSite 增强型多域名(EV)
-96：SecureSite 增强型专业版(EV Pro)
-97：SecureSite 企业型专业版(OV Pro)
-98：CFCA 企业型(OV)SSL证书
-99：CFCA 企业型多域名(OV)SSL证书
-100：CFCA 企业型通配符(OV)SSL证书
-101：CFCA 增强型(EV)SSL证书
+        :param _PackageType: <p>证书套餐类型：<br>null：用户上传证书（没有套餐类型），<br>2：TrustAsia TLS RSA CA，<br>3：SecureSite 增强型企业版（EV Pro），<br>4：SecureSite 增强型（EV），<br>5：SecureSite 企业型专业版（OV Pro），<br>6：SecureSite 企业型（OV），<br>7：SecureSite 企业型（OV）通配符，<br>8：Geotrust 增强型（EV），<br>9：Geotrust 企业型（OV），<br>10：Geotrust 企业型（OV）通配符，<br>11：TrustAsia 域名型多域名 SSL 证书，<br>12：TrustAsia 域名型（DV）通配符，<br>13：TrustAsia 企业型通配符（OV）SSL 证书（D3），<br>14：TrustAsia 企业型（OV）SSL 证书（D3），<br>15：TrustAsia 企业型多域名 （OV）SSL 证书（D3），<br>16：TrustAsia 增强型 （EV）SSL 证书（D3），<br>17：TrustAsia 增强型多域名（EV）SSL 证书（D3），<br>18：GlobalSign 企业型（OV）SSL 证书，<br>19：GlobalSign 企业型通配符 （OV）SSL 证书，<br>20：GlobalSign 增强型 （EV）SSL 证书，<br>21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3），<br>22：GlobalSign 企业型多域名（OV）SSL 证书，<br>23：GlobalSign 企业型通配符多域名（OV）SSL 证书，<br>24：GlobalSign 增强型多域名（EV）SSL 证书，<br>25：Wotrus 域名型证书，<br>26：Wotrus 域名型多域名证书，<br>27：Wotrus 域名型通配符证书，<br>28：Wotrus 企业型证书，<br>29：Wotrus 企业型多域名证书，<br>30：Wotrus 企业型通配符证书，<br>31：Wotrus 增强型证书，<br>32：Wotrus 增强型多域名证书，<br>33：WoTrus-国密域名型证书，<br>34：WoTrus-国密域名型证书（多域名），<br>35：WoTrus-国密域名型证书（通配符），<br>37：WoTrus-国密企业型证书，<br>38：WoTrus-国密企业型证书（多域名），<br>39：WoTrus-国密企业型证书（通配符），<br>40：WoTrus-国密增强型证书，<br>41：WoTrus-国密增强型证书（多域名），<br>42：TrustAsia-域名型证书（通配符多域名），<br>43：DNSPod-企业型(OV)SSL证书<br>44：DNSPod-企业型(OV)通配符SSL证书<br>45：DNSPod-企业型(OV)多域名SSL证书<br>46：DNSPod-增强型(EV)SSL证书<br>47：DNSPod-增强型(EV)多域名SSL证书<br>48：DNSPod-域名型(DV)SSL证书<br>49：DNSPod-域名型(DV)通配符SSL证书<br>50：DNSPod-域名型(DV)多域名SSL证书<br>51：DNSPod（国密）-企业型(OV)SSL证书<br>52：DNSPod（国密）-企业型(OV)通配符SSL证书<br>53：DNSPod（国密）-企业型(OV)多域名SSL证书<br>54：DNSPod（国密）-域名型(DV)SSL证书<br>55：DNSPod（国密）-域名型(DV)通配符SSL证书<br>56：DNSPod（国密）-域名型(DV)多域名SSL证书<br>57：SecureSite 企业型专业版多域名(OV Pro)<br>58：SecureSite 企业型多域名(OV)<br>59：SecureSite 增强型专业版多域名(EV Pro)<br>60：SecureSite 增强型多域名(EV)<br>61：Geotrust 增强型多域名(EV)<br>75：SecureSite 企业型(OV)<br>76：SecureSite 企业型(OV)通配符<br>77：SecureSite 增强型(EV)<br>78：Geotrust 企业型(OV)<br>79：Geotrust 企业型(OV)通配符<br>80：Geotrust 增强型(EV)<br>81：GlobalSign 企业型（OV）SSL证书<br>82：GlobalSign 企业型通配符 （OV）SSL证书<br>83：TrustAsia C1 DV Free<br>85：GlobalSign 增强型 （EV）SSL证书<br>88：GlobalSign 企业型通配符多域名 （OV）SSL证书<br>89：GlobalSign 企业型多域名 （OV）SSL证书<br>90：GlobalSign 增强型多域名（EV） SSL证书<br>91：Geotrust 增强型多域名(EV)<br>92：SecureSite 企业型专业版多域名(OV Pro)<br>93：SecureSite 企业型多域名(OV)<br>94：SecureSite 增强型专业版多域名(EV Pro)<br>95：SecureSite 增强型多域名(EV)<br>96：SecureSite 增强型专业版(EV Pro)<br>97：SecureSite 企业型专业版(OV Pro)<br>98：CFCA 企业型(OV)SSL证书<br>99：CFCA 企业型多域名(OV)SSL证书<br>100：CFCA 企业型通配符(OV)SSL证书<br>101：CFCA 增强型(EV)SSL证书</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageType: str
-        :param _ProductZhName: 证书产品名称
+        :param _ProductZhName: <p>证书产品名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductZhName: str
-        :param _Domain: 域名。
+        :param _Domain: <p>域名。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Domain: str
-        :param _Alias: 备注名称。
+        :param _Alias: <p>备注名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Alias: str
-        :param _Status: 证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+        :param _Status: <p>证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _StatusMsg: 状态信息。 取值范围：
-//通用状态信息
-1、PRE-REVIEWING：预审核中
-2、LEGAL-REVIEWING：法务审核中
-3、CA-REVIEWING：CA审核中
-4、PENDING-DCV：域名验证中
-5、WAIT-ISSUE：等待签发（域名验证已通过）
-//证书审核失败状态信息
-1、订单审核失败
-2、CA审核失败，域名未通过安全审查
-3、域名验证超时，订单自动关闭，请您重新进行证书申请
-4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料
-待持续完善
+        :param _StatusMsg: <p>状态信息。 取值范围：<br>//通用状态信息<br>1、PRE-REVIEWING：预审核中<br>2、LEGAL-REVIEWING：法务审核中<br>3、CA-REVIEWING：CA审核中<br>4、PENDING-DCV：域名验证中<br>5、WAIT-ISSUE：等待签发（域名验证已通过）<br>//证书审核失败状态信息<br>1、订单审核失败<br>2、CA审核失败，域名未通过安全审查<br>3、域名验证超时，订单自动关闭，请您重新进行证书申请<br>4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料<br>待持续完善</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusMsg: str
-        :param _VerifyType: 验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
+        :param _VerifyType: <p>验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VerifyType: str
-        :param _VulnerabilityStatus: 漏洞扫描状态。
+        :param _VulnerabilityStatus: <p>漏洞扫描状态。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityStatus: str
-        :param _CertBeginTime: 证书生效时间。时区为GMT+8:00
+        :param _CertBeginTime: <p>证书生效时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertBeginTime: str
-        :param _CertEndTime: 证书失效时间。时区为GMT+8:00
+        :param _CertEndTime: <p>证书失效时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertEndTime: str
-        :param _ValidityPeriod: 证书有效期：单位(月)。
+        :param _ValidityPeriod: <p>证书有效期：单位(月)。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ValidityPeriod: str
-        :param _InsertTime: 申请时间。时区为GMT+8:00
+        :param _InsertTime: <p>申请时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InsertTime: str
-        :param _OrderId: 订单 ID。
+        :param _OrderId: <p>订单 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OrderId: str
-        :param _CertificateExtra: 证书扩展信息。
+        :param _CertificateExtra: <p>证书扩展信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateExtra: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
-        :param _DvAuthDetail: DV 认证信息。
+        :param _DvAuthDetail: <p>DV 认证信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvAuthDetail: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
-        :param _VulnerabilityReport: 漏洞扫描评估报告。
+        :param _VulnerabilityReport: <p>漏洞扫描评估报告。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VulnerabilityReport: str
-        :param _CertificateId: 证书 ID。
+        :param _CertificateId: <p>证书 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CertificateId: str
-        :param _PackageTypeName: 证书类型名称。
+        :param _PackageTypeName: <p>证书类型名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageTypeName: str
-        :param _StatusName: 状态描述。
+        :param _StatusName: <p>状态描述。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusName: str
-        :param _SubjectAltName: 证书包含的多个域名（包含主域名）。
+        :param _SubjectAltName: <p>证书包含的多个域名（包含主域名）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubjectAltName: list of str
-        :param _IsVip: 是否为 VIP 客户。
+        :param _IsVip: <p>是否为 VIP 客户。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsVip: bool
-        :param _IsWildcard: 是否为泛域名证书。
+        :param _IsWildcard: <p>是否为泛域名证书。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsWildcard: bool
-        :param _IsDv: 是否为 DV 版证书。
+        :param _IsDv: <p>是否为 DV 版证书。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDv: bool
-        :param _IsVulnerability: 是否启用了漏洞扫描功能。
+        :param _IsVulnerability: <p>是否启用了漏洞扫描功能。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsVulnerability: bool
-        :param _RenewAble: 是否可重颁发证书。
+        :param _RenewAble: <p>是否可重颁发证书。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewAble: bool
-        :param _SubmittedData: 提交的资料信息。
+        :param _SubmittedData: <p>提交的资料信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubmittedData: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
-        :param _Deployable: 是否可部署。
+        :param _Deployable: <p>是否可部署。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Deployable: bool
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tags
-        :param _CAEncryptAlgorithms: CA证书的所有加密方式。仅证书类型CertificateType为CA有效
+        :param _CAEncryptAlgorithms: <p>CA证书的所有加密方式。仅证书类型CertificateType为CA有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CAEncryptAlgorithms: list of str
-        :param _CACommonNames: CA证书的所有通用名称。仅证书类型CertificateType为CA有效
+        :param _CACommonNames: <p>CA证书的所有通用名称。仅证书类型CertificateType为CA有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CACommonNames: list of str
-        :param _CAEndTimes: CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
+        :param _CAEndTimes: <p>CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CAEndTimes: list of str
-        :param _DvRevokeAuthDetail: DV证书吊销验证值
+        :param _DvRevokeAuthDetail: <p>DV证书吊销验证值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DvRevokeAuthDetail: list of DvAuths
+        :param _ResubmitAble: <p>是否可重新提交。</p><p>默认值：false</p>
+        :type ResubmitAble: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -9357,11 +10397,12 @@ null：用户上传证书（没有套餐类型），
         self._CACommonNames = None
         self._CAEndTimes = None
         self._DvRevokeAuthDetail = None
+        self._ResubmitAble = None
         self._RequestId = None
 
     @property
     def OwnerUin(self):
-        r"""用户 UIN。
+        r"""<p>用户 UIN。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9373,7 +10414,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProjectId(self):
-        r"""项目 ID。
+        r"""<p>项目 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9385,11 +10426,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def From(self):
-        r"""证书来源：
-trustasia：亚洲诚信，
-upload：用户上传。
-wosign：沃通
-sheca：上海CA
+        r"""<p>证书来源：<br>trustasia：亚洲诚信，<br>upload：用户上传。<br>wosign：沃通<br>sheca：上海CA</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9401,7 +10438,7 @@ sheca：上海CA
 
     @property
     def CertificateType(self):
-        r"""证书类型：CA = 客户端证书，SVR = 服务器证书。
+        r"""<p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9413,91 +10450,7 @@ sheca：上海CA
 
     @property
     def PackageType(self):
-        r"""证书套餐类型：
-null：用户上传证书（没有套餐类型），
-2：TrustAsia TLS RSA CA， 
-3：SecureSite 增强型企业版（EV Pro）， 
-4：SecureSite 增强型（EV）， 
-5：SecureSite 企业型专业版（OV Pro），
-6：SecureSite 企业型（OV）， 
-7：SecureSite 企业型（OV）通配符， 
-8：Geotrust 增强型（EV）， 
-9：Geotrust 企业型（OV）， 
-10：Geotrust 企业型（OV）通配符， 
-11：TrustAsia 域名型多域名 SSL 证书， 
-12：TrustAsia 域名型（DV）通配符， 
-13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 
-14：TrustAsia 企业型（OV）SSL 证书（D3）， 
-15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 
-16：TrustAsia 增强型 （EV）SSL 证书（D3）， 
-17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 
-18：GlobalSign 企业型（OV）SSL 证书， 
-19：GlobalSign 企业型通配符 （OV）SSL 证书， 
-20：GlobalSign 增强型 （EV）SSL 证书， 
-21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 
-22：GlobalSign 企业型多域名（OV）SSL 证书， 
-23：GlobalSign 企业型通配符多域名（OV）SSL 证书，
-24：GlobalSign 增强型多域名（EV）SSL 证书，
-25：Wotrus 域名型证书，
-26：Wotrus 域名型多域名证书，
-27：Wotrus 域名型通配符证书，
-28：Wotrus 企业型证书，
-29：Wotrus 企业型多域名证书，
-30：Wotrus 企业型通配符证书，
-31：Wotrus 增强型证书，
-32：Wotrus 增强型多域名证书，
-33：WoTrus-国密域名型证书，
-34：WoTrus-国密域名型证书（多域名），
-35：WoTrus-国密域名型证书（通配符），
-37：WoTrus-国密企业型证书，
-38：WoTrus-国密企业型证书（多域名），
-39：WoTrus-国密企业型证书（通配符），
-40：WoTrus-国密增强型证书，
-41：WoTrus-国密增强型证书（多域名），
-42：TrustAsia-域名型证书（通配符多域名），
-43：DNSPod-企业型(OV)SSL证书
-44：DNSPod-企业型(OV)通配符SSL证书
-45：DNSPod-企业型(OV)多域名SSL证书
-46：DNSPod-增强型(EV)SSL证书
-47：DNSPod-增强型(EV)多域名SSL证书
-48：DNSPod-域名型(DV)SSL证书
-49：DNSPod-域名型(DV)通配符SSL证书
-50：DNSPod-域名型(DV)多域名SSL证书
-51：DNSPod（国密）-企业型(OV)SSL证书
-52：DNSPod（国密）-企业型(OV)通配符SSL证书
-53：DNSPod（国密）-企业型(OV)多域名SSL证书
-54：DNSPod（国密）-域名型(DV)SSL证书
-55：DNSPod（国密）-域名型(DV)通配符SSL证书
-56：DNSPod（国密）-域名型(DV)多域名SSL证书
-57：SecureSite 企业型专业版多域名(OV Pro)
-58：SecureSite 企业型多域名(OV)
-59：SecureSite 增强型专业版多域名(EV Pro)
-60：SecureSite 增强型多域名(EV)
-61：Geotrust 增强型多域名(EV)
-75：SecureSite 企业型(OV)
-76：SecureSite 企业型(OV)通配符
-77：SecureSite 增强型(EV)
-78：Geotrust 企业型(OV)
-79：Geotrust 企业型(OV)通配符
-80：Geotrust 增强型(EV)
-81：GlobalSign 企业型（OV）SSL证书
-82：GlobalSign 企业型通配符 （OV）SSL证书
-83：TrustAsia C1 DV Free
-85：GlobalSign 增强型 （EV）SSL证书
-88：GlobalSign 企业型通配符多域名 （OV）SSL证书
-89：GlobalSign 企业型多域名 （OV）SSL证书
-90：GlobalSign 增强型多域名（EV） SSL证书
-91：Geotrust 增强型多域名(EV)
-92：SecureSite 企业型专业版多域名(OV Pro)
-93：SecureSite 企业型多域名(OV)
-94：SecureSite 增强型专业版多域名(EV Pro)
-95：SecureSite 增强型多域名(EV)
-96：SecureSite 增强型专业版(EV Pro)
-97：SecureSite 企业型专业版(OV Pro)
-98：CFCA 企业型(OV)SSL证书
-99：CFCA 企业型多域名(OV)SSL证书
-100：CFCA 企业型通配符(OV)SSL证书
-101：CFCA 增强型(EV)SSL证书
+        r"""<p>证书套餐类型：<br>null：用户上传证书（没有套餐类型），<br>2：TrustAsia TLS RSA CA，<br>3：SecureSite 增强型企业版（EV Pro），<br>4：SecureSite 增强型（EV），<br>5：SecureSite 企业型专业版（OV Pro），<br>6：SecureSite 企业型（OV），<br>7：SecureSite 企业型（OV）通配符，<br>8：Geotrust 增强型（EV），<br>9：Geotrust 企业型（OV），<br>10：Geotrust 企业型（OV）通配符，<br>11：TrustAsia 域名型多域名 SSL 证书，<br>12：TrustAsia 域名型（DV）通配符，<br>13：TrustAsia 企业型通配符（OV）SSL 证书（D3），<br>14：TrustAsia 企业型（OV）SSL 证书（D3），<br>15：TrustAsia 企业型多域名 （OV）SSL 证书（D3），<br>16：TrustAsia 增强型 （EV）SSL 证书（D3），<br>17：TrustAsia 增强型多域名（EV）SSL 证书（D3），<br>18：GlobalSign 企业型（OV）SSL 证书，<br>19：GlobalSign 企业型通配符 （OV）SSL 证书，<br>20：GlobalSign 增强型 （EV）SSL 证书，<br>21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3），<br>22：GlobalSign 企业型多域名（OV）SSL 证书，<br>23：GlobalSign 企业型通配符多域名（OV）SSL 证书，<br>24：GlobalSign 增强型多域名（EV）SSL 证书，<br>25：Wotrus 域名型证书，<br>26：Wotrus 域名型多域名证书，<br>27：Wotrus 域名型通配符证书，<br>28：Wotrus 企业型证书，<br>29：Wotrus 企业型多域名证书，<br>30：Wotrus 企业型通配符证书，<br>31：Wotrus 增强型证书，<br>32：Wotrus 增强型多域名证书，<br>33：WoTrus-国密域名型证书，<br>34：WoTrus-国密域名型证书（多域名），<br>35：WoTrus-国密域名型证书（通配符），<br>37：WoTrus-国密企业型证书，<br>38：WoTrus-国密企业型证书（多域名），<br>39：WoTrus-国密企业型证书（通配符），<br>40：WoTrus-国密增强型证书，<br>41：WoTrus-国密增强型证书（多域名），<br>42：TrustAsia-域名型证书（通配符多域名），<br>43：DNSPod-企业型(OV)SSL证书<br>44：DNSPod-企业型(OV)通配符SSL证书<br>45：DNSPod-企业型(OV)多域名SSL证书<br>46：DNSPod-增强型(EV)SSL证书<br>47：DNSPod-增强型(EV)多域名SSL证书<br>48：DNSPod-域名型(DV)SSL证书<br>49：DNSPod-域名型(DV)通配符SSL证书<br>50：DNSPod-域名型(DV)多域名SSL证书<br>51：DNSPod（国密）-企业型(OV)SSL证书<br>52：DNSPod（国密）-企业型(OV)通配符SSL证书<br>53：DNSPod（国密）-企业型(OV)多域名SSL证书<br>54：DNSPod（国密）-域名型(DV)SSL证书<br>55：DNSPod（国密）-域名型(DV)通配符SSL证书<br>56：DNSPod（国密）-域名型(DV)多域名SSL证书<br>57：SecureSite 企业型专业版多域名(OV Pro)<br>58：SecureSite 企业型多域名(OV)<br>59：SecureSite 增强型专业版多域名(EV Pro)<br>60：SecureSite 增强型多域名(EV)<br>61：Geotrust 增强型多域名(EV)<br>75：SecureSite 企业型(OV)<br>76：SecureSite 企业型(OV)通配符<br>77：SecureSite 增强型(EV)<br>78：Geotrust 企业型(OV)<br>79：Geotrust 企业型(OV)通配符<br>80：Geotrust 增强型(EV)<br>81：GlobalSign 企业型（OV）SSL证书<br>82：GlobalSign 企业型通配符 （OV）SSL证书<br>83：TrustAsia C1 DV Free<br>85：GlobalSign 增强型 （EV）SSL证书<br>88：GlobalSign 企业型通配符多域名 （OV）SSL证书<br>89：GlobalSign 企业型多域名 （OV）SSL证书<br>90：GlobalSign 增强型多域名（EV） SSL证书<br>91：Geotrust 增强型多域名(EV)<br>92：SecureSite 企业型专业版多域名(OV Pro)<br>93：SecureSite 企业型多域名(OV)<br>94：SecureSite 增强型专业版多域名(EV Pro)<br>95：SecureSite 增强型多域名(EV)<br>96：SecureSite 增强型专业版(EV Pro)<br>97：SecureSite 企业型专业版(OV Pro)<br>98：CFCA 企业型(OV)SSL证书<br>99：CFCA 企业型多域名(OV)SSL证书<br>100：CFCA 企业型通配符(OV)SSL证书<br>101：CFCA 增强型(EV)SSL证书</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9509,7 +10462,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ProductZhName(self):
-        r"""证书产品名称
+        r"""<p>证书产品名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9521,7 +10474,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Domain(self):
-        r"""域名。
+        r"""<p>域名。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9533,7 +10486,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Alias(self):
-        r"""备注名称。
+        r"""<p>备注名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9545,7 +10498,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Status(self):
-        r"""证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中
+        r"""<p>证书状态：0 = 审核中，1 = 已通过，2 = 审核失败，3 = 已过期，4 = 自动添加DNS记录，5 = 企业证书，待提交资料，6 = 订单取消中，7 = 已取消，8 = 已提交资料， 待上传确认函，9 = 证书吊销中，10 = 已吊销，11 = 重颁发中，12 = 待上传吊销确认函，13 = 免费证书待提交资料。14 = 证书已退款。 15 = 证书迁移中</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9557,19 +10510,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusMsg(self):
-        r"""状态信息。 取值范围：
-//通用状态信息
-1、PRE-REVIEWING：预审核中
-2、LEGAL-REVIEWING：法务审核中
-3、CA-REVIEWING：CA审核中
-4、PENDING-DCV：域名验证中
-5、WAIT-ISSUE：等待签发（域名验证已通过）
-//证书审核失败状态信息
-1、订单审核失败
-2、CA审核失败，域名未通过安全审查
-3、域名验证超时，订单自动关闭，请您重新进行证书申请
-4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料
-待持续完善
+        r"""<p>状态信息。 取值范围：<br>//通用状态信息<br>1、PRE-REVIEWING：预审核中<br>2、LEGAL-REVIEWING：法务审核中<br>3、CA-REVIEWING：CA审核中<br>4、PENDING-DCV：域名验证中<br>5、WAIT-ISSUE：等待签发（域名验证已通过）<br>//证书审核失败状态信息<br>1、订单审核失败<br>2、CA审核失败，域名未通过安全审查<br>3、域名验证超时，订单自动关闭，请您重新进行证书申请<br>4、证书资料未通过证书CA机构审核，审核人员会致电您证书预留的联系方式，请您留意来电。后续可通过“修改资料”重新提交资料<br>待持续完善</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9581,7 +10522,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VerifyType(self):
-        r"""验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证
+        r"""<p>验证类型：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证，DNS_PROXY = DNS代理验证。FILE_PROXY = 文件代理验证</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9593,7 +10534,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityStatus(self):
-        r"""漏洞扫描状态。
+        r"""<p>漏洞扫描状态。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9605,7 +10546,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertBeginTime(self):
-        r"""证书生效时间。时区为GMT+8:00
+        r"""<p>证书生效时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9617,7 +10558,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertEndTime(self):
-        r"""证书失效时间。时区为GMT+8:00
+        r"""<p>证书失效时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9629,7 +10570,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def ValidityPeriod(self):
-        r"""证书有效期：单位(月)。
+        r"""<p>证书有效期：单位(月)。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9641,7 +10582,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def InsertTime(self):
-        r"""申请时间。时区为GMT+8:00
+        r"""<p>申请时间。时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9653,7 +10594,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def OrderId(self):
-        r"""订单 ID。
+        r"""<p>订单 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9665,7 +10606,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateExtra(self):
-        r"""证书扩展信息。
+        r"""<p>证书扩展信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.CertificateExtra`
         """
@@ -9677,7 +10618,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DvAuthDetail(self):
-        r"""DV 认证信息。
+        r"""<p>DV 认证信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.DvAuthDetail`
         """
@@ -9689,7 +10630,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def VulnerabilityReport(self):
-        r"""漏洞扫描评估报告。
+        r"""<p>漏洞扫描评估报告。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9701,7 +10642,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CertificateId(self):
-        r"""证书 ID。
+        r"""<p>证书 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9713,7 +10654,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def PackageTypeName(self):
-        r"""证书类型名称。
+        r"""<p>证书类型名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9725,7 +10666,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def StatusName(self):
-        r"""状态描述。
+        r"""<p>状态描述。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9737,7 +10678,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubjectAltName(self):
-        r"""证书包含的多个域名（包含主域名）。
+        r"""<p>证书包含的多个域名（包含主域名）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -9749,7 +10690,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVip(self):
-        r"""是否为 VIP 客户。
+        r"""<p>是否为 VIP 客户。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9761,7 +10702,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsWildcard(self):
-        r"""是否为泛域名证书。
+        r"""<p>是否为泛域名证书。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9773,7 +10714,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsDv(self):
-        r"""是否为 DV 版证书。
+        r"""<p>是否为 DV 版证书。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9785,7 +10726,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def IsVulnerability(self):
-        r"""是否启用了漏洞扫描功能。
+        r"""<p>是否启用了漏洞扫描功能。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9797,7 +10738,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def RenewAble(self):
-        r"""是否可重颁发证书。
+        r"""<p>是否可重颁发证书。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9809,7 +10750,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def SubmittedData(self):
-        r"""提交的资料信息。
+        r"""<p>提交的资料信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ssl.v20191205.models.SubmittedData`
         """
@@ -9821,7 +10762,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Deployable(self):
-        r"""是否可部署。
+        r"""<p>是否可部署。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9833,7 +10774,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tags
         """
@@ -9845,7 +10786,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CAEncryptAlgorithms(self):
-        r"""CA证书的所有加密方式。仅证书类型CertificateType为CA有效
+        r"""<p>CA证书的所有加密方式。仅证书类型CertificateType为CA有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -9857,7 +10798,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CACommonNames(self):
-        r"""CA证书的所有通用名称。仅证书类型CertificateType为CA有效
+        r"""<p>CA证书的所有通用名称。仅证书类型CertificateType为CA有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -9869,7 +10810,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def CAEndTimes(self):
-        r"""CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00
+        r"""<p>CA证书所有的到期时间。仅证书类型CertificateType为CA有效，时区为GMT+8:00</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -9881,7 +10822,7 @@ null：用户上传证书（没有套餐类型），
 
     @property
     def DvRevokeAuthDetail(self):
-        r"""DV证书吊销验证值
+        r"""<p>DV证书吊销验证值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DvAuths
         """
@@ -9890,6 +10831,17 @@ null：用户上传证书（没有套餐类型），
     @DvRevokeAuthDetail.setter
     def DvRevokeAuthDetail(self, DvRevokeAuthDetail):
         self._DvRevokeAuthDetail = DvRevokeAuthDetail
+
+    @property
+    def ResubmitAble(self):
+        r"""<p>是否可重新提交。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._ResubmitAble
+
+    @ResubmitAble.setter
+    def ResubmitAble(self, ResubmitAble):
+        self._ResubmitAble = ResubmitAble
 
     @property
     def RequestId(self):
@@ -9956,6 +10908,7 @@ null：用户上传证书（没有套餐类型），
                 obj = DvAuths()
                 obj._deserialize(item)
                 self._DvRevokeAuthDetail.append(obj)
+        self._ResubmitAble = params.get("ResubmitAble")
         self._RequestId = params.get("RequestId")
 
 
@@ -16626,6 +17579,280 @@ class ManagerStatusInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyCSRRequest(AbstractModel):
+    r"""ModifyCSR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CSRId: <p>CSR ID标识</p>
+        :type CSRId: int
+        :param _Generate: <p>是否生成CSR内容。生成CSR内容后，此CSR记录不再支持修改</p>
+        :type Generate: bool
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _Organization: <p>企业/单位名称</p>
+        :type Organization: str
+        :param _Department: <p>部门</p>
+        :type Department: str
+        :param _Email: <p>邮箱</p>
+        :type Email: str
+        :param _Province: <p>省份</p>
+        :type Province: str
+        :param _City: <p>城市</p>
+        :type City: str
+        :param _Country: <p>国家</p>
+        :type Country: str
+        :param _EncryptAlgo: <p>加密算法，支持 RSA及ECC。</p>
+        :type EncryptAlgo: str
+        :param _KeyParameter: <p>密钥参数，RSA仅支持2048，4096。ECC仅支持prime256v1</p>
+        :type KeyParameter: str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _KeyPassword: <p>私钥密码</p>
+        :type KeyPassword: str
+        :param _SubjectAltName: <p>SAN域名</p>
+        :type SubjectAltName: list of str
+        """
+        self._CSRId = None
+        self._Generate = None
+        self._Domain = None
+        self._Organization = None
+        self._Department = None
+        self._Email = None
+        self._Province = None
+        self._City = None
+        self._Country = None
+        self._EncryptAlgo = None
+        self._KeyParameter = None
+        self._Remark = None
+        self._KeyPassword = None
+        self._SubjectAltName = None
+
+    @property
+    def CSRId(self):
+        r"""<p>CSR ID标识</p>
+        :rtype: int
+        """
+        return self._CSRId
+
+    @CSRId.setter
+    def CSRId(self, CSRId):
+        self._CSRId = CSRId
+
+    @property
+    def Generate(self):
+        r"""<p>是否生成CSR内容。生成CSR内容后，此CSR记录不再支持修改</p>
+        :rtype: bool
+        """
+        return self._Generate
+
+    @Generate.setter
+    def Generate(self, Generate):
+        self._Generate = Generate
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Organization(self):
+        r"""<p>企业/单位名称</p>
+        :rtype: str
+        """
+        return self._Organization
+
+    @Organization.setter
+    def Organization(self, Organization):
+        self._Organization = Organization
+
+    @property
+    def Department(self):
+        r"""<p>部门</p>
+        :rtype: str
+        """
+        return self._Department
+
+    @Department.setter
+    def Department(self, Department):
+        self._Department = Department
+
+    @property
+    def Email(self):
+        r"""<p>邮箱</p>
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def Province(self):
+        r"""<p>省份</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        r"""<p>城市</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def Country(self):
+        r"""<p>国家</p>
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def EncryptAlgo(self):
+        r"""<p>加密算法，支持 RSA及ECC。</p>
+        :rtype: str
+        """
+        return self._EncryptAlgo
+
+    @EncryptAlgo.setter
+    def EncryptAlgo(self, EncryptAlgo):
+        self._EncryptAlgo = EncryptAlgo
+
+    @property
+    def KeyParameter(self):
+        r"""<p>密钥参数，RSA仅支持2048，4096。ECC仅支持prime256v1</p>
+        :rtype: str
+        """
+        return self._KeyParameter
+
+    @KeyParameter.setter
+    def KeyParameter(self, KeyParameter):
+        self._KeyParameter = KeyParameter
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def KeyPassword(self):
+        r"""<p>私钥密码</p>
+        :rtype: str
+        """
+        return self._KeyPassword
+
+    @KeyPassword.setter
+    def KeyPassword(self, KeyPassword):
+        self._KeyPassword = KeyPassword
+
+    @property
+    def SubjectAltName(self):
+        r"""<p>SAN域名</p>
+        :rtype: list of str
+        """
+        return self._SubjectAltName
+
+    @SubjectAltName.setter
+    def SubjectAltName(self, SubjectAltName):
+        self._SubjectAltName = SubjectAltName
+
+
+    def _deserialize(self, params):
+        self._CSRId = params.get("CSRId")
+        self._Generate = params.get("Generate")
+        self._Domain = params.get("Domain")
+        self._Organization = params.get("Organization")
+        self._Department = params.get("Department")
+        self._Email = params.get("Email")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        self._Country = params.get("Country")
+        self._EncryptAlgo = params.get("EncryptAlgo")
+        self._KeyParameter = params.get("KeyParameter")
+        self._Remark = params.get("Remark")
+        self._KeyPassword = params.get("KeyPassword")
+        self._SubjectAltName = params.get("SubjectAltName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCSRResponse(AbstractModel):
+    r"""ModifyCSR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>CSR ID标识</p>
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>CSR ID标识</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCertificateAliasRequest(AbstractModel):

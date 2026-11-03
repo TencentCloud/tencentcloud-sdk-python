@@ -141,6 +141,29 @@ class WorkbuddyenterpriseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateScheduledTask(self, request):
+        r"""创建自动化任务。AgentConfig 由上游传入，managed-agent 仅做协议透传。
+
+        :param request: Request instance for CreateScheduledTask.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.CreateScheduledTaskRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.CreateScheduledTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateScheduledTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateScheduledTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAgent(self, request):
         r"""删除指定的 Agent 及其所有版本。删除后不可恢复。
 
@@ -155,6 +178,29 @@ class WorkbuddyenterpriseClient(AbstractClient):
             body = self.call("DeleteAgent", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAgentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteScheduledTask(self, request):
+        r"""删除指定的自动化任务。删除后不可恢复。
+
+        :param request: Request instance for DeleteScheduledTask.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DeleteScheduledTaskRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DeleteScheduledTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteScheduledTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteScheduledTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -440,6 +486,98 @@ class WorkbuddyenterpriseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeScheduledTask(self, request):
+        r"""查询单个自动化任务的详细信息。
+
+        :param request: Request instance for DescribeScheduledTask.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeScheduledTaskRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeScheduledTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScheduledTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScheduledTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScheduledTaskList(self, request):
+        r"""分页查询自动化任务列表，支持按任务名称、状态、Agent 过滤。
+
+        :param request: Request instance for DescribeScheduledTaskList.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeScheduledTaskListRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeScheduledTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScheduledTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScheduledTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScheduledTaskLog(self, request):
+        r"""查询单条自动化任务执行日志的详细信息。
+
+        :param request: Request instance for DescribeScheduledTaskLog.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeScheduledTaskLogRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeScheduledTaskLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScheduledTaskLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScheduledTaskLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeScheduledTaskLogList(self, request):
+        r"""分页查询自动化任务执行日志列表，支持状态和时间范围过滤，可选返回聚合统计。
+
+        :param request: Request instance for DescribeScheduledTaskLogList.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeScheduledTaskLogListRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeScheduledTaskLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeScheduledTaskLogList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeScheduledTaskLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSkillList(self, request):
         r"""分页查询 Skill 列表，支持关键词、分类、发布状态过滤。
 
@@ -592,6 +730,52 @@ class WorkbuddyenterpriseClient(AbstractClient):
             body = self.call("ModifyAgentVersion", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAgentVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyScheduledTask(self, request):
+        r"""部分更新自动化任务配置（Patch 语义：仅传递需要更新的字段），支持启停状态切换。
+
+        :param request: Request instance for ModifyScheduledTask.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.ModifyScheduledTaskRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.ModifyScheduledTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyScheduledTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyScheduledTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TriggerScheduledTask(self, request):
+        r"""手动触发一次自动化任务执行，返回执行日志 ID。
+
+        :param request: Request instance for TriggerScheduledTask.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.TriggerScheduledTaskRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.TriggerScheduledTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TriggerScheduledTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.TriggerScheduledTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -5242,6 +5242,162 @@ class ResizeInstanceDiskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RoleStatusInfo(AbstractModel):
+    r"""角色状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 
+        :type RoleName: str
+        :param _WorkloadType: 
+        :type WorkloadType: str
+        :param _WorkloadName: 
+        :type WorkloadName: str
+        :param _RunningReplicas: 
+        :type RunningReplicas: int
+        :param _TargetReplicas: 
+        :type TargetReplicas: int
+        :param _ContainerCount: 
+        :type ContainerCount: int
+        :param _State: 
+        :type State: str
+        :param _LastObservedTime: 
+        :type LastObservedTime: str
+        :param _Role: 
+        :type Role: str
+        """
+        self._RoleName = None
+        self._WorkloadType = None
+        self._WorkloadName = None
+        self._RunningReplicas = None
+        self._TargetReplicas = None
+        self._ContainerCount = None
+        self._State = None
+        self._LastObservedTime = None
+        self._Role = None
+
+    @property
+    def RoleName(self):
+        r"""
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def WorkloadType(self):
+        r"""
+        :rtype: str
+        """
+        return self._WorkloadType
+
+    @WorkloadType.setter
+    def WorkloadType(self, WorkloadType):
+        self._WorkloadType = WorkloadType
+
+    @property
+    def WorkloadName(self):
+        r"""
+        :rtype: str
+        """
+        return self._WorkloadName
+
+    @WorkloadName.setter
+    def WorkloadName(self, WorkloadName):
+        self._WorkloadName = WorkloadName
+
+    @property
+    def RunningReplicas(self):
+        r"""
+        :rtype: int
+        """
+        return self._RunningReplicas
+
+    @RunningReplicas.setter
+    def RunningReplicas(self, RunningReplicas):
+        self._RunningReplicas = RunningReplicas
+
+    @property
+    def TargetReplicas(self):
+        r"""
+        :rtype: int
+        """
+        return self._TargetReplicas
+
+    @TargetReplicas.setter
+    def TargetReplicas(self, TargetReplicas):
+        self._TargetReplicas = TargetReplicas
+
+    @property
+    def ContainerCount(self):
+        r"""
+        :rtype: int
+        """
+        return self._ContainerCount
+
+    @ContainerCount.setter
+    def ContainerCount(self, ContainerCount):
+        self._ContainerCount = ContainerCount
+
+    @property
+    def State(self):
+        r"""
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def LastObservedTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._LastObservedTime
+
+    @LastObservedTime.setter
+    def LastObservedTime(self, LastObservedTime):
+        self._LastObservedTime = LastObservedTime
+
+    @property
+    def Role(self):
+        r"""
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._WorkloadType = params.get("WorkloadType")
+        self._WorkloadName = params.get("WorkloadName")
+        self._RunningReplicas = params.get("RunningReplicas")
+        self._TargetReplicas = params.get("TargetReplicas")
+        self._ContainerCount = params.get("ContainerCount")
+        self._State = params.get("State")
+        self._LastObservedTime = params.get("LastObservedTime")
+        self._Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RunInstancesRequest(AbstractModel):
     r"""RunInstances请求参数结构体
 
@@ -5561,6 +5717,8 @@ class ServiceDetail(AbstractModel):
         :type DeploymentConfigs: list of DeploymentConfig
         :param _HyperParam: <p>服务超参数配置</p>
         :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
+        :param _RoleStatuses: <p>角色状态</p>
+        :type RoleStatuses: list of RoleStatusInfo
         :param _SecurityType: <p>安全类型</p>
         :type SecurityType: str
         :param _RoleComputeSet: <p>角色算力配置列表</p>
@@ -5588,6 +5746,7 @@ class ServiceDetail(AbstractModel):
         self._ModelName = None
         self._DeploymentConfigs = None
         self._HyperParam = None
+        self._RoleStatuses = None
         self._SecurityType = None
         self._RoleComputeSet = None
         self._TargetReplicas = None
@@ -5708,6 +5867,17 @@ class ServiceDetail(AbstractModel):
         self._HyperParam = HyperParam
 
     @property
+    def RoleStatuses(self):
+        r"""<p>角色状态</p>
+        :rtype: list of RoleStatusInfo
+        """
+        return self._RoleStatuses
+
+    @RoleStatuses.setter
+    def RoleStatuses(self, RoleStatuses):
+        self._RoleStatuses = RoleStatuses
+
+    @property
     def SecurityType(self):
         r"""<p>安全类型</p>
         :rtype: str
@@ -5819,6 +5989,12 @@ class ServiceDetail(AbstractModel):
         if params.get("HyperParam") is not None:
             self._HyperParam = HyperParam()
             self._HyperParam._deserialize(params.get("HyperParam"))
+        if params.get("RoleStatuses") is not None:
+            self._RoleStatuses = []
+            for item in params.get("RoleStatuses"):
+                obj = RoleStatusInfo()
+                obj._deserialize(item)
+                self._RoleStatuses.append(obj)
         self._SecurityType = params.get("SecurityType")
         if params.get("RoleComputeSet") is not None:
             self._RoleComputeSet = []

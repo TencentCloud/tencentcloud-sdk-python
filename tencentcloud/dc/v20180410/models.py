@@ -2251,14 +2251,17 @@ class DeleteDirectConnectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectConnectId: 物理专线的ID。
+        :param _DirectConnectId: <p>物理专线的ID。</p>
         :type DirectConnectId: str
+        :param _PlannedRepealDate: <p>预计裁撤时间</p>
+        :type PlannedRepealDate: str
         """
         self._DirectConnectId = None
+        self._PlannedRepealDate = None
 
     @property
     def DirectConnectId(self):
-        r"""物理专线的ID。
+        r"""<p>物理专线的ID。</p>
         :rtype: str
         """
         return self._DirectConnectId
@@ -2267,9 +2270,21 @@ class DeleteDirectConnectRequest(AbstractModel):
     def DirectConnectId(self, DirectConnectId):
         self._DirectConnectId = DirectConnectId
 
+    @property
+    def PlannedRepealDate(self):
+        r"""<p>预计裁撤时间</p>
+        :rtype: str
+        """
+        return self._PlannedRepealDate
+
+    @PlannedRepealDate.setter
+    def PlannedRepealDate(self, PlannedRepealDate):
+        self._PlannedRepealDate = PlannedRepealDate
+
 
     def _deserialize(self, params):
         self._DirectConnectId = params.get("DirectConnectId")
+        self._PlannedRepealDate = params.get("PlannedRepealDate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

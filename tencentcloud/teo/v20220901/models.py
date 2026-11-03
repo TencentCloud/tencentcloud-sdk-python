@@ -28513,14 +28513,14 @@ class DescribeMultiPathGatewaySecretKeyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
         """
         self._ZoneId = None
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -28549,7 +28549,7 @@ class DescribeMultiPathGatewaySecretKeyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretKey: 接入密钥。
+        :param _SecretKey: <p>接入密钥。</p>
         :type SecretKey: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28559,7 +28559,7 @@ class DescribeMultiPathGatewaySecretKeyResponse(AbstractModel):
 
     @property
     def SecretKey(self):
-        r"""接入密钥。
+        r"""<p>接入密钥。</p>
         :rtype: str
         """
         return self._SecretKey
@@ -42166,7 +42166,7 @@ class InferenceContainerConfig(AbstractModel):
         :type TcrRepositoryConfig: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
         :param _StartupCommand: <p>容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。</p>
         :type StartupCommand: str
-        :param _EnvironmentVariables: <p>容器运行时的环境变量。最多支持 10 个变量。</p>
+        :param _EnvironmentVariables: <p>容器运行时的环境变量。最多支持 50 个变量。</p>
         :type EnvironmentVariables: list of InferenceEnvironmentVariable
         """
         self._ImageType = None
@@ -42210,7 +42210,7 @@ class InferenceContainerConfig(AbstractModel):
 
     @property
     def EnvironmentVariables(self):
-        r"""<p>容器运行时的环境变量。最多支持 10 个变量。</p>
+        r"""<p>容器运行时的环境变量。最多支持 50 个变量。</p>
         :rtype: list of InferenceEnvironmentVariable
         """
         return self._EnvironmentVariables
@@ -42255,7 +42255,7 @@ class InferenceContainerConfigForModify(AbstractModel):
         :type TcrRepositoryConfig: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
         :param _StartupCommand: <p>容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。</p>
         :type StartupCommand: str
-        :param _EnvironmentVariables: <p>容器运行时的环境变量。最多支持 10 个变量。</p>
+        :param _EnvironmentVariables: <p>容器运行时的环境变量。最多支持 50 个变量。</p>
         :type EnvironmentVariables: list of InferenceEnvironmentVariable
         """
         self._ImageType = None
@@ -42298,7 +42298,7 @@ class InferenceContainerConfigForModify(AbstractModel):
 
     @property
     def EnvironmentVariables(self):
-        r"""<p>容器运行时的环境变量。最多支持 10 个变量。</p>
+        r"""<p>容器运行时的环境变量。最多支持 50 个变量。</p>
         :rtype: list of InferenceEnvironmentVariable
         """
         return self._EnvironmentVariables

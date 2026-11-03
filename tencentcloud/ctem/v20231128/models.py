@@ -2188,22 +2188,24 @@ class CreateSeedsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerId: 企业ID
+        :param _CustomerId: <p>企业ID</p>
         :type CustomerId: int
-        :param _Ips: ip种子数组
+        :param _Ips: <p>ip种子数组</p>
         :type Ips: list of str
-        :param _Icons: icon种子数组
+        :param _Icons: <p>icon种子数组</p>
         :type Icons: list of str
-        :param _Domains: 主域名种子数组
+        :param _Domains: <p>主域名种子数组</p>
         :type Domains: list of str
-        :param _Titles: title种子数组
+        :param _Titles: <p>title种子数组</p>
         :type Titles: list of str
-        :param _SubDomains: 子域名种子数组
+        :param _SubDomains: <p>子域名种子数组</p>
         :type SubDomains: list of str
-        :param _Keywords: 关键词种子数组
+        :param _Keywords: <p>关键词种子数组</p>
         :type Keywords: list of str
-        :param _ParentCompanies: 母公司种子数组
+        :param _ParentCompanies: <p>母公司种子数组</p>
         :type ParentCompanies: list of str
+        :param _KeywordPurposes: <p>关键词用途：leakage_code代码泄露/leakage_data其他泄露/wechat_applet微信小程序/wechat_official_account微信公众号，不填=全部用途</p>
+        :type KeywordPurposes: list of str
         """
         self._CustomerId = None
         self._Ips = None
@@ -2213,10 +2215,11 @@ class CreateSeedsRequest(AbstractModel):
         self._SubDomains = None
         self._Keywords = None
         self._ParentCompanies = None
+        self._KeywordPurposes = None
 
     @property
     def CustomerId(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: int
         """
         return self._CustomerId
@@ -2227,7 +2230,7 @@ class CreateSeedsRequest(AbstractModel):
 
     @property
     def Ips(self):
-        r"""ip种子数组
+        r"""<p>ip种子数组</p>
         :rtype: list of str
         """
         return self._Ips
@@ -2238,7 +2241,7 @@ class CreateSeedsRequest(AbstractModel):
 
     @property
     def Icons(self):
-        r"""icon种子数组
+        r"""<p>icon种子数组</p>
         :rtype: list of str
         """
         return self._Icons
@@ -2249,7 +2252,7 @@ class CreateSeedsRequest(AbstractModel):
 
     @property
     def Domains(self):
-        r"""主域名种子数组
+        r"""<p>主域名种子数组</p>
         :rtype: list of str
         """
         return self._Domains
@@ -2260,7 +2263,7 @@ class CreateSeedsRequest(AbstractModel):
 
     @property
     def Titles(self):
-        r"""title种子数组
+        r"""<p>title种子数组</p>
         :rtype: list of str
         """
         return self._Titles
@@ -2271,7 +2274,7 @@ class CreateSeedsRequest(AbstractModel):
 
     @property
     def SubDomains(self):
-        r"""子域名种子数组
+        r"""<p>子域名种子数组</p>
         :rtype: list of str
         """
         return self._SubDomains
@@ -2282,7 +2285,7 @@ class CreateSeedsRequest(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""关键词种子数组
+        r"""<p>关键词种子数组</p>
         :rtype: list of str
         """
         return self._Keywords
@@ -2293,7 +2296,7 @@ class CreateSeedsRequest(AbstractModel):
 
     @property
     def ParentCompanies(self):
-        r"""母公司种子数组
+        r"""<p>母公司种子数组</p>
         :rtype: list of str
         """
         return self._ParentCompanies
@@ -2301,6 +2304,17 @@ class CreateSeedsRequest(AbstractModel):
     @ParentCompanies.setter
     def ParentCompanies(self, ParentCompanies):
         self._ParentCompanies = ParentCompanies
+
+    @property
+    def KeywordPurposes(self):
+        r"""<p>关键词用途：leakage_code代码泄露/leakage_data其他泄露/wechat_applet微信小程序/wechat_official_account微信公众号，不填=全部用途</p>
+        :rtype: list of str
+        """
+        return self._KeywordPurposes
+
+    @KeywordPurposes.setter
+    def KeywordPurposes(self, KeywordPurposes):
+        self._KeywordPurposes = KeywordPurposes
 
 
     def _deserialize(self, params):
@@ -2312,6 +2326,7 @@ class CreateSeedsRequest(AbstractModel):
         self._SubDomains = params.get("SubDomains")
         self._Keywords = params.get("Keywords")
         self._ParentCompanies = params.get("ParentCompanies")
+        self._KeywordPurposes = params.get("KeywordPurposes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17265,23 +17280,25 @@ class DisplaySeed(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _CustomerId: 企业ID
+        :param _CustomerId: <p>企业ID</p>
         :type CustomerId: int
-        :param _Category: 分类，包括：domain(主域名)、icon(图标)、ip(IP)、
-keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(标题)
+        :param _Category: <p>分类，包括：domain(主域名)、icon(图标)、ip(IP)、<br>keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(标题)</p>
         :type Category: str
-        :param _Value: 值
+        :param _Value: <p>值</p>
         :type Value: str
-        :param _Md5: md5值
+        :param _Md5: <p>md5值</p>
         :type Md5: str
-        :param _Source: 来源
+        :param _Source: <p>来源</p>
         :type Source: str
-        :param _CreateAt: 创建时间
+        :param _CreateAt: <p>创建时间</p>
         :type CreateAt: str
-        :param _IsValid: 是否可信
+        :param _IsValid: <p>是否可信</p>
         :type IsValid: bool
+        :param _Purposes: <p>关键词用途，可多选：leakage_code代码泄露/leakage_data其他泄露/wechat_applet微信小程序/wechat_official_account微信公众号；不填=全部用途</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Purposes: list of str
         """
         self._Id = None
         self._CustomerId = None
@@ -17291,10 +17308,11 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
         self._Source = None
         self._CreateAt = None
         self._IsValid = None
+        self._Purposes = None
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -17305,7 +17323,7 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
 
     @property
     def CustomerId(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: int
         """
         return self._CustomerId
@@ -17316,8 +17334,7 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
 
     @property
     def Category(self):
-        r"""分类，包括：domain(主域名)、icon(图标)、ip(IP)、
-keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(标题)
+        r"""<p>分类，包括：domain(主域名)、icon(图标)、ip(IP)、<br>keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(标题)</p>
         :rtype: str
         """
         return self._Category
@@ -17328,7 +17345,7 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
 
     @property
     def Value(self):
-        r"""值
+        r"""<p>值</p>
         :rtype: str
         """
         return self._Value
@@ -17339,7 +17356,7 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
 
     @property
     def Md5(self):
-        r"""md5值
+        r"""<p>md5值</p>
         :rtype: str
         """
         return self._Md5
@@ -17350,7 +17367,7 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
 
     @property
     def Source(self):
-        r"""来源
+        r"""<p>来源</p>
         :rtype: str
         """
         return self._Source
@@ -17361,7 +17378,7 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
 
     @property
     def CreateAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateAt
@@ -17372,7 +17389,7 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
 
     @property
     def IsValid(self):
-        r"""是否可信
+        r"""<p>是否可信</p>
         :rtype: bool
         """
         return self._IsValid
@@ -17380,6 +17397,18 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
     @IsValid.setter
     def IsValid(self, IsValid):
         self._IsValid = IsValid
+
+    @property
+    def Purposes(self):
+        r"""<p>关键词用途，可多选：leakage_code代码泄露/leakage_data其他泄露/wechat_applet微信小程序/wechat_official_account微信公众号；不填=全部用途</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Purposes
+
+    @Purposes.setter
+    def Purposes(self, Purposes):
+        self._Purposes = Purposes
 
 
     def _deserialize(self, params):
@@ -17391,6 +17420,7 @@ keyword(关键词)、parent_company(母公司)、sub_domain(子域名)、title(�
         self._Source = params.get("Source")
         self._CreateAt = params.get("CreateAt")
         self._IsValid = params.get("IsValid")
+        self._Purposes = params.get("Purposes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

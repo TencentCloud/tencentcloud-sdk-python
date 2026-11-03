@@ -12284,6 +12284,340 @@ class CompareCloudNativeAPIGatewayMCPToolVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAIGWCustomGuardrailPolicyRequest(AbstractModel):
+    r"""CreateAIGWCustomGuardrailPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _Name: <p>策略名称，同一网关内唯一，长度 1～64</p>
+        :type Name: str
+        :param _ServiceConfig: <p>审核服务配置</p>
+        :type ServiceConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailServiceConfigInput`
+        :param _DecisionConfig: <p>审核响应判定配置</p>
+        :type DecisionConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailDecisionConfigInput`
+        :param _Scope: <p>资源绑定范围，global 或 resource。修改时传入的是新的完整范围，不是增量追加。</p>
+        :type Scope: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailScopeInput`
+        :param _AuthConfig: <p>必填，必须显式选择鉴权类型；无鉴权填写 {"AuthType":"none"}。</p>
+        :type AuthConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailAuthConfigInput`
+        :param _BehaviorConfig: <p>必填，Direction、HandleAction、TimeoutMs、FailureMode 四项均须显式填写。</p>
+        :type BehaviorConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailBehaviorConfigInput`
+        :param _Description: <p>策略描述，最长 200</p>
+        :type Description: str
+        :param _Enabled: <p>是否启用策略，默认 true</p>
+        :type Enabled: bool
+        :param _FilterConfig: <p>过滤与采样配置</p>
+        :type FilterConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFilterConfigInput`
+        """
+        self._GatewayId = None
+        self._Name = None
+        self._ServiceConfig = None
+        self._DecisionConfig = None
+        self._Scope = None
+        self._AuthConfig = None
+        self._BehaviorConfig = None
+        self._Description = None
+        self._Enabled = None
+        self._FilterConfig = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Name(self):
+        r"""<p>策略名称，同一网关内唯一，长度 1～64</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ServiceConfig(self):
+        r"""<p>审核服务配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailServiceConfigInput`
+        """
+        return self._ServiceConfig
+
+    @ServiceConfig.setter
+    def ServiceConfig(self, ServiceConfig):
+        self._ServiceConfig = ServiceConfig
+
+    @property
+    def DecisionConfig(self):
+        r"""<p>审核响应判定配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailDecisionConfigInput`
+        """
+        return self._DecisionConfig
+
+    @DecisionConfig.setter
+    def DecisionConfig(self, DecisionConfig):
+        self._DecisionConfig = DecisionConfig
+
+    @property
+    def Scope(self):
+        r"""<p>资源绑定范围，global 或 resource。修改时传入的是新的完整范围，不是增量追加。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailScopeInput`
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def AuthConfig(self):
+        r"""<p>必填，必须显式选择鉴权类型；无鉴权填写 {"AuthType":"none"}。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailAuthConfigInput`
+        """
+        return self._AuthConfig
+
+    @AuthConfig.setter
+    def AuthConfig(self, AuthConfig):
+        self._AuthConfig = AuthConfig
+
+    @property
+    def BehaviorConfig(self):
+        r"""<p>必填，Direction、HandleAction、TimeoutMs、FailureMode 四项均须显式填写。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailBehaviorConfigInput`
+        """
+        return self._BehaviorConfig
+
+    @BehaviorConfig.setter
+    def BehaviorConfig(self, BehaviorConfig):
+        self._BehaviorConfig = BehaviorConfig
+
+    @property
+    def Description(self):
+        r"""<p>策略描述，最长 200</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用策略，默认 true</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def FilterConfig(self):
+        r"""<p>过滤与采样配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFilterConfigInput`
+        """
+        return self._FilterConfig
+
+    @FilterConfig.setter
+    def FilterConfig(self, FilterConfig):
+        self._FilterConfig = FilterConfig
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Name = params.get("Name")
+        if params.get("ServiceConfig") is not None:
+            self._ServiceConfig = CustomGuardrailServiceConfigInput()
+            self._ServiceConfig._deserialize(params.get("ServiceConfig"))
+        if params.get("DecisionConfig") is not None:
+            self._DecisionConfig = CustomGuardrailDecisionConfigInput()
+            self._DecisionConfig._deserialize(params.get("DecisionConfig"))
+        if params.get("Scope") is not None:
+            self._Scope = CustomGuardrailScopeInput()
+            self._Scope._deserialize(params.get("Scope"))
+        if params.get("AuthConfig") is not None:
+            self._AuthConfig = CustomGuardrailAuthConfigInput()
+            self._AuthConfig._deserialize(params.get("AuthConfig"))
+        if params.get("BehaviorConfig") is not None:
+            self._BehaviorConfig = CustomGuardrailBehaviorConfigInput()
+            self._BehaviorConfig._deserialize(params.get("BehaviorConfig"))
+        self._Description = params.get("Description")
+        self._Enabled = params.get("Enabled")
+        if params.get("FilterConfig") is not None:
+            self._FilterConfig = CustomGuardrailFilterConfigInput()
+            self._FilterConfig._deserialize(params.get("FilterConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIGWCustomGuardrailPolicyResponse(AbstractModel):
+    r"""CreateAIGWCustomGuardrailPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.CreateAIGWCustomGuardrailPolicyResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CreateAIGWCustomGuardrailPolicyResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CreateAIGWCustomGuardrailPolicyResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAIGWCustomGuardrailPolicyResult(AbstractModel):
+    r"""创建自定义安全护栏策略结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: <p>本次配置同步是否全部成功。即使云 API 未返回 Response.Error，仍须检查此值、SyncStatus 和 FailedResources。</p>
+        :type Success: bool
+        :param _PolicyId: <p>新建策略 ID</p>
+        :type PolicyId: str
+        :param _AddedResources: <p>本次同步成功的业务资源引用；Modify 返回的不是严格的新增差集。</p>
+        :type AddedResources: list of CustomGuardrailResourceRef
+        :param _FailedResources: <p>失败资源及原因；非空表示配置同步仍需处理，不要因 HTTP 200 判定全部成功。</p>
+        :type FailedResources: list of CustomGuardrailSyncFailure
+        :param _SyncStatus: <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :type SyncStatus: str
+        """
+        self._Success = None
+        self._PolicyId = None
+        self._AddedResources = None
+        self._FailedResources = None
+        self._SyncStatus = None
+
+    @property
+    def Success(self):
+        r"""<p>本次配置同步是否全部成功。即使云 API 未返回 Response.Error，仍须检查此值、SyncStatus 和 FailedResources。</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def PolicyId(self):
+        r"""<p>新建策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def AddedResources(self):
+        r"""<p>本次同步成功的业务资源引用；Modify 返回的不是严格的新增差集。</p>
+        :rtype: list of CustomGuardrailResourceRef
+        """
+        return self._AddedResources
+
+    @AddedResources.setter
+    def AddedResources(self, AddedResources):
+        self._AddedResources = AddedResources
+
+    @property
+    def FailedResources(self):
+        r"""<p>失败资源及原因；非空表示配置同步仍需处理，不要因 HTTP 200 判定全部成功。</p>
+        :rtype: list of CustomGuardrailSyncFailure
+        """
+        return self._FailedResources
+
+    @FailedResources.setter
+    def FailedResources(self, FailedResources):
+        self._FailedResources = FailedResources
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        self._PolicyId = params.get("PolicyId")
+        if params.get("AddedResources") is not None:
+            self._AddedResources = []
+            for item in params.get("AddedResources"):
+                obj = CustomGuardrailResourceRef()
+                obj._deserialize(item)
+                self._AddedResources.append(obj)
+        if params.get("FailedResources") is not None:
+            self._FailedResources = []
+            for item in params.get("FailedResources"):
+                obj = CustomGuardrailSyncFailure()
+                obj._deserialize(item)
+                self._FailedResources.append(obj)
+        self._SyncStatus = params.get("SyncStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateCloudNativeAPIGatewayAIServiceSourceRequest(AbstractModel):
     r"""CreateCloudNativeAPIGatewayAIServiceSource请求参数结构体
 
@@ -14806,6 +15140,3570 @@ class CreateCloudNativeAPIGatewaySecretKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequest(AbstractModel):
+    r"""CreateOrModifyCloudNativeAPIGatewayIPRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressList: cidr｜ip
+        :type AddressList: list of str
+        :param _Enabled: 是否启用插件
+        :type Enabled: bool
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _RestrictionType: 访问控制类型：whiteList｜blackList
+        :type RestrictionType: str
+        :param _SourceId: 路由或服务的id
+        :type SourceId: str
+        :param _SourceType: 访问控制插件绑定的资源类型：route|service
+        :type SourceType: str
+        """
+        self._AddressList = None
+        self._Enabled = None
+        self._GatewayId = None
+        self._RestrictionType = None
+        self._SourceId = None
+        self._SourceType = None
+
+    @property
+    def AddressList(self):
+        r"""cidr｜ip
+        :rtype: list of str
+        """
+        return self._AddressList
+
+    @AddressList.setter
+    def AddressList(self, AddressList):
+        self._AddressList = AddressList
+
+    @property
+    def Enabled(self):
+        r"""是否启用插件
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def GatewayId(self):
+        r"""网关ID
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def RestrictionType(self):
+        r"""访问控制类型：whiteList｜blackList
+        :rtype: str
+        """
+        return self._RestrictionType
+
+    @RestrictionType.setter
+    def RestrictionType(self, RestrictionType):
+        self._RestrictionType = RestrictionType
+
+    @property
+    def SourceId(self):
+        r"""路由或服务的id
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceType(self):
+        r"""访问控制插件绑定的资源类型：route|service
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._AddressList = params.get("AddressList")
+        self._Enabled = params.get("Enabled")
+        self._GatewayId = params.get("GatewayId")
+        self._RestrictionType = params.get("RestrictionType")
+        self._SourceId = params.get("SourceId")
+        self._SourceType = params.get("SourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrModifyCloudNativeAPIGatewayIPRestrictionResponse(AbstractModel):
+    r"""CreateOrModifyCloudNativeAPIGatewayIPRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CustomGuardrailAuthConfig(AbstractModel):
+    r"""自定义安全护栏鉴权配置；不返回 API Key 明文
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthType: <p>网关访问审核引擎的鉴权方式：none 无鉴权（创建默认值）；api_key 在指定 HTTP Header 中发送凭据。与客户端访问 AI 网关时使用的鉴权相互独立。none 模式不应携带 HeaderName 或 ApiKey。</p>
+        :type AuthType: str
+        :param _HeaderName: <p>api_key 模式的鉴权 Header 名，例如 X-Audit-Key 或 Authorization。需为有效 Header 名；不能使用 Content-Type、Accept 或 x-cngw-audit- 前缀的保留名称。不建议使用 Host、Content-Length 等会影响 HTTP 协议语义的头。</p>
+        :type HeaderName: str
+        :param _HasApiKey: <p>只读：是否已保存审核引擎鉴权密钥。不会返回密钥本身；修改时无需回传此字段。</p>
+        :type HasApiKey: bool
+        """
+        self._AuthType = None
+        self._HeaderName = None
+        self._HasApiKey = None
+
+    @property
+    def AuthType(self):
+        r"""<p>网关访问审核引擎的鉴权方式：none 无鉴权（创建默认值）；api_key 在指定 HTTP Header 中发送凭据。与客户端访问 AI 网关时使用的鉴权相互独立。none 模式不应携带 HeaderName 或 ApiKey。</p>
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def HeaderName(self):
+        r"""<p>api_key 模式的鉴权 Header 名，例如 X-Audit-Key 或 Authorization。需为有效 Header 名；不能使用 Content-Type、Accept 或 x-cngw-audit- 前缀的保留名称。不建议使用 Host、Content-Length 等会影响 HTTP 协议语义的头。</p>
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+    @property
+    def HasApiKey(self):
+        r"""<p>只读：是否已保存审核引擎鉴权密钥。不会返回密钥本身；修改时无需回传此字段。</p>
+        :rtype: bool
+        """
+        return self._HasApiKey
+
+    @HasApiKey.setter
+    def HasApiKey(self, HasApiKey):
+        self._HasApiKey = HasApiKey
+
+
+    def _deserialize(self, params):
+        self._AuthType = params.get("AuthType")
+        self._HeaderName = params.get("HeaderName")
+        self._HasApiKey = params.get("HasApiKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailAuthConfigInput(AbstractModel):
+    r"""自定义安全护栏审核服务鉴权配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthType: <p>审核引擎鉴权方式，必须显式选择 none（无鉴权）或 api_key（Header 密钥）；无鉴权也必须填写 none，不再自动补齐。api_key 时 HeaderName 和 ApiKey 必填；与客户端访问网关的鉴权独立。</p>
+        :type AuthType: str
+        :param _HeaderName: <p>AuthType=api_key 时必填的有效 HTTP Header 名，例如 X-Audit-Key 或 Authorization；禁止协议保留头。AuthType=none 时不得填写。</p>
+        :type HeaderName: str
+        :param _ApiKey: <p>AuthType=api_key 时必填，作为 Header 完整值原样发送；如需 Bearer，调用方自行填写前缀。修改时省略可沿用已保存密钥；不能用 HasApiKey 代替真实密钥。</p>
+        :type ApiKey: str
+        """
+        self._AuthType = None
+        self._HeaderName = None
+        self._ApiKey = None
+
+    @property
+    def AuthType(self):
+        r"""<p>审核引擎鉴权方式，必须显式选择 none（无鉴权）或 api_key（Header 密钥）；无鉴权也必须填写 none，不再自动补齐。api_key 时 HeaderName 和 ApiKey 必填；与客户端访问网关的鉴权独立。</p>
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def HeaderName(self):
+        r"""<p>AuthType=api_key 时必填的有效 HTTP Header 名，例如 X-Audit-Key 或 Authorization；禁止协议保留头。AuthType=none 时不得填写。</p>
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+    @property
+    def ApiKey(self):
+        r"""<p>AuthType=api_key 时必填，作为 Header 完整值原样发送；如需 Bearer，调用方自行填写前缀。修改时省略可沿用已保存密钥；不能用 HasApiKey 代替真实密钥。</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+
+    def _deserialize(self, params):
+        self._AuthType = params.get("AuthType")
+        self._HeaderName = params.get("HeaderName")
+        self._ApiKey = params.get("ApiKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailAuthConfigPatch(AbstractModel):
+    r"""局部更新配置。只更新显式提供字段；未传字段保留。条件必填按合并后的完整策略校验，不会要求每次重传全部配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthType: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。审核引擎鉴权方式，必须显式选择 none（无鉴权）或 api_key（Header 密钥）；无鉴权也必须填写 none，不再自动补齐。api_key 时 HeaderName 和 ApiKey 必填；与客户端访问网关的鉴权独立。</p>
+        :type AuthType: str
+        :param _HeaderName: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。AuthType=api_key 时必填的有效 HTTP Header 名，例如 X-Audit-Key 或 Authorization；禁止协议保留头。AuthType=none 时不得填写。</p>
+        :type HeaderName: str
+        :param _ApiKey: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。AuthType=api_key 时必填，作为 Header 完整值原样发送；如需 Bearer，调用方自行填写前缀。修改时省略可沿用已保存密钥；不能用 HasApiKey 代替真实密钥。</p>
+        :type ApiKey: str
+        :param _ClearApiKey: <p>true 表示清除已保存密钥，不能与 ApiKey 同时传入。仅传 ClearApiKey=true 时同时切换为 none 并清空鉴权 Header；也可通过 AuthType=none 清除既有密钥。</p><p>修改时省略本字段保留原值。</p>
+        :type ClearApiKey: bool
+        """
+        self._AuthType = None
+        self._HeaderName = None
+        self._ApiKey = None
+        self._ClearApiKey = None
+
+    @property
+    def AuthType(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。审核引擎鉴权方式，必须显式选择 none（无鉴权）或 api_key（Header 密钥）；无鉴权也必须填写 none，不再自动补齐。api_key 时 HeaderName 和 ApiKey 必填；与客户端访问网关的鉴权独立。</p>
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def HeaderName(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。AuthType=api_key 时必填的有效 HTTP Header 名，例如 X-Audit-Key 或 Authorization；禁止协议保留头。AuthType=none 时不得填写。</p>
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+    @property
+    def ApiKey(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。AuthType=api_key 时必填，作为 Header 完整值原样发送；如需 Bearer，调用方自行填写前缀。修改时省略可沿用已保存密钥；不能用 HasApiKey 代替真实密钥。</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def ClearApiKey(self):
+        r"""<p>true 表示清除已保存密钥，不能与 ApiKey 同时传入。仅传 ClearApiKey=true 时同时切换为 none 并清空鉴权 Header；也可通过 AuthType=none 清除既有密钥。</p><p>修改时省略本字段保留原值。</p>
+        :rtype: bool
+        """
+        return self._ClearApiKey
+
+    @ClearApiKey.setter
+    def ClearApiKey(self, ClearApiKey):
+        self._ClearApiKey = ClearApiKey
+
+
+    def _deserialize(self, params):
+        self._AuthType = params.get("AuthType")
+        self._HeaderName = params.get("HeaderName")
+        self._ApiKey = params.get("ApiKey")
+        self._ClearApiKey = params.get("ClearApiKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailBehaviorConfig(AbstractModel):
+    r"""自定义安全护栏处理行为配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Direction: <p>审核方向：input 只审核业务请求，output 只审核业务响应，both 两者均审核；创建默认 input。送审包及审核日志使用 request/response 表示方向，不使用 input/output。</p>
+        :type Direction: str
+        :param _HandleAction: <p>命中后的处理：block 执行阻断或符合条件的输出替换；observe 仅观察记录命中，不执行命中阻断或替换。创建默认 block。审核调用异常另由 FailureMode 处理，不应把 observe 当作所有故障无条件放行。</p>
+        :type HandleAction: str
+        :param _TimeoutMs: <p>审核调用超时，单位毫秒，范围 50～5000，创建默认 500。不是整个模型生成/SSE 连接的总时长限制；流式多批次分别发生审核 HTTP 调用。应按引擎网络及处理耗时设置，示例中的 5000 是显式测试值，不是默认值。</p>
+        :type TimeoutMs: int
+        :param _FailureMode: <p>审核失败时的策略：open 尝试失败放行（创建默认值，有内容未审核即放行风险）；closed 失败关闭。此项处理网络、超时、响应契约等异常，不改变正常 block 判定。open 不能绕过所有 Relay 安全/生命周期错误，也不保证已派发业务请求可安全重放。</p>
+        :type FailureMode: str
+        """
+        self._Direction = None
+        self._HandleAction = None
+        self._TimeoutMs = None
+        self._FailureMode = None
+
+    @property
+    def Direction(self):
+        r"""<p>审核方向：input 只审核业务请求，output 只审核业务响应，both 两者均审核；创建默认 input。送审包及审核日志使用 request/response 表示方向，不使用 input/output。</p>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def HandleAction(self):
+        r"""<p>命中后的处理：block 执行阻断或符合条件的输出替换；observe 仅观察记录命中，不执行命中阻断或替换。创建默认 block。审核调用异常另由 FailureMode 处理，不应把 observe 当作所有故障无条件放行。</p>
+        :rtype: str
+        """
+        return self._HandleAction
+
+    @HandleAction.setter
+    def HandleAction(self, HandleAction):
+        self._HandleAction = HandleAction
+
+    @property
+    def TimeoutMs(self):
+        r"""<p>审核调用超时，单位毫秒，范围 50～5000，创建默认 500。不是整个模型生成/SSE 连接的总时长限制；流式多批次分别发生审核 HTTP 调用。应按引擎网络及处理耗时设置，示例中的 5000 是显式测试值，不是默认值。</p>
+        :rtype: int
+        """
+        return self._TimeoutMs
+
+    @TimeoutMs.setter
+    def TimeoutMs(self, TimeoutMs):
+        self._TimeoutMs = TimeoutMs
+
+    @property
+    def FailureMode(self):
+        r"""<p>审核失败时的策略：open 尝试失败放行（创建默认值，有内容未审核即放行风险）；closed 失败关闭。此项处理网络、超时、响应契约等异常，不改变正常 block 判定。open 不能绕过所有 Relay 安全/生命周期错误，也不保证已派发业务请求可安全重放。</p>
+        :rtype: str
+        """
+        return self._FailureMode
+
+    @FailureMode.setter
+    def FailureMode(self, FailureMode):
+        self._FailureMode = FailureMode
+
+
+    def _deserialize(self, params):
+        self._Direction = params.get("Direction")
+        self._HandleAction = params.get("HandleAction")
+        self._TimeoutMs = params.get("TimeoutMs")
+        self._FailureMode = params.get("FailureMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailBehaviorConfigInput(AbstractModel):
+    r"""自定义安全护栏处理行为配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Direction: <p>必填，仅允许 input（仅输入）或 both（输入加输出），与控制台一致；不允许 output、空值或省略。送审包方向使用 request/response。</p>
+        :type Direction: str
+        :param _HandleAction: <p>必填，observe 只观察记录，block 执行命中阻断或符合条件的输出替换。不再自动补默认值。审核异常另由 FailureMode 处理。</p>
+        :type HandleAction: str
+        :param _TimeoutMs: <p>必填整数，50～5000 毫秒，0 无效且不再代表默认值。控制台初始显示 500，但 API 调用方仍须传入。这是每次审核 HTTP 调用的超时，不是整个模型生成或 SSE 连接时长。</p>
+        :type TimeoutMs: int
+        :param _FailureMode: <p>必填，open 为异常时尝试放行（存在未审核内容放行风险），closed 为异常时拦截；不得省略或为空。不改变正常命中结论，open 不能绕过所有 Relay 安全或生命周期错误。</p>
+        :type FailureMode: str
+        """
+        self._Direction = None
+        self._HandleAction = None
+        self._TimeoutMs = None
+        self._FailureMode = None
+
+    @property
+    def Direction(self):
+        r"""<p>必填，仅允许 input（仅输入）或 both（输入加输出），与控制台一致；不允许 output、空值或省略。送审包方向使用 request/response。</p>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def HandleAction(self):
+        r"""<p>必填，observe 只观察记录，block 执行命中阻断或符合条件的输出替换。不再自动补默认值。审核异常另由 FailureMode 处理。</p>
+        :rtype: str
+        """
+        return self._HandleAction
+
+    @HandleAction.setter
+    def HandleAction(self, HandleAction):
+        self._HandleAction = HandleAction
+
+    @property
+    def TimeoutMs(self):
+        r"""<p>必填整数，50～5000 毫秒，0 无效且不再代表默认值。控制台初始显示 500，但 API 调用方仍须传入。这是每次审核 HTTP 调用的超时，不是整个模型生成或 SSE 连接时长。</p>
+        :rtype: int
+        """
+        return self._TimeoutMs
+
+    @TimeoutMs.setter
+    def TimeoutMs(self, TimeoutMs):
+        self._TimeoutMs = TimeoutMs
+
+    @property
+    def FailureMode(self):
+        r"""<p>必填，open 为异常时尝试放行（存在未审核内容放行风险），closed 为异常时拦截；不得省略或为空。不改变正常命中结论，open 不能绕过所有 Relay 安全或生命周期错误。</p>
+        :rtype: str
+        """
+        return self._FailureMode
+
+    @FailureMode.setter
+    def FailureMode(self, FailureMode):
+        self._FailureMode = FailureMode
+
+
+    def _deserialize(self, params):
+        self._Direction = params.get("Direction")
+        self._HandleAction = params.get("HandleAction")
+        self._TimeoutMs = params.get("TimeoutMs")
+        self._FailureMode = params.get("FailureMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailBehaviorConfigPatch(AbstractModel):
+    r"""局部更新配置。只更新显式提供字段；未传字段保留。条件必填按合并后的完整策略校验，不会要求每次重传全部配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Direction: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，仅允许 input（仅输入）或 both（输入加输出），与控制台一致；不允许 output、空值或省略。送审包方向使用 request/response。</p>
+        :type Direction: str
+        :param _HandleAction: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，observe 只观察记录，block 执行命中阻断或符合条件的输出替换。不再自动补默认值。审核异常另由 FailureMode 处理。</p>
+        :type HandleAction: str
+        :param _TimeoutMs: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填整数，50～5000 毫秒，0 无效且不再代表默认值。控制台初始显示 500，但 API 调用方仍须传入。这是每次审核 HTTP 调用的超时，不是整个模型生成或 SSE 连接时长。</p>
+        :type TimeoutMs: int
+        :param _FailureMode: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，open 为异常时尝试放行（存在未审核内容放行风险），closed 为异常时拦截；不得省略或为空。不改变正常命中结论，open 不能绕过所有 Relay 安全或生命周期错误。</p>
+        :type FailureMode: str
+        """
+        self._Direction = None
+        self._HandleAction = None
+        self._TimeoutMs = None
+        self._FailureMode = None
+
+    @property
+    def Direction(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，仅允许 input（仅输入）或 both（输入加输出），与控制台一致；不允许 output、空值或省略。送审包方向使用 request/response。</p>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def HandleAction(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，observe 只观察记录，block 执行命中阻断或符合条件的输出替换。不再自动补默认值。审核异常另由 FailureMode 处理。</p>
+        :rtype: str
+        """
+        return self._HandleAction
+
+    @HandleAction.setter
+    def HandleAction(self, HandleAction):
+        self._HandleAction = HandleAction
+
+    @property
+    def TimeoutMs(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填整数，50～5000 毫秒，0 无效且不再代表默认值。控制台初始显示 500，但 API 调用方仍须传入。这是每次审核 HTTP 调用的超时，不是整个模型生成或 SSE 连接时长。</p>
+        :rtype: int
+        """
+        return self._TimeoutMs
+
+    @TimeoutMs.setter
+    def TimeoutMs(self, TimeoutMs):
+        self._TimeoutMs = TimeoutMs
+
+    @property
+    def FailureMode(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，open 为异常时尝试放行（存在未审核内容放行风险），closed 为异常时拦截；不得省略或为空。不改变正常命中结论，open 不能绕过所有 Relay 安全或生命周期错误。</p>
+        :rtype: str
+        """
+        return self._FailureMode
+
+    @FailureMode.setter
+    def FailureMode(self, FailureMode):
+        self._FailureMode = FailureMode
+
+
+    def _deserialize(self, params):
+        self._Direction = params.get("Direction")
+        self._HandleAction = params.get("HandleAction")
+        self._TimeoutMs = params.get("TimeoutMs")
+        self._FailureMode = params.get("FailureMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailBindableResource(AbstractModel):
+    r"""可绑定自定义安全护栏的业务资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>业务资源类型</p>
+        :type ResourceType: str
+        :param _ResourceId: <p>业务资源 ID</p>
+        :type ResourceId: str
+        :param _ResourceName: <p>业务资源名称</p>
+        :type ResourceName: str
+        :param _Path: <p>业务资源访问路径</p>
+        :type Path: str
+        :param _Protocol: <p>数据面解析协议</p>
+        :type Protocol: str
+        :param _RouteIds: <p>该业务资源对应的全部 Kong Route ID，仅用于关联/排查；创建 Scope.Resources 时仍填业务 ResourceId。</p>
+        :type RouteIds: list of str
+        :param _Occupied: <p>对应任一 Route 是否被其他自定义护栏策略占用；查询时传 PolicyId 可排除自身占用。</p>
+        :type Occupied: bool
+        :param _OccupiedBy: <p>占用策略的可读名称及 ID，格式为 策略名称 (策略ID)，多个以逗号分隔；名称不可用时回退 ID，不应按此展示字段解析策略主键。</p>
+        :type OccupiedBy: str
+        :param _Supported: <p>资源当前是否可解析为受支持的绑定目标；与 Occupied 独立，选择时同时检查 Supported=true 且 Occupied=false。</p>
+        :type Supported: bool
+        :param _UnsupportedReason: <p>不支持绑定的原因</p>
+        :type UnsupportedReason: str
+        """
+        self._ResourceType = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._Path = None
+        self._Protocol = None
+        self._RouteIds = None
+        self._Occupied = None
+        self._OccupiedBy = None
+        self._Supported = None
+        self._UnsupportedReason = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>业务资源类型</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""<p>业务资源 ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""<p>业务资源名称</p>
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Path(self):
+        r"""<p>业务资源访问路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Protocol(self):
+        r"""<p>数据面解析协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def RouteIds(self):
+        r"""<p>该业务资源对应的全部 Kong Route ID，仅用于关联/排查；创建 Scope.Resources 时仍填业务 ResourceId。</p>
+        :rtype: list of str
+        """
+        return self._RouteIds
+
+    @RouteIds.setter
+    def RouteIds(self, RouteIds):
+        self._RouteIds = RouteIds
+
+    @property
+    def Occupied(self):
+        r"""<p>对应任一 Route 是否被其他自定义护栏策略占用；查询时传 PolicyId 可排除自身占用。</p>
+        :rtype: bool
+        """
+        return self._Occupied
+
+    @Occupied.setter
+    def Occupied(self, Occupied):
+        self._Occupied = Occupied
+
+    @property
+    def OccupiedBy(self):
+        r"""<p>占用策略的可读名称及 ID，格式为 策略名称 (策略ID)，多个以逗号分隔；名称不可用时回退 ID，不应按此展示字段解析策略主键。</p>
+        :rtype: str
+        """
+        return self._OccupiedBy
+
+    @OccupiedBy.setter
+    def OccupiedBy(self, OccupiedBy):
+        self._OccupiedBy = OccupiedBy
+
+    @property
+    def Supported(self):
+        r"""<p>资源当前是否可解析为受支持的绑定目标；与 Occupied 独立，选择时同时检查 Supported=true 且 Occupied=false。</p>
+        :rtype: bool
+        """
+        return self._Supported
+
+    @Supported.setter
+    def Supported(self, Supported):
+        self._Supported = Supported
+
+    @property
+    def UnsupportedReason(self):
+        r"""<p>不支持绑定的原因</p>
+        :rtype: str
+        """
+        return self._UnsupportedReason
+
+    @UnsupportedReason.setter
+    def UnsupportedReason(self, UnsupportedReason):
+        self._UnsupportedReason = UnsupportedReason
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._Path = params.get("Path")
+        self._Protocol = params.get("Protocol")
+        self._RouteIds = params.get("RouteIds")
+        self._Occupied = params.get("Occupied")
+        self._OccupiedBy = params.get("OccupiedBy")
+        self._Supported = params.get("Supported")
+        self._UnsupportedReason = params.get("UnsupportedReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailCapabilityLimits(AbstractModel):
+    r"""自定义安全护栏能力限制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxHeaderAllowList: <p>Header 白名单最大条数。</p>
+        :type MaxHeaderAllowList: int
+        :param _MaxKeywordsPerDirection: <p>单方向关键词最大条数。</p>
+        :type MaxKeywordsPerDirection: int
+        :param _InlineBodyBytes: <p>直接内联送审的 Body 上限，单位字节。</p>
+        :type InlineBodyBytes: int
+        :param _MaxAcceptedBodyBytes: <p>可接受的请求 Body 上限，单位字节。</p>
+        :type MaxAcceptedBodyBytes: int
+        :param _TransferChunkBytes: <p>超大请求 Body 默认分片大小，单位字节。</p>
+        :type TransferChunkBytes: int
+        :param _MaxTransferChunkBytes: <p>超大请求 Body 最大分片大小，单位字节。</p>
+        :type MaxTransferChunkBytes: int
+        :param _TransferTargetMaxChunks: <p>分片传输目标最大分片数。</p>
+        :type TransferTargetMaxChunks: int
+        :param _MaxResponseBodyBytes: <p>普通响应审核最大 Body 大小，单位字节。</p>
+        :type MaxResponseBodyBytes: int
+        :param _MaxStreamEventBytes: <p>单个流式事件最大字节数，单位字节。</p>
+        :type MaxStreamEventBytes: int
+        :param _StreamRelayMaxConcurrentRequests: <p>单数据面实例 Stream Relay 默认并发槽位。</p>
+        :type StreamRelayMaxConcurrentRequests: int
+        :param _MinTimeoutMs: <p>审核超时最小值，单位毫秒。</p>
+        :type MinTimeoutMs: int
+        :param _MaxTimeoutMs: <p>审核超时最大值，单位毫秒。</p>
+        :type MaxTimeoutMs: int
+        :param _DefaultTimeoutMs: <p>审核超时默认值，单位毫秒。</p>
+        :type DefaultTimeoutMs: int
+        """
+        self._MaxHeaderAllowList = None
+        self._MaxKeywordsPerDirection = None
+        self._InlineBodyBytes = None
+        self._MaxAcceptedBodyBytes = None
+        self._TransferChunkBytes = None
+        self._MaxTransferChunkBytes = None
+        self._TransferTargetMaxChunks = None
+        self._MaxResponseBodyBytes = None
+        self._MaxStreamEventBytes = None
+        self._StreamRelayMaxConcurrentRequests = None
+        self._MinTimeoutMs = None
+        self._MaxTimeoutMs = None
+        self._DefaultTimeoutMs = None
+
+    @property
+    def MaxHeaderAllowList(self):
+        r"""<p>Header 白名单最大条数。</p>
+        :rtype: int
+        """
+        return self._MaxHeaderAllowList
+
+    @MaxHeaderAllowList.setter
+    def MaxHeaderAllowList(self, MaxHeaderAllowList):
+        self._MaxHeaderAllowList = MaxHeaderAllowList
+
+    @property
+    def MaxKeywordsPerDirection(self):
+        r"""<p>单方向关键词最大条数。</p>
+        :rtype: int
+        """
+        return self._MaxKeywordsPerDirection
+
+    @MaxKeywordsPerDirection.setter
+    def MaxKeywordsPerDirection(self, MaxKeywordsPerDirection):
+        self._MaxKeywordsPerDirection = MaxKeywordsPerDirection
+
+    @property
+    def InlineBodyBytes(self):
+        r"""<p>直接内联送审的 Body 上限，单位字节。</p>
+        :rtype: int
+        """
+        return self._InlineBodyBytes
+
+    @InlineBodyBytes.setter
+    def InlineBodyBytes(self, InlineBodyBytes):
+        self._InlineBodyBytes = InlineBodyBytes
+
+    @property
+    def MaxAcceptedBodyBytes(self):
+        r"""<p>可接受的请求 Body 上限，单位字节。</p>
+        :rtype: int
+        """
+        return self._MaxAcceptedBodyBytes
+
+    @MaxAcceptedBodyBytes.setter
+    def MaxAcceptedBodyBytes(self, MaxAcceptedBodyBytes):
+        self._MaxAcceptedBodyBytes = MaxAcceptedBodyBytes
+
+    @property
+    def TransferChunkBytes(self):
+        r"""<p>超大请求 Body 默认分片大小，单位字节。</p>
+        :rtype: int
+        """
+        return self._TransferChunkBytes
+
+    @TransferChunkBytes.setter
+    def TransferChunkBytes(self, TransferChunkBytes):
+        self._TransferChunkBytes = TransferChunkBytes
+
+    @property
+    def MaxTransferChunkBytes(self):
+        r"""<p>超大请求 Body 最大分片大小，单位字节。</p>
+        :rtype: int
+        """
+        return self._MaxTransferChunkBytes
+
+    @MaxTransferChunkBytes.setter
+    def MaxTransferChunkBytes(self, MaxTransferChunkBytes):
+        self._MaxTransferChunkBytes = MaxTransferChunkBytes
+
+    @property
+    def TransferTargetMaxChunks(self):
+        r"""<p>分片传输目标最大分片数。</p>
+        :rtype: int
+        """
+        return self._TransferTargetMaxChunks
+
+    @TransferTargetMaxChunks.setter
+    def TransferTargetMaxChunks(self, TransferTargetMaxChunks):
+        self._TransferTargetMaxChunks = TransferTargetMaxChunks
+
+    @property
+    def MaxResponseBodyBytes(self):
+        r"""<p>普通响应审核最大 Body 大小，单位字节。</p>
+        :rtype: int
+        """
+        return self._MaxResponseBodyBytes
+
+    @MaxResponseBodyBytes.setter
+    def MaxResponseBodyBytes(self, MaxResponseBodyBytes):
+        self._MaxResponseBodyBytes = MaxResponseBodyBytes
+
+    @property
+    def MaxStreamEventBytes(self):
+        r"""<p>单个流式事件最大字节数，单位字节。</p>
+        :rtype: int
+        """
+        return self._MaxStreamEventBytes
+
+    @MaxStreamEventBytes.setter
+    def MaxStreamEventBytes(self, MaxStreamEventBytes):
+        self._MaxStreamEventBytes = MaxStreamEventBytes
+
+    @property
+    def StreamRelayMaxConcurrentRequests(self):
+        r"""<p>单数据面实例 Stream Relay 默认并发槽位。</p>
+        :rtype: int
+        """
+        return self._StreamRelayMaxConcurrentRequests
+
+    @StreamRelayMaxConcurrentRequests.setter
+    def StreamRelayMaxConcurrentRequests(self, StreamRelayMaxConcurrentRequests):
+        self._StreamRelayMaxConcurrentRequests = StreamRelayMaxConcurrentRequests
+
+    @property
+    def MinTimeoutMs(self):
+        r"""<p>审核超时最小值，单位毫秒。</p>
+        :rtype: int
+        """
+        return self._MinTimeoutMs
+
+    @MinTimeoutMs.setter
+    def MinTimeoutMs(self, MinTimeoutMs):
+        self._MinTimeoutMs = MinTimeoutMs
+
+    @property
+    def MaxTimeoutMs(self):
+        r"""<p>审核超时最大值，单位毫秒。</p>
+        :rtype: int
+        """
+        return self._MaxTimeoutMs
+
+    @MaxTimeoutMs.setter
+    def MaxTimeoutMs(self, MaxTimeoutMs):
+        self._MaxTimeoutMs = MaxTimeoutMs
+
+    @property
+    def DefaultTimeoutMs(self):
+        r"""<p>审核超时默认值，单位毫秒。</p>
+        :rtype: int
+        """
+        return self._DefaultTimeoutMs
+
+    @DefaultTimeoutMs.setter
+    def DefaultTimeoutMs(self, DefaultTimeoutMs):
+        self._DefaultTimeoutMs = DefaultTimeoutMs
+
+
+    def _deserialize(self, params):
+        self._MaxHeaderAllowList = params.get("MaxHeaderAllowList")
+        self._MaxKeywordsPerDirection = params.get("MaxKeywordsPerDirection")
+        self._InlineBodyBytes = params.get("InlineBodyBytes")
+        self._MaxAcceptedBodyBytes = params.get("MaxAcceptedBodyBytes")
+        self._TransferChunkBytes = params.get("TransferChunkBytes")
+        self._MaxTransferChunkBytes = params.get("MaxTransferChunkBytes")
+        self._TransferTargetMaxChunks = params.get("TransferTargetMaxChunks")
+        self._MaxResponseBodyBytes = params.get("MaxResponseBodyBytes")
+        self._MaxStreamEventBytes = params.get("MaxStreamEventBytes")
+        self._StreamRelayMaxConcurrentRequests = params.get("StreamRelayMaxConcurrentRequests")
+        self._MinTimeoutMs = params.get("MinTimeoutMs")
+        self._MaxTimeoutMs = params.get("MaxTimeoutMs")
+        self._DefaultTimeoutMs = params.get("DefaultTimeoutMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailDecisionConfig(AbstractModel):
+    r"""自定义安全护栏审核响应判定配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContractMode: <p>已保存的判定模式。新配置仅支持 field_mapping；存量策略可能返回 standard_v2，查询、删除或停用不要求迁移，修改判定配置或重新启用前必须迁移。</p>
+        :type ContractMode: str
+        :param _BlockMessageMode: <p>必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+        :type BlockMessageMode: str
+        :param _BlockMessage: <p>本策略默认/兜底拦截提示，最长 512 个字符。未配置或为空时使用系统按请求语言选择的默认提示；不是替换后的业务响应 Body。</p>
+        :type BlockMessage: str
+        :param _RewriteEnabled: <p>是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+        :type RewriteEnabled: bool
+        :param _FieldMapping: <p>自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+        :type FieldMapping: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFieldMapping`
+        """
+        self._ContractMode = None
+        self._BlockMessageMode = None
+        self._BlockMessage = None
+        self._RewriteEnabled = None
+        self._FieldMapping = None
+
+    @property
+    def ContractMode(self):
+        r"""<p>已保存的判定模式。新配置仅支持 field_mapping；存量策略可能返回 standard_v2，查询、删除或停用不要求迁移，修改判定配置或重新启用前必须迁移。</p>
+        :rtype: str
+        """
+        return self._ContractMode
+
+    @ContractMode.setter
+    def ContractMode(self, ContractMode):
+        self._ContractMode = ContractMode
+
+    @property
+    def BlockMessageMode(self):
+        r"""<p>必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+        :rtype: str
+        """
+        return self._BlockMessageMode
+
+    @BlockMessageMode.setter
+    def BlockMessageMode(self, BlockMessageMode):
+        self._BlockMessageMode = BlockMessageMode
+
+    @property
+    def BlockMessage(self):
+        r"""<p>本策略默认/兜底拦截提示，最长 512 个字符。未配置或为空时使用系统按请求语言选择的默认提示；不是替换后的业务响应 Body。</p>
+        :rtype: str
+        """
+        return self._BlockMessage
+
+    @BlockMessage.setter
+    def BlockMessage(self, BlockMessage):
+        self._BlockMessage = BlockMessage
+
+    @property
+    def RewriteEnabled(self):
+        r"""<p>是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+        :rtype: bool
+        """
+        return self._RewriteEnabled
+
+    @RewriteEnabled.setter
+    def RewriteEnabled(self, RewriteEnabled):
+        self._RewriteEnabled = RewriteEnabled
+
+    @property
+    def FieldMapping(self):
+        r"""<p>自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFieldMapping`
+        """
+        return self._FieldMapping
+
+    @FieldMapping.setter
+    def FieldMapping(self, FieldMapping):
+        self._FieldMapping = FieldMapping
+
+
+    def _deserialize(self, params):
+        self._ContractMode = params.get("ContractMode")
+        self._BlockMessageMode = params.get("BlockMessageMode")
+        self._BlockMessage = params.get("BlockMessage")
+        self._RewriteEnabled = params.get("RewriteEnabled")
+        if params.get("FieldMapping") is not None:
+            self._FieldMapping = CustomGuardrailFieldMapping()
+            self._FieldMapping._deserialize(params.get("FieldMapping"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailDecisionConfigInput(AbstractModel):
+    r"""自定义安全护栏审核响应判定配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContractMode: <p>仅支持 field_mapping（自定义字段映射），必须显式填写；不允许 standard_v2、空字符串或 null。只决定如何解析审核响应，网关送审请求仍使用统一 Schema 2.0 封装。</p>
+        :type ContractMode: str
+        :param _BlockMessageMode: <p>必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+        :type BlockMessageMode: str
+        :param _FieldMapping: <p>自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+        :type FieldMapping: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFieldMappingInput`
+        :param _BlockMessage: <p>默认/兜底拦截提示，长度 1～512 字符，不是替换 Body。BlockMessageMode=default 时必填且不能为空白；创建/草稿测试使用 response 模式时可省略，后端补充系统兜底提示。修改时省略保留原值，显式空值不用于清空文案。</p>
+        :type BlockMessage: str
+        :param _RewriteEnabled: <p>是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewriteEnabled: bool
+        """
+        self._ContractMode = None
+        self._BlockMessageMode = None
+        self._FieldMapping = None
+        self._BlockMessage = None
+        self._RewriteEnabled = None
+
+    @property
+    def ContractMode(self):
+        r"""<p>仅支持 field_mapping（自定义字段映射），必须显式填写；不允许 standard_v2、空字符串或 null。只决定如何解析审核响应，网关送审请求仍使用统一 Schema 2.0 封装。</p>
+        :rtype: str
+        """
+        return self._ContractMode
+
+    @ContractMode.setter
+    def ContractMode(self, ContractMode):
+        self._ContractMode = ContractMode
+
+    @property
+    def BlockMessageMode(self):
+        r"""<p>必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+        :rtype: str
+        """
+        return self._BlockMessageMode
+
+    @BlockMessageMode.setter
+    def BlockMessageMode(self, BlockMessageMode):
+        self._BlockMessageMode = BlockMessageMode
+
+    @property
+    def FieldMapping(self):
+        r"""<p>自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFieldMappingInput`
+        """
+        return self._FieldMapping
+
+    @FieldMapping.setter
+    def FieldMapping(self, FieldMapping):
+        self._FieldMapping = FieldMapping
+
+    @property
+    def BlockMessage(self):
+        r"""<p>默认/兜底拦截提示，长度 1～512 字符，不是替换 Body。BlockMessageMode=default 时必填且不能为空白；创建/草稿测试使用 response 模式时可省略，后端补充系统兜底提示。修改时省略保留原值，显式空值不用于清空文案。</p>
+        :rtype: str
+        """
+        return self._BlockMessage
+
+    @BlockMessage.setter
+    def BlockMessage(self, BlockMessage):
+        self._BlockMessage = BlockMessage
+
+    @property
+    def RewriteEnabled(self):
+        r"""<p>是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._RewriteEnabled
+
+    @RewriteEnabled.setter
+    def RewriteEnabled(self, RewriteEnabled):
+        self._RewriteEnabled = RewriteEnabled
+
+
+    def _deserialize(self, params):
+        self._ContractMode = params.get("ContractMode")
+        self._BlockMessageMode = params.get("BlockMessageMode")
+        if params.get("FieldMapping") is not None:
+            self._FieldMapping = CustomGuardrailFieldMappingInput()
+            self._FieldMapping._deserialize(params.get("FieldMapping"))
+        self._BlockMessage = params.get("BlockMessage")
+        self._RewriteEnabled = params.get("RewriteEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailDecisionConfigPatch(AbstractModel):
+    r"""局部更新配置。只更新显式提供字段；未传字段保留。条件必填按合并后的完整策略校验，不会要求每次重传全部配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContractMode: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。仅支持 field_mapping（自定义字段映射），必须显式填写；不允许 standard_v2、空字符串或 null。只决定如何解析审核响应，网关送审请求仍使用统一 Schema 2.0 封装。</p>
+        :type ContractMode: str
+        :param _BlockMessageMode: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+        :type BlockMessageMode: str
+        :param _BlockMessage: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。默认/兜底拦截提示，长度 1～512 字符，不是替换 Body。BlockMessageMode=default 时必填且不能为空白；创建/草稿测试使用 response 模式时可省略，后端补充系统兜底提示。修改时省略保留原值，显式空值不用于清空文案。</p>
+        :type BlockMessage: str
+        :param _RewriteEnabled: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RewriteEnabled: bool
+        :param _FieldMapping: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+        :type FieldMapping: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFieldMappingPatch`
+        """
+        self._ContractMode = None
+        self._BlockMessageMode = None
+        self._BlockMessage = None
+        self._RewriteEnabled = None
+        self._FieldMapping = None
+
+    @property
+    def ContractMode(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。仅支持 field_mapping（自定义字段映射），必须显式填写；不允许 standard_v2、空字符串或 null。只决定如何解析审核响应，网关送审请求仍使用统一 Schema 2.0 封装。</p>
+        :rtype: str
+        """
+        return self._ContractMode
+
+    @ContractMode.setter
+    def ContractMode(self, ContractMode):
+        self._ContractMode = ContractMode
+
+    @property
+    def BlockMessageMode(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必须显式填写 default 或 response。default 使用 BlockMessage；response 使用 FieldMapping.MessageFieldPath 读取提示，值缺失或不合法时回退默认文案。default 时 BlockMessage 必填，response 时 MessageFieldPath 必填。</p>
+        :rtype: str
+        """
+        return self._BlockMessageMode
+
+    @BlockMessageMode.setter
+    def BlockMessageMode(self, BlockMessageMode):
+        self._BlockMessageMode = BlockMessageMode
+
+    @property
+    def BlockMessage(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。默认/兜底拦截提示，长度 1～512 字符，不是替换 Body。BlockMessageMode=default 时必填且不能为空白；创建/草稿测试使用 response 模式时可省略，后端补充系统兜底提示。修改时省略保留原值，显式空值不用于清空文案。</p>
+        :rtype: str
+        """
+        return self._BlockMessage
+
+    @BlockMessage.setter
+    def BlockMessage(self, BlockMessage):
+        self._BlockMessage = BlockMessage
+
+    @property
+    def RewriteEnabled(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。是否允许输出内容替换，省略为 false。开启且配置 RewriteFieldPath 后，输出审核响应只要存在该字段就优先 replace，不要求 HitFieldPath/HitValue 命中，也不要求引擎 decision=replace；替换字段不存在才按命中规则处理。输入永不替换；observe 只记录、不阻断或替换。非法替换正文是审核异常。流式仅替换当前未发送批次，不可撤回已发送内容。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._RewriteEnabled
+
+    @RewriteEnabled.setter
+    def RewriteEnabled(self, RewriteEnabled):
+        self._RewriteEnabled = RewriteEnabled
+
+    @property
+    def FieldMapping(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。自定义模式必填的响应字段映射。HitFieldPath 和 HitValue 必填。输出启用替换且替换字段存在时优先 replace；否则要求命中字段存在且为有效同类型标量，值相等时 block，不相等时 allow。缺失或非法命中字段属于无效审核响应，不能等同于安全放行。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFieldMappingPatch`
+        """
+        return self._FieldMapping
+
+    @FieldMapping.setter
+    def FieldMapping(self, FieldMapping):
+        self._FieldMapping = FieldMapping
+
+
+    def _deserialize(self, params):
+        self._ContractMode = params.get("ContractMode")
+        self._BlockMessageMode = params.get("BlockMessageMode")
+        self._BlockMessage = params.get("BlockMessage")
+        self._RewriteEnabled = params.get("RewriteEnabled")
+        if params.get("FieldMapping") is not None:
+            self._FieldMapping = CustomGuardrailFieldMappingPatch()
+            self._FieldMapping._deserialize(params.get("FieldMapping"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailFieldMapping(AbstractModel):
+    r"""自定义审核响应字段映射
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitFieldPath: <p>必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+        :type HitFieldPath: str
+        :param _HitValue: <p>必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+        :type HitValue: str
+        :param _MessageFieldPath: <p>BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+        :type MessageFieldPath: str
+        :param _RewriteFieldPath: <p>RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+        :type RewriteFieldPath: str
+        """
+        self._HitFieldPath = None
+        self._HitValue = None
+        self._MessageFieldPath = None
+        self._RewriteFieldPath = None
+
+    @property
+    def HitFieldPath(self):
+        r"""<p>必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+        :rtype: str
+        """
+        return self._HitFieldPath
+
+    @HitFieldPath.setter
+    def HitFieldPath(self, HitFieldPath):
+        self._HitFieldPath = HitFieldPath
+
+    @property
+    def HitValue(self):
+        r"""<p>必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+        :rtype: str
+        """
+        return self._HitValue
+
+    @HitValue.setter
+    def HitValue(self, HitValue):
+        self._HitValue = HitValue
+
+    @property
+    def MessageFieldPath(self):
+        r"""<p>BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+        :rtype: str
+        """
+        return self._MessageFieldPath
+
+    @MessageFieldPath.setter
+    def MessageFieldPath(self, MessageFieldPath):
+        self._MessageFieldPath = MessageFieldPath
+
+    @property
+    def RewriteFieldPath(self):
+        r"""<p>RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+        :rtype: str
+        """
+        return self._RewriteFieldPath
+
+    @RewriteFieldPath.setter
+    def RewriteFieldPath(self, RewriteFieldPath):
+        self._RewriteFieldPath = RewriteFieldPath
+
+
+    def _deserialize(self, params):
+        self._HitFieldPath = params.get("HitFieldPath")
+        self._HitValue = params.get("HitValue")
+        self._MessageFieldPath = params.get("MessageFieldPath")
+        self._RewriteFieldPath = params.get("RewriteFieldPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailFieldMappingInput(AbstractModel):
+    r"""自定义审核响应字段映射
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitFieldPath: <p>必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+        :type HitFieldPath: str
+        :param _HitValue: <p>必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+        :type HitValue: str
+        :param _MessageFieldPath: <p>BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+        :type MessageFieldPath: str
+        :param _RewriteFieldPath: <p>RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+        :type RewriteFieldPath: str
+        """
+        self._HitFieldPath = None
+        self._HitValue = None
+        self._MessageFieldPath = None
+        self._RewriteFieldPath = None
+
+    @property
+    def HitFieldPath(self):
+        r"""<p>必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+        :rtype: str
+        """
+        return self._HitFieldPath
+
+    @HitFieldPath.setter
+    def HitFieldPath(self, HitFieldPath):
+        self._HitFieldPath = HitFieldPath
+
+    @property
+    def HitValue(self):
+        r"""<p>必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+        :rtype: str
+        """
+        return self._HitValue
+
+    @HitValue.setter
+    def HitValue(self, HitValue):
+        self._HitValue = HitValue
+
+    @property
+    def MessageFieldPath(self):
+        r"""<p>BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+        :rtype: str
+        """
+        return self._MessageFieldPath
+
+    @MessageFieldPath.setter
+    def MessageFieldPath(self, MessageFieldPath):
+        self._MessageFieldPath = MessageFieldPath
+
+    @property
+    def RewriteFieldPath(self):
+        r"""<p>RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+        :rtype: str
+        """
+        return self._RewriteFieldPath
+
+    @RewriteFieldPath.setter
+    def RewriteFieldPath(self, RewriteFieldPath):
+        self._RewriteFieldPath = RewriteFieldPath
+
+
+    def _deserialize(self, params):
+        self._HitFieldPath = params.get("HitFieldPath")
+        self._HitValue = params.get("HitValue")
+        self._MessageFieldPath = params.get("MessageFieldPath")
+        self._RewriteFieldPath = params.get("RewriteFieldPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailFieldMappingPatch(AbstractModel):
+    r"""局部更新配置。只更新显式提供字段；未传字段保留。条件必填按合并后的完整策略校验，不会要求每次重传全部配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitFieldPath: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+        :type HitFieldPath: str
+        :param _HitValue: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+        :type HitValue: str
+        :param _MessageFieldPath: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+        :type MessageFieldPath: str
+        :param _RewriteFieldPath: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+        :type RewriteFieldPath: str
+        """
+        self._HitFieldPath = None
+        self._HitValue = None
+        self._MessageFieldPath = None
+        self._RewriteFieldPath = None
+
+    @property
+    def HitFieldPath(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填。命中字段的点分隔对象路径，例如 decision 或 result.blocked；不支持数组下标、JSONPath 或通配符。</p>
+        :rtype: str
+        """
+        return self._HitFieldPath
+
+    @HitFieldPath.setter
+    def HitFieldPath(self, HitFieldPath):
+        self._HitFieldPath = HitFieldPath
+
+    @property
+    def HitValue(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。必填，API 类型为 string。可填写 JSON 字符串、数字或布尔标量文本，也接受 block 等非空普通文本并规范化为 JSON 字符串。示例：block 或 "block" 匹配字符串，true 匹配布尔值，0 匹配数字。null、对象、数组和空白文本不支持；类型不同不视为普通未命中。</p>
+        :rtype: str
+        """
+        return self._HitValue
+
+    @HitValue.setter
+    def HitValue(self, HitValue):
+        self._HitValue = HitValue
+
+    @property
+    def MessageFieldPath(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。BlockMessageMode=response 时必填，例如 message 或 result.message；读取结果应为 1～512 字符的字符串，否则使用兜底文案。</p>
+        :rtype: str
+        """
+        return self._MessageFieldPath
+
+    @MessageFieldPath.setter
+    def MessageFieldPath(self, MessageFieldPath):
+        self._MessageFieldPath = MessageFieldPath
+
+    @property
+    def RewriteFieldPath(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。RewriteEnabled=true 时必填，例如 content.body；仅输出审核读取。字段存在即优先 replace，与命中值是否相等无关。JSON 替换值应是完整业务 JSON；SSE 必须是以空行结束的完整事件文本，替换当前未发送的 event_batch，不是整个流或某个 TCP chunk。输入不替换。</p>
+        :rtype: str
+        """
+        return self._RewriteFieldPath
+
+    @RewriteFieldPath.setter
+    def RewriteFieldPath(self, RewriteFieldPath):
+        self._RewriteFieldPath = RewriteFieldPath
+
+
+    def _deserialize(self, params):
+        self._HitFieldPath = params.get("HitFieldPath")
+        self._HitValue = params.get("HitValue")
+        self._MessageFieldPath = params.get("MessageFieldPath")
+        self._RewriteFieldPath = params.get("RewriteFieldPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailFilterConfig(AbstractModel):
+    r"""自定义安全护栏过滤与采样配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestStreamMode: <p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p>
+        :type RequestStreamMode: str
+        :param _ResponseStreamMode: <p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p>
+        :type ResponseStreamMode: str
+        :param _RequestKeywords: <p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p>
+        :type RequestKeywords: list of str
+        :param _ResponseKeywords: <p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p>
+        :type ResponseKeywords: list of str
+        :param _KeywordMatchMode: <p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p>
+        :type KeywordMatchMode: str
+        :param _KeywordCaseSensitive: <p>关键词匹配是否区分大小写，创建默认 false。</p>
+        :type KeywordCaseSensitive: bool
+        :param _SamplingEnabled: <p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p>
+        :type SamplingEnabled: bool
+        :param _RequestSamplingRate: <p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p>
+        :type RequestSamplingRate: float
+        :param _ResponseSamplingRate: <p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p>
+        :type ResponseSamplingRate: float
+        """
+        self._RequestStreamMode = None
+        self._ResponseStreamMode = None
+        self._RequestKeywords = None
+        self._ResponseKeywords = None
+        self._KeywordMatchMode = None
+        self._KeywordCaseSensitive = None
+        self._SamplingEnabled = None
+        self._RequestSamplingRate = None
+        self._ResponseSamplingRate = None
+
+    @property
+    def RequestStreamMode(self):
+        r"""<p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p>
+        :rtype: str
+        """
+        return self._RequestStreamMode
+
+    @RequestStreamMode.setter
+    def RequestStreamMode(self, RequestStreamMode):
+        self._RequestStreamMode = RequestStreamMode
+
+    @property
+    def ResponseStreamMode(self):
+        r"""<p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p>
+        :rtype: str
+        """
+        return self._ResponseStreamMode
+
+    @ResponseStreamMode.setter
+    def ResponseStreamMode(self, ResponseStreamMode):
+        self._ResponseStreamMode = ResponseStreamMode
+
+    @property
+    def RequestKeywords(self):
+        r"""<p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p>
+        :rtype: list of str
+        """
+        return self._RequestKeywords
+
+    @RequestKeywords.setter
+    def RequestKeywords(self, RequestKeywords):
+        self._RequestKeywords = RequestKeywords
+
+    @property
+    def ResponseKeywords(self):
+        r"""<p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p>
+        :rtype: list of str
+        """
+        return self._ResponseKeywords
+
+    @ResponseKeywords.setter
+    def ResponseKeywords(self, ResponseKeywords):
+        self._ResponseKeywords = ResponseKeywords
+
+    @property
+    def KeywordMatchMode(self):
+        r"""<p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p>
+        :rtype: str
+        """
+        return self._KeywordMatchMode
+
+    @KeywordMatchMode.setter
+    def KeywordMatchMode(self, KeywordMatchMode):
+        self._KeywordMatchMode = KeywordMatchMode
+
+    @property
+    def KeywordCaseSensitive(self):
+        r"""<p>关键词匹配是否区分大小写，创建默认 false。</p>
+        :rtype: bool
+        """
+        return self._KeywordCaseSensitive
+
+    @KeywordCaseSensitive.setter
+    def KeywordCaseSensitive(self, KeywordCaseSensitive):
+        self._KeywordCaseSensitive = KeywordCaseSensitive
+
+    @property
+    def SamplingEnabled(self):
+        r"""<p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p>
+        :rtype: bool
+        """
+        return self._SamplingEnabled
+
+    @SamplingEnabled.setter
+    def SamplingEnabled(self, SamplingEnabled):
+        self._SamplingEnabled = SamplingEnabled
+
+    @property
+    def RequestSamplingRate(self):
+        r"""<p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p>
+        :rtype: float
+        """
+        return self._RequestSamplingRate
+
+    @RequestSamplingRate.setter
+    def RequestSamplingRate(self, RequestSamplingRate):
+        self._RequestSamplingRate = RequestSamplingRate
+
+    @property
+    def ResponseSamplingRate(self):
+        r"""<p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p>
+        :rtype: float
+        """
+        return self._ResponseSamplingRate
+
+    @ResponseSamplingRate.setter
+    def ResponseSamplingRate(self, ResponseSamplingRate):
+        self._ResponseSamplingRate = ResponseSamplingRate
+
+
+    def _deserialize(self, params):
+        self._RequestStreamMode = params.get("RequestStreamMode")
+        self._ResponseStreamMode = params.get("ResponseStreamMode")
+        self._RequestKeywords = params.get("RequestKeywords")
+        self._ResponseKeywords = params.get("ResponseKeywords")
+        self._KeywordMatchMode = params.get("KeywordMatchMode")
+        self._KeywordCaseSensitive = params.get("KeywordCaseSensitive")
+        self._SamplingEnabled = params.get("SamplingEnabled")
+        self._RequestSamplingRate = params.get("RequestSamplingRate")
+        self._ResponseSamplingRate = params.get("ResponseSamplingRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailFilterConfigInput(AbstractModel):
+    r"""自定义安全护栏过滤与采样配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestStreamMode: <p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestStreamMode: str
+        :param _ResponseStreamMode: <p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseStreamMode: str
+        :param _RequestKeywords: <p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestKeywords: list of str
+        :param _ResponseKeywords: <p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseKeywords: list of str
+        :param _KeywordMatchMode: <p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeywordMatchMode: str
+        :param _KeywordCaseSensitive: <p>关键词匹配是否区分大小写，创建默认 false。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeywordCaseSensitive: bool
+        :param _SamplingEnabled: <p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SamplingEnabled: bool
+        :param _RequestSamplingRate: <p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestSamplingRate: float
+        :param _ResponseSamplingRate: <p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseSamplingRate: float
+        """
+        self._RequestStreamMode = None
+        self._ResponseStreamMode = None
+        self._RequestKeywords = None
+        self._ResponseKeywords = None
+        self._KeywordMatchMode = None
+        self._KeywordCaseSensitive = None
+        self._SamplingEnabled = None
+        self._RequestSamplingRate = None
+        self._ResponseSamplingRate = None
+
+    @property
+    def RequestStreamMode(self):
+        r"""<p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestStreamMode
+
+    @RequestStreamMode.setter
+    def RequestStreamMode(self, RequestStreamMode):
+        self._RequestStreamMode = RequestStreamMode
+
+    @property
+    def ResponseStreamMode(self):
+        r"""<p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResponseStreamMode
+
+    @ResponseStreamMode.setter
+    def ResponseStreamMode(self, ResponseStreamMode):
+        self._ResponseStreamMode = ResponseStreamMode
+
+    @property
+    def RequestKeywords(self):
+        r"""<p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._RequestKeywords
+
+    @RequestKeywords.setter
+    def RequestKeywords(self, RequestKeywords):
+        self._RequestKeywords = RequestKeywords
+
+    @property
+    def ResponseKeywords(self):
+        r"""<p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ResponseKeywords
+
+    @ResponseKeywords.setter
+    def ResponseKeywords(self, ResponseKeywords):
+        self._ResponseKeywords = ResponseKeywords
+
+    @property
+    def KeywordMatchMode(self):
+        r"""<p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KeywordMatchMode
+
+    @KeywordMatchMode.setter
+    def KeywordMatchMode(self, KeywordMatchMode):
+        self._KeywordMatchMode = KeywordMatchMode
+
+    @property
+    def KeywordCaseSensitive(self):
+        r"""<p>关键词匹配是否区分大小写，创建默认 false。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._KeywordCaseSensitive
+
+    @KeywordCaseSensitive.setter
+    def KeywordCaseSensitive(self, KeywordCaseSensitive):
+        self._KeywordCaseSensitive = KeywordCaseSensitive
+
+    @property
+    def SamplingEnabled(self):
+        r"""<p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SamplingEnabled
+
+    @SamplingEnabled.setter
+    def SamplingEnabled(self, SamplingEnabled):
+        self._SamplingEnabled = SamplingEnabled
+
+    @property
+    def RequestSamplingRate(self):
+        r"""<p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._RequestSamplingRate
+
+    @RequestSamplingRate.setter
+    def RequestSamplingRate(self, RequestSamplingRate):
+        self._RequestSamplingRate = RequestSamplingRate
+
+    @property
+    def ResponseSamplingRate(self):
+        r"""<p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ResponseSamplingRate
+
+    @ResponseSamplingRate.setter
+    def ResponseSamplingRate(self, ResponseSamplingRate):
+        self._ResponseSamplingRate = ResponseSamplingRate
+
+
+    def _deserialize(self, params):
+        self._RequestStreamMode = params.get("RequestStreamMode")
+        self._ResponseStreamMode = params.get("ResponseStreamMode")
+        self._RequestKeywords = params.get("RequestKeywords")
+        self._ResponseKeywords = params.get("ResponseKeywords")
+        self._KeywordMatchMode = params.get("KeywordMatchMode")
+        self._KeywordCaseSensitive = params.get("KeywordCaseSensitive")
+        self._SamplingEnabled = params.get("SamplingEnabled")
+        self._RequestSamplingRate = params.get("RequestSamplingRate")
+        self._ResponseSamplingRate = params.get("ResponseSamplingRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailFilterConfigPatch(AbstractModel):
+    r"""自定义安全护栏过滤与采样局部更新配置。仅更新显式传入的字段；省略字段保留原值，文中默认值指创建时默认值，不表示修改时重置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestStreamMode: <p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestStreamMode: str
+        :param _ResponseStreamMode: <p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseStreamMode: str
+        :param _RequestKeywords: <p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestKeywords: list of str
+        :param _ResponseKeywords: <p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseKeywords: list of str
+        :param _KeywordMatchMode: <p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeywordMatchMode: str
+        :param _KeywordCaseSensitive: <p>关键词匹配是否区分大小写，创建默认 false。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeywordCaseSensitive: bool
+        :param _SamplingEnabled: <p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SamplingEnabled: bool
+        :param _RequestSamplingRate: <p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestSamplingRate: float
+        :param _ResponseSamplingRate: <p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseSamplingRate: float
+        """
+        self._RequestStreamMode = None
+        self._ResponseStreamMode = None
+        self._RequestKeywords = None
+        self._ResponseKeywords = None
+        self._KeywordMatchMode = None
+        self._KeywordCaseSensitive = None
+        self._SamplingEnabled = None
+        self._RequestSamplingRate = None
+        self._ResponseSamplingRate = None
+
+    @property
+    def RequestStreamMode(self):
+        r"""<p>请求方向的流式筛选：all 全部（创建默认）、streaming 流式、non_streaming 非流式。依据请求的流式意图/协议识别；无法可靠判别时保守保留送审资格，不应依赖该字段实现强隔离。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestStreamMode
+
+    @RequestStreamMode.setter
+    def RequestStreamMode(self, RequestStreamMode):
+        self._RequestStreamMode = RequestStreamMode
+
+    @property
+    def ResponseStreamMode(self):
+        r"""<p>响应方向的流式筛选：all 全部（创建默认）、streaming 仅流式、non_streaming 仅非流式。开启输出审核并选择 streaming 可用于 SSE 响应审核。此字段不设置窗口大小或分片步长。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResponseStreamMode
+
+    @ResponseStreamMode.setter
+    def ResponseStreamMode(self, ResponseStreamMode):
+        self._ResponseStreamMode = ResponseStreamMode
+
+    @property
+    def RequestKeywords(self):
+        r"""<p>请求送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤；非空时按 KeywordMatchMode 满足条件才送审，不是本地违禁词阻断列表。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._RequestKeywords
+
+    @RequestKeywords.setter
+    def RequestKeywords(self, RequestKeywords):
+        self._RequestKeywords = RequestKeywords
+
+    @property
+    def ResponseKeywords(self):
+        r"""<p>响应送审触发关键词；最多 64 项，每项非空且最长 128 字符。默认 [] 不按关键词过滤。流式审核按增量审核单元执行筛选，不代表等待完整响应后统一判断。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ResponseKeywords
+
+    @ResponseKeywords.setter
+    def ResponseKeywords(self, ResponseKeywords):
+        self._ResponseKeywords = ResponseKeywords
+
+    @property
+    def KeywordMatchMode(self):
+        r"""<p>关键词匹配方式：any 任一关键词命中（创建默认）；all 所有关键词命中。按文本字面子串匹配，不是正则表达式。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KeywordMatchMode
+
+    @KeywordMatchMode.setter
+    def KeywordMatchMode(self, KeywordMatchMode):
+        self._KeywordMatchMode = KeywordMatchMode
+
+    @property
+    def KeywordCaseSensitive(self):
+        r"""<p>关键词匹配是否区分大小写，创建默认 false。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._KeywordCaseSensitive
+
+    @KeywordCaseSensitive.setter
+    def KeywordCaseSensitive(self, KeywordCaseSensitive):
+        self._KeywordCaseSensitive = KeywordCaseSensitive
+
+    @property
+    def SamplingEnabled(self):
+        r"""<p>是否启用送审采样，创建默认 false（不按采样率跳过）。采样与方向、流式、关键词过滤叠加；开启低比例采样会使未抽中的内容不送审。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SamplingEnabled
+
+    @SamplingEnabled.setter
+    def SamplingEnabled(self, SamplingEnabled):
+        self._SamplingEnabled = SamplingEnabled
+
+    @property
+    def RequestSamplingRate(self):
+        r"""<p>请求送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。0 不抽取，1 全量，0.1 表示 10%，不是填写整数 10。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._RequestSamplingRate
+
+    @RequestSamplingRate.setter
+    def RequestSamplingRate(self, RequestSamplingRate):
+        self._RequestSamplingRate = RequestSamplingRate
+
+    @property
+    def ResponseSamplingRate(self):
+        r"""<p>响应送审采样比例，范围 0～1，创建默认 1；SamplingEnabled=true 时使用。同一请求响应流保持一致的采样选择，不是对每个 SSE 网络 chunk 独立抽样。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ResponseSamplingRate
+
+    @ResponseSamplingRate.setter
+    def ResponseSamplingRate(self, ResponseSamplingRate):
+        self._ResponseSamplingRate = ResponseSamplingRate
+
+
+    def _deserialize(self, params):
+        self._RequestStreamMode = params.get("RequestStreamMode")
+        self._ResponseStreamMode = params.get("ResponseStreamMode")
+        self._RequestKeywords = params.get("RequestKeywords")
+        self._ResponseKeywords = params.get("ResponseKeywords")
+        self._KeywordMatchMode = params.get("KeywordMatchMode")
+        self._KeywordCaseSensitive = params.get("KeywordCaseSensitive")
+        self._SamplingEnabled = params.get("SamplingEnabled")
+        self._RequestSamplingRate = params.get("RequestSamplingRate")
+        self._ResponseSamplingRate = params.get("ResponseSamplingRate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailHit(AbstractModel):
+    r"""自定义安全护栏审核记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: <p>业务网关请求 ID；不是本次云 API 响应的 RequestId。流式同一业务请求可产生多条审核记录。</p>
+        :type RequestId: str
+        :param _Timestamp: <p>审核记录 Unix 毫秒级时间戳；注意查询入参 StartTime/EndTime 为秒级。</p>
+        :type Timestamp: int
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _PolicyId: <p>策略 ID</p>
+        :type PolicyId: str
+        :param _PolicyName: <p>策略名称</p>
+        :type PolicyName: str
+        :param _ResourceType: <p>业务资源类型</p>
+        :type ResourceType: str
+        :param _ResourceId: <p>业务资源 ID</p>
+        :type ResourceId: str
+        :param _RouteId: <p>Kong Route ID</p>
+        :type RouteId: str
+        :param _Protocol: <p>业务协议</p>
+        :type Protocol: str
+        :param _Direction: <p>审核方向：request 或 response</p>
+        :type Direction: str
+        :param _Streaming: <p>是否为流式审核</p>
+        :type Streaming: bool
+        :param _Final: <p>该审核单元是否标记为最终单元；不是是否命中/是否连接正常结束的判断依据。</p>
+        :type Final: bool
+        :param _Decision: <p>归一化后的审核判定，可能为 allow、block、replace、error；不是原始自定义字段的任意值。观察模式仍可记录命中判定。</p>
+        :type Decision: str
+        :param _ConfiguredAction: <p>策略配置动作</p>
+        :type ConfiguredAction: str
+        :param _EffectiveAction: <p>该审核记录的策略处理结果，如 allow、block、replace、error。需与 Decision、ConfiguredAction、ErrorCode 联合分析；记录不等于客户端已成功收到全部响应。</p>
+        :type EffectiveAction: str
+        :param _Rewritten: <p>内容是否被改写</p>
+        :type Rewritten: bool
+        :param _Blocked: <p>请求或响应是否被拦截</p>
+        :type Blocked: bool
+        :param _Downgraded: <p>本审核记录是否因失败放行发生降级；为 true 时不能认为内容已经审核通过。</p>
+        :type Downgraded: bool
+        :param _ProviderStatusCode: <p>审核服务 HTTP 状态码</p>
+        :type ProviderStatusCode: int
+        :param _LatencyMs: <p>该审核调用耗时，单位毫秒，可含小数；不是完整模型请求时长或客户端首字延迟。</p>
+        :type LatencyMs: float
+        :param _ErrorCode: <p>稳定错误码</p>
+        :type ErrorCode: str
+        :param _Reason: <p>审核原因或错误摘要</p>
+        :type Reason: str
+        """
+        self._RequestId = None
+        self._Timestamp = None
+        self._GatewayId = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._ResourceType = None
+        self._ResourceId = None
+        self._RouteId = None
+        self._Protocol = None
+        self._Direction = None
+        self._Streaming = None
+        self._Final = None
+        self._Decision = None
+        self._ConfiguredAction = None
+        self._EffectiveAction = None
+        self._Rewritten = None
+        self._Blocked = None
+        self._Downgraded = None
+        self._ProviderStatusCode = None
+        self._LatencyMs = None
+        self._ErrorCode = None
+        self._Reason = None
+
+    @property
+    def RequestId(self):
+        r"""<p>业务网关请求 ID；不是本次云 API 响应的 RequestId。流式同一业务请求可产生多条审核记录。</p>
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def Timestamp(self):
+        r"""<p>审核记录 Unix 毫秒级时间戳；注意查询入参 StartTime/EndTime 为秒级。</p>
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        r"""<p>策略名称</p>
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def ResourceType(self):
+        r"""<p>业务资源类型</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""<p>业务资源 ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RouteId(self):
+        r"""<p>Kong Route ID</p>
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def Protocol(self):
+        r"""<p>业务协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Direction(self):
+        r"""<p>审核方向：request 或 response</p>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def Streaming(self):
+        r"""<p>是否为流式审核</p>
+        :rtype: bool
+        """
+        return self._Streaming
+
+    @Streaming.setter
+    def Streaming(self, Streaming):
+        self._Streaming = Streaming
+
+    @property
+    def Final(self):
+        r"""<p>该审核单元是否标记为最终单元；不是是否命中/是否连接正常结束的判断依据。</p>
+        :rtype: bool
+        """
+        return self._Final
+
+    @Final.setter
+    def Final(self, Final):
+        self._Final = Final
+
+    @property
+    def Decision(self):
+        r"""<p>归一化后的审核判定，可能为 allow、block、replace、error；不是原始自定义字段的任意值。观察模式仍可记录命中判定。</p>
+        :rtype: str
+        """
+        return self._Decision
+
+    @Decision.setter
+    def Decision(self, Decision):
+        self._Decision = Decision
+
+    @property
+    def ConfiguredAction(self):
+        r"""<p>策略配置动作</p>
+        :rtype: str
+        """
+        return self._ConfiguredAction
+
+    @ConfiguredAction.setter
+    def ConfiguredAction(self, ConfiguredAction):
+        self._ConfiguredAction = ConfiguredAction
+
+    @property
+    def EffectiveAction(self):
+        r"""<p>该审核记录的策略处理结果，如 allow、block、replace、error。需与 Decision、ConfiguredAction、ErrorCode 联合分析；记录不等于客户端已成功收到全部响应。</p>
+        :rtype: str
+        """
+        return self._EffectiveAction
+
+    @EffectiveAction.setter
+    def EffectiveAction(self, EffectiveAction):
+        self._EffectiveAction = EffectiveAction
+
+    @property
+    def Rewritten(self):
+        r"""<p>内容是否被改写</p>
+        :rtype: bool
+        """
+        return self._Rewritten
+
+    @Rewritten.setter
+    def Rewritten(self, Rewritten):
+        self._Rewritten = Rewritten
+
+    @property
+    def Blocked(self):
+        r"""<p>请求或响应是否被拦截</p>
+        :rtype: bool
+        """
+        return self._Blocked
+
+    @Blocked.setter
+    def Blocked(self, Blocked):
+        self._Blocked = Blocked
+
+    @property
+    def Downgraded(self):
+        r"""<p>本审核记录是否因失败放行发生降级；为 true 时不能认为内容已经审核通过。</p>
+        :rtype: bool
+        """
+        return self._Downgraded
+
+    @Downgraded.setter
+    def Downgraded(self, Downgraded):
+        self._Downgraded = Downgraded
+
+    @property
+    def ProviderStatusCode(self):
+        r"""<p>审核服务 HTTP 状态码</p>
+        :rtype: int
+        """
+        return self._ProviderStatusCode
+
+    @ProviderStatusCode.setter
+    def ProviderStatusCode(self, ProviderStatusCode):
+        self._ProviderStatusCode = ProviderStatusCode
+
+    @property
+    def LatencyMs(self):
+        r"""<p>该审核调用耗时，单位毫秒，可含小数；不是完整模型请求时长或客户端首字延迟。</p>
+        :rtype: float
+        """
+        return self._LatencyMs
+
+    @LatencyMs.setter
+    def LatencyMs(self, LatencyMs):
+        self._LatencyMs = LatencyMs
+
+    @property
+    def ErrorCode(self):
+        r"""<p>稳定错误码</p>
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Reason(self):
+        r"""<p>审核原因或错误摘要</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+        self._Timestamp = params.get("Timestamp")
+        self._GatewayId = params.get("GatewayId")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._RouteId = params.get("RouteId")
+        self._Protocol = params.get("Protocol")
+        self._Direction = params.get("Direction")
+        self._Streaming = params.get("Streaming")
+        self._Final = params.get("Final")
+        self._Decision = params.get("Decision")
+        self._ConfiguredAction = params.get("ConfiguredAction")
+        self._EffectiveAction = params.get("EffectiveAction")
+        self._Rewritten = params.get("Rewritten")
+        self._Blocked = params.get("Blocked")
+        self._Downgraded = params.get("Downgraded")
+        self._ProviderStatusCode = params.get("ProviderStatusCode")
+        self._LatencyMs = params.get("LatencyMs")
+        self._ErrorCode = params.get("ErrorCode")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailHitFilter(AbstractModel):
+    r"""自定义安全护栏审核记录过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>支持 PolicyId、Direction、Decision、EffectiveAction、ResourceType、ResourceId、Protocol、RouteId、RequestId、ErrorCode。Direction 使用 request/response；Protocol 应使用实际审核日志中的协议名，如 mcp-streamable-http。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Values: <p>每个过滤项仅支持一个非空字符串值，不支持同一项多值 OR；不同过滤项之间为 AND。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""<p>支持 PolicyId、Direction、Decision、EffectiveAction、ResourceType、ResourceId、Protocol、RouteId、RequestId、ErrorCode。Direction 使用 request/response；Protocol 应使用实际审核日志中的协议名，如 mcp-streamable-http。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""<p>每个过滤项仅支持一个非空字符串值，不支持同一项多值 OR；不同过滤项之间为 AND。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailPolicy(AbstractModel):
+    r"""自定义安全护栏策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: <p>策略 ID</p>
+        :type PolicyId: str
+        :param _Name: <p>策略名称</p>
+        :type Name: str
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _Enabled: <p>策略期望启用状态；实际生效还需检查 EffectiveEnabled 和 SyncStatus。</p>
+        :type Enabled: bool
+        :param _EffectiveEnabled: <p>当前控制面计算值：Enabled=true 且 SyncStatus=synced 时为 true。不代表一次真实业务请求已通过审核，也不替代 DP 同步/链路验证。</p>
+        :type EffectiveEnabled: bool
+        :param _ServiceConfig: <p>审核服务配置</p>
+        :type ServiceConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailServiceConfig`
+        :param _AuthConfig: <p>审核引擎鉴权的脱敏视图，仅返回鉴权类型、Header 名和密钥存在状态，不返回 ApiKey。</p>
+        :type AuthConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailAuthConfig`
+        :param _DecisionConfig: <p>审核响应判定配置</p>
+        :type DecisionConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailDecisionConfig`
+        :param _BehaviorConfig: <p>处理行为配置</p>
+        :type BehaviorConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailBehaviorConfig`
+        :param _FilterConfig: <p>过滤与采样配置</p>
+        :type FilterConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFilterConfig`
+        :param _Scope: <p>生效范围</p>
+        :type Scope: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailScope`
+        :param _Bindings: <p>业务资源到 Kong Route 的绑定及插件投影信息，一个业务资源可能对应多个 Route。</p>
+        :type Bindings: list of CustomGuardrailPolicyBinding
+        :param _SyncStatus: <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :type SyncStatus: str
+        :param _SyncError: <p>配置同步错误摘要，无错误时可能省略。</p>
+        :type SyncError: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _ModificationTime: <p>最后修改时间</p>
+        :type ModificationTime: str
+        """
+        self._PolicyId = None
+        self._Name = None
+        self._Description = None
+        self._Enabled = None
+        self._EffectiveEnabled = None
+        self._ServiceConfig = None
+        self._AuthConfig = None
+        self._DecisionConfig = None
+        self._BehaviorConfig = None
+        self._FilterConfig = None
+        self._Scope = None
+        self._Bindings = None
+        self._SyncStatus = None
+        self._SyncError = None
+        self._CreateTime = None
+        self._ModificationTime = None
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Name(self):
+        r"""<p>策略名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Enabled(self):
+        r"""<p>策略期望启用状态；实际生效还需检查 EffectiveEnabled 和 SyncStatus。</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def EffectiveEnabled(self):
+        r"""<p>当前控制面计算值：Enabled=true 且 SyncStatus=synced 时为 true。不代表一次真实业务请求已通过审核，也不替代 DP 同步/链路验证。</p>
+        :rtype: bool
+        """
+        return self._EffectiveEnabled
+
+    @EffectiveEnabled.setter
+    def EffectiveEnabled(self, EffectiveEnabled):
+        self._EffectiveEnabled = EffectiveEnabled
+
+    @property
+    def ServiceConfig(self):
+        r"""<p>审核服务配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailServiceConfig`
+        """
+        return self._ServiceConfig
+
+    @ServiceConfig.setter
+    def ServiceConfig(self, ServiceConfig):
+        self._ServiceConfig = ServiceConfig
+
+    @property
+    def AuthConfig(self):
+        r"""<p>审核引擎鉴权的脱敏视图，仅返回鉴权类型、Header 名和密钥存在状态，不返回 ApiKey。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailAuthConfig`
+        """
+        return self._AuthConfig
+
+    @AuthConfig.setter
+    def AuthConfig(self, AuthConfig):
+        self._AuthConfig = AuthConfig
+
+    @property
+    def DecisionConfig(self):
+        r"""<p>审核响应判定配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailDecisionConfig`
+        """
+        return self._DecisionConfig
+
+    @DecisionConfig.setter
+    def DecisionConfig(self, DecisionConfig):
+        self._DecisionConfig = DecisionConfig
+
+    @property
+    def BehaviorConfig(self):
+        r"""<p>处理行为配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailBehaviorConfig`
+        """
+        return self._BehaviorConfig
+
+    @BehaviorConfig.setter
+    def BehaviorConfig(self, BehaviorConfig):
+        self._BehaviorConfig = BehaviorConfig
+
+    @property
+    def FilterConfig(self):
+        r"""<p>过滤与采样配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFilterConfig`
+        """
+        return self._FilterConfig
+
+    @FilterConfig.setter
+    def FilterConfig(self, FilterConfig):
+        self._FilterConfig = FilterConfig
+
+    @property
+    def Scope(self):
+        r"""<p>生效范围</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailScope`
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Bindings(self):
+        r"""<p>业务资源到 Kong Route 的绑定及插件投影信息，一个业务资源可能对应多个 Route。</p>
+        :rtype: list of CustomGuardrailPolicyBinding
+        """
+        return self._Bindings
+
+    @Bindings.setter
+    def Bindings(self, Bindings):
+        self._Bindings = Bindings
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SyncError(self):
+        r"""<p>配置同步错误摘要，无错误时可能省略。</p>
+        :rtype: str
+        """
+        return self._SyncError
+
+    @SyncError.setter
+    def SyncError(self, SyncError):
+        self._SyncError = SyncError
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModificationTime(self):
+        r"""<p>最后修改时间</p>
+        :rtype: str
+        """
+        return self._ModificationTime
+
+    @ModificationTime.setter
+    def ModificationTime(self, ModificationTime):
+        self._ModificationTime = ModificationTime
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Enabled = params.get("Enabled")
+        self._EffectiveEnabled = params.get("EffectiveEnabled")
+        if params.get("ServiceConfig") is not None:
+            self._ServiceConfig = CustomGuardrailServiceConfig()
+            self._ServiceConfig._deserialize(params.get("ServiceConfig"))
+        if params.get("AuthConfig") is not None:
+            self._AuthConfig = CustomGuardrailAuthConfig()
+            self._AuthConfig._deserialize(params.get("AuthConfig"))
+        if params.get("DecisionConfig") is not None:
+            self._DecisionConfig = CustomGuardrailDecisionConfig()
+            self._DecisionConfig._deserialize(params.get("DecisionConfig"))
+        if params.get("BehaviorConfig") is not None:
+            self._BehaviorConfig = CustomGuardrailBehaviorConfig()
+            self._BehaviorConfig._deserialize(params.get("BehaviorConfig"))
+        if params.get("FilterConfig") is not None:
+            self._FilterConfig = CustomGuardrailFilterConfig()
+            self._FilterConfig._deserialize(params.get("FilterConfig"))
+        if params.get("Scope") is not None:
+            self._Scope = CustomGuardrailScope()
+            self._Scope._deserialize(params.get("Scope"))
+        if params.get("Bindings") is not None:
+            self._Bindings = []
+            for item in params.get("Bindings"):
+                obj = CustomGuardrailPolicyBinding()
+                obj._deserialize(item)
+                self._Bindings.append(obj)
+        self._SyncStatus = params.get("SyncStatus")
+        self._SyncError = params.get("SyncError")
+        self._CreateTime = params.get("CreateTime")
+        self._ModificationTime = params.get("ModificationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailPolicyBinding(AbstractModel):
+    r"""自定义安全护栏到 Kong Route 的运行态投影
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>业务资源类型</p>
+        :type ResourceType: str
+        :param _ResourceId: <p>业务资源 ID</p>
+        :type ResourceId: str
+        :param _ResourceName: <p>业务资源名称</p>
+        :type ResourceName: str
+        :param _Path: <p>资源访问路径</p>
+        :type Path: str
+        :param _Protocol: <p>数据面解析协议</p>
+        :type Protocol: str
+        :param _RouteId: <p>底层 Kong Route ID</p>
+        :type RouteId: str
+        :param _PluginId: <p>绑定 Route 上的 cngw-ai-custom-guardrail 插件实例 ID；未投影、禁用或同步失败时可能不存在。</p>
+        :type PluginId: str
+        :param _SyncStatus: <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :type SyncStatus: str
+        :param _SyncError: <p>最近一次同步错误摘要</p>
+        :type SyncError: str
+        """
+        self._ResourceType = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._Path = None
+        self._Protocol = None
+        self._RouteId = None
+        self._PluginId = None
+        self._SyncStatus = None
+        self._SyncError = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>业务资源类型</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""<p>业务资源 ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""<p>业务资源名称</p>
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def Path(self):
+        r"""<p>资源访问路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Protocol(self):
+        r"""<p>数据面解析协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def RouteId(self):
+        r"""<p>底层 Kong Route ID</p>
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def PluginId(self):
+        r"""<p>绑定 Route 上的 cngw-ai-custom-guardrail 插件实例 ID；未投影、禁用或同步失败时可能不存在。</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SyncError(self):
+        r"""<p>最近一次同步错误摘要</p>
+        :rtype: str
+        """
+        return self._SyncError
+
+    @SyncError.setter
+    def SyncError(self, SyncError):
+        self._SyncError = SyncError
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._Path = params.get("Path")
+        self._Protocol = params.get("Protocol")
+        self._RouteId = params.get("RouteId")
+        self._PluginId = params.get("PluginId")
+        self._SyncStatus = params.get("SyncStatus")
+        self._SyncError = params.get("SyncError")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailPolicyFilter(AbstractModel):
+    r"""自定义安全护栏策略列表过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>过滤字段：Enabled、Direction、HandleAction、BindType、SyncStatus；名称区分大小写。Direction 使用 input/output/both。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Values: <p>至少一个字符串值；同一过滤项内多个值为 OR，不同过滤项之间为 AND。例如 Enabled 的值为字符串 "true"，不是布尔值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""<p>过滤字段：Enabled、Direction、HandleAction、BindType、SyncStatus；名称区分大小写。Direction 使用 input/output/both。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""<p>至少一个字符串值；同一过滤项内多个值为 OR，不同过滤项之间为 AND。例如 Enabled 的值为字符串 "true"，不是布尔值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailResourceRef(AbstractModel):
+    r"""自定义安全护栏业务资源引用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>被审核的业务资源类型：model_api 模型 API；mcp_server MCP Server（当前支持 Streamable HTTP）；agent_api Agent API（当前支持 A2A）。</p>
+        :type ResourceType: str
+        :param _ResourceId: <p>上述类型的管控业务资源 ID，可从 DescribeAIGWCustomGuardrailBindableResources 获取；不是审核引擎 ServiceId，也不是 Kong RouteId。请原样使用接口返回 ID。</p>
+        :type ResourceId: str
+        """
+        self._ResourceType = None
+        self._ResourceId = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>被审核的业务资源类型：model_api 模型 API；mcp_server MCP Server（当前支持 Streamable HTTP）；agent_api Agent API（当前支持 A2A）。</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""<p>上述类型的管控业务资源 ID，可从 DescribeAIGWCustomGuardrailBindableResources 获取；不是审核引擎 ServiceId，也不是 Kong RouteId。请原样使用接口返回 ID。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailResourceRefInput(AbstractModel):
+    r"""自定义安全护栏业务资源引用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>被审核的业务资源类型：model_api 模型 API；mcp_server MCP Server（当前支持 Streamable HTTP）；agent_api Agent API（当前支持 A2A）。</p>
+        :type ResourceType: str
+        :param _ResourceId: <p>上述类型的管控业务资源 ID，可从 DescribeAIGWCustomGuardrailBindableResources 获取；不是审核引擎 ServiceId，也不是 Kong RouteId。请原样使用接口返回 ID。</p>
+        :type ResourceId: str
+        """
+        self._ResourceType = None
+        self._ResourceId = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>被审核的业务资源类型：model_api 模型 API；mcp_server MCP Server（当前支持 Streamable HTTP）；agent_api Agent API（当前支持 A2A）。</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""<p>上述类型的管控业务资源 ID，可从 DescribeAIGWCustomGuardrailBindableResources 获取；不是审核引擎 ServiceId，也不是 Kong RouteId。请原样使用接口返回 ID。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailScope(AbstractModel):
+    r"""自定义安全护栏生效范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BindType: <p>绑定方式：resource 显式指定业务资源；global 覆盖网关中当前支持的业务资源，由平台关联到其 Kong Route，并随受支持的资源变更协调绑定。不是创建一个独立的 Kong global 插件。相同 Route 不能同时被多个自定义护栏策略占用。</p>
+        :type BindType: str
+        :param _Resources: <p>BindType=resource 时必填，1～200 个资源，ResourceType/ResourceId 组合不得重复；global 时不应填写资源或传 []。Modify 传入 Scope 时替换整个范围，不是增量追加。暂不纳入 Dify/Custom Agent 和 Legacy SSE MCP。</p>
+        :type Resources: list of CustomGuardrailResourceRef
+        """
+        self._BindType = None
+        self._Resources = None
+
+    @property
+    def BindType(self):
+        r"""<p>绑定方式：resource 显式指定业务资源；global 覆盖网关中当前支持的业务资源，由平台关联到其 Kong Route，并随受支持的资源变更协调绑定。不是创建一个独立的 Kong global 插件。相同 Route 不能同时被多个自定义护栏策略占用。</p>
+        :rtype: str
+        """
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def Resources(self):
+        r"""<p>BindType=resource 时必填，1～200 个资源，ResourceType/ResourceId 组合不得重复；global 时不应填写资源或传 []。Modify 传入 Scope 时替换整个范围，不是增量追加。暂不纳入 Dify/Custom Agent 和 Legacy SSE MCP。</p>
+        :rtype: list of CustomGuardrailResourceRef
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+
+    def _deserialize(self, params):
+        self._BindType = params.get("BindType")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = CustomGuardrailResourceRef()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailScopeInput(AbstractModel):
+    r"""自定义安全护栏生效范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BindType: <p>绑定方式：resource 显式指定业务资源；global 覆盖网关中当前支持的业务资源，由平台关联到其 Kong Route，并随受支持的资源变更协调绑定。不是创建一个独立的 Kong global 插件。相同 Route 不能同时被多个自定义护栏策略占用。</p>
+        :type BindType: str
+        :param _Resources: <p>BindType=resource 时必填，1～200 个资源，ResourceType/ResourceId 组合不得重复；global 时不应填写资源或传 []。Modify 传入 Scope 时替换整个范围，不是增量追加。暂不纳入 Dify/Custom Agent 和 Legacy SSE MCP。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resources: list of CustomGuardrailResourceRefInput
+        """
+        self._BindType = None
+        self._Resources = None
+
+    @property
+    def BindType(self):
+        r"""<p>绑定方式：resource 显式指定业务资源；global 覆盖网关中当前支持的业务资源，由平台关联到其 Kong Route，并随受支持的资源变更协调绑定。不是创建一个独立的 Kong global 插件。相同 Route 不能同时被多个自定义护栏策略占用。</p>
+        :rtype: str
+        """
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def Resources(self):
+        r"""<p>BindType=resource 时必填，1～200 个资源，ResourceType/ResourceId 组合不得重复；global 时不应填写资源或传 []。Modify 传入 Scope 时替换整个范围，不是增量追加。暂不纳入 Dify/Custom Agent 和 Legacy SSE MCP。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of CustomGuardrailResourceRefInput
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+
+    def _deserialize(self, params):
+        self._BindType = params.get("BindType")
+        if params.get("Resources") is not None:
+            self._Resources = []
+            for item in params.get("Resources"):
+                obj = CustomGuardrailResourceRefInput()
+                obj._deserialize(item)
+                self._Resources.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailServiceConfig(AbstractModel):
+    r"""自定义安全护栏审核服务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressMode: <p>审核服务地址来源：manual 手动填写完整 URL，service 引用本网关服务管理中的 Kong Service。二者互斥；创建时按接口要求显式传入。</p>
+        :type AddressMode: str
+        :param _ServiceId: <p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p>
+        :type ServiceId: str
+        :param _Endpoint: <p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p>
+        :type Endpoint: str
+        :param _SSLVerify: <p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p>
+        :type SSLVerify: bool
+        :param _QueryPassthroughEnabled: <p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p>
+        :type QueryPassthroughEnabled: bool
+        :param _HeaderAllowList: <p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p>
+        :type HeaderAllowList: list of str
+        """
+        self._AddressMode = None
+        self._ServiceId = None
+        self._Endpoint = None
+        self._SSLVerify = None
+        self._QueryPassthroughEnabled = None
+        self._HeaderAllowList = None
+
+    @property
+    def AddressMode(self):
+        r"""<p>审核服务地址来源：manual 手动填写完整 URL，service 引用本网关服务管理中的 Kong Service。二者互斥；创建时按接口要求显式传入。</p>
+        :rtype: str
+        """
+        return self._AddressMode
+
+    @AddressMode.setter
+    def AddressMode(self, AddressMode):
+        self._AddressMode = AddressMode
+
+    @property
+    def ServiceId(self):
+        r"""<p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Endpoint(self):
+        r"""<p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def SSLVerify(self):
+        r"""<p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p>
+        :rtype: bool
+        """
+        return self._SSLVerify
+
+    @SSLVerify.setter
+    def SSLVerify(self, SSLVerify):
+        self._SSLVerify = SSLVerify
+
+    @property
+    def QueryPassthroughEnabled(self):
+        r"""<p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p>
+        :rtype: bool
+        """
+        return self._QueryPassthroughEnabled
+
+    @QueryPassthroughEnabled.setter
+    def QueryPassthroughEnabled(self, QueryPassthroughEnabled):
+        self._QueryPassthroughEnabled = QueryPassthroughEnabled
+
+    @property
+    def HeaderAllowList(self):
+        r"""<p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p>
+        :rtype: list of str
+        """
+        return self._HeaderAllowList
+
+    @HeaderAllowList.setter
+    def HeaderAllowList(self, HeaderAllowList):
+        self._HeaderAllowList = HeaderAllowList
+
+
+    def _deserialize(self, params):
+        self._AddressMode = params.get("AddressMode")
+        self._ServiceId = params.get("ServiceId")
+        self._Endpoint = params.get("Endpoint")
+        self._SSLVerify = params.get("SSLVerify")
+        self._QueryPassthroughEnabled = params.get("QueryPassthroughEnabled")
+        self._HeaderAllowList = params.get("HeaderAllowList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailServiceConfigInput(AbstractModel):
+    r"""自定义安全护栏审核服务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressMode: <p>审核服务地址来源，必须显式选择 service（已有服务）或 manual（手动 URL）；不得省略、为空或 null。service 时 ServiceId 必填，manual 时 Endpoint 必填，两种地址互斥。</p>
+        :type AddressMode: str
+        :param _ServiceId: <p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p>
+        :type ServiceId: str
+        :param _Endpoint: <p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p>
+        :type Endpoint: str
+        :param _SSLVerify: <p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSLVerify: bool
+        :param _QueryPassthroughEnabled: <p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryPassthroughEnabled: bool
+        :param _HeaderAllowList: <p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderAllowList: list of str
+        """
+        self._AddressMode = None
+        self._ServiceId = None
+        self._Endpoint = None
+        self._SSLVerify = None
+        self._QueryPassthroughEnabled = None
+        self._HeaderAllowList = None
+
+    @property
+    def AddressMode(self):
+        r"""<p>审核服务地址来源，必须显式选择 service（已有服务）或 manual（手动 URL）；不得省略、为空或 null。service 时 ServiceId 必填，manual 时 Endpoint 必填，两种地址互斥。</p>
+        :rtype: str
+        """
+        return self._AddressMode
+
+    @AddressMode.setter
+    def AddressMode(self, AddressMode):
+        self._AddressMode = AddressMode
+
+    @property
+    def ServiceId(self):
+        r"""<p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Endpoint(self):
+        r"""<p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def SSLVerify(self):
+        r"""<p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SSLVerify
+
+    @SSLVerify.setter
+    def SSLVerify(self, SSLVerify):
+        self._SSLVerify = SSLVerify
+
+    @property
+    def QueryPassthroughEnabled(self):
+        r"""<p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._QueryPassthroughEnabled
+
+    @QueryPassthroughEnabled.setter
+    def QueryPassthroughEnabled(self, QueryPassthroughEnabled):
+        self._QueryPassthroughEnabled = QueryPassthroughEnabled
+
+    @property
+    def HeaderAllowList(self):
+        r"""<p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._HeaderAllowList
+
+    @HeaderAllowList.setter
+    def HeaderAllowList(self, HeaderAllowList):
+        self._HeaderAllowList = HeaderAllowList
+
+
+    def _deserialize(self, params):
+        self._AddressMode = params.get("AddressMode")
+        self._ServiceId = params.get("ServiceId")
+        self._Endpoint = params.get("Endpoint")
+        self._SSLVerify = params.get("SSLVerify")
+        self._QueryPassthroughEnabled = params.get("QueryPassthroughEnabled")
+        self._HeaderAllowList = params.get("HeaderAllowList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailServiceConfigPatch(AbstractModel):
+    r"""局部更新配置。只更新显式提供字段；未传字段保留。条件必填按合并后的完整策略校验，不会要求每次重传全部配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressMode: <p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。审核服务地址来源，必须显式选择 service（已有服务）或 manual（手动 URL）；不得省略、为空或 null。service 时 ServiceId 必填，manual 时 Endpoint 必填，两种地址互斥。</p>
+        :type AddressMode: str
+        :param _ServiceId: <p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p><p>修改时省略本字段保留原值。</p>
+        :type ServiceId: str
+        :param _Endpoint: <p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p><p>修改时省略本字段保留原值。</p>
+        :type Endpoint: str
+        :param _SSLVerify: <p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSLVerify: bool
+        :param _QueryPassthroughEnabled: <p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueryPassthroughEnabled: bool
+        :param _HeaderAllowList: <p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeaderAllowList: list of str
+        """
+        self._AddressMode = None
+        self._ServiceId = None
+        self._Endpoint = None
+        self._SSLVerify = None
+        self._QueryPassthroughEnabled = None
+        self._HeaderAllowList = None
+
+    @property
+    def AddressMode(self):
+        r"""<p>局部更新：省略本字段保留原值；显式填写须满足枚举及条件必填约束。审核服务地址来源，必须显式选择 service（已有服务）或 manual（手动 URL）；不得省略、为空或 null。service 时 ServiceId 必填，manual 时 Endpoint 必填，两种地址互斥。</p>
+        :rtype: str
+        """
+        return self._AddressMode
+
+    @AddressMode.setter
+    def AddressMode(self, AddressMode):
+        self._AddressMode = AddressMode
+
+    @property
+    def ServiceId(self):
+        r"""<p>AddressMode=service 时必填。填写审核引擎对应的 Kong Service ID，不是被审核的模型 API、MCP Server 或 Agent API ID。按该服务的 protocol、host、port、path 拼出审核 URL；直接请求该 URL，不是经过该服务的网关 Route，也不会自动继承其 Route 插件或业务鉴权。manual 模式不得填写。</p><p>修改时省略本字段保留原值。</p>
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Endpoint(self):
+        r"""<p>AddressMode=manual 时必填，审核引擎接受 POST 的 HTTP/HTTPS 完整 URL，例如 https://audit.example.com/v2/audit；路径以实际引擎为准，不会自动补 /v2/audit。service 模式不得填写。请填写 URL 原文，不要粘贴 Markdown 链接。</p><p>修改时省略本字段保留原值。</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def SSLVerify(self):
+        r"""<p>是否校验审核引擎 HTTPS 证书，创建默认 true；仅影响审核 HTTP 调用，不是客户端访问网关的 TLS 设置。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SSLVerify
+
+    @SSLVerify.setter
+    def SSLVerify(self, SSLVerify):
+        self._SSLVerify = SSLVerify
+
+    @property
+    def QueryPassthroughEnabled(self):
+        r"""<p>是否把原业务请求的完整 Query 字符串写入送审包，创建默认 false。开启可能把 Query 中的凭据或个人信息传给审核服务，须确认接收方可信；不是审核服务 URL 自身的 Query 开关。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._QueryPassthroughEnabled
+
+    @QueryPassthroughEnabled.setter
+    def QueryPassthroughEnabled(self, QueryPassthroughEnabled):
+        self._QueryPassthroughEnabled = QueryPassthroughEnabled
+
+    @property
+    def HeaderAllowList(self):
+        r"""<p>允许额外写入送审包的原始 HTTP Header 名称，最多 64 项，每项最长 128 字节；名称不区分大小写，默认 []。内置保留 content-type、accept、mcp-protocol-version、a2a-version；Authorization、Cookie、API Key、MCP 会话标识和内部 Relay 等受限头不会因加入本列表而放行。审核服务自身的鉴权请使用 AuthConfig。</p><p>修改时省略本字段保留原值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._HeaderAllowList
+
+    @HeaderAllowList.setter
+    def HeaderAllowList(self, HeaderAllowList):
+        self._HeaderAllowList = HeaderAllowList
+
+
+    def _deserialize(self, params):
+        self._AddressMode = params.get("AddressMode")
+        self._ServiceId = params.get("ServiceId")
+        self._Endpoint = params.get("Endpoint")
+        self._SSLVerify = params.get("SSLVerify")
+        self._QueryPassthroughEnabled = params.get("QueryPassthroughEnabled")
+        self._HeaderAllowList = params.get("HeaderAllowList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomGuardrailSyncFailure(AbstractModel):
+    r"""自定义安全护栏资源同步失败信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>资源类型；策略级错误时为 policy</p>
+        :type ResourceType: str
+        :param _ResourceId: <p>资源 ID</p>
+        :type ResourceId: str
+        :param _RouteId: <p>底层 Kong Route ID</p>
+        :type RouteId: str
+        :param _Error: <p>错误摘要</p>
+        :type Error: str
+        """
+        self._ResourceType = None
+        self._ResourceId = None
+        self._RouteId = None
+        self._Error = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型；策略级错误时为 policy</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源 ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RouteId(self):
+        r"""<p>底层 Kong Route ID</p>
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def Error(self):
+        r"""<p>错误摘要</p>
+        :rtype: str
+        """
+        return self._Error
+
+    @Error.setter
+    def Error(self, Error):
+        self._Error = Error
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._RouteId = params.get("RouteId")
+        self._Error = params.get("Error")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DefaultKongRoute(AbstractModel):
     r"""默认kong路由，目前只在 LLM 模型 API相 关接口使用
 
@@ -14877,6 +18775,158 @@ class DefaultKongRoute(AbstractModel):
         self._ID = params.get("ID")
         self._Methods = params.get("Methods")
         self._Paths = params.get("Paths")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAIGWCustomGuardrailPolicyRequest(AbstractModel):
+    r"""DeleteAIGWCustomGuardrailPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _PolicyId: <p>策略 ID</p>
+        :type PolicyId: str
+        """
+        self._GatewayId = None
+        self._PolicyId = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAIGWCustomGuardrailPolicyResponse(AbstractModel):
+    r"""DeleteAIGWCustomGuardrailPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.DeleteAIGWCustomGuardrailPolicyResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DeleteAIGWCustomGuardrailPolicyResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DeleteAIGWCustomGuardrailPolicyResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAIGWCustomGuardrailPolicyResult(AbstractModel):
+    r"""删除自定义安全护栏策略结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: <p>是否完成插件投影清理并删除策略。false 时策略保留供重试，应检查 FailedResources。</p>
+        :type Success: bool
+        :param _FailedResources: <p>投影清理失败的业务资源</p>
+        :type FailedResources: list of CustomGuardrailSyncFailure
+        """
+        self._Success = None
+        self._FailedResources = None
+
+    @property
+    def Success(self):
+        r"""<p>是否完成插件投影清理并删除策略。false 时策略保留供重试，应检查 FailedResources。</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def FailedResources(self):
+        r"""<p>投影清理失败的业务资源</p>
+        :rtype: list of CustomGuardrailSyncFailure
+        """
+        return self._FailedResources
+
+    @FailedResources.setter
+    def FailedResources(self, FailedResources):
+        self._FailedResources = FailedResources
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        if params.get("FailedResources") is not None:
+            self._FailedResources = []
+            for item in params.get("FailedResources"):
+                obj = CustomGuardrailSyncFailure()
+                obj._deserialize(item)
+                self._FailedResources.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15143,6 +19193,100 @@ class DeleteCloudNativeAPIGatewayConsumerRequest(AbstractModel):
 
 class DeleteCloudNativeAPIGatewayConsumerResponse(AbstractModel):
     r"""DeleteCloudNativeAPIGatewayConsumer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayIPRestrictionRequest(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayIPRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _SourceId: 路由或服务的id
+        :type SourceId: str
+        :param _SourceType: 访问控制插件绑定的资源类型：route|service
+        :type SourceType: str
+        """
+        self._GatewayId = None
+        self._SourceId = None
+        self._SourceType = None
+
+    @property
+    def GatewayId(self):
+        r"""网关ID
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def SourceId(self):
+        r"""路由或服务的id
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceType(self):
+        r"""访问控制插件绑定的资源类型：route|service
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._SourceId = params.get("SourceId")
+        self._SourceType = params.get("SourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayIPRestrictionResponse(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayIPRestriction返回参数结构体
 
     """
 
@@ -15825,6 +19969,1265 @@ class DeleteCloudNativeAPIGatewaySecretKeyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DescribeAIGWCustomGuardrailBindableResourcesRequest(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailBindableResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _ResourceType: <p>资源类型：model_api、mcp_server 或 agent_api</p>
+        :type ResourceType: str
+        :param _PolicyId: <p>当前策略 ID；用于排除自身占用</p>
+        :type PolicyId: str
+        :param _Keyword: <p>按资源名称或路径模糊搜索</p>
+        :type Keyword: str
+        :param _Offset: <p>分页偏移量，最小 0</p>
+        :type Offset: int
+        :param _Limit: <p>单页数量，范围 1～100，默认 20</p>
+        :type Limit: int
+        """
+        self._GatewayId = None
+        self._ResourceType = None
+        self._PolicyId = None
+        self._Keyword = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型：model_api、mcp_server 或 agent_api</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def PolicyId(self):
+        r"""<p>当前策略 ID；用于排除自身占用</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Keyword(self):
+        r"""<p>按资源名称或路径模糊搜索</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，最小 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单页数量，范围 1～100，默认 20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ResourceType = params.get("ResourceType")
+        self._PolicyId = params.get("PolicyId")
+        self._Keyword = params.get("Keyword")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailBindableResourcesResponse(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailBindableResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailBindableResourcesResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailBindableResourcesResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeAIGWCustomGuardrailBindableResourcesResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIGWCustomGuardrailBindableResourcesResult(AbstractModel):
+    r"""查询自定义安全护栏可绑定资源结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的资源总数</p>
+        :type TotalCount: int
+        :param _DataList: <p>可绑定资源列表</p>
+        :type DataList: list of CustomGuardrailBindableResource
+        """
+        self._TotalCount = None
+        self._DataList = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的资源总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataList(self):
+        r"""<p>可绑定资源列表</p>
+        :rtype: list of CustomGuardrailBindableResource
+        """
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataList") is not None:
+            self._DataList = []
+            for item in params.get("DataList"):
+                obj = CustomGuardrailBindableResource()
+                obj._deserialize(item)
+                self._DataList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailCapabilitiesRequest(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailCapabilities请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        """
+        self._GatewayId = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailCapabilitiesResponse(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailCapabilities返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailCapabilitiesResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailCapabilitiesResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeAIGWCustomGuardrailCapabilitiesResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIGWCustomGuardrailCapabilitiesResult(AbstractModel):
+    r"""查询自定义安全护栏能力结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinGatewayVersion: <p>支持该能力的最低网关版本，当前为 3.9.6</p>
+        :type MinGatewayVersion: str
+        :param _SupportedResourceTypes: <p>支持绑定的业务资源类型</p>
+        :type SupportedResourceTypes: list of str
+        :param _SupportedProtocols: <p>当前控制面允许绑定的协议分类，以返回值为准；不表示每种协议变体均可用。目前不开放 Dify、Custom Agent、Legacy SSE MCP。</p>
+        :type SupportedProtocols: list of str
+        :param _SupportedDirections: <p>当前允许配置的审核方向，仅 input（仅输入）和 both（输入加输出）。</p>
+        :type SupportedDirections: list of str
+        :param _SupportsStreaming: <p>是否支持流式请求与响应审核</p>
+        :type SupportsStreaming: bool
+        :param _SupportsFieldMapping: <p>是否支持自定义审核响应字段映射</p>
+        :type SupportsFieldMapping: bool
+        :param _DefaultBlockMessage: <p>系统默认拦截提示</p>
+        :type DefaultBlockMessage: str
+        :param _MaxBlockMessageLength: <p>拦截提示最大字符数</p>
+        :type MaxBlockMessageLength: int
+        :param _Limits: <p>控制面公布的能力限制/默认值，不是当前请求可修改的配置对象，也不是逐个 DP 实时读取值。窗口大小、并发审核数等未作为策略 API 入参开放。</p>
+        :type Limits: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailCapabilityLimits`
+        """
+        self._MinGatewayVersion = None
+        self._SupportedResourceTypes = None
+        self._SupportedProtocols = None
+        self._SupportedDirections = None
+        self._SupportsStreaming = None
+        self._SupportsFieldMapping = None
+        self._DefaultBlockMessage = None
+        self._MaxBlockMessageLength = None
+        self._Limits = None
+
+    @property
+    def MinGatewayVersion(self):
+        r"""<p>支持该能力的最低网关版本，当前为 3.9.6</p>
+        :rtype: str
+        """
+        return self._MinGatewayVersion
+
+    @MinGatewayVersion.setter
+    def MinGatewayVersion(self, MinGatewayVersion):
+        self._MinGatewayVersion = MinGatewayVersion
+
+    @property
+    def SupportedResourceTypes(self):
+        r"""<p>支持绑定的业务资源类型</p>
+        :rtype: list of str
+        """
+        return self._SupportedResourceTypes
+
+    @SupportedResourceTypes.setter
+    def SupportedResourceTypes(self, SupportedResourceTypes):
+        self._SupportedResourceTypes = SupportedResourceTypes
+
+    @property
+    def SupportedProtocols(self):
+        r"""<p>当前控制面允许绑定的协议分类，以返回值为准；不表示每种协议变体均可用。目前不开放 Dify、Custom Agent、Legacy SSE MCP。</p>
+        :rtype: list of str
+        """
+        return self._SupportedProtocols
+
+    @SupportedProtocols.setter
+    def SupportedProtocols(self, SupportedProtocols):
+        self._SupportedProtocols = SupportedProtocols
+
+    @property
+    def SupportedDirections(self):
+        r"""<p>当前允许配置的审核方向，仅 input（仅输入）和 both（输入加输出）。</p>
+        :rtype: list of str
+        """
+        return self._SupportedDirections
+
+    @SupportedDirections.setter
+    def SupportedDirections(self, SupportedDirections):
+        self._SupportedDirections = SupportedDirections
+
+    @property
+    def SupportsStreaming(self):
+        r"""<p>是否支持流式请求与响应审核</p>
+        :rtype: bool
+        """
+        return self._SupportsStreaming
+
+    @SupportsStreaming.setter
+    def SupportsStreaming(self, SupportsStreaming):
+        self._SupportsStreaming = SupportsStreaming
+
+    @property
+    def SupportsFieldMapping(self):
+        r"""<p>是否支持自定义审核响应字段映射</p>
+        :rtype: bool
+        """
+        return self._SupportsFieldMapping
+
+    @SupportsFieldMapping.setter
+    def SupportsFieldMapping(self, SupportsFieldMapping):
+        self._SupportsFieldMapping = SupportsFieldMapping
+
+    @property
+    def DefaultBlockMessage(self):
+        r"""<p>系统默认拦截提示</p>
+        :rtype: str
+        """
+        return self._DefaultBlockMessage
+
+    @DefaultBlockMessage.setter
+    def DefaultBlockMessage(self, DefaultBlockMessage):
+        self._DefaultBlockMessage = DefaultBlockMessage
+
+    @property
+    def MaxBlockMessageLength(self):
+        r"""<p>拦截提示最大字符数</p>
+        :rtype: int
+        """
+        return self._MaxBlockMessageLength
+
+    @MaxBlockMessageLength.setter
+    def MaxBlockMessageLength(self, MaxBlockMessageLength):
+        self._MaxBlockMessageLength = MaxBlockMessageLength
+
+    @property
+    def Limits(self):
+        r"""<p>控制面公布的能力限制/默认值，不是当前请求可修改的配置对象，也不是逐个 DP 实时读取值。窗口大小、并发审核数等未作为策略 API 入参开放。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailCapabilityLimits`
+        """
+        return self._Limits
+
+    @Limits.setter
+    def Limits(self, Limits):
+        self._Limits = Limits
+
+
+    def _deserialize(self, params):
+        self._MinGatewayVersion = params.get("MinGatewayVersion")
+        self._SupportedResourceTypes = params.get("SupportedResourceTypes")
+        self._SupportedProtocols = params.get("SupportedProtocols")
+        self._SupportedDirections = params.get("SupportedDirections")
+        self._SupportsStreaming = params.get("SupportsStreaming")
+        self._SupportsFieldMapping = params.get("SupportsFieldMapping")
+        self._DefaultBlockMessage = params.get("DefaultBlockMessage")
+        self._MaxBlockMessageLength = params.get("MaxBlockMessageLength")
+        if params.get("Limits") is not None:
+            self._Limits = CustomGuardrailCapabilityLimits()
+            self._Limits._deserialize(params.get("Limits"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailHitsRequest(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailHits请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _StartTime: <p>查询起始时间，Unix 秒级时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>查询结束时间，Unix 秒级时间戳</p>
+        :type EndTime: int
+        :param _Offset: <p>分页偏移量，最小 0</p>
+        :type Offset: int
+        :param _Limit: <p>单页数量，范围 1～100，默认 20</p>
+        :type Limit: int
+        :param _Filters: <p>审核记录过滤条件</p>
+        :type Filters: list of CustomGuardrailHitFilter
+        """
+        self._GatewayId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def StartTime(self):
+        r"""<p>查询起始时间，Unix 秒级时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，Unix 秒级时间戳</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，最小 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单页数量，范围 1～100，默认 20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>审核记录过滤条件</p>
+        :rtype: list of CustomGuardrailHitFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CustomGuardrailHitFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailHitsResponse(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailHits返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailHitsResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailHitsResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeAIGWCustomGuardrailHitsResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIGWCustomGuardrailHitsResult(AbstractModel):
+    r"""查询自定义安全护栏命中记录结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>时间范围和过滤条件内匹配的审核日志总数，分页前统计；不再限定为最多 1000 条。日志异常条目可能无法解析为 Hits。</p>
+        :type TotalCount: int
+        :param _Hits: <p>当前页审核记录，按时间倒序；同一业务请求的多次送审会产生多条记录，不能直接把条数当业务请求数。</p>
+        :type Hits: list of CustomGuardrailHit
+        :param _Truncated: <p>兼容字段，当前分页查询返回 false；用 Offset、Limit、TotalCount 翻页。1000 条限制只适用于导出接口。</p>
+        :type Truncated: bool
+        """
+        self._TotalCount = None
+        self._Hits = None
+        self._Truncated = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>时间范围和过滤条件内匹配的审核日志总数，分页前统计；不再限定为最多 1000 条。日志异常条目可能无法解析为 Hits。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Hits(self):
+        r"""<p>当前页审核记录，按时间倒序；同一业务请求的多次送审会产生多条记录，不能直接把条数当业务请求数。</p>
+        :rtype: list of CustomGuardrailHit
+        """
+        return self._Hits
+
+    @Hits.setter
+    def Hits(self, Hits):
+        self._Hits = Hits
+
+    @property
+    def Truncated(self):
+        r"""<p>兼容字段，当前分页查询返回 false；用 Offset、Limit、TotalCount 翻页。1000 条限制只适用于导出接口。</p>
+        :rtype: bool
+        """
+        return self._Truncated
+
+    @Truncated.setter
+    def Truncated(self, Truncated):
+        self._Truncated = Truncated
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Hits") is not None:
+            self._Hits = []
+            for item in params.get("Hits"):
+                obj = CustomGuardrailHit()
+                obj._deserialize(item)
+                self._Hits.append(obj)
+        self._Truncated = params.get("Truncated")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailPolicyListRequest(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailPolicyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _Limit: <p>单页数量，范围 1～100</p>
+        :type Limit: int
+        :param _Keyword: <p>按策略名称或描述模糊搜索</p>
+        :type Keyword: str
+        :param _Filters: <p>策略过滤条件</p>
+        :type Filters: list of CustomGuardrailPolicyFilter
+        :param _Offset: <p>分页偏移量，最小 0</p>
+        :type Offset: int
+        """
+        self._GatewayId = None
+        self._Limit = None
+        self._Keyword = None
+        self._Filters = None
+        self._Offset = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Limit(self):
+        r"""<p>单页数量，范围 1～100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Keyword(self):
+        r"""<p>按策略名称或描述模糊搜索</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Filters(self):
+        r"""<p>策略过滤条件</p>
+        :rtype: list of CustomGuardrailPolicyFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，最小 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Limit = params.get("Limit")
+        self._Keyword = params.get("Keyword")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CustomGuardrailPolicyFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailPolicyListResponse(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailPolicyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailPolicyListResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailPolicyListResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeAIGWCustomGuardrailPolicyListResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIGWCustomGuardrailPolicyListResult(AbstractModel):
+    r"""查询自定义安全护栏策略列表结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的策略总数</p>
+        :type TotalCount: int
+        :param _DataList: <p>策略列表</p>
+        :type DataList: list of CustomGuardrailPolicy
+        """
+        self._TotalCount = None
+        self._DataList = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的策略总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataList(self):
+        r"""<p>策略列表</p>
+        :rtype: list of CustomGuardrailPolicy
+        """
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataList") is not None:
+            self._DataList = []
+            for item in params.get("DataList"):
+                obj = CustomGuardrailPolicy()
+                obj._deserialize(item)
+                self._DataList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailPolicyRequest(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _PolicyId: <p>策略 ID</p>
+        :type PolicyId: str
+        """
+        self._GatewayId = None
+        self._PolicyId = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._PolicyId = params.get("PolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIGWCustomGuardrailPolicyResponse(AbstractModel):
+    r"""DescribeAIGWCustomGuardrailPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailPolicyResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeAIGWCustomGuardrailPolicyResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeAIGWCustomGuardrailPolicyResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIGWCustomGuardrailPolicyResult(AbstractModel):
+    r"""查询自定义安全护栏策略详情结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyId: <p>策略 ID</p>
+        :type PolicyId: str
+        :param _Name: <p>策略名称</p>
+        :type Name: str
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _Enabled: <p>策略期望启用状态；实际生效还需检查 EffectiveEnabled 和 SyncStatus。</p>
+        :type Enabled: bool
+        :param _EffectiveEnabled: <p>当前控制面计算值：Enabled=true 且 SyncStatus=synced 时为 true。不代表一次真实业务请求已通过审核，也不替代 DP 同步/链路验证。</p>
+        :type EffectiveEnabled: bool
+        :param _ServiceConfig: <p>审核服务配置</p>
+        :type ServiceConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailServiceConfig`
+        :param _AuthConfig: <p>审核引擎鉴权的脱敏视图，仅返回鉴权类型、Header 名和密钥存在状态，不返回 ApiKey。</p>
+        :type AuthConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailAuthConfig`
+        :param _DecisionConfig: <p>审核响应判定配置</p>
+        :type DecisionConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailDecisionConfig`
+        :param _BehaviorConfig: <p>处理行为配置</p>
+        :type BehaviorConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailBehaviorConfig`
+        :param _FilterConfig: <p>过滤与采样配置</p>
+        :type FilterConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFilterConfig`
+        :param _Scope: <p>生效范围</p>
+        :type Scope: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailScope`
+        :param _Bindings: <p>业务资源到 Kong Route 的绑定及插件投影信息，一个业务资源可能对应多个 Route。</p>
+        :type Bindings: list of CustomGuardrailPolicyBinding
+        :param _SyncStatus: <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :type SyncStatus: str
+        :param _SyncError: <p>配置同步错误摘要，无错误时可能省略。</p>
+        :type SyncError: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _ModificationTime: <p>最后修改时间</p>
+        :type ModificationTime: str
+        """
+        self._PolicyId = None
+        self._Name = None
+        self._Description = None
+        self._Enabled = None
+        self._EffectiveEnabled = None
+        self._ServiceConfig = None
+        self._AuthConfig = None
+        self._DecisionConfig = None
+        self._BehaviorConfig = None
+        self._FilterConfig = None
+        self._Scope = None
+        self._Bindings = None
+        self._SyncStatus = None
+        self._SyncError = None
+        self._CreateTime = None
+        self._ModificationTime = None
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Name(self):
+        r"""<p>策略名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Enabled(self):
+        r"""<p>策略期望启用状态；实际生效还需检查 EffectiveEnabled 和 SyncStatus。</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def EffectiveEnabled(self):
+        r"""<p>当前控制面计算值：Enabled=true 且 SyncStatus=synced 时为 true。不代表一次真实业务请求已通过审核，也不替代 DP 同步/链路验证。</p>
+        :rtype: bool
+        """
+        return self._EffectiveEnabled
+
+    @EffectiveEnabled.setter
+    def EffectiveEnabled(self, EffectiveEnabled):
+        self._EffectiveEnabled = EffectiveEnabled
+
+    @property
+    def ServiceConfig(self):
+        r"""<p>审核服务配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailServiceConfig`
+        """
+        return self._ServiceConfig
+
+    @ServiceConfig.setter
+    def ServiceConfig(self, ServiceConfig):
+        self._ServiceConfig = ServiceConfig
+
+    @property
+    def AuthConfig(self):
+        r"""<p>审核引擎鉴权的脱敏视图，仅返回鉴权类型、Header 名和密钥存在状态，不返回 ApiKey。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailAuthConfig`
+        """
+        return self._AuthConfig
+
+    @AuthConfig.setter
+    def AuthConfig(self, AuthConfig):
+        self._AuthConfig = AuthConfig
+
+    @property
+    def DecisionConfig(self):
+        r"""<p>审核响应判定配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailDecisionConfig`
+        """
+        return self._DecisionConfig
+
+    @DecisionConfig.setter
+    def DecisionConfig(self, DecisionConfig):
+        self._DecisionConfig = DecisionConfig
+
+    @property
+    def BehaviorConfig(self):
+        r"""<p>处理行为配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailBehaviorConfig`
+        """
+        return self._BehaviorConfig
+
+    @BehaviorConfig.setter
+    def BehaviorConfig(self, BehaviorConfig):
+        self._BehaviorConfig = BehaviorConfig
+
+    @property
+    def FilterConfig(self):
+        r"""<p>过滤与采样配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFilterConfig`
+        """
+        return self._FilterConfig
+
+    @FilterConfig.setter
+    def FilterConfig(self, FilterConfig):
+        self._FilterConfig = FilterConfig
+
+    @property
+    def Scope(self):
+        r"""<p>生效范围</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailScope`
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Bindings(self):
+        r"""<p>业务资源到 Kong Route 的绑定及插件投影信息，一个业务资源可能对应多个 Route。</p>
+        :rtype: list of CustomGuardrailPolicyBinding
+        """
+        return self._Bindings
+
+    @Bindings.setter
+    def Bindings(self, Bindings):
+        self._Bindings = Bindings
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SyncError(self):
+        r"""<p>配置同步错误摘要，无错误时可能省略。</p>
+        :rtype: str
+        """
+        return self._SyncError
+
+    @SyncError.setter
+    def SyncError(self, SyncError):
+        self._SyncError = SyncError
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModificationTime(self):
+        r"""<p>最后修改时间</p>
+        :rtype: str
+        """
+        return self._ModificationTime
+
+    @ModificationTime.setter
+    def ModificationTime(self, ModificationTime):
+        self._ModificationTime = ModificationTime
+
+
+    def _deserialize(self, params):
+        self._PolicyId = params.get("PolicyId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Enabled = params.get("Enabled")
+        self._EffectiveEnabled = params.get("EffectiveEnabled")
+        if params.get("ServiceConfig") is not None:
+            self._ServiceConfig = CustomGuardrailServiceConfig()
+            self._ServiceConfig._deserialize(params.get("ServiceConfig"))
+        if params.get("AuthConfig") is not None:
+            self._AuthConfig = CustomGuardrailAuthConfig()
+            self._AuthConfig._deserialize(params.get("AuthConfig"))
+        if params.get("DecisionConfig") is not None:
+            self._DecisionConfig = CustomGuardrailDecisionConfig()
+            self._DecisionConfig._deserialize(params.get("DecisionConfig"))
+        if params.get("BehaviorConfig") is not None:
+            self._BehaviorConfig = CustomGuardrailBehaviorConfig()
+            self._BehaviorConfig._deserialize(params.get("BehaviorConfig"))
+        if params.get("FilterConfig") is not None:
+            self._FilterConfig = CustomGuardrailFilterConfig()
+            self._FilterConfig._deserialize(params.get("FilterConfig"))
+        if params.get("Scope") is not None:
+            self._Scope = CustomGuardrailScope()
+            self._Scope._deserialize(params.get("Scope"))
+        if params.get("Bindings") is not None:
+            self._Bindings = []
+            for item in params.get("Bindings"):
+                obj = CustomGuardrailPolicyBinding()
+                obj._deserialize(item)
+                self._Bindings.append(obj)
+        self._SyncStatus = params.get("SyncStatus")
+        self._SyncError = params.get("SyncError")
+        self._CreateTime = params.get("CreateTime")
+        self._ModificationTime = params.get("ModificationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeCNGWServicesWithRoutesRequest(AbstractModel):
@@ -16549,6 +21952,119 @@ class DescribeCloudNativeAPIGatewayConsumerResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = CNAPIGwConsumer()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayIPRestrictionRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayIPRestriction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _SourceId: 路由或服务的id
+        :type SourceId: str
+        :param _SourceType: 访问控制插件绑定的资源类型：route|service
+        :type SourceType: str
+        """
+        self._GatewayId = None
+        self._SourceId = None
+        self._SourceType = None
+
+    @property
+    def GatewayId(self):
+        r"""网关ID
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def SourceId(self):
+        r"""路由或服务的id
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceType(self):
+        r"""访问控制插件绑定的资源类型：route|service
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._SourceId = params.get("SourceId")
+        self._SourceType = params.get("SourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayIPRestrictionResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayIPRestriction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.DescribeKongIpRestrictionResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeKongIpRestrictionResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeKongIpRestrictionResult()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -19265,6 +24781,339 @@ class DescribeCloudNativeAPIGatewaySecretKeyValueResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeKongIpRestrictionResult(AbstractModel):
+    r"""查询云原生网关访问控制配置出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressList: cidr｜ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AddressList: list of str
+        :param _Enabled: 是否启用插件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        :param _RestrictionType: 访问控制类型：whiteList｜blackList
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestrictionType: str
+        :param _SourceId: 路由或服务的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceId: str
+        :param _SourceType: 访问控制插件绑定的资源类型：route | service
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceType: str
+        """
+        self._AddressList = None
+        self._Enabled = None
+        self._RestrictionType = None
+        self._SourceId = None
+        self._SourceType = None
+
+    @property
+    def AddressList(self):
+        r"""cidr｜ip
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AddressList
+
+    @AddressList.setter
+    def AddressList(self, AddressList):
+        self._AddressList = AddressList
+
+    @property
+    def Enabled(self):
+        r"""是否启用插件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def RestrictionType(self):
+        r"""访问控制类型：whiteList｜blackList
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RestrictionType
+
+    @RestrictionType.setter
+    def RestrictionType(self, RestrictionType):
+        self._RestrictionType = RestrictionType
+
+    @property
+    def SourceId(self):
+        r"""路由或服务的id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceType(self):
+        r"""访问控制插件绑定的资源类型：route | service
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._AddressList = params.get("AddressList")
+        self._Enabled = params.get("Enabled")
+        self._RestrictionType = params.get("RestrictionType")
+        self._SourceId = params.get("SourceId")
+        self._SourceType = params.get("SourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportAIGWCustomGuardrailHitsRequest(AbstractModel):
+    r"""ExportAIGWCustomGuardrailHits请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _StartTime: <p>导出起始时间，Unix 秒级时间戳</p>
+        :type StartTime: int
+        :param _EndTime: <p>导出结束时间，Unix 秒级时间戳</p>
+        :type EndTime: int
+        :param _Filters: <p>审核记录过滤条件</p>
+        :type Filters: list of CustomGuardrailHitFilter
+        :param _Format: <p>导出格式：csv 或 json；默认 csv</p>
+        :type Format: str
+        """
+        self._GatewayId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._Format = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def StartTime(self):
+        r"""<p>导出起始时间，Unix 秒级时间戳</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>导出结束时间，Unix 秒级时间戳</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""<p>审核记录过滤条件</p>
+        :rtype: list of CustomGuardrailHitFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Format(self):
+        r"""<p>导出格式：csv 或 json；默认 csv</p>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CustomGuardrailHitFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportAIGWCustomGuardrailHitsResponse(AbstractModel):
+    r"""ExportAIGWCustomGuardrailHits返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.ExportAIGWCustomGuardrailHitsResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.ExportAIGWCustomGuardrailHitsResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ExportAIGWCustomGuardrailHitsResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class ExportAIGWCustomGuardrailHitsResult(AbstractModel):
+    r"""导出自定义安全护栏命中记录结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Format: <p>实际导出格式</p>
+        :type Format: str
+        :param _RowCount: <p>实际编码进导出内容的审核记录数，最多 1000。</p>
+        :type RowCount: int
+        :param _Truncated: <p>是否达到单次最多 1000 条的导出截断条件；true 时可能还有更多记录，可缩小时间范围后分别导出。</p>
+        :type Truncated: bool
+        :param _Content: <p>CSV/JSON 文件内容的 Base64 编码字符串，需 Base64 解码后保存，不是下载 URL。</p>
+        :type Content: str
+        """
+        self._Format = None
+        self._RowCount = None
+        self._Truncated = None
+        self._Content = None
+
+    @property
+    def Format(self):
+        r"""<p>实际导出格式</p>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def RowCount(self):
+        r"""<p>实际编码进导出内容的审核记录数，最多 1000。</p>
+        :rtype: int
+        """
+        return self._RowCount
+
+    @RowCount.setter
+    def RowCount(self, RowCount):
+        self._RowCount = RowCount
+
+    @property
+    def Truncated(self):
+        r"""<p>是否达到单次最多 1000 条的导出截断条件；true 时可能还有更多记录，可缩小时间范围后分别导出。</p>
+        :rtype: bool
+        """
+        return self._Truncated
+
+    @Truncated.setter
+    def Truncated(self, Truncated):
+        self._Truncated = Truncated
+
+    @property
+    def Content(self):
+        r"""<p>CSV/JSON 文件内容的 Base64 编码字符串，需 Base64 解码后保存，不是下载 URL。</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Format = params.get("Format")
+        self._RowCount = params.get("RowCount")
+        self._Truncated = params.get("Truncated")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""查询过滤通用对象
 
@@ -20732,6 +26581,372 @@ class ListFilter(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAIGWCustomGuardrailPolicyRequest(AbstractModel):
+    r"""ModifyAIGWCustomGuardrailPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 ID</p>
+        :type GatewayId: str
+        :param _PolicyId: <p>策略 ID</p>
+        :type PolicyId: str
+        :param _Name: <p>策略名称，长度 1～64</p>
+        :type Name: str
+        :param _Description: <p>策略描述，最长 200；传空字符串可清空</p>
+        :type Description: str
+        :param _Enabled: <p>是否启用策略</p>
+        :type Enabled: bool
+        :param _ServiceConfig: <p>审核服务局部更新配置</p>
+        :type ServiceConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailServiceConfigPatch`
+        :param _AuthConfig: <p>审核服务鉴权局部更新配置</p>
+        :type AuthConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailAuthConfigPatch`
+        :param _DecisionConfig: <p>审核响应判定局部更新配置</p>
+        :type DecisionConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailDecisionConfigPatch`
+        :param _BehaviorConfig: <p>处理行为局部更新配置</p>
+        :type BehaviorConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailBehaviorConfigPatch`
+        :param _FilterConfig: <p>过滤与采样局部更新配置</p>
+        :type FilterConfig: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFilterConfigPatch`
+        :param _Scope: <p>资源绑定范围，global 或 resource。修改时传入的是新的完整范围，不是增量追加。</p>
+        :type Scope: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailScopeInput`
+        """
+        self._GatewayId = None
+        self._PolicyId = None
+        self._Name = None
+        self._Description = None
+        self._Enabled = None
+        self._ServiceConfig = None
+        self._AuthConfig = None
+        self._DecisionConfig = None
+        self._BehaviorConfig = None
+        self._FilterConfig = None
+        self._Scope = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def PolicyId(self):
+        r"""<p>策略 ID</p>
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Name(self):
+        r"""<p>策略名称，长度 1～64</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>策略描述，最长 200；传空字符串可清空</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用策略</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ServiceConfig(self):
+        r"""<p>审核服务局部更新配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailServiceConfigPatch`
+        """
+        return self._ServiceConfig
+
+    @ServiceConfig.setter
+    def ServiceConfig(self, ServiceConfig):
+        self._ServiceConfig = ServiceConfig
+
+    @property
+    def AuthConfig(self):
+        r"""<p>审核服务鉴权局部更新配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailAuthConfigPatch`
+        """
+        return self._AuthConfig
+
+    @AuthConfig.setter
+    def AuthConfig(self, AuthConfig):
+        self._AuthConfig = AuthConfig
+
+    @property
+    def DecisionConfig(self):
+        r"""<p>审核响应判定局部更新配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailDecisionConfigPatch`
+        """
+        return self._DecisionConfig
+
+    @DecisionConfig.setter
+    def DecisionConfig(self, DecisionConfig):
+        self._DecisionConfig = DecisionConfig
+
+    @property
+    def BehaviorConfig(self):
+        r"""<p>处理行为局部更新配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailBehaviorConfigPatch`
+        """
+        return self._BehaviorConfig
+
+    @BehaviorConfig.setter
+    def BehaviorConfig(self, BehaviorConfig):
+        self._BehaviorConfig = BehaviorConfig
+
+    @property
+    def FilterConfig(self):
+        r"""<p>过滤与采样局部更新配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailFilterConfigPatch`
+        """
+        return self._FilterConfig
+
+    @FilterConfig.setter
+    def FilterConfig(self, FilterConfig):
+        self._FilterConfig = FilterConfig
+
+    @property
+    def Scope(self):
+        r"""<p>资源绑定范围，global 或 resource。修改时传入的是新的完整范围，不是增量追加。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailScopeInput`
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._PolicyId = params.get("PolicyId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Enabled = params.get("Enabled")
+        if params.get("ServiceConfig") is not None:
+            self._ServiceConfig = CustomGuardrailServiceConfigPatch()
+            self._ServiceConfig._deserialize(params.get("ServiceConfig"))
+        if params.get("AuthConfig") is not None:
+            self._AuthConfig = CustomGuardrailAuthConfigPatch()
+            self._AuthConfig._deserialize(params.get("AuthConfig"))
+        if params.get("DecisionConfig") is not None:
+            self._DecisionConfig = CustomGuardrailDecisionConfigPatch()
+            self._DecisionConfig._deserialize(params.get("DecisionConfig"))
+        if params.get("BehaviorConfig") is not None:
+            self._BehaviorConfig = CustomGuardrailBehaviorConfigPatch()
+            self._BehaviorConfig._deserialize(params.get("BehaviorConfig"))
+        if params.get("FilterConfig") is not None:
+            self._FilterConfig = CustomGuardrailFilterConfigPatch()
+            self._FilterConfig._deserialize(params.get("FilterConfig"))
+        if params.get("Scope") is not None:
+            self._Scope = CustomGuardrailScopeInput()
+            self._Scope._deserialize(params.get("Scope"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAIGWCustomGuardrailPolicyResponse(AbstractModel):
+    r"""ModifyAIGWCustomGuardrailPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.ModifyAIGWCustomGuardrailPolicyResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>接口业务结果，位于完整云 API 响应 Response.Result。存在 Success 时仍须单独判断；Response.RequestId 是本次云 API 请求标识。</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.ModifyAIGWCustomGuardrailPolicyResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ModifyAIGWCustomGuardrailPolicyResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAIGWCustomGuardrailPolicyResult(AbstractModel):
+    r"""修改自定义安全护栏策略结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Success: <p>本次配置同步是否全部成功。即使云 API 未返回 Response.Error，仍须检查此值、SyncStatus 和 FailedResources。</p>
+        :type Success: bool
+        :param _Policy: <p>变更后的策略</p>
+        :type Policy: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailPolicy`
+        :param _AddedResources: <p>本次同步成功的业务资源引用；Modify 返回的不是严格的新增差集。</p>
+        :type AddedResources: list of CustomGuardrailResourceRef
+        :param _RemovedCount: <p>与修改前相比移除的 Route 绑定数量；一个业务资源可有多条 Route，因此不等于业务资源数量。</p>
+        :type RemovedCount: int
+        :param _FailedResources: <p>失败资源及原因；非空表示配置同步仍需处理，不要因 HTTP 200 判定全部成功。</p>
+        :type FailedResources: list of CustomGuardrailSyncFailure
+        :param _SyncStatus: <p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :type SyncStatus: str
+        """
+        self._Success = None
+        self._Policy = None
+        self._AddedResources = None
+        self._RemovedCount = None
+        self._FailedResources = None
+        self._SyncStatus = None
+
+    @property
+    def Success(self):
+        r"""<p>本次配置同步是否全部成功。即使云 API 未返回 Response.Error，仍须检查此值、SyncStatus 和 FailedResources。</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Policy(self):
+        r"""<p>变更后的策略</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CustomGuardrailPolicy`
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def AddedResources(self):
+        r"""<p>本次同步成功的业务资源引用；Modify 返回的不是严格的新增差集。</p>
+        :rtype: list of CustomGuardrailResourceRef
+        """
+        return self._AddedResources
+
+    @AddedResources.setter
+    def AddedResources(self, AddedResources):
+        self._AddedResources = AddedResources
+
+    @property
+    def RemovedCount(self):
+        r"""<p>与修改前相比移除的 Route 绑定数量；一个业务资源可有多条 Route，因此不等于业务资源数量。</p>
+        :rtype: int
+        """
+        return self._RemovedCount
+
+    @RemovedCount.setter
+    def RemovedCount(self, RemovedCount):
+        self._RemovedCount = RemovedCount
+
+    @property
+    def FailedResources(self):
+        r"""<p>失败资源及原因；非空表示配置同步仍需处理，不要因 HTTP 200 判定全部成功。</p>
+        :rtype: list of CustomGuardrailSyncFailure
+        """
+        return self._FailedResources
+
+    @FailedResources.setter
+    def FailedResources(self, FailedResources):
+        self._FailedResources = FailedResources
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态：pending 待同步，synced 已完成本次配置同步，partial 部分失败，failed 失败。需结合 FailedResources/SyncError；synced 不等于已完成所有数据面实例的业务端到端验证。</p>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+
+    def _deserialize(self, params):
+        self._Success = params.get("Success")
+        if params.get("Policy") is not None:
+            self._Policy = CustomGuardrailPolicy()
+            self._Policy._deserialize(params.get("Policy"))
+        if params.get("AddedResources") is not None:
+            self._AddedResources = []
+            for item in params.get("AddedResources"):
+                obj = CustomGuardrailResourceRef()
+                obj._deserialize(item)
+                self._AddedResources.append(obj)
+        self._RemovedCount = params.get("RemovedCount")
+        if params.get("FailedResources") is not None:
+            self._FailedResources = []
+            for item in params.get("FailedResources"):
+                obj = CustomGuardrailSyncFailure()
+                obj._deserialize(item)
+                self._FailedResources.append(obj)
+        self._SyncStatus = params.get("SyncStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
