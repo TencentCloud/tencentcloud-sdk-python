@@ -69579,30 +69579,29 @@ class SecurityGroupPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyIndex: 安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
+        :param _PolicyIndex: <p>安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用<code>DescribeSecurityGroupPolicies</code>获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。</p>
         :type PolicyIndex: int
-        :param _Protocol: 协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
+        :param _Protocol: <p>协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。</p>
         :type Protocol: str
-        :param _Port: 端口(all, 离散port,  range)。
-说明：如果Protocol设置为ALL，则Port也需要设置为all。
+        :param _Port: <p>端口(all, 离散port,  range)。<br>说明：如果Protocol设置为ALL，则Port也需要设置为all。</p>
         :type Port: str
-        :param _ServiceTemplate: 协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
+        :param _ServiceTemplate: <p>协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。</p>
         :type ServiceTemplate: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
-        :param _CidrBlock: 网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IP地址。
+        :param _CidrBlock: <p>网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串<code>MY_PUBLIC_IP</code>指代发起请求的公网IP地址。</p>
         :type CidrBlock: str
-        :param _Ipv6CidrBlock: 网段或IPv6(互斥)。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IPv6地址。
+        :param _Ipv6CidrBlock: <p>网段或IPv6(互斥)。作为入参时，可使用字符串<code>MY_PUBLIC_IP</code>指代发起请求的公网IPv6地址。</p>
         :type Ipv6CidrBlock: str
-        :param _SecurityGroupId: 安全组实例ID，例如：sg-ohuuioma。
+        :param _SecurityGroupId: <p>安全组实例ID，例如：sg-ohuuioma。</p>
         :type SecurityGroupId: str
-        :param _AddressTemplate: IP地址ID或者IP地址组ID。
+        :param _AddressTemplate: <p>IP地址ID或者IP地址组ID。</p>
         :type AddressTemplate: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateSpecification`
-        :param _Action: ACCEPT 或 DROP。
+        :param _Action: <p>ACCEPT 或 DROP。</p>
         :type Action: str
-        :param _PolicyDescription: 安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。
+        :param _PolicyDescription: <p>安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。</p>
         :type PolicyDescription: str
-        :param _ModifyTime: 安全组最近修改时间。
+        :param _ModifyTime: <p>安全组最近修改时间。</p>
         :type ModifyTime: str
-        :param _Priority: 安全组规则优先级，值会随着安全组规则的变更动态变化。使用Priority时，请先调用`DescribeSecurityGroupPolicies`获取到规则的Priority，并且结合返回值中的Version一起使用处理规则。
+        :param _Priority: <p>安全组规则优先级，值会随着安全组规则的变更动态变化。使用Priority时，请先调用<code>DescribeSecurityGroupPolicies</code>获取到规则的Priority，并且结合返回值中的Version一起使用处理规则。</p>
         :type Priority: int
         """
         self._PolicyIndex = None
@@ -69620,7 +69619,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def PolicyIndex(self):
-        r"""安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用`DescribeSecurityGroupPolicies`获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。
+        r"""<p>安全组规则索引号，值会随着安全组规则的变更动态变化。使用PolicyIndex时，请先调用<code>DescribeSecurityGroupPolicies</code>获取到规则的PolicyIndex，并且结合返回值中的Version一起使用处理规则。</p>
         :rtype: int
         """
         return self._PolicyIndex
@@ -69631,7 +69630,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。
+        r"""<p>协议, 取值: TCP,UDP,ICMP,ICMPv6,ALL。</p>
         :rtype: str
         """
         return self._Protocol
@@ -69642,8 +69641,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口(all, 离散port,  range)。
-说明：如果Protocol设置为ALL，则Port也需要设置为all。
+        r"""<p>端口(all, 离散port,  range)。<br>说明：如果Protocol设置为ALL，则Port也需要设置为all。</p>
         :rtype: str
         """
         return self._Port
@@ -69654,7 +69652,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def ServiceTemplate(self):
-        r"""协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。
+        r"""<p>协议端口ID或者协议端口组ID。ServiceTemplate和Protocol+Port互斥。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.ServiceTemplateSpecification`
         """
         return self._ServiceTemplate
@@ -69665,7 +69663,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def CidrBlock(self):
-        r"""网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IP地址。
+        r"""<p>网段或IP(互斥)，特殊说明：0.0.0.0/n 都会映射为0.0.0.0/0。作为入参时，可使用字符串<code>MY_PUBLIC_IP</code>指代发起请求的公网IP地址。</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -69676,7 +69674,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
-        r"""网段或IPv6(互斥)。作为入参时，可使用字符串`MY_PUBLIC_IP`指代发起请求的公网IPv6地址。
+        r"""<p>网段或IPv6(互斥)。作为入参时，可使用字符串<code>MY_PUBLIC_IP</code>指代发起请求的公网IPv6地址。</p>
         :rtype: str
         """
         return self._Ipv6CidrBlock
@@ -69687,7 +69685,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        r"""安全组实例ID，例如：sg-ohuuioma。
+        r"""<p>安全组实例ID，例如：sg-ohuuioma。</p>
         :rtype: str
         """
         return self._SecurityGroupId
@@ -69698,7 +69696,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def AddressTemplate(self):
-        r"""IP地址ID或者IP地址组ID。
+        r"""<p>IP地址ID或者IP地址组ID。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.AddressTemplateSpecification`
         """
         return self._AddressTemplate
@@ -69709,7 +69707,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Action(self):
-        r"""ACCEPT 或 DROP。
+        r"""<p>ACCEPT 或 DROP。</p>
         :rtype: str
         """
         return self._Action
@@ -69720,7 +69718,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def PolicyDescription(self):
-        r"""安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。
+        r"""<p>安全组规则描述。作为入参时，当未传递该参数或值为空，且参数CidrBlock或Ipv6CidrBlock值为MY_PUBLIC_IP时，该参数的值将会被自动填充为Replaced-From-MY_PUBLIC_IP。</p>
         :rtype: str
         """
         return self._PolicyDescription
@@ -69731,7 +69729,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""安全组最近修改时间。
+        r"""<p>安全组最近修改时间。</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -69742,7 +69740,7 @@ class SecurityGroupPolicy(AbstractModel):
 
     @property
     def Priority(self):
-        r"""安全组规则优先级，值会随着安全组规则的变更动态变化。使用Priority时，请先调用`DescribeSecurityGroupPolicies`获取到规则的Priority，并且结合返回值中的Version一起使用处理规则。
+        r"""<p>安全组规则优先级，值会随着安全组规则的变更动态变化。使用Priority时，请先调用<code>DescribeSecurityGroupPolicies</code>获取到规则的Priority，并且结合返回值中的Version一起使用处理规则。</p>
         :rtype: int
         """
         return self._Priority

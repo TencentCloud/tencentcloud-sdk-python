@@ -210,6 +210,29 @@ class WorkbuddyenterpriseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteSessionArtifactList(self, request):
+        r"""删除指定的物料，删除后不可恢复。
+
+        :param request: Request instance for DeleteSessionArtifactList.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DeleteSessionArtifactListRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DeleteSessionArtifactListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSessionArtifactList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSessionArtifactListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAgent(self, request):
         r"""查询单个 Agent 的详细信息，包括基础配置和路由配置。
 
@@ -569,6 +592,52 @@ class WorkbuddyenterpriseClient(AbstractClient):
             body = self.call("DescribeScheduledTaskLogList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeScheduledTaskLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSessionArtifactDownloadUrl(self, request):
+        r"""获取会话物料下载链接。
+
+        :param request: Request instance for DescribeSessionArtifactDownloadUrl.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeSessionArtifactDownloadUrlRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeSessionArtifactDownloadUrlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSessionArtifactDownloadUrl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSessionArtifactDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSessionArtifactList(self, request):
+        r"""分页查询会话物料列表。
+
+        :param request: Request instance for DescribeSessionArtifactList.
+        :type request: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeSessionArtifactListRequest`
+        :rtype: :class:`tencentcloud.workbuddyenterprise.v20260709.models.DescribeSessionArtifactListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSessionArtifactList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSessionArtifactListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

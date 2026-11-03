@@ -2783,6 +2783,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteLoginWhiteCustomEDR(
+            self,
+            request: models.DeleteLoginWhiteCustomEDRRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLoginWhiteCustomEDRResponse:
+        """
+        批量删除 CSC 异常登录自定义白名单（软删 status=2），支持跨页全选。Ids 与 SelectAll 二选一，均为空时返回 InvalidParameter；跨页全选总量超过 100000 条时整体拒绝。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLoginWhiteCustomEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLoginWhiteCustomEDRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLoginWhiteLearnEDR(
+            self,
+            request: models.DeleteLoginWhiteLearnEDRRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLoginWhiteLearnEDRResponse:
+        """
+        批量删除 CSC 异常登录自学习白名单规则组（整组软删 enable=0），传入组内任一行 ID 即可定位整组，支持跨页全选（上限 100000 个规则组）。删除后不会被自动重学，需重新开关自学习刷新学习锚点；本接口不回扫历史告警。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLoginWhiteLearnEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLoginWhiteLearnEDRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteLoginWhiteList(
             self,
             request: models.DeleteLoginWhiteListRequest,
@@ -7264,6 +7300,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEdrMalwareFile(
+            self,
+            request: models.DescribeEdrMalwareFileRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrMalwareFileResponse:
+        """
+        按 EDR 告警标识定位恶意文件告警，返回其恶意样本的下载链接。仅 alert_sub_type=1（恶意文件）的告警允许下载，其它子类型按资源不存在处理。公有云返回 COS 预签名 URL（1 小时有效）；非公有云且导出开关打开时返回 base64 DataURL 并同时返回 FileName。跨账号场景由 TargetAppId 指定告警所属账号，会做归属校验（fail-close，无权限返回 InvalidParameter）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrMalwareFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrMalwareFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeExportJobDownloadURL(
             self,
             request: models.DescribeExportJobDownloadURLRequest,
@@ -8326,6 +8380,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLoginWhiteCustomListEDR(
+            self,
+            request: models.DescribeLoginWhiteCustomListEDRRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoginWhiteCustomListEDRResponse:
+        """
+        查询 CSC 异常登录自定义白名单列表。多账号场景按 MemberId 解析出全部成员 AppId 后一次聚合查询。按 ModifyTime DESC 分页返回，出参切片字段恒为 [] 不会为 null。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoginWhiteCustomListEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoginWhiteCustomListEDRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLoginWhiteHostList(
             self,
             request: models.DescribeLoginWhiteHostListRequest,
@@ -8339,6 +8411,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeLoginWhiteHostList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLoginWhiteHostListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLoginWhiteLearnListEDR(
+            self,
+            request: models.DescribeLoginWhiteLearnListEDRRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoginWhiteLearnListEDRResponse:
+        """
+        查询 CSC 异常登录自学习白名单列表（规则组）。规则组按 (AppId, 常用登录地) 聚合，Id 为组内最小行 ID；出参 SrcIp/UserName/StartTime/EndTime 恒为空。AutoLearnEnable 返回自学习开关状态，供前端空态展示判断是否跳转开启。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoginWhiteLearnListEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoginWhiteLearnListEDRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -12167,6 +12257,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyImageVulWhitelist"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyImageVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLoginWhiteCustomEDR(
+            self,
+            request: models.ModifyLoginWhiteCustomEDRRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLoginWhiteCustomEDRResponse:
+        """
+        修改 CSC 异常登录自定义白名单，全量覆盖保存（未传字段视为清空）。本接口不触发历史告警回扫；查重时排除自身；规则不存在返回 ResourceNotFound。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLoginWhiteCustomEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLoginWhiteCustomEDRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLoginWhiteLearnEDR(
+            self,
+            request: models.ModifyLoginWhiteLearnEDRRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLoginWhiteLearnEDRResponse:
+        """
+        修改 CSC 异常登录自学习白名单规则组，按 (AppId, 常用登录地) 定位整组。约束：不支持新建、不支持按标签生效（TagIDs 必须为空）；仅支持 Scope=0 直接选择 与 Scope=1 全部资产+剔除；规则组行数超过 5000 时拒绝；单事务先插后删；编辑后最长一个缓存周期（默认 120s）内生效。本接口不回扫历史告警。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLoginWhiteLearnEDR"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLoginWhiteLearnEDRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

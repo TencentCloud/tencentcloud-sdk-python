@@ -6419,28 +6419,32 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoPath: 解说视频路径。
+        :param _VideoPath: <p>解说视频路径。</p>
         :type VideoPath: str
-        :param _VideoPaths: 解说视频路径列表。
-
-**注意**：
-1. 当返回一个文件时，`VideoPath `返回一个文件路径，`VideoPaths `也会填充同样路径的一个元素。
-2. 当返回多个文件时，`VideoPath `返回为空字符串，`VideoPaths `返回多文件路径列表。
+        :param _VideoPaths: <p>解说视频路径列表。</p><p><strong>注意</strong>：</p><ol><li>当返回一个文件时，<code>VideoPath</code>返回一个文件路径，<code>VideoPaths</code>也会填充同样路径的一个元素。</li><li>当返回多个文件时，<code>VideoPath</code>返回为空字符串，<code>VideoPaths</code>返回多文件路径列表。</li></ol>
         :type VideoPaths: list of str
-        :param _ScriptPath: 脚本文件路径
-
+        :param _ScriptPath: <p>脚本文件路径</p>
         :type ScriptPath: str
-        :param _OutputStorage: 解说视频存储位置。
+        :param _ScriptPaths: <p>多个脚本文件路径</p>
+        :type ScriptPaths: list of str
+        :param _OutputStorage: <p>解说视频存储位置。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _OutputSubtitlePath: <p>输出视频字幕文件</p>
+        :type OutputSubtitlePath: str
+        :param _OutputSubtitlePaths: <p>多个输出视频字幕文件，与输出的VideoPaths对应</p>
+        :type OutputSubtitlePaths: list of str
         """
         self._VideoPath = None
         self._VideoPaths = None
         self._ScriptPath = None
+        self._ScriptPaths = None
         self._OutputStorage = None
+        self._OutputSubtitlePath = None
+        self._OutputSubtitlePaths = None
 
     @property
     def VideoPath(self):
-        r"""解说视频路径。
+        r"""<p>解说视频路径。</p>
         :rtype: str
         """
         return self._VideoPath
@@ -6451,11 +6455,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     @property
     def VideoPaths(self):
-        r"""解说视频路径列表。
-
-**注意**：
-1. 当返回一个文件时，`VideoPath `返回一个文件路径，`VideoPaths `也会填充同样路径的一个元素。
-2. 当返回多个文件时，`VideoPath `返回为空字符串，`VideoPaths `返回多文件路径列表。
+        r"""<p>解说视频路径列表。</p><p><strong>注意</strong>：</p><ol><li>当返回一个文件时，<code>VideoPath</code>返回一个文件路径，<code>VideoPaths</code>也会填充同样路径的一个元素。</li><li>当返回多个文件时，<code>VideoPath</code>返回为空字符串，<code>VideoPaths</code>返回多文件路径列表。</li></ol>
         :rtype: list of str
         """
         return self._VideoPaths
@@ -6466,8 +6466,7 @@ class AiAnalysisTaskReelOutput(AbstractModel):
 
     @property
     def ScriptPath(self):
-        r"""脚本文件路径
-
+        r"""<p>脚本文件路径</p>
         :rtype: str
         """
         return self._ScriptPath
@@ -6477,8 +6476,19 @@ class AiAnalysisTaskReelOutput(AbstractModel):
         self._ScriptPath = ScriptPath
 
     @property
+    def ScriptPaths(self):
+        r"""<p>多个脚本文件路径</p>
+        :rtype: list of str
+        """
+        return self._ScriptPaths
+
+    @ScriptPaths.setter
+    def ScriptPaths(self, ScriptPaths):
+        self._ScriptPaths = ScriptPaths
+
+    @property
     def OutputStorage(self):
-        r"""解说视频存储位置。
+        r"""<p>解说视频存储位置。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -6487,14 +6497,39 @@ class AiAnalysisTaskReelOutput(AbstractModel):
     def OutputStorage(self, OutputStorage):
         self._OutputStorage = OutputStorage
 
+    @property
+    def OutputSubtitlePath(self):
+        r"""<p>输出视频字幕文件</p>
+        :rtype: str
+        """
+        return self._OutputSubtitlePath
+
+    @OutputSubtitlePath.setter
+    def OutputSubtitlePath(self, OutputSubtitlePath):
+        self._OutputSubtitlePath = OutputSubtitlePath
+
+    @property
+    def OutputSubtitlePaths(self):
+        r"""<p>多个输出视频字幕文件，与输出的VideoPaths对应</p>
+        :rtype: list of str
+        """
+        return self._OutputSubtitlePaths
+
+    @OutputSubtitlePaths.setter
+    def OutputSubtitlePaths(self, OutputSubtitlePaths):
+        self._OutputSubtitlePaths = OutputSubtitlePaths
+
 
     def _deserialize(self, params):
         self._VideoPath = params.get("VideoPath")
         self._VideoPaths = params.get("VideoPaths")
         self._ScriptPath = params.get("ScriptPath")
+        self._ScriptPaths = params.get("ScriptPaths")
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._OutputSubtitlePath = params.get("OutputSubtitlePath")
+        self._OutputSubtitlePaths = params.get("OutputSubtitlePaths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

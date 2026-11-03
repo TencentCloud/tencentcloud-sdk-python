@@ -52390,6 +52390,354 @@ class DeleteImageVulWhitelistResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteLoginWhiteCustomEDRRequest(AbstractModel):
+    r"""DeleteLoginWhiteCustomEDR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Ids: <p>显式勾选的规则ID列表，最多 1000 个；与 SelectAll 二选一</p>
+        :type Ids: list of int non-negative
+        :param _SelectAll: <p>是否跨页全选：true-删除符合 Filters 的全部规则（此时 Filters 必填） false-仅删除 Ids</p>
+        :type SelectAll: bool
+        :param _TargetAppIDs: <p>多账号目标账号 AppId 列表，最多 1000 个；为空表示仅当前账号；传入但全部无权限时返回 InvalidParameter</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _ExcludeIds: <p>排除的规则ID列表，最多1000个</p>
+        :type ExcludeIds: list of int
+        :param _Filters: <p>全选条件下的筛选条件</p>
+        :type Filters: list of EDRFilter
+        """
+        self._MemberId = None
+        self._Ids = None
+        self._SelectAll = None
+        self._TargetAppIDs = None
+        self._ExcludeIds = None
+        self._Filters = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Ids(self):
+        r"""<p>显式勾选的规则ID列表，最多 1000 个；与 SelectAll 二选一</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def SelectAll(self):
+        r"""<p>是否跨页全选：true-删除符合 Filters 的全部规则（此时 Filters 必填） false-仅删除 Ids</p>
+        :rtype: bool
+        """
+        return self._SelectAll
+
+    @SelectAll.setter
+    def SelectAll(self, SelectAll):
+        self._SelectAll = SelectAll
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>多账号目标账号 AppId 列表，最多 1000 个；为空表示仅当前账号；传入但全部无权限时返回 InvalidParameter</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def ExcludeIds(self):
+        r"""<p>排除的规则ID列表，最多1000个</p>
+        :rtype: list of int
+        """
+        return self._ExcludeIds
+
+    @ExcludeIds.setter
+    def ExcludeIds(self, ExcludeIds):
+        self._ExcludeIds = ExcludeIds
+
+    @property
+    def Filters(self):
+        r"""<p>全选条件下的筛选条件</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._Ids = params.get("Ids")
+        self._SelectAll = params.get("SelectAll")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._ExcludeIds = params.get("ExcludeIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLoginWhiteCustomEDRResponse(AbstractModel):
+    r"""DeleteLoginWhiteCustomEDR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeletedCount: <p>删除的规则条数</p>
+        :type DeletedCount: int
+        :param _FailedAppIds: <p>删除失败的账号 AppId 列表；仅当全部失败时才返回错误</p>
+        :type FailedAppIds: list of int non-negative
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeletedCount = None
+        self._FailedAppIds = None
+        self._RequestId = None
+
+    @property
+    def DeletedCount(self):
+        r"""<p>删除的规则条数</p>
+        :rtype: int
+        """
+        return self._DeletedCount
+
+    @DeletedCount.setter
+    def DeletedCount(self, DeletedCount):
+        self._DeletedCount = DeletedCount
+
+    @property
+    def FailedAppIds(self):
+        r"""<p>删除失败的账号 AppId 列表；仅当全部失败时才返回错误</p>
+        :rtype: list of int non-negative
+        """
+        return self._FailedAppIds
+
+    @FailedAppIds.setter
+    def FailedAppIds(self, FailedAppIds):
+        self._FailedAppIds = FailedAppIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeletedCount = params.get("DeletedCount")
+        self._FailedAppIds = params.get("FailedAppIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLoginWhiteLearnEDRRequest(AbstractModel):
+    r"""DeleteLoginWhiteLearnEDR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Ids: <p>显式勾选的规则ID列表，最多 1000 个；与 SelectAll 二选一</p>
+        :type Ids: list of int non-negative
+        :param _SelectAll: <p>是否跨页全选：true-删除符合 Filters 的全部规则（此时 Filters 必填） false-仅删除 Ids</p>
+        :type SelectAll: bool
+        :param _TargetAppIDs: <p>多账号目标账号 AppId 列表，最多 1000 个；为空表示仅当前账号；传入但全部无权限时返回 InvalidParameter</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _ExcludeIds: <p>排除的规则ID列表</p>
+        :type ExcludeIds: list of int
+        :param _Filters: <p>全选条件下的筛选条件</p>
+        :type Filters: list of EDRFilter
+        """
+        self._MemberId = None
+        self._Ids = None
+        self._SelectAll = None
+        self._TargetAppIDs = None
+        self._ExcludeIds = None
+        self._Filters = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Ids(self):
+        r"""<p>显式勾选的规则ID列表，最多 1000 个；与 SelectAll 二选一</p>
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def SelectAll(self):
+        r"""<p>是否跨页全选：true-删除符合 Filters 的全部规则（此时 Filters 必填） false-仅删除 Ids</p>
+        :rtype: bool
+        """
+        return self._SelectAll
+
+    @SelectAll.setter
+    def SelectAll(self, SelectAll):
+        self._SelectAll = SelectAll
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>多账号目标账号 AppId 列表，最多 1000 个；为空表示仅当前账号；传入但全部无权限时返回 InvalidParameter</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def ExcludeIds(self):
+        r"""<p>排除的规则ID列表</p>
+        :rtype: list of int
+        """
+        return self._ExcludeIds
+
+    @ExcludeIds.setter
+    def ExcludeIds(self, ExcludeIds):
+        self._ExcludeIds = ExcludeIds
+
+    @property
+    def Filters(self):
+        r"""<p>全选条件下的筛选条件</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._Ids = params.get("Ids")
+        self._SelectAll = params.get("SelectAll")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._ExcludeIds = params.get("ExcludeIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLoginWhiteLearnEDRResponse(AbstractModel):
+    r"""DeleteLoginWhiteLearnEDR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeletedCount: <p>删除的主机记录行数（一个规则组可能含多行，与自定义白名单接口按规则条数统计的口径不同）</p>
+        :type DeletedCount: int
+        :param _FailedAppIds: <p>删除失败的账号 AppId 列表；仅当全部失败时才返回错误</p>
+        :type FailedAppIds: list of int non-negative
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeletedCount = None
+        self._FailedAppIds = None
+        self._RequestId = None
+
+    @property
+    def DeletedCount(self):
+        r"""<p>删除的主机记录行数（一个规则组可能含多行，与自定义白名单接口按规则条数统计的口径不同）</p>
+        :rtype: int
+        """
+        return self._DeletedCount
+
+    @DeletedCount.setter
+    def DeletedCount(self, DeletedCount):
+        self._DeletedCount = DeletedCount
+
+    @property
+    def FailedAppIds(self):
+        r"""<p>删除失败的账号 AppId 列表；仅当全部失败时才返回错误</p>
+        :rtype: list of int non-negative
+        """
+        return self._FailedAppIds
+
+    @FailedAppIds.setter
+    def FailedAppIds(self, FailedAppIds):
+        self._FailedAppIds = FailedAppIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DeletedCount = params.get("DeletedCount")
+        self._FailedAppIds = params.get("FailedAppIds")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLoginWhiteListRequest(AbstractModel):
     r"""DeleteLoginWhiteList请求参数结构体
 
@@ -90263,6 +90611,130 @@ class DescribeEdrLogCollectPathsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEdrMalwareFileRequest(AbstractModel):
+    r"""DescribeEdrMalwareFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlertId: <p>EDR 告警唯一标识，必填，最长 34 字符</p>
+        :type AlertId: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _TargetAppId: <p>告警所属账号 AppId（跨账号场景由前端透传成员 AppId）；为 0 或省略时回退为登录账号 AppId</p>
+        :type TargetAppId: int
+        """
+        self._AlertId = None
+        self._MemberId = None
+        self._TargetAppId = None
+
+    @property
+    def AlertId(self):
+        r"""<p>EDR 告警唯一标识，必填，最长 34 字符</p>
+        :rtype: str
+        """
+        return self._AlertId
+
+    @AlertId.setter
+    def AlertId(self, AlertId):
+        self._AlertId = AlertId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TargetAppId(self):
+        r"""<p>告警所属账号 AppId（跨账号场景由前端透传成员 AppId）；为 0 或省略时回退为登录账号 AppId</p>
+        :rtype: int
+        """
+        return self._TargetAppId
+
+    @TargetAppId.setter
+    def TargetAppId(self, TargetAppId):
+        self._TargetAppId = TargetAppId
+
+
+    def _deserialize(self, params):
+        self._AlertId = params.get("AlertId")
+        self._MemberId = params.get("MemberId")
+        self._TargetAppId = params.get("TargetAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrMalwareFileResponse(AbstractModel):
+    r"""DescribeEdrMalwareFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileUrl: <p>样本下载链接。公有云为 COS 预签名 URL（1 小时过期）；非公有云且导出开关打开时为 data:application/octet-stream;base64,&lt;zip 的 base64&gt;</p>
+        :type FileUrl: str
+        :param _FileName: <p>导出文件名，形如 &lt;name&gt;.zip；仅非公有云 base64 分支返回，其余场景不返回该字段</p>
+        :type FileName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FileUrl = None
+        self._FileName = None
+        self._RequestId = None
+
+    @property
+    def FileUrl(self):
+        r"""<p>样本下载链接。公有云为 COS 预签名 URL（1 小时过期）；非公有云且导出开关打开时为 data:application/octet-stream;base64,&lt;zip 的 base64&gt;</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileName(self):
+        r"""<p>导出文件名，形如 &lt;name&gt;.zip；仅非公有云 base64 分支返回，其余场景不返回该字段</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FileUrl = params.get("FileUrl")
+        self._FileName = params.get("FileName")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExportJobDownloadURLRequest(AbstractModel):
     r"""DescribeExportJobDownloadURL请求参数结构体
 
@@ -98169,6 +98641,185 @@ class DescribeLoginWhiteCombinedListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLoginWhiteCustomListEDRRequest(AbstractModel):
+    r"""DescribeLoginWhiteCustomListEDR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>过滤条件数组（多个 Filter 间为 AND 关系）。支持 Name：Keyword（SrcIp/UserName/Locations/Remark 模糊）、SrcIp、UserName、Location、Remark、ModifyBeginTime、ModifyEndTime（时间格式 2006-01-02 15:04:05）；未知 Name 忽略不报错</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>分页大小，默认 10，上限 100；传 0 或大于 100 时按默认/上限返回</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移，默认 0</p>
+        :type Offset: int
+        :param _Order: <p>排序方向：ASC-正序 DESC-倒序（大小写不敏感），默认 DESC</p>
+        :type Order: str
+        :param _By: <p>排序字段：CreateTime-创建时间 ModifyTime-修改时间，默认 ModifyTime；传非法值返回 InvalidParameter</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件数组（多个 Filter 间为 AND 关系）。支持 Name：Keyword（SrcIp/UserName/Locations/Remark 模糊）、SrcIp、UserName、Location、Remark、ModifyBeginTime、ModifyEndTime（时间格式 2006-01-02 15:04:05）；未知 Name 忽略不报错</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小，默认 10，上限 100；传 0 或大于 100 时按默认/上限返回</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向：ASC-正序 DESC-倒序（大小写不敏感），默认 DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段：CreateTime-创建时间 ModifyTime-修改时间，默认 ModifyTime；传非法值返回 InvalidParameter</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLoginWhiteCustomListEDRResponse(AbstractModel):
+    r"""DescribeLoginWhiteCustomListEDR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合筛选条件的规则总数</p>
+        :type TotalCount: int
+        :param _List: <p>自定义白名单规则列表（Type 恒为 Custom），为空时返回 []</p>
+        :type List: list of LoginWhiteItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合筛选条件的规则总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>自定义白名单规则列表（Type 恒为 Custom），为空时返回 []</p>
+        :rtype: list of LoginWhiteItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = LoginWhiteItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLoginWhiteHostListRequest(AbstractModel):
     r"""DescribeLoginWhiteHostList请求参数结构体
 
@@ -98330,6 +98981,200 @@ class DescribeLoginWhiteHostListResponse(AbstractModel):
                 obj = HostDesc()
                 obj._deserialize(item)
                 self._Hosts.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLoginWhiteLearnListEDRRequest(AbstractModel):
+    r"""DescribeLoginWhiteLearnListEDR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>过滤条件数组（多个 Filter 间为 AND 关系）。支持 Name：Keyword 或 Location（常用登录地模糊）、Remark、ModifyBeginTime、ModifyEndTime（时间格式 2006-01-02 15:04:05）；未知 Name 忽略不报错</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>分页大小，默认 10，上限 100；传 0 或大于 100 时按默认/上限返回</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移，默认 0</p>
+        :type Offset: int
+        :param _Order: <p>排序方向：ASC-正序 DESC-倒序（大小写不敏感），默认 DESC</p>
+        :type Order: str
+        :param _By: <p>排序字段：CreateTime-创建时间 ModifyTime-修改时间，默认 ModifyTime；传非法值返回 InvalidParameter</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件数组（多个 Filter 间为 AND 关系）。支持 Name：Keyword 或 Location（常用登录地模糊）、Remark、ModifyBeginTime、ModifyEndTime（时间格式 2006-01-02 15:04:05）；未知 Name 忽略不报错</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小，默认 10，上限 100；传 0 或大于 100 时按默认/上限返回</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向：ASC-正序 DESC-倒序（大小写不敏感），默认 DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段：CreateTime-创建时间 ModifyTime-修改时间，默认 ModifyTime；传非法值返回 InvalidParameter</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLoginWhiteLearnListEDRResponse(AbstractModel):
+    r"""DescribeLoginWhiteLearnListEDR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>规则组总数（按 AppId + 常用登录地聚合）</p>
+        :type TotalCount: int
+        :param _List: <p>自学习白名单规则组列表（Type 恒为 Learn），为空时返回 []</p>
+        :type List: list of LoginWhiteItem
+        :param _AutoLearnEnable: <p>自学习白名单开关状态；多账号时取当前账号，供前端空态提示前往开启</p>
+        :type AutoLearnEnable: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._AutoLearnEnable = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>规则组总数（按 AppId + 常用登录地聚合）</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>自学习白名单规则组列表（Type 恒为 Learn），为空时返回 []</p>
+        :rtype: list of LoginWhiteItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def AutoLearnEnable(self):
+        r"""<p>自学习白名单开关状态；多账号时取当前账号，供前端空态提示前往开启</p>
+        :rtype: bool
+        """
+        return self._AutoLearnEnable
+
+    @AutoLearnEnable.setter
+    def AutoLearnEnable(self, AutoLearnEnable):
+        self._AutoLearnEnable = AutoLearnEnable
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = LoginWhiteItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._AutoLearnEnable = params.get("AutoLearnEnable")
         self._RequestId = params.get("RequestId")
 
 
@@ -149292,6 +150137,469 @@ class LoginWhiteCombinedInfo(AbstractModel):
         
 
 
+class LoginWhiteItem(AbstractModel):
+    r"""异常登录白名单规则项（自定义与自学习共用，以 Type 区分）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>白名单类型：Custom-自定义白名单 Learn-自学习白名单</p>
+        :type Type: str
+        :param _AppId: <p>规则所属账号 AppId，多账号场景下用于区分与后续编辑定位</p>
+        :type AppId: int
+        :param _Id: <p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+        :type Id: int
+        :param _SrcIp: <p>登录源IP（逗号分隔）；自学习白名单恒为空</p>
+        :type SrcIp: str
+        :param _UserName: <p>登录用户名（逗号分隔）；自学习白名单恒为空</p>
+        :type UserName: str
+        :param _StartTime: <p>登录时段起始 HH:MM；自学习白名单恒为空</p>
+        :type StartTime: str
+        :param _EndTime: <p>登录时段结束 HH:MM；自学习白名单恒为空</p>
+        :type EndTime: str
+        :param _Places: <p>常用登录地列表</p>
+        :type Places: list of LoginWhitePlace
+        :param _Locations: <p>常用登录地展示文案（逗号分隔），供列表直接展示</p>
+        :type Locations: str
+        :param _Scope: <p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+        :type Scope: int
+        :param _QUUIDS: <p>生效主机 QUUID 列表（与 InstanceIDs 一一对应）</p>
+        :type QUUIDS: list of str
+        :param _InstanceIDs: <p>生效主机实例ID列表（与 QUUIDS 一一对应）</p>
+        :type InstanceIDs: list of str
+        :param _ExcludeQUUIDS: <p>剔除主机 QUUID 列表</p>
+        :type ExcludeQUUIDS: list of str
+        :param _ExcludeInstanceIDs: <p>剔除主机实例ID列表</p>
+        :type ExcludeInstanceIDs: list of str
+        :param _TagItems: <p>生效标签详情列表</p>
+        :type TagItems: list of EDRRuleTagItem
+        :param _HostCount: <p>主机数：自定义为指定主机数（Scope=1 时为 0，前端展示全部主机）；自学习为组内去重主机数</p>
+        :type HostCount: int
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _CreateTime: <p>创建时间，格式 2006-01-02 15:04:05</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>最近修改时间，格式 2006-01-02 15:04:05</p>
+        :type ModifyTime: str
+        """
+        self._Type = None
+        self._AppId = None
+        self._Id = None
+        self._SrcIp = None
+        self._UserName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Places = None
+        self._Locations = None
+        self._Scope = None
+        self._QUUIDS = None
+        self._InstanceIDs = None
+        self._ExcludeQUUIDS = None
+        self._ExcludeInstanceIDs = None
+        self._TagItems = None
+        self._HostCount = None
+        self._Remark = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def Type(self):
+        r"""<p>白名单类型：Custom-自定义白名单 Learn-自学习白名单</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AppId(self):
+        r"""<p>规则所属账号 AppId，多账号场景下用于区分与后续编辑定位</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Id(self):
+        r"""<p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SrcIp(self):
+        r"""<p>登录源IP（逗号分隔）；自学习白名单恒为空</p>
+        :rtype: str
+        """
+        return self._SrcIp
+
+    @SrcIp.setter
+    def SrcIp(self, SrcIp):
+        self._SrcIp = SrcIp
+
+    @property
+    def UserName(self):
+        r"""<p>登录用户名（逗号分隔）；自学习白名单恒为空</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def StartTime(self):
+        r"""<p>登录时段起始 HH:MM；自学习白名单恒为空</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>登录时段结束 HH:MM；自学习白名单恒为空</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Places(self):
+        r"""<p>常用登录地列表</p>
+        :rtype: list of LoginWhitePlace
+        """
+        return self._Places
+
+    @Places.setter
+    def Places(self, Places):
+        self._Places = Places
+
+    @property
+    def Locations(self):
+        r"""<p>常用登录地展示文案（逗号分隔），供列表直接展示</p>
+        :rtype: str
+        """
+        return self._Locations
+
+    @Locations.setter
+    def Locations(self, Locations):
+        self._Locations = Locations
+
+    @property
+    def Scope(self):
+        r"""<p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def QUUIDS(self):
+        r"""<p>生效主机 QUUID 列表（与 InstanceIDs 一一对应）</p>
+        :rtype: list of str
+        """
+        return self._QUUIDS
+
+    @QUUIDS.setter
+    def QUUIDS(self, QUUIDS):
+        self._QUUIDS = QUUIDS
+
+    @property
+    def InstanceIDs(self):
+        r"""<p>生效主机实例ID列表（与 QUUIDS 一一对应）</p>
+        :rtype: list of str
+        """
+        return self._InstanceIDs
+
+    @InstanceIDs.setter
+    def InstanceIDs(self, InstanceIDs):
+        self._InstanceIDs = InstanceIDs
+
+    @property
+    def ExcludeQUUIDS(self):
+        r"""<p>剔除主机 QUUID 列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludeQUUIDS
+
+    @ExcludeQUUIDS.setter
+    def ExcludeQUUIDS(self, ExcludeQUUIDS):
+        self._ExcludeQUUIDS = ExcludeQUUIDS
+
+    @property
+    def ExcludeInstanceIDs(self):
+        r"""<p>剔除主机实例ID列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludeInstanceIDs
+
+    @ExcludeInstanceIDs.setter
+    def ExcludeInstanceIDs(self, ExcludeInstanceIDs):
+        self._ExcludeInstanceIDs = ExcludeInstanceIDs
+
+    @property
+    def TagItems(self):
+        r"""<p>生效标签详情列表</p>
+        :rtype: list of EDRRuleTagItem
+        """
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
+    @property
+    def HostCount(self):
+        r"""<p>主机数：自定义为指定主机数（Scope=1 时为 0，前端展示全部主机）；自学习为组内去重主机数</p>
+        :rtype: int
+        """
+        return self._HostCount
+
+    @HostCount.setter
+    def HostCount(self, HostCount):
+        self._HostCount = HostCount
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，格式 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>最近修改时间，格式 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._AppId = params.get("AppId")
+        self._Id = params.get("Id")
+        self._SrcIp = params.get("SrcIp")
+        self._UserName = params.get("UserName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Places") is not None:
+            self._Places = []
+            for item in params.get("Places"):
+                obj = LoginWhitePlace()
+                obj._deserialize(item)
+                self._Places.append(obj)
+        self._Locations = params.get("Locations")
+        self._Scope = params.get("Scope")
+        self._QUUIDS = params.get("QUUIDS")
+        self._InstanceIDs = params.get("InstanceIDs")
+        self._ExcludeQUUIDS = params.get("ExcludeQUUIDS")
+        self._ExcludeInstanceIDs = params.get("ExcludeInstanceIDs")
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = EDRRuleTagItem()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
+        self._HostCount = params.get("HostCount")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginWhitePlace(AbstractModel):
+    r"""常用登录地（出参）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CountryId: <p>国家ID</p>
+        :type CountryId: int
+        :param _ProvinceId: <p>省份ID；99999 表示全部省份</p>
+        :type ProvinceId: int
+        :param _CityId: <p>城市ID；99999 表示全部城市</p>
+        :type CityId: int
+        :param _Location: <p>地点展示文案，服务端按 Language 生成，如 中国-广东-深圳</p>
+        :type Location: str
+        """
+        self._CountryId = None
+        self._ProvinceId = None
+        self._CityId = None
+        self._Location = None
+
+    @property
+    def CountryId(self):
+        r"""<p>国家ID</p>
+        :rtype: int
+        """
+        return self._CountryId
+
+    @CountryId.setter
+    def CountryId(self, CountryId):
+        self._CountryId = CountryId
+
+    @property
+    def ProvinceId(self):
+        r"""<p>省份ID；99999 表示全部省份</p>
+        :rtype: int
+        """
+        return self._ProvinceId
+
+    @ProvinceId.setter
+    def ProvinceId(self, ProvinceId):
+        self._ProvinceId = ProvinceId
+
+    @property
+    def CityId(self):
+        r"""<p>城市ID；99999 表示全部城市</p>
+        :rtype: int
+        """
+        return self._CityId
+
+    @CityId.setter
+    def CityId(self, CityId):
+        self._CityId = CityId
+
+    @property
+    def Location(self):
+        r"""<p>地点展示文案，服务端按 Language 生成，如 中国-广东-深圳</p>
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+
+    def _deserialize(self, params):
+        self._CountryId = params.get("CountryId")
+        self._ProvinceId = params.get("ProvinceId")
+        self._CityId = params.get("CityId")
+        self._Location = params.get("Location")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoginWhitePlaceInput(AbstractModel):
+    r"""常用登录地（入参）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CountryId: <p>国家ID，当前仅支持国内：1</p>
+        :type CountryId: int
+        :param _ProvinceId: <p>省份ID；99999 表示全部省份</p>
+        :type ProvinceId: int
+        :param _CityId: <p>城市ID；99999 表示全部城市</p>
+        :type CityId: int
+        """
+        self._CountryId = None
+        self._ProvinceId = None
+        self._CityId = None
+
+    @property
+    def CountryId(self):
+        r"""<p>国家ID，当前仅支持国内：1</p>
+        :rtype: int
+        """
+        return self._CountryId
+
+    @CountryId.setter
+    def CountryId(self, CountryId):
+        self._CountryId = CountryId
+
+    @property
+    def ProvinceId(self):
+        r"""<p>省份ID；99999 表示全部省份</p>
+        :rtype: int
+        """
+        return self._ProvinceId
+
+    @ProvinceId.setter
+    def ProvinceId(self, ProvinceId):
+        self._ProvinceId = ProvinceId
+
+    @property
+    def CityId(self):
+        r"""<p>城市ID；99999 表示全部城市</p>
+        :rtype: int
+        """
+        return self._CityId
+
+    @CityId.setter
+    def CityId(self, CityId):
+        self._CityId = CityId
+
+
+    def _deserialize(self, params):
+        self._CountryId = params.get("CountryId")
+        self._ProvinceId = params.get("ProvinceId")
+        self._CityId = params.get("CityId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Machine(AbstractModel):
     r"""主机列表
 
@@ -161473,6 +162781,494 @@ class ModifyLoginTypeFailInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyLoginWhiteCustomEDRRequest(AbstractModel):
+    r"""ModifyLoginWhiteCustomEDR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+        :type Id: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _SrcIp: <p>登录源IP，多个以逗号分隔；支持单个IP、区间(a-b)、CIDR，支持 IPv4 与 IPv6；最长 2048 字符</p>
+        :type SrcIp: str
+        :param _UserName: <p>登录用户名，多个以逗号分隔；最长 1024 字符</p>
+        :type UserName: str
+        :param _StartTime: <p>登录时段起始 HH:MM；与 EndTime 必须同时填写或同时为空</p>
+        :type StartTime: str
+        :param _EndTime: <p>登录时段结束 HH:MM；与 StartTime 必须同时填写或同时为空</p>
+        :type EndTime: str
+        :param _Places: <p>常用登录地列表，最多 200 个；ProvinceId/CityId 传 99999 表示全部省份/全部城市</p>
+        :type Places: list of LoginWhitePlaceInput
+        :param _Remark: <p>备注，最长 255 字符</p>
+        :type Remark: str
+        :param _Scope: <p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+        :type Scope: int
+        :param _InstanceIDsWithAppId: <p>指定主机（实例ID 形态）列表，最多 10000 项；服务端经 idmap 翻译为 QUUID 后与 QUUIDSWithAppId 合并去重</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>剔除主机（实例ID 形态）列表，最多 10000 项</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _TagIDs: <p>安全中心标签ID列表，最多 100 个；Scope=0 时与主机为或关系；自学习白名单不支持按标签生效（传非空将被拒绝）</p>
+        :type TagIDs: list of str
+        :param _TargetAppIDs: <p>目标appid</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _DealOldEvents: <p>是否加白历史告警</p>
+        :type DealOldEvents: int
+        """
+        self._Id = None
+        self._MemberId = None
+        self._SrcIp = None
+        self._UserName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Places = None
+        self._Remark = None
+        self._Scope = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+        self._TagIDs = None
+        self._TargetAppIDs = None
+        self._DealOldEvents = None
+
+    @property
+    def Id(self):
+        r"""<p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def SrcIp(self):
+        r"""<p>登录源IP，多个以逗号分隔；支持单个IP、区间(a-b)、CIDR，支持 IPv4 与 IPv6；最长 2048 字符</p>
+        :rtype: str
+        """
+        return self._SrcIp
+
+    @SrcIp.setter
+    def SrcIp(self, SrcIp):
+        self._SrcIp = SrcIp
+
+    @property
+    def UserName(self):
+        r"""<p>登录用户名，多个以逗号分隔；最长 1024 字符</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def StartTime(self):
+        r"""<p>登录时段起始 HH:MM；与 EndTime 必须同时填写或同时为空</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>登录时段结束 HH:MM；与 StartTime 必须同时填写或同时为空</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Places(self):
+        r"""<p>常用登录地列表，最多 200 个；ProvinceId/CityId 传 99999 表示全部省份/全部城市</p>
+        :rtype: list of LoginWhitePlaceInput
+        """
+        return self._Places
+
+    @Places.setter
+    def Places(self, Places):
+        self._Places = Places
+
+    @property
+    def Remark(self):
+        r"""<p>备注，最长 255 字符</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Scope(self):
+        r"""<p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>指定主机（实例ID 形态）列表，最多 10000 项；服务端经 idmap 翻译为 QUUID 后与 QUUIDSWithAppId 合并去重</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>剔除主机（实例ID 形态）列表，最多 10000 项</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+    @property
+    def TagIDs(self):
+        r"""<p>安全中心标签ID列表，最多 100 个；Scope=0 时与主机为或关系；自学习白名单不支持按标签生效（传非空将被拒绝）</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>目标appid</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def DealOldEvents(self):
+        r"""<p>是否加白历史告警</p>
+        :rtype: int
+        """
+        return self._DealOldEvents
+
+    @DealOldEvents.setter
+    def DealOldEvents(self, DealOldEvents):
+        self._DealOldEvents = DealOldEvents
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        self._SrcIp = params.get("SrcIp")
+        self._UserName = params.get("UserName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Places") is not None:
+            self._Places = []
+            for item in params.get("Places"):
+                obj = LoginWhitePlaceInput()
+                obj._deserialize(item)
+                self._Places.append(obj)
+        self._Remark = params.get("Remark")
+        self._Scope = params.get("Scope")
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        self._TagIDs = params.get("TagIDs")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._DealOldEvents = params.get("DealOldEvents")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoginWhiteCustomEDRResponse(AbstractModel):
+    r"""ModifyLoginWhiteCustomEDR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedAppIds: <p>失败的账号</p>
+        :type FailedAppIds: list of int non-negative
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailedAppIds = None
+        self._RequestId = None
+
+    @property
+    def FailedAppIds(self):
+        r"""<p>失败的账号</p>
+        :rtype: list of int non-negative
+        """
+        return self._FailedAppIds
+
+    @FailedAppIds.setter
+    def FailedAppIds(self, FailedAppIds):
+        self._FailedAppIds = FailedAppIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FailedAppIds = params.get("FailedAppIds")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLoginWhiteLearnEDRRequest(AbstractModel):
+    r"""ModifyLoginWhiteLearnEDR请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+        :type Id: int
+        :param _Places: <p>常用登录地列表，必填，1-200 个；为自学习规则唯一的内容维度</p>
+        :type Places: list of LoginWhitePlaceInput
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _RuleAppId: <p>规则所属账号 AppId（取列表出参 AppId）；为空取当前账号；非当前账号需通过归属校验</p>
+        :type RuleAppId: int
+        :param _Remark: <p>备注，最长 255 字符</p>
+        :type Remark: str
+        :param _Scope: <p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+        :type Scope: int
+        :param _InstanceIDsWithAppId: <p>指定主机（实例ID 形态）列表，最多 10000 项；服务端经 idmap 翻译为 QUUID 后与 QUUIDSWithAppId 合并去重</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>剔除主机（实例ID 形态）列表，最多 10000 项</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _TagIDs: <p>安全中心标签ID列表，最多 100 个；Scope=0 时与主机为或关系；自学习白名单不支持按标签生效（传非空将被拒绝）</p>
+        :type TagIDs: list of str
+        """
+        self._Id = None
+        self._Places = None
+        self._MemberId = None
+        self._RuleAppId = None
+        self._Remark = None
+        self._Scope = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+        self._TagIDs = None
+
+    @property
+    def Id(self):
+        r"""<p>规则ID；自学习为规则组ID（组内最小行ID）</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Places(self):
+        r"""<p>常用登录地列表，必填，1-200 个；为自学习规则唯一的内容维度</p>
+        :rtype: list of LoginWhitePlaceInput
+        """
+        return self._Places
+
+    @Places.setter
+    def Places(self, Places):
+        self._Places = Places
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def RuleAppId(self):
+        r"""<p>规则所属账号 AppId（取列表出参 AppId）；为空取当前账号；非当前账号需通过归属校验</p>
+        :rtype: int
+        """
+        return self._RuleAppId
+
+    @RuleAppId.setter
+    def RuleAppId(self, RuleAppId):
+        self._RuleAppId = RuleAppId
+
+    @property
+    def Remark(self):
+        r"""<p>备注，最长 255 字符</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Scope(self):
+        r"""<p>生效资产范围：0-指定主机（主机或标签命中） 1-全部主机</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>指定主机（实例ID 形态）列表，最多 10000 项；服务端经 idmap 翻译为 QUUID 后与 QUUIDSWithAppId 合并去重</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>剔除主机（实例ID 形态）列表，最多 10000 项</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+    @property
+    def TagIDs(self):
+        r"""<p>安全中心标签ID列表，最多 100 个；Scope=0 时与主机为或关系；自学习白名单不支持按标签生效（传非空将被拒绝）</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Places") is not None:
+            self._Places = []
+            for item in params.get("Places"):
+                obj = LoginWhitePlaceInput()
+                obj._deserialize(item)
+                self._Places.append(obj)
+        self._MemberId = params.get("MemberId")
+        self._RuleAppId = params.get("RuleAppId")
+        self._Remark = params.get("Remark")
+        self._Scope = params.get("Scope")
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        self._TagIDs = params.get("TagIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoginWhiteLearnEDRResponse(AbstractModel):
+    r"""ModifyLoginWhiteLearnEDR返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyLoginWhiteRecordRequest(AbstractModel):

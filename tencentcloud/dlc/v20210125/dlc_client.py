@@ -6103,6 +6103,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetRayServeEvent(self, request):
+        r"""通过 ResourceManager 调用 CLS SearchLog API 查询 RayServe 部署相关事件日志。不返回总数，使用 Context 进行翻页，ListOver 标识是否还有更多数据。
+
+        :param request: Request instance for GetRayServeEvent.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayServeEventRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayServeEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayServeEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayServeEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetResourceConfig(self, request):
         r"""获取资源配置模板详情
 
@@ -6853,6 +6876,29 @@ class DlcClient(AbstractClient):
             body = self.call("ListServiceApiKeys", params, headers=headers)
             response = json.loads(body)
             model = models.ListServiceApiKeysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListStorages(self, request):
+        r"""根据集群ID列出所有Ray任务
+
+        :param request: Request instance for ListStorages.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListStoragesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListStoragesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListStorages", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListStoragesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7980,6 +8026,29 @@ class DlcClient(AbstractClient):
             body = self.call("StopRayCluster", params, headers=headers)
             response = json.loads(body)
             model = models.StopRayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitRayJob(self, request):
+        r"""提交新的Ray任务到指定集群
+
+        :param request: Request instance for SubmitRayJob.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.SubmitRayJobRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.SubmitRayJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitRayJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitRayJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

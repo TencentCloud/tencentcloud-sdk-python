@@ -3880,6 +3880,175 @@ class HpaPolicy(AbstractModel):
         
 
 
+class InitializeCloudRunResourceRequest(AbstractModel):
+    r"""InitializeCloudRunResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvType: <p>tcbr,run,weda,baas</p>
+        :type EnvType: str
+        :param _EnvId: <p>环境ID 云开发平台必填</p>
+        :type EnvId: str
+        :param _VpcId: <p>私有网络Id</p>
+        :type VpcId: str
+        :param _SubNetIds: <p>子网列表</p>
+        :type SubNetIds: list of str
+        :param _Source: <p>来源：wechat | cloud | weda</p>
+        :type Source: str
+        :param _Channel: <p>渠道：wechat | cloud | weda</p>
+        :type Channel: str
+        """
+        self._EnvType = None
+        self._EnvId = None
+        self._VpcId = None
+        self._SubNetIds = None
+        self._Source = None
+        self._Channel = None
+
+    @property
+    def EnvType(self):
+        r"""<p>tcbr,run,weda,baas</p>
+        :rtype: str
+        """
+        return self._EnvType
+
+    @EnvType.setter
+    def EnvType(self, EnvType):
+        self._EnvType = EnvType
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID 云开发平台必填</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def VpcId(self):
+        r"""<p>私有网络Id</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubNetIds(self):
+        r"""<p>子网列表</p>
+        :rtype: list of str
+        """
+        return self._SubNetIds
+
+    @SubNetIds.setter
+    def SubNetIds(self, SubNetIds):
+        self._SubNetIds = SubNetIds
+
+    @property
+    def Source(self):
+        r"""<p>来源：wechat | cloud | weda</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Channel(self):
+        r"""<p>渠道：wechat | cloud | weda</p>
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+
+    def _deserialize(self, params):
+        self._EnvType = params.get("EnvType")
+        self._EnvId = params.get("EnvId")
+        self._VpcId = params.get("VpcId")
+        self._SubNetIds = params.get("SubNetIds")
+        self._Source = params.get("Source")
+        self._Channel = params.get("Channel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InitializeCloudRunResourceResponse(AbstractModel):
+    r"""InitializeCloudRunResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境Id</p>
+        :type EnvId: str
+        :param _TranId: <p>后付费订单号</p>
+        :type TranId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnvId = None
+        self._TranId = None
+        self._RequestId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境Id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def TranId(self):
+        r"""<p>后付费订单号</p>
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._TranId = params.get("TranId")
+        self._RequestId = params.get("RequestId")
+
+
 class LogObject(AbstractModel):
     r"""CLS日志单条信息
 

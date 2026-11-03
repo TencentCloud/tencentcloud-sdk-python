@@ -348,6 +348,29 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InitializeCloudRunResource(self, request):
+        r"""创建云托管环境，并开通资源。
+
+        :param request: Request instance for InitializeCloudRunResource.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.InitializeCloudRunResourceRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.InitializeCloudRunResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InitializeCloudRunResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.InitializeCloudRunResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OperateServerManage(self, request):
         r"""操作发布单
 

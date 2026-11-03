@@ -881,6 +881,9 @@ UNAUTHORIZEDOPERATION_DELETEUSERSFROMWORKGROUP = 'UnauthorizedOperation.DeleteUs
 # 子用户不是管理员，无权删除工作组。
 UNAUTHORIZEDOPERATION_DELETEWORKGROUP = 'UnauthorizedOperation.DeleteWorkgroup'
 
+# 权限不足：当前角色未授权 goosefs:DescribeClusters，请在 CAM 控制台为关联角色追加 GooseFS 只读策略后重试
+UNAUTHORIZEDOPERATION_GOOSEFSDESCRIBECLUSTERS = 'UnauthorizedOperation.GooseFSDescribeClusters'
+
 # 子用户无权授予特定权限。
 UNAUTHORIZEDOPERATION_GRANTPOLICY = 'UnauthorizedOperation.GrantPolicy'
 

@@ -14667,16 +14667,59 @@ class CreateCloudNativeAPIGatewayMCPToolRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _GatewayId: <p>网关实例 id</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCP Server Id</p>
+        :type ServerId: str
         :param _ContentType: <p>内容类型</p>
         :type ContentType: str
+        :param _Name: <p>名字</p>
+        :type Name: str
+        :param _Method: <p>方法</p><p>枚举值：</p><ul><li>GET： GET</li><li>POST： POST</li><li>PUT： PUT</li><li>DELETE： DELETE</li><li>PATCH： PATCH</li></ul>
+        :type Method: str
+        :param _Path: <p>路径</p>
+        :type Path: str
         :param _DisplayName: <p>展示名字</p>
         :type DisplayName: str
         :param _ServiceId: <p>服务 id</p>
         :type ServiceId: str
+        :param _InputParams: <p>输入</p>
+        :type InputParams: list of CNAPIGwMCPToolParam
+        :param _Description: <p>描述</p>
+        :type Description: str
         """
+        self._GatewayId = None
+        self._ServerId = None
         self._ContentType = None
+        self._Name = None
+        self._Method = None
+        self._Path = None
         self._DisplayName = None
         self._ServiceId = None
+        self._InputParams = None
+        self._Description = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCP Server Id</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
 
     @property
     def ContentType(self):
@@ -14688,6 +14731,39 @@ class CreateCloudNativeAPIGatewayMCPToolRequest(AbstractModel):
     @ContentType.setter
     def ContentType(self, ContentType):
         self._ContentType = ContentType
+
+    @property
+    def Name(self):
+        r"""<p>名字</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Method(self):
+        r"""<p>方法</p><p>枚举值：</p><ul><li>GET： GET</li><li>POST： POST</li><li>PUT： PUT</li><li>DELETE： DELETE</li><li>PATCH： PATCH</li></ul>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Path(self):
+        r"""<p>路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
 
     @property
     def DisplayName(self):
@@ -14711,11 +14787,45 @@ class CreateCloudNativeAPIGatewayMCPToolRequest(AbstractModel):
     def ServiceId(self, ServiceId):
         self._ServiceId = ServiceId
 
+    @property
+    def InputParams(self):
+        r"""<p>输入</p>
+        :rtype: list of CNAPIGwMCPToolParam
+        """
+        return self._InputParams
+
+    @InputParams.setter
+    def InputParams(self, InputParams):
+        self._InputParams = InputParams
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
         self._ContentType = params.get("ContentType")
+        self._Name = params.get("Name")
+        self._Method = params.get("Method")
+        self._Path = params.get("Path")
         self._DisplayName = params.get("DisplayName")
         self._ServiceId = params.get("ServiceId")
+        if params.get("InputParams") is not None:
+            self._InputParams = []
+            for item in params.get("InputParams"):
+                obj = CNAPIGwMCPToolParam()
+                obj._deserialize(item)
+                self._InputParams.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

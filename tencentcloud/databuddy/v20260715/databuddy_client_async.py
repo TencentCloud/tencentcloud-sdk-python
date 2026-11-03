@@ -1262,6 +1262,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListWorkspaceRoles(
+            self,
+            request: models.ListWorkspaceRolesRequest,
+            opts: Dict = None,
+    ) -> models.ListWorkspaceRolesResponse:
+        """
+        查询工作空间角色列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListWorkspaceRoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListWorkspaceRolesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListWorkspaceUsers(
             self,
             request: models.ListWorkspaceUsersRequest,

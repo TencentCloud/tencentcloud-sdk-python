@@ -1593,6 +1593,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListWorkspaceRoles(self, request):
+        r"""查询工作空间角色列表
+
+        :param request: Request instance for ListWorkspaceRoles.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ListWorkspaceRolesRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListWorkspaceRolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListWorkspaceRoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListWorkspaceRolesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListWorkspaceUsers(self, request):
         r"""查询工作空间用户列表
 

@@ -3048,6 +3048,40 @@ class DeleteScheduledTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteSessionArtifactListRequest(AbstractModel):
+    r"""DeleteSessionArtifactList请求参数结构体
+
+    """
+
+
+class DeleteSessionArtifactListResponse(AbstractModel):
+    r"""DeleteSessionArtifactList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeliveryTarget(AbstractModel):
     r"""投递目标
 
@@ -6379,6 +6413,74 @@ class DescribeScheduledTaskResponse(AbstractModel):
                 obj = DeliveryTarget()
                 obj._deserialize(item)
                 self._DeliveryTargetSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSessionArtifactDownloadUrlRequest(AbstractModel):
+    r"""DescribeSessionArtifactDownloadUrl请求参数结构体
+
+    """
+
+
+class DescribeSessionArtifactDownloadUrlResponse(AbstractModel):
+    r"""DescribeSessionArtifactDownloadUrl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSessionArtifactListRequest(AbstractModel):
+    r"""DescribeSessionArtifactList请求参数结构体
+
+    """
+
+
+class DescribeSessionArtifactListResponse(AbstractModel):
+    r"""DescribeSessionArtifactList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

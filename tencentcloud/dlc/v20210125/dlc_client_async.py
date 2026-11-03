@@ -4782,6 +4782,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetRayServeEvent(
+            self,
+            request: models.GetRayServeEventRequest,
+            opts: Dict = None,
+    ) -> models.GetRayServeEventResponse:
+        """
+        通过 ResourceManager 调用 CLS SearchLog API 查询 RayServe 部署相关事件日志。不返回总数，使用 Context 进行翻页，ListOver 标识是否还有更多数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayServeEvent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayServeEventResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetResourceConfig(
             self,
             request: models.GetResourceConfigRequest,
@@ -5371,6 +5389,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "ListServiceApiKeys"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListServiceApiKeysResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListStorages(
+            self,
+            request: models.ListStoragesRequest,
+            opts: Dict = None,
+    ) -> models.ListStoragesResponse:
+        """
+        根据集群ID列出所有Ray任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListStorages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListStoragesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6253,6 +6289,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "StopRayCluster"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopRayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitRayJob(
+            self,
+            request: models.SubmitRayJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitRayJobResponse:
+        """
+        提交新的Ray任务到指定集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitRayJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitRayJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

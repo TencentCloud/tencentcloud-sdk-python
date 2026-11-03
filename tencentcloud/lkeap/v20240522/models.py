@@ -1646,16 +1646,14 @@ class GetReconstructDocumentResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 说明：解析任务ID
-备注：仅支持单个任务ID
+        :param _TaskId: <p>说明：解析任务ID<br>备注：仅支持单个任务ID</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""说明：解析任务ID
-备注：仅支持单个任务ID
+        r"""<p>说明：解析任务ID<br>备注：仅支持单个任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -1684,21 +1682,18 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态。
-- `Success`：执行完成
-- `Processing`：执行中
--  `Pause`: 暂停
--  `Failed`：执行失败
--  `WaitExecute`：等待执行
+        :param _Status: <p>任务状态。</p><ul><li><code>Success</code>：执行完成</li><li><code>Processing</code>：执行中</li><li><code>Pause</code>: 暂停</li><li><code>Failed</code>：执行失败</li><li><code>WaitExecute</code>：等待执行</li></ul>
         :type Status: str
-        :param _DocumentRecognizeResultUrl: 解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟
+        :param _DocumentRecognizeResultUrl: <p>解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟</p>
         :type DocumentRecognizeResultUrl: str
-        :param _FailedPages: 文档解析失败的页码
+        :param _FailedPages: <p>文档解析失败的页码</p>
         :type FailedPages: list of ReconstructDocumentFailedPage
-        :param _Usage: 文档拆分任务的用量	
+        :param _Usage: <p>文档拆分任务的用量</p>
         :type Usage: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
-        :param _Error: 文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息
+        :param _Error: <p>文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息</p>
         :type Error: :class:`tencentcloud.lkeap.v20240522.models.ErrorInfo`
+        :param _TaskErrInfo: <p>文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息</p>
+        :type TaskErrInfo: :class:`tencentcloud.lkeap.v20240522.models.TaskErrInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1707,16 +1702,12 @@ class GetReconstructDocumentResultResponse(AbstractModel):
         self._FailedPages = None
         self._Usage = None
         self._Error = None
+        self._TaskErrInfo = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""任务状态。
-- `Success`：执行完成
-- `Processing`：执行中
--  `Pause`: 暂停
--  `Failed`：执行失败
--  `WaitExecute`：等待执行
+        r"""<p>任务状态。</p><ul><li><code>Success</code>：执行完成</li><li><code>Processing</code>：执行中</li><li><code>Pause</code>: 暂停</li><li><code>Failed</code>：执行失败</li><li><code>WaitExecute</code>：等待执行</li></ul>
         :rtype: str
         """
         return self._Status
@@ -1727,7 +1718,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def DocumentRecognizeResultUrl(self):
-        r"""解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟
+        r"""<p>解析结果的临时下载地址。文件类型为zip压缩包，下载链接有效期30分钟</p>
         :rtype: str
         """
         return self._DocumentRecognizeResultUrl
@@ -1738,7 +1729,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def FailedPages(self):
-        r"""文档解析失败的页码
+        r"""<p>文档解析失败的页码</p>
         :rtype: list of ReconstructDocumentFailedPage
         """
         return self._FailedPages
@@ -1749,7 +1740,7 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Usage(self):
-        r"""文档拆分任务的用量	
+        r"""<p>文档拆分任务的用量</p>
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.DocumentUsage`
         """
         return self._Usage
@@ -1760,14 +1751,29 @@ class GetReconstructDocumentResultResponse(AbstractModel):
 
     @property
     def Error(self):
-        r"""文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息
+        warnings.warn("parameter `Error` is deprecated", DeprecationWarning) 
+
+        r"""<p>文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息</p>
         :rtype: :class:`tencentcloud.lkeap.v20240522.models.ErrorInfo`
         """
         return self._Error
 
     @Error.setter
     def Error(self, Error):
+        warnings.warn("parameter `Error` is deprecated", DeprecationWarning) 
+
         self._Error = Error
+
+    @property
+    def TaskErrInfo(self):
+        r"""<p>文档解析任务失败错误信息，当文档解析任务失败会返回具体的错误信息</p>
+        :rtype: :class:`tencentcloud.lkeap.v20240522.models.TaskErrInfo`
+        """
+        return self._TaskErrInfo
+
+    @TaskErrInfo.setter
+    def TaskErrInfo(self, TaskErrInfo):
+        self._TaskErrInfo = TaskErrInfo
 
     @property
     def RequestId(self):
@@ -1796,6 +1802,9 @@ class GetReconstructDocumentResultResponse(AbstractModel):
         if params.get("Error") is not None:
             self._Error = ErrorInfo()
             self._Error._deserialize(params.get("Error"))
+        if params.get("TaskErrInfo") is not None:
+            self._TaskErrInfo = TaskErrInfo()
+            self._TaskErrInfo._deserialize(params.get("TaskErrInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2930,6 +2939,12 @@ class SplitDocumentFailedPage(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TaskErrInfo(AbstractModel):
+    r"""文档解析/拆分任务失败原因
+
+    """
 
 
 class Thinking(AbstractModel):

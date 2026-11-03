@@ -9468,7 +9468,7 @@ class GetCatalogRequest(AbstractModel):
         :type CatalogName: str
         :param _WorkspaceId: <p>调用时所在workspace唯一id</p>
         :type WorkspaceId: str
-        :param _CatalogId: <p>数据目录id</p>
+        :param _CatalogId: <p>数据目录id，通过ListCatalogs接口获取</p>
         :type CatalogId: str
         :param _FetchOption: <p>数据获取选项，可选，控制是否返回权限信息及按权限过滤</p>
         :type FetchOption: :class:`tencentcloud.databuddy.v20260715.models.FetchOption`
@@ -9508,7 +9508,7 @@ class GetCatalogRequest(AbstractModel):
 
     @property
     def CatalogId(self):
-        r"""<p>数据目录id</p>
+        r"""<p>数据目录id，通过ListCatalogs接口获取</p>
         :rtype: str
         """
         return self._CatalogId
@@ -20263,6 +20263,233 @@ class ListWorkspaceGroupsRsp(AbstractModel):
         
 
 
+class ListWorkspaceRolesRequest(AbstractModel):
+    r"""ListWorkspaceRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        :param _NameKeyword: <p>关键字，支持按角色名称模糊搜索</p>
+        :type NameKeyword: str
+        :param _PageNumber: <p>页码，从1开始，默认1</p><p>默认值：1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页大小，默认10，取值范围为 [1,100]，越界时自动收敛到边界值</p><p>默认值：10</p>
+        :type PageSize: int
+        """
+        self._WorkspaceId = None
+        self._NameKeyword = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def NameKeyword(self):
+        r"""<p>关键字，支持按角色名称模糊搜索</p>
+        :rtype: str
+        """
+        return self._NameKeyword
+
+    @NameKeyword.setter
+    def NameKeyword(self, NameKeyword):
+        self._NameKeyword = NameKeyword
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从1开始，默认1</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小，默认10，取值范围为 [1,100]，越界时自动收敛到边界值</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._NameKeyword = params.get("NameKeyword")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListWorkspaceRolesResponse(AbstractModel):
+    r"""ListWorkspaceRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>工作空间角色结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ListWorkspaceRolesRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>工作空间角色结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ListWorkspaceRolesRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListWorkspaceRolesRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListWorkspaceRolesRsp(AbstractModel):
+    r"""查询工作空间角色列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>角色列表</p>
+        :type Items: list of Role
+        :param _PageNumber: <p>当前页码</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页大小</p>
+        :type PageSize: int
+        :param _TotalCount: <p>总记录数</p>
+        :type TotalCount: int
+        :param _TotalPageNumber: <p>总页数</p>
+        :type TotalPageNumber: int
+        """
+        self._Items = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+
+    @property
+    def Items(self):
+        r"""<p>角色列表</p>
+        :rtype: list of Role
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def PageNumber(self):
+        r"""<p>当前页码</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = Role()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ListWorkspaceUsersRequest(AbstractModel):
     r"""ListWorkspaceUsers请求参数结构体
 
@@ -23240,6 +23467,64 @@ class ResourceGroupInfo(AbstractModel):
         self._ResourceGroupId = params.get("ResourceGroupId")
         self._ResourceGroupName = params.get("ResourceGroupName")
         self._ResourceGroupStatus = params.get("ResourceGroupStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Role(AbstractModel):
+    r"""角色完整信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BasicInfo: <p>角色基本信息</p>
+        :type BasicInfo: :class:`tencentcloud.databuddy.v20260715.models.RoleBasicInfo`
+        :param _Permissions: <p>角色权限</p>
+        :type Permissions: list of RolePermission
+        """
+        self._BasicInfo = None
+        self._Permissions = None
+
+    @property
+    def BasicInfo(self):
+        r"""<p>角色基本信息</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.RoleBasicInfo`
+        """
+        return self._BasicInfo
+
+    @BasicInfo.setter
+    def BasicInfo(self, BasicInfo):
+        self._BasicInfo = BasicInfo
+
+    @property
+    def Permissions(self):
+        r"""<p>角色权限</p>
+        :rtype: list of RolePermission
+        """
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+
+    def _deserialize(self, params):
+        if params.get("BasicInfo") is not None:
+            self._BasicInfo = RoleBasicInfo()
+            self._BasicInfo._deserialize(params.get("BasicInfo"))
+        if params.get("Permissions") is not None:
+            self._Permissions = []
+            for item in params.get("Permissions"):
+                obj = RolePermission()
+                obj._deserialize(item)
+                self._Permissions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

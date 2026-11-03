@@ -144,41 +144,32 @@ class CreateVRSTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionId: 唯一请求 ID
+        :param _SessionId: <p>唯一请求 ID</p>
         :type SessionId: str
-        :param _VoiceName: 音色名称
+        :param _VoiceName: <p>音色名称</p>
         :type VoiceName: str
-        :param _VoiceGender: 音色性别:
-
-1-male
-
-2-female
+        :param _VoiceGender: <p>音色性别:</p><p>1-male</p><p>2-female</p>
         :type VoiceGender: int
-        :param _VoiceLanguage: 语言类型：
-
-1-中文
+        :param _VoiceLanguage: <p>语言类型：</p><p>1-中文</p>
         :type VoiceLanguage: int
-        :param _AudioIdList: 音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）
+        :param _AudioIdList: <p>音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）</p>
         :type AudioIdList: list of str
-        :param _SampleRate: 音频采样率：
-
-16000：16k
+        :param _SampleRate: <p>音频采样率：</p><p>16000：16k</p>
         :type SampleRate: int
-        :param _Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
+        :param _Codec: <p>音频格式，音频类型(wav,mp3,aac,m4a)</p>
         :type Codec: str
-        :param _CallbackUrl: 回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式暂不支持一句话版声音复刻）
-回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
+        :param _CallbackUrl: <p>回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式暂不支持一句话版声音复刻）<br>回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{&quot;TaskId&quot;:&quot;xxxxxxxxxxxxxx&quot;,&quot;Status&quot;:2,&quot;StatusStr&quot;:&quot;success&quot;,&quot;VoiceType&quot;:xxxxx,&quot;ErrorMsg&quot;:&quot;&quot;}</p>
         :type CallbackUrl: str
-        :param _ModelType: 模型类型 1:在线 2:离线  默认为1
+        :param _ModelType: <p>模型类型 1:在线 2:离线  默认为1</p>
         :type ModelType: int
-        :param _TaskType: 复刻类型。
-5 - 一句话声音复刻。
+        :param _TaskType: <p>复刻类型。<br>5 - 一句话声音复刻。</p>
         :type TaskType: int
-        :param _VPRAudioId: 校验音频ID。（仅基础版声音复刻使用）
+        :param _VPRAudioId: <p>校验音频ID。（仅基础版声音复刻使用）</p>
         :type VPRAudioId: str
-        :param _EnableVoiceEnhance: 是否开启语音增强，0 - 关闭，1 - 开启 。默认关闭
-语音增强仅适用于一句话复刻场景
+        :param _EnableVoiceEnhance: <p>是否开启语音增强，0 - 关闭，1 - 开启 。默认关闭<br>语音增强仅适用于一句话复刻场景</p>
         :type EnableVoiceEnhance: int
+        :param _EngineType: <p>模型引擎，可选值：</p><ul><li><p>WXZL（默认）</p></li><li><p>YTLX_V2（新版）</p></li></ul><p>示例：YTLX_V2</p>
+        :type EngineType: str
         """
         self._SessionId = None
         self._VoiceName = None
@@ -192,10 +183,11 @@ class CreateVRSTaskRequest(AbstractModel):
         self._TaskType = None
         self._VPRAudioId = None
         self._EnableVoiceEnhance = None
+        self._EngineType = None
 
     @property
     def SessionId(self):
-        r"""唯一请求 ID
+        r"""<p>唯一请求 ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -206,7 +198,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceName(self):
-        r"""音色名称
+        r"""<p>音色名称</p>
         :rtype: str
         """
         return self._VoiceName
@@ -217,11 +209,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceGender(self):
-        r"""音色性别:
-
-1-male
-
-2-female
+        r"""<p>音色性别:</p><p>1-male</p><p>2-female</p>
         :rtype: int
         """
         return self._VoiceGender
@@ -232,9 +220,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VoiceLanguage(self):
-        r"""语言类型：
-
-1-中文
+        r"""<p>语言类型：</p><p>1-中文</p>
         :rtype: int
         """
         return self._VoiceLanguage
@@ -245,7 +231,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def AudioIdList(self):
-        r"""音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）
+        r"""<p>音频ID集合。（一句话声音复刻仅需填写一个音质检测接口返回的AudioId）</p>
         :rtype: list of str
         """
         return self._AudioIdList
@@ -256,9 +242,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""音频采样率：
-
-16000：16k
+        r"""<p>音频采样率：</p><p>16000：16k</p>
         :rtype: int
         """
         return self._SampleRate
@@ -269,7 +253,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def Codec(self):
-        r"""音频格式，音频类型(wav,mp3,aac,m4a)
+        r"""<p>音频格式，音频类型(wav,mp3,aac,m4a)</p>
         :rtype: str
         """
         return self._Codec
@@ -280,8 +264,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def CallbackUrl(self):
-        r"""回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式暂不支持一句话版声音复刻）
-回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{"TaskId":"xxxxxxxxxxxxxx","Status":2,"StatusStr":"success","VoiceType":xxxxx,"ErrorMsg":""}
+        r"""<p>回调 URL，用户自行搭建的用于接收结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。（注意：回调方式暂不支持一句话版声音复刻）<br>回调采用POST请求方式，Content-Type为application/json，回调数据格式如下:{&quot;TaskId&quot;:&quot;xxxxxxxxxxxxxx&quot;,&quot;Status&quot;:2,&quot;StatusStr&quot;:&quot;success&quot;,&quot;VoiceType&quot;:xxxxx,&quot;ErrorMsg&quot;:&quot;&quot;}</p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -292,7 +275,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def ModelType(self):
-        r"""模型类型 1:在线 2:离线  默认为1
+        r"""<p>模型类型 1:在线 2:离线  默认为1</p>
         :rtype: int
         """
         return self._ModelType
@@ -303,8 +286,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""复刻类型。
-5 - 一句话声音复刻。
+        r"""<p>复刻类型。<br>5 - 一句话声音复刻。</p>
         :rtype: int
         """
         return self._TaskType
@@ -315,7 +297,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def VPRAudioId(self):
-        r"""校验音频ID。（仅基础版声音复刻使用）
+        r"""<p>校验音频ID。（仅基础版声音复刻使用）</p>
         :rtype: str
         """
         return self._VPRAudioId
@@ -326,8 +308,7 @@ class CreateVRSTaskRequest(AbstractModel):
 
     @property
     def EnableVoiceEnhance(self):
-        r"""是否开启语音增强，0 - 关闭，1 - 开启 。默认关闭
-语音增强仅适用于一句话复刻场景
+        r"""<p>是否开启语音增强，0 - 关闭，1 - 开启 。默认关闭<br>语音增强仅适用于一句话复刻场景</p>
         :rtype: int
         """
         return self._EnableVoiceEnhance
@@ -335,6 +316,17 @@ class CreateVRSTaskRequest(AbstractModel):
     @EnableVoiceEnhance.setter
     def EnableVoiceEnhance(self, EnableVoiceEnhance):
         self._EnableVoiceEnhance = EnableVoiceEnhance
+
+    @property
+    def EngineType(self):
+        r"""<p>模型引擎，可选值：</p><ul><li><p>WXZL（默认）</p></li><li><p>YTLX_V2（新版）</p></li></ul><p>示例：YTLX_V2</p>
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
 
 
     def _deserialize(self, params):
@@ -350,6 +342,7 @@ class CreateVRSTaskRequest(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._VPRAudioId = params.get("VPRAudioId")
         self._EnableVoiceEnhance = params.get("EnableVoiceEnhance")
+        self._EngineType = params.get("EngineType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -405,7 +398,7 @@ class CreateVRSTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 创建任务结果
+        :param _Data: <p>创建任务结果</p>
         :type Data: :class:`tencentcloud.vrs.v20200824.models.CreateVRSTaskRespData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -415,7 +408,7 @@ class CreateVRSTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""创建任务结果
+        r"""<p>创建任务结果</p>
         :rtype: :class:`tencentcloud.vrs.v20200824.models.CreateVRSTaskRespData`
         """
         return self._Data

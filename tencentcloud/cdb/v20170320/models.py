@@ -6448,12 +6448,15 @@ class CreateAccountsRequest(AbstractModel):
         :type Description: str
         :param _MaxUserConnections: <p>新账户最大可用连接数，默认值为10240，最大可设置值为10240。</p>
         :type MaxUserConnections: int
+        :param _CreateAccounts: <p>创建账号时的完整信息</p>
+        :type CreateAccounts: list of CreateDBAccount
         """
         self._InstanceId = None
         self._Accounts = None
         self._Password = None
         self._Description = None
         self._MaxUserConnections = None
+        self._CreateAccounts = None
 
     @property
     def InstanceId(self):
@@ -6510,6 +6513,17 @@ class CreateAccountsRequest(AbstractModel):
     def MaxUserConnections(self, MaxUserConnections):
         self._MaxUserConnections = MaxUserConnections
 
+    @property
+    def CreateAccounts(self):
+        r"""<p>创建账号时的完整信息</p>
+        :rtype: list of CreateDBAccount
+        """
+        return self._CreateAccounts
+
+    @CreateAccounts.setter
+    def CreateAccounts(self, CreateAccounts):
+        self._CreateAccounts = CreateAccounts
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6522,6 +6536,12 @@ class CreateAccountsRequest(AbstractModel):
         self._Password = params.get("Password")
         self._Description = params.get("Description")
         self._MaxUserConnections = params.get("MaxUserConnections")
+        if params.get("CreateAccounts") is not None:
+            self._CreateAccounts = []
+            for item in params.get("CreateAccounts"):
+                obj = CreateDBAccount()
+                obj._deserialize(item)
+                self._CreateAccounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8413,6 +8433,74 @@ class CreateCloneInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
         self._RequestId = params.get("RequestId")
+
+
+class CreateDBAccount(AbstractModel):
+    r"""创建账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _User: <p>账号名称</p>
+        :type User: str
+        :param _Host: <p>主机名</p>
+        :type Host: str
+        :param _SSMInfos: <p>开始SSM托管的相关信息</p>
+        :type SSMInfos: :class:`tencentcloud.cdb.v20170320.models.SSMCreateAccountInfos`
+        """
+        self._User = None
+        self._Host = None
+        self._SSMInfos = None
+
+    @property
+    def User(self):
+        r"""<p>账号名称</p>
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        r"""<p>主机名</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def SSMInfos(self):
+        r"""<p>开始SSM托管的相关信息</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.SSMCreateAccountInfos`
+        """
+        return self._SSMInfos
+
+    @SSMInfos.setter
+    def SSMInfos(self, SSMInfos):
+        self._SSMInfos = SSMInfos
+
+
+    def _deserialize(self, params):
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        if params.get("SSMInfos") is not None:
+            self._SSMInfos = SSMCreateAccountInfos()
+            self._SSMInfos._deserialize(params.get("SSMInfos"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateDBImportJobRequest(AbstractModel):
@@ -11031,9 +11119,12 @@ class DeleteAccountsRequest(AbstractModel):
         :type InstanceId: str
         :param _Accounts: <p>云数据库账号。</p>
         :type Accounts: list of Account
+        :param _DeleteAccounts: <p>待删除账号的完整信息。</p>
+        :type DeleteAccounts: list of DeleteDBAccount
         """
         self._InstanceId = None
         self._Accounts = None
+        self._DeleteAccounts = None
 
     @property
     def InstanceId(self):
@@ -11057,6 +11148,17 @@ class DeleteAccountsRequest(AbstractModel):
     def Accounts(self, Accounts):
         self._Accounts = Accounts
 
+    @property
+    def DeleteAccounts(self):
+        r"""<p>待删除账号的完整信息。</p>
+        :rtype: list of DeleteDBAccount
+        """
+        return self._DeleteAccounts
+
+    @DeleteAccounts.setter
+    def DeleteAccounts(self, DeleteAccounts):
+        self._DeleteAccounts = DeleteAccounts
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11066,6 +11168,12 @@ class DeleteAccountsRequest(AbstractModel):
                 obj = Account()
                 obj._deserialize(item)
                 self._Accounts.append(obj)
+        if params.get("DeleteAccounts") is not None:
+            self._DeleteAccounts = []
+            for item in params.get("DeleteAccounts"):
+                obj = DeleteDBAccount()
+                obj._deserialize(item)
+                self._DeleteAccounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11482,6 +11590,102 @@ class DeleteBackupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DeleteDBAccount(AbstractModel):
+    r"""删除账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _User: <p>用户名</p>
+        :type User: str
+        :param _Host: <p>主机名</p>
+        :type Host: str
+        :param _SecretName: <p>凭据名称</p>
+        :type SecretName: str
+        :param _RecoveryWindowInDays: <p>保留时间，0表示立即删除(最大30天)</p>
+        :type RecoveryWindowInDays: int
+        :param _DeleteMode: <p>删除模式</p><p>枚举值：</p><ul><li>0： 仅删除凭据</li><li>1： 删除凭据+账号</li></ul>
+        :type DeleteMode: int
+        """
+        self._User = None
+        self._Host = None
+        self._SecretName = None
+        self._RecoveryWindowInDays = None
+        self._DeleteMode = None
+
+    @property
+    def User(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Host(self):
+        r"""<p>主机名</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def SecretName(self):
+        r"""<p>凭据名称</p>
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def RecoveryWindowInDays(self):
+        r"""<p>保留时间，0表示立即删除(最大30天)</p>
+        :rtype: int
+        """
+        return self._RecoveryWindowInDays
+
+    @RecoveryWindowInDays.setter
+    def RecoveryWindowInDays(self, RecoveryWindowInDays):
+        self._RecoveryWindowInDays = RecoveryWindowInDays
+
+    @property
+    def DeleteMode(self):
+        r"""<p>删除模式</p><p>枚举值：</p><ul><li>0： 仅删除凭据</li><li>1： 删除凭据+账号</li></ul>
+        :rtype: int
+        """
+        return self._DeleteMode
+
+    @DeleteMode.setter
+    def DeleteMode(self, DeleteMode):
+        self._DeleteMode = DeleteMode
+
+
+    def _deserialize(self, params):
+        self._User = params.get("User")
+        self._Host = params.get("Host")
+        self._SecretName = params.get("SecretName")
+        self._RecoveryWindowInDays = params.get("RecoveryWindowInDays")
+        self._DeleteMode = params.get("DeleteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteDatabaseRequest(AbstractModel):
@@ -33384,6 +33588,110 @@ class PeriodStrategy(AbstractModel):
         
 
 
+class PrivilegeGroup(AbstractModel):
+    r"""权限组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalPrivileges: 全局权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalPrivileges: list of str
+        :param _DatabasePrivileges: 数据库权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabasePrivileges: list of DatabasePrivilege
+        :param _TablePrivileges: 表权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TablePrivileges: list of TablePrivilege
+        :param _ColumnPrivileges: 列权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnPrivileges: list of ColumnPrivilege
+        """
+        self._GlobalPrivileges = None
+        self._DatabasePrivileges = None
+        self._TablePrivileges = None
+        self._ColumnPrivileges = None
+
+    @property
+    def GlobalPrivileges(self):
+        r"""全局权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._GlobalPrivileges
+
+    @GlobalPrivileges.setter
+    def GlobalPrivileges(self, GlobalPrivileges):
+        self._GlobalPrivileges = GlobalPrivileges
+
+    @property
+    def DatabasePrivileges(self):
+        r"""数据库权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatabasePrivilege
+        """
+        return self._DatabasePrivileges
+
+    @DatabasePrivileges.setter
+    def DatabasePrivileges(self, DatabasePrivileges):
+        self._DatabasePrivileges = DatabasePrivileges
+
+    @property
+    def TablePrivileges(self):
+        r"""表权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TablePrivilege
+        """
+        return self._TablePrivileges
+
+    @TablePrivileges.setter
+    def TablePrivileges(self, TablePrivileges):
+        self._TablePrivileges = TablePrivileges
+
+    @property
+    def ColumnPrivileges(self):
+        r"""列权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ColumnPrivilege
+        """
+        return self._ColumnPrivileges
+
+    @ColumnPrivileges.setter
+    def ColumnPrivileges(self, ColumnPrivileges):
+        self._ColumnPrivileges = ColumnPrivileges
+
+
+    def _deserialize(self, params):
+        self._GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivileges") is not None:
+            self._DatabasePrivileges = []
+            for item in params.get("DatabasePrivileges"):
+                obj = DatabasePrivilege()
+                obj._deserialize(item)
+                self._DatabasePrivileges.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self._TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = TablePrivilege()
+                obj._deserialize(item)
+                self._TablePrivileges.append(obj)
+        if params.get("ColumnPrivileges") is not None:
+            self._ColumnPrivileges = []
+            for item in params.get("ColumnPrivileges"):
+                obj = ColumnPrivilege()
+                obj._deserialize(item)
+                self._ColumnPrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ProxyAddress(AbstractModel):
     r"""数据库代理地址信息
 
@@ -36882,6 +37190,182 @@ class RuleTemplateRecordInfo(AbstractModel):
         self._AffectedInstances = params.get("AffectedInstances")
         self._Operator = params.get("Operator")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SSMCreateAccountInfos(AbstractModel):
+    r"""创建SSM账号相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsOpenSSM: <p>是否开启SSM托管</p><p>枚举值：</p><ul><li>true： 开启托管</li><li>false： 不开启托管</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOpenSSM: bool
+        :param _IsRotationAccount: <p>是否创建轮转账号</p><p>枚举值：</p><ul><li>true： 创建轮转账号</li><li>false： 创建非轮转账号</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsRotationAccount: bool
+        :param _SecretName: <p>凭据名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretName: str
+        :param _KmsKeyId: <p>KMS CMK ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKeyId: str
+        :param _EncryptType: <p>密钥类型</p><p>枚举值：</p><ul><li>0： KMS密码</li><li>1： 软件密钥</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EncryptType: int
+        :param _EnableRotation: <p>是否开启轮转</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableRotation: bool
+        :param _RotationFrequency: <p>轮转周期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RotationFrequency: int
+        :param _PrivilegesList: <p>权限列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivilegesList: :class:`tencentcloud.cdb.v20170320.models.PrivilegeGroup`
+        :param _KmsHsmClusterId: <p>独享版 KMS 集群 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsHsmClusterId: str
+        """
+        self._IsOpenSSM = None
+        self._IsRotationAccount = None
+        self._SecretName = None
+        self._KmsKeyId = None
+        self._EncryptType = None
+        self._EnableRotation = None
+        self._RotationFrequency = None
+        self._PrivilegesList = None
+        self._KmsHsmClusterId = None
+
+    @property
+    def IsOpenSSM(self):
+        r"""<p>是否开启SSM托管</p><p>枚举值：</p><ul><li>true： 开启托管</li><li>false： 不开启托管</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsOpenSSM
+
+    @IsOpenSSM.setter
+    def IsOpenSSM(self, IsOpenSSM):
+        self._IsOpenSSM = IsOpenSSM
+
+    @property
+    def IsRotationAccount(self):
+        r"""<p>是否创建轮转账号</p><p>枚举值：</p><ul><li>true： 创建轮转账号</li><li>false： 创建非轮转账号</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsRotationAccount
+
+    @IsRotationAccount.setter
+    def IsRotationAccount(self, IsRotationAccount):
+        self._IsRotationAccount = IsRotationAccount
+
+    @property
+    def SecretName(self):
+        r"""<p>凭据名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>KMS CMK ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def EncryptType(self):
+        r"""<p>密钥类型</p><p>枚举值：</p><ul><li>0： KMS密码</li><li>1： 软件密钥</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EncryptType
+
+    @EncryptType.setter
+    def EncryptType(self, EncryptType):
+        self._EncryptType = EncryptType
+
+    @property
+    def EnableRotation(self):
+        r"""<p>是否开启轮转</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableRotation
+
+    @EnableRotation.setter
+    def EnableRotation(self, EnableRotation):
+        self._EnableRotation = EnableRotation
+
+    @property
+    def RotationFrequency(self):
+        r"""<p>轮转周期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RotationFrequency
+
+    @RotationFrequency.setter
+    def RotationFrequency(self, RotationFrequency):
+        self._RotationFrequency = RotationFrequency
+
+    @property
+    def PrivilegesList(self):
+        r"""<p>权限列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.PrivilegeGroup`
+        """
+        return self._PrivilegesList
+
+    @PrivilegesList.setter
+    def PrivilegesList(self, PrivilegesList):
+        self._PrivilegesList = PrivilegesList
+
+    @property
+    def KmsHsmClusterId(self):
+        r"""<p>独享版 KMS 集群 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KmsHsmClusterId
+
+    @KmsHsmClusterId.setter
+    def KmsHsmClusterId(self, KmsHsmClusterId):
+        self._KmsHsmClusterId = KmsHsmClusterId
+
+
+    def _deserialize(self, params):
+        self._IsOpenSSM = params.get("IsOpenSSM")
+        self._IsRotationAccount = params.get("IsRotationAccount")
+        self._SecretName = params.get("SecretName")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._EncryptType = params.get("EncryptType")
+        self._EnableRotation = params.get("EnableRotation")
+        self._RotationFrequency = params.get("RotationFrequency")
+        if params.get("PrivilegesList") is not None:
+            self._PrivilegesList = PrivilegeGroup()
+            self._PrivilegesList._deserialize(params.get("PrivilegesList"))
+        self._KmsHsmClusterId = params.get("KmsHsmClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

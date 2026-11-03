@@ -23109,6 +23109,10 @@ class SearchTaskResultRequest(AbstractModel):
         :type Offset: int
         :param _Limit: <p>分页的页内记录数，默认为20，最大200</p>
         :type Limit: int
+        :param _Category: <p>任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型任务</li><li>1： Windows 类型任务</li></ul>
+        :type Category: list of int
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>1： 执行中</li><li>2： 成功</li><li>3： 失败</li><li>4： 部分成功</li></ul>
+        :type Status: list of int non-negative
         """
         self._StartTime = None
         self._EndTime = None
@@ -23119,6 +23123,8 @@ class SearchTaskResultRequest(AbstractModel):
         self._TaskType = None
         self._Offset = None
         self._Limit = None
+        self._Category = None
+        self._Status = None
 
     @property
     def StartTime(self):
@@ -23219,6 +23225,28 @@ class SearchTaskResultRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Category(self):
+        r"""<p>任务类别</p><p>枚举值：</p><ul><li>0： Linux 类型任务</li><li>1： Windows 类型任务</li></ul>
+        :rtype: list of int
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>1： 执行中</li><li>2： 成功</li><li>3： 失败</li><li>4： 部分成功</li></ul>
+        :rtype: list of int non-negative
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
@@ -23230,6 +23258,8 @@ class SearchTaskResultRequest(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._Category = params.get("Category")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

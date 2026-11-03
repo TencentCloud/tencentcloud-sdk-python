@@ -14251,12 +14251,15 @@ class DescribePlatformCreditsUsageDetailRequest(AbstractModel):
         :type NeedUsageDetails: bool
         :param _PlatformId: <p>平台版套餐id</p>
         :type PlatformId: str
+        :param _QueryLevel: <p>查询返回数据时间界别</p><p>枚举值：</p><ul><li>Daily： 按照天级别返回数据</li><li>Hourly： 按照小时级别返回数据</li></ul><p>默认值：Daily</p><p>部分数据按照天级别统计，无法按照小时级别返回</p>
+        :type QueryLevel: str
         """
         self._Modules = None
         self._StartDate = None
         self._EndDate = None
         self._NeedUsageDetails = None
         self._PlatformId = None
+        self._QueryLevel = None
 
     @property
     def Modules(self):
@@ -14313,6 +14316,17 @@ class DescribePlatformCreditsUsageDetailRequest(AbstractModel):
     def PlatformId(self, PlatformId):
         self._PlatformId = PlatformId
 
+    @property
+    def QueryLevel(self):
+        r"""<p>查询返回数据时间界别</p><p>枚举值：</p><ul><li>Daily： 按照天级别返回数据</li><li>Hourly： 按照小时级别返回数据</li></ul><p>默认值：Daily</p><p>部分数据按照天级别统计，无法按照小时级别返回</p>
+        :rtype: str
+        """
+        return self._QueryLevel
+
+    @QueryLevel.setter
+    def QueryLevel(self, QueryLevel):
+        self._QueryLevel = QueryLevel
+
 
     def _deserialize(self, params):
         self._Modules = params.get("Modules")
@@ -14320,6 +14334,7 @@ class DescribePlatformCreditsUsageDetailRequest(AbstractModel):
         self._EndDate = params.get("EndDate")
         self._NeedUsageDetails = params.get("NeedUsageDetails")
         self._PlatformId = params.get("PlatformId")
+        self._QueryLevel = params.get("QueryLevel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

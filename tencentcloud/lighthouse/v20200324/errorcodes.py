@@ -569,6 +569,9 @@ OPERATIONDENIED_BLUEPRINTOPERATIONINPROGRESS = 'OperationDenied.BlueprintOperati
 # 该实例不支持升级套餐操作。
 OPERATIONDENIED_BUNDLENOTSUPPORTMODIFY = 'OperationDenied.BundleNotSupportModify'
 
+# 套餐不支持自助退费。
+OPERATIONDENIED_BUNDLENOTSUPPORTSELFREFUND = 'OperationDenied.BundleNotSupportSelfRefund'
+
 # 磁盘备份点忙，请稍后重新操作。
 OPERATIONDENIED_DISKBACKUPBUSY = 'OperationDenied.DiskBackupBusy'
 

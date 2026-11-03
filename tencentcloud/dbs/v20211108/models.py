@@ -1571,7 +1571,7 @@ class CreateBackupPlanResponse(AbstractModel):
         r"""
         :param _OrderId: 订单参数。
         :type OrderId: str
-        :param _BackupPlanIds: 资源ID。
+        :param _BackupPlanIds: 备份计划 ID 列表。单次最多返回 10 个。
         :type BackupPlanIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1593,7 +1593,7 @@ class CreateBackupPlanResponse(AbstractModel):
 
     @property
     def BackupPlanIds(self):
-        r"""资源ID。
+        r"""备份计划 ID 列表。单次最多返回 10 个。
         :rtype: list of str
         """
         return self._BackupPlanIds

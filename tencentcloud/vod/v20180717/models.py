@@ -13769,6 +13769,153 @@ class AigcImageTaskOutputFileInfo(AbstractModel):
         
 
 
+class AigcModelQuota(AbstractModel):
+    r"""AIGC 单配额模型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称。</p>
+        :type ModelName: str
+        :param _QuotaLimit: <p>任务的配额数。</p><p>单位：张/秒。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li></ul>
+        :type QuotaLimit: int
+        :param _ModelVersion: <p>模型版本。</p>
+        :type ModelVersion: str
+        """
+        self._ModelName = None
+        self._QuotaLimit = None
+        self._ModelVersion = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>任务的配额数。</p><p>单位：张/秒。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def ModelVersion(self):
+        r"""<p>模型版本。</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._ModelVersion = params.get("ModelVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcModelQuotaWithUsage(AbstractModel):
+    r"""AIGC 单模型配额与用量信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称。</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>模型版本。</p>
+        :type ModelVersion: str
+        :param _QuotaLimit: <p>任务的配额数。</p><p>单位：张/秒。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li></ul>
+        :type QuotaLimit: int
+        :param _Usage: <p>已经使用的用量数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li></ul>
+        :type Usage: int
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._QuotaLimit = None
+        self._Usage = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>模型版本。</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>任务的配额数。</p><p>单位：张/秒。</p><ul><li>当 QuotaType 为 Image 时，单位为张；</li><li>当 QuotaType 为 Video 时，单位为秒；</li></ul>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def Usage(self):
+        r"""<p>已经使用的用量数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li></ul>
+        :rtype: int
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._Usage = params.get("Usage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcQuotaItem(AbstractModel):
     r"""AIGC 配额
 
@@ -13784,11 +13931,23 @@ class AigcQuotaItem(AbstractModel):
         :type QuotaLimit: int
         :param _Usage: <p>已经使用的用量数</p><p>单位：</p><ul><li>当QuotaLimit=Image时，单位为张</li><li>当QuotaLimit=Video时，单位为秒</li><li>当QuotaLimit=Text时，单位为token</li></ul>
         :type Usage: int
+        :param _QuotaPeriod: <p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+        :type QuotaPeriod: str
+        :param _ResetDay: <p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+        :type ResetDay: int
+        :param _ModelQuotaSwitch: <p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :type ModelQuotaSwitch: str
+        :param _ModelQuotas: <p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+        :type ModelQuotas: list of AigcModelQuotaWithUsage
         """
         self._QuotaType = None
         self._ApiToken = None
         self._QuotaLimit = None
         self._Usage = None
+        self._QuotaPeriod = None
+        self._ResetDay = None
+        self._ModelQuotaSwitch = None
+        self._ModelQuotas = None
 
     @property
     def QuotaType(self):
@@ -13834,12 +13993,65 @@ class AigcQuotaItem(AbstractModel):
     def Usage(self, Usage):
         self._Usage = Usage
 
+    @property
+    def QuotaPeriod(self):
+        r"""<p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+        :rtype: str
+        """
+        return self._QuotaPeriod
+
+    @QuotaPeriod.setter
+    def QuotaPeriod(self, QuotaPeriod):
+        self._QuotaPeriod = QuotaPeriod
+
+    @property
+    def ResetDay(self):
+        r"""<p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+        :rtype: int
+        """
+        return self._ResetDay
+
+    @ResetDay.setter
+    def ResetDay(self, ResetDay):
+        self._ResetDay = ResetDay
+
+    @property
+    def ModelQuotaSwitch(self):
+        r"""<p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :rtype: str
+        """
+        return self._ModelQuotaSwitch
+
+    @ModelQuotaSwitch.setter
+    def ModelQuotaSwitch(self, ModelQuotaSwitch):
+        self._ModelQuotaSwitch = ModelQuotaSwitch
+
+    @property
+    def ModelQuotas(self):
+        r"""<p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+        :rtype: list of AigcModelQuotaWithUsage
+        """
+        return self._ModelQuotas
+
+    @ModelQuotas.setter
+    def ModelQuotas(self, ModelQuotas):
+        self._ModelQuotas = ModelQuotas
+
 
     def _deserialize(self, params):
         self._QuotaType = params.get("QuotaType")
         self._ApiToken = params.get("ApiToken")
         self._QuotaLimit = params.get("QuotaLimit")
         self._Usage = params.get("Usage")
+        self._QuotaPeriod = params.get("QuotaPeriod")
+        self._ResetDay = params.get("ResetDay")
+        self._ModelQuotaSwitch = params.get("ModelQuotaSwitch")
+        if params.get("ModelQuotas") is not None:
+            self._ModelQuotas = []
+            for item in params.get("ModelQuotas"):
+                obj = AigcModelQuotaWithUsage()
+                obj._deserialize(item)
+                self._ModelQuotas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26680,11 +26892,23 @@ class CreateAigcQuotaRequest(AbstractModel):
         :type QuotaLimit: int
         :param _ApiToken: <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
         :type ApiToken: str
+        :param _QuotaPeriod: <p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+        :type QuotaPeriod: str
+        :param _ResetDay: <p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+        :type ResetDay: int
+        :param _ModelQuotaSwitch: <p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul>
+        :type ModelQuotaSwitch: str
+        :param _ModelQuotas: <p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+        :type ModelQuotas: list of AigcModelQuota
         """
         self._SubAppId = None
         self._QuotaType = None
         self._QuotaLimit = None
         self._ApiToken = None
+        self._QuotaPeriod = None
+        self._ResetDay = None
+        self._ModelQuotaSwitch = None
+        self._ModelQuotas = None
 
     @property
     def SubAppId(self):
@@ -26730,12 +26954,65 @@ class CreateAigcQuotaRequest(AbstractModel):
     def ApiToken(self, ApiToken):
         self._ApiToken = ApiToken
 
+    @property
+    def QuotaPeriod(self):
+        r"""<p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+        :rtype: str
+        """
+        return self._QuotaPeriod
+
+    @QuotaPeriod.setter
+    def QuotaPeriod(self, QuotaPeriod):
+        self._QuotaPeriod = QuotaPeriod
+
+    @property
+    def ResetDay(self):
+        r"""<p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+        :rtype: int
+        """
+        return self._ResetDay
+
+    @ResetDay.setter
+    def ResetDay(self, ResetDay):
+        self._ResetDay = ResetDay
+
+    @property
+    def ModelQuotaSwitch(self):
+        r"""<p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul>
+        :rtype: str
+        """
+        return self._ModelQuotaSwitch
+
+    @ModelQuotaSwitch.setter
+    def ModelQuotaSwitch(self, ModelQuotaSwitch):
+        self._ModelQuotaSwitch = ModelQuotaSwitch
+
+    @property
+    def ModelQuotas(self):
+        r"""<p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+        :rtype: list of AigcModelQuota
+        """
+        return self._ModelQuotas
+
+    @ModelQuotas.setter
+    def ModelQuotas(self, ModelQuotas):
+        self._ModelQuotas = ModelQuotas
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._QuotaType = params.get("QuotaType")
         self._QuotaLimit = params.get("QuotaLimit")
         self._ApiToken = params.get("ApiToken")
+        self._QuotaPeriod = params.get("QuotaPeriod")
+        self._ResetDay = params.get("ResetDay")
+        self._ModelQuotaSwitch = params.get("ModelQuotaSwitch")
+        if params.get("ModelQuotas") is not None:
+            self._ModelQuotas = []
+            for item in params.get("ModelQuotas"):
+                obj = AigcModelQuota()
+                obj._deserialize(item)
+                self._ModelQuotas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -71442,11 +71719,23 @@ class ModifyAigcQuotaRequest(AbstractModel):
         :type QuotaLimit: int
         :param _ApiToken: <p>仅当QuotaType=Text时有效，用于选择需要进行配额限制ApiToken</p>
         :type ApiToken: str
+        :param _QuotaPeriod: <p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+        :type QuotaPeriod: str
+        :param _ResetDay: <p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+        :type ResetDay: int
+        :param _ModelQuotaSwitch: <p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul>
+        :type ModelQuotaSwitch: str
+        :param _ModelQuotas: <p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+        :type ModelQuotas: list of AigcModelQuota
         """
         self._SubAppId = None
         self._QuotaType = None
         self._QuotaLimit = None
         self._ApiToken = None
+        self._QuotaPeriod = None
+        self._ResetDay = None
+        self._ModelQuotaSwitch = None
+        self._ModelQuotas = None
 
     @property
     def SubAppId(self):
@@ -71492,12 +71781,65 @@ class ModifyAigcQuotaRequest(AbstractModel):
     def ApiToken(self, ApiToken):
         self._ApiToken = ApiToken
 
+    @property
+    def QuotaPeriod(self):
+        r"""<p>配额重置周期。</p><p>枚举值：</p><ul><li>Day： 每天重置。</li><li>Month： 每月指定日期重置。</li><li>Total： 永不重置，QuotaLimit参数即为总额度。</li></ul>
+        :rtype: str
+        """
+        return self._QuotaPeriod
+
+    @QuotaPeriod.setter
+    def QuotaPeriod(self, QuotaPeriod):
+        self._QuotaPeriod = QuotaPeriod
+
+    @property
+    def ResetDay(self):
+        r"""<p>每月配额的重置日期，仅QuotaPeriod=Month时有效。</p><p>如果当月无所选日期时，顺延至次月 1 日 00:00 重置。</p>
+        :rtype: int
+        """
+        return self._ResetDay
+
+    @ResetDay.setter
+    def ResetDay(self, ResetDay):
+        self._ResetDay = ResetDay
+
+    @property
+    def ModelQuotaSwitch(self):
+        r"""<p>是否开启按单个模型设置配额</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul>
+        :rtype: str
+        """
+        return self._ModelQuotaSwitch
+
+    @ModelQuotaSwitch.setter
+    def ModelQuotaSwitch(self, ModelQuotaSwitch):
+        self._ModelQuotaSwitch = ModelQuotaSwitch
+
+    @property
+    def ModelQuotas(self):
+        r"""<p>按单个模型设置的配额，仅ModelQuotaSwitch=ON时有效。</p>
+        :rtype: list of AigcModelQuota
+        """
+        return self._ModelQuotas
+
+    @ModelQuotas.setter
+    def ModelQuotas(self, ModelQuotas):
+        self._ModelQuotas = ModelQuotas
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._QuotaType = params.get("QuotaType")
         self._QuotaLimit = params.get("QuotaLimit")
         self._ApiToken = params.get("ApiToken")
+        self._QuotaPeriod = params.get("QuotaPeriod")
+        self._ResetDay = params.get("ResetDay")
+        self._ModelQuotaSwitch = params.get("ModelQuotaSwitch")
+        if params.get("ModelQuotas") is not None:
+            self._ModelQuotas = []
+            for item in params.get("ModelQuotas"):
+                obj = AigcModelQuota()
+                obj._deserialize(item)
+                self._ModelQuotas.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -93846,7 +94188,7 @@ class SceneAigcVideoOutputConfig(AbstractModel):
         :type AspectRatio: str
         :param _Duration: <p>生成视频时长。</p><ul><li>当使用生商品图场景时，可选值4、6、8秒。</li><li>当使用角色场景时，可选值为4到15秒。</li></ul>
         :type Duration: float
-        :param _Resolution: <p>分辨率。仅当角色场景时有效。取值如下：</p><ul><li>当 Model 是 character_scene_standard 时，支持 480p、720p、1080p、4K；</li><li>当 Model 是 character_scene_mini 时，支持 480p、720p；</li><li>当 Model 是 character_scene_fast 时，支持 720p。</li></ul>
+        :param _Resolution: <p>分辨率。仅当角色场景时有效。取值如下：</p><ul><li>当 Model 是 character_scene_standard 时，支持 480P、720P、1080P、4K；</li><li>当 Model 是 character_scene_mini 时，支持 480P、720P；</li><li>当 Model 是 character_scene_fast 时，支持 720P。</li></ul>
         :type Resolution: str
         """
         self._StorageMode = None
@@ -93925,7 +94267,7 @@ class SceneAigcVideoOutputConfig(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""<p>分辨率。仅当角色场景时有效。取值如下：</p><ul><li>当 Model 是 character_scene_standard 时，支持 480p、720p、1080p、4K；</li><li>当 Model 是 character_scene_mini 时，支持 480p、720p；</li><li>当 Model 是 character_scene_fast 时，支持 720p。</li></ul>
+        r"""<p>分辨率。仅当角色场景时有效。取值如下：</p><ul><li>当 Model 是 character_scene_standard 时，支持 480P、720P、1080P、4K；</li><li>当 Model 是 character_scene_mini 时，支持 480P、720P；</li><li>当 Model 是 character_scene_fast 时，支持 720P。</li></ul>
         :rtype: str
         """
         return self._Resolution
@@ -103783,10 +104125,13 @@ class VideoDepthEstimationOutputConfig(AbstractModel):
         :param _ExpireTime: <p>输出媒资过期时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>，仅 StorageMode 为 Permanent 时生效。不传表示永不过期。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
+        :param _KeepAudio: <p>是否保留原视频音频，默认不保留原视频音频。</p><p>枚举值：</p><ul><li>ON： 保留音频</li><li>OFF： 不保留音频</li></ul>
+        :type KeepAudio: str
         """
         self._StorageMode = None
         self._MediaName = None
         self._ExpireTime = None
+        self._KeepAudio = None
 
     @property
     def StorageMode(self):
@@ -103824,11 +104169,23 @@ class VideoDepthEstimationOutputConfig(AbstractModel):
     def ExpireTime(self, ExpireTime):
         self._ExpireTime = ExpireTime
 
+    @property
+    def KeepAudio(self):
+        r"""<p>是否保留原视频音频，默认不保留原视频音频。</p><p>枚举值：</p><ul><li>ON： 保留音频</li><li>OFF： 不保留音频</li></ul>
+        :rtype: str
+        """
+        return self._KeepAudio
+
+    @KeepAudio.setter
+    def KeepAudio(self, KeepAudio):
+        self._KeepAudio = KeepAudio
+
 
     def _deserialize(self, params):
         self._StorageMode = params.get("StorageMode")
         self._MediaName = params.get("MediaName")
         self._ExpireTime = params.get("ExpireTime")
+        self._KeepAudio = params.get("KeepAudio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

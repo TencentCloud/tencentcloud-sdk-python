@@ -26,14 +26,32 @@ INTERNALERROR = 'InternalError'
 # 数据库访问错误。
 INTERNALERROR_DATABASEACCESSERROR = 'InternalError.DatabaseAccessError'
 
+# InternalError.InternalError
+INTERNALERROR_INTERNALERROR = 'InternalError.InternalError'
+
 # 内部请求失败错误
 INTERNALERROR_INTERNALHTTPSERVERERROR = 'InternalError.InternalHttpServerError'
+
+# InternalError.InternalInnerCommonError
+INTERNALERROR_INTERNALINNERCOMMONERROR = 'InternalError.InternalInnerCommonError'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# InvalidParameter.InvalidParameter
+INVALIDPARAMETER_INVALIDPARAMETER = 'InvalidParameter.InvalidParameter'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 参数值无效或超出范围。
+INVALIDPARAMETERVALUE_BIZINVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.BizInvalidParameterValueError'
+
+# InvalidParameterValue.InvalidParameterValue
+INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = 'InvalidParameterValue.InvalidParameterValue'
+
+# MissingParameter.MissingParameter
+MISSINGPARAMETER_MISSINGPARAMETER = 'MissingParameter.MissingParameter'
 
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
@@ -44,8 +62,14 @@ OPERATIONDENIED_BIZOPERATIONDENIEDERROR = 'OperationDenied.BizOperationDeniedErr
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# ResourceNotFound.BizResourceNotFoundError
+RESOURCENOTFOUND_BIZRESOURCENOTFOUNDERROR = 'ResourceNotFound.BizResourceNotFoundError'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# UnauthorizedOperation.UnauthorizedOperation
+UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = 'UnauthorizedOperation.UnauthorizedOperation'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'

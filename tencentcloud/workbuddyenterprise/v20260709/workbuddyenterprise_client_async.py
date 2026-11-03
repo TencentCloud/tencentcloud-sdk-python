@@ -169,6 +169,24 @@ class WorkbuddyenterpriseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteSessionArtifactList(
+            self,
+            request: models.DeleteSessionArtifactListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSessionArtifactListResponse:
+        """
+        删除指定的物料，删除后不可恢复。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSessionArtifactList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSessionArtifactListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAgent(
             self,
             request: models.DescribeAgentRequest,
@@ -452,6 +470,42 @@ class WorkbuddyenterpriseClient(AbstractClient):
         kwargs["action"] = "DescribeScheduledTaskLogList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeScheduledTaskLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSessionArtifactDownloadUrl(
+            self,
+            request: models.DescribeSessionArtifactDownloadUrlRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSessionArtifactDownloadUrlResponse:
+        """
+        获取会话物料下载链接。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSessionArtifactDownloadUrl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSessionArtifactDownloadUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSessionArtifactList(
+            self,
+            request: models.DescribeSessionArtifactListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSessionArtifactListResponse:
+        """
+        分页查询会话物料列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSessionArtifactList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSessionArtifactListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

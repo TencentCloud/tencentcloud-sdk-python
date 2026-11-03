@@ -277,6 +277,24 @@ class TcbrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InitializeCloudRunResource(
+            self,
+            request: models.InitializeCloudRunResourceRequest,
+            opts: Dict = None,
+    ) -> models.InitializeCloudRunResourceResponse:
+        """
+        创建云托管环境，并开通资源。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InitializeCloudRunResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InitializeCloudRunResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def OperateServerManage(
             self,
             request: models.OperateServerManageRequest,
