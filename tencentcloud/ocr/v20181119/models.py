@@ -8388,6 +8388,57 @@ class Element(AbstractModel):
         
 
 
+class EmbeddingObject(AbstractModel):
+    r"""文本向量化结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: 输入文本在 Inputs 列表中的索引，从 0 开始。
+        :type Index: int
+        :param _Embedding: 向量化结果，维度由所选模型决定。
+        :type Embedding: list of float
+        """
+        self._Index = None
+        self._Embedding = None
+
+    @property
+    def Index(self):
+        r"""输入文本在 Inputs 列表中的索引，从 0 开始。
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Embedding(self):
+        r"""向量化结果，维度由所选模型决定。
+        :rtype: list of float
+        """
+        return self._Embedding
+
+    @Embedding.setter
+    def Embedding(self, Embedding):
+        self._Embedding = Embedding
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Embedding = params.get("Embedding")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Encryption(AbstractModel):
     r"""敏感数据加密
 
@@ -12490,6 +12541,354 @@ class GeneralMachineItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GenerateTextEmbeddingRequest(AbstractModel):
+    r"""GenerateTextEmbedding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>选择生成向量的模型（不同模型计费单价不同）。取值：</p><ul><li>0：text-embedding-0.6b</li><li>1：text-embedding-4b</li></ul>
+        :type Model: str
+        :param _Inputs: <p>输入文本列表。单次最多 7 条，单条不超过 2000 字符。</p>
+        :type Inputs: list of str
+        :param _TextType: <p>文本向量化类型。取值：</p><ul><li>query：查询文本，用于检索场景的查询侧</li><li>document：文档文本，用于检索场景的文档侧</li></ul><p>默认为 document</p>
+        :type TextType: str
+        :param _Instruction: <p>自定义任务指令词，用于指定向量化任务。最大 2000 字符。不传时按 TextType 使用系统默认指令词。</p>
+        :type Instruction: str
+        """
+        self._Model = None
+        self._Inputs = None
+        self._TextType = None
+        self._Instruction = None
+
+    @property
+    def Model(self):
+        r"""<p>选择生成向量的模型（不同模型计费单价不同）。取值：</p><ul><li>0：text-embedding-0.6b</li><li>1：text-embedding-4b</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Inputs(self):
+        r"""<p>输入文本列表。单次最多 7 条，单条不超过 2000 字符。</p>
+        :rtype: list of str
+        """
+        return self._Inputs
+
+    @Inputs.setter
+    def Inputs(self, Inputs):
+        self._Inputs = Inputs
+
+    @property
+    def TextType(self):
+        r"""<p>文本向量化类型。取值：</p><ul><li>query：查询文本，用于检索场景的查询侧</li><li>document：文档文本，用于检索场景的文档侧</li></ul><p>默认为 document</p>
+        :rtype: str
+        """
+        return self._TextType
+
+    @TextType.setter
+    def TextType(self, TextType):
+        self._TextType = TextType
+
+    @property
+    def Instruction(self):
+        r"""<p>自定义任务指令词，用于指定向量化任务。最大 2000 字符。不传时按 TextType 使用系统默认指令词。</p>
+        :rtype: str
+        """
+        return self._Instruction
+
+    @Instruction.setter
+    def Instruction(self, Instruction):
+        self._Instruction = Instruction
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Inputs = params.get("Inputs")
+        self._TextType = params.get("TextType")
+        self._Instruction = params.get("Instruction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateTextEmbeddingResponse(AbstractModel):
+    r"""GenerateTextEmbedding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>向量化结果列表。顺序与输入 Inputs 列表一一对应。</p>
+        :type Data: list of EmbeddingObject
+        :param _InputTokens: <p>输入 Token 数。</p>
+        :type InputTokens: int
+        :param _TotalTokens: <p>总 Token 数。</p>
+        :type TotalTokens: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._InputTokens = None
+        self._TotalTokens = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>向量化结果列表。顺序与输入 Inputs 列表一一对应。</p>
+        :rtype: list of EmbeddingObject
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def InputTokens(self):
+        r"""<p>输入 Token 数。</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def TotalTokens(self):
+        r"""<p>总 Token 数。</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = EmbeddingObject()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._InputTokens = params.get("InputTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        self._RequestId = params.get("RequestId")
+
+
+class GenerateVLEmbeddingRequest(AbstractModel):
+    r"""GenerateVLEmbedding请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>选择生成向量的模型。取值：</p><ul><li>0：vl-embedding-4b</li><li>1：vl-embedding-8b</li><li>2：vl-embedding-2b</li></ul>
+        :type Model: str
+        :param _Type: <p>内容类型标识。取值：</p><ul><li>1：文本</li><li>2：图像 URL</li><li>3：视频 URL</li><li>4：图文混合</li></ul>
+        :type Type: str
+        :param _Text: <p>文本内容。仅当 Type 为 1 或 4 时必填，单条文本不超过 2000 字符。</p>
+        :type Text: str
+        :param _ImageUrl: <p>图像地址，支持公网 http/https 链接或 base64 内容。仅当 Type 为 2 或 4 时必填。</p>
+        :type ImageUrl: str
+        :param _VideoUrl: <p>视频地址，支持公网 http/https 链接或 base64 内容。仅当 Type 为 3 时必填。</p>
+        :type VideoUrl: str
+        :param _SearchMode: <p>检索场景，未传入该参数时将自动匹配。取值：</p><ul><li>0：自动匹配</li><li>1：图搜图（找同款、相似图），仅 Type 为 2 或 4 时可用</li><li>2：图文搜图（图 + 问题），仅 Type 为 4 时可用</li><li>3：文搜图（纯文本搜图），仅 Type 为 1 或 4 时可用</li><li>4：文搜视频（纯文本搜视频），仅 Type 为 1 或 4 时可用</li><li>5：图搜视频、图文搜视频，仅 Type 为 2 或 4 时可用</li></ul>
+        :type SearchMode: str
+        """
+        self._Model = None
+        self._Type = None
+        self._Text = None
+        self._ImageUrl = None
+        self._VideoUrl = None
+        self._SearchMode = None
+
+    @property
+    def Model(self):
+        r"""<p>选择生成向量的模型。取值：</p><ul><li>0：vl-embedding-4b</li><li>1：vl-embedding-8b</li><li>2：vl-embedding-2b</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Type(self):
+        r"""<p>内容类型标识。取值：</p><ul><li>1：文本</li><li>2：图像 URL</li><li>3：视频 URL</li><li>4：图文混合</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Text(self):
+        r"""<p>文本内容。仅当 Type 为 1 或 4 时必填，单条文本不超过 2000 字符。</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def ImageUrl(self):
+        r"""<p>图像地址，支持公网 http/https 链接或 base64 内容。仅当 Type 为 2 或 4 时必填。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def VideoUrl(self):
+        r"""<p>视频地址，支持公网 http/https 链接或 base64 内容。仅当 Type 为 3 时必填。</p>
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def SearchMode(self):
+        r"""<p>检索场景，未传入该参数时将自动匹配。取值：</p><ul><li>0：自动匹配</li><li>1：图搜图（找同款、相似图），仅 Type 为 2 或 4 时可用</li><li>2：图文搜图（图 + 问题），仅 Type 为 4 时可用</li><li>3：文搜图（纯文本搜图），仅 Type 为 1 或 4 时可用</li><li>4：文搜视频（纯文本搜视频），仅 Type 为 1 或 4 时可用</li><li>5：图搜视频、图文搜视频，仅 Type 为 2 或 4 时可用</li></ul>
+        :rtype: str
+        """
+        return self._SearchMode
+
+    @SearchMode.setter
+    def SearchMode(self, SearchMode):
+        self._SearchMode = SearchMode
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Type = params.get("Type")
+        self._Text = params.get("Text")
+        self._ImageUrl = params.get("ImageUrl")
+        self._VideoUrl = params.get("VideoUrl")
+        self._SearchMode = params.get("SearchMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateVLEmbeddingResponse(AbstractModel):
+    r"""GenerateVLEmbedding返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>向量化结果列表。单条图文混合输入可能返回多个向量。</p>
+        :type Data: list of EmbeddingObject
+        :param _InputTokens: <p>输入 Token 数，多模态场景含图像、视频折算的 Token。</p>
+        :type InputTokens: int
+        :param _TotalTokens: <p>总 Token 数。</p>
+        :type TotalTokens: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._InputTokens = None
+        self._TotalTokens = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>向量化结果列表。单条图文混合输入可能返回多个向量。</p>
+        :rtype: list of EmbeddingObject
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def InputTokens(self):
+        r"""<p>输入 Token 数，多模态场景含图像、视频折算的 Token。</p>
+        :rtype: int
+        """
+        return self._InputTokens
+
+    @InputTokens.setter
+    def InputTokens(self, InputTokens):
+        self._InputTokens = InputTokens
+
+    @property
+    def TotalTokens(self):
+        r"""<p>总 Token 数。</p>
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = EmbeddingObject()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._InputTokens = params.get("InputTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        self._RequestId = params.get("RequestId")
 
 
 class GetOCRResultRequest(AbstractModel):

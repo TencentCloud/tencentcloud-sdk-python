@@ -283,6 +283,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndroidInstanceMCPToken(self, request):
+        r"""创建安卓实例MCP token
+
+        :param request: Request instance for CreateAndroidInstanceMCPToken.
+        :type request: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceMCPTokenRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.CreateAndroidInstanceMCPTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndroidInstanceMCPToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndroidInstanceMCPTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAndroidInstanceSSH(self, request):
         r"""创建安卓实例 SSH 连接信息，请将返回结果的 PrivateKey 字段保存为 pem 文件，并将 pem 文件权限设置为 600，再参考返回结果的 ConnectCommand 使用 ssh 连接实例。
 
@@ -582,6 +605,29 @@ class GsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAndroidInstanceMCPToken(self, request):
+        r"""删除安卓实例 MCP token
+
+        :param request: Request instance for DeleteAndroidInstanceMCPToken.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceMCPTokenRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DeleteAndroidInstanceMCPTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAndroidInstanceMCPToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAndroidInstanceMCPTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAndroidApps(self, request):
         r"""查询安卓应用信息
 
@@ -688,6 +734,29 @@ class GsClient(AbstractClient):
             body = self.call("DescribeAndroidInstanceLabels", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAndroidInstanceLabelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAndroidInstanceMCPTokens(self, request):
+        r"""查询安卓实例MCP Token
+
+        :param request: Request instance for DescribeAndroidInstanceMCPTokens.
+        :type request: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceMCPTokensRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.DescribeAndroidInstanceMCPTokensResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAndroidInstanceMCPTokens", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAndroidInstanceMCPTokensResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1404,6 +1473,29 @@ class GsClient(AbstractClient):
             body = self.call("RebootAndroidInstances", params, headers=headers)
             response = json.loads(body)
             model = models.RebootAndroidInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RenewAndroidInstanceMCPToken(self, request):
+        r"""续期安卓实例 MCP token
+
+        :param request: Request instance for RenewAndroidInstanceMCPToken.
+        :type request: :class:`tencentcloud.gs.v20191118.models.RenewAndroidInstanceMCPTokenRequest`
+        :rtype: :class:`tencentcloud.gs.v20191118.models.RenewAndroidInstanceMCPTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RenewAndroidInstanceMCPToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.RenewAndroidInstanceMCPTokenResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

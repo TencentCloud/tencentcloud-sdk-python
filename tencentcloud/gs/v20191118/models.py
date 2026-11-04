@@ -3222,6 +3222,40 @@ class CreateAndroidInstanceLabelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAndroidInstanceMCPTokenRequest(AbstractModel):
+    r"""CreateAndroidInstanceMCPToken请求参数结构体
+
+    """
+
+
+class CreateAndroidInstanceMCPTokenResponse(AbstractModel):
+    r"""CreateAndroidInstanceMCPToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAndroidInstanceSSHRequest(AbstractModel):
     r"""CreateAndroidInstanceSSH请求参数结构体
 
@@ -5007,6 +5041,40 @@ class DeleteAndroidInstanceLabelResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAndroidInstanceMCPTokenRequest(AbstractModel):
+    r"""DeleteAndroidInstanceMCPToken请求参数结构体
+
+    """
+
+
+class DeleteAndroidInstanceMCPTokenResponse(AbstractModel):
+    r"""DeleteAndroidInstanceMCPToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAndroidAppsRequest(AbstractModel):
     r"""DescribeAndroidApps请求参数结构体
 
@@ -5706,6 +5774,40 @@ class DescribeAndroidInstanceLabelsResponse(AbstractModel):
                 obj = AndroidInstanceLabelDetail()
                 obj._deserialize(item)
                 self._AndroidInstanceLabels.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAndroidInstanceMCPTokensRequest(AbstractModel):
+    r"""DescribeAndroidInstanceMCPTokens请求参数结构体
+
+    """
+
+
+class DescribeAndroidInstanceMCPTokensResponse(AbstractModel):
+    r"""DescribeAndroidInstanceMCPTokens返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -9418,6 +9520,40 @@ class RebootAndroidInstancesResponse(AbstractModel):
                 obj = AndroidInstanceTask()
                 obj._deserialize(item)
                 self._TaskSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class RenewAndroidInstanceMCPTokenRequest(AbstractModel):
+    r"""RenewAndroidInstanceMCPToken请求参数结构体
+
+    """
+
+
+class RenewAndroidInstanceMCPTokenResponse(AbstractModel):
+    r"""RenewAndroidInstanceMCPToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

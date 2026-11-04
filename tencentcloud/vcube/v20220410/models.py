@@ -221,45 +221,47 @@ class ApplicationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppName: 应用名称
+        :param _AppName: <p>应用名称</p>
         :type AppName: str
-        :param _BundleId: Ios应用的唯一标识
+        :param _BundleId: <p>Ios应用的唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleId: str
-        :param _AppType: 应用类型，formal： 正式应用，test：测试应用
+        :param _AppType: <p>应用类型，formal： 正式应用，test：测试应用</p>
         :type AppType: str
-        :param _Licenses: license数组
+        :param _Licenses: <p>license数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Licenses: list of License
-        :param _LicenseKey: license 秘钥
+        :param _LicenseKey: <p>license 秘钥</p>
         :type LicenseKey: str
-        :param _PackageName: 安卓应用的唯一标识
+        :param _PackageName: <p>安卓应用的唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PackageName: str
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: <p>创建时间</p>
         :type CreatedAt: str
-        :param _UpdatedAt: 更新时间
+        :param _UpdatedAt: <p>更新时间</p>
         :type UpdatedAt: str
-        :param _ApplicationId: 用户应用Id
+        :param _ApplicationId: <p>用户应用Id</p>
         :type ApplicationId: int
-        :param _LicenseUrl: 视立方下载license的url
+        :param _LicenseUrl: <p>视立方下载license的url</p>
         :type LicenseUrl: str
-        :param _XMagics: 优图美视信息列表
+        :param _XMagics: <p>优图美视信息列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type XMagics: list of XMagicInfo
-        :param _MacBundleId: Mac  进程名
+        :param _MacBundleId: <p>Mac  进程名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MacBundleId: str
-        :param _WinProcessName: windows 进程名
+        :param _WinProcessName: <p>windows 进程名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WinProcessName: str
-        :param _DomainList: web端Domain列表
+        :param _DomainList: <p>web端Domain列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomainList: list of str
-        :param _AppId: 账号AppId
+        :param _AppId: <p>账号AppId</p>
         :type AppId: str
-        :param _NameLimit: 扩展包名数量上限
+        :param _NameLimit: <p>扩展包名数量上限</p>
         :type NameLimit: int
+        :param _LinuxProcessName: <p>linux 进程名</p>
+        :type LinuxProcessName: str
         """
         self._AppName = None
         self._BundleId = None
@@ -277,10 +279,11 @@ class ApplicationInfo(AbstractModel):
         self._DomainList = None
         self._AppId = None
         self._NameLimit = None
+        self._LinuxProcessName = None
 
     @property
     def AppName(self):
-        r"""应用名称
+        r"""<p>应用名称</p>
         :rtype: str
         """
         return self._AppName
@@ -291,7 +294,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""Ios应用的唯一标识
+        r"""<p>Ios应用的唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -303,7 +306,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def AppType(self):
-        r"""应用类型，formal： 正式应用，test：测试应用
+        r"""<p>应用类型，formal： 正式应用，test：测试应用</p>
         :rtype: str
         """
         return self._AppType
@@ -314,7 +317,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def Licenses(self):
-        r"""license数组
+        r"""<p>license数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of License
         """
@@ -326,7 +329,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def LicenseKey(self):
-        r"""license 秘钥
+        r"""<p>license 秘钥</p>
         :rtype: str
         """
         return self._LicenseKey
@@ -337,7 +340,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""安卓应用的唯一标识
+        r"""<p>安卓应用的唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -349,7 +352,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -360,7 +363,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdatedAt
@@ -371,7 +374,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def ApplicationId(self):
-        r"""用户应用Id
+        r"""<p>用户应用Id</p>
         :rtype: int
         """
         return self._ApplicationId
@@ -382,7 +385,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def LicenseUrl(self):
-        r"""视立方下载license的url
+        r"""<p>视立方下载license的url</p>
         :rtype: str
         """
         return self._LicenseUrl
@@ -393,7 +396,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def XMagics(self):
-        r"""优图美视信息列表
+        r"""<p>优图美视信息列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of XMagicInfo
         """
@@ -405,7 +408,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def MacBundleId(self):
-        r"""Mac  进程名
+        r"""<p>Mac  进程名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -417,7 +420,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def WinProcessName(self):
-        r"""windows 进程名
+        r"""<p>windows 进程名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -429,7 +432,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def DomainList(self):
-        r"""web端Domain列表
+        r"""<p>web端Domain列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -441,7 +444,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""账号AppId
+        r"""<p>账号AppId</p>
         :rtype: str
         """
         return self._AppId
@@ -452,7 +455,7 @@ class ApplicationInfo(AbstractModel):
 
     @property
     def NameLimit(self):
-        r"""扩展包名数量上限
+        r"""<p>扩展包名数量上限</p>
         :rtype: int
         """
         return self._NameLimit
@@ -460,6 +463,17 @@ class ApplicationInfo(AbstractModel):
     @NameLimit.setter
     def NameLimit(self, NameLimit):
         self._NameLimit = NameLimit
+
+    @property
+    def LinuxProcessName(self):
+        r"""<p>linux 进程名</p>
+        :rtype: str
+        """
+        return self._LinuxProcessName
+
+    @LinuxProcessName.setter
+    def LinuxProcessName(self, LinuxProcessName):
+        self._LinuxProcessName = LinuxProcessName
 
 
     def _deserialize(self, params):
@@ -489,6 +503,7 @@ class ApplicationInfo(AbstractModel):
         self._DomainList = params.get("DomainList")
         self._AppId = params.get("AppId")
         self._NameLimit = params.get("NameLimit")
+        self._LinuxProcessName = params.get("LinuxProcessName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

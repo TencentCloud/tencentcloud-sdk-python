@@ -13927,18 +13927,20 @@ class MigrateDBItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _Vip: 实例Vip
+        :param _Vip: <p>实例Vip</p>
         :type Vip: str
-        :param _Vport: 实例Vport
+        :param _Vport: <p>实例Vport</p>
         :type Vport: int
-        :param _Usable: 是否可以作为迁移对象，1-可以，0-不可以
+        :param _Usable: <p>是否可以作为迁移对象，1-可以，0-不可以</p>
         :type Usable: int
-        :param _Hint: 不可以作为迁移对象的原因
+        :param _Hint: <p>不可以作为迁移对象的原因</p>
         :type Hint: str
+        :param _StorageType: <p>硬盘类型，仅Postgresql适用</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 本地SSD</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： SSD云硬盘</li><li>CLOUD_HSSD： 增强型SSD云硬盘</li></ul>
+        :type StorageType: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -13946,10 +13948,11 @@ class MigrateDBItem(AbstractModel):
         self._Vport = None
         self._Usable = None
         self._Hint = None
+        self._StorageType = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13960,7 +13963,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -13971,7 +13974,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Vip(self):
-        r"""实例Vip
+        r"""<p>实例Vip</p>
         :rtype: str
         """
         return self._Vip
@@ -13982,7 +13985,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Vport(self):
-        r"""实例Vport
+        r"""<p>实例Vport</p>
         :rtype: int
         """
         return self._Vport
@@ -13993,7 +13996,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Usable(self):
-        r"""是否可以作为迁移对象，1-可以，0-不可以
+        r"""<p>是否可以作为迁移对象，1-可以，0-不可以</p>
         :rtype: int
         """
         return self._Usable
@@ -14004,7 +14007,7 @@ class MigrateDBItem(AbstractModel):
 
     @property
     def Hint(self):
-        r"""不可以作为迁移对象的原因
+        r"""<p>不可以作为迁移对象的原因</p>
         :rtype: str
         """
         return self._Hint
@@ -14012,6 +14015,17 @@ class MigrateDBItem(AbstractModel):
     @Hint.setter
     def Hint(self, Hint):
         self._Hint = Hint
+
+    @property
+    def StorageType(self):
+        r"""<p>硬盘类型，仅Postgresql适用</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 本地SSD</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： SSD云硬盘</li><li>CLOUD_HSSD： 增强型SSD云硬盘</li></ul>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
 
 
     def _deserialize(self, params):
@@ -14021,6 +14035,7 @@ class MigrateDBItem(AbstractModel):
         self._Vport = params.get("Vport")
         self._Usable = params.get("Usable")
         self._Hint = params.get("Hint")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19889,16 +19904,17 @@ class StopMigrateJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
-
+        :param _JobId: <p>数据迁移任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :type JobId: str
+        :param _MigrateAdvancedObject: <p>任务结束时是否强制迁移高级对象，仅PG适用</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+        :type MigrateAdvancedObject: str
         """
         self._JobId = None
+        self._MigrateAdvancedObject = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
-
+        r"""<p>数据迁移任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -19907,9 +19923,21 @@ class StopMigrateJobRequest(AbstractModel):
     def JobId(self, JobId):
         self._JobId = JobId
 
+    @property
+    def MigrateAdvancedObject(self):
+        r"""<p>任务结束时是否强制迁移高级对象，仅PG适用</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul>
+        :rtype: str
+        """
+        return self._MigrateAdvancedObject
+
+    @MigrateAdvancedObject.setter
+    def MigrateAdvancedObject(self, MigrateAdvancedObject):
+        self._MigrateAdvancedObject = MigrateAdvancedObject
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._MigrateAdvancedObject = params.get("MigrateAdvancedObject")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -80,6 +80,9 @@ FAILEDOPERATION_IMAGESIZETOOLARGE = 'FailedOperation.ImageSizeTooLarge'
 # 视读区信息与机读区信息不一致
 FAILEDOPERATION_INCONSISTENCYBETWEENMRZANDVRZ = 'FailedOperation.InconsistencyBetweenMRZAndVRZ'
 
+# 输入文档格式不符合
+FAILEDOPERATION_INVALIDFILEFORMAT = 'FailedOperation.InvalidFileFormat'
+
 # 马来西亚证件识别出的邮编长度不正确
 FAILEDOPERATION_INVALIDPOSTALCODELENGTH = 'FailedOperation.InvalidPostalCodeLength'
 

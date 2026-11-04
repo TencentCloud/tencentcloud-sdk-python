@@ -5856,7 +5856,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
         r"""
         :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _OperateTypes: <p>初始化操作类型<ul><li>CREATE_SEAL : 创建印章</li><li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li><li>OPEN_AUTO_SIGN :开通企业“授权签”</li><li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权“授权签”</li><li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(<strong>授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用</strong>)</li></ul></p>
+        :param _OperateTypes: <p>初始化操作类型<ul></p><li>CREATE_SEAL : 创建印章</li><li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li><li>OPEN_AUTO_SIGN :开通企业“授权签”</li><li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权“授权签”</li><li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(**授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用**)</li><li>API_ACCREDIT: 开通企业 CA-API (**该操作类型不可与其他操作混合使用，此功能需联系客户经理开通白名单使用**)</li></ul>
         :type OperateTypes: list of str
         :param _OrganizationIds: <p>批量操作的企业Id列表，最大支持50个</p>
         :type OrganizationIds: list of str
@@ -5887,7 +5887,7 @@ class CreateBatchInitOrganizationUrlRequest(AbstractModel):
 
     @property
     def OperateTypes(self):
-        r"""<p>初始化操作类型<ul><li>CREATE_SEAL : 创建印章</li><li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li><li>OPEN_AUTO_SIGN :开通企业“授权签”</li><li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权“授权签”</li><li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(<strong>授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用</strong>)</li></ul></p>
+        r"""<p>初始化操作类型<ul></p><li>CREATE_SEAL : 创建印章</li><li>AUTH_JOIN_ORGANIZATION_GROUP : 加入集团企业</li><li>OPEN_AUTO_SIGN :开通企业“授权签”</li><li>PARTNER_AUTO_SIGN_AUTH :合作方企业授权“授权签”</li><li>CHANGE_SUB_ORGANIZATION_ADMIN_AUTH :变更子企业超管授权(**授权后，主企业可变更子企业超管，此功能需联系客户经理开通白名单使用**)</li><li>API_ACCREDIT: 开通企业 CA-API (**该操作类型不可与其他操作混合使用，此功能需联系客户经理开通白名单使用**)</li></ul>
         :rtype: list of str
         """
         return self._OperateTypes
@@ -28519,7 +28519,7 @@ class DescribeOrganizationSealsRequest(AbstractModel):
         :type SealTypes: list of str
         :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _SealStatuses: <p>需查询的印章状态列表。</p><ul><li>空：（默认）仅查询启用状态的印章；</li><li><strong>ALL</strong>：查询所有状态的印章；</li><li><strong>CHECKING</strong>：查询待审核的印章；</li><li><strong>SUCCESS</strong>：查询启用状态的印章；</li><li><strong>FAIL</strong>：查询印章审核拒绝的印章；</li><li><strong>DISABLE</strong>：查询已停用的印章；</li><li><strong>STOPPED</strong>：查询已终止的印章；</li><li><strong>VOID</strong>：查询已作废的印章；</li><li><strong>INVALID</strong>：查询已失效的印章。</li></ul>
+        :param _SealStatuses: <p>需查询的印章状态数组。默认为空，仅查询启用状态的印章</p><p>枚举值：</p><ul><li>ALL： 所有状态</li><li>CHECKING： 待审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li><li>CHECKING-SADM： 待超管审核</li></ul>
         :type SealStatuses: list of str
         """
         self._Operator = None
@@ -28610,7 +28610,7 @@ class DescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def SealStatuses(self):
-        r"""<p>需查询的印章状态列表。</p><ul><li>空：（默认）仅查询启用状态的印章；</li><li><strong>ALL</strong>：查询所有状态的印章；</li><li><strong>CHECKING</strong>：查询待审核的印章；</li><li><strong>SUCCESS</strong>：查询启用状态的印章；</li><li><strong>FAIL</strong>：查询印章审核拒绝的印章；</li><li><strong>DISABLE</strong>：查询已停用的印章；</li><li><strong>STOPPED</strong>：查询已终止的印章；</li><li><strong>VOID</strong>：查询已作废的印章；</li><li><strong>INVALID</strong>：查询已失效的印章。</li></ul>
+        r"""<p>需查询的印章状态数组。默认为空，仅查询启用状态的印章</p><p>枚举值：</p><ul><li>ALL： 所有状态</li><li>CHECKING： 待审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li><li>CHECKING-SADM： 待超管审核</li></ul>
         :rtype: list of str
         """
         return self._SealStatuses
@@ -38789,39 +38789,39 @@ class OccupiedSeal(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SealId: 电子印章编号
+        :param _SealId: <p>电子印章编号</p>
         :type SealId: str
-        :param _SealName: 电子印章名称
+        :param _SealName: <p>电子印章名称</p>
         :type SealName: str
-        :param _CreateOn: 电子印章授权时间戳，单位秒
+        :param _CreateOn: <p>电子印章授权时间戳，单位秒</p>
         :type CreateOn: int
-        :param _Creator: 电子印章授权人的UserId
+        :param _Creator: <p>电子印章授权人的UserId</p>
         :type Creator: str
-        :param _SealPolicyId: 电子印章策略Id
+        :param _SealPolicyId: <p>电子印章策略Id</p>
         :type SealPolicyId: str
-        :param _SealStatus: 印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
+        :param _SealStatus: <p>印章状态</p><p>枚举值：</p><ul><li>CHECKING： 待审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li><li>CHECKING-SADM： 待超管审核</li></ul>
         :type SealStatus: str
-        :param _FailReason: 审核失败原因
+        :param _FailReason: <p>审核失败原因</p>
         :type FailReason: str
-        :param _Url: 印章图片url，5分钟内有效
+        :param _Url: <p>印章图片url，5分钟内有效</p>
         :type Url: str
-        :param _SealType: 印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章
+        :param _SealType: <p>印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章</p>
         :type SealType: str
-        :param _IsAllTime: 用印申请是否为永久授权，true-是，false-否
+        :param _IsAllTime: <p>用印申请是否为永久授权，true-是，false-否</p>
         :type IsAllTime: bool
-        :param _AuthorizedUsers: 授权人列表
+        :param _AuthorizedUsers: <p>授权人列表</p>
         :type AuthorizedUsers: list of AuthorizedUser
-        :param _ExtendScene: 印章扩展数据信息
+        :param _ExtendScene: <p>印章扩展数据信息</p>
         :type ExtendScene: :class:`tencentcloud.ess.v20201111.models.ExtendScene`
-        :param _RealWidth: 印章的真实宽度，单位毫米
+        :param _RealWidth: <p>印章的真实宽度，单位毫米</p>
         :type RealWidth: int
-        :param _RealHeight: 印章的真实高度，单位毫米
+        :param _RealHeight: <p>印章的真实高度，单位毫米</p>
         :type RealHeight: int
-        :param _SubSealType: 自定义子类型印章
+        :param _SubSealType: <p>自定义子类型印章</p>
         :type SubSealType: str
-        :param _SubSealName: 自定义子类型印章名称
+        :param _SubSealName: <p>自定义子类型印章名称</p>
         :type SubSealName: str
-        :param _SealDescription: 印章描述
+        :param _SealDescription: <p>印章描述</p>
         :type SealDescription: str
         """
         self._SealId = None
@@ -38844,7 +38844,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealId(self):
-        r"""电子印章编号
+        r"""<p>电子印章编号</p>
         :rtype: str
         """
         return self._SealId
@@ -38855,7 +38855,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealName(self):
-        r"""电子印章名称
+        r"""<p>电子印章名称</p>
         :rtype: str
         """
         return self._SealName
@@ -38866,7 +38866,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def CreateOn(self):
-        r"""电子印章授权时间戳，单位秒
+        r"""<p>电子印章授权时间戳，单位秒</p>
         :rtype: int
         """
         return self._CreateOn
@@ -38877,7 +38877,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def Creator(self):
-        r"""电子印章授权人的UserId
+        r"""<p>电子印章授权人的UserId</p>
         :rtype: str
         """
         return self._Creator
@@ -38888,7 +38888,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealPolicyId(self):
-        r"""电子印章策略Id
+        r"""<p>电子印章策略Id</p>
         :rtype: str
         """
         return self._SealPolicyId
@@ -38899,7 +38899,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealStatus(self):
-        r"""印章状态，有以下六种：CHECKING（审核中）SUCCESS（已启用）FAIL（审核拒绝）CHECKING-SADM（待超管审核）DISABLE（已停用）STOPPED（已终止）
+        r"""<p>印章状态</p><p>枚举值：</p><ul><li>CHECKING： 待审核</li><li>SUCCESS： 启用状态</li><li>FAIL： 审核拒绝</li><li>DISABLE： 已停用</li><li>STOPPED： 已终止</li><li>VOID： 已作废</li><li>INVALID： 已失效</li><li>CHECKING-SADM： 待超管审核</li></ul>
         :rtype: str
         """
         return self._SealStatus
@@ -38910,7 +38910,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def FailReason(self):
-        r"""审核失败原因
+        r"""<p>审核失败原因</p>
         :rtype: str
         """
         return self._FailReason
@@ -38921,7 +38921,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def Url(self):
-        r"""印章图片url，5分钟内有效
+        r"""<p>印章图片url，5分钟内有效</p>
         :rtype: str
         """
         return self._Url
@@ -38932,7 +38932,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealType(self):
-        r"""印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章
+        r"""<p>印章类型,OFFICIAL-企业公章, CONTRACT-合同专用章,ORGANIZATIONSEAL-企业印章(本地上传印章类型),LEGAL_PERSON_SEAL-法人印章</p>
         :rtype: str
         """
         return self._SealType
@@ -38943,7 +38943,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def IsAllTime(self):
-        r"""用印申请是否为永久授权，true-是，false-否
+        r"""<p>用印申请是否为永久授权，true-是，false-否</p>
         :rtype: bool
         """
         return self._IsAllTime
@@ -38954,7 +38954,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def AuthorizedUsers(self):
-        r"""授权人列表
+        r"""<p>授权人列表</p>
         :rtype: list of AuthorizedUser
         """
         return self._AuthorizedUsers
@@ -38965,7 +38965,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def ExtendScene(self):
-        r"""印章扩展数据信息
+        r"""<p>印章扩展数据信息</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.ExtendScene`
         """
         return self._ExtendScene
@@ -38976,7 +38976,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def RealWidth(self):
-        r"""印章的真实宽度，单位毫米
+        r"""<p>印章的真实宽度，单位毫米</p>
         :rtype: int
         """
         return self._RealWidth
@@ -38987,7 +38987,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def RealHeight(self):
-        r"""印章的真实高度，单位毫米
+        r"""<p>印章的真实高度，单位毫米</p>
         :rtype: int
         """
         return self._RealHeight
@@ -38998,7 +38998,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SubSealType(self):
-        r"""自定义子类型印章
+        r"""<p>自定义子类型印章</p>
         :rtype: str
         """
         return self._SubSealType
@@ -39009,7 +39009,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SubSealName(self):
-        r"""自定义子类型印章名称
+        r"""<p>自定义子类型印章名称</p>
         :rtype: str
         """
         return self._SubSealName
@@ -39020,7 +39020,7 @@ class OccupiedSeal(AbstractModel):
 
     @property
     def SealDescription(self):
-        r"""印章描述
+        r"""<p>印章描述</p>
         :rtype: str
         """
         return self._SealDescription

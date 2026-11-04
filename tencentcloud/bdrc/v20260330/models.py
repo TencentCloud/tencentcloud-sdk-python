@@ -419,49 +419,52 @@ class AutoBackupPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsActivated: 定期备份策略是否激活。
+        :param _IsActivated: <p>定期备份策略是否激活。</p>
         :type IsActivated: bool
-        :param _IsPermanent: 使用该定期备份策略创建出来的备份是否永久保留。
+        :param _IsPermanent: <p>使用该定期备份策略创建出来的备份是否永久保留。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPermanent: bool
-        :param _NextTriggerTime: 使用该定期备份策略创建出来的备份是否永久保留。
+        :param _NextTriggerTime: <p>使用该定期备份策略创建出来的备份是否永久保留。</p>
         :type NextTriggerTime: str
-        :param _AutoBackupPolicyState: NORMAL
+        :param _AutoBackupPolicyState: <p>NORMAL</p>
         :type AutoBackupPolicyState: str
-        :param _AutoBackupPolicyName: 备份策略的名称。
+        :param _AutoBackupPolicyName: <p>备份策略的名称。</p>
         :type AutoBackupPolicyName: str
-        :param _Policy: 定期备份的执行策略。
+        :param _Policy: <p>定期备份的执行策略。</p>
         :type Policy: list of Policy
-        :param _AutoBackupPolicyId: 备份策略ID。
+        :param _AutoBackupPolicyId: <p>备份策略ID。</p>
         :type AutoBackupPolicyId: str
-        :param _CreateTime: 备份策略的创建时间。
+        :param _CreateTime: <p>备份策略的创建时间。</p>
         :type CreateTime: str
-        :param _RetentionDays: 使用该定期备份策略创建出来的备份保留天数。
+        :param _RetentionDays: <p>使用该定期备份策略创建出来的备份保留天数。</p>
         :type RetentionDays: int
-        :param _AppId: 用户AppId。
+        :param _AppId: <p>用户AppId。</p>
         :type AppId: int
-        :param _InstanceIdSet: 定期备份策略绑定的实例ID列表。
+        :param _InstanceIdSet: <p>定期备份策略绑定的实例ID列表。</p>
         :type InstanceIdSet: list of str
-        :param _RetentionMonths: 该定期快照创建的快照最大保留月数
+        :param _RetentionMonths: <p>使用该定期备份策略创建的备份最大保留月数</p>
         :type RetentionMonths: int
-        :param _RetentionAmount: 该定期快照创建的快照最大保留数量
+        :param _RetentionAmount: <p>使用该定期备份策略创建的备份最大保留数量</p>
         :type RetentionAmount: int
-        :param _AccountName: 创建人。
+        :param _AccountName: <p>创建人。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountName: str
-        :param _AccountUin: 主账号uin。
+        :param _AccountUin: <p>主账号uin。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountUin: str
-        :param _SubAccountUin: 子账号uin。
+        :param _SubAccountUin: <p>子账号uin。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
-        :param _StorageType: 策略存储类型
+        :param _StorageType: <p>策略存储类型</p>
         :type StorageType: str
-        :param _VaultId: 备份库ID
+        :param _VaultId: <p>备份库ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VaultId: str
-        :param _AdvancedRetentionPolicy: 高级保留策略
+        :param _AdvancedRetentionPolicy: <p>高级保留策略</p>
         :type AdvancedRetentionPolicy: :class:`tencentcloud.bdrc.v20260330.models.AdvancedRetentionPolicy`
+        :param _BackupResourceInfos: <p>备份资源信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupResourceInfos: list of BackupResourceInfo
         """
         self._IsActivated = None
         self._IsPermanent = None
@@ -482,10 +485,11 @@ class AutoBackupPolicy(AbstractModel):
         self._StorageType = None
         self._VaultId = None
         self._AdvancedRetentionPolicy = None
+        self._BackupResourceInfos = None
 
     @property
     def IsActivated(self):
-        r"""定期备份策略是否激活。
+        r"""<p>定期备份策略是否激活。</p>
         :rtype: bool
         """
         return self._IsActivated
@@ -496,7 +500,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def IsPermanent(self):
-        r"""使用该定期备份策略创建出来的备份是否永久保留。
+        r"""<p>使用该定期备份策略创建出来的备份是否永久保留。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -508,7 +512,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def NextTriggerTime(self):
-        r"""使用该定期备份策略创建出来的备份是否永久保留。
+        r"""<p>使用该定期备份策略创建出来的备份是否永久保留。</p>
         :rtype: str
         """
         return self._NextTriggerTime
@@ -519,7 +523,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def AutoBackupPolicyState(self):
-        r"""NORMAL
+        r"""<p>NORMAL</p>
         :rtype: str
         """
         return self._AutoBackupPolicyState
@@ -530,7 +534,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def AutoBackupPolicyName(self):
-        r"""备份策略的名称。
+        r"""<p>备份策略的名称。</p>
         :rtype: str
         """
         return self._AutoBackupPolicyName
@@ -541,7 +545,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def Policy(self):
-        r"""定期备份的执行策略。
+        r"""<p>定期备份的执行策略。</p>
         :rtype: list of Policy
         """
         return self._Policy
@@ -552,7 +556,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def AutoBackupPolicyId(self):
-        r"""备份策略ID。
+        r"""<p>备份策略ID。</p>
         :rtype: str
         """
         return self._AutoBackupPolicyId
@@ -563,7 +567,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""备份策略的创建时间。
+        r"""<p>备份策略的创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -574,7 +578,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def RetentionDays(self):
-        r"""使用该定期备份策略创建出来的备份保留天数。
+        r"""<p>使用该定期备份策略创建出来的备份保留天数。</p>
         :rtype: int
         """
         return self._RetentionDays
@@ -585,7 +589,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户AppId。
+        r"""<p>用户AppId。</p>
         :rtype: int
         """
         return self._AppId
@@ -596,7 +600,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def InstanceIdSet(self):
-        r"""定期备份策略绑定的实例ID列表。
+        r"""<p>定期备份策略绑定的实例ID列表。</p>
         :rtype: list of str
         """
         return self._InstanceIdSet
@@ -607,7 +611,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def RetentionMonths(self):
-        r"""该定期快照创建的快照最大保留月数
+        r"""<p>使用该定期备份策略创建的备份最大保留月数</p>
         :rtype: int
         """
         return self._RetentionMonths
@@ -618,7 +622,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def RetentionAmount(self):
-        r"""该定期快照创建的快照最大保留数量
+        r"""<p>使用该定期备份策略创建的备份最大保留数量</p>
         :rtype: int
         """
         return self._RetentionAmount
@@ -629,7 +633,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""创建人。
+        r"""<p>创建人。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -641,7 +645,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def AccountUin(self):
-        r"""主账号uin。
+        r"""<p>主账号uin。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -653,7 +657,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def SubAccountUin(self):
-        r"""子账号uin。
+        r"""<p>子账号uin。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -665,7 +669,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""策略存储类型
+        r"""<p>策略存储类型</p>
         :rtype: str
         """
         return self._StorageType
@@ -676,7 +680,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def VaultId(self):
-        r"""备份库ID
+        r"""<p>备份库ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -688,7 +692,7 @@ class AutoBackupPolicy(AbstractModel):
 
     @property
     def AdvancedRetentionPolicy(self):
-        r"""高级保留策略
+        r"""<p>高级保留策略</p>
         :rtype: :class:`tencentcloud.bdrc.v20260330.models.AdvancedRetentionPolicy`
         """
         return self._AdvancedRetentionPolicy
@@ -696,6 +700,18 @@ class AutoBackupPolicy(AbstractModel):
     @AdvancedRetentionPolicy.setter
     def AdvancedRetentionPolicy(self, AdvancedRetentionPolicy):
         self._AdvancedRetentionPolicy = AdvancedRetentionPolicy
+
+    @property
+    def BackupResourceInfos(self):
+        r"""<p>备份资源信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BackupResourceInfo
+        """
+        return self._BackupResourceInfos
+
+    @BackupResourceInfos.setter
+    def BackupResourceInfos(self, BackupResourceInfos):
+        self._BackupResourceInfos = BackupResourceInfos
 
 
     def _deserialize(self, params):
@@ -725,6 +741,12 @@ class AutoBackupPolicy(AbstractModel):
         if params.get("AdvancedRetentionPolicy") is not None:
             self._AdvancedRetentionPolicy = AdvancedRetentionPolicy()
             self._AdvancedRetentionPolicy._deserialize(params.get("AdvancedRetentionPolicy"))
+        if params.get("BackupResourceInfos") is not None:
+            self._BackupResourceInfos = []
+            for item in params.get("BackupResourceInfos"):
+                obj = BackupResourceInfo()
+                obj._deserialize(item)
+                self._BackupResourceInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1486,75 +1508,81 @@ class BackupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupId: 备份点ID
+        :param _BackupId: <p>备份点ID</p>
         :type BackupId: str
-        :param _BackupName: 备份名称
+        :param _BackupName: <p>备份名称</p>
         :type BackupName: str
-        :param _PlanId: 所属计划ID
+        :param _PlanId: <p>所属计划ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlanId: str
-        :param _AspInstanceId: 策略ID
+        :param _AspInstanceId: <p>策略ID</p>
         :type AspInstanceId: str
-        :param _ResourceId: 资源ID
+        :param _ResourceId: <p>资源ID</p>
         :type ResourceId: str
-        :param _Status: 备份状态，取值如下：
-0 备份完成
-1 创建中（备份进行中）
-2 部分成功（指定的备份路径中部分目录不存在）
-3 恢复中（该备份点正在被恢复任务使用）
-92  已取消
-98 创建失败
-99 已删除
-100 删除中
-
+        :param _Status: <p>备份状态，取值如下：<br>0 备份完成<br>1 创建中（备份进行中）<br>2 部分成功（指定的备份路径中部分目录不存在）<br>3 恢复中（该备份点正在被恢复任务使用）<br>92  已取消<br>98 创建失败<br>99 已删除<br>100 删除中</p>
         :type Status: int
-        :param _BackupPaths: 备份路径
+        :param _BackupPaths: <p>备份路径</p>
         :type BackupPaths: list of str
-        :param _IncludeFileTypes: 包含文件类型
+        :param _IncludeFileTypes: <p>包含文件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeFileTypes: list of str
-        :param _ExcludePatterns: 排除路径
+        :param _ExcludePatterns: <p>排除路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludePatterns: list of str
-        :param _ExcludeSystemDirectories: 是否排除系统目录
+        :param _ExcludeSystemDirectories: <p>是否排除系统目录</p>
         :type ExcludeSystemDirectories: bool
-        :param _VaultId: 备份库ID
+        :param _VaultId: <p>备份库ID</p>
         :type VaultId: str
-        :param _ScannedFileCount: 扫描文件数
+        :param _ScannedFileCount: <p>扫描文件数</p>
         :type ScannedFileCount: int
-        :param _ScannedSize: 扫描大小(字节)
+        :param _ScannedSize: <p>扫描大小(字节)</p>
         :type ScannedSize: int
-        :param _ScannedSizeFormatted: 扫描大小(格式化)
+        :param _ScannedSizeFormatted: <p>扫描大小(格式化)</p>
         :type ScannedSizeFormatted: str
-        :param _BackupFileCount: 已备份文件数量
+        :param _BackupFileCount: <p>已备份文件数量</p>
         :type BackupFileCount: int
-        :param _BackupSize: 已备份大小(字节)
+        :param _BackupSize: <p>已备份大小(字节)</p>
         :type BackupSize: int
-        :param _BackupSizeFormatted: 已备份大小(格式化)
+        :param _BackupSizeFormatted: <p>已备份大小(格式化)</p>
         :type BackupSizeFormatted: str
-        :param _Progress: 备份进度(0-100)
+        :param _Progress: <p>备份进度(0-100)</p>
         :type Progress: float
-        :param _JobId: 任务ID
+        :param _JobId: <p>任务ID</p>
         :type JobId: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _IsPermanent: 是否为永久保留
+        :param _IsPermanent: <p>是否为永久保留</p>
         :type IsPermanent: bool
-        :param _Deadline: 到期时间
+        :param _Deadline: <p>到期时间</p>
         :type Deadline: str
-        :param _NonExistSourcePaths: 不存在的路径信息
+        :param _NonExistSourcePaths: <p>不存在的路径信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NonExistSourcePaths: list of str
-        :param _FailReason: 备份失败原因
+        :param _FailReason: <p>备份失败原因</p>
         :type FailReason: str
-        :param _AppId: 备份所属AppId
+        :param _AppId: <p>备份所属AppId</p>
         :type AppId: int
-        :param _ResourceType: 备份类型
+        :param _ResourceType: <p>备份类型</p>
         :type ResourceType: str
+        :param _IsInventoryPending: <p>cos备份场景使用，标识是否清单生成中</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInventoryPending: bool
+        :param _EnableObjectAcl: <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableObjectAcl: bool
+        :param _EnableObjectTags: <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableObjectTags: bool
+        :param _CloudResourceId: <p>云上资源ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudResourceId: str
+        :param _ProductType: <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductType: str
         """
         self._BackupId = None
         self._BackupName = None
@@ -1584,10 +1612,15 @@ class BackupInfo(AbstractModel):
         self._FailReason = None
         self._AppId = None
         self._ResourceType = None
+        self._IsInventoryPending = None
+        self._EnableObjectAcl = None
+        self._EnableObjectTags = None
+        self._CloudResourceId = None
+        self._ProductType = None
 
     @property
     def BackupId(self):
-        r"""备份点ID
+        r"""<p>备份点ID</p>
         :rtype: str
         """
         return self._BackupId
@@ -1598,7 +1631,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""备份名称
+        r"""<p>备份名称</p>
         :rtype: str
         """
         return self._BackupName
@@ -1609,7 +1642,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def PlanId(self):
-        r"""所属计划ID
+        r"""<p>所属计划ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1621,7 +1654,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def AspInstanceId(self):
-        r"""策略ID
+        r"""<p>策略ID</p>
         :rtype: str
         """
         return self._AspInstanceId
@@ -1632,7 +1665,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID
+        r"""<p>资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -1643,16 +1676,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""备份状态，取值如下：
-0 备份完成
-1 创建中（备份进行中）
-2 部分成功（指定的备份路径中部分目录不存在）
-3 恢复中（该备份点正在被恢复任务使用）
-92  已取消
-98 创建失败
-99 已删除
-100 删除中
-
+        r"""<p>备份状态，取值如下：<br>0 备份完成<br>1 创建中（备份进行中）<br>2 部分成功（指定的备份路径中部分目录不存在）<br>3 恢复中（该备份点正在被恢复任务使用）<br>92  已取消<br>98 创建失败<br>99 已删除<br>100 删除中</p>
         :rtype: int
         """
         return self._Status
@@ -1663,7 +1687,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupPaths(self):
-        r"""备份路径
+        r"""<p>备份路径</p>
         :rtype: list of str
         """
         return self._BackupPaths
@@ -1674,7 +1698,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def IncludeFileTypes(self):
-        r"""包含文件类型
+        r"""<p>包含文件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1686,7 +1710,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def ExcludePatterns(self):
-        r"""排除路径
+        r"""<p>排除路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1698,7 +1722,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def ExcludeSystemDirectories(self):
-        r"""是否排除系统目录
+        r"""<p>是否排除系统目录</p>
         :rtype: bool
         """
         return self._ExcludeSystemDirectories
@@ -1709,7 +1733,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def VaultId(self):
-        r"""备份库ID
+        r"""<p>备份库ID</p>
         :rtype: str
         """
         return self._VaultId
@@ -1720,7 +1744,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def ScannedFileCount(self):
-        r"""扫描文件数
+        r"""<p>扫描文件数</p>
         :rtype: int
         """
         return self._ScannedFileCount
@@ -1731,7 +1755,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def ScannedSize(self):
-        r"""扫描大小(字节)
+        r"""<p>扫描大小(字节)</p>
         :rtype: int
         """
         return self._ScannedSize
@@ -1742,7 +1766,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def ScannedSizeFormatted(self):
-        r"""扫描大小(格式化)
+        r"""<p>扫描大小(格式化)</p>
         :rtype: str
         """
         return self._ScannedSizeFormatted
@@ -1753,7 +1777,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupFileCount(self):
-        r"""已备份文件数量
+        r"""<p>已备份文件数量</p>
         :rtype: int
         """
         return self._BackupFileCount
@@ -1764,7 +1788,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupSize(self):
-        r"""已备份大小(字节)
+        r"""<p>已备份大小(字节)</p>
         :rtype: int
         """
         return self._BackupSize
@@ -1775,7 +1799,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupSizeFormatted(self):
-        r"""已备份大小(格式化)
+        r"""<p>已备份大小(格式化)</p>
         :rtype: str
         """
         return self._BackupSizeFormatted
@@ -1786,7 +1810,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def Progress(self):
-        r"""备份进度(0-100)
+        r"""<p>备份进度(0-100)</p>
         :rtype: float
         """
         return self._Progress
@@ -1797,7 +1821,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._JobId
@@ -1808,7 +1832,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -1819,7 +1843,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -1830,7 +1854,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -1841,7 +1865,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def IsPermanent(self):
-        r"""是否为永久保留
+        r"""<p>是否为永久保留</p>
         :rtype: bool
         """
         return self._IsPermanent
@@ -1852,7 +1876,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def Deadline(self):
-        r"""到期时间
+        r"""<p>到期时间</p>
         :rtype: str
         """
         return self._Deadline
@@ -1863,7 +1887,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def NonExistSourcePaths(self):
-        r"""不存在的路径信息
+        r"""<p>不存在的路径信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1875,7 +1899,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def FailReason(self):
-        r"""备份失败原因
+        r"""<p>备份失败原因</p>
         :rtype: str
         """
         return self._FailReason
@@ -1886,7 +1910,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""备份所属AppId
+        r"""<p>备份所属AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -1897,7 +1921,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""备份类型
+        r"""<p>备份类型</p>
         :rtype: str
         """
         return self._ResourceType
@@ -1905,6 +1929,66 @@ class BackupInfo(AbstractModel):
     @ResourceType.setter
     def ResourceType(self, ResourceType):
         self._ResourceType = ResourceType
+
+    @property
+    def IsInventoryPending(self):
+        r"""<p>cos备份场景使用，标识是否清单生成中</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsInventoryPending
+
+    @IsInventoryPending.setter
+    def IsInventoryPending(self, IsInventoryPending):
+        self._IsInventoryPending = IsInventoryPending
+
+    @property
+    def EnableObjectAcl(self):
+        r"""<p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableObjectAcl
+
+    @EnableObjectAcl.setter
+    def EnableObjectAcl(self, EnableObjectAcl):
+        self._EnableObjectAcl = EnableObjectAcl
+
+    @property
+    def EnableObjectTags(self):
+        r"""<p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableObjectTags
+
+    @EnableObjectTags.setter
+    def EnableObjectTags(self, EnableObjectTags):
+        self._EnableObjectTags = EnableObjectTags
+
+    @property
+    def CloudResourceId(self):
+        r"""<p>云上资源ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CloudResourceId
+
+    @CloudResourceId.setter
+    def CloudResourceId(self, CloudResourceId):
+        self._CloudResourceId = CloudResourceId
+
+    @property
+    def ProductType(self):
+        r"""<p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
 
 
     def _deserialize(self, params):
@@ -1936,6 +2020,11 @@ class BackupInfo(AbstractModel):
         self._FailReason = params.get("FailReason")
         self._AppId = params.get("AppId")
         self._ResourceType = params.get("ResourceType")
+        self._IsInventoryPending = params.get("IsInventoryPending")
+        self._EnableObjectAcl = params.get("EnableObjectAcl")
+        self._EnableObjectTags = params.get("EnableObjectTags")
+        self._CloudResourceId = params.get("CloudResourceId")
+        self._ProductType = params.get("ProductType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1953,24 +2042,27 @@ class BackupInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoBackupPolicyIdSet: 实例绑定的定期备份策略列表。
+        :param _AutoBackupPolicyIdSet: <p>实例绑定的定期备份策略列表。</p>
         :type AutoBackupPolicyIdSet: list of str
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: <p>实例ID。</p>
         :type InstanceId: str
-        :param _AppId: 用户AppId。
+        :param _AppId: <p>用户AppId。</p>
         :type AppId: int
-        :param _LatestBackupTime: 实例最新备份时间。
+        :param _LatestBackupTime: <p>实例最新备份时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestBackupTime: str
-        :param _BackupGroupIdSet: 实例的备份组ID列表。
+        :param _BackupGroupIdSet: <p>实例的备份组ID列表。</p>
         :type BackupGroupIdSet: list of str
-        :param _ModifyTime: 修改时间。
+        :param _ModifyTime: <p>修改时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
+        :param _BackupSizeMb: <p>备份数据量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSizeMb: int
         """
         self._AutoBackupPolicyIdSet = None
         self._InstanceId = None
@@ -1980,10 +2072,11 @@ class BackupInstance(AbstractModel):
         self._ModifyTime = None
         self._CreateTime = None
         self._InstanceName = None
+        self._BackupSizeMb = None
 
     @property
     def AutoBackupPolicyIdSet(self):
-        r"""实例绑定的定期备份策略列表。
+        r"""<p>实例绑定的定期备份策略列表。</p>
         :rtype: list of str
         """
         return self._AutoBackupPolicyIdSet
@@ -1994,7 +2087,7 @@ class BackupInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""<p>实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2005,7 +2098,7 @@ class BackupInstance(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户AppId。
+        r"""<p>用户AppId。</p>
         :rtype: int
         """
         return self._AppId
@@ -2016,7 +2109,7 @@ class BackupInstance(AbstractModel):
 
     @property
     def LatestBackupTime(self):
-        r"""实例最新备份时间。
+        r"""<p>实例最新备份时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2028,7 +2121,7 @@ class BackupInstance(AbstractModel):
 
     @property
     def BackupGroupIdSet(self):
-        r"""实例的备份组ID列表。
+        r"""<p>实例的备份组ID列表。</p>
         :rtype: list of str
         """
         return self._BackupGroupIdSet
@@ -2039,7 +2132,7 @@ class BackupInstance(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间。
+        r"""<p>修改时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2051,7 +2144,7 @@ class BackupInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2062,7 +2155,7 @@ class BackupInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -2070,6 +2163,18 @@ class BackupInstance(AbstractModel):
     @InstanceName.setter
     def InstanceName(self, InstanceName):
         self._InstanceName = InstanceName
+
+    @property
+    def BackupSizeMb(self):
+        r"""<p>备份数据量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BackupSizeMb
+
+    @BackupSizeMb.setter
+    def BackupSizeMb(self, BackupSizeMb):
+        self._BackupSizeMb = BackupSizeMb
 
 
     def _deserialize(self, params):
@@ -2081,6 +2186,7 @@ class BackupInstance(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._CreateTime = params.get("CreateTime")
         self._InstanceName = params.get("InstanceName")
+        self._BackupSizeMb = params.get("BackupSizeMb")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2292,6 +2398,57 @@ class BackupPolicyOverview(AbstractModel):
         self._TotalCount = params.get("TotalCount")
         self._BoundCount = params.get("BoundCount")
         self._UnboundCount = params.get("UnboundCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupResourceInfo(AbstractModel):
+    r"""文件备份资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>COS_AGENT： COS备份</li><li>CFS_AGENT： CFS文件备份</li><li>INSTANCE： CVM整机备份</li></ul>
+        :type ResourceType: str
+        :param _ResourceIds: <p>资源ID</p>
+        :type ResourceIds: list of str
+        """
+        self._ResourceType = None
+        self._ResourceIds = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>COS_AGENT： COS备份</li><li>CFS_AGENT： CFS文件备份</li><li>INSTANCE： CVM整机备份</li></ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceIds(self):
+        r"""<p>资源ID</p>
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceIds = params.get("ResourceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2625,6 +2782,51 @@ class BindAutoBackupPolicyRequest(AbstractModel):
     r"""BindAutoBackupPolicy请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _AutoBackupPolicyId: <p>备份策略ID</p>
+        :type AutoBackupPolicyId: str
+        :param _InstanceIds: <p>实例ID列表</p>
+        :type InstanceIds: list of str
+        """
+        self._AutoBackupPolicyId = None
+        self._InstanceIds = None
+
+    @property
+    def AutoBackupPolicyId(self):
+        r"""<p>备份策略ID</p>
+        :rtype: str
+        """
+        return self._AutoBackupPolicyId
+
+    @AutoBackupPolicyId.setter
+    def AutoBackupPolicyId(self, AutoBackupPolicyId):
+        self._AutoBackupPolicyId = AutoBackupPolicyId
+
+    @property
+    def InstanceIds(self):
+        r"""<p>实例ID列表</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._AutoBackupPolicyId = params.get("AutoBackupPolicyId")
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class BindAutoBackupPolicyResponse(AbstractModel):
@@ -3651,25 +3853,25 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Policy: 定期备份的执行策略。
+        :param _Policy: <p>定期备份的执行策略。</p>
         :type Policy: list of Policy
-        :param _IsPermanent: 通过该定期备份策略创建的备份是否永久保留。false表示非永久保留，true表示永久保留，默认为false。
+        :param _IsPermanent: <p>通过该定期备份策略创建的备份是否永久保留。false表示非永久保留，true表示永久保留，默认为false。</p>
         :type IsPermanent: bool
-        :param _AutoBackupPolicyName: 定期备份策略的名称。
+        :param _AutoBackupPolicyName: <p>定期备份策略的名称。</p>
         :type AutoBackupPolicyName: str
-        :param _IsActivated: 是否激活定期备份策略。
+        :param _IsActivated: <p>是否激活定期备份策略。</p>
         :type IsActivated: bool
-        :param _RetentionDays: 通过定期备份策略创建出的备份保留时间。
+        :param _RetentionDays: <p>通过定期备份策略创建出的备份保留时间。本参数与 RetentionMonths、RetentionAmount 互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
         :type RetentionDays: int
-        :param _RetentionMonths: 该定期备份策略创建的备份可以保留的月数，该参数不可与IsPermanent/RetentionDays参数冲突。
+        :param _RetentionMonths: <p>该定期备份策略创建的备份可以保留的月数。本参数与 RetentionDays、RetentionAmount 互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
         :type RetentionMonths: int
-        :param _RetentionAmount: 通过该定期备份策略最多保留的备份个数，超过该个数限制后自动删除最先创建的备份，该参数不可与IsPermanent参数冲突。
+        :param _RetentionAmount: <p>通过该定期备份策略最多保留的备份个数，超过该个数限制后自动删除最先创建的备份。本参数与 RetentionDays、RetentionMonths互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
         :type RetentionAmount: int
-        :param _StorageType: 备份存储类型。COMMON表示走普通模式（不需要备份库），VAULT表示走备份库（必须关联一个备份库）。默认为COMMON
+        :param _StorageType: <p>备份存储类型。COMMON表示走普通模式（不需要备份库），VAULT表示走备份库（必须关联一个备份库）。默认为COMMON</p>
         :type StorageType: str
-        :param _VaultId: 备份库ID，创建agent备份策略时必须指定。当StorageType为VAULT时必传。
+        :param _VaultId: <p>备份库ID，创建agent备份策略时必须指定。当StorageType为VAULT时必传。</p>
         :type VaultId: str
-        :param _AdvancedRetentionPolicy: 定期备份高级保留策略，该参数不可与IsPermanent参数冲突。
+        :param _AdvancedRetentionPolicy: <p>定期备份高级保留策略，该参数不可与 IsPermanent 参数冲突。当 IsPermanent 为 false 或不传、且未传入 RetentionDays / RetentionMonths / RetentionAmount 时，必须传入本参数。</p>
         :type AdvancedRetentionPolicy: :class:`tencentcloud.bdrc.v20260330.models.AdvancedRetentionPolicy`
         """
         self._Policy = None
@@ -3685,7 +3887,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def Policy(self):
-        r"""定期备份的执行策略。
+        r"""<p>定期备份的执行策略。</p>
         :rtype: list of Policy
         """
         return self._Policy
@@ -3696,7 +3898,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def IsPermanent(self):
-        r"""通过该定期备份策略创建的备份是否永久保留。false表示非永久保留，true表示永久保留，默认为false。
+        r"""<p>通过该定期备份策略创建的备份是否永久保留。false表示非永久保留，true表示永久保留，默认为false。</p>
         :rtype: bool
         """
         return self._IsPermanent
@@ -3707,7 +3909,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def AutoBackupPolicyName(self):
-        r"""定期备份策略的名称。
+        r"""<p>定期备份策略的名称。</p>
         :rtype: str
         """
         return self._AutoBackupPolicyName
@@ -3718,7 +3920,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def IsActivated(self):
-        r"""是否激活定期备份策略。
+        r"""<p>是否激活定期备份策略。</p>
         :rtype: bool
         """
         return self._IsActivated
@@ -3729,7 +3931,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def RetentionDays(self):
-        r"""通过定期备份策略创建出的备份保留时间。
+        r"""<p>通过定期备份策略创建出的备份保留时间。本参数与 RetentionMonths、RetentionAmount 互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
         :rtype: int
         """
         return self._RetentionDays
@@ -3740,7 +3942,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def RetentionMonths(self):
-        r"""该定期备份策略创建的备份可以保留的月数，该参数不可与IsPermanent/RetentionDays参数冲突。
+        r"""<p>该定期备份策略创建的备份可以保留的月数。本参数与 RetentionDays、RetentionAmount 互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
         :rtype: int
         """
         return self._RetentionMonths
@@ -3751,7 +3953,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def RetentionAmount(self):
-        r"""通过该定期备份策略最多保留的备份个数，超过该个数限制后自动删除最先创建的备份，该参数不可与IsPermanent参数冲突。
+        r"""<p>通过该定期备份策略最多保留的备份个数，超过该个数限制后自动删除最先创建的备份。本参数与 RetentionDays、RetentionMonths互斥，不可同时传入。当 IsPermanent 为 false 或不传时，RetentionDays / RetentionMonths / RetentionAmount / AdvancedRetentionPolicy 必须传入至少一项有效值。</p>
         :rtype: int
         """
         return self._RetentionAmount
@@ -3762,7 +3964,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""备份存储类型。COMMON表示走普通模式（不需要备份库），VAULT表示走备份库（必须关联一个备份库）。默认为COMMON
+        r"""<p>备份存储类型。COMMON表示走普通模式（不需要备份库），VAULT表示走备份库（必须关联一个备份库）。默认为COMMON</p>
         :rtype: str
         """
         return self._StorageType
@@ -3773,7 +3975,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def VaultId(self):
-        r"""备份库ID，创建agent备份策略时必须指定。当StorageType为VAULT时必传。
+        r"""<p>备份库ID，创建agent备份策略时必须指定。当StorageType为VAULT时必传。</p>
         :rtype: str
         """
         return self._VaultId
@@ -3784,7 +3986,7 @@ class CreateAutoBackupPolicyRequest(AbstractModel):
 
     @property
     def AdvancedRetentionPolicy(self):
-        r"""定期备份高级保留策略，该参数不可与IsPermanent参数冲突。
+        r"""<p>定期备份高级保留策略，该参数不可与 IsPermanent 参数冲突。当 IsPermanent 为 false 或不传、且未传入 RetentionDays / RetentionMonths / RetentionAmount 时，必须传入本参数。</p>
         :rtype: :class:`tencentcloud.bdrc.v20260330.models.AdvancedRetentionPolicy`
         """
         return self._AdvancedRetentionPolicy
@@ -3829,7 +4031,7 @@ class CreateAutoBackupPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoBackupPolicyId: 定期备份策略ID。
+        :param _AutoBackupPolicyId: <p>定期备份策略ID。</p>
         :type AutoBackupPolicyId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3839,7 +4041,7 @@ class CreateAutoBackupPolicyResponse(AbstractModel):
 
     @property
     def AutoBackupPolicyId(self):
-        r"""定期备份策略ID。
+        r"""<p>定期备份策略ID。</p>
         :rtype: str
         """
         return self._AutoBackupPolicyId
@@ -4588,7 +4790,7 @@ class CreateFileBackupPlanRequest(AbstractModel):
         :type BackupStorageId: str
         :param _PlanName: <p>计划名称</p>
         :type PlanName: str
-        :param _Resources: <p>实例配置列表，[1,20]</p>
+        :param _Resources: <p>实例配置列表，1~20 项，此参数必填。</p>
         :type Resources: list of ResourcePlan
         :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
         :type ResourceType: str
@@ -4634,7 +4836,7 @@ class CreateFileBackupPlanRequest(AbstractModel):
 
     @property
     def Resources(self):
-        r"""<p>实例配置列表，[1,20]</p>
+        r"""<p>实例配置列表，1~20 项，此参数必填。</p>
         :rtype: list of ResourcePlan
         """
         return self._Resources
@@ -4726,24 +4928,30 @@ class CreateFileBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID列表
+        :param _ResourceId: <p>资源ID列表</p>
         :type ResourceId: str
-        :param _PlanId: 计划ID
+        :param _PlanId: <p>计划ID</p>
         :type PlanId: str
-        :param _BackupPaths: 备份路径列表，1~20 个
+        :param _BackupPaths: <p>备份路径列表，1~20 个</p>
         :type BackupPaths: list of str
-        :param _IncludeFileTypes: 包含文件类型，0~20 个
+        :param _IncludeFileTypes: <p>包含文件类型，0~20 个</p>
         :type IncludeFileTypes: list of str
-        :param _ExcludePatterns: 排除文件路径列表，0~20 个
+        :param _ExcludePatterns: <p>排除文件路径列表，0~20 个</p>
         :type ExcludePatterns: list of str
-        :param _ExcludeSystemDirectories: 是否排除系统目录
+        :param _ExcludeSystemDirectories: <p>是否排除系统目录</p>
         :type ExcludeSystemDirectories: bool
-        :param _BackupStorageId: 备份库ID
+        :param _BackupStorageId: <p>备份库ID，此参数必填。</p>
         :type BackupStorageId: str
-        :param _Deadline: 备份到期时间
+        :param _Deadline: <p>备份到期时间</p>
         :type Deadline: str
-        :param _BackupName: 备份名称
+        :param _BackupName: <p>备份名称</p>
         :type BackupName: str
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :type ResourceType: str
+        :param _EnableObjectAcl: <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+        :type EnableObjectAcl: bool
+        :param _EnableObjectTags: <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+        :type EnableObjectTags: bool
         """
         self._ResourceId = None
         self._PlanId = None
@@ -4754,10 +4962,13 @@ class CreateFileBackupRequest(AbstractModel):
         self._BackupStorageId = None
         self._Deadline = None
         self._BackupName = None
+        self._ResourceType = None
+        self._EnableObjectAcl = None
+        self._EnableObjectTags = None
 
     @property
     def ResourceId(self):
-        r"""资源ID列表
+        r"""<p>资源ID列表</p>
         :rtype: str
         """
         return self._ResourceId
@@ -4768,7 +4979,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def PlanId(self):
-        r"""计划ID
+        r"""<p>计划ID</p>
         :rtype: str
         """
         return self._PlanId
@@ -4779,7 +4990,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def BackupPaths(self):
-        r"""备份路径列表，1~20 个
+        r"""<p>备份路径列表，1~20 个</p>
         :rtype: list of str
         """
         return self._BackupPaths
@@ -4790,7 +5001,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def IncludeFileTypes(self):
-        r"""包含文件类型，0~20 个
+        r"""<p>包含文件类型，0~20 个</p>
         :rtype: list of str
         """
         return self._IncludeFileTypes
@@ -4801,7 +5012,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def ExcludePatterns(self):
-        r"""排除文件路径列表，0~20 个
+        r"""<p>排除文件路径列表，0~20 个</p>
         :rtype: list of str
         """
         return self._ExcludePatterns
@@ -4812,7 +5023,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def ExcludeSystemDirectories(self):
-        r"""是否排除系统目录
+        r"""<p>是否排除系统目录</p>
         :rtype: bool
         """
         return self._ExcludeSystemDirectories
@@ -4823,7 +5034,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def BackupStorageId(self):
-        r"""备份库ID
+        r"""<p>备份库ID，此参数必填。</p>
         :rtype: str
         """
         return self._BackupStorageId
@@ -4834,7 +5045,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def Deadline(self):
-        r"""备份到期时间
+        r"""<p>备份到期时间</p>
         :rtype: str
         """
         return self._Deadline
@@ -4845,7 +5056,7 @@ class CreateFileBackupRequest(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""备份名称
+        r"""<p>备份名称</p>
         :rtype: str
         """
         return self._BackupName
@@ -4853,6 +5064,39 @@ class CreateFileBackupRequest(AbstractModel):
     @BackupName.setter
     def BackupName(self, BackupName):
         self._BackupName = BackupName
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def EnableObjectAcl(self):
+        r"""<p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableObjectAcl
+
+    @EnableObjectAcl.setter
+    def EnableObjectAcl(self, EnableObjectAcl):
+        self._EnableObjectAcl = EnableObjectAcl
+
+    @property
+    def EnableObjectTags(self):
+        r"""<p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableObjectTags
+
+    @EnableObjectTags.setter
+    def EnableObjectTags(self, EnableObjectTags):
+        self._EnableObjectTags = EnableObjectTags
 
 
     def _deserialize(self, params):
@@ -4865,6 +5109,9 @@ class CreateFileBackupRequest(AbstractModel):
         self._BackupStorageId = params.get("BackupStorageId")
         self._Deadline = params.get("Deadline")
         self._BackupName = params.get("BackupName")
+        self._ResourceType = params.get("ResourceType")
+        self._EnableObjectAcl = params.get("EnableObjectAcl")
+        self._EnableObjectTags = params.get("EnableObjectTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4882,7 +5129,7 @@ class CreateFileBackupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupId: 备份Id
+        :param _BackupId: <p>备份Id</p>
         :type BackupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4892,7 +5139,7 @@ class CreateFileBackupResponse(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""备份Id
+        r"""<p>备份Id</p>
         :rtype: str
         """
         return self._BackupId
@@ -4925,14 +5172,70 @@ class CreateFileRestoreTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConflictStrategy: 冲突处理策略：skip-跳过/"         "overwrite-覆盖/newer-保留较新的版本/"         "if_changed-内容变化时覆盖，默认overwrite
+        :param _BackupId: <p>待恢复的备份ID</p>
+        :type BackupId: str
+        :param _TargetResourceId: <p>目标实例ID</p>
+        :type TargetResourceId: str
+        :param _RestorePaths: <ol><li>恢复路径列表（1-500项）；2. CVM和CFS文件备份不传则使用备份点中所有路径，COS备份该参数必填；3. 必须是绝对路径；</li></ol>
+        :type RestorePaths: list of str
+        :param _TargetLocation: <p>目标位置</p><ol><li>不传则恢复到原始路径</li><li>cos恢复时不能以【/】开头</li></ol>
+        :type TargetLocation: str
+        :param _ConflictStrategy: <p>冲突处理策略：skip-跳过/&quot;         &quot;overwrite-覆盖/newer-保留较新的版本/&quot;         &quot;if_changed-内容变化时覆盖，默认overwrite</p>
         :type ConflictStrategy: str
         """
+        self._BackupId = None
+        self._TargetResourceId = None
+        self._RestorePaths = None
+        self._TargetLocation = None
         self._ConflictStrategy = None
 
     @property
+    def BackupId(self):
+        r"""<p>待恢复的备份ID</p>
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def TargetResourceId(self):
+        r"""<p>目标实例ID</p>
+        :rtype: str
+        """
+        return self._TargetResourceId
+
+    @TargetResourceId.setter
+    def TargetResourceId(self, TargetResourceId):
+        self._TargetResourceId = TargetResourceId
+
+    @property
+    def RestorePaths(self):
+        r"""<ol><li>恢复路径列表（1-500项）；2. CVM和CFS文件备份不传则使用备份点中所有路径，COS备份该参数必填；3. 必须是绝对路径；</li></ol>
+        :rtype: list of str
+        """
+        return self._RestorePaths
+
+    @RestorePaths.setter
+    def RestorePaths(self, RestorePaths):
+        self._RestorePaths = RestorePaths
+
+    @property
+    def TargetLocation(self):
+        r"""<p>目标位置</p><ol><li>不传则恢复到原始路径</li><li>cos恢复时不能以【/】开头</li></ol>
+        :rtype: str
+        """
+        return self._TargetLocation
+
+    @TargetLocation.setter
+    def TargetLocation(self, TargetLocation):
+        self._TargetLocation = TargetLocation
+
+    @property
     def ConflictStrategy(self):
-        r"""冲突处理策略：skip-跳过/"         "overwrite-覆盖/newer-保留较新的版本/"         "if_changed-内容变化时覆盖，默认overwrite
+        r"""<p>冲突处理策略：skip-跳过/&quot;         &quot;overwrite-覆盖/newer-保留较新的版本/&quot;         &quot;if_changed-内容变化时覆盖，默认overwrite</p>
         :rtype: str
         """
         return self._ConflictStrategy
@@ -4943,6 +5246,10 @@ class CreateFileRestoreTaskRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._TargetResourceId = params.get("TargetResourceId")
+        self._RestorePaths = params.get("RestorePaths")
+        self._TargetLocation = params.get("TargetLocation")
         self._ConflictStrategy = params.get("ConflictStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4961,10 +5268,24 @@ class CreateFileRestoreTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: <p>恢复任务ID</p>
+        :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>恢复任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -4979,6 +5300,7 @@ class CreateFileRestoreTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6639,14 +6961,14 @@ class DeleteFileBackupPlansRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlanIds: 备份点 ID 列表
+        :param _PlanIds: <p>备份计划 ID 列表</p>
         :type PlanIds: list of str
         """
         self._PlanIds = None
 
     @property
     def PlanIds(self):
-        r"""备份点 ID 列表
+        r"""<p>备份计划 ID 列表</p>
         :rtype: list of str
         """
         return self._PlanIds
@@ -6882,15 +7204,15 @@ class DescribeAutoBackupPoliciesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件。支持以下过滤条件：\n"              "auto-backup-policy-id - 定期快照策略ID，如asp-xxx。\n"              "auto-backup-policy-state - 定期快照策略状态。\n"              "auto-backup-policy-name - 定期快照策略名称，支持模糊匹配。\n"              "tag - 按标签键值对过滤，需包含Key和/或Value。\n"              "tag-key - 按标签键过滤。\n"              "tag-value - 按标签值过滤。\n"              "tag:tag-key - 按指定标签键的标签值过滤。\n"              "vault-id - 备份库ID过滤。\n"              "storage-type - 存储类型过滤"              "（COMMON：普通模式，VAULT：备份库模式）。
+        :param _Filters: <p>过滤条件，支持以下Name：</p><ul><li>auto-backup-policy-id - 按定期备份策略ID过滤，如abp-xxx。</li><li>auto-backup-policy-state - 按定期备份策略状态过滤，如NORMAL。</li><li>auto-backup-policy-name - 按定期备份策略名称过滤，支持模糊匹配。</li><li>tag - 按标签键值对过滤，需包含Key和/或Value。</li><li>tag-key - 按标签键过滤。</li><li>tag-value - 按标签值过滤。</li><li>tag:tag-key - 按指定标签键的标签值过滤。</li><li>vault-id - 按备份库ID过滤。</li><li>storage-type - 按存储类型过滤：COMMON（普通模式）、VAULT（备份库模式）。</li></ul>
         :type Filters: list of FilterModel
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大1000
+        :param _Limit: <p>返回数量，默认20，最大1000</p>
         :type Limit: int
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
         """
         self._Filters = None
@@ -6901,7 +7223,7 @@ class DescribeAutoBackupPoliciesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。支持以下过滤条件：\n"              "auto-backup-policy-id - 定期快照策略ID，如asp-xxx。\n"              "auto-backup-policy-state - 定期快照策略状态。\n"              "auto-backup-policy-name - 定期快照策略名称，支持模糊匹配。\n"              "tag - 按标签键值对过滤，需包含Key和/或Value。\n"              "tag-key - 按标签键过滤。\n"              "tag-value - 按标签值过滤。\n"              "tag:tag-key - 按指定标签键的标签值过滤。\n"              "vault-id - 备份库ID过滤。\n"              "storage-type - 存储类型过滤"              "（COMMON：普通模式，VAULT：备份库模式）。
+        r"""<p>过滤条件，支持以下Name：</p><ul><li>auto-backup-policy-id - 按定期备份策略ID过滤，如abp-xxx。</li><li>auto-backup-policy-state - 按定期备份策略状态过滤，如NORMAL。</li><li>auto-backup-policy-name - 按定期备份策略名称过滤，支持模糊匹配。</li><li>tag - 按标签键值对过滤，需包含Key和/或Value。</li><li>tag-key - 按标签键过滤。</li><li>tag-value - 按标签值过滤。</li><li>tag:tag-key - 按指定标签键的标签值过滤。</li><li>vault-id - 按备份库ID过滤。</li><li>storage-type - 按存储类型过滤：COMMON（普通模式）、VAULT（备份库模式）。</li></ul>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -6912,7 +7234,7 @@ class DescribeAutoBackupPoliciesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -6923,7 +7245,7 @@ class DescribeAutoBackupPoliciesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大1000
+        r"""<p>返回数量，默认20，最大1000</p>
         :rtype: int
         """
         return self._Limit
@@ -6934,7 +7256,7 @@ class DescribeAutoBackupPoliciesRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -6945,7 +7267,7 @@ class DescribeAutoBackupPoliciesRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -6983,9 +7305,9 @@ class DescribeAutoBackupPoliciesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的总数量。
+        :param _TotalCount: <p>符合条件的总数量。</p>
         :type TotalCount: int
-        :param _AutoBackupPolicySet: 备份策略列表详情。
+        :param _AutoBackupPolicySet: <p>备份策略列表详情。</p>
         :type AutoBackupPolicySet: list of AutoBackupPolicy
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6996,7 +7318,7 @@ class DescribeAutoBackupPoliciesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的总数量。
+        r"""<p>符合条件的总数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7007,7 +7329,7 @@ class DescribeAutoBackupPoliciesResponse(AbstractModel):
 
     @property
     def AutoBackupPolicySet(self):
-        r"""备份策略列表详情。
+        r"""<p>备份策略列表详情。</p>
         :rtype: list of AutoBackupPolicy
         """
         return self._AutoBackupPolicySet
@@ -7046,15 +7368,15 @@ class DescribeBackupGroupRollbackTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件，支持恢复任务ID（task-id）、备份组ID（backup-group-id）、源实例ID（source-instance-id）、目标实例ID（target-instance-id）、恢复状态（status）和回滚类型（rollback-type）过滤
+        :param _Filters: <p>过滤条件，支持恢复任务ID（task-id）、备份组ID（backup-group-id）、源实例ID（source-instance-id）、目标实例ID（target-instance-id）、恢复状态（status）和回滚类型（rollback-type）过滤</p>
         :type Filters: list of FilterModel
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大1000
+        :param _Limit: <p>返回数量，默认20，最大1000</p>
         :type Limit: int
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
         """
         self._Filters = None
@@ -7065,7 +7387,7 @@ class DescribeBackupGroupRollbackTasksRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，支持恢复任务ID（task-id）、备份组ID（backup-group-id）、源实例ID（source-instance-id）、目标实例ID（target-instance-id）、恢复状态（status）和回滚类型（rollback-type）过滤
+        r"""<p>过滤条件，支持恢复任务ID（task-id）、备份组ID（backup-group-id）、源实例ID（source-instance-id）、目标实例ID（target-instance-id）、恢复状态（status）和回滚类型（rollback-type）过滤</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -7076,7 +7398,7 @@ class DescribeBackupGroupRollbackTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -7087,7 +7409,7 @@ class DescribeBackupGroupRollbackTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大1000
+        r"""<p>返回数量，默认20，最大1000</p>
         :rtype: int
         """
         return self._Limit
@@ -7098,7 +7420,7 @@ class DescribeBackupGroupRollbackTasksRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -7109,7 +7431,7 @@ class DescribeBackupGroupRollbackTasksRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -7147,9 +7469,9 @@ class DescribeBackupGroupRollbackTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的总数量。
+        :param _TotalCount: <p>符合条件的总数量。</p>
         :type TotalCount: int
-        :param _RollbackTaskSet: 备份组恢复详情。
+        :param _RollbackTaskSet: <p>备份组恢复详情。</p>
         :type RollbackTaskSet: list of BackupGroupRollbackTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7160,7 +7482,7 @@ class DescribeBackupGroupRollbackTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的总数量。
+        r"""<p>符合条件的总数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7171,7 +7493,7 @@ class DescribeBackupGroupRollbackTasksResponse(AbstractModel):
 
     @property
     def RollbackTaskSet(self):
-        r"""备份组恢复详情。
+        r"""<p>备份组恢复详情。</p>
         :rtype: list of BackupGroupRollbackTask
         """
         return self._RollbackTaskSet
@@ -7300,9 +7622,9 @@ class DescribeBackupGroupsRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认20，最大500
         :type Limit: int
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _OrderField: 排序字段。目前支持CREATE_TIME。
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
         """
         self._Filters = None
@@ -7346,7 +7668,7 @@ class DescribeBackupGroupsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -7357,7 +7679,7 @@ class DescribeBackupGroupsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段。目前支持CREATE_TIME。
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -7458,15 +7780,15 @@ class DescribeBackupInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件。;instance-id - Array of String - 是否必填：否 -（过滤条件）按实例ID过滤。;auto-backup-policy-id - Array of String - 是否必填：否 -（过滤条件）按照实例绑定的定期备份策略过滤。;auto-backup-policy-name - Array of String - 是否必填：否 -（过滤条件）按照云硬盘绑定的定期备份策略名称过滤。
+        :param _Filters: <p>过滤条件。;instance-id - Array of String - 是否必填：否 -（过滤条件）按实例ID过滤。;auto-backup-policy-id - Array of String - 是否必填：否 -（过滤条件）按照实例绑定的定期备份策略过滤。;auto-backup-policy-name - Array of String - 是否必填：否 -（过滤条件）按照云硬盘绑定的定期备份策略名称过滤。</p>
         :type Filters: list of FilterModel
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大500
+        :param _Limit: <p>返回数量，默认20，最大500</p>
         :type Limit: int
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
         """
         self._Filters = None
@@ -7477,7 +7799,7 @@ class DescribeBackupInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。;instance-id - Array of String - 是否必填：否 -（过滤条件）按实例ID过滤。;auto-backup-policy-id - Array of String - 是否必填：否 -（过滤条件）按照实例绑定的定期备份策略过滤。;auto-backup-policy-name - Array of String - 是否必填：否 -（过滤条件）按照云硬盘绑定的定期备份策略名称过滤。
+        r"""<p>过滤条件。;instance-id - Array of String - 是否必填：否 -（过滤条件）按实例ID过滤。;auto-backup-policy-id - Array of String - 是否必填：否 -（过滤条件）按照实例绑定的定期备份策略过滤。;auto-backup-policy-name - Array of String - 是否必填：否 -（过滤条件）按照云硬盘绑定的定期备份策略名称过滤。</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -7488,7 +7810,7 @@ class DescribeBackupInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -7499,7 +7821,7 @@ class DescribeBackupInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大500
+        r"""<p>返回数量，默认20，最大500</p>
         :rtype: int
         """
         return self._Limit
@@ -7510,7 +7832,7 @@ class DescribeBackupInstancesRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -7521,7 +7843,7 @@ class DescribeBackupInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -7559,9 +7881,9 @@ class DescribeBackupInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的受保护实例总数量
+        :param _TotalCount: <p>符合条件的受保护实例总数量</p>
         :type TotalCount: int
-        :param _BackupInstanceSet: 符合条件的受保护实例详情
+        :param _BackupInstanceSet: <p>符合条件的受保护实例详情</p>
         :type BackupInstanceSet: list of BackupInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7572,7 +7894,7 @@ class DescribeBackupInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的受保护实例总数量
+        r"""<p>符合条件的受保护实例总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7583,7 +7905,7 @@ class DescribeBackupInstancesResponse(AbstractModel):
 
     @property
     def BackupInstanceSet(self):
-        r"""符合条件的受保护实例详情
+        r"""<p>符合条件的受保护实例详情</p>
         :rtype: list of BackupInstance
         """
         return self._BackupInstanceSet
@@ -7660,7 +7982,7 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         r"""
         :param _InstanceBackupOverview: <p>整机备份（CVM 备份组）概览数据</p>
         :type InstanceBackupOverview: :class:`tencentcloud.bdrc.v20260330.models.InstanceBackupOverview`
-        :param _FileBackupOverview: <p>文件备份概览数据</p>
+        :param _FileBackupOverview: <p>CVM文件备份概览数据</p>
         :type FileBackupOverview: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
         :param _BackupPolicyOverview: <p>备份策略概览</p>
         :type BackupPolicyOverview: :class:`tencentcloud.bdrc.v20260330.models.BackupPolicyOverview`
@@ -7668,6 +7990,10 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         :type BackupVaultOverview: :class:`tencentcloud.bdrc.v20260330.models.BackupVaultOverview`
         :param _ProtectedResourceOverview: <p>受保护资源概览</p>
         :type ProtectedResourceOverview: :class:`tencentcloud.bdrc.v20260330.models.ProtectedResourceOverview`
+        :param _CFSAgentBackupOverview: <p>CFS文件备份概览数据</p>
+        :type CFSAgentBackupOverview: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
+        :param _COSAgentBackupOverview: <p>COS备份概览数据</p>
+        :type COSAgentBackupOverview: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7676,6 +8002,8 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         self._BackupPolicyOverview = None
         self._BackupVaultOverview = None
         self._ProtectedResourceOverview = None
+        self._CFSAgentBackupOverview = None
+        self._COSAgentBackupOverview = None
         self._RequestId = None
 
     @property
@@ -7691,7 +8019,7 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
 
     @property
     def FileBackupOverview(self):
-        r"""<p>文件备份概览数据</p>
+        r"""<p>CVM文件备份概览数据</p>
         :rtype: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
         """
         return self._FileBackupOverview
@@ -7734,6 +8062,28 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         self._ProtectedResourceOverview = ProtectedResourceOverview
 
     @property
+    def CFSAgentBackupOverview(self):
+        r"""<p>CFS文件备份概览数据</p>
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
+        """
+        return self._CFSAgentBackupOverview
+
+    @CFSAgentBackupOverview.setter
+    def CFSAgentBackupOverview(self, CFSAgentBackupOverview):
+        self._CFSAgentBackupOverview = CFSAgentBackupOverview
+
+    @property
+    def COSAgentBackupOverview(self):
+        r"""<p>COS备份概览数据</p>
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.FileBackupOverview`
+        """
+        return self._COSAgentBackupOverview
+
+    @COSAgentBackupOverview.setter
+    def COSAgentBackupOverview(self, COSAgentBackupOverview):
+        self._COSAgentBackupOverview = COSAgentBackupOverview
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -7761,6 +8111,12 @@ class DescribeBackupOverviewGeneralResponse(AbstractModel):
         if params.get("ProtectedResourceOverview") is not None:
             self._ProtectedResourceOverview = ProtectedResourceOverview()
             self._ProtectedResourceOverview._deserialize(params.get("ProtectedResourceOverview"))
+        if params.get("CFSAgentBackupOverview") is not None:
+            self._CFSAgentBackupOverview = FileBackupOverview()
+            self._CFSAgentBackupOverview._deserialize(params.get("CFSAgentBackupOverview"))
+        if params.get("COSAgentBackupOverview") is not None:
+            self._COSAgentBackupOverview = FileBackupOverview()
+            self._COSAgentBackupOverview._deserialize(params.get("COSAgentBackupOverview"))
         self._RequestId = params.get("RequestId")
 
 
@@ -7777,9 +8133,9 @@ class DescribeBackupPlansRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 返回数量，默认20，最大100
         :type Limit: int
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
         """
         self._Filters = None
@@ -7823,7 +8179,7 @@ class DescribeBackupPlansRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -7834,7 +8190,7 @@ class DescribeBackupPlansRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -8019,17 +8375,17 @@ class DescribeBackupVaultsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VaultIds: 备份库ID列表
+        :param _VaultIds: <p>备份库ID列表</p>
         :type VaultIds: list of str
-        :param _Filters: 过滤条件，支持instance-id和auto-backup-policy-id
+        :param _Filters: <p>过滤条件，支持vault-id、vault-name、status</p>
         :type Filters: list of FilterModel
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大1000
+        :param _Limit: <p>返回数量，默认20，最大100</p><p>取值范围：[1, 100]</p>
         :type Limit: int
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
         """
         self._VaultIds = None
@@ -8041,7 +8397,7 @@ class DescribeBackupVaultsRequest(AbstractModel):
 
     @property
     def VaultIds(self):
-        r"""备份库ID列表
+        r"""<p>备份库ID列表</p>
         :rtype: list of str
         """
         return self._VaultIds
@@ -8052,7 +8408,7 @@ class DescribeBackupVaultsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，支持instance-id和auto-backup-policy-id
+        r"""<p>过滤条件，支持vault-id、vault-name、status</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -8063,7 +8419,7 @@ class DescribeBackupVaultsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -8074,7 +8430,7 @@ class DescribeBackupVaultsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大1000
+        r"""<p>返回数量，默认20，最大100</p><p>取值范围：[1, 100]</p>
         :rtype: int
         """
         return self._Limit
@@ -8085,7 +8441,7 @@ class DescribeBackupVaultsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -8096,7 +8452,7 @@ class DescribeBackupVaultsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -8135,9 +8491,9 @@ class DescribeBackupVaultsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的总数量。
+        :param _TotalCount: <p>符合条件的总数量。</p>
         :type TotalCount: int
-        :param _BackupVaultSet: 备份库列表详情。
+        :param _BackupVaultSet: <p>备份库列表详情。</p>
         :type BackupVaultSet: list of BackupVault
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8148,7 +8504,7 @@ class DescribeBackupVaultsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的总数量。
+        r"""<p>符合条件的总数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8159,7 +8515,7 @@ class DescribeBackupVaultsResponse(AbstractModel):
 
     @property
     def BackupVaultSet(self):
-        r"""备份库列表详情。
+        r"""<p>备份库列表详情。</p>
         :rtype: list of BackupVault
         """
         return self._BackupVaultSet
@@ -8400,7 +8756,7 @@ class DescribeCopyPairsRequest(AbstractModel):
         :type CopyPairType: str
         :param _CopyPairIds: <p>要查询复制对ID列表</p>
         :type CopyPairIds: list of str
-        :param _Filters: <p>过滤条件，详见过滤条件表。支持的Name：disaster-recovery-site-pair-id、target-resource-id、source-resource-id、copy-pair-id、copy-pair-name</p>
+        :param _Filters: <p>过滤条件。支持的Name：disaster-recovery-site-pair-id、target-resource-id、source-resource-id、copy-pair-id、copy-pair-name</p>
         :type Filters: list of FilterModel
         :param _Offset: <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节</p>
         :type Offset: int
@@ -8455,7 +8811,7 @@ class DescribeCopyPairsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>过滤条件，详见过滤条件表。支持的Name：disaster-recovery-site-pair-id、target-resource-id、source-resource-id、copy-pair-id、copy-pair-name</p>
+        r"""<p>过滤条件。支持的Name：disaster-recovery-site-pair-id、target-resource-id、source-resource-id、copy-pair-id、copy-pair-name</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -8945,19 +9301,19 @@ class DescribeDisasterRecoveryProtectGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProtectGroupType: 要查询的容灾保护组产品类型，枚举值：DISK / INSTANCE / CFS。
+        :param _ProtectGroupType: <p>要查询的容灾保护组产品类型，枚举值：DISK / INSTANCE / CFS。</p>
         :type ProtectGroupType: str
-        :param _ProtectGroupIds: 要查询的容灾保护组ID列表。
+        :param _ProtectGroupIds: <p>要查询的容灾保护组ID列表。</p>
         :type ProtectGroupIds: list of str
-        :param _Filters: 过滤条件（过滤项由 core handler 定义，如 disaster-recovery-protect-group-id 等）。
+        :param _Filters: <p>过滤条件（过滤项由 core handler 定义，如 disaster-recovery-protect-group-id 等）。</p>
         :type Filters: list of FilterModel
-        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :param _Offset: <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。</p>
         :type Limit: int
-        :param _Order: 输出结果按升序还是降序
+        :param _Order: <p>输出结果按升序还是降序</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _OrderField: 输出结果的排序字段
+        :param _OrderField: <p>输出结果的排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
         """
         self._ProtectGroupType = None
@@ -8970,7 +9326,7 @@ class DescribeDisasterRecoveryProtectGroupsRequest(AbstractModel):
 
     @property
     def ProtectGroupType(self):
-        r"""要查询的容灾保护组产品类型，枚举值：DISK / INSTANCE / CFS。
+        r"""<p>要查询的容灾保护组产品类型，枚举值：DISK / INSTANCE / CFS。</p>
         :rtype: str
         """
         return self._ProtectGroupType
@@ -8981,7 +9337,7 @@ class DescribeDisasterRecoveryProtectGroupsRequest(AbstractModel):
 
     @property
     def ProtectGroupIds(self):
-        r"""要查询的容灾保护组ID列表。
+        r"""<p>要查询的容灾保护组ID列表。</p>
         :rtype: list of str
         """
         return self._ProtectGroupIds
@@ -8992,7 +9348,7 @@ class DescribeDisasterRecoveryProtectGroupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件（过滤项由 core handler 定义，如 disaster-recovery-protect-group-id 等）。
+        r"""<p>过滤条件（过滤项由 core handler 定义，如 disaster-recovery-protect-group-id 等）。</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -9003,7 +9359,7 @@ class DescribeDisasterRecoveryProtectGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        r"""<p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。</p>
         :rtype: int
         """
         return self._Offset
@@ -9014,7 +9370,7 @@ class DescribeDisasterRecoveryProtectGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        r"""<p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。</p>
         :rtype: int
         """
         return self._Limit
@@ -9025,7 +9381,7 @@ class DescribeDisasterRecoveryProtectGroupsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""输出结果按升序还是降序
+        r"""<p>输出结果按升序还是降序</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -9036,7 +9392,7 @@ class DescribeDisasterRecoveryProtectGroupsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""输出结果的排序字段
+        r"""<p>输出结果的排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -9076,9 +9432,9 @@ class DescribeDisasterRecoveryProtectGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的容灾保护组总数
+        :param _TotalCount: <p>符合条件的容灾保护组总数</p>
         :type TotalCount: int
-        :param _ProtectGroupSet: 容灾保护组列表
+        :param _ProtectGroupSet: <p>容灾保护组列表</p>
         :type ProtectGroupSet: list of ProtectGroup
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9089,7 +9445,7 @@ class DescribeDisasterRecoveryProtectGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的容灾保护组总数
+        r"""<p>符合条件的容灾保护组总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9100,7 +9456,7 @@ class DescribeDisasterRecoveryProtectGroupsResponse(AbstractModel):
 
     @property
     def ProtectGroupSet(self):
-        r"""容灾保护组列表
+        r"""<p>容灾保护组列表</p>
         :rtype: list of ProtectGroup
         """
         return self._ProtectGroupSet
@@ -9223,19 +9579,19 @@ class DescribeDisasterRecoverySitePairsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SitePairType: 要查询的容灾策略产品类型。取值范围：DISK / INSTANCE / CFS。
+        :param _SitePairType: <p>要查询的容灾策略产品类型。取值范围：INSTANCE 。</p><p>枚举值：</p><ul><li>INSTANCE： CVM站点对</li></ul>
         :type SitePairType: str
-        :param _SitePairIds: 要查询的容灾策略ID列表。
+        :param _SitePairIds: <p>要查询的容灾策略ID列表。</p>
         :type SitePairIds: list of str
-        :param _Filters: 过滤条件，详见定期快照过滤条件表。
+        :param _Filters: <p>过滤条件，详见定期快照过滤条件表。</p>
         :type Filters: list of FilterModel
-        :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :param _Offset: <p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。</p>
         :type Limit: int
-        :param _Order: 输出结果按升序还是降序，DESC表示降序，ASC表示升序
+        :param _Order: <p>输出结果按升序还是降序，DESC表示降序，ASC表示升序</p>
         :type Order: str
-        :param _OrderField: 输出结果的排序字段
+        :param _OrderField: <p>输出结果的排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
         """
         self._SitePairType = None
@@ -9248,7 +9604,7 @@ class DescribeDisasterRecoverySitePairsRequest(AbstractModel):
 
     @property
     def SitePairType(self):
-        r"""要查询的容灾策略产品类型。取值范围：DISK / INSTANCE / CFS。
+        r"""<p>要查询的容灾策略产品类型。取值范围：INSTANCE 。</p><p>枚举值：</p><ul><li>INSTANCE： CVM站点对</li></ul>
         :rtype: str
         """
         return self._SitePairType
@@ -9259,7 +9615,7 @@ class DescribeDisasterRecoverySitePairsRequest(AbstractModel):
 
     @property
     def SitePairIds(self):
-        r"""要查询的容灾策略ID列表。
+        r"""<p>要查询的容灾策略ID列表。</p>
         :rtype: list of str
         """
         return self._SitePairIds
@@ -9270,7 +9626,7 @@ class DescribeDisasterRecoverySitePairsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，详见定期快照过滤条件表。
+        r"""<p>过滤条件，详见定期快照过滤条件表。</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -9281,7 +9637,7 @@ class DescribeDisasterRecoverySitePairsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        r"""<p>偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。</p>
         :rtype: int
         """
         return self._Offset
@@ -9292,7 +9648,7 @@ class DescribeDisasterRecoverySitePairsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        r"""<p>返回数量，默认为20，最大值为100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。</p>
         :rtype: int
         """
         return self._Limit
@@ -9303,7 +9659,7 @@ class DescribeDisasterRecoverySitePairsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""输出结果按升序还是降序，DESC表示降序，ASC表示升序
+        r"""<p>输出结果按升序还是降序，DESC表示降序，ASC表示升序</p>
         :rtype: str
         """
         return self._Order
@@ -9314,7 +9670,7 @@ class DescribeDisasterRecoverySitePairsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""输出结果的排序字段
+        r"""<p>输出结果的排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -9354,9 +9710,9 @@ class DescribeDisasterRecoverySitePairsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 有效的容灾策略数量。
+        :param _TotalCount: <p>有效的容灾策略数量。</p>
         :type TotalCount: int
-        :param _SitePairSet: 容灾策略列表。
+        :param _SitePairSet: <p>容灾策略列表。</p>
         :type SitePairSet: list of SitePair
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9367,7 +9723,7 @@ class DescribeDisasterRecoverySitePairsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""有效的容灾策略数量。
+        r"""<p>有效的容灾策略数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9378,7 +9734,7 @@ class DescribeDisasterRecoverySitePairsResponse(AbstractModel):
 
     @property
     def SitePairSet(self):
-        r"""容灾策略列表。
+        r"""<p>容灾策略列表。</p>
         :rtype: list of SitePair
         """
         return self._SitePairSet
@@ -9733,7 +10089,7 @@ class DescribeDrillPairsRequest(AbstractModel):
         :type DrillPairType: str
         :param _DrillPairIds: 要查询演练对ID列表。
         :type DrillPairIds: list of str
-        :param _Filters: 过滤条件，详见定期快照过滤条件表。
+        :param _Filters: 过滤条件。
         :type Filters: list of FilterModel
         :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
         :type Offset: int
@@ -9776,7 +10132,7 @@ class DescribeDrillPairsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，详见定期快照过滤条件表。
+        r"""过滤条件。
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -9921,6 +10277,126 @@ class DescribeFileBackupObjectsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _BackupId: <p>备份实例ID</p>
+        :type BackupId: str
+        :param _Path: <p>浏览路径</p>
+        :type Path: str
+        :param _Offset: <p>偏移量，默认0</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量，默认50，最大1000</p>
+        :type Limit: int
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>name： 文件名称</li></ul><p>默认值：name</p>
+        :type OrderField: str
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>asc： 升序排序</li><li>desc： 降序排序</li></ul><p>默认值：asc</p>
+        :type Order: str
+        :param _ObjectType: <p>返回模式</p><p>枚举值：</p><ul><li>all： 返回目录和文件</li><li>dir： 仅返回目录</li><li>file： 仅返回文件（含符号连接）</li></ul>
+        :type ObjectType: str
+        """
+        self._BackupId = None
+        self._Path = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Order = None
+        self._ObjectType = None
+
+    @property
+    def BackupId(self):
+        r"""<p>备份实例ID</p>
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def Path(self):
+        r"""<p>浏览路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，默认50，最大1000</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>name： 文件名称</li></ul><p>默认值：name</p>
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>asc： 升序排序</li><li>desc： 降序排序</li></ul><p>默认值：asc</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def ObjectType(self):
+        r"""<p>返回模式</p><p>枚举值：</p><ul><li>all： 返回目录和文件</li><li>dir： 仅返回目录</li><li>file： 仅返回文件（含符号连接）</li></ul>
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._Path = params.get("Path")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
+        self._ObjectType = params.get("ObjectType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeFileBackupObjectsResponse(AbstractModel):
     r"""DescribeFileBackupObjects返回参数结构体
@@ -9929,17 +10405,45 @@ class DescribeFileBackupObjectsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 当前路径下包含的目录及文件总数
+        :param _DirList: <p>当前路径下包含的目录信息</p>
+        :type DirList: list of FileInfo
+        :param _FileList: <p>当前路径下包含的文件信息</p>
+        :type FileList: list of FileInfo
+        :param _TotalCount: <p>当前路径下包含的目录及文件总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DirList = None
+        self._FileList = None
         self._TotalCount = None
         self._RequestId = None
 
     @property
+    def DirList(self):
+        r"""<p>当前路径下包含的目录信息</p>
+        :rtype: list of FileInfo
+        """
+        return self._DirList
+
+    @DirList.setter
+    def DirList(self, DirList):
+        self._DirList = DirList
+
+    @property
+    def FileList(self):
+        r"""<p>当前路径下包含的文件信息</p>
+        :rtype: list of FileInfo
+        """
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+    @property
     def TotalCount(self):
-        r"""当前路径下包含的目录及文件总数
+        r"""<p>当前路径下包含的目录及文件总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9961,6 +10465,18 @@ class DescribeFileBackupObjectsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("DirList") is not None:
+            self._DirList = []
+            for item in params.get("DirList"):
+                obj = FileInfo()
+                obj._deserialize(item)
+                self._DirList.append(obj)
+        if params.get("FileList") is not None:
+            self._FileList = []
+            for item in params.get("FileList"):
+                obj = FileInfo()
+                obj._deserialize(item)
+                self._FileList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -9972,26 +10488,29 @@ class DescribeFileBackupPlansRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大500
+        :param _Limit: <p>返回数量，默认20，最大100</p>
         :type Limit: int
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _Filters: 过滤条件。支持: instance-id, plan-id, plan-name, status, auto-backup-policy-id
+        :param _Filters: <p>过滤条件。支持: instance-id, plan-id, plan-name, status, auto-backup-policy-id</p>
         :type Filters: list of FilterModel
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM 文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :type ResourceType: str
         """
         self._Offset = None
         self._Limit = None
         self._OrderField = None
         self._Order = None
         self._Filters = None
+        self._ResourceType = None
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -10002,7 +10521,7 @@ class DescribeFileBackupPlansRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大500
+        r"""<p>返回数量，默认20，最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -10013,7 +10532,7 @@ class DescribeFileBackupPlansRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -10024,7 +10543,7 @@ class DescribeFileBackupPlansRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -10035,7 +10554,7 @@ class DescribeFileBackupPlansRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。支持: instance-id, plan-id, plan-name, status, auto-backup-policy-id
+        r"""<p>过滤条件。支持: instance-id, plan-id, plan-name, status, auto-backup-policy-id</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -10043,6 +10562,17 @@ class DescribeFileBackupPlansRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM 文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
 
 
     def _deserialize(self, params):
@@ -10056,6 +10586,7 @@ class DescribeFileBackupPlansRequest(AbstractModel):
                 obj = FilterModel()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10073,9 +10604,9 @@ class DescribeFileBackupPlansResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的计划总数量
+        :param _TotalCount: <p>符合条件的计划总数量</p>
         :type TotalCount: int
-        :param _PlanSet: 符合条件的计划详情
+        :param _PlanSet: <p>符合条件的计划详情</p>
         :type PlanSet: list of PlanInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10086,7 +10617,7 @@ class DescribeFileBackupPlansResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的计划总数量
+        r"""<p>符合条件的计划总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10097,7 +10628,7 @@ class DescribeFileBackupPlansResponse(AbstractModel):
 
     @property
     def PlanSet(self):
-        r"""符合条件的计划详情
+        r"""<p>符合条件的计划详情</p>
         :rtype: list of PlanInfo
         """
         return self._PlanSet
@@ -10220,26 +10751,29 @@ class DescribeFileBackupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大500
+        :param _Limit: <p>返回数量，默认20，最大100</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
         :type Limit: int
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CreatedTime： 创建时间</li><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序排序</li><li>ASC： 升序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _Filters: 过滤条件。支持: backup-id, plan-id, instance-id, status, backup-type, auto-backup-policy-id
+        :param _Filters: <p>过滤条件。支持: backup-id, plan-id, instance-id, status, backup-type, auto-backup-policy-id</p>
         :type Filters: list of FilterModel
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :type ResourceType: str
         """
         self._Offset = None
         self._Limit = None
         self._OrderField = None
         self._Order = None
         self._Filters = None
+        self._ResourceType = None
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -10250,7 +10784,7 @@ class DescribeFileBackupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大500
+        r"""<p>返回数量，默认20，最大100</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
         :rtype: int
         """
         return self._Limit
@@ -10261,7 +10795,7 @@ class DescribeFileBackupsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CreatedTime： 创建时间</li><li>CREATE_TIME： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -10272,7 +10806,7 @@ class DescribeFileBackupsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序排序</li><li>ASC： 升序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -10283,7 +10817,7 @@ class DescribeFileBackupsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。支持: backup-id, plan-id, instance-id, status, backup-type, auto-backup-policy-id
+        r"""<p>过滤条件。支持: backup-id, plan-id, instance-id, status, backup-type, auto-backup-policy-id</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -10291,6 +10825,17 @@ class DescribeFileBackupsRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
 
 
     def _deserialize(self, params):
@@ -10304,6 +10849,7 @@ class DescribeFileBackupsRequest(AbstractModel):
                 obj = FilterModel()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10321,9 +10867,9 @@ class DescribeFileBackupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的备份点总数量
+        :param _TotalCount: <p>符合条件的备份点总数量</p>
         :type TotalCount: int
-        :param _BackupSet: 符合条件的备份点详情
+        :param _BackupSet: <p>符合条件的备份点详情</p>
         :type BackupSet: list of BackupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10334,7 +10880,7 @@ class DescribeFileBackupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的备份点总数量
+        r"""<p>符合条件的备份点总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10345,7 +10891,7 @@ class DescribeFileBackupsResponse(AbstractModel):
 
     @property
     def BackupSet(self):
-        r"""符合条件的备份点详情
+        r"""<p>符合条件的备份点详情</p>
         :rtype: list of BackupInfo
         """
         return self._BackupSet
@@ -10384,26 +10930,29 @@ class DescribeFileRestoreTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件。支持: backup-id, task-id, instance-id, "         "target-instance-id, status
+        :param _Filters: <p>过滤条件。支持: backup-id, task-id, instance-id, &quot;         &quot;target-instance-id, status</p>
         :type Filters: list of FilterModel
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大500
+        :param _Limit: <p>返回数量，默认20，最大100</p>
         :type Limit: int
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM 文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :type ResourceType: str
         """
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._Order = None
         self._OrderField = None
+        self._ResourceType = None
 
     @property
     def Filters(self):
-        r"""过滤条件。支持: backup-id, task-id, instance-id, "         "target-instance-id, status
+        r"""<p>过滤条件。支持: backup-id, task-id, instance-id, &quot;         &quot;target-instance-id, status</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -10414,7 +10963,7 @@ class DescribeFileRestoreTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -10425,7 +10974,7 @@ class DescribeFileRestoreTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大500
+        r"""<p>返回数量，默认20，最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -10436,7 +10985,7 @@ class DescribeFileRestoreTasksRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -10447,7 +10996,7 @@ class DescribeFileRestoreTasksRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -10455,6 +11004,17 @@ class DescribeFileRestoreTasksRequest(AbstractModel):
     @OrderField.setter
     def OrderField(self, OrderField):
         self._OrderField = OrderField
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM 文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
 
 
     def _deserialize(self, params):
@@ -10468,6 +11028,7 @@ class DescribeFileRestoreTasksRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Order = params.get("Order")
         self._OrderField = params.get("OrderField")
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10485,9 +11046,9 @@ class DescribeFileRestoreTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的总数量。
+        :param _TotalCount: <p>符合条件的总数量。</p>
         :type TotalCount: int
-        :param _RestoreTaskSet: 恢复任务列表详情。
+        :param _RestoreTaskSet: <p>恢复任务列表详情。</p>
         :type RestoreTaskSet: list of RestoreTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10498,7 +11059,7 @@ class DescribeFileRestoreTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的总数量。
+        r"""<p>符合条件的总数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10509,7 +11070,7 @@ class DescribeFileRestoreTasksResponse(AbstractModel):
 
     @property
     def RestoreTaskSet(self):
-        r"""恢复任务列表详情。
+        r"""<p>恢复任务列表详情。</p>
         :rtype: list of RestoreTask
         """
         return self._RestoreTaskSet
@@ -10750,15 +11311,15 @@ class DescribeProtectedInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大500
+        :param _Limit: <p>返回数量，默认20，最大100</p>
         :type Limit: int
-        :param _OrderField: 排序字段
+        :param _OrderField: <p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :type OrderField: str
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :type Order: str
-        :param _Filters: 过滤条件。支持: instance-id, agent-status
+        :param _Filters: <p>过滤条件。支持: instance-id, agent-status</p>
         :type Filters: list of FilterModel
         """
         self._Offset = None
@@ -10769,7 +11330,7 @@ class DescribeProtectedInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -10780,7 +11341,7 @@ class DescribeProtectedInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大500
+        r"""<p>返回数量，默认20，最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -10791,7 +11352,7 @@ class DescribeProtectedInstancesRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>CREATE_TIME： 创建时间</li><li>CreatedTime： 创建时间</li></ul><p>默认值：CREATE_TIME</p>
         :rtype: str
         """
         return self._OrderField
@@ -10802,7 +11363,7 @@ class DescribeProtectedInstancesRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>ASC： 升序排序</li><li>DESC： 降序排序</li></ul><p>默认值：DESC</p>
         :rtype: str
         """
         return self._Order
@@ -10813,7 +11374,7 @@ class DescribeProtectedInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。支持: instance-id, agent-status
+        r"""<p>过滤条件。支持: instance-id, agent-status</p>
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -10851,9 +11412,9 @@ class DescribeProtectedInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的受保护实例总数量
+        :param _TotalCount: <p>符合条件的受保护实例总数量</p>
         :type TotalCount: int
-        :param _InstanceSet: 符合条件的受保护实例详情
+        :param _InstanceSet: <p>符合条件的受保护实例详情</p>
         :type InstanceSet: list of ProtectInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10864,7 +11425,7 @@ class DescribeProtectedInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的受保护实例总数量
+        r"""<p>符合条件的受保护实例总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10875,7 +11436,7 @@ class DescribeProtectedInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""符合条件的受保护实例详情
+        r"""<p>符合条件的受保护实例详情</p>
         :rtype: list of ProtectInstance
         """
         return self._InstanceSet
@@ -10916,7 +11477,7 @@ class DescribeSecurityGroupMappingsRequest(AbstractModel):
         r"""
         :param _SitePairId: 安全组映射所属的站点对ID。
         :type SitePairId: str
-        :param _Filters: 过滤条件，详见过滤条件表。支持的Name：src-security-group-id、target-security-group-id
+        :param _Filters: 过滤条件。支持的Name：src-security-group-id、target-security-group-id
         :type Filters: list of FilterModel
         :param _Offset: 偏移量，默认为0。关于Offset的更进一步介绍请参考 API 简介中的相关小节
         :type Offset: int
@@ -10947,7 +11508,7 @@ class DescribeSecurityGroupMappingsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，详见过滤条件表。支持的Name：src-security-group-id、target-security-group-id
+        r"""过滤条件。支持的Name：src-security-group-id、target-security-group-id
         :rtype: list of FilterModel
         """
         return self._Filters
@@ -12831,19 +13392,19 @@ class FileBackupOverview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupCount: 整机备份点总数
+        :param _BackupCount: <p>备份点总数</p>
         :type BackupCount: int
-        :param _CreatingBackupCount: 创建中数量
+        :param _CreatingBackupCount: <p>创建中数量</p>
         :type CreatingBackupCount: int
-        :param _FailedBackupCount: 失败数量
+        :param _FailedBackupCount: <p>失败数量</p>
         :type FailedBackupCount: int
-        :param _SuccessBackupCount: 已完成数量
+        :param _SuccessBackupCount: <p>已完成数量</p>
         :type SuccessBackupCount: int
-        :param _RestoringBackupCount: 恢复中的总数量
+        :param _RestoringBackupCount: <p>恢复中的总数量</p>
         :type RestoringBackupCount: int
-        :param _BackupSizeMb: 整机备份总容量
+        :param _BackupSizeMb: <p>备份总容量</p>
         :type BackupSizeMb: int
-        :param _BackupResourceCount: 受保护 CVM 资源数
+        :param _BackupResourceCount: <p>受保护资源数</p>
         :type BackupResourceCount: int
         """
         self._BackupCount = None
@@ -12856,7 +13417,7 @@ class FileBackupOverview(AbstractModel):
 
     @property
     def BackupCount(self):
-        r"""整机备份点总数
+        r"""<p>备份点总数</p>
         :rtype: int
         """
         return self._BackupCount
@@ -12867,7 +13428,7 @@ class FileBackupOverview(AbstractModel):
 
     @property
     def CreatingBackupCount(self):
-        r"""创建中数量
+        r"""<p>创建中数量</p>
         :rtype: int
         """
         return self._CreatingBackupCount
@@ -12878,7 +13439,7 @@ class FileBackupOverview(AbstractModel):
 
     @property
     def FailedBackupCount(self):
-        r"""失败数量
+        r"""<p>失败数量</p>
         :rtype: int
         """
         return self._FailedBackupCount
@@ -12889,7 +13450,7 @@ class FileBackupOverview(AbstractModel):
 
     @property
     def SuccessBackupCount(self):
-        r"""已完成数量
+        r"""<p>已完成数量</p>
         :rtype: int
         """
         return self._SuccessBackupCount
@@ -12900,7 +13461,7 @@ class FileBackupOverview(AbstractModel):
 
     @property
     def RestoringBackupCount(self):
-        r"""恢复中的总数量
+        r"""<p>恢复中的总数量</p>
         :rtype: int
         """
         return self._RestoringBackupCount
@@ -12911,7 +13472,7 @@ class FileBackupOverview(AbstractModel):
 
     @property
     def BackupSizeMb(self):
-        r"""整机备份总容量
+        r"""<p>备份总容量</p>
         :rtype: int
         """
         return self._BackupSizeMb
@@ -12922,7 +13483,7 @@ class FileBackupOverview(AbstractModel):
 
     @property
     def BackupResourceCount(self):
-        r"""受保护 CVM 资源数
+        r"""<p>受保护资源数</p>
         :rtype: int
         """
         return self._BackupResourceCount
@@ -12950,6 +13511,102 @@ class FileBackupOverview(AbstractModel):
         
 
 
+class FileInfo(AbstractModel):
+    r"""文件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 文件名称
+        :type Path: str
+        :param _Size: 文件大小，单位是Bytes
+        :type Size: int
+        :param _ModifyTime: 文件mtime
+        :type ModifyTime: int
+        :param _ChangeTime: 文件ctime
+        :type ChangeTime: int
+        :param _Type: 文件类型。取值包含"dir"、"file"、"symlink"
+        :type Type: str
+        """
+        self._Path = None
+        self._Size = None
+        self._ModifyTime = None
+        self._ChangeTime = None
+        self._Type = None
+
+    @property
+    def Path(self):
+        r"""文件名称
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Size(self):
+        r"""文件大小，单位是Bytes
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def ModifyTime(self):
+        r"""文件mtime
+        :rtype: int
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def ChangeTime(self):
+        r"""文件ctime
+        :rtype: int
+        """
+        return self._ChangeTime
+
+    @ChangeTime.setter
+    def ChangeTime(self, ChangeTime):
+        self._ChangeTime = ChangeTime
+
+    @property
+    def Type(self):
+        r"""文件类型。取值包含"dir"、"file"、"symlink"
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Size = params.get("Size")
+        self._ModifyTime = params.get("ModifyTime")
+        self._ChangeTime = params.get("ChangeTime")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FilterModel(AbstractModel):
     r"""过滤条件
 
@@ -12957,9 +13614,9 @@ class FilterModel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 过滤器名
+        :param _Name: 过滤器名，此参数必填。
         :type Name: str
-        :param _Values: 过滤器值
+        :param _Values: 过滤器值，此参数必填。
         :type Values: list of str
         """
         self._Name = None
@@ -12967,7 +13624,7 @@ class FilterModel(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤器名
+        r"""过滤器名，此参数必填。
         :rtype: str
         """
         return self._Name
@@ -12978,7 +13635,7 @@ class FilterModel(AbstractModel):
 
     @property
     def Values(self):
-        r"""过滤器值
+        r"""过滤器值，此参数必填。
         :rtype: list of str
         """
         return self._Values
@@ -14277,24 +14934,28 @@ class ModifyFileBackupPlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlanId: 备份计划ID
+        :param _PlanId: <p>备份计划ID，此参数必填。</p>
         :type PlanId: str
-        :param _PolicyId: 备份策略ID
+        :param _PolicyId: <p>备份策略ID</p>
         :type PolicyId: str
-        :param _PlanName: 计划名称
+        :param _PlanName: <p>计划名称</p>
         :type PlanName: str
-        :param _BackupPaths: 备份路径列表，1~20 个
+        :param _BackupPaths: <p>备份路径列表，1~20 个</p>
         :type BackupPaths: list of str
-        :param _IncludeFileTypes: 包含文件类型，0~20 个
+        :param _IncludeFileTypes: <p>包含文件类型，0~20 个</p>
         :type IncludeFileTypes: list of str
-        :param _ExcludePatterns: 排除文件路径列表，0~20 个
+        :param _ExcludePatterns: <p>排除文件路径列表，0~20 个</p>
         :type ExcludePatterns: list of str
-        :param _ExcludeSystemDirectories: 是否排除系统目录
+        :param _ExcludeSystemDirectories: <p>是否排除系统目录</p>
         :type ExcludeSystemDirectories: bool
-        :param _BackupStorageId: 备份库ID
+        :param _BackupStorageId: <p>备份库ID</p>
         :type BackupStorageId: str
-        :param _Status: 计划状态，可选值：normal（正常）、paused（暂停）
+        :param _Status: <p>计划状态，可选值：normal（正常）、paused（暂停）</p>
         :type Status: str
+        :param _EnableObjectAcl: <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type EnableObjectAcl: bool
+        :param _EnableObjectTags: <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type EnableObjectTags: bool
         """
         self._PlanId = None
         self._PolicyId = None
@@ -14305,10 +14966,12 @@ class ModifyFileBackupPlanRequest(AbstractModel):
         self._ExcludeSystemDirectories = None
         self._BackupStorageId = None
         self._Status = None
+        self._EnableObjectAcl = None
+        self._EnableObjectTags = None
 
     @property
     def PlanId(self):
-        r"""备份计划ID
+        r"""<p>备份计划ID，此参数必填。</p>
         :rtype: str
         """
         return self._PlanId
@@ -14321,7 +14984,7 @@ class ModifyFileBackupPlanRequest(AbstractModel):
     def PolicyId(self):
         warnings.warn("parameter `PolicyId` is deprecated", DeprecationWarning) 
 
-        r"""备份策略ID
+        r"""<p>备份策略ID</p>
         :rtype: str
         """
         return self._PolicyId
@@ -14334,7 +14997,7 @@ class ModifyFileBackupPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
-        r"""计划名称
+        r"""<p>计划名称</p>
         :rtype: str
         """
         return self._PlanName
@@ -14345,7 +15008,7 @@ class ModifyFileBackupPlanRequest(AbstractModel):
 
     @property
     def BackupPaths(self):
-        r"""备份路径列表，1~20 个
+        r"""<p>备份路径列表，1~20 个</p>
         :rtype: list of str
         """
         return self._BackupPaths
@@ -14356,7 +15019,7 @@ class ModifyFileBackupPlanRequest(AbstractModel):
 
     @property
     def IncludeFileTypes(self):
-        r"""包含文件类型，0~20 个
+        r"""<p>包含文件类型，0~20 个</p>
         :rtype: list of str
         """
         return self._IncludeFileTypes
@@ -14367,7 +15030,7 @@ class ModifyFileBackupPlanRequest(AbstractModel):
 
     @property
     def ExcludePatterns(self):
-        r"""排除文件路径列表，0~20 个
+        r"""<p>排除文件路径列表，0~20 个</p>
         :rtype: list of str
         """
         return self._ExcludePatterns
@@ -14378,7 +15041,7 @@ class ModifyFileBackupPlanRequest(AbstractModel):
 
     @property
     def ExcludeSystemDirectories(self):
-        r"""是否排除系统目录
+        r"""<p>是否排除系统目录</p>
         :rtype: bool
         """
         return self._ExcludeSystemDirectories
@@ -14391,7 +15054,7 @@ class ModifyFileBackupPlanRequest(AbstractModel):
     def BackupStorageId(self):
         warnings.warn("parameter `BackupStorageId` is deprecated", DeprecationWarning) 
 
-        r"""备份库ID
+        r"""<p>备份库ID</p>
         :rtype: str
         """
         return self._BackupStorageId
@@ -14404,7 +15067,7 @@ class ModifyFileBackupPlanRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""计划状态，可选值：normal（正常）、paused（暂停）
+        r"""<p>计划状态，可选值：normal（正常）、paused（暂停）</p>
         :rtype: str
         """
         return self._Status
@@ -14412,6 +15075,28 @@ class ModifyFileBackupPlanRequest(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def EnableObjectAcl(self):
+        r"""<p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._EnableObjectAcl
+
+    @EnableObjectAcl.setter
+    def EnableObjectAcl(self, EnableObjectAcl):
+        self._EnableObjectAcl = EnableObjectAcl
+
+    @property
+    def EnableObjectTags(self):
+        r"""<p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._EnableObjectTags
+
+    @EnableObjectTags.setter
+    def EnableObjectTags(self, EnableObjectTags):
+        self._EnableObjectTags = EnableObjectTags
 
 
     def _deserialize(self, params):
@@ -14424,6 +15109,8 @@ class ModifyFileBackupPlanRequest(AbstractModel):
         self._ExcludeSystemDirectories = params.get("ExcludeSystemDirectories")
         self._BackupStorageId = params.get("BackupStorageId")
         self._Status = params.get("Status")
+        self._EnableObjectAcl = params.get("EnableObjectAcl")
+        self._EnableObjectTags = params.get("EnableObjectTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14723,45 +15410,54 @@ class PlanInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlanId: 备份计划ID
+        :param _PlanId: <p>备份计划ID</p>
         :type PlanId: str
-        :param _ResourceIds: 计划关联的实例ID
+        :param _ResourceIds: <p>计划关联的实例ID</p>
         :type ResourceIds: list of str
-        :param _PlanName: 计划名称
+        :param _PlanName: <p>计划名称</p>
         :type PlanName: str
-        :param _BackupPaths: 备份路径列表，1~20 个
+        :param _BackupPaths: <p>备份路径列表，1~20 个</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupPaths: list of str
-        :param _IncludeFileTypes: 包含文件类型，0~20 个
+        :param _IncludeFileTypes: <p>包含文件类型，0~20 个</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeFileTypes: list of str
-        :param _ExcludePatterns: 排除文件路径列表，0~20 个
+        :param _ExcludePatterns: <p>排除文件路径列表，0~20 个</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExcludePatterns: list of str
-        :param _ExcludeSystemDirectories: 是否排除系统目录
+        :param _ExcludeSystemDirectories: <p>是否排除系统目录</p>
         :type ExcludeSystemDirectories: bool
-        :param _VaultId: 备份库ID
+        :param _VaultId: <p>备份库ID</p>
         :type VaultId: str
-        :param _Status: 备份计划状态
+        :param _Status: <p>备份计划状态</p>
         :type Status: str
-        :param _AspId: 策略ID
+        :param _AspId: <p>策略ID</p>
         :type AspId: str
-        :param _AspName: 策略名称
+        :param _AspName: <p>策略名称</p>
         :type AspName: str
-        :param _AspPolicy: 策略详情
+        :param _AspPolicy: <p>策略详情</p>
         :type AspPolicy: :class:`tencentcloud.bdrc.v20260330.models.AspInfo`
-        :param _LastExecuteTime: 最近一次执行时间
+        :param _LastExecuteTime: <p>最近一次执行时间</p>
         :type LastExecuteTime: str
-        :param _NextTriggerTime: 下次触发时间
+        :param _NextTriggerTime: <p>下次触发时间</p>
         :type NextTriggerTime: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _LastTriggerError: 最近一次执行错误信息
+        :param _LastTriggerError: <p>最近一次执行错误信息</p>
         :type LastTriggerError: str
-        :param _BackupCount: 备份数量
+        :param _BackupCount: <p>备份数量</p>
         :type BackupCount: int
-        :param _FlowControlSettings: 流控信息
+        :param _FlowControlSettings: <p>流控信息</p>
         :type FlowControlSettings: list of FlowControlRule
+        :param _EnableObjectAcl: <p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableObjectAcl: bool
+        :param _EnableObjectTags: <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableObjectTags: bool
+        :param _ProductType: <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductType: str
         """
         self._PlanId = None
         self._ResourceIds = None
@@ -14781,10 +15477,13 @@ class PlanInfo(AbstractModel):
         self._LastTriggerError = None
         self._BackupCount = None
         self._FlowControlSettings = None
+        self._EnableObjectAcl = None
+        self._EnableObjectTags = None
+        self._ProductType = None
 
     @property
     def PlanId(self):
-        r"""备份计划ID
+        r"""<p>备份计划ID</p>
         :rtype: str
         """
         return self._PlanId
@@ -14795,7 +15494,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""计划关联的实例ID
+        r"""<p>计划关联的实例ID</p>
         :rtype: list of str
         """
         return self._ResourceIds
@@ -14806,7 +15505,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def PlanName(self):
-        r"""计划名称
+        r"""<p>计划名称</p>
         :rtype: str
         """
         return self._PlanName
@@ -14817,7 +15516,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def BackupPaths(self):
-        r"""备份路径列表，1~20 个
+        r"""<p>备份路径列表，1~20 个</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -14829,7 +15528,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def IncludeFileTypes(self):
-        r"""包含文件类型，0~20 个
+        r"""<p>包含文件类型，0~20 个</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -14841,7 +15540,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def ExcludePatterns(self):
-        r"""排除文件路径列表，0~20 个
+        r"""<p>排除文件路径列表，0~20 个</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -14853,7 +15552,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def ExcludeSystemDirectories(self):
-        r"""是否排除系统目录
+        r"""<p>是否排除系统目录</p>
         :rtype: bool
         """
         return self._ExcludeSystemDirectories
@@ -14864,7 +15563,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def VaultId(self):
-        r"""备份库ID
+        r"""<p>备份库ID</p>
         :rtype: str
         """
         return self._VaultId
@@ -14875,7 +15574,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""备份计划状态
+        r"""<p>备份计划状态</p>
         :rtype: str
         """
         return self._Status
@@ -14886,7 +15585,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def AspId(self):
-        r"""策略ID
+        r"""<p>策略ID</p>
         :rtype: str
         """
         return self._AspId
@@ -14897,7 +15596,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def AspName(self):
-        r"""策略名称
+        r"""<p>策略名称</p>
         :rtype: str
         """
         return self._AspName
@@ -14908,7 +15607,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def AspPolicy(self):
-        r"""策略详情
+        r"""<p>策略详情</p>
         :rtype: :class:`tencentcloud.bdrc.v20260330.models.AspInfo`
         """
         return self._AspPolicy
@@ -14919,7 +15618,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def LastExecuteTime(self):
-        r"""最近一次执行时间
+        r"""<p>最近一次执行时间</p>
         :rtype: str
         """
         return self._LastExecuteTime
@@ -14930,7 +15629,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def NextTriggerTime(self):
-        r"""下次触发时间
+        r"""<p>下次触发时间</p>
         :rtype: str
         """
         return self._NextTriggerTime
@@ -14941,7 +15640,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -14952,7 +15651,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def LastTriggerError(self):
-        r"""最近一次执行错误信息
+        r"""<p>最近一次执行错误信息</p>
         :rtype: str
         """
         return self._LastTriggerError
@@ -14963,7 +15662,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def BackupCount(self):
-        r"""备份数量
+        r"""<p>备份数量</p>
         :rtype: int
         """
         return self._BackupCount
@@ -14974,7 +15673,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def FlowControlSettings(self):
-        r"""流控信息
+        r"""<p>流控信息</p>
         :rtype: list of FlowControlRule
         """
         return self._FlowControlSettings
@@ -14982,6 +15681,42 @@ class PlanInfo(AbstractModel):
     @FlowControlSettings.setter
     def FlowControlSettings(self, FlowControlSettings):
         self._FlowControlSettings = FlowControlSettings
+
+    @property
+    def EnableObjectAcl(self):
+        r"""<p>是否备份对象ACL（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableObjectAcl
+
+    @EnableObjectAcl.setter
+    def EnableObjectAcl(self, EnableObjectAcl):
+        self._EnableObjectAcl = EnableObjectAcl
+
+    @property
+    def EnableObjectTags(self):
+        r"""<p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableObjectTags
+
+    @EnableObjectTags.setter
+    def EnableObjectTags(self, EnableObjectTags):
+        self._EnableObjectTags = EnableObjectTags
+
+    @property
+    def ProductType(self):
+        r"""<p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
 
 
     def _deserialize(self, params):
@@ -15010,6 +15745,9 @@ class PlanInfo(AbstractModel):
                 obj = FlowControlRule()
                 obj._deserialize(item)
                 self._FlowControlSettings.append(obj)
+        self._EnableObjectAcl = params.get("EnableObjectAcl")
+        self._EnableObjectTags = params.get("EnableObjectTags")
+        self._ProductType = params.get("ProductType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15592,29 +16330,35 @@ class ProtectInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _AgentId: 客户端ID
+        :param _AgentId: <p>客户端ID</p>
         :type AgentId: str
-        :param _AgentVersion: 客户端版本
+        :param _AgentVersion: <p>客户端版本</p>
         :type AgentVersion: str
-        :param _AgentStatus: 客户端状态
+        :param _AgentStatus: <p>客户端状态</p>
         :type AgentStatus: str
-        :param _LastHeartbeatTime: 最后心跳时间
+        :param _LastHeartbeatTime: <p>最后心跳时间</p>
         :type LastHeartbeatTime: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _ExtraInfo: 最新备份点中记录的 CVM 基础信息
+        :param _ExtraInfo: <p>最新备份点中记录的 CVM 基础信息</p>
         :type ExtraInfo: str
-        :param _BackupCount: 该实例可用备份点数量
+        :param _BackupCount: <p>该实例可用备份点数量</p>
         :type BackupCount: int
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param _LatestBackupTime: 最近一次备份时间
+        :param _LatestBackupTime: <p>最近一次备份时间</p>
         :type LatestBackupTime: str
-        :param _OfflineReason: 离线原因
+        :param _OfflineReason: <p>离线原因</p>
         :type OfflineReason: str
+        :param _BackupSize: <p>备份数据量，单位为字节</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupSize: int
+        :param _ProductType: <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductType: str
         """
         self._InstanceId = None
         self._AgentId = None
@@ -15627,10 +16371,12 @@ class ProtectInstance(AbstractModel):
         self._InstanceName = None
         self._LatestBackupTime = None
         self._OfflineReason = None
+        self._BackupSize = None
+        self._ProductType = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15641,7 +16387,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def AgentId(self):
-        r"""客户端ID
+        r"""<p>客户端ID</p>
         :rtype: str
         """
         return self._AgentId
@@ -15652,7 +16398,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def AgentVersion(self):
-        r"""客户端版本
+        r"""<p>客户端版本</p>
         :rtype: str
         """
         return self._AgentVersion
@@ -15663,7 +16409,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def AgentStatus(self):
-        r"""客户端状态
+        r"""<p>客户端状态</p>
         :rtype: str
         """
         return self._AgentStatus
@@ -15674,7 +16420,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def LastHeartbeatTime(self):
-        r"""最后心跳时间
+        r"""<p>最后心跳时间</p>
         :rtype: str
         """
         return self._LastHeartbeatTime
@@ -15685,7 +16431,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -15696,7 +16442,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        r"""最新备份点中记录的 CVM 基础信息
+        r"""<p>最新备份点中记录的 CVM 基础信息</p>
         :rtype: str
         """
         return self._ExtraInfo
@@ -15707,7 +16453,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def BackupCount(self):
-        r"""该实例可用备份点数量
+        r"""<p>该实例可用备份点数量</p>
         :rtype: int
         """
         return self._BackupCount
@@ -15718,7 +16464,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15730,7 +16476,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def LatestBackupTime(self):
-        r"""最近一次备份时间
+        r"""<p>最近一次备份时间</p>
         :rtype: str
         """
         return self._LatestBackupTime
@@ -15741,7 +16487,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def OfflineReason(self):
-        r"""离线原因
+        r"""<p>离线原因</p>
         :rtype: str
         """
         return self._OfflineReason
@@ -15749,6 +16495,30 @@ class ProtectInstance(AbstractModel):
     @OfflineReason.setter
     def OfflineReason(self, OfflineReason):
         self._OfflineReason = OfflineReason
+
+    @property
+    def BackupSize(self):
+        r"""<p>备份数据量，单位为字节</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BackupSize
+
+    @BackupSize.setter
+    def BackupSize(self, BackupSize):
+        self._BackupSize = BackupSize
+
+    @property
+    def ProductType(self):
+        r"""<p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProductType
+
+    @ProductType.setter
+    def ProductType(self, ProductType):
+        self._ProductType = ProductType
 
 
     def _deserialize(self, params):
@@ -15763,6 +16533,8 @@ class ProtectInstance(AbstractModel):
         self._InstanceName = params.get("InstanceName")
         self._LatestBackupTime = params.get("LatestBackupTime")
         self._OfflineReason = params.get("OfflineReason")
+        self._BackupSize = params.get("BackupSize")
+        self._ProductType = params.get("ProductType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15831,23 +16603,31 @@ class ProtectedResourceOverview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalProtectedCount: 受保护资源总数
+        :param _TotalProtectedCount: <p>受保护资源总数</p>
         :type TotalProtectedCount: int
-        :param _TotalResourceCount: 总资源数
+        :param _TotalResourceCount: <p>总资源数</p>
         :type TotalResourceCount: int
-        :param _Cvm: CVM 受保护统计
+        :param _Cvm: <p>CVM整机备份受保护统计</p>
         :type Cvm: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
-        :param _CFS: CFS 受保护统计
+        :param _CFS: <p>CVM文件备份受保护统计</p>
         :type CFS: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
+        :param _CFSAgent: <p>CFS文件备份受保护统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CFSAgent: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
+        :param _COSAgent: <p>COS备份受保护统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type COSAgent: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
         """
         self._TotalProtectedCount = None
         self._TotalResourceCount = None
         self._Cvm = None
         self._CFS = None
+        self._CFSAgent = None
+        self._COSAgent = None
 
     @property
     def TotalProtectedCount(self):
-        r"""受保护资源总数
+        r"""<p>受保护资源总数</p>
         :rtype: int
         """
         return self._TotalProtectedCount
@@ -15858,7 +16638,7 @@ class ProtectedResourceOverview(AbstractModel):
 
     @property
     def TotalResourceCount(self):
-        r"""总资源数
+        r"""<p>总资源数</p>
         :rtype: int
         """
         return self._TotalResourceCount
@@ -15869,7 +16649,7 @@ class ProtectedResourceOverview(AbstractModel):
 
     @property
     def Cvm(self):
-        r"""CVM 受保护统计
+        r"""<p>CVM整机备份受保护统计</p>
         :rtype: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
         """
         return self._Cvm
@@ -15880,7 +16660,7 @@ class ProtectedResourceOverview(AbstractModel):
 
     @property
     def CFS(self):
-        r"""CFS 受保护统计
+        r"""<p>CVM文件备份受保护统计</p>
         :rtype: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
         """
         return self._CFS
@@ -15888,6 +16668,30 @@ class ProtectedResourceOverview(AbstractModel):
     @CFS.setter
     def CFS(self, CFS):
         self._CFS = CFS
+
+    @property
+    def CFSAgent(self):
+        r"""<p>CFS文件备份受保护统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
+        """
+        return self._CFSAgent
+
+    @CFSAgent.setter
+    def CFSAgent(self, CFSAgent):
+        self._CFSAgent = CFSAgent
+
+    @property
+    def COSAgent(self):
+        r"""<p>COS备份受保护统计</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.ResourceProtectStat`
+        """
+        return self._COSAgent
+
+    @COSAgent.setter
+    def COSAgent(self, COSAgent):
+        self._COSAgent = COSAgent
 
 
     def _deserialize(self, params):
@@ -15899,6 +16703,12 @@ class ProtectedResourceOverview(AbstractModel):
         if params.get("CFS") is not None:
             self._CFS = ResourceProtectStat()
             self._CFS._deserialize(params.get("CFS"))
+        if params.get("CFSAgent") is not None:
+            self._CFSAgent = ResourceProtectStat()
+            self._CFSAgent._deserialize(params.get("CFSAgent"))
+        if params.get("COSAgent") is not None:
+            self._COSAgent = ResourceProtectStat()
+            self._COSAgent._deserialize(params.get("COSAgent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16069,18 +16879,22 @@ class ResourcePlan(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 云服务器实例 ID
+        :param _ResourceId: <p>云服务器实例 ID</p>
         :type ResourceId: str
-        :param _BackupPaths: 备份路径，[0,20]
+        :param _BackupPaths: <p>备份路径，[0,20]</p>
         :type BackupPaths: list of str
-        :param _IncludeFileTypes: 包含文件类型，[0,20]
+        :param _IncludeFileTypes: <p>包含文件类型，[0,20]</p>
         :type IncludeFileTypes: list of str
-        :param _ExcludePatterns: 排除路径，[0,20]
+        :param _ExcludePatterns: <p>排除路径，[0,20]</p>
         :type ExcludePatterns: list of str
-        :param _ExcludeSystemDirectories: 是否排除系统目录
+        :param _ExcludeSystemDirectories: <p>是否排除系统目录</p>
         :type ExcludeSystemDirectories: bool
-        :param _ExecuteImmediately: 是否立即触发全量备份
+        :param _ExecuteImmediately: <p>是否立即触发全量备份</p>
         :type ExecuteImmediately: bool
+        :param _EnableObjectAcl: <p>cos备份是否备份ACL</p>
+        :type EnableObjectAcl: bool
+        :param _EnableObjectTags: <p>cos备份是否备份tag</p>
+        :type EnableObjectTags: bool
         """
         self._ResourceId = None
         self._BackupPaths = None
@@ -16088,10 +16902,12 @@ class ResourcePlan(AbstractModel):
         self._ExcludePatterns = None
         self._ExcludeSystemDirectories = None
         self._ExecuteImmediately = None
+        self._EnableObjectAcl = None
+        self._EnableObjectTags = None
 
     @property
     def ResourceId(self):
-        r"""云服务器实例 ID
+        r"""<p>云服务器实例 ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -16102,7 +16918,7 @@ class ResourcePlan(AbstractModel):
 
     @property
     def BackupPaths(self):
-        r"""备份路径，[0,20]
+        r"""<p>备份路径，[0,20]</p>
         :rtype: list of str
         """
         return self._BackupPaths
@@ -16113,7 +16929,7 @@ class ResourcePlan(AbstractModel):
 
     @property
     def IncludeFileTypes(self):
-        r"""包含文件类型，[0,20]
+        r"""<p>包含文件类型，[0,20]</p>
         :rtype: list of str
         """
         return self._IncludeFileTypes
@@ -16124,7 +16940,7 @@ class ResourcePlan(AbstractModel):
 
     @property
     def ExcludePatterns(self):
-        r"""排除路径，[0,20]
+        r"""<p>排除路径，[0,20]</p>
         :rtype: list of str
         """
         return self._ExcludePatterns
@@ -16135,7 +16951,7 @@ class ResourcePlan(AbstractModel):
 
     @property
     def ExcludeSystemDirectories(self):
-        r"""是否排除系统目录
+        r"""<p>是否排除系统目录</p>
         :rtype: bool
         """
         return self._ExcludeSystemDirectories
@@ -16146,7 +16962,7 @@ class ResourcePlan(AbstractModel):
 
     @property
     def ExecuteImmediately(self):
-        r"""是否立即触发全量备份
+        r"""<p>是否立即触发全量备份</p>
         :rtype: bool
         """
         return self._ExecuteImmediately
@@ -16154,6 +16970,28 @@ class ResourcePlan(AbstractModel):
     @ExecuteImmediately.setter
     def ExecuteImmediately(self, ExecuteImmediately):
         self._ExecuteImmediately = ExecuteImmediately
+
+    @property
+    def EnableObjectAcl(self):
+        r"""<p>cos备份是否备份ACL</p>
+        :rtype: bool
+        """
+        return self._EnableObjectAcl
+
+    @EnableObjectAcl.setter
+    def EnableObjectAcl(self, EnableObjectAcl):
+        self._EnableObjectAcl = EnableObjectAcl
+
+    @property
+    def EnableObjectTags(self):
+        r"""<p>cos备份是否备份tag</p>
+        :rtype: bool
+        """
+        return self._EnableObjectTags
+
+    @EnableObjectTags.setter
+    def EnableObjectTags(self, EnableObjectTags):
+        self._EnableObjectTags = EnableObjectTags
 
 
     def _deserialize(self, params):
@@ -16163,6 +17001,8 @@ class ResourcePlan(AbstractModel):
         self._ExcludePatterns = params.get("ExcludePatterns")
         self._ExcludeSystemDirectories = params.get("ExcludeSystemDirectories")
         self._ExecuteImmediately = params.get("ExecuteImmediately")
+        self._EnableObjectAcl = params.get("EnableObjectAcl")
+        self._EnableObjectTags = params.get("EnableObjectTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

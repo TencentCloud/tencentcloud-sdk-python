@@ -11327,8 +11327,11 @@ class DescribeSSLStatusRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis/instance/list">Redis 控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
+        :param _ServiceType: <p>证书下载格式类型，不传时默认 nginx。仅对自定义证书（CertSource=1）生效</p><p>枚举值：</p><ul><li>nginx： nginx可用</li><li>apache： apache可用</li><li>tomcat： tomcat可用</li><li>iis： iis可用</li></ul>
+        :type ServiceType: str
         """
         self._InstanceId = None
+        self._ServiceType = None
 
     @property
     def InstanceId(self):
@@ -11341,9 +11344,21 @@ class DescribeSSLStatusRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ServiceType(self):
+        r"""<p>证书下载格式类型，不传时默认 nginx。仅对自定义证书（CertSource=1）生效</p><p>枚举值：</p><ul><li>nginx： nginx可用</li><li>apache： apache可用</li><li>tomcat： tomcat可用</li><li>iis： iis可用</li></ul>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11375,6 +11390,22 @@ class DescribeSSLStatusResponse(AbstractModel):
         :type AddressType: int
         :param _EncryptAddress: <p>当前加密连接地址</p>
         :type EncryptAddress: str
+        :param _CertSource: <p>密钥来源</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 自定义证书</li></ul>
+        :type CertSource: int
+        :param _CertStatus: <p>证书有效性</p><p>枚举值：</p><ul><li>0： 有效</li><li>1： 即将过期（30天内）</li><li>2： 已过期</li><li>404： 证书已被删除</li><li>500： 查询异常</li></ul>
+        :type CertStatus: int
+        :param _CertId: <p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+        :type CertId: str
+        :param _CertAlias: <p>证书别名</p>
+        :type CertAlias: str
+        :param _CertExpireTime: <p>证书到期时间</p><p>参数格式：时间格式YYYY-MM-DD hh:mm:ss</p>
+        :type CertExpireTime: str
+        :param _Domain: <p>证书关联域名（SAN）</p><p>包括了IP</p>
+        :type Domain: str
+        :param _SSLMinVersion: <p>最低 TLS 版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+        :type SSLMinVersion: str
+        :param _EncryptionMode: <p>当前加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul>
+        :type EncryptionMode: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11385,6 +11416,14 @@ class DescribeSSLStatusResponse(AbstractModel):
         self._Status = None
         self._AddressType = None
         self._EncryptAddress = None
+        self._CertSource = None
+        self._CertStatus = None
+        self._CertId = None
+        self._CertAlias = None
+        self._CertExpireTime = None
+        self._Domain = None
+        self._SSLMinVersion = None
+        self._EncryptionMode = None
         self._RequestId = None
 
     @property
@@ -11465,6 +11504,94 @@ class DescribeSSLStatusResponse(AbstractModel):
         self._EncryptAddress = EncryptAddress
 
     @property
+    def CertSource(self):
+        r"""<p>密钥来源</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 自定义证书</li></ul>
+        :rtype: int
+        """
+        return self._CertSource
+
+    @CertSource.setter
+    def CertSource(self, CertSource):
+        self._CertSource = CertSource
+
+    @property
+    def CertStatus(self):
+        r"""<p>证书有效性</p><p>枚举值：</p><ul><li>0： 有效</li><li>1： 即将过期（30天内）</li><li>2： 已过期</li><li>404： 证书已被删除</li><li>500： 查询异常</li></ul>
+        :rtype: int
+        """
+        return self._CertStatus
+
+    @CertStatus.setter
+    def CertStatus(self, CertStatus):
+        self._CertStatus = CertStatus
+
+    @property
+    def CertId(self):
+        r"""<p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def CertAlias(self):
+        r"""<p>证书别名</p>
+        :rtype: str
+        """
+        return self._CertAlias
+
+    @CertAlias.setter
+    def CertAlias(self, CertAlias):
+        self._CertAlias = CertAlias
+
+    @property
+    def CertExpireTime(self):
+        r"""<p>证书到期时间</p><p>参数格式：时间格式YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._CertExpireTime
+
+    @CertExpireTime.setter
+    def CertExpireTime(self, CertExpireTime):
+        self._CertExpireTime = CertExpireTime
+
+    @property
+    def Domain(self):
+        r"""<p>证书关联域名（SAN）</p><p>包括了IP</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def SSLMinVersion(self):
+        r"""<p>最低 TLS 版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+        :rtype: str
+        """
+        return self._SSLMinVersion
+
+    @SSLMinVersion.setter
+    def SSLMinVersion(self, SSLMinVersion):
+        self._SSLMinVersion = SSLMinVersion
+
+    @property
+    def EncryptionMode(self):
+        r"""<p>当前加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul>
+        :rtype: str
+        """
+        return self._EncryptionMode
+
+    @EncryptionMode.setter
+    def EncryptionMode(self, EncryptionMode):
+        self._EncryptionMode = EncryptionMode
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11484,6 +11611,14 @@ class DescribeSSLStatusResponse(AbstractModel):
         self._Status = params.get("Status")
         self._AddressType = params.get("AddressType")
         self._EncryptAddress = params.get("EncryptAddress")
+        self._CertSource = params.get("CertSource")
+        self._CertStatus = params.get("CertStatus")
+        self._CertId = params.get("CertId")
+        self._CertAlias = params.get("CertAlias")
+        self._CertExpireTime = params.get("CertExpireTime")
+        self._Domain = params.get("Domain")
+        self._SSLMinVersion = params.get("SSLMinVersion")
+        self._EncryptionMode = params.get("EncryptionMode")
         self._RequestId = params.get("RequestId")
 
 
@@ -14840,26 +14975,32 @@ class InstanceEnumParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParamName: 参数名称。
+        :param _ParamName: <p>参数名称。</p>
         :type ParamName: str
-        :param _ValueType: 参数类型，例如：Enum。
+        :param _ValueType: <p>参数类型，例如：Enum。</p>
         :type ValueType: str
-        :param _NeedRestart: 参数值修改后是否需要重启。
-- true：需要。
-- false：不需要。
+        :param _NeedRestart: <p>参数值修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
         :type NeedRestart: str
-        :param _DefaultValue: 参数默认值。
+        :param _DefaultValue: <p>参数默认值。</p>
         :type DefaultValue: str
-        :param _CurrentValue: 参数当前运行值。
+        :param _CurrentValue: <p>参数当前运行值。</p>
         :type CurrentValue: str
-        :param _Tips: 参数说明。
+        :param _Tips: <p>参数说明。</p>
         :type Tips: str
-        :param _EnumValue: 参数可取的值。
+        :param _EnumValue: <p>参数可取的值。</p>
         :type EnumValue: list of str
-        :param _Status: 参数修改状态。
-- 1: 修改中。
-- 2：修改完成。
+        :param _Status: <p>参数修改状态。</p><ul><li>1: 修改中。</li><li>2：修改完成。</li></ul>
         :type Status: int
+        :param _ParamType: <p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+        :type ParamType: str
+        :param _FeatureSupported: <p>当前实例是否支持该特性</p>
+        :type FeatureSupported: bool
+        :param _NewFeatureOnlineTime: <p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+        :type NewFeatureOnlineTime: str
+        :param _Pattern: <p>正则校验规则</p>
+        :type Pattern: str
+        :param _InputDescription: <p>输入格式描述</p>
+        :type InputDescription: str
         """
         self._ParamName = None
         self._ValueType = None
@@ -14869,10 +15010,15 @@ class InstanceEnumParam(AbstractModel):
         self._Tips = None
         self._EnumValue = None
         self._Status = None
+        self._ParamType = None
+        self._FeatureSupported = None
+        self._NewFeatureOnlineTime = None
+        self._Pattern = None
+        self._InputDescription = None
 
     @property
     def ParamName(self):
-        r"""参数名称。
+        r"""<p>参数名称。</p>
         :rtype: str
         """
         return self._ParamName
@@ -14883,7 +15029,7 @@ class InstanceEnumParam(AbstractModel):
 
     @property
     def ValueType(self):
-        r"""参数类型，例如：Enum。
+        r"""<p>参数类型，例如：Enum。</p>
         :rtype: str
         """
         return self._ValueType
@@ -14894,9 +15040,7 @@ class InstanceEnumParam(AbstractModel):
 
     @property
     def NeedRestart(self):
-        r"""参数值修改后是否需要重启。
-- true：需要。
-- false：不需要。
+        r"""<p>参数值修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
         :rtype: str
         """
         return self._NeedRestart
@@ -14907,7 +15051,7 @@ class InstanceEnumParam(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""参数默认值。
+        r"""<p>参数默认值。</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -14918,7 +15062,7 @@ class InstanceEnumParam(AbstractModel):
 
     @property
     def CurrentValue(self):
-        r"""参数当前运行值。
+        r"""<p>参数当前运行值。</p>
         :rtype: str
         """
         return self._CurrentValue
@@ -14929,7 +15073,7 @@ class InstanceEnumParam(AbstractModel):
 
     @property
     def Tips(self):
-        r"""参数说明。
+        r"""<p>参数说明。</p>
         :rtype: str
         """
         return self._Tips
@@ -14940,7 +15084,7 @@ class InstanceEnumParam(AbstractModel):
 
     @property
     def EnumValue(self):
-        r"""参数可取的值。
+        r"""<p>参数可取的值。</p>
         :rtype: list of str
         """
         return self._EnumValue
@@ -14951,9 +15095,7 @@ class InstanceEnumParam(AbstractModel):
 
     @property
     def Status(self):
-        r"""参数修改状态。
-- 1: 修改中。
-- 2：修改完成。
+        r"""<p>参数修改状态。</p><ul><li>1: 修改中。</li><li>2：修改完成。</li></ul>
         :rtype: int
         """
         return self._Status
@@ -14961,6 +15103,61 @@ class InstanceEnumParam(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ParamType(self):
+        r"""<p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+        :rtype: str
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def FeatureSupported(self):
+        r"""<p>当前实例是否支持该特性</p>
+        :rtype: bool
+        """
+        return self._FeatureSupported
+
+    @FeatureSupported.setter
+    def FeatureSupported(self, FeatureSupported):
+        self._FeatureSupported = FeatureSupported
+
+    @property
+    def NewFeatureOnlineTime(self):
+        r"""<p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._NewFeatureOnlineTime
+
+    @NewFeatureOnlineTime.setter
+    def NewFeatureOnlineTime(self, NewFeatureOnlineTime):
+        self._NewFeatureOnlineTime = NewFeatureOnlineTime
+
+    @property
+    def Pattern(self):
+        r"""<p>正则校验规则</p>
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def InputDescription(self):
+        r"""<p>输入格式描述</p>
+        :rtype: str
+        """
+        return self._InputDescription
+
+    @InputDescription.setter
+    def InputDescription(self, InputDescription):
+        self._InputDescription = InputDescription
 
 
     def _deserialize(self, params):
@@ -14972,6 +15169,11 @@ class InstanceEnumParam(AbstractModel):
         self._Tips = params.get("Tips")
         self._EnumValue = params.get("EnumValue")
         self._Status = params.get("Status")
+        self._ParamType = params.get("ParamType")
+        self._FeatureSupported = params.get("FeatureSupported")
+        self._NewFeatureOnlineTime = params.get("NewFeatureOnlineTime")
+        self._Pattern = params.get("Pattern")
+        self._InputDescription = params.get("InputDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15166,26 +15368,36 @@ class InstanceIntegerParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParamName: 参数名
+        :param _ParamName: <p>参数名</p>
         :type ParamName: str
-        :param _ValueType: 参数类型：integer
+        :param _ValueType: <p>参数类型：integer</p>
         :type ValueType: str
-        :param _NeedRestart: 修改后是否需要重启：true，false
+        :param _NeedRestart: <p>修改后是否需要重启：true，false</p>
         :type NeedRestart: str
-        :param _DefaultValue: 参数默认值
+        :param _DefaultValue: <p>参数默认值</p>
         :type DefaultValue: str
-        :param _CurrentValue: 当前运行参数值
+        :param _CurrentValue: <p>当前运行参数值</p>
         :type CurrentValue: str
-        :param _Tips: 参数说明
+        :param _Tips: <p>参数说明</p>
         :type Tips: str
-        :param _Min: 参数最小值
+        :param _Min: <p>参数最小值</p>
         :type Min: str
-        :param _Max: 参数最大值
+        :param _Max: <p>参数最大值</p>
         :type Max: str
-        :param _Status: 参数状态, 1: 修改中， 2：修改完成
+        :param _Status: <p>参数状态, 1: 修改中， 2：修改完成</p>
         :type Status: int
-        :param _Unit: 参数单位
+        :param _Unit: <p>参数单位</p>
         :type Unit: str
+        :param _ParamType: <p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis：  tendis支持的参数</li></ul>
+        :type ParamType: str
+        :param _FeatureSupported: <p>当前实例是否支持该特性</p>
+        :type FeatureSupported: bool
+        :param _NewFeatureOnlineTime: <p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+        :type NewFeatureOnlineTime: str
+        :param _Pattern: <p>正则校验规则</p>
+        :type Pattern: str
+        :param _InputDescription: <p>输入格式描述</p>
+        :type InputDescription: str
         """
         self._ParamName = None
         self._ValueType = None
@@ -15197,10 +15409,15 @@ class InstanceIntegerParam(AbstractModel):
         self._Max = None
         self._Status = None
         self._Unit = None
+        self._ParamType = None
+        self._FeatureSupported = None
+        self._NewFeatureOnlineTime = None
+        self._Pattern = None
+        self._InputDescription = None
 
     @property
     def ParamName(self):
-        r"""参数名
+        r"""<p>参数名</p>
         :rtype: str
         """
         return self._ParamName
@@ -15211,7 +15428,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def ValueType(self):
-        r"""参数类型：integer
+        r"""<p>参数类型：integer</p>
         :rtype: str
         """
         return self._ValueType
@@ -15222,7 +15439,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def NeedRestart(self):
-        r"""修改后是否需要重启：true，false
+        r"""<p>修改后是否需要重启：true，false</p>
         :rtype: str
         """
         return self._NeedRestart
@@ -15233,7 +15450,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""参数默认值
+        r"""<p>参数默认值</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -15244,7 +15461,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def CurrentValue(self):
-        r"""当前运行参数值
+        r"""<p>当前运行参数值</p>
         :rtype: str
         """
         return self._CurrentValue
@@ -15255,7 +15472,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def Tips(self):
-        r"""参数说明
+        r"""<p>参数说明</p>
         :rtype: str
         """
         return self._Tips
@@ -15266,7 +15483,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def Min(self):
-        r"""参数最小值
+        r"""<p>参数最小值</p>
         :rtype: str
         """
         return self._Min
@@ -15277,7 +15494,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def Max(self):
-        r"""参数最大值
+        r"""<p>参数最大值</p>
         :rtype: str
         """
         return self._Max
@@ -15288,7 +15505,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def Status(self):
-        r"""参数状态, 1: 修改中， 2：修改完成
+        r"""<p>参数状态, 1: 修改中， 2：修改完成</p>
         :rtype: int
         """
         return self._Status
@@ -15299,7 +15516,7 @@ class InstanceIntegerParam(AbstractModel):
 
     @property
     def Unit(self):
-        r"""参数单位
+        r"""<p>参数单位</p>
         :rtype: str
         """
         return self._Unit
@@ -15307,6 +15524,61 @@ class InstanceIntegerParam(AbstractModel):
     @Unit.setter
     def Unit(self, Unit):
         self._Unit = Unit
+
+    @property
+    def ParamType(self):
+        r"""<p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis：  tendis支持的参数</li></ul>
+        :rtype: str
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def FeatureSupported(self):
+        r"""<p>当前实例是否支持该特性</p>
+        :rtype: bool
+        """
+        return self._FeatureSupported
+
+    @FeatureSupported.setter
+    def FeatureSupported(self, FeatureSupported):
+        self._FeatureSupported = FeatureSupported
+
+    @property
+    def NewFeatureOnlineTime(self):
+        r"""<p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._NewFeatureOnlineTime
+
+    @NewFeatureOnlineTime.setter
+    def NewFeatureOnlineTime(self, NewFeatureOnlineTime):
+        self._NewFeatureOnlineTime = NewFeatureOnlineTime
+
+    @property
+    def Pattern(self):
+        r"""<p>正则校验规则</p>
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def InputDescription(self):
+        r"""<p>输入格式描述</p>
+        :rtype: str
+        """
+        return self._InputDescription
+
+    @InputDescription.setter
+    def InputDescription(self, InputDescription):
+        self._InputDescription = InputDescription
 
 
     def _deserialize(self, params):
@@ -15320,6 +15592,11 @@ class InstanceIntegerParam(AbstractModel):
         self._Max = params.get("Max")
         self._Status = params.get("Status")
         self._Unit = params.get("Unit")
+        self._ParamType = params.get("ParamType")
+        self._FeatureSupported = params.get("FeatureSupported")
+        self._NewFeatureOnlineTime = params.get("NewFeatureOnlineTime")
+        self._Pattern = params.get("Pattern")
+        self._InputDescription = params.get("InputDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15337,26 +15614,32 @@ class InstanceMultiParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParamName: 参数名称。
+        :param _ParamName: <p>参数名称。</p>
         :type ParamName: str
-        :param _ValueType: 参数类型。例如：multi。
+        :param _ValueType: <p>参数类型。例如：multi。</p>
         :type ValueType: str
-        :param _NeedRestart: 参数修改后是否需要重启。
-- true：需要。
-- false：不需要。
+        :param _NeedRestart: <p>参数修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
         :type NeedRestart: str
-        :param _DefaultValue: 参数默认值。
+        :param _DefaultValue: <p>参数默认值。</p>
         :type DefaultValue: str
-        :param _CurrentValue: 当前运行参数值。
+        :param _CurrentValue: <p>当前运行参数值。</p>
         :type CurrentValue: str
-        :param _Tips: 参数说明。
+        :param _Tips: <p>参数说明。</p>
         :type Tips: str
-        :param _EnumValue: 参数枚举值。
+        :param _EnumValue: <p>参数枚举值。</p>
         :type EnumValue: list of str
-        :param _Status: 参数修改的状态。
-- 1：修改中。
-- 2：修改完成。
+        :param _Status: <p>参数修改的状态。</p><ul><li>1：修改中。</li><li>2：修改完成。</li></ul>
         :type Status: int
+        :param _ParamType: <p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+        :type ParamType: str
+        :param _FeatureSupported: <p>当前实例是否支持该特性</p>
+        :type FeatureSupported: bool
+        :param _NewFeatureOnlineTime: <p>新特性上线日期</p><p>参数格式：参数格式：时间格式YYYY-MM-DD</p>
+        :type NewFeatureOnlineTime: str
+        :param _Pattern: <p>正则校验规则</p>
+        :type Pattern: str
+        :param _InputDescription: <p>输入格式描述</p>
+        :type InputDescription: str
         """
         self._ParamName = None
         self._ValueType = None
@@ -15366,10 +15649,15 @@ class InstanceMultiParam(AbstractModel):
         self._Tips = None
         self._EnumValue = None
         self._Status = None
+        self._ParamType = None
+        self._FeatureSupported = None
+        self._NewFeatureOnlineTime = None
+        self._Pattern = None
+        self._InputDescription = None
 
     @property
     def ParamName(self):
-        r"""参数名称。
+        r"""<p>参数名称。</p>
         :rtype: str
         """
         return self._ParamName
@@ -15380,7 +15668,7 @@ class InstanceMultiParam(AbstractModel):
 
     @property
     def ValueType(self):
-        r"""参数类型。例如：multi。
+        r"""<p>参数类型。例如：multi。</p>
         :rtype: str
         """
         return self._ValueType
@@ -15391,9 +15679,7 @@ class InstanceMultiParam(AbstractModel):
 
     @property
     def NeedRestart(self):
-        r"""参数修改后是否需要重启。
-- true：需要。
-- false：不需要。
+        r"""<p>参数修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
         :rtype: str
         """
         return self._NeedRestart
@@ -15404,7 +15690,7 @@ class InstanceMultiParam(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""参数默认值。
+        r"""<p>参数默认值。</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -15415,7 +15701,7 @@ class InstanceMultiParam(AbstractModel):
 
     @property
     def CurrentValue(self):
-        r"""当前运行参数值。
+        r"""<p>当前运行参数值。</p>
         :rtype: str
         """
         return self._CurrentValue
@@ -15426,7 +15712,7 @@ class InstanceMultiParam(AbstractModel):
 
     @property
     def Tips(self):
-        r"""参数说明。
+        r"""<p>参数说明。</p>
         :rtype: str
         """
         return self._Tips
@@ -15437,7 +15723,7 @@ class InstanceMultiParam(AbstractModel):
 
     @property
     def EnumValue(self):
-        r"""参数枚举值。
+        r"""<p>参数枚举值。</p>
         :rtype: list of str
         """
         return self._EnumValue
@@ -15448,9 +15734,7 @@ class InstanceMultiParam(AbstractModel):
 
     @property
     def Status(self):
-        r"""参数修改的状态。
-- 1：修改中。
-- 2：修改完成。
+        r"""<p>参数修改的状态。</p><ul><li>1：修改中。</li><li>2：修改完成。</li></ul>
         :rtype: int
         """
         return self._Status
@@ -15458,6 +15742,61 @@ class InstanceMultiParam(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ParamType(self):
+        r"""<p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+        :rtype: str
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def FeatureSupported(self):
+        r"""<p>当前实例是否支持该特性</p>
+        :rtype: bool
+        """
+        return self._FeatureSupported
+
+    @FeatureSupported.setter
+    def FeatureSupported(self, FeatureSupported):
+        self._FeatureSupported = FeatureSupported
+
+    @property
+    def NewFeatureOnlineTime(self):
+        r"""<p>新特性上线日期</p><p>参数格式：参数格式：时间格式YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._NewFeatureOnlineTime
+
+    @NewFeatureOnlineTime.setter
+    def NewFeatureOnlineTime(self, NewFeatureOnlineTime):
+        self._NewFeatureOnlineTime = NewFeatureOnlineTime
+
+    @property
+    def Pattern(self):
+        r"""<p>正则校验规则</p>
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def InputDescription(self):
+        r"""<p>输入格式描述</p>
+        :rtype: str
+        """
+        return self._InputDescription
+
+    @InputDescription.setter
+    def InputDescription(self, InputDescription):
+        self._InputDescription = InputDescription
 
 
     def _deserialize(self, params):
@@ -15469,6 +15808,11 @@ class InstanceMultiParam(AbstractModel):
         self._Tips = params.get("Tips")
         self._EnumValue = params.get("EnumValue")
         self._Status = params.get("Status")
+        self._ParamType = params.get("ParamType")
+        self._FeatureSupported = params.get("FeatureSupported")
+        self._NewFeatureOnlineTime = params.get("NewFeatureOnlineTime")
+        self._Pattern = params.get("Pattern")
+        self._InputDescription = params.get("InputDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17009,26 +17353,32 @@ class InstanceTextParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParamName: 参数名称。
+        :param _ParamName: <p>参数名称。</p>
         :type ParamName: str
-        :param _ValueType: 参数类型。例如：text。
+        :param _ValueType: <p>参数类型。例如：text。</p>
         :type ValueType: str
-        :param _NeedRestart: 参数修改后是否需要重启。
-- true：需要。
-- false：不需要。
+        :param _NeedRestart: <p>参数修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
         :type NeedRestart: str
-        :param _DefaultValue: 参数默认值。
+        :param _DefaultValue: <p>参数默认值。</p>
         :type DefaultValue: str
-        :param _CurrentValue: 参数当前运行值。
+        :param _CurrentValue: <p>参数当前运行值。</p>
         :type CurrentValue: str
-        :param _Tips: 参数说明。
+        :param _Tips: <p>参数说明。</p>
         :type Tips: str
-        :param _TextValue: 参数可取值。
+        :param _TextValue: <p>参数可取值。</p>
         :type TextValue: list of str
-        :param _Status: 参数修改状态。
-- 1: 修改中。
-- 2：修改完成。
+        :param _Status: <p>参数修改状态。</p><ul><li>1: 修改中。</li><li>2：修改完成。</li></ul>
         :type Status: int
+        :param _ParamType: <p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+        :type ParamType: str
+        :param _FeatureSupported: <p>当前实例是否支持该特性</p>
+        :type FeatureSupported: bool
+        :param _NewFeatureOnlineTime: <p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+        :type NewFeatureOnlineTime: str
+        :param _Pattern: <p>正则校验规则</p>
+        :type Pattern: str
+        :param _InputDescription: <p>输入格式描述</p>
+        :type InputDescription: str
         """
         self._ParamName = None
         self._ValueType = None
@@ -17038,10 +17388,15 @@ class InstanceTextParam(AbstractModel):
         self._Tips = None
         self._TextValue = None
         self._Status = None
+        self._ParamType = None
+        self._FeatureSupported = None
+        self._NewFeatureOnlineTime = None
+        self._Pattern = None
+        self._InputDescription = None
 
     @property
     def ParamName(self):
-        r"""参数名称。
+        r"""<p>参数名称。</p>
         :rtype: str
         """
         return self._ParamName
@@ -17052,7 +17407,7 @@ class InstanceTextParam(AbstractModel):
 
     @property
     def ValueType(self):
-        r"""参数类型。例如：text。
+        r"""<p>参数类型。例如：text。</p>
         :rtype: str
         """
         return self._ValueType
@@ -17063,9 +17418,7 @@ class InstanceTextParam(AbstractModel):
 
     @property
     def NeedRestart(self):
-        r"""参数修改后是否需要重启。
-- true：需要。
-- false：不需要。
+        r"""<p>参数修改后是否需要重启。</p><ul><li>true：需要。</li><li>false：不需要。</li></ul>
         :rtype: str
         """
         return self._NeedRestart
@@ -17076,7 +17429,7 @@ class InstanceTextParam(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""参数默认值。
+        r"""<p>参数默认值。</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -17087,7 +17440,7 @@ class InstanceTextParam(AbstractModel):
 
     @property
     def CurrentValue(self):
-        r"""参数当前运行值。
+        r"""<p>参数当前运行值。</p>
         :rtype: str
         """
         return self._CurrentValue
@@ -17098,7 +17451,7 @@ class InstanceTextParam(AbstractModel):
 
     @property
     def Tips(self):
-        r"""参数说明。
+        r"""<p>参数说明。</p>
         :rtype: str
         """
         return self._Tips
@@ -17109,7 +17462,7 @@ class InstanceTextParam(AbstractModel):
 
     @property
     def TextValue(self):
-        r"""参数可取值。
+        r"""<p>参数可取值。</p>
         :rtype: list of str
         """
         return self._TextValue
@@ -17120,9 +17473,7 @@ class InstanceTextParam(AbstractModel):
 
     @property
     def Status(self):
-        r"""参数修改状态。
-- 1: 修改中。
-- 2：修改完成。
+        r"""<p>参数修改状态。</p><ul><li>1: 修改中。</li><li>2：修改完成。</li></ul>
         :rtype: int
         """
         return self._Status
@@ -17130,6 +17481,61 @@ class InstanceTextParam(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ParamType(self):
+        r"""<p>参数类型</p><p>枚举值：</p><ul><li>redis： cache节点支持的参数</li><li>redis-interface： 代理proxy支持的参数</li><li>tendis： tendis支持的参数</li></ul>
+        :rtype: str
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def FeatureSupported(self):
+        r"""<p>当前实例是否支持该特性</p>
+        :rtype: bool
+        """
+        return self._FeatureSupported
+
+    @FeatureSupported.setter
+    def FeatureSupported(self, FeatureSupported):
+        self._FeatureSupported = FeatureSupported
+
+    @property
+    def NewFeatureOnlineTime(self):
+        r"""<p>新特性上线日期</p><p>参数格式：时间格式YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._NewFeatureOnlineTime
+
+    @NewFeatureOnlineTime.setter
+    def NewFeatureOnlineTime(self, NewFeatureOnlineTime):
+        self._NewFeatureOnlineTime = NewFeatureOnlineTime
+
+    @property
+    def Pattern(self):
+        r"""<p>正则校验规则</p>
+        :rtype: str
+        """
+        return self._Pattern
+
+    @Pattern.setter
+    def Pattern(self, Pattern):
+        self._Pattern = Pattern
+
+    @property
+    def InputDescription(self):
+        r"""<p>输入格式描述</p>
+        :rtype: str
+        """
+        return self._InputDescription
+
+    @InputDescription.setter
+    def InputDescription(self, InputDescription):
+        self._InputDescription = InputDescription
 
 
     def _deserialize(self, params):
@@ -17141,6 +17547,11 @@ class InstanceTextParam(AbstractModel):
         self._Tips = params.get("Tips")
         self._TextValue = params.get("TextValue")
         self._Status = params.get("Status")
+        self._ParamType = params.get("ParamType")
+        self._FeatureSupported = params.get("FeatureSupported")
+        self._NewFeatureOnlineTime = params.get("NewFeatureOnlineTime")
+        self._Pattern = params.get("Pattern")
+        self._InputDescription = params.get("InputDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18034,6 +18445,8 @@ class LogResult(AbstractModel):
         :type CommandDetail: str
         :param _ErrMsg: <p>错误信息</p>
         :type ErrMsg: str
+        :param _Node: <p>proxy的节点ID</p>
+        :type Node: str
         """
         self._DBId = None
         self._CommandLatency = None
@@ -18044,6 +18457,7 @@ class LogResult(AbstractModel):
         self._CacheCode = None
         self._CommandDetail = None
         self._ErrMsg = None
+        self._Node = None
 
     @property
     def DBId(self):
@@ -18144,6 +18558,17 @@ class LogResult(AbstractModel):
     def ErrMsg(self, ErrMsg):
         self._ErrMsg = ErrMsg
 
+    @property
+    def Node(self):
+        r"""<p>proxy的节点ID</p>
+        :rtype: str
+        """
+        return self._Node
+
+    @Node.setter
+    def Node(self, Node):
+        self._Node = Node
+
 
     def _deserialize(self, params):
         self._DBId = params.get("DBId")
@@ -18155,6 +18580,7 @@ class LogResult(AbstractModel):
         self._CacheCode = params.get("CacheCode")
         self._CommandDetail = params.get("CommandDetail")
         self._ErrMsg = params.get("ErrMsg")
+        self._Node = params.get("Node")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21438,9 +21864,24 @@ class OpenSSLRequest(AbstractModel):
         :type InstanceId: str
         :param _AddressType: <p>SSL地址类型。</p><p>枚举值：</p><ul><li>0： 不限。</li><li>1： 内网IPv4。</li><li>2： 内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul><p>默认值：0</p>
         :type AddressType: int
+        :param _CertSource: <p>密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 用户自定义证书</li></ul><p>默认值：0</p>
+        :type CertSource: int
+        :param _SwitchOption: <p>切换时间。（该参数废弃，不再生效）</p><p>枚举值：</p><ul><li>1： 维护时间窗操作：指开启SSL加密在设置的维护时间窗内执行。请通过接口DescribeMaintenanceWindow查询设置的维护时间窗时间段。</li><li>2： 立即操作：操作将立即执行，无需等待维护时间窗。系统默认设置为立即操作。</li></ul>
+        :type SwitchOption: int
+        :param _CertId: <p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+        :type CertId: str
+        :param _SSLMinVersion: <p>最低TLS版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+        :type SSLMinVersion: str
+        :param _EncryptionMode: <p>目标加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul><p>默认值：flexible</p>
+        :type EncryptionMode: str
         """
         self._InstanceId = None
         self._AddressType = None
+        self._CertSource = None
+        self._SwitchOption = None
+        self._CertId = None
+        self._SSLMinVersion = None
+        self._EncryptionMode = None
 
     @property
     def InstanceId(self):
@@ -21464,10 +21905,74 @@ class OpenSSLRequest(AbstractModel):
     def AddressType(self, AddressType):
         self._AddressType = AddressType
 
+    @property
+    def CertSource(self):
+        r"""<p>密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 用户自定义证书</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._CertSource
+
+    @CertSource.setter
+    def CertSource(self, CertSource):
+        self._CertSource = CertSource
+
+    @property
+    def SwitchOption(self):
+        warnings.warn("parameter `SwitchOption` is deprecated", DeprecationWarning) 
+
+        r"""<p>切换时间。（该参数废弃，不再生效）</p><p>枚举值：</p><ul><li>1： 维护时间窗操作：指开启SSL加密在设置的维护时间窗内执行。请通过接口DescribeMaintenanceWindow查询设置的维护时间窗时间段。</li><li>2： 立即操作：操作将立即执行，无需等待维护时间窗。系统默认设置为立即操作。</li></ul>
+        :rtype: int
+        """
+        return self._SwitchOption
+
+    @SwitchOption.setter
+    def SwitchOption(self, SwitchOption):
+        warnings.warn("parameter `SwitchOption` is deprecated", DeprecationWarning) 
+
+        self._SwitchOption = SwitchOption
+
+    @property
+    def CertId(self):
+        r"""<p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def SSLMinVersion(self):
+        r"""<p>最低TLS版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+        :rtype: str
+        """
+        return self._SSLMinVersion
+
+    @SSLMinVersion.setter
+    def SSLMinVersion(self, SSLMinVersion):
+        self._SSLMinVersion = SSLMinVersion
+
+    @property
+    def EncryptionMode(self):
+        r"""<p>目标加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul><p>默认值：flexible</p>
+        :rtype: str
+        """
+        return self._EncryptionMode
+
+    @EncryptionMode.setter
+    def EncryptionMode(self, EncryptionMode):
+        self._EncryptionMode = EncryptionMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._AddressType = params.get("AddressType")
+        self._CertSource = params.get("CertSource")
+        self._SwitchOption = params.get("SwitchOption")
+        self._CertId = params.get("CertId")
+        self._SSLMinVersion = params.get("SSLMinVersion")
+        self._EncryptionMode = params.get("EncryptionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -9011,10 +9011,16 @@ class CopyJobSpecResponse(AbstractModel):
         :type JobPackage: str
         :param _JobPackageName: <p>作业包名称</p>
         :type JobPackageName: str
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :type JobPackageSource: str
         :param _AppId: <p>应用ID</p>
         :type AppId: int
         :param _Uin: <p>创建者UIN</p>
         :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
         :param _UpdateTime: <p>更新时间</p>
@@ -9066,8 +9072,11 @@ class CopyJobSpecResponse(AbstractModel):
         self._QueueAlias = None
         self._JobPackage = None
         self._JobPackageName = None
+        self._JobPackageSource = None
         self._AppId = None
         self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
         self._CreateTime = None
         self._UpdateTime = None
         self._JobInstanceCount = None
@@ -9293,6 +9302,17 @@ class CopyJobSpecResponse(AbstractModel):
         self._JobPackageName = JobPackageName
 
     @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
     def AppId(self):
         r"""<p>应用ID</p>
         :rtype: int
@@ -9313,6 +9333,28 @@ class CopyJobSpecResponse(AbstractModel):
     @Uin.setter
     def Uin(self, Uin):
         self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
 
     @property
     def CreateTime(self):
@@ -9492,8 +9534,11 @@ class CopyJobSpecResponse(AbstractModel):
         self._QueueAlias = params.get("QueueAlias")
         self._JobPackage = params.get("JobPackage")
         self._JobPackageName = params.get("JobPackageName")
+        self._JobPackageSource = params.get("JobPackageSource")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._JobInstanceCount = params.get("JobInstanceCount")
@@ -15962,6 +16007,8 @@ class CreateLabRequest(AbstractModel):
         :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
         :param _EnableToken: <p>是否开启token认证</p>
         :type EnableToken: bool
+        :param _AutoscalerOptions: <p>弹性伸缩配置（JSON）</p>
+        :type AutoscalerOptions: str
         :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type ImagePullType: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
@@ -15989,6 +16036,7 @@ class CreateLabRequest(AbstractModel):
         self._Tags = None
         self._PersistentWorkDir = None
         self._EnableToken = None
+        self._AutoscalerOptions = None
         self._ImagePullType = None
         self._LabImagePullType = None
         self._NetworkConfig = None
@@ -16214,6 +16262,17 @@ class CreateLabRequest(AbstractModel):
         self._EnableToken = EnableToken
 
     @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置（JSON）</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
     def ImagePullType(self):
         r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :rtype: str
@@ -16275,6 +16334,7 @@ class CreateLabRequest(AbstractModel):
             self._PersistentWorkDir = PersistentWorkDir()
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
         self._EnableToken = params.get("EnableToken")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._ImagePullType = params.get("ImagePullType")
         self._LabImagePullType = params.get("LabImagePullType")
         self._NetworkConfig = params.get("NetworkConfig")
@@ -16325,6 +16385,8 @@ class CreateLabResponse(AbstractModel):
         :type Status: str
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
         :param _GroupId: <p>计算组 ID</p>
         :type GroupId: str
         :param _ResourceConfig: <p>资源配置(JSON)</p>
@@ -16341,12 +16403,22 @@ class CreateLabResponse(AbstractModel):
         :type AdvancedOptions: str
         :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
         :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _DeleteTime: <p>删除时间</p>
+        :type DeleteTime: int
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
         :type Tags: list of Tag
         :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
         :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
         :param _EnableToken: <p>是否开启token认证</p>
         :type EnableToken: bool
+        :param _Token: <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :type Token: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置（JSON）</p>
+        :type AutoscalerOptions: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type LabImagePullType: str
         :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
@@ -16373,6 +16445,7 @@ class CreateLabResponse(AbstractModel):
         self._SubAccountUin = None
         self._Status = None
         self._CreateTime = None
+        self._UpdateTime = None
         self._GroupId = None
         self._ResourceConfig = None
         self._ResourceConfigId = None
@@ -16381,9 +16454,14 @@ class CreateLabResponse(AbstractModel):
         self._ImagePullPolicy = None
         self._AdvancedOptions = None
         self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._DeleteTime = None
         self._Tags = None
         self._PersistentWorkDir = None
         self._EnableToken = None
+        self._Token = None
+        self._AutoscalerOptions = None
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
@@ -16556,6 +16634,17 @@ class CreateLabResponse(AbstractModel):
         self._CreateTime = CreateTime
 
     @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
     def GroupId(self):
         r"""<p>计算组 ID</p>
         :rtype: str
@@ -16644,6 +16733,39 @@ class CreateLabResponse(AbstractModel):
         self._Priority = Priority
 
     @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间</p>
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
     def Tags(self):
         r"""<p>标签列表（TagKey-TagValue）</p>
         :rtype: list of Tag
@@ -16675,6 +16797,28 @@ class CreateLabResponse(AbstractModel):
     @EnableToken.setter
     def EnableToken(self, EnableToken):
         self._EnableToken = EnableToken
+
+    @property
+    def Token(self):
+        r"""<p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置（JSON）</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
 
     @property
     def LabImagePullType(self):
@@ -16753,6 +16897,7 @@ class CreateLabResponse(AbstractModel):
         self._SubAccountUin = params.get("SubAccountUin")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._GroupId = params.get("GroupId")
         self._ResourceConfig = params.get("ResourceConfig")
         self._ResourceConfigId = params.get("ResourceConfigId")
@@ -16761,6 +16906,9 @@ class CreateLabResponse(AbstractModel):
         self._ImagePullPolicy = params.get("ImagePullPolicy")
         self._AdvancedOptions = params.get("AdvancedOptions")
         self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._DeleteTime = params.get("DeleteTime")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -16771,6 +16919,8 @@ class CreateLabResponse(AbstractModel):
             self._PersistentWorkDir = PersistentWorkDir()
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
         self._EnableToken = params.get("EnableToken")
+        self._Token = params.get("Token")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
@@ -54871,6 +55021,10 @@ class GetLabDetailResponse(AbstractModel):
         :type Status: str
         :param _StatusMessage: <p>状态详情/错误信息</p>
         :type StatusMessage: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
         :param _ResourceConfig: <p>资源配置(JSON)</p>
         :type ResourceConfig: str
         :param _ResourceConfigId: <p>资源配置ID</p>
@@ -54899,6 +55053,10 @@ class GetLabDetailResponse(AbstractModel):
         :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
         :param _EnableToken: <p>是否开启token认证</p>
         :type EnableToken: bool
+        :param _Token: <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :type Token: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置（JSON）</p>
+        :type AutoscalerOptions: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type LabImagePullType: str
         :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
@@ -54926,6 +55084,8 @@ class GetLabDetailResponse(AbstractModel):
         self._SubAccountUin = None
         self._Status = None
         self._StatusMessage = None
+        self._CreateTime = None
+        self._UpdateTime = None
         self._ResourceConfig = None
         self._ResourceConfigId = None
         self._Image = None
@@ -54940,6 +55100,8 @@ class GetLabDetailResponse(AbstractModel):
         self._Tags = None
         self._PersistentWorkDir = None
         self._EnableToken = None
+        self._Token = None
+        self._AutoscalerOptions = None
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
@@ -55123,6 +55285,28 @@ class GetLabDetailResponse(AbstractModel):
         self._StatusMessage = StatusMessage
 
     @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
     def ResourceConfig(self):
         r"""<p>资源配置(JSON)</p>
         :rtype: str
@@ -55277,6 +55461,28 @@ class GetLabDetailResponse(AbstractModel):
         self._EnableToken = EnableToken
 
     @property
+    def Token(self):
+        r"""<p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置（JSON）</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
     def LabImagePullType(self):
         r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :rtype: str
@@ -55354,6 +55560,8 @@ class GetLabDetailResponse(AbstractModel):
         self._SubAccountUin = params.get("SubAccountUin")
         self._Status = params.get("Status")
         self._StatusMessage = params.get("StatusMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._ResourceConfig = params.get("ResourceConfig")
         self._ResourceConfigId = params.get("ResourceConfigId")
         self._Image = params.get("Image")
@@ -55375,6 +55583,8 @@ class GetLabDetailResponse(AbstractModel):
             self._PersistentWorkDir = PersistentWorkDir()
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
         self._EnableToken = params.get("EnableToken")
+        self._Token = params.get("Token")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
@@ -58908,6 +59118,8 @@ class GetRayJobResponse(AbstractModel):
         r"""
         :param _Id: <p>任务ID</p>
         :type Id: str
+        :param _ClusterId: <p>所属集群ID</p>
+        :type ClusterId: str
         :param _ResourcePartitionId: <p>所属资源分区ID</p>
         :type ResourcePartitionId: str
         :param _ResourcePartitionName: <p>默认资源分区名称</p>
@@ -58916,6 +59128,8 @@ class GetRayJobResponse(AbstractModel):
         :type Queue: str
         :param _QueueAlias: <p>所属队列别名</p>
         :type QueueAlias: str
+        :param _SubmissionId: <p>Ray Submission ID</p>
+        :type SubmissionId: str
         :param _Status: <p>任务状态</p>
         :type Status: str
         :param _Entrypoint: <p>入口命令</p>
@@ -58928,6 +59142,8 @@ class GetRayJobResponse(AbstractModel):
         :type Uin: str
         :param _SubAccountUin: <p>创建账号</p>
         :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
         :param _HistoryUrl: <p>历史记录链接</p>
         :type HistoryUrl: str
         :param _RunningTime: <p>运行时间(ms)</p>
@@ -58968,16 +59184,19 @@ class GetRayJobResponse(AbstractModel):
         :type RequestId: str
         """
         self._Id = None
+        self._ClusterId = None
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
         self._QueueAlias = None
+        self._SubmissionId = None
         self._Status = None
         self._Entrypoint = None
         self._JobName = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
+        self._SubAccountName = None
         self._HistoryUrl = None
         self._RunningTime = None
         self._FinishTime = None
@@ -59008,6 +59227,17 @@ class GetRayJobResponse(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def ClusterId(self):
+        r"""<p>所属集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def ResourcePartitionId(self):
@@ -59052,6 +59282,17 @@ class GetRayJobResponse(AbstractModel):
     @QueueAlias.setter
     def QueueAlias(self, QueueAlias):
         self._QueueAlias = QueueAlias
+
+    @property
+    def SubmissionId(self):
+        r"""<p>Ray Submission ID</p>
+        :rtype: str
+        """
+        return self._SubmissionId
+
+    @SubmissionId.setter
+    def SubmissionId(self, SubmissionId):
+        self._SubmissionId = SubmissionId
 
     @property
     def Status(self):
@@ -59118,6 +59359,17 @@ class GetRayJobResponse(AbstractModel):
     @SubAccountUin.setter
     def SubAccountUin(self, SubAccountUin):
         self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
 
     @property
     def HistoryUrl(self):
@@ -59331,16 +59583,19 @@ class GetRayJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._ClusterId = params.get("ClusterId")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
         self._QueueAlias = params.get("QueueAlias")
+        self._SubmissionId = params.get("SubmissionId")
         self._Status = params.get("Status")
         self._Entrypoint = params.get("Entrypoint")
         self._JobName = params.get("JobName")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
         self._HistoryUrl = params.get("HistoryUrl")
         self._RunningTime = params.get("RunningTime")
         self._FinishTime = params.get("FinishTime")
@@ -71483,19 +71738,19 @@ class ListRayClusterJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID（必填）
+        :param _ClusterId: <p>集群ID（必填）</p>
         :type ClusterId: str
-        :param _Page: 当前页码（从1开始）
+        :param _Page: <p>当前页码（从1开始）</p>
         :type Page: int
-        :param _PageSize: 每页数量
+        :param _PageSize: <p>每页数量</p>
         :type PageSize: int
-        :param _Filters: 额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）
+        :param _Filters: <p>额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）</p>
         :type Filters: list of Filter
-        :param _StartTime: 提交时间起始过滤-时间戳（毫秒，可选）
+        :param _StartTime: <p>提交时间起始过滤-时间戳（毫秒，可选）</p>
         :type StartTime: int
-        :param _EndTime: 提交时间截止过滤-时间戳（毫秒，可选）
+        :param _EndTime: <p>提交时间截止过滤-时间戳（毫秒，可选）</p>
         :type EndTime: int
-        :param _SortFields: 排序字段列表
+        :param _SortFields: <p>排序字段列表</p>
         :type SortFields: list of SortField
         """
         self._ClusterId = None
@@ -71508,7 +71763,7 @@ class ListRayClusterJobsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID（必填）
+        r"""<p>集群ID（必填）</p>
         :rtype: str
         """
         return self._ClusterId
@@ -71519,7 +71774,7 @@ class ListRayClusterJobsRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""当前页码（从1开始）
+        r"""<p>当前页码（从1开始）</p>
         :rtype: int
         """
         return self._Page
@@ -71530,7 +71785,7 @@ class ListRayClusterJobsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""<p>每页数量</p>
         :rtype: int
         """
         return self._PageSize
@@ -71541,7 +71796,7 @@ class ListRayClusterJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）
+        r"""<p>额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -71552,7 +71807,7 @@ class ListRayClusterJobsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""提交时间起始过滤-时间戳（毫秒，可选）
+        r"""<p>提交时间起始过滤-时间戳（毫秒，可选）</p>
         :rtype: int
         """
         return self._StartTime
@@ -71563,7 +71818,7 @@ class ListRayClusterJobsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""提交时间截止过滤-时间戳（毫秒，可选）
+        r"""<p>提交时间截止过滤-时间戳（毫秒，可选）</p>
         :rtype: int
         """
         return self._EndTime
@@ -71574,7 +71829,7 @@ class ListRayClusterJobsRequest(AbstractModel):
 
     @property
     def SortFields(self):
-        r"""排序字段列表
+        r"""<p>排序字段列表</p>
         :rtype: list of SortField
         """
         return self._SortFields
@@ -71619,17 +71874,20 @@ class ListRayClusterJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Page: 当前页码（从1开始）
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
         :type Page: int
-        :param _PageSize: 每页数量
+        :param _PageSize: <p>每页数量</p>
         :type PageSize: int
-        :param _TotalPages: 总页数
+        :param _TotalPages: <p>总页数</p>
         :type TotalPages: int
-        :param _Items: 该集群下的Ray作业列表
+        :param _Items: <p>该集群下的Ray作业列表</p>
         :type Items: list of RayJobSubmitEntity
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Total = None
         self._Page = None
         self._PageSize = None
         self._TotalPages = None
@@ -71637,8 +71895,19 @@ class ListRayClusterJobsResponse(AbstractModel):
         self._RequestId = None
 
     @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
     def Page(self):
-        r"""当前页码（从1开始）
+        r"""<p>当前页码（从1开始）</p>
         :rtype: int
         """
         return self._Page
@@ -71649,7 +71918,7 @@ class ListRayClusterJobsResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量
+        r"""<p>每页数量</p>
         :rtype: int
         """
         return self._PageSize
@@ -71660,7 +71929,7 @@ class ListRayClusterJobsResponse(AbstractModel):
 
     @property
     def TotalPages(self):
-        r"""总页数
+        r"""<p>总页数</p>
         :rtype: int
         """
         return self._TotalPages
@@ -71671,7 +71940,7 @@ class ListRayClusterJobsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""该集群下的Ray作业列表
+        r"""<p>该集群下的Ray作业列表</p>
         :rtype: list of RayJobSubmitEntity
         """
         return self._Items
@@ -71693,6 +71962,7 @@ class ListRayClusterJobsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Total = params.get("Total")
         self._Page = params.get("Page")
         self._PageSize = params.get("PageSize")
         self._TotalPages = params.get("TotalPages")
@@ -71941,17 +72211,17 @@ class ListRayJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Page: 当前页码（从1开始）
+        :param _Page: <p>当前页码（从1开始）</p>
         :type Page: int
-        :param _PageSize: 页数
+        :param _PageSize: <p>页数</p>
         :type PageSize: int
-        :param _Filters: 过滤条件列表（列表的字段名称）
+        :param _Filters: <p>过滤条件列表（列表的字段名称）</p>
         :type Filters: list of Filter
-        :param _StartTime: 提交时间起始过滤-时间戳（毫秒，可选）
+        :param _StartTime: <p>提交时间起始过滤-时间戳（毫秒，可选）</p>
         :type StartTime: int
-        :param _EndTime: 提交时间截止过滤-时间戳（毫秒，可选）
+        :param _EndTime: <p>提交时间截止过滤-时间戳（毫秒，可选）</p>
         :type EndTime: int
-        :param _SortFields: 排序字段列表（列表字段）
+        :param _SortFields: <p>排序字段列表（列表字段）</p>
         :type SortFields: list of SortField
         """
         self._Page = None
@@ -71963,7 +72233,7 @@ class ListRayJobsRequest(AbstractModel):
 
     @property
     def Page(self):
-        r"""当前页码（从1开始）
+        r"""<p>当前页码（从1开始）</p>
         :rtype: int
         """
         return self._Page
@@ -71974,7 +72244,7 @@ class ListRayJobsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""页数
+        r"""<p>页数</p>
         :rtype: int
         """
         return self._PageSize
@@ -71985,7 +72255,7 @@ class ListRayJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件列表（列表的字段名称）
+        r"""<p>过滤条件列表（列表的字段名称）</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -71996,7 +72266,7 @@ class ListRayJobsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""提交时间起始过滤-时间戳（毫秒，可选）
+        r"""<p>提交时间起始过滤-时间戳（毫秒，可选）</p>
         :rtype: int
         """
         return self._StartTime
@@ -72007,7 +72277,7 @@ class ListRayJobsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""提交时间截止过滤-时间戳（毫秒，可选）
+        r"""<p>提交时间截止过滤-时间戳（毫秒，可选）</p>
         :rtype: int
         """
         return self._EndTime
@@ -72018,7 +72288,7 @@ class ListRayJobsRequest(AbstractModel):
 
     @property
     def SortFields(self):
-        r"""排序字段列表（列表字段）
+        r"""<p>排序字段列表（列表字段）</p>
         :rtype: list of SortField
         """
         return self._SortFields
@@ -72062,17 +72332,20 @@ class ListRayJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Page: 当前页码（从1开始）
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
         :type Page: int
-        :param _PageSize: 页数
+        :param _PageSize: <p>页数</p>
         :type PageSize: int
-        :param _TotalPages: 总页数
+        :param _TotalPages: <p>总页数</p>
         :type TotalPages: int
-        :param _Items: ray作业列表
+        :param _Items: <p>ray作业列表</p>
         :type Items: list of RayJobSubmitEntity
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Total = None
         self._Page = None
         self._PageSize = None
         self._TotalPages = None
@@ -72080,8 +72353,19 @@ class ListRayJobsResponse(AbstractModel):
         self._RequestId = None
 
     @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
     def Page(self):
-        r"""当前页码（从1开始）
+        r"""<p>当前页码（从1开始）</p>
         :rtype: int
         """
         return self._Page
@@ -72092,7 +72376,7 @@ class ListRayJobsResponse(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""页数
+        r"""<p>页数</p>
         :rtype: int
         """
         return self._PageSize
@@ -72103,7 +72387,7 @@ class ListRayJobsResponse(AbstractModel):
 
     @property
     def TotalPages(self):
-        r"""总页数
+        r"""<p>总页数</p>
         :rtype: int
         """
         return self._TotalPages
@@ -72114,7 +72398,7 @@ class ListRayJobsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""ray作业列表
+        r"""<p>ray作业列表</p>
         :rtype: list of RayJobSubmitEntity
         """
         return self._Items
@@ -72136,6 +72420,7 @@ class ListRayJobsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Total = params.get("Total")
         self._Page = params.get("Page")
         self._PageSize = params.get("PageSize")
         self._TotalPages = params.get("TotalPages")
@@ -89901,10 +90186,18 @@ class RunJobSpecResponse(AbstractModel):
         r"""
         :param _Id: <p>任务ID</p>
         :type Id: str
+        :param _ClusterId: <p>所属集群ID</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
         :param _ResourcePartitionId: <p>所属资源分区ID</p>
         :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _SubmissionId: <p>Ray Submission ID</p>
+        :type SubmissionId: str
         :param _Status: <p>任务状态</p>
         :type Status: str
         :param _Entrypoint: <p>入口命令</p>
@@ -89917,10 +90210,16 @@ class RunJobSpecResponse(AbstractModel):
         :type Uin: str
         :param _SubAccountUin: <p>子用户UIN</p>
         :type SubAccountUin: str
+        :param _HistoryUrl: <p>历史记录链接</p>
+        :type HistoryUrl: str
         :param _RunningTime: <p>运行时间(ms)</p>
         :type RunningTime: int
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: int
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
+        :param _ErrorMessage: <p>失败原因/错误信息</p>
+        :type ErrorMessage: str
         :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
         :type RuntimeEnv: str
         :param _Image: <p>镜像地址</p>
@@ -89949,16 +90248,23 @@ class RunJobSpecResponse(AbstractModel):
         :type RequestId: str
         """
         self._Id = None
+        self._ClusterId = None
+        self._ClusterName = None
         self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
         self._Queue = None
+        self._SubmissionId = None
         self._Status = None
         self._Entrypoint = None
         self._JobName = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
+        self._HistoryUrl = None
         self._RunningTime = None
+        self._FinishTime = None
         self._CreateTime = None
+        self._ErrorMessage = None
         self._RuntimeEnv = None
         self._Image = None
         self._ResourceConfig = None
@@ -89985,6 +90291,28 @@ class RunJobSpecResponse(AbstractModel):
         self._Id = Id
 
     @property
+    def ClusterId(self):
+        r"""<p>所属集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
     def ResourcePartitionId(self):
         r"""<p>所属资源分区ID</p>
         :rtype: str
@@ -89996,6 +90324,17 @@ class RunJobSpecResponse(AbstractModel):
         self._ResourcePartitionId = ResourcePartitionId
 
     @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
     def Queue(self):
         r"""<p>所属队列名称</p>
         :rtype: str
@@ -90005,6 +90344,17 @@ class RunJobSpecResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def SubmissionId(self):
+        r"""<p>Ray Submission ID</p>
+        :rtype: str
+        """
+        return self._SubmissionId
+
+    @SubmissionId.setter
+    def SubmissionId(self, SubmissionId):
+        self._SubmissionId = SubmissionId
 
     @property
     def Status(self):
@@ -90073,6 +90423,17 @@ class RunJobSpecResponse(AbstractModel):
         self._SubAccountUin = SubAccountUin
 
     @property
+    def HistoryUrl(self):
+        r"""<p>历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
     def RunningTime(self):
         r"""<p>运行时间(ms)</p>
         :rtype: int
@@ -90084,6 +90445,17 @@ class RunJobSpecResponse(AbstractModel):
         self._RunningTime = RunningTime
 
     @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: int
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
     def CreateTime(self):
         r"""<p>创建时间</p>
         :rtype: int
@@ -90093,6 +90465,17 @@ class RunJobSpecResponse(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败原因/错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
 
     @property
     def RuntimeEnv(self):
@@ -90240,16 +90623,23 @@ class RunJobSpecResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._SubmissionId = params.get("SubmissionId")
         self._Status = params.get("Status")
         self._Entrypoint = params.get("Entrypoint")
         self._JobName = params.get("JobName")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
+        self._HistoryUrl = params.get("HistoryUrl")
         self._RunningTime = params.get("RunningTime")
+        self._FinishTime = params.get("FinishTime")
         self._CreateTime = params.get("CreateTime")
+        self._ErrorMessage = params.get("ErrorMessage")
         self._RuntimeEnv = params.get("RuntimeEnv")
         self._Image = params.get("Image")
         self._ResourceConfig = params.get("ResourceConfig")
@@ -94038,6 +94428,8 @@ class StartLabResponse(AbstractModel):
         :type Status: str
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
         :param _GroupName: <p>所属集群组名称</p>
         :type GroupName: str
         :param _GroupId: <p>计算组 ID</p>
@@ -94060,12 +94452,20 @@ class StartLabResponse(AbstractModel):
         :type Priority: int
         :param _StartTime: <p>启动时间（最近一次启动）</p>
         :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _DeleteTime: <p>删除时间</p>
+        :type DeleteTime: int
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
         :type Tags: list of Tag
         :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
         :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
         :param _EnableToken: <p>是否开启token认证</p>
         :type EnableToken: bool
+        :param _Token: <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :type Token: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置（JSON）</p>
+        :type AutoscalerOptions: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type LabImagePullType: str
         :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
@@ -94093,6 +94493,7 @@ class StartLabResponse(AbstractModel):
         self._SubAccountUin = None
         self._Status = None
         self._CreateTime = None
+        self._UpdateTime = None
         self._GroupName = None
         self._GroupId = None
         self._ResourceConfig = None
@@ -94104,9 +94505,13 @@ class StartLabResponse(AbstractModel):
         self._AdvancedOptions = None
         self._Priority = None
         self._StartTime = None
+        self._StopTime = None
+        self._DeleteTime = None
         self._Tags = None
         self._PersistentWorkDir = None
         self._EnableToken = None
+        self._Token = None
+        self._AutoscalerOptions = None
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
@@ -94290,6 +94695,17 @@ class StartLabResponse(AbstractModel):
         self._CreateTime = CreateTime
 
     @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
     def GroupName(self):
         r"""<p>所属集群组名称</p>
         :rtype: str
@@ -94411,6 +94827,28 @@ class StartLabResponse(AbstractModel):
         self._StartTime = StartTime
 
     @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间</p>
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
     def Tags(self):
         r"""<p>标签列表（TagKey-TagValue）</p>
         :rtype: list of Tag
@@ -94442,6 +94880,28 @@ class StartLabResponse(AbstractModel):
     @EnableToken.setter
     def EnableToken(self, EnableToken):
         self._EnableToken = EnableToken
+
+    @property
+    def Token(self):
+        r"""<p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置（JSON）</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
 
     @property
     def LabImagePullType(self):
@@ -94521,6 +94981,7 @@ class StartLabResponse(AbstractModel):
         self._SubAccountUin = params.get("SubAccountUin")
         self._Status = params.get("Status")
         self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._GroupName = params.get("GroupName")
         self._GroupId = params.get("GroupId")
         self._ResourceConfig = params.get("ResourceConfig")
@@ -94532,6 +94993,8 @@ class StartLabResponse(AbstractModel):
         self._AdvancedOptions = params.get("AdvancedOptions")
         self._Priority = params.get("Priority")
         self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._DeleteTime = params.get("DeleteTime")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -94542,6 +95005,8 @@ class StartLabResponse(AbstractModel):
             self._PersistentWorkDir = PersistentWorkDir()
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
         self._EnableToken = params.get("EnableToken")
+        self._Token = params.get("Token")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
@@ -96735,16 +97200,22 @@ class StopLabResponse(AbstractModel):
         r"""
         :param _ExampleId: <p>案例模板ID（startMode=EXAMPLE 时使用）</p>
         :type ExampleId: str
+        :param _CodeArchiveUrl: <p>代码包/工程归档地址</p>
+        :type CodeArchiveUrl: str
         :param _Services: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
         :type Services: list of TypeKVPair
         :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
         :type LabImage: str
+        :param _LabImagePullPolicy: <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type LabImagePullPolicy: str
         :param _Id: <p>集群ID</p>
         :type Id: str
         :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
         :type Type: str
         :param _Name: <p>集群名称</p>
         :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
         :param _ResourcePartitionId: <p>所属资源分区ID</p>
         :type ResourcePartitionId: str
         :param _ResourcePartitionName: <p>默认资源分区名称</p>
@@ -96759,22 +97230,38 @@ class StopLabResponse(AbstractModel):
         :type SubAccountUin: str
         :param _Status: <p>集群状态</p>
         :type Status: str
+        :param _StatusMessage: <p>状态详情/错误信息</p>
+        :type StatusMessage: str
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
         :param _ResourceConfig: <p>资源配置(JSON)</p>
         :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
         :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
         :type Image: str
         :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
         :type Catalog: str
         :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
         :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
         :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
         :type AdvancedOptions: str
         :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
         :type Priority: int
         :param _StartTime: <p>启动时间（最近一次启动）</p>
         :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _DeleteTime: <p>删除时间</p>
+        :type DeleteTime: int
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
         :type Tags: list of Tag
         :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
@@ -96783,6 +97270,8 @@ class StopLabResponse(AbstractModel):
         :type EnableToken: bool
         :param _Token: <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
         :type Token: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置（JSON）</p>
+        :type AutoscalerOptions: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type LabImagePullType: str
         :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
@@ -96795,11 +97284,14 @@ class StopLabResponse(AbstractModel):
         :type RequestId: str
         """
         self._ExampleId = None
+        self._CodeArchiveUrl = None
         self._Services = None
         self._LabImage = None
+        self._LabImagePullPolicy = None
         self._Id = None
         self._Type = None
         self._Name = None
+        self._Description = None
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
@@ -96807,18 +97299,27 @@ class StopLabResponse(AbstractModel):
         self._Uin = None
         self._SubAccountUin = None
         self._Status = None
+        self._StatusMessage = None
         self._CreateTime = None
+        self._UpdateTime = None
+        self._GroupName = None
+        self._GroupId = None
         self._ResourceConfig = None
+        self._ResourceConfigId = None
         self._Image = None
         self._Catalog = None
         self._HistoryUrl = None
+        self._ImagePullPolicy = None
         self._AdvancedOptions = None
         self._Priority = None
         self._StartTime = None
+        self._StopTime = None
+        self._DeleteTime = None
         self._Tags = None
         self._PersistentWorkDir = None
         self._EnableToken = None
         self._Token = None
+        self._AutoscalerOptions = None
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
@@ -96835,6 +97336,17 @@ class StopLabResponse(AbstractModel):
     @ExampleId.setter
     def ExampleId(self, ExampleId):
         self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>代码包/工程归档地址</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
 
     @property
     def Services(self):
@@ -96857,6 +97369,17 @@ class StopLabResponse(AbstractModel):
     @LabImage.setter
     def LabImage(self, LabImage):
         self._LabImage = LabImage
+
+    @property
+    def LabImagePullPolicy(self):
+        r"""<p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._LabImagePullPolicy
+
+    @LabImagePullPolicy.setter
+    def LabImagePullPolicy(self, LabImagePullPolicy):
+        self._LabImagePullPolicy = LabImagePullPolicy
 
     @property
     def Id(self):
@@ -96890,6 +97413,17 @@ class StopLabResponse(AbstractModel):
     @Name.setter
     def Name(self, Name):
         self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
     @property
     def ResourcePartitionId(self):
@@ -96969,6 +97503,17 @@ class StopLabResponse(AbstractModel):
         self._Status = Status
 
     @property
+    def StatusMessage(self):
+        r"""<p>状态详情/错误信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
     def CreateTime(self):
         r"""<p>创建时间</p>
         :rtype: int
@@ -96980,6 +97525,39 @@ class StopLabResponse(AbstractModel):
         self._CreateTime = CreateTime
 
     @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
     def ResourceConfig(self):
         r"""<p>资源配置(JSON)</p>
         :rtype: str
@@ -96989,6 +97567,17 @@ class StopLabResponse(AbstractModel):
     @ResourceConfig.setter
     def ResourceConfig(self, ResourceConfig):
         self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
 
     @property
     def Image(self):
@@ -97024,6 +97613,17 @@ class StopLabResponse(AbstractModel):
         self._HistoryUrl = HistoryUrl
 
     @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
     def AdvancedOptions(self):
         r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
         :rtype: str
@@ -97055,6 +97655,28 @@ class StopLabResponse(AbstractModel):
     @StartTime.setter
     def StartTime(self, StartTime):
         self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间</p>
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
 
     @property
     def Tags(self):
@@ -97099,6 +97721,17 @@ class StopLabResponse(AbstractModel):
     @Token.setter
     def Token(self, Token):
         self._Token = Token
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置（JSON）</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
 
     @property
     def LabImagePullType(self):
@@ -97158,6 +97791,7 @@ class StopLabResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
         if params.get("Services") is not None:
             self._Services = []
             for item in params.get("Services"):
@@ -97165,9 +97799,11 @@ class StopLabResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Services.append(obj)
         self._LabImage = params.get("LabImage")
+        self._LabImagePullPolicy = params.get("LabImagePullPolicy")
         self._Id = params.get("Id")
         self._Type = params.get("Type")
         self._Name = params.get("Name")
+        self._Description = params.get("Description")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
@@ -97175,14 +97811,22 @@ class StopLabResponse(AbstractModel):
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
         self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
         self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._GroupName = params.get("GroupName")
+        self._GroupId = params.get("GroupId")
         self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
         self._Image = params.get("Image")
         self._Catalog = params.get("Catalog")
         self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
         self._AdvancedOptions = params.get("AdvancedOptions")
         self._Priority = params.get("Priority")
         self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._DeleteTime = params.get("DeleteTime")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -97194,6 +97838,7 @@ class StopLabResponse(AbstractModel):
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
         self._EnableToken = params.get("EnableToken")
         self._Token = params.get("Token")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
@@ -97889,6 +98534,8 @@ class SubmitRayJobRequest(AbstractModel):
         r"""
         :param _Entrypoint: <p>入口命令</p>
         :type Entrypoint: str
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
         :param _ResourcePartitionId: <p>资源分区ID</p>
         :type ResourcePartitionId: str
         :param _Queue: <p>队列名称</p>
@@ -97913,14 +98560,29 @@ class SubmitRayJobRequest(AbstractModel):
         :type AdvancedOptions: str
         :param _GroupId: <p>计算组ID；与 ClusterId 互斥。组成员展开为候选集群后由 neutrino 侧路由</p>
         :type GroupId: str
+        :param _DispatchStrategy: <p>集群分派策略，本期仅支持 RANDOM；大小写不敏感</p>
+        :type DispatchStrategy: str
         :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
         :type Priority: int
         :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
         :type Tags: list of Tag
+        :param _JobPackage: <p>作业包 URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :type JobPackageSource: str
+        :param _JobSource: <p>业务来源标识，只为调用上下文，不落盘 JobSpec</p>
+        :type JobSource: str
+        :param _FlowId: <p>外部工作流引擎业务键 flowId</p>
+        :type FlowId: str
+        :param _ExecutionId: <p>外部工作流引擎业务键 executionId</p>
+        :type ExecutionId: str
         :param _NetworkConfig: <p>用户网络配置 JSON 字符串</p>
         :type NetworkConfig: str
         """
         self._Entrypoint = None
+        self._ClusterId = None
         self._ResourcePartitionId = None
         self._Queue = None
         self._JobName = None
@@ -97933,8 +98595,15 @@ class SubmitRayJobRequest(AbstractModel):
         self._AutoscalerOptions = None
         self._AdvancedOptions = None
         self._GroupId = None
+        self._DispatchStrategy = None
         self._Priority = None
         self._Tags = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._JobPackageSource = None
+        self._JobSource = None
+        self._FlowId = None
+        self._ExecutionId = None
         self._NetworkConfig = None
 
     @property
@@ -97947,6 +98616,17 @@ class SubmitRayJobRequest(AbstractModel):
     @Entrypoint.setter
     def Entrypoint(self, Entrypoint):
         self._Entrypoint = Entrypoint
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def ResourcePartitionId(self):
@@ -98081,6 +98761,17 @@ class SubmitRayJobRequest(AbstractModel):
         self._GroupId = GroupId
 
     @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略，本期仅支持 RANDOM；大小写不敏感</p>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+    @property
     def Priority(self):
         r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
         :rtype: int
@@ -98103,6 +98794,72 @@ class SubmitRayJobRequest(AbstractModel):
         self._Tags = Tags
 
     @property
+    def JobPackage(self):
+        r"""<p>作业包 URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
+    def JobSource(self):
+        r"""<p>业务来源标识，只为调用上下文，不落盘 JobSpec</p>
+        :rtype: str
+        """
+        return self._JobSource
+
+    @JobSource.setter
+    def JobSource(self, JobSource):
+        self._JobSource = JobSource
+
+    @property
+    def FlowId(self):
+        r"""<p>外部工作流引擎业务键 flowId</p>
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ExecutionId(self):
+        r"""<p>外部工作流引擎业务键 executionId</p>
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
     def NetworkConfig(self):
         r"""<p>用户网络配置 JSON 字符串</p>
         :rtype: str
@@ -98116,6 +98873,7 @@ class SubmitRayJobRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Entrypoint = params.get("Entrypoint")
+        self._ClusterId = params.get("ClusterId")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._Queue = params.get("Queue")
         self._JobName = params.get("JobName")
@@ -98128,6 +98886,7 @@ class SubmitRayJobRequest(AbstractModel):
         self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._AdvancedOptions = params.get("AdvancedOptions")
         self._GroupId = params.get("GroupId")
+        self._DispatchStrategy = params.get("DispatchStrategy")
         self._Priority = params.get("Priority")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -98135,6 +98894,12 @@ class SubmitRayJobRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._JobPackageSource = params.get("JobPackageSource")
+        self._JobSource = params.get("JobSource")
+        self._FlowId = params.get("FlowId")
+        self._ExecutionId = params.get("ExecutionId")
         self._NetworkConfig = params.get("NetworkConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -98155,10 +98920,16 @@ class SubmitRayJobResponse(AbstractModel):
         r"""
         :param _Id: <p>任务ID</p>
         :type Id: str
+        :param _ClusterId: <p>所属集群ID</p>
+        :type ClusterId: str
         :param _ResourcePartitionId: <p>所属资源分区ID</p>
         :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _SubmissionId: <p>Ray Submission ID</p>
+        :type SubmissionId: str
         :param _Status: <p>任务状态</p>
         :type Status: str
         :param _Entrypoint: <p>入口命令</p>
@@ -98171,10 +98942,18 @@ class SubmitRayJobResponse(AbstractModel):
         :type Uin: str
         :param _SubAccountUin: <p>子用户UIN</p>
         :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _HistoryUrl: <p>历史记录链接</p>
+        :type HistoryUrl: str
         :param _RunningTime: <p>运行时间(ms)</p>
         :type RunningTime: int
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: int
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
+        :param _ErrorMessage: <p>失败原因/错误信息</p>
+        :type ErrorMessage: str
         :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
         :type RuntimeEnv: str
         :param _Image: <p>镜像地址</p>
@@ -98187,6 +98966,10 @@ class SubmitRayJobResponse(AbstractModel):
         :type ImagePullPolicy: str
         :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
         :type AutoscalerOptions: str
+        :param _SpecId: <p>来源配置ID</p>
+        :type SpecId: str
+        :param _SpecName: <p>来源配置名称</p>
+        :type SpecName: str
         :param _AdvancedOptions: <p>高级参数，JSON 字符串（透传到 Neutrino）</p>
         :type AdvancedOptions: str
         :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
@@ -98201,22 +98984,31 @@ class SubmitRayJobResponse(AbstractModel):
         :type RequestId: str
         """
         self._Id = None
+        self._ClusterId = None
         self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
         self._Queue = None
+        self._SubmissionId = None
         self._Status = None
         self._Entrypoint = None
         self._JobName = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
+        self._SubAccountName = None
+        self._HistoryUrl = None
         self._RunningTime = None
+        self._FinishTime = None
         self._CreateTime = None
+        self._ErrorMessage = None
         self._RuntimeEnv = None
         self._Image = None
         self._ResourceConfig = None
         self._Catalog = None
         self._ImagePullPolicy = None
         self._AutoscalerOptions = None
+        self._SpecId = None
+        self._SpecName = None
         self._AdvancedOptions = None
         self._Priority = None
         self._Tags = None
@@ -98236,6 +99028,17 @@ class SubmitRayJobResponse(AbstractModel):
         self._Id = Id
 
     @property
+    def ClusterId(self):
+        r"""<p>所属集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
     def ResourcePartitionId(self):
         r"""<p>所属资源分区ID</p>
         :rtype: str
@@ -98247,6 +99050,17 @@ class SubmitRayJobResponse(AbstractModel):
         self._ResourcePartitionId = ResourcePartitionId
 
     @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
     def Queue(self):
         r"""<p>所属队列名称</p>
         :rtype: str
@@ -98256,6 +99070,17 @@ class SubmitRayJobResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def SubmissionId(self):
+        r"""<p>Ray Submission ID</p>
+        :rtype: str
+        """
+        return self._SubmissionId
+
+    @SubmissionId.setter
+    def SubmissionId(self, SubmissionId):
+        self._SubmissionId = SubmissionId
 
     @property
     def Status(self):
@@ -98324,6 +99149,28 @@ class SubmitRayJobResponse(AbstractModel):
         self._SubAccountUin = SubAccountUin
 
     @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
     def RunningTime(self):
         r"""<p>运行时间(ms)</p>
         :rtype: int
@@ -98335,6 +99182,17 @@ class SubmitRayJobResponse(AbstractModel):
         self._RunningTime = RunningTime
 
     @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: int
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
     def CreateTime(self):
         r"""<p>创建时间</p>
         :rtype: int
@@ -98344,6 +99202,17 @@ class SubmitRayJobResponse(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败原因/错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
 
     @property
     def RuntimeEnv(self):
@@ -98410,6 +99279,28 @@ class SubmitRayJobResponse(AbstractModel):
     @AutoscalerOptions.setter
     def AutoscalerOptions(self, AutoscalerOptions):
         self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def SpecId(self):
+        r"""<p>来源配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def SpecName(self):
+        r"""<p>来源配置名称</p>
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
 
     @property
     def AdvancedOptions(self):
@@ -98480,22 +99371,31 @@ class SubmitRayJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._ClusterId = params.get("ClusterId")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._SubmissionId = params.get("SubmissionId")
         self._Status = params.get("Status")
         self._Entrypoint = params.get("Entrypoint")
         self._JobName = params.get("JobName")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._HistoryUrl = params.get("HistoryUrl")
         self._RunningTime = params.get("RunningTime")
+        self._FinishTime = params.get("FinishTime")
         self._CreateTime = params.get("CreateTime")
+        self._ErrorMessage = params.get("ErrorMessage")
         self._RuntimeEnv = params.get("RuntimeEnv")
         self._Image = params.get("Image")
         self._ResourceConfig = params.get("ResourceConfig")
         self._Catalog = params.get("Catalog")
         self._ImagePullPolicy = params.get("ImagePullPolicy")
         self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._SpecId = params.get("SpecId")
+        self._SpecName = params.get("SpecName")
         self._AdvancedOptions = params.get("AdvancedOptions")
         self._Priority = params.get("Priority")
         if params.get("Tags") is not None:
@@ -107780,6 +108680,8 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
         :type ClusterId: str
         :param _DispatchStrategy: <p>集群分派策略（本期仅支持 RANDOM；NULL 时退化为依赖 ClusterGroup 配置兜底）</p>
         :type DispatchStrategy: str
+        :param _SubmissionTarget: <p>作业提交目标：GROUP（按计算组分派）/ CLUSTER（指定集群）/ SERVERLESS（按 Serverless 拉起）</p>
+        :type SubmissionTarget: str
         :param _JobPackage: <p>作业包URL</p>
         :type JobPackage: str
         :param _JobPackageName: <p>作业包名称</p>
@@ -107805,8 +108707,14 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
         :type AdvancedOptions: str
         :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
         :type Tags: list of Tag
+        :param _GroupName: <p>计算组名称</p>
+        :type GroupName: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
         :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺时按 Local 处理</p>
         :type JobPackageSource: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -107829,6 +108737,7 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
         self._GroupId = None
         self._ClusterId = None
         self._DispatchStrategy = None
+        self._SubmissionTarget = None
         self._JobPackage = None
         self._JobPackageName = None
         self._Priority = None
@@ -107841,7 +108750,10 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
         self._HasRunningJobs = None
         self._AdvancedOptions = None
         self._Tags = None
+        self._GroupName = None
+        self._ClusterName = None
         self._JobPackageSource = None
+        self._SubAccountName = None
         self._RequestId = None
 
     @property
@@ -108056,6 +108968,17 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
         self._DispatchStrategy = DispatchStrategy
 
     @property
+    def SubmissionTarget(self):
+        r"""<p>作业提交目标：GROUP（按计算组分派）/ CLUSTER（指定集群）/ SERVERLESS（按 Serverless 拉起）</p>
+        :rtype: str
+        """
+        return self._SubmissionTarget
+
+    @SubmissionTarget.setter
+    def SubmissionTarget(self, SubmissionTarget):
+        self._SubmissionTarget = SubmissionTarget
+
+    @property
     def JobPackage(self):
         r"""<p>作业包URL</p>
         :rtype: str
@@ -108189,6 +109112,28 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
         self._Tags = Tags
 
     @property
+    def GroupName(self):
+        r"""<p>计算组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
     def JobPackageSource(self):
         r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺时按 Local 处理</p>
         :rtype: str
@@ -108198,6 +109143,17 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
     @JobPackageSource.setter
     def JobPackageSource(self, JobPackageSource):
         self._JobPackageSource = JobPackageSource
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
 
     @property
     def RequestId(self):
@@ -108231,6 +109187,7 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
         self._GroupId = params.get("GroupId")
         self._ClusterId = params.get("ClusterId")
         self._DispatchStrategy = params.get("DispatchStrategy")
+        self._SubmissionTarget = params.get("SubmissionTarget")
         self._JobPackage = params.get("JobPackage")
         self._JobPackageName = params.get("JobPackageName")
         self._Priority = params.get("Priority")
@@ -108248,7 +109205,10 @@ class UpdateJobSpecPriorityResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._GroupName = params.get("GroupName")
+        self._ClusterName = params.get("ClusterName")
         self._JobPackageSource = params.get("JobPackageSource")
+        self._SubAccountName = params.get("SubAccountName")
         self._RequestId = params.get("RequestId")
 
 
@@ -109254,6 +110214,8 @@ class UpdateLabRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Id: <p>数据实验室ID</p>
+        :type Id: str
         :param _Name: <p>数据实验室名称</p>
         :type Name: str
         :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
@@ -109264,20 +110226,28 @@ class UpdateLabRequest(AbstractModel):
         :type Description: str
         :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
         :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置</p>
+        :type ResourceConfig: str
         :param _ResourceConfigId: <p>资源配置ID</p>
         :type ResourceConfigId: str
+        :param _Catalog: <p>存储卷和挂载卷配置</p>
+        :type Catalog: str
         :param _GroupId: <p>计算组 ID</p>
         :type GroupId: str
         :param _ResourcePartitionId: <p>资源分区ID</p>
         :type ResourcePartitionId: str
         :param _Queue: <p>队列名称</p>
         :type Queue: str
+        :param _ServiceTypes: <p>服务类型列表(VSCODE, JUPYTER, WEBSHELL)，不填则使用默认配置</p>
+        :type ServiceTypes: list of str
         :param _ExampleId: <p>案例ID，当 startMode=EXAMPLE 时必填</p>
         :type ExampleId: str
         :param _CodeArchiveUrl: <p>案例代码包地址，当 startMode=EXAMPLE 时填写</p>
         :type CodeArchiveUrl: str
         :param _LabImagePullPolicy: <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
         :type LabImagePullPolicy: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
         :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
         :type Priority: int
         :param _EnableToken: <p>是否开启token认证</p>
@@ -109286,6 +110256,8 @@ class UpdateLabRequest(AbstractModel):
         :type Tags: list of Tag
         :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
         :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _AutoscalerOptions: <p>弹性伸缩配置（JSON）</p>
+        :type AutoscalerOptions: str
         :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type ImagePullType: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
@@ -109293,25 +110265,42 @@ class UpdateLabRequest(AbstractModel):
         :param _NetworkConfig: <p>用户网络配置(JSON，跨租户 ENI 等)</p>
         :type NetworkConfig: str
         """
+        self._Id = None
         self._Name = None
         self._Image = None
         self._LabImage = None
         self._Description = None
         self._ImagePullPolicy = None
+        self._ResourceConfig = None
         self._ResourceConfigId = None
+        self._Catalog = None
         self._GroupId = None
         self._ResourcePartitionId = None
         self._Queue = None
+        self._ServiceTypes = None
         self._ExampleId = None
         self._CodeArchiveUrl = None
         self._LabImagePullPolicy = None
+        self._AdvancedOptions = None
         self._Priority = None
         self._EnableToken = None
         self._Tags = None
         self._PersistentWorkDir = None
+        self._AutoscalerOptions = None
         self._ImagePullType = None
         self._LabImagePullType = None
         self._NetworkConfig = None
+
+    @property
+    def Id(self):
+        r"""<p>数据实验室ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def Name(self):
@@ -109369,6 +110358,17 @@ class UpdateLabRequest(AbstractModel):
         self._ImagePullPolicy = ImagePullPolicy
 
     @property
+    def ResourceConfig(self):
+        r"""<p>资源配置</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
     def ResourceConfigId(self):
         r"""<p>资源配置ID</p>
         :rtype: str
@@ -109378,6 +110378,17 @@ class UpdateLabRequest(AbstractModel):
     @ResourceConfigId.setter
     def ResourceConfigId(self, ResourceConfigId):
         self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
 
     @property
     def GroupId(self):
@@ -109413,6 +110424,17 @@ class UpdateLabRequest(AbstractModel):
         self._Queue = Queue
 
     @property
+    def ServiceTypes(self):
+        r"""<p>服务类型列表(VSCODE, JUPYTER, WEBSHELL)，不填则使用默认配置</p>
+        :rtype: list of str
+        """
+        return self._ServiceTypes
+
+    @ServiceTypes.setter
+    def ServiceTypes(self, ServiceTypes):
+        self._ServiceTypes = ServiceTypes
+
+    @property
     def ExampleId(self):
         r"""<p>案例ID，当 startMode=EXAMPLE 时必填</p>
         :rtype: str
@@ -109444,6 +110466,17 @@ class UpdateLabRequest(AbstractModel):
     @LabImagePullPolicy.setter
     def LabImagePullPolicy(self, LabImagePullPolicy):
         self._LabImagePullPolicy = LabImagePullPolicy
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
 
     @property
     def Priority(self):
@@ -109490,6 +110523,17 @@ class UpdateLabRequest(AbstractModel):
         self._PersistentWorkDir = PersistentWorkDir
 
     @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置（JSON）</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
     def ImagePullType(self):
         r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :rtype: str
@@ -109524,18 +110568,23 @@ class UpdateLabRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Id = params.get("Id")
         self._Name = params.get("Name")
         self._Image = params.get("Image")
         self._LabImage = params.get("LabImage")
         self._Description = params.get("Description")
         self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
         self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Catalog = params.get("Catalog")
         self._GroupId = params.get("GroupId")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._Queue = params.get("Queue")
+        self._ServiceTypes = params.get("ServiceTypes")
         self._ExampleId = params.get("ExampleId")
         self._CodeArchiveUrl = params.get("CodeArchiveUrl")
         self._LabImagePullPolicy = params.get("LabImagePullPolicy")
+        self._AdvancedOptions = params.get("AdvancedOptions")
         self._Priority = params.get("Priority")
         self._EnableToken = params.get("EnableToken")
         if params.get("Tags") is not None:
@@ -109547,6 +110596,7 @@ class UpdateLabRequest(AbstractModel):
         if params.get("PersistentWorkDir") is not None:
             self._PersistentWorkDir = PersistentWorkDir()
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._ImagePullType = params.get("ImagePullType")
         self._LabImagePullType = params.get("LabImagePullType")
         self._NetworkConfig = params.get("NetworkConfig")
@@ -109595,8 +110645,18 @@ class UpdateLabResponse(AbstractModel):
         :type AppId: int
         :param _Uin: <p>用户UIN</p>
         :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
         :param _Status: <p>集群状态</p>
         :type Status: str
+        :param _StatusMessage: <p>状态详情/错误信息</p>
+        :type StatusMessage: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
         :param _GroupId: <p>计算组 ID</p>
         :type GroupId: str
         :param _ResourceConfig: <p>资源配置(JSON)</p>
@@ -109605,14 +110665,32 @@ class UpdateLabResponse(AbstractModel):
         :type ResourceConfigId: str
         :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
         :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
         :param _ImagePullPolicy: <p>镜像拉取策略</p>
         :type ImagePullPolicy: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
         :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
         :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _DeleteTime: <p>删除时间</p>
+        :type DeleteTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
         :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
         :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
         :param _EnableToken: <p>是否开启token认证</p>
         :type EnableToken: bool
+        :param _Token: <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :type Token: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置（JSON）</p>
+        :type AutoscalerOptions: str
         :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
         :type LabImagePullType: str
         :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
@@ -109638,15 +110716,29 @@ class UpdateLabResponse(AbstractModel):
         self._Queue = None
         self._AppId = None
         self._Uin = None
+        self._SubAccountUin = None
         self._Status = None
+        self._StatusMessage = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._GroupName = None
         self._GroupId = None
         self._ResourceConfig = None
         self._ResourceConfigId = None
         self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
         self._ImagePullPolicy = None
+        self._AdvancedOptions = None
         self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._DeleteTime = None
+        self._Tags = None
         self._PersistentWorkDir = None
         self._EnableToken = None
+        self._Token = None
+        self._AutoscalerOptions = None
         self._LabImagePullType = None
         self._SubAccountName = None
         self._ImagePullType = None
@@ -109808,6 +110900,17 @@ class UpdateLabResponse(AbstractModel):
         self._Uin = Uin
 
     @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
     def Status(self):
         r"""<p>集群状态</p>
         :rtype: str
@@ -109817,6 +110920,50 @@ class UpdateLabResponse(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def StatusMessage(self):
+        r"""<p>状态详情/错误信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
 
     @property
     def GroupId(self):
@@ -109863,6 +111010,28 @@ class UpdateLabResponse(AbstractModel):
         self._Image = Image
 
     @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
     def ImagePullPolicy(self):
         r"""<p>镜像拉取策略</p>
         :rtype: str
@@ -109874,6 +111043,17 @@ class UpdateLabResponse(AbstractModel):
         self._ImagePullPolicy = ImagePullPolicy
 
     @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
     def Priority(self):
         r"""<p>优先级（1-9，数字越大优先级越高）</p>
         :rtype: int
@@ -109883,6 +111063,50 @@ class UpdateLabResponse(AbstractModel):
     @Priority.setter
     def Priority(self, Priority):
         self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间</p>
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
     @property
     def PersistentWorkDir(self):
@@ -109905,6 +111129,28 @@ class UpdateLabResponse(AbstractModel):
     @EnableToken.setter
     def EnableToken(self, EnableToken):
         self._EnableToken = EnableToken
+
+    @property
+    def Token(self):
+        r"""<p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置（JSON）</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
 
     @property
     def LabImagePullType(self):
@@ -109982,17 +111228,36 @@ class UpdateLabResponse(AbstractModel):
         self._Queue = params.get("Queue")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
         self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._GroupName = params.get("GroupName")
         self._GroupId = params.get("GroupId")
         self._ResourceConfig = params.get("ResourceConfig")
         self._ResourceConfigId = params.get("ResourceConfigId")
         self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
         self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AdvancedOptions = params.get("AdvancedOptions")
         self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._DeleteTime = params.get("DeleteTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         if params.get("PersistentWorkDir") is not None:
             self._PersistentWorkDir = PersistentWorkDir()
             self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
         self._EnableToken = params.get("EnableToken")
+        self._Token = params.get("Token")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
@@ -110798,12 +112063,16 @@ class UpdateRayJobPriorityResponse(AbstractModel):
         r"""
         :param _Id: <p>任务ID</p>
         :type Id: str
+        :param _ClusterId: <p>所属集群ID</p>
+        :type ClusterId: str
         :param _ResourcePartitionId: <p>所属资源分区ID</p>
         :type ResourcePartitionId: str
         :param _ResourcePartitionName: <p>默认资源分区名称</p>
         :type ResourcePartitionName: str
         :param _Queue: <p>所属队列名称</p>
         :type Queue: str
+        :param _SubmissionId: <p>Ray Submission ID</p>
+        :type SubmissionId: str
         :param _Status: <p>任务状态</p>
         :type Status: str
         :param _Entrypoint: <p>入口命令</p>
@@ -110816,6 +112085,8 @@ class UpdateRayJobPriorityResponse(AbstractModel):
         :type Uin: str
         :param _SubAccountUin: <p>创建账号</p>
         :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
         :param _HistoryUrl: <p>历史记录链接</p>
         :type HistoryUrl: str
         :param _RunningTime: <p>运行时间(ms)</p>
@@ -110824,6 +112095,10 @@ class UpdateRayJobPriorityResponse(AbstractModel):
         :type FinishTime: int
         :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
+        :param _ErrorMessage: <p>失败原因/错误信息</p>
+        :type ErrorMessage: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
         :param _Image: <p>镜像地址</p>
         :type Image: str
         :param _ResourceConfig: <p>资源配置(JSON)</p>
@@ -110832,39 +112107,56 @@ class UpdateRayJobPriorityResponse(AbstractModel):
         :type Catalog: str
         :param _ImagePullPolicy: <p>镜像拉取策略</p>
         :type ImagePullPolicy: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
         :param _SpecId: <p>来源配置ID</p>
         :type SpecId: str
+        :param _SpecName: <p>来源配置名称</p>
+        :type SpecName: str
+        :param _AdvancedOptions: <p>高级参数，JSON 字符串</p>
+        :type AdvancedOptions: str
         :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
         :type Priority: int
         :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
         :type Tags: list of Tag
         :param _JobSource: <p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
         :type JobSource: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Id = None
+        self._ClusterId = None
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
         self._Queue = None
+        self._SubmissionId = None
         self._Status = None
         self._Entrypoint = None
         self._JobName = None
         self._AppId = None
         self._Uin = None
         self._SubAccountUin = None
+        self._SubAccountName = None
         self._HistoryUrl = None
         self._RunningTime = None
         self._FinishTime = None
         self._CreateTime = None
+        self._ErrorMessage = None
+        self._RuntimeEnv = None
         self._Image = None
         self._ResourceConfig = None
         self._Catalog = None
         self._ImagePullPolicy = None
+        self._AutoscalerOptions = None
         self._SpecId = None
+        self._SpecName = None
+        self._AdvancedOptions = None
         self._Priority = None
         self._Tags = None
         self._JobSource = None
+        self._ClusterName = None
         self._RequestId = None
 
     @property
@@ -110877,6 +112169,17 @@ class UpdateRayJobPriorityResponse(AbstractModel):
     @Id.setter
     def Id(self, Id):
         self._Id = Id
+
+    @property
+    def ClusterId(self):
+        r"""<p>所属集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
 
     @property
     def ResourcePartitionId(self):
@@ -110910,6 +112213,17 @@ class UpdateRayJobPriorityResponse(AbstractModel):
     @Queue.setter
     def Queue(self, Queue):
         self._Queue = Queue
+
+    @property
+    def SubmissionId(self):
+        r"""<p>Ray Submission ID</p>
+        :rtype: str
+        """
+        return self._SubmissionId
+
+    @SubmissionId.setter
+    def SubmissionId(self, SubmissionId):
+        self._SubmissionId = SubmissionId
 
     @property
     def Status(self):
@@ -110978,6 +112292,17 @@ class UpdateRayJobPriorityResponse(AbstractModel):
         self._SubAccountUin = SubAccountUin
 
     @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
     def HistoryUrl(self):
         r"""<p>历史记录链接</p>
         :rtype: str
@@ -111020,6 +112345,28 @@ class UpdateRayJobPriorityResponse(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败原因/错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
 
     @property
     def Image(self):
@@ -111066,6 +112413,17 @@ class UpdateRayJobPriorityResponse(AbstractModel):
         self._ImagePullPolicy = ImagePullPolicy
 
     @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
     def SpecId(self):
         r"""<p>来源配置ID</p>
         :rtype: str
@@ -111075,6 +112433,28 @@ class UpdateRayJobPriorityResponse(AbstractModel):
     @SpecId.setter
     def SpecId(self, SpecId):
         self._SpecId = SpecId
+
+    @property
+    def SpecName(self):
+        r"""<p>来源配置名称</p>
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数，JSON 字符串</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
 
     @property
     def Priority(self):
@@ -111110,6 +112490,17 @@ class UpdateRayJobPriorityResponse(AbstractModel):
         self._JobSource = JobSource
 
     @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -111123,24 +112514,32 @@ class UpdateRayJobPriorityResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._ClusterId = params.get("ClusterId")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._Queue = params.get("Queue")
+        self._SubmissionId = params.get("SubmissionId")
         self._Status = params.get("Status")
         self._Entrypoint = params.get("Entrypoint")
         self._JobName = params.get("JobName")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
         self._HistoryUrl = params.get("HistoryUrl")
         self._RunningTime = params.get("RunningTime")
         self._FinishTime = params.get("FinishTime")
         self._CreateTime = params.get("CreateTime")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._RuntimeEnv = params.get("RuntimeEnv")
         self._Image = params.get("Image")
         self._ResourceConfig = params.get("ResourceConfig")
         self._Catalog = params.get("Catalog")
         self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._SpecId = params.get("SpecId")
+        self._SpecName = params.get("SpecName")
+        self._AdvancedOptions = params.get("AdvancedOptions")
         self._Priority = params.get("Priority")
         if params.get("Tags") is not None:
             self._Tags = []
@@ -111149,6 +112548,7 @@ class UpdateRayJobPriorityResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._JobSource = params.get("JobSource")
+        self._ClusterName = params.get("ClusterName")
         self._RequestId = params.get("RequestId")
 
 

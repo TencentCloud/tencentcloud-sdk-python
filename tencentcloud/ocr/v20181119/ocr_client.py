@@ -643,7 +643,7 @@ class OcrClient(AbstractClient):
 
     def GeneralBasicOCR(self, request):
         r"""**建议您使用识别效果更好的[通用文字识别（高精度版](https://cloud.tencent.com/document/product/866/34937 )）**
-        本接口支持图像整体文字的检测和识别。可以识别中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语，阿拉伯语20种语言，且各种语言均支持与英文混合的文字识别。
+        本接口支持图像整体文字的检测和识别。可以识别中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语21种语言，且各种语言均支持与英文混合的文字识别。
 
         适用于印刷文档识别、网络图片识别、广告图文字识别、街景店招牌识别、菜单识别、视频标题识别、头像文字识别等场景。
 
@@ -676,8 +676,8 @@ class OcrClient(AbstractClient):
                 </tr>
                 <tr>
                   <td>支持的语言</td>
-                  <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语</td>
-                  <td>中文、英文、中英文、泰语、印尼语、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、哈萨克语</td>
+                  <td>中文、英文、中英文、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语</td>
+                  <td>中文、英文、中英文、泰语、印尼语、日语、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、哈萨克语、藏语、阿拉伯语、维吾尔语、捷克语、希腊语、希伯来语、克罗地亚语、波兰语、罗马尼亚语、斯洛伐克语、斯洛文尼亚语、土耳其语、保加利亚语、爱沙尼亚语、拉脱维亚语、立陶宛语、乌尔都文、塞尔维亚文、欧西坦文、毛利文、阿尔巴尼亚文、斯瓦希里文、乌兹别克文、乌克兰文、阿巴扎文、南非荷兰文、威尔士文、冰岛文、库尔德文、达尔瓦文、因古什文、拉克文、莱兹甘文、塔巴萨兰文、沙特阿拉伯文、阿瓦尔文、阿迪赫文、印度-古吉拉特语、印度-印地语、印度-孟加拉语、印度-卡纳达语、印度-马拉亚拉姆语、印度-马拉地语、印度-旁遮普语、印度-泰米尔语、印度-泰卢固语、阿塞拜疆语、波斯尼亚语、加泰罗尼亚语、卢森堡语、马耳他语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语、尼泊尔语、尼瓦尔语、梵语、马其顿语、柯尔克孜语、车臣语、鞑靼语、加利西亚语、马达加斯加语、老挝、巴什基尔文、马里文、奥塞梯文、布里亚特文、楚瓦什文、萨达里文、马加希文、约鲁巴文、巴利文、博杰普尔文、迈蒂利文、孔卡尼文、比哈尔文</td>
                 </tr>
                 <tr>
                   <td>自动语言检测</td>
@@ -847,6 +847,52 @@ class OcrClient(AbstractClient):
             body = self.call("GeneralHandwritingOCR", params, headers=headers)
             response = json.loads(body)
             model = models.GeneralHandwritingOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GenerateTextEmbedding(self, request):
+        r"""本接口调用文本向量模型，将文本转换为数值表示的向量，可用于文本检索、RAG 召回、相似度计算等场景。
+
+        :param request: Request instance for GenerateTextEmbedding.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.GenerateTextEmbeddingRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GenerateTextEmbeddingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateTextEmbedding", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateTextEmbeddingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GenerateVLEmbedding(self, request):
+        r"""本接口基于多模态向量模型，支持文本、图片、视频及图文混合输入并转换为向量，可用于跨模态检索、RAG 召回、相似度计算与聚类分析等场景。
+
+        :param request: Request instance for GenerateVLEmbedding.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.GenerateVLEmbeddingRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GenerateVLEmbeddingResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GenerateVLEmbedding", params, headers=headers)
+            response = json.loads(body)
+            model = models.GenerateVLEmbeddingResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

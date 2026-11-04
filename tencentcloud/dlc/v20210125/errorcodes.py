@@ -218,6 +218,9 @@ INVALIDPARAMETER_BATCHSQLFILTERSKEYTYPENOTMATH = 'InvalidParameter.BatchSQLFilte
 # 交互式SQL任务指定SortBy类型不匹配，当前仅支持: create-time/resource-usage
 INVALIDPARAMETER_BATCHSQLTASKSORTBYTYPENOTMATCH = 'InvalidParameter.BatchSQLTaskSortByTypeNotMatch'
 
+# 参数错误：计算组不存在或已被软删除，请检查 GroupId
+INVALIDPARAMETER_CLUSTERGROUPNOTFOUND = 'InvalidParameter.ClusterGroupNotFound'
+
 # 当前配置不被允许
 INVALIDPARAMETER_CONFIGKEYPROHIBITED = 'InvalidParameter.ConfigKeyProhibited'
 
@@ -278,6 +281,9 @@ INVALIDPARAMETER_DUPLICATEUSERVPCCONNECTIONNAME = 'InvalidParameter.DuplicateUse
 # 指定Filter.Values参数数量超限，当前应小于等于50个
 INVALIDPARAMETER_FILTERSVALUESNUMBEROUTOFLIMIT = 'InvalidParameter.FiltersValuesNumberOutOfLimit'
 
+# 参数错误：传入 FlowId 时必须同时传入 ExecutionId，二者必须同时出现
+INVALIDPARAMETER_FLOWIDREQUIRESEXECUTIONID = 'InvalidParameter.FlowIdRequiresExecutionId'
+
 # 指定集群镜像Cluster参数格式非JSON
 INVALIDPARAMETER_IMAGECLUSTERPARAMETERSFORMATNOTJSON = 'InvalidParameter.ImageClusterParametersFormatNotJson'
 
@@ -313,6 +319,9 @@ INVALIDPARAMETER_INVALIDACCESSPOLICY = 'InvalidParameter.InvalidAccessPolicy'
 
 # 指定的Spark任务程序包文件格式不匹配，当前仅支持.jar或.py
 INVALIDPARAMETER_INVALIDAPPFILEFORMAT = 'InvalidParameter.InvalidAppFileFormat'
+
+# AppId格式不正确
+INVALIDPARAMETER_INVALIDAPPID = 'InvalidParameter.InvalidAppId'
 
 # 指定的桶不存在
 INVALIDPARAMETER_INVALIDBUCKETNAME = 'InvalidParameter.InvalidBucketName'
@@ -415,6 +424,9 @@ INVALIDPARAMETER_INVALIDINFOTYPE = 'InvalidParameter.InvalidInfoType'
 
 # 指定参数int类型转换失败
 INVALIDPARAMETER_INVALIDINTFORMAT = 'InvalidParameter.InvalidIntFormat'
+
+# 参数错误：JobSource 取值非法（不能为空白、长度不超过 64、不含控制字符）
+INVALIDPARAMETER_INVALIDJOBSOURCE = 'InvalidParameter.InvalidJobSource'
 
 # 无效的最大结果数。
 INVALIDPARAMETER_INVALIDMAXRESULTS = 'InvalidParameter.InvalidMaxResults'

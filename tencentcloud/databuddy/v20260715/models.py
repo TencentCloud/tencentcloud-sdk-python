@@ -7999,6 +7999,146 @@ class FieldTagInfo(AbstractModel):
         
 
 
+class FileArrivalConfig(AbstractModel):
+    r"""文件到达触发信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucket: <p>运行命中的文件所在COS桶名</p><p>举例：dlc-sh-store-139153****</p><p>入参不填，如果填写则忽略；</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosBucket: str
+        :param _CosRegion: <p>运行命中的文件所在COS地域</p><p>举例：ap-shanghai</p><p>入参不填，如果填写则忽略；</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosRegion: str
+        :param _FileStoragePath: <p>文件存储路径</p><p>举例：cosn://dlc-sh-store-139153****/test/</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileStoragePath: str
+        :param _FileNamePattern: <p>文件名匹配规则</p><p>举例：</p><ul><li>空: 当前监听范围内的全部文件</li><li><code>*.csv: 任意以 .csv 结尾的文件名</code></li><li><code>orders_*.csv: orders_ 开头且以 .csv 结尾的文件名</code></li><li>orders.csv: 精确匹配 orders.csv</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileNamePattern: str
+        :param _Recursive: <p>是否包含子目录</p><p>默认值：false</p><p>是否递归匹配子目录，默认 false</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Recursive: bool
+        :param _MinTriggerIntervalTime: <p>最小触发间隔时间</p><p>参数格式：数字</p><p>默认值：300</p><p>单位：秒；默认 300秒（5 分钟）；60-86400 秒（1–1440 分钟）；两次触发之间的最小间隔。期间内到达的文件，需等待该时间结束后才会触发运行。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinTriggerIntervalTime: str
+        :param _BatchWaitTime: <p>批次等待时间</p><p>参数格式：数字</p><p>默认值：120</p><p>单位：秒；默认 120秒（2 分钟）；60-3600 秒（1–60 分钟）；文件到达后等待该时长才触发运行。若等待期间再次有新文件到达，则重新开始计时。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BatchWaitTime: str
+        """
+        self._CosBucket = None
+        self._CosRegion = None
+        self._FileStoragePath = None
+        self._FileNamePattern = None
+        self._Recursive = None
+        self._MinTriggerIntervalTime = None
+        self._BatchWaitTime = None
+
+    @property
+    def CosBucket(self):
+        r"""<p>运行命中的文件所在COS桶名</p><p>举例：dlc-sh-store-139153****</p><p>入参不填，如果填写则忽略；</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CosBucket
+
+    @CosBucket.setter
+    def CosBucket(self, CosBucket):
+        self._CosBucket = CosBucket
+
+    @property
+    def CosRegion(self):
+        r"""<p>运行命中的文件所在COS地域</p><p>举例：ap-shanghai</p><p>入参不填，如果填写则忽略；</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CosRegion
+
+    @CosRegion.setter
+    def CosRegion(self, CosRegion):
+        self._CosRegion = CosRegion
+
+    @property
+    def FileStoragePath(self):
+        r"""<p>文件存储路径</p><p>举例：cosn://dlc-sh-store-139153****/test/</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileStoragePath
+
+    @FileStoragePath.setter
+    def FileStoragePath(self, FileStoragePath):
+        self._FileStoragePath = FileStoragePath
+
+    @property
+    def FileNamePattern(self):
+        r"""<p>文件名匹配规则</p><p>举例：</p><ul><li>空: 当前监听范围内的全部文件</li><li><code>*.csv: 任意以 .csv 结尾的文件名</code></li><li><code>orders_*.csv: orders_ 开头且以 .csv 结尾的文件名</code></li><li>orders.csv: 精确匹配 orders.csv</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileNamePattern
+
+    @FileNamePattern.setter
+    def FileNamePattern(self, FileNamePattern):
+        self._FileNamePattern = FileNamePattern
+
+    @property
+    def Recursive(self):
+        r"""<p>是否包含子目录</p><p>默认值：false</p><p>是否递归匹配子目录，默认 false</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Recursive
+
+    @Recursive.setter
+    def Recursive(self, Recursive):
+        self._Recursive = Recursive
+
+    @property
+    def MinTriggerIntervalTime(self):
+        r"""<p>最小触发间隔时间</p><p>参数格式：数字</p><p>默认值：300</p><p>单位：秒；默认 300秒（5 分钟）；60-86400 秒（1–1440 分钟）；两次触发之间的最小间隔。期间内到达的文件，需等待该时间结束后才会触发运行。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MinTriggerIntervalTime
+
+    @MinTriggerIntervalTime.setter
+    def MinTriggerIntervalTime(self, MinTriggerIntervalTime):
+        self._MinTriggerIntervalTime = MinTriggerIntervalTime
+
+    @property
+    def BatchWaitTime(self):
+        r"""<p>批次等待时间</p><p>参数格式：数字</p><p>默认值：120</p><p>单位：秒；默认 120秒（2 分钟）；60-3600 秒（1–60 分钟）；文件到达后等待该时长才触发运行。若等待期间再次有新文件到达，则重新开始计时。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BatchWaitTime
+
+    @BatchWaitTime.setter
+    def BatchWaitTime(self, BatchWaitTime):
+        self._BatchWaitTime = BatchWaitTime
+
+
+    def _deserialize(self, params):
+        self._CosBucket = params.get("CosBucket")
+        self._CosRegion = params.get("CosRegion")
+        self._FileStoragePath = params.get("FileStoragePath")
+        self._FileNamePattern = params.get("FileNamePattern")
+        self._Recursive = params.get("Recursive")
+        self._MinTriggerIntervalTime = params.get("MinTriggerIntervalTime")
+        self._BatchWaitTime = params.get("BatchWaitTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FileConfig(AbstractModel):
     r"""文件运行配置
 
@@ -12174,6 +12314,9 @@ class GetWorkflowTaskRunRsp(AbstractModel):
         :param _ScheduledTime: <p>计划调度时间</p><p>参数格式：毫秒时间戳（UTC）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduledTime: str
+        :param _FileArrivalConfig: <p>工作流调度文件到达方式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileArrivalConfig: :class:`tencentcloud.databuddy.v20260715.models.FileArrivalConfig`
         """
         self._TaskName = None
         self._WorkflowTaskRunId = None
@@ -12214,6 +12357,7 @@ class GetWorkflowTaskRunRsp(AbstractModel):
         self._RunResult = None
         self._InnerWorkflowTaskRun = None
         self._ScheduledTime = None
+        self._FileArrivalConfig = None
 
     @property
     def TaskName(self):
@@ -12683,6 +12827,18 @@ class GetWorkflowTaskRunRsp(AbstractModel):
     def ScheduledTime(self, ScheduledTime):
         self._ScheduledTime = ScheduledTime
 
+    @property
+    def FileArrivalConfig(self):
+        r"""<p>工作流调度文件到达方式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FileArrivalConfig`
+        """
+        return self._FileArrivalConfig
+
+    @FileArrivalConfig.setter
+    def FileArrivalConfig(self, FileArrivalConfig):
+        self._FileArrivalConfig = FileArrivalConfig
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -12731,6 +12887,9 @@ class GetWorkflowTaskRunRsp(AbstractModel):
             self._InnerWorkflowTaskRun = InnerWorkflowTaskRun()
             self._InnerWorkflowTaskRun._deserialize(params.get("InnerWorkflowTaskRun"))
         self._ScheduledTime = params.get("ScheduledTime")
+        if params.get("FileArrivalConfig") is not None:
+            self._FileArrivalConfig = FileArrivalConfig()
+            self._FileArrivalConfig._deserialize(params.get("FileArrivalConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14002,7 +14161,7 @@ class InnerWorkflowTaskRunIterationBrief(AbstractModel):
 
 
 class InnerWorkflowTaskRunListOption(AbstractModel):
-    r"""内嵌工作流任务运行列表选项（仅限 FOR_EACH 任务使用）
+    r"""<p>嵌套工作流任务运行的查询选项。<br>PageNumber：页码，从 1 开始<br>PageSize：每页数量，最大 200<br>RunStates：按运行状态过滤，如 ["SUCCESS"]</p>
 
     """
 
@@ -26655,6 +26814,72 @@ class TaskType(AbstractModel):
     | CodeFileId     | 代码文件ID           | Source 为 5 时，需从工作空间文件选择组件获取所选文件/文件夹对应的ID | Source 为 5 时，必填 |
     | WorkspaceEntryType | 工作空间入口类型 | Source 为 5 时，所选工作空间条目的类型：FILE（文件）/ FOLDER（文件夹），由前端选择器随选择目标自动写入 | Source 为 5 时，必填 |
 
+    ### 10. DEPENDENCY_SENSOR（依赖检查）任务类型
+
+    #### 属性配置
+
+    | 属性键                      | 属性名称       | 描述                                                       | 是否必需 |
+    | --------------------------- | -------------- | ---------------------------------------------------------- | -------- |
+    | checkIntervalSeconds        | 检查间隔（秒） | 轮询检查间隔，数字字符串，取值 5~600，缺省默认 10          | 否       |
+    | workflowDependencyCondition | 依赖工作流配置 | 依赖条件 JSON 字符串，结构见下方说明                       | 是       |
+
+    > 说明：
+    > 1. 属性键大小写敏感，仅允许以上两个 key，不允许重复或出现未知 key。
+    > 2. 该任务类型不支持 `RuntimePropertyList`，传入会报错。
+
+    #### workflowDependencyCondition 结构
+
+    ```json
+    {
+      "condition": {
+        "dependencies": [
+          {
+            "workflowId": "被依赖工作流ID",
+            "workflowName": "工作流名称",
+            "taskIds": [],
+            "timeOffsetExpression": "${yyyyMMdd-1d}",
+            "expectedState": "SUCCESS",
+            "logicalRelWithPre": "and"
+          }
+        ]
+      }
+    }
+    ```
+
+    | 字段                 | 是否必需               | 描述                                                                 |
+    | -------------------- | ---------------------- | -------------------------------------------------------------------- |
+    | dependencies         | 是                     | 依赖项列表，1~20 项                                                  |
+    | workflowId           | 是                     | 被依赖工作流 ID，不能等于当前工作流自身 ID                           |
+    | workflowName         | 否                     | 工作流名称快照，仅用于回显，读取时以最新名称覆盖                     |
+    | taskIds              | 否                     | 本期必须为空数组（表示依赖整个工作流），传非空值会被忽略             |
+    | timeOffsetExpression | 是                     | 时间偏移表达式，格式见下                                             |
+    | expectedState        | 是                     | 期望上游状态，本期仅支持 `SUCCESS`                                   |
+    | logicalRelWithPre    | 首项可空，其余项必填   | 与前一项的逻辑关系，本期仅支持 `and`                                 |
+
+    **timeOffsetExpression 格式**：`${基础格式[±N单位]}`
+
+    - 基础格式：`yyyy` / `yyyyMM` / `yyyyMMdd` / `yyyyMMddHH` / `yyyyMMddHHmm` / `yyyyMMddHHmmss`
+    - 偏移单位（大小写敏感）：`y`（年）/ `M`（月）/ `w`（周）/ `d`（天）/ `H`（时）/ `m`（分）/ `s`（秒）
+    - 不允许包含空格
+    - 示例：`${yyyyMMdd}`、`${yyyyMMdd-1d}`、`${yyyyMM+1y}`
+
+    ### 11. JAR（Spark Jar）任务类型
+
+    #### 属性配置
+
+    | 属性键       | 属性名称     | 描述                                                                                         | 是否必需 |
+    | ------------ | ------------ | -------------------------------------------------------------------------------------------- | -------- |
+    | Source       | 来源         | 只支持填 5，表示来源为工作空间                                                               | 是       |
+    | SourcePath   | Jar 文件路径 | 工作空间中 Jar 文件的完整路径，必须以 `.jar` 结尾（不区分大小写）                            | 是       |
+    | MainClass    | 主类         | 作业入口类全限定名，如 `com.example.JobMain`，长度 1~128                                     | 是       |
+    | ProgramArgs  | 程序参数     | 传给 main 方法的参数，单个字符串，多个参数以空格分隔，长度不超过 65536，支持 `${}` 参数      | 否       |
+    | EngineConfig | 引擎参数     | Spark 参数（SparkConfig，最多 100 项，key 唯一）及数据访问策略（RoleArn，数字字符串）        | 否       |
+
+    > 说明：
+    > 1. 仅支持作业集群（DATA_COMPUTE），不支持交互式集群。
+    > 2. 资源配置通过 `RuntimePropertyList` 传入，参见下方 RuntimePropertyList 说明（ResourceMode、ExecutorCU 等）。
+
+
     ### RuntimePropertyList
     <p>任务运行参数列表，用于配置任务运行时的计算资源，与 TaskTypePropertyList（任务扩展属性）区分：TaskTypePropertyList 承载任务自身的业务配置（如脚本来源、路径等），RuntimePropertyList 承载任务运行时的资源配置（如资源模式、CU规格、Executor数量等）。</p>
     <p>主要适用于需要配置计算资源的任务类型（如 NOTEBOOK、PYTHON）。</p>
@@ -32639,6 +32864,9 @@ class WorkflowRun(AbstractModel):
         :param _ScheduledTime: <p>计划调度时间</p><p>参数格式：毫秒时间戳（UTC）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduledTime: str
+        :param _FileArrivalConfig: <p>工作流调度文件到达方式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileArrivalConfig: :class:`tencentcloud.databuddy.v20260715.models.FileArrivalConfig`
         """
         self._AppId = None
         self._WorkflowName = None
@@ -32673,6 +32901,7 @@ class WorkflowRun(AbstractModel):
         self._Permission = None
         self._AdvancedParameters = None
         self._ScheduledTime = None
+        self._FileArrivalConfig = None
 
     @property
     def AppId(self):
@@ -33070,6 +33299,18 @@ class WorkflowRun(AbstractModel):
     def ScheduledTime(self, ScheduledTime):
         self._ScheduledTime = ScheduledTime
 
+    @property
+    def FileArrivalConfig(self):
+        r"""<p>工作流调度文件到达方式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FileArrivalConfig`
+        """
+        return self._FileArrivalConfig
+
+    @FileArrivalConfig.setter
+    def FileArrivalConfig(self, FileArrivalConfig):
+        self._FileArrivalConfig = FileArrivalConfig
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -33120,6 +33361,9 @@ class WorkflowRun(AbstractModel):
                 obj._deserialize(item)
                 self._AdvancedParameters.append(obj)
         self._ScheduledTime = params.get("ScheduledTime")
+        if params.get("FileArrivalConfig") is not None:
+            self._FileArrivalConfig = FileArrivalConfig()
+            self._FileArrivalConfig._deserialize(params.get("FileArrivalConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33948,6 +34192,9 @@ class WorkflowTaskRun(AbstractModel):
         :param _ScheduledTime: <p>计划调度时间</p><p>参数格式：毫秒时间戳，UTC</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduledTime: str
+        :param _FileArrivalConfig: <p>工作流调度文件到达方式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileArrivalConfig: :class:`tencentcloud.databuddy.v20260715.models.FileArrivalConfig`
         """
         self._TaskName = None
         self._WorkflowTaskRunId = None
@@ -33989,6 +34236,7 @@ class WorkflowTaskRun(AbstractModel):
         self._AdvancedDependencyConfig = None
         self._InnerTask = None
         self._ScheduledTime = None
+        self._FileArrivalConfig = None
 
     @property
     def TaskName(self):
@@ -34470,6 +34718,18 @@ class WorkflowTaskRun(AbstractModel):
     def ScheduledTime(self, ScheduledTime):
         self._ScheduledTime = ScheduledTime
 
+    @property
+    def FileArrivalConfig(self):
+        r"""<p>工作流调度文件到达方式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FileArrivalConfig`
+        """
+        return self._FileArrivalConfig
+
+    @FileArrivalConfig.setter
+    def FileArrivalConfig(self, FileArrivalConfig):
+        self._FileArrivalConfig = FileArrivalConfig
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -34521,6 +34781,9 @@ class WorkflowTaskRun(AbstractModel):
             self._InnerTask = InnerWorkflowTaskBrief()
             self._InnerTask._deserialize(params.get("InnerTask"))
         self._ScheduledTime = params.get("ScheduledTime")
+        if params.get("FileArrivalConfig") is not None:
+            self._FileArrivalConfig = FileArrivalConfig()
+            self._FileArrivalConfig._deserialize(params.get("FileArrivalConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34609,6 +34872,9 @@ class WorkflowTriggerConfiguration(AbstractModel):
         :param _AdvancedConfig: <p>高级配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedConfig: :class:`tencentcloud.databuddy.v20260715.models.WorkflowTriggerAdvancedConfiguration`
+        :param _FileArrivalConfig: <p>工作流调度文件到达方式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileArrivalConfig: :class:`tencentcloud.databuddy.v20260715.models.FileArrivalConfig`
         """
         self._TriggerId = None
         self._SchedulerStatus = None
@@ -34621,6 +34887,7 @@ class WorkflowTriggerConfiguration(AbstractModel):
         self._CrontabExpression = None
         self._ExtraInfo = None
         self._AdvancedConfig = None
+        self._FileArrivalConfig = None
 
     @property
     def TriggerId(self):
@@ -34754,6 +35021,18 @@ class WorkflowTriggerConfiguration(AbstractModel):
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
 
+    @property
+    def FileArrivalConfig(self):
+        r"""<p>工作流调度文件到达方式配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.FileArrivalConfig`
+        """
+        return self._FileArrivalConfig
+
+    @FileArrivalConfig.setter
+    def FileArrivalConfig(self, FileArrivalConfig):
+        self._FileArrivalConfig = FileArrivalConfig
+
 
     def _deserialize(self, params):
         self._TriggerId = params.get("TriggerId")
@@ -34769,6 +35048,9 @@ class WorkflowTriggerConfiguration(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = WorkflowTriggerAdvancedConfiguration()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        if params.get("FileArrivalConfig") is not None:
+            self._FileArrivalConfig = FileArrivalConfig()
+            self._FileArrivalConfig._deserialize(params.get("FileArrivalConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

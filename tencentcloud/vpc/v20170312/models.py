@@ -21365,14 +21365,17 @@ class DeleteHaVipRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HaVipId: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        :param _HaVipId: <p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
         :type HaVipId: str
+        :param _SkipTerminationProtection: <p>忽略删除保护。</p>
+        :type SkipTerminationProtection: bool
         """
         self._HaVipId = None
+        self._SkipTerminationProtection = None
 
     @property
     def HaVipId(self):
-        r"""`HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        r"""<p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
         :rtype: str
         """
         return self._HaVipId
@@ -21381,9 +21384,21 @@ class DeleteHaVipRequest(AbstractModel):
     def HaVipId(self, HaVipId):
         self._HaVipId = HaVipId
 
+    @property
+    def SkipTerminationProtection(self):
+        r"""<p>忽略删除保护。</p>
+        :rtype: bool
+        """
+        return self._SkipTerminationProtection
+
+    @SkipTerminationProtection.setter
+    def SkipTerminationProtection(self, SkipTerminationProtection):
+        self._SkipTerminationProtection = SkipTerminationProtection
+
 
     def _deserialize(self, params):
         self._HaVipId = params.get("HaVipId")
+        self._SkipTerminationProtection = params.get("SkipTerminationProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54066,17 +54081,23 @@ class ModifyHaVipAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HaVipId: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        :param _HaVipId: <p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
         :type HaVipId: str
-        :param _HaVipName: `HAVIP`名称，可任意命名，但不得超过60个字符。
+        :param _HaVipName: <p><code>HAVIP</code>名称，可任意命名，但不得超过60个字符。</p>
         :type HaVipName: str
+        :param _TerminationProtection: <p>删除保护。</p>
+        :type TerminationProtection: bool
+        :param _TrafficProtection: <p>流量保护。</p>
+        :type TrafficProtection: bool
         """
         self._HaVipId = None
         self._HaVipName = None
+        self._TerminationProtection = None
+        self._TrafficProtection = None
 
     @property
     def HaVipId(self):
-        r"""`HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        r"""<p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
         :rtype: str
         """
         return self._HaVipId
@@ -54087,7 +54108,7 @@ class ModifyHaVipAttributeRequest(AbstractModel):
 
     @property
     def HaVipName(self):
-        r"""`HAVIP`名称，可任意命名，但不得超过60个字符。
+        r"""<p><code>HAVIP</code>名称，可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._HaVipName
@@ -54096,10 +54117,34 @@ class ModifyHaVipAttributeRequest(AbstractModel):
     def HaVipName(self, HaVipName):
         self._HaVipName = HaVipName
 
+    @property
+    def TerminationProtection(self):
+        r"""<p>删除保护。</p>
+        :rtype: bool
+        """
+        return self._TerminationProtection
+
+    @TerminationProtection.setter
+    def TerminationProtection(self, TerminationProtection):
+        self._TerminationProtection = TerminationProtection
+
+    @property
+    def TrafficProtection(self):
+        r"""<p>流量保护。</p>
+        :rtype: bool
+        """
+        return self._TrafficProtection
+
+    @TrafficProtection.setter
+    def TrafficProtection(self, TrafficProtection):
+        self._TrafficProtection = TrafficProtection
+
 
     def _deserialize(self, params):
         self._HaVipId = params.get("HaVipId")
         self._HaVipName = params.get("HaVipName")
+        self._TerminationProtection = params.get("TerminationProtection")
+        self._TrafficProtection = params.get("TrafficProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -18,6 +18,87 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessRule(AbstractModel):
+    r"""访问规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: <p>模块</p>
+        :type Module: str
+        :param _ActionType: <p>功能权限点</p>
+        :type ActionType: list of str
+        :param _DataActionType: <p>数据权限点</p>
+        :type DataActionType: list of str
+        :param _ActionTypeName: <p>功能权限点名称</p>
+        :type ActionTypeName: list of str
+        """
+        self._Module = None
+        self._ActionType = None
+        self._DataActionType = None
+        self._ActionTypeName = None
+
+    @property
+    def Module(self):
+        r"""<p>模块</p>
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def ActionType(self):
+        r"""<p>功能权限点</p>
+        :rtype: list of str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def DataActionType(self):
+        r"""<p>数据权限点</p>
+        :rtype: list of str
+        """
+        return self._DataActionType
+
+    @DataActionType.setter
+    def DataActionType(self, DataActionType):
+        self._DataActionType = DataActionType
+
+    @property
+    def ActionTypeName(self):
+        r"""<p>功能权限点名称</p>
+        :rtype: list of str
+        """
+        return self._ActionTypeName
+
+    @ActionTypeName.setter
+    def ActionTypeName(self, ActionTypeName):
+        self._ActionTypeName = ActionTypeName
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._ActionType = params.get("ActionType")
+        self._DataActionType = params.get("DataActionType")
+        self._ActionTypeName = params.get("ActionTypeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AggregatePublicAlgoVersion(AbstractModel):
     r"""聚合后的公共算法版本
 
@@ -4136,6 +4217,115 @@ class CreatePresignedNotebookUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRoleRequest(AbstractModel):
+    r"""CreateRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _RoleName: <p>角色名称</p>
+        :type RoleName: str
+        :param _Description: <p>角色备注</p>
+        :type Description: str
+        """
+        self._TiProjectId = None
+        self._RoleName = None
+        self._Description = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Description(self):
+        r"""<p>角色备注</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._RoleName = params.get("RoleName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRoleResponse(AbstractModel):
+    r"""CreateRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: <p>角色ID</p>
+        :type RoleId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleId = None
+        self._RequestId = None
+
+    @property
+    def RoleId(self):
+        r"""<p>角色ID</p>
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTrainingModelRequest(AbstractModel):
     r"""CreateTrainingModel请求参数结构体
 
@@ -5724,6 +5914,87 @@ class DataSetConfig(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataSourceBrief(AbstractModel):
+    r"""数据源简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageId: <p>存储实例ID</p>
+        :type StorageId: str
+        :param _StorageName: <p>存储实例名称</p>
+        :type StorageName: str
+        :param _WorkDir: <p>存储目录</p>
+        :type WorkDir: str
+        :param _Permission: <p>数据源读写权限，RW/RO</p>
+        :type Permission: str
+        """
+        self._StorageId = None
+        self._StorageName = None
+        self._WorkDir = None
+        self._Permission = None
+
+    @property
+    def StorageId(self):
+        r"""<p>存储实例ID</p>
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+    @property
+    def StorageName(self):
+        r"""<p>存储实例名称</p>
+        :rtype: str
+        """
+        return self._StorageName
+
+    @StorageName.setter
+    def StorageName(self, StorageName):
+        self._StorageName = StorageName
+
+    @property
+    def WorkDir(self):
+        r"""<p>存储目录</p>
+        :rtype: str
+        """
+        return self._WorkDir
+
+    @WorkDir.setter
+    def WorkDir(self, WorkDir):
+        self._WorkDir = WorkDir
+
+    @property
+    def Permission(self):
+        r"""<p>数据源读写权限，RW/RO</p>
+        :rtype: str
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+
+    def _deserialize(self, params):
+        self._StorageId = params.get("StorageId")
+        self._StorageName = params.get("StorageName")
+        self._WorkDir = params.get("WorkDir")
+        self._Permission = params.get("Permission")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7988,6 +8259,85 @@ class DeleteNotebookResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteRoleRequest(AbstractModel):
+    r"""DeleteRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _RoleId: <p>角色ID</p>
+        :type RoleId: str
+        """
+        self._TiProjectId = None
+        self._RoleId = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def RoleId(self):
+        r"""<p>角色ID</p>
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._RoleId = params.get("RoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRoleResponse(AbstractModel):
+    r"""DeleteRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteTrainingModelRequest(AbstractModel):
     r"""DeleteTrainingModel请求参数结构体
 
@@ -8267,6 +8617,165 @@ class DeleteTrainingTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessRulesRequest(AbstractModel):
+    r"""DescribeAccessRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        """
+        self._TiProjectId = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessRulesResponse(AbstractModel):
+    r"""DescribeAccessRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessRules: <p>当前用户有哪些权限</p>
+        :type AccessRules: list of AccessRule
+        :param _FullAccessRules: <p>权限点全量集合</p>
+        :type FullAccessRules: list of AccessRule
+        :param _GlobalRoles: <p>当前用户拥有的空间外角色</p>
+        :type GlobalRoles: list of str
+        :param _Workspaces: <p>当前用户可见的空间列表</p>
+        :type Workspaces: list of Workspace
+        :param _OutsideAccessRules: <p>当前用户有哪些空间外权限</p>
+        :type OutsideAccessRules: list of AccessRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AccessRules = None
+        self._FullAccessRules = None
+        self._GlobalRoles = None
+        self._Workspaces = None
+        self._OutsideAccessRules = None
+        self._RequestId = None
+
+    @property
+    def AccessRules(self):
+        r"""<p>当前用户有哪些权限</p>
+        :rtype: list of AccessRule
+        """
+        return self._AccessRules
+
+    @AccessRules.setter
+    def AccessRules(self, AccessRules):
+        self._AccessRules = AccessRules
+
+    @property
+    def FullAccessRules(self):
+        r"""<p>权限点全量集合</p>
+        :rtype: list of AccessRule
+        """
+        return self._FullAccessRules
+
+    @FullAccessRules.setter
+    def FullAccessRules(self, FullAccessRules):
+        self._FullAccessRules = FullAccessRules
+
+    @property
+    def GlobalRoles(self):
+        r"""<p>当前用户拥有的空间外角色</p>
+        :rtype: list of str
+        """
+        return self._GlobalRoles
+
+    @GlobalRoles.setter
+    def GlobalRoles(self, GlobalRoles):
+        self._GlobalRoles = GlobalRoles
+
+    @property
+    def Workspaces(self):
+        r"""<p>当前用户可见的空间列表</p>
+        :rtype: list of Workspace
+        """
+        return self._Workspaces
+
+    @Workspaces.setter
+    def Workspaces(self, Workspaces):
+        self._Workspaces = Workspaces
+
+    @property
+    def OutsideAccessRules(self):
+        r"""<p>当前用户有哪些空间外权限</p>
+        :rtype: list of AccessRule
+        """
+        return self._OutsideAccessRules
+
+    @OutsideAccessRules.setter
+    def OutsideAccessRules(self, OutsideAccessRules):
+        self._OutsideAccessRules = OutsideAccessRules
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AccessRules") is not None:
+            self._AccessRules = []
+            for item in params.get("AccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self._AccessRules.append(obj)
+        if params.get("FullAccessRules") is not None:
+            self._FullAccessRules = []
+            for item in params.get("FullAccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self._FullAccessRules.append(obj)
+        self._GlobalRoles = params.get("GlobalRoles")
+        if params.get("Workspaces") is not None:
+            self._Workspaces = []
+            for item in params.get("Workspaces"):
+                obj = Workspace()
+                obj._deserialize(item)
+                self._Workspaces.append(obj)
+        if params.get("OutsideAccessRules") is not None:
+            self._OutsideAccessRules = []
+            for item in params.get("OutsideAccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self._OutsideAccessRules.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8559,7 +9068,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
         r"""
         :param _ResourceGroupId: <p>资源组id, 取值为创建资源组接口(CreateBillingResourceGroup)响应中的ResourceGroupId</p>
         :type ResourceGroupId: str
-        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :type TiProjectId: str
         :param _Filters: <p>过滤条件<br>注意: </p><ol><li>Filter.Name 只支持以下枚举值:<br> InstanceId (资源组节点id)<br> InstanceStatus (资源组节点状态)</li><li>Filter.Values: 长度为1且Filter.Fuzzy=true时，支持模糊查询; 不为1时，精确查询</li><li>Filter.Negative: 是否取反，默认为false</li><li>Filter.Fuzzy: 是否模糊查询，默认为false</li><li>每次请求的Filters的上限为10，Filter.Values的上限为100</li></ol>
         :type Filters: list of Filter
@@ -8593,7 +9102,7 @@ class DescribeBillingResourceGroupRequest(AbstractModel):
 
     @property
     def TiProjectId(self):
-        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
         :rtype: str
         """
         return self._TiProjectId
@@ -13127,6 +13636,588 @@ class DescribePublicAlgoVersionListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRoleRequest(AbstractModel):
+    r"""DescribeRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _RoleId: <p>角色ID</p>
+        :type RoleId: str
+        :param _ResourceType: <p>资源类型</p>
+        :type ResourceType: str
+        :param _Offset: <p>偏移值</p>
+        :type Offset: int
+        :param _Limit: <p>分页数量</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        """
+        self._TiProjectId = None
+        self._RoleId = None
+        self._ResourceType = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def RoleId(self):
+        r"""<p>角色ID</p>
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Offset(self):
+        r"""<p>偏移值</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._RoleId = params.get("RoleId")
+        self._ResourceType = params.get("ResourceType")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoleResponse(AbstractModel):
+    r"""DescribeRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: <p>角色ID</p>
+        :type RoleId: str
+        :param _RoleName: <p>角色名称</p>
+        :type RoleName: str
+        :param _RoleType: <p>角色类型</p>
+        :type RoleType: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _AccessRules: <p>权限规则列表</p>
+        :type AccessRules: list of AccessRule
+        :param _ResourcePermissions: <p>资源级权限列表</p>
+        :type ResourcePermissions: list of ResourcePermission
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleId = None
+        self._RoleName = None
+        self._RoleType = None
+        self._Description = None
+        self._CreateTime = None
+        self._AccessRules = None
+        self._ResourcePermissions = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RoleId(self):
+        r"""<p>角色ID</p>
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleType(self):
+        r"""<p>角色类型</p>
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def AccessRules(self):
+        r"""<p>权限规则列表</p>
+        :rtype: list of AccessRule
+        """
+        return self._AccessRules
+
+    @AccessRules.setter
+    def AccessRules(self, AccessRules):
+        self._AccessRules = AccessRules
+
+    @property
+    def ResourcePermissions(self):
+        r"""<p>资源级权限列表</p>
+        :rtype: list of ResourcePermission
+        """
+        return self._ResourcePermissions
+
+    @ResourcePermissions.setter
+    def ResourcePermissions(self, ResourcePermissions):
+        self._ResourcePermissions = ResourcePermissions
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._RoleType = params.get("RoleType")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("AccessRules") is not None:
+            self._AccessRules = []
+            for item in params.get("AccessRules"):
+                obj = AccessRule()
+                obj._deserialize(item)
+                self._AccessRules.append(obj)
+        if params.get("ResourcePermissions") is not None:
+            self._ResourcePermissions = []
+            for item in params.get("ResourcePermissions"):
+                obj = ResourcePermission()
+                obj._deserialize(item)
+                self._ResourcePermissions.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRoleUsersRequest(AbstractModel):
+    r"""DescribeRoleUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: <p>角色ID</p>
+        :type RoleId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        """
+        self._RoleId = None
+        self._TiProjectId = None
+
+    @property
+    def RoleId(self):
+        r"""<p>角色ID</p>
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._TiProjectId = params.get("TiProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRoleUsersResponse(AbstractModel):
+    r"""DescribeRoleUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合过滤条件的用户总数</p>
+        :type TotalCount: int
+        :param _Users: <p>用户列表</p>
+        :type Users: list of UserRoleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Users = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合过滤条件的用户总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Users(self):
+        r"""<p>用户列表</p>
+        :rtype: list of UserRoleInfo
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = UserRoleInfo()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRolesRequest(AbstractModel):
+    r"""DescribeRoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移值</p>
+        :type Offset: int
+        :param _Limit: <p>分页数量</p>
+        :type Limit: int
+        :param _Order: <p>排序方式</p>
+        :type Order: str
+        :param _OrderField: <p>排序字段</p>
+        :type OrderField: str
+        :param _WithUserCount: <p>是否返回绑定的用户数</p>
+        :type WithUserCount: bool
+        """
+        self._TiProjectId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Order = None
+        self._OrderField = None
+        self._WithUserCount = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移值</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        r"""<p>排序方式</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderField(self):
+        r"""<p>排序字段</p>
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def WithUserCount(self):
+        r"""<p>是否返回绑定的用户数</p>
+        :rtype: bool
+        """
+        return self._WithUserCount
+
+    @WithUserCount.setter
+    def WithUserCount(self, WithUserCount):
+        self._WithUserCount = WithUserCount
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._OrderField = params.get("OrderField")
+        self._WithUserCount = params.get("WithUserCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRolesResponse(AbstractModel):
+    r"""DescribeRoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _Roles: <p>角色列表</p>
+        :type Roles: list of RoleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Roles = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Roles(self):
+        r"""<p>角色列表</p>
+        :rtype: list of RoleInfo
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = RoleInfo()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSubAccountLinuxUserInfosRequest(AbstractModel):
     r"""DescribeSubAccountLinuxUserInfos请求参数结构体
 
@@ -14039,6 +15130,558 @@ class DescribeTrainingTasksResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TrainingTaskSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkspaceMembersRequest(AbstractModel):
+    r"""DescribeWorkspaceMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>数量</p>
+        :type Limit: int
+        :param _OrderField: <p>排序字段</p>
+        :type OrderField: str
+        :param _Order: <p>排序方式</p>
+        :type Order: str
+        :param _WithRoles: <p>是否包含角色信息</p>
+        :type WithRoles: bool
+        """
+        self._TiProjectId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Order = None
+        self._WithRoles = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        r"""<p>排序字段</p>
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        r"""<p>排序方式</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def WithRoles(self):
+        r"""<p>是否包含角色信息</p>
+        :rtype: bool
+        """
+        return self._WithRoles
+
+    @WithRoles.setter
+    def WithRoles(self, WithRoles):
+        self._WithRoles = WithRoles
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
+        self._WithRoles = params.get("WithRoles")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkspaceMembersResponse(AbstractModel):
+    r"""DescribeWorkspaceMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _Members: <p>用户列表</p>
+        :type Members: list of UserRoleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Members = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Members(self):
+        r"""<p>用户列表</p>
+        :rtype: list of UserRoleInfo
+        """
+        return self._Members
+
+    @Members.setter
+    def Members(self, Members):
+        self._Members = Members
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Members") is not None:
+            self._Members = []
+            for item in params.get("Members"):
+                obj = UserRoleInfo()
+                obj._deserialize(item)
+                self._Members.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkspaceQuotaUsageRequest(AbstractModel):
+    r"""DescribeWorkspaceQuotaUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        """
+        self._TiProjectId = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkspaceQuotaUsageResponse(AbstractModel):
+    r"""DescribeWorkspaceQuotaUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkspaceQuotasRequest(AbstractModel):
+    r"""DescribeWorkspaceQuotas请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        """
+        self._TiProjectId = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkspaceQuotasResponse(AbstractModel):
+    r"""DescribeWorkspaceQuotas返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeWorkspaceRequest(AbstractModel):
+    r"""DescribeWorkspace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _WithRunningTasks: <p>是否包含运行中的任务</p>
+        :type WithRunningTasks: bool
+        :param _WithMembers: <p>是否包含有管理权限的人员信息</p>
+        :type WithMembers: bool
+        """
+        self._TiProjectId = None
+        self._WithRunningTasks = None
+        self._WithMembers = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def WithRunningTasks(self):
+        r"""<p>是否包含运行中的任务</p>
+        :rtype: bool
+        """
+        return self._WithRunningTasks
+
+    @WithRunningTasks.setter
+    def WithRunningTasks(self, WithRunningTasks):
+        self._WithRunningTasks = WithRunningTasks
+
+    @property
+    def WithMembers(self):
+        r"""<p>是否包含有管理权限的人员信息</p>
+        :rtype: bool
+        """
+        return self._WithMembers
+
+    @WithMembers.setter
+    def WithMembers(self, WithMembers):
+        self._WithMembers = WithMembers
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._WithRunningTasks = params.get("WithRunningTasks")
+        self._WithMembers = params.get("WithMembers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkspaceResponse(AbstractModel):
+    r"""DescribeWorkspace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>项目ID</p>
+        :type TiProjectId: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _RunningTasks: <p>运行中的任务信息</p>
+        :type RunningTasks: list of WorkspaceTaskInfo
+        :param _Creator: <p>空间创建人信息</p>
+        :type Creator: :class:`tencentcloud.tione.v20211111.models.UserBriefInfo`
+        :param _OwnedRoles: <p>当前空间拥有的角色信息</p>
+        :type OwnedRoles: list of RoleBriefInfo
+        :param _MemberInfo: <p>空间成员信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MemberInfo: :class:`tencentcloud.tione.v20211111.models.MemberInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TiProjectId = None
+        self._Name = None
+        self._Description = None
+        self._CreateTime = None
+        self._RunningTasks = None
+        self._Creator = None
+        self._OwnedRoles = None
+        self._MemberInfo = None
+        self._RequestId = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RunningTasks(self):
+        r"""<p>运行中的任务信息</p>
+        :rtype: list of WorkspaceTaskInfo
+        """
+        return self._RunningTasks
+
+    @RunningTasks.setter
+    def RunningTasks(self, RunningTasks):
+        self._RunningTasks = RunningTasks
+
+    @property
+    def Creator(self):
+        r"""<p>空间创建人信息</p>
+        :rtype: :class:`tencentcloud.tione.v20211111.models.UserBriefInfo`
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def OwnedRoles(self):
+        r"""<p>当前空间拥有的角色信息</p>
+        :rtype: list of RoleBriefInfo
+        """
+        return self._OwnedRoles
+
+    @OwnedRoles.setter
+    def OwnedRoles(self, OwnedRoles):
+        self._OwnedRoles = OwnedRoles
+
+    @property
+    def MemberInfo(self):
+        r"""<p>空间成员信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MemberInfo`
+        """
+        return self._MemberInfo
+
+    @MemberInfo.setter
+    def MemberInfo(self, MemberInfo):
+        self._MemberInfo = MemberInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("RunningTasks") is not None:
+            self._RunningTasks = []
+            for item in params.get("RunningTasks"):
+                obj = WorkspaceTaskInfo()
+                obj._deserialize(item)
+                self._RunningTasks.append(obj)
+        if params.get("Creator") is not None:
+            self._Creator = UserBriefInfo()
+            self._Creator._deserialize(params.get("Creator"))
+        if params.get("OwnedRoles") is not None:
+            self._OwnedRoles = []
+            for item in params.get("OwnedRoles"):
+                obj = RoleBriefInfo()
+                obj._deserialize(item)
+                self._OwnedRoles.append(obj)
+        if params.get("MemberInfo") is not None:
+            self._MemberInfo = MemberInfo()
+            self._MemberInfo._deserialize(params.get("MemberInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -17477,6 +19120,71 @@ class MaterialInfo(AbstractModel):
         
 
 
+class MemberInfo(AbstractModel):
+    r"""空间成员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuperAdmins: <p>超管成员列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SuperAdmins: list of UserBriefInfo
+        :param _Admins: <p>空间内管理员列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Admins: list of UserBriefInfo
+        """
+        self._SuperAdmins = None
+        self._Admins = None
+
+    @property
+    def SuperAdmins(self):
+        r"""<p>超管成员列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserBriefInfo
+        """
+        return self._SuperAdmins
+
+    @SuperAdmins.setter
+    def SuperAdmins(self, SuperAdmins):
+        self._SuperAdmins = SuperAdmins
+
+    @property
+    def Admins(self):
+        r"""<p>空间内管理员列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UserBriefInfo
+        """
+        return self._Admins
+
+    @Admins.setter
+    def Admins(self, Admins):
+        self._Admins = Admins
+
+
+    def _deserialize(self, params):
+        if params.get("SuperAdmins") is not None:
+            self._SuperAdmins = []
+            for item in params.get("SuperAdmins"):
+                obj = UserBriefInfo()
+                obj._deserialize(item)
+                self._SuperAdmins.append(obj)
+        if params.get("Admins") is not None:
+            self._Admins = []
+            for item in params.get("Admins"):
+                obj = UserBriefInfo()
+                obj._deserialize(item)
+                self._Admins.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Message(AbstractModel):
     r"""对话输入内容
 
@@ -20530,6 +22238,258 @@ class ModifyNotebookTagsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRoleAccessRulesRequest(AbstractModel):
+    r"""ModifyRoleAccessRules请求参数结构体
+
+    """
+
+
+class ModifyRoleAccessRulesResponse(AbstractModel):
+    r"""ModifyRoleAccessRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRoleRequest(AbstractModel):
+    r"""ModifyRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _RoleId: <p>角色ID</p>
+        :type RoleId: str
+        :param _RoleName: <p>角色名称</p>
+        :type RoleName: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        """
+        self._TiProjectId = None
+        self._RoleId = None
+        self._RoleName = None
+        self._Description = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def RoleId(self):
+        r"""<p>角色ID</p>
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoleResponse(AbstractModel):
+    r"""ModifyRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRoleUserGrantRequest(AbstractModel):
+    r"""ModifyRoleUserGrant请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _RoleIds: <p>角色ID列表</p>
+        :type RoleIds: list of str
+        :param _SubUins: <p>用户UIN列表</p>
+        :type SubUins: list of str
+        :param _Grant: <p>授权方式</p>
+        :type Grant: str
+        """
+        self._TiProjectId = None
+        self._RoleIds = None
+        self._SubUins = None
+        self._Grant = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def RoleIds(self):
+        r"""<p>角色ID列表</p>
+        :rtype: list of str
+        """
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
+
+    @property
+    def SubUins(self):
+        r"""<p>用户UIN列表</p>
+        :rtype: list of str
+        """
+        return self._SubUins
+
+    @SubUins.setter
+    def SubUins(self, SubUins):
+        self._SubUins = SubUins
+
+    @property
+    def Grant(self):
+        r"""<p>授权方式</p>
+        :rtype: str
+        """
+        return self._Grant
+
+    @Grant.setter
+    def Grant(self, Grant):
+        self._Grant = Grant
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._RoleIds = params.get("RoleIds")
+        self._SubUins = params.get("SubUins")
+        self._Grant = params.get("Grant")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRoleUserGrantResponse(AbstractModel):
+    r"""ModifyRoleUserGrant返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyServiceGroupWeightsRequest(AbstractModel):
     r"""ModifyServiceGroupWeights请求参数结构体
 
@@ -20645,6 +22605,179 @@ class ModifyServiceGroupWeightsResponse(AbstractModel):
         if params.get("ServiceGroup") is not None:
             self._ServiceGroup = ServiceGroup()
             self._ServiceGroup._deserialize(params.get("ServiceGroup"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyUserGrantRequest(AbstractModel):
+    r"""ModifyUserGrant请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        :param _SubUins: <p>用户列表</p>
+        :type SubUins: list of str
+        :param _RoleIds: <p>角色列表</p>
+        :type RoleIds: list of str
+        :param _Grant: <p>授权类型</p>
+        :type Grant: str
+        """
+        self._TiProjectId = None
+        self._SubUins = None
+        self._RoleIds = None
+        self._Grant = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def SubUins(self):
+        r"""<p>用户列表</p>
+        :rtype: list of str
+        """
+        return self._SubUins
+
+    @SubUins.setter
+    def SubUins(self, SubUins):
+        self._SubUins = SubUins
+
+    @property
+    def RoleIds(self):
+        r"""<p>角色列表</p>
+        :rtype: list of str
+        """
+        return self._RoleIds
+
+    @RoleIds.setter
+    def RoleIds(self, RoleIds):
+        self._RoleIds = RoleIds
+
+    @property
+    def Grant(self):
+        r"""<p>授权类型</p>
+        :rtype: str
+        """
+        return self._Grant
+
+    @Grant.setter
+    def Grant(self, Grant):
+        self._Grant = Grant
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._SubUins = params.get("SubUins")
+        self._RoleIds = params.get("RoleIds")
+        self._Grant = params.get("Grant")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyUserGrantResponse(AbstractModel):
+    r"""ModifyUserGrant返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyWorkspaceMembersRequest(AbstractModel):
+    r"""ModifyWorkspaceMembers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :type TiProjectId: str
+        """
+        self._TiProjectId = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>使用非默认空间必须填写工作空间ID，使用默认空间无需填写工作空间ID。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWorkspaceMembersResponse(AbstractModel):
+    r"""ModifyWorkspaceMembers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -25834,6 +27967,134 @@ class ResourceInstanceRunningJobInfo(AbstractModel):
         
 
 
+class ResourcePermission(AbstractModel):
+    r"""资源级权限记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>资源类型</p>
+        :type ResourceType: str
+        :param _Id: <p>资源ID</p>
+        :type Id: str
+        :param _Permission: <p>权限值</p>
+        :type Permission: str
+        :param _Name: <p>资源名称</p>
+        :type Name: str
+        :param _SubUin: <p>创建者子账号</p>
+        :type SubUin: str
+        :param _SubUinName: <p>创建者昵称</p>
+        :type SubUinName: str
+        :param _DataSourceBrief: <p>数据源简要信息</p>
+        :type DataSourceBrief: :class:`tencentcloud.tione.v20211111.models.DataSourceBrief`
+        """
+        self._ResourceType = None
+        self._Id = None
+        self._Permission = None
+        self._Name = None
+        self._SubUin = None
+        self._SubUinName = None
+        self._DataSourceBrief = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Id(self):
+        r"""<p>资源ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Permission(self):
+        r"""<p>权限值</p>
+        :rtype: str
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def Name(self):
+        r"""<p>资源名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SubUin(self):
+        r"""<p>创建者子账号</p>
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def SubUinName(self):
+        r"""<p>创建者昵称</p>
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
+
+    @property
+    def DataSourceBrief(self):
+        r"""<p>数据源简要信息</p>
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DataSourceBrief`
+        """
+        return self._DataSourceBrief
+
+    @DataSourceBrief.setter
+    def DataSourceBrief(self, DataSourceBrief):
+        self._DataSourceBrief = DataSourceBrief
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._Id = params.get("Id")
+        self._Permission = params.get("Permission")
+        self._Name = params.get("Name")
+        self._SubUin = params.get("SubUin")
+        self._SubUinName = params.get("SubUinName")
+        if params.get("DataSourceBrief") is not None:
+            self._DataSourceBrief = DataSourceBrief()
+            self._DataSourceBrief._deserialize(params.get("DataSourceBrief"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResourceSpec(AbstractModel):
     r"""TI资源规格
 
@@ -25947,6 +28208,172 @@ class ResourceSupplyAttribute(AbstractModel):
     def _deserialize(self, params):
         self._SupplyType = params.get("SupplyType")
         self._ClusterType = params.get("ClusterType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleBriefInfo(AbstractModel):
+    r"""角色简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: <p>角色id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleId: str
+        :param _RoleName: <p>角色名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        """
+        self._RoleId = None
+        self._RoleName = None
+
+    @property
+    def RoleId(self):
+        r"""<p>角色id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        r"""<p>角色名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoleInfo(AbstractModel):
+    r"""角色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: <p>角色ID</p>
+        :type RoleId: str
+        :param _RoleName: <p>名称</p>
+        :type RoleName: str
+        :param _RoleType: <p>角色类型。&quot;SYSTEM&quot; 内置角色，&quot;CUSTOMER&quot; 自定义角色</p>
+        :type RoleType: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UserCount: <p>绑定的用户数</p>
+        :type UserCount: int
+        """
+        self._RoleId = None
+        self._RoleName = None
+        self._RoleType = None
+        self._Description = None
+        self._CreateTime = None
+        self._UserCount = None
+
+    @property
+    def RoleId(self):
+        r"""<p>角色ID</p>
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleType(self):
+        r"""<p>角色类型。&quot;SYSTEM&quot; 内置角色，&quot;CUSTOMER&quot; 自定义角色</p>
+        :rtype: str
+        """
+        return self._RoleType
+
+    @RoleType.setter
+    def RoleType(self, RoleType):
+        self._RoleType = RoleType
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UserCount(self):
+        r"""<p>绑定的用户数</p>
+        :rtype: int
+        """
+        return self._UserCount
+
+    @UserCount.setter
+    def UserCount(self, UserCount):
+        self._UserCount = UserCount
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._RoleType = params.get("RoleType")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._UserCount = params.get("UserCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33106,6 +35533,147 @@ class Usage(AbstractModel):
         
 
 
+class UserBriefInfo(AbstractModel):
+    r"""用户简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubUin: <p>子用户uin</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubUin: str
+        :param _SubUinName: <p>子用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubUinName: str
+        """
+        self._SubUin = None
+        self._SubUinName = None
+
+    @property
+    def SubUin(self):
+        r"""<p>子用户uin</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def SubUinName(self):
+        r"""<p>子用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
+
+
+    def _deserialize(self, params):
+        self._SubUin = params.get("SubUin")
+        self._SubUinName = params.get("SubUinName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UserRoleInfo(AbstractModel):
+    r"""用户+角色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubUin: <p>子账号</p>
+        :type SubUin: str
+        :param _NickName: <p>名称</p>
+        :type NickName: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _Roles: <p>角色列表</p>
+        :type Roles: list of RoleInfo
+        """
+        self._SubUin = None
+        self._NickName = None
+        self._CreateTime = None
+        self._Roles = None
+
+    @property
+    def SubUin(self):
+        r"""<p>子账号</p>
+        :rtype: str
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def NickName(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Roles(self):
+        r"""<p>角色列表</p>
+        :rtype: list of RoleInfo
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+
+    def _deserialize(self, params):
+        self._SubUin = params.get("SubUin")
+        self._NickName = params.get("NickName")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = RoleInfo()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VolumeMount(AbstractModel):
     r"""外部挂载信息
 
@@ -33551,6 +36119,102 @@ class Workspace(AbstractModel):
                 self._ResourceGroups.append(obj)
         self._ActionType = params.get("ActionType")
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkspaceTaskInfo(AbstractModel):
+    r"""工作空间任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TaskName: <p>任务名称</p>
+        :type TaskName: str
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _ResourceTaskType: <p>任务类型</p>
+        :type ResourceTaskType: str
+        :param _ResourceGroupId: <p>任务所属资源组</p>
+        :type ResourceGroupId: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._Region = None
+        self._ResourceTaskType = None
+        self._ResourceGroupId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ResourceTaskType(self):
+        r"""<p>任务类型</p>
+        :rtype: str
+        """
+        return self._ResourceTaskType
+
+    @ResourceTaskType.setter
+    def ResourceTaskType(self, ResourceTaskType):
+        self._ResourceTaskType = ResourceTaskType
+
+    @property
+    def ResourceGroupId(self):
+        r"""<p>任务所属资源组</p>
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._Region = params.get("Region")
+        self._ResourceTaskType = params.get("ResourceTaskType")
+        self._ResourceGroupId = params.get("ResourceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -211,7 +211,7 @@ class BdrcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateFileRestoreTaskResponse:
         """
-        创建恢复任务
+        创建恢复任务。
         """
         
         kwargs = {}

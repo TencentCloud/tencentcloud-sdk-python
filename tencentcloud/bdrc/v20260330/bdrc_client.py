@@ -257,7 +257,7 @@ class BdrcClient(AbstractClient):
 
 
     def CreateFileRestoreTask(self, request):
-        r"""创建恢复任务
+        r"""创建恢复任务。
 
         :param request: Request instance for CreateFileRestoreTask.
         :type request: :class:`tencentcloud.bdrc.v20260330.models.CreateFileRestoreTaskRequest`

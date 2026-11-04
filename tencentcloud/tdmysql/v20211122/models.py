@@ -4115,6 +4115,10 @@ class DBEngineInfo(AbstractModel):
         :type IsSupportParamTemplate: bool
         :param _IsSupportServerless: <p>是否支持Serverless模式</p>
         :type IsSupportServerless: bool
+        :param _IsSupportTDE: <p>是否支持透明加密</p>
+        :type IsSupportTDE: bool
+        :param _IsSupportPasswordComplexity: <p>是否支持密码复杂度</p>
+        :type IsSupportPasswordComplexity: bool
         """
         self._Type = None
         self._Version = None
@@ -4124,6 +4128,8 @@ class DBEngineInfo(AbstractModel):
         self._SQLMode = None
         self._IsSupportParamTemplate = None
         self._IsSupportServerless = None
+        self._IsSupportTDE = None
+        self._IsSupportPasswordComplexity = None
 
     @property
     def Type(self):
@@ -4217,6 +4223,28 @@ class DBEngineInfo(AbstractModel):
     def IsSupportServerless(self, IsSupportServerless):
         self._IsSupportServerless = IsSupportServerless
 
+    @property
+    def IsSupportTDE(self):
+        r"""<p>是否支持透明加密</p>
+        :rtype: bool
+        """
+        return self._IsSupportTDE
+
+    @IsSupportTDE.setter
+    def IsSupportTDE(self, IsSupportTDE):
+        self._IsSupportTDE = IsSupportTDE
+
+    @property
+    def IsSupportPasswordComplexity(self):
+        r"""<p>是否支持密码复杂度</p>
+        :rtype: bool
+        """
+        return self._IsSupportPasswordComplexity
+
+    @IsSupportPasswordComplexity.setter
+    def IsSupportPasswordComplexity(self, IsSupportPasswordComplexity):
+        self._IsSupportPasswordComplexity = IsSupportPasswordComplexity
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -4227,6 +4255,8 @@ class DBEngineInfo(AbstractModel):
         self._SQLMode = params.get("SQLMode")
         self._IsSupportParamTemplate = params.get("IsSupportParamTemplate")
         self._IsSupportServerless = params.get("IsSupportServerless")
+        self._IsSupportTDE = params.get("IsSupportTDE")
+        self._IsSupportPasswordComplexity = params.get("IsSupportPasswordComplexity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14725,6 +14755,9 @@ class SlowLogData(AbstractModel):
         :param _Explain: <p>执行计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Explain: list of Explain
+        :param _ExplainTree: <p>执行计划树</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExplainTree: str
         """
         self._Timestamp = None
         self._QueryTime = None
@@ -14744,6 +14777,7 @@ class SlowLogData(AbstractModel):
         self._TDStoreLockTime = None
         self._TraceId = None
         self._Explain = None
+        self._ExplainTree = None
 
     @property
     def Timestamp(self):
@@ -14961,6 +14995,18 @@ class SlowLogData(AbstractModel):
     def Explain(self, Explain):
         self._Explain = Explain
 
+    @property
+    def ExplainTree(self):
+        r"""<p>执行计划树</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExplainTree
+
+    @ExplainTree.setter
+    def ExplainTree(self, ExplainTree):
+        self._ExplainTree = ExplainTree
+
 
     def _deserialize(self, params):
         self._Timestamp = params.get("Timestamp")
@@ -14986,6 +15032,7 @@ class SlowLogData(AbstractModel):
                 obj = Explain()
                 obj._deserialize(item)
                 self._Explain.append(obj)
+        self._ExplainTree = params.get("ExplainTree")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

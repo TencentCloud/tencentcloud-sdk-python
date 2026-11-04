@@ -227,6 +227,24 @@ class GsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAndroidInstanceMCPToken(
+            self,
+            request: models.CreateAndroidInstanceMCPTokenRequest,
+            opts: Dict = None,
+    ) -> models.CreateAndroidInstanceMCPTokenResponse:
+        """
+        创建安卓实例MCP token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAndroidInstanceMCPToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAndroidInstanceMCPTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAndroidInstanceSSH(
             self,
             request: models.CreateAndroidInstanceSSHRequest,
@@ -461,6 +479,24 @@ class GsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAndroidInstanceMCPToken(
+            self,
+            request: models.DeleteAndroidInstanceMCPTokenRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAndroidInstanceMCPTokenResponse:
+        """
+        删除安卓实例 MCP token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAndroidInstanceMCPToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAndroidInstanceMCPTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAndroidApps(
             self,
             request: models.DescribeAndroidAppsRequest,
@@ -546,6 +582,24 @@ class GsClient(AbstractClient):
         kwargs["action"] = "DescribeAndroidInstanceLabels"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAndroidInstanceLabelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAndroidInstanceMCPTokens(
+            self,
+            request: models.DescribeAndroidInstanceMCPTokensRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAndroidInstanceMCPTokensResponse:
+        """
+        查询安卓实例MCP Token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAndroidInstanceMCPTokens"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAndroidInstanceMCPTokensResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1107,6 +1161,24 @@ class GsClient(AbstractClient):
         kwargs["action"] = "RebootAndroidInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RebootAndroidInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RenewAndroidInstanceMCPToken(
+            self,
+            request: models.RenewAndroidInstanceMCPTokenRequest,
+            opts: Dict = None,
+    ) -> models.RenewAndroidInstanceMCPTokenResponse:
+        """
+        续期安卓实例 MCP token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RenewAndroidInstanceMCPToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RenewAndroidInstanceMCPTokenResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
