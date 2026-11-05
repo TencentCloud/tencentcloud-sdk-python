@@ -16840,7 +16840,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
         :type IdCardNumber: str
         :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul>注: <code>不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN</code></p>
+        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:</p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景</li><li>OTHER： 通用场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li></ul><p>注: <code>不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN</code></p>
         :type SceneKey: str
         """
         self._Operator = None
@@ -16907,7 +16907,7 @@ class CreatePersonAuthCertificateImageRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul>注: <code>不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN</code></p>
+        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:</p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景</li><li>OTHER： 通用场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li></ul><p>注: <code>不传默认为处方单场景，即E_PRESCRIPTION_AUTO_SIGN</code></p>
         :rtype: str
         """
         return self._SceneKey
@@ -19939,7 +19939,7 @@ class CreateUserAutoSignEnableUrlRequest(AbstractModel):
         r"""
         :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
+        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:</p><p>枚举值：</p><ul><li><p>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景<strong>（需要联系客户经理添加白名单才能使用）</strong></p></li><li><p>OTHER： 通用场景</p></li></ul>
         :type SceneKey: str
         :param _AutoSignConfig: <p>“授权签”开通配置信息, 包括开通的人员的信息等</p>
         :type AutoSignConfig: :class:`tencentcloud.ess.v20201111.models.AutoSignConfig`
@@ -19982,7 +19982,7 @@ class CreateUserAutoSignEnableUrlRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
+        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:</p><p>枚举值：</p><ul><li><p>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景<strong>（需要联系客户经理添加白名单才能使用）</strong></p></li><li><p>OTHER： 通用场景</p></li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -20234,7 +20234,7 @@ class CreateUserAutoSignSealUrlRequest(AbstractModel):
         r"""
         :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
+        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:</p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li><li>OTHER： 通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: <p>“授权签”开通个人用户信息, 包括名字,身份证等。</p>
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
@@ -20265,7 +20265,7 @@ class CreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
+        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:</p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li><li>OTHER： 通用场景</li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -28827,7 +28827,7 @@ class DescribePersonCertificateRequest(AbstractModel):
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _SceneKey: <p>证书使用场景，可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        :param _SceneKey: <p>证书使用场景，可以选择的场景值如下:</p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景</li><li>OTHER： 通用场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li></ul>
         :type SceneKey: str
         """
         self._Operator = None
@@ -28870,7 +28870,7 @@ class DescribePersonCertificateRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""<p>证书使用场景，可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        r"""<p>证书使用场景，可以选择的场景值如下:</p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景</li><li>OTHER： 通用场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -29514,7 +29514,7 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
         r"""
         :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
+        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li><li>OTHER： 通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: <p>要查询状态的用户信息, 包括名字,身份证等</p>
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
@@ -29539,7 +29539,7 @@ class DescribeUserAutoSignStatusRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
+        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li><li>OTHER： 通用场景</li></ul>
         :rtype: str
         """
         return self._SceneKey
@@ -30022,7 +30022,7 @@ class DisableUserAutoSignRequest(AbstractModel):
         r"""
         :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
+        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:</p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li><li>OTHER： 通用场景</li></ul>
         :type SceneKey: str
         :param _UserInfo: <p>需要关闭“授权签”的个人的信息，如姓名，证件信息等。</p>
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
@@ -30047,7 +30047,7 @@ class DisableUserAutoSignRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
+        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:</p><p>枚举值：</p><ul><li>E_PRESCRIPTION_AUTO_SIGN： 电子处方场景<strong>（需要联系客户经理添加白名单才能使用）</strong></li><li>OTHER： 通用场景</li></ul>
         :rtype: str
         """
         return self._SceneKey

@@ -183,33 +183,35 @@ class AddExistedInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
+        :param _ClusterId: <p>集群ID（请登录 <a href="https://console.cloud.tencent.com/tke2">TKE 控制台</a> 获取集群 ID ）</p>
         :type ClusterId: str
-        :param _InstanceIds: 实例列表，不支持竞价实例（请登录 [CVM控制台](https://console.cloud.tencent.com/cvm) 获取待添加节点ID ）
+        :param _InstanceIds: <p>实例列表，不支持竞价实例（请登录 <a href="https://console.cloud.tencent.com/cvm">CVM控制台</a> 获取待添加节点ID ）</p>
         :type InstanceIds: list of str
-        :param _InstanceAdvancedSettings: 实例额外需要设置参数信息(默认值)
+        :param _InstanceAdvancedSettings: <p>实例额外需要设置参数信息(默认值)</p>
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
-        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        :param _EnhancedService: <p>增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。</p>
         :type EnhancedService: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
-        :param _LoginSettings: 节点登录信息（目前仅支持使用Password或者单个KeyIds）
+        :param _LoginSettings: <p>节点登录信息（目前仅支持使用Password或者单个KeyIds）</p>
         :type LoginSettings: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
-        :param _HostName: 重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
+        :param _HostName: <p>重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与<a href="https://cloud.tencent.com/document/product/213/15730">CVM创建实例</a>接口HostName一致)</p>
         :type HostName: str
-        :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
+        :param _SecurityGroupIds: <p>实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）</p>
         :type SecurityGroupIds: list of str
-        :param _NodePool: 节点池选项
+        :param _NodePool: <p>节点池选项</p>
         :type NodePool: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
-        :param _SkipValidateOptions: 校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
+        :param _SkipValidateOptions: <p>校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）</p>
         :type SkipValidateOptions: list of str
-        :param _InstanceAdvancedSettingsOverrides: 参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instance将使用默认配置。
+        :param _InstanceAdvancedSettingsOverrides: <p>参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instance将使用默认配置。</p>
         :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
-        :param _ImageId: 节点镜像
+        :param _SkipOptions: <p>添加已有节点时需要跳过的步骤，默认为空，当前支持 :</p><ul><li>ResetCVM——跳过 CVM 重装（请确保 TKE 的 UserData 已经写入 CVM）</li><li>InstallRuntime——跳过运行时安装</li><li>ConfigRuntime——跳过运行时配置文件下发</li><li>InstallKubelet——跳过 kubelet 配置文件下发</li><li>ConfigKubelet——跳过 kubelet安装</li></ul>
+        :type SkipOptions: list of str
+        :param _ImageId: <p>节点镜像</p>
         :type ImageId: str
-        :param _NodeType: 直接添加为原生节点
+        :param _NodeType: <p>直接添加为原生节点</p>
         :type NodeType: str
-        :param _Tags: 云标签列表
+        :param _Tags: <p>云标签列表</p>
         :type Tags: list of Tag
-        :param _RenewFlag: 自动续费标识，NOTIFY_AND_AUTO_RENEW（通知过期且自动续费）、NOTIFY_AND_MANUAL_RENEW（通知过期不自动续费）
+        :param _RenewFlag: <p>自动续费标识，NOTIFY_AND_AUTO_RENEW（通知过期且自动续费）、NOTIFY_AND_MANUAL_RENEW（通知过期不自动续费）</p>
         :type RenewFlag: str
         """
         self._ClusterId = None
@@ -222,6 +224,7 @@ class AddExistedInstancesRequest(AbstractModel):
         self._NodePool = None
         self._SkipValidateOptions = None
         self._InstanceAdvancedSettingsOverrides = None
+        self._SkipOptions = None
         self._ImageId = None
         self._NodeType = None
         self._Tags = None
@@ -229,7 +232,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID（请登录 [TKE 控制台](https://console.cloud.tencent.com/tke2) 获取集群 ID ）
+        r"""<p>集群ID（请登录 <a href="https://console.cloud.tencent.com/tke2">TKE 控制台</a> 获取集群 ID ）</p>
         :rtype: str
         """
         return self._ClusterId
@@ -240,7 +243,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""实例列表，不支持竞价实例（请登录 [CVM控制台](https://console.cloud.tencent.com/cvm) 获取待添加节点ID ）
+        r"""<p>实例列表，不支持竞价实例（请登录 <a href="https://console.cloud.tencent.com/cvm">CVM控制台</a> 获取待添加节点ID ）</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -251,7 +254,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def InstanceAdvancedSettings(self):
-        r"""实例额外需要设置参数信息(默认值)
+        r"""<p>实例额外需要设置参数信息(默认值)</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         """
         return self._InstanceAdvancedSettings
@@ -262,7 +265,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def EnhancedService(self):
-        r"""增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。
+        r"""<p>增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务。</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.EnhancedService`
         """
         return self._EnhancedService
@@ -273,7 +276,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def LoginSettings(self):
-        r"""节点登录信息（目前仅支持使用Password或者单个KeyIds）
+        r"""<p>节点登录信息（目前仅支持使用Password或者单个KeyIds）</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.LoginSettings`
         """
         return self._LoginSettings
@@ -284,7 +287,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def HostName(self):
-        r"""重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与[CVM创建实例](https://cloud.tencent.com/document/product/213/15730)接口HostName一致)
+        r"""<p>重装系统时，可以指定修改实例的HostName(集群为HostName模式时，此参数必传，规则名称除不支持大写字符外与<a href="https://cloud.tencent.com/document/product/213/15730">CVM创建实例</a>接口HostName一致)</p>
         :rtype: str
         """
         return self._HostName
@@ -295,7 +298,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）
+        r"""<p>实例所属安全组。该参数可以通过调用 DescribeSecurityGroups 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。（目前仅支持设置单个sgId）</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -306,7 +309,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def NodePool(self):
-        r"""节点池选项
+        r"""<p>节点池选项</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.NodePoolOption`
         """
         return self._NodePool
@@ -317,7 +320,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def SkipValidateOptions(self):
-        r"""校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）
+        r"""<p>校验规则相关选项，可配置跳过某些校验规则。目前支持GlobalRouteCIDRCheck（跳过GlobalRouter的相关校验），VpcCniCIDRCheck（跳过VpcCni相关校验）</p>
         :rtype: list of str
         """
         return self._SkipValidateOptions
@@ -328,7 +331,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def InstanceAdvancedSettingsOverrides(self):
-        r"""参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instance将使用默认配置。
+        r"""<p>参数InstanceAdvancedSettingsOverride数组用于定制化地配置各台instance，与InstanceIds顺序对应。当传入InstanceAdvancedSettingsOverrides数组时，将覆盖默认参数InstanceAdvancedSettings；当没有传入参数InstanceAdvancedSettingsOverrides时，InstanceAdvancedSettings参数对每台instance生效。参数InstanceAdvancedSettingsOverride数组的长度应与InstanceIds数组一致；当长度大于InstanceIds数组长度时将报错；当长度小于InstanceIds数组时，没有对应配置的instance将使用默认配置。</p>
         :rtype: list of InstanceAdvancedSettings
         """
         return self._InstanceAdvancedSettingsOverrides
@@ -338,8 +341,19 @@ class AddExistedInstancesRequest(AbstractModel):
         self._InstanceAdvancedSettingsOverrides = InstanceAdvancedSettingsOverrides
 
     @property
+    def SkipOptions(self):
+        r"""<p>添加已有节点时需要跳过的步骤，默认为空，当前支持 :</p><ul><li>ResetCVM——跳过 CVM 重装（请确保 TKE 的 UserData 已经写入 CVM）</li><li>InstallRuntime——跳过运行时安装</li><li>ConfigRuntime——跳过运行时配置文件下发</li><li>InstallKubelet——跳过 kubelet 配置文件下发</li><li>ConfigKubelet——跳过 kubelet安装</li></ul>
+        :rtype: list of str
+        """
+        return self._SkipOptions
+
+    @SkipOptions.setter
+    def SkipOptions(self, SkipOptions):
+        self._SkipOptions = SkipOptions
+
+    @property
     def ImageId(self):
-        r"""节点镜像
+        r"""<p>节点镜像</p>
         :rtype: str
         """
         return self._ImageId
@@ -350,7 +364,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""直接添加为原生节点
+        r"""<p>直接添加为原生节点</p>
         :rtype: str
         """
         return self._NodeType
@@ -361,7 +375,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""云标签列表
+        r"""<p>云标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -372,7 +386,7 @@ class AddExistedInstancesRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识，NOTIFY_AND_AUTO_RENEW（通知过期且自动续费）、NOTIFY_AND_MANUAL_RENEW（通知过期不自动续费）
+        r"""<p>自动续费标识，NOTIFY_AND_AUTO_RENEW（通知过期且自动续费）、NOTIFY_AND_MANUAL_RENEW（通知过期不自动续费）</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -406,6 +420,7 @@ class AddExistedInstancesRequest(AbstractModel):
                 obj = InstanceAdvancedSettings()
                 obj._deserialize(item)
                 self._InstanceAdvancedSettingsOverrides.append(obj)
+        self._SkipOptions = params.get("SkipOptions")
         self._ImageId = params.get("ImageId")
         self._NodeType = params.get("NodeType")
         if params.get("Tags") is not None:
@@ -432,16 +447,16 @@ class AddExistedInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FailedInstanceIds: 失败的节点ID
+        :param _FailedInstanceIds: <p>失败的节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedInstanceIds: list of str
-        :param _SuccInstanceIds: 成功的节点ID
+        :param _SuccInstanceIds: <p>成功的节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccInstanceIds: list of str
-        :param _TimeoutInstanceIds: 超时未返回出来节点的ID(可能失败，也可能成功)
+        :param _TimeoutInstanceIds: <p>超时未返回出来节点的ID(可能失败，也可能成功)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeoutInstanceIds: list of str
-        :param _FailedReasons: 失败的节点的失败原因
+        :param _FailedReasons: <p>失败的节点的失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedReasons: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -455,7 +470,7 @@ class AddExistedInstancesResponse(AbstractModel):
 
     @property
     def FailedInstanceIds(self):
-        r"""失败的节点ID
+        r"""<p>失败的节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -467,7 +482,7 @@ class AddExistedInstancesResponse(AbstractModel):
 
     @property
     def SuccInstanceIds(self):
-        r"""成功的节点ID
+        r"""<p>成功的节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -479,7 +494,7 @@ class AddExistedInstancesResponse(AbstractModel):
 
     @property
     def TimeoutInstanceIds(self):
-        r"""超时未返回出来节点的ID(可能失败，也可能成功)
+        r"""<p>超时未返回出来节点的ID(可能失败，也可能成功)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -491,7 +506,7 @@ class AddExistedInstancesResponse(AbstractModel):
 
     @property
     def FailedReasons(self):
-        r"""失败的节点的失败原因
+        r"""<p>失败的节点的失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

@@ -22528,6 +22528,535 @@ DataMatrix：DATA_MATRIX
         
 
 
+class QueryEnterpriseBasicInfoRequest(AbstractModel):
+    r"""QueryEnterpriseBasicInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreditCode: <p>统一社会信用代码。CreditCode、EntName 必须提供一个，如果都提供，只使用 CreditCode。</p>
+        :type CreditCode: str
+        :param _EntName: <p>企业名称。CreditCode、EntName 必须提供一个，如果都提供，只使用 CreditCode。</p>
+        :type EntName: str
+        """
+        self._CreditCode = None
+        self._EntName = None
+
+    @property
+    def CreditCode(self):
+        r"""<p>统一社会信用代码。CreditCode、EntName 必须提供一个，如果都提供，只使用 CreditCode。</p>
+        :rtype: str
+        """
+        return self._CreditCode
+
+    @CreditCode.setter
+    def CreditCode(self, CreditCode):
+        self._CreditCode = CreditCode
+
+    @property
+    def EntName(self):
+        r"""<p>企业名称。CreditCode、EntName 必须提供一个，如果都提供，只使用 CreditCode。</p>
+        :rtype: str
+        """
+        return self._EntName
+
+    @EntName.setter
+    def EntName(self, EntName):
+        self._EntName = EntName
+
+
+    def _deserialize(self, params):
+        self._CreditCode = params.get("CreditCode")
+        self._EntName = params.get("EntName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryEnterpriseBasicInfoResponse(AbstractModel):
+    r"""QueryEnterpriseBasicInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: <p>请求状态。<br>枚举值：<br>0：成功，计费；<br>1：系统异常，不计费；<br>2：查询无结果，不计费。</p>
+        :type StatusCode: int
+        :param _CreditCode: <p>统一社会信用代码。</p>
+        :type CreditCode: str
+        :param _EntName: <p>企业名称。</p>
+        :type EntName: str
+        :param _Type: <p>主体类型。</p>
+        :type Type: str
+        :param _LrName: <p>法人代表。</p>
+        :type LrName: str
+        :param _Capital: <p>注册资本。</p>
+        :type Capital: str
+        :param _Address: <p>企业登记住所或注册地址。</p>
+        :type Address: str
+        :param _Business: <p>经营范围。</p>
+        :type Business: str
+        :param _RegistrationAuthority: <p>登记机关。</p>
+        :type RegistrationAuthority: str
+        :param _OperatingStatus: <p>经营状态（标准化），枚举值：<br>1：开业（在营）；<br>2：迁出；<br>3：注销；<br>4：吊销；<br>5：撤销；<br>6：停业；<br>7：撤销登记；<br>0：其他；/：无法查询。</p>
+        :type OperatingStatus: str
+        :param _RawOperatingStatus: <p>经营状态（原始值）。</p>
+        :type RawOperatingStatus: str
+        :param _SetDate: <p>成立日期。</p>
+        :type SetDate: str
+        :param _OperatingPeriod: <p>营业期限：一般包括营业开始时间和结束时间<br>参数格式：yyyy-MM-dd/yyyy-MM-dd<br>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>无法查询，将返回：/</p>
+        :type OperatingPeriod: str
+        :param _ApprovalDate: <p>核准日期。</p>
+        :type ApprovalDate: str
+        :param _Province: <p>所在省份。</p>
+        :type Province: str
+        :param _ProvinceCode: <p>所在省份的行政区划代码。</p>
+        :type ProvinceCode: str
+        :param _City: <p>所在城市。</p>
+        :type City: str
+        :param _CityCode: <p>所在城市的行政区划代码。</p>
+        :type CityCode: str
+        :param _District: <p>所在区县。</p>
+        :type District: str
+        :param _DistrictCode: <p>所在区县的行政区划代码。</p>
+        :type DistrictCode: str
+        :param _CapitalCurrency: <p>注册资本币种。</p>
+        :type CapitalCurrency: str
+        :param _OrganizationCode: <p>组织机构代码。</p>
+        :type OrganizationCode: str
+        :param _EnglishName: <p>企业英文名称。</p>
+        :type EnglishName: str
+        :param _FormerNames: <p>企业曾用名列表。</p>
+        :type FormerNames: list of str
+        :param _OriginalRegNum: <p>原注册号。</p>
+        :type OriginalRegNum: str
+        :param _PaidInCapital: <p>实收资本。</p>
+        :type PaidInCapital: str
+        :param _RevokeDate: <p>吊销日期。</p>
+        :type RevokeDate: str
+        :param _RevokeReason: <p>吊销原因。</p>
+        :type RevokeReason: str
+        :param _CancellationDate: <p>注销日期。</p>
+        :type CancellationDate: str
+        :param _CancellationReason: <p>注销原因。</p>
+        :type CancellationReason: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StatusCode = None
+        self._CreditCode = None
+        self._EntName = None
+        self._Type = None
+        self._LrName = None
+        self._Capital = None
+        self._Address = None
+        self._Business = None
+        self._RegistrationAuthority = None
+        self._OperatingStatus = None
+        self._RawOperatingStatus = None
+        self._SetDate = None
+        self._OperatingPeriod = None
+        self._ApprovalDate = None
+        self._Province = None
+        self._ProvinceCode = None
+        self._City = None
+        self._CityCode = None
+        self._District = None
+        self._DistrictCode = None
+        self._CapitalCurrency = None
+        self._OrganizationCode = None
+        self._EnglishName = None
+        self._FormerNames = None
+        self._OriginalRegNum = None
+        self._PaidInCapital = None
+        self._RevokeDate = None
+        self._RevokeReason = None
+        self._CancellationDate = None
+        self._CancellationReason = None
+        self._RequestId = None
+
+    @property
+    def StatusCode(self):
+        r"""<p>请求状态。<br>枚举值：<br>0：成功，计费；<br>1：系统异常，不计费；<br>2：查询无结果，不计费。</p>
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def CreditCode(self):
+        r"""<p>统一社会信用代码。</p>
+        :rtype: str
+        """
+        return self._CreditCode
+
+    @CreditCode.setter
+    def CreditCode(self, CreditCode):
+        self._CreditCode = CreditCode
+
+    @property
+    def EntName(self):
+        r"""<p>企业名称。</p>
+        :rtype: str
+        """
+        return self._EntName
+
+    @EntName.setter
+    def EntName(self, EntName):
+        self._EntName = EntName
+
+    @property
+    def Type(self):
+        r"""<p>主体类型。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LrName(self):
+        r"""<p>法人代表。</p>
+        :rtype: str
+        """
+        return self._LrName
+
+    @LrName.setter
+    def LrName(self, LrName):
+        self._LrName = LrName
+
+    @property
+    def Capital(self):
+        r"""<p>注册资本。</p>
+        :rtype: str
+        """
+        return self._Capital
+
+    @Capital.setter
+    def Capital(self, Capital):
+        self._Capital = Capital
+
+    @property
+    def Address(self):
+        r"""<p>企业登记住所或注册地址。</p>
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def Business(self):
+        r"""<p>经营范围。</p>
+        :rtype: str
+        """
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def RegistrationAuthority(self):
+        r"""<p>登记机关。</p>
+        :rtype: str
+        """
+        return self._RegistrationAuthority
+
+    @RegistrationAuthority.setter
+    def RegistrationAuthority(self, RegistrationAuthority):
+        self._RegistrationAuthority = RegistrationAuthority
+
+    @property
+    def OperatingStatus(self):
+        r"""<p>经营状态（标准化），枚举值：<br>1：开业（在营）；<br>2：迁出；<br>3：注销；<br>4：吊销；<br>5：撤销；<br>6：停业；<br>7：撤销登记；<br>0：其他；/：无法查询。</p>
+        :rtype: str
+        """
+        return self._OperatingStatus
+
+    @OperatingStatus.setter
+    def OperatingStatus(self, OperatingStatus):
+        self._OperatingStatus = OperatingStatus
+
+    @property
+    def RawOperatingStatus(self):
+        r"""<p>经营状态（原始值）。</p>
+        :rtype: str
+        """
+        return self._RawOperatingStatus
+
+    @RawOperatingStatus.setter
+    def RawOperatingStatus(self, RawOperatingStatus):
+        self._RawOperatingStatus = RawOperatingStatus
+
+    @property
+    def SetDate(self):
+        r"""<p>成立日期。</p>
+        :rtype: str
+        """
+        return self._SetDate
+
+    @SetDate.setter
+    def SetDate(self, SetDate):
+        self._SetDate = SetDate
+
+    @property
+    def OperatingPeriod(self):
+        r"""<p>营业期限：一般包括营业开始时间和结束时间<br>参数格式：yyyy-MM-dd/yyyy-MM-dd<br>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>无法查询，将返回：/</p>
+        :rtype: str
+        """
+        return self._OperatingPeriod
+
+    @OperatingPeriod.setter
+    def OperatingPeriod(self, OperatingPeriod):
+        self._OperatingPeriod = OperatingPeriod
+
+    @property
+    def ApprovalDate(self):
+        r"""<p>核准日期。</p>
+        :rtype: str
+        """
+        return self._ApprovalDate
+
+    @ApprovalDate.setter
+    def ApprovalDate(self, ApprovalDate):
+        self._ApprovalDate = ApprovalDate
+
+    @property
+    def Province(self):
+        r"""<p>所在省份。</p>
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def ProvinceCode(self):
+        r"""<p>所在省份的行政区划代码。</p>
+        :rtype: str
+        """
+        return self._ProvinceCode
+
+    @ProvinceCode.setter
+    def ProvinceCode(self, ProvinceCode):
+        self._ProvinceCode = ProvinceCode
+
+    @property
+    def City(self):
+        r"""<p>所在城市。</p>
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+    @property
+    def CityCode(self):
+        r"""<p>所在城市的行政区划代码。</p>
+        :rtype: str
+        """
+        return self._CityCode
+
+    @CityCode.setter
+    def CityCode(self, CityCode):
+        self._CityCode = CityCode
+
+    @property
+    def District(self):
+        r"""<p>所在区县。</p>
+        :rtype: str
+        """
+        return self._District
+
+    @District.setter
+    def District(self, District):
+        self._District = District
+
+    @property
+    def DistrictCode(self):
+        r"""<p>所在区县的行政区划代码。</p>
+        :rtype: str
+        """
+        return self._DistrictCode
+
+    @DistrictCode.setter
+    def DistrictCode(self, DistrictCode):
+        self._DistrictCode = DistrictCode
+
+    @property
+    def CapitalCurrency(self):
+        r"""<p>注册资本币种。</p>
+        :rtype: str
+        """
+        return self._CapitalCurrency
+
+    @CapitalCurrency.setter
+    def CapitalCurrency(self, CapitalCurrency):
+        self._CapitalCurrency = CapitalCurrency
+
+    @property
+    def OrganizationCode(self):
+        r"""<p>组织机构代码。</p>
+        :rtype: str
+        """
+        return self._OrganizationCode
+
+    @OrganizationCode.setter
+    def OrganizationCode(self, OrganizationCode):
+        self._OrganizationCode = OrganizationCode
+
+    @property
+    def EnglishName(self):
+        r"""<p>企业英文名称。</p>
+        :rtype: str
+        """
+        return self._EnglishName
+
+    @EnglishName.setter
+    def EnglishName(self, EnglishName):
+        self._EnglishName = EnglishName
+
+    @property
+    def FormerNames(self):
+        r"""<p>企业曾用名列表。</p>
+        :rtype: list of str
+        """
+        return self._FormerNames
+
+    @FormerNames.setter
+    def FormerNames(self, FormerNames):
+        self._FormerNames = FormerNames
+
+    @property
+    def OriginalRegNum(self):
+        r"""<p>原注册号。</p>
+        :rtype: str
+        """
+        return self._OriginalRegNum
+
+    @OriginalRegNum.setter
+    def OriginalRegNum(self, OriginalRegNum):
+        self._OriginalRegNum = OriginalRegNum
+
+    @property
+    def PaidInCapital(self):
+        r"""<p>实收资本。</p>
+        :rtype: str
+        """
+        return self._PaidInCapital
+
+    @PaidInCapital.setter
+    def PaidInCapital(self, PaidInCapital):
+        self._PaidInCapital = PaidInCapital
+
+    @property
+    def RevokeDate(self):
+        r"""<p>吊销日期。</p>
+        :rtype: str
+        """
+        return self._RevokeDate
+
+    @RevokeDate.setter
+    def RevokeDate(self, RevokeDate):
+        self._RevokeDate = RevokeDate
+
+    @property
+    def RevokeReason(self):
+        r"""<p>吊销原因。</p>
+        :rtype: str
+        """
+        return self._RevokeReason
+
+    @RevokeReason.setter
+    def RevokeReason(self, RevokeReason):
+        self._RevokeReason = RevokeReason
+
+    @property
+    def CancellationDate(self):
+        r"""<p>注销日期。</p>
+        :rtype: str
+        """
+        return self._CancellationDate
+
+    @CancellationDate.setter
+    def CancellationDate(self, CancellationDate):
+        self._CancellationDate = CancellationDate
+
+    @property
+    def CancellationReason(self):
+        r"""<p>注销原因。</p>
+        :rtype: str
+        """
+        return self._CancellationReason
+
+    @CancellationReason.setter
+    def CancellationReason(self, CancellationReason):
+        self._CancellationReason = CancellationReason
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._CreditCode = params.get("CreditCode")
+        self._EntName = params.get("EntName")
+        self._Type = params.get("Type")
+        self._LrName = params.get("LrName")
+        self._Capital = params.get("Capital")
+        self._Address = params.get("Address")
+        self._Business = params.get("Business")
+        self._RegistrationAuthority = params.get("RegistrationAuthority")
+        self._OperatingStatus = params.get("OperatingStatus")
+        self._RawOperatingStatus = params.get("RawOperatingStatus")
+        self._SetDate = params.get("SetDate")
+        self._OperatingPeriod = params.get("OperatingPeriod")
+        self._ApprovalDate = params.get("ApprovalDate")
+        self._Province = params.get("Province")
+        self._ProvinceCode = params.get("ProvinceCode")
+        self._City = params.get("City")
+        self._CityCode = params.get("CityCode")
+        self._District = params.get("District")
+        self._DistrictCode = params.get("DistrictCode")
+        self._CapitalCurrency = params.get("CapitalCurrency")
+        self._OrganizationCode = params.get("OrganizationCode")
+        self._EnglishName = params.get("EnglishName")
+        self._FormerNames = params.get("FormerNames")
+        self._OriginalRegNum = params.get("OriginalRegNum")
+        self._PaidInCapital = params.get("PaidInCapital")
+        self._RevokeDate = params.get("RevokeDate")
+        self._RevokeReason = params.get("RevokeReason")
+        self._CancellationDate = params.get("CancellationDate")
+        self._CancellationReason = params.get("CancellationReason")
+        self._RequestId = params.get("RequestId")
+
+
 class QuestionInfo(AbstractModel):
     r"""试题识别结果
 

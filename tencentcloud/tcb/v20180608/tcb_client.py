@@ -1356,6 +1356,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEnvInfo(self, request):
+        r"""查询环境详细信息
+
+        :param request: Request instance for DescribeEnvInfo.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvInfoRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeEnvInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEnvInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEnvInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEnvLimit(self, request):
         r"""查询环境个数上限
 

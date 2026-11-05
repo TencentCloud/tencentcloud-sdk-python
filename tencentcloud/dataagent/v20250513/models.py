@@ -1049,20 +1049,23 @@ class DeleteDataAgentSessionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _SessionId: 会话ID
+        :param _SessionId: <p>会话ID</p>
         :type SessionId: str
-        :param _SessionIds: 批量删除 会话id 列表
+        :param _SessionIds: <p>批量删除 会话id 列表</p>
         :type SessionIds: list of str
+        :param _SurfaceContext: <p>上下文</p>
+        :type SurfaceContext: :class:`tencentcloud.dataagent.v20250513.models.SurfaceContext`
         """
         self._InstanceId = None
         self._SessionId = None
         self._SessionIds = None
+        self._SurfaceContext = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1073,7 +1076,7 @@ class DeleteDataAgentSessionRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""会话ID
+        r"""<p>会话ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -1084,7 +1087,7 @@ class DeleteDataAgentSessionRequest(AbstractModel):
 
     @property
     def SessionIds(self):
-        r"""批量删除 会话id 列表
+        r"""<p>批量删除 会话id 列表</p>
         :rtype: list of str
         """
         return self._SessionIds
@@ -1093,11 +1096,25 @@ class DeleteDataAgentSessionRequest(AbstractModel):
     def SessionIds(self, SessionIds):
         self._SessionIds = SessionIds
 
+    @property
+    def SurfaceContext(self):
+        r"""<p>上下文</p>
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.SurfaceContext`
+        """
+        return self._SurfaceContext
+
+    @SurfaceContext.setter
+    def SurfaceContext(self, SurfaceContext):
+        self._SurfaceContext = SurfaceContext
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._SessionId = params.get("SessionId")
         self._SessionIds = params.get("SessionIds")
+        if params.get("SurfaceContext") is not None:
+            self._SurfaceContext = SurfaceContext()
+            self._SurfaceContext._deserialize(params.get("SurfaceContext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1115,9 +1132,9 @@ class DeleteDataAgentSessionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionId: 删除的会话ID
+        :param _SessionId: <p>删除的会话ID</p>
         :type SessionId: str
-        :param _SessionIds: 删除的会话ID列表
+        :param _SessionIds: <p>删除的会话ID列表</p>
         :type SessionIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1128,7 +1145,7 @@ class DeleteDataAgentSessionResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""删除的会话ID
+        r"""<p>删除的会话ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -1139,7 +1156,7 @@ class DeleteDataAgentSessionResponse(AbstractModel):
 
     @property
     def SessionIds(self):
-        r"""删除的会话ID列表
+        r"""<p>删除的会话ID列表</p>
         :rtype: list of str
         """
         return self._SessionIds
@@ -3812,11 +3829,14 @@ class QueryUserSessionDetailRequest(AbstractModel):
         :type Offset: int
         :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
+        :param _SurfaceContext: <p>上下文</p>
+        :type SurfaceContext: :class:`tencentcloud.dataagent.v20250513.models.SurfaceContext`
         """
         self._SessionId = None
         self._Limit = None
         self._Offset = None
         self._InstanceId = None
+        self._SurfaceContext = None
 
     @property
     def SessionId(self):
@@ -3862,12 +3882,26 @@ class QueryUserSessionDetailRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def SurfaceContext(self):
+        r"""<p>上下文</p>
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.SurfaceContext`
+        """
+        return self._SurfaceContext
+
+    @SurfaceContext.setter
+    def SurfaceContext(self, SurfaceContext):
+        self._SurfaceContext = SurfaceContext
+
 
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._InstanceId = params.get("InstanceId")
+        if params.get("SurfaceContext") is not None:
+            self._SurfaceContext = SurfaceContext()
+            self._SurfaceContext._deserialize(params.get("SurfaceContext"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3895,6 +3929,8 @@ class QueryUserSessionDetailResponse(AbstractModel):
         :type TotalCount: int
         :param _RunRecord: <p>运行中的聊天请求, 返回为json字符串</p>
         :type RunRecord: str
+        :param _SessionTargetInfo: <p>会话归属信息</p>
+        :type SessionTargetInfo: :class:`tencentcloud.dataagent.v20250513.models.SessionTargetInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3903,6 +3939,7 @@ class QueryUserSessionDetailResponse(AbstractModel):
         self._RecordList = None
         self._TotalCount = None
         self._RunRecord = None
+        self._SessionTargetInfo = None
         self._RequestId = None
 
     @property
@@ -3961,6 +3998,17 @@ class QueryUserSessionDetailResponse(AbstractModel):
         self._RunRecord = RunRecord
 
     @property
+    def SessionTargetInfo(self):
+        r"""<p>会话归属信息</p>
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.SessionTargetInfo`
+        """
+        return self._SessionTargetInfo
+
+    @SessionTargetInfo.setter
+    def SessionTargetInfo(self, SessionTargetInfo):
+        self._SessionTargetInfo = SessionTargetInfo
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3983,6 +4031,9 @@ class QueryUserSessionDetailResponse(AbstractModel):
                 self._RecordList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RunRecord = params.get("RunRecord")
+        if params.get("SessionTargetInfo") is not None:
+            self._SessionTargetInfo = SessionTargetInfo()
+            self._SessionTargetInfo._deserialize(params.get("SessionTargetInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -4172,6 +4223,164 @@ class RecordList(AbstractModel):
         
 
 
+class SessionTargetInfo(AbstractModel):
+    r"""会话的归属与保存状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetId: <p>targetID</p>
+        :type TargetId: str
+        :param _TargetType: <p>targetType</p>
+        :type TargetType: str
+        :param _TargetName: <p>target名称</p>
+        :type TargetName: str
+        :param _Source: <p>资源名称</p>
+        :type Source: str
+        :param _LastInteractionTime: <p>最后活跃时间</p><p>参数格式：2026-11-05 14:30:00</p>
+        :type LastInteractionTime: str
+        :param _SurfaceContext: <p>上下文</p>
+        :type SurfaceContext: :class:`tencentcloud.dataagent.v20250513.models.SurfaceContext`
+        :param _Saved: <p>是否保存</p>
+        :type Saved: bool
+        :param _SavedAt: <p>保存时间</p>
+        :type SavedAt: str
+        :param _Deleted: <p>是否删除</p>
+        :type Deleted: bool
+        """
+        self._TargetId = None
+        self._TargetType = None
+        self._TargetName = None
+        self._Source = None
+        self._LastInteractionTime = None
+        self._SurfaceContext = None
+        self._Saved = None
+        self._SavedAt = None
+        self._Deleted = None
+
+    @property
+    def TargetId(self):
+        r"""<p>targetID</p>
+        :rtype: str
+        """
+        return self._TargetId
+
+    @TargetId.setter
+    def TargetId(self, TargetId):
+        self._TargetId = TargetId
+
+    @property
+    def TargetType(self):
+        r"""<p>targetType</p>
+        :rtype: str
+        """
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def TargetName(self):
+        r"""<p>target名称</p>
+        :rtype: str
+        """
+        return self._TargetName
+
+    @TargetName.setter
+    def TargetName(self, TargetName):
+        self._TargetName = TargetName
+
+    @property
+    def Source(self):
+        r"""<p>资源名称</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def LastInteractionTime(self):
+        r"""<p>最后活跃时间</p><p>参数格式：2026-11-05 14:30:00</p>
+        :rtype: str
+        """
+        return self._LastInteractionTime
+
+    @LastInteractionTime.setter
+    def LastInteractionTime(self, LastInteractionTime):
+        self._LastInteractionTime = LastInteractionTime
+
+    @property
+    def SurfaceContext(self):
+        r"""<p>上下文</p>
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.SurfaceContext`
+        """
+        return self._SurfaceContext
+
+    @SurfaceContext.setter
+    def SurfaceContext(self, SurfaceContext):
+        self._SurfaceContext = SurfaceContext
+
+    @property
+    def Saved(self):
+        r"""<p>是否保存</p>
+        :rtype: bool
+        """
+        return self._Saved
+
+    @Saved.setter
+    def Saved(self, Saved):
+        self._Saved = Saved
+
+    @property
+    def SavedAt(self):
+        r"""<p>保存时间</p>
+        :rtype: str
+        """
+        return self._SavedAt
+
+    @SavedAt.setter
+    def SavedAt(self, SavedAt):
+        self._SavedAt = SavedAt
+
+    @property
+    def Deleted(self):
+        r"""<p>是否删除</p>
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+
+    def _deserialize(self, params):
+        self._TargetId = params.get("TargetId")
+        self._TargetType = params.get("TargetType")
+        self._TargetName = params.get("TargetName")
+        self._Source = params.get("Source")
+        self._LastInteractionTime = params.get("LastInteractionTime")
+        if params.get("SurfaceContext") is not None:
+            self._SurfaceContext = SurfaceContext()
+            self._SurfaceContext._deserialize(params.get("SurfaceContext"))
+        self._Saved = params.get("Saved")
+        self._SavedAt = params.get("SavedAt")
+        self._Deleted = params.get("Deleted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StopChatAIRequest(AbstractModel):
     r"""StopChatAI请求参数结构体
 
@@ -4264,6 +4473,42 @@ class StopChatAIResponse(AbstractModel):
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
         self._RequestId = params.get("RequestId")
+
+
+class SurfaceContext(AbstractModel):
+    r"""前端宿主环境上下文
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>地域</p>
+        :type Region: str
+        """
+        self._Region = None
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Thinking(AbstractModel):

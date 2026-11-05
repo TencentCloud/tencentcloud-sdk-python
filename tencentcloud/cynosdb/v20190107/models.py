@@ -7378,6 +7378,8 @@ class ClusterInstanceDetail(AbstractModel):
         :type NodeList: list of str
         :param _ServerlessStatus: <p>serverless实例子状态</p>
         :type ServerlessStatus: str
+        :param _ServerlessQuotaInfo: <p>实例Serverless弹性配置信息</p>
+        :type ServerlessQuotaInfo: :class:`tencentcloud.cynosdb.v20190107.models.InstanceServerlessQuotaInfo`
         :param _AIOptimizerStatus: <p>AI优化器状态</p>
         :type AIOptimizerStatus: :class:`tencentcloud.cynosdb.v20190107.models.AIOptimizerStatus`
         :param _ProjectId: <p>项目ID</p>
@@ -7477,6 +7479,7 @@ class ClusterInstanceDetail(AbstractModel):
         self._DbMode = None
         self._NodeList = None
         self._ServerlessStatus = None
+        self._ServerlessQuotaInfo = None
         self._AIOptimizerStatus = None
         self._ProjectId = None
         self._Region = None
@@ -7850,6 +7853,17 @@ class ClusterInstanceDetail(AbstractModel):
     @ServerlessStatus.setter
     def ServerlessStatus(self, ServerlessStatus):
         self._ServerlessStatus = ServerlessStatus
+
+    @property
+    def ServerlessQuotaInfo(self):
+        r"""<p>实例Serverless弹性配置信息</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceServerlessQuotaInfo`
+        """
+        return self._ServerlessQuotaInfo
+
+    @ServerlessQuotaInfo.setter
+    def ServerlessQuotaInfo(self, ServerlessQuotaInfo):
+        self._ServerlessQuotaInfo = ServerlessQuotaInfo
 
     @property
     def AIOptimizerStatus(self):
@@ -8262,6 +8276,9 @@ class ClusterInstanceDetail(AbstractModel):
         self._DbMode = params.get("DbMode")
         self._NodeList = params.get("NodeList")
         self._ServerlessStatus = params.get("ServerlessStatus")
+        if params.get("ServerlessQuotaInfo") is not None:
+            self._ServerlessQuotaInfo = InstanceServerlessQuotaInfo()
+            self._ServerlessQuotaInfo._deserialize(params.get("ServerlessQuotaInfo"))
         if params.get("AIOptimizerStatus") is not None:
             self._AIOptimizerStatus = AIOptimizerStatus()
             self._AIOptimizerStatus._deserialize(params.get("AIOptimizerStatus"))
@@ -8723,6 +8740,72 @@ class ClusterReadOnlyValue(AbstractModel):
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._ReadOnlyValue = params.get("ReadOnlyValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterServerlessQuotaConfig(AbstractModel):
+    r"""集群serverless弹性配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+        :type InstanceType: str
+        :param _MaxCcu: <p>实例Serverless弹性CCU上限</p>
+        :type MaxCcu: float
+        :param _Status: <p>实例Serverless弹性状态</p><p>枚举值：</p><ul><li>opening： 开启中</li><li>opened： 已开启</li><li>closing： 关闭中</li><li>closed： 已关闭</li></ul>
+        :type Status: str
+        """
+        self._InstanceType = None
+        self._MaxCcu = None
+        self._Status = None
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MaxCcu(self):
+        r"""<p>实例Serverless弹性CCU上限</p>
+        :rtype: float
+        """
+        return self._MaxCcu
+
+    @MaxCcu.setter
+    def MaxCcu(self, MaxCcu):
+        self._MaxCcu = MaxCcu
+
+    @property
+    def Status(self):
+        r"""<p>实例Serverless弹性状态</p><p>枚举值：</p><ul><li>opening： 开启中</li><li>opened： 已开启</li><li>closing： 关闭中</li><li>closed： 已关闭</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._MaxCcu = params.get("MaxCcu")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10698,6 +10781,8 @@ class CreateClustersRequest(AbstractModel):
         :type SyncWay: str
         :param _SemiSyncTimeout: <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
         :type SemiSyncTimeout: int
+        :param _ServerlessQuotaConfigs: <p>集群实例Serverless弹性配置</p>
+        :type ServerlessQuotaConfigs: list of ServerlessQuotaConfig
         """
         self._Zone = None
         self._VpcId = None
@@ -10748,6 +10833,7 @@ class CreateClustersRequest(AbstractModel):
         self._CynosVersion = None
         self._SyncWay = None
         self._SemiSyncTimeout = None
+        self._ServerlessQuotaConfigs = None
 
     @property
     def Zone(self):
@@ -11288,6 +11374,17 @@ class CreateClustersRequest(AbstractModel):
     def SemiSyncTimeout(self, SemiSyncTimeout):
         self._SemiSyncTimeout = SemiSyncTimeout
 
+    @property
+    def ServerlessQuotaConfigs(self):
+        r"""<p>集群实例Serverless弹性配置</p>
+        :rtype: list of ServerlessQuotaConfig
+        """
+        return self._ServerlessQuotaConfigs
+
+    @ServerlessQuotaConfigs.setter
+    def ServerlessQuotaConfigs(self, ServerlessQuotaConfigs):
+        self._ServerlessQuotaConfigs = ServerlessQuotaConfigs
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -11356,6 +11453,12 @@ class CreateClustersRequest(AbstractModel):
         self._CynosVersion = params.get("CynosVersion")
         self._SyncWay = params.get("SyncWay")
         self._SemiSyncTimeout = params.get("SemiSyncTimeout")
+        if params.get("ServerlessQuotaConfigs") is not None:
+            self._ServerlessQuotaConfigs = []
+            for item in params.get("ServerlessQuotaConfigs"):
+                obj = ServerlessQuotaConfig()
+                obj._deserialize(item)
+                self._ServerlessQuotaConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15794,6 +15897,8 @@ class CynosdbInstance(AbstractModel):
         :type GdnId: str
         :param _RealZone: <p>实例当前所在可用区</p>
         :type RealZone: str
+        :param _ServerlessQuotaInfo: <p>实例Serverless弹性信息</p>
+        :type ServerlessQuotaInfo: :class:`tencentcloud.cynosdb.v20190107.models.InstanceServerlessQuotaInfo`
         """
         self._Uin = None
         self._AppId = None
@@ -15855,6 +15960,7 @@ class CynosdbInstance(AbstractModel):
         self._NodeList = None
         self._GdnId = None
         self._RealZone = None
+        self._ServerlessQuotaInfo = None
 
     @property
     def Uin(self):
@@ -16519,6 +16625,17 @@ class CynosdbInstance(AbstractModel):
     def RealZone(self, RealZone):
         self._RealZone = RealZone
 
+    @property
+    def ServerlessQuotaInfo(self):
+        r"""<p>实例Serverless弹性信息</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceServerlessQuotaInfo`
+        """
+        return self._ServerlessQuotaInfo
+
+    @ServerlessQuotaInfo.setter
+    def ServerlessQuotaInfo(self, ServerlessQuotaInfo):
+        self._ServerlessQuotaInfo = ServerlessQuotaInfo
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -16603,6 +16720,9 @@ class CynosdbInstance(AbstractModel):
         self._NodeList = params.get("NodeList")
         self._GdnId = params.get("GdnId")
         self._RealZone = params.get("RealZone")
+        if params.get("ServerlessQuotaInfo") is not None:
+            self._ServerlessQuotaInfo = InstanceServerlessQuotaInfo()
+            self._ServerlessQuotaInfo._deserialize(params.get("ServerlessQuotaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16698,6 +16818,8 @@ class CynosdbInstanceDetail(AbstractModel):
         :type SlaveZones: list of str
         :param _StorageVersion: <p>存储版本</p><p>枚举值：</p><ul><li>1.0： 1.0版本存储</li><li>2.0： 2.0版本存储</li></ul>
         :type StorageVersion: str
+        :param _ServerlessQuotaInfo: <p>实例Serverless弹性信息</p>
+        :type ServerlessQuotaInfo: :class:`tencentcloud.cynosdb.v20190107.models.InstanceServerlessQuotaInfo`
         """
         self._Uin = None
         self._AppId = None
@@ -16738,6 +16860,7 @@ class CynosdbInstanceDetail(AbstractModel):
         self._RealZone = None
         self._SlaveZones = None
         self._StorageVersion = None
+        self._ServerlessQuotaInfo = None
 
     @property
     def Uin(self):
@@ -17168,6 +17291,17 @@ class CynosdbInstanceDetail(AbstractModel):
     def StorageVersion(self, StorageVersion):
         self._StorageVersion = StorageVersion
 
+    @property
+    def ServerlessQuotaInfo(self):
+        r"""<p>实例Serverless弹性信息</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceServerlessQuotaInfo`
+        """
+        return self._ServerlessQuotaInfo
+
+    @ServerlessQuotaInfo.setter
+    def ServerlessQuotaInfo(self, ServerlessQuotaInfo):
+        self._ServerlessQuotaInfo = ServerlessQuotaInfo
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -17209,6 +17343,9 @@ class CynosdbInstanceDetail(AbstractModel):
         self._RealZone = params.get("RealZone")
         self._SlaveZones = params.get("SlaveZones")
         self._StorageVersion = params.get("StorageVersion")
+        if params.get("ServerlessQuotaInfo") is not None:
+            self._ServerlessQuotaInfo = InstanceServerlessQuotaInfo()
+            self._ServerlessQuotaInfo._deserialize(params.get("ServerlessQuotaInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26233,6 +26370,125 @@ class DescribeInstanceParamsResponse(AbstractModel):
                 obj = InstanceParamItem()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceServerlessQuotaRequest(AbstractModel):
+    r"""DescribeInstanceServerlessQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+        :type InstanceType: str
+        """
+        self._ClusterId = None
+        self._InstanceType = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._InstanceType = params.get("InstanceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceServerlessQuotaResponse(AbstractModel):
+    r"""DescribeInstanceServerlessQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QuotaConfigs: <p>集群实例Serveless弹性配置</p>
+        :type QuotaConfigs: list of ClusterServerlessQuotaConfig
+        :param _InstanceQuotas: <p>集群实例Serverless弹性状态</p>
+        :type InstanceQuotas: list of InstanceServerlessQuotaInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QuotaConfigs = None
+        self._InstanceQuotas = None
+        self._RequestId = None
+
+    @property
+    def QuotaConfigs(self):
+        r"""<p>集群实例Serveless弹性配置</p>
+        :rtype: list of ClusterServerlessQuotaConfig
+        """
+        return self._QuotaConfigs
+
+    @QuotaConfigs.setter
+    def QuotaConfigs(self, QuotaConfigs):
+        self._QuotaConfigs = QuotaConfigs
+
+    @property
+    def InstanceQuotas(self):
+        r"""<p>集群实例Serverless弹性状态</p>
+        :rtype: list of InstanceServerlessQuotaInfo
+        """
+        return self._InstanceQuotas
+
+    @InstanceQuotas.setter
+    def InstanceQuotas(self, InstanceQuotas):
+        self._InstanceQuotas = InstanceQuotas
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QuotaConfigs") is not None:
+            self._QuotaConfigs = []
+            for item in params.get("QuotaConfigs"):
+                obj = ClusterServerlessQuotaConfig()
+                obj._deserialize(item)
+                self._QuotaConfigs.append(obj)
+        if params.get("InstanceQuotas") is not None:
+            self._InstanceQuotas = []
+            for item in params.get("InstanceQuotas"):
+                obj = InstanceServerlessQuotaInfo()
+                obj._deserialize(item)
+                self._InstanceQuotas.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -38135,6 +38391,102 @@ class InstanceParamItem(AbstractModel):
                 obj = ParamItemDetail()
                 obj._deserialize(item)
                 self._ParamsItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceServerlessQuotaInfo(AbstractModel):
+    r"""实例serverless弹性配置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+        :type InstanceType: str
+        :param _MaxCcu: <p>最大CCU规格</p>
+        :type MaxCcu: float
+        :param _Status: <p>实例Serverless弹性开启状态</p><p>枚举值：</p><ul><li>opening： 开启中</li><li>opened： 已开启</li><li>closing： 关闭中</li><li>closed： 已关闭</li></ul>
+        :type Status: str
+        :param _EnableTime: <p>开启Serverless弹性的时间</p>
+        :type EnableTime: str
+        """
+        self._InstanceId = None
+        self._InstanceType = None
+        self._MaxCcu = None
+        self._Status = None
+        self._EnableTime = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MaxCcu(self):
+        r"""<p>最大CCU规格</p>
+        :rtype: float
+        """
+        return self._MaxCcu
+
+    @MaxCcu.setter
+    def MaxCcu(self, MaxCcu):
+        self._MaxCcu = MaxCcu
+
+    @property
+    def Status(self):
+        r"""<p>实例Serverless弹性开启状态</p><p>枚举值：</p><ul><li>opening： 开启中</li><li>opened： 已开启</li><li>closing： 关闭中</li><li>closed： 已关闭</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EnableTime(self):
+        r"""<p>开启Serverless弹性的时间</p>
+        :rtype: str
+        """
+        return self._EnableTime
+
+    @EnableTime.setter
+    def EnableTime(self, EnableTime):
+        self._EnableTime = EnableTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceType = params.get("InstanceType")
+        self._MaxCcu = params.get("MaxCcu")
+        self._Status = params.get("Status")
+        self._EnableTime = params.get("EnableTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59085,6 +59437,72 @@ class SecurityGroup(AbstractModel):
         
 
 
+class ServerlessQuotaConfig(AbstractModel):
+    r"""serverless弹性配额
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+        :type InstanceType: str
+        :param _MaxCcu: <p>最大CCU</p>
+        :type MaxCcu: float
+        :param _Enabled: <p>开关</p>
+        :type Enabled: bool
+        """
+        self._InstanceType = None
+        self._MaxCcu = None
+        self._Enabled = None
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写</li><li>ro： 只读</li></ul>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def MaxCcu(self):
+        r"""<p>最大CCU</p>
+        :rtype: float
+        """
+        return self._MaxCcu
+
+    @MaxCcu.setter
+    def MaxCcu(self, MaxCcu):
+        self._MaxCcu = MaxCcu
+
+    @property
+    def Enabled(self):
+        r"""<p>开关</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._MaxCcu = params.get("MaxCcu")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServerlessSpec(AbstractModel):
     r"""serverless规格
 
@@ -59302,6 +59720,105 @@ class ServerlessZoneStockInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SetInstanceServerlessQuotaRequest(AbstractModel):
+    r"""SetInstanceServerlessQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _ServerlessQuotaConfigs: <p>实例SLS规格配置</p>
+        :type ServerlessQuotaConfigs: list of ServerlessQuotaConfig
+        """
+        self._ClusterId = None
+        self._ServerlessQuotaConfigs = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ServerlessQuotaConfigs(self):
+        r"""<p>实例SLS规格配置</p>
+        :rtype: list of ServerlessQuotaConfig
+        """
+        return self._ServerlessQuotaConfigs
+
+    @ServerlessQuotaConfigs.setter
+    def ServerlessQuotaConfigs(self, ServerlessQuotaConfigs):
+        self._ServerlessQuotaConfigs = ServerlessQuotaConfigs
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("ServerlessQuotaConfigs") is not None:
+            self._ServerlessQuotaConfigs = []
+            for item in params.get("ServerlessQuotaConfigs"):
+                obj = ServerlessQuotaConfig()
+                obj._deserialize(item)
+                self._ServerlessQuotaConfigs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SetInstanceServerlessQuotaResponse(AbstractModel):
+    r"""SetInstanceServerlessQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SetLibraDBClusterRenewFlagRequest(AbstractModel):

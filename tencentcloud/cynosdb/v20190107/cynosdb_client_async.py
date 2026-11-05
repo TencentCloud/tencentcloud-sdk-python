@@ -1717,6 +1717,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceServerlessQuota(
+            self,
+            request: models.DescribeInstanceServerlessQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceServerlessQuotaResponse:
+        """
+        查询集群设置的serverless弹性配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceServerlessQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceServerlessQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstanceSlowQueries(
             self,
             request: models.DescribeInstanceSlowQueriesRequest,
@@ -4142,6 +4160,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "SearchClusterTables"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchClusterTablesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetInstanceServerlessQuota(
+            self,
+            request: models.SetInstanceServerlessQuotaRequest,
+            opts: Dict = None,
+    ) -> models.SetInstanceServerlessQuotaResponse:
+        """
+        将普通集群转换为Serverless集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetInstanceServerlessQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetInstanceServerlessQuotaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -6555,6 +6555,8 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         :type SourceType: str
         :param _CachedImageSizeBytes: <p>镜像预热存储大小</p><p>单位：Byte</p>
         :type CachedImageSizeBytes: int
+        :param _ReadyTime: <p>镜像预热完成时间</p>
+        :type ReadyTime: str
         :param _LastUsedTime: <p>该预热镜像最近一次被沙箱实例使用时间</p>
         :type LastUsedTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6569,6 +6571,7 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._PreCacheImageId = None
         self._SourceType = None
         self._CachedImageSizeBytes = None
+        self._ReadyTime = None
         self._LastUsedTime = None
         self._RequestId = None
 
@@ -6672,6 +6675,17 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._CachedImageSizeBytes = CachedImageSizeBytes
 
     @property
+    def ReadyTime(self):
+        r"""<p>镜像预热完成时间</p>
+        :rtype: str
+        """
+        return self._ReadyTime
+
+    @ReadyTime.setter
+    def ReadyTime(self, ReadyTime):
+        self._ReadyTime = ReadyTime
+
+    @property
     def LastUsedTime(self):
         r"""<p>该预热镜像最近一次被沙箱实例使用时间</p>
         :rtype: str
@@ -6704,6 +6718,7 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
         self._PreCacheImageId = params.get("PreCacheImageId")
         self._SourceType = params.get("SourceType")
         self._CachedImageSizeBytes = params.get("CachedImageSizeBytes")
+        self._ReadyTime = params.get("ReadyTime")
         self._LastUsedTime = params.get("LastUsedTime")
         self._RequestId = params.get("RequestId")
 
@@ -11094,6 +11109,8 @@ class PreCacheImage(AbstractModel):
         :type SourceType: str
         :param _CachedImageSizeBytes: <p>镜像预热存储大小</p><p>单位：Byte</p>
         :type CachedImageSizeBytes: int
+        :param _ReadyTime: <p>镜像预热完成时间</p>
+        :type ReadyTime: str
         :param _LastUsedTime: <p>该预热镜像最近一次被沙箱实例使用时间</p>
         :type LastUsedTime: str
         """
@@ -11105,6 +11122,7 @@ class PreCacheImage(AbstractModel):
         self._PreCacheImageId = None
         self._SourceType = None
         self._CachedImageSizeBytes = None
+        self._ReadyTime = None
         self._LastUsedTime = None
 
     @property
@@ -11196,6 +11214,17 @@ class PreCacheImage(AbstractModel):
         self._CachedImageSizeBytes = CachedImageSizeBytes
 
     @property
+    def ReadyTime(self):
+        r"""<p>镜像预热完成时间</p>
+        :rtype: str
+        """
+        return self._ReadyTime
+
+    @ReadyTime.setter
+    def ReadyTime(self, ReadyTime):
+        self._ReadyTime = ReadyTime
+
+    @property
     def LastUsedTime(self):
         r"""<p>该预热镜像最近一次被沙箱实例使用时间</p>
         :rtype: str
@@ -11216,6 +11245,7 @@ class PreCacheImage(AbstractModel):
         self._PreCacheImageId = params.get("PreCacheImageId")
         self._SourceType = params.get("SourceType")
         self._CachedImageSizeBytes = params.get("CachedImageSizeBytes")
+        self._ReadyTime = params.get("ReadyTime")
         self._LastUsedTime = params.get("LastUsedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

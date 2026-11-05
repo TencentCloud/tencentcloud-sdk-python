@@ -1997,6 +1997,72 @@ class CancelIsolateDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CharsetCollationItem(AbstractModel):
+    r"""字符集与排序规则联动清单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CharsetName: <p>字符集</p>
+        :type CharsetName: str
+        :param _Collations: <p>排序规则</p>
+        :type Collations: list of str
+        :param _DefaultCollation: <p>默认的排序规则</p>
+        :type DefaultCollation: str
+        """
+        self._CharsetName = None
+        self._Collations = None
+        self._DefaultCollation = None
+
+    @property
+    def CharsetName(self):
+        r"""<p>字符集</p>
+        :rtype: str
+        """
+        return self._CharsetName
+
+    @CharsetName.setter
+    def CharsetName(self, CharsetName):
+        self._CharsetName = CharsetName
+
+    @property
+    def Collations(self):
+        r"""<p>排序规则</p>
+        :rtype: list of str
+        """
+        return self._Collations
+
+    @Collations.setter
+    def Collations(self, Collations):
+        self._Collations = Collations
+
+    @property
+    def DefaultCollation(self):
+        r"""<p>默认的排序规则</p>
+        :rtype: str
+        """
+        return self._DefaultCollation
+
+    @DefaultCollation.setter
+    def DefaultCollation(self, DefaultCollation):
+        self._DefaultCollation = DefaultCollation
+
+
+    def _deserialize(self, params):
+        self._CharsetName = params.get("CharsetName")
+        self._Collations = params.get("Collations")
+        self._DefaultCollation = params.get("DefaultCollation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CloneInstanceModel(AbstractModel):
     r"""克隆实例对象
 
@@ -2717,8 +2783,6 @@ class CreateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: <p>创建实例区域</p>
-        :type Zone: str
         :param _VpcId: <p>字符型vpcid</p>
         :type VpcId: str
         :param _SubnetId: <p>字符型subnetid</p>
@@ -2733,6 +2797,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Replications: int
         :param _InstanceCount: <p>创建实例个数，上限为10</p>
         :type InstanceCount: int
+        :param _Zone: <p>创建实例区域</p>
+        :type Zone: str
         :param _FullReplications: <p>全能型副本数量</p>
         :type FullReplications: int
         :param _CreateVersion: <p>创建实例版本，默认使用当前最新版本</p>
@@ -2787,8 +2853,9 @@ class CreateDBInstancesRequest(AbstractModel):
         :type EncryptionEnable: int
         :param _AutoScaleConfigs: <p>SVLS 实例的自动变配相关限制</p><p>入参限制：传入时 AutoScaleConfig 参数不再生效</p>
         :type AutoScaleConfigs: list of AutoScalingConfig
+        :param _PasswordComplexity: <p>密码复杂度</p>
+        :type PasswordComplexity: :class:`tencentcloud.tdmysql.v20211122.models.PasswordComplexity`
         """
-        self._Zone = None
         self._VpcId = None
         self._SubnetId = None
         self._SpecCode = None
@@ -2796,6 +2863,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self._StorageNodeNum = None
         self._Replications = None
         self._InstanceCount = None
+        self._Zone = None
         self._FullReplications = None
         self._CreateVersion = None
         self._InstanceName = None
@@ -2823,17 +2891,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self._Password = None
         self._EncryptionEnable = None
         self._AutoScaleConfigs = None
-
-    @property
-    def Zone(self):
-        r"""<p>创建实例区域</p>
-        :rtype: str
-        """
-        return self._Zone
-
-    @Zone.setter
-    def Zone(self, Zone):
-        self._Zone = Zone
+        self._PasswordComplexity = None
 
     @property
     def VpcId(self):
@@ -2911,6 +2969,17 @@ class CreateDBInstancesRequest(AbstractModel):
     @InstanceCount.setter
     def InstanceCount(self, InstanceCount):
         self._InstanceCount = InstanceCount
+
+    @property
+    def Zone(self):
+        r"""<p>创建实例区域</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
     @property
     def FullReplications(self):
@@ -3209,9 +3278,19 @@ class CreateDBInstancesRequest(AbstractModel):
     def AutoScaleConfigs(self, AutoScaleConfigs):
         self._AutoScaleConfigs = AutoScaleConfigs
 
+    @property
+    def PasswordComplexity(self):
+        r"""<p>密码复杂度</p>
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.PasswordComplexity`
+        """
+        return self._PasswordComplexity
+
+    @PasswordComplexity.setter
+    def PasswordComplexity(self, PasswordComplexity):
+        self._PasswordComplexity = PasswordComplexity
+
 
     def _deserialize(self, params):
-        self._Zone = params.get("Zone")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._SpecCode = params.get("SpecCode")
@@ -3219,6 +3298,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self._StorageNodeNum = params.get("StorageNodeNum")
         self._Replications = params.get("Replications")
         self._InstanceCount = params.get("InstanceCount")
+        self._Zone = params.get("Zone")
         self._FullReplications = params.get("FullReplications")
         self._CreateVersion = params.get("CreateVersion")
         self._InstanceName = params.get("InstanceName")
@@ -3263,6 +3343,9 @@ class CreateDBInstancesRequest(AbstractModel):
                 obj = AutoScalingConfig()
                 obj._deserialize(item)
                 self._AutoScaleConfigs.append(obj)
+        if params.get("PasswordComplexity") is not None:
+            self._PasswordComplexity = PasswordComplexity()
+            self._PasswordComplexity._deserialize(params.get("PasswordComplexity"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4942,10 +5025,24 @@ class DescribeDBCharsetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CharsetCollations: <p>字符集与排序规则对应列表</p>
+        :type CharsetCollations: list of CharsetCollationItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._CharsetCollations = None
         self._RequestId = None
+
+    @property
+    def CharsetCollations(self):
+        r"""<p>字符集与排序规则对应列表</p>
+        :rtype: list of CharsetCollationItem
+        """
+        return self._CharsetCollations
+
+    @CharsetCollations.setter
+    def CharsetCollations(self, CharsetCollations):
+        self._CharsetCollations = CharsetCollations
 
     @property
     def RequestId(self):
@@ -4960,6 +5057,12 @@ class DescribeDBCharsetsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("CharsetCollations") is not None:
+            self._CharsetCollations = []
+            for item in params.get("CharsetCollations"):
+                obj = CharsetCollationItem()
+                obj._deserialize(item)
+                self._CharsetCollations.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -5204,6 +5307,10 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :type EncryptionKmsRegion: str
         :param _AutoScaleConfigs: <p>serverless自动变配配置</p>
         :type AutoScaleConfigs: list of AutoScalingConfig
+        :param _SSLStatus: <p>SSL开启状态</p>
+        :type SSLStatus: str
+        :param _Collation: <p>字符集的排序规则</p>
+        :type Collation: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5269,6 +5376,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._EncryptionEnable = None
         self._EncryptionKmsRegion = None
         self._AutoScaleConfigs = None
+        self._SSLStatus = None
+        self._Collation = None
         self._RequestId = None
 
     @property
@@ -5959,6 +6068,28 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._AutoScaleConfigs = AutoScaleConfigs
 
     @property
+    def SSLStatus(self):
+        r"""<p>SSL开启状态</p>
+        :rtype: str
+        """
+        return self._SSLStatus
+
+    @SSLStatus.setter
+    def SSLStatus(self, SSLStatus):
+        self._SSLStatus = SSLStatus
+
+    @property
+    def Collation(self):
+        r"""<p>字符集的排序规则</p>
+        :rtype: str
+        """
+        return self._Collation
+
+    @Collation.setter
+    def Collation(self, Collation):
+        self._Collation = Collation
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -6064,6 +6195,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
                 obj = AutoScalingConfig()
                 obj._deserialize(item)
                 self._AutoScaleConfigs.append(obj)
+        self._SSLStatus = params.get("SSLStatus")
+        self._Collation = params.get("Collation")
         self._RequestId = params.get("RequestId")
 
 
@@ -9250,10 +9383,13 @@ class DescribeSpecsRequest(AbstractModel):
         :type IsExclusiveInstance: int
         :param _Zones: <p>可用区组合列表</p>
         :type Zones: list of str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
         """
         self._FullReplications = None
         self._IsExclusiveInstance = None
         self._Zones = None
+        self._InstanceId = None
 
     @property
     def FullReplications(self):
@@ -9288,11 +9424,23 @@ class DescribeSpecsRequest(AbstractModel):
     def Zones(self, Zones):
         self._Zones = Zones
 
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._FullReplications = params.get("FullReplications")
         self._IsExclusiveInstance = params.get("IsExclusiveInstance")
         self._Zones = params.get("Zones")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13986,6 +14134,112 @@ class ParamDesc(AbstractModel):
         
 
 
+class PasswordComplexity(AbstractModel):
+    r"""密码复杂度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否开启密码复杂度</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        :param _MixedCaseCount: <p>大写和小写字符的最小长度</p><p>取值范围：[1, 16]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MixedCaseCount: int
+        :param _NumberCount: <p>数字字符的最小长度</p><p>取值范围：[1, 16]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumberCount: int
+        :param _SpecialCharCount: <p>特殊字符的最小长度</p><p>取值范围：[1, 16]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecialCharCount: int
+        :param _Length: <p>密码的最小长度</p><p>取值范围：[8, 64]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Length: int
+        """
+        self._Enable = None
+        self._MixedCaseCount = None
+        self._NumberCount = None
+        self._SpecialCharCount = None
+        self._Length = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否开启密码复杂度</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def MixedCaseCount(self):
+        r"""<p>大写和小写字符的最小长度</p><p>取值范围：[1, 16]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MixedCaseCount
+
+    @MixedCaseCount.setter
+    def MixedCaseCount(self, MixedCaseCount):
+        self._MixedCaseCount = MixedCaseCount
+
+    @property
+    def NumberCount(self):
+        r"""<p>数字字符的最小长度</p><p>取值范围：[1, 16]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumberCount
+
+    @NumberCount.setter
+    def NumberCount(self, NumberCount):
+        self._NumberCount = NumberCount
+
+    @property
+    def SpecialCharCount(self):
+        r"""<p>特殊字符的最小长度</p><p>取值范围：[1, 16]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SpecialCharCount
+
+    @SpecialCharCount.setter
+    def SpecialCharCount(self, SpecialCharCount):
+        self._SpecialCharCount = SpecialCharCount
+
+    @property
+    def Length(self):
+        r"""<p>密码的最小长度</p><p>取值范围：[8, 64]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Length
+
+    @Length.setter
+    def Length(self, Length):
+        self._Length = Length
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._MixedCaseCount = params.get("MixedCaseCount")
+        self._NumberCount = params.get("NumberCount")
+        self._SpecialCharCount = params.get("SpecialCharCount")
+        self._Length = params.get("Length")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ResetDbaAdminPrivilegesRequest(AbstractModel):
     r"""ResetDbaAdminPrivileges请求参数结构体
 
@@ -13995,8 +14249,11 @@ class ResetDbaAdminPrivilegesRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
+        :param _Host: <p>DbaAdmin的host</p>
+        :type Host: str
         """
         self._InstanceId = None
+        self._Host = None
 
     @property
     def InstanceId(self):
@@ -14009,9 +14266,21 @@ class ResetDbaAdminPrivilegesRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def Host(self):
+        r"""<p>DbaAdmin的host</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._Host = params.get("Host")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -18,6 +18,42 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class A2AConfig(AbstractModel):
+    r"""A2AConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>企业共享开关</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>企业共享开关</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AICallConfig(AbstractModel):
     r"""智能通话配置
 
@@ -953,7 +989,7 @@ class AgentInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputType: <p>输入来源类型：0 用户输入，3 自定义变量（API参数）</p>
+        :param _InputType: <p>输入来源类型</p><p>枚举值：</p><ul><li>1： 用户输入</li><li>2： 系统变量</li><li>3： 自定义变量（API参数）</li><li>4： 环境变量</li><li>5： 应用变量</li><li>6： 工具参数</li></ul>
         :type InputType: int
         :param _UserInputValue: <p>用户手写输入</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -977,7 +1013,7 @@ class AgentInput(AbstractModel):
 
     @property
     def InputType(self):
-        r"""<p>输入来源类型：0 用户输入，3 自定义变量（API参数）</p>
+        r"""<p>输入来源类型</p><p>枚举值：</p><ul><li>1： 用户输入</li><li>2： 系统变量</li><li>3： 自定义变量（API参数）</li><li>4： 环境变量</li><li>5： 应用变量</li><li>6： 工具参数</li></ul>
         :rtype: int
         """
         return self._InputType
@@ -3412,6 +3448,9 @@ class App(AbstractModel):
         :param _FileVolumeMountList: <p>应用挂载云盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileVolumeMountList: list of FileVolumeMount
+        :param _A2AConfig: <p>A2A配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type A2AConfig: :class:`tencentcloud.adp.v20260520.models.A2AConfig`
         """
         self._AuxiliaryInfo = None
         self._Config = None
@@ -3423,6 +3462,7 @@ class App(AbstractModel):
         self._SharedKbList = None
         self._PortalShareConfig = None
         self._FileVolumeMountList = None
+        self._A2AConfig = None
 
     @property
     def AuxiliaryInfo(self):
@@ -3544,6 +3584,18 @@ class App(AbstractModel):
     def FileVolumeMountList(self, FileVolumeMountList):
         self._FileVolumeMountList = FileVolumeMountList
 
+    @property
+    def A2AConfig(self):
+        r"""<p>A2A配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.A2AConfig`
+        """
+        return self._A2AConfig
+
+    @A2AConfig.setter
+    def A2AConfig(self, A2AConfig):
+        self._A2AConfig = A2AConfig
+
 
     def _deserialize(self, params):
         if params.get("AuxiliaryInfo") is not None:
@@ -3582,6 +3634,9 @@ class App(AbstractModel):
                 obj = FileVolumeMount()
                 obj._deserialize(item)
                 self._FileVolumeMountList.append(obj)
+        if params.get("A2AConfig") is not None:
+            self._A2AConfig = A2AConfig()
+            self._A2AConfig._deserialize(params.get("A2AConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14034,6 +14089,8 @@ class CreateReleaseRequest(AbstractModel):
         :type IsPublishAsTemplate: bool
         :param _PortalShareConfig: <p>portal配置</p>
         :type PortalShareConfig: :class:`tencentcloud.adp.v20260520.models.PortalShareConfig`
+        :param _A2AConfig: <p>A2A配置</p>
+        :type A2AConfig: :class:`tencentcloud.adp.v20260520.models.A2AConfig`
         """
         self._AppId = None
         self._AppShareAccessControl = None
@@ -14043,6 +14100,7 @@ class CreateReleaseRequest(AbstractModel):
         self._IsDevToRelease = None
         self._IsPublishAsTemplate = None
         self._PortalShareConfig = None
+        self._A2AConfig = None
 
     @property
     def AppId(self):
@@ -14132,6 +14190,17 @@ class CreateReleaseRequest(AbstractModel):
     def PortalShareConfig(self, PortalShareConfig):
         self._PortalShareConfig = PortalShareConfig
 
+    @property
+    def A2AConfig(self):
+        r"""<p>A2A配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.A2AConfig`
+        """
+        return self._A2AConfig
+
+    @A2AConfig.setter
+    def A2AConfig(self, A2AConfig):
+        self._A2AConfig = A2AConfig
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -14148,6 +14217,9 @@ class CreateReleaseRequest(AbstractModel):
         if params.get("PortalShareConfig") is not None:
             self._PortalShareConfig = PortalShareConfig()
             self._PortalShareConfig._deserialize(params.get("PortalShareConfig"))
+        if params.get("A2AConfig") is not None:
+            self._A2AConfig = A2AConfig()
+            self._A2AConfig._deserialize(params.get("A2AConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17836,7 +17908,7 @@ class DescribeAppRequest(AbstractModel):
         :type AppId: str
         :param _Domain: <p>应用域: ADP_DOMAIN_DEV(1)=开发域, ADP_DOMAIN_PROD(2)=发布域。枚举值: 1:开发域, 2:生产域</p>
         :type Domain: int
-        :param _FieldMask: <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置), FileVolumeMountList(云盘挂载列表)</p>
+        :param _FieldMask: <p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置), FileVolumeMountList(云盘挂载列表), A2AConfig(A2A启用配置)</p>
         :type FieldMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         :param _StatusType: <p>特殊状态类型(当FieldMask包含SpecialStatusInfo时必填)。枚举值: 1:回滚状态, 2:首次导入状态</p>
         :type StatusType: int
@@ -17870,7 +17942,7 @@ class DescribeAppRequest(AbstractModel):
 
     @property
     def FieldMask(self):
-        r"""<p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置), FileVolumeMountList(云盘挂载列表)</p>
+        r"""<p>字段掩码，指定需要返回的字段(Paths为空则返回所有字段)。Paths枚举值：AppConfig(应用配置), SecretInfo(应用密钥信息), ShareUrlInfo(分享链接信息), SpecialStatusInfo(特殊状态信息), SearchResourceStatus(搜索资源状态), SharedKbList(应用引用的共享知识库列表),CorpShareConfig(企业共享配置), FileVolumeMountList(云盘挂载列表), A2AConfig(A2A启用配置)</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         return self._FieldMask
@@ -40325,6 +40397,9 @@ class ReleaseSummary(AbstractModel):
         :param _PortalShareConfig: <p>portal配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PortalShareConfig: :class:`tencentcloud.adp.v20260520.models.PortalShareConfig`
+        :param _A2AConfig: <p>A2A配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type A2AConfig: :class:`tencentcloud.adp.v20260520.models.A2AConfig`
         """
         self._CreateTime = None
         self._Description = None
@@ -40335,6 +40410,7 @@ class ReleaseSummary(AbstractModel):
         self._ChannelIdList = None
         self._CorpShareConfig = None
         self._PortalShareConfig = None
+        self._A2AConfig = None
 
     @property
     def CreateTime(self):
@@ -40438,6 +40514,18 @@ class ReleaseSummary(AbstractModel):
     def PortalShareConfig(self, PortalShareConfig):
         self._PortalShareConfig = PortalShareConfig
 
+    @property
+    def A2AConfig(self):
+        r"""<p>A2A配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.A2AConfig`
+        """
+        return self._A2AConfig
+
+    @A2AConfig.setter
+    def A2AConfig(self, A2AConfig):
+        self._A2AConfig = A2AConfig
+
 
     def _deserialize(self, params):
         self._CreateTime = params.get("CreateTime")
@@ -40455,6 +40543,9 @@ class ReleaseSummary(AbstractModel):
         if params.get("PortalShareConfig") is not None:
             self._PortalShareConfig = PortalShareConfig()
             self._PortalShareConfig._deserialize(params.get("PortalShareConfig"))
+        if params.get("A2AConfig") is not None:
+            self._A2AConfig = A2AConfig()
+            self._A2AConfig._deserialize(params.get("A2AConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

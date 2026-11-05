@@ -3706,6 +3706,10 @@ class CreateNotebookRequest(AbstractModel):
         :type VolumeSourceGooseFS: :class:`tencentcloud.tione.v20211111.models.GooseFS`
         :param _Description: <p>描述</p>
         :type Description: str
+        :param _ResourceSupplyAttribute: <p>资源供应属性</p>
+        :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        :param _Queues: <p>队列ID</p>
+        :type Queues: list of str
         """
         self._Name = None
         self._ChargeType = None
@@ -3733,6 +3737,8 @@ class CreateNotebookRequest(AbstractModel):
         self._SSHConfig = None
         self._VolumeSourceGooseFS = None
         self._Description = None
+        self._ResourceSupplyAttribute = None
+        self._Queues = None
 
     @property
     def Name(self):
@@ -4020,6 +4026,28 @@ class CreateNotebookRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ResourceSupplyAttribute(self):
+        r"""<p>资源供应属性</p>
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        """
+        return self._ResourceSupplyAttribute
+
+    @ResourceSupplyAttribute.setter
+    def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
+        self._ResourceSupplyAttribute = ResourceSupplyAttribute
+
+    @property
+    def Queues(self):
+        r"""<p>队列ID</p>
+        :rtype: list of str
+        """
+        return self._Queues
+
+    @Queues.setter
+    def Queues(self, Queues):
+        self._Queues = Queues
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4070,6 +4098,10 @@ class CreateNotebookRequest(AbstractModel):
             self._VolumeSourceGooseFS = GooseFS()
             self._VolumeSourceGooseFS._deserialize(params.get("VolumeSourceGooseFS"))
         self._Description = params.get("Description")
+        if params.get("ResourceSupplyAttribute") is not None:
+            self._ResourceSupplyAttribute = ResourceSupplyAttribute()
+            self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
+        self._Queues = params.get("Queues")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31724,6 +31756,8 @@ class SmartRouterResourceSpec(AbstractModel):
         :param _ResourceSupplyAttribute: <p>资源供应属性（潮汐/竞价等供应模式），公有云场景用于指定机器来源类型。仅区分供应来源，计费/部署/伸缩仍按后付费处理（ChargeType 恒为 POSTPAID_BY_HOUR）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        :param _ResourceGroupSWType: <p>资源组类型（output only，查询时回显供前端区分资源组表单）。枚举值：NORMAL（托管资源组）/ SW（纳管资源组）。按量计费（ChargeType=POSTPAID_BY_HOUR）时为空；写入时仍以查询到的资源组实际类型为准，调用方无需传入</p>
+        :type ResourceGroupSWType: str
         """
         self._ChargeType = None
         self._ResourceGroupId = None
@@ -31732,6 +31766,7 @@ class SmartRouterResourceSpec(AbstractModel):
         self._QueueId = None
         self._Priority = None
         self._ResourceSupplyAttribute = None
+        self._ResourceGroupSWType = None
 
     @property
     def ChargeType(self):
@@ -31811,6 +31846,17 @@ class SmartRouterResourceSpec(AbstractModel):
     def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
         self._ResourceSupplyAttribute = ResourceSupplyAttribute
 
+    @property
+    def ResourceGroupSWType(self):
+        r"""<p>资源组类型（output only，查询时回显供前端区分资源组表单）。枚举值：NORMAL（托管资源组）/ SW（纳管资源组）。按量计费（ChargeType=POSTPAID_BY_HOUR）时为空；写入时仍以查询到的资源组实际类型为准，调用方无需传入</p>
+        :rtype: str
+        """
+        return self._ResourceGroupSWType
+
+    @ResourceGroupSWType.setter
+    def ResourceGroupSWType(self, ResourceGroupSWType):
+        self._ResourceGroupSWType = ResourceGroupSWType
+
 
     def _deserialize(self, params):
         self._ChargeType = params.get("ChargeType")
@@ -31822,6 +31868,7 @@ class SmartRouterResourceSpec(AbstractModel):
         if params.get("ResourceSupplyAttribute") is not None:
             self._ResourceSupplyAttribute = ResourceSupplyAttribute()
             self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
+        self._ResourceGroupSWType = params.get("ResourceGroupSWType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

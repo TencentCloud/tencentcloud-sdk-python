@@ -2188,6 +2188,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceServerlessQuota(self, request):
+        r"""查询集群设置的serverless弹性配置
+
+        :param request: Request instance for DescribeInstanceServerlessQuota.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceServerlessQuotaRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceServerlessQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceServerlessQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceServerlessQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceSlowQueries(self, request):
         r"""此接口（DescribeInstanceSlowQueries）用于查询实例慢日志详情。受到平台返回大小限制，当返回结果过大时，可能会对超过限制的内容进行截断。
 
@@ -5284,6 +5307,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("SearchClusterTables", params, headers=headers)
             response = json.loads(body)
             model = models.SearchClusterTablesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetInstanceServerlessQuota(self, request):
+        r"""将普通集群转换为Serverless集群
+
+        :param request: Request instance for SetInstanceServerlessQuota.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.SetInstanceServerlessQuotaRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SetInstanceServerlessQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetInstanceServerlessQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetInstanceServerlessQuotaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

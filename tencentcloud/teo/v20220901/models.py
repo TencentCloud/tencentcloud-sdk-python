@@ -863,12 +863,16 @@ class AccessURLRedirectParameters(AbstractModel):
         :param _QueryString: <p>携带查询参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueryString: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectQueryString`
+        :param _Port: <p>目标端口配置。</p><p>不填写此参数时，按 FollowProtocol 模式处理，即重定向地址中不显式指定端口，由目标协议使用默认端口，HTTP 使用 80，HTTPS 使用 443。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectPort`
         """
         self._StatusCode = None
         self._Protocol = None
         self._HostName = None
         self._URLPath = None
         self._QueryString = None
+        self._Port = None
 
     @property
     def StatusCode(self):
@@ -928,6 +932,18 @@ class AccessURLRedirectParameters(AbstractModel):
     def QueryString(self, QueryString):
         self._QueryString = QueryString
 
+    @property
+    def Port(self):
+        r"""<p>目标端口配置。</p><p>不填写此参数时，按 FollowProtocol 模式处理，即重定向地址中不显式指定端口，由目标协议使用默认端口，HTTP 使用 80，HTTPS 使用 443。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.AccessURLRedirectPort`
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
 
     def _deserialize(self, params):
         self._StatusCode = params.get("StatusCode")
@@ -941,6 +957,60 @@ class AccessURLRedirectParameters(AbstractModel):
         if params.get("QueryString") is not None:
             self._QueryString = AccessURLRedirectQueryString()
             self._QueryString._deserialize(params.get("QueryString"))
+        if params.get("Port") is not None:
+            self._Port = AccessURLRedirectPort()
+            self._Port._deserialize(params.get("Port"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessURLRedirectPort(AbstractModel):
+    r"""访问 URL 重定向目标端口配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: <p>目标端口配置</p><p>枚举值：</p><ul><li>FollowProtocol： 使用目标协议的默认端口。重定向地址中不显式指定端口，由目标协议使用默认端口，HTTP 使用 80，HTTPS 使用 443。</li><li>FollowRequest： 跟随客户端请求的目标端口。请求地址显式携带端口时沿用该端口；未显式携带时，重定向地址中不携带端口。</li><li>Custom： 使用指定的自定义端口。</li></ul>
+        :type Action: str
+        :param _Value: <p>自定义目标端口。</p><p>取值范围：[1, 65535]</p><p>当 Action 为 Custom 时，此字段必填；当 Action 为 FollowProtocol 或 FollowRequest 时，此字段不生效。</p>
+        :type Value: int
+        """
+        self._Action = None
+        self._Value = None
+
+    @property
+    def Action(self):
+        r"""<p>目标端口配置</p><p>枚举值：</p><ul><li>FollowProtocol： 使用目标协议的默认端口。重定向地址中不显式指定端口，由目标协议使用默认端口，HTTP 使用 80，HTTPS 使用 443。</li><li>FollowRequest： 跟随客户端请求的目标端口。请求地址显式携带端口时沿用该端口；未显式携带时，重定向地址中不携带端口。</li><li>Custom： 使用指定的自定义端口。</li></ul>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Value(self):
+        r"""<p>自定义目标端口。</p><p>取值范围：[1, 65535]</p><p>当 Action 为 Custom 时，此字段必填；当 Action 为 FollowProtocol 或 FollowRequest 时，此字段不生效。</p>
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4056,22 +4126,15 @@ class BindSecurityTemplateToEntityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 需要绑定或解绑的策略模板所属站点 ID。
+        :param _ZoneId: <p>需要绑定或解绑的域名所属站点 ID。</p>
         :type ZoneId: str
-        :param _Entities: 绑定至策略模板（或者从策略模板解绑）的域名列表。
+        :param _Entities: <p>绑定至策略模板（或者从策略模板解绑）的域名列表。</p>
         :type Entities: list of str
-        :param _Operate: 绑定或解绑操作选项，取值有：
-<li>bind：绑定域名至策略模板。</li>
-<li>unbind-keep-policy：将域名从策略模板解绑，解绑时保留当前策略。</li>
-<li>unbind-use-default：将域名从策略模板解绑，并使用默认空白策略。</li>注意：解绑操作当前仅支持单个域名解绑。即：当 Operate 参数取值为 unbind-keep-policy 或 unbind-use-default 时，Entities 参数列表仅支持填写一个域名。
+        :param _Operate: <p>绑定或解绑操作选项。</p><p>枚举值：</p><ul><li>bind： 绑定域名至策略模板。</li><li>unbind-keep-policy： 将域名从策略模板解绑，解绑时保留当前策略。</li><li>unbind-use-default： 将域名从策略模板解绑，并使用默认空白策略。</li></ul>
         :type Operate: str
-        :param _TemplateId: 指定绑定或解绑的策略模板 ID 或站点全局策略
-<li>如需绑定至策略模板，或从策略模板解绑，请指定策略模板 ID。</li>
-<li>如需绑定至站点全局策略，或从站点全局策略解绑，请使用 @ZoneLevel@domain 参数值。</li>
-
-注意：解绑后，域名将使用独立策略，并单独计算规则配额，请确保解绑前套餐规则配额充足。
+        :param _TemplateId: <p>指定绑定或解绑的策略模板 ID 或站点全局策略。<li>如需绑定至策略模板，或从策略模板解绑，请指定策略模板 ID；</li><li>如需绑定至站点全局策略，或从站点全局策略解绑，请使用 @ZoneLevel@domain 参数值。</li></p><p>注意：解绑后，域名将使用独立策略，并单独计算规则配额，请确保解绑前套餐规则配额充足。</p>
         :type TemplateId: str
-        :param _OverWrite: 传入域名如果已经绑定了策略模板（含站点级防护策略），通过设置该参数表示是否替换该模板，默认值为 true。支持下列取值：<li>true： 替换域名当前绑定的模板。</li><li>false：不替换域名当前绑定的模板。</li>注意：当设置为 false 时，若传入域名已经绑定策略模板，API  将返回错误；站点级防护策略也为一种策略模板。
+        :param _OverWrite: <p>传入域名如果已经绑定了策略模板（含站点级防护策略），通过设置该参数表示是否替换该模板。</p><p>枚举值：</p><ul><li>true： 替换域名当前绑定的模板。</li><li>false： 不替换域名当前绑定的模板。</li></ul><p>默认值：true</p><p>注意：当设置为 false 时，若传入域名已经绑定策略模板，API  将返回错误；站点级防护策略也为一种策略模板。</p>
         :type OverWrite: bool
         """
         self._ZoneId = None
@@ -4082,7 +4145,7 @@ class BindSecurityTemplateToEntityRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""需要绑定或解绑的策略模板所属站点 ID。
+        r"""<p>需要绑定或解绑的域名所属站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -4093,7 +4156,7 @@ class BindSecurityTemplateToEntityRequest(AbstractModel):
 
     @property
     def Entities(self):
-        r"""绑定至策略模板（或者从策略模板解绑）的域名列表。
+        r"""<p>绑定至策略模板（或者从策略模板解绑）的域名列表。</p>
         :rtype: list of str
         """
         return self._Entities
@@ -4104,10 +4167,7 @@ class BindSecurityTemplateToEntityRequest(AbstractModel):
 
     @property
     def Operate(self):
-        r"""绑定或解绑操作选项，取值有：
-<li>bind：绑定域名至策略模板。</li>
-<li>unbind-keep-policy：将域名从策略模板解绑，解绑时保留当前策略。</li>
-<li>unbind-use-default：将域名从策略模板解绑，并使用默认空白策略。</li>注意：解绑操作当前仅支持单个域名解绑。即：当 Operate 参数取值为 unbind-keep-policy 或 unbind-use-default 时，Entities 参数列表仅支持填写一个域名。
+        r"""<p>绑定或解绑操作选项。</p><p>枚举值：</p><ul><li>bind： 绑定域名至策略模板。</li><li>unbind-keep-policy： 将域名从策略模板解绑，解绑时保留当前策略。</li><li>unbind-use-default： 将域名从策略模板解绑，并使用默认空白策略。</li></ul>
         :rtype: str
         """
         return self._Operate
@@ -4118,11 +4178,7 @@ class BindSecurityTemplateToEntityRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""指定绑定或解绑的策略模板 ID 或站点全局策略
-<li>如需绑定至策略模板，或从策略模板解绑，请指定策略模板 ID。</li>
-<li>如需绑定至站点全局策略，或从站点全局策略解绑，请使用 @ZoneLevel@domain 参数值。</li>
-
-注意：解绑后，域名将使用独立策略，并单独计算规则配额，请确保解绑前套餐规则配额充足。
+        r"""<p>指定绑定或解绑的策略模板 ID 或站点全局策略。<li>如需绑定至策略模板，或从策略模板解绑，请指定策略模板 ID；</li><li>如需绑定至站点全局策略，或从站点全局策略解绑，请使用 @ZoneLevel@domain 参数值。</li></p><p>注意：解绑后，域名将使用独立策略，并单独计算规则配额，请确保解绑前套餐规则配额充足。</p>
         :rtype: str
         """
         return self._TemplateId
@@ -4133,7 +4189,7 @@ class BindSecurityTemplateToEntityRequest(AbstractModel):
 
     @property
     def OverWrite(self):
-        r"""传入域名如果已经绑定了策略模板（含站点级防护策略），通过设置该参数表示是否替换该模板，默认值为 true。支持下列取值：<li>true： 替换域名当前绑定的模板。</li><li>false：不替换域名当前绑定的模板。</li>注意：当设置为 false 时，若传入域名已经绑定策略模板，API  将返回错误；站点级防护策略也为一种策略模板。
+        r"""<p>传入域名如果已经绑定了策略模板（含站点级防护策略），通过设置该参数表示是否替换该模板。</p><p>枚举值：</p><ul><li>true： 替换域名当前绑定的模板。</li><li>false： 不替换域名当前绑定的模板。</li></ul><p>默认值：true</p><p>注意：当设置为 false 时，若传入域名已经绑定策略模板，API  将返回错误；站点级防护策略也为一种策略模板。</p>
         :rtype: bool
         """
         return self._OverWrite

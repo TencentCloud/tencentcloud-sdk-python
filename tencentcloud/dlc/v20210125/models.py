@@ -210,6 +210,12 @@ class AddDeploymentRequest(AbstractModel):
         :type AdvancedOptions: str
         :param _NetworkConfig: <p>NetworkConfig</p>
         :type NetworkConfig: str
+        :param _LoraBindings: <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+        :type LoraBindings: list of LoraAdapterBinding
+        :param _CodePackageOriginalName: <p>用户上传代码包的原始文件名（详情页「代码引用」回显用）</p>
+        :type CodePackageOriginalName: str
+        :param _CodePackageUri: <p>代码包 URI（Git URL / COS URI）</p>
+        :type CodePackageUri: str
         """
         self._ServiceId = None
         self._DeploymentName = None
@@ -224,6 +230,9 @@ class AddDeploymentRequest(AbstractModel):
         self._Image = None
         self._AdvancedOptions = None
         self._NetworkConfig = None
+        self._LoraBindings = None
+        self._CodePackageOriginalName = None
+        self._CodePackageUri = None
 
     @property
     def ServiceId(self):
@@ -368,6 +377,39 @@ class AddDeploymentRequest(AbstractModel):
     def NetworkConfig(self, NetworkConfig):
         self._NetworkConfig = NetworkConfig
 
+    @property
+    def LoraBindings(self):
+        r"""<p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+        :rtype: list of LoraAdapterBinding
+        """
+        return self._LoraBindings
+
+    @LoraBindings.setter
+    def LoraBindings(self, LoraBindings):
+        self._LoraBindings = LoraBindings
+
+    @property
+    def CodePackageOriginalName(self):
+        r"""<p>用户上传代码包的原始文件名（详情页「代码引用」回显用）</p>
+        :rtype: str
+        """
+        return self._CodePackageOriginalName
+
+    @CodePackageOriginalName.setter
+    def CodePackageOriginalName(self, CodePackageOriginalName):
+        self._CodePackageOriginalName = CodePackageOriginalName
+
+    @property
+    def CodePackageUri(self):
+        r"""<p>代码包 URI（Git URL / COS URI）</p>
+        :rtype: str
+        """
+        return self._CodePackageUri
+
+    @CodePackageUri.setter
+    def CodePackageUri(self, CodePackageUri):
+        self._CodePackageUri = CodePackageUri
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -383,6 +425,14 @@ class AddDeploymentRequest(AbstractModel):
         self._Image = params.get("Image")
         self._AdvancedOptions = params.get("AdvancedOptions")
         self._NetworkConfig = params.get("NetworkConfig")
+        if params.get("LoraBindings") is not None:
+            self._LoraBindings = []
+            for item in params.get("LoraBindings"):
+                obj = LoraAdapterBinding()
+                obj._deserialize(item)
+                self._LoraBindings.append(obj)
+        self._CodePackageOriginalName = params.get("CodePackageOriginalName")
+        self._CodePackageUri = params.get("CodePackageUri")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -435,6 +485,15 @@ class AddDeploymentResponse(AbstractModel):
         :param _AutoscalingEnabled: <p>是否开启自动伸缩</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoscalingEnabled: bool
+        :param _MinReplicas: <p>最小副本数（自动伸缩时使用）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinReplicas: int
+        :param _MaxReplicas: <p>最大副本数（自动伸缩时使用）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxReplicas: int
+        :param _AutoscalerOptions: <p>弹性伸缩配置（JSON 字符串）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoscalerOptions: str
         :param _ModelStorageConfig: <p>模型存储配置（Catalog JSON，记录模型 COS 挂载信息）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelStorageConfig: str
@@ -453,6 +512,9 @@ class AddDeploymentResponse(AbstractModel):
         :param _NeutrinoServeId: <p>Neutrino Serve ID (RayService CR name)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NeutrinoServeId: str
+        :param _RayDashboardUrl: <p>Ray Dashboard 访问地址（通过 Ingress 代理，仅 Running 状态的部署有值）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RayDashboardUrl: str
         :param _ResourcePartitionId: <p>资源分区 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePartitionId: str
@@ -467,6 +529,12 @@ class AddDeploymentResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _AdvancedOptions: <p>高级参数</p>
         :type AdvancedOptions: str
+        :param _CodePackageUri: <p>用户代码包 URL</p>
+        :type CodePackageUri: str
+        :param _CodePackageOriginalName: <p>用户上传代码包的原始文件名</p>
+        :type CodePackageOriginalName: str
+        :param _LoraBindings: <p>部署当前挂载的 LoRA 模型版本列表。</p>
+        :type LoraBindings: list of LoraItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -482,18 +550,25 @@ class AddDeploymentResponse(AbstractModel):
         self._HeadHighAvailabilityEnabled = None
         self._AdvancedParams = None
         self._AutoscalingEnabled = None
+        self._MinReplicas = None
+        self._MaxReplicas = None
+        self._AutoscalerOptions = None
         self._ModelStorageConfig = None
         self._AppId = None
         self._Uin = None
         self._CreateTime = None
         self._UpdateTime = None
         self._NeutrinoServeId = None
+        self._RayDashboardUrl = None
         self._ResourcePartitionId = None
         self._Queue = None
         self._SubAccountUin = None
         self._Image = None
         self._ResourcePartitionName = None
         self._AdvancedOptions = None
+        self._CodePackageUri = None
+        self._CodePackageOriginalName = None
+        self._LoraBindings = None
         self._RequestId = None
 
     @property
@@ -640,6 +715,42 @@ class AddDeploymentResponse(AbstractModel):
         self._AutoscalingEnabled = AutoscalingEnabled
 
     @property
+    def MinReplicas(self):
+        r"""<p>最小副本数（自动伸缩时使用）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinReplicas
+
+    @MinReplicas.setter
+    def MinReplicas(self, MinReplicas):
+        self._MinReplicas = MinReplicas
+
+    @property
+    def MaxReplicas(self):
+        r"""<p>最大副本数（自动伸缩时使用）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxReplicas
+
+    @MaxReplicas.setter
+    def MaxReplicas(self, MaxReplicas):
+        self._MaxReplicas = MaxReplicas
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置（JSON 字符串）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
     def ModelStorageConfig(self):
         r"""<p>模型存储配置（Catalog JSON，记录模型 COS 挂载信息）</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -712,6 +823,18 @@ class AddDeploymentResponse(AbstractModel):
         self._NeutrinoServeId = NeutrinoServeId
 
     @property
+    def RayDashboardUrl(self):
+        r"""<p>Ray Dashboard 访问地址（通过 Ingress 代理，仅 Running 状态的部署有值）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RayDashboardUrl
+
+    @RayDashboardUrl.setter
+    def RayDashboardUrl(self, RayDashboardUrl):
+        self._RayDashboardUrl = RayDashboardUrl
+
+    @property
     def ResourcePartitionId(self):
         r"""<p>资源分区 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -780,6 +903,39 @@ class AddDeploymentResponse(AbstractModel):
         self._AdvancedOptions = AdvancedOptions
 
     @property
+    def CodePackageUri(self):
+        r"""<p>用户代码包 URL</p>
+        :rtype: str
+        """
+        return self._CodePackageUri
+
+    @CodePackageUri.setter
+    def CodePackageUri(self, CodePackageUri):
+        self._CodePackageUri = CodePackageUri
+
+    @property
+    def CodePackageOriginalName(self):
+        r"""<p>用户上传代码包的原始文件名</p>
+        :rtype: str
+        """
+        return self._CodePackageOriginalName
+
+    @CodePackageOriginalName.setter
+    def CodePackageOriginalName(self, CodePackageOriginalName):
+        self._CodePackageOriginalName = CodePackageOriginalName
+
+    @property
+    def LoraBindings(self):
+        r"""<p>部署当前挂载的 LoRA 模型版本列表。</p>
+        :rtype: list of LoraItem
+        """
+        return self._LoraBindings
+
+    @LoraBindings.setter
+    def LoraBindings(self, LoraBindings):
+        self._LoraBindings = LoraBindings
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -804,18 +960,30 @@ class AddDeploymentResponse(AbstractModel):
         self._HeadHighAvailabilityEnabled = params.get("HeadHighAvailabilityEnabled")
         self._AdvancedParams = params.get("AdvancedParams")
         self._AutoscalingEnabled = params.get("AutoscalingEnabled")
+        self._MinReplicas = params.get("MinReplicas")
+        self._MaxReplicas = params.get("MaxReplicas")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._ModelStorageConfig = params.get("ModelStorageConfig")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._NeutrinoServeId = params.get("NeutrinoServeId")
+        self._RayDashboardUrl = params.get("RayDashboardUrl")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._Queue = params.get("Queue")
         self._SubAccountUin = params.get("SubAccountUin")
         self._Image = params.get("Image")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._AdvancedOptions = params.get("AdvancedOptions")
+        self._CodePackageUri = params.get("CodePackageUri")
+        self._CodePackageOriginalName = params.get("CodePackageOriginalName")
+        if params.get("LoraBindings") is not None:
+            self._LoraBindings = []
+            for item in params.get("LoraBindings"):
+                obj = LoraItem()
+                obj._deserialize(item)
+                self._LoraBindings.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10011,6 +10179,8 @@ class CreateBenchmarkTaskRequest(AbstractModel):
         :type BillingItem: str
         :param _Spec: <p>评测容器计费项规格倍数</p>
         :type Spec: int
+        :param _ModelIdentifier: <p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+        :type ModelIdentifier: str
         """
         self._ServiceId = None
         self._TaskName = None
@@ -10026,6 +10196,7 @@ class CreateBenchmarkTaskRequest(AbstractModel):
         self._Queue = None
         self._BillingItem = None
         self._Spec = None
+        self._ModelIdentifier = None
 
     @property
     def ServiceId(self):
@@ -10181,6 +10352,17 @@ class CreateBenchmarkTaskRequest(AbstractModel):
     def Spec(self, Spec):
         self._Spec = Spec
 
+    @property
+    def ModelIdentifier(self):
+        r"""<p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+        :rtype: str
+        """
+        return self._ModelIdentifier
+
+    @ModelIdentifier.setter
+    def ModelIdentifier(self, ModelIdentifier):
+        self._ModelIdentifier = ModelIdentifier
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -10197,6 +10379,7 @@ class CreateBenchmarkTaskRequest(AbstractModel):
         self._Queue = params.get("Queue")
         self._BillingItem = params.get("BillingItem")
         self._Spec = params.get("Spec")
+        self._ModelIdentifier = params.get("ModelIdentifier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10256,6 +10439,8 @@ class CreateBenchmarkTaskResponse(AbstractModel):
         :type DeploymentResources: list of DeploymentResourceInfo
         :param _Resources: <p>评测容器自身使用的资源规格</p>
         :type Resources: :class:`tencentcloud.dlc.v20210125.models.BenchmarkResourceInfo`
+        :param _ModelIdentifier: <p>&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;</p>
+        :type ModelIdentifier: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10280,6 +10465,7 @@ class CreateBenchmarkTaskResponse(AbstractModel):
         self._SubAccountUin = None
         self._DeploymentResources = None
         self._Resources = None
+        self._ModelIdentifier = None
         self._RequestId = None
 
     @property
@@ -10514,6 +10700,17 @@ class CreateBenchmarkTaskResponse(AbstractModel):
         self._Resources = Resources
 
     @property
+    def ModelIdentifier(self):
+        r"""<p>&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;</p>
+        :rtype: str
+        """
+        return self._ModelIdentifier
+
+    @ModelIdentifier.setter
+    def ModelIdentifier(self, ModelIdentifier):
+        self._ModelIdentifier = ModelIdentifier
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10554,6 +10751,7 @@ class CreateBenchmarkTaskResponse(AbstractModel):
         if params.get("Resources") is not None:
             self._Resources = BenchmarkResourceInfo()
             self._Resources._deserialize(params.get("Resources"))
+        self._ModelIdentifier = params.get("ModelIdentifier")
         self._RequestId = params.get("RequestId")
 
 
@@ -12700,6 +12898,18 @@ class CreateInferenceModelRequest(AbstractModel):
         :type GooseFSConfig: :class:`tencentcloud.dlc.v20210125.models.GooseFSConfig`
         :param _StorageType: <p>模型上传来源类型</p><p>枚举值：</p><ul><li>Local： 本地上传</li><li>COS： COS上传</li><li>CFS： CFS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul>
         :type StorageType: str
+        :param _ModelSource: <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+        :type ModelSource: str
+        :param _RegisterMeta: <p>注册元信息（携带即注册语义：storageUri 为训练产物根，零拷贝引用）</p>
+        :type RegisterMeta: :class:`tencentcloud.dlc.v20210125.models.RegisterMeta`
+        :param _FileList: <p>产物文件树（可选，仅注册语义下有意义；结构同 GetModelFiles 响应 FileNode）</p>
+        :type FileList: list of FileNode
+        :param _BaseModelUid: <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :type BaseModelUid: str
+        :param _BaseModelVersionUid: <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersionUid: str
+        :param _ModelCategory: <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :type ModelCategory: str
         """
         self._Name = None
         self._ModelType = None
@@ -12715,6 +12925,12 @@ class CreateInferenceModelRequest(AbstractModel):
         self._ResourceTags = None
         self._GooseFSConfig = None
         self._StorageType = None
+        self._ModelSource = None
+        self._RegisterMeta = None
+        self._FileList = None
+        self._BaseModelUid = None
+        self._BaseModelVersionUid = None
+        self._ModelCategory = None
 
     @property
     def Name(self):
@@ -12870,6 +13086,72 @@ class CreateInferenceModelRequest(AbstractModel):
     def StorageType(self, StorageType):
         self._StorageType = StorageType
 
+    @property
+    def ModelSource(self):
+        r"""<p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+        :rtype: str
+        """
+        return self._ModelSource
+
+    @ModelSource.setter
+    def ModelSource(self, ModelSource):
+        self._ModelSource = ModelSource
+
+    @property
+    def RegisterMeta(self):
+        r"""<p>注册元信息（携带即注册语义：storageUri 为训练产物根，零拷贝引用）</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RegisterMeta`
+        """
+        return self._RegisterMeta
+
+    @RegisterMeta.setter
+    def RegisterMeta(self, RegisterMeta):
+        self._RegisterMeta = RegisterMeta
+
+    @property
+    def FileList(self):
+        r"""<p>产物文件树（可选，仅注册语义下有意义；结构同 GetModelFiles 响应 FileNode）</p>
+        :rtype: list of FileNode
+        """
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
+    @property
+    def BaseModelUid(self):
+        r"""<p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelUid
+
+    @BaseModelUid.setter
+    def BaseModelUid(self, BaseModelUid):
+        self._BaseModelUid = BaseModelUid
+
+    @property
+    def BaseModelVersionUid(self):
+        r"""<p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersionUid
+
+    @BaseModelVersionUid.setter
+    def BaseModelVersionUid(self, BaseModelVersionUid):
+        self._BaseModelVersionUid = BaseModelVersionUid
+
+    @property
+    def ModelCategory(self):
+        r"""<p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -12893,6 +13175,19 @@ class CreateInferenceModelRequest(AbstractModel):
             self._GooseFSConfig = GooseFSConfig()
             self._GooseFSConfig._deserialize(params.get("GooseFSConfig"))
         self._StorageType = params.get("StorageType")
+        self._ModelSource = params.get("ModelSource")
+        if params.get("RegisterMeta") is not None:
+            self._RegisterMeta = RegisterMeta()
+            self._RegisterMeta._deserialize(params.get("RegisterMeta"))
+        if params.get("FileList") is not None:
+            self._FileList = []
+            for item in params.get("FileList"):
+                obj = FileNode()
+                obj._deserialize(item)
+                self._FileList.append(obj)
+        self._BaseModelUid = params.get("BaseModelUid")
+        self._BaseModelVersionUid = params.get("BaseModelVersionUid")
+        self._ModelCategory = params.get("ModelCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12953,6 +13248,20 @@ class CreateInferenceModelResponse(AbstractModel):
         :type SubAccountUin: str
         :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
         :type ResourceTags: list of Tag
+        :param _ModelSource: <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+        :type ModelSource: str
+        :param _ModelCategory: <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :type ModelCategory: str
+        :param _BaseModelUid: <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :type BaseModelUid: str
+        :param _LatestVersionUid: <p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+        :type LatestVersionUid: str
+        :param _BaseModelVersionUid: <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersionUid: str
+        :param _BaseModelName: <p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+        :type BaseModelName: str
+        :param _BaseModelVersion: <p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -12977,6 +13286,13 @@ class CreateInferenceModelResponse(AbstractModel):
         self._UpdateTime = None
         self._SubAccountUin = None
         self._ResourceTags = None
+        self._ModelSource = None
+        self._ModelCategory = None
+        self._BaseModelUid = None
+        self._LatestVersionUid = None
+        self._BaseModelVersionUid = None
+        self._BaseModelName = None
+        self._BaseModelVersion = None
         self._RequestId = None
 
     @property
@@ -13212,6 +13528,83 @@ class CreateInferenceModelResponse(AbstractModel):
         self._ResourceTags = ResourceTags
 
     @property
+    def ModelSource(self):
+        r"""<p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+        :rtype: str
+        """
+        return self._ModelSource
+
+    @ModelSource.setter
+    def ModelSource(self, ModelSource):
+        self._ModelSource = ModelSource
+
+    @property
+    def ModelCategory(self):
+        r"""<p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
+    @property
+    def BaseModelUid(self):
+        r"""<p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelUid
+
+    @BaseModelUid.setter
+    def BaseModelUid(self, BaseModelUid):
+        self._BaseModelUid = BaseModelUid
+
+    @property
+    def LatestVersionUid(self):
+        r"""<p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+        :rtype: str
+        """
+        return self._LatestVersionUid
+
+    @LatestVersionUid.setter
+    def LatestVersionUid(self, LatestVersionUid):
+        self._LatestVersionUid = LatestVersionUid
+
+    @property
+    def BaseModelVersionUid(self):
+        r"""<p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersionUid
+
+    @BaseModelVersionUid.setter
+    def BaseModelVersionUid(self, BaseModelVersionUid):
+        self._BaseModelVersionUid = BaseModelVersionUid
+
+    @property
+    def BaseModelName(self):
+        r"""<p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+        :rtype: str
+        """
+        return self._BaseModelName
+
+    @BaseModelName.setter
+    def BaseModelName(self, BaseModelName):
+        self._BaseModelName = BaseModelName
+
+    @property
+    def BaseModelVersion(self):
+        r"""<p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersion
+
+    @BaseModelVersion.setter
+    def BaseModelVersion(self, BaseModelVersion):
+        self._BaseModelVersion = BaseModelVersion
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -13250,6 +13643,13 @@ class CreateInferenceModelResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
+        self._ModelSource = params.get("ModelSource")
+        self._ModelCategory = params.get("ModelCategory")
+        self._BaseModelUid = params.get("BaseModelUid")
+        self._LatestVersionUid = params.get("LatestVersionUid")
+        self._BaseModelVersionUid = params.get("BaseModelVersionUid")
+        self._BaseModelName = params.get("BaseModelName")
+        self._BaseModelVersion = params.get("BaseModelVersion")
         self._RequestId = params.get("RequestId")
 
 
@@ -13306,6 +13706,8 @@ class CreateInferenceServiceRequest(AbstractModel):
         :type RuntimeEnv: str
         :param _NetworkConfig: <p>用户网络配置 JSON 字符串（跨租户 ENI 注入）</p>
         :type NetworkConfig: str
+        :param _LoraBindings: <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+        :type LoraBindings: list of LoraAdapterBinding
         """
         self._Name = None
         self._ModelUid = None
@@ -13330,6 +13732,7 @@ class CreateInferenceServiceRequest(AbstractModel):
         self._IsCustom = None
         self._RuntimeEnv = None
         self._NetworkConfig = None
+        self._LoraBindings = None
 
     @property
     def Name(self):
@@ -13584,6 +13987,17 @@ class CreateInferenceServiceRequest(AbstractModel):
     def NetworkConfig(self, NetworkConfig):
         self._NetworkConfig = NetworkConfig
 
+    @property
+    def LoraBindings(self):
+        r"""<p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+        :rtype: list of LoraAdapterBinding
+        """
+        return self._LoraBindings
+
+    @LoraBindings.setter
+    def LoraBindings(self, LoraBindings):
+        self._LoraBindings = LoraBindings
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -13614,6 +14028,12 @@ class CreateInferenceServiceRequest(AbstractModel):
         self._IsCustom = params.get("IsCustom")
         self._RuntimeEnv = params.get("RuntimeEnv")
         self._NetworkConfig = params.get("NetworkConfig")
+        if params.get("LoraBindings") is not None:
+            self._LoraBindings = []
+            for item in params.get("LoraBindings"):
+                obj = LoraAdapterBinding()
+                obj._deserialize(item)
+                self._LoraBindings.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17094,8 +17514,12 @@ class CreateMlflowServerRequest(AbstractModel):
         :type StorageMode: str
         :param _ResourceConfig: <p>MlFlow的资源配置</p>
         :type ResourceConfig: :class:`tencentcloud.dlc.v20210125.models.MlFlowResourceConfig`
+        :param _ServerArgs: <p>启动参数（可选，单个字符串，如 &quot;--workers 4&quot;）；分词后追加在平台固定命令之后，下次 start 时生效。平台保留参数（--host/--port/--backend-store-uri 等）不允许指定；不传或空白为默认命令</p>
+        :type ServerArgs: str
         :param _Tags: <p>标签列表（TagKey-TagValue），用于将 MLflow Server 与腾讯云标签系统中的标签绑定</p>
         :type Tags: list of Tag
+        :param _Description: <p>描述信息（可选，纯文本，不允许换行，最长 1024）；不传或空白为未填写</p>
+        :type Description: str
         """
         self._ServerName = None
         self._ResourcePartitionId = None
@@ -17104,7 +17528,9 @@ class CreateMlflowServerRequest(AbstractModel):
         self._StorageConfig = None
         self._StorageMode = None
         self._ResourceConfig = None
+        self._ServerArgs = None
         self._Tags = None
+        self._Description = None
 
     @property
     def ServerName(self):
@@ -17184,6 +17610,17 @@ class CreateMlflowServerRequest(AbstractModel):
         self._ResourceConfig = ResourceConfig
 
     @property
+    def ServerArgs(self):
+        r"""<p>启动参数（可选，单个字符串，如 &quot;--workers 4&quot;）；分词后追加在平台固定命令之后，下次 start 时生效。平台保留参数（--host/--port/--backend-store-uri 等）不允许指定；不传或空白为默认命令</p>
+        :rtype: str
+        """
+        return self._ServerArgs
+
+    @ServerArgs.setter
+    def ServerArgs(self, ServerArgs):
+        self._ServerArgs = ServerArgs
+
+    @property
     def Tags(self):
         r"""<p>标签列表（TagKey-TagValue），用于将 MLflow Server 与腾讯云标签系统中的标签绑定</p>
         :rtype: list of Tag
@@ -17193,6 +17630,17 @@ class CreateMlflowServerRequest(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def Description(self):
+        r"""<p>描述信息（可选，纯文本，不允许换行，最长 1024）；不传或空白为未填写</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -17205,12 +17653,14 @@ class CreateMlflowServerRequest(AbstractModel):
         if params.get("ResourceConfig") is not None:
             self._ResourceConfig = MlFlowResourceConfig()
             self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        self._ServerArgs = params.get("ServerArgs")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17287,6 +17737,12 @@ class CreateModelVersionRequest(AbstractModel):
         :type GooseFSConfig: :class:`tencentcloud.dlc.v20210125.models.GooseFSConfig`
         :param _StorageType: <p>模型上传路径类型</p><p>枚举值：</p><ul><li>LOCAL： 本地上传</li><li>CFS： CFS上传</li><li>COS： COS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul><p>选择cos、cfs、cfstrubo则必须要传storageuri，选择local时不能传递goosefsconfig</p>
         :type StorageType: str
+        :param _ModelSource: <p>模型来源标识（可选；有 RegisterMeta 时必填；须与模型现有来源一致）</p>
+        :type ModelSource: str
+        :param _RegisterMeta: <p>注册元信息（仅注册语义创建的版本有值，与创建请求 RegisterMeta 结构一致）</p>
+        :type RegisterMeta: :class:`tencentcloud.dlc.v20210125.models.RegisterMeta`
+        :param _FileList: <p>产物文件树（可选，仅注册语义下有意义；结构同 GetModelFiles 响应 FileNode）</p>
+        :type FileList: list of FileNode
         """
         self._ModelUid = None
         self._ModelVersion = None
@@ -17295,6 +17751,9 @@ class CreateModelVersionRequest(AbstractModel):
         self._UseCustomStorage = None
         self._GooseFSConfig = None
         self._StorageType = None
+        self._ModelSource = None
+        self._RegisterMeta = None
+        self._FileList = None
 
     @property
     def ModelUid(self):
@@ -17373,6 +17832,39 @@ class CreateModelVersionRequest(AbstractModel):
     def StorageType(self, StorageType):
         self._StorageType = StorageType
 
+    @property
+    def ModelSource(self):
+        r"""<p>模型来源标识（可选；有 RegisterMeta 时必填；须与模型现有来源一致）</p>
+        :rtype: str
+        """
+        return self._ModelSource
+
+    @ModelSource.setter
+    def ModelSource(self, ModelSource):
+        self._ModelSource = ModelSource
+
+    @property
+    def RegisterMeta(self):
+        r"""<p>注册元信息（仅注册语义创建的版本有值，与创建请求 RegisterMeta 结构一致）</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RegisterMeta`
+        """
+        return self._RegisterMeta
+
+    @RegisterMeta.setter
+    def RegisterMeta(self, RegisterMeta):
+        self._RegisterMeta = RegisterMeta
+
+    @property
+    def FileList(self):
+        r"""<p>产物文件树（可选，仅注册语义下有意义；结构同 GetModelFiles 响应 FileNode）</p>
+        :rtype: list of FileNode
+        """
+        return self._FileList
+
+    @FileList.setter
+    def FileList(self, FileList):
+        self._FileList = FileList
+
 
     def _deserialize(self, params):
         self._ModelUid = params.get("ModelUid")
@@ -17384,6 +17876,16 @@ class CreateModelVersionRequest(AbstractModel):
             self._GooseFSConfig = GooseFSConfig()
             self._GooseFSConfig._deserialize(params.get("GooseFSConfig"))
         self._StorageType = params.get("StorageType")
+        self._ModelSource = params.get("ModelSource")
+        if params.get("RegisterMeta") is not None:
+            self._RegisterMeta = RegisterMeta()
+            self._RegisterMeta._deserialize(params.get("RegisterMeta"))
+        if params.get("FileList") is not None:
+            self._FileList = []
+            for item in params.get("FileList"):
+                obj = FileNode()
+                obj._deserialize(item)
+                self._FileList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17426,6 +17928,14 @@ class CreateModelVersionResponse(AbstractModel):
         :type Version: str
         :param _UseCustomStorage: <p>是否使用用户自带存储桶（true=用户自带桶，false=平台托管）</p>
         :type UseCustomStorage: bool
+        :param _RegisterMeta: <p>注册元信息（仅注册语义创建的版本有值，与创建请求 RegisterMeta 结构一致）</p>
+        :type RegisterMeta: :class:`tencentcloud.dlc.v20210125.models.RegisterMeta`
+        :param _VersionUid: <p>版本业务唯一标识；LoRA 模型版本挂载到部署时以此引用</p>
+        :type VersionUid: str
+        :param _LoraMeta: <p>LoRA Adapter 元信息（仅 LoRA 模型版本有值，解析自 adapter_config.json）</p>
+        :type LoraMeta: :class:`tencentcloud.dlc.v20210125.models.LoraVersionMeta`
+        :param _PoolImportStatus: <p>LoRA pool 异步导入状态（Importing/Ready/Failed；NULL=就绪），未就绪不能挂载</p>
+        :type PoolImportStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -17438,6 +17948,10 @@ class CreateModelVersionResponse(AbstractModel):
         self._LinkedServices = None
         self._Version = None
         self._UseCustomStorage = None
+        self._RegisterMeta = None
+        self._VersionUid = None
+        self._LoraMeta = None
+        self._PoolImportStatus = None
         self._RequestId = None
 
     @property
@@ -17547,6 +18061,50 @@ class CreateModelVersionResponse(AbstractModel):
         self._UseCustomStorage = UseCustomStorage
 
     @property
+    def RegisterMeta(self):
+        r"""<p>注册元信息（仅注册语义创建的版本有值，与创建请求 RegisterMeta 结构一致）</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RegisterMeta`
+        """
+        return self._RegisterMeta
+
+    @RegisterMeta.setter
+    def RegisterMeta(self, RegisterMeta):
+        self._RegisterMeta = RegisterMeta
+
+    @property
+    def VersionUid(self):
+        r"""<p>版本业务唯一标识；LoRA 模型版本挂载到部署时以此引用</p>
+        :rtype: str
+        """
+        return self._VersionUid
+
+    @VersionUid.setter
+    def VersionUid(self, VersionUid):
+        self._VersionUid = VersionUid
+
+    @property
+    def LoraMeta(self):
+        r"""<p>LoRA Adapter 元信息（仅 LoRA 模型版本有值，解析自 adapter_config.json）</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.LoraVersionMeta`
+        """
+        return self._LoraMeta
+
+    @LoraMeta.setter
+    def LoraMeta(self, LoraMeta):
+        self._LoraMeta = LoraMeta
+
+    @property
+    def PoolImportStatus(self):
+        r"""<p>LoRA pool 异步导入状态（Importing/Ready/Failed；NULL=就绪），未就绪不能挂载</p>
+        :rtype: str
+        """
+        return self._PoolImportStatus
+
+    @PoolImportStatus.setter
+    def PoolImportStatus(self, PoolImportStatus):
+        self._PoolImportStatus = PoolImportStatus
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -17573,6 +18131,14 @@ class CreateModelVersionResponse(AbstractModel):
                 self._LinkedServices.append(obj)
         self._Version = params.get("Version")
         self._UseCustomStorage = params.get("UseCustomStorage")
+        if params.get("RegisterMeta") is not None:
+            self._RegisterMeta = RegisterMeta()
+            self._RegisterMeta._deserialize(params.get("RegisterMeta"))
+        self._VersionUid = params.get("VersionUid")
+        if params.get("LoraMeta") is not None:
+            self._LoraMeta = LoraVersionMeta()
+            self._LoraMeta._deserialize(params.get("LoraMeta"))
+        self._PoolImportStatus = params.get("PoolImportStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -46962,6 +47528,8 @@ class DescribeTrainingCheckpointsResponse(AbstractModel):
         :type StorageType: str
         :param _StoragePath: <p>存储路径（COS 桶路径或 CFS/GooseFSx 挂载路径）</p>
         :type StoragePath: str
+        :param _ArtifactRootUri: <p>训练产物根的完整存储 URI（注册推理模型用，如 cos://bucket/path/、cfs://fs-id/path/）；作为 CreateInferenceModel / CreateModelVersion 的 StorageUri 传回（配合 UseCustomStorage=true）</p>
+        :type ArtifactRootUri: str
         :param _Message: <p>错误或提示信息（仅在请求异常时有值）</p>
         :type Message: str
         :param _SnapshotTimestamp: <p>快照时间戳（仅 CFS/GooseFSx 存储时有值）</p>
@@ -46974,6 +47542,7 @@ class DescribeTrainingCheckpointsResponse(AbstractModel):
         self._SubPath = None
         self._StorageType = None
         self._StoragePath = None
+        self._ArtifactRootUri = None
         self._Message = None
         self._SnapshotTimestamp = None
         self._RequestId = None
@@ -47034,6 +47603,17 @@ class DescribeTrainingCheckpointsResponse(AbstractModel):
         self._StoragePath = StoragePath
 
     @property
+    def ArtifactRootUri(self):
+        r"""<p>训练产物根的完整存储 URI（注册推理模型用，如 cos://bucket/path/、cfs://fs-id/path/）；作为 CreateInferenceModel / CreateModelVersion 的 StorageUri 传回（配合 UseCustomStorage=true）</p>
+        :rtype: str
+        """
+        return self._ArtifactRootUri
+
+    @ArtifactRootUri.setter
+    def ArtifactRootUri(self, ArtifactRootUri):
+        self._ArtifactRootUri = ArtifactRootUri
+
+    @property
     def Message(self):
         r"""<p>错误或提示信息（仅在请求异常时有值）</p>
         :rtype: str
@@ -47078,6 +47658,7 @@ class DescribeTrainingCheckpointsResponse(AbstractModel):
         self._SubPath = params.get("SubPath")
         self._StorageType = params.get("StorageType")
         self._StoragePath = params.get("StoragePath")
+        self._ArtifactRootUri = params.get("ArtifactRootUri")
         self._Message = params.get("Message")
         self._SnapshotTimestamp = params.get("SnapshotTimestamp")
         self._RequestId = params.get("RequestId")
@@ -53418,6 +53999,20 @@ class GetInferenceModelResponse(AbstractModel):
         :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
+        :param _ModelCategory: <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :type ModelCategory: str
+        :param _BaseModelUid: <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :type BaseModelUid: str
+        :param _LatestVersionUid: <p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+        :type LatestVersionUid: str
+        :param _BaseModelVersionUid: <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersionUid: str
+        :param _BaseModelName: <p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+        :type BaseModelName: str
+        :param _BaseModelVersion: <p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersion: str
+        :param _ModelSource: <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+        :type ModelSource: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -53445,6 +54040,13 @@ class GetInferenceModelResponse(AbstractModel):
         self._UpdateTime = None
         self._SubAccountUin = None
         self._ResourceTags = None
+        self._ModelCategory = None
+        self._BaseModelUid = None
+        self._LatestVersionUid = None
+        self._BaseModelVersionUid = None
+        self._BaseModelName = None
+        self._BaseModelVersion = None
+        self._ModelSource = None
         self._RequestId = None
 
     @property
@@ -53713,6 +54315,83 @@ class GetInferenceModelResponse(AbstractModel):
         self._ResourceTags = ResourceTags
 
     @property
+    def ModelCategory(self):
+        r"""<p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
+    @property
+    def BaseModelUid(self):
+        r"""<p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelUid
+
+    @BaseModelUid.setter
+    def BaseModelUid(self, BaseModelUid):
+        self._BaseModelUid = BaseModelUid
+
+    @property
+    def LatestVersionUid(self):
+        r"""<p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+        :rtype: str
+        """
+        return self._LatestVersionUid
+
+    @LatestVersionUid.setter
+    def LatestVersionUid(self, LatestVersionUid):
+        self._LatestVersionUid = LatestVersionUid
+
+    @property
+    def BaseModelVersionUid(self):
+        r"""<p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersionUid
+
+    @BaseModelVersionUid.setter
+    def BaseModelVersionUid(self, BaseModelVersionUid):
+        self._BaseModelVersionUid = BaseModelVersionUid
+
+    @property
+    def BaseModelName(self):
+        r"""<p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+        :rtype: str
+        """
+        return self._BaseModelName
+
+    @BaseModelName.setter
+    def BaseModelName(self, BaseModelName):
+        self._BaseModelName = BaseModelName
+
+    @property
+    def BaseModelVersion(self):
+        r"""<p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersion
+
+    @BaseModelVersion.setter
+    def BaseModelVersion(self, BaseModelVersion):
+        self._BaseModelVersion = BaseModelVersion
+
+    @property
+    def ModelSource(self):
+        r"""<p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+        :rtype: str
+        """
+        return self._ModelSource
+
+    @ModelSource.setter
+    def ModelSource(self, ModelSource):
+        self._ModelSource = ModelSource
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -53754,6 +54433,13 @@ class GetInferenceModelResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
+        self._ModelCategory = params.get("ModelCategory")
+        self._BaseModelUid = params.get("BaseModelUid")
+        self._LatestVersionUid = params.get("LatestVersionUid")
+        self._BaseModelVersionUid = params.get("BaseModelVersionUid")
+        self._BaseModelName = params.get("BaseModelName")
+        self._BaseModelVersion = params.get("BaseModelVersion")
+        self._ModelSource = params.get("ModelSource")
         self._RequestId = params.get("RequestId")
 
 
@@ -62397,6 +63083,20 @@ class InferenceModelInfo(AbstractModel):
         :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
+        :param _ModelSource: <p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+        :type ModelSource: str
+        :param _ModelCategory: <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :type ModelCategory: str
+        :param _BaseModelUid: <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :type BaseModelUid: str
+        :param _LatestVersionUid: <p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+        :type LatestVersionUid: str
+        :param _BaseModelVersionUid: <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersionUid: str
+        :param _BaseModelName: <p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+        :type BaseModelName: str
+        :param _BaseModelVersion: <p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersion: str
         """
         self._ModelId = None
         self._ModelUid = None
@@ -62422,6 +63122,13 @@ class InferenceModelInfo(AbstractModel):
         self._UpdateTime = None
         self._SubAccountUin = None
         self._ResourceTags = None
+        self._ModelSource = None
+        self._ModelCategory = None
+        self._BaseModelUid = None
+        self._LatestVersionUid = None
+        self._BaseModelVersionUid = None
+        self._BaseModelName = None
+        self._BaseModelVersion = None
 
     @property
     def ModelId(self):
@@ -62709,6 +63416,83 @@ class InferenceModelInfo(AbstractModel):
     def ResourceTags(self, ResourceTags):
         self._ResourceTags = ResourceTags
 
+    @property
+    def ModelSource(self):
+        r"""<p>模型来源标识（如 train-checkpoint=训练 Checkpoint 注册；空=普通上传等无注册元信息链路）</p>
+        :rtype: str
+        """
+        return self._ModelSource
+
+    @ModelSource.setter
+    def ModelSource(self, ModelSource):
+        self._ModelSource = ModelSource
+
+    @property
+    def ModelCategory(self):
+        r"""<p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
+    @property
+    def BaseModelUid(self):
+        r"""<p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelUid
+
+    @BaseModelUid.setter
+    def BaseModelUid(self, BaseModelUid):
+        self._BaseModelUid = BaseModelUid
+
+    @property
+    def LatestVersionUid(self):
+        r"""<p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+        :rtype: str
+        """
+        return self._LatestVersionUid
+
+    @LatestVersionUid.setter
+    def LatestVersionUid(self, LatestVersionUid):
+        self._LatestVersionUid = LatestVersionUid
+
+    @property
+    def BaseModelVersionUid(self):
+        r"""<p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersionUid
+
+    @BaseModelVersionUid.setter
+    def BaseModelVersionUid(self, BaseModelVersionUid):
+        self._BaseModelVersionUid = BaseModelVersionUid
+
+    @property
+    def BaseModelName(self):
+        r"""<p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+        :rtype: str
+        """
+        return self._BaseModelName
+
+    @BaseModelName.setter
+    def BaseModelName(self, BaseModelName):
+        self._BaseModelName = BaseModelName
+
+    @property
+    def BaseModelVersion(self):
+        r"""<p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersion
+
+    @BaseModelVersion.setter
+    def BaseModelVersion(self, BaseModelVersion):
+        self._BaseModelVersion = BaseModelVersion
+
 
     def _deserialize(self, params):
         self._ModelId = params.get("ModelId")
@@ -62740,6 +63524,13 @@ class InferenceModelInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
+        self._ModelSource = params.get("ModelSource")
+        self._ModelCategory = params.get("ModelCategory")
+        self._BaseModelUid = params.get("BaseModelUid")
+        self._LatestVersionUid = params.get("LatestVersionUid")
+        self._BaseModelVersionUid = params.get("BaseModelVersionUid")
+        self._BaseModelName = params.get("BaseModelName")
+        self._BaseModelVersion = params.get("BaseModelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74528,6 +75319,294 @@ class LockMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LoraAdapterBinding(AbstractModel):
+    r"""创建 RayServe 推理服务时一并挂载的 LoRA 模型版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelVersionUid: <p>LoRA 模型版本 UID（ListModelVersions 返回的 VersionUid；该模型须以部署基座为 BaseModelUid）</p>
+        :type ModelVersionUid: str
+        """
+        self._ModelVersionUid = None
+
+    @property
+    def ModelVersionUid(self):
+        r"""<p>LoRA 模型版本 UID（ListModelVersions 返回的 VersionUid；该模型须以部署基座为 BaseModelUid）</p>
+        :rtype: str
+        """
+        return self._ModelVersionUid
+
+    @ModelVersionUid.setter
+    def ModelVersionUid(self, ModelVersionUid):
+        self._ModelVersionUid = ModelVersionUid
+
+
+    def _deserialize(self, params):
+        self._ModelVersionUid = params.get("ModelVersionUid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoraItem(AbstractModel):
+    r"""单个 LoRA Adapter（LoRA 模型版本）绑定项.
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelVersionUid: <p>模型版本 UID</p>
+        :type ModelVersionUid: str
+        :param _ModelUid: <p>模型 UID</p>
+        :type ModelUid: str
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _Version: <p>模型版本</p>
+        :type Version: str
+        :param _Alias: <p>别名</p>
+        :type Alias: str
+        :param _AdapterRank: <p>Lora Rank</p>
+        :type AdapterRank: int
+        """
+        self._ModelVersionUid = None
+        self._ModelUid = None
+        self._ModelName = None
+        self._Version = None
+        self._Alias = None
+        self._AdapterRank = None
+
+    @property
+    def ModelVersionUid(self):
+        r"""<p>模型版本 UID</p>
+        :rtype: str
+        """
+        return self._ModelVersionUid
+
+    @ModelVersionUid.setter
+    def ModelVersionUid(self, ModelVersionUid):
+        self._ModelVersionUid = ModelVersionUid
+
+    @property
+    def ModelUid(self):
+        r"""<p>模型 UID</p>
+        :rtype: str
+        """
+        return self._ModelUid
+
+    @ModelUid.setter
+    def ModelUid(self, ModelUid):
+        self._ModelUid = ModelUid
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def Version(self):
+        r"""<p>模型版本</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Alias(self):
+        r"""<p>别名</p>
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def AdapterRank(self):
+        r"""<p>Lora Rank</p>
+        :rtype: int
+        """
+        return self._AdapterRank
+
+    @AdapterRank.setter
+    def AdapterRank(self, AdapterRank):
+        self._AdapterRank = AdapterRank
+
+
+    def _deserialize(self, params):
+        self._ModelVersionUid = params.get("ModelVersionUid")
+        self._ModelUid = params.get("ModelUid")
+        self._ModelName = params.get("ModelName")
+        self._Version = params.get("Version")
+        self._Alias = params.get("Alias")
+        self._AdapterRank = params.get("AdapterRank")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LoraVersionMeta(AbstractModel):
+    r"""LoRA Adapter 元信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rank: <p>Lora Rank</p>
+        :type Rank: int
+        :param _Alpha: <p>Lora Alpha</p>
+        :type Alpha: int
+        :param _Dropout: <p>LoRA dropout</p>
+        :type Dropout: float
+        :param _TargetModules: <p>注入的目标模块</p>
+        :type TargetModules: list of str
+        :param _PEFTType: <p>PEFT 类型（如 LORA）</p>
+        :type PEFTType: str
+        :param _TaskType: <p>任务类型（如 CAUSAL_LM）</p>
+        :type TaskType: str
+        :param _BaseModelNameOrPath: <p>训练时声明的基座名称或路径（base_model_name_or_path）</p>
+        :type BaseModelNameOrPath: str
+        :param _MaxRank: <p>最大 rank（含 rank_pattern 分模块 rank；仅当其大于 Rank 时返回）</p>
+        :type MaxRank: int
+        """
+        self._Rank = None
+        self._Alpha = None
+        self._Dropout = None
+        self._TargetModules = None
+        self._PEFTType = None
+        self._TaskType = None
+        self._BaseModelNameOrPath = None
+        self._MaxRank = None
+
+    @property
+    def Rank(self):
+        r"""<p>Lora Rank</p>
+        :rtype: int
+        """
+        return self._Rank
+
+    @Rank.setter
+    def Rank(self, Rank):
+        self._Rank = Rank
+
+    @property
+    def Alpha(self):
+        r"""<p>Lora Alpha</p>
+        :rtype: int
+        """
+        return self._Alpha
+
+    @Alpha.setter
+    def Alpha(self, Alpha):
+        self._Alpha = Alpha
+
+    @property
+    def Dropout(self):
+        r"""<p>LoRA dropout</p>
+        :rtype: float
+        """
+        return self._Dropout
+
+    @Dropout.setter
+    def Dropout(self, Dropout):
+        self._Dropout = Dropout
+
+    @property
+    def TargetModules(self):
+        r"""<p>注入的目标模块</p>
+        :rtype: list of str
+        """
+        return self._TargetModules
+
+    @TargetModules.setter
+    def TargetModules(self, TargetModules):
+        self._TargetModules = TargetModules
+
+    @property
+    def PEFTType(self):
+        r"""<p>PEFT 类型（如 LORA）</p>
+        :rtype: str
+        """
+        return self._PEFTType
+
+    @PEFTType.setter
+    def PEFTType(self, PEFTType):
+        self._PEFTType = PEFTType
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型（如 CAUSAL_LM）</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def BaseModelNameOrPath(self):
+        r"""<p>训练时声明的基座名称或路径（base_model_name_or_path）</p>
+        :rtype: str
+        """
+        return self._BaseModelNameOrPath
+
+    @BaseModelNameOrPath.setter
+    def BaseModelNameOrPath(self, BaseModelNameOrPath):
+        self._BaseModelNameOrPath = BaseModelNameOrPath
+
+    @property
+    def MaxRank(self):
+        r"""<p>最大 rank（含 rank_pattern 分模块 rank；仅当其大于 Rank 时返回）</p>
+        :rtype: int
+        """
+        return self._MaxRank
+
+    @MaxRank.setter
+    def MaxRank(self, MaxRank):
+        self._MaxRank = MaxRank
+
+
+    def _deserialize(self, params):
+        self._Rank = params.get("Rank")
+        self._Alpha = params.get("Alpha")
+        self._Dropout = params.get("Dropout")
+        self._TargetModules = params.get("TargetModules")
+        self._PEFTType = params.get("PEFTType")
+        self._TaskType = params.get("TaskType")
+        self._BaseModelNameOrPath = params.get("BaseModelNameOrPath")
+        self._MaxRank = params.get("MaxRank")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MCPTaskInfo(AbstractModel):
     r"""mcp 请求任务详情的返回
 
@@ -75800,10 +76879,18 @@ class MlFlowServerInfo(AbstractModel):
         :type StorageConfig: str
         :param _StorageMode: <p>存储模式</p><p>枚举值：</p><ul><li>cos： cos 对象存储</li><li>cfs： cfs 文件系统存储</li></ul>
         :type StorageMode: str
+        :param _ServerArgs: <p>启动参数（用户自定义；null = 默认命令，编辑弹窗预填用）</p>
+        :type ServerArgs: str
+        :param _Description: <p>描述信息（纯文本；null = 未填写）</p>
+        :type Description: str
         :param _AppId: <p>应用 ID</p>
         :type AppId: int
         :param _Uin: <p>创建者 UIN</p>
         :type Uin: str
+        :param _SubAccountUin: <p>创建人子账号 UIN（实际提交者，存量数据可能为空）</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>创建人子账号名称（CAM 动态回填，非持久化；查询失败时为空）</p>
+        :type SubAccountName: str
         :param _CreateTime: <p>创建时间（epoch 毫秒）</p><p>单位：毫秒</p>
         :type CreateTime: int
         :param _UpdateTime: <p>更新时间（epoch 毫秒）</p><p>单位：毫秒</p>
@@ -75813,6 +76900,16 @@ class MlFlowServerInfo(AbstractModel):
         :param _Tags: <p>标签列表（TagKey-TagValue）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _LastProbeSuccessTime: <p>最近一次成功探测 Deployment 的时间（epoch millis，Neutrino 透传）；NULL=尚未成功探测过。</p>
+        :type LastProbeSuccessTime: int
+        :param _ConsecutiveProbeFailures: <p>最近一次成功探测后的连续失败次数（&gt;0 表示当前 Status 可能过期）</p>
+        :type ConsecutiveProbeFailures: int
+        :param _LastProbeError: <p>最近一次探测失败原因（Neutrino 透传，仅诊断展示）</p>
+        :type LastProbeError: str
+        :param _TotalInstanceCount: <p>关联训练实例总数（ray-nexus 侧统计，仅 ListMlflowServers 返回；详情/监控请用 QueryMlFlowServerInstanceStats）</p>
+        :type TotalInstanceCount: int
+        :param _RunningInstanceCount: <p>关联的运行中（RUNNING）训练实例数（仅 ListMlflowServers 返回；详情/监控请用 QueryMlflowServerInstanceStats）</p>
+        :type RunningInstanceCount: int
         """
         self._ServerId = None
         self._ServerName = None
@@ -75826,12 +76923,21 @@ class MlFlowServerInfo(AbstractModel):
         self._Image = None
         self._StorageConfig = None
         self._StorageMode = None
+        self._ServerArgs = None
+        self._Description = None
         self._AppId = None
         self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
         self._CreateTime = None
         self._UpdateTime = None
         self._ResourceConfig = None
         self._Tags = None
+        self._LastProbeSuccessTime = None
+        self._ConsecutiveProbeFailures = None
+        self._LastProbeError = None
+        self._TotalInstanceCount = None
+        self._RunningInstanceCount = None
 
     @property
     def ServerId(self):
@@ -75966,6 +77072,28 @@ class MlFlowServerInfo(AbstractModel):
         self._StorageMode = StorageMode
 
     @property
+    def ServerArgs(self):
+        r"""<p>启动参数（用户自定义；null = 默认命令，编辑弹窗预填用）</p>
+        :rtype: str
+        """
+        return self._ServerArgs
+
+    @ServerArgs.setter
+    def ServerArgs(self, ServerArgs):
+        self._ServerArgs = ServerArgs
+
+    @property
+    def Description(self):
+        r"""<p>描述信息（纯文本；null = 未填写）</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
     def AppId(self):
         r"""<p>应用 ID</p>
         :rtype: int
@@ -75986,6 +77114,28 @@ class MlFlowServerInfo(AbstractModel):
     @Uin.setter
     def Uin(self, Uin):
         self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>创建人子账号 UIN（实际提交者，存量数据可能为空）</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>创建人子账号名称（CAM 动态回填，非持久化；查询失败时为空）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
 
     @property
     def CreateTime(self):
@@ -76032,6 +77182,61 @@ class MlFlowServerInfo(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def LastProbeSuccessTime(self):
+        r"""<p>最近一次成功探测 Deployment 的时间（epoch millis，Neutrino 透传）；NULL=尚未成功探测过。</p>
+        :rtype: int
+        """
+        return self._LastProbeSuccessTime
+
+    @LastProbeSuccessTime.setter
+    def LastProbeSuccessTime(self, LastProbeSuccessTime):
+        self._LastProbeSuccessTime = LastProbeSuccessTime
+
+    @property
+    def ConsecutiveProbeFailures(self):
+        r"""<p>最近一次成功探测后的连续失败次数（&gt;0 表示当前 Status 可能过期）</p>
+        :rtype: int
+        """
+        return self._ConsecutiveProbeFailures
+
+    @ConsecutiveProbeFailures.setter
+    def ConsecutiveProbeFailures(self, ConsecutiveProbeFailures):
+        self._ConsecutiveProbeFailures = ConsecutiveProbeFailures
+
+    @property
+    def LastProbeError(self):
+        r"""<p>最近一次探测失败原因（Neutrino 透传，仅诊断展示）</p>
+        :rtype: str
+        """
+        return self._LastProbeError
+
+    @LastProbeError.setter
+    def LastProbeError(self, LastProbeError):
+        self._LastProbeError = LastProbeError
+
+    @property
+    def TotalInstanceCount(self):
+        r"""<p>关联训练实例总数（ray-nexus 侧统计，仅 ListMlflowServers 返回；详情/监控请用 QueryMlFlowServerInstanceStats）</p>
+        :rtype: int
+        """
+        return self._TotalInstanceCount
+
+    @TotalInstanceCount.setter
+    def TotalInstanceCount(self, TotalInstanceCount):
+        self._TotalInstanceCount = TotalInstanceCount
+
+    @property
+    def RunningInstanceCount(self):
+        r"""<p>关联的运行中（RUNNING）训练实例数（仅 ListMlflowServers 返回；详情/监控请用 QueryMlflowServerInstanceStats）</p>
+        :rtype: int
+        """
+        return self._RunningInstanceCount
+
+    @RunningInstanceCount.setter
+    def RunningInstanceCount(self, RunningInstanceCount):
+        self._RunningInstanceCount = RunningInstanceCount
+
 
     def _deserialize(self, params):
         self._ServerId = params.get("ServerId")
@@ -76046,8 +77251,12 @@ class MlFlowServerInfo(AbstractModel):
         self._Image = params.get("Image")
         self._StorageConfig = params.get("StorageConfig")
         self._StorageMode = params.get("StorageMode")
+        self._ServerArgs = params.get("ServerArgs")
+        self._Description = params.get("Description")
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._ResourceConfig = params.get("ResourceConfig")
@@ -76057,6 +77266,11 @@ class MlFlowServerInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._LastProbeSuccessTime = params.get("LastProbeSuccessTime")
+        self._ConsecutiveProbeFailures = params.get("ConsecutiveProbeFailures")
+        self._LastProbeError = params.get("LastProbeError")
+        self._TotalInstanceCount = params.get("TotalInstanceCount")
+        self._RunningInstanceCount = params.get("RunningInstanceCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -87299,6 +88513,77 @@ class RegionInfo(AbstractModel):
         
 
 
+class RegisterMeta(AbstractModel):
+    r"""注册元信息（携带即注册语义：storageUri 为训练产物根，零拷贝引用）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckpointSubPath: <p>Checkpoint 子路径不能为空</p>
+        :type CheckpointSubPath: str
+        :param _InstanceId: <p>来源训练实例标识（接入方自定义语义，可选）</p>
+        :type InstanceId: str
+        :param _Extras: <p>接入方扩展键值列表（原样落库，平台不解释）</p>
+        :type Extras: list of KVPair
+        """
+        self._CheckpointSubPath = None
+        self._InstanceId = None
+        self._Extras = None
+
+    @property
+    def CheckpointSubPath(self):
+        r"""<p>Checkpoint 子路径不能为空</p>
+        :rtype: str
+        """
+        return self._CheckpointSubPath
+
+    @CheckpointSubPath.setter
+    def CheckpointSubPath(self, CheckpointSubPath):
+        self._CheckpointSubPath = CheckpointSubPath
+
+    @property
+    def InstanceId(self):
+        r"""<p>来源训练实例标识（接入方自定义语义，可选）</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Extras(self):
+        r"""<p>接入方扩展键值列表（原样落库，平台不解释）</p>
+        :rtype: list of KVPair
+        """
+        return self._Extras
+
+    @Extras.setter
+    def Extras(self, Extras):
+        self._Extras = Extras
+
+
+    def _deserialize(self, params):
+        self._CheckpointSubPath = params.get("CheckpointSubPath")
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Extras") is not None:
+            self._Extras = []
+            for item in params.get("Extras"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._Extras.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegisterThirdPartyAccessUserRequest(AbstractModel):
     r"""RegisterThirdPartyAccessUser请求参数结构体
 
@@ -87687,6 +88972,8 @@ class RerunBenchmarkTaskResponse(AbstractModel):
         :type Resources: :class:`tencentcloud.dlc.v20210125.models.BenchmarkResourceInfo`
         :param _DeploymentResources: <p>与本次评测关联的部署及其资源规格</p>
         :type DeploymentResources: list of DeploymentResourceInfo
+        :param _ModelIdentifier: <p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+        :type ModelIdentifier: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -87711,6 +88998,7 @@ class RerunBenchmarkTaskResponse(AbstractModel):
         self._SubAccountUin = None
         self._Resources = None
         self._DeploymentResources = None
+        self._ModelIdentifier = None
         self._RequestId = None
 
     @property
@@ -87945,6 +89233,17 @@ class RerunBenchmarkTaskResponse(AbstractModel):
         self._DeploymentResources = DeploymentResources
 
     @property
+    def ModelIdentifier(self):
+        r"""<p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+        :rtype: str
+        """
+        return self._ModelIdentifier
+
+    @ModelIdentifier.setter
+    def ModelIdentifier(self, ModelIdentifier):
+        self._ModelIdentifier = ModelIdentifier
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -87985,6 +89284,7 @@ class RerunBenchmarkTaskResponse(AbstractModel):
                 obj = DeploymentResourceInfo()
                 obj._deserialize(item)
                 self._DeploymentResources.append(obj)
+        self._ModelIdentifier = params.get("ModelIdentifier")
         self._RequestId = params.get("RequestId")
 
 
@@ -88900,6 +90200,8 @@ class RestartDeploymentResponse(AbstractModel):
         :type Image: str
         :param _ResourcePartitionName: <p>资源分区名称</p>
         :type ResourcePartitionName: str
+        :param _LoraBindings: <p>部署当前挂载的 LoRA 模型版本列表。</p>
+        :type LoraBindings: list of LoraItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -88928,6 +90230,7 @@ class RestartDeploymentResponse(AbstractModel):
         self._HeadHighAvailabilityEnabled = None
         self._Image = None
         self._ResourcePartitionName = None
+        self._LoraBindings = None
         self._RequestId = None
 
     @property
@@ -89227,6 +90530,17 @@ class RestartDeploymentResponse(AbstractModel):
         self._ResourcePartitionName = ResourcePartitionName
 
     @property
+    def LoraBindings(self):
+        r"""<p>部署当前挂载的 LoRA 模型版本列表。</p>
+        :rtype: list of LoraItem
+        """
+        return self._LoraBindings
+
+    @LoraBindings.setter
+    def LoraBindings(self, LoraBindings):
+        self._LoraBindings = LoraBindings
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -89264,6 +90578,12 @@ class RestartDeploymentResponse(AbstractModel):
         self._HeadHighAvailabilityEnabled = params.get("HeadHighAvailabilityEnabled")
         self._Image = params.get("Image")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
+        if params.get("LoraBindings") is not None:
+            self._LoraBindings = []
+            for item in params.get("LoraBindings"):
+                obj = LoraItem()
+                obj._deserialize(item)
+                self._LoraBindings.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -89866,8 +91186,11 @@ class ResumeTrainingJobInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>训练实例ID</p>
         :type InstanceId: str
+        :param _ResumeCheckpointSubDir: <p>续训指定的源 checkpoint 子目录（相对源实例 checkpoint 根；空 = 自动选最新）</p>
+        :type ResumeCheckpointSubDir: str
         """
         self._InstanceId = None
+        self._ResumeCheckpointSubDir = None
 
     @property
     def InstanceId(self):
@@ -89880,9 +91203,21 @@ class ResumeTrainingJobInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def ResumeCheckpointSubDir(self):
+        r"""<p>续训指定的源 checkpoint 子目录（相对源实例 checkpoint 根；空 = 自动选最新）</p>
+        :rtype: str
+        """
+        return self._ResumeCheckpointSubDir
+
+    @ResumeCheckpointSubDir.setter
+    def ResumeCheckpointSubDir(self, ResumeCheckpointSubDir):
+        self._ResumeCheckpointSubDir = ResumeCheckpointSubDir
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._ResumeCheckpointSubDir = params.get("ResumeCheckpointSubDir")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -95844,6 +97179,8 @@ class StopBenchmarkTaskResponse(AbstractModel):
         :type DeploymentResources: list of DeploymentResourceInfo
         :param _ErrorMessage: <p>发生错误时的错误信息</p>
         :type ErrorMessage: str
+        :param _ModelIdentifier: <p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+        :type ModelIdentifier: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -95869,6 +97206,7 @@ class StopBenchmarkTaskResponse(AbstractModel):
         self._Resources = None
         self._DeploymentResources = None
         self._ErrorMessage = None
+        self._ModelIdentifier = None
         self._RequestId = None
 
     @property
@@ -96114,6 +97452,17 @@ class StopBenchmarkTaskResponse(AbstractModel):
         self._ErrorMessage = ErrorMessage
 
     @property
+    def ModelIdentifier(self):
+        r"""<p>评测路由模型（可选）：基座或 &quot;&lt;基座&gt;:&lt;LoRA Adapter 别名&gt;&quot;，不传默认压测基座</p>
+        :rtype: str
+        """
+        return self._ModelIdentifier
+
+    @ModelIdentifier.setter
+    def ModelIdentifier(self, ModelIdentifier):
+        self._ModelIdentifier = ModelIdentifier
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -96155,6 +97504,7 @@ class StopBenchmarkTaskResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DeploymentResources.append(obj)
         self._ErrorMessage = params.get("ErrorMessage")
+        self._ModelIdentifier = params.get("ModelIdentifier")
         self._RequestId = params.get("RequestId")
 
 
@@ -96273,6 +97623,8 @@ class StopDeploymentResponse(AbstractModel):
         :type ImagePullPolicy: str
         :param _ResourcePartitionName: <p>资源分区名称</p>
         :type ResourcePartitionName: str
+        :param _LoraBindings: <p>部署当前挂载的 LoRA 模型版本列表。</p>
+        :type LoraBindings: list of LoraItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -96302,6 +97654,7 @@ class StopDeploymentResponse(AbstractModel):
         self._ImagePullType = None
         self._ImagePullPolicy = None
         self._ResourcePartitionName = None
+        self._LoraBindings = None
         self._RequestId = None
 
     @property
@@ -96611,6 +97964,17 @@ class StopDeploymentResponse(AbstractModel):
         self._ResourcePartitionName = ResourcePartitionName
 
     @property
+    def LoraBindings(self):
+        r"""<p>部署当前挂载的 LoRA 模型版本列表。</p>
+        :rtype: list of LoraItem
+        """
+        return self._LoraBindings
+
+    @LoraBindings.setter
+    def LoraBindings(self, LoraBindings):
+        self._LoraBindings = LoraBindings
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -96649,6 +98013,12 @@ class StopDeploymentResponse(AbstractModel):
         self._ImagePullType = params.get("ImagePullType")
         self._ImagePullPolicy = params.get("ImagePullPolicy")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
+        if params.get("LoraBindings") is not None:
+            self._LoraBindings = []
+            for item in params.get("LoraBindings"):
+                obj = LoraItem()
+                obj._deserialize(item)
+                self._LoraBindings.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -104300,6 +105670,10 @@ class TrainingJobInstance(AbstractModel):
         :type HistoryUrl: str
         :param _Creator: <p>创建人</p>
         :type Creator: str
+        :param _SubAccountUin: <p>子账号 UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子账号名称</p>
+        :type SubAccountName: str
         :param _CreateTime: <p>创建时间（毫秒时间戳）</p>
         :type CreateTime: int
         :param _ResourcePartitionId: <p>资源分区 ID</p>
@@ -104346,6 +105720,10 @@ class TrainingJobInstance(AbstractModel):
         :type TuningParams: :class:`tencentcloud.dlc.v20210125.models.TrainingTuningParams`
         :param _ResumeTraining: <p>创建实例时的断点续训意图声明快照（仅详情返回）</p>
         :type ResumeTraining: bool
+        :param _NetworkConfig: <p>自定义网络配置</p>
+        :type NetworkConfig: str
+        :param _ResumeSourceInstanceId: <p>断点续训来源实例 ID（仅续训产生的实例有值，仅详情返回）</p>
+        :type ResumeSourceInstanceId: str
         """
         self._InstanceId = None
         self._SpecId = None
@@ -104357,6 +105735,8 @@ class TrainingJobInstance(AbstractModel):
         self._JobRunningTime = None
         self._HistoryUrl = None
         self._Creator = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
         self._CreateTime = None
         self._ResourcePartitionId = None
         self._ResourcePartitionName = None
@@ -104380,6 +105760,8 @@ class TrainingJobInstance(AbstractModel):
         self._Checkpoint = None
         self._TuningParams = None
         self._ResumeTraining = None
+        self._NetworkConfig = None
+        self._ResumeSourceInstanceId = None
 
     @property
     def InstanceId(self):
@@ -104490,6 +105872,28 @@ class TrainingJobInstance(AbstractModel):
     @Creator.setter
     def Creator(self, Creator):
         self._Creator = Creator
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子账号 UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子账号名称</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
 
     @property
     def CreateTime(self):
@@ -104744,6 +106148,28 @@ class TrainingJobInstance(AbstractModel):
     def ResumeTraining(self, ResumeTraining):
         self._ResumeTraining = ResumeTraining
 
+    @property
+    def NetworkConfig(self):
+        r"""<p>自定义网络配置</p>
+        :rtype: str
+        """
+        return self._NetworkConfig
+
+    @NetworkConfig.setter
+    def NetworkConfig(self, NetworkConfig):
+        self._NetworkConfig = NetworkConfig
+
+    @property
+    def ResumeSourceInstanceId(self):
+        r"""<p>断点续训来源实例 ID（仅续训产生的实例有值，仅详情返回）</p>
+        :rtype: str
+        """
+        return self._ResumeSourceInstanceId
+
+    @ResumeSourceInstanceId.setter
+    def ResumeSourceInstanceId(self, ResumeSourceInstanceId):
+        self._ResumeSourceInstanceId = ResumeSourceInstanceId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -104756,6 +106182,8 @@ class TrainingJobInstance(AbstractModel):
         self._JobRunningTime = params.get("JobRunningTime")
         self._HistoryUrl = params.get("HistoryUrl")
         self._Creator = params.get("Creator")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
         self._CreateTime = params.get("CreateTime")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
@@ -104795,6 +106223,8 @@ class TrainingJobInstance(AbstractModel):
             self._TuningParams = TrainingTuningParams()
             self._TuningParams._deserialize(params.get("TuningParams"))
         self._ResumeTraining = params.get("ResumeTraining")
+        self._NetworkConfig = params.get("NetworkConfig")
+        self._ResumeSourceInstanceId = params.get("ResumeSourceInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -105748,6 +107178,22 @@ class TrainingTuningParams(AbstractModel):
         :type TensorModelParallelSize: int
         :param _GpuMemoryUtilization: <p>vLLM GPU memory utilization，默认 0.5</p>
         :type GpuMemoryUtilization: float
+        :param _PPOMaxTokenLenPerGpu: <p>Actor Token 上限 / GPU</p>
+        :type PPOMaxTokenLenPerGpu: int
+        :param _LogProbMaxTokenLenPerGpu: <p>LogProb Token 上限 / GPU</p>
+        :type LogProbMaxTokenLenPerGpu: int
+        :param _ActorParamOffload: <p>Actor 参数 Offload</p>
+        :type ActorParamOffload: bool
+        :param _ActorOptimizerOffload: <p>优化器 Offload</p>
+        :type ActorOptimizerOffload: bool
+        :param _RefParamOffload: <p>Ref 参数 Offload</p>
+        :type RefParamOffload: bool
+        :param _PPOMicroBatchSizePerGpu: <p>Actor Micro Batch / GPU</p>
+        :type PPOMicroBatchSizePerGpu: int
+        :param _RollOutLogProbMicroBatchSizePerGpu: <p>LogProb Micro Batch / GPU</p>
+        :type RollOutLogProbMicroBatchSizePerGpu: int
+        :param _GRPORawOverrides: <p>直接追加为命令行 override，优先级最高</p>
+        :type GRPORawOverrides: str
         """
         self._FineTuneType = None
         self._LoraRank = None
@@ -105779,6 +107225,14 @@ class TrainingTuningParams(AbstractModel):
         self._TrainBatchSize = None
         self._TensorModelParallelSize = None
         self._GpuMemoryUtilization = None
+        self._PPOMaxTokenLenPerGpu = None
+        self._LogProbMaxTokenLenPerGpu = None
+        self._ActorParamOffload = None
+        self._ActorOptimizerOffload = None
+        self._RefParamOffload = None
+        self._PPOMicroBatchSizePerGpu = None
+        self._RollOutLogProbMicroBatchSizePerGpu = None
+        self._GRPORawOverrides = None
 
     @property
     def FineTuneType(self):
@@ -106110,6 +107564,94 @@ class TrainingTuningParams(AbstractModel):
     def GpuMemoryUtilization(self, GpuMemoryUtilization):
         self._GpuMemoryUtilization = GpuMemoryUtilization
 
+    @property
+    def PPOMaxTokenLenPerGpu(self):
+        r"""<p>Actor Token 上限 / GPU</p>
+        :rtype: int
+        """
+        return self._PPOMaxTokenLenPerGpu
+
+    @PPOMaxTokenLenPerGpu.setter
+    def PPOMaxTokenLenPerGpu(self, PPOMaxTokenLenPerGpu):
+        self._PPOMaxTokenLenPerGpu = PPOMaxTokenLenPerGpu
+
+    @property
+    def LogProbMaxTokenLenPerGpu(self):
+        r"""<p>LogProb Token 上限 / GPU</p>
+        :rtype: int
+        """
+        return self._LogProbMaxTokenLenPerGpu
+
+    @LogProbMaxTokenLenPerGpu.setter
+    def LogProbMaxTokenLenPerGpu(self, LogProbMaxTokenLenPerGpu):
+        self._LogProbMaxTokenLenPerGpu = LogProbMaxTokenLenPerGpu
+
+    @property
+    def ActorParamOffload(self):
+        r"""<p>Actor 参数 Offload</p>
+        :rtype: bool
+        """
+        return self._ActorParamOffload
+
+    @ActorParamOffload.setter
+    def ActorParamOffload(self, ActorParamOffload):
+        self._ActorParamOffload = ActorParamOffload
+
+    @property
+    def ActorOptimizerOffload(self):
+        r"""<p>优化器 Offload</p>
+        :rtype: bool
+        """
+        return self._ActorOptimizerOffload
+
+    @ActorOptimizerOffload.setter
+    def ActorOptimizerOffload(self, ActorOptimizerOffload):
+        self._ActorOptimizerOffload = ActorOptimizerOffload
+
+    @property
+    def RefParamOffload(self):
+        r"""<p>Ref 参数 Offload</p>
+        :rtype: bool
+        """
+        return self._RefParamOffload
+
+    @RefParamOffload.setter
+    def RefParamOffload(self, RefParamOffload):
+        self._RefParamOffload = RefParamOffload
+
+    @property
+    def PPOMicroBatchSizePerGpu(self):
+        r"""<p>Actor Micro Batch / GPU</p>
+        :rtype: int
+        """
+        return self._PPOMicroBatchSizePerGpu
+
+    @PPOMicroBatchSizePerGpu.setter
+    def PPOMicroBatchSizePerGpu(self, PPOMicroBatchSizePerGpu):
+        self._PPOMicroBatchSizePerGpu = PPOMicroBatchSizePerGpu
+
+    @property
+    def RollOutLogProbMicroBatchSizePerGpu(self):
+        r"""<p>LogProb Micro Batch / GPU</p>
+        :rtype: int
+        """
+        return self._RollOutLogProbMicroBatchSizePerGpu
+
+    @RollOutLogProbMicroBatchSizePerGpu.setter
+    def RollOutLogProbMicroBatchSizePerGpu(self, RollOutLogProbMicroBatchSizePerGpu):
+        self._RollOutLogProbMicroBatchSizePerGpu = RollOutLogProbMicroBatchSizePerGpu
+
+    @property
+    def GRPORawOverrides(self):
+        r"""<p>直接追加为命令行 override，优先级最高</p>
+        :rtype: str
+        """
+        return self._GRPORawOverrides
+
+    @GRPORawOverrides.setter
+    def GRPORawOverrides(self, GRPORawOverrides):
+        self._GRPORawOverrides = GRPORawOverrides
+
 
     def _deserialize(self, params):
         self._FineTuneType = params.get("FineTuneType")
@@ -106142,6 +107684,14 @@ class TrainingTuningParams(AbstractModel):
         self._TrainBatchSize = params.get("TrainBatchSize")
         self._TensorModelParallelSize = params.get("TensorModelParallelSize")
         self._GpuMemoryUtilization = params.get("GpuMemoryUtilization")
+        self._PPOMaxTokenLenPerGpu = params.get("PPOMaxTokenLenPerGpu")
+        self._LogProbMaxTokenLenPerGpu = params.get("LogProbMaxTokenLenPerGpu")
+        self._ActorParamOffload = params.get("ActorParamOffload")
+        self._ActorOptimizerOffload = params.get("ActorOptimizerOffload")
+        self._RefParamOffload = params.get("RefParamOffload")
+        self._PPOMicroBatchSizePerGpu = params.get("PPOMicroBatchSizePerGpu")
+        self._RollOutLogProbMicroBatchSizePerGpu = params.get("RollOutLogProbMicroBatchSizePerGpu")
+        self._GRPORawOverrides = params.get("GRPORawOverrides")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -107600,12 +109150,30 @@ class UpdateDeploymentRequest(AbstractModel):
         :type Replicas: int
         :param _AutoscalingEnabled: <p>是否启用弹性伸缩</p>
         :type AutoscalingEnabled: bool
+        :param _CodePackageUri: <p>代码包 URI（可选，未传时从 primary deployment 继承）</p>
+        :type CodePackageUri: str
+        :param _CodePackageOriginalName: <p>代码包原始文件名（可选，详情页「代码引用」回显用，仅记录不参与业务逻辑）</p>
+        :type CodePackageOriginalName: str
+        :param _CrOverrides: <p>CR / PodSpec overrides JSON（可选）</p>
+        :type CrOverrides: str
+        :param _HeadHighAvailabilityEnabled: <p>Head 节点高可用开关（可选，不传或 true 为开启，仅 false 为关闭；与当前值不同会触发服务重建）</p>
+        :type HeadHighAvailabilityEnabled: bool
+        :param _LoraBindings: <p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+        :type LoraBindings: list of LoraAdapterBinding
+        :param _RuntimeEnv: <p>ray runtime env 字段</p>
+        :type RuntimeEnv: str
         """
         self._DeploymentId = None
         self._ModelVersion = None
         self._Engine = None
         self._Replicas = None
         self._AutoscalingEnabled = None
+        self._CodePackageUri = None
+        self._CodePackageOriginalName = None
+        self._CrOverrides = None
+        self._HeadHighAvailabilityEnabled = None
+        self._LoraBindings = None
+        self._RuntimeEnv = None
 
     @property
     def DeploymentId(self):
@@ -107662,6 +109230,72 @@ class UpdateDeploymentRequest(AbstractModel):
     def AutoscalingEnabled(self, AutoscalingEnabled):
         self._AutoscalingEnabled = AutoscalingEnabled
 
+    @property
+    def CodePackageUri(self):
+        r"""<p>代码包 URI（可选，未传时从 primary deployment 继承）</p>
+        :rtype: str
+        """
+        return self._CodePackageUri
+
+    @CodePackageUri.setter
+    def CodePackageUri(self, CodePackageUri):
+        self._CodePackageUri = CodePackageUri
+
+    @property
+    def CodePackageOriginalName(self):
+        r"""<p>代码包原始文件名（可选，详情页「代码引用」回显用，仅记录不参与业务逻辑）</p>
+        :rtype: str
+        """
+        return self._CodePackageOriginalName
+
+    @CodePackageOriginalName.setter
+    def CodePackageOriginalName(self, CodePackageOriginalName):
+        self._CodePackageOriginalName = CodePackageOriginalName
+
+    @property
+    def CrOverrides(self):
+        r"""<p>CR / PodSpec overrides JSON（可选）</p>
+        :rtype: str
+        """
+        return self._CrOverrides
+
+    @CrOverrides.setter
+    def CrOverrides(self, CrOverrides):
+        self._CrOverrides = CrOverrides
+
+    @property
+    def HeadHighAvailabilityEnabled(self):
+        r"""<p>Head 节点高可用开关（可选，不传或 true 为开启，仅 false 为关闭；与当前值不同会触发服务重建）</p>
+        :rtype: bool
+        """
+        return self._HeadHighAvailabilityEnabled
+
+    @HeadHighAvailabilityEnabled.setter
+    def HeadHighAvailabilityEnabled(self, HeadHighAvailabilityEnabled):
+        self._HeadHighAvailabilityEnabled = HeadHighAvailabilityEnabled
+
+    @property
+    def LoraBindings(self):
+        r"""<p>可选：创建时一并挂载的 LoRA 模型版本（首次启动即生效）</p>
+        :rtype: list of LoraAdapterBinding
+        """
+        return self._LoraBindings
+
+    @LoraBindings.setter
+    def LoraBindings(self, LoraBindings):
+        self._LoraBindings = LoraBindings
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>ray runtime env 字段</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
 
     def _deserialize(self, params):
         self._DeploymentId = params.get("DeploymentId")
@@ -107669,6 +109303,17 @@ class UpdateDeploymentRequest(AbstractModel):
         self._Engine = params.get("Engine")
         self._Replicas = params.get("Replicas")
         self._AutoscalingEnabled = params.get("AutoscalingEnabled")
+        self._CodePackageUri = params.get("CodePackageUri")
+        self._CodePackageOriginalName = params.get("CodePackageOriginalName")
+        self._CrOverrides = params.get("CrOverrides")
+        self._HeadHighAvailabilityEnabled = params.get("HeadHighAvailabilityEnabled")
+        if params.get("LoraBindings") is not None:
+            self._LoraBindings = []
+            for item in params.get("LoraBindings"):
+                obj = LoraAdapterBinding()
+                obj._deserialize(item)
+                self._LoraBindings.append(obj)
+        self._RuntimeEnv = params.get("RuntimeEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -107739,6 +109384,8 @@ class UpdateDeploymentResponse(AbstractModel):
         :type ResourcePartitionName: str
         :param _AdvancedOptions: <p>高级参数</p>
         :type AdvancedOptions: str
+        :param _LoraBindings: <p>部署当前挂载的 LoRA 模型版本列表。</p>
+        :type LoraBindings: list of LoraItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -107761,6 +109408,7 @@ class UpdateDeploymentResponse(AbstractModel):
         self._Image = None
         self._ResourcePartitionName = None
         self._AdvancedOptions = None
+        self._LoraBindings = None
         self._RequestId = None
 
     @property
@@ -107988,6 +109636,17 @@ class UpdateDeploymentResponse(AbstractModel):
         self._AdvancedOptions = AdvancedOptions
 
     @property
+    def LoraBindings(self):
+        r"""<p>部署当前挂载的 LoRA 模型版本列表。</p>
+        :rtype: list of LoraItem
+        """
+        return self._LoraBindings
+
+    @LoraBindings.setter
+    def LoraBindings(self, LoraBindings):
+        self._LoraBindings = LoraBindings
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -108019,6 +109678,12 @@ class UpdateDeploymentResponse(AbstractModel):
         self._Image = params.get("Image")
         self._ResourcePartitionName = params.get("ResourcePartitionName")
         self._AdvancedOptions = params.get("AdvancedOptions")
+        if params.get("LoraBindings") is not None:
+            self._LoraBindings = []
+            for item in params.get("LoraBindings"):
+                obj = LoraItem()
+                obj._deserialize(item)
+                self._LoraBindings.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -108282,6 +109947,20 @@ class UpdateInferenceModelResponse(AbstractModel):
         :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
+        :param _ModelCategory: <p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :type ModelCategory: str
+        :param _BaseModelUid: <p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :type BaseModelUid: str
+        :param _LatestVersionUid: <p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+        :type LatestVersionUid: str
+        :param _BaseModelVersionUid: <p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersionUid: str
+        :param _BaseModelName: <p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+        :type BaseModelName: str
+        :param _BaseModelVersion: <p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :type BaseModelVersion: str
+        :param _ModelSource: <p>模型来源标识（可选；有 RegisterMeta 时必填，须在平台值域登记表内）</p>
+        :type ModelSource: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -108306,6 +109985,13 @@ class UpdateInferenceModelResponse(AbstractModel):
         self._UpdateTime = None
         self._SubAccountUin = None
         self._ResourceTags = None
+        self._ModelCategory = None
+        self._BaseModelUid = None
+        self._LatestVersionUid = None
+        self._BaseModelVersionUid = None
+        self._BaseModelName = None
+        self._BaseModelVersion = None
+        self._ModelSource = None
         self._RequestId = None
 
     @property
@@ -108541,6 +110227,83 @@ class UpdateInferenceModelResponse(AbstractModel):
         self._ResourceTags = ResourceTags
 
     @property
+    def ModelCategory(self):
+        r"""<p>模型类别：Base=普通（基座）模型；LoRA=LoRA Adapter 系列（各版本为 Adapter）</p>
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
+    @property
+    def BaseModelUid(self):
+        r"""<p>LoRA 基座模型 UID（仅 ModelCategory=LoRA 时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelUid
+
+    @BaseModelUid.setter
+    def BaseModelUid(self, BaseModelUid):
+        self._BaseModelUid = BaseModelUid
+
+    @property
+    def LatestVersionUid(self):
+        r"""<p>最新版本的全局唯一标识（VersionUid）。CreateInferenceModel 返回时即初始版本的 VersionUid</p>
+        :rtype: str
+        """
+        return self._LatestVersionUid
+
+    @LatestVersionUid.setter
+    def LatestVersionUid(self, LatestVersionUid):
+        self._LatestVersionUid = LatestVersionUid
+
+    @property
+    def BaseModelVersionUid(self):
+        r"""<p>LoRA 基座模型版本 UID（仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersionUid
+
+    @BaseModelVersionUid.setter
+    def BaseModelVersionUid(self, BaseModelVersionUid):
+        self._BaseModelVersionUid = BaseModelVersionUid
+
+    @property
+    def BaseModelName(self):
+        r"""<p>LoRA 基座模型名称（仅 ModelCategory=LoRA 且基座存在时有值；列表展示「基座模型及版本」用）</p>
+        :rtype: str
+        """
+        return self._BaseModelName
+
+    @BaseModelName.setter
+    def BaseModelName(self, BaseModelName):
+        self._BaseModelName = BaseModelName
+
+    @property
+    def BaseModelVersion(self):
+        r"""<p>LoRA 基座模型版本号（如 v2；仅 ModelCategory=LoRA 且创建时指定了基座版本时有值）</p>
+        :rtype: str
+        """
+        return self._BaseModelVersion
+
+    @BaseModelVersion.setter
+    def BaseModelVersion(self, BaseModelVersion):
+        self._BaseModelVersion = BaseModelVersion
+
+    @property
+    def ModelSource(self):
+        r"""<p>模型来源标识（可选；有 RegisterMeta 时必填，须在平台值域登记表内）</p>
+        :rtype: str
+        """
+        return self._ModelSource
+
+    @ModelSource.setter
+    def ModelSource(self, ModelSource):
+        self._ModelSource = ModelSource
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -108579,6 +110342,13 @@ class UpdateInferenceModelResponse(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
+        self._ModelCategory = params.get("ModelCategory")
+        self._BaseModelUid = params.get("BaseModelUid")
+        self._LatestVersionUid = params.get("LatestVersionUid")
+        self._BaseModelVersionUid = params.get("BaseModelVersionUid")
+        self._BaseModelName = params.get("BaseModelName")
+        self._BaseModelVersion = params.get("BaseModelVersion")
+        self._ModelSource = params.get("ModelSource")
         self._RequestId = params.get("RequestId")
 
 

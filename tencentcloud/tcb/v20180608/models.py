@@ -7139,18 +7139,13 @@ class DatabasesInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 数据库唯一标识
+        :param _InstanceId: <p>数据库唯一标识</p>
         :type InstanceId: str
-        :param _Status: 状态。包含以下取值：
-<li>INITIALIZING：资源初始化中</li>
-<li>RUNNING：运行中，可正常使用的状态</li>
-<li>UNUSABLE：禁用，不可用</li>
-<li>OVERDUE：资源过期</li>
+        :param _Status: <p>状态。包含以下取值：</p><li>INITIALIZING：资源初始化中</li><li>RUNNING：运行中，可正常使用的状态</li><li>UNUSABLE：禁用，不可用</li><li>OVERDUE：资源过期</li>
         :type Status: str
-        :param _Region: 所属地域。
-当前支持ap-shanghai
+        :param _Region: <p>所属地域。<br>当前支持ap-shanghai</p>
         :type Region: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
         """
         self._InstanceId = None
@@ -7160,7 +7155,7 @@ class DatabasesInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""数据库唯一标识
+        r"""<p>数据库唯一标识</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7171,11 +7166,7 @@ class DatabasesInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态。包含以下取值：
-<li>INITIALIZING：资源初始化中</li>
-<li>RUNNING：运行中，可正常使用的状态</li>
-<li>UNUSABLE：禁用，不可用</li>
-<li>OVERDUE：资源过期</li>
+        r"""<p>状态。包含以下取值：</p><li>INITIALIZING：资源初始化中</li><li>RUNNING：运行中，可正常使用的状态</li><li>UNUSABLE：禁用，不可用</li><li>OVERDUE：资源过期</li>
         :rtype: str
         """
         return self._Status
@@ -7186,8 +7177,7 @@ class DatabasesInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""所属地域。
-当前支持ap-shanghai
+        r"""<p>所属地域。<br>当前支持ap-shanghai</p>
         :rtype: str
         """
         return self._Region
@@ -7198,7 +7188,7 @@ class DatabasesInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -12388,6 +12378,40 @@ class DescribeEnvAccountCircleResponse(AbstractModel):
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEnvInfoRequest(AbstractModel):
+    r"""DescribeEnvInfo请求参数结构体
+
+    """
+
+
+class DescribeEnvInfoResponse(AbstractModel):
+    r"""DescribeEnvInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

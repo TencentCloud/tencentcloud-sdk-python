@@ -1085,6 +1085,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEnvInfo(
+            self,
+            request: models.DescribeEnvInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEnvInfoResponse:
+        """
+        查询环境详细信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEnvInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEnvInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEnvLimit(
             self,
             request: models.DescribeEnvLimitRequest,

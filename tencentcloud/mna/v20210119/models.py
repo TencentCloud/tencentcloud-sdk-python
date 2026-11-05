@@ -2912,26 +2912,29 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        :param _Period: <p>查询粒度。0:day, 1:week, 2:month, 不传默认为day</p>
         :type Period: int
-        :param _StartTime: 开始时间。单位秒
+        :param _StartTime: <p>开始时间。单位秒</p>
         :type StartTime: int
-        :param _EndTime: 结束时间。单位秒
+        :param _EndTime: <p>结束时间。单位秒</p>
         :type EndTime: int
-        :param _DevGroup: 设备组, 不传查询全部
+        :param _DevGroup: <p>设备组, 不传查询全部</p>
         :type DevGroup: str
-        :param _LicenseType: license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :param _ApplicationId: <p>应用ID，指控制台上设备管理中的动态设备应用ID，不传查询全部。</p>
+        :type ApplicationId: str
+        :param _LicenseType: <p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
         :type LicenseType: int
         """
         self._Period = None
         self._StartTime = None
         self._EndTime = None
         self._DevGroup = None
+        self._ApplicationId = None
         self._LicenseType = None
 
     @property
     def Period(self):
-        r"""查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        r"""<p>查询粒度。0:day, 1:week, 2:month, 不传默认为day</p>
         :rtype: int
         """
         return self._Period
@@ -2942,7 +2945,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间。单位秒
+        r"""<p>开始时间。单位秒</p>
         :rtype: int
         """
         return self._StartTime
@@ -2953,7 +2956,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间。单位秒
+        r"""<p>结束时间。单位秒</p>
         :rtype: int
         """
         return self._EndTime
@@ -2964,7 +2967,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
 
     @property
     def DevGroup(self):
-        r"""设备组, 不传查询全部
+        r"""<p>设备组, 不传查询全部</p>
         :rtype: str
         """
         return self._DevGroup
@@ -2974,8 +2977,19 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
         self._DevGroup = DevGroup
 
     @property
+    def ApplicationId(self):
+        r"""<p>应用ID，指控制台上设备管理中的动态设备应用ID，不传查询全部。</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
     def LicenseType(self):
-        r"""license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        r"""<p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
         :rtype: int
         """
         return self._LicenseType
@@ -2990,6 +3004,7 @@ class DownloadActiveDeviceCountRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._DevGroup = params.get("DevGroup")
+        self._ApplicationId = params.get("ApplicationId")
         self._LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3008,7 +3023,7 @@ class DownloadActiveDeviceCountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FilePath: URL地址
+        :param _FilePath: <p>URL地址</p>
         :type FilePath: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3018,7 +3033,7 @@ class DownloadActiveDeviceCountResponse(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""URL地址
+        r"""<p>URL地址</p>
         :rtype: str
         """
         return self._FilePath
@@ -3686,26 +3701,29 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Period: 查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        :param _Period: <p>查询粒度。0:day, 1:week, 2:month, 不传默认为day</p>
         :type Period: int
-        :param _StartTime: 开始时间。单位秒
+        :param _StartTime: <p>开始时间。单位秒</p>
         :type StartTime: int
-        :param _EndTime: 结束时间。单位秒
+        :param _EndTime: <p>结束时间。单位秒</p>
         :type EndTime: int
-        :param _DevGroup: 设备组, 不传查询全部
+        :param _DevGroup: <p>设备组, 不传查询全部</p>
         :type DevGroup: str
-        :param _LicenseType: license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :param _ApplicationId: <p>应用ID，指控制台上设备管理中的动态设备应用ID，不传查询全部。</p>
+        :type ApplicationId: str
+        :param _LicenseType: <p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
         :type LicenseType: int
         """
         self._Period = None
         self._StartTime = None
         self._EndTime = None
         self._DevGroup = None
+        self._ApplicationId = None
         self._LicenseType = None
 
     @property
     def Period(self):
-        r"""查询粒度。0:day, 1:week, 2:month, 不传默认为day
+        r"""<p>查询粒度。0:day, 1:week, 2:month, 不传默认为day</p>
         :rtype: int
         """
         return self._Period
@@ -3716,7 +3734,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间。单位秒
+        r"""<p>开始时间。单位秒</p>
         :rtype: int
         """
         return self._StartTime
@@ -3727,7 +3745,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间。单位秒
+        r"""<p>结束时间。单位秒</p>
         :rtype: int
         """
         return self._EndTime
@@ -3738,7 +3756,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
 
     @property
     def DevGroup(self):
-        r"""设备组, 不传查询全部
+        r"""<p>设备组, 不传查询全部</p>
         :rtype: str
         """
         return self._DevGroup
@@ -3748,8 +3766,19 @@ class GetActiveDeviceCountRequest(AbstractModel):
         self._DevGroup = DevGroup
 
     @property
+    def ApplicationId(self):
+        r"""<p>应用ID，指控制台上设备管理中的动态设备应用ID，不传查询全部。</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
     def LicenseType(self):
-        r"""license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        r"""<p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
         :rtype: int
         """
         return self._LicenseType
@@ -3764,6 +3793,7 @@ class GetActiveDeviceCountRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._DevGroup = params.get("DevGroup")
+        self._ApplicationId = params.get("ApplicationId")
         self._LicenseType = params.get("LicenseType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -3782,19 +3812,19 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActiveDeviceList: 激活设备统计
+        :param _ActiveDeviceList: <p>激活设备统计</p>
         :type ActiveDeviceList: list of ActiveDeviceList
-        :param _Period: 查询粒度，0:day, 1:week, 2:month, 不传默认为day
+        :param _Period: <p>查询粒度，0:day, 1:week, 2:month, 不传默认为day</p>
         :type Period: int
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _DevGroup: 设备组
+        :param _DevGroup: <p>设备组</p>
         :type DevGroup: str
-        :param _LicenseType: license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        :param _LicenseType: <p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
         :type LicenseType: str
-        :param _AppId: 租户ID
+        :param _AppId: <p>租户ID</p>
         :type AppId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3810,7 +3840,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def ActiveDeviceList(self):
-        r"""激活设备统计
+        r"""<p>激活设备统计</p>
         :rtype: list of ActiveDeviceList
         """
         return self._ActiveDeviceList
@@ -3821,7 +3851,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def Period(self):
-        r"""查询粒度，0:day, 1:week, 2:month, 不传默认为day
+        r"""<p>查询粒度，0:day, 1:week, 2:month, 不传默认为day</p>
         :rtype: int
         """
         return self._Period
@@ -3832,7 +3862,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -3843,7 +3873,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -3854,7 +3884,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def DevGroup(self):
-        r"""设备组
+        r"""<p>设备组</p>
         :rtype: str
         """
         return self._DevGroup
@@ -3865,7 +3895,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权
+        r"""<p>license类型, 不传查询全部, 1: 租户月付，2：厂商月付，3：永久授权</p>
         :rtype: str
         """
         return self._LicenseType
@@ -3876,7 +3906,7 @@ class GetActiveDeviceCountResponse(AbstractModel):
 
     @property
     def AppId(self):
-        r"""租户ID
+        r"""<p>租户ID</p>
         :rtype: str
         """
         return self._AppId

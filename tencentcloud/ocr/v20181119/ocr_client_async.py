@@ -1122,6 +1122,24 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryEnterpriseBasicInfo(
+            self,
+            request: models.QueryEnterpriseBasicInfoRequest,
+            opts: Dict = None,
+    ) -> models.QueryEnterpriseBasicInfoResponse:
+        """
+        本接口用于查询企业基本信息。输入企业名称或统一社会信用代码，返回企业名称、统一社会信用代码、法定代表人、登记机关、经营期限、经营状态、经营范围、注册地址、主体类型、成立日期、核准日期、行政区划等企业登记信息。部分出参可能无法查得，具体以实际查询结果为准。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryEnterpriseBasicInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryEnterpriseBasicInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QuestionOCR(
             self,
             request: models.QuestionOCRRequest,

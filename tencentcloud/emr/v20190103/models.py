@@ -15335,7 +15335,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: <p>可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息</p>
+        :param _ZoneId: <p>可用区Id，可以通过<a href="https://cloud.tencent.com/document/product/1596/77929">可用区列表</a>查询相关信息</p>
         :type ZoneId: int
         :param _CvmPayMode: <p>0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息</p>
         :type CvmPayMode: int
@@ -15363,7 +15363,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""<p>可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息</p>
+        r"""<p>可用区Id，可以通过<a href="https://cloud.tencent.com/document/product/1596/77929">可用区列表</a>查询相关信息</p>
         :rtype: int
         """
         return self._ZoneId

@@ -138153,12 +138153,16 @@ class HostKBRisk(AbstractModel):
         :type KBDetail: :class:`tencentcloud.csip.v20221121.models.KBDetail`
         :param _EffectHostCount: <p>受影响主机数</p>
         :type EffectHostCount: int
-        :param _LatestScanTime: <p>最近扫描时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+        :param _LatestScanTime: <p>最近扫描时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
         :type LatestScanTime: str
         :param _Account: <p>所属账号列表</p>
         :type Account: list of AccountBriefInfo
         :param _RiskStatus: <p>修复状态<br>枚举值：<br>PENDING：待修复<br>SCANNING：扫描中<br>FIXED：已修复<br>IGNORED：已加白<br>FIXING：修复中<br>FIX_FAILED：修复失败</p>
         :type RiskStatus: str
+        :param _IsNew: <p>是否最新补丁</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type IsNew: bool
+        :param _FixTaskId: <p>修复任务id</p>
+        :type FixTaskId: str
         """
         self._RiskID = None
         self._KBDetail = None
@@ -138166,6 +138170,8 @@ class HostKBRisk(AbstractModel):
         self._LatestScanTime = None
         self._Account = None
         self._RiskStatus = None
+        self._IsNew = None
+        self._FixTaskId = None
 
     @property
     def RiskID(self):
@@ -138202,7 +138208,7 @@ class HostKBRisk(AbstractModel):
 
     @property
     def LatestScanTime(self):
-        r"""<p>最近扫描时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+        r"""<p>最近扫描时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
         :rtype: str
         """
         return self._LatestScanTime
@@ -138233,6 +138239,28 @@ class HostKBRisk(AbstractModel):
     def RiskStatus(self, RiskStatus):
         self._RiskStatus = RiskStatus
 
+    @property
+    def IsNew(self):
+        r"""<p>是否最新补丁</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def FixTaskId(self):
+        r"""<p>修复任务id</p>
+        :rtype: str
+        """
+        return self._FixTaskId
+
+    @FixTaskId.setter
+    def FixTaskId(self, FixTaskId):
+        self._FixTaskId = FixTaskId
+
 
     def _deserialize(self, params):
         self._RiskID = params.get("RiskID")
@@ -138248,6 +138276,8 @@ class HostKBRisk(AbstractModel):
                 obj._deserialize(item)
                 self._Account.append(obj)
         self._RiskStatus = params.get("RiskStatus")
+        self._IsNew = params.get("IsNew")
+        self._FixTaskId = params.get("FixTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -138819,6 +138849,10 @@ class HostVulRisk(AbstractModel):
         :type RiskStatus: str
         :param _VulDetail: <p>漏洞详细信息</p>
         :type VulDetail: :class:`tencentcloud.csip.v20221121.models.VulDetailInfo`
+        :param _FixTaskId: <p>修复任务ID</p>
+        :type FixTaskId: str
+        :param _SupportAutoFix: <p>当前用户可见范围内存在至少一台支持自动修复的主机时为 1，否则为 0</p><p>单位：1</p>
+        :type SupportAutoFix: int
         """
         self._RiskID = None
         self._EffectHostCount = None
@@ -138827,6 +138861,8 @@ class HostVulRisk(AbstractModel):
         self._DefendStatus = None
         self._RiskStatus = None
         self._VulDetail = None
+        self._FixTaskId = None
+        self._SupportAutoFix = None
 
     @property
     def RiskID(self):
@@ -138905,6 +138941,28 @@ class HostVulRisk(AbstractModel):
     def VulDetail(self, VulDetail):
         self._VulDetail = VulDetail
 
+    @property
+    def FixTaskId(self):
+        r"""<p>修复任务ID</p>
+        :rtype: str
+        """
+        return self._FixTaskId
+
+    @FixTaskId.setter
+    def FixTaskId(self, FixTaskId):
+        self._FixTaskId = FixTaskId
+
+    @property
+    def SupportAutoFix(self):
+        r"""<p>当前用户可见范围内存在至少一台支持自动修复的主机时为 1，否则为 0</p><p>单位：1</p>
+        :rtype: int
+        """
+        return self._SupportAutoFix
+
+    @SupportAutoFix.setter
+    def SupportAutoFix(self, SupportAutoFix):
+        self._SupportAutoFix = SupportAutoFix
+
 
     def _deserialize(self, params):
         self._RiskID = params.get("RiskID")
@@ -138921,6 +138979,8 @@ class HostVulRisk(AbstractModel):
         if params.get("VulDetail") is not None:
             self._VulDetail = VulDetailInfo()
             self._VulDetail._deserialize(params.get("VulDetail"))
+        self._FixTaskId = params.get("FixTaskId")
+        self._SupportAutoFix = params.get("SupportAutoFix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -146930,33 +146990,59 @@ class KBUpdateMachineItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KBId: <p>KB补丁ID</p>
+        :param _KBId: KB补丁ID
         :type KBId: int
-        :param _InstanceId: <p>主机实例ID</p>
+        :param _InstanceId: 主机实例ID
         :type InstanceId: str
-        :param _MachineName: <p>主机名称</p>
+        :param _MachineName: 主机名称
         :type MachineName: str
-        :param _MachineIp: <p>主机IP</p>
+        :param _MachineIp: 主机IP
         :type MachineIp: str
-        :param _PublicIp: <p>公网IP</p>
+        :param _PublicIp: 公网IP
         :type PublicIp: str
-        :param _OsName: <p>操作系统名称</p>
+        :param _OsName: 操作系统名称
         :type OsName: str
-        :param _MachineStatus: <p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+        :param _MachineStatus: 主机在线状态
+枚举值：
+ONLINE：在线
+OFFLINE：离线
         :type MachineStatus: str
-        :param _SupportAutoFix: <p>是否支持自动更新补丁<br>枚举值：<br>0：不支持<br>1：支持</p>
+        :param _HostStatus: 主机运行状态
+枚举值：
+RUNNING：运行中
+STOPPED：已停止
+EXPIRED：待回收
+        :type HostStatus: str
+        :param _SupportAutoFix: 是否支持自动更新补丁
+枚举值：
+0：不支持
+1：支持
         :type SupportAutoFix: int
-        :param _FixStatus: <p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+        :param _FixStatus: 当前修复状态
+枚举值：
+0：未修复
+1：修复中
+2：修复失败
+3：修复成功
+4：修复超时
         :type FixStatus: int
-        :param _LatestFixTime: <p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :param _LatestFixTime: 最近一次修复时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
         :type LatestFixTime: str
-        :param _NotFixableReason: <p>不可修复原因，SupportAutoFix为0时返回</p>
+        :param _NotFixableReason: 不可修复原因，SupportAutoFix为0时返回
         :type NotFixableReason: str
-        :param _TagItems: <p>资产标签列表</p>
+        :param _NotFixableAction: 不可修复原因关联动作，SupportAutoFix为0且存在可引导动作时返回
+        :type NotFixableAction: :class:`tencentcloud.csip.v20221121.models.VulFixableMachineAction`
+        :param _TagItems: 资产标签列表
         :type TagItems: list of MiniTagItem
-        :param _AppId: <p>所属账号AppId</p>
+        :param _AppId: 所属账号AppId
         :type AppId: int
-        :param _PayVersion: <p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+        :param _PayVersion: 付费版本信息
+枚举值：
+BASIC：基础版
+PRO：专业版
+ULTIMATE：旗舰版
+PRO_LH：轻量版
         :type PayVersion: str
         """
         self._KBId = None
@@ -146966,17 +147052,19 @@ class KBUpdateMachineItem(AbstractModel):
         self._PublicIp = None
         self._OsName = None
         self._MachineStatus = None
+        self._HostStatus = None
         self._SupportAutoFix = None
         self._FixStatus = None
         self._LatestFixTime = None
         self._NotFixableReason = None
+        self._NotFixableAction = None
         self._TagItems = None
         self._AppId = None
         self._PayVersion = None
 
     @property
     def KBId(self):
-        r"""<p>KB补丁ID</p>
+        r"""KB补丁ID
         :rtype: int
         """
         return self._KBId
@@ -146987,7 +147075,7 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""<p>主机实例ID</p>
+        r"""主机实例ID
         :rtype: str
         """
         return self._InstanceId
@@ -146998,7 +147086,7 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def MachineName(self):
-        r"""<p>主机名称</p>
+        r"""主机名称
         :rtype: str
         """
         return self._MachineName
@@ -147009,7 +147097,7 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def MachineIp(self):
-        r"""<p>主机IP</p>
+        r"""主机IP
         :rtype: str
         """
         return self._MachineIp
@@ -147020,7 +147108,7 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""<p>公网IP</p>
+        r"""公网IP
         :rtype: str
         """
         return self._PublicIp
@@ -147031,7 +147119,7 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def OsName(self):
-        r"""<p>操作系统名称</p>
+        r"""操作系统名称
         :rtype: str
         """
         return self._OsName
@@ -147042,7 +147130,10 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def MachineStatus(self):
-        r"""<p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+        r"""主机在线状态
+枚举值：
+ONLINE：在线
+OFFLINE：离线
         :rtype: str
         """
         return self._MachineStatus
@@ -147052,8 +147143,26 @@ class KBUpdateMachineItem(AbstractModel):
         self._MachineStatus = MachineStatus
 
     @property
+    def HostStatus(self):
+        r"""主机运行状态
+枚举值：
+RUNNING：运行中
+STOPPED：已停止
+EXPIRED：待回收
+        :rtype: str
+        """
+        return self._HostStatus
+
+    @HostStatus.setter
+    def HostStatus(self, HostStatus):
+        self._HostStatus = HostStatus
+
+    @property
     def SupportAutoFix(self):
-        r"""<p>是否支持自动更新补丁<br>枚举值：<br>0：不支持<br>1：支持</p>
+        r"""是否支持自动更新补丁
+枚举值：
+0：不支持
+1：支持
         :rtype: int
         """
         return self._SupportAutoFix
@@ -147064,7 +147173,13 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def FixStatus(self):
-        r"""<p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+        r"""当前修复状态
+枚举值：
+0：未修复
+1：修复中
+2：修复失败
+3：修复成功
+4：修复超时
         :rtype: int
         """
         return self._FixStatus
@@ -147075,7 +147190,8 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def LatestFixTime(self):
-        r"""<p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        r"""最近一次修复时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
         :rtype: str
         """
         return self._LatestFixTime
@@ -147086,7 +147202,7 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def NotFixableReason(self):
-        r"""<p>不可修复原因，SupportAutoFix为0时返回</p>
+        r"""不可修复原因，SupportAutoFix为0时返回
         :rtype: str
         """
         return self._NotFixableReason
@@ -147096,8 +147212,19 @@ class KBUpdateMachineItem(AbstractModel):
         self._NotFixableReason = NotFixableReason
 
     @property
+    def NotFixableAction(self):
+        r"""不可修复原因关联动作，SupportAutoFix为0且存在可引导动作时返回
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VulFixableMachineAction`
+        """
+        return self._NotFixableAction
+
+    @NotFixableAction.setter
+    def NotFixableAction(self, NotFixableAction):
+        self._NotFixableAction = NotFixableAction
+
+    @property
     def TagItems(self):
-        r"""<p>资产标签列表</p>
+        r"""资产标签列表
         :rtype: list of MiniTagItem
         """
         return self._TagItems
@@ -147108,7 +147235,7 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""<p>所属账号AppId</p>
+        r"""所属账号AppId
         :rtype: int
         """
         return self._AppId
@@ -147119,7 +147246,12 @@ class KBUpdateMachineItem(AbstractModel):
 
     @property
     def PayVersion(self):
-        r"""<p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+        r"""付费版本信息
+枚举值：
+BASIC：基础版
+PRO：专业版
+ULTIMATE：旗舰版
+PRO_LH：轻量版
         :rtype: str
         """
         return self._PayVersion
@@ -147137,10 +147269,14 @@ class KBUpdateMachineItem(AbstractModel):
         self._PublicIp = params.get("PublicIp")
         self._OsName = params.get("OsName")
         self._MachineStatus = params.get("MachineStatus")
+        self._HostStatus = params.get("HostStatus")
         self._SupportAutoFix = params.get("SupportAutoFix")
         self._FixStatus = params.get("FixStatus")
         self._LatestFixTime = params.get("LatestFixTime")
         self._NotFixableReason = params.get("NotFixableReason")
+        if params.get("NotFixableAction") is not None:
+            self._NotFixableAction = VulFixableMachineAction()
+            self._NotFixableAction._deserialize(params.get("NotFixableAction"))
         if params.get("TagItems") is not None:
             self._TagItems = []
             for item in params.get("TagItems"):
@@ -192224,10 +192360,13 @@ class VPRExplainDimensionItem(AbstractModel):
         :type Name: str
         :param _Remark: <p>标签描述</p>
         :type Remark: str
+        :param _Level: <p>危害等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+        :type Level: str
         """
         self._Key = None
         self._Name = None
         self._Remark = None
+        self._Level = None
 
     @property
     def Key(self):
@@ -192262,11 +192401,23 @@ class VPRExplainDimensionItem(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def Level(self):
+        r"""<p>危害等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
 
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Name = params.get("Name")
         self._Remark = params.get("Remark")
+        self._Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -195144,6 +195295,12 @@ false：未收录
         :type HarmDescription: str
         :param _AffectVendorProduct: <p>漏洞影响产品</p>
         :type AffectVendorProduct: list of VulVendorProduct
+        :param _VPRExplainInfo: <p>VPR暴露面信息</p>
+        :type VPRExplainInfo: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
+        :param _ScanTaskId: <p>最近扫描任务id(应急漏洞)</p>
+        :type ScanTaskId: int
+        :param _AffectAsset: <p>影响资产数(应急漏洞)</p>
+        :type AffectAsset: int
         """
         self._ID = None
         self._Name = None
@@ -195175,6 +195332,9 @@ false：未收录
         self._RefLink = None
         self._HarmDescription = None
         self._AffectVendorProduct = None
+        self._VPRExplainInfo = None
+        self._ScanTaskId = None
+        self._AffectAsset = None
 
     @property
     def ID(self):
@@ -195534,6 +195694,39 @@ false：未收录
     def AffectVendorProduct(self, AffectVendorProduct):
         self._AffectVendorProduct = AffectVendorProduct
 
+    @property
+    def VPRExplainInfo(self):
+        r"""<p>VPR暴露面信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
+        """
+        return self._VPRExplainInfo
+
+    @VPRExplainInfo.setter
+    def VPRExplainInfo(self, VPRExplainInfo):
+        self._VPRExplainInfo = VPRExplainInfo
+
+    @property
+    def ScanTaskId(self):
+        r"""<p>最近扫描任务id(应急漏洞)</p>
+        :rtype: int
+        """
+        return self._ScanTaskId
+
+    @ScanTaskId.setter
+    def ScanTaskId(self, ScanTaskId):
+        self._ScanTaskId = ScanTaskId
+
+    @property
+    def AffectAsset(self):
+        r"""<p>影响资产数(应急漏洞)</p>
+        :rtype: int
+        """
+        return self._AffectAsset
+
+    @AffectAsset.setter
+    def AffectAsset(self, AffectAsset):
+        self._AffectAsset = AffectAsset
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -195583,6 +195776,11 @@ false：未收录
                 obj = VulVendorProduct()
                 obj._deserialize(item)
                 self._AffectVendorProduct.append(obj)
+        if params.get("VPRExplainInfo") is not None:
+            self._VPRExplainInfo = VPRExplainInfo()
+            self._VPRExplainInfo._deserialize(params.get("VPRExplainInfo"))
+        self._ScanTaskId = params.get("ScanTaskId")
+        self._AffectAsset = params.get("AffectAsset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -195812,7 +196010,7 @@ class VulFixSummaryItem(AbstractModel):
         :type AffectedCount: int
         :param _NeedReboot: <p>修复后是否需要重启系统</p>
         :type NeedReboot: bool
-        :param _FixSwitch: <p>是否支持一键修复true-支持 false-不支持</p>
+        :param _FixSwitch: <p>是否支持一键修复</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
         :type FixSwitch: bool
         """
         self._VulId = None
@@ -195879,7 +196077,7 @@ class VulFixSummaryItem(AbstractModel):
 
     @property
     def FixSwitch(self):
-        r"""<p>是否支持一键修复true-支持 false-不支持</p>
+        r"""<p>是否支持一键修复</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
         :rtype: bool
         """
         return self._FixSwitch
@@ -195937,6 +196135,14 @@ class VulFixTaskDetailItem(AbstractModel):
         :type SnapshotStatus: int
         :param _ExceptionMessage: <p>异常提示信息</p>
         :type ExceptionMessage: str
+        :param _ErrorCode: <p>结构化错误码（如 VF-INS-002、VF-AG-013）</p>
+        :type ErrorCode: str
+        :param _ErrorReason: <p>结构化失败原因</p>
+        :type ErrorReason: str
+        :param _ErrorSolution: <p>结构化解决方案</p>
+        :type ErrorSolution: str
+        :param _RawErrorMessage: <p>原始错误信息（不做翻译）</p>
+        :type RawErrorMessage: str
         :param _StartTime: <p>修复启动时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :type StartTime: str
         :param _EndTime: <p>修复结束时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
@@ -195947,6 +196153,10 @@ class VulFixTaskDetailItem(AbstractModel):
         :type SnapshotExpireTime: str
         :param _SnapshotFailReason: <p>快照创建失败原因（当 SnapshotStatus=3 时有值）</p>
         :type SnapshotFailReason: str
+        :param _MachineType: <p>机器类型</p><p>枚举值：</p><ul><li>CVM： 腾讯云cvm</li><li>Other： 混合云机器</li></ul>
+        :type MachineType: str
+        :param _SnapshotReused: <p>快照是否复用</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type SnapshotReused: bool
         """
         self._Id = None
         self._TaskId = None
@@ -195960,11 +196170,17 @@ class VulFixTaskDetailItem(AbstractModel):
         self._FixStatus = None
         self._SnapshotStatus = None
         self._ExceptionMessage = None
+        self._ErrorCode = None
+        self._ErrorReason = None
+        self._ErrorSolution = None
+        self._RawErrorMessage = None
         self._StartTime = None
         self._EndTime = None
         self._SnapshotCreateTime = None
         self._SnapshotExpireTime = None
         self._SnapshotFailReason = None
+        self._MachineType = None
+        self._SnapshotReused = None
 
     @property
     def Id(self):
@@ -196099,6 +196315,50 @@ class VulFixTaskDetailItem(AbstractModel):
         self._ExceptionMessage = ExceptionMessage
 
     @property
+    def ErrorCode(self):
+        r"""<p>结构化错误码（如 VF-INS-002、VF-AG-013）</p>
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorReason(self):
+        r"""<p>结构化失败原因</p>
+        :rtype: str
+        """
+        return self._ErrorReason
+
+    @ErrorReason.setter
+    def ErrorReason(self, ErrorReason):
+        self._ErrorReason = ErrorReason
+
+    @property
+    def ErrorSolution(self):
+        r"""<p>结构化解决方案</p>
+        :rtype: str
+        """
+        return self._ErrorSolution
+
+    @ErrorSolution.setter
+    def ErrorSolution(self, ErrorSolution):
+        self._ErrorSolution = ErrorSolution
+
+    @property
+    def RawErrorMessage(self):
+        r"""<p>原始错误信息（不做翻译）</p>
+        :rtype: str
+        """
+        return self._RawErrorMessage
+
+    @RawErrorMessage.setter
+    def RawErrorMessage(self, RawErrorMessage):
+        self._RawErrorMessage = RawErrorMessage
+
+    @property
     def StartTime(self):
         r"""<p>修复启动时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :rtype: str
@@ -196153,6 +196413,28 @@ class VulFixTaskDetailItem(AbstractModel):
     def SnapshotFailReason(self, SnapshotFailReason):
         self._SnapshotFailReason = SnapshotFailReason
 
+    @property
+    def MachineType(self):
+        r"""<p>机器类型</p><p>枚举值：</p><ul><li>CVM： 腾讯云cvm</li><li>Other： 混合云机器</li></ul>
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def SnapshotReused(self):
+        r"""<p>快照是否复用</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._SnapshotReused
+
+    @SnapshotReused.setter
+    def SnapshotReused(self, SnapshotReused):
+        self._SnapshotReused = SnapshotReused
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -196167,11 +196449,17 @@ class VulFixTaskDetailItem(AbstractModel):
         self._FixStatus = params.get("FixStatus")
         self._SnapshotStatus = params.get("SnapshotStatus")
         self._ExceptionMessage = params.get("ExceptionMessage")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorReason = params.get("ErrorReason")
+        self._ErrorSolution = params.get("ErrorSolution")
+        self._RawErrorMessage = params.get("RawErrorMessage")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._SnapshotCreateTime = params.get("SnapshotCreateTime")
         self._SnapshotExpireTime = params.get("SnapshotExpireTime")
         self._SnapshotFailReason = params.get("SnapshotFailReason")
+        self._MachineType = params.get("MachineType")
+        self._SnapshotReused = params.get("SnapshotReused")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -196784,6 +197072,63 @@ EMERGENCY：应急漏洞
         
 
 
+class VulFixableMachineAction(AbstractModel):
+    r"""不可修复原因关联动作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionType: 动作类型
+枚举值：
+UPGRADE_PROTECTION：升级防护
+REINSTALL_CLIENT：重新安装客户端
+        :type ActionType: str
+        :param _ActionText: 动作按钮文案
+        :type ActionText: str
+        """
+        self._ActionType = None
+        self._ActionText = None
+
+    @property
+    def ActionType(self):
+        r"""动作类型
+枚举值：
+UPGRADE_PROTECTION：升级防护
+REINSTALL_CLIENT：重新安装客户端
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def ActionText(self):
+        r"""动作按钮文案
+        :rtype: str
+        """
+        return self._ActionText
+
+    @ActionText.setter
+    def ActionText(self, ActionText):
+        self._ActionText = ActionText
+
+
+    def _deserialize(self, params):
+        self._ActionType = params.get("ActionType")
+        self._ActionText = params.get("ActionText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VulFixableMachineItem(AbstractModel):
     r"""可修复主机信息
 
@@ -196807,6 +197152,8 @@ class VulFixableMachineItem(AbstractModel):
         :type OsName: str
         :param _MachineStatus: <p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
         :type MachineStatus: str
+        :param _HostStatus: <p>主机运行状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>STOPPED： 已停止</li><li>EXPIRED： 待回收</li></ul>
+        :type HostStatus: str
         :param _SupportAutoFix: <p>是否支持自动修复<br>枚举值：<br>0：不支持<br>1：支持</p>
         :type SupportAutoFix: int
         :param _FixStatus: <p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
@@ -196815,6 +197162,10 @@ class VulFixableMachineItem(AbstractModel):
         :type LatestFixTime: str
         :param _NotFixableReason: <p>不可修复原因，SupportAutoFix为0时返回</p>
         :type NotFixableReason: str
+        :param _NotFixableReasonCode: <p>不可修复原因码，SupportAutoFix为0时返回<br>枚举值：<br>BASIC_VERSION：基础版主机不支持一键修复<br>HOST_STOPPED：主机已关机<br>CLIENT_OFFLINE：主机防护客户端已离线<br>PATCH_UNAVAILABLE：官方已停止发布该系统版本的安全补丁<br>SOURCE_COMPILED：源码编译安装，不支持一键修复</p>
+        :type NotFixableReasonCode: str
+        :param _NotFixableAction: <p>不可修复原因关联动作，SupportAutoFix为0且存在可引导动作时返回</p>
+        :type NotFixableAction: :class:`tencentcloud.csip.v20221121.models.VulFixableMachineAction`
         :param _FixCommands: <p>修复命令列表，SupportAutoFix为1时返回</p>
         :type FixCommands: list of str
         :param _Components: <p>关联组件列表</p>
@@ -196834,10 +197185,13 @@ class VulFixableMachineItem(AbstractModel):
         self._OsType = None
         self._OsName = None
         self._MachineStatus = None
+        self._HostStatus = None
         self._SupportAutoFix = None
         self._FixStatus = None
         self._LatestFixTime = None
         self._NotFixableReason = None
+        self._NotFixableReasonCode = None
+        self._NotFixableAction = None
         self._FixCommands = None
         self._Components = None
         self._TagItems = None
@@ -196933,6 +197287,17 @@ class VulFixableMachineItem(AbstractModel):
         self._MachineStatus = MachineStatus
 
     @property
+    def HostStatus(self):
+        r"""<p>主机运行状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>STOPPED： 已停止</li><li>EXPIRED： 待回收</li></ul>
+        :rtype: str
+        """
+        return self._HostStatus
+
+    @HostStatus.setter
+    def HostStatus(self, HostStatus):
+        self._HostStatus = HostStatus
+
+    @property
     def SupportAutoFix(self):
         r"""<p>是否支持自动修复<br>枚举值：<br>0：不支持<br>1：支持</p>
         :rtype: int
@@ -196975,6 +197340,28 @@ class VulFixableMachineItem(AbstractModel):
     @NotFixableReason.setter
     def NotFixableReason(self, NotFixableReason):
         self._NotFixableReason = NotFixableReason
+
+    @property
+    def NotFixableReasonCode(self):
+        r"""<p>不可修复原因码，SupportAutoFix为0时返回<br>枚举值：<br>BASIC_VERSION：基础版主机不支持一键修复<br>HOST_STOPPED：主机已关机<br>CLIENT_OFFLINE：主机防护客户端已离线<br>PATCH_UNAVAILABLE：官方已停止发布该系统版本的安全补丁<br>SOURCE_COMPILED：源码编译安装，不支持一键修复</p>
+        :rtype: str
+        """
+        return self._NotFixableReasonCode
+
+    @NotFixableReasonCode.setter
+    def NotFixableReasonCode(self, NotFixableReasonCode):
+        self._NotFixableReasonCode = NotFixableReasonCode
+
+    @property
+    def NotFixableAction(self):
+        r"""<p>不可修复原因关联动作，SupportAutoFix为0且存在可引导动作时返回</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VulFixableMachineAction`
+        """
+        return self._NotFixableAction
+
+    @NotFixableAction.setter
+    def NotFixableAction(self, NotFixableAction):
+        self._NotFixableAction = NotFixableAction
 
     @property
     def FixCommands(self):
@@ -197041,10 +197428,15 @@ class VulFixableMachineItem(AbstractModel):
         self._OsType = params.get("OsType")
         self._OsName = params.get("OsName")
         self._MachineStatus = params.get("MachineStatus")
+        self._HostStatus = params.get("HostStatus")
         self._SupportAutoFix = params.get("SupportAutoFix")
         self._FixStatus = params.get("FixStatus")
         self._LatestFixTime = params.get("LatestFixTime")
         self._NotFixableReason = params.get("NotFixableReason")
+        self._NotFixableReasonCode = params.get("NotFixableReasonCode")
+        if params.get("NotFixableAction") is not None:
+            self._NotFixableAction = VulFixableMachineAction()
+            self._NotFixableAction._deserialize(params.get("NotFixableAction"))
         self._FixCommands = params.get("FixCommands")
         self._Components = params.get("Components")
         if params.get("TagItems") is not None:
@@ -197096,6 +197488,8 @@ class VulFixedItem(AbstractModel):
         :type LatestFixTime: str
         :param _VPRExplainInfo: <p>VPR评级依据</p>
         :type VPRExplainInfo: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
+        :param _RepairMethod: <p>修复方式：AUTO_FIX-一键修复 MANUAL_FIX-手动修复 </p>
+        :type RepairMethod: str
         """
         self._VulId = None
         self._VulName = None
@@ -197109,6 +197503,7 @@ class VulFixedItem(AbstractModel):
         self._Components = None
         self._LatestFixTime = None
         self._VPRExplainInfo = None
+        self._RepairMethod = None
 
     @property
     def VulId(self):
@@ -197242,6 +197637,17 @@ class VulFixedItem(AbstractModel):
     def VPRExplainInfo(self, VPRExplainInfo):
         self._VPRExplainInfo = VPRExplainInfo
 
+    @property
+    def RepairMethod(self):
+        r"""<p>修复方式：AUTO_FIX-一键修复 MANUAL_FIX-手动修复 </p>
+        :rtype: str
+        """
+        return self._RepairMethod
+
+    @RepairMethod.setter
+    def RepairMethod(self, RepairMethod):
+        self._RepairMethod = RepairMethod
+
 
     def _deserialize(self, params):
         self._VulId = params.get("VulId")
@@ -197260,6 +197666,7 @@ class VulFixedItem(AbstractModel):
         if params.get("VPRExplainInfo") is not None:
             self._VPRExplainInfo = VPRExplainInfo()
             self._VPRExplainInfo._deserialize(params.get("VPRExplainInfo"))
+        self._RepairMethod = params.get("RepairMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -197285,13 +197692,13 @@ class VulHostBriefInfo(AbstractModel):
         :type PublicIP: str
         :param _PrivateIP: <p>内网 IP 地址</p>
         :type PrivateIP: str
-        :param _DefendVersion: <p>防护版本<br>枚举值：<br>NONE：无防护<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版<br>PRO_LH：轻量版</p>
+        :param _DefendVersion: <p>防护版本枚举值 BASIC：基础版PRO：专业版ULTIMATE：旗舰版PRO_LH：轻量版</p>
         :type DefendVersion: str
         :param _DefendStatus: <p>漏洞防御状态<br>枚举值：<br>ENABLED：已开启<br>NOT_SUPPORTED：不支持<br>NOT_ENABLED：未开启</p>
         :type DefendStatus: str
         :param _Account: <p>所属账号信息</p>
         :type Account: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
-        :param _InstanceStatus: <p>云主机实例状态<br>枚举值：<br>RUNNING：运行中<br>STOPPED：已停止<br>UNKNOWN：未知</p>
+        :param _InstanceStatus: <p>云主机实例状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>STOPPED： 已停止</li><li>EXPIRED： 待回收</li></ul>
         :type InstanceStatus: str
         :param _RiskStatus: <p>修复状态枚举值</p><p>枚举值：</p><ul><li>PENDING： 待修复</li><li>SCANNING： 扫描中</li><li>FIXED： 已修复</li><li>IGNORED： 已忽略</li><li>FIXING： 修复中</li><li>FIX_FAILED： 修复失败</li><li>NEED_REBOOT： 修复待重启</li></ul>
         :type RiskStatus: str
@@ -197303,6 +197710,8 @@ class VulHostBriefInfo(AbstractModel):
         :type TagItem: list of MiniTagItem
         :param _CloudTag: <p>云上标签列表（云资产侧 Tag）</p>
         :type CloudTag: list of Tag
+        :param _VPRExplainInfo: <p>VPR评级解释卡片</p>
+        :type VPRExplainInfo: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
         """
         self._InstanceID = None
         self._Name = None
@@ -197317,6 +197726,7 @@ class VulHostBriefInfo(AbstractModel):
         self._AgentStatus = None
         self._TagItem = None
         self._CloudTag = None
+        self._VPRExplainInfo = None
 
     @property
     def InstanceID(self):
@@ -197364,7 +197774,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def DefendVersion(self):
-        r"""<p>防护版本<br>枚举值：<br>NONE：无防护<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版<br>PRO_LH：轻量版</p>
+        r"""<p>防护版本枚举值 BASIC：基础版PRO：专业版ULTIMATE：旗舰版PRO_LH：轻量版</p>
         :rtype: str
         """
         return self._DefendVersion
@@ -197397,7 +197807,7 @@ class VulHostBriefInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""<p>云主机实例状态<br>枚举值：<br>RUNNING：运行中<br>STOPPED：已停止<br>UNKNOWN：未知</p>
+        r"""<p>云主机实例状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>STOPPED： 已停止</li><li>EXPIRED： 待回收</li></ul>
         :rtype: str
         """
         return self._InstanceStatus
@@ -197461,6 +197871,17 @@ class VulHostBriefInfo(AbstractModel):
     def CloudTag(self, CloudTag):
         self._CloudTag = CloudTag
 
+    @property
+    def VPRExplainInfo(self):
+        r"""<p>VPR评级解释卡片</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
+        """
+        return self._VPRExplainInfo
+
+    @VPRExplainInfo.setter
+    def VPRExplainInfo(self, VPRExplainInfo):
+        self._VPRExplainInfo = VPRExplainInfo
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -197490,6 +197911,9 @@ class VulHostBriefInfo(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._CloudTag.append(obj)
+        if params.get("VPRExplainInfo") is not None:
+            self._VPRExplainInfo = VPRExplainInfo()
+            self._VPRExplainInfo._deserialize(params.get("VPRExplainInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

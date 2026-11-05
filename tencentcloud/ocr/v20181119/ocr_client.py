@@ -1353,6 +1353,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryEnterpriseBasicInfo(self, request):
+        r"""本接口用于查询企业基本信息。输入企业名称或统一社会信用代码，返回企业名称、统一社会信用代码、法定代表人、登记机关、经营期限、经营状态、经营范围、注册地址、主体类型、成立日期、核准日期、行政区划等企业登记信息。部分出参可能无法查得，具体以实际查询结果为准。
+
+        :param request: Request instance for QueryEnterpriseBasicInfo.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.QueryEnterpriseBasicInfoRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.QueryEnterpriseBasicInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryEnterpriseBasicInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryEnterpriseBasicInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QuestionOCR(self, request):
         r"""题目识别是教育的基础OCR识别能力。可支持扫描、拍照场景的单题题目识别。接口支持印刷体文本、手写体文本及公式的OCR识别和坐标返回，此外，接口还可对题目中的配图位置进行检测并返回坐标位置。适用于智能批改等场景的题目内容识别作为检索输入。
 

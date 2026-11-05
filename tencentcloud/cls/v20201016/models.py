@@ -10008,7 +10008,7 @@ class CreateConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>采集配置名称</p><ul><li>名称种不得包含特殊字符｜</li><li>名称最长255字符，超过截断</li></ul>
+        :param _Name: <p>采集配置名称- 名称中不得包含特殊字符&quot;|&quot;</p><p>名称最长255字符，超过截断</p>
         :type Name: str
         :param _Output: <p>采集配置所属日志主题ID即TopicId</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type Output: str
@@ -10039,7 +10039,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>采集配置名称</p><ul><li>名称种不得包含特殊字符｜</li><li>名称最长255字符，超过截断</li></ul>
+        r"""<p>采集配置名称- 名称中不得包含特殊字符&quot;|&quot;</p><p>名称最长255字符，超过截断</p>
         :rtype: str
         """
         return self._Name
@@ -46854,11 +46854,11 @@ class ModifyLogsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetId: 日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
+        :param _LogsetId: <p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
         :type LogsetId: str
-        :param _LogsetName: 日志集名字。- 最大支持255个字符。不支持`|`字符。
+        :param _LogsetName: <p>日志集名字。- 最大支持255个字符。不支持&quot;|&quot;字符。</p>
         :type LogsetName: str
-        :param _Tags: 日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
+        :param _Tags: <p>日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。</p>
         :type Tags: list of Tag
         """
         self._LogsetId = None
@@ -46867,7 +46867,7 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""日志集Id。通过 [获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
+        r"""<p>日志集Id。通过 <a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</p>
         :rtype: str
         """
         return self._LogsetId
@@ -46878,7 +46878,7 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def LogsetName(self):
-        r"""日志集名字。- 最大支持255个字符。不支持`|`字符。
+        r"""<p>日志集名字。- 最大支持255个字符。不支持&quot;|&quot;字符。</p>
         :rtype: str
         """
         return self._LogsetName
@@ -46889,7 +46889,7 @@ class ModifyLogsetRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。
+        r"""<p>日志集的绑定的标签键值对。最大支持10个标签键值对，同一个资源只能同时绑定一个标签键。</p>
         :rtype: list of Tag
         """
         return self._Tags

@@ -13276,6 +13276,8 @@ class Instance(AbstractModel):
         :type CpuTopology: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
         :param _PartitionNumber: <p>分区置放群组的分区号，具体取决于所选置放群组的分区数量(功能灰度中)</p>
         :type PartitionNumber: int
+        :param _SuperNodeId: <p>逻辑超节点标识</p>
+        :type SuperNodeId: str
         """
         self._Placement = None
         self._InstanceId = None
@@ -13325,6 +13327,7 @@ class Instance(AbstractModel):
         self._PublicIPv6Addresses = None
         self._CpuTopology = None
         self._PartitionNumber = None
+        self._SuperNodeId = None
 
     @property
     def Placement(self):
@@ -13866,6 +13869,17 @@ class Instance(AbstractModel):
     def PartitionNumber(self, PartitionNumber):
         self._PartitionNumber = PartitionNumber
 
+    @property
+    def SuperNodeId(self):
+        r"""<p>逻辑超节点标识</p>
+        :rtype: str
+        """
+        return self._SuperNodeId
+
+    @SuperNodeId.setter
+    def SuperNodeId(self, SuperNodeId):
+        self._SuperNodeId = SuperNodeId
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -13942,6 +13956,7 @@ class Instance(AbstractModel):
             self._CpuTopology = CpuTopology()
             self._CpuTopology._deserialize(params.get("CpuTopology"))
         self._PartitionNumber = params.get("PartitionNumber")
+        self._SuperNodeId = params.get("SuperNodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

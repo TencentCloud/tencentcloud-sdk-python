@@ -5774,7 +5774,7 @@ class VodClient(AbstractClient):
 
 
     def TextToSpeechAsync(self, request):
-        r"""发起语音合成任务，将文本合成为语音，面向长文本场景（最大 200000 字符），支持指定音色及语速、音量、音调、采样率、输出格式等合成参数。语音合成为异步任务，完成后产出音频结果。
+        r"""发起语音合成任务，将文本合成为语音，面向长文本场景（最大 200000 字符），支持指定音色及语速、音量、音调、采样率、输出格式等合成参数。语音合成为异步任务，完成后产出音频结果，可通过 DescribeTaskDetail 查询。
 
         :param request: Request instance for TextToSpeechAsync.
         :type request: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncRequest`

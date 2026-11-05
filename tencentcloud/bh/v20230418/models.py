@@ -5301,29 +5301,35 @@ class CreateResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRegion: 部署region
+        :param _DeployRegion: <p>部署region</p>
         :type DeployRegion: str
-        :param _VpcId: 部署堡垒机的VpcId
+        :param _VpcId: <p>部署堡垒机的VpcId</p>
         :type VpcId: str
-        :param _SubnetId: 部署堡垒机的SubnetId
+        :param _SubnetId: <p>部署堡垒机的SubnetId</p>
         :type SubnetId: str
-        :param _ResourceEdition: 资源类型。取值:standard/pro
+        :param _ResourceEdition: <p>资源类型。取值:standard/pro</p>
         :type ResourceEdition: str
-        :param _ResourceNode: 资源节点数
+        :param _ResourceNode: <p>资源节点数</p>
         :type ResourceNode: int
-        :param _TimeUnit: 计费周期
+        :param _TimeUnit: <p>计费周期</p>
         :type TimeUnit: str
-        :param _TimeSpan: 计费时长
+        :param _TimeSpan: <p>计费时长</p>
         :type TimeSpan: int
-        :param _PayMode: 计费模式 1预付费
+        :param _PayMode: <p>计费模式 1预付费</p>
         :type PayMode: int
-        :param _AutoRenewFlag: 自动续费
+        :param _AutoRenewFlag: <p>自动续费</p>
         :type AutoRenewFlag: int
-        :param _DeployZone: 部署zone
+        :param _IOAResource: <p>零信任堡垒机功能包</p><p>枚举值：</p><ul><li>0： 不开通</li><li>1： 付费版（含 20 用户 / 10Mbps 带宽）</li></ul>
+        :type IOAResource: int
+        :param _PackageIOAUserCount: <p>零信任用户扩展包，1 个 = 20 用户</p><p>取值范围：[0, 999]</p>
+        :type PackageIOAUserCount: int
+        :param _PackageIOABandwidth: <p>零信任带宽扩展包，1 个 = 4Mbps</p><p>取值范围：[0, 509]</p>
+        :type PackageIOABandwidth: int
+        :param _DeployZone: <p>部署zone</p>
         :type DeployZone: str
-        :param _Trial: 0非试用版，1试用版
+        :param _Trial: <p>0非试用版，1试用版</p>
         :type Trial: int
-        :param _ShareClb: 是否共享clb，0：不共享，1：共享
+        :param _ShareClb: <p>是否共享clb</p><p>枚举值：</p><ul><li>0： 不共享</li><li>1： 共享</li></ul><p>默认值：0</p><p>公有云传0</p>
         :type ShareClb: int
         """
         self._DeployRegion = None
@@ -5335,13 +5341,16 @@ class CreateResourceRequest(AbstractModel):
         self._TimeSpan = None
         self._PayMode = None
         self._AutoRenewFlag = None
+        self._IOAResource = None
+        self._PackageIOAUserCount = None
+        self._PackageIOABandwidth = None
         self._DeployZone = None
         self._Trial = None
         self._ShareClb = None
 
     @property
     def DeployRegion(self):
-        r"""部署region
+        r"""<p>部署region</p>
         :rtype: str
         """
         return self._DeployRegion
@@ -5352,7 +5361,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""部署堡垒机的VpcId
+        r"""<p>部署堡垒机的VpcId</p>
         :rtype: str
         """
         return self._VpcId
@@ -5363,7 +5372,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""部署堡垒机的SubnetId
+        r"""<p>部署堡垒机的SubnetId</p>
         :rtype: str
         """
         return self._SubnetId
@@ -5374,7 +5383,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def ResourceEdition(self):
-        r"""资源类型。取值:standard/pro
+        r"""<p>资源类型。取值:standard/pro</p>
         :rtype: str
         """
         return self._ResourceEdition
@@ -5385,7 +5394,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def ResourceNode(self):
-        r"""资源节点数
+        r"""<p>资源节点数</p>
         :rtype: int
         """
         return self._ResourceNode
@@ -5396,7 +5405,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""计费周期
+        r"""<p>计费周期</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -5407,7 +5416,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""计费时长
+        r"""<p>计费时长</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -5418,7 +5427,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式 1预付费
+        r"""<p>计费模式 1预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -5429,7 +5438,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费
+        r"""<p>自动续费</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -5439,8 +5448,41 @@ class CreateResourceRequest(AbstractModel):
         self._AutoRenewFlag = AutoRenewFlag
 
     @property
+    def IOAResource(self):
+        r"""<p>零信任堡垒机功能包</p><p>枚举值：</p><ul><li>0： 不开通</li><li>1： 付费版（含 20 用户 / 10Mbps 带宽）</li></ul>
+        :rtype: int
+        """
+        return self._IOAResource
+
+    @IOAResource.setter
+    def IOAResource(self, IOAResource):
+        self._IOAResource = IOAResource
+
+    @property
+    def PackageIOAUserCount(self):
+        r"""<p>零信任用户扩展包，1 个 = 20 用户</p><p>取值范围：[0, 999]</p>
+        :rtype: int
+        """
+        return self._PackageIOAUserCount
+
+    @PackageIOAUserCount.setter
+    def PackageIOAUserCount(self, PackageIOAUserCount):
+        self._PackageIOAUserCount = PackageIOAUserCount
+
+    @property
+    def PackageIOABandwidth(self):
+        r"""<p>零信任带宽扩展包，1 个 = 4Mbps</p><p>取值范围：[0, 509]</p>
+        :rtype: int
+        """
+        return self._PackageIOABandwidth
+
+    @PackageIOABandwidth.setter
+    def PackageIOABandwidth(self, PackageIOABandwidth):
+        self._PackageIOABandwidth = PackageIOABandwidth
+
+    @property
     def DeployZone(self):
-        r"""部署zone
+        r"""<p>部署zone</p>
         :rtype: str
         """
         return self._DeployZone
@@ -5451,7 +5493,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def Trial(self):
-        r"""0非试用版，1试用版
+        r"""<p>0非试用版，1试用版</p>
         :rtype: int
         """
         return self._Trial
@@ -5462,7 +5504,7 @@ class CreateResourceRequest(AbstractModel):
 
     @property
     def ShareClb(self):
-        r"""是否共享clb，0：不共享，1：共享
+        r"""<p>是否共享clb</p><p>枚举值：</p><ul><li>0： 不共享</li><li>1： 共享</li></ul><p>默认值：0</p><p>公有云传0</p>
         :rtype: int
         """
         return self._ShareClb
@@ -5482,6 +5524,9 @@ class CreateResourceRequest(AbstractModel):
         self._TimeSpan = params.get("TimeSpan")
         self._PayMode = params.get("PayMode")
         self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._IOAResource = params.get("IOAResource")
+        self._PackageIOAUserCount = params.get("PackageIOAUserCount")
+        self._PackageIOABandwidth = params.get("PackageIOABandwidth")
         self._DeployZone = params.get("DeployZone")
         self._Trial = params.get("Trial")
         self._ShareClb = params.get("ShareClb")
@@ -5502,7 +5547,7 @@ class CreateResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 实例Id
+        :param _ResourceId: <p>实例Id</p>
         :type ResourceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5512,7 +5557,7 @@ class CreateResourceResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -17269,22 +17314,28 @@ class ModifyResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 需要开通服务的资源ID
+        :param _ResourceId: <p>需要开通服务的资源ID</p>
         :type ResourceId: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _ResourceEdition: 实例版本
+        :param _ResourceEdition: <p>实例版本</p>
         :type ResourceEdition: str
-        :param _ResourceNode: 资源节点数
+        :param _ResourceNode: <p>资源节点数</p>
         :type ResourceNode: int
-        :param _AutoRenewFlag: 自动续费
+        :param _AutoRenewFlag: <p>自动续费</p>
         :type AutoRenewFlag: int
-        :param _PackageBandwidth: 带宽扩展包个数(4M)
+        :param _PackageBandwidth: <p>带宽扩展包个数(4M)</p>
         :type PackageBandwidth: int
-        :param _PackageNode: 授权点数扩展包个数(50点)
+        :param _PackageNode: <p>授权点数扩展包个数(50点)</p>
         :type PackageNode: int
-        :param _LogDelivery: 日志投递
+        :param _LogDelivery: <p>日志投递</p>
         :type LogDelivery: int
+        :param _IOAResource: <p>零信任堡垒机功能包</p><p>枚举值：</p><ul><li>0： 不开通</li><li>1： 付费版（含 20 用户 / 10Mbps 带宽）</li></ul><p>默认值：0</p>
+        :type IOAResource: int
+        :param _PackageIOAUserCount: <p>零信任用户扩展包，1 个 = 20 用户</p><p>取值范围：[0, 999]</p>
+        :type PackageIOAUserCount: int
+        :param _PackageIOABandwidth: <p>零信任带宽扩展包，1 个 = 4Mbps</p><p>取值范围：[0, 509]</p>
+        :type PackageIOABandwidth: int
         """
         self._ResourceId = None
         self._Status = None
@@ -17294,10 +17345,13 @@ class ModifyResourceRequest(AbstractModel):
         self._PackageBandwidth = None
         self._PackageNode = None
         self._LogDelivery = None
+        self._IOAResource = None
+        self._PackageIOAUserCount = None
+        self._PackageIOABandwidth = None
 
     @property
     def ResourceId(self):
-        r"""需要开通服务的资源ID
+        r"""<p>需要开通服务的资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -17310,7 +17364,7 @@ class ModifyResourceRequest(AbstractModel):
     def Status(self):
         warnings.warn("parameter `Status` is deprecated", DeprecationWarning) 
 
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -17323,7 +17377,7 @@ class ModifyResourceRequest(AbstractModel):
 
     @property
     def ResourceEdition(self):
-        r"""实例版本
+        r"""<p>实例版本</p>
         :rtype: str
         """
         return self._ResourceEdition
@@ -17334,7 +17388,7 @@ class ModifyResourceRequest(AbstractModel):
 
     @property
     def ResourceNode(self):
-        r"""资源节点数
+        r"""<p>资源节点数</p>
         :rtype: int
         """
         return self._ResourceNode
@@ -17345,7 +17399,7 @@ class ModifyResourceRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费
+        r"""<p>自动续费</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -17356,7 +17410,7 @@ class ModifyResourceRequest(AbstractModel):
 
     @property
     def PackageBandwidth(self):
-        r"""带宽扩展包个数(4M)
+        r"""<p>带宽扩展包个数(4M)</p>
         :rtype: int
         """
         return self._PackageBandwidth
@@ -17367,7 +17421,7 @@ class ModifyResourceRequest(AbstractModel):
 
     @property
     def PackageNode(self):
-        r"""授权点数扩展包个数(50点)
+        r"""<p>授权点数扩展包个数(50点)</p>
         :rtype: int
         """
         return self._PackageNode
@@ -17378,7 +17432,7 @@ class ModifyResourceRequest(AbstractModel):
 
     @property
     def LogDelivery(self):
-        r"""日志投递
+        r"""<p>日志投递</p>
         :rtype: int
         """
         return self._LogDelivery
@@ -17386,6 +17440,39 @@ class ModifyResourceRequest(AbstractModel):
     @LogDelivery.setter
     def LogDelivery(self, LogDelivery):
         self._LogDelivery = LogDelivery
+
+    @property
+    def IOAResource(self):
+        r"""<p>零信任堡垒机功能包</p><p>枚举值：</p><ul><li>0： 不开通</li><li>1： 付费版（含 20 用户 / 10Mbps 带宽）</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._IOAResource
+
+    @IOAResource.setter
+    def IOAResource(self, IOAResource):
+        self._IOAResource = IOAResource
+
+    @property
+    def PackageIOAUserCount(self):
+        r"""<p>零信任用户扩展包，1 个 = 20 用户</p><p>取值范围：[0, 999]</p>
+        :rtype: int
+        """
+        return self._PackageIOAUserCount
+
+    @PackageIOAUserCount.setter
+    def PackageIOAUserCount(self, PackageIOAUserCount):
+        self._PackageIOAUserCount = PackageIOAUserCount
+
+    @property
+    def PackageIOABandwidth(self):
+        r"""<p>零信任带宽扩展包，1 个 = 4Mbps</p><p>取值范围：[0, 509]</p>
+        :rtype: int
+        """
+        return self._PackageIOABandwidth
+
+    @PackageIOABandwidth.setter
+    def PackageIOABandwidth(self, PackageIOABandwidth):
+        self._PackageIOABandwidth = PackageIOABandwidth
 
 
     def _deserialize(self, params):
@@ -17397,6 +17484,9 @@ class ModifyResourceRequest(AbstractModel):
         self._PackageBandwidth = params.get("PackageBandwidth")
         self._PackageNode = params.get("PackageNode")
         self._LogDelivery = params.get("LogDelivery")
+        self._IOAResource = params.get("IOAResource")
+        self._PackageIOAUserCount = params.get("PackageIOAUserCount")
+        self._PackageIOABandwidth = params.get("PackageIOABandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
