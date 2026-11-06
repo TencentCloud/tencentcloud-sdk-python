@@ -1501,6 +1501,150 @@ class AudioSegments(AbstractModel):
         
 
 
+class BatchDeleteTRTCVoicePrintRequest(AbstractModel):
+    r"""BatchDeleteTRTCVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintIds: 待批量删除的声纹 ID 列表，最多 50 个；请求内自动去重；按 (AppId, SdkAppId, VoicePrintId) 做数据隔离
+        :type VoicePrintIds: list of str
+        :param _SdkAppId: SdkappId
+        :type SdkAppId: str
+        """
+        self._VoicePrintIds = None
+        self._SdkAppId = None
+
+    @property
+    def VoicePrintIds(self):
+        r"""待批量删除的声纹 ID 列表，最多 50 个；请求内自动去重；按 (AppId, SdkAppId, VoicePrintId) 做数据隔离
+        :rtype: list of str
+        """
+        return self._VoicePrintIds
+
+    @VoicePrintIds.setter
+    def VoicePrintIds(self, VoicePrintIds):
+        self._VoicePrintIds = VoicePrintIds
+
+    @property
+    def SdkAppId(self):
+        r"""SdkappId
+        :rtype: str
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._VoicePrintIds = params.get("VoicePrintIds")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchDeleteTRTCVoicePrintResponse(AbstractModel):
+    r"""BatchDeleteTRTCVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuccessCount: 成功删除的声纹数量（按数据库实际删除行数统计）
+        :type SuccessCount: int
+        :param _FailCount: 失败的声纹数量（通常是因为声纹不存在）
+        :type FailCount: int
+        :param _Results: 每个 VoicePrintId 的处理结果列表，元素为 VoicePrintBatchDeleteResult结构：{ VoiceprintId:string, ErrorCode:string, ErrorMessage:string }，成功项仅返回 VoiceprintId，失败项带 ErrorCode/ErrorMessage。
+        :type Results: list of VoicePrintBatchDeleteResult
+        :param _Message: 结果描述，成功时为 batch delete completed: X succeeded, Y failed
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SuccessCount = None
+        self._FailCount = None
+        self._Results = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        r"""成功删除的声纹数量（按数据库实际删除行数统计）
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        r"""失败的声纹数量（通常是因为声纹不存在）
+        :rtype: int
+        """
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def Results(self):
+        r"""每个 VoicePrintId 的处理结果列表，元素为 VoicePrintBatchDeleteResult结构：{ VoiceprintId:string, ErrorCode:string, ErrorMessage:string }，成功项仅返回 VoiceprintId，失败项带 ErrorCode/ErrorMessage。
+        :rtype: list of VoicePrintBatchDeleteResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def Message(self):
+        r"""结果描述，成功时为 batch delete completed: X succeeded, Y failed
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = VoicePrintBatchDeleteResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class CloudModerationStorage(AbstractModel):
     r"""腾讯云对象存储COS以及第三方云存储的账号信息
 
@@ -2050,6 +2194,149 @@ class ControlAIConversationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ControlVoiceConversationRequest(AbstractModel):
+    r"""ControlVoiceConversation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :type SdkAppId: int
+        :param _TaskId: <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+        :type TaskId: str
+        :param _Command: <p>控制指令。</p><p>枚举值：</p><ul><li>&quot;Interrupt&quot;： 强制打断</li><li>&quot;invokellm&quot;： 文本注入 LLM：向当前对话上下文注入一段文本，触发一轮 LLM 回复。<code>S2S</code>模式不支持该指令</li><li>invoketts： 文本注入TTS：向当前TTS注入文本，触发TTS播报。<code>S2S</code>模式不支持该指令</li></ul>
+        :type Command: str
+        :param _InvokeLLM: <p>注入LLM的配置，<code>Command=invokellm</code> 时必填</p>
+        :type InvokeLLM: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationInvokeLLM`
+        :param _InvokeTTS: <p>注入TTS的配置，<code>Command=invoketts</code> 时必填</p>
+        :type InvokeTTS: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationInvokeTTS`
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._Command = None
+        self._InvokeLLM = None
+        self._InvokeTTS = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""<p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Command(self):
+        r"""<p>控制指令。</p><p>枚举值：</p><ul><li>&quot;Interrupt&quot;： 强制打断</li><li>&quot;invokellm&quot;： 文本注入 LLM：向当前对话上下文注入一段文本，触发一轮 LLM 回复。<code>S2S</code>模式不支持该指令</li><li>invoketts： 文本注入TTS：向当前TTS注入文本，触发TTS播报。<code>S2S</code>模式不支持该指令</li></ul>
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def InvokeLLM(self):
+        r"""<p>注入LLM的配置，<code>Command=invokellm</code> 时必填</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationInvokeLLM`
+        """
+        return self._InvokeLLM
+
+    @InvokeLLM.setter
+    def InvokeLLM(self, InvokeLLM):
+        self._InvokeLLM = InvokeLLM
+
+    @property
+    def InvokeTTS(self):
+        r"""<p>注入TTS的配置，<code>Command=invoketts</code> 时必填</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationInvokeTTS`
+        """
+        return self._InvokeTTS
+
+    @InvokeTTS.setter
+    def InvokeTTS(self, InvokeTTS):
+        self._InvokeTTS = InvokeTTS
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._Command = params.get("Command")
+        if params.get("InvokeLLM") is not None:
+            self._InvokeLLM = VoiceConversationInvokeLLM()
+            self._InvokeLLM._deserialize(params.get("InvokeLLM"))
+        if params.get("InvokeTTS") is not None:
+            self._InvokeTTS = VoiceConversationInvokeTTS()
+            self._InvokeTTS._deserialize(params.get("InvokeTTS"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ControlVoiceConversationResponse(AbstractModel):
+    r"""ControlVoiceConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>对话任务的唯一Id。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>对话任务的唯一Id。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAudioModerationSyncRequest(AbstractModel):
     r"""CreateAudioModerationSync请求参数结构体
 
@@ -2412,6 +2699,8 @@ class CreateCloudModerationRequest(AbstractModel):
         :type RoomIdType: int
         :param _ResourceExpiredHour: <p>任务ID可以调用的时效性，从成功开启任务并获得TaskID后开始计算，超时后无法调用查询、更新和停止等接口，但是切片任务不会停止。 参数的单位是小时，默认24小时（1天），最大可设置72小时（3天），最小设置6小时。举例说明：如果不设置该参数，那么开始切片成功后，查询、更新和停止切片的调用时效为24个小时。</p>
         :type ResourceExpiredHour: int
+        :param _Extra: <p>客户自定义扩展字段，服务端完全不解析，只做透传，在事件回调中原样返回</p><p>入参限制：总字符数≤4KB</p>
+        :type Extra: str
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -2421,6 +2710,7 @@ class CreateCloudModerationRequest(AbstractModel):
         self._ModerationStorageParams = None
         self._RoomIdType = None
         self._ResourceExpiredHour = None
+        self._Extra = None
 
     @property
     def SdkAppId(self):
@@ -2510,6 +2800,17 @@ class CreateCloudModerationRequest(AbstractModel):
     def ResourceExpiredHour(self, ResourceExpiredHour):
         self._ResourceExpiredHour = ResourceExpiredHour
 
+    @property
+    def Extra(self):
+        r"""<p>客户自定义扩展字段，服务端完全不解析，只做透传，在事件回调中原样返回</p><p>入参限制：总字符数≤4KB</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -2524,6 +2825,7 @@ class CreateCloudModerationRequest(AbstractModel):
             self._ModerationStorageParams._deserialize(params.get("ModerationStorageParams"))
         self._RoomIdType = params.get("RoomIdType")
         self._ResourceExpiredHour = params.get("ResourceExpiredHour")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3699,6 +4001,249 @@ class CreateRecognizeVocabV3Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVoiceConversationRequest(AbstractModel):
+    r"""CreateVoiceConversation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，对话的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。</p>
+        :type RoomId: str
+        :param _RoomIdType: <p>房间信息RoomType，必须和对话的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p><p>枚举值：</p><ul><li>0： 数字房间号</li><li>1： 字符串房间号</li></ul><p>默认值：0</p>
+        :type RoomIdType: int
+        :param _AgentConfig: <p>对话机器人相关配置。</p>
+        :type AgentConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationConfig`
+        :param _ConversationMode: <p>对话链路模式：<code>Cascade</code>（默认，三段式）/ <code>S2S</code>（端到端语音大模型）。</p><p>枚举值：</p><ul><li>Cascade： 默认，三段式</li><li>S2S： 端到端语音大模型</li></ul><p>默认值：Cascade</p>
+        :type ConversationMode: str
+        :param _S2SConfig: <p>端到端语音大模型配置。<strong>仅 <code>S2S</code> 模式必填</strong>；<code>Cascade</code> 模式忽略。</p>
+        :type S2SConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationS2SConfig`
+        :param _STTConfig: <p>语音识别配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+        :type STTConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationSTTConfig`
+        :param _LLMConfig: <p>大模型配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+        :type LLMConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationLLMConfig`
+        :param _TTSConfig: <p>语音合成配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+        :type TTSConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationTTSConfig`
+        :param _DialogConfig: <p>对话控制配置，<code>S2S</code> 模式不支持填写该参数。</p>
+        :type DialogConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationDialogConfig`
+        :param _VisionConfig: <p>视觉理解配置，<code>S2S</code> 模式不支持填写该参数。</p>
+        :type VisionConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationVisionConfig`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._RoomIdType = None
+        self._AgentConfig = None
+        self._ConversationMode = None
+        self._S2SConfig = None
+        self._STTConfig = None
+        self._LLMConfig = None
+        self._TTSConfig = None
+        self._DialogConfig = None
+        self._VisionConfig = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#roomid">RoomId</a>，对话的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。</p>
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RoomIdType(self):
+        r"""<p>房间信息RoomType，必须和对话的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p><p>枚举值：</p><ul><li>0： 数字房间号</li><li>1： 字符串房间号</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def AgentConfig(self):
+        r"""<p>对话机器人相关配置。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationConfig`
+        """
+        return self._AgentConfig
+
+    @AgentConfig.setter
+    def AgentConfig(self, AgentConfig):
+        self._AgentConfig = AgentConfig
+
+    @property
+    def ConversationMode(self):
+        r"""<p>对话链路模式：<code>Cascade</code>（默认，三段式）/ <code>S2S</code>（端到端语音大模型）。</p><p>枚举值：</p><ul><li>Cascade： 默认，三段式</li><li>S2S： 端到端语音大模型</li></ul><p>默认值：Cascade</p>
+        :rtype: str
+        """
+        return self._ConversationMode
+
+    @ConversationMode.setter
+    def ConversationMode(self, ConversationMode):
+        self._ConversationMode = ConversationMode
+
+    @property
+    def S2SConfig(self):
+        r"""<p>端到端语音大模型配置。<strong>仅 <code>S2S</code> 模式必填</strong>；<code>Cascade</code> 模式忽略。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationS2SConfig`
+        """
+        return self._S2SConfig
+
+    @S2SConfig.setter
+    def S2SConfig(self, S2SConfig):
+        self._S2SConfig = S2SConfig
+
+    @property
+    def STTConfig(self):
+        r"""<p>语音识别配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationSTTConfig`
+        """
+        return self._STTConfig
+
+    @STTConfig.setter
+    def STTConfig(self, STTConfig):
+        self._STTConfig = STTConfig
+
+    @property
+    def LLMConfig(self):
+        r"""<p>大模型配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationLLMConfig`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def TTSConfig(self):
+        r"""<p>语音合成配置。<strong>仅 <code>Cascade</code> 模式必填</strong>；<code>S2S</code> 模式忽略。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationTTSConfig`
+        """
+        return self._TTSConfig
+
+    @TTSConfig.setter
+    def TTSConfig(self, TTSConfig):
+        self._TTSConfig = TTSConfig
+
+    @property
+    def DialogConfig(self):
+        r"""<p>对话控制配置，<code>S2S</code> 模式不支持填写该参数。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationDialogConfig`
+        """
+        return self._DialogConfig
+
+    @DialogConfig.setter
+    def DialogConfig(self, DialogConfig):
+        self._DialogConfig = DialogConfig
+
+    @property
+    def VisionConfig(self):
+        r"""<p>视觉理解配置，<code>S2S</code> 模式不支持填写该参数。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationVisionConfig`
+        """
+        return self._VisionConfig
+
+    @VisionConfig.setter
+    def VisionConfig(self, VisionConfig):
+        self._VisionConfig = VisionConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("AgentConfig") is not None:
+            self._AgentConfig = VoiceConversationConfig()
+            self._AgentConfig._deserialize(params.get("AgentConfig"))
+        self._ConversationMode = params.get("ConversationMode")
+        if params.get("S2SConfig") is not None:
+            self._S2SConfig = VoiceConversationS2SConfig()
+            self._S2SConfig._deserialize(params.get("S2SConfig"))
+        if params.get("STTConfig") is not None:
+            self._STTConfig = VoiceConversationSTTConfig()
+            self._STTConfig._deserialize(params.get("STTConfig"))
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = VoiceConversationLLMConfig()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("TTSConfig") is not None:
+            self._TTSConfig = VoiceConversationTTSConfig()
+            self._TTSConfig._deserialize(params.get("TTSConfig"))
+        if params.get("DialogConfig") is not None:
+            self._DialogConfig = VoiceConversationDialogConfig()
+            self._DialogConfig._deserialize(params.get("DialogConfig"))
+        if params.get("VisionConfig") is not None:
+            self._VisionConfig = VoiceConversationVisionConfig()
+            self._VisionConfig._deserialize(params.get("VisionConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVoiceConversationResponse(AbstractModel):
+    r"""CreateVoiceConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>用于唯一标识对话任务，由腾讯云服务端生成，后续查询、控制等请求都需要携带TaskID参数。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>用于唯一标识对话任务，由腾讯云服务端生成，后续查询、控制等请求都需要携带TaskID参数。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudModerationRequest(AbstractModel):
     r"""DeleteCloudModeration请求参数结构体
 
@@ -4324,6 +4869,209 @@ class DeleteRecognizeVocabV3Response(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTRTCVoicePrintRequest(AbstractModel):
+    r"""DeleteTRTCVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 待删除的声纹 ID（由 RegisterTRTCVoicePrint返回）。删除为软删，按 (AppId, SdkAppId, VoicePrintId) 做数据隔离。
+        :type VoicePrintId: str
+        :param _SdkAppId: SdkappId
+        :type SdkAppId: str
+        """
+        self._VoicePrintId = None
+        self._SdkAppId = None
+
+    @property
+    def VoicePrintId(self):
+        r"""待删除的声纹 ID（由 RegisterTRTCVoicePrint返回）。删除为软删，按 (AppId, SdkAppId, VoicePrintId) 做数据隔离。
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def SdkAppId(self):
+        r"""SdkappId
+        :rtype: str
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTRTCVoicePrintResponse(AbstractModel):
+    r"""DeleteTRTCVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 已删除的声纹 ID（回显，便于调用方核对）
+        :type VoicePrintId: str
+        :param _Message: 结果描述，成功时为 voiceprint deleted successfully
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VoicePrintId = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def VoicePrintId(self):
+        r"""已删除的声纹 ID（回显，便于调用方核对）
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def Message(self):
+        r"""结果描述，成功时为 voiceprint deleted successfully
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVoiceConversationRequest(AbstractModel):
+    r"""DeleteVoiceConversation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :type SdkAppId: int
+        :param _TaskId: <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""<p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVoiceConversationResponse(AbstractModel):
+    r"""DeleteVoiceConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>对话任务的唯一Id。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>对话任务的唯一Id。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7417,138 +8165,6 @@ class DescribeTRTCMarketScaleDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeTRTCMarketScaleMetricDataRequest(AbstractModel):
-    r"""DescribeTRTCMarketScaleMetricData请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SdkAppId: 用户SdkAppId
-        :type SdkAppId: str
-        :param _StartTime: 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
-        :type StartTime: str
-        :param _EndTime: 查询结束时间，格式为YYYY-MM-DD。
-        :type EndTime: str
-        :param _Period: 返回数据的粒度，支持设为以下值：
-d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
-h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
-        :type Period: str
-        """
-        self._SdkAppId = None
-        self._StartTime = None
-        self._EndTime = None
-        self._Period = None
-
-    @property
-    def SdkAppId(self):
-        r"""用户SdkAppId
-        :rtype: str
-        """
-        return self._SdkAppId
-
-    @SdkAppId.setter
-    def SdkAppId(self, SdkAppId):
-        self._SdkAppId = SdkAppId
-
-    @property
-    def StartTime(self):
-        r"""查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
-    def EndTime(self):
-        r"""查询结束时间，格式为YYYY-MM-DD。
-        :rtype: str
-        """
-        return self._EndTime
-
-    @EndTime.setter
-    def EndTime(self, EndTime):
-        self._EndTime = EndTime
-
-    @property
-    def Period(self):
-        r"""返回数据的粒度，支持设为以下值：
-d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
-h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
-        :rtype: str
-        """
-        return self._Period
-
-    @Period.setter
-    def Period(self, Period):
-        self._Period = Period
-
-
-    def _deserialize(self, params):
-        self._SdkAppId = params.get("SdkAppId")
-        self._StartTime = params.get("StartTime")
-        self._EndTime = params.get("EndTime")
-        self._Period = params.get("Period")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeTRTCMarketScaleMetricDataResponse(AbstractModel):
-    r"""DescribeTRTCMarketScaleMetricData返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Data: TRTC监控数据出参
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Data: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Data = None
-        self._RequestId = None
-
-    @property
-    def Data(self):
-        r"""TRTC监控数据出参
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.TRTCDataResp`
-        """
-        return self._Data
-
-    @Data.setter
-    def Data(self, Data):
-        self._Data = Data
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("Data") is not None:
-            self._Data = TRTCDataResp()
-            self._Data._deserialize(params.get("Data"))
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeTRTCRealTimeQualityDataRequest(AbstractModel):
     r"""DescribeTRTCRealTimeQualityData请求参数结构体
 
@@ -7976,6 +8592,150 @@ class DescribeTRTCSegmentModerationUsageResponse(AbstractModel):
                 obj._deserialize(item)
                 self._UsageList.append(obj)
         self._TotalUsage = params.get("TotalUsage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTRTCVoicePrintRequest(AbstractModel):
+    r"""DescribeTRTCVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: SdkappId
+        :type SdkAppId: str
+        :param _Offset: 分页起始偏移，0 或不传表示从第一条开始
+        :type Offset: int
+        :param _Limit: 每页返回数量，默认 20，最大 100；超过最大值会被截断到 100
+        :type Limit: int
+        """
+        self._SdkAppId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SdkAppId(self):
+        r"""SdkappId
+        :rtype: str
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Offset(self):
+        r"""分页起始偏移，0 或不传表示从第一条开始
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页返回数量，默认 20，最大 100；超过最大值会被截断到 100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCVoicePrintResponse(AbstractModel):
+    r"""DescribeTRTCVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 当前 (AppId, SdkAppId) 下的声纹总数（仅计活跃状态）
+        :type TotalCount: int
+        :param _VoicePrintList: 声纹条目列表，元素为 TRTCVoicePrintItem 结构：{ VoicePrintId:string, SpeakerId:string, CreateTime:string(ISO8601), UpdateTime:string(ISO8601) }。
+        :type VoicePrintList: list of TRTCVoicePrintItem
+        :param _Message: 结果描述，成功时为 query voiceprint list successfully
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._VoicePrintList = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""当前 (AppId, SdkAppId) 下的声纹总数（仅计活跃状态）
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VoicePrintList(self):
+        r"""声纹条目列表，元素为 TRTCVoicePrintItem 结构：{ VoicePrintId:string, SpeakerId:string, CreateTime:string(ISO8601), UpdateTime:string(ISO8601) }。
+        :rtype: list of TRTCVoicePrintItem
+        """
+        return self._VoicePrintList
+
+    @VoicePrintList.setter
+    def VoicePrintList(self, VoicePrintList):
+        self._VoicePrintList = VoicePrintList
+
+    @property
+    def Message(self):
+        r"""结果描述，成功时为 query voiceprint list successfully
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("VoicePrintList") is not None:
+            self._VoicePrintList = []
+            for item in params.get("VoicePrintList"):
+                obj = TRTCVoicePrintItem()
+                obj._deserialize(item)
+                self._VoicePrintList.append(obj)
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
@@ -8653,7 +9413,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CommId: 通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
+        :param _CommId: 通话 ID（唯一标识一次通话）， 需通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
         :type CommId: str
         :param _StartTime: 查询开始时间，本地unix时间戳，单位为秒（如：1590065777）注意：最大支持查询14天内的数据
         :type StartTime: int
@@ -8682,7 +9442,7 @@ class DescribeUserInfoRequest(AbstractModel):
 
     @property
     def CommId(self):
-        r"""通话 ID（唯一标识一次通话）： SdkAppId_RoomId（房间号）_ CreateTime（房间创建时间，unix时间戳，单位为s）例：1400xxxxxx_218695_1590065777。通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
+        r"""通话 ID（唯一标识一次通话）， 需通过 DescribeRoomInfo（查询历史房间列表）接口获取（[查询历史房间列表](https://cloud.tencent.com/document/product/647/44050)）。
         :rtype: str
         """
         return self._CommId
@@ -8840,6 +9600,165 @@ class DescribeUserInfoResponse(AbstractModel):
                 obj = UserInformation()
                 obj._deserialize(item)
                 self._UserList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVoiceConversationRequest(AbstractModel):
+    r"""DescribeVoiceConversation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :type SdkAppId: int
+        :param _TaskId: <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+        :type TaskId: str
+        :param _DescribeType: <p>查询任务状态</p><p>枚举值：</p><ul><li>0： 不查询对话上下文历史</li><li>1： 查询对话上下文历史</li></ul><p>默认值：0</p>
+        :type DescribeType: int
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._DescribeType = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""<p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def DescribeType(self):
+        r"""<p>查询任务状态</p><p>枚举值：</p><ul><li>0： 不查询对话上下文历史</li><li>1： 查询对话上下文历史</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._DescribeType
+
+    @DescribeType.setter
+    def DescribeType(self, DescribeType):
+        self._DescribeType = DescribeType
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._DescribeType = params.get("DescribeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoiceConversationResponse(AbstractModel):
+    r"""DescribeVoiceConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>任务启动时间</p><p>单位：毫秒</p>
+        :type StartTime: int
+        :param _Status: <p>转录任务状态。</p><p>枚举值：</p><ul><li>Idle： 表示当前转录任务空闲中 </li><li>InProgress： 表示当前转录任务正在进行中</li><li>Exited： 表示当前转录任务正在退出的过程中</li></ul>
+        :type Status: str
+        :param _TaskId: <p>转录任务的唯一Id。</p>
+        :type TaskId: str
+        :param _HistoryContents: <p>历史对话信息。</p>
+        :type HistoryContents: list of VoiceConversationHistoryContent
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._TaskId = None
+        self._HistoryContents = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        r"""<p>任务启动时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        r"""<p>转录任务状态。</p><p>枚举值：</p><ul><li>Idle： 表示当前转录任务空闲中 </li><li>InProgress： 表示当前转录任务正在进行中</li><li>Exited： 表示当前转录任务正在退出的过程中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        r"""<p>转录任务的唯一Id。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def HistoryContents(self):
+        r"""<p>历史对话信息。</p>
+        :rtype: list of VoiceConversationHistoryContent
+        """
+        return self._HistoryContents
+
+    @HistoryContents.setter
+    def HistoryContents(self, HistoryContents):
+        self._HistoryContents = HistoryContents
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        if params.get("HistoryContents") is not None:
+            self._HistoryContents = []
+            for item in params.get("HistoryContents"):
+                obj = VoiceConversationHistoryContent()
+                obj._deserialize(item)
+                self._HistoryContents.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -10373,6 +11292,57 @@ class InvokeLLM(AbstractModel):
         self._Content = params.get("Content")
         self._Interrupt = params.get("Interrupt")
         self._ExperimentalParams = params.get("ExperimentalParams")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValueItem(AbstractModel):
+    r"""LLM自定义数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>Key</p>
+        :type Key: str
+        :param _Value: <p>Value</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>Value</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12715,33 +13685,25 @@ class MixLayout(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Top: 画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。
+        :param _Top: <p>画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。</p>
         :type Top: int
-        :param _Left: 画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。
+        :param _Left: <p>画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。</p>
         :type Left: int
-        :param _Width: 画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。
+        :param _Width: <p>画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。</p>
         :type Width: int
-        :param _Height: 画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。
+        :param _Height: <p>画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。</p>
         :type Height: int
-        :param _UserId: 字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。
+        :param _UserId: <p>字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。</p>
         :type UserId: str
-        :param _Alpha: 画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。
+        :param _Alpha: <p>画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。</p>
         :type Alpha: int
-        :param _RenderMode: 0 ：拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；
-
-1 ：剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；
-
-2 ：填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；
-
-3 ：智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；
+        :param _RenderMode: <p>画布上该画面的渲染模式</p><p>枚举值：</p><ul><li>0： 拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；</li><li>1： 剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；</li><li>2： 填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；</li><li>3： 智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；</li></ul>
         :type RenderMode: int
-        :param _MediaId: 对应订阅流的主辅路标识：
-0：主流（默认）；
-1：辅流；
+        :param _MediaId: <p>对应订阅流的主辅路标识：<br>0：主流（默认）；<br>1：辅流；</p>
         :type MediaId: int
-        :param _ImageLayer: 该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
+        :param _ImageLayer: <p>该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。</p>
         :type ImageLayer: int
-        :param _SubBackgroundImage: 图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        :param _SubBackgroundImage: <p>图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 &#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39; &#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;</p>
         :type SubBackgroundImage: str
         """
         self._Top = None
@@ -12757,7 +13719,7 @@ class MixLayout(AbstractModel):
 
     @property
     def Top(self):
-        r"""画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。
+        r"""<p>画布上该画面左上角的 y 轴坐标，取值范围 [0, 1920]，不能超过画布的高。</p>
         :rtype: int
         """
         return self._Top
@@ -12768,7 +13730,7 @@ class MixLayout(AbstractModel):
 
     @property
     def Left(self):
-        r"""画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。
+        r"""<p>画布上该画面左上角的 x 轴坐标，取值范围 [0, 1920]，不能超过画布的宽。</p>
         :rtype: int
         """
         return self._Left
@@ -12779,7 +13741,7 @@ class MixLayout(AbstractModel):
 
     @property
     def Width(self):
-        r"""画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。
+        r"""<p>画布上该画面宽度的相对值，取值范围 [0, 1920]，与Left相加不应超过画布的宽。</p>
         :rtype: int
         """
         return self._Width
@@ -12790,7 +13752,7 @@ class MixLayout(AbstractModel):
 
     @property
     def Height(self):
-        r"""画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。
+        r"""<p>画布上该画面高度的相对值，取值范围 [0, 1920]，与Top相加不应超过画布的高。</p>
         :rtype: int
         """
         return self._Height
@@ -12801,7 +13763,7 @@ class MixLayout(AbstractModel):
 
     @property
     def UserId(self):
-        r"""字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。
+        r"""<p>字符串内容为待显示在该画面的主播对应的UserId，如果不指定，会按照主播加入房间的顺序匹配。</p>
         :rtype: str
         """
         return self._UserId
@@ -12812,7 +13774,7 @@ class MixLayout(AbstractModel):
 
     @property
     def Alpha(self):
-        r"""画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。
+        r"""<p>画布的透明度值，取值范围[0, 255]。0表示不透明，255表示全透明。默认值为0。</p>
         :rtype: int
         """
         return self._Alpha
@@ -12823,13 +13785,7 @@ class MixLayout(AbstractModel):
 
     @property
     def RenderMode(self):
-        r"""0 ：拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；
-
-1 ：剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；
-
-2 ：填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；
-
-3 ：智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；
+        r"""<p>画布上该画面的渲染模式</p><p>枚举值：</p><ul><li>0： 拉伸模式，这个模式下整个视频内容会全部显示，并填满子画面，在源视频和目的视频宽高比不一致的时候，画面不会缺少内容，但是画面可能产生形变；</li><li>1： 剪裁模式（默认），这个模式下会严格按照目的视频的宽高比对源视频剪裁之后再拉伸，并填满子画面画布，在源视频和目的视频宽高比不一致的时候，画面保持不变形，但是会被剪裁；</li><li>2： 填黑模式，这个模式下会严格保持源视频的宽高比进行等比缩放，在源视频和目的视频宽高比不一致的时候，画面的上下侧边缘或者左右侧边缘会露出子画面画布的背景；</li><li>3： 智能拉伸模式，这个模式类似剪裁模式，区别是在源视频和目的视频宽高比不一致的时候，限制了最大剪裁比例为画面的宽度或者高度的20%；</li></ul>
         :rtype: int
         """
         return self._RenderMode
@@ -12840,9 +13796,7 @@ class MixLayout(AbstractModel):
 
     @property
     def MediaId(self):
-        r"""对应订阅流的主辅路标识：
-0：主流（默认）；
-1：辅流；
+        r"""<p>对应订阅流的主辅路标识：<br>0：主流（默认）；<br>1：辅流；</p>
         :rtype: int
         """
         return self._MediaId
@@ -12853,7 +13807,7 @@ class MixLayout(AbstractModel):
 
     @property
     def ImageLayer(self):
-        r"""该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。
+        r"""<p>该画布的图层顺序, 这个值越小表示图层越靠后。默认值为0。</p>
         :rtype: int
         """
         return self._ImageLayer
@@ -12864,7 +13818,7 @@ class MixLayout(AbstractModel):
 
     @property
     def SubBackgroundImage(self):
-        r"""图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 '-', '.', '_', '~', ':', '/', '?', '#', '[', ']' '@', '!', '&', '(', ')', '*', '+', ',', '%', '='
+        r"""<p>图片的url地址， 只支持jpg, png, jpeg，图片分辨率限制不超过2K，图片大小限制不超过5MB。注意，url必须携带格式后缀，url内只支持特定的字符串, 范围是a-z A-Z 0-9 &#39;-&#39;, &#39;.&#39;, &#39;_&#39;, &#39;~&#39;, &#39;:&#39;, &#39;/&#39;, &#39;?&#39;, &#39;#&#39;, &#39;[&#39;, &#39;]&#39; &#39;@&#39;, &#39;!&#39;, &#39;&amp;&#39;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;+&#39;, &#39;,&#39;, &#39;%&#39;, &#39;=&#39;</p>
         :rtype: str
         """
         return self._SubBackgroundImage
@@ -14260,6 +15214,166 @@ class ModifyPictureResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyVoiceConversationRequest(AbstractModel):
+    r"""ModifyVoiceConversation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :type SdkAppId: int
+        :param _TaskId: <p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+        :type TaskId: str
+        :param _SequenceNumber: <p>需要保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
+        :type SequenceNumber: int
+        :param _LLMConfig: <p>大模型配置。<strong>仅 <code>Cascade</code> 模式生效</strong>；<code>S2S</code> 模式报错。</p>
+        :type LLMConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationLLMConfig`
+        :param _S2SConfig: <p>端到端语音大模型配置。仅 <strong><code>S2S</code> 模式</strong>生效；<code>Cascade</code> 报错。</p>
+        :type S2SConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationS2SConfig`
+        :param _DialogConfig: <p>对话控制配置。<strong>仅 <code>Cascade</code> 模式生效</strong>。</p>
+        :type DialogConfig: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationDialogConfig`
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SequenceNumber = None
+        self._LLMConfig = None
+        self._S2SConfig = None
+        self._DialogConfig = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和对话的房间所对应的SdkAppId相同。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""<p>对话任务的唯一Id，在启动对话成功后会返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SequenceNumber(self):
+        r"""<p>需要保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
+        :rtype: int
+        """
+        return self._SequenceNumber
+
+    @SequenceNumber.setter
+    def SequenceNumber(self, SequenceNumber):
+        self._SequenceNumber = SequenceNumber
+
+    @property
+    def LLMConfig(self):
+        r"""<p>大模型配置。<strong>仅 <code>Cascade</code> 模式生效</strong>；<code>S2S</code> 模式报错。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationLLMConfig`
+        """
+        return self._LLMConfig
+
+    @LLMConfig.setter
+    def LLMConfig(self, LLMConfig):
+        self._LLMConfig = LLMConfig
+
+    @property
+    def S2SConfig(self):
+        r"""<p>端到端语音大模型配置。仅 <strong><code>S2S</code> 模式</strong>生效；<code>Cascade</code> 报错。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationS2SConfig`
+        """
+        return self._S2SConfig
+
+    @S2SConfig.setter
+    def S2SConfig(self, S2SConfig):
+        self._S2SConfig = S2SConfig
+
+    @property
+    def DialogConfig(self):
+        r"""<p>对话控制配置。<strong>仅 <code>Cascade</code> 模式生效</strong>。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationDialogConfig`
+        """
+        return self._DialogConfig
+
+    @DialogConfig.setter
+    def DialogConfig(self, DialogConfig):
+        self._DialogConfig = DialogConfig
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._SequenceNumber = params.get("SequenceNumber")
+        if params.get("LLMConfig") is not None:
+            self._LLMConfig = VoiceConversationLLMConfig()
+            self._LLMConfig._deserialize(params.get("LLMConfig"))
+        if params.get("S2SConfig") is not None:
+            self._S2SConfig = VoiceConversationS2SConfig()
+            self._S2SConfig._deserialize(params.get("S2SConfig"))
+        if params.get("DialogConfig") is not None:
+            self._DialogConfig = VoiceConversationDialogConfig()
+            self._DialogConfig._deserialize(params.get("DialogConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVoiceConversationResponse(AbstractModel):
+    r"""ModifyVoiceConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class OneSdkAppIdTranscodeTimeUsagesInfo(AbstractModel):
     r"""旁路转码时长的查询结果
 
@@ -15425,6 +16539,190 @@ class RecordUsage(AbstractModel):
         
 
 
+class RegisterTRTCVoicePrintRequest(AbstractModel):
+    r"""RegisterTRTCVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpeakerId: 业务方自定义的说话人唯一标识，同一 (AppId, SdkAppId, SpeakerId) 重复调用会覆盖旧声纹（软删旧记录 + 新建一行，返回新的 VoicePrintId）
+        :type SpeakerId: str
+        :param _Data: 音频数据的 Base64 字符串。要求：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后大小 ≤ 2MB；PCM 裸数据时长 10s ≤ 时长 ≤ 45s（WAV 去掉 header 后按相同标准校验）
+        :type Data: str
+        :param _SdkAppId: SdkAppId
+        :type SdkAppId: str
+        :param _AudioFormat: 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+        :type AudioFormat: str
+        """
+        self._SpeakerId = None
+        self._Data = None
+        self._SdkAppId = None
+        self._AudioFormat = None
+
+    @property
+    def SpeakerId(self):
+        r"""业务方自定义的说话人唯一标识，同一 (AppId, SdkAppId, SpeakerId) 重复调用会覆盖旧声纹（软删旧记录 + 新建一行，返回新的 VoicePrintId）
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
+    @property
+    def Data(self):
+        r"""音频数据的 Base64 字符串。要求：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后大小 ≤ 2MB；PCM 裸数据时长 10s ≤ 时长 ≤ 45s（WAV 去掉 header 后按相同标准校验）
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def SdkAppId(self):
+        r"""SdkAppId
+        :rtype: str
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioFormat(self):
+        r"""音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+        :rtype: str
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+
+    def _deserialize(self, params):
+        self._SpeakerId = params.get("SpeakerId")
+        self._Data = params.get("Data")
+        self._SdkAppId = params.get("SdkAppId")
+        self._AudioFormat = params.get("AudioFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegisterTRTCVoicePrintResponse(AbstractModel):
+    r"""RegisterTRTCVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 本次注册生成的声纹 ID，后续 Update/Delete/Verify 均以此为准
+        :type VoicePrintId: str
+        :param _SpeakerId: 回显的业务方 SpeakerId
+        :type SpeakerId: str
+        :param _EffectiveAudioDuration: 本次注册音频中有效人声时长（秒）
+        :type EffectiveAudioDuration: float
+        :param _SNR: 音频信噪比（dB），由声纹服务端评估给出
+        :type SNR: float
+        :param _Message: 结果描述，成功时为 voiceprint enrolled successfully
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VoicePrintId = None
+        self._SpeakerId = None
+        self._EffectiveAudioDuration = None
+        self._SNR = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def VoicePrintId(self):
+        r"""本次注册生成的声纹 ID，后续 Update/Delete/Verify 均以此为准
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def SpeakerId(self):
+        r"""回显的业务方 SpeakerId
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
+    @property
+    def EffectiveAudioDuration(self):
+        r"""本次注册音频中有效人声时长（秒）
+        :rtype: float
+        """
+        return self._EffectiveAudioDuration
+
+    @EffectiveAudioDuration.setter
+    def EffectiveAudioDuration(self, EffectiveAudioDuration):
+        self._EffectiveAudioDuration = EffectiveAudioDuration
+
+    @property
+    def SNR(self):
+        r"""音频信噪比（dB），由声纹服务端评估给出
+        :rtype: float
+        """
+        return self._SNR
+
+    @SNR.setter
+    def SNR(self, SNR):
+        self._SNR = SNR
+
+    @property
+    def Message(self):
+        r"""结果描述，成功时为 voiceprint enrolled successfully
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._SpeakerId = params.get("SpeakerId")
+        self._EffectiveAudioDuration = params.get("EffectiveAudioDuration")
+        self._SNR = params.get("SNR")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class RegisterVoicePrintRequest(AbstractModel):
     r"""RegisterVoicePrint请求参数结构体
 
@@ -16266,61 +17564,6 @@ class SdkAppIdTrtcMcuTranscodeTimeUsage(AbstractModel):
         self._VideoTimeHd = params.get("VideoTimeHd")
         self._VideoTimeFhd = params.get("VideoTimeFhd")
         self._Flux = params.get("Flux")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class SeriesInfo(AbstractModel):
-    r"""SeriesInfo类型
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Columns: 数据列
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Columns: list of str
-        :param _Values: 数据值
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Values: list of int
-        """
-        self._Columns = None
-        self._Values = None
-
-    @property
-    def Columns(self):
-        r"""数据列
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of str
-        """
-        return self._Columns
-
-    @Columns.setter
-    def Columns(self, Columns):
-        self._Columns = Columns
-
-    @property
-    def Values(self):
-        r"""数据值
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of int
-        """
-        return self._Values
-
-    @Values.setter
-    def Values(self, Values):
-        self._Values = Values
-
-
-    def _deserialize(self, params):
-        self._Columns = params.get("Columns")
-        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19469,83 +20712,6 @@ class SubscribeStreamUserIds(AbstractModel):
         
 
 
-class TRTCDataResp(AbstractModel):
-    r"""TRTC数据大盘/实时监控 API接口数据出参
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _StatementID: StatementID值，监控仪表盘下固定为0。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StatementID: int
-        :param _Series: 查询结果数据，以Columns-Values形式返回。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Series: list of SeriesInfo
-        :param _Total: Total值，监控仪表盘功能下固定为1。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Total: int
-        """
-        self._StatementID = None
-        self._Series = None
-        self._Total = None
-
-    @property
-    def StatementID(self):
-        r"""StatementID值，监控仪表盘下固定为0。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._StatementID
-
-    @StatementID.setter
-    def StatementID(self, StatementID):
-        self._StatementID = StatementID
-
-    @property
-    def Series(self):
-        r"""查询结果数据，以Columns-Values形式返回。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of SeriesInfo
-        """
-        return self._Series
-
-    @Series.setter
-    def Series(self, Series):
-        self._Series = Series
-
-    @property
-    def Total(self):
-        r"""Total值，监控仪表盘功能下固定为1。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._Total
-
-    @Total.setter
-    def Total(self, Total):
-        self._Total = Total
-
-
-    def _deserialize(self, params):
-        self._StatementID = params.get("StatementID")
-        if params.get("Series") is not None:
-            self._Series = []
-            for item in params.get("Series"):
-                obj = SeriesInfo()
-                obj._deserialize(item)
-                self._Series.append(obj)
-        self._Total = params.get("Total")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class TRTCDataResult(AbstractModel):
     r"""TRTC数据大盘/实时监控 API接口数据出参
 
@@ -19613,6 +20779,95 @@ class TRTCDataResult(AbstractModel):
                 obj._deserialize(item)
                 self._Series.append(obj)
         self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TRTCVoicePrintItem(AbstractModel):
+    r"""VoicePrintList 接口出参 VoicePrintSet 的元素类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 声纹 ID，36 位 UUID（含连字符）。对 (AppId, SdkAppId) 维度内唯一。
+示例值：59d83c76-8f4e-4a1b-9c2d-0e7f8a6b5c4d
+        :type VoicePrintId: str
+        :param _SpeakerId: 业务方自定义的说话人标识，长度不超过 128 字节，由客户在注册声纹时传入。同一 SpeakerId 可对应多条声纹。
+示例值：user_12345
+        :type SpeakerId: str
+        :param _CreateTime: 声纹注册时间，ISO8601 格式，UTC 时区。
+示例值：2025-04-24T10:20:30Z
+        :type CreateTime: str
+        :param _UpdateTime: 声纹最近一次更新时间，ISO8601 格式，UTC 时区。未被更新过时等于 CreateTime。
+示例值：2025-04-24T10:20:30Z
+        :type UpdateTime: str
+        """
+        self._VoicePrintId = None
+        self._SpeakerId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def VoicePrintId(self):
+        r"""声纹 ID，36 位 UUID（含连字符）。对 (AppId, SdkAppId) 维度内唯一。
+示例值：59d83c76-8f4e-4a1b-9c2d-0e7f8a6b5c4d
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def SpeakerId(self):
+        r"""业务方自定义的说话人标识，长度不超过 128 字节，由客户在注册声纹时传入。同一 SpeakerId 可对应多条声纹。
+示例值：user_12345
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
+    @property
+    def CreateTime(self):
+        r"""声纹注册时间，ISO8601 格式，UTC 时区。
+示例值：2025-04-24T10:20:30Z
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""声纹最近一次更新时间，ISO8601 格式，UTC 时区。未被更新过时等于 CreateTime。
+示例值：2025-04-24T10:20:30Z
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._SpeakerId = params.get("SpeakerId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21045,14 +22300,14 @@ class TranscriptionUserInfoParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户ID。
+        :param _UserId: <p>用户ID。</p>
         :type UserId: str
         """
         self._UserId = None
 
     @property
     def UserId(self):
-        r"""用户ID。
+        r"""<p>用户ID。</p>
         :rtype: str
         """
         return self._UserId
@@ -22093,6 +23348,175 @@ class UpdateStreamIngestResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateTRTCVoicePrintRequest(AbstractModel):
+    r"""UpdateTRTCVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 待更新的声纹 ID（由 RegisterTRTCVoicePrint 返回）。更新采用覆盖模式——只保留一条最新音频，VoicePrintId 保持不变。
+        :type VoicePrintId: str
+        :param _Data: 新的音频数据的 Base64 字符串。要求与 RegisterTRTCVoicePrint一致：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后 ≤ 2MB；PCM 裸数据 10s ≤ 时长 ≤ 45s。
+        :type Data: str
+        :param _SdkAppId: SdkAppId
+        :type SdkAppId: str
+        :param _AudioFormat: 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+        :type AudioFormat: str
+        """
+        self._VoicePrintId = None
+        self._Data = None
+        self._SdkAppId = None
+        self._AudioFormat = None
+
+    @property
+    def VoicePrintId(self):
+        r"""待更新的声纹 ID（由 RegisterTRTCVoicePrint 返回）。更新采用覆盖模式——只保留一条最新音频，VoicePrintId 保持不变。
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def Data(self):
+        r"""新的音频数据的 Base64 字符串。要求与 RegisterTRTCVoicePrint一致：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后 ≤ 2MB；PCM 裸数据 10s ≤ 时长 ≤ 45s。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def SdkAppId(self):
+        r"""SdkAppId
+        :rtype: str
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioFormat(self):
+        r"""音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+        :rtype: str
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._Data = params.get("Data")
+        self._SdkAppId = params.get("SdkAppId")
+        self._AudioFormat = params.get("AudioFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateTRTCVoicePrintResponse(AbstractModel):
+    r"""UpdateTRTCVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 声纹 ID（更新前后保持不变）
+        :type VoicePrintId: str
+        :param _EffectiveAudioDuration: 本次更新音频中有效人声时长（秒）
+        :type EffectiveAudioDuration: float
+        :param _SNR: 音频信噪比（dB），由声纹服务端评估给出
+        :type SNR: float
+        :param _Message: 结果描述，成功时为 voiceprint updated successfully
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VoicePrintId = None
+        self._EffectiveAudioDuration = None
+        self._SNR = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def VoicePrintId(self):
+        r"""声纹 ID（更新前后保持不变）
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def EffectiveAudioDuration(self):
+        r"""本次更新音频中有效人声时长（秒）
+        :rtype: float
+        """
+        return self._EffectiveAudioDuration
+
+    @EffectiveAudioDuration.setter
+    def EffectiveAudioDuration(self, EffectiveAudioDuration):
+        self._EffectiveAudioDuration = EffectiveAudioDuration
+
+    @property
+    def SNR(self):
+        r"""音频信噪比（dB），由声纹服务端评估给出
+        :rtype: float
+        """
+        return self._SNR
+
+    @SNR.setter
+    def SNR(self, SNR):
+        self._SNR = SNR
+
+    @property
+    def Message(self):
+        r"""结果描述，成功时为 voiceprint updated successfully
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._EffectiveAudioDuration = params.get("EffectiveAudioDuration")
+        self._SNR = params.get("SNR")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateVoicePrintRequest(AbstractModel):
     r"""UpdateVoicePrint请求参数结构体
 
@@ -22460,6 +23884,190 @@ class UserMediaStream(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VerifyTRTCVoicePrintRequest(AbstractModel):
+    r"""VerifyTRTCVoicePrint请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 待验证的目标声纹 ID（由 RegisterTRTCVoicePrint 返回）。按 (AppId, SdkAppId, VoicePrintId) 做数据隔离。
+        :type VoicePrintId: str
+        :param _Data: 待验证音频数据的 Base64 字符串。要求：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后 ≤ 2MB；PCM 裸数据 10s ≤ 时长 ≤ 45s。
+        :type Data: str
+        :param _SdkAppId: SdkAppId
+        :type SdkAppId: str
+        :param _AudioFormat: 音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+        :type AudioFormat: str
+        """
+        self._VoicePrintId = None
+        self._Data = None
+        self._SdkAppId = None
+        self._AudioFormat = None
+
+    @property
+    def VoicePrintId(self):
+        r"""待验证的目标声纹 ID（由 RegisterTRTCVoicePrint 返回）。按 (AppId, SdkAppId, VoicePrintId) 做数据隔离。
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def Data(self):
+        r"""待验证音频数据的 Base64 字符串。要求：16kHz/16bit/单声道 PCM 或 WAV；Base64 解码后 ≤ 2MB；PCM 裸数据 10s ≤ 时长 ≤ 45s。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def SdkAppId(self):
+        r"""SdkAppId
+        :rtype: str
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioFormat(self):
+        r"""音频格式，可选 pcm 或 wav，大小写不敏感，不传默认为 pcm
+        :rtype: str
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._Data = params.get("Data")
+        self._SdkAppId = params.get("SdkAppId")
+        self._AudioFormat = params.get("AudioFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyTRTCVoicePrintResponse(AbstractModel):
+    r"""VerifyTRTCVoicePrint返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: 被验证的目标声纹 ID
+        :type VoicePrintId: str
+        :param _SpeakerId: 注册时写入的业务方 SpeakerId（以服务端记录为准）
+        :type SpeakerId: str
+        :param _Score: 相似度分值（字符串形式，保留两位小数，范围约 0~100，越大越相似）
+        :type Score: str
+        :param _Decision: 服务端阈值判决结果，0=不通过，1=通过（默认阈值 60 分，由服务端统一维护）
+        :type Decision: int
+        :param _Message: 结果描述，成功时为 voiceprint verify success
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VoicePrintId = None
+        self._SpeakerId = None
+        self._Score = None
+        self._Decision = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def VoicePrintId(self):
+        r"""被验证的目标声纹 ID
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def SpeakerId(self):
+        r"""注册时写入的业务方 SpeakerId（以服务端记录为准）
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
+    @property
+    def Score(self):
+        r"""相似度分值（字符串形式，保留两位小数，范围约 0~100，越大越相似）
+        :rtype: str
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Decision(self):
+        r"""服务端阈值判决结果，0=不通过，1=通过（默认阈值 60 分，由服务端统一维护）
+        :rtype: int
+        """
+        return self._Decision
+
+    @Decision.setter
+    def Decision(self, Decision):
+        self._Decision = Decision
+
+    @property
+    def Message(self):
+        r"""结果描述，成功时为 voiceprint verify success
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._SpeakerId = params.get("SpeakerId")
+        self._Score = params.get("Score")
+        self._Decision = params.get("Decision")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
 
 
 class VideoEncode(AbstractModel):
@@ -23165,6 +24773,1094 @@ class VoiceCloneResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class VoiceConversationConfig(AbstractModel):
+    r"""AI对话的任务参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: <p>对话服务在TRTC房间使用的<a href="https://cloud.tencent.com/document/product/647/46351#userid">UserId</a>，注意这个userId不能与其他TRTC或者对话服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。</p>
+        :type UserId: str
+        :param _UserSig: <p>对话服务加入TRTC房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算<a href="https://cloud.tencent.com/document/product/647/45910#UserSig">UserSig</a>的方案。</p>
+        :type UserSig: str
+        :param _TargetUserId: <p>对话服务订阅的主播名，订阅指定真实用户的音频，只能填写一个订阅主播。</p>
+        :type TargetUserId: list of str
+        :param _TTSPushRoomParams: <p>回推机器人参数。</p>
+        :type TTSPushRoomParams: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        :param _MaxIdleTime: <p>参与对话的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止对话任务，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。</p><p>单位：秒</p>
+        :type MaxIdleTime: int
+        :param _FilterBracketsContent: <p>用于过滤LLM返回内容，不播放括号中的内容。1：中文括号（）2：英文括号() 3：中文方括号【】4：英文方括号[] 5：英文花括号{} 。默认值为空，表示不进行过滤。 示例值：1取值范围：[1, 5]。S2S 模式不支持填写该参数。</p>
+        :type FilterBracketsContent: list of int non-negative
+        :param _SubtitleMode: <p>字幕显示模式。S2S 模式不支持填写该参数。</p><p>枚举值：</p><ul><li>0： 尽快显示</li><li>1： 句子级别实时显示</li></ul>
+        :type SubtitleMode: int
+        :param _TurnDetectionMode: <p>控制新一轮对话的触发方式，默认为&quot;auto&quot;。S2S 模式不支持填写该参数。</p><p>枚举值：</p><ul><li>&quot;auto&quot;： 后台自动识别断句触发LLM(基于静音时长)</li></ul>
+        :type TurnDetectionMode: str
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._TargetUserId = None
+        self._TTSPushRoomParams = None
+        self._MaxIdleTime = None
+        self._FilterBracketsContent = None
+        self._SubtitleMode = None
+        self._TurnDetectionMode = None
+
+    @property
+    def UserId(self):
+        r"""<p>对话服务在TRTC房间使用的<a href="https://cloud.tencent.com/document/product/647/46351#userid">UserId</a>，注意这个userId不能与其他TRTC或者对话服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        r"""<p>对话服务加入TRTC房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算<a href="https://cloud.tencent.com/document/product/647/45910#UserSig">UserSig</a>的方案。</p>
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def TargetUserId(self):
+        r"""<p>对话服务订阅的主播名，订阅指定真实用户的音频，只能填写一个订阅主播。</p>
+        :rtype: list of str
+        """
+        return self._TargetUserId
+
+    @TargetUserId.setter
+    def TargetUserId(self, TargetUserId):
+        self._TargetUserId = TargetUserId
+
+    @property
+    def TTSPushRoomParams(self):
+        r"""<p>回推机器人参数。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionUserInfoParams`
+        """
+        return self._TTSPushRoomParams
+
+    @TTSPushRoomParams.setter
+    def TTSPushRoomParams(self, TTSPushRoomParams):
+        self._TTSPushRoomParams = TTSPushRoomParams
+
+    @property
+    def MaxIdleTime(self):
+        r"""<p>参与对话的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止对话任务，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def FilterBracketsContent(self):
+        r"""<p>用于过滤LLM返回内容，不播放括号中的内容。1：中文括号（）2：英文括号() 3：中文方括号【】4：英文方括号[] 5：英文花括号{} 。默认值为空，表示不进行过滤。 示例值：1取值范围：[1, 5]。S2S 模式不支持填写该参数。</p>
+        :rtype: list of int non-negative
+        """
+        return self._FilterBracketsContent
+
+    @FilterBracketsContent.setter
+    def FilterBracketsContent(self, FilterBracketsContent):
+        self._FilterBracketsContent = FilterBracketsContent
+
+    @property
+    def SubtitleMode(self):
+        r"""<p>字幕显示模式。S2S 模式不支持填写该参数。</p><p>枚举值：</p><ul><li>0： 尽快显示</li><li>1： 句子级别实时显示</li></ul>
+        :rtype: int
+        """
+        return self._SubtitleMode
+
+    @SubtitleMode.setter
+    def SubtitleMode(self, SubtitleMode):
+        self._SubtitleMode = SubtitleMode
+
+    @property
+    def TurnDetectionMode(self):
+        r"""<p>控制新一轮对话的触发方式，默认为&quot;auto&quot;。S2S 模式不支持填写该参数。</p><p>枚举值：</p><ul><li>&quot;auto&quot;： 后台自动识别断句触发LLM(基于静音时长)</li></ul>
+        :rtype: str
+        """
+        return self._TurnDetectionMode
+
+    @TurnDetectionMode.setter
+    def TurnDetectionMode(self, TurnDetectionMode):
+        self._TurnDetectionMode = TurnDetectionMode
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        self._TargetUserId = params.get("TargetUserId")
+        if params.get("TTSPushRoomParams") is not None:
+            self._TTSPushRoomParams = TranscriptionUserInfoParams()
+            self._TTSPushRoomParams._deserialize(params.get("TTSPushRoomParams"))
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._FilterBracketsContent = params.get("FilterBracketsContent")
+        self._SubtitleMode = params.get("SubtitleMode")
+        self._TurnDetectionMode = params.get("TurnDetectionMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationDialogConfig(AbstractModel):
+    r"""AI对话相关配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterruptMode: <p>打断模式。</p><p>枚举值：</p><ul><li>0： 自动打断（ASR 出文本打断 TTS，配合InterruptSpeechDuration 使用，默认）</li><li>1： 手动打断（仅服务端/客户端接口 Interrupt 命令打断）</li><li>2： 关键词打断</li></ul>
+        :type InterruptMode: int
+        :param _InterruptSpeechDuration: <p>自动打断的最小用户语音持续时长（毫秒），默认 200</p><p>单位：毫秒</p>
+        :type InterruptSpeechDuration: int
+        :param _InterruptKeywords: <p>预设的关键词，关键词打断，适用于需要用户明确表达意图才能打断的场景。最多支持128个关键词，InterruptMode 为2时生效，</p>
+        :type InterruptKeywords: list of str
+        :param _SilenceFollowUp: <p>用户静音多久后 Bot 主动追问，范围 0~300，0 表示关闭（默认）。</p><p>单位：秒</p>
+        :type SilenceFollowUp: int
+        :param _SilenceFollowUpText: <p>主动追问的文本。</p>
+        :type SilenceFollowUpText: str
+        :param _WelcomeMessage: <p>主播首次进房主动播报的欢迎语，主播退房后再次进房也会播报。</p>
+        :type WelcomeMessage: str
+        """
+        self._InterruptMode = None
+        self._InterruptSpeechDuration = None
+        self._InterruptKeywords = None
+        self._SilenceFollowUp = None
+        self._SilenceFollowUpText = None
+        self._WelcomeMessage = None
+
+    @property
+    def InterruptMode(self):
+        r"""<p>打断模式。</p><p>枚举值：</p><ul><li>0： 自动打断（ASR 出文本打断 TTS，配合InterruptSpeechDuration 使用，默认）</li><li>1： 手动打断（仅服务端/客户端接口 Interrupt 命令打断）</li><li>2： 关键词打断</li></ul>
+        :rtype: int
+        """
+        return self._InterruptMode
+
+    @InterruptMode.setter
+    def InterruptMode(self, InterruptMode):
+        self._InterruptMode = InterruptMode
+
+    @property
+    def InterruptSpeechDuration(self):
+        r"""<p>自动打断的最小用户语音持续时长（毫秒），默认 200</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._InterruptSpeechDuration
+
+    @InterruptSpeechDuration.setter
+    def InterruptSpeechDuration(self, InterruptSpeechDuration):
+        self._InterruptSpeechDuration = InterruptSpeechDuration
+
+    @property
+    def InterruptKeywords(self):
+        r"""<p>预设的关键词，关键词打断，适用于需要用户明确表达意图才能打断的场景。最多支持128个关键词，InterruptMode 为2时生效，</p>
+        :rtype: list of str
+        """
+        return self._InterruptKeywords
+
+    @InterruptKeywords.setter
+    def InterruptKeywords(self, InterruptKeywords):
+        self._InterruptKeywords = InterruptKeywords
+
+    @property
+    def SilenceFollowUp(self):
+        r"""<p>用户静音多久后 Bot 主动追问，范围 0~300，0 表示关闭（默认）。</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._SilenceFollowUp
+
+    @SilenceFollowUp.setter
+    def SilenceFollowUp(self, SilenceFollowUp):
+        self._SilenceFollowUp = SilenceFollowUp
+
+    @property
+    def SilenceFollowUpText(self):
+        r"""<p>主动追问的文本。</p>
+        :rtype: str
+        """
+        return self._SilenceFollowUpText
+
+    @SilenceFollowUpText.setter
+    def SilenceFollowUpText(self, SilenceFollowUpText):
+        self._SilenceFollowUpText = SilenceFollowUpText
+
+    @property
+    def WelcomeMessage(self):
+        r"""<p>主播首次进房主动播报的欢迎语，主播退房后再次进房也会播报。</p>
+        :rtype: str
+        """
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+
+    def _deserialize(self, params):
+        self._InterruptMode = params.get("InterruptMode")
+        self._InterruptSpeechDuration = params.get("InterruptSpeechDuration")
+        self._InterruptKeywords = params.get("InterruptKeywords")
+        self._SilenceFollowUp = params.get("SilenceFollowUp")
+        self._SilenceFollowUpText = params.get("SilenceFollowUpText")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationHistoryContent(AbstractModel):
+    r"""历史对话内容。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>对话角色。</p>
+        :type Role: str
+        :param _Content: <p>对话内容。</p>
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        r"""<p>对话角色。</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>对话内容。</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationHistoryMessage(AbstractModel):
+    r"""AI对话历史消息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>对话角色，如&quot;user&quot;、&quot;assistant&quot;、&quot;system&quot;等。</p>
+        :type Role: str
+        :param _Content: <p>对话内容。</p>
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        r"""<p>对话角色，如&quot;user&quot;、&quot;assistant&quot;、&quot;system&quot;等。</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>对话内容。</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationInvokeLLM(AbstractModel):
+    r"""调用服务端主动发起请求到LLM
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>注入的内容。</p>
+        :type Content: str
+        :param _Priority: <p>优先级。如果不处于对话中则将注入的内容送给LLM，否则由优先级决定。</p><p>枚举值：</p><ul><li>0： 高优先级，打断当前对话，并清空等待队列将注入的内容送给LLM。</li><li>1： 中优先级，不会打断当前对话，清空等待队列将注入的内容排队。如果不处于对话中则将注入的内容排队。</li><li>2： 低优先级，丢弃注入的内容。</li></ul><p>默认值：0</p><p>InvokeLLM和InvokeTTS的任务队列是同一队列，最多支持一个Invoke事件排队。</p>
+        :type Priority: int
+        """
+        self._Content = None
+        self._Priority = None
+
+    @property
+    def Content(self):
+        r"""<p>注入的内容。</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Priority(self):
+        r"""<p>优先级。如果不处于对话中则将注入的内容送给LLM，否则由优先级决定。</p><p>枚举值：</p><ul><li>0： 高优先级，打断当前对话，并清空等待队列将注入的内容送给LLM。</li><li>1： 中优先级，不会打断当前对话，清空等待队列将注入的内容排队。如果不处于对话中则将注入的内容排队。</li><li>2： 低优先级，丢弃注入的内容。</li></ul><p>默认值：0</p><p>InvokeLLM和InvokeTTS的任务队列是同一队列，最多支持一个Invoke事件排队。</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationInvokeTTS(AbstractModel):
+    r"""调用服务端主动发起请求到TTS
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>注入的内容。</p>
+        :type Content: str
+        :param _Priority: <p>优先级。如果不处于对话中则将注入的内容送给TTS，否则由优先级决定。</p><p>枚举值：</p><ul><li>0： 高优先级，打断当前对话，并清空等待队列将注入的内容送给TTS。</li><li>1： 中优先级，不会打断当前对话，清空等待队列将注入的内容排队。如果不处于对话中则将注入的内容排队。</li><li>2： 低优先级，丢弃注入的内容。</li></ul><p>默认值：0</p><p>InvokeLLM和InvokeTTS的任务队列是同一队列，最多支持一个Invoke事件排队。</p>
+        :type Priority: int
+        """
+        self._Content = None
+        self._Priority = None
+
+    @property
+    def Content(self):
+        r"""<p>注入的内容。</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Priority(self):
+        r"""<p>优先级。如果不处于对话中则将注入的内容送给TTS，否则由优先级决定。</p><p>枚举值：</p><ul><li>0： 高优先级，打断当前对话，并清空等待队列将注入的内容送给TTS。</li><li>1： 中优先级，不会打断当前对话，清空等待队列将注入的内容排队。如果不处于对话中则将注入的内容排队。</li><li>2： 低优先级，丢弃注入的内容。</li></ul><p>默认值：0</p><p>InvokeLLM和InvokeTTS的任务队列是同一队列，最多支持一个Invoke事件排队。</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationLLMConfig(AbstractModel):
+    r"""AI对话的LLM参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LLMType: <p>LLM 协议类型，如openai（OpenAI 兼容协议）。</p>
+        :type LLMType: str
+        :param _Model: <p>模型名，如 gpt-4o-mini</p>
+        :type Model: str
+        :param _APIUrl: <p>OpenAI 协议兼容的 endpoint。</p>
+        :type APIUrl: str
+        :param _APIKey: <p>厂商 API Key。</p>
+        :type APIKey: str
+        :param _SystemPrompt: <p>系统提示词。</p>
+        :type SystemPrompt: str
+        :param _FailureMessage: <p>LLM 调用失败后，使用此文本生成 TTS音频。</p>
+        :type FailureMessage: str
+        :param _MaxTokens: <p>单次回复最大 Token 数，0=不限制，默认值为0。注意：如果模型输出token数量大于设置的MaxTokens的值，会截断回复内容。</p>
+        :type MaxTokens: int
+        :param _ThinkingMode: <p>是否开启思考模式（需结合提供厂商具体使用）。注意：开启思考模式会占用输出token数。</p>
+        :type ThinkingMode: bool
+        :param _MaxHistory: <p>LLM 中缓存的对话轮次数量，范围 0~50。建议值[10, 30]。注意：指定轮次上下文的总 token 数不能超过 LLM 支持的上限。</p>
+        :type MaxHistory: int
+        :param _MaxToolRound: <p>MCP 工具调用最大轮次，范围 0~50，默认 10。</p>
+        :type MaxToolRound: int
+        :param _Timeout: <p>单次请求的超时事件（毫秒），范围 1000~60000，默认 10000。</p><p>单位：毫秒</p>
+        :type Timeout: int
+        :param _Temperature: <p>采样温度，范围 0.0~2.0，默认 1.0。</p>
+        :type Temperature: float
+        :param _TopP: <p>采样概率，范围 0.0~1.0，默认 1.0。</p>
+        :type TopP: float
+        :param _McpServer: <p>Mcp Server参数。</p>
+        :type McpServer: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationMcpServer`
+        :param _CustomHeaders: <p>自定义 HTTP 请求头。</p>
+        :type CustomHeaders: list of KeyValueItem
+        :param _CustomFields: <p>各厂商独有的扩展参数（如 DeepSeek 的<code>reasoning_effort</code>、混元的 <code>enable_enhancement</code> 等）。</p>
+        :type CustomFields: list of KeyValueItem
+        :param _HistoryMessages: <p>初始历史消息，每项为 <code>{&quot;Role&quot;: &quot;user&quot;/&quot;assistant&quot;/&quot;system&quot;, &quot;Content&quot;: &quot;xxx&quot;}</code>这种格式。</p>
+        :type HistoryMessages: list of VoiceConversationHistoryMessage
+        """
+        self._LLMType = None
+        self._Model = None
+        self._APIUrl = None
+        self._APIKey = None
+        self._SystemPrompt = None
+        self._FailureMessage = None
+        self._MaxTokens = None
+        self._ThinkingMode = None
+        self._MaxHistory = None
+        self._MaxToolRound = None
+        self._Timeout = None
+        self._Temperature = None
+        self._TopP = None
+        self._McpServer = None
+        self._CustomHeaders = None
+        self._CustomFields = None
+        self._HistoryMessages = None
+
+    @property
+    def LLMType(self):
+        r"""<p>LLM 协议类型，如openai（OpenAI 兼容协议）。</p>
+        :rtype: str
+        """
+        return self._LLMType
+
+    @LLMType.setter
+    def LLMType(self, LLMType):
+        self._LLMType = LLMType
+
+    @property
+    def Model(self):
+        r"""<p>模型名，如 gpt-4o-mini</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def APIUrl(self):
+        r"""<p>OpenAI 协议兼容的 endpoint。</p>
+        :rtype: str
+        """
+        return self._APIUrl
+
+    @APIUrl.setter
+    def APIUrl(self, APIUrl):
+        self._APIUrl = APIUrl
+
+    @property
+    def APIKey(self):
+        r"""<p>厂商 API Key。</p>
+        :rtype: str
+        """
+        return self._APIKey
+
+    @APIKey.setter
+    def APIKey(self, APIKey):
+        self._APIKey = APIKey
+
+    @property
+    def SystemPrompt(self):
+        r"""<p>系统提示词。</p>
+        :rtype: str
+        """
+        return self._SystemPrompt
+
+    @SystemPrompt.setter
+    def SystemPrompt(self, SystemPrompt):
+        self._SystemPrompt = SystemPrompt
+
+    @property
+    def FailureMessage(self):
+        r"""<p>LLM 调用失败后，使用此文本生成 TTS音频。</p>
+        :rtype: str
+        """
+        return self._FailureMessage
+
+    @FailureMessage.setter
+    def FailureMessage(self, FailureMessage):
+        self._FailureMessage = FailureMessage
+
+    @property
+    def MaxTokens(self):
+        r"""<p>单次回复最大 Token 数，0=不限制，默认值为0。注意：如果模型输出token数量大于设置的MaxTokens的值，会截断回复内容。</p>
+        :rtype: int
+        """
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
+    @property
+    def ThinkingMode(self):
+        r"""<p>是否开启思考模式（需结合提供厂商具体使用）。注意：开启思考模式会占用输出token数。</p>
+        :rtype: bool
+        """
+        return self._ThinkingMode
+
+    @ThinkingMode.setter
+    def ThinkingMode(self, ThinkingMode):
+        self._ThinkingMode = ThinkingMode
+
+    @property
+    def MaxHistory(self):
+        r"""<p>LLM 中缓存的对话轮次数量，范围 0~50。建议值[10, 30]。注意：指定轮次上下文的总 token 数不能超过 LLM 支持的上限。</p>
+        :rtype: int
+        """
+        return self._MaxHistory
+
+    @MaxHistory.setter
+    def MaxHistory(self, MaxHistory):
+        self._MaxHistory = MaxHistory
+
+    @property
+    def MaxToolRound(self):
+        r"""<p>MCP 工具调用最大轮次，范围 0~50，默认 10。</p>
+        :rtype: int
+        """
+        return self._MaxToolRound
+
+    @MaxToolRound.setter
+    def MaxToolRound(self, MaxToolRound):
+        self._MaxToolRound = MaxToolRound
+
+    @property
+    def Timeout(self):
+        r"""<p>单次请求的超时事件（毫秒），范围 1000~60000，默认 10000。</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Temperature(self):
+        r"""<p>采样温度，范围 0.0~2.0，默认 1.0。</p>
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        r"""<p>采样概率，范围 0.0~1.0，默认 1.0。</p>
+        :rtype: float
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
+    @property
+    def McpServer(self):
+        r"""<p>Mcp Server参数。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.VoiceConversationMcpServer`
+        """
+        return self._McpServer
+
+    @McpServer.setter
+    def McpServer(self, McpServer):
+        self._McpServer = McpServer
+
+    @property
+    def CustomHeaders(self):
+        r"""<p>自定义 HTTP 请求头。</p>
+        :rtype: list of KeyValueItem
+        """
+        return self._CustomHeaders
+
+    @CustomHeaders.setter
+    def CustomHeaders(self, CustomHeaders):
+        self._CustomHeaders = CustomHeaders
+
+    @property
+    def CustomFields(self):
+        r"""<p>各厂商独有的扩展参数（如 DeepSeek 的<code>reasoning_effort</code>、混元的 <code>enable_enhancement</code> 等）。</p>
+        :rtype: list of KeyValueItem
+        """
+        return self._CustomFields
+
+    @CustomFields.setter
+    def CustomFields(self, CustomFields):
+        self._CustomFields = CustomFields
+
+    @property
+    def HistoryMessages(self):
+        r"""<p>初始历史消息，每项为 <code>{&quot;Role&quot;: &quot;user&quot;/&quot;assistant&quot;/&quot;system&quot;, &quot;Content&quot;: &quot;xxx&quot;}</code>这种格式。</p>
+        :rtype: list of VoiceConversationHistoryMessage
+        """
+        return self._HistoryMessages
+
+    @HistoryMessages.setter
+    def HistoryMessages(self, HistoryMessages):
+        self._HistoryMessages = HistoryMessages
+
+
+    def _deserialize(self, params):
+        self._LLMType = params.get("LLMType")
+        self._Model = params.get("Model")
+        self._APIUrl = params.get("APIUrl")
+        self._APIKey = params.get("APIKey")
+        self._SystemPrompt = params.get("SystemPrompt")
+        self._FailureMessage = params.get("FailureMessage")
+        self._MaxTokens = params.get("MaxTokens")
+        self._ThinkingMode = params.get("ThinkingMode")
+        self._MaxHistory = params.get("MaxHistory")
+        self._MaxToolRound = params.get("MaxToolRound")
+        self._Timeout = params.get("Timeout")
+        self._Temperature = params.get("Temperature")
+        self._TopP = params.get("TopP")
+        if params.get("McpServer") is not None:
+            self._McpServer = VoiceConversationMcpServer()
+            self._McpServer._deserialize(params.get("McpServer"))
+        if params.get("CustomHeaders") is not None:
+            self._CustomHeaders = []
+            for item in params.get("CustomHeaders"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._CustomHeaders.append(obj)
+        if params.get("CustomFields") is not None:
+            self._CustomFields = []
+            for item in params.get("CustomFields"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._CustomFields.append(obj)
+        if params.get("HistoryMessages") is not None:
+            self._HistoryMessages = []
+            for item in params.get("HistoryMessages"):
+                obj = VoiceConversationHistoryMessage()
+                obj._deserialize(item)
+                self._HistoryMessages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationMcpServer(AbstractModel):
+    r"""Mcp Sever参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>mcp唯一标识符。</p>
+        :type Name: str
+        :param _Url: <p>接入地址。</p>
+        :type Url: str
+        :param _Timeout: <p>请求超时，单位ms，默认 5000。待确认范围。</p><p>单位：毫秒。</p>
+        :type Timeout: int
+        :param _Headers: <p>自定义请求header，用于填写鉴权等信息。</p>
+        :type Headers: list of KeyValueItem
+        :param _ToolList: <p>工具使用白名单。</p>
+        :type ToolList: list of str
+        """
+        self._Name = None
+        self._Url = None
+        self._Timeout = None
+        self._Headers = None
+        self._ToolList = None
+
+    @property
+    def Name(self):
+        r"""<p>mcp唯一标识符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Url(self):
+        r"""<p>接入地址。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Timeout(self):
+        r"""<p>请求超时，单位ms，默认 5000。待确认范围。</p><p>单位：毫秒。</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Headers(self):
+        r"""<p>自定义请求header，用于填写鉴权等信息。</p>
+        :rtype: list of KeyValueItem
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def ToolList(self):
+        r"""<p>工具使用白名单。</p>
+        :rtype: list of str
+        """
+        return self._ToolList
+
+    @ToolList.setter
+    def ToolList(self, ToolList):
+        self._ToolList = ToolList
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Url = params.get("Url")
+        self._Timeout = params.get("Timeout")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = KeyValueItem()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._ToolList = params.get("ToolList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationS2SConfig(AbstractModel):
+    r"""AI对话任务端到端语音大模型的配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: <p>S2S 厂商标识，例如&quot;tencent&quot;。</p>
+        :type Provider: str
+        :param _Params: <p>厂商专属参数，JSON 序列化后的字符串。</p>
+        :type Params: str
+        :param _WelcomeMessage: <p>主播首次进房主动播报的欢迎语，主播退房后再次进房也会播报。</p>
+        :type WelcomeMessage: str
+        """
+        self._Provider = None
+        self._Params = None
+        self._WelcomeMessage = None
+
+    @property
+    def Provider(self):
+        r"""<p>S2S 厂商标识，例如&quot;tencent&quot;。</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Params(self):
+        r"""<p>厂商专属参数，JSON 序列化后的字符串。</p>
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def WelcomeMessage(self):
+        r"""<p>主播首次进房主动播报的欢迎语，主播退房后再次进房也会播报。</p>
+        :rtype: str
+        """
+        return self._WelcomeMessage
+
+    @WelcomeMessage.setter
+    def WelcomeMessage(self, WelcomeMessage):
+        self._WelcomeMessage = WelcomeMessage
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._Params = params.get("Params")
+        self._WelcomeMessage = params.get("WelcomeMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationSTTConfig(AbstractModel):
+    r"""AI对话任务的STT配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: <p>ASR 提供方：trtc（腾讯自研）或第三方厂商名称（如 azure）。</p>
+        :type Provider: str
+        :param _Params: <p>ASR厂商专属参数，填写JSON 序列化后的字符串。</p>
+        :type Params: str
+        """
+        self._Provider = None
+        self._Params = None
+
+    @property
+    def Provider(self):
+        r"""<p>ASR 提供方：trtc（腾讯自研）或第三方厂商名称（如 azure）。</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Params(self):
+        r"""<p>ASR厂商专属参数，填写JSON 序列化后的字符串。</p>
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationTTSConfig(AbstractModel):
+    r"""对话任务的TTS配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: <p>TTS 提供厂商，例如trtc。</p>
+        :type Provider: str
+        :param _Params: <p>厂商专属参数，JSON 序列化后的字符串。</p>
+        :type Params: str
+        """
+        self._Provider = None
+        self._Params = None
+
+    @property
+    def Provider(self):
+        r"""<p>TTS 提供厂商，例如trtc。</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Params(self):
+        r"""<p>厂商专属参数，JSON 序列化后的字符串。</p>
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceConversationVisionConfig(AbstractModel):
+    r"""AI对话视觉理解相关的参数配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enable: <p>是否启用视觉理解。</p>
+        :type Enable: bool
+        :param _StorageType: <p>存储类型。</p><p>枚举值：</p><ul><li>0： 不存储。</li><li>1： 指定云存储，这种情况下CloudStorage参数必填。</li></ul><p>默认值：0</p>
+        :type StorageType: int
+        :param _CloudStorage: <p>第三方云存储归档配置。配置后，后台将从 SDK 收到的 I 帧自动上传至指定云存储桶进行持久化保存。</p>
+        :type CloudStorage: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        """
+        self._Enable = None
+        self._StorageType = None
+        self._CloudStorage = None
+
+    @property
+    def Enable(self):
+        r"""<p>是否启用视觉理解。</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def StorageType(self):
+        r"""<p>存储类型。</p><p>枚举值：</p><ul><li>0： 不存储。</li><li>1： 指定云存储，这种情况下CloudStorage参数必填。</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def CloudStorage(self):
+        r"""<p>第三方云存储归档配置。配置后，后台将从 SDK 收到的 I 帧自动上传至指定云存储桶进行持久化保存。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudStorage`
+        """
+        return self._CloudStorage
+
+    @CloudStorage.setter
+    def CloudStorage(self, CloudStorage):
+        self._CloudStorage = CloudStorage
+
+
+    def _deserialize(self, params):
+        self._Enable = params.get("Enable")
+        self._StorageType = params.get("StorageType")
+        if params.get("CloudStorage") is not None:
+            self._CloudStorage = CloudStorage()
+            self._CloudStorage._deserialize(params.get("CloudStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VoicePrint(AbstractModel):
     r"""声纹配置参数
 
@@ -23206,6 +25902,72 @@ class VoicePrint(AbstractModel):
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
         self._IdList = params.get("IdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoicePrintBatchDeleteResult(AbstractModel):
+    r"""批量删除逐项结果（VoicePrintBatchDelete 出参 Results 元素）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoicePrintId: <p>本项对应的声纹 ID。成功项与失败项均会返回。<br>示例值：59d83c76-8f4e-4a1b-9c2d-0e7f8a6b5c4d</p>
+        :type VoicePrintId: str
+        :param _ErrorCode: <p>本项失败时的错误码，成功项为空。常见值：FailedOperation.VoicePrintNotFound（声纹不存在或已删除）、InvalidParameterValue.InvalidVoicePrintId（ID 格式非法）。<br>示例值：FailedOperation.VoicePrintNotFound</p>
+        :type ErrorCode: str
+        :param _ErrorMessage: <p>本项失败时的错误描述，成功项为空。<br>示例值：voiceprint not found</p>
+        :type ErrorMessage: str
+        """
+        self._VoicePrintId = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+
+    @property
+    def VoicePrintId(self):
+        r"""<p>本项对应的声纹 ID。成功项与失败项均会返回。<br>示例值：59d83c76-8f4e-4a1b-9c2d-0e7f8a6b5c4d</p>
+        :rtype: str
+        """
+        return self._VoicePrintId
+
+    @VoicePrintId.setter
+    def VoicePrintId(self, VoicePrintId):
+        self._VoicePrintId = VoicePrintId
+
+    @property
+    def ErrorCode(self):
+        r"""<p>本项失败时的错误码，成功项为空。常见值：FailedOperation.VoicePrintNotFound（声纹不存在或已删除）、InvalidParameterValue.InvalidVoicePrintId（ID 格式非法）。<br>示例值：FailedOperation.VoicePrintNotFound</p>
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>本项失败时的错误描述，成功项为空。<br>示例值：voiceprint not found</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._VoicePrintId = params.get("VoicePrintId")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
