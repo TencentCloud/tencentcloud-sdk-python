@@ -14558,23 +14558,35 @@ class ModifyCopyPairAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CopyPairId: <p>要修改属性的复制对id</p>
+        :param _CopyPairId: <p>要修改属性的复制对ID</p>
         :type CopyPairId: str
-        :param _CopyPairType: <p>要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE</p>
+        :param _CopyPairType: <p>要修改的复制对类型，可选值：INSTANCE。</p><p>枚举值：</p><ul><li>INSTANCE： CVM复制对</li></ul>
         :type CopyPairType: str
         :param _CopyPairName: <p>修改复制对名称（长度最大支持 64 个字符）</p>
         :type CopyPairName: str
         :param _InstanceType: <p>容灾端实例类型（仅容灾端CVM未创建时可修改）</p>
         :type InstanceType: str
+        :param _PrivateIpAddress: <p>容灾端实例VPC IP（仅容灾端CVM未创建时可修改）</p>
+        :type PrivateIpAddress: str
+        :param _UseDefaultPrivateIp: <p>是否使用默认IP，与PrivateIpAddress互斥，不能同时使用（仅容灾端CVM未创建时可修改）</p>
+        :type UseDefaultPrivateIp: bool
+        :param _LoginSettings: <p>实例登录设置，需要修改的时候才传（仅容灾端CVM未创建时可修改）</p>
+        :type LoginSettings: :class:`tencentcloud.bdrc.v20260330.models.LoginSettings`
+        :param _UseDefaultPassword: <p>是否自动生成密码，与LoginSettings互斥，不能同时使用（仅容灾端CVM未创建时可修改）</p>
+        :type UseDefaultPassword: bool
         """
         self._CopyPairId = None
         self._CopyPairType = None
         self._CopyPairName = None
         self._InstanceType = None
+        self._PrivateIpAddress = None
+        self._UseDefaultPrivateIp = None
+        self._LoginSettings = None
+        self._UseDefaultPassword = None
 
     @property
     def CopyPairId(self):
-        r"""<p>要修改属性的复制对id</p>
+        r"""<p>要修改属性的复制对ID</p>
         :rtype: str
         """
         return self._CopyPairId
@@ -14585,7 +14597,7 @@ class ModifyCopyPairAttributeRequest(AbstractModel):
 
     @property
     def CopyPairType(self):
-        r"""<p>要修改的复制对类型，可选值：DISK、INSTANCE、CFS，默认 INSTANCE</p>
+        r"""<p>要修改的复制对类型，可选值：INSTANCE。</p><p>枚举值：</p><ul><li>INSTANCE： CVM复制对</li></ul>
         :rtype: str
         """
         return self._CopyPairType
@@ -14616,12 +14628,62 @@ class ModifyCopyPairAttributeRequest(AbstractModel):
     def InstanceType(self, InstanceType):
         self._InstanceType = InstanceType
 
+    @property
+    def PrivateIpAddress(self):
+        r"""<p>容灾端实例VPC IP（仅容灾端CVM未创建时可修改）</p>
+        :rtype: str
+        """
+        return self._PrivateIpAddress
+
+    @PrivateIpAddress.setter
+    def PrivateIpAddress(self, PrivateIpAddress):
+        self._PrivateIpAddress = PrivateIpAddress
+
+    @property
+    def UseDefaultPrivateIp(self):
+        r"""<p>是否使用默认IP，与PrivateIpAddress互斥，不能同时使用（仅容灾端CVM未创建时可修改）</p>
+        :rtype: bool
+        """
+        return self._UseDefaultPrivateIp
+
+    @UseDefaultPrivateIp.setter
+    def UseDefaultPrivateIp(self, UseDefaultPrivateIp):
+        self._UseDefaultPrivateIp = UseDefaultPrivateIp
+
+    @property
+    def LoginSettings(self):
+        r"""<p>实例登录设置，需要修改的时候才传（仅容灾端CVM未创建时可修改）</p>
+        :rtype: :class:`tencentcloud.bdrc.v20260330.models.LoginSettings`
+        """
+        return self._LoginSettings
+
+    @LoginSettings.setter
+    def LoginSettings(self, LoginSettings):
+        self._LoginSettings = LoginSettings
+
+    @property
+    def UseDefaultPassword(self):
+        r"""<p>是否自动生成密码，与LoginSettings互斥，不能同时使用（仅容灾端CVM未创建时可修改）</p>
+        :rtype: bool
+        """
+        return self._UseDefaultPassword
+
+    @UseDefaultPassword.setter
+    def UseDefaultPassword(self, UseDefaultPassword):
+        self._UseDefaultPassword = UseDefaultPassword
+
 
     def _deserialize(self, params):
         self._CopyPairId = params.get("CopyPairId")
         self._CopyPairType = params.get("CopyPairType")
         self._CopyPairName = params.get("CopyPairName")
         self._InstanceType = params.get("InstanceType")
+        self._PrivateIpAddress = params.get("PrivateIpAddress")
+        self._UseDefaultPrivateIp = params.get("UseDefaultPrivateIp")
+        if params.get("LoginSettings") is not None:
+            self._LoginSettings = LoginSettings()
+            self._LoginSettings._deserialize(params.get("LoginSettings"))
+        self._UseDefaultPassword = params.get("UseDefaultPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17486,20 +17548,23 @@ class RunFailoverCopyPairsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CopyPairIds: 复制对ID列表
+        :param _CopyPairIds: <p>复制对ID列表</p>
         :type CopyPairIds: list of str
-        :param _CopyPairType: 复制对类型，枚举值：DISK / INSTANCE / CFS。
+        :param _CopyPairType: <p>复制对类型，枚举值：INSTANCE。</p><p>枚举值：</p><ul><li>INSTANCE： CVM复制对</li></ul>
         :type CopyPairType: str
-        :param _FailoverType: 切换类型，支持WAIT和NOW
+        :param _FailoverType: <p>切换类型，支持WAIT和NOW</p>
         :type FailoverType: str
+        :param _StopSourceInstance: <p>故障切换成功后是否自动关机生产端实例，默认为true</p>
+        :type StopSourceInstance: bool
         """
         self._CopyPairIds = None
         self._CopyPairType = None
         self._FailoverType = None
+        self._StopSourceInstance = None
 
     @property
     def CopyPairIds(self):
-        r"""复制对ID列表
+        r"""<p>复制对ID列表</p>
         :rtype: list of str
         """
         return self._CopyPairIds
@@ -17510,7 +17575,7 @@ class RunFailoverCopyPairsRequest(AbstractModel):
 
     @property
     def CopyPairType(self):
-        r"""复制对类型，枚举值：DISK / INSTANCE / CFS。
+        r"""<p>复制对类型，枚举值：INSTANCE。</p><p>枚举值：</p><ul><li>INSTANCE： CVM复制对</li></ul>
         :rtype: str
         """
         return self._CopyPairType
@@ -17521,7 +17586,7 @@ class RunFailoverCopyPairsRequest(AbstractModel):
 
     @property
     def FailoverType(self):
-        r"""切换类型，支持WAIT和NOW
+        r"""<p>切换类型，支持WAIT和NOW</p>
         :rtype: str
         """
         return self._FailoverType
@@ -17530,11 +17595,23 @@ class RunFailoverCopyPairsRequest(AbstractModel):
     def FailoverType(self, FailoverType):
         self._FailoverType = FailoverType
 
+    @property
+    def StopSourceInstance(self):
+        r"""<p>故障切换成功后是否自动关机生产端实例，默认为true</p>
+        :rtype: bool
+        """
+        return self._StopSourceInstance
+
+    @StopSourceInstance.setter
+    def StopSourceInstance(self, StopSourceInstance):
+        self._StopSourceInstance = StopSourceInstance
+
 
     def _deserialize(self, params):
         self._CopyPairIds = params.get("CopyPairIds")
         self._CopyPairType = params.get("CopyPairType")
         self._FailoverType = params.get("FailoverType")
+        self._StopSourceInstance = params.get("StopSourceInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17552,7 +17629,7 @@ class RunFailoverCopyPairsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 故障切换任务ID
+        :param _TaskId: <p>故障切换任务ID</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17562,7 +17639,7 @@ class RunFailoverCopyPairsResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""故障切换任务ID
+        r"""<p>故障切换任务ID</p>
         :rtype: int
         """
         return self._TaskId

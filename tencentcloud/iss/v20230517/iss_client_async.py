@@ -1469,6 +1469,24 @@ class IssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListVLPlanResults(
+            self,
+            request: models.ListVLPlanResultsRequest,
+            opts: Dict = None,
+    ) -> models.ListVLPlanResultsResponse:
+        """
+        获取视觉理解计划结果列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListVLPlanResults"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListVLPlanResultsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListVLPlans(
             self,
             request: models.ListVLPlansRequest,

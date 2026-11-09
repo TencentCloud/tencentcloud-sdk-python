@@ -1499,6 +1499,134 @@ class AndroidInstanceLabelDetail(AbstractModel):
         
 
 
+class AndroidInstanceMCPToken(AbstractModel):
+    r"""安卓实例MCP Token
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TokenId: <p>内部 ID，格式 k_ + 16 位 hex</p>
+        :type TokenId: str
+        :param _Role: <p>ROOT / USER（大小写敏感），默认 USER。ROOT 可访问该 AppId 下全部实例</p>
+        :type Role: str
+        :param _TokenName: <p>备注名</p>
+        :type TokenName: str
+        :param _AllowedInstanceIds: <p>USER 角色可访问的实例白名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowedInstanceIds: list of str
+        :param _CreateTime: <p>创建时间</p><p>参数格式：ISO8601 字符串；</p>
+        :type CreateTime: str
+        :param _ExpiresTime: <p>过期时间</p><p>参数格式：ISO8601 字符串；永不过期时为空串</p>
+        :type ExpiresTime: str
+        :param _Status: <p>或 EXPIRED；EXPIRED 由 ExpiresTime 推导。已删除的不出现在列表里</p><p>枚举值：</p><ul><li>ACTIVE： 正常可用的</li><li>EXPIRED： 过期的</li></ul>
+        :type Status: str
+        """
+        self._TokenId = None
+        self._Role = None
+        self._TokenName = None
+        self._AllowedInstanceIds = None
+        self._CreateTime = None
+        self._ExpiresTime = None
+        self._Status = None
+
+    @property
+    def TokenId(self):
+        r"""<p>内部 ID，格式 k_ + 16 位 hex</p>
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def Role(self):
+        r"""<p>ROOT / USER（大小写敏感），默认 USER。ROOT 可访问该 AppId 下全部实例</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def TokenName(self):
+        r"""<p>备注名</p>
+        :rtype: str
+        """
+        return self._TokenName
+
+    @TokenName.setter
+    def TokenName(self, TokenName):
+        self._TokenName = TokenName
+
+    @property
+    def AllowedInstanceIds(self):
+        r"""<p>USER 角色可访问的实例白名单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._AllowedInstanceIds
+
+    @AllowedInstanceIds.setter
+    def AllowedInstanceIds(self, AllowedInstanceIds):
+        self._AllowedInstanceIds = AllowedInstanceIds
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：ISO8601 字符串；</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpiresTime(self):
+        r"""<p>过期时间</p><p>参数格式：ISO8601 字符串；永不过期时为空串</p>
+        :rtype: str
+        """
+        return self._ExpiresTime
+
+    @ExpiresTime.setter
+    def ExpiresTime(self, ExpiresTime):
+        self._ExpiresTime = ExpiresTime
+
+    @property
+    def Status(self):
+        r"""<p>或 EXPIRED；EXPIRED 由 ExpiresTime 推导。已删除的不出现在列表里</p><p>枚举值：</p><ul><li>ACTIVE： 正常可用的</li><li>EXPIRED： 过期的</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        self._Role = params.get("Role")
+        self._TokenName = params.get("TokenName")
+        self._AllowedInstanceIds = params.get("AllowedInstanceIds")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpiresTime = params.get("ExpiresTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AndroidInstanceProperty(AbstractModel):
     r"""安卓实例属性
 
@@ -3227,6 +3355,81 @@ class CreateAndroidInstanceMCPTokenRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Role: <p>ROOT / USER（大小写敏感），默认 USER。ROOT 可访问该 AppId 下全部实例</p><p>枚举值：</p><ul><li>ROOT： 可访问该 AppId 下全部实例</li><li>USER： 可访问本角色实例白名单内的实例</li></ul><p>默认值：USER</p>
+        :type Role: str
+        :param _ExpireSeconds: <p>有效期（秒）；0 或不传表示永不过期（负值等同不过期）</p>
+        :type ExpireSeconds: int
+        :param _TokenName: <p>备注名</p>
+        :type TokenName: str
+        :param _AllowedInstanceIds: <p>USER 角色可访问的实例白名单</p>
+        :type AllowedInstanceIds: list of str
+        """
+        self._Role = None
+        self._ExpireSeconds = None
+        self._TokenName = None
+        self._AllowedInstanceIds = None
+
+    @property
+    def Role(self):
+        r"""<p>ROOT / USER（大小写敏感），默认 USER。ROOT 可访问该 AppId 下全部实例</p><p>枚举值：</p><ul><li>ROOT： 可访问该 AppId 下全部实例</li><li>USER： 可访问本角色实例白名单内的实例</li></ul><p>默认值：USER</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def ExpireSeconds(self):
+        r"""<p>有效期（秒）；0 或不传表示永不过期（负值等同不过期）</p>
+        :rtype: int
+        """
+        return self._ExpireSeconds
+
+    @ExpireSeconds.setter
+    def ExpireSeconds(self, ExpireSeconds):
+        self._ExpireSeconds = ExpireSeconds
+
+    @property
+    def TokenName(self):
+        r"""<p>备注名</p>
+        :rtype: str
+        """
+        return self._TokenName
+
+    @TokenName.setter
+    def TokenName(self, TokenName):
+        self._TokenName = TokenName
+
+    @property
+    def AllowedInstanceIds(self):
+        r"""<p>USER 角色可访问的实例白名单</p>
+        :rtype: list of str
+        """
+        return self._AllowedInstanceIds
+
+    @AllowedInstanceIds.setter
+    def AllowedInstanceIds(self, AllowedInstanceIds):
+        self._AllowedInstanceIds = AllowedInstanceIds
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._ExpireSeconds = params.get("ExpireSeconds")
+        self._TokenName = params.get("TokenName")
+        self._AllowedInstanceIds = params.get("AllowedInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateAndroidInstanceMCPTokenResponse(AbstractModel):
     r"""CreateAndroidInstanceMCPToken返回参数结构体
@@ -3235,10 +3438,38 @@ class CreateAndroidInstanceMCPTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TokenId: <p>内部 ID，格式 k_ + 16 位 hex</p>
+        :type TokenId: str
+        :param _Token: <p>明文 token，格式 mcpk_ + 48 位 hex。服务端只存 sha256，只返回这一次</p>
+        :type Token: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TokenId = None
+        self._Token = None
         self._RequestId = None
+
+    @property
+    def TokenId(self):
+        r"""<p>内部 ID，格式 k_ + 16 位 hex</p>
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def Token(self):
+        r"""<p>明文 token，格式 mcpk_ + 48 位 hex。服务端只存 sha256，只返回这一次</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
 
     @property
     def RequestId(self):
@@ -3253,6 +3484,8 @@ class CreateAndroidInstanceMCPTokenResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        self._Token = params.get("Token")
         self._RequestId = params.get("RequestId")
 
 
@@ -5046,6 +5279,36 @@ class DeleteAndroidInstanceMCPTokenRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TokenId: <p>内部 ID，格式 k_ + 16 位 hex</p>
+        :type TokenId: str
+        """
+        self._TokenId = None
+
+    @property
+    def TokenId(self):
+        r"""<p>内部 ID，格式 k_ + 16 位 hex</p>
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+
+    def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteAndroidInstanceMCPTokenResponse(AbstractModel):
     r"""DeleteAndroidInstanceMCPToken返回参数结构体
@@ -5782,6 +6045,51 @@ class DescribeAndroidInstanceMCPTokensRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Offset: <p>偏移量，默认为 0</p>
+        :type Offset: int
+        :param _Limit: <p>本次请求单次返回数据条数，用于分页控制</p><p>取值范围：[0, 100]</p><p>默认值：10</p>
+        :type Limit: int
+        """
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>本次请求单次返回数据条数，用于分页控制</p><p>取值范围：[0, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeAndroidInstanceMCPTokensResponse(AbstractModel):
     r"""DescribeAndroidInstanceMCPTokens返回参数结构体
@@ -5790,10 +6098,40 @@ class DescribeAndroidInstanceMCPTokensResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Tokens: <p>Token列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tokens: list of AndroidInstanceMCPToken
+        :param _TotalCount: <p>Token总数</p><p>单位：个</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Tokens = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def Tokens(self):
+        r"""<p>Token列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AndroidInstanceMCPToken
+        """
+        return self._Tokens
+
+    @Tokens.setter
+    def Tokens(self, Tokens):
+        self._Tokens = Tokens
+
+    @property
+    def TotalCount(self):
+        r"""<p>Token总数</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -5808,6 +6146,13 @@ class DescribeAndroidInstanceMCPTokensResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Tokens") is not None:
+            self._Tokens = []
+            for item in params.get("Tokens"):
+                obj = AndroidInstanceMCPToken()
+                obj._deserialize(item)
+                self._Tokens.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9528,6 +9873,51 @@ class RenewAndroidInstanceMCPTokenRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TokenId: <p>内部 ID，格式 k_ + 16 位 hex</p>
+        :type TokenId: str
+        :param _ExpireSeconds: <p>有效期（秒），必须大于 0</p><p>单位：秒</p>
+        :type ExpireSeconds: int
+        """
+        self._TokenId = None
+        self._ExpireSeconds = None
+
+    @property
+    def TokenId(self):
+        r"""<p>内部 ID，格式 k_ + 16 位 hex</p>
+        :rtype: str
+        """
+        return self._TokenId
+
+    @TokenId.setter
+    def TokenId(self, TokenId):
+        self._TokenId = TokenId
+
+    @property
+    def ExpireSeconds(self):
+        r"""<p>有效期（秒），必须大于 0</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ExpireSeconds
+
+    @ExpireSeconds.setter
+    def ExpireSeconds(self, ExpireSeconds):
+        self._ExpireSeconds = ExpireSeconds
+
+
+    def _deserialize(self, params):
+        self._TokenId = params.get("TokenId")
+        self._ExpireSeconds = params.get("ExpireSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class RenewAndroidInstanceMCPTokenResponse(AbstractModel):
     r"""RenewAndroidInstanceMCPToken返回参数结构体
@@ -9536,10 +9926,24 @@ class RenewAndroidInstanceMCPTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ExpiresTime: <p>过期时间，ISO8601 字符串；token 永不过期时为空串</p>
+        :type ExpiresTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ExpiresTime = None
         self._RequestId = None
+
+    @property
+    def ExpiresTime(self):
+        r"""<p>过期时间，ISO8601 字符串；token 永不过期时为空串</p>
+        :rtype: str
+        """
+        return self._ExpiresTime
+
+    @ExpiresTime.setter
+    def ExpiresTime(self, ExpiresTime):
+        self._ExpiresTime = ExpiresTime
 
     @property
     def RequestId(self):
@@ -9554,6 +9958,7 @@ class RenewAndroidInstanceMCPTokenResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ExpiresTime = params.get("ExpiresTime")
         self._RequestId = params.get("RequestId")
 
 

@@ -683,6 +683,31 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyApiKeyBindings(self, request):
+        r"""更新 API 密钥绑定。
+
+        更新 API 密钥的绑定关系和绑定类型。BindType 为 all 时 Bindings 必须为空，BindType含 custom 时 Bindings 为绑定列表。
+
+        :param request: Request instance for ModifyApiKeyBindings.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyBindingsRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.ModifyApiKeyBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApiKeyBindings", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApiKeyBindingsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyApiKeyInfo(self, request):
         r"""更新 API 密钥信息。
 

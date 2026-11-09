@@ -4792,14 +4792,14 @@ class DescribeExtractDocAgentJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务唯一ID。由服务端生成。
+        :param _JobId: <p>任务唯一ID。由服务端生成。</p>
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务唯一ID。由服务端生成。
+        r"""<p>任务唯一ID。由服务端生成。</p>
         :rtype: str
         """
         return self._JobId
@@ -4828,18 +4828,20 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :param _Angle: <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
         :type Angle: float
-        :param _StructuralList: 配置结构化文本信息。
+        :param _StructuralList: <p>配置结构化文本信息。AgentType为0按照这个结构返回</p>
         :type StructuralList: list of GroupInfo
-        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :param _ErrorCode: <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :type ErrorCode: str
-        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :param _ErrorMessage: <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :type ErrorMessage: str
-        :param _JobStatus: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :param _JobStatus: <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :type JobStatus: str
-        :param _ThoughtContent: 思考过程
+        :param _ThoughtContent: <p>思考过程</p>
         :type ThoughtContent: str
+        :param _AgentResultJson: <p>定制的json结构字符串，主要用于快速定制输出的agent输出结构。推荐用于POC场景</p>
+        :type AgentResultJson: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4849,11 +4851,12 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
         self._ErrorMessage = None
         self._JobStatus = None
         self._ThoughtContent = None
+        self._AgentResultJson = None
         self._RequestId = None
 
     @property
     def Angle(self):
-        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        r"""<p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
         :rtype: float
         """
         return self._Angle
@@ -4864,7 +4867,7 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
 
     @property
     def StructuralList(self):
-        r"""配置结构化文本信息。
+        r"""<p>配置结构化文本信息。AgentType为0按照这个结构返回</p>
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -4875,7 +4878,7 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        r"""<p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :rtype: str
         """
         return self._ErrorCode
@@ -4886,7 +4889,7 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        r"""<p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -4897,7 +4900,7 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
 
     @property
     def JobStatus(self):
-        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        r"""<p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :rtype: str
         """
         return self._JobStatus
@@ -4908,7 +4911,7 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
 
     @property
     def ThoughtContent(self):
-        r"""思考过程
+        r"""<p>思考过程</p>
         :rtype: str
         """
         return self._ThoughtContent
@@ -4916,6 +4919,17 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
     @ThoughtContent.setter
     def ThoughtContent(self, ThoughtContent):
         self._ThoughtContent = ThoughtContent
+
+    @property
+    def AgentResultJson(self):
+        r"""<p>定制的json结构字符串，主要用于快速定制输出的agent输出结构。推荐用于POC场景</p>
+        :rtype: str
+        """
+        return self._AgentResultJson
+
+    @AgentResultJson.setter
+    def AgentResultJson(self, AgentResultJson):
+        self._AgentResultJson = AgentResultJson
 
     @property
     def RequestId(self):
@@ -4941,6 +4955,7 @@ class DescribeExtractDocAgentJobResponse(AbstractModel):
         self._ErrorMessage = params.get("ErrorMessage")
         self._JobStatus = params.get("JobStatus")
         self._ThoughtContent = params.get("ThoughtContent")
+        self._AgentResultJson = params.get("AgentResultJson")
         self._RequestId = params.get("RequestId")
 
 
@@ -31050,6 +31065,8 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
         :type FileEndPageNumber: int
         :param _ModelConfig: <p>model_hunyuan:选择混元底座视觉大模型精调抽取任务  model_youtu：选择优图底座多模态大模型精调抽取任务</p>
         :type ModelConfig: str
+        :param _AgentType: <p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示标准抽取Agent</p><p>1:表示合同协议分类+抽取+审核Agent</p>
+        :type AgentType: int
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -31059,6 +31076,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
         self._FileStartPageNumber = None
         self._FileEndPageNumber = None
         self._ModelConfig = None
+        self._AgentType = None
 
     @property
     def ImageBase64(self):
@@ -31152,6 +31170,17 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
     def ModelConfig(self, ModelConfig):
         self._ModelConfig = ModelConfig
 
+    @property
+    def AgentType(self):
+        r"""<p>agent支持的类型枚举,不同类型输出结果不一样，默认为0</p><p>0:表示标准抽取Agent</p><p>1:表示合同协议分类+抽取+审核Agent</p>
+        :rtype: int
+        """
+        return self._AgentType
+
+    @AgentType.setter
+    def AgentType(self, AgentType):
+        self._AgentType = AgentType
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -31167,6 +31196,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
         self._FileStartPageNumber = params.get("FileStartPageNumber")
         self._FileEndPageNumber = params.get("FileEndPageNumber")
         self._ModelConfig = params.get("ModelConfig")
+        self._AgentType = params.get("AgentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

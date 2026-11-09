@@ -8216,6 +8216,12 @@ class CallSource(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DeploymentUuid: <p>环境 UUID（来源于上报字段 channel_uuid）；公有云可为空，不能用 deployment_type 替代</p>
+        :type DeploymentUuid: str
+        :param _SpaceId: <p>空间 ID</p>
+        :type SpaceId: str
+        :param _SpaceName: <p>空间名称；空间不存在或查询失败时为空</p>
+        :type SpaceName: str
         :param _SubjectId: <p>调用主体 ID，含义由 subject_type 决定（如 app_id、kb_id 等）</p>
         :type SubjectId: str
         :param _SubjectName: <p>调用主体名称</p>
@@ -8223,9 +8229,45 @@ class CallSource(AbstractModel):
         :param _SubjectType: <p>调用主体类型：APP/KB/WIDGET/OPEN_CLAW/KB_RECALL_TEST/WORKBENCH/MODEL_API</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>METRIC_SOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>METRIC_SOURCE_TYPE_APP</td><td>1</td><td>应用开发</td></tr><tr><td>METRIC_SOURCE_TYPE_KB</td><td>2</td><td>知识库</td></tr><tr><td>METRIC_SOURCE_TYPE_WIDGET</td><td>3</td><td>Widget</td></tr><tr><td>METRIC_SOURCE_TYPE_OPEN_CLAW</td><td>4</td><td>ClawPro</td></tr><tr><td>METRIC_SOURCE_TYPE_KB_RECALL_TEST</td><td>5</td><td>知识库召回测试</td></tr><tr><td>METRIC_SOURCE_TYPE_WORKBENCH</td><td>6</td><td>智能工作台</td></tr><tr><td>METRIC_SOURCE_TYPE_MODEL_API</td><td>7</td><td>模型 API 调用</td></tr></tbody></table>
         :type SubjectType: int
         """
+        self._DeploymentUuid = None
+        self._SpaceId = None
+        self._SpaceName = None
         self._SubjectId = None
         self._SubjectName = None
         self._SubjectType = None
+
+    @property
+    def DeploymentUuid(self):
+        r"""<p>环境 UUID（来源于上报字段 channel_uuid）；公有云可为空，不能用 deployment_type 替代</p>
+        :rtype: str
+        """
+        return self._DeploymentUuid
+
+    @DeploymentUuid.setter
+    def DeploymentUuid(self, DeploymentUuid):
+        self._DeploymentUuid = DeploymentUuid
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间 ID</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def SpaceName(self):
+        r"""<p>空间名称；空间不存在或查询失败时为空</p>
+        :rtype: str
+        """
+        return self._SpaceName
+
+    @SpaceName.setter
+    def SpaceName(self, SpaceName):
+        self._SpaceName = SpaceName
 
     @property
     def SubjectId(self):
@@ -8262,6 +8304,9 @@ class CallSource(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DeploymentUuid = params.get("DeploymentUuid")
+        self._SpaceId = params.get("SpaceId")
+        self._SpaceName = params.get("SpaceName")
         self._SubjectId = params.get("SubjectId")
         self._SubjectName = params.get("SubjectName")
         self._SubjectType = params.get("SubjectType")
@@ -22404,7 +22449,7 @@ class DescribeMetricOverviewListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceType: <p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+        :param _ResourceType: <p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）（预留，暂不支持）</td></tr></tbody></table>
         :type ResourceType: int
         :param _TimeRange: <p>查询时间范围（Unix 秒）</p>
         :type TimeRange: :class:`tencentcloud.adp.v20260520.models.TimeRange`
@@ -22412,15 +22457,18 @@ class DescribeMetricOverviewListRequest(AbstractModel):
         :type ViewScope: :class:`tencentcloud.adp.v20260520.models.ViewScope`
         :param _FilterList: <p>扩展过滤（resource_type=MODEL）。Filter 组合规则：多项 AND，同项 value_list OR。支持 Name：model_name（模型名）、user_id（用户ID）、space_id（空间ID）、resource_id/source_id（来源ID）、metric_source_type（METRIC_SOURCE_TYPE_* 枚举名或整数）</p>
         :type FilterList: list of Filter
+        :param _SpaceId: <p>空间 ID，用于服务端校验当前用户的空间权限；空间或应用视图需传入，企业视图可不传。VIEW_TYPE_SPACE 时应与 ViewScope.ScopeId 一致，VIEW_TYPE_APP 时须校验应用归属该空间；与 FilterList 的 space_id 同传须一致。服务端不得仅凭请求中的 SpaceId 授权</p>
+        :type SpaceId: str
         """
         self._ResourceType = None
         self._TimeRange = None
         self._ViewScope = None
         self._FilterList = None
+        self._SpaceId = None
 
     @property
     def ResourceType(self):
-        r"""<p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）</td></tr></tbody></table>
+        r"""<p>看板域，必填，决定返回哪个域的 KPI 数据</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>RESOURCE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>RESOURCE_TYPE_MODEL</td><td>1</td><td>模型用量</td></tr><tr><td>RESOURCE_TYPE_PLUGIN</td><td>2</td><td>插件用量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_PLATFORM</td><td>3</td><td>平台功能用量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_MODEL_CONCURRENCY</td><td>4</td><td>模型并发超限（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_KB_CAPACITY</td><td>5</td><td>知识库容量（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_USAGE_SUMMARY</td><td>6</td><td>用量汇总（预留，暂不支持）</td></tr><tr><td>RESOURCE_TYPE_RESOURCE_CONSUME</td><td>7</td><td>资源消耗（计费明细）（预留，暂不支持）</td></tr></tbody></table>
         :rtype: int
         """
         return self._ResourceType
@@ -22462,6 +22510,17 @@ class DescribeMetricOverviewListRequest(AbstractModel):
     def FilterList(self, FilterList):
         self._FilterList = FilterList
 
+    @property
+    def SpaceId(self):
+        r"""<p>空间 ID，用于服务端校验当前用户的空间权限；空间或应用视图需传入，企业视图可不传。VIEW_TYPE_SPACE 时应与 ViewScope.ScopeId 一致，VIEW_TYPE_APP 时须校验应用归属该空间；与 FilterList 的 space_id 同传须一致。服务端不得仅凭请求中的 SpaceId 授权</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
 
     def _deserialize(self, params):
         self._ResourceType = params.get("ResourceType")
@@ -22477,6 +22536,7 @@ class DescribeMetricOverviewListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._FilterList.append(obj)
+        self._SpaceId = params.get("SpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25074,6 +25134,8 @@ class DescribeUsageDetailListRequest(AbstractModel):
         :type PageNumber: int
         :param _PageSize: <p>每页数量，最大 100</p>
         :type PageSize: int
+        :param _SpaceId: <p>空间 ID；空间或应用视图必传，由服务端校验空间权限</p>
+        :type SpaceId: str
         """
         self._ResourceType = None
         self._TimeRange = None
@@ -25081,6 +25143,7 @@ class DescribeUsageDetailListRequest(AbstractModel):
         self._FilterList = None
         self._PageNumber = None
         self._PageSize = None
+        self._SpaceId = None
 
     @property
     def ResourceType(self):
@@ -25148,6 +25211,17 @@ class DescribeUsageDetailListRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def SpaceId(self):
+        r"""<p>空间 ID；空间或应用视图必传，由服务端校验空间权限</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
 
     def _deserialize(self, params):
         self._ResourceType = params.get("ResourceType")
@@ -25165,6 +25239,7 @@ class DescribeUsageDetailListRequest(AbstractModel):
                 self._FilterList.append(obj)
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._SpaceId = params.get("SpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25257,6 +25332,8 @@ class DescribeUsageSummaryListRequest(AbstractModel):
         :type PageNumber: int
         :param _PageSize: <p>每页数量，最大 100</p>
         :type PageSize: int
+        :param _SpaceId: <p>空间 ID，空间或应用视图必传；服务端据登录态校验空间权限</p>
+        :type SpaceId: str
         """
         self._ResourceType = None
         self._TimeRange = None
@@ -25264,6 +25341,7 @@ class DescribeUsageSummaryListRequest(AbstractModel):
         self._FilterList = None
         self._PageNumber = None
         self._PageSize = None
+        self._SpaceId = None
 
     @property
     def ResourceType(self):
@@ -25331,6 +25409,17 @@ class DescribeUsageSummaryListRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def SpaceId(self):
+        r"""<p>空间 ID，空间或应用视图必传；服务端据登录态校验空间权限</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
 
     def _deserialize(self, params):
         self._ResourceType = params.get("ResourceType")
@@ -25348,6 +25437,7 @@ class DescribeUsageSummaryListRequest(AbstractModel):
                 self._FilterList.append(obj)
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
+        self._SpaceId = params.get("SpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27657,6 +27747,117 @@ class DocUpdatePeriod(AbstractModel):
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
         self._PeriodHour = params.get("PeriodHour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocumentParseUsageDetail(AbstractModel):
+    r"""文档解析单次调用明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _ConsumptionPu: <p>消耗资源数（PU）</p>
+        :type ConsumptionPu: float
+        :param _DocId: <p>文档 ID</p>
+        :type DocId: str
+        :param _DocUsageMethod: <p>文档解析方式：离线文档解析、实时文档解析。上报值 OfflineUpload 对应离线文档解析；RealtimeUpload、RealTimeDocParse 对应实时文档解析</p>
+        :type DocUsageMethod: str
+        :param _KbId: <p>知识库 ID</p>
+        :type KbId: str
+        :param _ParsedPageCount: <p>解析页数</p>
+        :type ParsedPageCount: str
+        """
+        self._AppId = None
+        self._ConsumptionPu = None
+        self._DocId = None
+        self._DocUsageMethod = None
+        self._KbId = None
+        self._ParsedPageCount = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ConsumptionPu(self):
+        r"""<p>消耗资源数（PU）</p>
+        :rtype: float
+        """
+        return self._ConsumptionPu
+
+    @ConsumptionPu.setter
+    def ConsumptionPu(self, ConsumptionPu):
+        self._ConsumptionPu = ConsumptionPu
+
+    @property
+    def DocId(self):
+        r"""<p>文档 ID</p>
+        :rtype: str
+        """
+        return self._DocId
+
+    @DocId.setter
+    def DocId(self, DocId):
+        self._DocId = DocId
+
+    @property
+    def DocUsageMethod(self):
+        r"""<p>文档解析方式：离线文档解析、实时文档解析。上报值 OfflineUpload 对应离线文档解析；RealtimeUpload、RealTimeDocParse 对应实时文档解析</p>
+        :rtype: str
+        """
+        return self._DocUsageMethod
+
+    @DocUsageMethod.setter
+    def DocUsageMethod(self, DocUsageMethod):
+        self._DocUsageMethod = DocUsageMethod
+
+    @property
+    def KbId(self):
+        r"""<p>知识库 ID</p>
+        :rtype: str
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def ParsedPageCount(self):
+        r"""<p>解析页数</p>
+        :rtype: str
+        """
+        return self._ParsedPageCount
+
+    @ParsedPageCount.setter
+    def ParsedPageCount(self, ParsedPageCount):
+        self._ParsedPageCount = ParsedPageCount
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ConsumptionPu = params.get("ConsumptionPu")
+        self._DocId = params.get("DocId")
+        self._DocUsageMethod = params.get("DocUsageMethod")
+        self._KbId = params.get("KbId")
+        self._ParsedPageCount = params.get("ParsedPageCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33261,22 +33462,50 @@ class ModelUsageDetail(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ApiKeyDisplay: <p>API Key 别名或脱敏值；禁止返回明文密钥</p>
+        :type ApiKeyDisplay: str
+        :param _BillingType: <p>计费方式；非模型 API 或历史数据可为未指定；后付费不产生 PU</p>
+        :type BillingType: int
         :param _CallType: <p>调用类型，来源于计费 scene_billing（与 filter.call_type 对应）</p>
         :type CallType: str
+        :param _ConsumptionPU: <p>本次调用消耗 PU 量</p>
+        :type ConsumptionPU: float
         :param _IsDefaultKB: <p>是否默认知识库，仅ResourceType=5（知识库容量）业务下有意义</p>
         :type IsDefaultKB: bool
         :param _ModelName: <p>模型名称</p>
         :type ModelName: str
         :param _ResourceConsumptionList: <p>MODEL 域单次调用的消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*/cache_*），label 为空表示 total_tokens；unit=PAGE_COUNT 表示模型消耗页数</p>
         :type ResourceConsumptionList: list of ResourceConsumption
-        :param _ConsumptionPU: <p>本次调用消耗 PU 量</p>
-        :type ConsumptionPU: float
         """
+        self._ApiKeyDisplay = None
+        self._BillingType = None
         self._CallType = None
+        self._ConsumptionPU = None
         self._IsDefaultKB = None
         self._ModelName = None
         self._ResourceConsumptionList = None
-        self._ConsumptionPU = None
+
+    @property
+    def ApiKeyDisplay(self):
+        r"""<p>API Key 别名或脱敏值；禁止返回明文密钥</p>
+        :rtype: str
+        """
+        return self._ApiKeyDisplay
+
+    @ApiKeyDisplay.setter
+    def ApiKeyDisplay(self, ApiKeyDisplay):
+        self._ApiKeyDisplay = ApiKeyDisplay
+
+    @property
+    def BillingType(self):
+        r"""<p>计费方式；非模型 API 或历史数据可为未指定；后付费不产生 PU</p>
+        :rtype: int
+        """
+        return self._BillingType
+
+    @BillingType.setter
+    def BillingType(self, BillingType):
+        self._BillingType = BillingType
 
     @property
     def CallType(self):
@@ -33288,6 +33517,17 @@ class ModelUsageDetail(AbstractModel):
     @CallType.setter
     def CallType(self, CallType):
         self._CallType = CallType
+
+    @property
+    def ConsumptionPU(self):
+        r"""<p>本次调用消耗 PU 量</p>
+        :rtype: float
+        """
+        return self._ConsumptionPU
+
+    @ConsumptionPU.setter
+    def ConsumptionPU(self, ConsumptionPU):
+        self._ConsumptionPU = ConsumptionPU
 
     @property
     def IsDefaultKB(self):
@@ -33322,20 +33562,12 @@ class ModelUsageDetail(AbstractModel):
     def ResourceConsumptionList(self, ResourceConsumptionList):
         self._ResourceConsumptionList = ResourceConsumptionList
 
-    @property
-    def ConsumptionPU(self):
-        r"""<p>本次调用消耗 PU 量</p>
-        :rtype: float
-        """
-        return self._ConsumptionPU
-
-    @ConsumptionPU.setter
-    def ConsumptionPU(self, ConsumptionPU):
-        self._ConsumptionPU = ConsumptionPU
-
 
     def _deserialize(self, params):
+        self._ApiKeyDisplay = params.get("ApiKeyDisplay")
+        self._BillingType = params.get("BillingType")
         self._CallType = params.get("CallType")
+        self._ConsumptionPU = params.get("ConsumptionPU")
         self._IsDefaultKB = params.get("IsDefaultKB")
         self._ModelName = params.get("ModelName")
         if params.get("ResourceConsumptionList") is not None:
@@ -33344,7 +33576,6 @@ class ModelUsageDetail(AbstractModel):
                 obj = ResourceConsumption()
                 obj._deserialize(item)
                 self._ResourceConsumptionList.append(obj)
-        self._ConsumptionPU = params.get("ConsumptionPU")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33364,20 +33595,20 @@ class ModelUsageSummary(AbstractModel):
         r"""
         :param _CallCount: <p>调用次数（业务调用维度的顶层计数）</p>
         :type CallCount: float
+        :param _ConsumptionPU: <p>模型消耗 PU 总量（聚合维度内的 PU 消耗之和）</p>
+        :type ConsumptionPU: float
         :param _IsDefaultKB: <p>是否默认知识库</p>
         :type IsDefaultKB: bool
         :param _ModelName: <p>模型名称，标识使用的 AI 模型</p>
         :type ModelName: str
         :param _ResourceConsumptionList: <p>MODEL 域消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*/cache_*），label 为空表示 total_tokens；unit=PAGE_COUNT 表示模型消耗页数</p>
         :type ResourceConsumptionList: list of ResourceConsumption
-        :param _ConsumptionPU: <p>模型消耗 PU 总量（聚合维度内的 PU 消耗之和）</p>
-        :type ConsumptionPU: float
         """
         self._CallCount = None
+        self._ConsumptionPU = None
         self._IsDefaultKB = None
         self._ModelName = None
         self._ResourceConsumptionList = None
-        self._ConsumptionPU = None
 
     @property
     def CallCount(self):
@@ -33389,6 +33620,17 @@ class ModelUsageSummary(AbstractModel):
     @CallCount.setter
     def CallCount(self, CallCount):
         self._CallCount = CallCount
+
+    @property
+    def ConsumptionPU(self):
+        r"""<p>模型消耗 PU 总量（聚合维度内的 PU 消耗之和）</p>
+        :rtype: float
+        """
+        return self._ConsumptionPU
+
+    @ConsumptionPU.setter
+    def ConsumptionPU(self, ConsumptionPU):
+        self._ConsumptionPU = ConsumptionPU
 
     @property
     def IsDefaultKB(self):
@@ -33423,20 +33665,10 @@ class ModelUsageSummary(AbstractModel):
     def ResourceConsumptionList(self, ResourceConsumptionList):
         self._ResourceConsumptionList = ResourceConsumptionList
 
-    @property
-    def ConsumptionPU(self):
-        r"""<p>模型消耗 PU 总量（聚合维度内的 PU 消耗之和）</p>
-        :rtype: float
-        """
-        return self._ConsumptionPU
-
-    @ConsumptionPU.setter
-    def ConsumptionPU(self, ConsumptionPU):
-        self._ConsumptionPU = ConsumptionPU
-
 
     def _deserialize(self, params):
         self._CallCount = params.get("CallCount")
+        self._ConsumptionPU = params.get("ConsumptionPU")
         self._IsDefaultKB = params.get("IsDefaultKB")
         self._ModelName = params.get("ModelName")
         if params.get("ResourceConsumptionList") is not None:
@@ -33445,7 +33677,6 @@ class ModelUsageSummary(AbstractModel):
                 obj = ResourceConsumption()
                 obj._deserialize(item)
                 self._ResourceConsumptionList.append(obj)
-        self._ConsumptionPU = params.get("ConsumptionPU")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38549,11 +38780,11 @@ class PluginUsageDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PluginName: <p>插件名称</p>
+        :param _PluginName: <p>连接器与工具名称</p>
         :type PluginName: str
-        :param _ResourceConsumptionList: <p>PLUGIN 域单次调用的消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*），label 为空表示 total_tokens</p>
+        :param _ResourceConsumptionList: <p>插件单次调用计量：TOKEN 总量用 total_tokens（兼容空 Label），输入/输出用 input/output；其余消耗量按 Unit 区分，PU 的 Label 为 total_pu</p>
         :type ResourceConsumptionList: list of ResourceConsumption
-        :param _ToolName: <p>插件工具名（tool_name）</p>
+        :param _ToolName: <p>工具名称</p>
         :type ToolName: str
         """
         self._PluginName = None
@@ -38562,7 +38793,7 @@ class PluginUsageDetail(AbstractModel):
 
     @property
     def PluginName(self):
-        r"""<p>插件名称</p>
+        r"""<p>连接器与工具名称</p>
         :rtype: str
         """
         return self._PluginName
@@ -38573,7 +38804,7 @@ class PluginUsageDetail(AbstractModel):
 
     @property
     def ResourceConsumptionList(self):
-        r"""<p>PLUGIN 域单次调用的消耗计量列表（权威字段）：按单位+label 分项列出每类计量。unit=TOKEN 时 label 区分 Token 子类别（input/output/avg_*），label 为空表示 total_tokens</p>
+        r"""<p>插件单次调用计量：TOKEN 总量用 total_tokens（兼容空 Label），输入/输出用 input/output；其余消耗量按 Unit 区分，PU 的 Label 为 total_pu</p>
         :rtype: list of ResourceConsumption
         """
         return self._ResourceConsumptionList
@@ -38584,7 +38815,7 @@ class PluginUsageDetail(AbstractModel):
 
     @property
     def ToolName(self):
-        r"""<p>插件工具名（tool_name）</p>
+        r"""<p>工具名称</p>
         :rtype: str
         """
         return self._ToolName
@@ -46497,6 +46728,8 @@ class UsageDetail(AbstractModel):
         r"""
         :param _CallSource: <p>调用来源</p>
         :type CallSource: :class:`tencentcloud.adp.v20260520.models.CallSource`
+        :param _DocumentParse: <p>MODEL 类型的文档解析明细</p>
+        :type DocumentParse: :class:`tencentcloud.adp.v20260520.models.DocumentParseUsageDetail`
         :param _DosageId: <p>计量 ID，用于对账/回溯</p>
         :type DosageId: str
         :param _EventTime: <p>调用时间戳（Unix 秒）</p>
@@ -46511,6 +46744,7 @@ class UsageDetail(AbstractModel):
         :type UserId: str
         """
         self._CallSource = None
+        self._DocumentParse = None
         self._DosageId = None
         self._EventTime = None
         self._Model = None
@@ -46528,6 +46762,17 @@ class UsageDetail(AbstractModel):
     @CallSource.setter
     def CallSource(self, CallSource):
         self._CallSource = CallSource
+
+    @property
+    def DocumentParse(self):
+        r"""<p>MODEL 类型的文档解析明细</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DocumentParseUsageDetail`
+        """
+        return self._DocumentParse
+
+    @DocumentParse.setter
+    def DocumentParse(self, DocumentParse):
+        self._DocumentParse = DocumentParse
 
     @property
     def DosageId(self):
@@ -46600,6 +46845,9 @@ class UsageDetail(AbstractModel):
         if params.get("CallSource") is not None:
             self._CallSource = CallSource()
             self._CallSource._deserialize(params.get("CallSource"))
+        if params.get("DocumentParse") is not None:
+            self._DocumentParse = DocumentParseUsageDetail()
+            self._DocumentParse._deserialize(params.get("DocumentParse"))
         self._DosageId = params.get("DosageId")
         self._EventTime = params.get("EventTime")
         if params.get("Model") is not None:

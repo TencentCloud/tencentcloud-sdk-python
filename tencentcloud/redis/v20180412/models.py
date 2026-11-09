@@ -4146,14 +4146,14 @@ class DescribeAutoBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :param _InstanceId: <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        r"""<p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4182,15 +4182,15 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoBackupType: 该参数因兼容性问题暂时保留，请忽略。
+        :param _AutoBackupType: <p>该参数因兼容性问题暂时保留，请忽略。</p>
         :type AutoBackupType: int
-        :param _WeekDays: 备份周期，默认为每天自动备份，Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+        :param _WeekDays: <p>备份周期，默认为每天自动备份，Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。</p>
         :type WeekDays: list of str
-        :param _TimePeriod: 备份任务发起时间段。
+        :param _TimePeriod: <p>备份任务发起时间段。</p>
         :type TimePeriod: str
-        :param _BackupStorageDays: 全量备份文件保存天数。默认为7天。如需保存更多天数，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+        :param _BackupStorageDays: <p>全量备份文件保存天数。默认为7天。如需保存更多天数，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>
         :type BackupStorageDays: int
-        :param _BinlogStorageDays: 该参数不再使用，请忽略。
+        :param _BinlogStorageDays: <p>该参数不再使用，请忽略。</p>
         :type BinlogStorageDays: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4204,7 +4204,7 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
 
     @property
     def AutoBackupType(self):
-        r"""该参数因兼容性问题暂时保留，请忽略。
+        r"""<p>该参数因兼容性问题暂时保留，请忽略。</p>
         :rtype: int
         """
         return self._AutoBackupType
@@ -4215,7 +4215,7 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
 
     @property
     def WeekDays(self):
-        r"""备份周期，默认为每天自动备份，Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+        r"""<p>备份周期，默认为每天自动备份，Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。</p>
         :rtype: list of str
         """
         return self._WeekDays
@@ -4226,7 +4226,7 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
 
     @property
     def TimePeriod(self):
-        r"""备份任务发起时间段。
+        r"""<p>备份任务发起时间段。</p>
         :rtype: str
         """
         return self._TimePeriod
@@ -4237,7 +4237,7 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
 
     @property
     def BackupStorageDays(self):
-        r"""全量备份文件保存天数。默认为7天。如需保存更多天数，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+        r"""<p>全量备份文件保存天数。默认为7天。如需保存更多天数，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>
         :rtype: int
         """
         return self._BackupStorageDays
@@ -4248,7 +4248,7 @@ class DescribeAutoBackupConfigResponse(AbstractModel):
 
     @property
     def BinlogStorageDays(self):
-        r"""该参数不再使用，请忽略。
+        r"""<p>该参数不再使用，请忽略。</p>
         :rtype: int
         """
         return self._BinlogStorageDays
@@ -18843,16 +18843,15 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
-
+        :param _InstanceId: <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _WeekDays: 设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
+        :param _WeekDays: <p>设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。</p>
         :type WeekDays: list of str
-        :param _TimePeriod: 备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+        :param _TimePeriod: <p>备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。</p>
         :type TimePeriod: str
-        :param _AutoBackupType: 自动备份类型。目前仅能配置为：1 ，指定时备份。
+        :param _AutoBackupType: <p>自动备份类型。目前仅能配置为：1 ，指定时备份。</p>
         :type AutoBackupType: int
-        :param _BackupStorageDays: 全量备份文件保存天数。 仅支持设置为 7，单位：天。如需更长天数，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+        :param _BackupStorageDays: <p>全量备份文件保存天数。 仅支持设置为 7，单位：天。如需更长天数，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>
         :type BackupStorageDays: int
         """
         self._InstanceId = None
@@ -18863,8 +18862,7 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
-
+        r"""<p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -18875,7 +18873,7 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     @property
     def WeekDays(self):
-        r"""设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。
+        r"""<p>设置自动备份周期。可设置为Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。该参数暂不支持修改。</p>
         :rtype: list of str
         """
         return self._WeekDays
@@ -18886,7 +18884,7 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     @property
     def TimePeriod(self):
-        r"""备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+        r"""<p>备份时间段。可设置为每个整点。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。</p>
         :rtype: str
         """
         return self._TimePeriod
@@ -18897,7 +18895,7 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     @property
     def AutoBackupType(self):
-        r"""自动备份类型。目前仅能配置为：1 ，指定时备份。
+        r"""<p>自动备份类型。目前仅能配置为：1 ，指定时备份。</p>
         :rtype: int
         """
         return self._AutoBackupType
@@ -18908,7 +18906,7 @@ class ModifyAutoBackupConfigRequest(AbstractModel):
 
     @property
     def BackupStorageDays(self):
-        r"""全量备份文件保存天数。 仅支持设置为 7，单位：天。如需更长天数，请[提交工单](https://console.cloud.tencent.com/workorder/category)申请。
+        r"""<p>全量备份文件保存天数。 仅支持设置为 7，单位：天。如需更长天数，请<a href="https://console.cloud.tencent.com/workorder/category">提交工单</a>申请。</p>
         :rtype: int
         """
         return self._BackupStorageDays
@@ -18941,13 +18939,13 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoBackupType: 自动备份类型。目前仅能配置为：1 ，指定时备份。
+        :param _AutoBackupType: <p>自动备份类型。目前仅能配置为：1 ，指定时备份。</p>
         :type AutoBackupType: int
-        :param _WeekDays: 自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+        :param _WeekDays: <p>自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。</p>
         :type WeekDays: list of str
-        :param _TimePeriod: 自动定时备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+        :param _TimePeriod: <p>自动定时备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。</p>
         :type TimePeriod: str
-        :param _BackupStorageDays: 全量备份文件保存天数,单位：天。
+        :param _BackupStorageDays: <p>全量备份文件保存天数,单位：天。</p>
         :type BackupStorageDays: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18960,7 +18958,7 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
 
     @property
     def AutoBackupType(self):
-        r"""自动备份类型。目前仅能配置为：1 ，指定时备份。
+        r"""<p>自动备份类型。目前仅能配置为：1 ，指定时备份。</p>
         :rtype: int
         """
         return self._AutoBackupType
@@ -18971,7 +18969,7 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
 
     @property
     def WeekDays(self):
-        r"""自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。
+        r"""<p>自动备份周期。取值为：Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday。</p>
         :rtype: list of str
         """
         return self._WeekDays
@@ -18982,7 +18980,7 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
 
     @property
     def TimePeriod(self):
-        r"""自动定时备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。
+        r"""<p>自动定时备份时间段。格式如：00:00-01:00, 01:00-02:00...... 23:00-00:00。</p>
         :rtype: str
         """
         return self._TimePeriod
@@ -18993,7 +18991,7 @@ class ModifyAutoBackupConfigResponse(AbstractModel):
 
     @property
     def BackupStorageDays(self):
-        r"""全量备份文件保存天数,单位：天。
+        r"""<p>全量备份文件保存天数,单位：天。</p>
         :rtype: int
         """
         return self._BackupStorageDays
@@ -19531,6 +19529,10 @@ class ModifyInstanceAccountRequest(AbstractModel):
         :type NoAuth: bool
         :param _EncryptPassword: <p>是否启用密码加密传输。</p><ul><li>true：加密。</li><li>false：不加密（默认值）。</li></ul>
         :type EncryptPassword: bool
+        :param _DisableCommands: <p>账号维度的禁用命令配置。</p><ul><li>默认值：[]（空数组，即不禁用任何命令）</li><li>入参限制：仅支持配置以下指定的数据库命令（支持多选）<br>flushall, flushdb, keys, hgetall, eval, evalsha, script, scan, psetex, set, hmset, hset, lpush, rpush, sadd, zadd, del, mget, mset, bitop, exists, msetnx, blpop, brpop, rpoplpush, brpoplpush, smove, sunion, sinter, sdiff, sunionstore, sinterstore, sdiffstore, zunionstore, zinterstore, pfmerge, pfcount, pfadd。</li></ul><p>默认值：&quot;&quot;</p>
+        :type DisableCommands: list of str
+        :param _ModifyDisableCommands: <p>是否修改账号维度的禁用命令配置。仅在需要更新禁用命令列表时传入。</p><ul><li>true：修改（将根据传入的新命令列表进行覆盖更新）。</li><li>false：不修改（默认值）。</li></ul>
+        :type ModifyDisableCommands: bool
         """
         self._InstanceId = None
         self._AccountName = None
@@ -19540,6 +19542,8 @@ class ModifyInstanceAccountRequest(AbstractModel):
         self._Privilege = None
         self._NoAuth = None
         self._EncryptPassword = None
+        self._DisableCommands = None
+        self._ModifyDisableCommands = None
 
     @property
     def InstanceId(self):
@@ -19629,6 +19633,28 @@ class ModifyInstanceAccountRequest(AbstractModel):
     def EncryptPassword(self, EncryptPassword):
         self._EncryptPassword = EncryptPassword
 
+    @property
+    def DisableCommands(self):
+        r"""<p>账号维度的禁用命令配置。</p><ul><li>默认值：[]（空数组，即不禁用任何命令）</li><li>入参限制：仅支持配置以下指定的数据库命令（支持多选）<br>flushall, flushdb, keys, hgetall, eval, evalsha, script, scan, psetex, set, hmset, hset, lpush, rpush, sadd, zadd, del, mget, mset, bitop, exists, msetnx, blpop, brpop, rpoplpush, brpoplpush, smove, sunion, sinter, sdiff, sunionstore, sinterstore, sdiffstore, zunionstore, zinterstore, pfmerge, pfcount, pfadd。</li></ul><p>默认值：&quot;&quot;</p>
+        :rtype: list of str
+        """
+        return self._DisableCommands
+
+    @DisableCommands.setter
+    def DisableCommands(self, DisableCommands):
+        self._DisableCommands = DisableCommands
+
+    @property
+    def ModifyDisableCommands(self):
+        r"""<p>是否修改账号维度的禁用命令配置。仅在需要更新禁用命令列表时传入。</p><ul><li>true：修改（将根据传入的新命令列表进行覆盖更新）。</li><li>false：不修改（默认值）。</li></ul>
+        :rtype: bool
+        """
+        return self._ModifyDisableCommands
+
+    @ModifyDisableCommands.setter
+    def ModifyDisableCommands(self, ModifyDisableCommands):
+        self._ModifyDisableCommands = ModifyDisableCommands
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -19639,6 +19665,8 @@ class ModifyInstanceAccountRequest(AbstractModel):
         self._Privilege = params.get("Privilege")
         self._NoAuth = params.get("NoAuth")
         self._EncryptPassword = params.get("EncryptPassword")
+        self._DisableCommands = params.get("DisableCommands")
+        self._ModifyDisableCommands = params.get("ModifyDisableCommands")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

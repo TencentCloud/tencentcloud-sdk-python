@@ -1870,6 +1870,29 @@ class IssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListVLPlanResults(self, request):
+        r"""获取视觉理解计划结果列表
+
+        :param request: Request instance for ListVLPlanResults.
+        :type request: :class:`tencentcloud.iss.v20230517.models.ListVLPlanResultsRequest`
+        :rtype: :class:`tencentcloud.iss.v20230517.models.ListVLPlanResultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListVLPlanResults", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListVLPlanResultsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListVLPlans(self, request):
         r"""获取视觉理解计划列表
 

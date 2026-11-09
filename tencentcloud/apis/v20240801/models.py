@@ -137,30 +137,32 @@ class AgentAppMcpServerVO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 绑定ID
+        :param _ID: <p>绑定ID</p>
         :type ID: str
-        :param _NeedAuth: 需要认证
+        :param _NeedAuth: <p>需要认证</p>
         :type NeedAuth: bool
-        :param _AgentCredentialID: 凭据ID
+        :param _AgentCredentialID: <p>凭据ID</p>
         :type AgentCredentialID: str
-        :param _AgentCredentialVO: 凭据详情
+        :param _AgentCredentialVO: <p>凭据详情</p>
         :type AgentCredentialVO: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialResp`
-        :param _McpServerVO: mcp详情
+        :param _McpServerVO: <p>mcp详情</p>
         :type McpServerVO: :class:`tencentcloud.apis.v20240801.models.DescribeMcpServerResponseVO`
-        :param _RelateTime: 关联时间
+        :param _RelateTime: <p>关联时间</p>
         :type RelateTime: str
-        :param _SSEResourceIdentifier: 应用为OAuth2认证时，sse模式请求mcp时的资源标识
+        :param _SSEResourceIdentifier: <p>应用为OAuth2认证时，sse模式请求mcp时的资源标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SSEResourceIdentifier: str
-        :param _StreamableResourceIdentifier: 应用为OAuth2认证时，streamable模式请求mcp时的资源标识
+        :param _StreamableResourceIdentifier: <p>应用为OAuth2认证时，streamable模式请求mcp时的资源标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamableResourceIdentifier: str
-        :param _AgentAppID: 应用ID
+        :param _AgentAppID: <p>应用ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentAppID: str
-        :param _McpServerID: mcp ID
+        :param _McpServerID: <p>mcp ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type McpServerID: str
+        :param _AgentAppVO: <p>应用</p>
+        :type AgentAppVO: :class:`tencentcloud.apis.v20240801.models.DescribeAgentAppResp`
         """
         self._ID = None
         self._NeedAuth = None
@@ -172,10 +174,11 @@ class AgentAppMcpServerVO(AbstractModel):
         self._StreamableResourceIdentifier = None
         self._AgentAppID = None
         self._McpServerID = None
+        self._AgentAppVO = None
 
     @property
     def ID(self):
-        r"""绑定ID
+        r"""<p>绑定ID</p>
         :rtype: str
         """
         return self._ID
@@ -186,7 +189,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def NeedAuth(self):
-        r"""需要认证
+        r"""<p>需要认证</p>
         :rtype: bool
         """
         return self._NeedAuth
@@ -197,7 +200,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def AgentCredentialID(self):
-        r"""凭据ID
+        r"""<p>凭据ID</p>
         :rtype: str
         """
         return self._AgentCredentialID
@@ -208,7 +211,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def AgentCredentialVO(self):
-        r"""凭据详情
+        r"""<p>凭据详情</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialResp`
         """
         return self._AgentCredentialVO
@@ -219,7 +222,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def McpServerVO(self):
-        r"""mcp详情
+        r"""<p>mcp详情</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeMcpServerResponseVO`
         """
         return self._McpServerVO
@@ -230,7 +233,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def RelateTime(self):
-        r"""关联时间
+        r"""<p>关联时间</p>
         :rtype: str
         """
         return self._RelateTime
@@ -241,7 +244,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def SSEResourceIdentifier(self):
-        r"""应用为OAuth2认证时，sse模式请求mcp时的资源标识
+        r"""<p>应用为OAuth2认证时，sse模式请求mcp时的资源标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -253,7 +256,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def StreamableResourceIdentifier(self):
-        r"""应用为OAuth2认证时，streamable模式请求mcp时的资源标识
+        r"""<p>应用为OAuth2认证时，streamable模式请求mcp时的资源标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -265,7 +268,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def AgentAppID(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -277,7 +280,7 @@ class AgentAppMcpServerVO(AbstractModel):
 
     @property
     def McpServerID(self):
-        r"""mcp ID
+        r"""<p>mcp ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -286,6 +289,17 @@ class AgentAppMcpServerVO(AbstractModel):
     @McpServerID.setter
     def McpServerID(self, McpServerID):
         self._McpServerID = McpServerID
+
+    @property
+    def AgentAppVO(self):
+        r"""<p>应用</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentAppResp`
+        """
+        return self._AgentAppVO
+
+    @AgentAppVO.setter
+    def AgentAppVO(self, AgentAppVO):
+        self._AgentAppVO = AgentAppVO
 
 
     def _deserialize(self, params):
@@ -303,6 +317,9 @@ class AgentAppMcpServerVO(AbstractModel):
         self._StreamableResourceIdentifier = params.get("StreamableResourceIdentifier")
         self._AgentAppID = params.get("AgentAppID")
         self._McpServerID = params.get("McpServerID")
+        if params.get("AgentAppVO") is not None:
+            self._AgentAppVO = DescribeAgentAppResp()
+            self._AgentAppVO._deserialize(params.get("AgentAppVO"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -621,6 +638,8 @@ class AgentAppServiceVO(AbstractModel):
         :type AgentCredentialID: str
         :param _AgentCredentialVO: <p>凭据详情</p>
         :type AgentCredentialVO: :class:`tencentcloud.apis.v20240801.models.DescribeAgentCredentialResp`
+        :param _AgentAppVO: <p>应用</p>
+        :type AgentAppVO: :class:`tencentcloud.apis.v20240801.models.DescribeAgentAppResp`
         """
         self._ID = None
         self._AgentAppID = None
@@ -632,6 +651,7 @@ class AgentAppServiceVO(AbstractModel):
         self._NeedAuth = None
         self._AgentCredentialID = None
         self._AgentCredentialVO = None
+        self._AgentAppVO = None
 
     @property
     def ID(self):
@@ -743,6 +763,17 @@ class AgentAppServiceVO(AbstractModel):
     def AgentCredentialVO(self, AgentCredentialVO):
         self._AgentCredentialVO = AgentCredentialVO
 
+    @property
+    def AgentAppVO(self):
+        r"""<p>应用</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeAgentAppResp`
+        """
+        return self._AgentAppVO
+
+    @AgentAppVO.setter
+    def AgentAppVO(self, AgentAppVO):
+        self._AgentAppVO = AgentAppVO
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -761,6 +792,9 @@ class AgentAppServiceVO(AbstractModel):
         if params.get("AgentCredentialVO") is not None:
             self._AgentCredentialVO = DescribeAgentCredentialResp()
             self._AgentCredentialVO._deserialize(params.get("AgentCredentialVO"))
+        if params.get("AgentAppVO") is not None:
+            self._AgentAppVO = DescribeAgentAppResp()
+            self._AgentAppVO._deserialize(params.get("AgentAppVO"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

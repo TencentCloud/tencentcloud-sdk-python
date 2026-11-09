@@ -13342,6 +13342,195 @@ class ListTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListVLPlanResultsRequest(AbstractModel):
+    r"""ListVLPlanResults请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: <p>开始时间戳（秒），不早于 30 天前</p>
+        :type Start: int
+        :param _End: <p>结束时间戳（秒），不超过当前时间，时间范围不超过 30 天</p>
+        :type End: int
+        :param _VLPlanId: <p>分析计划 ID，不传则查询所有计划的结果</p>
+        :type VLPlanId: str
+        :param _ChannelIds: <p>通道 ID 列表，支持多值（英文逗号分隔），不传则查询所有通道的结果</p>
+        :type ChannelIds: list of str
+        :param _PageNumber: <p>页码，默认 1</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，默认 20，最大 200</p>
+        :type PageSize: int
+        :param _AnalysisMode: <p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+        :type AnalysisMode: str
+        """
+        self._Start = None
+        self._End = None
+        self._VLPlanId = None
+        self._ChannelIds = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._AnalysisMode = None
+
+    @property
+    def Start(self):
+        r"""<p>开始时间戳（秒），不早于 30 天前</p>
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>结束时间戳（秒），不超过当前时间，时间范围不超过 30 天</p>
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def VLPlanId(self):
+        r"""<p>分析计划 ID，不传则查询所有计划的结果</p>
+        :rtype: str
+        """
+        return self._VLPlanId
+
+    @VLPlanId.setter
+    def VLPlanId(self, VLPlanId):
+        self._VLPlanId = VLPlanId
+
+    @property
+    def ChannelIds(self):
+        r"""<p>通道 ID 列表，支持多值（英文逗号分隔），不传则查询所有通道的结果</p>
+        :rtype: list of str
+        """
+        return self._ChannelIds
+
+    @ChannelIds.setter
+    def ChannelIds(self, ChannelIds):
+        self._ChannelIds = ChannelIds
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，默认 1</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 20，最大 200</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def AnalysisMode(self):
+        r"""<p>分析模式</p><p>枚举值：</p><ul><li>image： 图片模式</li><li>video： 视频模式</li></ul>
+        :rtype: str
+        """
+        return self._AnalysisMode
+
+    @AnalysisMode.setter
+    def AnalysisMode(self, AnalysisMode):
+        self._AnalysisMode = AnalysisMode
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        self._VLPlanId = params.get("VLPlanId")
+        self._ChannelIds = params.get("ChannelIds")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._AnalysisMode = params.get("AnalysisMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListVLPlanResultsResponse(AbstractModel):
+    r"""ListVLPlanResults返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>结果列表</p>
+        :type Data: list of VLPlanResultInfo
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>结果列表</p>
+        :rtype: list of VLPlanResultInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VLPlanResultInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class ListVLPlansRequest(AbstractModel):
     r"""ListVLPlans请求参数结构体
 
@@ -19502,6 +19691,237 @@ class VLPlanResultDetailInfo(AbstractModel):
         self._Content = params.get("Content")
         self._ImageUrl = params.get("ImageUrl")
         self._ImageUrlExpire = params.get("ImageUrlExpire")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VLPlanResultInfo(AbstractModel):
+    r"""视觉理解计划结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VLPlanResultId: <p>分析结果 ID</p>
+        :type VLPlanResultId: str
+        :param _VLPlanId: <p>所属分析计划 ID</p>
+        :type VLPlanId: str
+        :param _VLPlanName: <p>计划名称</p>
+        :type VLPlanName: str
+        :param _ChannelId: <p>通道 ID</p>
+        :type ChannelId: str
+        :param _ChannelName: <p>通道名称</p>
+        :type ChannelName: str
+        :param _AnalysisMode: <p>分析模式：image=图片模式，video=视频模式（预留）</p>
+        :type AnalysisMode: str
+        :param _VLResultTimestamp: <p>分析时间戳（秒）</p>
+        :type VLResultTimestamp: int
+        :param _SnapshotTimestamp: <p>截图时间戳</p>
+        :type SnapshotTimestamp: int
+        :param _VideoStartTimestamp: <p>视频开始时间戳</p>
+        :type VideoStartTimestamp: int
+        :param _VideoEndTimestamp: <p>视频结束时间戳</p>
+        :type VideoEndTimestamp: int
+        :param _BilledFrameCount: <p>视频模式计费帧数</p>
+        :type BilledFrameCount: int
+        :param _Content: <p>AI 分析结果内容（JSON 字符串）</p>
+        :type Content: str
+        :param _CreatedAt: <p>创建时间，格式 2006-01-02 15:04:05</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>更新时间，格式 2006-01-02 15:04:05</p>
+        :type UpdatedAt: str
+        """
+        self._VLPlanResultId = None
+        self._VLPlanId = None
+        self._VLPlanName = None
+        self._ChannelId = None
+        self._ChannelName = None
+        self._AnalysisMode = None
+        self._VLResultTimestamp = None
+        self._SnapshotTimestamp = None
+        self._VideoStartTimestamp = None
+        self._VideoEndTimestamp = None
+        self._BilledFrameCount = None
+        self._Content = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def VLPlanResultId(self):
+        r"""<p>分析结果 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanResultId
+
+    @VLPlanResultId.setter
+    def VLPlanResultId(self, VLPlanResultId):
+        self._VLPlanResultId = VLPlanResultId
+
+    @property
+    def VLPlanId(self):
+        r"""<p>所属分析计划 ID</p>
+        :rtype: str
+        """
+        return self._VLPlanId
+
+    @VLPlanId.setter
+    def VLPlanId(self, VLPlanId):
+        self._VLPlanId = VLPlanId
+
+    @property
+    def VLPlanName(self):
+        r"""<p>计划名称</p>
+        :rtype: str
+        """
+        return self._VLPlanName
+
+    @VLPlanName.setter
+    def VLPlanName(self, VLPlanName):
+        self._VLPlanName = VLPlanName
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        r"""<p>通道名称</p>
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def AnalysisMode(self):
+        r"""<p>分析模式：image=图片模式，video=视频模式（预留）</p>
+        :rtype: str
+        """
+        return self._AnalysisMode
+
+    @AnalysisMode.setter
+    def AnalysisMode(self, AnalysisMode):
+        self._AnalysisMode = AnalysisMode
+
+    @property
+    def VLResultTimestamp(self):
+        r"""<p>分析时间戳（秒）</p>
+        :rtype: int
+        """
+        return self._VLResultTimestamp
+
+    @VLResultTimestamp.setter
+    def VLResultTimestamp(self, VLResultTimestamp):
+        self._VLResultTimestamp = VLResultTimestamp
+
+    @property
+    def SnapshotTimestamp(self):
+        r"""<p>截图时间戳</p>
+        :rtype: int
+        """
+        return self._SnapshotTimestamp
+
+    @SnapshotTimestamp.setter
+    def SnapshotTimestamp(self, SnapshotTimestamp):
+        self._SnapshotTimestamp = SnapshotTimestamp
+
+    @property
+    def VideoStartTimestamp(self):
+        r"""<p>视频开始时间戳</p>
+        :rtype: int
+        """
+        return self._VideoStartTimestamp
+
+    @VideoStartTimestamp.setter
+    def VideoStartTimestamp(self, VideoStartTimestamp):
+        self._VideoStartTimestamp = VideoStartTimestamp
+
+    @property
+    def VideoEndTimestamp(self):
+        r"""<p>视频结束时间戳</p>
+        :rtype: int
+        """
+        return self._VideoEndTimestamp
+
+    @VideoEndTimestamp.setter
+    def VideoEndTimestamp(self, VideoEndTimestamp):
+        self._VideoEndTimestamp = VideoEndTimestamp
+
+    @property
+    def BilledFrameCount(self):
+        r"""<p>视频模式计费帧数</p>
+        :rtype: int
+        """
+        return self._BilledFrameCount
+
+    @BilledFrameCount.setter
+    def BilledFrameCount(self, BilledFrameCount):
+        self._BilledFrameCount = BilledFrameCount
+
+    @property
+    def Content(self):
+        r"""<p>AI 分析结果内容（JSON 字符串）</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间，格式 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间，格式 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._VLPlanResultId = params.get("VLPlanResultId")
+        self._VLPlanId = params.get("VLPlanId")
+        self._VLPlanName = params.get("VLPlanName")
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
+        self._AnalysisMode = params.get("AnalysisMode")
+        self._VLResultTimestamp = params.get("VLResultTimestamp")
+        self._SnapshotTimestamp = params.get("SnapshotTimestamp")
+        self._VideoStartTimestamp = params.get("VideoStartTimestamp")
+        self._VideoEndTimestamp = params.get("VideoEndTimestamp")
+        self._BilledFrameCount = params.get("BilledFrameCount")
+        self._Content = params.get("Content")
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
         memeber_set = set(params.keys())

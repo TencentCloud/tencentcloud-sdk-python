@@ -12532,6 +12532,320 @@ class ModifyAutoRenewFlagResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBInstanceRequest(AbstractModel):
+    r"""ModifyDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _DryRun: <p>是否仅做预检查，不实际执行变配。true: 仅返回变配计划和预检查结果；false: 实际执行变配（默认）</p>
+        :type DryRun: bool
+        :param _HybridNodeCpu: <p>对等节点CPU核数，不传则保持当前值不变</p>
+        :type HybridNodeCpu: int
+        :param _HybridNodeMem: <p>对等节点内存大小，单位GB，不传则保持当前值不变</p>
+        :type HybridNodeMem: int
+        :param _HybridNodeNum: <p>对等节点数量，不传则保持当前值不变</p>
+        :type HybridNodeNum: int
+        :param _Disk: <p>对等节点磁盘容量，单位GB，不传则保持当前值不变</p>
+        :type Disk: int
+        :param _StorageType: <p>存储类型，可选值：CLOUD_HSSD（增强型SSD云硬盘）、CLOUD_TCS（本地盘）、CLOUD_BSSD（通用型SSD云硬盘），不传则保持当前值不变</p>
+        :type StorageType: str
+        :param _SpecCode: <p>规格编码，如 4c8g、16c32g 等</p>
+        :type SpecCode: str
+        :param _Zones: <p>目标可用区列表，不传则保持当前值不变</p>
+        :type Zones: list of str
+        :param _AZMode: <p>可用区模式，1: 单可用区，3: 多可用区主AZ模式</p>
+        :type AZMode: int
+        :param _PrimaryAZ: <p>主可用区，AZMode传3时生效</p>
+        :type PrimaryAZ: str
+        :param _FullReplications: <p>全功能型副本数，取值范围1-3</p>
+        :type FullReplications: int
+        """
+        self._InstanceId = None
+        self._DryRun = None
+        self._HybridNodeCpu = None
+        self._HybridNodeMem = None
+        self._HybridNodeNum = None
+        self._Disk = None
+        self._StorageType = None
+        self._SpecCode = None
+        self._Zones = None
+        self._AZMode = None
+        self._PrimaryAZ = None
+        self._FullReplications = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DryRun(self):
+        r"""<p>是否仅做预检查，不实际执行变配。true: 仅返回变配计划和预检查结果；false: 实际执行变配（默认）</p>
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def HybridNodeCpu(self):
+        r"""<p>对等节点CPU核数，不传则保持当前值不变</p>
+        :rtype: int
+        """
+        return self._HybridNodeCpu
+
+    @HybridNodeCpu.setter
+    def HybridNodeCpu(self, HybridNodeCpu):
+        self._HybridNodeCpu = HybridNodeCpu
+
+    @property
+    def HybridNodeMem(self):
+        r"""<p>对等节点内存大小，单位GB，不传则保持当前值不变</p>
+        :rtype: int
+        """
+        return self._HybridNodeMem
+
+    @HybridNodeMem.setter
+    def HybridNodeMem(self, HybridNodeMem):
+        self._HybridNodeMem = HybridNodeMem
+
+    @property
+    def HybridNodeNum(self):
+        r"""<p>对等节点数量，不传则保持当前值不变</p>
+        :rtype: int
+        """
+        return self._HybridNodeNum
+
+    @HybridNodeNum.setter
+    def HybridNodeNum(self, HybridNodeNum):
+        self._HybridNodeNum = HybridNodeNum
+
+    @property
+    def Disk(self):
+        r"""<p>对等节点磁盘容量，单位GB，不传则保持当前值不变</p>
+        :rtype: int
+        """
+        return self._Disk
+
+    @Disk.setter
+    def Disk(self, Disk):
+        self._Disk = Disk
+
+    @property
+    def StorageType(self):
+        r"""<p>存储类型，可选值：CLOUD_HSSD（增强型SSD云硬盘）、CLOUD_TCS（本地盘）、CLOUD_BSSD（通用型SSD云硬盘），不传则保持当前值不变</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def SpecCode(self):
+        r"""<p>规格编码，如 4c8g、16c32g 等</p>
+        :rtype: str
+        """
+        return self._SpecCode
+
+    @SpecCode.setter
+    def SpecCode(self, SpecCode):
+        self._SpecCode = SpecCode
+
+    @property
+    def Zones(self):
+        r"""<p>目标可用区列表，不传则保持当前值不变</p>
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def AZMode(self):
+        r"""<p>可用区模式，1: 单可用区，3: 多可用区主AZ模式</p>
+        :rtype: int
+        """
+        return self._AZMode
+
+    @AZMode.setter
+    def AZMode(self, AZMode):
+        self._AZMode = AZMode
+
+    @property
+    def PrimaryAZ(self):
+        r"""<p>主可用区，AZMode传3时生效</p>
+        :rtype: str
+        """
+        return self._PrimaryAZ
+
+    @PrimaryAZ.setter
+    def PrimaryAZ(self, PrimaryAZ):
+        self._PrimaryAZ = PrimaryAZ
+
+    @property
+    def FullReplications(self):
+        r"""<p>全功能型副本数，取值范围1-3</p>
+        :rtype: int
+        """
+        return self._FullReplications
+
+    @FullReplications.setter
+    def FullReplications(self, FullReplications):
+        self._FullReplications = FullReplications
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DryRun = params.get("DryRun")
+        self._HybridNodeCpu = params.get("HybridNodeCpu")
+        self._HybridNodeMem = params.get("HybridNodeMem")
+        self._HybridNodeNum = params.get("HybridNodeNum")
+        self._Disk = params.get("Disk")
+        self._StorageType = params.get("StorageType")
+        self._SpecCode = params.get("SpecCode")
+        self._Zones = params.get("Zones")
+        self._AZMode = params.get("AZMode")
+        self._PrimaryAZ = params.get("PrimaryAZ")
+        self._FullReplications = params.get("FullReplications")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBInstanceResponse(AbstractModel):
+    r"""ModifyDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>异步任务ID，DryRun=false时返回。根据此ID可以调用查询任务接口获取任务状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowId: int
+        :param _DealName: <p>订单号，预付费场景下返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
+        :param _IsInPlaceModification: <p>是否原地变配，DryRun=true时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInPlaceModification: bool
+        :param _IsMigrateModification: <p>是否迁移变配，DryRun=true时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsMigrateModification: bool
+        :param _ModifyPlan: <p>变配计划描述，DryRun=true时返回，描述将执行的变配子流程编排</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyPlan: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._DealName = None
+        self._IsInPlaceModification = None
+        self._IsMigrateModification = None
+        self._ModifyPlan = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>异步任务ID，DryRun=false时返回。根据此ID可以调用查询任务接口获取任务状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def DealName(self):
+        r"""<p>订单号，预付费场景下返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def IsInPlaceModification(self):
+        r"""<p>是否原地变配，DryRun=true时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsInPlaceModification
+
+    @IsInPlaceModification.setter
+    def IsInPlaceModification(self, IsInPlaceModification):
+        self._IsInPlaceModification = IsInPlaceModification
+
+    @property
+    def IsMigrateModification(self):
+        r"""<p>是否迁移变配，DryRun=true时返回</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsMigrateModification
+
+    @IsMigrateModification.setter
+    def IsMigrateModification(self, IsMigrateModification):
+        self._IsMigrateModification = IsMigrateModification
+
+    @property
+    def ModifyPlan(self):
+        r"""<p>变配计划描述，DryRun=true时返回，描述将执行的变配子流程编排</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyPlan
+
+    @ModifyPlan.setter
+    def ModifyPlan(self, ModifyPlan):
+        self._ModifyPlan = ModifyPlan
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._DealName = params.get("DealName")
+        self._IsInPlaceModification = params.get("IsInPlaceModification")
+        self._IsMigrateModification = params.get("IsMigrateModification")
+        self._ModifyPlan = params.get("ModifyPlan")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
     r"""ModifyDBInstanceSecurityGroups请求参数结构体
 

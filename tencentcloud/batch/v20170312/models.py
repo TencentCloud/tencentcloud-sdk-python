@@ -5667,9 +5667,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 需要过滤的字段。
+        :param _Name: <p>需要过滤的字段。</p>
         :type Name: str
-        :param _Values: 字段的过滤值。
+        :param _Values: <p>字段的过滤值。</p>
         :type Values: list of str
         """
         self._Name = None
@@ -5677,7 +5677,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""需要过滤的字段。
+        r"""<p>需要过滤的字段。</p>
         :rtype: str
         """
         return self._Name
@@ -5688,7 +5688,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""字段的过滤值。
+        r"""<p>字段的过滤值。</p>
         :rtype: list of str
         """
         return self._Values

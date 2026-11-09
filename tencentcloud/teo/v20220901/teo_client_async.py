@@ -2853,6 +2853,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTimingFunctionAnalysisData(
+            self,
+            request: models.DescribeTimingFunctionAnalysisDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTimingFunctionAnalysisDataResponse:
+        """
+        本接口查询边缘函数分析的时序数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTimingFunctionAnalysisData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTimingFunctionAnalysisDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTimingL4Data(
             self,
             request: models.DescribeTimingL4DataRequest,
@@ -2924,6 +2942,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeTimingL7OriginPullData"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTimingL7OriginPullDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTopFunctionAnalysisData(
+            self,
+            request: models.DescribeTopFunctionAnalysisDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopFunctionAnalysisDataResponse:
+        """
+        本接口用于查询边缘函数按照指定维度的 topN 数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopFunctionAnalysisData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopFunctionAnalysisDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

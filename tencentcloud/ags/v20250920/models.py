@@ -6464,11 +6464,14 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
         :type ImageDigest: str
         :param _PreCacheImageId: <p>镜像预热ID，只能ID或三元组（Image、ImageDigest、ImageRegistrytype）二选一查询</p>
         :type PreCacheImageId: str
+        :param _PreCacheType: <p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
+        :type PreCacheType: str
         """
         self._Image = None
         self._ImageRegistryType = None
         self._ImageDigest = None
         self._PreCacheImageId = None
+        self._PreCacheType = None
 
     @property
     def Image(self):
@@ -6514,12 +6517,24 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
     def PreCacheImageId(self, PreCacheImageId):
         self._PreCacheImageId = PreCacheImageId
 
+    @property
+    def PreCacheType(self):
+        r"""<p>镜像预热类型</p><p>枚举值：</p><ul><li>image： 镜像预热</li><li>image_volume： 镜像卷预热</li></ul><p>默认值：image</p>
+        :rtype: str
+        """
+        return self._PreCacheType
+
+    @PreCacheType.setter
+    def PreCacheType(self, PreCacheType):
+        self._PreCacheType = PreCacheType
+
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
         self._ImageRegistryType = params.get("ImageRegistryType")
         self._ImageDigest = params.get("ImageDigest")
         self._PreCacheImageId = params.get("PreCacheImageId")
+        self._PreCacheType = params.get("PreCacheType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11862,10 +11877,13 @@ class ResourceConfiguration(AbstractModel):
         :param _Storage: <p>自定义磁盘大小</p><p>枚举值：</p><ul><li>1Gi： 1Gi</li><li>5Gi： 5Gi</li><li>10Gi： 10Gi</li><li>20Gi： 20Gi</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Storage: str
+        :param _GPUResourceGroupId: <p>关联的GPU资源组ID</p>
+        :type GPUResourceGroupId: str
         """
         self._CPU = None
         self._Memory = None
         self._Storage = None
+        self._GPUResourceGroupId = None
 
     @property
     def CPU(self):
@@ -11901,11 +11919,23 @@ class ResourceConfiguration(AbstractModel):
     def Storage(self, Storage):
         self._Storage = Storage
 
+    @property
+    def GPUResourceGroupId(self):
+        r"""<p>关联的GPU资源组ID</p>
+        :rtype: str
+        """
+        return self._GPUResourceGroupId
+
+    @GPUResourceGroupId.setter
+    def GPUResourceGroupId(self, GPUResourceGroupId):
+        self._GPUResourceGroupId = GPUResourceGroupId
+
 
     def _deserialize(self, params):
         self._CPU = params.get("CPU")
         self._Memory = params.get("Memory")
         self._Storage = params.get("Storage")
+        self._GPUResourceGroupId = params.get("GPUResourceGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13215,6 +13245,8 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type AuthMode: str
         :param _Metadata: <p>沙箱元数据</p>
         :type Metadata: list of MetadataVar
+        :param _StartMode: <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果。</p>
+        :type StartMode: str
         """
         self._ToolId = None
         self._ToolName = None
@@ -13226,6 +13258,7 @@ class StartSandboxInstanceRequest(AbstractModel):
         self._CustomConfiguration = None
         self._AuthMode = None
         self._Metadata = None
+        self._StartMode = None
 
     @property
     def ToolId(self):
@@ -13337,6 +13370,17 @@ class StartSandboxInstanceRequest(AbstractModel):
     def Metadata(self, Metadata):
         self._Metadata = Metadata
 
+    @property
+    def StartMode(self):
+        r"""<p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果。</p>
+        :rtype: str
+        """
+        return self._StartMode
+
+    @StartMode.setter
+    def StartMode(self, StartMode):
+        self._StartMode = StartMode
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
@@ -13361,6 +13405,7 @@ class StartSandboxInstanceRequest(AbstractModel):
                 obj = MetadataVar()
                 obj._deserialize(item)
                 self._Metadata.append(obj)
+        self._StartMode = params.get("StartMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

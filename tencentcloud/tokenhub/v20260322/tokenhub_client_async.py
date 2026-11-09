@@ -552,6 +552,26 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyApiKeyBindings(
+            self,
+            request: models.ModifyApiKeyBindingsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyApiKeyBindingsResponse:
+        """
+        更新 API 密钥绑定。
+
+        更新 API 密钥的绑定关系和绑定类型。BindType 为 all 时 Bindings 必须为空，BindType含 custom 时 Bindings 为绑定列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApiKeyBindings"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyApiKeyBindingsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyApiKeyInfo(
             self,
             request: models.ModifyApiKeyInfoRequest,

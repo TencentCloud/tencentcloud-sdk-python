@@ -4362,23 +4362,29 @@ class ContractReviewWebUrlOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisableTemporaryStore: 禁用暂存。 默认 false，设置为 true 会隐藏界面上的临时保存按钮
+        :param _DisableTemporaryStore: <p>禁用暂存。 默认 false，设置为 true 会隐藏界面上的临时保存按钮</p>
         :type DisableTemporaryStore: bool
-        :param _DisableExport: 禁用导出。默认 false，设置为 true 会隐藏界面上的导出按钮
+        :param _DisableExport: <p>禁用导出。默认 false，设置为 true 会隐藏界面上的导出按钮</p>
         :type DisableExport: bool
-        :param _DisableReviewAgain: 禁用重新审查。默认 false，设置为 true 会隐藏界面上的重新审查按钮
+        :param _DisableReviewAgain: <p>禁用重新审查。默认 false，设置为 true 会隐藏界面上的重新审查按钮</p>
         :type DisableReviewAgain: bool
-        :param _DisableWxQrcode: 禁用二维码分享。默认 false，设置为 true 会隐藏界面上的分享二维码
+        :param _DisableWxQrcode: <p>禁用二维码分享。默认 false，设置为 true 会隐藏界面上的分享二维码</p>
         :type DisableWxQrcode: bool
+        :param _DisableIgnoreRisk: <p>禁用忽略风险。默认false，设置为true，会根据用户合同审查忽略风险权限点决定是否禁用忽略选项。</p>
+        :type DisableIgnoreRisk: bool
+        :param _DisableRevisedRisk: <p>关闭原文修改。默认false，设置为true，根据用户合同审查修订操作权限点决定能否修改、一键修订原文。</p>
+        :type DisableRevisedRisk: bool
         """
         self._DisableTemporaryStore = None
         self._DisableExport = None
         self._DisableReviewAgain = None
         self._DisableWxQrcode = None
+        self._DisableIgnoreRisk = None
+        self._DisableRevisedRisk = None
 
     @property
     def DisableTemporaryStore(self):
-        r"""禁用暂存。 默认 false，设置为 true 会隐藏界面上的临时保存按钮
+        r"""<p>禁用暂存。 默认 false，设置为 true 会隐藏界面上的临时保存按钮</p>
         :rtype: bool
         """
         return self._DisableTemporaryStore
@@ -4389,7 +4395,7 @@ class ContractReviewWebUrlOption(AbstractModel):
 
     @property
     def DisableExport(self):
-        r"""禁用导出。默认 false，设置为 true 会隐藏界面上的导出按钮
+        r"""<p>禁用导出。默认 false，设置为 true 会隐藏界面上的导出按钮</p>
         :rtype: bool
         """
         return self._DisableExport
@@ -4400,7 +4406,7 @@ class ContractReviewWebUrlOption(AbstractModel):
 
     @property
     def DisableReviewAgain(self):
-        r"""禁用重新审查。默认 false，设置为 true 会隐藏界面上的重新审查按钮
+        r"""<p>禁用重新审查。默认 false，设置为 true 会隐藏界面上的重新审查按钮</p>
         :rtype: bool
         """
         return self._DisableReviewAgain
@@ -4411,7 +4417,7 @@ class ContractReviewWebUrlOption(AbstractModel):
 
     @property
     def DisableWxQrcode(self):
-        r"""禁用二维码分享。默认 false，设置为 true 会隐藏界面上的分享二维码
+        r"""<p>禁用二维码分享。默认 false，设置为 true 会隐藏界面上的分享二维码</p>
         :rtype: bool
         """
         return self._DisableWxQrcode
@@ -4420,12 +4426,36 @@ class ContractReviewWebUrlOption(AbstractModel):
     def DisableWxQrcode(self, DisableWxQrcode):
         self._DisableWxQrcode = DisableWxQrcode
 
+    @property
+    def DisableIgnoreRisk(self):
+        r"""<p>禁用忽略风险。默认false，设置为true，会根据用户合同审查忽略风险权限点决定是否禁用忽略选项。</p>
+        :rtype: bool
+        """
+        return self._DisableIgnoreRisk
+
+    @DisableIgnoreRisk.setter
+    def DisableIgnoreRisk(self, DisableIgnoreRisk):
+        self._DisableIgnoreRisk = DisableIgnoreRisk
+
+    @property
+    def DisableRevisedRisk(self):
+        r"""<p>关闭原文修改。默认false，设置为true，根据用户合同审查修订操作权限点决定能否修改、一键修订原文。</p>
+        :rtype: bool
+        """
+        return self._DisableRevisedRisk
+
+    @DisableRevisedRisk.setter
+    def DisableRevisedRisk(self, DisableRevisedRisk):
+        self._DisableRevisedRisk = DisableRevisedRisk
+
 
     def _deserialize(self, params):
         self._DisableTemporaryStore = params.get("DisableTemporaryStore")
         self._DisableExport = params.get("DisableExport")
         self._DisableReviewAgain = params.get("DisableReviewAgain")
         self._DisableWxQrcode = params.get("DisableWxQrcode")
+        self._DisableIgnoreRisk = params.get("DisableIgnoreRisk")
+        self._DisableRevisedRisk = params.get("DisableRevisedRisk")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

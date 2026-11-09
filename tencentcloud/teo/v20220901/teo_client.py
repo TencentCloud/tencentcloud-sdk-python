@@ -3619,6 +3619,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTimingFunctionAnalysisData(self, request):
+        r"""本接口查询边缘函数分析的时序数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
+
+        :param request: Request instance for DescribeTimingFunctionAnalysisData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTimingFunctionAnalysisDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeTimingFunctionAnalysisDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimingFunctionAnalysisData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTimingFunctionAnalysisDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTimingL4Data(self, request):
         r"""<p>本接口（<code>DescribeTimingL4Data</code>）用于查询四层时序数据列表。</p>
 
@@ -3706,6 +3729,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeTimingL7OriginPullData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTimingL7OriginPullDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTopFunctionAnalysisData(self, request):
+        r"""本接口用于查询边缘函数按照指定维度的 topN 数据。请注意本接口查询数据有 10 分钟左右延迟，建议拉取当前时间 10 分钟以前的数据。
+
+        :param request: Request instance for DescribeTopFunctionAnalysisData.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeTopFunctionAnalysisDataRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeTopFunctionAnalysisDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopFunctionAnalysisData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopFunctionAnalysisDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

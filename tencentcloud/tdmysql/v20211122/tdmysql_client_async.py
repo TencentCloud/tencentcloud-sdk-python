@@ -727,6 +727,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBInstance(
+            self,
+            request: models.ModifyDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBInstanceResponse:
+        """
+        本接口（ModifyDBInstance）提供通用变配实例功能，合并纵向变配（UpgradeInstance）和横向变配（ExpandInstance）的能力，支持CPU/内存/磁盘/节点数/可用区/存储类型的复合变更。支持DryRun预检查模式，可在不实际执行变配的情况下获取变配计划。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBInstanceSecurityGroups(
             self,
             request: models.ModifyDBInstanceSecurityGroupsRequest,
