@@ -1360,6 +1360,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeModules(self, request):
+        r"""本接口（DescribeModules）用于查询实例的扩展模块信息，包括模块的支持状态（是否支持）、启用状态（是否已启用）等信息。
+
+        :param request: Request instance for DescribeModules.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeModulesRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeModulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeParamTemplateInfo(self, request):
         r"""本接口（DescribeParamTemplateInfo）用于查询参数模板详情。
 
@@ -2397,6 +2420,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyModule(self, request):
+        r"""本接口（ModifyModule）用于修改实例扩展模块的启用状态。
+
+        :param request: Request instance for ModifyModule.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyModuleRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyModuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyModule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyModuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyNetworkConfig(self, request):
         r"""本接口（ModifyNetworkConfig）用于修改实例网络配置。
 
@@ -2457,6 +2503,52 @@ class RedisClient(AbstractClient):
             body = self.call("ModifyReplicationGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyReplicationGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySSLEncryptionMode(self, request):
+        r"""本接口（ModifySSLEncryptionMode）用于更改SSL加密模式
+
+        :param request: Request instance for ModifySSLEncryptionMode.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifySSLEncryptionModeRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifySSLEncryptionModeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySSLEncryptionMode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySSLEncryptionModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyValkeyModule(self, request):
+        r"""本接口（ModifyValkeyModule）用于修改Valkey实例扩展模块的启用状态。
+
+        :param request: Request instance for ModifyValkeyModule.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyValkeyModuleRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyValkeyModuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyValkeyModule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyValkeyModuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2733,6 +2825,29 @@ class RedisClient(AbstractClient):
             body = self.call("SwitchProxy", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateSSLCert(self, request):
+        r"""本接口（UpdateSSLCert）用于更新SSL密钥信息。
+
+        :param request: Request instance for UpdateSSLCert.
+        :type request: :class:`tencentcloud.redis.v20180412.models.UpdateSSLCertRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.UpdateSSLCertResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateSSLCert", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateSSLCertResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

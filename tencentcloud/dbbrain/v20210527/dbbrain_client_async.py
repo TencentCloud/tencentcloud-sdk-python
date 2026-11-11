@@ -1447,6 +1447,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSqlExplainV2(
+            self,
+            request: models.DescribeSqlExplainV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeSqlExplainV2Response:
+        """
+        查询指定 SELECT SQL 在实例上的执行计划，常用于慢 SQL 分析、SQL 优化等场景。仅支持 SELECT 类语句
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSqlExplainV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSqlExplainV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSqlFilters(
             self,
             request: models.DescribeSqlFiltersRequest,

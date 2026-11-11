@@ -15075,6 +15075,169 @@ class ModifyCloudSliceTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyCloudTranscriptionRequest(AbstractModel):
+    r"""ModifyCloudTranscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的SdkAppId，和转录的房间所对应的SdkAppId相同。</p>
+        :type SdkAppId: int
+        :param _TaskId: <p>转录任务的唯一Id，在启动转录成功后会返回。</p>
+        :type TaskId: str
+        :param _SequenceNumber: <p>客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
+        :type SequenceNumber: int
+        :param _SubscribeUserInfo: <p>转录订阅用户信息，包括白名单和黑名单。</p>
+        :type SubscribeUserInfo: :class:`tencentcloud.trtc.v20190722.models.TranscriptionSubscribeParam`
+        :param _TranslationParam: <p>转录服务翻译使用的参数。</p>
+        :type TranslationParam: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
+        :param _TTSParam: <p>转录服务TTS使用的参数。</p>
+        :type TTSParam: list of TTSParam
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+        self._SequenceNumber = None
+        self._SubscribeUserInfo = None
+        self._TranslationParam = None
+        self._TTSParam = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的SdkAppId，和转录的房间所对应的SdkAppId相同。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""<p>转录任务的唯一Id，在启动转录成功后会返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SequenceNumber(self):
+        r"""<p>客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
+        :rtype: int
+        """
+        return self._SequenceNumber
+
+    @SequenceNumber.setter
+    def SequenceNumber(self, SequenceNumber):
+        self._SequenceNumber = SequenceNumber
+
+    @property
+    def SubscribeUserInfo(self):
+        r"""<p>转录订阅用户信息，包括白名单和黑名单。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionSubscribeParam`
+        """
+        return self._SubscribeUserInfo
+
+    @SubscribeUserInfo.setter
+    def SubscribeUserInfo(self, SubscribeUserInfo):
+        self._SubscribeUserInfo = SubscribeUserInfo
+
+    @property
+    def TranslationParam(self):
+        r"""<p>转录服务翻译使用的参数。</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
+        """
+        return self._TranslationParam
+
+    @TranslationParam.setter
+    def TranslationParam(self, TranslationParam):
+        self._TranslationParam = TranslationParam
+
+    @property
+    def TTSParam(self):
+        r"""<p>转录服务TTS使用的参数。</p>
+        :rtype: list of TTSParam
+        """
+        return self._TTSParam
+
+    @TTSParam.setter
+    def TTSParam(self, TTSParam):
+        self._TTSParam = TTSParam
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        self._SequenceNumber = params.get("SequenceNumber")
+        if params.get("SubscribeUserInfo") is not None:
+            self._SubscribeUserInfo = TranscriptionSubscribeParam()
+            self._SubscribeUserInfo._deserialize(params.get("SubscribeUserInfo"))
+        if params.get("TranslationParam") is not None:
+            self._TranslationParam = TranslationParam()
+            self._TranslationParam._deserialize(params.get("TranslationParam"))
+        if params.get("TTSParam") is not None:
+            self._TTSParam = []
+            for item in params.get("TTSParam"):
+                obj = TTSParam()
+                obj._deserialize(item)
+                self._TTSParam.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudTranscriptionResponse(AbstractModel):
+    r"""ModifyCloudTranscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>转录服务分配的任务 ID。任务 ID 是对一次转录生命周期过程的唯一标识，结束转录时会失去意义。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>转录服务分配的任务 ID。任务 ID 是对一次转录生命周期过程的唯一标识，结束转录时会失去意义。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyPictureRequest(AbstractModel):
     r"""ModifyPicture请求参数结构体
 
@@ -22283,6 +22446,67 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         if params.get("TurnDetection") is not None:
             self._TurnDetection = TurnDetection()
             self._TurnDetection._deserialize(params.get("TurnDetection"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranscriptionSubscribeParam(AbstractModel):
+    r"""转录服务订阅用户参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubscribeList: <p>转录用户白名单，为空或不填表示转录所有主播音频，填具体值表示转录指定主播音频。 使用黑白名单时，同一个用户同时在黑白名单时，以黑名单为主。</p>
+        :type SubscribeList: list of TranscriptionUserInfoParams
+        :param _UnSubscribeList: <p>转录用户黑名单，为空或不填表示无黑名单，填具体值表示不转录指定主播音频。 同一个用户同时在黑白名单时，以黑名单为主。</p>
+        :type UnSubscribeList: list of TranscriptionUserInfoParams
+        """
+        self._SubscribeList = None
+        self._UnSubscribeList = None
+
+    @property
+    def SubscribeList(self):
+        r"""<p>转录用户白名单，为空或不填表示转录所有主播音频，填具体值表示转录指定主播音频。 使用黑白名单时，同一个用户同时在黑白名单时，以黑名单为主。</p>
+        :rtype: list of TranscriptionUserInfoParams
+        """
+        return self._SubscribeList
+
+    @SubscribeList.setter
+    def SubscribeList(self, SubscribeList):
+        self._SubscribeList = SubscribeList
+
+    @property
+    def UnSubscribeList(self):
+        r"""<p>转录用户黑名单，为空或不填表示无黑名单，填具体值表示不转录指定主播音频。 同一个用户同时在黑白名单时，以黑名单为主。</p>
+        :rtype: list of TranscriptionUserInfoParams
+        """
+        return self._UnSubscribeList
+
+    @UnSubscribeList.setter
+    def UnSubscribeList(self, UnSubscribeList):
+        self._UnSubscribeList = UnSubscribeList
+
+
+    def _deserialize(self, params):
+        if params.get("SubscribeList") is not None:
+            self._SubscribeList = []
+            for item in params.get("SubscribeList"):
+                obj = TranscriptionUserInfoParams()
+                obj._deserialize(item)
+                self._SubscribeList.append(obj)
+        if params.get("UnSubscribeList") is not None:
+            self._UnSubscribeList = []
+            for item in params.get("UnSubscribeList"):
+                obj = TranscriptionUserInfoParams()
+                obj._deserialize(item)
+                self._UnSubscribeList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

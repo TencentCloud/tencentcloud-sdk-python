@@ -18623,6 +18623,10 @@ class UpgradeDedicatedDCDBInstanceRequest(AbstractModel):
         :type SwitchEndTime: str
         :param _SwitchInterval: <p>多个分片同时发起扩容，并发切换中的切换时间间隔，即当前分片切换开始时间和下一个分片的切换开始时间间隔，不传默认为1。</p><p>取值范围：[1, 180]</p><p>单位：秒</p>
         :type SwitchInterval: int
+        :param _MasterHostId: <p>主节点所在机器，类似svr-xxx</p>
+        :type MasterHostId: str
+        :param _SlaveHostIds: <p>备节点所在机器，类似[svr-xxx1,svr-xxx2]</p>
+        :type SlaveHostIds: list of str
         """
         self._UpgradeType = None
         self._InstanceId = None
@@ -18633,6 +18637,8 @@ class UpgradeDedicatedDCDBInstanceRequest(AbstractModel):
         self._SwitchStartTime = None
         self._SwitchEndTime = None
         self._SwitchInterval = None
+        self._MasterHostId = None
+        self._SlaveHostIds = None
 
     @property
     def UpgradeType(self):
@@ -18733,6 +18739,28 @@ class UpgradeDedicatedDCDBInstanceRequest(AbstractModel):
     def SwitchInterval(self, SwitchInterval):
         self._SwitchInterval = SwitchInterval
 
+    @property
+    def MasterHostId(self):
+        r"""<p>主节点所在机器，类似svr-xxx</p>
+        :rtype: str
+        """
+        return self._MasterHostId
+
+    @MasterHostId.setter
+    def MasterHostId(self, MasterHostId):
+        self._MasterHostId = MasterHostId
+
+    @property
+    def SlaveHostIds(self):
+        r"""<p>备节点所在机器，类似[svr-xxx1,svr-xxx2]</p>
+        :rtype: list of str
+        """
+        return self._SlaveHostIds
+
+    @SlaveHostIds.setter
+    def SlaveHostIds(self, SlaveHostIds):
+        self._SlaveHostIds = SlaveHostIds
+
 
     def _deserialize(self, params):
         self._UpgradeType = params.get("UpgradeType")
@@ -18750,6 +18778,8 @@ class UpgradeDedicatedDCDBInstanceRequest(AbstractModel):
         self._SwitchStartTime = params.get("SwitchStartTime")
         self._SwitchEndTime = params.get("SwitchEndTime")
         self._SwitchInterval = params.get("SwitchInterval")
+        self._MasterHostId = params.get("MasterHostId")
+        self._SlaveHostIds = params.get("SlaveHostIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

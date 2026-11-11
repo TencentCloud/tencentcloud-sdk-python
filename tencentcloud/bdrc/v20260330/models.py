@@ -961,47 +961,53 @@ class BackupGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupGroupId: 备份组ID。
+        :param _BackupGroupId: <p>备份组ID。</p>
         :type BackupGroupId: str
-        :param _Percent: 备份组创建进度。
+        :param _Percent: <p>备份组创建进度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Percent: int
-        :param _BackupBindDisk: 备份和云盘绑定关系
+        :param _BackupBindDisk: <p>备份和云盘绑定关系</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupBindDisk: list of ApplyDisk
-        :param _BackupGroupName: 备份组名称。
+        :param _BackupGroupName: <p>备份组名称。</p>
         :type BackupGroupName: str
-        :param _BackupGroupState: 备份组状态。NORMAL: 正常；CREATING: 创建中；ROLLBACKING: 回滚中
+        :param _BackupGroupState: <p>备份组状态。NORMAL: 正常；CREATING: 创建中；ROLLBACKING: 回滚中</p>
         :type BackupGroupState: str
-        :param _ModifyTime: 修改时间
+        :param _ModifyTime: <p>修改时间</p>
         :type ModifyTime: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _AppId: 用户AppId。
+        :param _AppId: <p>用户AppId。</p>
         :type AppId: int
-        :param _IsPermanent: 是否为永久备份组。
+        :param _IsPermanent: <p>是否为永久备份组。</p>
         :type IsPermanent: bool
-        :param _DeadlineTime: 备份组的到期时间。如果为永久备份组，则取值为null。
+        :param _DeadlineTime: <p>备份组的到期时间。如果为永久备份组，则取值为null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadlineTime: str
-        :param _InstanceId: 创建备份组的实例ID。
+        :param _InstanceId: <p>创建备份组的实例ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _InstanceDetails: 创建备份组时刻实例的详情。
+        :param _InstanceDetails: <p>创建备份组时刻实例的详情。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceDetails: str
-        :param _AccountName: 创建人名称。
+        :param _AccountName: <p>创建人名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountName: str
-        :param _AccountUin: 主账号uin。
+        :param _AccountUin: <p>主账号uin。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountUin: str
-        :param _SubAccountUin: 创建备份的子账号uin。
+        :param _SubAccountUin: <p>创建备份的子账号uin。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
-        :param _AutoBackupPolicyId: 创建当前备份的定期备份策略ID，为null则为手动创建的备份。
+        :param _AutoBackupPolicyId: <p>创建当前备份的定期备份策略ID，为null则为手动创建的备份。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoBackupPolicyId: str
+        :param _StartTime: <p>开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
         """
         self._BackupGroupId = None
         self._Percent = None
@@ -1019,10 +1025,12 @@ class BackupGroup(AbstractModel):
         self._AccountUin = None
         self._SubAccountUin = None
         self._AutoBackupPolicyId = None
+        self._StartTime = None
+        self._EndTime = None
 
     @property
     def BackupGroupId(self):
-        r"""备份组ID。
+        r"""<p>备份组ID。</p>
         :rtype: str
         """
         return self._BackupGroupId
@@ -1033,7 +1041,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def Percent(self):
-        r"""备份组创建进度。
+        r"""<p>备份组创建进度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1045,7 +1053,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def BackupBindDisk(self):
-        r"""备份和云盘绑定关系
+        r"""<p>备份和云盘绑定关系</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApplyDisk
         """
@@ -1057,7 +1065,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def BackupGroupName(self):
-        r"""备份组名称。
+        r"""<p>备份组名称。</p>
         :rtype: str
         """
         return self._BackupGroupName
@@ -1068,7 +1076,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def BackupGroupState(self):
-        r"""备份组状态。NORMAL: 正常；CREATING: 创建中；ROLLBACKING: 回滚中
+        r"""<p>备份组状态。NORMAL: 正常；CREATING: 创建中；ROLLBACKING: 回滚中</p>
         :rtype: str
         """
         return self._BackupGroupState
@@ -1079,7 +1087,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -1090,7 +1098,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -1101,7 +1109,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户AppId。
+        r"""<p>用户AppId。</p>
         :rtype: int
         """
         return self._AppId
@@ -1112,7 +1120,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def IsPermanent(self):
-        r"""是否为永久备份组。
+        r"""<p>是否为永久备份组。</p>
         :rtype: bool
         """
         return self._IsPermanent
@@ -1123,7 +1131,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def DeadlineTime(self):
-        r"""备份组的到期时间。如果为永久备份组，则取值为null。
+        r"""<p>备份组的到期时间。如果为永久备份组，则取值为null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1135,7 +1143,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""创建备份组的实例ID。
+        r"""<p>创建备份组的实例ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1147,7 +1155,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def InstanceDetails(self):
-        r"""创建备份组时刻实例的详情。
+        r"""<p>创建备份组时刻实例的详情。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1159,7 +1167,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""创建人名称。
+        r"""<p>创建人名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1171,7 +1179,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def AccountUin(self):
-        r"""主账号uin。
+        r"""<p>主账号uin。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1183,7 +1191,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def SubAccountUin(self):
-        r"""创建备份的子账号uin。
+        r"""<p>创建备份的子账号uin。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1195,7 +1203,7 @@ class BackupGroup(AbstractModel):
 
     @property
     def AutoBackupPolicyId(self):
-        r"""创建当前备份的定期备份策略ID，为null则为手动创建的备份。
+        r"""<p>创建当前备份的定期备份策略ID，为null则为手动创建的备份。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1204,6 +1212,30 @@ class BackupGroup(AbstractModel):
     @AutoBackupPolicyId.setter
     def AutoBackupPolicyId(self, AutoBackupPolicyId):
         self._AutoBackupPolicyId = AutoBackupPolicyId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
 
 
     def _deserialize(self, params):
@@ -1228,6 +1260,8 @@ class BackupGroup(AbstractModel):
         self._AccountUin = params.get("AccountUin")
         self._SubAccountUin = params.get("SubAccountUin")
         self._AutoBackupPolicyId = params.get("AutoBackupPolicyId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1580,9 +1614,15 @@ class BackupInfo(AbstractModel):
         :param _CloudResourceId: <p>云上资源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CloudResourceId: str
-        :param _ProductType: <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+        :param _ProductType: <p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductType: str
+        :param _BackupCompletedSize: <p>备份完成量</p><p>单位：MB</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupCompletedSize: int
+        :param _BackupCompletedSizeFormatted: <p>备份完成量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupCompletedSizeFormatted: str
         """
         self._BackupId = None
         self._BackupName = None
@@ -1617,6 +1657,8 @@ class BackupInfo(AbstractModel):
         self._EnableObjectTags = None
         self._CloudResourceId = None
         self._ProductType = None
+        self._BackupCompletedSize = None
+        self._BackupCompletedSizeFormatted = None
 
     @property
     def BackupId(self):
@@ -1980,7 +2022,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""<p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+        r"""<p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1989,6 +2031,30 @@ class BackupInfo(AbstractModel):
     @ProductType.setter
     def ProductType(self, ProductType):
         self._ProductType = ProductType
+
+    @property
+    def BackupCompletedSize(self):
+        r"""<p>备份完成量</p><p>单位：MB</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BackupCompletedSize
+
+    @BackupCompletedSize.setter
+    def BackupCompletedSize(self, BackupCompletedSize):
+        self._BackupCompletedSize = BackupCompletedSize
+
+    @property
+    def BackupCompletedSizeFormatted(self):
+        r"""<p>备份完成量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BackupCompletedSizeFormatted
+
+    @BackupCompletedSizeFormatted.setter
+    def BackupCompletedSizeFormatted(self, BackupCompletedSizeFormatted):
+        self._BackupCompletedSizeFormatted = BackupCompletedSizeFormatted
 
 
     def _deserialize(self, params):
@@ -2025,6 +2091,8 @@ class BackupInfo(AbstractModel):
         self._EnableObjectTags = params.get("EnableObjectTags")
         self._CloudResourceId = params.get("CloudResourceId")
         self._ProductType = params.get("ProductType")
+        self._BackupCompletedSize = params.get("BackupCompletedSize")
+        self._BackupCompletedSizeFormatted = params.get("BackupCompletedSizeFormatted")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13518,7 +13586,7 @@ class FileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: 文件名称
+        :param _Path: 完整路径：浏览路径 + "/" + 名称（浏览根目录时为 "/名称"）
         :type Path: str
         :param _Size: 文件大小，单位是Bytes
         :type Size: int
@@ -13537,7 +13605,7 @@ class FileInfo(AbstractModel):
 
     @property
     def Path(self):
-        r"""文件名称
+        r"""完整路径：浏览路径 + "/" + 名称（浏览根目录时为 "/名称"）
         :rtype: str
         """
         return self._Path
@@ -15517,7 +15585,7 @@ class PlanInfo(AbstractModel):
         :param _EnableObjectTags: <p>是否备份对象标签（仅COS备份支持）</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableObjectTags: bool
-        :param _ProductType: <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+        :param _ProductType: <p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductType: str
         """
@@ -15770,7 +15838,7 @@ class PlanInfo(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""<p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+        r"""<p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16418,7 +16486,7 @@ class ProtectInstance(AbstractModel):
         :param _BackupSize: <p>备份数据量，单位为字节</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackupSize: int
-        :param _ProductType: <p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+        :param _ProductType: <p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductType: str
         """
@@ -16572,7 +16640,7 @@ class ProtectInstance(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""<p>产品存储类型</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li></ul>
+        r"""<p>产品存储类型。CFS 资源返回文件系统存储类型；非 CFS 资源无存储类型，返回资源类型标识。</p><p>枚举值：</p><ul><li>SD： 文件系统通用标准型存储</li><li>HP： 文件系统通用性能性存储</li><li>TB： 文件系统Turbo标准型存储</li><li>TP： 文件系统Turbo性能型存储</li><li>THP： 文件系统Turbo吞吐型存储</li><li>CVM_AGENT： CVM 资源（非 CFS 资源时返回）</li><li>COS_AGENT： COS 资源（非 CFS 资源时返回）</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17133,46 +17201,55 @@ class RestoreTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 恢复任务 ID
+        :param _TaskId: <p>恢复任务 ID</p>
         :type TaskId: str
-        :param _BackupId: 关联备份点 ID
+        :param _BackupId: <p>关联备份点 ID</p>
         :type BackupId: str
-        :param _ResourceId: 源实例 ID
+        :param _ResourceId: <p>源实例 ID</p>
         :type ResourceId: str
-        :param _TargetResourceId: 目标实例 ID
+        :param _TargetResourceId: <p>目标实例 ID</p>
         :type TargetResourceId: str
-        :param _RestorePaths: 恢复路径列表
+        :param _RestorePaths: <p>恢复路径列表</p>
         :type RestorePaths: list of str
-        :param _TargetLocation: 目标恢复位置
+        :param _TargetLocation: <p>目标恢复位置</p>
         :type TargetLocation: str
-        :param _Status: 任务状态
+        :param _Status: <p>任务状态</p>
         :type Status: str
-        :param _TotalFileCount: 需恢复文件总数
+        :param _TotalFileCount: <p>需恢复文件总数</p>
         :type TotalFileCount: int
-        :param _TotalSize: 需恢复数据总量（字节）
+        :param _TotalSize: <p>需恢复数据总量（字节）</p>
         :type TotalSize: int
-        :param _TotalSizeFormatted: 需恢复数据总量（格式化，如 "1.5 GB"）
+        :param _TotalSizeFormatted: <p>需恢复数据总量（格式化：1024 进制，保留两位小数，单位 B/KiB/MiB/GiB/TiB/PiB，如 &quot;1.50 GiB&quot;）</p>
         :type TotalSizeFormatted: str
-        :param _RestoreFileCount: 已恢复文件数
+        :param _RestoreFileCount: <p>已恢复文件数</p>
         :type RestoreFileCount: int
-        :param _RestoreSize: 已恢复数据量（字节）
+        :param _RestoreSize: <p>已恢复数据量（字节）</p>
         :type RestoreSize: int
-        :param _RestoreSizeFormatted: 已恢复数据量（格式化）
+        :param _RestoreSizeFormatted: <p>已恢复数据量（格式化，口径同 TotalSizeFormatted，如 &quot;512.00 MiB&quot;）</p>
         :type RestoreSizeFormatted: str
-        :param _Progress: 恢复进度（0-100）
+        :param _Progress: <p>恢复进度（0-100）</p>
         :type Progress: float
-        :param _JobId: 关联 Job ID
+        :param _JobId: <p>关联 Job ID</p>
         :type JobId: str
-        :param _StartTime: 任务开始时间（ISO 格式）
+        :param _StartTime: <p>任务开始时间（ISO 格式）</p>
         :type StartTime: str
-        :param _EndTime: 任务结束时间
+        :param _EndTime: <p>任务结束时间</p>
         :type EndTime: str
-        :param _CreatedTime: 任务创建时间
+        :param _CreatedTime: <p>任务创建时间</p>
         :type CreatedTime: str
-        :param _FailReason: 恢复任务失败原因
+        :param _FailReason: <p>恢复任务失败原因</p>
         :type FailReason: str
-        :param _ConflictStrategy: 冲突处理策略：skip-跳过/overwrite-覆盖/newer-保留最新版本/if_changed-内容变化时覆盖
+        :param _ConflictStrategy: <p>冲突处理策略：skip-跳过/overwrite-覆盖/newer-保留最新版本/if_changed-内容变化时覆盖</p>
         :type ConflictStrategy: str
+        :param _IsOriginalPath: <p>是否为原路径恢复</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsOriginalPath: bool
+        :param _CloudResourceId: <p>源端腾讯云资源ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudResourceId: str
+        :param _TargetCloudResourceId: <p>目标端腾讯云资源ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetCloudResourceId: str
         """
         self._TaskId = None
         self._BackupId = None
@@ -17194,10 +17271,13 @@ class RestoreTask(AbstractModel):
         self._CreatedTime = None
         self._FailReason = None
         self._ConflictStrategy = None
+        self._IsOriginalPath = None
+        self._CloudResourceId = None
+        self._TargetCloudResourceId = None
 
     @property
     def TaskId(self):
-        r"""恢复任务 ID
+        r"""<p>恢复任务 ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -17208,7 +17288,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""关联备份点 ID
+        r"""<p>关联备份点 ID</p>
         :rtype: str
         """
         return self._BackupId
@@ -17219,7 +17299,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""源实例 ID
+        r"""<p>源实例 ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -17230,7 +17310,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetResourceId(self):
-        r"""目标实例 ID
+        r"""<p>目标实例 ID</p>
         :rtype: str
         """
         return self._TargetResourceId
@@ -17241,7 +17321,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestorePaths(self):
-        r"""恢复路径列表
+        r"""<p>恢复路径列表</p>
         :rtype: list of str
         """
         return self._RestorePaths
@@ -17252,7 +17332,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TargetLocation(self):
-        r"""目标恢复位置
+        r"""<p>目标恢复位置</p>
         :rtype: str
         """
         return self._TargetLocation
@@ -17263,7 +17343,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态
+        r"""<p>任务状态</p>
         :rtype: str
         """
         return self._Status
@@ -17274,7 +17354,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TotalFileCount(self):
-        r"""需恢复文件总数
+        r"""<p>需恢复文件总数</p>
         :rtype: int
         """
         return self._TotalFileCount
@@ -17285,7 +17365,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TotalSize(self):
-        r"""需恢复数据总量（字节）
+        r"""<p>需恢复数据总量（字节）</p>
         :rtype: int
         """
         return self._TotalSize
@@ -17296,7 +17376,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def TotalSizeFormatted(self):
-        r"""需恢复数据总量（格式化，如 "1.5 GB"）
+        r"""<p>需恢复数据总量（格式化：1024 进制，保留两位小数，单位 B/KiB/MiB/GiB/TiB/PiB，如 &quot;1.50 GiB&quot;）</p>
         :rtype: str
         """
         return self._TotalSizeFormatted
@@ -17307,7 +17387,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreFileCount(self):
-        r"""已恢复文件数
+        r"""<p>已恢复文件数</p>
         :rtype: int
         """
         return self._RestoreFileCount
@@ -17318,7 +17398,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreSize(self):
-        r"""已恢复数据量（字节）
+        r"""<p>已恢复数据量（字节）</p>
         :rtype: int
         """
         return self._RestoreSize
@@ -17329,7 +17409,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreSizeFormatted(self):
-        r"""已恢复数据量（格式化）
+        r"""<p>已恢复数据量（格式化，口径同 TotalSizeFormatted，如 &quot;512.00 MiB&quot;）</p>
         :rtype: str
         """
         return self._RestoreSizeFormatted
@@ -17340,7 +17420,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Progress(self):
-        r"""恢复进度（0-100）
+        r"""<p>恢复进度（0-100）</p>
         :rtype: float
         """
         return self._Progress
@@ -17351,7 +17431,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def JobId(self):
-        r"""关联 Job ID
+        r"""<p>关联 Job ID</p>
         :rtype: str
         """
         return self._JobId
@@ -17362,7 +17442,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""任务开始时间（ISO 格式）
+        r"""<p>任务开始时间（ISO 格式）</p>
         :rtype: str
         """
         return self._StartTime
@@ -17373,7 +17453,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""任务结束时间
+        r"""<p>任务结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -17384,7 +17464,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -17395,7 +17475,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def FailReason(self):
-        r"""恢复任务失败原因
+        r"""<p>恢复任务失败原因</p>
         :rtype: str
         """
         return self._FailReason
@@ -17406,7 +17486,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def ConflictStrategy(self):
-        r"""冲突处理策略：skip-跳过/overwrite-覆盖/newer-保留最新版本/if_changed-内容变化时覆盖
+        r"""<p>冲突处理策略：skip-跳过/overwrite-覆盖/newer-保留最新版本/if_changed-内容变化时覆盖</p>
         :rtype: str
         """
         return self._ConflictStrategy
@@ -17414,6 +17494,42 @@ class RestoreTask(AbstractModel):
     @ConflictStrategy.setter
     def ConflictStrategy(self, ConflictStrategy):
         self._ConflictStrategy = ConflictStrategy
+
+    @property
+    def IsOriginalPath(self):
+        r"""<p>是否为原路径恢复</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsOriginalPath
+
+    @IsOriginalPath.setter
+    def IsOriginalPath(self, IsOriginalPath):
+        self._IsOriginalPath = IsOriginalPath
+
+    @property
+    def CloudResourceId(self):
+        r"""<p>源端腾讯云资源ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CloudResourceId
+
+    @CloudResourceId.setter
+    def CloudResourceId(self, CloudResourceId):
+        self._CloudResourceId = CloudResourceId
+
+    @property
+    def TargetCloudResourceId(self):
+        r"""<p>目标端腾讯云资源ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetCloudResourceId
+
+    @TargetCloudResourceId.setter
+    def TargetCloudResourceId(self, TargetCloudResourceId):
+        self._TargetCloudResourceId = TargetCloudResourceId
 
 
     def _deserialize(self, params):
@@ -17437,6 +17553,9 @@ class RestoreTask(AbstractModel):
         self._CreatedTime = params.get("CreatedTime")
         self._FailReason = params.get("FailReason")
         self._ConflictStrategy = params.get("ConflictStrategy")
+        self._IsOriginalPath = params.get("IsOriginalPath")
+        self._CloudResourceId = params.get("CloudResourceId")
+        self._TargetCloudResourceId = params.get("TargetCloudResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

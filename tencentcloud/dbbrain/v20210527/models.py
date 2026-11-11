@@ -18715,6 +18715,247 @@ class DescribeSlowLogsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSqlExplainV2Request(AbstractModel):
+    r"""DescribeSqlExplainV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: <p>服务产品类型。取值：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、dcdb（TDSQL MySQL 版）、mariadb（TDSQL MariaDB 版）。</p>
+        :type Product: str
+        :param _SqlText: <p>待分析的 SQL 语句。仅支持单条 SELECT 语句；若以 EXPLAIN 开头会自动剥离 EXPLAIN 前缀后分析。最大 4096 字符。</p>
+        :type SqlText: str
+        :param _InstanceId: <p>实例 ID。MySQL: cdb-xxxxxxx，TDSQL-C: cynosdbmysql-ins-xxxxxxx，MariaDB: tdsql-xxxxx，TDSQL-MySQL： '集群id&amp;分片id',如果TDSQL-MySQL数据库类型同时传入了集群id则instanceId字段只需要传入分片id。最大 64 字符。与 ClusterId 至少需传入其一。</p>
+        :type InstanceId: str
+        :param _Schema: <p>数据库名。可选；为空时按当前 SQL 上下文执行。最大 64 字符。</p>
+        :type Schema: str
+        :param _ClusterId: <p>集群 ID。仅 TDSQL-MySQL时使用，与 InstanceId 至少需传入其一。最大 64 字符。</p>
+        :type ClusterId: str
+        :param _Visual: <p>是否输出可视化执行树</p><p>默认值：false</p>
+        :type Visual: bool
+        """
+        self._Product = None
+        self._SqlText = None
+        self._InstanceId = None
+        self._Schema = None
+        self._ClusterId = None
+        self._Visual = None
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型。取值：mysql（云数据库 MySQL）、cynosdb（TDSQL-C MySQL 版）、dcdb（TDSQL MySQL 版）、mariadb（TDSQL MariaDB 版）。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def SqlText(self):
+        r"""<p>待分析的 SQL 语句。仅支持单条 SELECT 语句；若以 EXPLAIN 开头会自动剥离 EXPLAIN 前缀后分析。最大 4096 字符。</p>
+        :rtype: str
+        """
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。MySQL: cdb-xxxxxxx，TDSQL-C: cynosdbmysql-ins-xxxxxxx，MariaDB: tdsql-xxxxx，TDSQL-MySQL： '集群id&amp;分片id',如果TDSQL-MySQL数据库类型同时传入了集群id则instanceId字段只需要传入分片id。最大 64 字符。与 ClusterId 至少需传入其一。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Schema(self):
+        r"""<p>数据库名。可选；为空时按当前 SQL 上下文执行。最大 64 字符。</p>
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。仅 TDSQL-MySQL时使用，与 InstanceId 至少需传入其一。最大 64 字符。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Visual(self):
+        r"""<p>是否输出可视化执行树</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._Visual
+
+    @Visual.setter
+    def Visual(self, Visual):
+        self._Visual = Visual
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._SqlText = params.get("SqlText")
+        self._InstanceId = params.get("InstanceId")
+        self._Schema = params.get("Schema")
+        self._ClusterId = params.get("ClusterId")
+        self._Visual = params.get("Visual")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSqlExplainV2Response(AbstractModel):
+    r"""DescribeSqlExplainV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Schema: <p>数据库名，回显请求中的 Schema。</p>
+        :type Schema: str
+        :param _SqlText: <p>SQL 文本，回显请求中的 SqlText。</p>
+        :type SqlText: str
+        :param _Tables: <p>SQL 涉及的表名列表。</p>
+        :type Tables: list of SqlExplainTableRefV2
+        :param _Explain: <p>执行计划详细信息。由数据库 EXPLAIN 输出透传，内容为 JSON 字符串，包含 Meta（列定义）与 Data（执行计划行）两部分；Format=JSON 时为 EXPLAIN FORMAT=JSON 的原始结果。</p>
+        :type Explain: :class:`tencentcloud.dbbrain.v20210527.models.SqlExplainResultV2`
+        :param _FieldDesc: <p>执行计划字段说明列表。仅当请求 Visual=true 或走 SqlTemplateKey 路径时返回，用于前端展示字段中文释义。</p>
+        :type FieldDesc: list of SqlExplainFieldDescV2
+        :param _VisualExplain: <p>可视化执行计划树，当Visual=true时返回</p>
+        :type VisualExplain: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Schema = None
+        self._SqlText = None
+        self._Tables = None
+        self._Explain = None
+        self._FieldDesc = None
+        self._VisualExplain = None
+        self._RequestId = None
+
+    @property
+    def Schema(self):
+        r"""<p>数据库名，回显请求中的 Schema。</p>
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def SqlText(self):
+        r"""<p>SQL 文本，回显请求中的 SqlText。</p>
+        :rtype: str
+        """
+        return self._SqlText
+
+    @SqlText.setter
+    def SqlText(self, SqlText):
+        self._SqlText = SqlText
+
+    @property
+    def Tables(self):
+        r"""<p>SQL 涉及的表名列表。</p>
+        :rtype: list of SqlExplainTableRefV2
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+    @property
+    def Explain(self):
+        r"""<p>执行计划详细信息。由数据库 EXPLAIN 输出透传，内容为 JSON 字符串，包含 Meta（列定义）与 Data（执行计划行）两部分；Format=JSON 时为 EXPLAIN FORMAT=JSON 的原始结果。</p>
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.SqlExplainResultV2`
+        """
+        return self._Explain
+
+    @Explain.setter
+    def Explain(self, Explain):
+        self._Explain = Explain
+
+    @property
+    def FieldDesc(self):
+        r"""<p>执行计划字段说明列表。仅当请求 Visual=true 或走 SqlTemplateKey 路径时返回，用于前端展示字段中文释义。</p>
+        :rtype: list of SqlExplainFieldDescV2
+        """
+        return self._FieldDesc
+
+    @FieldDesc.setter
+    def FieldDesc(self, FieldDesc):
+        self._FieldDesc = FieldDesc
+
+    @property
+    def VisualExplain(self):
+        r"""<p>可视化执行计划树，当Visual=true时返回</p>
+        :rtype: str
+        """
+        return self._VisualExplain
+
+    @VisualExplain.setter
+    def VisualExplain(self, VisualExplain):
+        self._VisualExplain = VisualExplain
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Schema = params.get("Schema")
+        self._SqlText = params.get("SqlText")
+        if params.get("Tables") is not None:
+            self._Tables = []
+            for item in params.get("Tables"):
+                obj = SqlExplainTableRefV2()
+                obj._deserialize(item)
+                self._Tables.append(obj)
+        if params.get("Explain") is not None:
+            self._Explain = SqlExplainResultV2()
+            self._Explain._deserialize(params.get("Explain"))
+        if params.get("FieldDesc") is not None:
+            self._FieldDesc = []
+            for item in params.get("FieldDesc"):
+                obj = SqlExplainFieldDescV2()
+                obj._deserialize(item)
+                self._FieldDesc.append(obj)
+        self._VisualExplain = params.get("VisualExplain")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSqlFiltersRequest(AbstractModel):
     r"""DescribeSqlFilters请求参数结构体
 
@@ -29343,6 +29584,170 @@ class SqlCostDistribution(AbstractModel):
         self._From = params.get("From")
         self._To = params.get("To")
         self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlExplainFieldDescV2(AbstractModel):
+    r"""执行计划字段说明项。提供 EXPLAIN / VisualExplain 输出中各字段的中文释义，便于前端在展示可视化执行计划时进行翻译。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Field: <p>字段英文名，与 Explain / VisualExplain 中出现的字段一致，例如 access_type、key、rows。</p>
+        :type Field: str
+        :param _Desc: <p>字段中文释义。</p>
+        :type Desc: str
+        """
+        self._Field = None
+        self._Desc = None
+
+    @property
+    def Field(self):
+        r"""<p>字段英文名，与 Explain / VisualExplain 中出现的字段一致，例如 access_type、key、rows。</p>
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def Desc(self):
+        r"""<p>字段中文释义。</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Field = params.get("Field")
+        self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlExplainResultV2(AbstractModel):
+    r"""EXPLAIN 输出结果。Names 为 EXPLAIN 列名顺序，Data 为按行展开的执行计划数据。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Names: <p>EXPLAIN 列名顺序，与 Data 中每一行的字段一一对应。</p>
+        :type Names: list of str
+        :param _Data: <p>执行计划行列表。</p>
+        :type Data: list of SqlExplainRowV2
+        """
+        self._Names = None
+        self._Data = None
+
+    @property
+    def Names(self):
+        r"""<p>EXPLAIN 列名顺序，与 Data 中每一行的字段一一对应。</p>
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def Data(self):
+        r"""<p>执行计划行列表。</p>
+        :rtype: list of SqlExplainRowV2
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Names = params.get("Names")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SqlExplainRowV2()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SqlExplainRowV2(AbstractModel):
+    r"""EXPLAIN TRADITIONAL 格式的执行计划行（共 12 列），字段语义与 MySQL 原生 EXPLAIN 输出一致。
+
+    """
+
+
+class SqlExplainTableRefV2(AbstractModel):
+    r"""SQL 涉及的表信息。包含库名与表名，用于在前端展示 SQL 涉及的表清单。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableName: <p>表名。</p>
+        :type TableName: str
+        :param _TableSchema: <p>表所在的数据库名。</p>
+        :type TableSchema: str
+        """
+        self._TableName = None
+        self._TableSchema = None
+
+    @property
+    def TableName(self):
+        r"""<p>表名。</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableSchema(self):
+        r"""<p>表所在的数据库名。</p>
+        :rtype: str
+        """
+        return self._TableSchema
+
+    @TableSchema.setter
+    def TableSchema(self, TableSchema):
+        self._TableSchema = TableSchema
+
+
+    def _deserialize(self, params):
+        self._TableName = params.get("TableName")
+        self._TableSchema = params.get("TableSchema")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

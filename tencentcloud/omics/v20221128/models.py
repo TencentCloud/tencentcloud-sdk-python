@@ -4925,34 +4925,40 @@ class HPCCluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _Scheduler: 调度器
+        :param _Scheduler: <p>调度器</p>
         :type Scheduler: str
-        :param _VPCId: VPC ID
+        :param _VPCId: <p>VPC ID</p>
         :type VPCId: str
-        :param _NodeCount: 节点数量
+        :param _NodeCount: <p>节点数量</p>
         :type NodeCount: int
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: list of Tag
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _Type: 集群类型
+        :param _Type: <p>集群类型</p>
         :type Type: str
-        :param _OsName: 系统名称
+        :param _OsName: <p>系统名称</p>
         :type OsName: str
-        :param _SchedulerVersion: 调度器版本
+        :param _SchedulerVersion: <p>调度器版本</p>
         :type SchedulerVersion: str
-        :param _VPCCIDRBlock: 集群VPC CIDR
+        :param _VPCCIDRBlock: <p>集群VPC CIDR</p>
         :type VPCCIDRBlock: str
-        :param _ConfirmDeadline: 集群确认交付截止日期
+        :param _ConfirmDeadline: <p>集群确认交付截止日期</p>
         :type ConfirmDeadline: str
+        :param _StatusReason: <p>状态原因</p>
+        :type StatusReason: str
+        :param _IsolateTime: <p>隔离时间</p>
+        :type IsolateTime: str
+        :param _Message: <p>消息</p>
+        :type Message: str
         """
         self._ClusterId = None
         self._Name = None
@@ -4968,10 +4974,13 @@ class HPCCluster(AbstractModel):
         self._SchedulerVersion = None
         self._VPCCIDRBlock = None
         self._ConfirmDeadline = None
+        self._StatusReason = None
+        self._IsolateTime = None
+        self._Message = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -4982,7 +4991,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -4993,7 +5002,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -5004,7 +5013,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -5015,7 +5024,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def Scheduler(self):
-        r"""调度器
+        r"""<p>调度器</p>
         :rtype: str
         """
         return self._Scheduler
@@ -5026,7 +5035,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def VPCId(self):
-        r"""VPC ID
+        r"""<p>VPC ID</p>
         :rtype: str
         """
         return self._VPCId
@@ -5037,7 +5046,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""节点数量
+        r"""<p>节点数量</p>
         :rtype: int
         """
         return self._NodeCount
@@ -5048,7 +5057,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -5059,7 +5068,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5070,7 +5079,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def Type(self):
-        r"""集群类型
+        r"""<p>集群类型</p>
         :rtype: str
         """
         return self._Type
@@ -5081,7 +5090,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def OsName(self):
-        r"""系统名称
+        r"""<p>系统名称</p>
         :rtype: str
         """
         return self._OsName
@@ -5092,7 +5101,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def SchedulerVersion(self):
-        r"""调度器版本
+        r"""<p>调度器版本</p>
         :rtype: str
         """
         return self._SchedulerVersion
@@ -5103,7 +5112,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def VPCCIDRBlock(self):
-        r"""集群VPC CIDR
+        r"""<p>集群VPC CIDR</p>
         :rtype: str
         """
         return self._VPCCIDRBlock
@@ -5114,7 +5123,7 @@ class HPCCluster(AbstractModel):
 
     @property
     def ConfirmDeadline(self):
-        r"""集群确认交付截止日期
+        r"""<p>集群确认交付截止日期</p>
         :rtype: str
         """
         return self._ConfirmDeadline
@@ -5122,6 +5131,39 @@ class HPCCluster(AbstractModel):
     @ConfirmDeadline.setter
     def ConfirmDeadline(self, ConfirmDeadline):
         self._ConfirmDeadline = ConfirmDeadline
+
+    @property
+    def StatusReason(self):
+        r"""<p>状态原因</p>
+        :rtype: str
+        """
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
+
+    @property
+    def IsolateTime(self):
+        r"""<p>隔离时间</p>
+        :rtype: str
+        """
+        return self._IsolateTime
+
+    @IsolateTime.setter
+    def IsolateTime(self, IsolateTime):
+        self._IsolateTime = IsolateTime
+
+    @property
+    def Message(self):
+        r"""<p>消息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
 
 
     def _deserialize(self, params):
@@ -5144,6 +5186,9 @@ class HPCCluster(AbstractModel):
         self._SchedulerVersion = params.get("SchedulerVersion")
         self._VPCCIDRBlock = params.get("VPCCIDRBlock")
         self._ConfirmDeadline = params.get("ConfirmDeadline")
+        self._StatusReason = params.get("StatusReason")
+        self._IsolateTime = params.get("IsolateTime")
+        self._Message = params.get("Message")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5620,6 +5665,8 @@ class HPCNode(AbstractModel):
         :type QueueName: str
         :param _Status: <p>节点状态。取值范围：<br>IDLE 空闲<br>DOWN 节点下线<br>MIXED 节点部分使用<br>ALLOC  节点完全分配<br>DRAIN 排空，不接受新任务</p>
         :type Status: str
+        :param _IsExistingNode: <p>是否存量节点</p>
+        :type IsExistingNode: bool
         """
         self._NodeId = None
         self._QueueId = None
@@ -5633,6 +5680,7 @@ class HPCNode(AbstractModel):
         self._Name = None
         self._QueueName = None
         self._Status = None
+        self._IsExistingNode = None
 
     @property
     def NodeId(self):
@@ -5766,6 +5814,17 @@ class HPCNode(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def IsExistingNode(self):
+        r"""<p>是否存量节点</p>
+        :rtype: bool
+        """
+        return self._IsExistingNode
+
+    @IsExistingNode.setter
+    def IsExistingNode(self, IsExistingNode):
+        self._IsExistingNode = IsExistingNode
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -5787,6 +5846,7 @@ class HPCNode(AbstractModel):
         self._Name = params.get("Name")
         self._QueueName = params.get("QueueName")
         self._Status = params.get("Status")
+        self._IsExistingNode = params.get("IsExistingNode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

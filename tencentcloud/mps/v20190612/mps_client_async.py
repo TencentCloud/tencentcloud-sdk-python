@@ -498,6 +498,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateModelChatTask(
+            self,
+            request: models.CreateModelChatTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateModelChatTaskResponse:
+        """
+        提交异步多模态理解任务，返回 TaskId
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateModelChatTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateModelChatTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePersonSample(
             self,
             request: models.CreatePersonSampleRequest,
@@ -2087,6 +2105,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeMediaMetaData"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMediaMetaDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModelChatTask(
+            self,
+            request: models.DescribeModelChatTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelChatTaskResponse:
+        """
+        按 TaskId 查询多模态理解任务结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelChatTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelChatTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

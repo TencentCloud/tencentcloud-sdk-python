@@ -762,13 +762,13 @@ class ChcDeployExtraConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MiniOsType: minos类型。是使用腾讯云的minios，还是客户自己的minios。
+        :param _MiniOsType: <p>MiniOS类型。是使用腾讯云的MiniOS，还是客户私有的MiniOS。</p><p>枚举值：</p><ul><li>public： 腾讯云的MiniOS。</li><li>private： 客户私有的MiniOS。</li></ul>
         :type MiniOsType: str
-        :param _BootType: 服务器的架构和启动方式。取值为x86_legacy, arm_uefi。
+        :param _BootType: <p>服务器的架构和启动方式。</p><p>枚举值：</p><ul><li>x86_legacy： X86架构、Legacy启动模式。</li><li>x86_uefi： X86架构、UEFI启动模式。</li><li>arm_uefi： ARM架构，UEFI启动模式。</li></ul>
         :type BootType: str
-        :param _BootFile: PXE使用的引导文件。默认为pxelinux.0。
+        :param _BootFile: <p>PXE使用的引导文件。默认为pxelinux.0。</p>
         :type BootFile: str
-        :param _NextServerAddress: tftp服务器的ip地址。
+        :param _NextServerAddress: <p>TFTP服务器的IP地址。</p>
         :type NextServerAddress: str
         """
         self._MiniOsType = None
@@ -778,7 +778,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
     @property
     def MiniOsType(self):
-        r"""minos类型。是使用腾讯云的minios，还是客户自己的minios。
+        r"""<p>MiniOS类型。是使用腾讯云的MiniOS，还是客户私有的MiniOS。</p><p>枚举值：</p><ul><li>public： 腾讯云的MiniOS。</li><li>private： 客户私有的MiniOS。</li></ul>
         :rtype: str
         """
         return self._MiniOsType
@@ -789,7 +789,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
     @property
     def BootType(self):
-        r"""服务器的架构和启动方式。取值为x86_legacy, arm_uefi。
+        r"""<p>服务器的架构和启动方式。</p><p>枚举值：</p><ul><li>x86_legacy： X86架构、Legacy启动模式。</li><li>x86_uefi： X86架构、UEFI启动模式。</li><li>arm_uefi： ARM架构，UEFI启动模式。</li></ul>
         :rtype: str
         """
         return self._BootType
@@ -800,7 +800,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
     @property
     def BootFile(self):
-        r"""PXE使用的引导文件。默认为pxelinux.0。
+        r"""<p>PXE使用的引导文件。默认为pxelinux.0。</p>
         :rtype: str
         """
         return self._BootFile
@@ -811,7 +811,7 @@ class ChcDeployExtraConfig(AbstractModel):
 
     @property
     def NextServerAddress(self):
-        r"""tftp服务器的ip地址。
+        r"""<p>TFTP服务器的IP地址。</p>
         :rtype: str
         """
         return self._NextServerAddress
@@ -1543,18 +1543,20 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChcIds: CHC物理服务器的实例Id。
+        :param _ChcIds: <p>CHC物理服务器ID。</p>
         :type ChcIds: list of str
-        :param _BmcVirtualPrivateCloud: 带外网络信息。
+        :param _BmcVirtualPrivateCloud: <p>带外网络信息。</p>
         :type BmcVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
-        :param _BmcSecurityGroupIds: 带外网络的安全组列表
+        :param _BmcSecurityGroupIds: <p>带外网络的安全组列表。</p>
         :type BmcSecurityGroupIds: list of str
-        :param _DeployVirtualPrivateCloud: 部署网络信息。
+        :param _DeployVirtualPrivateCloud: <p>部署网络信息。</p>
         :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
-        :param _DeploySecurityGroupIds: 部署网络的安全组列表
+        :param _DeploySecurityGroupIds: <p>部署网络的安全组列表。</p>
         :type DeploySecurityGroupIds: list of str
-        :param _ChcDeployExtraConfig: 部署网络的附加参数，用于指定minios类型、bios引导模式等
+        :param _ChcDeployExtraConfig: <p>部署网络的附加参数，用于指定DHCP选项、bios引导模式等配置。</p>
         :type ChcDeployExtraConfig: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
+        :param _SkipBmcCheck: <p>是否跳过带外检查。</p><p>默认值：false</p>
+        :type SkipBmcCheck: bool
         """
         self._ChcIds = None
         self._BmcVirtualPrivateCloud = None
@@ -1562,10 +1564,11 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
         self._DeployVirtualPrivateCloud = None
         self._DeploySecurityGroupIds = None
         self._ChcDeployExtraConfig = None
+        self._SkipBmcCheck = None
 
     @property
     def ChcIds(self):
-        r"""CHC物理服务器的实例Id。
+        r"""<p>CHC物理服务器ID。</p>
         :rtype: list of str
         """
         return self._ChcIds
@@ -1576,7 +1579,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def BmcVirtualPrivateCloud(self):
-        r"""带外网络信息。
+        r"""<p>带外网络信息。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._BmcVirtualPrivateCloud
@@ -1587,7 +1590,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def BmcSecurityGroupIds(self):
-        r"""带外网络的安全组列表
+        r"""<p>带外网络的安全组列表。</p>
         :rtype: list of str
         """
         return self._BmcSecurityGroupIds
@@ -1598,7 +1601,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def DeployVirtualPrivateCloud(self):
-        r"""部署网络信息。
+        r"""<p>部署网络信息。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._DeployVirtualPrivateCloud
@@ -1609,7 +1612,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def DeploySecurityGroupIds(self):
-        r"""部署网络的安全组列表
+        r"""<p>部署网络的安全组列表。</p>
         :rtype: list of str
         """
         return self._DeploySecurityGroupIds
@@ -1620,7 +1623,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
 
     @property
     def ChcDeployExtraConfig(self):
-        r"""部署网络的附加参数，用于指定minios类型、bios引导模式等
+        r"""<p>部署网络的附加参数，用于指定DHCP选项、bios引导模式等配置。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
         """
         return self._ChcDeployExtraConfig
@@ -1628,6 +1631,17 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
     @ChcDeployExtraConfig.setter
     def ChcDeployExtraConfig(self, ChcDeployExtraConfig):
         self._ChcDeployExtraConfig = ChcDeployExtraConfig
+
+    @property
+    def SkipBmcCheck(self):
+        r"""<p>是否跳过带外检查。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._SkipBmcCheck
+
+    @SkipBmcCheck.setter
+    def SkipBmcCheck(self, SkipBmcCheck):
+        self._SkipBmcCheck = SkipBmcCheck
 
 
     def _deserialize(self, params):
@@ -1643,6 +1657,7 @@ class ConfigureChcAssistVpcRequest(AbstractModel):
         if params.get("ChcDeployExtraConfig") is not None:
             self._ChcDeployExtraConfig = ChcDeployExtraConfig()
             self._ChcDeployExtraConfig._deserialize(params.get("ChcDeployExtraConfig"))
+        self._SkipBmcCheck = params.get("SkipBmcCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

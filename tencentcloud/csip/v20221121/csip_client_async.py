@@ -405,6 +405,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAssetBaselineRiskExportJob(
+            self,
+            request: models.CreateAssetBaselineRiskExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateAssetBaselineRiskExportJobResponse:
+        """
+        创建资产基线风险导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAssetBaselineRiskExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAssetBaselineRiskExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAssetComponentListExportJob(
             self,
             request: models.CreateAssetComponentListExportJobRequest,
@@ -2153,6 +2171,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBaselineIgnorePolicy(
+            self,
+            request: models.DeleteBaselineIgnorePolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBaselineIgnorePolicyResponse:
+        """
+        删除基线忽略策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBaselineIgnorePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBaselineIgnorePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteBaselineSelfDefinedPolicyList(
             self,
             request: models.DeleteBaselineSelfDefinedPolicyListRequest,
@@ -3551,6 +3587,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAssetBaselineRiskList(
+            self,
+            request: models.DescribeAssetBaselineRiskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAssetBaselineRiskListResponse:
+        """
+        获取资产风险列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAssetBaselineRiskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAssetBaselineRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAssetComponentList(
             self,
             request: models.DescribeAssetComponentListRequest,
@@ -3996,6 +4050,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeBaselineFixRecordList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBaselineFixRecordListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineIgnorePolicyList(
+            self,
+            request: models.DescribeBaselineIgnorePolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineIgnorePolicyListResponse:
+        """
+        获取基线忽略策略列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineIgnorePolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineIgnorePolicyListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4865,6 +4937,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeClusterAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClusterAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterBaselineRiskPolicyList(
+            self,
+            request: models.DescribeClusterBaselineRiskPolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterBaselineRiskPolicyListResponse:
+        """
+        获取集群风险策略列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterBaselineRiskPolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterBaselineRiskPolicyListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5981,6 +6071,25 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeDspmAccessTopologyIps"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDspmAccessTopologyIpsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmAccessTopologySummary(
+            self,
+            request: models.DescribeDspmAccessTopologySummaryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmAccessTopologySummaryResponse:
+        """
+        查询数据库访问拓扑（库级/表级）的概览卡片数据，包含来源IP数、访问账号数、被访问库数/表数、近7天与近30天访问次数。
+        数据由后台预聚合产生，查询侧无聚合开销；出参 LastCalcTime 为数据最后计算时间，可据此判断数据新鲜度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmAccessTopologySummary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmAccessTopologySummaryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7606,6 +7715,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHostVulRiskEventList(
+            self,
+            request: models.DescribeHostVulRiskEventListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulRiskEventListResponse:
+        """
+        查询主机漏洞风险事件列表，按风险记录维度返回漏洞基础信息、实例信息、风险状态和最近扫描时间。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulRiskEventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulRiskEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHostVulRiskList(
             self,
             request: models.DescribeHostVulRiskListRequest,
@@ -7619,6 +7746,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeHostVulRiskList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeHostVulRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostVulScanStatus(
+            self,
+            request: models.DescribeHostVulScanStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulScanStatusResponse:
+        """
+        查询主机漏洞扫描状态，用于判断是否扫描过漏洞、首次漏洞扫描是否失败，以及首次扫描完成后的可修复漏洞状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulScanStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulScanStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -11092,6 +11237,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBaselineIgnorePolicy(
+            self,
+            request: models.ModifyBaselineIgnorePolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselineIgnorePolicyResponse:
+        """
+        修改基线忽略策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselineIgnorePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselineIgnorePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyBaselinePolicy(
             self,
             request: models.ModifyBaselinePolicyRequest,
@@ -11285,6 +11448,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyCSIPRaspLicenseUnBinds"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCSIPRaspLicenseUnBindsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterAuditLogStatus(
+            self,
+            request: models.ModifyClusterAuditLogStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterAuditLogStatusResponse:
+        """
+        修改集群审计日志状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterAuditLogStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterAuditLogStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

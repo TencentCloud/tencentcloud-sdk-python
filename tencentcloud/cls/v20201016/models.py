@@ -34411,14 +34411,17 @@ class DynamicIndex(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 键值索引自动配置开关
+        :param _Status: <p>键值索引自动配置开关</p>
         :type Status: bool
+        :param _Tokenizer: <p>索引的分词符，其中的每个字符代表一个分词符；<br>仅支持英文符号、\n\t\r及转义符\；<br>注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义</p>
+        :type Tokenizer: str
         """
         self._Status = None
+        self._Tokenizer = None
 
     @property
     def Status(self):
-        r"""键值索引自动配置开关
+        r"""<p>键值索引自动配置开关</p>
         :rtype: bool
         """
         return self._Status
@@ -34427,9 +34430,21 @@ class DynamicIndex(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Tokenizer(self):
+        r"""<p>索引的分词符，其中的每个字符代表一个分词符；<br>仅支持英文符号、\n\t\r及转义符\；<br>注意：\n\t\r本身已被转义，直接使用双引号包裹即可作为入参，无需再次转义。使用API Explorer进行调试时请使用JSON参数输入方式，以避免\n\t\r被重复转义</p>
+        :rtype: str
+        """
+        return self._Tokenizer
+
+    @Tokenizer.setter
+    def Tokenizer(self, Tokenizer):
+        self._Tokenizer = Tokenizer
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._Tokenizer = params.get("Tokenizer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

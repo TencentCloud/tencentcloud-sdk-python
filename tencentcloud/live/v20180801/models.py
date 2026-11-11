@@ -8361,6 +8361,145 @@ class CreateAuditTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAvatarEditingLiveRequest(AbstractModel):
+    r"""CreateAvatarEditingLive请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>通道ID，这里是待编辑的直播流的源ID</p>
+        :type ChannelId: str
+        :param _ImageUrl: <p>各种编辑场景的参考图</p>
+        :type ImageUrl: str
+        :param _EditingType: <p>支持的编辑类型</p><p>枚举值：</p><ul><li>style_transfer： 整体风格迁移</li><li>virtual_tryon： 虚拟试穿</li><li>subject_replacement： 主体替换</li><li>background_replacement： 背景替换</li></ul><p>默认值：style_transfer</p>
+        :type EditingType: str
+        """
+        self._ChannelId = None
+        self._ImageUrl = None
+        self._EditingType = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道ID，这里是待编辑的直播流的源ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ImageUrl(self):
+        r"""<p>各种编辑场景的参考图</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def EditingType(self):
+        r"""<p>支持的编辑类型</p><p>枚举值：</p><ul><li>style_transfer： 整体风格迁移</li><li>virtual_tryon： 虚拟试穿</li><li>subject_replacement： 主体替换</li><li>background_replacement： 背景替换</li></ul><p>默认值：style_transfer</p>
+        :rtype: str
+        """
+        return self._EditingType
+
+    @EditingType.setter
+    def EditingType(self, EditingType):
+        self._EditingType = EditingType
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._ImageUrl = params.get("ImageUrl")
+        self._EditingType = params.get("EditingType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAvatarEditingLiveResponse(AbstractModel):
+    r"""CreateAvatarEditingLive返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LiveId: <p>实时编辑会话ID</p>
+        :type LiveId: str
+        :param _Status: <p>实时编辑会话的状态</p><p>枚举值：</p><ul><li>waiting： 等待中</li><li>on_live： 直播中</li><li>ending： 结束中</li><li>ended： 已结束</li><li>prepared： 准备中</li></ul>
+        :type Status: str
+        :param _ChannelId: <p>通道ID，这里是待编辑的直播流的源ID</p>
+        :type ChannelId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LiveId = None
+        self._Status = None
+        self._ChannelId = None
+        self._RequestId = None
+
+    @property
+    def LiveId(self):
+        r"""<p>实时编辑会话ID</p>
+        :rtype: str
+        """
+        return self._LiveId
+
+    @LiveId.setter
+    def LiveId(self, LiveId):
+        self._LiveId = LiveId
+
+    @property
+    def Status(self):
+        r"""<p>实时编辑会话的状态</p><p>枚举值：</p><ul><li>waiting： 等待中</li><li>on_live： 直播中</li><li>ending： 结束中</li><li>ended： 已结束</li><li>prepared： 准备中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道ID，这里是待编辑的直播流的源ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LiveId = params.get("LiveId")
+        self._Status = params.get("Status")
+        self._ChannelId = params.get("ChannelId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCasterInputPushUrlRequest(AbstractModel):
     r"""CreateCasterInputPushUrl请求参数结构体
 
@@ -19151,6 +19290,205 @@ class DescribeAuditTemplatesResponse(AbstractModel):
                 obj = AuditTemplate()
                 obj._deserialize(item)
                 self._AuditTemplates.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAvatarEditingLiveRequest(AbstractModel):
+    r"""DescribeAvatarEditingLive请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>通道ID，通常是待编辑的直播流的源ID</p>
+        :type ChannelId: str
+        """
+        self._ChannelId = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道ID，通常是待编辑的直播流的源ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAvatarEditingLiveResponse(AbstractModel):
+    r"""DescribeAvatarEditingLive返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>通道ID，通常是待编辑的直播流的源ID</p>
+        :type ChannelId: str
+        :param _LiveId: <p>实时编辑会话ID</p>
+        :type LiveId: str
+        :param _Status: <p>实时编辑会话的状态</p><p>枚举值：</p><ul><li>waiting： 等待中</li><li>on_live： 直播中</li><li>ending： 结束中</li><li>ended： 已结束</li><li>prepared： 准备中</li><li>not_exist： 不存在</li></ul>
+        :type Status: str
+        :param _Phase: <p>内部模块会话状态</p>
+        :type Phase: str
+        :param _CallMode: <p>输出Mode</p>
+        :type CallMode: str
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _StartTime: <p>开播时刻</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间，如果还没结束则该值为0</p>
+        :type EndTime: str
+        :param _TraceId: <p>跟踪ID，用于查日志</p>
+        :type TraceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChannelId = None
+        self._LiveId = None
+        self._Status = None
+        self._Phase = None
+        self._CallMode = None
+        self._CreatedAt = None
+        self._StartTime = None
+        self._EndTime = None
+        self._TraceId = None
+        self._RequestId = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道ID，通常是待编辑的直播流的源ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def LiveId(self):
+        r"""<p>实时编辑会话ID</p>
+        :rtype: str
+        """
+        return self._LiveId
+
+    @LiveId.setter
+    def LiveId(self, LiveId):
+        self._LiveId = LiveId
+
+    @property
+    def Status(self):
+        r"""<p>实时编辑会话的状态</p><p>枚举值：</p><ul><li>waiting： 等待中</li><li>on_live： 直播中</li><li>ending： 结束中</li><li>ended： 已结束</li><li>prepared： 准备中</li><li>not_exist： 不存在</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Phase(self):
+        r"""<p>内部模块会话状态</p>
+        :rtype: str
+        """
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def CallMode(self):
+        r"""<p>输出Mode</p>
+        :rtype: str
+        """
+        return self._CallMode
+
+    @CallMode.setter
+    def CallMode(self, CallMode):
+        self._CallMode = CallMode
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def StartTime(self):
+        r"""<p>开播时刻</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间，如果还没结束则该值为0</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def TraceId(self):
+        r"""<p>跟踪ID，用于查日志</p>
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._LiveId = params.get("LiveId")
+        self._Status = params.get("Status")
+        self._Phase = params.get("Phase")
+        self._CallMode = params.get("CallMode")
+        self._CreatedAt = params.get("CreatedAt")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._TraceId = params.get("TraceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -48619,6 +48957,100 @@ class StartLiveStreamMonitorResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StopAvatarEditingLiveRequest(AbstractModel):
+    r"""StopAvatarEditingLive请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>通道ID，通常是待编辑的直播流的源ID</p>
+        :type ChannelId: str
+        """
+        self._ChannelId = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道ID，通常是待编辑的直播流的源ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopAvatarEditingLiveResponse(AbstractModel):
+    r"""StopAvatarEditingLive返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>通道ID，通常是待编辑的直播流的源ID</p>
+        :type ChannelId: str
+        :param _LiveId: <p>实时编辑会话ID</p>
+        :type LiveId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChannelId = None
+        self._LiveId = None
+        self._RequestId = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道ID，通常是待编辑的直播流的源ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def LiveId(self):
+        r"""<p>实时编辑会话ID</p>
+        :rtype: str
+        """
+        return self._LiveId
+
+    @LiveId.setter
+    def LiveId(self, LiveId):
+        self._LiveId = LiveId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._LiveId = params.get("LiveId")
+        self._RequestId = params.get("RequestId")
+
+
 class StopCasterPgmRequest(AbstractModel):
     r"""StopCasterPgm请求参数结构体
 
@@ -49631,6 +50063,130 @@ class StreamOnlineInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SwitchAvatarEditingSceneRequest(AbstractModel):
+    r"""SwitchAvatarEditingScene请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>通道ID，通常是待编辑的直播流的源ID</p>
+        :type ChannelId: str
+        :param _EditingType: <p>支持的编辑类型</p><p>枚举值：</p><ul><li>style_transfer： 整体风格迁移</li><li>virtual_tryon： 虚拟试穿</li><li>subject_replacement： 主体替换</li><li>background_replacement： 背景替换</li></ul>
+        :type EditingType: str
+        :param _ImageUrl: <p>各种编辑场景的参考图</p>
+        :type ImageUrl: str
+        """
+        self._ChannelId = None
+        self._EditingType = None
+        self._ImageUrl = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道ID，通常是待编辑的直播流的源ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def EditingType(self):
+        r"""<p>支持的编辑类型</p><p>枚举值：</p><ul><li>style_transfer： 整体风格迁移</li><li>virtual_tryon： 虚拟试穿</li><li>subject_replacement： 主体替换</li><li>background_replacement： 背景替换</li></ul>
+        :rtype: str
+        """
+        return self._EditingType
+
+    @EditingType.setter
+    def EditingType(self, EditingType):
+        self._EditingType = EditingType
+
+    @property
+    def ImageUrl(self):
+        r"""<p>各种编辑场景的参考图</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._EditingType = params.get("EditingType")
+        self._ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchAvatarEditingSceneResponse(AbstractModel):
+    r"""SwitchAvatarEditingScene返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>通道ID，通常是待编辑的直播流的源ID</p>
+        :type ChannelId: str
+        :param _LiveId: <p>实时编辑会话ID</p>
+        :type LiveId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChannelId = None
+        self._LiveId = None
+        self._RequestId = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道ID，通常是待编辑的直播流的源ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def LiveId(self):
+        r"""<p>实时编辑会话ID</p>
+        :rtype: str
+        """
+        return self._LiveId
+
+    @LiveId.setter
+    def LiveId(self, LiveId):
+        self._LiveId = LiveId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._LiveId = params.get("LiveId")
+        self._RequestId = params.get("RequestId")
 
 
 class SwitchBackupStreamRequest(AbstractModel):

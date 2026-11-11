@@ -10802,6 +10802,148 @@ class GetSchemaRsp(AbstractModel):
         
 
 
+class GetSessionStatusRequest(AbstractModel):
+    r"""GetSessionStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间 ID</p>
+        :type WorkspaceId: str
+        :param _Items: <p>待查询的会话列表（支持传多个，传一条即单条查询）</p>
+        :type Items: list of SessionStatusQueryItem
+        """
+        self._WorkspaceId = None
+        self._Items = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间 ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def Items(self):
+        r"""<p>待查询的会话列表（支持传多个，传一条即单条查询）</p>
+        :rtype: list of SessionStatusQueryItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SessionStatusQueryItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetSessionStatusResponse(AbstractModel):
+    r"""GetSessionStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回结果</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.GetSessionStatusRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回结果</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetSessionStatusRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = GetSessionStatusRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetSessionStatusRsp(AbstractModel):
+    r"""查询会话任务状态响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 结果列表，与请求 Items 顺序一致
+        :type Items: list of SessionStatusItem
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        r"""结果列表，与请求 Items 顺序一致
+        :rtype: list of SessionStatusItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = SessionStatusItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GetTableRequest(AbstractModel):
     r"""GetTable请求参数结构体
 
@@ -22969,6 +23111,223 @@ class RangePartitioning(AbstractModel):
         
 
 
+class ReadProductJsonRequest(AbstractModel):
+    r"""ReadProductJson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkspaceId: <p>工作空间ID</p>
+        :type WorkspaceId: str
+        :param _RuntimeId: <p>沙盒runtimeId</p>
+        :type RuntimeId: str
+        :param _SessionId: <p>沙盒sessionId</p>
+        :type SessionId: str
+        """
+        self._WorkspaceId = None
+        self._RuntimeId = None
+        self._SessionId = None
+
+    @property
+    def WorkspaceId(self):
+        r"""<p>工作空间ID</p>
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def RuntimeId(self):
+        r"""<p>沙盒runtimeId</p>
+        :rtype: str
+        """
+        return self._RuntimeId
+
+    @RuntimeId.setter
+    def RuntimeId(self, RuntimeId):
+        self._RuntimeId = RuntimeId
+
+    @property
+    def SessionId(self):
+        r"""<p>沙盒sessionId</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._RuntimeId = params.get("RuntimeId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReadProductJsonResponse(AbstractModel):
+    r"""ReadProductJson返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回对象实体</p>
+        :type Data: :class:`tencentcloud.databuddy.v20260715.models.ReadProductJsonRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回对象实体</p>
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ReadProductJsonRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ReadProductJsonRsp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ReadProductJsonRsp(AbstractModel):
+    r"""databuddy 产物json 响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: <p>文件路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Size: <p>文件大小</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Size: str
+        :param _Content: <p>文件内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _ResultCode: <p>请求状态码 0-成功，其他-异常</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResultCode: int
+        :param _Message: <p>返回结果提示信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        """
+        self._Path = None
+        self._Size = None
+        self._Content = None
+        self._ResultCode = None
+        self._Message = None
+
+    @property
+    def Path(self):
+        r"""<p>文件路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Size(self):
+        r"""<p>文件大小</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Content(self):
+        r"""<p>文件内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ResultCode(self):
+        r"""<p>请求状态码 0-成功，其他-异常</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def Message(self):
+        r"""<p>返回结果提示信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Size = params.get("Size")
+        self._Content = params.get("Content")
+        self._ResultCode = params.get("ResultCode")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RemoveConsoleUsersRequest(AbstractModel):
     r"""RemoveConsoleUsers请求参数结构体
 
@@ -25368,6 +25727,123 @@ class SearchResult(AbstractModel):
                 self._FieldTags.append(obj)
         self._Aliases = params.get("Aliases")
         self._CatalogSource = params.get("CatalogSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionStatusItem(AbstractModel):
+    r"""会话任务状态单条结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: 对话 Session ID
+        :type SessionId: str
+        :param _RuntimeId: 沙箱 Runtime ID
+        :type RuntimeId: str
+        :param _TaskStatus: 任务运行状态: planning/working/pending/completed/failed
+        :type TaskStatus: str
+        """
+        self._SessionId = None
+        self._RuntimeId = None
+        self._TaskStatus = None
+
+    @property
+    def SessionId(self):
+        r"""对话 Session ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RuntimeId(self):
+        r"""沙箱 Runtime ID
+        :rtype: str
+        """
+        return self._RuntimeId
+
+    @RuntimeId.setter
+    def RuntimeId(self, RuntimeId):
+        self._RuntimeId = RuntimeId
+
+    @property
+    def TaskStatus(self):
+        r"""任务运行状态: planning/working/pending/completed/failed
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._RuntimeId = params.get("RuntimeId")
+        self._TaskStatus = params.get("TaskStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionStatusQueryItem(AbstractModel):
+    r"""查询会话任务状态的单条查询项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuntimeId: 沙箱 Runtime ID
+        :type RuntimeId: str
+        :param _SessionId: 对话 Session ID
+        :type SessionId: str
+        """
+        self._RuntimeId = None
+        self._SessionId = None
+
+    @property
+    def RuntimeId(self):
+        r"""沙箱 Runtime ID
+        :rtype: str
+        """
+        return self._RuntimeId
+
+    @RuntimeId.setter
+    def RuntimeId(self, RuntimeId):
+        self._RuntimeId = RuntimeId
+
+    @property
+    def SessionId(self):
+        r"""对话 Session ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._RuntimeId = params.get("RuntimeId")
+        self._SessionId = params.get("SessionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

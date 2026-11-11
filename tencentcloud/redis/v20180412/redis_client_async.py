@@ -1069,6 +1069,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeModules(
+            self,
+            request: models.DescribeModulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModulesResponse:
+        """
+        本接口（DescribeModules）用于查询实例的扩展模块信息，包括模块的支持状态（是否支持）、启用状态（是否已启用）等信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeParamTemplateInfo(
             self,
             request: models.DescribeParamTemplateInfoRequest,
@@ -1881,6 +1899,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyModule(
+            self,
+            request: models.ModifyModuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyModuleResponse:
+        """
+        本接口（ModifyModule）用于修改实例扩展模块的启用状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyModule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyModuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyNetworkConfig(
             self,
             request: models.ModifyNetworkConfigRequest,
@@ -1930,6 +1966,42 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "ModifyReplicationGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyReplicationGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySSLEncryptionMode(
+            self,
+            request: models.ModifySSLEncryptionModeRequest,
+            opts: Dict = None,
+    ) -> models.ModifySSLEncryptionModeResponse:
+        """
+        本接口（ModifySSLEncryptionMode）用于更改SSL加密模式
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySSLEncryptionMode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySSLEncryptionModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyValkeyModule(
+            self,
+            request: models.ModifyValkeyModuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyValkeyModuleResponse:
+        """
+        本接口（ModifyValkeyModule）用于修改Valkey实例扩展模块的启用状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyValkeyModule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyValkeyModuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2146,6 +2218,24 @@ class RedisClient(AbstractClient):
         kwargs["action"] = "SwitchProxy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SwitchProxyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateSSLCert(
+            self,
+            request: models.UpdateSSLCertRequest,
+            opts: Dict = None,
+    ) -> models.UpdateSSLCertResponse:
+        """
+        本接口（UpdateSSLCert）用于更新SSL密钥信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateSSLCert"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateSSLCertResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

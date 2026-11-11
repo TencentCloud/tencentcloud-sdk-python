@@ -16921,12 +16921,20 @@ class AudioEnhanceConfig(AbstractModel):
         :param _AudioEnhanceEdit: <p>音频增强编辑。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioEnhanceEdit: :class:`tencentcloud.mps.v20190612.models.AudioEnhanceEditConfig`
+        :param _AudioSR: <p>音频超分配置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AudioSR: :class:`tencentcloud.mps.v20190612.models.AudioSRConfig`
+        :param _SpatialAudio: <p>空间音频配置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpatialAudio: :class:`tencentcloud.mps.v20190612.models.SpatialAudioConfig`
         """
         self._Denoise = None
         self._Separate = None
         self._VolumeBalance = None
         self._Beautify = None
         self._AudioEnhanceEdit = None
+        self._AudioSR = None
+        self._SpatialAudio = None
 
     @property
     def Denoise(self):
@@ -16988,6 +16996,30 @@ class AudioEnhanceConfig(AbstractModel):
     def AudioEnhanceEdit(self, AudioEnhanceEdit):
         self._AudioEnhanceEdit = AudioEnhanceEdit
 
+    @property
+    def AudioSR(self):
+        r"""<p>音频超分配置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AudioSRConfig`
+        """
+        return self._AudioSR
+
+    @AudioSR.setter
+    def AudioSR(self, AudioSR):
+        self._AudioSR = AudioSR
+
+    @property
+    def SpatialAudio(self):
+        r"""<p>空间音频配置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SpatialAudioConfig`
+        """
+        return self._SpatialAudio
+
+    @SpatialAudio.setter
+    def SpatialAudio(self, SpatialAudio):
+        self._SpatialAudio = SpatialAudio
+
 
     def _deserialize(self, params):
         if params.get("Denoise") is not None:
@@ -17005,6 +17037,12 @@ class AudioEnhanceConfig(AbstractModel):
         if params.get("AudioEnhanceEdit") is not None:
             self._AudioEnhanceEdit = AudioEnhanceEditConfig()
             self._AudioEnhanceEdit._deserialize(params.get("AudioEnhanceEdit"))
+        if params.get("AudioSR") is not None:
+            self._AudioSR = AudioSRConfig()
+            self._AudioSR._deserialize(params.get("AudioSR"))
+        if params.get("SpatialAudio") is not None:
+            self._SpatialAudio = SpatialAudioConfig()
+            self._SpatialAudio._deserialize(params.get("SpatialAudio"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17056,6 +17094,74 @@ class AudioEnhanceEditConfig(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AudioSRConfig(AbstractModel):
+    r"""音频超分配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :type Switch: str
+        :param _Type: <p>音频超分类型</p><p>枚举值：</p><ul><li>premium_hd： 臻品高清版</li><li>premium_master： 臻品母带版</li></ul><p>默认值：premium_hd</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Value: <p>目标采样率</p><p>枚举值：</p><ul><li>44100： 44.1kHz</li><li>48000： 48kHz</li><li>64000： 64kHz</li><li>88200： 88.2kHz</li><li>96000： 96kHz</li><li>192000： 192kHz</li></ul><p>默认值：48000</p><p>其中 192kHz 仅臻品母带版才可以使用</p>
+        :type Value: int
+        """
+        self._Switch = None
+        self._Type = None
+        self._Value = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>音频超分类型</p><p>枚举值：</p><ul><li>premium_hd： 臻品高清版</li><li>premium_master： 臻品母带版</li></ul><p>默认值：premium_hd</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""<p>目标采样率</p><p>枚举值：</p><ul><li>44100： 44.1kHz</li><li>48000： 48kHz</li><li>64000： 64kHz</li><li>88200： 88.2kHz</li><li>96000： 96kHz</li><li>192000： 192kHz</li></ul><p>默认值：48000</p><p>其中 192kHz 仅臻品母带版才可以使用</p>
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19339,13 +19445,13 @@ class CloneViralAIGC(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Duration: <p>视频时长</p><p>取值范围：[4, 15]</p>
+        :param _Duration: <p>视频时长</p><p>取值范围：[4, 30]</p><p>指定时取值范围随档位不同：flash 为 2-15, pro 为 4-30。</p>
         :type Duration: int
-        :param _AspectRatio: <p>宽高比。旗舰版支持 16:9/4:3/1:1/3:4/9:16/21:9/adaptive，标准版支持16:9/1:1/9:16</p>
+        :param _AspectRatio: <p>宽高比。可选 9:16、16:9、3:4、4:3、1:1、21:9、adaptive（自适应参考视频，flash 档不支持）。</p>
         :type AspectRatio: str
-        :param _Resolution: <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
+        :param _Resolution: <p>分辨率。支持720p（默认）/1080p</p>
         :type Resolution: str
-        :param _ModelTier: <p>模式。flagship（高级版，默认）、standard（标准版）、depthcrafter(深度提取)</p>
+        :param _ModelTier: <p>模式。可选 pro（专业版）、 flash（高级版，默认）</p>
         :type ModelTier: str
         :param _DepthWithAudio: <p>深度估计结果是否含音频， 默认不含</p>
         :type DepthWithAudio: bool
@@ -19358,7 +19464,7 @@ class CloneViralAIGC(AbstractModel):
 
     @property
     def Duration(self):
-        r"""<p>视频时长</p><p>取值范围：[4, 15]</p>
+        r"""<p>视频时长</p><p>取值范围：[4, 30]</p><p>指定时取值范围随档位不同：flash 为 2-15, pro 为 4-30。</p>
         :rtype: int
         """
         return self._Duration
@@ -19369,7 +19475,7 @@ class CloneViralAIGC(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""<p>宽高比。旗舰版支持 16:9/4:3/1:1/3:4/9:16/21:9/adaptive，标准版支持16:9/1:1/9:16</p>
+        r"""<p>宽高比。可选 9:16、16:9、3:4、4:3、1:1、21:9、adaptive（自适应参考视频，flash 档不支持）。</p>
         :rtype: str
         """
         return self._AspectRatio
@@ -19380,7 +19486,7 @@ class CloneViralAIGC(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""<p>分辨率。支持720p（默认）/1080p/2k/4k</p>
+        r"""<p>分辨率。支持720p（默认）/1080p</p>
         :rtype: str
         """
         return self._Resolution
@@ -19391,7 +19497,7 @@ class CloneViralAIGC(AbstractModel):
 
     @property
     def ModelTier(self):
-        r"""<p>模式。flagship（高级版，默认）、standard（标准版）、depthcrafter(深度提取)</p>
+        r"""<p>模式。可选 pro（专业版）、 flash（高级版，默认）</p>
         :rtype: str
         """
         return self._ModelTier
@@ -24403,7 +24509,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type OutputImageCount: int
         :param _ExtraParameters: <p>用于传入模型要求的额外参数。</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
-        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li></ol><p>示例： {"size":"1024x1024"}。</p>
+        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li><li>Hunyuan 3.5-preivew, 支持多轮编辑，可通过携带previous_task_id的方式来继续编辑图片。</li></ol><p>示例： {"size":"1024x1024"}， {"previous_task_id":"4-AigcVideo-56349234"}。</p>
         :type AdditionalParameters: str
         :param _StoreCosParam: <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
@@ -24524,7 +24630,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li></ol><p>示例： {"size":"1024x1024"}。</p>
+        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 </p><ol><li>Hunyuan 3.0，支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。</li><li>Qwen 0925，支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。</li><li>Hunyuan 3.5-preivew, 支持多轮编辑，可通过携带previous_task_id的方式来继续编辑图片。</li></ol><p>示例： {"size":"1024x1024"}， {"previous_task_id":"4-AigcVideo-56349234"}。</p>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -27161,6 +27267,137 @@ class CreateMediaEvaluationResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateModelChatTaskRequest(AbstractModel):
+    r"""CreateModelChatTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>模型标识</p>
+        :type Model: str
+        :param _Messages: <p>对话消息数组</p>
+        :type Messages: list of ModelChatMessageItem
+        :param _TaskNotifyConfig: <p>回调通知配置</p>
+        :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.ModelChatTaskNotifyConfig`
+        """
+        self._Model = None
+        self._Messages = None
+        self._TaskNotifyConfig = None
+
+    @property
+    def Model(self):
+        r"""<p>模型标识</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Messages(self):
+        r"""<p>对话消息数组</p>
+        :rtype: list of ModelChatMessageItem
+        """
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def TaskNotifyConfig(self):
+        r"""<p>回调通知配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatTaskNotifyConfig`
+        """
+        return self._TaskNotifyConfig
+
+    @TaskNotifyConfig.setter
+    def TaskNotifyConfig(self, TaskNotifyConfig):
+        self._TaskNotifyConfig = TaskNotifyConfig
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = ModelChatMessageItem()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        if params.get("TaskNotifyConfig") is not None:
+            self._TaskNotifyConfig = ModelChatTaskNotifyConfig()
+            self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateModelChatTaskResponse(AbstractModel):
+    r"""CreateModelChatTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Msg: <p>错误描述</p>
+        :type Msg: str
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Msg = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def Msg(self):
+        r"""<p>错误描述</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Msg = params.get("Msg")
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
@@ -40002,6 +40239,197 @@ class DescribeMediaMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeModelChatTaskRequest(AbstractModel):
+    r"""DescribeModelChatTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelChatTaskResponse(AbstractModel):
+    r"""DescribeModelChatTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _Created: <p>响应生成时间</p>
+        :type Created: int
+        :param _Msg: <p>错误描述</p>
+        :type Msg: str
+        :param _Id: <p>响应 ID</p>
+        :type Id: str
+        :param _Object: <p>响应对象类型标识</p>
+        :type Object: str
+        :param _Model: <p>模型名称</p>
+        :type Model: str
+        :param _Choices: <p>候选回复数组</p>
+        :type Choices: list of ModelChatCompletionChoice
+        :param _Usage: <p>token 用量统计</p>
+        :type Usage: :class:`tencentcloud.mps.v20190612.models.ModelChatCompletionUsage`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Created = None
+        self._Msg = None
+        self._Id = None
+        self._Object = None
+        self._Model = None
+        self._Choices = None
+        self._Usage = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Created(self):
+        r"""<p>响应生成时间</p>
+        :rtype: int
+        """
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Msg(self):
+        r"""<p>错误描述</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Id(self):
+        r"""<p>响应 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Object(self):
+        r"""<p>响应对象类型标识</p>
+        :rtype: str
+        """
+        return self._Object
+
+    @Object.setter
+    def Object(self, Object):
+        self._Object = Object
+
+    @property
+    def Model(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Choices(self):
+        r"""<p>候选回复数组</p>
+        :rtype: list of ModelChatCompletionChoice
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def Usage(self):
+        r"""<p>token 用量统计</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatCompletionUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Created = params.get("Created")
+        self._Msg = params.get("Msg")
+        self._Id = params.get("Id")
+        self._Object = params.get("Object")
+        self._Model = params.get("Model")
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = ModelChatCompletionChoice()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        if params.get("Usage") is not None:
+            self._Usage = ModelChatCompletionUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeOutput(AbstractModel):
     r"""查询输出的配置信息。
 
@@ -52595,15 +53023,15 @@ class ExtractBlindWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li>
+        :param _Type: <p>数字水印类型，可选值：</p><li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li><li>blind-vega：vega数字水印；</li>
         :type Type: str
-        :param _InputInfo: 媒体处理的文件输入信息。
+        :param _InputInfo: <p>媒体处理的文件输入信息。</p>
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :param _TaskNotifyConfig: <p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param _ExtractBlindWatermarkConfig: 提取数字水印任务配置
+        :param _ExtractBlindWatermarkConfig: <p>提取数字水印任务配置</p>
         :type ExtractBlindWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
-        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+        :param _ResourceId: <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
         :type ResourceId: str
         """
         self._Type = None
@@ -52614,7 +53042,7 @@ class ExtractBlindWatermarkRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""数字水印类型，可选值：<li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li>
+        r"""<p>数字水印类型，可选值：</p><li>blind-basic：基础版权数字水印；</li><li>blind-abseq：ab序列版权数字水印；</li><li>blind-vega：vega数字水印；</li>
         :rtype: str
         """
         return self._Type
@@ -52625,7 +53053,7 @@ class ExtractBlindWatermarkRequest(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""媒体处理的文件输入信息。
+        r"""<p>媒体处理的文件输入信息。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._InputInfo
@@ -52636,7 +53064,7 @@ class ExtractBlindWatermarkRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
-        r"""任务的事件通知信息，不填代表不获取事件通知。
+        r"""<p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -52647,7 +53075,7 @@ class ExtractBlindWatermarkRequest(AbstractModel):
 
     @property
     def ExtractBlindWatermarkConfig(self):
-        r"""提取数字水印任务配置
+        r"""<p>提取数字水印任务配置</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ExtractBlindWatermarkTaskConfig`
         """
         return self._ExtractBlindWatermarkConfig
@@ -52658,7 +53086,7 @@ class ExtractBlindWatermarkRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+        r"""<p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
         :rtype: str
         """
         return self._ResourceId
@@ -52697,7 +53125,7 @@ class ExtractBlindWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -52707,7 +53135,7 @@ class ExtractBlindWatermarkResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -66683,35 +67111,38 @@ class MediaVideoStreamItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bitrate: 视频流的码率，单位：bps。
+        :param _Bitrate: <p>视频流的码率，单位：bps。</p>
         :type Bitrate: int
-        :param _Height: 视频流的高度，单位：px。
+        :param _Height: <p>视频流的高度，单位：px。</p>
         :type Height: int
-        :param _Width: 视频流的宽度，单位：px。
+        :param _Width: <p>视频流的宽度，单位：px。</p>
         :type Width: int
-        :param _Codec: 视频流的编码格式，例如 h264。
+        :param _Codec: <p>视频流的编码格式，例如 h264。</p>
         :type Codec: str
-        :param _Fps: 帧率，单位：hz。
+        :param _Fps: <p>帧率，单位：hz。</p>
         :type Fps: int
-        :param _ColorPrimaries: 色彩空间。
+        :param _ColorPrimaries: <p>色彩空间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorPrimaries: str
-        :param _ColorSpace: 色彩空间。
+        :param _ColorSpace: <p>色彩空间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorSpace: str
-        :param _ColorTransfer: 色彩空间。
+        :param _ColorTransfer: <p>色彩空间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColorTransfer: str
-        :param _HdrType: HDR类型。
+        :param _HdrType: <p>HDR类型。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HdrType: str
-        :param _Codecs: 视频Codecs。
+        :param _Codecs: <p>视频Codecs。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Codecs: str
-        :param _FpsNumerator: 帧率分子部分
+        :param _Duration: <p>视频时长。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: float
+        :param _FpsNumerator: <p>帧率分子部分</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FpsNumerator: int
-        :param _FpsDenominator: 帧率分母部分
+        :param _FpsDenominator: <p>帧率分母部分</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FpsDenominator: int
         """
@@ -66725,12 +67156,13 @@ class MediaVideoStreamItem(AbstractModel):
         self._ColorTransfer = None
         self._HdrType = None
         self._Codecs = None
+        self._Duration = None
         self._FpsNumerator = None
         self._FpsDenominator = None
 
     @property
     def Bitrate(self):
-        r"""视频流的码率，单位：bps。
+        r"""<p>视频流的码率，单位：bps。</p>
         :rtype: int
         """
         return self._Bitrate
@@ -66741,7 +67173,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Height(self):
-        r"""视频流的高度，单位：px。
+        r"""<p>视频流的高度，单位：px。</p>
         :rtype: int
         """
         return self._Height
@@ -66752,7 +67184,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Width(self):
-        r"""视频流的宽度，单位：px。
+        r"""<p>视频流的宽度，单位：px。</p>
         :rtype: int
         """
         return self._Width
@@ -66763,7 +67195,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Codec(self):
-        r"""视频流的编码格式，例如 h264。
+        r"""<p>视频流的编码格式，例如 h264。</p>
         :rtype: str
         """
         return self._Codec
@@ -66774,7 +67206,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Fps(self):
-        r"""帧率，单位：hz。
+        r"""<p>帧率，单位：hz。</p>
         :rtype: int
         """
         return self._Fps
@@ -66785,7 +67217,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorPrimaries(self):
-        r"""色彩空间。
+        r"""<p>色彩空间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66797,7 +67229,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorSpace(self):
-        r"""色彩空间。
+        r"""<p>色彩空间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66809,7 +67241,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def ColorTransfer(self):
-        r"""色彩空间。
+        r"""<p>色彩空间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66821,7 +67253,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def HdrType(self):
-        r"""HDR类型。
+        r"""<p>HDR类型。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66833,7 +67265,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def Codecs(self):
-        r"""视频Codecs。
+        r"""<p>视频Codecs。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -66844,8 +67276,20 @@ class MediaVideoStreamItem(AbstractModel):
         self._Codecs = Codecs
 
     @property
+    def Duration(self):
+        r"""<p>视频时长。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
     def FpsNumerator(self):
-        r"""帧率分子部分
+        r"""<p>帧率分子部分</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -66857,7 +67301,7 @@ class MediaVideoStreamItem(AbstractModel):
 
     @property
     def FpsDenominator(self):
-        r"""帧率分母部分
+        r"""<p>帧率分母部分</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -66879,6 +67323,7 @@ class MediaVideoStreamItem(AbstractModel):
         self._ColorTransfer = params.get("ColorTransfer")
         self._HdrType = params.get("HdrType")
         self._Codecs = params.get("Codecs")
+        self._Duration = params.get("Duration")
         self._FpsNumerator = params.get("FpsNumerator")
         self._FpsDenominator = params.get("FpsDenominator")
         memeber_set = set(params.keys())
@@ -66932,6 +67377,732 @@ class Metadata(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatCompletionChoice(AbstractModel):
+    r"""单条候选回复。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: <p>候选回复在候选数组中的索引</p>
+        :type Index: int
+        :param _FinishReason: <p>结束原因</p>
+        :type FinishReason: str
+        :param _Message: <p>模型回复消息体</p>
+        :type Message: :class:`tencentcloud.mps.v20190612.models.ModelChatResponseMessage`
+        """
+        self._Index = None
+        self._FinishReason = None
+        self._Message = None
+
+    @property
+    def Index(self):
+        r"""<p>候选回复在候选数组中的索引</p>
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def FinishReason(self):
+        r"""<p>结束原因</p>
+        :rtype: str
+        """
+        return self._FinishReason
+
+    @FinishReason.setter
+    def FinishReason(self, FinishReason):
+        self._FinishReason = FinishReason
+
+    @property
+    def Message(self):
+        r"""<p>模型回复消息体</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatResponseMessage`
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._FinishReason = params.get("FinishReason")
+        if params.get("Message") is not None:
+            self._Message = ModelChatResponseMessage()
+            self._Message._deserialize(params.get("Message"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatCompletionUsage(AbstractModel):
+    r"""模型调用的 token 用量统计。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTokens: <p>输入 token 数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptTokens: int
+        :param _CompletionTokens: <p>输出 token 数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CompletionTokens: int
+        :param _TotalTokens: <p>总 token 数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalTokens: int
+        """
+        self._PromptTokens = None
+        self._CompletionTokens = None
+        self._TotalTokens = None
+
+    @property
+    def PromptTokens(self):
+        r"""<p>输入 token 数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def CompletionTokens(self):
+        r"""<p>输出 token 数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CompletionTokens
+
+    @CompletionTokens.setter
+    def CompletionTokens(self, CompletionTokens):
+        self._CompletionTokens = CompletionTokens
+
+    @property
+    def TotalTokens(self):
+        r"""<p>总 token 数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._PromptTokens = params.get("PromptTokens")
+        self._CompletionTokens = params.get("CompletionTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatContentPart(AbstractModel):
+    r"""消息内容片段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>内容类型</p><p>枚举值：</p><ul><li>text： 文本内容</li><li>input_image： 图片输入</li><li>input_video： 视频输入</li><li>input_audio： 音频输入</li><li>input_file： 文件输入</li></ul>
+        :type Type: str
+        :param _Text: <p>文本消息</p><p>Type=text 时必填</p>
+        :type Text: str
+        :param _InputImage: <p>图片输入</p><p>Type=input_image 时必填</p>
+        :type InputImage: :class:`tencentcloud.mps.v20190612.models.ModelChatInputImage`
+        :param _InputVideo: <p>视频输入</p><p>Type=input_video 时必填</p>
+        :type InputVideo: :class:`tencentcloud.mps.v20190612.models.ModelChatInputVideo`
+        :param _InputAudio: <p>音频输入</p><p>Type=input_audio 时必填</p>
+        :type InputAudio: :class:`tencentcloud.mps.v20190612.models.ModelChatInputAudio`
+        :param _InputFile: <p>文件输入</p><p>Type=input_file 时必填</p>
+        :type InputFile: :class:`tencentcloud.mps.v20190612.models.ModelChatInputFile`
+        """
+        self._Type = None
+        self._Text = None
+        self._InputImage = None
+        self._InputVideo = None
+        self._InputAudio = None
+        self._InputFile = None
+
+    @property
+    def Type(self):
+        r"""<p>内容类型</p><p>枚举值：</p><ul><li>text： 文本内容</li><li>input_image： 图片输入</li><li>input_video： 视频输入</li><li>input_audio： 音频输入</li><li>input_file： 文件输入</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Text(self):
+        r"""<p>文本消息</p><p>Type=text 时必填</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def InputImage(self):
+        r"""<p>图片输入</p><p>Type=input_image 时必填</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatInputImage`
+        """
+        return self._InputImage
+
+    @InputImage.setter
+    def InputImage(self, InputImage):
+        self._InputImage = InputImage
+
+    @property
+    def InputVideo(self):
+        r"""<p>视频输入</p><p>Type=input_video 时必填</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatInputVideo`
+        """
+        return self._InputVideo
+
+    @InputVideo.setter
+    def InputVideo(self, InputVideo):
+        self._InputVideo = InputVideo
+
+    @property
+    def InputAudio(self):
+        r"""<p>音频输入</p><p>Type=input_audio 时必填</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatInputAudio`
+        """
+        return self._InputAudio
+
+    @InputAudio.setter
+    def InputAudio(self, InputAudio):
+        self._InputAudio = InputAudio
+
+    @property
+    def InputFile(self):
+        r"""<p>文件输入</p><p>Type=input_file 时必填</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatInputFile`
+        """
+        return self._InputFile
+
+    @InputFile.setter
+    def InputFile(self, InputFile):
+        self._InputFile = InputFile
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Text = params.get("Text")
+        if params.get("InputImage") is not None:
+            self._InputImage = ModelChatInputImage()
+            self._InputImage._deserialize(params.get("InputImage"))
+        if params.get("InputVideo") is not None:
+            self._InputVideo = ModelChatInputVideo()
+            self._InputVideo._deserialize(params.get("InputVideo"))
+        if params.get("InputAudio") is not None:
+            self._InputAudio = ModelChatInputAudio()
+            self._InputAudio._deserialize(params.get("InputAudio"))
+        if params.get("InputFile") is not None:
+            self._InputFile = ModelChatInputFile()
+            self._InputFile._deserialize(params.get("InputFile"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatDataInputInfo(AbstractModel):
+    r"""多模态理解Base64输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>Base64输入</p>
+        :type Data: str
+        """
+        self._Data = None
+
+    @property
+    def Data(self):
+        r"""<p>Base64输入</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatInputAudio(AbstractModel):
+    r"""音频输入配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>媒体文件输入</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.ModelChatMediaInputInfo`
+        :param _Format: <p>音频格式</p>
+        :type Format: str
+        """
+        self._InputInfo = None
+        self._Format = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>媒体文件输入</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatMediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def Format(self):
+        r"""<p>音频格式</p>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = ModelChatMediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatInputFile(AbstractModel):
+    r"""文件输入配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>媒体文件输入</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.ModelChatMediaInputInfo`
+        :param _Filename: <p>文件名</p>
+        :type Filename: str
+        """
+        self._InputInfo = None
+        self._Filename = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>媒体文件输入</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatMediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+    @property
+    def Filename(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._Filename
+
+    @Filename.setter
+    def Filename(self, Filename):
+        self._Filename = Filename
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = ModelChatMediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        self._Filename = params.get("Filename")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatInputImage(AbstractModel):
+    r"""图片输入配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>媒体文件输入</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.ModelChatMediaInputInfo`
+        """
+        self._InputInfo = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>媒体文件输入</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatMediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = ModelChatMediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatInputVideo(AbstractModel):
+    r"""视频输入配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputInfo: <p>媒体文件输入</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.ModelChatMediaInputInfo`
+        """
+        self._InputInfo = None
+
+    @property
+    def InputInfo(self):
+        r"""<p>媒体文件输入</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatMediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
+
+
+    def _deserialize(self, params):
+        if params.get("InputInfo") is not None:
+            self._InputInfo = ModelChatMediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatMediaInputInfo(AbstractModel):
+    r"""多模态理解媒体文件输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>输入类型</p><p>枚举值：</p><ul><li>URL： Url输入</li><li>DATA： Base64输入</li></ul>
+        :type Type: str
+        :param _UrlInputInfo: <p>URL输入配置</p>
+        :type UrlInputInfo: :class:`tencentcloud.mps.v20190612.models.ModelChatUrlInputInfo`
+        :param _DataInputInfo: <p>Base64输入配置</p>
+        :type DataInputInfo: :class:`tencentcloud.mps.v20190612.models.ModelChatDataInputInfo`
+        """
+        self._Type = None
+        self._UrlInputInfo = None
+        self._DataInputInfo = None
+
+    @property
+    def Type(self):
+        r"""<p>输入类型</p><p>枚举值：</p><ul><li>URL： Url输入</li><li>DATA： Base64输入</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def UrlInputInfo(self):
+        r"""<p>URL输入配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatUrlInputInfo`
+        """
+        return self._UrlInputInfo
+
+    @UrlInputInfo.setter
+    def UrlInputInfo(self, UrlInputInfo):
+        self._UrlInputInfo = UrlInputInfo
+
+    @property
+    def DataInputInfo(self):
+        r"""<p>Base64输入配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModelChatDataInputInfo`
+        """
+        return self._DataInputInfo
+
+    @DataInputInfo.setter
+    def DataInputInfo(self, DataInputInfo):
+        self._DataInputInfo = DataInputInfo
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("UrlInputInfo") is not None:
+            self._UrlInputInfo = ModelChatUrlInputInfo()
+            self._UrlInputInfo._deserialize(params.get("UrlInputInfo"))
+        if params.get("DataInputInfo") is not None:
+            self._DataInputInfo = ModelChatDataInputInfo()
+            self._DataInputInfo._deserialize(params.get("DataInputInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatMessageItem(AbstractModel):
+    r"""单条对话消息，定义对话中的角色与内容。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>角色</p><p>枚举值：</p><ul><li>system： 系统消息</li><li>user： 用户消息</li><li>assistant： 模型消息</li></ul>
+        :type Role: str
+        :param _Content: <p>输入内容</p>
+        :type Content: list of ModelChatContentPart
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        r"""<p>角色</p><p>枚举值：</p><ul><li>system： 系统消息</li><li>user： 用户消息</li><li>assistant： 模型消息</li></ul>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>输入内容</p>
+        :rtype: list of ModelChatContentPart
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        if params.get("Content") is not None:
+            self._Content = []
+            for item in params.get("Content"):
+                obj = ModelChatContentPart()
+                obj._deserialize(item)
+                self._Content.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatResponseMessage(AbstractModel):
+    r"""模型回复消息体。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>角色标识</p><p>枚举值：</p><ul><li>assistant： 模型消息</li><li>user： 用户消息</li><li>system： 系统消息</li></ul>
+        :type Role: str
+        :param _Content: <p>模型生成的识别文本</p>
+        :type Content: str
+        """
+        self._Role = None
+        self._Content = None
+
+    @property
+    def Role(self):
+        r"""<p>角色标识</p><p>枚举值：</p><ul><li>assistant： 模型消息</li><li>user： 用户消息</li><li>system： 系统消息</li></ul>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>模型生成的识别文本</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatTaskNotifyConfig(AbstractModel):
+    r"""多模态理解任务的事件通知配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NotifyUrl: <p>回调 URL</p>
+        :type NotifyUrl: str
+        """
+        self._NotifyUrl = None
+
+    @property
+    def NotifyUrl(self):
+        r"""<p>回调 URL</p>
+        :rtype: str
+        """
+        return self._NotifyUrl
+
+    @NotifyUrl.setter
+    def NotifyUrl(self, NotifyUrl):
+        self._NotifyUrl = NotifyUrl
+
+
+    def _deserialize(self, params):
+        self._NotifyUrl = params.get("NotifyUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelChatUrlInputInfo(AbstractModel):
+    r"""多模态理解URL输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>Url输入</p>
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        r"""<p>Url输入</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -89046,6 +90217,59 @@ class SourceTag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SpatialAudioConfig(AbstractModel):
+    r"""空间音频配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :type Switch: str
+        :param _Type: <p>空间音频类型</p><p>枚举值：</p><ul><li>premium_immersive： 臻品全景声</li></ul><p>默认值：premium_immersive</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        """
+        self._Switch = None
+        self._Type = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>空间音频类型</p><p>枚举值：</p><ul><li>premium_immersive： 臻品全景声</li></ul><p>默认值：premium_immersive</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1843,6 +1843,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSqlExplainV2(self, request):
+        r"""查询指定 SELECT SQL 在实例上的执行计划，常用于慢 SQL 分析、SQL 优化等场景。仅支持 SELECT 类语句
+
+        :param request: Request instance for DescribeSqlExplainV2.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSqlExplainV2Request`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeSqlExplainV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSqlExplainV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSqlExplainV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSqlFilters(self, request):
         r"""查询实例SQL限流任务列表。
 

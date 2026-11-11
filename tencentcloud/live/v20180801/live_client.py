@@ -442,6 +442,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAvatarEditingLive(self, request):
+        r"""调用该接口，用于创建数字人直播间。
+
+        :param request: Request instance for CreateAvatarEditingLive.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateAvatarEditingLiveRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateAvatarEditingLiveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAvatarEditingLive", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAvatarEditingLiveResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCaster(self, request):
         r"""该接口用来创建新的导播台
 
@@ -2338,6 +2361,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeAuditTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAvatarEditingLive(self, request):
+        r"""调用该接口，查询数字人直播间信息列表。
+
+        :param request: Request instance for DescribeAvatarEditingLive.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAvatarEditingLiveRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAvatarEditingLiveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAvatarEditingLive", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAvatarEditingLiveResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5891,6 +5937,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StopAvatarEditingLive(self, request):
+        r"""调用该接口，用于停止数字人直播间。
+
+        :param request: Request instance for StopAvatarEditingLive.
+        :type request: :class:`tencentcloud.live.v20180801.models.StopAvatarEditingLiveRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.StopAvatarEditingLiveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopAvatarEditingLive", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopAvatarEditingLiveResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopCasterPgm(self, request):
         r"""该接口用来停止导播台的主监输出。
         停止主监后，对应的推流到腾讯云直播源站和推流到其他第三方平台均将会停止。
@@ -6067,6 +6136,29 @@ class LiveClient(AbstractClient):
             body = self.call("StopScreenshotTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopScreenshotTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SwitchAvatarEditingScene(self, request):
+        r"""调用该接口，用于临时驱动数字人播报。
+
+        :param request: Request instance for SwitchAvatarEditingScene.
+        :type request: :class:`tencentcloud.live.v20180801.models.SwitchAvatarEditingSceneRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.SwitchAvatarEditingSceneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SwitchAvatarEditingScene", params, headers=headers)
+            response = json.loads(body)
+            model = models.SwitchAvatarEditingSceneResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

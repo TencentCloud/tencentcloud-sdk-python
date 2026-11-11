@@ -879,6 +879,29 @@ class DatabuddyClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetSessionStatus(self, request):
+        r"""查询会话任务运行状态（支持批量）
+
+        :param request: Request instance for GetSessionStatus.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.GetSessionStatusRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.GetSessionStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetSessionStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetSessionStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetTable(self, request):
         r"""查询table详情
 
@@ -1653,6 +1676,29 @@ class DatabuddyClient(AbstractClient):
             body = self.call("ListWorkspaces", params, headers=headers)
             response = json.loads(body)
             model = models.ListWorkspacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReadProductJson(self, request):
+        r"""databuddy 产物获取接口
+
+        :param request: Request instance for ReadProductJson.
+        :type request: :class:`tencentcloud.databuddy.v20260715.models.ReadProductJsonRequest`
+        :rtype: :class:`tencentcloud.databuddy.v20260715.models.ReadProductJsonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReadProductJson", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReadProductJsonResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

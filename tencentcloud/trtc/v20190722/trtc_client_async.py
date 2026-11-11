@@ -1328,6 +1328,24 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyCloudTranscription(
+            self,
+            request: models.ModifyCloudTranscriptionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudTranscriptionResponse:
+        """
+        成功开启转录后，可以使用此接口来更新转录任务。仅在转录任务进行时有效，转录退出后更新将会返回错误。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudTranscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudTranscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyPicture(
             self,
             request: models.ModifyPictureRequest,

@@ -1654,6 +1654,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyCloudTranscription(self, request):
+        r"""成功开启转录后，可以使用此接口来更新转录任务。仅在转录任务进行时有效，转录退出后更新将会返回错误。
+
+        :param request: Request instance for ModifyCloudTranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudTranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.ModifyCloudTranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudTranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudTranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyPicture(self, request):
         r"""如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁修改自定义背景图或水印素材，可通过此接口修改已上传的图片。无需频繁修改图片素材的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
 

@@ -1545,6 +1545,10 @@ class ApmApplicationConfigView(AbstractModel):
         :type ResponseDurationWarningThreshold: int
         :param _UseDefaultFuseConfig: <p>是否使用探针默认熔断阈值</p>
         :type UseDefaultFuseConfig: bool
+        :param _IsJNDIInjectionAnalysis: <p>是否开启JNDI注入检测</p>
+        :type IsJNDIInjectionAnalysis: str
+        :param _IsJNIInjectionAnalysis: <p>是否开启JNI注入检测</p>
+        :type IsJNIInjectionAnalysis: str
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -1597,6 +1601,8 @@ class ApmApplicationConfigView(AbstractModel):
         self._ErrRateThreshold = None
         self._ResponseDurationWarningThreshold = None
         self._UseDefaultFuseConfig = None
+        self._IsJNDIInjectionAnalysis = None
+        self._IsJNIInjectionAnalysis = None
 
     @property
     def InstanceKey(self):
@@ -1963,6 +1969,8 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def IsJndiInjectionAnalysis(self):
+        warnings.warn("parameter `IsJndiInjectionAnalysis` is deprecated", DeprecationWarning) 
+
         r"""<p>是否开启JNDI注入检测</p>
         :rtype: int
         """
@@ -1970,10 +1978,14 @@ class ApmApplicationConfigView(AbstractModel):
 
     @IsJndiInjectionAnalysis.setter
     def IsJndiInjectionAnalysis(self, IsJndiInjectionAnalysis):
+        warnings.warn("parameter `IsJndiInjectionAnalysis` is deprecated", DeprecationWarning) 
+
         self._IsJndiInjectionAnalysis = IsJndiInjectionAnalysis
 
     @property
     def IsJniInjectionAnalysis(self):
+        warnings.warn("parameter `IsJniInjectionAnalysis` is deprecated", DeprecationWarning) 
+
         r"""<p>是否开启JNI注入检测</p>
         :rtype: int
         """
@@ -1981,6 +1993,8 @@ class ApmApplicationConfigView(AbstractModel):
 
     @IsJniInjectionAnalysis.setter
     def IsJniInjectionAnalysis(self, IsJniInjectionAnalysis):
+        warnings.warn("parameter `IsJniInjectionAnalysis` is deprecated", DeprecationWarning) 
+
         self._IsJniInjectionAnalysis = IsJniInjectionAnalysis
 
     @property
@@ -2159,6 +2173,28 @@ class ApmApplicationConfigView(AbstractModel):
     def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
         self._UseDefaultFuseConfig = UseDefaultFuseConfig
 
+    @property
+    def IsJNDIInjectionAnalysis(self):
+        r"""<p>是否开启JNDI注入检测</p>
+        :rtype: str
+        """
+        return self._IsJNDIInjectionAnalysis
+
+    @IsJNDIInjectionAnalysis.setter
+    def IsJNDIInjectionAnalysis(self, IsJNDIInjectionAnalysis):
+        self._IsJNDIInjectionAnalysis = IsJNDIInjectionAnalysis
+
+    @property
+    def IsJNIInjectionAnalysis(self):
+        r"""<p>是否开启JNI注入检测</p>
+        :rtype: str
+        """
+        return self._IsJNIInjectionAnalysis
+
+    @IsJNIInjectionAnalysis.setter
+    def IsJNIInjectionAnalysis(self, IsJNIInjectionAnalysis):
+        self._IsJNIInjectionAnalysis = IsJNIInjectionAnalysis
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -2224,6 +2260,8 @@ class ApmApplicationConfigView(AbstractModel):
         self._ErrRateThreshold = params.get("ErrRateThreshold")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
+        self._IsJNDIInjectionAnalysis = params.get("IsJNDIInjectionAnalysis")
+        self._IsJNIInjectionAnalysis = params.get("IsJNIInjectionAnalysis")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4136,19 +4174,23 @@ class CVMMeta(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>业务系统ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceID: str
+        :param _InstanceId: <p>业务系统ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self._Region = None
         self._InstanceID = None
+        self._InstanceId = None
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4160,7 +4202,9 @@ class CVMMeta(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        warnings.warn("parameter `InstanceID` is deprecated", DeprecationWarning) 
+
+        r"""<p>业务系统ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4168,12 +4212,27 @@ class CVMMeta(AbstractModel):
 
     @InstanceID.setter
     def InstanceID(self, InstanceID):
+        warnings.warn("parameter `InstanceID` is deprecated", DeprecationWarning) 
+
         self._InstanceID = InstanceID
+
+    @property
+    def InstanceId(self):
+        r"""<p>业务系统ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
         self._InstanceID = params.get("InstanceID")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4212,6 +4271,8 @@ class ChartData(AbstractModel):
 
     @property
     def YAxis(self):
+        warnings.warn("parameter `YAxis` is deprecated", DeprecationWarning) 
+
         r"""<p>接口参数列表</p>
         :rtype: list of YAxis
         """
@@ -4219,6 +4280,8 @@ class ChartData(AbstractModel):
 
     @YAxis.setter
     def YAxis(self, YAxis):
+        warnings.warn("parameter `YAxis` is deprecated", DeprecationWarning) 
+
         self._YAxis = YAxis
 
 
@@ -13039,6 +13102,10 @@ class ServiceDetail(AbstractModel):
         :param _ResponseDurationWarningThreshold: <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p><p>单位：ms</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseDurationWarningThreshold: int
+        :param _AppId: <p>用户appid</p>
+        :type AppId: str
+        :param _CreateUin: <p>主账号uin</p>
+        :type CreateUin: str
         """
         self._ServiceID = None
         self._InstanceKey = None
@@ -13052,6 +13119,8 @@ class ServiceDetail(AbstractModel):
         self._EnableThresholdConfig = None
         self._ErrRateThreshold = None
         self._ResponseDurationWarningThreshold = None
+        self._AppId = None
+        self._CreateUin = None
 
     @property
     def ServiceID(self):
@@ -13079,6 +13148,8 @@ class ServiceDetail(AbstractModel):
 
     @property
     def AppID(self):
+        warnings.warn("parameter `AppID` is deprecated", DeprecationWarning) 
+
         r"""<p>用户appid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
@@ -13087,10 +13158,14 @@ class ServiceDetail(AbstractModel):
 
     @AppID.setter
     def AppID(self, AppID):
+        warnings.warn("parameter `AppID` is deprecated", DeprecationWarning) 
+
         self._AppID = AppID
 
     @property
     def CreateUIN(self):
+        warnings.warn("parameter `CreateUIN` is deprecated", DeprecationWarning) 
+
         r"""<p>主账号uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -13099,6 +13174,8 @@ class ServiceDetail(AbstractModel):
 
     @CreateUIN.setter
     def CreateUIN(self, CreateUIN):
+        warnings.warn("parameter `CreateUIN` is deprecated", DeprecationWarning) 
+
         self._CreateUIN = CreateUIN
 
     @property
@@ -13196,6 +13273,28 @@ class ServiceDetail(AbstractModel):
     def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
         self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
+    @property
+    def AppId(self):
+        r"""<p>用户appid</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateUin(self):
+        r"""<p>主账号uin</p>
+        :rtype: str
+        """
+        return self._CreateUin
+
+    @CreateUin.setter
+    def CreateUin(self, CreateUin):
+        self._CreateUin = CreateUin
+
 
     def _deserialize(self, params):
         self._ServiceID = params.get("ServiceID")
@@ -13215,6 +13314,8 @@ class ServiceDetail(AbstractModel):
         self._EnableThresholdConfig = params.get("EnableThresholdConfig")
         self._ErrRateThreshold = params.get("ErrRateThreshold")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._AppId = params.get("AppId")
+        self._CreateUin = params.get("CreateUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14463,63 +14564,65 @@ class TopologyNode(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrRate: 错误率
+        :param _ErrRate: <p>错误率</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrRate: float
-        :param _Kind: 节点类型
+        :param _Kind: <p>节点类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Kind: str
-        :param _Name: 节点名
+        :param _Name: <p>节点名</p>
         :type Name: str
-        :param _Weight: 节点权重
+        :param _Weight: <p>节点权重</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: float
-        :param _Color: 节点颜色
+        :param _Color: <p>节点颜色</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Color: str
-        :param _Duration: 响应时间
+        :param _Duration: <p>响应时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Duration: float
-        :param _Qps: 吞吐量
+        :param _Qps: <p>吞吐量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Qps: float
-        :param _Type: 节点类型
+        :param _Type: <p>节点类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _Id: 节点ID
+        :param _Id: <p>节点ID</p>
         :type Id: str
-        :param _Size: 节点大小
+        :param _Size: <p>节点大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Size: str
-        :param _IsModule: 节点是否为组件类型
+        :param _IsModule: <p>节点是否为组件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsModule: bool
-        :param _Position: 节点位置信息
+        :param _Position: <p>节点位置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Position: :class:`tencentcloud.apm.v20210622.models.Position`
-        :param _Tags: 节点标签
+        :param _Tags: <p>节点标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of ApmTag
-        :param _CanDrillDown: 节点是否可以下钻
+        :param _CanDrillDown: <p>节点是否可以下钻</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanDrillDown: bool
-        :param _Resource: 资源层信息
+        :param _Resource: <p>资源层信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: :class:`tencentcloud.apm.v20210622.models.Resource`
-        :param _NodeView: 拓扑节点视图名字
+        :param _NodeView: <p>拓扑节点视图名字</p>
         :type NodeView: str
-        :param _ConsumerDuration: MQ 消费者视角的响应时间 ms
+        :param _ConsumerDuration: <p>MQ 消费者视角的响应时间 ms</p>
         :type ConsumerDuration: float
-        :param _ConsumerErrRate: MQ 消费者视角的错误率 %
+        :param _ConsumerErrRate: <p>MQ 消费者视角的错误率 %</p>
         :type ConsumerErrRate: float
-        :param _ConsumerQps: MQ 消费者视角的吞吐量
+        :param _ConsumerQps: <p>MQ 消费者视角的吞吐量</p>
         :type ConsumerQps: float
-        :param _ServiceId: 应用 ID
+        :param _ServiceId: <p>应用 ID</p>
         :type ServiceId: str
-        :param _ReqCnt: 调用次数
+        :param _ReqCnt: <p>调用次数</p>
         :type ReqCnt: int
-        :param _ConsumerReqCnt: 消息队列消费者视角的调用次数
+        :param _ConsumerReqCnt: <p>消息队列消费者视角的调用次数</p>
         :type ConsumerReqCnt: int
+        :param _ServiceID: <p>应用 ID</p>
+        :type ServiceID: str
         """
         self._ErrRate = None
         self._Kind = None
@@ -14543,10 +14646,11 @@ class TopologyNode(AbstractModel):
         self._ServiceId = None
         self._ReqCnt = None
         self._ConsumerReqCnt = None
+        self._ServiceID = None
 
     @property
     def ErrRate(self):
-        r"""错误率
+        r"""<p>错误率</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -14558,7 +14662,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Kind(self):
-        r"""节点类型
+        r"""<p>节点类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14570,7 +14674,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Name(self):
-        r"""节点名
+        r"""<p>节点名</p>
         :rtype: str
         """
         return self._Name
@@ -14581,7 +14685,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Weight(self):
-        r"""节点权重
+        r"""<p>节点权重</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -14593,7 +14697,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Color(self):
-        r"""节点颜色
+        r"""<p>节点颜色</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14605,7 +14709,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Duration(self):
-        r"""响应时间
+        r"""<p>响应时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -14617,7 +14721,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Qps(self):
-        r"""吞吐量
+        r"""<p>吞吐量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -14629,7 +14733,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Type(self):
-        r"""节点类型
+        r"""<p>节点类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14641,7 +14745,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Id(self):
-        r"""节点ID
+        r"""<p>节点ID</p>
         :rtype: str
         """
         return self._Id
@@ -14652,7 +14756,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Size(self):
-        r"""节点大小
+        r"""<p>节点大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14664,7 +14768,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def IsModule(self):
-        r"""节点是否为组件类型
+        r"""<p>节点是否为组件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -14676,7 +14780,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Position(self):
-        r"""节点位置信息
+        r"""<p>节点位置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apm.v20210622.models.Position`
         """
@@ -14688,7 +14792,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Tags(self):
-        r"""节点标签
+        r"""<p>节点标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApmTag
         """
@@ -14700,7 +14804,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def CanDrillDown(self):
-        r"""节点是否可以下钻
+        r"""<p>节点是否可以下钻</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -14712,7 +14816,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def Resource(self):
-        r"""资源层信息
+        r"""<p>资源层信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apm.v20210622.models.Resource`
         """
@@ -14724,7 +14828,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def NodeView(self):
-        r"""拓扑节点视图名字
+        r"""<p>拓扑节点视图名字</p>
         :rtype: str
         """
         return self._NodeView
@@ -14735,7 +14839,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def ConsumerDuration(self):
-        r"""MQ 消费者视角的响应时间 ms
+        r"""<p>MQ 消费者视角的响应时间 ms</p>
         :rtype: float
         """
         return self._ConsumerDuration
@@ -14746,7 +14850,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def ConsumerErrRate(self):
-        r"""MQ 消费者视角的错误率 %
+        r"""<p>MQ 消费者视角的错误率 %</p>
         :rtype: float
         """
         return self._ConsumerErrRate
@@ -14757,7 +14861,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def ConsumerQps(self):
-        r"""MQ 消费者视角的吞吐量
+        r"""<p>MQ 消费者视角的吞吐量</p>
         :rtype: float
         """
         return self._ConsumerQps
@@ -14768,18 +14872,22 @@ class TopologyNode(AbstractModel):
 
     @property
     def ServiceId(self):
-        r"""应用 ID
+        warnings.warn("parameter `ServiceId` is deprecated", DeprecationWarning) 
+
+        r"""<p>应用 ID</p>
         :rtype: str
         """
         return self._ServiceId
 
     @ServiceId.setter
     def ServiceId(self, ServiceId):
+        warnings.warn("parameter `ServiceId` is deprecated", DeprecationWarning) 
+
         self._ServiceId = ServiceId
 
     @property
     def ReqCnt(self):
-        r"""调用次数
+        r"""<p>调用次数</p>
         :rtype: int
         """
         return self._ReqCnt
@@ -14790,7 +14898,7 @@ class TopologyNode(AbstractModel):
 
     @property
     def ConsumerReqCnt(self):
-        r"""消息队列消费者视角的调用次数
+        r"""<p>消息队列消费者视角的调用次数</p>
         :rtype: int
         """
         return self._ConsumerReqCnt
@@ -14798,6 +14906,17 @@ class TopologyNode(AbstractModel):
     @ConsumerReqCnt.setter
     def ConsumerReqCnt(self, ConsumerReqCnt):
         self._ConsumerReqCnt = ConsumerReqCnt
+
+    @property
+    def ServiceID(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
 
 
     def _deserialize(self, params):
@@ -14832,6 +14951,7 @@ class TopologyNode(AbstractModel):
         self._ServiceId = params.get("ServiceId")
         self._ReqCnt = params.get("ReqCnt")
         self._ConsumerReqCnt = params.get("ConsumerReqCnt")
+        self._ServiceID = params.get("ServiceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

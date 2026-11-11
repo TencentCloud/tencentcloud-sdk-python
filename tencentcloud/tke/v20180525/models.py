@@ -51104,6 +51104,96 @@ class RotateClusterTokenRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _ClusterType: <p>集群类型，枚举类型：TKEServerless、TKE，为对应集群类型。默认TKE</p>
+        :type ClusterType: str
+        :param _Operation: <p>执行操作，枚举类型：CreateNewToken、RevokeOldToken、RecoverOldToken。<br>CreateNewToken：创建新的token并使之生效，注意默认最多有两个token同时生效，需要多个token生效，Force必须为true。<br>RevokeOldToken：删除老的token并使之失效，此时ClusterToken是必传。<br>RecoverOldToken：恢复老的token并使之生效，此时ClusterToken是必传，必须有对应的RevokeOldToken任务且任务成功才可以调用。</p>
+        :type Operation: str
+        :param _ClusterToken: <p>集群token，只有Operation为RevokeOldToken和RecoverOldToken时需要传入。</p>
+        :type ClusterToken: str
+        :param _Force: <p>默认false，只有Operation为CreateNewToken时需要，设置为true时，才可以超过两个token。</p>
+        :type Force: bool
+        """
+        self._ClusterId = None
+        self._ClusterType = None
+        self._Operation = None
+        self._ClusterToken = None
+        self._Force = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型，枚举类型：TKEServerless、TKE，为对应集群类型。默认TKE</p>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def Operation(self):
+        r"""<p>执行操作，枚举类型：CreateNewToken、RevokeOldToken、RecoverOldToken。<br>CreateNewToken：创建新的token并使之生效，注意默认最多有两个token同时生效，需要多个token生效，Force必须为true。<br>RevokeOldToken：删除老的token并使之失效，此时ClusterToken是必传。<br>RecoverOldToken：恢复老的token并使之生效，此时ClusterToken是必传，必须有对应的RevokeOldToken任务且任务成功才可以调用。</p>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def ClusterToken(self):
+        r"""<p>集群token，只有Operation为RevokeOldToken和RecoverOldToken时需要传入。</p>
+        :rtype: str
+        """
+        return self._ClusterToken
+
+    @ClusterToken.setter
+    def ClusterToken(self, ClusterToken):
+        self._ClusterToken = ClusterToken
+
+    @property
+    def Force(self):
+        r"""<p>默认false，只有Operation为CreateNewToken时需要，设置为true时，才可以超过两个token。</p>
+        :rtype: bool
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterType = params.get("ClusterType")
+        self._Operation = params.get("Operation")
+        self._ClusterToken = params.get("ClusterToken")
+        self._Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class RotateClusterTokenResponse(AbstractModel):
     r"""RotateClusterToken返回参数结构体

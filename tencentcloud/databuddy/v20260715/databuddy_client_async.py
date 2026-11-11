@@ -703,6 +703,24 @@ class DatabuddyClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetSessionStatus(
+            self,
+            request: models.GetSessionStatusRequest,
+            opts: Dict = None,
+    ) -> models.GetSessionStatusResponse:
+        """
+        查询会话任务运行状态（支持批量）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetSessionStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetSessionStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetTable(
             self,
             request: models.GetTableRequest,
@@ -1311,6 +1329,24 @@ class DatabuddyClient(AbstractClient):
         kwargs["action"] = "ListWorkspaces"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListWorkspacesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReadProductJson(
+            self,
+            request: models.ReadProductJsonRequest,
+            opts: Dict = None,
+    ) -> models.ReadProductJsonResponse:
+        """
+        databuddy 产物获取接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReadProductJson"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReadProductJsonResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -9864,6 +9864,90 @@ class DescribeMaintenanceWindowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeModulesRequest(AbstractModel):
+    r"""DescribeModules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModulesResponse(AbstractModel):
+    r"""DescribeModules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Modules: <p>实例的扩展模块列表，包括模块的支持状态（是否支持）、启用状态（是否已启用）等信息。</p>
+        :type Modules: list of Module
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Modules = None
+        self._RequestId = None
+
+    @property
+    def Modules(self):
+        r"""<p>实例的扩展模块列表，包括模块的支持状态（是否支持）、启用状态（是否已启用）等信息。</p>
+        :rtype: list of Module
+        """
+        return self._Modules
+
+    @Modules.setter
+    def Modules(self, Modules):
+        self._Modules = Modules
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Modules") is not None:
+            self._Modules = []
+            for item in params.get("Modules"):
+                obj = Module()
+                obj._deserialize(item)
+                self._Modules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeParamTemplateInfoRequest(AbstractModel):
     r"""DescribeParamTemplateInfo请求参数结构体
 
@@ -21281,6 +21365,123 @@ class ModifyMaintenanceWindowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyModuleRequest(AbstractModel):
+    r"""ModifyModule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :type InstanceId: str
+        :param _Name: 指定待修改的扩展模块。Redis 支持修改如下扩展模块的状态。
+- Bloom：指 RedisBloom 模块，可以高效地判断一个元素是否存在于集合中。
+- JSON：指 RedisJSON 模块，允许 Redis 原生支持 JSON 数据格式，方便存储和操作 JSON 对象。
+- Search：指 RediSearch 模块，提供全文搜索功能，可以对存储在 Redis 中的数据进行高效的搜索操作。
+- TimeSeries：指 RedisTimeSeries 模块，专门用于处理时间序列数据，适合存储和查询时间相关的数据。
+        :type Name: str
+        :param _Status: 设置扩展模块的启用状态。仅支持设置为 ON，启用扩展模块。
+        :type Status: str
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        r"""指定实例 ID。例如：crs-xjhsdj****。请登录[Redis控制台](https://console.cloud.tencent.com/redis)在实例列表复制实例 ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""指定待修改的扩展模块。Redis 支持修改如下扩展模块的状态。
+- Bloom：指 RedisBloom 模块，可以高效地判断一个元素是否存在于集合中。
+- JSON：指 RedisJSON 模块，允许 Redis 原生支持 JSON 数据格式，方便存储和操作 JSON 对象。
+- Search：指 RediSearch 模块，提供全文搜索功能，可以对存储在 Redis 中的数据进行高效的搜索操作。
+- TimeSeries：指 RedisTimeSeries 模块，专门用于处理时间序列数据，适合存储和查询时间相关的数据。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""设置扩展模块的启用状态。仅支持设置为 ON，启用扩展模块。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyModuleResponse(AbstractModel):
+    r"""ModifyModule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyNetworkConfigRequest(AbstractModel):
     r"""ModifyNetworkConfig请求参数结构体
 
@@ -21740,6 +21941,275 @@ class ModifyReplicationGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ModifySSLEncryptionModeRequest(AbstractModel):
+    r"""ModifySSLEncryptionMode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _EncryptionMode: <p>目标加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul>
+        :type EncryptionMode: str
+        """
+        self._InstanceId = None
+        self._EncryptionMode = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def EncryptionMode(self):
+        r"""<p>目标加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul>
+        :rtype: str
+        """
+        return self._EncryptionMode
+
+    @EncryptionMode.setter
+    def EncryptionMode(self, EncryptionMode):
+        self._EncryptionMode = EncryptionMode
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._EncryptionMode = params.get("EncryptionMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySSLEncryptionModeResponse(AbstractModel):
+    r"""ModifySSLEncryptionMode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyValkeyModuleRequest(AbstractModel):
+    r"""ModifyValkeyModule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _Name: <p>指定待修改的扩展模块。</p><p>枚举值：</p><ul><li>ValkeyBloom： 指 Bloom 模块，可以高效地判断一个元素是否存在于集合中</li><li>ValkeyJSON： 指 JSON 模块，允许 Redis 原生支持 JSON 数据格式，方便存储和操作 JSON 对象。</li><li>ValkeySearch： 指 Search 模块，提供全文搜索功能，可以对存储在 Redis 中的数据进行高效的搜索操作。</li></ul>
+        :type Name: str
+        :param _Status: <p>设置扩展模块的启用状态。仅支持设置为 ON，启用扩展模块。</p>
+        :type Status: str
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Status = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""<p>指定待修改的扩展模块。</p><p>枚举值：</p><ul><li>ValkeyBloom： 指 Bloom 模块，可以高效地判断一个元素是否存在于集合中</li><li>ValkeyJSON： 指 JSON 模块，允许 Redis 原生支持 JSON 数据格式，方便存储和操作 JSON 对象。</li><li>ValkeySearch： 指 Search 模块，提供全文搜索功能，可以对存储在 Redis 中的数据进行高效的搜索操作。</li></ul>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>设置扩展模块的启用状态。仅支持设置为 ON，启用扩展模块。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyValkeyModuleResponse(AbstractModel):
+    r"""ModifyValkeyModule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class Module(AbstractModel):
+    r"""Redis 支持的扩展模块信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Redis 支持的扩展模块，包括 Bloom、JSON、Search 和 TimeSeries，可以为 Redis 提供额外的功能支持。</p><ul><li>Bloom：指 RedisBloom 模块，可以高效地判断一个元素是否存在于集合中。</li><li>JSON：指 RedisJSON 模块，允许 Redis 原生支持 JSON 数据格式，方便存储和操作 JSON 对象。</li><li>Search：指 RediSearch 模块，提供全文搜索功能，可以对存储在 Redis 中的数据进行高效的搜索操作。</li><li>TimeSeries：指 RedisTimeSeries 模块，专门用于处理时间序列数据，适合存储和查询时间相关的数据。</li><li>ValkeyBloom：指Valkey引擎的RedisBloom 模块，可以高效地判断一个元素是否存在于集合中。</li><li>ValkeyJSON：指Valkey引擎的RedisJSON 模块，允许 Redis 原生支持 JSON 数据格式，方便存储和操作 JSON 对象。</li><li>ValkeySearch：指Valkey引擎的RediSearch 模块，提供全文搜索功能，可以对存储在 Redis 中的数据进行高效的搜索操作。</li></ul>
+        :type Name: str
+        :param _Status: <p>扩展模块的启用状态。</p><ul><li>ON：启用。</li><li>OFF：关闭。</li></ul>
+        :type Status: str
+        :param _IsSupport: <p>实例是否支持参数 Name 对应的扩展模块。</p><ul><li>true：支持。</li><li>false：不支持。</li></ul>
+        :type IsSupport: bool
+        """
+        self._Name = None
+        self._Status = None
+        self._IsSupport = None
+
+    @property
+    def Name(self):
+        r"""<p>Redis 支持的扩展模块，包括 Bloom、JSON、Search 和 TimeSeries，可以为 Redis 提供额外的功能支持。</p><ul><li>Bloom：指 RedisBloom 模块，可以高效地判断一个元素是否存在于集合中。</li><li>JSON：指 RedisJSON 模块，允许 Redis 原生支持 JSON 数据格式，方便存储和操作 JSON 对象。</li><li>Search：指 RediSearch 模块，提供全文搜索功能，可以对存储在 Redis 中的数据进行高效的搜索操作。</li><li>TimeSeries：指 RedisTimeSeries 模块，专门用于处理时间序列数据，适合存储和查询时间相关的数据。</li><li>ValkeyBloom：指Valkey引擎的RedisBloom 模块，可以高效地判断一个元素是否存在于集合中。</li><li>ValkeyJSON：指Valkey引擎的RedisJSON 模块，允许 Redis 原生支持 JSON 数据格式，方便存储和操作 JSON 对象。</li><li>ValkeySearch：指Valkey引擎的RediSearch 模块，提供全文搜索功能，可以对存储在 Redis 中的数据进行高效的搜索操作。</li></ul>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>扩展模块的启用状态。</p><ul><li>ON：启用。</li><li>OFF：关闭。</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsSupport(self):
+        r"""<p>实例是否支持参数 Name 对应的扩展模块。</p><ul><li>true：支持。</li><li>false：不支持。</li></ul>
+        :rtype: bool
+        """
+        return self._IsSupport
+
+    @IsSupport.setter
+    def IsSupport(self, IsSupport):
+        self._IsSupport = IsSupport
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._IsSupport = params.get("IsSupport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OpenLogRequest(AbstractModel):
@@ -26416,6 +26886,217 @@ class TradeDealDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateSSLCertRequest(AbstractModel):
+    r"""UpdateSSLCert请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _CertSource: <p>密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 用户自定义KMS</li></ul>
+        :type CertSource: int
+        :param _SwitchOption: <p>切换时间。（该参数废弃，不再生效）</p><p>枚举值：</p><ul><li>1： 维护时间窗操作：指开启SSL加密在设置的维护时间窗内执行。请通过接口DescribeMaintenanceWindow查询设置的维护时间窗时间段</li><li>2： 立即操作：操作将立即执行，无需等待维护时间窗。系统默认设置为立即操作。</li></ul>
+        :type SwitchOption: int
+        :param _AddressType: <p>SSL地址类型。</p><p>枚举值：</p><ul><li>0： 不限。</li><li>1： 内网IPv4。</li><li>2： 内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul>
+        :type AddressType: int
+        :param _KmsKeyId: <p>KMS的密钥ID。（该参数废弃，不再生效）</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+        :type KmsKeyId: str
+        :param _KmsRegion: <p>KMS地域信息。（该参数废弃，不再生效）</p><p>参数格式：ap-xxxx</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/573/34406#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">KMS支持的地域列表</a></p>
+        :type KmsRegion: str
+        :param _CertId: <p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+        :type CertId: str
+        :param _SSLMinVersion: <p>最低 TLS 版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+        :type SSLMinVersion: str
+        :param _EncryptionMode: <p>目标加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul>
+        :type EncryptionMode: str
+        """
+        self._InstanceId = None
+        self._CertSource = None
+        self._SwitchOption = None
+        self._AddressType = None
+        self._KmsKeyId = None
+        self._KmsRegion = None
+        self._CertId = None
+        self._SSLMinVersion = None
+        self._EncryptionMode = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>指定实例 ID。例如：crs-xjhsdj****。请登录<a href="https://console.cloud.tencent.com/redis">Redis控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def CertSource(self):
+        r"""<p>密钥类型。</p><p>枚举值：</p><ul><li>0： 腾讯云提供</li><li>1： 用户自定义KMS</li></ul>
+        :rtype: int
+        """
+        return self._CertSource
+
+    @CertSource.setter
+    def CertSource(self, CertSource):
+        self._CertSource = CertSource
+
+    @property
+    def SwitchOption(self):
+        warnings.warn("parameter `SwitchOption` is deprecated", DeprecationWarning) 
+
+        r"""<p>切换时间。（该参数废弃，不再生效）</p><p>枚举值：</p><ul><li>1： 维护时间窗操作：指开启SSL加密在设置的维护时间窗内执行。请通过接口DescribeMaintenanceWindow查询设置的维护时间窗时间段</li><li>2： 立即操作：操作将立即执行，无需等待维护时间窗。系统默认设置为立即操作。</li></ul>
+        :rtype: int
+        """
+        return self._SwitchOption
+
+    @SwitchOption.setter
+    def SwitchOption(self, SwitchOption):
+        warnings.warn("parameter `SwitchOption` is deprecated", DeprecationWarning) 
+
+        self._SwitchOption = SwitchOption
+
+    @property
+    def AddressType(self):
+        r"""<p>SSL地址类型。</p><p>枚举值：</p><ul><li>0： 不限。</li><li>1： 内网IPv4。</li><li>2： 内网IPv6。</li><li>3： 外网。</li><li>-1： 未指定。</li></ul>
+        :rtype: int
+        """
+        return self._AddressType
+
+    @AddressType.setter
+    def AddressType(self, AddressType):
+        self._AddressType = AddressType
+
+    @property
+    def KmsKeyId(self):
+        warnings.warn("parameter `KmsKeyId` is deprecated", DeprecationWarning) 
+
+        r"""<p>KMS的密钥ID。（该参数废弃，不再生效）</p><p>参数格式：xxxxxxx-xxxx-xxxx-xxxx-xxxxxxx</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        warnings.warn("parameter `KmsKeyId` is deprecated", DeprecationWarning) 
+
+        self._KmsKeyId = KmsKeyId
+
+    @property
+    def KmsRegion(self):
+        warnings.warn("parameter `KmsRegion` is deprecated", DeprecationWarning) 
+
+        r"""<p>KMS地域信息。（该参数废弃，不再生效）</p><p>参数格式：ap-xxxx</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/573/34406#.E5.9C.B0.E5.9F.9F.E5.88.97.E8.A1.A8">KMS支持的地域列表</a></p>
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        warnings.warn("parameter `KmsRegion` is deprecated", DeprecationWarning) 
+
+        self._KmsRegion = KmsRegion
+
+    @property
+    def CertId(self):
+        r"""<p>SSL 证书服务的证书 ID，CertSource=1 时必填</p>
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def SSLMinVersion(self):
+        r"""<p>最低 TLS 版本</p><p>枚举值：</p><ul><li>TLSv1.0： TLSv1.0</li><li>TLSv1.1： TLSv1.1</li><li>TLSv1.2： TLSv1.2</li></ul>
+        :rtype: str
+        """
+        return self._SSLMinVersion
+
+    @SSLMinVersion.setter
+    def SSLMinVersion(self, SSLMinVersion):
+        self._SSLMinVersion = SSLMinVersion
+
+    @property
+    def EncryptionMode(self):
+        r"""<p>目标加密模式</p><p>枚举值：</p><ul><li>required： 强制加密</li><li>flexible： 兼容模式</li></ul>
+        :rtype: str
+        """
+        return self._EncryptionMode
+
+    @EncryptionMode.setter
+    def EncryptionMode(self, EncryptionMode):
+        self._EncryptionMode = EncryptionMode
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._CertSource = params.get("CertSource")
+        self._SwitchOption = params.get("SwitchOption")
+        self._AddressType = params.get("AddressType")
+        self._KmsKeyId = params.get("KmsKeyId")
+        self._KmsRegion = params.get("KmsRegion")
+        self._CertId = params.get("CertId")
+        self._SSLMinVersion = params.get("SSLMinVersion")
+        self._EncryptionMode = params.get("EncryptionMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateSSLCertResponse(AbstractModel):
+    r"""UpdateSSLCert返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class UpgradeInstanceProductVersionRequest(AbstractModel):

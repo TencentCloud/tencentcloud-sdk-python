@@ -279,6 +279,87 @@ class BackingIndexMetaField(AbstractModel):
         
 
 
+class BatchIndexResult(AbstractModel):
+    r"""批量索引操作的逐项结果，用于 DeleteIndex（批量删除）和 ModifyIndexStatus（批量关闭/打开索引）的返回值。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexName: <p>索引名</p>
+        :type IndexName: str
+        :param _Success: <p>该项是否成功</p>
+        :type Success: bool
+        :param _ErrCode: <p>失败时的错误码，成功时不返回</p>
+        :type ErrCode: int
+        :param _ErrMsg: <p>失败时的错误信息，成功时不返回</p>
+        :type ErrMsg: str
+        """
+        self._IndexName = None
+        self._Success = None
+        self._ErrCode = None
+        self._ErrMsg = None
+
+    @property
+    def IndexName(self):
+        r"""<p>索引名</p>
+        :rtype: str
+        """
+        return self._IndexName
+
+    @IndexName.setter
+    def IndexName(self, IndexName):
+        self._IndexName = IndexName
+
+    @property
+    def Success(self):
+        r"""<p>该项是否成功</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def ErrCode(self):
+        r"""<p>失败时的错误码，成功时不返回</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrMsg(self):
+        r"""<p>失败时的错误信息，成功时不返回</p>
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._IndexName = params.get("IndexName")
+        self._Success = params.get("Success")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckMigrateIndexMetaDataRequest(AbstractModel):
     r"""CheckMigrateIndexMetaData请求参数结构体
 
@@ -5372,6 +5453,8 @@ class DeleteIndexRequest(AbstractModel):
         :type BackingIndexName: str
         :param _IndexPhrase: <p>索引生命阶段</p>
         :type IndexPhrase: str
+        :param _IndexNames: <p>索引列表</p>
+        :type IndexNames: list of str
         """
         self._InstanceId = None
         self._IndexType = None
@@ -5380,6 +5463,7 @@ class DeleteIndexRequest(AbstractModel):
         self._Password = None
         self._BackingIndexName = None
         self._IndexPhrase = None
+        self._IndexNames = None
 
     @property
     def InstanceId(self):
@@ -5458,6 +5542,17 @@ class DeleteIndexRequest(AbstractModel):
     def IndexPhrase(self, IndexPhrase):
         self._IndexPhrase = IndexPhrase
 
+    @property
+    def IndexNames(self):
+        r"""<p>索引列表</p>
+        :rtype: list of str
+        """
+        return self._IndexNames
+
+    @IndexNames.setter
+    def IndexNames(self, IndexNames):
+        self._IndexNames = IndexNames
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -5467,6 +5562,7 @@ class DeleteIndexRequest(AbstractModel):
         self._Password = params.get("Password")
         self._BackingIndexName = params.get("BackingIndexName")
         self._IndexPhrase = params.get("IndexPhrase")
+        self._IndexNames = params.get("IndexNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5484,10 +5580,66 @@ class DeleteIndexResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TotalCount: <p>索引数量</p>
+        :type TotalCount: int
+        :param _SuccessCount: <p>成功数量</p>
+        :type SuccessCount: int
+        :param _FailedCount: <p>失败数量</p>
+        :type FailedCount: int
+        :param _Results: <p>无</p>
+        :type Results: list of BatchIndexResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TotalCount = None
+        self._SuccessCount = None
+        self._FailedCount = None
+        self._Results = None
         self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>索引数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SuccessCount(self):
+        r"""<p>成功数量</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedCount(self):
+        r"""<p>失败数量</p>
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def Results(self):
+        r"""<p>无</p>
+        :rtype: list of BatchIndexResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
 
     @property
     def RequestId(self):
@@ -5502,6 +5654,15 @@ class DeleteIndexResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedCount = params.get("FailedCount")
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = BatchIndexResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7005,26 +7166,28 @@ class DescribeIndexListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IndexType: 索引类型。auto：自治索引；normal：普通索引
+        :param _IndexType: <p>索引类型。auto：自治索引；normal：普通索引</p>
         :type IndexType: str
-        :param _InstanceId: ES集群ID
+        :param _InstanceId: <p>ES集群ID</p>
         :type InstanceId: str
-        :param _IndexName: 索引名，若填空则获取所有索引
+        :param _IndexName: <p>索引名，若填空则获取所有索引</p>
         :type IndexName: str
-        :param _Username: 集群访问用户名
+        :param _Username: <p>集群访问用户名</p>
         :type Username: str
-        :param _Password: 集群访问密码
+        :param _Password: <p>集群访问密码</p>
         :type Password: str
-        :param _Offset: 分页起始位置
+        :param _Offset: <p>分页起始位置</p>
         :type Offset: int
-        :param _Limit: 一页展示数量
+        :param _Limit: <p>一页展示数量</p>
         :type Limit: int
-        :param _OrderBy: 排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime
+        :param _OrderBy: <p>排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime</p>
         :type OrderBy: str
-        :param _IndexStatusList: 过滤索引状态
+        :param _IndexStatusList: <p>过滤索引状态</p>
         :type IndexStatusList: list of str
-        :param _Order: 排序顺序，支持asc、desc，默认为desc 数据格式"asc","desc"
+        :param _Order: <p>排序顺序，支持asc、desc，默认为desc 数据格式&quot;asc&quot;,&quot;desc&quot;</p>
         :type Order: str
+        :param _FilterIndexNames: <p>索引名称过滤列表。仅返回列表中指定的索引，常用于事件中心跳转时筛选受影响的索引；不填返回全部索引。单次最多支持100个索引名称。</p>
+        :type FilterIndexNames: list of str
         """
         self._IndexType = None
         self._InstanceId = None
@@ -7036,10 +7199,11 @@ class DescribeIndexListRequest(AbstractModel):
         self._OrderBy = None
         self._IndexStatusList = None
         self._Order = None
+        self._FilterIndexNames = None
 
     @property
     def IndexType(self):
-        r"""索引类型。auto：自治索引；normal：普通索引
+        r"""<p>索引类型。auto：自治索引；normal：普通索引</p>
         :rtype: str
         """
         return self._IndexType
@@ -7050,7 +7214,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ES集群ID
+        r"""<p>ES集群ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7061,7 +7225,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""索引名，若填空则获取所有索引
+        r"""<p>索引名，若填空则获取所有索引</p>
         :rtype: str
         """
         return self._IndexName
@@ -7072,7 +7236,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""集群访问用户名
+        r"""<p>集群访问用户名</p>
         :rtype: str
         """
         return self._Username
@@ -7083,7 +7247,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""集群访问密码
+        r"""<p>集群访问密码</p>
         :rtype: str
         """
         return self._Password
@@ -7094,7 +7258,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页起始位置
+        r"""<p>分页起始位置</p>
         :rtype: int
         """
         return self._Offset
@@ -7105,7 +7269,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""一页展示数量
+        r"""<p>一页展示数量</p>
         :rtype: int
         """
         return self._Limit
@@ -7116,7 +7280,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime
+        r"""<p>排序字段，支持索引名：IndexName、索引存储量：IndexStorage、索引创建时间：IndexCreateTime</p>
         :rtype: str
         """
         return self._OrderBy
@@ -7127,7 +7291,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def IndexStatusList(self):
-        r"""过滤索引状态
+        r"""<p>过滤索引状态</p>
         :rtype: list of str
         """
         return self._IndexStatusList
@@ -7138,7 +7302,7 @@ class DescribeIndexListRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序顺序，支持asc、desc，默认为desc 数据格式"asc","desc"
+        r"""<p>排序顺序，支持asc、desc，默认为desc 数据格式&quot;asc&quot;,&quot;desc&quot;</p>
         :rtype: str
         """
         return self._Order
@@ -7146,6 +7310,17 @@ class DescribeIndexListRequest(AbstractModel):
     @Order.setter
     def Order(self, Order):
         self._Order = Order
+
+    @property
+    def FilterIndexNames(self):
+        r"""<p>索引名称过滤列表。仅返回列表中指定的索引，常用于事件中心跳转时筛选受影响的索引；不填返回全部索引。单次最多支持100个索引名称。</p>
+        :rtype: list of str
+        """
+        return self._FilterIndexNames
+
+    @FilterIndexNames.setter
+    def FilterIndexNames(self, FilterIndexNames):
+        self._FilterIndexNames = FilterIndexNames
 
 
     def _deserialize(self, params):
@@ -7159,6 +7334,7 @@ class DescribeIndexListRequest(AbstractModel):
         self._OrderBy = params.get("OrderBy")
         self._IndexStatusList = params.get("IndexStatusList")
         self._Order = params.get("Order")
+        self._FilterIndexNames = params.get("FilterIndexNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7176,10 +7352,10 @@ class DescribeIndexListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IndexMetaFields: 索引元数据字段
+        :param _IndexMetaFields: <p>索引元数据字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexMetaFields: list of IndexMetaField
-        :param _TotalCount: 查询总数
+        :param _TotalCount: <p>查询总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7191,7 +7367,7 @@ class DescribeIndexListResponse(AbstractModel):
 
     @property
     def IndexMetaFields(self):
-        r"""索引元数据字段
+        r"""<p>索引元数据字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IndexMetaField
         """
@@ -7203,7 +7379,7 @@ class DescribeIndexListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询总数
+        r"""<p>查询总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13373,6 +13549,8 @@ class EventDataInfoOverview(AbstractModel):
         :type SubEventName: str
         :param _EventScope: <p>事件范围</p><p>枚举值：</p><ul><li>0： 实例级</li><li>1： 账号级</li></ul>
         :type EventScope: int
+        :param _ExpandDetail: <p>展开详情</p>
+        :type ExpandDetail: str
         """
         self._EventType = None
         self._EventTaskId = None
@@ -13389,6 +13567,7 @@ class EventDataInfoOverview(AbstractModel):
         self._SubEventType = None
         self._SubEventName = None
         self._EventScope = None
+        self._ExpandDetail = None
 
     @property
     def EventType(self):
@@ -13555,6 +13734,17 @@ class EventDataInfoOverview(AbstractModel):
     def EventScope(self, EventScope):
         self._EventScope = EventScope
 
+    @property
+    def ExpandDetail(self):
+        r"""<p>展开详情</p>
+        :rtype: str
+        """
+        return self._ExpandDetail
+
+    @ExpandDetail.setter
+    def ExpandDetail(self, ExpandDetail):
+        self._ExpandDetail = ExpandDetail
+
 
     def _deserialize(self, params):
         self._EventType = params.get("EventType")
@@ -13572,6 +13762,7 @@ class EventDataInfoOverview(AbstractModel):
         self._SubEventType = params.get("SubEventType")
         self._SubEventName = params.get("SubEventName")
         self._EventScope = params.get("EventScope")
+        self._ExpandDetail = params.get("ExpandDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14519,54 +14710,70 @@ class IndexMetaField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IndexType: 索引类型
+        :param _IndexType: <p>索引类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexType: str
-        :param _IndexName: 索引名
+        :param _IndexName: <p>索引名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
-        :param _IndexMetaJson: 索引元数据JSON
+        :param _IndexMetaJson: <p>索引元数据JSON</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexMetaJson: str
-        :param _IndexStatus: 索引状态
+        :param _IndexStatus: <p>索引状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStatus: str
-        :param _IndexStorage: 索引存储大小，单位Byte
+        :param _IndexStorage: <p>索引存储大小，单位Byte</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStorage: int
-        :param _IndexCreateTime: 索引创建时间
+        :param _IndexCreateTime: <p>索引创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexCreateTime: str
-        :param _BackingIndices: 后备索引
+        :param _BackingIndices: <p>后备索引</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BackingIndices: list of BackingIndexMetaField
-        :param _ClusterId: 索引所属集群ID
+        :param _ClusterId: <p>索引所属集群ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param _ClusterName: 索引所属集群名
+        :param _ClusterName: <p>索引所属集群名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
-        :param _ClusterVersion: 索引所属集群版本
+        :param _ClusterVersion: <p>索引所属集群版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterVersion: str
-        :param _IndexPolicyField: 索引生命周期字段
+        :param _IndexPolicyField: <p>索引生命周期字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexPolicyField: :class:`tencentcloud.es.v20180416.models.IndexPolicyField`
-        :param _IndexOptionsField: 索引自治字段
+        :param _IndexOptionsField: <p>索引自治字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexOptionsField: :class:`tencentcloud.es.v20180416.models.IndexOptionsField`
-        :param _IndexSettingsField: 索引配置字段
+        :param _IndexSettingsField: <p>索引配置字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexSettingsField: :class:`tencentcloud.es.v20180416.models.IndexSettingsField`
-        :param _IndexAliasesField: 索引别名字段
+        :param _IndexAliasesField: <p>索引别名字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexAliasesField: list of str
-        :param _AppId: 索引所属集群APP ID
+        :param _AppId: <p>索引所属集群APP ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
-        :param _IndexDocs: 索引文档数
+        :param _IndexDocs: <p>索引文档数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexDocs: int
+        :param _FieldCount: <p>当前字段数</p>
+        :type FieldCount: int
+        :param _FieldLimit: <p>当前上限</p>
+        :type FieldLimit: int
+        :param _FieldUsageRatio: <p>使用率</p>
+        :type FieldUsageRatio: str
+        :param _OccupiedShards: <p>占用分片数</p>
+        :type OccupiedShards: int
+        :param _IndexOpenStatus: <p>索引开启状态</p>
+        :type IndexOpenStatus: str
+        :param _FieldLimitHardCap: <p>索引字段数硬上限</p>
+        :type FieldLimitHardCap: int
+        :param _FieldLimitMin: <p>上限可调整最小值</p>
+        :type FieldLimitMin: int
+        :param _FieldAutoAdjustRemaining: <p>剩余调整次数</p>
+        :type FieldAutoAdjustRemaining: int
         """
         self._IndexType = None
         self._IndexName = None
@@ -14584,10 +14791,18 @@ class IndexMetaField(AbstractModel):
         self._IndexAliasesField = None
         self._AppId = None
         self._IndexDocs = None
+        self._FieldCount = None
+        self._FieldLimit = None
+        self._FieldUsageRatio = None
+        self._OccupiedShards = None
+        self._IndexOpenStatus = None
+        self._FieldLimitHardCap = None
+        self._FieldLimitMin = None
+        self._FieldAutoAdjustRemaining = None
 
     @property
     def IndexType(self):
-        r"""索引类型
+        r"""<p>索引类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14599,7 +14814,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""索引名
+        r"""<p>索引名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14611,7 +14826,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexMetaJson(self):
-        r"""索引元数据JSON
+        r"""<p>索引元数据JSON</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14623,7 +14838,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexStatus(self):
-        r"""索引状态
+        r"""<p>索引状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14635,7 +14850,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexStorage(self):
-        r"""索引存储大小，单位Byte
+        r"""<p>索引存储大小，单位Byte</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14647,7 +14862,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexCreateTime(self):
-        r"""索引创建时间
+        r"""<p>索引创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14659,7 +14874,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def BackingIndices(self):
-        r"""后备索引
+        r"""<p>后备索引</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BackingIndexMetaField
         """
@@ -14671,7 +14886,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""索引所属集群ID
+        r"""<p>索引所属集群ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14683,7 +14898,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""索引所属集群名
+        r"""<p>索引所属集群名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14695,7 +14910,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def ClusterVersion(self):
-        r"""索引所属集群版本
+        r"""<p>索引所属集群版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -14707,7 +14922,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexPolicyField(self):
-        r"""索引生命周期字段
+        r"""<p>索引生命周期字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexPolicyField`
         """
@@ -14719,7 +14934,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexOptionsField(self):
-        r"""索引自治字段
+        r"""<p>索引自治字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexOptionsField`
         """
@@ -14731,7 +14946,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexSettingsField(self):
-        r"""索引配置字段
+        r"""<p>索引配置字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.IndexSettingsField`
         """
@@ -14743,7 +14958,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexAliasesField(self):
-        r"""索引别名字段
+        r"""<p>索引别名字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -14755,7 +14970,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def AppId(self):
-        r"""索引所属集群APP ID
+        r"""<p>索引所属集群APP ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14767,7 +14982,7 @@ class IndexMetaField(AbstractModel):
 
     @property
     def IndexDocs(self):
-        r"""索引文档数
+        r"""<p>索引文档数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -14776,6 +14991,94 @@ class IndexMetaField(AbstractModel):
     @IndexDocs.setter
     def IndexDocs(self, IndexDocs):
         self._IndexDocs = IndexDocs
+
+    @property
+    def FieldCount(self):
+        r"""<p>当前字段数</p>
+        :rtype: int
+        """
+        return self._FieldCount
+
+    @FieldCount.setter
+    def FieldCount(self, FieldCount):
+        self._FieldCount = FieldCount
+
+    @property
+    def FieldLimit(self):
+        r"""<p>当前上限</p>
+        :rtype: int
+        """
+        return self._FieldLimit
+
+    @FieldLimit.setter
+    def FieldLimit(self, FieldLimit):
+        self._FieldLimit = FieldLimit
+
+    @property
+    def FieldUsageRatio(self):
+        r"""<p>使用率</p>
+        :rtype: str
+        """
+        return self._FieldUsageRatio
+
+    @FieldUsageRatio.setter
+    def FieldUsageRatio(self, FieldUsageRatio):
+        self._FieldUsageRatio = FieldUsageRatio
+
+    @property
+    def OccupiedShards(self):
+        r"""<p>占用分片数</p>
+        :rtype: int
+        """
+        return self._OccupiedShards
+
+    @OccupiedShards.setter
+    def OccupiedShards(self, OccupiedShards):
+        self._OccupiedShards = OccupiedShards
+
+    @property
+    def IndexOpenStatus(self):
+        r"""<p>索引开启状态</p>
+        :rtype: str
+        """
+        return self._IndexOpenStatus
+
+    @IndexOpenStatus.setter
+    def IndexOpenStatus(self, IndexOpenStatus):
+        self._IndexOpenStatus = IndexOpenStatus
+
+    @property
+    def FieldLimitHardCap(self):
+        r"""<p>索引字段数硬上限</p>
+        :rtype: int
+        """
+        return self._FieldLimitHardCap
+
+    @FieldLimitHardCap.setter
+    def FieldLimitHardCap(self, FieldLimitHardCap):
+        self._FieldLimitHardCap = FieldLimitHardCap
+
+    @property
+    def FieldLimitMin(self):
+        r"""<p>上限可调整最小值</p>
+        :rtype: int
+        """
+        return self._FieldLimitMin
+
+    @FieldLimitMin.setter
+    def FieldLimitMin(self, FieldLimitMin):
+        self._FieldLimitMin = FieldLimitMin
+
+    @property
+    def FieldAutoAdjustRemaining(self):
+        r"""<p>剩余调整次数</p>
+        :rtype: int
+        """
+        return self._FieldAutoAdjustRemaining
+
+    @FieldAutoAdjustRemaining.setter
+    def FieldAutoAdjustRemaining(self, FieldAutoAdjustRemaining):
+        self._FieldAutoAdjustRemaining = FieldAutoAdjustRemaining
 
 
     def _deserialize(self, params):
@@ -14806,6 +15109,14 @@ class IndexMetaField(AbstractModel):
         self._IndexAliasesField = params.get("IndexAliasesField")
         self._AppId = params.get("AppId")
         self._IndexDocs = params.get("IndexDocs")
+        self._FieldCount = params.get("FieldCount")
+        self._FieldLimit = params.get("FieldLimit")
+        self._FieldUsageRatio = params.get("FieldUsageRatio")
+        self._OccupiedShards = params.get("OccupiedShards")
+        self._IndexOpenStatus = params.get("IndexOpenStatus")
+        self._FieldLimitHardCap = params.get("FieldLimitHardCap")
+        self._FieldLimitMin = params.get("FieldLimitMin")
+        self._FieldAutoAdjustRemaining = params.get("FieldAutoAdjustRemaining")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15148,23 +15459,29 @@ class IndexSettingsField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NumberOfShards: 索引主分片数
+        :param _NumberOfShards: <p>索引主分片数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumberOfShards: str
-        :param _NumberOfReplicas: 索引副本分片数
+        :param _NumberOfReplicas: <p>索引副本分片数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumberOfReplicas: str
-        :param _RefreshInterval: 索引刷新频率
+        :param _RefreshInterval: <p>索引刷新频率</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RefreshInterval: str
+        :param _Dynamic: <p>动态字段识别开关</p>
+        :type Dynamic: str
+        :param _TotalFieldsLimit: <p>索引字段数上限</p>
+        :type TotalFieldsLimit: str
         """
         self._NumberOfShards = None
         self._NumberOfReplicas = None
         self._RefreshInterval = None
+        self._Dynamic = None
+        self._TotalFieldsLimit = None
 
     @property
     def NumberOfShards(self):
-        r"""索引主分片数
+        r"""<p>索引主分片数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15176,7 +15493,7 @@ class IndexSettingsField(AbstractModel):
 
     @property
     def NumberOfReplicas(self):
-        r"""索引副本分片数
+        r"""<p>索引副本分片数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15188,7 +15505,7 @@ class IndexSettingsField(AbstractModel):
 
     @property
     def RefreshInterval(self):
-        r"""索引刷新频率
+        r"""<p>索引刷新频率</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15198,11 +15515,35 @@ class IndexSettingsField(AbstractModel):
     def RefreshInterval(self, RefreshInterval):
         self._RefreshInterval = RefreshInterval
 
+    @property
+    def Dynamic(self):
+        r"""<p>动态字段识别开关</p>
+        :rtype: str
+        """
+        return self._Dynamic
+
+    @Dynamic.setter
+    def Dynamic(self, Dynamic):
+        self._Dynamic = Dynamic
+
+    @property
+    def TotalFieldsLimit(self):
+        r"""<p>索引字段数上限</p>
+        :rtype: str
+        """
+        return self._TotalFieldsLimit
+
+    @TotalFieldsLimit.setter
+    def TotalFieldsLimit(self, TotalFieldsLimit):
+        self._TotalFieldsLimit = TotalFieldsLimit
+
 
     def _deserialize(self, params):
         self._NumberOfShards = params.get("NumberOfShards")
         self._NumberOfReplicas = params.get("NumberOfReplicas")
         self._RefreshInterval = params.get("RefreshInterval")
+        self._Dynamic = params.get("Dynamic")
+        self._TotalFieldsLimit = params.get("TotalFieldsLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28466,121 +28807,102 @@ class UpdateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        :param _InstanceName: <p>实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）</p>
         :type InstanceName: str
-        :param _NodeNum: 已废弃请使用NodeInfoList
-节点个数（2-50个）
+        :param _NodeNum: <p>已废弃请使用NodeInfoList<br>节点个数（2-50个）</p>
         :type NodeNum: int
-        :param _EsConfig: ES配置项（JSON格式字符串）
+        :param _EsConfig: <p>ES配置项（JSON格式字符串）</p>
         :type EsConfig: str
-        :param _Password: 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
+        :param _Password: <p>默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&amp;^*+=_:;,.?]的特殊符号）</p>
         :type Password: str
-        :param _EsAcl: 可视化组件（Kibana、Cerebro）的公网访问策略
+        :param _EsAcl: <p>可视化组件（Kibana、Cerebro）的公网访问策略</p>
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param _DiskSize: 已废弃请使用NodeInfoList
-磁盘大小（单位GB）
+        :param _DiskSize: <p>已废弃请使用NodeInfoList<br>磁盘大小（单位GB）</p>
         :type DiskSize: int
-        :param _NodeType: 已废弃请使用NodeInfoList
-节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _NodeType: <p>已废弃请使用NodeInfoList<br>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :type NodeType: str
-        :param _MasterNodeNum: 已废弃请使用NodeInfoList
-专用主节点个数（只支持3个或5个）
+        :param _MasterNodeNum: <p>已废弃请使用NodeInfoList<br>专用主节点个数（只支持3个或5个）</p>
         :type MasterNodeNum: int
-        :param _MasterNodeType: 已废弃请使用NodeInfoList
-专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _MasterNodeType: <p>已废弃请使用NodeInfoList<br>专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :type MasterNodeType: str
-        :param _MasterNodeDiskSize: 已废弃请使用NodeInfoList
-专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
+        :param _MasterNodeDiskSize: <p>已废弃请使用NodeInfoList<br>专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）</p>
         :type MasterNodeDiskSize: int
-        :param _ForceRestart: 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false
+        :param _ForceRestart: <p>更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false</p>
         :type ForceRestart: bool
-        :param _CosBackup: COS自动备份信息
+        :param _CosBackup: <p>COS自动备份信息</p>
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
-        :param _NodeInfoList: 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+        :param _NodeInfoList: <p>节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改</p>
         :type NodeInfoList: list of NodeInfo
-        :param _PublicAccess: ES集群公网访问状态
-OPEN 开启
-CLOSE 关闭
+        :param _PublicAccess: <p>ES集群公网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :type PublicAccess: str
-        :param _EsPublicAcl: 公网访问控制列表
+        :param _EsPublicAcl: <p>公网访问控制列表</p>
         :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
-        :param _KibanaPublicAccess: Kibana公网访问状态
-OPEN 开启
-CLOSE 关闭
+        :param _KibanaPublicAccess: <p>Kibana公网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :type KibanaPublicAccess: str
-        :param _KibanaPrivateAccess: Kibana内网访问状态
-OPEN 开启
-CLOSE 关闭
+        :param _KibanaPrivateAccess: <p>Kibana内网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :type KibanaPrivateAccess: str
-        :param _BasicSecurityType: ES 6.8及以上版本基础版开启或关闭用户认证
+        :param _BasicSecurityType: <p>ES 6.8及以上版本基础版开启或关闭用户认证</p>
         :type BasicSecurityType: int
-        :param _KibanaPrivatePort: Kibana内网端口
+        :param _KibanaPrivatePort: <p>Kibana内网端口</p>
         :type KibanaPrivatePort: int
-        :param _ScaleType: 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+        :param _ScaleType: <p>0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启</p>
         :type ScaleType: int
-        :param _MultiZoneInfo: 多可用区部署
+        :param _MultiZoneInfo: <p>多可用区部署</p>
         :type MultiZoneInfo: list of ZoneDetail
-        :param _SceneType: 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
+        :param _SceneType: <p>场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索</p>
         :type SceneType: int
-        :param _KibanaConfig: Kibana配置项（JSON格式字符串）
+        :param _KibanaConfig: <p>Kibana配置项（JSON格式字符串）</p>
         :type KibanaConfig: str
-        :param _WebNodeTypeInfo: 可视化节点配置
+        :param _WebNodeTypeInfo: <p>可视化节点配置</p>
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
-        :param _SwitchPrivateLink: 切换到新网络架构
+        :param _SwitchPrivateLink: <p>切换到新网络架构</p>
         :type SwitchPrivateLink: str
-        :param _EnableCerebro: 启用Cerebro
+        :param _EnableCerebro: <p>启用Cerebro</p>
         :type EnableCerebro: bool
-        :param _CerebroPublicAccess: Cerebro公网访问状态
-OPEN 开启
-CLOSE 关闭
+        :param _CerebroPublicAccess: <p>Cerebro公网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :type CerebroPublicAccess: str
-        :param _CerebroPrivateAccess: Cerebro内网访问状态
-OPEN 开启
-CLOSE 关闭
+        :param _CerebroPrivateAccess: <p>Cerebro内网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :type CerebroPrivateAccess: str
-        :param _EsConfigSet: 新增或修改的配置组信息
+        :param _EsConfigSet: <p>新增或修改的配置组信息</p>
         :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
-        :param _OperationDuration: 可维护时间段
+        :param _OperationDuration: <p>可维护时间段</p>
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
-        :param _KibanaAlteringPublicAccess: 是否开启Alerting 外网告警输出：
-OPEN 开启
-CLOSE 关闭
+        :param _KibanaAlteringPublicAccess: <p>是否开启Alerting 外网告警输出：<br>OPEN 开启<br>CLOSE 关闭</p>
         :type KibanaAlteringPublicAccess: str
-        :param _KibanaPrivateDomain: kibana内网自定义域名
+        :param _KibanaPrivateDomain: <p>kibana内网自定义域名</p>
         :type KibanaPrivateDomain: str
-        :param _CerebroPrivateDomain: cerebro内网自定义域名
+        :param _CerebroPrivateDomain: <p>cerebro内网自定义域名</p>
         :type CerebroPrivateDomain: str
-        :param _Protocol: 变更为https集群，默认是http
+        :param _Protocol: <p>变更为https集群，默认是http</p>
         :type Protocol: str
-        :param _OutboundPublicAcls: 节点出站访问详细信息
-
+        :param _OutboundPublicAcls: <p>节点出站访问详细信息</p>
         :type OutboundPublicAcls: list of OutboundPublicAcl
-        :param _OutboundPublicAccess: 节点出站访问操作
-OPEN 开启
-CLOSE 关闭
+        :param _OutboundPublicAccess: <p>节点出站访问操作<br>OPEN 开启<br>CLOSE 关闭</p>
         :type OutboundPublicAccess: str
-        :param _CvmDelayOnlineTime: cvm延迟上架参数
+        :param _CvmDelayOnlineTime: <p>cvm延迟上架参数</p>
         :type CvmDelayOnlineTime: int
-        :param _ShardAllocationConcurrents: 分片迁移并发数
+        :param _ShardAllocationConcurrents: <p>分片迁移并发数</p>
         :type ShardAllocationConcurrents: int
-        :param _ShardAllocationBytes: 分片迁移并发速度
+        :param _ShardAllocationBytes: <p>分片迁移并发速度</p>
         :type ShardAllocationBytes: int
-        :param _ReadWriteMode: 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+        :param _ReadWriteMode: <p>读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离</p>
         :type ReadWriteMode: int
-        :param _EnableScheduleRecoverGroup: 是否开启置放群组异步任务
+        :param _EnableScheduleRecoverGroup: <p>是否开启置放群组异步任务</p>
         :type EnableScheduleRecoverGroup: bool
-        :param _EnableScheduleOperationDuration: 置放群组异步任务可维护时间段
+        :param _EnableScheduleOperationDuration: <p>置放群组异步任务可维护时间段</p>
         :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
-        :param _EnableDestroyProtection: 开启集群保护：OPEN-开启，CLOSE-关闭
+        :param _EnableDestroyProtection: <p>开启集群保护：OPEN-开启，CLOSE-关闭</p>
         :type EnableDestroyProtection: str
-        :param _AutoScaleDiskInfoList: 自动扩盘参数
+        :param _AutoScaleDiskInfoList: <p>自动扩盘参数</p>
         :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
-        :param _AutoScaleDiskDeleteNodeTypeList: 自动扩盘删除参数
+        :param _AutoScaleDiskDeleteNodeTypeList: <p>自动扩盘删除参数</p>
         :type AutoScaleDiskDeleteNodeTypeList: list of str
-        :param _OtherConfig: 其他附加配置，jvm或者yml
+        :param _OtherConfig: <p>其他附加配置，jvm或者yml</p>
         :type OtherConfig: :class:`tencentcloud.es.v20180416.models.OtherConfig`
+        :param _WaitGreen: <p>滚动升降配时是否等待集群恢复Green再滚动下一个节点</p>
+        :type WaitGreen: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -28629,10 +28951,11 @@ CLOSE 关闭
         self._AutoScaleDiskInfoList = None
         self._AutoScaleDiskDeleteNodeTypeList = None
         self._OtherConfig = None
+        self._WaitGreen = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -28643,7 +28966,7 @@ CLOSE 关闭
 
     @property
     def InstanceName(self):
-        r"""实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        r"""<p>实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）</p>
         :rtype: str
         """
         return self._InstanceName
@@ -28654,8 +28977,7 @@ CLOSE 关闭
 
     @property
     def NodeNum(self):
-        r"""已废弃请使用NodeInfoList
-节点个数（2-50个）
+        r"""<p>已废弃请使用NodeInfoList<br>节点个数（2-50个）</p>
         :rtype: int
         """
         return self._NodeNum
@@ -28666,7 +28988,7 @@ CLOSE 关闭
 
     @property
     def EsConfig(self):
-        r"""ES配置项（JSON格式字符串）
+        r"""<p>ES配置项（JSON格式字符串）</p>
         :rtype: str
         """
         return self._EsConfig
@@ -28677,7 +28999,7 @@ CLOSE 关闭
 
     @property
     def Password(self):
-        r"""默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
+        r"""<p>默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&amp;^*+=_:;,.?]的特殊符号）</p>
         :rtype: str
         """
         return self._Password
@@ -28688,7 +29010,7 @@ CLOSE 关闭
 
     @property
     def EsAcl(self):
-        r"""可视化组件（Kibana、Cerebro）的公网访问策略
+        r"""<p>可视化组件（Kibana、Cerebro）的公网访问策略</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsAcl
@@ -28699,8 +29021,7 @@ CLOSE 关闭
 
     @property
     def DiskSize(self):
-        r"""已废弃请使用NodeInfoList
-磁盘大小（单位GB）
+        r"""<p>已废弃请使用NodeInfoList<br>磁盘大小（单位GB）</p>
         :rtype: int
         """
         return self._DiskSize
@@ -28711,8 +29032,7 @@ CLOSE 关闭
 
     @property
     def NodeType(self):
-        r"""已废弃请使用NodeInfoList
-节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>已废弃请使用NodeInfoList<br>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :rtype: str
         """
         return self._NodeType
@@ -28723,8 +29043,7 @@ CLOSE 关闭
 
     @property
     def MasterNodeNum(self):
-        r"""已废弃请使用NodeInfoList
-专用主节点个数（只支持3个或5个）
+        r"""<p>已废弃请使用NodeInfoList<br>专用主节点个数（只支持3个或5个）</p>
         :rtype: int
         """
         return self._MasterNodeNum
@@ -28735,8 +29054,7 @@ CLOSE 关闭
 
     @property
     def MasterNodeType(self):
-        r"""已废弃请使用NodeInfoList
-专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>已废弃请使用NodeInfoList<br>专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :rtype: str
         """
         return self._MasterNodeType
@@ -28747,8 +29065,7 @@ CLOSE 关闭
 
     @property
     def MasterNodeDiskSize(self):
-        r"""已废弃请使用NodeInfoList
-专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
+        r"""<p>已废弃请使用NodeInfoList<br>专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）</p>
         :rtype: int
         """
         return self._MasterNodeDiskSize
@@ -28759,7 +29076,7 @@ CLOSE 关闭
 
     @property
     def ForceRestart(self):
-        r"""更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false
+        r"""<p>更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false</p>
         :rtype: bool
         """
         return self._ForceRestart
@@ -28770,7 +29087,7 @@ CLOSE 关闭
 
     @property
     def CosBackup(self):
-        r"""COS自动备份信息
+        r"""<p>COS自动备份信息</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
         """
         return self._CosBackup
@@ -28781,7 +29098,7 @@ CLOSE 关闭
 
     @property
     def NodeInfoList(self):
-        r"""节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+        r"""<p>节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改</p>
         :rtype: list of NodeInfo
         """
         return self._NodeInfoList
@@ -28792,9 +29109,7 @@ CLOSE 关闭
 
     @property
     def PublicAccess(self):
-        r"""ES集群公网访问状态
-OPEN 开启
-CLOSE 关闭
+        r"""<p>ES集群公网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :rtype: str
         """
         return self._PublicAccess
@@ -28805,7 +29120,7 @@ CLOSE 关闭
 
     @property
     def EsPublicAcl(self):
-        r"""公网访问控制列表
+        r"""<p>公网访问控制列表</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
         """
         return self._EsPublicAcl
@@ -28816,9 +29131,7 @@ CLOSE 关闭
 
     @property
     def KibanaPublicAccess(self):
-        r"""Kibana公网访问状态
-OPEN 开启
-CLOSE 关闭
+        r"""<p>Kibana公网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :rtype: str
         """
         return self._KibanaPublicAccess
@@ -28829,9 +29142,7 @@ CLOSE 关闭
 
     @property
     def KibanaPrivateAccess(self):
-        r"""Kibana内网访问状态
-OPEN 开启
-CLOSE 关闭
+        r"""<p>Kibana内网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :rtype: str
         """
         return self._KibanaPrivateAccess
@@ -28842,7 +29153,7 @@ CLOSE 关闭
 
     @property
     def BasicSecurityType(self):
-        r"""ES 6.8及以上版本基础版开启或关闭用户认证
+        r"""<p>ES 6.8及以上版本基础版开启或关闭用户认证</p>
         :rtype: int
         """
         return self._BasicSecurityType
@@ -28853,7 +29164,7 @@ CLOSE 关闭
 
     @property
     def KibanaPrivatePort(self):
-        r"""Kibana内网端口
+        r"""<p>Kibana内网端口</p>
         :rtype: int
         """
         return self._KibanaPrivatePort
@@ -28864,7 +29175,7 @@ CLOSE 关闭
 
     @property
     def ScaleType(self):
-        r"""0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+        r"""<p>0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启</p>
         :rtype: int
         """
         return self._ScaleType
@@ -28875,7 +29186,7 @@ CLOSE 关闭
 
     @property
     def MultiZoneInfo(self):
-        r"""多可用区部署
+        r"""<p>多可用区部署</p>
         :rtype: list of ZoneDetail
         """
         return self._MultiZoneInfo
@@ -28886,7 +29197,7 @@ CLOSE 关闭
 
     @property
     def SceneType(self):
-        r"""场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
+        r"""<p>场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索</p>
         :rtype: int
         """
         return self._SceneType
@@ -28897,7 +29208,7 @@ CLOSE 关闭
 
     @property
     def KibanaConfig(self):
-        r"""Kibana配置项（JSON格式字符串）
+        r"""<p>Kibana配置项（JSON格式字符串）</p>
         :rtype: str
         """
         return self._KibanaConfig
@@ -28908,7 +29219,7 @@ CLOSE 关闭
 
     @property
     def WebNodeTypeInfo(self):
-        r"""可视化节点配置
+        r"""<p>可视化节点配置</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
         return self._WebNodeTypeInfo
@@ -28919,7 +29230,7 @@ CLOSE 关闭
 
     @property
     def SwitchPrivateLink(self):
-        r"""切换到新网络架构
+        r"""<p>切换到新网络架构</p>
         :rtype: str
         """
         return self._SwitchPrivateLink
@@ -28930,7 +29241,7 @@ CLOSE 关闭
 
     @property
     def EnableCerebro(self):
-        r"""启用Cerebro
+        r"""<p>启用Cerebro</p>
         :rtype: bool
         """
         return self._EnableCerebro
@@ -28941,9 +29252,7 @@ CLOSE 关闭
 
     @property
     def CerebroPublicAccess(self):
-        r"""Cerebro公网访问状态
-OPEN 开启
-CLOSE 关闭
+        r"""<p>Cerebro公网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :rtype: str
         """
         return self._CerebroPublicAccess
@@ -28954,9 +29263,7 @@ CLOSE 关闭
 
     @property
     def CerebroPrivateAccess(self):
-        r"""Cerebro内网访问状态
-OPEN 开启
-CLOSE 关闭
+        r"""<p>Cerebro内网访问状态<br>OPEN 开启<br>CLOSE 关闭</p>
         :rtype: str
         """
         return self._CerebroPrivateAccess
@@ -28967,7 +29274,7 @@ CLOSE 关闭
 
     @property
     def EsConfigSet(self):
-        r"""新增或修改的配置组信息
+        r"""<p>新增或修改的配置组信息</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
         """
         return self._EsConfigSet
@@ -28978,7 +29285,7 @@ CLOSE 关闭
 
     @property
     def OperationDuration(self):
-        r"""可维护时间段
+        r"""<p>可维护时间段</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
         """
         return self._OperationDuration
@@ -28989,9 +29296,7 @@ CLOSE 关闭
 
     @property
     def KibanaAlteringPublicAccess(self):
-        r"""是否开启Alerting 外网告警输出：
-OPEN 开启
-CLOSE 关闭
+        r"""<p>是否开启Alerting 外网告警输出：<br>OPEN 开启<br>CLOSE 关闭</p>
         :rtype: str
         """
         return self._KibanaAlteringPublicAccess
@@ -29002,7 +29307,7 @@ CLOSE 关闭
 
     @property
     def KibanaPrivateDomain(self):
-        r"""kibana内网自定义域名
+        r"""<p>kibana内网自定义域名</p>
         :rtype: str
         """
         return self._KibanaPrivateDomain
@@ -29013,7 +29318,7 @@ CLOSE 关闭
 
     @property
     def CerebroPrivateDomain(self):
-        r"""cerebro内网自定义域名
+        r"""<p>cerebro内网自定义域名</p>
         :rtype: str
         """
         return self._CerebroPrivateDomain
@@ -29024,7 +29329,7 @@ CLOSE 关闭
 
     @property
     def Protocol(self):
-        r"""变更为https集群，默认是http
+        r"""<p>变更为https集群，默认是http</p>
         :rtype: str
         """
         return self._Protocol
@@ -29035,8 +29340,7 @@ CLOSE 关闭
 
     @property
     def OutboundPublicAcls(self):
-        r"""节点出站访问详细信息
-
+        r"""<p>节点出站访问详细信息</p>
         :rtype: list of OutboundPublicAcl
         """
         return self._OutboundPublicAcls
@@ -29047,9 +29351,7 @@ CLOSE 关闭
 
     @property
     def OutboundPublicAccess(self):
-        r"""节点出站访问操作
-OPEN 开启
-CLOSE 关闭
+        r"""<p>节点出站访问操作<br>OPEN 开启<br>CLOSE 关闭</p>
         :rtype: str
         """
         return self._OutboundPublicAccess
@@ -29060,7 +29362,7 @@ CLOSE 关闭
 
     @property
     def CvmDelayOnlineTime(self):
-        r"""cvm延迟上架参数
+        r"""<p>cvm延迟上架参数</p>
         :rtype: int
         """
         return self._CvmDelayOnlineTime
@@ -29071,7 +29373,7 @@ CLOSE 关闭
 
     @property
     def ShardAllocationConcurrents(self):
-        r"""分片迁移并发数
+        r"""<p>分片迁移并发数</p>
         :rtype: int
         """
         return self._ShardAllocationConcurrents
@@ -29082,7 +29384,7 @@ CLOSE 关闭
 
     @property
     def ShardAllocationBytes(self):
-        r"""分片迁移并发速度
+        r"""<p>分片迁移并发速度</p>
         :rtype: int
         """
         return self._ShardAllocationBytes
@@ -29093,7 +29395,7 @@ CLOSE 关闭
 
     @property
     def ReadWriteMode(self):
-        r"""读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+        r"""<p>读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离</p>
         :rtype: int
         """
         return self._ReadWriteMode
@@ -29104,7 +29406,7 @@ CLOSE 关闭
 
     @property
     def EnableScheduleRecoverGroup(self):
-        r"""是否开启置放群组异步任务
+        r"""<p>是否开启置放群组异步任务</p>
         :rtype: bool
         """
         return self._EnableScheduleRecoverGroup
@@ -29115,7 +29417,7 @@ CLOSE 关闭
 
     @property
     def EnableScheduleOperationDuration(self):
-        r"""置放群组异步任务可维护时间段
+        r"""<p>置放群组异步任务可维护时间段</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         """
         return self._EnableScheduleOperationDuration
@@ -29126,7 +29428,7 @@ CLOSE 关闭
 
     @property
     def EnableDestroyProtection(self):
-        r"""开启集群保护：OPEN-开启，CLOSE-关闭
+        r"""<p>开启集群保护：OPEN-开启，CLOSE-关闭</p>
         :rtype: str
         """
         return self._EnableDestroyProtection
@@ -29137,7 +29439,7 @@ CLOSE 关闭
 
     @property
     def AutoScaleDiskInfoList(self):
-        r"""自动扩盘参数
+        r"""<p>自动扩盘参数</p>
         :rtype: list of AutoScaleDiskInfo
         """
         return self._AutoScaleDiskInfoList
@@ -29148,7 +29450,7 @@ CLOSE 关闭
 
     @property
     def AutoScaleDiskDeleteNodeTypeList(self):
-        r"""自动扩盘删除参数
+        r"""<p>自动扩盘删除参数</p>
         :rtype: list of str
         """
         return self._AutoScaleDiskDeleteNodeTypeList
@@ -29159,7 +29461,7 @@ CLOSE 关闭
 
     @property
     def OtherConfig(self):
-        r"""其他附加配置，jvm或者yml
+        r"""<p>其他附加配置，jvm或者yml</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.OtherConfig`
         """
         return self._OtherConfig
@@ -29167,6 +29469,17 @@ CLOSE 关闭
     @OtherConfig.setter
     def OtherConfig(self, OtherConfig):
         self._OtherConfig = OtherConfig
+
+    @property
+    def WaitGreen(self):
+        r"""<p>滚动升降配时是否等待集群恢复Green再滚动下一个节点</p>
+        :rtype: str
+        """
+        return self._WaitGreen
+
+    @WaitGreen.setter
+    def WaitGreen(self, WaitGreen):
+        self._WaitGreen = WaitGreen
 
 
     def _deserialize(self, params):
@@ -29253,6 +29566,7 @@ CLOSE 关闭
         if params.get("OtherConfig") is not None:
             self._OtherConfig = OtherConfig()
             self._OtherConfig._deserialize(params.get("OtherConfig"))
+        self._WaitGreen = params.get("WaitGreen")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29270,7 +29584,7 @@ class UpdateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 订单号
+        :param _DealName: <p>订单号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -29281,7 +29595,7 @@ class UpdateInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号
+        r"""<p>订单号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

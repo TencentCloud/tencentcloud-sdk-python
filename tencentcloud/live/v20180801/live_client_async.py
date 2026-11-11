@@ -351,6 +351,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAvatarEditingLive(
+            self,
+            request: models.CreateAvatarEditingLiveRequest,
+            opts: Dict = None,
+    ) -> models.CreateAvatarEditingLiveResponse:
+        """
+        调用该接口，用于创建数字人直播间。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAvatarEditingLive"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAvatarEditingLiveResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCaster(
             self,
             request: models.CreateCasterRequest,
@@ -1851,6 +1869,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DescribeAuditTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAuditTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAvatarEditingLive(
+            self,
+            request: models.DescribeAvatarEditingLiveRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAvatarEditingLiveResponse:
+        """
+        调用该接口，查询数字人直播间信息列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAvatarEditingLive"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAvatarEditingLiveResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4645,6 +4681,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StopAvatarEditingLive(
+            self,
+            request: models.StopAvatarEditingLiveRequest,
+            opts: Dict = None,
+    ) -> models.StopAvatarEditingLiveResponse:
+        """
+        调用该接口，用于停止数字人直播间。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopAvatarEditingLive"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopAvatarEditingLiveResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StopCasterPgm(
             self,
             request: models.StopCasterPgmRequest,
@@ -4785,6 +4839,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "StopScreenshotTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopScreenshotTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SwitchAvatarEditingScene(
+            self,
+            request: models.SwitchAvatarEditingSceneRequest,
+            opts: Dict = None,
+    ) -> models.SwitchAvatarEditingSceneResponse:
+        """
+        调用该接口，用于临时驱动数字人播报。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SwitchAvatarEditingScene"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SwitchAvatarEditingSceneResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

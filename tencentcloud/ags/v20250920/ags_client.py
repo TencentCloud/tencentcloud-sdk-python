@@ -633,6 +633,29 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEventCenterEvents(self, request):
+        r"""本接口用于查询当前账号在指定地域的事件列表，支持按事件来源、资源对象、事件类型、事件级别及时间范围等条件筛选，并支持分页和时间排序。默认查询最近 1 小时的事件，支持查询最近 7 天内的事件。
+
+        :param request: Request instance for DescribeEventCenterEvents.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribeEventCenterEventsRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribeEventCenterEventsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEventCenterEvents", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEventCenterEventsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEvents(self, request):
         r"""查询事件列表。
 

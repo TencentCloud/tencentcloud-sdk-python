@@ -16603,20 +16603,22 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例获得。
+        :param _InstanceId: <p>待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例获得。</p>
         :type InstanceId: str
-        :param _Memory: 内存大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
- 查询实例规格获得。
+        :param _Memory: <p>内存大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs<br> 查询实例规格获得。</p>
         :type Memory: int
-        :param _Storage: 存储空间大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
- 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
+        :param _Storage: <p>存储空间大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs<br> 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。</p>
         :type Storage: int
-        :param _SwitchAutoRetry: 错过切换时间窗口时，是否自动重试一次，0-否，1-是
+        :param _SwitchAutoRetry: <p>错过切换时间窗口时，是否自动重试一次，0-否，1-是</p>
         :type SwitchAutoRetry: int
-        :param _SwitchStartTime: 切换时间窗口开始时间
+        :param _SwitchStartTime: <p>切换时间窗口开始时间</p>
         :type SwitchStartTime: str
-        :param _SwitchEndTime: 切换时间窗口结束时间
+        :param _SwitchEndTime: <p>切换时间窗口结束时间</p>
         :type SwitchEndTime: str
+        :param _MasterHostId: <p>主节点的机器id，类似svr-xxx</p>
+        :type MasterHostId: str
+        :param _SlaveHostIds: <p>备节点的机器id组，类似[svr-xxx1, svr-xxx2]</p>
+        :type SlaveHostIds: list of str
         """
         self._InstanceId = None
         self._Memory = None
@@ -16624,10 +16626,12 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
         self._SwitchAutoRetry = None
         self._SwitchStartTime = None
         self._SwitchEndTime = None
+        self._MasterHostId = None
+        self._SlaveHostIds = None
 
     @property
     def InstanceId(self):
-        r"""待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例获得。
+        r"""<p>待升级的实例ID。形如：tdsql-ow728lmc，可以通过 DescribeDBInstances 查询实例获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16638,8 +16642,7 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
- 查询实例规格获得。
+        r"""<p>内存大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs<br> 查询实例规格获得。</p>
         :rtype: int
         """
         return self._Memory
@@ -16650,8 +16653,7 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""存储空间大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs
- 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。
+        r"""<p>存储空间大小，单位：GB，可以通过 DescribeFenceDBInstanceSpecs<br> 查询实例规格获得不同内存大小对应的磁盘规格下限和上限。</p>
         :rtype: int
         """
         return self._Storage
@@ -16662,7 +16664,7 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def SwitchAutoRetry(self):
-        r"""错过切换时间窗口时，是否自动重试一次，0-否，1-是
+        r"""<p>错过切换时间窗口时，是否自动重试一次，0-否，1-是</p>
         :rtype: int
         """
         return self._SwitchAutoRetry
@@ -16673,7 +16675,7 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def SwitchStartTime(self):
-        r"""切换时间窗口开始时间
+        r"""<p>切换时间窗口开始时间</p>
         :rtype: str
         """
         return self._SwitchStartTime
@@ -16684,7 +16686,7 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
 
     @property
     def SwitchEndTime(self):
-        r"""切换时间窗口结束时间
+        r"""<p>切换时间窗口结束时间</p>
         :rtype: str
         """
         return self._SwitchEndTime
@@ -16692,6 +16694,28 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
     @SwitchEndTime.setter
     def SwitchEndTime(self, SwitchEndTime):
         self._SwitchEndTime = SwitchEndTime
+
+    @property
+    def MasterHostId(self):
+        r"""<p>主节点的机器id，类似svr-xxx</p>
+        :rtype: str
+        """
+        return self._MasterHostId
+
+    @MasterHostId.setter
+    def MasterHostId(self, MasterHostId):
+        self._MasterHostId = MasterHostId
+
+    @property
+    def SlaveHostIds(self):
+        r"""<p>备节点的机器id组，类似[svr-xxx1, svr-xxx2]</p>
+        :rtype: list of str
+        """
+        return self._SlaveHostIds
+
+    @SlaveHostIds.setter
+    def SlaveHostIds(self, SlaveHostIds):
+        self._SlaveHostIds = SlaveHostIds
 
 
     def _deserialize(self, params):
@@ -16701,6 +16725,8 @@ class UpgradeDedicatedDBInstanceRequest(AbstractModel):
         self._SwitchAutoRetry = params.get("SwitchAutoRetry")
         self._SwitchStartTime = params.get("SwitchStartTime")
         self._SwitchEndTime = params.get("SwitchEndTime")
+        self._MasterHostId = params.get("MasterHostId")
+        self._SlaveHostIds = params.get("SlaveHostIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16718,7 +16744,7 @@ class UpgradeDedicatedDBInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步流程Id
+        :param _FlowId: <p>异步流程Id</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16728,7 +16754,7 @@ class UpgradeDedicatedDBInstanceResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""异步流程Id
+        r"""<p>异步流程Id</p>
         :rtype: int
         """
         return self._FlowId

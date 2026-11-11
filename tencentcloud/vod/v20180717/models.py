@@ -31067,7 +31067,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
         :type Comment: str
         :param _MediaProcessTask: <p>视频处理类型任务参数。</p>
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param _AiContentReviewTask: <p>AI 内容审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
+        :param _AiContentReviewTask: <p>AI 内容审核类型任务参数 *。<font color="red">*该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         :param _AiAnalysisTask: <p>AI 内容分析类型任务参数。</p>
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
@@ -31137,7 +31137,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
-        r"""<p>AI 内容审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
+        r"""<p>AI 内容审核类型任务参数 *。<font color="red">*该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         """
         return self._AiContentReviewTask

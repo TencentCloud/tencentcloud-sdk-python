@@ -6077,6 +6077,245 @@ class DescribeDeploymentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEventCenterEventsRequest(AbstractModel):
+    r"""DescribeEventCenterEvents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>事件筛选条件，用于按事件来源、对象、类型、级别及工具等信息查询事件。</p><p>入参限制：最多支持 12 个筛选条件，同名筛选条件不可重复；每个条件支持 1～20 个值，每个值非空且不超过 256 字节。</p><p>支持的筛选字段：Source、ObjectType、ObjectId、EventType、EventLevel、Reason、EventId、ToolId、ToolType、Message。</p>
+        :type Filters: list of Filter
+        :param _StartTime: <p>查询开始时间，包含该时间点。</p><p>参数格式：RFC3339 格式，例如 2026-10-23T13:28:00Z。</p><p>入参限制：必须早于 EndTime，且不能早于当前时间前 7 天。</p><p>默认值：不传时默认为 EndTime 前 1 小时。</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间，不包含该时间点。</p><p>参数格式：RFC3339 格式，例如 2026-10-23T14:28:00Z。</p><p>入参限制：必须晚于 StartTime，不应晚于当前时间。</p><p>默认值：不传时默认为当前时间。</p><p>查询范围为 [StartTime, EndTime)。</p>
+        :type EndTime: str
+        :param _Offset: <p>分页偏移量。</p><p>取值范围：[0, 10000]</p><p>默认值：0</p><p>Raw 模式按去重后的事件分页，Aggregate 模式按聚合结果分页。</p>
+        :type Offset: int
+        :param _Limit: <p>单次返回的最大结果条数。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :type Limit: int
+        :param _Order: <p>事件结果的时间排序方向。</p><p>枚举值：</p><ul><li>Asc： 按时间升序排列，较早的事件在前。</li><li>Desc： 按时间降序排列，较新的事件在前。默认值。</li></ul><p>默认值：Desc</p><p>Raw 模式按事件发生时间排序；Aggregate 模式按聚合结果最近发生时间排序。</p>
+        :type Order: str
+        :param _Mode: <p>事件查询模式。</p><p>枚举值：</p><ul><li>Raw： 明细模式，返回去重后的事件明细。默认值。</li><li>Aggregate： 聚合模式，返回聚合结果及事件数量、首次和最近发生时间；生命周期事件仍逐条展示。</li></ul><p>默认值：Raw</p><p>Raw 返回去重后的事件明细；Aggregate 返回聚合结果。</p>
+        :type Mode: str
+        """
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._Order = None
+        self._Mode = None
+
+    @property
+    def Filters(self):
+        r"""<p>事件筛选条件，用于按事件来源、对象、类型、级别及工具等信息查询事件。</p><p>入参限制：最多支持 12 个筛选条件，同名筛选条件不可重复；每个条件支持 1～20 个值，每个值非空且不超过 256 字节。</p><p>支持的筛选字段：Source、ObjectType、ObjectId、EventType、EventLevel、Reason、EventId、ToolId、ToolType、Message。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""<p>查询开始时间，包含该时间点。</p><p>参数格式：RFC3339 格式，例如 2026-10-23T13:28:00Z。</p><p>入参限制：必须早于 EndTime，且不能早于当前时间前 7 天。</p><p>默认值：不传时默认为 EndTime 前 1 小时。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，不包含该时间点。</p><p>参数格式：RFC3339 格式，例如 2026-10-23T14:28:00Z。</p><p>入参限制：必须晚于 StartTime，不应晚于当前时间。</p><p>默认值：不传时默认为当前时间。</p><p>查询范围为 [StartTime, EndTime)。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量。</p><p>取值范围：[0, 10000]</p><p>默认值：0</p><p>Raw 模式按去重后的事件分页，Aggregate 模式按聚合结果分页。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>单次返回的最大结果条数。</p><p>取值范围：[1, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        r"""<p>事件结果的时间排序方向。</p><p>枚举值：</p><ul><li>Asc： 按时间升序排列，较早的事件在前。</li><li>Desc： 按时间降序排列，较新的事件在前。默认值。</li></ul><p>默认值：Desc</p><p>Raw 模式按事件发生时间排序；Aggregate 模式按聚合结果最近发生时间排序。</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Mode(self):
+        r"""<p>事件查询模式。</p><p>枚举值：</p><ul><li>Raw： 明细模式，返回去重后的事件明细。默认值。</li><li>Aggregate： 聚合模式，返回聚合结果及事件数量、首次和最近发生时间；生命周期事件仍逐条展示。</li></ul><p>默认值：Raw</p><p>Raw 返回去重后的事件明细；Aggregate 返回聚合结果。</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._Mode = params.get("Mode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEventCenterEventsResponse(AbstractModel):
+    r"""DescribeEventCenterEvents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Events: <p>本次查询返回的事件明细或聚合结果列表。无匹配结果时返回空数组。</p>
+        :type Events: list of EventItem
+        :param _TotalCount: <p>符合查询条件的结果总数，不受 Offset 和 Limit 影响。Raw 模式为去重后的事件总数，Aggregate 模式为聚合结果总数。</p>
+        :type TotalCount: int
+        :param _StartTime: <p>本次查询实际使用的开始时间，RFC3339 格式，包含该时间点。</p>
+        :type StartTime: str
+        :param _EndTime: <p>本次查询实际使用的结束时间，RFC3339 格式，不包含该时间点。</p>
+        :type EndTime: str
+        :param _Mode: <p>本次查询实际使用的模式。</p><p>枚举值：</p><ul><li>Raw： 明细模式。</li><li>Aggregate： 聚合模式。</li></ul>
+        :type Mode: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Events = None
+        self._TotalCount = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Mode = None
+        self._RequestId = None
+
+    @property
+    def Events(self):
+        r"""<p>本次查询返回的事件明细或聚合结果列表。无匹配结果时返回空数组。</p>
+        :rtype: list of EventItem
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合查询条件的结果总数，不受 Offset 和 Limit 影响。Raw 模式为去重后的事件总数，Aggregate 模式为聚合结果总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def StartTime(self):
+        r"""<p>本次查询实际使用的开始时间，RFC3339 格式，包含该时间点。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>本次查询实际使用的结束时间，RFC3339 格式，不包含该时间点。</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Mode(self):
+        r"""<p>本次查询实际使用的模式。</p><p>枚举值：</p><ul><li>Raw： 明细模式。</li><li>Aggregate： 聚合模式。</li></ul>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = EventItem()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Mode = params.get("Mode")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEventsRequest(AbstractModel):
     r"""DescribeEvents请求参数结构体
 
@@ -9386,6 +9625,222 @@ class EventInfo(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._ErrorMessage = params.get("ErrorMessage")
         self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventItem(AbstractModel):
+    r"""用于描述事件中心中的一条事件记录，包含事件标识、所属资源、事件类型、级别、发生时间、原因及业务扩展信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventId: <p>事件唯一标识，用于区分事件及识别重复投递。聚合模式下为该聚合结果代表事件的标识。</p>
+        :type EventId: str
+        :param _Source: <p>事件来源。</p>
+        :type Source: str
+        :param _ObjectType: <p>事件关联的对象类型。</p>
+        :type ObjectType: str
+        :param _ObjectId: <p>事件关联的对象 ID。</p>
+        :type ObjectId: str
+        :param _EventLevel: <p>事件级别。Normal 表示正常事件，Warning 表示告警事件。</p>
+        :type EventLevel: str
+        :param _EventType: <p>事件类型。</p>
+        :type EventType: str
+        :param _Reason: <p>事件原因标识，无原因信息时不返回。例如 Manual 表示通过停止接口主动停止，包括人工、脚本或 SDK 调用，不代表一定由人工操作。</p>
+        :type Reason: str
+        :param _Message: <p>事件的说明文本。建议使用 EventType 和 Reason 判断事件类型及原因，不依赖说明文本进行业务判断。</p>
+        :type Message: str
+        :param _Extensions: <p>事件扩展信息，以 JSON 字符串返回。当前 Sandbox 事件包含 ToolId、ToolType，以及可选的 ToolName。调用方需解析 JSON 字符串后读取扩展字段。</p>
+        :type Extensions: str
+        :param _OccurredAt: <p>事件发生时间，RFC3339 格式。仅 Raw 模式返回。</p>
+        :type OccurredAt: str
+        :param _Count: <p>当前查询范围内，该聚合结果包含的去重事件数。仅 Aggregate 模式返回。当前生命周期事件逐条展示，该值为 1。</p>
+        :type Count: int
+        :param _FirstOccurredAt: <p>当前查询范围内，该聚合结果中最早的事件发生时间，RFC3339 格式。仅 Aggregate 模式返回，不代表该对象历史上的首次事件时间。</p>
+        :type FirstOccurredAt: str
+        :param _LastOccurredAt: <p>当前查询范围内，该聚合结果中最近的事件发生时间，RFC3339 格式。仅 Aggregate 模式返回，不代表该对象此后不会再发生事件。</p>
+        :type LastOccurredAt: str
+        """
+        self._EventId = None
+        self._Source = None
+        self._ObjectType = None
+        self._ObjectId = None
+        self._EventLevel = None
+        self._EventType = None
+        self._Reason = None
+        self._Message = None
+        self._Extensions = None
+        self._OccurredAt = None
+        self._Count = None
+        self._FirstOccurredAt = None
+        self._LastOccurredAt = None
+
+    @property
+    def EventId(self):
+        r"""<p>事件唯一标识，用于区分事件及识别重复投递。聚合模式下为该聚合结果代表事件的标识。</p>
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Source(self):
+        r"""<p>事件来源。</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ObjectType(self):
+        r"""<p>事件关联的对象类型。</p>
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def ObjectId(self):
+        r"""<p>事件关联的对象 ID。</p>
+        :rtype: str
+        """
+        return self._ObjectId
+
+    @ObjectId.setter
+    def ObjectId(self, ObjectId):
+        self._ObjectId = ObjectId
+
+    @property
+    def EventLevel(self):
+        r"""<p>事件级别。Normal 表示正常事件，Warning 表示告警事件。</p>
+        :rtype: str
+        """
+        return self._EventLevel
+
+    @EventLevel.setter
+    def EventLevel(self, EventLevel):
+        self._EventLevel = EventLevel
+
+    @property
+    def EventType(self):
+        r"""<p>事件类型。</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def Reason(self):
+        r"""<p>事件原因标识，无原因信息时不返回。例如 Manual 表示通过停止接口主动停止，包括人工、脚本或 SDK 调用，不代表一定由人工操作。</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Message(self):
+        r"""<p>事件的说明文本。建议使用 EventType 和 Reason 判断事件类型及原因，不依赖说明文本进行业务判断。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Extensions(self):
+        r"""<p>事件扩展信息，以 JSON 字符串返回。当前 Sandbox 事件包含 ToolId、ToolType，以及可选的 ToolName。调用方需解析 JSON 字符串后读取扩展字段。</p>
+        :rtype: str
+        """
+        return self._Extensions
+
+    @Extensions.setter
+    def Extensions(self, Extensions):
+        self._Extensions = Extensions
+
+    @property
+    def OccurredAt(self):
+        r"""<p>事件发生时间，RFC3339 格式。仅 Raw 模式返回。</p>
+        :rtype: str
+        """
+        return self._OccurredAt
+
+    @OccurredAt.setter
+    def OccurredAt(self, OccurredAt):
+        self._OccurredAt = OccurredAt
+
+    @property
+    def Count(self):
+        r"""<p>当前查询范围内，该聚合结果包含的去重事件数。仅 Aggregate 模式返回。当前生命周期事件逐条展示，该值为 1。</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def FirstOccurredAt(self):
+        r"""<p>当前查询范围内，该聚合结果中最早的事件发生时间，RFC3339 格式。仅 Aggregate 模式返回，不代表该对象历史上的首次事件时间。</p>
+        :rtype: str
+        """
+        return self._FirstOccurredAt
+
+    @FirstOccurredAt.setter
+    def FirstOccurredAt(self, FirstOccurredAt):
+        self._FirstOccurredAt = FirstOccurredAt
+
+    @property
+    def LastOccurredAt(self):
+        r"""<p>当前查询范围内，该聚合结果中最近的事件发生时间，RFC3339 格式。仅 Aggregate 模式返回，不代表该对象此后不会再发生事件。</p>
+        :rtype: str
+        """
+        return self._LastOccurredAt
+
+    @LastOccurredAt.setter
+    def LastOccurredAt(self, LastOccurredAt):
+        self._LastOccurredAt = LastOccurredAt
+
+
+    def _deserialize(self, params):
+        self._EventId = params.get("EventId")
+        self._Source = params.get("Source")
+        self._ObjectType = params.get("ObjectType")
+        self._ObjectId = params.get("ObjectId")
+        self._EventLevel = params.get("EventLevel")
+        self._EventType = params.get("EventType")
+        self._Reason = params.get("Reason")
+        self._Message = params.get("Message")
+        self._Extensions = params.get("Extensions")
+        self._OccurredAt = params.get("OccurredAt")
+        self._Count = params.get("Count")
+        self._FirstOccurredAt = params.get("FirstOccurredAt")
+        self._LastOccurredAt = params.get("LastOccurredAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13245,7 +13700,7 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type AuthMode: str
         :param _Metadata: <p>沙箱元数据</p>
         :type Metadata: list of MetadataVar
-        :param _StartMode: <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果。</p>
+        :param _StartMode: <p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果，当前仅支持WAA沙箱和GPU沙箱。</p>
         :type StartMode: str
         """
         self._ToolId = None
@@ -13372,7 +13827,7 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     @property
     def StartMode(self):
-        r"""<p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果。</p>
+        r"""<p>实例启动模式。DEFAULT：使用原有同步创建流程，为默认值；WAIT_UNTIL_HEALTHY：使用持久化后台创建流程，受理后可能返回 STARTING，需查询实例状态确认最终结果，当前仅支持WAA沙箱和GPU沙箱。</p>
         :rtype: str
         """
         return self._StartMode

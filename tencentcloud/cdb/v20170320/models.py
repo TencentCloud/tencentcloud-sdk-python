@@ -7990,6 +7990,8 @@ class CreateCloneInstanceRequest(AbstractModel):
         :type Zone: str
         :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
         :type FourthZone: str
+        :param _UseLatestMinorVersion: <p>是否使用最新小版本号进行克隆。</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 否</li></ul><p>默认值：0</p><p>默认和源实例的小版本号对齐</p>
+        :type UseLatestMinorVersion: int
         """
         self._InstanceId = None
         self._SpecifiedRollbackTime = None
@@ -8020,6 +8022,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._MasterZone = None
         self._Zone = None
         self._FourthZone = None
+        self._UseLatestMinorVersion = None
 
     @property
     def InstanceId(self):
@@ -8344,6 +8347,17 @@ class CreateCloneInstanceRequest(AbstractModel):
     def FourthZone(self, FourthZone):
         self._FourthZone = FourthZone
 
+    @property
+    def UseLatestMinorVersion(self):
+        r"""<p>是否使用最新小版本号进行克隆。</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 否</li></ul><p>默认值：0</p><p>默认和源实例的小版本号对齐</p>
+        :rtype: int
+        """
+        return self._UseLatestMinorVersion
+
+    @UseLatestMinorVersion.setter
+    def UseLatestMinorVersion(self, UseLatestMinorVersion):
+        self._UseLatestMinorVersion = UseLatestMinorVersion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8382,6 +8396,7 @@ class CreateCloneInstanceRequest(AbstractModel):
         self._MasterZone = params.get("MasterZone")
         self._Zone = params.get("Zone")
         self._FourthZone = params.get("FourthZone")
+        self._UseLatestMinorVersion = params.get("UseLatestMinorVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16453,14 +16468,14 @@ class DescribeDBFeaturesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16489,24 +16504,23 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsSupportAudit: 是否支持数据库审计功能。
+        :param _IsSupportAudit: <p>是否支持数据库审计功能。</p>
         :type IsSupportAudit: bool
-        :param _AuditNeedUpgrade: 开启审计是否需要升级内核版本。
+        :param _AuditNeedUpgrade: <p>开启审计是否需要升级内核版本。</p>
         :type AuditNeedUpgrade: bool
-        :param _IsSupportEncryption: 是否支持数据库加密功能。
+        :param _IsSupportEncryption: <p>是否支持数据库加密功能。</p>
         :type IsSupportEncryption: bool
-        :param _EncryptionNeedUpgrade: 开启加密是否需要升级内核版本。
+        :param _EncryptionNeedUpgrade: <p>开启加密是否需要升级内核版本。</p>
         :type EncryptionNeedUpgrade: bool
-        :param _IsRemoteRo: 是否为异地只读实例。
+        :param _IsRemoteRo: <p>是否为异地只读实例。</p>
         :type IsRemoteRo: bool
-        :param _MasterRegion: 主实例所在地域。
-说明：此参数可能返回空值，您可忽略此出参返回值。如需获取实例所在地域详情，您可调用 [查询实例列表](https://cloud.tencent.com/document/product/236/15872) 接口查询。
+        :param _MasterRegion: <p>主实例所在地域。<br>说明：此参数可能返回空值，您可忽略此出参返回值。如需获取实例所在地域详情，您可调用 <a href="https://cloud.tencent.com/document/product/236/15872">查询实例列表</a> 接口查询。</p>
         :type MasterRegion: str
-        :param _IsSupportUpdateSubVersion: 是否支持小版本升级。
+        :param _IsSupportUpdateSubVersion: <p>是否支持小版本升级。</p>
         :type IsSupportUpdateSubVersion: bool
-        :param _CurrentSubVersion: 当前内核版本。
+        :param _CurrentSubVersion: <p>当前内核版本。</p>
         :type CurrentSubVersion: str
-        :param _TargetSubVersion: 可供升级的内核版本。
+        :param _TargetSubVersion: <p>可供升级的内核版本。</p>
         :type TargetSubVersion: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16524,7 +16538,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def IsSupportAudit(self):
-        r"""是否支持数据库审计功能。
+        r"""<p>是否支持数据库审计功能。</p>
         :rtype: bool
         """
         return self._IsSupportAudit
@@ -16535,7 +16549,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def AuditNeedUpgrade(self):
-        r"""开启审计是否需要升级内核版本。
+        r"""<p>开启审计是否需要升级内核版本。</p>
         :rtype: bool
         """
         return self._AuditNeedUpgrade
@@ -16546,7 +16560,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def IsSupportEncryption(self):
-        r"""是否支持数据库加密功能。
+        r"""<p>是否支持数据库加密功能。</p>
         :rtype: bool
         """
         return self._IsSupportEncryption
@@ -16557,7 +16571,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def EncryptionNeedUpgrade(self):
-        r"""开启加密是否需要升级内核版本。
+        r"""<p>开启加密是否需要升级内核版本。</p>
         :rtype: bool
         """
         return self._EncryptionNeedUpgrade
@@ -16568,7 +16582,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def IsRemoteRo(self):
-        r"""是否为异地只读实例。
+        r"""<p>是否为异地只读实例。</p>
         :rtype: bool
         """
         return self._IsRemoteRo
@@ -16579,8 +16593,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def MasterRegion(self):
-        r"""主实例所在地域。
-说明：此参数可能返回空值，您可忽略此出参返回值。如需获取实例所在地域详情，您可调用 [查询实例列表](https://cloud.tencent.com/document/product/236/15872) 接口查询。
+        r"""<p>主实例所在地域。<br>说明：此参数可能返回空值，您可忽略此出参返回值。如需获取实例所在地域详情，您可调用 <a href="https://cloud.tencent.com/document/product/236/15872">查询实例列表</a> 接口查询。</p>
         :rtype: str
         """
         return self._MasterRegion
@@ -16591,7 +16604,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def IsSupportUpdateSubVersion(self):
-        r"""是否支持小版本升级。
+        r"""<p>是否支持小版本升级。</p>
         :rtype: bool
         """
         return self._IsSupportUpdateSubVersion
@@ -16602,7 +16615,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def CurrentSubVersion(self):
-        r"""当前内核版本。
+        r"""<p>当前内核版本。</p>
         :rtype: str
         """
         return self._CurrentSubVersion
@@ -16613,7 +16626,7 @@ class DescribeDBFeaturesResponse(AbstractModel):
 
     @property
     def TargetSubVersion(self):
-        r"""可供升级的内核版本。
+        r"""<p>可供升级的内核版本。</p>
         :rtype: str
         """
         return self._TargetSubVersion
@@ -35785,19 +35798,17 @@ class RoGroupAttr(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroupName: RO 组名称。
+        :param _RoGroupName: <p>RO 组名称。</p>
         :type RoGroupName: str
-        :param _RoMaxDelayTime: RO 实例最大延迟阈值。单位为秒，最小值为 1。范围：[1,10000]，整数。
-注意：RO 组必须设置了开启实例延迟剔除策略，该值才有效。
+        :param _RoMaxDelayTime: <p>RO 实例最大延迟阈值。单位为秒，最小值为 1。范围：[1,10000]，整数。<br>注意：RO 组必须设置了开启实例延迟剔除策略，该值才有效。</p>
         :type RoMaxDelayTime: int
-        :param _RoOfflineDelay: 是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。
+        :param _RoOfflineDelay: <p>是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。</p>
         :type RoOfflineDelay: int
-        :param _MinRoInGroup: 最少保留实例数。可设置为小于或等于该 RO 组下 RO 实例个数的任意值。默认值为1。
-注意：若设置值大于 RO 实例数量将不做剔除；若设置为 0，所有实例延迟超限都会被剔除。
+        :param _MinRoInGroup: <p>最少保留实例数。可设置为小于或等于该 RO 组下 RO 实例个数的任意值。默认值为1。<br>注意：若设置值大于 RO 实例数量将不做剔除；若设置为 0，所有实例延迟超限都会被剔除。</p>
         :type MinRoInGroup: int
-        :param _WeightMode: 权重模式。支持值包括："system" - 系统自动分配； "custom" - 用户自定义设置。注意，若设置 "custom" 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。
+        :param _WeightMode: <p>权重模式。支持值包括：&quot;system&quot; - 系统自动分配； &quot;custom&quot; - 用户自定义设置。注意，若设置 &quot;custom&quot; 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。</p>
         :type WeightMode: str
-        :param _ReplicationDelayTime: 延迟复制时间。单位：秒，范围：1 - 259200秒，不传此参数表示不开启实例延迟复制。
+        :param _ReplicationDelayTime: <p>延迟复制时间。单位：秒，范围：1 - 259200秒，不传此参数表示不开启实例延迟复制。</p>
         :type ReplicationDelayTime: int
         """
         self._RoGroupName = None
@@ -35809,7 +35820,7 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def RoGroupName(self):
-        r"""RO 组名称。
+        r"""<p>RO 组名称。</p>
         :rtype: str
         """
         return self._RoGroupName
@@ -35820,8 +35831,7 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def RoMaxDelayTime(self):
-        r"""RO 实例最大延迟阈值。单位为秒，最小值为 1。范围：[1,10000]，整数。
-注意：RO 组必须设置了开启实例延迟剔除策略，该值才有效。
+        r"""<p>RO 实例最大延迟阈值。单位为秒，最小值为 1。范围：[1,10000]，整数。<br>注意：RO 组必须设置了开启实例延迟剔除策略，该值才有效。</p>
         :rtype: int
         """
         return self._RoMaxDelayTime
@@ -35832,7 +35842,7 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def RoOfflineDelay(self):
-        r"""是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。
+        r"""<p>是否开启实例延迟剔除。支持的值包括：1 - 开启；0 - 不开启。注意，若设置开启实例延迟剔除，则必须设置延迟阈值（RoMaxDelayTime）参数。</p>
         :rtype: int
         """
         return self._RoOfflineDelay
@@ -35843,8 +35853,7 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def MinRoInGroup(self):
-        r"""最少保留实例数。可设置为小于或等于该 RO 组下 RO 实例个数的任意值。默认值为1。
-注意：若设置值大于 RO 实例数量将不做剔除；若设置为 0，所有实例延迟超限都会被剔除。
+        r"""<p>最少保留实例数。可设置为小于或等于该 RO 组下 RO 实例个数的任意值。默认值为1。<br>注意：若设置值大于 RO 实例数量将不做剔除；若设置为 0，所有实例延迟超限都会被剔除。</p>
         :rtype: int
         """
         return self._MinRoInGroup
@@ -35855,7 +35864,7 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def WeightMode(self):
-        r"""权重模式。支持值包括："system" - 系统自动分配； "custom" - 用户自定义设置。注意，若设置 "custom" 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。
+        r"""<p>权重模式。支持值包括：&quot;system&quot; - 系统自动分配； &quot;custom&quot; - 用户自定义设置。注意，若设置 &quot;custom&quot; 模式，则必须设置 RO 实例权重配置（RoWeightValues）参数。</p>
         :rtype: str
         """
         return self._WeightMode
@@ -35866,7 +35875,7 @@ class RoGroupAttr(AbstractModel):
 
     @property
     def ReplicationDelayTime(self):
-        r"""延迟复制时间。单位：秒，范围：1 - 259200秒，不传此参数表示不开启实例延迟复制。
+        r"""<p>延迟复制时间。单位：秒，范围：1 - 259200秒，不传此参数表示不开启实例延迟复制。</p>
         :rtype: int
         """
         return self._ReplicationDelayTime

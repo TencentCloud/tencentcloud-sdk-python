@@ -629,6 +629,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateModelChatTask(self, request):
+        r"""提交异步多模态理解任务，返回 TaskId
+
+        :param request: Request instance for CreateModelChatTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateModelChatTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateModelChatTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModelChatTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModelChatTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePersonSample(self, request):
         r"""该接口用于创建素材样本，用于通过五官定位等技术，进行内容识别、内容不适宜等视频处理。
 
@@ -2649,6 +2672,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeMediaMetaData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeMediaMetaDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeModelChatTask(self, request):
+        r"""按 TaskId 查询多模态理解任务结果
+
+        :param request: Request instance for DescribeModelChatTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeModelChatTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeModelChatTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModelChatTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelChatTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

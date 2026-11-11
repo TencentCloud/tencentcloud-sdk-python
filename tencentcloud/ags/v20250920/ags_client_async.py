@@ -502,6 +502,24 @@ class AgsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEventCenterEvents(
+            self,
+            request: models.DescribeEventCenterEventsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEventCenterEventsResponse:
+        """
+        本接口用于查询当前账号在指定地域的事件列表，支持按事件来源、资源对象、事件类型、事件级别及时间范围等条件筛选，并支持分页和时间排序。默认查询最近 1 小时的事件，支持查询最近 7 天内的事件。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEventCenterEvents"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEventCenterEventsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEvents(
             self,
             request: models.DescribeEventsRequest,
